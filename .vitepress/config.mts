@@ -3,7 +3,8 @@ import { set_sidebar } from "../utils/auto_sidebar.mjs";	// 改成自己的路�
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  head: [["link", { rel: "icon", href: "/logo.svg" }]],
+  base: "/docs-website/",
+  head: [["link", { rel: "icon", href: "/docs-website/logo.svg" }]],
   title: "Hjc的个人文档",
   description: "A VitePress Site",
   themeConfig: {
