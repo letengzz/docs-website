@@ -1,49 +1,17 @@
 import { defineConfig } from 'vitepress'
-import { set_sidebar } from "../utils/auto_sidebar.mjs";	// 改成自己的路径\
+import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: "/docs-website/",
-  head: [["link", { rel: "icon", href: "/docs-website/logo.svg" }]],
   title: "Hjc的个人文档",
-  description: "A VitePress Site",
+  titleTemplate: ":title - Hjc",
+  description: "Hjc",
+  base: `/docs-website/`,
+  head: [['link', { rel: 'icon', href: `/docs-website/logo.svg` }]],
+  lang: 'zh-CN',
+  lastUpdated: true,
   themeConfig: {
-    logo: 'logo.svg',
-    outlineTitle: '目录',
+    logo: "/logo.svg", // 配置logo位置，public目录
     outline: [2, 6],
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Go', items: [{ text: 'Go', link: '/' }] },
-      { text: 'Java', items: [{ text: 'JavaSE', link: '/docs/后端/Java/javase/概述' }, { text: 'JavaWeb', link: '/' }, { text: 'JDBC', link: '/' }, { text: 'Java框架', link: '/docs/后端/java/frame/框架基本概念' }, { text: '消息队列', link: '/' }, { text: '工具', link: '/' }, { text: '其他', link: '/' }, { text: '算法', link: '/' }] },
-      { text: '数据库', items: [{ text: 'Home', link: '/' }] },
-      { text: 'Linux', items: [{ text: 'Home', link: '/docs/后端/index1' }] },
-      { text: '项目', items: [{ text: 'Home', link: '/项目/后台管理系统' }] }
-    ],
-
-    // sidebar: [
-    //   {
-    //     text: 'Examples',
-    //     items: [
-    //       { text: 'Markdown Examples1', link: '/docs/后端' },
-    //       { text: 'Runtime API Examples', link: '/api-examples' }
-    //     ]
-    //   }
-    // ],
-
-    sidebar: {
-      "/project": set_sidebar("/project"),
-      "/docs": set_sidebar("/docs"),
-      "/docs/后端/Java/javase": set_sidebar("/docs/后端/Java/javase"),
-      "/docs/后端/Java/frame": set_sidebar("/docs/后端/Java/frame"),
-      "/docs/后端": set_sidebar("/docs/后端")
-    },
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/letengzz' }
-    ],
-    footer: {
-      // message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024-present Hjc'
-    },
     // 设置搜索框的样式
     search: {
       provider: "local",
@@ -64,5 +32,127 @@ export default defineConfig({
         },
       },
     },
+    // search: {
+    //   provider: 'local'
+    // },
+    nav: [
+      { text: '首页', link: '/' },
+      { text: '前端', items: [{ text: '基础', link: '/frontend' }, { text: '前端', link: '/frontend' },] },
+      { text: '后端', items: [{ text: 'Go', link: '/docs/后端/Go' }, { text: 'Java', link: '/docs/后端/Java' },] },
+      { text: '数据库', items: [{ text: 'Go', link: '/docs/后端/Go' }, { text: 'Java', link: '/docs/后端/Java' },] },
+      { text: '运维', items: [{ text: 'Go', link: '/docs/后端/Go' }, { text: 'Java', link: '/docs/后端/Java' },] },
+      { text: '项目', link: '/project' },
+      { text: '其他', link: '/other' },
+    ],
+    sidebar: {
+      "/docs/后端": set_sidebar("/docs/后端"),
+      "/docs/前端": set_sidebar("/docs/前端"),
+      "/docs/后端/Java": set_sidebar("/docs/后端/Java"),
+      "/docs/后端/Go": set_sidebar("/docs/后端/Go"),
+      "/other": set_sidebar("/other"),
+      "/docs": [
+        {
+          text: '前端',
+          collapsed: true,
+          items: [
+            { text: '基础', link: '/docs/前端' },
+            { text: '进阶', link: '/docs/前端' },
+          ]
+        },
+        {
+          text: '后端',
+          collapsed: true,
+          items: [
+            { text: 'Go', collapsed: true, items: set_sidebar("/docs/后端/Go") },
+            {
+              text: 'Java', collapsed: true, items: [
+                { text: 'JavaSE', link: '/docs/前端' },
+                { text: 'JavaWeb', link: '/docs/前端' },
+                { text: 'JDBC', link: '/docs/前端' },
+                { text: 'Java框架',collapsed: true,
+                  items: [
+                    { text: '框架基本概念', link: '/docs/后端/Java/Java框架/框架基本概念.md' },
+                    { text: 'Spring', link: '/docs/后端/Java/消息队列MQ/Kafka/概述.md' },
+                    { text: 'SpringBoot', link: '/docs/后端/Java/消息队列MQ/RabbitMQ/概述.md' },
+                    { text: 'SpringCloud', link: '/docs/后端/Java/消息队列MQ/RocketMQ/概述.md' },
+                    { text: 'MyBatis', link: '/docs/后端/Java/消息队列MQ/RocketMQ/概述.md' },
+                    { text: 'MyBatis Plus', link: '/docs/后端/Java/消息队列MQ/RocketMQ/概述.md' },
+                  ] },
+                {
+                  text: '消息队列MQ',
+                  collapsed: true,
+                  items: [
+                    { text: '消息队列MQ 概述', link: '/docs/后端/Java/消息队列MQ/概述.md' },
+                    { text: 'Kafka', link: '/docs/后端/Java/消息队列MQ/Kafka/概述.md' },
+                    { text: 'RabbitMQ', link: '/docs/后端/Java/消息队列MQ/RabbitMQ/概述.md' },
+                    { text: 'RocketMQ', link: '/docs/后端/Java/消息队列MQ/RocketMQ/概述.md' },
+                  ]
+                },
+                {
+                  text: '工具',
+                  collapsed: true,
+                  items: [
+                    {
+                      text: 'IDE',
+                      collapsed: true,
+                      items: [
+                        { text: 'IDEA', link: '/docs/后端/Java/工具/IDE/IDEA/概述.md' },
+                      ]
+                    },
+                    {
+                      text: '版本控制',
+                      collapsed: true,
+                      items: [
+                        { text: '版本控制 概述', link: '/docs/后端/Java/工具/版本控制/概述.md' },
+                        { text: 'Git', link: '/docs/后端/Java/工具/版本控制/Git/概述.md' },
+                        { text: 'SVN', link: '/docs/后端/Java/工具/版本控制/SVN/概述.md' },
+                      ]
+                    },
+                    {
+                      text: '持续集成工具',
+                      collapsed: true,
+                      items: [
+                        { text: 'Jenkins', link: '/docs/后端/Java/工具/持续集成工具/Jenkins/概述.md' },
+                      ]
+                    },
+                    {
+                      text: '构建依赖管理工具',
+                      collapsed: true,
+                      items: [
+                        { text: 'Maven', link: '/docs/后端/Java/工具/构建依赖管理工具/Maven/概述.md' },
+                      ]
+                    },
+                  ]
+                },
+                { text: '算法' },
+                { text: '其他' },
+              ]
+            },
+
+          ]
+        },
+        {
+          text: '其他',
+          collapsed: true,
+          items: [
+            { text: '基础', link: '/docs/前端' },
+            { text: '进阶', link: '/docs/前端' },
+          ]
+        },
+      ],
+      "/project": set_sidebar("/project"),
+    },
+
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/letengzz' }
+    ],
+    footer: {
+      message: '开发者笔记仓库',
+      copyright: 'Copyright © 2024 Hjc'
+    },
+    docFooter: {
+      prev: false,
+      next: false
+    }
   }
 })
