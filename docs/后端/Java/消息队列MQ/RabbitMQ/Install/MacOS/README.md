@@ -1,3 +1,4 @@
+````
 # MacOS 安装 RabbitMQ
 
 ## brew 命令安装
@@ -122,3 +123,5 @@ Mac 后台启动 RabbitMQ：
 ![image-20240310233156858](https://cdn.jsdelivr.net/gh/letengzz/tc2@main/img202403171903995.png)
 
 进入了之后会显示当前的消息队列情况，包括版本号、Erlang版本等。
+````
+
