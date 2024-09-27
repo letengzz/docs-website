@@ -140,7 +140,19 @@ export default defineConfig({
           ]
         },
       ],
-      "/project": set_sidebar("/project"),
+      "/project": [
+        {
+          text: '通用权限项目',
+          collapsed: true,
+          items: [
+            { text: '通用权限项目(一)', collapsed: true, link: '/project/通用权限项目/通用权限项目(一)/index',items:[
+              { text: '项目介绍', link: '/project/通用权限项目/通用权限项目(一)/项目介绍' },
+              { text: '项目搭建', link: '/project/通用权限项目/通用权限项目(一)/项目搭建' },
+            ] },
+            { text: '通用权限项目(二)',  link: '/project/通用权限项目/通用权限项目(二)/index'  },
+          ]
+        },
+      ],
     },
 
     socialLinks: [
