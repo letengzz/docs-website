@@ -5,7 +5,7 @@ export default defineConfig({
   title: "Hjc的个人文档",
   titleTemplate: ":title - Hjc",
   description: "Hjc",
-  base: `/docs-website/`,
+  // base: `/docs-website/`,
   head: [['link', { rel: 'icon', href: `/docs-website/logo.svg` }]],
   lang: 'zh-CN',
   lastUpdated: true,
