@@ -1,11 +1,14 @@
 # 前端
 
-### TS笔记
+- [基础](基础/index.md)
 
-尚硅谷TS视频
+> 基础：前端开发、HTML、CSS、JavaScript、TypeScript、构建工具、Ajax、ECMAScript、NodeJs
 
-[小满zs博客](https://blog.csdn.net/qq1195566313/category_11559497.html)
+- [框架](框架/index.md)
 
-### Vue3
+> 框架：Vue、React、Uniapp、Electron
 
-尚硅谷TS视频
+- [工具](工具/index.md)
+
+> 工具：IDE(VSCODE、WebStorm)
+

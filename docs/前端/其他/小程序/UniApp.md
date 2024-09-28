@@ -13,7 +13,7 @@ setTimeout(()=>{
 3. 满足以上两点，父组件可以通过v-model指令把值直接传递给value这个props
 > 在uniapp中使用vuex
 
-```
+```javascript
 //在根目录中创建store文件夹，然后创建index.js
 //导入Vue和Vuex
 import Vue from 'vue'
@@ -84,13 +84,13 @@ this.$store.dispatch('user/login', this.loginForm)
 
 > 在uniapp中使用mescroll实现下拉刷新，上拉加载
 
-```
+```javascript
 https://www.mescroll.com/uni.html#begin
 ```
 
 > uniapp分包
 
-```
+```javascript
 分包：将小程序划分为不同的子包，在构建时打包成不同的分包，用户在使用时按需进行加载
 步骤：
 1. 打开pages.json，新建subPackages节点

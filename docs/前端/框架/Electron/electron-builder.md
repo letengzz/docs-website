@@ -1,8 +1,6 @@
-## 前言
+## electron-builder
 
 本教程的应用结构：[AZCodingAccount/iTime: 基于electron、vue3、Arco Design的桌面端效率软件 (github.com)](https://github.com/AZCodingAccount/iTime)
-
-恕我直言，网上的electron打包教程10个里面有9坨。踩了5个小时的坑才整完，看了几十个文章，基本没一个可以把一个大项目完整打下来的，看到几篇都是官方示例往上一搬就是vue+electron打包教程了，自己看都不看就硬搬。离谱至极
 
 不使用electron-forge，使用electron-builder    官网：[electron-builder](https://www.electron.build/)
 

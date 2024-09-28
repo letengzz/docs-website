@@ -1,25 +1,21 @@
 # React学习笔记
 
-​		还是得记笔记，好记性不如烂笔头，之前学的React也仅限于会用，很多API的具体用法，原理还是忘，今年寒假4天把黑马出的React视频过一遍再做一个笔记。
+## 概述
 
-## 初识React
-
-React是meta(原facebook)公司开源的前端框架，跟vue相似都是基于虚拟DOM的。但是相对vue而言有这些优势
+React是meta (原facebook) 公司开源的前端框架，跟vue相似都是基于虚拟DOM的。但是相对vue而言有这些优势
 
 - 由于出现的比较早，社区资源更丰富，更流行
 - 大公司构建，稳定性和扩展性更好
 - 跟ts无缝集成
 - 个人觉得写起来自由度更高，更贴近js原生
 
-##  React入门
-
 diff算法是用于比较两个数据集之间的差异的算法，应用场景如更新虚拟DOM、版本控制系统Git
 
 uuid重复的概率使用生日悖论估计的话，1万亿条数据，生成的uuid重复的概率大概是9.4*10-14
 
-### JSX是什么
+## JSX
 
-​		JSX全称JavaScript XML，是一种由meta(原facebook)公司推出的一个JS语法扩展，它允许开发者在js代码中写类似于HTML的标记语法，这种语法在React中应用广泛，浏览器不能识别JSX代码，需要通过如Babel这种构建工具编译以后使用。基本的用法是类似于
+JSX全称JavaScript XML，是一种由meta(原facebook)公司推出的一个JS语法扩展，它允许开发者在js代码中写类似于HTML的标记语法，这种语法在React中应用广泛，浏览器不能识别JSX代码，需要通过如Babel这种构建工具编译以后使用。基本的用法是类似于
 
 ```jsx
 const titleText="Hello World";
@@ -28,7 +24,7 @@ const title=<h1>{titleText}</h1>;
 
 需要注意的是，大括号只能插入表达式而不能插入语句，函数、变量、模版字符串这些都可以，但是不能写如{a=1}
 
-### 初始化React项目
+## 初始化React项目
 
 使用CRA创建React项目。（当然使用Vite也是可以的）
 
@@ -54,7 +50,7 @@ pnpm config set registry https://registry.npmmirror.com
 yarn config set registry https://registry.npmmirror.com
 ```
 
-###  jsx的简单使用
+##  jsx的简单使用
 
 **渲染列表**
 
@@ -118,11 +114,9 @@ yarn config set registry https://registry.npmmirror.com
   return <div>{type === 1 && returnData(type)}</div>;	// type为1时才进行函数调用
 ```
 
-## React基础
+## 基础Hooks的使用
 
-### 基础Hooks的使用
-
-####  useState
+###  useState
 
 ​		如果想要数据双向绑定的话，需要使用useState这个hook函数解构一个方法来修改状态（对于对象也是一样，一般都需要展开一下构建新对象赋值给原变量）
 
@@ -188,7 +182,7 @@ function App() {
 export default App;
 ```
 
-#### useRef
+### useRef
 
 ​		这个hook函数可以获取ref对象，拿到ref对象（常和副作用钩子结合使用）以后，可以做一系列操作，比如说给输入框聚焦，获取输入框的值、设置输入框的值等。
 
@@ -220,7 +214,7 @@ export default App;
   );
 ```
 
-#### useEffect
+### useEffect
 
 ​		这个hook函数用于不是由事件引起而是由渲染引起的操作，如刚进来或DOM更新发送AJAX请求，DOM更新以后要执行的操作等等。类似于Vue的watch和生命周期钩子的作用。
 
@@ -293,9 +287,9 @@ function App() {
 
 
 
-### 组件通信
+## 组件通信
 
-#### 父传子
+### 父传子
 
 **1：父组件传递数据，在子组件上绑定属性（属性名任意）**
 
@@ -352,7 +346,7 @@ function App() {
 
 ！props是只读对象，修改只能通过子传父
 
-#### 子传父
+### 子传父
 
 **1：父组件传递一个属性，这个属性绑定父组件的一个回调方法**
 
@@ -391,7 +385,7 @@ function App() {
 
 ！这里得父组件传递方法时不能加上()，不然Son组件渲染的时候这个就会直接调用
 
-#### 兄弟通信
+### 兄弟通信
 
 1：子传父通过属性函数传参把消息传递给父组件
 
@@ -424,7 +418,7 @@ function App() {
 }
 ```
 
-#### 爷孙通信
+### 爷孙通信
 
 **1：使用createContext方法创建一个上下文对象**
 
@@ -463,13 +457,13 @@ function App() {
 }
 ```
 
-### Redux
+## Redux
 
 Redux是React配套的集中状态管理工具，它可以独立于React框架使用，但一般和React配合使用，类似于Vue里面的VueX。
 
 为了简化Redux的配置，官方提供了RTK（Redux Toolkit）。
 
-#### 基础使用
+### 基础使用
 
 安装RTK和react-redux
 
@@ -621,7 +615,7 @@ const result = curriedAdd(1)(2)(3); // 6
 const curriedAdd = a => b => c => a + b + c;	// 使用箭头函数简化，箭头函数会返回紧跟着箭头的第一个表达式的结果，如果不用{}包裹的情况下
 ```
 
-#### **异步调用**
+### **异步调用**
 
 ​		异步调用需要改装store和原来的调用，也是固定格式。假如我们需要获取一个频道列表
 
@@ -705,21 +699,12 @@ function App() {
 export default App;
 ```
 
-### React Router
+## React Router
 
-## React进阶
 
-### 扩展hook函数
 
-### 类组件
+## 扩展hook函数
 
-### zustand
+## 类组件
 
-## 项目实战
-
-### 初始化
-
-### 开发规范
-
-### 注意点
-
+## zustand
