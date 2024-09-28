@@ -18,7 +18,7 @@ export default defineConfig({
   ],
   description: "Hjc",
   // base: `/docs-website/`,
-  head: [['link', { rel: 'icon', href: `/docs-website/logo.svg` }]],
+  head: [['link', { rel: 'icon', href: `/logo.svg` }]],
   lang: 'zh-CN',
   lastUpdated: true,
   themeConfig: {
