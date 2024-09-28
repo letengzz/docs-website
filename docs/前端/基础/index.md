@@ -5,7 +5,7 @@
 - [JavaScript](JavaScript/index.md)
 - [TypeScript](TypeScript/index.md)
 - [构建工具](构建工具/index.md)
-- [Ajax](Ajax/index.md)
+- [Ajax](AJAX/index.md)
 - [ECMAScript](ECMAScript/index.md)
 - [NodeJs](NodeJs/index.md)
 
