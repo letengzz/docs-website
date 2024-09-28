@@ -4,6 +4,18 @@ import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的�
 export default defineConfig({
   title: "Hjc的个人文档",
   titleTemplate: ":title - Hjc",
+  ignoreDeadLinks: [
+    // ignore exact url "/playground"
+    '/playground',
+    // ignore all localhost links
+    /^https?:\/\/localhost/,
+    // ignore all links include "/repl/""
+    /\/repl\//,
+    // custom function, ignore all links include "ignore"
+    (url) => {
+      return url.toLowerCase().includes('ignore')
+    }
+  ],
   description: "Hjc",
   // base: `/docs-website/`,
   head: [['link', { rel: 'icon', href: `/docs-website/logo.svg` }]],
