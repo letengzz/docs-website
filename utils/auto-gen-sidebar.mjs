@@ -38,6 +38,7 @@ function getList(params, path1, pathname) {
             res.push({
                 text: name,
                 collapsed: true,
+                link:  `${pathname}/${name}`,
                 items: getList(items, dir, `${pathname}/${name}`),
             });
         } else {
