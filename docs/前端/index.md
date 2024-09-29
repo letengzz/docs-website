@@ -12,3 +12,6 @@
 
 > 工具：IDE(VSCODE、WebStorm)
 
+- [其他](其他/index.md)
+
+> 其他：HTTP 协议、跨域、组件库、小程序、库、模板

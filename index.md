@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Hjc的个人文档"
-  text: "一个开发的文档知识库"
+  text: "文档知识库"
   tagline: 持续更新...
   image:
     src: /background.svg

@@ -49,26 +49,64 @@ export default defineConfig({
     // },
     nav: [
       { text: '首页', link: '/' },
-      { text: '前端', items: [{ text: '基础', link: '/frontend' }, { text: '前端', link: '/frontend' },] },
-      { text: '后端', items: [{ text: 'Go', link: '/docs/后端/Go' }, { text: 'Java', link: '/docs/后端/Java' },] },
-      { text: '数据库', items: [{ text: 'Go', link: '/docs/后端/Go' }, { text: 'Java', link: '/docs/后端/Java' },] },
-      { text: '运维', items: [{ text: 'Go', link: '/docs/后端/Go' }, { text: 'Java', link: '/docs/后端/Java' },] },
+      {
+        text: '前端', items: [
+          { text: '基础', link: '/docs/前端/基础' },
+          { text: '框架', link: '/docs/前端/框架' },
+          { text: '工具', link: '/docs/前端/工具' },
+          { text: '其他', link: '/docs/前端/其他' }
+        ]
+      },
+      {
+        text: '后端', items: [
+          { text: 'Go', link: '/docs/后端/Go' }, 
+          { text: 'Java', link: '/docs/后端/Java' },
+          { text: 'Python', link: '/docs/后端/Python' },]
+      },
+      {
+        text: '数据库',
+        items: [
+          { text: 'MySQL', link: '/docs/数据库/MySQL' },
+          { text: 'Redis', link: '/docs/数据库/Redis' },
+          { text: 'ElasticSearch', link: '/docs/数据库/ElasticSearch' },
+          { text: 'MongoDB', link: '/docs/数据库/MongoDB' },
+          { text: '人大金仓', link: '/docs/数据库/人大金仓' },
+        ]
+      },
+      { text: '运维', items: [{ text: 'Linux', link: '/docs/运维/Linux' }, { text: 'Docker', link: '/docs/运维/Docker' },] },
       { text: '项目', link: '/project' },
       { text: '其他', link: '/other' },
     ],
     sidebar: {
-      "/docs/后端": set_sidebar("/docs/后端"),
-      "/docs/前端": set_sidebar("/docs/前端"),
-      "/docs/后端/Java": set_sidebar("/docs/后端/Java"),
-      "/docs/后端/Go": set_sidebar("/docs/后端/Go"),
-      "/other": set_sidebar("/other"),
       "/docs": [
         {
           text: '前端',
           collapsed: true,
           items: [
-            { text: '基础', link: '/docs/前端' },
-            { text: '进阶', link: '/docs/前端' },
+            {
+              text: '基础', collapsed: true, items: [
+                { text: '前端开发', link: '/docs/前端/基础/前端开发' },
+                { text: 'HTML', link: '/docs/前端/基础/HTML' },
+                { text: 'CSS', link: '/docs/前端/基础/CSS' },
+                { text: 'JavaScript', link: '/docs/前端/基础/JavaScript' },
+                { text: 'TypeScript', link: '/docs/前端/基础/TypeScript' },
+              ]
+            },
+            {
+              text: '框架', collapsed: true, items: [
+                { text: 'Vue', link: '/docs/前端/框架/Vue' },
+                { text: 'React', link: '/docs/前端/框架/React' },
+                { text: 'Uniapp', link: '/docs/前端/框架/Uniapp' },
+                { text: 'Uniapp', link: '/docs/前端/框架/Uniapp' },
+                { text: 'Electron', link: '/docs/前端/框架/Electron' },
+              ]
+            },
+            {
+              text: '工具', collapsed: true, items: [
+                { text: 'IDE', collapsed: true, items: set_sidebar("/docs/前端/工具/IDE") },
+              ]
+            },
+            { text: '其他', collapsed: true, items: set_sidebar("/docs/前端/其他") }
           ]
         },
         {
@@ -81,7 +119,8 @@ export default defineConfig({
                 { text: 'JavaSE', link: '/docs/前端' },
                 { text: 'JavaWeb', link: '/docs/前端' },
                 { text: 'JDBC', link: '/docs/前端' },
-                { text: 'Java框架',collapsed: true,
+                {
+                  text: 'Java框架', collapsed: true,
                   items: [
                     { text: '框架基本概念', link: '/docs/后端/Java/Java框架/框架基本概念.md' },
                     { text: 'Spring', link: '/docs/后端/Java/消息队列MQ/Kafka/概述.md' },
@@ -89,7 +128,8 @@ export default defineConfig({
                     { text: 'SpringCloud', link: '/docs/后端/Java/消息队列MQ/RocketMQ/概述.md' },
                     { text: 'MyBatis', link: '/docs/后端/Java/消息队列MQ/RocketMQ/概述.md' },
                     { text: 'MyBatis Plus', link: '/docs/后端/Java/消息队列MQ/RocketMQ/概述.md' },
-                  ] },
+                  ]
+                },
                 {
                   text: '消息队列MQ',
                   collapsed: true,
@@ -152,16 +192,48 @@ export default defineConfig({
           ]
         },
       ],
+      "/docs/后端": set_sidebar("/docs/后端"),
+      "/docs/前端": [
+        {
+          text: '基础', collapsed: true, items: [
+            { text: '前端开发', link: '/docs/前端/基础/前端开发' },
+            { text: 'HTML', link: '/docs/前端/基础/HTML' },
+            { text: 'CSS', link: '/docs/前端/基础/CSS' },
+            { text: 'JavaScript', link: '/docs/前端/基础/JavaScript' },
+            { text: 'TypeScript', link: '/docs/前端/基础/TypeScript' },
+          ]
+        },
+        {
+          text: '框架', collapsed: true, items: [
+            { text: 'Vue', link: '/docs/前端/框架/Vue' },
+            { text: 'React', link: '/docs/前端/框架/React' },
+            { text: 'Uniapp', link: '/docs/前端/框架/Uniapp' },
+            { text: 'Uniapp', link: '/docs/前端/框架/Uniapp' },
+            { text: 'Electron', link: '/docs/前端/框架/Electron' },
+          ]
+        },
+        {
+          text: '工具', collapsed: true, items: [
+            { text: 'IDE', collapsed: true, items: set_sidebar("/docs/前端/工具/IDE") },
+          ]
+        },
+        { text: '其他', collapsed: true, items: set_sidebar("/docs/前端/其他") }
+      ],
+      "/docs/后端/Java": set_sidebar("/docs/后端/Java"),
+      "/docs/后端/Go": set_sidebar("/docs/后端/Go"),
+      "/other": set_sidebar("/other"),
       "/project": [
         {
           text: '通用权限项目',
           collapsed: true,
           items: [
-            { text: '通用权限项目(一)', collapsed: true, link: '/project/通用权限项目/通用权限项目(一)/index',items:[
-              { text: '项目介绍', link: '/project/通用权限项目/通用权限项目(一)/项目介绍' },
-              { text: '项目搭建', link: '/project/通用权限项目/通用权限项目(一)/项目搭建' },
-            ] },
-            { text: '通用权限项目(二)',  link: '/project/通用权限项目/通用权限项目(二)/index'  },
+            {
+              text: '通用权限项目(一)', collapsed: true, link: '/project/通用权限项目/通用权限项目(一)/index', items: [
+                { text: '项目介绍', link: '/project/通用权限项目/通用权限项目(一)/项目介绍' },
+                { text: '项目搭建', link: '/project/通用权限项目/通用权限项目(一)/项目搭建' },
+              ]
+            },
+            { text: '通用权限项目(二)', link: '/project/通用权限项目/通用权限项目(二)/index' },
           ]
         },
       ],
@@ -177,6 +249,6 @@ export default defineConfig({
     docFooter: {
       prev: false,
       next: false
-    }
+    },
   }
 })
