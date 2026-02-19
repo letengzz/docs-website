@@ -2,7 +2,7 @@
 import { DotNet, Go, Java, Python } from "./backend";
 
 import { AI_Java } from "./AI";
-import { FrontBasic, FrontFrame, FrontOthers } from "./fontend";
+import { FrontBasic, FrontFrame, FrontOthers } from "./frontend";
 import { Docker, JumpServer, Kubernetes, Linux, Nginx, OpsOthers, VM } from "./ops";
 import { NoRelational, Relational } from "./db";
 import { Build, CICD, IDE, Others, VC } from "./tools";
