@@ -1,7 +1,7 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 import { DotNet, Go, Java, Python } from "./backend";
 
-import { AI_Java } from "./AI";
+import { AI_Java, AI_OpenClaw } from "./AI";
 import { FrontBasic, FrontFrame, FrontOthers } from "./frontend";
 import { Docker, JumpServer, Kubernetes, Linux, Nginx, OpsOthers, VM } from "./ops";
 import { NoRelational, Relational } from "./db";
@@ -33,6 +33,7 @@ export const sidebar = {
 
   // AI
   "/docs/AI/Java": AI_Java,
+  "/docs/AI/OpenClaw": AI_OpenClaw,
 
   //NoRelational
   "/docs/DB/NoRelational": NoRelational,
