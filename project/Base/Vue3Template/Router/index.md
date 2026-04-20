@@ -125,7 +125,7 @@ src/
 </template>
 ```
 
-启动服务，在浏览器中分别访问：http://localhost:5173、http://localhost:5173/demo
+启动服务，在浏览器中分别访问：`http://localhost:5173`、`http://localhost:5173/demo`
 
 ## 全局布局
 

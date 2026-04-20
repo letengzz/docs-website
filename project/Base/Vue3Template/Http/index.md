@@ -274,9 +274,7 @@ const demoMock: MockMethod[] = [
 export default demoMock
 ```
 
-这样便搭建好了一个 CRUD 的 Mock 服务。启动项目，在浏览器中访问接口：
-
-http://localhost:5173/api/demo
+这样便搭建好了一个 CRUD 的 Mock 服务。启动项目，在浏览器中访问接口：`http://localhost:5173/api/demo`
 
 如果看到分页列表数据 JSON，则 mock 服务便成功了。
 
