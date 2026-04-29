@@ -2,277 +2,492 @@
 
 ## 环境要求
 
-### 硬件要求
-
-- **CPU**：双核及以上处理器
-- **内存**：至少 8GB RAM（推荐 16GB 以上）
-- **硬盘**：至少 10GB 可用空间
-- **网络**：稳定的网络连接
-
 ### 软件要求
 
-- **操作系统**：Windows 10/11 64位、Ubuntu 18.04+、macOS 10.15+
-- **容器**：Docker（可选，用于容器化部署）
+| 要求 | 最低版本 | 推荐版本 |
+|------|----------|----------|
+| **Node.js** | 22.x | 最新 LTS |
+| **npm** | 10.x（随 Node.js 附带） | 最新版 |
+| **Git**（WSL2 / 源码安装） | 2.x | 最新版 |
+| **Docker**（容器部署） | 20.10+ | 最新版 |
 
-## 安装方式
+### 硬件建议
 
-### Windows 安装
+| 场景 | 内存 | 硬盘 |
+|------|------|------|
+| 轻量使用（个人助理） | 4GB+ | 2GB 可用 |
+| 日常使用（办公自动化） | 8GB+ | 5GB 可用 |
+| 重度使用（多任务并发） | 16GB+ | 10GB 可用 |
 
-#### 原生环境快速部署
+---
 
-这是最直接的部署方式，适合个人开发者快速体验和轻量级使用。
+## Windows 安装
 
-##### 安装Node.js
+### 方式一：一键安装（推荐）
 
-OpenClaw基于Node.js开发，对版本要求严格。为避免版本冲突，推荐使用 `nvm-windows` 进行版本管理。
+这是最快捷的方式，适合大多数 Windows 用户。
 
-- **安装nvm-windows**：从GitHub Releases下载最新版 `nvm-setup.exe` 并安装。
+#### 1. 安装 Node.js
 
-- **以管理员身份打开PowerShell**：按 `Win+X`，选择 “Windows PowerShell (管理员)”。
+OpenClaw 基于 **Node.js** 开发，对版本要求严格（**必须 22+**）。强烈推荐使用 `nvm-windows` 管理 Node.js 版本。
 
-- **安装并使用Node.js 22.x版本**：
+- **下载安装 nvm-windows**：[nvm-windows Releases](https://github.com/coreybutler/nvm-windows/releases)，下载 `nvm-setup.exe` 并安装。
 
-  ```perl
-  # 安装Node.js 22.x
-  nvm install 22
-  
-  # 使用指定版本
-  nvm use 22.22.0
-  ```
+- **以管理员身份打开 PowerShell**（`Win+X` →「Windows PowerShell (管理员)」或「终端 (管理员)」）。
+
+- **安装并切换 Node.js 版本**：
+
+```powershell
+# 安装 Node.js 22.x
+nvm install 22
+
+# 使用该版本
+nvm use 22.22.0
+```
 
 - **验证安装**：
 
-  ```bash
-  node --version  # 应显示 v22.x.x
-  npm --version   # 应显示 10.x.x 或更高
-  ```
+```powershell
+node --version   # 应显示 v22.x.x
+npm --version    # 应显示 10.x.x 或更高
+```
 
-##### 核心部署：一键安装与Gateway配置
+#### 2. 安装 OpenClaw
 
-- **解锁PowerShell执行策略**（若后续脚本执行报错）：
+```powershell
+# 设置执行策略（如脚本执行报错）
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-  ```sql
-  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-  ```
+# 一键安装（官方脚本）
+iwr -useb https://openclaw.ai/install.ps1 | iex
+```
 
-- **一键安装OpenClaw**： 使用官方脚本进行安装。若网络受限，可使用国内镜像源。
+::: tip 💡 国内网络加速
+如果下载超时或失败，可使用国内镜像脚本：
+```powershell
+iwr -useb https://clawd.org.cn/install.ps1 | iex
+```
 
-  ```bash
-  # 官方脚本（推荐）
-  iwr -useb https://openclaw.ai/install.ps1 | iex
-  
-  # 若下载超时，使用国内镜像脚本
-  # iwr -useb https://clawd.org.cn/install.ps1 | iex
-  ```
+或先配置 npm 国内镜像：
+```powershell
+npm config set registry https://registry.npmmirror.com
+npm install -g openclaw
+```
+:::
 
-- **配置Gateway模式**： 安装完成后，需配置并启动Gateway服务，这是提供Web控制台访问和任务执行能力的关键。
+#### 3. 启动服务
 
-  ```bash
-  # 设置Gateway为本地模式
-  openclaw config set gateway.mode local
-  
-  # 安装Gateway服务（创建计划任务，实现开机自启）
-  openclaw gateway install
-  
-  # 启动Gateway服务
-  openclaw gateway start
-  ```
+```powershell
+# 启动 Gateway
+openclaw gateway start
 
-- **验证服务状态并访问**：
+# 查看状态
+openclaw gateway status
+```
 
-  ```bash
-  openclaw gateway status  # 应显示 “Running”
-  ```
+打开浏览器访问 **[http://127.0.0.1:18789](http://127.0.0.1:18789)**，首次使用需运行 `openclaw onboard` 完成初始化配置。
 
-  打开浏览器，访问 `http://127.0.0.1:18789`。看到登录界面即表示核心部署成功。
+---
 
-##### 避坑指南：原生环境常见问题
+### 方式二：WSL2 安装（推荐高级用户）
 
-- 坑1：命令找不到（‘openclow’ 不是内部或外部命令）
-  - **原因**：npm全局安装路径未添加到系统PATH。
-  - **解决**：关闭当前PowerShell，重新以管理员身份打开。若仍不行，手动添加 `C:\Users\你的用户名\AppData\Roaming\npm` 到环境变量。
-- 坑2：安装脚本卡死或下载失败
-  - **原因**：网络无法访问GitHub或境外资源。
-  - **解决**：使用国内镜像脚本；或配置npm镜像 `npm config set registry https://registry.npmmirror.com` 后，尝试通过 `npm install -g openclaw` 安装。
-- 坑3：Gateway启动失败，端口18789被占用
-  - **解决**：查找占用进程 `netstat -ano | findstr :18789`，在任务管理器中结束相应进程，或修改OpenClaw配置文件中的端口（不推荐新手操作）。
+WSL2 提供更好的 Linux 生态兼容性，特别适合需要 Docker 容器化或使用 Linux 工具链的用户。这也是官方推荐的 Windows 运行方式。
 
-#### WSL2专业级部署
+#### 1. 安装 WSL2
 
-对于追求稳定性、需要使用Docker容器化或更好地利用Linux生态的用户，WSL2是最佳选择。这也是官方推荐的Windows运行方式。
+以**管理员**身份打开 PowerShell：
 
-##### WSL2环境搭建
+```powershell
+# 安装 WSL2 及 Ubuntu 发行版
+wsl --install -d Ubuntu-22.04
 
-- **启用WSL功能并安装发行版**： 以管理员身份打开PowerShell，运行：
+# 设置默认 WSL 版本为 2
+wsl --set-default-version 2
+```
 
-  ```csharp
-  # 安装WSL2及默认的Ubuntu发行版
-  wsl --install -d Ubuntu-22.04
-  
-  # 设置WSL默认版本为2
-  wsl --set-default-version 2
-  ```
+安装完成后按提示设置 Linux 用户名和密码。
 
-  安装完成后，按提示设置用户名和密码。
+#### 2. WSL2 性能优化（可选但推荐）
 
-- **WSL2性能优化**： 在Windows用户目录（`C:\Users\你的用户名`）下创建 `.wslconfig` 文件，用于限制WSL2的内存和CPU使用，避免占满主机资源。
+在 Windows 用户目录（`C:\Users\你的用户名`）下创建 `.wslconfig` 文件：
 
-  ```ini
-  memory=6GB      # 根据你的物理内存调整
-  processors=4
-  localhostForwarding=true
-  ```
+```ini
+[wsl2]
+memory=6GB          # 根据物理内存调整，建议不超过总内存的 50%
+processors=4        # 根据 CPU 核心数调整
+localhostForwarding=true
+```
 
-  保存后，在PowerShell中执行 `wsl --shutdown` 重启WSL使配置生效。
+保存后，在 PowerShell 中执行 `wsl --shutdown` 重启 WSL 使配置生效。
 
-##### 在WSL2中部署OpenClaw
+#### 3. 在 WSL2 中安装 OpenClaw
 
-- **进入WSL环境**：
+进入 WSL 环境：
 
-  ```
-  wsl ~
-  ```
-  
-- **安装基础依赖**：
+```bash
+wsl ~
+```
 
-  ```bash
-  # 更新软件源并安装Node.js、Git、Docker等
-  sudo apt update && sudo apt upgrade -y
-  sudo apt install -y git nodejs npm docker.io
-  ```
+安装 Node.js 和依赖：
 
-- **配置npm国内镜像（加速依赖下载）**：
+```bash
+# 更新系统
+sudo apt update && sudo apt upgrade -y
 
-  ```shell
-  npm config set registry https://registry.npmmirror.com
-  ```
-  
-- **克隆仓库并安装**：
+# 安装 Node.js 22.x（使用 NodeSource 官方源）
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt install -y nodejs
 
-  ```bash
-  git clone https://github.com/OpenClaw/Clawdbot.git
-  cd Clawdbot
-  npm install
-  npm run init
-  ```
+# 安装 Git
+sudo apt install -y git
 
-- **启动服务**：
+# 验证版本
+node --version   # 应显示 v22.x.x
+npm --version
+```
 
-  ```shell
-  npm run start
-  ```
-  
-  此时，OpenClaw服务将在WSL2内部运行，但由于WSL2的网络特性，需要通过 `localhost` 在Windows浏览器中访问它。
+安装 OpenClaw：
 
-##### 避坑指南：WSL2特有网络与权限问题
+```bash
+# 方式 A：npm 全局安装（推荐）
+npm install -g openclaw
 
-- 坑1：WSL2中访问Windows本地的代理服务
-  - **原因**：WSL2使用虚拟化网络，IP地址与宿主机不同。
-  - **解决**：在WSL2中使用 `host.docker.internal` 这个特殊域名来指向宿主机。配置代理时使用 `export http_proxy=http://host.docker.internal:1080`。
-- 坑2：WSL2文件系统性能
-  - **原因**：在WSL2中访问 `/mnt/c/` 下的Windows文件系统性能较差。
-  - **解决**：将OpenClaw项目及其数据存放在WSL2的内部文件系统（如 `/home/用户名/`）中，而非 `/mnt/c/` 下，以获得最佳I/O性能。
-- 坑3：服务在WSL2关闭后停止
-  - **解决**：若需要OpenClaw在后台持续运行，应学习使用 `screen`、`tmux` 或将其注册为WSL2内部的systemd服务。或者，考虑将WSL2一直保持在后台运行（不执行 `wsl --shutdown`）。
+# 方式 B：从源码安装（如需定制开发）
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+npm install
+npm run build
+npm link
+```
+
+启动服务：
+
+```bash
+openclaw gateway start
+```
+
+WSL2 会自动将端口转发到 Windows，因此在 Windows 浏览器中访问 `http://127.0.0.1:18789` 即可。
+
+#### 4. 让 OpenClaw 在后台持续运行
+
+WSL2 关闭后所有进程会停止。如需后台运行：
+
+```bash
+# 使用 tmux（推荐）
+sudo apt install -y tmux
+tmux new -s openclaw
+openclaw gateway start
+# 按 Ctrl+B 然后按 D 分离会话
+
+# 重新连接: tmux attach -t openclaw
+```
+
+---
+
+## macOS 安装
+
+### 方式一：npm 全局安装（推荐）
+
+```bash
+# 先安装 Node.js 22+（使用 nvm 管理版本）
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install 22
+nvm use 22
+
+# 安装 OpenClaw
+npm install -g openclaw
+
+# 初始化配置
+openclaw onboard
+
+# 启动
+openclaw gateway start
+```
+
+### 方式二：Homebrew
+
+```bash
+# 注意：Homebrew 方式可能不是最新版，推荐使用 npm
+brew install node@22
+npm install -g openclaw
+```
+
+---
+
+## Linux 安装
+
+### Ubuntu / Debian
+
+```bash
+# 1. 安装 Node.js 22.x
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# 2. 安装 OpenClaw
+npm install -g openclaw
+
+# 3. 初始化配置
+openclaw onboard
+
+# 4. 启动
+openclaw gateway start
+```
+
+### CentOS / RHEL / Fedora
+
+```bash
+# 1. 安装 Node.js 22.x
+curl -fsSL https://rpm.nodesource.com/setup_22.x | sudo bash -
+sudo yum install -y nodejs   # CentOS/RHEL
+# 或
+sudo dnf install -y nodejs   # Fedora
+
+# 2. 安装 OpenClaw
+npm install -g openclaw
+
+# 3. 初始化配置
+openclaw onboard
+
+# 4. 启动
+openclaw gateway start
+```
+
+### 设为系统服务（开机自启）
+
+创建 systemd 服务文件：
+
+```bash
+sudo tee /etc/systemd/system/openclaw-gateway.service << 'EOF'
+[Unit]
+Description=OpenClaw Gateway Service
+After=network.target
+
+[Service]
+Type=simple
+User=你的用户名
+ExecStart=/usr/bin/openclaw gateway start
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable openclaw-gateway
+sudo systemctl start openclaw-gateway
+```
+
+---
+
+## Docker 安装
+
+适合服务器部署或需要环境隔离的场景。
+
+### 使用 Docker 运行
+
+```bash
+# 拉取镜像
+docker pull openclaw/openclaw:latest
+
+# 运行容器
+docker run -d \
+  --name openclaw \
+  --restart unless-stopped \
+  -p 18789:18789 \
+  -v openclaw-config:/app/config \
+  -v openclaw-data:/app/data \
+  -e OPENCLAW_API_KEY=your_api_key_here \
+  openclaw/openclaw:latest
+
+# 查看日志
+docker logs -f openclaw
+```
+
+### 使用 Docker Compose
+
+创建 `docker-compose.yml`：
+
+```yaml
+version: '3.8'
+
+services:
+  openclaw:
+    image: openclaw/openclaw:latest
+    container_name: openclaw
+    restart: unless-stopped
+    ports:
+      - "18789:18789"
+    volumes:
+      - ./config:/app/config
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      # 模型 API Key 通过 onboard 或环境变量配置
+```
+
+```bash
+# 启动
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f
+
+# 停止
+docker-compose down
+```
+
+::: warning ⚠️ Docker 模式注意事项
+- Docker 容器内默认无法访问宿主机的文件系统。如果需要操控宿主机文件，需要挂载对应目录。
+- 容器内运行 Shell 命令的作用域仅限于容器内部。
+- 访问宿主机服务时使用 `host.docker.internal`（Windows/Mac）或 `172.17.0.1`（Linux）。
+
+:::
 
 ## 验证安装
 
 ### 检查版本
 
-```bash [终端]
+```bash
 openclaw --version
-# 输出: OpenClaw v1.0.0
+# 输出示例: openclaw v1.5.0
 ```
 
-### 检查服务状态
+### 检查 Gateway 状态
 
-```bash [终端]
-openclaw status
-# 输出: OpenClaw is running on http://localhost:8080
+```bash
+openclaw gateway status
+# 应输出: Gateway is running at http://127.0.0.1:18789
 ```
 
-### 访问 Web 界面
+### 访问 Web 控制台
 
-安装完成后，打开浏览器访问：
+浏览器打开：**[http://127.0.0.1:18789](http://127.0.0.1:18789)**
 
-```
-http://localhost:8080
-```
+看到登录界面或对话界面即表示安装成功。
 
-## 常见安装问题
-
-### 1. 端口被占用
-
-```bash [终端]
-# 检查端口占用
-netstat -ano | findstr :8080
-
-# 修改端口
-openclaw start --port 8081
-```
-
-### 2. 权限不足
-
-```bash [终端]
-# Linux/macOS
-sudo openclaw start
-
-# Windows（以管理员身份运行）
-# 右键点击 PowerShell -> 以管理员身份运行
-```
-
-### 3. 依赖缺失
-
-```bash [终端]
-# 安装 .NET 运行时
-# Windows
-winget install Microsoft.DotNet.Runtime.6
-
-# Linux
-sudo apt install dotnet-runtime-6.0
-
-# macOS
-brew install dotnet
-```
+---
 
 ## 卸载
 
 ### Windows
 
-```powershell [终端]
-# 通过控制面板卸载
-# 或使用命令行
-openclaw uninstall
+```powershell
+# 停止 Gateway
+openclaw gateway stop
+
+# 卸载 npm 全局包
+npm uninstall -g openclaw
+
+# 清理配置和数据（可选）
+# 配置目录通常在: C:\Users\你的用户名\.openclaw
+Remove-Item -Recurse -Force $env:USERPROFILE\.openclaw
 ```
 
-### Linux
+### macOS / Linux
 
-```bash [终端]
-# Ubuntu/Debian
-sudo apt remove openclaw
+```bash
+# 停止服务
+openclaw gateway stop
 
-# CentOS/RHEL
-sudo yum remove openclaw
-```
+# 卸载
+npm uninstall -g openclaw
 
-### macOS
-
-```bash [终端]
-# Homebrew 安装的
-brew uninstall openclaw
-
-# 手动安装的
-sudo rm /usr/local/bin/openclaw
+# 清理配置和数据（可选）
+rm -rf ~/.openclaw
 ```
 
 ### Docker
 
-```bash [终端]
+```bash
 # 停止并删除容器
 docker stop openclaw
 docker rm openclaw
 
 # 删除镜像
 docker rmi openclaw/openclaw
+
+# 清理数据卷（可选）
+docker volume rm openclaw-config openclaw-data
 ```
 
+---
+
+## 常见问题
+
+### 'openclaw' 不是内部或外部命令
+
+**原因**：npm 全局安装路径未添加到系统 PATH。
+
+**解决**：
+- **Windows**：关闭当前 PowerShell，重新以管理员身份打开。若仍不行，手动将 `%APPDATA%\npm` 添加到系统环境变量 PATH。
+- **Mac/Linux**：检查 npm 全局路径 `npm config get prefix`，确认该路径在 `$PATH` 中。
+
+### 安装脚本卡死或下载失败
+
+**原因**：网络无法访问 GitHub 或境外 npm 源。
+
+**解决**：
+```bash
+# 方案 A：使用国内镜像脚本（Windows PowerShell）
+iwr -useb https://clawd.org.cn/install.ps1 | iex
+
+# 方案 B：配置 npm 国内镜像后安装
+npm config set registry https://registry.npmmirror.com
+npm install -g openclaw
+
+# 方案 C：使用代理
+set HTTP_PROXY=http://127.0.0.1:7890   # Windows
+export HTTP_PROXY=http://127.0.0.1:7890  # Mac/Linux
+```
+
+### Gateway 启动失败，端口 18789 被占用
+
+**解决**：
+```powershell
+# Windows：查找占用进程
+netstat -ano | findstr :18789
+# 记下 PID，在任务管理器中结束对应进程
+
+# Mac/Linux
+lsof -i :18789
+kill -9 <PID>
+```
+
+或修改 OpenClaw 端口（不推荐新手操作）：
+```bash
+openclaw config set gateway.port 18790
+openclaw gateway restart
+```
+
+### Node.js 版本不兼容
+
+**症状**：安装或运行时报语法错误（如 `??=`、`||=` 等运算符不支持）。
+
+**原因**：Node.js 版本低于 22.x。
+
+**解决**：
+```bash
+# 使用 nvm 切换到 Node.js 22+
+nvm install 22
+nvm use 22
+
+# 确认版本
+node --version   # 必须是 v22.x.x 或更高
+```
+
+### WSL2 中无法访问 Windows 代理
+
+**原因**：WSL2 使用虚拟化网络，IP 地址与宿主机不同。
+
+**解决**：在 WSL2 中使用 `host.docker.internal` 指向宿主机：
+```bash
+export HTTP_PROXY=http://host.docker.internal:7890
+export HTTPS_PROXY=http://host.docker.internal:7890
+```
+
+### WSL2 文件系统性能差
+
+**原因**：在 WSL2 中访问 `/mnt/c/` 下的 Windows 文件系统性能较差。
+
+**解决**：将 OpenClaw 项目和数据存放在 WSL2 内部文件系统中（如 `/home/用户名/`），而非 `/mnt/c/` 下。
