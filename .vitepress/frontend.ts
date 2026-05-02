@@ -87,5 +87,120 @@ export const FrontBasic = [
         ]
     },
 ];
-export const FrontFrame = [];
+export const FrontFrame = [
+    {
+        text: "框架",
+        link: "/docs/Frontend/Frame/index.md",
+        items: [
+            {
+                text: "Angular", link: "/docs/Frontend/Frame/Angular/index.md", collapsed: true, items: [
+                    { text: "Angular 概述与安装", link: "/docs/Frontend/Frame/Angular/Overview/index.md" },
+                    { text: "Angular 项目结构", link: "/docs/Frontend/Frame/Angular/Structure/index.md" },
+                    { text: "Angular 组件开发", link: "/docs/Frontend/Frame/Angular/Components/index.md" },
+                    { text: "Angular 模板语法", link: "/docs/Frontend/Frame/Angular/Templates/index.md" },
+                    { text: "Angular 指令系统", link: "/docs/Frontend/Frame/Angular/Directives/index.md" },
+                    { text: "Angular 管道", link: "/docs/Frontend/Frame/Angular/Pipes/index.md" },
+                    { text: "Angular 路由系统", link: "/docs/Frontend/Frame/Angular/Routing/index.md" },
+                    { text: "Angular 路由守卫", link: "/docs/Frontend/Frame/Angular/Guards/index.md" },
+                    { text: "Angular 服务与依赖注入", link: "/docs/Frontend/Frame/Angular/Services/index.md" },
+                    { text: "Angular 数据获取", link: "/docs/Frontend/Frame/Angular/DataFetching/index.md" },
+                    { text: "Angular HTTP 拦截器", link: "/docs/Frontend/Frame/Angular/Interceptors/index.md" },
+                    { text: "Angular 表单处理", link: "/docs/Frontend/Frame/Angular/Forms/index.md" },
+                    { text: "Angular 状态管理", link: "/docs/Frontend/Frame/Angular/StateManagement/index.md" },
+                    { text: "Angular 配置详解", link: "/docs/Frontend/Frame/Angular/Config/index.md" },
+                    { text: "Angular 部署与优化", link: "/docs/Frontend/Frame/Angular/Deployment/index.md" },
+                ]
+            },
+            { text: "Vue", link: "/docs/Frontend/Frame/Vue/index.md" },
+            {
+                text: "Nuxt", link: "/docs/Frontend/Frame/Nuxt/index.md", collapsed: true, items: [
+                    { text: "Nuxt 概述与安装", link: "/docs/Frontend/Frame/Nuxt/Overview/index.md" },
+                    { text: "Nuxt 项目结构", link: "/docs/Frontend/Frame/Nuxt/Structure/index.md" },
+                    { text: "Nuxt 路由系统", link: "/docs/Frontend/Frame/Nuxt/Routing/index.md" },
+                    { text: "Nuxt 页面管理", link: "/docs/Frontend/Frame/Nuxt/Pages/index.md" },
+                    { text: "Nuxt 布局系统", link: "/docs/Frontend/Frame/Nuxt/Layouts/index.md" },
+                    { text: "Nuxt 组件开发", link: "/docs/Frontend/Frame/Nuxt/Components/index.md" },
+                    { text: "Nuxt 数据获取", link: "/docs/Frontend/Frame/Nuxt/DataFetching/index.md" },
+                    { text: "Nuxt 状态管理", link: "/docs/Frontend/Frame/Nuxt/StateManagement/index.md" },
+                    { text: "Nuxt 中间件", link: "/docs/Frontend/Frame/Nuxt/Middleware/index.md" },
+                    { text: "Nuxt 插件系统", link: "/docs/Frontend/Frame/Nuxt/Plugins/index.md" },
+                    { text: "Nuxt 配置详解", link: "/docs/Frontend/Frame/Nuxt/Config/index.md" },
+                    { text: "Nuxt 部署与优化", link: "/docs/Frontend/Frame/Nuxt/Deployment/index.md" },
+                ]
+            },
+            {
+                text: "React", link: "/docs/Frontend/Frame/React/index.md", collapsed: true, items: [
+                    { text: "React 概述与安装", link: "/docs/Frontend/Frame/React/Overview/index.md" },
+                    { text: "JSX 语法", link: "/docs/Frontend/Frame/React/JSX/index.md" },
+                    { text: "组件开发", link: "/docs/Frontend/Frame/React/Components/index.md" },
+                    { text: "Hooks 详解", link: "/docs/Frontend/Frame/React/Hooks/index.md" },
+                    { text: "状态管理", link: "/docs/Frontend/Frame/React/StateManagement/index.md" },
+                    { text: "路由管理", link: "/docs/Frontend/Frame/React/Routing/index.md" },
+                    { text: "服务端组件", link: "/docs/Frontend/Frame/React/ServerComponents/index.md" },
+                    { text: "性能优化", link: "/docs/Frontend/Frame/React/PerformanceOptimization/index.md" },
+                    { text: "错误边界", link: "/docs/Frontend/Frame/React/ErrorBoundaries/index.md" },
+                    { text: "测试", link: "/docs/Frontend/Frame/React/Testing/index.md" },
+                    { text: "可访问性", link: "/docs/Frontend/Frame/React/Accessibility/index.md" },
+                    { text: "国际化", link: "/docs/Frontend/Frame/React/Internationalization/index.md" },
+                    { text: "生态系统", link: "/docs/Frontend/Frame/React/Ecosystem/index.md" },
+                    { text: "最佳实践", link: "/docs/Frontend/Frame/React/BestPractices/index.md" },
+                    { text: "React DevTools", link: "/docs/Frontend/Frame/React/DevTools/index.md" },
+                ]
+            },
+            {
+                text: "Next", link: "/docs/Frontend/Frame/Next/index.md", collapsed: true, items: [
+                    { text: "Next 概述与安装", link: "/docs/Frontend/Frame/Next/Overview/index.md" },
+                    { text: "Next 项目结构", link: "/docs/Frontend/Frame/Next/Structure/index.md" },
+                    { text: "Next 路由系统", link: "/docs/Frontend/Frame/Next/Routing/index.md" },
+                    { text: "Next 页面管理", link: "/docs/Frontend/Frame/Next/Pages/index.md" },
+                    { text: "Next 布局系统", link: "/docs/Frontend/Frame/Next/Layouts/index.md" },
+                    { text: "Next 组件开发", link: "/docs/Frontend/Frame/Next/Components/index.md" },
+                    { text: "Next 数据获取", link: "/docs/Frontend/Frame/Next/DataFetching/index.md" },
+                    { text: "Next 状态管理", link: "/docs/Frontend/Frame/Next/StateManagement/index.md" },
+                    { text: "Next 中间件", link: "/docs/Frontend/Frame/Next/Middleware/index.md" },
+                    { text: "Next API 路由", link: "/docs/Frontend/Frame/Next/ApiRoutes/index.md" },
+                    { text: "Next 配置详解", link: "/docs/Frontend/Frame/Next/Config/index.md" },
+                    { text: "Next 部署与优化", link: "/docs/Frontend/Frame/Next/Deployment/index.md" },
+                ]
+            },
+            {
+                text: "Uniapp", link: "/docs/Frontend/Frame/Uniapp/index.md", collapsed: true, items: [
+                    { text: "Uniapp 概述与安装", link: "/docs/Frontend/Frame/Uniapp/Overview/index.md" },
+                    { text: "Uniapp 项目结构", link: "/docs/Frontend/Frame/Uniapp/Structure/index.md" },
+                    { text: "Uniapp 页面开发", link: "/docs/Frontend/Frame/Uniapp/Pages/index.md" },
+                    { text: "Uniapp 组件开发", link: "/docs/Frontend/Frame/Uniapp/Components/index.md" },
+                    { text: "Uniapp 路由与导航", link: "/docs/Frontend/Frame/Uniapp/Routing/index.md" },
+                    { text: "Uniapp 生命周期", link: "/docs/Frontend/Frame/Uniapp/Lifecycle/index.md" },
+                    { text: "Uniapp 状态管理", link: "/docs/Frontend/Frame/Uniapp/StateManagement/index.md" },
+                    { text: "Uniapp API 使用", link: "/docs/Frontend/Frame/Uniapp/API/index.md" },
+                    { text: "Uniapp 条件编译", link: "/docs/Frontend/Frame/Uniapp/ConditionalCompilation/index.md" },
+                    { text: "Uniapp 插件与扩展", link: "/docs/Frontend/Frame/Uniapp/Plugins/index.md" },
+                    { text: "Uniapp 打包与发布", link: "/docs/Frontend/Frame/Uniapp/Deployment/index.md" },
+                ]
+            },
+            {
+                text: "Electron", link: "/docs/Frontend/Frame/Electron/index.md", collapsed: true, items: [
+                    { text: "Electron 概述", link: "/docs/Frontend/Frame/Electron/Overview/index.md" },
+                    { text: "Electron 搭建环境", link: "/docs/Frontend/Frame/Electron/BuildEnvironment/index.md" },
+                    { text: "Electron 配置", link: "/docs/Frontend/Frame/Electron/Configuration/index.md" },
+                    { text: "Electron 进程", link: "/docs/Frontend/Frame/Electron/Process/index.md" },
+                    { text: "Electron Preload 脚本", link: "/docs/Frontend/Frame/Electron/Preload/index.md" },
+                    { text: "Electron 进程通信 IPC", link: "/docs/Frontend/Frame/Electron/IPC/index.md" },
+                    { text: "Electron 窗口管理", link: "/docs/Frontend/Frame/Electron/WindowManagement/index.md" },
+                    { text: "Electron 菜单与快捷键", link: "/docs/Frontend/Frame/Electron/Menu/index.md" },
+                    { text: "Electron 系统托盘", link: "/docs/Frontend/Frame/Electron/Tray/index.md" },
+                    { text: "Electron 对话框", link: "/docs/Frontend/Frame/Electron/Dialog/index.md" },
+                    { text: "Electron 通知系统", link: "/docs/Frontend/Frame/Electron/Notification/index.md" },
+                    { text: "Electron 剪贴板", link: "/docs/Frontend/Frame/Electron/Clipboard/index.md" },
+                    { text: "Electron 打包应用", link: "/docs/Frontend/Frame/Electron/PackageApplications/index.md" },
+                    { text: "Electron 构建工具", link: "/docs/Frontend/Frame/Electron/BuildingTools/index.md" },
+                    { text: "Electron 安全最佳实践", link: "/docs/Frontend/Frame/Electron/Security/index.md" },
+                    { text: "Electron 自动更新", link: "/docs/Frontend/Frame/Electron/AutoUpdate/index.md" },
+                    { text: "Electron+Vue3项目打包", link: "/docs/Frontend/Frame/Electron/VuePackaging/index.md" },
+                ]
+            },
+            { text: "微信小程序", link: "/docs/Frontend/Frame/WxMini/index.md" },
+        ]
+    },
+];
 export const FrontOthers = [];
