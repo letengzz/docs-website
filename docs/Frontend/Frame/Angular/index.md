@@ -1,11 +1,17 @@
 # Angular
 
-![My Skills](assets/icons.svg)
-
-`Angular` 是由 `Google` 开发的一个完整的前端框架，它提供了从路由、表单处理到HTTP客户端等一整套解决方案，
-通过使用TypeScript提供强类型支持。
-
-资源地址：
-
-- 仓库资源：[Github地址](https://github.com/angular/angular)
-- 官方文档：[文档地址](https://angular.cn/)
+- [Angular 概述与安装](Overview/index.md)
+- [Angular 项目结构](Structure/index.md)
+- [Angular 组件开发](Components/index.md)
+- [Angular 模板语法](Templates/index.md)
+- [Angular 指令系统](Directives/index.md)
+- [Angular 管道](Pipes/index.md)
+- [Angular 路由系统](Routing/index.md)
+- [Angular 路由守卫](Guards/index.md)
+- [Angular 服务与依赖注入](Services/index.md)
+- [Angular 数据获取](DataFetching/index.md)
+- [Angular HTTP 拦截器](Interceptors/index.md)
+- [Angular 表单处理](Forms/index.md)
+- [Angular 状态管理](StateManagement/index.md)
+- [Angular 配置详解](Config/index.md)
+- [Angular 部署与优化](Deployment/index.md)
