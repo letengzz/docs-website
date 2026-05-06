@@ -87,5 +87,19 @@ export const FrontBasic = [
         ]
     },
 ];
-export const FrontFrame = [];
+export const FrontFrame = [
+    {
+        text: "Nuxt",
+        link: "/docs/Frontend/Frame/Nuxt/index.md",
+        collapsed: true,
+        items: [
+            { text: "Nuxt 概述", link: "/docs/Frontend/Frame/Nuxt/Overview/index.md" },
+            { text: "快速入门", link: "/docs/Frontend/Frame/Nuxt/QuickStart/index.md" },
+            { text: "核心概念", link: "/docs/Frontend/Frame/Nuxt/CoreConcepts/index.md" },
+            { text: "路由与数据获取", link: "/docs/Frontend/Frame/Nuxt/Routing/index.md" },
+            { text: "组件与布局", link: "/docs/Frontend/Frame/Nuxt/Components/index.md" },
+            { text: "配置与部署", link: "/docs/Frontend/Frame/Nuxt/Configuration/index.md" },
+        ]
+    }
+];
 export const FrontOthers = [];
