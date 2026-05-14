@@ -28,7 +28,7 @@ function updateUser(id: string, updates: Partial<User>) {
 updateUser('1', { name: '李四' })
 ```
 
-## Required<T>
+## Required
 
 ```typescript [required.ts]
 // Required<T> - 将所有属性变为必填
@@ -52,7 +52,7 @@ function initialize(config: Required<Config>) {
 initialize(defaultConfig)
 ```
 
-## Readonly<T>
+## Readonly
 
 ```typescript [readonly.ts]
 // Readonly<T> - 将所有属性变为只读
@@ -193,7 +193,7 @@ type MouseEventTypes = Extract<EventTypes, 'click' | 'hover'>
 // 'click' | 'hover'
 ```
 
-## NonNullable<T>
+## NonNullable
 
 ```typescript [nonnullable.ts]
 // NonNullable<T> - 排除 null 和 undefined
@@ -215,7 +215,7 @@ function processValue(value: MaybeString) {
 }
 ```
 
-## Parameters<T>
+## Parameters
 
 ```typescript [parameters.ts]
 // Parameters<T> - 获取函数参数类型
@@ -238,7 +238,7 @@ function withLogging<T extends (...args: any[]) => any>(
 withLogging(createUser, '张三', 25, 'zhangsan@example.com')
 ```
 
-## ReturnType<T>
+## ReturnType
 
 ```typescript [returntype.ts]
 // ReturnType<T> - 获取函数返回值类型
@@ -266,7 +266,7 @@ function UserCard(props: { name: string; age: number }) {
 type UserCardProps = Parameters<typeof UserCard>[0]
 ```
 
-## ConstructorParameters<T>
+## ConstructorParameters
 
 ```typescript [constructor-parameters.ts]
 // ConstructorParameters<T> - 获取构造函数参数类型
@@ -292,7 +292,7 @@ function createInstance<T extends new (...args: any[]) => any>(
 const user = createInstance(User, '张三', 25, 'zhangsan@example.com')
 ```
 
-## InstanceType<T>
+## InstanceType
 
 ```typescript [instancetype.ts]
 // InstanceType<T> - 获取实例类型
@@ -327,7 +327,7 @@ class UserService extends BaseService<InstanceType<typeof User>> {
 }
 ```
 
-## ThisParameterType<T>
+## ThisParameterType
 
 ```typescript [this-parameter-type.ts]
 // ThisParameterType<T> - 获取 this 参数类型
@@ -351,7 +351,7 @@ const boundFn = bindThis(toHex, num)
 console.log(boundFn())  // 'ff'
 ```
 
-## OmitThisParameter<T>
+## OmitThisParameter
 
 ```typescript [omit-this-parameter.ts]
 // OmitThisParameter<T> - 移除 this 参数类型
@@ -372,7 +372,7 @@ function removeThis<T extends (this: any, ...args: any[]) => any>(
 const cleanFn = removeThis(toHex)
 ```
 
-## ThisType<T>
+## ThisType
 
 ```typescript [this-type.ts]
 // ThisType<T> - 标记 this 类型
@@ -410,4 +410,5 @@ const obj = createObject({
 - Readonly 用于不可变数据
 - Pick 和 Omit 用于类型筛选
 - Parameters 和 ReturnType 用于函数类型提取
+
 :::
