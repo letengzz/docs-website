@@ -66,8 +66,6 @@ m1.tiemo()
 m2.niejiao()
 ```
 
-![image-20231004150319786](../assets/202310041503306.png)
-
 ## CommonJS 规范
 
 Node.js 采用的是 CommonJS 模块化规范
@@ -137,8 +135,6 @@ module.exports = { name: 'b' }
 const a = require('./a')
 ```
 
-![image-20231004152735910](../assets/202310041527169.png)
-
 ## ES Modules
 
 Node.js 13.2.0 之后支持 ES Modules
@@ -183,4 +179,5 @@ hello()
 - 模块内部数据是私有的，只有通过 exports 暴露的数据才能被外部访问
 - 模块会被缓存，多次 require 同一个模块只会加载一次
 - 推荐使用 CommonJS 规范，兼容性更好
+
 :::

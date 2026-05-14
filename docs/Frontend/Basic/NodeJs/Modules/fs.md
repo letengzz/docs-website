@@ -23,7 +23,7 @@ Node.js 中的磁盘操作是由其他线程完成的，结果的处理有两种
 
 文件写入就是将数据保存到文件中。Node.js提供了五种写入方式：
 
-![文件写入方式](../assets/202310040732088.png)
+![文件写入方式](assets/202310040732088.png)
 
 **注意**：使用fs模块写入时，当文件不存在 会自动创建并写入。
 
@@ -63,7 +63,7 @@ fs.writeFile('./1.txt', '你好 中国', (err) => {
 console.log('结束')
 ```
 
-![异步写入](../assets/202310040753423.png)
+![异步写入](assets/202310040753423.png)
 
 #### 同步写入
 
@@ -91,7 +91,7 @@ fs.writeFileSync('./2.txt', 'hello world')
 console.log('写入成功')
 ```
 
-![同步写入](../assets/202310040800350.png)
+![同步写入](assets/202310040800350.png)
 
 #### 追加写入
 
@@ -129,9 +129,9 @@ fs.appendFileSync('1.txt', 'Hello China')
 console.log('同步追加成功')
 ```
 
-![追加写入](../assets/202310040815188.png)
+![追加写入](assets/202310040815188.png)
 
-![同步追加](../assets/202310040818269.png)
+![同步追加](assets/202310040818269.png)
 
 使用 writeFile实现追加写入：
 
@@ -148,7 +148,7 @@ fs.writeFile('./1.txt', 'Hello China', { flag: 'a' }, (err) => {
 console.log('结束')
 ```
 
-![writeFile追加](../assets/202310040859359.png)
+![writeFile追加](assets/202310040859359.png)
 
 #### 流式写入
 
@@ -189,13 +189,13 @@ ws.end()
 //ws.close();
 ```
 
-![流式写入](../assets/202310040904519.png)
+![流式写入](assets/202310040904519.png)
 
 ### 文件读取
 
 文件读取就是通过程序从文件中取出其中的数据。Node.js提供的读取方式：
 
-![文件读取方式](../assets/202310040912523.png)
+![文件读取方式](assets/202310040912523.png)
 
 #### 异步读取
 
@@ -237,7 +237,7 @@ fs.readFile('./1.txt', 'UTF-8', (err, data) => {
 console.log('读取成功')
 ```
 
-![异步读取](../assets/202310040929020.png)
+![异步读取](assets/202310040929020.png)
 
 #### 同步读取
 
@@ -268,7 +268,7 @@ let data2 = fs.readFileSync('./1.txt', 'UTF-8')
 console.log('读取成功' + data2)
 ```
 
-![同步读取](../assets/202310040933773.png)
+![同步读取](assets/202310040933773.png)
 
 #### 流式读取
 
@@ -320,7 +320,7 @@ const ws = fs.createWriteStream('./HelloChina.txt')
 rs.pipe(ws)
 ```
 
-![流式读取](../assets/202310040945155.png)
+![流式读取](assets/202310040945155.png)
 
 ### 文件移动与重命名
 
@@ -357,7 +357,7 @@ fs.rename('1.txt', '你好中国.txt', (err) => {
 })
 ```
 
-![异步重命名](../assets/202310040955902.png)
+![异步重命名](assets/202310040955902.png)
 
 ```js [sync-rename.js]
 // require 是 Node.js 环境中的'全局'变量，用来导入模块
@@ -367,7 +367,7 @@ fs.renameSync('1.txt', '你好中国.txt')
 console.log('修改成功')
 ```
 
-![同步重命名](../assets/202310041000529.png)
+![同步重命名](assets/202310041000529.png)
 
 ### 文件删除
 
@@ -400,7 +400,7 @@ fs.unlink('./2.txt', (err) => {
 })
 ```
 
-![异步删除](../assets/202310041006750.png)
+![异步删除](assets/202310041006750.png)
 
 ```js [sync-unlink.js]
 // require 是 Node.js 环境中的'全局'变量，用来导入模块
@@ -410,7 +410,7 @@ fs.unlinkSync('./2.txt')
 console.log('删除成功')
 ```
 
-![同步删除](../assets/202310041008703.png)
+![同步删除](assets/202310041008703.png)
 
 Node.js在14.4后可以通过 `rm()`、`rmSync()` 来删除文件，使用方法同`unlink()`、`unlinkSync()`
 
@@ -439,7 +439,7 @@ console.log('删除成功')
 
 使用Node.js可以对文件夹进行创建 、读取、 删除等操作。
 
-![文件夹操作](../assets/202310041013044.png)
+![文件夹操作](assets/202310041013044.png)
 
 ### 创建文件夹
 
@@ -485,7 +485,7 @@ fs.mkdir('./a/b/c', { recursive: true }, (err) => {
 })
 ```
 
-![异步创建文件夹](../assets/202310041022541.png)
+![异步创建文件夹](assets/202310041022541.png)
 
 ```js [sync-mkdir.js]
 // require 是 Node.js 环境中的'全局'变量，用来导入模块
@@ -498,7 +498,7 @@ fs.mkdirSync('./aa/bb', { recursive: true })
 console.log('创建成功')
 ```
 
-![同步创建文件夹](../assets/202310041025909.png)
+![同步创建文件夹](assets/202310041025909.png)
 
 ### 读取文件夹
 
@@ -535,7 +535,7 @@ fs.readdir('./page', (data, err) => {
 })
 ```
 
-![异步读取文件夹](../assets/202310041034273.png)
+![异步读取文件夹](assets/202310041034273.png)
 
 ```js [sync-readdir.js]
 // require 是 Node.js 环境中的'全局'变量，用来导入模块
@@ -545,7 +545,7 @@ let data = fs.readdirSync('./page')
 console.log(data)
 ```
 
-![同步读取文件夹](../assets/202310041036230.png)
+![同步读取文件夹](assets/202310041036230.png)
 
 ### 删除文件夹
 
@@ -591,7 +591,7 @@ fs.rmdir('./a', { recursive: true }, (err) => {
 })
 ```
 
-![异步删除文件夹](../assets/202310041049761.png)
+![异步删除文件夹](assets/202310041049761.png)
 
 ```js [sync-rmdir.js]
 // require 是 Node.js 环境中的'全局'变量，用来导入模块
@@ -603,7 +603,7 @@ fs.rmdirSync('./index')
 fs.rmdirSync('./aa', { recursive: true })
 ```
 
-![同步删除文件夹](../assets/202310041051724.png)
+![同步删除文件夹](assets/202310041051724.png)
 
 Node.js在14.4后可以通过 `rm()`、`rmSync()` 来删除文件夹，使用方法同`rmdir()`、`rmdirSync()`
 
@@ -676,7 +676,7 @@ fs.stat('./你好中国.txt', (err, data) => {
 })
 ```
 
-![异步查看状态](../assets/202310041458387.png)
+![异步查看状态](assets/202310041458387.png)
 
 ```js [sync-stat.js]
 // require 是 Node.js 环境中的'全局'变量，用来导入模块
@@ -686,7 +686,7 @@ let data = fs.statSync('./你好中国.txt')
 console.log(data)
 ```
 
-![同步查看状态](../assets/202310041057114.png)
+![同步查看状态](assets/202310041057114.png)
 
 ## 相对路径问题
 

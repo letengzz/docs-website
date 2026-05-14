@@ -2,7 +2,7 @@
 
 path 模块提供了操作路径的功能。常用的几个 API：
 
-![path API](../assets/202310041555525.png)
+![path API](assets/202310041555525.png)
 
 **导入path 模块**：
 
@@ -18,7 +18,7 @@ const path = require('path')
 console.log(path.sep)
 ```
 
-![path.sep](../assets/202310041602421.png)
+![path.sep](assets/202310041602421.png)
 
 **拼接绝对路径**：
 
@@ -28,7 +28,7 @@ console.log(path.resolve(__dirname, '/test', './index.html'))
 console.log(path.resolve(__dirname, './test'))
 ```
 
-![path.resolve](../assets/202310041622002.png)
+![path.resolve](assets/202310041622002.png)
 
 **解析路径**：
 
@@ -38,7 +38,7 @@ let pathname = 'D:/program file/nodejs/node.exe'
 console.log(path.parse(pathname))
 ```
 
-![path.parse](../assets/202310041607064.png)
+![path.parse](assets/202310041607064.png)
 
 **获取路径基础名称**：
 
@@ -48,7 +48,7 @@ let pathname = 'D:/program file/nodejs/node.exe'
 console.log(path.basename(pathname))
 ```
 
-![path.basename](../assets/202310041609175.png)
+![path.basename](assets/202310041609175.png)
 
 **获取路径的目录名**：
 
@@ -58,7 +58,7 @@ let pathname = 'D:/program file/nodejs/node.exe'
 console.log(path.dirname(pathname))
 ```
 
-![path.dirname](../assets/202310041611563.png)
+![path.dirname](assets/202310041611563.png)
 
 **获取路径的拓展名**：
 
@@ -68,4 +68,4 @@ let pathname = 'D:/program file/nodejs/node.exe'
 console.log(path.extname(pathname))
 ```
 
-![path.extname](../assets/202310041611156.png)
+![path.extname](assets/202310041611156.png)
