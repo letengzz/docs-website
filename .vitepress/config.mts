@@ -9,6 +9,8 @@ export default defineConfig({
   description: "Hjc",
   base: `/docs-website/`,
   lang: 'zh-CN',
+  ignoreDeadLinks: true,
+  metaChunk: true,
   lastUpdated: true,
   themeConfig: {
     lastUpdated: {
