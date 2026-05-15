@@ -153,7 +153,7 @@ app.whenReady().then(() => {
 
 打开开发者模式时出现 `Electron Security Warning (Insecure Content-Security-Policy)` 警告：
 
-![安全警告](assets/img202406272039200.png)
+![安全警告](../assets/img202406272039200.png)
 
 解决办法：配置 CSP (Content-Security-Policy)
 
