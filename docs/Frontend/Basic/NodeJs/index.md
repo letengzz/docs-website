@@ -20,10 +20,10 @@
 ## 核心模块
 
 - [模块化](Modules/index.md)
-- [fs 模块](Modules/fs.md)
-- [path 模块](Modules/path.md)
-- [http 模块](Modules/http.md)
-- [url 模块](Modules/url.md)
+- [fs 模块](Modules/fs/index.md)
+- [path 模块](Modules/path/index.md)
+- [http 模块](Modules/http/index.md)
+- [url 模块](Modules/url/index.md)
 
 ## 高级特性
 

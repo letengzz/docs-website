@@ -10,7 +10,7 @@
 
 <img src="./assets/%E6%9E%84%E5%BB%BA%E5%AE%8C%E6%88%90.jpg" style="zoom:80%;" />
 
-以使用 [Vant Weapp](../../../Others/Library/ComponentLib/Mobile/Vant.md) 小程序 UI 组件库为例，来说明小程序如何安装和构建 npm，构建 npm 的步骤：
+以使用 Vant Weapp 小程序 UI 组件库为例，来说明小程序如何安装和构建 npm，构建 npm 的步骤：
 
 1. 初始化 `package.json`。
 2. 通过 `npm` 安装项目依赖。

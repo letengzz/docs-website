@@ -437,7 +437,7 @@ let car = inject('car')
 
 ## pinia
 
-- [pinia](Pinia.md)
+- [pinia](../Pinia/index.md)
 
 ## defineModel 双向绑定
 

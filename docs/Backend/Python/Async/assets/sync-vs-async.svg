@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="340" viewBox="0 0 820 340" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <text x="205" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#bf360c">同步：总耗时约 3 秒</text>
+  <rect x="30" y="55" width="350" height="40" rx="8" fill="#ffcdd2" stroke="#c62828" stroke-width="1"/>
+  <text x="205" y="80" text-anchor="middle" font-size="13" fill="#7f0000">任务 1：请求 → 等待 → 完成</text>
+  <rect x="30" y="105" width="350" height="40" rx="8" fill="#ffcdd2" stroke="#c62828" stroke-width="1"/>
+  <text x="205" y="130" text-anchor="middle" font-size="13" fill="#7f0000">任务 2：请求 → 等待 → 完成</text>
+  <rect x="30" y="155" width="350" height="40" rx="8" fill="#ffcdd2" stroke="#c62828" stroke-width="1"/>
+  <text x="205" y="180" text-anchor="middle" font-size="13" fill="#7f0000">任务 3：请求 → 等待 → 完成</text>
+  <text x="205" y="230" text-anchor="middle" font-size="13" fill="#555">CPU 在等待时空闲</text>
+
+  <text x="615" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b5e20">异步：总耗时约 1 秒</text>
+  <rect x="440" y="55" width="350" height="40" rx="8" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="615" y="80" text-anchor="middle" font-size="13" fill="#1b5e20">任务 1：请求 →（等待时切走）→ 完成</text>
+  <rect x="440" y="105" width="350" height="40" rx="8" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="615" y="130" text-anchor="middle" font-size="13" fill="#1b5e20">任务 2：请求 →（等待时切走）→ 完成</text>
+  <rect x="440" y="155" width="350" height="40" rx="8" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="615" y="180" text-anchor="middle" font-size="13" fill="#1b5e20">任务 3：请求 →（等待时切走）→ 完成</text>
+  <text x="615" y="230" text-anchor="middle" font-size="13" fill="#555">事件循环在等待时切换任务</text>
+
+  <rect x="30" y="265" width="760" height="50" rx="10" fill="#ede7f6" stroke="#5e35b1" stroke-width="2"/>
+  <text x="410" y="295" text-anchor="middle" font-size="14" fill="#311b92">IO 等待是异步的收益来源：把等待时间用来执行其他任务</text>
+</svg>

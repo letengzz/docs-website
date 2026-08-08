@@ -10,13 +10,13 @@
 
 **常用的包管理工具**：
 
-- [npm 包管理工具](npm.md)
-- [cnpm 包管理工具](cnpm.md)
-- [yarn 包管理工具](yarn.md)
-- [pnpm 包管理工具](pnpm.md)
+- [npm 包管理工具](npm/index.md)
+- [cnpm 包管理工具](cnpm/index.md)
+- [yarn 包管理工具](yarn/index.md)
+- [pnpm 包管理工具](pnpm/index.md)
 
 **拓展**：
 
-- [npm和yarn选择](npm&yarn.md)
-- [管理发布包](ManageReleasePackages.md)
+- [npm和yarn选择](NpmYarn/index.md)
+- [管理发布包](ManageReleasePackages/index.md)
 

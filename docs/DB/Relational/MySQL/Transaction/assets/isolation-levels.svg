@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <text x="380" y="35" text-anchor="middle" font-size="19" font-weight="bold" fill="#1f3a5f">InnoDB 隔离级别与并发问题</text>
+  <rect x="40" y="60" width="200" height="40" fill="#eceff1" stroke="#546e7a" stroke-width="1"/>
+  <text x="140" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#37474f">隔离级别</text>
+  <rect x="240" y="60" width="170" height="40" fill="#eceff1" stroke="#546e7a" stroke-width="1"/>
+  <text x="325" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#37474f">脏读</text>
+  <rect x="410" y="60" width="170" height="40" fill="#eceff1" stroke="#546e7a" stroke-width="1"/>
+  <text x="495" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#37474f">不可重复读</text>
+  <rect x="580" y="60" width="140" height="40" fill="#eceff1" stroke="#546e7a" stroke-width="1"/>
+  <text x="650" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#37474f">幻读</text>
+  <rect x="40" y="100" width="200" height="50" fill="#ffcdd2" stroke="#c62828" stroke-width="1"/>
+  <text x="140" y="130" text-anchor="middle" font-size="14" fill="#7f0000">READ UNCOMMITTED</text>
+  <rect x="240" y="100" width="170" height="50" fill="#ffcdd2" stroke="#c62828" stroke-width="1"/>
+  <text x="325" y="130" text-anchor="middle" font-size="16" fill="#c62828">可能</text>
+  <rect x="410" y="100" width="170" height="50" fill="#ffcdd2" stroke="#c62828" stroke-width="1"/>
+  <text x="495" y="130" text-anchor="middle" font-size="16" fill="#c62828">可能</text>
+  <rect x="580" y="100" width="140" height="50" fill="#ffcdd2" stroke="#c62828" stroke-width="1"/>
+  <text x="650" y="130" text-anchor="middle" font-size="16" fill="#c62828">可能</text>
+  <rect x="40" y="150" width="200" height="50" fill="#fff3e0" stroke="#e65100" stroke-width="1"/>
+  <text x="140" y="180" text-anchor="middle" font-size="14" fill="#bf360c">READ COMMITTED</text>
+  <rect x="240" y="150" width="170" height="50" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="325" y="180" text-anchor="middle" font-size="16" fill="#1b5e20">不会</text>
+  <rect x="410" y="150" width="170" height="50" fill="#ffcdd2" stroke="#c62828" stroke-width="1"/>
+  <text x="495" y="180" text-anchor="middle" font-size="16" fill="#c62828">可能</text>
+  <rect x="580" y="150" width="140" height="50" fill="#ffcdd2" stroke="#c62828" stroke-width="1"/>
+  <text x="650" y="180" text-anchor="middle" font-size="16" fill="#c62828">可能</text>
+  <rect x="40" y="200" width="200" height="50" fill="#e8f4ec" stroke="#2e8b57" stroke-width="2"/>
+  <text x="140" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b5e20">REPEATABLE READ（默认）</text>
+  <rect x="240" y="200" width="170" height="50" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="325" y="230" text-anchor="middle" font-size="16" fill="#1b5e20">不会</text>
+  <rect x="410" y="200" width="170" height="50" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="495" y="230" text-anchor="middle" font-size="16" fill="#1b5e20">不会</text>
+  <rect x="580" y="200" width="140" height="50" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="650" y="230" text-anchor="middle" font-size="14" fill="#1b5e20">基本避免</text>
+  <rect x="40" y="250" width="200" height="50" fill="#ede7f6" stroke="#5e35b1" stroke-width="1"/>
+  <text x="140" y="280" text-anchor="middle" font-size="14" fill="#311b92">SERIALIZABLE</text>
+  <rect x="240" y="250" width="170" height="50" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="325" y="280" text-anchor="middle" font-size="16" fill="#1b5e20">不会</text>
+  <rect x="410" y="250" width="170" height="50" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="495" y="280" text-anchor="middle" font-size="16" fill="#1b5e20">不会</text>
+  <rect x="580" y="250" width="140" height="50" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="650" y="280" text-anchor="middle" font-size="16" fill="#1b5e20">不会</text>
+  <rect x="40" y="320" width="680" height="30" rx="8" fill="#f3f6fb" stroke="#4a6fa5" stroke-width="1"/>
+  <text x="380" y="340" text-anchor="middle" font-size="13" fill="#1f3a5f">级别越高，一致性越强，并发性能越低</text>
+</svg>

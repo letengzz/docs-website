@@ -1,6 +1,6 @@
 # 基础
 
-- [前端开发](FrontendDevelop.md)
+- [前端开发](FrontendDevelop/index.md)
 - [HTML](HTML/index.md)
 - [CSS](CSS/index.md)
 - [JavaScript](JavaScript/index.md)

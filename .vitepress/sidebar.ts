@@ -4,57 +4,60 @@ import { DotNet, Go, Java, Python } from "./backend";
 import { AI_Java, AI_OpenClaw } from "./AI";
 import { FrontBasic, FrontFrame, FrontOthers } from "./frontend";
 import { Docker, JumpServer, Kubernetes, Linux, Nginx, OpsOthers, VM } from "./ops";
-import { NoRelational, Relational } from "./db";
+import { DBOverview, NoRelational, Relational } from "./db";
 import { Build, CICD, IDE, Others, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 
 export const sidebar = {
 
-  //前端
-  "/docs/Frontend/Basic": FrontBasic,
-  "/docs/Frontend/Frame": FrontFrame,
-  "/docs/Frontend/Others": FrontOthers,
-
-//   //后端
-  "/docs/Backend/Go": Go,
-  "/docs/Backend/DotNet": DotNet,
-  "/docs/Backend/Java": Java,
-  "/docs/Backend/Python": Python,
-
-  //运维
-  "/docs/Ops/VM": VM,
-  "/docs/Ops/Linux": Linux,
-  "/docs/Ops/Nginx": Nginx,
-  "/docs/Ops/Docker": Docker,
-  "/docs/Ops/Kubernetes": Kubernetes,
-  "/docs/Ops/JumpServer": JumpServer,
-  "/docs/Ops/Others": OpsOthers,
-
-  // AI
-  "/docs/AI/Java": AI_Java,
-  "/docs/AI/OpenClaw": AI_OpenClaw,
-
-  //NoRelational
-  "/docs/DB/NoRelational": NoRelational,
-  //Relational
-  "/docs/DB/Relational": Relational,
-
-  // Tools
-  "/docs/Tools/Build": Build,
-  // CICD
-  "/docs/Tools/CICD": CICD,
-  // IDE
-  "/docs/Tools/IDE": IDE,
-  // VC
-  "/docs/Tools/VersionControl": VC,
-  // Others
-  "/docs/Tools/Others": Others,
-
-//   //其他
-//   "/docs/Others": set_sidebar("/docs/Others"),
-
-  //Base Project
-  "/project/Base": BaseProject,
-  "/project/Complete": CompleteProject,
+  // 与 nav.ts 的大类保持一致
+  "/docs/Frontend/": [
+    {
+      text: "前端",
+      items: [...FrontBasic, ...FrontFrame, ...FrontOthers],
+    },
+  ],
+  "/docs/Backend/": [
+    {
+      text: "后端",
+      items: [...DotNet, ...Go, ...Java, ...Python],
+    },
+  ],
+  "/docs/DB/": [
+    {
+      text: "数据库",
+      items: [...DBOverview, ...Relational, ...NoRelational],
+    },
+  ],
+  "/docs/Ops/": [
+    {
+      text: "运维",
+      items: [...VM, ...Linux, ...Nginx, ...Docker, ...Kubernetes, ...JumpServer, ...OpsOthers],
+    },
+  ],
+  "/docs/AI/": [
+    {
+      text: "AI",
+      items: [...AI_Java, ...AI_OpenClaw],
+    },
+  ],
+  "/docs/Tools/": [
+    {
+      text: "工具",
+      items: [...Build, ...CICD, ...IDE, ...VC, ...Others],
+    },
+  ],
+  "/project/": [
+    {
+      text: "项目",
+      items: [...BaseProject, ...CompleteProject],
+    },
+  ],
+  "/docs/Others/": [
+    {
+      text: "其他",
+      items: [{ text: "其他", link: "/docs/Others/index.md" }],
+    },
+  ],
 };

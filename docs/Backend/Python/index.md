@@ -1,8 +1,13 @@
----
-layout:doc
----
-
 # Python
+
+## 进阶专题
+
+- [环境管理](Environment/index.md)
+- [装饰器](Decorator/index.md)
+- [异步编程](Async/index.md)
+- [常用第三方库](CommonLibs/index.md)
+
+---
 
 生成随机数：random.randint 是生成整数随机数（左右都包括），random.uniform 是生成小数随机数，random.rand 是 0-1 的随机数（包左不包右）
 

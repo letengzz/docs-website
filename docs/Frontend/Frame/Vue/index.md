@@ -6,8 +6,8 @@ Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方�
 
 官方网站：https://cn.vuejs.org
 
-![image-20240130220839296](https://fastly.jsdelivr.net/gh/LetengZzz/img@main/tc2/img202401302208831.png)
+![Vue 示意图](./Overview/assets/img202401302208831.png)
 
-- [Vue 概述](Overview.md)
+- [Vue 概述](Overview/index.md)
 - [Vue 2](Vue2/index.md)
 - [Vue 3](Vue3/index.md)

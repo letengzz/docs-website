@@ -19,6 +19,7 @@ export const nav = [
     items: [
       { text: "概述", link: "/docs/DB/Overview" },
       { text: "关系型数据库", link: "/docs/DB/Relational" },
+      { text: "MySQL", link: "/docs/DB/Relational/MySQL" },
       { text: "非关系型数据库", link: "/docs/DB/NoRelational" },
     ]
   },
@@ -35,7 +36,8 @@ export const nav = [
   },
   { text: "AI", items: [
     { text: "Java", link: "/docs/AI/Java" },
-] },
+    { text: "OpenClaw", link: "/docs/AI/OpenClaw" },
+  ] },
   {
     text: "工具", items: [
       { text: "构建和依赖管理工具", link: "/docs/Tools/Build" },
