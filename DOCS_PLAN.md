@@ -148,7 +148,7 @@
 - [ ] AI 存量补全：OpenClaw 核心概念细化
 - [ ] 文档风格统一巡检：容器、表格、代码块语言标注
 - [ ] 存量版本检查：已有主题存在大版本差异时，拆分为版本目录（如 `Spring5/Spring6`），并同步目录页与侧边栏
-- [x] 分类目录页与侧边栏结构：AI/Backend/DB/Frontend/Ops/Tools 已补 `index.md` 目录页；主题按路径挂载侧边栏且默认折叠
+- [x] 分类目录页与侧边栏结构：AI/Backend/DB/Frontend/Ops/Tools 已补 `index.md` 目录页；主题按路径挂载侧边栏且默认展开
 
 ## 节奏建议
 

@@ -4,7 +4,6 @@ export const AI_Java = [{ text: "Java", link: "/docs/AI/Java/index.md" }];
 export const AI_OpenClaw = [
   {
     text: "OpenClaw",
-    collapsed: true,
     items: [
       { text: "概述", link: "/docs/AI/OpenClaw/Overview/index.md" },
       { text: "安装", link: "/docs/AI/OpenClaw/Install/index.md" },

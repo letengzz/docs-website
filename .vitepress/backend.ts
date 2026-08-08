@@ -3,7 +3,6 @@ export const DotNet = [
   {
     text: ".Net",
     link: "/docs/Backend/DotNet/index.md",
-    collapsed: true,
     items: [
       {
         "link": "/docs/Backend/DotNet/Basic/index.md",
@@ -28,7 +27,6 @@ export const Java = [
   {
     text: "Java",
     link: "/docs/Backend/Java/index.md",
-    collapsed: true,
     items: [
       { text: "Java 概述", link: "/docs/Backend/Java/Overview/index.md" },
       { text: "环境搭建", link: "/docs/Backend/Java/Environment/index.md" },
@@ -42,7 +40,6 @@ export const Python = [
   {
     text: "Python",
     link: "/docs/Backend/Python/index.md",
-    collapsed: true,
     items: [
       { text: "环境管理", link: "/docs/Backend/Python/Environment/index.md" },
       { text: "装饰器", link: "/docs/Backend/Python/Decorator/index.md" },

@@ -8,12 +8,10 @@ export const NoRelational = [
   {
     text: "非关系型数据库",
     link: "/docs/DB/NoRelational/index.md",
-    collapsed: true,
     items: [
       {
         text: "Redis",
         link: "/docs/DB/NoRelational/Redis/index.md",
-        collapsed: true,
         items: [
           { text: "Redis 概述", link: "/docs/DB/NoRelational/Redis/Overview/index.md" },
           { text: "安装与配置", link: "/docs/DB/NoRelational/Redis/Install/index.md" },
@@ -33,12 +31,10 @@ export const Relational = [
   {
     text: "关系型数据库",
     link: "/docs/DB/Relational/index.md",
-    collapsed: true,
     items: [
       {
         text: "MySQL",
         link: "/docs/DB/Relational/MySQL/index.md",
-        collapsed: true,
         items: [
           { text: "MySQL 概述", link: "/docs/DB/Relational/MySQL/Overview/index.md" },
           { text: "安装与配置", link: "/docs/DB/Relational/MySQL/Install/index.md" },

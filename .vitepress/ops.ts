@@ -2,7 +2,6 @@ export const Docker = [
   {
     text: "Docker",
     link: "/docs/Ops/Docker/index.md",
-    collapsed: true,
     items: [
       { text: "Docker 概述", link: "/docs/Ops/Docker/Overview/index.md" },
       { text: "Docker 安装与卸载", link: "/docs/Ops/Docker/InstallUninstall/index.md" },
