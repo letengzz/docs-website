@@ -10,7 +10,7 @@ export const AI_OpenClaw = [
       {
         text: "核心概念",
         link: "/docs/AI/OpenClaw/CoreConcepts/index.md",
-        collapsed: true,
+        collapsed: false,
         items: [
           { text: "智能体（Agent）", link: "/docs/AI/OpenClaw/CoreConcepts/Agent/index.md" },
           { text: "系统架构", link: "/docs/AI/OpenClaw/CoreConcepts/Architecture/index.md" },
