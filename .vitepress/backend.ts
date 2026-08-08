@@ -6,7 +6,7 @@ export const DotNet = [
     items: [
       {
         "link": "/docs/Backend/DotNet/Basic/index.md",
-        "text": "基础语法"
+        "text": ".NET 基础语法"
       },
       {
         "link": "/docs/Backend/DotNet/Advanced/index.md",

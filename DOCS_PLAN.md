@@ -31,7 +31,7 @@
 | 1 | Backend | Java 入门 ✅ | 概述、环境搭建、基础语法、面向对象 |
 | 2 | Backend | Python 进阶 ✅ | 环境管理、装饰器、异步、常用库 |
 | 3 | DB | MySQL 基础 ✅ | 概述与版本、安装配置、核心概念、库表操作、数据增删改查、查询进阶、事务与隔离级别、索引与性能、常见问题 |
-| 4 | DB | Redis 基础 | 概述与安装、通用命令、String/Hash、List/Set/ZSet、过期与淘汰策略、持久化 RDB/AOF、发布订阅与事务、应用场景、常见问题 |
+| 4 | DB | Redis 基础 ✅ | 概述与版本、安装配置、通用命令、String/Hash、List/Set/ZSet、过期与淘汰策略、持久化 RDB/AOF、发布订阅与事务、常见问题 |
 | 5 | Ops | Linux 基础 | 概述与发行版、目录结构、文件与目录命令、文本处理 grep/sed/awk、权限与用户、进程与服务、网络命令、Shell 基础、常见问题 |
 | 6 | Ops | Docker 进阶 | Dockerfile 最佳实践、多阶段构建、Compose、网络模式、数据卷与挂载、容器监控、安全加固、CI 集成、常见问题 |
 | 7 | Frontend | Vue3 核心 | 概述与创建、响应式原理、模板语法、组件通信、Composition API、路由、Pinia、生命周期、实战案例 |
@@ -139,7 +139,7 @@
 - [x] 清理不规范 frontmatter：Python 页面已移除 `layout:doc`
 - [x] 全库链接巡检：已修复 Vue 概述、Pinia、Vant、LXC 等失效引用；侧边栏无残留旧链接
 - [x] 图片路径巡检：检查存量文档图片是否全部使用相对路径（巡检通过，无绝对路径或外链图片）
-- [ ] 标题与 H1 规范巡检：确认每页只有一个 H1，标题与侧边栏一致
+- [x] 标题与 H1 规范巡检：全库扫描并修复（DotNet 基础页已调整为单 H1 + 章节结构）
 - [ ] Frontend 存量补全：为缺失的目录页（如 Frame/Others）补充索引
 - [ ] Backend 存量补全：Java、.NET 补充缺失章节
 - [ ] DB 存量补全：MySQL、Redis 专题

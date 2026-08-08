@@ -1,4 +1,6 @@
-# 1. 基础准备
+# .NET 基础语法
+
+## 1. 基础准备
 
 ## 1.1 .Net相关概念
 
@@ -45,7 +47,7 @@ WinForm 是 **Windows Form** 的简称，它是一种 .NET Framework 的客户�
 
 **WPF** (Windows Presentation Foundation) 是一种用于开发 Windows 应用程序的框架。它提供了一个用于创建图形化用户界面 (GUI) 的强大的组件，可以在 Windows 操作系统上运行。 WPF 应用程序可以使用各种常用的编程语言(如 C# 和 VB.NET)开发，并且能够利用计算机硬件加速功能来提供流畅的图形呈现。
 
-# 2.项目相关基础知识
+## 2. 项目相关基础知识
 
 ## Winform项目窗口
 
@@ -94,7 +96,7 @@ namespace **Zhaoxi.FirstConsoleAppCourse** 当前程序的命名空间，默认�
 **Main:程序的入口点** , 如**控制台、Winform应用程序**
 **//注释描述** ：单行注释，用来对程序代码语句进行描述说明，不会执行
 
-# 3.基础语法
+## 3. 基础语法
 
 ## 3.1 基本语法知识
 

@@ -4,7 +4,30 @@ export const DBOverview = [
     link: "/docs/DB/Overview/index.md",
   },
 ];
-export const NoRelational = [];
+export const NoRelational = [
+  {
+    text: "非关系型数据库",
+    link: "/docs/DB/NoRelational/index.md",
+    items: [
+      {
+        text: "Redis",
+        link: "/docs/DB/NoRelational/Redis/index.md",
+        collapsed: true,
+        items: [
+          { text: "Redis 概述", link: "/docs/DB/NoRelational/Redis/Overview/index.md" },
+          { text: "安装与配置", link: "/docs/DB/NoRelational/Redis/Install/index.md" },
+          { text: "通用命令", link: "/docs/DB/NoRelational/Redis/Command/index.md" },
+          { text: "String 与 Hash", link: "/docs/DB/NoRelational/Redis/StringHash/index.md" },
+          { text: "List / Set / ZSet", link: "/docs/DB/NoRelational/Redis/ListSetZSet/index.md" },
+          { text: "过期与淘汰策略", link: "/docs/DB/NoRelational/Redis/ExpireEvict/index.md" },
+          { text: "持久化 RDB / AOF", link: "/docs/DB/NoRelational/Redis/Persistence/index.md" },
+          { text: "发布订阅与事务", link: "/docs/DB/NoRelational/Redis/PubSubTransaction/index.md" },
+          { text: "常见问题与最佳实践", link: "/docs/DB/NoRelational/Redis/FAQ/index.md" },
+        ],
+      },
+    ],
+  },
+];
 export const Relational = [
   {
     text: "关系型数据库",
