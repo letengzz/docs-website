@@ -11,50 +11,50 @@ import { BaseProject, CompleteProject } from "./project";
 
 export const sidebar = {
 
-  // 与 nav.ts 的大类保持一致
-  "/docs/Frontend/": [
+  // 与 nav.ts 的大类保持一致（key 不要带尾斜杠，避免与主题 key 同级匹配冲突）
+  "/docs/Frontend": [
     {
       text: "前端",
       items: [...FrontBasic, ...FrontFrame, ...FrontOthers],
     },
   ],
-  "/docs/Backend/": [
+  "/docs/Backend": [
     {
       text: "后端",
       items: [...DotNet, ...Go, ...Java, ...Python],
     },
   ],
-  "/docs/DB/": [
+  "/docs/DB": [
     {
       text: "数据库",
       items: [...DBOverview, ...Relational, ...NoRelational],
     },
   ],
-  "/docs/Ops/": [
+  "/docs/Ops": [
     {
       text: "运维",
       items: [...VM, ...Linux, ...Nginx, ...Docker, ...Kubernetes, ...JumpServer, ...OpsOthers],
     },
   ],
-  "/docs/AI/": [
+  "/docs/AI": [
     {
       text: "AI",
       items: [...AI_Java, ...AI_OpenClaw],
     },
   ],
-  "/docs/Tools/": [
+  "/docs/Tools": [
     {
       text: "工具",
       items: [...Build, ...CICD, ...IDE, ...VC, ...Others],
     },
   ],
-  "/project/": [
+  "/project": [
     {
       text: "项目",
       items: [...BaseProject, ...CompleteProject],
     },
   ],
-  "/docs/Others/": [
+  "/docs/Others": [
     {
       text: "其他",
       items: [{ text: "其他", link: "/docs/Others/index.md" }],

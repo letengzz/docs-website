@@ -238,7 +238,7 @@ docs-website/
 4. 新增、移动、重命名文档后依次执行：更新对应分支文件 → 检查 `sidebar.ts` 汇总 → 检查 `nav.ts` → 运行 `pnpm docs:dev` 或 `pnpm docs:build` 验证。
 5. `utils/` 中的自动生成脚本是备选方案，当前仓库以手动维护侧边栏为准。
 6. 每个主题在 `sidebar.ts` 中按**主题路径**挂载（如 `"/docs/Backend/Java": Java`）：进入 `docs/Backend/Java` 才展示 Java 的侧边栏，根节点是 `Java/index.md`，子内容默认折叠。
-7. 大类路径（如 `"/docs/Backend/"`）挂分类级侧边栏，与 `nav.ts` 的大类保持一致；大类 `index.md` 只放标题和子目录链接。
+7. 大类路径（如 `"/docs/Backend"`）挂分类级侧边栏，与 `nav.ts` 的大类保持一致；大类 key **不要带尾斜杠**，确保主题 key（如 `"/docs/Backend/Java"`）更具体并优先匹配；大类 `index.md` 只放标题和子目录链接。
 
 ## 9. 项目文档（project/）规范
 
