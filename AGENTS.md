@@ -186,6 +186,8 @@ docs-website/
 ## 6. 目录页（index.md）规范
 
 - 每个主题/项目目录的 `index.md` 是该主题的目录页：`# 主题名` + 子页链接无序列表。
+- `docs/` 下每个**大类目录**（`AI`、`Backend`、`DB`、`Frontend`、`Ops`、`Tools`、`Others`）的 `index.md` **只放 `# 分类名` + 子目录链接列表**，不写正文。
+- 主题目录的 `index.md` 是**侧边栏入口**：侧边栏根节点 `text` 用主题名，`link` 指向该 `index.md`，`items` 是该主题的子页面，**默认折叠**（`collapsed: true`）。
 - 链接使用相对路径：`(Overview/index.md)`、`(../Compose/index.md)`。
 - 需要分组时可在列表上加小标题（参考 `project/Base/Vue3Template/index.md` 将 CSS 相关拆成一组）。
 - 目录页也可以直接承载正文（如 `docs/AI/OpenClaw/Overview/index.md`），此时它同时作为侧边栏叶子项。
@@ -235,6 +237,8 @@ docs-website/
 3. 空分类保留空数组占位（`tools.ts`、`db.ts` 目前如此），不要删除导出。
 4. 新增、移动、重命名文档后依次执行：更新对应分支文件 → 检查 `sidebar.ts` 汇总 → 检查 `nav.ts` → 运行 `pnpm docs:dev` 或 `pnpm docs:build` 验证。
 5. `utils/` 中的自动生成脚本是备选方案，当前仓库以手动维护侧边栏为准。
+6. 每个主题在 `sidebar.ts` 中按**主题路径**挂载（如 `"/docs/Backend/Java": Java`）：进入 `docs/Backend/Java` 才展示 Java 的侧边栏，根节点是 `Java/index.md`，子内容默认折叠。
+7. 大类路径（如 `"/docs/Backend/"`）挂分类级侧边栏，与 `nav.ts` 的大类保持一致；大类 `index.md` 只放标题和子目录链接。
 
 ## 9. 项目文档（project/）规范
 

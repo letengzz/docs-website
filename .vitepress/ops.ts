@@ -2,6 +2,7 @@ export const Docker = [
   {
     text: "Docker",
     link: "/docs/Ops/Docker/index.md",
+    collapsed: true,
     items: [
       { text: "Docker 概述", link: "/docs/Ops/Docker/Overview/index.md" },
       { text: "Docker 安装与卸载", link: "/docs/Ops/Docker/InstallUninstall/index.md" },
@@ -20,9 +21,9 @@ export const Docker = [
     ],
   },
 ];
-export const JumpServer = [];
-export const Kubernetes = [];
-export const Linux = [];
-export const Nginx = [];
-export const OpsOthers = [];
-export const VM = [];
+export const JumpServer = [{ text: "JumpServer", link: "/docs/Ops/JumpServer/index.md" }];
+export const Kubernetes = [{ text: "Kubernetes", link: "/docs/Ops/Kubernetes/index.md" }];
+export const Linux = [{ text: "Linux", link: "/docs/Ops/Linux/index.md" }];
+export const Nginx = [{ text: "Nginx", link: "/docs/Ops/Nginx/index.md" }];
+export const OpsOthers = [{ text: "运维其他", link: "/docs/Ops/Others/index.md" }];
+export const VM = [{ text: "虚拟机", link: "/docs/Ops/VM/index.md" }];
