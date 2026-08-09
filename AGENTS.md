@@ -40,6 +40,7 @@ docs-website/
 | `pnpm docs:build` | 生产构建，写完文档后必须跑一次验证 |
 | `pnpm docs:preview` | 预览构建产物 |
 | `pnpm lint` / `pnpm lint:fix` | 检查/修复 `.vitepress` 下 TypeScript 配置代码（Markdown 不在检查范围内） |
+| `git push origin main` | 把提交同步到 GitHub 远程仓库，触发 Actions 自动部署 |
 
 ## 3. 目录与命名规范
 
@@ -262,7 +263,7 @@ docs-website/
 | `chore` | 配置、依赖、构建 | `chore(vitepress): 配置ignoreDeadLinks和metaChunk` |
 | `fix` | 修正链接、标题、图片路径等错误 | `docs(NodeJs Modules): 修正文档中图片的相对路径` |
 
-规则：scope 使用分类或主题（`docs(Frame)`、`docs(DB/Overview)`）；描述保持单行、简洁，中文或英文均可。
+规则：scope 使用分类或主题（`docs(Frame)`、`docs(DB/Overview)`）；描述保持单行、简洁，中文或英文均可。提交完成后必须执行 `git push origin main` 同步到 GitHub 远程仓库，触发 GitHub Actions 自动构建部署。
 
 ## 11. 新增/修改文档检查清单
 
@@ -275,7 +276,7 @@ docs-website/
 5. 更新对应侧边栏分支文件；涉及新分类或导航时更新 `nav.ts`。
 6. 内容自查：概念/原理、可运行示例、表格/清单、易错点、验证方式、参考资料齐全；篇幅达标；版本信息已联网核对。
 7. 运行 `pnpm docs:build`（或 `docs:dev`）确认构建成功、链接可达。
-8. 按第 10 节规范提交。
+8. 按第 10 节规范提交，并执行 `git push origin main` 同步到 GitHub。
 9. 大版本检查：主题存在大版本差异时按版本目录拆分（如 `Spring5/Spring6`），新内容面向最新稳定版，旧版本保留并标注状态。
 
 修改文档时：
@@ -296,3 +297,4 @@ docs-website/
 - 生成内容必须达到第 5 节的深度要求，并按 `DOCS_PLAN.md` 的数量产出，宁多勿少、禁止空壳页。
 - 每个任务日除新主题外，还要挑选 **5~10 篇存量文档**进行调整补充与更新，不能只写新文档、放任旧文档过期。
 - 主题出现大版本调整时，按版本目录组织（如 `Spring5/Spring6`），保留旧版本文档并标注状态，不要用新版覆盖旧版。
+- 每次提交完成后必须 `git push origin main` 同步到 GitHub，确保文档站自动部署。

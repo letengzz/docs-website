@@ -10,7 +10,7 @@
    - 更新对应侧边栏分支文件（`frontend.ts`、`backend.ts`、`db.ts`、`ops.ts`、`AI.ts`、`tools.ts`、`project.ts`）；
    - 涉及新分类或导航时更新 `nav.ts`；
    - 运行 `pnpm docs:build` 验证；
-   - 按 Conventional Commits 规范提交（`docs(分类): 描述`）。
+   - 按 Conventional Commits 规范提交（`docs(分类): 描述`），并 `git push origin main` 同步到 GitHub。
 4. 完成一个主题后，在本表中标记 ✅，下次从下一个主题继续。
 5. 每天的「存量整理」任务从下方清单中顺延取一项，与当天新主题一起完成。
 
@@ -169,7 +169,7 @@
 按「完整主题模板」生成 6~10 篇细致全面的技术文档（每篇满足内容深度要求），
 并从存量文档中挑选 5~10 篇进行调整、补充与更新，同时从「存量整理任务清单」中取一项；
 更新侧边栏（必要时更新导航），
-运行 pnpm docs:build 验证，最后按 Conventional Commits 规范提交。
+运行 pnpm docs:build 验证，最后按 Conventional Commits 规范提交并 push 到 GitHub 远程仓库。
 
 补充要求：涉及大版本的主题按版本目录组织（如 Spring5/Spring6），旧版本保留并标注状态，不覆盖旧内容。
 ```
