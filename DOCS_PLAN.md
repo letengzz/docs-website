@@ -32,7 +32,7 @@
 | 2 | Backend | Python 进阶 ✅ | 环境管理、装饰器、异步、常用库 |
 | 3 | DB | MySQL 基础 ✅ | 概述与版本、安装配置、核心概念、库表操作、数据增删改查、查询进阶、事务与隔离级别、索引与性能、常见问题 |
 | 4 | DB | Redis 基础 ✅ | 概述与版本、安装配置、通用命令、String/Hash、List/Set/ZSet、过期与淘汰策略、持久化 RDB/AOF、发布订阅与事务、常见问题 |
-| 5 | Ops | Linux 基础 | 概述与发行版、目录结构、文件与目录命令、文本处理 grep/sed/awk、权限与用户、进程与服务、网络命令、Shell 基础、常见问题 |
+| 5 | Ops | Linux 基础 ✅ | 概述与发行版、目录结构、文件与目录命令、文本处理 grep/sed/awk、权限与用户、进程与服务、网络命令、Shell 基础、常见问题 |
 | 6 | Ops | Docker 进阶 | Dockerfile 最佳实践、多阶段构建、Compose、网络模式、数据卷与挂载、容器监控、安全加固、CI 集成、常见问题 |
 | 7 | Frontend | Vue3 核心 | 概述与创建、响应式原理、模板语法、组件通信、Composition API、路由、Pinia、生命周期、实战案例 |
 | 8 | Frontend | React 核心 | 概述与环境、JSX、组件与 Props、State 与事件、Hooks 详解、Context、路由、状态管理、性能优化、实战案例 |
@@ -147,7 +147,7 @@
 - [ ] Tools 存量补全：Git、Maven/Gradle、CI/CD 专题
 - [ ] AI 存量补全：OpenClaw 核心概念细化
 - [ ] 文档风格统一巡检：容器、表格、代码块语言标注
-- [ ] 存量版本检查：已有主题存在大版本差异时，拆分为版本目录（如 `Spring5/Spring6`），并同步目录页与侧边栏
+- [x] 存量版本检查：Vue2/Vue3、ES5~ES12+ 已按版本分目录；MySQL（8.4/9.7）、Redis（8.x/7.x）、Java（LTS）、.NET（DotNet5/WebApiNet6）在页内标注版本现状；其余主题暂无需拆分
 - [x] 分类目录页与侧边栏结构：AI/Backend/DB/Frontend/Ops/Tools 已补 `index.md` 目录页；主题按路径挂载侧边栏且默认展开
 
 ## 节奏建议
