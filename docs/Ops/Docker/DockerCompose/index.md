@@ -1,5 +1,9 @@
 # Docker Compose
 
+::: info 版本现状
+Compose 当前为 V2（命令 `docker compose`，v2.40+），V1 的 `docker-compose` 已停止维护。健康检查、资源限制、secrets、profiles、watch 等进阶用法见「Docker Compose 进阶」。
+:::
+
 Docker-Compose 项目是Docker官方的开源项目，负责实现对Docker容器集群的快速编排。Docker-Compose 项目由 Python 编写，调用 Docker 服务提供的API来对容器进行管理。因此，只要所操作的平台支持 Docker API，就可以在其上利用Compose 来进行编排管理。
 
 通过 Docker-Compose ，不需要使用shell脚本来启动容器，而使用 YAML 文件来配置应用程序需要的所有服务，然后使用一个命令，根据 YAML 的文件配置创建并启动所有服务。

@@ -1,5 +1,9 @@
 # Dockerfile
 
+::: info 进阶指引
+本文为基础指令入门。生产级写法（非 root、固定版本、缓存挂载、密钥挂载）与多阶段构建请参考「Dockerfile 最佳实践」和「多阶段构建」；Docker 23.0+ 可用 `docker build --check .` 先校验 Dockerfile。
+:::
+
 Dockerfile是用来构建Docker镜像的文本文件，是由一条条构建镜像所需的指令和参数构成的脚本。
 
 ## 构建执行流程

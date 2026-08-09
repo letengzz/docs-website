@@ -1,5 +1,7 @@
 # Docker 进程命令
 
+## 服务管理
+
 启动Docker服务：
 
 ```shell
@@ -59,6 +61,8 @@ systemctl enable docker
 systemctl disable docker
 ```
 
+## 引擎信息
+
 查看Docker info引擎信息：
 
 ```shell
@@ -71,15 +75,17 @@ docker info
 ps -ef | grep docker
 ```
 
+## 帮助信息
+
 查看所有的帮助信息：
 
 ```shell
 docker --help
 ```
 
-查看某个commond命令的帮助信息：
+查看某个 command 命令的帮助信息：
 
 ```shell
-docker commond --help
+docker <command> --help
 ```
 

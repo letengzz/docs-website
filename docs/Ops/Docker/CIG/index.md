@@ -1,5 +1,9 @@
 # Docker 监控平台
 
+::: info 版本现状
+CIG（cAdvisor + InfluxDB + Grafana）仍是单机容器监控的经典组合；cAdvisor 官方镜像为 `gcr.io/cadvisor/cadvisor`，注意保持更新以修复 CVE。新项目也可选择 Prometheus 体系，参见「容器监控」。
+:::
+
 CIG，即 CAdvisor 、 InfluxDB 与 Grafana ，被称为 Docker 监控三剑客。其中 CAdvisor 用于
 监控数据的收集， InfluxDB 用于数据存储， Grafana 用于数据展示。
 

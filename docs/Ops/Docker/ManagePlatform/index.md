@@ -1,5 +1,9 @@
 # Docker 管理平台
 
+::: info 版本现状
+Portainer 社区版镜像为 `portainer/portainer-ce:latest`，版本持续迭代；管理平台入口务必加鉴权，避免直接暴露公网。运行安全相关建议参见「安全加固」。
+:::
+
 当 Docker引擎中管理的镜像、容器、网络等对象数量变得越来越多时，通过简单的 docker命令来管理已经显得使人力不从心了。于是就出现了很多的 Docker 可视化管理平台。
 
 ## Docker UI

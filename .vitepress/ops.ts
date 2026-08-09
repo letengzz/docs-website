@@ -17,6 +17,21 @@ export const Docker = [
       { text: "Docker 监控平台", link: "/docs/Ops/Docker/CIG/index.md" },
       { text: "镜像上传阿里云", link: "/docs/Ops/Docker/DockerToAli/index.md" },
       { text: "Docker 常见错误", link: "/docs/Ops/Docker/Errors/index.md" },
+      {
+        text: "Docker 进阶",
+        collapsed: false,
+        items: [
+          { text: "Dockerfile 最佳实践", link: "/docs/Ops/Docker/BestPractices/index.md" },
+          { text: "多阶段构建", link: "/docs/Ops/Docker/Multistage/index.md" },
+          { text: "Docker Compose 进阶", link: "/docs/Ops/Docker/ComposeAdvanced/index.md" },
+          { text: "网络模式深入", link: "/docs/Ops/Docker/NetworkAdvanced/index.md" },
+          { text: "数据卷与挂载最佳实践", link: "/docs/Ops/Docker/VolumesAdvanced/index.md" },
+          { text: "容器监控", link: "/docs/Ops/Docker/Monitor/index.md" },
+          { text: "安全加固", link: "/docs/Ops/Docker/Security/index.md" },
+          { text: "Docker 与 CI/CD 集成", link: "/docs/Ops/Docker/CIIntegration/index.md" },
+          { text: "常见问题与最佳实践", link: "/docs/Ops/Docker/FAQ/index.md" },
+        ],
+      },
     ],
   },
 ];

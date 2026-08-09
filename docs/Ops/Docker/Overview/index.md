@@ -10,6 +10,10 @@ Docker 官网：https://www.docker.com
 
 Docker 中文库：https://www.docker.org.cn/
 
+::: info 版本现状（2026-08 核对）
+当前最新稳定版为 Docker Engine 29.7.x（29.7.2，2026-08-05 发布），Docker Compose 为 v2.40+。BuildKit 已是默认构建器；Docker Engine 29.2 起全新安装默认使用 containerd 镜像存储。
+:::
+
 ![](assets/img202406071302358.png)
 
 ## Docker 应用场景

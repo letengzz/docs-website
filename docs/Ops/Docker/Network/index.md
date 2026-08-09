@@ -1,5 +1,9 @@
 # Docker 网络
 
+::: info 进阶指引
+用户自定义网络支持容器名 DNS 解析；Docker 防火墙后端支持 iptables（默认）与 nftables（可在 daemon.json 配置 `firewall-backend` 切换）。深入原理与排障见「网络模式深入」。
+:::
+
 容器间的互联和通信以及端口映射，容器IP变动时可以通过服务名直接网络通信而不受到影响。
 
 本机网络：使用ifconfig查看本地网络：
