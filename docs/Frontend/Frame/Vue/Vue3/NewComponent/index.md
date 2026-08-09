@@ -1,7 +1,8 @@
 # Vue3 新组件
 
-````
-
+::: info 版本现状
+`Fragment`、`Teleport` 在 Vue 3 中已稳定；`Suspense` 目前仍属于实验性特性（API 可能调整），生产使用前请评估。
+:::
 
 ## Fragment
 
@@ -23,49 +24,13 @@ Teleport 是一种能够将**组件html结构**移动到指定位置的技术(�
 </teleport>
 ```
 
-![image-20240210205047256](assets/image-20240210205047256.png)
+Teleport 的典型场景：
 
-![image-20240210205051607](assets/image-20240210205051607.png)
+- 弹窗/模态框：从组件 DOM 树中移出，挂到 `body`，避免被父级 `overflow: hidden`、`z-index` 影响。
+- 全局通知、Tooltip：需要脱离文档流层级，避免被中间容器裁剪。
+- 条件性传送：`disabled` 属性为 `true` 时元素停留在原位置，需要时再传送出去。
 
-![image-20240210205250014](assets/image-20240210205250014.png)
-
-![image-20240210205323077](assets/image-20240210205323077.png)
-
-![image-20240210205350058](assets/image-20240210205350058.png)
-
-![image-20240210205432668](assets/image-20240210205432668.png)
-
-![image-20240210205446851](assets/image-20240210205446851.png)
-
-![image-20240210205501111](assets/image-20240210205501111.png)
-
-![image-20240210205617911](assets/image-20240210205617911.png)
-
-![image-20240210205840852](assets/image-20240210205840852.png)
-
-![image-20240210214917555](assets/image-20240210214917555.png)
-
-![image-20240210214921195](assets/image-20240210214921195.png)
-
-![image-20240210215005707](assets/image-20240210215005707.png)
-
-
-
-![image-20240210215012094](assets/image-20240210215012094.png)
-
-蓝色参考红色
-
-![image-20240210215057679](assets/image-20240210215057679.png)
-
-to表示塞在那个地方
-
-![image-20240210215142792](assets/image-20240210215142792.png)
-
-![image-20240210215318772](assets/image-20240210215318772.png)
-
-![image-20240210215324652](assets/image-20240210215324652.png)
-
-Teleport 是一种能够将我们的**组件html结构**移动到指定位置的技术。
+效果验证：运行后打开浏览器控制台的元素树，弹窗内容挂在 `<body>` 下而不是组件内部。
 
 ```html
 <teleport to='body' >
@@ -136,5 +101,3 @@ const Child = defineAsyncComponent(()=>import('./Child.vue'))
 - 移除了`$children` 实例 `propert`。
 
   ......
-````
-

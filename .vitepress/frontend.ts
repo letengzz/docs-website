@@ -345,6 +345,21 @@ export const FrontFrame = [
                             { text: "Vue3 构建组件", link: "/docs/Frontend/Frame/Vue/Vue3/Components/index.md" },
                             { text: "Vue3 接口自动生成", link: "/docs/Frontend/Frame/Vue/Vue3/AutoInterface/index.md" },
                             { text: "Vue3 整合ECharts", link: "/docs/Frontend/Frame/Vue/Vue3/ECharts/index.md" },
+                            {
+                                text: "核心进阶",
+                                collapsed: false,
+                                items: [
+                                    { text: "响应式原理", link: "/docs/Frontend/Frame/Vue/Vue3/Reactivity/index.md" },
+                                    { text: "模板语法", link: "/docs/Frontend/Frame/Vue/Vue3/TemplateSyntax/index.md" },
+                                    { text: "Composition API 深入", link: "/docs/Frontend/Frame/Vue/Vue3/CompositionAPI/index.md" },
+                                    { text: "生命周期", link: "/docs/Frontend/Frame/Vue/Vue3/Lifecycle/index.md" },
+                                    { text: "TypeScript 集成", link: "/docs/Frontend/Frame/Vue/Vue3/TypeScript/index.md" },
+                                    { text: "Pinia 进阶", link: "/docs/Frontend/Frame/Vue/Vue3/PiniaAdvanced/index.md" },
+                                    { text: "路由进阶", link: "/docs/Frontend/Frame/Vue/Vue3/RouterAdvanced/index.md" },
+                                    { text: "性能优化", link: "/docs/Frontend/Frame/Vue/Vue3/Performance/index.md" },
+                                    { text: "实战案例", link: "/docs/Frontend/Frame/Vue/Vue3/Practice/index.md" },
+                                ],
+                            },
                         ]
                     },
                 ]
@@ -438,4 +453,14 @@ export const FrontFrame = [
         ]
     },
 ];
-export const FrontOthers = [];
+export const FrontOthers = [
+    {
+        text: "其他",
+        link: "/docs/Frontend/Others/index.md",
+        items: [
+            { text: "自动生成接口", link: "/docs/Frontend/Others/AutoGenInterface/index.md" },
+            { text: "HTTP 协议", link: "/docs/Frontend/Others/HTTP/index.md" },
+            { text: "单页面 web 应用", link: "/docs/Frontend/Others/SPA/index.md" },
+        ],
+    },
+];

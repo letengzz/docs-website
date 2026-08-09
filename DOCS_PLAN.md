@@ -34,7 +34,7 @@
 | 4 | DB | Redis 基础 ✅ | 概述与版本、安装配置、通用命令、String/Hash、List/Set/ZSet、过期与淘汰策略、持久化 RDB/AOF、发布订阅与事务、常见问题 |
 | 5 | Ops | Linux 基础 ✅ | 概述与发行版、目录结构、文件与目录命令、文本处理 grep/sed/awk、权限与用户、进程与服务、网络命令、Shell 基础、常见问题 |
 | 6 | Ops | Docker 进阶 ✅ | Dockerfile 最佳实践、多阶段构建、Compose、网络模式、数据卷与挂载、容器监控、安全加固、CI 集成、常见问题 |
-| 7 | Frontend | Vue3 核心 | 概述与创建、响应式原理、模板语法、组件通信、Composition API、路由、Pinia、生命周期、实战案例 |
+| 7 | Frontend | Vue3 核心 ✅ | 概述与创建、响应式原理、模板语法、组件通信、Composition API、路由、Pinia、生命周期、实战案例 |
 | 8 | Frontend | React 核心 | 概述与环境、JSX、组件与 Props、State 与事件、Hooks 详解、Context、路由、状态管理、性能优化、实战案例 |
 | 9 | Backend | Spring Boot | 概述与版本、项目搭建、配置与 Profile、Web 开发、数据访问、REST API、异常处理、测试、部署、常见问题 |
 | 10 | Tools | Git 进阶 | 分支模型、Rebase 与 Merge、Stash、reset/revert、cherry-pick、子模块、协作工作流、常见问题 |
@@ -140,7 +140,7 @@
 - [x] 全库链接巡检：已修复 Vue 概述、Pinia、Vant、LXC 等失效引用；侧边栏无残留旧链接
 - [x] 图片路径巡检：检查存量文档图片是否全部使用相对路径（巡检通过，无绝对路径或外链图片）
 - [x] 标题与 H1 规范巡检：全库扫描并修复（DotNet 基础页已调整为单 H1 + 章节结构）
-- [ ] Frontend 存量补全：为缺失的目录页（如 Frame/Others）补充索引
+- [x] Frontend 存量补全：Frame 目录页修复失效链接并补齐 UmiJS/Next；Others 补充索引并挂载侧边栏
 - [ ] Backend 存量补全：Java、.NET 补充缺失章节
 - [x] DB 存量补全：MySQL、Redis 专题（第 3、4 天已建设完整专题）
 - [ ] Ops 存量补全：Linux、Nginx、Kubernetes 专题

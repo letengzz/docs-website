@@ -1,5 +1,9 @@
 # Vue3 Pinia
 
+::: info 版本现状
+Pinia 当前稳定版为 3.x（需 Vue 3）。组合式 store、TypeScript、插件与持久化等进阶用法见「Pinia 进阶」。
+:::
+
 Pinia：集中式状态(数据)管理，把所有的要管理放到容器中集中管理起来。**适用于多个组件共享数据**。
 
 官方网站：https://pinia.vuejs.org/zh

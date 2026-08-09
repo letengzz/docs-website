@@ -14,3 +14,15 @@
 - [Vue3 构建组件](Components/index.md)
 - [Vue3 接口自动生成](AutoInterface/index.md)
 - [Vue3 整合ECharts](ECharts/index.md)
+
+核心进阶：
+
+- [响应式原理](Reactivity/index.md)
+- [模板语法](TemplateSyntax/index.md)
+- [Composition API 深入](CompositionAPI/index.md)
+- [生命周期](Lifecycle/index.md)
+- [TypeScript 集成](TypeScript/index.md)
+- [Pinia 进阶](PiniaAdvanced/index.md)
+- [路由进阶](RouterAdvanced/index.md)
+- [性能优化](Performance/index.md)
+- [实战案例](Practice/index.md)

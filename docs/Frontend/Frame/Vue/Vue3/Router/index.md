@@ -1,5 +1,9 @@
 # Vue3 路由
 
+::: info 版本现状
+Vue Router 当前稳定版为 4.6.x。懒加载、动态路由、权限控制等进阶用法见「路由进阶」。
+:::
+
 路由(Route)是一组key-value的对应关系。多个路由，需要经过路由器(Router)的管理。
 
 在单页面(SPA，`single page web application`)应用中，点击导航区不同的导航项就会在展示区展示不同的内容

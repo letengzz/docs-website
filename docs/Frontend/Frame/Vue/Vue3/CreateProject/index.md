@@ -1,5 +1,9 @@
 # 创建 Vue3 工程
 
+::: info 版本现状
+官方推荐使用 `create-vue`（基于 Vite）创建项目：`npm create vue@latest`；Vue CLI（`vue create`）已进入维护尾声，新项目不建议使用。
+:::
+
 ## 基于 vue-cli 创建
 
 官方文档：https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create

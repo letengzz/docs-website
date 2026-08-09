@@ -1,5 +1,9 @@
 # Vue3 组件通信
 
+::: info 版本现状
+`defineModel` 从 Vue 3.4 起稳定，是组件上 `v-model` 双向绑定的推荐写法；组合式 API 的类型化通信见「Composition API 深入」。
+:::
+
 **`Vue3`组件通信和`Vue2`的区别：**
 
 - 移出事件总线，使用`mitt`代替。

@@ -1,5 +1,9 @@
 # Vue3 核心语法
 
+::: info 进阶指引
+本文覆盖响应式数据、计算属性、watch、生命周期等基础用法。深入原理与进阶写法见「响应式原理」「Composition API 深入」「生命周期」。
+:::
+
 ## OptionsAPI 与 CompositionAPI
 
 - `Vue2`的`API`设计是`Options`（配置式、选项式）风格的。
