@@ -1,5 +1,9 @@
 # JSX 语法
 
+::: info 版本现状
+JSX 由构建工具（Babel / SWC / esbuild）编译，React 19 无需额外配置；新版脚手架默认使用 SWC 或 esbuild，速度更快。
+:::
+
 JSX 全称 JavaScript XML，是 Meta 推出的 JavaScript 语法扩展，允许开发者在 JS 代码中直接编写类似 HTML 的标记。浏览器无法直接识别 JSX，需要通过 **Babel** 或 **SWC** 等构建工具编译为标准 JavaScript。
 
 ## JSX 基本规则

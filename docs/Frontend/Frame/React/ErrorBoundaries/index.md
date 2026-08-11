@@ -1,5 +1,9 @@
 # React 错误边界
 
+::: info 版本现状
+React 19 为 `createRoot` 新增 `onUncaughtError` / `onCaughtError` 根级选项，可统一处理未被错误边界捕获的错误。
+:::
+
 错误边界是 React 中用于捕获子组件树中 JavaScript 错误的组件。它可以防止整个应用崩溃，并提供友好的错误提示。
 
 ## 创建错误边界

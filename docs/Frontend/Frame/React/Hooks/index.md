@@ -1,5 +1,9 @@
 # Hooks 详解
 
+::: info 版本现状
+React 19.2.x 中 Hooks 体系稳定：`use`、`useOptimistic`、`useActionState`、`useFormStatus` 均已正式提供；自定义 Hooks 仍须遵守 Rules of Hooks。
+:::
+
 Hooks 是 React 16.8 引入的革命性特性，让函数组件也能拥有状态管理和生命周期能力。React 19 进一步扩展了 Hooks 体系，新增了 `use()`、`useOptimistic`、`useActionState` 等。
 
 ## Hooks 使用规则

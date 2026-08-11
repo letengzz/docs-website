@@ -1,5 +1,9 @@
 # 状态管理
 
+::: info 版本现状
+生态版本（2026-08）：Zustand 5.x、Redux Toolkit 2.x、TanStack Query 5.x；React 19 中 Context 可直接作为 Provider 使用。选型建议见文末。
+:::
+
 React 本身提供了 `useState` 和 `useContext` 用于组件级和跨组件状态管理。随着应用规模增长，需要更强大的状态管理方案。本章介绍从基础到进阶的状态管理技术。
 
 ## 状态管理方案对比

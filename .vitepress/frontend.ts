@@ -381,6 +381,19 @@ export const FrontFrame = [
                     { text: "生态系统", link: "/docs/Frontend/Frame/React/Ecosystem/index.md" },
                     { text: "最佳实践", link: "/docs/Frontend/Frame/React/BestPractices/index.md" },
                     { text: "React DevTools", link: "/docs/Frontend/Frame/React/DevTools/index.md" },
+                    {
+                        text: "核心进阶",
+                        collapsed: false,
+                        items: [
+                            { text: "React 渲染与协调原理", link: "/docs/Frontend/Frame/React/Internals/index.md" },
+                            { text: "Context 深入", link: "/docs/Frontend/Frame/React/Context/index.md" },
+                            { text: "合成事件与事件处理", link: "/docs/Frontend/Frame/React/EventSystem/index.md" },
+                            { text: "表单与受控组件", link: "/docs/Frontend/Frame/React/Forms/index.md" },
+                            { text: "数据获取模式", link: "/docs/Frontend/Frame/React/DataFetching/index.md" },
+                            { text: "实战案例", link: "/docs/Frontend/Frame/React/Practice/index.md" },
+                            { text: "常见问题与最佳实践", link: "/docs/Frontend/Frame/React/FAQ/index.md" },
+                        ],
+                    },
                 ]
             },
             {

@@ -1,5 +1,9 @@
 # React 性能优化
 
+::: info 版本现状
+React 19 可接入 React Compiler 自动记忆化；并发特性 `useTransition`、`useDeferredValue` 已稳定，优先用于高频更新场景。
+:::
+
 React 默认已经非常高效，但在大型应用中仍需要手动优化。本章介绍从基础到高级的性能优化技术。
 
 ## 性能分析工具

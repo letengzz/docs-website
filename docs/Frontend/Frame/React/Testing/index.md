@@ -1,5 +1,9 @@
 # React 测试
 
+::: info 版本现状
+常用工具链：Vitest 3+、React Testing Library 16+、Playwright；具体版本以官方发布为准，安装时使用 `npm install -D` 引入。
+:::
+
 React 测试是确保应用质量的重要环节。本章介绍如何使用现代工具测试 React 组件。
 
 ## 测试工具链
