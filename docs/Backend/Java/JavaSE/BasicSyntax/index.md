@@ -2,6 +2,24 @@
 
 Java 基础语法是 Java 编程的入门知识，包括变量、数据类型、运算符、流程控制等核心概念。掌握这些基础知识是进行 Java 开发的前提。
 
+## 程序入口
+
+每个可执行的 Java 程序从 `main` 方法开始：
+
+```java
+// BasicSyntax/Hello.java
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello");
+    }
+}
+```
+
+- `public`：访问修饰符，表示公开。
+- `static`：静态方法，无需创建对象即可调用。
+- `void`：无返回值。
+- `args`：命令行参数。
+
 ## 变量与数据类型
 
 ### 变量
@@ -105,6 +123,25 @@ public class PrimitiveTypes {
     }
 }
 ```
+
+8 种基本数据类型汇总：
+
+| 类型 | 大小 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `byte` | 1 字节 | `0` | 整数 |
+| `short` | 2 字节 | `0` | 整数 |
+| `int` | 4 字节 | `0` | 最常用的整数 |
+| `long` | 8 字节 | `0L` | 长整数，字面量加 `L` |
+| `float` | 4 字节 | `0.0f` | 单精度小数，字面量加 `f` |
+| `double` | 8 字节 | `0.0` | 双精度小数，默认的小数类型 |
+| `char` | 2 字节 | `'\u0000'` | 单个字符 |
+| `boolean` | 1 字节 | `false` | `true` / `false` |
+
+::: danger 注意
+1. 小数默认是 `double`，赋给 `float` 必须加 `f`。
+2. 整数默认是 `int`，超过范围要加 `L` 并使用 `long`。
+3. 字符串必须用双引号，字符必须用单引号。
+:::
 
 ### 引用数据类型
 
@@ -564,3 +601,43 @@ public class ArrayUtils {
 3. 数组元素有默认值：数值型为 0，引用型为 null，布尔型为 false
 4. 使用 `Arrays.equals()` 比较数组内容，而非 `==`
 :::
+
+## 完整示例：猜数字
+
+综合运用变量、流程控制和数组知识，实现一个猜数字小游戏：
+
+```java
+// BasicSyntax/GuessNumber.java
+import java.util.Random;
+import java.util.Scanner;
+
+public class GuessNumber {
+    public static void main(String[] args) {
+        Random random = new Random();
+        int target = random.nextInt(100) + 1;
+        Scanner scanner = new Scanner(System.in);
+        int count = 0;
+
+        while (true) {
+            System.out.print("请输入 1-100 的数字：");
+            int guess = scanner.nextInt();
+            count++;
+            if (guess > target) {
+                System.out.println("大了");
+            } else if (guess < target) {
+                System.out.println("小了");
+            } else {
+                System.out.println("恭喜猜中，共猜了 " + count + " 次");
+                break;
+            }
+        }
+    }
+}
+```
+
+验证：执行 `javac GuessNumber.java && java GuessNumber`，多次输入数字，确认能正常提示大小并最终猜中。
+
+## 参考资料
+
+- Oracle Java 基础语法教程：https://docs.oracle.com/javase/tutorial/java/nutsandbolts/index.html
+- Java 语言规范：https://docs.oracle.com/javase/specs/
