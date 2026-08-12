@@ -36,7 +36,6 @@ export const nav = [
     ]
   },
   { text: "AI", items: [
-    { text: "Java", link: "/docs/AI/Java" },
     { text: "OpenClaw", link: "/docs/AI/OpenClaw" },
   ] },
   {
