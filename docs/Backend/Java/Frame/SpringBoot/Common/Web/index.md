@@ -3,7 +3,7 @@
 Web 开发是 Spring Boot 使用最频繁的场景：接收 HTTP 请求、处理参数、返回 JSON、管理静态资源和跨域。本节覆盖 REST 控制器、参数绑定、CORS 与内嵌服务器配置。
 
 ::: info 适用版本
-本节基于 Spring Boot 4.1.x + Spring MVC，内嵌服务器默认为 Tomcat。
+本节为 Spring Boot 通用指南，示例基于 4.1.x + Spring MVC；2.x/3.x 差异见版本目录。
 :::
 
 ## 控制器基础

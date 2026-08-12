@@ -3,7 +3,7 @@
 异常处理的目标是：业务错误有明确状态码和可读信息、系统错误不泄露内部细节、校验错误统一格式。本节使用 Spring 6+ 的 `ProblemDetail`（RFC 7807）方案。
 
 ::: info 适用版本
-本节基于 Spring Boot 4.1.x。`ProblemDetail` 从 Spring Framework 6 起内置，Spring Boot 3+ / 4 通用。
+本节为 Spring Boot 通用指南（3.x/4.x）。`ProblemDetail` 从 Spring Framework 6 起内置。
 :::
 
 ## 默认行为

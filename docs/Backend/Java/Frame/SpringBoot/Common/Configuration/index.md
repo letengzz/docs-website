@@ -3,7 +3,7 @@
 Spring Boot 的配置体系解决「同一个应用在不同环境用不同配置」的问题：优先级、外部化配置、类型安全绑定和多环境 Profile。
 
 ::: info 适用版本
-本节基于 Spring Boot 4.1.x，配置方式与 3.x 兼容（`application.properties` / `application.yml`）。
+本节为 Spring Boot 通用指南，配置方式在 2.x/3.x/4.x 间基本兼容；示例基于 4.1.x。
 :::
 
 ## 配置文件格式

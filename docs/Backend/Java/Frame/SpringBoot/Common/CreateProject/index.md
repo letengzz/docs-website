@@ -3,7 +3,7 @@
 本节从零创建一个 Spring Boot 4 项目：使用 Spring Initializr 生成骨架、用 IntelliJ IDEA 导入、跑通第一个接口，并解释项目结构与常用命令。
 
 ::: info 环境要求
-JDK 17+（推荐 JDK 25 LTS）、Maven 3.9+ 或 Gradle 8.x+、IntelliJ IDEA 2024.3+（或 VS Code + Java 插件）。
+本节为 Spring Boot 通用指南，示例基于 Spring Boot 4.x。环境要求：JDK 17+（推荐 JDK 25 LTS）、Maven 3.9+ 或 Gradle 8.x+、IntelliJ IDEA 2024.3+（或 VS Code + Java 插件）。
 :::
 
 ## 1. 使用 Spring Initializr 生成项目

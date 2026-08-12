@@ -3,7 +3,7 @@
 测试是 Spring Boot 项目质量的底线。本节覆盖单元测试、切片测试（Web 层/数据层）、MockMvc 接口测试和 Testcontainers 数据库测试。
 
 ::: info 适用版本
-本节基于 Spring Boot 4.1.x，测试依赖 `spring-boot-starter-test`（包含 JUnit 5、AssertJ、Mockito、MockMvc）。
+本节为 Spring Boot 通用指南，示例基于 4.1.x；测试依赖 `spring-boot-starter-test`（包含 JUnit 5、AssertJ、Mockito、MockMvc）。
 :::
 
 ## 引入测试依赖

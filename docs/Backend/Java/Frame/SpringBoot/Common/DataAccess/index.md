@@ -3,7 +3,7 @@
 数据访问是后端应用的标配：连接数据库、定义实体、编写 Repository、管理事务。本节以 Spring Data JPA + MySQL 为例，并说明连接池与常见 ORM 的选型。
 
 ::: info 适用版本
-本节基于 Spring Boot 4.1.x + Spring Data JPA + Hibernate + HikariCP；数据库以 MySQL 8.4 LTS 为例。
+本节为 Spring Boot 通用指南，示例基于 4.1.x + Spring Data JPA + Hibernate + HikariCP；数据库以 MySQL 8.4 LTS 为例。
 :::
 
 ## 引入依赖

@@ -2,6 +2,8 @@
 
 ![image-20230722002105472](assets/202307220027897.png)
 
+通用指南见 [Spring Boot 通用指南](../Common/index.md)。
+
 - [SpringBoot 介绍](Overview.md)
 
 > SpringBoot 介绍：时代背景(微服务、分布式、云原生)、Spring生态、SpringBoot优点、SpringBoot缺点、SpringBoot3介绍

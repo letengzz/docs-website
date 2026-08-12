@@ -3,7 +3,7 @@
 Spring Boot 是 Spring 生态的「开箱即用」框架，通过自动配置（Auto-configuration）和起步依赖（Starter）大幅降低 Spring 应用的搭建成本。本节介绍它解决什么问题、当前版本现状和核心机制。
 
 ::: info 适用版本（2026-08 核对）
-当前稳定版为 **Spring Boot 4.1.x**（4.0 于 2025-11 发布，4.1 于 2026-06 发布）。Spring Boot 4 基于 Spring Framework 7，最低支持 Java 17，**推荐使用 Java 25 LTS**。Spring Boot 3.5.x 的 OSS 支持已于 2026-06-30 结束，存量项目建议规划升级。
+本节为 Spring Boot 通用指南，示例基于当前稳定版 4.1.x，大部分内容同样适用于 3.x。版本差异与升级见「Spring Boot 4.x」版本页。
 :::
 
 ## Spring Boot 解决什么问题

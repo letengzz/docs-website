@@ -3,7 +3,7 @@
 本节把「接口设计 + 参数校验 + 统一响应 + 分页 + 接口文档」串起来，给出一个可落地的 REST API 写法。
 
 ::: info 适用版本
-本节基于 Spring Boot 4.1.x，校验使用 `spring-boot-starter-validation`，接口文档使用 springdoc-openapi。
+本节为 Spring Boot 通用指南，示例基于 4.1.x；校验使用 `spring-boot-starter-validation`，接口文档使用 springdoc-openapi。
 :::
 
 ## 接口设计规范

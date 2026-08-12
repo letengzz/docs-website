@@ -3,7 +3,7 @@
 部署解决「把 jar 跑起来并稳定运维」的问题：打包、容器化、环境配置、健康检查、日志与优雅停机。
 
 ::: info 适用版本
-本节基于 Spring Boot 4.1.x + Docker；示例使用 Temurin JDK 25 运行时镜像。
+本节为 Spring Boot 通用指南，示例基于 4.1.x + Docker；运行时镜像按项目 JDK 选择（如 Temurin 25）。
 :::
 
 ## 打包方式
