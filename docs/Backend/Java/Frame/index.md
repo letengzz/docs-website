@@ -1,8 +1,7 @@
 # 框架
 
-Java 框架相关文档将在此分类下建设，例如：
+Java 框架相关文档：
 
-- Spring Boot / Spring Cloud
-- MyBatis / MyBatis-Plus
-- Netty
-- 其他企业级 Java 框架
+- [Spring Boot](SpringBoot/index.md)
+
+后续将补充 Spring Cloud、MyBatis、Netty 等框架文档。

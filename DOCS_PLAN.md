@@ -36,7 +36,7 @@
 | 6 | Ops | Docker 进阶 ✅ | Dockerfile 最佳实践、多阶段构建、Compose、网络模式、数据卷与挂载、容器监控、安全加固、CI 集成、常见问题 |
 | 7 | Frontend | Vue3 核心 ✅ | 概述与创建、响应式原理、模板语法、组件通信、Composition API、路由、Pinia、生命周期、实战案例 |
 | 8 | Frontend | React 核心 ✅ | 概述与环境、JSX、组件与 Props、State 与事件、Hooks 详解、Context、路由、状态管理、性能优化、实战案例 |
-| 9 | Backend | Spring Boot | 概述与版本、项目搭建、配置与 Profile、Web 开发、数据访问、REST API、异常处理、测试、部署、常见问题 |
+| 9 | Backend | Spring Boot ✅ | 概述与版本、项目搭建、配置与 Profile、Web 开发、数据访问、REST API、异常处理、测试、部署、常见问题 |
 | 10 | Tools | Git 进阶 | 分支模型、Rebase 与 Merge、Stash、reset/revert、cherry-pick、子模块、协作工作流、常见问题 |
 | 11 | Tools | Maven / Gradle | 概述与安装、项目结构、构建生命周期、依赖管理、私服、多模块、Gradle 对比、常见问题 |
 | 12 | Backend | Java 集合 | 集合框架总览、List、Set、Map、迭代与遍历、排序与比较器、并发集合、源码要点、常见问题 |
@@ -145,7 +145,7 @@
 - [x] DB 存量补全：MySQL、Redis 专题（第 3、4 天已建设完整专题）
 - [ ] Ops 存量补全：Linux、Nginx、Kubernetes 专题
 - [ ] Tools 存量补全：Git、Maven/Gradle、CI/CD 专题
-- [ ] AI 存量补全：OpenClaw 核心概念细化
+- [x] AI 存量补全：OpenClaw 核心概念补充渠道、技能、工具三篇并挂载侧边栏
 - [ ] 文档风格统一巡检：容器、表格、代码块语言标注
 - [x] 存量版本检查：Vue2/Vue3、ES5~ES12+ 已按版本分目录；MySQL（8.4/9.7）、Redis（8.x/7.x）、Java（LTS）、.NET（DotNet5/WebApiNet6）在页内标注版本现状；其余主题暂无需拆分
 - [x] 分类目录页与侧边栏结构：AI/Backend/DB/Frontend/Ops/Tools 已补 `index.md` 目录页；主题按路径挂载侧边栏且默认展开

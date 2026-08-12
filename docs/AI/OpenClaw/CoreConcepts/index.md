@@ -54,3 +54,6 @@ OpenClaw 的运作方式：
 - [智能体（Agent）](Agent/index.md)
 - [系统架构](Architecture/index.md)
 - [记忆系统（Memory）](Memory/index.md)
+- [渠道（Channels）](Channels/index.md)
+- [技能（Skills）](Skills/index.md)
+- [工具（Tools）](Tools/index.md)
