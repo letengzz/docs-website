@@ -506,3 +506,4 @@ spring.datasource.password=123456
 
 - **SqlSessionFactory**: MyBatis的核心工厂SqlSessionFactory会被自动配置。这个工厂负责创建SqlSession实例，后者用来执行映射文件中的SQL语句。
 - **TransactionManager**: DataSourceTransactionManager会被自动配置来管理与数据源相关的事务。
+```

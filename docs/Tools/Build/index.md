@@ -9,5 +9,5 @@
 - 前端打包：Vite、Webpack、Rollup、esbuild
 
 ::: tip 待补充
-后续按计划补充 Maven / Gradle、pnpm 等专题文档。
+后续按计划补充 Maven / Gradle、包管理器深入等专题文档。
 :::

@@ -8,6 +8,4 @@
 - GitHub / GitLab / Gitee 托管平台
 - SVN（存量项目）
 
-::: tip 待补充
-后续按计划补充 Git 进阶、协作工作流文档。
-:::
+- [Git 进阶](Git/index.md)

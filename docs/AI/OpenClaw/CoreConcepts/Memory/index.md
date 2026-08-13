@@ -16,7 +16,7 @@ OpenClaw 的记忆分为三个层次：
 
 会话记忆是 Agent 在**当前会话**中的对话历史，存储在：
 
-```
+```text
 ~/.openclaw/agents/<agentId>/sessions/<SessionId>.jsonl
 ```
 
