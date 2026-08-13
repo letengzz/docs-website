@@ -61,7 +61,7 @@ Environment env = application.getEnvironment();
 
 如果项目中集成了SpringSecurity则需要放行静态资源
 
-```
+```text
 /doc.html
 /v2/api-docs/**
 /webjars/**

@@ -323,7 +323,7 @@ public class SpringbootAnnotationApplication {
   		}
   	}
   }
-  ```
+  ```text
 
 当`@ConditionOnXxx`放在类级别上，如果注解判断生效，则整个配置类才生效；放在方法级别，单独对这个方法进行注解判断。
 
@@ -339,7 +339,7 @@ public class MyConfig2 {
         return tom;
     }
 }
-```
+```text
 
 ## 属性绑定
 
@@ -388,14 +388,14 @@ public class Admin {
                 '}';
     }
 }
-```
+```text
 
 > application.properties
 
 ```properties
 admin.id=123
 admin.name="李华"
-```
+```text
 
 > SpringbootAnnotationApplication
 
@@ -408,7 +408,7 @@ public class SpringbootAnnotationApplication {
 		System.out.println("admin = " + admin);
 	}
 }
-```
+```text
 
 ![image-20230730220336087](assets/202307302203804.png)
 
@@ -450,7 +450,7 @@ public class Admin {
                 '}';
     }
 }
-```
+```text
 
 > MyConfig
 
@@ -465,14 +465,14 @@ public class Admin {
 @SpringBootConfiguration
 public class MyConfig {
 }
-```
+```text
 
 > application.properties
 
 ```properties
 admin.id=123
 admin.name="李华"
-```
+```text
 
 > SpringbootAnnotationApplication
 
@@ -485,7 +485,7 @@ public class SpringbootAnnotationApplication {
 		System.out.println("admin = " + admin);
 	}
 }
-```
+```text
 
 ![image-20230730220336087](assets/202307302203804-174384486129315.png)
 
@@ -500,7 +500,7 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3306/springboot
 spring.datasource.username=root
 spring.datasource.password=123456
-```
+```text
 
 并且在依赖中引入了`mybatis依赖`/`mybatis启动器`，那么SpringBoot框架将为你自动化配置以下bean：
 

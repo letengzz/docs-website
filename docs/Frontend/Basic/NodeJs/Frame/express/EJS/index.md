@@ -181,7 +181,7 @@ app.listen(3000)
 
 ### 项目结构
 
-```
+```text
 myapp/
 ├── views/
 │   ├── layout.ejs

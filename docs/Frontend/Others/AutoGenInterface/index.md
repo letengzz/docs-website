@@ -367,7 +367,7 @@ export async function request(_url: string | RequestOptions, _config: RequestOpt
 
 - 执行命令 生成接口
 
-  ```
+  ```text
   npm openapi
   ```
 

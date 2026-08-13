@@ -16,7 +16,7 @@ pnpm add vue-i18n@11
 
 在 `src`目录下创建 `i18n`目录，用于存放国际化相关的配置和语言包：
 
-```
+```text
 src/
 |- i18n/
     |- index.ts        # 国际化配置文件
@@ -276,7 +276,7 @@ const onChangeLanguage = async (lang: string) => {
 在 src/i18n/locales 中创建目录 `modules`，并在 `modules`中创建两个目录`zh-CN`、`en-US`，分别存放各模块的中文英文语言包，
 现在的目录结构如下：
 
-```
+```text
 src/
 |- i18n/
    |- index.ts        # 国际化配置文件

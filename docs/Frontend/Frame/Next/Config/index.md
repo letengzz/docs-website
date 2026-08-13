@@ -37,7 +37,7 @@ export default nextConfig
 
 ### 环境文件
 
-```
+```text
 .env                  # 所有环境共享
 .env.local            # 本地开发（不提交到 Git）
 .env.development      # 开发环境

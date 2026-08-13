@@ -15,7 +15,7 @@ Ajax 不是一种新的编程语言，而是一种用于创建更好更快以及
 
 ## Ajax 工作原理
 
-```
+```text
 用户操作 → JavaScript → XMLHttpRequest/Fetch → 服务器
                                     ↓
 用户界面 ← JavaScript ← 响应数据 ← 服务器

@@ -72,7 +72,7 @@ yarn create next-app my-app
 
 运行创建命令后，会提示以下配置选项：
 
-```
+```text
 √ Would you like to use TypeScript? ... No / Yes
 √ Would you like to use ESLint? ... No / Yes
 √ Would you like to use Tailwind CSS? ... No / Yes
@@ -114,7 +114,7 @@ npm install -D typescript @types/react @types/node
 
 ### App Router 结构
 
-```
+```text
 my-app/
 ├── app/
 │   ├── layout.tsx      # 根布局
@@ -133,7 +133,7 @@ my-app/
 
 ### Pages Router 结构
 
-```
+```text
 my-app/
 ├── pages/
 │   ├── _app.tsx        # 自定义 App

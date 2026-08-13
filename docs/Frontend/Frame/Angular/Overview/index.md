@@ -69,7 +69,7 @@ ng new my-angular-app
 
 一个标准的 Angular 项目结构如下：
 
-```
+```text
 my-angular-app/
 ├── src/
 │   ├── app/

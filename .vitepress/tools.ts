@@ -1,4 +1,39 @@
-export const Build = [{ text: "构建和依赖管理工具", link: "/docs/Tools/Build/index.md" }];
+export const Build = [
+  {
+    text: "构建和依赖管理工具",
+    link: "/docs/Tools/Build/index.md",
+    collapsed: true,
+    items: [
+      {
+        text: "Maven",
+        link: "/docs/Tools/Build/Maven/index.md",
+        collapsed: true,
+        items: [
+          { text: "Maven 概述与安装", link: "/docs/Tools/Build/Maven/Overview/index.md" },
+          { text: "项目结构与 POM 详解", link: "/docs/Tools/Build/Maven/Pom/index.md" },
+          { text: "构建生命周期与插件", link: "/docs/Tools/Build/Maven/Lifecycle/index.md" },
+          { text: "依赖管理与仓库", link: "/docs/Tools/Build/Maven/Dependency/index.md" },
+          { text: "多模块工程", link: "/docs/Tools/Build/Maven/MultiModule/index.md" },
+          { text: "常见问题与最佳实践", link: "/docs/Tools/Build/Maven/FAQ/index.md" },
+        ],
+      },
+      {
+        text: "Gradle",
+        link: "/docs/Tools/Build/Gradle/index.md",
+        collapsed: true,
+        items: [
+          { text: "Gradle 概述与安装", link: "/docs/Tools/Build/Gradle/Overview/index.md" },
+          { text: "构建脚本与 Kotlin DSL", link: "/docs/Tools/Build/Gradle/BuildScript/index.md" },
+          { text: "生命周期与任务", link: "/docs/Tools/Build/Gradle/Lifecycle/index.md" },
+          { text: "依赖管理与版本目录", link: "/docs/Tools/Build/Gradle/Dependency/index.md" },
+          { text: "多项目工程与 Wrapper", link: "/docs/Tools/Build/Gradle/MultiModule/index.md" },
+          { text: "常见问题与最佳实践", link: "/docs/Tools/Build/Gradle/FAQ/index.md" },
+        ],
+      },
+      { text: "Maven 与 Gradle 对比", link: "/docs/Tools/Build/MavenVsGradle/index.md" },
+    ],
+  },
+];
 export const CICD = [{ text: "持续集成工具", link: "/docs/Tools/CICD/index.md" }];
 export const IDE = [{ text: "IDE 工具", link: "/docs/Tools/IDE/index.md" }];
 export const Others = [{ text: "其他工具", link: "/docs/Tools/Others/index.md" }];

@@ -46,7 +46,7 @@ MyBatis 配置中，properties 标签用来引入一个属性文件或者定义�
 
 **properties 标签 DTD 定义**：
 
-```
+```text
 <!ELEMENT properties (property*)>
 <!ATTLIST properties
 resource CDATA #IMPLIED
@@ -104,7 +104,7 @@ properties的子标签。用来定义单个属性。
 
 **property 标签 DTD 定义**：
 
-```
+```text
 <!ELEMENT property EMPTY>
 <!ATTLIST property
 name CDATA #REQUIRED
@@ -123,7 +123,7 @@ settings标签用于配置 MyBatis 的运行时行为，能深刻的影响 MyBat
 
 **settings 标签 DTD 定义**：
 
-```
+```text
 <!ELEMENT settings (setting+)>
 ```
 
@@ -208,7 +208,7 @@ setting 标签用来设置一个 key-value，其中内容为空，只有两个�
 
 **typeAliases标签 DTD 定义**：
 
-```
+```text
 <!ELEMENT typeAliases (typeAlias*,package*)>
 ```
 
@@ -365,7 +365,7 @@ plugins标签用来我们自定义的插件。
 
 **plugins标签 DTD 定义**：
 
-```
+```text
 <!ELEMENT plugins (plugin+)>
 <!ELEMENT plugin (property*)>
 <!ATTLIST plugin
@@ -438,7 +438,7 @@ SqlSessionFactory factory = sqlSessionFactoryBuilder.build(reader, properties);
 
 **environments 标签 DTD 定义**：
 
-```
+```text
 <!ELEMENT environments (environment+)>
 <!ATTLIST environments
 default CDATA #REQUIRED

@@ -75,7 +75,7 @@ export default defineConfig(({ mode }) => {
 
 安装依赖：
 
-```
+```text
 pnpm add vite-plugin-compression2 -D
 ```
 
@@ -105,7 +105,7 @@ export default defineConfig(({ mode }) => {
 
 安装依赖：
 
-```
+```text
 pnpm add vite-plugin-image-optimizer -D
 ```
 

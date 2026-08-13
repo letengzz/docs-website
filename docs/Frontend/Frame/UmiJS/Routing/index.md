@@ -10,7 +10,7 @@ UmiJS 提供了强大的路由系统，支持约定式路由和配置式路由�
 
 #### 基础路由
 
-```
+```text
 src/pages/
 ├── index.tsx       → /
 ├── about.tsx       → /about
@@ -19,7 +19,7 @@ src/pages/
 
 #### 目录路由
 
-```
+```text
 src/pages/
 ├── index.tsx           → /
 └── users/
@@ -31,7 +31,7 @@ src/pages/
 
 使用方括号 `[]` 创建动态路由参数：
 
-```
+```text
 src/pages/
 ├── users/
 │   └── [id].tsx        → /users/:id
@@ -52,7 +52,7 @@ export default function UserDetail() {
 
 使用 `[]` 包裹的参数为必填参数，使用 `$` 前缀创建可选参数：
 
-```
+```text
 src/pages/
 └── users/
     └── [[id]].tsx      → /users 或 /users/:id
@@ -62,7 +62,7 @@ src/pages/
 
 使用 `_layout.tsx` 创建嵌套路由的布局：
 
-```
+```text
 src/pages/
 └── users/
     ├── _layout.tsx     → /users 的布局

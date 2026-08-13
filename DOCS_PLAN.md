@@ -38,7 +38,7 @@
 | 8 | Frontend | React 核心 ✅ | 概述与环境、JSX、组件与 Props、State 与事件、Hooks 详解、Context、路由、状态管理、性能优化、实战案例 |
 | 9 | Backend | Spring Boot ✅ | 概述与版本、项目搭建、配置与 Profile、Web 开发、数据访问、REST API、异常处理、测试、部署、常见问题 |
 | 10 | Tools | Git 进阶 ✅ | 分支模型、Rebase 与 Merge、Stash、reset/revert、cherry-pick、子模块、协作工作流、常见问题 |
-| 11 | Tools | Maven / Gradle | 概述与安装、项目结构、构建生命周期、依赖管理、私服、多模块、Gradle 对比、常见问题 |
+| 11 | Tools | Maven / Gradle ✅ | 概述与安装、项目结构、构建生命周期、依赖管理、私服、多模块、Gradle 对比、常见问题 |
 | 12 | Backend | Java 集合 | 集合框架总览、List、Set、Map、迭代与遍历、排序与比较器、并发集合、源码要点、常见问题 |
 | 13 | Backend | Java 并发 | 线程基础、线程池、synchronized 与 Lock、volatile、并发工具类、CompletableFuture、ThreadLocal、常见问题 |
 | 14 | Backend | JVM 基础 | 内存结构、对象创建与布局、类加载机制、GC 算法、垃圾收集器、调优参数、故障排查、常见问题 |
@@ -144,9 +144,9 @@
 - [x] Backend 存量补全：Java 侧边栏修复失效链接并挂载全部 JavaSE 章节；.NET 章节已完备
 - [x] DB 存量补全：MySQL、Redis 专题（第 3、4 天已建设完整专题）
 - [ ] Ops 存量补全：Linux、Nginx、Kubernetes 专题
-- [ ] Tools 存量补全：Git、Maven/Gradle、CI/CD 专题
+- [x] Tools 存量补全：Git（第 10 天）与 Maven/Gradle（第 11 天）专题已建设；CI/CD 按第 24 天计划继续
 - [x] AI 存量补全：OpenClaw 核心概念补充渠道、技能、工具三篇并挂载侧边栏
-- [x] 文档风格统一巡检：修复 3 处结构问题（未闭合容器/围栏）；全库统计裸代码块 381 处（54 个历史文件，已记录待持续清理）
+- [x] 文档风格统一巡检：修复 3 处结构问题（未闭合容器/围栏）；全库 381 处裸代码块（54 个历史文件）已统一补 `text` 语言标注
 - [x] 存量版本检查：Vue2/Vue3、ES5~ES12+ 已按版本分目录；MySQL（8.4/9.7）、Redis（8.x/7.x）、Java（LTS）、.NET（DotNet5/WebApiNet6）在页内标注版本现状；其余主题暂无需拆分
 - [x] 分类目录页与侧边栏结构：AI/Backend/DB/Frontend/Ops/Tools 已补 `index.md` 目录页；主题按路径挂载侧边栏且默认展开
 

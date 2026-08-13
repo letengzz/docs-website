@@ -122,7 +122,7 @@ docker compose version
 
   在后台所有启动服务：
 
-  ```
+  ```text
   docker compose up -d
   ```
 

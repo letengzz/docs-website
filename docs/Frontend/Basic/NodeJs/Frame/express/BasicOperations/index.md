@@ -187,7 +187,7 @@ app.listen(3000, () => {
 
 一个标准的 Express 项目结构：
 
-```
+```text
 myapp/
 ├── node_modules/
 ├── public/

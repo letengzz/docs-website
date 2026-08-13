@@ -8,7 +8,7 @@ Next.js 采用基于文件系统的路由机制，App Router 基于 React Server
 
 在 App Router 中，`app/` 目录下的文件结构直接映射为路由：
 
-```
+```text
 app/
 ├── page.tsx              → /
 ├── about/
@@ -32,7 +32,7 @@ app/
 
 ### 单个参数
 
-```
+```text
 app/
 └── users/
     └── [id]/
@@ -57,7 +57,7 @@ export default async function UserPage({ params }: Props) {
 
 ### 多个参数
 
-```
+```text
 app/
 └── users/
     └── [userId]/
@@ -102,7 +102,7 @@ export default function UserPage({ params }: { params: { id: string } }) {
 
 ### 基本用法
 
-```
+```text
 app/
 └── docs/
     └── [...slug]/
@@ -127,7 +127,7 @@ export default async function DocsPage({ params }: Props) {
 
 ### 可选捕获所有
 
-```
+```text
 app/
 └── docs/
     └── [[...slug]]/
@@ -156,7 +156,7 @@ export default async function DocsPage({ params }: Props) {
 
 路由组使用括号命名，不会影响 URL 路径：
 
-```
+```text
 app/
 ├── (marketing)/
 │   ├── layout.tsx
@@ -171,7 +171,7 @@ app/
 
 ### 条件布局
 
-```
+```text
 app/
 ├── (auth)/
 │   ├── layout.tsx           # 无导航布局
@@ -189,7 +189,7 @@ app/
 
 ### 基本用法
 
-```
+```text
 app/
 ├── page.tsx
 ├── @analytics/
@@ -247,7 +247,7 @@ export default function RootLayout({
 
 拦截路由使用 `(..) `语法，用于模态框等场景：
 
-```
+```text
 app/
 ├── @modal/
 │   └── (.)photo/
@@ -373,7 +373,7 @@ export default function AdminPage() {
 
 ## 路由匹配优先级
 
-```
+```text
 app/
 ├── about/
 │   └── page.tsx           # 1. 静态路由（最高优先级）

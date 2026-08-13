@@ -6,7 +6,7 @@ Java 集合框架（Collection Framework）是 Java 标准库中用于存储和�
 
 ### 集合体系结构
 
-```
+```text
 Collection（接口）
 ├── List（接口） - 有序、可重复
 │   ├── ArrayList - 动态数组

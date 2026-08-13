@@ -6,7 +6,7 @@
 
 目录结构从项目根路径开始 (注意：不是 src 目录)
 
-```
+```text
 base-vue3-template/
 |- mock/
     |- demo.ts
@@ -40,7 +40,7 @@ base-vue3-template/
 
 除了 Mock 服务，其他几个部分的关系如下图：
 
-```
+```text
 +---------------------+
 | service层 (API 定义) |
 +---------------------+
@@ -73,7 +73,7 @@ base-vue3-template/
 
 `src/http/core/types.ts`：
 
-```
+```text
 /**
  * 通用响应结构
  */
@@ -102,7 +102,7 @@ export interface PageData<T> {
 
 在 `src/http/core/index.ts`导出全部类型：
 
-```
+```text
 export * from './types'
 ```
 
@@ -117,7 +117,7 @@ export * from './types'
 
 ### 安装依赖
 
-```
+```text
 pnpm add mockjs @types/mockjs vite-plugin-mock -D
 ```
 
@@ -130,7 +130,7 @@ vite-plugin-mock 版本号：3.0.2
 
 在 `vite.config.ts`中配置 Mock 插件：
 
-```
+```text
 // ,,,
 import { viteMockServe } from 'vite-plugin-mock'
 
@@ -150,7 +150,7 @@ export default defineConfig({
 
 在 `mock`目录下创建 `demo.ts`：
 
-```
+```text
 import Mock from 'mockjs'
 import { ApiResp } from '../src/http/core'
 import { MockMethod } from 'vite-plugin-mock'
@@ -284,7 +284,7 @@ export default demoMock
 
 首先安装 Axios：
 
-```
+```text
 pnpm add axios
 ```
 
@@ -294,7 +294,7 @@ pnpm add axios
 
 在 `src/http/core/types.ts`中追加配置类型的定义：
 
-```
+```text
 // ...
 
 /**
@@ -317,7 +317,7 @@ export interface HttpClientConfig {
 
 创建 Axios 的实例，并封装基础的请求方法。先上代码：
 
-```
+```text
 import { Env } from '@/utils/env.ts'
 import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios'
 import type { HttpClientConfig } from './types.ts'
@@ -435,7 +435,7 @@ export class HttpClient {
 
 继续在 `src/http/core/types.ts`追加**拦截器配置项 InterceptorConfig**的定义，并在 **HttpClientConfig**中添加 interceptor 配置属性项：
 
-```
+```text
 // ...
 
 /**
@@ -468,7 +468,7 @@ export interface HttpClientConfig {
 
 1）定义请求拦截器（成功&失败）、响应拦截器（成功&失败）四个函数的默认实现，并将其导出供外部自定义时方便调用：
 
-```
+```text
 import { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse, AxiosError } from 'axios'
 import { Env } from '@/utils/env'
 import type { InterceptorConfig } from './types.ts'
@@ -548,7 +548,7 @@ defaultResponseOnFulfilled：解析返回的结果，将 AxiosResponse 解析为
 
 2）定义 Interceptors 类：
 
-```
+```text
 /**
  * 拦截器管理类
  * 负责配置和管理请求/响应拦截器
@@ -592,7 +592,7 @@ Interceptors 中提供了 applyInterceptors 方法，咱需要再 HttpClient 中
 
 修改前面实现的 `http-client.ts`，在里面加入 Interceptors：
 
-```
+```text
 export class HttpClient {
   // ...
   private interceptors: Interceptors
@@ -618,7 +618,7 @@ export class HttpClient {
 
 最后还需要在 `http/core/index.ts`中导出这两个文件的全部内容：
 
-```
+```text
 export * from './types'
 export * from './http-client'
 export * from './interceptors'
@@ -634,7 +634,7 @@ export * from './interceptors'
 
 `src/http/index.ts`：
 
-```
+```text
 import { HttpClient } from '@/http/core/http-client.ts'
 import type { AxiosRequestConfig } from 'axios'
 
@@ -660,7 +660,7 @@ export const instance = api.getInstance()
 
 如果你无需自定义配置，创建 HttpClient 对象时可以不传递配置：
 
-```
+```text
 export const api = new HttpClient()
 ```
 
@@ -688,7 +688,7 @@ export const api = new HttpClient()
 前文搭建了 Mock 服务，从路径上看，这是比较符合 RESTful 风格的接口。针对这些符合 RESTful 风格的接口，路径通常只有资源不同：
 在这个案例中的资源是 `demo`， 换个资源可能是 `user`、`product`等，除了资源不同，其余路径都是一致的，所以我会提取一个抽象类：
 
-```
+```text
 src/services/base-service.ts
 import { api } from '@/http'
 import type { PageData, PageReq } from '@/http/core/types.ts'
@@ -727,7 +727,7 @@ export abstract class BaseService<T, Q extends PageReq> {
 在这个抽象类的基础上，再来实现业务的 CRUD 就简单了。
 `src/services/demo-service.ts`：
 
-```
+```text
 import { BaseService } from './base-service.ts'
 import type { PageReq } from '@/http/core/types.ts'
 
@@ -765,7 +765,7 @@ export const demoService = new DemoService()
 最后一步了，创建一个页面进行测试：
 `src/pages/http-demo.vue`
 
-```
+```text
 <template>
   <div>
     <h1>Demo 列表</h1>
@@ -881,7 +881,7 @@ button {
 
 在 `src/http/core/`目录下创建 `plugin.ts`：：
 
-```
+```text
 import type { AxiosInstance } from 'axios'
 
 /**
@@ -903,7 +903,7 @@ export interface HttpPlugin {
 
 继续在 `src/http/core/`目录下创建 `plugin-manager.ts`：
 
-```
+```text
 import type { AxiosInstance } from 'axios'
 import type { HttpPlugin } from './plugin.ts'
 
@@ -964,7 +964,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/AbortController
 4）如果需要**取消某个请求**，则从 Map 中根据请求配置获取取消控制器，调用该控制器的 abort() 方法；
 5）如果需要**取消所有请求**，则遍历 Map 中的所有控制器，依次调用 abort() 方法。
 
-```
+```text
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
 import type { HttpPlugin } from './plugin.ts'
 
@@ -1067,7 +1067,7 @@ export class RequestCanceler implements HttpPlugin {
 `src/http/core/types.ts`：
 扩展 `HttpClientConfig`配置属性：
 
-```
+```text
 /**
  * HTTP请求客户端配置
  */
@@ -1085,7 +1085,7 @@ export interface HttpClientConfig {
 接着修改 HttpClient 类，使用 `PluginManager`来管理和应用插件：
 `src/http/core/http-client.ts`：
 
-```
+```text
 // ... 其他导入
 import { RequestCanceler } from './request-canceler.ts'
 import { PluginManager } from './plugin-manager.ts'
@@ -1150,7 +1150,7 @@ export class HttpClient {
 
 修改 `src/pages/http-demo.vue`文件，添加测试取消全部请求的功能：
 
-```
+```text
 <template>
   <div>
     <!-- 其他内容不变 -->
@@ -1228,7 +1228,7 @@ const onTestCancelAllRequests = async () => {
 
 在 `src/http/core/`目录下创建 `request-dedup.ts`：
 
-```
+```text
 import axios, {
   type AxiosInstance,
   type AxiosRequestConfig,
@@ -1298,7 +1298,7 @@ export class RequestDedup implements HttpPlugin {
 
 在 `src/http/core/types.ts`文件中，扩展 `HttpClientConfig`配置类型，添加 `enableDedup`选项：
 
-```
+```text
 /**
  * HTTP请求客户端配置
  */
@@ -1312,7 +1312,7 @@ export interface HttpClientConfig {
 
 修改 `src/http/core/http-client.ts`文件，集成请求防重插件：
 
-```
+```text
 // 导入防重插件
 import { RequestDedup } from './request-dedup.ts'
 
@@ -1350,7 +1350,7 @@ export class HttpClient {
 
 在 `src/http/core/index.ts`文件中，导出防重插件：
 
-```
+```text
 // ...
 export * from './request-dedup' // 导出防重插件
 ```
@@ -1365,7 +1365,7 @@ export * from './request-dedup' // 导出防重插件
 刷新数据按钮用于调用接口；
 测试防重按钮用来测试请求防重，模拟重复点击“刷新数据”按钮。
 
-```
+```text
 <template>
   <div>
     <!-- 其他代码... -->
@@ -1382,7 +1382,7 @@ export * from './request-dedup' // 导出防重插件
 
 ### 10.2 添加测试方法
 
-```
+```text
 // ...
 
 const refreshBtnRef = useTemplateRef('refreshBtnRef')
@@ -1410,7 +1410,7 @@ const onTestDeduplication = async () => {
 
 如果某个请求不需要防重功能，可以在请求配置中添加 `disableDedup: true`：
 
-```
+```text
 api.get(`/${this.getPrefix()}`, { params }, {
   disableDedup: true
 })
@@ -1450,7 +1450,7 @@ api.get(`/${this.getPrefix()}`, { params }, {
 既然提到了错误类型，咱不妨先定义一堆 Axios 会出现的 HTTP 错误类型，然后再进行配置类型的定义。
 在 `src/http/core/types.ts`中添加重试相关的类型定义和常量：
 
-```
+```text
 /**
  * HTTP错误类型常量
  */
@@ -1503,7 +1503,7 @@ export interface HttpClientConfig {
 
 这已经是第三个插件了，相信大家都非常熟悉咱插件规范。创建 `src/http/core/request-retry.ts`，按照前面的插件规范实现重试插件。
 
-```
+```text
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
 import type { HttpPlugin } from './plugin.ts'
 import type { RetryConfig } from './types.ts'
@@ -1603,7 +1603,7 @@ export class RequestRetry implements HttpPlugin {
 
 在`src/http/core/http-client.ts`中集成重试插件：
 
-```
+```text
 // 导入重试插件
 import { RequestRetry } from './request-retry.ts'
 
@@ -1638,7 +1638,7 @@ export class HttpClient {
 
 在 `src/http/core/index.ts`中导出重试插件：
 
-```
+```text
 // ...
 export * from './request-retry' // 导出重试插件
 ```
@@ -1647,7 +1647,7 @@ export * from './request-retry' // 导出重试插件
 
 和前面一样，在 `src/pages/http-demo.vue`文件中添加测试按钮：
 
-```
+```text
 <template>
   <!-- ... -->
 
@@ -1719,7 +1719,7 @@ https://ahooks.js.org/hooks/use-request/index
 **自动状态管理**
 自动管理 loading、error、data 等响应式状态，在使用时通过如下方式便可以获取这些状态：
 
-```
+```text
 const { loading, error, data } = useRequest(reqService, config)
 ```
 
@@ -1744,7 +1744,7 @@ const { loading, error, data } = useRequest(reqService, config)
 
 首先在 `use-request.ts`中定义配置项类型：
 
-```
+```text
 export interface UseRequestOptions<T> {
   // 是否在组件挂载时自动请求
   auto?: boolean
@@ -1769,7 +1769,7 @@ export interface UseRequestOptions<T> {
 
 接着定义返回结果的类型：
 
-```
+```text
 export interface UseRequestReturn<T> {
   // 请求数据
   data: any
@@ -1796,7 +1796,7 @@ export interface UseRequestReturn<T> {
 
 具体代码实现如下：
 
-```
+```text
 export function useRequest<T>(
   requestFn: (config?: AxiosRequestConfig) => Promise<T>,
   options: UseRequestOptions<T> = {}
@@ -1867,7 +1867,7 @@ export function useRequest<T>(
 
 在 src/http/core/index.ts 中导出 use-request.ts 的全部内容：
 
-```
+```text
 //...
 export * from './use-request'
 ```
@@ -1878,7 +1878,7 @@ export * from './use-request'
 
 ### 13.1 基本使用
 
-```
+```text
 <template>
   <div>
     <div v-if="loading">加载中...</div>
@@ -1908,7 +1908,7 @@ const { data, loading, error, run } = useRequest<PageData<Demo>>(() => demoServi
 
 ### 13.2 带依赖追踪
 
-```
+```text
 <template>
   <div>
     <h1>Demo 详情</h1>
@@ -1944,7 +1944,7 @@ const { data, loading, error } = useRequest<Demo>(() => demoService.getDetail(Nu
 
 ### 13.3 手动触发
 
-```
+```text
 <template>
   <div>
     <h1>创建 Demo</h1>

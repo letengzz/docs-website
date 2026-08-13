@@ -446,7 +446,7 @@ scrape_configs:
 
 重启Prometheus：
 
-```
+```text
 docker restart prometheus
 ```
 

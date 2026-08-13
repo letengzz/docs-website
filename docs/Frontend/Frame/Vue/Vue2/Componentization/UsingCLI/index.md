@@ -18,7 +18,7 @@ vue create my-project
 
 ### 选择预设
 
-```
+```text
 Vue CLI v4.5.0
 ? Please pick a preset:
   Default ([Vue 2] babel, eslint)
@@ -28,7 +28,7 @@ Vue CLI v4.5.0
 
 ### 手动选择功能
 
-```
+```text
 ? Check the features needed for your project:
  (*) Babel
  ( ) TypeScript
@@ -43,7 +43,7 @@ Vue CLI v4.5.0
 
 ### 选择 Vue 版本
 
-```
+```text
 ? Choose a version of Vue.js that you want to start the project with
   3.x
 > 2.x
@@ -51,7 +51,7 @@ Vue CLI v4.5.0
 
 ## 项目结构
 
-```
+```text
 my-project/
 ├── node_modules/
 ├── public/

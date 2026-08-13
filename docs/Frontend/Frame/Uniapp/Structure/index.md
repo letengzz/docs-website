@@ -2,7 +2,7 @@
 
 ## 标准项目结构
 
-```
+```text
 my-uniapp/
 ├── static/              # 静态资源（图片、字体等）
 ├── pages/               # 页面目录
@@ -211,7 +211,7 @@ export function createApp() {
 
 ## 条件编译目录
 
-```
+```text
 ├── platform/
 │   ├── h5/          # 仅 H5 平台
 │   ├── mp-weixin/   # 仅微信小程序
@@ -220,7 +220,7 @@ export function createApp() {
 
 ## uni_modules 规范
 
-```
+```text
 uni_modules/
 └── uni-ui/
     ├── components/           # 组件目录

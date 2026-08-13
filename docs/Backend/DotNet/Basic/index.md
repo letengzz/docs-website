@@ -31,7 +31,7 @@ Web应用程序开发（Asp.Net）
 
 ### 控制台应用程序
 
-```
+```text
 控制台程序是为了兼容[DOS](https://baike.baidu.com/item/DOS/32025?fromModule=lemma_inlink)
 程序而设立的，能够运行在MS-DOS环境中的程序。这种程序的执行就好像在一个DOS窗口中执行一样，
 **没有自己的界面**。   只是通过**字符串**来显示或者监控程序。
@@ -102,13 +102,13 @@ namespace **Zhaoxi.FirstConsoleAppCourse** 当前程序的命名空间，默认�
 
 **using 关键字**
 
-```
+```text
 以 using 关键字开头的一行代码，如：using System;  称作using语句，C#程序中以using语句开头的，主要用来引入程序相关的命名空间，一个类中可以包含多个using语句。
 ```
 
 **class关键字**
 
-```
+```text
 C#中用class关键字来声明一个类，后面跟上类名，class与类名之间一定要使用一个空格来间隔。
 ```
 
@@ -117,13 +117,13 @@ C#中用class关键字来声明一个类，后面跟上类名，class与类名�
 C# 中有单行注释和多行注释两种：
 单行注释，以“//”开头，后面注释文本内容，没有结束符，只对当行有效
 
-```
+```text
  //这里是方法体
 ```
 
 多行注释，以 `/*`开头，并且以 `*/`结尾，`/*`和`*/`之间的所有内容都属于注释内容，如：
 
-```
+```text
 /*
  这里是多行注释
 文本
@@ -132,7 +132,7 @@ C# 中有单行注释和多行注释两种：
 
 文档注释，对类、属性、方法经常加有文档注释
 
-```
+```text
   /// <summary>
   /// 文档注释
   /// </summary>
@@ -142,13 +142,13 @@ C# 中有单行注释和多行注释两种：
 成员变量是用来存储类中要使用的数据的。
 **成员函数**
 
-```
+```text
 成员函数（也可以称为成员方法）是执行特定任务的语句集，一个类的成员函数需要在类中声明。如上面代码中的GetTeacherInfo()就是成员方法。
 ```
 
 **标识符**
 
-```
+```text
 标识符是用来为类、变量、函数或任何其他自定义内容命名。C# 中标识符的定义规则如下所示：
 ```
 
@@ -189,7 +189,7 @@ C# 中的关键字是编译器**预先定义**好的一些单词，也可以称�
 变量可以当作一种通过符号（变量名）表示某个内存区域的方法，变量的值可以更改，并且可以多次重复使用。
 **声明语法**：数据类型 变量名列表(可以一个或个多变量名，变量名之间用逗号隔开)
 
-```
+```text
 int a, b, c;
 float d, e, f;
 ```
@@ -206,7 +206,7 @@ C# 中变量可以通过等号(=)后跟一个常量表达式的形式进行初�
 语法格式如下：**变量名=值;**
 如：
 
-```
+```text
 int x,y;
 x=12;
 y=5;
@@ -215,7 +215,7 @@ y=5;
 也可以在变量声明时直接进行初始化，语法格式如下：**数据类型 变量名=值;**
 如：
 
-```
+```text
 int a=123;
 float f=2.3f;
 ```
@@ -224,7 +224,7 @@ _注_：声明变量并初始化是一个良好的习惯，不然可能会产生
 **变量接收用户输入信息**
 用**Console**类提供的**ReadLine()**方法可以接收用户输入，将其输入内容存储到变量中
 
-```
+```text
  int a=0;
  Console.WriteLine("请输入变量a的值：");
  a =int.Parse( Console.ReadLine());
@@ -267,7 +267,7 @@ C#中的值类型分为：**整型、浮点型、布尔型、字符型**。
 整型：用来存储整数，不含小数，根据存储容量大小又分为不同的类型，还分有符号和无符号整数。 如：数量、长度、年龄、编号等等。
 **有符号整数**：sbyte、short、int、long **无符号整数**：byte、ushort、uint、ulong
 
-```
+```text
  //sbyte b1 = -200; // error 超出范围
  sbyte b1 = -100; // 正确
  short num1 = 234;
@@ -285,7 +285,7 @@ C#中的值类型分为：**整型、浮点型、布尔型、字符型**。
 **double** 精度**16**有效数字 64位 双精度 有精度损耗 0.0**D** 8字节 Double
 **decimal** (精确) 最多有**28~29**位有效数字 128位 双精度 无损耗 0.0**M** 16字节 Decimal
 
-```
+```text
 float f1 = 4.5f;//float类型以f或F结尾
 double d1 = 2.5;//默认是double类型
 double d2 = 5.6d;//double类型以D或d结尾
@@ -296,7 +296,7 @@ decimal money = 53.45m;//decimal类型是M或m结尾   价格、金额、精确�
 
 bool,只有两个值：true 或 false，常用于条件判断语句中条件表达式的结果或表示是或否的值。默认值为false
 
-```
+```text
    bool bl= true;
    int count = 3;
    bool blAdd = (count >0); //count是否大于0   ----true
@@ -307,7 +307,7 @@ bool,只有两个值：true 或 false，常用于条件判断语句中条件表�
 char,是System.Char类型的别名，表示一个Unicode字符，占2个字节(16位)。 默认值是 ‘\0’
 char本质上就是16位的无符号整数值，范围是0~65535，与ushort的范围是一样的。
 
-```
+```text
 //char 字符
 char c = 'A';
 ushort intC = c;//  65
@@ -325,7 +325,7 @@ C# 提供了一个特殊的数据类型，**nullable** 类型（可空类型）�
 如：int? 即 Nullable 表示可空的Int32，可以是int取值范围内的值，也可以是null值
 bool? 类型的变量可以赋值为true，false,或 null. float? double? decimal?.....
 
-```
+```text
 //可空类型
 decimal? count = null;
 count = 23;
@@ -336,7 +336,7 @@ bl = false;
 **Null合并运算符（??）**
 把操作数类型隐式转换为另一个可空或不可空的值类型。
 
-```
+```text
  //??运算符
 decimal? count=null;
 decimal newCount = count ?? -1;//如果count为null,则把-1赋给newCount,如果不为空，就把count赋给newCount
@@ -354,7 +354,7 @@ Console.WriteLine(newCount1);
 enum 由一组具有独立标识符（名称）的整数类型常量构成。用enum关键字声明，枚举可以定义在类内部，也可以定义在类外部。
 语法格式如下所示：
 
-```
+```text
 enum enum_name
 {
   enumeration list;
@@ -368,7 +368,7 @@ enum enum_name
 - 枚举类型具有固定的常量值；
 - 枚举类型可以遍历。
 
-```
+```text
 enum RoleType
 {
    管理员,
@@ -409,7 +409,7 @@ enum RoleType
 要定义一个结构体需要使用 **struct** 关键字，每个结构体都可以被看作是一种新的**数据类型**，其中可以包含**多个成员**（成员属性和成员方法）。
 下面声明一个Student的结构体：
 
-```
+```text
  public struct Student
  {
     //字段
@@ -443,7 +443,7 @@ enum RoleType
 - 当您使用 new 操作符创建一个结构对象时，会调用适当的构造函数来创建结构。与类不同，结构可以不使用 new操作符即可被实例化。
   如果不使用 new 操作符，只有在所有的字段都被初始化之后，对象才被使用。
 
-```
+```text
 //创建结构体对象
 //1.使用无参构造函数
 Student student = new Student();
@@ -473,7 +473,7 @@ C# 中内置的引用类型包括 **Object**（对象）、**Dynamic**（动态�
 **对象类型**是 C# 通用类型系统（Common Type System：CTS）中所有数据类型的**最终基类**，**object** 是 System.Object 类的别名。任何类型的值都可以分配给object类型，但是在分配值之前，需要对类型进行转换。
 将值类型转换为对象类型的过程被称为“**装箱**”，反之将对象类型转换为值类型的过程则被称为“**拆箱**”。
 
-```
+```text
 int val = 123; //存储在栈上
 object oId = val;//装箱  --->存储到堆上
 int intVal = (int)oId;//拆箱 --->再存储到栈上
@@ -495,7 +495,7 @@ int intVal = (int)oId;//拆箱 --->再存储到栈上
 可以在动态类型的变量中存储**任何类型**的值，这些变量的类型检查是在**程序运行时**进行的. **类型不安全**
 **声明语法**：dymamic 变量名=值;
 
-```
+```text
  dynamic name = "Jack";
  dynamic num = 203;
  dynamic bl=false;
@@ -507,7 +507,7 @@ int intVal = (int)oId;//拆箱 --->再存储到栈上
 
 字符串类型的变量允许您将一个字符串赋值给这个变量，字符串类型需要通过 **string** 类来创建，string 类是 System.String 类的别名，它是从对象（Object）类型中派生的。在 C# 中有两种定义字符串类型的方式，分别是使用`**" "**`和`**@" "**`。
 
-```
+```text
 //使用" "声明
 string sname = "Jack";
 //使用@" "声明
@@ -530,7 +530,7 @@ string path = @"d:\folder\imgs";
 隐式类型转换是由 C# 以**类型安全**的方式执行的，转换的过程中**不会导致数据丢失**。
 例如从较小的整数类型（例如 int）转换到较大的整数类型（例如 long），从派生类转换为基类。
 
-```
+```text
 short sValue = 123;
 int count = sValue;
 long bigValue = count;
@@ -548,14 +548,14 @@ decimal decVal1 = bigValue;
 常应用于：大范围转小范围 、浮点型转整型、浮点型与decimal 、数值字符串转值类型
 例如将 double 类型转换为 int 类型、将double转换为float....... 1.**(type)value**形式强转
 
-```
+```text
 double dValue = 3.56;
 int intValue = (int)dValue;//  3
 ```
 
 上例中，转换前的值是3.56，转换后的值为3. 造成了数据丢失。2.**type.Parse(string)** 将字符串转换为对应的值类型
 
-```
+```text
 string strValue = "12.5";
 float fValue=float.Parse(strValue);//12.5
 string strDec= "789.50";
@@ -564,7 +564,7 @@ decimal decValue=decimal.Parse(strDec);
 
 3.**type.TryParse(string,out type 变量)** 这种转换，如果不成功也不会异常
 
-```
+```text
  string str = "12.89";
  int reInt = 0;
  int.TryParse(str, out reInt);
@@ -575,7 +575,7 @@ decimal decValue=decimal.Parse(strDec);
 
 4.**Convert.ToType(value)** 将一种类型转换为指定类型
 
-```
+```text
  object oValue = 120;
  byte byteValue = Convert.ToByte(oValue);//转换为byte
  string strValue = "7896";
@@ -662,7 +662,7 @@ C#中支持的逻辑运算符有：&& || ! （如A为false,B为true）
 
 假设 a=30，b= 13，它们的二进制格式和位运算结果如下：
 
-```
+```text
 int a = 40; //二进制 0010 1000
 int b = 13; //二进制 0000 1101
 int c = a & b; //0000 1000  --8
@@ -703,7 +703,7 @@ C#中支持的位运算符有：
 | ^=      | 按位异或且赋值运算符                                             | C ^= 2 等同于 C = C ^ 2           |
 | &#124;= | 按位或且赋值运算符                                               | C &#124;= 2 等同于 C = C &#124; 2 |
 
-```
+```text
 int a = 32;
 int b =10;
 b+= a; //b=b+a; 44
@@ -743,7 +743,7 @@ f |= 5;  //f=f|5  f:0001 0100  5:0000 0101  -- 0001 0101  -->21
 | **is**       | 判断对象是否为某一类型                 | if( c is Button) // 判断 c 是否是一个Button类型的对象 |
 | **as**       | 强制转换，即使转换失败也不会抛出异常。 | Teacher tea= obj as Teacher; 将obj强转为Teacher类型   |
 
-```
+```text
 获取数据类型的大小 (字节数)
 int intSize =sizeof(int); //4
 int floatSize=sizeof(float); //4
@@ -806,7 +806,7 @@ string str=obj as string;
 
 13 所有赋值运算符 右至左
 
-```
+```text
  int a = 5;
  int b=8, c = 9;
  int d = a + b * c;// 77 先算b*c,再与a相加，最后再赋值给d
@@ -828,7 +828,7 @@ string str=obj as string;
 其中，常量名（类似于变量名）；值为常量的值。
 定义常量，需要指定常量的数据类型，定义常量名，指定值。
 
-```
+```text
 //定义常量
 const int len = 12;
 const double pi = 3.14;
@@ -845,7 +845,7 @@ double area = pi * r * r;//314   计算圆面积
 除了前缀外，整数常量**还可以包含后缀**，后缀可以是 **U 和 L** 的组合，U 和 L 分别表示 unsigned 和 long。
 后缀既**可以大写也可以小写，而且可以以任意顺序进行组合**，但是**不能重复**。
 
-```
+```text
 const int len = 12;
 43    // 十进制常量
 0415  // 八进制常量
@@ -863,7 +863,7 @@ const int len = 12;
 浮点常量由**整数部分、小数点、小数部分**和**指数部分**组成。您可以用**小数或指数**形式来表示浮点常量。
 下面列举了一些浮点常量的示例：
 
-```
+```text
 const double pi = 3.14;
 const double dd=3e3;//3000
 double d2 = dd * 4;//12000
@@ -896,7 +896,7 @@ const float ff = 4.567f;
 | \\t      | 水平制表符 tab      |
 | \\v      | 垂直制表符 tab      |
 
-```
+```text
  const  char c = 'a';
  const char c1 = '\t';
  Console.Write( "百度：\twww.baidu.com\r\n");
@@ -907,7 +907,7 @@ const float ff = 4.567f;
 
 字符串常量需要使用双引号`" "`或`@" "`引起来。字符串常量与字符常量相似，可以是纯字符、转义序列或 Unicode 字符。
 
-```
+```text
 const string ss = "www.taobao.com";
 const string ss1 = @"Json";
 ```
@@ -921,7 +921,7 @@ const string ss1 = @"Json";
 C# 中的 if 语句用于条件判断，其中包含一个**布尔表达式**，后面跟随着一段要执行的代码;
 当布尔表达式为true时，后面跟随的代码就会执行，
 
-```
+```text
 //if 语句的语法格式：
 if(布尔表达式)
 {
@@ -934,7 +934,7 @@ if(布尔表达式)
 C# 的 if else 语句同样用于条件判断，它比 if 语句中**多出了一个 else** 语句，当布尔表达式为假时，执行 else 语句块中的代码，
 语法格式：
 
-```
+```text
 if(布尔表达式)
 {
   //表达式为true时要执行的代码块;
@@ -950,7 +950,7 @@ else
 C# 的 if else if 语句：就是一个 if 语句后面跟随着一个或多个 **else if else** 语句，语句中可以包含**多个条件表达式**，程序会依次判断这些条件表达式，当条件表达式为真时则执行后面语句块中的代码；如果没有为真的条件表达式则执行 else 语句块中的代码。
 其语法格式：
 
-```
+```text
 if(布尔表达式 1)
 {
   //布尔表达式 1 为true时要执行的代码块;
@@ -977,7 +977,7 @@ else
 C# 中的 switch 语句有些类似于if else if语句，都可以根据表达式执行某个的语句块，其语法格式：
 可能情况的值的数量，一般大于或等于3个情况，就可以使用switch.
 
-```
+```text
 switch(表达式)
 {
     case value1:
@@ -1017,7 +1017,7 @@ C#中支持 ：for 循环、foreach 循环、while 循环和 do while 循环等�
 
 for 循环可以**重复执行**一段代码，而且**重复的次数**是可以设定的，多用于**确定重复次数**的循环处理，其语法格式：
 
-```
+```text
 for (初始化语句; 判断条件; 迭代器)
 {
         // 循环主体代码
@@ -1034,7 +1034,7 @@ for 循环语句的执行流程：
 
 在 C# 中，循环语句还可以嵌套使用，也就是说我们可以在一个 for 循环内再使用一个或多个 for 循环。
 
-```
+```text
  //99乘法表
  for (int i = 1; i <= 9; i++)
  {
@@ -1062,7 +1062,7 @@ for 循环语句的执行流程：
 
 for 循环中，如果判断条件永远不会为假，那么循环将变成无限循环（也叫死循环），我们在定义循环语句时应尽量避免这种情况的出现，除非就是要用无限循环的情况，不过一般无限循环用while循环更简便。
 
-```
+```text
  for (int i=0; ;i++ )
  {
      if (i < 20)
@@ -1078,7 +1078,7 @@ for 循环中，如果判断条件永远不会为假，那么循环将变成无�
 在 C# 中，while 循环用于多次迭代一段程序代码，特别是在迭代的**次数不固定**的情况下，建议使用 while 循环而不是 for 循环。
 while 循环的语法格式：
 
-```
+```text
 while(表达式)
 {
   //循环主体代码
@@ -1096,7 +1096,7 @@ do while 循环会**先执行一遍循环主体中的代码**，然后**再判�
 也就是说，不论表达式的结果如何，do while 循环**至少会执行一次**。
 do while 循环的**语法格式**：
 
-```
+```text
 do
 {
   //循环主体;    // 要执行的代码
@@ -1110,7 +1110,7 @@ do
 C#中，往往使用 foreach 遍历数组或者集合对象中的每一个元素。
 其**语法格式**：
 
-```
+```text
 foreach(数据类型 变量名 in 数组或集合对象)
 {
     语句块;
@@ -1147,7 +1147,7 @@ C# 中的函数（也可以称为**方法**）是一段具有**签名**（由方
 
 C# 中声明方法的语法格式：
 
-```
+```text
 访问修饰符 返回值类型 方法名(参数列表)
 {
     代码语句块
@@ -1157,7 +1157,7 @@ C# 中声明方法的语法格式：
 
 另外需要注意的是，访问权限修饰符、参数列表和返回语句是**可选的，可以省略**。
 
-```
+```text
 //访问修饰符  返回值类型  方法名 （参数1，参数2）
 public int Add(int num1,int num2)
 {
@@ -1175,7 +1175,7 @@ public int Add(int num1,int num2)
 - 若方法在定义时没有定义参数列表，那么在调用方法时也不需要在方法名后面的括号内填入参数；
 - 对于有返回值的方法，在调用方法时可以使用一个变量（可选）来接收方法的返回值，变量的类型要与方法返回值的类型相同。
 
-```
+```text
 调用方法
 MethodClass method = new MethodClass();//实例化对象
 //sum接收返回值   5,8是传入的参数值
@@ -1231,7 +1231,7 @@ C# 中的静态方法指的是，在一个类中使用 **static** 修饰的方�
 方法可以使用 return 语句从方法中返回一个值，但是如果使用输出传递则可以从方法中一次性返回多个值。
 输出传递是将数据从方法中传输出来而不是传入到方法中。
 
-```
+```text
 方法内部修改了num1的值
 public int AddOut(out int num1, int num2)
  {
@@ -1254,14 +1254,14 @@ Console.WriteLine("调用后：a=" + a);
 在有些情况下，我们在定义方法时并不能确定方法的参数的数量，这时可以使用 参数数组，参数数组通常用于为方法传递**未知数量**的参数。
 如果使用参数数组，我们使用 **params** 关键字，语法如下：
 
-```
+```text
 访问权限修饰符 返回值类型 函数名(params 类型名称[] 数组名称)
 public        void     ShowMessage(params string[] infos)
 ```
 
 使用参数数组时，调用方法时，既可以直接为方法传递一个数组作为参数，也可以使用`函数名(参数1, 参数2, ..., 参数n)`的形式传递若干个具体的值。
 
-```
+```text
   public void ShowMessage(params string[] infos)
  {
      int i = 0;
@@ -1324,7 +1324,7 @@ C# 中也支持数组，数组是一个用来存储**相同类型数据的、固
 在 C# 中声明一个数组的语法格式：
 **数据类型[] 数组名称;** --- 其中[]用来指定数组的维度，数组分为一维或多维
 
-```
+```text
 int[] intArr;   //声明一个整型数组intArr
 float[] fArr01; //声明一个float类型的数组
 ```
@@ -1333,7 +1333,7 @@ float[] fArr01; //声明一个float类型的数组
 
 数组与变量一样，只有初始化后才可以为其中的每个元素赋值。因为数组是**引用类型**的，所以您需要使用 **new** 关键字来对数组进行初始化。
 
-```
+```text
 int[] intArr;
 intArr=new int[6];//初始化数组
 //声明并初始化一起
@@ -1347,7 +1347,7 @@ double[] dArr03=new double[15];
 
 1.我们可以在初始化后通过使用索引为数组中的元素赋值。不过，这种一个一个的赋值太过麻烦，一般我们不这样做。
 
-```
+```text
 int intArr=new int[6];
 intArr[0]=8;
 intArr[1]=25;
@@ -1357,33 +1357,33 @@ intArr[5]=10;
 
 2.当我们确定这个数组中的所有元素，可以在声明时直接为数组赋值。把元素值放在{}中，元素间用逗号（,）隔开。
 
-```
+```text
 float[] fArr={2.3f,66.9f,99.9f};
 ushort[] usArr2={23,567,999,10003};
 ```
 
 这种方式，不需要设定数组的长度，如果需要设定数组长度像下面这样做。
 
-```
+```text
 float[] fArr= new float[3]{2.3f,66.9f,99.9f};
 ```
 
 不过，这种方式，不写长度也是可以的。
 
-```
+```text
 ushort[] usArr2=new ushort[]{23,567,999,10003};
 ```
 
 3.数组与变量类似，所以也可以将一个数组赋值给另一个相同类型的数组，这样两个数组将指向同一个内存地址。
 
-```
+```text
 int[] intArr1=new int[]{1,23,45,10,55,90};
 int[] intArr2=intArr1;
 ```
 
 4.还可以将一串用分隔符号连接字符串转换为数组。
 
-```
+```text
  string strArr = "Lee,Json,SQLServer,GitHub,School";
  string[] items = strArr.Split(','); //这里用到了字符串的分割方法
 ```
@@ -1392,14 +1392,14 @@ int[] intArr2=intArr1;
 
 我们可以通过数组的索引（即下标）来访问数组中的指定元素，只需要在数组名的后面加上一个方括号`[ ]`，并在其中填写对应的索引即可。
 
-```
+```text
 int[] arr1 = new int[]{0, 11, 42,65,51, 76, 77, 98,19};
 int val = arr1[5]; //访问第6个元素
 ```
 
 一般我们经常通过循环结构来访问数组中的元素。
 
-```
+```text
  int[] arr1 =new int[]{0, 11, 42,65,51, 76, 77, 98,19};
  for(int i = 0; i < arr1.Length; i++)  //一个数组的长度，用Length属性获取
  {
@@ -1410,7 +1410,7 @@ int val = arr1[5]; //访问第6个元素
 **循环遍历数组**
 经常，我们使用for/while/foreach循环遍历数组中的元素。
 
-```
+```text
 int[] arr1 =new int[]{43,32,11,67,100,97};
  int i=0;
  foreach(int item in arr1)  //一个数组的长度，用Length属性获取
@@ -1425,7 +1425,7 @@ int[] arr1 =new int[]{43,32,11,67,100,97};
 C# 中同样支持多维数组（也称为矩形数组），它可以是二维的，也可以是三维的，多维数组中的数据以类似表格（行、列）的形式存储，因此也被称为矩阵。
 声明多维数组
 
-```
+```text
 int[,] arr01=new int[3,4];      // 声明一个二维数组
 short[,,] arr02=new short[2,3,2];     // 声明一个三维数组
 ```
@@ -1445,7 +1445,7 @@ C#一般维数大的数组不常用，常见的最多二维护或三维。下面
 
 二维数组的初始化与一维数组类似。其实二维数组可以看作是一个一维数组，这个一维数组的每个元素又是一个一维数组。1.方式1--指定维度
 
-```
+```text
 int[,] arr = new int[3,2]{
     {10,22},
     {45,33},
@@ -1455,7 +1455,7 @@ int[,] arr = new int[3,2]{
 
 2.方式2 -- 不指定维度
 
-```
+```text
 int[,] arr = new int[,]{
     {1,4,9,10,20},
     {2,8,11,20,32}
@@ -1464,7 +1464,7 @@ int[,] arr = new int[,]{
 
 3.方式3--直接赋值，不用new
 
-```
+```text
 int[,] arr = {
     {0, 11, 12, 23},
     {24, 35, 16, 37},
@@ -1476,7 +1476,7 @@ int[,] arr = {
 
 二维数组中的元素一样可以通过行和列索引来访问，如：
 
-```
+```text
 int item=arr[1,2]; //表示取arr数组中第二行第3个元素的值。
 
  int[,] arr = new int[3,4]
@@ -1536,7 +1536,7 @@ Array 类中提供了一系列操作数组的方法：
 | **Sort**(Array)               | 对一维数组中的元素排序                                                                                                       |
 | ToString()                    | 返回一个表示当前对象的字符串（继承自 Object）                                                                                |
 
-```
+```text
 int[] intArr01 = { 22, 55, 64, 89, 90, 67 };
 int[] intArr02 = { 20, 30, 40, 50 };
 Array.Clear(intArr02, 2, 2);//清除指定范围元素的值为该类型的默认值
@@ -1573,7 +1573,7 @@ Array.Sort(intArr01);//排序
 - 通过检索属性或调用返回字符串的方法；
 - 通过调用格式化方法将值或对象转换为其字符串表示形式。
 
-```
+```text
 //声明字符串变量，赋字符串值
 string schoolName = "朝夕教育";
 //用+拼接字符串
@@ -1596,7 +1596,7 @@ string schoolName = "朝夕教育";
  dateTime.ToString("yyyy-MM-dd");
 ```
 
-```
+```text
  //方法
  public string GetIdsString(int[] ids)
  {
@@ -1659,7 +1659,7 @@ String 类中提供了许多用来操作字符串的方法，
 | TrimEnd(Char[])                     | 删除字符串尾部的空白字符                                                                       |
 | TrimStart(Char[])                   | 删除字符串首部的空白字符                                                                       |
 
-```
+```text
  string str1 = "hello";
  string str2 = "welcome";
  int t = string.Compare(str1, str2);//-1
@@ -1713,7 +1713,7 @@ C#是面向对象的语言，使用**类**来进行抽象。在 C# 中，类是�
 
 类的定义需要使用 **class** 关键字，语法格式如下：
 
-```
+```text
 访问修饰符 class 类名
 {
     //成员变量  可多个，可以私有，可以公开
@@ -1742,7 +1742,7 @@ C#是面向对象的语言，使用**类**来进行抽象。在 C# 中，类是�
 - **成员变量**：类似于变量名；
 - **返回值类型**，用来指定成员方法的返回值类型；
 
-```
+```text
 public class Course
 {
     //字段
@@ -1769,7 +1769,7 @@ public class Course
 类和对象是两个不同的概念，**类决定了对象的类型，但不是对象本身**。另外，类是在开发阶段创建的，而对象则是在**程序运行期间创建**的。我们可以将对象看作是基于类创建的实体，所以对象也称为**类的实例**。
 要创建一个类的实例需要使用 **new** 关键字，假如我们创建了一个名为 Course的类，若要创建这个类的对象，语法格式如下：
 
-```
+```text
 Course course=new Course();
 ```
 
@@ -1777,27 +1777,27 @@ Course course=new Course();
 new 在这里的作用主要是在**程序运行时为类的实例分配内存**。
 我们还可以像创建变量那样只创建一个 指定类型的变量，而不使用 new 关键字实例化 Course这个类，
 
-```
+```text
 Course course01;
 ```
 
 不过不建议这样写，因为这个声明的变量只是一个 Course类型的普通变量，它并没有被赋值，所以不能使用 course01来访问对象中的属性和方法。如果一定要通过这个种方式声明，可以将一个已经实例化的对象赋给它。
 
-```
+```text
 course01=course;
 ```
 
 不过，这样，course01与course都指向同一个Course对象，如果不管用哪个变量去操作对象，都会影响另一个变量中的内容。
 创建好对象后，就可以通过对象访问类中的成员，用（.）运算符来访问。
 
-```
+```text
 course.CourseId=101;//访问属性，修改属性值
 course.ShowCourse();//调用成员方法
 ```
 
 ### 类和对象的使用
 
-```
+```text
 Course course01=new Course();
 Course course02=new Course();
 
@@ -1820,7 +1820,7 @@ course02.ShowCourse();
 属性访问器有两种，分别是 **get**和 **set** 属性访问器。其中 get 访问器用来**返回属性的值**，set 访问器用来**为属性设置新值**。
 在声明访问器时可以仅声明其中一个，也可以两个访问器同时声明。
 
-```
+```text
  定义CourseId属性
  private int id;
  public int CourseId
@@ -1845,7 +1845,7 @@ course01.ShowCourse();
 
 抽象类中可以拥有抽象属性，这些属性会在**派生类中实现**。
 
-```
+```text
  //抽象属性
  public abstract string Name
  {
@@ -1863,7 +1863,7 @@ C# 中使用 **abstract** 关键字来创建，抽象类用于实现部分接口
 - **不能**在一个**抽象类外部声明抽象方法**；
 - 通过在类定义时使用 **sealed** 关键字，可以将类声明为**密封类**，**密封类不能被继承**，因此抽象类不能声明密封类。
 
-```
+```text
 //抽象类
 public abstract class People
 {
@@ -1922,7 +1922,7 @@ Main中调用：
 使用 static 定义的属性称为“**静态属性**”，定义的变量称为“**静态变量**”，静态属性或变量直接通过 `**类名.属性名**` 直接访问，不需要事先创建类的实例。
 静态属性不仅可以在类的内部方法中初始化，还可以直接在类外进行初始化。
 
-```
+```text
 public class Teacher
 {
      //静态变量
@@ -1945,7 +1945,7 @@ teacher.AddCourse();
 
 在类中，除了可以定义静态属性，static 关键字还可以用来定义成员方法，使用 static 定义的成员方法称为**“静态方法**”，静态方法只能访问静态成员，不能访问非静态成员，但方法内部可以声明非静态的局部变量。
 
-```
+```text
 public static void ShowCourse()
 {
     T_CourseCount = 1;
@@ -1967,7 +1967,7 @@ public static void ShowCourse()
 - 静态类不能包含实例构造函数；
 - 静态类可以包含静态构造函数
 
-```
+```text
 //静态类
 public static class CommonHelper
 {
@@ -1988,7 +1988,7 @@ public static class CommonHelper
 在面向对象程序的设计中，密封类的主要作用就是不允许最底层的子类被继承。可以保证程序的规范性，安全性。
 目前对于大家来说，可能**用处不大**。以后制作复杂系统或者程序框架时，可能会涉及。
 
-```
+```text
 public sealed class ChildClass
 {
 
@@ -2010,7 +2010,7 @@ C# 中的构造函数有三种：
 
 构造函数是类中特殊的成员函数，它的名称与它所在**类的名称**相同，**没有返回值**。当我们使用 new 关键字创建类的对象时，可以使用实例构造函数来初始化类中的任意成员属性或变量。
 
-```
+```text
 public class Course
 {
     //属性  完整定义属性
@@ -2033,7 +2033,7 @@ public class Course
 
 当前创建 Course类的对象时，就会调用类中的实例构造函数，我们只需要在实例化对象时将具体的值传递给类中的构造函数即可。
 
-```
+```text
 Course course=new Course(105,"高级班课程");
 ```
 
@@ -2054,7 +2054,7 @@ Course course=new Course(105,"高级班课程");
 - 在创建第一个实例或引用任何静态成员之前，将**自动调用**静态构造函数以初始化类；
 - 静态构造函数会**在实例构造函数之前**运行。
 
-```
+```text
 public class Teacher
 {
    public static int count=0;
@@ -2084,7 +2084,7 @@ public class Teacher
 
 私有构造函数是一种**特殊的**实例构造函数，通常用在只包含静态成员的类中。如果一个类中具有一个或多个私有构造函数而没有公共构造函数的话，那么其他类（除嵌套类外）则无法创建该类的实例。
 
-```
+```text
 public class CommonClass
 {
    private CommonClass(){}
@@ -2095,7 +2095,7 @@ public class CommonClass
 
 这么做的好处就是空构造函数可阻止自动生成无参数构造函数。需要注意的是，如果不对构造函数使用访问权限修饰符，则默认是private,即私有构造函数。
 
-```
+```text
 //单例
 public class RecordInfo
 {
@@ -2134,7 +2134,7 @@ C# 中的析构函数具有以下特点：
 
 析构函数的名称同样**与类名相同**，不过需要在名称的前面加上一个波浪号`**~**`作为前缀，
 
-```
+```text
 public class Product:IDisposable
 {
    public Product()
@@ -2157,7 +2157,7 @@ public class Product:IDisposable
 
 在 C# 中，可以使用 this 关键字来表示**当前对象**，开发中我们可以使用 this 关键字来**访问类中的成员属性、变量**，也可以用来**串联构造函数**，可以作为**类的索引器**，还可以用于在**扩展方法中指明要扩展的类型**。
 
-```
+```text
 public class Product
 {
    public Product()
@@ -2230,7 +2230,7 @@ int no2 = product2[4] = 1011;
 Console.WriteLine(no1+","+no2);
 ```
 
-```
+```text
 //扩展方法  必须是在静态类中，第一个参数的类型就是要扩展的类型，用this
 //扩展string类，string类型的变量可以使用GetInt方法
  public static class StringHelper
@@ -2258,7 +2258,7 @@ Console.WriteLine(no1+","+no2);
 
 C# 中属性的定义需要提供属性名称，而索引器则不需要具体名称，而是使用 **this** 关键字来定义。
 
-```
+```text
 索引器类型 this[int index]
 {
     // get 访问器
@@ -2275,7 +2275,7 @@ C# 中属性的定义需要提供属性名称，而索引器则不需要具体�
 }
 ```
 
-```
+```text
 public class Teacher
 {
    private List<Teacher> teachers = new List<Teacher>();
@@ -2301,7 +2301,7 @@ public class Teacher
 
 索引器也可以被重载，而且在声明索引器时也可以带有多个参数，每个参数可以是不同的类型。另外，索引器中的索引不是必须是整数，也可以是字符串类型。
 
-```
+```text
 public class Teacher
 {
    public string TeacherName {  get; set; }
@@ -2342,14 +2342,14 @@ public class Teacher
 
 当基于一个现有类，定义一个新类，定义语法：
 
-```
+```text
 class 派生类:基类
 {
 
 }
 ```
 
-```
+```text
 //基类
 public class People
 {
@@ -2366,7 +2366,7 @@ public class SchoolPeople:People
 
 需要注意的是：C# 中只支持**单继承**，也就是说一个派生类**只能继承一个基类**，但是继承是**可以传递**的，如 类型B 继承了 类型A，而 类型C继承了 类型B，那么 类型C 将继承 类型B 和 类型A 中的所有成员。
 
-```
+```text
 public class Teacher:SchoolPeople
 {
    public string TeacherNo{get;set;}
@@ -2375,7 +2375,7 @@ public class Teacher:SchoolPeople
 
 这里Teacher类继承SchoolPeople类，SchoolPeople类又继承于People类，所以Teacher类拥有SchoolPeople类和People类中所有的属性。但定义时，不写像下面这样写：
 
-```
+```text
 //这个写法是错误的，C#只支持单继承
 public class Teacher:SchoolPeople,People
 {
@@ -2387,7 +2387,7 @@ public class Teacher:SchoolPeople,People
 
 多重继承是指一个类可以同时继承**多个基类**，C# 并**不支持**多重继承，但是可以**借助接口**来实现多重继承。（接口后面会介绍）
 
-```
+```text
 public interface IPeople
 {
    void Work();
@@ -2420,7 +2420,7 @@ public class Teacher:People,IPeople
 **方法重载**
 在同一个作用域中，可以定义多个同名的方法，但是这些方法彼此之间必须有所差异，比如参数个数不同或参数类型不同等等，返回值类可以不同。
 
-```
+```text
 //方法重载
 public class CalculateHelper
 {
@@ -2449,7 +2449,7 @@ double re3=Add(4.5,1.9);
 **运算符重载**
 C# 中支持运算符重载，运算符重载就是我们可以使用自定义类型来重新定义 C# 中大多数运算符的功能。运算符重载需要通过 **operator** 关键字后跟运算符的形式来定义的，我们可以将被重新定义的运算符看作是具有特殊名称的函数，与其他函数一样，该函数也有返回值类型和参数列表。如下代码：
 
-```
+```text
  public class StringNew
  {
      public string Str1 {  get; set; }
@@ -2493,7 +2493,7 @@ C# 中支持运算符重载，运算符重载就是我们可以使用自定义�
 **不能使用sealed**修饰，否则不能重写
 子类中重写基类中的虚方法，必须保证三相同：**方法名称**相同、**参数列表**相同、**返回值类型**相同
 
-```
+```text
 public class People
 {
    //虚方法
@@ -2524,7 +2524,7 @@ public class Student:People
 **覆写**
 派生类中可以声明和基类同名方法，虚方法和非虚方法都可以被覆写。在子类中用new关键字修饰。
 
-```
+```text
 基类中
 public void EatFood()
 {
@@ -2549,7 +2549,7 @@ C# 允许使用关键字 **abstract** 修饰的方法——**抽象方法**。
 抽象方法实现用**override**,是隐式的虚方法
 实现抽象方法的方法不能是抽象成员。
 
-```
+```text
 public abstract class AbPeople
 {
    //抽象方法
@@ -2593,7 +2593,7 @@ teacher.Work();
 
 C# 中声明接口需要使用 **interface** 关键字，语法如下：
 
-```
+```text
 public interface 接口名{
     返回值类型 方法名1(参数列表...);
     返回值类型 方法名2(参数列表...);
@@ -2604,7 +2604,7 @@ public interface 接口名{
 其中，接口名称以I开头命名。
 接口实现：一个类如果实现接口，需要实现接口中的方法，方法名必须与接口中定义的方法名一致。
 
-```
+```text
 //接口
 public interface IUser
 {
@@ -2641,7 +2641,7 @@ userService.AddUser(new UserInfo(){UserId=101,UserName="lycchun",UserPwd="123456
 在 C# 中，一个接口可以继承另一个接口。如果一个接口继承其他接口，那么实现类或结构就需要实现所有接口的成员。
 如：接口 1 继承接口 2，一个类来实现接口 1 时，必须同时实现接口 1 和接口 2 中的所有成员。
 
-```
+```text
 接口1
 public interface IPeople
 {
@@ -2700,7 +2700,7 @@ teacherService.ShowInfo(teacher);
 
 定义命名空间需要使用 **namespace** 关键字，语法格式如下：
 
-```
+```text
 namespace 命名空间名
 {
     // 命名空间中的代码  类及类中的成员
@@ -2709,7 +2709,7 @@ namespace 命名空间名
 
 有的情况下，不同命名空间下有相同的类名，要调用指定命名空间下的类，则需要使用`命名空间.类名 的形式。
 
-```
+```text
 namespace MySpace1
 {
    public class UserInfo
@@ -2753,7 +2753,7 @@ namespace Zhaoxi.ConsoleApp.ClassCourse
 用**using** 关键字来引用指定的命名空间，它可以告诉编译器后面的代码中我们需要用到某个命名空间。
 如我们在程序中需要使用到 System 命名空间，只需要在程序的开始使用`using System`引用该命名空间即可。后面在代码中我们如果用到System命名空间下的类，不需要在类名前加命名空间名了。
 
-```
+```text
 using System;
 using MySpace2;
 namespace Zhaoxi.ConsoleApp.ClassCourse
@@ -2788,7 +2788,7 @@ C# 中的异常处理基于四个关键字构建，分别是 **try、catch、fin
 
 try catch 组合语句用来捕获程序异常，语法格式：
 
-```
+```text
 try
 {
    // 可能会引起异常的语句块
@@ -2808,7 +2808,7 @@ finally   //可以没有finally语句块
 }
 ```
 
-```
+```text
 int val;
 try
    {
@@ -2845,7 +2845,7 @@ C# 中的异常有多种类型，异常类主要是直接或间接地派生于 �
 | System.OutOfMemoryException       | 处理空闲内存不足产生的错误                   |
 | System.StackOverflowException     | 处理栈溢出产生的错误                         |
 
-```
+```text
   int val;
   int a = 12;
   int b = 0;

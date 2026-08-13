@@ -137,7 +137,7 @@ base: "./", // 设置为相对路径
 
 3. 如果想设置动态背景图url，绝对路径遵循下面的格式，其他格式不可生效(自己对空格，前缀\这些进行一下处理)
 
-   ```
+   ```text
    标准格式：
    file:///C:/Users/Albert%20han/Desktop/easyToDo/dist_electron/win-unpacked/resources/assets/timeBGI.jpg
    拼接格式（appPath+extraFiles）

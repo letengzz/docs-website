@@ -4,7 +4,7 @@ Angular 项目有严格的目录组织规范，理解项目结构有助于高效
 
 ## 根目录文件
 
-```
+```text
 my-angular-app/
 ├── src/                    # 源代码目录
 ├── e2e/                    # 端到端测试
@@ -64,7 +64,7 @@ Angular CLI 的核心配置文件：
 
 ### 核心文件
 
-```
+```text
 src/
 ├── app/                    # 应用代码
 │   ├── app.component.ts    # 根组件
@@ -115,7 +115,7 @@ bootstrapApplication(AppComponent, appConfig)
 
 ### 按功能模块组织
 
-```
+```text
 src/app/
 ├── core/                   # 核心模块（只导入一次）
 │   ├── services/           # 全局服务

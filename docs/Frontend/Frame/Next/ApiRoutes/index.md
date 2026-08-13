@@ -8,7 +8,7 @@ Next.js 提供了内置的 API 路由功能，允许你在同一个应用中创�
 
 在 App Router 中，API 路由位于 `app/api/` 目录下：
 
-```
+```text
 app/
 └── api/
     └── users/
@@ -48,7 +48,7 @@ export async function DELETE(request: Request) {
 
 ### 带参数的 API
 
-```
+```text
 app/
 └── api/
     └── users/

@@ -10,7 +10,7 @@
 
 ### 推荐的目录组织
 
-```
+```text
 src/
 ├── components/          # 通用组件
 │   ├── ui/              # 基础 UI 组件（Button, Input, Modal...）

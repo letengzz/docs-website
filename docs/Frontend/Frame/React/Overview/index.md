@@ -162,7 +162,7 @@ npx create-next-app@latest my-next-app
 
 一个标准的 Vite + React 项目结构如下：
 
-```
+```text
 my-react-app/
 ├── public/              # 静态资源（不参与打包处理）
 ├── src/

@@ -154,7 +154,7 @@ pnpm dev
 
 目录结构：
 
-```
+```text
 my-umi-app/
 ├── src/
 │   ├── pages/          # 页面目录

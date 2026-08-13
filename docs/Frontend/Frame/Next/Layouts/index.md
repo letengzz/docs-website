@@ -42,7 +42,7 @@ export default function RootLayout({
 
 ### 目录结构
 
-```
+```text
 app/
 ├── layout.tsx           # 根布局
 ├── page.tsx             # 首页
@@ -91,7 +91,7 @@ export default function DashboardLayout({
 
 ### 不同布局的路由组
 
-```
+```text
 app/
 ├── (marketing)/
 │   ├── layout.tsx       # 营销页面布局
@@ -175,7 +175,7 @@ export default async function AuthLayout({
 
 ### 多个插槽
 
-```
+```text
 app/
 ├── layout.tsx
 ├── @sidebar/
@@ -380,7 +380,7 @@ export default function RootLayout({
 将布局组件提取到 `components/layout/` 目录，保持 app 目录简洁。
 :::
 
-```
+```text
 components/
 └── layout/
     ├── Header.tsx

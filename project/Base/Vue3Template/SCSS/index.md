@@ -8,7 +8,7 @@ Vite 内置了对 `scss`、`sass`、`less`、`styl`和 `stylus`这些预处理�
 
 SCSS 的依赖库为 Sass，安装为开发依赖：
 
-```
+```text
 pnpm add sass -D
 ```
 
@@ -30,7 +30,7 @@ pnpm add sass -D
 
 在 `src`中按照如下结构建立目录和文件：
 
-```
+```text
 src/
   |- assets/
       |- scss/

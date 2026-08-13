@@ -2,7 +2,7 @@
 
 ## MVC页面传值
 
-```
+```text
 //声明
 public IActionResult Index()
 {
@@ -42,7 +42,7 @@ public IActionResult Index()
 2. 准备配置文件（配置文件的属性“复制到输出目录”要改为 **始终复制**）
 3. 配置使用Log4Net记录日志
 
-```
+```text
 //方式一：在Programe.cs中配置
 public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
@@ -89,7 +89,7 @@ IIS直接建立网站，目录指向项目根目录下的Debug/Net5文件----不
 静态文件读取：
 1.Nuget引入：Nuget引入Microsoft.Extensions.FileProviders 2.配置读取静态文件的中间件
 
-```
+```text
 app.UseStaticFiles(new StaticFileOptions() {
     //执行文件下的wwwroot文件夹
     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"))
@@ -103,7 +103,7 @@ app.UseStaticFiles(new StaticFileOptions() {
 如果遇到对象，数组时
 中间使用：分割，依次读取；
 
-```
+```text
 //配置appsetting.json
 "configurationId": "jike2011nuo",
 "ConnectionStrings": {
@@ -129,7 +129,7 @@ Console.WriteLine($"connectionStrings:{Configuration["ConnectionStrings:ReadConn
 3. 在使用的时候可以直接通过IOptions options注入
 4. 获取注入的Options.Value 就是我们获取的到配置文件的一个实体类型对象
 
-```
+```text
 //对象
 public class DbConnectionOptions
 {
@@ -170,13 +170,13 @@ IServiceCollection可以支持无限层级的依赖注入； 前提是都要先�
 
 在Startup中的ConfigureServices 方法中注册服务
 
-```
+```text
 services.AddTransient<ITestServiceA, TestServiceA>();
 ```
 
 在需要使用的控制器中，通过构造函数，定义服务的抽象类型作为参数，在运行时，自动得到服务的具体实现
 
-```
+```text
  private readonly ITestServiceA _ITestServicA;
  //构造函数注入
  public FifthController(ITestServiceA iTestServicA)
@@ -191,13 +191,13 @@ services.AddTransient<ITestServiceA, TestServiceA>();
 
 在Startup中的ConfigureServices 方法中注册服务
 
-```
+```text
 services.AddTransient<ITestServiceA, TestServiceA>();
 ```
 
 在需要使用的控制器中，通过构造函数，注入IServiceProvider
 
-```
+```text
 private readonly IServiceProvider _ServiceProvider = null;
 public FifthController(IServiceProvider serviceProvider)
 {
@@ -208,7 +208,7 @@ public FifthController(IServiceProvider serviceProvider)
 
 通过\_ServiceProvider获取到服务，然后通过服务实例调用服务内部的方法
 
-```
+```text
 public IActionResult Index()
 {
    ITestServiceA testServiceA = (ITestServiceA)_ServiceProvider.GetService(typeof(ITestServiceA));
@@ -220,7 +220,7 @@ public IActionResult Index()
 
 在注册服务后，视图中通过关键字@Inject 获取实例
 
-```
+```text
 @inject ITestServiceA iTestServicA   ---获取到服务实例
 @{
    iTestServicA.Show();
@@ -249,7 +249,7 @@ Autofac也是一款很流行的IOC容器：那如何使用
 
 #### Autofac多种注入方式
 
-```
+```text
 ContainerBuilder containerBuilder = new ContainerBuilder();
 containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>();
 containerBuilder.RegisterType<TestServiceB>().As<ITestServiceB>().PropertiesAutowired();
@@ -265,19 +265,19 @@ ITestServiceC testServiceC = container.Resolve<ITestServiceC>();//获取服务 �
 
 瞬时生命周期--每次获取实例都是全新的实例
 
-```
+```text
 containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>().InstancePerDependency();
 ```
 
 单例生命周期 --一个进程中没有都是同一个实例
 
-```
+```text
 containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>().SingleInstance();
 ```
 
 每个生命周期范围一个实例
 
-```
+```text
 ContainerBuilder containerBuilder = new ContainerBuilder();
 containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>().InstancePerLifetimeScope();
 IContainer container = containerBuilder.Build();
@@ -302,7 +302,7 @@ Console.WriteLine(object.ReferenceEquals(testServiceA15, testServiceA16)); //fal
 
 每个【匹配生命周期范围一个实例 】
 
-```
+```text
 containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>
 ().InstancePerMatchingLifetimeScope("Zhaoxi");
 IContainer container = containerBuilder.Build();
@@ -335,7 +335,7 @@ Console.WriteLine(object.ReferenceEquals(testServiceA15, testServiceA16));
 
 每个请求一个实例(InstancePerRequest)
 
-```
+```text
 ContainerBuilder containerBuilder = new ContainerBuilder();
 containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>().InstancePerRequest();
 IContainer container = containerBuilder.Build();
@@ -357,7 +357,7 @@ using (var scope1 = container.BeginLifetimeScope())
 
 2. 准备配置文件
 
-```
+```text
 {
 	"components": [
 		{
@@ -379,7 +379,7 @@ using (var scope1 = container.BeginLifetimeScope())
 
 3. 读取配置文件，根据配置文件信息，生成抽象和映射信息
 
-```
+```text
 ContainerBuilder containerBuilder = new ContainerBuilder();
 //读取配置文件，把配置关系装载到ContainerBuilder
 IConfigurationBuilder config = new ConfigurationBuilder();
@@ -402,7 +402,7 @@ ITestServiceC testServiceC = container.Resolve<ITestServiceC>();//获取服务 �
 
 1. 指定Autofac工厂替换默认工厂,Program指定
 
-```
+```text
 public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
         .ConfigureWebHostDefaults(webBuilder =>
@@ -415,7 +415,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 2. 在Startup类增加ConfigureContainer 方法， 注册关系
 
-```
+```text
 public void ConfigureContainer(ContainerBuilder builder)
 {
     builder.RegisterType<TestServiceA>().As<ITestServiceA>();
@@ -436,7 +436,7 @@ public void ConfigureContainer(ContainerBuilder builder)
 3. 在控制器内定义属性
 4. 扩展，自己控制究竟哪些属性需要做依赖注入
 
-```
+```text
 //Startup
 public void ConfigureContainer(ContainerBuilder builder)
 {
@@ -476,7 +476,7 @@ public class HomeController : Controller
 2. 一个抽象多个实例，都注册了,可以通过一个IEnumerable<抽象>,当做构造函数参数，可以获取到所 有注册的具体的实例
 3. 注册一个抽象的多个实例资源，如下方式注册，可以在控制器的构造函数中，使用具体实现类型作为 参数类型，可以匹配到不同到具体类型实例
 
-```
+```text
 ontainerBuilder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource(t =>
 t.IsAssignableTo<ITestServiceA>()));
 ```
@@ -485,14 +485,14 @@ t.IsAssignableTo<ITestServiceA>()));
 
 1. 注册的时候可以指定一个标识
 
-```
+```text
 containerBuilder.RegisterType<TestServiceA>().Named<ITestServiceA>("TestServiceA");
 containerBuilder.RegisterType<TestServiceUpdate>().Named<ITestServiceA>("TestServiceUpdate");
 ```
 
 2. 在控制器中获取的时候获取一个Autofac的上下文，通过上下文+标识，得到不同的实现的实例；
 
-```
+```text
 private readonly IComponentContext _ComponentContext = null;
 public SixThController(IComponentContext componentContext)
 {
@@ -522,7 +522,7 @@ AOP面向切面编程；不用修改之前代码的基础上，可以动态的�
 1. Nuget引入Castle.Core程序集+Autofac.Extras.DynamicProxy程序集
 2. 定注意切入者：如下，需要继承IInterceptor，实现方法
 
-```
+```text
  public class CustomAutofacAop : IInterceptor
  {
      public void Intercept(IInvocation invocation)
@@ -540,20 +540,20 @@ AOP面向切面编程；不用修改之前代码的基础上，可以动态的�
 
 3. 在服务的抽象上标记[Intercept(typeof(CustomAutofacAop))]
 
-```
+```text
 [Intercept(typeof(CustomAutofacAop))]  //AOP能够在接口生效
 public interface ITestServiceA
 ```
 
 4. 注册支持AOP扩展的类
 
-```
+```text
 builder.RegisterType(typeof(CustomAutofacAop)); //注册自定义AOP拦截器
 ```
 
 5. 注册服务的时候，需要需要调用EnableInterfaceInterceptors，标记说明当前服务获取实例后可以支 持AOP
 
-```
+```text
 builder.RegisterType<TestServiceA>().As<ITestServiceA>().EnableInterfaceInterceptors();
 ```
 
@@ -563,7 +563,7 @@ EnableInterfaceInterceptors+抽象标记特性[Intercept(typeof(CustomAutofacAop
 EnableClassInterceptors + 实现类标记特性[Intercept(typeof(CustomAutofacAop))] ，只有标记 了这个特性的，才能够支持AOP
 如果使用EnableClassInterceptors 来支持AOP，实现类中支持AOP的方法必须为**虚方法**；
 
-```
+```text
 [Intercept(typeof(CustomAutofacAop))]
 public class TestServiceA : ITestServiceA
 {
@@ -595,7 +595,7 @@ ResultFilter 结果
 3. 执行Action
 4. 执行CustomActionFilterAttribute 内的OnActionExecuted
 
-```
+```text
 
 public class CustomActionFilterAttribute : Attribute, IActionFilter
 {
@@ -630,7 +630,7 @@ public IActionResult Index()
 
 1. 通过实现IActionFilter接口来完成扩展
 
-```
+```text
 public class CustomActionFilterAttribute : Attribute, IActionFilter
 {
     public void OnActionExecuted(ActionExecutedContext context)
@@ -644,7 +644,7 @@ public class CustomActionFilterAttribute : Attribute, IActionFilter
 
 2. 通过继承ActionFilterAttribute（系统提供的实现），根据自己的需要，覆写不同的方法，达到自己的 诉求
 
-```
+```text
 public class CustomActionChildFilterAttribute : ActionFilterAttribute
 {
     public override void OnActionExecuting(ActionExecutingContext context)
@@ -660,7 +660,7 @@ public class CustomActionChildFilterAttribute : ActionFilterAttribute
 
 3. 异步版本的实现，通过实现IAsyncActionFilter接口来实现
 
-```
+```text
 public class CustomActionAsyncFilterAttribute : Attribute, IAsyncActionFilter
 {
     public Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -681,7 +681,7 @@ public class CustomActionAsyncFilterAttribute : Attribute, IAsyncActionFilter
 
 1.`[CustomActionFilter]`---Fitler必须有无参数构造函数2.`[TypeFilter(typeof(CustomActionFilterAttribute))]`，可以没有无参数构造函数，可以支持依赖注入3.`[ServiceFilter(typeof(CustomActionFilterAttribute))]`，可以没有无参数构造函数，可以支持依赖注 入，但是`CustomActionFilterAttribute`必须要注册服务
 
-```
+```text
 builder.RegisterType(typeof(CustomActionFilterAttribute)).PropertiesAutowired();
 ```
 
@@ -702,7 +702,7 @@ builder.RegisterType(typeof(CustomActionFilterAttribute)).PropertiesAutowired();
 2. 标记在Controller上，就对Controller上中的所有Action生效
 3. 全局注册，对于当前整个项目中的Action都生效，在ConfigureServices中增加以下代码即可
 
-```
+```text
 services.AddMvc(option=> {
    option.Filters.Add<CustomActionFilterAttribute>(); //全局注册：
 });
@@ -721,7 +721,7 @@ services.AddMvc(option=> {
 就是为了缓存而存在
 ![image.png](assets/202412101726862.png)
 
-```
+```text
 public class CustomResourceFilterAttribute : Attribute, IResourceFilter
 {
 
@@ -766,7 +766,7 @@ public class CustomResourceFilterAttribute : Attribute, IResourceFilter
 1. 自定义一个特性；
 2. 在需要匿名的Filter内部，检查是否需要匿名（检查是否标记的有匿名特性）,如果有就直接避开
 
-```
+```text
 /// <summary>
 /// 全局过滤器 --- 方法执行前
 /// </summary>
@@ -789,7 +789,7 @@ public void OnActionExecuting(ActionExecutingContext context)
 2. 实现方法，先判断，异常是否被处理过，如果没有被处理过，就处理；
 3. 分情况处理：1.如果是ajax请求，就返回JosnResult，如果不是Ajax请求，就返回错误页面
 
-```
+```text
 public class CustomExceptionFilterAttribute : Attribute, IExceptionFilter
 {
    private IModelMetadataProvider _modelMetadataProvider =null;
@@ -844,7 +844,7 @@ public class CustomExceptionFilterAttribute : Attribute, IExceptionFilter
 
 4. 全局注册，在Starup中的ConfigureServices注册
 
-```
+```text
 services.AddMvc(option=> {
      option.Filters.Add<CustomExceptionFilterAttribute>();
  });
@@ -859,7 +859,7 @@ services.AddMvc(option=> {
 5. 在action中发生异常 ---T
 6. 请求错误路径异常 ---可以使用中间件来支持，只要不是200的状态，就都可以处理
 
-```
+```text
 //在Configure中配置
 app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");//只要不是200 都能进来
 app.UseExceptionHandler(errorApp =>
@@ -901,7 +901,7 @@ app.UseExceptionHandler(errorApp =>
 双语言系统，其实就需要两个视图；要根据语言的不同，来选择不同的视图来渲染；
 因为在渲染视图之前，会进入到OnResultExecuting方法，就可以在这个方法中确定究竟使用哪一个视图文件
 
-```
+```text
 public class CustomResultFilterAttribute : Attribute, IResultFilter
 {
 
@@ -961,7 +961,7 @@ public class CustomResultFilterAttribute : Attribute, IResultFilter
 第二步:
 在ConfigureServices中中增加
 
-```
+```text
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
  .AddCookie(options =>
  {
@@ -973,7 +973,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 第三步：指定哪些Action需要做鉴权授权
 标记特性：标记在哪个Action上，哪个Action就能够支持鉴权授权
 
-```
+```text
 [Microsoft.AspNetCore.Authorization.Authorize]
 ```
 
@@ -984,7 +984,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 
 不同的用户，可能会存在不同的角色，不同的角色，可能在访问不同的页面的时候，需要做不同拦截；- ---角色授权其实就是通过角色不同，做不同的权限拦截
 
-```
+```text
 var rolelist = new List<string>()
 { //来自于数据库的角色
        "Admin",
@@ -1009,7 +1009,7 @@ foreach (var role in rolelist)
 
 ```
 
-```
+```text
 //标记的试试，通过逗号分隔不同的角色---只要是有一个角色符合
 [Authorize(Roles = "Admin,Teacher,Student")]
 就能够访问，角色之间是或者的关系
@@ -1026,7 +1026,7 @@ foreach (var role in rolelist)
 增加CustomAuthorizationHandler-----专用做检验逻辑的； 要求继承自AuthorizationHandler<> 泛型抽象类
 增加一个CustomAuthorizationRequirement，要求实现接口：IAuthorizationRequirement
 
-```
+```text
 public class CustomAuthorizationHandler : AuthorizationHandler<CustomAuthorizationRequirement>
 {
     public CustomAuthorizationHandler()
@@ -1077,13 +1077,13 @@ public class CustomAuthorizationRequirement : IAuthorizationRequirement
 第二步：
 让自定义逻辑生效：在ConfigureServices方法中注册进来
 
-```
+```text
 services.AddSingleton<IAuthorizationHandler, CustomAuthorizationHandler>();
 ```
 
 第三步：支持多种策略
 
-```
+```text
 services.AddAuthorization(options =>
 {
    options.AddPolicy("customPolicy", polic =>
@@ -1095,7 +1095,7 @@ services.AddAuthorization(options =>
 
 第四步：使用
 
-```
+```text
 [Authorize(policy: "Policy01")]
 public IActionResult Index04()
 {
@@ -1129,7 +1129,7 @@ Web应用程序是一个控制台；
 
 1. 中间件的内容可以独立开，放入到一个独立的类中去---需要一个规则
 
-```
+```text
 public class FirstMiddleWare
 {
    private readonly RequestDelegate _next;
@@ -1151,7 +1151,7 @@ public class FirstMiddleWare
 
 2. 在Starup中把这些中间件给引入进来
 
-```
+```text
 app.UseMiddleware<FirstMiddleWare>(); //使用某一个中间件
 app.UseMiddleware<SecondMiddleWare>();
 app.UseMiddleware<ThirdMiddleWare>();
@@ -1166,7 +1166,7 @@ EF: 通过实体和数据库的映射，可以通过对实体的操作完成对�
 
 先有数据库，然后通过映射得到实体（和数据库的表对应）;
 
-```
+```text
 //引入程序集
 Install-Package Microsoft.EntityFrameworkCore
 Install-Package Microsoft.EntityFrameworkCore.SqlServer
@@ -1209,13 +1209,13 @@ Scaffold-DbContext "Data Source=雾岚\SQLSERVER1;Initial Catalog=db_efcore;User
 一、日志输出
 1.Nuget引入
 
-```
+```text
 Microsoft.Extensions.Logging.Console
 ```
 
 2.配置使用日志输出Sql语句
 
-```
+```text
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 {
    ///通过日志输出Sql语句
@@ -1230,7 +1230,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 ### EFCore支持Linq
 
-```
+```text
 context.Students.Where( u => idList.Contains(u.id)); //where Id in(1,2,3)
 
 context.Students.Where(u => idList.Contains(u.Id)) // Id in(x,x,x)
@@ -1286,7 +1286,7 @@ int flg = context.Database.ExecuteSqlRaw(sql, parameter1);
 数据库的增改动作都是统一由SaveChanges之后，统一提交到数据库；是通过状态跟踪，任何一个增删 改查的操作都会记录一个状态在内存中；增删改查的状态；一旦SaveChanges，就根据状态去落实到数 据中去的；
 状态跟踪实现了增删改便捷，但是也会有性能损耗
 
-```
+```text
 //
 // 摘要:
 //     上下文未跟踪实体。
@@ -1326,7 +1326,7 @@ Linq查询每一次都会去数据库中查询数据；
 状态跟踪：实体对象对应的有一个副本在内存中，我们操作了这个实体对象以后，EFCore会自动和内存中的副本做比较；任何一次操作都会去和内存中的副本；-----损耗性能；----状态跟踪 ---损耗性能；
 如果我很明确，查询出来的数据，根本不需要做增删改；其实这个状态跟踪对我们来说就没有意义了；可以考虑使用AsNoTracking；去掉状态跟踪---提高性能；
 
-```
+```text
 //去掉状态跟踪；
 var list = context.Students.Where(j => j.Id < 10).AsNoTracking().ToList();
 ```

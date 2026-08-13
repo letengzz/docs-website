@@ -6,7 +6,7 @@
 
 ### 推荐的目录结构
 
-```
+```text
 src/
 ├── assets/             # 静态资源
 │   ├── images/
@@ -572,7 +572,7 @@ const apiUrl = process.env.REACT_APP_API_URL
 
 ### Git 提交规范
 
-```
+```text
 feat: 新功能
 fix: 修复 bug
 docs: 文档更新

@@ -101,7 +101,7 @@
 
 可以通过全局config.keyCodes对象自定义按键修饰符别名：
 
-```
+```text
 Vue.config.keyCodes.huiche=13
 ```
 

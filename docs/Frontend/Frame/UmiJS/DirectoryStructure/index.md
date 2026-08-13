@@ -6,7 +6,7 @@ UmiJS 遵循约定优于配置的原则，有标准的目录结构。了解这�
 
 一个完整的 UmiJS 项目通常包含以下目录结构：
 
-```
+```text
 my-umi-app/
 ├── src/
 │   ├── pages/              # 页面目录（约定式路由）
@@ -60,7 +60,7 @@ my-umi-app/
 
 `pages` 目录是 UmiJS 约定式路由的核心，目录结构会自动映射为路由结构。
 
-```
+```text
 src/pages/
 ├── index.tsx           → /
 ├── about.tsx           → /about
@@ -89,7 +89,7 @@ export default function UserDetail() {
 
 使用 `$` 前缀创建嵌套路由：
 
-```
+```text
 src/pages/
 ├── users/
 │   ├── index.tsx       → /users
@@ -116,7 +116,7 @@ export default function NotFound() {
 
 存放项目中可复用的组件：
 
-```
+```text
 src/components/
 ├── Header/
 │   ├── index.tsx       # 组件代码
@@ -170,7 +170,7 @@ export default function Layout() {
 
 可以创建多个布局文件：
 
-```
+```text
 src/layouts/
 ├── index.tsx           # 默认布局
 ├── admin.tsx           # 管理后台布局
@@ -205,7 +205,7 @@ export default {
 
 使用 UmiJS 内置的数据流方案，存放全局状态：
 
-```
+```text
 src/models/
 ├── user.ts             # 用户状态
 ├── product.ts          # 产品状态
@@ -242,7 +242,7 @@ export default function userModel() {
 
 封装 API 请求，保持代码的可维护性：
 
-```
+```text
 src/services/
 ├── user.ts             # 用户相关 API
 ├── product.ts          # 产品相关 API
@@ -276,7 +276,7 @@ export async function deleteUser(id: number) {
 
 存放项目中常用的工具函数：
 
-```
+```text
 src/utils/
 ├── request.ts          # 请求封装
 ├── auth.ts             # 权限相关
@@ -288,7 +288,7 @@ src/utils/
 
 存放项目中的静态资源文件：
 
-```
+```text
 src/assets/
 ├── images/             # 图片
 │   ├── logo.png
@@ -321,7 +321,7 @@ export default defineConfig({
 
 与 `.umirc.ts` 功能相同，适合配置较多的时使用：
 
-```
+```text
 config/
 ├── config.ts           # 主配置
 ├── routes.ts           # 路由配置
@@ -334,7 +334,7 @@ config/
 
 公共目录中的文件在构建时会直接复制到 `dist` 目录：
 
-```
+```text
 public/
 ├── favicon.ico         # 网站图标
 ├── robots.txt          # 爬虫规则

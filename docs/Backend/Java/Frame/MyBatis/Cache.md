@@ -381,7 +381,7 @@ public class UserMapperTest {
 
 计算公式：**缓存命中率=命中缓存的次数/查询的总次数**
 
-```
+```text
 Cache Hit Ratio [com.hjc.demo.mapper.CacheMapper]: 0.5
 ```
 

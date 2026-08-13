@@ -92,7 +92,7 @@ const value = ref('')
 
 ### 创建插件目录
 
-```
+```text
 uni_modules/
 └── my-plugin/
     ├── components/

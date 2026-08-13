@@ -106,7 +106,7 @@ if (import.meta.hot) {
 
 目录结构：
 
-```
+```text
 src/
  |- views/
       |- index.vue

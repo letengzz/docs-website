@@ -119,7 +119,7 @@ docker run -it --privileged=true -v /宿主机绝对路径目录:/容器内目�
 
 使用 docker inspect 容器ID或名称 [|less(使用/name查找内容)] 查看容器挂载情况：
 
-```
+```text
 docker inspect 容器ID或名称 [|less(使用/name查找内容)]
 ```
 

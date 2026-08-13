@@ -49,7 +49,7 @@ public delegate void GenericDelegate<T>(T item);
 
 ##### 值类型约束
 
-```
+```text
 //值类型的约束 where T:struct限定类型参数的实际类型不能是引用类型
 public static T ToType<T>(string str) where T : struct
 {
@@ -59,7 +59,7 @@ public static T ToType<T>(string str) where T : struct
 
 ##### 引用类型约束
 
-```
+```text
 //引用类型约束 where T:class
 public class Record<T> where T : class
 {
@@ -74,7 +74,7 @@ public class Record<T> where T : class
 
 ##### 基类约束
 
-```
+```text
 // T 必须是基类People或其子类
 public static void ShowInfo<T>(T t) where T : People
 {
@@ -84,7 +84,7 @@ public static void ShowInfo<T>(T t) where T : People
 
 ##### 接口约束
 
-```
+```text
 //接口约束 where T : IData T的实际类型必须实现了IData接口
 public static void ShowData<T>(T t) where T : IData<string>
 {
@@ -94,7 +94,7 @@ public static void ShowData<T>(T t) where T : IData<string>
 
 ##### 无参构造函数约束
 
-```
+```text
 //无参构造函数约束 可以在方法体内部new一个新的泛型对象
 //注意：new()必须是最后一个
 public static T CreateObj<T>() where T : new()
@@ -111,7 +111,7 @@ public static T CreateObj<T>() where T : new()
 因为它的Add方法可以添加任意一个类型的项，可以是int/double,f1ot,.,甚至可以是一个引用类型，所以在使用中对于值类型的存取会
 有装箱与拆箱的操作，会产生性能损耗，所以不建议使用这个集合类型，建议使用`List<T>`类型。
 
-```
+```text
 ArrayList arrList new ArrayList();
 arrList.Add(12);
 arrList.Add(35.6);
@@ -126,7 +126,7 @@ int ival=Convert.ToInt32(arrList[0]);//拆箱
 它是一个强类型集合，是类型安全的。也是根据需要动态添加或移除其中的项，用于存储不固定数目的一组信息。
 lst列表集合操作Add/Insert/AddRange/Remove/RemoveAt/ContainsFind/FindIndex/ndexof/Sort/Reverse/Clear…
 
-```
+```text
 List<int> ids = new List<int>();// 存储一组int类型的集合
 ids.Add(101);//添加到列表尾部
 ids.Add(102);
@@ -150,7 +150,7 @@ Dictionary<T,V>类型提供从一组键到一组值的映射。每次对字典�
 键和值都是类型参数，其实际类型可以是任何类型（比如：string,int,自定义类型，等等）。
 键值对操作：Add/遍历/根据键取对应的值。
 
-```
+```text
 Dictionary<int, string> list = new Dictionary<int, string>();
 list.Add(101, "收入1");
 list.Add(102, "收入2");
@@ -191,7 +191,7 @@ C#中反射具有以下用途：
 
 类型实例化，除了可以直接使用类型实例化创建对象以外，当不能直接引用类型时，还可以通过反射技术来动态实例化。
 
-```
+```text
 string fullName = "net_consoleApp_2.Models.Student";//完整名称
 Type itemType = Type.GetType(fullName);//ItemIrfol的Type对象
 
@@ -207,7 +207,7 @@ item2.ShowInfo();
 
 #### 元数据
 
-```
+```text
 //查看元数据
 ItemInfo item = new ItemInfo()
 {
@@ -361,7 +361,7 @@ C#中的委托(Delegate)类似于C或C+中的函数指针，是一种引用类�
 
 声明委托需要使用**delegate**关键字，语法如下：
 
-```
+```text
 delegate 返回值类型 委托名(参数列表...)
 delegate int Calculate(int a, int b);
 delegate void ShowMsg(string msg);
@@ -374,7 +374,7 @@ delegate void ShowMsg(string msg);
 
 1. 委托声明后，可用**new**关键字来实例化，即创建委托对象，将其与特定的方法关联。
 
-```
+```text
 delegate int Calculate(int a, int b); //声明一个计算的委托
 //提过两个与之对应的方法
 public int Add(int a, int b)
@@ -390,7 +390,7 @@ public void Test(){
 
 2. 委托还可以通过将方法签名赋给委托对象
 
-```
+```text
 Calculate add1 = Add;
 add1(20,5); //25
 ```
@@ -401,7 +401,7 @@ add1(20,5); //25
 使用委托的这个特点，可以创建一个委托被调用时要调用的方法列表，这被称为委托的多播(multicasting)。
 多播委托应用于：一个动作触发一连串的的操作。
 
-```
+```text
 //声明
 delegate void ShowMsg(string msg);
 public static void Show1(string msg)
@@ -434,13 +434,13 @@ Lambda表达式可**应用于**：将要执行的代码传递给异步方法、L
 
 #### Lambda表达式语法
 
-```
+```text
 (参数列表) => 语句或语句块
 ```
 
 其中的"**=>**"该运算符读作“goes to“。Lambda运算符的左边是输入参数（如果有），右边是表达式或语句块。
 
-```
+```text
 Calculate add = (a, b) => a + b;
 ```
 
@@ -453,13 +453,13 @@ Calculate add = (a, b) => a + b;
 Action`<in T>`委托表示引用一个返回类型为void的方法，即封装了一个无返回值的方法。这种委托有多种不同的变体，可以没有传入参数，可以最多有16个参数。
 没有泛型的Action可以调用没有参数的方法。如：
 
-```
+```text
 Action printAct = () => Console.WriteLine("Welcome to here!");
 ```
 
 `Action<in T>`表示有一个传入参数的方法，如：
 
-```
+```text
 Action<String> printMsg = msg =>
 {
   string message = $"Welcome to here! {msg}";
@@ -469,7 +469,7 @@ Action<String> printMsg = msg =>
 
 `Action<in T1, in T2>`表示有两个个传入参数的方法，如：
 
-```
+```text
 Action<int, int> printAdd = (a, b) => Console.WriteLine(a + b);
 ```
 
@@ -481,7 +481,7 @@ Action<int, int> printAdd = (a, b) => Console.WriteLine(a + b);
 `Func<out T>`可以引用一个带一个返回值的方法。使用方式与Action类似，不过`Func<T>`允许调用带返回参数的方法。`Func<T>`也有不同的变体，最多可以传递16个参数和一个返回类型。
 `Func<out T>`可以调用一个没有传入参数，有返回值的方法，T表示返回值类型。
 
-```
+```text
 Func<int> func1 = () => {
   int a = 5;
   return a + 2;
@@ -490,7 +490,7 @@ Func<int> func1 = () => {
 
 `Func<in T1, out T2>` 可以调用有一个传入参数，有返回值的方法，T1表示传入参数的类型，T2表示返回值的类型。
 
-```
+```text
 Func<int, int> func2 = num => {
   int re = num + 5;
   return re;
@@ -499,7 +499,7 @@ Func<int, int> func2 = num => {
 
 Func<in T1, in T2, out T3>可以调用有两个传入参数，有返回值的方法，T1，T2表示表示传入参数类型，T3表示返回值类型。
 
-```
+```text
 Func<int, int, int> funcAdd = (a, b) = a + b;
 ```
 
@@ -541,7 +541,7 @@ Func<int, int, int> funcAdd = (a, b) = a + b;
 
 在要应用特性的元素前面用方括号[]来应用。如[Table("tableName")]
 
-```
+```text
 [特姓名(指定信息参数)]
 [Table("StudentInfos")]
 public class StudentInfo{}
@@ -560,7 +560,7 @@ Net Framework 中提供了三个预定义的特性：
 预定义特性AttributeUsage用来描述如何使用自定义特性类，用于自定义特性类前面，规定了特性可应用到的项目的类型。
 格式如下：
 
-```
+```text
 [AttributeUsage(
   validon,
   AllowMultiple = allowmultiple,
@@ -578,7 +578,7 @@ Net Framework 中提供了三个预定义的特性：
 
 预定义特性Conditional用来标记一个方法，它的执行依赖于指定的预处理标识符。根据该特性值的不同，在编译时会起到不同的效果。
 
-```
+```text
 [Conditional("out")]
 public void Print(string msg)
 {
@@ -592,7 +592,7 @@ public void Print(string msg)
 
 预定义特性Obsolete用来标记不应被使用的程序，可以使用它来通知编译器放弃某个目标元素。
 
-```
+```text
 语法: [Obsolete (message, iserror)]
 
 [Obsolete("PrintOut 已弃用",false)]
@@ -623,7 +623,7 @@ public void PrintOut(string msg)
 
 自定义特性应该集成System.Attribute类
 
-```
+```text
 public class RemarkAttribute:Attribute {}
 ```
 
@@ -631,7 +631,7 @@ public class RemarkAttribute:Attribute {}
 
 给RemarkAttribute类定义属性或字段、构建函数，并指定应用目标。
 
-```
+```text
 [AttributeUsage(AttributeTargets.Class|AttributeTargets.Property|AttributeTargets.Method|AttributeTargets.Field)]
 public class RemarkAttribute : Attribute
 {
@@ -646,7 +646,7 @@ public class RemarkAttribute : Attribute
 
 通过把特性放置在紧挨着它的目标上面来应用改特性。
 
-```
+```text
 [Remark("名目信息")]
 public class ItemInfo
 {
@@ -663,7 +663,7 @@ public class ItemInfo
 
 在程序中，用**反射的方式**获取应用元素智商的特性标注的特性信息
 
-```
+```text
 public static class RemarkAttrHelper
 {
     /// <summary>
@@ -755,11 +755,11 @@ Linq查询包括两种方式：
 
 查询语法
 
-```
+```text
 from 迭代变量 in 数据源 where ... select 迭代变量
 ```
 
-```
+```text
 //查询遍历数组
 //1.数据源
 int[] nums = {12, 34, 9, 45, 54, 99, 76, 120};
@@ -775,7 +775,7 @@ foreach( var m in numQuery)
 查询表达式在循环访问查询变量时（如上述示例中foreach），才会执行
 **select字句，**基于查询结果返回需要的值或字段，并能对返回值指定类型。
 
-```
+```text
 List<ItemInfo> list = new List<ItemInfo>()
 {
     new ItemInfo(){Id=101,ItemType="收入",ItemName="银行转账"},
@@ -797,7 +797,7 @@ var items2 = from item in list
 
 **where字句**：用来指定筛选的条件，与sql查询语句中的where功能一样。通过where字句获取满足条件的结果
 
-```
+```text
 var items2 = from item in list
              where item.Id > 103 && item.ItemType == "支出"
              select item;
@@ -806,7 +806,7 @@ var items2 = from item in list
 **orderby**:用来排序，与sql中order by的功能相同，使得返回结果可以根据某字段或某种规则实现升序或降序排列。
 Linq中语句默认展示为升序，降序使用【orderby表达式 descending】
 
-```
+```text
 var items2 = from item in list
              orderby item.Id descending
              select item;
@@ -814,7 +814,7 @@ var items2 = from item in list
 
 **group by**子句：用来对查询结果进行分组。且未指定key的情况下，key取值默认是true和false。.如果分为多组，获取数据结果时需要手动遍历key获取对应的value
 
-```
+```text
 var groupList = from item in list group item by item.ItemType;
 foreach ( var item in groupList)
 {
@@ -829,7 +829,7 @@ foreach ( var item in groupList)
 Join子句：用于联合查询，一般会存在两个数据源，且两个数据源中有相同的字段可进行比较。
 使用格式为【join 数据 in 数据源1 on key1 equals key2】
 
-```
+```text
 //list2 = [{id=101,count=101},...]
 //inner join 只匹配能匹配上的
 var joinList = from item in list
@@ -867,7 +867,7 @@ var joinList1 = from item in list2
 Linq查询中，为了更加清晰明了的阅读，我们一般采用查询语法，但有些查询操作没有等效的查询表达式，只能采用方法查询，即调用内部方法，有些场景中也可以将查询语法和方法语法结合使用。
 ![image.png](assets/202412101716589.png)
 
-```
+```text
 //查询方法
 int[] nums1 = { 12, 34, 9, 45, 12,76,52, 99, 76, 120 };
 var queryList1 = from num in nums1 select num;

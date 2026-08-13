@@ -71,7 +71,7 @@ Pinia：集中式状态(数据)管理，把所有的要管理放到容器中集�
 
    安装nanoid：
 
-   ```
+   ```text
    npm i nanoid
    ```
 
@@ -431,7 +431,7 @@ export const useTalkStore = defineStore('talk', () => {
 
 安装插件：
 
-```
+```text
 npm install pinia-plugin-persistedstate
 ```
 

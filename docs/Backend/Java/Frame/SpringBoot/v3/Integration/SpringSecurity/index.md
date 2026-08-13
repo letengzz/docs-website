@@ -1,4 +1,4 @@
-```
+```text
 # SpringBoot 整合 SpringSecurity
 
 - [SpringSecurity 操作](../../../SpringSecurity/README.md)

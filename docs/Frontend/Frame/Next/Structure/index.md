@@ -6,7 +6,7 @@ Next.js 项目采用约定优于配置的设计，理解项目结构是高效开
 
 ### 核心目录
 
-```
+```text
 my-app/
 ├── app/                    # App Router 核心目录
 │   ├── layout.tsx         # 根布局组件
@@ -51,7 +51,7 @@ my-app/
 
 ### 路由组
 
-```
+```text
 app/
 ├── (marketing)/          # 路由组（不影响 URL）
 │   ├── layout.tsx
@@ -66,7 +66,7 @@ app/
 
 ### 动态路由
 
-```
+```text
 app/
 ├── blog/
 │   ├── [slug]/           # 动态路由参数
@@ -84,7 +84,7 @@ app/
 
 ### 按功能分类
 
-```
+```text
 components/
 ├── ui/                   # 基础 UI 组件
 │   ├── Button.tsx
@@ -108,7 +108,7 @@ components/
 
 ### 按模块分类
 
-```
+```text
 features/
 ├── auth/
 │   ├── components/
@@ -131,7 +131,7 @@ features/
 
 ### CSS Modules
 
-```
+```text
 components/
 ├── Button/
 │   ├── Button.tsx
@@ -143,7 +143,7 @@ components/
 
 ### Tailwind CSS
 
-```
+```text
 styles/
 ├── globals.css           # 全局样式和 Tailwind 指令
 └── components/           # 组件特定样式
@@ -172,7 +172,7 @@ styles/
 
 ### 环境文件
 
-```
+```text
 .env                  # 所有环境共享
 .env.local            # 本地开发（不提交到 Git）
 .env.development      # 开发环境

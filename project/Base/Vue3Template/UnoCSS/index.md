@@ -247,7 +247,7 @@ export default defineConfig({
 
 安装 Vite SVG 图标插件：
 
-```
+```text
 pnpm add vite-plugin-svg-icons -D
 ```
 
@@ -323,7 +323,7 @@ pnpm add vite-plugin-svg-icons -D
 
 按照如下目录文件结构，创建图标组件：
 
-```
+```text
 src/
 |- components/
     |- icon/

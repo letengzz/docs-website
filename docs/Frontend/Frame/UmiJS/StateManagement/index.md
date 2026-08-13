@@ -95,7 +95,7 @@ export default function LoginPage() {
 
 ### 多 Model 管理
 
-```
+```text
 src/models/
 ├── user.ts           # 用户状态
 ├── product.ts        # 产品状态

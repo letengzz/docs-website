@@ -89,7 +89,7 @@ docker commit [OPTIONS] 容器ID [REPOSITORY[:TAG]]
 类似git操作
 示例(示例代码中的“[]”在实际中不需要)：
 
-```
+```text
 docker login --username=pengnz registry.cn-beijing.aliyuncs.com
 docker tag [ImageId] registry.cn-beijing.aliyuncs.com/wulan/myubuntu:[镜像版本号]
 docker push registry.cn-beijing.aliyuncs.com/wulan/myubuntu:[镜像版本号]
@@ -98,6 +98,6 @@ docker push registry.cn-beijing.aliyuncs.com/wulan/myubuntu:[镜像版本号]
 **将阿里云上的镜像下载到本地**
 通过命令下载到本地
 
-```
+```text
 docker pull registry.cn-beijing.aliyuncs.com/wulan/myubuntu:[镜像版本号]
 ```

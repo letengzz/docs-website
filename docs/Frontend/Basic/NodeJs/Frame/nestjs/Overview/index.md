@@ -48,7 +48,7 @@ npm run start:dev
 
 ## 项目结构
 
-```
+```text
 project-name/
 ├── src/
 │   ├── app.controller.ts    # 控制器

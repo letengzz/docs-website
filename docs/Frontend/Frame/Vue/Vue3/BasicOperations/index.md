@@ -194,7 +194,7 @@ declare module '*.vue' {
 
 在 vite.config.ts中修改端口号：
 
-```
+```text
 export default defineConfig({
   plugins: [
     vue(),

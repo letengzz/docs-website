@@ -189,7 +189,7 @@ export default function AddToCartButton({ productId }: { productId: string }) {
 
 ### 2. 组件拆分
 
-```
+```text
 components/
 ├── ui/                 # 基础 UI 组件（Client）
 │   ├── Button.tsx

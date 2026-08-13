@@ -2,12 +2,17 @@
 
 构建工具负责项目的编译、打包、依赖下载与版本管理，是工程化的基础。
 
-## 常见工具
+## Java 构建工具
 
-- Java：Maven、Gradle
-- 前端：npm、pnpm、yarn
-- 前端打包：Vite、Webpack、Rollup、esbuild
+- [Maven](Maven/index.md)
+- [Gradle](Gradle/index.md)
+- [Maven 与 Gradle 对比](MavenVsGradle/index.md)
 
-::: tip 待补充
-后续按计划补充 Maven / Gradle、包管理器深入等专题文档。
+## 前端工具
+
+- npm / pnpm / yarn（包管理器，后续专题补充）
+- Vite、Webpack、Rollup、esbuild（打包工具，后续专题补充）
+
+::: tip 规划说明
+本目录按计划持续补充：包管理器深入、前端打包工具等专题将陆续上线。
 :::

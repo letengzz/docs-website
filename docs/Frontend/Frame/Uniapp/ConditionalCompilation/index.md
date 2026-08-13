@@ -109,7 +109,7 @@ const handleAction = () => {
 
 ### 文件后缀条件编译
 
-```
+```text
 ├── pages/
 │   └── index/
 │       ├── index.vue          # 通用页面
@@ -120,7 +120,7 @@ const handleAction = () => {
 
 ### 目录条件编译
 
-```
+```text
 ├── platform/
 │   ├── h5/
 │   │   └── share.js
