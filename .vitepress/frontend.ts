@@ -2,7 +2,6 @@ export const FrontBasic = [
     {
         text: "基础",
         link: "/docs/Frontend/Basic/index.md",
-        collapsed: true,
         items: [
             { text: "前端开发", link: "/docs/Frontend/Basic/FrontendDevelop/index.md" },
             {
@@ -274,7 +273,6 @@ export const FrontFrame = [
     {
         text: "框架",
         link: "/docs/Frontend/Frame/index.md",
-        collapsed: true,
         items: [
             {
                 text: "Angular", link: "/docs/Frontend/Frame/Angular/index.md", collapsed: true, items: [
@@ -472,7 +470,6 @@ export const FrontOthers = [
     {
         text: "其他",
         link: "/docs/Frontend/Others/index.md",
-        collapsed: true,
         items: [
             { text: "自动生成接口", link: "/docs/Frontend/Others/AutoGenInterface/index.md" },
             { text: "HTTP 协议", link: "/docs/Frontend/Others/HTTP/index.md" },

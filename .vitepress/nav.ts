@@ -19,9 +19,7 @@ export const nav = [
     items: [
       { text: "概述", link: "/docs/DB/Overview" },
       { text: "关系型数据库", link: "/docs/DB/Relational" },
-      { text: "MySQL", link: "/docs/DB/Relational/MySQL" },
       { text: "非关系型数据库", link: "/docs/DB/NoRelational" },
-      { text: "Redis", link: "/docs/DB/NoRelational/Redis" },
     ]
   },
   {

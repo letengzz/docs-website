@@ -27,7 +27,7 @@ Redis 采用**惰性删除 + 定期删除**组合：
 
 当内存达到 `maxmemory` 上限时，按 `maxmemory-policy` 决定如何处理：
 
-```conf [redis.conf]
+```txt [redis.conf]
 maxmemory 512mb
 maxmemory-policy allkeys-lru
 ```
@@ -61,7 +61,7 @@ CONFIG SET maxmemory-policy allkeys-lru
 
 持久化到配置文件用：
 
-```conf [redis.conf]
+```txt [redis.conf]
 maxmemory-policy allkeys-lru
 ```
 

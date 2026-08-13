@@ -53,7 +53,7 @@ Redis 官方**不提供 Windows 版本**，推荐两种方式：
 
 关键配置项：
 
-```conf [redis.conf]
+```txt [redis.conf]
 bind 127.0.0.1
 protected-mode yes
 port 6379
@@ -108,7 +108,7 @@ OK
 
 ## 生产安全建议
 
-```conf [redis.conf]
+```txt [redis.conf]
 # 只监听内网
 bind 10.0.0.5
 

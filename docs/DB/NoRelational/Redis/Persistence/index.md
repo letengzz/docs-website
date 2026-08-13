@@ -18,7 +18,7 @@ BGSAVE
 
 配置文件自动触发：
 
-```conf [redis.conf]
+```txt [redis.conf]
 save 900 1        # 900 秒内至少 1 次修改
 save 300 10       # 300 秒内至少 10 次修改
 save 60 10000     # 60 秒内至少 10000 次修改
@@ -36,7 +36,7 @@ save 60 10000     # 60 秒内至少 10000 次修改
 
 AOF 记录每次写命令，恢复时重放日志。
 
-```conf [redis.conf]
+```txt [redis.conf]
 appendonly yes
 appendfsync everysec
 ```
@@ -57,7 +57,7 @@ AOF 文件会持续膨胀，需要重写压缩：
 BGREWRITEAOF
 ```
 
-```conf [redis.conf]
+```txt [redis.conf]
 auto-aof-rewrite-percentage 100
 auto-aof-rewrite-min-size 64mb
 ```
@@ -66,7 +66,7 @@ auto-aof-rewrite-min-size 64mb
 
 Redis 4.0+ 支持混合持久化：AOF 文件头部是 RDB 快照，尾部是增量命令，兼顾恢复速度和数据完整性。
 
-```conf [redis.conf]
+```txt [redis.conf]
 aof-use-rdb-preamble yes
 ```
 

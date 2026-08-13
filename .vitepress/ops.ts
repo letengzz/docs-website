@@ -2,7 +2,6 @@ export const Docker = [
   {
     text: "Docker",
     link: "/docs/Ops/Docker/index.md",
-    collapsed: true,
     items: [
       { text: "Docker 概述", link: "/docs/Ops/Docker/Overview/index.md" },
       { text: "Docker 安装与卸载", link: "/docs/Ops/Docker/InstallUninstall/index.md" },
@@ -42,7 +41,6 @@ export const Linux = [
   {
     text: "Linux",
     link: "/docs/Ops/Linux/index.md",
-    collapsed: true,
     items: [
       { text: "Linux 概述", link: "/docs/Ops/Linux/Overview/index.md" },
       { text: "目录结构", link: "/docs/Ops/Linux/DirectoryStructure/index.md" },

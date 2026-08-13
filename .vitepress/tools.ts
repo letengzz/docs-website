@@ -2,7 +2,6 @@ export const Build = [
   {
     text: "构建和依赖管理工具",
     link: "/docs/Tools/Build/index.md",
-    collapsed: true,
     items: [
       {
         text: "Maven",
@@ -41,7 +40,6 @@ export const VC = [
   {
     text: "版本控制工具",
     link: "/docs/Tools/VersionControl/index.md",
-    collapsed: true,
     items: [
       {
         text: "Git 进阶",

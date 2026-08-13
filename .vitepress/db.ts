@@ -8,7 +8,6 @@ export const NoRelational = [
   {
     text: "非关系型数据库",
     link: "/docs/DB/NoRelational/index.md",
-    collapsed: true,
     items: [
       {
         text: "Redis",
@@ -33,7 +32,6 @@ export const Relational = [
   {
     text: "关系型数据库",
     link: "/docs/DB/Relational/index.md",
-    collapsed: true,
     items: [
       {
         text: "MySQL",

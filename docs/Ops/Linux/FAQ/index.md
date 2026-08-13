@@ -76,7 +76,7 @@ reboot
 1. 保持系统更新：`sudo apt update && sudo apt upgrade`。
 2. SSH 使用密钥登录，禁止 root 密码登录：
 
-```conf [/etc/ssh/sshd_config]
+```txt [/etc/ssh/sshd_config]
 PermitRootLogin no
 PasswordAuthentication no
 ```

@@ -106,7 +106,7 @@ redis-cli --rdb /backup/redis-$(date +%F).rdb
 - 哨兵（Sentinel）：自动故障转移。
 - Cluster：数据分片 + 高可用。
 
-```conf [redis.conf]
+```txt [redis.conf]
 # 从库配置
 replicaof 10.0.0.1 6379
 replica-read-only yes
