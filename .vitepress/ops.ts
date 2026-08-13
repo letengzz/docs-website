@@ -2,6 +2,7 @@ export const Docker = [
   {
     text: "Docker",
     link: "/docs/Ops/Docker/index.md",
+    collapsed: true,
     items: [
       { text: "Docker 概述", link: "/docs/Ops/Docker/Overview/index.md" },
       { text: "Docker 安装与卸载", link: "/docs/Ops/Docker/InstallUninstall/index.md" },
@@ -19,7 +20,7 @@ export const Docker = [
       { text: "Docker 常见错误", link: "/docs/Ops/Docker/Errors/index.md" },
       {
         text: "Docker 进阶",
-        collapsed: false,
+        collapsed: true,
         items: [
           { text: "Dockerfile 最佳实践", link: "/docs/Ops/Docker/BestPractices/index.md" },
           { text: "多阶段构建", link: "/docs/Ops/Docker/Multistage/index.md" },
@@ -41,6 +42,7 @@ export const Linux = [
   {
     text: "Linux",
     link: "/docs/Ops/Linux/index.md",
+    collapsed: true,
     items: [
       { text: "Linux 概述", link: "/docs/Ops/Linux/Overview/index.md" },
       { text: "目录结构", link: "/docs/Ops/Linux/DirectoryStructure/index.md" },

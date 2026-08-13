@@ -2,10 +2,11 @@ export const FrontBasic = [
     {
         text: "基础",
         link: "/docs/Frontend/Basic/index.md",
+        collapsed: true,
         items: [
             { text: "前端开发", link: "/docs/Frontend/Basic/FrontendDevelop/index.md" },
             {
-                text: "HTML", link: "/docs/Frontend/Basic/HTML/index.md", collapsed: false, items: [
+                text: "HTML", link: "/docs/Frontend/Basic/HTML/index.md", collapsed: true, items: [
                     { text: "HTML 概述", link: "/docs/Frontend/Basic/HTML/Overview/index.md" },
                     { text: "HTML 基础", link: "/docs/Frontend/Basic/HTML/Basic/index.md" },
                     { text: "HTML 语义化标签", link: "/docs/Frontend/Basic/HTML/Semantic/index.md" },
@@ -30,7 +31,7 @@ export const FrontBasic = [
                 ]
             },
             {
-                text: "CSS", link: "/docs/Frontend/Basic/CSS/index.md", collapsed: false, items: [
+                text: "CSS", link: "/docs/Frontend/Basic/CSS/index.md", collapsed: true, items: [
                     { text: "CSS 基本使用", link: "/docs/Frontend/Basic/CSS/Basic/index.md" },
                     { text: "CSS 选择器", link: "/docs/Frontend/Basic/CSS/Selectors/index.md" },
                     { text: "CSS 三大特性", link: "/docs/Frontend/Basic/CSS/Features/index.md" },
@@ -43,7 +44,7 @@ export const FrontBasic = [
                     { text: "CSS 布局", link: "/docs/Frontend/Basic/CSS/Layout/index.md" },
                     { text: "CSS 变量", link: "/docs/Frontend/Basic/CSS/Variable/index.md" },
                     {
-                        text: "CSS3", collapsed: false, link: "/docs/Frontend/Basic/CSS/CSS3/index.md", items: [
+                        text: "CSS3", collapsed: true, link: "/docs/Frontend/Basic/CSS/CSS3/index.md", items: [
                             { text: "概述", link: "/docs/Frontend/Basic/CSS/CSS3/Overview/index.md" },
                             { text: "私有前缀", link: "/docs/Frontend/Basic/CSS/CSS3/webkit/index.md" },
                             { text: "新增功能", link: "/docs/Frontend/Basic/CSS/CSS3/New/index.md" },
@@ -59,14 +60,14 @@ export const FrontBasic = [
                         ]
                     },
                     {
-                        text: "预处理器", collapsed: false, link: "/docs/Frontend/Basic/CSS/Preprocessor/index.md", items: [
+                        text: "预处理器", collapsed: true, link: "/docs/Frontend/Basic/CSS/Preprocessor/index.md", items: [
                             { text: "Less", link: "/docs/Frontend/Basic/CSS/Preprocessor/Less/index.md" },
                             { text: "Sass", link: "/docs/Frontend/Basic/CSS/Preprocessor/Sass/index.md" },
                             { text: "Stylus", link: "/docs/Frontend/Basic/CSS/Preprocessor/Stylus/index.md" },
                         ]
                     },
                     {
-                        text: "原子化CSS框架", link: "/docs/Frontend/Basic/CSS/AtomicCSS/index.md", collapsed: false, items: [
+                        text: "原子化CSS框架", link: "/docs/Frontend/Basic/CSS/AtomicCSS/index.md", collapsed: true, items: [
                             { text: "UnoCSS", link: "/docs/Frontend/Basic/CSS/AtomicCSS/UnoCSS/index.md" },
                             { text: "TailwindCSS", link: "/docs/Frontend/Basic/CSS/AtomicCSS/TailwindCSS/index.md" },
                         ]
@@ -74,7 +75,7 @@ export const FrontBasic = [
                 ]
             },
             {
-                text: "JavaScript", link: "/docs/Frontend/Basic/JavaScript/index.md", collapsed: false, items: [
+                text: "JavaScript", link: "/docs/Frontend/Basic/JavaScript/index.md", collapsed: true, items: [
                     { text: "JavaScript 概述与环境搭建", link: "/docs/Frontend/Basic/JavaScript/Overview/index.md" },
                     { text: "JavaScript 数据类型", link: "/docs/Frontend/Basic/JavaScript/DataType/index.md" },
                     { text: "JavaScript 变量与作用域", link: "/docs/Frontend/Basic/JavaScript/Variables/index.md" },
@@ -101,9 +102,9 @@ export const FrontBasic = [
                 ]
             },
             {
-                text: "ECMAScript", link: "/docs/Frontend/Basic/ECMAScript/index.md", collapsed: false, items: [
+                text: "ECMAScript", link: "/docs/Frontend/Basic/ECMAScript/index.md", collapsed: true, items: [
                     { text: "ES5", link: "/docs/Frontend/Basic/ECMAScript/ES5/index.md" },
-                    { text: "ES6", link: "/docs/Frontend/Basic/ECMAScript/ES6/index.md", collapsed: false, items: [
+                    { text: "ES6", link: "/docs/Frontend/Basic/ECMAScript/ES6/index.md", collapsed: true, items: [
                         { text: "ES6 概述", link: "/docs/Frontend/Basic/ECMAScript/ES6/Overview/index.md" },
                         { text: "let 和 const", link: "/docs/Frontend/Basic/ECMAScript/ES6/LetConst/index.md" },
                         { text: "解构赋值", link: "/docs/Frontend/Basic/ECMAScript/ES6/Destructuring/index.md" },
@@ -122,7 +123,7 @@ export const FrontBasic = [
                         { text: "ES6 模块化开发", link: "/docs/Frontend/Basic/ECMAScript/ES6/Module/index.md" },
                         { text: "ES6 Promise", link: "/docs/Frontend/Basic/ECMAScript/ES6/Promise/index.md" },
                     ]},
-                    { text: "ES7", link: "/docs/Frontend/Basic/ECMAScript/ES7/index.md", collapsed: false, items: [
+                    { text: "ES7", link: "/docs/Frontend/Basic/ECMAScript/ES7/index.md", collapsed: true, items: [
                         { text: "Array.prototype.includes()", link: "/docs/Frontend/Basic/ECMAScript/ES7/includesMethod/index.md" },
                         { text: "指数运算符（**）", link: "/docs/Frontend/Basic/ECMAScript/ES7/IndexOper/index.md" },
                         { text: "对象解构的剩余和展开属性", link: "/docs/Frontend/Basic/ECMAScript/ES7/Dec/index.md" },
@@ -137,7 +138,7 @@ export const FrontBasic = [
                 ]
             },
             {
-                text: "TypeScript", link: "/docs/Frontend/Basic/TypeScript/index.md", collapsed: false, items: [
+                text: "TypeScript", link: "/docs/Frontend/Basic/TypeScript/index.md", collapsed: true, items: [
                     { text: "TypeScript 概述", link: "/docs/Frontend/Basic/TypeScript/Overview/index.md" },
                     { text: "TypeScript 编译", link: "/docs/Frontend/Basic/TypeScript/Compile/index.md" },
                     { text: "TypeScript 基本使用", link: "/docs/Frontend/Basic/TypeScript/BasicUse/index.md" },
@@ -157,7 +158,7 @@ export const FrontBasic = [
                 ]
             },
             {
-                text: "jQuery", link: "/docs/Frontend/Basic/jQuery/index.md", collapsed: false, items: [
+                text: "jQuery", link: "/docs/Frontend/Basic/jQuery/index.md", collapsed: true, items: [
                     { text: "jQuery 概述", link: "/docs/Frontend/Basic/jQuery/Overview/index.md" },
                     { text: "jQuery 选择器", link: "/docs/Frontend/Basic/jQuery/Selectors/index.md" },
                     { text: "jQuery DOM操作", link: "/docs/Frontend/Basic/jQuery/DOM/index.md" },
@@ -168,7 +169,7 @@ export const FrontBasic = [
                 ]
             },
             {
-                text: "Ajax", link: "/docs/Frontend/Basic/AJAX/index.md", collapsed: false, items: [
+                text: "Ajax", link: "/docs/Frontend/Basic/AJAX/index.md", collapsed: true, items: [
                     { text: "Ajax 概述", link: "/docs/Frontend/Basic/AJAX/Overview/index.md" },
                     { text: "XMLHttpRequest", link: "/docs/Frontend/Basic/AJAX/XMLHttpRequest/index.md" },
                     { text: "Fetch API", link: "/docs/Frontend/Basic/AJAX/Fetch/index.md" },
@@ -176,7 +177,7 @@ export const FrontBasic = [
                 ]
             },
             {
-                text: "Node.js", link: "/docs/Frontend/Basic/NodeJs/index.md", collapsed: false, items: [
+                text: "Node.js", link: "/docs/Frontend/Basic/NodeJs/index.md", collapsed: true, items: [
                     { text: "Node.js 概述", link: "/docs/Frontend/Basic/NodeJs/Overview/index.md" },
                     { text: "Node.js 安装", link: "/docs/Frontend/Basic/NodeJs/Install/index.md" },
                     { text: "Node.js Buffer", link: "/docs/Frontend/Basic/NodeJs/Buffer/index.md" },
@@ -191,7 +192,7 @@ export const FrontBasic = [
                     { text: "EventEmitter 事件模块", link: "/docs/Frontend/Basic/NodeJs/EventEmitter/index.md" },
                     { text: "Stream 流模块", link: "/docs/Frontend/Basic/NodeJs/Stream/index.md" },
                     {
-                        text: "包管理工具", link: "/docs/Frontend/Basic/NodeJs/PackageManagementTool/index.md", collapsed: false, items: [
+                        text: "包管理工具", link: "/docs/Frontend/Basic/NodeJs/PackageManagementTool/index.md", collapsed: true, items: [
                             { text: "npm 包管理工具", link: "/docs/Frontend/Basic/NodeJs/PackageManagementTool/npm/index.md" },
                             { text: "cnpm 包管理工具", link: "/docs/Frontend/Basic/NodeJs/PackageManagementTool/cnpm/index.md" },
                             { text: "yarn 包管理工具", link: "/docs/Frontend/Basic/NodeJs/PackageManagementTool/yarn/index.md" },
@@ -200,7 +201,7 @@ export const FrontBasic = [
                         ]
                     },
                     {
-                        text: "Express 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/express/index.md", collapsed: false, items: [
+                        text: "Express 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/express/index.md", collapsed: true, items: [
                             { text: "Express 概述", link: "/docs/Frontend/Basic/NodeJs/Frame/express/Overview/index.md" },
                             { text: "Express 基础操作", link: "/docs/Frontend/Basic/NodeJs/Frame/express/BasicOperations/index.md" },
                             { text: "Express 中间件", link: "/docs/Frontend/Basic/NodeJs/Frame/express/Middleware/index.md" },
@@ -214,7 +215,7 @@ export const FrontBasic = [
                         ]
                     },
                     {
-                        text: "Koa 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/koa/index.md", collapsed: false, items: [
+                        text: "Koa 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/koa/index.md", collapsed: true, items: [
                             { text: "Koa 概述", link: "/docs/Frontend/Basic/NodeJs/Frame/koa/Overview/index.md" },
                             { text: "Koa 基础操作", link: "/docs/Frontend/Basic/NodeJs/Frame/koa/BasicOperations/index.md" },
                             { text: "Koa Router", link: "/docs/Frontend/Basic/NodeJs/Frame/koa/Router/index.md" },
@@ -227,7 +228,7 @@ export const FrontBasic = [
                         ]
                     },
                     {
-                        text: "Fastify 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/fastify/index.md", collapsed: false, items: [
+                        text: "Fastify 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/fastify/index.md", collapsed: true, items: [
                             { text: "Fastify 概述", link: "/docs/Frontend/Basic/NodeJs/Frame/fastify/Overview/index.md" },
                             { text: "Fastify 基础操作", link: "/docs/Frontend/Basic/NodeJs/Frame/fastify/BasicOperations/index.md" },
                             { text: "Fastify 插件系统", link: "/docs/Frontend/Basic/NodeJs/Frame/fastify/Plugins/index.md" },
@@ -236,7 +237,7 @@ export const FrontBasic = [
                         ]
                     },
                     {
-                        text: "NestJS 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/nestjs/index.md", collapsed: false, items: [
+                        text: "NestJS 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/nestjs/index.md", collapsed: true, items: [
                             { text: "NestJS 概述", link: "/docs/Frontend/Basic/NodeJs/Frame/nestjs/Overview/index.md" },
                             { text: "NestJS 基础操作", link: "/docs/Frontend/Basic/NodeJs/Frame/nestjs/BasicOperations/index.md" },
                             { text: "NestJS 管道", link: "/docs/Frontend/Basic/NodeJs/Frame/nestjs/Pipes/index.md" },
@@ -247,7 +248,7 @@ export const FrontBasic = [
                         ]
                     },
                     {
-                        text: "Hapi 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/hapi/index.md", collapsed: false, items: [
+                        text: "Hapi 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/hapi/index.md", collapsed: true, items: [
                             { text: "Hapi 概述", link: "/docs/Frontend/Basic/NodeJs/Frame/hapi/Overview/index.md" },
                             { text: "Hapi 基础操作", link: "/docs/Frontend/Basic/NodeJs/Frame/hapi/BasicOperations/index.md" },
                             { text: "Hapi 插件系统", link: "/docs/Frontend/Basic/NodeJs/Frame/hapi/Plugins/index.md" },
@@ -258,7 +259,7 @@ export const FrontBasic = [
                 ]
             },
             {
-                text: "构建工具", link: "/docs/Frontend/Basic/BuildTool/index.md", collapsed: false, items: [
+                text: "构建工具", link: "/docs/Frontend/Basic/BuildTool/index.md", collapsed: true, items: [
                     { text: "构建工具概述", link: "/docs/Frontend/Basic/BuildTool/Overview/index.md" },
                     { text: "Vite", link: "/docs/Frontend/Basic/BuildTool/Vite/index.md" },
                     { text: "Webpack", link: "/docs/Frontend/Basic/BuildTool/Webpack/index.md" },
@@ -273,9 +274,10 @@ export const FrontFrame = [
     {
         text: "框架",
         link: "/docs/Frontend/Frame/index.md",
+        collapsed: true,
         items: [
             {
-                text: "Angular", link: "/docs/Frontend/Frame/Angular/index.md", collapsed: false, items: [
+                text: "Angular", link: "/docs/Frontend/Frame/Angular/index.md", collapsed: true, items: [
                     { text: "Angular 概述与安装", link: "/docs/Frontend/Frame/Angular/Overview/index.md" },
                     { text: "Angular 项目结构", link: "/docs/Frontend/Frame/Angular/Structure/index.md" },
                     { text: "Angular 组件开发", link: "/docs/Frontend/Frame/Angular/Components/index.md" },
@@ -294,13 +296,13 @@ export const FrontFrame = [
                 ]
             },
             {
-                text: "Vue", link: "/docs/Frontend/Frame/Vue/index.md", collapsed: false, items: [
+                text: "Vue", link: "/docs/Frontend/Frame/Vue/index.md", collapsed: true, items: [
                     { text: "Vue 概述", link: "/docs/Frontend/Frame/Vue/Overview/index.md" },
                     {
-                        text: "Vue2", link: "/docs/Frontend/Frame/Vue/Vue2/index.md", collapsed: false, items: [
+                        text: "Vue2", link: "/docs/Frontend/Frame/Vue/Vue2/index.md", collapsed: true, items: [
                             { text: "Vue2 概述", link: "/docs/Frontend/Frame/Vue/Vue2/Overview/index.md" },
                             { text: "Vue2 创建工程", link: "/docs/Frontend/Frame/Vue/Vue2/CreateProject/index.md" },
-                            { text: "Vue2 核心", link: "/docs/Frontend/Frame/Vue/Vue2/Core/index.md", collapsed: false, items: [
+                            { text: "Vue2 核心", link: "/docs/Frontend/Frame/Vue/Vue2/Core/index.md", collapsed: true, items: [
                                 { text: "内置指令", link: "/docs/Frontend/Frame/Vue/Vue2/Core/Directives/index.md" },
                                 { text: "事件处理", link: "/docs/Frontend/Frame/Vue/Vue2/Core/EventHandling/index.md" },
                                 { text: "计算属性", link: "/docs/Frontend/Frame/Vue/Vue2/Core/Computed/index.md" },
@@ -316,7 +318,7 @@ export const FrontFrame = [
                                 { text: "生命周期", link: "/docs/Frontend/Frame/Vue/Vue2/Core/Lifecycle/index.md" },
                                 { text: "vue.config.js 配置", link: "/docs/Frontend/Frame/Vue/Vue2/Core/Configuration/index.md" },
                             ]},
-                            { text: "Vue2 组件化", link: "/docs/Frontend/Frame/Vue/Vue2/Componentization/index.md", collapsed: false, items: [
+                            { text: "Vue2 组件化", link: "/docs/Frontend/Frame/Vue/Vue2/Componentization/index.md", collapsed: true, items: [
                                 { text: "组件创建、注册、使用", link: "/docs/Frontend/Frame/Vue/Vue2/Componentization/ComponentCreation/index.md" },
                                 { text: "组件嵌套", link: "/docs/Frontend/Frame/Vue/Vue2/Componentization/ComponentNesting/index.md" },
                                 { text: "VueComponent", link: "/docs/Frontend/Frame/Vue/Vue2/Componentization/VueComponent/index.md" },
@@ -330,7 +332,7 @@ export const FrontFrame = [
                         ]
                     },
                     {
-                        text: "Vue3", link: "/docs/Frontend/Frame/Vue/Vue3/index.md", collapsed: false, items: [
+                        text: "Vue3", link: "/docs/Frontend/Frame/Vue/Vue3/index.md", collapsed: true, items: [
                             { text: "Vue3 概述", link: "/docs/Frontend/Frame/Vue/Vue3/Overview/index.md" },
                             { text: "Vue3 创建工程", link: "/docs/Frontend/Frame/Vue/Vue3/CreateProject/index.md" },
                             { text: "Vue3 基本操作", link: "/docs/Frontend/Frame/Vue/Vue3/BasicOperations/index.md" },
@@ -347,7 +349,7 @@ export const FrontFrame = [
                             { text: "Vue3 整合ECharts", link: "/docs/Frontend/Frame/Vue/Vue3/ECharts/index.md" },
                             {
                                 text: "核心进阶",
-                                collapsed: false,
+                                collapsed: true,
                                 items: [
                                     { text: "响应式原理", link: "/docs/Frontend/Frame/Vue/Vue3/Reactivity/index.md" },
                                     { text: "模板语法", link: "/docs/Frontend/Frame/Vue/Vue3/TemplateSyntax/index.md" },
@@ -365,7 +367,7 @@ export const FrontFrame = [
                 ]
             },
             {
-                text: "React", link: "/docs/Frontend/Frame/React/index.md", collapsed: false, items: [
+                text: "React", link: "/docs/Frontend/Frame/React/index.md", collapsed: true, items: [
                     { text: "React 概述与安装", link: "/docs/Frontend/Frame/React/Overview/index.md" },
                     { text: "JSX 语法", link: "/docs/Frontend/Frame/React/JSX/index.md" },
                     { text: "组件开发", link: "/docs/Frontend/Frame/React/Components/index.md" },
@@ -383,7 +385,7 @@ export const FrontFrame = [
                     { text: "React DevTools", link: "/docs/Frontend/Frame/React/DevTools/index.md" },
                     {
                         text: "核心进阶",
-                        collapsed: false,
+                        collapsed: true,
                         items: [
                             { text: "React 渲染与协调原理", link: "/docs/Frontend/Frame/React/Internals/index.md" },
                             { text: "Context 深入", link: "/docs/Frontend/Frame/React/Context/index.md" },
@@ -397,7 +399,7 @@ export const FrontFrame = [
                 ]
             },
             {
-                text: "UmiJS", link: "/docs/Frontend/Frame/UmiJS/index.md", collapsed: false, items: [
+                text: "UmiJS", link: "/docs/Frontend/Frame/UmiJS/index.md", collapsed: true, items: [
                     { text: "UmiJS 概述", link: "/docs/Frontend/Frame/UmiJS/Overview/index.md" },
                     { text: "快速开始", link: "/docs/Frontend/Frame/UmiJS/GettingStarted/index.md" },
                     { text: "目录结构", link: "/docs/Frontend/Frame/UmiJS/DirectoryStructure/index.md" },
@@ -411,7 +413,7 @@ export const FrontFrame = [
                 ]
             },
             {
-                text: "Next", link: "/docs/Frontend/Frame/Next/index.md", collapsed: false, items: [
+                text: "Next", link: "/docs/Frontend/Frame/Next/index.md", collapsed: true, items: [
                     { text: "Next 概述与安装", link: "/docs/Frontend/Frame/Next/Overview/index.md" },
                     { text: "Next 项目结构", link: "/docs/Frontend/Frame/Next/Structure/index.md" },
                     { text: "Next 路由系统", link: "/docs/Frontend/Frame/Next/Routing/index.md" },
@@ -427,7 +429,7 @@ export const FrontFrame = [
                 ]
             },
             {
-                text: "Uniapp", link: "/docs/Frontend/Frame/Uniapp/index.md", collapsed: false, items: [
+                text: "Uniapp", link: "/docs/Frontend/Frame/Uniapp/index.md", collapsed: true, items: [
                     { text: "Uniapp 概述与安装", link: "/docs/Frontend/Frame/Uniapp/Overview/index.md" },
                     { text: "Uniapp 项目结构", link: "/docs/Frontend/Frame/Uniapp/Structure/index.md" },
                     { text: "Uniapp 页面开发", link: "/docs/Frontend/Frame/Uniapp/Pages/index.md" },
@@ -442,7 +444,7 @@ export const FrontFrame = [
                 ]
             },
             {
-                text: "Electron", link: "/docs/Frontend/Frame/Electron/index.md", collapsed: false, items: [
+                text: "Electron", link: "/docs/Frontend/Frame/Electron/index.md", collapsed: true, items: [
                     { text: "Electron 概述", link: "/docs/Frontend/Frame/Electron/Overview/index.md" },
                     { text: "Electron 搭建环境", link: "/docs/Frontend/Frame/Electron/BuildEnvironment/index.md" },
                     { text: "Electron 配置", link: "/docs/Frontend/Frame/Electron/Configuration/index.md" },
@@ -470,6 +472,7 @@ export const FrontOthers = [
     {
         text: "其他",
         link: "/docs/Frontend/Others/index.md",
+        collapsed: true,
         items: [
             { text: "自动生成接口", link: "/docs/Frontend/Others/AutoGenInterface/index.md" },
             { text: "HTTP 协议", link: "/docs/Frontend/Others/HTTP/index.md" },

@@ -3,6 +3,7 @@ export const DotNet = [
   {
     text: ".Net",
     link: "/docs/Backend/DotNet/index.md",
+    collapsed: true,
     items: [
       {
         "link": "/docs/Backend/DotNet/Basic/index.md",
@@ -27,11 +28,12 @@ export const Java = [
   {
     text: "Java",
     link: "/docs/Backend/Java/index.md",
+    collapsed: true,
     items: [
       {
         text: "JavaSE",
         link: "/docs/Backend/Java/JavaSE/index.md",
-        collapsed: false,
+        collapsed: true,
         items: [
           { text: "Java 概述", link: "/docs/Backend/Java/JavaSE/Overview/index.md" },
           { text: "环境搭建", link: "/docs/Backend/Java/JavaSE/Environment/index.md" },
@@ -47,13 +49,13 @@ export const Java = [
       {
         text: "框架",
         link: "/docs/Backend/Java/Frame/index.md",
-        collapsed: false,
+        collapsed: true,
         items: [
           { text: "框架基本概念", link: "/docs/Backend/Java/Frame/BasicConcept/index.md" },
           {
             text: "Spring",
             link: "/docs/Backend/Java/Frame/Spring/index.md",
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: "Spring 5", link: "/docs/Backend/Java/Frame/Spring/Spring5/index.md" },
               { text: "Spring 6", link: "/docs/Backend/Java/Frame/Spring/Spring6/index.md" },
@@ -63,12 +65,12 @@ export const Java = [
           {
             text: "Spring Boot（版本总览）",
             link: "/docs/Backend/Java/Frame/SpringBoot/index.md",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "通用指南",
                 link: "/docs/Backend/Java/Frame/SpringBoot/Common/index.md",
-                collapsed: false,
+                collapsed: true,
                 items: [
                   { text: "Spring Boot 概述与版本", link: "/docs/Backend/Java/Frame/SpringBoot/Common/Overview/index.md" },
                   { text: "项目搭建", link: "/docs/Backend/Java/Frame/SpringBoot/Common/CreateProject/index.md" },
@@ -104,6 +106,7 @@ export const Python = [
   {
     text: "Python",
     link: "/docs/Backend/Python/index.md",
+    collapsed: true,
     items: [
       { text: "环境管理", link: "/docs/Backend/Python/Environment/index.md" },
       { text: "装饰器", link: "/docs/Backend/Python/Decorator/index.md" },

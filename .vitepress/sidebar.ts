@@ -15,48 +15,56 @@ export const sidebar = {
   "/docs/Frontend": [
     {
       text: "前端",
+      collapsed: true,
       items: [...FrontBasic, ...FrontFrame, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
     {
       text: "后端",
+      collapsed: true,
       items: [...DotNet, ...Go, ...Java, ...Python],
     },
   ],
   "/docs/DB": [
     {
       text: "数据库",
+      collapsed: true,
       items: [...DBOverview, ...Relational, ...NoRelational],
     },
   ],
   "/docs/Ops": [
     {
       text: "运维",
+      collapsed: true,
       items: [...VM, ...Linux, ...Nginx, ...Docker, ...Kubernetes, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
     {
       text: "AI",
+      collapsed: true,
       items: [...AI_Java, ...AI_OpenClaw],
     },
   ],
   "/docs/Tools": [
     {
       text: "工具",
+      collapsed: true,
       items: [...Build, ...CICD, ...IDE, ...VC, ...Others],
     },
   ],
   "/project": [
     {
       text: "项目",
+      collapsed: true,
       items: [...BaseProject, ...CompleteProject],
     },
   ],
   "/docs/Others": [
     {
       text: "其他",
+      collapsed: true,
       items: [{ text: "其他", link: "/docs/Others/index.md" }],
     },
   ],
