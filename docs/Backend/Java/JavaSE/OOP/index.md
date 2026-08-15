@@ -213,3 +213,8 @@ public class Main {
 ```
 
 验证：编译运行后输出 `10000.0`，说明多态和重写生效。
+
+## 相关专题
+
+- [面向对象基础](../ObjectOriented/index.md)
+- [集合框架](../Collection/index.md)

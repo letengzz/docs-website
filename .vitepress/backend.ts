@@ -56,7 +56,21 @@ export const Java = [
             ],
           },
           { text: "IO 流", link: "/docs/Backend/Java/JavaSE/IO/index.md" },
-          { text: "多线程", link: "/docs/Backend/Java/JavaSE/Multithreading/index.md" },
+          {
+            text: "Java 并发",
+            link: "/docs/Backend/Java/JavaSE/Multithreading/index.md",
+            collapsed: true,
+            items: [
+              { text: "线程基础", link: "/docs/Backend/Java/JavaSE/Multithreading/ThreadBasic/index.md" },
+              { text: "线程池", link: "/docs/Backend/Java/JavaSE/Multithreading/ThreadPool/index.md" },
+              { text: "synchronized 与 Lock", link: "/docs/Backend/Java/JavaSE/Multithreading/SynchronizedLock/index.md" },
+              { text: "volatile 与内存可见性", link: "/docs/Backend/Java/JavaSE/Multithreading/Volatile/index.md" },
+              { text: "并发工具类", link: "/docs/Backend/Java/JavaSE/Multithreading/ConcurrentUtils/index.md" },
+              { text: "CompletableFuture 异步编排", link: "/docs/Backend/Java/JavaSE/Multithreading/CompletableFuture/index.md" },
+              { text: "ThreadLocal 详解", link: "/docs/Backend/Java/JavaSE/Multithreading/ThreadLocal/index.md" },
+              { text: "常见问题与最佳实践", link: "/docs/Backend/Java/JavaSE/Multithreading/FAQ/index.md" },
+            ],
+          },
         ],
       },
       {

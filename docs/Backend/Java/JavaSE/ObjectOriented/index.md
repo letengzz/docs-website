@@ -855,3 +855,8 @@ public class ObjectClass {
     }
 }
 ```
+
+## 相关专题
+
+- [面向对象核心（OOP）](../OOP/index.md)
+- [Java 并发](../Multithreading/index.md)

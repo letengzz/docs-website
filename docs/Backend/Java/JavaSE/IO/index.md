@@ -681,3 +681,8 @@ public class ChannelBufferDemo {
 | 文件复制 | Files.copy 或 transferTo | 简洁高效 |
 | 配置读取 | Properties 或 NIO | 简单便捷 |
 :::
+
+## 相关专题
+
+- [Java 并发](../Multithreading/index.md)
+- [集合框架](../Collection/index.md)
