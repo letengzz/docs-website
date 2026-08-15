@@ -26,6 +26,10 @@ javac 25.0.x
 winget install EclipseAdoptium.Temurin.25.JDK
 ```
 
+::: info 版本补充
+想体验最新功能版本可以安装 Temurin 26（2026-03 发布，非 LTS）；学习与生产建议使用 25 LTS，社区资源与框架兼容性更好。
+:::
+
 ### macOS / Linux
 
 推荐使用 SDKMAN 管理多个 JDK 版本：

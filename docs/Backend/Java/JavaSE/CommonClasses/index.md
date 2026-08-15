@@ -90,6 +90,11 @@ public class StringDemo {
 }
 ```
 
+## 相关专题
+
+- [集合框架](../Collection/index.md)
+- [IO 流](../IO/index.md)
+
 ### StringBuilder 与 StringBuffer
 
 ```java
@@ -176,7 +181,7 @@ public class LocalDateTimeDemo {
         // 日期计算
         System.out.println("今天加5天: " + today.plusDays(5));
         System.out.println("今天减2月: " + today.minusMonths(2));
-        System.out.println("今年最后一天: " = today.with(TemporalAdjusters.lastDayOfYear()));
+            System.out.println("今年最后一天: " + today.with(TemporalAdjusters.lastDayOfYear()));
         
         // 获取日期信息
         System.out.println("年: " + today.getYear());
@@ -255,7 +260,7 @@ public class PeriodDurationDemo {
         System.out.println("\n时间差:");
         System.out.println("小时: " + duration.toHours());
         System.out.println("分钟: " + duration.toMinutes());
-        System.out.println("秒: " = duration.getSeconds());
+        System.out.println("秒: " + duration.getSeconds());
         System.out.println("毫秒: " + duration.toMillis());
     }
 }
@@ -379,7 +384,7 @@ public class MathDemo {
         // 三角函数
         System.out.println("sin(30°): " + Math.sin(Math.toRadians(30)));
         System.out.println("cos(60°): " + Math.cos(Math.toRadians(60)));
-        System.out.println("tan(45°): " = Math.tan(Math.toRadians(45)));
+        System.out.println("tan(45°): " + Math.tan(Math.toRadians(45)));
         
         // 反三角函数
         System.out.println("asin(0.5): " + Math.toDegrees(Math.asin(0.5)));
@@ -514,7 +519,7 @@ public class RegexDemo {
         String email = "test@example.com";
         System.out.println("替换域名: " + email.replaceAll("@\\w+\\.\\w+", "@new-domain.com"));
         System.out.println("分割: " + java.util.Arrays.toString("a,b;c d".split("[,;\\s]")));
-        System.out.println("替换数字: " = "a1b2c3".replaceAll("\\d", "#"));
+        System.out.println("替换数字: " + "a1b2c3".replaceAll("\\d", "#"));
     }
 }
 ```

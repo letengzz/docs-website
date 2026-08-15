@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .iface { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; rx: 8; }
+    .impl { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 14px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #555; }
+  </style>
+
+  <rect class="iface" x="280" y="20" width="160" height="36"/>
+  <text x="360" y="43">Iterable&lt;E&gt;（根接口）</text>
+
+  <line x1="360" y1="56" x2="360" y2="80" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect class="iface" x="280" y="80" width="160" height="36"/>
+  <text x="360" y="103">Collection&lt;E&gt;</text>
+
+  <line x1="300" y1="116" x2="160" y2="150" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="360" y1="116" x2="360" y2="150" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="420" y1="116" x2="560" y2="150" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect class="iface" x="80" y="150" width="160" height="36"/>
+  <text x="160" y="173">List（有序可重复）</text>
+
+  <rect class="iface" x="280" y="150" width="160" height="36"/>
+  <text x="360" y="173">Set（不可重复）</text>
+
+  <rect class="iface" x="480" y="150" width="160" height="36"/>
+  <text x="560" y="173">Queue / Deque</text>
+
+  <line x1="120" y1="186" x2="120" y2="215" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="200" y1="186" x2="200" y2="215" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="280" y1="186" x2="280" y2="215" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="360" y1="186" x2="360" y2="215" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="440" y1="186" x2="440" y2="215" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="520" y1="186" x2="520" y2="215" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="600" y1="186" x2="600" y2="215" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect class="impl" x="40" y="215" width="160" height="32"/>
+  <text x="120" y="236">ArrayList</text>
+  <rect class="impl" x="40" y="252" width="160" height="32"/>
+  <text x="120" y="273">LinkedList</text>
+  <rect class="impl" x="40" y="289" width="160" height="32"/>
+  <text x="120" y="310">Vector（遗留）</text>
+
+  <rect class="impl" x="215" y="215" width="130" height="32"/>
+  <text x="280" y="236">HashSet</text>
+  <rect class="impl" x="215" y="252" width="130" height="32"/>
+  <text x="280" y="273">LinkedHashSet</text>
+  <rect class="impl" x="215" y="289" width="130" height="32"/>
+  <text x="280" y="310">TreeSet</text>
+
+  <rect class="impl" x="370" y="215" width="130" height="32"/>
+  <text x="435" y="236">ArrayDeque</text>
+  <rect class="impl" x="370" y="252" width="130" height="32"/>
+  <text x="435" y="273">PriorityQueue</text>
+  <rect class="impl" x="370" y="289" width="130" height="32"/>
+  <text x="435" y="310">BlockingQueue 实现</text>
+
+  <line x1="520" y1="186" x2="560" y2="240" stroke="#888" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="600" y1="186" x2="600" y2="240" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect class="iface" x="520" y="240" width="160" height="36"/>
+  <text x="600" y="263">Map&lt;K, V&gt;（独立体系）</text>
+  <line x1="560" y1="276" x2="560" y2="305" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="640" y1="276" x2="640" y2="305" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect class="impl" x="480" y="305" width="160" height="32"/>
+  <text x="560" y="326">HashMap / LinkedHashMap</text>
+  <rect class="impl" x="480" y="342" width="160" height="32"/>
+  <text x="560" y="363">TreeMap / ConcurrentHashMap</text>
+
+  <text class="small" x="360" y="405">虚线：Map 依赖哈希/排序语义，但不继承 Collection</text>
+</svg>

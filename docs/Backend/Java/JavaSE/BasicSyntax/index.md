@@ -637,6 +637,11 @@ public class GuessNumber {
 
 验证：执行 `javac GuessNumber.java && java GuessNumber`，多次输入数字，确认能正常提示大小并最终猜中。
 
+## 相关专题
+
+- [常用类](../CommonClasses/index.md)
+- [集合框架](../Collection/index.md)
+
 ## 参考资料
 
 - Oracle Java 基础语法教程：https://docs.oracle.com/javase/tutorial/java/nutsandbolts/index.html

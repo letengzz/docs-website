@@ -531,7 +531,7 @@ public class NioDemo {
             System.out.println("是否为文件: " + Files.isRegularFile(file));
             System.out.println("文件大小: " + Files.size(file) + " 字节");
             System.out.println("可读: " + Files.isReadable(file));
-            System.out.println("可写: " = Files.isWritable(file));
+            System.out.println("可写: " + Files.isWritable(file));
             
             // 删除
             Files.deleteIfExists(link);
