@@ -92,6 +92,8 @@ class ThreadFactoryBuilder implements ThreadFactory {
   → 触发拒绝策略
 ```
 
+![线程池任务提交与拒绝流程](../assets/pool-flow.svg)
+
 ## 队列与拒绝策略
 
 | 队列 | 特点 |

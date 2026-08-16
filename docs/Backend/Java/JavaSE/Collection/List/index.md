@@ -17,6 +17,8 @@ List
 
 ## 常用方法
 
+![ArrayList 与 LinkedList 结构对比](../assets/list-structure.svg)
+
 | 方法 | 作用 |
 | --- | --- |
 | `add(E)` / `add(int, E)` | 追加 / 指定位置插入 |

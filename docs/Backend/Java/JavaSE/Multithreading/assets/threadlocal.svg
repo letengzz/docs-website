@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .thread { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .map { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; rx: 8; }
+    .value { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="thread" x="40" y="40" width="180" height="50"/>
+  <text x="130" y="69">线程 A</text>
+
+  <rect class="map" x="80" y="120" width="160" height="50"/>
+  <text x="160" y="140">ThreadLocalMap</text>
+  <text class="small" x="160" y="158">key = ThreadLocal（弱引用）</text>
+
+  <rect class="value" x="120" y="200" width="140" height="44"/>
+  <text x="190" y="226">value = 副本 A（强引用）</text>
+
+  <line x1="130" y1="90" x2="150" y2="120" stroke="#4a7bd8" stroke-width="1.5"/>
+  <line x1="160" y1="170" x2="180" y2="200" stroke="#4a7bd8" stroke-width="1.5"/>
+
+  <rect class="thread" x="270" y="40" width="180" height="50"/>
+  <text x="360" y="69">线程 B</text>
+
+  <rect class="map" x="310" y="120" width="160" height="50"/>
+  <text x="390" y="140">ThreadLocalMap</text>
+  <text class="small" x="390" y="158">key = ThreadLocal（弱引用）</text>
+
+  <rect class="value" x="350" y="200" width="140" height="44"/>
+  <text x="420" y="226">value = 副本 B（强引用）</text>
+
+  <line x1="360" y1="90" x2="380" y2="120" stroke="#4a7bd8" stroke-width="1.5"/>
+  <line x1="390" y1="170" x2="410" y2="200" stroke="#4a7bd8" stroke-width="1.5"/>
+
+  <rect class="thread" x="500" y="40" width="180" height="50"/>
+  <text x="590" y="69">线程 C</text>
+
+  <rect class="map" x="540" y="120" width="160" height="50"/>
+  <text x="620" y="140">ThreadLocalMap</text>
+  <text class="small" x="620" y="158">key = ThreadLocal（弱引用）</text>
+
+  <rect class="value" x="580" y="200" width="140" height="44"/>
+  <text x="650" y="226">value = 副本 C（强引用）</text>
+
+  <line x1="590" y1="90" x2="610" y2="120" stroke="#4a7bd8" stroke-width="1.5"/>
+  <line x1="620" y1="170" x2="640" y2="200" stroke="#4a7bd8" stroke-width="1.5"/>
+
+  <text class="small" x="360" y="275">同一 ThreadLocal 在每个线程各存一份；线程池复用线程时 value 不会被自动清理</text>
+  <text class="small" x="360" y="295">用完必须 remove()，否则 key 弱引用回收后 value 仍被强引用 → 内存泄漏</text>
+</svg>

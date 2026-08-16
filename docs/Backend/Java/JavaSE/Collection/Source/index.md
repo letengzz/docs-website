@@ -55,6 +55,8 @@ put(key, value)
   → 元素个数 > 容量 × 0.75 → resize 翻倍
 ```
 
+![HashMap 存储结构](../assets/hashmap-structure.svg)
+
 几个稳定结论：
 
 1. **扩容是翻倍**（`newCap = oldCap << 1`），旧元素要么留在原桶，要么移到 `原位置 + 旧容量`。

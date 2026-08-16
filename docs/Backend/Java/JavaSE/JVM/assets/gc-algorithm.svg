@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .young { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .old { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; rx: 8; }
+    .algo { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="young" x="40" y="30" width="200" height="70"/>
+  <text x="140" y="55">新生代（Minor GC）</text>
+  <text class="small" x="140" y="75">Eden : S0 : S1 = 8 : 1 : 1</text>
+  <text class="small" x="140" y="90">标记-复制</text>
+
+  <line x1="240" y1="65" x2="290" y2="65" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#a1)"/>
+
+  <rect class="old" x="290" y="30" width="200" height="70"/>
+  <text x="390" y="55">老年代（Major/Full GC）</text>
+  <text class="small" x="390" y="75">存活率高、对象大</text>
+  <text class="small" x="390" y="90">标记-清除 / 标记-整理</text>
+
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+
+  <line x1="390" y1="100" x2="390" y2="135" stroke="#d99a2b" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a1)"/>
+  <text class="small" x="430" y="122">年龄达标 / 大对象晋升</text>
+
+  <rect class="algo" x="40" y="135" width="150" height="80"/>
+  <text x="115" y="160">标记-清除</text>
+  <text class="small" x="115" y="180">快，但产生碎片</text>
+
+  <rect class="algo" x="210" y="135" width="150" height="80"/>
+  <text x="285" y="160">标记-复制</text>
+  <text class="small" x="285" y="180">无碎片</text>
+  <text class="small" x="285" y="195">内存利用率打折</text>
+
+  <rect class="algo" x="380" y="135" width="150" height="80"/>
+  <text x="455" y="160">标记-整理</text>
+  <text class="small" x="455" y="180">无碎片</text>
+  <text class="small" x="455" y="195">移动对象成本高</text>
+
+  <rect class="algo" x="550" y="135" width="130" height="80"/>
+  <text x="615" y="160">可达性分析</text>
+  <text class="small" x="615" y="180">GC Roots 出发</text>
+  <text class="small" x="615" y="195">不可达即回收</text>
+
+  <text class="small" x="360" y="250">GC Roots：栈帧局部变量 / 静态变量 / 常量 / JNI 引用 / 活跃线程</text>
+  <text class="small" x="360" y="270">四种引用：强 / 软（SoftReference）/ 弱（WeakReference）/ 虚（PhantomReference）</text>
+  <text class="small" x="360" y="290">分代假说：大部分对象“朝生夕灭”，因此新生代用复制、老年代用整理/清除</text>
+</svg>

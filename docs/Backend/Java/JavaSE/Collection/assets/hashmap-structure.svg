@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .bucket { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 6; }
+    .node { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; rx: 6; }
+    .tree { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 6; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+    .arrow { stroke: #888; stroke-width: 1.5; }
+  </style>
+
+  <text x="80" y="30" text-anchor="middle" font-size="14" font-weight="bold">桶（数组）</text>
+
+  <rect class="bucket" x="40" y="45" width="80" height="30"/>
+  <text x="80" y="65">0</text>
+  <rect class="bucket" x="40" y="80" width="80" height="30"/>
+  <text x="80" y="100">1</text>
+  <rect class="bucket" x="40" y="115" width="80" height="30"/>
+  <text x="80" y="135">2</text>
+  <rect class="bucket" x="40" y="150" width="80" height="30"/>
+  <text x="80" y="170">…</text>
+  <rect class="bucket" x="40" y="185" width="80" height="30"/>
+  <text x="80" y="205">n-1</text>
+
+  <line x1="120" y1="95" x2="160" y2="95" class="arrow"/>
+  <rect class="node" x="160" y="75" width="150" height="40"/>
+  <text x="235" y="100">key1 → value1</text>
+  <line x1="310" y1="95" x2="350" y2="95" class="arrow"/>
+  <rect class="node" x="350" y="75" width="150" height="40"/>
+  <text x="425" y="100">key2 → value2</text>
+  <line x1="500" y1="95" x2="540" y2="95" class="arrow"/>
+  <rect class="node" x="540" y="75" width="150" height="40"/>
+  <text x="615" y="100">key3 → value3</text>
+
+  <text class="small" x="360" y="145">链表长度 ≥ 8 且桶数 ≥ 64 时转为红黑树</text>
+
+  <rect class="tree" x="160" y="170" width="450" height="60"/>
+  <text x="385" y="195">红黑树（TreeBin）</text>
+  <text class="small" x="385" y="215">查找 O(log n)，代替链表 O(n)</text>
+
+  <line x1="80" y1="215" x2="80" y2="255" class="arrow"/>
+  <rect class="node" x="20" y="255" width="200" height="46"/>
+  <text x="120" y="278">默认容量 16、负载因子 0.75</text>
+  <text class="small" x="120" y="294">元素数 &gt; 容量 × 0.75 → 扩容翻倍</text>
+
+  <rect class="node" x="260" y="255" width="200" height="46"/>
+  <text x="360" y="278">hash 扰动：h ^ (h &gt;&gt;&gt; 16)</text>
+  <text class="small" x="360" y="294">定位桶：(n - 1) &amp; hash</text>
+
+  <rect class="node" x="500" y="255" width="200" height="46"/>
+  <text x="600" y="278">JDK 8+ 链表尾插</text>
+  <text class="small" x="600" y="294">缓解并发扩容死循环（仍非线程安全）</text>
+
+  <text class="small" x="360" y="340">结构：数组 + 链表/红黑树；key 需正确重写 hashCode 与 equals</text>
+</svg>

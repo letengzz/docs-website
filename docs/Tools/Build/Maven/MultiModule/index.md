@@ -127,6 +127,8 @@ mvn -pl web -am install
 - `-am`（also make）：同时构建它依赖的上游模块。
 - `-amd`（also make dependents）：同时构建依赖它的下游模块。
 
+![Maven 多模块 Reactor 构建顺序](../assets/reactor.svg)
+
 ## 构建与发布规范
 
 1. 本地开发：父目录 `mvn install` 把全部模块装进本地仓库。

@@ -74,6 +74,8 @@ HELLO WORLD
 完成
 ```
 
+![CompletableFuture 异步编排链](../assets/async-chain.svg)
+
 | 方法 | 作用 |
 | --- | --- |
 | `thenApply(fn)` | 转换结果，返回新 CompletableFuture |

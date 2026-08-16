@@ -25,6 +25,8 @@ Gradle：init → configuration → execution（Task DAG）
         compileJava → test → jar → assemble / check → build
 ```
 
+![Maven 与 Gradle 构建模型对比](assets/compare.svg)
+
 Maven 通过“阶段 + 插件目标”组织构建，顺序固定、容易理解；Gradle 通过任务依赖组织，灵活但需要理解 DAG 和配置/执行阶段。
 
 ## 性能对比

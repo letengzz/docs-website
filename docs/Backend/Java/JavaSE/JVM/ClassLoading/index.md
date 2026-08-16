@@ -67,6 +67,8 @@ Bootstrap ClassLoader（启动类加载器，C++ 实现，加载 JDK 核心类�
 
 工作流程：加载某个类时，先让父加载器尝试加载；父加载不了才由自己加载。
 
+![类加载器双亲委派模型](../assets/parent-delegation.svg)
+
 ```java [JVM/ClassLoading/ClassLoaderDemo.java]
 public class ClassLoaderDemo {
     public static void main(String[] args) {

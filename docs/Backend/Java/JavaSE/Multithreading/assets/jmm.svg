@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="280" viewBox="0 0 720 280" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="jm-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d99a2b"/>
+    </marker>
+  </defs>
+  <style>
+    .main { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 10; }
+    .local { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 14px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="main" x="250" y="100" width="220" height="70"/>
+  <text x="360" y="130">主内存</text>
+  <text class="small" x="360" y="150">共享变量副本</text>
+
+  <rect class="local" x="40" y="30" width="180" height="70"/>
+  <text x="130" y="60">线程 A 工作内存</text>
+  <text class="small" x="130" y="80">寄存器 / 缓存</text>
+
+  <rect class="local" x="500" y="30" width="180" height="70"/>
+  <text x="590" y="60">线程 B 工作内存</text>
+  <text class="small" x="590" y="80">寄存器 / 缓存</text>
+
+  <line x1="220" y1="80" x2="280" y2="105" stroke="#d99a2b" stroke-width="1.5" marker-end="url(#jm-arrow)"/>
+  <line x1="280" y1="125" x2="220" y2="105" stroke="#d99a2b" stroke-width="1.5" marker-end="url(#jm-arrow)"/>
+  <text class="small" x="250" y="145">读 / 写</text>
+
+  <line x1="500" y1="80" x2="440" y2="105" stroke="#d99a2b" stroke-width="1.5" marker-end="url(#jm-arrow)"/>
+  <line x1="440" y1="125" x2="500" y2="105" stroke="#d99a2b" stroke-width="1.5" marker-end="url(#jm-arrow)"/>
+  <text class="small" x="470" y="145">读 / 写</text>
+
+  <rect class="local" x="120" y="200" width="480" height="48"/>
+  <text x="360" y="222">volatile：写立即刷新主内存，读强制从主内存获取</text>
+  <text class="small" x="360" y="238">保证可见性与有序性，不保证原子性</text>
+
+  <text class="small" x="360" y="265">共享变量跨线程可见需要：volatile / synchronized / 并发集合 / 原子类</text>
+</svg>

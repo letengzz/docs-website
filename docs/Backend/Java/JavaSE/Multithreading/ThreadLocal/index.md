@@ -72,6 +72,8 @@ Thread
 - **线程池线程复用**时，Map 一直存在，如果不 `remove()`，value 永远被强引用 → **内存泄漏**。
 - key 是弱引用，ThreadLocal 对象被回收后，value 仍被 Map 的 Entry 强引用。
 
+![ThreadLocal 结构示意图](../assets/threadlocal.svg)
+
 ## 内存泄漏与正确清理
 
 ::: danger 经典问题

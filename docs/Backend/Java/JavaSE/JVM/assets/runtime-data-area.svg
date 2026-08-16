@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="380" viewBox="0 0 700 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .private { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .shared { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; rx: 8; }
+    .native { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 14px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+    .title { font-size: 15px; font-weight: bold; }
+  </style>
+
+  <text class="title" x="150" y="28">线程私有</text>
+
+  <rect class="private" x="40" y="45" width="220" height="70"/>
+  <text x="150" y="72">程序计数器（PC Register）</text>
+  <text class="small" x="150" y="95">当前字节码行号</text>
+
+  <rect class="private" x="40" y="130" width="220" height="70"/>
+  <text x="150" y="157">虚拟机栈（VM Stack）</text>
+  <text class="small" x="150" y="180">栈帧：局部变量 / 操作数栈</text>
+
+  <rect class="private" x="40" y="215" width="220" height="70"/>
+  <text x="150" y="242">本地方法栈（Native Stack）</text>
+  <text class="small" x="150" y="265">native 方法调用</text>
+
+  <text class="title" x="470" y="28">线程共享</text>
+
+  <rect class="shared" x="380" y="45" width="280" height="130"/>
+  <text x="520" y="80">堆（Heap）</text>
+  <text class="small" x="520" y="105">对象实例 / 数组 / 字符串常量池</text>
+  <text class="small" x="520" y="125">新生代（Eden + Survivor）</text>
+  <text class="small" x="520" y="145">老年代</text>
+
+  <rect class="shared" x="380" y="190" width="280" height="70"/>
+  <text x="520" y="217">方法区 / 元空间（Metaspace）</text>
+  <text class="small" x="520" y="240">类元信息 / 运行时常量池 / 静态变量</text>
+
+  <rect class="native" x="380" y="275" width="280" height="60"/>
+  <text x="520" y="300">直接内存（Direct Memory）</text>
+  <text class="small" x="520" y="320">NIO / DirectByteBuffer（本地内存）</text>
+
+  <text class="small" x="150" y="330">异常：StackOverflowError / OOM</text>
+  <text class="small" x="520" y="360">异常：Java heap space / Metaspace / Direct buffer memory</text>
+</svg>

@@ -103,6 +103,8 @@ public class ReferenceDemo {
 | 新生代 | 对象多、存活少 | 标记-复制 |
 | 老年代 | 存活率高、对象大 | 标记-清除 / 标记-整理 |
 
+![分代回收与 GC 算法](../assets/gc-algorithm.svg)
+
 ## 对象晋升老年代
 
 ```text

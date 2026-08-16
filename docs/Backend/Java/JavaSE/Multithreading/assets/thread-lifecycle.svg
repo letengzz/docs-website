@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="260" viewBox="0 0 760 260" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="tl-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .state { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    .end { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 14px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="state" x="20" y="90" width="100" height="46"/>
+  <text x="70" y="118">NEW</text>
+
+  <rect class="state" x="180" y="90" width="120" height="46"/>
+  <text x="240" y="118">RUNNABLE</text>
+
+  <rect class="state" x="480" y="30" width="150" height="46"/>
+  <text x="555" y="58">BLOCKED</text>
+
+  <rect class="state" x="480" y="150" width="150" height="46"/>
+  <text x="555" y="178">WAITING</text>
+
+  <rect class="state" x="640" y="150" width="110" height="46"/>
+  <text x="695" y="178">TIMED_WAITING</text>
+
+  <rect class="end" x="180" y="200" width="120" height="46"/>
+  <text x="240" y="228">TERMINATED</text>
+
+  <line x1="120" y1="113" x2="180" y2="113" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#tl-arrow)"/>
+  <text class="small" x="150" y="103">start()</text>
+
+  <line x1="300" y1="113" x2="480" y2="75" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#tl-arrow)"/>
+  <text class="small" x="390" y="85">竞争 synchronized 锁失败</text>
+
+  <line x1="480" y1="76" x2="300" y2="113" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#tl-arrow)"/>
+  <text class="small" x="390" y="65">获得锁</text>
+
+  <line x1="300" y1="113" x2="555" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#tl-arrow)"/>
+  <text class="small" x="420" y="135">wait() / join()</text>
+
+  <line x1="555" y1="76" x2="555" y2="150" stroke="#4a7bd8" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#tl-arrow)"/>
+  <text class="small" x="585" y="118">BLOCKED → 可再进 RUNNABLE</text>
+
+  <line x1="555" y1="150" x2="695" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#tl-arrow)"/>
+  <text class="small" x="625" y="140">sleep(ms)</text>
+
+  <line x1="695" y1="150" x2="300" y2="113" stroke="#4a7bd8" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#tl-arrow)"/>
+  <text class="small" x="520" y="110">时间到 / notify</text>
+
+  <line x1="240" y1="136" x2="240" y2="200" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#tl-arrow)"/>
+  <text class="small" x="270" y="175">run() 结束</text>
+
+  <text class="small" x="380" y="245">状态：NEW → RUNNABLE → BLOCKED/WAITING/TIMED_WAITING → TERMINATED</text>
+</svg>

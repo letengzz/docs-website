@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="300" viewBox="0 0 640 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .header { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; }
+    .data { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .pad { fill: #f3f3f3; stroke: #999; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="header" x="180" y="20" width="280" height="34"/>
+  <text x="320" y="42">Mark Word（哈希 / GC 年龄 / 锁状态）8 字节</text>
+
+  <rect class="header" x="180" y="54" width="280" height="34"/>
+  <text x="320" y="76">Klass Pointer（类型指针）4 字节（压缩开启）</text>
+
+  <rect class="header" x="180" y="88" width="280" height="34"/>
+  <text x="320" y="110">数组长度（仅数组对象）4 字节</text>
+
+  <rect class="data" x="180" y="140" width="280" height="70"/>
+  <text x="320" y="165">实例数据（Instance Data）</text>
+  <text class="small" x="320" y="185">字段值按类型排列</text>
+  <text class="small" x="320" y="200">long/double 8 字节、引用 4/8 字节</text>
+
+  <rect class="pad" x="180" y="228" width="280" height="34"/>
+  <text x="320" y="250">对齐填充（Padding）到 8 字节倍数</text>
+
+  <line x1="150" y1="40" x2="180" y2="40" stroke="#d99a2b" stroke-width="1.5"/>
+  <line x1="150" y1="80" x2="180" y2="80" stroke="#d99a2b" stroke-width="1.5"/>
+  <line x1="150" y1="120" x2="180" y2="120" stroke="#d99a2b" stroke-width="1.5"/>
+  <line x1="150" y1="175" x2="180" y2="175" stroke="#4a7bd8" stroke-width="1.5"/>
+  <line x1="150" y1="245" x2="180" y2="245" stroke="#999" stroke-width="1.5"/>
+
+  <text class="small" x="120" y="40">对象头</text>
+  <text class="small" x="120" y="80">对象头</text>
+  <text class="small" x="120" y="120">对象头</text>
+  <text class="small" x="120" y="175">实例数据</text>
+  <text class="small" x="120" y="245">对齐</text>
+
+  <text class="small" x="320" y="290">JDK 25（JEP 519）：64 位平台对象头可压缩到 8 字节</text>
+</svg>

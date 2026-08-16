@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="pt-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .phase { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; rx: 8; }
+    .task { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="phase" x="30" y="40" width="140" height="44"/>
+  <text x="100" y="67">初始化阶段</text>
+
+  <rect class="phase" x="200" y="40" width="150" height="44"/>
+  <text x="275" y="67">配置阶段</text>
+
+  <rect class="phase" x="380" y="40" width="150" height="44"/>
+  <text x="455" y="67">执行阶段</text>
+
+  <line x1="170" y1="62" x2="200" y2="62" stroke="#d99a2b" stroke-width="1.5" marker-end="url(#pt-arrow)"/>
+  <line x1="350" y1="62" x2="380" y2="62" stroke="#d99a2b" stroke-width="1.5" marker-end="url(#pt-arrow)"/>
+
+  <rect class="task" x="590" y="40" width="140" height="44"/>
+  <text x="660" y="67">build 任务</text>
+
+  <line x1="530" y1="62" x2="590" y2="62" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#pt-arrow)"/>
+
+  <rect class="task" x="130" y="140" width="120" height="40"/>
+  <text x="190" y="165">compileJava</text>
+
+  <rect class="task" x="270" y="140" width="120" height="40"/>
+  <text x="330" y="165">processResources</text>
+
+  <rect class="task" x="410" y="140" width="120" height="40"/>
+  <text x="470" y="165">classes</text>
+
+  <rect class="task" x="550" y="140" width="120" height="40"/>
+  <text x="610" y="165">jar</text>
+
+  <line x1="250" y1="160" x2="270" y2="160" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#pt-arrow)"/>
+  <line x1="390" y1="160" x2="410" y2="160" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#pt-arrow)"/>
+  <line x1="530" y1="160" x2="550" y2="160" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#pt-arrow)"/>
+
+  <rect class="task" x="270" y="220" width="120" height="40"/>
+  <text x="330" y="245">test</text>
+
+  <rect class="task" x="410" y="220" width="120" height="40"/>
+  <text x="470" y="245">check</text>
+
+  <line x1="390" y1="240" x2="410" y2="240" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#pt-arrow)"/>
+  <line x1="470" y1="180" x2="470" y2="220" stroke="#3aa76d" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#pt-arrow)"/>
+
+  <text class="small" x="400" y="285">build = assemble + check；增量构建让未变化的任务显示 UP-TO-DATE 并跳过</text>
+</svg>

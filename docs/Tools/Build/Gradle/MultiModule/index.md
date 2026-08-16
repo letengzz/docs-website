@@ -24,6 +24,8 @@ my-platform/
    └─ src/...
 ```
 
+![Gradle 多项目结构](../assets/multi-project.svg)
+
 ## settings.gradle.kts：声明子项目
 
 ```kotlin [settings.gradle.kts]

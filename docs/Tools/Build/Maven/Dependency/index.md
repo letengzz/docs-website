@@ -106,6 +106,8 @@ com.example:my-app:jar:1.0.0-SNAPSHOT
 镜像/私服（阿里云、Nexus、Artifactory）
 ```
 
+![Maven 仓库体系](../assets/repository.svg)
+
 | 仓库 | 位置 | 说明 |
 | --- | --- | --- |
 | 本地仓库 | `~/.m2/repository` | 本机缓存，优先查找 |

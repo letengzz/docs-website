@@ -17,6 +17,8 @@ Gradle 没有 Maven 那种“阶段表”，取而代之的是**任务图（Task
 输出（BUILD SUCCESSFUL / FAILED）
 ```
 
+![Gradle 生命周期与任务图](../assets/task-dag.svg)
+
 | 阶段 | 做什么 | 发生次数 |
 | --- | --- | --- |
 | 初始化 | 解析 settings，创建 Project 对象 | 每次构建 1 次 |

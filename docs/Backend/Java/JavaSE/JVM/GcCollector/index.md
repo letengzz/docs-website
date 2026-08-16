@@ -14,6 +14,8 @@ JDK 25 中 **G1 仍是默认收集器**；CMS 已在 JDK 14 移除；ZGC 从 JDK
 整堆：G1（JDK 9+ 默认）、ZGC、Shenandoah、Epsilon
 ```
 
+![垃圾收集器选型图](../assets/collectors.svg)
+
 ## 经典收集器
 
 | 收集器 | 区域 | 特点 | 状态 |

@@ -105,6 +105,8 @@ NEW → RUNNABLE → BLOCKED / WAITING / TIMED_WAITING → TERMINATED
 | TIMED_WAITING | 限期等待 | `sleep()`、`wait(ms)`、`join(ms)` |
 | TERMINATED | 已结束 | `run()` 返回或异常 |
 
+![线程生命周期状态图](../assets/thread-lifecycle.svg)
+
 ```java [Multithreading/ThreadBasic/LifecycleDemo.java]
 public class LifecycleDemo {
     public static void main(String[] args) throws InterruptedException {

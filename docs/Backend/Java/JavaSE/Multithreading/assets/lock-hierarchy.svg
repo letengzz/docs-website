@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="lk-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .root { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 10; }
+    .impl { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .legacy { fill: #f3f3f3; stroke: #999; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="root" x="240" y="20" width="240" height="44"/>
+  <text x="360" y="47">Java 互斥机制</text>
+
+  <line x1="280" y1="64" x2="170" y2="105" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#lk-arrow)"/>
+  <line x1="360" y1="64" x2="360" y2="105" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#lk-arrow)"/>
+  <line x1="440" y1="64" x2="550" y2="105" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#lk-arrow)"/>
+
+  <rect class="impl" x="80" y="105" width="180" height="60"/>
+  <text x="170" y="130">synchronized</text>
+  <text class="small" x="170" y="150">实例锁 / 类锁 / 代码块</text>
+
+  <rect class="impl" x="270" y="105" width="180" height="60"/>
+  <text x="360" y="130">ReentrantLock</text>
+  <text class="small" x="360" y="150">可重入 / 公平 / 可中断</text>
+
+  <rect class="impl" x="460" y="105" width="180" height="60"/>
+  <text x="550" y="130">ReadWriteLock</text>
+  <text class="small" x="550" y="150">读读并发 / 读写互斥</text>
+
+  <line x1="170" y1="165" x2="170" y2="205" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#lk-arrow)"/>
+  <line x1="360" y1="165" x2="360" y2="205" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#lk-arrow)"/>
+  <line x1="550" y1="165" x2="550" y2="205" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#lk-arrow)"/>
+
+  <rect class="impl" x="80" y="205" width="180" height="48"/>
+  <text x="170" y="225">wait / notify / notifyAll</text>
+  <text class="small" x="170" y="242">条件等待（配合 while）</text>
+
+  <rect class="impl" x="270" y="205" width="180" height="48"/>
+  <text x="360" y="225">Condition</text>
+  <text class="small" x="360" y="242">多条件精确唤醒</text>
+
+  <rect class="legacy" x="460" y="205" width="180" height="48"/>
+  <text x="550" y="225">Hashtable / Vector</text>
+  <text class="small" x="550" y="242">全方法加锁（不推荐）</text>
+
+  <text class="small" x="360" y="280">推荐：synchronized 优先；需要超时/中断/多条件时用 Lock</text>
+</svg>

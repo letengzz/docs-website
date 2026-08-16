@@ -24,6 +24,8 @@
 | `install` | 安装到本地仓库 | `~/.m2/repository/` 中的构件 |
 | `deploy` | 发布到远程仓库/私服 | 私服上的构件 |
 
+![Maven 构建生命周期阶段](../assets/lifecycle.svg)
+
 执行后面的阶段会**自动先执行前面所有阶段**，例如 `mvn package` 会先 validate、compile、test。
 
 ## 常用命令

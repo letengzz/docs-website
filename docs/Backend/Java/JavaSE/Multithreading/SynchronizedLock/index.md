@@ -118,6 +118,8 @@ public class ReentrantLockDemo {
 | 条件变量 | wait/notify | `newCondition()` |
 | 性能 | JDK 持续优化，差距很小 | 功能更丰富 |
 
+![Java 锁体系图](../assets/lock-hierarchy.svg)
+
 ::: tip 选择建议
 新代码优先用 `synchronized`（简洁、不易出错）；需要“超时、可中断、多条件、公平锁”时才用 `ReentrantLock`。
 :::

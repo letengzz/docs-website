@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ts-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .step { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    .tool { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    .result { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="step" x="20" y="40" width="150" height="56"/>
+  <text x="95" y="62">确认现象</text>
+  <text class="small" x="95" y="82">OOM / 高 CPU / 卡顿</text>
+
+  <line x1="170" y1="68" x2="205" y2="68" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+
+  <rect class="tool" x="205" y="40" width="150" height="56"/>
+  <text x="280" y="62">保留现场</text>
+  <text class="small" x="280" y="82">jstack / jmap dump</text>
+
+  <line x1="355" y1="68" x2="390" y2="68" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+
+  <rect class="tool" x="390" y="40" width="150" height="56"/>
+  <text x="465" y="62">定位原因</text>
+  <text class="small" x="465" y="82">jstat / MAT / Arthas</text>
+
+  <line x1="540" y1="68" x2="575" y2="68" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+
+  <rect class="step" x="575" y="40" width="160" height="56"/>
+  <text x="655" y="62">修复验证</text>
+  <text class="small" x="655" y="82">代码修复 + 压测回归</text>
+
+  <rect class="result" x="60" y="140" width="620" height="110"/>
+  <text x="370" y="165">常见故障与工具</text>
+  <text class="small" x="370" y="190">高 CPU：top → top -Hp → jstack 找线程栈热点</text>
+  <text class="small" x="370" y="212">死锁：jstack 搜索 “Found one Java-level deadlock”</text>
+  <text class="small" x="370" y="232">OOM：jmap dump + MAT Leak Suspects / Dominator Tree</text>
+
+  <text class="small" x="370" y="280">工具：jps / jstat / jmap / jstack / jcmd / jinfo / Arthas</text>
+</svg>

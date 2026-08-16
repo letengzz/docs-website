@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="330" viewBox="0 0 760 330" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="pf-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .step { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    .reject { fill: #fdeeee; stroke: #d33; stroke-width: 1.5; rx: 10; }
+    .queue { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="step" x="20" y="30" width="120" height="46"/>
+  <text x="80" y="58">提交任务</text>
+
+  <line x1="140" y1="53" x2="175" y2="53" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#pf-arrow)"/>
+
+  <rect class="step" x="175" y="30" width="160" height="46"/>
+  <text x="255" y="53">线程数 &lt; corePoolSize？</text>
+  <text class="small" x="255" y="68">创建核心线程执行</text>
+
+  <line x1="335" y1="53" x2="370" y2="53" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#pf-arrow)"/>
+
+  <rect class="queue" x="370" y="30" width="140" height="46"/>
+  <text x="440" y="53">队列未满？</text>
+  <text class="small" x="440" y="68">入队等待</text>
+
+  <line x1="510" y1="53" x2="545" y2="53" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#pf-arrow)"/>
+
+  <rect class="step" x="545" y="30" width="190" height="46"/>
+  <text x="640" y="53">线程数 &lt; maximumPoolSize？</text>
+  <text class="small" x="640" y="68">创建非核心线程</text>
+
+  <line x1="640" y1="76" x2="640" y2="120" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#pf-arrow)"/>
+
+  <rect class="reject" x="545" y="120" width="190" height="46"/>
+  <text x="640" y="143">触发拒绝策略</text>
+  <text class="small" x="640" y="160">Abort / CallerRuns / Discard</text>
+
+  <line x1="440" y1="76" x2="440" y2="120" stroke="#d99a2b" stroke-width="1.5" marker-end="url(#pf-arrow)"/>
+
+  <rect class="queue" x="370" y="120" width="140" height="46"/>
+  <text x="440" y="143">线程执行任务</text>
+  <text class="small" x="440" y="160">核心/非核心线程复用</text>
+
+  <rect class="step" x="20" y="120" width="320" height="120"/>
+  <text x="180" y="150">ThreadPoolExecutor 参数</text>
+  <text class="small" x="180" y="175">corePoolSize / maximumPoolSize</text>
+  <text class="small" x="180" y="195">keepAliveTime / workQueue</text>
+  <text class="small" x="180" y="215">threadFactory / handler</text>
+
+  <text class="small" x="380" y="290">有界队列 + 明确拒绝策略 + 线程命名 = 生产线程池标配</text>
+  <text class="small" x="380" y="310">流程：核心线程 → 队列 → 非核心线程 → 拒绝策略</text>
+</svg>
