@@ -180,6 +180,10 @@ public class InterruptDemo {
 2. 运行 `InterruptDemo`，确认 1 秒后线程打印“收到中断，退出”。
 3. 把 `t.start()` 改成 `t.run()`，确认输出顺序变化（主线程顺序执行）。
 
+## 相关专题
+
+- [JVM 基础](../JVM/index.md)
+
 ## 参考资料
 
 - Thread 类文档：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Thread.html

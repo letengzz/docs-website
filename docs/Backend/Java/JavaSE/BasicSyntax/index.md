@@ -641,6 +641,7 @@ public class GuessNumber {
 
 - [常用类](../CommonClasses/index.md)
 - [集合框架](../Collection/index.md)
+- [JVM 基础](../JVM/index.md)
 
 ## 参考资料
 

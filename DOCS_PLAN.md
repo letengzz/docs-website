@@ -41,7 +41,7 @@
 | 11 | Tools | Maven / Gradle ✅ | 概述与安装、项目结构、构建生命周期、依赖管理、私服、多模块、Gradle 对比、常见问题 |
 | 12 | Backend | Java 集合 ✅ | 集合框架总览、List、Set、Map、迭代与遍历、排序与比较器、并发集合、源码要点、常见问题 |
 | 13 | Backend | Java 并发 ✅ | 线程基础、线程池、synchronized 与 Lock、volatile、并发工具类、CompletableFuture、ThreadLocal、常见问题 |
-| 14 | Backend | JVM 基础 | 内存结构、对象创建与布局、类加载机制、GC 算法、垃圾收集器、调优参数、故障排查、常见问题 |
+| 14 | Backend | JVM 基础 ✅ | 内存结构、对象创建与布局、类加载机制、GC 算法、垃圾收集器、调优参数、故障排查、常见问题 |
 | 15 | Frontend | TypeScript 进阶 | 类型系统、泛型、类型工具、条件类型、装饰器、工程化配置、与 Vue/React 结合、常见问题 |
 | 16 | Ops | Nginx | 概述与安装、配置文件、静态资源、反向代理、负载均衡、HTTPS、缓存、限流、常见问题 |
 | 17 | Ops | Kubernetes | 核心概念、安装、Pod、Deployment、Service、Ingress、ConfigMap/Secret、存储、监控、常见问题 |
@@ -149,6 +149,7 @@
 - [x] 文档风格统一巡检：修复 3 处结构问题（未闭合容器/围栏）；全库 381 处裸代码块（54 个历史文件）已统一补 `text` 语言标注
 - [x] 存量版本检查：Vue2/Vue3、ES5~ES12+ 已按版本分目录；MySQL（8.4/9.7）、Redis（8.x/7.x）、Java（LTS）、.NET（DotNet5/WebApiNet6）在页内标注版本现状；其余主题暂无需拆分
 - [x] 分类目录页与侧边栏结构：AI/Backend/DB/Frontend/Ops/Tools 已补 `index.md` 目录页；主题按路径挂载侧边栏且默认展开
+- [x] 存量整理清单已全部结清；后续新增存量任务按需追加（第 14 天：JVM 专题配套更新 JavaSE 目录与交叉链接）
 
 ## 节奏建议
 

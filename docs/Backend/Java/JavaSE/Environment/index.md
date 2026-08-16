@@ -125,3 +125,7 @@ gradle -v
 ::: tip
 初学阶段用 `javac` / `java` 直接运行即可；开始写项目后再引入 Maven / Gradle。
 :::
+
+## 相关专题
+
+- [JVM 基础](../JVM/index.md)

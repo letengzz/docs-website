@@ -71,6 +71,21 @@ export const Java = [
               { text: "常见问题与最佳实践", link: "/docs/Backend/Java/JavaSE/Multithreading/FAQ/index.md" },
             ],
           },
+          {
+            text: "JVM 基础",
+            link: "/docs/Backend/Java/JavaSE/JVM/index.md",
+            collapsed: true,
+            items: [
+              { text: "内存结构", link: "/docs/Backend/Java/JavaSE/JVM/MemoryStructure/index.md" },
+              { text: "对象创建与内存布局", link: "/docs/Backend/Java/JavaSE/JVM/ObjectLayout/index.md" },
+              { text: "类加载机制", link: "/docs/Backend/Java/JavaSE/JVM/ClassLoading/index.md" },
+              { text: "GC 算法", link: "/docs/Backend/Java/JavaSE/JVM/GcAlgorithm/index.md" },
+              { text: "垃圾收集器", link: "/docs/Backend/Java/JavaSE/JVM/GcCollector/index.md" },
+              { text: "JVM 调优参数", link: "/docs/Backend/Java/JavaSE/JVM/Tuning/index.md" },
+              { text: "故障排查", link: "/docs/Backend/Java/JavaSE/JVM/Troubleshoot/index.md" },
+              { text: "常见问题与最佳实践", link: "/docs/Backend/Java/JavaSE/JVM/FAQ/index.md" },
+            ],
+          },
         ],
       },
       {
