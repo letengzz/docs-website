@@ -25,3 +25,4 @@
 - [数据获取模式](DataFetching/index.md)
 - [实战案例](Practice/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+- [TypeScript 进阶（语言篇）](../../Basic/TypeScript/index.md)

@@ -22,6 +22,7 @@
 - [Composition API 深入](CompositionAPI/index.md)
 - [生命周期](Lifecycle/index.md)
 - [TypeScript 集成](TypeScript/index.md)
+- [TypeScript 进阶（语言篇）](../../../Basic/TypeScript/index.md)
 - [Pinia 进阶](PiniaAdvanced/index.md)
 - [路由进阶](RouterAdvanced/index.md)
 - [性能优化](Performance/index.md)

@@ -49,3 +49,9 @@ JavaScript中的困扰：
 - 同样的功能，TypeScript的代码量要大于JavaScript，但由于TypeScript的代码结构更加清晰，变量类型更加明确，在后期代码的维护中TypeScript却远远胜于JavaScript。
 
 ![TypeScript Logo](../assets/img202406081213688-17429678431963.webp)
+
+## 继续学习
+
+- [类型守卫与收窄](../TypeGuards/index.md)
+- [条件类型与 infer](../ConditionalTypes/index.md)
+- [与 Vue / React 结合](../FrameworkIntegration/index.md)

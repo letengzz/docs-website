@@ -154,6 +154,14 @@ export const FrontBasic = [
                     { text: "TypeScript 装饰器", link: "/docs/Frontend/Basic/TypeScript/Decorators/index.md" },
                     { text: "TypeScript 模块解析", link: "/docs/Frontend/Basic/TypeScript/ModuleResolution/index.md" },
                     { text: "TypeScript 命名空间", link: "/docs/Frontend/Basic/TypeScript/Namespaces/index.md" },
+                    { text: "类型守卫与收窄", link: "/docs/Frontend/Basic/TypeScript/TypeGuards/index.md" },
+                    { text: "泛型进阶", link: "/docs/Frontend/Basic/TypeScript/AdvancedGenerics/index.md" },
+                    { text: "条件类型与 infer", link: "/docs/Frontend/Basic/TypeScript/ConditionalTypes/index.md" },
+                    { text: "模板字面量类型", link: "/docs/Frontend/Basic/TypeScript/TemplateLiteralTypes/index.md" },
+                    { text: "声明文件与 .d.ts", link: "/docs/Frontend/Basic/TypeScript/DeclarationFiles/index.md" },
+                    { text: "工程化配置", link: "/docs/Frontend/Basic/TypeScript/Engineering/index.md" },
+                    { text: "与 Vue / React 结合", link: "/docs/Frontend/Basic/TypeScript/FrameworkIntegration/index.md" },
+                    { text: "常见问题与最佳实践", link: "/docs/Frontend/Basic/TypeScript/FAQ/index.md" },
                 ]
             },
             {

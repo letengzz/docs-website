@@ -199,6 +199,10 @@ declare module "*.vue" {
 3. 模板 ref 使用 `instanceof` 或断点确认类型正确。
 4. `npm run dev` 启动后页面渲染正常，控制台无 TS 相关警告。
 
+## 相关专题
+
+- [TypeScript 进阶（语言篇）](../../../../Basic/TypeScript/index.md)
+
 ## 参考资料
 
 - Vue TypeScript 指南：https://cn.vuejs.org/guide/typescript/overview.html
