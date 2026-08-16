@@ -150,7 +150,7 @@
 - [x] 存量版本检查：Vue2/Vue3、ES5~ES12+ 已按版本分目录；MySQL（8.4/9.7）、Redis（8.x/7.x）、Java（LTS）、.NET（DotNet5/WebApiNet6）在页内标注版本现状；其余主题暂无需拆分
 - [x] 分类目录页与侧边栏结构：AI/Backend/DB/Frontend/Ops/Tools 已补 `index.md` 目录页；主题按路径挂载侧边栏且默认展开
 - [x] 存量整理清单已全部结清；后续新增存量任务按需追加（第 14 天：JVM 专题配套更新 JavaSE 目录与交叉链接）
-- [x] 配图补全：为 Maven/Gradle、Java 集合/并发、JVM 专题补充 19 张 SVG 示意图并明确「text 图不算配图」规范
+- [x] 配图补全：为 Maven/Gradle、Java 集合/并发、JVM 专题补充 23 张 SVG 示意图并明确「text 图不算配图」规范
 
 ## 节奏建议
 
