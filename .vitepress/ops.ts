@@ -54,6 +54,23 @@ export const Linux = [
     ],
   },
 ];
-export const Nginx = [{ text: "Nginx", link: "/docs/Ops/Nginx/index.md" }];
+export const Nginx = [
+  {
+    text: "Nginx",
+    link: "/docs/Ops/Nginx/index.md",
+    collapsed: true,
+    items: [
+      { text: "Nginx 概述与安装", link: "/docs/Ops/Nginx/Overview/index.md" },
+      { text: "配置文件详解", link: "/docs/Ops/Nginx/ConfigFile/index.md" },
+      { text: "静态资源服务", link: "/docs/Ops/Nginx/StaticResources/index.md" },
+      { text: "反向代理", link: "/docs/Ops/Nginx/ReverseProxy/index.md" },
+      { text: "负载均衡", link: "/docs/Ops/Nginx/LoadBalance/index.md" },
+      { text: "HTTPS 配置", link: "/docs/Ops/Nginx/Https/index.md" },
+      { text: "缓存配置", link: "/docs/Ops/Nginx/Cache/index.md" },
+      { text: "限流配置", link: "/docs/Ops/Nginx/RateLimit/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/Nginx/FAQ/index.md" },
+    ],
+  },
+];
 export const OpsOthers = [{ text: "运维其他", link: "/docs/Ops/Others/index.md" }];
 export const VM = [{ text: "虚拟机", link: "/docs/Ops/VM/index.md" }];

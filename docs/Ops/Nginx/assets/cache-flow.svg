@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="cf-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .client { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .cache { fill: #eefaf0; stroke: #3aa76d; stroke-width: 2; rx: 12; }
+    .backend { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 12; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="client" x="40" y="120" width="150" height="60"/>
+  <text x="115" y="147">客户端请求</text>
+  <text class="small" x="115" y="167">/api/users</text>
+
+  <line x1="190" y1="150" x2="250" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#cf-arrow)"/>
+
+  <rect class="cache" x="250" y="115" width="200" height="70"/>
+  <text x="350" y="142">Nginx 代理缓存</text>
+  <text class="small" x="350" y="162">proxy_cache api_cache</text>
+  <text class="small" x="350" y="178">key: scheme+host+uri+args</text>
+
+  <line x1="400" y1="125" x2="470" y2="80" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#cf-arrow)"/>
+  <text class="small" x="455" y="70">HIT 直接返回</text>
+
+  <line x1="430" y1="175" x2="500" y2="220" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#cf-arrow)"/>
+  <text class="small" x="495" y="205">MISS 回源</text>
+
+  <rect class="backend" x="470" y="45" width="200" height="55"/>
+  <text x="570" y="68">返回响应</text>
+  <text class="small" x="570" y="88">200 → 缓存 60m</text>
+
+  <rect class="backend" x="500" y="220" width="180" height="55"/>
+  <text x="590" y="243">后端服务</text>
+  <text class="small" x="590" y="263">响应写入缓存</text>
+
+  <text class="small" x="350" y="280">命中状态：X-Cache-Status: HIT / MISS / EXPIRED / BYPASS</text>
+</svg>

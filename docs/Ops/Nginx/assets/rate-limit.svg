@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="rl-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .req { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .limit { fill: #eefaf0; stroke: #3aa76d; stroke-width: 2; rx: 12; }
+    .pass { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 12; }
+    .reject { fill: #fdeeee; stroke: #d33; stroke-width: 1.5; rx: 12; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="req" x="40" y="40" width="140" height="60"/>
+  <text x="110" y="67">请求涌入</text>
+  <text class="small" x="110" y="87">限速 10r/s</text>
+
+  <line x1="180" y1="70" x2="230" y2="70" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#rl-arrow)"/>
+
+  <rect class="limit" x="230" y="45" width="200" height="60"/>
+  <text x="330" y="72">limit_req 限速</text>
+  <text class="small" x="330" y="92">rate + burst + nodelay</text>
+
+  <line x1="380" y1="55" x2="450" y2="80" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#rl-arrow)"/>
+  <line x1="430" y1="105" x2="490" y2="80" stroke="#d33" stroke-width="1.5" marker-end="url(#rl-arrow)"/>
+
+  <rect class="pass" x="450" y="45" width="200" height="55"/>
+  <text x="550" y="68">放行 → 后端</text>
+  <text class="small" x="550" y="88">rate 内 + burst 内</text>
+
+  <rect class="reject" x="490" y="45" width="190" height="55"/>
+  <text x="585" y="68">拒绝 → 429</text>
+  <text class="small" x="585" y="88">超过 burst</text>
+
+  <line x1="330" y1="105" x2="330" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#rl-arrow)"/>
+
+  <rect class="limit" x="230" y="150" width="200" height="55"/>
+  <text x="330" y="173">limit_conn 并发限制</text>
+  <text class="small" x="330" y="193">每 IP 最多 N 个连接</text>
+
+  <text class="small" x="360" y="240">白名单：geo + map 让内网 IP 不限流</text>
+  <text class="small" x="360" y="260">超限响应默认 503，建议改为 429</text>
+  <text class="small" x="360" y="280">内存：10m zone 约容纳 16 万 IP</text>
+</svg>
