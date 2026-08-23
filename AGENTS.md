@@ -202,7 +202,7 @@ docs-website/
 5. 全局资源（`logo.svg`、`background.svg`）才放 `public/`，文档图片一律放对应 `assets/`。
 6. 不提交大文件、临时文件；图片随文档一并提交到 Git。
 7. `text` 代码块画图**不算配图**：涉及流程、架构、对比的页面必须在 `assets/` 放置 SVG 示意图并用相对路径引用，禁止只用代码块画图代替；新建页面时如无现成配图需同步创建。
-8. 每个技术主题的**首页（`index.md`）必须放置该技术的官方 Logo**：Logo 使用 **PNG 格式**，下载到主题 `assets/`（如 `assets/nginx-logo.png`），并用既有缩放写法 `<img src="./assets/xxx-logo.png" style="zoom:75%;" />` 统一缩放到 **75%**（注意 `./` 前缀，否则 VitePress 构建无法解析）；**不需要标注 Logo 来源**，也不要使用随意截图代替官方 Logo。
+8. 每个技术主题的**首页（`index.md`）必须放置该技术的官方 Logo**：Logo 使用 **PNG 格式**，下载到主题 `assets/`（如 `assets/nginx-logo.png`），并用既有缩放写法 `<p style="text-align:center;"><img src="./assets/xxx-logo.png" style="zoom:75%;" /></p>` 统一缩放到 **75%** 且**水平居中**（注意 `./` 前缀，否则 VitePress 构建无法解析）；**不需要标注 Logo 来源**，也不要使用随意截图代替官方 Logo。
 9. 每篇页面正文都要有与内容对应的配图（官方图、示意图、截图）：优先从官方文档或权威图源获取图片，下载到本地 `assets/` 后相对路径引用，**不直接外链图片**（避免外链失效）；无法下载时按第 7 条创建 SVG 示意图。
 
 ## 8. 导航与侧边栏维护
