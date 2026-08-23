@@ -2,8 +2,6 @@
 
 <img src="./assets/spring-boot-logo.png" alt="Spring Boot 官方 Logo" style="zoom:75%;" />
 
-> Logo 来源：Simple Icons 品牌图标库（https://simpleicons.org/）
-
 ![image-20230722002105472](assets/202307220027897.png)
 
 - [Spring Boot 通用指南](Common/index.md)

@@ -2,8 +2,6 @@
 
 <img src="./assets/nginx-logo.png" alt="Nginx 官方 Logo" style="zoom:75%;" />
 
-> Logo 来源：Simple Icons 品牌图标库（https://simpleicons.org/）
-
 Nginx 是高性能的 HTTP 服务器与反向代理，同时支持负载均衡、缓存和限流，是 Web 架构中最常用的接入层组件。
 
 - [Nginx 概述与安装](Overview/index.md)
