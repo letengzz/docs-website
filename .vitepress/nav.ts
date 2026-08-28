@@ -34,8 +34,10 @@ export const nav = [
     ]
   },
   { text: "AI", items: [
-    { text: "OpenClaw", link: "/docs/AI/OpenClaw" },
-  ] },
+      { text: "OpenClaw", link: "/docs/AI/OpenClaw" },
+      { text: "提示词工程", link: "/docs/AI/PromptEngineering" },
+      { text: "Agent 应用", link: "/docs/AI/Agent" },
+    ] },
   {
     text: "工具", items: [
       { text: "构建和依赖管理工具", link: "/docs/Tools/Build" },
