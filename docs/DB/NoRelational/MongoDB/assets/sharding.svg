@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="sh-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .client { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .router { fill: #eefaf0; stroke: #3aa76d; stroke-width: 2; rx: 12; }
+    .config { fill: #f3f3f3; stroke: #888; stroke-width: 1.5; rx: 10; }
+    .shard { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 12; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="client" x="40" y="120" width="140" height="60"/>
+  <text x="110" y="147">应用</text>
+  <text class="small" x="110" y="167">mongodb://mongos</text>
+
+  <line x1="180" y1="150" x2="240" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#sh-arrow)"/>
+
+  <rect class="router" x="240" y="115" width="180" height="70"/>
+  <text x="330" y="142">mongos（路由）</text>
+  <text class="small" x="330" y="162">解析分片键</text>
+  <text class="small" x="330" y="178">转发到对应分片</text>
+
+  <line x1="420" y1="125" x2="480" y2="80" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#sh-arrow)"/>
+  <line x1="420" y1="150" x2="500" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#sh-arrow)"/>
+  <line x1="420" y1="175" x2="480" y2="220" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#sh-arrow)"/>
+
+  <rect class="config" x="470" y="45" width="200" height="55"/>
+  <text x="570" y="68">Config Server（元数据）</text>
+  <text class="small" x="570" y="88">副本集保存 chunk 分布</text>
+
+  <rect class="shard" x="500" y="120" width="180" height="60"/>
+  <text x="590" y="143">Shard1（副本集）</text>
+  <text class="small" x="590" y="163">部分 chunk</text>
+
+  <rect class="shard" x="470" y="220" width="200" height="55"/>
+  <text x="570" y="243">Shard2（副本集）</text>
+  <text class="small" x="570" y="263">部分 chunk</text>
+
+  <text class="small" x="330" y="285">分片键决定数据分布：哈希均匀 / 范围支持范围查询</text>
+</svg>

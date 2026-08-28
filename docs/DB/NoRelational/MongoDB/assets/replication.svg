@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="rp2-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .app { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .primary { fill: #eefaf0; stroke: #3aa76d; stroke-width: 2; rx: 12; }
+    .secondary { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 12; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="app" x="40" y="120" width="150" height="60"/>
+  <text x="115" y="147">应用</text>
+  <text class="small" x="115" y="167">读写都走 Primary</text>
+
+  <line x1="190" y1="150" x2="250" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#rp2-arrow)"/>
+
+  <rect class="primary" x="250" y="115" width="180" height="70"/>
+  <text x="340" y="142">Primary（主）</text>
+  <text class="small" x="340" y="162">接收读写</text>
+  <text class="small" x="340" y="178">生成 oplog</text>
+
+  <line x1="430" y1="125" x2="500" y2="80" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#rp2-arrow)"/>
+  <line x1="430" y1="175" x2="500" y2="220" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#rp2-arrow)"/>
+
+  <rect class="secondary" x="500" y="45" width="190" height="55"/>
+  <text x="595" y="68">Secondary（从）</text>
+  <text class="small" x="595" y="88">同步 oplog</text>
+
+  <rect class="secondary" x="500" y="200" width="190" height="55"/>
+  <text x="595" y="223">Secondary（从）</text>
+  <text class="small" x="595" y="243">同步 oplog</text>
+
+  <text class="small" x="340" y="270">主节点故障：投票选举新 Primary（多数派，默认 10 秒超时）</text>
+  <text class="small" x="340" y="290">连接串带 replicaSet=rs0，驱动自动切换</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="260" viewBox="0 0 760 260" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ag-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .stage { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .io { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 10; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="io" x="20" y="90" width="110" height="50"/>
+  <text x="75" y="119">集合文档</text>
+
+  <line x1="130" y1="115" x2="165" y2="115" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#ag-arrow)"/>
+
+  <rect class="stage" x="165" y="90" width="110" height="50"/>
+  <text x="220" y="109">$match</text>
+  <text class="small" x="220" y="127">过滤（配索引）</text>
+
+  <line x1="275" y1="115" x2="310" y2="115" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#ag-arrow)"/>
+
+  <rect class="stage" x="310" y="90" width="110" height="50"/>
+  <text x="365" y="109">$group</text>
+  <text class="small" x="365" y="127">分组聚合</text>
+
+  <line x1="420" y1="115" x2="455" y2="115" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#ag-arrow)"/>
+
+  <rect class="stage" x="455" y="90" width="110" height="50"/>
+  <text x="510" y="109">$sort</text>
+  <text class="small" x="510" y="127">排序</text>
+
+  <line x1="565" y1="115" x2="600" y2="115" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#ag-arrow)"/>
+
+  <rect class="stage" x="600" y="90" width="110" height="50"/>
+  <text x="655" y="109">$limit</text>
+  <text class="small" x="655" y="127">限制条数</text>
+
+  <line x1="655" y1="140" x2="655" y2="180" stroke="#d99a2b" stroke-width="1.5" marker-end="url(#ag-arrow)"/>
+
+  <rect class="io" x="600" y="180" width="110" height="50"/>
+  <text x="655" y="209">聚合结果</text>
+
+  <text class="small" x="365" y="245">阶段顺序：$match 尽量前置；$lookup 可跨集合连表；$unwind 展开数组</text>
+</svg>

@@ -25,6 +25,23 @@ export const NoRelational = [
           { text: "常见问题与最佳实践", link: "/docs/DB/NoRelational/Redis/FAQ/index.md" },
         ],
       },
+      {
+        text: "MongoDB",
+        link: "/docs/DB/NoRelational/MongoDB/index.md",
+        collapsed: true,
+        items: [
+          { text: "MongoDB 概述", link: "/docs/DB/NoRelational/MongoDB/Overview/index.md" },
+          { text: "安装与连接", link: "/docs/DB/NoRelational/MongoDB/Install/index.md" },
+          { text: "文档与集合", link: "/docs/DB/NoRelational/MongoDB/DocumentCollection/index.md" },
+          { text: "增删改查（CRUD）", link: "/docs/DB/NoRelational/MongoDB/Crud/index.md" },
+          { text: "索引优化", link: "/docs/DB/NoRelational/MongoDB/Index/index.md" },
+          { text: "聚合管道", link: "/docs/DB/NoRelational/MongoDB/Aggregation/index.md" },
+          { text: "副本集", link: "/docs/DB/NoRelational/MongoDB/ReplicaSet/index.md" },
+          { text: "分片集群", link: "/docs/DB/NoRelational/MongoDB/Sharding/index.md" },
+          { text: "备份与恢复", link: "/docs/DB/NoRelational/MongoDB/BackupRestore/index.md" },
+          { text: "常见问题与最佳实践", link: "/docs/DB/NoRelational/MongoDB/FAQ/index.md" },
+        ],
+      },
     ],
   },
 ];
