@@ -186,3 +186,8 @@ OpenClaw 为每次 Agent 运行构建自定义的系统提示词。提示词结�
 | `full`（默认） | 包含所有模块 | 常规 Agent 运行 |
 | `minimal` | 移除 Skills、心跳、回复标签等 | 子 Agent 运行 |
 | `none` | 仅返回基本身份信息 | 特殊场景 |
+
+## 相关专题
+
+- [Agent 应用](../../../Agent/index.md)
+- [提示词工程](../../../PromptEngineering/index.md)

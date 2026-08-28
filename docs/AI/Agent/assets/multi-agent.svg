@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ma-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .user { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .boss { fill: #eefaf0; stroke: #3aa76d; stroke-width: 2; rx: 12; }
+    .agent { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="user" x="40" y="120" width="140" height="60"/>
+  <text x="110" y="147">用户任务</text>
+  <text class="small" x="110" y="167">研究报告</text>
+
+  <line x1="180" y1="150" x2="240" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ma-arrow)"/>
+
+  <rect class="boss" x="240" y="115" width="180" height="70"/>
+  <text x="330" y="142">主管 Agent</text>
+  <text class="small" x="330" y="162">拆解 / 分派 / 汇总</text>
+  <text class="small" x="330" y="178">判断完成条件</text>
+
+  <line x1="370" y1="125" x2="440" y2="70" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ma-arrow)"/>
+  <line x1="420" y1="150" x2="490" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ma-arrow)"/>
+  <line x1="370" y1="175" x2="440" y2="230" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ma-arrow)"/>
+
+  <rect class="agent" x="440" y="40" width="200" height="55"/>
+  <text x="540" y="63">研究员 Agent</text>
+  <text class="small" x="540" y="83">搜索 / 整理资料（只读）</text>
+
+  <rect class="agent" x="490" y="120" width="190" height="55"/>
+  <text x="585" y="143">写手 Agent</text>
+  <text class="small" x="585" y="163">生成初稿</text>
+
+  <rect class="agent" x="440" y="230" width="200" height="55"/>
+  <text x="540" y="253">审查 Agent</text>
+  <text class="small" x="540" y="273">质量 / 事实校验</text>
+
+  <text class="small" x="330" y="285">模式：主管-下属 / 流水线 / 辩论；共享事实源保证一致性</text>
+</svg>

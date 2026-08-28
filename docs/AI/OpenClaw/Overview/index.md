@@ -202,4 +202,5 @@ Tool 是 OpenClaw 的「双手」，提供实际操作能力：
 ## 相关专题
 
 - [提示词工程](../../PromptEngineering/index.md)
+- [Agent 应用](../../Agent/index.md)
 

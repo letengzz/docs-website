@@ -1,4 +1,22 @@
 // AI
+export const AI_Agent = [
+  {
+    text: "Agent 应用",
+    link: "/docs/AI/Agent/index.md",
+    collapsed: true,
+    items: [
+      { text: "Agent 原理", link: "/docs/AI/Agent/AgentPrinciples/index.md" },
+      { text: "工具调用", link: "/docs/AI/Agent/ToolCalling/index.md" },
+      { text: "工作流编排", link: "/docs/AI/Agent/Workflow/index.md" },
+      { text: "多智能体", link: "/docs/AI/Agent/MultiAgent/index.md" },
+      { text: "记忆与上下文", link: "/docs/AI/Agent/MemoryContext/index.md" },
+      { text: "安全边界", link: "/docs/AI/Agent/Safety/index.md" },
+      { text: "落地案例", link: "/docs/AI/Agent/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/Agent/FAQ/index.md" },
+    ],
+  },
+];
+
 export const AI_PromptEngineering = [
   {
     text: "提示词工程",

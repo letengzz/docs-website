@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="tc-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .llm { fill: #eefaf0; stroke: #3aa76d; stroke-width: 2; rx: 12; }
+    .app { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .tool { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="llm" x="40" y="120" width="180" height="60"/>
+  <text x="130" y="147">大模型</text>
+  <text class="small" x="130" y="167">决策调用哪个工具</text>
+
+  <line x1="220" y1="135" x2="270" y2="120" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
+  <line x1="220" y1="165" x2="270" y2="180" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
+  <text class="small" x="245" y="112">工具定义 + 调用请求</text>
+  <text class="small" x="245" y="200">结果回填</text>
+
+  <rect class="app" x="270" y="120" width="180" height="60"/>
+  <text x="360" y="147">应用（执行器）</text>
+  <text class="small" x="360" y="167">校验参数并执行</text>
+
+  <line x1="450" y1="150" x2="500" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
+
+  <rect class="tool" x="500" y="40" width="190" height="50"/>
+  <text x="595" y="62">搜索 / HTTP API</text>
+  <text class="small" x="595" y="80">信息查询类</text>
+
+  <rect class="tool" x="500" y="120" width="190" height="50"/>
+  <text x="595" y="142">数据库 / 代码执行</text>
+  <text class="small" x="595" y="160">计算处理类</text>
+
+  <rect class="tool" x="500" y="200" width="190" height="50"/>
+  <text x="595" y="222">消息 / 下单 / 写文件</text>
+  <text class="small" x="595" y="240">写操作（需确认）</text>
+
+  <text class="small" x="360" y="285">工具描述决定选择：名称 + 用途 + 参数 schema + 边界</text>
+</svg>

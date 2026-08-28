@@ -1,7 +1,7 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 import { DotNet, Go, Java, Python } from "./backend";
 
-import { AI_OpenClaw, AI_PromptEngineering } from "./AI";
+import { AI_Agent, AI_OpenClaw, AI_PromptEngineering } from "./AI";
 import { FrontBasic, FrontFrame, FrontOthers } from "./frontend";
 import { Docker, JumpServer, Kubernetes, Linux, Nginx, OpsOthers, VM } from "./ops";
 import { DBOverview, NoRelational, Relational } from "./db";
@@ -44,7 +44,7 @@ export const sidebar = {
     {
       text: "AI",
       collapsed: true,
-      items: [...AI_OpenClaw, ...AI_PromptEngineering],
+      items: [...AI_OpenClaw, ...AI_PromptEngineering, ...AI_Agent],
     },
   ],
   "/docs/Tools": [
@@ -89,6 +89,7 @@ export const sidebar = {
   "/docs/Ops/Others": OpsOthers,
   "/docs/AI/OpenClaw": AI_OpenClaw,
   "/docs/AI/PromptEngineering": AI_PromptEngineering,
+  "/docs/AI/Agent": AI_Agent,
   "/docs/Tools/Build": Build,
   "/docs/Tools/CICD": CICD,
   "/docs/Tools/IDE": IDE,

@@ -79,3 +79,7 @@
 - Prompt Engineering Guide：https://www.promptingguide.ai/zh
 - OpenAI 提示词工程：https://platform.openai.com/docs/guides/prompt-engineering
 - Anthropic 提示词工程：https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview
+
+## 相关专题
+
+- [Agent 应用](../../Agent/index.md)
