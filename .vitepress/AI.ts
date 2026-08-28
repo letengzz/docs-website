@@ -1,4 +1,22 @@
 // AI
+export const AI_PromptEngineering = [
+  {
+    text: "提示词工程",
+    link: "/docs/AI/PromptEngineering/index.md",
+    collapsed: true,
+    items: [
+      { text: "原理与模型行为", link: "/docs/AI/PromptEngineering/Principles/index.md" },
+      { text: "结构化提示词", link: "/docs/AI/PromptEngineering/StructuredPrompts/index.md" },
+      { text: "角色与上下文", link: "/docs/AI/PromptEngineering/RoleContext/index.md" },
+      { text: "few-shot 示例设计", link: "/docs/AI/PromptEngineering/FewShot/index.md" },
+      { text: "思维链（Chain of Thought）", link: "/docs/AI/PromptEngineering/ChainOfThought/index.md" },
+      { text: "提示词模板库", link: "/docs/AI/PromptEngineering/TemplateLibrary/index.md" },
+      { text: "效果评估", link: "/docs/AI/PromptEngineering/Evaluation/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/PromptEngineering/FAQ/index.md" },
+    ],
+  },
+];
+
 export const AI_OpenClaw = [
   {
     text: "OpenClaw",

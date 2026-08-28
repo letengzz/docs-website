@@ -57,3 +57,7 @@ OpenClaw 的运作方式：
 - [渠道（Channels）](Channels/index.md)
 - [技能（Skills）](Skills/index.md)
 - [工具（Tools）](Tools/index.md)
+
+## 相关专题
+
+- [提示词工程](../../PromptEngineering/index.md)

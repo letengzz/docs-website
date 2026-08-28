@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="sp-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .part { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .model { fill: #eefaf0; stroke: #3aa76d; stroke-width: 2; rx: 12; }
+    .out { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <text x="360" y="24" text-anchor="middle" font-weight="bold">结构化提示词</text>
+
+  <rect class="part" x="40" y="50" width="140" height="44"/>
+  <text x="110" y="76">角色 Role</text>
+
+  <rect class="part" x="195" y="50" width="140" height="44"/>
+  <text x="265" y="76">任务 Task</text>
+
+  <rect class="part" x="350" y="50" width="140" height="44"/>
+  <text x="420" y="76">背景 Context</text>
+
+  <rect class="part" x="505" y="50" width="140" height="44"/>
+  <text x="575" y="76">输入 Input</text>
+
+  <rect class="part" x="290" y="110" width="140" height="44"/>
+  <text x="360" y="136">输出要求 Format</text>
+
+  <line x1="110" y1="94" x2="265" y2="110" stroke="#4a7bd8" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#sp-arrow)"/>
+  <line x1="360" y1="94" x2="360" y2="110" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+  <line x1="575" y1="94" x2="430" y2="110" stroke="#4a7bd8" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#sp-arrow)"/>
+
+  <line x1="360" y1="154" x2="360" y2="185" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+
+  <rect class="model" x="250" y="185" width="220" height="50"/>
+  <text x="360" y="208">大语言模型</text>
+  <text class="small" x="360" y="226">指令清晰 → 输出稳定</text>
+
+  <line x1="360" y1="235" x2="360" y2="265" stroke="#d99a2b" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+
+  <rect class="out" x="270" y="265" width="180" height="30"/>
+  <text x="360" y="285">预期格式输出</text>
+
+  <text class="small" x="120" y="285">分隔符隔离指令与输入</text>
+</svg>

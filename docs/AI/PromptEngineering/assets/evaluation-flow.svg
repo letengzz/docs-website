@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="280" viewBox="0 0 720 280" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ev-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .step { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    .check { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 2; rx: 12; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="step" x="30" y="90" width="140" height="56"/>
+  <text x="100" y="112">黄金集</text>
+  <text class="small" x="100" y="132">输入 + 期望输出</text>
+
+  <line x1="170" y1="118" x2="210" y2="118" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ev-arrow)"/>
+
+  <rect class="step" x="210" y="90" width="150" height="56"/>
+  <text x="285" y="112">运行提示词</text>
+  <text class="small" x="285" y="132">批量生成输出</text>
+
+  <line x1="360" y1="118" x2="400" y2="118" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ev-arrow)"/>
+
+  <rect class="step" x="400" y="90" width="150" height="56"/>
+  <text x="475" y="112">评估</text>
+  <text class="small" x="475" y="132">规则 / LLM-judge / 人工</text>
+
+  <line x1="550" y1="118" x2="590" y2="118" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ev-arrow)"/>
+
+  <rect class="check" x="590" y="90" width="110" height="56"/>
+  <text x="645" y="112">指标达标？</text>
+  <text class="small" x="645" y="132">准确率 / 格式</text>
+
+  <line x1="645" y1="146" x2="645" y2="190" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#ev-arrow)"/>
+  <line x1="590" y1="118" x2="360" y2="60" stroke="#d33" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ev-arrow)"/>
+
+  <rect class="ok" x="580" y="190" width="130" height="50"/>
+  <text x="645" y="212">发布 / 回滚</text>
+  <text class="small" x="645" y="230">灰度 + 回归</text>
+
+  <text class="small" x="420" y="60" fill="#d33">不达标 → 修改提示词重跑</text>
+
+  <text class="small" x="330" y="255">迭代循环：基线 → 修改 → 对比 → 发布，线上失败样本回流黄金集</text>
+</svg>

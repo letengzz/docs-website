@@ -46,7 +46,7 @@
 | 16 | Ops | Nginx ✅ | 概述与安装、配置文件、静态资源、反向代理、负载均衡、HTTPS、缓存、限流、常见问题 |
 | 17 | Ops | Kubernetes ✅ | 核心概念、安装、Pod、Deployment、Service、Ingress、ConfigMap/Secret、存储、监控、常见问题 |
 | 18 | DB | MongoDB ✅ | 概述与安装、文档与集合、CRUD、索引、聚合管道、副本集、分片、备份恢复、常见问题 |
-| 19 | AI | 提示词工程 | 原理与模型行为、结构化提示词、角色与上下文、few-shot、思维链、模板库、效果评估、常见问题 |
+| 19 | AI | 提示词工程 ✅ | 原理与模型行为、结构化提示词、角色与上下文、few-shot、思维链、模板库、效果评估、常见问题 |
 | 20 | AI | Agent 应用 | Agent 原理、工具调用、工作流编排、多智能体、记忆与上下文、安全边界、落地案例、常见问题 |
 | 21 | Frontend | 浏览器原理 | 浏览器架构、URL 到渲染、渲染流程、事件循环、存储、缓存、安全、性能指标、常见问题 |
 | 22 | Backend | 消息队列 | 概念与选型、Kafka、RabbitMQ、可靠投递、消费幂等、集群部署、对比总结、常见问题 |
@@ -155,6 +155,7 @@
 - [x] Logo 与配图规则：AGENTS.md 新增「主题首页必须放官方 Logo（PNG、缩放到 75%）、每篇正文必须配图」规范；Nginx/Spring Boot 首页已补官方 Logo
 - [x] Ops 存量补全：Kubernetes 专题已建设（10 篇，第 17 天）并补充 Docker/Linux/Nginx 交叉链接
 - [x] DB 存量补全：MongoDB 专题已建设（10 篇，第 18 天）并补充 MySQL/Redis 交叉链接
+- [x] AI 存量补全：提示词工程专题已建设（8 篇，第 19 天），移除 AI/Java 残留入口并补充 OpenClaw 交叉链接
 
 ## 节奏建议
 
