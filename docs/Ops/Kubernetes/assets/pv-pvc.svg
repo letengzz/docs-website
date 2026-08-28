@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="pv-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .sc { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 10; }
+    .pv { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    .pvc { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    .pod { fill: #f3f3f3; stroke: #888; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="sc" x="240" y="20" width="240" height="46"/>
+  <text x="360" y="42">StorageClass（动态供应）</text>
+  <text class="small" x="360" y="58">按 PVC 自动创建 PV</text>
+
+  <line x1="360" y1="66" x2="360" y2="100" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#pv-arrow)"/>
+
+  <rect class="pv" x="240" y="100" width="240" height="50"/>
+  <text x="360" y="123">PV（持久卷：真实存储）</text>
+  <text class="small" x="360" y="140">NFS / EBS / 本地磁盘等</text>
+
+  <line x1="300" y1="150" x2="230" y2="185" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#pv-arrow)"/>
+  <line x1="420" y1="150" x2="490" y2="185" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#pv-arrow)"/>
+
+  <rect class="pvc" x="130" y="185" width="200" height="50"/>
+  <text x="230" y="208">PVC（存储申请）</text>
+  <text class="small" x="230" y="225">5Gi / ReadWriteOnce</text>
+
+  <rect class="pod" x="390" y="185" width="200" height="50"/>
+  <text x="490" y="208">Pod</text>
+  <text class="small" x="490" y="225">volumeMounts → /data</text>
+
+  <line x1="230" y1="235" x2="360" y2="270" stroke="#888" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#pv-arrow)"/>
+  <line x1="490" y1="235" x2="360" y2="270" stroke="#888" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#pv-arrow)"/>
+
+  <text class="small" x="360" y="280">关系：Pod 挂载 PVC，PVC 绑定 PV，PV 由 StorageClass 动态创建</text>
+  <text class="small" x="360" y="295">回收策略：Retain（保留）/ Delete（删除）</text>
+</svg>

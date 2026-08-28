@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="dr-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .old { fill: #fdeeee; stroke: #d33; stroke-width: 1.5; rx: 8; }
+    .new { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .label { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <text x="360" y="24" text-anchor="middle" font-weight="bold">滚动更新（maxSurge=1, maxUnavailable=1）</text>
+
+  <rect class="label" x="280" y="40" width="160" height="36"/>
+  <text x="360" y="63">更新镜像 v1.2 → v1.3</text>
+
+  <line x1="360" y1="76" x2="360" y2="105" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#dr-arrow)"/>
+
+  <text class="small" x="110" y="112">旧 ReplicaSet（v1.2）</text>
+  <rect class="old" x="40" y="120" width="140" height="40"/>
+  <text x="110" y="145">Pod1 Pod2 Pod3</text>
+
+  <text class="small" x="360" y="112">新 ReplicaSet（v1.3）</text>
+  <rect class="new" x="280" y="120" width="160" height="40"/>
+  <text x="360" y="145">Pod4（新增）</text>
+
+  <text class="small" x="610" y="112">滚动过程</text>
+
+  <line x1="180" y1="140" x2="280" y2="140" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#dr-arrow)"/>
+
+  <rect class="old" x="40" y="190" width="140" height="40"/>
+  <text x="110" y="215">Pod2 Pod3</text>
+  <rect class="new" x="280" y="190" width="160" height="40"/>
+  <text x="360" y="215">Pod4 Pod5</text>
+
+  <line x1="180" y1="210" x2="280" y2="210" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#dr-arrow)"/>
+
+  <rect class="new" x="280" y="250" width="160" height="36"/>
+  <text x="360" y="273">Pod4 Pod5 Pod6（完成）</text>
+
+  <text class="small" x="360" y="295">策略：先增后减，始终保持可用副本数，失败自动回滚</text>
+</svg>

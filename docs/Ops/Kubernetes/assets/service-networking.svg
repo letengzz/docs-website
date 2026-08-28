@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="sv-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .client { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .svc { fill: #eefaf0; stroke: #3aa76d; stroke-width: 2; rx: 12; }
+    .pod { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="client" x="40" y="120" width="150" height="60"/>
+  <text x="115" y="147">客户端</text>
+  <text class="small" x="115" y="167">访问 web-svc</text>
+
+  <line x1="190" y1="150" x2="250" y2="150" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#sv-arrow)"/>
+
+  <rect class="svc" x="250" y="115" width="200" height="70"/>
+  <text x="350" y="142">Service（ClusterIP）</text>
+  <text class="small" x="350" y="162">selector: app=web</text>
+  <text class="small" x="350" y="178">端口 80 → targetPort 8080</text>
+
+  <line x1="400" y1="125" x2="470" y2="80" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#sv-arrow)"/>
+  <line x1="430" y1="150" x2="500" y2="150" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#sv-arrow)"/>
+  <line x1="400" y1="175" x2="470" y2="220" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#sv-arrow)"/>
+
+  <rect class="pod" x="470" y="45" width="190" height="55"/>
+  <text x="565" y="68">Pod app=web（IP A）</text>
+  <text class="small" x="565" y="88">容器端口 8080</text>
+
+  <rect class="pod" x="500" y="120" width="180" height="55"/>
+  <text x="590" y="143">Pod app=web（IP B）</text>
+  <text class="small" x="590" y="163">容器端口 8080</text>
+
+  <rect class="pod" x="470" y="220" width="190" height="55"/>
+  <text x="565" y="243">Pod app=web（IP C）</text>
+  <text class="small" x="565" y="263">容器端口 8080</text>
+
+  <text class="small" x="350" y="285">Service 自动维护 Endpoints；Pod IP 变化不影响访问</text>
+</svg>

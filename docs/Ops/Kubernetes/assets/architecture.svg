@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="k8s-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .cp { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 10; }
+    .node { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    .pod { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <text x="360" y="24" text-anchor="middle" font-weight="bold">控制平面（Control Plane）</text>
+
+  <rect class="cp" x="60" y="36" width="150" height="46"/>
+  <text x="135" y="56">kube-apiserver</text>
+  <text class="small" x="135" y="72">统一 API 入口</text>
+
+  <rect class="cp" x="230" y="36" width="130" height="46"/>
+  <text x="295" y="56">etcd</text>
+  <text class="small" x="295" y="72">状态存储</text>
+
+  <rect class="cp" x="380" y="36" width="150" height="46"/>
+  <text x="455" y="56">kube-scheduler</text>
+  <text class="small" x="455" y="72">调度 Pod</text>
+
+  <rect class="cp" x="550" y="36" width="150" height="46"/>
+  <text x="625" y="56">controller-manager</text>
+  <text class="small" x="625" y="72">运行控制器</text>
+
+  <line x1="360" y1="82" x2="360" y2="110" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#k8s-arrow)"/>
+
+  <rect class="node" x="50" y="110" width="620" height="60"/>
+  <text x="360" y="135">工作节点（Node）</text>
+  <text class="small" x="360" y="155">kubelet + kube-proxy + 容器运行时（containerd）</text>
+
+  <line x1="160" y1="170" x2="160" y2="205" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#k8s-arrow)"/>
+  <line x1="360" y1="170" x2="360" y2="205" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#k8s-arrow)"/>
+  <line x1="560" y1="170" x2="560" y2="205" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#k8s-arrow)"/>
+
+  <rect class="pod" x="70" y="205" width="180" height="52"/>
+  <text x="160" y="227">Pod（容器 A + 容器 B）</text>
+  <text class="small" x="160" y="245">共享网络与存储</text>
+
+  <rect class="pod" x="270" y="205" width="180" height="52"/>
+  <text x="360" y="227">Pod（容器 C）</text>
+  <text class="small" x="360" y="245">独立副本</text>
+
+  <rect class="pod" x="470" y="205" width="180" height="52"/>
+  <text x="560" y="227">Pod（容器 D）</text>
+  <text class="small" x="560" y="245">独立副本</text>
+
+  <text class="small" x="360" y="290">声明式：kubectl apply 期望状态，控制器持续收敛实际状态</text>
+  <text class="small" x="360" y="310">对象关系：Deployment → ReplicaSet → Pod → 容器</text>
+  <text class="small" x="360" y="330">访问链路：Ingress → Service → Pod</text>
+</svg>

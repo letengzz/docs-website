@@ -36,7 +36,25 @@ export const Docker = [
   },
 ];
 export const JumpServer = [{ text: "JumpServer", link: "/docs/Ops/JumpServer/index.md" }];
-export const Kubernetes = [{ text: "Kubernetes", link: "/docs/Ops/Kubernetes/index.md" }];
+export const Kubernetes = [
+  {
+    text: "Kubernetes",
+    link: "/docs/Ops/Kubernetes/index.md",
+    collapsed: true,
+    items: [
+      { text: "核心概念与架构", link: "/docs/Ops/Kubernetes/Overview/index.md" },
+      { text: "安装与集群搭建", link: "/docs/Ops/Kubernetes/Install/index.md" },
+      { text: "Pod 详解", link: "/docs/Ops/Kubernetes/Pod/index.md" },
+      { text: "Deployment 与工作负载", link: "/docs/Ops/Kubernetes/Deployment/index.md" },
+      { text: "Service 与网络", link: "/docs/Ops/Kubernetes/Service/index.md" },
+      { text: "Ingress 入口", link: "/docs/Ops/Kubernetes/Ingress/index.md" },
+      { text: "ConfigMap 与 Secret", link: "/docs/Ops/Kubernetes/ConfigMapSecret/index.md" },
+      { text: "存储与 PV/PVC", link: "/docs/Ops/Kubernetes/Storage/index.md" },
+      { text: "监控与运维", link: "/docs/Ops/Kubernetes/Monitoring/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/Kubernetes/FAQ/index.md" },
+    ],
+  },
+];
 export const Linux = [
   {
     text: "Linux",
