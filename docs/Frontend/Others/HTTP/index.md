@@ -118,3 +118,7 @@ HTTP协议(`hypertext transport protocol`，中文叫超文本传输协议)是�
 ### 查看响应体
 
 ![image-20231004193721988](assets/202310041937032.png)
+
+## 相关专题
+
+- [浏览器原理](../../Basic/Browser/index.md)

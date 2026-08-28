@@ -134,3 +134,7 @@ server {
 - 需要兼容老浏览器时使用 XMLHttpRequest
 - 跨域问题优先使用 CORS 解决
 :::
+
+## 相关专题
+
+- [浏览器原理](../../Browser/index.md)

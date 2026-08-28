@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="cf2-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .req { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .strong { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    .check { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    .server { fill: #f3f3f3; stroke: #888; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+  </style>
+
+  <rect class="req" x="30" y="90" width="140" height="56"/>
+  <text x="100" y="112">浏览器请求</text>
+  <text class="small" x="100" y="132">URL</text>
+
+  <line x1="170" y1="118" x2="215" y2="118" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#cf2-arrow)"/>
+
+  <rect class="strong" x="215" y="90" width="160" height="56"/>
+  <text x="295" y="112">强缓存命中？</text>
+  <text class="small" x="295" y="132">max-age 未过期</text>
+
+  <line x1="295" y1="90" x2="295" y2="45" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#cf2-arrow)"/>
+  <line x1="375" y1="118" x2="430" y2="118" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#cf2-arrow)"/>
+
+  <rect class="strong" x="295" y="15" width="160" height="38"/>
+  <text x="375" y="39">直接用本地副本</text>
+
+  <rect class="check" x="430" y="90" width="150" height="56"/>
+  <text x="505" y="112">协商缓存</text>
+  <text class="small" x="505" y="132">If-None-Match / If-Modified-Since</text>
+
+  <line x1="580" y1="118" x2="630" y2="118" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#cf2-arrow)"/>
+
+  <rect class="server" x="630" y="90" width="90" height="56"/>
+  <text x="675" y="118">服务器</text>
+  <text class="small" x="675" y="134">比较 ETag</text>
+
+  <line x1="675" y1="146" x2="505" y2="180" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#cf2-arrow)"/>
+  <text class="small" x="640" y="172">304 → 用本地</text>
+  <line x1="675" y1="146" x2="675" y2="215" stroke="#d99a2b" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#cf2-arrow)"/>
+  <text class="small" x="705" y="190">200 → 新内容</text>
+
+  <rect class="check" x="430" y="180" width="150" height="44"/>
+  <text x="505" y="198">未变化（304）</text>
+  <text class="small" x="505" y="214">使用本地副本</text>
+
+  <rect class="server" x="630" y="215" width="90" height="40"/>
+  <text x="675" y="239">返回 200</text>
+
+  <text class="small" x="360" y="275">策略：HTML no-cache；hash 静态资源 max-age 长缓存；敏感接口 no-store</text>
+</svg>

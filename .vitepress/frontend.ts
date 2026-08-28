@@ -165,6 +165,22 @@ export const FrontBasic = [
                 ]
             },
             {
+                text: "浏览器原理",
+                link: "/docs/Frontend/Basic/Browser/index.md",
+                collapsed: true,
+                items: [
+                    { text: "浏览器架构", link: "/docs/Frontend/Basic/Browser/Architecture/index.md" },
+                    { text: "URL 到渲染", link: "/docs/Frontend/Basic/Browser/Navigation/index.md" },
+                    { text: "渲染流程", link: "/docs/Frontend/Basic/Browser/Rendering/index.md" },
+                    { text: "事件循环", link: "/docs/Frontend/Basic/Browser/EventLoop/index.md" },
+                    { text: "浏览器存储", link: "/docs/Frontend/Basic/Browser/Storage/index.md" },
+                    { text: "HTTP 缓存", link: "/docs/Frontend/Basic/Browser/Cache/index.md" },
+                    { text: "浏览器安全", link: "/docs/Frontend/Basic/Browser/Security/index.md" },
+                    { text: "性能指标", link: "/docs/Frontend/Basic/Browser/Performance/index.md" },
+                    { text: "常见问题与最佳实践", link: "/docs/Frontend/Basic/Browser/FAQ/index.md" },
+                ],
+            },
+            {
                 text: "jQuery", link: "/docs/Frontend/Basic/jQuery/index.md", collapsed: true, items: [
                     { text: "jQuery 概述", link: "/docs/Frontend/Basic/jQuery/Overview/index.md" },
                     { text: "jQuery 选择器", link: "/docs/Frontend/Basic/jQuery/Selectors/index.md" },

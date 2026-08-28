@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="el-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .loop { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .queue { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    .render { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+  </style>
+
+  <rect class="loop" x="260" y="40" width="200" height="60"/>
+  <text x="360" y="67">事件循环</text>
+  <text class="small" x="360" y="85">宏任务 → 微任务 → 渲染</text>
+
+  <rect class="queue" x="40" y="170" width="180" height="60"/>
+  <text x="130" y="195">宏任务队列</text>
+  <text class="small" x="130" y="215">setTimeout / I/O / 事件</text>
+
+  <rect class="queue" x="270" y="170" width="180" height="60"/>
+  <text x="360" y="195">微任务队列</text>
+  <text class="small" x="360" y="215">Promise.then / queueMicrotask</text>
+
+  <rect class="render" x="500" y="170" width="180" height="60"/>
+  <text x="590" y="195">渲染（一帧一次）</text>
+  <text class="small" x="590" y="215">布局 / 绘制 / requestAnimationFrame</text>
+
+  <line x1="130" y1="170" x2="300" y2="100" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#el-arrow)"/>
+  <line x1="360" y1="170" x2="360" y2="100" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#el-arrow)"/>
+  <line x1="590" y1="170" x2="420" y2="100" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#el-arrow)"/>
+
+  <text class="small" x="360" y="255">每轮：取一个宏任务 → 清空微任务 → 渲染</text>
+  <text class="small" x="360" y="275">长任务 &gt; 50ms 会阻塞渲染，导致卡顿</text>
+</svg>

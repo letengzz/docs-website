@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="nv-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .step { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    .net { fill: #fff7e6; stroke: #d99a2b; stroke-width: 1.5; rx: 10; }
+    .render { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+  </style>
+
+  <rect class="step" x="15" y="100" width="105" height="48"/>
+  <text x="67" y="128">输入 URL</text>
+
+  <line x1="120" y1="124" x2="150" y2="124" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#nv-arrow)"/>
+
+  <rect class="net" x="150" y="100" width="105" height="48"/>
+  <text x="202" y="122">DNS 解析</text>
+  <text class="small" x="202" y="138">域名 → IP</text>
+
+  <line x1="255" y1="124" x2="285" y2="124" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#nv-arrow)"/>
+
+  <rect class="net" x="285" y="100" width="105" height="48"/>
+  <text x="337" y="122">TCP + TLS</text>
+  <text class="small" x="337" y="138">建连 / 加密握手</text>
+
+  <line x1="390" y1="124" x2="420" y2="124" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#nv-arrow)"/>
+
+  <rect class="net" x="420" y="100" width="105" height="48"/>
+  <text x="472" y="122">HTTP 请求</text>
+  <text class="small" x="472" y="138">响应 HTML</text>
+
+  <line x1="525" y1="124" x2="555" y2="124" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#nv-arrow)"/>
+
+  <rect class="render" x="555" y="100" width="110" height="48"/>
+  <text x="610" y="122">解析 HTML</text>
+  <text class="small" x="610" y="138">构建 DOM</text>
+
+  <line x1="610" y1="148" x2="610" y2="185" stroke="#3aa76d" stroke-width="1.5" marker-end="url(#nv-arrow)"/>
+
+  <rect class="render" x="500" y="185" width="220" height="48"/>
+  <text x="610" y="207">加载子资源（CSS / JS / 图片）</text>
+  <text class="small" x="610" y="223">渲染阻塞资源影响首屏</text>
+
+  <line x1="610" y1="233" x2="610" y2="265" stroke="#d99a2b" stroke-width="1.5" marker-end="url(#nv-arrow)"/>
+
+  <rect class="net" x="500" y="265" width="220" height="30"/>
+  <text x="610" y="285">渲染流程 → 首次绘制（FCP）</text>
+
+  <text class="small" x="90" y="230">优化：dns-prefetch / preconnect</text>
+  <text class="small" x="90" y="250">HTTP/2 多路复用 / CDN / 缓存</text>
+  <text class="small" x="90" y="270">关键 CSS 内联 / JS defer</text>
+</svg>

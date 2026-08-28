@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ar2-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .browser { fill: #fff7e6; stroke: #d99a2b; stroke-width: 2; rx: 12; }
+    .proc { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    .render { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect class="browser" x="250" y="20" width="220" height="50"/>
+  <text x="360" y="42">浏览器进程</text>
+  <text class="small" x="360" y="60">界面 / 标签管理 / IPC</text>
+
+  <line x1="360" y1="70" x2="360" y2="105" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ar2-arrow)"/>
+
+  <rect class="proc" x="40" y="105" width="150" height="60"/>
+  <text x="115" y="132">网络进程</text>
+  <text class="small" x="115" y="152">请求 / 缓存 / DNS</text>
+
+  <rect class="proc" x="205" y="105" width="150" height="60"/>
+  <text x="280" y="132">GPU 进程</text>
+  <text class="small" x="280" y="152">合成 / 光栅</text>
+
+  <rect class="render" x="370" y="105" width="160" height="60"/>
+  <text x="450" y="132">渲染进程（标签页）</text>
+  <text class="small" x="450" y="152">主线程 / 合成 / Worker</text>
+
+  <rect class="proc" x="545" y="105" width="150" height="60"/>
+  <text x="620" y="132">扩展进程</text>
+  <text class="small" x="620" y="152">插件隔离</text>
+
+  <line x1="190" y1="135" x2="205" y2="135" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ar2-arrow)"/>
+  <line x1="355" y1="135" x2="370" y2="135" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ar2-arrow)"/>
+  <line x1="530" y1="135" x2="545" y2="135" stroke="#4a7bd8" stroke-width="1.5" marker-end="url(#ar2-arrow)"/>
+
+  <rect class="render" x="370" y="195" width="160" height="50"/>
+  <text x="450" y="218">另一个标签页渲染进程</text>
+  <text class="small" x="450" y="236">站点隔离独立进程</text>
+
+  <line x1="450" y1="165" x2="450" y2="195" stroke="#3aa76d" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ar2-arrow)"/>
+
+  <text class="small" x="360" y="280">多进程：稳定性 + 安全性 + 并行；进程间用 IPC 通信</text>
+</svg>
