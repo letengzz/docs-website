@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="320" viewBox="0 0 840 320" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="lb-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .old { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .new { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .note { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="old" x="40" y="40" width="340" height="64"/>
+  <text x="210" y="68">匿名内部类</text>
+  <text class="small" x="210" y="88">new Runnable() { public void run() { ... } }</text>
+
+  <rect class="new" x="460" y="40" width="340" height="64"/>
+  <text x="630" y="68">Lambda 表达式</text>
+  <text class="small" x="630" y="88">() -> { ... }</text>
+
+  <line x1="380" y1="72" x2="460" y2="72" marker-end="url(#lb-arrow)"/>
+  <text class="small" x="420" y="62">语法糖简化</text>
+
+  <rect class="note" x="40" y="160" width="340" height="80"/>
+  <text x="210" y="188">语法形式</text>
+  <text class="small" x="210" y="212">(参数列表) -> 表达式</text>
+  <text class="small" x="210" y="230">(参数列表) -> { 语句块 }</text>
+
+  <rect class="note" x="460" y="160" width="340" height="80"/>
+  <text x="630" y="188">类型推断</text>
+  <text class="small" x="630" y="212">参数类型可省略，编译器按函数式接口推断</text>
+  <text class="small" x="630" y="230">单参数可省略括号，单表达式可省略 return</text>
+
+  <text class="small" x="420" y="280">本质：函数式接口的实例（接口只有一个抽象方法）</text>
+  <text class="small" x="420" y="300">限制：lambda 捕获的局部变量必须是 effectively final</text>
+</svg>

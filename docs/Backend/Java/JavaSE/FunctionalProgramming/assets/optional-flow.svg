@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="330" viewBox="0 0 840 330" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="op-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .has { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .empty { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .chain { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="chain" x="300" y="24" width="240" height="48"/>
+  <text x="420" y="54">Optional&lt;T&gt; 容器</text>
+
+  <line x1="360" y1="72" x2="150" y2="120" marker-end="url(#op-arrow)"/>
+  <line x1="480" y1="72" x2="690" y2="120" marker-end="url(#op-arrow)"/>
+
+  <rect class="has" x="50" y="122" width="200" height="60"/>
+  <text x="150" y="150">有值：of / ofNullable</text>
+  <text class="small" x="150" y="170">isPresent / get</text>
+
+  <rect class="empty" x="590" y="122" width="200" height="60"/>
+  <text x="690" y="150">空：empty()</text>
+  <text class="small" x="690" y="170">orElse / orElseGet</text>
+
+  <rect class="chain" x="300" y="220" width="240" height="54"/>
+  <text x="420" y="248">链式：map / flatMap / filter</text>
+  <text class="small" x="420" y="266">全程避免 null 判断</text>
+
+  <line x1="150" y1="182" x2="380" y2="220" marker-end="url(#op-arrow)"/>
+  <line x1="690" y1="182" x2="460" y2="220" marker-end="url(#op-arrow)"/>
+
+  <text class="small" x="420" y="310">误区：不要用 Optional 做字段类型；orElse 会先计算默认值，orElseGet 惰性</text>
+</svg>

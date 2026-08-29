@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="so-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .out { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="box" x="40" y="40" width="180" height="54"/>
+  <text x="130" y="68">filter(Predicate)</text>
+  <text class="small" x="130" y="86">过滤保留</text>
+
+  <rect class="box" x="240" y="40" width="180" height="54"/>
+  <text x="330" y="68">map(Function)</text>
+  <text class="small" x="330" y="86">元素转换</text>
+
+  <rect class="box" x="440" y="40" width="180" height="54"/>
+  <text x="530" y="68">flatMap</text>
+  <text class="small" x="530" y="86">打平嵌套集合</text>
+
+  <rect class="box" x="640" y="40" width="180" height="54"/>
+  <text x="730" y="68">distinct / limit</text>
+  <text class="small" x="730" y="86">去重 / 截断</text>
+
+  <rect class="out" x="40" y="170" width="180" height="54"/>
+  <text x="130" y="198">collect(Collectors)</text>
+  <text class="small" x="130" y="216">toList / toMap / groupingBy</text>
+
+  <rect class="out" x="240" y="170" width="180" height="54"/>
+  <text x="330" y="198">reduce</text>
+  <text class="small" x="330" y="216">归约求和 / 累积</text>
+
+  <rect class="out" x="440" y="170" width="180" height="54"/>
+  <text x="530" y="198">sorted(Comparator)</text>
+  <text class="small" x="530" y="216">排序（可倒序）</text>
+
+  <rect class="out" x="640" y="170" width="180" height="54"/>
+  <text x="730" y="198">count / max / min</text>
+  <text class="small" x="730" y="216">统计类终端操作</text>
+
+  <text class="small" x="430" y="270">短路操作：anyMatch / allMatch / noneMatch / findFirst 可提前终止</text>
+  <text class="small" x="430" y="290">流元素：Integer / Long / Double 流与装箱拆箱（boxed）</text>
+  <text class="small" x="430" y="330">注意：中间操作不执行，需终端操作触发；流不可复用</text>
+</svg>

@@ -77,7 +77,7 @@ JVM 运行时主要包含：**类加载子系统**、**运行时数据区**（�
 1. 基础语法：变量、类型、运算符、流程控制、数组
 2. 面向对象：类、继承、接口、多态
 3. 常用 API：集合、字符串、日期、IO
-4. 进阶特性：泛型、反射、注解、Lambda / Stream
+4. 进阶特性：泛型、反射与注解、[函数式编程](../FunctionalProgramming/index.md)（Lambda / Stream / Optional）
 5. 并发与 JVM
 6. 工程化：Maven / Gradle、单元测试、Spring Boot
 

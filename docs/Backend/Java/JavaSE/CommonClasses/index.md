@@ -522,6 +522,7 @@ public class RegexDemo {
 ## 相关专题
 
 - [集合框架](../Collection/index.md)
+- [函数式编程](../FunctionalProgramming/index.md)：`String`、`Optional` 与 Stream 的组合使用
 - [IO / NIO](../IO/index.md)：`Scanner`、`Properties`、`Console` 等类与 IO 的配合使用
 - [Java 并发](../Multithreading/index.md)
 - [JVM 基础](../JVM/index.md)

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="fi-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .kind { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .iface { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="iface" x="300" y="24" width="260" height="48"/>
+  <text x="430" y="54">函数式接口（@FunctionalInterface）</text>
+
+  <line x1="360" y1="72" x2="120" y2="120" marker-end="url(#fi-arrow)"/>
+  <line x1="430" y1="72" x2="430" y2="120" marker-end="url(#fi-arrow)"/>
+  <line x1="500" y1="72" x2="740" y2="120" marker-end="url(#fi-arrow)"/>
+
+  <rect class="kind" x="30" y="122" width="180" height="54"/>
+  <text x="120" y="150">消费型 Consumer&lt;T&gt;</text>
+  <text class="small" x="120" y="168">accept(T) → void</text>
+
+  <rect class="kind" x="330" y="122" width="200" height="54"/>
+  <text x="430" y="150">供给型 Supplier&lt;T&gt;</text>
+  <text class="small" x="430" y="168">get() → T</text>
+
+  <rect class="kind" x="650" y="122" width="180" height="54"/>
+  <text x="740" y="150">断言型 Predicate&lt;T&gt;</text>
+  <text class="small" x="740" y="168">test(T) → boolean</text>
+
+  <rect class="kind" x="330" y="230" width="200" height="54"/>
+  <text x="430" y="258">函数型 Function&lt;T,R&gt;</text>
+  <text class="small" x="430" y="276">apply(T) → R</text>
+
+  <line x1="430" y1="176" x2="430" y2="230" marker-end="url(#fi-arrow)"/>
+
+  <text class="small" x="430" y="320">派生：BiFunction / UnaryOperator / BinaryOperator / BiConsumer / 基本类型特化</text>
+</svg>

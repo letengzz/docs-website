@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="cl-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .in { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .op { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .out { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="in" x="60" y="50" width="200" height="60"/>
+  <text x="160" y="78">Stream&lt;T&gt;</text>
+  <text class="small" x="160" y="98">过滤 / 映射后的流</text>
+
+  <rect class="op" x="330" y="50" width="200" height="60"/>
+  <text x="430" y="78">Collectors.toList()</text>
+  <text class="small" x="430" y="98">收集到 List</text>
+
+  <rect class="out" x="600" y="50" width="200" height="60"/>
+  <text x="700" y="78">List&lt;T&gt;</text>
+  <text class="small" x="700" y="98">可继续遍历 / 存储</text>
+
+  <line x1="260" y1="80" x2="330" y2="80" marker-end="url(#cl-arrow)"/>
+  <line x1="530" y1="80" x2="600" y2="80" marker-end="url(#cl-arrow)"/>
+
+  <rect class="op" x="330" y="180" width="200" height="54"/>
+  <text x="430" y="208">groupingBy 分组</text>
+  <rect class="out" x="600" y="180" width="200" height="54"/>
+  <text x="700" y="208">Map&lt;K, List&lt;T&gt;&gt;</text>
+
+  <rect class="op" x="60" y="180" width="200" height="54"/>
+  <text x="160" y="208">partitioningBy 分区</text>
+  <rect class="out" x="60" y="260" width="200" height="54"/>
+  <text x="160" y="288">Map&lt;Boolean, List&lt;T&gt;&gt;</text>
+
+  <line x1="430" y1="110" x2="430" y2="180" marker-end="url(#cl-arrow)"/>
+  <line x1="160" y1="110" x2="160" y2="180" marker-end="url(#cl-arrow)"/>
+  <line x1="160" y1="234" x2="160" y2="260" marker-end="url(#cl-arrow)"/>
+
+  <text class="small" x="430" y="320">其他：toMap / toSet / joining / summarizingInt / collectingAndThen</text>
+</svg>

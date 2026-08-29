@@ -179,6 +179,7 @@ public class MapIterationDemo {
 
 ## 参考资料
 
+- Stream 遍历与流水线：[Stream 基础](../../FunctionalProgramming/StreamBasic/index.md)
 - Iterator 接口文档：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Iterator.html
 - ListIterator 接口文档：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ListIterator.html
 - Collection.removeIf 文档：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Collection.html#removeIf(java.util.function.Predicate)

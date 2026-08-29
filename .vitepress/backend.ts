@@ -87,6 +87,21 @@ export const Java = [
             ],
           },
           {
+            text: "函数式编程",
+            link: "/docs/Backend/Java/JavaSE/FunctionalProgramming/index.md",
+            collapsed: true,
+            items: [
+              { text: "Lambda 表达式", link: "/docs/Backend/Java/JavaSE/FunctionalProgramming/Lambda/index.md" },
+              { text: "函数式接口与方法引用", link: "/docs/Backend/Java/JavaSE/FunctionalProgramming/FunctionalInterface/index.md" },
+              { text: "Stream 基础：创建与流水线", link: "/docs/Backend/Java/JavaSE/FunctionalProgramming/StreamBasic/index.md" },
+              { text: "Stream 进阶：映射、归约与并行", link: "/docs/Backend/Java/JavaSE/FunctionalProgramming/StreamAdvanced/index.md" },
+              { text: "Optional：优雅处理空值", link: "/docs/Backend/Java/JavaSE/FunctionalProgramming/Optional/index.md" },
+              { text: "Collectors 收集器详解", link: "/docs/Backend/Java/JavaSE/FunctionalProgramming/Collectors/index.md" },
+              { text: "实战：订单统计与数据处理", link: "/docs/Backend/Java/JavaSE/FunctionalProgramming/Practice/index.md" },
+              { text: "常见问题与最佳实践", link: "/docs/Backend/Java/JavaSE/FunctionalProgramming/FAQ/index.md" },
+            ],
+          },
+          {
             text: "Java 并发",
             link: "/docs/Backend/Java/JavaSE/Multithreading/index.md",
             collapsed: true,

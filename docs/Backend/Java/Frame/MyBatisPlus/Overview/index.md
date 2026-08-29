@@ -45,3 +45,7 @@ MyBatis-Plus(简称 MP)是一个 MyBatis 的**增强工具**，在 MyBatis 的�
 ![img](assets/202302261311313.jpeg)
 
 扫描实体类，通过反射抽取实体类中的属性并分析其与表中字段之间的关系，最后调用MyBatis-Plus提供的一堆方法生成SQL语句注入到MyBatis的容器中，从而实现不同的增删改查功能
+
+::: tip 原理延伸
+实体扫描与字段映射依赖 [Java 反射](../../JavaSE/Reflection/index.md)，Lambda 条件构造器（`LambdaQueryWrapper`）的底层则是 [函数式接口与方法引用](../../JavaSE/FunctionalProgramming/FunctionalInterface/index.md)。
+:::

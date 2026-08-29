@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="320" viewBox="0 0 860 320" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="pc-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .data { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .proc { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .res { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="data" x="40" y="60" width="220" height="64"/>
+  <text x="150" y="88">订单列表（原始数据）</text>
+  <text class="small" x="150" y="108">金额 / 状态 / 商品行</text>
+
+  <rect class="proc" x="320" y="60" width="220" height="64"/>
+  <text x="430" y="88">Stream 流水线</text>
+  <text class="small" x="430" y="108">filter → map → groupingBy</text>
+
+  <rect class="res" x="600" y="60" width="220" height="64"/>
+  <text x="710" y="88">统计结果</text>
+  <text class="small" x="710" y="108">总额 / 分组 / TopN</text>
+
+  <line x1="260" y1="92" x2="320" y2="92" marker-end="url(#pc-arrow)"/>
+  <line x1="540" y1="92" x2="600" y2="92" marker-end="url(#pc-arrow)"/>
+
+  <rect class="data" x="40" y="210" width="220" height="54"/>
+  <text x="150" y="238">Optional 空值处理</text>
+  <rect class="proc" x="320" y="210" width="220" height="54"/>
+  <text x="430" y="238">方法引用 + 链式调用</text>
+  <rect class="res" x="600" y="210" width="220" height="54"/>
+  <text x="710" y="238">健壮的结果输出</text>
+
+  <line x1="260" y1="237" x2="320" y2="237" marker-end="url(#pc-arrow)"/>
+  <line x1="540" y1="237" x2="600" y2="237" marker-end="url(#pc-arrow)"/>
+
+  <text class="small" x="430" y="300">目标：用声明式代码替代 for 循环，一行搞定过滤、转换、分组与汇总</text>
+</svg>

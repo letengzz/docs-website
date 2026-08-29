@@ -176,6 +176,7 @@ public class TreeMapComparatorDemo {
 
 ## 参考资料
 
+- 用 Stream 排序与分组：[Collectors 收集器详解](../../FunctionalProgramming/Collectors/index.md)
 - Comparable 文档：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Comparable.html
 - Comparator 文档：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Comparator.html
 - List.sort 文档：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/List.html#sort(java.util.Comparator)

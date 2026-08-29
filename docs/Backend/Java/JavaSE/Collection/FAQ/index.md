@@ -78,6 +78,7 @@ List<String> list = new ArrayList<>(Arrays.asList("a", "b"));
 
 ## 参考资料
 
+- 函数式处理集合：[Java 函数式编程](../../FunctionalProgramming/index.md)
 - Oracle 集合教程：https://docs.oracle.com/javase/tutorial/collections/
 - 集合接口 API：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/package-summary.html
 - 并发集合包：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/package-summary.html

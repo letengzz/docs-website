@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="sp-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .src { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .mid { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .term { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="src" x="30" y="60" width="190" height="70"/>
+  <text x="125" y="92">数据源 Source</text>
+  <text class="small" x="125" y="114">集合.stream() / 数组 / IO</text>
+
+  <rect class="mid" x="280" y="60" width="150" height="70"/>
+  <text x="355" y="92">中间操作</text>
+  <text class="small" x="355" y="114">filter / map / sorted</text>
+
+  <rect class="mid" x="490" y="60" width="150" height="70"/>
+  <text x="565" y="92">中间操作</text>
+  <text class="small" x="565" y="114">limit / distinct / peek</text>
+
+  <rect class="term" x="700" y="60" width="140" height="70"/>
+  <text x="770" y="92">终端操作</text>
+  <text class="small" x="770" y="114">collect / forEach</text>
+  <text class="small" x="770" y="130">count / reduce</text>
+
+  <line x1="220" y1="95" x2="280" y2="95" marker-end="url(#sp-arrow)"/>
+  <line x1="430" y1="95" x2="490" y2="95" marker-end="url(#sp-arrow)"/>
+  <line x1="640" y1="95" x2="700" y2="95" marker-end="url(#sp-arrow)"/>
+
+  <rect class="term" x="240" y="210" width="380" height="54"/>
+  <text x="430" y="238">惰性求值：只有终端操作触发实际计算</text>
+  <text class="small" x="430" y="256">流只能消费一次，不可复用</text>
+
+  <line x1="430" y1="130" x2="430" y2="210" marker-end="url(#sp-arrow)"/>
+
+  <text class="small" x="430" y="300">并行：parallelStream() 自动分片处理（注意线程安全与顺序）</text>
+</svg>

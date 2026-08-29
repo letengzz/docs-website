@@ -181,6 +181,7 @@ CompletableFuture<String> f2 = CompletableFuture
 
 ## 参考资料
 
+- 函数式组合思想：[Java 函数式编程](../../FunctionalProgramming/index.md)
 - CompletableFuture 文档：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/CompletableFuture.html
 - 异步编程教程：https://docs.oracle.com/javase/tutorial/essential/concurrency/futures.html
 - Java 异步编程指南（Oracle 博客）：https://blogs.oracle.com/java/post/java-asynchronous-programming
