@@ -1,5 +1,5 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
-import { DotNet, Go, Java, Python } from "./backend";
+import { DotNet, Go, Java, MessageQueue, Python } from "./backend";
 
 import { AI_Agent, AI_OpenClaw, AI_PromptEngineering } from "./AI";
 import { FrontBasic, FrontFrame, FrontOthers } from "./frontend";
@@ -23,7 +23,7 @@ export const sidebar = {
     {
       text: "后端",
       collapsed: true,
-      items: [...DotNet, ...Go, ...Java, ...Python],
+      items: [...DotNet, ...Go, ...Java, ...MessageQueue, ...Python],
     },
   ],
   "/docs/DB": [
@@ -76,6 +76,7 @@ export const sidebar = {
   "/docs/Backend/DotNet": DotNet,
   "/docs/Backend/Go": Go,
   "/docs/Backend/Java": Java,
+  "/docs/Backend/MessageQueue": MessageQueue,
   "/docs/Backend/Python": Python,
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/Relational": Relational,

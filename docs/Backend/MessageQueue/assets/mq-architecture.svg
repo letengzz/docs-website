@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="760" height="360" fill="#ffffff"/>
+  <text x="380" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">消息队列核心架构</text>
+  <!-- 生产者 -->
+  <g>
+    <rect x="30" y="100" width="150" height="170" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="105" y="130" text-anchor="middle" font-size="15" font-weight="bold" fill="#4338ca">生产者</text>
+    <text x="105" y="155" text-anchor="middle" font-size="12" fill="#4b5563">订单服务</text>
+    <text x="105" y="177" text-anchor="middle" font-size="12" fill="#4b5563">支付服务</text>
+    <text x="105" y="199" text-anchor="middle" font-size="12" fill="#4b5563">日志采集</text>
+    <text x="105" y="240" text-anchor="middle" font-size="11" fill="#6b7280">（发送消息）</text>
+  </g>
+  <!-- 箭头 1 -->
+  <path d="M 185 185 H 290" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#arrow1)"/>
+  <text x="232" y="176" text-anchor="middle" font-size="12" fill="#6366f1">send</text>
+  <!-- Broker -->
+  <g>
+    <rect x="295" y="80" width="170" height="210" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="380" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">Broker 消息服务器</text>
+    <rect x="315" y="125" width="130" height="38" rx="6" fill="#ffffff" stroke="#10b981"/>
+    <text x="380" y="149" text-anchor="middle" font-size="12" fill="#374151">队列 / 分区</text>
+    <rect x="315" y="172" width="130" height="38" rx="6" fill="#ffffff" stroke="#10b981"/>
+    <text x="380" y="196" text-anchor="middle" font-size="12" fill="#374151">持久化存储</text>
+    <rect x="315" y="219" width="130" height="38" rx="6" fill="#ffffff" stroke="#10b981"/>
+    <text x="380" y="243" text-anchor="middle" font-size="12" fill="#374151">路由与分发</text>
+  </g>
+  <!-- 箭头 2 -->
+  <path d="M 470 185 H 575" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+  <text x="518" y="176" text-anchor="middle" font-size="12" fill="#10b981">deliver</text>
+  <!-- 消费者 -->
+  <g>
+    <rect x="580" y="100" width="150" height="170" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="655" y="130" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">消费者</text>
+    <text x="655" y="155" text-anchor="middle" font-size="12" fill="#4b5563">库存服务</text>
+    <text x="655" y="177" text-anchor="middle" font-size="12" fill="#4b5563">短信服务</text>
+    <text x="655" y="199" text-anchor="middle" font-size="12" fill="#4b5563">数据分析</text>
+    <text x="655" y="240" text-anchor="middle" font-size="11" fill="#6b7280">（异步消费）</text>
+  </g>
+  <!-- 底部收益 -->
+  <rect x="130" y="300" width="500" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="380" y="326" text-anchor="middle" font-size="13" fill="#475569">解耦 · 削峰 · 异步 · 顺序性 · 广播</text>
+  <defs>
+    <marker id="arrow1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

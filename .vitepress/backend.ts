@@ -143,6 +143,22 @@ export const Java = [
     ],
   },
 ];
+export const MessageQueue = [
+  {
+    text: "消息队列",
+    link: "/docs/Backend/MessageQueue/index.md",
+    items: [
+      { text: "概念与选型", link: "/docs/Backend/MessageQueue/Overview/index.md" },
+      { text: "Kafka 入门", link: "/docs/Backend/MessageQueue/Kafka/index.md" },
+      { text: "RabbitMQ 入门", link: "/docs/Backend/MessageQueue/RabbitMQ/index.md" },
+      { text: "可靠投递", link: "/docs/Backend/MessageQueue/Reliability/index.md" },
+      { text: "消费幂等", link: "/docs/Backend/MessageQueue/Idempotency/index.md" },
+      { text: "集群部署", link: "/docs/Backend/MessageQueue/Cluster/index.md" },
+      { text: "对比总结", link: "/docs/Backend/MessageQueue/Comparison/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/MessageQueue/FAQ/index.md" },
+    ],
+  },
+];
 export const Go = [{ text: "Go", link: "/docs/Backend/Go/index.md" }];
 export const Python = [
   {

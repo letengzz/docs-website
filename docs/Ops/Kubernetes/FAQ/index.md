@@ -96,6 +96,11 @@ Namespace 级别配置 ResourceQuota 与 LimitRange，防止某个团队打爆�
 2. 用 `kubectl get events -A --sort-by=.lastTimestamp` 复盘一次故障。
 3. 在测试集群练习滚动发布与回滚，记录每步命令。
 
+## 相关专题
+
+- [消息队列集群部署](../../../Backend/MessageQueue/Cluster/index.md)：Kafka / RabbitMQ 高可用集群在容器环境中的部署要点
+- [Docker Compose 进阶](../../Docker/ComposeAdvanced/index.md)：从 Compose 到 K8s 的部署演进
+
 ## 参考资料
 
 - Kubernetes 官方文档：https://kubernetes.io/zh-cn/docs/

@@ -75,6 +75,11 @@ Future 只能阻塞 `get()`；CompletableFuture 支持链式编排（thenApply�
 2. 用 `jconsole` 观察线程池线程数与队列积压。
 3. 用 `ThreadPoolExecutor` 压测 1000 个任务，观察拒绝策略触发与任务耗时。
 
+## 相关专题
+
+- [消息队列专题](../../../../../Backend/MessageQueue/index.md)：线程池与 MQ 消费端并发模型、积压与幂等的配合
+- [Spring Boot 异步任务](../../../../../Backend/Java/Frame/SpringBoot/Common/FAQ/index.md)：`@Async` 线程池配置与消息驱动消费
+
 ## 参考资料
 
 - Oracle 并发教程：https://docs.oracle.com/javase/tutorial/essential/concurrency/

@@ -88,3 +88,8 @@ async def main():
 ## 验证建议
 
 运行上面的 `gather` 示例，对比同步版本的总耗时：三个 1 秒的请求，同步约 3 秒，异步约 1 秒，就说明事件循环生效了。
+
+## 相关专题
+
+- [消息队列专题](../../MessageQueue/index.md)：异步任务的跨进程解耦——用 Kafka/RabbitMQ 替代进程内 `asyncio.Queue` 实现可靠分发
+- [Redis 发布订阅与事务](../../../DB/NoRelational/Redis/PubSubTransaction/index.md)：轻量异步通知与正式 MQ 的边界

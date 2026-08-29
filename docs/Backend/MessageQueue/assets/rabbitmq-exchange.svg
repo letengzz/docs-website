@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="400" viewBox="0 0 820 400" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="820" height="400" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">RabbitMQ 路由模型（Exchange → Queue）</text>
+  <!-- 生产者 -->
+  <rect x="30" y="120" width="130" height="100" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="95" y="150" text-anchor="middle" font-size="15" font-weight="bold" fill="#4338ca">生产者</text>
+  <text x="95" y="175" text-anchor="middle" font-size="12" fill="#4b5563">routing key</text>
+  <text x="95" y="197" text-anchor="middle" font-size="12" fill="#4b5563">消息 + 属性</text>
+  <!-- 箭头 -->
+  <path d="M 165 170 H 235" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#rarrow)"/>
+  <!-- Exchange -->
+  <g>
+    <rect x="240" y="80" width="180" height="180" rx="12" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+    <text x="330" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#be185d">Exchange 交换机</text>
+    <rect x="258" y="125" width="144" height="32" rx="6" fill="#ffffff" stroke="#ec4899"/>
+    <text x="330" y="145" text-anchor="middle" font-size="12" fill="#374151">direct 直连</text>
+    <rect x="258" y="165" width="144" height="32" rx="6" fill="#ffffff" stroke="#ec4899"/>
+    <text x="330" y="185" text-anchor="middle" font-size="12" fill="#374151">topic 通配</text>
+    <rect x="258" y="205" width="144" height="32" rx="6" fill="#ffffff" stroke="#ec4899"/>
+    <text x="330" y="225" text-anchor="middle" font-size="12" fill="#374151">fanout 广播</text>
+  </g>
+  <!-- 三条路由线 -->
+  <path d="M 425 125 H 560" stroke="#ec4899" stroke-width="2" fill="none" marker-end="url(#rarrow)"/>
+  <path d="M 425 170 H 560" stroke="#ec4899" stroke-width="2" fill="none" marker-end="url(#rarrow)"/>
+  <path d="M 425 215 H 560" stroke="#ec4899" stroke-width="2" fill="none" marker-end="url(#rarrow)"/>
+  <!-- Queues -->
+  <g>
+    <rect x="565" y="90" width="110" height="58" rx="8" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+    <text x="620" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">队列 A</text>
+    <text x="620" y="135" text-anchor="middle" font-size="11" fill="#374151">binding: 订单</text>
+    <rect x="565" y="160" width="110" height="58" rx="8" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+    <text x="620" y="185" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">队列 B</text>
+    <text x="620" y="205" text-anchor="middle" font-size="11" fill="#374151">binding: *.paid</text>
+    <rect x="565" y="230" width="110" height="58" rx="8" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+    <text x="620" y="255" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">队列 C</text>
+    <text x="620" y="275" text-anchor="middle" font-size="11" fill="#374151">广播订阅</text>
+  </g>
+  <!-- 消费者 -->
+  <rect x="705" y="120" width="85" height="160" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="747" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">消费者</text>
+  <text x="747" y="180" text-anchor="middle" font-size="11" fill="#4b5563">手动 ACK</text>
+  <text x="747" y="202" text-anchor="middle" font-size="11" fill="#4b5563">QoS 预取</text>
+  <text x="747" y="224" text-anchor="middle" font-size="11" fill="#4b5563">重试/死信</text>
+  <text x="747" y="252" text-anchor="middle" font-size="11" fill="#4b5563">（按需扩缩）</text>
+  <path d="M 680 170 H 700" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#rarrow)"/>
+  <path d="M 680 200 H 700" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#rarrow)"/>
+  <text x="410" y="330" text-anchor="middle" font-size="13" fill="#475569">关键概念：Virtual Host（虚拟主机）、Channel（信道）、Binding（绑定）、ack/nack/reject</text>
+  <rect x="180" y="350" width="460" height="36" rx="8" fill="#fff7ed" stroke="#f97316"/>
+  <text x="410" y="373" text-anchor="middle" font-size="13" fill="#9a3412">队列是消息的存储终点，交换机只负责路由；无绑定匹配的消息会被丢弃（mandatory 可退回）</text>
+  <defs>
+    <marker id="rarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#ec4899"/>
+    </marker>
+  </defs>
+</svg>

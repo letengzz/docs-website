@@ -12,6 +12,7 @@ export const nav = [
       { text: ".Net", link: "/docs/Backend/DotNet" },
       { text: "Go", link: "/docs/Backend/Go" },
       { text: "Java", link: "/docs/Backend/Java" },
+      { text: "消息队列", link: "/docs/Backend/MessageQueue" },
       { text: "Python", link: "/docs/Backend/Python" },]
   },
   {

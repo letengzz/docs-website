@@ -127,6 +127,11 @@ spring:
 4. 压测/冒烟测试核心接口，观察健康检查与指标。
 5. 演练一次发版：优雅停机、回滚、日志排查全流程。
 
+## 相关专题
+
+- [消息队列专题](../../../../../MessageQueue/index.md)：Spring Boot 集成 Kafka/RabbitMQ 的可靠投递、消费幂等与集群部署
+- [Java 并发专题](../../../../../Java/JavaSE/Multithreading/index.md)：`@Async` 异步任务与线程池的底层原理
+
 ## 参考资料
 
 - Spring Boot 官方文档：https://docs.spring.io/spring-boot/index.html

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="330" viewBox="0 0 820 330" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="820" height="330" fill="#ffffff"/>
+  <text x="410" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">消息投递语义对比</text>
+  <!-- At most once -->
+  <g>
+    <rect x="30" y="80" width="240" height="190" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+    <text x="150" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#b91c1c">最多一次</text>
+    <text x="150" y="138" text-anchor="middle" font-size="12" fill="#374151">发送后不管结果</text>
+    <text x="150" y="160" text-anchor="middle" font-size="12" fill="#374151">可能丢失消息</text>
+    <text x="150" y="200" text-anchor="middle" font-size="12" fill="#6b7280">适用：日志、监控指标</text>
+    <text x="150" y="222" text-anchor="middle" font-size="12" fill="#6b7280">可容忍少量丢失</text>
+  </g>
+  <!-- At least once -->
+  <g>
+    <rect x="290" y="80" width="240" height="190" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="410" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">至少一次</text>
+    <text x="410" y="138" text-anchor="middle" font-size="12" fill="#374151">发送后等待确认</text>
+    <text x="410" y="160" text-anchor="middle" font-size="12" fill="#374151">失败会重发/重投</text>
+    <text x="410" y="200" text-anchor="middle" font-size="12" fill="#6b7280">可能重复消费</text>
+    <text x="410" y="222" text-anchor="middle" font-size="12" fill="#6b7280">适用：订单、支付等业务</text>
+    <text x="410" y="244" text-anchor="middle" font-size="12" fill="#6b7280">配合幂等消费使用</text>
+  </g>
+  <!-- Exactly once -->
+  <g>
+    <rect x="550" y="80" width="240" height="190" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="670" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">精确一次</text>
+    <text x="670" y="138" text-anchor="middle" font-size="12" fill="#374151">事务 / 幂等生产者</text>
+    <text x="670" y="160" text-anchor="middle" font-size="12" fill="#374151">消费端事务+去重</text>
+    <text x="670" y="200" text-anchor="middle" font-size="12" fill="#6b7280">成本高、吞吐低</text>
+    <text x="670" y="222" text-anchor="middle" font-size="12" fill="#6b7280">适用：金融对账等</text>
+    <text x="670" y="244" text-anchor="middle" font-size="12" fill="#6b7280">端到端实现难度大</text>
+  </g>
+  <text x="410" y="305" text-anchor="middle" font-size="13" fill="#475569">生产实践：默认「至少一次」+ 消费幂等 = 业务上等价于「不丢不重」</text>
+</svg>

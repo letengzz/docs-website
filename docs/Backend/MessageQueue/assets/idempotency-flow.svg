@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="360" viewBox="0 0 820 360" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="820" height="360" fill="#ffffff"/>
+  <text x="410" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">消费幂等处理流程（去重表方案）</text>
+  <!-- 步骤 1 -->
+  <g>
+    <rect x="30" y="110" width="160" height="120" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="110" y="140" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">1. 接收消息</text>
+    <text x="110" y="168" text-anchor="middle" font-size="12" fill="#4b5563">取出业务 ID</text>
+    <text x="110" y="190" text-anchor="middle" font-size="12" fill="#4b5563">（订单号/流水号）</text>
+    <text x="110" y="212" text-anchor="middle" font-size="11" fill="#6b7280">消息可能重复到达</text>
+  </g>
+  <path d="M 195 170 H 255" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#iarrow)"/>
+  <!-- 步骤 2 -->
+  <g>
+    <rect x="260" y="80" width="160" height="180" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="340" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">2. 查重</text>
+    <text x="340" y="138" text-anchor="middle" font-size="12" fill="#4b5563">SELECT 去重表</text>
+    <text x="340" y="160" text-anchor="middle" font-size="12" fill="#4b5563">WHERE biz_id = ?</text>
+    <text x="340" y="200" text-anchor="middle" font-size="12" fill="#6b7280">已存在 → 丢弃</text>
+    <text x="340" y="222" text-anchor="middle" font-size="12" fill="#6b7280">不存在 → 继续处理</text>
+  </g>
+  <path d="M 425 170 H 485" stroke="#f59e0b" stroke-width="2.5" fill="none" marker-end="url(#iarrow)"/>
+  <!-- 步骤 3 -->
+  <g>
+    <rect x="490" y="110" width="150" height="120" rx="10" fill="#fef3c7" stroke="#f97316" stroke-width="2"/>
+    <text x="565" y="140" text-anchor="middle" font-size="14" font-weight="bold" fill="#c2410c">3. 业务处理</text>
+    <text x="565" y="168" text-anchor="middle" font-size="12" fill="#4b5563">扣库存 / 改状态</text>
+    <text x="565" y="190" text-anchor="middle" font-size="12" fill="#4b5563">写业务数据</text>
+    <text x="565" y="212" text-anchor="middle" font-size="11" fill="#6b7280">同事务内完成</text>
+  </g>
+  <path d="M 645 170 H 705" stroke="#f97316" stroke-width="2.5" fill="none" marker-end="url(#iarrow)"/>
+  <!-- 步骤 4 -->
+  <g>
+    <rect x="710" y="110" width="85" height="120" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="752" y="140" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">4. 记账</text>
+    <text x="752" y="168" text-anchor="middle" font-size="12" fill="#4b5563">插入去重</text>
+    <text x="752" y="190" text-anchor="middle" font-size="12" fill="#4b5563">记录并</text>
+    <text x="752" y="212" text-anchor="middle" font-size="12" fill="#4b5563">ACK</text>
+  </g>
+  <!-- 底部 -->
+  <rect x="160" y="280" width="500" height="48" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="410" y="302" text-anchor="middle" font-size="13" fill="#475569">关键：查重 + 业务更新 + 写入去重记录必须在同一个本地事务内，否则存在并发漏洞</text>
+  <text x="410" y="320" text-anchor="middle" font-size="12" fill="#6b7280">去重表对 biz_id 建唯一索引，配合 INSERT IGNORE / ON DUPLICATE KEY 保证并发安全</text>
+  <defs>
+    <marker id="iarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

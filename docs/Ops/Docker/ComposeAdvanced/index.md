@@ -191,6 +191,11 @@ volumes:
 4. `docker compose top` 查看容器内进程。
 5. `docker compose down` 停止后，命名卷数据默认保留，可用 `docker compose down -v` 显式删除（谨慎）。
 
+## 相关专题
+
+- [消息队列集群部署](../../../Backend/MessageQueue/Cluster/index.md)：用 Compose 编排 Kafka KRaft / RabbitMQ 三节点集群的完整示例
+- [Kubernetes 专题](../../Kubernetes/index.md)：容器编排进阶，从 Compose 迁移到 K8s 的部署方式
+
 ## 参考资料
 
 - Compose 规范：https://compose-spec.io/

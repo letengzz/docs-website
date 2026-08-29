@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" viewBox="0 0 820 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="820" height="420" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Kafka 核心架构（KRaft 模式）</text>
+  <!-- 生产者 -->
+  <rect x="30" y="100" width="130" height="150" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="95" y="130" text-anchor="middle" font-size="15" font-weight="bold" fill="#4338ca">Producer</text>
+  <text x="95" y="160" text-anchor="middle" font-size="12" fill="#4b5563">写入 Topic</text>
+  <text x="95" y="182" text-anchor="middle" font-size="12" fill="#4b5563">按键分区</text>
+  <text x="95" y="204" text-anchor="middle" font-size="12" fill="#4b5563">批量发送</text>
+  <text x="95" y="230" text-anchor="middle" font-size="11" fill="#6b7280">acks 确认</text>
+  <!-- 箭头 1 -->
+  <path d="M 165 175 H 250" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#karrow1)"/>
+  <!-- Broker -->
+  <g>
+    <rect x="255" y="55" width="310" height="300" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="410" y="82" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">Kafka Broker 集群</text>
+    <g>
+      <rect x="275" y="100" width="90" height="115" rx="6" fill="#ffffff" stroke="#10b981"/>
+      <text x="320" y="122" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">Broker 1</text>
+      <text x="320" y="145" text-anchor="middle" font-size="10" fill="#374151">P0(Leader)</text>
+      <text x="320" y="162" text-anchor="middle" font-size="10" fill="#374151">P1(Follower)</text>
+      <text x="320" y="195" text-anchor="middle" font-size="10" fill="#6b7280">Topic: orders</text>
+    </g>
+    <g>
+      <rect x="375" y="100" width="90" height="115" rx="6" fill="#ffffff" stroke="#10b981"/>
+      <text x="420" y="122" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">Broker 2</text>
+      <text x="420" y="145" text-anchor="middle" font-size="10" fill="#374151">P0(Follower)</text>
+      <text x="420" y="162" text-anchor="middle" font-size="10" fill="#374151">P1(Leader)</text>
+      <text x="420" y="195" text-anchor="middle" font-size="10" fill="#6b7280">Topic: orders</text>
+    </g>
+    <g>
+      <rect x="475" y="100" width="70" height="115" rx="6" fill="#ffffff" stroke="#10b981"/>
+      <text x="510" y="122" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">Broker 3</text>
+      <text x="510" y="145" text-anchor="middle" font-size="10" fill="#374151">副本同步</text>
+      <text x="510" y="162" text-anchor="middle" font-size="10" fill="#374151">ISR 机制</text>
+    </g>
+    <rect x="275" y="235" width="270" height="45" rx="6" fill="#d1fae5" stroke="#10b981"/>
+    <text x="410" y="258" text-anchor="middle" font-size="12" fill="#065f46">分区 = 日志追加（顺序写盘、offset 定位）</text>
+    <text x="410" y="272" text-anchor="middle" font-size="10" fill="#6b7280">0 1 2 3 4 5 ...（offset 只增不减）</text>
+  </g>
+  <!-- 箭头 2 -->
+  <path d="M 570 175 H 650" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#karrow2)"/>
+  <!-- 消费者 -->
+  <g>
+    <rect x="655" y="100" width="135" height="150" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="722" y="130" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">Consumer</text>
+    <text x="722" y="160" text-anchor="middle" font-size="12" fill="#4b5563">消费组 Group A</text>
+    <text x="722" y="182" text-anchor="middle" font-size="12" fill="#4b5563">分区分配</text>
+    <text x="722" y="204" text-anchor="middle" font-size="12" fill="#4b5563">提交 offset</text>
+    <text x="722" y="230" text-anchor="middle" font-size="11" fill="#6b7280">重平衡 Rebalance</text>
+  </g>
+  <!-- KRaft 控制器 -->
+  <rect x="255" y="380" width="310" height="32" rx="8" fill="#f5f3ff" stroke="#8b5cf6"/>
+  <text x="410" y="401" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">KRaft 控制器（Controller Quorum，元数据管理，取代 ZooKeeper）</text>
+  <defs>
+    <marker id="karrow1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="karrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>
