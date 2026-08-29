@@ -132,6 +132,7 @@ Tomcat 之所以要打破：多个 Web 应用部署在同一容器，需要隔�
 
 ## 参考资料
 
+- 反射与 Class 对象（专题）：[反射概述与 Class 对象](../Reflection/Overview/index.md)
 - 类加载机制（Oracle 教程）：https://docs.oracle.com/javase/tutorial/essential/network/classLoader.html
 - JVM 规范第 5 章（加载/链接/初始化）：https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-5.html
 - 平台类加载器说明：https://openjdk.org/jeps/261

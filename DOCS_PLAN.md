@@ -64,7 +64,7 @@
 | 天数 | 分类 | 主题 | 建议章节 |
 | --- | --- | --- | --- |
 | 31 | Backend | Java IO/NIO ✅ | 文件 IO、字节/字符流、NIO、Channel/Buffer、网络 IO 模型、实战案例、常见问题 |
-| 32 | Backend | Java 反射与注解 | Class 对象、反射 API、动态代理、注解定义与处理、实战案例、常见问题 |
+| 32 | Backend | Java 反射与注解 ✅ | Class 对象、反射 API、动态代理、注解定义与处理、实战案例、常见问题 |
 | 33 | Backend | Java 函数式编程 | Lambda、Stream、Optional、方法引用、实战案例、常见问题 |
 | 34 | Frontend | CSS 进阶 | 布局体系、动画、响应式、工程化、原子化 CSS、常见问题 |
 | 35 | Frontend | 前端安全 | XSS、CSRF、CSP、HTTPS、安全响应头、依赖安全、常见问题 |
@@ -168,6 +168,7 @@
 - [x] Backend 存量补全：网络编程专题已建设（10 篇，第 29 天）并补充 Java IO/线程池/AJAX/HTTP/浏览器/Nginx 等交叉链接
 - [x] Others 存量补全：复盘杂项专题已建设（8 篇，第 30 天）；全库链接巡检完成（781 个文件，修复 18 处失效链接）
 - [x] Backend 存量补全：Java IO/NIO 专题已建设（9 篇，第 31 天），旧「IO 流」单页拆分为完整专题并保留入口；补充 NetworkProgramming（SocketIO/Netty/FAQ）与 JVM（Tuning/Troubleshoot）交叉链接，修复 CommonClasses 相关专题位置错乱
+- [x] Backend 存量补全：Java 反射与注解专题已建设（8 篇，第 32 天），补充 JVM ClassLoading/OOP/Spring AOP/IoC/MyBatis 注解交叉链接
 
 ## 节奏建议
 

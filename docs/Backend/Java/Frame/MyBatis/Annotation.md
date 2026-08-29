@@ -115,6 +115,10 @@ Map<Integer,Object> getStuAllToMap();
 
 :::
 
+::: tip 原理延伸
+MyBatis 的注解本质是**元数据**：`@Select`/`@Results` 由框架在运行期通过反射读取并绑定 SQL。自定义注解的定义、生命周期与反射读取见 [注解：定义与使用](../../JavaSE/Reflection/Annotation/index.md)。
+:::
+
 ## 结果集映射 {#2}
 
 `@Result`、`@Results`、`@ResultMap` 是结果集映射的三大注解。

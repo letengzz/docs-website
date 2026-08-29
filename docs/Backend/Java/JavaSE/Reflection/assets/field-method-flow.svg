@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="340" viewBox="0 0 820 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="fm-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .step { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .act { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="step" x="40" y="40" width="220" height="54"/>
+  <text x="150" y="68">获取 Class 对象</text>
+  <text class="small" x="150" y="86">Class.forName / 类字面量 / 实例</text>
+
+  <rect class="step" x="300" y="40" width="220" height="54"/>
+  <text x="410" y="68">获取成员元数据</text>
+  <text class="small" x="410" y="86">getDeclaredFields / getMethods</text>
+
+  <rect class="act" x="560" y="40" width="220" height="54"/>
+  <text x="670" y="68">设置可访问</text>
+  <text class="small" x="670" y="86">setAccessible(true) 突破封装</text>
+
+  <line x1="260" y1="67" x2="300" y2="67" marker-end="url(#fm-arrow)"/>
+  <line x1="520" y1="67" x2="560" y2="67" marker-end="url(#fm-arrow)"/>
+
+  <rect class="act" x="560" y="170" width="220" height="54"/>
+  <text x="670" y="198">动态调用 / 读写</text>
+  <text class="small" x="670" y="216">invoke / get / set</text>
+
+  <line x1="670" y1="94" x2="670" y2="170" marker-end="url(#fm-arrow)"/>
+
+  <rect class="step" x="40" y="170" width="220" height="54"/>
+  <text x="150" y="198">处理异常</text>
+  <text class="small" x="150" y="216">NoSuchMethod / IllegalAccess</text>
+
+  <line x1="220" y1="197" x2="360" y2="197" stroke-dasharray="5 4"/>
+  <text class="small" x="290" y="187">反射异常多为运行时异常</text>
+
+  <rect class="act" x="300" y="250" width="480" height="50"/>
+  <text x="540" y="280">性能提示：缓存 Method/Field 对象，避免每次反射都查找</text>
+
+  <line x1="670" y1="224" x2="600" y2="250" marker-end="url(#fm-arrow)"/>
+
+  <text class="small" x="410" y="325">注意：getFields 只取 public（含继承），getDeclaredFields 取本类全部声明</text>
+</svg>

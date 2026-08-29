@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="px-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .caller { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .proxy { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .target { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="caller" x="40" y="60" width="200" height="60"/>
+  <text x="140" y="88">调用方</text>
+  <text class="small" x="140" y="108">持有代理对象引用</text>
+
+  <rect class="proxy" x="330" y="60" width="200" height="60"/>
+  <text x="430" y="88">JDK 动态代理</text>
+  <text class="small" x="430" y="108">InvocationHandler.invoke</text>
+
+  <rect class="target" x="620" y="60" width="200" height="60"/>
+  <text x="720" y="88">目标实现类</text>
+  <text class="small" x="720" y="108">实现同一接口</text>
+
+  <line x1="240" y1="90" x2="330" y2="90" marker-end="url(#px-arrow)"/>
+  <text class="small" x="285" y="80">1. 调用代理方法</text>
+  <line x1="530" y1="90" x2="620" y2="90" marker-end="url(#px-arrow)"/>
+  <text class="small" x="575" y="80">2. 前置增强 + 转发</text>
+
+  <rect class="target" x="330" y="220" width="200" height="54"/>
+  <text x="430" y="248">CGLIB 子类代理</text>
+  <text class="small" x="430" y="266">继承目标类，覆写方法</text>
+
+  <rect class="caller" x="40" y="220" width="200" height="54"/>
+  <text x="140" y="248">无接口目标类</text>
+  <text class="small" x="140" y="266">final 类无法代理</text>
+
+  <line x1="240" y1="247" x2="330" y2="247" marker-end="url(#px-arrow)"/>
+
+  <text class="small" x="430" y="320">AOP 实践：Spring AOP 默认优先 JDK 代理，目标类无接口时使用 CGLIB</text>
+  <text class="small" x="430" y="340">增强点：调用前日志/事务 → invoke 转发 → 调用后提交/收尾</text>
+</svg>

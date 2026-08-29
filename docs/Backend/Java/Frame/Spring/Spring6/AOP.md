@@ -1123,3 +1123,7 @@ public class CalculatorTest {
 ![](assets/202412102314805.png)
 
 **如果使用AOP技术，目标类有接口，必须使用接口类型接收IoC容器中代理组件**
+
+::: tip 原理延伸
+Spring AOP 的底层就是动态代理：有接口时用 JDK 代理，无接口时用 CGLIB 子类代理。完整原理与手写拦截器链见 [动态代理专题](../../../JavaSE/Reflection/DynamicProxy/index.md)。
+:::

@@ -72,6 +72,21 @@ export const Java = [
             ],
           },
           {
+            text: "反射与注解",
+            link: "/docs/Backend/Java/JavaSE/Reflection/index.md",
+            collapsed: true,
+            items: [
+              { text: "反射概述与 Class 对象", link: "/docs/Backend/Java/JavaSE/Reflection/Overview/index.md" },
+              { text: "字段与方法反射", link: "/docs/Backend/Java/JavaSE/Reflection/FieldsMethods/index.md" },
+              { text: "构造器与对象创建", link: "/docs/Backend/Java/JavaSE/Reflection/Constructor/index.md" },
+              { text: "动态代理", link: "/docs/Backend/Java/JavaSE/Reflection/DynamicProxy/index.md" },
+              { text: "注解：定义与使用", link: "/docs/Backend/Java/JavaSE/Reflection/Annotation/index.md" },
+              { text: "注解处理器（APT）", link: "/docs/Backend/Java/JavaSE/Reflection/AnnotationProcessor/index.md" },
+              { text: "实战：注解驱动简易 ORM", link: "/docs/Backend/Java/JavaSE/Reflection/Practice/index.md" },
+              { text: "常见问题与最佳实践", link: "/docs/Backend/Java/JavaSE/Reflection/FAQ/index.md" },
+            ],
+          },
+          {
             text: "Java 并发",
             link: "/docs/Backend/Java/JavaSE/Multithreading/index.md",
             collapsed: true,

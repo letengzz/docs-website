@@ -3431,3 +3431,7 @@ public class AnnotationApplicationContext implements ApplicationContext {
 执行第八步：执行成功，依赖注入成功
 
 ![image-20230723162535657](assets/202307231625152.png)
+
+::: tip 原理延伸
+Spring IoC 实例化 Bean 的核心手段之一就是**构造器反射**：运行时通过 `Constructor.newInstance` 创建对象并注入依赖。见 [构造器与对象创建](../../../JavaSE/Reflection/Constructor/index.md)。
+:::
