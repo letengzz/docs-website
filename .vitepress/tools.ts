@@ -33,7 +33,23 @@ export const Build = [
     ],
   },
 ];
-export const CICD = [{ text: "持续集成工具", link: "/docs/Tools/CICD/index.md" }];
+export const CICD = [
+  {
+    text: "CI/CD",
+    link: "/docs/Tools/CICD/index.md",
+    items: [
+      { text: "概念与流水线设计", link: "/docs/Tools/CICD/Overview/index.md" },
+      { text: "GitHub Actions 入门", link: "/docs/Tools/CICD/GithubActions/index.md" },
+      { text: "GitLab CI/CD", link: "/docs/Tools/CICD/GitlabCI/index.md" },
+      { text: "Jenkins 流水线", link: "/docs/Tools/CICD/Jenkins/index.md" },
+      { text: "流水线设计最佳实践", link: "/docs/Tools/CICD/PipelineDesign/index.md" },
+      { text: "自动化测试与质量门禁", link: "/docs/Tools/CICD/Testing/index.md" },
+      { text: "制品管理", link: "/docs/Tools/CICD/Artifacts/index.md" },
+      { text: "自动部署与回滚", link: "/docs/Tools/CICD/DeployRollback/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/CICD/FAQ/index.md" },
+    ],
+  },
+];
 export const IDE = [{ text: "IDE 工具", link: "/docs/Tools/IDE/index.md" }];
 export const Others = [{ text: "其他工具", link: "/docs/Tools/Others/index.md" }];
 export const VC = [

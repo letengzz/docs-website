@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="330" viewBox="0 0 840 330" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="330" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">三种部署策略对比</text>
+  <!-- Rolling -->
+  <g>
+    <rect x="30" y="75" width="250" height="210" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="155" y="105" text-anchor="middle" font-size="15" font-weight="bold" fill="#4338ca">滚动发布</text>
+    <rect x="55" y="120" width="90" height="36" rx="6" fill="#a5b4fc"/>
+    <text x="100" y="143" text-anchor="middle" font-size="12" fill="#3730a3">V2</text>
+    <rect x="155" y="120" width="90" height="36" rx="6" fill="#c7d2fe"/>
+    <text x="200" y="143" text-anchor="middle" font-size="12" fill="#3730a3">V2</text>
+    <rect x="55" y="165" width="90" height="36" rx="6" fill="#a5b4fc"/>
+    <text x="100" y="188" text-anchor="middle" font-size="12" fill="#3730a3">V1</text>
+    <rect x="155" y="165" width="90" height="36" rx="6" fill="#a5b4fc"/>
+    <text x="200" y="188" text-anchor="middle" font-size="12" fill="#3730a3">V1</text>
+    <text x="155" y="235" text-anchor="middle" font-size="11" fill="#475569">逐个替换实例，服务不中断</text>
+    <text x="155" y="260" text-anchor="middle" font-size="11" fill="#475569">新旧版本短暂共存，需兼容</text>
+  </g>
+  <!-- Blue-green -->
+  <g>
+    <rect x="295" y="75" width="250" height="210" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="420" y="105" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">蓝绿发布</text>
+    <rect x="320" y="125" width="90" height="80" rx="6" fill="#a7f3d0"/>
+    <text x="365" y="160" text-anchor="middle" font-size="12" fill="#065f46">蓝 V2</text>
+    <text x="365" y="180" text-anchor="middle" font-size="10" fill="#065f46">新环境</text>
+    <rect x="430" y="125" width="90" height="80" rx="6" fill="#d1fae5"/>
+    <text x="475" y="160" text-anchor="middle" font-size="12" fill="#065f46">绿 V1</text>
+    <text x="475" y="180" text-anchor="middle" font-size="10" fill="#065f46">旧环境</text>
+    <path d="M 365 210 V 232" stroke="#10b981" stroke-width="2" marker-end="url(#d1)"/>
+    <path d="M 475 210 V 232" stroke="#94a3b8" stroke-width="2" marker-end="url(#d1)"/>
+    <text x="420" y="235" text-anchor="middle" font-size="11" fill="#475569">流量从绿切到蓝，回滚=切回</text>
+    <text x="420" y="260" text-anchor="middle" font-size="11" fill="#475569">需要双倍资源</text>
+  </g>
+  <!-- Canary -->
+  <g>
+    <rect x="560" y="75" width="250" height="210" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="685" y="105" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">金丝雀发布</text>
+    <rect x="585" y="125" width="90" height="36" rx="6" fill="#fde68a"/>
+    <text x="630" y="148" text-anchor="middle" font-size="12" fill="#92400e">V2 5%</text>
+    <rect x="690" y="125" width="90" height="36" rx="6" fill="#fef3c7"/>
+    <text x="735" y="148" text-anchor="middle" font-size="12" fill="#92400e">V1 95%</text>
+    <text x="685" y="195" text-anchor="middle" font-size="11" fill="#475569">先放小流量验证</text>
+    <text x="685" y="215" text-anchor="middle" font-size="11" fill="#475569">指标正常 → 逐步放量</text>
+    <text x="685" y="235" text-anchor="middle" font-size="11" fill="#475569">异常 → 立即摘除</text>
+    <text x="685" y="260" text-anchor="middle" font-size="11" fill="#475569">适合灰度与 A/B</text>
+  </g>
+  <defs>
+    <marker id="d1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

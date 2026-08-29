@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="300" viewBox="0 0 840 300" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="300" fill="#ffffff"/>
+  <text x="420" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">CI/CD 流水线总体流程</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="25" y="100" width="120" height="80" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="85" y="130" fill="#4338ca" font-weight="bold">代码提交</text>
+    <text x="85" y="152" fill="#4b5563" font-size="11">Push / MR</text>
+    <rect x="185" y="100" width="120" height="80" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="245" y="130" fill="#047857" font-weight="bold">静态检查</text>
+    <text x="245" y="152" fill="#4b5563" font-size="11">Lint / Sonar</text>
+    <rect x="345" y="100" width="120" height="80" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="405" y="130" fill="#047857" font-weight="bold">构建</text>
+    <text x="405" y="152" fill="#4b5563" font-size="11">Maven / npm</text>
+    <rect x="505" y="100" width="120" height="80" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="565" y="130" fill="#b45309" font-weight="bold">自动化测试</text>
+    <text x="565" y="152" fill="#4b5563" font-size="11">单元/集成/E2E</text>
+    <rect x="665" y="100" width="120" height="80" rx="10" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+    <text x="725" y="130" fill="#be185d" font-weight="bold">制品与镜像</text>
+    <text x="725" y="152" fill="#4b5563" font-size="11">Artifact / Docker</text>
+    <rect x="185" y="215" width="200" height="58" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="285" y="241" fill="#6d28d9" font-weight="bold">部署（Dev/Staging/Prod）</text>
+    <text x="285" y="260" fill="#6b7280" font-size="11">滚动 / 蓝绿 / 金丝雀</text>
+    <rect x="445" y="215" width="200" height="58" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+    <text x="545" y="241" fill="#b91c1c" font-weight="bold">监控与回滚</text>
+    <text x="545" y="260" fill="#6b7280" font-size="11">告警 → 一键回滚</text>
+  </g>
+  <path d="M 150 140 H 178" stroke="#6366f1" stroke-width="2.5" marker-end="url(#f1)"/>
+  <path d="M 310 140 H 338" stroke="#10b981" stroke-width="2.5" marker-end="url(#f1)"/>
+  <path d="M 470 140 H 498" stroke="#10b981" stroke-width="2.5" marker-end="url(#f1)"/>
+  <path d="M 630 140 H 658" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#f1)"/>
+  <path d="M 725 185 V 208" stroke="#ec4899" stroke-width="2.5" marker-end="url(#f1)"/>
+  <path d="M 285 270 V 240" stroke="#8b5cf6" stroke-width="2.5" marker-end="url(#f1)"/>
+  <defs>
+    <marker id="f1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

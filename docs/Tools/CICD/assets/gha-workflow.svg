@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="340" viewBox="0 0 820 340" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="820" height="340" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">GitHub Actions：Workflow → Job → Step</text>
+  <!-- Workflow -->
+  <rect x="40" y="60" width="740" height="250" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="410" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">Workflow（.github/workflows/ci.yml，由事件触发）</text>
+  <!-- Job A -->
+  <g>
+    <rect x="70" y="110" width="320" height="180" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="230" y="135" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">Job: test（runs-on: ubuntu-latest）</text>
+    <rect x="90" y="150" width="280" height="36" rx="7" fill="#ffffff" stroke="#c7d2fe"/>
+    <text x="230" y="173" text-anchor="middle" font-size="12" fill="#374151">Step 1: actions/checkout@v5</text>
+    <rect x="90" y="194" width="280" height="36" rx="7" fill="#ffffff" stroke="#c7d2fe"/>
+    <text x="230" y="217" text-anchor="middle" font-size="12" fill="#374151">Step 2: actions/setup-node@v6</text>
+    <rect x="90" y="238" width="280" height="36" rx="7" fill="#ffffff" stroke="#c7d2fe"/>
+    <text x="230" y="261" text-anchor="middle" font-size="12" fill="#374151">Step 3: npm test（失败即中止）</text>
+  </g>
+  <!-- Job B -->
+  <g>
+    <rect x="430" y="110" width="320" height="180" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="590" y="135" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">Job: deploy（needs: test）</text>
+    <rect x="450" y="150" width="280" height="36" rx="7" fill="#ffffff" stroke="#a7f3d0"/>
+    <text x="590" y="173" text-anchor="middle" font-size="12" fill="#374151">Step 1: 下载制品</text>
+    <rect x="450" y="194" width="280" height="36" rx="7" fill="#ffffff" stroke="#a7f3d0"/>
+    <text x="590" y="217" text-anchor="middle" font-size="12" fill="#374151">Step 2: docker build &amp; push</text>
+    <rect x="450" y="238" width="280" height="36" rx="7" fill="#ffffff" stroke="#a7f3d0"/>
+    <text x="590" y="261" text-anchor="middle" font-size="12" fill="#374151">Step 3: 部署到服务器</text>
+  </g>
+  <path d="M 395 200 H 424" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#w1)"/>
+  <text x="410" y="190" text-anchor="middle" font-size="11" fill="#6b7280">needs</text>
+  <text x="410" y="330" text-anchor="middle" font-size="13" fill="#475569">事件：push / pull_request / schedule / workflow_dispatch；并发：矩阵策略 matrix、条件 if、缓存 cache</text>
+  <defs>
+    <marker id="w1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

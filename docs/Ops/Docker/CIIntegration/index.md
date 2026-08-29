@@ -185,6 +185,11 @@ SSH 密钥通过 GitHub Secrets 注入，不要写死在仓库。
 4. 远程主机执行 `docker compose ps` 确认服务使用新镜像。
 5. 故意引入一个高危依赖，确认扫描步骤会阻断流水线。
 
+## 相关专题
+
+- [CI/CD 专题](../../../Tools/CICD/index.md)：GitHub Actions 语法、流水线设计与质量门禁的完整体系
+- [制品管理](../../../Tools/CICD/Artifacts/index.md)：镜像仓库、不可变 Tag 与漏洞扫描
+
 ## 参考资料
 
 - docker/build-push-action：https://github.com/docker/build-push-action

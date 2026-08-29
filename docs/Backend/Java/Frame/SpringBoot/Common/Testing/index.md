@@ -256,6 +256,11 @@ mvn test jacoco:report
 4. Testcontainers 测试需要本机 Docker，运行前确认 `docker ps` 可用。
 5. CI 中 `mvn verify` 作为发布前置检查。
 
+## 相关专题
+
+- [CI/CD 自动化测试与质量门禁](../../../../../../Tools/CICD/Testing/index.md)：覆盖率统计、SonarQube 门禁与 E2E 在流水线中的组织
+- [CI/CD 概念与流水线设计](../../../../../../Tools/CICD/Overview/index.md)：测试在流水线阶段的定位
+
 ## 参考资料
 
 - Spring Boot 测试文档：https://docs.spring.io/spring-boot/reference/testing/index.html

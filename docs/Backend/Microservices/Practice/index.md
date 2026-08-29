@@ -298,6 +298,7 @@ java -jar order-service.jar --server.port=8084
 2. 接入 [链路追踪](../Tracing/index.md)：SkyWalking Agent 无侵入接入四个服务。
 3. 接入 [配置中心](../ConfigCenter/index.md)：把下单超时、限流阈值放到 Nacos 动态调整。
 4. 把下单事件发到 [消息队列](../../MessageQueue/index.md)，实现异步扣库存与消费幂等。
+5. 接入 [CI/CD 流水线](../../../Tools/CICD/index.md)：自动构建、测试、部署与回滚（见 [自动部署与回滚](../../../Tools/CICD/DeployRollback/index.md)）。
 
 ## 参考资料
 

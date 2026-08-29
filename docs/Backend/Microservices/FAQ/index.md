@@ -112,6 +112,11 @@
 3. 压测并记录：QPS、RT、错误率、线程池水位、数据库锁等待。
 4. 每月一次故障演练，把演练报告归档。
 
+## 相关专题
+
+- [CI/CD 专题](../../../Tools/CICD/index.md)：微服务的构建、测试、部署与回滚自动化
+- [自动部署与回滚](../../../Tools/CICD/DeployRollback/index.md)：多服务场景下的滚动/蓝绿/金丝雀发布
+
 ## 参考资料
 
 - 微服务架构模式目录：https://microservices.io/patterns/

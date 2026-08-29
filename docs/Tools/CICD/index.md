@@ -1,14 +1,15 @@
-# 持续集成工具
+# CI/CD
 
-持续集成（CI）与持续交付（CD）用于自动化构建、测试和发布流程。
+<p style="text-align:center;"><img src="./assets/cicd-logo.png" alt="CI/CD" style="zoom:75%;" /></p>
 
-## 常见工具
+CI/CD（持续集成 / 持续交付与部署）把代码从提交到上线全流程自动化：每次提交自动构建、测试、扫描，通过质量门禁后自动部署，出问题可一键回滚。本专题覆盖 GitHub Actions、GitLab CI/CD、Jenkins 三大主流工具与流水线设计、质量门禁、制品管理、部署回滚的完整实践。
 
-- GitHub Actions
-- GitLab CI/CD
-- Jenkins
-- Drone、ArgoCD 等云原生方案
-
-::: tip 待补充
-后续按计划补充 CI/CD 流水线实战文档；代码协作流程可先参考「版本控制工具」的 [Git 进阶](../VersionControl/Git/index.md)。
-:::
+- [CI/CD 概念与流水线设计](Overview/index.md)
+- [GitHub Actions 入门](GithubActions/index.md)
+- [GitLab CI/CD](GitlabCI/index.md)
+- [Jenkins 流水线](Jenkins/index.md)
+- [流水线设计最佳实践](PipelineDesign/index.md)
+- [自动化测试与质量门禁](Testing/index.md)
+- [制品管理](Artifacts/index.md)
+- [自动部署与回滚](DeployRollback/index.md)
+- [常见问题与最佳实践](FAQ/index.md)

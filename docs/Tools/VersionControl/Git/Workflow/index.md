@@ -129,6 +129,11 @@ git rebase origin/main
 3. 合并后用 `git log --oneline` 确认 main 历史符合约定。
 4. 模拟冲突，按流程解决并跑通测试。
 
+## 相关专题
+
+- [CI/CD 专题](../../../CICD/index.md)：提交与 MR 如何自动触发流水线（GitHub Actions / GitLab CI / Jenkins）
+- [Git 分支模型](../BranchModel/index.md)：与 CI/CD 分支策略配合的分支规范
+
 ## 参考资料
 
 - Conventional Commits：https://www.conventionalcommits.org/zh-hans/

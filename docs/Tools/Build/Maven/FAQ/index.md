@@ -106,6 +106,11 @@ mvn clean verify -DskipTests=false
 
 确认 `BUILD SUCCESS`、测试报告生成、目标 jar 可运行；再执行 `git status`，确认 `target/` 没有被提交。
 
+## 相关专题
+
+- [CI/CD 专题](../../../CICD/index.md)：`mvn verify` 在流水线中的位置与质量门禁
+- [GitHub Actions 入门](../../../CICD/GithubActions/index.md)：Maven 缓存与构建步骤示例
+
 ## 参考资料
 
 - Maven 官方指南：https://maven.apache.org/guides/
