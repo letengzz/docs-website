@@ -116,5 +116,6 @@ ch.pipeline().addLast(new IdleStateHandler(60, 0, 0, TimeUnit.SECONDS));
 ## 参考资料
 
 - 本专题章节入口：[网络编程目录](../index.md)
+- Java IO/NIO 常见问题：[IO/NIO FAQ](../../Java/JavaSE/IO/FAQ/index.md)
 - tcpdump 手册：https://www.tcpdump.org/
 - Netty 内存泄漏排查：https://netty.io/wiki/reference-counted-objects.html

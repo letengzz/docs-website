@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="im-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .mod { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .char { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .risk { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+  </style>
+
+  <rect class="mod" x="30" y="30" width="240" height="70"/>
+  <text x="150" y="58">BIO（同步阻塞）</text>
+  <text class="small" x="150" y="80">1 连接 1 线程，read 阻塞</text>
+
+  <rect class="mod" x="310" y="30" width="240" height="70"/>
+  <text x="430" y="58">NIO（同步非阻塞）</text>
+  <text class="small" x="430" y="80">Selector 多路复用</text>
+
+  <rect class="mod" x="590" y="30" width="240" height="70"/>
+  <text x="710" y="58">AIO（异步非阻塞）</text>
+  <text class="small" x="710" y="80">回调 / Future 完成通知</text>
+
+  <rect class="char" x="30" y="150" width="240" height="60"/>
+  <text x="150" y="178">实现：Socket / ServerSocket</text>
+  <rect class="char" x="310" y="150" width="240" height="60"/>
+  <text x="430" y="178">实现：ServerSocketChannel + Selector</text>
+  <rect class="char" x="590" y="150" width="240" height="60"/>
+  <text x="710" y="178">实现：AsynchronousServerSocketChannel</text>
+
+  <rect class="risk" x="30" y="260" width="240" height="60"/>
+  <text x="150" y="288">适合：连接少、逻辑简单</text>
+  <rect class="risk" x="310" y="260" width="240" height="60"/>
+  <text x="430" y="288">适合：高并发长连接（Netty）</text>
+  <rect class="risk" x="590" y="260" width="240" height="60"/>
+  <text x="710" y="288">适合：Windows IOCP 大量读</text>
+
+  <line x1="150" y1="100" x2="150" y2="150" marker-end="url(#im-arrow)"/>
+  <line x1="430" y1="100" x2="430" y2="150" marker-end="url(#im-arrow)"/>
+  <line x1="710" y1="100" x2="710" y2="150" marker-end="url(#im-arrow)"/>
+  <line x1="150" y1="210" x2="150" y2="260" marker-end="url(#im-arrow)"/>
+  <line x1="430" y1="210" x2="430" y2="260" marker-end="url(#im-arrow)"/>
+  <line x1="710" y1="210" x2="710" y2="260" marker-end="url(#im-arrow)"/>
+
+  <text class="small" x="430" y="350">实践结论：Java 高并发网络编程以 NIO + Reactor（Netty）为主流，AIO 使用面较窄</text>
+  <text class="small" x="430" y="375">内核态支持：BIO/NIO 靠系统调用 + 多路复用（select/poll/epoll）；AIO 依赖内核异步接口</text>
+</svg>

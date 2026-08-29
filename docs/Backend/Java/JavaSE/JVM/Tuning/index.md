@@ -112,6 +112,7 @@ java -XshowSettings:vm -version
 
 ## 参考资料
 
+- IO 相关调优前置知识：[Java IO/NIO 专题](../IO/index.md)
 - Oracle GC 调优指南：https://docs.oracle.com/en/java/javase/25/gctuning/
 - JEP 158（统一 JVM 日志）：https://openjdk.org/jeps/158
 - 常用 JVM 参数列表：https://docs.oracle.com/en/java/javase/25/docs/specs/man/java.html

@@ -55,6 +55,8 @@ try (Socket socket = new Socket("localhost", 8080);
 
 ## 五种 IO 模型
 
+Java 侧的完整实现与代码示例见 [Java IO/NIO 专题](../../Java/JavaSE/IO/index.md)（[网络 IO 模型：BIO/NIO/AIO](../../Java/JavaSE/IO/NetworkIO/index.md)、[Selector 与多路复用](../../Java/JavaSE/IO/Selector/index.md)）。
+
 | 模型 | 说明 | Java 对应 |
 | --- | --- | --- |
 | 阻塞 IO（BIO） | 读写阻塞线程 | 传统 Socket |

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="pt-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .client { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .srv { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .io { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.5; }
+  </style>
+
+  <rect class="client" x="30" y="60" width="220" height="90"/>
+  <text x="140" y="90">客户端 Client</text>
+  <text class="small" x="140" y="115">FileChannel.open(READ)</text>
+  <text class="small" x="140" y="135">transferTo 发送</text>
+
+  <rect class="srv" x="610" y="60" width="220" height="90"/>
+  <text x="720" y="90">服务端 Server</text>
+  <text class="small" x="720" y="115">ServerSocketChannel + Selector</text>
+  <text class="small" x="720" y="135">接收线程池写盘</text>
+
+  <rect class="io" x="300" y="210" width="260" height="70"/>
+  <text x="430" y="238">TCP 连接（SocketChannel）</text>
+  <text class="small" x="430" y="262">8KB 缓冲区读写</text>
+
+  <line x1="250" y1="105" x2="340" y2="210" marker-end="url(#pt-arrow)"/>
+  <line x1="610" y1="105" x2="520" y2="210" marker-end="url(#pt-arrow)"/>
+
+  <line x1="140" y1="150" x2="140" y2="320" stroke="#3aa76d" stroke-dasharray="5 4"/>
+  <text class="small" x="145" y="340">源文件</text>
+
+  <line x1="720" y1="150" x2="720" y2="320" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <text class="small" x="725" y="340">目标文件</text>
+
+  <text class="small" x="430" y="110">校验：传输长度一致 + 文件内容对比</text>
+  <text class="small" x="430" y="135">失败重试：断点续传（记录已传 offset）</text>
+</svg>

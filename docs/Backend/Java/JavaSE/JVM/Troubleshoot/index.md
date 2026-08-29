@@ -130,6 +130,7 @@ jstat -gcutil <pid> 1000
 
 ## 参考资料
 
+- 连接数/文件句柄与 IO 泄漏排查：[Java IO/NIO 专题](../IO/index.md)
 - JDK 诊断工具命令：https://docs.oracle.com/en/java/javase/25/docs/specs/man/index.html
 - Eclipse MAT：https://eclipse.dev/mat/
 - Arthas：https://arthas.aliyun.com/

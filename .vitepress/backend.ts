@@ -55,7 +55,22 @@ export const Java = [
               { text: "常见问题与最佳实践", link: "/docs/Backend/Java/JavaSE/Collection/FAQ/index.md" },
             ],
           },
-          { text: "IO 流", link: "/docs/Backend/Java/JavaSE/IO/index.md" },
+          {
+            text: "IO / NIO",
+            link: "/docs/Backend/Java/JavaSE/IO/index.md",
+            collapsed: true,
+            items: [
+              { text: "文件 IO：File 与 Path/Files", link: "/docs/Backend/Java/JavaSE/IO/FileIO/index.md" },
+              { text: "字节流：InputStream 与 OutputStream", link: "/docs/Backend/Java/JavaSE/IO/ByteStream/index.md" },
+              { text: "字符流：Reader 与 Writer", link: "/docs/Backend/Java/JavaSE/IO/CharacterStream/index.md" },
+              { text: "NIO 核心概念", link: "/docs/Backend/Java/JavaSE/IO/NIO/index.md" },
+              { text: "Channel 与 Buffer 详解", link: "/docs/Backend/Java/JavaSE/IO/ChannelBuffer/index.md" },
+              { text: "Selector 与多路复用", link: "/docs/Backend/Java/JavaSE/IO/Selector/index.md" },
+              { text: "网络 IO 模型：BIO/NIO/AIO", link: "/docs/Backend/Java/JavaSE/IO/NetworkIO/index.md" },
+              { text: "实战：NIO 文件传输服务器", link: "/docs/Backend/Java/JavaSE/IO/Practice/index.md" },
+              { text: "常见问题与最佳实践", link: "/docs/Backend/Java/JavaSE/IO/FAQ/index.md" },
+            ],
+          },
           {
             text: "Java 并发",
             link: "/docs/Backend/Java/JavaSE/Multithreading/index.md",

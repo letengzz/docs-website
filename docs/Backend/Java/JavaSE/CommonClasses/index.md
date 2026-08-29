@@ -90,11 +90,6 @@ public class StringDemo {
 }
 ```
 
-## 相关专题
-
-- [集合框架](../Collection/index.md)
-- [IO 流](../IO/index.md)
-
 ### StringBuilder 与 StringBuffer
 
 ```java
@@ -523,3 +518,10 @@ public class RegexDemo {
     }
 }
 ```
+
+## 相关专题
+
+- [集合框架](../Collection/index.md)
+- [IO / NIO](../IO/index.md)：`Scanner`、`Properties`、`Console` 等类与 IO 的配合使用
+- [Java 并发](../Multithreading/index.md)
+- [JVM 基础](../JVM/index.md)

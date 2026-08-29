@@ -161,6 +161,7 @@ ch.pipeline()
 
 ## 参考资料
 
+- Java IO/NIO 专题：[网络 IO 模型：BIO/NIO/AIO](../../Java/JavaSE/IO/NetworkIO/index.md)、[Selector 与多路复用](../../Java/JavaSE/IO/Selector/index.md)
 - Netty 官方文档：https://netty.io/wiki/
 - Netty 源码解析：https://netty.io/wiki/related-articles.html
 - Netty 实战（Norman Maurer，书籍）
