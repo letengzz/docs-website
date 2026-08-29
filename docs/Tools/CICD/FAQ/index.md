@@ -106,6 +106,11 @@
 3. 做一次“部署失败”演练：确认自动回滚与通知全流程。
 4. 用耗时报告优化一个最慢阶段，量化前后耗时对比。
 
+## 相关专题
+
+- [监控告警专题](../../../Ops/Monitoring/index.md)：部署后观察窗口的指标监控与告警
+- [自动部署与回滚](../DeployRollback/index.md)：健康检查与指标驱动的回滚策略
+
 ## 参考资料
 
 - GitHub Actions 故障排查：https://docs.github.com/zh/actions/monitoring-and-troubleshooting-workflows

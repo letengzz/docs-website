@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="360" viewBox="0 0 840 360" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="360" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">可观测性三大支柱</text>
+  <!-- Metrics -->
+  <g>
+    <rect x="40" y="80" width="230" height="200" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="155" y="112" text-anchor="middle" font-size="15" font-weight="bold" fill="#4338ca">指标 Metrics</text>
+    <text x="155" y="140" text-anchor="middle" font-size="12" fill="#4b5563">CPU、内存、QPS、RT</text>
+    <text x="155" y="162" text-anchor="middle" font-size="12" fill="#4b5563">Prometheus + node_exporter</text>
+    <text x="155" y="184" text-anchor="middle" font-size="12" fill="#4b5563">回答：系统现在健康吗</text>
+    <text x="155" y="240" text-anchor="middle" font-size="11" fill="#6b7280">数值型 · 定时采集 · 告警</text>
+  </g>
+  <!-- Logs -->
+  <g>
+    <rect x="305" y="80" width="230" height="200" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="420" y="112" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">日志 Logs</text>
+    <text x="420" y="140" text-anchor="middle" font-size="12" fill="#4b5563">错误堆栈、业务流水</text>
+    <text x="420" y="162" text-anchor="middle" font-size="12" fill="#4b5563">Loki / ELK + Fluent Bit</text>
+    <text x="420" y="184" text-anchor="middle" font-size="12" fill="#4b5563">回答：出问题时发生了什么</text>
+    <text x="420" y="240" text-anchor="middle" font-size="11" fill="#6b7280">文本型 · 全文检索 · 关联 traceId</text>
+  </g>
+  <!-- Traces -->
+  <g>
+    <rect x="570" y="80" width="230" height="200" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="685" y="112" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">链路 Traces</text>
+    <text x="685" y="140" text-anchor="middle" font-size="12" fill="#4b5563">请求跨服务调用链</text>
+    <text x="685" y="162" text-anchor="middle" font-size="12" fill="#4b5563">SkyWalking / Zipkin</text>
+    <text x="685" y="184" text-anchor="middle" font-size="12" fill="#4b5563">回答：慢在哪一个环节</text>
+    <text x="685" y="240" text-anchor="middle" font-size="11" fill="#6b7280">traceId + span · 拓扑</text>
+  </g>
+  <rect x="120" y="300" width="600" height="44" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="420" y="320" text-anchor="middle" font-size="13" fill="#475569">Grafana 统一可视化：指标面板 + 日志检索 + 链路视图，一键跳转关联</text>
+  <text x="420" y="338" text-anchor="middle" font-size="12" fill="#6b7280">黄金指标：USE（利用率/饱和度/错误）+ RED（速率/错误/耗时）</text>
+</svg>

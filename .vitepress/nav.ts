@@ -31,6 +31,7 @@ export const nav = [
       { text: "Nginx", link: "/docs/Ops/Nginx" },
       { text: "Docker", link: "/docs/Ops/Docker" },
       { text: "Kubernetes", link: "/docs/Ops/Kubernetes" },
+      { text: "监控告警", link: "/docs/Ops/Monitoring" },
       { text: "JumpServer", link: "/docs/Ops/JumpServer" },
       { text: "其他", link: "/docs/Ops/Others" },
     ]

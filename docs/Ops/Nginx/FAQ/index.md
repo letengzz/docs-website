@@ -93,4 +93,5 @@ add_header X-Frame-Options "SAMEORIGIN" always;
 
 ## 相关专题
 
-- [Kubernetes 集群](../Kubernetes/index.md)
+- [Kubernetes 集群](../../Kubernetes/index.md)
+- [监控告警专题](../../Monitoring/index.md)：Nginx 连接数与错误率的 Prometheus 采集与告警

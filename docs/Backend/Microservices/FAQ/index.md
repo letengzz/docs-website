@@ -116,6 +116,7 @@
 
 - [CI/CD 专题](../../../Tools/CICD/index.md)：微服务的构建、测试、部署与回滚自动化
 - [自动部署与回滚](../../../Tools/CICD/DeployRollback/index.md)：多服务场景下的滚动/蓝绿/金丝雀发布
+- [监控告警专题](../../../Ops/Monitoring/index.md)：微服务 RED/USE 指标、告警与日志监控
 
 ## 参考资料
 

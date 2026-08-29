@@ -3,7 +3,7 @@ import { DotNet, Go, Java, MessageQueue, Microservices, Python } from "./backend
 
 import { AI_Agent, AI_OpenClaw, AI_PromptEngineering } from "./AI";
 import { FrontBasic, FrontFrame, FrontOthers } from "./frontend";
-import { Docker, JumpServer, Kubernetes, Linux, Nginx, OpsOthers, VM } from "./ops";
+import { Docker, JumpServer, Kubernetes, Linux, Monitoring, Nginx, OpsOthers, VM } from "./ops";
 import { DBOverview, NoRelational, Relational } from "./db";
 import { Build, CICD, IDE, Others, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
@@ -37,7 +37,7 @@ export const sidebar = {
     {
       text: "运维",
       collapsed: true,
-      items: [...VM, ...Linux, ...Nginx, ...Docker, ...Kubernetes, ...JumpServer, ...OpsOthers],
+      items: [...VM, ...Linux, ...Nginx, ...Docker, ...Kubernetes, ...Monitoring, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
@@ -87,6 +87,7 @@ export const sidebar = {
   "/docs/Ops/Nginx": Nginx,
   "/docs/Ops/Docker": Docker,
   "/docs/Ops/Kubernetes": Kubernetes,
+  "/docs/Ops/Monitoring": Monitoring,
   "/docs/Ops/JumpServer": JumpServer,
   "/docs/Ops/Others": OpsOthers,
   "/docs/AI/OpenClaw": AI_OpenClaw,

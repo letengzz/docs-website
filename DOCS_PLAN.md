@@ -52,7 +52,7 @@
 | 22 | Backend | 消息队列 ✅ | 概念与选型、Kafka、RabbitMQ、可靠投递、消费幂等、集群部署、对比总结、常见问题 |
 | 23 | Backend | 微服务 ✅ | 服务拆分、注册中心、配置中心、网关、负载均衡、熔断限流、链路追踪、分布式事务、实战、常见问题 |
 | 24 | Tools | CI/CD ✅ | CI/CD 概念、GitHub Actions、GitLab CI、Jenkins、流水线设计、自动化测试与质量门禁、制品管理、自动部署与回滚、常见问题 |
-| 25 | Ops | 监控告警 | 监控体系、Prometheus、指标采集、Grafana、告警规则、日志监控、常见问题 |
+| 25 | Ops | 监控告警 ✅ | 监控体系与可观测性、Prometheus、指标采集、Grafana、告警规则、日志监控、实战、常见问题 |
 | 26 | Frontend | 前端工程化 | 工程化概览、代码规范、Git 规范、单元测试、构建优化、CI 集成、脚手架、常见问题 |
 | 27 | DB | SQL 优化 | 执行计划、索引原理、慢查询、分页优化、JOIN 优化、锁与事务、优化案例、常见问题 |
 | 28 | Backend | 设计模式 | 设计原则、创建型、结构型、行为型、框架中的应用、实战案例、常见问题 |
@@ -161,6 +161,7 @@
 - [x] Backend 存量补全：消息队列专题已建设（9 篇，第 22 天）并补充 Spring Boot/Python/Redis/Java 并发/Spring Cloud/Docker/K8s 交叉链接；Spring Cloud 空占位页已补正文
 - [x] Backend 存量补全：微服务专题已建设（11 篇，第 23 天）并补充 Spring Cloud/Spring Boot/消息队列/Nginx/MySQL 等交叉链接
 - [x] Tools 存量补全：CI/CD 专题已建设（10 篇，第 24 天）并补充 Docker/Git/微服务/Spring Boot/Kubernetes 等交叉链接
+- [x] Ops 存量补全：监控告警专题已建设（9 篇，第 25 天）并补充 Kubernetes/Docker/微服务/CI/CD 等交叉链接
 
 ## 节奏建议
 

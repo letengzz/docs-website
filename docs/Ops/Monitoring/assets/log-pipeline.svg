@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="300" viewBox="0 0 840 300" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="300" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">日志流水线（Loki 方案）</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="25" y="100" width="140" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="95" y="130" fill="#4338ca" font-weight="bold">应用日志</text>
+    <text x="95" y="152" fill="#4b5563" font-size="11">stdout / 日志文件</text>
+    <text x="95" y="172" fill="#6b7280" font-size="10">结构化 JSON + traceId</text>
+    <rect x="205" y="100" width="150" height="90" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="280" y="130" fill="#b45309" font-weight="bold">采集 Agent</text>
+    <text x="280" y="152" fill="#4b5563" font-size="11">Fluent Bit / Promtail</text>
+    <text x="280" y="172" fill="#6b7280" font-size="10">打标签（pod、服务）</text>
+    <rect x="395" y="100" width="150" height="90" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+    <text x="470" y="130" fill="#c2410c" font-weight="bold">Loki</text>
+    <text x="470" y="152" fill="#4b5563" font-size="11">索引标签 + 压缩存储</text>
+    <text x="470" y="172" fill="#6b7280" font-size="10">LogQL 检索</text>
+    <rect x="585" y="100" width="230" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="700" y="130" fill="#047857" font-weight="bold">Grafana / 告警</text>
+    <text x="700" y="152" fill="#4b5563" font-size="11">日志面板 + 检索</text>
+    <text x="700" y="172" fill="#6b7280" font-size="10">错误日志触发告警</text>
+  </g>
+  <path d="M 170 145 H 198" stroke="#6366f1" stroke-width="2.5" marker-end="url(#l1)"/>
+  <path d="M 360 145 H 388" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#l1)"/>
+  <path d="M 550 145 H 578" stroke="#f97316" stroke-width="2.5" marker-end="url(#l1)"/>
+  <text x="420" y="235" text-anchor="middle" font-size="13" fill="#475569">对比 ELK：Loki 不建全文索引，只索引标签，存储成本低、查询快，与 Grafana 原生集成</text>
+  <text x="420" y="260" text-anchor="middle" font-size="12" fill="#6b7280">日志中带 traceId，可一键从日志跳转到链路追踪视图</text>
+  <defs>
+    <marker id="l1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

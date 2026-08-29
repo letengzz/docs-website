@@ -72,6 +72,22 @@ export const Linux = [
     ],
   },
 ];
+export const Monitoring = [
+  {
+    text: "监控告警",
+    link: "/docs/Ops/Monitoring/index.md",
+    items: [
+      { text: "监控体系与可观测性", link: "/docs/Ops/Monitoring/Overview/index.md" },
+      { text: "Prometheus 入门", link: "/docs/Ops/Monitoring/Prometheus/index.md" },
+      { text: "指标采集", link: "/docs/Ops/Monitoring/MetricsCollect/index.md" },
+      { text: "Grafana 可视化", link: "/docs/Ops/Monitoring/Grafana/index.md" },
+      { text: "告警规则与 Alertmanager", link: "/docs/Ops/Monitoring/Alerting/index.md" },
+      { text: "日志监控", link: "/docs/Ops/Monitoring/LogMonitoring/index.md" },
+      { text: "实战：监控微服务与容器环境", link: "/docs/Ops/Monitoring/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/Monitoring/FAQ/index.md" },
+    ],
+  },
+];
 export const Nginx = [
   {
     text: "Nginx",

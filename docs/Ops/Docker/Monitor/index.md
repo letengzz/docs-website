@@ -208,6 +208,11 @@ groups:
 4. Grafana 中能看到容器 CPU 使用率随时间变化的曲线。
 5. 人为停止一个容器，`docker events --filter event=die` 能实时收到事件。
 
+## 相关专题
+
+- [监控告警专题](../../Monitoring/index.md)：指标采集、告警规则与日志监控的完整体系
+- [监控告警实战](../../Monitoring/Practice/index.md)：用 Compose 一键搭建监控栈
+
 ## 参考资料
 
 - Docker 运行指标：https://docs.docker.com/engine/daemon/prometheus/

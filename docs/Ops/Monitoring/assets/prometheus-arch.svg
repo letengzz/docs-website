@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="380" viewBox="0 0 840 380" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="380" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Prometheus 架构</text>
+  <!-- Targets -->
+  <g>
+    <rect x="30" y="80" width="190" height="120" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="125" y="108" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">指标目标</text>
+    <text x="125" y="132" text-anchor="middle" font-size="11" fill="#4b5563">node_exporter（主机）</text>
+    <text x="125" y="152" text-anchor="middle" font-size="11" fill="#4b5563">cAdvisor（容器）</text>
+    <text x="125" y="172" text-anchor="middle" font-size="11" fill="#4b5563">Actuator（应用）</text>
+    <text x="125" y="192" text-anchor="middle" font-size="11" fill="#4b5563">/metrics 端口暴露</text>
+  </g>
+  <!-- Pushgateway -->
+  <rect x="30" y="230" width="190" height="55" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="125" y="253" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">Pushgateway</text>
+  <text x="125" y="273" text-anchor="middle" font-size="10" fill="#6b7280">短时任务/批处理推送</text>
+  <!-- Prometheus -->
+  <g>
+    <rect x="300" y="110" width="240" height="180" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="2.5"/>
+    <text x="420" y="140" text-anchor="middle" font-size="16" font-weight="bold" fill="#c2410c">Prometheus</text>
+    <rect x="320" y="155" width="200" height="36" rx="7" fill="#ffffff" stroke="#fdba74"/>
+    <text x="420" y="178" text-anchor="middle" font-size="12" fill="#374151">拉取（Pull）/metrics</text>
+    <rect x="320" y="199" width="200" height="36" rx="7" fill="#ffffff" stroke="#fdba74"/>
+    <text x="420" y="222" text-anchor="middle" font-size="12" fill="#374151">TSDB 存储 + PromQL</text>
+    <rect x="320" y="243" width="200" height="36" rx="7" fill="#ffffff" stroke="#fdba74"/>
+    <text x="420" y="266" text-anchor="middle" font-size="12" fill="#374151">告警规则评估</text>
+  </g>
+  <!-- Alertmanager -->
+  <g>
+    <rect x="620" y="90" width="190" height="80" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+    <text x="715" y="118" text-anchor="middle" font-size="14" font-weight="bold" fill="#b91c1c">Alertmanager</text>
+    <text x="715" y="142" text-anchor="middle" font-size="11" fill="#4b5563">去重 · 分组 · 路由</text>
+    <text x="715" y="160" text-anchor="middle" font-size="11" fill="#4b5563">通知：邮件/钉钉/企微</text>
+  </g>
+  <!-- Grafana -->
+  <g>
+    <rect x="620" y="200" width="190" height="80" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="715" y="228" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">Grafana</text>
+    <text x="715" y="252" text-anchor="middle" font-size="11" fill="#4b5563">仪表盘可视化</text>
+    <text x="715" y="270" text-anchor="middle" font-size="11" fill="#4b5563">PromQL 查询面板</text>
+  </g>
+  <path d="M 225 140 H 293" stroke="#6366f1" stroke-width="2.5" marker-end="url(#p1)"/>
+  <path d="M 225 258 H 293" stroke="#ef4444" stroke-width="2.5" marker-end="url(#p1)"/>
+  <path d="M 545 150 H 613" stroke="#f97316" stroke-width="2.5" marker-end="url(#p1)"/>
+  <path d="M 545 220 H 613" stroke="#10b981" stroke-width="2.5" marker-end="url(#p1)"/>
+  <text x="420" y="340" text-anchor="middle" font-size="13" fill="#475569">Pull 模型：Prometheus 主动抓取；默认每 15s 一次；配置变更 reload 即可生效</text>
+  <defs>
+    <marker id="p1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

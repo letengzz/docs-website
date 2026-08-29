@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="300" viewBox="0 0 840 300" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="300" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">告警处理流程</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="25" y="100" width="140" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="95" y="130" fill="#4338ca" font-weight="bold">告警规则</text>
+    <text x="95" y="152" fill="#4b5563" font-size="11">PromQL 阈值</text>
+    <text x="95" y="172" fill="#6b7280" font-size="10">持续 N 分钟才触发</text>
+    <rect x="205" y="100" width="150" height="90" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+    <text x="280" y="130" fill="#c2410c" font-weight="bold">Alertmanager</text>
+    <text x="280" y="152" fill="#4b5563" font-size="11">去重 / 分组 / 抑制</text>
+    <text x="280" y="172" fill="#6b7280" font-size="10">路由到不同接收人</text>
+    <rect x="395" y="100" width="150" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="470" y="130" fill="#047857" font-weight="bold">通知渠道</text>
+    <text x="470" y="152" fill="#4b5563" font-size="11">邮件 / 钉钉 / 企微</text>
+    <text x="470" y="172" fill="#6b7280" font-size="10">按严重级别路由</text>
+    <rect x="585" y="100" width="230" height="90" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+    <text x="700" y="130" fill="#b91c1c" font-weight="bold">值班处理</text>
+    <text x="700" y="152" fill="#4b5563" font-size="11">确认 / 排查 / 修复</text>
+    <text x="700" y="172" fill="#6b7280" font-size="10">静默（Silence）临时屏蔽</text>
+  </g>
+  <path d="M 170 145 H 198" stroke="#6366f1" stroke-width="2.5" marker-end="url(#a1)"/>
+  <path d="M 360 145 H 388" stroke="#f97316" stroke-width="2.5" marker-end="url(#a1)"/>
+  <path d="M 550 145 H 578" stroke="#10b981" stroke-width="2.5" marker-end="url(#a1)"/>
+  <text x="420" y="235" text-anchor="middle" font-size="13" fill="#475569">关键：告警要「少而准」——每条告警都能告诉值班者“哪个服务、什么指标、持续多久、链接去哪看”</text>
+  <defs>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

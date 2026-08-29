@@ -163,6 +163,11 @@ services:
 3. 用日志中的 traceId 反查，确认跨服务日志可按 traceId 聚合。
 4. 修改采样率为 10%，确认上报量下降且链路仍可抽样。
 
+## 相关专题
+
+- [监控告警专题](../../../Ops/Monitoring/index.md)：指标、日志、链路三大支柱的完整可观测性体系
+- [日志监控](../../../Ops/Monitoring/LogMonitoring/index.md)：日志与链路通过 traceId 关联的实践
+
 ## 参考资料
 
 - Micrometer Tracing 文档：https://micrometer.io/docs/tracing

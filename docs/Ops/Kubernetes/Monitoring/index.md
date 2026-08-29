@@ -77,6 +77,11 @@ helm install kube-prometheus prometheus-community/kube-prometheus-stack
 2. 部署一个故障应用，按「诊断流程」四步走一遍。
 3. 安装 Metrics Server 后执行 `kubectl top nodes` 确认输出。
 
+## 相关专题
+
+- [监控告警专题](../../Monitoring/index.md)：Prometheus、Grafana、Alertmanager 与 Loki 的完整体系
+- [监控告警实战](../../Monitoring/Practice/index.md)：用 Docker Compose 搭建监控栈的完整示例
+
 ## 参考资料
 
 - kubectl 速查表：https://kubernetes.io/zh-cn/docs/reference/kubectl/cheatsheet/
