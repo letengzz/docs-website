@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="340" viewBox="0 0 840 340" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="340" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">技术面试知识地图</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="80" width="180" height="110" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="120" y="110" fill="#4338ca" font-weight="bold">Java 基础</text>
+    <text x="120" y="134" fill="#4b5563" font-size="11">集合/并发/JVM</text>
+    <text x="120" y="154" fill="#6b7280" font-size="10">GC/类加载/线程池</text>
+    <rect x="230" y="80" width="180" height="110" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="320" y="110" fill="#047857" font-weight="bold">框架</text>
+    <text x="320" y="134" fill="#4b5563" font-size="11">Spring/Spring Boot</text>
+    <text x="320" y="154" fill="#6b7280" font-size="10">AOP/事务/自动配置</text>
+    <rect x="430" y="80" width="180" height="110" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="520" y="110" fill="#b45309" font-weight="bold">数据库</text>
+    <text x="520" y="134" fill="#4b5563" font-size="11">索引/事务/锁</text>
+    <text x="520" y="154" fill="#6b7280" font-size="10">SQL 优化/隔离级别</text>
+    <rect x="630" y="80" width="180" height="110" rx="10" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+    <text x="720" y="110" fill="#be185d" font-weight="bold">分布式</text>
+    <text x="720" y="134" fill="#4b5563" font-size="11">MQ/微服务/缓存</text>
+    <text x="720" y="154" fill="#6b7280" font-size="10">分布式事务/幂等</text>
+  </g>
+  <g font-size="13" text-anchor="middle">
+    <rect x="130" y="215" width="180" height="100" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="220" y="245" fill="#6d28d9" font-weight="bold">网络与系统</text>
+    <text x="220" y="269" fill="#4b5563" font-size="11">TCP/HTTP/IO 模型</text>
+    <text x="220" y="289" fill="#6b7280" font-size="10">Netty/粘包拆包</text>
+    <rect x="330" y="215" width="180" height="100" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="420" y="245" fill="#047857" font-weight="bold">设计能力</text>
+    <text x="420" y="269" fill="#4b5563" font-size="11">设计模式/原则</text>
+    <text x="420" y="289" fill="#6b7280" font-size="10">系统设计思路</text>
+    <rect x="530" y="215" width="180" height="100" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="620" y="245" fill="#b45309" font-weight="bold">项目深挖</text>
+    <text x="620" y="269" fill="#4b5563" font-size="11">难点/方案/复盘</text>
+    <text x="620" y="289" fill="#6b7280" font-size="10">STAR 法则表达</text>
+  </g>
+</svg>

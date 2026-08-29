@@ -8,7 +8,7 @@ SpringBoot的Web开发能力，由[**SpringMVC**](../../../SpringMVC/v6/index.md
 - [静态资源访问](StaticResource.md)
 - [路径匹配](Path.md)
 - [内容协商](ContentNego.md)
-- [Restful 请求](../../../../Others/RestFul/index.md)
+- [REST API](../../Common/RestAPI/index.md)
 - [视图解析与模板引擎](ViewParse.md)
 - [国际化](i18n.md)
 - [文件上传](FileUpload.md)

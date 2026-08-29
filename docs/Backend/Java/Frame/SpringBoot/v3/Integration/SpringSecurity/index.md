@@ -1,7 +1,7 @@
 ```text
 # SpringBoot 整合 SpringSecurity
 
-- [SpringSecurity 操作](../../../SpringSecurity/README.md)
+- [Spring Security 专题](../../../../SpringSecurity/index.md)
 - 
 
  安全架构 

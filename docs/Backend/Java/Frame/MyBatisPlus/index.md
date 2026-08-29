@@ -12,4 +12,4 @@ Mybatis-Plus(简称MP)是一个 Mybatis 的增强工具，在 Mybatis 的基础�
 
 - [官方教程](https://baomidou.com/)
 - [常用方法解析](Methods/index.md)
-- [MybatisX (IDEA插件)](../../../../Tools/IDE/IDEA/Plugins/CodeAssist/MybatisX/index.md)
+- [IDE 工具](../../../../Tools/IDE/index.md)

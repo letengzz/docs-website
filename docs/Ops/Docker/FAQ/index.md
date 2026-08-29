@@ -178,4 +178,4 @@ docker pull hello-world
 
 ## 相关专题
 
-- [Kubernetes 集群](../Kubernetes/index.md)
+- [Kubernetes 集群](../../Kubernetes/index.md)

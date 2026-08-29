@@ -21,4 +21,4 @@
 
 **拓展**：
 
-- [微信开发工具](../../../Tools/IDE/WxTools/index.md)
+- [IDE 工具](../../../Tools/IDE/index.md)

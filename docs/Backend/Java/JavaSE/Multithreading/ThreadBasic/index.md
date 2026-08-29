@@ -184,7 +184,7 @@ public class InterruptDemo {
 
 ## 相关专题
 
-- [JVM 基础](../JVM/index.md)
+- [JVM 基础](../../JVM/index.md)
 
 ## 参考资料
 

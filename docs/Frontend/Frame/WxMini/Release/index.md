@@ -4,7 +4,7 @@
 
 小程序上线的流程：
 
-<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%8A%E7%BA%BF%E6%B5%81%E7%A8%8B.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/小程序上线流程.png" style="zoom:80%; border: 1px solid #ccc" />
 
 - **开发版本**：点击开发者工具上传后的版本，开发版本只保留每人最新的一份上传的代码，是供开发者和团队测试和调试的版本。
 
@@ -17,9 +17,9 @@
 
 小程序开发成员在开发者工具中点击 **`上传`** 按钮，在弹出的界面中选择更新类型、版本号、项目备注，就能够将小程序代码上传至微信公众号后台审核：
 
-![](./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%8A%E7%BA%BF.jpg)
+![](./assets/小程序上线.jpg)
 
 在登录到微信公众后台以后，点击左侧的 "管理-版本管理"，就能查看小程序的四个版本：
 
-<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%8A%E7%BA%BF%E6%AD%A5%E9%AA%A4.jpg" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/小程序上线步骤.jpg" style="zoom:80%; border: 1px solid #ccc" />
 

@@ -61,9 +61,7 @@
 **拓展**：
 
 - [SpringBoot3改变 & 新特性](Diff.md)
-- [LomBok](../../../Others/UseTools/Lombok.md)
-- [Dev-tools](../../../Others/UseTools/DevTools.md)
-- [Thymeleaf 视图模板](../../../Others/TemplateEngine/Thymeleaf/index.md)
+- [Thymeleaf 视图模板](Integration/Thymeleaf/index.md)
 - [SpringBoot 邮件发送](Email.md)
 - [SpringBoot Docker编排支持](DockerComposeSupport.md)
 - [SpringBoot 重试](Retry.md)

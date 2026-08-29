@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="300" viewBox="0 0 840 300" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="300" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">复盘循环：KPT 方法</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="90" width="220" height="130" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="150" y="120" fill="#047857" font-weight="bold">Keep 保持</text>
+    <text x="150" y="146" fill="#4b5563" font-size="11">做得好，继续做</text>
+    <text x="150" y="168" fill="#6b7280" font-size="10">沉淀为规范/习惯</text>
+    <text x="150" y="196" fill="#6b7280" font-size="10">示例：文档同步更新</text>
+    <rect x="310" y="90" width="220" height="130" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="420" y="120" fill="#b45309" font-weight="bold">Problem 问题</text>
+    <text x="420" y="146" fill="#4b5563" font-size="11">做得不好，要改进</text>
+    <text x="420" y="168" fill="#6b7280" font-size="10">分析根因，定对策</text>
+    <text x="420" y="196" fill="#6b7280" font-size="10">示例：构建太慢</text>
+    <rect x="580" y="90" width="220" height="130" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="690" y="120" fill="#4338ca" font-weight="bold">Try 尝试</text>
+    <text x="690" y="146" fill="#4b5563" font-size="11">下一阶段要试的新做法</text>
+    <text x="690" y="168" fill="#6b7280" font-size="10">小步验证，可回退</text>
+    <text x="690" y="196" fill="#6b7280" font-size="10">示例：引入缓存</text>
+  </g>
+  <path d="M 265 155 H 303" stroke="#10b981" stroke-width="2.5" marker-end="url(#v1)"/>
+  <path d="M 535 155 H 573" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#v1)"/>
+  <text x="420" y="255" text-anchor="middle" font-size="13" fill="#475569">PDCA 循环：Plan（计划）→ Do（执行）→ Check（检查）→ Act（改进），每轮迭代都向目标收敛</text>
+  <defs>
+    <marker id="v1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

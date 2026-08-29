@@ -46,5 +46,5 @@
 
 **拓展**：
 
-- [组件及其概念](../../../Others/Component/index.md)
+- [Spring 版本目录](../index.md)
 - [SpEL 表达式语言](SpEL.md)

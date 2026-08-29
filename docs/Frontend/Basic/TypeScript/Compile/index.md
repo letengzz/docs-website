@@ -16,7 +16,7 @@
    console.log(`我叫${person.name}，我今年${person.age}岁了`)
    ```
 
-2. 使用[npm](../NodeJs/PackageManagementTool/npm/index.md)全局安装TypeScript：
+2. 使用[npm](../../NodeJs/PackageManagementTool/npm/index.md)全局安装TypeScript：
 
    ```shell [terminal]
    npm i -g typescript

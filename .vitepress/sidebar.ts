@@ -8,6 +8,21 @@ import { DBOverview, NoRelational, Relational, SQLOptimization } from "./db";
 import { Build, CICD, IDE, Others, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
+const OthersReview = [
+  {
+    text: "复盘杂项",
+    link: "/docs/Others/Review/index.md",
+    items: [
+      { text: "30 天阶段复盘", link: "/docs/Others/Review/Overview/index.md" },
+      { text: "知识体系整理", link: "/docs/Others/Review/KnowledgeMap/index.md" },
+      { text: "面试题集", link: "/docs/Others/Review/Interview/index.md" },
+      { text: "效率工具安利", link: "/docs/Others/Review/EfficiencyTools/index.md" },
+      { text: "学习方法与规划", link: "/docs/Others/Review/LearningMethod/index.md" },
+      { text: "项目复盘模板", link: "/docs/Others/Review/ProjectRetro/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Others/Review/FAQ/index.md" },
+    ],
+  },
+];
 
 export const sidebar = {
 
@@ -65,9 +80,14 @@ export const sidebar = {
     {
       text: "其他",
       collapsed: true,
-      items: [{ text: "其他", link: "/docs/Others/index.md" }],
+      items: [
+        { text: "其他", link: "/docs/Others/index.md" },
+        { text: "开源软件许可证", link: "/docs/Others/OpenSourceLicense/index.md" },
+        ...OthersReview,
+      ],
     },
   ],
+  "/docs/Others/Review": OthersReview,
 
   // 主题级侧边栏：进入具体主题时才展示该主题的侧边栏（子内容默认折叠）
   "/docs/Frontend/Basic": FrontBasic,

@@ -1,6 +1,6 @@
 # Spring Security 构建入门程序
 
-- 基于 [测试环境搭建](../../../../../Others/NetworkSecurity/index.md#测试环境搭建) 项目搭建！
+- 基于 [Spring Security 专题](../../../index.md) 项目搭建！
 
 首先导入SpringSecurity的相关依赖 (它不仅仅是一个模块，可以根据需求导入需要的模块)，常用的是以下两个(版本同 `spring-webmvc`版本)：
 

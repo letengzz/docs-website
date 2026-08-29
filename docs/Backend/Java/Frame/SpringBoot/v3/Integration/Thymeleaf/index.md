@@ -93,7 +93,7 @@
 
 ## Thymeleaf核心语法
 
-[Thymeleaf 详解](../../../../../Others/TemplateEngine/Thymeleaf/index.md)
+[Spring Boot v3 集成总览](../../../index.md)
 
 ## 直接映射
 

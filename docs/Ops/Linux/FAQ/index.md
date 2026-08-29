@@ -117,4 +117,4 @@ dmesg -T | tail      # 内核日志
 
 ## 相关专题
 
-- [Kubernetes 集群](../Kubernetes/index.md)
+- [Kubernetes 集群](../../Kubernetes/index.md)

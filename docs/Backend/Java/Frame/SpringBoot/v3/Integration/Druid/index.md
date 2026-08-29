@@ -2,7 +2,7 @@
 
 Druid连接池是阿⾥巴巴开源的数据库连接池项目。Druid连接池为监控而生，内置强大的监控功能，监控特性不影响性能。功能强大，能防SQL注入，内置Loging能诊断Hack应用行为。
 
-- [Druid](../../../../../Others/Pools/DbConnectionPool/Druid/index.md)
+- [Spring Boot 数据访问](../../../Common/DataAccess/index.md)
 - Druid官方：https://github.com/alibaba/druid
 
 创建程序并引入依赖：

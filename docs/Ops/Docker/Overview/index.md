@@ -147,4 +147,4 @@ Docker 容器通过 Docker 镜像来创建。
 
 ## 相关专题
 
-- [Kubernetes 集群](../Kubernetes/index.md)
+- [Kubernetes 集群](../../Kubernetes/index.md)

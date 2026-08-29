@@ -2,7 +2,7 @@
 
 ## 前置要求
 
-需要安装 [Node.js](../../Basic/NodeJs/index.md)（建议 18.x 或更高版本）。
+需要安装 [Node.js](../../../Basic/NodeJs/index.md)（建议 18.x 或更高版本）。
 
 ## 创建项目
 
