@@ -15,6 +15,7 @@ export const nav = [
       { text: "消息队列", link: "/docs/Backend/MessageQueue" },
       { text: "微服务", link: "/docs/Backend/Microservices" },
       { text: "设计模式", link: "/docs/Backend/DesignPatterns" },
+      { text: "网络编程", link: "/docs/Backend/NetworkProgramming" },
       { text: "Python", link: "/docs/Backend/Python" },]
   },
   {

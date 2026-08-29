@@ -79,6 +79,8 @@ Future 只能阻塞 `get()`；CompletableFuture 支持链式编排（thenApply�
 
 - [消息队列专题](../../../../../Backend/MessageQueue/index.md)：线程池与 MQ 消费端并发模型、积压与幂等的配合
 - [Spring Boot 异步任务](../../../../../Backend/Java/Frame/SpringBoot/Common/FAQ/index.md)：`@Async` 线程池配置与消息驱动消费
+- [网络编程](../../../../NetworkProgramming/index.md)：Netty 线程模型与并发编程的结合
+- [Netty 入门](../../../../NetworkProgramming/Netty/index.md)：EventLoop 与线程安全边界
 
 ## 参考资料
 

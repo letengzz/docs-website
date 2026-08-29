@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="360" viewBox="0 0 840 360" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="360" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Netty 核心架构（Reactor 模型）</text>
+  <!-- Boss -->
+  <g>
+    <rect x="60" y="90" width="160" height="70" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="140" y="118" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">Boss EventLoop</text>
+    <text x="140" y="142" text-anchor="middle" font-size="11" fill="#4b5563">接受连接</text>
+  </g>
+  <!-- Worker -->
+  <g>
+    <rect x="340" y="60" width="160" height="55" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="420" y="83" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">Worker 1</text>
+    <text x="420" y="102" text-anchor="middle" font-size="10" fill="#6b7280">ChannelPipeline</text>
+    <rect x="520" y="60" width="160" height="55" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="600" y="83" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">Worker 2</text>
+    <text x="600" y="102" text-anchor="middle" font-size="10" fill="#6b7280">ChannelPipeline</text>
+    <rect x="700" y="60" width="110" height="55" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="755" y="83" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">Worker N</text>
+    <text x="755" y="102" text-anchor="middle" font-size="10" fill="#6b7280">ChannelPipeline</text>
+  </g>
+  <path d="M 225 125 H 333" stroke="#6366f1" stroke-width="2.5" marker-end="url(#n1)"/>
+  <!-- Pipeline 细节 -->
+  <rect x="120" y="160" width="600" height="130" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="420" y="186" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">ChannelPipeline（责任链）</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="150" y="205" width="110" height="42" rx="8" fill="#fffbeb" stroke="#f59e0b"/>
+    <text x="205" y="230" fill="#b45309">解码器 Decoder</text>
+    <rect x="285" y="205" width="110" height="42" rx="8" fill="#fce7f3" stroke="#ec4899"/>
+    <text x="340" y="230" fill="#be185d">业务 Handler</text>
+    <rect x="420" y="205" width="110" height="42" rx="8" fill="#fce7f3" stroke="#ec4899"/>
+    <text x="475" y="230" fill="#be185d">业务 Handler</text>
+    <rect x="555" y="205" width="110" height="42" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="610" y="230" fill="#047857">编码器 Encoder</text>
+  </g>
+  <path d="M 265 226 H 278" stroke="#94a3b8" stroke-width="2"/>
+  <path d="M 400 226 H 413" stroke="#94a3b8" stroke-width="2"/>
+  <path d="M 535 226 H 548" stroke="#94a3b8" stroke-width="2"/>
+  <text x="420" y="315" text-anchor="middle" font-size="13" fill="#475569">一个 Channel 绑定一个 EventLoop（线程），保证同一连接数据处理的线程安全</text>
+  <defs>
+    <marker id="n1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="360" viewBox="0 0 840 360" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="360" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">OSI 七层 vs TCP/IP 四层</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="70" width="330" height="250" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="205" y="95" font-weight="bold" fill="#334155">OSI 参考模型</text>
+    <rect x="60" y="110" width="290" height="26" rx="6" fill="#eef2ff" stroke="#6366f1"/>
+    <text x="205" y="128" fill="#4338ca">应用层（HTTP/DNS/SMTP）</text>
+    <rect x="60" y="141" width="290" height="26" rx="6" fill="#eef2ff" stroke="#6366f1"/>
+    <text x="205" y="159" fill="#4338ca">表示层（加密/编码）</text>
+    <rect x="60" y="172" width="290" height="26" rx="6" fill="#eef2ff" stroke="#6366f1"/>
+    <text x="205" y="190" fill="#4338ca">会话层（连接管理）</text>
+    <rect x="60" y="203" width="290" height="26" rx="6" fill="#fffbeb" stroke="#f59e0b"/>
+    <text x="205" y="221" fill="#b45309">传输层（TCP/UDP）</text>
+    <rect x="60" y="234" width="290" height="26" rx="6" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="205" y="252" fill="#047857">网络层（IP/路由）</text>
+    <rect x="60" y="265" width="290" height="26" rx="6" fill="#fce7f3" stroke="#ec4899"/>
+    <text x="205" y="283" fill="#be185d">数据链路层（以太网）</text>
+    <rect x="60" y="296" width="290" height="26" rx="6" fill="#f5f3ff" stroke="#8b5cf6"/>
+    <text x="205" y="314" fill="#6d28d9">物理层（网线/信号）</text>
+  </g>
+  <g font-size="13" text-anchor="middle">
+    <rect x="440" y="70" width="360" height="250" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="620" y="95" font-weight="bold" fill="#334155">TCP/IP 四层模型</text>
+    <rect x="460" y="110" width="320" height="72" rx="6" fill="#eef2ff" stroke="#6366f1"/>
+    <text x="620" y="140" fill="#4338ca">应用层（HTTP/HTTPS/DNS/WebSocket）</text>
+    <text x="620" y="166" fill="#4b5563" font-size="11">程序员主要接触这一层</text>
+    <rect x="460" y="192" width="320" height="42" rx="6" fill="#fffbeb" stroke="#f59e0b"/>
+    <text x="620" y="218" fill="#b45309">传输层（TCP / UDP）</text>
+    <rect x="460" y="244" width="320" height="42" rx="6" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="620" y="270" fill="#047857">网络层（IP / ICMP）</text>
+    <rect x="460" y="296" width="320" height="26" rx="6" fill="#fce7f3" stroke="#ec4899"/>
+    <text x="620" y="314" fill="#be185d">网络接口层</text>
+  </g>
+  <text x="420" y="345" text-anchor="middle" font-size="12" fill="#475569">数据封装：应用数据 → TCP 段 → IP 包 → 帧 → 比特；接收端逐层解封装</text>
+</svg>

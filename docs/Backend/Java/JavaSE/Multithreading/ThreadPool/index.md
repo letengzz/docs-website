@@ -182,6 +182,11 @@ executor.getCompletedTaskCount();    // 已完成任务数
 2. 把拒绝策略换成 AbortPolicy，重新运行，观察 `RejectedExecutionException`。
 3. 连续两次执行 `ExecutorDemo`，确认线程被复用（线程名重复出现）。
 
+## 相关专题
+
+- [网络编程](../../../../NetworkProgramming/index.md)：Netty 的 EventLoop 线程模型与线程池的对比
+- [Netty 入门](../../../../NetworkProgramming/Netty/index.md)：IO 线程与业务线程池的协作
+
 ## 参考资料
 
 - ThreadPoolExecutor 文档：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/ThreadPoolExecutor.html

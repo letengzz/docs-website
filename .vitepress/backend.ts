@@ -192,6 +192,22 @@ export const DesignPatterns = [
     ],
   },
 ];
+export const NetworkProgramming = [
+  {
+    text: "网络编程",
+    link: "/docs/Backend/NetworkProgramming/index.md",
+    items: [
+      { text: "网络分层与 TCP/IP 基础", link: "/docs/Backend/NetworkProgramming/Overview/index.md" },
+      { text: "TCP 与 UDP 详解", link: "/docs/Backend/NetworkProgramming/TCPUDP/index.md" },
+      { text: "HTTP 与 HTTPS 协议", link: "/docs/Backend/NetworkProgramming/HttpHttps/index.md" },
+      { text: "Socket 与 IO 模型", link: "/docs/Backend/NetworkProgramming/SocketIO/index.md" },
+      { text: "Netty 入门", link: "/docs/Backend/NetworkProgramming/Netty/index.md" },
+      { text: "粘包拆包与编解码", link: "/docs/Backend/NetworkProgramming/StickyHalf/index.md" },
+      { text: "实战：Netty 聊天服务器", link: "/docs/Backend/NetworkProgramming/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/NetworkProgramming/FAQ/index.md" },
+    ],
+  },
+];
 export const Go = [{ text: "Go", link: "/docs/Backend/Go/index.md" }];
 export const Python = [
   {

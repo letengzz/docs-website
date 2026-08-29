@@ -78,6 +78,11 @@ curl -v https://example.com
 2. 用 Lighthouse 看 TTFB、FCP、LCP 分解。
 3. `curl -w` 输出 DNS/TCP/TLS/请求各阶段耗时。
 
+## 相关专题
+
+- [网络编程专题](../../../../Backend/NetworkProgramming/index.md)：TCP 握手、HTTP/HTTPS 与 Socket
+- [TCP 与 UDP 详解](../../../../Backend/NetworkProgramming/TCPUDP/index.md)：导航请求底层的可靠传输
+
 ## 参考资料
 
 - 关键路径（Web Fundamentals）：https://web.dev/articles/critical-rendering-path

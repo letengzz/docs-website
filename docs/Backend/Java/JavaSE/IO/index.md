@@ -686,3 +686,5 @@ public class ChannelBufferDemo {
 
 - [Java 并发](../Multithreading/index.md)
 - [集合框架](../Collection/index.md)
+- [网络编程](../../../NetworkProgramming/index.md)：Socket、NIO 与 IO 模型的系统讲解
+- [Socket 与 IO 模型](../../../NetworkProgramming/SocketIO/index.md)：从 BIO 到 NIO 多路复用

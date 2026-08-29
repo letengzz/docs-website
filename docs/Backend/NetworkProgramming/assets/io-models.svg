@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="330" viewBox="0 0 840 330" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="330" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">BIO / NIO / 多路复用</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="25" y="80" width="250" height="200" rx="12" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+    <text x="150" y="110" fill="#b91c1c" font-weight="bold">BIO 阻塞 IO</text>
+    <text x="150" y="138" fill="#4b5563" font-size="11">一个线程处理一个连接</text>
+    <text x="150" y="160" fill="#4b5563" font-size="11">读写阻塞等待</text>
+    <text x="150" y="195" fill="#6b7280" font-size="10">连接多 → 线程爆炸</text>
+    <text x="150" y="215" fill="#6b7280" font-size="10">适合少量连接</text>
+    <text x="150" y="260" fill="#6b7280" font-size="10">模型简单、易出错少</text>
+    <rect x="295" y="80" width="250" height="200" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="420" y="110" fill="#b45309" font-weight="bold">NIO 非阻塞 IO</text>
+    <text x="420" y="138" fill="#4b5563" font-size="11">Channel + Buffer</text>
+    <text x="420" y="160" fill="#4b5563" font-size="11">读写不阻塞线程</text>
+    <text x="420" y="195" fill="#6b7280" font-size="10">单线程轮询就绪事件</text>
+    <text x="420" y="215" fill="#6b7280" font-size="10">Selector 多路复用</text>
+    <text x="420" y="260" fill="#6b7280" font-size="10">高并发、编码复杂</text>
+    <rect x="565" y="80" width="250" height="200" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="690" y="110" fill="#047857" font-weight="bold">Netty</text>
+    <text x="690" y="138" fill="#4b5563" font-size="11">封装 NIO 复杂度</text>
+    <text x="690" y="160" fill="#4b5563" font-size="11">EventLoop + Pipeline</text>
+    <text x="690" y="195" fill="#6b7280" font-size="10">RPC、IM、网关首选</text>
+    <text x="690" y="215" fill="#6b7280" font-size="10">背压、零拷贝</text>
+    <text x="690" y="260" fill="#6b7280" font-size="10">生产级成熟框架</text>
+  </g>
+  <text x="420" y="305" text-anchor="middle" font-size="12" fill="#475569">演进：BIO（1 线程 1 连接）→ NIO（多路复用）→ Netty（成熟的 Reactor 实现）</text>
+</svg>

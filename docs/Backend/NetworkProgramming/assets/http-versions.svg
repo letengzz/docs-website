@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="300" viewBox="0 0 840 300" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="300" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">HTTP 版本演进</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="25" y="80" width="250" height="170" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="150" y="110" fill="#4338ca" font-weight="bold">HTTP/1.1</text>
+    <text x="150" y="138" fill="#4b5563" font-size="11">文本协议，明文 Header</text>
+    <text x="150" y="160" fill="#4b5563" font-size="11">Keep-Alive 复用连接</text>
+    <text x="150" y="182" fill="#4b5563" font-size="11">队头阻塞</text>
+    <text x="150" y="220" fill="#6b7280" font-size="10">最广泛，兼容性最好</text>
+    <rect x="295" y="80" width="250" height="170" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="420" y="110" fill="#047857" font-weight="bold">HTTP/2</text>
+    <text x="420" y="138" fill="#4b5563" font-size="11">二进制分帧、多路复用</text>
+    <text x="420" y="160" fill="#4b5563" font-size="11">Header 压缩（HPACK）</text>
+    <text x="420" y="182" fill="#4b5563" font-size="11">服务端推送</text>
+    <text x="420" y="220" fill="#6b7280" font-size="10">TCP 层仍有队头阻塞</text>
+    <rect x="565" y="80" width="250" height="170" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="690" y="110" fill="#b45309" font-weight="bold">HTTP/3</text>
+    <text x="690" y="138" fill="#4b5563" font-size="11">基于 QUIC（UDP）</text>
+    <text x="690" y="160" fill="#4b5563" font-size="11">0-RTT、连接迁移</text>
+    <text x="690" y="182" fill="#4b5563" font-size="11">彻底解决队头阻塞</text>
+    <text x="690" y="220" fill="#6b7280" font-size="10">2026 主流浏览器已支持</text>
+  </g>
+  <text x="420" y="280" text-anchor="middle" font-size="12" fill="#475569">HTTPS = HTTP + TLS：加密传输、证书认证、防篡改；HTTP/2/3 强制 TLS</text>
+</svg>

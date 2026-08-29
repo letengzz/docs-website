@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="380" viewBox="0 0 840 380" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="380" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">TCP 三次握手与四次挥手</text>
+  <g font-size="13">
+    <rect x="60" y="70" width="180" height="50" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="150" y="98" text-anchor="middle" fill="#4338ca" font-weight="bold">客户端 Client</text>
+    <rect x="600" y="70" width="180" height="50" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="690" y="98" text-anchor="middle" fill="#047857" font-weight="bold">服务端 Server</text>
+    <text x="150" y="175" text-anchor="middle">① SYN=1, seq=x</text>
+    <text x="690" y="175" text-anchor="middle">② SYN=1, ACK=1, seq=y, ack=x+1</text>
+    <text x="150" y="250" text-anchor="middle">③ ACK=1, seq=x+1, ack=y+1</text>
+    <text x="420" y="130" text-anchor="middle" font-size="12" fill="#6b7280">三次握手：建立连接</text>
+    <text x="150" y="315" text-anchor="middle">FIN=1, seq=u</text>
+    <text x="690" y="315" text-anchor="middle">ACK=1, ack=u+1</text>
+    <text x="690" y="345" text-anchor="middle">FIN=1, seq=v</text>
+    <text x="150" y="345" text-anchor="middle">ACK=1, ack=v+1</text>
+    <text x="420" y="285" text-anchor="middle" font-size="12" fill="#6b7280">四次挥手：断开连接</text>
+  </g>
+  <path d="M 160 125 V 160" stroke="#6366f1" stroke-width="2" marker-end="url(#h1)"/>
+  <path d="M 680 160 V 125" stroke="#10b981" stroke-width="2" marker-end="url(#h1)"/>
+  <path d="M 160 235 V 200" stroke="#6366f1" stroke-width="2" marker-end="url(#h1)"/>
+  <path d="M 160 270 V 300" stroke="#6366f1" stroke-width="2" marker-end="url(#h1)"/>
+  <path d="M 680 300 V 270" stroke="#10b981" stroke-width="2" marker-end="url(#h1)"/>
+  <path d="M 680 330 V 335" stroke="#10b981" stroke-width="2"/>
+  <path d="M 160 335 V 330" stroke="#6366f1" stroke-width="2" marker-end="url(#h1)"/>
+  <defs>
+    <marker id="h1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

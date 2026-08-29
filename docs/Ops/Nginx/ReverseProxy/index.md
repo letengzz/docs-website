@@ -101,6 +101,11 @@ location /ws/ {
 2. 在后端日志确认收到 `X-Real-IP` 与 `X-Forwarded-For`。
 3. 用 `curl -v` 观察响应头 `Server: nginx`，确认请求确实经过 Nginx。
 
+## 相关专题
+
+- [网络编程专题](../../../Backend/NetworkProgramming/index.md)：四层/七层转发与 HTTP 协议基础
+- [HTTP 与 HTTPS 协议](../../../Backend/NetworkProgramming/HttpHttps/index.md)：代理场景下的协议语义
+
 ## 参考资料
 
 - proxy_pass 指令：https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
