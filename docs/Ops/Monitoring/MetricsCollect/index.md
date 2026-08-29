@@ -222,6 +222,11 @@ probe_success == 0   # 站点不可达
 5. 新采集项上线后先在测试环境观察 1 周，确认指标稳定再上告警。
 :::
 
+## 相关专题
+
+- [SQL 优化](../../../DB/Relational/SQLOptimization/index.md)：mysqld_exporter 慢查询指标的治理入口
+- [慢查询定位与分析](../../../DB/Relational/SQLOptimization/SlowQuery/index.md)：慢日志聚合与根因分析
+
 ## 验证方式
 
 1. 启动 node_exporter，`curl localhost:9100/metrics` 能看到指标输出。

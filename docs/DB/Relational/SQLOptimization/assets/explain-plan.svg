@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="340" viewBox="0 0 820 340" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="820" height="340" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">EXPLAIN 输出字段解读</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="30" y="70" width="130" height="70" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="95" y="95" fill="#4338ca" font-weight="bold">id</text>
+    <text x="95" y="118" fill="#4b5563" font-size="10">查询执行顺序</text>
+    <rect x="180" y="70" width="130" height="70" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="245" y="95" fill="#b45309" font-weight="bold">select_type</text>
+    <text x="245" y="118" fill="#4b5563" font-size="10">SIMPLE/PRIMARY/SUBQUERY</text>
+    <rect x="330" y="70" width="130" height="70" rx="8" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+    <text x="395" y="95" fill="#be185d" font-weight="bold">type</text>
+    <text x="395" y="118" fill="#4b5563" font-size="10">访问类型（关键）</text>
+    <rect x="480" y="70" width="130" height="70" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="545" y="95" fill="#047857" font-weight="bold">key</text>
+    <text x="545" y="118" fill="#4b5563" font-size="10">实际使用索引</text>
+    <rect x="630" y="70" width="160" height="70" rx="8" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="710" y="95" fill="#6d28d9" font-weight="bold">rows / filtered</text>
+    <text x="710" y="118" fill="#4b5563" font-size="10">预计扫描行数/过滤率</text>
+  </g>
+  <text x="410" y="185" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">type 访问类型从好到差</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="50" y="205" width="130" height="46" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="115" y="233" fill="#047857" font-weight="bold">const</text>
+    <rect x="200" y="205" width="130" height="46" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="265" y="233" fill="#047857" font-weight="bold">ref</text>
+    <rect x="350" y="205" width="130" height="46" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="415" y="233" fill="#b45309" font-weight="bold">range</text>
+    <rect x="500" y="205" width="130" height="46" rx="8" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+    <text x="565" y="233" fill="#be185d" font-weight="bold">index</text>
+    <rect x="650" y="205" width="140" height="46" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+    <text x="720" y="233" fill="#b91c1c" font-weight="bold">ALL（全表）</text>
+  </g>
+  <text x="410" y="295" text-anchor="middle" font-size="13" fill="#475569">优化目标：type 至少到 range，尽量 ref/const；看到 ALL 或 Using filesort 就要警惕</text>
+  <text x="410" y="318" text-anchor="middle" font-size="12" fill="#6b7280">EXPLAIN ANALYZE 直接给出真实执行时间与各迭代器耗时（8.0.18+ / 8.4 LTS 支持）</text>
+</svg>

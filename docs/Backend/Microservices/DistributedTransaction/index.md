@@ -197,6 +197,11 @@ public class OrderService {
 3. 用压测观察全局事务耗时与数据库锁等待，评估是否满足业务指标。
 4. 人为停掉 Seata Server，确认业务快速失败而非无限等待。
 
+## 相关专题
+
+- [SQL 优化 · 锁与事务](../../../DB/Relational/SQLOptimization/LockTransaction/index.md)：数据库行锁、死锁与长事务排查
+- [MySQL 事务与隔离级别](../../../DB/Relational/MySQL/Transaction/index.md)：单库事务基础
+
 ## 参考资料
 
 - Apache Seata 文档：https://seata.apache.org/docs/overview/

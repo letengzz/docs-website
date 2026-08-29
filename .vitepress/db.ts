@@ -45,6 +45,24 @@ export const NoRelational = [
     ],
   },
 ];
+export const SQLOptimization = [
+  {
+    text: "SQL 优化",
+    link: "/docs/DB/Relational/SQLOptimization/index.md",
+    collapsed: true,
+    items: [
+      { text: "SQL 优化概述", link: "/docs/DB/Relational/SQLOptimization/Overview/index.md" },
+      { text: "执行计划", link: "/docs/DB/Relational/SQLOptimization/ExplainPlan/index.md" },
+      { text: "索引原理与失效场景", link: "/docs/DB/Relational/SQLOptimization/IndexPrinciple/index.md" },
+      { text: "慢查询定位与分析", link: "/docs/DB/Relational/SQLOptimization/SlowQuery/index.md" },
+      { text: "分页优化", link: "/docs/DB/Relational/SQLOptimization/Pagination/index.md" },
+      { text: "JOIN 优化", link: "/docs/DB/Relational/SQLOptimization/JoinOptimization/index.md" },
+      { text: "锁与事务对查询的影响", link: "/docs/DB/Relational/SQLOptimization/LockTransaction/index.md" },
+      { text: "优化案例", link: "/docs/DB/Relational/SQLOptimization/CaseStudy/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/Relational/SQLOptimization/FAQ/index.md" },
+    ],
+  },
+];
 export const Relational = [
   {
     text: "关系型数据库",
@@ -66,6 +84,7 @@ export const Relational = [
           { text: "常见问题与最佳实践", link: "/docs/DB/Relational/MySQL/FAQ/index.md" },
         ],
       },
+      ...SQLOptimization,
     ],
   },
 ];

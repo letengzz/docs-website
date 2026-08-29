@@ -124,4 +124,5 @@ mysqladmin -u root -p status
 
 ## 相关专题
 
-- [MongoDB 文档数据库](../../NoRelational/MongoDB/index.md)
+- [MongoDB 文档数据库](../../../NoRelational/MongoDB/index.md)
+- [SQL 优化](../../SQLOptimization/index.md)：慢查询治理与索引设计

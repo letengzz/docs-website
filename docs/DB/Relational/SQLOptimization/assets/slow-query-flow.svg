@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="280" viewBox="0 0 840 280" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="280" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">慢查询定位与分析流程</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="25" y="100" width="150" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="100" y="130" fill="#4338ca" font-weight="bold">开启慢日志</text>
+    <text x="100" y="152" fill="#4b5563" font-size="11">slow_query_log=ON</text>
+    <text x="100" y="172" fill="#6b7280" font-size="10">long_query_time=1s</text>
+    <rect x="215" y="100" width="150" height="90" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="290" y="130" fill="#b45309" font-weight="bold">聚合分析</text>
+    <text x="290" y="152" fill="#4b5563" font-size="11">mysqldumpslow</text>
+    <text x="290" y="172" fill="#6b7280" font-size="10">pt-query-digest</text>
+    <rect x="405" y="100" width="150" height="90" rx="10" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+    <text x="480" y="130" fill="#be185d" font-weight="bold">EXPLAIN 定位</text>
+    <text x="480" y="152" fill="#4b5563" font-size="11">访问类型 / 索引</text>
+    <text x="480" y="172" fill="#6b7280" font-size="10">锁等待 / 回表</text>
+    <rect x="595" y="100" width="150" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="670" y="130" fill="#047857" font-weight="bold">优化+验证</text>
+    <text x="670" y="152" fill="#4b5563" font-size="11">索引 / SQL 改写</text>
+    <text x="670" y="172" fill="#6b7280" font-size="10">回归对比耗时</text>
+  </g>
+  <path d="M 180 145 H 208" stroke="#6366f1" stroke-width="2.5" marker-end="url(#s1)"/>
+  <path d="M 370 145 H 398" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#s1)"/>
+  <path d="M 560 145 H 588" stroke="#ec4899" stroke-width="2.5" marker-end="url(#s1)"/>
+  <text x="420" y="235" text-anchor="middle" font-size="13" fill="#475569">优先处理：出现频率高 × 单次耗时长 × 影响核心链路 的 SQL，先排序再动手</text>
+  <defs>
+    <marker id="s1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

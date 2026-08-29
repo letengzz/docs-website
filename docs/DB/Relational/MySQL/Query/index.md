@@ -182,3 +182,8 @@ GROUP BY u.id;
 ```
 
 再结合实际数据核对返回结果与预期一致。
+
+## 相关专题
+
+- [SQL 优化](../../SQLOptimization/index.md)：分页、JOIN 与查询改写的最佳实践
+- [JOIN 优化](../../SQLOptimization/JoinOptimization/index.md)：连接算法与驱动表优化

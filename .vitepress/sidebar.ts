@@ -4,7 +4,7 @@ import { DotNet, Go, Java, MessageQueue, Microservices, Python } from "./backend
 import { AI_Agent, AI_OpenClaw, AI_PromptEngineering } from "./AI";
 import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers } from "./frontend";
 import { Docker, JumpServer, Kubernetes, Linux, Monitoring, Nginx, OpsOthers, VM } from "./ops";
-import { DBOverview, NoRelational, Relational } from "./db";
+import { DBOverview, NoRelational, Relational, SQLOptimization } from "./db";
 import { Build, CICD, IDE, Others, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
@@ -82,6 +82,7 @@ export const sidebar = {
   "/docs/Backend/Python": Python,
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/Relational": Relational,
+  "/docs/DB/Relational/SQLOptimization": SQLOptimization,
   "/docs/DB/NoRelational": NoRelational,
   "/docs/Ops/VM": VM,
   "/docs/Ops/Linux": Linux,

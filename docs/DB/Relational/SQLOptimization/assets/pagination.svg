@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="300" viewBox="0 0 840 300" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="300" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">深分页问题与延迟关联</text>
+  <!-- bad -->
+  <g>
+    <rect x="30" y="80" width="370" height="170" rx="12" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+    <text x="215" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#b91c1c">OFFSET 深分页（慢）</text>
+    <text x="215" y="140" text-anchor="middle" font-size="12" fill="#374151">LIMIT 100000, 20</text>
+    <text x="215" y="165" text-anchor="middle" font-size="11" fill="#4b5563">MySQL 先扫 100020 行再丢弃前 10 万行</text>
+    <text x="215" y="188" text-anchor="middle" font-size="11" fill="#4b5563">页数越深越慢，无法用索引跳过</text>
+    <text x="215" y="230" text-anchor="middle" font-size="11" fill="#6b7280">❌ 不适用：后台管理、大数据量列表</text>
+  </g>
+  <!-- good -->
+  <g>
+    <rect x="440" y="80" width="370" height="170" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="625" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">延迟关联 / 游标（快）</text>
+    <text x="625" y="140" text-anchor="middle" font-size="12" fill="#374151">先只查主键：WHERE id &gt; 100000 LIMIT 20</text>
+    <text x="625" y="165" text-anchor="middle" font-size="11" fill="#4b5563">覆盖索引快速定位，再回表取整行</text>
+    <text x="625" y="188" text-anchor="middle" font-size="11" fill="#4b5563">键集分页：WHERE id &gt; 上页最后一条</text>
+    <text x="625" y="230" text-anchor="middle" font-size="11" fill="#6b7280">✅ 适用：按时间/id 排序的稳定列表</text>
+  </g>
+  <text x="420" y="280" text-anchor="middle" font-size="13" fill="#475569">注意：游标分页在数据增删时会漏项/重项，需结合业务选择；总条数统计用 COUNT 单独优化</text>
+</svg>

@@ -66,3 +66,7 @@ MySQL 8.0 已于 2026 年 4 月停止公开安全更新，继续使用存在安�
 - MySQL 官方文档：https://dev.mysql.com/doc/
 - MySQL 下载页：https://dev.mysql.com/downloads/
 - Docker 镜像：https://hub.docker.com/_/mysql
+
+## 相关专题
+
+- [SQL 优化](../../SQLOptimization/index.md)：执行计划、索引原理与慢查询治理
