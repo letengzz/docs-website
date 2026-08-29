@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="360" viewBox="0 0 840 360" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="360" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">SOLID 设计原则</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="80" width="240" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="150" y="110" fill="#4338ca" font-weight="bold">S 单一职责</text>
+    <text x="150" y="134" fill="#4b5563" font-size="11">一个类只负责一件事，一个变更理由</text>
+    <text x="150" y="154" fill="#6b7280" font-size="10">拆分大而全的“上帝类”</text>
+    <rect x="300" y="80" width="240" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="420" y="110" fill="#047857" font-weight="bold">O 开闭原则</text>
+    <text x="420" y="134" fill="#4b5563" font-size="11">对扩展开放，对修改关闭</text>
+    <text x="420" y="154" fill="#6b7280" font-size="10">新增功能用扩展而非改旧代码</text>
+    <rect x="570" y="80" width="240" height="90" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="690" y="110" fill="#b45309" font-weight="bold">L 里氏替换</text>
+    <text x="690" y="134" fill="#4b5563" font-size="11">子类必须能替换父类</text>
+    <text x="690" y="154" fill="#6b7280" font-size="10">不重写父类非抽象方法语义</text>
+    <rect x="30" y="200" width="240" height="90" rx="10" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+    <text x="150" y="230" fill="#be185d" font-weight="bold">I 接口隔离</text>
+    <text x="150" y="254" fill="#4b5563" font-size="11">客户端不依赖不需要的接口</text>
+    <text x="150" y="274" fill="#6b7280" font-size="10">大接口拆成多个小接口</text>
+    <rect x="300" y="200" width="240" height="90" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="420" y="230" fill="#6d28d9" font-weight="bold">D 依赖倒置</text>
+    <text x="420" y="254" fill="#4b5563" font-size="11">依赖抽象，不依赖具体实现</text>
+    <text x="420" y="274" fill="#6b7280" font-size="10">接口/抽象在高层定义</text>
+  </g>
+  <text x="420" y="330" text-anchor="middle" font-size="13" fill="#475569">其他原则：DRY（不重复）、YAGNI（不过度设计）、KISS（保持简单）、迪米特法则（最少知识）</text>
+</svg>

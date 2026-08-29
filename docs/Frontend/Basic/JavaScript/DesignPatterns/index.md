@@ -778,4 +778,9 @@ player.stop()   // 进入空闲状态
 - 观察者模式用于事件系统
 - 策略模式用于算法切换
 - 代理模式用于访问控制
-:::
+::: 
+
+## 相关专题
+
+- [后端设计模式](../../../../Backend/DesignPatterns/index.md)：SOLID 原则与 Java 版完整模式体系
+- [设计模式实战](../../../../Backend/DesignPatterns/Practice/index.md)：电商场景的坏味道重构案例

@@ -55,11 +55,12 @@ iBatis一词来源于"internet"和"abatis"的组合，是一个基于Java的持�
 
 **拓展**：
 
-- [IDEA生成插件](../../../../Tools/IDE/IDEA/Plugins/CodeAssist/MyBatis/index.md)
-- [ORM对象关系映射](../../Others/ORM/index.md)
+- [IDE 工具](../../../../Tools/IDE/index.md)
+- [ORM 数据访问（Spring Boot）](../SpringBoot/Common/DataAccess/index.md)
 - [MyBatis 内置类型别名](DefaultAlias.md)
 - [IDEA配置模板](IdeaTemplate.md)
 - [MyBatis对比Hibernate](HibernateDiff.md)
 - [封装SqlSessionUtils工具类](SqlSessionUtils.md)
 - [MyBatis 源码解析](SourcePrinciple.md)
 - [MyBatis 常见错误](Errors.md)
+- [设计模式 · 框架中的应用](../../../DesignPatterns/FrameworkUsage/index.md)：MyBatis Mapper 动态代理原理

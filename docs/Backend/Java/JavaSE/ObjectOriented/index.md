@@ -860,3 +860,4 @@ public class ObjectClass {
 
 - [面向对象核心（OOP）](../OOP/index.md)
 - [Java 并发](../Multithreading/index.md)
+- [设计模式](../../../DesignPatterns/index.md)：面向对象三大特性之上的可复用设计

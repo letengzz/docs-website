@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="330" viewBox="0 0 840 330" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="330" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">创建型模式：对象怎么创建</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="25" y="80" width="150" height="110" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="100" y="110" fill="#4338ca" font-weight="bold">单例</text>
+    <text x="100" y="134" fill="#4b5563" font-size="11">全局唯一实例</text>
+    <text x="100" y="154" fill="#6b7280" font-size="10">Spring Bean 默认</text>
+    <text x="100" y="174" fill="#6b7280" font-size="10">线程安全注意</text>
+    <rect x="195" y="80" width="150" height="110" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="270" y="110" fill="#047857" font-weight="bold">工厂方法</text>
+    <text x="270" y="134" fill="#4b5563" font-size="11">子类决定实例类型</text>
+    <text x="270" y="154" fill="#6b7280" font-size="10">BeanFactory</text>
+    <rect x="365" y="80" width="150" height="110" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="440" y="110" fill="#b45309" font-weight="bold">抽象工厂</text>
+    <text x="440" y="134" fill="#4b5563" font-size="11">一族相关对象</text>
+    <text x="440" y="154" fill="#6b7280" font-size="10">跨平台 UI 组件</text>
+    <rect x="535" y="80" width="150" height="110" rx="10" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+    <text x="610" y="110" fill="#be185d" font-weight="bold">建造者</text>
+    <text x="610" y="134" fill="#4b5563" font-size="11">分步构建复杂对象</text>
+    <text x="610" y="154" fill="#6b7280" font-size="10">Lombok @Builder</text>
+    <rect x="705" y="80" width="110" height="110" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="760" y="110" fill="#6d28d9" font-weight="bold">原型</text>
+    <text x="760" y="134" fill="#4b5563" font-size="11">克隆创建</text>
+    <text x="760" y="154" fill="#6b7280" font-size="10">Cloneable</text>
+  </g>
+  <text x="420" y="240" text-anchor="middle" font-size="13" fill="#475569">核心思想：把「创建」从「使用」中分离，客户端面向抽象，不关心具体类</text>
+  <text x="420" y="275" text-anchor="middle" font-size="12" fill="#6b7280">选择：对象构造简单 → 工厂方法；一族产品 → 抽象工厂；参数多且必选可选混合 → 建造者</text>
+</svg>

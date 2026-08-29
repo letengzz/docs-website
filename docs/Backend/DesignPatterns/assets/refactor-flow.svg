@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="280" viewBox="0 0 840 280" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="280" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">用模式重构的流程</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="25" y="100" width="150" height="90" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+    <text x="100" y="130" fill="#b91c1c" font-weight="bold">识别坏味道</text>
+    <text x="100" y="152" fill="#4b5563" font-size="11">if/else 爆炸、重复代码</text>
+    <text x="100" y="172" fill="#6b7280" font-size="10">上帝类、长方法</text>
+    <rect x="215" y="100" width="150" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="290" y="130" fill="#4338ca" font-weight="bold">选择模式</text>
+    <text x="290" y="152" fill="#4b5563" font-size="11">对照意图选最简方案</text>
+    <text x="290" y="172" fill="#6b7280" font-size="10">不过度设计（YAGNI）</text>
+    <rect x="405" y="100" width="150" height="90" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="480" y="130" fill="#b45309" font-weight="bold">小步重构</text>
+    <text x="480" y="152" fill="#4b5563" font-size="11">行为不变，结构变化</text>
+    <text x="480" y="172" fill="#6b7280" font-size="10">一次只改一个点</text>
+    <rect x="595" y="100" width="150" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="670" y="130" fill="#047857" font-weight="bold">测试验证</text>
+    <text x="670" y="152" fill="#4b5563" font-size="11">单测/回归通过</text>
+    <text x="670" y="172" fill="#6b7280" font-size="10">行为完全不变</text>
+  </g>
+  <path d="M 180 145 H 208" stroke="#ef4444" stroke-width="2.5" marker-end="url(#r1)"/>
+  <path d="M 370 145 H 398" stroke="#6366f1" stroke-width="2.5" marker-end="url(#r1)"/>
+  <path d="M 560 145 H 588" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#r1)"/>
+  <text x="420" y="240" text-anchor="middle" font-size="13" fill="#475569">黄金法则：重构的前提是有测试兜底；先保证行为不变，再谈结构优化</text>
+  <defs>
+    <marker id="r1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

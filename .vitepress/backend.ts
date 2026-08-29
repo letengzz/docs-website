@@ -177,6 +177,21 @@ export const Microservices = [
     ],
   },
 ];
+export const DesignPatterns = [
+  {
+    text: "设计模式",
+    link: "/docs/Backend/DesignPatterns/index.md",
+    items: [
+      { text: "设计原则", link: "/docs/Backend/DesignPatterns/Principles/index.md" },
+      { text: "创建型模式", link: "/docs/Backend/DesignPatterns/Creational/index.md" },
+      { text: "结构型模式", link: "/docs/Backend/DesignPatterns/Structural/index.md" },
+      { text: "行为型模式", link: "/docs/Backend/DesignPatterns/Behavioral/index.md" },
+      { text: "框架中的应用", link: "/docs/Backend/DesignPatterns/FrameworkUsage/index.md" },
+      { text: "实战案例", link: "/docs/Backend/DesignPatterns/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/DesignPatterns/FAQ/index.md" },
+    ],
+  },
+];
 export const Go = [{ text: "Go", link: "/docs/Backend/Go/index.md" }];
 export const Python = [
   {
