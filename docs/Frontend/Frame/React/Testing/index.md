@@ -482,3 +482,8 @@ export default defineConfig({
 | 模拟外部依赖 | API、localStorage 等 |
 | 保持测试独立 | 每个测试互不影响 |
 | 测试边界情况 | 空数据、错误状态、加载状态 |
+
+## 相关专题
+
+- [前端工程化](../../../Others/FrontendEngineering/index.md)：Vitest + Testing Library 的完整测试体系
+- [单元测试与组件测试](../../../Others/FrontendEngineering/Testing/index.md)：测试金字塔与覆盖率门禁

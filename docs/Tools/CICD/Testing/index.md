@@ -221,6 +221,11 @@ steps:
 3. 用 Trivy 扫描镜像，制造一个已知 CVE 依赖，确认流水线标红。
 4. 检查 CI 页面能下载测试报告与覆盖率报告。
 
+## 相关专题
+
+- [前端工程化 CI 集成](../../../Frontend/Others/FrontendEngineering/CIIntegration/index.md)：前端 lint/typecheck/test/build 流水线与预览部署
+- [前端单元测试与组件测试](../../../Frontend/Others/FrontendEngineering/Testing/index.md)：Vitest 覆盖率门禁与 Playwright E2E
+
 ## 参考资料
 
 - 测试金字塔（Martin Fowler）：https://martinfowler.com/bliki/TestPyramid.html

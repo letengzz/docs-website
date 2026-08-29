@@ -135,6 +135,11 @@ tsc -b packages/core
 2. 故意写一个 `null` 赋值，确认 strictNullChecks 报错。
 3. 用 `npx tsc --showConfig` 查看最终生效的配置（包含继承内容）。
 
+## 相关专题
+
+- [前端工程化](../../../Others/FrontendEngineering/index.md)：tsc 类型检查在 CI 门禁中的位置
+- [CI 集成](../../../Others/FrontendEngineering/CIIntegration/index.md)：typecheck 与 lint/test/build 的流水线组合
+
 ## 参考资料
 
 - tsconfig 参考：https://www.typescriptlang.org/tsconfig/

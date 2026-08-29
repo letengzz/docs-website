@@ -139,6 +139,11 @@ const HeavyChart = defineAsyncComponent(() => import("./HeavyChart.vue"))
 4. 用 Lighthouse 跑一次性能分，记录优化前后对比。
 5. 大列表滚动测试帧率，虚拟滚动实现后滚动流畅。
 
+## 相关专题
+
+- [前端工程化](../../../../Others/FrontendEngineering/index.md)：工程级构建优化与性能基线
+- [构建优化](../../../../Others/FrontendEngineering/BuildOptimization/index.md)：分包、压缩、CDN 与体积监控
+
 ## 参考资料
 
 - Vue 渲染机制与性能：https://cn.vuejs.org/guide/extras/rendering-mechanism.html

@@ -453,3 +453,8 @@ const request = axios.create({
 
 export default request
 ```
+
+## 相关专题
+
+- [前端工程化](../../../Others/FrontendEngineering/index.md)：Vite 在工程体系中的定位与配套工具
+- [构建优化](../../../Others/FrontendEngineering/BuildOptimization/index.md)：分包、懒加载、CDN 缓存与体积分析

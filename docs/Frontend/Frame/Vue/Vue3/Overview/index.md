@@ -90,3 +90,8 @@ Vue 当前稳定版为 **3.5.x**（最新补丁 3.5.40，2026-07 发布），3.6
 - 与 Vite、Pinia、Vue Router 4 等现代生态搭配。
 
 仍在使用 Vue 2 的存量项目，建议规划迁移；迁移不是重写，官方提供了 `@vue/compat` 兼容构建帮助渐进式升级。
+
+## 相关专题
+
+- [前端工程化](../../../../Others/FrontendEngineering/index.md)：Vue3 + Vite 的标准工程结构、规范与测试体系
+- [构建优化](../../../../Others/FrontendEngineering/BuildOptimization/index.md)：Vue3 应用的体积与性能优化

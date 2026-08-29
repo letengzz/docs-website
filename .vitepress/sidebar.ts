@@ -2,7 +2,7 @@
 import { DotNet, Go, Java, MessageQueue, Microservices, Python } from "./backend";
 
 import { AI_Agent, AI_OpenClaw, AI_PromptEngineering } from "./AI";
-import { FrontBasic, FrontFrame, FrontOthers } from "./frontend";
+import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers } from "./frontend";
 import { Docker, JumpServer, Kubernetes, Linux, Monitoring, Nginx, OpsOthers, VM } from "./ops";
 import { DBOverview, NoRelational, Relational } from "./db";
 import { Build, CICD, IDE, Others, VC } from "./tools";
@@ -73,6 +73,7 @@ export const sidebar = {
   "/docs/Frontend/Basic": FrontBasic,
   "/docs/Frontend/Frame": FrontFrame,
   "/docs/Frontend/Others": FrontOthers,
+  "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,
   "/docs/Backend/DotNet": DotNet,
   "/docs/Backend/Go": Go,
   "/docs/Backend/Java": Java,

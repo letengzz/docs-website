@@ -490,6 +490,23 @@ export const FrontFrame = [
         ]
     },
 ];
+export const FrontendEngineering = [
+    {
+        text: "前端工程化",
+        link: "/docs/Frontend/Others/FrontendEngineering/index.md",
+        collapsed: true,
+        items: [
+            { text: "工程化概览", link: "/docs/Frontend/Others/FrontendEngineering/Overview/index.md" },
+            { text: "代码规范", link: "/docs/Frontend/Others/FrontendEngineering/CodeStandard/index.md" },
+            { text: "Git 规范", link: "/docs/Frontend/Others/FrontendEngineering/GitStandard/index.md" },
+            { text: "单元测试与组件测试", link: "/docs/Frontend/Others/FrontendEngineering/Testing/index.md" },
+            { text: "构建优化", link: "/docs/Frontend/Others/FrontendEngineering/BuildOptimization/index.md" },
+            { text: "CI 集成", link: "/docs/Frontend/Others/FrontendEngineering/CIIntegration/index.md" },
+            { text: "脚手架与工程结构", link: "/docs/Frontend/Others/FrontendEngineering/Scaffold/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/Others/FrontendEngineering/FAQ/index.md" },
+        ],
+    },
+];
 export const FrontOthers = [
     {
         text: "其他",
@@ -498,6 +515,7 @@ export const FrontOthers = [
             { text: "自动生成接口", link: "/docs/Frontend/Others/AutoGenInterface/index.md" },
             { text: "HTTP 协议", link: "/docs/Frontend/Others/HTTP/index.md" },
             { text: "单页面 web 应用", link: "/docs/Frontend/Others/SPA/index.md" },
+            ...FrontendEngineering,
         ],
     },
 ];

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="280" viewBox="0 0 840 280" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="280" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">构建优化链路</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="25" y="100" width="130" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="90" y="130" fill="#4338ca" font-weight="bold">源码</text>
+    <text x="90" y="152" fill="#4b5563" font-size="11">TS / Vue SFC</text>
+    <text x="90" y="172" fill="#6b7280" font-size="10">CSS 预处理</text>
+    <rect x="195" y="100" width="130" height="90" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="260" y="130" fill="#b45309" font-weight="bold">转译压缩</text>
+    <text x="260" y="152" fill="#4b5563" font-size="11">esbuild / Rollup</text>
+    <text x="260" y="172" fill="#6b7280" font-size="10">Tree-shaking</text>
+    <rect x="365" y="100" width="130" height="90" rx="10" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+    <text x="430" y="130" fill="#be185d" font-weight="bold">分包</text>
+    <text x="430" y="152" fill="#4b5563" font-size="11">vendor / 按需</text>
+    <text x="430" y="172" fill="#6b7280" font-size="10">路由懒加载</text>
+    <rect x="535" y="100" width="130" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="600" y="130" fill="#047857" font-weight="bold">产物</text>
+    <text x="600" y="152" fill="#4b5563" font-size="11">index.html + assets</text>
+    <text x="600" y="172" fill="#6b7280" font-size="10">带 hash 文件名</text>
+    <rect x="705" y="100" width="110" height="90" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="760" y="130" fill="#6d28d9" font-weight="bold">CDN</text>
+    <text x="760" y="152" fill="#4b5563" font-size="11">静态资源分发</text>
+    <text x="760" y="172" fill="#6b7280" font-size="10">缓存策略</text>
+  </g>
+  <path d="M 160 145 H 188" stroke="#6366f1" stroke-width="2.5" marker-end="url(#b1)"/>
+  <path d="M 330 145 H 358" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#b1)"/>
+  <path d="M 500 145 H 528" stroke="#ec4899" stroke-width="2.5" marker-end="url(#b1)"/>
+  <path d="M 670 145 H 698" stroke="#10b981" stroke-width="2.5" marker-end="url(#b1)"/>
+  <text x="420" y="235" text-anchor="middle" font-size="13" fill="#475569">优化目标：首屏更小、加载更快、缓存命中更高、发布可回滚（hash 不变即缓存复用）</text>
+  <defs>
+    <marker id="b1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>
