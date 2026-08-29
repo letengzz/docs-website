@@ -89,8 +89,9 @@ public Consumer<String> orderIn() {
 
 ## 进阶路线
 
-本页是 Spring Cloud 的入口。更深入的专题（注册中心、配置中心、网关、熔断限流、链路追踪、分布式事务）已排入文档库计划，可结合以下现有内容先建立基础：
+本页是 Spring Cloud 的入口。更深入的专题（注册中心、配置中心、网关、熔断限流、链路追踪、分布式事务）已在微服务专题中系统建设，可结合以下内容建立完整体系：
 
+- [微服务专题](../../../Microservices/index.md)：注册中心、网关、熔断限流、链路追踪、分布式事务完整体系
 - [消息队列专题](../../../MessageQueue/index.md)：事件驱动与消息可靠性的基础
 - [Spring Boot 通用指南](../SpringBoot/Common/index.md)：每个微服务都是 Spring Boot 应用
 - [Java 并发专题](../../JavaSE/Multithreading/index.md)：异步与线程池在服务间的使用

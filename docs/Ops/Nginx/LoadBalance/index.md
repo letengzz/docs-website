@@ -99,6 +99,11 @@ upstream backend {
 2. 停掉一台后端，确认 `max_fails` 后请求自动转向其他节点。
 3. 用 `ip_hash` 从同一 IP 连续请求，确认始终命中同一节点。
 
+## 相关专题
+
+- [微服务负载均衡](../../../Backend/Microservices/LoadBalance/index.md)：客户端负载均衡（Spring Cloud LoadBalancer）与服务端负载均衡的分工
+- [微服务 API 网关](../../../Backend/Microservices/Gateway/index.md)：Nginx 与业务网关的协作分层
+
 ## 参考资料
 
 - upstream 模块：https://nginx.org/en/docs/http/ngx_http_upstream_module.html

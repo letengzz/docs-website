@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="380" viewBox="0 0 840 380" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="380" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">分布式事务方案对比</text>
+  <!-- 2PC -->
+  <g>
+    <rect x="30" y="80" width="250" height="250" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="155" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#4338ca">2PC 两阶段提交</text>
+    <text x="155" y="140" text-anchor="middle" font-size="12" fill="#374151">① 协调者 Prepare（锁定资源）</text>
+    <text x="155" y="165" text-anchor="middle" font-size="12" fill="#374151">② 全部就绪 → Commit</text>
+    <text x="155" y="190" text-anchor="middle" font-size="12" fill="#374151">任一失败 → Rollback</text>
+    <text x="155" y="230" text-anchor="middle" font-size="11" fill="#6b7280">强一致，但锁占用久、</text>
+    <text x="155" y="250" text-anchor="middle" font-size="11" fill="#6b7280">协调者单点、性能差</text>
+    <text x="155" y="285" text-anchor="middle" font-size="11" fill="#6b7280">适用：XA（Seata XA）</text>
+  </g>
+  <!-- TCC -->
+  <g>
+    <rect x="295" y="80" width="250" height="250" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="420" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">TCC 补偿</text>
+    <text x="420" y="140" text-anchor="middle" font-size="12" fill="#374151">Try：预留资源</text>
+    <text x="420" y="165" text-anchor="middle" font-size="12" fill="#374151">Confirm：真正提交</text>
+    <text x="420" y="190" text-anchor="middle" font-size="12" fill="#374151">Cancel：冲正释放</text>
+    <text x="420" y="230" text-anchor="middle" font-size="11" fill="#6b7280">业务侵入强（3 个接口），</text>
+    <text x="420" y="250" text-anchor="middle" font-size="11" fill="#6b7280">性能好、可用性高</text>
+    <text x="420" y="285" text-anchor="middle" font-size="11" fill="#6b7280">适用：Seata TCC 模式</text>
+  </g>
+  <!-- SAGA -->
+  <g>
+    <rect x="560" y="80" width="250" height="250" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="685" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">SAGA 长事务</text>
+    <text x="685" y="140" text-anchor="middle" font-size="12" fill="#374151">正向：T1 → T2 → T3</text>
+    <text x="685" y="165" text-anchor="middle" font-size="12" fill="#374151">失败：C1 → C2 反向补偿</text>
+    <text x="685" y="190" text-anchor="middle" font-size="12" fill="#374151">无全局锁，最终一致</text>
+    <text x="685" y="230" text-anchor="middle" font-size="11" fill="#6b7280">补偿逻辑需要业务实现</text>
+    <text x="685" y="250" text-anchor="middle" font-size="11" fill="#6b7280">适合长链路、跨系统</text>
+    <text x="685" y="285" text-anchor="middle" font-size="11" fill="#6b7280">适用：Seata SAGA</text>
+  </g>
+  <!-- 底部 -->
+  <rect x="120" y="340" width="600" height="32" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="420" y="361" text-anchor="middle" font-size="12" fill="#475569">日常业务优先：本地消息表 + 消息队列（最终一致）→ 复杂度高再上 Seata</text>
+</svg>

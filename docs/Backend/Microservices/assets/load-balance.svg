@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="360" viewBox="0 0 840 360" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="360" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">负载均衡两种模式</text>
+  <!-- 客户端负载均衡 -->
+  <rect x="30" y="80" width="370" height="230" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="215" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#4338ca">客户端负载均衡（Spring Cloud LoadBalancer）</text>
+  <rect x="55" y="125" width="120" height="52" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="115" y="148" text-anchor="middle" font-size="12" fill="#374151">服务消费者</text>
+  <text x="115" y="166" text-anchor="middle" font-size="10" fill="#6b7280">本地选择实例</text>
+  <path d="M 180 150 H 245" stroke="#6366f1" stroke-width="2" marker-end="url(#l1)"/>
+  <g>
+    <rect x="250" y="115" width="130" height="42" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="315" y="141" text-anchor="middle" font-size="12" fill="#047857">实例 1</text>
+    <rect x="250" y="165" width="130" height="42" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="315" y="191" text-anchor="middle" font-size="12" fill="#047857">实例 2</text>
+    <rect x="250" y="215" width="130" height="42" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="315" y="241" text-anchor="middle" font-size="12" fill="#047857">实例 3</text>
+  </g>
+  <text x="215" y="290" text-anchor="middle" font-size="11" fill="#475569">优点：不占网关带宽、感知实例变化；缺点：每个语言/框架各自实现</text>
+  <!-- 服务端负载均衡 -->
+  <rect x="440" y="80" width="370" height="230" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="625" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">服务端负载均衡（Nginx / LVS / LB）</text>
+  <rect x="465" y="125" width="120" height="52" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="525" y="148" text-anchor="middle" font-size="12" fill="#374151">客户端</text>
+  <text x="525" y="166" text-anchor="middle" font-size="10" fill="#6b7280">只认 VIP / 域名</text>
+  <path d="M 590 150 H 640" stroke="#10b981" stroke-width="2" marker-end="url(#l2)"/>
+  <g>
+    <rect x="645" y="115" width="140" height="42" rx="8" fill="#ffffff" stroke="#f59e0b"/>
+    <text x="715" y="141" text-anchor="middle" font-size="12" fill="#b45309">Nginx / 云 LB</text>
+    <rect x="645" y="165" width="140" height="42" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="715" y="191" text-anchor="middle" font-size="12" fill="#047857">服务实例 1</text>
+    <rect x="645" y="215" width="140" height="42" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="715" y="241" text-anchor="middle" font-size="12" fill="#047857">服务实例 2</text>
+  </g>
+  <text x="625" y="290" text-anchor="middle" font-size="11" fill="#475569">优点：集中管理、多语言通用；缺点：LB 本身成为瓶颈点，需高可用</text>
+  <defs>
+    <marker id="l1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="l2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

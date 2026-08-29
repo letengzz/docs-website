@@ -159,6 +159,24 @@ export const MessageQueue = [
     ],
   },
 ];
+export const Microservices = [
+  {
+    text: "微服务",
+    link: "/docs/Backend/Microservices/index.md",
+    items: [
+      { text: "概述与服务拆分", link: "/docs/Backend/Microservices/Overview/index.md" },
+      { text: "注册中心", link: "/docs/Backend/Microservices/Registry/index.md" },
+      { text: "配置中心", link: "/docs/Backend/Microservices/ConfigCenter/index.md" },
+      { text: "API 网关", link: "/docs/Backend/Microservices/Gateway/index.md" },
+      { text: "负载均衡", link: "/docs/Backend/Microservices/LoadBalance/index.md" },
+      { text: "熔断限流与降级", link: "/docs/Backend/Microservices/CircuitBreaker/index.md" },
+      { text: "链路追踪", link: "/docs/Backend/Microservices/Tracing/index.md" },
+      { text: "分布式事务", link: "/docs/Backend/Microservices/DistributedTransaction/index.md" },
+      { text: "实战：订单库存账户微服务", link: "/docs/Backend/Microservices/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/Microservices/FAQ/index.md" },
+    ],
+  },
+];
 export const Go = [{ text: "Go", link: "/docs/Backend/Go/index.md" }];
 export const Python = [
   {

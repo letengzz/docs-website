@@ -13,6 +13,7 @@ export const nav = [
       { text: "Go", link: "/docs/Backend/Go" },
       { text: "Java", link: "/docs/Backend/Java" },
       { text: "消息队列", link: "/docs/Backend/MessageQueue" },
+      { text: "微服务", link: "/docs/Backend/Microservices" },
       { text: "Python", link: "/docs/Backend/Python" },]
   },
   {

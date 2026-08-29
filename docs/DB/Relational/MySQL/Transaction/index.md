@@ -130,3 +130,8 @@ SELECT * FROM account WHERE id = 1 FOR UPDATE;
 ```
 
 观察会话 B 的等待；A `COMMIT` 后 B 立即返回。超时时间由 `innodb_lock_wait_timeout` 控制（默认 50 秒）。
+
+## 相关专题
+
+- [分布式事务](../../../../Backend/Microservices/DistributedTransaction/index.md)：单库事务与跨服务事务的边界，2PC/TCC/SAGA/Seata 方案
+- [消息队列消费幂等](../../../../Backend/MessageQueue/Idempotency/index.md)：本地消息表方案中事务与消息投递的一致性

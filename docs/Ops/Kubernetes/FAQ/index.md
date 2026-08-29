@@ -100,6 +100,7 @@ Namespace 级别配置 ResourceQuota 与 LimitRange，防止某个团队打爆�
 
 - [消息队列集群部署](../../../Backend/MessageQueue/Cluster/index.md)：Kafka / RabbitMQ 高可用集群在容器环境中的部署要点
 - [Docker Compose 进阶](../../Docker/ComposeAdvanced/index.md)：从 Compose 到 K8s 的部署演进
+- [微服务专题](../../../Backend/Microservices/index.md)：K8s 是微服务运行时，与注册中心/网关的职责分工
 
 ## 参考资料
 

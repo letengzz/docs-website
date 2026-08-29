@@ -101,6 +101,11 @@ public class DemoApplication {
 3. `mvn package` 后执行 `java -jar target/*.jar`，确认内嵌服务器直接启动。
 4. 打开 http://localhost:8080，确认没有 404 白页（默认有错误页）。
 
+## 相关专题
+
+- [微服务专题](../../../../../Microservices/index.md)：Spring Boot 是微服务的底座，注册中心、网关、分布式事务都在其上构建
+- [Spring Cloud 入门](../../../SpringCloud/index.md)：从单应用走向微服务的第一站
+
 ## 参考资料
 
 - Spring Boot 官方文档：https://docs.spring.io/spring-boot/index.html

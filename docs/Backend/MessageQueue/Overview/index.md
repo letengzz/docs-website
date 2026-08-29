@@ -130,6 +130,11 @@ Kafka 更像“日志流水账”（追求吞吐和回溯），RabbitMQ 更像�
 2. 手动停掉消费者再发消息，重启消费者后确认消息仍在（验证持久化）。
 3. 对比同步调用与异步调用的接口耗时，量化 MQ 带来的响应提升。
 
+## 相关专题
+
+- [微服务专题](../../Microservices/index.md)：事件驱动架构是微服务解耦的核心手段，MQ 是其中关键组件
+- [消费幂等](../Idempotency/index.md)：至少一次投递下保证业务只生效一次
+
 ## 参考资料
 
 - Apache Kafka 官方文档：https://kafka.apache.org/documentation/

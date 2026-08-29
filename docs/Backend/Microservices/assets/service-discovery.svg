@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="380" viewBox="0 0 820 380" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="820" height="380" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">注册中心：服务注册与发现</text>
+  <!-- 注册中心 -->
+  <g>
+    <rect x="300" y="80" width="220" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2.5"/>
+    <text x="410" y="112" text-anchor="middle" font-size="16" font-weight="bold" fill="#6d28d9">注册中心</text>
+    <text x="410" y="140" text-anchor="middle" font-size="12" fill="#4b5563">服务列表</text>
+    <text x="410" y="160" text-anchor="middle" font-size="12" fill="#4b5563">健康检查 · 心跳</text>
+    <text x="410" y="180" text-anchor="middle" font-size="12" fill="#4b5563">临时实例 / 持久实例</text>
+  </g>
+  <!-- 提供者 -->
+  <g>
+    <rect x="50" y="240" width="200" height="80" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="150" y="268" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">服务提供者 A</text>
+    <text x="150" y="290" text-anchor="middle" font-size="11" fill="#4b5563">启动时注册</text>
+    <text x="150" y="308" text-anchor="middle" font-size="11" fill="#6b7280">持续心跳续约</text>
+  </g>
+  <g>
+    <rect x="570" y="240" width="200" height="80" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="670" y="268" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">服务提供者 B</text>
+    <text x="670" y="290" text-anchor="middle" font-size="11" fill="#4b5563">启动时注册</text>
+    <text x="670" y="308" text-anchor="middle" font-size="11" fill="#6b7280">持续心跳续约</text>
+  </g>
+  <!-- 消费者 -->
+  <rect x="290" y="250" width="240" height="70" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="410" y="276" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">服务消费者</text>
+  <text x="410" y="298" text-anchor="middle" font-size="11" fill="#4b5563">拉取服务列表 → 本地缓存 → 负载均衡调用</text>
+  <!-- 箭头 -->
+  <path d="M 150 235 V 210" stroke="#10b981" stroke-width="2" marker-end="url(#d1)"/>
+  <path d="M 670 235 V 210" stroke="#10b981" stroke-width="2" marker-end="url(#d1)"/>
+  <path d="M 410 205 V 245" stroke="#f59e0b" stroke-width="2" marker-end="url(#d2)"/>
+  <text x="180" y="200" text-anchor="end" font-size="11" fill="#10b981">register + heartbeat</text>
+  <text x="660" y="200" text-anchor="start" font-size="11" fill="#10b981">register + heartbeat</text>
+  <text x="470" y="232" text-anchor="start" font-size="11" fill="#f59e0b">discover</text>
+  <!-- 底部 -->
+  <text x="410" y="360" text-anchor="middle" font-size="13" fill="#475569">故障剔除：消费者心跳超时 → 注册中心摘除实例并通知订阅方（Nacos 推送 / 客户端定时拉取）</text>
+  <defs>
+    <marker id="d1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="d2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+</svg>

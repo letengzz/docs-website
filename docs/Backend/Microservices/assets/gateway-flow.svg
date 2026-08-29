@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="340" viewBox="0 0 840 340" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="340" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">API 网关请求流程</text>
+  <!-- 客户端 -->
+  <rect x="30" y="120" width="130" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="95" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">客户端</text>
+  <text x="95" y="175" text-anchor="middle" font-size="11" fill="#4b5563">/api/order/1</text>
+  <text x="95" y="195" text-anchor="middle" font-size="11" fill="#6b7280">携带 Token</text>
+  <!-- 网关 -->
+  <path d="M 165 165 H 240" stroke="#6366f1" stroke-width="2.5" marker-end="url(#g1)"/>
+  <g>
+    <rect x="245" y="55" width="350" height="220" rx="12" fill="#fce7f3" stroke="#ec4899" stroke-width="2.5"/>
+    <text x="420" y="82" text-anchor="middle" font-size="15" font-weight="bold" fill="#be185d">Spring Cloud Gateway</text>
+    <rect x="265" y="100" width="310" height="38" rx="7" fill="#ffffff" stroke="#ec4899"/>
+    <text x="420" y="124" text-anchor="middle" font-size="12" fill="#374151">全局过滤器：鉴权 / 日志 / 跨域 / 限流</text>
+    <rect x="265" y="148" width="310" height="38" rx="7" fill="#ffffff" stroke="#ec4899"/>
+    <text x="420" y="172" text-anchor="middle" font-size="12" fill="#374151">路由匹配：Path / Host / Header 谓词</text>
+    <rect x="265" y="196" width="310" height="38" rx="7" fill="#ffffff" stroke="#ec4899"/>
+    <text x="420" y="220" text-anchor="middle" font-size="12" fill="#374151">负载均衡转发：lb://order-service</text>
+    <text x="420" y="258" text-anchor="middle" font-size="11" fill="#6b7280">过滤链：pre（请求前）→ 转发 → post（响应后）</text>
+  </g>
+  <!-- 服务 -->
+  <path d="M 600 165 H 670" stroke="#ec4899" stroke-width="2.5" marker-end="url(#g2)"/>
+  <g>
+    <rect x="675" y="100" width="135" height="70" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="742" y="128" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">订单服务</text>
+    <text x="742" y="150" text-anchor="middle" font-size="11" fill="#4b5563">实例池</text>
+  </g>
+  <rect x="675" y="195" width="135" height="70" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="742" y="223" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">库存服务</text>
+  <text x="742" y="245" text-anchor="middle" font-size="11" fill="#4b5563">实例池</text>
+  <text x="420" y="310" text-anchor="middle" font-size="13" fill="#475569">统一入口 → 内部服务对客户端不可见；跨域、限流、灰度、API 版本管理都在网关完成</text>
+  <defs>
+    <marker id="g1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="g2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#ec4899"/>
+    </marker>
+  </defs>
+</svg>
