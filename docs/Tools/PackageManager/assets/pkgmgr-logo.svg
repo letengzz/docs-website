@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <linearGradient id="lg-box" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a7bd8"/>
+      <stop offset="100%" stop-color="#2d5bb5"/>
+    </linearGradient>
+    <linearGradient id="lg-link" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3aa76d"/>
+      <stop offset="100%" stop-color="#278a55"/>
+    </linearGradient>
+  </defs>
+  <rect x="24" y="24" width="464" height="464" rx="48" fill="#eef4ff" stroke="#4a7bd8" stroke-width="6"/>
+  <rect x="105" y="78" width="150" height="110" rx="18" fill="url(#lg-box)"/>
+  <rect x="257" y="78" width="150" height="110" rx="18" fill="#5f8fdd" stroke="#2d5bb5" stroke-width="4"/>
+  <rect x="181" y="205" width="150" height="110" rx="18" fill="url(#lg-link)"/>
+  <path d="M 180 133 L 257 133" stroke="#2d5bb5" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 332 133 L 362 133 L 362 228 L 331 228" fill="none" stroke="#2d5bb5" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="256" cy="140" r="10" fill="#fff"/>
+  <circle cx="256" cy="260" r="10" fill="#fff"/>
+  <text x="256" y="386" text-anchor="middle" font-size="34" font-weight="bold" fill="#2d5bb5">包管理器深入</text>
+  <text x="256" y="424" text-anchor="middle" font-size="22" fill="#666">npm · pnpm · yarn · bun</text>
+  <text x="256" y="458" text-anchor="middle" font-size="20" fill="#888">Package Manager Deep Dive</text>
+</svg>

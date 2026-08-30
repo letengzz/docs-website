@@ -12,3 +12,7 @@
 
    yarn 的锁文件为 yarn.lock 
 
+## 相关专题
+
+- [包管理器深入](../../../../../Tools/PackageManager/index.md)：npm/pnpm/Yarn/Bun 全面对比与选型
+

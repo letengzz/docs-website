@@ -443,19 +443,19 @@ npm config set prefix D:\atguigu\node-global
 
 ```shell
 npm config get prefix
-```text
-
 ## 配置缓存路径
-
-配置缓存路径：
 
 ```shell
 npm config set cache D:\hjc\node-cache
-```text
+```
 
 查看缓存路径：
 
 ```shell
 npm config get cache
-```text
 ```
+
+## 相关专题
+
+- [包管理器深入](../../../../../Tools/PackageManager/index.md)：lockfile 与依赖解析、发布流程、供应链安全
+- [Node.js 包管理工具目录](../index.md)：cnpm、yarn、pnpm 基础对比

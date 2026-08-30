@@ -100,6 +100,10 @@
 2. 故意提交一段不规范代码，确认本地钩子拦截、CI 标红。
 3. 统计一次完整流水线耗时，对照目标（lint+test+build ≤ 10 分钟）。
 
+## 相关专题
+
+- [包管理器深入](../../../../Tools/PackageManager/index.md)：npm/pnpm/Yarn 选型、lockfile 与 monorepo，是工程化基线的前置依赖
+
 ## 参考资料
 
 - Vite 文档：https://vitejs.dev/

@@ -51,6 +51,7 @@ export const nav = [
       { text: "CI/CD", link: "/docs/Tools/CICD" },
       { text: "数据库客户端", link: "/docs/Tools/DatabaseClients" },
       { text: "接口调试工具", link: "/docs/Tools/APITools" },
+      { text: "包管理器深入", link: "/docs/Tools/PackageManager" },
       { text: "IDE工具", link: "/docs/Tools/IDE" },
       { text: "版本控制工具", link: "/docs/Tools/VersionControl" },
       { text: "其他", link: "/docs/Tools/Others" }

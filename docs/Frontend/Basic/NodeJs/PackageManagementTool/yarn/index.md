@@ -87,3 +87,7 @@ yarn config list
    yarn config set global-folder "D:\Data\yarn\global"
    yarn config set cache-folder "D:\Data\yarn\cache"
    ```
+
+## 相关专题
+
+- [包管理器深入](../../../../../Tools/PackageManager/index.md)：Yarn Berry 4 的 PnP 与 Zero-Install、monorepo 编排

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="fq-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8852d"/>
+    </marker>
+  </defs>
+  <style>
+    .q { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .a { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .k { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #e8852d; stroke-width: 1.4; }
+  </style>
+
+  <rect class="q" x="40" y="45" width="370" height="62"/>
+  <text x="225" y="73">问题：CI 与本地安装结果不一致</text>
+  <text class="small" x="225" y="93">lockfile 未提交 / 未用 frozen-lockfile</text>
+
+  <rect class="q" x="450" y="45" width="370" height="62"/>
+  <text x="635" y="73">问题：幽灵依赖 / 磁盘爆炸 / 版本漂移</text>
+  <text class="small" x="635" y="93">依赖隔离、存储复用、semver 范围</text>
+
+  <rect class="a" x="40" y="150" width="370" height="62"/>
+  <text x="225" y="178">解决：提交 lockfile + npm ci</text>
+  <text class="small" x="225" y="198">pnpm --frozen-lockfile</text>
+
+  <rect class="a" x="450" y="150" width="370" height="62"/>
+  <text x="635" y="178">解决：迁移 pnpm + audit 门禁</text>
+  <text class="small" x="635" y="198">先看 FAQ 与实战页再动手</text>
+
+  <line x1="225" y1="107" x2="225" y2="150" marker-end="url(#fq-arrow)"/>
+  <line x1="635" y1="107" x2="635" y2="150" marker-end="url(#fq-arrow)"/>
+
+  <rect class="k" x="200" y="248" width="460" height="58"/>
+  <text x="430" y="276">原则：先小范围试点，再全仓迁移</text>
+  <text class="small" x="430" y="294">配套：前端工程化、CI/CD、NodeJs 基础章节</text>
+</svg>

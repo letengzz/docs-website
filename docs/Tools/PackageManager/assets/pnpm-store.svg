@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ps-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .store { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .proj { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .link { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #3aa76d; stroke-width: 1.4; }
+  </style>
+
+  <rect class="store" x="40" y="45" width="220" height="110"/>
+  <text x="150" y="78">全局内容寻址存储</text>
+  <text class="small" x="150" y="98">~/.local/share/pnpm/store</text>
+  <text class="small" x="150" y="116">按内容哈希保存一份</text>
+
+  <rect class="proj" x="330" y="45" width="210" height="110"/>
+  <text x="435" y="78">项目 A</text>
+  <text class="small" x="435" y="98">node_modules 内符号链接</text>
+  <text class="small" x="435" y="116">.pnpm 虚拟目录 + 硬链接</text>
+
+  <rect class="proj" x="590" y="45" width="210" height="110"/>
+  <text x="695" y="78">项目 B</text>
+  <text class="small" x="695" y="98">复用同一份存储</text>
+  <text class="small" x="695" y="116">磁盘占用极低</text>
+
+  <line x1="260" y1="95" x2="330" y2="95" marker-end="url(#ps-arrow)"/>
+  <line x1="540" y1="95" x2="590" y2="95" marker-end="url(#ps-arrow)"/>
+
+  <rect class="link" x="170" y="205" width="520" height="60"/>
+  <text x="430" y="233">原理：存储一份 → 硬链接到虚拟目录 → 符号链接进 node_modules</text>
+  <text class="small" x="430" y="251">严格依赖隔离：幽灵依赖（Phantom Dependency）无法访问未声明依赖</text>
+
+  <text class="small" x="430" y="315">pnpm 10 起默认安全：禁止未声明的依赖（ignoredBuiltDependencies 白名单机制）</text>
+</svg>

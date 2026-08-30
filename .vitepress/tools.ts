@@ -50,6 +50,22 @@ export const CICD = [
     ],
   },
 ];
+export const PackageManager = [
+  {
+    text: "包管理器深入",
+    link: "/docs/Tools/PackageManager/index.md",
+    items: [
+      { text: "生态与选型", link: "/docs/Tools/PackageManager/Overview/index.md" },
+      { text: "lockfile 与依赖解析", link: "/docs/Tools/PackageManager/Lockfile/index.md" },
+      { text: "pnpm 原理：存储、链接与安全", link: "/docs/Tools/PackageManager/Pnpm/index.md" },
+      { text: "monorepo 与 workspaces", link: "/docs/Tools/PackageManager/Monorepo/index.md" },
+      { text: "包发布流程与版本管理", link: "/docs/Tools/PackageManager/Publish/index.md" },
+      { text: "依赖安全与供应链防护", link: "/docs/Tools/PackageManager/Security/index.md" },
+      { text: "实战：迁移 pnpm 与 monorepo 落地", link: "/docs/Tools/PackageManager/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/PackageManager/FAQ/index.md" },
+    ],
+  },
+];
 export const APITools = [
   {
     text: "接口调试工具",

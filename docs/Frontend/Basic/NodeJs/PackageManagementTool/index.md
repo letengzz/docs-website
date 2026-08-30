@@ -20,3 +20,11 @@
 - [npm和yarn选择](NpmYarn/index.md)
 - [管理发布包](ManageReleasePackages/index.md)
 
+## 相关专题
+
+- [包管理器深入](../../../../Tools/PackageManager/index.md)：lockfile、pnpm 原理、monorepo、发布流程与供应链安全
+
+::: info 版本现状（2026-08 核对）
+当前主流：npm 11.x、pnpm 10.x（11 为主线）、Yarn Berry 4.x、Bun 1.3.x。各工具深度对比见「包管理器深入」专题。
+:::
+
