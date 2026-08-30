@@ -80,6 +80,8 @@ el.style.transform = "translateX(100px)";
 
 ## 参考资料
 
+- 渲染性能实践：[运行时优化](../../Others/PerformanceOptimization/Runtime/index.md)
+
 - 渲染树构建（Critical Rendering Path）：https://web.dev/articles/critical-rendering-path/render-tree-construction
 - 渲染性能优化：https://web.dev/learn/performance/rendering
 - 强制同步布局说明：https://web.dev/articles/avoid-large-complex-layouts-and-layout-thrash

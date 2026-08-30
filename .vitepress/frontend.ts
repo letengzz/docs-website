@@ -536,6 +536,23 @@ export const FrontendSecurity = [
         ],
     },
 ];
+export const FrontendPerformance = [
+    {
+        text: "前端性能优化",
+        link: "/docs/Frontend/Others/PerformanceOptimization/index.md",
+        collapsed: true,
+        items: [
+            { text: "性能指标与评估", link: "/docs/Frontend/Others/PerformanceOptimization/Metrics/index.md" },
+            { text: "加载优化", link: "/docs/Frontend/Others/PerformanceOptimization/Loading/index.md" },
+            { text: "资源优化：图片、字体与代码", link: "/docs/Frontend/Others/PerformanceOptimization/Resources/index.md" },
+            { text: "运行时优化", link: "/docs/Frontend/Others/PerformanceOptimization/Runtime/index.md" },
+            { text: "构建优化与体积预算", link: "/docs/Frontend/Others/PerformanceOptimization/Build/index.md" },
+            { text: "监控与性能预算", link: "/docs/Frontend/Others/PerformanceOptimization/Monitoring/index.md" },
+            { text: "实战：性能优化全流程", link: "/docs/Frontend/Others/PerformanceOptimization/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/Others/PerformanceOptimization/FAQ/index.md" },
+        ],
+    },
+];
 export const FrontOthers = [
     {
         text: "其他",
@@ -546,6 +563,7 @@ export const FrontOthers = [
             { text: "单页面 web 应用", link: "/docs/Frontend/Others/SPA/index.md" },
             ...FrontendEngineering,
             ...FrontendSecurity,
+            ...FrontendPerformance,
         ],
     },
 ];

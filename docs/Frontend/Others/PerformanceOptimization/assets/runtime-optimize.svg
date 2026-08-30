@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="rt-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .good { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .warn { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="box" x="40" y="40" width="240" height="60"/>
+  <text x="160" y="68">长任务拆分</text>
+  <text class="small" x="160" y="86">>50ms 任务影响 INP</text>
+
+  <rect class="box" x="310" y="40" width="240" height="60"/>
+  <text x="430" y="68">虚拟列表</text>
+  <text class="small" x="430" y="86">大列表只渲染可见项</text>
+
+  <rect class="box" x="580" y="40" width="240" height="60"/>
+  <text x="700" y="68">代码分割 + 懒加载</text>
+  <text class="small" x="700" y="86">路由级 / 组件级</text>
+
+  <rect class="warn" x="40" y="160" width="240" height="60"/>
+  <text x="160" y="188">避免强制同步布局</text>
+  <text class="small" x="160" y="206">读写分离，批量样式</text>
+
+  <rect class="good" x="310" y="160" width="240" height="60"/>
+  <text x="430" y="188">防抖节流 + 缓存</text>
+  <text class="small" x="430" y="206">请求缓存 / 计算缓存</text>
+
+  <rect class="good" x="580" y="160" width="240" height="60"/>
+  <text x="700" y="188">Web Worker</text>
+  <text class="small" x="700" y="206">重计算移出主线程</text>
+
+  <text class="small" x="430" y="270">主线程三大敌人：长任务、布局抖动、内存泄漏</text>
+  <text class="small" x="430" y="290">工具：Performance 面板 / React Profiler / Vue DevTools</text>
+  <text class="small" x="430" y="330">目标：INP ≤ 200ms，主线程空闲，无内存持续增长</text>
+</svg>

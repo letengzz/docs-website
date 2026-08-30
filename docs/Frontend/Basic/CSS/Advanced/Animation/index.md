@@ -196,6 +196,7 @@ document.querySelector('.icon').style.animationPlayState = 'paused';
 
 ## 参考资料
 
+- 主线程与渲染性能：[前端性能优化 · 运行时优化](../../Others/PerformanceOptimization/Runtime/index.md)
 - [MDN：CSS 动画性能](https://developer.mozilla.org/zh-CN/docs/Web/Performance/CSS_JavaScript_animation_performance)
 - [MDN：滚动驱动动画](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline)
 - [MDN：View Transitions API](https://developer.mozilla.org/zh-CN/docs/Web/API/View_Transitions_API)

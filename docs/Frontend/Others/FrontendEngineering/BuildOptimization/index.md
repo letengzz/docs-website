@@ -164,6 +164,7 @@ location /assets/ {
 
 ## 参考资料
 
+- 体积预算与 CI 门禁：[构建优化与体积预算](../PerformanceOptimization/Build/index.md)
 - Vite 构建配置：https://vitejs.dev/config/build-options.html
 - Rollup manualChunks：https://rollupjs.org/configuration-options/#output-manualchunks
 - 前端性能优化清单：https://web.dev/learn/performance/

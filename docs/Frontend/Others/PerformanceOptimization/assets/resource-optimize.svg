@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ro-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .img { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .font { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .js { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+  </style>
+
+  <rect class="img" x="40" y="40" width="240" height="80"/>
+  <text x="160" y="70">图片优化</text>
+  <text class="small" x="160" y="92">WebP/AVIF + srcset + 懒加载</text>
+  <text class="small" x="160" y="108">尺寸匹配 + CDN 缩放</text>
+
+  <rect class="font" x="310" y="40" width="240" height="80"/>
+  <text x="430" y="70">字体优化</text>
+  <text class="small" x="430" y="92">font-display: swap + 子集化</text>
+  <text class="small" x="430" y="108">woff2 + preload</text>
+
+  <rect class="js" x="580" y="40" width="240" height="80"/>
+  <text x="700" y="70">JS/CSS 优化</text>
+  <text class="small" x="700" y="92">Tree-shaking + 代码分割</text>
+  <text class="small" x="700" y="108">Gzip/Brotli + HTTP 缓存</text>
+
+  <rect class="js" x="300" y="200" width="260" height="60"/>
+  <text x="430" y="228">资源体积目标</text>
+  <text class="small" x="430" y="248">首屏 JS ≤ 200KB（gzip），图片按视口裁剪</text>
+
+  <text class="small" x="430" y="300">每一项都可量化：请求数、字节数、缓存命中率、懒加载触发率</text>
+  <text class="small" x="430" y="320">工具：DevTools Network / Coverage / bundle 分析</text>
+</svg>

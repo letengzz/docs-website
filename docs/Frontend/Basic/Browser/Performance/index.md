@@ -80,6 +80,7 @@ CLS ≤ 0.1
 
 ## 参考资料
 
+- 前端性能优化专题：[性能指标与评估](../../Others/PerformanceOptimization/Metrics/index.md)、[监控与性能预算](../../Others/PerformanceOptimization/Monitoring/index.md)
 - Core Web Vitals：https://web.dev/learn-core-web-vitals/
 - Lighthouse：https://developer.chrome.com/docs/lighthouse/overview/
 - web-vitals：https://github.com/GoogleChrome/web-vitals

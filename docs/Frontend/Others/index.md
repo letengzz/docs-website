@@ -5,3 +5,4 @@
 - [单页面 web 应用](SPA/index.md)
 - [前端工程化](FrontendEngineering/index.md)
 - [前端安全](Security/index.md)
+- [前端性能优化](PerformanceOptimization/index.md)
