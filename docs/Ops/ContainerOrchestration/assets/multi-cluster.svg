@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="mc-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .hub { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .clu { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .use { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="hub" x="330" y="50" width="200" height="60"/>
+  <text x="430" y="85">管理面（Hub）</text>
+
+  <line x1="380" y1="110" x2="180" y2="160" marker-end="url(#mc-arrow)"/>
+  <line x1="430" y1="110" x2="430" y2="160" marker-end="url(#mc-arrow)"/>
+  <line x1="480" y1="110" x2="680" y2="160" marker-end="url(#mc-arrow)"/>
+
+  <rect class="clu" x="80" y="162" width="200" height="60"/>
+  <text x="180" y="192">集群 A（主）</text>
+  <rect class="clu" x="330" y="162" width="200" height="60"/>
+  <text x="430" y="192">集群 B（备）</text>
+  <rect class="clu" x="580" y="162" width="200" height="60"/>
+  <text x="680" y="192">集群 C（地域）</text>
+
+  <rect class="use" x="330" y="260" width="200" height="44"/>
+  <text x="430" y="287">流量切换 / 容灾</text>
+
+  <line x1="430" y1="222" x2="430" y2="260" marker-end="url(#mc-arrow)"/>
+
+  <text class="small" x="430" y="325">模式：联邦（KubeFed）、多集群服务（MCS）、独立 + 统一 GitOps 管理</text>
+</svg>

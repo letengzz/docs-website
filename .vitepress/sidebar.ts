@@ -3,7 +3,7 @@ import { DesignPatterns, DotNet, Go, Java, MessageQueue, Microservices, NetworkP
 
 import { AI_Agent, AI_OpenClaw, AI_PromptEngineering } from "./AI";
 import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers } from "./frontend";
-import { Docker, JumpServer, Kubernetes, Linux, Monitoring, Network, Nginx, OpsOthers, VM } from "./ops";
+import { ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, Monitoring, Network, Nginx, OpsOthers, VM } from "./ops";
 import { DBOverview, NoRelational, Relational, SQLOptimization } from "./db";
 import { Build, CICD, IDE, Others, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
@@ -52,7 +52,7 @@ export const sidebar = {
     {
       text: "运维",
       collapsed: true,
-      items: [...VM, ...Linux, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...Monitoring, ...JumpServer, ...OpsOthers],
+      items: [...VM, ...Linux, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...Monitoring, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
@@ -112,6 +112,7 @@ export const sidebar = {
   "/docs/Ops/Network": Network,
   "/docs/Ops/Docker": Docker,
   "/docs/Ops/Kubernetes": Kubernetes,
+  "/docs/Ops/ContainerOrchestration": ContainerOrchestration,
   "/docs/Ops/Monitoring": Monitoring,
   "/docs/Ops/JumpServer": JumpServer,
   "/docs/Ops/Others": OpsOthers,

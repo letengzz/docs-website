@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="as-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .metrics { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .hpa { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .deploy { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="metrics" x="40" y="60" width="200" height="70"/>
+  <text x="140" y="90">指标采集</text>
+  <text class="small" x="140" y="110">metrics-server / Prometheus</text>
+
+  <rect class="hpa" x="330" y="60" width="200" height="70"/>
+  <text x="430" y="90">HPA 控制器</text>
+  <text class="small" x="430" y="110">期望/实际 副本数计算</text>
+
+  <rect class="deploy" x="620" y="60" width="200" height="70"/>
+  <text x="720" y="90">Deployment 副本</text>
+  <text class="small" x="720" y="110">扩容 / 缩容</text>
+
+  <line x1="240" y1="95" x2="330" y2="95" marker-end="url(#as-arrow)"/>
+  <line x1="530" y1="95" x2="620" y2="95" marker-end="url(#as-arrow)"/>
+
+  <rect class="deploy" x="330" y="200" width="200" height="54"/>
+  <text x="430" y="228">VPA / KEDA / 节点扩缩</text>
+  <text class="small" x="430" y="246">纵向与事件驱动</text>
+
+  <line x1="720" y1="130" x2="720" y2="175" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="720" y1="175" x2="555" y2="200" marker-end="url(#as-arrow)"/>
+
+  <text class="small" x="430" y="290">HPA 公式：期望副本 = ceil(当前副本 × 当前指标/目标指标)</text>
+  <text class="small" x="430" y="310">KEDA：事件驱动（消息队列、HTTP 流量）扩容</text>
+  <text class="small" x="430" y="330">注意：缩容冷却（scaleDown 策略）防抖动</text>
+</svg>

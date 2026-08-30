@@ -115,9 +115,14 @@ Prometheus 最新稳定为 **3.14.x**，Grafana 为 **13.x**，Alertmanager 为 
 2. 在 Grafana 配置第一个面板，能看到主机 CPU 曲线。
 3. 故意让一个接口返回 500，确认告警在配置的持续时间内触发并通知。
 
+## 相关专题
+
+- [容器编排进阶 · 弹性伸缩](../../ContainerOrchestration/Autoscaling/index.md)：HPA/KEDA 扩缩与监控指标联动
+- [容器编排进阶 · GitOps 实战](../../ContainerOrchestration/Practice/index.md)：告警规则随应用交付、故障演练后回滚
+
 ## 参考资料
 
-- 网络层监控指标：[网络基础 · 网络排查方法论](../Network/Troubleshoot/index.md)
+- 网络层监控指标：[网络基础 · 网络排查方法论](../../Network/Troubleshoot/index.md)
 - Prometheus 文档：https://prometheus.io/docs/
 - Grafana 文档：https://grafana.com/docs/
 - 可观测性工程（O'Reilly 书籍）

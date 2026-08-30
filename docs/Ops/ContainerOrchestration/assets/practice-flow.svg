@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="pf-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .dev { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .ci { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .cd { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .run { fill: #f6eefb; stroke: #8b5cc7; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="dev" x="35" y="55" width="150" height="70"/>
+  <text x="110" y="83">开发者提交</text>
+  <text class="small" x="110" y="102">git push</text>
+
+  <rect class="ci" x="220" y="55" width="170" height="70"/>
+  <text x="305" y="83">CI 构建镜像</text>
+  <text class="small" x="305" y="102">测试 + 推送制品</text>
+
+  <rect class="cd" x="425" y="55" width="170" height="70"/>
+  <text x="510" y="83">Argo CD 同步</text>
+  <text class="small" x="510" y="102">Git 即真相</text>
+
+  <rect class="run" x="630" y="55" width="190" height="70"/>
+  <text x="725" y="83">K8s 集群运行</text>
+  <text class="small" x="725" y="102">HPA 弹性伸缩</text>
+
+  <line x1="185" y1="90" x2="220" y2="90" marker-end="url(#pf-arrow)"/>
+  <line x1="390" y1="90" x2="425" y2="90" marker-end="url(#pf-arrow)"/>
+  <line x1="595" y1="90" x2="630" y2="90" marker-end="url(#pf-arrow)"/>
+
+  <rect class="cd" x="425" y="200" width="200" height="58"/>
+  <text x="525" y="228">监控与告警联动</text>
+  <text class="small" x="525" y="246">Prometheus + Grafana</text>
+
+  <line x1="725" y1="125" x2="725" y2="168" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="725" y1="168" x2="650" y2="200" marker-end="url(#pf-arrow)"/>
+
+  <line x1="525" y1="258" x2="525" y2="285" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="525" y1="285" x2="330" y2="285" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="330" y1="285" x2="330" y2="125" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="330" y1="125" x2="305" y2="125" marker-end="url(#pf-arrow)"/>
+
+  <text class="small" x="430" y="320">闭环：提交 → 构建 → 同步 → 运行 → 观测 → 修复</text>
+</svg>

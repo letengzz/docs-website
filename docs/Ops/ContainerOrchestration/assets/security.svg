@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="sec-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .node { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .warn { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="node" x="40" y="45" width="180" height="62"/>
+  <text x="130" y="73">RBAC 授权</text>
+  <text class="small" x="130" y="93">最小权限 / 审计</text>
+
+  <rect class="node" x="240" y="45" width="180" height="62"/>
+  <text x="330" y="73">NetworkPolicy</text>
+  <text class="small" x="330" y="93">东西向流量隔离</text>
+
+  <rect class="node" x="440" y="45" width="180" height="62"/>
+  <text x="530" y="73">Pod 安全（PSA）</text>
+  <text class="small" x="530" y="93">特权容器管控</text>
+
+  <rect class="warn" x="640" y="45" width="180" height="62"/>
+  <text x="730" y="73">镜像扫描</text>
+  <text class="small" x="730" y="93">Trivy / 签名验证</text>
+
+  <rect class="ok" x="240" y="180" width="380" height="62"/>
+  <text x="430" y="208">策略引擎：Kyverno / OPA Gatekeeper</text>
+  <text class="small" x="430" y="228">准入控制 + 策略即代码</text>
+
+  <line x1="130" y1="107" x2="250" y2="180" marker-end="url(#sec-arrow)"/>
+  <line x1="330" y1="107" x2="330" y2="180" marker-end="url(#sec-arrow)"/>
+  <line x1="530" y1="107" x2="530" y2="180" marker-end="url(#sec-arrow)"/>
+  <line x1="730" y1="107" x2="650" y2="180" marker-end="url(#sec-arrow)"/>
+
+  <rect class="ok" x="240" y="262" width="380" height="58"/>
+  <text x="430" y="290">纵深防御：限制攻击面 + 缩小爆炸半径</text>
+  <text class="small" x="430" y="308">Supply chain → 集群 → 工作负载 → 运行时</text>
+</svg>

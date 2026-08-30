@@ -196,6 +196,7 @@ volumes:
 - [消息队列集群部署](../../../Backend/MessageQueue/Cluster/index.md)：用 Compose 编排 Kafka KRaft / RabbitMQ 三节点集群的完整示例
 - [Kubernetes 专题](../../Kubernetes/index.md)：容器编排进阶，从 Compose 迁移到 K8s 的部署方式
 - [微服务实战](../../../Backend/Microservices/Practice/index.md)：用 Compose 一键启动 Nacos/Seata/MySQL 微服务基础设施
+- [容器编排进阶](../../ContainerOrchestration/index.md)：从 Compose 走向 Helm、GitOps 与多集群的生产化编排
 
 ## 参考资料
 

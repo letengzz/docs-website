@@ -89,6 +89,11 @@ spec:
 2. `curl -H "Host: app.example.com" http://<controller-ip>/api` 验证路由。
 3. `kubectl describe ingress web-ingress` 查看规则详情。
 
+## 相关专题
+
+- [服务网格](../../ContainerOrchestration/ServiceMesh/index.md)：用 Istio Gateway/VirtualService 做更精细的流量治理与灰度
+- [容器编排进阶](../../ContainerOrchestration/index.md)：生产环境多入口统一治理
+
 ## 参考资料
 
 - Ingress 文档：https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/

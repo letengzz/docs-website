@@ -81,6 +81,8 @@ helm install kube-prometheus prometheus-community/kube-prometheus-stack
 
 - [监控告警专题](../../Monitoring/index.md)：Prometheus、Grafana、Alertmanager 与 Loki 的完整体系
 - [监控告警实战](../../Monitoring/Practice/index.md)：用 Docker Compose 搭建监控栈的完整示例
+- [容器编排进阶 · 弹性伸缩](../../ContainerOrchestration/Autoscaling/index.md)：HPA 扩缩指标与告警联动
+- [容器编排进阶 · GitOps 实战](../../ContainerOrchestration/Practice/index.md)：告警规则随应用清单一起交付
 
 ## 参考资料
 

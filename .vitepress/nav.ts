@@ -34,6 +34,7 @@ export const nav = [
       { text: "网络基础", link: "/docs/Ops/Network" },
       { text: "Docker", link: "/docs/Ops/Docker" },
       { text: "Kubernetes", link: "/docs/Ops/Kubernetes" },
+      { text: "容器编排进阶", link: "/docs/Ops/ContainerOrchestration" },
       { text: "监控告警", link: "/docs/Ops/Monitoring" },
       { text: "JumpServer", link: "/docs/Ops/JumpServer" },
       { text: "其他", link: "/docs/Ops/Others" },

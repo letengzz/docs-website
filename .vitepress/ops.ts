@@ -125,3 +125,20 @@ export const Network = [
 ];
 export const OpsOthers = [{ text: "运维其他", link: "/docs/Ops/Others/index.md" }];
 export const VM = [{ text: "虚拟机", link: "/docs/Ops/VM/index.md" }];
+export const ContainerOrchestration = [
+  {
+    text: "容器编排进阶",
+    link: "/docs/Ops/ContainerOrchestration/index.md",
+    items: [
+      { text: "Helm：Kubernetes 应用包管理", link: "/docs/Ops/ContainerOrchestration/Helm/index.md" },
+      { text: "Operator：把运维经验变成代码", link: "/docs/Ops/ContainerOrchestration/Operator/index.md" },
+      { text: "服务网格：Istio 流量与安全治理", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/index.md" },
+      { text: "弹性伸缩：HPA、VPA 与 KEDA", link: "/docs/Ops/ContainerOrchestration/Autoscaling/index.md" },
+      { text: "多集群：联邦、MCS 与容灾", link: "/docs/Ops/ContainerOrchestration/MultiCluster/index.md" },
+      { text: "GitOps：Argo CD 声明式交付", link: "/docs/Ops/ContainerOrchestration/GitOps/index.md" },
+      { text: "容器与集群安全加固", link: "/docs/Ops/ContainerOrchestration/Security/index.md" },
+      { text: "实战：GitOps + 弹性伸缩交付闭环", link: "/docs/Ops/ContainerOrchestration/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/ContainerOrchestration/FAQ/index.md" },
+    ],
+  },
+];

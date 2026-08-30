@@ -105,6 +105,10 @@ Namespace
 2. `kubectl get nodes` 查看节点状态 Ready。
 3. `kubectl apply -f deployment.yaml && kubectl get pods` 观察 Pod 进入 Running。
 
+## 相关专题
+
+- [容器编排进阶](../../ContainerOrchestration/index.md)：Helm 打包、Operator、服务网格、弹性伸缩、GitOps 与多集群
+
 ## 参考资料
 
 - Kubernetes 官方文档：https://kubernetes.io/zh-cn/docs/

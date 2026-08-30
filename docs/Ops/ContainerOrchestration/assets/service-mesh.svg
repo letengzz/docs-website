@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="350" viewBox="0 0 860 350" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="sm-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .svc { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .sidecar { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .plane { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="svc" x="60" y="80" width="140" height="60"/>
+  <text x="130" y="110">服务 A</text>
+  <rect class="sidecar" x="60" y="160" width="140" height="50"/>
+  <text x="130" y="188">sidecar（Envoy）</text>
+
+  <rect class="svc" x="660" y="80" width="140" height="60"/>
+  <text x="730" y="110">服务 B</text>
+  <rect class="sidecar" x="660" y="160" width="140" height="50"/>
+  <text x="730" y="188">sidecar（Envoy）</text>
+
+  <line x1="200" y1="185" x2="660" y2="185" stroke="#3aa76d" stroke-width="2" marker-end="url(#sm-arrow)"/>
+  <text class="small" x="430" y="175">mTLS 加密 + 流量治理</text>
+
+  <rect class="plane" x="320" y="270" width="220" height="54"/>
+  <text x="430" y="298">控制面（istiod）</text>
+  <text class="small" x="430" y="316">配置分发 / 证书 / 策略</text>
+
+  <line x1="130" y1="210" x2="370" y2="270" marker-end="url(#sm-arrow)"/>
+  <line x1="730" y1="210" x2="490" y2="270" marker-end="url(#sm-arrow)"/>
+
+  <text class="small" x="430" y="330">能力：流量管理 / 可观测 / 安全（mTLS、授权）/ 弹性（重试、熔断）</text>
+  <text class="small" x="430" y="350">模式：Sidecar 模式（成熟）与 Ambient 模式（无 sidecar，Istio 1.29 生产就绪）</text>
+</svg>

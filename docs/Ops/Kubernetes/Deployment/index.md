@@ -102,6 +102,11 @@ kubectl autoscale deployment/web --min=2 --max=10 --cpu-percent=70
 2. `kubectl rollout status deployment/web` 看到 `successfully rolled out`。
 3. `kubectl get rs` 观察新旧 ReplicaSet 并存，滚动完成后旧的缩为 0。
 
+## 相关专题
+
+- [弹性伸缩](../../ContainerOrchestration/Autoscaling/index.md)：用 HPA/VPA/KEDA 自动增减副本，配套 Deployment 的滚动发布
+- [容器编排进阶](../../ContainerOrchestration/index.md)：Helm 与 GitOps 让 Deployment 交付与回滚可声明、可审计
+
 ## 参考资料
 
 - Deployment 文档：https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/

@@ -123,6 +123,11 @@
 2. 为候选服务写「独立部署、独立扩展、独立故障」三项评估，判断是否值得拆分。
 3. 在 demo 环境完成一次“单体 → 抽取 1 个服务”的演练，验证接口联调与回滚。
 
+## 相关专题
+
+- [服务网格](../../../Ops/ContainerOrchestration/ServiceMesh/index.md)：用 Istio 统一微服务的流量治理、mTLS 与可观测性
+- [容器编排进阶](../../../Ops/ContainerOrchestration/index.md)：微服务在 K8s 上的打包、交付与多集群容灾
+
 ## 参考资料
 
 - Martin Fowler 微服务原文：https://martinfowler.com/articles/microservices.html
