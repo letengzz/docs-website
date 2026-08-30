@@ -147,6 +147,10 @@ echo | openssl s_client -connect example.com:443 2>/dev/null | grep "Verify retu
 
 预期：返回 200、重定向链无循环、证书校验码为 `ok (0)`。
 
+## 相关专题
+
+- [接口调试工具](../../../Tools/APITools/index.md)：调试 HTTPS 接口与证书校验问题
+
 ## 参考资料
 
 - [MDN：HTTP](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)

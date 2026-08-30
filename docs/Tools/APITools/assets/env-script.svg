@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="es-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .pre { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .req { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .test { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .env { fill: #f6eefb; stroke: #8b5cc7; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #3aa76d; stroke-width: 1.4; }
+  </style>
+
+  <rect class="env" x="35" y="45" width="760" height="48"/>
+  <text x="415" y="72">环境变量：{{baseUrl}} / {{token}} / {{userId}}（不同环境不同值）</text>
+
+  <rect class="pre" x="35" y="120" width="200" height="70"/>
+  <text x="135" y="148">Pre-request 脚本</text>
+  <text class="small" x="135" y="168">发送前：签名 / 时间戳 / 动态数据</text>
+
+  <rect class="req" x="330" y="120" width="200" height="70"/>
+  <text x="430" y="148">发送请求</text>
+  <text class="small" x="430" y="168">变量替换 → 网络请求</text>
+
+  <rect class="test" x="625" y="120" width="200" height="70"/>
+  <text x="725" y="148">Tests 脚本</text>
+  <text class="small" x="725" y="168">断言 / 提取 token 回写变量</text>
+
+  <line x1="235" y1="155" x2="330" y2="155" marker-end="url(#es-arrow)"/>
+  <line x1="530" y1="155" x2="625" y2="155" marker-end="url(#es-arrow)"/>
+
+  <rect class="pre" x="170" y="235" width="520" height="58"/>
+  <text x="430" y="263">典型链路：登录获取 token → 写入环境变量 → 后续接口复用</text>
+  <text class="small" x="430" y="281">脚本语言：Postman JS（pm.*）/ Apifox JS（pm.* 兼容 + 扩展）</text>
+</svg>

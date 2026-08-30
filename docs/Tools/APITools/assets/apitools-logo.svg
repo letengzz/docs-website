@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <linearGradient id="lg-req" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff8a3d"/>
+      <stop offset="100%" stop-color="#e56a1f"/>
+    </linearGradient>
+    <linearGradient id="lg-res" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3aa76d"/>
+      <stop offset="100%" stop-color="#278a55"/>
+    </linearGradient>
+  </defs>
+  <rect x="24" y="24" width="464" height="464" rx="48" fill="#fff3e0" stroke="#e56a1f" stroke-width="6"/>
+  <rect x="92" y="96" width="210" height="120" rx="20" fill="url(#lg-req)"/>
+  <text x="197" y="152" text-anchor="middle" font-size="30" font-weight="bold" fill="#fff">请求</text>
+  <text x="197" y="188" text-anchor="middle" font-size="20" fill="#ffe8d6">Request</text>
+  <rect x="318" y="96" width="120" height="120" rx="20" fill="url(#lg-res)"/>
+  <text x="378" y="152" text-anchor="middle" font-size="30" font-weight="bold" fill="#fff">响应</text>
+  <text x="378" y="188" text-anchor="middle" font-size="20" fill="#d9f2e3">Response</text>
+  <path d="M 302 156 L 318 156" stroke="#e56a1f" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 378 216 L 378 268 L 197 268 L 197 216" fill="none" stroke="#e56a1f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 222 236 L 197 268" stroke="#e56a1f" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 172 236 L 197 268" stroke="#e56a1f" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="197" cy="300" r="46" fill="none" stroke="#e56a1f" stroke-width="10"/>
+  <circle cx="197" cy="300" r="12" fill="#e56a1f"/>
+  <text x="256" y="424" text-anchor="middle" font-size="42" font-weight="bold" fill="#b34a12">接口调试工具</text>
+  <text x="256" y="458" text-anchor="middle" font-size="22" fill="#666">API Testing Tools</text>
+</svg>

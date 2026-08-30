@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="at-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .col { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .cli { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .ci { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .rep { fill: #f6eefb; stroke: #8b5cc7; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="col" x="35" y="55" width="170" height="70"/>
+  <text x="120" y="83">测试集合</text>
+  <text class="small" x="120" y="102">用例 + 断言 + 数据</text>
+
+  <rect class="cli" x="240" y="55" width="170" height="70"/>
+  <text x="325" y="83">CLI 运行</text>
+  <text class="small" x="325" y="102">Postman CLI / Apifox CLI</text>
+
+  <rect class="ci" x="445" y="55" width="170" height="70"/>
+  <text x="530" y="83">CI 集成</text>
+  <text class="small" x="530" y="102">GitHub Actions / GitLab CI</text>
+
+  <rect class="rep" x="650" y="55" width="175" height="70"/>
+  <text x="737" y="83">测试报告</text>
+  <text class="small" x="737" y="102">JUnit XML / 汇总</text>
+
+  <line x1="205" y1="90" x2="240" y2="90" marker-end="url(#at-arrow)"/>
+  <line x1="410" y1="90" x2="445" y2="90" marker-end="url(#at-arrow)"/>
+  <line x1="615" y1="90" x2="650" y2="90" marker-end="url(#at-arrow)"/>
+
+  <rect class="rep" x="240" y="200" width="385" height="60"/>
+  <text x="432" y="228">质量门禁：失败即阻断合并 / 发布</text>
+  <text class="small" x="432" y="246">与 CI/CD 专题配合使用</text>
+
+  <line x1="737" y1="125" x2="737" y2="168" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="737" y1="168" x2="625" y2="200" marker-end="url(#at-arrow)"/>
+</svg>

@@ -108,6 +108,10 @@ docker run -d --name redisinsight -p 5540:5540 redis/redisinsight:latest
 2. 连接测试通过，能浏览到库和表。
 3. 在 SQL 编辑器执行 `SELECT 1;`（或对应方言的等效语句）并看到结果。
 
+## 相关专题
+
+- [接口调试工具](../../APITools/index.md)：接口返回的数据可与数据库客户端核对，形成「请求-数据」双验证
+
 ## 参考资料
 
 - Navicat 官网：<https://www.navicat.com.cn/>

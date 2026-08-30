@@ -50,6 +50,22 @@ export const CICD = [
     ],
   },
 ];
+export const APITools = [
+  {
+    text: "接口调试工具",
+    link: "/docs/Tools/APITools/index.md",
+    items: [
+      { text: "概述与选型", link: "/docs/Tools/APITools/Overview/index.md" },
+      { text: "Postman：请求调试与协作", link: "/docs/Tools/APITools/Postman/index.md" },
+      { text: "Apifox：接口设计到测试一体化", link: "/docs/Tools/APITools/Apifox/index.md" },
+      { text: "环境变量与脚本", link: "/docs/Tools/APITools/Environment/index.md" },
+      { text: "Mock 数据与模拟服务", link: "/docs/Tools/APITools/Mock/index.md" },
+      { text: "自动化测试与 CI 集成", link: "/docs/Tools/APITools/Automation/index.md" },
+      { text: "实战：接口调试全流程", link: "/docs/Tools/APITools/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/APITools/FAQ/index.md" },
+    ],
+  },
+];
 export const DatabaseClients = [
   {
     text: "数据库客户端",

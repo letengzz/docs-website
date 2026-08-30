@@ -50,6 +50,7 @@ export const nav = [
       { text: "构建和依赖管理工具", link: "/docs/Tools/Build" },
       { text: "CI/CD", link: "/docs/Tools/CICD" },
       { text: "数据库客户端", link: "/docs/Tools/DatabaseClients" },
+      { text: "接口调试工具", link: "/docs/Tools/APITools" },
       { text: "IDE工具", link: "/docs/Tools/IDE" },
       { text: "版本控制工具", link: "/docs/Tools/VersionControl" },
       { text: "其他", link: "/docs/Tools/Others" }

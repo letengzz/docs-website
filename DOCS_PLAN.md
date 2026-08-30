@@ -74,7 +74,7 @@
 | 39 | Ops | 网络基础 ✅ | 网络分层、DNS、TCP/IP、HTTP/HTTPS、抓包分析、常见问题 |
 | 40 | Ops | 容器编排进阶 ✅ | Helm、Operator、服务网格、弹性伸缩、多集群、GitOps、安全、实战、常见问题 |
 | 41 | Tools | 数据库客户端 ✅ | Navicat、DBeaver、RedisInsight、常用操作、连接管理、常见问题 |
-| 42 | Tools | 接口调试工具 | Postman、Apifox、环境与脚本、Mock、自动化测试、常见问题 |
+| 42 | Tools | 接口调试工具 ✅ | Postman、Apifox、环境与脚本、Mock、自动化测试、常见问题 |
 | 43 | Tools | 包管理器深入 | npm/pnpm/yarn 对比、pnpm 原理、monorepo、发布流程、常见问题 |
 | 44 | Backend | Spring Cloud | 注册中心、配置中心、网关、熔断限流、链路追踪、实战案例、常见问题 |
 | 45 | Backend | Kafka 深入 | 架构、生产者、消费者、分区与副本、可靠性、集群、实战、常见问题 |
@@ -179,6 +179,7 @@
 - [x] 断链修复：LangChain4j Rag/Concepts 缺失的架构图已补 SVG（rag-architecture、architecture），构建恢复正常
 - [x] Ops 存量补全：容器编排进阶专题已建设（9 篇，第 40 天），补充 Kubernetes（Overview/Deployment/Ingress/Monitoring）、Docker Compose 进阶、监控概览、后端微服务概览交叉链接与 Logo/示意图
 - [x] Tools 存量补全：数据库客户端专题已建设（8 篇，第 41 天），补充 MySQL/Redis/MongoDB/PostgreSQL 概览与 FAQ、IDE 工具交叉链接，并修复 3 处失效 PostgreSQL 相对链接
+- [x] Tools 存量补全：接口调试工具专题已建设（8 篇，第 42 天），补充 CI/CD 测试、前端 HTTP、后端网络编程 HTTP、运维网络 HTTP、IDE 工具、数据库客户端交叉链接
 
 ## 节奏建议
 

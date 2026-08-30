@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="mk-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e56a1f"/>
+    </marker>
+  </defs>
+  <style>
+    .front { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .mock { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .real { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #e56a1f; stroke-width: 1.4; }
+  </style>
+
+  <rect class="front" x="40" y="70" width="180" height="70"/>
+  <text x="130" y="98">前端开发</text>
+  <text class="small" x="130" y="118">按 Mock 并行开发</text>
+
+  <rect class="mock" x="340" y="70" width="180" height="70"/>
+  <text x="430" y="98">Mock 服务</text>
+  <text class="small" x="430" y="118">智能规则生成假数据</text>
+
+  <rect class="real" x="640" y="70" width="180" height="70"/>
+  <text x="730" y="98">真实后端</text>
+  <text class="small" x="730" y="118">联调后切换</text>
+
+  <line x1="220" y1="105" x2="340" y2="105" marker-end="url(#mk-arrow)"/>
+  <line x1="520" y1="105" x2="640" y2="105" marker-end="url(#mk-arrow)"/>
+
+  <rect class="mock" x="220" y="215" width="420" height="60"/>
+  <text x="430" y="243">价值：前后端并行开发，接口未完成不阻塞前端</text>
+  <text class="small" x="430" y="261">规则：按字段类型生成 → 支持动态表达式与状态码控制</text>
+
+  <line x1="730" y1="140" x2="730" y2="180" stroke="#e56a1f" stroke-dasharray="5 4"/>
+  <line x1="730" y1="180" x2="640" y2="215" marker-end="url(#mk-arrow)"/>
+</svg>

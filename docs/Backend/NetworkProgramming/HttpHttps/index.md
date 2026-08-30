@@ -131,6 +131,10 @@ ETag: "abc123"
 2. 用 `curl -I` 查看缓存头，测试 304 协商缓存。
 3. 用浏览器 DevTools Network 面板观察 HTTP/2/3 协议标识与加载瀑布。
 
+## 相关专题
+
+- [接口调试工具](../../../Tools/APITools/index.md)：用 Postman/Apifox 构造 HTTP 请求与断言响应
+
 ## 参考资料
 
 - RFC 9110（HTTP 语义）：https://www.rfc-editor.org/rfc/rfc9110

@@ -225,6 +225,7 @@ steps:
 
 - [前端工程化 CI 集成](../../../Frontend/Others/FrontendEngineering/CIIntegration/index.md)：前端 lint/typecheck/test/build 流水线与预览部署
 - [前端单元测试与组件测试](../../../Frontend/Others/FrontendEngineering/Testing/index.md)：Vitest 覆盖率门禁与 Playwright E2E
+- [接口调试工具](../../APITools/index.md)：接口自动化回归与 Newman/Apifox CLI 质量门禁
 
 ## 参考资料
 
