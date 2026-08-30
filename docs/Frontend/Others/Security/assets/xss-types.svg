@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="xs-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .type { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .risk { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .def { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="type" x="40" y="40" width="240" height="70"/>
+  <text x="160" y="70">反射型 XSS</text>
+  <text class="small" x="160" y="92">恶意脚本随请求反射回页面</text>
+
+  <rect class="type" x="310" y="40" width="240" height="70"/>
+  <text x="430" y="70">存储型 XSS</text>
+  <text class="small" x="430" y="92">脚本存进数据库，所有人中招</text>
+
+  <rect class="type" x="580" y="40" width="240" height="70"/>
+  <text x="700" y="70">DOM 型 XSS</text>
+  <text class="small" x="700" y="92">纯前端 DOM 操作触发</text>
+
+  <line x1="160" y1="110" x2="160" y2="160" marker-end="url(#xs-arrow)"/>
+  <line x1="430" y1="110" x2="430" y2="160" marker-end="url(#xs-arrow)"/>
+  <line x1="700" y1="110" x2="700" y2="160" marker-end="url(#xs-arrow)"/>
+
+  <rect class="risk" x="40" y="162" width="240" height="60"/>
+  <text x="160" y="190">危害：窃取 Cookie / 会话劫持</text>
+  <rect class="risk" x="310" y="162" width="240" height="60"/>
+  <text x="430" y="190">危害：钓鱼 / 键盘记录</text>
+  <rect class="risk" x="580" y="162" width="240" height="60"/>
+  <text x="700" y="190">危害：篡改页面 / 挖矿</text>
+
+  <rect class="def" x="150" y="270" width="560" height="56"/>
+  <text x="430" y="298">防御：输出编码 + 输入校验 + CSP + HttpOnly</text>
+  <text class="small" x="430" y="316">textContent 而非 innerHTML；富文本走白名单</text>
+
+  <line x1="430" y1="222" x2="430" y2="270" marker-end="url(#xs-arrow)"/>
+
+  <text class="small" x="430" y="350">三大类型防御要点一致，但入口不同：反射看 URL，存储看数据库，DOM 看前端代码</text>
+</svg>

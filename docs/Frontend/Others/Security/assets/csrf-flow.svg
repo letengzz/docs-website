@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="cf-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .bad { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .mid { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="bad" x="30" y="50" width="200" height="64"/>
+  <text x="130" y="80">恶意网站</text>
+  <text class="small" x="130" y="100">&lt;img src="转账接口"&gt;</text>
+
+  <rect class="mid" x="330" y="50" width="200" height="64"/>
+  <text x="430" y="80">用户浏览器</text>
+  <text class="small" x="430" y="100">自动携带 Cookie</text>
+
+  <rect class="ok" x="630" y="50" width="200" height="64"/>
+  <text x="730" y="80">银行网站</text>
+  <text class="small" x="730" y="100">误以为是用户操作</text>
+
+  <line x1="230" y1="82" x2="330" y2="82" marker-end="url(#cf-arrow)"/>
+  <text class="small" x="280" y="72">1. 诱导访问</text>
+  <line x1="530" y1="82" x2="630" y2="82" marker-end="url(#cf-arrow)"/>
+  <text class="small" x="580" y="72">2. 自动发请求</text>
+
+  <rect class="bad" x="30" y="200" width="200" height="54"/>
+  <text x="130" y="228">无 CSRF 防护</text>
+  <rect class="ok" x="330" y="200" width="200" height="54"/>
+  <text x="430" y="228">SameSite Cookie</text>
+  <rect class="ok" x="630" y="200" width="200" height="54"/>
+  <text x="730" y="228">CSRF Token / 双因子</text>
+
+  <line x1="430" y1="114" x2="430" y2="200" marker-end="url(#cf-arrow)"/>
+
+  <text class="small" x="430" y="290">本质：浏览器分不清请求是谁发起的，只认 Cookie；防护 = 让伪造请求「验不过」</text>
+  <text class="small" x="430" y="310">现代方案：SameSite=Lax 覆盖绝大多数场景，敏感操作再叠加 Token</text>
+  <text class="small" x="430" y="340">配合 CORS 配置：跨源读取受同源策略限制，但写请求仍会发送</text>
+</svg>

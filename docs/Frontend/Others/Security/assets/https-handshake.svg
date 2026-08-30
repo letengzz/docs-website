@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="hs-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .cli { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .srv { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .step { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="cli" x="30" y="40" width="180" height="54"/>
+  <text x="120" y="70">客户端浏览器</text>
+  <rect class="srv" x="650" y="40" width="180" height="54"/>
+  <text x="740" y="70">HTTPS 服务器</text>
+
+  <rect class="step" x="260" y="30" width="130" height="44"/>
+  <text x="325" y="58">1. ClientHello</text>
+  <line x1="210" y1="67" x2="260" y2="55" marker-end="url(#hs-arrow)"/>
+
+  <rect class="step" x="470" y="30" width="140" height="44"/>
+  <text x="540" y="58">2. ServerHello</text>
+  <text class="small" x="540" y="70">+ 证书</text>
+  <line x1="650" y1="55" x2="610" y2="55" marker-end="url(#hs-arrow)"/>
+
+  <rect class="step" x="260" y="110" width="150" height="44"/>
+  <text x="335" y="138">3. 验证证书</text>
+  <line x1="370" y1="74" x2="355" y2="110" marker-end="url(#hs-arrow)"/>
+
+  <rect class="step" x="470" y="110" width="140" height="44"/>
+  <text x="540" y="138">4. 交换密钥</text>
+  <line x1="540" y1="74" x2="540" y2="110" marker-end="url(#hs-arrow)"/>
+
+  <rect class="cli" x="30" y="180" width="180" height="54"/>
+  <text x="120" y="208">加密会话</text>
+  <text class="small" x="120" y="226">对称加密传输数据</text>
+  <rect class="srv" x="650" y="180" width="180" height="54"/>
+  <text x="740" y="208">加密会话</text>
+  <text class="small" x="740" y="226">解密处理请求</text>
+
+  <line x1="210" y1="207" x2="300" y2="207" stroke="#3aa76d" stroke-width="2"/>
+  <line x1="560" y1="207" x2="650" y2="207" stroke="#3aa76d" stroke-width="2"/>
+  <line x1="300" y1="207" x2="560" y2="207" stroke="#3aa76d" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#hs-arrow)"/>
+  <text class="small" x="430" y="197">TLS 加密通道</text>
+
+  <text class="small" x="430" y="280">证书链：服务器证书 ← 中间 CA ← 根 CA（浏览器内置信任）</text>
+  <text class="small" x="430" y="300">作用：防窃听（加密）+ 防篡改（完整性）+ 防冒充（身份认证）</text>
+  <text class="small" x="430" y="330">证书免费：Let's Encrypt；自动化：certbot / acme.sh</text>
+</svg>

@@ -87,6 +87,7 @@ Referrer-Policy: strict-origin-when-cross-origin
 
 ## 参考资料
 
+- 前端安全专题：[前端安全目录](../../Others/Security/index.md)（XSS/CSRF/CSP/HTTPS/响应头/依赖安全）
 - 同源策略（MDN）：https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy
 - OWASP XSS 防护：https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
 - Web 安全基础：https://web.dev/learn/security/

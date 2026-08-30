@@ -519,6 +519,23 @@ export const FrontendEngineering = [
         ],
     },
 ];
+export const FrontendSecurity = [
+    {
+        text: "前端安全",
+        link: "/docs/Frontend/Others/Security/index.md",
+        collapsed: true,
+        items: [
+            { text: "XSS 跨站脚本", link: "/docs/Frontend/Others/Security/XSS/index.md" },
+            { text: "CSRF 跨站请求伪造", link: "/docs/Frontend/Others/Security/CSRF/index.md" },
+            { text: "CSP 内容安全策略", link: "/docs/Frontend/Others/Security/CSP/index.md" },
+            { text: "HTTPS 与证书", link: "/docs/Frontend/Others/Security/Https/index.md" },
+            { text: "安全响应头", link: "/docs/Frontend/Others/Security/Headers/index.md" },
+            { text: "依赖与供应链安全", link: "/docs/Frontend/Others/Security/Dependency/index.md" },
+            { text: "实战：安全基线落地", link: "/docs/Frontend/Others/Security/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/Others/Security/FAQ/index.md" },
+        ],
+    },
+];
 export const FrontOthers = [
     {
         text: "其他",
@@ -528,6 +545,7 @@ export const FrontOthers = [
             { text: "HTTP 协议", link: "/docs/Frontend/Others/HTTP/index.md" },
             { text: "单页面 web 应用", link: "/docs/Frontend/Others/SPA/index.md" },
             ...FrontendEngineering,
+            ...FrontendSecurity,
         ],
     },
 ];

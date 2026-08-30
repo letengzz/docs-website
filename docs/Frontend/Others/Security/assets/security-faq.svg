@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="300" viewBox="0 0 820 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="sf-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .warn { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+  </style>
+
+  <rect class="box" x="40" y="40" width="220" height="60"/>
+  <text x="150" y="68">前端安全能防什么？</text>
+  <text class="small" x="150" y="88">XSS/CSRF/点击劫持/泄露</text>
+
+  <rect class="warn" x="300" y="40" width="220" height="60"/>
+  <text x="410" y="68">有 CSP 就安全？</text>
+  <text class="small" x="410" y="88">仍需编码 + 输入校验</text>
+
+  <rect class="ok" x="560" y="40" width="220" height="60"/>
+  <text x="670" y="68">HTTPS 够吗？</text>
+  <text class="small" x="670" y="88">加密传输，还要管业务安全</text>
+
+  <rect class="box" x="40" y="170" width="220" height="60"/>
+  <text x="150" y="198">Token 存哪？</text>
+  <text class="small" x="150" y="218">HttpOnly Cookie + 短有效期</text>
+
+  <rect class="warn" x="300" y="170" width="220" height="60"/>
+  <text x="410" y="198">依赖有漏洞？</text>
+  <text class="small" x="410" y="218">npm audit 常态化 + 门禁</text>
+
+  <rect class="ok" x="560" y="170" width="220" height="60"/>
+  <text x="670" y="198">安全测试工具？</text>
+  <text class="small" x="670" y="218">ZAP / lighthouse / 依赖扫描</text>
+
+  <text class="small" x="410" y="275">原则：纵深防御、默认拒绝、最小权限——前端安全是「多层拦截」而非「一把锁」</text>
+</svg>

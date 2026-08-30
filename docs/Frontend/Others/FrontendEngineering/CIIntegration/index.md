@@ -208,6 +208,7 @@ jobs:
 
 ## 参考资料
 
+- 安全门禁（依赖审计）：[依赖与供应链安全](../Security/Dependency/index.md)
 - GitHub Actions：https://docs.github.com/zh/actions
 - pnpm 与 CI：https://pnpm.io/zh/continuous-integration
 - Vitest CI 集成：https://cn.vitest.dev/guide/continuous-integration

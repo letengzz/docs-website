@@ -149,3 +149,7 @@ app.whenReady().then(() => {
 - [ ] 使用代码签名
 - [ ] 启用 ASAR 打包
 
+::: tip 进阶阅读
+Web 侧安全原理（XSS/CSRF/CSP/HTTPS）见 [前端安全专题](../../Others/Security/index.md)；依赖审计方法见 [依赖与供应链安全](../../Others/Security/Dependency/index.md)。
+:::
+

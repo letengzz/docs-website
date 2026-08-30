@@ -37,5 +37,6 @@
 
 ## 相关专题
 
+- [前端安全](../Security/index.md)：SPA 的 XSS/CSRF 与 Token 存储要点
 - [浏览器原理](../../Basic/Browser/index.md)
 

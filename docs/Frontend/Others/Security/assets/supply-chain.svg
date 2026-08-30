@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="sc-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .risk { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .tool { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="risk" x="40" y="40" width="240" height="60"/>
+  <text x="160" y="68">供应链风险</text>
+  <text class="small" x="160" y="86">npm 投毒 / 依赖劫持</text>
+
+  <rect class="risk" x="310" y="40" width="240" height="60"/>
+  <text x="430" y="68">已知漏洞</text>
+  <text class="small" x="430" y="86">CVE / 版本过期</text>
+
+  <rect class="risk" x="580" y="40" width="240" height="60"/>
+  <text x="700" y="68">许可证风险</text>
+  <text class="small" x="700" y="86">GPL 传染 / 商用限制</text>
+
+  <line x1="160" y1="100" x2="160" y2="150" marker-end="url(#sc-arrow)"/>
+  <line x1="430" y1="100" x2="430" y2="150" marker-end="url(#sc-arrow)"/>
+  <line x1="700" y1="100" x2="700" y2="150" marker-end="url(#sc-arrow)"/>
+
+  <rect class="tool" x="40" y="152" width="240" height="60"/>
+  <text x="160" y="180">审计工具</text>
+  <text class="small" x="160" y="198">npm audit / pnpm audit</text>
+
+  <rect class="tool" x="310" y="152" width="240" height="60"/>
+  <text x="430" y="180">SBOM / 锁定版本</text>
+  <text class="small" x="430" y="198">lockfile / CycloneDX</text>
+
+  <rect class="ok" x="580" y="152" width="240" height="60"/>
+  <text x="700" y="180">CI 安全门禁</text>
+  <text class="small" x="700" y="198">审计失败即构建失败</text>
+
+  <text class="small" x="430" y="260">实践：lockfile 入库、固定版本、扫描 CI、双因素发布、最小依赖</text>
+  <text class="small" x="430" y="280">响应：高危漏洞出现后 24h 内评估升级，发布安全公告跟踪</text>
+  <text class="small" x="430" y="320">工具：npm audit / pnpm audit / Dependabot / Snyk / OWASP Dependency-Check</text>
+</svg>
