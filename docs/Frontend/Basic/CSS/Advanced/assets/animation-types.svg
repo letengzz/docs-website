@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="am-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .type { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .feat { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="type" x="40" y="40" width="230" height="70"/>
+  <text x="155" y="72">transition 过渡</text>
+  <text class="small" x="155" y="94">状态变化时平滑过渡</text>
+
+  <rect class="type" x="315" y="40" width="230" height="70"/>
+  <text x="430" y="72">animation 动画</text>
+  <text class="small" x="430" y="94">@keyframes 定义关键帧</text>
+
+  <rect class="type" x="590" y="40" width="230" height="70"/>
+  <text x="705" y="72">scroll-driven 滚动驱动</text>
+  <text class="small" x="705" y="94">animation-timeline（新）</text>
+
+  <line x1="155" y1="110" x2="155" y2="160" marker-end="url(#am-arrow)"/>
+  <line x1="430" y1="110" x2="430" y2="160" marker-end="url(#am-arrow)"/>
+  <line x1="705" y1="110" x2="705" y2="160" marker-end="url(#am-arrow)"/>
+
+  <rect class="feat" x="40" y="162" width="230" height="60"/>
+  <text x="155" y="190">cubic-bezier 缓动</text>
+  <text class="small" x="155" y="208">ease / ease-out / 自定义</text>
+
+  <rect class="feat" x="315" y="162" width="230" height="60"/>
+  <text x="430" y="190">transform + opacity</text>
+  <text class="small" x="430" y="208">合成层动画，不触发重排</text>
+
+  <rect class="feat" x="590" y="162" width="230" height="60"/>
+  <text x="705" y="190">View Transitions</text>
+  <text class="small" x="705" y="208">页面/组件切换动效</text>
+
+  <text class="small" x="430" y="270">性能铁律：动画属性优先 transform / opacity，避免 top / left / width 触发重排</text>
+  <text class="small" x="430" y="290">will-change 慎用：只标记即将变化的合成属性，用后移除</text>
+  <text class="small" x="430" y="330">浏览器支持：scroll-driven 与 View Transitions 需查阅 caniuse</text>
+</svg>

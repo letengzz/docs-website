@@ -452,6 +452,10 @@ body {
 }
 ```
 
+::: tip 进阶阅读
+Flex 是一维布局；需要同时控制行与列时，见 [Grid 布局详解](../Advanced/GridLayout/index.md) 与二维布局对比。
+:::
+
 
 
 

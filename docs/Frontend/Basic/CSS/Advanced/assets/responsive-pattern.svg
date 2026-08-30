@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="rp-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .dev { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .mid { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .out { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="dev" x="40" y="50" width="200" height="70"/>
+  <text x="140" y="82">移动端优先</text>
+  <text class="small" x="140" y="102">min-width 从小往上写</text>
+
+  <rect class="dev" x="330" y="50" width="200" height="70"/>
+  <text x="430" y="82">断点策略</text>
+  <text class="small" x="430" y="102">按内容定断点</text>
+
+  <rect class="dev" x="620" y="50" width="200" height="70"/>
+  <text x="720" y="82">流式布局</text>
+  <text class="small" x="720" y="102">百分比 / fr / clamp()</text>
+
+  <line x1="240" y1="85" x2="330" y2="85" marker-end="url(#rp-arrow)"/>
+  <line x1="530" y1="85" x2="620" y2="85" marker-end="url(#rp-arrow)"/>
+
+  <rect class="mid" x="40" y="190" width="200" height="60"/>
+  <text x="140" y="218">clamp() 流式字体</text>
+  <rect class="mid" x="330" y="190" width="200" height="60"/>
+  <text x="430" y="218">图片 srcset / picture</text>
+  <rect class="mid" x="620" y="190" width="200" height="60"/>
+  <text x="720" y="218">视口单位 + 容器查询</text>
+
+  <line x1="140" y1="120" x2="140" y2="190" marker-end="url(#rp-arrow)"/>
+  <line x1="430" y1="120" x2="430" y2="190" marker-end="url(#rp-arrow)"/>
+  <line x1="720" y1="120" x2="720" y2="190" marker-end="url(#rp-arrow)"/>
+
+  <text class="small" x="430" y="290">断点不是设备清单：375 / 768 / 1024 只是参考，按布局何时「撑不住」来定</text>
+  <text class="small" x="430" y="310">工具：Chrome DevTools 设备模拟 + Lighthouse 移动性能</text>
+</svg>

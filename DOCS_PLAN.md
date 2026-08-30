@@ -66,7 +66,7 @@
 | 31 | Backend | Java IO/NIO ✅ | 文件 IO、字节/字符流、NIO、Channel/Buffer、网络 IO 模型、实战案例、常见问题 |
 | 32 | Backend | Java 反射与注解 ✅ | Class 对象、反射 API、动态代理、注解定义与处理、实战案例、常见问题 |
 | 33 | Backend | Java 函数式编程 ✅ | Lambda、Stream、Optional、方法引用、实战案例、常见问题 |
-| 34 | Frontend | CSS 进阶 | 布局体系、动画、响应式、工程化、原子化 CSS、常见问题 |
+| 34 | Frontend | CSS 进阶 ✅ | 布局体系、动画、响应式、工程化、原子化 CSS、常见问题 |
 | 35 | Frontend | 前端安全 | XSS、CSRF、CSP、HTTPS、安全响应头、依赖安全、常见问题 |
 | 36 | Frontend | 前端性能优化 | 加载优化、构建优化、运行时优化、监控与指标、实战案例、常见问题 |
 | 37 | DB | PostgreSQL | 概述与版本、安装、SQL 基础、高级特性、索引、备份恢复、常见问题 |
@@ -170,6 +170,7 @@
 - [x] Backend 存量补全：Java IO/NIO 专题已建设（9 篇，第 31 天），旧「IO 流」单页拆分为完整专题并保留入口；补充 NetworkProgramming（SocketIO/Netty/FAQ）与 JVM（Tuning/Troubleshoot）交叉链接，修复 CommonClasses 相关专题位置错乱
 - [x] Backend 存量补全：Java 反射与注解专题已建设（8 篇，第 32 天），补充 JVM ClassLoading/OOP/Spring AOP/IoC/MyBatis 注解交叉链接
 - [x] Backend 存量补全：Java 函数式编程专题已建设（8 篇，第 33 天），补充 Collection（Iteration/FAQ/SortCompare）、Overview、CompletableFuture、CommonClasses、MyBatis-Plus 交叉链接
+- [x] Frontend 存量补全：CSS 进阶专题已建设（8 篇，第 34 天），补充 CSS3（Animation/Flex/Media）、AtomicCSS、Layout、Optimize 交叉链接
 
 ## 节奏建议
 

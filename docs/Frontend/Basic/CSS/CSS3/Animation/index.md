@@ -139,3 +139,7 @@ animation-play-state 一般单独使用。
 }
 ```
 
+::: tip 进阶阅读
+动画性能优化（合成属性）、滚动驱动动画与 View Transitions 见 [动画进阶](../Advanced/Animation/index.md)。
+:::
+

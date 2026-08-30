@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="320" viewBox="0 0 860 320" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="at-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .cls { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 6; }
+    .gen { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .out { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="cls" x="40" y="50" width="140" height="44"/>
+  <text x="110" y="78">flex</text>
+  <rect class="cls" x="200" y="50" width="140" height="44"/>
+  <text x="270" y="78">justify-center</text>
+  <rect class="cls" x="360" y="50" width="140" height="44"/>
+  <text x="430" y="78">items-center</text>
+  <rect class="cls" x="520" y="50" width="140" height="44"/>
+  <text x="590" y="78">gap-4</text>
+  <rect class="cls" x="680" y="50" width="140" height="44"/>
+  <text x="750" y="78">p-4 rounded</text>
+
+  <line x1="430" y1="94" x2="430" y2="140" marker-end="url(#at-arrow)"/>
+
+  <rect class="gen" x="230" y="142" width="400" height="54"/>
+  <text x="430" y="170">工具类扫描 + 按需生成 CSS</text>
+  <text class="small" x="430" y="188">Tailwind / UnoCSS / Windi CSS</text>
+
+  <line x1="430" y1="196" x2="430" y2="240" marker-end="url(#at-arrow)"/>
+
+  <rect class="out" x="230" y="242" width="400" height="46"/>
+  <text x="430" y="270">只生成用到的类 → 体积最小化</text>
+
+  <text class="small" x="430" y="310">优点：类名即文档、避免命名纠结、Purge 天然；代价：模板类名冗长、样式与结构耦合</text>
+</svg>

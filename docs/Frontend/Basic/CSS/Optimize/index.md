@@ -183,6 +183,10 @@ p {
 }
 ```
 
+::: tip 进阶阅读
+动画性能、级联层优先级与架构分层等工程化优化见 [CSS 架构与工程化](../Advanced/Architecture/index.md) 与 [动画进阶](../Advanced/Animation/index.md)。
+:::
+
 ✅ 建议这样写：
 
 ```css

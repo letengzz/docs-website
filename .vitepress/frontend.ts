@@ -71,6 +71,18 @@ export const FrontBasic = [
                             { text: "TailwindCSS", link: "/docs/Frontend/Basic/CSS/AtomicCSS/TailwindCSS/index.md" },
                         ]
                     },
+                    {
+                        text: "进阶", link: "/docs/Frontend/Basic/CSS/Advanced/index.md", collapsed: true, items: [
+                            { text: "Grid 布局详解", link: "/docs/Frontend/Basic/CSS/Advanced/GridLayout/index.md" },
+                            { text: "动画进阶", link: "/docs/Frontend/Basic/CSS/Advanced/Animation/index.md" },
+                            { text: "容器查询 Container Queries", link: "/docs/Frontend/Basic/CSS/Advanced/ContainerQuery/index.md" },
+                            { text: "响应式设计进阶", link: "/docs/Frontend/Basic/CSS/Advanced/Responsive/index.md" },
+                            { text: "CSS 架构与工程化", link: "/docs/Frontend/Basic/CSS/Advanced/Architecture/index.md" },
+                            { text: "原子化 CSS 实战", link: "/docs/Frontend/Basic/CSS/Advanced/AtomicCSS/index.md" },
+                            { text: "实战：自适应卡片组件", link: "/docs/Frontend/Basic/CSS/Advanced/Practice/index.md" },
+                            { text: "常见问题与最佳实践", link: "/docs/Frontend/Basic/CSS/Advanced/FAQ/index.md" },
+                        ]
+                    },
                 ]
             },
             {

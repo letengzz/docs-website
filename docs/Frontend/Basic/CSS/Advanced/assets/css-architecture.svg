@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ca-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .layer { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .tool { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="layer" x="40" y="40" width="200" height="54"/>
+  <text x="140" y="68">设计令牌</text>
+  <text class="small" x="140" y="86">颜色 / 间距 / 字号变量</text>
+
+  <rect class="layer" x="280" y="40" width="200" height="54"/>
+  <text x="380" y="68">基础样式</text>
+  <text class="small" x="380" y="86">reset / 全局排版</text>
+
+  <rect class="layer" x="520" y="40" width="200" height="54"/>
+  <text x="620" y="68">组件样式</text>
+  <text class="small" x="620" y="86">BEM 命名 / 作用域</text>
+
+  <rect class="layer" x="760" y="40" width="80" height="54"/>
+  <text x="800" y="68">工具类</text>
+
+  <line x1="240" y1="67" x2="280" y2="67" marker-end="url(#ca-arrow)"/>
+  <line x1="480" y1="67" x2="520" y2="67" marker-end="url(#ca-arrow)"/>
+  <line x1="720" y1="67" x2="760" y2="67" marker-end="url(#ca-arrow)"/>
+
+  <rect class="tool" x="40" y="170" width="180" height="54"/>
+  <text x="130" y="198">CSS 嵌套</text>
+  <text class="small" x="130" y="216">原生 &amp; 嵌套（2023+）</text>
+
+  <rect class="tool" x="250" y="170" width="180" height="54"/>
+  <text x="340" y="198">@layer 级联层</text>
+  <text class="small" x="340" y="216">控制优先级顺序</text>
+
+  <rect class="tool" x="460" y="170" width="180" height="54"/>
+  <text x="550" y="198">自定义属性</text>
+  <text class="small" x="550" y="216">主题切换 / 运行时变量</text>
+
+  <rect class="tool" x="670" y="170" width="180" height="54"/>
+  <text x="760" y="198">CSS Modules</text>
+  <text class="small" x="760" y="216">框架内局部作用域</text>
+
+  <text class="small" x="420" y="270">规范命名：BEM（block__element--modifier）仍是主流，配合工具类互补</text>
+  <text class="small" x="420" y="290">工程化：PostCSS 自动前缀、stylelint 规范检查、体积与覆盖率监控</text>
+  <text class="small" x="420" y="330">方案选型：团队风格 / 组件库 / 是否需要运行时换肤，决定原生 CSS vs 预处理器 vs 原子化</text>
+</svg>
