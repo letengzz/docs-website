@@ -117,6 +117,7 @@ SQL 优化是通过分析查询执行方式、设计合理索引、改写低效 
 
 ## 参考资料
 
+- PostgreSQL 调优对照：[性能调优](../PostgreSQL/Performance/index.md)（EXPLAIN ANALYZE 与参数体系）
 - MySQL 8.4 参考手册（优化）：https://dev.mysql.com/doc/refman/8.4/en/optimization.html
 - EXPLAIN 使用：https://dev.mysql.com/doc/refman/8.4/en/using-explain.html
 - MySQL 优化器：https://dev.mysql.com/doc/refman/8.4/en/optimizer-cost-model.html

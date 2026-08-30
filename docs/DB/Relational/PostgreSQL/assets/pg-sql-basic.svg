@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ps-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .cls { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .dml { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .dql { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="cls" x="40" y="40" width="240" height="70"/>
+  <text x="160" y="70">DDL 库表</text>
+  <text class="small" x="160" y="92">CREATE TABLE / 约束 / 序列</text>
+
+  <rect class="dml" x="310" y="40" width="240" height="70"/>
+  <text x="430" y="70">DML 数据操作</text>
+  <text class="small" x="430" y="92">INSERT / UPDATE / DELETE</text>
+
+  <rect class="dql" x="580" y="40" width="240" height="70"/>
+  <text x="700" y="70">DQL 查询</text>
+  <text class="small" x="700" y="92">JOIN / GROUP BY / 窗口函数</text>
+
+  <line x1="280" y1="75" x2="310" y2="75" marker-end="url(#ps-arrow)"/>
+  <line x1="550" y1="75" x2="580" y2="75" marker-end="url(#ps-arrow)"/>
+
+  <rect class="dql" x="310" y="180" width="240" height="60"/>
+  <text x="430" y="208">高级查询能力</text>
+  <text class="small" x="430" y="228">LATERAL / CTE / 递归查询</text>
+
+  <line x1="700" y1="110" x2="700" y2="150" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="700" y1="150" x2="555" y2="180" marker-end="url(#ps-arrow)"/>
+
+  <text class="small" x="430" y="280">PostgreSQL 类型丰富：JSONB / 数组 / 范围类型 / UUID / 全文检索</text>
+  <text class="small" x="430" y="300">约束完整：主键 / 外键 / 唯一 / CHECK / 排他约束</text>
+  <text class="small" x="430" y="340">语法兼容性强，从 MySQL 迁移注意类型与函数差异（字符串、自增）</text>
+</svg>

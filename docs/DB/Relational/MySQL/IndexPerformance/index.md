@@ -116,6 +116,7 @@ EXPLAIN SELECT * FROM user WHERE email = 'zs@example.com';
 
 ## 相关专题
 
+- [PostgreSQL 索引](../PostgreSQL/Index/index.md)：多类型索引与覆盖索引的对比
 - [SQL 优化](../../SQLOptimization/index.md)：系统化的优化方法论
 - [执行计划](../../SQLOptimization/ExplainPlan/index.md)：EXPLAIN 字段与访问类型详解
 - [索引原理与失效场景](../../SQLOptimization/IndexPrinciple/index.md)：最左前缀、覆盖索引与十大失效场景

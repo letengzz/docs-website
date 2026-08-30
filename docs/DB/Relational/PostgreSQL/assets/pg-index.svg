@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="px-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .type { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .use { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .risk { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="type" x="40" y="40" width="240" height="60"/>
+  <text x="160" y="68">B-tree（默认）</text>
+  <text class="small" x="160" y="86">等值/范围/排序</text>
+
+  <rect class="type" x="310" y="40" width="240" height="60"/>
+  <text x="430" y="68">Hash</text>
+  <text class="small" x="430" y="86">等值查询</text>
+
+  <rect class="type" x="580" y="40" width="240" height="60"/>
+  <text x="700" y="68">GIN（倒排）</text>
+  <text class="small" x="700" y="86">JSONB / 全文 / 数组</text>
+
+  <rect class="type" x="40" y="140" width="240" height="60"/>
+  <text x="160" y="168">BRIN（块级）</text>
+  <text class="small" x="160" y="186">大表按顺序访问</text>
+
+  <rect class="type" x="310" y="140" width="240" height="60"/>
+  <text x="430" y="168">GiST / SP-GiST</text>
+  <text class="small" x="430" y="186">地理/范围/相似</text>
+
+  <rect class="use" x="580" y="140" width="240" height="60"/>
+  <text x="700" y="168">部分 / 表达式索引</text>
+  <text class="small" x="700" y="186">WHERE 条件 / 函数列</text>
+
+  <rect class="risk" x="300" y="240" width="260" height="56"/>
+  <text x="430" y="268">EXPLAIN 验证：Seq Scan vs Index Scan</text>
+  <text class="small" x="430" y="286">索引不是越多越好，注意写放大与膨胀</text>
+
+  <text class="small" x="430" y="325">关键：覆盖索引（INCLUDE）实现 Index-Only Scan；部分索引大幅缩小体积</text>
+</svg>

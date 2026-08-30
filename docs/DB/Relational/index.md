@@ -28,7 +28,8 @@
 ## 专题文档
 
 - [MySQL](MySQL/index.md)（概述、安装、核心概念、DDL/DML/DQL、事务、索引优化、常见问题）
+- [PostgreSQL](PostgreSQL/index.md)（概述、安装、SQL 基础、高级特性、索引、备份恢复、性能调优、实战、常见问题）
 
 ::: tip 待补充
-后续继续补充 PostgreSQL 等关系型数据库专题。
+后续继续补充 Oracle、SQL Server、SQLite 等关系型数据库专题。
 :::

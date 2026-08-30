@@ -69,7 +69,7 @@
 | 34 | Frontend | CSS 进阶 ✅ | 布局体系、动画、响应式、工程化、原子化 CSS、常见问题 |
 | 35 | Frontend | 前端安全 ✅ | XSS、CSRF、CSP、HTTPS、安全响应头、依赖安全、常见问题 |
 | 36 | Frontend | 前端性能优化 ✅ | 加载优化、构建优化、运行时优化、监控与指标、实战案例、常见问题 |
-| 37 | DB | PostgreSQL | 概述与版本、安装、SQL 基础、高级特性、索引、备份恢复、常见问题 |
+| 37 | DB | PostgreSQL ✅ | 概述与版本、安装、SQL 基础、高级特性、索引、备份恢复、常见问题 |
 | 38 | DB | MySQL 索引深入 | B+ 树原理、联合索引、索引失效场景、覆盖索引、优化案例、常见问题 |
 | 39 | Ops | 网络基础 | 网络分层、DNS、TCP/IP、HTTP/HTTPS、抓包分析、常见问题 |
 | 40 | Ops | 容器编排进阶 | Helm、Operator、服务网格、弹性伸缩、多集群、常见问题 |
@@ -173,6 +173,7 @@
 - [x] Frontend 存量补全：CSS 进阶专题已建设（8 篇，第 34 天），补充 CSS3（Animation/Flex/Media）、AtomicCSS、Layout、Optimize 交叉链接
 - [x] Frontend 存量补全：前端安全专题已建设（8 篇，第 35 天），补充 Browser/Security、HTTP、Electron/Security、工程化 CI、SPA 交叉链接
 - [x] Frontend 存量补全：前端性能优化专题已建设（8 篇，第 36 天），补充 Browser/Performance、Rendering、工程化构建优化、CSS 动画、Vite 交叉链接
+- [x] DB 存量补全：PostgreSQL 专题已建设（9 篇，第 37 天），补充 MySQL（概述/FAQ/索引）、SQL 优化、MongoDB 交叉链接与选型对比
 
 ## 节奏建议
 

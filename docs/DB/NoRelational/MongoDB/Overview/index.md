@@ -81,6 +81,8 @@ MongoDB 当前稳定线为 **8.x，最新版本 8.3**（2026-05 发布，最新�
 
 ## 参考资料
 
+- 关系型对照：[PostgreSQL](../../Relational/PostgreSQL/index.md)（JSONB 与文档能力的对比）
+
 - MongoDB 官方文档：https://www.mongodb.com/docs/
 - MongoDB 版本发布：https://www.mongodb.com/docs/manual/release-notes/
 - 数据模型设计：https://www.mongodb.com/docs/manual/core/data-model-design/

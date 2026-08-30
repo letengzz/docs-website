@@ -69,4 +69,5 @@ MySQL 8.0 已于 2026 年 4 月停止公开安全更新，继续使用存在安�
 
 ## 相关专题
 
+- [PostgreSQL](../PostgreSQL/index.md)：与 MySQL 的选型对比与迁移要点
 - [SQL 优化](../../SQLOptimization/index.md)：执行计划、索引原理与慢查询治理

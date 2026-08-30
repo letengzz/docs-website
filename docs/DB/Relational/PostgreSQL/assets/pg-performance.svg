@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="pp-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .conf { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .tool { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="conf" x="40" y="40" width="240" height="70"/>
+  <text x="160" y="70">关键参数</text>
+  <text class="small" x="160" y="92">shared_buffers / work_mem</text>
+
+  <rect class="conf" x="310" y="40" width="240" height="70"/>
+  <text x="430" y="70">维护机制</text>
+  <text class="small" x="430" y="92">VACUUM / ANALYZE / autovacuum</text>
+
+  <rect class="tool" x="580" y="40" width="240" height="70"/>
+  <text x="700" y="70">诊断工具</text>
+  <text class="small" x="700" y="92">EXPLAIN ANALYZE / pg_stat_statements</text>
+
+  <line x1="280" y1="75" x2="310" y2="75" marker-end="url(#pp-arrow)"/>
+  <line x1="550" y1="75" x2="580" y2="75" marker-end="url(#pp-arrow)"/>
+
+  <rect class="ok" x="310" y="180" width="240" height="60"/>
+  <text x="430" y="208">慢查询治理</text>
+  <text class="small" x="430" y="228">log_min_duration_statement</text>
+
+  <line x1="700" y1="110" x2="700" y2="150" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="700" y1="150" x2="555" y2="180" marker-end="url(#pp-arrow)"/>
+
+  <text class="small" x="430" y="280">调优顺序：索引 → SQL → 参数 → 硬件，别一上来就改参数</text>
+  <text class="small" x="430" y="300">PGTune 等工具可生成参数建议，仍需压测验证</text>
+  <text class="small" x="430" y="330">监控：pg_stat_activity / pg_stat_database / 连接与锁</text>
+</svg>

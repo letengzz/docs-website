@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="380" viewBox="0 0 860 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="pg-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .client { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .proc { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .mem { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .disk { fill: #f3f0ff; stroke: #7b5cd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="client" x="40" y="50" width="180" height="54"/>
+  <text x="130" y="80">客户端（psql/应用）</text>
+
+  <rect class="proc" x="340" y="50" width="180" height="54"/>
+  <text x="430" y="80">postmaster 主进程</text>
+  <text class="small" x="430" y="96">监听端口 5432</text>
+
+  <rect class="proc" x="340" y="140" width="180" height="54"/>
+  <text x="430" y="170">后端进程（每连接一个）</text>
+
+  <rect class="mem" x="620" y="140" width="200" height="54"/>
+  <text x="720" y="170">共享内存 / shared_buffers</text>
+
+  <line x1="220" y1="77" x2="340" y2="77" marker-end="url(#pg-arrow)"/>
+  <line x1="430" y1="104" x2="430" y2="140" marker-end="url(#pg-arrow)"/>
+  <line x1="520" y1="167" x2="620" y2="167" marker-end="url(#pg-arrow)"/>
+
+  <rect class="disk" x="40" y="230" width="180" height="60"/>
+  <text x="130" y="258">数据文件（表/索引）</text>
+  <rect class="disk" x="250" y="230" width="180" height="60"/>
+  <text x="340" y="258">WAL 预写日志</text>
+  <rect class="disk" x="460" y="230" width="180" height="60"/>
+  <text x="550" y="258">归档 / 备份</text>
+  <rect class="disk" x="670" y="230" width="160" height="60"/>
+  <text x="750" y="258">配置文件</text>
+
+  <line x1="130" y1="167" x2="130" y2="230" marker-end="url(#pg-arrow)"/>
+  <line x1="340" y1="167" x2="340" y2="230" marker-end="url(#pg-arrow)"/>
+
+  <text class="small" x="430" y="340">进程模型：postmaster 派生后端进程，每连接一个进程（非线程）</text>
+  <text class="small" x="430" y="360">WAL 先行写盘保证崩溃恢复；MVCC 提供多版本并发控制</text>
+  <text class="small" x="430" y="380">PostgreSQL 18 引入异步 IO（AIO），顺序扫描与 VACUUM 性能显著提升</text>
+</svg>
