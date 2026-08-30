@@ -31,6 +31,7 @@ export const nav = [
       { text: "虚拟机", link: "/docs/Ops/VM" },
       { text: "Linux", link: "/docs/Ops/Linux" },
       { text: "Nginx", link: "/docs/Ops/Nginx" },
+      { text: "网络基础", link: "/docs/Ops/Network" },
       { text: "Docker", link: "/docs/Ops/Docker" },
       { text: "Kubernetes", link: "/docs/Ops/Kubernetes" },
       { text: "监控告警", link: "/docs/Ops/Monitoring" },

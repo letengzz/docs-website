@@ -117,6 +117,7 @@ Prometheus 最新稳定为 **3.14.x**，Grafana 为 **13.x**，Alertmanager 为 
 
 ## 参考资料
 
+- 网络层监控指标：[网络基础 · 网络排查方法论](../Network/Troubleshoot/index.md)
 - Prometheus 文档：https://prometheus.io/docs/
 - Grafana 文档：https://grafana.com/docs/
 - 可观测性工程（O'Reilly 书籍）

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="380" viewBox="0 0 860 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ly-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .l7 { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .l4 { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .l3 { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .l2 { fill: #f3f0ff; stroke: #7b5cd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="l7" x="280" y="30" width="300" height="50"/>
+  <text x="430" y="60">应用层 HTTP / DNS / SSH</text>
+
+  <rect class="l4" x="280" y="110" width="300" height="50"/>
+  <text x="430" y="140">传输层 TCP / UDP</text>
+
+  <rect class="l3" x="280" y="190" width="300" height="50"/>
+  <text x="430" y="220">网络层 IP / ICMP</text>
+
+  <rect class="l2" x="280" y="270" width="300" height="50"/>
+  <text x="430" y="300">链路层 以太网 / 网卡</text>
+
+  <line x1="430" y1="80" x2="430" y2="110" marker-end="url(#ly-arrow)"/>
+  <line x1="430" y1="160" x2="430" y2="190" marker-end="url(#ly-arrow)"/>
+  <line x1="430" y1="240" x2="430" y2="270" marker-end="url(#ly-arrow)"/>
+
+  <text class="small" x="430" y="350">封包：每层给上层数据加头部；解包：逐层剥头</text>
+  <text class="small" x="430" y="375">运维视角：HTTP 报错看应用层，连接失败看传输层，路由不通看网络层</text>
+</svg>

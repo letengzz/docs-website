@@ -71,7 +71,7 @@
 | 36 | Frontend | 前端性能优化 ✅ | 加载优化、构建优化、运行时优化、监控与指标、实战案例、常见问题 |
 | 37 | DB | PostgreSQL ✅ | 概述与版本、安装、SQL 基础、高级特性、索引、备份恢复、常见问题 |
 | 38 | DB | MySQL 索引深入 ✅ | B+ 树原理、联合索引、索引失效场景、覆盖索引、优化案例、常见问题 |
-| 39 | Ops | 网络基础 | 网络分层、DNS、TCP/IP、HTTP/HTTPS、抓包分析、常见问题 |
+| 39 | Ops | 网络基础 ✅ | 网络分层、DNS、TCP/IP、HTTP/HTTPS、抓包分析、常见问题 |
 | 40 | Ops | 容器编排进阶 | Helm、Operator、服务网格、弹性伸缩、多集群、常见问题 |
 | 41 | Tools | 数据库客户端 | Navicat、DBeaver、RedisInsight、常用操作、连接管理、常见问题 |
 | 42 | Tools | 接口调试工具 | Postman、Apifox、环境与脚本、Mock、自动化测试、常见问题 |
@@ -175,6 +175,8 @@
 - [x] Frontend 存量补全：前端性能优化专题已建设（8 篇，第 36 天），补充 Browser/Performance、Rendering、工程化构建优化、CSS 动画、Vite 交叉链接
 - [x] DB 存量补全：PostgreSQL 专题已建设（9 篇，第 37 天），补充 MySQL（概述/FAQ/索引）、SQL 优化、MongoDB 交叉链接与选型对比
 - [x] DB 存量补全：MySQL 索引深入专题已建设（8 篇，第 38 天），补充 MySQL 索引与 SQL 优化（索引原理/慢查询/执行计划/分页）交叉链接
+- [x] Ops 存量补全：网络基础专题已建设（8 篇，第 39 天），补充 Docker 网络、K8s Service、Nginx 反向代理、监控概览、后端网络编程交叉链接
+- [x] 断链修复：LangChain4j Rag/Concepts 缺失的架构图已补 SVG（rag-architecture、architecture），构建恢复正常
 
 ## 节奏建议
 

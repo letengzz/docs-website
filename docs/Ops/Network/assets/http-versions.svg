@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="hv-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .v { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .feat { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="v" x="40" y="40" width="180" height="60"/>
+  <text x="130" y="70">HTTP/1.1</text>
+  <text class="small" x="130" y="88">1997 · 持久连接</text>
+
+  <rect class="v" x="250" y="40" width="180" height="60"/>
+  <text x="340" y="70">HTTP/2</text>
+  <text class="small" x="340" y="88">2015 · 多路复用</text>
+
+  <rect class="v" x="460" y="40" width="180" height="60"/>
+  <text x="550" y="70">HTTP/3</text>
+  <text class="small" x="550" y="88">2022 · QUIC/UDP</text>
+
+  <rect class="v" x="670" y="40" width="150" height="60"/>
+  <text x="745" y="70">HTTPS</text>
+  <text class="small" x="745" y="88">TLS 加密</text>
+
+  <line x1="220" y1="70" x2="250" y2="70" marker-end="url(#hv-arrow)"/>
+  <line x1="430" y1="70" x2="460" y2="70" marker-end="url(#hv-arrow)"/>
+
+  <rect class="feat" x="40" y="160" width="180" height="54"/>
+  <text x="130" y="188">Keep-Alive</text>
+  <rect class="feat" x="250" y="160" width="180" height="54"/>
+  <text x="340" y="188">头部压缩 HPACK</text>
+  <rect class="feat" x="460" y="160" width="180" height="54"/>
+  <text x="550" y="188">0-RTT 连接</text>
+  <rect class="feat" x="670" y="160" width="150" height="54"/>
+  <text x="745" y="188">证书与握手</text>
+
+  <text class="small" x="430" y="260">状态码：2xx 成功 / 3xx 重定向 / 4xx 客户端错 / 5xx 服务端错</text>
+  <text class="small" x="430" y="280">方法：GET / POST / PUT / DELETE / HEAD / OPTIONS</text>
+  <text class="small" x="430" y="330">运维重点：404/502/504 排查、缓存头、重定向链、TLS 版本</text>
+</svg>

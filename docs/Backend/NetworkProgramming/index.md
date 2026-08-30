@@ -12,3 +12,7 @@
 - [粘包拆包与编解码](StickyHalf/index.md)
 - [实战：Netty 聊天服务器](Practice/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+::: tip 运维视角
+网络分层、DNS 配置、抓包分析与故障排查的运维方法论见 [网络基础专题](../../Ops/Network/index.md)。
+:::

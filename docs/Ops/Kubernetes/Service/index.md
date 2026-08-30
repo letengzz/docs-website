@@ -89,6 +89,7 @@ spec:
 
 ## 参考资料
 
+- 网络基础：[网络分层与 TCP/IP 模型](../Network/Layering/index.md)、[DNS 解析与配置](../Network/Dns/index.md)
 - Service 文档：https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/
 - 服务发现与 DNS：https://kubernetes.io/zh-cn/docs/concepts/services-networking/dns-pod-service/
 - 无头服务：https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/#headless-services

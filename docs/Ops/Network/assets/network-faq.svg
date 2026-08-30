@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="300" viewBox="0 0 820 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="nf-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .warn { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+  </style>
+
+  <rect class="box" x="40" y="40" width="220" height="60"/>
+  <text x="150" y="68">ping 通但连不上？</text>
+  <text class="small" x="150" y="88">查端口与防火墙</text>
+
+  <rect class="warn" x="300" y="40" width="220" height="60"/>
+  <text x="410" y="68">时通时断？</text>
+  <text class="small" x="410" y="88">抓包看重传/丢包</text>
+
+  <rect class="ok" x="560" y="40" width="220" height="60"/>
+  <text x="670" y="68">DNS 解析慢？</text>
+  <text class="small" x="670" y="88">dig + 换公共 DNS</text>
+
+  <rect class="box" x="40" y="170" width="220" height="60"/>
+  <text x="150" y="198">TIME_WAIT 多？</text>
+  <text class="small" x="150" y="218">正常现象，看量级</text>
+
+  <rect class="warn" x="300" y="170" width="220" height="60"/>
+  <text x="410" y="198">MTU 问题？</text>
+  <text class="small" x="410" y="218">大包不通小包通</text>
+
+  <rect class="ok" x="560" y="170" width="220" height="60"/>
+  <text x="670" y="198">抓包看不懂？</text>
+  <text class="small" x="670" y="218">从 TCP 流追踪开始</text>
+
+  <text class="small" x="410" y="275">原则：分层定位、一次隔离一段、工具组合验证</text>
+</svg>

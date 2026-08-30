@@ -106,5 +106,22 @@ export const Nginx = [
     ],
   },
 ];
+export const Network = [
+  {
+    text: "网络基础",
+    link: "/docs/Ops/Network/index.md",
+    collapsed: true,
+    items: [
+      { text: "网络分层与 TCP/IP 模型", link: "/docs/Ops/Network/Layering/index.md" },
+      { text: "DNS 解析与配置", link: "/docs/Ops/Network/Dns/index.md" },
+      { text: "TCP/IP 核心机制", link: "/docs/Ops/Network/TcpIp/index.md" },
+      { text: "HTTP 与 HTTPS", link: "/docs/Ops/Network/HttpHttps/index.md" },
+      { text: "网络排查方法论", link: "/docs/Ops/Network/Troubleshoot/index.md" },
+      { text: "抓包分析：tcpdump 与 Wireshark", link: "/docs/Ops/Network/Capture/index.md" },
+      { text: "实战：网络故障排查全流程", link: "/docs/Ops/Network/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/Network/FAQ/index.md" },
+    ],
+  },
+];
 export const OpsOthers = [{ text: "运维其他", link: "/docs/Ops/Others/index.md" }];
 export const VM = [{ text: "虚拟机", link: "/docs/Ops/VM/index.md" }];

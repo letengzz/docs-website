@@ -155,3 +155,7 @@ docker network disconnect [参数] NETWORK CONTAINER
 ```shell
 docker network rm xxx网络名字
 ```
+
+::: tip 进阶阅读
+Docker 网络基于 Linux 网络命名空间与 iptables 等机制，网络分层与排查方法见 [网络基础](../Network/Layering/index.md) 与 [网络排查方法论](../Network/Troubleshoot/index.md)。
+:::

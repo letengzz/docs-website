@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="tr-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .step { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .tool { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="step" x="40" y="60" width="230" height="70"/>
+  <text x="155" y="90">1. 链路层</text>
+  <text class="small" x="155" y="112">ip link / ethtool</text>
+
+  <rect class="step" x="315" y="60" width="230" height="70"/>
+  <text x="430" y="90">2. 网络层</text>
+  <text class="small" x="430" y="112">ping / ip route / traceroute</text>
+
+  <rect class="step" x="590" y="60" width="230" height="70"/>
+  <text x="705" y="90">3. 传输层</text>
+  <text class="small" x="705" y="112">ss / netstat / telnet</text>
+
+  <line x1="270" y1="95" x2="315" y2="95" marker-end="url(#tr-arrow)"/>
+  <line x1="545" y1="95" x2="590" y2="95" marker-end="url(#tr-arrow)"/>
+
+  <rect class="step" x="315" y="190" width="230" height="60"/>
+  <text x="430" y="218">4. 应用层</text>
+  <text class="small" x="430" y="238">curl / dig / tcpdump</text>
+
+  <line x1="705" y1="130" x2="705" y2="165" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="705" y1="165" x2="550" y2="190" marker-end="url(#tr-arrow)"/>
+
+  <text class="small" x="430" y="290">自底向上排查：先本地、再路由、再端口、最后应用</text>
+  <text class="small" x="430" y="310">工具：ping / traceroute / ss / curl -v / dig / tcpdump / mtr</text>
+  <text class="small" x="430" y="330">规则：一次只隔离一段链路，避免同时改多个变量</text>
+</svg>

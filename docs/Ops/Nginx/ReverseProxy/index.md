@@ -108,6 +108,7 @@ location /ws/ {
 
 ## 参考资料
 
+- 运维排查视角：[网络基础](../Network/index.md)（502/504 分层定位）
 - proxy_pass 指令：https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
 - 代理模块文档：https://nginx.org/en/docs/http/ngx_http_proxy_module.html
 - WebSocket 代理示例：https://nginx.org/en/docs/http/websocket.html
