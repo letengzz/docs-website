@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="do-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .src { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .mid { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .dst { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="src" x="35" y="55" width="190" height="70"/>
+  <text x="130" y="83">源：表 / 查询结果</text>
+  <text class="small" x="130" y="102">CSV / Excel / 远程库</text>
+
+  <rect class="mid" x="300" y="55" width="200" height="70"/>
+  <text x="400" y="83">向导：导入导出 / 同步</text>
+  <text class="small" x="400" y="102">字段映射 / 类型转换 / 过滤</text>
+
+  <rect class="dst" x="575" y="55" width="220" height="70"/>
+  <text x="685" y="83">目标：库 / 文件 / 报表</text>
+  <text class="small" x="685" y="102">SQL 文件 / CSV / Excel / 云库</text>
+
+  <line x1="225" y1="90" x2="300" y2="90" marker-end="url(#do-arrow)"/>
+  <line x1="500" y1="90" x2="575" y2="90" marker-end="url(#do-arrow)"/>
+
+  <rect class="mid" x="230" y="200" width="430" height="60"/>
+  <text x="445" y="228">备份恢复：mysqldump / pg_dump / 客户端导出</text>
+  <text class="small" x="445" y="246">先验证恢复，再谈备份；敏感数据加密存储</text>
+
+  <line x1="685" y1="125" x2="685" y2="168" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="685" y1="168" x2="660" y2="200" marker-end="url(#do-arrow)"/>
+
+  <text class="small" x="430" y="310">注意：生产库先 SELECT 验证、批量变更先开事务，避免误删误改</text>
+</svg>

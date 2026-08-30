@@ -149,3 +149,4 @@ redis-cli monitor         # 打印所有命令（生产慎用，有性能开销�
 
 - [MongoDB 文档数据库](../../MongoDB/index.md)
 - [消息队列专题](../../../../Backend/MessageQueue/index.md)：Redis Pub/Sub、Stream 与 Kafka/RabbitMQ 的选型边界
+- [数据库客户端](../../../../Tools/DatabaseClients/index.md)：用 RedisInsight 可视化浏览 Key、内存分析与慢查询

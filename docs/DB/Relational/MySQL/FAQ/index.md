@@ -124,6 +124,7 @@ mysqladmin -u root -p status
 
 ## 相关专题
 
-- [PostgreSQL](../PostgreSQL/index.md)：功能对比与迁移差异
+- [PostgreSQL](../../PostgreSQL/index.md)：功能对比与迁移差异
 - [MongoDB 文档数据库](../../../NoRelational/MongoDB/index.md)
 - [SQL 优化](../../SQLOptimization/index.md)：慢查询治理与索引设计
+- [数据库客户端](../../../../Tools/DatabaseClients/index.md)：Navicat/DBeaver 连接管理、导入导出与备份恢复

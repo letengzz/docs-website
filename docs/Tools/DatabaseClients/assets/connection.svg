@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="cn-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .client { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .tunnel { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .ssl { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .db { fill: #f6eefb; stroke: #8b5cc7; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="client" x="35" y="70" width="170" height="70"/>
+  <text x="120" y="98">客户端</text>
+  <text class="small" x="120" y="118">Navicat / DBeaver</text>
+
+  <rect class="tunnel" x="250" y="30" width="170" height="60"/>
+  <text x="335" y="58">SSH 隧道</text>
+  <text class="small" x="335" y="75">跳板机转发</text>
+
+  <rect class="ssl" x="250" y="120" width="170" height="60"/>
+  <text x="335" y="148">SSL/TLS</text>
+  <text class="small" x="335" y="165">加密传输 / 证书</text>
+
+  <rect class="db" x="470" y="70" width="220" height="70"/>
+  <text x="580" y="98">目标数据库</text>
+  <text class="small" x="580" y="118">主机 + 端口 + 库名</text>
+
+  <line x1="205" y1="90" x2="250" y2="75" marker-end="url(#cn-arrow)"/>
+  <line x1="205" y1="105" x2="250" y2="135" marker-end="url(#cn-arrow)"/>
+  <line x1="420" y1="75" x2="500" y2="80" marker-end="url(#cn-arrow)"/>
+  <line x1="420" y1="135" x2="500" y2="120" marker-end="url(#cn-arrow)"/>
+
+  <rect class="client" x="470" y="220" width="300" height="62"/>
+  <text x="620" y="248">连接失败排查：驱动 / 端口 / 防火墙 / 账号权限</text>
+  <text class="small" x="620" y="266">telnet 测端口 → 看日志 → 验证 TLS 与认证</text>
+
+  <line x1="580" y1="140" x2="580" y2="220" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="580" y1="220" x2="620" y2="220" stroke="#4a7bd8"/>
+  <text class="small" x="620" y="250" />
+</svg>

@@ -71,3 +71,4 @@ Redis 8 的许可为三选一：RSALv2、SSPLv1 或 AGPLv3，使用前请确认�
 - Redis 官方文档：https://redis.io/docs/
 - Redis 命令参考：https://redis.io/docs/latest/commands/
 - Docker 镜像：https://hub.docker.com/_/redis
+- RedisInsight 官方 GUI：[数据库客户端专题](../../../../Tools/DatabaseClients/RedisInsight/index.md)

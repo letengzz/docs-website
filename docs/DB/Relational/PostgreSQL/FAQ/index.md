@@ -154,6 +154,10 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly;
 10. 复杂查询用窗口函数/CTE 保持可读。
 :::
 
+## 相关专题
+
+- [数据库客户端](../../../../Tools/DatabaseClients/index.md)：DBeaver/Navicat 连接 PostgreSQL 与备份恢复
+
 ## 参考资料
 
 - [PostgreSQL 官方文档](https://www.postgresql.org/docs/)

@@ -79,9 +79,13 @@ MongoDB 当前稳定线为 **8.x，最新版本 8.3**（2026-05 发布，最新�
 2. 用 mongosh 执行 `db.version()`。
 3. 插入一条文档并查询，确认基本读写链路正常。
 
+## 相关专题
+
+- [数据库客户端](../../../../Tools/DatabaseClients/index.md)：Navicat/DBeaver 连接 MongoDB 的可视化管理
+
 ## 参考资料
 
-- 关系型对照：[PostgreSQL](../../Relational/PostgreSQL/index.md)（JSONB 与文档能力的对比）
+- 关系型对照：[PostgreSQL](../../../Relational/PostgreSQL/index.md)（JSONB 与文档能力的对比）
 
 - MongoDB 官方文档：https://www.mongodb.com/docs/
 - MongoDB 版本发布：https://www.mongodb.com/docs/manual/release-notes/

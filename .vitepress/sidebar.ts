@@ -5,7 +5,7 @@ import { AI_Agent, AI_OpenClaw, AI_PromptEngineering } from "./AI";
 import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers } from "./frontend";
 import { ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, Monitoring, Network, Nginx, OpsOthers, VM } from "./ops";
 import { DBOverview, NoRelational, Relational, SQLOptimization } from "./db";
-import { Build, CICD, IDE, Others, VC } from "./tools";
+import { Build, CICD, DatabaseClients, IDE, Others, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 const OthersReview = [
@@ -66,7 +66,7 @@ export const sidebar = {
     {
       text: "工具",
       collapsed: true,
-      items: [...Build, ...CICD, ...IDE, ...VC, ...Others],
+      items: [...Build, ...CICD, ...DatabaseClients, ...IDE, ...VC, ...Others],
     },
   ],
   "/project": [
@@ -121,6 +121,7 @@ export const sidebar = {
   "/docs/AI/Agent": AI_Agent,
   "/docs/Tools/Build": Build,
   "/docs/Tools/CICD": CICD,
+  "/docs/Tools/DatabaseClients": DatabaseClients,
   "/docs/Tools/IDE": IDE,
   "/docs/Tools/VersionControl": VC,
   "/docs/Tools/Others": Others,

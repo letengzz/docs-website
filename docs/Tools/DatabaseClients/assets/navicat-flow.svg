@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="nv-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .conn { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .obj { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .query { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .sync { fill: #f6eefb; stroke: #8b5cc7; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="conn" x="35" y="55" width="175" height="70"/>
+  <text x="122" y="83">新建连接</text>
+  <text class="small" x="122" y="102">MySQL/PG/SQLServer/Redis</text>
+
+  <rect class="obj" x="245" y="55" width="175" height="70"/>
+  <text x="332" y="83">对象管理</text>
+  <text class="small" x="332" y="102">表结构 / 视图 / 函数</text>
+
+  <rect class="query" x="455" y="55" width="175" height="70"/>
+  <text x="542" y="83">查询编辑器</text>
+  <text class="small" x="542" y="102">SQL / 执行计划 / 结果</text>
+
+  <rect class="sync" x="665" y="55" width="160" height="70"/>
+  <text x="745" y="83">传输与同步</text>
+  <text class="small" x="745" y="102">导入导出 / 数据同步</text>
+
+  <line x1="210" y1="90" x2="245" y2="90" marker-end="url(#nv-arrow)"/>
+  <line x1="420" y1="90" x2="455" y2="90" marker-end="url(#nv-arrow)"/>
+  <line x1="630" y1="90" x2="665" y2="90" marker-end="url(#nv-arrow)"/>
+
+  <rect class="obj" x="245" y="200" width="385" height="60"/>
+  <text x="437" y="228">自动化：计划任务（备份 / 同步 / 导入导出）</text>
+  <text class="small" x="437" y="246">Navicat 17 支持 AI Assistant 与 BI 可视化</text>
+
+  <line x1="745" y1="125" x2="745" y2="168" stroke="#4a7bd8" stroke-dasharray="5 4"/>
+  <line x1="745" y1="168" x2="630" y2="200" marker-end="url(#nv-arrow)"/>
+
+  <text class="small" x="430" y="305">支持：MySQL/MariaDB/PostgreSQL/SQL Server/Oracle/MongoDB/Redis/Snowflake</text>
+  <text class="small" x="430" y="325">版本现状：Navicat Premium 17.3.x（2026-08 核对）</text>
+</svg>

@@ -50,6 +50,22 @@ export const CICD = [
     ],
   },
 ];
+export const DatabaseClients = [
+  {
+    text: "数据库客户端",
+    link: "/docs/Tools/DatabaseClients/index.md",
+    items: [
+      { text: "概述与选型", link: "/docs/Tools/DatabaseClients/Overview/index.md" },
+      { text: "Navicat：多库统一管理", link: "/docs/Tools/DatabaseClients/Navicat/index.md" },
+      { text: "DBeaver：开源通用查询", link: "/docs/Tools/DatabaseClients/DBeaver/index.md" },
+      { text: "RedisInsight：Redis 官方可视化", link: "/docs/Tools/DatabaseClients/RedisInsight/index.md" },
+      { text: "连接管理与问题排查", link: "/docs/Tools/DatabaseClients/Connection/index.md" },
+      { text: "常用操作：查询、导入导出与备份", link: "/docs/Tools/DatabaseClients/DataOps/index.md" },
+      { text: "实战：多环境多库统一管理", link: "/docs/Tools/DatabaseClients/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/DatabaseClients/FAQ/index.md" },
+    ],
+  },
+];
 export const IDE = [{ text: "IDE 工具", link: "/docs/Tools/IDE/index.md" }];
 export const Others = [{ text: "其他工具", link: "/docs/Tools/Others/index.md" }];
 export const VC = [

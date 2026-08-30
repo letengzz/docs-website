@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="fq-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .q { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .a { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .k { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="q" x="40" y="45" width="370" height="62"/>
+  <text x="225" y="73">问题：连接超时 / 鉴权失败 / 驱动缺失</text>
+  <text class="small" x="225" y="93">排查顺序：网络 → 驱动 → 账号 → 安全策略</text>
+
+  <rect class="q" x="450" y="45" width="370" height="62"/>
+  <text x="635" y="73">问题：导入乱码 / 大表卡死 / 误删数据</text>
+  <text class="small" x="635" y="93">编码、分批、事务与备份预案</text>
+
+  <rect class="a" x="40" y="150" width="370" height="62"/>
+  <text x="225" y="178">解决：telnet 测端口 + 检查驱动版本</text>
+  <text class="small" x="225" y="198">utf8mb4、分批提交、先备份再变更</text>
+
+  <rect class="a" x="450" y="150" width="370" height="62"/>
+  <text x="635" y="178">解决：只读账号 + SSL + 操作审计</text>
+  <text class="small" x="635" y="198">连接管理页面提供完整模板</text>
+
+  <line x1="225" y1="107" x2="225" y2="150" marker-end="url(#fq-arrow)"/>
+  <line x1="635" y1="107" x2="635" y2="150" marker-end="url(#fq-arrow)"/>
+
+  <rect class="k" x="200" y="248" width="460" height="58"/>
+  <text x="430" y="276">原则：先小规模验证，再全量执行</text>
+  <text class="small" x="430" y="294">配套：DB 相关专题（MySQL/Redis/PG/Mongo）连接配置</text>
+</svg>

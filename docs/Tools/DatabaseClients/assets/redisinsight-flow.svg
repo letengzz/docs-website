@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ri-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8852d"/>
+    </marker>
+  </defs>
+  <style>
+    .conn { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .brow { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .work { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .ana { fill: #f6eefb; stroke: #8b5cc7; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #e8852d; stroke-width: 1.4; }
+  </style>
+
+  <rect class="conn" x="35" y="55" width="170" height="70"/>
+  <text x="120" y="83">添加数据库</text>
+  <text class="small" x="120" y="102">直连 / 集群 / Sentinel</text>
+
+  <rect class="brow" x="240" y="55" width="170" height="70"/>
+  <text x="325" y="83">浏览器</text>
+  <text class="small" x="325" y="102">按 Key 模式过滤浏览</text>
+
+  <rect class="work" x="445" y="55" width="170" height="70"/>
+  <text x="530" y="83">工作台</text>
+  <text class="small" x="530" y="102">Redis 命令 / 脚本执行</text>
+
+  <rect class="ana" x="650" y="55" width="175" height="70"/>
+  <text x="737" y="83">分析与诊断</text>
+  <text class="small" x="737" y="102">内存分析 / 慢查询</text>
+
+  <line x1="205" y1="90" x2="240" y2="90" marker-end="url(#ri-arrow)"/>
+  <line x1="410" y1="90" x2="445" y2="90" marker-end="url(#ri-arrow)"/>
+  <line x1="615" y1="90" x2="650" y2="90" marker-end="url(#ri-arrow)"/>
+
+  <rect class="brow" x="240" y="200" width="385" height="60"/>
+  <text x="432" y="228">CLI 内嵌：一条命令测试 Key / 排查大 Key</text>
+  <text class="small" x="432" y="246">支持 JSON/Time Series 等模块可视化</text>
+
+  <line x1="737" y1="125" x2="737" y2="168" stroke="#e8852d" stroke-dasharray="5 4"/>
+  <line x1="737" y1="168" x2="625" y2="200" marker-end="url(#ri-arrow)"/>
+
+  <text class="small" x="430" y="305">覆盖：Redis 7.x/8.x、Redis Stack、Tair 兼容实例、自建与云托管</text>
+  <text class="small" x="430" y="325">版本现状：RedisInsight 3.8（2026-08 核对，官方 GUI）</text>
+</svg>
