@@ -132,6 +132,7 @@ SELECT * FROM sys.schema_unused_indexes;
 
 ## 参考资料
 
+- 索引深入专题：[MySQL 索引深入](../MySQL/IndexDeepDive/index.md)
 - InnoDB 索引：https://dev.mysql.com/doc/refman/8.4/en/innodb-index-types.html
 - 最左前缀：https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html
 - 索引失效排查（官方优化章节）：https://dev.mysql.com/doc/refman/8.4/en/optimization-indexes.html

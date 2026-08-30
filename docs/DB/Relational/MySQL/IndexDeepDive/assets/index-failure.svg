@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="350" viewBox="0 0 860 350" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="if-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .case { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .fix { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="case" x="40" y="40" width="250" height="56"/>
+  <text x="165" y="66">函数包裹列 lower(email)</text>
+  <text class="small" x="165" y="84">→ 表达式索引（8.0+）</text>
+
+  <rect class="case" x="40" y="120" width="250" height="56"/>
+  <text x="165" y="146">隐式类型转换</text>
+  <text class="small" x="165" y="164">→ 保证类型一致</text>
+
+  <rect class="case" x="40" y="200" width="250" height="56"/>
+  <text x="165" y="226">前导通配符 LIKE '%abc'</text>
+  <text class="small" x="165" y="244">→ 倒排存储或全文</text>
+
+  <rect class="case" x="310" y="40" width="250" height="56"/>
+  <text x="435" y="66">OR 连接非索引列</text>
+  <text class="small" x="435" y="84">→ 拆分或补索引</text>
+
+  <rect class="case" x="310" y="120" width="250" height="56"/>
+  <text x="435" y="146">!= / NOT IN / IS NOT NULL</text>
+  <text class="small" x="435" y="164">→ 评估替代写法</text>
+
+  <rect class="case" x="310" y="200" width="250" height="56"/>
+  <text x="435" y="226">统计信息失真</text>
+  <text class="small" x="435" y="244">→ ANALYZE TABLE</text>
+
+  <rect class="case" x="580" y="40" width="240" height="56"/>
+  <text x="700" y="66">联合索引跳列</text>
+  <text class="small" x="700" y="84">→ 补最左前缀</text>
+
+  <rect class="case" x="580" y="120" width="240" height="56"/>
+  <text x="700" y="146">小表全表扫描更快</text>
+  <text class="small" x="700" y="164">→ 优化器选择，非失效</text>
+
+  <rect class="fix" x="580" y="200" width="240" height="56"/>
+  <text x="700" y="226">排查方法</text>
+  <text class="small" x="700" y="244">EXPLAIN 看 key 与 type</text>
+
+  <text class="small" x="430" y="310">原则：让索引列保持「裸列」，条件可推导、类型一致、前缀连续</text>
+  <text class="small" x="430" y="330">MySQL 8.0.13+ 支持函数索引（隐藏列方式实现）</text>
+</svg>

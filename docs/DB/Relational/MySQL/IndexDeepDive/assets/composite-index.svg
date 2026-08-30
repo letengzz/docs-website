@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="350" viewBox="0 0 860 350" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ci-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .bad { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; rx: 8; }
+    .mid { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <rect class="mid" x="280" y="30" width="300" height="54"/>
+  <text x="430" y="61">联合索引 (a, b, c)</text>
+
+  <line x1="360" y1="84" x2="140" y2="130" marker-end="url(#ci-arrow)"/>
+  <line x1="500" y1="84" x2="720" y2="130" marker-end="url(#ci-arrow)"/>
+
+  <rect class="ok" x="40" y="132" width="200" height="64"/>
+  <text x="140" y="160">WHERE a = 1</text>
+  <text class="small" x="140" y="178">走索引（前缀列）</text>
+  <rect class="ok" x="260" y="132" width="200" height="64"/>
+  <text x="360" y="160">WHERE a=1 AND b=2</text>
+  <text class="small" x="360" y="178">走索引（前缀列）</text>
+  <rect class="ok" x="480" y="132" width="200" height="64"/>
+  <text x="580" y="160">WHERE a=1 AND c=3</text>
+  <text class="small" x="580" y="178">a 用索引，c 无法利用</text>
+
+  <rect class="bad" x="40" y="240" width="200" height="64"/>
+  <text x="140" y="268">WHERE b = 2</text>
+  <text class="small" x="140" y="286">跳列，不走索引</text>
+  <rect class="bad" x="260" y="240" width="200" height="64"/>
+  <text x="360" y="268">WHERE c = 3</text>
+  <text class="small" x="360" y="286">跳列，不走索引</text>
+  <rect class="bad" x="480" y="240" width="200" height="64"/>
+  <text x="580" y="268">WHERE b=2 AND c=3</text>
+  <text class="small" x="580" y="286">缺最左前缀</text>
+
+  <text class="small" x="430" y="330">最左前缀原则：从第一列开始连续使用；等值放前、范围/排序放后</text>
+</svg>

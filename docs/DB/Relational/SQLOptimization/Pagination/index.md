@@ -135,6 +135,7 @@ SELECT COUNT(*) FROM orders WHERE status = 'PAID';
 
 ## 参考资料
 
+- 排序与分页索引优化：[MySQL 索引深入 · 排序与分组优化](../MySQL/IndexDeepDive/SortGroup/index.md)
 - MySQL LIMIT 优化：https://dev.mysql.com/doc/refman/8.4/en/limit-optimization.html
 - 深分页优化实践（社区文章）
 - 键集分页（Keyset Pagination）：https://use-the-index-luke.com/sql/partial-results/fetch-next-page

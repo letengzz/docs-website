@@ -129,6 +129,7 @@ MySQL 8.0+ 优化器会自动把部分 IN 子查询转为半连接，但 JOIN �
 
 ## 参考资料
 
+- 执行计划实战：[MySQL 索引深入 · 慢查询优化案例](../MySQL/IndexDeepDive/CaseStudy/index.md)
 - EXPLAIN 语句：https://dev.mysql.com/doc/refman/8.4/en/explain.html
 - EXPLAIN 输出格式：https://dev.mysql.com/doc/refman/8.4/en/explain-output.html
 - EXPLAIN ANALYZE：https://dev.mysql.com/doc/refman/8.4/en/explain.html#explain-analyze

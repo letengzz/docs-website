@@ -129,6 +129,7 @@ SELECT * FROM sys.innodb_lock_waits\G
 
 ## 参考资料
 
+- 慢查询优化案例：[MySQL 索引深入 · 实战](../MySQL/IndexDeepDive/CaseStudy/index.md)
 - 慢查询日志：https://dev.mysql.com/doc/refman/8.4/en/slow-query-log.html
 - mysqldumpslow：https://dev.mysql.com/doc/refman/8.4/en/mysqldumpslow.html
 - Percona Toolkit：https://www.percona.com/software/percona-toolkit
