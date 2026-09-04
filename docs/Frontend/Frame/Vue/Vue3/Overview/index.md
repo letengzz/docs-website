@@ -57,31 +57,6 @@ Vue 当前稳定版为 **3.5.x**（最新补丁 3.5.40，2026-07 发布），3.6
 
      ......
 
-## 学习路径
-
-建议按以下顺序学习 Vue3 核心：
-
-1. 模板语法与指令（插值、`v-bind`、`v-on`、`v-model`、条件与列表渲染）。
-2. 响应式数据：`ref`、`reactive`、`computed`、`watch` 及响应式原理。
-3. 组件化：组件通信、插槽、动态组件、`<script setup>`。
-4. Composition API：composable 设计、依赖注入、生命周期。
-5. 路由与状态管理：Vue Router 4、Pinia。
-6. 工程化：TypeScript、测试、性能优化、构建部署。
-
-本目录下的「核心进阶」系列文档按上述路径组织：
-
-- [响应式原理](Reactivity/index.md)
-- [模板语法](TemplateSyntax/index.md)
-- [Composition API 深入](CompositionAPI/index.md)
-- [生命周期](Lifecycle/index.md)
-- [TypeScript 集成](TypeScript/index.md)
-- [Pinia 进阶](PiniaAdvanced/index.md)
-- [路由进阶](RouterAdvanced/index.md)
-- [性能优化](Performance/index.md)
-- [实战案例](Practice/index.md)
-
-## 什么时候选择 Vue3
-
 适合 Vue3 的场景：
 
 - 新项目或需要长期维护的项目（Vue 2 已停止维护）。
@@ -90,8 +65,3 @@ Vue 当前稳定版为 **3.5.x**（最新补丁 3.5.40，2026-07 发布），3.6
 - 与 Vite、Pinia、Vue Router 4 等现代生态搭配。
 
 仍在使用 Vue 2 的存量项目，建议规划迁移；迁移不是重写，官方提供了 `@vue/compat` 兼容构建帮助渐进式升级。
-
-## 相关专题
-
-- [前端工程化](../../../../Others/FrontendEngineering/index.md)：Vue3 + Vite 的标准工程结构、规范与测试体系
-- [构建优化](../../../../Others/FrontendEngineering/BuildOptimization/index.md)：Vue3 应用的体积与性能优化
