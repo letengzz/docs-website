@@ -1,9 +1,5 @@
 # Vue3 核心语法
 
-::: info 进阶指引
-本文覆盖响应式数据、计算属性、watch、生命周期等基础用法。深入原理与进阶写法见「响应式原理」「Composition API 深入」「生命周期」。
-:::
-
 ## OptionsAPI 与 CompositionAPI
 
 - `Vue2`的`API`设计是`Options`（配置式、选项式）风格的。
@@ -11,7 +7,7 @@
 
 **Options API 的弊端**：`Options`类型的 `API`：数据、方法、计算属性等，是分散在：`data`、`methods`、`computed`中的，若想新增或者修改一个需求，就需要分别修改：`data`、`methods`、`computed`，不便于维护和复用。
 
-<img src="../assets/img202402061623795.gif" alt="1.gif" style="zoom:70%;border-radius:20px" /><img src="../assets/img202401310106948.gif" alt="2.gif" style="zoom:70%;border-radius:20px" />
+<img src="../assets/img202402061623795.gif" alt="1.gif" style="zoom: 50%; border-radius: 20px;" /><img src="../assets/img202401310106948.gif" alt="2.gif" style="zoom: 50%; border-radius: 20px;" />
 
 **Composition API 的优势**：可以用函数的方式，更加优雅的组织代码，让相关功能的代码更加有序的集中组织在一起。
 

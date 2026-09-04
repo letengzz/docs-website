@@ -2,9 +2,7 @@
 
 ## 目录结构
 
-### 基于 vue-cli 创建目录结构
-
-### 基于 vite 创建
+基于 vite 创建：
 
 - public：公共静态文件
   - favicon.ico：页签图标
