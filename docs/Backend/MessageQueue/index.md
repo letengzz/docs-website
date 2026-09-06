@@ -12,3 +12,7 @@
 - [集群部署](Cluster/index.md)
 - [对比总结](Comparison/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+::: tip 相关文档
+微服务里“用统一 API 接 MQ”的编程模型（Spring Cloud Stream：函数式收发、消费组、分区、重试与 DLQ）见 [Spring Cloud 专题：消息驱动](../SpringCloud/Stream/index.md)。
+:::

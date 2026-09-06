@@ -203,3 +203,7 @@ server-addr: nacos1:8848,nacos2:8848,nacos3:8848
 - Spring Cloud Alibaba 文档：https://sca.aliyun.com/
 - 服务发现模式（microservices.io）：https://microservices.io/patterns/service-discovery.html
 - Eureka 停止维护说明：https://github.com/Netflix/eureka/wiki
+
+::: tip 相关文档
+注册中心的 Spring Cloud 落地细节（Nacos 命名空间/分组/权重、Eureka/Consul 对照、健康检查坑位）见 [Spring Cloud 专题：服务注册与发现](../SpringCloud/Discovery/index.md)。
+:::

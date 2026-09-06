@@ -104,8 +104,12 @@ public class DemoApplication {
 ## 相关专题
 
 - [微服务专题](../../../../../Microservices/index.md)：Spring Boot 是微服务的底座，注册中心、网关、分布式事务都在其上构建
-- [Spring Cloud 入门](../../../SpringCloud/index.md)：从单应用走向微服务的第一站
+- [Spring Cloud 完整专题](../../../../../SpringCloud/index.md)：从单应用走向微服务的第一站（版本、注册发现、网关、OpenFeign、熔断、追踪等逐篇文档）
 - [设计模式](../../../../../DesignPatterns/index.md)：Spring Boot 自动配置与条件装配中的工厂/模板方法
+
+::: warning 版本联动提醒
+Spring Cloud 的 Train 与 Spring Boot 大版本绑定：Spring Boot 4.x 对应 Spring Cloud 2025.1.x（Oakwood）；升级 Boot 大版本前先核对 [Spring Cloud 版本选择与演进](../../../../../SpringCloud/Version/index.md)。
+:::
 
 ## 参考资料
 

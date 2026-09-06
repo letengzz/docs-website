@@ -208,3 +208,7 @@ public KeyResolver userKeyResolver() {
 - Spring Cloud Gateway 过滤器工厂：https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway-server-mvc/filter-factories.html
 - 微服务网关模式：https://microservices.io/patterns/apigateway.html
 - APISIX 网关：https://apisix.apache.org/
+
+::: tip 相关文档
+Spring Cloud Gateway 的落地细节（断言/过滤器清单、全局过滤器鉴权、Redis 限流、网关模块依赖坑位）见 [Spring Cloud 专题：API 网关](../SpringCloud/Gateway/index.md)，方法论参考同目录的 [Spring Cloud 版本与实现专题](../SpringCloud/index.md)。
+:::

@@ -76,7 +76,7 @@
 | 41 | Tools | 数据库客户端 ✅ | Navicat、DBeaver、RedisInsight、常用操作、连接管理、常见问题 |
 | 42 | Tools | 接口调试工具 ✅ | Postman、Apifox、环境与脚本、Mock、自动化测试、常见问题 |
 | 43 | Tools | 包管理器深入 ✅ | npm/pnpm/yarn 对比、pnpm 原理、monorepo、发布流程、常见问题 |
-| 44 | Backend | Spring Cloud | 注册中心、配置中心、网关、熔断限流、链路追踪、实战案例、常见问题 |
+| 44 | Backend | Spring Cloud ✅ | 版本与 Train 存档、环境搭建、注册中心、服务调用、网关、配置中心、熔断限流、链路追踪、消息驱动、实战案例、常见问题 |
 | 45 | Backend | Kafka 深入 | 架构、生产者、消费者、分区与副本、可靠性、集群、实战、常见问题 |
 | 46 | Backend | 分布式事务 | 2PC、TCC、SAGA、Seata、本地消息表、实践对比、常见问题 |
 | 47 | AI | 大模型应用开发 | API 调用、Function Calling、RAG、Agent 框架、成本与限流、实战、常见问题 |
@@ -181,6 +181,7 @@
 - [x] Tools 存量补全：数据库客户端专题已建设（8 篇，第 41 天），补充 MySQL/Redis/MongoDB/PostgreSQL 概览与 FAQ、IDE 工具交叉链接，并修复 3 处失效 PostgreSQL 相对链接
 - [x] Tools 存量补全：接口调试工具专题已建设（8 篇，第 42 天），补充 CI/CD 测试、前端 HTTP、后端网络编程 HTTP、运维网络 HTTP、IDE 工具、数据库客户端交叉链接
 - [x] Tools 存量补全：包管理器深入专题已建设（8 篇，第 43 天），补充 Node.js 包管理工具（npm/yarn/NpmYarn/发布管理）与前端工程化交叉链接，修复 npm 页损坏代码围栏并更新 npm unpublish 政策（24h→72h）
+- [x] Backend 存量补全：Spring Cloud 专题已建设（第 44 天，13 个页面：索引 + 概述 + 版本存档 + 环境 + 8 个组件/收尾页 + 当前版本页），按 Release Train 组织并保留 EOL 存档；补充 Microservices（索引/注册/网关/负载均衡/熔断/追踪）、Spring Boot 概述、Spring、Spring Cloud 旧入口、MessageQueue 交叉链接与版本联动提示
 
 ## 节奏建议
 

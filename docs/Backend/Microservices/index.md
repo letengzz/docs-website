@@ -14,3 +14,7 @@
 - [分布式事务](DistributedTransaction/index.md)
 - [实战：订单库存账户微服务](Practice/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+::: tip 与 Spring Cloud 的关系
+本专题讲微服务架构的**方法论与通用模式**（不绑定某套组件）；基于 Spring Boot/Spring Cloud 的具体落地（Nacos 注册、Gateway、OpenFeign、Resilience4j、Micrometer Tracing 等）见 [Spring Cloud 完整专题](../SpringCloud/index.md)。
+:::

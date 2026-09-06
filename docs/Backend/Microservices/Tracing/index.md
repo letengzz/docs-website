@@ -175,3 +175,7 @@ services:
 - Apache SkyWalking 文档：https://skywalking.apache.org/docs/
 - OpenTelemetry 文档：https://opentelemetry.io/docs/
 - 可观测性三大支柱（Metrics/Logs/Traces）：https://opentelemetry.io/docs/concepts/observability-primer/
+
+::: tip 相关文档
+Micrometer Tracing 的 Spring Cloud 接入（依赖、采样率、日志 traceId、跨线程上下文丢失坑位）见 [Spring Cloud 专题：链路追踪与可观测性](../SpringCloud/Tracing/index.md)。
+:::

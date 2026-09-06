@@ -2,6 +2,10 @@
 
 Spring Cloud 是构建在 Spring Boot 之上的**微服务开发套件**：它把注册中心、配置中心、网关、负载均衡、熔断限流、消息驱动等分布式基础设施统一封装成一套可插拔的启动器，让开发者用“写普通 Spring 应用”的方式搭建微服务。本页是专题入口，先讲整体架构与核心组件，再给出与本库其他专题的衔接。
 
+::: tip 专题定位
+本页负责「Spring Cloud 在 Java 框架体系中的定位与总览」。**完整技术文档**（版本选择、环境搭建、Nacos/Eureka 注册发现、OpenFeign、Gateway、配置中心、熔断、追踪、Stream、实战与 FAQ）已建设为独立专题，见 [Spring Cloud 完整专题](../../../SpringCloud/index.md)；本页保留总览与消息驱动速览，并维护到新专题的导航。
+:::
+
 ## 为什么需要 Spring Cloud
 
 微服务把单体拆成多个服务后，出现了一批“分布式共性问题”：
@@ -87,14 +91,19 @@ public Consumer<String> orderIn() {
 4. **直接调用内网服务不经过注册中心**：服务间调用必须用客户端负载均衡（`@LoadBalanced` 或 OpenFeign），否则无法感知实例变化。
 :::
 
-## 进阶路线
+## 专题导航
 
 本页是 Spring Cloud 的入口。更深入的专题（注册中心、配置中心、网关、熔断限流、链路追踪、分布式事务）已在微服务专题中系统建设，可结合以下内容建立完整体系：
 
+- [Spring Cloud 完整专题](../../../SpringCloud/index.md)：版本选择与演进、环境搭建、服务注册与发现、OpenFeign 与负载均衡、Gateway、配置中心、熔断限流、链路追踪、Stream 的**完整逐篇文档**
 - [微服务专题](../../../Microservices/index.md)：注册中心、网关、熔断限流、链路追踪、分布式事务完整体系
 - [消息队列专题](../../../MessageQueue/index.md)：事件驱动与消息可靠性的基础
 - [Spring Boot 通用指南](../SpringBoot/Common/index.md)：每个微服务都是 Spring Boot 应用
 - [Java 并发专题](../../JavaSE/Multithreading/index.md)：异步与线程池在服务间的使用
+
+::: warning 版本现状提示
+Spring Cloud 当前稳定 Train 为 **2025.1.x（Oakwood，适配 Spring Boot 4.0/4.1）**，2025.0 及更早版本线的 OSS 支持均已结束；版本对照与升级要点见 [版本选择与演进](../../../SpringCloud/Version/index.md)。
+:::
 
 ## 参考资料
 
