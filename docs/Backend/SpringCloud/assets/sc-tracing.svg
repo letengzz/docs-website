@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="390" viewBox="0 0 840 390" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="390" fill="#ffffff"/>
+  <text x="420" y="30" text-anchor="middle" font-size="19" font-weight="bold" fill="#1f2937">分布式链路：一次请求的 Trace 与 Span</text>
+  <!-- 调用链 -->
+  <rect x="35" y="60" width="120" height="62" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="95" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">客户端</text>
+  <text x="95" y="106" text-anchor="middle" font-size="10" fill="#6b7280">生成 Trace ID</text>
+  <rect x="190" y="60" width="130" height="62" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="255" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">网关</text>
+  <text x="255" y="106" text-anchor="middle" font-size="10" fill="#6b7280">Span：鉴权+路由 8ms</text>
+  <rect x="355" y="60" width="130" height="62" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="420" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">订单服务</text>
+  <text x="420" y="106" text-anchor="middle" font-size="10" fill="#6b7280">Span：创建订单 120ms</text>
+  <rect x="520" y="60" width="130" height="62" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="585" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">库存服务</text>
+  <text x="585" y="106" text-anchor="middle" font-size="10" fill="#6b7280">Span：扣减库存 60ms</text>
+  <rect x="685" y="60" width="120" height="62" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="745" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">数据库</text>
+  <text x="745" y="106" text-anchor="middle" font-size="10" fill="#6b7280">Span：UPDATE 90ms</text>
+  <path d="M 160 91 H 186" stroke="#6366f1" stroke-width="2" marker-end="url(#blue)"/>
+  <path d="M 325 91 H 351" stroke="#6366f1" stroke-width="2" marker-end="url(#blue)"/>
+  <path d="M 490 91 H 516" stroke="#6366f1" stroke-width="2" marker-end="url(#blue)"/>
+  <path d="M 655 91 H 681" stroke="#6366f1" stroke-width="2" marker-end="url(#blue)"/>
+  <!-- 传播说明 -->
+  <rect x="55" y="150" width="730" height="48" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="420" y="171" text-anchor="middle" font-size="12" font-weight="bold" fill="#334155">上下文传播：traceparent = 00-traceId-spanId-01（W3C）逐跳传递</text>
+  <text x="420" y="190" text-anchor="middle" font-size="11" fill="#6b7280">Micrometer Tracing 自动注入 OpenFeign / WebClient / Stream 消息头</text>
+  <!-- 时间线 -->
+  <text x="420" y="235" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">Zipkin 时间轴视图</text>
+  <rect x="80" y="252" width="680" height="52" rx="8" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <rect x="100" y="262" width="100" height="32" rx="5" fill="#c7d2fe"/>
+  <text x="150" y="283" text-anchor="middle" font-size="11" fill="#3730a3">网关 8ms</text>
+  <rect x="215" y="262" width="180" height="32" rx="5" fill="#a7f3d0"/>
+  <text x="305" y="283" text-anchor="middle" font-size="11" fill="#065f46">订单服务 120ms</text>
+  <rect x="415" y="262" width="110" height="32" rx="5" fill="#fde68a"/>
+  <text x="470" y="283" text-anchor="middle" font-size="11" fill="#92400e">库存 60ms</text>
+  <rect x="545" y="262" width="100" height="32" rx="5" fill="#fbcfe8"/>
+  <text x="595" y="283" text-anchor="middle" font-size="11" fill="#9d174d">SQL 90ms</text>
+  <!-- 结论 -->
+  <rect x="100" y="325" width="640" height="48" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="420" y="346" text-anchor="middle" font-size="12" fill="#065f46">慢在哪个服务、哪次 SQL 一目了然；日志按 traceId 聚合快速定位异常堆栈</text>
+  <text x="420" y="364" text-anchor="middle" font-size="11" fill="#6b7280">采样率建议 0.05~0.1，全量 1.0 只用于压测与短时排查</text>
+  <defs>
+    <marker id="blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+  </defs>
+</svg>

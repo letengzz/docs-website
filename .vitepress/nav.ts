@@ -14,6 +14,7 @@ export const nav = [
       { text: "Java", link: "/docs/Backend/Java" },
       { text: "消息队列", link: "/docs/Backend/MessageQueue" },
       { text: "微服务", link: "/docs/Backend/Microservices" },
+      { text: "Spring Cloud", link: "/docs/Backend/SpringCloud" },
       { text: "设计模式", link: "/docs/Backend/DesignPatterns" },
       { text: "网络编程", link: "/docs/Backend/NetworkProgramming" },
       { text: "Python", link: "/docs/Backend/Python" },]

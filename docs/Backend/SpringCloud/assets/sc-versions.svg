@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="420" viewBox="0 0 840 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="420" fill="#ffffff"/>
+  <text x="420" y="30" text-anchor="middle" font-size="19" font-weight="bold" fill="#1f2937">Spring Cloud Release Train 与 Spring Boot 版本对照</text>
+  <!-- 横向时间线 -->
+  <line x1="70" y1="95" x2="790" y2="95" stroke="#94a3b8" stroke-width="2"/>
+  <!-- 2022.0 -->
+  <rect x="70" y="120" width="150" height="70" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="145" y="148" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">2022.0.x Kilburn</text>
+  <text x="145" y="170" text-anchor="middle" font-size="11" fill="#64748b">Boot 3.0/3.1 · Jakarta</text>
+  <text x="145" y="185" text-anchor="middle" font-size="10" fill="#ef4444">已停止维护</text>
+  <!-- 2023.0 -->
+  <rect x="255" y="120" width="150" height="70" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="330" y="148" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">2023.0.x Leyton</text>
+  <text x="330" y="170" text-anchor="middle" font-size="11" fill="#64748b">Boot 3.2/3.3</text>
+  <text x="330" y="185" text-anchor="middle" font-size="10" fill="#ef4444">OSS 已结束</text>
+  <!-- 2024.0 -->
+  <rect x="440" y="120" width="150" height="70" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="515" y="148" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">2024.0.x Moorgate</text>
+  <text x="515" y="170" text-anchor="middle" font-size="11" fill="#64748b">Boot 3.4</text>
+  <text x="515" y="185" text-anchor="middle" font-size="10" fill="#ef4444">OSS 已结束</text>
+  <!-- 2025.0 -->
+  <rect x="625" y="120" width="165" height="70" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="707" y="148" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400e">2025.0.x Northfields</text>
+  <text x="707" y="170" text-anchor="middle" font-size="11" fill="#b45309">Boot 3.5（最后 3.x）</text>
+  <text x="707" y="185" text-anchor="middle" font-size="10" fill="#ef4444">OSS 已结束</text>
+  <!-- 2025.1 -->
+  <rect x="270" y="225" width="300" height="78" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="3"/>
+  <text x="420" y="254" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">2025.1.x Oakwood（当前稳定）</text>
+  <text x="420" y="278" text-anchor="middle" font-size="12" fill="#065f46">适配 Boot 4.0/4.1 · Framework 7 · Jackson 3</text>
+  <text x="420" y="296" text-anchor="middle" font-size="11" fill="#059669">新项目请选用此版本线</text>
+  <path d="M 707 194 V 222" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M 515 194 V 222" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M 330 194 V 222" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M 145 194 V 222" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- 选型步骤 -->
+  <rect x="80" y="325" width="680" height="70" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="420" y="350" text-anchor="middle" font-size="13" font-weight="bold" fill="#3730a3">选型口诀：先定 Spring Boot 大版本 → 查官方对照表选 Train → 只维护 Train 的 BOM 版本</text>
+  <text x="420" y="374" text-anchor="middle" font-size="12" fill="#4b5563">Spring Cloud 子组件版本由 BOM 统一管理，不要手工指定；使用 Alibaba 组件时再查 SCA 映射表</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="470" viewBox="0 0 840 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="470" fill="#ffffff"/>
+  <text x="420" y="30" text-anchor="middle" font-size="19" font-weight="bold" fill="#1f2937">Spring Cloud 解决微服务共性问题的组件全景</text>
+  <!-- 客户端 -->
+  <rect x="320" y="52" width="200" height="52" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="420" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">客户端 / 浏览器 / App</text>
+  <text x="420" y="95" text-anchor="middle" font-size="11" fill="#6b7280">统一走网关入口</text>
+  <!-- 网关 -->
+  <path d="M 420 109 V 140" stroke="#6366f1" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="300" y="143" width="240" height="56" rx="10" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+  <text x="420" y="166" text-anchor="middle" font-size="14" font-weight="bold" fill="#be185d">API 网关 Gateway</text>
+  <text x="420" y="186" text-anchor="middle" font-size="11" fill="#6b7280">路由 · 断言 · 过滤器（鉴权/限流/重写）</text>
+  <!-- 服务 -->
+  <path d="M 230 204 V 236" stroke="#ec4899" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M 420 204 V 236" stroke="#ec4899" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M 610 204 V 236" stroke="#ec4899" stroke-width="2" marker-end="url(#arr)"/>
+  <g>
+    <rect x="90" y="242" width="185" height="88" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="182" y="270" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">订单服务</text>
+    <text x="182" y="291" text-anchor="middle" font-size="11" fill="#4b5563">Spring Boot + Cloud</text>
+    <text x="182" y="310" text-anchor="middle" font-size="11" fill="#6b7280">OpenFeign 调库存</text>
+  </g>
+  <g>
+    <rect x="328" y="242" width="185" height="88" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="420" y="270" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">库存服务</text>
+    <text x="420" y="291" text-anchor="middle" font-size="11" fill="#4b5563">Spring Boot + Cloud</text>
+    <text x="420" y="310" text-anchor="middle" font-size="11" fill="#6b7280">多实例水平扩展</text>
+  </g>
+  <g>
+    <rect x="565" y="242" width="185" height="88" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="657" y="270" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">账户服务</text>
+    <text x="657" y="291" text-anchor="middle" font-size="11" fill="#4b5563">Spring Boot + Cloud</text>
+    <text x="657" y="310" text-anchor="middle" font-size="11" fill="#6b7280">Stream 消费订单事件</text>
+  </g>
+  <text x="420" y="368" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">注册中心 · 配置中心 · 熔断器 · 链路追踪 · 消息中间件</text>
+  <g>
+    <rect x="55" y="384" width="160" height="62" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="135" y="409" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">注册中心</text>
+    <text x="135" y="430" text-anchor="middle" font-size="11" fill="#6b7280">Nacos / Eureka / Consul</text>
+  </g>
+  <g>
+    <rect x="250" y="384" width="160" height="62" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="330" y="409" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">配置中心</text>
+    <text x="330" y="430" text-anchor="middle" font-size="11" fill="#6b7280">Nacos Config / Config</text>
+  </g>
+  <g>
+    <rect x="445" y="384" width="160" height="62" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="525" y="409" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">熔断追踪</text>
+    <text x="525" y="430" text-anchor="middle" font-size="11" fill="#6b7280">Resilience4j / Micrometer</text>
+  </g>
+  <g>
+    <rect x="640" y="384" width="150" height="62" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="715" y="409" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">消息驱动</text>
+    <text x="715" y="430" text-anchor="middle" font-size="11" fill="#6b7280">Kafka / RabbitMQ</text>
+  </g>
+  <path d="M 135 348 V 380" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M 330 348 V 380" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M 525 348 V 380" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M 715 348 V 380" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+  </defs>
+</svg>

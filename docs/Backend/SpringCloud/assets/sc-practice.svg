@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="420" viewBox="0 0 840 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="420" fill="#ffffff"/>
+  <text x="420" y="30" text-anchor="middle" font-size="19" font-weight="bold" fill="#1f2937">实战拓扑：网关 → 订单 → 库存（Nacos 注册发现）</text>
+  <!-- 客户端 -->
+  <rect x="310" y="55" width="220" height="52" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="420" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">客户端 curl / 浏览器</text>
+  <text x="420" y="97" text-anchor="middle" font-size="11" fill="#6b7280">统一入口 /api/**</text>
+  <!-- 网关 -->
+  <path d="M 420 112 V 140" stroke="#6366f1" stroke-width="2" marker-end="url(#blue)"/>
+  <rect x="290" y="145" width="260" height="58" rx="10" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+  <text x="420" y="168" text-anchor="middle" font-size="14" font-weight="bold" fill="#be185d">gateway :8080</text>
+  <text x="420" y="189" text-anchor="middle" font-size="11" fill="#6b7280">/api/order/** → lb://order-service；/api/stock/** → lb://stock-service</text>
+  <!-- 服务 -->
+  <path d="M 335 208 V 240" stroke="#ec4899" stroke-width="2" marker-end="url(#pink)"/>
+  <path d="M 505 208 V 240" stroke="#ec4899" stroke-width="2" marker-end="url(#pink)"/>
+  <rect x="90" y="245" width="270" height="92" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="225" y="273" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">order-service :8083</text>
+  <text x="225" y="295" text-anchor="middle" font-size="11" fill="#4b5563">OpenFeign + LoadBalancer</text>
+  <text x="225" y="313" text-anchor="middle" font-size="11" fill="#4b5563">Resilience4j 熔断降级</text>
+  <text x="225" y="330" text-anchor="middle" font-size="10" fill="#6b7280">@FeignClient(name="stock-service")</text>
+  <rect x="480" y="245" width="270" height="92" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="615" y="273" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">stock-service :8081 / :8082</text>
+  <text x="615" y="295" text-anchor="middle" font-size="11" fill="#4b5563">两个实例同时注册</text>
+  <text x="615" y="313" text-anchor="middle" font-size="11" fill="#4b5563">GET /api/stock/{skuId}</text>
+  <text x="615" y="330" text-anchor="middle" font-size="10" fill="#6b7280">响应体带 instance 端口便于观察轮询</text>
+  <path d="M 365 291 L 475 291" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#amber)"/>
+  <text x="420" y="284" text-anchor="middle" font-size="11" fill="#b45309">OpenFeign 调用（负载均衡）</text>
+  <!-- Nacos -->
+  <rect x="270" y="360" width="300" height="45" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="420" y="380" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">Nacos :8848（注册中心）</text>
+  <text x="420" y="397" text-anchor="middle" font-size="10" fill="#6b7280">服务注册与健康检查</text>
+  <path d="M 225 340 L 360 357" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M 615 340 L 480 357" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M 420 208 L 420 357" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <defs>
+    <marker id="blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="pink" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#ec4899"/>
+    </marker>
+    <marker id="amber" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+</svg>

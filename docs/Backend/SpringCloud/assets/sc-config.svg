@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="400" viewBox="0 0 840 400" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="400" fill="#ffffff"/>
+  <text x="420" y="30" text-anchor="middle" font-size="19" font-weight="bold" fill="#1f2937">配置中心：集中管理 + 动态刷新</text>
+  <!-- 配置来源 -->
+  <rect x="40" y="70" width="220" height="90" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="150" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">配置来源</text>
+  <text x="150" y="120" text-anchor="middle" font-size="11" fill="#6b7280">Nacos 控制台 / Config Git</text>
+  <text x="150" y="138" text-anchor="middle" font-size="11" fill="#6b7280">dev · test · prod 隔离</text>
+  <!-- 配置中心 -->
+  <rect x="330" y="70" width="180" height="90" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="420" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">配置中心</text>
+  <text x="420" y="120" text-anchor="middle" font-size="11" fill="#6b7280">order-service-dev.yaml</text>
+  <text x="420" y="138" text-anchor="middle" font-size="11" fill="#6b7280">版本管理 · 变更审计</text>
+  <!-- 服务 -->
+  <rect x="590" y="55" width="210" height="120" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="695" y="83" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">订单服务（多实例）</text>
+  <text x="695" y="108" text-anchor="middle" font-size="11" fill="#6b7280">启动：spring.config.import</text>
+  <text x="695" y="126" text-anchor="middle" font-size="11" fill="#6b7280">运行：监听配置变化</text>
+  <text x="695" y="144" text-anchor="middle" font-size="11" fill="#6b7280">@RefreshScope 动态刷新</text>
+  <text x="695" y="162" text-anchor="middle" font-size="11" fill="#6b7280">本地快照兜底</text>
+  <!-- 箭头 -->
+  <path d="M 265 115 H 325" stroke="#8b5cf6" stroke-width="2" marker-end="url(#violet)"/>
+  <path d="M 515 115 H 585" stroke="#6366f1" stroke-width="2" marker-end="url(#blue)"/>
+  <!-- 修改流程 -->
+  <rect x="170" y="225" width="500" height="55" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="420" y="248" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">发布新配置 → 推送变更事件 → 各实例刷新 Environment → 重建 @RefreshScope Bean</text>
+  <text x="420" y="268" text-anchor="middle" font-size="11" fill="#6b7280">不需要重启服务；回滚走历史版本或 Git revert</text>
+  <!-- 危险提示 -->
+  <rect x="80" y="310" width="680" height="62" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="420" y="334" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">注意：没有 @RefreshScope 的 @Value Bean 不会感知变化；敏感信息不要明文进配置</text>
+  <text x="420" y="356" text-anchor="middle" font-size="11" fill="#7f1d1d">先测试环境验证 → 生产发布 → 观察监控；涉及数据源等重配置建议滚动重启</text>
+  <defs>
+    <marker id="violet" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+    <marker id="blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+  </defs>
+</svg>

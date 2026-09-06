@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="380" viewBox="0 0 840 380" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="380" fill="#ffffff"/>
+  <text x="420" y="30" text-anchor="middle" font-size="19" font-weight="bold" fill="#1f2937">Spring Cloud Stream：统一消息编程模型</text>
+  <!-- 业务函数 -->
+  <g>
+    <rect x="50" y="80" width="170" height="95" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="135" y="106" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">业务代码</text>
+    <text x="135" y="128" text-anchor="middle" font-size="11" fill="#6b7280">Supplier / StreamBridge</text>
+    <text x="135" y="146" text-anchor="middle" font-size="11" fill="#6b7280">Consumer / Function</text>
+    <text x="135" y="164" text-anchor="middle" font-size="11" fill="#6b7280">只写函数不碰 MQ API</text>
+  </g>
+  <!-- Binding -->
+  <g>
+    <rect x="260" y="80" width="150" height="95" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="335" y="106" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">Binding 绑定</text>
+    <text x="335" y="130" text-anchor="middle" font-size="11" fill="#6b7280">order-out-0</text>
+    <text x="335" y="148" text-anchor="middle" font-size="11" fill="#6b7280">order-in-0</text>
+    <text x="335" y="166" text-anchor="middle" font-size="11" fill="#6b7280">destination/group</text>
+  </g>
+  <!-- Binder -->
+  <g>
+    <rect x="450" y="80" width="150" height="95" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="525" y="106" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">Binder 绑定器</text>
+    <text x="525" y="130" text-anchor="middle" font-size="11" fill="#6b7280">Kafka Binder</text>
+    <text x="525" y="148" text-anchor="middle" font-size="11" fill="#6b7280">Rabbit Binder</text>
+    <text x="525" y="166" text-anchor="middle" font-size="11" fill="#6b7280">Kafka Streams Binder</text>
+  </g>
+  <!-- MQ -->
+  <g>
+    <rect x="640" y="80" width="160" height="95" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="720" y="106" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">消息中间件</text>
+    <text x="720" y="130" text-anchor="middle" font-size="11" fill="#6b7280">Kafka Topic</text>
+    <text x="720" y="148" text-anchor="middle" font-size="11" fill="#6b7280">RabbitMQ Exchange/Queue</text>
+    <text x="720" y="166" text-anchor="middle" font-size="11" fill="#6b7280">切换只改依赖+配置</text>
+  </g>
+  <path d="M 225 127 H 256" stroke="#6366f1" stroke-width="2" marker-end="url(#blue)"/>
+  <path d="M 415 127 H 446" stroke="#f59e0b" stroke-width="2" marker-end="url(#amber)"/>
+  <path d="M 605 127 H 636" stroke="#8b5cf6" stroke-width="2" marker-end="url(#violet)"/>
+  <!-- 特性条 -->
+  <rect x="70" y="215" width="700" height="62" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="420" y="239" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">关键特性</text>
+  <text x="420" y="262" text-anchor="middle" font-size="12" fill="#475569">消费组（组内分摊不重复） · 分区与顺序 · 重试与 DLQ · 内容类型转换（JSON）</text>
+  <!-- 提示 -->
+  <rect x="80" y="300" width="680" height="58" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="420" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">易错：忘配 group 会重复消费；异常被吞等于自动确认丢消息</text>
+  <text x="420" y="344" text-anchor="middle" font-size="11" fill="#7f1d1d">消费务必幂等（业务主键去重）；底层可靠性见消息队列专题</text>
+  <defs>
+    <marker id="blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="amber" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/>
+    </marker>
+    <marker id="violet" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+</svg>

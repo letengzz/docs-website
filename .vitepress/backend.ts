@@ -222,6 +222,26 @@ export const Microservices = [
     ],
   },
 ];
+export const SpringCloud = [
+  {
+    text: "Spring Cloud",
+    link: "/docs/Backend/SpringCloud/index.md",
+    items: [
+      { text: "Spring Cloud 概述", link: "/docs/Backend/SpringCloud/Overview/index.md" },
+      { text: "版本选择与演进", link: "/docs/Backend/SpringCloud/Version/index.md" },
+      { text: "环境搭建与项目脚手架", link: "/docs/Backend/SpringCloud/Environment/index.md" },
+      { text: "服务注册与发现", link: "/docs/Backend/SpringCloud/Discovery/index.md" },
+      { text: "服务调用：OpenFeign 与负载均衡", link: "/docs/Backend/SpringCloud/OpenFeign/index.md" },
+      { text: "API 网关：Spring Cloud Gateway", link: "/docs/Backend/SpringCloud/Gateway/index.md" },
+      { text: "配置中心与动态刷新", link: "/docs/Backend/SpringCloud/ConfigCenter/index.md" },
+      { text: "熔断限流与降级", link: "/docs/Backend/SpringCloud/CircuitBreaker/index.md" },
+      { text: "链路追踪与可观测性", link: "/docs/Backend/SpringCloud/Tracing/index.md" },
+      { text: "消息驱动：Spring Cloud Stream", link: "/docs/Backend/SpringCloud/Stream/index.md" },
+      { text: "实战：Nacos + 网关 + OpenFeign", link: "/docs/Backend/SpringCloud/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/SpringCloud/FAQ/index.md" },
+    ],
+  },
+];
 export const DesignPatterns = [
   {
     text: "设计模式",
