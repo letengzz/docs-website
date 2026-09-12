@@ -80,7 +80,7 @@
 | 45 | Backend | Kafka 深入 ✅ | 架构、生产者、消费者、分区与副本、可靠性、集群、实战、常见问题 |
 | 46 | Backend | 分布式事务 ✅ | 2PC、TCC、SAGA、Seata、本地消息表、实践对比、常见问题 |
 | 47 | AI | 大模型应用开发 ✅ | API 调用、Function Calling、RAG、Agent 框架、成本与限流、实战、常见问题 |
-| 48 | AI | RAG 检索增强 | Embedding、向量库、Chunking、检索优化、评估、实战案例、常见问题 |
+| 48 | AI | RAG 检索增强 ✅ | Embedding、向量库、Chunking、检索优化、评估、实战案例、常见问题 |
 | 49 | AI | 本地模型部署 | Ollama、量化、API 接入、GPU/内存规划、实战案例、常见问题 |
 | 50 | Frontend | 微信小程序 | 框架与目录、组件、API、路由、发布流程、性能优化、常见问题 |
 | 51 | Frontend | 跨端开发 | UniApp、Taro、Electron、方案对比、实战案例、常见问题 |
@@ -188,6 +188,8 @@
 - [x] 存量版本核对：Seata 版本信息更新为 2.7.0（2026-09-06 发布）并补充 Spring Cloud Alibaba 2021.0.6.0 / 2022.0.0.0 / 2023.0.1.0 组件矩阵（含 Nacos、RocketMQ、Seata 版本对照）；Seata 1.x（1.8.0 为最后版本）按版本目录存档并标注「仅存量项目使用」，同时补充 Maven 坐标差异（io.seata → 2.1.0 起 org.apache.seata）与 MySQL XA 官方限制
 - [x] AI 存量补全：大模型应用开发专题已建设（第 47 天，10 个页面：概述与环境、API 调用基础、Chat Completions 兼容用法、工具与函数调用、上下文与记忆管理、RAG 检索增强接入、Agent 框架与应用集成、成本核算与限流降级、实战、FAQ），按「主线 + 存量存档」组织：主线面向 Responses API，Chat Completions 单独成页并标注存量兼容状态；补充 AI（索引/提示词工程/Agent/OpenClaw）交叉链接与官方文档地址更新
 - [x] AI 事实与版本核对：按官方文档核对 Responses 与 Chat Completions 的推荐关系与迁移指南、速率限制维度（RPM/RPD/TPM/TPD 与用量层级）、提示缓存折扣与最小可缓存长度、嵌入模型维度可选、结构化输出与 strict 模式约束、工具检索的模型要求；模型 ID 与单价在文中统一标注「以官方模型页/定价页为准」，不写死版本清单
+- [x] AI 存量补全：RAG 检索增强专题已建设（第 48 天，10 个页面：概述、嵌入与向量基础、文档解析与切分、向量库与索引、检索优化、评估体系、生产工程化、组件版本状态与升级、实战、FAQ），并按「主线 + 旧版本标注」组织组件版本状态（Milvus 3.x/2.6.x/1.x、pgvector 0.8.x、Qdrant 1.x、Chroma 1.x、Elasticsearch 9.x/8.x/7.x、嵌入模型代际）；补充 AI 索引、LLMApp（导航/接入页/成本/FAQ）、提示词评估与 Agent 记忆的交叉链接
+- [x] 存量交叉链接与去重：把 LLMApp/RagOverview 的评估指标段收敛为「摘要 + 链接」，避免与 RAG 评估体系重复；补充「深入阅读」表引导到切分/向量库/检索/评估/工程化各页
 
 ## 节奏建议
 

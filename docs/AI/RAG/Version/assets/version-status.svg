@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">RAG 组件版本状态与升级路径（2026-09 核对）</text>
+
+  <rect x="30" y="58" width="270" height="170" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">Milvus</text>
+  <text x="52" y="112" font-size="11" font-weight="bold" fill="#3730a3">3.x（v3.0.1）：当前主线</text>
+  <text x="52" y="138" font-size="11" fill="#3730a3">2.6.x：上一代维护线，仍大量在用</text>
+  <text x="52" y="164" font-size="11" fill="#3730a3">1.x：历史版本，仅存量</text>
+  <text x="52" y="192" font-size="10" fill="#6b7280">跨大版本升级需按官方升级文档执行</text>
+  <text x="52" y="214" font-size="10" fill="#6b7280">客户端 SDK 与服务端版本需要匹配</text>
+
+  <rect x="315" y="58" width="270" height="170" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">PostgreSQL + pgvector</text>
+  <text x="337" y="112" font-size="11" font-weight="bold" fill="#065f46">0.8.x（v0.8.6）：当前</text>
+  <text x="337" y="138" font-size="11" fill="#065f46">0.7.x 及更早：部分索引能力受限</text>
+  <text x="337" y="164" font-size="11" fill="#065f46">依赖 PostgreSQL 主版本</text>
+  <text x="337" y="192" font-size="10" fill="#6b7280">升级前先看扩展的升级说明</text>
+  <text x="337" y="214" font-size="10" fill="#6b7280">适合已有 PG 的团队，运维成本最低</text>
+
+  <rect x="600" y="58" width="270" height="170" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="735" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">Elasticsearch</text>
+  <text x="622" y="112" font-size="11" font-weight="bold" fill="#92400e">9.x（v9.5.3）：当前</text>
+  <text x="622" y="138" font-size="11" fill="#92400e">8.x：上一代，存量常见</text>
+  <text x="622" y="164" font-size="11" fill="#92400e">7.x：更早一代，仅存量</text>
+  <text x="622" y="192" font-size="10" fill="#6b7280">大版本间安全默认值、类型系统差异较大</text>
+  <text x="622" y="214" font-size="10" fill="#6b7280">适合已用 ES 做全文检索、想统一栈的团队</text>
+
+  <rect x="30" y="248" width="410" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="235" y="274" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">其他常见向量库</text>
+  <text x="52" y="300" font-size="11" fill="#5b21b6">Qdrant 1.x（v1.19.1）：Rust 实现，过滤能力强</text>
+  <text x="52" y="324" font-size="11" fill="#5b21b6">Chroma 1.x（1.5.9）：轻量、原型验证友好</text>
+  <text x="52" y="348" font-size="11" fill="#5b21b6">0.x 版本 API 差异较大，新项目建议直接用 1.x</text>
+
+  <rect x="460" y="248" width="410" height="120" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="665" y="274" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">嵌入模型代际</text>
+  <text x="482" y="300" font-size="11" fill="#1e3a8a">当前主流：text-embedding-3 系列（1536 / 3072 维）</text>
+  <text x="482" y="324" font-size="11" fill="#1e3a8a">更早一代（如 ada 系列）：仅存量，新项目不建议</text>
+  <text x="482" y="348" font-size="11" fill="#1e3a8a">换模型 = 全量重建索引，不能混用向量空间</text>
+
+  <rect x="30" y="384" width="840" height="50" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="414" text-anchor="middle" font-size="11" fill="#374151">约定：本库对旧版本内容保留并标注「仅存量」，不删除、不覆盖；升级前必须先在预发环境重建索引并跑评测集。</text>
+</svg>

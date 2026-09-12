@@ -12,7 +12,7 @@
 - [Chat Completions 兼容用法](ApiCall/ChatCompletions/index.md)：存量集成如何维护、如何迁移到 Responses
 - [工具与函数调用](FunctionCalling/index.md)：JSON Schema、strict 模式、并行调用、结果回传
 - [上下文与记忆管理](ContextMemory/index.md)：令牌预算、历史裁剪、摘要、外部记忆与提示缓存
-- [RAG 检索增强接入](RagOverview/index.md)：索引链路、问答链路与向量检索的最小落地
+- [RAG 检索增强接入](RagOverview/index.md)：把检索接进应用的最小落地（深入内容见 [RAG 检索增强专题](../RAG/index.md)）
 - [Agent 框架与应用集成](AgentIntegration/index.md)：官方接口、Python 生态、企业技术栈的选型
 - [成本核算与限流降级](CostRateLimit/index.md)：令牌成本、缓存、批处理、限流与兜底
 - [实战：智能工单助手](Practice/index.md)：分类 + 知识库问答的完整落地与验证

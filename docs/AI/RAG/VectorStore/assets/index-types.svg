@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">向量索引类型与查询过程</text>
+
+  <rect x="30" y="58" width="270" height="170" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">暴力检索（Flat）</text>
+  <text x="52" y="110" font-size="11" fill="#3730a3">与全部向量逐一比较</text>
+  <text x="52" y="134" font-size="11" fill="#3730a3">召回 100% 准确</text>
+  <text x="52" y="158" font-size="11" fill="#3730a3">复杂度随数据量线性增长</text>
+  <text x="52" y="184" font-size="10" fill="#6b7280">适合：< 10 万条、离线评测、基线对比</text>
+  <text x="52" y="208" font-size="10" fill="#6b7280">不适合：千万级以上的在线检索</text>
+
+  <rect x="315" y="58" width="270" height="170" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">HNSW（图索引）</text>
+  <text x="337" y="110" font-size="11" fill="#065f46">多层近邻图，逐层跳转逼近</text>
+  <text x="337" y="134" font-size="11" fill="#065f46">查询快、召回高，工业默认选择</text>
+  <text x="337" y="158" font-size="11" fill="#065f46">内存占用较高</text>
+  <text x="337" y="184" font-size="10" fill="#6b7280">关键参数：M、ef_construction 建索引；ef_search 查询</text>
+  <text x="337" y="208" font-size="10" fill="#6b7280">适合：在线问答，百万级以内最常见选择</text>
+
+  <rect x="600" y="58" width="270" height="170" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="735" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">IVF / IVF-PQ（倒排+量化）</text>
+  <text x="622" y="110" font-size="11" fill="#92400e">先聚类分桶，查询只扫部分桶</text>
+  <text x="622" y="134" font-size="11" fill="#92400e">省内存、可扩展到大集群</text>
+  <text x="622" y="158" font-size="11" fill="#92400e">需要训练，召回略低于 HNSW</text>
+  <text x="622" y="184" font-size="10" fill="#6b7280">关键参数：nlist（桶数）、nprobe（探测桶数）、PQ 压缩</text>
+  <text x="622" y="208" font-size="10" fill="#6b7280">适合：亿级数据、内存受限、可接受少量精度损失</text>
+
+  <rect x="30" y="248" width="840" height="118" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="274" font-size="13" font-weight="bold" fill="#1f2937">一次向量查询经历什么</text>
+  <text x="50" y="300" font-size="11" fill="#374151">① 查询文本用同一嵌入模型编码 → ② 按度量（余弦/内积）在索引中搜索候选 → ③ 应用标量过滤（租户、权限、时效）</text>
+  <text x="50" y="324" font-size="11" fill="#374151">④ 返回 Top-K 候选 → ⑤（可选）重排模型精排 → ⑥ 截断到最终 Top-N 交给生成模型</text>
+  <text x="50" y="348" font-size="10" fill="#6b7280">注意：过滤发生在检索前还是检索后，结果差别很大——"先过滤后检索"通常更准。</text>
+
+  <rect x="30" y="384" width="840" height="50" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="414" text-anchor="middle" font-size="11" fill="#374151">选型顺序：数据量 → 是否需要强过滤 → 内存预算 → 运维成本；不要一上来就选最复杂的方案。</text>
+</svg>

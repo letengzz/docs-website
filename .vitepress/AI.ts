@@ -76,3 +76,22 @@ export const AI_LLMApp = [
     ],
   },
 ];
+
+export const AI_RAG = [
+  {
+    text: "RAG 检索增强",
+    link: "/docs/AI/RAG/index.md",
+    collapsed: true,
+    items: [
+      { text: "嵌入与向量基础", link: "/docs/AI/RAG/Embedding/index.md" },
+      { text: "文档解析与切分", link: "/docs/AI/RAG/Chunking/index.md" },
+      { text: "向量库与索引", link: "/docs/AI/RAG/VectorStore/index.md" },
+      { text: "检索优化", link: "/docs/AI/RAG/Retrieval/index.md" },
+      { text: "评估体系", link: "/docs/AI/RAG/Evaluation/index.md" },
+      { text: "生产工程化", link: "/docs/AI/RAG/Pipeline/index.md" },
+      { text: "组件版本状态与升级", link: "/docs/AI/RAG/Version/index.md" },
+      { text: "实战：企业知识库问答", link: "/docs/AI/RAG/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/RAG/FAQ/index.md" },
+    ],
+  },
+];

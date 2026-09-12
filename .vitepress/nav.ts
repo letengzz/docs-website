@@ -43,6 +43,7 @@ export const nav = [
   },
   { text: "AI", items: [
       { text: "大模型应用开发", link: "/docs/AI/LLMApp" },
+      { text: "RAG 检索增强", link: "/docs/AI/RAG" },
       { text: "OpenClaw", link: "/docs/AI/OpenClaw" },
       { text: "提示词工程", link: "/docs/AI/PromptEngineering" },
       { text: "Agent 应用", link: "/docs/AI/Agent" },

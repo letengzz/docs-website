@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">四种切分策略与适用场景</text>
+
+  <rect x="30" y="58" width="410" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="235" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 固定窗口切分</text>
+  <text x="52" y="110" font-size="11" fill="#3730a3">按字符/令牌数硬切，设置重叠（如 80 字）</text>
+  <text x="52" y="134" font-size="11" fill="#3730a3">优点：实现最简单、长度可控</text>
+  <text x="52" y="158" font-size="11" fill="#3730a3">缺点：可能切断表格、步骤、条款</text>
+  <text x="52" y="184" font-size="10" fill="#6b7280">适合：格式统一的日志、聊天记录、简单 FAQ</text>
+
+  <rect x="460" y="58" width="410" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="665" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② 递归/结构化切分（推荐默认）</text>
+  <text x="482" y="110" font-size="11" fill="#065f46">按标题层级 → 段落 → 句子逐级回退</text>
+  <text x="482" y="134" font-size="11" fill="#065f46">优点：尽量保持语义完整</text>
+  <text x="482" y="158" font-size="11" fill="#065f46">缺点：块长度不均，需要设上限与合并策略</text>
+  <text x="482" y="184" font-size="10" fill="#6b7280">适合：手册、规范、文档站，绝大多数场景的首选</text>
+
+  <rect x="30" y="224" width="410" height="150" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="235" y="250" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">③ 语义切分</text>
+  <text x="52" y="276" font-size="11" fill="#5b21b6">计算句子向量，在语义突变处断开</text>
+  <text x="52" y="300" font-size="11" fill="#5b21b6">优点：主题边界更准</text>
+  <text x="52" y="324" font-size="11" fill="#5b21b6">缺点：需额外编码开销，参数敏感</text>
+  <text x="52" y="350" font-size="10" fill="#6b7280">适合：长文、会议纪要、无明确小标题的文档</text>
+
+  <rect x="460" y="224" width="410" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="665" y="250" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">④ 父子块 / 小块检索大块返回</text>
+  <text x="482" y="276" font-size="11" fill="#92400e">用小块（段落）做向量索引提高召回精度</text>
+  <text x="482" y="300" font-size="11" fill="#92400e">命中后返回其父块（整节）给模型保证上下文完整</text>
+  <text x="482" y="324" font-size="11" fill="#92400e">优点：精度与上下文兼顾</text>
+  <text x="482" y="350" font-size="10" fill="#6b7280">适合：条款类、步骤类文档（效果提升明显）</text>
+
+  <rect x="30" y="390" width="840" height="44" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="418" text-anchor="middle" font-size="11" fill="#374151">调参方法：先固定切分，用评测集对比「命中率」；再逐步调整块大小与重叠，每次只改一个变量。</text>
+</svg>

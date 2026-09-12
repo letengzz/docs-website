@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">索引流水线与在线服务的工程化</text>
+
+  <rect x="30" y="58" width="270" height="170" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">索引侧：怎么保证"新内容能搜到"</text>
+  <text x="52" y="110" font-size="11" fill="#3730a3">全量重建：定期（周/月）重跑，成本高但最干净</text>
+  <text x="52" y="134" font-size="11" fill="#3730a3">增量更新：按文档 ID upsert，删除要显式处理</text>
+  <text x="52" y="158" font-size="11" fill="#3730a3">版本化：chunk 记录「文档版本 + 模型版本」</text>
+  <text x="52" y="184" font-size="10" fill="#6b7280">发布流程：先写新版本 → 灰度查询 → 切换别名 → 清理旧版本</text>
+  <text x="52" y="208" font-size="10" fill="#6b7280">避免"边更新边查询"导致的半成品状态</text>
+
+  <rect x="315" y="58" width="270" height="170" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">在线侧：延迟与成本</text>
+  <text x="337" y="110" font-size="11" fill="#065f46">缓存：查询向量缓存、检索结果缓存、答案缓存</text>
+  <text x="337" y="134" font-size="11" fill="#065f46">并行：多路召回与子查询并发，控制并发上限</text>
+  <text x="337" y="158" font-size="11" fill="#065f46">超时与降级：检索慢时先返回有限片段或转人工</text>
+  <text x="337" y="184" font-size="10" fill="#6b7280">上下文压缩：只保留与问题相关的句子，降输入令牌</text>
+  <text x="337" y="208" font-size="10" fill="#6b7280">分层：热数据常驻内存，冷数据放对象存储</text>
+
+  <rect x="600" y="58" width="270" height="170" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="735" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">权限与多租户</text>
+  <text x="622" y="110" font-size="11" fill="#5b21b6">每个 chunk 带租户与访问标签</text>
+  <text x="622" y="134" font-size="11" fill="#5b21b6">检索必须"先过滤后检索"</text>
+  <text x="622" y="158" font-size="11" fill="#5b21b6">越权访问要做审计与告警</text>
+  <text x="622" y="184" font-size="10" fill="#6b7280">租户隔离方式：逻辑过滤 / 独立集合 / 独立库</text>
+  <text x="622" y="208" font-size="10" fill="#6b7280">合规敏感数据需脱敏或私有化部署</text>
+
+  <rect x="30" y="248" width="840" height="186" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="274" font-size="13" font-weight="bold" fill="#1f2937">可观测性：RAG 必须能"看得见中间状态"</text>
+  <text x="50" y="300" font-size="11" fill="#374151">每次问答记录：改写后的查询、召回片段 ID 与分数、重排前后顺序、最终上下文、生成结果、用户反馈。</text>
+  <text x="50" y="324" font-size="11" fill="#374151">核心指标：检索命中率、平均召回条数、上下文令牌数、端到端延迟、拒答率、转人工率、单次成本。</text>
+  <text x="50" y="348" font-size="11" fill="#374151">告警：命中率骤降（索引或过滤写错）、延迟上升（重排或向量库变慢）、成本上升（上下文膨胀）。</text>
+  <text x="50" y="372" font-size="11" fill="#374151">回放：给定问题 ID 能完整还原"当时检索到什么、模型看到什么"，这是排查 RAG 问题的唯一可靠手段。</text>
+  <text x="50" y="400" font-size="10" fill="#6b7280">灰度发布：新索引/新模型先接 5% 流量，对比命中率与满意度再放量；保留一键切回旧版本的能力。</text>
+  <text x="50" y="422" font-size="10" fill="#6b7280">成本控制：向量库存储与查询、嵌入调用、重排调用、生成令牌四笔账要分开统计。</text>
+</svg>

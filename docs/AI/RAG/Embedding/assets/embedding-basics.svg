@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">嵌入（Embedding）：把文本变成可比较的向量</text>
+
+  <rect x="30" y="62" width="360" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="210" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">编码过程</text>
+  <text x="52" y="116" font-size="11" fill="#3730a3">"如何申请退款"  →  [0.021, -0.134, ..., 0.087]</text>
+  <text x="52" y="142" font-size="11" fill="#3730a3">同一模型下，语义相近的文本向量距离更近</text>
+  <text x="52" y="168" font-size="11" fill="#3730a3">向量维度由模型决定，可请求降维（dimensions 参数）</text>
+  <text x="52" y="194" font-size="10" fill="#6b7280">当前主流嵌入模型支持 1536 / 3072 等维度，降维可省存储与计算</text>
+
+  <rect x="410" y="62" width="440" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="630" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">相似度度量与选择</text>
+  <text x="432" y="116" font-size="11" fill="#065f46">余弦相似度：只看方向，文本检索最常用</text>
+  <text x="432" y="142" font-size="11" fill="#065f46">内积（Dot）：向量已归一化时与余弦等价，计算更快</text>
+  <text x="432" y="168" font-size="11" fill="#065f46">欧氏距离（L2）：关注绝对差异，图像/数值场景更常见</text>
+  <text x="432" y="194" font-size="10" fill="#6b7280">关键：索引与查询必须使用同一度量与同一模型，否则结果无意义</text>
+
+  <rect x="30" y="228" width="820" height="120" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="440" y="254" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">工程权衡：维度、成本与效果</text>
+  <text x="52" y="280" font-size="11" fill="#92400e">维度越高：表达力更强，但存储、内存与检索计算成本更高（近似线性增长）。</text>
+  <text x="52" y="304" font-size="11" fill="#92400e">降维：多数模型支持按维度截断，效果通常小幅下降、成本显著下降，适合先用低维度验证。</text>
+  <text x="52" y="328" font-size="11" fill="#92400e">批量编码：离线索引用批量接口，既减少请求数也更容易控制限流与重试。</text>
+
+  <rect x="30" y="364" width="820" height="62" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="52" y="390" font-size="11" fill="#374151">必做校验：换模型后必须全量重建索引；不同模型的向量空间不可混用（哪怕维度相同）。</text>
+  <text x="52" y="412" font-size="11" fill="#6b7280">模型版本要写进索引元数据，方便日后排查"为什么结果变了"。</text>
+</svg>

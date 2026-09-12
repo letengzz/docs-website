@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">实战：企业知识库问答的端到端形态</text>
+
+  <rect x="30" y="58" width="180" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="120" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">用户与前端</text>
+  <text x="120" y="110" text-anchor="middle" font-size="10" fill="#3730a3">内部员工问答入口</text>
+  <text x="120" y="132" text-anchor="middle" font-size="10" fill="#3730a3">展示答案 + 引用来源</text>
+  <text x="120" y="154" text-anchor="middle" font-size="10" fill="#3730a3">点赞 / 踩 + 反馈原因</text>
+  <text x="120" y="180" text-anchor="middle" font-size="10" fill="#6b7280">无依据时提供转人工入口</text>
+
+  <path d="M 212 132 H 250" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#k1)"/>
+
+  <rect x="252" y="58" width="240" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="372" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">问答服务</text>
+  <text x="272" y="110" font-size="10" fill="#065f46">查询改写 + 多路召回 + 重排</text>
+  <text x="272" y="132" font-size="10" fill="#065f46">上下文拼装（含引用编号）</text>
+  <text x="272" y="154" font-size="10" fill="#065f46">生成 + 拒答判定 + 转人工</text>
+  <text x="272" y="180" font-size="10" fill="#6b7280">全链路埋点：查询、片段、令牌、延迟</text>
+
+  <path d="M 494 132 H 532" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#k2)"/>
+
+  <rect x="534" y="58" width="336" height="150" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="702" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">存储与模型</text>
+  <text x="554" y="110" font-size="10" fill="#5b21b6">向量库：chunk 向量 + 元数据（来源/版本/权限）</text>
+  <text x="554" y="132" font-size="10" fill="#5b21b6">全文索引：关键词召回（BM25）</text>
+  <text x="554" y="154" font-size="10" fill="#5b21b6">嵌入模型 + 生成模型 + 重排模型</text>
+  <text x="554" y="180" font-size="10" fill="#6b7280">缓存：查询向量 / 检索结果 / 最终答案</text>
+
+  <rect x="30" y="226" width="840" height="110" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="450" y="252" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">离线索引流水线</text>
+  <text x="52" y="278" font-size="11" fill="#92400e">① 从文档库/Confluence/工单系统同步 → ② 解析清洗（去页眉页脚、保留标题路径） → ③ 切分与元数据标注</text>
+  <text x="52" y="302" font-size="11" fill="#92400e">④ 批量嵌入 → ⑤ 写入新集合 → ⑥ 评测集验证召回率 → ⑦ 切换别名上线 → ⑧ 清理旧集合</text>
+  <text x="52" y="326" font-size="10" fill="#6b7280">每日增量同步 + 每周全量重建；每次重建都跑评测集，指标不降才切换。</text>
+
+  <rect x="30" y="352" width="410" height="96" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="235" y="378" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">评测与运营</text>
+  <text x="52" y="404" font-size="11" fill="#1e3a8a">固定评测集：命中率 / 引用正确率 / 拒答率</text>
+  <text x="52" y="428" font-size="11" fill="#1e3a8a">差评样本每周回流，更新评测集与知识库</text>
+
+  <rect x="460" y="352" width="410" height="96" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="665" y="378" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f2937">稳定性与成本</text>
+  <text x="482" y="404" font-size="11" fill="#374151">超时降级、限流、预算告警、灰度开关</text>
+  <text x="482" y="428" font-size="11" fill="#374151">索引与查询分离部署，互不影响</text>
+
+  <defs>
+    <marker id="k1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="k2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

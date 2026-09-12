@@ -186,3 +186,4 @@ def traced_call(payload: dict):
 - 速率限制：https://developers.openai.com/api/docs/guides/rate-limits
 - 结构化输出与拒绝（refusal）：https://developers.openai.com/api/docs/guides/structured-outputs
 - 本库提示词工程：[常见问题与最佳实践](../../PromptEngineering/FAQ/index.md)
+- 检索类问答的排查路径：[RAG 检索增强 · 常见问题与最佳实践](../../RAG/FAQ/index.md)

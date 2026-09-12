@@ -103,3 +103,4 @@ python evaluate.py --dataset gold.json --prompt v1.2
 
 - [大模型应用开发 · 实战：智能工单助手](../../LLMApp/Practice/index.md)：评测集、指标与回归脚本的工程化示例
 - [大模型应用开发 · 成本核算与限流降级](../../LLMApp/CostRateLimit/index.md)：把准确率与成本放在一起比较
+- [RAG 检索增强 · 评估体系](../../RAG/Evaluation/index.md)：检索层、生成层与业务层的三层指标

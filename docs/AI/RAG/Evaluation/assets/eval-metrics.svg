@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">RAG 评估的三个层次</text>
+
+  <rect x="30" y="58" width="270" height="180" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 检索层</text>
+  <text x="52" y="112" font-size="11" fill="#3730a3">Recall@K：答案片段是否在候选里</text>
+  <text x="52" y="138" font-size="11" fill="#3730a3">Hit Rate：命中问题的比例</text>
+  <text x="52" y="164" font-size="11" fill="#3730a3">MRR / NDCG：正确答案排在第几位</text>
+  <text x="52" y="192" font-size="10" fill="#6b7280">检索不过关时，先别动模型与提示词</text>
+  <text x="52" y="216" font-size="10" fill="#6b7280">目标：Recall@K ≥ 90% 作为起步线</text>
+
+  <rect x="315" y="58" width="270" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② 生成层</text>
+  <text x="337" y="112" font-size="11" fill="#065f46">忠实度：是否只依据材料作答</text>
+  <text x="337" y="138" font-size="11" fill="#065f46">引用正确率：引用是否支撑结论</text>
+  <text x="337" y="164" font-size="11" fill="#065f46">拒答准确率：无依据时是否拒答</text>
+  <text x="337" y="192" font-size="10" fill="#6b7280">幻觉多发于"检索到无关片段仍强行作答"</text>
+  <text x="337" y="216" font-size="10" fill="#6b7280">可用模型做裁判，但必须人工抽样复核</text>
+
+  <rect x="600" y="58" width="270" height="180" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="735" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">③ 端到端与业务层</text>
+  <text x="622" y="112" font-size="11" fill="#92400e">答案准确率（人工/标准要点）</text>
+  <text x="622" y="138" font-size="11" fill="#92400e">转人工率、解决率、满意度</text>
+  <text x="622" y="164" font-size="11" fill="#92400e">P95 延迟与单次成本</text>
+  <text x="622" y="192" font-size="10" fill="#6b7280">业务指标是最终裁判：技术指标好≠业务有效</text>
+  <text x="622" y="216" font-size="10" fill="#6b7280">把差评样本回流成新评测用例</text>
+
+  <rect x="30" y="258" width="840" height="176" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="284" font-size="13" font-weight="bold" fill="#1f2937">评测集怎么建（决定你能否持续改进）</text>
+  <text x="50" y="310" font-size="11" fill="#374151">来源：真实用户问题（优先）、客服工单、FAQ、人工构造的边界与对抗样本，规模 50~200 条起步即可。</text>
+  <text x="50" y="334" font-size="11" fill="#374151">标注：每条包含「标准答案要点 + 依据片段 ID + 是否应拒答」，依据片段 ID 让检索指标可计算。</text>
+  <text x="50" y="358" font-size="11" fill="#374151">回归：切分、嵌入模型、索引参数、重排、提示词、生成模型，任一项变更都要跑一遍并记录指标。</text>
+  <text x="50" y="382" font-size="11" fill="#374151">badcase 分析：区分"召回缺失 / 排序靠后 / 引用错误 / 生成长篇跑偏"四类，按类归因再动手。</text>
+  <text x="50" y="410" font-size="10" fill="#6b7280">没有评测集时，任何"优化"都无法证明有效；有了评测集，调参就从玄学变成工程。</text>
+</svg>

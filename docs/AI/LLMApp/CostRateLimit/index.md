@@ -156,3 +156,4 @@ class TokenBucket:
 - 批处理接口：https://developers.openai.com/api/docs/api-reference/batch/create
 - 提示缓存：https://developers.openai.com/api/docs/guides/prompt-caching
 - 生产最佳实践：https://developers.openai.com/api/docs/guides/production-best-practices
+- 检索类应用的成本结构（嵌入 / 向量库 / 重排 / 生成）：[RAG 检索增强 · 生产工程化](../../RAG/Pipeline/index.md)

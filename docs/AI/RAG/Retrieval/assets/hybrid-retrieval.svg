@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">检索优化流水线：改写 → 多路召回 → 融合 → 重排</text>
+
+  <rect x="30" y="60" width="180" height="110" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="120" y="86" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">① 查询改写</text>
+  <text x="120" y="110" text-anchor="middle" font-size="10" fill="#3730a3">补全指代与省略</text>
+  <text x="120" y="130" text-anchor="middle" font-size="10" fill="#3730a3">生成同义/多角度查询</text>
+  <text x="120" y="150" text-anchor="middle" font-size="10" fill="#6b7280">复杂问题拆成子查询</text>
+
+  <path d="M 212 115 H 244" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#h1)"/>
+
+  <rect x="246" y="60" width="200" height="110" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="346" y="86" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">② 向量召回</text>
+  <text x="346" y="110" text-anchor="middle" font-size="10" fill="#065f46">语义相似，理解同义表达</text>
+  <text x="346" y="130" text-anchor="middle" font-size="10" fill="#065f46">Top-K 取较宽（如 20~50）</text>
+  <text x="346" y="150" text-anchor="middle" font-size="10" fill="#6b7280">弱点：专有名词、编号易漏</text>
+
+  <rect x="246" y="190" width="200" height="110" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="346" y="216" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">③ 关键词召回（BM25）</text>
+  <text x="346" y="240" text-anchor="middle" font-size="10" fill="#92400e">精确匹配术语、编号、代码</text>
+  <text x="346" y="260" text-anchor="middle" font-size="10" fill="#92400e">与向量结果互补</text>
+  <text x="346" y="280" text-anchor="middle" font-size="10" fill="#6b7280">弱点：不会处理同义改写</text>
+
+  <path d="M 448 115 H 480" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#h2)"/>
+  <path d="M 448 245 H 480" stroke="#f59e0b" stroke-width="2.5" fill="none" marker-end="url(#h3)"/>
+
+  <rect x="482" y="120" width="180" height="110" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="572" y="146" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">④ 融合</text>
+  <text x="572" y="170" text-anchor="middle" font-size="10" fill="#5b21b6">RRF 按排名融合</text>
+  <text x="572" y="190" text-anchor="middle" font-size="10" fill="#5b21b6">加权分数融合</text>
+  <text x="572" y="212" text-anchor="middle" font-size="10" fill="#6b7280">去重、保留来源</text>
+
+  <path d="M 664 175 H 696" stroke="#8b5cf6" stroke-width="2.5" fill="none" marker-end="url(#h4)"/>
+
+  <rect x="698" y="120" width="172" height="110" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="784" y="146" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">⑤ 重排（Rerank）</text>
+  <text x="784" y="170" text-anchor="middle" font-size="10" fill="#1e3a8a">精排 Top 30 → 5</text>
+  <text x="784" y="190" text-anchor="middle" font-size="10" fill="#1e3a8a">显著提升引用正确率</text>
+  <text x="784" y="212" text-anchor="middle" font-size="10" fill="#6b7280">代价：多一次调用延迟</text>
+
+  <rect x="30" y="322" width="840" height="130" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="348" font-size="13" font-weight="bold" fill="#1f2937">调优顺序（从收益最高开始）</text>
+  <text x="50" y="374" font-size="11" fill="#374151">1. 修切分：块切错是一切问题的根源，先保证"答案所在片段被切完整"。</text>
+  <text x="50" y="398" font-size="11" fill="#374151">2. 加关键词召回：专有名词、编号、代码类查询的命中率通常提升最明显。</text>
+  <text x="50" y="422" font-size="11" fill="#374151">3. 加重排：在候选里已经包含正确答案时，重排能把它提到前面（否则先解决召回）。</text>
+  <text x="50" y="444" font-size="11" fill="#374151">4. 调 Top-K 与上下文压缩：在效果与成本之间找平衡，用评测集验证每一步。</text>
+
+  <defs>
+    <marker id="h1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="h2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="h3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/>
+    </marker>
+    <marker id="h4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+</svg>

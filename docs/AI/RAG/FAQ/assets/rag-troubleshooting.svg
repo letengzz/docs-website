@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">RAG 问题排查地图：先分清是检索还是生成</text>
+
+  <rect x="330" y="56" width="240" height="56" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="450" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">第一步：把召回片段打印出来</text>
+  <text x="450" y="100" text-anchor="middle" font-size="10" fill="#6b7280">答案在片段里吗？</text>
+  <path d="M 450 114 V 138" stroke="#9ca3af" stroke-width="2" fill="none"/>
+  <line x1="120" y1="138" x2="780" y2="138" stroke="#9ca3af" stroke-width="2"/>
+
+  <path d="M 120 138 V 162" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#f1)"/>
+  <rect x="30" y="166" width="180" height="140" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="120" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">① 答案不在片段里</text>
+  <text x="120" y="214" text-anchor="middle" font-size="10" fill="#7f1d1d">切分把语义切断了</text>
+  <text x="120" y="232" text-anchor="middle" font-size="10" fill="#7f1d1d">术语/编号向量召回不到</text>
+  <text x="120" y="250" text-anchor="middle" font-size="10" fill="#7f1d1d">权限或租户过滤过严</text>
+  <text x="120" y="274" text-anchor="middle" font-size="10" fill="#6b7280">→ 改切分 / 加关键词召回</text>
+
+  <path d="M 330 138 V 162" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#f1)"/>
+  <rect x="250" y="166" width="180" height="140" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="340" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">② 片段里有但排太后</text>
+  <text x="340" y="214" text-anchor="middle" font-size="10" fill="#92400e">Top-K 太小被截断</text>
+  <text x="340" y="232" text-anchor="middle" font-size="10" fill="#92400e">缺少重排</text>
+  <text x="340" y="250" text-anchor="middle" font-size="10" fill="#92400e">噪声片段挤占位置</text>
+  <text x="340" y="274" text-anchor="middle" font-size="10" fill="#6b7280">→ 扩召回 + 加重排</text>
+
+  <path d="M 470 138 V 162" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#f1)"/>
+  <rect x="470" y="166" width="180" height="140" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="560" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">③ 片段里有但答错</text>
+  <text x="560" y="214" text-anchor="middle" font-size="10" fill="#1e3a8a">提示词未要求依据材料</text>
+  <text x="560" y="232" text-anchor="middle" font-size="10" fill="#1e3a8a">片段过多导致注意力分散</text>
+  <text x="560" y="250" text-anchor="middle" font-size="10" fill="#1e3a8a">引用要求缺失</text>
+  <text x="560" y="274" text-anchor="middle" font-size="10" fill="#6b7280">→ 收紧提示词 + 压缩上下文</text>
+
+  <path d="M 700 138 V 162" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#f1)"/>
+  <rect x="690" y="166" width="180" height="140" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="780" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">④ 变慢或变贵</text>
+  <text x="780" y="214" text-anchor="middle" font-size="10" fill="#5b21b6">Top-K 过大、上下文膨胀</text>
+  <text x="780" y="232" text-anchor="middle" font-size="10" fill="#5b21b6">重排调用过多</text>
+  <text x="780" y="250" text-anchor="middle" font-size="10" fill="#5b21b6">缓存未命中</text>
+  <text x="780" y="274" text-anchor="middle" font-size="10" fill="#6b7280">→ 压缩 + 缓存 + 分级</text>
+
+  <rect x="30" y="330" width="840" height="112" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="356" font-size="13" font-weight="bold" fill="#1f2937">四类 badcase 的归因方式</text>
+  <text x="50" y="382" font-size="11" fill="#374151">召回缺失：答案所在 chunk 从未进入候选 → 修切分、补关键词召回、检查过滤条件。</text>
+  <text x="50" y="406" font-size="11" fill="#374151">排序靠后：进了候选但被截断 → 加重排、扩大 Top-K、清理重复与低质片段。</text>
+  <text x="50" y="430" font-size="11" fill="#374151">引用错误 / 幻觉：材料有问题或指令不严 → 要求引用、允许拒答、压缩无关片段。</text>
+
+  <defs>
+    <marker id="f1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>
