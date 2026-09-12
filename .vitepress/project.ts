@@ -40,6 +40,22 @@ export const CompleteProject = [
   {
     text: "完整项目",
     link: "/project/Complete/index.md",
-    items: [{ text: "完整项目总览", link: "/project/Complete/index.md" }],
+    items: [
+      { text: "完整项目总览", link: "/project/Complete/index.md" },
+      {
+        text: "全栈项目实战",
+        link: "/project/Complete/FullStackProject/index.md",
+        collapsed: true,
+        items: [
+          { text: "需求拆分", link: "/project/Complete/FullStackProject/Requirements/index.md" },
+          { text: "数据库设计", link: "/project/Complete/FullStackProject/Database/index.md" },
+          { text: "接口联调", link: "/project/Complete/FullStackProject/Api/index.md" },
+          { text: "编码实现", link: "/project/Complete/FullStackProject/Development/index.md" },
+          { text: "测试", link: "/project/Complete/FullStackProject/Testing/index.md" },
+          { text: "部署", link: "/project/Complete/FullStackProject/Deployment/index.md" },
+          { text: "复盘", link: "/project/Complete/FullStackProject/Retrospective/index.md" },
+        ],
+      },
+    ],
   },
 ];

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="380" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">前后端联调：契约先行，Mock 并行</text>
+  <rect x="30" y="70" width="180" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="120" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">① 定义契约</text>
+  <text x="120" y="122" text-anchor="middle" font-size="10" fill="#3730a3">路径/方法/字段/错误码</text>
+  <text x="120" y="144" text-anchor="middle" font-size="10" fill="#6b7280">统一响应结构</text>
+  <path d="M 212 115 H 246" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <rect x="248" y="70" width="180" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="338" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">② 双方并行</text>
+  <text x="338" y="122" text-anchor="middle" font-size="10" fill="#065f46">前端用 Mock 开发</text>
+  <text x="338" y="144" text-anchor="middle" font-size="10" fill="#6b7280">后端按契约实现</text>
+  <path d="M 430 115 H 464" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <rect x="466" y="70" width="180" height="90" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="556" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">③ 联调验证</text>
+  <text x="556" y="122" text-anchor="middle" font-size="10" fill="#5b21b6">按用例逐条跑通</text>
+  <text x="556" y="144" text-anchor="middle" font-size="10" fill="#6b7280">异常分支一起验</text>
+  <path d="M 648 115 H 682" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <rect x="684" y="70" width="166" height="90" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="767" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">④ 固化文档</text>
+  <text x="767" y="122" text-anchor="middle" font-size="10" fill="#92400e">接口文档随代码提交</text>
+  <text x="767" y="144" text-anchor="middle" font-size="10" fill="#6b7280">变更要通知前端</text>
+  <rect x="30" y="186" width="400" height="170" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="212" font-size="13" font-weight="bold" fill="#1f2937">统一响应结构</text>
+  <text x="50" y="238" font-size="11" fill="#374151">{ "code": 0, "message": "ok", "data": { ... } }</text>
+  <text x="50" y="262" font-size="11" fill="#374151">业务错误：code 非 0，HTTP 仍可 200 或按规范用 4xx</text>
+  <text x="50" y="286" font-size="11" fill="#374151">分页统一：{ "list": [], "total": 0, "page": 1, "size": 20 }</text>
+  <text x="50" y="312" font-size="11" fill="#374151">未知错误统一兜底，不把堆栈返回前端</text>
+  <text x="50" y="338" font-size="10" fill="#6b7280">前端在请求层统一解包：非 0 弹提示，401 跳登录（见 [网络请求封装]）。</text>
+  <rect x="450" y="186" width="400" height="170" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="470" y="212" font-size="13" font-weight="bold" fill="#1f2937">联调检查清单</text>
+  <text x="470" y="238" font-size="11" fill="#374151">① 参数校验失败：返回明确字段级错误</text>
+  <text x="470" y="262" font-size="11" fill="#374151">② 权限不足：403 且前端有可读提示</text>
+  <text x="470" y="286" font-size="11" fill="#374151">③ 登录过期：401 且前端跳登录并带回跳地址</text>
+  <text x="470" y="310" font-size="11" fill="#374151">④ 空数据、超长文本、特殊字符</text>
+  <text x="470" y="334" font-size="11" fill="#374151">⑤ 并发提交（重复点击）是否幂等</text>
+  <defs>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

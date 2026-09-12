@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="380" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">测试策略：金字塔 + 关键路径回归</text>
+  <rect x="300" y="70" width="280" height="60" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="440" y="96" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">单元测试（最多）</text>
+  <text x="440" y="118" text-anchor="middle" font-size="10" fill="#065f46">业务规则、金额计算、状态流转、权限判定</text>
+  <rect x="230" y="146" width="420" height="60" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="440" y="172" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">接口测试（中等）</text>
+  <text x="440" y="194" text-anchor="middle" font-size="10" fill="#3730a3">登录鉴权、CRUD、分页、越权、错误码</text>
+  <rect x="160" y="222" width="560" height="60" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="440" y="248" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">端到端测试（最少但最关键）</text>
+  <text x="440" y="270" text-anchor="middle" font-size="10" fill="#92400e">登录 → 建项目 → 建任务 → 改状态 → 退出（每条主流程一条用例）</text>
+  <rect x="30" y="300" width="820" height="66" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="326" font-size="12" font-weight="bold" fill="#1f2937">覆盖率怎么用</text>
+  <text x="50" y="350" font-size="11" fill="#374151">把覆盖率当"体检指标"而不是"考核指标"：**核心业务模块 80%+ 有意义，整体数字好看但关键路径没覆盖最危险**。</text>
+</svg>

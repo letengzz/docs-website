@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="380" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">部署拓扑与发布顺序</text>
+  <rect x="30" y="70" width="150" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="105" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">用户</text>
+  <text x="105" y="122" text-anchor="middle" font-size="10" fill="#3730a3">浏览器 HTTPS</text>
+  <path d="M 182 115 H 216" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#t1)"/>
+  <rect x="218" y="70" width="170" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="303" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">Nginx</text>
+  <text x="303" y="122" text-anchor="middle" font-size="10" fill="#065f46">静态资源 + /api 反代</text>
+  <text x="303" y="144" text-anchor="middle" font-size="10" fill="#6b7280">history 回退 / 缓存头</text>
+  <path d="M 390 115 H 424" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#t1)"/>
+  <rect x="426" y="70" width="180" height="90" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="516" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">应用服务</text>
+  <text x="516" y="122" text-anchor="middle" font-size="10" fill="#5b21b6">Spring Boot（多实例）</text>
+  <text x="516" y="144" text-anchor="middle" font-size="10" fill="#6b7280">健康检查 / 日志</text>
+  <path d="M 608 115 H 642" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#t1)"/>
+  <rect x="644" y="70" width="206" height="90" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="747" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">数据层</text>
+  <text x="747" y="122" text-anchor="middle" font-size="10" fill="#92400e">MySQL（主从/备份）</text>
+  <text x="747" y="144" text-anchor="middle" font-size="10" fill="#6b7280">Redis（会话/缓存）</text>
+  <rect x="30" y="186" width="400" height="164" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="212" font-size="13" font-weight="bold" fill="#1f2937">发布顺序（后端优先）</text>
+  <text x="50" y="238" font-size="11" fill="#374151">① 备份数据库 → ② 执行迁移脚本（向前兼容）</text>
+  <text x="50" y="262" font-size="11" fill="#374151">③ 部署后端（先一台灰度）→ ④ 健康检查通过</text>
+  <text x="50" y="286" font-size="11" fill="#374151">⑤ 部署前端（切软链接）→ ⑥ 验证核心链路</text>
+  <text x="50" y="312" font-size="11" fill="#374151">⑦ 观察 30 分钟指标 → ⑧ 清理旧版本</text>
+  <text x="50" y="338" font-size="10" fill="#6b7280">数据库变更必须"向前兼容"：旧代码在新表结构下也要能跑。</text>
+  <rect x="450" y="186" width="400" height="164" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="470" y="212" font-size="13" font-weight="bold" fill="#1f2937">回滚与验收</text>
+  <text x="470" y="238" font-size="11" fill="#374151">应用：回退镜像/软链接（分钟级）</text>
+  <text x="470" y="262" font-size="11" fill="#374151">数据：迁移脚本必须准备逆向脚本或"双写过渡"</text>
+  <text x="470" y="286" font-size="11" fill="#374151">验收：登录、建项目、建任务、改状态、退出</text>
+  <text x="470" y="310" font-size="11" fill="#374151">监控：错误率、P95、慢 SQL、磁盘</text>
+  <text x="470" y="338" font-size="10" fill="#6b7280">部署脚本化：所有命令写进脚本，禁止手工敲。</text>
+  <defs>
+    <marker id="t1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>
