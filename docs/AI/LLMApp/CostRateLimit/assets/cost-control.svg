@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">成本与限流的六层控制</text>
+
+  <rect x="30" y="60" width="270" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 模型分级</text>
+  <text x="50" y="112" font-size="11" fill="#3730a3">简单任务用小模型</text>
+  <text x="50" y="134" font-size="11" fill="#3730a3">复杂推理才上大模型</text>
+  <text x="50" y="158" font-size="10" fill="#6b7280">先用便宜模型兜底，失败再升级重试</text>
+
+  <rect x="315" y="60" width="270" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② 上下文瘦身</text>
+  <text x="335" y="112" font-size="11" fill="#065f46">只带必要历史与片段</text>
+  <text x="335" y="134" font-size="11" fill="#065f46">工具定义按需加载</text>
+  <text x="335" y="158" font-size="10" fill="#6b7280">输入令牌通常占总成本的大头</text>
+
+  <rect x="600" y="60" width="270" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="735" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">③ 缓存复用</text>
+  <text x="620" y="112" font-size="11" fill="#5b21b6">稳定前缀命中提示缓存</text>
+  <text x="620" y="134" font-size="11" fill="#5b21b6">相同问题缓存最终答案</text>
+  <text x="620" y="158" font-size="10" fill="#6b7280">官方文档：缓存输入最高可省 90%</text>
+
+  <rect x="30" y="200" width="270" height="120" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="165" y="226" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">④ 批处理</text>
+  <text x="50" y="252" font-size="11" fill="#92400e">离线任务走批处理接口</text>
+  <text x="50" y="274" font-size="11" fill="#92400e">接受更高延迟换更低单价</text>
+  <text x="50" y="298" font-size="10" fill="#6b7280">适合：批量打标、离线摘要、数据集处理</text>
+
+  <rect x="315" y="200" width="270" height="120" rx="12" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="450" y="226" text-anchor="middle" font-size="13" font-weight="bold" fill="#b91c1c">⑤ 限流与并发</text>
+  <text x="335" y="252" font-size="11" fill="#7f1d1d">按 RPM / TPM 维度限流</text>
+  <text x="335" y="274" font-size="11" fill="#7f1d1d">令牌桶 + 队列 + 优先级</text>
+  <text x="335" y="298" font-size="10" fill="#6b7280">返回 429 时按响应头退避重试</text>
+
+  <rect x="600" y="200" width="270" height="120" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="735" y="226" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">⑥ 降级与熔断</text>
+  <text x="620" y="252" font-size="11" fill="#1e3a8a">超限时走模板/规则兜底</text>
+  <text x="620" y="274" font-size="11" fill="#1e3a8a">故障时不阻塞主流程</text>
+  <text x="620" y="298" font-size="10" fill="#6b7280">异步任务可延后，在线请求要快速反馈</text>
+
+  <rect x="30" y="340" width="840" height="108" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="366" font-size="13" font-weight="bold" fill="#1f2937">成本核算三件套</text>
+  <text x="50" y="392" font-size="11" fill="#374151">① 记录每次调用的输入/输出令牌与命中缓存量，按模型单价换算金额；② 给业务维度（租户/功能/会话）打标，能拆到"谁在花钱"；</text>
+  <text x="50" y="416" font-size="11" fill="#374151">③ 设预算与告警：日/月预算、单会话上限、异常增长告警。单价与折扣以官方定价页为准，不要写死在代码里。</text>
+  <text x="50" y="438" font-size="10" fill="#6b7280">优化顺序：先削上下文，再谈模型降级，最后才考虑缓存与批处理——前者往往收益最大且风险最低。</text>
+</svg>

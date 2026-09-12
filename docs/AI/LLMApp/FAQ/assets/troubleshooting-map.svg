@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">大模型应用问题排查地图</text>
+
+  <rect x="330" y="56" width="240" height="50" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="450" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">先分类现象</text>
+  <text x="450" y="98" text-anchor="middle" font-size="10" fill="#6b7280">质量 / 稳定性 / 成本 / 安全</text>
+  <path d="M 450 108 V 132" stroke="#9ca3af" stroke-width="2" fill="none"/>
+  <line x1="120" y1="132" x2="780" y2="132" stroke="#9ca3af" stroke-width="2"/>
+
+  <path d="M 120 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fm)"/>
+  <rect x="30" y="160" width="180" height="140" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="120" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">① 输出不稳定</text>
+  <text x="120" y="208" text-anchor="middle" font-size="10" fill="#7f1d1d">提示词含糊 / 缺示例</text>
+  <text x="120" y="226" text-anchor="middle" font-size="10" fill="#7f1d1d">温度过高 / 上下文不足</text>
+  <text x="120" y="244" text-anchor="middle" font-size="10" fill="#7f1d1d">未用结构化输出</text>
+  <text x="120" y="268" text-anchor="middle" font-size="10" fill="#6b7280">→ 约束格式 + 建评测集</text>
+
+  <path d="M 330 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fm)"/>
+  <rect x="250" y="160" width="180" height="140" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="340" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">② 工具不调用</text>
+  <text x="340" y="208" text-anchor="middle" font-size="10" fill="#92400e">描述不清 / 参数矛盾</text>
+  <text x="340" y="226" text-anchor="middle" font-size="10" fill="#92400e">工具数量过多</text>
+  <text x="340" y="244" text-anchor="middle" font-size="10" fill="#92400e">strict 未开 / schema 不合法</text>
+  <text x="340" y="268" text-anchor="middle" font-size="10" fill="#6b7280">→ 精简工具 + 明确使用条件</text>
+
+  <path d="M 470 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fm)"/>
+  <rect x="470" y="160" width="180" height="140" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="560" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">③ 延迟与限流</text>
+  <text x="560" y="208" text-anchor="middle" font-size="10" fill="#1e3a8a">上下文过长 / 串行调用</text>
+  <text x="560" y="226" text-anchor="middle" font-size="10" fill="#1e3a8a">429 频繁 / 未退避</text>
+  <text x="560" y="244" text-anchor="middle" font-size="10" fill="#1e3a8a">未流式返回</text>
+  <text x="560" y="268" text-anchor="middle" font-size="10" fill="#6b7280">→ 缓存 + 并发 + 退避</text>
+
+  <path d="M 700 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fm)"/>
+  <rect x="690" y="160" width="180" height="140" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="780" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">④ 成本与安全</text>
+  <text x="780" y="208" text-anchor="middle" font-size="10" fill="#5b21b6">令牌失控增长</text>
+  <text x="780" y="226" text-anchor="middle" font-size="10" fill="#5b21b6">缓存未命中</text>
+  <text x="780" y="244" text-anchor="middle" font-size="10" fill="#5b21b6">提示注入 / 敏感数据外泄</text>
+  <text x="780" y="268" text-anchor="middle" font-size="10" fill="#6b7280">→ 预算告警 + 输入过滤</text>
+
+  <rect x="30" y="326" width="840" height="122" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="352" font-size="13" font-weight="bold" fill="#1f2937">通用四步法</text>
+  <text x="50" y="378" font-size="11" fill="#374151">1. 复现：固定输入、固定参数，把问题变成可重复的用例（温度先设为 0 或固定种子值）。</text>
+  <text x="50" y="402" font-size="11" fill="#374151">2. 看数据：打印完整请求（含工具定义与检索片段）与响应，确认模型看到的到底是什么。</text>
+  <text x="50" y="426" font-size="11" fill="#374151">3. 查指标：延迟、令牌、缓存命中、错误码分布，先分清是质量、稳定性还是成本问题。</text>
+  <text x="50" y="446" font-size="11" fill="#374151">4. 小步改：一次只改一个变量（提示词 / 模型 / 检索参数），改完跑评测集对比指标，避免"感觉变好了"。</text>
+
+  <defs>
+    <marker id="fm" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">编排与 Agent 框架选型地图</text>
+
+  <rect x="30" y="60" width="270" height="180" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 直接用官方接口</text>
+  <text x="50" y="112" font-size="11" fill="#3730a3">Responses API + 自写循环</text>
+  <text x="50" y="134" font-size="11" fill="#3730a3">或使用官方 Agents SDK</text>
+  <text x="50" y="160" font-size="10" fill="#6b7280">优点：可控、依赖少、易排障</text>
+  <text x="50" y="182" font-size="10" fill="#6b7280">代价：多轮循环、状态、重试要自己写</text>
+  <text x="50" y="212" font-size="10" fill="#4338ca">适合：流程固定、想完全掌控调用细节</text>
+  <text x="50" y="232" font-size="10" fill="#4338ca">典型场景：单工具问答、结构化抽取</text>
+
+  <rect x="315" y="60" width="270" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② Python 生态框架</text>
+  <text x="335" y="112" font-size="11" fill="#065f46">LangChain / LangGraph</text>
+  <text x="335" y="134" font-size="11" fill="#065f46">LlamaIndex（偏检索/RAG）</text>
+  <text x="335" y="160" font-size="10" fill="#6b7280">优点：组件齐全、上手快、示例多</text>
+  <text x="335" y="182" font-size="10" fill="#6b7280">代价：抽象层多，升级与排障成本高</text>
+  <text x="335" y="212" font-size="10" fill="#065f46">适合：原型验证、RAG 为主的应用</text>
+  <text x="335" y="232" font-size="10" fill="#065f46">建议：把模型调用封装在薄适配层里</text>
+
+  <rect x="600" y="60" width="270" height="180" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="735" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">③ 企业技术栈集成</text>
+  <text x="620" y="112" font-size="11" fill="#92400e">Java：Spring AI 等框架</text>
+  <text x="620" y="134" font-size="11" fill="#92400e">平台化：Dify / n8n 等低代码编排</text>
+  <text x="620" y="160" font-size="10" fill="#6b7280">优点：贴合既有架构与治理体系</text>
+  <text x="620" y="182" font-size="10" fill="#6b7280">代价：版本兼容需按官方矩阵核对</text>
+  <text x="620" y="212" font-size="10" fill="#92400e">适合：已有 Java 体系、需要统一治理</text>
+  <text x="620" y="232" font-size="10" fill="#92400e">建议：先用最薄的一层接入，别过度抽象</text>
+
+  <rect x="30" y="262" width="840" height="160" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="288" font-size="13" font-weight="bold" fill="#1f2937">选型四问</text>
+  <text x="50" y="314" font-size="11" fill="#374151">① 流程是固定的还是需要模型自主决策？—— 固定用工作流，自主用 Agent（见 Agent 应用专题）。</text>
+  <text x="50" y="338" font-size="11" fill="#374151">② 检索是核心还是附属？—— 检索为核心偏向 RAG 框架；检索只是补充可先用手写流程 + 向量库。</text>
+  <text x="50" y="362" font-size="11" fill="#374151">③ 团队主力语言是什么？—— Python 生态成熟度最高；Java 团队优先选与 Spring 体系契合的方案。</text>
+  <text x="50" y="386" font-size="11" fill="#374151">④ 你能承受多少抽象？—— 抽象越多，出问题时越难定位；建议先用官方接口跑通，再按痛点引入框架。</text>
+  <text x="50" y="410" font-size="10" fill="#6b7280">共同底线：模型调用、密钥、重试、限流、日志这些能力无论用哪个框架都要自己兜住。</text>
+</svg>

@@ -95,6 +95,11 @@ python evaluate.py --dataset gold.json --prompt v1.2
 
 ## 参考资料
 
-- 评估 LLM 输出：https://platform.openai.com/docs/guides/evals
+- 评估最佳实践：https://developers.openai.com/api/docs/guides/evaluation-best-practices
 - OpenAI Evals：https://github.com/openai/evals
 - Prompt Engineering Guide（评估）：https://www.promptingguide.ai/zh
+
+## 相关专题
+
+- [大模型应用开发 · 实战：智能工单助手](../../LLMApp/Practice/index.md)：评测集、指标与回归脚本的工程化示例
+- [大模型应用开发 · 成本核算与限流降级](../../LLMApp/CostRateLimit/index.md)：把准确率与成本放在一起比较

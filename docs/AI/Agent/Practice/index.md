@@ -93,6 +93,11 @@
 
 ## 参考资料
 
-- OpenAI Agents 最佳实践：https://platform.openai.com/docs/guides/agents
+- OpenAI Agents 最佳实践：https://developers.openai.com/api/docs/guides/agents
 - Anthropic 有效 Agent 构建：https://www.anthropic.com/engineering/building-effective-agents
 - Agent 模式汇总：https://www.manning.com/books/ai-agents-in-action
+
+## 相关专题
+
+- [大模型应用开发 · 实战：智能工单助手](../../LLMApp/Practice/index.md)：分类 + 知识库问答 + 工具查询的完整落地与评测
+- [大模型应用开发 · Agent 框架与应用集成](../../LLMApp/AgentIntegration/index.md)：框架选型与集成检查清单

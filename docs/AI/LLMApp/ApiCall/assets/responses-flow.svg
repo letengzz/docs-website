@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Responses API 的一次调用：输入 → 输出</text>
+
+  <!-- 输入 -->
+  <rect x="30" y="66" width="230" height="180" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="145" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">请求参数</text>
+  <g font-size="11" fill="#3730a3">
+    <text x="50" y="118">model：模型 ID</text>
+    <text x="50" y="140">instructions：系统级指令</text>
+    <text x="50" y="162">input：消息或输入项数组</text>
+    <text x="50" y="184">tools：可用工具定义</text>
+    <text x="50" y="206">text.format：结构化输出约束</text>
+    <text x="50" y="228">store / previous_response_id</text>
+  </g>
+
+  <path d="M 262 156 H 300" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#ra)"/>
+
+  <!-- 模型 -->
+  <rect x="302" y="66" width="200" height="180" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="402" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#6d28d9">模型推理</text>
+  <text x="402" y="120" text-anchor="middle" font-size="11" fill="#5b21b6">推理模型：先思考再回答</text>
+  <text x="402" y="142" text-anchor="middle" font-size="11" fill="#5b21b6">通用模型：低延迟、低成本</text>
+  <text x="402" y="168" text-anchor="middle" font-size="11" fill="#5b21b6">流式：边生成边返回</text>
+  <text x="402" y="194" text-anchor="middle" font-size="11" fill="#5b21b6">工具调用：需要多轮往返</text>
+  <text x="402" y="222" text-anchor="middle" font-size="10" fill="#6b7280">令牌按输入 / 输出分别计费</text>
+
+  <path d="M 504 156 H 542" stroke="#8b5cf6" stroke-width="2.5" fill="none" marker-end="url(#rb)"/>
+
+  <!-- 输出 -->
+  <rect x="544" y="66" width="326" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="707" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">响应结果</text>
+  <g font-size="11" fill="#065f46">
+    <text x="564" y="118">output：结构化输出项数组</text>
+    <text x="564" y="140">output_text：拼接后的文本（便捷字段）</text>
+    <text x="564" y="162">function_call：工具调用请求（name / arguments）</text>
+    <text x="564" y="184">usage：输入、输出、缓存命中的令牌数</text>
+    <text x="564" y="206">id：响应 ID，可用于后续多轮引用</text>
+    <text x="564" y="228">status / incomplete_details：截断等异常状态</text>
+  </g>
+
+  <!-- 多轮 -->
+  <rect x="30" y="270" width="840" height="146" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="296" font-size="13" font-weight="bold" fill="#1f2937">多轮与工具调用如何"续上"</text>
+  <text x="50" y="322" font-size="11" fill="#374151">① 无状态拼接：把上一轮的 output 项追加到新的 input 中一起提交（最通用，可控但消耗上下文）。</text>
+  <text x="50" y="346" font-size="11" fill="#374151">② 引用上一轮：用 previous_response_id 让服务端保存的对话状态延续（需要开启 store，注意数据留存策略）。</text>
+  <text x="50" y="370" font-size="11" fill="#374151">③ 工具结果回传：把 function_call 的 call_id 与执行结果包成 function_call_output 追加进 input，再请求一次。</text>
+  <text x="50" y="394" font-size="11" fill="#374151">④ 推理模型注意：响应中的推理项要原样回传，否则多轮质量下降（详见上下文与记忆管理）。</text>
+
+  <defs>
+    <marker id="ra" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="rb" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+</svg>

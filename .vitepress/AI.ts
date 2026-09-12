@@ -57,3 +57,22 @@ export const AI_OpenClaw = [
     ],
   },
 ];
+
+export const AI_LLMApp = [
+  {
+    text: "大模型应用开发",
+    link: "/docs/AI/LLMApp/index.md",
+    collapsed: true,
+    items: [
+      { text: "API 调用基础", link: "/docs/AI/LLMApp/ApiCall/index.md" },
+      { text: "Chat Completions 兼容用法", link: "/docs/AI/LLMApp/ApiCall/ChatCompletions/index.md" },
+      { text: "工具与函数调用", link: "/docs/AI/LLMApp/FunctionCalling/index.md" },
+      { text: "上下文与记忆管理", link: "/docs/AI/LLMApp/ContextMemory/index.md" },
+      { text: "RAG 检索增强接入", link: "/docs/AI/LLMApp/RagOverview/index.md" },
+      { text: "Agent 框架与应用集成", link: "/docs/AI/LLMApp/AgentIntegration/index.md" },
+      { text: "成本核算与限流降级", link: "/docs/AI/LLMApp/CostRateLimit/index.md" },
+      { text: "实战：智能工单助手", link: "/docs/AI/LLMApp/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/LLMApp/FAQ/index.md" },
+    ],
+  },
+];

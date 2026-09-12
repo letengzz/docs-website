@@ -89,6 +89,10 @@
 
 ## 参考资料
 
-- OpenAI Function Calling：https://platform.openai.com/docs/guides/function-calling
+- OpenAI Function Calling：https://developers.openai.com/api/docs/guides/function-calling
 - Anthropic Tool Use：https://docs.anthropic.com/en/docs/build-with-claude/tool-use/overview
 - MCP（模型上下文协议）：https://modelcontextprotocol.io/
+
+## 相关专题
+
+- [大模型应用开发 · 工具与函数调用](../../LLMApp/FunctionCalling/index.md)：平铺式 schema、strict 模式与五步循环的完整代码

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="480" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">实战架构：智能工单助手（分类 + 知识库问答）</text>
+
+  <!-- 入口 -->
+  <rect x="30" y="66" width="180" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="120" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">接入渠道</text>
+  <text x="120" y="116" text-anchor="middle" font-size="10" fill="#3730a3">客服工作台</text>
+  <text x="120" y="136" text-anchor="middle" font-size="10" fill="#3730a3">企业微信 / 钉钉机器人</text>
+  <text x="120" y="156" text-anchor="middle" font-size="10" fill="#3730a3">业务系统 API 调用</text>
+  <text x="120" y="176" text-anchor="middle" font-size="10" fill="#6b7280">统一鉴权与租户标识</text>
+
+  <path d="M 212 126 H 250" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#pa)"/>
+
+  <!-- 服务 -->
+  <rect x="252" y="66" width="250" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="377" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">LLM 应用服务（后端）</text>
+  <text x="272" y="116" font-size="10" fill="#065f46">① 意图识别与工单分类（结构化输出）</text>
+  <text x="272" y="138" font-size="10" fill="#065f46">② 知识库问答（RAG + 引用）</text>
+  <text x="272" y="160" font-size="10" fill="#065f46">③ 工具调用：查订单、建工单、转人工</text>
+  <text x="272" y="180" font-size="10" fill="#6b7280">统一封装模型客户端：重试 / 限流 / 超时</text>
+
+  <path d="M 504 126 H 542" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#pb)"/>
+
+  <!-- 模型与检索 -->
+  <rect x="544" y="66" width="326" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="707" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">模型与检索能力</text>
+  <text x="564" y="116" font-size="10" fill="#5b21b6">模型服务：小模型分类 + 大模型生成（分级路由）</text>
+  <text x="564" y="138" font-size="10" fill="#5b21b6">向量库：文档 / FAQ / 历史工单 向量与元数据</text>
+  <text x="564" y="160" font-size="10" fill="#5b21b6">检索：向量 + 关键词混合召回，按租户过滤</text>
+  <text x="564" y="180" font-size="10" fill="#6b7280">缓存：相似问题命中直出，降低延迟与成本</text>
+
+  <!-- 数据流 -->
+  <rect x="30" y="212" width="840" height="120" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="238" font-size="13" font-weight="bold" fill="#1f2937">一次"退款进度查询"的完整链路</text>
+  <text x="50" y="264" font-size="11" fill="#374151">1. 用户提问 → 2. 意图分类（结构化输出：intent=REFUND_STATUS, 置信度）→ 3. 置信度低于阈值转知识库问答</text>
+  <text x="50" y="288" font-size="11" fill="#374151">4. 命中工具：查询订单系统（带用户身份与权限校验）→ 5. 结果回传模型生成答复（含引用与免责声明）</text>
+  <text x="50" y="312" font-size="11" fill="#374151">6. 记录令牌、延迟、命中缓存量与用户反馈 → 7. 差评样本进入评测集，回归后更新提示词版本</text>
+
+  <!-- 工程闭环 -->
+  <rect x="30" y="348" width="410" height="112" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="235" y="374" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">评测与回归</text>
+  <text x="50" y="400" font-size="10" fill="#92400e">固定评测集：50~200 条真实问题 + 标准答案要点</text>
+  <text x="50" y="422" font-size="10" fill="#92400e">指标：分类准确率、答案命中率、引用正确率、拒答率</text>
+  <text x="50" y="444" font-size="10" fill="#92400e">每次改提示词/换模型都跑一遍，指标不降才上线</text>
+
+  <rect x="460" y="348" width="410" height="112" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="665" y="374" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">成本与稳定性</text>
+  <text x="480" y="400" font-size="10" fill="#1e3a8a">令牌预算：单会话上限 + 日预算告警</text>
+  <text x="480" y="422" font-size="10" fill="#1e3a8a">限流：按租户令牌桶，超限排队或降级模板答复</text>
+  <text x="480" y="444" font-size="10" fill="#1e3a8a">兜底：模型不可用时转人工，主流程不阻塞</text>
+
+  <defs>
+    <marker id="pa" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="pb" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

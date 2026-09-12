@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">上下文预算：把有限窗口分配好</text>
+
+  <!-- 预算条 -->
+  <rect x="40" y="70" width="820" height="96" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="60" y="96" font-size="12" font-weight="bold" fill="#1f2937">一次请求的上下文构成</text>
+  <rect x="60" y="108" width="150" height="40" fill="#eef2ff" stroke="#6366f1"/>
+  <text x="135" y="133" text-anchor="middle" font-size="10" fill="#3730a3">系统指令</text>
+  <rect x="210" y="108" width="150" height="40" fill="#f5f3ff" stroke="#8b5cf6"/>
+  <text x="285" y="133" text-anchor="middle" font-size="10" fill="#5b21b6">工具定义</text>
+  <rect x="360" y="108" width="200" height="40" fill="#ecfdf5" stroke="#10b981"/>
+  <text x="460" y="133" text-anchor="middle" font-size="10" fill="#065f46">历史对话（可裁剪）</text>
+  <rect x="560" y="108" width="180" height="40" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="650" y="133" text-anchor="middle" font-size="10" fill="#92400e">检索片段 / 附件</text>
+  <rect x="740" y="108" width="100" height="40" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="790" y="133" text-anchor="middle" font-size="10" fill="#b91c1c">输出预留</text>
+
+  <text x="60" y="164" font-size="10" fill="#6b7280">顺序影响缓存命中：稳定内容（系统指令、工具定义）放在前面，易变内容放在后面，更利于命中提示缓存。</text>
+
+  <!-- 四种策略 -->
+  <rect x="40" y="188" width="196" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="138" y="214" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">① 裁剪</text>
+  <text x="58" y="240" font-size="10" fill="#3730a3">只保留最近 N 轮</text>
+  <text x="58" y="260" font-size="10" fill="#3730a3">超出即丢弃</text>
+  <text x="58" y="286" font-size="10" fill="#6b7280">优点：简单、可控</text>
+  <text x="58" y="306" font-size="10" fill="#6b7280">缺点：丢早期关键信息</text>
+
+  <rect x="248" y="188" width="196" height="150" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="346" y="214" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">② 摘要</text>
+  <text x="266" y="240" font-size="10" fill="#5b21b6">把早期对话压缩成要点</text>
+  <text x="266" y="260" font-size="10" fill="#5b21b6">按轮次增量更新</text>
+  <text x="266" y="286" font-size="10" fill="#6b7280">优点：保留语义</text>
+  <text x="266" y="306" font-size="10" fill="#6b7280">缺点：多一次模型调用</text>
+
+  <rect x="456" y="188" width="196" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="554" y="214" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">③ 外部记忆</text>
+  <text x="474" y="240" font-size="10" fill="#065f46">结构化写入数据库</text>
+  <text x="474" y="260" font-size="10" fill="#065f46">按需检索回上下文</text>
+  <text x="474" y="286" font-size="10" fill="#6b7280">优点：可持久、可审计</text>
+  <text x="474" y="306" font-size="10" fill="#6b7280">缺点：需设计读写策略</text>
+
+  <rect x="664" y="188" width="196" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="762" y="214" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">④ 提示缓存</text>
+  <text x="682" y="240" font-size="10" fill="#92400e">稳定前缀复用</text>
+  <text x="682" y="260" font-size="10" fill="#92400e">显著降低输入成本</text>
+  <text x="682" y="286" font-size="10" fill="#6b7280">优点：省钱又提速</text>
+  <text x="682" y="306" font-size="10" fill="#6b7280">缺点：前缀必须稳定</text>
+
+  <rect x="40" y="356" width="820" height="72" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="60" y="382" font-size="12" font-weight="bold" fill="#1f2937">判断顺序</text>
+  <text x="60" y="406" font-size="11" fill="#374151">先问"这条信息这一轮真的需要吗" → 再问"能不能放到外部按需检索" → 最后才考虑压缩历史或扩大窗口。</text>
+  <text x="60" y="424" font-size="11" fill="#6b7280">上下文越长≠效果越好：无关内容会稀释注意力，还会直接推高输入令牌成本。</text>
+</svg>

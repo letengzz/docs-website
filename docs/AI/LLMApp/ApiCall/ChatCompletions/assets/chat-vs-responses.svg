@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="430" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">两个 API 代际：Responses（主线）与 Chat Completions（存量）</text>
+
+  <!-- 主线 -->
+  <rect x="30" y="60" width="400" height="250" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="230" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#4338ca">Responses API（推荐主线）</text>
+  <g font-size="11" fill="#3730a3">
+    <text x="52" y="116">面向新项目的文本生成与工具调用接口</text>
+    <text x="52" y="140">统一承载推理模型与通用模型</text>
+    <text x="52" y="164">内置结构化输出、工具调用、内置工具</text>
+    <text x="52" y="188">可用 previous_response_id 延续会话状态</text>
+    <text x="52" y="212">推理模型官方建议配合 Responses 使用</text>
+  </g>
+  <rect x="52" y="234" width="356" height="58" rx="8" fill="#e0e7ff" stroke="#a5b4fc"/>
+  <text x="230" y="258" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">状态：当前推荐，新项目首选</text>
+  <text x="230" y="278" text-anchor="middle" font-size="10" fill="#4338ca">多轮 / 工具 / 结构化输出都在这一套接口里</text>
+
+  <!-- 存量 -->
+  <rect x="450" y="60" width="400" height="250" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="650" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">Chat Completions（存量集成）</text>
+  <g font-size="11" fill="#92400e">
+    <text x="472" y="116">以 messages 数组为核心的历史接口</text>
+    <text x="472" y="140">存量系统与第三方兼容实现仍广泛使用</text>
+    <text x="472" y="164">部分新能力需要额外参数或在 Responses 才完整</text>
+    <text x="472" y="188">官方提供从 Chat Completions 迁移到 Responses 的指南</text>
+    <text x="472" y="212">个别模型的工具调用要求使用 Responses</text>
+  </g>
+  <rect x="472" y="234" width="356" height="58" rx="8" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="650" y="258" text-anchor="middle" font-size="11" font-weight="bold" fill="#b45309">状态：保留可用，按官方迁移指南升级</text>
+  <text x="650" y="278" text-anchor="middle" font-size="10" fill="#92400e">旧代码不删除，但新功能建议走 Responses</text>
+
+  <path d="M 434 175 H 446" stroke="#6366f1" stroke-width="3" fill="none" marker-end="url(#cv)"/>
+  <text x="440" y="162" text-anchor="middle" font-size="10" font-weight="bold" fill="#4338ca">迁移</text>
+
+  <!-- 迁移步骤 -->
+  <rect x="30" y="326" width="820" height="84" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="352" font-size="13" font-weight="bold" fill="#1f2937">迁移检查清单</text>
+  <text x="50" y="376" font-size="11" fill="#374151">① 请求体：messages → input（instructions 单独承载系统指令）　② 响应取值：choices[0].message.content → output_text</text>
+  <text x="50" y="398" font-size="11" fill="#374151">③ 多轮：自行拼接历史 → previous_response_id 或继续拼接　④ 工具：函数 schema 平铺（type/name/parameters）并默认开启 strict</text>
+
+  <defs>
+    <marker id="cv" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+  </defs>
+</svg>

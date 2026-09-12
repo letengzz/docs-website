@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">RAG（检索增强生成）的两条链路</text>
+
+  <!-- 离线索引 -->
+  <rect x="30" y="60" width="840" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">离线索引链路（数据准备，通常离线或准实时）</text>
+  <rect x="55" y="104" width="140" height="66" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="125" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">文档接入</text>
+  <text x="125" y="148" text-anchor="middle" font-size="10" fill="#4b5563">手册 / FAQ / 工单</text>
+  <text x="125" y="164" text-anchor="middle" font-size="10" fill="#6b7280">PDF / Markdown / 网页</text>
+  <path d="M 197 137 H 227" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#rg1)"/>
+  <rect x="229" y="104" width="140" height="66" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="299" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">切分与清洗</text>
+  <text x="299" y="148" text-anchor="middle" font-size="10" fill="#4b5563">按标题/段落切块</text>
+  <text x="299" y="164" text-anchor="middle" font-size="10" fill="#6b7280">保留元数据与来源</text>
+  <path d="M 371 137 H 401" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#rg1)"/>
+  <rect x="403" y="104" width="140" height="66" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="473" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">向量化</text>
+  <text x="473" y="148" text-anchor="middle" font-size="10" fill="#4b5563">嵌入模型生成向量</text>
+  <text x="473" y="164" text-anchor="middle" font-size="10" fill="#6b7280">可指定维度以省成本</text>
+  <path d="M 545 137 H 575" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#rg1)"/>
+  <rect x="577" y="104" width="268" height="66" rx="8" fill="#e0e7ff" stroke="#a5b4fc"/>
+  <text x="711" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">向量库 / 检索服务</text>
+  <text x="711" y="148" text-anchor="middle" font-size="10" fill="#4338ca">向量 + 全文混合检索，带权限与租户过滤</text>
+  <text x="711" y="164" text-anchor="middle" font-size="10" fill="#6b7280">离线链路可增量更新，不必每次全量重建</text>
+
+  <!-- 在线问答 -->
+  <rect x="30" y="228" width="840" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="254" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">在线问答链路（每次用户提问都走一遍）</text>
+  <rect x="55" y="272" width="130" height="66" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="120" y="296" text-anchor="middle" font-size="11" font-weight="bold" fill="#065f46">提问改写</text>
+  <text x="120" y="316" text-anchor="middle" font-size="10" fill="#374151">补全上下文</text>
+  <text x="120" y="332" text-anchor="middle" font-size="10" fill="#6b7280">拆分为子查询</text>
+  <path d="M 187 305 H 215" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#rg2)"/>
+  <rect x="217" y="272" width="130" height="66" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="282" y="296" text-anchor="middle" font-size="11" font-weight="bold" fill="#065f46">检索</text>
+  <text x="282" y="316" text-anchor="middle" font-size="10" fill="#374151">Top-K 召回</text>
+  <text x="282" y="332" text-anchor="middle" font-size="10" fill="#6b7280">过滤 + 重排</text>
+  <path d="M 349 305 H 377" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#rg2)"/>
+  <rect x="379" y="272" width="150" height="66" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="454" y="296" text-anchor="middle" font-size="11" font-weight="bold" fill="#065f46">拼装上下文</text>
+  <text x="454" y="316" text-anchor="middle" font-size="10" fill="#374151">片段 + 指令 + 引用要求</text>
+  <text x="454" y="332" text-anchor="middle" font-size="10" fill="#6b7280">受令牌预算约束</text>
+  <path d="M 531 305 H 559" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#rg2)"/>
+  <rect x="561" y="272" width="130" height="66" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="626" y="296" text-anchor="middle" font-size="11" font-weight="bold" fill="#065f46">生成回答</text>
+  <text x="626" y="316" text-anchor="middle" font-size="10" fill="#374151">带引用、可追溯</text>
+  <text x="626" y="332" text-anchor="middle" font-size="10" fill="#6b7280">低置信度转人工</text>
+  <path d="M 693 305 H 721" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#rg2)"/>
+  <rect x="723" y="272" width="122" height="66" rx="8" fill="#f0fdf4" stroke="#34d399"/>
+  <text x="784" y="296" text-anchor="middle" font-size="11" font-weight="bold" fill="#065f46">评估与反馈</text>
+  <text x="784" y="316" text-anchor="middle" font-size="10" fill="#374151">命中率 / 满意度</text>
+  <text x="784" y="332" text-anchor="middle" font-size="10" fill="#6b7280">回流差评样本</text>
+
+  <rect x="30" y="396" width="840" height="60" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="420" font-size="12" font-weight="bold" fill="#1f2937">本页只讲"如何接入"，检索质量优化单独成篇</text>
+  <text x="50" y="442" font-size="11" fill="#374151">切分策略、混合检索、重排、评估指标与向量库选型见规划中的 RAG 检索增强专题；托管方案可先用官方检索类工具快速验证。</text>
+
+  <defs>
+    <marker id="rg1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="rg2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

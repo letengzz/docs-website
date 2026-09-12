@@ -12,3 +12,9 @@
 - [提示词模板库](TemplateLibrary/index.md)
 - [效果评估](Evaluation/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+## 相关专题
+
+- [大模型应用开发](../LLMApp/index.md)：提示词在真实系统里的落地（结构化输出、上下文预算、成本与限流）
+- [大模型应用开发 · 上下文与记忆管理](../LLMApp/ContextMemory/index.md)：令牌预算与历史裁剪的工程做法
+- [Agent 应用](../Agent/index.md)：提示词之上的自主规划与工具编排

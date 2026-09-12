@@ -203,4 +203,6 @@ Tool 是 OpenClaw 的「双手」，提供实际操作能力：
 
 - [提示词工程](../../PromptEngineering/index.md)
 - [Agent 应用](../../Agent/index.md)
+- [大模型应用开发](../../LLMApp/index.md)
+- [大模型应用开发 · 成本核算与限流降级](../../LLMApp/CostRateLimit/index.md)
 
