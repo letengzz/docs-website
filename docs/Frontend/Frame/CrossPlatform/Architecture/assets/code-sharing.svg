@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">多端工程架构：把可复用与不可复用分清</text>
+
+  <rect x="30" y="60" width="840" height="96" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">① 共享层（packages/shared）：平台无关，复用率最高</text>
+  <text x="52" y="112" font-size="11" fill="#065f46">业务模型与校验 · 状态机 · 数据格式化 · 请求签名规则 · 常量与枚举 · 埋点规范</text>
+  <text x="52" y="138" font-size="10" fill="#6b7280">要求：不 import 任何平台 API，只用纯 TypeScript，可被单元测试覆盖</text>
+
+  <rect x="30" y="172" width="840" height="96" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="450" y="198" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">② 适配层（packages/platform）：把差异隔离在薄薄一层</text>
+  <text x="52" y="224" font-size="11" fill="#3730a3">请求封装（Taro.request / uni.request / fetch） · 存储 · 路由 · 弹窗 · 分享 · 授权</text>
+  <text x="52" y="250" font-size="10" fill="#6b7280">统一接口 + 分平台实现（adapter），业务层只依赖接口，不直接调平台 API</text>
+
+  <rect x="30" y="284" width="405" height="96" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="232" y="310" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">③ UI 与页面层</text>
+  <text x="52" y="336" font-size="11" fill="#92400e">尽量复用组件，差异化用条件编译</text>
+  <text x="52" y="360" font-size="10" fill="#6b7280">布局与交互可以在平台间不同，但要保持一致的业务语义</text>
+
+  <rect x="465" y="284" width="405" height="96" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="667" y="310" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">④ 应用层（apps/*）</text>
+  <text x="487" y="336" font-size="11" fill="#5b21b6">每个目标端一个 app：配置、入口、平台特有能力</text>
+  <text x="487" y="360" font-size="10" fill="#6b7280">构建脚本按目标端产出不同产物</text>
+
+  <rect x="30" y="396" width="840" height="54" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="420" text-anchor="middle" font-size="11" fill="#374151">典型布局：monorepo（pnpm workspace） + packages/shared + packages/platform + apps/weapp + apps/h5 + apps/desktop</text>
+  <text x="450" y="440" text-anchor="middle" font-size="10" fill="#6b7280">判断分层是否合理的标准：换一个目标端时，共享层是否需要改动？需要 → 分层还没做干净</text>
+</svg>

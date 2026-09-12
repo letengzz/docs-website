@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">跨端方案版本与兼容矩阵（2026-09 核对）</text>
+
+  <rect x="30" y="58" width="270" height="180" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">Taro</text>
+  <text x="52" y="112" font-size="11" fill="#3730a3">4.x（v4.2.1 为当前发布版本）</text>
+  <text x="52" y="136" font-size="11" fill="#3730a3">3.x 为上一代主线，存量项目常见</text>
+  <text x="52" y="160" font-size="11" fill="#3730a3">支持 React / Vue 两套写法</text>
+  <text x="52" y="186" font-size="10" fill="#6b7280">大版本升级通常需要同步升级 CLI 与运行时</text>
+  <text x="52" y="208" font-size="10" fill="#6b7280">Node 版本要求随版本变化，需按官方说明</text>
+  <text x="52" y="230" font-size="10" fill="#6b7280">旧版本保留说明并标注「仅存量项目使用」</text>
+
+  <rect x="315" y="58" width="270" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">uni-app</text>
+  <text x="337" y="112" font-size="11" fill="#065f46">Vue 3 写法为当前推荐主线</text>
+  <text x="337" y="136" font-size="11" fill="#065f46">Vue 2 写法仍在维护，属存量方向</text>
+  <text x="337" y="160" font-size="11" fill="#065f46">npm 包采用日期构建号（如 2.0.2-…）</text>
+  <text x="337" y="186" font-size="10" fill="#6b7280">产品版本以 DCloud 官方发布页为准</text>
+  <text x="337" y="208" font-size="10" fill="#6b7280">HBuilderX 与 CLI 两种开发方式</text>
+  <text x="337" y="230" font-size="10" fill="#6b7280">Vue2 项目升级 Vue3 需按官方迁移指引</text>
+
+  <rect x="600" y="58" width="270" height="180" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="735" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">Electron</text>
+  <text x="622" y="112" font-size="11" fill="#92400e">v44.3.0（2026-09-08）</text>
+  <text x="622" y="136" font-size="11" fill="#92400e">上游 Chromium 与 Node 版本随主版本升级</text>
+  <text x="622" y="160" font-size="11" fill="#92400e">主版本节奏快，需评估升级成本</text>
+  <text x="622" y="186" font-size="10" fill="#6b7280">旧主版本仍可用但不再获得安全更新</text>
+  <text x="622" y="208" font-size="10" fill="#6b7280">升级需回归：IPC、原生模块、打包产物</text>
+  <text x="622" y="230" font-size="10" fill="#6b7280">详见本库 Electron 专题</text>
+
+  <rect x="30" y="258" width="840" height="120" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="284" font-size="13" font-weight="bold" fill="#1f2937">版本升级的通用检查清单</text>
+  <text x="50" y="310" font-size="11" fill="#374151">① 记录当前快照：框架版本、CLI 版本、Node 版本、目标端基础库版本、构建脚本。</text>
+  <text x="50" y="334" font-size="11" fill="#374151">② 先升构建工具链再升业务代码；一次只跨一个大版本，避免问题叠加难以归因。</text>
+  <text x="50" y="358" font-size="11" fill="#374151">③ 升级后按多端测试矩阵回归（见 [多端兼容]），重点验证条件编译分支与原生能力。</text>
+
+  <rect x="30" y="394" width="840" height="44" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="422" text-anchor="middle" font-size="11" fill="#374151">约定：旧大版本内容在本库保留并标注状态，不删除、不覆盖；升级前必须在预发环境完成多端回归。</text>
+</svg>

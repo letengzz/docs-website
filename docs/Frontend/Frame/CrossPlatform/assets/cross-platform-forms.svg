@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">跨端开发：目标平台与技术方案</text>
+
+  <rect x="30" y="60" width="840" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">四个常见目标平台</text>
+  <rect x="55" y="102" width="190" height="62" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="150" y="126" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">H5 / Web</text>
+  <text x="150" y="148" text-anchor="middle" font-size="10" fill="#4b5563">浏览器、公众号内嵌</text>
+  <rect x="260" y="102" width="190" height="62" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="355" y="126" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">小程序</text>
+  <text x="355" y="148" text-anchor="middle" font-size="10" fill="#4b5563">微信/支付宝/抖音等</text>
+  <rect x="465" y="102" width="190" height="62" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="560" y="126" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">移动 App</text>
+  <text x="560" y="148" text-anchor="middle" font-size="10" fill="#4b5563">iOS / Android</text>
+  <rect x="670" y="102" width="175" height="62" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="757" y="126" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">桌面端</text>
+  <text x="757" y="148" text-anchor="middle" font-size="10" fill="#4b5563">Windows / macOS / Linux</text>
+
+  <rect x="30" y="198" width="405" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="232" y="224" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">编译型方案（一套代码多端产物）</text>
+  <text x="52" y="250" font-size="11" fill="#065f46">uni-app：Vue 语法，覆盖小程序 / H5 / App</text>
+  <text x="52" y="272" font-size="11" fill="#065f46">Taro：React / Vue 语法，多端编译能力强</text>
+  <text x="52" y="294" font-size="11" fill="#065f46">Flutter / React Native：偏原生渲染，App 为主</text>
+  <text x="52" y="320" font-size="10" fill="#6b7280">优点：复用率高、迭代快；代价：平台差异要自己抹平</text>
+  <text x="52" y="340" font-size="10" fill="#6b7280">详见 [方案对比] 与各方案的独立专题</text>
+
+  <rect x="460" y="198" width="410" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="665" y="224" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">容器与混合型方案</text>
+  <text x="482" y="250" font-size="11" fill="#92400e">Electron：Web 技术做桌面应用（本库有独立专题）</text>
+  <text x="482" y="272" font-size="11" fill="#92400e">Tauri：更小体积的桌面方案（Rust 内核）</text>
+  <text x="482" y="294" font-size="11" fill="#92400e">WebView 混合 App：H5 逻辑 + 原生壳</text>
+  <text x="482" y="320" font-size="10" fill="#6b7280">优点：复用 Web 生态；代价：性能与系统能力受限</text>
+  <text x="482" y="340" font-size="10" fill="#6b7280">适合：内部工具、管理后台客户端、需快速交付</text>
+
+  <rect x="30" y="364" width="840" height="86" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="390" font-size="13" font-weight="bold" fill="#1f2937">选型的三个前置问题</text>
+  <text x="50" y="414" font-size="11" fill="#374151">① 目标平台里是否包含小程序？包含 → 优先 uni-app / Taro；不含 → 直接做 Web 或桌面容器方案。</text>
+  <text x="50" y="436" font-size="11" fill="#374151">② 团队主力技术栈是什么？React 生态偏 Taro，Vue 生态偏 uni-app；越贴近团队栈，维护成本越低。</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">实战：一套代码发布到 H5 + 小程序 + 桌面</text>
+
+  <rect x="30" y="60" width="200" height="140" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="130" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 源码与分层</text>
+  <text x="130" y="110" text-anchor="middle" font-size="10" fill="#3730a3">packages/shared（纯逻辑）</text>
+  <text x="130" y="130" text-anchor="middle" font-size="10" fill="#3730a3">packages/platform（适配层）</text>
+  <text x="130" y="150" text-anchor="middle" font-size="10" fill="#3730a3">apps/*（各端入口）</text>
+  <text x="130" y="174" text-anchor="middle" font-size="10" fill="#6b7280">业务代码只依赖适配层接口</text>
+
+  <path d="M 232 130 H 268" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#p1)"/>
+
+  <rect x="270" y="60" width="200" height="140" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="370" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② 构建与产物</text>
+  <text x="370" y="110" text-anchor="middle" font-size="10" fill="#065f46">构建脚本按目标端产出</text>
+  <text x="370" y="130" text-anchor="middle" font-size="10" fill="#065f46">H5：静态资源 + CDN</text>
+  <text x="370" y="150" text-anchor="middle" font-size="10" fill="#065f46">小程序：上传开发版本</text>
+  <text x="370" y="174" text-anchor="middle" font-size="10" fill="#6b7280">桌面：打包安装程序</text>
+
+  <path d="M 472 130 H 508" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#p2)"/>
+
+  <rect x="510" y="60" width="180" height="140" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="600" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">③ 测试矩阵</text>
+  <text x="600" y="110" text-anchor="middle" font-size="10" fill="#92400e">单元测试（共享层）</text>
+  <text x="600" y="130" text-anchor="middle" font-size="10" fill="#92400e">多端主流程回归</text>
+  <text x="600" y="150" text-anchor="middle" font-size="10" fill="#92400e">真机 / 低端机 / 分辨率</text>
+  <text x="600" y="174" text-anchor="middle" font-size="10" fill="#6b7280">每端至少一条异常路径</text>
+
+  <path d="M 692 130 H 728" stroke="#f59e0b" stroke-width="2.5" fill="none" marker-end="url(#p3)"/>
+
+  <rect x="730" y="60" width="140" height="140" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="800" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">④ 发布</text>
+  <text x="800" y="110" text-anchor="middle" font-size="10" fill="#5b21b6">H5 灰度</text>
+  <text x="800" y="130" text-anchor="middle" font-size="10" fill="#5b21b6">小程序审核</text>
+  <text x="800" y="150" text-anchor="middle" font-size="10" fill="#5b21b6">桌面分发与更新</text>
+  <text x="800" y="174" text-anchor="middle" font-size="10" fill="#6b7280">统一版本号</text>
+
+  <rect x="30" y="216" width="840" height="104" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="242" font-size="13" font-weight="bold" fill="#1f2937">一套代码的"复用率参考"（经验值，随业务复杂度变化）</text>
+  <text x="50" y="268" font-size="11" fill="#374151">共享层（模型、校验、格式化）：接近 100% 复用，最值得投入。</text>
+  <text x="50" y="292" font-size="11" fill="#374151">适配层（请求、存储、路由）：接口 100% 复用，实现按端各写一份（通常 3 份以内）。</text>
+  <text x="50" y="316" font-size="11" fill="#374151">UI 层：基础组件复用率高，平台特有的交互（分享、授权、桌面菜单）需要单独实现。</text>
+
+  <rect x="30" y="334" width="840" height="100" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="360" font-size="13" font-weight="bold" fill="#1f2937">上线顺序建议</text>
+  <text x="50" y="384" font-size="11" fill="#374151">先上 H5（可随时回滚）→ 再上小程序（需审核，先灰度给内部用户）→ 最后上桌面（分发与自动更新更复杂）。</text>
+  <text x="50" y="408" font-size="11" fill="#374151">任一端发现严重问题时，先回滚该端，避免"为了统一版本把三端一起回滚"。</text>
+  <text x="50" y="428" font-size="10" fill="#6b7280">版本号三端保持一致，便于用户与客服描述问题（如 v1.4.2 在 H5 与小程序上的差异）。</text>
+
+  <defs>
+    <marker id="p1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="p2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="p3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+</svg>

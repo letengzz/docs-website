@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Taro：一套源码编译出多端产物</text>
+
+  <rect x="30" y="60" width="240" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="150" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 源码层</text>
+  <text x="52" y="112" font-size="11" fill="#3730a3">React / Vue 组件写法</text>
+  <text x="52" y="134" font-size="11" fill="#3730a3">Hooks / 组合式 API</text>
+  <text x="52" y="156" font-size="11" fill="#3730a3">Taro 内置组件（View/Text/Image…）</text>
+  <text x="52" y="182" font-size="10" fill="#6b7280">统一使用 Taro 提供的组件与 API</text>
+  <text x="52" y="202" font-size="10" fill="#6b7280">平台差异用条件编译（process.env.TARO_ENV）</text>
+
+  <path d="M 272 135 H 306" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#t1)"/>
+
+  <rect x="308" y="60" width="240" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="428" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② 编译层</text>
+  <text x="330" y="112" font-size="11" fill="#065f46">编译插件把 React/Vue 转换为目标端代码</text>
+  <text x="330" y="134" font-size="11" fill="#065f46">处理组件映射、样式转换与运行时适配</text>
+  <text x="330" y="156" font-size="11" fill="#065f46">按配置生成对应平台产物</text>
+  <text x="330" y="182" font-size="10" fill="#6b7280">命令：taro build --type weapp / h5 / ...</text>
+  <text x="330" y="202" font-size="10" fill="#6b7280">配置集中在 config/ 目录</text>
+
+  <path d="M 550 135 H 584" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#t2)"/>
+
+  <rect x="586" y="60" width="284" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="728" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">③ 多端产物</text>
+  <text x="608" y="112" font-size="11" fill="#92400e">微信/支付宝等小程序：WXML/WXSS/JS</text>
+  <text x="608" y="134" font-size="11" fill="#92400e">H5：标准 Web 产物</text>
+  <text x="608" y="156" font-size="11" fill="#92400e">React Native / 鸿蒙等：按插件支持情况</text>
+  <text x="608" y="182" font-size="10" fill="#6b7280">每个平台独立构建，产物不通用</text>
+  <text x="608" y="202" font-size="10" fill="#6b7280">同一份业务逻辑，多个构建目标</text>
+
+  <rect x="30" y="232" width="840" height="186" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="258" font-size="13" font-weight="bold" fill="#1f2937">Taro 的核心概念</text>
+  <text x="50" y="284" font-size="11" fill="#374151">组件：使用 Taro 内置组件（View、Text、Image、ScrollView 等），它们会映射到各端的原生组件，不要直接写 div/span。</text>
+  <text x="50" y="308" font-size="11" fill="#374151">API：通过 @tarojs/taro 调用（Taro.request、Taro.navigateTo 等），由框架适配到各端原生 API。</text>
+  <text x="50" y="332" font-size="11" fill="#374151">条件编译：用 process.env.TARO_ENV 判断平台，按平台引入不同实现（详见 [多端兼容] 页）。</text>
+  <text x="50" y="356" font-size="11" fill="#374151">样式：Taro 会把样式转换为各端可识别的形式，单位换算与选择器限制需要按平台注意。</text>
+  <text x="50" y="382" font-size="11" fill="#374151">路由：小程序端遵循平台页面栈规则，H5 端映射为浏览器路由，两端行为并不完全一致。</text>
+  <text x="50" y="406" font-size="10" fill="#6b7280">本库的 Taro 页面聚焦"多端差异"，小程序本身的细节见 [微信小程序专题]；uni-app 见 [Uniapp 专题]。</text>
+
+  <defs>
+    <marker id="t1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="t2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

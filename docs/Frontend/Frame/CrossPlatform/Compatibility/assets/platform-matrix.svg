@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">多端差异处理：先识别，再收敛</text>
+
+  <rect x="30" y="60" width="840" height="150" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="86" font-size="13" font-weight="bold" fill="#1f2937">差异矩阵（同一份业务逻辑，不同平台表现不同）</text>
+  <line x1="50" y1="100" x2="850" y2="100" stroke="#e5e7eb"/>
+  <text x="50" y="124" font-size="11" font-weight="bold" fill="#4b5563">维度</text>
+  <text x="330" y="124" font-size="11" font-weight="bold" fill="#4b5563">H5</text>
+  <text x="520" y="124" font-size="11" font-weight="bold" fill="#4b5563">小程序</text>
+  <text x="700" y="124" font-size="11" font-weight="bold" fill="#4b5563">桌面（Electron）</text>
+  <text x="50" y="150" font-size="11" fill="#374151">路由</text>
+  <text x="330" y="150" font-size="11" fill="#374151">浏览器 history</text>
+  <text x="520" y="150" font-size="11" fill="#374151">页面栈（10 层）</text>
+  <text x="700" y="150" font-size="11" fill="#374151">多窗口 + 前端路由</text>
+  <text x="50" y="176" font-size="11" fill="#374151">存储</text>
+  <text x="330" y="176" font-size="11" fill="#374151">localStorage</text>
+  <text x="520" y="176" font-size="11" fill="#374151">同步 Storage（有容量限制）</text>
+  <text x="700" y="176" font-size="11" fill="#374151">文件系统 / localStorage</text>
+  <text x="50" y="200" font-size="11" fill="#374151">网络</text>
+  <text x="330" y="200" font-size="11" fill="#374151">受浏览器 CORS 限制</text>
+  <text x="520" y="200" font-size="11" fill="#374151">需配置合法域名</text>
+  <text x="700" y="200" font-size="11" fill="#374151">主进程可绕过 CORS</text>
+
+  <rect x="30" y="230" width="405" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="232" y="256" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">条件编译：把差异写在边界上</text>
+  <text x="52" y="282" font-size="11" fill="#3730a3">Taro：process.env.TARO_ENV 判断平台</text>
+  <text x="52" y="304" font-size="11" fill="#3730a3">uni-app：条件编译注释块</text>
+  <text x="52" y="326" font-size="11" fill="#3730a3">通用原则：条件编译只出现在适配层与页面边界</text>
+  <text x="52" y="352" font-size="10" fill="#6b7280">反例：业务逻辑里到处 if (platform === 'weapp')</text>
+  <text x="52" y="372" font-size="10" fill="#6b7280">正例：适配层暴露统一接口，内部按平台实现</text>
+
+  <rect x="460" y="230" width="410" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="665" y="256" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">多端测试矩阵</text>
+  <text x="482" y="282" font-size="11" fill="#065f46">功能：每个端至少一条主流程 + 一条异常流程</text>
+  <text x="482" y="304" font-size="11" fill="#065f46">样式：小屏 / 大屏 / 深色模式 / 安全区</text>
+  <text x="482" y="326" font-size="11" fill="#065f46">能力：分享、授权、存储、返回刷新</text>
+  <text x="482" y="352" font-size="10" fill="#6b7280">必测：真机（小程序）、低端安卓、桌面多分辨率</text>
+  <text x="482" y="372" font-size="10" fill="#6b7280">回归：每次改动后按矩阵抽查，关键端全量</text>
+
+  <rect x="30" y="396" width="840" height="50" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="426" text-anchor="middle" font-size="11" fill="#374151">经验：**先做单端跑通，再抽共享层**；一开始就追求"完全复用"往往会导致抽象过度，反而更难维护。</text>
+</svg>

@@ -24,3 +24,9 @@
 ## 拓展
 
 - [Electron+Vue3项目打包](VuePackaging/index.md)
+
+## 相关专题
+
+- [桌面端跨端](../CrossPlatform/Desktop/index.md)：Electron / Tauri / 纯 Web 的选型对比与安全基线
+- [多端工程架构](../CrossPlatform/Architecture/index.md)：桌面端如何与 H5、小程序共用共享层
+- [跨端开发专题](../CrossPlatform/index.md)：整体方案地图与上线顺序

@@ -499,6 +499,21 @@ export const FrontFrame = [
                 ]
             },
             {
+                text: "跨端开发",
+                link: "/docs/Frontend/Frame/CrossPlatform/index.md",
+                collapsed: true,
+                items: [
+                    { text: "跨端开发 概述与选型", link: "/docs/Frontend/Frame/CrossPlatform/index.md" },
+                    { text: "Taro 多端开发", link: "/docs/Frontend/Frame/CrossPlatform/Taro/index.md" },
+                    { text: "多端工程架构", link: "/docs/Frontend/Frame/CrossPlatform/Architecture/index.md" },
+                    { text: "多端兼容与差异处理", link: "/docs/Frontend/Frame/CrossPlatform/Compatibility/index.md" },
+                    { text: "桌面端跨端", link: "/docs/Frontend/Frame/CrossPlatform/Desktop/index.md" },
+                    { text: "实战：一套代码发布到多端", link: "/docs/Frontend/Frame/CrossPlatform/Practice/index.md" },
+                    { text: "版本与兼容矩阵", link: "/docs/Frontend/Frame/CrossPlatform/Version/index.md" },
+                    { text: "常见问题与最佳实践", link: "/docs/Frontend/Frame/CrossPlatform/FAQ/index.md" },
+                ]
+            },
+            {
                 text: "微信小程序",
                 link: "/docs/Frontend/Frame/WxMini/index.md",
                 collapsed: true,
