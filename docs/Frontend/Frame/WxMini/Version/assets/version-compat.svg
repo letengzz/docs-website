@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">基础库版本策略与兼容处理</text>
+
+  <rect x="30" y="60" width="270" height="170" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">版本从哪来</text>
+  <text x="52" y="112" font-size="11" fill="#3730a3">基础库由微信客户端内置，用户版本参差不齐</text>
+  <text x="52" y="134" font-size="11" fill="#3730a3">版本号风格：Major.Minor.Patch</text>
+  <text x="52" y="156" font-size="11" fill="#3730a3">开发时可指定调试用的基础库版本</text>
+  <text x="52" y="182" font-size="10" fill="#6b7280">官方文档会在组件/API 页标注最低基础库版本</text>
+  <text x="52" y="206" font-size="10" fill="#6b7280">版本分布可在后台查看（近 30 天占比）</text>
+
+  <rect x="315" y="60" width="270" height="170" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">设置最低基础库版本</text>
+  <text x="337" y="112" font-size="11" fill="#065f46">入口：小程序管理后台 → 设置 → 基本设置</text>
+  <text x="337" y="134" font-size="11" fill="#065f46">→ 基础库最低版本设置</text>
+  <text x="337" y="156" font-size="11" fill="#065f46">设置后低版本用户会被提示升级微信</text>
+  <text x="337" y="182" font-size="10" fill="#6b7280">收益：可以使用新能力、减少兼容分支</text>
+  <text x="337" y="206" font-size="10" fill="#6b7280">代价：可能流失部分未升级微信的用户</text>
+
+  <rect x="600" y="60" width="270" height="170" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="735" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">三种兼容判断方式</text>
+  <text x="622" y="112" font-size="11" fill="#92400e">① 读版本号：wx.getAppBaseInfo().SDKVersion</text>
+  <text x="622" y="134" font-size="11" fill="#92400e">② 能力判断：wx.canIUse('组件/API 特性')</text>
+  <text x="622" y="156" font-size="11" fill="#92400e">③ 存在性判断：if (wx.someApi) { ... }</text>
+  <text x="622" y="182" font-size="10" fill="#6b7280">低版本客户端可用 wx.getSystemInfoSync() 兜底</text>
+  <text x="622" y="206" font-size="10" fill="#6b7280">不可用字符串直接比较版本号！</text>
+
+  <rect x="30" y="252" width="840" height="100" rx="12" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="450" y="278" text-anchor="middle" font-size="13" font-weight="bold" fill="#b91c1c">最容易被忽略的坑：字符串比较版本号</text>
+  <text x="50" y="304" font-size="11" fill="#7f1d1d">'2.29.1' &gt; '2.3.0' 的结果是 false（按字符串比大小），必须按段转成数字再比较，或直接使用官方文档给出的比较函数。</text>
+  <text x="50" y="328" font-size="11" fill="#7f1d1d">更稳妥的做法：优先用 wx.canIUse / API 存在性判断，而不是自己写版本判断逻辑。</text>
+
+  <rect x="30" y="366" width="840" height="60" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="392" font-size="12" font-weight="bold" fill="#1f2937">状态标注约定</text>
+  <text x="50" y="414" font-size="11" fill="#374151">旧基础库与旧版 API 写法在本库保留说明并标注「仅存量」，新项目以当前基础库能力为准，不删除、不覆盖。</text>
+</svg>

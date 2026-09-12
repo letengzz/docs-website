@@ -498,7 +498,35 @@ export const FrontFrame = [
                     { text: "Electron+Vue3项目打包", link: "/docs/Frontend/Frame/Electron/VuePackaging/index.md" },
                 ]
             },
-            { text: "微信小程序", link: "/docs/Frontend/Frame/WxMini/index.md" },
+            {
+                text: "微信小程序",
+                link: "/docs/Frontend/Frame/WxMini/index.md",
+                collapsed: true,
+                items: [
+                    { text: "微信小程序 概述", link: "/docs/Frontend/Frame/WxMini/Overview/index.md" },
+                    { text: "微信小程序 基础", link: "/docs/Frontend/Frame/WxMini/Basic/index.md" },
+                    { text: "微信小程序 配置文件", link: "/docs/Frontend/Frame/WxMini/Settings/index.md" },
+                    { text: "微信小程序 调试工具链", link: "/docs/Frontend/Frame/WxMini/Debug/index.md" },
+                    { text: "微信小程序 基础库版本与兼容", link: "/docs/Frontend/Frame/WxMini/Version/index.md" },
+                    { text: "微信小程序 模板语法", link: "/docs/Frontend/Frame/WxMini/Template/index.md" },
+                    { text: "微信小程序 组件", link: "/docs/Frontend/Frame/WxMini/Component/index.md" },
+                    { text: "微信小程序 样式", link: "/docs/Frontend/Frame/WxMini/Style/index.md" },
+                    { text: "微信小程序 事件", link: "/docs/Frontend/Frame/WxMini/Event/index.md" },
+                    { text: "微信小程序 生命周期", link: "/docs/Frontend/Frame/WxMini/Lifecycle/index.md" },
+                    { text: "微信小程序 原生 API", link: "/docs/Frontend/Frame/WxMini/API/index.md" },
+                    { text: "微信小程序 路由与页面栈", link: "/docs/Frontend/Frame/WxMini/Router/index.md" },
+                    { text: "微信小程序 页面间通信", link: "/docs/Frontend/Frame/WxMini/PageCommunication/index.md" },
+                    { text: "微信小程序 全局数据共享（getApp）", link: "/docs/Frontend/Frame/WxMini/getApp/index.md" },
+                    { text: "微信小程序 开放能力", link: "/docs/Frontend/Frame/WxMini/OpenAbility/index.md" },
+                    { text: "微信小程序 自定义组件", link: "/docs/Frontend/Frame/WxMini/CustomComponent/index.md" },
+                    { text: "微信小程序 npm 使用", link: "/docs/Frontend/Frame/WxMini/npm/index.md" },
+                    { text: "微信小程序 分包加载", link: "/docs/Frontend/Frame/WxMini/Subpackage/index.md" },
+                    { text: "微信小程序 性能优化", link: "/docs/Frontend/Frame/WxMini/Performance/index.md" },
+                    { text: "微信小程序 云开发", link: "/docs/Frontend/Frame/WxMini/Cloud/index.md" },
+                    { text: "微信小程序 上线发布", link: "/docs/Frontend/Frame/WxMini/Release/index.md" },
+                    { text: "微信小程序 常见错误", link: "/docs/Frontend/Frame/WxMini/Errors/index.md" },
+                ]
+            },
         ]
     },
 ];

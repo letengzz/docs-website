@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">页面栈与四种导航方式</text>
+
+  <!-- 页面栈 -->
+  <rect x="30" y="60" width="380" height="200" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="220" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">页面栈（先进后出）</text>
+  <rect x="60" y="102" width="320" height="34" rx="6" fill="#e0e7ff" stroke="#a5b4fc"/>
+  <text x="220" y="124" text-anchor="middle" font-size="11" fill="#3730a3">tabBar 首页（栈底，switchTab 时清空其余页面）</text>
+  <rect x="60" y="142" width="320" height="34" rx="6" fill="#eef2ff" stroke="#a5b4fc"/>
+  <text x="220" y="164" text-anchor="middle" font-size="11" fill="#3730a3">商品列表页</text>
+  <rect x="60" y="182" width="320" height="34" rx="6" fill="#ffffff" stroke="#6366f1" stroke-width="2"/>
+  <text x="220" y="204" text-anchor="middle" font-size="11" font-weight="bold" fill="#4338ca">商品详情页（当前栈顶）</text>
+  <text x="220" y="240" text-anchor="middle" font-size="10" fill="#6b7280">页面栈层级有限（官方限制 10 层），超出 navigateTo 会失败</text>
+
+  <!-- 四种导航 -->
+  <rect x="430" y="60" width="420" height="200" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="640" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">四种编程式导航</text>
+  <text x="452" y="112" font-size="11" fill="#065f46">navigateTo：保留当前页，压入新页面（不能跳 tabBar 页）</text>
+  <text x="452" y="134" font-size="11" fill="#065f46">redirectTo：关闭当前页，替换为新页面（不能跳 tabBar 页）</text>
+  <text x="452" y="156" font-size="11" fill="#065f46">switchTab：切到 tabBar 页，并清空其余页面栈</text>
+  <text x="452" y="178" font-size="11" fill="#065f46">reLaunch：关闭所有页面，打开任意页面（常用于登录后跳转）</text>
+  <text x="452" y="200" font-size="11" fill="#065f46">navigateBack：返回上一页或多级页面，可携带 delta</text>
+  <text x="452" y="228" font-size="10" fill="#6b7280">声明式：&lt;navigator open-type="navigate|redirect|switchTab|reLaunch" open-type&gt;</text>
+  <text x="452" y="248" font-size="10" fill="#6b7280">四种方式都会触发目标页面的 onLoad（tabBar 页首次进入时）</text>
+
+  <!-- 传参与返回 -->
+  <rect x="30" y="280" width="405" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="232" y="306" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">传参的三种方式</text>
+  <text x="52" y="332" font-size="11" fill="#92400e">URL 查询参数：适合少量简单参数，中文与特殊字符要 encodeURIComponent</text>
+  <text x="52" y="354" font-size="11" fill="#92400e">EventChannel：页面向下一页传对象、并接收回传数据（navigateTo 专用）</text>
+  <text x="52" y="376" font-size="11" fill="#92400e">全局状态 / Storage：跨多页共享（如登录态），不适合一次性参数</text>
+  <text x="52" y="402" font-size="10" fill="#6b7280">注意：switchTab 的 url 不能带参数，需要全局状态或 Storage 传递</text>
+  <text x="52" y="422" font-size="10" fill="#6b7280">参数长度有限，避免在 URL 里塞大对象</text>
+
+  <!-- 返回刷新 -->
+  <rect x="445" y="280" width="405" height="150" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="647" y="306" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">返回时如何刷新上一页</text>
+  <text x="467" y="332" font-size="11" fill="#5b21b6">方案一：被打开页 emit 事件，上一页在 events 中接收后 setData</text>
+  <text x="467" y="354" font-size="11" fill="#5b21b6">方案二：上一页 onShow 中重新拉取数据（简单可靠，注意重复请求）</text>
+  <text x="467" y="376" font-size="11" fill="#5b21b6">方案三：全局状态标记"数据已变更"，onShow 时按标记刷新</text>
+  <text x="467" y="402" font-size="10" fill="#6b7280">列表页返回刷新是最高频场景：优先 onShow + 脏标记，避免无脑请求</text>
+  <text x="467" y="422" font-size="10" fill="#6b7280">tabBar 页面不会重新 onLoad，只能靠 onShow</text>
+</svg>

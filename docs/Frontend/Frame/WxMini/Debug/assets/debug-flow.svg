@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">小程序调试工具链与排障路径</text>
+
+  <rect x="30" y="60" width="200" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="130" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 模拟器</text>
+  <text x="130" y="110" text-anchor="middle" font-size="10" fill="#3730a3">快速验证布局与逻辑</text>
+  <text x="130" y="130" text-anchor="middle" font-size="10" fill="#3730a3">可切换机型与基础库</text>
+  <text x="130" y="150" text-anchor="middle" font-size="10" fill="#3730a3">可开启"不校验合法域名"</text>
+  <text x="130" y="176" text-anchor="middle" font-size="10" fill="#6b7280">局限：性能与真机差异大</text>
+  <text x="130" y="198" text-anchor="middle" font-size="10" fill="#6b7280">部分能力（支付、蓝牙）不可用</text>
+
+  <rect x="245" y="60" width="200" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="345" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② 真机调试</text>
+  <text x="345" y="110" text-anchor="middle" font-size="10" fill="#065f46">扫码在手机上运行</text>
+  <text x="345" y="130" text-anchor="middle" font-size="10" fill="#065f46">验证真实性能与权限</text>
+  <text x="345" y="150" text-anchor="middle" font-size="10" fill="#065f46">可远程调试与看 console</text>
+  <text x="345" y="176" text-anchor="middle" font-size="10" fill="#6b7280">必测：低端安卓、弱网</text>
+  <text x="345" y="198" text-anchor="middle" font-size="10" fill="#6b7280">必测：首次授权流程</text>
+
+  <rect x="460" y="60" width="200" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="560" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">③ 调试面板</text>
+  <text x="560" y="110" text-anchor="middle" font-size="10" fill="#92400e">Console / Network / Storage</text>
+  <text x="560" y="130" text-anchor="middle" font-size="10" fill="#92400e">AppData：查看页面数据</text>
+  <text x="560" y="150" text-anchor="middle" font-size="10" fill="#92400e">Wxml：查看节点结构</text>
+  <text x="560" y="176" text-anchor="middle" font-size="10" fill="#6b7280">Network 看请求耗时与失败</text>
+  <text x="560" y="198" text-anchor="middle" font-size="10" fill="#6b7280">AppData 验证 setData 是否符合预期</text>
+
+  <rect x="675" y="60" width="195" height="150" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="772" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">④ 性能与体验</text>
+  <text x="772" y="110" text-anchor="middle" font-size="10" fill="#5b21b6">体验评分</text>
+  <text x="772" y="130" text-anchor="middle" font-size="10" fill="#5b21b6">性能面板（Trace）</text>
+  <text x="772" y="150" text-anchor="middle" font-size="10" fill="#5b21b6">内存与渲染耗时</text>
+  <text x="772" y="176" text-anchor="middle" font-size="10" fill="#6b7280">真机 + 低端机型对比</text>
+  <text x="772" y="198" text-anchor="middle" font-size="10" fill="#6b7280">记录基线后再优化</text>
+
+  <rect x="30" y="232" width="840" height="186" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="258" font-size="13" font-weight="bold" fill="#1f2937">排障四步法</text>
+  <text x="50" y="284" font-size="11" fill="#374151">1. 先看报错：开发者工具 Console 的红色错误优先解决，多数"白屏"是 JS 报错或配置错误。</text>
+  <text x="50" y="308" font-size="11" fill="#374151">2. 再看数据：用 AppData 面板确认 data 是否正确，区分"数据没拿到"与"渲染没更新"。</text>
+  <text x="50" y="332" font-size="11" fill="#374151">3. 再看网络：Network 面板确认请求是否发出、状态码、耗时与返回结构，域名与鉴权问题在这里暴露。</text>
+  <text x="50" y="356" font-size="11" fill="#374151">4. 最后上真机：模拟器正常但真机异常，通常是权限、基础库版本或性能问题。</text>
+  <text x="50" y="384" font-size="10" fill="#6b7280">常见坑：忘记在后台配置服务器域名、真机未授权、预览版与体验版数据不互通、缓存导致的"本地正常线上异常"。</text>
+  <text x="50" y="406" font-size="10" fill="#6b7280">建议：把每次排障的"现象 → 根因 → 结论"记录下来，逐渐形成团队自己的错误速查表（见「常见错误」页）。</text>
+</svg>

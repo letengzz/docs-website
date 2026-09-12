@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">小程序性能优化：四条主线</text>
+
+  <rect x="30" y="60" width="200" height="180" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="130" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 启动性能</text>
+  <text x="130" y="112" text-anchor="middle" font-size="10" fill="#3730a3">减少启动分包体积</text>
+  <text x="130" y="132" text-anchor="middle" font-size="10" fill="#3730a3">非必要逻辑延后执行</text>
+  <text x="130" y="152" text-anchor="middle" font-size="10" fill="#3730a3">首屏数据并行请求</text>
+  <text x="130" y="176" text-anchor="middle" font-size="10" fill="#6b7280">指标：启动耗时、首屏时间</text>
+  <text x="130" y="200" text-anchor="middle" font-size="10" fill="#6b7280">工具：体验评分、性能面板</text>
+  <text x="130" y="224" text-anchor="middle" font-size="10" fill="#6b7280">手段：分包预下载</text>
+
+  <rect x="245" y="60" width="200" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="345" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② 渲染性能</text>
+  <text x="345" y="112" text-anchor="middle" font-size="10" fill="#065f46">减少 setData 频次与数据量</text>
+  <text x="345" y="132" text-anchor="middle" font-size="10" fill="#065f46">避免长列表整树更新</text>
+  <text x="345" y="152" text-anchor="middle" font-size="10" fill="#065f46">用 wx:key 复用节点</text>
+  <text x="345" y="176" text-anchor="middle" font-size="10" fill="#6b7280">指标：渲染耗时、掉帧</text>
+  <text x="345" y="200" text-anchor="middle" font-size="10" fill="#6b7280">手段：分层渲染、骨架屏</text>
+  <text x="345" y="224" text-anchor="middle" font-size="10" fill="#6b7280">手段：长列表分页加载</text>
+
+  <rect x="460" y="60" width="200" height="180" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="560" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">③ 网络与资源</text>
+  <text x="560" y="112" text-anchor="middle" font-size="10" fill="#92400e">图片压缩与合适格式</text>
+  <text x="560" y="132" text-anchor="middle" font-size="10" fill="#92400e">按需加载与懒加载</text>
+  <text x="560" y="152" text-anchor="middle" font-size="10" fill="#92400e">接口合并与并发控制</text>
+  <text x="560" y="176" text-anchor="middle" font-size="10" fill="#6b7280">指标：请求数、资源体积</text>
+  <text x="560" y="200" text-anchor="middle" font-size="10" fill="#6b7280">手段：CDN、缓存</text>
+  <text x="560" y="224" text-anchor="middle" font-size="10" fill="#6b7280">手段：骨架 + 占位图</text>
+
+  <rect x="675" y="60" width="195" height="180" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="772" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">④ 包体积与分包</text>
+  <text x="772" y="112" text-anchor="middle" font-size="10" fill="#5b21b6">主包只放首屏必需资源</text>
+  <text x="772" y="132" text-anchor="middle" font-size="10" fill="#5b21b6">按业务拆分分包</text>
+  <text x="772" y="152" text-anchor="middle" font-size="10" fill="#5b21b6">分包预下载提升体验</text>
+  <text x="772" y="176" text-anchor="middle" font-size="10" fill="#6b7280">指标：主包体积</text>
+  <text x="772" y="200" text-anchor="middle" font-size="10" fill="#6b7280">手段：剔除无用依赖</text>
+  <text x="772" y="224" text-anchor="middle" font-size="10" fill="#6b7280">手段：图片走 CDN</text>
+
+  <rect x="30" y="262" width="840" height="176" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="288" font-size="13" font-weight="bold" fill="#1f2937">优化顺序：先测量，再动手</text>
+  <text x="50" y="314" font-size="11" fill="#374151">1. 用「体验评分 / 性能面板」拿到基线：启动耗时、首屏时间、渲染耗时、请求耗时。</text>
+  <text x="50" y="338" font-size="11" fill="#374151">2. 先修最慢的一环：多数项目是「主包过大 + 首屏串行请求 + setData 过频」三项之一。</text>
+  <text x="50" y="362" font-size="11" fill="#374151">3. 每次只改一项并复测，记录改前改后指标，避免"感觉快了"。</text>
+  <text x="50" y="386" font-size="11" fill="#374151">4. 真机验证：开发者工具性能远好于低端安卓机，必须用真机与「低端机型」测试。</text>
+  <text x="50" y="412" font-size="10" fill="#6b7280">常见错误：把图片全部塞进包内、在 onLoad 里串行请求 5 个接口、用 setData 更新整个长列表、页面栈堆积不释放。</text>
+</svg>
