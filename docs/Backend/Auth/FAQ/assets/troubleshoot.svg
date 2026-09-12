@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">认证授权问题排查地图</text>
+
+  <rect x="330" y="56" width="240" height="50" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="450" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">先看现象</text>
+  <text x="450" y="98" text-anchor="middle" font-size="10" fill="#6b7280">登不上 / 登出无效 / 越权 / 频繁掉线</text>
+  <path d="M 450 106 V 130" stroke="#9ca3af" stroke-width="2" fill="none"/>
+  <line x1="120" y1="130" x2="780" y2="130" stroke="#9ca3af" stroke-width="2"/>
+
+  <path d="M 120 130 V 154" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#f1)"/>
+  <rect x="30" y="158" width="180" height="140" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="120" y="182" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">① 登录失败</text>
+  <text x="120" y="206" text-anchor="middle" font-size="10" fill="#7f1d1d">密码/验证码错误</text>
+  <text x="120" y="224" text-anchor="middle" font-size="10" fill="#7f1d1d">时钟偏差致令牌无效</text>
+  <text x="120" y="242" text-anchor="middle" font-size="10" fill="#7f1d1d">跨域 Cookie 未带上</text>
+  <text x="120" y="266" text-anchor="middle" font-size="10" fill="#6b7280">→ 看后端日志与请求头</text>
+
+  <path d="M 330 130 V 154" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#f1)"/>
+  <rect x="250" y="158" width="180" height="140" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="340" y="182" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">② 频繁掉线</text>
+  <text x="340" y="206" text-anchor="middle" font-size="10" fill="#92400e">访问令牌过期太快</text>
+  <text x="340" y="224" text-anchor="middle" font-size="10" fill="#92400e">刷新逻辑有并发问题</text>
+  <text x="340" y="242" text-anchor="middle" font-size="10" fill="#92400e">多实例会话未共享</text>
+  <text x="340" y="266" text-anchor="middle" font-size="10" fill="#6b7280">→ 查过期时间与刷新链路</text>
+
+  <path d="M 470 130 V 154" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#f1)"/>
+  <rect x="470" y="158" width="180" height="140" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="560" y="182" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">③ 登出无效</text>
+  <text x="560" y="206" text-anchor="middle" font-size="10" fill="#1e3a8a">只清了本地未清服务端</text>
+  <text x="560" y="224" text-anchor="middle" font-size="10" fill="#1e3a8a">JWT 无状态无法立即失效</text>
+  <text x="560" y="242" text-anchor="middle" font-size="10" fill="#1e3a8a">刷新令牌未吊销</text>
+  <text x="560" y="266" text-anchor="middle" font-size="10" fill="#6b7280">→ 引入吊销名单/版本号</text>
+
+  <path d="M 700 130 V 154" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#f1)"/>
+  <rect x="690" y="158" width="180" height="140" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="780" y="182" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">④ 越权访问</text>
+  <text x="780" y="206" text-anchor="middle" font-size="10" fill="#5b21b6">只校验登录未校验权限</text>
+  <text x="780" y="224" text-anchor="middle" font-size="10" fill="#5b21b6">未校验资源归属</text>
+  <text x="780" y="242" text-anchor="middle" font-size="10" fill="#5b21b6">前端隐藏但接口可达</text>
+  <text x="780" y="266" text-anchor="middle" font-size="10" fill="#6b7280">→ 接口级 + 数据级双校验</text>
+
+  <rect x="30" y="318" width="840" height="116" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="344" font-size="13" font-weight="bold" fill="#1f2937">通用四步法</text>
+  <text x="50" y="370" font-size="11" fill="#374151">1. 看请求：令牌是否携带、格式是否正确、是否过期（打印 exp 与服务器时间对比）。</text>
+  <text x="50" y="394" font-size="11" fill="#374151">2. 看服务端：验签是否通过、密钥是否匹配（kid 是否找得到）、用户与角色是否加载成功。</text>
+  <text x="50" y="418" font-size="11" fill="#374151">3. 看授权：接口权限注解是否生效、数据过滤条件是否拼进 SQL（检查最终执行的 SQL）。</text>
+  <text x="50" y="440" font-size="11" fill="#374151">4. 看审计：登录/登出/权限变更是否留痕，用于判断"谁在什么时候改了什么"。</text>
+
+  <defs>
+    <marker id="f1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

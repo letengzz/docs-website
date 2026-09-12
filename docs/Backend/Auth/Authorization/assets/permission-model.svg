@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">权限模型：从角色到数据范围</text>
+
+  <rect x="30" y="60" width="270" height="170" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">RBAC：基于角色</text>
+  <text x="52" y="112" font-size="11" fill="#3730a3">用户 → 角色 → 权限点</text>
+  <text x="52" y="134" font-size="11" fill="#3730a3">实现简单、易理解</text>
+  <text x="52" y="156" font-size="11" fill="#3730a3">支持角色继承与权限分组</text>
+  <text x="52" y="182" font-size="10" fill="#6b7280">适用：绝大多数后台管理系统</text>
+  <text x="52" y="204" font-size="10" fill="#6b7280">风险：角色膨胀后难以维护</text>
+
+  <rect x="315" y="60" width="270" height="170" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">ABAC：基于属性</text>
+  <text x="337" y="112" font-size="11" fill="#065f46">规则 = 主体 + 资源 + 动作 + 环境</text>
+  <text x="337" y="134" font-size="11" fill="#065f46">表达力强，可写细粒度策略</text>
+  <text x="337" y="156" font-size="11" fill="#065f46">需策略引擎与规则管理</text>
+  <text x="337" y="182" font-size="10" fill="#6b7280">适用：多租户、数据敏感的业务</text>
+  <text x="337" y="204" font-size="10" fill="#6b7280">风险：规则难调试、性能开销大</text>
+
+  <rect x="600" y="60" width="270" height="170" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="735" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">ReBAC：基于关系</text>
+  <text x="622" y="112" font-size="11" fill="#92400e">以"谁与谁是何种关系"判定</text>
+  <text x="622" y="134" font-size="11" fill="#92400e">适合文档协作、组织架构</text>
+  <text x="622" y="156" font-size="11" fill="#92400e">需要关系图存储（如 Zanzibar 模型）</text>
+  <text x="622" y="182" font-size="10" fill="#6b7280">适用：共享、协作、可见性场景</text>
+  <text x="622" y="204" font-size="10" fill="#6b7280">风险：实现与运维成本最高</text>
+
+  <rect x="30" y="252" width="840" height="164" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="278" font-size="13" font-weight="bold" fill="#1f2937">功能权限之外的"数据权限"</text>
+  <text x="50" y="304" font-size="11" fill="#374151">功能权限：能不能点这个按钮（接口级校验）。数据权限：能看到哪些数据（行级、字段级）。</text>
+  <text x="50" y="328" font-size="11" fill="#374151">常见数据范围：本人 / 本部门 / 本部门及下级 / 自定义范围 / 全部。</text>
+  <text x="50" y="352" font-size="11" fill="#374151">实现方式：在数据访问层拼接过滤条件（不要只在前端隐藏菜单），并把租户 ID 作为强制条件。</text>
+  <text x="50" y="376" font-size="11" fill="#374151">水平越权是最高发的漏洞：**接口必须校验资源归属**，而不能只校验"是否登录"。</text>
+  <text x="50" y="400" font-size="10" fill="#6b7280">权限缓存要可失效：角色/授权变更后立即生效，或按版本号 / TTL 控制（见服务端落地页）。</text>
+</svg>

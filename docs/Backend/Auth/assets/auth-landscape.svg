@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">认证与授权：先分清两件事</text>
+
+  <rect x="30" y="60" width="410" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="235" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">认证（Authentication）：你是谁</text>
+  <text x="52" y="114" font-size="11" fill="#3730a3">密码 / 短信验证码 / 扫码 / 第三方登录 / 生物识别</text>
+  <text x="52" y="138" font-size="11" fill="#3730a3">产出：一个可信的身份标识（Session 或 Token）</text>
+  <text x="52" y="162" font-size="11" fill="#3730a3">落地：Session-Cookie、JWT、OAuth2/OIDC、SSO</text>
+  <text x="52" y="190" font-size="10" fill="#6b7280">失败模式：凭证泄露、会话固定、令牌伪造</text>
+
+  <rect x="460" y="60" width="410" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="665" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">授权（Authorization）：你能做什么</text>
+  <text x="482" y="114" font-size="11" fill="#065f46">角色 / 权限点 / 数据范围 / 属性规则</text>
+  <text x="482" y="138" font-size="11" fill="#065f46">产出：一次请求是否放行的判定结果</text>
+  <text x="482" y="162" font-size="11" fill="#065f46">落地：RBAC、ABAC、数据权限、网关与接口双层校验</text>
+  <text x="482" y="190" font-size="10" fill="#6b7280">失败模式：越权访问、水平越权、权限缓存不一致</text>
+
+  <rect x="30" y="232" width="840" height="130" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="258" font-size="13" font-weight="bold" fill="#1f2937">方案全景（按会话状态与协议分层）</text>
+  <text x="50" y="284" font-size="11" fill="#374151">服务端会话：Session-Cookie（浏览器友好，服务端有状态，需共享会话）</text>
+  <text x="50" y="308" font-size="11" fill="#374151">自包含令牌：JWT（无状态、易横向扩展，但撤销困难，必须短过期 + 刷新令牌）</text>
+  <text x="50" y="332" font-size="11" fill="#374151">授权协议：OAuth 2.1 / OIDC（第三方授权与身份联合的行业标准）</text>
+  <text x="50" y="356" font-size="11" fill="#374151">企业联合：SSO（CAS / SAML 2.0 / OIDC，一次登录访问多个系统）</text>
+
+  <rect x="30" y="378" width="840" height="76" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="404" font-size="12" font-weight="bold" fill="#1f2937">选择顺序</text>
+  <text x="50" y="428" font-size="11" fill="#374151">① 是否只服务自家前端？是 → Session 或 JWT 即可；需要第三方授权 → OAuth 2.1 / OIDC；多系统统一登录 → SSO。</text>
+  <text x="50" y="448" font-size="10" fill="#6b7280">② 无论选哪种，授权都必须独立设计：认证解决"进门"，授权解决"进门后能去哪"。</text>
+</svg>

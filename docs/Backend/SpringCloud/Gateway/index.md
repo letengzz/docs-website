@@ -246,6 +246,12 @@ public class RateLimitConfig {
 3. `GET /actuator/gateway/routes` 输出路由列表；带错误路径访问得到 404，不带 Token 访问受保护路由得到 401。
 4. 连续快速请求触发限流时，观察 429 Too Many Requests。
 
+## 相关专题
+
+- [认证与授权专题](../../Auth/index.md)：网关与服务双层鉴权的整体设计
+- [服务端落地](../../Auth/Implementation/index.md)：身份头注入、微服务间认证与令牌传递
+- [安全最佳实践](../../Auth/Security/index.md)：鉴权失败处理与审计
+
 ## 参考资料
 
 - Spring Cloud Gateway 官方文档：https://docs.spring.io/spring-cloud-gateway/reference/

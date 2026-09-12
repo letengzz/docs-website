@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">服务端落地：网关 + 服务双层鉴权</text>
+
+  <rect x="30" y="60" width="150" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="105" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">客户端</text>
+  <text x="105" y="112" text-anchor="middle" font-size="10" fill="#3730a3">携带令牌 / Cookie</text>
+  <text x="105" y="132" text-anchor="middle" font-size="10" fill="#6b7280">HTTPS 必选</text>
+
+  <path d="M 182 105 H 218" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#a1)"/>
+
+  <rect x="220" y="60" width="230" height="90" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="335" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">API 网关</text>
+  <text x="335" y="112" text-anchor="middle" font-size="10" fill="#5b21b6">统一校验签名/有效期/黑名单</text>
+  <text x="335" y="132" text-anchor="middle" font-size="10" fill="#6b7280">解析身份并透传（不重复解析）</text>
+
+  <path d="M 452 105 H 488" stroke="#8b5cf6" stroke-width="2.5" fill="none" marker-end="url(#a2)"/>
+
+  <rect x="490" y="60" width="380" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="680" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">业务服务</text>
+  <text x="680" y="112" text-anchor="middle" font-size="10" fill="#065f46">接口级权限校验（注解/拦截器）+ 数据范围过滤</text>
+  <text x="680" y="132" text-anchor="middle" font-size="10" fill="#6b7280">越权校验必须在服务内完成，不能只信网关</text>
+
+  <rect x="30" y="178" width="410" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="235" y="204" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">微服务间认证</text>
+  <text x="52" y="230" font-size="11" fill="#92400e">方式一：下游信任网关注入的身份头（需内网隔离 + 服务间鉴权）</text>
+  <text x="52" y="252" font-size="11" fill="#92400e">方式二：传播原始令牌，逐服务校验（简单但开销更高）</text>
+  <text x="52" y="274" font-size="11" fill="#92400e">方式三：客户端凭据换取服务令牌（推荐，权限最小化）</text>
+  <text x="52" y="298" font-size="10" fill="#6b7280">无论哪种：内部接口也要鉴权，禁止"内网即可信"的假设</text>
+  <text x="52" y="318" font-size="10" fill="#6b7280">链路中要传递 traceId 与用户标识，便于审计与排查</text>
+
+  <rect x="460" y="178" width="410" height="150" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="665" y="204" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">Java 生态落地参考</text>
+  <text x="482" y="230" font-size="11" fill="#1e3a8a">Spring Security 6 / 7：过滤器链 + 方法注解 + OAuth2 资源服务器</text>
+  <text x="482" y="252" font-size="11" fill="#1e3a8a">Sa-Token：轻量、登录态与权限注解开箱即用</text>
+  <text x="482" y="274" font-size="11" fill="#1e3a8a">网关：统一鉴权与限流，服务内做细粒度授权</text>
+  <text x="482" y="296" font-size="10" fill="#6b7280">具体用法见本库 [Spring Security 6 专题] 与 [Sa-Token] 页面</text>
+  <text x="482" y="318" font-size="10" fill="#6b7280">版本对应关系见 [版本与兼容矩阵]</text>
+
+  <rect x="30" y="350" width="840" height="92" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="376" font-size="13" font-weight="bold" fill="#1f2937">无状态 vs 有状态的取舍</text>
+  <text x="50" y="400" font-size="11" fill="#374151">纯无状态（JWT）：横向扩展容易，但注销/封禁生效有延迟（需短过期 + 版本号或黑名单）。</text>
+  <text x="50" y="424" font-size="11" fill="#374151">纯有状态（Session）：注销立即生效，但需要集中会话存储，跨端接入不友好。</text>
+  <text x="50" y="444" font-size="10" fill="#6b7280">常见折中：短期访问令牌（无状态校验）+ 服务端保存刷新令牌与吊销状态（有状态控制）。</text>
+
+  <defs>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">认证授权常见威胁与防护</text>
+
+  <rect x="30" y="60" width="410" height="130" rx="12" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="235" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b91c1c">凭证与令牌类</text>
+  <text x="52" y="112" font-size="11" fill="#7f1d1d">令牌泄露（XSS 窃取、日志打印、Referer 泄漏）→ 短过期 + 安全存储 + 日志脱敏</text>
+  <text x="52" y="134" font-size="11" fill="#7f1d1d">令牌伪造（alg 混淆、弱密钥）→ 算法白名单 + 强密钥轮换</text>
+  <text x="52" y="156" font-size="11" fill="#7f1d1d">会话固定 → 登录成功后重新生成会话 ID</text>
+  <text x="52" y="178" font-size="11" fill="#7f1d1d">重放攻击 → 短过期 + nonce / jti 去重 + HTTPS</text>
+
+  <rect x="460" y="60" width="410" height="130" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="665" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">授权与越权类</text>
+  <text x="482" y="112" font-size="11" fill="#92400e">水平越权（改 ID 看别人数据）→ 接口校验资源归属</text>
+  <text x="482" y="134" font-size="11" fill="#92400e">垂直越权（普通用户调管理接口）→ 接口级权限注解</text>
+  <text x="482" y="156" font-size="11" fill="#92400e">只隐藏前端菜单 → 后端必须独立校验</text>
+  <text x="482" y="178" font-size="11" fill="#92400e">批量接口漏校验 → 逐条校验并记录审计日志</text>
+
+  <rect x="30" y="206" width="410" height="130" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="235" y="232" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">Web 攻击类</text>
+  <text x="52" y="258" font-size="11" fill="#1e3a8a">CSRF → SameSite Cookie + CSRF Token + 校验 Origin</text>
+  <text x="52" y="280" font-size="11" fill="#1e3a8a">XSS → 输出转义 + CSP + 不把令牌放 localStorage（权衡）</text>
+  <text x="52" y="302" font-size="11" fill="#1e3a8a">点击劫持 → X-Frame-Options / CSP frame-ancestors</text>
+  <text x="52" y="324" font-size="11" fill="#1e3a8a">开放重定向 → redirect_uri 白名单</text>
+
+  <rect x="460" y="206" width="410" height="130" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="665" y="232" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">运营与审计类</text>
+  <text x="482" y="258" font-size="11" fill="#5b21b6">暴力破解 → 登录限流 + 失败次数锁定 + 验证码</text>
+  <text x="482" y="280" font-size="11" fill="#5b21b6">撞库 → 异常登录检测 + 二次验证</text>
+  <text x="482" y="302" font-size="11" fill="#5b21b6">内部滥用 → 全量操作审计 + 最小权限</text>
+  <text x="482" y="324" font-size="11" fill="#5b21b6">离职未回收 → 账号生命周期与权限定期复核</text>
+
+  <rect x="30" y="352" width="840" height="90" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="378" font-size="13" font-weight="bold" fill="#1f2937">上线前安全清单（最低要求）</text>
+  <text x="50" y="402" font-size="11" fill="#374151">① 全站 HTTPS + HSTS　② 令牌短过期 + 刷新机制　③ 接口级权限校验 + 资源归属校验</text>
+  <text x="50" y="426" font-size="11" fill="#374151">④ 登录限流与失败锁定　⑤ 敏感操作审计　⑥ 密钥集中管理并支持轮换　⑦ 依赖漏洞定期扫描</text>
+
+  <defs/>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Session-Cookie 会话流程与分布式改造</text>
+
+  <rect x="40" y="64" width="180" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="130" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">浏览器</text>
+  <text x="130" y="114" text-anchor="middle" font-size="10" fill="#3730a3">提交账号密码</text>
+  <text x="130" y="136" text-anchor="middle" font-size="10" fill="#3730a3">后续请求自动带 Cookie</text>
+
+  <path d="M 222 109 H 260" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#s1)"/>
+
+  <rect x="262" y="64" width="220" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="372" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">服务端</text>
+  <text x="372" y="114" text-anchor="middle" font-size="10" fill="#065f46">校验凭证 → 创建会话</text>
+  <text x="372" y="136" text-anchor="middle" font-size="10" fill="#065f46">下发 session_id（Cookie）</text>
+
+  <path d="M 484 109 H 522" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#s2)"/>
+
+  <rect x="524" y="64" width="336" height="90" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="692" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">会话存储</text>
+  <text x="692" y="114" text-anchor="middle" font-size="10" fill="#5b21b6">单机：内存（重启即丢失、无法横向扩展）</text>
+  <text x="692" y="136" text-anchor="middle" font-size="10" fill="#5b21b6">分布式：Redis 等集中存储 + 过期时间</text>
+
+  <rect x="30" y="178" width="410" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="235" y="204" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">Cookie 安全属性（缺一不可）</text>
+  <text x="52" y="230" font-size="11" fill="#92400e">HttpOnly：禁止 JS 读取，降低 XSS 窃取风险</text>
+  <text x="52" y="252" font-size="11" fill="#92400e">Secure：仅 HTTPS 传输</text>
+  <text x="52" y="274" font-size="11" fill="#92400e">SameSite=Lax/Strict：缓解 CSRF（跨站请求不自动携带）</text>
+  <text x="52" y="296" font-size="11" fill="#92400e">Path / Domain：限制作用范围，避免子域泄露</text>
+  <text x="52" y="320" font-size="10" fill="#6b7280">会话 ID 必须足够随机，登录成功后要重新生成（防会话固定）</text>
+
+  <rect x="460" y="178" width="410" height="150" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="665" y="204" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">分布式会话的三种做法</text>
+  <text x="482" y="230" font-size="11" fill="#1e3a8a">① 集中存储：Redis 保存会话，多实例共享（最常用）</text>
+  <text x="482" y="252" font-size="11" fill="#1e3a8a">② 会话粘滞：负载均衡按会话转发（有单点与扩容问题）</text>
+  <text x="482" y="274" font-size="11" fill="#1e3a8a">③ 客户端令牌：改用 JWT，天然无状态（见 JWT 页）</text>
+  <text x="482" y="296" font-size="11" fill="#1e3a8a">混合：短期 JWT + 服务端保存刷新令牌与吊销名单</text>
+  <text x="482" y="320" font-size="10" fill="#6b7280">注销时要同时清理会话存储与客户端 Cookie</text>
+
+  <rect x="30" y="346" width="840" height="72" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="372" font-size="12" font-weight="bold" fill="#1f2937">什么时候选 Session-Cookie</text>
+  <text x="50" y="396" font-size="11" fill="#374151">前后端同域、以浏览器为主、需要"立即注销生效"、团队希望减少令牌管理复杂度时，Session-Cookie 依然是最稳的选择。</text>
+  <text x="50" y="414" font-size="10" fill="#6b7280">移动端 / 多端 / 第三方接入场景则更适合令牌方案，二者可以共存（Web 用会话、开放平台用令牌）。</text>
+
+  <defs>
+    <marker id="s1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="s2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

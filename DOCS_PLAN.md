@@ -101,7 +101,7 @@
 | 61 | Backend | Java 设计模式实战 | 设计原则、创建型、结构型、行为型、框架源码分析、实战案例 |
 | 62 | Backend | Java 网络编程 | Socket、NIO、Netty、粘包拆包、编解码、实战案例 |
 | 63 | Backend | Go 入门 | 概述与环境、语法基础、并发模型、Web 开发、实战案例 |
-| 64 | Backend | 认证与授权 | JWT、OAuth2、Session、SSO、安全最佳实践、常见问题 |
+| 64 | Backend | 认证与授权 ✅ | JWT、OAuth2、Session、SSO、安全最佳实践、常见问题 |
 | 65 | Frontend | Vite 深入 | 原理、配置、插件开发、环境变量、构建优化、实战案例 |
 | 66 | Frontend | Webpack 深入 | 核心概念、Loader、Plugin、代码分割、优化实践 |
 | 67 | Frontend | 小程序进阶 | 分包、自定义组件、云开发、性能优化、发布 |
@@ -196,6 +196,8 @@
 - [x] 存量事实核对：按官方文档核对小程序基础库版本策略（版本号 Major.Minor.Patch、`wx.getAppBaseInfo().SDKVersion`、`wx.canIUse`、API 存在性判断、禁止字符串比较版本号、后台「基础库最低版本设置」与近 30 天版本分布），沉淀为 [基础库版本与兼容] 页面
 - [x] Frontend 存量补全：跨端开发专题已建设（第 51 天，8 个页面：概述与选型、Taro 多端开发、多端工程架构、多端兼容与差异处理、桌面端跨端、实战、版本与兼容矩阵、FAQ），并遵循「已有内容不重复」原则——uni-app 与 Electron 沿用既有专题，本专题只补方案对比方法论、Taro（原库完全缺失）与多端工程化；补充 Frame 目录页、Uniapp 目录页、Electron 目录页、WxMini 目录页与前端工程化页的交叉链接
 - [x] 存量版本核对：跨端组件版本按官方渠道核对（Taro v4.2.1 / 2026-07-17、Electron v44.3.0 / 2026-09-08、uni-app npm 日期构建号与 Vue3 主线），并建立「主线 + 上一代 + 仅存量」状态约定（Taro 3.x、uni-app Vue2、旧 Electron 主版本）
+- [x] Backend 存量补全：认证与授权专题已建设（第 64 天，10 个页面：概述与选型、会话与 Cookie、JWT 深入、OAuth 2.1 与 OIDC、单点登录、权限模型、服务端落地、安全最佳实践、版本与兼容矩阵、FAQ），语言中立，Java 实现指向既有 Spring Security / Sa-Token 专题；同时就地补全 Spring Security 主题（v5 存档页由 1 行空壳重写、v6 目录页补全目录与状态、新增 v7 版本目录页、会话页由 13 行扩充为完整对比页）并把整棵子树挂进侧边栏，补充 Spring Cloud Gateway 与 Sa-Token 交叉链接
+- [x] 存量版本核对：按官方渠道核对认证授权版本事实（Spring Security 7.1.1 / 2026-08-20、Spring Boot 4.1.1、jjwt 0.13.0、RFC 9700 OAuth 2.0 安全最佳实践、OAuth 2.1 草案 Rev 16 / draft-ietf-oauth-v2-1、RFC 7636 PKCE、RFC 9068 JWT 访问令牌），建立「主线 / 上一代 / 仅存量」状态标注（隐式与密码模式、CAS、Spring Security 5.x 标注为仅存量）
 
 ## 节奏建议
 

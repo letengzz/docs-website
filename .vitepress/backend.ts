@@ -176,7 +176,20 @@ export const Java = [
               { text: "Spring Boot 4.x（当前稳定版）", link: "/docs/Backend/Java/Frame/SpringBoot/v4/index.md" },
             ],
           },
-          { text: "Spring Security", link: "/docs/Backend/Java/Frame/SpringSecurity/index.md" },
+          {
+            text: "Spring Security",
+            link: "/docs/Backend/Java/Frame/SpringSecurity/index.md",
+            collapsed: true,
+            items: [
+              { text: "Spring Security 7.x（当前主线）", link: "/docs/Backend/Java/Frame/SpringSecurity/v7/index.md" },
+              { text: "Spring Security 6.x（上一代）", link: "/docs/Backend/Java/Frame/SpringSecurity/v6/index.md" },
+              { text: "Spring Security 6 · 基于 SpringBoot", link: "/docs/Backend/Java/Frame/SpringSecurity/v6/SpringBoot/index.md" },
+              { text: "Spring Security 6 · 会话（Session）", link: "/docs/Backend/Java/Frame/SpringSecurity/v6/SpringBoot/Session/index.md" },
+              { text: "Spring Security 6 · JWT", link: "/docs/Backend/Java/Frame/SpringSecurity/v6/JWT/index.md" },
+              { text: "Spring Security 6 · OAuth2", link: "/docs/Backend/Java/Frame/SpringSecurity/v6/OAuth2/index.md" },
+              { text: "Spring Security 5.x（仅存量）", link: "/docs/Backend/Java/Frame/SpringSecurity/v5/index.md" },
+            ],
+          },
           { text: "Spring Cloud", link: "/docs/Backend/Java/Frame/SpringCloud/index.md" },
           { text: "MyBatis", link: "/docs/Backend/Java/Frame/MyBatis/index.md" },
           { text: "MyBatis-Plus", link: "/docs/Backend/Java/Frame/MyBatisPlus/index.md" },
@@ -185,6 +198,24 @@ export const Java = [
         ],
       },
       { text: "其他", link: "/docs/Backend/Java/Others/index.md" },
+    ],
+  },
+];
+export const Auth = [
+  {
+    text: "认证与授权",
+    link: "/docs/Backend/Auth/index.md",
+    items: [
+      { text: "认证与授权概述", link: "/docs/Backend/Auth/index.md" },
+      { text: "会话与 Cookie", link: "/docs/Backend/Auth/Session/index.md" },
+      { text: "JWT 深入", link: "/docs/Backend/Auth/Jwt/index.md" },
+      { text: "OAuth 2.1 与 OIDC", link: "/docs/Backend/Auth/Oauth2/index.md" },
+      { text: "单点登录（SSO）", link: "/docs/Backend/Auth/Sso/index.md" },
+      { text: "权限模型", link: "/docs/Backend/Auth/Authorization/index.md" },
+      { text: "服务端落地", link: "/docs/Backend/Auth/Implementation/index.md" },
+      { text: "安全最佳实践", link: "/docs/Backend/Auth/Security/index.md" },
+      { text: "版本与兼容矩阵", link: "/docs/Backend/Auth/Version/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/Auth/FAQ/index.md" },
     ],
   },
 ];

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">单点登录（SSO）架构与协议选择</text>
+
+  <rect x="340" y="60" width="220" height="80" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="450" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">身份提供方（IdP）</text>
+  <text x="450" y="112" text-anchor="middle" font-size="10" fill="#5b21b6">统一登录、签发断言/令牌</text>
+  <text x="450" y="132" text-anchor="middle" font-size="10" fill="#6b7280">OIDC / SAML / CAS</text>
+
+  <path d="M 400 142 V 176" stroke="#8b5cf6" stroke-width="2" fill="none" marker-end="url(#s1)"/>
+  <path d="M 450 142 V 176" stroke="#8b5cf6" stroke-width="2" fill="none" marker-end="url(#s1)"/>
+  <path d="M 500 142 V 176" stroke="#8b5cf6" stroke-width="2" fill="none" marker-end="url(#s1)"/>
+
+  <rect x="60" y="180" width="240" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="180" y="208" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">业务系统 A（SP）</text>
+  <text x="180" y="232" text-anchor="middle" font-size="10" fill="#3730a3">未登录 → 跳转 IdP</text>
+  <text x="180" y="252" text-anchor="middle" font-size="10" fill="#3730a3">校验断言 → 建立本地会话</text>
+
+  <rect x="330" y="180" width="240" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="208" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">业务系统 B（SP）</text>
+  <text x="450" y="232" text-anchor="middle" font-size="10" fill="#065f46">同样跳转 IdP</text>
+  <text x="450" y="252" text-anchor="middle" font-size="10" fill="#065f46">IdP 已有会话 → 免登录</text>
+
+  <rect x="600" y="180" width="240" height="90" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="720" y="208" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">业务系统 C（SP）</text>
+  <text x="720" y="232" text-anchor="middle" font-size="10" fill="#92400e">统一退出时同步登出</text>
+  <text x="720" y="252" text-anchor="middle" font-size="10" fill="#92400e">单点登出（SLO）需逐系统通知</text>
+
+  <rect x="30" y="292" width="840" height="120" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="318" font-size="13" font-weight="bold" fill="#1f2937">协议选择</text>
+  <text x="50" y="344" font-size="11" fill="#374151">OIDC：基于 OAuth 2.1 + JWT，移动端与前后端分离项目首选，生态最好。</text>
+  <text x="50" y="368" font-size="11" fill="#374151">SAML 2.0：企业级（对接 AD/Okta 等）最常见，XML 断言较重，适合 Web 单点登录。</text>
+  <text x="50" y="392" font-size="11" fill="#374151">CAS：轻量、校园/企业内部常见，**属存量方案**；新项目建议优先 OIDC。</text>
+  <text x="50" y="412" font-size="10" fill="#6b7280">无论用哪种协议，都要处理：会话超时、单点登出、账号禁用同步、跨域 Cookie（SameSite）限制。</text>
+</svg>

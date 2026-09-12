@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">认证授权版本与兼容矩阵（2026-09 核对）</text>
+
+  <rect x="30" y="58" width="270" height="170" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">OAuth / OIDC</text>
+  <text x="52" y="112" font-size="11" fill="#3730a3">OAuth 2.1：仍在 IETF 草案阶段（draft-ietf-oauth-v2-1）</text>
+  <text x="52" y="134" font-size="11" fill="#3730a3">OAuth 2.0：RFC 6749 / 6750（基础规范）</text>
+  <text x="52" y="156" font-size="11" fill="#3730a3">安全最佳实践：RFC 9700</text>
+  <text x="52" y="182" font-size="10" fill="#6b7280">PKCE：RFC 7636；JWT 访问令牌：RFC 9068</text>
+  <text x="52" y="204" font-size="10" fill="#6b7280">隐式模式与密码模式：**仅存量**，新项目不要使用</text>
+
+  <rect x="315" y="58" width="270" height="170" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">JWT / 签名</text>
+  <text x="337" y="112" font-size="11" fill="#065f46">规范：RFC 7519（JWT）、JWS/JWE 系列</text>
+  <text x="337" y="134" font-size="11" fill="#065f46">推荐算法：RS256 / ES256（非对称，便于轮换）</text>
+  <text x="337" y="156" font-size="11" fill="#065f46">密钥发布：JWKS 端点 + kid 轮换</text>
+  <text x="337" y="182" font-size="10" fill="#6b7280">HS256 仅适合单服务内部使用</text>
+  <text x="337" y="204" font-size="10" fill="#6b7280">alg=none 属历史漏洞，必须屏蔽</text>
+
+  <rect x="600" y="58" width="270" height="170" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="735" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">Java 生态</text>
+  <text x="622" y="112" font-size="11" fill="#92400e">Spring Security 7.1.x：当前主线（配 Spring Boot 4.x）</text>
+  <text x="622" y="134" font-size="11" fill="#92400e">Spring Security 6.x：上一代（配 Spring Boot 3.x）</text>
+  <text x="622" y="156" font-size="11" fill="#92400e">Spring Security 5.x：仅存量（配 Spring Boot 2.x）</text>
+  <text x="622" y="182" font-size="10" fill="#6b7280">升级需同步 Spring Boot 与 Jakarta 命名空间</text>
+  <text x="622" y="204" font-size="10" fill="#6b7280">参考本库 Spring Security 版本目录</text>
+
+  <rect x="30" y="248" width="840" height="120" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="274" font-size="13" font-weight="bold" fill="#1f2937">迁移与升级的通用步骤</text>
+  <text x="50" y="300" font-size="11" fill="#374151">① 明确目标：是"修安全债"（去掉废弃模式）还是"换框架版本"（对齐 Spring Boot 与 Security）。</text>
+  <text x="50" y="324" font-size="11" fill="#374151">② 先做协议侧改造：隐式/密码模式 → 授权码 + PKCE；对称密钥 → 非对称 + JWKS 轮换。</text>
+  <text x="50" y="348" font-size="11" fill="#374151">③ 再做框架侧升级：一次跨一个大版本，升级后回归登录、注销、刷新、越权拦截四条路径。</text>
+
+  <rect x="30" y="384" width="840" height="50" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="414" text-anchor="middle" font-size="11" fill="#374151">约定：旧协议与旧框架版本内容在本库保留并标注「仅存量」，不删除、不覆盖；升级前必须在预发环境完成鉴权回归。</text>
+</svg>

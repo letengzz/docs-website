@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">JWT 结构、签名与生命周期</text>
+
+  <rect x="30" y="60" width="840" height="96" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">三段式结构：header.payload.signature</text>
+  <rect x="55" y="100" width="240" height="42" rx="6" fill="#ffffff" stroke="#6366f1"/>
+  <text x="175" y="126" text-anchor="middle" font-size="11" fill="#3730a3">Header：alg、typ、kid</text>
+  <rect x="305" y="100" width="290" height="42" rx="6" fill="#ffffff" stroke="#6366f1"/>
+  <text x="450" y="126" text-anchor="middle" font-size="11" fill="#3730a3">Payload：iss/sub/aud/exp/iat + 业务声明</text>
+  <rect x="605" y="100" width="240" height="42" rx="6" fill="#ffffff" stroke="#6366f1"/>
+  <text x="725" y="126" text-anchor="middle" font-size="11" fill="#3730a3">Signature：对前两段的签名</text>
+
+  <rect x="30" y="176" width="405" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="232" y="202" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">签名算法怎么选</text>
+  <text x="52" y="228" font-size="11" fill="#065f46">HS256：对称密钥，实现最简单，适合单服务内部</text>
+  <text x="52" y="250" font-size="11" fill="#065f46">RS256 / ES256：非对称，验签方只持有公钥（推荐）</text>
+  <text x="52" y="272" font-size="11" fill="#065f46">多服务/多语言场景：用 JWKS 暴露公钥，支持密钥轮换</text>
+  <text x="52" y="294" font-size="11" fill="#065f46">算法必须白名单校验，禁止信任 header 中的 alg</text>
+  <text x="52" y="318" font-size="10" fill="#6b7280">历史漏洞：alg=none 与 HS/RS 混淆攻击都源于此</text>
+
+  <rect x="460" y="176" width="410" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="665" y="202" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">生命周期：JWT 不是 Session</text>
+  <text x="482" y="228" font-size="11" fill="#92400e">访问令牌：短期（5~30 分钟），用于调用接口</text>
+  <text x="482" y="250" font-size="11" fill="#92400e">刷新令牌：长期（天/周），仅用于换取新访问令牌</text>
+  <text x="482" y="272" font-size="11" fill="#92400e">吊销：JWT 无状态，需借助短过期 + 黑名单/版本号</text>
+  <text x="482" y="294" font-size="11" fill="#92400e">注销：清理刷新令牌 + 记录访问令牌版本（jti/ver）</text>
+  <text x="482" y="318" font-size="10" fill="#6b7280">不要用 JWT 存敏感信息：payload 只是 Base64 编码，可被解码</text>
+
+  <rect x="30" y="342" width="840" height="90" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="368" font-size="13" font-weight="bold" fill="#1f2937">JWT 使用清单</text>
+  <text x="50" y="392" font-size="11" fill="#374151">必做：校验 exp/nbf/iss/aud、算法白名单、密钥轮换（kid）、令牌大小控制、传输仅 HTTPS。</text>
+  <text x="50" y="416" font-size="11" fill="#374151">禁止：把 JWT 当会话存储、存放手机号/身份证等敏感字段、把过期时间设成数天、在 URL 中传递令牌。</text>
+
+  <defs/>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">OAuth 2.1 授权码 + PKCE 流程</text>
+
+  <rect x="30" y="60" width="180" height="80" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="120" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">用户 / 浏览器</text>
+  <text x="120" y="112" text-anchor="middle" font-size="10" fill="#3730a3">登录并同意授权</text>
+  <text x="120" y="132" text-anchor="middle" font-size="10" fill="#6b7280">只拿到一次性 code</text>
+
+  <rect x="250" y="60" width="180" height="80" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="340" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">客户端应用</text>
+  <text x="340" y="112" text-anchor="middle" font-size="10" fill="#065f46">生成 code_verifier</text>
+  <text x="340" y="132" text-anchor="middle" font-size="10" fill="#6b7280">保管 refresh_token</text>
+
+  <rect x="470" y="60" width="180" height="80" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="560" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">授权服务器</text>
+  <text x="560" y="112" text-anchor="middle" font-size="10" fill="#5b21b6">校验 code + PKCE</text>
+  <text x="560" y="132" text-anchor="middle" font-size="10" fill="#6b7280">签发 access/refresh</text>
+
+  <rect x="690" y="60" width="180" height="80" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="780" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">资源服务器</text>
+  <text x="780" y="112" text-anchor="middle" font-size="10" fill="#92400e">校验 access_token</text>
+  <text x="780" y="132" text-anchor="middle" font-size="10" fill="#6b7280">按 scope 判定权限</text>
+
+  <path d="M 212 100 H 248" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#o1)"/>
+  <path d="M 432 100 H 468" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#o2)"/>
+  <path d="M 652 100 H 688" stroke="#8b5cf6" stroke-width="2" fill="none" marker-end="url(#o3)"/>
+
+  <rect x="30" y="164" width="840" height="140" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="190" font-size="13" font-weight="bold" fill="#1f2937">授权模式现状（OAuth 2.1）</text>
+  <text x="50" y="216" font-size="11" fill="#374151">授权码 + PKCE：**唯一推荐**的交互式模式，浏览器与原生 App 都适用；PKCE 不再只用于公共客户端。</text>
+  <text x="50" y="240" font-size="11" fill="#374151">客户端凭据：服务间调用（无用户参与）的标准做法。</text>
+  <text x="50" y="264" font-size="11" fill="#92400e">隐式模式（Implicit）：已废弃，仅存量系统使用——令牌直接暴露在 URL 片段中。</text>
+  <text x="50" y="288" font-size="11" fill="#92400e">密码模式（Password）：已废弃，仅存量系统使用——第三方应用不应接触用户密码。</text>
+
+  <rect x="30" y="320" width="410" height="112" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="235" y="346" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">OIDC：在 OAuth 之上加身份</text>
+  <text x="52" y="372" font-size="11" fill="#065f46">OAuth 2.1 解决"授权访问"，不负责"用户是谁"</text>
+  <text x="52" y="394" font-size="11" fill="#065f46">OIDC 增加 id_token（JWT）与 UserInfo 接口</text>
+  <text x="52" y="416" font-size="10" fill="#6b7280">需要"用微信/Google 登录"时，用的是 OIDC 而不是裸 OAuth</text>
+
+  <rect x="460" y="320" width="410" height="112" rx="12" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="665" y="346" text-anchor="middle" font-size="13" font-weight="bold" fill="#b91c1c">四个高频误区</text>
+  <text x="482" y="372" font-size="11" fill="#7f1d1d">① 把 access_token 当身份凭证直接信任（应校验并查用户）</text>
+  <text x="482" y="394" font-size="11" fill="#7f1d1d">② 前端保存 refresh_token（必须放在后端或安全存储）</text>
+  <text x="482" y="416" font-size="11" fill="#7f1d1d">③ 不做 redirect_uri 白名单校验 ④ 忘记校验 state / nonce</text>
+
+  <defs>
+    <marker id="o1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="o2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="o3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+</svg>
