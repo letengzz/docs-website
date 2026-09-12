@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">一致性模型与事务边界设计</text>
+
+  <!-- ACID -->
+  <rect x="30" y="60" width="250" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="155" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">单库 ACID</text>
+  <text x="50" y="112" font-size="11" fill="#3730a3">A 原子性：全成功或全回滚</text>
+  <text x="50" y="134" font-size="11" fill="#3730a3">C 一致性：约束不被破坏</text>
+  <text x="50" y="156" font-size="11" fill="#3730a3">I 隔离性：并发互不干扰</text>
+  <text x="50" y="178" font-size="11" fill="#3730a3">D 持久性：提交后不丢</text>
+  <text x="50" y="200" font-size="10" fill="#6b7280">由数据库保证，跨库即失效</text>
+
+  <!-- CAP -->
+  <rect x="300" y="60" width="270" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="435" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">CAP 取舍</text>
+  <text x="320" y="112" font-size="11" fill="#92400e">C 一致性：读到最新已提交数据</text>
+  <text x="320" y="134" font-size="11" fill="#92400e">A 可用性：请求总有响应</text>
+  <text x="320" y="156" font-size="11" fill="#92400e">P 分区容错：网络断开仍可运行</text>
+  <text x="320" y="180" font-size="11" fill="#92400e">P 必然存在 → 在 C 与 A 之间取舍</text>
+  <text x="320" y="200" font-size="10" fill="#6b7280">分布式事务本质是「用可用性换一致性」</text>
+
+  <!-- BASE -->
+  <rect x="590" y="60" width="260" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="720" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">BASE 与最终一致</text>
+  <text x="610" y="112" font-size="11" fill="#065f46">BA 基本可用：允许降级响应</text>
+  <text x="610" y="134" font-size="11" fill="#065f46">S 软状态：允许中间态存在</text>
+  <text x="610" y="156" font-size="11" fill="#065f46">E 最终一致：一段时间后收敛</text>
+  <text x="610" y="180" font-size="11" fill="#065f46">柔性事务的理论基础</text>
+  <text x="610" y="200" font-size="10" fill="#6b7280">代价：中间态要能被业务接受</text>
+
+  <!-- 设计步骤 -->
+  <rect x="30" y="232" width="820" height="196" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="258" font-size="14" font-weight="bold" fill="#1f2937">事务边界设计四步法</text>
+  <text x="50" y="286" font-size="11" fill="#374151">① 尽量合并：同一个业务聚合（订单 + 订单项）放进同一个库，用本地事务解决，不引入分布式事务。</text>
+  <text x="50" y="312" font-size="11" fill="#374151">② 识别强弱：必须强一致的（扣款、库存预占）与可以最终一致的（通知、积分、数仓）分开处理。</text>
+  <text x="50" y="338" font-size="11" fill="#374151">③ 保证幂等：所有消费、补偿、重试都必须幂等（唯一键去重 / 状态机 / 乐观锁），详见消息队列消费幂等。</text>
+  <text x="50" y="364" font-size="11" fill="#374151">④ 兜底对账：再好的方案也会有极端情况，必须有日终对账与自动修复任务，差异可发现、可追溯、可修复。</text>
+  <rect x="50" y="382" width="780" height="34" rx="8" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="440" y="404" text-anchor="middle" font-size="11" fill="#4b5563">判定标准：中间态最长可接受多久？业务能否容忍重复？——答案决定选 TCC 还是消息表</text>
+</svg>

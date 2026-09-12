@@ -401,4 +401,5 @@ curl http://localhost:8080/api/stock/1
 
 - 本专题各章节：[服务发现](../Discovery/index.md)、[服务调用](../OpenFeign/index.md)、[网关](../Gateway/index.md)、[熔断](../CircuitBreaker/index.md)
 - 微服务专题实战：[订单库存账户微服务](../../Microservices/Practice/index.md)
+- 分布式事务落地：[Seata 事务框架](../../Microservices/DistributedTransaction/Seata/index.md)、[实战：订单-库存-账户一致性](../../Microservices/DistributedTransaction/Practice/index.md)
 - Spring Initializr：https://start.spring.io

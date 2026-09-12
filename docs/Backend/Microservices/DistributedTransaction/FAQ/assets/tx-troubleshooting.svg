@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="460" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">分布式事务问题排查地图</text>
+
+  <rect x="330" y="56" width="220" height="50" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="440" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">先确定问题类型</text>
+  <text x="440" y="98" text-anchor="middle" font-size="10" fill="#6b7280">数据不一致？事务卡住？性能下降？</text>
+
+  <path d="M 440 108 V 132" stroke="#9ca3af" stroke-width="2" fill="none"/>
+  <line x1="110" y1="132" x2="770" y2="132" stroke="#9ca3af" stroke-width="2"/>
+
+  <path d="M 110 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fq)"/>
+  <rect x="30" y="160" width="180" height="130" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="120" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">数据不一致</text>
+  <text x="120" y="208" text-anchor="middle" font-size="10" fill="#7f1d1d">补偿未执行 / 未幂等</text>
+  <text x="120" y="226" text-anchor="middle" font-size="10" fill="#7f1d1d">消息丢失或重复</text>
+  <text x="120" y="244" text-anchor="middle" font-size="10" fill="#7f1d1d">中间态被当成终态</text>
+  <text x="120" y="268" text-anchor="middle" font-size="10" fill="#6b7280">→ 查事务状态表 + 对账</text>
+
+  <path d="M 330 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fq)"/>
+  <rect x="250" y="160" width="180" height="130" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="340" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">事务卡住</text>
+  <text x="340" y="208" text-anchor="middle" font-size="10" fill="#92400e">TC 不可用 / 分支未注册</text>
+  <text x="340" y="226" text-anchor="middle" font-size="10" fill="#92400e">PREPARED 事务堆积</text>
+  <text x="340" y="244" text-anchor="middle" font-size="10" fill="#92400e">网络分区、超时配置过小</text>
+  <text x="340" y="268" text-anchor="middle" font-size="10" fill="#6b7280">→ 查 TC 日志 + 全局事务表</text>
+
+  <path d="M 470 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fq)"/>
+  <rect x="470" y="160" width="180" height="130" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="560" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">性能下降</text>
+  <text x="560" y="208" text-anchor="middle" font-size="10" fill="#1e3a8a">锁等待 / 长事务</text>
+  <text x="560" y="226" text-anchor="middle" font-size="10" fill="#1e3a8a">全局锁冲突</text>
+  <text x="560" y="244" text-anchor="middle" font-size="10" fill="#1e3a8a">事务内远程调用过多</text>
+  <text x="560" y="268" text-anchor="middle" font-size="10" fill="#6b7280">→ 看 SQL 慢日志 + 锁等待</text>
+
+  <path d="M 700 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fq)"/>
+  <rect x="670" y="160" width="180" height="130" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="760" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">补偿异常</text>
+  <text x="760" y="208" text-anchor="middle" font-size="10" fill="#5b21b6">空回滚、悬挂</text>
+  <text x="760" y="226" text-anchor="middle" font-size="10" fill="#5b21b6">Confirm 一直失败</text>
+  <text x="760" y="244" text-anchor="middle" font-size="10" fill="#5b21b6">补偿顺序错误</text>
+  <text x="760" y="268" text-anchor="middle" font-size="10" fill="#6b7280">→ 查事务控制表状态机</text>
+
+  <rect x="30" y="316" width="820" height="124" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="342" font-size="13" font-weight="bold" fill="#1f2937">通用四步法</text>
+  <text x="50" y="368" font-size="11" fill="#374151">1. 定位范围：单笔业务 / 单服务 / 全部业务——范围决定是代码缺陷还是组件故障。</text>
+  <text x="50" y="392" font-size="11" fill="#374151">2. 查状态：全局事务表、分支事务表、业务幂等表、本地消息表，确认每一步处于什么状态。</text>
+  <text x="50" y="416" font-size="11" fill="#374151">3. 查日志：TC 日志（全局事务超时/回滚）、RM 日志（分支注册与补偿执行）、应用日志（重试与异常）。</text>
+  <text x="50" y="438" font-size="11" fill="#374151">4. 先止血再复盘：优先保证数据一致（对账修复），再定位根因并补测试用例。</text>
+
+  <defs>
+    <marker id="fq" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

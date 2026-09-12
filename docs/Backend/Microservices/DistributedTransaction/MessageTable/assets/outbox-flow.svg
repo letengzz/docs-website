@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">本地消息表（Outbox）与事务消息流程</text>
+
+  <!-- 本地事务 -->
+  <rect x="30" y="60" width="380" height="250" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="220" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">订单服务：一个本地事务完成两件事</text>
+  <rect x="55" y="104" width="150" height="58" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="130" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">orders 表</text>
+  <text x="130" y="148" text-anchor="middle" font-size="10" fill="#4b5563">INSERT 订单</text>
+  <rect x="235" y="104" width="150" height="58" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="310" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">msg_outbox 表</text>
+  <text x="310" y="148" text-anchor="middle" font-size="10" fill="#4b5563">status = PENDING</text>
+  <rect x="55" y="176" width="330" height="40" rx="8" fill="#e0e7ff" stroke="#a5b4fc"/>
+  <text x="220" y="202" text-anchor="middle" font-size="11" fill="#3730a3">BEGIN; 写业务表; 写消息表; COMMIT;</text>
+  <rect x="55" y="230" width="330" height="66" rx="8" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="220" y="254" text-anchor="middle" font-size="11" fill="#374151">投递线程 / 定时任务扫描 PENDING</text>
+  <text x="220" y="274" text-anchor="middle" font-size="11" fill="#374151">发送成功 → status = SENT（失败则重试）</text>
+  <text x="220" y="291" text-anchor="middle" font-size="10" fill="#6b7280">投递至少一次，重复由消费端幂等吸收</text>
+
+  <path d="M 412 200 H 462" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#obA)"/>
+
+  <!-- MQ -->
+  <rect x="464" y="60" width="180" height="250" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="554" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">消息中间件</text>
+  <rect x="484" y="106" width="140" height="56" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="554" y="130" text-anchor="middle" font-size="11" fill="#065f46">Kafka Topic</text>
+  <text x="554" y="150" text-anchor="middle" font-size="10" fill="#374151">order-created</text>
+  <rect x="484" y="176" width="140" height="56" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="554" y="200" text-anchor="middle" font-size="11" fill="#065f46">RocketMQ</text>
+  <text x="554" y="220" text-anchor="middle" font-size="10" fill="#374151">半消息 + 回查</text>
+  <text x="554" y="262" text-anchor="middle" font-size="10" fill="#6b7280">保证消息必达、</text>
+  <text x="554" y="280" text-anchor="middle" font-size="10" fill="#6b7280">允许重复投递</text>
+  <text x="554" y="300" text-anchor="middle" font-size="10" fill="#6b7280">顺序性按 key 分区</text>
+
+  <path d="M 646 200 H 694" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#obB)"/>
+
+  <!-- 下游 -->
+  <rect x="696" y="60" width="176" height="250" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="784" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">下游服务</text>
+  <rect x="712" y="106" width="144" height="70" rx="8" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="784" y="130" text-anchor="middle" font-size="11" fill="#92400e">消费 + 幂等</text>
+  <text x="784" y="150" text-anchor="middle" font-size="10" fill="#6b7280">唯一键去重表</text>
+  <text x="784" y="168" text-anchor="middle" font-size="10" fill="#6b7280">处理成功再提交位移</text>
+  <rect x="712" y="190" width="144" height="70" rx="8" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="784" y="214" text-anchor="middle" font-size="11" fill="#92400e">失败处理</text>
+  <text x="784" y="234" text-anchor="middle" font-size="10" fill="#6b7280">重试 → 死信队列</text>
+  <text x="784" y="252" text-anchor="middle" font-size="10" fill="#6b7280">人工介入后重投</text>
+  <text x="784" y="290" text-anchor="middle" font-size="10" fill="#6b7280">最终一致，不阻塞主链路</text>
+
+  <!-- 对比 -->
+  <rect x="30" y="330" width="842" height="112" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="356" font-size="13" font-weight="bold" fill="#1f2937">三种「基于消息」的方案对比</text>
+  <text x="50" y="382" font-size="11" fill="#374151">本地消息表：自己建表 + 定时投递，最通用，任何 MQ 都能用；需要处理投递线程与表的清理。</text>
+  <text x="50" y="404" font-size="11" fill="#374151">事务消息：RocketMQ 原生支持半消息与事务回查，无需自己建表；绑定 RocketMQ，回查接口必须幂等。</text>
+  <text x="50" y="426" font-size="11" fill="#374151">最大努力通知：只保证「通知到位」不保证「业务成功」，由接收方主动查询对账，适合对外通知场景。</text>
+
+  <defs>
+    <marker id="obA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="obB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

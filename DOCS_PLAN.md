@@ -78,7 +78,7 @@
 | 43 | Tools | 包管理器深入 ✅ | npm/pnpm/yarn 对比、pnpm 原理、monorepo、发布流程、常见问题 |
 | 44 | Backend | Spring Cloud ✅ | 版本与 Train 存档、环境搭建、注册中心、服务调用、网关、配置中心、熔断限流、链路追踪、消息驱动、实战案例、常见问题 |
 | 45 | Backend | Kafka 深入 ✅ | 架构、生产者、消费者、分区与副本、可靠性、集群、实战、常见问题 |
-| 46 | Backend | 分布式事务 | 2PC、TCC、SAGA、Seata、本地消息表、实践对比、常见问题 |
+| 46 | Backend | 分布式事务 ✅ | 2PC、TCC、SAGA、Seata、本地消息表、实践对比、常见问题 |
 | 47 | AI | 大模型应用开发 | API 调用、Function Calling、RAG、Agent 框架、成本与限流、实战、常见问题 |
 | 48 | AI | RAG 检索增强 | Embedding、向量库、Chunking、检索优化、评估、实战案例、常见问题 |
 | 49 | AI | 本地模型部署 | Ollama、量化、API 接入、GPU/内存规划、实战案例、常见问题 |
@@ -184,6 +184,8 @@
 - [x] Backend 存量补全：Spring Cloud 专题已建设（第 44 天，13 个页面：索引 + 概述 + 版本存档 + 环境 + 8 个组件/收尾页 + 当前版本页），按 Release Train 组织并保留 EOL 存档；补充 Microservices（索引/注册/网关/负载均衡/熔断/追踪）、Spring Boot 概述、Spring、Spring Cloud 旧入口、MessageQueue 交叉链接与版本联动提示
 - [x] Backend 存量补全：Kafka 深入专题已建设（第 45 天，10 个页面：概述 + 版本演进与迁移 + 架构与存储 + 分区与副本 + 生产者 + 消费者 + 可靠性/Exactly-Once + 集群运维 + 实战 + FAQ），按「既有主题内加深、不新建重复章节」原则挂在 MessageQueue/Kafka 下并保留原「Kafka 入门」内容；补充 MessageQueue（索引/概览/可靠投递/集群/FAQ/对比/幂等）与 Spring Cloud Stream 交叉链接、版本状态与命令修正（`kafka-metadata-quorum.sh`）
 - [x] 大版本状态标注巡检：Kafka 按「4.x KRaft 主线 + 3.9.x ZooKeeper 仅存量集群使用」在页面内标注状态并单列迁移页，旧配置说明不删除、不覆盖；对照 Spring 5/6、Vue2/Vue3 的版本目录策略形成统一约定
+- [x] Backend 存量补全：分布式事务专题已建设（第 46 天，10 个页面：概述 + 一致性基础 + 2PC/XA + TCC + SAGA + 本地消息表与事务消息 + Seata 2.x + Seata 1.x 存档 + 实战 + FAQ），按「既有主题内加深、不新建重复章节」原则挂在 Microservices/DistributedTransaction 下并保留原单页内容；补充 Microservices（索引/概览/FAQ/实战）、Spring Cloud（索引/实战）、MessageQueue（幂等/可靠投递）与 DB（MySQL 事务、锁与事务）交叉链接
+- [x] 存量版本核对：Seata 版本信息更新为 2.7.0（2026-09-06 发布）并补充 Spring Cloud Alibaba 2021.0.6.0 / 2022.0.0.0 / 2023.0.1.0 组件矩阵（含 Nacos、RocketMQ、Seata 版本对照）；Seata 1.x（1.8.0 为最后版本）按版本目录存档并标注「仅存量项目使用」，同时补充 Maven 坐标差异（io.seata → 2.1.0 起 org.apache.seata）与 MySQL XA 官方限制
 
 ## 节奏建议
 

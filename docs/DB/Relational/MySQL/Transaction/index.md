@@ -134,5 +134,6 @@ SELECT * FROM account WHERE id = 1 FOR UPDATE;
 ## 相关专题
 
 - [分布式事务](../../../../Backend/Microservices/DistributedTransaction/index.md)：单库事务与跨服务事务的边界，2PC/TCC/SAGA/Seata 方案
+- [2PC 与 XA](../../../../Backend/Microservices/DistributedTransaction/TwoPhaseCommit/index.md)：MySQL XA 语句、PREPARED 事务与 InnoDB 限制
 - [消息队列消费幂等](../../../../Backend/MessageQueue/Idempotency/index.md)：本地消息表方案中事务与消息投递的一致性
 - [SQL 优化 · 锁与事务](../../SQLOptimization/LockTransaction/index.md)：锁等待、死锁与长事务对查询的影响

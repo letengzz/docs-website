@@ -117,6 +117,8 @@
 - [CI/CD 专题](../../../Tools/CICD/index.md)：微服务的构建、测试、部署与回滚自动化
 - [自动部署与回滚](../../../Tools/CICD/DeployRollback/index.md)：多服务场景下的滚动/蓝绿/金丝雀发布
 - [监控告警专题](../../../Ops/Monitoring/index.md)：微服务 RED/USE 指标、告警与日志监控
+- [分布式事务常见问题](../DistributedTransaction/FAQ/index.md)：数据不一致、补偿失败、全局锁冲突等高频问题排查
+- [分布式事务：一致性基础](../DistributedTransaction/Consistency/index.md)：CAP/BASE、事务边界划分与幂等设计
 
 ## 参考资料
 

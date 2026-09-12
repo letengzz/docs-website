@@ -43,7 +43,7 @@ Spring Cloud 是「**微服务共性问题的一揽子解决方案**」：注册
 
 ## 专题衔接
 
-本专题讲 **Spring Cloud 组件的具体用法**；微服务架构的方法论（拆分原则、DDD、部署与治理）见 [微服务专题](../Microservices/index.md)。版本兼容性以官方 Release Train 对照为准，涉及 Spring Cloud Alibaba（Nacos/Sentinel/Seata）时按官方版本映射核对。
+本专题讲 **Spring Cloud 组件的具体用法**；微服务架构的方法论（拆分原则、DDD、部署与治理）见 [微服务专题](../Microservices/index.md)。版本兼容性以官方 Release Train 对照为准，涉及 Spring Cloud Alibaba（Nacos/Sentinel/Seata）时按官方版本映射核对：SCA 2021.0.6.0 对应 Seata 1.6.1、2022.0.0.0 对应 1.7.0、2023.0.1.0 对应 2.0.0，Seata 的接入与四种模式见 [分布式事务专题：Seata](../Microservices/DistributedTransaction/Seata/index.md)。
 
 ## 参考资料
 

@@ -151,3 +151,9 @@ WHERE TIMESTAMPDIFF(SECOND, trx_started, NOW()) > 60;
 - 死锁检测：https://dev.mysql.com/doc/refman/8.4/en/innodb-deadlock-detection.html
 - 事务隔离级别：https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-isolation-levels.html
 - sys.innodb_lock_waits：https://dev.mysql.com/doc/refman/8.4/en/sys-innodb-lock-waits.html
+
+## 相关专题
+
+- [分布式事务](../../../../Backend/Microservices/DistributedTransaction/index.md)：跨库/跨服务的锁与一致性取舍（2PC、TCC、SAGA、消息表）
+- [一致性基础与事务边界](../../../../Backend/Microservices/DistributedTransaction/Consistency/index.md)：长事务为什么是分布式事务的敌人
+- [2PC 与 XA](../../../../Backend/Microservices/DistributedTransaction/TwoPhaseCommit/index.md)：Prepare 阶段长期持锁的代价与 MySQL XA 限制

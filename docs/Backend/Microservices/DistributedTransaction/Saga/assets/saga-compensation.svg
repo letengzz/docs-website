@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">SAGA：正向子事务序列与反向补偿</text>
+
+  <!-- 正向 -->
+  <text x="60" y="76" font-size="13" font-weight="bold" fill="#047857">正向流程（本地事务依次提交）</text>
+  <rect x="60" y="90" width="180" height="64" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="150" y="114" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">T1 创建订单</text>
+  <text x="150" y="136" text-anchor="middle" font-size="10" fill="#374151">订单库</text>
+  <rect x="290" y="90" width="180" height="64" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="380" y="114" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">T2 扣减库存</text>
+  <text x="380" y="136" text-anchor="middle" font-size="10" fill="#374151">库存库</text>
+  <rect x="520" y="90" width="180" height="64" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="610" y="114" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">T3 扣减余额</text>
+  <text x="610" y="136" text-anchor="middle" font-size="10" fill="#374151">账户库</text>
+  <rect x="750" y="90" width="110" height="64" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="805" y="114" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">T3 失败</text>
+  <text x="805" y="136" text-anchor="middle" font-size="10" fill="#7f1d1d">余额不足</text>
+
+  <path d="M 242 122 H 288" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#sgA)"/>
+  <path d="M 472 122 H 518" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#sgA)"/>
+  <path d="M 702 122 H 748" stroke="#ef4444" stroke-width="2.5" fill="none" marker-end="url(#sgB)"/>
+
+  <!-- 补偿 -->
+  <text x="60" y="204" font-size="13" font-weight="bold" fill="#b91c1c">反向补偿（按相反顺序执行）</text>
+  <rect x="60" y="218" width="180" height="64" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="150" y="242" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">C2 归还库存</text>
+  <text x="150" y="264" text-anchor="middle" font-size="10" fill="#7f1d1d">幂等执行</text>
+  <rect x="290" y="218" width="180" height="64" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="380" y="242" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">C1 取消订单</text>
+  <text x="380" y="264" text-anchor="middle" font-size="10" fill="#7f1d1d">状态置为 CANCELLED</text>
+  <rect x="520" y="218" width="340" height="64" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="690" y="242" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">T3 未成功，无需补偿</text>
+  <text x="690" y="264" text-anchor="middle" font-size="10" fill="#92400e">补偿只针对「已提交」的子事务</text>
+
+  <path d="M 242 250 H 288" stroke="#ef4444" stroke-width="2.5" fill="none" marker-end="url(#sgB)"/>
+
+  <!-- 编排 vs 协同 -->
+  <rect x="60" y="306" width="380" height="132" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="250" y="332" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">编排（Orchestration）</text>
+  <text x="80" y="358" font-size="11" fill="#3730a3">中心协调器按流程依次调用各服务</text>
+  <text x="80" y="380" font-size="11" fill="#3730a3">流程集中可见、易于排查与可视化</text>
+  <text x="80" y="402" font-size="11" fill="#3730a3">协调器是关键组件，需要高可用</text>
+  <text x="80" y="424" font-size="10" fill="#6b7280">Seata Saga 状态机、Temporal、Camunda</text>
+
+  <rect x="460" y="306" width="380" height="132" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="650" y="332" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">协同（Choreography）</text>
+  <text x="480" y="358" font-size="11" fill="#5b21b6">服务之间通过事件互相触发</text>
+  <text x="480" y="380" font-size="11" fill="#5b21b6">无中心节点、耦合低、扩展自然</text>
+  <text x="480" y="402" font-size="11" fill="#5b21b6">全局流程分散，排障与追踪难度大</text>
+  <text x="480" y="424" font-size="10" fill="#6b7280">Kafka + 事件驱动 + 补偿消费者</text>
+
+  <defs>
+    <marker id="sgA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="sgB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#ef4444"/>
+    </marker>
+  </defs>
+</svg>

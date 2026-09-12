@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">TCC：Try / Confirm / Cancel 三阶段与分支状态</text>
+
+  <!-- 主流程 -->
+  <rect x="40" y="60" width="250" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">Try：预留资源</text>
+  <text x="60" y="112" font-size="11" fill="#3730a3">冻结余额 100 元 / 预占库存 2 件</text>
+  <text x="60" y="134" font-size="11" fill="#3730a3">只做「资源占用」，不产生终态</text>
+  <text x="60" y="156" font-size="11" fill="#3730a3">写事务控制表：status = TRYING</text>
+  <text x="60" y="174" font-size="10" fill="#6b7280">必须幂等：同一事务多次 Try 只生效一次</text>
+
+  <rect x="325" y="60" width="250" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">Confirm：确认提交</text>
+  <text x="345" y="112" font-size="11" fill="#065f46">把冻结资源转为真实扣减</text>
+  <text x="345" y="134" font-size="11" fill="#065f46">status = CONFIRMED，清理控制记录</text>
+  <text x="345" y="156" font-size="11" fill="#065f46">由 TM 重试直到成功（不设放弃）</text>
+  <text x="345" y="174" font-size="10" fill="#6b7280">Confirm 失败不回滚，只能重试 + 告警</text>
+
+  <rect x="610" y="60" width="250" height="120" rx="12" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="735" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#b91c1c">Cancel：释放预留</text>
+  <text x="630" y="112" font-size="11" fill="#7f1d1d">解冻余额、归还预占库存</text>
+  <text x="630" y="134" font-size="11" fill="#7f1d1d">status = CANCELLED</text>
+  <text x="630" y="156" font-size="11" fill="#7f1d1d">必须处理「空回滚」与「悬挂」</text>
+  <text x="630" y="174" font-size="10" fill="#6b7280">否则会出现资金凭空增加或资源永久占用</text>
+
+  <path d="M 292 120 H 322" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#tccA)"/>
+  <path d="M 578 120 H 606" stroke="#ef4444" stroke-width="2.5" fill="none" marker-end="url(#tccB)"/>
+
+  <!-- 三大坑 -->
+  <rect x="40" y="204" width="820" height="132" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="450" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">TCC 三大经典坑（面试与线上事故高发区）</text>
+  <text x="60" y="258" font-size="11" fill="#92400e">① 空回滚：Try 未执行（如网络超时未到达），Cancel 先到 → 不能直接扣减/报错，应插入一条「空回滚标记」并直接返回成功。</text>
+  <text x="60" y="284" font-size="11" fill="#92400e">② 悬挂：Cancel 先执行完成，延迟的 Try 后到达 → Try 必须先检查事务控制表，发现已 Cancel 则拒绝执行。</text>
+  <text x="60" y="310" font-size="11" fill="#92400e">③ 幂等：Confirm / Cancel 会被 TM 重试 → 用事务 ID + 状态机判断，只允许 TRYING → CONFIRMED / CANCELLED 单向流转。</text>
+
+  <!-- 结论 -->
+  <rect x="40" y="352" width="820" height="86" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="60" y="378" font-size="13" font-weight="bold" fill="#1f2937">适用判断</text>
+  <text x="60" y="402" font-size="11" fill="#374151">适合：资金、库存等**可预留资源**且对一致性要求高的场景（并发量高、不能长期持锁）。</text>
+  <text x="60" y="426" font-size="11" fill="#374151">不适合：无法预留资源的操作（发短信、调用第三方）、简单的单库事务、团队没有幂等与状态机设计经验时。</text>
+
+  <defs>
+    <marker id="tccA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="tccB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#ef4444"/>
+    </marker>
+  </defs>
+</svg>

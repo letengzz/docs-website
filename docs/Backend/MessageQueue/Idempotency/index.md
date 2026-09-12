@@ -123,6 +123,7 @@ Kafka 重复消费通常发生在重平衡或“处理成功但提交失败”�
 
 ::: tip 补充
 如果希望连「重复写入下游 Topic」都避免，可用事务把「消费位移提交」和「下游写入」绑定成原子操作（`sendOffsetsToTransaction` + `isolation.level=read_committed`），详见 [Kafka 可靠性与 Exactly-Once](../Kafka/Reliability/index.md)。
+跨服务的强一致场景（如扣库存 + 扣余额）还可以用 TCC 或本地消息表组合解决，方案与对比见 [分布式事务专题](../../Microservices/DistributedTransaction/index.md) 与 [本地消息表与事务消息](../../Microservices/DistributedTransaction/MessageTable/index.md)。
 :::
 
 ```java

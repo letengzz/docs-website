@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">实战方案：订单-库存-账户的一致性设计</text>
+
+  <!-- 主链路 -->
+  <rect x="30" y="60" width="180" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="120" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">订单服务（TM）</text>
+  <text x="120" y="110" text-anchor="middle" font-size="10" fill="#3730a3">1. 创建订单（本地事务）</text>
+  <text x="120" y="132" text-anchor="middle" font-size="10" fill="#3730a3">2. 发起全局事务</text>
+  <text x="120" y="154" text-anchor="middle" font-size="10" fill="#3730a3">3. 写本地消息表（对账用）</text>
+  <text x="120" y="172" text-anchor="middle" font-size="10" fill="#6b7280">订单号 = 全局唯一业务键</text>
+
+  <path d="M 212 120 H 252" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#pra)"/>
+
+  <rect x="254" y="60" width="150" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="329" y="86" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">库存服务（RM）</text>
+  <text x="329" y="110" text-anchor="middle" font-size="10" fill="#065f46">Try：预占库存</text>
+  <text x="329" y="132" text-anchor="middle" font-size="10" fill="#065f46">Confirm：确认扣减</text>
+  <text x="329" y="154" text-anchor="middle" font-size="10" fill="#065f46">Cancel：释放预占</text>
+  <text x="329" y="172" text-anchor="middle" font-size="10" fill="#6b7280">事务控制表防悬挂</text>
+
+  <path d="M 406 120 H 446" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#grb)"/>
+
+  <rect x="448" y="60" width="150" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="523" y="86" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">账户服务（RM）</text>
+  <text x="523" y="110" text-anchor="middle" font-size="10" fill="#065f46">Try：冻结金额</text>
+  <text x="523" y="132" text-anchor="middle" font-size="10" fill="#065f46">Confirm：扣减冻结</text>
+  <text x="523" y="154" text-anchor="middle" font-size="10" fill="#065f46">Cancel：解冻金额</text>
+  <text x="523" y="172" text-anchor="middle" font-size="10" fill="#6b7280">余额不足即 Try 失败</text>
+
+  <path d="M 600 120 H 640" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#grb)"/>
+
+  <rect x="642" y="60" width="228" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="756" y="86" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">Seata Server（TC）</text>
+  <text x="756" y="110" text-anchor="middle" font-size="10" fill="#5b21b6">维护全局事务状态与分支注册</text>
+  <text x="756" y="132" text-anchor="middle" font-size="10" fill="#5b21b6">任一分支失败 → 通知所有分支 Cancel</text>
+  <text x="756" y="154" text-anchor="middle" font-size="10" fill="#5b21b6">全部成功 → 通知所有分支 Confirm</text>
+  <text x="756" y="172" text-anchor="middle" font-size="10" fill="#6b7280">事务会话建议存储到数据库</text>
+
+  <!-- 异步与对账 -->
+  <rect x="30" y="206" width="420" height="120" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="240" y="232" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">异步侧：通知、积分、数仓</text>
+  <text x="50" y="258" font-size="11" fill="#92400e">用本地消息表 + MQ 投递，不进入全局事务</text>
+  <text x="50" y="280" font-size="11" fill="#92400e">消费端幂等（业务键唯一索引）</text>
+  <text x="50" y="302" font-size="11" fill="#92400e">失败重试 → 死信 → 告警 → 人工重投</text>
+
+  <rect x="470" y="206" width="400" height="120" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="670" y="232" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">兜底侧：对账与修复</text>
+  <text x="490" y="258" font-size="11" fill="#1e3a8a">日终核对订单、库存、账户三方数据</text>
+  <text x="490" y="280" font-size="11" fill="#1e3a8a">差异写入差异表，自动补偿或人工处理</text>
+  <text x="490" y="302" font-size="11" fill="#1e3a8a">监控：全局事务成功率、重试次数、差异条数</text>
+
+  <!-- 故障演练 -->
+  <rect x="30" y="344" width="840" height="96" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="370" font-size="13" font-weight="bold" fill="#1f2937">必做故障演练</text>
+  <text x="50" y="394" font-size="11" fill="#374151">① 库存 Try 成功后账户 Try 失败 → 全局回滚，库存预占被释放，订单状态为已取消。</text>
+  <text x="50" y="416" font-size="11" fill="#374151">② Cancel 超时重试、Try 延迟到达（悬挂）、空回滚三种边界 → 数据仍一致且不重复扣减。</text>
+  <text x="50" y="438" font-size="11" fill="#374151">③ 停机 Seata Server 或断开一个 RM → 业务快速失败并留有可恢复的中间状态，不能静默丢数据。</text>
+
+  <defs>
+    <marker id="pra" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="grb" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

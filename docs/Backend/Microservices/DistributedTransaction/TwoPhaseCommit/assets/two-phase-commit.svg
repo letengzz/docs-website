@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">两阶段提交（2PC / XA）执行流程</text>
+
+  <!-- 协调者 -->
+  <rect x="350" y="56" width="200" height="56" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="450" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">协调者 / 事务管理器（TM）</text>
+  <text x="450" y="100" text-anchor="middle" font-size="10" fill="#6b7280">Seata TC 或应用侧事务管理器</text>
+
+  <!-- 参与者 -->
+  <rect x="60" y="160" width="200" height="80" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="160" y="186" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">参与者 1：订单库</text>
+  <text x="160" y="208" text-anchor="middle" font-size="10" fill="#374151">资源管理器（RM）</text>
+  <text x="160" y="226" text-anchor="middle" font-size="10" fill="#374151">XA START → 业务 SQL → XA END</text>
+
+  <rect x="350" y="160" width="200" height="80" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="186" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">参与者 2：库存库</text>
+  <text x="450" y="208" text-anchor="middle" font-size="10" fill="#374151">资源管理器（RM）</text>
+  <text x="450" y="226" text-anchor="middle" font-size="10" fill="#374151">XA PREPARE 后持有锁</text>
+
+  <rect x="640" y="160" width="200" height="80" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="740" y="186" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">参与者 3：账户库</text>
+  <text x="740" y="208" text-anchor="middle" font-size="10" fill="#374151">资源管理器（RM）</text>
+  <text x="740" y="226" text-anchor="middle" font-size="10" fill="#374151">写入 undo/redo 并等待决定</text>
+
+  <path d="M 380 112 L 200 158" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#p2a)"/>
+  <path d="M 450 112 V 158" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#p2a)"/>
+  <path d="M 520 112 L 700 158" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#p2a)"/>
+
+  <!-- 两阶段 -->
+  <rect x="30" y="272" width="400" height="160" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="230" y="298" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">第一阶段：Prepare（投票）</text>
+  <text x="50" y="324" font-size="11" fill="#3730a3">1. 协调者要求所有参与者准备提交</text>
+  <text x="50" y="346" font-size="11" fill="#3730a3">2. 每个参与者执行 SQL 并写入日志，锁定资源</text>
+  <text x="50" y="368" font-size="11" fill="#3730a3">3. 参与者回复 Yes（可提交）或 No（失败）</text>
+  <text x="50" y="392" font-size="11" fill="#3730a3">4. 此时数据尚未对其它事务可见</text>
+  <text x="50" y="416" font-size="10" fill="#6b7280">风险：任一参与者无响应，全体阻塞并持续持锁</text>
+
+  <rect x="470" y="272" width="400" height="160" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="670" y="298" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">第二阶段：Commit / Rollback</text>
+  <text x="490" y="324" font-size="11" fill="#065f46">全部 Yes → 发送 Commit，参与者提交并释放锁</text>
+  <text x="490" y="346" font-size="11" fill="#065f46">任一 No（或超时）→ 发送 Rollback，全体回滚</text>
+  <text x="490" y="368" font-size="11" fill="#065f46">参与者提交时崩溃：恢复后按日志继续完成</text>
+  <text x="490" y="392" font-size="11" fill="#065f46">协调者崩溃：参与者长期处于 PREPARED，需人工介入</text>
+  <text x="490" y="416" font-size="10" fill="#6b7280">MySQL 可用 XA RECOVER 查看处于 PREPARED 的事务</text>
+
+  <defs>
+    <marker id="p2a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+  </defs>
+</svg>

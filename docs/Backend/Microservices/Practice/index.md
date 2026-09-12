@@ -299,6 +299,7 @@ java -jar order-service.jar --server.port=8084
 3. 接入 [配置中心](../ConfigCenter/index.md)：把下单超时、限流阈值放到 Nacos 动态调整。
 4. 把下单事件发到 [消息队列](../../MessageQueue/index.md)，实现异步扣库存与消费幂等。
 5. 接入 [CI/CD 流水线](../../../Tools/CICD/index.md)：自动构建、测试、部署与回滚（见 [自动部署与回滚](../../../Tools/CICD/DeployRollback/index.md)）。
+6. 跨服务强一致场景接入 [分布式事务](../DistributedTransaction/index.md)：用 TCC 预占库存与余额，用 [本地消息表](../DistributedTransaction/MessageTable/index.md) 投递异步事件，并补一份 [对账任务](../DistributedTransaction/Practice/index.md)。
 
 ## 参考资料
 

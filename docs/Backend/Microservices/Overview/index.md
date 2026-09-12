@@ -127,6 +127,7 @@
 
 - [服务网格](../../../Ops/ContainerOrchestration/ServiceMesh/index.md)：用 Istio 统一微服务的流量治理、mTLS 与可观测性
 - [容器编排进阶](../../../Ops/ContainerOrchestration/index.md)：微服务在 K8s 上的打包、交付与多集群容灾
+- [分布式事务](../DistributedTransaction/index.md)：拆分之后跨服务/跨库的数据一致性方案（2PC、TCC、SAGA、Seata、消息表）
 
 ## 参考资料
 

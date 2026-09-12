@@ -121,6 +121,7 @@ def callback(ch, method, properties, body):
 2. Kafka 用 `kafka-consumer-groups.sh --describe --group order-group` 查看消费组 `CURRENT-OFFSET` 与 `LOG-END-OFFSET`。
 3. 杀掉 Broker 再重启（测试环境），确认已确认的消息未丢、未确认的消息可重投。
 4. Kafka 事务场景补充验证：以 `isolation.level=read_committed` 消费，确认未提交事务的消息不可见，详见 [Kafka 可靠性与 Exactly-Once](../Kafka/Reliability/index.md)。
+5. 跨库一致性场景：用本地消息表把「业务写入」与「待发消息」放进同一事务，再异步投递，方案见 [本地消息表与事务消息](../../Microservices/DistributedTransaction/MessageTable/index.md)。
 
 ## 参考资料
 

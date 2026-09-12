@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Seata 架构：TC / TM / RM 与四种事务模式</text>
+
+  <!-- TC -->
+  <rect x="330" y="56" width="240" height="76" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="450" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#6d28d9">Seata Server（TC）</text>
+  <text x="450" y="104" text-anchor="middle" font-size="10" fill="#5b21b6">维护全局事务与分支事务状态</text>
+  <text x="450" y="122" text-anchor="middle" font-size="10" fill="#5b21b6">驱动全局提交或回滚、管理全局锁</text>
+
+  <!-- TM -->
+  <rect x="40" y="170" width="240" height="110" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="160" y="196" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">TM：事务管理器</text>
+  <text x="60" y="222" font-size="11" fill="#3730a3">发起方（如订单服务）</text>
+  <text x="60" y="244" font-size="11" fill="#3730a3">@GlobalTransactional 注解所在处</text>
+  <text x="60" y="266" font-size="11" fill="#3730a3">决定全局提交还是回滚</text>
+
+  <!-- RM -->
+  <rect x="330" y="170" width="240" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="196" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">RM：资源管理器</text>
+  <text x="350" y="222" font-size="11" fill="#065f46">各参与方（库存服务、账户服务）</text>
+  <text x="350" y="244" font-size="11" fill="#065f46">AT 模式生成 undo_log 与回滚 SQL</text>
+  <text x="350" y="266" font-size="11" fill="#065f46">TCC 模式调用 Confirm / Cancel</text>
+
+  <rect x="620" y="170" width="240" height="110" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="740" y="196" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">存储与配置</text>
+  <text x="640" y="222" font-size="11" fill="#92400e">事务会话：file / db / redis</text>
+  <text x="640" y="244" font-size="11" fill="#92400e">注册与配置：Nacos / Consul / Etcd3</text>
+  <text x="640" y="266" font-size="11" fill="#92400e">高可用：集群 + 共享存储 + Raft</text>
+
+  <path d="M 282 224 H 328" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#stA)"/>
+  <path d="M 570 224 H 618" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#stB)"/>
+  <path d="M 450 168 V 134" stroke="#8b5cf6" stroke-width="2" fill="none" marker-end="url(#stC)"/>
+  <path d="M 200 168 V 134 H 330" stroke="#8b5cf6" stroke-width="2" fill="none" marker-end="url(#stC)"/>
+
+  <!-- 模式 -->
+  <rect x="40" y="308" width="200" height="132" rx="12" fill="#ffffff" stroke="#6366f1"/>
+  <text x="140" y="334" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">AT 模式</text>
+  <text x="60" y="360" font-size="10" fill="#374151">自动快照 + 自动回滚</text>
+  <text x="60" y="380" font-size="10" fill="#374151">业务侵入最小</text>
+  <text x="60" y="400" font-size="10" fill="#374151">需建 undo_log 表</text>
+  <text x="60" y="424" font-size="10" fill="#6b7280">普通关系型业务首选</text>
+
+  <rect x="252" y="308" width="200" height="132" rx="12" fill="#ffffff" stroke="#10b981"/>
+  <text x="352" y="334" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">TCC 模式</text>
+  <text x="272" y="360" font-size="10" fill="#374151">业务实现三接口</text>
+  <text x="272" y="380" font-size="10" fill="#374151">无长事务锁</text>
+  <text x="272" y="400" font-size="10" fill="#374151">需处理空回滚/悬挂</text>
+  <text x="272" y="424" font-size="10" fill="#6b7280">资金、高并发场景</text>
+
+  <rect x="464" y="308" width="200" height="132" rx="12" fill="#ffffff" stroke="#8b5cf6"/>
+  <text x="564" y="334" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">SAGA 模式</text>
+  <text x="484" y="360" font-size="10" fill="#374151">状态机编排长流程</text>
+  <text x="484" y="380" font-size="10" fill="#374151">每个节点配补偿节点</text>
+  <text x="484" y="400" font-size="10" fill="#374151">支持可视化设计器</text>
+  <text x="484" y="424" font-size="10" fill="#6b7280">订票、预订类长链路</text>
+
+  <rect x="676" y="308" width="184" height="132" rx="12" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="768" y="334" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">XA 模式</text>
+  <text x="696" y="360" font-size="10" fill="#374151">基于数据库 XA 协议</text>
+  <text x="696" y="380" font-size="10" fill="#374151">强一致、锁持有久</text>
+  <text x="696" y="400" font-size="10" fill="#374151">支持主流关系型库</text>
+  <text x="696" y="424" font-size="10" fill="#6b7280">低并发强一致场景</text>
+
+  <defs>
+    <marker id="stA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="stB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="stC" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+</svg>
