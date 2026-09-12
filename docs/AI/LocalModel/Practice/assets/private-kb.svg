@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">实战：内网知识库助手（本地模型 + 本地检索）</text>
+
+  <rect x="30" y="58" width="170" height="140" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="115" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">内网用户</text>
+  <text x="115" y="108" text-anchor="middle" font-size="10" fill="#3730a3">浏览器 / 桌面客户端</text>
+  <text x="115" y="130" text-anchor="middle" font-size="10" fill="#3730a3">统一 SSO 登录</text>
+  <text x="115" y="152" text-anchor="middle" font-size="10" fill="#3730a3">答案 + 引用来源</text>
+  <text x="115" y="176" text-anchor="middle" font-size="10" fill="#6b7280">数据不出内网</text>
+
+  <path d="M 202 128 H 240" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#p1)"/>
+
+  <rect x="242" y="58" width="230" height="140" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="357" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">应用服务</text>
+  <text x="262" y="108" font-size="10" fill="#065f46">鉴权 + 限流 + 配额</text>
+  <text x="262" y="130" font-size="10" fill="#065f46">检索编排 + 提示词 + 拒答</text>
+  <text x="262" y="152" font-size="10" fill="#065f46">会话与反馈记录</text>
+  <text x="262" y="176" font-size="10" fill="#6b7280">全链路埋点（TTFT / 令牌 / 命中）</text>
+
+  <path d="M 474 128 H 512" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#p2)"/>
+
+  <rect x="514" y="58" width="356" height="140" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="692" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">本地能力层</text>
+  <text x="534" y="108" font-size="10" fill="#5b21b6">推理服务：Ollama（起步）或 vLLM（生产）</text>
+  <text x="534" y="130" font-size="10" fill="#5b21b6">嵌入模型：本地部署，用于索引与查询向量</text>
+  <text x="534" y="152" font-size="10" fill="#5b21b6">向量库：pgvector / Milvus（内网部署）</text>
+  <text x="534" y="176" font-size="10" fill="#6b7280">模型与索引均在本地，无外部调用</text>
+
+  <rect x="30" y="216" width="840" height="118" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="450" y="242" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">硬件与模型规划（示例：单机 4090 24GB）</text>
+  <text x="50" y="268" font-size="11" fill="#92400e">生成模型：7B~14B，4 位量化，上下文 8K，单实例并发 4~8；显存留给 KV Cache 与嵌入服务。</text>
+  <text x="50" y="292" font-size="11" fill="#92400e">嵌入模型：小体量本地模型，可与生成模型共卡或独立部署（索引重建时占用较高）。</text>
+  <text x="50" y="316" font-size="11" fill="#92400e">向量库：与业务库同机（pgvector）或独立小集群；数据量 10 万 chunk 以内单机足够。</text>
+
+  <rect x="30" y="348" width="410" height="104" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="235" y="374" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">验收指标</text>
+  <text x="50" y="400" font-size="11" fill="#1e3a8a">首令牌 &lt; 1.5s；端到端 &lt; 8s（300 字回答）</text>
+  <text x="50" y="424" font-size="11" fill="#1e3a8a">并发 5 时 P95 延迟不劣化超过 50%</text>
+  <text x="50" y="444" font-size="11" fill="#1e3a8a">引用正确率 ≥ 95%，无依据必须拒答</text>
+
+  <rect x="460" y="348" width="410" height="104" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="665" y="374" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f2937">必做演练</text>
+  <text x="482" y="400" font-size="11" fill="#374151">显存打满：调大并发触发 OOM 后的表现</text>
+  <text x="482" y="424" font-size="11" fill="#374151">引擎重启：模型加载期间用户侧行为</text>
+  <text x="482" y="444" font-size="11" fill="#374151">越权检索：跨部门文档是否被过滤</text>
+
+  <defs>
+    <marker id="p1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="p2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

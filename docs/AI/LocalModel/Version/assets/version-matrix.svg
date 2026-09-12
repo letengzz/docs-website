@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">本地部署组件版本与兼容矩阵（2026-09 核对）</text>
+
+  <rect x="30" y="58" width="270" height="170" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">推理引擎</text>
+  <text x="52" y="112" font-size="11" fill="#3730a3">Ollama：v0.34.0（2026-09-05）</text>
+  <text x="52" y="136" font-size="11" fill="#3730a3">vLLM：v0.29.0（2026-09-09）</text>
+  <text x="52" y="160" font-size="11" fill="#3730a3">llama.cpp：v0.4.0（2026-09-04）</text>
+  <text x="52" y="188" font-size="10" fill="#6b7280">0.x 版本的接口与配置仍可能调整</text>
+  <text x="52" y="210" font-size="10" fill="#6b7280">升级前务必看官方 Release Notes</text>
+
+  <rect x="315" y="58" width="270" height="170" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">GPU 运行时</text>
+  <text x="337" y="112" font-size="11" fill="#065f46">CUDA 13.x：当前主线</text>
+  <text x="337" y="136" font-size="11" fill="#065f46">CUDA 12.x：存量环境常见</text>
+  <text x="337" y="160" font-size="11" fill="#065f46">驱动版本决定可用的 CUDA 上限</text>
+  <text x="337" y="188" font-size="10" fill="#6b7280">引擎镜像通常绑定特定 CUDA 版本</text>
+  <text x="337" y="210" font-size="10" fill="#6b7280">先确认驱动，再选镜像与引擎版本</text>
+
+  <rect x="600" y="58" width="270" height="170" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="735" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">模型格式代际</text>
+  <text x="622" y="112" font-size="11" fill="#92400e">GGUF：llama.cpp / Ollama 生态主流</text>
+  <text x="622" y="136" font-size="11" fill="#92400e">safetensors：GPU 推理（vLLM）主流</text>
+  <text x="622" y="160" font-size="11" fill="#92400e">AWQ / GPTQ：GPU 低比特量化格式</text>
+  <text x="622" y="188" font-size="10" fill="#6b7280">更早的 GGML/GGJT 格式：仅存量</text>
+  <text x="622" y="210" font-size="10" fill="#6b7280">格式与引擎必须匹配，不能互相加载</text>
+
+  <rect x="30" y="248" width="840" height="120" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="274" font-size="13" font-weight="bold" fill="#1f2937">兼容性检查顺序</text>
+  <text x="50" y="300" font-size="11" fill="#374151">① 驱动版本 → ② 可用的 CUDA 版本 → ③ 引擎与镜像版本 → ④ 模型格式与量化等级 → ⑤ 客户端接口版本。</text>
+  <text x="50" y="324" font-size="11" fill="#374151">任何一环不匹配，表现往往是"能启动但推理报错"或"加载成功但输出异常"。</text>
+  <text x="50" y="350" font-size="10" fill="#6b7280">记录环境快照：驱动、CUDA、引擎、模型、量化等级、上下文长度，出问题时可快速比对。</text>
+
+  <rect x="30" y="384" width="840" height="50" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="414" text-anchor="middle" font-size="11" fill="#374151">约定：旧版本（CUDA 12.x 及更早、GGML/GGJT 旧格式）在本库保留说明并标注「仅存量」，不删除、不覆盖。</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Ollama：从安装到被业务调用</text>
+
+  <rect x="30" y="60" width="180" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="120" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 安装与拉模型</text>
+  <text x="120" y="112" text-anchor="middle" font-size="10" fill="#3730a3">ollama pull &lt;model&gt;</text>
+  <text x="120" y="134" text-anchor="middle" font-size="10" fill="#3730a3">ollama list / ps</text>
+  <text x="120" y="156" text-anchor="middle" font-size="10" fill="#6b7280">模型缓存在本机磁盘</text>
+
+  <path d="M 212 120 H 250" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#o1)"/>
+
+  <rect x="252" y="60" width="200" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="352" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② 本地服务</text>
+  <text x="352" y="112" text-anchor="middle" font-size="10" fill="#065f46">默认监听 11434</text>
+  <text x="352" y="134" text-anchor="middle" font-size="10" fill="#065f46">管理模型加载与并发</text>
+  <text x="352" y="156" text-anchor="middle" font-size="10" fill="#6b7280">按需加载，空闲自动卸载</text>
+
+  <path d="M 454 120 H 492" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#o2)"/>
+
+  <rect x="494" y="60" width="376" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="682" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">③ 三类接口</text>
+  <text x="514" y="112" font-size="10" fill="#5b21b6">原生：/api/generate、/api/chat、/api/embed、/api/tags、/api/ps</text>
+  <text x="514" y="134" font-size="10" fill="#5b21b6">OpenAI 兼容：/v1/chat/completions、/v1/responses（v0.13.3 起）</text>
+  <text x="514" y="156" font-size="10" fill="#5b21b6">Anthropic 兼容：便于直接替换已有客户端</text>
+
+  <rect x="30" y="204" width="840" height="110" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="450" y="230" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">④ 业务侧接入（OpenAI 兼容示例）</text>
+  <text x="50" y="258" font-size="11" fill="#92400e">Python：client = OpenAI(base_url="http://localhost:11434/v1/", api_key="ollama")</text>
+  <text x="50" y="282" font-size="11" fill="#92400e">支持的常见能力：流式输出、JSON 模式、seed 复现、视觉、工具调用、推理控制</text>
+  <text x="50" y="304" font-size="10" fill="#6b7280">注意：/v1/responses 为无状态实现，不能用 previous_response_id 续接会话。</text>
+
+  <rect x="30" y="332" width="840" height="100" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="358" font-size="13" font-weight="bold" fill="#1f2937">上线前必须处理的三件事</text>
+  <text x="50" y="384" font-size="11" fill="#374151">① 换模型/上下文变长后显存会变，先按硬件页做显存预算，再决定模型与量化等级。</text>
+  <text x="50" y="408" font-size="11" fill="#374151">② 默认无鉴权，暴露到内网前要加反向代理与鉴权；跨部门使用要限流与配额。</text>
+  <text x="50" y="430" font-size="11" fill="#374151">③ 记录加载耗时、TTFT、输出速率与显存占用，出现问题才有数据可查。</text>
+
+  <defs>
+    <marker id="o1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="o2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+</svg>

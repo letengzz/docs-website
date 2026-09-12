@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">量化：精度、显存、速度的三角权衡</text>
+
+  <rect x="30" y="60" width="250" height="180" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="155" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">全精度 / 半精度</text>
+  <text x="52" y="114" font-size="11" fill="#3730a3">FP32：约 4 字节/参数，几乎不用</text>
+  <text x="52" y="138" font-size="11" fill="#3730a3">FP16 / BF16：约 2 字节/参数，GPU 默认</text>
+  <text x="52" y="162" font-size="11" fill="#3730a3">精度最好，显存占用最高</text>
+  <text x="52" y="190" font-size="10" fill="#6b7280">适合：显存充足、对质量最敏感的场景</text>
+  <text x="52" y="214" font-size="10" fill="#6b7280">7B 模型权重约 14GB（FP16）</text>
+
+  <rect x="295" y="60" width="250" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="420" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">8 位量化</text>
+  <text x="317" y="114" font-size="11" fill="#065f46">权重约 1 字节/参数，显存减半</text>
+  <text x="317" y="138" font-size="11" fill="#065f46">质量损失通常很小</text>
+  <text x="317" y="162" font-size="11" fill="#065f46">GPU 上常以 INT8 / FP8 实现</text>
+  <text x="317" y="190" font-size="10" fill="#6b7280">适合：显存紧张但仍要保证质量</text>
+  <text x="317" y="214" font-size="10" fill="#6b7280">7B 模型权重约 7GB（INT8）</text>
+
+  <rect x="560" y="60" width="290" height="180" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="705" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">4 位量化（社区最常用）</text>
+  <text x="582" y="114" font-size="11" fill="#92400e">权重约 0.5~0.6 字节/参数</text>
+  <text x="582" y="138" font-size="11" fill="#92400e">7B 模型可压到约 4~5GB</text>
+  <text x="582" y="162" font-size="11" fill="#92400e">质量损失与量化方案强相关</text>
+  <text x="582" y="190" font-size="10" fill="#6b7280">适合：单卡消费级显卡、本地部署</text>
+  <text x="582" y="214" font-size="10" fill="#6b7280">常见格式：GGUF（Q4_K_M 等）、AWQ、GPTQ</text>
+
+  <rect x="30" y="262" width="820" height="150" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="288" font-size="13" font-weight="bold" fill="#1f2937">怎么选：按"能不能装下"倒推</text>
+  <text x="50" y="314" font-size="11" fill="#374151">第一步：算权重显存 = 参数量 × 每参数字节数（FP16 按 2、INT8 按 1、4 位按约 0.5~0.6）。</text>
+  <text x="50" y="340" font-size="11" fill="#374151">第二步：加上 KV Cache 与运行时开销（上下文越长、并发越高，KV Cache 越大），见显存规划页。</text>
+  <text x="50" y="366" font-size="11" fill="#374151">第三步：留 15%~25% 余量，再决定量化等级；显存不够就降量化等级或降上下文长度。</text>
+  <text x="50" y="394" font-size="10" fill="#6b7280">经验：4 位量化 + 8K 上下文的 7B~14B 模型，是单卡 16GB~24GB 本地部署最常见的组合。</text>
+</svg>

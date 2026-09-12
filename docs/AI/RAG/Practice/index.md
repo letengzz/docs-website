@@ -149,3 +149,4 @@ python evals/run_rag_eval.py --collection kb_chunks_v4 --top-k 20 --keep 5
 - 评估体系：[评估体系](../Evaluation/index.md)
 - 生产工程化：[生产工程化](../Pipeline/index.md)
 - 应用侧接入：[大模型应用开发 · RAG 接入](../../LLMApp/RagOverview/index.md)
+- 私有化部署（本地模型 + 本地嵌入，数据不出内网）：[本地模型部署](../../LocalModel/index.md)

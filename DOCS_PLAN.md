@@ -81,7 +81,7 @@
 | 46 | Backend | 分布式事务 ✅ | 2PC、TCC、SAGA、Seata、本地消息表、实践对比、常见问题 |
 | 47 | AI | 大模型应用开发 ✅ | API 调用、Function Calling、RAG、Agent 框架、成本与限流、实战、常见问题 |
 | 48 | AI | RAG 检索增强 ✅ | Embedding、向量库、Chunking、检索优化、评估、实战案例、常见问题 |
-| 49 | AI | 本地模型部署 | Ollama、量化、API 接入、GPU/内存规划、实战案例、常见问题 |
+| 49 | AI | 本地模型部署 ✅ | Ollama、量化、API 接入、GPU/内存规划、实战案例、常见问题 |
 | 50 | Frontend | 微信小程序 | 框架与目录、组件、API、路由、发布流程、性能优化、常见问题 |
 | 51 | Frontend | 跨端开发 | UniApp、Taro、Electron、方案对比、实战案例、常见问题 |
 | 52 | Frontend | 前端测试 | Vitest、Jest、组件测试、E2E、覆盖率、测试策略、常见问题 |
@@ -190,6 +190,8 @@
 - [x] AI 事实与版本核对：按官方文档核对 Responses 与 Chat Completions 的推荐关系与迁移指南、速率限制维度（RPM/RPD/TPM/TPD 与用量层级）、提示缓存折扣与最小可缓存长度、嵌入模型维度可选、结构化输出与 strict 模式约束、工具检索的模型要求；模型 ID 与单价在文中统一标注「以官方模型页/定价页为准」，不写死版本清单
 - [x] AI 存量补全：RAG 检索增强专题已建设（第 48 天，10 个页面：概述、嵌入与向量基础、文档解析与切分、向量库与索引、检索优化、评估体系、生产工程化、组件版本状态与升级、实战、FAQ），并按「主线 + 旧版本标注」组织组件版本状态（Milvus 3.x/2.6.x/1.x、pgvector 0.8.x、Qdrant 1.x、Chroma 1.x、Elasticsearch 9.x/8.x/7.x、嵌入模型代际）；补充 AI 索引、LLMApp（导航/接入页/成本/FAQ）、提示词评估与 Agent 记忆的交叉链接
 - [x] 存量交叉链接与去重：把 LLMApp/RagOverview 的评估指标段收敛为「摘要 + 链接」，避免与 RAG 评估体系重复；补充「深入阅读」表引导到切分/向量库/检索/评估/工程化各页
+- [x] AI 存量补全：本地模型部署专题已建设（第 49 天，10 个页面：概述与选型、Ollama 快速落地、推理服务与 API 接入、量化与模型格式、GPU 与显存规划、性能调优与压测、生产部署与运维、版本与兼容矩阵、实战：内网知识库助手、FAQ），引擎版本按官方仓库核对（Ollama v0.34.0、vLLM v0.29.0、llama.cpp v0.4.0）并按「主线 + 旧版本标注」组织（CUDA 13.x/12.x、GGUF/safetensors/AWQ/GPTQ 与仅存量的 GGML/GGJT）；补充 AI 索引、LLMApp（模型与集成）、OpenClaw（概述/架构）、RAG 实战与成本页的交叉链接
+- [x] 存量接口事实核对：按 Ollama 官方文档核对 OpenAI 兼容接口能力（/v1/chat/completions、流式、JSON 模式、seed、视觉、工具调用；/v1/responses 自 v0.13.3 起且仅无状态）与原生 /api/* 端点，统一写入本地模型部署专题的 Ollama 与推理接入页面
 
 ## 节奏建议
 

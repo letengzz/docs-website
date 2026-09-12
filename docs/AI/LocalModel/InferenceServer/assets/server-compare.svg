@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">推理引擎选型：Ollama / vLLM / llama.cpp</text>
+
+  <rect x="30" y="60" width="270" height="200" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="165" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">Ollama</text>
+  <text x="52" y="114" font-size="11" fill="#3730a3">定位：开箱即用、管理模型生命周期</text>
+  <text x="52" y="138" font-size="11" fill="#3730a3">优势：安装简单、自带模型仓库、支持 CPU/GPU</text>
+  <text x="52" y="162" font-size="11" fill="#3730a3">能力：OpenAI 兼容接口、工具调用、视觉</text>
+  <text x="52" y="186" font-size="11" fill="#3730a3">局限：高并发与极致吞吐不是强项</text>
+  <text x="52" y="214" font-size="10" fill="#6b7280">适合：开发验证、团队内网共享、轻负载</text>
+  <text x="52" y="238" font-size="10" fill="#6b7280">当前版本：v0.34.0（2026-09-05）</text>
+
+  <rect x="315" y="60" width="270" height="200" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">vLLM</text>
+  <text x="337" y="114" font-size="11" fill="#065f46">定位：面向生产的高吞吐推理服务</text>
+  <text x="337" y="138" font-size="11" fill="#065f46">优势：连续批处理、PagedAttention、多卡张量并行</text>
+  <text x="337" y="162" font-size="11" fill="#065f46">能力：OpenAI 兼容服务端、指标齐全</text>
+  <text x="337" y="186" font-size="11" fill="#065f46">局限：部署与调参复杂，主要面向 NVIDIA GPU</text>
+  <text x="337" y="214" font-size="10" fill="#6b7280">适合：生产集群、高并发、可控的硬件环境</text>
+  <text x="337" y="238" font-size="10" fill="#6b7280">当前版本：v0.29.0（2026-09-09）</text>
+
+  <rect x="600" y="60" width="270" height="200" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="735" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">llama.cpp</text>
+  <text x="622" y="114" font-size="11" fill="#92400e">定位：跨平台推理内核与轻量服务</text>
+  <text x="622" y="138" font-size="11" fill="#92400e">优势：CPU/Mac/边缘设备友好、GGUF 量化生态</text>
+  <text x="622" y="162" font-size="11" fill="#92400e">能力：提供 server 模式与兼容接口</text>
+  <text x="622" y="186" font-size="11" fill="#92400e">局限：需要自己解决模型管理与集群化</text>
+  <text x="622" y="214" font-size="10" fill="#6b7280">适合：无 GPU 环境、端侧、嵌入式场景</text>
+  <text x="622" y="238" font-size="10" fill="#6b7280">当前版本：v0.4.0（2026-09-04）</text>
+
+  <rect x="30" y="282" width="840" height="128" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="308" font-size="13" font-weight="bold" fill="#1f2937">选择顺序（按真实约束，而不是按口碑）</text>
+  <text x="50" y="334" font-size="11" fill="#374151">1. 有无 NVIDIA GPU？没有 → llama.cpp（或 Ollama 的 CPU 模式）；有 GPU 且并发要求高 → vLLM。</text>
+  <text x="50" y="358" font-size="11" fill="#374151">2. 团队是否有人维护集群？没有 → Ollama 更省心；有 → vLLM 换取吞吐与可控性。</text>
+  <text x="50" y="382" font-size="11" fill="#374151">3. 是否要统一接口？三者都能提供 OpenAI 兼容接口，业务侧尽量只用这一层。</text>
+  <text x="50" y="404" font-size="10" fill="#6b7280">常见组合：开发与验证用 Ollama，正式生产用 vLLM，同一套客户端代码通过 base_url 切换。</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">四种本地部署形态与选型</text>
+
+  <rect x="30" y="60" width="200" height="180" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="130" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 个人开发机</text>
+  <text x="130" y="112" text-anchor="middle" font-size="10" fill="#3730a3">Ollama / llama.cpp</text>
+  <text x="130" y="134" text-anchor="middle" font-size="10" fill="#3730a3">单机 CPU 或单卡</text>
+  <text x="130" y="156" text-anchor="middle" font-size="10" fill="#3730a3">量化模型优先</text>
+  <text x="130" y="182" text-anchor="middle" font-size="10" fill="#6b7280">目标：跑通、低门槛</text>
+  <text x="130" y="206" text-anchor="middle" font-size="10" fill="#6b7280">并发：1~2</text>
+  <text x="130" y="228" text-anchor="middle" font-size="10" fill="#6b7280">成本：零增量（复用本机）</text>
+
+  <rect x="245" y="60" width="200" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="345" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② 团队共享服务</text>
+  <text x="345" y="112" text-anchor="middle" font-size="10" fill="#065f46">Ollama（多实例）或 vLLM</text>
+  <text x="345" y="134" text-anchor="middle" font-size="10" fill="#065f46">1~2 张 GPU，内网访问</text>
+  <text x="345" y="156" text-anchor="middle" font-size="10" fill="#065f46">提供 OpenAI 兼容接口</text>
+  <text x="345" y="182" text-anchor="middle" font-size="10" fill="#6b7280">目标：内网共享、可控成本</text>
+  <text x="345" y="206" text-anchor="middle" font-size="10" fill="#6b7280">并发：5~30</text>
+  <text x="345" y="228" text-anchor="middle" font-size="10" fill="#6b7280">需要：鉴权、限流、监控</text>
+
+  <rect x="460" y="60" width="200" height="180" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="560" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">③ 生产推理集群</text>
+  <text x="560" y="112" text-anchor="middle" font-size="10" fill="#92400e">vLLM 多实例 + 负载均衡</text>
+  <text x="560" y="134" text-anchor="middle" font-size="10" fill="#92400e">多卡 / 多机，K8s 编排</text>
+  <text x="560" y="156" text-anchor="middle" font-size="10" fill="#92400e">连续批处理、指标齐全</text>
+  <text x="560" y="182" text-anchor="middle" font-size="10" fill="#6b7280">目标：高吞吐、可扩展</text>
+  <text x="560" y="206" text-anchor="middle" font-size="10" fill="#6b7280">并发：数十到数百</text>
+  <text x="560" y="228" text-anchor="middle" font-size="10" fill="#6b7280">需要：灰度、回滚、容量规划</text>
+
+  <rect x="675" y="60" width="195" height="180" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="772" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">④ 私有化交付</text>
+  <text x="772" y="112" text-anchor="middle" font-size="10" fill="#5b21b6">整体打包交付到客户内网</text>
+  <text x="772" y="134" text-anchor="middle" font-size="10" fill="#5b21b6">含模型、服务、控制台</text>
+  <text x="772" y="156" text-anchor="middle" font-size="10" fill="#5b21b6">离线安装与升级</text>
+  <text x="772" y="182" text-anchor="middle" font-size="10" fill="#6b7280">目标：合规、数据不出域</text>
+  <text x="772" y="206" text-anchor="middle" font-size="10" fill="#6b7280">关键：硬件适配清单</text>
+  <text x="772" y="228" text-anchor="middle" font-size="10" fill="#6b7280">关键：离线依赖与授权</text>
+
+  <rect x="30" y="262" width="840" height="168" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="288" font-size="13" font-weight="bold" fill="#1f2937">与云端 API 的关系：先问三个问题</text>
+  <text x="50" y="316" font-size="11" fill="#374151">① 数据能不能出内网？能出网 → 云端 API 通常更省心；不能出网 → 本地部署是唯一选择。</text>
+  <text x="50" y="342" font-size="11" fill="#374151">② 峰值负载是否长期稳定？长期满载 → 自建更划算；流量波动大 → 云端按量付费更灵活。</text>
+  <text x="50" y="368" font-size="11" fill="#374151">③ 有没有 GPU 与运维能力？没有 → 优先托管或混合（敏感数据本地、通用任务云端）。</text>
+  <text x="50" y="398" font-size="11" fill="#6b7280">混合模式很常见：用统一的 OpenAI 兼容接口封装，按"敏感度 + 复杂度"路由到本地或云端模型。</text>
+  <text x="50" y="420" font-size="10" fill="#6b7280">结论：本地部署的价值主要在数据不出域、成本可预测、可离线；代价是硬件投入与持续运维。</text>
+</svg>

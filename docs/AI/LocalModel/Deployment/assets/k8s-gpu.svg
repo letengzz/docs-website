@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">生产部署形态：网关 + 多实例 + GPU 节点</text>
+
+  <rect x="30" y="60" width="200" height="110" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="130" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">业务应用</text>
+  <text x="130" y="110" text-anchor="middle" font-size="10" fill="#3730a3">统一使用 OpenAI 兼容客户端</text>
+  <text x="130" y="132" text-anchor="middle" font-size="10" fill="#3730a3">base_url 指向推理网关</text>
+  <text x="130" y="154" text-anchor="middle" font-size="10" fill="#6b7280">业务侧不感知具体引擎</text>
+
+  <path d="M 232 115 H 268" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#k1)"/>
+
+  <rect x="270" y="60" width="220" height="110" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="380" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">推理网关</text>
+  <text x="380" y="110" text-anchor="middle" font-size="10" fill="#5b21b6">鉴权 / 限流 / 配额 / 审计</text>
+  <text x="380" y="132" text-anchor="middle" font-size="10" fill="#5b21b6">按模型路由到不同实例</text>
+  <text x="380" y="154" text-anchor="middle" font-size="10" fill="#6b7280">灰度：按比例或按租户分流</text>
+
+  <path d="M 492 115 H 528" stroke="#8b5cf6" stroke-width="2.5" fill="none" marker-end="url(#k2)"/>
+
+  <rect x="530" y="60" width="320" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="690" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">推理实例（可水平扩展）</text>
+  <text x="550" y="110" font-size="10" fill="#065f46">实例 A：模型 X（GPU 0）　实例 B：模型 X（GPU 1）</text>
+  <text x="550" y="132" font-size="10" fill="#065f46">实例 C：小模型（共享 GPU）　实例 D：嵌入模型</text>
+  <text x="550" y="154" font-size="10" fill="#6b7280">按显存与吞吐规划实例数，避免多模型抢占同一张卡</text>
+
+  <rect x="30" y="196" width="410" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="235" y="222" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">模型分发与加载</text>
+  <text x="52" y="250" font-size="11" fill="#92400e">模型文件放到共享存储或对象存储，实例启动时拉取</text>
+  <text x="52" y="274" font-size="11" fill="#92400e">本地缓存目录持久化，避免每次启动都重新下载</text>
+  <text x="52" y="298" font-size="11" fill="#92400e">镜像与模型分离：换模型不必重建镜像</text>
+  <text x="52" y="322" font-size="10" fill="#6b7280">加载耗时动辄数十秒，启动探针要放宽并配合预热</text>
+
+  <rect x="460" y="196" width="410" height="150" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="665" y="222" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">监控与告警</text>
+  <text x="482" y="250" font-size="11" fill="#1e3a8a">延迟：TTFT、TPOT、端到端 P95</text>
+  <text x="482" y="274" font-size="11" fill="#1e3a8a">资源：显存占用、GPU 利用率、温度与功耗</text>
+  <text x="482" y="298" font-size="11" fill="#1e3a8a">业务：QPS、错误率、排队长度、限流命中数</text>
+  <text x="482" y="322" font-size="10" fill="#6b7280">显存接近上限、队列持续增长、TTFT 突增都要告警</text>
+
+  <rect x="30" y="362" width="840" height="72" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="388" font-size="12" font-weight="bold" fill="#1f2937">K8s 部署要点</text>
+  <text x="50" y="412" font-size="11" fill="#374151">GPU 节点打标签与污点，Pod 申请 GPU 资源；模型加载慢用 startupProbe；不要用滚动更新瞬时全量替换（会造成显存与加载风暴）。</text>
+  <text x="50" y="430" font-size="10" fill="#6b7280">详见本库 Kubernetes 专题的部署与监控章节。</text>
+
+  <defs>
+    <marker id="k1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="k2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+</svg>

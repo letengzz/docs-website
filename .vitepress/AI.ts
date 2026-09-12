@@ -95,3 +95,22 @@ export const AI_RAG = [
     ],
   },
 ];
+
+export const AI_LocalModel = [
+  {
+    text: "本地模型部署",
+    link: "/docs/AI/LocalModel/index.md",
+    collapsed: true,
+    items: [
+      { text: "Ollama 快速落地", link: "/docs/AI/LocalModel/Ollama/index.md" },
+      { text: "推理服务与 API 接入", link: "/docs/AI/LocalModel/InferenceServer/index.md" },
+      { text: "量化与模型格式", link: "/docs/AI/LocalModel/Quantization/index.md" },
+      { text: "GPU 与显存规划", link: "/docs/AI/LocalModel/Hardware/index.md" },
+      { text: "性能调优与压测", link: "/docs/AI/LocalModel/Performance/index.md" },
+      { text: "生产部署与运维", link: "/docs/AI/LocalModel/Deployment/index.md" },
+      { text: "版本与兼容矩阵", link: "/docs/AI/LocalModel/Version/index.md" },
+      { text: "实战：内网知识库助手", link: "/docs/AI/LocalModel/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/LocalModel/FAQ/index.md" },
+    ],
+  },
+];
