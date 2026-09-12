@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">发布模块：多环境构建到回滚</text>
+
+  <rect x="30" y="60" width="180" height="100" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="120" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">① 构建</text>
+  <text x="120" y="112" text-anchor="middle" font-size="10" fill="#3730a3">`pnpm build:${env}`</text>
+  <text x="120" y="132" text-anchor="middle" font-size="10" fill="#3730a3">读取 `.env.${env}`</text>
+  <text x="120" y="152" text-anchor="middle" font-size="10" fill="#6b7280">产物带版本号</text>
+
+  <path d="M 212 110 H 248" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#r1)"/>
+
+  <rect x="250" y="60" width="200" height="100" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="350" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">② 制品与版本</text>
+  <text x="350" y="112" text-anchor="middle" font-size="10" fill="#065f46">dist 打成压缩包 / 上传对象存储</text>
+  <text x="350" y="132" text-anchor="middle" font-size="10" fill="#065f46">目录命名含版本：`v1.4.2`</text>
+  <text x="350" y="152" text-anchor="middle" font-size="10" fill="#6b7280">保留最近 N 个版本用于回滚</text>
+
+  <path d="M 452 110 H 488" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#r2)"/>
+
+  <rect x="490" y="60" width="200" height="100" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="590" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">③ 部署</text>
+  <text x="590" y="112" text-anchor="middle" font-size="10" fill="#5b21b6">Nginx / 静态托管 / K8s</text>
+  <text x="590" y="132" text-anchor="middle" font-size="10" fill="#5b21b6">切换软链接指向新版本</text>
+  <text x="590" y="152" text-anchor="middle" font-size="10" fill="#6b7280">单页应用配置 history 回退</text>
+
+  <path d="M 692 110 H 728" stroke="#8b5cf6" stroke-width="2.5" fill="none" marker-end="url(#r3)"/>
+
+  <rect x="730" y="60" width="120" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="790" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">④ 验证</text>
+  <text x="790" y="112" text-anchor="middle" font-size="10" fill="#92400e">首页与接口</text>
+  <text x="790" y="132" text-anchor="middle" font-size="10" fill="#92400e">无 404/白屏</text>
+  <text x="790" y="152" text-anchor="middle" font-size="10" fill="#6b7280">缓存版本正确</text>
+
+  <rect x="30" y="186" width="405" height="150" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="212" font-size="13" font-weight="bold" fill="#1f2937">多环境配置约定</text>
+  <text x="50" y="238" font-size="11" fill="#374151">`.env`（公共） / `.env.development` / `.env.staging` / `.env.production`</text>
+  <text x="50" y="262" font-size="11" fill="#374151">仅 `VITE_` 前缀变量会暴露到前端，**禁止**放入密钥</text>
+  <text x="50" y="286" font-size="11" fill="#374151">构建命令：`build:staging`、`build:prod`，避免手工改环境文件</text>
+  <text x="50" y="312" font-size="10" fill="#6b7280">验证：构建后搜索产物中的接口地址，确认与目标环境一致</text>
+
+  <rect x="460" y="186" width="390" height="150" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="655" y="212" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">回滚与灰度</text>
+  <text x="482" y="238" font-size="11" fill="#9a3412">发布目录按版本保存，回滚=切软链接</text>
+  <text x="482" y="262" font-size="11" fill="#9a3412">index.html 不缓存，静态资源用内容哈希长缓存</text>
+  <text x="482" y="286" font-size="11" fill="#9a3412">灰度：Nginx 按比例/按用户分流到新旧目录</text>
+  <text x="482" y="312" font-size="10" fill="#6b7280">演练：发布后立即回滚一次，确认 1 分钟内恢复</text>
+
+  <rect x="30" y="352" width="820" height="56" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="386" text-anchor="middle" font-size="11" fill="#374151">验收：`pnpm build:prod` 成功 → 部署 → 访问首页确认接口地址为生产环境 → 执行一次回滚演练。</text>
+
+  <defs>
+    <marker id="r1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="r2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="r3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+</svg>

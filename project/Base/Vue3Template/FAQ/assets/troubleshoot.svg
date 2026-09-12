@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">模板使用常见问题排查</text>
+
+  <rect x="30" y="60" width="405" height="140" rx="12" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="232" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b91c1c">构建与依赖类</text>
+  <text x="52" y="112" font-size="11" fill="#7f1d1d">自动导入失效 → 检查插件配置与生成的 `*.d.ts` 是否提交</text>
+  <text x="52" y="134" font-size="11" fill="#7f1d1d">组件未按需引入 → 确认 `unplugin-vue-components` 解析器配置</text>
+  <text x="52" y="156" font-size="11" fill="#7f1d1d">Node 版本不符 → 用 `.nvmrc` 固定版本并统一包管理器</text>
+  <text x="52" y="178" font-size="11" fill="#7f1d1d">依赖冲突 → 锁定版本、清理 lockfile 后重装</text>
+
+  <rect x="460" y="60" width="390" height="140" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="655" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">运行与联调类</text>
+  <text x="482" y="112" font-size="11" fill="#92400e">请求跨域 → 开发用代理，生产用同域或网关</text>
+  <text x="482" y="134" font-size="11" fill="#92400e">环境变量读不到 → 必须以 `VITE_` 开头且重启 dev 服务</text>
+  <text x="482" y="156" font-size="11" fill="#92400e">路由刷新 404 → 服务端配置 history 回退</text>
+  <text x="482" y="178" font-size="11" fill="#92400e">刷新后丢登录态 → 检查持久化与路由守卫重注册</text>
+
+  <rect x="30" y="214" width="405" height="140" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="232" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">样式与主题类</text>
+  <text x="52" y="266" font-size="11" fill="#1e3a8a">暗色主题下个别区域刺眼 → 业务样式存在硬编码颜色</text>
+  <text x="52" y="288" font-size="11" fill="#1e3a8a">UnoCSS 类不生效 → 检查预设与 `safelist`</text>
+  <text x="52" y="310" font-size="11" fill="#1e3a8a">SCSS 变量未生效 → 确认 `additionalData` 注入路径</text>
+  <text x="52" y="332" font-size="11" fill="#1e3a8a">首屏主题闪烁 → 在入口 HTML 中提前设置主题类名</text>
+
+  <rect x="460" y="214" width="390" height="140" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="655" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">工程规范类</text>
+  <text x="482" y="266" font-size="11" fill="#5b21b6">提交被拦截 → 先跑 `pnpm lint:fix` 与格式化</text>
+  <text x="482" y="288" font-size="11" fill="#5b21b6">提交信息不规范 → 按 Conventional Commits 重写</text>
+  <text x="482" y="310" font-size="11" fill="#5b21b6">构建体积突增 → 用可视化分析定位新增大依赖</text>
+  <text x="482" y="332" font-size="11" fill="#5b21b6">多人协作冲突 → 统一 Node/pnpm 版本与编辑器配置</text>
+
+  <rect x="30" y="368" width="820" height="44" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="396" text-anchor="middle" font-size="11" fill="#374151">通用顺序：看报错 → 对比"干净环境能否复现" → 二分定位（注释一半配置）→ 记录到本节清单。</text>
+</svg>

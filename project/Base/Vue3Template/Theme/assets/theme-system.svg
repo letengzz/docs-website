@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="430" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">主题模块：设计令牌驱动的明暗主题</text>
+
+  <rect x="30" y="60" width="250" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="155" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① 设计令牌（Design Token）</text>
+  <text x="52" y="112" font-size="11" fill="#3730a3">颜色 / 间距 / 圆角 / 阴影 / 字号</text>
+  <text x="52" y="134" font-size="11" fill="#3730a3">定义在 SCSS 变量 + CSS 变量两层</text>
+  <text x="52" y="156" font-size="11" fill="#3730a3">组件只消费变量，不写死颜色</text>
+  <text x="52" y="182" font-size="10" fill="#6b7280">好处：换肤 / 暗色只需改变量</text>
+  <text x="52" y="200" font-size="10" fill="#6b7280">约束：禁止在业务样式里写 #fff 这类硬编码</text>
+
+  <rect x="315" y="60" width="250" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="440" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">② 主题切换</text>
+  <text x="337" y="112" font-size="11" fill="#065f46">`html[data-theme="dark"]` 覆盖变量</text>
+  <text x="337" y="134" font-size="11" fill="#065f46">Pinia 保存用户偏好 + localStorage 持久化</text>
+  <text x="337" y="156" font-size="11" fill="#065f46">首屏前读取偏好，避免闪烁（FOUC）</text>
+  <text x="337" y="182" font-size="10" fill="#6b7280">跟随系统：prefers-color-scheme</text>
+  <text x="337" y="200" font-size="10" fill="#6b7280">切换时同步更新组件库主题类名</text>
+
+  <rect x="600" y="60" width="250" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="725" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">③ 组件库联动</text>
+  <text x="622" y="112" font-size="11" fill="#92400e">Element Plus：`html.dark` + CSS 变量覆盖</text>
+  <text x="622" y="134" font-size="11" fill="#92400e">Ant Design Vue：ConfigProvider 主题算法</text>
+  <text x="622" y="156" font-size="11" fill="#92400e">按需定制主色，避免全量重写样式</text>
+  <text x="622" y="182" font-size="10" fill="#6b7280">统一入口：`styles/var.scss` 单一来源</text>
+  <text x="622" y="200" font-size="10" fill="#6b7280">升级组件库时先回归主题适配</text>
+
+  <rect x="30" y="232" width="820" height="120" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="258" font-size="13" font-weight="bold" fill="#1f2937">推荐目录结构与实现顺序</text>
+  <text x="50" y="284" font-size="11" fill="#374151">src/styles/var.scss（SCSS 变量）→ src/styles/theme.scss（明暗两套 CSS 变量）→ src/stores/theme.ts（状态与持久化）</text>
+  <text x="50" y="308" font-size="11" fill="#374151">→ App.vue 监听主题变化并写入 `document.documentElement.dataset.theme` → 业务组件改用变量</text>
+  <text x="50" y="332" font-size="10" fill="#6b7280">顺序建议：先抽变量（不改视觉），再接暗色，最后做组件库主题定制。</text>
+
+  <rect x="30" y="368" width="820" height="50" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="396" text-anchor="middle" font-size="11" fill="#374151">验收：切换主题后全站无硬编码颜色残留（用"暗色下逐个页面走查 + 搜索 #fff/#000"验证）。</text>
+</svg>

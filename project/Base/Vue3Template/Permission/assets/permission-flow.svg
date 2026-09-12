@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="430" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">权限模块：路由守卫 + 动态路由 + 按钮级权限</text>
+
+  <rect x="30" y="60" width="180" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="120" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">① 登录</text>
+  <text x="120" y="112" text-anchor="middle" font-size="10" fill="#3730a3">拿到 token 与用户信息</text>
+  <text x="120" y="134" text-anchor="middle" font-size="10" fill="#6b7280">存入 Pinia + 持久化</text>
+
+  <path d="M 212 105 H 248" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#p1)"/>
+
+  <rect x="250" y="60" width="200" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="350" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">② 拉取权限</text>
+  <text x="350" y="112" text-anchor="middle" font-size="10" fill="#065f46">接口返回角色与权限码</text>
+  <text x="350" y="134" text-anchor="middle" font-size="10" fill="#6b7280">存 permissionStore</text>
+
+  <path d="M 452 105 H 488" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#p2)"/>
+
+  <rect x="490" y="60" width="200" height="90" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="590" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">③ 生成动态路由</text>
+  <text x="590" y="112" text-anchor="middle" font-size="10" fill="#5b21b6">按权限过滤路由表</text>
+  <text x="590" y="134" text-anchor="middle" font-size="10" fill="#6b7280">router.addRoute 注册</text>
+
+  <path d="M 692 105 H 728" stroke="#8b5cf6" stroke-width="2.5" fill="none" marker-end="url(#p3)"/>
+
+  <rect x="730" y="60" width="120" height="90" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="790" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">④ 渲染</text>
+  <text x="790" y="112" text-anchor="middle" font-size="10" fill="#92400e">菜单按路由生成</text>
+  <text x="790" y="134" text-anchor="middle" font-size="10" fill="#6b7280">按钮按权限码</text>
+
+  <rect x="30" y="176" width="410" height="150" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="202" font-size="13" font-weight="bold" fill="#1f2937">三层权限校验</text>
+  <text x="50" y="228" font-size="11" fill="#374151">① 路由级：未登录跳登录页；无权限跳 403（`beforeEach` 守卫）</text>
+  <text x="50" y="252" font-size="11" fill="#374151">② 菜单级：按权限过滤路由，动态生成侧边栏</text>
+  <text x="50" y="276" font-size="11" fill="#374151">③ 控件级：`v-permission="'order:delete'"` 指令控制按钮</text>
+  <text x="50" y="302" font-size="10" fill="#6b7280">前端权限只影响"看不看得见"，安全边界仍在后端接口</text>
+  <text x="50" y="322" font-size="10" fill="#6b7280">权限码建议统一为 `模块:动作`（如 `user:create`）</text>
+
+  <rect x="460" y="176" width="390" height="150" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="655" y="202" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">四个高频坑</text>
+  <text x="482" y="228" font-size="11" fill="#9a3412">① 刷新页面后动态路由丢失 → 守卫里重新注册</text>
+  <text x="482" y="252" font-size="11" fill="#9a3412">② 退出登录未清理 `addRoute` 的路由 → 菜单残留</text>
+  <text x="482" y="276" font-size="11" fill="#9a3412">③ 直接用角色名判断 → 改角色时到处改代码</text>
+  <text x="482" y="300" font-size="11" fill="#9a3412">④ 忘记兜底 404 / 403 路由 → 白屏</text>
+
+  <rect x="30" y="344" width="820" height="62" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="370" font-size="12" font-weight="bold" fill="#1f2937">验收标准</text>
+  <text x="50" y="392" font-size="11" fill="#374151">用低权限账号登录：无权限菜单不可见、直接输入受限路由地址跳 403、受限按钮不渲染；后端接口同样返回 403。</text>
+
+  <defs>
+    <marker id="p1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="p2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="p3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+</svg>

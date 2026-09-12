@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">组件库集成：按需引入 + 二次封装分层</text>
+
+  <rect x="30" y="60" width="820" height="110" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="440" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">三层结构（自上而下依赖，禁止反向依赖）</text>
+  <rect x="55" y="100" width="240" height="54" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="175" y="122" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">业务组件 components/business</text>
+  <text x="175" y="142" text-anchor="middle" font-size="10" fill="#6b7280">订单表格、商品选择器…</text>
+  <rect x="320" y="100" width="240" height="54" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="440" y="122" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">基础组件 components/base</text>
+  <text x="440" y="142" text-anchor="middle" font-size="10" fill="#6b7280">二次封装的表格/表单/弹窗</text>
+  <rect x="585" y="100" width="240" height="54" rx="8" fill="#ffffff" stroke="#6366f1"/>
+  <text x="705" y="122" text-anchor="middle" font-size="11" font-weight="bold" fill="#3730a3">组件库（Element Plus / AntDV）</text>
+  <text x="705" y="142" text-anchor="middle" font-size="10" fill="#6b7280">按需自动引入，业务不直接依赖细节</text>
+
+  <rect x="30" y="192" width="405" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="232" y="218" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">按需引入与自动导入</text>
+  <text x="52" y="244" font-size="11" fill="#065f46">使用 `unplugin-vue-components` 自动按需注册组件</text>
+  <text x="52" y="266" font-size="11" fill="#065f46">使用 `unplugin-auto-import` 自动导入 `ElMessage` 等 API</text>
+  <text x="52" y="288" font-size="11" fill="#065f46">为自动生成的类型声明文件加入版本控制</text>
+  <text x="52" y="312" font-size="10" fill="#6b7280">产物对比：全量引入常见 800KB+，按需通常可降到一半以下</text>
+  <text x="52" y="330" font-size="10" fill="#6b7280">验证：构建后查看产物体积与组件是否真正按需打包</text>
+
+  <rect x="460" y="192" width="390" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="655" y="218" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">二次封装的边界</text>
+  <text x="482" y="244" font-size="11" fill="#92400e">该封装：分页表格、表单校验、上传、字典下拉</text>
+  <text x="482" y="266" font-size="11" fill="#92400e">不该封装：仅为了改名而包一层（增加维护成本）</text>
+  <text x="482" y="288" font-size="11" fill="#92400e">统一：props 命名、事件名、插槽名要有约定</text>
+  <text x="482" y="312" font-size="10" fill="#6b7280">原则：封装解决"重复且易错"的问题，而不是"看起来统一"</text>
+  <text x="482" y="330" font-size="10" fill="#6b7280">文档：每个基础组件在项目内写一段使用示例</text>
+
+  <rect x="30" y="358" width="820" height="50" rx="10" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="450" y="386" text-anchor="middle" font-size="11" fill="#374151">验收：新增一个基础组件并在业务页使用，确认自动导入生效、产物体积未明显增长、类型提示正常。</text>
+</svg>
