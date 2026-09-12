@@ -216,8 +216,13 @@ public Consumer<OrderCreatedEvent> orderIn(OrderIdempotentService idempotentServ
 
 Stream 解决的是“**编程模型统一**”，底层可靠性仍取决于 MQ 本身：
 
-- Topic/Queue、生产者确认、消费者 offset 概念见 [消息队列专题：Kafka](../../MessageQueue/Kafka/index.md) 与 [RabbitMQ](../../MessageQueue/RabbitMQ/index.md)。
+- Topic/Queue、生产者确认、消费者 offset 概念见 [消息队列专题：Kafka 概述](../../MessageQueue/Kafka/index.md) 与 [RabbitMQ](../../MessageQueue/RabbitMQ/index.md)。
 - 可靠投递与幂等设计见 [可靠投递](../../MessageQueue/Reliability/index.md) 与 [消费幂等](../../MessageQueue/Idempotency/index.md)。
+- Kafka 端的分区副本、消费组协议、事务与集群运维见 [Kafka 深入专题](../../MessageQueue/Kafka/index.md)、[Kafka 分区与副本机制](../../MessageQueue/Kafka/PartitionReplica/index.md)、[Kafka 集群部署、运维与监控](../../MessageQueue/Kafka/Cluster/index.md)。
+
+::: info Kafka 版本提示（2026-09 核对）
+Kafka 当前稳定版为 **4.3.1**，4.0 起仅支持 **KRaft** 模式（ZooKeeper 已移除），Broker 与工具需要 Java 17+。Binder 侧需选择与 broker 版本兼容的 Kafka Binder，并注意 4.0 起 `linger.ms` 默认值由 0 变为 5、新版消费组协议（KIP-848）已 GA，详见 [Kafka 版本演进与迁移](../../MessageQueue/Kafka/Version/index.md)。
+:::
 
 ## 易错点与最佳实践
 

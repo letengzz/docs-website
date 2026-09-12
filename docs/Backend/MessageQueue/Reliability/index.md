@@ -120,11 +120,13 @@ def callback(ch, method, properties, body):
 1. RabbitMQ 管理界面观察 `ready` / `unacked` 计数与队列持久化标志。
 2. Kafka 用 `kafka-consumer-groups.sh --describe --group order-group` 查看消费组 `CURRENT-OFFSET` 与 `LOG-END-OFFSET`。
 3. 杀掉 Broker 再重启（测试环境），确认已确认的消息未丢、未确认的消息可重投。
+4. Kafka 事务场景补充验证：以 `isolation.level=read_committed` 消费，确认未提交事务的消息不可见，详见 [Kafka 可靠性与 Exactly-Once](../Kafka/Reliability/index.md)。
 
 ## 参考资料
 
 - Kafka 生产者配置：https://kafka.apache.org/documentation/#producerconfigs
-- Kafka 消费提交：https://kafka.apache.org/22/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html
+- Kafka 消费提交（4.3 Javadoc）：https://kafka.apache.org/43/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html
+- Kafka 可靠性与 Exactly-Once（本库）：[Kafka 可靠性与 Exactly-Once](../Kafka/Reliability/index.md)
 - RabbitMQ Publisher Confirms：https://www.rabbitmq.com/confirms.html
 - RabbitMQ Quorum Queues：https://www.rabbitmq.com/quorum-queues.html
 - RabbitMQ 消费确认：https://www.rabbitmq.com/consumers.html

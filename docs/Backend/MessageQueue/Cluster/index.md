@@ -190,15 +190,17 @@ connection = pika.BlockingConnection(params)
 
 ## 验证方式
 
-1. Kafka：`kafka-metadata.sh describe` 显示 3 节点；`kafka-topics.sh --describe` 显示 `Replicas=3, Isr=3`。
+1. Kafka：`kafka-metadata-quorum.sh --bootstrap-server localhost:9092 describe --status` 显示 3 个 Voter；`kafka-topics.sh --describe` 显示 `Replicas=3, Isr=3`。
 2. RabbitMQ：`rabbitmqctl cluster_status` 显示 3 个 running 节点；管理界面 Overview 显示集群模式。
 3. 故障演练：逐台停止节点，确认生产消费不中断、消息不丢；恢复节点后数据自动同步。
 4. 重启全部节点，确认元数据与消息都在（持久化验证）。
+5. Kafka 生产级部署、扩缩容、安全与监控指标清单见 [Kafka 集群部署、运维与监控](../Kafka/Cluster/index.md)。
 
 ## 参考资料
 
 - Kafka KRaft 配置：https://kafka.apache.org/documentation/#kraft
 - Kafka 部署与副本机制：https://kafka.apache.org/documentation/#replication
+- Kafka 4.3 监控指标：https://kafka.apache.org/43/operations/monitoring/
 - RabbitMQ 集群指南：https://www.rabbitmq.com/clustering.html
 - RabbitMQ Quorum Queues：https://www.rabbitmq.com/quorum-queues.html
 - RabbitMQ 网络分区处理：https://www.rabbitmq.com/partitions.html

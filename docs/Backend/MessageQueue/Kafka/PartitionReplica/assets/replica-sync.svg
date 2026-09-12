@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">分区副本：Leader、Follower、ISR 与高水位</text>
+
+  <!-- Leader -->
+  <rect x="40" y="70" width="330" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="205" y="98" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">Broker 1：Leader（P0）</text>
+  <text x="205" y="124" text-anchor="middle" font-size="11" fill="#374151">所有生产写入与消费者读取都走 Leader</text>
+  <rect x="65" y="140" width="280" height="34" rx="6" fill="#ffffff" stroke="#10b981"/>
+  <text x="205" y="162" text-anchor="middle" font-size="11" fill="#065f46">日志：0 1 2 3 4 5 6 7 8 9  →  LEO = 10</text>
+  <rect x="65" y="184" width="280" height="34" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="205" y="206" text-anchor="middle" font-size="11" fill="#92400e">高水位 HW = 8：消费者只能读到 0~7</text>
+
+  <!-- Follower 1 -->
+  <rect x="410" y="70" width="200" height="180" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="510" y="98" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">Broker 2：Follower</text>
+  <rect x="430" y="140" width="160" height="34" rx="6" fill="#ffffff" stroke="#3b82f6"/>
+  <text x="510" y="162" text-anchor="middle" font-size="11" fill="#1e3a8a">LEO = 9</text>
+  <text x="510" y="196" text-anchor="middle" font-size="11" fill="#1e3a8a">在 ISR 内（同步中）</text>
+  <text x="510" y="120" text-anchor="middle" font-size="11" fill="#6b7280">主动 fetch 拉取 Leader 数据</text>
+  <text x="510" y="228" text-anchor="middle" font-size="10" fill="#6b7280">滞后超过 replica.lag.time.max.ms=30s</text>
+  <text x="510" y="244" text-anchor="middle" font-size="10" fill="#6b7280">才会被踢出 ISR</text>
+
+  <!-- Follower 2 落后 -->
+  <rect x="650" y="70" width="200" height="180" rx="12" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="750" y="98" text-anchor="middle" font-size="14" font-weight="bold" fill="#b91c1c">Broker 3：Follower</text>
+  <rect x="670" y="140" width="160" height="34" rx="6" fill="#ffffff" stroke="#ef4444"/>
+  <text x="750" y="162" text-anchor="middle" font-size="11" fill="#991b1b">LEO = 3</text>
+  <text x="750" y="196" text-anchor="middle" font-size="11" fill="#991b1b">已移出 ISR</text>
+  <text x="750" y="228" text-anchor="middle" font-size="10" fill="#7f1d1d">恢复同步后可重新加入 ISR</text>
+  <text x="750" y="244" text-anchor="middle" font-size="10" fill="#7f1d1d">ISR = {Broker1, Broker2}</text>
+
+  <!-- 关系 -->
+  <path d="M 375 150 H 405" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#rA)"/>
+  <path d="M 615 150 H 645" stroke="#ef4444" stroke-width="2.5" fill="none" stroke-dasharray="6 4" marker-end="url(#rB)"/>
+  <text x="510" y="288" text-anchor="middle" font-size="12" fill="#4b5563">Follower 只从 Leader 拉取；只有 ISR 中的副本才有资格被选为 Leader</text>
+
+  <!-- 决策表 -->
+  <rect x="40" y="300" width="810" height="110" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="60" y="326" font-size="13" font-weight="bold" fill="#1f2937">写入确认与可用性权衡</text>
+  <text x="60" y="352" font-size="11" fill="#374151">acks=all + min.insync.replicas=2：至少 2 个副本写入才成功，挂 1 个副本仍可写，数据不丢</text>
+  <text x="60" y="374" font-size="11" fill="#374151">acks=all + min.insync.replicas=1：只等 Leader 写入，Leader 挂掉可能丢最近数据（等于 acks=1 的风险）</text>
+  <text x="60" y="396" font-size="11" fill="#374151">ISR 小于 min.insync.replicas 时生产者报 NotEnoughReplicas，此时「拒绝写入」比「丢数据」更安全</text>
+
+  <defs>
+    <marker id="rA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="rB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#ef4444"/>
+    </marker>
+  </defs>
+</svg>

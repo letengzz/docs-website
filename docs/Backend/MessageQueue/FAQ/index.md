@@ -130,10 +130,12 @@ rabbitmqadmin list connections name state
 1. 人为制造一次消费者崩溃，确认消息不丢、可能重复，且重启后自动恢复。
 2. 制造一次 Broker 宕机，确认集群自动选主、客户端自动重连。
 3. 灌入压测流量，确认监控指标正常、LAG 能回落、无消息丢失。
+4. 按 [Kafka 常见问题与最佳实践](../Kafka/FAQ/index.md) 的排查地图逐项核对 Kafka 侧的 Lag、ISR、Controller 指标。
 
 ## 参考资料
 
 - Kafka 运维与监控：https://kafka.apache.org/documentation/#monitoring
 - Kafka 消费组管理：https://kafka.apache.org/documentation/#basic_ops_consumer_group
+- Kafka 深入专题（本库）：[Kafka 常见问题与最佳实践](../Kafka/FAQ/index.md)
 - RabbitMQ 监控与指标：https://www.rabbitmq.com/monitoring.html
 - RabbitMQ 故障排查：https://www.rabbitmq.com/troubleshooting.html

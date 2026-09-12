@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">生产级 KRaft 集群：Controller 与 Broker 分离部署</text>
+
+  <!-- Controller quorum -->
+  <rect x="30" y="60" width="820" height="140" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="440" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#6d28d9">Controller Quorum（奇数节点，Raft 多数派）</text>
+  <rect x="60" y="104" width="230" height="76" rx="8" fill="#ffffff" stroke="#8b5cf6"/>
+  <text x="175" y="128" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b21b6">node.id=1  Controller</text>
+  <text x="175" y="148" text-anchor="middle" font-size="10" fill="#4b5563">controller.listener.names=CONTROLLER</text>
+  <text x="175" y="166" text-anchor="middle" font-size="10" fill="#4b5563">端口 9093</text>
+  <rect x="325" y="104" width="230" height="76" rx="8" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="440" y="128" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3">node.id=2  Controller</text>
+  <text x="440" y="148" text-anchor="middle" font-size="10" fill="#4b5563">Active Controller（任意时刻仅 1 个）</text>
+  <text x="440" y="166" text-anchor="middle" font-size="10" fill="#4b5563">端口 9093</text>
+  <rect x="590" y="104" width="230" height="76" rx="8" fill="#ffffff" stroke="#8b5cf6"/>
+  <text x="705" y="128" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b21b6">node.id=3  Controller</text>
+  <text x="705" y="148" text-anchor="middle" font-size="10" fill="#4b5563">元数据写入 __cluster_metadata</text>
+  <text x="705" y="166" text-anchor="middle" font-size="10" fill="#4b5563">端口 9093</text>
+  <text x="440" y="194" text-anchor="middle" font-size="10" fill="#6b7280">controller.quorum.voters=1@k1:9093,2@k2:9093,3@k3:9093（集群内三节点必须完全一致）</text>
+
+  <!-- Brokers -->
+  <rect x="30" y="220" width="820" height="140" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="440" y="246" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">Broker（数据面，可独立扩容）</text>
+  <rect x="60" y="264" width="230" height="76" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="175" y="288" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">node.id=101  Broker</text>
+  <text x="175" y="308" text-anchor="middle" font-size="10" fill="#374151">PLAINTEXT 9092</text>
+  <text x="175" y="326" text-anchor="middle" font-size="10" fill="#374151">P0 Leader / P1 Follower</text>
+  <rect x="325" y="264" width="230" height="76" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="440" y="288" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">node.id=102  Broker</text>
+  <text x="440" y="308" text-anchor="middle" font-size="10" fill="#374151">PLAINTEXT 9092</text>
+  <text x="440" y="326" text-anchor="middle" font-size="10" fill="#374151">P1 Leader / P2 Follower</text>
+  <rect x="590" y="264" width="230" height="76" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="705" y="288" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">node.id=103  Broker</text>
+  <text x="705" y="308" text-anchor="middle" font-size="10" fill="#374151">PLAINTEXT 9092</text>
+  <text x="705" y="326" text-anchor="middle" font-size="10" fill="#374151">P2 Leader / P0 Follower</text>
+
+  <!-- 客户端 -->
+  <rect x="30" y="380" width="820" height="52" rx="10" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="440" y="404" text-anchor="middle" font-size="12" fill="#1e3a8a">客户端只连 Broker（bootstrap.servers=k1:9092,k2:9092,k3:9092），元数据由 Broker 转发自 Controller</text>
+  <text x="440" y="424" text-anchor="middle" font-size="10" fill="#6b7280">注意：advertised.listeners 必须是客户端可达的地址，容器/云环境写成宿主机 IP 或域名是常见踩坑点</text>
+</svg>

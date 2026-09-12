@@ -6,7 +6,7 @@
 
 | 维度 | Kafka | RabbitMQ | RocketMQ | Pulsar |
 | --- | --- | --- | --- | --- |
-| 当前稳定版（2026-08） | 4.3.x | 4.3.x | 5.x | 4.x |
+| 当前稳定版（2026-09 核对） | 4.3.1（仅 KRaft） | 4.3.x | 5.x | 4.x |
 | 开发语言 | Scala/Java | Erlang | Java | Java |
 | 消息模型 | Topic + Partition + Log | Exchange + Queue | Topic + Queue | Topic + Partition，存算分离 |
 | 路由能力 | 弱（仅 Topic） | 强（direct/topic/fanout/headers） | 中（Tag + 过滤） | 弱 |
@@ -88,9 +88,13 @@
 
 ## 验证方式
 
-1. 用生产/消费 Demo 实测两种 MQ 的端到端延迟与吞吐（见 [Kafka 入门](../Kafka/index.md)、[RabbitMQ 入门](../RabbitMQ/index.md)）。
+1. 用生产/消费 Demo 实测两种 MQ 的端到端延迟与吞吐（见 [Kafka 概述](../Kafka/index.md)、[RabbitMQ 入门](../RabbitMQ/index.md)）。
 2. 对照选型打分表，写出目标场景的得分与结论。
 3. 结合团队现状做一次小规模试点（1 个业务 + 1 个 Topic/Exchange），再决定全面推广。
+
+::: tip 选型之后的落地
+确定使用 Kafka 后，集群形态、分区副本、可靠性与运维细节见 [Kafka 深入](../Kafka/index.md)（含 [版本演进与迁移](../Kafka/Version/index.md)）；RabbitMQ 侧的集群与死信实践见 [RabbitMQ 入门](../RabbitMQ/index.md)。
+:::
 
 ## 参考资料
 

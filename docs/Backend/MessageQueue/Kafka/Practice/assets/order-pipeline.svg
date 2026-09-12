@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">实战架构：订单事件管道（orders + DLQ + 监控）</text>
+
+  <!-- 生产端 -->
+  <rect x="30" y="70" width="170" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="115" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">订单服务</text>
+  <text x="115" y="122" text-anchor="middle" font-size="10" fill="#3730a3">创建订单成功</text>
+  <text x="115" y="142" text-anchor="middle" font-size="10" fill="#3730a3">本地事务写库</text>
+  <text x="115" y="162" text-anchor="middle" font-size="10" fill="#3730a3">再发事件（幂等生产者）</text>
+  <text x="115" y="180" text-anchor="middle" font-size="10" fill="#6b7280">key = orderId</text>
+  <path d="M 202 130 H 244" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#prA)"/>
+
+  <!-- Kafka -->
+  <rect x="246" y="70" width="230" height="250" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="361" y="96" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">Kafka（3 节点 KRaft）</text>
+  <rect x="266" y="112" width="190" height="60" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="361" y="134" text-anchor="middle" font-size="11" font-weight="bold" fill="#065f46">orders（6 分区，3 副本）</text>
+  <text x="361" y="154" text-anchor="middle" font-size="10" fill="#374151">key=orderId 保证同单有序</text>
+  <rect x="266" y="184" width="190" height="56" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="361" y="206" text-anchor="middle" font-size="11" font-weight="bold" fill="#065f46">orders.DLQ（3 分区，3 副本）</text>
+  <text x="361" y="226" text-anchor="middle" font-size="10" fill="#374151">重试 3 次仍失败的消息</text>
+  <rect x="266" y="252" width="190" height="50" rx="8" fill="#f0fdf4" stroke="#34d399"/>
+  <text x="361" y="272" text-anchor="middle" font-size="10" fill="#065f46">min.insync.replicas=2</text>
+  <text x="361" y="290" text-anchor="middle" font-size="10" fill="#065f46">retention.ms=7 天</text>
+
+  <path d="M 478 140 H 520" stroke="#10b981" stroke-width="2.5" fill="none" marker-end="url(#grA)"/>
+  <path d="M 478 212 H 520" stroke="#ef4444" stroke-width="2.5" fill="none" marker-end="url(#rdA)"/>
+  <path d="M 478 276 H 520" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6 4" fill="none" marker-end="url(#amA)"/>
+
+  <!-- 消费端 -->
+  <rect x="522" y="70" width="200" height="94" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="622" y="96" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">库存消费者</text>
+  <text x="622" y="118" text-anchor="middle" font-size="10" fill="#92400e">扣减库存 + 幂等表（orderId 唯一键）</text>
+  <text x="622" y="136" text-anchor="middle" font-size="10" fill="#92400e">手动提交位移</text>
+  <text x="622" y="154" text-anchor="middle" font-size="10" fill="#6b7280">消费组 inventory-group</text>
+
+  <rect x="522" y="174" width="200" height="94" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="622" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">通知消费者</text>
+  <text x="622" y="222" text-anchor="middle" font-size="10" fill="#1e3a8a">发送短信 / 站内信</text>
+  <text x="622" y="240" text-anchor="middle" font-size="10" fill="#1e3a8a">失败进 DLQ</text>
+  <text x="622" y="258" text-anchor="middle" font-size="10" fill="#6b7280">消费组 notify-group</text>
+
+  <rect x="522" y="278" width="200" height="94" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="622" y="304" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">数仓消费者</text>
+  <text x="622" y="326" text-anchor="middle" font-size="10" fill="#5b21b6">写 ODS 明细表</text>
+  <text x="622" y="344" text-anchor="middle" font-size="10" fill="#5b21b6">允许轻微延迟</text>
+  <text x="622" y="362" text-anchor="middle" font-size="10" fill="#6b7280">消费组 dw-group（组间广播）</text>
+
+  <!-- 平台能力 -->
+  <rect x="742" y="70" width="128" height="302" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="806" y="96" text-anchor="middle" font-size="12" font-weight="bold" fill="#1f2937">平台能力</text>
+  <text x="806" y="126" text-anchor="middle" font-size="10" fill="#4b5563">监控</text>
+  <text x="806" y="144" text-anchor="middle" font-size="10" fill="#6b7280">Lag / ISR / 磁盘</text>
+  <text x="806" y="174" text-anchor="middle" font-size="10" fill="#4b5563">告警</text>
+  <text x="806" y="192" text-anchor="middle" font-size="10" fill="#6b7280">Lag 持续增长</text>
+  <text x="806" y="222" text-anchor="middle" font-size="10" fill="#4b5563">重放</text>
+  <text x="806" y="240" text-anchor="middle" font-size="10" fill="#6b7280">reset-offsets</text>
+  <text x="806" y="270" text-anchor="middle" font-size="10" fill="#4b5563">DLQ 修复</text>
+  <text x="806" y="288" text-anchor="middle" font-size="10" fill="#6b7280">人工重投</text>
+  <text x="806" y="318" text-anchor="middle" font-size="10" fill="#4b5563">容量</text>
+  <text x="806" y="336" text-anchor="middle" font-size="10" fill="#6b7280">分区数规划</text>
+
+  <!-- 验证 -->
+  <rect x="30" y="380" width="840" height="70" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="50" y="406" font-size="12" font-weight="bold" fill="#1f2937">端到端验证要点</text>
+  <text x="50" y="428" font-size="11" fill="#374151">① 生产 1000 条 → ② 三个消费组各自消费到 1000 条 → ③ 制造失败消息进入 DLQ → ④ kill 一个 Broker 后继续生产不报错</text>
+  <text x="50" y="446" font-size="11" fill="#374151">⑤ kafka-consumer-groups.sh --describe 的 LAG 回落为 0 → ⑥ 重复投递同一 orderId，库存只扣减一次</text>
+
+  <defs>
+    <marker id="prA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="grA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <marker id="rdA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#ef4444"/>
+    </marker>
+    <marker id="amA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+</svg>

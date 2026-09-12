@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">消费组、分区分配与位移提交</text>
+
+  <!-- Topic -->
+  <rect x="30" y="70" width="300" height="300" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="180" y="98" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">Topic: orders（3 分区）</text>
+  <rect x="55" y="118" width="250" height="60" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="180" y="142" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">Partition 0</text>
+  <text x="180" y="163" text-anchor="middle" font-size="10" fill="#374151">offset 0 → 99（已提交 60）</text>
+  <rect x="55" y="190" width="250" height="60" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="180" y="214" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">Partition 1</text>
+  <text x="180" y="235" text-anchor="middle" font-size="10" fill="#374151">offset 0 → 120（已提交 120）</text>
+  <rect x="55" y="262" width="250" height="60" rx="8" fill="#ffffff" stroke="#10b981"/>
+  <text x="180" y="286" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">Partition 2</text>
+  <text x="180" y="307" text-anchor="middle" font-size="10" fill="#374151">offset 0 → 80（已提交 45）</text>
+  <text x="180" y="348" text-anchor="middle" font-size="11" fill="#6b7280">分区是并行上限：分区数 ≥ 组内消费者数才有意义</text>
+
+  <!-- 消费组 A -->
+  <rect x="370" y="70" width="240" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="490" y="98" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">消费组 A（order-service）</text>
+  <rect x="390" y="112" width="200" height="44" rx="8" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="490" y="132" text-anchor="middle" font-size="11" fill="#92400e">消费者 A1 ← P0</text>
+  <text x="490" y="149" text-anchor="middle" font-size="10" fill="#6b7280">分摊消费</text>
+  <rect x="390" y="164" width="200" height="44" rx="8" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="490" y="184" text-anchor="middle" font-size="11" fill="#92400e">消费者 A2 ← P1 + P2</text>
+  <text x="490" y="201" text-anchor="middle" font-size="10" fill="#6b7280">成员变化触发 Rebalance</text>
+
+  <!-- 消费组 B -->
+  <rect x="370" y="240" width="240" height="130" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="490" y="268" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">消费组 B（data-warehouse）</text>
+  <rect x="390" y="282" width="200" height="44" rx="8" fill="#ffffff" stroke="#3b82f6"/>
+  <text x="490" y="302" text-anchor="middle" font-size="11" fill="#1e3a8a">消费者 B1 ← P0 + P1 + P2</text>
+  <text x="490" y="319" text-anchor="middle" font-size="10" fill="#6b7280">独立组：全量广播，互不影响</text>
+  <text x="490" y="352" text-anchor="middle" font-size="11" fill="#6b7280">「组内分摊、组间广播」是 Kafka 消费模型的核心</text>
+
+  <!-- 位移 -->
+  <rect x="630" y="70" width="220" height="300" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="740" y="98" text-anchor="middle" font-size="14" font-weight="bold" fill="#6d28d9">位移与协调</text>
+  <rect x="650" y="112" width="180" height="72" rx="8" fill="#ffffff" stroke="#8b5cf6"/>
+  <text x="740" y="134" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b21b6">__consumer_offsets</text>
+  <text x="740" y="154" text-anchor="middle" font-size="10" fill="#4b5563">按 group + 分区保存已提交位移</text>
+  <text x="740" y="172" text-anchor="middle" font-size="10" fill="#4b5563">50 分区（可调）</text>
+  <rect x="650" y="196" width="180" height="72" rx="8" fill="#ffffff" stroke="#8b5cf6"/>
+  <text x="740" y="218" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b21b6">Group Coordinator</text>
+  <text x="740" y="238" text-anchor="middle" font-size="10" fill="#4b5563">4.0 起为新版协调器实现</text>
+  <text x="740" y="256" text-anchor="middle" font-size="10" fill="#4b5563">支持 KIP-848 增量重平衡</text>
+  <rect x="650" y="280" width="180" height="72" rx="8" fill="#ffffff" stroke="#8b5cf6"/>
+  <text x="740" y="302" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b21b6">Lag = 高水位 - 已提交位移</text>
+  <text x="740" y="322" text-anchor="middle" font-size="10" fill="#4b5563">积压核心指标</text>
+  <text x="740" y="340" text-anchor="middle" font-size="10" fill="#4b5563">kafka-consumer-groups.sh --describe</text>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="460" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Kafka 问题排查地图：先定位环节，再动手调参</text>
+
+  <rect x="330" y="56" width="220" height="50" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="440" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">现象是什么？</text>
+  <text x="440" y="98" text-anchor="middle" font-size="10" fill="#6b7280">先看指标与日志，再改配置</text>
+
+  <path d="M 440 108 V 132" stroke="#9ca3af" stroke-width="2" fill="none"/>
+  <line x1="100" y1="132" x2="780" y2="132" stroke="#9ca3af" stroke-width="2"/>
+
+  <!-- 四个分支 -->
+  <path d="M 100 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fA)"/>
+  <rect x="30" y="160" width="180" height="120" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="120" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">① 消息丢失</text>
+  <text x="120" y="208" text-anchor="middle" font-size="10" fill="#7f1d1d">acks / min.insync.replicas</text>
+  <text x="120" y="226" text-anchor="middle" font-size="10" fill="#7f1d1d">自动提交位移</text>
+  <text x="120" y="244" text-anchor="middle" font-size="10" fill="#7f1d1d">unclean 选举</text>
+  <text x="120" y="266" text-anchor="middle" font-size="10" fill="#6b7280">→ 查生产端回调 + Broker 日志</text>
+
+  <path d="M 330 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fA)"/>
+  <rect x="250" y="160" width="180" height="120" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="340" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">② 重复 / 乱序</text>
+  <text x="340" y="208" text-anchor="middle" font-size="10" fill="#92400e">Rebalance 位移回退</text>
+  <text x="340" y="226" text-anchor="middle" font-size="10" fill="#92400e">max.poll.interval 超时</text>
+  <text x="340" y="244" text-anchor="middle" font-size="10" fill="#92400e">跨分区无序</text>
+  <text x="340" y="266" text-anchor="middle" font-size="10" fill="#6b7280">→ 业务侧幂等 + 按 key 分区</text>
+
+  <path d="M 470 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fA)"/>
+  <rect x="470" y="160" width="180" height="120" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="560" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">③ 积压 / Lag 高</text>
+  <text x="560" y="208" text-anchor="middle" font-size="10" fill="#1e3a8a">消费线程数 vs 分区数</text>
+  <text x="560" y="226" text-anchor="middle" font-size="10" fill="#1e3a8a">单条耗时 / 外部依赖</text>
+  <text x="560" y="244" text-anchor="middle" font-size="10" fill="#1e3a8a">分区热点</text>
+  <text x="560" y="266" text-anchor="middle" font-size="10" fill="#6b7280">→ 加消费者、扩分区、批处理</text>
+
+  <path d="M 700 132 V 156" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#fA)"/>
+  <rect x="670" y="160" width="180" height="120" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="760" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#6d28d9">④ 集群异常</text>
+  <text x="760" y="208" text-anchor="middle" font-size="10" fill="#5b21b6">ISR 反复收缩</text>
+  <text x="760" y="226" text-anchor="middle" font-size="10" fill="#5b21b6">Controller 切换</text>
+  <text x="760" y="244" text-anchor="middle" font-size="10" fill="#5b21b6">磁盘写满 / 请求排队</text>
+  <text x="760" y="266" text-anchor="middle" font-size="10" fill="#6b7280">→ 看 JMX + server.log</text>
+
+  <!-- 通用四步 -->
+  <rect x="30" y="306" width="820" height="126" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="332" font-size="13" font-weight="bold" fill="#1f2937">通用排查四步法</text>
+  <text x="50" y="358" font-size="11" fill="#374151">1. 看现象范围：单分区 / 单消费者 / 单 Broker / 全集群——范围决定是业务代码问题还是集群问题。</text>
+  <text x="50" y="382" font-size="11" fill="#374151">2. 看指标：Lag、UnderReplicatedPartitions、ActiveControllerCount、OfflinePartitionsCount、磁盘与网络。</text>
+  <text x="50" y="406" font-size="11" fill="#374151">3. 看日志：server.log / controller.log 中搜 ERROR、NotEnoughReplicas、Rebalance、OffsetOutOfRange。</text>
+  <text x="50" y="428" font-size="11" fill="#374151">4. 再动手：一次只改一个参数并记录前后指标，避免多个变量同时变化导致无法归因。</text>
+
+  <defs>
+    <marker id="fA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

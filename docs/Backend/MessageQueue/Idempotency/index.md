@@ -121,6 +121,10 @@ WHERE order_no = 'ORDER-1001' AND version = 0;
 
 Kafka 重复消费通常发生在重平衡或“处理成功但提交失败”之后。配合去重表即可：
 
+::: tip 补充
+如果希望连「重复写入下游 Topic」都避免，可用事务把「消费位移提交」和「下游写入」绑定成原子操作（`sendOffsetsToTransaction` + `isolation.level=read_committed`），详见 [Kafka 可靠性与 Exactly-Once](../Kafka/Reliability/index.md)。
+:::
+
 ```java
 while (true) {
     ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(500));

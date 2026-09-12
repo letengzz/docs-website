@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="420" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Kafka 生产者发送流程与内部结构</text>
+
+  <rect x="30" y="70" width="120" height="70" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="90" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">send()</text>
+  <text x="90" y="122" text-anchor="middle" font-size="11" fill="#4b5563">业务线程调用</text>
+
+  <path d="M 152 105 H 186" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#pA)"/>
+
+  <rect x="188" y="60" width="126" height="90" rx="10" fill="#ffffff" stroke="#6366f1"/>
+  <text x="251" y="84" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">拦截器链</text>
+  <text x="251" y="104" text-anchor="middle" font-size="10" fill="#4b5563">interceptors</text>
+  <text x="251" y="122" text-anchor="middle" font-size="10" fill="#4b5563">埋点 / 改写</text>
+  <text x="251" y="140" text-anchor="middle" font-size="10" fill="#6b7280">ProducerInterceptor</text>
+
+  <path d="M 316 105 H 350" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#pA)"/>
+
+  <rect x="352" y="60" width="126" height="90" rx="10" fill="#ffffff" stroke="#6366f1"/>
+  <text x="415" y="84" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">序列化器</text>
+  <text x="415" y="104" text-anchor="middle" font-size="10" fill="#4b5563">key / value</text>
+  <text x="415" y="122" text-anchor="middle" font-size="10" fill="#4b5563">String / JSON / Avro</text>
+  <text x="415" y="140" text-anchor="middle" font-size="10" fill="#6b7280">Serializer</text>
+
+  <path d="M 480 105 H 514" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#pA)"/>
+
+  <rect x="516" y="60" width="130" height="90" rx="10" fill="#ffffff" stroke="#6366f1"/>
+  <text x="581" y="84" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">分区器</text>
+  <text x="581" y="104" text-anchor="middle" font-size="10" fill="#4b5563">key 存在：murmur2 取模</text>
+  <text x="581" y="122" text-anchor="middle" font-size="10" fill="#4b5563">key 为空：粘性轮询</text>
+  <text x="581" y="140" text-anchor="middle" font-size="10" fill="#6b7280">Partitioner</text>
+
+  <path d="M 648 105 H 682" stroke="#6366f1" stroke-width="2.5" fill="none" marker-end="url(#pA)"/>
+
+  <rect x="684" y="55" width="186" height="100" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="777" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">RecordAccumulator</text>
+  <text x="777" y="102" text-anchor="middle" font-size="10" fill="#065f46">每个分区一个双端队列（批次）</text>
+  <text x="777" y="120" text-anchor="middle" font-size="10" fill="#065f46">batch.size=16KB</text>
+  <text x="777" y="138" text-anchor="middle" font-size="10" fill="#065f46">linger.ms=5（4.0 起默认 5ms）</text>
+
+  <!-- Sender -->
+  <rect x="684" y="190" width="186" height="86" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="777" y="214" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">Sender 线程</text>
+  <text x="777" y="236" text-anchor="middle" font-size="10" fill="#92400e">按 broker 聚合请求</text>
+  <text x="777" y="254" text-anchor="middle" font-size="10" fill="#92400e">max.in.flight=5</text>
+  <text x="777" y="270" text-anchor="middle" font-size="10" fill="#92400e">失败重试 / 幂等序列号</text>
+
+  <path d="M 777 158 V 188" stroke="#f59e0b" stroke-width="2.5" fill="none" marker-end="url(#oA)"/>
+
+  <rect x="470" y="210" width="170" height="120" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="555" y="236" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">Broker Leader</text>
+  <text x="555" y="258" text-anchor="middle" font-size="10" fill="#5b21b6">写入分区日志</text>
+  <text x="555" y="276" text-anchor="middle" font-size="10" fill="#5b21b6">副本同步后按 acks 响应</text>
+  <text x="555" y="294" text-anchor="middle" font-size="10" fill="#5b21b6">acks=0/1/all</text>
+  <text x="555" y="314" text-anchor="middle" font-size="10" fill="#6b7280">默认 acks=all + 幂等</text>
+
+  <path d="M 682 233 H 644" stroke="#8b5cf6" stroke-width="2.5" fill="none" marker-end="url(#vA)"/>
+
+  <rect x="30" y="210" width="400" height="160" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="50" y="236" font-size="13" font-weight="bold" fill="#1f2937">关键结论</text>
+  <text x="50" y="262" font-size="11" fill="#374151">1. send() 只是「放进累加器」，默认不同步等待 Broker（异步）。</text>
+  <text x="50" y="286" font-size="11" fill="#374151">2. 吞吐靠批量：linger.ms 与 batch.size 是核心旋钮，压缩作用于整个批次。</text>
+  <text x="50" y="310" font-size="11" fill="#374151">3. 可靠性靠 acks=all + enable.idempotence=true（Kafka 3.0 起默认开启）。</text>
+  <text x="50" y="334" font-size="11" fill="#374151">4. 顺序性：同一分区 + max.in.flight≤5 + 幂等，重试不会乱序。</text>
+  <text x="50" y="358" font-size="11" fill="#374151">5. delivery.timeout.ms=120000 是发送总超时，覆盖重试与批次等待。</text>
+
+  <defs>
+    <marker id="pA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6366f1"/>
+    </marker>
+    <marker id="oA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/>
+    </marker>
+    <marker id="vA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+</svg>
