@@ -1,6 +1,6 @@
 # Vue3 响应式原理
 
-响应式（Reactivity）是 Vue 的核心引擎：数据变化时，依赖它的界面和副作用函数会自动更新。本节从 `Proxy` 出发，讲清 `reactive`、`ref`、`computed`、`watch` 背后的依赖收集与触发机制。
+响应式（Reactivity）是 Vue 的核心引擎：数据变化时，依赖它的界面和副作用函数会自动更新。
 
 ::: info 适用版本
 本节基于 Vue 3.5.x（当前稳定版，最新补丁 3.5.40）。Vue 3 的响应式系统基于 ES6 `Proxy`，不再依赖 Vue 2 的 `Object.defineProperty`。

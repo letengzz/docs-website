@@ -127,6 +127,7 @@ onErrorCaptured((err, instance, info) => {
 4. 在 `onUpdated` 里修改响应式数据，触发下一次更新，形成死循环。
 5. 在 `setup` 之外（如异步回调内）调用 `onMounted`，钩子不会被注册并报警告。
 6. keep-alive 组件以为卸载了，其实只是 deactivated，继续执行了 `onUnmounted` 的清理逻辑导致状态丢失。
+
 :::
 
 ## 验证方式

@@ -4,6 +4,7 @@
 - [Vue3 创建工程](CreateProject/index.md)
 - [Vue3 基本操作](BasicOperations/index.md)
 - [Vue3 核心语法](CoreGrammar/index.md)
+- [Vue3 响应式原理](Reactivity/index.md)
 - [Vue3 路由](Router/index.md)
 - [Vue3 Pinia](Pinia/index.md)
 - [Vue3 组件通信](ComponentCommunication/index.md)
@@ -17,7 +18,6 @@
 
 核心进阶：
 
-- [响应式原理](Reactivity/index.md)
 - [模板语法](TemplateSyntax/index.md)
 - [Composition API 深入](CompositionAPI/index.md)
 - [生命周期](Lifecycle/index.md)
