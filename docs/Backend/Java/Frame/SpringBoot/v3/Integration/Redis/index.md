@@ -131,3 +131,119 @@ spring.data.redis.jedis.pool.enabled=true
 spring.data.redis.jedis.pool.max-active=8
 ```
 
+## 连接池与超时配置
+
+生产环境必须显式配置连接池与超时，否则 Redis 抖动会直接拖垮应用线程池。
+
+```properties [src/main/resources/application.yml]
+spring:
+  data:
+    redis:
+      timeout: 2000ms                 # 命令超时（含网络往返）
+      lettuce:
+        pool:
+          enabled: true
+          max-active: 16              # 最大连接数
+          max-idle: 8
+          min-idle: 2                 # 保持最小空闲，减少冷启动抖动
+          max-wait: 2000ms            # 取连接超时，避免无限等待
+        shutdown-timeout: 200ms
+```
+
+::: danger 注意
+1. `timeout` 一定要设置：默认无限等待时，Redis 卡住会让 Tomcat 线程全部耗尽。
+2. `max-active` 不要盲目调大。按「单实例 QPS × 单次命令耗时」估算，一般从 8~32 起调；池过大反而增加上下文切换。
+3. 池满时的行为要明确：`max-wait` 设有限值，配合业务降级，而不是无限排队。
+:::
+
+## 接入哨兵与集群
+
+单机配置在做了高可用后会失效，需要按部署形态调整。
+
+### 哨兵模式
+
+```properties [src/main/resources/application.yml]
+spring:
+  data:
+    redis:
+      password: strong-pass
+      timeout: 2000ms
+      sentinel:
+        master: mymaster
+        nodes:
+          - 10.0.0.1:26379
+          - 10.0.0.2:26379
+          - 10.0.0.3:26379
+      lettuce:
+        pool:
+          max-active: 16
+          max-idle: 8
+          min-idle: 2
+```
+
+::: warning
+使用 Redisson 做分布式锁时，**必须单独把 Redisson 也配上哨兵**（`useSentinelServers()`）。只配 Spring Data Redis 而让 Redisson 连单机地址，切换后会出现「锁写到旧主库」的互斥失效问题。
+:::
+
+### 集群模式
+
+```properties [src/main/resources/application.yml]
+spring:
+  data:
+    redis:
+      password: strong-pass
+      cluster:
+        nodes:
+          - 10.0.0.1:7001
+          - 10.0.0.1:7002
+          - 10.0.0.1:7003
+        max-redirects: 3
+      lettuce:
+        cluster:
+          refresh:
+            adaptive: true           # 自适应拓扑刷新，故障转移后自动更新槽映射
+            period: 30s
+```
+
+::: danger 注意
+1. Cluster 模式下**多 key 命令要求 key 在同一槽**，否则报 `CROSSSLOT`；用 hash tag 解决（如 `user:{1001}:name`）。
+2. Cluster 只有 **db 0**，`SELECT` 不可用，不要沿用单机的多库设计。
+3. 必须使用支持 Cluster 的客户端（Spring Data Redis 的 Lettuce 默认支持），不要用单机模式客户端连接。
+:::
+
+## 序列化与 Key 可读性
+
+| 模板 | 序列化方式 | Key 可读性 | 适用 |
+| --- | --- | --- | --- |
+| `StringRedisTemplate` | String | 好 | **推荐**：业务代码自行 JSON 序列化 |
+| `RedisTemplate<Object, Object>`（默认） | JDK 序列化 | 差（二进制乱码） | 不建议直接用于新项目 |
+| 自定义 `RedisTemplate` + `GenericJackson2JsonRedisSerializer` | JSON | 好 | 需要直接存取对象时 |
+
+```java [推荐写法：StringRedisTemplate + JSON]
+@Autowired
+private StringRedisTemplate redis;
+
+public void saveUser(User user) {
+    redis.opsForValue().set("user:" + user.getId(), JSON.toJSONString(user), Duration.ofMinutes(30));
+}
+
+public User getUser(long id) {
+    String json = redis.opsForValue().get("user:" + id);
+    return json == null ? null : JSON.parseObject(json, User.class);
+}
+```
+
+::: tip
+用 JDK 序列化时，Key 会变成带二进制前缀的乱码，`redis-cli` 与 RedisInsight 里几乎没法排查。新项目统一用 `StringRedisTemplate` + JSON（或二进制 Protobuf）最省心。
+:::
+
+## 相关专题
+
+- [Redis 进阶导览](../../../../../../DB/NoRelational/Redis/Advanced/index.md)：复制、哨兵、Cluster、缓存设计与性能调优
+- [缓存设计](../../../../../../DB/NoRelational/Redis/Advanced/CacheDesign/index.md)：Cache Aside、TTL 抖动、多级缓存
+- [缓存防护](../../../../../../DB/NoRelational/Redis/Advanced/CacheProtection/index.md)：穿透/击穿/雪崩与热点 key
+- [分布式锁与 Lua](../../../../../../DB/NoRelational/Redis/Advanced/DistributedLock/index.md)：Redisson 可重入锁与看门狗
+- [实战：高可用缓存集群](../../../../../../DB/NoRelational/Redis/Advanced/Practice/index.md)：一主二从三哨兵 + Spring Boot 完整落地
+- [SpringBoot 整合 Sa-Token](../../../../Sa-token/index.md)：登录态存储常与 Redis 配合使用
+
+

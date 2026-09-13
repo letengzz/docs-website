@@ -17,35 +17,15 @@ redis-cli -a '密码'
 
 3. 连接超时：检查 `timeout` 配置、网络质量、慢命令占用。
 
-## 缓存三大问题
+## 缓存三大问题（速览）
 
-### 缓存穿透
+| 问题 | 成因 | 一句话解法 |
+| --- | --- | --- |
+| 缓存穿透 | 请求的数据缓存和数据库都不存在 | 空值缓存（短 TTL）+ 布隆过滤器 + 参数校验 |
+| 缓存击穿 | 热点 key 过期瞬间，大量请求直击数据库 | 互斥锁重建缓存 / 逻辑过期 |
+| 缓存雪崩 | 大量 key 同时过期或 Redis 整体不可用 | TTL 加随机抖动 + 多级缓存 + 限流降级 |
 
-请求的数据缓存和数据库都不存在。
-
-解决：
-
-1. 缓存空值，TTL 设短（如 60 秒）。
-2. 布隆过滤器拦截。
-3. 接口参数校验。
-
-### 缓存击穿
-
-热点 key 过期瞬间，大量请求直击数据库。
-
-解决：
-
-1. 热点 key 加长 TTL 或逻辑过期。
-2. 互斥锁重建缓存。
-
-### 缓存雪崩
-
-大量 key 同时过期，请求集中打到数据库。
-
-解决：
-
-1. TTL 加随机值。
-2. 多级缓存 + 限流降级。
+完整方案（含布隆过滤器命令、代码示例与验证方式）见[缓存防护](../Advanced/CacheProtection/index.md)。
 
 ## 大 Key 与热 Key
 
@@ -102,15 +82,19 @@ redis-cli --rdb /backup/redis-$(date +%F).rdb
 
 ## 主从与高可用
 
-- 主从复制：数据热备、读写分离。
-- 哨兵（Sentinel）：自动故障转移。
-- Cluster：数据分片 + 高可用。
+- [主从复制](../Advanced/Replication/index.md)：数据热备、读写分离，全量/增量同步原理
+- [哨兵高可用](../Advanced/Sentinel/index.md)：自动故障转移、客户端接入与演练
+- [Cluster 分片集群](../Advanced/Cluster/index.md)：数据分片 + 分片级高可用
 
-```txt [redis.conf]
+```properties [redis.conf]
 # 从库配置
 replicaof 10.0.0.1 6379
 replica-read-only yes
 ```
+
+::: warning
+裸主从**没有自动切换能力**，主库宕机需要人工处理；生产环境请部署哨兵（≥3 节点）或使用 Cluster。
+:::
 
 ## 安全加固
 
@@ -142,7 +126,9 @@ redis-cli monitor         # 打印所有命令（生产慎用，有性能开销�
 
 ## 相关链接
 
-- Redis 官方文档：https://redis.io/docs/
+- [Redis 进阶专题](../Advanced/index.md)：复制、哨兵、Cluster、缓存设计、性能与版本
+- [进阶常见问题](../Advanced/FAQ/index.md)：高可用、集群、锁、性能、版本类问题速查
+- Redis 官方文档：https://redis.io/docs/latest/
 - 命令参考：https://redis.io/docs/latest/commands/
 
 ## 相关专题
@@ -150,3 +136,4 @@ redis-cli monitor         # 打印所有命令（生产慎用，有性能开销�
 - [MongoDB 文档数据库](../../MongoDB/index.md)
 - [消息队列专题](../../../../Backend/MessageQueue/index.md)：Redis Pub/Sub、Stream 与 Kafka/RabbitMQ 的选型边界
 - [数据库客户端](../../../../Tools/DatabaseClients/index.md)：用 RedisInsight 可视化浏览 Key、内存分析与慢查询
+- [监控告警专题](../../../../Ops/Monitoring/index.md)：Redis 指标接入 Prometheus 与告警规则

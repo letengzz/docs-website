@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 430" width="860" height="430" font-family="PingFang SC, Microsoft YaHei, Arial, sans-serif">
+  <rect width="860" height="430" fill="#ffffff"/>
+  <text x="430" y="30" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">进阶问题速查：先分类，再对症</text>
+
+  <!-- 4 categories -->
+  <rect x="30" y="56" width="194" height="150" rx="12" fill="#fef2f2" stroke="#dc382d" stroke-width="1.5"/>
+  <text x="127" y="82" text-anchor="middle" font-size="13.5" font-weight="700" fill="#991b1b">高可用 / 复制</text>
+  <text x="48" y="108" font-size="11" fill="#7f1d1d">· 主库挂了会不会自动切</text>
+  <text x="48" y="130" font-size="11" fill="#7f1d1d">· 为什么总在跑全量同步</text>
+  <text x="48" y="152" font-size="11" fill="#7f1d1d">· 从库读会不会读到旧数据</text>
+  <text x="48" y="174" font-size="11" fill="#7f1d1d">· NOREPLICAS 写入被拒</text>
+  <text x="48" y="196" font-size="11" fill="#7f1d1d">· 哨兵为什么必须 3 个</text>
+
+  <rect x="236" y="56" width="194" height="150" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="333" y="82" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1e40af">Cluster 集群</text>
+  <text x="254" y="108" font-size="11" fill="#1e3a8a">· MOVED 与 ASK 的区别</text>
+  <text x="254" y="130" font-size="11" fill="#1e3a8a">· CROSSSLOT 怎么解</text>
+  <text x="254" y="152" font-size="11" fill="#1e3a8a">· 为什么只能用 db 0</text>
+  <text x="254" y="174" font-size="11" fill="#1e3a8a">· 扩缩容会不会阻塞</text>
+  <text x="254" y="196" font-size="11" fill="#1e3a8a">· 节点能加多少</text>
+
+  <rect x="442" y="56" width="194" height="150" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="539" y="82" text-anchor="middle" font-size="13.5" font-weight="700" fill="#166534">缓存与锁</text>
+  <text x="460" y="108" font-size="11" fill="#14532d">· 先删缓存还是先写库</text>
+  <text x="460" y="130" font-size="11" fill="#14532d">· 能做到强一致吗</text>
+  <text x="460" y="152" font-size="11" fill="#14532d">· 空值缓存会不会被刷爆</text>
+  <text x="460" y="174" font-size="11" fill="#14532d">· String 还是 Hash 存对象</text>
+  <text x="460" y="196" font-size="11" fill="#14532d">· Redlock 值不值得用</text>
+
+  <rect x="648" y="56" width="182" height="150" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="739" y="82" text-anchor="middle" font-size="13.5" font-weight="700" fill="#5b21b6">性能与版本</text>
+  <text x="666" y="108" font-size="11" fill="#4c1d95">· 延迟突然升高怎么查</text>
+  <text x="666" y="130" font-size="11" fill="#4c1d95">· evicted_keys 一直涨</text>
+  <text x="666" y="152" font-size="11" fill="#4c1d95">· 碎片率多少正常</text>
+  <text x="666" y="174" font-size="11" fill="#4c1d95">· 该选哪个版本</text>
+  <text x="666" y="196" font-size="11" fill="#4c1d95">· 升级后能回滚吗</text>
+
+  <!-- command checklist -->
+  <rect x="30" y="226" width="800" height="180" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="430" y="250" text-anchor="middle" font-size="13.5" font-weight="700" fill="#334155">排障命令速查</text>
+
+  <text x="54" y="276" font-size="11" font-weight="600" fill="#475569">场景</text>
+  <text x="300" y="276" font-size="11" font-weight="600" fill="#475569">命令</text>
+  <line x1="44" y1="284" x2="816" y2="284" stroke="#cbd5e1"/>
+
+  <text x="54" y="306" font-size="11" fill="#1f2937">复制状态</text>
+  <text x="300" y="306" font-size="11" fill="#0f766e">INFO replication | grep -E "role|master_link_status|slave0"</text>
+
+  <text x="54" y="330" font-size="11" fill="#1f2937">慢查询</text>
+  <text x="300" y="330" font-size="11" fill="#0f766e">SLOWLOG GET 10　SLOWLOG LEN</text>
+
+  <text x="54" y="354" font-size="11" fill="#1f2937">大 key / 热 key</text>
+  <text x="300" y="354" font-size="11" fill="#0f766e">--bigkeys　--memkeys　HOTKEYS START（8.6+）</text>
+
+  <text x="54" y="378" font-size="11" fill="#1f2937">内存与淘汰</text>
+  <text x="300" y="378" font-size="11" fill="#0f766e">INFO memory　CONFIG GET maxmemory-policy　MEMORY DOCTOR</text>
+
+  <text x="54" y="400" font-size="11" fill="#1f2937">集群 / 哨兵</text>
+  <text x="300" y="400" font-size="11" fill="#0f766e">--cluster check　SENTINEL ckquorum / get-master-addr-by-name</text>
+
+  <text x="430" y="424" text-anchor="middle" font-size="11" fill="#991b1b">生产禁用：KEYS * / FLUSHALL / 长时 MONITOR / 无 NX·EX 的锁</text>
+</svg>

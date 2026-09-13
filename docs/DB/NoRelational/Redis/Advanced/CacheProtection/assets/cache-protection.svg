@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 460" width="860" height="460" font-family="PingFang SC, Microsoft YaHei, Arial, sans-serif">
+  <rect width="860" height="460" fill="#ffffff"/>
+  <text x="430" y="30" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">四类缓存问题的成因与解法</text>
+
+  <!-- 穿透 -->
+  <rect x="26" y="52" width="196" height="238" rx="12" fill="#fef2f2" stroke="#dc382d" stroke-width="1.5"/>
+  <text x="124" y="78" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">① 缓存穿透</text>
+  <text x="124" y="100" text-anchor="middle" font-size="11" fill="#b91c1c">查的数据根本不存在</text>
+  <rect x="44" y="112" width="160" height="34" rx="6" fill="#ffffff" stroke="#fca5a5"/>
+  <text x="124" y="134" text-anchor="middle" font-size="11" fill="#991b1b">缓存永不命中 → 全压库</text>
+  <text x="46" y="168" font-size="11.5" fill="#7f1d1d">解法：</text>
+  <text x="46" y="190" font-size="11" fill="#7f1d1d">· 空值缓存（短 TTL）</text>
+  <text x="46" y="210" font-size="11" fill="#7f1d1d">· 布隆过滤器预判</text>
+  <text x="46" y="230" font-size="11" fill="#7f1d1d">· 参数格式/范围校验</text>
+  <text x="46" y="256" font-size="10.5" fill="#9f1239">命令：BF.ADD / BF.EXISTS</text>
+  <text x="46" y="274" font-size="10.5" fill="#9f1239">Redis 8.x 内置，7.x 需模块</text>
+
+  <!-- 击穿 -->
+  <rect x="236" y="52" width="196" height="238" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="334" y="78" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">② 缓存击穿</text>
+  <text x="334" y="100" text-anchor="middle" font-size="11" fill="#b45309">单个热点 key 过期瞬间</text>
+  <rect x="254" y="112" width="160" height="34" rx="6" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="334" y="134" text-anchor="middle" font-size="11" fill="#92400e">瞬时并发同时回源</text>
+  <text x="256" y="168" font-size="11.5" fill="#78350f">解法：</text>
+  <text x="256" y="190" font-size="11" fill="#78350f">· 互斥锁只放一个请求回源</text>
+  <text x="256" y="210" font-size="11" fill="#78350f">· 逻辑过期 + 异步重建</text>
+  <text x="256" y="230" font-size="11" fill="#78350f">· 热点 key 不设 TTL 或加长</text>
+  <text x="256" y="256" font-size="10.5" fill="#92400e">要点：锁必须带超时与等待上限</text>
+  <text x="256" y="274" font-size="10.5" fill="#92400e">逻辑过期可返回旧值，不阻塞</text>
+
+  <!-- 雪崩 -->
+  <rect x="446" y="52" width="196" height="238" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="544" y="78" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">③ 缓存雪崩</text>
+  <text x="544" y="100" text-anchor="middle" font-size="11" fill="#1d4ed8">大批 key 同时失效</text>
+  <rect x="464" y="112" width="160" height="34" rx="6" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="544" y="134" text-anchor="middle" font-size="11" fill="#1e40af">或 Redis 整体不可用</text>
+  <text x="466" y="168" font-size="11.5" fill="#1e3a8a">解法：</text>
+  <text x="466" y="190" font-size="11" fill="#1e3a8a">· TTL 加随机抖动</text>
+  <text x="466" y="210" font-size="11" fill="#1e3a8a">· 多级缓存（本地 + Redis）</text>
+  <text x="466" y="230" font-size="11" fill="#1e3a8a">· 限流 + 降级兜底</text>
+  <text x="466" y="256" font-size="10.5" fill="#1d4ed8">致命点：数据库被并发压垮</text>
+  <text x="466" y="274" font-size="10.5" fill="#1d4ed8">预热与刷新要错峰、分批</text>
+
+  <!-- 热点 -->
+  <rect x="656" y="52" width="178" height="238" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="745" y="78" text-anchor="middle" font-size="14" font-weight="700" fill="#5b21b6">④ 热点 key 倾斜</text>
+  <text x="745" y="100" text-anchor="middle" font-size="11" fill="#6d28d9">单 key QPS 极高</text>
+  <rect x="674" y="112" width="142" height="34" rx="6" fill="#ffffff" stroke="#c4b5fd"/>
+  <text x="745" y="134" text-anchor="middle" font-size="11" fill="#5b21b6">单节点 CPU/网卡打满</text>
+  <text x="676" y="168" font-size="11.5" fill="#4c1d95">解法：</text>
+  <text x="676" y="190" font-size="11" fill="#4c1d95">· 本地缓存挡读</text>
+  <text x="676" y="210" font-size="11" fill="#4c1d95">· key 分片副本</text>
+  <text x="676" y="230" font-size="11" fill="#4c1d95">· 读写分离 / 业务拆分</text>
+  <text x="676" y="256" font-size="10.5" fill="#6d28d9">检测：HOTKEYS（8.6+）</text>
+  <text x="676" y="274" font-size="10.5" fill="#6d28d9">--hotkeys / OBJECT FREQ</text>
+
+  <!-- bottom flow -->
+  <rect x="26" y="308" width="808" height="130" rx="12" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="430" y="332" text-anchor="middle" font-size="13.5" font-weight="700" fill="#166534">落地顺序（成本从低到高）</text>
+  <rect x="46" y="346" width="150" height="44" rx="8" fill="#ffffff" stroke="#4ade80"/>
+  <text x="121" y="364" text-anchor="middle" font-size="11.5" fill="#166534">1. 参数校验</text>
+  <text x="121" y="381" text-anchor="middle" font-size="10.5" fill="#15803d">挡住非法请求</text>
+
+  <rect x="212" y="346" width="150" height="44" rx="8" fill="#ffffff" stroke="#4ade80"/>
+  <text x="287" y="364" text-anchor="middle" font-size="11.5" fill="#166534">2. 空值 + 布隆</text>
+  <text x="287" y="381" text-anchor="middle" font-size="10.5" fill="#15803d">防穿透</text>
+
+  <rect x="378" y="346" width="150" height="44" rx="8" fill="#ffffff" stroke="#4ade80"/>
+  <text x="453" y="364" text-anchor="middle" font-size="11.5" fill="#166534">3. 锁 / 逻辑过期</text>
+  <text x="453" y="381" text-anchor="middle" font-size="10.5" fill="#15803d">防击穿</text>
+
+  <rect x="544" y="346" width="150" height="44" rx="8" fill="#ffffff" stroke="#4ade80"/>
+  <text x="619" y="364" text-anchor="middle" font-size="11.5" fill="#166534">4. TTL 抖动 + 限流</text>
+  <text x="619" y="381" text-anchor="middle" font-size="10.5" fill="#15803d">防雪崩</text>
+
+  <rect x="710" y="346" width="108" height="44" rx="8" fill="#ffffff" stroke="#4ade80"/>
+  <text x="764" y="364" text-anchor="middle" font-size="11.5" fill="#166534">5. 热 key</text>
+  <text x="764" y="381" text-anchor="middle" font-size="10.5" fill="#15803d">本地缓存</text>
+
+  <text x="430" y="420" text-anchor="middle" font-size="11.5" fill="#166534">配合监控：命中率、数据库 QPS、节点 CPU/网卡、evicted_keys</text>
+</svg>

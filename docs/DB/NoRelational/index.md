@@ -27,6 +27,6 @@
 
 ## 专题文档
 
-- [Redis](Redis/index.md)（概述、安装、通用命令、五种数据结构、过期淘汰、持久化、发布订阅与事务、常见问题）
+- [Redis](Redis/index.md)（基础：概述、安装、通用命令、五种数据结构、过期淘汰、持久化、发布订阅与事务；进阶：[复制](Redis/Advanced/Replication/index.md)、[哨兵](Redis/Advanced/Sentinel/index.md)、[Cluster](Redis/Advanced/Cluster/index.md)、[缓存设计](Redis/Advanced/CacheDesign/index.md)、[性能调优](Redis/Advanced/Performance/index.md)）
 - [MongoDB](MongoDB/index.md)（概述、安装与连接、文档与集合、CRUD、索引、聚合管道、副本集、分片、备份恢复、常见问题）
 - [Elasticsearch](Elasticsearch/index.md)（概述与安装、索引与映射、查询 DSL、聚合分析、中文分词、集群架构、商品搜索实战、常见问题）

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" width="860" height="420" font-family="PingFang SC, Microsoft YaHei, Arial, sans-serif">
+  <rect width="860" height="420" fill="#ffffff"/>
+  <text x="430" y="30" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">Redis 主从复制：全量同步 + 增量同步</text>
+
+  <!-- master -->
+  <rect x="40" y="70" width="150" height="60" rx="10" fill="#fee2e2" stroke="#dc382d" stroke-width="1.5"/>
+  <text x="115" y="95" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">Master</text>
+  <text x="115" y="114" text-anchor="middle" font-size="11" fill="#b91c1c">runid + repl_offset</text>
+
+  <!-- replica -->
+  <rect x="670" y="70" width="150" height="60" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="745" y="95" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">Replica</text>
+  <text x="745" y="114" text-anchor="middle" font-size="11" fill="#1d4ed8">加载 RDB 后追增量</text>
+
+  <!-- full sync steps -->
+  <rect x="235" y="58" width="390" height="112" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="430" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">① 全量同步（首次或断线过久）</text>
+  <text x="252" y="102" font-size="11.5" fill="#475569">1. Replica 发送 PSYNC ? -1</text>
+  <text x="252" y="120" font-size="11.5" fill="#475569">2. Master 执行 BGSAVE 生成 RDB，同时缓存新写命令</text>
+  <text x="252" y="138" font-size="11.5" fill="#475569">3. 发送 RDB 文件（可无盘：repl-diskless-sync）</text>
+  <text x="252" y="156" font-size="11.5" fill="#475569">4. Replica 清空旧数据并载入 RDB</text>
+
+  <path d="M190 100 L233 100" stroke="#dc382d" stroke-width="1.6" marker-end="url(#ar)"/>
+  <path d="M627 100 L668 100" stroke="#2563eb" stroke-width="1.6" marker-end="url(#ar)"/>
+
+  <!-- incremental -->
+  <rect x="235" y="196" width="390" height="104" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-dasharray="5 4"/>
+  <text x="430" y="218" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">② 增量同步（正常运行 / 短暂断线）</text>
+  <text x="252" y="240" font-size="11.5" fill="#475569">1. Replica 发送 PSYNC &lt;runid&gt; &lt;offset&gt;</text>
+  <text x="252" y="258" font-size="11.5" fill="#475569">2. Master 检查复制积压缓冲区（repl-backlog）</text>
+  <text x="252" y="276" font-size="11.5" fill="#475569">3. offset 之后的命令仍在 backlog 内 → 直接补发</text>
+  <text x="252" y="294" font-size="11.5" fill="#475569">4. backlog 已覆盖 → 退化为全量同步</text>
+
+  <path d="M190 248 L233 248" stroke="#dc382d" stroke-width="1.6" marker-end="url(#ar)"/>
+  <path d="M627 248 L668 248" stroke="#2563eb" stroke-width="1.6" marker-end="url(#ar)"/>
+
+  <!-- backlog -->
+  <rect x="300" y="320" width="260" height="60" rx="10" fill="#fffbeb" stroke="#f59e0b"/>
+  <text x="430" y="344" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">复制积压缓冲区 repl-backlog</text>
+  <text x="430" y="364" text-anchor="middle" font-size="11" fill="#b45309">环形缓冲，容量决定断线后能否增量续传</text>
+  <path d="M430 300 L430 318" stroke="#f59e0b" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+</svg>

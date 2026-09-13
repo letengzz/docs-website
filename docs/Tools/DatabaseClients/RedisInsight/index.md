@@ -185,3 +185,9 @@ LLEN hotlist
 - RedisInsight GitHub：<https://github.com/RedisInsight/RedisInsight>
 - Redis 命令参考：<https://redis.io/commands/>
 - Redis ACL 文档：<https://redis.io/docs/management/security/acl/>
+
+## 相关专题
+
+- [Redis 进阶导览](../../../DB/NoRelational/Redis/Advanced/index.md)：复制、哨兵、Cluster、缓存设计与性能调优
+- [Redis 性能调优](../../../DB/NoRelational/Redis/Advanced/Performance/index.md)：慢查询、大 key、热 key 的排查路径（RedisInsight 的内存分析与慢查询页正好对应）
+- [Redis 版本演进与升级迁移](../../../DB/NoRelational/Redis/Advanced/VersionMigration/index.md)：连接 8.x 实例前确认版本与命令兼容性

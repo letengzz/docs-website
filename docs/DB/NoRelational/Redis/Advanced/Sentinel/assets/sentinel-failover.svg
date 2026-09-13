@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 440" width="860" height="440" font-family="PingFang SC, Microsoft YaHei, Arial, sans-serif">
+  <rect width="860" height="440" fill="#ffffff"/>
+  <text x="430" y="30" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">Redis Sentinel：监控 → 判定下线 → 故障转移</text>
+
+  <!-- sentinel cluster -->
+  <rect x="40" y="60" width="780" height="72" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="430" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="#3730a3">Sentinel 集群（建议 3 个及以上奇数节点，独立于 Redis 部署）</text>
+  <rect x="70" y="94" width="200" height="28" rx="6" fill="#ffffff" stroke="#6366f1"/>
+  <text x="170" y="112" text-anchor="middle" font-size="11" fill="#4338ca">Sentinel-1（leader）</text>
+  <rect x="330" y="94" width="200" height="28" rx="6" fill="#ffffff" stroke="#6366f1"/>
+  <text x="430" y="112" text-anchor="middle" font-size="11" fill="#4338ca">Sentinel-2</text>
+  <rect x="590" y="94" width="200" height="28" rx="6" fill="#ffffff" stroke="#6366f1"/>
+  <text x="690" y="112" text-anchor="middle" font-size="11" fill="#4338ca">Sentinel-3</text>
+
+  <path d="M170 132 L170 160" stroke="#6366f1" stroke-width="1.4" marker-end="url(#a)"/>
+  <path d="M430 132 L430 160" stroke="#6366f1" stroke-width="1.4" marker-end="url(#a)"/>
+  <path d="M690 132 L690 160" stroke="#6366f1" stroke-width="1.4" marker-end="url(#a)"/>
+
+  <!-- data nodes -->
+  <rect x="150" y="164" width="180" height="70" rx="10" fill="#fee2e2" stroke="#dc382d" stroke-width="1.5"/>
+  <text x="240" y="190" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">Master（已下线）</text>
+  <text x="240" y="210" text-anchor="middle" font-size="11" fill="#b91c1c">sdown → odown</text>
+
+  <rect x="360" y="164" width="180" height="70" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="450" y="190" text-anchor="middle" font-size="14" font-weight="700" fill="#166534">Replica A（新主库）</text>
+  <text x="450" y="210" text-anchor="middle" font-size="11" fill="#15803d">REPLICAOF NO ONE</text>
+
+  <rect x="570" y="164" width="180" height="70" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="660" y="190" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">Replica B</text>
+  <text x="660" y="210" text-anchor="middle" font-size="11" fill="#1d4ed8">改为复制新主库</text>
+
+  <!-- arrows -->
+  <path d="M330 199 L358 199" stroke="#16a34a" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M540 199 L568 199" stroke="#2563eb" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <!-- steps -->
+  <rect x="40" y="262" width="780" height="152" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="60" y="288" font-size="13" font-weight="700" fill="#334155">故障转移流程</text>
+  <text x="60" y="312" font-size="12" fill="#475569">1. 每个 Sentinel 每秒 PING 主从节点；超过 down-after-milliseconds 无响应 → 标记「主观下线 sdown」。</text>
+  <text x="60" y="332" font-size="12" fill="#475569">2. Sentinel 之间互相确认，达到 quorum 数量 → 标记「客观下线 odown」。</text>
+  <text x="60" y="352" font-size="12" fill="#475569">3. Sentinel 集群用 Raft 风格投票选出 leader，由 leader 执行故障转移。</text>
+  <text x="60" y="372" font-size="12" fill="#475569">4. 按「优先级 replica-priority → 复制偏移量最大 → runid 最小」挑选新主库，执行 REPLICAOF NO ONE。</text>
+  <text x="60" y="392" font-size="12" fill="#475569">5. 其余从库改为复制新主库；旧主库恢复后自动降级为从库（并行同步数量由 parallel-syncs 控制）。</text>
+
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 440" width="860" height="440" font-family="PingFang SC, Microsoft YaHei, Arial, sans-serif">
+  <rect width="860" height="440" fill="#ffffff"/>
+  <text x="430" y="30" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">缓存读写模式：Cache Aside 读流程与写流程</text>
+
+  <!-- read flow -->
+  <rect x="30" y="56" width="390" height="230" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="225" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">读流程（Cache Aside）</text>
+
+  <rect x="60" y="96" width="110" height="42" rx="8" fill="#eef2ff" stroke="#6366f1"/>
+  <text x="115" y="122" text-anchor="middle" font-size="12" fill="#3730a3">① 收到读请求</text>
+
+  <rect x="60" y="158" width="150" height="46" rx="8" fill="#fee2e2" stroke="#dc382d"/>
+  <text x="135" y="178" text-anchor="middle" font-size="12" fill="#991b1b">② 查 Redis</text>
+  <text x="135" y="195" text-anchor="middle" font-size="10.5" fill="#b91c1c">GET key</text>
+
+  <rect x="250" y="158" width="150" height="46" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="325" y="178" text-anchor="middle" font-size="12" fill="#166534">命中 → 直接返回</text>
+  <text x="325" y="195" text-anchor="middle" font-size="10.5" fill="#15803d">命中率是首要指标</text>
+
+  <rect x="60" y="228" width="150" height="46" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="135" y="248" text-anchor="middle" font-size="12" fill="#1e40af">③ 未命中 → 查库</text>
+  <text x="135" y="265" text-anchor="middle" font-size="10.5" fill="#1d4ed8">select from DB</text>
+
+  <rect x="250" y="228" width="150" height="46" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="325" y="248" text-anchor="middle" font-size="12" fill="#166534">④ 回填缓存 + TTL</text>
+  <text x="325" y="265" text-anchor="middle" font-size="10.5" fill="#15803d">空值也缓存（短 TTL）</text>
+
+  <path d="M170 138 L135 156" stroke="#6b7280" stroke-width="1.4" marker-end="url(#a3)"/>
+  <path d="M210 181 L248 181" stroke="#16a34a" stroke-width="1.4" marker-end="url(#a3)"/>
+  <path d="M135 206 L135 226" stroke="#2563eb" stroke-width="1.4" marker-end="url(#a3)"/>
+  <path d="M210 251 L248 251" stroke="#16a34a" stroke-width="1.4" marker-end="url(#a3)"/>
+
+  <!-- write flow -->
+  <rect x="440" y="56" width="390" height="230" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="635" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">写流程（先写库，再删缓存）</text>
+
+  <rect x="470" y="100" width="150" height="46" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="545" y="120" text-anchor="middle" font-size="12" fill="#1e40af">① 写数据库</text>
+  <text x="545" y="137" text-anchor="middle" font-size="10.5" fill="#1d4ed8">事务内完成</text>
+
+  <rect x="660" y="100" width="150" height="46" rx="8" fill="#fee2e2" stroke="#dc382d"/>
+  <text x="735" y="120" text-anchor="middle" font-size="12" fill="#991b1b">② 删除缓存</text>
+  <text x="735" y="137" text-anchor="middle" font-size="10.5" fill="#b91c1c">DEL，而不是 SET 新值</text>
+
+  <rect x="470" y="172" width="340" height="48" rx="8" fill="#fffbeb" stroke="#f59e0b"/>
+  <text x="640" y="192" text-anchor="middle" font-size="12" fill="#92400e">③ 事务提交后延迟再删一次（延迟双删）</text>
+  <text x="640" y="210" text-anchor="middle" font-size="10.5" fill="#b45309">缩短「库已更新、缓存仍是旧值」的窗口</text>
+
+  <rect x="470" y="236" width="340" height="40" rx="8" fill="#f5f3ff" stroke="#8b5cf6"/>
+  <text x="640" y="261" text-anchor="middle" font-size="12" fill="#5b21b6">兜底：TTL 是最终防线，永远不要「永不过期」</text>
+
+  <path d="M620 123 L658 123" stroke="#6b7280" stroke-width="1.4" marker-end="url(#a3)"/>
+  <path d="M545 146 L545 170" stroke="#6b7280" stroke-width="1.4" marker-end="url(#a3)"/>
+  <path d="M640 220 L640 234" stroke="#6b7280" stroke-width="1.4" marker-end="url(#a3)"/>
+
+  <!-- bottom comparison -->
+  <rect x="30" y="304" width="800" height="112" rx="12" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="430" y="328" text-anchor="middle" font-size="13.5" font-weight="700" fill="#991b1b">四种模式怎么选</text>
+  <text x="60" y="354" font-size="12" fill="#7f1d1d">Cache Aside：业务代码自己管缓存，最灵活，绝大多数场景首选</text>
+  <text x="60" y="376" font-size="12" fill="#7f1d1d">Read Through / Write Through：由缓存层封装读写，代码干净但依赖框架</text>
+  <text x="60" y="398" font-size="12" fill="#7f1d1d">Write Behind：先写缓存异步落库，吞吐最高但可能丢数据，仅适合计数类场景</text>
+
+  <defs>
+    <marker id="a3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+</svg>

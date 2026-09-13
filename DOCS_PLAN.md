@@ -86,7 +86,7 @@
 | 51 | Frontend | 跨端开发 ✅ | UniApp、Taro、Electron、方案对比、实战案例、常见问题 |
 | 52 | Frontend | 前端测试 ✅ | Vitest、Jest、组件测试、E2E、覆盖率、测试策略、常见问题 |
 | 53 | DB | Elasticsearch ✅ | 概述与安装、索引与映射、查询 DSL、聚合、集群、中文分词、常见问题 |
-| 54 | DB | Redis 进阶 | 持久化、主从与哨兵、Cluster、缓存设计、性能调优、常见问题 |
+| 54 | DB | Redis 进阶 ✅ | 持久化、主从与哨兵、Cluster、缓存设计、性能调优、常见问题 |
 | 55 | Ops | 日志体系 | ELK、Loki、日志采集、日志分析、告警联动、常见问题 |
 | 56 | Ops | Linux 进阶 | Shell 编程、系统调优、服务管理、定时任务、安全加固、常见问题 |
 | 57 | Tools | 协作与项目管理 | Jira、Confluence、飞书、研发流程、文档协作、常见问题 |
@@ -202,6 +202,8 @@
 - [x] Project 存量补全：完成第 59 天「完整项目实战」，新建 `project/Complete/FullStackProject`（8 个页面：项目总览、需求拆分、数据库设计、接口联调、编码实现、测试、部署、复盘），含可直接执行的建表 SQL、接口契约、状态机代码、发布脚本与复盘模板；`project/Complete` 目录页把该项目从占位改为可点击入口，侧边栏挂载 7 个章节
 - [x] Frontend 存量补全：前端测试专题已建设（第 52 天，`docs/Frontend/Testing` 9 个页面：概述与选型、Jest、Vitest、组件测试、E2E、覆盖率、测试策略与 CI、FAQ），新建主题级目录与侧边栏挂载（`/docs/Frontend/Testing`），补充前端分类目录页入口；工具版本按官方渠道核对（Vitest 5.0 / 2026-09-03、Jest 30.x、Playwright 1.63、jest-dom 7.x）并修正前端工程化概述页过期的 Vitest 4.x 版本表述；同步更新 7 篇存量文档交叉链接（JS 测试、React 测试、工程化测试速览/CI 集成/FAQ、CI/CD 测试门禁页）
 - [x] DB 存量补全：Elasticsearch 专题已建设（第 53 天，`docs/DB/NoRelational/Elasticsearch` 9 个页面：概述与安装、索引与映射、查询 DSL、聚合分析、中文分词与 IK、集群架构与高可用、商品搜索实战、FAQ），版本按官方渠道核对（ES 9.5.3 / 2026-09-03，8.x 维护期），Logo 由 simple-icons 官方路径生成 PNG；侧边栏 `db.ts` 挂载 ES 子树，非关系型目录页与 DB 概述页补入口；同步更新 6 篇存量文档（SpringBoot v3 整合 ES 页由 13 行空壳扩写为完整整合页并回链专题、MongoDB FAQ 补选型对比、RAG 版本页补专题链接）
+- [x] DB 存量补全：Redis 进阶专题已就地加深（第 54 天，`docs/DB/NoRelational/Redis/Advanced` 11 个页面：进阶导览 + 主从复制 + 哨兵高可用 + Cluster 分片集群 + 缓存设计 + 缓存防护 + 分布式锁与 Lua + 性能调优 + 版本演进与升级迁移 + 实战：高可用缓存集群 + 进阶常见问题），遵循「既有主题内加深、不新建重复章节」原则挂在 Redis 下并保留原基础内容；Redis 主题首页补官方 Logo（PNG，75% 居中，未标注来源）；同步更新 9 篇存量文档（Redis 目录页新增进阶分组并补 Logo、概述页版本现状改为 8.10 GA + Standard/Extended 与 EOL 表并修正「8.0 起多线程」表述、持久化页新增多部分 AOF（MP-AOF）与 8.10 `BACKUP` 命令及配图、过期淘汰页补 8.6 新增 `allkeys-lrm`/`volatile-lrm` 策略并把缓存三问题收敛为速览、通用命令页扩写内存诊断/客户端统计/8.x 新命令并补配图、基础 FAQ 与缓存三问题去重并补进阶入口、非关系型目录页补进阶子页链接、RedisInsight 页补性能与版本交叉链接、SpringBoot v3 整合 Redis 页补连接池/哨兵/集群配置与序列化说明）
+- [x] 存量版本核对：Redis 版本事实按官方渠道核对（Redis 8.10 Q3 2026 GA 为最新稳定版、8.8/8.6/8.4/8.0 为 Standard、8.2 Extended EOL 2030-09-01、7.4/7.2 Extended EOL 2029-12-01、6.2 EOL 2027-04-01；8.10 新增 BACKUP/HIMPORT/LMOVEM/SUNIONCARD/SDIFFCARD、8.6 新增 HOTKEYS/IDMP/LRM、8.8 新增 Array 与 INCREX），据此建立「主线 / 维护中 / 仅存量」状态标注并写入版本页；确认 Redis 7.x 与 8.x 兼容性高，暂按单主题维护而不拆分版本目录（未来出现破坏性主版本再按 AGENTS.md 第 3 节建目录）
 
 ## 节奏建议
 
