@@ -596,6 +596,23 @@ export const FrontendPerformance = [
         ],
     },
 ];
+export const FrontTesting = [
+    {
+        text: "前端测试",
+        link: "/docs/Frontend/Testing/index.md",
+        collapsed: true,
+        items: [
+            { text: "测试体系概述与选型", link: "/docs/Frontend/Testing/Overview/index.md" },
+            { text: "Jest 单元测试", link: "/docs/Frontend/Testing/Jest/index.md" },
+            { text: "Vitest 单元测试", link: "/docs/Frontend/Testing/Vitest/index.md" },
+            { text: "组件测试：Testing Library 与 Vue Test Utils", link: "/docs/Frontend/Testing/ComponentTesting/index.md" },
+            { text: "E2E 测试：Playwright 与 Cypress", link: "/docs/Frontend/Testing/E2E/index.md" },
+            { text: "覆盖率统计与门禁", link: "/docs/Frontend/Testing/Coverage/index.md" },
+            { text: "测试策略与 CI 集成", link: "/docs/Frontend/Testing/Strategy/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/Testing/FAQ/index.md" },
+        ],
+    },
+];
 export const FrontOthers = [
     {
         text: "其他",

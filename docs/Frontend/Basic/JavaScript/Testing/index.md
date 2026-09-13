@@ -497,5 +497,6 @@ npm test -- --updateSnapshot
 
 ## 相关专题
 
+- [前端测试](../../../Testing/index.md)：测试金字塔、Jest/Vitest、组件测试、E2E 与覆盖率门禁的完整专题
 - [前端工程化](../../../Others/FrontendEngineering/index.md)：从 JS 测试走向完整工程体系
 - [单元测试与组件测试](../../../Others/FrontendEngineering/Testing/index.md)：Vitest、组件测试与 E2E 的组织方式

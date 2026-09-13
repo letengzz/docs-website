@@ -2,7 +2,7 @@
 import { Auth, DesignPatterns, DotNet, Go, Java, MessageQueue, Microservices, NetworkProgramming, Python, SpringCloud } from "./backend";
 
 import { AI_Agent, AI_LLMApp, AI_LocalModel, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
-import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers } from "./frontend";
+import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, Monitoring, Network, Nginx, OpsOthers, VM } from "./ops";
 import { DBOverview, NoRelational, Relational, SQLOptimization } from "./db";
 import { APITools, Build, CICD, DatabaseClients, IDE, Others, PackageManager, VC } from "./tools";
@@ -31,7 +31,7 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontTesting, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
@@ -94,6 +94,7 @@ export const sidebar = {
   "/docs/Frontend/Frame": FrontFrame,
   "/docs/Frontend/Others": FrontOthers,
   "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,
+  "/docs/Frontend/Testing": FrontTesting,
   "/docs/Backend/DotNet": DotNet,
   "/docs/Backend/Go": Go,
   "/docs/Backend/Java": Java,

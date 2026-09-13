@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" font-family="Arial, 'Microsoft YaHei', sans-serif">
+  <rect width="760" height="300" fill="#ffffff"/>
+  <text x="380" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">四种代码覆盖率指标的含义（自下而上逐步严格）</text>
+  <g font-size="13" fill="#1f2937">
+    <rect x="230" y="60" width="300" height="44" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="380" y="88" text-anchor="middle">行覆盖 Lines：哪些行被执行过</text>
+    <rect x="180" y="116" width="400" height="44" rx="8" fill="#ffedd5" stroke="#ea580c"/>
+    <text x="380" y="144" text-anchor="middle">语句覆盖 Statements：每条语句是否执行</text>
+    <rect x="130" y="172" width="500" height="44" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="380" y="200" text-anchor="middle">分支覆盖 Branches：if/else、逻辑运算、可选链每个分支</text>
+    <rect x="80" y="228" width="600" height="44" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="380" y="256" text-anchor="middle">函数覆盖 Functions：每个函数是否被调用过</text>
+  </g>
+  <text x="660" y="90" font-size="11" fill="#6b7280">← 宽松</text>
+  <text x="660" y="256" font-size="11" fill="#6b7280">严格 →</text>
+</svg>

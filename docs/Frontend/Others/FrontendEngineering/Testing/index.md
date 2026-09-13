@@ -205,6 +205,17 @@ pnpm test:coverage
 2. 故意改坏一个组件逻辑，确认对应测试失败（测试真的有效）。
 3. 用 Playwright 跑一次下单 E2E，确认用户主流程可用。
 
+## 深入阅读：前端测试专题
+
+本页是工程化视角的测试速览，完整专题见 [前端测试](../../../Testing/index.md)：
+
+- [测试体系概述与选型](../../../Testing/Overview/index.md)：测试金字塔与工具全景对比
+- [Jest 单元测试](../../../Testing/Jest/index.md) / [Vitest 单元测试](../../../Testing/Vitest/index.md)：两种运行器的配置与 Mock
+- [组件测试](../../../Testing/ComponentTesting/index.md)：Testing Library 与 Vue Test Utils 实战
+- [E2E 测试](../../../Testing/E2E/index.md)：Playwright 与 Cypress
+- [覆盖率统计与门禁](../../../Testing/Coverage/index.md)：V8/Istanbul 与 diff 覆盖率
+- [测试策略与 CI 集成](../../../Testing/Strategy/index.md)：三阶段门禁设计
+
 ## 参考资料
 
 - Vitest 文档：https://cn.vitest.dev/

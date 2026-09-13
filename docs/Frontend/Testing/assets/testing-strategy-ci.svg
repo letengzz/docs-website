@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="320" viewBox="0 0 760 320" font-family="Arial, 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arrow4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#0ea5e9"/>
+    </marker>
+  </defs>
+  <rect width="760" height="320" fill="#ffffff"/>
+  <text x="380" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">测试策略：分层投入与 CI 门禁</text>
+  <g font-size="13" fill="#1f2937">
+    <!-- pyramid on left -->
+    <polygon points="140,240 230,240 185,180" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="185" y="228" text-anchor="middle" font-size="11">少量 E2E</text>
+    <polygon points="110,240 260,240 230,180 140,180" fill="#ffedd5" stroke="#ea580c"/>
+    <text x="185" y="268" text-anchor="middle" font-size="11">集成测试</text>
+    <polygon points="80,240 290,240 260,180 110,180" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="185" y="292" text-anchor="middle" font-size="11">大量单元测试（70%）</text>
+    <!-- right CI gates -->
+    <rect x="360" y="70" width="150" height="46" rx="8" fill="#f0f9ff" stroke="#0ea5e9"/>
+    <text x="435" y="90" text-anchor="middle">提交前：lint + 单测</text>
+    <text x="435" y="107" text-anchor="middle" font-size="11" fill="#6b7280">husky + lint-staged</text>
+    <rect x="360" y="140" width="150" height="46" rx="8" fill="#f0f9ff" stroke="#0ea5e9"/>
+    <text x="435" y="160" text-anchor="middle">PR：单测 + 覆盖率</text>
+    <text x="435" y="177" text-anchor="middle" font-size="11" fill="#6b7280">阈值门禁 + diff 覆盖</text>
+    <rect x="360" y="210" width="150" height="46" rx="8" fill="#f0f9ff" stroke="#0ea5e9"/>
+    <text x="435" y="230" text-anchor="middle">合入后：E2E</text>
+    <text x="435" y="247" text-anchor="middle" font-size="11" fill="#6b7280">夜间/预发全量回归</text>
+    <line x1="435" y1="116" x2="435" y2="138" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrow4)"/>
+    <line x1="435" y1="186" x2="435" y2="208" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrow4)"/>
+    <text x="600" y="160" font-size="12" fill="#6b7280">越靠前的门禁</text>
+    <text x="600" y="178" font-size="12" fill="#6b7280">反馈越快、成本越低</text>
+  </g>
+</svg>

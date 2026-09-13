@@ -102,4 +102,5 @@ export default [...baseConfig, eslintConfigPrettier]
 - Vite 故障排查：https://vitejs.dev/guide/troubleshooting.html
 - ESLint 迁移到 flat config：https://eslint.org/docs/latest/use/configure/migration-guide
 - pnpm 排障：https://pnpm.io/zh/troubleshooting
+- 测试相关问题深入：[前端测试 FAQ](../../../Testing/FAQ/index.md)
 - 本专题章节入口：[前端工程化目录](../index.md)

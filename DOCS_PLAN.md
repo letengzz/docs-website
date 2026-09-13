@@ -84,7 +84,7 @@
 | 49 | AI | 本地模型部署 ✅ | Ollama、量化、API 接入、GPU/内存规划、实战案例、常见问题 |
 | 50 | Frontend | 微信小程序 ✅ | 框架与目录、组件、API、路由、发布流程、性能优化、常见问题 |
 | 51 | Frontend | 跨端开发 ✅ | UniApp、Taro、Electron、方案对比、实战案例、常见问题 |
-| 52 | Frontend | 前端测试 | Vitest、Jest、组件测试、E2E、覆盖率、测试策略、常见问题 |
+| 52 | Frontend | 前端测试 ✅ | Vitest、Jest、组件测试、E2E、覆盖率、测试策略、常见问题 |
 | 53 | DB | Elasticsearch | 概述与安装、索引与映射、查询 DSL、聚合、集群、中文分词、常见问题 |
 | 54 | DB | Redis 进阶 | 持久化、主从与哨兵、Cluster、缓存设计、性能调优、常见问题 |
 | 55 | Ops | 日志体系 | ELK、Loki、日志采集、日志分析、告警联动、常见问题 |
@@ -200,6 +200,7 @@
 - [x] 存量版本核对：按官方渠道核对认证授权版本事实（Spring Security 7.1.1 / 2026-08-20、Spring Boot 4.1.1、jjwt 0.13.0、RFC 9700 OAuth 2.0 安全最佳实践、OAuth 2.1 草案 Rev 16 / draft-ietf-oauth-v2-1、RFC 7636 PKCE、RFC 9068 JWT 访问令牌），建立「主线 / 上一代 / 仅存量」状态标注（隐式与密码模式、CAS、Spring Security 5.x 标注为仅存量）
 - [x] Project 存量补全：Vue3 模板新增 5 个模块（权限、主题、组件库集成、发布、常见问题），补齐 VueRequest 空壳页（原 0 行），重写项目目录页（修复 `[代码提交检查]()` 空链接、按分类重排、增加「迭代记录」），环境变量页追加多环境章节；侧边栏把基础项目展开为 20 个章节并新建 `project/Complete` 目录页（修复原先指向不存在页面的导航链接）；同时在 AGENTS.md 新增第 13 节「计划完成后的项目沉淀要求」（每次迭代都要在 project 中加模块、宁精勿滥、逐步细化）
 - [x] Project 存量补全：完成第 59 天「完整项目实战」，新建 `project/Complete/FullStackProject`（8 个页面：项目总览、需求拆分、数据库设计、接口联调、编码实现、测试、部署、复盘），含可直接执行的建表 SQL、接口契约、状态机代码、发布脚本与复盘模板；`project/Complete` 目录页把该项目从占位改为可点击入口，侧边栏挂载 7 个章节
+- [x] Frontend 存量补全：前端测试专题已建设（第 52 天，`docs/Frontend/Testing` 9 个页面：概述与选型、Jest、Vitest、组件测试、E2E、覆盖率、测试策略与 CI、FAQ），新建主题级目录与侧边栏挂载（`/docs/Frontend/Testing`），补充前端分类目录页入口；工具版本按官方渠道核对（Vitest 5.0 / 2026-09-03、Jest 30.x、Playwright 1.63、jest-dom 7.x）并修正前端工程化概述页过期的 Vitest 4.x 版本表述；同步更新 7 篇存量文档交叉链接（JS 测试、React 测试、工程化测试速览/CI 集成/FAQ、CI/CD 测试门禁页）
 
 ## 节奏建议
 

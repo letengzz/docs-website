@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="320" viewBox="0 0 760 320" font-family="Arial, 'Microsoft YaHei', sans-serif">
+  <rect width="760" height="320" fill="#ffffff"/>
+  <text x="380" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">Vitest 架构：直接复用 Vite 管线</text>
+  <!-- left: vitest -->
+  <rect x="40" y="60" width="300" height="220" rx="12" fill="#fdf2f8" stroke="#db2777" stroke-width="2"/>
+  <text x="190" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#db2777">Vitest 项目</text>
+  <rect x="70" y="105" width="240" height="34" rx="6" fill="#ffffff" stroke="#db2777"/>
+  <text x="190" y="127" text-anchor="middle" font-size="12">源码 + 测试文件（同一套别名/插件）</text>
+  <rect x="70" y="155" width="240" height="34" rx="6" fill="#ffffff" stroke="#db2777"/>
+  <text x="190" y="177" text-anchor="middle" font-size="12">Vite Dev Server 转换（esbuild/插件）</text>
+  <rect x="70" y="205" width="240" height="34" rx="6" fill="#ffffff" stroke="#db2777"/>
+  <text x="190" y="227" text-anchor="middle" font-size="12">Vitest 运行器（node / 浏览器模式）</text>
+  <text x="190" y="266" text-anchor="middle" font-size="11" fill="#6b7280">开发态即测试态：HMR、按需编译、秒级启动</text>
+  <!-- right: jest -->
+  <rect x="420" y="60" width="300" height="220" rx="12" fill="#eef2ff" stroke="#4f7cff" stroke-width="2"/>
+  <text x="570" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#4f7cff">Jest 项目（传统方式）</text>
+  <rect x="450" y="105" width="240" height="34" rx="6" fill="#ffffff" stroke="#4f7cff"/>
+  <text x="570" y="127" text-anchor="middle" font-size="12">源码（Vite/Webpack 配置）</text>
+  <rect x="450" y="155" width="240" height="34" rx="6" fill="#ffffff" stroke="#4f7cff"/>
+  <text x="570" y="177" text-anchor="middle" font-size="12">jest-transform + moduleNameMapper 重复配置</text>
+  <rect x="450" y="205" width="240" height="34" rx="6" fill="#ffffff" stroke="#4f7cff"/>
+  <text x="570" y="227" text-anchor="middle" font-size="12">Jest 运行器</text>
+  <text x="570" y="266" text-anchor="middle" font-size="11" fill="#6b7280">两套管线配置漂移，别名/插件常对不上</text>
+</svg>

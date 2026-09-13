@@ -56,13 +56,13 @@
 | 工具 | 版本 | 说明 |
 | --- | --- | --- |
 | Vite | 8.x | 当前主流构建工具，8.0 于 2026-03 发布 |
-| Vitest | 4.x | 与 Vite 同源的单测框架 |
+| Vitest | 5.x | 与 Vite 同源的单测框架（5.0 于 2026-09 发布） |
 | ESLint | 10.x | flat config（`eslint.config.js`）为唯一配置方式 |
 | Prettier | 3.x | 代码格式化事实标准 |
 | pnpm | 11.x | 当前推荐包管理器，Store v11 提升安装效率 |
 | Husky | 9.x | Git 钩子管理 |
 | lint-staged | 17.x | 只检查暂存文件 |
-| Playwright | 最新 | E2E 测试主流选择 |
+| Playwright | 最新 | E2E 测试主流选择，测试体系详见 [前端测试专题](../../../Testing/index.md) |
 
 ## 落地路线
 

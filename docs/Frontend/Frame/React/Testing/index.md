@@ -485,5 +485,6 @@ export default defineConfig({
 
 ## 相关专题
 
+- [前端测试](../../../Testing/index.md)：测试体系、Vitest/Jest、组件测试、E2E 与覆盖率门禁的完整专题
 - [前端工程化](../../../Others/FrontendEngineering/index.md)：Vitest + Testing Library 的完整测试体系
 - [单元测试与组件测试](../../../Others/FrontendEngineering/Testing/index.md)：测试金字塔与覆盖率门禁

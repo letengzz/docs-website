@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" font-family="Arial, 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#4f7cff"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="300" fill="#ffffff"/>
+  <text x="380" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">Jest 测试文件执行生命周期</text>
+  <!-- chain -->
+  <g font-size="13" fill="#1f2937">
+    <rect x="20" y="70" width="120" height="40" rx="8" fill="#eef2ff" stroke="#4f7cff"/>
+    <text x="80" y="95" text-anchor="middle">收集测试文件</text>
+    <rect x="170" y="70" width="120" height="40" rx="8" fill="#eef2ff" stroke="#4f7cff"/>
+    <text x="230" y="95" text-anchor="middle">describe 收集块</text>
+    <rect x="320" y="70" width="120" height="40" rx="8" fill="#eef2ff" stroke="#4f7cff"/>
+    <text x="380" y="95" text-anchor="middle">beforeAll</text>
+    <rect x="470" y="70" width="120" height="40" rx="8" fill="#eef2ff" stroke="#4f7cff"/>
+    <text x="530" y="95" text-anchor="middle">beforeEach</text>
+    <rect x="620" y="70" width="120" height="40" rx="8" fill="#fef3c7" stroke="#d97706"/>
+    <text x="680" y="95" text-anchor="middle">test / it</text>
+    <line x1="140" y1="90" x2="168" y2="90" stroke="#4f7cff" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="290" y1="90" x2="318" y2="90" stroke="#4f7cff" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="440" y1="90" x2="468" y2="90" stroke="#4f7cff" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="590" y1="90" x2="618" y2="90" stroke="#4f7cff" stroke-width="2" marker-end="url(#arrow)"/>
+    <!-- second row -->
+    <rect x="620" y="160" width="120" height="40" rx="8" fill="#eef2ff" stroke="#4f7cff"/>
+    <text x="680" y="185" text-anchor="middle">afterEach</text>
+    <rect x="470" y="160" width="120" height="40" rx="8" fill="#eef2ff" stroke="#4f7cff"/>
+    <text x="530" y="185" text-anchor="middle">下一个测试</text>
+    <rect x="320" y="160" width="120" height="40" rx="8" fill="#eef2ff" stroke="#4f7cff"/>
+    <text x="380" y="185" text-anchor="middle">afterAll</text>
+    <rect x="170" y="160" width="120" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="230" y="185" text-anchor="middle">输出报告</text>
+    <line x1="680" y1="112" x2="680" y2="158" stroke="#4f7cff" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="618" y1="180" x2="592" y2="180" stroke="#4f7cff" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="468" y1="180" x2="442" y2="180" stroke="#4f7cff" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="318" y1="180" x2="292" y2="180" stroke="#4f7cff" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+  <text x="380" y="250" text-anchor="middle" font-size="12" fill="#6b7280">beforeAll/afterAll 每个文件执行一次；beforeEach/afterEach 每个测试执行一次</text>
+</svg>
