@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">JDK 源码中的设计模式分布</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="76" width="270" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="165" y="102" fill="#047857" font-weight="bold" font-size="14">java.lang 与 java.util</text>
+    <text x="165" y="122" fill="#4b5563" font-size="11">迭代器：Iterator / Iterable</text>
+    <text x="165" y="139" fill="#4b5563" font-size="11">工厂：Integer.valueOf 缓存与 valueOf</text>
+    <text x="165" y="156" fill="#4b5563" font-size="11">享元：Integer 缓存、String 常量池</text>
+    <text x="165" y="173" fill="#4b5563" font-size="11">适配器：Arrays.asList 返回包装视图</text>
+    <rect x="320" y="76" width="270" height="150" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="455" y="102" fill="#1d4ed8" font-weight="bold" font-size="14">java.io 与 java.nio</text>
+    <text x="455" y="122" fill="#4b5563" font-size="11">装饰器：BufferedInputStream 层层包装</text>
+    <text x="455" y="139" fill="#4b5563" font-size="11">适配器：InputStreamReader 桥接字节与字符</text>
+    <text x="455" y="156" fill="#4b5563" font-size="11">工厂：Files.newInputStream</text>
+    <text x="455" y="173" fill="#4b5563" font-size="11">模板方法：InputStream.read 回调 read(byte[])</text>
+    <rect x="610" y="76" width="260" height="150" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="740" y="102" fill="#b45309" font-weight="bold" font-size="14">java.util.concurrent</text>
+    <text x="740" y="122" fill="#4b5563" font-size="11">工厂：Executors 创建线程池</text>
+    <text x="740" y="139" fill="#4b5563" font-size="11">策略：RejectedExecutionHandler</text>
+    <text x="740" y="156" fill="#4b5563" font-size="11">模板方法：AbstractQueuedSynchronizer</text>
+    <text x="740" y="173" fill="#4b5563" font-size="11">生产者-消费者：BlockingQueue</text>
+    <rect x="60" y="250" width="360" height="150" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="240" y="276" fill="#6d28d9" font-weight="bold" font-size="14">其他常被忽略的位置</text>
+    <text x="240" y="296" fill="#4b5563" font-size="11">观察者：java.util.Observer（已弃用）→ 用 PropertyChangeListener</text>
+    <text x="240" y="313" fill="#4b5563" font-size="11">代理：java.lang.reflect.Proxy 动态代理</text>
+    <text x="240" y="330" fill="#4b5563" font-size="11">组合：java.awt / javax.swing 组件树</text>
+    <text x="240" y="347" fill="#4b5563" font-size="11">命令：Runnable / Callable 把行为对象化</text>
+    <rect x="470" y="250" width="370" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="655" y="276" fill="#4338ca" font-weight="bold" font-size="14">读源码的正确方式</text>
+    <text x="655" y="296" fill="#4b5563" font-size="11">先猜「这里为什么这么设计」，再找实现</text>
+    <text x="655" y="313" fill="#4b5563" font-size="11">关注类之间的「关系」而不是类的代码量</text>
+    <text x="655" y="330" fill="#4b5563" font-size="11">看到接口 + 多个实现，先想「这里是不是策略/工厂」</text>
+    <text x="655" y="347" fill="#4b5563" font-size="11">最好的学习方式是「用同样的手法改一遍自己的代码」</text>
+</g>
+  <text x="450" y="424" text-anchor="middle" font-size="13" fill="#475569">JDK 是设计模式最权威的教材：它不是为了演示模式而写模式，而是为了解决真实问题自然形成</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

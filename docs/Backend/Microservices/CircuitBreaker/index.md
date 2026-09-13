@@ -213,5 +213,5 @@ public class FallbackController {
 - 雪崩与容错设计（阿里云）：https://help.aliyun.com/document_detail/62242.html
 
 ::: tip 相关文档
-Resilience4j 注解组合顺序、与 OpenFeign fallback 的配合、Sentinel 对比等落地细节见 [Spring Cloud 专题：熔断限流与降级](../SpringCloud/CircuitBreaker/index.md)。
+Resilience4j 注解组合顺序、与 OpenFeign fallback 的配合、Sentinel 对比等落地细节见 [Spring Cloud 专题：熔断限流与降级](../../SpringCloud/CircuitBreaker/index.md)。
 :::

@@ -150,6 +150,13 @@ class OrderService {
 2. 对“新增一个类型就要改 switch”的场景，用策略模式重构并验证行为不变。
 3. 检查项目里是否存在继承但行为不兼容的类（LSP 违规）。
 
+## 相关专题
+
+- 用 JDK 源码理解原则如何落地：[JDK 源码中的设计模式](../JdkPatterns/index.md)
+- 现代 Java 让「为原则而生的模式」变简单：[现代 Java 与设计模式](../ModernJava/index.md)
+- 违反原则的典型形态（反模式与过度设计）：[反模式与过度设计](../AntiPatterns/index.md)
+- 在不改变外部行为前提下改善结构：[重构实战：安全地改代码](../RefactorPractice/index.md)
+
 ## 参考资料
 
 - SOLID 原则（Robert C. Martin）：https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html

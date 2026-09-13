@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">研发流程全链路与质量门禁</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="74" width="128" height="96" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="94" y="100" fill="#1d4ed8" font-weight="bold" font-size="14">① 需求</text>
+    <text x="94" y="120" fill="#4b5563" font-size="11">澄清会</text>
+    <text x="94" y="137" fill="#4b5563" font-size="11">DoR 就绪</text>
+    <rect x="176" y="74" width="128" height="96" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="240" y="100" fill="#0e7490" font-weight="bold" font-size="14">② 方案</text>
+    <text x="240" y="120" fill="#4b5563" font-size="11">技术评审</text>
+    <text x="240" y="137" fill="#4b5563" font-size="11">设计文档</text>
+    <rect x="322" y="74" width="128" height="96" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="386" y="100" fill="#047857" font-weight="bold" font-size="14">③ 开发</text>
+    <text x="386" y="120" fill="#4b5563" font-size="11">分支策略</text>
+    <text x="386" y="137" fill="#4b5563" font-size="11">自测 + 单测</text>
+    <rect x="468" y="74" width="128" height="96" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="532" y="100" fill="#b45309" font-weight="bold" font-size="14">④ 评审</text>
+    <text x="532" y="120" fill="#4b5563" font-size="11">代码评审</text>
+    <text x="532" y="137" fill="#4b5563" font-size="11">静态检查</text>
+    <rect x="614" y="74" width="128" height="96" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="678" y="100" fill="#6d28d9" font-weight="bold" font-size="14">⑤ 测试</text>
+    <text x="678" y="120" fill="#4b5563" font-size="11">用例执行</text>
+    <text x="678" y="137" fill="#4b5563" font-size="11">回归</text>
+    <rect x="760" y="74" width="110" height="96" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="815" y="100" fill="#0f766e" font-weight="bold" font-size="14">⑥ 发布</text>
+    <text x="815" y="120" fill="#4b5563" font-size="11">发布单</text>
+    <text x="815" y="137" fill="#4b5563" font-size="11">灰度/回滚</text>
+    <rect x="60" y="240" width="380" height="160" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="250" y="266" fill="#4338ca" font-weight="bold" font-size="14">四个质量门禁（Gate）</text>
+    <text x="250" y="286" fill="#4b5563" font-size="11">需求门禁：验收标准不明确不进开发</text>
+    <text x="250" y="303" fill="#4b5563" font-size="11">方案门禁：影响面与回滚方案没写清不评审通过</text>
+    <text x="250" y="320" fill="#4b5563" font-size="11">代码门禁：评审通过 + CI 全绿才允许合并</text>
+    <text x="250" y="337" fill="#4b5563" font-size="11">发布门禁：回归通过 + 变更通知已发才允许上线</text>
+    <rect x="470" y="240" width="400" height="160" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="670" y="266" fill="#be123c" font-weight="bold" font-size="14">四个常见流程病</text>
+    <text x="670" y="286" fill="#4b5563" font-size="11">需求插队：没有 WIP 限制，人人都在多线程</text>
+    <text x="670" y="303" fill="#4b5563" font-size="11">评审走过场：没有检查清单，只看「有没有 bug」</text>
+    <text x="670" y="320" fill="#4b5563" font-size="11">测试背锅：质量责任只在测试，开发不写单测</text>
+    <text x="670" y="337" fill="#4b5563" font-size="11">发布黑盒：上线靠人记步骤，没有流水线与回滚</text>
+    <path d="M 158 122 L 172 122" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 304 122 L 318 122" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 450 122 L 464 122" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 596 122 L 610 122" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 742 122 L 756 122" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+</g>
+  <text x="450" y="428" text-anchor="middle" font-size="13" fill="#475569">流程的目的不是「管住人」，而是让「同样的事第二次更快、更稳」</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

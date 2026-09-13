@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="430" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">重构前后：把 if-else 地狱变成策略表</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="76" width="410" height="180" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="235" y="102" fill="#be123c" font-weight="bold" font-size="14">重构前</text>
+    <text x="235" y="122" fill="#4b5563" font-size="11">public BigDecimal price(Order o) {</text>
+    <text x="235" y="139" fill="#4b5563" font-size="11">  if ("VIP".equals(o.getLevel())) {</text>
+    <text x="235" y="156" fill="#4b5563" font-size="11">     if (o.isFirstOrder()) { ... }</text>
+    <text x="235" y="173" fill="#4b5563" font-size="11">     else { ... }</text>
+    <text x="235" y="190" fill="#4b5563" font-size="11">  } else if ("NEW".equals(o.getLevel())) {</text>
+    <text x="235" y="207" fill="#4b5563" font-size="11">     ...</text>
+    <text x="235" y="224" fill="#4b5563" font-size="11">  } // 再加 6 个分支</text>
+    <text x="235" y="241" fill="#4b5563" font-size="11">}</text>
+    <rect x="460" y="76" width="410" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="665" y="102" fill="#047857" font-weight="bold" font-size="14">重构后</text>
+    <text x="665" y="122" fill="#4b5563" font-size="11">interface PriceRule {</text>
+    <text x="665" y="139" fill="#4b5563" font-size="11">  BigDecimal apply(Order o);</text>
+    <text x="665" y="156" fill="#4b5563" font-size="11">}</text>
+    <text x="665" y="173" fill="#4b5563" font-size="11">Map&lt;String, PriceRule&gt; RULES = ...;</text>
+    <text x="665" y="190" fill="#4b5563" font-size="11">// 新增等级只需注册一条规则</text>
+    <text x="665" y="207" fill="#4b5563" font-size="11">RULES.get(o.getLevel()).apply(o);</text>
+    <rect x="60" y="280" width="370" height="120" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="245" y="306" fill="#b45309" font-weight="bold" font-size="14">什么时候该重构</text>
+    <text x="245" y="326" fill="#4b5563" font-size="11">新增一个分支要改 3 个以上地方</text>
+    <text x="245" y="343" fill="#4b5563" font-size="11">分支条件出现嵌套两层以上</text>
+    <text x="245" y="360" fill="#4b5563" font-size="11">同一条件在多个方法里重复出现</text>
+    <text x="245" y="377" fill="#4b5563" font-size="11">补充用例的代价明显高于改代码</text>
+    <rect x="470" y="280" width="370" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="655" y="306" fill="#4338ca" font-weight="bold" font-size="14">重构的安全姿势</text>
+    <text x="655" y="326" fill="#4b5563" font-size="11">先用测试把当前行为固定住</text>
+    <text x="655" y="343" fill="#4b5563" font-size="11">一次只做一种机械式改动</text>
+    <text x="655" y="360" fill="#4b5563" font-size="11">每一步都能编译通过并跑测试</text>
+    <text x="655" y="377" fill="#4b5563" font-size="11">行为不变是硬约束，性能另算</text>
+</g>
+  <text x="450" y="424" text-anchor="middle" font-size="13" fill="#475569">重构的价值不在于用了什么模式，而在于「下次改动的成本变低了」</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -114,4 +114,6 @@
 - 费曼技巧：https://fs.blog/feynman-technique/
 - 刻意练习（Anders Ericsson，书籍）
 - 认知天性（Peter Brown 等，书籍）
+- 把学习目标拆成可验证的季度计划：[年度复盘 · 下一年规划](../../AnnualReview/NextYearPlan/index.md)
+- 用能力雷达定位该补哪一块：[年度复盘 · 个人成长复盘](../../AnnualReview/GrowthReview/index.md)
 - 本专题章节入口：[复盘杂项目录](../index.md)

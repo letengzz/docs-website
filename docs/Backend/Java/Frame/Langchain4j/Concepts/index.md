@@ -196,6 +196,6 @@ AiMessage response = service.sendUserMessage("你好");
 
 ## 下一步
 
-- [快速开始](./QuickStart/index.md) - 通过示例快速上手
-- [LLM 集成](./LlmIntegration/index.md) - 深入了解 LLM 集成
-- [提示词模板](./PromptTemplate/index.md) - 掌握提示词模板的使用
+- [快速开始](../QuickStart/index.md) - 通过示例快速上手
+- [LLM 集成](../LlmIntegration/index.md) - 深入了解 LLM 集成
+- [提示词模板](../PromptTemplate/index.md) - 掌握提示词模板的使用

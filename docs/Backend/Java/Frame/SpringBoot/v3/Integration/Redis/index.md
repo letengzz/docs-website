@@ -239,11 +239,11 @@ public User getUser(long id) {
 
 ## 相关专题
 
-- [Redis 进阶导览](../../../../../../DB/NoRelational/Redis/Advanced/index.md)：复制、哨兵、Cluster、缓存设计与性能调优
-- [缓存设计](../../../../../../DB/NoRelational/Redis/Advanced/CacheDesign/index.md)：Cache Aside、TTL 抖动、多级缓存
-- [缓存防护](../../../../../../DB/NoRelational/Redis/Advanced/CacheProtection/index.md)：穿透/击穿/雪崩与热点 key
-- [分布式锁与 Lua](../../../../../../DB/NoRelational/Redis/Advanced/DistributedLock/index.md)：Redisson 可重入锁与看门狗
-- [实战：高可用缓存集群](../../../../../../DB/NoRelational/Redis/Advanced/Practice/index.md)：一主二从三哨兵 + Spring Boot 完整落地
+- [Redis 进阶导览](../../../../../../../DB/NoRelational/Redis/Advanced/index.md)：复制、哨兵、Cluster、缓存设计与性能调优
+- [缓存设计](../../../../../../../DB/NoRelational/Redis/Advanced/CacheDesign/index.md)：Cache Aside、TTL 抖动、多级缓存
+- [缓存防护](../../../../../../../DB/NoRelational/Redis/Advanced/CacheProtection/index.md)：穿透/击穿/雪崩与热点 key
+- [分布式锁与 Lua](../../../../../../../DB/NoRelational/Redis/Advanced/DistributedLock/index.md)：Redisson 可重入锁与看门狗
+- [实战：高可用缓存集群](../../../../../../../DB/NoRelational/Redis/Advanced/Practice/index.md)：一主二从三哨兵 + Spring Boot 完整落地
 - [SpringBoot 整合 Sa-Token](../../../../Sa-token/index.md)：登录态存储常与 Redis 配合使用
 
 

@@ -134,6 +134,12 @@ git rebase origin/main
 - [CI/CD 专题](../../../CICD/index.md)：提交与 MR 如何自动触发流水线（GitHub Actions / GitLab CI / Jenkins）
 - [Git 分支模型](../BranchModel/index.md)：与 CI/CD 分支策略配合的分支规范
 
+## 相关专题
+
+- 分支与评审如何嵌入「需求 → 发布」全流程：[协作与项目管理 · 研发流程](../../../Collaboration/RdProcess/index.md)
+- 提交信息规范与文档沉淀：[文档协作规范](../../../Collaboration/DocCollaboration/index.md)
+- 流水线中的质量门禁：[CI/CD · 流水线设计最佳实践](../../../CICD/PipelineDesign/index.md)
+
 ## 参考资料
 
 - Conventional Commits：https://www.conventionalcommits.org/zh-hans/

@@ -2,8 +2,8 @@
 
 MyBatis 是一个开源、轻量级的数据持久化框架。它支持定制化 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO(`Plain Old Java Objects`，普通老式 Java 对象)为数据库中的记录。MyBatis在实体类和 SQL 语句之间建立映射关系，是一种半自动化的 ORM 实现。其封装性低于 Hibernate，但性能优秀、小巧、简单易学、应用广泛。
 
-- [数据持久化](../../Others/DataPersistence/index.md)
-- [ORM对象关系映射](../../Others/ORM/index.md)
+- 数据持久化
+- ORM对象关系映射
 
 ## MyBatis历史
 

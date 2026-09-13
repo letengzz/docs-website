@@ -346,6 +346,6 @@ public class SecureChatMemory implements ChatMemory {
 
 ## 下一步
 
-- [链式调用](./Chain/index.md) - 学习如何组合多个处理步骤
-- [RAG 检索增强生成](./Rag/index.md) - 构建基于知识库的问答系统
-- [工具调用](./Tools/index.md) - 让 LLM 调用外部工具
+- [链式调用](../Chain/index.md) - 学习如何组合多个处理步骤
+- [RAG 检索增强生成](../Rag/index.md) - 构建基于知识库的问答系统
+- [工具调用](../Tools/index.md) - 让 LLM 调用外部工具

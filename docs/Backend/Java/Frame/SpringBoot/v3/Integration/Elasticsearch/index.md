@@ -1,6 +1,6 @@
 # SpringBoot 整合 Elasticsearch
 
-Spring Boot 通过 `spring-boot-starter-data-elasticsearch` 提供 Spring Data Elasticsearch：实体注解映射 + Repository 接口 + ElasticsearchOperations 模板三种用法。本页讲在 Spring Boot 3.x 中接入 ES 的完整步骤；ES 本身的概念（映射、DSL、分词、集群）见 [Elasticsearch 专题](../../../../../../DB/NoRelational/Elasticsearch/index.md)，本页不重复。
+Spring Boot 通过 `spring-boot-starter-data-elasticsearch` 提供 Spring Data Elasticsearch：实体注解映射 + Repository 接口 + ElasticsearchOperations 模板三种用法。本页讲在 Spring Boot 3.x 中接入 ES 的完整步骤；ES 本身的概念（映射、DSL、分词、集群）见 [Elasticsearch 专题](../../../../../../../DB/NoRelational/Elasticsearch/index.md)，本页不重复。
 
 :::info 客户端演进
 - Spring Boot 3.x + Spring Data Elasticsearch 5.x 使用新的 **Java API Client**（`co.elastic.clients:elasticsearch-java`）；
@@ -65,7 +65,7 @@ public class ProductDoc {
 ```
 
 :::tip createIndex = false
-实体注解只描述映射的「读侧」。生产索引的 analyzer、分片数等 setting 无法全靠注解表达——统一用脚本建索引（见 [索引与映射](../../../../../../DB/NoRelational/Elasticsearch/IndexMapping/index.md)），实体 `createIndex = false` 避免启动时自动建出缺配置的索引。
+实体注解只描述映射的「读侧」。生产索引的 analyzer、分片数等 setting 无法全靠注解表达——统一用脚本建索引（见 [索引与映射](../../../../../../../DB/NoRelational/Elasticsearch/IndexMapping/index.md)），实体 `createIndex = false` 避免启动时自动建出缺配置的索引。
 :::
 
 ## Repository 方式
@@ -121,7 +121,7 @@ public SearchResponse<Map> nativeSearch(String keyword) throws IOException {
 2. **版本不匹配**：Spring Boot 3.1.x 对应 Spring Data ES 5.1.x，跨大版本混用会有序列化兼容问题——按官方矩阵对齐。
 3. **Repository 方法生成不了查询**：`findBy` 命名解析失败在启动期报错——字段名与实体保持一致，复杂条件换 Criteria/原生 DSL。
 4. **分页属性未透传**：`PageRequest.of(page, size)` 的页码从 0 开始，别按页面习惯从 1 传。
-5. **把 Repository 当 ORM 用**：ES 不是主库，只做检索投影——写入仍走 MySQL，通过同步链路进 ES（见 [实战：商品搜索服务](../../../../../../DB/NoRelational/Elasticsearch/Practice/index.md)）。
+5. **把 Repository 当 ORM 用**：ES 不是主库，只做检索投影——写入仍走 MySQL，通过同步链路进 ES（见 [实战：商品搜索服务](../../../../../../../DB/NoRelational/Elasticsearch/Practice/index.md)）。
 :::
 
 ## 验证方式
@@ -134,4 +134,4 @@ public SearchResponse<Map> nativeSearch(String keyword) throws IOException {
 
 - [Spring Data Elasticsearch 官方文档](https://docs.spring.io/spring-data/elasticsearch/reference/)
 - [Elasticsearch Java API Client](https://www.elastic.co/docs/reference/elasticsearch-clients/java-api-client)
-- [Elasticsearch 专题（本站）](../../../../../../DB/NoRelational/Elasticsearch/index.md)
+- [Elasticsearch 专题（本站）](../../../../../../../DB/NoRelational/Elasticsearch/index.md)

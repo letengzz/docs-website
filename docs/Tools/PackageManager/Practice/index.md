@@ -188,7 +188,7 @@ pnpm changeset publish
 - 迁移按「单项目 → 多项目 → monorepo」分三步走，每步可回退。
 - 用 `pnpm --filter` 在 CI 里只构建受影响包，配合 Turborepo 缓存。
 - 把改造前后的「安装耗时/磁盘/构建时长」写进文档，向团队证明收益。
-- 与 [前端工程化](../../../Frontend/Others/FrontendEngineering/index.md)、[CI/CD](../CICD/index.md) 专题联动，形成完整工程基线。
+- 与 [前端工程化](../../../Frontend/Others/FrontendEngineering/index.md)、[CI/CD../../CICD/index.md) 专题联动，形成完整工程基线。
 :::
 
 ## 验证方式

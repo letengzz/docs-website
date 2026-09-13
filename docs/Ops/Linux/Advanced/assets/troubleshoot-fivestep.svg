@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="400" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">线上故障排查五步法</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="90" width="150" height="130" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="105" y="116" fill="#be123c" font-weight="bold" font-size="14">① 现象</text>
+    <text x="105" y="136" fill="#4b5563" font-size="11">用户报什么</text>
+    <text x="105" y="153" fill="#4b5563" font-size="11">影响范围</text>
+    <text x="105" y="170" fill="#4b5563" font-size="11">开始时间</text>
+    <rect x="196" y="90" width="150" height="130" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="271" y="116" fill="#b45309" font-weight="bold" font-size="14">② 定位</text>
+    <text x="271" y="136" fill="#4b5563" font-size="11">分维度体检</text>
+    <text x="271" y="153" fill="#4b5563" font-size="11">CPU/内存/IO/网络</text>
+    <text x="271" y="170" fill="#4b5563" font-size="11">缩小到单机或单进程</text>
+    <rect x="362" y="90" width="150" height="130" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="437" y="116" fill="#1d4ed8" font-weight="bold" font-size="14">③ 止损</text>
+    <text x="437" y="136" fill="#4b5563" font-size="11">先恢复再根因</text>
+    <text x="437" y="153" fill="#4b5563" font-size="11">回滚/扩容/降级</text>
+    <text x="437" y="170" fill="#4b5563" font-size="11">保留现场</text>
+    <rect x="528" y="90" width="150" height="130" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="603" y="116" fill="#047857" font-weight="bold" font-size="14">④ 根因</text>
+    <text x="603" y="136" fill="#4b5563" font-size="11">结合日志链路</text>
+    <text x="603" y="153" fill="#4b5563" font-size="11">复现最小化</text>
+    <text x="603" y="170" fill="#4b5563" font-size="11">确认修复方案</text>
+    <rect x="694" y="90" width="176" height="130" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="782" y="116" fill="#6d28d9" font-weight="bold" font-size="14">⑤ 复盘</text>
+    <text x="782" y="136" fill="#4b5563" font-size="11">写故障报告</text>
+    <text x="782" y="153" fill="#4b5563" font-size="11">补监控与预案</text>
+    <text x="782" y="170" fill="#4b5563" font-size="11">改流程防复发</text>
+    <path d="M 180 155 L 190 155" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 346 155 L 356 155" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 512 155 L 522 155" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 678 155 L 688 155" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+</g>
+  <text x="450" y="300" text-anchor="middle" font-size="13" fill="#475569">铁律：先止损、后根因。任何排查动作都不能让「能用的部分」变得更糟；改动前先备份现场（日志、堆栈、快照）</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -130,3 +130,9 @@ for i in 1 2 3; do echo $i; done
 ```
 
 能按预期输出即验证通过。
+
+## 相关专题
+
+- 把重复操作写成可维护的脚本（变量、流程控制、错误处理、`shellcheck`）：[Linux 进阶 · Shell 脚本编程](../Advanced/ShellScripting/index.md)
+- 让脚本以服务方式常驻运行：[Linux 进阶 · systemd 服务管理](../Advanced/Systemd/index.md)
+- 进阶内容总览：[Linux 进阶](../Advanced/index.md)

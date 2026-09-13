@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="430" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">虚拟线程与平台线程的对比</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="76" width="390" height="170" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="235" y="102" fill="#334155" font-weight="bold" font-size="14">平台线程（Platform Thread）</text>
+    <text x="235" y="122" fill="#4b5563" font-size="11">1:1 映射到操作系统线程</text>
+    <text x="235" y="139" fill="#4b5563" font-size="11">默认栈约 1MB，数量受内存限制</text>
+    <text x="235" y="156" fill="#4b5563" font-size="11">阻塞 = 占用内核线程</text>
+    <text x="235" y="173" fill="#4b5563" font-size="11">写并发代码只能用线程池 + 回调/CompletableFuture</text>
+    <text x="235" y="190" fill="#4b5563" font-size="11">典型上限：几千条</text>
+    <rect x="470" y="76" width="390" height="170" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="665" y="102" fill="#047857" font-weight="bold" font-size="14">虚拟线程（Virtual Thread）</text>
+    <text x="665" y="122" fill="#4b5563" font-size="11">M:N 映射，由 JVM 调度</text>
+    <text x="665" y="139" fill="#4b5563" font-size="11">栈按需增长，堆内存储</text>
+    <text x="665" y="156" fill="#4b5563" font-size="11">阻塞时自动卸载，让出载体线程</text>
+    <text x="665" y="173" fill="#4b5563" font-size="11">可以直接写「同步阻塞」风格的高并发代码</text>
+    <text x="665" y="190" fill="#4b5563" font-size="11">典型上限：十万级</text>
+    <rect x="60" y="280" width="380" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="250" y="306" fill="#4338ca" font-weight="bold" font-size="14">适合的场景</text>
+    <text x="250" y="326" fill="#4b5563" font-size="11">I/O 密集：HTTP 调用、数据库查询</text>
+    <text x="250" y="343" fill="#4b5563" font-size="11">线程数远大于 CPU 核数的服务</text>
+    <text x="250" y="360" fill="#4b5563" font-size="11">想用同步写法替代复杂的异步编排</text>
+    <rect x="470" y="280" width="380" height="120" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="660" y="306" fill="#be123c" font-weight="bold" font-size="14">不适合的场景</text>
+    <text x="660" y="326" fill="#4b5563" font-size="11">CPU 密集计算（没有阻塞可让出）</text>
+    <text x="660" y="343" fill="#4b5563" font-size="11">大量使用 synchronized 导致线程钉住（pinning）</text>
+    <text x="660" y="360" fill="#4b5563" font-size="11">需要复用「昂贵对象」的场景（每任务新线程）</text>
+</g>
+  <text x="450" y="424" text-anchor="middle" font-size="13" fill="#475569">虚拟线程不是「更快的线程」，而是「更便宜地等待」；它的目标是提高吞吐，不是降低延迟</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

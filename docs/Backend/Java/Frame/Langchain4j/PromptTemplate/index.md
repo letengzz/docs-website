@@ -261,6 +261,6 @@ Prompt prompt = PromptTemplates.SUMMARIZATION.apply(vars);
 
 ## 下一步
 
-- [内存管理](./MemoryManagement/index.md) - 学习如何在多轮对话中维护上下文
-- [链式调用](./Chain/index.md) - 了解如何组合多个处理步骤
-- [RAG 检索增强生成](./Rag/index.md) - 构建基于知识库的问答系统
+- [内存管理](../MemoryManagement/index.md) - 学习如何在多轮对话中维护上下文
+- [链式调用](../Chain/index.md) - 了解如何组合多个处理步骤
+- [RAG 检索增强生成](../Rag/index.md) - 构建基于知识库的问答系统

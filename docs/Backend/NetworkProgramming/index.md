@@ -9,7 +9,11 @@
 - [HTTP 与 HTTPS 协议](HttpHttps/index.md)
 - [Socket 与 IO 模型](SocketIO/index.md)
 - [Netty 入门](Netty/index.md)
+- [Netty 进阶：线程模型与性能调优](NettyAdvanced/index.md)
+- [虚拟线程与高并发模型](VirtualThread/index.md)
+- [自定义协议设计](ProtocolDesign/index.md)
 - [粘包拆包与编解码](StickyHalf/index.md)
+- [性能基准与压测](BenchmarkPractice/index.md)
 - [实战：Netty 聊天服务器](Practice/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
 

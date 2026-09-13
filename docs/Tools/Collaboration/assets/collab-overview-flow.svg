@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="400" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">协作的本质：信息在角色之间流转</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="300" y="66" width="300" height="58" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="450" y="92" fill="#4338ca" font-weight="bold" font-size="14">业务/产品提出需求</text>
+    <text x="450" y="112" fill="#4b5563" font-size="11">目标、背景、验收标准</text>
+    <rect x="30" y="180" width="200" height="96" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="130" y="206" fill="#1d4ed8" font-weight="bold" font-size="14">产品与设计</text>
+    <text x="130" y="226" fill="#4b5563" font-size="11">拆需求、画原型</text>
+    <text x="130" y="243" fill="#4b5563" font-size="11">定优先级</text>
+    <rect x="250" y="180" width="200" height="96" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="350" y="206" fill="#047857" font-weight="bold" font-size="14">研发</text>
+    <text x="350" y="226" fill="#4b5563" font-size="11">技术方案与排期</text>
+    <text x="350" y="243" fill="#4b5563" font-size="11">编码与自测</text>
+    <rect x="470" y="180" width="200" height="96" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="570" y="206" fill="#b45309" font-weight="bold" font-size="14">测试</text>
+    <text x="570" y="226" fill="#4b5563" font-size="11">用例与回归</text>
+    <text x="570" y="243" fill="#4b5563" font-size="11">质量门禁</text>
+    <rect x="690" y="180" width="180" height="96" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="780" y="206" fill="#6d28d9" font-weight="bold" font-size="14">运维/发布</text>
+    <text x="780" y="226" fill="#4b5563" font-size="11">上线与回滚</text>
+    <text x="780" y="243" fill="#4b5563" font-size="11">监控反馈</text>
+    <rect x="300" y="310" width="300" height="60" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="450" y="336" fill="#be123c" font-weight="bold" font-size="14">线上数据与反馈</text>
+    <text x="450" y="356" fill="#4b5563" font-size="11">需求闭环 / 缺陷回流 / 复盘输入</text>
+    <path d="M 380 124 L 140 174" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 230 228 L 244 228" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 450 228 L 464 228" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 670 228 L 684 228" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 780 276 C 780 310 640 336 606 336" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+</g>
+  <text x="450" y="378" text-anchor="middle" font-size="13" fill="#475569">协作成本 ≈ 信息损耗 × 交接次数。减少交接、让信息「一次说清、随处可查」，比开更多会有效</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

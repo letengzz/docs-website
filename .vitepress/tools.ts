@@ -98,6 +98,22 @@ export const DatabaseClients = [
     ],
   },
 ];
+export const Collaboration = [
+  {
+    text: "协作与项目管理",
+    link: "/docs/Tools/Collaboration/index.md",
+    items: [
+      { text: "概述与工具选型", link: "/docs/Tools/Collaboration/Overview/index.md" },
+      { text: "Jira 实战", link: "/docs/Tools/Collaboration/Jira/index.md" },
+      { text: "Confluence 知识库", link: "/docs/Tools/Collaboration/Confluence/index.md" },
+      { text: "飞书协作", link: "/docs/Tools/Collaboration/Feishu/index.md" },
+      { text: "研发流程", link: "/docs/Tools/Collaboration/RdProcess/index.md" },
+      { text: "文档协作规范", link: "/docs/Tools/Collaboration/DocCollaboration/index.md" },
+      { text: "实战：10 人团队协作体系落地", link: "/docs/Tools/Collaboration/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/Collaboration/FAQ/index.md" },
+    ],
+  },
+];
 export const IDE = [{ text: "IDE 工具", link: "/docs/Tools/IDE/index.md" }];
 export const Others = [{ text: "其他工具", link: "/docs/Tools/Others/index.md" }];
 export const VC = [

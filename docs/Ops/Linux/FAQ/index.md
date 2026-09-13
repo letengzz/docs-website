@@ -117,4 +117,6 @@ dmesg -T | tail      # 内核日志
 
 ## 相关专题
 
+- [Linux 进阶总览](../Advanced/index.md)：脚本、systemd、定时任务、性能、安全、排障
+- [Linux 进阶常见问题与最佳实践](../Advanced/FAQ/index.md)：本篇未覆盖的进阶问题
 - [Kubernetes 集群](../../Kubernetes/index.md)

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Netty 线程模型：EventLoop 与 EventLoopGroup</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="76" width="250" height="110" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="155" y="102" fill="#1d4ed8" font-weight="bold" font-size="14">BossGroup</text>
+    <text x="155" y="122" fill="#4b5563" font-size="11">默认 1 个 EventLoop</text>
+    <text x="155" y="139" fill="#4b5563" font-size="11">只负责 accept</text>
+    <text x="155" y="156" fill="#4b5563" font-size="11">拿到连接就交给 Worker</text>
+    <rect x="320" y="76" width="250" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="445" y="102" fill="#047857" font-weight="bold" font-size="14">WorkerGroup</text>
+    <text x="445" y="122" fill="#4b5563" font-size="11">默认 2 × CPU 核数</text>
+    <text x="445" y="139" fill="#4b5563" font-size="11">负责读写与解码</text>
+    <text x="445" y="156" fill="#4b5563" font-size="11">一个 Channel 固定绑定一个 EventLoop</text>
+    <rect x="610" y="76" width="260" height="110" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="740" y="102" fill="#b45309" font-weight="bold" font-size="14">EventLoop</text>
+    <text x="740" y="122" fill="#4b5563" font-size="11">单线程 + 任务队列</text>
+    <text x="740" y="139" fill="#4b5563" font-size="11">串行执行，天然免锁</text>
+    <text x="740" y="156" fill="#4b5563" font-size="11">禁止在其中做阻塞操作</text>
+    <rect x="40" y="230" width="400" height="180" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="240" y="256" fill="#4338ca" font-weight="bold" font-size="14">ChannelPipeline 事件流</text>
+    <text x="240" y="276" fill="#4b5563" font-size="11">Inbound：ByteBuf → Decoder → 业务 Handler</text>
+    <text x="240" y="293" fill="#4b5563" font-size="11">Outbound：业务 Handler → Encoder → ByteBuf</text>
+    <text x="240" y="310" fill="#4b5563" font-size="11">Handler 分两类：ChannelInboundHandler / OutboundHandler</text>
+    <text x="240" y="327" fill="#4b5563" font-size="11">耗时的业务逻辑必须丢到业务线程池（addLast(executorGroup, handler)）</text>
+    <rect x="470" y="230" width="400" height="180" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="670" y="256" fill="#be123c" font-weight="bold" font-size="14">三个高频事故</text>
+    <text x="670" y="276" fill="#4b5563" font-size="11">在 EventLoop 里做数据库查询：整个 worker 卡死</text>
+    <text x="670" y="293" fill="#4b5563" font-size="11">解码器缺少长度字段校验：OOM</text>
+    <text x="670" y="310" fill="#4b5563" font-size="11">忘记释放 ByteBuf：直接内存泄漏，靠 -Dio.netty.leakDetection.level 定位</text>
+    <path d="M 280 131 L 314 131" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 570 131 L 604 131" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+</g>
+  <text x="450" y="424" text-anchor="middle" font-size="13" fill="#475569">记住一句话：EventLoop 只做「快」的事（解析、分发），慢的事（查库、调用外部接口）交给业务线程池</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

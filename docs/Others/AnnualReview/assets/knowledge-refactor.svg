@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">知识体系重构的取舍策略</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="76" width="260" height="140" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="170" y="102" fill="#047857" font-weight="bold" font-size="14">保留（Keep）</text>
+    <text x="170" y="122" fill="#4b5563" font-size="11">高频使用且结构清晰</text>
+    <text x="170" y="139" fill="#4b5563" font-size="11">有明确负责人</text>
+    <text x="170" y="156" fill="#4b5563" font-size="11">示例可运行、版本已核对</text>
+    <text x="170" y="173" fill="#4b5563" font-size="11">动作：补交叉链接，纳入索引</text>
+    <rect x="320" y="76" width="260" height="140" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="450" y="102" fill="#b45309" font-weight="bold" font-size="14">合并（Merge）</text>
+    <text x="450" y="122" fill="#4b5563" font-size="11">同一主题多页重复</text>
+    <text x="450" y="139" fill="#4b5563" font-size="11">新旧内容并存需统一</text>
+    <text x="450" y="156" fill="#4b5563" font-size="11">分散的零散笔记</text>
+    <text x="450" y="173" fill="#4b5563" font-size="11">动作：择优合并，保留旧 URL 跳转</text>
+    <rect x="600" y="76" width="270" height="140" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="735" y="102" fill="#be123c" font-weight="bold" font-size="14">淘汰（Drop）</text>
+    <text x="735" y="122" fill="#4b5563" font-size="11">已下线技术栈的教程</text>
+    <text x="735" y="139" fill="#4b5563" font-size="11">无人维护的临时记录</text>
+    <text x="735" y="156" fill="#4b5563" font-size="11">与现有内容重复的转载</text>
+    <text x="735" y="173" fill="#4b5563" font-size="11">动作：归档到 legacy 并标注状态</text>
+    <rect x="180" y="260" width="520" height="140" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="440" y="286" fill="#4338ca" font-weight="bold" font-size="14">重构三条铁律</text>
+    <text x="440" y="306" fill="#4b5563" font-size="11">① 不要为了「整齐」而重写：能改就别重写，能补就别删</text>
+    <text x="440" y="323" fill="#4b5563" font-size="11">② 保留旧 URL：文档被人收藏/引用过，改名必须留跳转</text>
+    <text x="440" y="340" fill="#4b5563" font-size="11">③ 删之前先确认没有下游引用：全库搜索链接与侧边栏</text>
+</g>
+  <text x="450" y="414" text-anchor="middle" font-size="13" fill="#475569">重构的目标是「少而准」：一份权威内容 + 若干明确标注的历史存档，胜过十份半新不旧的重复页面</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

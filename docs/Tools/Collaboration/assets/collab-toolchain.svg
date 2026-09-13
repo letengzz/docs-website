@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">研发协作工具链全景</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="74" width="200" height="120" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="130" y="100" fill="#1d4ed8" font-weight="bold" font-size="14">需求与规划</text>
+    <text x="130" y="120" fill="#4b5563" font-size="11">Jira / 飞书项目</text>
+    <text x="130" y="137" fill="#4b5563" font-size="11">需求池与优先级</text>
+    <text x="130" y="154" fill="#4b5563" font-size="11">Roadmap 与排期</text>
+    <rect x="250" y="74" width="200" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="350" y="100" fill="#047857" font-weight="bold" font-size="14">开发与协作</text>
+    <text x="350" y="120" fill="#4b5563" font-size="11">Git 代码仓库</text>
+    <text x="350" y="137" fill="#4b5563" font-size="11">Confluence / 飞书文档</text>
+    <text x="350" y="154" fill="#4b5563" font-size="11">评审与评论</text>
+    <rect x="470" y="74" width="200" height="120" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="570" y="100" fill="#b45309" font-weight="bold" font-size="14">交付与验证</text>
+    <text x="570" y="120" fill="#4b5563" font-size="11">CI/CD 流水线</text>
+    <text x="570" y="137" fill="#4b5563" font-size="11">测试管理</text>
+    <text x="570" y="154" fill="#4b5563" font-size="11">制品与发布单</text>
+    <rect x="690" y="74" width="180" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="780" y="100" fill="#6d28d9" font-weight="bold" font-size="14">运行与反馈</text>
+    <text x="780" y="120" fill="#4b5563" font-size="11">监控告警</text>
+    <text x="780" y="137" fill="#4b5563" font-size="11">缺陷回流</text>
+    <text x="780" y="154" fill="#4b5563" font-size="11">数据看板</text>
+    <rect x="30" y="240" width="400" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="230" y="266" fill="#4338ca" font-weight="bold" font-size="14">横切能力</text>
+    <text x="230" y="286" fill="#4b5563" font-size="11">权限与身份：SSO、项目角色、最小可见</text>
+    <text x="230" y="303" fill="#4b5563" font-size="11">通知与自动化：机器人、Webhook、规则</text>
+    <text x="230" y="320" fill="#4b5563" font-size="11">度量与报表：周期时间、吞吐、在制品</text>
+    <text x="230" y="337" fill="#4b5563" font-size="11">搜索与知识沉淀：统一搜索、模板库</text>
+    <rect x="470" y="240" width="400" height="150" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="670" y="266" fill="#0f766e" font-weight="bold" font-size="14">三条主线</text>
+    <text x="670" y="286" fill="#4b5563" font-size="11">信息主线：需求 → 任务 → 代码 → 发布</text>
+    <text x="670" y="303" fill="#4b5563" font-size="11">知识主线：文档 → 评审 → 归档 → 检索</text>
+    <text x="670" y="320" fill="#4b5563" font-size="11">反馈主线：监控 → 缺陷 → 复盘 → 改进</text>
+    <path d="M 230 134 L 244 134" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 450 134 L 464 134" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 670 134 L 684 134" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+</g>
+  <text x="450" y="414" text-anchor="middle" font-size="13" fill="#475569">选型原则：先统一「信息主线」，再谈工具。工具可以换，链路断了再好的工具也白搭</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

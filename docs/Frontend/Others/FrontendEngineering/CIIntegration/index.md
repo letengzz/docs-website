@@ -208,7 +208,7 @@ jobs:
 
 ## 参考资料
 
-- 安全门禁（依赖审计）：[依赖与供应链安全](../Security/Dependency/index.md)
+- 安全门禁（依赖审计）：[依赖与供应链安全](../../Security/Dependency/index.md)
 - 测试侧门禁设计：[测试策略与 CI 集成](../../../Testing/Strategy/index.md)、[覆盖率统计与门禁](../../../Testing/Coverage/index.md)
 - GitHub Actions：https://docs.github.com/zh/actions
 - pnpm 与 CI：https://pnpm.io/zh/continuous-integration

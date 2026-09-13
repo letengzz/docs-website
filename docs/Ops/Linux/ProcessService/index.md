@@ -110,3 +110,9 @@ crontab -l
 ```
 
 能正常输出进程、系统状态和定时任务即验证通过。
+
+## 相关专题
+
+- 自己写 systemd unit、管依赖、限资源：[Linux 进阶 · systemd 服务管理](../Advanced/Systemd/index.md)
+- 定时任务（cron 与 systemd timer）详解：[Linux 进阶 · 定时任务](../Advanced/CronTasks/index.md)
+- 进程「杀不掉」时怎么定位：[Linux 进阶 · 故障排查](../Advanced/Troubleshooting/index.md)

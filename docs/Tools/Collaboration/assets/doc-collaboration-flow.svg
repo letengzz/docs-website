@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="430" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">文档协作：文档即代码</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="76" width="150" height="110" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="115" y="102" fill="#1d4ed8" font-weight="bold" font-size="14">① 起草</text>
+    <text x="115" y="122" fill="#4b5563" font-size="11">选模板</text>
+    <text x="115" y="139" fill="#4b5563" font-size="11">写背景与目标</text>
+    <text x="115" y="156" fill="#4b5563" font-size="11">标注状态=草稿</text>
+    <rect x="212" y="76" width="150" height="110" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="287" y="102" fill="#b45309" font-weight="bold" font-size="14">② 评审</text>
+    <text x="287" y="122" fill="#4b5563" font-size="11">指定评审人</text>
+    <text x="287" y="139" fill="#4b5563" font-size="11">限时反馈</text>
+    <text x="287" y="156" fill="#4b5563" font-size="11">结论写进文档</text>
+    <rect x="384" y="76" width="150" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="459" y="102" fill="#047857" font-weight="bold" font-size="14">③ 定稿</text>
+    <text x="459" y="122" fill="#4b5563" font-size="11">状态=已确认</text>
+    <text x="459" y="139" fill="#4b5563" font-size="11">补决策记录</text>
+    <text x="459" y="156" fill="#4b5563" font-size="11">同步到需求单</text>
+    <rect x="556" y="76" width="150" height="110" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="631" y="102" fill="#6d28d9" font-weight="bold" font-size="14">④ 维护</text>
+    <text x="631" y="122" fill="#4b5563" font-size="11">随代码变更更新</text>
+    <text x="631" y="139" fill="#4b5563" font-size="11">标注负责人</text>
+    <text x="631" y="156" fill="#4b5563" font-size="11">过期即归档</text>
+    <rect x="728" y="76" width="140" height="110" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="798" y="102" fill="#0f766e" font-weight="bold" font-size="14">⑤ 归档</text>
+    <text x="798" y="122" fill="#4b5563" font-size="11">移入归档区</text>
+    <text x="798" y="139" fill="#4b5563" font-size="11">保留只读</text>
+    <text x="798" y="156" fill="#4b5563" font-size="11">索引可检索</text>
+    <rect x="80" y="260" width="350" height="140" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="255" y="286" fill="#4338ca" font-weight="bold" font-size="14">文档的五要素</text>
+    <text x="255" y="306" fill="#4b5563" font-size="11">唯一负责人（Owner）</text>
+    <text x="255" y="323" fill="#4b5563" font-size="11">状态标记（草稿/评审/已确认/过期）</text>
+    <text x="255" y="340" fill="#4b5563" font-size="11">最后更新日期</text>
+    <text x="255" y="357" fill="#4b5563" font-size="11">适用范围（版本、环境）</text>
+    <text x="255" y="374" fill="#4b5563" font-size="11">变更记录</text>
+    <rect x="470" y="260" width="350" height="140" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="645" y="286" fill="#be123c" font-weight="bold" font-size="14">五条反模式</text>
+    <text x="645" y="306" fill="#4b5563" font-size="11">「无人负责」的百科页：没人敢改</text>
+    <text x="645" y="323" fill="#4b5563" font-size="11">「只增不改」的会议纪要堆积</text>
+    <text x="645" y="340" fill="#4b5563" font-size="11">「代码已换、文档没换」的僵尸文档</text>
+    <text x="645" y="357" fill="#4b5563" font-size="11">同一主题在三个地方各写一版</text>
+    <text x="645" y="374" fill="#4b5563" font-size="11">把聊天记录当文档</text>
+    <path d="M 190 131 L 206 131" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 362 131 L 378 131" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 534 131 L 550 131" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 706 131 L 722 131" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+</g>
+  <text x="450" y="422" text-anchor="middle" font-size="13" fill="#475569">文档和代码一样需要「被维护」：写清楚状态与负责人，比写得多更重要</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

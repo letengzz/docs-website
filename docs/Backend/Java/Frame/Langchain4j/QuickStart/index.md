@@ -183,6 +183,6 @@ public class ChatBot {
 
 完成快速开始后，建议继续阅读以下内容：
 
-- [核心概念](./Concepts/index.md) - 深入理解 LangChain4j 的设计理念
-- [LLM 集成](./LlmIntegration/index.md) - 了解如何集成不同的 LLM
-- [提示词模板](./PromptTemplate/index.md) - 学习构建复杂的提示词
+- [核心概念](../Concepts/index.md) - 深入理解 LangChain4j 的设计理念
+- [LLM 集成](../LlmIntegration/index.md) - 了解如何集成不同的 LLM
+- [提示词模板](../PromptTemplate/index.md) - 学习构建复杂的提示词

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Linux 服务器安全加固的纵深防御</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="120" y="66" width="640" height="56" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="440" y="92" fill="#334155" font-weight="bold" font-size="14">① 物理与云侧</text>
+    <text x="440" y="112" fill="#4b5563" font-size="11">安全组 / 网络 ACL / 只开放必要端口</text>
+    <rect x="120" y="130" width="640" height="56" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="440" y="156" fill="#1d4ed8" font-weight="bold" font-size="14">② 网络与防火墙</text>
+    <text x="440" y="176" fill="#4b5563" font-size="11">nftables / firewalld / fail2ban 封禁暴力破解</text>
+    <rect x="120" y="194" width="640" height="56" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="440" y="220" fill="#047857" font-weight="bold" font-size="14">③ 账户与认证</text>
+    <text x="440" y="240" fill="#4b5563" font-size="11">禁用 root 直登、密钥登录、sudo 最小权限、PAM 与密码策略</text>
+    <rect x="120" y="258" width="640" height="56" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="440" y="284" fill="#b45309" font-weight="bold" font-size="14">④ 强制访问控制</text>
+    <text x="440" y="304" fill="#4b5563" font-size="11">SELinux / AppArmor 约束进程可见范围</text>
+    <rect x="120" y="322" width="640" height="56" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="440" y="348" fill="#6d28d9" font-weight="bold" font-size="14">⑤ 补丁与审计</text>
+    <text x="440" y="368" fill="#4b5563" font-size="11">内核与软件更新、auditd 审计、日志集中留存</text>
+    <rect x="120" y="386" width="640" height="44" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="440" y="412" fill="#be123c" font-weight="bold" font-size="14">⑥ 运行时与备份</text>
+    <text x="440" y="432" fill="#4b5563" font-size="11">最小化安装、只读挂载、定期备份与恢复演练</text>
+</g>
+    <text x="72" y="200" text-anchor="middle" fill="#6b7280" font-size="13" font-weight="bold">纵</text>
+    <text x="72" y="220" text-anchor="middle" fill="#6b7280" font-size="13" font-weight="bold">深</text>
+    <text x="72" y="240" text-anchor="middle" fill="#6b7280" font-size="13" font-weight="bold">防</text>
+    <text x="72" y="260" text-anchor="middle" fill="#6b7280" font-size="13" font-weight="bold">御</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

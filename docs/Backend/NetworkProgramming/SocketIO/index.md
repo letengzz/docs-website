@@ -138,6 +138,12 @@ Reactor（事件分发）：负责监听与分发事件
 2. 用 NIO Selector 实现一个简易服务，`ss -tn` 观察连接处理。
 3. 压测 1 万连接，对比 BIO 与 NIO 的线程数与内存。
 
+## 相关专题
+
+- 用虚拟线程把「同步写法」跑出高吞吐：[虚拟线程与高并发模型](../VirtualThread/index.md)
+- 基于 NIO 的生产级框架：[Netty 入门](../Netty/index.md) · [Netty 进阶](../NettyAdvanced/index.md)
+- 各种 IO 模型下的性能对比方法：[性能基准与压测](../BenchmarkPractice/index.md)
+
 ## 参考资料
 
 - Java Socket 教程：https://docs.oracle.com/javase/tutorial/networking/sockets/

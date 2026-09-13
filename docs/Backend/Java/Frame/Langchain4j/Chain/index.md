@@ -364,6 +364,6 @@ public class AggregationChain<I, O> implements Chain<List<I>, O {
 
 ## 下一步
 
-- [RAG 检索增强生成](./Rag/index.md) - 构建知识库问答系统
-- [工具调用](./Tools/index.md) - 让 LLM 调用外部工具
-- [内存管理](./MemoryManagement/index.md) - 管理对话状态
+- [RAG 检索增强生成](../Rag/index.md) - 构建知识库问答系统
+- [工具调用](../Tools/index.md) - 让 LLM 调用外部工具
+- [内存管理](../MemoryManagement/index.md) - 管理对话状态

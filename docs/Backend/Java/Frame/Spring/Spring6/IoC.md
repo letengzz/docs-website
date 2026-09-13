@@ -8,7 +8,7 @@ Spring 通过 IoC 容器来管理所有 Java 对象的实例化和初始化，�
 
 ## Spring对组件进行管理
 
-- [组件相关概念](../../../Others/Component/index.md)
+- 组件相关概念
 
 组件可以完全交给Spring 框架进行管理，Spring框架替代了程序员原有的new对象和对象属性赋值动作等。
 

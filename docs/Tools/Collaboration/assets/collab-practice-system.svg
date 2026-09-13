@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="430" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">实战：10 人团队协作体系落地</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="270" height="150" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="165" y="96" fill="#1d4ed8" font-weight="bold" font-size="14">第一周：现状盘点</text>
+    <text x="165" y="116" fill="#4b5563" font-size="11">列出当前所有信息落点（群/文档/表格）</text>
+    <text x="165" y="133" fill="#4b5563" font-size="11">找出「同一件事有几个版本」的地方</text>
+    <text x="165" y="150" fill="#4b5563" font-size="11">确定唯一的「事项来源」与「文档来源」</text>
+    <rect x="320" y="70" width="270" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="455" y="96" fill="#047857" font-weight="bold" font-size="14">第二周：定规范</text>
+    <text x="455" y="116" fill="#4b5563" font-size="11">状态流转图（不超过 6 个状态）</text>
+    <text x="455" y="133" fill="#4b5563" font-size="11">文档模板 3 个（需求/方案/复盘）</text>
+    <text x="455" y="150" fill="#4b5563" font-size="11">命名与目录规范，写成一页纸</text>
+    <rect x="610" y="70" width="260" height="150" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="740" y="96" fill="#b45309" font-weight="bold" font-size="14">第三周：自动化</text>
+    <text x="740" y="116" fill="#4b5563" font-size="11">CI 结果自动推群</text>
+    <text x="740" y="133" fill="#4b5563" font-size="11">合并请求自动关联事项</text>
+    <text x="740" y="150" fill="#4b5563" font-size="11">值班/告警自动建单</text>
+    <rect x="180" y="260" width="240" height="130" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="300" y="286" fill="#6d28d9" font-weight="bold" font-size="14">第四周：度量</text>
+    <text x="300" y="306" fill="#4b5563" font-size="11">周期时间（提出→上线）</text>
+    <text x="300" y="323" fill="#4b5563" font-size="11">在制品数量 WIP</text>
+    <text x="300" y="340" fill="#4b5563" font-size="11">缺陷逃逸率与返工率</text>
+    <rect x="460" y="260" width="240" height="130" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="580" y="286" fill="#0f766e" font-weight="bold" font-size="14">持续：复盘</text>
+    <text x="580" y="306" fill="#4b5563" font-size="11">每两周回顾一次流程</text>
+    <text x="580" y="323" fill="#4b5563" font-size="11">只改一个最痛的点</text>
+    <text x="580" y="340" fill="#4b5563" font-size="11">改动写进规范文档</text>
+    <path d="M 300 145 L 314 145" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 590 145 L 604 145" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 880 145 L 880 300" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 880 300 L 706 325" stroke="#cbd5e1" stroke-width="2" fill="none" stroke-dasharray="5 4"/>
+    <path d="M 414 325 L 316 325" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+</g>
+  <text x="450" y="402" text-anchor="middle" font-size="13" fill="#475569">落地节奏：先统一来源（第一周）→ 再定规范（第二周）→ 然后自动化 → 最后度量，顺序反了必然反弹</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

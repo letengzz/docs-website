@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="430" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">实战：从裸机到生产可用的服务器</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="160" height="110" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="110" y="96" fill="#334155" font-weight="bold" font-size="14">① 系统基线</text>
+    <text x="110" y="116" fill="#4b5563" font-size="11">最小化安装</text>
+    <text x="110" y="133" fill="#4b5563" font-size="11">更新与内核</text>
+    <text x="110" y="150" fill="#4b5563" font-size="11">时区与时间同步</text>
+    <rect x="210" y="70" width="160" height="110" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="290" y="96" fill="#1d4ed8" font-weight="bold" font-size="14">② 账户与权限</text>
+    <text x="290" y="116" fill="#4b5563" font-size="11">运维账号与密钥</text>
+    <text x="290" y="133" fill="#4b5563" font-size="11">sudo 白名单</text>
+    <text x="290" y="150" fill="#4b5563" font-size="11">目录与属主规范</text>
+    <rect x="390" y="70" width="160" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="470" y="96" fill="#047857" font-weight="bold" font-size="14">③ 网络与安全</text>
+    <text x="470" y="116" fill="#4b5563" font-size="11">静态 IP / 防火墙</text>
+    <text x="470" y="133" fill="#4b5563" font-size="11">SSH 加固</text>
+    <text x="470" y="150" fill="#4b5563" font-size="11">fail2ban</text>
+    <rect x="570" y="70" width="160" height="110" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="650" y="96" fill="#b45309" font-weight="bold" font-size="14">④ 运行时环境</text>
+    <text x="650" y="116" fill="#4b5563" font-size="11">JDK / Node / Python</text>
+    <text x="650" y="133" fill="#4b5563" font-size="11">容器运行时</text>
+    <text x="650" y="150" fill="#4b5563" font-size="11">目录规划 /data</text>
+    <rect x="750" y="70" width="120" height="110" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="810" y="96" fill="#6d28d9" font-weight="bold" font-size="14">⑤ 观测</text>
+    <text x="810" y="116" fill="#4b5563" font-size="11">node_exporter</text>
+    <text x="810" y="133" fill="#4b5563" font-size="11">journald 留存</text>
+    <text x="810" y="150" fill="#4b5563" font-size="11">日志采集</text>
+    <rect x="180" y="250" width="230" height="110" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="295" y="276" fill="#4338ca" font-weight="bold" font-size="14">⑥ 服务化与自启</text>
+    <text x="295" y="296" fill="#4b5563" font-size="11">systemd unit 托管</text>
+    <text x="295" y="313" fill="#4b5563" font-size="11">LimitNOFILE 限额</text>
+    <text x="295" y="330" fill="#4b5563" font-size="11">Restart 策略</text>
+    <rect x="470" y="250" width="250" height="110" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="595" y="276" fill="#0e7490" font-weight="bold" font-size="14">⑦ 备份与巡检</text>
+    <text x="595" y="296" fill="#4b5563" font-size="11">定时任务 + 保留策略</text>
+    <text x="595" y="313" fill="#4b5563" font-size="11">恢复演练</text>
+    <text x="595" y="330" fill="#4b5563" font-size="11">巡检脚本与告警</text>
+    <path d="M 430 180 C 430 220 295 216 295 244" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 595 180 C 595 220 595 216 595 244" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+</g>
+  <text x="450" y="402" text-anchor="middle" font-size="13" fill="#475569">交付标准：重启后所有服务自动恢复、监控有数据、备份可恢复、加固项有检查脚本可复跑</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

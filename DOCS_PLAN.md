@@ -88,18 +88,18 @@
 | 53 | DB | Elasticsearch ✅ | 概述与安装、索引与映射、查询 DSL、聚合、集群、中文分词、常见问题 |
 | 54 | DB | Redis 进阶 ✅ | 持久化、主从与哨兵、Cluster、缓存设计、性能调优、常见问题 |
 | 55 | Ops | 日志体系 ✅ | ELK、Loki、日志采集、日志分析、告警联动、常见问题 |
-| 56 | Ops | Linux 进阶 | Shell 编程、系统调优、服务管理、定时任务、安全加固、常见问题 |
-| 57 | Tools | 协作与项目管理 | Jira、Confluence、飞书、研发流程、文档协作、常见问题 |
+| 56 | Ops | Linux 进阶 ✅ | Shell 编程、系统调优、服务管理、定时任务、安全加固、常见问题 |
+| 57 | Tools | 协作与项目管理 ✅ | Jira、Confluence、飞书、研发流程、文档协作、常见问题 |
 | 58 | Project | Vue3 模板补充 ✅ | 权限、主题、组件库集成、多环境、发布、常见问题 |
 | 59 | Project | 完整项目实战 ✅ | 需求拆分、数据库设计、前后端联调、测试、部署、复盘 |
-| 60 | Others | 年度复盘 | 文档库盘点、知识体系重构、年度总结、下一年规划 |
+| 60 | Others | 年度复盘 ✅ | 文档库盘点、知识体系重构、年度总结、下一年规划 |
 
 ## 61-90 天轮换表
 
 | 天数 | 分类 | 主题 | 建议章节 |
 | --- | --- | --- | --- |
-| 61 | Backend | Java 设计模式实战 | 设计原则、创建型、结构型、行为型、框架源码分析、实战案例 |
-| 62 | Backend | Java 网络编程 | Socket、NIO、Netty、粘包拆包、编解码、实战案例 |
+| 61 | Backend | Java 设计模式实战 ✅ | 设计原则、创建型、结构型、行为型、框架源码分析、实战案例 |
+| 62 | Backend | Java 网络编程 ✅ | Socket、NIO、Netty、粘包拆包、编解码、实战案例 |
 | 63 | Backend | Go 入门 | 概述与环境、语法基础、并发模型、Web 开发、实战案例 |
 | 64 | Backend | 认证与授权 ✅ | JWT、OAuth2、Session、SSO、安全最佳实践、常见问题 |
 | 65 | Frontend | Vite 深入 | 原理、配置、插件开发、环境变量、构建优化、实战案例 |
@@ -207,6 +207,14 @@
 - [x] Ops 存量补全：日志体系专题已建设（第 55 天，`docs/Ops/LogSystem` 9 个页面：概述与选型、日志采集与传输、Elastic Stack（ELK）、Grafana Loki、日志查询与分析、日志告警与联动、存储保留与成本优化、实战：搭建集中式日志平台、常见问题与最佳实践），含主题 Logo（PNG）与 9 张 SVG 示意图；侧边栏（`ops.ts`/`sidebar.ts`）与导航（`nav.ts`）已挂载，Ops 目录页与导航「运维」分组补入口
 - [x] 日志栈过期表述巡检（全库）：把存量 Monitoring 专题从「Promtail + Loki 单页」更新为「Alloy 主线 + 收敛为速览并回链新专题」——重写 [日志监控] 页（Promtail → Grafana Alloy，新增深入阅读表）、重写实战页第五步（`promtail-config.yml` → `config.alloy` + Alloy 服务与 `alloy-data` 卷）、修正 `Monitoring/assets/log-pipeline.svg` 采集器标注、更新 [监控体系与可观测性] 版本说明（Grafana 13.2.1 / Loki 3.7.7 / Alloy 1.19.x + Promtail EOL 提示）、[监控告警] 目录页与 [Grafana] [告警规则] [常见问题] 补交叉链接；同步修正 Kubernetes（Monitoring/Pod）、Docker（Monitor）、SpringBoot（Common/Deploy）、微服务（Tracing）、Elasticsearch 专题、CI/CD（PipelineDesign）等 6 处过期采集器表述与缺失链接
 - [x] 大版本状态标注巡检：Elastic Stack 按「9.5.3 主线 + 8.19.x 维护中 + 7.x 已于 2026-01-15 停止维护」、Loki 按「3.7.7 主线 + 3.6.16 维护 + 3.5 已 EOL + Promtail 已 EOL 并从 3.7.3 移除 + boltdb-shipper 弃用待 4.0 移除」在页内标注状态；旧配置说明不删除、不覆盖，对照 Spring 5/6、Vue2/Vue3、Kafka 4.x/3.9.x 的既有版本目录策略保持统一约定
+
+- [x] Ops 存量补全：Linux 进阶专题已就地加深（第 56 天，`docs/Ops/Linux/Advanced` 9 个页面：进阶总览 + Shell 脚本编程 + systemd 服务管理 + 定时任务 + 性能调优 + 安全加固 + 故障排查 + 实战：交付一台生产可用的服务器 + 进阶常见问题），遵循「既有主题内加深、不新建重复章节」原则挂在 Linux 下并保留原基础内容（Overview/DirectoryStructure/FileCommand/TextProcessing/PermissionUser/ProcessService/NetworkCommand/ShellBasic/FAQ），侧边栏以折叠子分组挂载；环境基线按官方渠道核对（Ubuntu 26.04 LTS 2026-04-23 发布、内核 7.0、systemd 259 仅支持 cgroup v2、APT 3.x 移除 `apt-key`、OpenSSH 10.2、OpenSSL 3.5 后量子算法；RHEL 系用 dnf/firewalld/SELinux），并给出升级前检查清单；含 9 张 SVG 示意图与主题 Logo（PNG）；同步更新 5 篇存量文档（ProcessService/ShellBasic 补进阶交叉链接、Linux/FAQ 补进阶入口、Docker/Security 补宿主机加固链接）
+- [x] Tools 存量补全：协作与项目管理专题已建设（第 57 天，`docs/Tools/Collaboration` 9 个页面：目录页 + 概述与工具选型 + Jira 实战 + Confluence 知识库 + 飞书协作 + 研发流程 + 文档协作规范 + 实战：10 人团队协作体系落地 + 常见问题），新建主题级侧边栏挂载（`/docs/Tools/Collaboration`）与导航「工具」分组入口；版本事实按官方渠道核对（Jira Software Data Center 11.3.x LTS / 11.3.10、Jira 12 在途（Lucene 7.3→10.3.1、React 19、Jackson 3）、Confluence Data Center 10.2.x LTS、Confluence 11 在途、Cloud 持续交付），建立「自托管 / Cloud」形态说明与升级风险清单；含 9 张 SVG 示意图与主题 Logo（PNG）；同步更新 Git 工作流页补研发流程与文档规范交叉链接
+- [x] Others 存量补全：年度复盘专题已建设（第 60 天，`docs/Others/AnnualReview` 9 个页面：目录页 + 复盘方法论 + 文档库与资产盘点 + 知识体系重构 + 年度总结怎么写 + 下一年规划 + 个人成长复盘 + 实战：走完一次年度复盘 + 常见问题），含取数/巡检脚本、四份产出清单与能力雷达；`sidebar.ts` 新增 `OthersAnnualReview` 并挂载 `/docs/Others/AnnualReview`，`nav.ts` 的「其他」改为下拉并补「年度复盘」入口，`docs/Others/index.md` 与「复盘杂项」互链；含 9 张 SVG 示意图与主题 Logo（PNG）；同步更新复盘杂项目录页与学习方法页交叉链接
+- [x] Backend 存量补全：设计模式专题已就地加深（第 61 天，`docs/Backend/DesignPatterns` 新增 4 页：JDK 源码中的设计模式 + 现代 Java 与设计模式 + 反模式与过度设计 + 重构实战：安全地改代码），遵循「已有内容不重复」原则，只补「源码识别、语言演进替代、反模式判定、安全重构方法」四块原专题缺失的内容；版本事实按官方渠道核对（JDK 26 为最新非 LTS / 2026-03-17 发布、JDK 25 为当前 LTS / 2025-09-16 发布且 Premier Support 至 2030-09、JDK 27 计划 2026-09-14、JDK 21 上一代 LTS；Scoped Values 于 JDK 25 正式、结构化并发仍为预览），据此标注「哪些模式已被语言特性替代、哪些仍必要」；含 5 张 SVG 示意图；同步更新目录页与设计原则页交叉链接
+- [x] Backend 存量补全：网络编程专题已就地加深（第 62 天，`docs/Backend/NetworkProgramming` 新增 4 页：Netty 进阶：线程模型与性能调优 + 虚拟线程与高并发模型 + 自定义协议设计 + 性能基准与压测），只补「EventLoop/ByteBuf 内存管理、虚拟线程迁移与 pinning、协议帧与兼容演进、指标定义与压测方法」四块原专题缺失的内容；版本事实按官方渠道核对（Netty 4.2.18.Final 与 4.1.138.Final / 2026-09-09，Netty 5 仍在开发不可用于生产；并补齐 4.1.136/4.2.16 之前多个安全 CVE（SPDY 内存耗尽、DNS 缓存投毒、TLS 主机名校验绕过）的升级建议；虚拟线程 JDK 21 正式、JDK 25 稳定）；新增 `benchmark-method.svg`，共 5 张 SVG 示意图；同步更新 Netty 入门页与 SocketIO 页交叉链接
+- [x] 全库相对链接巡检（第 56 天取用项）：以脚本建立全库文件索引后逐条校验 Markdown 相对链接（含图片），初始发现 106 处断链（覆盖 Backend 69、Frontend 19、Ops 18、Tools 13、DB 7、Others 2，另含本次新增页面 19 处路径错误），逐条修正后 **1675 条相对链接全部可解析（0 断链）**；本次共修改 66 个文件：修正本次新增页面图片路径（`./assets/` → `../assets/`）与跨专题链接深度、Langchain4j 8 个子页 24 处 `./Xxx/` → `../Xxx/`、Microservices → SpringCloud 5 处、JavaSE/JVM 3 处、SpringBoot v3 整合 ES/Redis 5 处、SQL 优化与 MySQL/IndexPerformance 6 处、Frontend（Browser/Vite/CSS/Electron/工程化）12 处、Ops（Docker/K8s/Nginx）5 处、Tools（PackageManager）1 处；对 6 处「目标页面确实不存在」的历史悬挂引用去掉链接保留文字（MyBatis ORM/数据持久化、Spring 组件概念、SpringBoot Yaml、Spring Security 网络安全基础），不新增杜撰内容
+- [x] 存量文档更新（第 56 天配套）：挑选 10 篇存量文档补充交叉链接与进阶指引——Linux/ProcessService（systemd、定时任务、排障）、Linux/ShellBasic（Shell 脚本编程）、Linux/FAQ（进阶总览与进阶 FAQ）、设计模式/Principles（四条深入阅读）、网络编程/Netty（进阶/协议/压测/虚拟线程）、网络编程/SocketIO（虚拟线程与压测）、复盘杂项目录页（年度复盘）、学习方法与规划（下一年规划、个人成长复盘）、Git/Workflow（研发流程、文档协作、流水线门禁）、Docker/Security（宿主机加固、编排安全）
 
 ## 节奏建议
 

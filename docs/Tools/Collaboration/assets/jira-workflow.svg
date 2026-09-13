@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="420" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Jira 工作流与状态流转</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="80" width="150" height="100" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="105" y="106" fill="#334155" font-weight="bold" font-size="14">Open 待处理</text>
+    <text x="105" y="126" fill="#4b5563" font-size="11">进入 Backlog</text>
+    <text x="105" y="143" fill="#4b5563" font-size="11">等待排期</text>
+    <rect x="210" y="80" width="150" height="100" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="285" y="106" fill="#1d4ed8" font-weight="bold" font-size="14">In Progress</text>
+    <text x="285" y="126" fill="#4b5563" font-size="11">开发中</text>
+    <text x="285" y="143" fill="#4b5563" font-size="11">占用 WIP 名额</text>
+    <rect x="390" y="80" width="150" height="100" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="465" y="106" fill="#b45309" font-weight="bold" font-size="14">In Review</text>
+    <text x="465" y="126" fill="#4b5563" font-size="11">代码评审中</text>
+    <text x="465" y="143" fill="#4b5563" font-size="11">最多停留 N 天</text>
+    <rect x="570" y="80" width="150" height="100" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="645" y="106" fill="#047857" font-weight="bold" font-size="14">Ready to Test</text>
+    <text x="645" y="126" fill="#4b5563" font-size="11">待测试</text>
+    <text x="645" y="143" fill="#4b5563" font-size="11">已合并主干</text>
+    <rect x="750" y="80" width="130" height="100" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="815" y="106" fill="#0f766e" font-weight="bold" font-size="14">Done 完成</text>
+    <text x="815" y="126" fill="#4b5563" font-size="11">上线并验收</text>
+    <rect x="120" y="250" width="260" height="120" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="250" y="276" fill="#be123c" font-weight="bold" font-size="14">不推荐的分支状态</text>
+    <text x="250" y="296" fill="#4b5563" font-size="11">Blocked：外部依赖阻塞，需指明依赖对象</text>
+    <text x="250" y="313" fill="#4b5563" font-size="11">Reopened：验收失败回流，需记录原因</text>
+    <text x="250" y="330" fill="#4b5563" font-size="11">Won't Do：明确关闭并写清理由</text>
+    <rect x="470" y="250" width="310" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="625" y="276" fill="#4338ca" font-weight="bold" font-size="14">设计工作流的四个原则</text>
+    <text x="625" y="296" fill="#4b5563" font-size="11">状态数量 ≤ 6，每个状态有唯一负责人</text>
+    <text x="625" y="313" fill="#4b5563" font-size="11">每个状态有「进入条件」和「退出条件」</text>
+    <text x="625" y="330" fill="#4b5563" font-size="11">状态变化必须可自动化（触发器 / 分支）</text>
+    <text x="625" y="347" fill="#4b5563" font-size="11">工作流跟着团队改进，不跟着工具默认值</text>
+    <path d="M 180 130 L 204 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 360 130 L 384 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 540 130 L 564 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 720 130 L 744 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+</g>
+  <text x="450" y="402" text-anchor="middle" font-size="13" fill="#475569">状态不是越多越好：每多一个状态就多一次「谁负责推进」的模糊地带</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

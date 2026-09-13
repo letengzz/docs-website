@@ -227,6 +227,6 @@ String response = model.generate("你好");
 
 ## 下一步
 
-- [提示词模板](./PromptTemplate/index.md) - 学习构建高效的提示词
-- [内存管理](./MemoryManagement/index.md) - 管理对话状态
-- [RAG 检索增强生成](./Rag/index.md) - 构建知识库问答
+- [提示词模板](../PromptTemplate/index.md) - 学习构建高效的提示词
+- [内存管理](../MemoryManagement/index.md) - 管理对话状态
+- [RAG 检索增强生成](../Rag/index.md) - 构建知识库问答

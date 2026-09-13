@@ -493,6 +493,6 @@ public class HybridRetriever implements Retriever<TextSegment> {
 
 ## 下一步
 
-- [工具调用](./Tools/index.md) - 让 LLM 调用外部工具
-- [链式调用](./Chain/index.md) - 构建复杂的处理流程
-- [内存管理](./MemoryManagement/index.md) - 管理对话状态
+- [工具调用](../Tools/index.md) - 让 LLM 调用外部工具
+- [链式调用](../Chain/index.md) - 构建复杂的处理流程
+- [内存管理](../MemoryManagement/index.md) - 管理对话状态

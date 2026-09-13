@@ -159,6 +159,13 @@ ch.pipeline()
 2. 用 `jstack` 观察线程：boss 与 worker 线程数量符合配置。
 3. 压测 1 万并发连接，观察 EventLoop 数量不变、吞吐稳定。
 
+## 相关专题
+
+- 线程模型、ByteBuf 内存管理与性能调优：[Netty 进阶：线程模型与性能调优](../NettyAdvanced/index.md)
+- 设计一套自定义二进制协议并落地编解码：[自定义协议设计](../ProtocolDesign/index.md)
+- 用压测验证吞吐与延迟：[性能基准与压测](../BenchmarkPractice/index.md)
+- 用虚拟线程替代部分异步编排：[虚拟线程与高并发模型](../VirtualThread/index.md)
+
 ## 参考资料
 
 - Java IO/NIO 专题：[网络 IO 模型：BIO/NIO/AIO](../../Java/JavaSE/IO/NetworkIO/index.md)、[Selector 与多路复用](../../Java/JavaSE/IO/Selector/index.md)

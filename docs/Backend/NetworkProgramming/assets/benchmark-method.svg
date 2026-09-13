@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="420" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">性能基准与压测方法</text>
+
+  <g font-size="13" text-anchor="middle">
+    <!-- 第一行：四个指标体系 -->
+    <rect x="40" y="70" width="190" height="100" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="135" y="96" fill="#1d4ed8" font-weight="bold" font-size="14">吞吐 Throughput</text>
+    <text x="135" y="118" fill="#4b5563" font-size="11">QPS / TPS</text>
+    <text x="135" y="136" fill="#4b5563" font-size="11">单位时间处理量</text>
+    <text x="135" y="154" fill="#4b5563" font-size="11">先看能不能撑住量</text>
+
+    <rect x="245" y="70" width="190" height="100" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="340" y="96" fill="#047857" font-weight="bold" font-size="14">延迟 Latency</text>
+    <text x="340" y="118" fill="#4b5563" font-size="11">平均 / P95 / P99 / 最大</text>
+    <text x="340" y="136" fill="#4b5563" font-size="11">平均值会骗人</text>
+    <text x="340" y="154" fill="#4b5563" font-size="11">只看 P99 与最大值</text>
+
+    <rect x="450" y="70" width="190" height="100" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="545" y="96" fill="#be123c" font-weight="bold" font-size="14">错误率 Error Rate</text>
+    <text x="545" y="118" fill="#4b5563" font-size="11">失败请求占比</text>
+    <text x="545" y="136" fill="#4b5563" font-size="11">含超时、5xx、断连</text>
+    <text x="545" y="154" fill="#4b5563" font-size="11">错误率上升即到拐点</text>
+
+    <rect x="655" y="70" width="205" height="100" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="757" y="96" fill="#6d28d9" font-weight="bold" font-size="14">资源 Resource</text>
+    <text x="757" y="118" fill="#4b5563" font-size="11">CPU / 内存 / 磁盘 / 网络</text>
+    <text x="757" y="136" fill="#4b5563" font-size="11">GC 次数与停顿</text>
+    <text x="757" y="154" fill="#4b5563" font-size="11">找真正的瓶颈在哪</text>
+
+    <!-- 第二行：工具 -->
+    <rect x="40" y="196" width="830" height="80" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="455" y="220" fill="#334155" font-weight="bold" font-size="14">常用压测工具</text>
+    <text x="455" y="243" fill="#4b5563" font-size="11">wrk（轻量高并发，推荐入门） · JMeter（图形化，功能全） · Gatling（脚本化，报告好）</text>
+    <text x="455" y="262" fill="#4b5563" font-size="11">vegeta（命令行恒定速率） · ApacheBench（ab，简单但单机瓶颈明显） · k6（JS 脚本，适合 CI）</text>
+
+    <!-- 第三行：步骤 -->
+    <rect x="40" y="292" width="400" height="106" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="240" y="316" fill="#4338ca" font-weight="bold" font-size="14">四步流程</text>
+    <text x="240" y="338" fill="#4b5563" font-size="11">① 固定环境，先测基线（不做任何优化）</text>
+    <text x="240" y="356" fill="#4b5563" font-size="11">② 单变量调整（一次只改一个参数）</text>
+    <text x="240" y="374" fill="#4b5563" font-size="11">③ 复测并记录（每次至少 3 轮取稳定值）</text>
+    <text x="240" y="392" fill="#4b5563" font-size="11">④ 结论只写「有数据支撑」的那一条</text>
+
+    <rect x="460" y="292" width="410" height="106" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="665" y="316" fill="#be123c" font-weight="bold" font-size="14">五个常见陷阱</text>
+    <text x="665" y="338" fill="#4b5563" font-size="11">没有基线就调参：不知道是变好还是变差</text>
+    <text x="665" y="356" fill="#4b5563" font-size="11">并发数当 TPS：并发 1000 不等于每秒 1000 请求</text>
+    <text x="665" y="374" fill="#4b5563" font-size="11">只看平均延迟：P99 才是用户体验</text>
+    <text x="665" y="392" fill="#4b5563" font-size="11">压测机先打满：客户端成了瓶颈，结论无效</text>
+  </g>
+</svg>

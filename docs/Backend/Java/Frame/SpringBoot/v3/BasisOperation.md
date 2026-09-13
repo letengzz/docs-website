@@ -4,7 +4,7 @@
 
 SpringBoot 集中化管理配置，配置文件为`application.properties`或`application.yaml`，配置基本都有默认值。
 
-properties 配置多以后难阅读和修改，**层级结构辨识度不高**。推荐使用[Yaml](../../../Others/Configurationfile/yaml.md)来作为配置文件进行集中化管理配置。
+properties 配置多以后难阅读和修改，**层级结构辨识度不高**。推荐使用Yaml来作为配置文件进行集中化管理配置。
 
 **所有配置**： https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#appendix.application-properties
 

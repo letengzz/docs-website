@@ -457,6 +457,6 @@ public class AsyncToolExecutor {
 
 ## 下一步
 
-- [核心概念](./Concepts/index.md) - 回顾 LangChain4j 的核心抽象
-- [链式调用](./Chain/index.md) - 了解如何组合多个处理步骤
-- [内存管理](./MemoryManagement/index.md) - 管理对话状态
+- [核心概念](../Concepts/index.md) - 回顾 LangChain4j 的核心抽象
+- [链式调用](../Chain/index.md) - 了解如何组合多个处理步骤
+- [内存管理](../MemoryManagement/index.md) - 管理对话状态

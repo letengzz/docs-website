@@ -72,7 +72,7 @@
   ```
 
 ::: tip 进阶阅读
-移动优先、流式排版与响应式图片等体系化方法见 [响应式设计进阶](../Advanced/Responsive/index.md)；组件级自适应见 [容器查询](../Advanced/ContainerQuery/index.md)。
+移动优先、流式排版与响应式图片等体系化方法见 [响应式设计进阶](../../Advanced/Responsive/index.md)；组件级自适应见 [容器查询](../../Advanced/ContainerQuery/index.md)。
 :::
 
   

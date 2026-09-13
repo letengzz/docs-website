@@ -217,7 +217,7 @@ INSERT INTO `company`(c_name,email) VALUES("白度","3@bai.com");
 
 4. **Mybatis 映射文件**：
 
-   - [ORM对象关系映射](../../Others/ORM/index.md)
+   - ORM对象关系映射
 
    **映射文件的命名规则**：表所对应的实体类的类名+Mapper.xml
 

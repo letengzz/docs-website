@@ -165,5 +165,5 @@ server {
 - 负载均衡模式（microservices.io）：https://microservices.io/patterns/server-side-discovery.html
 
 ::: tip 相关文档
-Spring Cloud 客户端负载均衡的落地（LoadBalancer 与 Ribbon 的历史、自定义策略、OpenFeign 组合）见 [Spring Cloud 专题：服务调用](../SpringCloud/OpenFeign/index.md)。
+Spring Cloud 客户端负载均衡的落地（LoadBalancer 与 Ribbon 的历史、自定义策略、OpenFeign 组合）见 [Spring Cloud 专题：服务调用](../../SpringCloud/OpenFeign/index.md)。
 :::

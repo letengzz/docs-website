@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="400" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">cron 与 systemd timer 对比</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="60" y="70" width="340" height="250" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="230" y="96" fill="#b45309" font-weight="bold" font-size="14">cron / crond</text>
+    <text x="230" y="116" fill="#4b5563" font-size="11">语法：* * * * * cmd</text>
+    <text x="230" y="133" fill="#4b5563" font-size="11">最小粒度 1 分钟</text>
+    <text x="230" y="150" fill="#4b5563" font-size="11">无内置日志（需重定向）</text>
+    <text x="230" y="167" fill="#4b5563" font-size="11">失败不会自动重试</text>
+    <text x="230" y="184" fill="#4b5563" font-size="11">无依赖与资源限制</text>
+    <text x="230" y="201" fill="#4b5563" font-size="11">适合：简单定时、临时任务</text>
+    <text x="230" y="218" fill="#4b5563" font-size="11">实现：cronie / vixie-cron</text>
+    <rect x="480" y="70" width="340" height="250" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="650" y="96" fill="#047857" font-weight="bold" font-size="14">systemd timer</text>
+    <text x="650" y="116" fill="#4b5563" font-size="11">语法：OnCalendar= 表达式</text>
+    <text x="650" y="133" fill="#4b5563" font-size="11">支持秒级与单调时钟</text>
+    <text x="650" y="150" fill="#4b5563" font-size="11">日志自动进 journald</text>
+    <text x="650" y="167" fill="#4b5563" font-size="11">可持久化错过的任务</text>
+    <text x="650" y="184" fill="#4b5563" font-size="11">支持依赖、限额、随机延迟</text>
+    <text x="650" y="201" fill="#4b5563" font-size="11">适合：生产定时任务</text>
+    <text x="650" y="218" fill="#4b5563" font-size="11">实现：systemd 自带</text>
+    <text x="440" y="200" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="bold">vs</text>
+</g>
+  <text x="440" y="372" text-anchor="middle" font-size="13" fill="#475569">新项目建议直接用 systemd timer：OnCalendar=*-*-* 03:00:00、Persistent=true 补跑、RandomizedDelaySec 削峰</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

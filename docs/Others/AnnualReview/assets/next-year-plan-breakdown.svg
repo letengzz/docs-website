@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="900" height="430" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">下一年规划：从方向到可执行</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="76" width="250" height="130" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="155" y="102" fill="#4338ca" font-weight="bold" font-size="14">方向（1 年）</text>
+    <text x="155" y="122" fill="#4b5563" font-size="11">2~3 个方向，互不冲突</text>
+    <text x="155" y="139" fill="#4b5563" font-size="11">写成能力/资产的增量</text>
+    <text x="155" y="156" fill="#4b5563" font-size="11">例：能独立负责一个微服务域</text>
+    <rect x="320" y="76" width="250" height="130" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="445" y="102" fill="#1d4ed8" font-weight="bold" font-size="14">目标（季度）</text>
+    <text x="445" y="122" fill="#4b5563" font-size="11">每个方向拆 1~2 个季度目标</text>
+    <text x="445" y="139" fill="#4b5563" font-size="11">目标必须可验证（有交付物）</text>
+    <text x="445" y="156" fill="#4b5563" font-size="11">例：Q1 完成 X 服务重构并上线</text>
+    <rect x="610" y="76" width="260" height="130" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="740" y="102" fill="#047857" font-weight="bold" font-size="14">行动（周/月）</text>
+    <text x="740" y="122" fill="#4b5563" font-size="11">拆到每周可投入的时间块</text>
+    <text x="740" y="139" fill="#4b5563" font-size="11">每项行动有明确产出物</text>
+    <text x="740" y="156" fill="#4b5563" font-size="11">例：每周 3 小时写文档</text>
+    <rect x="60" y="250" width="380" height="150" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="250" y="276" fill="#b45309" font-weight="bold" font-size="14">排节奏</text>
+    <text x="250" y="296" fill="#4b5563" font-size="11">按「重要不紧急」优先排时间</text>
+    <text x="250" y="313" fill="#4b5563" font-size="11">给每个方向留出固定时段（如早上一小时）</text>
+    <text x="250" y="330" fill="#4b5563" font-size="11">把大目标切成 2 周一个可见进度</text>
+    <text x="250" y="347" fill="#4b5563" font-size="11">预留 20% 缓冲吸收突发任务</text>
+    <rect x="470" y="250" width="380" height="150" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="660" y="276" fill="#be123c" font-weight="bold" font-size="14">防翻车的三件事</text>
+    <text x="660" y="296" fill="#4b5563" font-size="11">目标数量上限：超过 3 个几乎必然完不成</text>
+    <text x="660" y="313" fill="#4b5563" font-size="11">季度检查机制：到期必复盘，允许调整</text>
+    <text x="660" y="330" fill="#4b5563" font-size="11">失败预案：没完成时如何降级而不是放弃</text>
+    <path d="M 280 141 L 314 141" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 570 141 L 604 141" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+</g>
+  <text x="450" y="422" text-anchor="middle" font-size="13" fill="#475569">规划的质量不在于「写得多宏大」，而在于「下周一早上你知道该做什么」</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

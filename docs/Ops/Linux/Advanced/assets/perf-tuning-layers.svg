@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="430" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">性能调优的四个资源维度</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="70" width="200" height="130" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="140" y="96" fill="#be123c" font-weight="bold" font-size="14">CPU</text>
+    <text x="140" y="116" fill="#4b5563" font-size="11">负载 load average</text>
+    <text x="140" y="133" fill="#4b5563" font-size="11">上下文切换</text>
+    <text x="140" y="150" fill="#4b5563" font-size="11">调度与 CPU 亲和</text>
+    <text x="140" y="167" fill="#4b5563" font-size="11">工具：top/mpstat/pidstat</text>
+    <rect x="250" y="70" width="200" height="130" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="350" y="96" fill="#1d4ed8" font-weight="bold" font-size="14">内存</text>
+    <text x="350" y="116" fill="#4b5563" font-size="11">可用内存与缓存</text>
+    <text x="350" y="133" fill="#4b5563" font-size="11">Swap 使用</text>
+    <text x="350" y="150" fill="#4b5563" font-size="11">OOM 与 overcommit</text>
+    <text x="350" y="167" fill="#4b5563" font-size="11">工具：free/vmstat/slabtop</text>
+    <rect x="460" y="70" width="200" height="130" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="560" y="96" fill="#b45309" font-weight="bold" font-size="14">磁盘 IO</text>
+    <text x="560" y="116" fill="#4b5563" font-size="11">IOPS 与吞吐</text>
+    <text x="560" y="133" fill="#4b5563" font-size="11">await / %util</text>
+    <text x="560" y="150" fill="#4b5563" font-size="11">文件系统与调度器</text>
+    <text x="560" y="167" fill="#4b5563" font-size="11">工具：iostat/iotop/fio</text>
+    <rect x="670" y="70" width="170" height="130" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="755" y="96" fill="#047857" font-weight="bold" font-size="14">网络</text>
+    <text x="755" y="116" fill="#4b5563" font-size="11">带宽与重传</text>
+    <text x="755" y="133" fill="#4b5563" font-size="11">连接数与 TIME_WAIT</text>
+    <text x="755" y="150" fill="#4b5563" font-size="11">队列溢出</text>
+    <text x="755" y="167" fill="#4b5563" font-size="11">工具：ss/sar/ethtool</text>
+    <rect x="120" y="250" width="300" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="270" y="276" fill="#4338ca" font-weight="bold" font-size="14">内核参数（sysctl）</text>
+    <text x="270" y="296" fill="#4b5563" font-size="11">net.core.somaxconn 调大监听队列</text>
+    <text x="270" y="313" fill="#4b5563" font-size="11">vm.swappiness 控制换出倾向</text>
+    <text x="270" y="330" fill="#4b5563" font-size="11">fs.file-max / nofile 提高句柄上限</text>
+    <text x="270" y="347" fill="#4b5563" font-size="11">net.ipv4.tcp_tw_reuse 复用 TIME_WAIT</text>
+    <rect x="460" y="250" width="300" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="610" y="276" fill="#6d28d9" font-weight="bold" font-size="14">进程级限额（limits）</text>
+    <text x="610" y="296" fill="#4b5563" font-size="11">nofile：最大打开文件数</text>
+    <text x="610" y="313" fill="#4b5563" font-size="11">nproc：最大进程数</text>
+    <text x="610" y="330" fill="#4b5563" font-size="11">memlock：锁定内存</text>
+    <text x="610" y="347" fill="#4b5563" font-size="11">临时生效：prlimit / 永久：systemd LimitNOFILE</text>
+</g>
+  <text x="440" y="400" text-anchor="middle" font-size="13" fill="#475569">调优顺序永远是「先定位瓶颈，再改参数」：没有量化数据之前不要动 sysctl</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

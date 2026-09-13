@@ -5,7 +5,7 @@ import { AI_Agent, AI_LLMApp, AI_LocalModel, AI_OpenClaw, AI_PromptEngineering, 
 import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, VM } from "./ops";
 import { DBOverview, NoRelational, Relational, SQLOptimization } from "./db";
-import { APITools, Build, CICD, DatabaseClients, IDE, Others, PackageManager, VC } from "./tools";
+import { APITools, Build, CICD, Collaboration, DatabaseClients, IDE, Others, PackageManager, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 const OthersReview = [
@@ -20,6 +20,23 @@ const OthersReview = [
       { text: "学习方法与规划", link: "/docs/Others/Review/LearningMethod/index.md" },
       { text: "项目复盘模板", link: "/docs/Others/Review/ProjectRetro/index.md" },
       { text: "常见问题与最佳实践", link: "/docs/Others/Review/FAQ/index.md" },
+    ],
+  },
+];
+
+const OthersAnnualReview = [
+  {
+    text: "年度复盘",
+    link: "/docs/Others/AnnualReview/index.md",
+    items: [
+      { text: "复盘方法论", link: "/docs/Others/AnnualReview/Overview/index.md" },
+      { text: "文档库与资产盘点", link: "/docs/Others/AnnualReview/DocsAudit/index.md" },
+      { text: "知识体系重构", link: "/docs/Others/AnnualReview/KnowledgeRefactor/index.md" },
+      { text: "年度总结怎么写", link: "/docs/Others/AnnualReview/AnnualSummary/index.md" },
+      { text: "下一年规划", link: "/docs/Others/AnnualReview/NextYearPlan/index.md" },
+      { text: "个人成长复盘", link: "/docs/Others/AnnualReview/GrowthReview/index.md" },
+      { text: "实战：走完一次年度复盘", link: "/docs/Others/AnnualReview/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Others/AnnualReview/FAQ/index.md" },
     ],
   },
 ];
@@ -52,7 +69,7 @@ export const sidebar = {
     {
       text: "运维",
       collapsed: true,
-      items: [...VM, ...Linux, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...Monitoring, ...JumpServer, ...OpsOthers],
+      items: [...VM, ...Linux, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...Monitoring, ...LogSystem, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
@@ -66,7 +83,7 @@ export const sidebar = {
     {
       text: "工具",
       collapsed: true,
-      items: [...Build, ...CICD, ...DatabaseClients, ...APITools, ...PackageManager, ...IDE, ...VC, ...Others],
+      items: [...Build, ...CICD, ...DatabaseClients, ...APITools, ...PackageManager, ...IDE, ...VC, ...Collaboration, ...Others],
     },
   ],
   "/project": [
@@ -84,10 +101,12 @@ export const sidebar = {
         { text: "其他", link: "/docs/Others/index.md" },
         { text: "开源软件许可证", link: "/docs/Others/OpenSourceLicense/index.md" },
         ...OthersReview,
+        ...OthersAnnualReview,
       ],
     },
   ],
   "/docs/Others/Review": OthersReview,
+  "/docs/Others/AnnualReview": OthersAnnualReview,
 
   // 主题级侧边栏：进入具体主题时才展示该主题的侧边栏（子内容默认折叠）
   "/docs/Frontend/Basic": FrontBasic,
@@ -131,6 +150,7 @@ export const sidebar = {
   "/docs/Tools/DatabaseClients": DatabaseClients,
   "/docs/Tools/APITools": APITools,
   "/docs/Tools/PackageManager": PackageManager,
+  "/docs/Tools/Collaboration": Collaboration,
   "/docs/Tools/IDE": IDE,
   "/docs/Tools/VersionControl": VC,
   "/docs/Tools/Others": Others,
