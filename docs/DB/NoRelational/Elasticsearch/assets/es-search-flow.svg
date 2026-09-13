@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="340" viewBox="0 0 780 340" font-family="Arial, 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arr2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#005571"/>
+    </marker>
+  </defs>
+  <rect width="780" height="340" fill="#ffffff"/>
+  <text x="390" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">一次搜索请求的两个阶段（Query Then Fetch）</text>
+  <!-- phase 1 -->
+  <rect x="40" y="70" width="330" height="190" rx="12" fill="#f0fdfa" stroke="#005571" stroke-width="2"/>
+  <text x="205" y="98" text-anchor="middle" font-size="14" font-weight="bold" fill="#005571">阶段 1：Query（查询）</text>
+  <g font-size="12" fill="#0f766e">
+    <text x="70" y="130">1. 请求转发到索引的每个分片</text>
+    <text x="70" y="158">2. 各分片在本地倒排索引执行</text>
+    <text x="70" y="186">3. 每个分片返回「from+size」条</text>
+    <text x="70" y="214">   轻量结果（id + 排序值）</text>
+    <text x="70" y="242">4. 协调节点全局排序取 Top N</text>
+  </g>
+  <!-- phase 2 -->
+  <rect x="410" y="70" width="330" height="190" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="575" y="98" text-anchor="middle" font-size="14" font-weight="bold" fill="#2563eb">阶段 2：Fetch（取回）</text>
+  <g font-size="12" fill="#1d4ed8">
+    <text x="440" y="130">1. 协调节点按 id 向相关分片</text>
+    <text x="440" y="158">   多路获取完整文档（_source）</text>
+    <text x="440" y="186">2. 高亮、字段折叠在此阶段处理</text>
+    <text x="440" y="214">3. 组装最终结果返回客户端</text>
+    <text x="440" y="242">文档内容只在必要时才传输</text>
+  </g>
+  <line x1="370" y1="165" x2="408" y2="165" stroke="#005571" stroke-width="3" marker-end="url(#arr2)"/>
+  <text x="390" y="300" text-anchor="middle" font-size="12" fill="#6b7280">深分页代价：from+size 需要每个分片返回 from+size 条，翻页越深开销越大 → 用 search_after</text>
+</svg>

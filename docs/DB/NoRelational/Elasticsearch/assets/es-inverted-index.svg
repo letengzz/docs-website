@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="380" viewBox="0 0 780 380" font-family="Arial, 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#005571"/>
+    </marker>
+  </defs>
+  <rect width="780" height="380" fill="#ffffff"/>
+  <text x="390" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">倒排索引：从「文档找词」到「词找文档」</text>
+  <!-- forward index -->
+  <rect x="40" y="70" width="260" height="240" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="170" y="98" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">正排（文档 → 内容）</text>
+  <g font-size="12" fill="#334155">
+    <text x="70" y="130">文档 1：Elasticsearch 是搜索引擎</text>
+    <text x="70" y="160">文档 2：MySQL 是关系数据库</text>
+    <text x="70" y="190">文档 3：搜索引擎解决检索问题</text>
+    <text x="70" y="240" fill="#b91c1c">按「搜索引擎」检索：</text>
+    <text x="70" y="262" fill="#b91c1c">必须逐个文档扫描 → O(N)</text>
+  </g>
+  <!-- arrow -->
+  <line x1="310" y1="190" x2="360" y2="190" stroke="#005571" stroke-width="3" marker-end="url(#arr)"/>
+  <text x="335" y="176" text-anchor="middle" font-size="11" fill="#005571">分词</text>
+  <!-- inverted index -->
+  <rect x="370" y="70" width="370" height="240" rx="12" fill="#f0fdfa" stroke="#005571" stroke-width="2"/>
+  <text x="555" y="98" text-anchor="middle" font-size="14" font-weight="bold" fill="#005571">倒排（词 → 文档列表）</text>
+  <g font-size="12" fill="#0f766e">
+    <text x="400" y="130">搜索引擎   → [文档1, 文档3]</text>
+    <text x="400" y="160">MySQL      → [文档2]</text>
+    <text x="400" y="190">数据库     → [文档2]</text>
+    <text x="400" y="220">检索       → [文档3]</text>
+  </g>
+  <text x="555" y="270" text-anchor="middle" font-size="11" fill="#b91c1c">查词典（Term Dictionary）直达文档列表 → 近 O(1)</text>
+  <text x="390" y="345" text-anchor="middle" font-size="12" fill="#6b7280">每个 text 字段独立建倒排索引；词项以 FST 压缩存放于磁盘，配合列存 doc_values 支持排序聚合</text>
+</svg>

@@ -42,6 +42,21 @@ export const NoRelational = [
           { text: "常见问题与最佳实践", link: "/docs/DB/NoRelational/MongoDB/FAQ/index.md" },
         ],
       },
+      {
+        text: "Elasticsearch",
+        link: "/docs/DB/NoRelational/Elasticsearch/index.md",
+        collapsed: true,
+        items: [
+          { text: "ES 概述与安装", link: "/docs/DB/NoRelational/Elasticsearch/Overview/index.md" },
+          { text: "索引与映射", link: "/docs/DB/NoRelational/Elasticsearch/IndexMapping/index.md" },
+          { text: "查询 DSL", link: "/docs/DB/NoRelational/Elasticsearch/QueryDSL/index.md" },
+          { text: "聚合分析", link: "/docs/DB/NoRelational/Elasticsearch/Aggregation/index.md" },
+          { text: "中文分词与 IK 分析器", link: "/docs/DB/NoRelational/Elasticsearch/ChineseAnalyzer/index.md" },
+          { text: "集群架构与高可用", link: "/docs/DB/NoRelational/Elasticsearch/Cluster/index.md" },
+          { text: "实战：商品搜索服务", link: "/docs/DB/NoRelational/Elasticsearch/Practice/index.md" },
+          { text: "常见问题与最佳实践", link: "/docs/DB/NoRelational/Elasticsearch/FAQ/index.md" },
+        ],
+      },
     ],
   },
 ];

@@ -44,4 +44,4 @@
 ## 相关章节
 
 - [关系型数据库](../Relational/index.md)
-- [非关系型数据库](../NoRelational/index.md)
+- [非关系型数据库](../NoRelational/index.md)（含 [Elasticsearch](../NoRelational/Elasticsearch/index.md)：分布式搜索与分析引擎，承担全文检索与日志分析职责）

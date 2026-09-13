@@ -89,6 +89,10 @@ BSON 文档最大 16MB。大对象用 GridFS 或对象存储，文档内不要�
 2. 用 `mongostat --discover` 观察读写与连接数。
 3. 在测试副本集上做一次故障转移演练。
 
+## 相关专题
+
+- [Elasticsearch](../../Elasticsearch/index.md)：同为文档型系统的检索延伸——MongoDB 负责存储与简单查询，全文搜索与聚合分析交给 ES，选型对比见 [ES 概述](../../Elasticsearch/Overview/index.md)
+
 ## 参考资料
 
 - MongoDB 官方文档：https://www.mongodb.com/docs/manual/

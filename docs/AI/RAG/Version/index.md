@@ -89,4 +89,5 @@ vector_store.drop_collection("kb_chunks_v3")
 - pgvector 官方仓库（版本与变更）：https://github.com/pgvector/pgvector
 - Qdrant 官方文档：https://qdrant.tech/documentation/
 - Elasticsearch 官方升级指南：https://www.elastic.co/guide/en/elasticsearch/reference/current/upgrade.html
+- Elasticsearch 版本与安装详解（本站）：[ES 概述与安装](../../../DB/NoRelational/Elasticsearch/Overview/index.md)
 - 嵌入指南（官方文档）：https://developers.openai.com/api/docs/guides/embeddings

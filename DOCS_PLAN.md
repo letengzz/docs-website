@@ -85,7 +85,7 @@
 | 50 | Frontend | 微信小程序 ✅ | 框架与目录、组件、API、路由、发布流程、性能优化、常见问题 |
 | 51 | Frontend | 跨端开发 ✅ | UniApp、Taro、Electron、方案对比、实战案例、常见问题 |
 | 52 | Frontend | 前端测试 ✅ | Vitest、Jest、组件测试、E2E、覆盖率、测试策略、常见问题 |
-| 53 | DB | Elasticsearch | 概述与安装、索引与映射、查询 DSL、聚合、集群、中文分词、常见问题 |
+| 53 | DB | Elasticsearch ✅ | 概述与安装、索引与映射、查询 DSL、聚合、集群、中文分词、常见问题 |
 | 54 | DB | Redis 进阶 | 持久化、主从与哨兵、Cluster、缓存设计、性能调优、常见问题 |
 | 55 | Ops | 日志体系 | ELK、Loki、日志采集、日志分析、告警联动、常见问题 |
 | 56 | Ops | Linux 进阶 | Shell 编程、系统调优、服务管理、定时任务、安全加固、常见问题 |
@@ -201,6 +201,7 @@
 - [x] Project 存量补全：Vue3 模板新增 5 个模块（权限、主题、组件库集成、发布、常见问题），补齐 VueRequest 空壳页（原 0 行），重写项目目录页（修复 `[代码提交检查]()` 空链接、按分类重排、增加「迭代记录」），环境变量页追加多环境章节；侧边栏把基础项目展开为 20 个章节并新建 `project/Complete` 目录页（修复原先指向不存在页面的导航链接）；同时在 AGENTS.md 新增第 13 节「计划完成后的项目沉淀要求」（每次迭代都要在 project 中加模块、宁精勿滥、逐步细化）
 - [x] Project 存量补全：完成第 59 天「完整项目实战」，新建 `project/Complete/FullStackProject`（8 个页面：项目总览、需求拆分、数据库设计、接口联调、编码实现、测试、部署、复盘），含可直接执行的建表 SQL、接口契约、状态机代码、发布脚本与复盘模板；`project/Complete` 目录页把该项目从占位改为可点击入口，侧边栏挂载 7 个章节
 - [x] Frontend 存量补全：前端测试专题已建设（第 52 天，`docs/Frontend/Testing` 9 个页面：概述与选型、Jest、Vitest、组件测试、E2E、覆盖率、测试策略与 CI、FAQ），新建主题级目录与侧边栏挂载（`/docs/Frontend/Testing`），补充前端分类目录页入口；工具版本按官方渠道核对（Vitest 5.0 / 2026-09-03、Jest 30.x、Playwright 1.63、jest-dom 7.x）并修正前端工程化概述页过期的 Vitest 4.x 版本表述；同步更新 7 篇存量文档交叉链接（JS 测试、React 测试、工程化测试速览/CI 集成/FAQ、CI/CD 测试门禁页）
+- [x] DB 存量补全：Elasticsearch 专题已建设（第 53 天，`docs/DB/NoRelational/Elasticsearch` 9 个页面：概述与安装、索引与映射、查询 DSL、聚合分析、中文分词与 IK、集群架构与高可用、商品搜索实战、FAQ），版本按官方渠道核对（ES 9.5.3 / 2026-09-03，8.x 维护期），Logo 由 simple-icons 官方路径生成 PNG；侧边栏 `db.ts` 挂载 ES 子树，非关系型目录页与 DB 概述页补入口；同步更新 6 篇存量文档（SpringBoot v3 整合 ES 页由 13 行空壳扩写为完整整合页并回链专题、MongoDB FAQ 补选型对比、RAG 版本页补专题链接）
 
 ## 节奏建议
 
