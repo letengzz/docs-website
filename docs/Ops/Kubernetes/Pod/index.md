@@ -102,7 +102,7 @@ spec:
 ```
 
 - initContainer：主容器启动前按顺序执行，全部成功后主容器才启动。
-- sidecar：与主容器常驻并行，如日志采集（Filebeat）、网络代理（Envoy）。
+- sidecar：与主容器常驻并行，如日志采集（Grafana Alloy / Fluent Bit）、网络代理（Envoy）。
 
 ## 易错点
 

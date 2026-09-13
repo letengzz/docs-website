@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="440" viewBox="0 0 840 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="440" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">日志问题排查决策路径</text>
+  <text x="420" y="54" text-anchor="middle" font-size="12" fill="#6b7280">三类高频故障：查不到 / 查询慢 / 成本失控，各自有固定的排查顺序</text>
+
+  <!-- 表头 -->
+  <text x="90" y="84" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b7280">现象</text>
+  <text x="348" y="84" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b7280">排查顺序（按此顺序，不要跳步）</text>
+  <text x="678" y="84" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b7280">定位与处置</text>
+
+  <!-- 第一类 -->
+  <rect x="14" y="96" width="152" height="96" rx="8" fill="#fef2f2" stroke="#f87171" stroke-width="1.6"/>
+  <text x="90" y="122" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">① 查不到 / 日志丢失</text>
+  <text x="90" y="144" text-anchor="middle" font-size="10" fill="#7f1d1d">Grafana 里搜不到</text>
+  <text x="90" y="162" text-anchor="middle" font-size="10" fill="#7f1d1d">只有部分日志</text>
+  <text x="90" y="180" text-anchor="middle" font-size="10" fill="#7f1d1d">故障时段恰好缺日志</text>
+
+  <rect x="178" y="96" width="340" height="96" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="190" y="118" font-size="10" fill="#334155">1. 业务是否真的写出来：tail -f /var/log/app/x.log</text>
+  <text x="190" y="138" font-size="10" fill="#334155">2. 采集器是否读到：Alloy UI /metrics · Fluent Bit :2020</text>
+  <text x="190" y="158" font-size="10" fill="#334155">3. 后端是否收到：loki_distributor_bytes_received_total</text>
+  <text x="190" y="178" font-size="10" fill="#334155">4. 是否被丢弃：loki_discarded / loki_write_dropped_entries</text>
+
+  <rect x="530" y="96" width="296" height="96" rx="8" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.4"/>
+  <text x="544" y="118" font-size="10" fill="#065f46">丢弃计数增长 → 限流或过滤规则过宽</text>
+  <text x="544" y="138" font-size="10" fill="#065f46">有 discarded → 调大 ingestion_rate_mb</text>
+  <text x="544" y="158" font-size="10" fill="#065f46">全时段空 → 采集器未挂载或路径写错</text>
+  <text x="544" y="178" font-size="10" fill="#065f46">仅故障期缺 → 缓冲未开启，必须加磁盘缓冲</text>
+
+  <path d="M 166 144 H 176" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar9)"/>
+  <path d="M 518 144 H 528" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar9)"/>
+
+  <!-- 第二类 -->
+  <rect x="14" y="204" width="152" height="96" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.6"/>
+  <text x="90" y="230" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">② 查询慢 / 超时</text>
+  <text x="90" y="252" text-anchor="middle" font-size="10" fill="#92400e">Explore 转圈</text>
+  <text x="90" y="270" text-anchor="middle" font-size="10" fill="#92400e">看板加载不出来</text>
+  <text x="90" y="288" text-anchor="middle" font-size="10" fill="#92400e">集群整体变慢</text>
+
+  <rect x="178" y="204" width="340" height="96" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="190" y="226" font-size="10" fill="#334155">1. 看扫描量：Grafana 会显示本次查询扫了多少 GB</text>
+  <text x="190" y="246" font-size="10" fill="#334155">2. 是否用了 {job=~".+"} 全流扫描 → 改成精确标签</text>
+  <text x="190" y="266" font-size="10" fill="#334155">3. 时间范围是否过大 → 先看最近 1 小时</text>
+  <text x="190" y="286" font-size="10" fill="#334155">4. 正则是否过重 → 改 pattern/dissect，或先粗筛再解析</text>
+
+  <rect x="530" y="204" width="296" height="96" rx="8" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.4"/>
+  <text x="544" y="226" font-size="10" fill="#065f46">标签基数太高 → 移 traceId 到结构化元数据</text>
+  <text x="544" y="246" font-size="10" fill="#065f46">索引类型老 → boltdb-shipper 换 TSDB(v13)</text>
+  <text x="544" y="266" font-size="10" fill="#065f46">缓存未开 → 启用 query frontend + 结果缓存</text>
+  <text x="544" y="286" font-size="10" fill="#065f46">看板刷新太平 → 降低刷新率，重查询物化</text>
+
+  <path d="M 166 252 H 176" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar9)"/>
+  <path d="M 518 252 H 528" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar9)"/>
+
+  <!-- 第三类 -->
+  <rect x="14" y="312" width="152" height="96" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.6"/>
+  <text x="90" y="338" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">③ 磁盘 / 成本失控</text>
+  <text x="90" y="360" text-anchor="middle" font-size="10" fill="#4f46e5">磁盘水位持续上升</text>
+  <text x="90" y="378" text-anchor="middle" font-size="10" fill="#4f46e5">对象存储账单翻倍</text>
+  <text x="90" y="396" text-anchor="middle" font-size="10" fill="#4f46e5">写入被拒绝</text>
+
+  <rect x="178" y="312" width="340" height="96" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="190" y="334" font-size="10" fill="#334155">1. 找出用量 Top：sum by (service) (bytes_rate(...[1h]))</text>
+  <text x="190" y="354" font-size="10" fill="#334155">2. 保留策略是否真的在删：compactor retention_enabled</text>
+  <text x="190" y="374" font-size="10" fill="#334155">3. 是否有高基数标签在放大索引</text>
+  <text x="190" y="394" font-size="10" fill="#334155">4. 采集端是否还在采健康检查 / DEBUG 日志</text>
+
+  <rect x="530" y="312" width="296" height="96" rx="8" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.4"/>
+  <text x="544" y="334" font-size="10" fill="#065f46">源头先减：生产关 DEBUG、丢健康检查</text>
+  <text x="544" y="354" font-size="10" fill="#065f46">分级保留：ERROR 90 天、INFO 7 天、审计 180 天</text>
+  <text x="544" y="374" font-size="10" fill="#065f46">冷数据下沉对象存储，设置容量硬上限</text>
+  <text x="544" y="394" font-size="10" fill="#065f46">给采集器设缓冲上限，防写满根分区</text>
+
+  <path d="M 166 360 H 176" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar9)"/>
+  <path d="M 518 360 H 528" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar9)"/>
+
+  <text x="14" y="432" font-size="11" fill="#9ca3af">通用原则：从后端往前端查（后端没有 → 采集没送；采集没有 → 业务没写），比从业务往后查更快定位。</text>
+
+  <defs>
+    <marker id="ar9" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

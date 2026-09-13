@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="410" viewBox="0 0 840 410" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="410" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">日志告警的三种模式与通知路由</text>
+  <text x="420" y="54" text-anchor="middle" font-size="12" fill="#6b7280">日志告警的价值在于捕获「指标覆盖不到」的故障模式，代价是更容易误报</text>
+
+  <!-- 三种模式 -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="14" y="76" width="264" height="100" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.8"/>
+    <text x="146" y="102" fill="#4338ca" font-weight="bold">① 数量突增</text>
+    <text x="146" y="126" font-size="10" fill="#4f46e5">sum(count_over_time({job="x"} |= "ERROR" [5m])) &gt; 50</text>
+    <text x="146" y="148" font-size="10" fill="#6b7280">适用：通用错误率上升</text>
+    <text x="146" y="166" font-size="10" fill="#6b7280">建议：配 for: 5m 抗抖动</text>
+
+    <rect x="288" y="76" width="264" height="100" rx="10" fill="#fef2f2" stroke="#f87171" stroke-width="1.8"/>
+    <text x="420" y="102" fill="#b91c1c" font-weight="bold">② 关键字命中</text>
+    <text x="420" y="126" font-size="10" fill="#dc2626">|~ "java\\.lang\\.OutOfMemoryError"</text>
+    <text x="420" y="148" font-size="10" fill="#6b7280">适用：罕见且必然故障的模式</text>
+    <text x="420" y="166" font-size="10" fill="#6b7280">建议：for: 0m，命中即告警</text>
+
+    <rect x="562" y="76" width="264" height="100" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8"/>
+    <text x="694" y="102" fill="#b45309" font-weight="bold">③ 缺失告警</text>
+    <text x="694" y="126" font-size="10" fill="#a16207">count_over_time({job="cron"} |= "任务完成" [30m]) == 0</text>
+    <text x="694" y="148" font-size="10" fill="#6b7280">适用：任务静默失败、进程卡死</text>
+    <text x="694" y="166" font-size="10" fill="#6b7280">最易被忽略、价值最高</text>
+  </g>
+
+  <!-- 通知路由 -->
+  <text x="14" y="212" font-size="14" font-weight="bold" fill="#1f2937">通知路由与降噪</text>
+
+  <g font-size="11" text-anchor="middle">
+    <rect x="14" y="230" width="150" height="84" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.6"/>
+    <text x="89" y="254" fill="#0f766e" font-weight="bold">告警规则</text>
+    <text x="89" y="274" font-size="10" fill="#0d9488">Grafana Alerting</text>
+    <text x="89" y="292" font-size="10" fill="#0d9488">Kibana Alerting</text>
+
+    <rect x="184" y="230" width="180" height="84" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.6"/>
+    <text x="274" y="254" fill="#4338ca" font-weight="bold">降噪三件套</text>
+    <text x="274" y="274" font-size="10" fill="#4f46e5">分组 group_by</text>
+    <text x="274" y="292" font-size="10" fill="#4f46e5">抑制 inhibit · 静默 silence</text>
+
+    <rect x="384" y="230" width="170" height="84" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="1.6"/>
+    <text x="469" y="254" fill="#c2410c" font-weight="bold">分级路由</text>
+    <text x="469" y="274" font-size="10" fill="#9a3412">P0 电话 / P1 IM</text>
+    <text x="469" y="292" font-size="10" fill="#9a3412">P2 工单 / 群消息</text>
+
+    <rect x="574" y="230" width="252" height="84" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.6"/>
+    <text x="700" y="254" fill="#047857" font-weight="bold">通知渠道（含直达链接）</text>
+    <text x="700" y="274" font-size="10" fill="#059669">飞书 / 钉钉 / Slack / 邮件 / 电话</text>
+    <text x="700" y="292" font-size="10" fill="#059669">Explore 查询链接 · Dashboard 链接 · Runbook</text>
+  </g>
+
+  <path d="M 166 272 H 180" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar7)"/>
+  <path d="M 366 272 H 380" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar7)"/>
+  <path d="M 556 272 H 570" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar7)"/>
+
+  <text x="14" y="342" font-size="12" fill="#dc2626">误报的头号原因：关键字太宽（|~ "error" 会命中 errorRate 等正常文本）→ 改用完整类名、错误码字段或精确模式。</text>
+  <text x="14" y="366" font-size="12" fill="#4b5563">投入产出比最高的参数是 for：绝大多数瞬时毛刺会被「持续 N 分钟才告警」挡掉，而 OOM 这类模式应设 for: 0m。</text>
+  <text x="14" y="390" font-size="11" fill="#9ca3af">衡量告警质量的指标不是数量，而是「收到告警后定位到原因所需的分钟数」。每条告警都必须带 Runbook 链接。</text>
+
+  <defs>
+    <marker id="ar7" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

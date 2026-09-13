@@ -123,6 +123,23 @@ export const Network = [
     ],
   },
 ];
+export const LogSystem = [
+  {
+    text: "日志体系",
+    link: "/docs/Ops/LogSystem/index.md",
+    items: [
+      { text: "日志体系概述", link: "/docs/Ops/LogSystem/Overview/index.md" },
+      { text: "日志采集与传输", link: "/docs/Ops/LogSystem/Collection/index.md" },
+      { text: "Elastic Stack（ELK）", link: "/docs/Ops/LogSystem/ElasticStack/index.md" },
+      { text: "Grafana Loki", link: "/docs/Ops/LogSystem/Loki/index.md" },
+      { text: "日志查询与分析", link: "/docs/Ops/LogSystem/QueryAnalysis/index.md" },
+      { text: "日志告警与联动", link: "/docs/Ops/LogSystem/Alerting/index.md" },
+      { text: "存储、保留与成本优化", link: "/docs/Ops/LogSystem/Retention/index.md" },
+      { text: "实战：搭建集中式日志平台", link: "/docs/Ops/LogSystem/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/LogSystem/FAQ/index.md" },
+    ],
+  },
+];
 export const OpsOthers = [{ text: "运维其他", link: "/docs/Ops/Others/index.md" }];
 export const VM = [{ text: "虚拟机", link: "/docs/Ops/VM/index.md" }];
 export const ContainerOrchestration = [

@@ -153,7 +153,7 @@ logging:
     com.example.demo: info
 ```
 
-容器部署建议日志输出到 stdout（默认），由 Docker/Promtail/Filebeat 收集，而不是写文件：
+容器部署建议日志输出到 stdout（默认），由 Docker/Grafana Alloy/Fluent Bit/Filebeat 等采集器收集，而不是写文件：
 
 ```shell
 docker logs -f demo

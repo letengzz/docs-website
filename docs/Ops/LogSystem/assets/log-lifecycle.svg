@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="440" viewBox="0 0 840 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="440" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">日志生命周期与成本分布</text>
+  <text x="420" y="54" text-anchor="middle" font-size="12" fill="#6b7280">从产生到销毁共 7 个阶段，成本主要集中在存储与索引</text>
+
+  <!-- 生命周期 7 阶段 -->
+  <g font-size="11" text-anchor="middle">
+    <rect x="14" y="72" width="104" height="86" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="66" y="98" fill="#4338ca" font-weight="bold">① 产生</text>
+    <text x="66" y="118" font-size="10" fill="#6b7280">结构化 JSON</text>
+    <text x="66" y="134" font-size="10" fill="#6b7280">带 traceId</text>
+    <text x="66" y="150" font-size="10" fill="#9ca3af">禁止明文敏感</text>
+
+    <rect x="132" y="72" width="104" height="86" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="184" y="98" fill="#b45309" font-weight="bold">② 采集</text>
+    <text x="184" y="118" font-size="10" fill="#6b7280">Alloy / Fluent Bit</text>
+    <text x="184" y="134" font-size="10" fill="#6b7280">Vector / Filebeat</text>
+    <text x="184" y="150" font-size="10" fill="#9ca3af">抗 rotate</text>
+
+    <rect x="250" y="72" width="104" height="86" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.5"/>
+    <text x="302" y="98" fill="#0f766e" font-weight="bold">③ 传输</text>
+    <text x="302" y="118" font-size="10" fill="#6b7280">磁盘缓冲</text>
+    <text x="302" y="134" font-size="10" fill="#6b7280">Kafka 削峰</text>
+    <text x="302" y="150" font-size="10" fill="#9ca3af">压缩与批量</text>
+
+    <rect x="368" y="72" width="104" height="86" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+    <text x="420" y="98" fill="#c2410c" font-weight="bold">④ 解析</text>
+    <text x="420" y="118" font-size="10" fill="#6b7280">抽字段与标签</text>
+    <text x="420" y="134" font-size="10" fill="#6b7280">脱敏与富化</text>
+    <text x="420" y="150" font-size="10" fill="#9ca3af">控基数</text>
+
+    <rect x="486" y="72" width="104" height="86" rx="8" fill="#fdf2f8" stroke="#ec4899" stroke-width="1.5"/>
+    <text x="538" y="98" fill="#be185d" font-weight="bold">⑤ 存储</text>
+    <text x="538" y="118" font-size="10" fill="#6b7280">分片 / 副本</text>
+    <text x="538" y="134" font-size="10" fill="#6b7280">压缩 / 索引</text>
+    <text x="538" y="150" font-size="10" fill="#9ca3af">分层降冷</text>
+
+    <rect x="604" y="72" width="104" height="86" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+    <text x="656" y="98" fill="#047857" font-weight="bold">⑥ 检索</text>
+    <text x="656" y="118" font-size="10" fill="#6b7280">LogQL / ES|QL</text>
+    <text x="656" y="134" font-size="10" fill="#6b7280">告警评估</text>
+    <text x="656" y="150" font-size="10" fill="#9ca3af">控制扫描量</text>
+
+    <rect x="722" y="72" width="104" height="86" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+    <text x="774" y="98" fill="#374151" font-weight="bold">⑦ 归档/销毁</text>
+    <text x="774" y="118" font-size="10" fill="#6b7280">对象存储冷存</text>
+    <text x="774" y="134" font-size="10" fill="#6b7280">到期删除</text>
+    <text x="774" y="150" font-size="10" fill="#9ca3af">合规留存</text>
+  </g>
+
+  <path d="M 120 115 L 128 115" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar2)"/>
+  <path d="M 238 115 L 246 115" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar2)"/>
+  <path d="M 356 115 L 364 115" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar2)"/>
+  <path d="M 474 115 L 482 115" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar2)"/>
+  <path d="M 592 115 L 600 115" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar2)"/>
+  <path d="M 710 115 L 718 115" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar2)"/>
+
+  <!-- 成本分布 -->
+  <text x="14" y="200" font-size="14" font-weight="bold" fill="#1f2937">成本占比（中等规模系统的经验值）</text>
+
+  <g font-size="12">
+    <text x="14" y="232" fill="#374151">存储（对象 / 块存储）</text>
+    <rect x="200" y="220" width="520" height="16" rx="8" fill="#f1f5f9"/>
+    <rect x="200" y="220" width="260" height="16" rx="8" fill="#6366f1"/>
+    <text x="470" y="233" fill="#4338ca" font-size="11">约 50%</text>
+
+    <text x="14" y="266" fill="#374151">索引与元数据</text>
+    <rect x="200" y="254" width="520" height="16" rx="8" fill="#f1f5f9"/>
+    <rect x="200" y="254" width="94" height="16" rx="8" fill="#f97316"/>
+    <text x="304" y="267" fill="#c2410c" font-size="11">约 18%</text>
+
+    <text x="14" y="300" fill="#374151">计算（采集 / 解析 / 查询）</text>
+    <rect x="200" y="288" width="520" height="16" rx="8" fill="#f1f5f9"/>
+    <rect x="200" y="288" width="83" height="16" rx="8" fill="#14b8a6"/>
+    <text x="293" y="301" fill="#0f766e" font-size="11">约 16%</text>
+
+    <text x="14" y="334" fill="#374151">网络出口</text>
+    <rect x="200" y="322" width="520" height="16" rx="8" fill="#f1f5f9"/>
+    <rect x="200" y="322" width="42" height="16" rx="8" fill="#ec4899"/>
+    <text x="252" y="335" fill="#be185d" font-size="11">约 8%</text>
+
+    <text x="14" y="368" fill="#374151">人力运维</text>
+    <rect x="200" y="356" width="520" height="16" rx="8" fill="#f1f5f9"/>
+    <rect x="200" y="356" width="42" height="16" rx="8" fill="#9ca3af"/>
+    <text x="252" y="369" fill="#4b5563" font-size="11">约 8%</text>
+  </g>
+
+  <text x="14" y="404" font-size="12" fill="#4b5563">降本优先级：源头不产生 &gt; 采集端丢弃 &gt; 压缩与采样 &gt; 分级保留 &gt; 换更便宜的存储</text>
+  <text x="14" y="426" font-size="11" fill="#9ca3af">注：占比随日志量、查询模式与云厂商定价差异较大，请以自身账单与监控数据校准。</text>
+
+  <defs>
+    <marker id="ar2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

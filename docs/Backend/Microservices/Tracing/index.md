@@ -144,7 +144,7 @@ services:
 2. **traceId 不透传**：用线程池/异步调用时上下文丢失，链路断裂；要使用 TraceContext 透传（如 `ExecutorService` 包装）。
 3. **采样率 100% 且无保留策略**：存储暴涨，随后被迫删数据，历史链路查不到。
 4. **跨系统不传递 traceId**：调用第三方/MQ 时也应在 Header/消息属性里透传 traceId。
-5. **把链路追踪当监控全部**：还需要 Metrics（Prometheus）与 Logs（ELK/Loki），三者配合才是完整可观测性。
+5. **把链路追踪当监控全部**：还需要 Metrics（Prometheus）与 Logs（ELK/Loki），三者配合才是完整可观测性；日志侧的完整建设见 [日志体系](../../../Ops/LogSystem/index.md)。
 6. **Baggage 滥用**：在 Span 里塞大对象，跨服务传递放大带宽。
 :::
 

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="430" viewBox="0 0 840 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="430" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Grafana Loki 架构与读写路径</text>
+  <text x="420" y="54" text-anchor="middle" font-size="12" fill="#6b7280">只索引标签，日志正文压缩成块存对象存储；查询是「先缩小范围，再流式扫描」</text>
+
+  <!-- 写入路径 -->
+  <text x="20" y="86" font-size="12" font-weight="bold" fill="#c2410c">写入路径（Write）</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="20" y="96" width="132" height="76" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8"/>
+    <text x="86" y="122" fill="#b45309" font-weight="bold">Grafana Alloy</text>
+    <text x="86" y="142" font-size="10" fill="#a16207">发现文件 / 打标签</text>
+    <text x="86" y="160" font-size="10" fill="#a16207">push /loki/api/v1/push</text>
+
+    <rect x="176" y="96" width="150" height="76" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.8"/>
+    <text x="251" y="122" fill="#4338ca" font-weight="bold">distributor</text>
+    <text x="251" y="142" font-size="10" fill="#4f46e5">校验限流与标签</text>
+    <text x="251" y="160" font-size="10" fill="#4f46e5">按哈希分发到 ingester</text>
+
+    <rect x="350" y="96" width="150" height="76" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.8"/>
+    <text x="425" y="122" fill="#4338ca" font-weight="bold">ingester</text>
+    <text x="425" y="142" font-size="10" fill="#4f46e5">内存累积成 chunk</text>
+    <text x="425" y="160" font-size="10" fill="#4f46e5">WAL 落本地盘防丢</text>
+  </g>
+
+  <!-- 中部：index gateway / compactor -->
+  <g font-size="11" text-anchor="middle">
+    <rect x="176" y="192" width="150" height="56" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.6"/>
+    <text x="251" y="215" fill="#0f766e" font-weight="bold">index gateway</text>
+    <text x="251" y="234" font-size="10" fill="#0d9488">避免 querier 下载全量索引</text>
+
+    <rect x="350" y="192" width="150" height="56" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.6"/>
+    <text x="425" y="215" fill="#0f766e" font-weight="bold">compactor</text>
+    <text x="425" y="234" font-size="10" fill="#0d9488">压缩索引 + 执行保留删除</text>
+  </g>
+
+  <!-- 读取路径 -->
+  <text x="20" y="288" font-size="12" font-weight="bold" fill="#1f2937">读取路径（Read）</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="20" y="298" width="132" height="76" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8"/>
+    <text x="86" y="324" fill="#047857" font-weight="bold">Grafana</text>
+    <text x="86" y="344" font-size="10" fill="#059669">Explore / Dashboard</text>
+    <text x="86" y="362" font-size="10" fill="#059669">Alerting 评估规则</text>
+
+    <rect x="176" y="298" width="150" height="76" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.8"/>
+    <text x="251" y="324" fill="#4338ca" font-weight="bold">query frontend</text>
+    <text x="251" y="344" font-size="10" fill="#4f46e5">查询拆分、排队、重试</text>
+    <text x="251" y="362" font-size="10" fill="#4f46e5">结果缓存</text>
+
+    <rect x="350" y="298" width="150" height="76" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.8"/>
+    <text x="425" y="324" fill="#4338ca" font-weight="bold">querier</text>
+    <text x="425" y="344" font-size="10" fill="#4f46e5">近期数据查 ingester</text>
+    <text x="425" y="362" font-size="10" fill="#4f46e5">历史数据查对象存储</text>
+  </g>
+
+  <!-- 存储 -->
+  <rect x="660" y="96" width="160" height="278" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="740" y="124" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">对象存储</text>
+  <text x="740" y="144" text-anchor="middle" font-size="10" fill="#9a3412">S3 / MinIO / OSS / GCS</text>
+  <g font-size="10" text-anchor="middle">
+    <rect x="676" y="162" width="128" height="52" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="740" y="182" fill="#9a3412" font-weight="bold">chunk</text>
+    <text x="740" y="200" font-size="9" fill="#c2410c">压缩后的日志正文</text>
+
+    <rect x="676" y="226" width="128" height="52" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="740" y="246" fill="#9a3412" font-weight="bold">TSDB 索引（v13）</text>
+    <text x="740" y="264" font-size="9" fill="#c2410c">标签 → chunk 映射</text>
+
+    <rect x="676" y="290" width="128" height="66" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="740" y="310" fill="#9a3412" font-weight="bold">本地 WAL</text>
+    <text x="740" y="328" font-size="9" fill="#c2410c">ingester 预写日志</text>
+    <text x="740" y="346" font-size="9" fill="#c2410c">崩溃恢复用</text>
+  </g>
+
+  <path d="M 154 134 H 172" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar5)"/>
+  <path d="M 328 134 H 346" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar5)"/>
+  <path d="M 502 134 H 656" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar5)"/>
+  <path d="M 502 220 H 656" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar5)"/>
+  <path d="M 154 336 H 172" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar5)"/>
+  <path d="M 328 336 H 346" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar5)"/>
+  <path d="M 502 336 H 656" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar5)"/>
+
+  <text x="20" y="400" font-size="12" fill="#dc2626">重大变更：Promtail 已于 2026-03-02 EOL，自 Loki 3.7.3 起被移除 → 改用 Grafana Alloy；boltdb-shipper 索引已弃用 → 用 TSDB / schema v13</text>
+  <text x="20" y="422" font-size="11" fill="#9ca3af">当前主线 Loki 3.7.7（2026-08-27）；3.5 已于 2026-03-26 EOL。标签基数决定查询成本，务必控制在 10 个以内。</text>
+
+  <defs>
+    <marker id="ar5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

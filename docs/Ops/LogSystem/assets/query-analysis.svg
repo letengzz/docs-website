@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="420" viewBox="0 0 840 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="420" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">从告警到根因：日志分析六步法</text>
+  <text x="420" y="54" text-anchor="middle" font-size="12" fill="#6b7280">固定套路优于凭感觉 grep：每一步都有明确的收窄目标</text>
+
+  <g font-size="11" text-anchor="middle">
+    <rect x="15" y="76" width="120" height="96" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.6"/>
+    <text x="75" y="100" fill="#4338ca" font-weight="bold">① 定位时间窗</text>
+    <text x="75" y="122" font-size="10" fill="#6b7280">告警点前后</text>
+    <text x="75" y="138" font-size="10" fill="#6b7280">各取 10 分钟</text>
+    <text x="75" y="158" font-size="10" fill="#9ca3af">先划边界</text>
+
+    <rect x="153" y="76" width="120" height="96" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.6"/>
+    <text x="213" y="100" fill="#b45309" font-weight="bold">② 收窄范围</text>
+    <text x="213" y="122" font-size="10" fill="#6b7280">哪个服务 / Pod</text>
+    <text x="213" y="138" font-size="10" fill="#6b7280">哪个节点 / 环境</text>
+    <text x="213" y="158" font-size="10" fill="#9ca3af">用标签过滤</text>
+
+    <rect x="291" y="76" width="120" height="96" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.6"/>
+    <text x="351" y="100" fill="#0f766e" font-weight="bold">③ 聚类错误</text>
+    <text x="351" y="122" font-size="10" fill="#6b7280">message 去重</text>
+    <text x="351" y="138" font-size="10" fill="#6b7280">看 Top N</text>
+    <text x="351" y="158" font-size="10" fill="#9ca3af">不要逐条读</text>
+
+    <rect x="429" y="76" width="120" height="96" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="1.6"/>
+    <text x="489" y="100" fill="#c2410c" font-weight="bold">④ 抽关键标识</text>
+    <text x="489" y="122" font-size="10" fill="#6b7280">traceId</text>
+    <text x="489" y="138" font-size="10" fill="#6b7280">orderNo / userId</text>
+    <text x="489" y="158" font-size="10" fill="#9ca3af">拿到「钥匙」</text>
+
+    <rect x="567" y="76" width="120" height="96" rx="8" fill="#fdf2f8" stroke="#ec4899" stroke-width="1.6"/>
+    <text x="627" y="100" fill="#be185d" font-weight="bold">⑤ 串联全链路</text>
+    <text x="627" y="122" font-size="10" fill="#6b7280">跨服务召回</text>
+    <text x="627" y="138" font-size="10" fill="#6b7280">按时间排序</text>
+    <text x="627" y="158" font-size="10" fill="#9ca3af">还原调用顺序</text>
+
+    <rect x="705" y="76" width="120" height="96" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.6"/>
+    <text x="765" y="100" fill="#047857" font-weight="bold">⑥ 验证与反证</text>
+    <text x="765" y="122" font-size="10" fill="#6b7280">改一个条件</text>
+    <text x="765" y="138" font-size="10" fill="#6b7280">看日志是否消失</text>
+    <text x="765" y="158" font-size="10" fill="#9ca3af">确认因果</text>
+  </g>
+
+  <path d="M 137 124 H 149" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar6)"/>
+  <path d="M 275 124 H 287" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar6)"/>
+  <path d="M 413 124 H 425" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar6)"/>
+  <path d="M 551 124 H 563" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar6)"/>
+  <path d="M 689 124 H 701" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar6)"/>
+
+  <!-- 查询语言速查 -->
+  <text x="15" y="212" font-size="14" font-weight="bold" fill="#1f2937">四套查询语言速查</text>
+
+  <g font-size="11">
+    <rect x="15" y="228" width="196" height="74" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="30" y="250" fill="#334155" font-weight="bold">KQL（Kibana）</text>
+    <text x="30" y="270" font-size="10" fill="#64748b">level: "ERROR" and status: &gt;=500</text>
+    <text x="30" y="288" font-size="10" fill="#94a3b8">交互过滤，不能做复杂聚合</text>
+
+    <rect x="221" y="228" width="196" height="74" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="236" y="250" fill="#334155" font-weight="bold">Lucene</text>
+    <text x="236" y="270" font-size="10" fill="#64748b">service: ordr~ / regex / "a b"~3</text>
+    <text x="236" y="288" font-size="10" fill="#94a3b8">模糊、正则、邻近、字段加权</text>
+
+    <rect x="427" y="228" width="196" height="74" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="442" y="250" fill="#334155" font-weight="bold">ES|QL（Elasticsearch）</text>
+    <text x="442" y="270" font-size="10" fill="#64748b">FROM logs-* | STATS cnt BY service</text>
+    <text x="442" y="288" font-size="10" fill="#94a3b8">管道式，可读性最好</text>
+
+    <rect x="633" y="228" width="192" height="74" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="648" y="250" fill="#334155" font-weight="bold">LogQL（Loki）</text>
+    <text x="648" y="270" font-size="10" fill="#64748b">{job="x"} |= "ERROR" | json</text>
+    <text x="648" y="288" font-size="10" fill="#94a3b8">日志流过滤 + 指标化查询</text>
+  </g>
+
+  <text x="15" y="336" font-size="12" fill="#dc2626">最危险的三条查询：Loki 用 {job=~".+"} 全流扫描 · ES 不带时间范围的 match_all · 看板每 5 秒刷新 7 天范围聚合</text>
+  <text x="15" y="360" font-size="12" fill="#4b5563">LogQL 的指标查询语法与 PromQL 同源（rate / sum by / avg_over_time），会用 PromQL 就能零成本写日志告警。</text>
+  <text x="15" y="384" font-size="12" fill="#4b5563">排障效率的分水岭是 traceId：日志里带 traceId，「串联全链路」从 1 小时变成 1 分钟。</text>
+  <text x="15" y="408" font-size="11" fill="#9ca3af">提示：把每个核心服务的 5 条常用查询（错误 Top、慢请求、依赖超时、连接失败、业务异常）沉淀为团队 Runbook。</text>
+
+  <defs>
+    <marker id="ar6" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

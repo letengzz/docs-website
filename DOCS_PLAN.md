@@ -87,7 +87,7 @@
 | 52 | Frontend | 前端测试 ✅ | Vitest、Jest、组件测试、E2E、覆盖率、测试策略、常见问题 |
 | 53 | DB | Elasticsearch ✅ | 概述与安装、索引与映射、查询 DSL、聚合、集群、中文分词、常见问题 |
 | 54 | DB | Redis 进阶 ✅ | 持久化、主从与哨兵、Cluster、缓存设计、性能调优、常见问题 |
-| 55 | Ops | 日志体系 | ELK、Loki、日志采集、日志分析、告警联动、常见问题 |
+| 55 | Ops | 日志体系 ✅ | ELK、Loki、日志采集、日志分析、告警联动、常见问题 |
 | 56 | Ops | Linux 进阶 | Shell 编程、系统调优、服务管理、定时任务、安全加固、常见问题 |
 | 57 | Tools | 协作与项目管理 | Jira、Confluence、飞书、研发流程、文档协作、常见问题 |
 | 58 | Project | Vue3 模板补充 ✅ | 权限、主题、组件库集成、多环境、发布、常见问题 |
@@ -204,6 +204,9 @@
 - [x] DB 存量补全：Elasticsearch 专题已建设（第 53 天，`docs/DB/NoRelational/Elasticsearch` 9 个页面：概述与安装、索引与映射、查询 DSL、聚合分析、中文分词与 IK、集群架构与高可用、商品搜索实战、FAQ），版本按官方渠道核对（ES 9.5.3 / 2026-09-03，8.x 维护期），Logo 由 simple-icons 官方路径生成 PNG；侧边栏 `db.ts` 挂载 ES 子树，非关系型目录页与 DB 概述页补入口；同步更新 6 篇存量文档（SpringBoot v3 整合 ES 页由 13 行空壳扩写为完整整合页并回链专题、MongoDB FAQ 补选型对比、RAG 版本页补专题链接）
 - [x] DB 存量补全：Redis 进阶专题已就地加深（第 54 天，`docs/DB/NoRelational/Redis/Advanced` 11 个页面：进阶导览 + 主从复制 + 哨兵高可用 + Cluster 分片集群 + 缓存设计 + 缓存防护 + 分布式锁与 Lua + 性能调优 + 版本演进与升级迁移 + 实战：高可用缓存集群 + 进阶常见问题），遵循「既有主题内加深、不新建重复章节」原则挂在 Redis 下并保留原基础内容；Redis 主题首页补官方 Logo（PNG，75% 居中，未标注来源）；同步更新 9 篇存量文档（Redis 目录页新增进阶分组并补 Logo、概述页版本现状改为 8.10 GA + Standard/Extended 与 EOL 表并修正「8.0 起多线程」表述、持久化页新增多部分 AOF（MP-AOF）与 8.10 `BACKUP` 命令及配图、过期淘汰页补 8.6 新增 `allkeys-lrm`/`volatile-lrm` 策略并把缓存三问题收敛为速览、通用命令页扩写内存诊断/客户端统计/8.x 新命令并补配图、基础 FAQ 与缓存三问题去重并补进阶入口、非关系型目录页补进阶子页链接、RedisInsight 页补性能与版本交叉链接、SpringBoot v3 整合 Redis 页补连接池/哨兵/集群配置与序列化说明）
 - [x] 存量版本核对：Redis 版本事实按官方渠道核对（Redis 8.10 Q3 2026 GA 为最新稳定版、8.8/8.6/8.4/8.0 为 Standard、8.2 Extended EOL 2030-09-01、7.4/7.2 Extended EOL 2029-12-01、6.2 EOL 2027-04-01；8.10 新增 BACKUP/HIMPORT/LMOVEM/SUNIONCARD/SDIFFCARD、8.6 新增 HOTKEYS/IDMP/LRM、8.8 新增 Array 与 INCREX），据此建立「主线 / 维护中 / 仅存量」状态标注并写入版本页；确认 Redis 7.x 与 8.x 兼容性高，暂按单主题维护而不拆分版本目录（未来出现破坏性主版本再按 AGENTS.md 第 3 节建目录）
+- [x] Ops 存量补全：日志体系专题已建设（第 55 天，`docs/Ops/LogSystem` 9 个页面：概述与选型、日志采集与传输、Elastic Stack（ELK）、Grafana Loki、日志查询与分析、日志告警与联动、存储保留与成本优化、实战：搭建集中式日志平台、常见问题与最佳实践），含主题 Logo（PNG）与 9 张 SVG 示意图；侧边栏（`ops.ts`/`sidebar.ts`）与导航（`nav.ts`）已挂载，Ops 目录页与导航「运维」分组补入口
+- [x] 日志栈过期表述巡检（全库）：把存量 Monitoring 专题从「Promtail + Loki 单页」更新为「Alloy 主线 + 收敛为速览并回链新专题」——重写 [日志监控] 页（Promtail → Grafana Alloy，新增深入阅读表）、重写实战页第五步（`promtail-config.yml` → `config.alloy` + Alloy 服务与 `alloy-data` 卷）、修正 `Monitoring/assets/log-pipeline.svg` 采集器标注、更新 [监控体系与可观测性] 版本说明（Grafana 13.2.1 / Loki 3.7.7 / Alloy 1.19.x + Promtail EOL 提示）、[监控告警] 目录页与 [Grafana] [告警规则] [常见问题] 补交叉链接；同步修正 Kubernetes（Monitoring/Pod）、Docker（Monitor）、SpringBoot（Common/Deploy）、微服务（Tracing）、Elasticsearch 专题、CI/CD（PipelineDesign）等 6 处过期采集器表述与缺失链接
+- [x] 大版本状态标注巡检：Elastic Stack 按「9.5.3 主线 + 8.19.x 维护中 + 7.x 已于 2026-01-15 停止维护」、Loki 按「3.7.7 主线 + 3.6.16 维护 + 3.5 已 EOL + Promtail 已 EOL 并从 3.7.3 移除 + boltdb-shipper 弃用待 4.0 移除」在页内标注状态；旧配置说明不删除、不覆盖，对照 Spring 5/6、Vue2/Vue3、Kafka 4.x/3.9.x 的既有版本目录策略保持统一约定
 
 ## 节奏建议
 

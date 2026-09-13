@@ -25,6 +25,10 @@
 
 三者配合：告警发现指标异常 → 打开日志看报错 → 顺着 traceId 看链路定位瓶颈。
 
+::: tip 日志需要单独建专题
+日志的数据量通常是其他两类信号的几十倍，涉及采集器选型、标签设计、保留策略与成本控制，值得单独成篇：[日志体系](../../LogSystem/index.md)。
+:::
+
 ## 监控分层
 
 一个完整的监控体系从下到上分层：
@@ -69,8 +73,9 @@
 | SkyWalking | APM | 侧重链路与应用性能 |
 | ELK | Elasticsearch + Logstash + Kibana | 侧重日志 |
 
-::: info 版本说明（2026-08 核对）
-Prometheus 最新稳定为 **3.14.x**，Grafana 为 **13.x**，Alertmanager 为 **0.33.x**，Grafana Loki 为 **3.7.x**，node_exporter 为 **1.12.x**。
+::: info 版本说明（2026-09 核对）
+Prometheus 最新稳定为 **3.14.x**，Grafana 为 **13.x**（13.2.1），Alertmanager 为 **0.33.x**，Grafana Loki 为 **3.7.x**（3.7.7），Grafana Alloy 为 **1.19.x**，node_exporter 为 **1.12.x**。
+注意：**Promtail 已于 2026-03-02 EOL**，Loki 3.7.3 起已移除，采集请使用 Grafana Alloy。
 :::
 
 ## 告警设计原则
@@ -117,6 +122,7 @@ Prometheus 最新稳定为 **3.14.x**，Grafana 为 **13.x**，Alertmanager 为 
 
 ## 相关专题
 
+- [日志体系](../../LogSystem/index.md)：日志的采集、存储、查询、告警与成本控制完整专题
 - [容器编排进阶 · 弹性伸缩](../../ContainerOrchestration/Autoscaling/index.md)：HPA/KEDA 扩缩与监控指标联动
 - [容器编排进阶 · GitOps 实战](../../ContainerOrchestration/Practice/index.md)：告警规则随应用交付、故障演练后回滚
 

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="400" viewBox="0 0 840 400" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="400" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">采集层在日志链路中的位置</text>
+  <text x="420" y="54" text-anchor="middle" font-size="12" fill="#6b7280">采集器负责「发现 → 读取 → 打标签 → 脱敏 → 缓冲 → 投递」</text>
+
+  <!-- 数据源 -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="20" y="86" width="140" height="52" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="90" y="110" fill="#4338ca" font-weight="bold">应用日志</text>
+    <text x="90" y="128" font-size="10" fill="#6b7280">文件 / stdout</text>
+
+    <rect x="20" y="150" width="140" height="52" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="90" y="174" fill="#4338ca" font-weight="bold">容器 / K8s 日志</text>
+    <text x="90" y="192" font-size="10" fill="#6b7280">/var/log/containers</text>
+
+    <rect x="20" y="214" width="140" height="52" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="90" y="238" fill="#4338ca" font-weight="bold">主机 / systemd</text>
+    <text x="90" y="256" font-size="10" fill="#6b7280">journald</text>
+  </g>
+
+  <path d="M 168 146 H 200" stroke="#9ca3af" stroke-width="2.5" marker-end="url(#ar3)"/>
+
+  <!-- 采集器 -->
+  <rect x="206" y="80" width="220" height="196" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="316" y="106" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">采集 Agent</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="222" y="120" width="90" height="30" rx="6" fill="#ffffff" stroke="#fcd34d" stroke-width="1.2"/>
+    <text x="267" y="139" fill="#92400e">Alloy</text>
+    <rect x="320" y="120" width="90" height="30" rx="6" fill="#ffffff" stroke="#fcd34d" stroke-width="1.2"/>
+    <text x="365" y="139" fill="#92400e">Fluent Bit</text>
+    <rect x="222" y="158" width="90" height="30" rx="6" fill="#ffffff" stroke="#fcd34d" stroke-width="1.2"/>
+    <text x="267" y="177" fill="#92400e">Vector</text>
+    <rect x="320" y="158" width="90" height="30" rx="6" fill="#ffffff" stroke="#fcd34d" stroke-width="1.2"/>
+    <text x="365" y="177" fill="#92400e">Filebeat</text>
+    <text x="316" y="212" font-size="10" fill="#a16207">发现文件 · 跟踪 rotate · 打标签</text>
+    <text x="316" y="230" font-size="10" fill="#a16207">多行合并 · 脱敏 · 结构化元数据</text>
+    <text x="316" y="252" font-size="10" fill="#dc2626">Promtail 已 EOL，勿新用</text>
+  </g>
+
+  <path d="M 434 176 H 466" stroke="#9ca3af" stroke-width="2.5" marker-end="url(#ar3)"/>
+
+  <!-- 缓冲 -->
+  <rect x="472" y="86" width="160" height="184" rx="10" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+  <text x="552" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f766e">缓冲与传输</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="488" y="128" width="128" height="34" rx="6" fill="#ffffff" stroke="#5eead4" stroke-width="1.2"/>
+    <text x="552" y="149" fill="#115e59">内存队列</text>
+    <rect x="488" y="170" width="128" height="34" rx="6" fill="#ffffff" stroke="#5eead4" stroke-width="1.2"/>
+    <text x="552" y="191" fill="#115e59">磁盘缓冲</text>
+    <rect x="488" y="212" width="128" height="34" rx="6" fill="#ffffff" stroke="#5eead4" stroke-width="1.2"/>
+    <text x="552" y="233" fill="#115e59">Kafka 削峰</text>
+  </g>
+
+  <path d="M 640 176 H 672" stroke="#9ca3af" stroke-width="2.5" marker-end="url(#ar3)"/>
+
+  <!-- 后端 -->
+  <rect x="678" y="86" width="142" height="184" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="749" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#c2410c">后端</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="694" y="128" width="110" height="34" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="749" y="149" fill="#9a3412">Grafana Loki</text>
+    <rect x="694" y="170" width="110" height="34" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="749" y="191" fill="#9a3412">Elasticsearch</text>
+    <rect x="694" y="212" width="110" height="34" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="749" y="233" fill="#9a3412">S3 冷归档</text>
+  </g>
+
+  <!-- 采集模式 -->
+  <text x="20" y="312" font-size="14" font-weight="bold" fill="#1f2937">六种采集模式</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="20" y="328" width="126" height="52" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="83" y="350" fill="#334155" font-weight="bold">文件跟踪 tail</text>
+    <text x="83" y="368" font-size="10" fill="#94a3b8">处理 rotate</text>
+
+    <rect x="156" y="328" width="126" height="52" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="219" y="350" fill="#334155" font-weight="bold">容器日志</text>
+    <text x="219" y="368" font-size="10" fill="#94a3b8">CRI / Docker</text>
+
+    <rect x="292" y="328" width="126" height="52" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="355" y="350" fill="#334155" font-weight="bold">systemd journal</text>
+    <text x="355" y="368" font-size="10" fill="#94a3b8">带 unit 字段</text>
+
+    <rect x="428" y="328" width="126" height="52" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="491" y="350" fill="#334155" font-weight="bold">应用直推</text>
+    <text x="491" y="368" font-size="10" fill="#94a3b8">OTLP / HTTP</text>
+
+    <rect x="564" y="328" width="126" height="52" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="627" y="350" fill="#334155" font-weight="bold">主动拉取</text>
+    <text x="627" y="368" font-size="10" fill="#94a3b8">云日志 API</text>
+
+    <rect x="700" y="328" width="120" height="52" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="760" y="350" fill="#334155" font-weight="bold">边车 Sidecar</text>
+    <text x="760" y="368" font-size="10" fill="#94a3b8">随 Pod 部署</text>
+  </g>
+
+  <defs>
+    <marker id="ar3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="520" fill="#ffffff"/>
+  <text x="420" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">日志体系分层架构</text>
+  <text x="420" y="56" text-anchor="middle" font-size="12" fill="#6b7280">产生 → 采集 → 传输 → 存储 → 消费，每一层都要有缓冲与降级设计</text>
+
+  <!-- 产生层 -->
+  <rect x="20" y="76" width="92" height="62" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="66" y="103" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">产生层</text>
+  <text x="66" y="122" text-anchor="middle" font-size="10" fill="#6b7280">Source</text>
+
+  <g font-size="12" text-anchor="middle">
+    <rect x="126" y="76" width="128" height="62" rx="8" fill="#ffffff" stroke="#c7d2fe" stroke-width="1.5"/>
+    <text x="190" y="102" fill="#374151">应用日志</text>
+    <text x="190" y="121" font-size="10" fill="#9ca3af">stdout / 文件</text>
+
+    <rect x="266" y="76" width="128" height="62" rx="8" fill="#ffffff" stroke="#c7d2fe" stroke-width="1.5"/>
+    <text x="330" y="102" fill="#374151">容器 / K8s</text>
+    <text x="330" y="121" font-size="10" fill="#9ca3af">CRI 日志文件</text>
+
+    <rect x="406" y="76" width="128" height="62" rx="8" fill="#ffffff" stroke="#c7d2fe" stroke-width="1.5"/>
+    <text x="470" y="102" fill="#374151">主机 / systemd</text>
+    <text x="470" y="121" font-size="10" fill="#9ca3af">journald / syslog</text>
+
+    <rect x="546" y="76" width="128" height="62" rx="8" fill="#ffffff" stroke="#c7d2fe" stroke-width="1.5"/>
+    <text x="610" y="102" fill="#374151">中间件 / 数据库</text>
+    <text x="610" y="121" font-size="10" fill="#9ca3af">MySQL / Nginx / Redis</text>
+
+    <rect x="686" y="76" width="134" height="62" rx="8" fill="#ffffff" stroke="#c7d2fe" stroke-width="1.5"/>
+    <text x="753" y="102" fill="#374151">云服务日志</text>
+    <text x="753" y="121" font-size="10" fill="#9ca3af">审计 / SLB / RDS</text>
+  </g>
+
+  <path d="M 420 142 L 420 166" stroke="#9ca3af" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <!-- 采集层 -->
+  <rect x="20" y="170" width="92" height="62" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="66" y="197" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">采集层</text>
+  <text x="66" y="216" text-anchor="middle" font-size="10" fill="#6b7280">Collect</text>
+
+  <g font-size="12" text-anchor="middle">
+    <rect x="126" y="170" width="156" height="62" rx="8" fill="#fffbeb" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="204" y="196" fill="#92400e" font-weight="bold">Grafana Alloy</text>
+    <text x="204" y="215" font-size="10" fill="#a16207">Loki 主线，替代 Promtail</text>
+
+    <rect x="294" y="170" width="150" height="62" rx="8" fill="#fffbeb" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="369" y="196" fill="#92400e" font-weight="bold">Fluent Bit</text>
+    <text x="369" y="215" font-size="10" fill="#a16207">轻量，K8s 常用</text>
+
+    <rect x="456" y="170" width="150" height="62" rx="8" fill="#fffbeb" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="531" y="196" fill="#92400e" font-weight="bold">Vector</text>
+    <text x="531" y="215" font-size="10" fill="#a16207">VRL 转换强</text>
+
+    <rect x="618" y="170" width="202" height="62" rx="8" fill="#fffbeb" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="719" y="196" fill="#92400e" font-weight="bold">Filebeat / OTel Collector</text>
+    <text x="719" y="215" font-size="10" fill="#a16207">Elastic 生态 / 厂商中立</text>
+  </g>
+
+  <path d="M 420 236 L 420 260" stroke="#9ca3af" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <!-- 传输层 -->
+  <rect x="20" y="264" width="92" height="56" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.5"/>
+  <text x="66" y="289" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f766e">传输层</text>
+  <text x="66" y="308" text-anchor="middle" font-size="10" fill="#6b7280">Buffer</text>
+
+  <g font-size="12" text-anchor="middle">
+    <rect x="126" y="264" width="200" height="56" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.5"/>
+    <text x="226" y="288" fill="#115e59">采集端磁盘缓冲</text>
+    <text x="226" y="307" font-size="10" fill="#0d9488">抗后端抖动，设容量上限</text>
+
+    <rect x="338" y="264" width="200" height="56" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.5"/>
+    <text x="438" y="288" fill="#115e59">Kafka 缓冲</text>
+    <text x="438" y="307" font-size="10" fill="#0d9488">削峰、多消费、可重放</text>
+
+    <rect x="550" y="264" width="270" height="56" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.5"/>
+    <text x="685" y="288" fill="#115e59">压缩与批量发送（zstd / gzip）</text>
+    <text x="685" y="307" font-size="10" fill="#0d9488">降低带宽与网络出口成本</text>
+  </g>
+
+  <path d="M 420 324 L 420 348" stroke="#9ca3af" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <!-- 存储层 -->
+  <rect x="20" y="352" width="92" height="62" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="66" y="379" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">存储层</text>
+  <text x="66" y="398" text-anchor="middle" font-size="10" fill="#6b7280">Store</text>
+
+  <g font-size="12" text-anchor="middle">
+    <rect x="126" y="352" width="200" height="62" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+    <text x="226" y="378" fill="#9a3412" font-weight="bold">Elasticsearch</text>
+    <text x="226" y="397" font-size="10" fill="#c2410c">全文索引，检索能力最强</text>
+
+    <rect x="338" y="352" width="200" height="62" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+    <text x="438" y="378" fill="#9a3412" font-weight="bold">Grafana Loki</text>
+    <text x="438" y="397" font-size="10" fill="#c2410c">只索引标签，成本最低</text>
+
+    <rect x="550" y="352" width="270" height="62" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+    <text x="685" y="378" fill="#9a3412" font-weight="bold">ClickHouse / 对象存储归档</text>
+    <text x="685" y="397" font-size="10" fill="#c2410c">超大规模、冷数据长期保留</text>
+  </g>
+
+  <path d="M 420 418 L 420 442" stroke="#9ca3af" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <!-- 消费层 -->
+  <rect x="20" y="446" width="92" height="60" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="66" y="472" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">消费层</text>
+  <text x="66" y="491" text-anchor="middle" font-size="10" fill="#6b7280">Consume</text>
+
+  <g font-size="12" text-anchor="middle">
+    <rect x="126" y="446" width="162" height="60" rx="8" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+    <text x="207" y="471" fill="#065f46" font-weight="bold">检索与看板</text>
+    <text x="207" y="490" font-size="10" fill="#059669">Grafana / Kibana</text>
+
+    <rect x="300" y="446" width="162" height="60" rx="8" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+    <text x="381" y="471" fill="#065f46" font-weight="bold">告警与联动</text>
+    <text x="381" y="490" font-size="10" fill="#059669">日志 → 通知 → 链路</text>
+
+    <rect x="474" y="446" width="162" height="60" rx="8" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+    <text x="555" y="471" fill="#065f46" font-weight="bold">归档与合规</text>
+    <text x="555" y="490" font-size="10" fill="#059669">对象存储 / 审计</text>
+
+    <rect x="648" y="446" width="172" height="60" rx="8" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+    <text x="734" y="471" fill="#065f46" font-weight="bold">数据回流</text>
+    <text x="734" y="490" font-size="10" fill="#059669">日志转指标 / 特征</text>
+  </g>
+
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

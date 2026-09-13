@@ -13,15 +13,19 @@ cAdvisor（容器指标 :8080）
         ↓ Prometheus 抓取（:9090）
 Grafana（:3000） ← 查询
 Alertmanager（:9093） → 告警通知
-Loki（:3100） ← Promtail 采集容器日志
+Loki（:3100） ← Grafana Alloy 采集容器日志
 ```
 
 ## 环境要求
 
 ::: info 当前使用的版本
-- Prometheus 3.14.0、Grafana 13.x、Alertmanager 0.33.1、Loki 3.7.6、node_exporter 1.12.1
+- Prometheus 3.14.0、Grafana 13.2.1、Alertmanager 0.33.1、Loki 3.7.7、Grafana Alloy 1.19.x、node_exporter 1.12.1
 - Docker + Docker Compose
 - 一个可访问 `/actuator/prometheus` 的 Spring Boot 应用（可选）
+:::
+
+::: warning 采集器已换代
+Promtail 已于 2026-03-02 EOL，并自 Loki 3.7.3 起被移除。本实战的日志采集使用官方推荐的 **Grafana Alloy**；存量 Promtail 配置可用 `alloy convert --source-format=promtail` 迁移，详见 [日志体系 · 日志采集与传输](../../LogSystem/Collection/index.md)。
 :::
 
 ## 第一步：完整 Compose 编排
@@ -63,7 +67,7 @@ services:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
 
   grafana:
-    image: grafana/grafana:13.0.0
+    image: grafana/grafana:13.2.1
     ports: ["3000:3000"]
     environment:
       GF_SECURITY_ADMIN_USER: admin
@@ -72,20 +76,29 @@ services:
       - grafana-data:/var/lib/grafana
 
   loki:
-    image: grafana/loki:3.7.6
+    image: grafana/loki:3.7.7
     ports: ["3100:3100"]
     command: -config.file=/etc/loki/local-config.yaml
 
-  promtail:
-    image: grafana/promtail:3.7.6
+  alloy:
+    image: grafana/alloy:latest
+    command:
+      - run
+      - /etc/alloy/config.alloy
+      - --server.http.listen-addr=0.0.0.0:12345
+      - --storage.path=/var/lib/alloy/data
+    ports: ["12345:12345"]
     volumes:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
-      - ./promtail-config.yml:/etc/promtail/config.yml
-    command: -config.file=/etc/promtail/config.yml
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./config.alloy:/etc/alloy/config.alloy:ro
+      - alloy-data:/var/lib/alloy/data
+    depends_on: [loki]
 
 volumes:
   prom-data:
   grafana-data:
+  alloy-data:
 ```
 
 ## 第二步：Prometheus 配置
@@ -175,21 +188,41 @@ receivers:
       - url: http://host.docker.internal:8088/alert
 ```
 
-## 第五步：Promtail 日志采集
+## 第五步：Grafana Alloy 日志采集
 
-```yaml [promtail-config.yml]
-server:
-  http_listen_port: 9080
-clients:
-  - url: http://loki:3100/loki/api/v1/push
-scrape_configs:
-  - job_name: docker
-    docker_sd_configs:
-      - host: unix:///var/run/docker.sock
-    relabel_configs:
-      - source_labels: ["__meta_docker_container_name"]
-        target_label: "container"
+```hcl [config.alloy]
+// 发现本节点所有容器（替代已 EOL 的 Promtail）
+discovery.docker "containers" {
+  host = "unix:///var/run/docker.sock"
+}
+
+loki.source.docker "containers" {
+  host       = "unix:///var/run/docker.sock"
+  targets    = discovery.docker.containers.targets
+  forward_to = [loki.process.parse.receiver]
+  labels     = { job = "docker" }
+}
+
+loki.process "parse" {
+  forward_to = [loki.write.default.receiver]
+
+  stage.json {
+    expressions = { level = "level", service = "service", trace_id = "traceId" }
+  }
+  stage.labels {
+    values = { level = "", service = "" }
+  }
+  stage.structured_metadata {
+    values = { trace_id = "" }
+  }
+}
+
+loki.write "default" {
+  endpoint { url = "http://loki:3100/loki/api/v1/push" }
+}
 ```
+
+验证：访问 Alloy 的调试界面 http://localhost:12345，确认 `loki.source.docker.containers` 组件健康、`loki.write.default` 无报错。
 
 ## 第六步：启动与验证
 
@@ -221,13 +254,15 @@ docker compose ps    # 全部 Running
 ## 进阶收尾
 
 1. 把 Grafana 数据源与仪表盘改成 Provisioning 管理，配置进 Git。
-2. 接入 [Kubernetes 监控](../../../Ops/Kubernetes/Monitoring/index.md)：用 kube-prometheus-stack 监控集群。
+2. 接入 [Kubernetes 监控](../../Kubernetes/Monitoring/index.md)：用 kube-prometheus-stack 监控集群，日志采集用 Alloy 的 DaemonSet 模式。
 3. 与 [链路追踪](../../../Backend/Microservices/Tracing/index.md) 打通：日志带 traceId 一键跳转。
 4. 与 [CI/CD 部署回滚](../../../Tools/CICD/DeployRollback/index.md) 联动：部署后自动健康检查，指标异常自动回滚。
+5. 日志平台本身的生产化（对象存储、Simple Scalable 模式、保留策略、成本优化）见 [日志体系](../../LogSystem/index.md) 专题。
 
 ## 参考资料
 
 - Prometheus 下载：https://prometheus.io/download/
 - Grafana 仪表盘市场：https://grafana.com/grafana/dashboards/
 - kube-prometheus-stack：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+- Grafana Alloy 文档：https://grafana.com/docs/alloy/latest/
 - 本专题其余章节：回到 [监控告警目录](../index.md)

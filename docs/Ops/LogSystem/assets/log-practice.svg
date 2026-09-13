@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="430" viewBox="0 0 840 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="430" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">集中式日志平台实战拓扑</text>
+  <text x="420" y="54" text-anchor="middle" font-size="12" fill="#6b7280">Docker Compose 本地验证版：Alloy 采集 → Loki 存储 → Grafana 检索与告警</text>
+
+  <!-- 宿主机侧 -->
+  <rect x="14" y="90" width="140" height="116" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.8"/>
+  <text x="84" y="116" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338ca">业务进程</text>
+  <text x="84" y="138" text-anchor="middle" font-size="10" fill="#6b7280">结构化 JSON</text>
+  <text x="84" y="156" text-anchor="middle" font-size="10" fill="#6b7280">单行输出（含堆栈）</text>
+  <text x="84" y="174" text-anchor="middle" font-size="10" fill="#6b7280">带 traceId</text>
+  <text x="84" y="194" text-anchor="middle" font-size="10" fill="#9ca3af">生产关闭 DEBUG</text>
+
+  <path d="M 158 148 H 178" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar8)"/>
+
+  <rect x="184" y="90" width="136" height="116" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="252" y="116" text-anchor="middle" font-size="12" font-weight="bold" fill="#b45309">日志目录</text>
+  <text x="252" y="140" text-anchor="middle" font-size="10" fill="#a16207">/var/log/app</text>
+  <text x="252" y="158" text-anchor="middle" font-size="10" fill="#a16207">*.log 只读挂载</text>
+  <text x="252" y="178" text-anchor="middle" font-size="10" fill="#a16207">logrotate 轮转</text>
+  <text x="252" y="196" text-anchor="middle" font-size="10" fill="#9ca3af">独立分区防写满</text>
+
+  <path d="M 324 148 H 344" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar8)"/>
+
+  <!-- compose 边界 -->
+  <rect x="344" y="70" width="486" height="176" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+  <text x="352" y="88" font-size="11" fill="#64748b">docker compose 网络：log-platform_default</text>
+
+  <g font-size="11" text-anchor="middle">
+    <rect x="358" y="98" width="140" height="100" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8"/>
+    <text x="428" y="122" fill="#b45309" font-weight="bold">alloy</text>
+    <text x="428" y="142" font-size="10" fill="#a16207">tail 读取日志</text>
+    <text x="428" y="158" font-size="10" fill="#a16207">JSON 解析 + 抽标签</text>
+    <text x="428" y="174" font-size="10" fill="#a16207">脱敏 + 丢弃噪声</text>
+    <text x="428" y="190" font-size="9" fill="#9ca3af">:12345 调试 UI</text>
+
+    <rect x="510" y="98" width="140" height="100" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+    <text x="580" y="122" fill="#c2410c" font-weight="bold">loki</text>
+    <text x="580" y="142" font-size="10" fill="#9a3412">TSDB v13 + chunk</text>
+    <text x="580" y="158" font-size="10" fill="#9a3412">compactor 执行保留</text>
+    <text x="580" y="174" font-size="10" fill="#9a3412">ERROR 保留 90 天</text>
+    <text x="580" y="190" font-size="9" fill="#9ca3af">:3100</text>
+
+    <rect x="662" y="98" width="152" height="100" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8"/>
+    <text x="738" y="122" fill="#047857" font-weight="bold">grafana</text>
+    <text x="738" y="142" font-size="10" fill="#059669">Loki 数据源 + Explore</text>
+    <text x="738" y="158" font-size="10" fill="#059669">告警规则 + 联系点</text>
+    <text x="738" y="174" font-size="10" fill="#059669">派生字段跳转链路</text>
+    <text x="738" y="190" font-size="9" fill="#9ca3af">:3000</text>
+  </g>
+
+  <path d="M 500 148 H 506" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar8)"/>
+  <path d="M 652 148 H 658" stroke="#9ca3af" stroke-width="2.2" marker-end="url(#ar8)"/>
+
+  <!-- 关键配置要点 -->
+  <text x="14" y="278" font-size="14" font-weight="bold" fill="#1f2937">四个必须配对的开关</text>
+
+  <g font-size="11" text-anchor="middle">
+    <rect x="14" y="294" width="196" height="66" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.4"/>
+    <text x="112" y="316" fill="#0f766e" font-weight="bold">磁盘缓冲</text>
+    <text x="112" y="336" font-size="10" fill="#0d9488">Alloy 挂持久卷</text>
+    <text x="112" y="352" font-size="10" fill="#0d9488">后端抖动不丢日志</text>
+
+    <rect x="222" y="294" width="196" height="66" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.4"/>
+    <text x="320" y="316" fill="#0f766e" font-weight="bold">保留 + compactor</text>
+    <text x="320" y="336" font-size="10" fill="#0d9488">retention_enabled: true</text>
+    <text x="320" y="352" font-size="10" fill="#0d9488">不开则永不删除</text>
+
+    <rect x="430" y="294" width="196" height="66" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.4"/>
+    <text x="528" y="316" fill="#0f766e" font-weight="bold">结构化元数据</text>
+    <text x="528" y="336" font-size="10" fill="#0d9488">traceId 不做标签</text>
+    <text x="528" y="352" font-size="10" fill="#0d9488">避免流数量爆炸</text>
+
+    <rect x="638" y="294" width="188" height="66" rx="8" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.4"/>
+    <text x="732" y="316" fill="#0f766e" font-weight="bold">告警 for 参数</text>
+    <text x="732" y="336" font-size="10" fill="#0d9488">突增用 for: 5m</text>
+    <text x="732" y="352" font-size="10" fill="#0d9488">致命关键字 for: 0m</text>
+  </g>
+
+  <text x="14" y="392" font-size="12" fill="#dc2626">验收关键：停掉 Loki 两分钟后恢复，期间产生的日志必须补齐（无时间空洞）——这是缓冲是否生效的唯一硬证据。</text>
+  <text x="14" y="416" font-size="11" fill="#9ca3af">当前版本：Loki 3.7.7 · Alloy 1.19.x · Grafana 13.2.1。生产需把 SingleBinary 升级为 Simple Scalable 并改用对象存储。</text>
+
+  <defs>
+    <marker id="ar8" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

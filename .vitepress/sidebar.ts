@@ -3,7 +3,7 @@ import { Auth, DesignPatterns, DotNet, Go, Java, MessageQueue, Microservices, Ne
 
 import { AI_Agent, AI_LLMApp, AI_LocalModel, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
-import { ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, Monitoring, Network, Nginx, OpsOthers, VM } from "./ops";
+import { ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, VM } from "./ops";
 import { DBOverview, NoRelational, Relational, SQLOptimization } from "./db";
 import { APITools, Build, CICD, DatabaseClients, IDE, Others, PackageManager, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
@@ -117,6 +117,7 @@ export const sidebar = {
   "/docs/Ops/Kubernetes": Kubernetes,
   "/docs/Ops/ContainerOrchestration": ContainerOrchestration,
   "/docs/Ops/Monitoring": Monitoring,
+  "/docs/Ops/LogSystem": LogSystem,
   "/docs/Ops/JumpServer": JumpServer,
   "/docs/Ops/Others": OpsOthers,
   "/docs/AI/OpenClaw": AI_OpenClaw,

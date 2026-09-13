@@ -225,3 +225,4 @@ curl -X POST http://localhost:9093/api/v2/silences -d '{
 - 告警规则最佳实践：https://prometheus.io/docs/practices/alerting/
 - 告警路由配置：https://prometheus.io/docs/alerting/latest/configuration/
 - Grafana Alerting：https://grafana.com/docs/grafana/latest/alerting/
+- 日志类告警（数量突增、关键字命中、缺失告警与降噪）：[日志告警与联动](../../LogSystem/Alerting/index.md)

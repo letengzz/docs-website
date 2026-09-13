@@ -2,7 +2,11 @@
 
 <p style="text-align:center;"><img src="./assets/monitoring-logo.png" alt="监控告警" style="zoom:75%;" /></p>
 
-监控告警是运维与研发的“仪表盘 + 报警器”：通过指标、日志、链路三支柱看清系统状态，在故障发生前或发生时第一时间通知责任人。本专题覆盖 Prometheus 指标体系、Grafana 可视化、Alertmanager 告警、Loki 日志监控与生产落地实战。
+监控告警是运维与研发的“仪表盘 + 报警器”：通过指标、日志、链路三支柱看清系统状态，在故障发生前或发生时第一时间通知责任人。本专题覆盖 Prometheus 指标体系、Grafana 可视化、Alertmanager 告警、Loki 日志监控速览与生产落地实战。
+
+::: tip 日志要不要单独建平台？
+本主题的 [日志监控](LogMonitoring/index.md) 只从监控视角给出速览。日志的采集器选型、ELK/Loki 深入、查询语言、保留与成本控制，已沉淀为独立专题：[日志体系](../LogSystem/index.md)。
+:::
 
 - [监控体系与可观测性](Overview/index.md)
 - [Prometheus 入门](Prometheus/index.md)

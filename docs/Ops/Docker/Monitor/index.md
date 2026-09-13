@@ -211,6 +211,7 @@ groups:
 ## 相关专题
 
 - [监控告警专题](../../Monitoring/index.md)：指标采集、告警规则与日志监控的完整体系
+- [日志体系](../../LogSystem/index.md)：容器日志的采集器选型、落盘路径与集中存储
 - [监控告警实战](../../Monitoring/Practice/index.md)：用 Compose 一键搭建监控栈
 
 ## 参考资料

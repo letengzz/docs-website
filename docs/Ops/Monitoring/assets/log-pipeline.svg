@@ -8,7 +8,7 @@
     <text x="95" y="172" fill="#6b7280" font-size="10">结构化 JSON + traceId</text>
     <rect x="205" y="100" width="150" height="90" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
     <text x="280" y="130" fill="#b45309" font-weight="bold">采集 Agent</text>
-    <text x="280" y="152" fill="#4b5563" font-size="11">Fluent Bit / Promtail</text>
+    <text x="280" y="152" fill="#4b5563" font-size="11">Fluent Bit / Alloy</text>
     <text x="280" y="172" fill="#6b7280" font-size="10">打标签（pod、服务）</text>
     <rect x="395" y="100" width="150" height="90" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
     <text x="470" y="130" fill="#c2410c" font-weight="bold">Loki</text>
@@ -23,7 +23,7 @@
   <path d="M 360 145 H 388" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#l1)"/>
   <path d="M 550 145 H 578" stroke="#f97316" stroke-width="2.5" marker-end="url(#l1)"/>
   <text x="420" y="235" text-anchor="middle" font-size="13" fill="#475569">对比 ELK：Loki 不建全文索引，只索引标签，存储成本低、查询快，与 Grafana 原生集成</text>
-  <text x="420" y="260" text-anchor="middle" font-size="12" fill="#6b7280">日志中带 traceId，可一键从日志跳转到链路追踪视图</text>
+  <text x="420" y="260" text-anchor="middle" font-size="12" fill="#6b7280">日志中带 traceId，可一键从日志跳转到链路追踪视图（Promtail 已 EOL，采集用 Grafana Alloy）</text>
   <defs>
     <marker id="l1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>

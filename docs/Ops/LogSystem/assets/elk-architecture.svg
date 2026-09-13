@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="430" viewBox="0 0 840 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="840" height="430" fill="#ffffff"/>
+  <text x="420" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Elastic Stack 日志架构</text>
+  <text x="420" y="54" text-anchor="middle" font-size="12" fill="#6b7280">Data Stream 承载只追加日志，ILM 负责热温冷分层与到期删除</text>
+
+  <!-- 采集 -->
+  <rect x="20" y="86" width="140" height="96" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="90" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">Beats / Agent</text>
+  <text x="90" y="134" text-anchor="middle" font-size="10" fill="#a16207">Filebeat：日志采集</text>
+  <text x="90" y="152" text-anchor="middle" font-size="10" fill="#a16207">多行合并 / ndjson</text>
+  <text x="90" y="170" text-anchor="middle" font-size="10" fill="#a16207">字段 fields_under_root</text>
+
+  <path d="M 166 134 H 190" stroke="#9ca3af" stroke-width="2.5" marker-end="url(#ar4)"/>
+
+  <!-- Logstash 可选 -->
+  <rect x="196" y="86" width="130" height="96" rx="10" fill="#fafafa" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="261" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="#4b5563">Logstash</text>
+  <text x="261" y="134" text-anchor="middle" font-size="10" fill="#6b7280">grok / geoip</text>
+  <text x="261" y="152" text-anchor="middle" font-size="10" fill="#6b7280">多表关联富化</text>
+  <text x="261" y="172" text-anchor="middle" font-size="10" fill="#dc2626">可选，JVM 开销大</text>
+
+  <path d="M 332 134 H 356" stroke="#9ca3af" stroke-width="2.5" marker-end="url(#ar4)"/>
+
+  <!-- Elasticsearch -->
+  <rect x="362" y="80" width="278" height="108" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="501" y="106" text-anchor="middle" font-size="14" font-weight="bold" fill="#c2410c">Elasticsearch 集群</text>
+  <g font-size="10" text-anchor="middle">
+    <rect x="378" y="118" width="120" height="28" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="438" y="136" fill="#9a3412">Ingest Pipeline</text>
+    <rect x="506" y="118" width="120" height="28" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="566" y="136" fill="#9a3412">Master / Data 角色</text>
+    <rect x="378" y="152" width="248" height="26" rx="6" fill="#ffffff" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="502" y="169" fill="#9a3412">Data Stream：logs-&lt;dataset&gt;-&lt;namespace&gt;</text>
+  </g>
+
+  <path d="M 646 134 H 670" stroke="#9ca3af" stroke-width="2.5" marker-end="url(#ar4)"/>
+
+  <!-- Kibana -->
+  <rect x="676" y="86" width="144" height="96" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="748" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">Kibana</text>
+  <text x="748" y="134" text-anchor="middle" font-size="10" fill="#059669">Discover 检索</text>
+  <text x="748" y="152" text-anchor="middle" font-size="10" fill="#059669">Lens / Dashboard</text>
+  <text x="748" y="170" text-anchor="middle" font-size="10" fill="#059669">Alerting / ES|QL</text>
+
+  <!-- ILM 分层 -->
+  <text x="20" y="226" font-size="14" font-weight="bold" fill="#1f2937">ILM 生命周期分层</text>
+
+  <g font-size="11" text-anchor="middle">
+    <rect x="20" y="242" width="146" height="74" rx="8" fill="#fef2f2" stroke="#f87171" stroke-width="1.5"/>
+    <text x="93" y="266" fill="#b91c1c" font-weight="bold">hot</text>
+    <text x="93" y="286" font-size="10" fill="#7f1d1d">正在写入，SSD</text>
+    <text x="93" y="304" font-size="10" fill="#7f1d1d">rollover 触发滚动</text>
+
+    <rect x="180" y="242" width="146" height="74" rx="8" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5"/>
+    <text x="253" y="266" fill="#c2410c" font-weight="bold">warm</text>
+    <text x="253" y="286" font-size="10" fill="#9a3412">只读，shrink 合并分片</text>
+    <text x="253" y="304" font-size="10" fill="#9a3412">forcemerge 段合并</text>
+
+    <rect x="340" y="242" width="146" height="74" rx="8" fill="#eff6ff" stroke="#60a5fa" stroke-width="1.5"/>
+    <text x="413" y="266" fill="#1d4ed8" font-weight="bold">cold</text>
+    <text x="413" y="286" font-size="10" fill="#1e40af">HDD，副本可降为 0</text>
+    <text x="413" y="304" font-size="10" fill="#1e40af">查询稍慢</text>
+
+    <rect x="500" y="242" width="146" height="74" rx="8" fill="#f5f3ff" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="573" y="266" fill="#6d28d9" font-weight="bold">frozen</text>
+    <text x="573" y="286" font-size="10" fill="#5b21b6">可搜索快照</text>
+    <text x="573" y="304" font-size="10" fill="#5b21b6">对象存储，最省成本</text>
+
+    <rect x="660" y="242" width="160" height="74" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+    <text x="740" y="266" fill="#374151" font-weight="bold">delete</text>
+    <text x="740" y="286" font-size="10" fill="#6b7280">按保留期到期删除</text>
+    <text x="740" y="304" font-size="10" fill="#6b7280">审计数据可先归档</text>
+  </g>
+
+  <path d="M 168 279 H 178" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar4)"/>
+  <path d="M 328 279 H 338" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar4)"/>
+  <path d="M 488 279 H 498" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar4)"/>
+  <path d="M 648 279 H 658" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar4)"/>
+
+  <text x="20" y="352" font-size="12" fill="#4b5563">关键实践：Data Stream 命名 logs-&lt;dataset&gt;-&lt;namespace&gt; · mapping 用 dynamic_templates 防字段爆炸 · message 用 match_only_text</text>
+  <text x="20" y="376" font-size="12" fill="#4b5563">容量经验：单主分片 30~50GB · JVM 堆不超过 31GB 且不超物理内存 50% · 热节点 RAM:disk 控制在 1:30 内</text>
+  <text x="20" y="400" font-size="12" fill="#dc2626">版本提醒：Elastic Stack 当前主线 9.5.3（2026-09-03），8.19.x 维护中，7.x 已于 2026-01-15 停止维护</text>
+  <text x="20" y="420" font-size="11" fill="#9ca3af">Columnar Mode / Columnar Logs 在 9.5 为技术预览，可试点评估存储收益，不建议直接替换生产标准日志索引。</text>
+
+  <defs>
+    <marker id="ar4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>

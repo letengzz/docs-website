@@ -4,6 +4,10 @@
 
 Elasticsearch（简称 ES）是基于 Apache Lucene 的**分布式搜索与分析引擎**，提供全文检索、结构化查询、聚合分析和近实时（NRT）能力，是日志分析（ELK）、商品搜索、向量检索等场景的基础设施。本专题面向需要在项目中落地 ES 的后端与数据工程师，从概念到集群运维完整走一遍。
 
+::: tip 作为日志后端使用时
+本专题讲的是 ES 本身（索引、映射、DSL、分词、集群）。如果你要把 ES 当成日志平台的后端，还需要考虑采集器、Data Stream、ILM 分层与 Kibana 告警，这些在 [日志体系 · Elastic Stack（ELK）](../../../Ops/LogSystem/ElasticStack/index.md) 中成篇讲解。
+:::
+
 :::info 当前版本（2026-09 核对）
 主线为 **Elasticsearch 9.5.3**（2026-09-03 发布）；9.0 于 2025-04-15 发布，8.x 处于维护期（升级到 9.x 前需先升到最后一个 8.x 小版本）。Java API Client 与 RestHighLevelClient（8.0 已移除）等历史客户端差异见各页说明。
 :::
