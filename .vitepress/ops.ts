@@ -1,3 +1,20 @@
+export const Ansible = [
+  {
+    text: "Ansible 自动化运维",
+    link: "/docs/Ops/Ansible/index.md",
+    items: [
+      { text: "Ansible 概述", link: "/docs/Ops/Ansible/Overview/index.md" },
+      { text: "安装与配置", link: "/docs/Ops/Ansible/Install/index.md" },
+      { text: "Inventory 主机清单", link: "/docs/Ops/Ansible/Inventory/index.md" },
+      { text: "模块详解", link: "/docs/Ops/Ansible/Module/index.md" },
+      { text: "Playbook 剧本", link: "/docs/Ops/Ansible/Playbook/index.md" },
+      { text: "变量与事实", link: "/docs/Ops/Ansible/Variable/index.md" },
+      { text: "Role 角色", link: "/docs/Ops/Ansible/Role/index.md" },
+      { text: "实战：批量交付 Web 服务器", link: "/docs/Ops/Ansible/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/Ansible/FAQ/index.md" },
+    ],
+  },
+];
 export const Docker = [
   {
     text: "Docker",

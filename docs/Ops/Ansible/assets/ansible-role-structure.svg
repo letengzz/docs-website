@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 352" width="760" height="352" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="330" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">角色（Role）目录结构与加载顺序</text>
+
+  <rect x="30" y="52" width="300" height="252" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.6"/>
+  <text x="180" y="76" text-anchor="middle" font-size="12.5" fill="#334155" font-weight="bold">roles/nginx/</text>
+  <g font-size="11" font-family="Consolas, monospace" fill="#334155">
+    <text x="48" y="102">├─ tasks/main.yml</text>
+    <text x="48" y="124">├─ handlers/main.yml</text>
+    <text x="48" y="146">├─ templates/nginx.conf.j2</text>
+    <text x="48" y="168">├─ files/index.html</text>
+    <text x="48" y="190">├─ defaults/main.yml</text>
+    <text x="48" y="212">├─ vars/main.yml</text>
+    <text x="48" y="234">├─ meta/main.yml</text>
+    <text x="48" y="256">├─ tests/</text>
+    <text x="48" y="278">└─ README.md</text>
+  </g>
+
+  <g font-size="11">
+    <rect x="360" y="52" width="374" height="30" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+    <text x="376" y="72" fill="#334155">tasks → 角色要执行的任务（入口 main.yml）</text>
+    <rect x="360" y="90" width="374" height="30" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+    <text x="376" y="110" fill="#334155">handlers → 被 notify 触发（如重启服务）</text>
+    <rect x="360" y="128" width="374" height="30" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+    <text x="376" y="148" fill="#334155">templates / files → 静态与模板资源</text>
+    <rect x="360" y="166" width="374" height="30" rx="7" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+    <text x="376" y="186" fill="#334155">defaults → 最低优先级，供使用者覆盖</text>
+    <rect x="360" y="204" width="374" height="30" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+    <text x="376" y="224" fill="#334155">vars → 高优先级，不应被外部覆盖</text>
+    <rect x="360" y="242" width="374" height="30" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+    <text x="376" y="262" fill="#334155">meta → 依赖、Galaxy 元数据（galaxy_info / dependencies）</text>
+  </g>
+
+  <text x="380" y="322" text-anchor="middle" font-size="11" fill="#64748B">加载顺序：meta 依赖 → defaults → vars 在 play 开始前加载；tasks/handlers 在角色被引用时执行</text>
+  <text x="380" y="342" text-anchor="middle" font-size="11" fill="#64748B">ansible-galaxy init &lt;role&gt; 可直接生成骨架</text>
+</svg>

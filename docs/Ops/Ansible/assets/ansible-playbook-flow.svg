@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 350" width="760" height="350" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="350" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Playbook 执行流程与关键机制</text>
+
+  <rect x="270" y="46" width="220" height="40" rx="9" fill="#2563EB"/>
+  <text x="380" y="71" text-anchor="middle" font-size="12.5" fill="#FFFFFF" font-weight="bold">Play（hosts + become + vars）</text>
+
+  <rect x="270" y="104" width="220" height="40" rx="9" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="380" y="129" text-anchor="middle" font-size="12" fill="#1E3A8A">tasks（按顺序执行）</text>
+
+  <g font-size="10.5">
+    <rect x="40" y="172" width="150" height="38" rx="7" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+    <text x="115" y="190" text-anchor="middle" fill="#334155">loop / with_items 循环</text>
+    <text x="115" y="204" text-anchor="middle" fill="#64748B">逐项执行</text>
+
+    <rect x="210" y="172" width="150" height="38" rx="7" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+    <text x="285" y="190" text-anchor="middle" fill="#334155">when 条件</text>
+    <text x="285" y="204" text-anchor="middle" fill="#64748B">必须返回布尔</text>
+
+    <rect x="380" y="172" width="150" height="38" rx="7" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+    <text x="455" y="190" text-anchor="middle" fill="#334155">register + 断言</text>
+    <text x="455" y="204" text-anchor="middle" fill="#64748B">用结果驱动后续</text>
+
+    <rect x="550" y="172" width="170" height="38" rx="7" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+    <text x="635" y="190" text-anchor="middle" fill="#334155">block / rescue / always</text>
+    <text x="635" y="204" text-anchor="middle" fill="#64748B">错误处理三件套</text>
+  </g>
+
+  <rect x="270" y="232" width="220" height="40" rx="9" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.8"/>
+  <text x="380" y="257" text-anchor="middle" font-size="12" fill="#9A3412">handlers（被 notify 才执行）</text>
+
+  <rect x="270" y="290" width="220" height="40" rx="9" fill="#ECFDF5" stroke="#059669" stroke-width="1.8"/>
+  <text x="380" y="315" text-anchor="middle" font-size="12" fill="#065F46">RUNNING HANDLER → 汇总结果</text>
+
+  <g stroke="#94A3B8" stroke-width="1.6" fill="none" marker-end="url(#ar4)">
+    <line x1="380" y1="86" x2="380" y2="100"/>
+    <line x1="380" y1="144" x2="380" y2="166"/>
+    <line x1="380" y1="212" x2="380" y2="228"/>
+    <line x1="380" y1="272" x2="380" y2="286"/>
+  </g>
+  <defs>
+    <marker id="ar4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="346" text-anchor="middle" font-size="10.5" fill="#64748B">同一 handler 被多个任务 notify 只执行一次（且在整个 play 末尾统一执行）</text>
+</svg>

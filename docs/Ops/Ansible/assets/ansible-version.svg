@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="300" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">ansible-core 版本支持状态（2026-09 核对）</text>
+
+  <line x1="60" y1="70" x2="700" y2="70" stroke="#CBD5E1" stroke-width="2"/>
+
+  <g font-size="11">
+    <rect x="60" y="96" width="196" height="34" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.8"/>
+    <text x="76" y="118" fill="#065F46" font-weight="bold">2.21.x</text>
+    <text x="140" y="118" fill="#334155">主线（2.21.2）</text>
+
+    <rect x="272" y="96" width="196" height="34" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.8"/>
+    <text x="288" y="118" fill="#065F46" font-weight="bold">2.20.x</text>
+    <text x="352" y="118" fill="#334155">维护中（2.20.7）</text>
+
+    <rect x="484" y="96" width="196" height="34" rx="7" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.8"/>
+    <text x="500" y="118" fill="#9A3412" font-weight="bold">2.19.x</text>
+    <text x="564" y="118" fill="#334155">2026-11-30 EOL</text>
+
+    <rect x="60" y="150" width="620" height="34" rx="7" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+    <text x="76" y="172" fill="#475569">2.18 及更早：已 EOL（2.18 于 2026-05-31 结束）——仅存量环境使用，建议尽快升级</text>
+  </g>
+
+  <g font-size="10.5" fill="#64748B">
+    <text x="60" y="210">控制节点 Python：2.21/2.20 → 3.12–3.14；2.19 → 3.11–3.13</text>
+    <text x="60" y="230">被管节点 Python：2.21 → 3.9–3.14（2.19 起不再支持 Python 2.7）</text>
+    <text x="60" y="250">Windows 被管节点：PowerShell 5.1（2.21 起同时支持 PowerShell 7.x LTS）</text>
+  </g>
+
+  <rect x="430" y="196" width="290" height="66" rx="9" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.6"/>
+  <text x="446" y="218" font-size="11.5" fill="#991B1B" font-weight="bold">社区包 ansible（PyPI 聚合包）</text>
+  <text x="446" y="238" font-size="10.5" fill="#334155">13.x → ansible-core 2.20（当前）</text>
+  <text x="446" y="254" font-size="10.5" fill="#334155">14.0.0 → ansible-core 2.21（开发中）</text>
+</svg>

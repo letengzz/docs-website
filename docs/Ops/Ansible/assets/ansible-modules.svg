@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="340" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">模块分类与 Ad-hoc 一次执行</text>
+
+  <g font-size="11">
+    <rect x="24" y="52" width="172" height="104" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+    <text x="110" y="74" text-anchor="middle" font-size="12" fill="#1E3A8A" font-weight="bold">文件与内容</text>
+    <text x="110" y="96" text-anchor="middle" fill="#334155">copy / template</text>
+    <text x="110" y="114" text-anchor="middle" fill="#334155">file / lineinfile</text>
+    <text x="110" y="132" text-anchor="middle" fill="#334155">fetch / archive / unarchive</text>
+    <text x="110" y="150" text-anchor="middle" fill="#64748B">幂等：按 src+checksum</text>
+
+    <rect x="212" y="52" width="172" height="104" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+    <text x="298" y="74" text-anchor="middle" font-size="12" fill="#1E3A8A" font-weight="bold">包与服务</text>
+    <text x="298" y="96" text-anchor="middle" fill="#334155">package / apt / yum / dnf</text>
+    <text x="298" y="114" text-anchor="middle" fill="#334155">service / systemd</text>
+    <text x="298" y="132" text-anchor="middle" fill="#334155">cron / mount</text>
+    <text x="298" y="150" text-anchor="middle" fill="#64748B">用 state 声明目标状态</text>
+
+    <rect x="400" y="52" width="172" height="104" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+    <text x="486" y="74" text-anchor="middle" font-size="12" fill="#1E3A8A" font-weight="bold">系统与用户</text>
+    <text x="486" y="96" text-anchor="middle" fill="#334155">user / group</text>
+    <text x="486" y="114" text-anchor="middle" fill="#334155">hostname / timezone</text>
+    <text x="486" y="132" text-anchor="middle" fill="#334155">setup（采集 facts）</text>
+    <text x="486" y="150" text-anchor="middle" fill="#64748B">避免用 shell 拼命令</text>
+
+    <rect x="588" y="52" width="148" height="104" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.8"/>
+    <text x="662" y="74" text-anchor="middle" font-size="12" fill="#9A3412" font-weight="bold">调试与流程</text>
+    <text x="662" y="96" text-anchor="middle" fill="#334155">debug / assert</text>
+    <text x="662" y="114" text-anchor="middle" fill="#334155">fail / set_fact</text>
+    <text x="662" y="132" text-anchor="middle" fill="#334155">command / shell</text>
+    <text x="662" y="150" text-anchor="middle" fill="#64748B">最后手段才用 shell</text>
+  </g>
+
+  <rect x="24" y="180" width="712" height="130" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="380" y="204" text-anchor="middle" font-size="12" fill="#334155" font-weight="bold">Ad-hoc 一条命令 = 临时 Playbook（适合一次性巡检）</text>
+  <text x="48" y="232" font-size="11" fill="#1D4ED8" font-family="Consolas, monospace">ansible web -m setup -a 'filter=ansible_distribution*'      # 采集 facts</text>
+  <text x="48" y="254" font-size="11" fill="#1D4ED8" font-family="Consolas, monospace">ansible all -m service -a 'name=nginx state=restarted' -b      # 批量重启</text>
+  <text x="48" y="276" font-size="11" fill="#1D4ED8" font-family="Consolas, monospace">ansible db -m shell -a 'df -h /'      # 只在无专用模块时用 shell</text>
+  <text x="48" y="298" font-size="11" fill="#64748B">参数用 key=value 或 JSON；加 -b 提权、-K 询问 sudo 密码、-C 只做检查不落地</text>
+</svg>
