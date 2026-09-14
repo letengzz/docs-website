@@ -43,6 +43,7 @@ export const BaseProject = [
           { text: "请求追踪 ID 与日志切面", link: "/project/Base/BackendTemplate/TraceId/index.md" },
           { text: "参数校验增强", link: "/project/Base/BackendTemplate/Validation/index.md" },
           { text: "MockMvc 集成测试", link: "/project/Base/BackendTemplate/IntegrationTest/index.md" },
+          { text: "数据访问：MyBatis-Plus 接入", link: "/project/Base/BackendTemplate/DataAccess/index.md" },
           { text: "进展记录", link: "/project/Base/BackendTemplate/Progress/index.md" },
         ],
       },

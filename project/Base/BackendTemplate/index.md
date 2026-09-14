@@ -56,7 +56,7 @@ backend-template/
 | 第 61-68 天 | 第 1 周：需求与设计 | 需求清单、技术选型、模块划分、目录结构、接口契约 | ✅ 见[需求与架构设计](./Architecture/index.md) |
 | 第 69 天 | 第 2 周：核心编码 ① | 可运行骨架 + 统一响应 + 全局异常 + 健康检查 | ✅ 见下方模块页 |
 | 第 70 天 | 第 2 周：核心编码 ② | 请求追踪 ID + 日志切面 + 参数校验增强 + MockMvc 集成测试 | ✅ 见下方模块页 |
-| 第 71 天（计划） | 第 2 周：核心编码 ③ | MyBatis-Plus 接入 + 分页 + 统一字段填充 | ⏳ |
+| 第 71 天 | 第 2 周：核心编码 ③ | MyBatis-Plus 接入 + 分页插件 + 审计字段自动填充 + 逻辑删除/乐观锁 + 数据层集成测试 | ✅ 见下方模块页 |
 | 第 72 天（计划） | 第 2 周：核心编码 ④ | Spring Security 7 + JWT 认证链路 | ⏳ |
 | 第 73-79 天 | 第 3 周：联调与测试 | 单元测试、集成测试、压测、覆盖率门禁 | ⏳ |
 | 第 80-90 天 | 第 4 周：部署与验收 | Docker 镜像、Compose、CI 流水线、验收清单 | ⏳ |
@@ -75,7 +75,11 @@ backend-template/
 5. [参数校验增强](./Validation/index.md)：分组校验、自定义 `@Mobile` 注解、字段级错误明细。
 6. [MockMvc 集成测试](./IntegrationTest/index.md)：把 curl 验证固化为自动化用例，并接入 JaCoCo 覆盖率门禁。
 
-7. [进展记录](./Progress/index.md)：逐日做了什么、如何验证、下一步是什么。
+**第 71 天（数据访问）**：
+
+7. [数据访问：MyBatis-Plus 接入](./DataAccess/index.md)：`BaseEntity` + 拦截器链（分页/乐观锁/防全表更新）、`MetaObjectHandler` 审计字段自动填充、逻辑删除、`PageResult` 统一分页出参、Testcontainers 数据层集成测试。
+
+8. [进展记录](./Progress/index.md)：逐日做了什么、如何验证、下一步是什么。
 
 ## 本地运行（快速上手）
 

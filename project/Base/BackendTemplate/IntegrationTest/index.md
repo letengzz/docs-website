@@ -295,4 +295,4 @@ mvn -q test -Dtest=TraceIdTest
 - JUnit 5 用户指南：https://junit.org/junit5/docs/current/user-guide/
 - JaCoCo：https://www.jacoco.org/jacoco/trunk/doc/maven.html
 - JSONPath 语法：https://github.com/json-path/JsonPath
-- 相关文档：[统一响应与全局异常](../CommonResponse/index.md) / [参数校验增强](../Validation/index.md) / [请求追踪 ID 与日志切面](../TraceId/index.md)
+- 相关文档：[统一响应与全局异常](../CommonResponse/index.md) / [参数校验增强](../Validation/index.md) / [请求追踪 ID 与日志切面](../TraceId/index.md) / 下一节 [数据访问：MyBatis-Plus 接入](../DataAccess/index.md)
