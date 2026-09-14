@@ -223,3 +223,4 @@ argocd app get order-service
 - 蓝绿/金丝雀发布模式：https://martinfowler.com/bliki/BlueGreenDeployment.html
 - 传统虚机/裸机场景的批量部署与灰度：[Ansible 自动化运维 · 实战](../../../Ops/Ansible/Practice/index.md)
 - 流水线里最危险的一步是基础设施变更：用 [Terraform · 常见问题与最佳实践](../../../Ops/Terraform/FAQ/index.md) 的「已审批 plan 文件 + apply 该文件」流程，禁止 CI 直接 `apply -auto-approve`
+- 部署前的安全门禁（依赖/镜像扫描、镜像签名与验签）：[安全加固 · 扫描工具链](../../../Ops/SecurityHardening/ScanningToolchain/index.md)

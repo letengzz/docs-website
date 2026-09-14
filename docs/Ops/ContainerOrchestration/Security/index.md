@@ -323,3 +323,9 @@ kubectl -n web get events --sort-by=.lastTimestamp | tail -20
 - Trivy：<https://aquasecurity.github.io/trivy/>
 - Kyverno：<https://kyverno.io/docs/>
 - Falco：<https://falco.org/docs/>
+
+## 相关专题
+
+- [安全加固](../../SecurityHardening/index.md)：跨层的安全治理视角（基线合规、漏洞管理、供应链、密钥治理、审计检测）
+- [密钥与凭据治理](../../SecurityHardening/SecretGovernance/index.md)：K8s Secret 的集中托管、轮换与 External Secrets
+- [审计与检测](../../SecurityHardening/AuditDetection/index.md)：K8s 审计日志、auditd 与 Falco 告警闭环

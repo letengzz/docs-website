@@ -206,3 +206,4 @@ docker info --format '{{json .SecurityOptions}}'
 
 - 宿主机侧的安全加固（SSH、防火墙、SELinux、审计基线）：[Linux 进阶 · 安全加固](../../Linux/Advanced/SecurityHardening/index.md)
 - 容器编排层面的安全（Pod 安全、网络策略）：[容器编排进阶 · 安全](../../ContainerOrchestration/Security/index.md)
+- 跨层的安全治理（基线合规、漏洞管理、SBOM、密钥、审计）：[安全加固](../../SecurityHardening/index.md)

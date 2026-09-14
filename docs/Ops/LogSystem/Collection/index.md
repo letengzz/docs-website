@@ -407,3 +407,4 @@ if exists(.phone) {
 - Vector 文档与 VRL 参考：https://vector.dev/docs/reference/vrl/
 - Filebeat filestream 输入：https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-filestream.html
 - OpenTelemetry Collector 文档：https://opentelemetry.io/docs/collector/
+- 安全审计日志的采集与留存（auditd、K8s API Server 审计）：[安全加固 · 审计与检测](../../SecurityHardening/AuditDetection/index.md)

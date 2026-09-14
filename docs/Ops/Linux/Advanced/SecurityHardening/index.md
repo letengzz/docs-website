@@ -495,4 +495,4 @@ sudo auditctl -l | grep -c identity
 - SELinux 用户与管理员指南：https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/
 - AppArmor 文档：https://gitlab.com/apparmor/apparmor/-/wikis/Documentation
 - auditd 规则参考：https://github.com/linux-audit/audit-documentation/wiki
-- 本专题其余章节：[Linux 进阶导览](../index.md)、[容器与集群安全加固](../../../ContainerOrchestration/Security/index.md)、[日志体系](../../../LogSystem/index.md)
+- 本专题其余章节：[Linux 进阶导览](../index.md)、[容器与集群安全加固](../../../ContainerOrchestration/Security/index.md)、[日志体系](../../../LogSystem/index.md)、[安全加固（跨层治理）](../../../SecurityHardening/index.md)

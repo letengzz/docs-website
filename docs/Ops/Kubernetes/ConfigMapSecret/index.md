@@ -124,3 +124,4 @@ Secret 只是**不是明文**，base64 不是加密，任何有权限读取 API 
 - ConfigMap：https://kubernetes.io/zh-cn/docs/concepts/configuration/configmap/
 - Secret：https://kubernetes.io/zh-cn/docs/concepts/configuration/secret/
 - 密钥管理最佳实践：https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/encrypt-data/
+- Secret 的集中托管、动态凭据与轮换：[密钥与凭据治理](../../SecurityHardening/SecretGovernance/index.md)

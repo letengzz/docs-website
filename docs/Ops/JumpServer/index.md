@@ -8,3 +8,4 @@ JumpServer 专题规划中，后续按计划补充安装部署、资产管理、
 
 - [Ansible 自动化运维](../Ansible/index.md)：JumpServer 负责"人"的登录审计，Ansible 负责"机器"的批量执行，两者互补
 - [Linux · 安全加固](../Linux/Advanced/SecurityHardening/index.md)：SSH 加固与免密登录，是 Ansible 接管节点的前置条件
+- [安全加固](../SecurityHardening/index.md)：从跨层治理视角看特权访问、凭据托管与操作审计
