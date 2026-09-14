@@ -64,8 +64,8 @@ backend-template/
 
   <properties>
     <java.version>25</java.version>
-    <mybatis-plus.version>3.5.9</mybatis-plus.version>
-    <springdoc.version>2.8.9</springdoc.version>
+    <mybatis-plus.version>3.5.17</mybatis-plus.version>
+    <springdoc.version>3.1.0</springdoc.version>
   </properties>
 
   <dependencyManagement>
@@ -157,9 +157,8 @@ backend-template/
     <!-- ② 编译目标 JDK：由 profile 覆盖；脱离 parent 后必须自己写 maven.compiler.release -->
     <maven.compiler.release>25</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!-- ③ 用于产物追溯：由 profile 覆盖 -->
-    <build.profile.id>boot-4.1.1,jdk-25</build.profile.id>
-    <mybatis-plus.version>3.5.9</mybatis-plus.version>
+    <!-- ③ 用于产物追溯：不再维护「组合 id」，直接用上面两个真实属性拼出（原因见文末评审） -->
+    <mybatis-plus.version>3.5.17</mybatis-plus.version>
   </properties>
 
   <modules>
@@ -240,14 +239,12 @@ backend-template/
     <id>boot-4.1.1</id>
     <properties>
       <spring-boot.version>4.1.1</spring-boot.version>
-      <build.profile.id>boot-4.1.1,jdk-25</build.profile.id>
     </properties>
   </profile>
   <profile>
     <id>boot-4.0.7</id>
     <properties>
       <spring-boot.version>4.0.7</spring-boot.version>
-      <build.profile.id>boot-4.0.7,jdk-17</build.profile.id>
     </properties>
   </profile>
 
@@ -269,32 +266,9 @@ backend-template/
     <properties>
       <maven.compiler.release>17</maven.compiler.release>
     </properties>
-    <!-- 只在该目标下生效的约束：禁止误用 17 以上 API -->
-    <build>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.6.3</version>
-          <executions>
-            <execution>
-              <id>enforce-jdk17</id>
-              <goals>
-                <goal>enforce</goal>
-              </goals>
-              <configuration>
-                <rules>
-                  <requireJavaVersion>
-                    <version>[17,18)</version>
-                    <message>jdk-17 profile 需要本机 JDK 17，请检查 JAVA_HOME 或改用 toolchains</message>
-                  </requireJavaVersion>
-                </rules>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </build>
+    <!-- 这里刻意不再约束「本机 JDK 必须是 17」：
+         目标 JDK 由 toolchains 负责（见下文），Maven 自身跑在哪台 JDK 上无关紧要。
+         写成 requireJavaVersion [17,18) 会把「Maven 跑在 JDK 25、编译目标 17」这种完全正常的场景误杀。 -->
   </profile>
 
   <!-- ============ 轴 3：可选功能模块 ============ -->
@@ -524,6 +498,8 @@ Windows 机器上的写法（注意路径分隔符）：
 
 ::: tip 版本用属性引用，不要写死
 把 `<version>` 写成 `${maven.compiler.release}`，Toolchains 就自动跟着 JDK 轴走：`-P jdk-17` 时 `release` 被覆盖成 17，这里也就去找版本 17 的 JDK。写死 `<version>17</version>` 的话，每加一条 JDK 轴都要回来改这个插件配置，早晚会漏。
+
+另外注意：**匹配是按你在 `toolchains.xml` 里声明的值来比的，不是去探测 JDK 的真实版本**。声明 `25.0.1` 而这里要 `25`，就匹配不上。两侧写法必须一致——细节见文末「方案评审」。
 :::
 
 ##### 匹配规则与常见报错
@@ -566,9 +542,10 @@ mvn -P jdk-25 clean package
       </goals>
       <configuration>
         <rules>
-          <!-- 校验「正在执行构建的 JDK」不得低于目标版本 -->
+          <!-- 只校验「运行 Maven 的 JDK」；注意 requireJavaVersion 看的是 Maven 进程本身，
+               不是 toolchain 选中的那台 JDK，所以不要拿它来替代 toolchain 校验 -->
           <requireJavaVersion>
-            <version>[${maven.compiler.release},)</version>
+            <version>[17,)</version>
           </requireJavaVersion>
         </rules>
       </configuration>
@@ -757,7 +734,6 @@ backend-template/
       </goals>
       <configuration>
         <additionalProperties>
-          <buildProfile>${build.profile.id}</buildProfile>
           <compilerRelease>${maven.compiler.release}</compilerRelease>
           <springBootVersion>${spring-boot.version}</springBootVersion>
         </additionalProperties>
@@ -771,7 +747,7 @@ backend-template/
 
 ```xml [template-application/pom.xml（产物命名）]
 <build>
-  <finalName>template-application-${project.version}-${build.profile.id}</finalName>
+  <finalName>template-application-${project.version}-sb${spring-boot.version}-jdk${maven.compiler.release}</finalName>
 </build>
 ```
 
@@ -864,10 +840,10 @@ mvn -q help:evaluate -Dexpression=maven.compiler.release -DforceStdout; echo
 # 预期：25
 
 # 5. 确认产物命名与构建元数据带上了参数
-ls template-application/target/template-application-1.0.0-boot-4.1.1,jdk-25.jar
-unzip -p template-application/target/*-boot-4.1.1,jdk-25.jar \
-  BOOT-INF/classes/META-INF/build-info.properties | grep buildProfile
-# 预期：buildProfile=boot-4.1.1,jdk-25
+ls template-application/target/template-application-1.0.0-sb4.1.1-jdk25.jar
+unzip -p template-application/target/*-sb4.1.1-jdk25.jar \
+  BOOT-INF/classes/META-INF/build-info.properties | grep -E "compilerRelease|springBootVersion"
+# 预期：compilerRelease=25 与 springBootVersion=4.1.1（都取自真实生效的属性，不会说谎）
 
 # 6. 反例验证：故意让 jdk-17 profile 在本机 JDK 25 上跑，应被 enforcer 拦下
 JAVA_HOME=/opt/jdk-25 mvn -P boot-4.0.7,jdk-17 clean verify
@@ -915,7 +891,7 @@ JAVA_HOME=/opt/jdk-25 mvn -P boot-4.0.7,jdk-17 clean verify
   </dependencies>
 
   <build>
-    <finalName>${project.artifactId}-${project.version}-${build.profile.id}</finalName>
+    <finalName>${project.artifactId}-${project.version}-sb${spring-boot.version}-jdk${maven.compiler.release}</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -1014,10 +990,10 @@ spring:
 ```shell
 # 1. 编译打包（跳过测试先验证骨架）；默认 Profile 组合来自 .mvn/maven.config
 mvn -q clean package -DskipTests
-ls template-application/target/template-application-1.0.0-boot-4.1.1,jdk-25.jar
+ls template-application/target/template-application-1.0.0-sb4.1.1-jdk25.jar
 
 # 2. 启动（默认 dev Profile）
-java -jar template-application/target/template-application-1.0.0-boot-4.1.1,jdk-25.jar
+java -jar template-application/target/template-application-1.0.0-sb4.1.1-jdk25.jar
 ```
 
 预期输出（关键行）：
@@ -1083,15 +1059,14 @@ curl -i -s http://localhost:8080/actuator/health
     <!-- ===== 三条差异轴的默认值：都会被 profile 覆盖 ===== -->
     <spring-boot.version>4.1.1</spring-boot.version>
     <maven.compiler.release>25</maven.compiler.release>
-    <build.profile.id>boot-4.1.1,jdk-25</build.profile.id>
 
     <!-- ===== 编码：脱离 parent 后必须自己声明 ===== -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- ===== 第三方依赖版本 ===== -->
-    <mybatis-plus.version>3.5.9</mybatis-plus.version>
-    <springdoc.version>2.8.9</springdoc.version>
+    <mybatis-plus.version>3.5.17</mybatis-plus.version>
+    <springdoc.version>3.1.0</springdoc.version>
 
     <!-- ===== 插件版本：脱离 parent 后不再被托管，集中定义便于统一升级 ===== -->
     <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
@@ -1284,8 +1259,10 @@ curl -i -s http://localhost:8080/actuator/health
                   <version>[3.9.0,)</version>
                 </requireMavenVersion>
                 <requireJavaVersion>
-                  <version>[${maven.compiler.release},)</version>
-                  <message>本机 JDK 低于目标 release，请检查 JAVA_HOME 或 toolchains.xml</message>
+                  <!-- 只校验「运行 Maven 的 JDK」底线；编译目标由 toolchains 保证。
+                       写成 [${maven.compiler.release},) 会把「Maven 跑 21、编译目标 17」这类正常场景误杀。 -->
+                  <version>[17,)</version>
+                  <message>运行 Maven 的 JDK 至少需要 17</message>
                 </requireJavaVersion>
               </rules>
             </configuration>
@@ -1369,14 +1346,12 @@ curl -i -s http://localhost:8080/actuator/health
       <id>boot-4.1.1</id>
       <properties>
         <spring-boot.version>4.1.1</spring-boot.version>
-        <build.profile.id>boot-4.1.1,jdk-25</build.profile.id>
       </properties>
     </profile>
     <profile>
       <id>boot-4.0.7</id>
       <properties>
         <spring-boot.version>4.0.7</spring-boot.version>
-        <build.profile.id>boot-4.0.7,jdk-17</build.profile.id>
       </properties>
     </profile>
 
@@ -1423,6 +1398,15 @@ curl -i -s http://localhost:8080/actuator/health
 </project>
 ```
 
+::: danger 依赖坐标必须真的支持 Spring Boot 4
+这一版里有两类坐标**特别容易踩错**，写错不是编译警告，而是构建直接失败或运行期才炸：
+
+1. **starter 的 artifactId 随 Spring Boot 大版本换名**。MyBatis-Plus 就是典型：Boot 2 用 `mybatis-plus-boot-starter`、Boot 3 用 `mybatis-plus-spring-boot3-starter`、Boot 4 用 `mybatis-plus-spring-boot4-starter`——**后者自 3.5.13 起才提供**，所以版本号不能低于 3.5.13（本模板用 `3.5.17`）。照抄旧文章的 `3.5.9` 会直接报「找不到依赖」。
+2. **第三方库有独立的「Boot 版本 ↔ 库版本」对应关系**，不能只看「是不是最新」。springdoc-openapi 官方兼容矩阵明确：**Boot 4.x 对应 springdoc 3.x**，`2.8.x` 系列只对应 Boot 3.5.x。在 Boot 4 项目里写 `2.8.9`，能编译但自动配置不会生效，表现为「Swagger 页面打不开」——属于最难查的那类问题。
+
+判断方法：**先查该库官方的兼容矩阵（或 release notes 里那句 "Upgrade to Spring Boot X"），再定版本号**，不要凭「版本号看起来新」下结论。
+:::
+
 ### template-application/pom.xml（完整版）
 
 ```xml [template-application/pom.xml]
@@ -1464,8 +1448,8 @@ curl -i -s http://localhost:8080/actuator/health
   </dependencies>
 
   <build>
-    <!-- 产物名带上 Profile 取值，多组合并存时一眼可分辨 -->
-    <finalName>${project.artifactId}-${project.version}-${build.profile.id}</finalName>
+    <!-- 产物名用「真实生效的属性」拼出，多组合并存时一眼可分辨；不要用自己拼的组合 id，原因见文末评审 -->
+    <finalName>${project.artifactId}-${project.version}-sb${spring-boot.version}-jdk${maven.compiler.release}</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -1482,7 +1466,6 @@ curl -i -s http://localhost:8080/actuator/health
             <configuration>
               <!-- 让 /actuator/info 能读到「这个包是用哪套参数编的」 -->
               <additionalProperties>
-                <buildProfile>${build.profile.id}</buildProfile>
                 <compilerRelease>${maven.compiler.release}</compilerRelease>
                 <springBootVersion>${spring-boot.version}</springBootVersion>
               </additionalProperties>
@@ -1592,7 +1575,7 @@ mvn org.apache.maven.plugins:maven-toolchains-plugin:3.3.0:display-discovered-jd
 
 # 1. 默认组合构建（读 .mvn/maven.config → boot-4.1.1 + jdk-25）
 mvn -B clean verify
-ls template-application/target/template-application-1.0.0-boot-4.1.1,jdk-25.jar
+ls template-application/target/template-application-1.0.0-sb4.1.1-jdk25.jar
 
 # 2. 换小版本 + 换 JDK 目标，改 -P 即可，不动代码
 mvn -B -P boot-4.0.7,jdk-17 clean verify
@@ -1612,6 +1595,63 @@ mvn -P boot-4.1.1,jdk-25 help:active-profiles
 2. **只复制了根 POM，忘了补插件版本**：脱离 `spring-boot-starter-parent` 后，插件管理不再被托管。如果只写了 BOM import 而没补 `pluginManagement`，`mvn package` 产出的**不是可执行 fat jar**（缺 `repackage`），且各处插件版本随 Maven 默认值漂移、不可复现。
 3. **误以为命令行 `-P` 会替换 `.mvn/maven.config` 里的配置**：两者是**求并集**。命令行只增加激活项，不会取消 `maven.config` 里的项。如果两处放了**同一轴**的 Profile（例如 `maven.config` 里是 `jdk-25`，命令行又传 `jdk-17`），两个都会激活，最终取值取决于 POM 里的 **`<profile>` 声明顺序**而非 `-P` 顺序——排查起来极其费时。正确做法是：同一轴只在一处指定，命令行要覆盖就显式写 `-P '!jdk-25'`。
 :::
+
+## 方案评审：这版设计是否最优
+
+本节记录对前面方案的复核结论——**哪些是真错误（已修掉）、哪些只是取舍（要自己判断）**。
+
+### 已修正的六个问题
+
+| # | 问题 | 为什么是错的 | 修正 |
+| --- | --- | --- | --- |
+| 1 | `mybatis-plus-spring-boot4-starter` 配 `3.5.9` | 这个 artifact **自 3.5.13 起才提供**，3.5.9 版本根本不存在该坐标，构建会直接报「找不到依赖」 | 改为 `3.5.17` |
+| 2 | Spring Boot 4.x 配 `springdoc-openapi` 2.8.x | springdoc 官方兼容矩阵写明：**Boot 4.x → springdoc 3.x**，2.8.x 只对应 Boot 3.5.x | 改为 `3.1.0` |
+| 3 | 用 `build.profile.id` 记录「当前组合」 | 三条轴各自独立激活，**Maven 属性无法跨 Profile 拼字符串**。`-P boot-4.1.1,jdk-21` 时它仍然写着 `boot-4.1.1,jdk-25`——**构建元数据在说谎**，线上出问题按它排查会被带偏 | 删除该属性；产物名与 `build-info` 一律用 `${spring-boot.version}` 和 `${maven.compiler.release}` 这两个**真实生效**的属性拼 |
+| 4 | 产物名带逗号（`...-boot-4.1.1,jdk-25.jar`） | 逗号在 shell、Docker `COPY`、CI 变量、HTTP 头里都要转义，纯属自找麻烦 | 改为 `-sb4.1.1-jdk25.jar` |
+| 5 | `requireJavaVersion` 写成 `[${maven.compiler.release},)` | `requireJavaVersion` 校验的是**运行 Maven 的那台 JDK**，不是 toolchain 选中的 JDK。要求它 ≥ 目标版本，等于把「Maven 跑在 JDK 21、编译目标是 17」这种 **toolchain 存在的意义**直接封死，逻辑自相矛盾 | 改成 Maven 运行时底线 `[17,)`，目标 JDK 的正确性交给 toolchains |
+| 6 | `jdk-17` Profile 内用 `requireJavaVersion [17,18)` 锁本机 JDK | 同上；而且它会把「一台机器装了多台 JDK」这种正常情况判为构建失败 | 删除该约束并写明理由 |
+
+### 仍然存在、但属于「取舍」的四件事
+
+**① 放弃 `spring-boot-starter-parent` 改用 BOM import 的代价不小。**
+
+插件管理、资源过滤分隔符 `@..@`、`git.properties`、SBOM 全都要自己补回来（清单见上文）。而且 BOM 只管依赖、**不管插件**——漏补的后果往往是「构建成功但产物不是可执行 fat jar」这类难察觉的问题。
+
+**如果团队并不需要「一个仓库并行出多条 Spring Boot 小版本线」，更省心的做法是留用 `starter-parent`，Profile 只管 JDK 目标与可选模块。** 建议把 BOM 方案当作「确有需要时再切」的进阶路径，而不是默认选择。
+
+**② 「用 Profile 并行多个 Spring Boot 小版本」本身性价比最低。**
+
+4.0.7 与 4.1.1 的差异不只体现在版本号上——配置项、弃用 API、starter 拆分都可能不同，而 **Profile 只能切版本、切不了代码**。真需要长期并行维护多个小版本，更稳的是分支或独立模块，而不是靠 Profile。
+
+**③ toolchains 的版本匹配是「按声明值比较」，不是「按实际版本比较」。**
+
+```xml
+<!-- toolchains.xml 里若声明 <version>25.0.1</version>，而 POM 要 <version>25</version>，
+     两者不相等 → 匹配失败 → 构建直接失败（不会退化用本机 JDK） -->
+```
+
+所以 POM 与 `toolchains.xml` 两侧的写法必须一致。稳妥的写法是在 POM 里用**范围**，这样只装了 `25.0.1` 这种小数点版本的机器也能匹配上：
+
+```xml [pom.xml（范围匹配写法）]
+<toolchains>
+  <jdk>
+    <!-- 只要求「JDK 主版本 ≥ 目标」；字节码与 API 面仍由 <release> 严格约束 -->
+    <version>[${maven.compiler.release},)</version>
+  </jdk>
+</toolchains>
+```
+
+代价是「`-P jdk-17` 未必真的落在 17 那台上」。如果特定 JDK 的行为差异对你重要（要求严格复现），就保留精确匹配，并把 `toolchains.xml` 里的 `version` 统一写成主版本号（`25` 而不是 `25.0.1`）。
+
+**④ `.mvn/maven.config` 与命令行 `-P` 是求并集，不是替换。**
+
+同一轴在两个地方都指定会**同时激活**，最终取哪个由 POM 里 `<profile>` 的**声明顺序**决定，而不是 `-P` 的先后。团队约定要写清楚：`maven.config` 只放默认组合，要覆盖就显式取消——`-P '!jdk-25' -P jdk-17`。
+
+### 结论
+
+**「按轴拆 Profile」的方向是对的，用 toolchains 固定编译期 JDK 也是正解**；上面六处修完之后，这套配置是自洽且能跑通的。
+
+但要留意整套方案里性价比最低的一环是**「用 Profile 并行 Spring Boot 小版本」**。如果你的真实诉求只是「编译目标 JDK 不同」+「可选模块不同」，建议退回 `starter-parent`、Profile 只保留这两条轴——维护成本会低很多。
 
 ## 参考资料
 
