@@ -347,8 +347,117 @@ mysql -uroot -p template -e "SELECT id, create_by, update_by FROM t_user ORDER B
 | 第 3 周（80-86 天） | 联调、单元与集成测试、压测、覆盖率门禁 | ⏳ 已提前落地 MockMvc + JaCoCo + Testcontainers + SecurityIT，待补压测 |
 | 第 4 周（87-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始 |
 
+## 2026-09-18（第 73 天）：登录业务闭环 + 双令牌刷新与登出黑名单 + SecurityIT 扩到 8 用例
+
+### 本次做了什么
+
+第 2 周核心编码收口后，第 3 周（联调与测试）从"把认证补成业务闭环"开始：
+
+| 序号 | 产出 | 位置 | 对应需求 |
+| --- | --- | --- | --- |
+| ⑮ | `AuthService` 登录闭环：账号连续失败 5 次锁定 15 分钟、成功清计数、统一错误码防账号枚举 | [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) | R13 |
+| ⑯ | 自定义 `@StrongPassword` 校验器：8~64 位 + 四类字符取三 + 弱口令字典拦截 | [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) | R13 |
+| ⑰ | 登录审计表 `t_login_log`（成功/失败、失败原因枚举、IP、UA）+ 建表脚本 `V2__init_login_log.sql` | [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) | R14 |
+| ⑱ | 双令牌刷新：`TokenService.refresh` 校验 Redis 白名单、Refresh 一次性消费、复用即吊销全部会话 | [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) | R15 |
+| ⑲ | 登出吊销：`/api/auth/logout` 把 Access 的 `jti` 写入黑名单（TTL = 剩余有效期）并删除 Refresh 记录 | [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) | R15 |
+| ⑳ | `SecurityIT` 从 4 个用例扩到 8 个：过期令牌、黑名单命中、Refresh 复用、连续失败锁定 | [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) | R10、R16 |
+| ㉑ | 新增示意图 `assets/auth-lifecycle.svg`（登录锁定 / 使用刷新 / 登出吊销 三段） | [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) | R14 |
+
+同时完成：第 72 天遗留的三条"下一步"全部落地，认证模块从"能验令牌"升级为"能保护账号、能吊销令牌、能审计登录"。
+
+### 如何验证
+
+```shell
+# 环境要求：JDK 25、Maven 3.9+、Docker（Testcontainers 拉 Redis）、MySQL 8.4
+cd backend-template
+export JWT_SECRET="$(openssl rand -base64 48)"
+
+# 1. 建登录日志表
+mysql -uroot -p template < template-application/src/main/resources/db/migration/V2__init_login_log.sql
+
+# 2. 安全测试扩到 8 个用例
+mvn -q clean test -pl template-security -am
+mvn -q test -pl template-web -Dtest=SecurityIT
+# 预期：Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+
+# 3. 覆盖率门禁
+mvn -q verify
+# 预期：BUILD SUCCESS
+
+# 4. 启动后联调
+mvn -q -pl template-application -am spring-boot:run &
+
+# 4.1 登录拿双令牌
+PAIR=$(curl -s -X POST http://localhost:8080/api/auth/login \
+  -H 'Content-Type: application/json' -d '{"username":"admin","password":"Admin@123"}')
+ACCESS=$(echo "$PAIR" | jq -r '.data.accessToken'); REFRESH=$(echo "$PAIR" | jq -r '.data.refreshToken')
+echo "$PAIR" | jq '.data | {tokenType, expiresIn}'    # 预期 {"tokenType":"Bearer","expiresIn":1800}
+
+# 4.2 刷新一次（成功），再用同一个 Refresh（应 401）
+curl -s -X POST http://localhost:8080/api/auth/refresh -H 'Content-Type: application/json' \
+  -d "{\"refreshToken\":\"$REFRESH\"}" | jq .code     # 预期 0
+curl -s -o /dev/null -w "%{http_code}\n" -X POST http://localhost:8080/api/auth/refresh \
+  -H 'Content-Type: application/json' -d "{\"refreshToken\":\"$REFRESH\"}"   # 预期 401
+
+# 4.3 登出后旧 Access 立即失效
+curl -s -X POST http://localhost:8080/api/auth/logout -H "Authorization: Bearer $ACCESS" \
+  -H 'Content-Type: application/json' -d "{\"refreshToken\":\"$REFRESH\"}" | jq .code   # 预期 0
+curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/api/users -H "Authorization: Bearer $ACCESS"  # 预期 401
+
+# 4.4 连续失败 → 第 6 次锁定
+for i in $(seq 1 6); do curl -s -o /dev/null -w "%{http_code} " -X POST \
+  http://localhost:8080/api/auth/login -H 'Content-Type: application/json' \
+  -d '{"username":"lockme","password":"wrong"}'; done; echo   # 预期 401 401 401 401 401 423
+
+# 5. 登录审计可查
+mysql -uroot -p template -e \
+  "SELECT username, login_type, success, fail_reason, ip FROM t_login_log ORDER BY create_time DESC LIMIT 10"
+```
+
+验证结果记录（**请在本地执行后填写**，当前编写环境无 JDK / Maven / Docker / MySQL，未实际运行）：
+
+| 检查项 | 期望 | 实测 | 结论 |
+| --- | --- | --- | --- |
+| `SecurityIT` | 8 passed | 待填写 | ⏳ |
+| 过期令牌 | 401 | 待填写 | ⏳ |
+| 黑名单令牌 | 401 | 待填写 | ⏳ |
+| Refresh 复用 | 401 + 全量失效 | 待填写 | ⏳ |
+| 连续 5 次失败 | 第 6 次 423 | 待填写 | ⏳ |
+| 密码强度 | 弱密码被拒 | 待填写 | ⏳ |
+| 登录审计 | 表内有成功/失败记录 | 待填写 | ⏳ |
+| 登出后旧 Access | 401 | 待填写 | ⏳ |
+
+### 遇到的问题与决策
+
+| 问题 | 决策 | 原因 |
+| --- | --- | --- |
+| 账号不存在时返回什么 | 与密码错误同一错误码 | 否则可被用来枚举有效账号；差异只进审计日志 |
+| 失败计数怎么存 | Redis `auth:fail:{username}` + `auth:lock:{username}` | 计数需 TTL，锁定需显式标记，两者职责不同 |
+| 锁定是计数还是标记 | 两者都要 | 只看计数会在过期瞬间被继续爆破；标记才有明确窗口 |
+| 黑名单 TTL 怎么定 | 等于 Access 剩余有效期 | 固定值会提前失效或长期占内存 |
+| Refresh 能否重复用 | 不能，一次性消费 | 可重放等于给了攻击者永久钥匙 |
+| Refresh 复用时怎么办 | 吊销该用户全部会话 | 无法区分攻击者与用户本人，宁可全部重登 |
+| 刷新后旧 Access 怎么办 | 随新 Refresh 一起轮换 | 只发新 Access 会让旧 Access 在多会话下继续可用 |
+| 登录日志写入时机 | 独立事务（失败也不回滚登录） | 审计失败不应影响业务结果 |
+| 能否靠锁定防爆破 | 只能缓解 | 攻击者可故意锁定他人（DoS），生产需叠 IP 维度与验证码 |
+
+### 下一步（第 74 天）
+
+1. **压测与性能基线**：用 JMeter / `wrk` 压测 `/api/auth/login` 与受保护接口，产出 TPS / P95 基线，确认 JWT 校验与 Redis 查询不是瓶颈。
+2. **覆盖率补齐**：把 `template-security` 模块覆盖率目标从 60% 提到 75%，纳入 CI 门禁。
+3. **契约回归**：用 springdoc-openapi 产出的 OpenAPI 文档做接口契约回归，防止联调期接口悄悄变形。
+
+### 里程碑对照
+
+| 阶段 | 计划 | 当前状态 |
+| --- | --- | --- |
+| 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
+| 第 2 周（69-79 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **5/5 步完成**，核心编码阶段收口 |
+| 第 3 周（80-86 天） | 联调、单元与集成测试、压测、覆盖率门禁 | 🔄 **进行中**：认证闭环联调完成、SecurityIT 8 用例，待补压测与契约回归 |
+| 第 4 周（87-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始 |
+
 ## 参考资料
 
 - 项目总览：[后端通用模板](../index.md)
-- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md)
+- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md)
 - 相关文档：[Spring Boot 通用指南](../../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md)

@@ -58,7 +58,8 @@ backend-template/
 | 第 70 天 | 第 2 周：核心编码 ② | 请求追踪 ID + 日志切面 + 参数校验增强 + MockMvc 集成测试 | ✅ 见下方模块页 |
 | 第 71 天 | 第 2 周：核心编码 ③ | MyBatis-Plus 接入 + 分页插件 + 审计字段自动填充 + 逻辑删除/乐观锁 + 数据层集成测试 | ✅ 见下方模块页 |
 | 第 72 天 | 第 2 周：核心编码 ④ | Spring Security 7 + JWT 无状态认证链路 + 声明式权限 + 401/403 统一出口 | ✅ 见下方模块页 |
-| 第 73-79 天 | 第 3 周：联调与测试 | 单元测试、集成测试、压测、覆盖率门禁 | ⏳ |
+| 第 73 天 | 第 3 周：联调与测试 ① | 登录业务闭环（账号锁定/密码强度/登录审计）+ 双令牌刷新与登出黑名单 + SecurityIT 扩到 8 用例 | ✅ 见下方模块页 |
+| 第 74-79 天 | 第 3 周：联调与测试 | 压测与性能基线、覆盖率补齐、契约回归 | ⏳ |
 | 第 80-90 天 | 第 4 周：部署与验收 | Docker 镜像、Compose、CI 流水线、验收清单 | ⏳ |
 
 ## 各阶段交付内容
@@ -83,7 +84,11 @@ backend-template/
 
 8. [认证授权：Spring Security 7 + JWT](./Security/index.md)：无状态认证链路（`JwtAuthenticationFilter` 插在 `UsernamePasswordAuthenticationFilter` 之前）、jjwt 令牌签发与校验、`UserContext` 桥接审计字段、401/403 统一走 `Result<T>` 出口、`@PreAuthorize` 声明式权限与 12 条踩坑清单。
 
-9. [进展记录](./Progress/index.md)：逐日做了什么、如何验证、下一步是什么。
+**第 73 天（第 3 周：联调与测试）**：
+
+9. [登录业务闭环与令牌生命周期](./AuthLifecycle/index.md)：`AuthService` 账号锁定（连续 5 次失败锁 15 分钟）+ 密码强度校验 + 登录审计表 `t_login_log`、Redis 键设计、双令牌刷新（Refresh 一次性消费防重放）与登出 `jti` 黑名单，`SecurityIT` 从 4 个用例扩到 8 个。
+
+10. [进展记录](./Progress/index.md)：逐日做了什么、如何验证、下一步是什么。
 
 ## 本地运行（快速上手）
 

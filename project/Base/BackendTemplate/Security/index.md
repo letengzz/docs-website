@@ -610,11 +610,13 @@ mvn -q test -pl template-web -Dtest=SecurityIT
 `@PreAuthorize` 在没有 `@EnableMethodSecurity` 时**不报错、不生效**——接口看起来"配了权限"，实际完全开放。这是典型的"看起来安全的漏洞"。**必须用测试断言 403 确实发生**，而不是靠肉眼检查注解。
 :::
 
-## 13. 下一步（第 73 天）
+## 13. 下一步（第 73 天，已完成）
 
-1. **登录业务闭环**：`AuthService` 的账号锁定（连续失败 5 次锁定 15 分钟）、密码强度校验、登录日志审计。
-2. **刷新与登出**：`/api/auth/refresh` 校验 Redis 中的 Refresh Token；`/api/auth/logout` 把 Access Token 的 `jti` 写入黑名单。
-3. **测试扩充**：把"令牌过期""黑名单命中""刷新令牌被复用"补进 `SecurityIT`，并把 401/403 用例纳入覆盖率门禁。
+第 73 天已把本节留下的三个缺口补齐，详见 [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md)：
+
+1. ~~**登录业务闭环**：`AuthService` 的账号锁定（连续失败 5 次锁定 15 分钟）、密码强度校验、登录日志审计。~~ ✅ 已完成。
+2. ~~**刷新与登出**：`/api/auth/refresh` 校验 Redis 中的 Refresh Token；`/api/auth/logout` 把 Access Token 的 `jti` 写入黑名单。~~ ✅ 已完成。
+3. ~~**测试扩充**：把"令牌过期""黑名单命中""刷新令牌被复用"补进 `SecurityIT`，并把 401/403 用例纳入覆盖率门禁。~~ ✅ `SecurityIT` 已扩到 8 个用例。
 
 ## 参考资料
 
@@ -625,4 +627,4 @@ mvn -q test -pl template-web -Dtest=SecurityIT
 - jjwt 官方仓库：https://github.com/jwtk/jjwt
 - OWASP JWT 安全清单：https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html
 - 相关专题：[认证与授权](../../../../docs/Backend/Auth/index.md) ｜ [Spring Security 7](../../../../docs/Backend/Java/Frame/SpringSecurity/v7/index.md) ｜ [JWT 深入](../../../../docs/Backend/Auth/Jwt/index.md)
-- 项目总览：[后端通用模板](../index.md) ｜ 上一节 [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ 逐日记录 [进展记录](../Progress/index.md)
+- 项目总览：[后端通用模板](../index.md) ｜ 上一节 [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ 下一节 [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ 逐日记录 [进展记录](../Progress/index.md)

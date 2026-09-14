@@ -45,6 +45,7 @@ export const BaseProject = [
           { text: "MockMvc 集成测试", link: "/project/Base/BackendTemplate/IntegrationTest/index.md" },
           { text: "数据访问：MyBatis-Plus 接入", link: "/project/Base/BackendTemplate/DataAccess/index.md" },
           { text: "认证授权：Spring Security 7 + JWT", link: "/project/Base/BackendTemplate/Security/index.md" },
+          { text: "登录业务闭环与令牌生命周期", link: "/project/Base/BackendTemplate/AuthLifecycle/index.md" },
           { text: "进展记录", link: "/project/Base/BackendTemplate/Progress/index.md" },
         ],
       },
