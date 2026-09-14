@@ -304,9 +304,9 @@ public final class Exporter {
 
 ## 相关专题
 
-- 模式总览：[设计原则](Principles/index.md) · [创建型](Creational/index.md) · [结构型](Structural/index.md) · [行为型](Behavioral/index.md)
-- JDK 源码中的模式：[JDK 源码中的设计模式](JdkPatterns/index.md)
-- 反模式与过度设计：[反模式与过度设计](AntiPatterns/index.md)
+- 模式总览：[设计原则](../Principles/index.md) · [创建型](../Creational/index.md) · [结构型](../Structural/index.md) · [行为型](../Behavioral/index.md)
+- JDK 源码中的模式：[JDK 源码中的设计模式](../JdkPatterns/index.md)
+- 反模式与过度设计：[反模式与过度设计](../AntiPatterns/index.md)
 - 虚拟线程与并发编程：[Socket 与 IO 模型](../../NetworkProgramming/SocketIO/index.md)
 
 ## 参考资料

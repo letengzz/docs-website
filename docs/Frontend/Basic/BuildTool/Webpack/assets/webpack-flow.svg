@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="430" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">编译生命周期与常用钩子</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="60" width="150" height="80" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="105" y="86" fill="#0e7490" font-weight="bold" font-size="14">初始化</text>
+    <text x="105" y="106" fill="#4b5563" font-size="11">读取配置</text>
+    <text x="105" y="123" fill="#4b5563" font-size="11">创建 Compiler</text>
+    <rect x="200" y="60" width="150" height="80" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="275" y="86" fill="#4338ca" font-weight="bold" font-size="14">编译</text>
+    <text x="275" y="106" fill="#4b5563" font-size="11">compile / make</text>
+    <text x="275" y="123" fill="#4b5563" font-size="11">构建模块图</text>
+    <rect x="370" y="60" width="150" height="80" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="445" y="86" fill="#6d28d9" font-weight="bold" font-size="14">优化</text>
+    <text x="445" y="106" fill="#4b5563" font-size="11">optimize</text>
+    <text x="445" y="123" fill="#4b5563" font-size="11">tree shaking</text>
+    <rect x="540" y="60" width="150" height="80" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="615" y="86" fill="#047857" font-weight="bold" font-size="14">生成</text>
+    <text x="615" y="106" fill="#4b5563" font-size="11">emit / assets</text>
+    <text x="615" y="123" fill="#4b5563" font-size="11">写文件</text>
+    <rect x="710" y="60" width="140" height="80" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="780" y="86" fill="#b45309" font-weight="bold" font-size="14">完成</text>
+    <text x="780" y="106" fill="#4b5563" font-size="11">done / afterEmit</text>
+    <path d="M 180 100 L 198 100" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 350 100 L 368 100" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 520 100 L 538 100" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 690 100 L 708 100" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="180" width="400" height="220" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="230" y="206" fill="#334155" font-weight="bold" font-size="14">最常用的钩子</text>
+    <text x="230" y="226" fill="#4b5563" font-size="11">initialize          初始化参数确认</text>
+    <text x="230" y="243" fill="#4b5563" font-size="11">compilation         每次编译创建时</text>
+    <text x="230" y="260" fill="#4b5563" font-size="11">make                依赖开始构建</text>
+    <text x="230" y="277" fill="#4b5563" font-size="11">thisCompilation     拿到 compilation 对象</text>
+    <text x="230" y="294" fill="#4b5563" font-size="11">emit                产物写入磁盘前（可增删文件）</text>
+    <text x="230" y="311" fill="#4b5563" font-size="11">afterEmit           产物写入磁盘后</text>
+    <text x="230" y="328" fill="#4b5563" font-size="11">done                编译完成（可做通知）</text>
+    <text x="230" y="345" fill="#4b5563" font-size="11">watchRun            监听模式每次重新编译前</text>
+    <rect x="450" y="180" width="400" height="220" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="650" y="206" fill="#0f766e" font-weight="bold" font-size="14">两类 API</text>
+    <text x="650" y="226" fill="#4b5563" font-size="11">Tapable 同步钩子：tap(name, fn)</text>
+    <text x="650" y="243" fill="#4b5563" font-size="11">Tapable 异步钩子：tapAsync / tapPromise</text>
+    <text x="650" y="260" fill="#4b5563" font-size="11">异步钩子必须调用 callback 或 resolve，否则构建挂起</text>
+    <text x="650" y="277" fill="#4b5563" font-size="11">compilation 上的 assets 对象可读写产物</text>
+    <text x="650" y="294" fill="#4b5563" font-size="11">compiler.webpack 可拿到 webpack 实例与版本</text>
+</g>
+  <text x="440" y="414" text-anchor="middle" font-size="13" fill="#475569">写插件的本质：在正确的钩子上拿到正确的对象，做最小必要的事</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

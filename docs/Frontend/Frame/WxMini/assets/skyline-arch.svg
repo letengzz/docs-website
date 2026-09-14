@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="470" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Skyline 渲染引擎：与 WebView 渲染的差异</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="60" width="240" height="130" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="150" y="86" fill="#334155" font-weight="bold" font-size="14">WebView 渲染（旧）</text>
+    <text x="150" y="106" fill="#4b5563" font-size="11">逻辑层 JS Core</text>
+    <text x="150" y="123" fill="#4b5563" font-size="11">渲染层 WebView</text>
+    <text x="150" y="140" fill="#4b5563" font-size="11">跨层通信 setData 序列化</text>
+    <text x="150" y="157" fill="#4b5563" font-size="11">受 DOM/CSS 能力与兼容层拖累</text>
+    <rect x="300" y="60" width="250" height="140" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="425" y="86" fill="#047857" font-weight="bold" font-size="14">Skyline 渲染（新）</text>
+    <text x="425" y="106" fill="#4b5563" font-size="11">自研渲染引擎（C++）</text>
+    <text x="425" y="123" fill="#4b5563" font-size="11">不依赖 WebView DOM</text>
+    <text x="425" y="140" fill="#4b5563" font-size="11">支持 worklet 在渲染层跑动画</text>
+    <text x="425" y="157" fill="#4b5563" font-size="11">布局与滚动性能显著提升</text>
+    <rect x="580" y="60" width="270" height="140" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="715" y="86" fill="#0e7490" font-weight="bold" font-size="14">开启方式</text>
+    <text x="715" y="106" fill="#4b5563" font-size="11">app.json / 页面 json 中设 renderer: "skyline"</text>
+    <text x="715" y="123" fill="#4b5563" font-size="11">需同时设 componentFramework: "glass-easel"</text>
+    <text x="715" y="140" fill="#4b5563" font-size="11">旧组件与部分 API 不支持，需回退检查</text>
+    <text x="715" y="157" fill="#4b5563" font-size="11">最低基础库要求较高</text>
+    <path d="M 270 125 L 298 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="230" width="380" height="180" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="220" y="256" fill="#b45309" font-weight="bold" font-size="14">WebView 渲染的限制</text>
+    <text x="220" y="276" fill="#4b5563" font-size="11">长列表滚动、动画易掉帧</text>
+    <text x="220" y="293" fill="#4b5563" font-size="11">setData 数据量大时通信成为瓶颈</text>
+    <text x="220" y="310" fill="#4b5563" font-size="11">复杂交互受 WebView 性能天花板限制</text>
+    <text x="220" y="327" fill="#4b5563" font-size="11">同层渲染仍受 WebView 约束</text>
+    <rect x="430" y="230" width="420" height="180" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="640" y="256" fill="#6d28d9" font-weight="bold" font-size="14">Skyline 带来的能力</text>
+    <text x="640" y="276" fill="#4b5563" font-size="11">渲染层直接执行 worklet，动画不掉帧</text>
+    <text x="640" y="293" fill="#4b5563" font-size="11">同时渲染大量节点仍保持流畅</text>
+    <text x="640" y="310" fill="#4b5563" font-size="11">支持 grid、自定义路由等新特性</text>
+    <text x="640" y="327" fill="#4b5563" font-size="11">与 glass-easel 组件框架配套使用</text>
+</g>
+  <text x="440" y="452" text-anchor="middle" font-size="13" fill="#475569">Skyline 是「换引擎」而非「加开关」：开启前必须核对组件与 API 兼容性并做真机验证</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,6 +1,6 @@
 # 重构实战：安全地改代码
 
-上一页 [实战案例](Practice/index.md) 讲的是「用模式重构一个下单接口」；本篇讲的是**更底层的问题：怎么改才不出事**。重构不是重写，它必须在**随时可运行、可回滚**的前提下小步推进。
+上一页 [实战案例](../Practice/index.md) 讲的是「用模式重构一个下单接口」；本篇讲的是**更底层的问题：怎么改才不出事**。重构不是重写，它必须在**随时可运行、可回滚**的前提下小步推进。
 
 ![重构前后对比](../assets/refactor-before-after.svg)
 
@@ -270,10 +270,10 @@ mvn -q checkstyle:check
 
 ## 相关专题
 
-- 模式化的重构案例：[实战案例](Practice/index.md)
-- 坏味道与过度设计：[反模式与过度设计](AntiPatterns/index.md)
-- 现代 Java 写法：[现代 Java 与设计模式](ModernJava/index.md)
-- 设计原则（重构的judgment依据）：[设计原则](Principles/index.md)
+- 模式化的重构案例：[实战案例](../Practice/index.md)
+- 坏味道与过度设计：[反模式与过度设计](../AntiPatterns/index.md)
+- 现代 Java 写法：[现代 Java 与设计模式](../ModernJava/index.md)
+- 设计原则（重构的judgment依据）：[设计原则](../Principles/index.md)
 
 ## 参考资料
 

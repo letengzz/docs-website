@@ -424,6 +424,6 @@ function App() {
 
 ## 下一步
 
-- [Hooks 详解](Hooks/index.md) - 掌握 React 状态与副作用管理
-- [状态管理](StateManagement/index.md) - 跨组件状态管理方案
-- [最佳实践](BestPractices/index.md) - React 开发最佳实践
+- [Hooks 详解](../Hooks/index.md) - 掌握 React 状态与副作用管理
+- [状态管理](../StateManagement/index.md) - 跨组件状态管理方案
+- [最佳实践](../BestPractices/index.md) - React 开发最佳实践

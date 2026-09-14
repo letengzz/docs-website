@@ -219,7 +219,7 @@ echo "  请运行 pnpm docs:build 复核"
 
 ## 相关专题
 
-- 盘点维度与巡检脚本：[文档库与资产盘点](DocsAudit/index.md)
+- 盘点维度与巡检脚本：[文档库与资产盘点](../DocsAudit/index.md)
 - 复盘方法（KPT / GRAI / PDCA）：[复盘方法论](../Overview/index.md)
 - 知识体系整理（前一版）：[知识体系整理](../../Review/KnowledgeMap/index.md)
 - 文档协作与命名规范：[文档协作规范](../../../Tools/Collaboration/DocCollaboration/index.md)

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="400" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">接口：隐式实现与鸭子类型</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="60" width="220" height="110" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="150" y="86" fill="#6d28d9" font-weight="bold" font-size="14">接口定义（方法集）</text>
+    <text x="150" y="106" fill="#4b5563" font-size="11">type Writer interface {</text>
+    <text x="150" y="123" fill="#4b5563" font-size="11">  Write(p []byte) (int, error)</text>
+    <text x="150" y="140" fill="#4b5563" font-size="11">}</text>
+    <rect x="320" y="60" width="240" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="440" y="86" fill="#047857" font-weight="bold" font-size="14">实现 A：*os.File</text>
+    <text x="440" y="106" fill="#4b5563" font-size="11">有 Write 方法</text>
+    <text x="440" y="123" fill="#4b5563" font-size="11">无需 implements 声明</text>
+    <text x="440" y="140" fill="#4b5563" font-size="11">自动满足 Writer</text>
+    <rect x="600" y="60" width="240" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="720" y="86" fill="#047857" font-weight="bold" font-size="14">实现 B：*bytes.Buffer</text>
+    <text x="720" y="106" fill="#4b5563" font-size="11">同样有 Write 方法</text>
+    <text x="720" y="123" fill="#4b5563" font-size="11">同样自动满足</text>
+    <text x="720" y="140" fill="#4b5563" font-size="11">两者可互换传入</text>
+    <path d="M 280 115 L 318 115" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="299" y="109" text-anchor="middle" fill="#6b7280" font-size="11">隐式满足</text>
+    <path d="M 560 115 L 598 115" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="579" y="109" text-anchor="middle" fill="#6b7280" font-size="11">隐式满足</text>
+    <rect x="40" y="210" width="260" height="120" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="170" y="236" fill="#0e7490" font-weight="bold" font-size="14">接口值 = (动态类型, 动态值)</text>
+    <text x="170" y="256" fill="#4b5563" font-size="11">nil 接口：两栏都为空</text>
+    <text x="170" y="273" fill="#4b5563" font-size="11">「带类型的 nil」不等于 nil</text>
+    <text x="170" y="290" fill="#4b5563" font-size="11">判空要用 errors.Is / 类型断言</text>
+    <rect x="330" y="210" width="250" height="120" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="455" y="236" fill="#b45309" font-weight="bold" font-size="14">常用惯用法</text>
+    <text x="455" y="256" fill="#4b5563" font-size="11">io.Reader / io.Writer 组合</text>
+    <text x="455" y="273" fill="#4b5563" font-size="11">error 就是一个接口</text>
+    <text x="455" y="290" fill="#4b5563" font-size="11">接口越小越好（1~2 个方法）</text>
+    <rect x="610" y="210" width="230" height="120" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="725" y="236" fill="#be123c" font-weight="bold" font-size="14">类型断言与 type switch</text>
+    <text x="725" y="256" fill="#4b5563" font-size="11">v, ok := x.(T)</text>
+    <text x="725" y="273" fill="#4b5563" font-size="11">switch v := x.(type)</text>
+    <text x="725" y="290" fill="#4b5563" font-size="11">断言失败会 panic（无 ok 时）</text>
+</g>
+  <text x="440" y="382" text-anchor="middle" font-size="13" fill="#475569">接口的消费者在调用方：谁用谁定义接口，而不是实现方提前声明——这决定了 Go 的接口通常很小</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">net/http 请求处理链路</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="60" width="130" height="90" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="95" y="86" fill="#0e7490" font-weight="bold" font-size="14">客户端</text>
+    <text x="95" y="106" fill="#4b5563" font-size="11">HTTP / HTTPS</text>
+    <text x="95" y="123" fill="#4b5563" font-size="11">curl / 浏览器</text>
+    <rect x="190" y="60" width="150" height="90" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="265" y="86" fill="#4338ca" font-weight="bold" font-size="14">http.Server</text>
+    <text x="265" y="106" fill="#4b5563" font-size="11">ListenAndServe</text>
+    <text x="265" y="123" fill="#4b5563" font-size="11">连接与超时</text>
+    <rect x="370" y="60" width="190" height="90" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="465" y="86" fill="#6d28d9" font-weight="bold" font-size="14">中间件链</text>
+    <text x="465" y="106" fill="#4b5563" font-size="11">日志 / 鉴权 / 恢复</text>
+    <text x="465" y="123" fill="#4b5563" font-size="11">跨域 / 限流</text>
+    <rect x="590" y="60" width="130" height="90" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="655" y="86" fill="#047857" font-weight="bold" font-size="14">路由 mux</text>
+    <text x="655" y="106" fill="#4b5563" font-size="11">方法与路径</text>
+    <text x="655" y="123" fill="#4b5563" font-size="11">路径参数</text>
+    <rect x="750" y="60" width="100" height="90" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="800" y="86" fill="#b45309" font-weight="bold" font-size="14">Handler</text>
+    <text x="800" y="106" fill="#4b5563" font-size="11">业务入口</text>
+    <path d="M 160 105 L 188 105" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 340 105 L 368 105" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 560 105 L 588 105" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 720 105 L 748 105" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="200" width="250" height="130" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="155" y="226" fill="#334155" font-weight="bold" font-size="14">分层建议</text>
+    <text x="155" y="246" fill="#4b5563" font-size="11">handler：解析入参、返回响应</text>
+    <text x="155" y="263" fill="#4b5563" font-size="11">service：业务规则与事务边界</text>
+    <text x="155" y="280" fill="#4b5563" font-size="11">repository：数据访问</text>
+    <text x="155" y="297" fill="#4b5563" font-size="11">handler 不写 SQL、repository 不写 HTTP</text>
+    <rect x="300" y="200" width="270" height="130" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="435" y="226" fill="#0f766e" font-weight="bold" font-size="14">必须显式设置的超时</text>
+    <text x="435" y="246" fill="#4b5563" font-size="11">ReadHeaderTimeout（防慢速攻击）</text>
+    <text x="435" y="263" fill="#4b5563" font-size="11">ReadTimeout / WriteTimeout / IdleTimeout</text>
+    <text x="435" y="280" fill="#4b5563" font-size="11">http.Client 也要设 Timeout</text>
+    <rect x="590" y="200" width="260" height="130" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="720" y="226" fill="#be123c" font-weight="bold" font-size="14">优雅关闭</text>
+    <text x="720" y="246" fill="#4b5563" font-size="11">监听 SIGINT / SIGTERM</text>
+    <text x="720" y="263" fill="#4b5563" font-size="11">srv.Shutdown(ctx) 停止接收新连接</text>
+    <text x="720" y="280" fill="#4b5563" font-size="11">关闭数据库连接池与后台任务</text>
+    <rect x="30" y="355" width="820" height="60" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="440" y="381" fill="#b45309" font-weight="bold" font-size="13">响应接口约定：统一 JSON 结构 + 明确 HTTP 状态码；错误在中间件统一转成响应，不在 handler 里散落 log.Fatal</text>
+</g>
+  <text x="440" y="434" text-anchor="middle" font-size="13" fill="#475569">标准库够用，框架只省样板代码：net/http 的 Handler 接口是整个生态的共同抽象</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

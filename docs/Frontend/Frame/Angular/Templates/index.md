@@ -6,7 +6,7 @@ Angular 模板语法基于 HTML，允许你使用数据绑定、指令和管道�
 
 ### 插值表达式
 
-使用 `{{ }}` 将组件属性显示在模板中：
+使用 <span v-pre>`{{ }}`</span> 将组件属性显示在模板中：
 
 ```html [src/app/app.component.html]
 <h1>{{ title }}</h1>

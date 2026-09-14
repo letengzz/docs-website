@@ -225,7 +225,7 @@ public class HeartbeatHandler extends ChannelInboundHandlerAdapter {
 
 ::: warning 心跳包要设长度
 心跳包也要遵循协议帧格式（如 `length = 0` 表示无消息体），
-否则解码器无法解析，会当成半包一直等。见 [自定义协议设计](ProtocolDesign/index.md)。
+否则解码器无法解析，会当成半包一直等。见 [自定义协议设计](../ProtocolDesign/index.md)。
 :::
 
 ### 4.2 客户端断线重连
@@ -266,7 +266,7 @@ public class ReconnectHandler extends ChannelInboundHandlerAdapter {
 
 ::: tip 调优前先压测
 不要凭感觉调参数。**先用压测拿到基线**（吞吐、P99 延迟、CPU、内存），
-再单变量调整，每次只改一个参数并复测。方法见 [性能基准与压测](BenchmarkPractice/index.md)。
+再单变量调整，每次只改一个参数并复测。方法见 [性能基准与压测](../BenchmarkPractice/index.md)。
 :::
 
 ## 六、Netty 5 与版本升级
@@ -309,10 +309,10 @@ public class ReconnectHandler extends ChannelInboundHandlerAdapter {
 
 ## 相关专题
 
-- Netty 入门： [Netty 入门](Netty/index.md)
-- 自定义协议与粘包拆包：[自定义协议设计](ProtocolDesign/index.md) · [粘包拆包](StickyHalf/index.md)
-- 虚拟线程（另一种高并发解法）：[虚拟线程与高并发模型](VirtualThread/index.md)
-- 压测方法：[性能基准与压测](BenchmarkPractice/index.md)
+- Netty 入门： [Netty 入门](../Netty/index.md)
+- 自定义协议与粘包拆包：[自定义协议设计](../ProtocolDesign/index.md) · [粘包拆包](../StickyHalf/index.md)
+- 虚拟线程（另一种高并发解法）：[虚拟线程与高并发模型](../VirtualThread/index.md)
+- 压测方法：[性能基准与压测](../BenchmarkPractice/index.md)
 
 ## 参考资料
 

@@ -265,10 +265,10 @@ public class MyBenchmark {
 
 ## 相关专题
 
-- Netty 性能调优参数：[Netty 进阶](NettyAdvanced/index.md)
-- IO 模型与多路复用（压测关注的底层路径）：[Socket 与 IO 模型](SocketIO/index.md)
-- 虚拟线程的吞吐对比：[虚拟线程与高并发模型](VirtualThread/index.md)
-- 自定义协议的性能验证：[自定义协议设计](ProtocolDesign/index.md)
+- Netty 性能调优参数：[Netty 进阶](../NettyAdvanced/index.md)
+- IO 模型与多路复用（压测关注的底层路径）：[Socket 与 IO 模型](../SocketIO/index.md)
+- 虚拟线程的吞吐对比：[虚拟线程与高并发模型](../VirtualThread/index.md)
+- 自定义协议的性能验证：[自定义协议设计](../ProtocolDesign/index.md)
 
 ## 参考资料
 

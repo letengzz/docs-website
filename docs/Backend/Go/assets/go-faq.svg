@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">高频踩坑速查</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="260" height="130" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="160" y="96" fill="#be123c" font-weight="bold" font-size="14">① 循环变量捕获（1.22 前）</text>
+    <text x="160" y="116" fill="#4b5563" font-size="11">for _, v := range xs { go func(){ use(v) }() }</text>
+    <text x="160" y="133" fill="#4b5563" font-size="11">老版本共享同一个 v，全部输出最后一个</text>
+    <text x="160" y="150" fill="#4b5563" font-size="11">1.22+ 每轮新建变量，行为已修复</text>
+    <rect x="320" y="70" width="260" height="130" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="450" y="96" fill="#b45309" font-weight="bold" font-size="14">② nil map 与 map 并发</text>
+    <text x="450" y="116" fill="#4b5563" font-size="11">var m map[string]int; m["a"]=1 → panic</text>
+    <text x="450" y="133" fill="#4b5563" font-size="11">必须 make 初始化</text>
+    <text x="450" y="150" fill="#4b5563" font-size="11">并发读写必须加锁（fatal error: concurrent map writes）</text>
+    <rect x="610" y="70" width="240" height="130" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="730" y="96" fill="#0e7490" font-weight="bold" font-size="14">③ defer 参数立即求值</text>
+    <text x="730" y="116" fill="#4b5563" font-size="11">defer f(x) 会立刻计算 x 的值</text>
+    <text x="730" y="133" fill="#4b5563" font-size="11">需要延迟读取用闭包 defer func(){ f(x) }()</text>
+    <text x="730" y="150" fill="#4b5563" font-size="11">循环里 defer 会堆积到函数返回</text>
+    <rect x="30" y="230" width="260" height="130" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="160" y="256" fill="#4338ca" font-weight="bold" font-size="14">④ slice 共享底层数组</text>
+    <text x="160" y="276" fill="#4b5563" font-size="11">子切片修改会影响原切片</text>
+    <text x="160" y="293" fill="#4b5563" font-size="11">append 可能改写「别人的」元素</text>
+    <text x="160" y="310" fill="#4b5563" font-size="11">返回切片前用 slices.Clone 隔离</text>
+    <rect x="320" y="230" width="260" height="130" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="450" y="256" fill="#6d28d9" font-weight="bold" font-size="14">⑤ 接口与 nil</text>
+    <text x="450" y="276" fill="#4b5563" font-size="11">var e error = (*MyErr)(nil)</text>
+    <text x="450" y="293" fill="#4b5563" font-size="11">e != nil 为 true，但值是 nil</text>
+    <text x="450" y="310" fill="#4b5563" font-size="11">返回错误时用 return nil 而非带类型的 nil</text>
+    <rect x="610" y="230" width="240" height="130" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="730" y="256" fill="#047857" font-weight="bold" font-size="14">⑥ 字符串与字节</text>
+    <text x="730" y="276" fill="#4b5563" font-size="11">string 不可变，频繁拼接用 strings.Builder</text>
+    <text x="730" y="293" fill="#4b5563" font-size="11">s[i] 取到的是 byte 不是字符</text>
+    <text x="730" y="310" fill="#4b5563" font-size="11">中文字符要用 for range / []rune</text>
+</g>
+  <text x="440" y="402" text-anchor="middle" font-size="13" fill="#475569">排查手法：go vet ./... + go test -race ./... 能提前抓出上面大半问题</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

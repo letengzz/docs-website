@@ -211,4 +211,106 @@
 }
 ```
 
+## 分包大小限制与主包瘦身
+
+分包只是「把代码分成几份」，真正的收益来自**主包足够小**——因为无论用户打开哪个页面，主包都必须先下载。
+
+| 限制 | 数值 | 说明 |
+| --- | --- | --- |
+| 所有分包大小总和 | 不超过 20MB | 官方数值可能调整，以文档为准 |
+| 单个分包 / 主包 | 不超过 2MB | **最容易踩的硬约束** |
+| 主包 | 只放首屏与 TabBar | 是启动速度的直接决定因素 |
+
+主包瘦身手段：
+
+1. **TabBar 页面与启动页留在主包**，其余页面全部拆分包。
+2. **图片与字体外置**：放 CDN 或对象存储，不要打进包内。
+3. **大依赖按需引入**：UI 库不要整包引入（见 [npm 使用](../npm/index.md)）。
+4. **公共资源下沉**：被多个分包共用的代码放主包，避免每个分包各打一份。
+5. **排查体积**：用开发者工具「代码依赖分析」逐层展开，找出真正占体积的文件。
+
+::: danger 注意
+**不要为了分包而分包**。分包切得太碎会导致：① 每个分包都要重复打包公共代码（除非下沉到主包）；② 分包之间的跳转需要等待下载，出现明显白屏。**按业务模块划分**，一个模块一个分包才是合理的粒度。
+:::
+
+## 分包异步化
+
+默认情况下，**分包之间不能互相引用资源**。分包异步化（异步引用）打破了这条限制：允许一个分包在运行时**异步引入另一个分包的代码**。
+
+```javascript [分包 A 中异步引用分包 B 的模块]
+// 运行时按需加载另一个分包中的 JS 模块
+require.async('../../modules/otherModule/utils/format.js')
+  .then((mod) => {
+    console.log(mod.formatDate(Date.now()));
+  })
+  .catch((err) => {
+    console.error('异步加载分包模块失败', err);
+  });
+```
+
+```javascript [异步引用另一个分包中的自定义组件]
+// 组件异步化：在 usingComponents 中声明
+Component({
+  options: {
+    // 声明异步组件：componentPlaceholder 用于加载期间的占位
+    componentPlaceholder: {
+      'async-card': 'view',
+    },
+  },
+});
+```
+
+```json [pages/index/index.json]
+{
+  "usingComponents": {
+    "async-card": "../../modules/card/components/card"
+  },
+  "componentPlaceholder": {
+    "async-card": "view"
+  }
+}
+```
+
+| 方式 | 适用 | 注意 |
+| --- | --- | --- |
+| `require.async` | 异步加载 JS 模块 | 返回 Promise，需处理失败分支 |
+| 异步组件 | 跨分包复用自定义组件 | 必须配 `componentPlaceholder`，否则空白 |
+
+::: danger 注意
+1. **异步加载必然有等待**：如果模块在首屏就要用，异步化只会让首屏更慢。**只对「点击后才需要」的模块使用**。
+2. **`componentPlaceholder` 不可省略**：没有占位组件时，加载期间该区域是空白，用户会以为页面坏了。
+3. **异步化不改变 2MB 限制**：它解决的是「跨分包引用」问题，不是「包变大」问题。
+:::
+
+## 常见踩坑
+
+| 现象 | 原因 | 处理 |
+| --- | --- | --- |
+| 打包后报「分包大小超过 2MB」 | 单个分包过大 | 继续拆分，或把资源外置 |
+| TabBar 页面找不到 | TabBar 页面被配到了分包里 | TabBar 页面必须在主包 |
+| 分包之间跳转白屏久 | 分包体积大且无预下载 | 配 `preloadRule` 预下载 |
+| 独立分包里 `getApp()` 为 undefined | 独立分包不加载主包，App 未初始化 | 独立分包内不要依赖全局 App 数据 |
+| 引用分包资源报错 | 主包引用了分包资源 | 把该资源下沉到主包 |
+| `require.async` 报错 | 基础库版本不足 | 核对最低基础库版本 |
+
+## 验证方式
+
+1. 用开发者工具「代码依赖分析」查看主包与各分包的体积，确认都在 2MB 以内。
+2. 首次进入分包页面，观察是否有明显等待；配置 `preloadRule` 后再次进入，对比加载时间变化。
+3. 从主包页面跳转到分包页面，确认能正常打开、返回后页面栈正常。
+4. 若使用了独立分包，直接在开发者工具中将其设为启动页，确认不依赖主包也能正常运行。
+
+## 相关专题
+
+- [性能优化](../Performance/index.md)：分包与启动速度的关系
+- [npm 使用](../npm/index.md)：第三方库如何影响包体积
+- [微信小程序 配置文件](../Settings/index.md)：`app.json` 中分包相关配置
+- [上线发布](../Release/index.md)：上传前的包体积检查
+
+## 参考资料
+
+- 微信小程序官方文档 · 分包加载：https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/basic.html
+- 微信小程序官方文档 · 分包异步化：https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/async.html
+- 微信小程序官方文档 · 独立分包：https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/independent.html
+
 

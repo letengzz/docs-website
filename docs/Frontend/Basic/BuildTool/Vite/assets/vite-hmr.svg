@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">HMR：模块级热替换流程</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="170" height="90" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="115" y="96" fill="#0e7490" font-weight="bold" font-size="14">① 文件变更</text>
+    <text x="115" y="116" fill="#4b5563" font-size="11">文件系统监听</text>
+    <text x="115" y="133" fill="#4b5563" font-size="11">确定受影响模块</text>
+    <rect x="230" y="70" width="190" height="90" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="325" y="96" fill="#4338ca" font-weight="bold" font-size="14">② 沿导入图回溯</text>
+    <text x="325" y="116" fill="#4b5563" font-size="11">找到最近的</text>
+    <text x="325" y="133" fill="#4b5563" font-size="11">可接受更新的边界</text>
+    <rect x="450" y="70" width="190" height="90" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="545" y="96" fill="#6d28d9" font-weight="bold" font-size="14">③ 构造更新包</text>
+    <text x="545" y="116" fill="#4b5563" font-size="11">转换为 ESM</text>
+    <text x="545" y="133" fill="#4b5563" font-size="11">生成 patch</text>
+    <rect x="670" y="70" width="180" height="90" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="760" y="96" fill="#047857" font-weight="bold" font-size="14">④ WebSocket 推送</text>
+    <text x="760" y="116" fill="#4b5563" font-size="11">HMR 客户端接收</text>
+    <path d="M 200 115 L 228 115" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 420 115 L 448 115" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 640 115 L 668 115" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="200" width="270" height="140" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="165" y="226" fill="#b45309" font-weight="bold" font-size="14">边界如何确定</text>
+    <text x="165" y="246" fill="#4b5563" font-size="11">模块调用 import.meta.hot.accept() 即声明自己是边界</text>
+    <text x="165" y="263" fill="#4b5563" font-size="11">Vue/React 插件会为组件自动注入 accept</text>
+    <text x="165" y="280" fill="#4b5563" font-size="11">找不到边界时向上冒泡，最终整页刷新</text>
+    <rect x="320" y="200" width="260" height="140" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="450" y="226" fill="#0f766e" font-weight="bold" font-size="14">常用 HMR API</text>
+    <text x="450" y="246" fill="#4b5563" font-size="11">import.meta.hot.accept(cb) 接受自身更新</text>
+    <text x="450" y="263" fill="#4b5563" font-size="11">import.meta.hot.dispose(cb) 清理副作用</text>
+    <text x="450" y="280" fill="#4b5563" font-size="11">import.meta.hot.invalidate() 强制向上冒泡</text>
+    <text x="450" y="297" fill="#4b5563" font-size="11">import.meta.hot.data 跨更新传递状态</text>
+    <rect x="600" y="200" width="250" height="140" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="725" y="226" fill="#be123c" font-weight="bold" font-size="14">常见「整页刷新」原因</text>
+    <text x="725" y="246" fill="#4b5563" font-size="11">模块没有 accept 边界</text>
+    <text x="725" y="263" fill="#4b5563" font-size="11">导出结构发生变化</text>
+    <text x="725" y="280" fill="#4b5563" font-size="11">非 ESM 的副作用模块（如全局注入）</text>
+    <text x="725" y="297" fill="#4b5563" font-size="11">通过 server.hmr 配置错误导致连接失败</text>
+</g>
+  <text x="440" y="402" text-anchor="middle" font-size="13" fill="#475569">HMR 的价值不是「快」，而是「保留应用状态」——省去反复点击回到原页面</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

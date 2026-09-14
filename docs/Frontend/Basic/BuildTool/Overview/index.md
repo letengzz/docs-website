@@ -160,3 +160,16 @@ mode: 'development' // 或 'production'
 - 库开发使用 Rollup
 - 追求速度使用 esbuild
 :::
+
+## 深入学习
+
+本篇只做横向概览，各个工具的完整用法见对应专题：
+
+- [Vite 深入](../Vite/index.md)：开发期 No-Bundle、环境变量、插件开发与生产构建优化
+- [Webpack 深入](../Webpack/index.md)：配置、Loader / Plugin 原理、代码分割、模块联邦与构建优化
+- [Rollup](../Rollup/index.md)：库打包与多格式输出
+- [esbuild](../esbuild/index.md)：极速编译与压缩
+
+::: warning 说明
+四个工具并非互斥关系。现实中常见的组合是：**开发用 Vite、库打包用 Rollup、生产压缩用 esbuild**（Vite 自身就同时使用了这类底层能力）。选型时先明确「打包的是应用还是库」，再决定主工具。
+:::

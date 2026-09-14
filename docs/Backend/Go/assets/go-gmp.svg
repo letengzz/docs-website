@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">GMP 调度模型：goroutine 如何跑在 CPU 上</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="200" height="120" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="130" y="96" fill="#0e7490" font-weight="bold" font-size="14">G：goroutine</text>
+    <text x="130" y="116" fill="#4b5563" font-size="11">用户态轻量协程</text>
+    <text x="130" y="133" fill="#4b5563" font-size="11">初始栈仅几 KB</text>
+    <text x="130" y="150" fill="#4b5563" font-size="11">创建/切换成本极低</text>
+    <rect x="260" y="70" width="200" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="360" y="96" fill="#4338ca" font-weight="bold" font-size="14">M：machine</text>
+    <text x="360" y="116" fill="#4b5563" font-size="11">操作系统线程</text>
+    <text x="360" y="133" fill="#4b5563" font-size="11">真正被内核调度的单位</text>
+    <text x="360" y="150" fill="#4b5563" font-size="11">数量默认 = CPU 核数</text>
+    <rect x="490" y="70" width="200" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="590" y="96" fill="#047857" font-weight="bold" font-size="14">P：processor</text>
+    <text x="590" y="116" fill="#4b5563" font-size="11">调度上下文（逻辑核）</text>
+    <text x="590" y="133" fill="#4b5563" font-size="11">持有本地运行队列</text>
+    <text x="590" y="150" fill="#4b5563" font-size="11">数量 = GOMAXPROCS</text>
+    <rect x="720" y="70" width="130" height="120" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="785" y="96" fill="#b45309" font-weight="bold" font-size="14">全局队列</text>
+    <text x="785" y="116" fill="#4b5563" font-size="11">本地队列满</text>
+    <text x="785" y="133" fill="#4b5563" font-size="11">或空闲时</text>
+    <text x="785" y="150" fill="#4b5563" font-size="11">的兜底队列</text>
+    <path d="M 230 130 L 258 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="244" y="124" text-anchor="middle" fill="#6b7280" font-size="11">绑定</text>
+    <path d="M 460 130 L 488 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="474" y="124" text-anchor="middle" fill="#6b7280" font-size="11">绑定</text>
+    <path d="M 690 130 L 718 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="704" y="124" text-anchor="middle" fill="#6b7280" font-size="11">溢出</text>
+    <rect x="30" y="240" width="250" height="140" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="155" y="266" fill="#334155" font-weight="bold" font-size="14">一次调度发生了什么</text>
+    <text x="155" y="286" fill="#4b5563" font-size="11">P 从本地队列取 G</text>
+    <text x="155" y="303" fill="#4b5563" font-size="11">把 G 交给绑定的 M 执行</text>
+    <text x="155" y="320" fill="#4b5563" font-size="11">G 阻塞（IO/锁）时 P 与 M 解绑</text>
+    <text x="155" y="337" fill="#4b5563" font-size="11">P 换一个 M 继续跑其它 G</text>
+    <rect x="300" y="240" width="270" height="140" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="435" y="266" fill="#6d28d9" font-weight="bold" font-size="14">work stealing（工作窃取）</text>
+    <text x="435" y="286" fill="#4b5563" font-size="11">本地队列为空的 P 会去别的 P 偷一半 G</text>
+    <text x="435" y="303" fill="#4b5563" font-size="11">取用顺序：本地 → 全局 → 窃取</text>
+    <text x="435" y="320" fill="#4b5563" font-size="11">让各核负载自动均衡</text>
+    <rect x="590" y="240" width="260" height="140" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="720" y="266" fill="#be123c" font-weight="bold" font-size="14">阻塞与抢占</text>
+    <text x="720" y="286" fill="#4b5563" font-size="11">syscall 阻塞会新建/复用 M</text>
+    <text x="720" y="303" fill="#4b5563" font-size="11">Go 1.14+ 基于信号的异步抢占</text>
+    <text x="720" y="320" fill="#4b5563" font-size="11">长时间纯计算也会被抢占，不会饿死其它 G</text>
+</g>
+  <text x="440" y="432" text-anchor="middle" font-size="13" fill="#475569">GOMAXPROCS 决定并行度（P 的数量），不是并发的上限——你可以开几十万个 goroutine</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

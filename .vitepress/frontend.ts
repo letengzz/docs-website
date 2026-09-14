@@ -296,8 +296,32 @@ export const FrontBasic = [
             {
                 text: "构建工具", link: "/docs/Frontend/Basic/BuildTool/index.md", collapsed: true, items: [
                     { text: "构建工具概述", link: "/docs/Frontend/Basic/BuildTool/Overview/index.md" },
-                    { text: "Vite", link: "/docs/Frontend/Basic/BuildTool/Vite/index.md" },
-                    { text: "Webpack", link: "/docs/Frontend/Basic/BuildTool/Webpack/index.md" },
+                    {
+                        text: "Vite", link: "/docs/Frontend/Basic/BuildTool/Vite/index.md", collapsed: true, items: [
+                            { text: "Vite 概述与原理", link: "/docs/Frontend/Basic/BuildTool/Vite/Overview/index.md" },
+                            { text: "Vite 环境与工程搭建", link: "/docs/Frontend/Basic/BuildTool/Vite/Environment/index.md" },
+                            { text: "Vite 配置详解", link: "/docs/Frontend/Basic/BuildTool/Vite/Config/index.md" },
+                            { text: "Vite 环境变量与模式", link: "/docs/Frontend/Basic/BuildTool/Vite/EnvVariables/index.md" },
+                            { text: "Vite 插件开发", link: "/docs/Frontend/Basic/BuildTool/Vite/Plugin/index.md" },
+                            { text: "Vite 构建优化", link: "/docs/Frontend/Basic/BuildTool/Vite/BuildOptimize/index.md" },
+                            { text: "从 Webpack 迁移到 Vite", link: "/docs/Frontend/Basic/BuildTool/Vite/Migration/index.md" },
+                            { text: "实战：Vite 生产工程配置", link: "/docs/Frontend/Basic/BuildTool/Vite/Practice/index.md" },
+                            { text: "Vite 常见问题与最佳实践", link: "/docs/Frontend/Basic/BuildTool/Vite/FAQ/index.md" },
+                        ]
+                    },
+                    {
+                        text: "Webpack", link: "/docs/Frontend/Basic/BuildTool/Webpack/index.md", collapsed: true, items: [
+                            { text: "Webpack 概述与核心概念", link: "/docs/Frontend/Basic/BuildTool/Webpack/Overview/index.md" },
+                            { text: "Webpack 配置详解", link: "/docs/Frontend/Basic/BuildTool/Webpack/Config/index.md" },
+                            { text: "Webpack Loader 详解", link: "/docs/Frontend/Basic/BuildTool/Webpack/Loader/index.md" },
+                            { text: "Webpack Plugin 详解", link: "/docs/Frontend/Basic/BuildTool/Webpack/Plugin/index.md" },
+                            { text: "Webpack 代码分割", link: "/docs/Frontend/Basic/BuildTool/Webpack/CodeSplitting/index.md" },
+                            { text: "Webpack 构建优化", link: "/docs/Frontend/Basic/BuildTool/Webpack/Optimize/index.md" },
+                            { text: "Webpack 模块联邦", link: "/docs/Frontend/Basic/BuildTool/Webpack/ModuleFederation/index.md" },
+                            { text: "实战：生产级 Webpack 配置", link: "/docs/Frontend/Basic/BuildTool/Webpack/Practice/index.md" },
+                            { text: "Webpack 常见问题与最佳实践", link: "/docs/Frontend/Basic/BuildTool/Webpack/FAQ/index.md" },
+                        ]
+                    },
                     { text: "Rollup", link: "/docs/Frontend/Basic/BuildTool/Rollup/index.md" },
                     { text: "esbuild", link: "/docs/Frontend/Basic/BuildTool/esbuild/index.md" },
                 ]
@@ -495,6 +519,8 @@ export const FrontFrame = [
                     { text: "Electron 构建工具", link: "/docs/Frontend/Frame/Electron/BuildingTools/index.md" },
                     { text: "Electron 安全最佳实践", link: "/docs/Frontend/Frame/Electron/Security/index.md" },
                     { text: "Electron 自动更新", link: "/docs/Frontend/Frame/Electron/AutoUpdate/index.md" },
+                    { text: "Electron 自动化测试", link: "/docs/Frontend/Frame/Electron/Testing/index.md" },
+                    { text: "Electron 性能优化", link: "/docs/Frontend/Frame/Electron/Performance/index.md" },
                     { text: "Electron+Vue3项目打包", link: "/docs/Frontend/Frame/Electron/VuePackaging/index.md" },
                 ]
             },
@@ -536,7 +562,10 @@ export const FrontFrame = [
                     { text: "微信小程序 自定义组件", link: "/docs/Frontend/Frame/WxMini/CustomComponent/index.md" },
                     { text: "微信小程序 npm 使用", link: "/docs/Frontend/Frame/WxMini/npm/index.md" },
                     { text: "微信小程序 分包加载", link: "/docs/Frontend/Frame/WxMini/Subpackage/index.md" },
+                    { text: "微信小程序 Skyline 渲染引擎", link: "/docs/Frontend/Frame/WxMini/Skyline/index.md" },
+                    { text: "微信小程序 Worker 多线程", link: "/docs/Frontend/Frame/WxMini/Worker/index.md" },
                     { text: "微信小程序 性能优化", link: "/docs/Frontend/Frame/WxMini/Performance/index.md" },
+                    { text: "微信小程序 自动化与 CI", link: "/docs/Frontend/Frame/WxMini/Automation/index.md" },
                     { text: "微信小程序 云开发", link: "/docs/Frontend/Frame/WxMini/Cloud/index.md" },
                     { text: "微信小程序 上线发布", link: "/docs/Frontend/Frame/WxMini/Release/index.md" },
                     { text: "微信小程序 常见错误", link: "/docs/Frontend/Frame/WxMini/Errors/index.md" },

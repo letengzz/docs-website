@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="430" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">值类型与引用类型：数据放在哪里</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="70" width="340" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="210" y="96" fill="#4338ca" font-weight="bold" font-size="14">值类型：变量直接持有数据</text>
+    <text x="210" y="116" fill="#4b5563" font-size="11">int / float64 / bool / string</text>
+    <text x="210" y="133" fill="#4b5563" font-size="11">array / struct</text>
+    <text x="210" y="150" fill="#4b5563" font-size="11">赋值 = 复制整份数据</text>
+    <text x="210" y="167" fill="#4b5563" font-size="11">函数传参也是复制（副本）</text>
+    <rect x="430" y="70" width="410" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="635" y="96" fill="#047857" font-weight="bold" font-size="14">「引用语义」类型：变量持有描述符</text>
+    <text x="635" y="116" fill="#4b5563" font-size="11">slice：指针 + len + cap（头结构按值复制）</text>
+    <text x="635" y="133" fill="#4b5563" font-size="11">map / channel / func：本质是指向运行时结构的指针</text>
+    <text x="635" y="150" fill="#4b5563" font-size="11">赋值后两个变量指向同一份底层数据</text>
+    <text x="635" y="167" fill="#4b5563" font-size="11">修改元素会互相可见</text>
+    <rect x="40" y="250" width="340" height="130" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="210" y="276" fill="#b45309" font-weight="bold" font-size="14">什么时候会踩坑</text>
+    <text x="210" y="296" fill="#4b5563" font-size="11">大 struct 按值传参会整份复制，开销大</text>
+    <text x="210" y="313" fill="#4b5563" font-size="11">数组是值类型，传参不共享修改</text>
+    <text x="210" y="330" fill="#4b5563" font-size="11">想共享就传指针 *T</text>
+    <rect x="430" y="250" width="410" height="130" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="635" y="276" fill="#be123c" font-weight="bold" font-size="14">怎么判断</text>
+    <text x="635" y="296" fill="#4b5563" font-size="11">看类型定义：array 是值、slice 是引用语义</text>
+    <text x="635" y="313" fill="#4b5563" font-size="11">看是否含指针/运行时结构</text>
+    <text x="635" y="330" fill="#4b5563" font-size="11">并发下共享的 map/slice 必须加锁或用 channel</text>
+</g>
+  <text x="440" y="412" text-anchor="middle" font-size="13" fill="#475569">记法：Go 只有值传递；「引用」是值里恰好装着指针（slice header / map 指针）</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

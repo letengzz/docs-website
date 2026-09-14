@@ -344,7 +344,38 @@ export const NetworkProgramming = [
     ],
   },
 ];
-export const Go = [{ text: "Go", link: "/docs/Backend/Go/index.md" }];
+export const Go = [
+  {
+    text: "Go",
+    link: "/docs/Backend/Go/index.md",
+    items: [
+      { text: "Go 概述", link: "/docs/Backend/Go/Overview/index.md" },
+      { text: "Go 环境搭建", link: "/docs/Backend/Go/Environment/index.md" },
+      { text: "Go 基础语法", link: "/docs/Backend/Go/BasicSyntax/index.md" },
+      { text: "Go 函数、方法与接口", link: "/docs/Backend/Go/Functions/index.md" },
+      { text: "Go 集合：数组、切片与映射", link: "/docs/Backend/Go/Collections/index.md" },
+      {
+        text: "语言进阶",
+        collapsed: true,
+        items: [
+          { text: "Go 泛型", link: "/docs/Backend/Go/Generics/index.md" },
+          { text: "Go 并发模型", link: "/docs/Backend/Go/Concurrency/index.md" },
+          { text: "Go 错误处理与 panic", link: "/docs/Backend/Go/ErrorHandling/index.md" },
+          { text: "Go 包与模块管理", link: "/docs/Backend/Go/Modules/index.md" },
+        ],
+      },
+      {
+        text: "应用与交付",
+        collapsed: true,
+        items: [
+          { text: "Go Web 开发", link: "/docs/Backend/Go/WebDev/index.md" },
+          { text: "实战：短链服务", link: "/docs/Backend/Go/Practice/index.md" },
+          { text: "Go 常见问题与最佳实践", link: "/docs/Backend/Go/FAQ/index.md" },
+        ],
+      },
+    ],
+  },
+];
 export const Python = [
   {
     text: "Python",

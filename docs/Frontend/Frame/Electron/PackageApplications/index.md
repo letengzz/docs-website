@@ -229,3 +229,15 @@ exports.default = async function (configuration) {
 }
 ```
 
+## 相关专题
+
+- [Electron 构建工具](../BuildingTools/index.md)：electron-builder / forge / packager 的选型与流程
+- [Electron+Vue3 项目打包](../VuePackaging/index.md)：前端框架产物与 Electron 的整合
+- [Electron 自动更新](../AutoUpdate/index.md)：产物命名与更新清单的对应关系
+- [Electron 安全最佳实践](../Security/index.md)：签名、ASAR 与完整性保护
+- [Electron 性能优化](../Performance/index.md)：包体积与安装体积的控制
+
+::: danger 注意
+打包时最容易踩的两个坑：① 运行时依赖被误放进 `devDependencies`，导致安装后 `Cannot find module`；② 原生模块没有针对目标平台重编译。**打包完成后务必在干净机器上装一次并启动验证**，而不是只在开发机上解压看看。
+:::
+

@@ -44,7 +44,7 @@ function add() {
 1. `defineProps<Props>()` 声明 props 类型。
 2. `withDefaults` 提供默认值，并保证可选属性收窄。
 3. `ref(0)` 自动推断 `Ref<number>`。
-4. 模板里的 `{{ label }}` 会被 `vue-tsc` 检查。
+4. 模板里的 <span v-pre>`{{ label }}`</span> 会被 `vue-tsc` 检查。
 
 ### 泛型组件
 

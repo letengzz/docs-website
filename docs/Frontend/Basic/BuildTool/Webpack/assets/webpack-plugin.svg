@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Plugin 与 Compiler / Compilation</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="240" height="110" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="150" y="96" fill="#4338ca" font-weight="bold" font-size="14">Compiler</text>
+    <text x="150" y="116" fill="#4b5563" font-size="11">全局唯一</text>
+    <text x="150" y="133" fill="#4b5563" font-size="11">代表一次完整构建</text>
+    <rect x="310" y="70" width="240" height="110" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="430" y="96" fill="#6d28d9" font-weight="bold" font-size="14">Compilation</text>
+    <text x="430" y="116" fill="#4b5563" font-size="11">每次编译新建</text>
+    <text x="430" y="133" fill="#4b5563" font-size="11">持有模块图与产物</text>
+    <rect x="590" y="70" width="260" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="720" y="96" fill="#047857" font-weight="bold" font-size="14">assets</text>
+    <text x="720" y="116" fill="#4b5563" font-size="11">产物文件集合</text>
+    <text x="720" y="133" fill="#4b5563" font-size="11">可增删改</text>
+    <path d="M 270 125 L 308 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 550 125 L 588 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="220" width="400" height="130" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="230" y="246" fill="#0f766e" font-weight="bold" font-size="14">插件骨架</text>
+    <text x="230" y="266" fill="#4b5563" font-size="11">class MyPlugin {</text>
+    <text x="230" y="283" fill="#4b5563" font-size="11">  apply(compiler) {</text>
+    <text x="230" y="300" fill="#4b5563" font-size="11">    compiler.hooks.emit.tap('MyPlugin', (compilation) =&gt; { ... })</text>
+    <text x="230" y="317" fill="#4b5563" font-size="11">  }</text>
+    <text x="230" y="334" fill="#4b5563" font-size="11">}</text>
+    <rect x="450" y="220" width="400" height="130" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="650" y="246" fill="#b45309" font-weight="bold" font-size="14">常用官方/社区插件</text>
+    <text x="650" y="266" fill="#4b5563" font-size="11">HtmlWebpackPlugin 生成 HTML</text>
+    <text x="650" y="283" fill="#4b5563" font-size="11">MiniCssExtractPlugin 抽离 CSS</text>
+    <text x="650" y="300" fill="#4b5563" font-size="11">CopyWebpackPlugin 复制静态资源</text>
+    <text x="650" y="317" fill="#4b5563" font-size="11">DefinePlugin 注入编译期常量</text>
+    <text x="650" y="334" fill="#4b5563" font-size="11">BundleAnalyzerPlugin 体积可视化</text>
+</g>
+  <text x="440" y="402" text-anchor="middle" font-size="13" fill="#475569">Plugin 的能力边界比 Loader 大得多：它能读写产物、改配置、甚至触发额外编译</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

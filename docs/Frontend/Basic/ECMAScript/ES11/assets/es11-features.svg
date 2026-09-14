@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="470" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">ES2020（ES11）主要新特性</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="60" width="190" height="120" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="125" y="86" fill="#0e7490" font-weight="bold" font-size="14">BigInt</text>
+    <text x="125" y="106" fill="#4b5563" font-size="11">任意精度整数</text>
+    <text x="125" y="123" fill="#4b5563" font-size="11">1n / BigInt(1)</text>
+    <text x="125" y="140" fill="#4b5563" font-size="11">不能与 Number 混算</text>
+    <rect x="240" y="60" width="190" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="335" y="86" fill="#4338ca" font-weight="bold" font-size="14">可选链 ?.</text>
+    <text x="335" y="106" fill="#4b5563" font-size="11">obj?.a?.b</text>
+    <text x="335" y="123" fill="#4b5563" font-size="11">越界短路返回 undefined</text>
+    <text x="335" y="140" fill="#4b5563" font-size="11">替代多层 &amp;&amp; 判断</text>
+    <rect x="450" y="60" width="190" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="545" y="86" fill="#6d28d9" font-weight="bold" font-size="14">空值合并 ??</text>
+    <text x="545" y="106" fill="#4b5563" font-size="11">仅 null/undefined 触发默认</text>
+    <text x="545" y="123" fill="#4b5563" font-size="11">0 与 '' 不被覆盖</text>
+    <text x="545" y="140" fill="#4b5563" font-size="11">与 || 语义不同</text>
+    <rect x="660" y="60" width="190" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="755" y="86" fill="#047857" font-weight="bold" font-size="14">Promise.allSettled</text>
+    <text x="755" y="106" fill="#4b5563" font-size="11">等全部完成</text>
+    <text x="755" y="123" fill="#4b5563" font-size="11">返回 status 数组</text>
+    <text x="755" y="140" fill="#4b5563" font-size="11">不受单个失败影响</text>
+    <rect x="30" y="220" width="190" height="120" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="125" y="246" fill="#b45309" font-weight="bold" font-size="14">动态 import()</text>
+    <text x="125" y="266" fill="#4b5563" font-size="11">按需加载模块</text>
+    <text x="125" y="283" fill="#4b5563" font-size="11">返回 Promise</text>
+    <text x="125" y="300" fill="#4b5563" font-size="11">打包器据此代码分割</text>
+    <rect x="240" y="220" width="190" height="120" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="335" y="246" fill="#0f766e" font-weight="bold" font-size="14">globalThis</text>
+    <text x="335" y="266" fill="#4b5563" font-size="11">统一全局对象引用</text>
+    <text x="335" y="283" fill="#4b5563" font-size="11">浏览器/Node 通用</text>
+    <text x="335" y="300" fill="#4b5563" font-size="11">不再写 window||global</text>
+    <rect x="450" y="220" width="190" height="120" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+    <text x="545" y="246" fill="#c2410c" font-weight="bold" font-size="14">matchAll</text>
+    <text x="545" y="266" fill="#4b5563" font-size="11">一次性拿到全部匹配</text>
+    <text x="545" y="283" fill="#4b5563" font-size="11">返回迭代器</text>
+    <text x="545" y="300" fill="#4b5563" font-size="11">含捕获组信息</text>
+    <rect x="660" y="220" width="190" height="120" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="755" y="246" fill="#be123c" font-weight="bold" font-size="14">import.meta</text>
+    <text x="755" y="266" fill="#4b5563" font-size="11">模块元信息</text>
+    <text x="755" y="283" fill="#4b5563" font-size="11">import.meta.url</text>
+    <text x="755" y="300" fill="#4b5563" font-size="11">仅 ESM 可用</text>
+    <rect x="30" y="360" width="820" height="60" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="440" y="386" fill="#334155" font-weight="bold" font-size="13">共同点：让「取值更安全」与「加载更按需」——前者减少防御性代码，后者直接优化体积</text>
+</g>
+  <text x="440" y="452" text-anchor="middle" font-size="13" fill="#475569">ES2020 是前端工程大量使用的分水岭：?. 与 ?? 几乎成为日常写法</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

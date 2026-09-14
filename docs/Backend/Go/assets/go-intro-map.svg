@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Go 能力地图：四块拼图</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="70" width="250" height="140" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="165" y="96" fill="#0e7490" font-weight="bold" font-size="14">① 语言核心</text>
+    <text x="165" y="116" fill="#4b5563" font-size="11">静态类型 · 编译期检查</text>
+    <text x="165" y="133" fill="#4b5563" font-size="11">结构体 / 接口 / 方法</text>
+    <text x="165" y="150" fill="#4b5563" font-size="11">泛型（1.18+，1.26 增强）</text>
+    <text x="165" y="167" fill="#4b5563" font-size="11">错误即值（error）</text>
+    <rect x="320" y="70" width="250" height="140" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="445" y="96" fill="#4338ca" font-weight="bold" font-size="14">② 并发模型</text>
+    <text x="445" y="116" fill="#4b5563" font-size="11">goroutine（轻量协程）</text>
+    <text x="445" y="133" fill="#4b5563" font-size="11">channel（CSP 通信）</text>
+    <text x="445" y="150" fill="#4b5563" font-size="11">select 多路复用</text>
+    <text x="445" y="167" fill="#4b5563" font-size="11">sync 原子与锁</text>
+    <rect x="600" y="70" width="240" height="140" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="720" y="96" fill="#047857" font-weight="bold" font-size="14">③ 工程化</text>
+    <text x="720" y="116" fill="#4b5563" font-size="11">go mod 依赖管理</text>
+    <text x="720" y="133" fill="#4b5563" font-size="11">go test 内置测试</text>
+    <text x="720" y="150" fill="#4b5563" font-size="11">go vet / go fix</text>
+    <text x="720" y="167" fill="#4b5563" font-size="11">单一 gofmt 格式</text>
+    <rect x="40" y="240" width="250" height="140" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="165" y="266" fill="#b45309" font-weight="bold" font-size="14">④ 标准库与生态</text>
+    <text x="165" y="286" fill="#4b5563" font-size="11">net/http 开箱即用</text>
+    <text x="165" y="303" fill="#4b5563" font-size="11">encoding/json</text>
+    <text x="165" y="320" fill="#4b5563" font-size="11">database/sql</text>
+    <text x="165" y="337" fill="#4b5563" font-size="11">Gin / Echo / gRPC</text>
+    <rect x="320" y="240" width="250" height="140" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="445" y="266" fill="#6d28d9" font-weight="bold" font-size="14">⑤ 部署形态</text>
+    <text x="445" y="286" fill="#4b5563" font-size="11">编译为单二进制</text>
+    <text x="445" y="303" fill="#4b5563" font-size="11">跨平台交叉编译</text>
+    <text x="445" y="320" fill="#4b5563" font-size="11">容器镜像极小</text>
+    <text x="445" y="337" fill="#4b5563" font-size="11">启动快、内存低</text>
+    <rect x="600" y="240" width="240" height="140" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="720" y="266" fill="#be123c" font-weight="bold" font-size="14">⑥ 典型场景</text>
+    <text x="720" y="286" fill="#4b5563" font-size="11">云原生与中间件</text>
+    <text x="720" y="303" fill="#4b5563" font-size="11">API 网关 / 微服务</text>
+    <text x="720" y="320" fill="#4b5563" font-size="11">CLI 工具</text>
+    <text x="720" y="337" fill="#4b5563" font-size="11">DevOps 与数据管道</text>
+</g>
+  <text x="440" y="424" text-anchor="middle" font-size="13" fill="#475569">Go 的取舍：语言特性刻意精简，用 goroutine + channel 把并发做成一等公民；工程化能力全部内置在工具链里</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

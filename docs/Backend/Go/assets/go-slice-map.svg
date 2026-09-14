@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Slice 与 Map 的底层结构</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="60" width="180" height="90" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="130" y="86" fill="#4338ca" font-weight="bold" font-size="14">slice 变量（头结构）</text>
+    <text x="130" y="106" fill="#4b5563" font-size="11">ptr → 底层数组</text>
+    <text x="130" y="123" fill="#4b5563" font-size="11">len = 2</text>
+    <text x="130" y="140" fill="#4b5563" font-size="11">cap = 5</text>
+    <rect x="280" y="60" width="300" height="90" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="430" y="86" fill="#334155" font-weight="bold" font-size="14">底层数组（连续内存）</text>
+    <text x="430" y="106" fill="#4b5563" font-size="11">[0]=a  [1]=b  [2]=?  [3]=?  [4]=?</text>
+    <path d="M 220 105 L 278 105" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="249" y="99" text-anchor="middle" fill="#6b7280" font-size="11">ptr</text>
+    <rect x="40" y="190" width="250" height="120" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="165" y="216" fill="#b45309" font-weight="bold" font-size="14">append 的扩容规则</text>
+    <text x="165" y="236" fill="#4b5563" font-size="11">len &lt; cap：原地写入，多个 slice 会相互影响</text>
+    <text x="165" y="253" fill="#4b5563" font-size="11">len == cap：申请新数组并复制，旧 slice 不受影响</text>
+    <text x="165" y="270" fill="#4b5563" font-size="11">跨函数 append 结果必须接收返回值</text>
+    <rect x="320" y="190" width="260" height="120" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="450" y="216" fill="#be123c" font-weight="bold" font-size="14">切片的三种共享陷阱</text>
+    <text x="450" y="236" fill="#4b5563" font-size="11">s2 := s1[1:3] 与 s1 共享底层数组</text>
+    <text x="450" y="253" fill="#4b5563" font-size="11">append 后可能「污染」s1 的后段</text>
+    <text x="450" y="270" fill="#4b5563" font-size="11">需要独立副本用 copy 或 slices.Clone</text>
+    <rect x="610" y="190" width="230" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="725" y="216" fill="#047857" font-weight="bold" font-size="14">map 的要点</text>
+    <text x="725" y="236" fill="#4b5563" font-size="11">哈希桶 + 溢出桶</text>
+    <text x="725" y="253" fill="#4b5563" font-size="11">读写非并发安全</text>
+    <text x="725" y="270" fill="#4b5563" font-size="11">遍历顺序随机</text>
+    <text x="725" y="287" fill="#4b5563" font-size="11">nil map 可读不可写</text>
+</g>
+  <text x="440" y="422" text-anchor="middle" font-size="13" fill="#475569">记住两句话：slice 是「数组的一段视图」，map 是「运行时哈希表的指针」</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

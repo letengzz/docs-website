@@ -286,4 +286,4 @@ npx create-expo-app@latest my-app
 
 ## 下一步
 
-- [最佳实践](BestPractices/index.md) - React 开发中的常见模式和优化技巧
+- [最佳实践](../BestPractices/index.md) - React 开发中的常见模式和优化技巧

@@ -260,10 +260,10 @@ BigDecimal finalPrice = UserType.valueOf(type).apply(price);
 
 ## 相关专题
 
-- 模式总览：[设计原则](Principles/index.md) · [创建型](Creational/index.md) · [结构型](Structural/index.md) · [行为型](Behavioral/index.md)
-- 现代 Java 的简化写法：[现代 Java 与设计模式](ModernJava/index.md)
-- 重构实战：[重构实战](RefactorPractice/index.md)
-- 框架中的应用：[框架中的应用](FrameworkUsage/index.md)
+- 模式总览：[设计原则](../Principles/index.md) · [创建型](../Creational/index.md) · [结构型](../Structural/index.md) · [行为型](../Behavioral/index.md)
+- 现代 Java 的简化写法：[现代 Java 与设计模式](../ModernJava/index.md)
+- 重构实战：[重构实战](../RefactorPractice/index.md)
+- 框架中的应用：[框架中的应用](../FrameworkUsage/index.md)
 
 ## 参考资料
 

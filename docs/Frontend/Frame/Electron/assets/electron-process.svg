@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="470" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Electron 进程模型</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="60" width="250" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="155" y="86" fill="#4338ca" font-weight="bold" font-size="14">主进程 Main</text>
+    <text x="155" y="106" fill="#4b5563" font-size="11">Node.js 环境，唯一</text>
+    <text x="155" y="123" fill="#4b5563" font-size="11">创建与管理窗口</text>
+    <text x="155" y="140" fill="#4b5563" font-size="11">访问系统 API（文件、菜单、托盘）</text>
+    <text x="155" y="157" fill="#4b5563" font-size="11">承载 ipcMain</text>
+    <rect x="320" y="60" width="250" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="445" y="86" fill="#047857" font-weight="bold" font-size="14">渲染进程 Renderer</text>
+    <text x="445" y="106" fill="#4b5563" font-size="11">Chromium 页面环境</text>
+    <text x="445" y="123" fill="#4b5563" font-size="11">每窗口一个（可多窗口）</text>
+    <text x="445" y="140" fill="#4b5563" font-size="11">默认无 Node 权限</text>
+    <text x="445" y="157" fill="#4b5563" font-size="11">承载 ipcRenderer</text>
+    <rect x="610" y="60" width="240" height="150" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="730" y="86" fill="#0f766e" font-weight="bold" font-size="14">预加载 Preload</text>
+    <text x="730" y="106" fill="#4b5563" font-size="11">窗口级脚本，运行在渲染前</text>
+    <text x="730" y="123" fill="#4b5563" font-size="11">有 Node 能力，可向页面暴露接口</text>
+    <text x="730" y="140" fill="#4b5563" font-size="11">桥接 contextBridge</text>
+    <text x="730" y="157" fill="#4b5563" font-size="11">安全边界的关键一环</text>
+    <path d="M 280 135 L 318 135" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="299" y="129" text-anchor="middle" fill="#6b7280" font-size="11">创建窗口</text>
+    <path d="M 570 135 L 608 135" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="589" y="129" text-anchor="middle" fill="#6b7280" font-size="11">注入</text>
+    <rect x="30" y="240" width="400" height="170" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="230" y="266" fill="#b45309" font-weight="bold" font-size="14">运行环境对比</text>
+    <text x="230" y="286" fill="#4b5563" font-size="11">主进程：完整 Node API、无 DOM</text>
+    <text x="230" y="303" fill="#4b5563" font-size="11">渲染进程：完整 DOM、无 Node（默认）</text>
+    <text x="230" y="320" fill="#4b5563" font-size="11">Preload：两者都有，但应做最小暴露</text>
+    <text x="230" y="337" fill="#4b5563" font-size="11">工具进程 Utility：处理杂务（如网络）</text>
+    <rect x="450" y="240" width="400" height="170" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="650" y="266" fill="#be123c" font-weight="bold" font-size="14">常见误区</text>
+    <text x="650" y="286" fill="#4b5563" font-size="11">在渲染进程直接 require('fs')</text>
+    <text x="650" y="303" fill="#4b5563" font-size="11">关闭 contextIsolation 图省事</text>
+    <text x="650" y="320" fill="#4b5563" font-size="11">把所有逻辑堆在主进程</text>
+    <text x="650" y="337" fill="#4b5563" font-size="11">用 remote 模块（已废弃且不安全）</text>
+</g>
+  <text x="440" y="452" text-anchor="middle" font-size="13" fill="#475569">记住一句话：界面在渲染进程，系统能力在主进程，两者之间只通过 IPC 通信</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

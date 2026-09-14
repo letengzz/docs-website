@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="410" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">模块与依赖：版本选择如何发生</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="200" height="110" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="130" y="96" fill="#0e7490" font-weight="bold" font-size="14">go.mod</text>
+    <text x="130" y="116" fill="#4b5563" font-size="11">module example.com/app</text>
+    <text x="130" y="133" fill="#4b5563" font-size="11">go 1.26</text>
+    <text x="130" y="150" fill="#4b5563" font-size="11">require ...</text>
+    <rect x="260" y="70" width="200" height="110" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="360" y="96" fill="#4338ca" font-weight="bold" font-size="14">依赖图</text>
+    <text x="360" y="116" fill="#4b5563" font-size="11">app → libA</text>
+    <text x="360" y="133" fill="#4b5563" font-size="11">app → libB</text>
+    <text x="360" y="150" fill="#4b5563" font-size="11">libA → libC v1.2</text>
+    <rect x="490" y="70" width="180" height="110" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="580" y="96" fill="#6d28d9" font-weight="bold" font-size="14">MVS 最小版本选择</text>
+    <text x="580" y="116" fill="#4b5563" font-size="11">取满足所有约束</text>
+    <text x="580" y="133" fill="#4b5563" font-size="11">的最低可行版本</text>
+    <rect x="700" y="70" width="150" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="775" y="96" fill="#047857" font-weight="bold" font-size="14">go.sum</text>
+    <text x="775" y="116" fill="#4b5563" font-size="11">校验和锁定</text>
+    <text x="775" y="133" fill="#4b5563" font-size="11">防篡改</text>
+    <path d="M 230 125 L 258 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 460 125 L 488 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 670 125 L 698 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="230" width="250" height="130" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="155" y="256" fill="#b45309" font-weight="bold" font-size="14">常用命令</text>
+    <text x="155" y="276" fill="#4b5563" font-size="11">go mod tidy 清理并补齐依赖</text>
+    <text x="155" y="293" fill="#4b5563" font-size="11">go mod download 预热缓存</text>
+    <text x="155" y="310" fill="#4b5563" font-size="11">go mod why 解释为何引入</text>
+    <text x="155" y="327" fill="#4b5563" font-size="11">go mod vendor 生成 vendor 目录</text>
+    <rect x="300" y="230" width="270" height="130" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="435" y="256" fill="#0f766e" font-weight="bold" font-size="14">工作区与替换</text>
+    <text x="435" y="276" fill="#4b5563" font-size="11">go.work 聚合多个本地模块</text>
+    <text x="435" y="293" fill="#4b5563" font-size="11">replace 指向本地路径或 fork</text>
+    <text x="435" y="310" fill="#4b5563" font-size="11">发布前务必删除临时 replace</text>
+    <rect x="590" y="230" width="260" height="130" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="720" y="256" fill="#be123c" font-weight="bold" font-size="14">常见坑</text>
+    <text x="720" y="276" fill="#4b5563" font-size="11">版本号必须符合语义化版本 vX.Y.Z</text>
+    <text x="720" y="293" fill="#4b5563" font-size="11">v2+ 模块路径必须以 /v2 结尾</text>
+    <text x="720" y="310" fill="#4b5563" font-size="11">私有仓库要配 GOPRIVATE / GONOSUMDB</text>
+</g>
+  <text x="440" y="392" text-anchor="middle" font-size="13" fill="#475569">与 npm 的差别：Go 靠「最小版本选择」而不是「就近覆盖」，依赖升级是可预测的</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

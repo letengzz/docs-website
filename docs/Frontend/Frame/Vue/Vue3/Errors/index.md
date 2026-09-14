@@ -159,4 +159,4 @@ nvm use 24
 4. `v-model` 不再出现 prop 修改警告。
 5. `npm run type-check && npm run build` 全部通过。
 
-更多问题与最佳实践可参考本站 [Vue3 性能优化](Performance/index.md) 与 [Vue3 实战案例](Practice/index.md)。
+更多问题与最佳实践可参考本站 [Vue3 性能优化](../Performance/index.md) 与 [Vue3 实战案例](../Practice/index.md)。

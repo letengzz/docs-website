@@ -330,3 +330,15 @@ export default {
 - 需要多格式输出时使用 Rollup
 - 应用开发推荐使用 Webpack 或 Vite
 :::
+
+## 相关专题
+
+- [构建工具概述](../Overview/index.md)：四个构建工具的横向对比与选型
+- [Vite 深入](../Vite/index.md)：Vite 的生产构建与 Rollup 插件 API 的渊源
+- [Webpack 深入](../Webpack/index.md)：应用打包的完整能力对照
+- [esbuild](../esbuild/index.md)：可作为 Rollup 的压缩与转换加速器
+- [前端工程化](../../../Others/FrontendEngineering/index.md)：库发布在工程体系中的位置
+
+::: warning 说明
+Rollup 的插件 API 被 Vite 生产构建沿用，因此**理解 Rollup 插件钩子（`resolveId` / `load` / `transform` / `renderChunk`）对写 Vite 插件同样有价值**。两者并不割裂。
+:::

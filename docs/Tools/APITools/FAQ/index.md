@@ -33,7 +33,7 @@ Error: unable to verify the first certificate
 
 **排查顺序**：
 
-1. Authorization 头是否携带（`Bearer {{token}}`）。
+1. Authorization 头是否携带（<span v-pre>`Bearer {{token}}`</span>）。
 2. token 是否过期或写入失败。
 3. 账号是否有权限。
 
@@ -44,7 +44,7 @@ console.log(pm.environment.get("token"));
 
 ## 变量与脚本类
 
-### Q4：`{{baseUrl}}` 没被替换
+### Q4：<span v-pre>`{{baseUrl}}`</span> 没被替换
 
 **原因**：变量名拼写错误、作用域不存在、环境未选中。
 

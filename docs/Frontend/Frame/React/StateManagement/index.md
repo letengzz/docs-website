@@ -488,6 +488,6 @@ graph TD
 
 ## 下一步
 
-- [路由管理](Routing/index.md) - React Router 使用
-- [生态系统](Ecosystem/index.md) - 常用工具和库
-- [最佳实践](BestPractices/index.md) - 开发中的常见模式和优化技巧
+- [路由管理](../Routing/index.md) - React Router 使用
+- [生态系统](../Ecosystem/index.md) - 常用工具和库
+- [最佳实践](../BestPractices/index.md) - 开发中的常见模式和优化技巧

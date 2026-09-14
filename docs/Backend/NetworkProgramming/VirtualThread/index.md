@@ -247,9 +247,9 @@ jcmd <pid> JFR.start name=vt settings=profile duration=30s filename=vt.jfr
 
 ## 相关专题
 
-- IO 模型基础（BIO/NIO/多路复用）：[Socket 与 IO 模型](SocketIO/index.md)
-- Netty 线程模型（另一种高并发解法）：[Netty 进阶](NettyAdvanced/index.md)
-- 压测与性能基准：[性能基准与压测](BenchmarkPractice/index.md)
+- IO 模型基础（BIO/NIO/多路复用）：[Socket 与 IO 模型](../SocketIO/index.md)
+- Netty 线程模型（另一种高并发解法）：[Netty 进阶](../NettyAdvanced/index.md)
+- 压测与性能基准：[性能基准与压测](../BenchmarkPractice/index.md)
 - 现代 Java 语言特性（ScopedValue / record）：[现代 Java 与设计模式](../../DesignPatterns/ModernJava/index.md)
 
 ## 参考资料

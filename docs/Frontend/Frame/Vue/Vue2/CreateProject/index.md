@@ -78,7 +78,7 @@ vm.$mount(document.getElementById('app'))
 
 在 Vue 中的 data 配置项进行动态的渲染页面。data 是 Vue 实例的数据对象。此对象必须是纯粹的对象。
 
-使用 `{{}}` 插值语法（也称为胡子语法）从 data 中根据 key 来获取 value，并将 value 插入到对应的位置。
+使用 <span v-pre>`{{}}`</span> 插值语法（也称为胡子语法）从 data 中根据 key 来获取 value，并将 value 插入到对应的位置。
 
 ### 基本数据类型
 

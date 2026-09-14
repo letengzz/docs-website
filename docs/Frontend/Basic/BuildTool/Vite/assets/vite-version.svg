@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">版本演进与迁移要点</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="160" height="110" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="110" y="96" fill="#334155" font-weight="bold" font-size="14">Vite 5</text>
+    <text x="110" y="116" fill="#4b5563" font-size="11">Node 18+</text>
+    <text x="110" y="133" fill="#4b5563" font-size="11">esbuild + Rollup</text>
+    <text x="110" y="150" fill="#4b5563" font-size="11">CJS API 弃用警告</text>
+    <rect x="210" y="70" width="150" height="110" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="285" y="96" fill="#b45309" font-weight="bold" font-size="14">Vite 6</text>
+    <text x="285" y="116" fill="#4b5563" font-size="11">环境 API 实验</text>
+    <text x="285" y="133" fill="#4b5563" font-size="11">Node 18/20+</text>
+    <rect x="380" y="70" width="150" height="110" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+    <text x="455" y="96" fill="#c2410c" font-weight="bold" font-size="14">Vite 7</text>
+    <text x="455" y="116" fill="#4b5563" font-size="11">Node 20.19+ / 22.12+</text>
+    <text x="455" y="133" fill="#4b5563" font-size="11">ESM only 发布</text>
+    <text x="455" y="150" fill="#4b5563" font-size="11">默认目标提升</text>
+    <rect x="550" y="70" width="150" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="625" y="96" fill="#047857" font-weight="bold" font-size="14">Vite 8</text>
+    <text x="625" y="116" fill="#4b5563" font-size="11">Rolldown 统一打包</text>
+    <text x="625" y="133" fill="#4b5563" font-size="11">Oxc 编译器</text>
+    <text x="625" y="150" fill="#4b5563" font-size="11">内置 Devtools</text>
+    <rect x="720" y="70" width="130" height="110" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="785" y="96" fill="#0f766e" font-weight="bold" font-size="14">迁移</text>
+    <text x="785" y="116" fill="#4b5563" font-size="11">vite migrate</text>
+    <text x="785" y="133" fill="#4b5563" font-size="11">插件兼容层</text>
+    <path d="M 190 125 L 208 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 360 125 L 378 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 530 125 L 548 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 700 125 L 718 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="220" width="400" height="130" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="230" y="246" fill="#be123c" font-weight="bold" font-size="14">Vite 8 的无障碍变更</text>
+    <text x="230" y="266" fill="#4b5563" font-size="11">Node.js 要求 20.19+ / 22.12+（支持 require(esm) 免 flag）</text>
+    <text x="230" y="283" fill="#4b5563" font-size="11">以 ESM only 形式分发，CJS require('vite') 不再支持</text>
+    <text x="230" y="300" fill="#4b5563" font-size="11">lightningcss 与 Rolldown 转为常规依赖，安装体积增加约 15 MB</text>
+    <rect x="450" y="220" width="400" height="130" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="650" y="246" fill="#0f766e" font-weight="bold" font-size="14">迁移建议顺序</text>
+    <text x="650" y="266" fill="#4b5563" font-size="11">先升 Node 到受支持版本</text>
+    <text x="650" y="283" fill="#4b5563" font-size="11">跑 npx vite migrate 自动转换配置</text>
+    <text x="650" y="300" fill="#4b5563" font-size="11">逐个验证插件与 rollupOptions 自定义项</text>
+    <text x="650" y="317" fill="#4b5563" font-size="11">Rolldown 兼容 Rollup 插件 API，多数插件可直接用</text>
+</g>
+  <text x="440" y="402" text-anchor="middle" font-size="13" fill="#475569">小版本不建目录、页内标注即可；出现破坏性大版本时按 AGENTS 规范建版本目录并保留旧内容</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

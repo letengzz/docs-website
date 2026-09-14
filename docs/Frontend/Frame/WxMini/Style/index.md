@@ -95,5 +95,158 @@ text {
 }
 ```
 
+## rpx 与多端适配
+
+`rpx`（responsive pixel）是小程序的响应式单位：**规定屏幕宽度为 750rpx**，由运行时按设备宽度换算。
+
+| 设备 | 屏幕宽度 | 1rpx 实际像素 |
+| --- | --- | --- |
+| iPhone 6/7/8（375px 逻辑宽） | 750rpx | 0.5px |
+| iPhone 14 Pro Max（430px） | 750rpx | ≈0.573px |
+| 平板 | 750rpx | 更大 |
+
+```css
+/* 设计稿按 750px 宽标注时，数值直接写 rpx 即可 */
+.card {
+  width: 690rpx;      /* 设计稿 690px */
+  padding: 24rpx;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+}
+```
+
+::: danger 注意
+1. **`rpx` 不适合字体以外的极端值**：字号、边框这类需要「感知一致」的尺寸，过大或过小时用 `px` 更可控（例如 1px 的细线，写 `1rpx` 在部分设备上会消失）。
+2. **不要在 `calc()` 中混用导致精度问题**：`calc(100% - 30rpx)` 可用，但要意识到换算发生在运行时。
+3. **横屏与平板需额外验证**：`rpx` 按屏幕宽度换算，宽屏设备上元素会被等比放大，必要时用媒体查询限定布局。
+:::
+
+## 样式隔离
+
+页面样式默认只作用于当前页面，但**自定义组件的样式隔离规则不同**：
+
+| 场景 | 默认行为 |
+| --- | --- |
+| 页面 wxss | 只作用于当前页面 |
+| 组件 wxss | 默认只作用于组件内，也不受页面样式影响 |
+| 全局 app.wxss | 对所有页面生效，**但默认不作用于自定义组件内部** |
+| 页面使用组件 | 页面样式**不会**影响组件内部节点（除非开启穿透） |
+
+```javascript [custom-component.js]
+Component({
+  options: {
+    // 让 app.wxss 中的样式也能作用于该组件（按需开启）
+    addGlobalClass: true,
+    // 允许外部类名穿透（配合 externalClasses 使用）
+    styleIsolation: 'apply-shared',
+  },
+})
+```
+
+| `styleIsolation` 取值 | 含义 |
+| --- | --- |
+| `isolated`（默认） | 完全隔离，内外互不影响 |
+| `apply-shared` | 外部样式可影响组件内，组件内不影响外部 |
+| `shared` | 双向影响（谨慎使用，容易污染） |
+
+::: warning 说明
+`shared` 会让组件与页面样式互相污染，组件复用性大幅下降。**优先用 `externalClasses` 显式接收外部类名**，而不是直接打开 `shared`。
+:::
+
+## 字体图标
+
+小程序没有 Web 的字体图标加载便利性，通常有两种做法：
+
+| 方式 | 做法 | 特点 |
+| --- | --- | --- |
+| 字体图标（iconfont） | 下载字体文件，用 `@font-face` 引入 | 体积小、可改色，但需处理字体文件路径 |
+| 图片 / SVG 图标 | 用 `<image>` 引用 | 简单，但不易改色、体积相对大 |
+
+```css [app.wxss]
+/* 注意：小程序不支持网络字体在部分平台的自动加载，建议使用本地字体文件 */
+@font-face {
+  font-family: 'iconfont';
+  src: url('./assets/iconfont.ttf') format('truetype');
+}
+
+.iconfont {
+  font-family: 'iconfont';
+  font-size: 32rpx;
+}
+```
+
+```html [使用方式]
+<text class="iconfont">&#xe600;</text>
+```
+
+::: danger 注意
+**小程序不支持 `@import` 跨包引用样式文件**，字体与图标资源必须放在可被打包到的目录中。另外，字体文件会占用主包体积（见 [分包加载](../Subpackage/index.md)），图标较多时优先考虑只引入必要字形。
+:::
+
+## 暗黑模式适配
+
+小程序支持通过 `darkmode` 配置跟随系统主题：
+
+```json [app.json]
+{
+  "darkmode": true,
+  "themeLocation": "theme.json"
+}
+```
+
+```json [theme.json]
+{
+  "light": {
+    "bgColor": "#ffffff",
+    "textColor": "#333333"
+  },
+  "dark": {
+    "bgColor": "#1f1f1f",
+    "textColor": "#e5e5e5"
+  }
+}
+```
+
+```css
+/* 使用主题变量 */
+.page {
+  background: var(--bgColor);
+  color: var(--textColor);
+}
+```
+
+也可以直接用媒体查询：
+
+```css
+@media (prefers-color-scheme: dark) {
+  .card { background: #1f1f1f; color: #e5e5e5; }
+}
+```
+
+::: tip 建议
+暗黑模式建议**从一开始就纳入设计**，而不是上线后再补。补做时最容易漏的是：图片背景（白底图在黑底上很刺眼）、阴影（黑底上阴影无效，需改用边框）、状态色（红绿在深色背景上的对比度）。
+:::
+
+## 验证方式
+
+1. 在 iPhone 与宽屏设备（或开发者工具切换设备）上对比同一页面的 `rpx` 尺寸表现，确认布局没有明显失衡。
+2. 在页面中给组件外层加一个通用类名，确认组件内部样式未被意外影响（验证隔离生效）。
+3. 引入一个字体图标并在真机上确认能正常显示（模拟器与真机的字体加载行为可能不同）。
+4. 切换系统主题，确认页面颜色随之变化且文字对比度足够。
+
+## 相关专题
+
+- [自定义组件](../CustomComponent/index.md)：组件样式隔离与 `externalClasses`
+- [分包加载](../Subpackage/index.md)：字体与图标资源对包体积的影响
+- [Skyline 渲染引擎](../Skyline/index.md)：新渲染引擎下的样式差异
+- [组件](../Component/index.md)：内置组件的样式定制方式
+- [微信小程序 配置文件](../Settings/index.md)：`darkmode` 等全局配置
+
+## 参考资料
+
+- 微信小程序官方文档 · WXSS：https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html
+- 微信小程序官方文档 · 尺寸单位：https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html#尺寸单位
+- 微信小程序官方文档 · 组件样式隔离：https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html
+
 
 

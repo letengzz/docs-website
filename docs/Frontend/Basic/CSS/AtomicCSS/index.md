@@ -184,5 +184,5 @@ import UnoCSS from 'unocss/vite'
 - [Iconify 图标库](https://icon-sets.iconify.design/)
 
 ::: tip 进阶阅读
-原子化 CSS 的工程化组合、主题定制与性能验证见 [原子化 CSS 实战](Advanced/AtomicCSS/index.md)。
+原子化 CSS 的工程化组合、主题定制与性能验证见 [原子化 CSS 实战](../Advanced/AtomicCSS/index.md)。
 :::

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Worker 多线程模型</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="230" height="120" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="145" y="96" fill="#0e7490" font-weight="bold" font-size="14">主线程（逻辑层）</text>
+    <text x="145" y="116" fill="#4b5563" font-size="11">页面与组件逻辑</text>
+    <text x="145" y="133" fill="#4b5563" font-size="11">setData 触发渲染</text>
+    <text x="145" y="150" fill="#4b5563" font-size="11">不能做重计算</text>
+    <rect x="300" y="70" width="250" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="425" y="96" fill="#4338ca" font-weight="bold" font-size="14">Worker 线程</text>
+    <text x="425" y="116" fill="#4b5563" font-size="11">独立 JS 运行环境</text>
+    <text x="425" y="133" fill="#4b5563" font-size="11">可跑大量计算 / 解析</text>
+    <text x="425" y="150" fill="#4b5563" font-size="11">无 DOM，不能操作界面</text>
+    <rect x="590" y="70" width="260" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="720" y="96" fill="#047857" font-weight="bold" font-size="14">通信</text>
+    <text x="720" y="116" fill="#4b5563" font-size="11">postMessage 传递数据</text>
+    <text x="720" y="133" fill="#4b5563" font-size="11">onMessage 接收结果</text>
+    <text x="720" y="150" fill="#4b5563" font-size="11">结构化克隆，不能传函数</text>
+    <path d="M 260 130 L 298 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="279" y="124" text-anchor="middle" fill="#6b7280" font-size="11">postMessage</text>
+    <path d="M 550 130 L 588 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="569" y="124" text-anchor="middle" fill="#6b7280" font-size="11">返回结果</text>
+    <rect x="30" y="230" width="400" height="180" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="230" y="256" fill="#0f766e" font-weight="bold" font-size="14">适合放进 Worker 的任务</text>
+    <text x="230" y="276" fill="#4b5563" font-size="11">大数据量 JSON 解析</text>
+    <text x="230" y="293" fill="#4b5563" font-size="11">图片/文本的编解码与加密</text>
+    <text x="230" y="310" fill="#4b5563" font-size="11">复杂算法（排序、图计算、校验）</text>
+    <text x="230" y="327" fill="#4b5563" font-size="11">批量数据处理与统计</text>
+    <rect x="450" y="230" width="400" height="180" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="650" y="256" fill="#be123c" font-weight="bold" font-size="14">不适合放进 Worker 的任务</text>
+    <text x="650" y="276" fill="#4b5563" font-size="11">任何需要 setData 的界面更新</text>
+    <text x="650" y="293" fill="#4b5563" font-size="11">依赖 wx 界面类 API 的逻辑</text>
+    <text x="650" y="310" fill="#4b5563" font-size="11">数据量很小的计算（通信开销更大）</text>
+    <text x="650" y="327" fill="#4b5563" font-size="11">需要共享复杂对象引用的场景</text>
+</g>
+  <text x="440" y="432" text-anchor="middle" font-size="13" fill="#475569">原则：把「纯计算」搬进 Worker，把「界面更新」留在主线程；通信数据尽量精简</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -332,10 +332,10 @@ printf '\xCA\xFE\x01\x01\x01\x00\x00\x00\x00' | nc 127.0.0.1 9000
 
 ## 相关专题
 
-- 粘包拆包原理：[粘包拆包与编解码](StickyHalf/index.md)
-- Netty 进阶（线程模型、内存管理）：[Netty 进阶](NettyAdvanced/index.md)
-- HTTP/2 与 gRPC 协议：[HTTP 与 HTTPS 协议](HttpHttps/index.md)
-- 压测验证协议性能：[性能基准与压测](BenchmarkPractice/index.md)
+- 粘包拆包原理：[粘包拆包与编解码](../StickyHalf/index.md)
+- Netty 进阶（线程模型、内存管理）：[Netty 进阶](../NettyAdvanced/index.md)
+- HTTP/2 与 gRPC 协议：[HTTP 与 HTTPS 协议](../HttpHttps/index.md)
+- 压测验证协议性能：[性能基准与压测](../BenchmarkPractice/index.md)
 
 ## 参考资料
 

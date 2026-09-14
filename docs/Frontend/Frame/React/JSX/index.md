@@ -320,5 +320,5 @@ React 17+ 引入了新的 JSX 转换，无需在文件中显式 `import React fr
 
 掌握了 JSX 语法后，推荐学习：
 
-- [组件开发](Components/index.md) - 创建和组织 React 组件
-- [Hooks 详解](Hooks/index.md) - 使用 Hooks 为组件添加状态和逻辑
+- [组件开发](../Components/index.md) - 创建和组织 React 组件
+- [Hooks 详解](../Hooks/index.md) - 使用 Hooks 为组件添加状态和逻辑

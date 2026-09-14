@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">插件钩子：一个插件的生命周期</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="60" width="160" height="80" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="110" y="86" fill="#0e7490" font-weight="bold" font-size="14">config</text>
+    <text x="110" y="106" fill="#4b5563" font-size="11">修改最终配置</text>
+    <rect x="210" y="60" width="160" height="80" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="290" y="86" fill="#0e7490" font-weight="bold" font-size="14">configResolved</text>
+    <text x="290" y="106" fill="#4b5563" font-size="11">读取最终配置</text>
+    <rect x="390" y="60" width="150" height="80" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="465" y="86" fill="#4338ca" font-weight="bold" font-size="14">configureServer</text>
+    <text x="465" y="106" fill="#4b5563" font-size="11">挂载自定义中间件</text>
+    <rect x="560" y="60" width="140" height="80" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="630" y="86" fill="#4338ca" font-weight="bold" font-size="14">buildStart</text>
+    <text x="630" y="106" fill="#4b5563" font-size="11">构建开始</text>
+    <rect x="720" y="60" width="130" height="80" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="785" y="86" fill="#6d28d9" font-weight="bold" font-size="14">resolveId</text>
+    <text x="785" y="106" fill="#4b5563" font-size="11">解析模块路径</text>
+    <path d="M 190 100 L 208 100" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 370 100 L 388 100" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 540 100 L 558 100" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 700 100 L 718 100" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="180" width="260" height="90" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="160" y="206" fill="#6d28d9" font-weight="bold" font-size="14">load / transform</text>
+    <text x="160" y="226" fill="#4b5563" font-size="11">load：读取模块内容</text>
+    <text x="160" y="243" fill="#4b5563" font-size="11">transform：转换内容</text>
+    <rect x="310" y="180" width="250" height="90" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="435" y="206" fill="#047857" font-weight="bold" font-size="14">renderChunk / generateBundle</text>
+    <text x="435" y="226" fill="#4b5563" font-size="11">改动产物与 chunk</text>
+    <rect x="580" y="180" width="270" height="90" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="715" y="206" fill="#b45309" font-weight="bold" font-size="14">closeBundle</text>
+    <text x="715" y="226" fill="#4b5563" font-size="11">清理资源</text>
+    <path d="M 290 225 L 308 225" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 560 225 L 578 225" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="300" width="400" height="120" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="230" y="326" fill="#0f766e" font-weight="bold" font-size="14">开发期专用钩子</text>
+    <text x="230" y="346" fill="#4b5563" font-size="11">handleHotUpdate 自定义 HMR 更新范围</text>
+    <text x="230" y="363" fill="#4b5563" font-size="11">transformIndexHtml 改写 index.html</text>
+    <text x="230" y="380" fill="#4b5563" font-size="11">server.hmr 相关事件</text>
+    <rect x="450" y="300" width="400" height="120" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="650" y="326" fill="#be123c" font-weight="bold" font-size="14">写插件的三条建议</text>
+    <text x="650" y="346" fill="#4b5563" font-size="11">钩子里不要做同步阻塞 IO</text>
+    <text x="650" y="363" fill="#4b5563" font-size="11">用 enforce: 'pre' / 'post' 控制顺序</text>
+    <text x="650" y="380" fill="#4b5563" font-size="11">只处理自己关心的文件类型（filter 判断）</text>
+</g>
+  <text x="440" y="436" text-anchor="middle" font-size="13" fill="#475569">开发与生产共用同一套钩子，因此插件行为天然一致——这是 Vite 相对「双引擎」方案的最大优势</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

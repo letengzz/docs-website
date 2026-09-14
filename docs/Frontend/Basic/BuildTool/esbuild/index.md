@@ -320,3 +320,15 @@ esbuild src/index.js --bundle --outfile=dist/bundle.js --define:VERSION=1.0.0
 - Vite 底层使用 esbuild
 - 库开发可考虑直接使用 esbuild
 :::
+
+## 相关专题
+
+- [构建工具概述](../Overview/index.md)：四个构建工具的横向对比与选型
+- [Vite 深入](../Vite/index.md)：esbuild 在 Vite 中的角色与生产者工具链的演进
+- [Webpack 深入](../Webpack/index.md)：用 `esbuild-loader` 替换 babel / terser 提速的做法
+- [Rollup](../Rollup/index.md)：常与 esbuild 组合用于库打包
+- [前端性能优化 · 构建优化](../../../Others/PerformanceOptimization/Build/index.md)：构建耗时与产物体积的评估
+
+::: danger 注意
+esbuild **不是「功能更少的 Webpack」**，而是一个定位不同的转换 / 打包器：它追求速度，因此在**代码分割的精细控制、插件生态、兼容降级**上不如 Webpack。不要期待用它完整替代大型应用的构建方案。
+:::

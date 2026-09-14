@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="410" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">channel 与 select：用通信共享内存</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="80" width="180" height="100" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="120" y="106" fill="#0e7490" font-weight="bold" font-size="14">goroutine A</text>
+    <text x="120" y="126" fill="#4b5563" font-size="11">ch &lt;- v</text>
+    <text x="120" y="143" fill="#4b5563" font-size="11">发送</text>
+    <rect x="340" y="80" width="180" height="100" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="430" y="106" fill="#047857" font-weight="bold" font-size="14">goroutine B</text>
+    <text x="430" y="126" fill="#4b5563" font-size="11">v := &lt;-ch</text>
+    <text x="430" y="143" fill="#4b5563" font-size="11">接收</text>
+    <rect x="230" y="95" width="90" height="70" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="275" y="121" fill="#4338ca" font-weight="bold" font-size="14">channel</text>
+    <text x="275" y="141" fill="#4b5563" font-size="11">管道</text>
+    <text x="275" y="158" fill="#4b5563" font-size="11">FIFO</text>
+    <path d="M 210 130 L 228 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 322 130 L 338 130" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="220" width="250" height="140" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="155" y="246" fill="#b45309" font-weight="bold" font-size="14">无缓冲 vs 有缓冲</text>
+    <text x="155" y="266" fill="#4b5563" font-size="11">无缓冲：发送与接收必须同时就绪（同步握手）</text>
+    <text x="155" y="283" fill="#4b5563" font-size="11">有缓冲：缓冲区没满就能发送</text>
+    <text x="155" y="300" fill="#4b5563" font-size="11">缓冲满/空时会阻塞，可能造成死锁</text>
+    <rect x="300" y="220" width="270" height="140" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="435" y="246" fill="#6d28d9" font-weight="bold" font-size="14">select 多路复用</text>
+    <text x="435" y="266" fill="#4b5563" font-size="11">select { case v := &lt;-a: ...</text>
+    <text x="435" y="283" fill="#4b5563" font-size="11">  case b &lt;- x: ...</text>
+    <text x="435" y="300" fill="#4b5563" font-size="11">  case &lt;-time.After(d): ... }</text>
+    <text x="435" y="317" fill="#4b5563" font-size="11">多个就绪时随机选一个</text>
+    <rect x="590" y="220" width="260" height="140" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="720" y="246" fill="#be123c" font-weight="bold" font-size="14">关闭与惯用法</text>
+    <text x="720" y="266" fill="#4b5563" font-size="11">close(ch) 表示「不会再有新值」</text>
+    <text x="720" y="283" fill="#4b5563" font-size="11">接收方用 v, ok := &lt;-ch 判断是否关闭</text>
+    <text x="720" y="300" fill="#4b5563" font-size="11">只应由发送方关闭；向已关闭 channel 发送会 panic</text>
+    <text x="720" y="317" fill="#4b5563" font-size="11">用 context 做取消与超时</text>
+</g>
+  <text x="440" y="392" text-anchor="middle" font-size="13" fill="#475569">CSP 口号：不要通过共享内存来通信，而要通过通信来共享内存</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

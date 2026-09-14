@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">构建与运行时优化手段</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="190" height="120" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="125" y="96" fill="#0e7490" font-weight="bold" font-size="14">持久化缓存</text>
+    <text x="125" y="116" fill="#4b5563" font-size="11">cache: { type: 'filesystem' }</text>
+    <text x="125" y="133" fill="#4b5563" font-size="11">二次构建快 5~10 倍</text>
+    <text x="125" y="150" fill="#4b5563" font-size="11">cache.buildDependencies</text>
+    <rect x="240" y="70" width="190" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="335" y="96" fill="#4338ca" font-weight="bold" font-size="14">Tree Shaking</text>
+    <text x="335" y="116" fill="#4b5563" font-size="11">需要 ESM 语法与 sideEffects 标记</text>
+    <text x="335" y="133" fill="#4b5563" font-size="11">production 模式默认开启</text>
+    <text x="335" y="150" fill="#4b5563" font-size="11">移除未使用导出</text>
+    <rect x="450" y="70" width="190" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="545" y="96" fill="#6d28d9" font-weight="bold" font-size="14">压缩与 Polyfill</text>
+    <text x="545" y="116" fill="#4b5563" font-size="11">TerserPlugin 压缩 JS</text>
+    <text x="545" y="133" fill="#4b5563" font-size="11">CssMinimizerPlugin 压缩 CSS</text>
+    <text x="545" y="150" fill="#4b5563" font-size="11">按需引入 polyfill</text>
+    <rect x="660" y="70" width="190" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="755" y="96" fill="#047857" font-weight="bold" font-size="14">并行与多进程</text>
+    <text x="755" y="116" fill="#4b5563" font-size="11">thread-loader 并行转换</text>
+    <text x="755" y="133" fill="#4b5563" font-size="11">ESBuild MinifyPlugin 加速压缩</text>
+    <text x="755" y="150" fill="#4b5563" font-size="11">减少 loader 数量</text>
+    <rect x="30" y="230" width="400" height="120" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="230" y="256" fill="#0f766e" font-weight="bold" font-size="14">分析与监控</text>
+    <text x="230" y="276" fill="#4b5563" font-size="11">webpack-bundle-analyzer 可视化体积</text>
+    <text x="230" y="293" fill="#4b5563" font-size="11">stats.toJson 输出结构化统计</text>
+    <text x="230" y="310" fill="#4b5563" font-size="11">profile: true 查看耗时分布</text>
+    <rect x="450" y="230" width="400" height="120" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="650" y="256" fill="#be123c" font-weight="bold" font-size="14">常见误区</text>
+    <text x="650" y="276" fill="#4b5563" font-size="11">为省时间关闭 sourcemap 会拖累排障</text>
+    <text x="650" y="293" fill="#4b5563" font-size="11">dll 已过时，用 filesystem cache 替代</text>
+    <text x="650" y="310" fill="#4b5563" font-size="11">过度分包会增加请求数与握手开销</text>
+    <text x="650" y="327" fill="#4b5563" font-size="11">开发模式不要开压缩，会显著变慢</text>
+</g>
+  <text x="440" y="422" text-anchor="middle" font-size="13" fill="#475569">优化顺序：先缓存 → 再减工作量（缩小 loader 范围）→ 最后才是并行与压缩</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

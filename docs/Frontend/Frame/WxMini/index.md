@@ -35,7 +35,10 @@
 - [微信小程序 自定义组件](CustomComponent/index.md)
 - [微信小程序 npm 使用](npm/index.md)
 - [微信小程序 分包加载](Subpackage/index.md)
+- [微信小程序 Skyline 渲染引擎](Skyline/index.md)
+- [微信小程序 Worker 多线程](Worker/index.md)
 - [微信小程序 性能优化](Performance/index.md)
+- [微信小程序 自动化与 CI](Automation/index.md)
 - [微信小程序 云开发](Cloud/index.md)
 
 ### 发布与排障

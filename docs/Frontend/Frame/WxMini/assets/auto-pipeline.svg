@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">小程序自动化与 CI 流水线</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="70" width="150" height="110" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="105" y="96" fill="#0e7490" font-weight="bold" font-size="14">提交代码</text>
+    <text x="105" y="116" fill="#4b5563" font-size="11">Git push</text>
+    <text x="105" y="133" fill="#4b5563" font-size="11">触发流水线</text>
+    <rect x="200" y="70" width="150" height="110" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="275" y="96" fill="#4338ca" font-weight="bold" font-size="14">依赖安装</text>
+    <text x="275" y="116" fill="#4b5563" font-size="11">npm ci</text>
+    <text x="275" y="133" fill="#4b5563" font-size="11">构建 npm</text>
+    <rect x="370" y="70" width="150" height="110" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="445" y="96" fill="#6d28d9" font-weight="bold" font-size="14">静态检查</text>
+    <text x="445" y="116" fill="#4b5563" font-size="11">ESLint / tsc</text>
+    <text x="445" y="133" fill="#4b5563" font-size="11">样式与规范</text>
+    <rect x="540" y="70" width="150" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="615" y="96" fill="#047857" font-weight="bold" font-size="14">自动化测试</text>
+    <text x="615" y="116" fill="#4b5563" font-size="11">miniprogram-automator</text>
+    <text x="615" y="133" fill="#4b5563" font-size="11">关键路径用例</text>
+    <rect x="710" y="70" width="140" height="110" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="780" y="96" fill="#b45309" font-weight="bold" font-size="14">上传预览</text>
+    <text x="780" y="116" fill="#4b5563" font-size="11">miniprogram-ci</text>
+    <text x="780" y="133" fill="#4b5563" font-size="11">生成体验版</text>
+    <path d="M 180 125 L 198 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 350 125 L 368 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 520 125 L 538 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 690 125 L 708 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <rect x="30" y="220" width="400" height="190" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="230" y="246" fill="#0f766e" font-weight="bold" font-size="14">miniprogram-ci 能力</text>
+    <text x="230" y="266" fill="#4b5563" font-size="11">upload   上传代码为开发版本</text>
+    <text x="230" y="283" fill="#4b5563" font-size="11">preview  生成预览二维码</text>
+    <text x="230" y="300" fill="#4b5563" font-size="11">packNpm  在流水线中构建 npm</text>
+    <text x="230" y="317" fill="#4b5563" font-size="11">支持指定版本号与备注，便于追溯</text>
+    <rect x="450" y="220" width="400" height="190" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="650" y="246" fill="#be123c" font-weight="bold" font-size="14">自动化测试能力</text>
+    <text x="650" y="266" fill="#4b5563" font-size="11">miniprogram-automator 驱动开发者工具</text>
+    <text x="650" y="283" fill="#4b5563" font-size="11">连接后获取页面、点击元素、断言文本</text>
+    <text x="650" y="300" fill="#4b5563" font-size="11">适合关键路径（登录、下单）回归</text>
+    <text x="650" y="317" fill="#4b5563" font-size="11">建议只测核心链路，追求性价比</text>
+</g>
+  <text x="440" y="432" text-anchor="middle" font-size="13" fill="#475569">目标：把「能自动做的」交给流水线，人只负责审核与发布决策</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

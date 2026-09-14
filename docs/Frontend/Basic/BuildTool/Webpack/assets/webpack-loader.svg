@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Loader 链式处理（从右到左）</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="80" width="150" height="90" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="105" y="106" fill="#0e7490" font-weight="bold" font-size="14">源文件</text>
+    <text x="105" y="126" fill="#4b5563" font-size="11">.scss 内容</text>
+    <rect x="210" y="80" width="150" height="90" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="285" y="106" fill="#4338ca" font-weight="bold" font-size="14">sass-loader</text>
+    <text x="285" y="126" fill="#4b5563" font-size="11">编译 SCSS → CSS</text>
+    <rect x="390" y="80" width="150" height="90" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="465" y="106" fill="#6d28d9" font-weight="bold" font-size="14">css-loader</text>
+    <text x="465" y="126" fill="#4b5563" font-size="11">解析 @import / url</text>
+    <rect x="570" y="80" width="150" height="90" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="645" y="106" fill="#047857" font-weight="bold" font-size="14">style-loader</text>
+    <text x="645" y="126" fill="#4b5563" font-size="11">注入 style 标签</text>
+    <rect x="750" y="80" width="100" height="90" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="800" y="106" fill="#b45309" font-weight="bold" font-size="14">模块</text>
+    <text x="800" y="126" fill="#4b5563" font-size="11">JS 模块</text>
+    <path d="M 180 125 L 208 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 360 125 L 388 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 540 125 L 568 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <path d="M 720 125 L 748 125" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="470" y="68" text-anchor="middle" fill="#6b7280" font-size="12">执行方向：从右到左（use 数组的最后一个先执行）</text>
+    <rect x="30" y="200" width="270" height="140" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="165" y="226" fill="#b45309" font-weight="bold" font-size="14">Loader 的本质</text>
+    <text x="165" y="246" fill="#4b5563" font-size="11">一个把「文件内容」转成「JS 模块」的函数</text>
+    <text x="165" y="263" fill="#4b5563" font-size="11">module.exports = function (source) { return ... }</text>
+    <text x="165" y="280" fill="#4b5563" font-size="11">可返回 Buffer 或字符串</text>
+    <text x="165" y="297" fill="#4b5563" font-size="11">支持异步：this.async()</text>
+    <rect x="320" y="200" width="260" height="140" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="450" y="226" fill="#0f766e" font-weight="bold" font-size="14">配置要点</text>
+    <text x="450" y="246" fill="#4b5563" font-size="11">test / include / exclude 限定范围</text>
+    <text x="450" y="263" fill="#4b5563" font-size="11">exclude: /node_modules/ 避免拖慢构建</text>
+    <text x="450" y="280" fill="#4b5563" font-size="11">enforce: 'pre' / 'post' 控制顺序</text>
+    <text x="450" y="297" fill="#4b5563" font-size="11">oneOf 命中第一个即停止</text>
+    <rect x="600" y="200" width="250" height="140" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="725" y="226" fill="#be123c" font-weight="bold" font-size="14">性能红线</text>
+    <text x="725" y="246" fill="#4b5563" font-size="11">用 include 缩小匹配范围</text>
+    <text x="725" y="263" fill="#4b5563" font-size="11">加载器一律开缓存（cache-loader 已内置）</text>
+    <text x="725" y="280" fill="#4b5563" font-size="11">babel 只在必要时启用（transpileOnly）</text>
+    <text x="725" y="297" fill="#4b5563" font-size="11">避免在 loader 里做全量 AST 遍历</text>
+</g>
+  <text x="440" y="402" text-anchor="middle" font-size="13" fill="#475569">记住方向：use: ['style-loader', 'css-loader', 'sass-loader'] 表示 sass → css → style</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

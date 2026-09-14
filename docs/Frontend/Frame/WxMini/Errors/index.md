@@ -22,7 +22,7 @@
 | --- | --- | --- |
 | `Unexpected token` | JS 语法错误（多余括号、缺少分号、模板字符串未闭合） | 用编辑器定位到具体行 |
 | `Cannot find module` | 路径拼错，或使用了未构建的 npm 包 | 检查路径；npm 包需先「构建 npm」（见 [npm 使用](../npm/index.md)） |
-| `WXML 编译错误` | 标签未闭合、属性写法错误、`{{ }}` 表达式不合法 | 检查对应 WXML 文件 |
+| `WXML 编译错误` | 标签未闭合、属性写法错误、<span v-pre>`{{ }}`</span> 表达式不合法 | 检查对应 WXML 文件 |
 | `wxss 编译错误` | 使用了不支持的 CSS 选择器或语法 | 改用小程序支持的写法（见 [样式](../Style/index.md)） |
 
 ## 三、运行时报错
@@ -82,6 +82,33 @@ Page({
 | 体验版正常、线上异常 | 线上未配置域名/未开通能力 | 对照线上配置逐项核对 |
 | 发布后部分用户白屏 | 基础库版本过低 | 设置最低基础库版本或补兼容分支（见 [基础库版本与兼容](../Version/index.md)） |
 
+## 六、进阶能力相关
+
+启用新渲染引擎、多线程与自动化后，会出现一批特有的报错：
+
+| 现象 | 原因 | 处理 |
+| --- | --- | --- |
+| 页面开启 Skyline 后无法滚动 | Skyline 下页面默认不滚动 | 改用 `scroll-view` 并设 `height: 100vh`（见 [Skyline](../Skyline/index.md)） |
+| 开启 Skyline 后布局错位 | `defaultDisplayBlock` / `defaultContentBox` 改变了默认盒模型 | 逐页对比样式，按需调整 |
+| 开启 Skyline 后某个组件不渲染 | 该组件尚未被 Skyline 支持 | 该页保持 WebView，或替换组件 |
+| `wx.createWorker is not a function` | 基础库过低，或 `app.json` 未配 `workers` | 核对版本与配置（见 [Worker](../Worker/index.md)） |
+| Worker 内报 `wx is not defined` | 在 Worker 中使用了界面类 API | 把界面操作移回主线程 |
+| Worker 返回空对象 | `postMessage` 传了不可结构化克隆的数据 | 只传普通 JSON 可表达的数据 |
+| CI 上传报「密钥/白名单」错误 | 密钥未注入或 IP 不在白名单 | 在后台加入流水线出口 IP（见 [自动化与 CI](../Automation/index.md)） |
+| 自动化脚本连接开发者工具失败 | 未开启开发者工具「服务端口」 | 设置 → 安全设置中开启 |
+
+```js [Worker 数据传递的正确姿势]
+// 错误：传整个页面 data（体积大，且可能含不可克隆内容）
+// worker.postMessage({ rows: this.data.rows, cb: () => {} })
+
+// 正确：只传计算需要的字段
+worker.postMessage({ type: 'sum', values: this.data.rows.map((r) => r.amount) })
+```
+
+::: danger 注意
+**不要用「开启 Skyline / 关闭校验」这类开关来掩盖报错**。例如把 `renderer` 开开关关来「解决」滚动问题，只会让问题在不同页面反复出现。找到根因（组件是否支持、滚动结构是否正确）再改。
+:::
+
 ## 排障顺序（建议固定下来）
 
 1. **看配置**：`app.json` / 页面路径 / 域名配置。
@@ -105,6 +132,9 @@ Page({
 
 - [调试工具链](../Debug/index.md)：Console / Network / AppData 面板用法
 - [基础库版本与兼容](../Version/index.md)：版本导致的 API 不存在问题
+- [Skyline 渲染引擎](../Skyline/index.md)：新渲染引擎的兼容问题
+- [Worker 多线程](../Worker/index.md)：多线程使用中的报错
+- [自动化与 CI](../Automation/index.md)：流水线上传失败的原因
 - [原生 API](../API/index.md)：网络请求与域名配置
 - [上线发布](../Release/index.md)：审核驳回与发布流程
 

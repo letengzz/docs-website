@@ -543,5 +543,5 @@ export default function ProductPage() {
 
 ## 下一步
 
-- [生态系统](Ecosystem/index.md) - React 常用工具和库
-- [最佳实践](BestPractices/index.md) - 开发中的常见模式和优化技巧
+- [生态系统](../Ecosystem/index.md) - React 常用工具和库
+- [最佳实践](../BestPractices/index.md) - 开发中的常见模式和优化技巧

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">配置分层：vite.config 主要字段</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="60" width="190" height="100" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="125" y="86" fill="#0e7490" font-weight="bold" font-size="14">root / base</text>
+    <text x="125" y="106" fill="#4b5563" font-size="11">项目根目录</text>
+    <text x="125" y="123" fill="#4b5563" font-size="11">部署基础路径</text>
+    <text x="125" y="140" fill="#4b5563" font-size="11">publicDir</text>
+    <rect x="240" y="60" width="190" height="100" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="335" y="86" fill="#4338ca" font-weight="bold" font-size="14">server</text>
+    <text x="335" y="106" fill="#4b5563" font-size="11">port / host / open</text>
+    <text x="335" y="123" fill="#4b5563" font-size="11">hmr / proxy</text>
+    <text x="335" y="140" fill="#4b5563" font-size="11">forwardConsole</text>
+    <rect x="450" y="60" width="190" height="100" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="545" y="86" fill="#6d28d9" font-weight="bold" font-size="14">resolve</text>
+    <text x="545" y="106" fill="#4b5563" font-size="11">alias 路径别名</text>
+    <text x="545" y="123" fill="#4b5563" font-size="11">extensions 后缀</text>
+    <text x="545" y="140" fill="#4b5563" font-size="11">tsconfigPaths</text>
+    <rect x="660" y="60" width="190" height="100" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="755" y="86" fill="#047857" font-weight="bold" font-size="14">build</text>
+    <text x="755" y="106" fill="#4b5563" font-size="11">outDir / assetsDir</text>
+    <text x="755" y="123" fill="#4b5563" font-size="11">target / minify</text>
+    <text x="755" y="140" fill="#4b5563" font-size="11">sourcemap / rollupOptions</text>
+    <rect x="30" y="190" width="270" height="130" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="165" y="216" fill="#b45309" font-weight="bold" font-size="14">依赖相关</text>
+    <text x="165" y="236" fill="#4b5563" font-size="11">optimizeDeps.include 强制预构建</text>
+    <text x="165" y="253" fill="#4b5563" font-size="11">optimizeDeps.exclude 排除预构建</text>
+    <text x="165" y="270" fill="#4b5563" font-size="11">ssr.noExternal 控制 SSR 外部化</text>
+    <rect x="320" y="190" width="260" height="130" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="450" y="216" fill="#0f766e" font-weight="bold" font-size="14">插件与模式</text>
+    <text x="450" y="236" fill="#4b5563" font-size="11">plugins 数组，顺序有意义</text>
+    <text x="450" y="253" fill="#4b5563" font-size="11">mode 决定加载哪个 .env 文件</text>
+    <text x="450" y="270" fill="#4b5563" font-size="11">define 注入编译期常量</text>
+    <rect x="600" y="190" width="250" height="130" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="725" y="216" fill="#be123c" font-weight="bold" font-size="14">CSS 与资源</text>
+    <text x="725" y="236" fill="#4b5563" font-size="11">css.modules 模块化配置</text>
+    <text x="725" y="253" fill="#4b5563" font-size="11">css.preprocessorOptions 传参给 Sass/Less</text>
+    <text x="725" y="270" fill="#4b5563" font-size="11">assetsInclude 增加自定义资源类型</text>
+    <rect x="30" y="340" width="820" height="60" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="440" y="366" fill="#334155" font-weight="bold" font-size="13">配置可以用对象，也可以是 ({ command, mode, isSsrBuild }) =&gt; config 函数——需要按命令或模式分支时用函数形式</text>
+</g>
+  <text x="440" y="422" text-anchor="middle" font-size="13" fill="#475569">先只改 server 与 resolve；构建相关配置等真的遇到瓶颈再调</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

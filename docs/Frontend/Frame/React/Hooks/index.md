@@ -485,6 +485,6 @@ graph TD
 
 掌握了 Hooks 之后，推荐继续学习：
 
-- [状态管理](StateManagement/index.md) - 跨组件状态管理方案
-- [路由管理](Routing/index.md) - React Router 使用
-- [最佳实践](BestPractices/index.md) - 开发中的常见模式和优化技巧
+- [状态管理](../StateManagement/index.md) - 跨组件状态管理方案
+- [路由管理](../Routing/index.md) - React Router 使用
+- [最佳实践](../BestPractices/index.md) - 开发中的常见模式和优化技巧

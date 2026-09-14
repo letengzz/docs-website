@@ -181,7 +181,7 @@ pm.test("业务码符合数据文件预期", () => {
 ## 易错点与最佳实践
 
 ::: danger 常见问题
-1. **变量没生效**：检查作用域与拼写，`{{baseUrl}}` 与 `{{baseurl}}` 大小写敏感。
+1. **变量没生效**：检查作用域与拼写，<span v-pre>`{{baseUrl}}`</span> 与 <span v-pre>`{{baseurl}}`</span> 大小写敏感。
 2. **token 没写入成功**：断言里先打印 `pm.response.json()` 确认字段路径。
 3. **脚本语法错误被静默**：脚本抛错会显示在 Console，先打开 Console 调试。
 4. **在 Tests 里用 `return`**：不生效，用 `pm.test` 或直接赋值。

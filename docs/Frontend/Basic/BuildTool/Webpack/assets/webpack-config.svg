@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="470" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">webpack.config.js 顶层结构与职责</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="60" width="180" height="90" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="120" y="86" fill="#0e7490" font-weight="bold" font-size="14">entry</text>
+    <text x="120" y="106" fill="#4b5563" font-size="11">打包入口</text>
+    <text x="120" y="123" fill="#4b5563" font-size="11">对象可多入口</text>
+    <rect x="230" y="60" width="180" height="90" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="320" y="86" fill="#4338ca" font-weight="bold" font-size="14">output</text>
+    <text x="320" y="106" fill="#4b5563" font-size="11">产物输出</text>
+    <text x="320" y="123" fill="#4b5563" font-size="11">path/filename/clean</text>
+    <rect x="430" y="60" width="180" height="90" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="520" y="86" fill="#6d28d9" font-weight="bold" font-size="14">module.rules</text>
+    <text x="520" y="106" fill="#4b5563" font-size="11">Loader 规则</text>
+    <text x="520" y="123" fill="#4b5563" font-size="11">test/use/include</text>
+    <rect x="630" y="60" width="200" height="90" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="730" y="86" fill="#047857" font-weight="bold" font-size="14">plugins</text>
+    <text x="730" y="106" fill="#4b5563" font-size="11">插件实例数组</text>
+    <text x="730" y="123" fill="#4b5563" font-size="11">干预构建全过程</text>
+    <rect x="30" y="180" width="180" height="90" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="120" y="206" fill="#b45309" font-weight="bold" font-size="14">resolve</text>
+    <text x="120" y="226" fill="#4b5563" font-size="11">.alias/.extensions</text>
+    <text x="120" y="243" fill="#4b5563" font-size="11">模块解析规则</text>
+    <rect x="230" y="180" width="180" height="90" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="320" y="206" fill="#0f766e" font-weight="bold" font-size="14">optimization</text>
+    <text x="320" y="226" fill="#4b5563" font-size="11">splitChunks/minimizer</text>
+    <text x="320" y="243" fill="#4b5563" font-size="11">chunkIds/runtimeChunk</text>
+    <rect x="430" y="180" width="180" height="90" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+    <text x="520" y="206" fill="#c2410c" font-weight="bold" font-size="14">devServer</text>
+    <text x="520" y="226" fill="#4b5563" font-size="11">开发服务器</text>
+    <text x="520" y="243" fill="#4b5563" font-size="11">hot/proxy/historyApiFallback</text>
+    <rect x="630" y="180" width="200" height="90" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+    <text x="730" y="206" fill="#334155" font-weight="bold" font-size="14">mode / devtool</text>
+    <text x="730" y="226" fill="#4b5563" font-size="11">development|production</text>
+    <text x="730" y="243" fill="#4b5563" font-size="11">source map 策略</text>
+    <rect x="30" y="300" width="800" height="80" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="430" y="326" fill="#1d4ed8" font-weight="bold" font-size="13">配置即「声明」：webpack 读取它 → 构建依赖图 → 用 rules 转换模块 → 在生命周期钩子上执行 plugins → 写 output</text>
+    <rect x="30" y="400" width="800" height="55" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="430" y="426" fill="#be123c" font-weight="bold" font-size="12">三大高频坑：路径一律用 path.resolve(__dirname, ...)；loader 顺序是从右到左；mode 决定内置优化开关</text>
+</g>
+  <text x="440" y="452" text-anchor="middle" font-size="13" fill="#475569">把配置拆成 common / dev / prod 三层，比在一个文件里堆 N 个 if 更可维护</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

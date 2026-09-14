@@ -228,5 +228,5 @@ app.whenReady().then(() => {
 
 ## 下一步
 
-- [Electron 对话框](Dialog/index.md) - 学习对话框
-- [Electron 通知系统](Notification/index.md) - 学习通知系统
+- [Electron 对话框](../Dialog/index.md) - 学习对话框
+- [Electron 通知系统](../Notification/index.md) - 学习通知系统

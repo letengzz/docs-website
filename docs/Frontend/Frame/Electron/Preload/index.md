@@ -175,3 +175,15 @@ module.exports = {
 }
 ```
 
+## 相关专题
+
+- [Electron 进程](../Process/index.md)：预加载脚本在三进程模型中的位置
+- [Electron 进程通信 IPC](../IPC/index.md)：预加载脚本暴露接口后如何与主进程交互
+- [Electron 安全最佳实践](../Security/index.md)：`contextIsolation` / `sandbox` 与最小暴露原则
+- [Electron 配置](../Configuration/index.md)：`webPreferences.preload` 路径配置要点
+- [Electron 自动化测试](../Testing/index.md)：如何验证暴露的接口是否只有白名单内容
+
+::: tip 建议
+把预加载脚本当作**公开 API 契约**来维护：给它写类型声明（`window.d.ts`），并在 code review 中把「新增了一个暴露方法」当成一次 API 变更来评审。这样能有效防止安全边界被一点点放宽。
+:::
+

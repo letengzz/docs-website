@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Module Federation：运行时共享模块</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="80" width="220" height="120" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+    <text x="140" y="106" fill="#0e7490" font-weight="bold" font-size="14">Host（宿主应用）</text>
+    <text x="140" y="126" fill="#4b5563" font-size="11">配置 remotes 声明远程</text>
+    <text x="140" y="143" fill="#4b5563" font-size="11">按需加载远程模块</text>
+    <rect x="330" y="80" width="220" height="120" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="440" y="106" fill="#047857" font-weight="bold" font-size="14">Remote（远程应用）</text>
+    <text x="440" y="126" fill="#4b5563" font-size="11">配置 exposes 暴露模块</text>
+    <text x="440" y="143" fill="#4b5563" font-size="11">独立部署、独立发版</text>
+    <rect x="630" y="80" width="220" height="120" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="740" y="106" fill="#6d28d9" font-weight="bold" font-size="14">Shared（共享依赖）</text>
+    <text x="740" y="126" fill="#4b5563" font-size="11">shared: ['react', 'react-dom']</text>
+    <text x="740" y="143" fill="#4b5563" font-size="11">单例模式避免重复加载</text>
+    <path d="M 250 140 L 328 140" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+    <text x="289" y="134" text-anchor="middle" fill="#6b7280" font-size="11">加载远程 chunk</text>
+    <rect x="30" y="230" width="270" height="130" rx="12" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text x="165" y="256" fill="#0f766e" font-weight="bold" font-size="14">关键配置</text>
+    <text x="165" y="276" fill="#4b5563" font-size="11">ModuleFederationPlugin</text>
+    <text x="165" y="293" fill="#4b5563" font-size="11">name / filename 标识远程入口</text>
+    <text x="165" y="310" fill="#4b5563" font-size="11">remotes: { shop: 'shop@url/remoteEntry.js' }</text>
+    <text x="165" y="327" fill="#4b5563" font-size="11">shared 声明共享依赖与版本策略</text>
+    <rect x="320" y="230" width="260" height="130" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="450" y="256" fill="#b45309" font-weight="bold" font-size="14">适用场景</text>
+    <text x="450" y="276" fill="#4b5563" font-size="11">微前端：多个团队独立交付</text>
+    <text x="450" y="293" fill="#4b5563" font-size="11">跨应用复用组件与状态</text>
+    <text x="450" y="310" fill="#4b5563" font-size="11">渐进式迁移老应用</text>
+    <rect x="600" y="230" width="250" height="130" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text x="725" y="256" fill="#be123c" font-weight="bold" font-size="14">代价</text>
+    <text x="725" y="276" fill="#4b5563" font-size="11">版本不匹配会运行时报错</text>
+    <text x="725" y="293" fill="#4b5563" font-size="11">调试链路变长</text>
+    <text x="725" y="310" fill="#4b5563" font-size="11">构建产物依赖运行时可达性</text>
+</g>
+  <text x="440" y="402" text-anchor="middle" font-size="13" fill="#475569">与「构建期共享」的区别：Module Federation 是运行时共享，因此各应用可以独立部署</text>
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

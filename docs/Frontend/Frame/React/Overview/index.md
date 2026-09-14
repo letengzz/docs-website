@@ -284,6 +284,6 @@ yarn config set registry https://registry.npmmirror.com
 
 现在你已经了解了 React 的基本概念和项目初始化方法，接下来可以学习：
 
-- [JSX 语法](JSX/index.md) - 掌握 JSX 的写法和规则
-- [组件开发](Components/index.md) - 深入学习组件开发
-- [Hooks 详解](Hooks/index.md) - 掌握现代 React 的核心 Hooks
+- [JSX 语法](../JSX/index.md) - 掌握 JSX 的写法和规则
+- [组件开发](../Components/index.md) - 深入学习组件开发
+- [Hooks 详解](../Hooks/index.md) - 掌握现代 React 的核心 Hooks

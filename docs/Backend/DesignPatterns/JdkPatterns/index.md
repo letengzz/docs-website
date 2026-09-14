@@ -225,10 +225,10 @@ future.thenAccept(result -> log.info("完成：{}", result))
 
 ## 相关专题
 
-- 模式总览：[设计原则](Principles/index.md) · [创建型](Creational/index.md) · [结构型](Structural/index.md) · [行为型](Behavioral/index.md)
-- 现代 Java 如何替代经典模式：[现代 Java 与设计模式](ModernJava/index.md)
-- 避免套模式：[反模式与过度设计](AntiPatterns/index.md)
-- 框架中的落地：[框架中的应用](FrameworkUsage/index.md)
+- 模式总览：[设计原则](../Principles/index.md) · [创建型](../Creational/index.md) · [结构型](../Structural/index.md) · [行为型](../Behavioral/index.md)
+- 现代 Java 如何替代经典模式：[现代 Java 与设计模式](../ModernJava/index.md)
+- 避免套模式：[反模式与过度设计](../AntiPatterns/index.md)
+- 框架中的落地：[框架中的应用](../FrameworkUsage/index.md)
 
 ## 参考资料
 
