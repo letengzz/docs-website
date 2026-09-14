@@ -3,7 +3,7 @@ import { Auth, DesignPatterns, DotNet, Go, Java, MessageQueue, Microservices, Ne
 
 import { AI_Agent, AI_LLMApp, AI_LocalModel, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
-import { ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, VM } from "./ops";
+import { Ansible, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, VM } from "./ops";
 import { DBOverview, DataModeling, NoRelational, Relational, SQLOptimization, TimeSeries } from "./db";
 import { APITools, Build, CICD, Collaboration, DatabaseClients, IDE, Others, PackageManager, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
@@ -69,7 +69,7 @@ export const sidebar = {
     {
       text: "运维",
       collapsed: true,
-      items: [...VM, ...Linux, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...Monitoring, ...LogSystem, ...JumpServer, ...OpsOthers],
+      items: [...VM, ...Linux, ...Ansible, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...Monitoring, ...LogSystem, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
@@ -132,6 +132,7 @@ export const sidebar = {
   "/docs/DB/TimeSeries": TimeSeries,
   "/docs/Ops/VM": VM,
   "/docs/Ops/Linux": Linux,
+  "/docs/Ops/Ansible": Ansible,
   "/docs/Ops/Nginx": Nginx,
   "/docs/Ops/Network": Network,
   "/docs/Ops/Docker": Docker,
