@@ -452,9 +452,96 @@ mysql -uroot -p template -e \
 | 阶段 | 计划 | 当前状态 |
 | --- | --- | --- |
 | 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
-| 第 2 周（69-79 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **5/5 步完成**，核心编码阶段收口 |
-| 第 3 周（80-86 天） | 联调、单元与集成测试、压测、覆盖率门禁 | 🔄 **进行中**：认证闭环联调完成、SecurityIT 8 用例，待补压测与契约回归 |
-| 第 4 周（87-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始 |
+| 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成**，核心编码阶段收口 |
+| 第 3 周（73-79 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁 | 🔄 **进行中**：认证闭环联调完成、SecurityIT 8 用例、压测基线 + 覆盖率门禁 + 契约回归已就位 |
+| 第 4 周（80-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始 |
+
+## 2026-09-19（第 74 天）：性能基线 + 覆盖率补齐到 75% + OpenAPI 契约回归
+
+第 73 天收口了认证业务闭环，但整个模板仍然没有一个**可量化的性能数字**，测试覆盖也没有"不达标就不许合"的硬约束。第 74 天把这三件"说不清的事"变成 CI 能判定的东西。
+
+### 本次做了什么
+
+| 序号 | 产出 | 位置 |
+| --- | --- | --- |
+| ① | k6 压测脚本：登录 + 受保护接口双场景、`thresholds` 直接作门禁 | `scripts/perf/login-and-api.js` |
+| ② | 基线记录格式（环境 + 数据量 + 脚本版本三要素）与结果表 | [压测与性能基线](../PerformanceTest/index.md) |
+| ③ | JaCoCo 0.8.15 三段配置：`prepare-agent` / `report` / `check`，**按模块设阈值** | `pom.xml`（父 POM `pluginManagement`） |
+| ④ | 覆盖率门禁：`template-security` 行覆盖 ≥ 75%，绑定 `verify` 阶段 | [压测与性能基线](../PerformanceTest/index.md) |
+| ⑤ | springdoc-openapi 3.1.x 契约导出脚本（`jq -S` 排序入库） | `scripts/export-openapi.sh` |
+| ⑥ | 契约回归比对脚本：diff 出破坏性变更并以非 0 退出码拦截 | `scripts/check-openapi-contract.sh` |
+| ⑦ | 三道门禁的 CI 接入与豁免规则（覆盖率 / 契约 / 基线） | [压测与性能基线](../PerformanceTest/index.md) |
+
+同时修正：项目总览里的 springdoc 版本口径由 `2.x 线` 改为 `3.x 线`（Boot 4.x 必须用 3.x，2.x 会启动失败）。
+
+### 如何验证
+
+```shell
+# 1. 覆盖率门禁
+mvn -q verify
+# 期望：BUILD SUCCESS；报告在 template-security/target/site/jacoco/index.html
+# 反向验证：把 minimum 临时改成 99% → 期望 BUILD FAILURE
+
+# 2. 契约导出与比对
+mvn -q -pl template-application -am spring-boot:run &
+./scripts/export-openapi.sh                    # 首次：生成快照
+git add docs/openapi/openapi.json && git commit -m "chore: 新增 OpenAPI 契约快照"
+./scripts/check-openapi-contract.sh            # 期望 exit 0
+
+# 3. 反向验证契约门禁能拦住破坏性变更
+#    把 @GetMapping("/api/users") 改成 "/api/user" 后重新比对
+./scripts/check-openapi-contract.sh            # 期望 exit 1，diff 中出现被删除的路径
+
+# 4. 压力基线
+PERF_USER=perfuser PERF_PASS='Perf@12345' \
+  k6 run --summary-export=docs/perf/baseline-k6-login.json scripts/perf/login-and-api.js
+# 期望：thresholds 全部通过，退出码 0
+
+# 5. Swagger UI
+curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/swagger-ui.html   # 期望 302/200
+```
+
+验证结果记录（**请在本地执行后填写**，当前编写环境无 JDK / Maven / MySQL / Redis / k6，未实际运行）：
+
+| 检查项 | 期望 | 实测 | 结论 |
+| --- | --- | --- | --- |
+| `mvn verify` 覆盖率门禁 | BUILD SUCCESS | 待填写 | ⏳ |
+| 阈值改 99% 反向验证 | BUILD FAILURE | 待填写 | ⏳ |
+| `docs/openapi/openapi.json` 生成 | 存在且 > 5KB | 待填写 | ⏳ |
+| 契约比对（入库后） | exit 0 | 待填写 | ⏳ |
+| 改路径后契约比对 | exit 1 且指出删除路径 | 待填写 | ⏳ |
+| k6 thresholds | 全部通过、退出码 0 | 待填写 | ⏳ |
+| 登录接口基线 | TPS / P95 记录进 `docs/perf/` | 待填写 | ⏳ |
+| 受保护接口基线 | TPS / P95 记录进 `docs/perf/` | 待填写 | ⏳ |
+
+### 遇到的问题与决策
+
+| 问题 | 决策 | 原因 |
+| --- | --- | --- |
+| 压测工具选哪个 | 基线用 k6，极限初筛用 wrk，存量 JMeter 保留 | 只有 k6 能把"指标不达标"变成非 0 退出码，门禁才能自动化 |
+| 覆盖率用一个全局阈值行不行 | 不行，按模块设（common 80 / web 70 / security 75 / data 60） | 各模块代码性质不同，全局值会被高低互相抵消，等于没约束 |
+| 覆盖率报告要不要入库 | 只入库 XML/摘要，HTML 不入库 | HTML 体积大且每次构建都变 |
+| 契约快照要不要排序 | 要（`jq -S`） | 不排序会因字段顺序抖动产生假 diff，门禁很快被无视 |
+| 契约门禁放 PR 还是夜间 | 放 PR | 契约变化必须当场可见，性能反而可以滞后 |
+| 性能门禁放 PR 吗 | 不放，放夜间 + 发版前 | 机器噪声会让告警常态红；PR 只跑 1 VU 冒烟看错误率 |
+| 压测能用 admin 吗 | 不能，用专用 `perfuser` | 审计表被淹没，且锁定策略会把压测账号锁在 423 |
+| 怎么证明 JWT/Redis 不是瓶颈 | 三条对照：接口对照（ping vs users）、中间件指标（Redis OPS / MySQL 堆积）、临时打点 | 单一指标容易被"整体变慢"掩盖，需要交叉验证 |
+| 打点日志能常驻吗 | 不能，排查完必须移除 | 高 TPS 下日志本身成为瓶颈 |
+
+### 下一步（第 75 天）
+
+1. **Docker 化**：`template-application` 多阶段构建（构建层 JDK 25、运行层 JRE 25 slim），确认镜像体积与启动时间。
+2. **Compose 一键起**：应用 + MySQL 8.4 + Redis 8 编排，用 `depends_on: condition: service_healthy` 表达依赖顺序。
+3. **配置外置**：数据库 / Redis 连接与令牌密钥全部改为环境变量注入，为 CI 流水线与验收清单铺路。
+
+### 里程碑对照
+
+| 阶段 | 计划 | 当前状态 |
+| --- | --- | --- |
+| 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
+| 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成** |
+| 第 3 周（73-79 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁 | 🔄 **2/4 步完成**：联调闭环 ✅、性能与契约门禁 ✅，待补边界用例与测试数据隔离 |
+| 第 4 周（80-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始 |
 
 ## 参考资料
 

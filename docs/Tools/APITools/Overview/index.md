@@ -111,6 +111,12 @@
 2. 配置开发/测试两套环境变量并切换验证。
 3. 保存一个带断言的请求，重复运行两次结果一致。
 
+## 相关文档
+
+- [IDE 配置 · VS Code 深入](../../IDE/VSCode/index.md)：VS Code 的 REST Client 扩展可以把 `.http` 文件当接口用例跑，适合随手调试；复杂的集合管理与团队协作仍交给 Postman/Apifox。
+- [IDE 配置 · 配置同步与团队统一](../../IDE/ConfigSync/index.md)：接口调试用的 token、临时地址不要写进提交的配置文件，改用环境变量。
+- [IDE 配置 · 远程开发与容器化环境](../../IDE/RemoteDev/index.md)：调容器里的服务时，端口转发与 `portsAttributes` 能省掉大量手改地址的时间。
+
 ## 参考资料
 
 - Postman 官方文档：<https://learning.postman.com/>

@@ -110,6 +110,7 @@ mvn clean verify -DskipTests=false
 
 - [CI/CD 专题](../../../CICD/index.md)：`mvn verify` 在流水线中的位置与质量门禁
 - [GitHub Actions 入门](../../../CICD/GithubActions/index.md)：Maven 缓存与构建步骤示例
+- [IDE 配置 · IntelliJ IDEA 深入](../../../IDE/IntelliJIDEA/index.md)：IDE 编译目标与 `maven.compiler.release` / toolchain 不一致导致的「IDE 里能跑、命令行跑不过」
 
 ## 参考资料
 

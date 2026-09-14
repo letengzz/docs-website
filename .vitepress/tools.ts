@@ -114,7 +114,23 @@ export const Collaboration = [
     ],
   },
 ];
-export const IDE = [{ text: "IDE 工具", link: "/docs/Tools/IDE/index.md" }];
+export const IDE = [
+  {
+    text: "IDE 配置",
+    link: "/docs/Tools/IDE/index.md",
+    items: [
+      { text: "概述与选型", link: "/docs/Tools/IDE/Overview/index.md" },
+      { text: "IntelliJ IDEA 深入", link: "/docs/Tools/IDE/IntelliJIDEA/index.md" },
+      { text: "VS Code 深入", link: "/docs/Tools/IDE/VSCode/index.md" },
+      { text: "插件与扩展", link: "/docs/Tools/IDE/Plugins/index.md" },
+      { text: "快捷键与高效操作", link: "/docs/Tools/IDE/Shortcuts/index.md" },
+      { text: "配置同步与团队统一", link: "/docs/Tools/IDE/ConfigSync/index.md" },
+      { text: "远程开发与容器化环境", link: "/docs/Tools/IDE/RemoteDev/index.md" },
+      { text: "实战：搭一套统一的 IDE 环境", link: "/docs/Tools/IDE/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/IDE/FAQ/index.md" },
+    ],
+  },
+];
 export const Others = [{ text: "其他工具", link: "/docs/Tools/Others/index.md" }];
 export const VC = [
   {

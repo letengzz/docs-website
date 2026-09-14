@@ -7,16 +7,28 @@
 ```json [extensions.json]
 {
   "recommendations": [
-    "Vue.volar",
+    "Vue.vue-official",
     "vitest.explorer",
     "ms-playwright.playwright",
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
-    "prettier.prettier-vscode",
-    "stylelint.vstylelint" // [!code focus] [!code highlight]
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint" // [!code focus] [!code highlight]
   ]
 }
 ```
+
+::: danger 扩展 ID 写错会静默失效
+`extensions.json` 里的 ID 只要格式合法就不会报错，**但写错发布者时「推荐安装」会找不到扩展，且不留任何提示**。下面是三个最容易写错的 ID：
+
+| 容易写错 | 正确 ID | 说明 |
+| --- | --- | --- |
+| `prettier.prettier-vscode` | `esbenp.prettier-vscode` | Prettier 的发布者是个人账号 `esbenp`，不是 `prettier` |
+| `stylelint.vstylelint` | `stylelint.vscode-stylelint` | 中间是 `vscode-`，不是 `v` |
+| `Vue.volar` | `Vue.vue-official` | 官方 Vue 扩展已更名（旧 ID `Vue.volar`，若失效请用新 ID） |
+
+判断方法：把 ID 拼进市场地址 `https://marketplace.visualstudio.com/items?itemName=<ID>`，能打开才说明 ID 正确。
+:::
 
 ```json [settings.json]
 {

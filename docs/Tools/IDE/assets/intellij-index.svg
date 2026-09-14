@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="360" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">IntelliJ IDEA 内部机制与卡顿治理</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">源文件 → PSI → 索引 → 代码洞察：理解这条链路，卡顿排查就有方向</text>
+  <rect x="30" y="76" width="116" height="68" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="88" y="94.2" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">源文件</text>
+  <text x="88" y="111" text-anchor="middle" font-size="7" fill="#334155">Java / Kotlin</text>
+  <text x="88" y="127.1" text-anchor="middle" font-size="7" fill="#334155">YAML / XML</text>
+  <line x1="146" y1="110" x2="172" y2="110" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="172" y="76" width="116" height="68" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="230" y="94.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">词法/语法分析</text>
+  <text x="230" y="111" text-anchor="middle" font-size="7" fill="#1D4ED8">生成 PSI 树</text>
+  <text x="230" y="127.1" text-anchor="middle" font-size="7" fill="#1D4ED8">语法高亮基础</text>
+  <line x1="288" y1="110" x2="314" y2="110" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="314" y="76" width="116" height="68" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="372" y="94.2" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">索引构建</text>
+  <text x="372" y="111" text-anchor="middle" font-size="7" fill="#6D28D9">符号表 / 引用图</text>
+  <text x="372" y="127.1" text-anchor="middle" font-size="7" fill="#6D28D9">后台增量更新</text>
+  <line x1="430" y1="110" x2="456" y2="110" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="456" y="76" width="116" height="68" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="514" y="94.2" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">代码洞察</text>
+  <text x="514" y="111" text-anchor="middle" font-size="7" fill="#0F766E">补全 / 导航</text>
+  <text x="514" y="127.1" text-anchor="middle" font-size="7" fill="#0F766E">检查 / 重构</text>
+  <line x1="572" y1="110" x2="598" y2="110" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="598" y="76" width="116" height="68" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="656" y="94.2" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">运行与调试</text>
+  <text x="656" y="111" text-anchor="middle" font-size="7" fill="#047857">Run / Debug</text>
+  <text x="656" y="127.1" text-anchor="middle" font-size="7" fill="#047857">热重载 / 断点</text>
+  <text x="380" y="170" text-anchor="middle" font-size="10" fill="#6D28D9">索引是 IDEA 一切「智能」的前提：索引没建完，补全与导航都不准</text>
+  <text x="60" y="202" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">三类卡顿来源与对应动作</text>
+  <rect x="30" y="214" width="226" height="84" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="143" y="232.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">索引期间卡顿</text>
+  <text x="143" y="249" text-anchor="middle" font-size="8" fill="#B91C1C">左下角进度条出现 Scanning</text>
+  <text x="143" y="267.4" text-anchor="middle" font-size="8" fill="#B91C1C">对策：等它跑完，别中断</text>
+  <text x="143" y="285.8" text-anchor="middle" font-size="8" fill="#B91C1C">排除大目录（node_modules / target）</text>
+  <rect x="268" y="214" width="226" height="84" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="381" y="232.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">内存不足 / GC 频繁</text>
+  <text x="381" y="249" text-anchor="middle" font-size="8" fill="#B45309">Help → Change Memory Settings</text>
+  <text x="381" y="267.4" text-anchor="middle" font-size="8" fill="#B45309">堆 ≥ 2G，8G 内存可给 3~4G</text>
+  <text x="381" y="285.8" text-anchor="middle" font-size="8" fill="#B45309">重启后看 Memory Indicator</text>
+  <rect x="506" y="214" width="226" height="84" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="619" y="232.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">插件与检查拖慢</text>
+  <text x="619" y="249" text-anchor="middle" font-size="8" fill="#C2410C">禁用可疑插件二分法排查</text>
+  <text x="619" y="267.4" text-anchor="middle" font-size="8" fill="#C2410C">关闭不必要 Inspections</text>
+  <text x="619" y="285.8" text-anchor="middle" font-size="8" fill="#C2410C">Project 视图关掉多余统计</text>
+  <text x="380" y="322" text-anchor="middle" font-size="10" fill="#B91C1C">排障顺序：先看进度条（是否在索引）→ 再看内存 → 最后才怀疑插件</text>
+  <text x="380" y="344" text-anchor="middle" font-size="9.5" fill="#475569">口诀：卡顿先分「一次性」还是「常态化」，一次性别治，常态化按上面三步走</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

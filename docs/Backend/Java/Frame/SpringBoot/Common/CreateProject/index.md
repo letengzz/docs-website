@@ -3,7 +3,7 @@
 本节从零创建一个 Spring Boot 4 项目：使用 Spring Initializr 生成骨架、用 IntelliJ IDEA 导入、跑通第一个接口，并解释项目结构与常用命令。
 
 ::: info 环境要求
-本节为 Spring Boot 通用指南，示例基于 Spring Boot 4.x。环境要求：JDK 17+（推荐 JDK 25 LTS）、Maven 3.9+ 或 Gradle 8.x+、IntelliJ IDEA 2024.3+（或 VS Code + Java 插件）。
+本节为 Spring Boot 通用指南，示例基于 Spring Boot 4.x。环境要求：JDK 17+（推荐 JDK 25 LTS）、Maven 3.9+ 或 Gradle 8.x+、IntelliJ IDEA 2025.3+（统一发行版；或 VS Code + Java 扩展包）。
 :::
 
 ## 1. 使用 Spring Initializr 生成项目
@@ -154,6 +154,12 @@ mvn test
 3. 访问 `http://localhost:8080/hello` 返回预期文本。
 4. `mvn package -DskipTests` 后 `java -jar target/demo-0.0.1-SNAPSHOT.jar` 能独立启动。
 5. 访问 `http://localhost:8080/actuator/health` 返回 `{"status":"UP"}`。
+
+## 相关文档
+
+- [IDE 配置 · IntelliJ IDEA 深入](../../../../../../Tools/IDE/IntelliJIDEA/index.md)：创建项目后**必须先对齐三处 JDK**（`pom.xml` 的 `maven.compiler.release`、Maven toolchain、Project SDK），否则会出现「IDE 里能跑、命令行跑不过」。
+- [IDE 配置 · 配置同步与团队统一](../../../../../../Tools/IDE/ConfigSync/index.md)：`.idea/` 哪些该提交、哪些该忽略（`workspace.xml` 一定不要提交）。
+- [后端通用模板 · 骨架与目录结构](../../../../../../../project/Base/BackendTemplate/Skeleton/index.md)：多模块 Spring Boot 工程的目录组织与 Profile / Toolchains 落地方案。
 
 ## 参考资料
 

@@ -114,6 +114,12 @@ git sparse-checkout set docs
 3. 配置 commitlint 后提交一条非法信息，确认被拦截。
 4. 用 `git maintenance run` 后观察仓库命令响应速度。
 
+## 相关文档
+
+- [IDE 配置 · 快捷键与高效操作](../../../IDE/Shortcuts/index.md)：IDE 内 Git 面板与命令行的分工，以及提交/推送的键位对照。
+- [IDE 配置 · 配置同步与团队统一](../../../IDE/ConfigSync/index.md)：`.gitattributes` 与 `.editorconfig` 的换行策略为何必须一致（否则每次打开文件都显示整文件被改）。
+- [IDE 配置 · 实战：搭一套统一的 IDE 环境](../../../IDE/Practice/index.md)：批量格式化提交应单独成一次提交，出问题可直接 revert。
+
 ## 参考资料
 
 - Git 官方文档：https://git-scm.com/doc

@@ -115,12 +115,22 @@ git commit -m"chore: 初始化 Vue3 模板项目"
 
    ![image-20260114162213087](assets/image-20260114162213087.png)
 
-#### vscode 插件
+#### VS Code 插件
 
-::: tip
+按用途分四类安装（建议直接写进仓库的 `.vscode/extensions.json` 作为推荐清单）：
 
-vscode 插件 eslint prettier stylelint unocss vue-official postcss
+| 用途 | 扩展 ID |
+| --- | --- |
+| Vue 语言支持 | `Vue.vue-official` |
+| 代码检查与格式化 | `dbaeumer.vscode-eslint`、`esbenp.prettier-vscode`、`stylelint.vscode-stylelint` |
+| 样式原子化 | `antfu.unocss` |
+| 样式处理辅助 | `csstools.postcss` |
+| 跨编辑器风格 | `EditorConfig.EditorConfig` |
 
+::: warning 注意扩展 ID 的拼写
+`esbenp.prettier-vscode`（不是 `prettier.prettier-vscode`）、`stylelint.vscode-stylelint`（不是 `stylelint.vstylelint`）。**ID 写错不会报错，只会「推荐了但装不上」。**
+
+配置方法与排查细节见 [IDE 配置 · 插件与扩展](../../../../docs/Tools/IDE/Plugins/index.md) 与 [IDE 配置 · 实战：搭一套统一的 IDE 环境](../../../../docs/Tools/IDE/Practice/index.md)。
 :::
 
 ![image-20240828103527225](assets/202504022111861.png)

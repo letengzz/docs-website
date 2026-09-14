@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 362" width="760" height="362" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="362" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">插件与扩展：生命周期决定性能上限</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">装、启、激活、运行、隔离五个阶段，每一步都有可观测的成本与可用的对策</text>
+  <rect x="30" y="76" width="116" height="70" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="88" y="94.2" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">① 安装</text>
+  <text x="88" y="111" text-anchor="middle" font-size="7" fill="#6D28D9">Marketplace / VSIX</text>
+  <text x="88" y="127.1" text-anchor="middle" font-size="7" fill="#6D28D9">内网走离线包</text>
+  <line x1="146" y1="111" x2="172" y2="111" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="172" y="76" width="116" height="70" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="230" y="94.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">② 启用与懒加载</text>
+  <text x="230" y="111" text-anchor="middle" font-size="7" fill="#1D4ED8">按激活事件启动</text>
+  <text x="230" y="127.1" text-anchor="middle" font-size="7" fill="#1D4ED8">VS Code 支持按需激活</text>
+  <line x1="288" y1="111" x2="314" y2="111" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="314" y="76" width="116" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="372" y="94.2" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">③ 激活</text>
+  <text x="372" y="111" text-anchor="middle" font-size="7" fill="#047857">onLanguage / startup</text>
+  <text x="372" y="127.1" text-anchor="middle" font-size="7" fill="#047857">激活慢 = 启动慢</text>
+  <line x1="430" y1="111" x2="456" y2="111" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="456" y="76" width="116" height="70" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="514" y="94.2" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">④ 运行</text>
+  <text x="514" y="111" text-anchor="middle" font-size="7" fill="#0F766E">贡献命令与视图</text>
+  <text x="514" y="127.1" text-anchor="middle" font-size="7" fill="#0F766E">可能注册 LSP/DAP</text>
+  <line x1="572" y1="111" x2="598" y2="111" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="598" y="76" width="116" height="70" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="656" y="94.2" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">⑤ 冲突与禁用</text>
+  <text x="656" y="111" text-anchor="middle" font-size="7" fill="#B91C1C">二分法定位</text>
+  <text x="656" y="127.1" text-anchor="middle" font-size="7" fill="#B91C1C">Profile 隔离方案</text>
+  <text x="380" y="172" text-anchor="middle" font-size="10" fill="#B91C1C">插件「装得多不多」不是问题，「激活得早不早」才是</text>
+  <text x="60" y="204" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">性能评估三步</text>
+  <rect x="30" y="212" width="226" height="84" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="143" y="230.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">量 · 看扩展激活耗时</text>
+  <text x="143" y="247" text-anchor="middle" font-size="8" fill="#1D4ED8">命令面板 → Startup Performance</text>
+  <text x="143" y="265.4" text-anchor="middle" font-size="8" fill="#1D4ED8">看每个扩展的激活耗时</text>
+  <text x="143" y="283.8" text-anchor="middle" font-size="8" fill="#1D4ED8">百毫秒级的不必优化</text>
+  <rect x="268" y="212" width="226" height="84" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="381" y="230.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">砍 · 二分法禁用</text>
+  <text x="381" y="247" text-anchor="middle" font-size="8" fill="#C2410C">先禁一半再观察</text>
+  <text x="381" y="265.4" text-anchor="middle" font-size="8" fill="#C2410C">先禁一半，观察是否恢复</text>
+  <text x="381" y="283.8" text-anchor="middle" font-size="8" fill="#C2410C">3~4 轮即可锁定元凶</text>
+  <rect x="506" y="212" width="226" height="84" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="619" y="230.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">隔 · Profile 分组</text>
+  <text x="619" y="247" text-anchor="middle" font-size="8" fill="#047857">按场景隔离扩展集</text>
+  <text x="619" y="265.4" text-anchor="middle" font-size="8" fill="#047857">工作 Profile / 写作 Profile</text>
+  <text x="619" y="283.8" text-anchor="middle" font-size="8" fill="#047857">隔离后互不干扰</text>
+  <text x="380" y="320" text-anchor="middle" font-size="10" fill="#065F46">团队统一：把「必备扩展」写进 .vscode/extensions.json，新人打开就收到推荐提示</text>
+  <text x="380" y="344" text-anchor="middle" font-size="9.5" fill="#64748B">注意：推荐 ≠ 强制，强制安装需靠内网镜像 + 策略下发</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

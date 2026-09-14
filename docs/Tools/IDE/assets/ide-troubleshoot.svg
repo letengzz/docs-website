@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 364" width="760" height="364" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="364" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">IDE 问题排查决策树</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先分类再动手：卡顿、飘红、不生效，三类问题的排查路径完全不同</text>
+  <rect x="300" y="76" width="160" height="56" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="94.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">IDE 出问题了</text>
+  <text x="380" y="111" text-anchor="middle" font-size="7.5" fill="#334155">先分类，不要重装</text>
+  <text x="380" y="128.25" text-anchor="middle" font-size="7.5" fill="#334155">重装只解决极少数问题</text>
+  <line x1="380" y1="132" x2="150" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="60" y="168" width="180" height="106" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="150" y="186.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">卡顿 / 越来越慢</text>
+  <text x="150" y="203" text-anchor="middle" font-size="8" fill="#B45309">① 是否在索引</text>
+  <text x="150" y="221.4" text-anchor="middle" font-size="8" fill="#B45309">② 内存与 GC</text>
+  <text x="150" y="239.8" text-anchor="middle" font-size="8" fill="#B45309">③ 禁用插件二分</text>
+  <text x="150" y="258.2" text-anchor="middle" font-size="8" fill="#B45309">④ 排除大目录索引</text>
+  <line x1="380" y1="132" x2="380" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="290" y="168" width="180" height="106" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="186.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">代码飘红 / 补全失效</text>
+  <text x="380" y="203" text-anchor="middle" font-size="8" fill="#B91C1C">① 文件是否在已识别源根</text>
+  <text x="380" y="221.4" text-anchor="middle" font-size="8" fill="#B91C1C">② 索引是否损坏（Invalidate Caches）</text>
+  <text x="380" y="239.8" text-anchor="middle" font-size="8" fill="#B91C1C">③ 语言服务是否崩溃</text>
+  <text x="380" y="258.2" text-anchor="middle" font-size="8" fill="#B91C1C">④ 依赖是否真的下载完</text>
+  <line x1="380" y1="132" x2="610" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="520" y="168" width="180" height="106" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="610" y="186.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">修改不生效</text>
+  <text x="610" y="203" text-anchor="middle" font-size="8" fill="#6D28D9">① 配置落在哪一层（优先级）</text>
+  <text x="610" y="221.4" text-anchor="middle" font-size="8" fill="#6D28D9">② 是否被语言特定设置覆盖</text>
+  <text x="610" y="239.8" text-anchor="middle" font-size="8" fill="#6D28D9">③ 是否需要重启窗口/刷新</text>
+  <text x="610" y="258.2" text-anchor="middle" font-size="8" fill="#6D28D9">④ 远程侧配置是否覆盖本地</text>
+  <text x="380" y="300" text-anchor="middle" font-size="10" fill="#1E3A8A">通用兜底顺序：确认现象 → 定位层级（UI / 扩展 / 语言服务 / 配置层）→ 最小复现 → 再改配置</text>
+  <text x="380" y="324" text-anchor="middle" font-size="9.5" fill="#B91C1C">三个最有效的动作：Help → Show Log、命令面板 → Developer: Reload Window、Profile 里开一个干净环境对照</text>
+  <text x="380" y="348" text-anchor="middle" font-size="9.5" fill="#64748B">反面教材：一上来就「重装 IDE」或「清空所有配置」——既丢证据也丢时间</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

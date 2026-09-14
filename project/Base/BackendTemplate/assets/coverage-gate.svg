@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 384" width="760" height="384" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="384" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">覆盖率门禁：按模块设阈值，而不是一个全局数字</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">JaCoCo check 绑定 verify 阶段，任一模块不达标即构建失败</text>
+  <text x="30" y="80" text-anchor="start" font-size="10.5" fill="#1E3A8A" font-weight="bold">① 按模块设阈值：阈值来自「这个模块的代码能被什么测试覆盖」</text>
+  <rect x="30" y="92" width="167" height="92" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="113.5" y="110.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">template-common</text>
+  <text x="113.5" y="127" text-anchor="middle" font-size="7.5" fill="#047857">行覆盖 ≥ 80%</text>
+  <text x="113.5" y="144.25" text-anchor="middle" font-size="7.5" fill="#047857">纯工具类/常量</text>
+  <text x="113.5" y="161.5" text-anchor="middle" font-size="7.5" fill="#047857">单元测试足够</text>
+  <rect x="208" y="92" width="167" height="92" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="291.5" y="110.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">template-web</text>
+  <text x="291.5" y="127" text-anchor="middle" font-size="7.5" fill="#1D4ED8">行覆盖 ≥ 70%</text>
+  <text x="291.5" y="144.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">Controller/MockMvc</text>
+  <text x="291.5" y="161.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">接口用例为主</text>
+  <rect x="386" y="92" width="167" height="92" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="469.5" y="110.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">template-security</text>
+  <text x="469.5" y="127" text-anchor="middle" font-size="7.5" fill="#B91C1C">行覆盖 ≥ 75%</text>
+  <text x="469.5" y="144.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">过滤器/权限判断</text>
+  <text x="469.5" y="161.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">本周期重点补齐</text>
+  <rect x="564" y="92" width="167" height="92" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="647.5" y="110.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">template-data</text>
+  <text x="647.5" y="127" text-anchor="middle" font-size="7.5" fill="#B45309">行覆盖 ≥ 60%</text>
+  <text x="647.5" y="144.25" text-anchor="middle" font-size="7.5" fill="#B45309">MyBatis-Plus/DAO</text>
+  <text x="647.5" y="161.5" text-anchor="middle" font-size="7.5" fill="#B45309">靠 Testcontainers</text>
+  <text x="30" y="214" text-anchor="start" font-size="10.5" fill="#1E3A8A" font-weight="bold">② 门禁在 verify 阶段生效：mvn verify 不达标直接 BUILD FAILURE</text>
+  <rect x="30" y="226" width="130" height="80" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="95" y="244.2" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">① mvn verify</text>
+  <text x="95" y="261" text-anchor="middle" font-size="7" fill="#334155">绑定生命周期</text>
+  <text x="95" y="277.1" text-anchor="middle" font-size="7" fill="#334155">不用单独跑脚本</text>
+  <line x1="161" y1="266" x2="174" y2="266" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="175" y="226" width="130" height="80" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="240" y="244.2" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">② JaCoCo agent</text>
+  <text x="240" y="261" text-anchor="middle" font-size="7" fill="#334155">采集 exec</text>
+  <text x="240" y="277.1" text-anchor="middle" font-size="7" fill="#334155">覆盖运行期数据</text>
+  <line x1="306" y1="266" x2="319" y2="266" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="320" y="226" width="130" height="80" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="385" y="244.2" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">③ jacoco:report</text>
+  <text x="385" y="261" text-anchor="middle" font-size="7" fill="#334155">生成 HTML/XML</text>
+  <text x="385" y="277.1" text-anchor="middle" font-size="7" fill="#334155">人看 HTML，CI 读 XML</text>
+  <line x1="451" y1="266" x2="464" y2="266" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="465" y="226" width="130" height="80" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="530" y="244.2" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">④ jacoco:check</text>
+  <text x="530" y="261" text-anchor="middle" font-size="7" fill="#334155">比对每个模块</text>
+  <text x="530" y="277.1" text-anchor="middle" font-size="7" fill="#334155">规则的 BUNDLE 级阈值</text>
+  <line x1="596" y1="266" x2="609" y2="266" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="610" y="226" width="130" height="80" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="675" y="244.2" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">⑤ 低于阈值</text>
+  <text x="675" y="261" text-anchor="middle" font-size="7" fill="#B91C1C">构建失败</text>
+  <text x="675" y="277.1" text-anchor="middle" font-size="7" fill="#B91C1C">报告写进构建产物</text>
+  <text x="30" y="324" text-anchor="start" font-size="9.5" fill="#B91C1C">覆盖率不是越高越好：DTO / 配置类 / 生成的 Mapper 应排除，否则只会催生「为了凑数字」的测试</text>
+  <text x="30" y="344" text-anchor="start" font-size="9.5" fill="#065F46">比总覆盖率更值得盯的是「新增代码覆盖率」——只看本次改动的那几行有没有被测到</text>
+  <text x="30" y="364" text-anchor="start" font-size="9.5" fill="#64748B">同一个数字在不同团队含义不同：先统一「覆盖口径」（行 / 分支、是否含集成测试）再进 CI</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 388" width="760" height="388" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="388" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">VS Code 配置层级：同一项设置谁说了算</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">分层覆盖是 VS Code 可团队化的基础，也是「我改了没生效」的头号原因</text>
+  <text x="60" y="80" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">生效顺序：从上到下逐层覆盖，越靠下优先级越高</text>
+  <rect x="30" y="94" width="46" height="36" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <rect x="76" y="94" width="404" height="36" rx="0" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="96" y="109" text-anchor="start" font-size="9.5" fill="#1E293B" font-weight="bold">① 默认设置</text>
+  <text x="96" y="123" text-anchor="start" font-size="8" fill="#334155">VS Code 内置默认值</text>
+  <text x="504" y="116" text-anchor="start" font-size="8.5" fill="#334155">无需关心，作为兜底</text>
+  <line x1="380" y1="130" x2="380" y2="138" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="138" width="46" height="36" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <rect x="76" y="138" width="404" height="36" rx="0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="96" y="153" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 用户设置</text>
+  <text x="96" y="167" text-anchor="start" font-size="8" fill="#1D4ED8">settings.json（User）</text>
+  <text x="504" y="160" text-anchor="start" font-size="8.5" fill="#334155">%APPDATA%\Code\User\settings.json</text>
+  <line x1="380" y1="174" x2="380" y2="182" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="182" width="46" height="36" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <rect x="76" y="182" width="404" height="36" rx="0" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="96" y="197" text-anchor="start" font-size="9.5" fill="#5B21B6" font-weight="bold">③ 远程设置</text>
+  <text x="96" y="211" text-anchor="start" font-size="8" fill="#6D28D9">连上远程后生效</text>
+  <text x="504" y="204" text-anchor="start" font-size="8.5" fill="#334155">Remote 主机侧的 Machine 作用域</text>
+  <line x1="380" y1="218" x2="380" y2="226" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="226" width="46" height="36" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <rect x="76" y="226" width="404" height="36" rx="0" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="96" y="241" text-anchor="start" font-size="9.5" fill="#065F46" font-weight="bold">④ 工作区设置</text>
+  <text x="96" y="255" text-anchor="start" font-size="8" fill="#047857">.vscode/settings.json</text>
+  <text x="504" y="248" text-anchor="start" font-size="8.5" fill="#334155">随仓库提交，团队共享</text>
+  <line x1="380" y1="262" x2="380" y2="270" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="270" width="46" height="36" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <rect x="76" y="270" width="404" height="36" rx="0" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="96" y="285" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">⑤ 多根文件夹设置</text>
+  <text x="96" y="299" text-anchor="start" font-size="8" fill="#0F766E">*.code-workspace</text>
+  <text x="504" y="292" text-anchor="start" font-size="8.5" fill="#334155">多根工程里按文件夹覆盖</text>
+  <line x1="380" y1="306" x2="380" y2="314" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="314" width="46" height="36" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <rect x="76" y="314" width="404" height="36" rx="0" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="96" y="329" text-anchor="start" font-size="9.5" fill="#9A3412" font-weight="bold">⑥ 语言特定设置</text>
+  <text x="96" y="343" text-anchor="start" font-size="8" fill="#C2410C">[java] / [typescript]</text>
+  <text x="504" y="336" text-anchor="start" font-size="8.5" fill="#334155">只作用于该语言，优先级最高</text>
+  <text x="380" y="372" text-anchor="middle" font-size="10" fill="#1E3A8A">团队统一的做法：把「必须一致」的写进 .vscode/ 与 .editorconfig，个人偏好留在 User 层</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

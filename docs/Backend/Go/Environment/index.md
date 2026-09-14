@@ -261,6 +261,12 @@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o hello-linux .
 模块缓存目录中，大写字母会被编码为 `!小写`形式（如 `github.com/BurntSushi/toml` 缓存为 `github.com/!burnt!sushi/toml`）。这是为了避免大小写不敏感文件系统（Windows/macOS）冲突，属正常现象。
 :::
 
+## 相关文档
+
+- [IDE 配置](../../../Tools/IDE/index.md)：GoLand 与 VS Code 的 Go 扩展怎么配，含插件性能控制、远程开发与配置同步。
+- [IDE 配置 · VS Code 深入](../../../Tools/IDE/VSCode/index.md)：`settings.json` 层级与 Go 调试配置（`launch.json`）写法。
+- [IDE 配置 · 配置同步与团队统一](../../../Tools/IDE/ConfigSync/index.md)：`.editorconfig` 统一缩进（Go 用 `tab`，注意与团队其他语言的差异）。
+
 ## 参考资料
 
 - [Go 官方下载页](https://go.dev/dl/)

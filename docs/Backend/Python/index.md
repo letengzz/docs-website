@@ -7,6 +7,10 @@
 - [异步编程](Async/index.md)
 - [常用第三方库](CommonLibs/index.md)
 
+::: tip 环境与工具链是配套的
+Python 的解释器/虚拟环境管理与 IDE 里的「解释器选择」是一件事的两面：**IDE 里选错解释器，就会出现「命令行能跑、IDE 里全是红」**。相关配置（解释器切换、插件选择、远程开发）见 [IDE 配置](../../Tools/IDE/index.md)。
+:::
+
 ---
 
 生成随机数：random.randint 是生成整数随机数（左右都包括），random.uniform 是生成小数随机数，random.rand 是 0-1 的随机数（包左不包右）

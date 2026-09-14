@@ -35,3 +35,4 @@
 - [Ansible 自动化运维](../Ansible/index.md)：批量安装 Docker 引擎、下发 compose 文件与容器状态验收
 - [Terraform](../Terraform/index.md)：把「云主机 + 网络 + 对象存储」这类底座资源交给 IaC，机器建好后再由 CI/CD 拉起容器
 - [Kubernetes](../Kubernetes/index.md)：从单机容器到集群编排
+- [IDE 配置 · 远程开发与容器化环境](../../Tools/IDE/RemoteDev/index.md)：用 `devcontainer.json` 把开发环境也容器化——注意**开发容器 ≠ 生产镜像**，两者追求的目标相反（开发要全，生产要小）

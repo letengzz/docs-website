@@ -63,7 +63,7 @@ export const nav = [
       { text: "接口调试工具", link: "/docs/Tools/APITools" },
       { text: "包管理器深入", link: "/docs/Tools/PackageManager" },
       { text: "协作与项目管理", link: "/docs/Tools/Collaboration" },
-      { text: "IDE工具", link: "/docs/Tools/IDE" },
+      { text: "IDE 配置", link: "/docs/Tools/IDE" },
       { text: "版本控制工具", link: "/docs/Tools/VersionControl" },
       { text: "其他", link: "/docs/Tools/Others" }
     ]

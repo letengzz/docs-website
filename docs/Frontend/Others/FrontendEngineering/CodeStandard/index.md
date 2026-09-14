@@ -129,6 +129,12 @@ export default {
 3. 运行 `pnpm exec prettier --check .`，确认格式全部符合。
 4. 保存文件时触发自动格式化，确认格式化结果与 CI 一致。
 
+## 相关文档
+
+- [IDE 配置 · 配置同步与团队统一](../../../../Tools/IDE/ConfigSync/index.md)：本页规则在配置体系中的位置，含「同一规则在 EditorConfig / IDEA / VS Code / Prettier 的对应表」。
+- [IDE 配置 · 实战：搭一套统一的 IDE 环境](../../../../Tools/IDE/Practice/index.md)：把本页规则落到仓库与 CI 的完整六步。
+- [IDE 配置 · VS Code 深入](../../../../Tools/IDE/VSCode/index.md)：`editor.defaultFormatter` 与保存时自动格式化的配置要点。
+
 ## 参考资料
 
 - ESLint 文档：https://eslint.org/docs/latest/

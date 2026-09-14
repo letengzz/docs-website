@@ -66,12 +66,19 @@ SDKMAN 类似前端的 nvm，可以随时切换 JDK 版本，多项目开发强�
 
 ## 安装 IDE
 
-推荐 IntelliJ IDEA：
+推荐 **IntelliJ IDEA**。注意：自 **2025.3** 起 IDEA 已改为**统一发行版**，不再分别下载 Community / Ultimate——
 
-- Community（社区版）：免费，学习 Java SE 完全够用。
-- Ultimate（旗舰版）：支持 Spring、数据库工具等，收费。
+- 核心 Java / Kotlin 开发功能（编辑、导航、重构、调试、构建工具集成）**免费**，学习 Java SE 完全够用；
+- Spring 支持、数据库工具、Web 框架支持等高级能力需要 **Ultimate 订阅**解锁；
+- 新安装默认带 30 天 Ultimate 试用，试用结束不订阅也能继续用核心功能。
 
-使用 VS Code 也可以，安装扩展 **Extension Pack for Java**。
+使用 VS Code 也可以，安装扩展 **Extension Pack for Java** 即可获得语言支持、调试与测试能力。
+
+::: warning 别被旧教程误导
+网上大量「Community 还是 Ultimate」的对比文章写于 2025.3 之前，已不适用。要确认某项能力是否免费，直接看官方当前的功能与订阅页。
+:::
+
+完整的环境配置（内存与 JVM 参数、索引卡顿治理、与 Maven toolchain 对齐、`.idea/` 提交策略）见 [IDE 配置](../../../../Tools/IDE/index.md)。
 
 ## 第一个 Java 程序
 

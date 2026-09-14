@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 356" width="760" height="356" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="356" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">远程开发的五种形态与选型</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">远程开发不是「一个开关」，而是代码位置、界面位置、扩展位置三者的组合</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">先回答两个问题：代码在哪运行？界面在哪渲染？</text>
+  <rect x="30" y="94" width="132" height="84" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="96" y="112.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">本地开发</text>
+  <text x="96" y="129" text-anchor="middle" font-size="7.5" fill="#1D4ED8">代码与界面同一台机器</text>
+  <text x="96" y="146.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">零延迟，调试最直接</text>
+  <text x="96" y="163.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">缺点：环境不可复现</text>
+  <rect x="172" y="94" width="132" height="84" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="238" y="112.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">Remote-SSH</text>
+  <text x="238" y="129" text-anchor="middle" font-size="7.5" fill="#6D28D9">界面本地、代码远端</text>
+  <text x="238" y="146.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">扩展在远端跑</text>
+  <text x="238" y="163.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">适合：服务器/跳板机</text>
+  <rect x="314" y="94" width="132" height="84" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="112.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">Dev Container</text>
+  <text x="380" y="129" text-anchor="middle" font-size="7.5" fill="#047857">环境即代码 devcontainer.json</text>
+  <text x="380" y="146.25" text-anchor="middle" font-size="7.5" fill="#047857">团队成员环境完全一致</text>
+  <text x="380" y="163.5" text-anchor="middle" font-size="7.5" fill="#047857">适合：多语言/依赖复杂项目</text>
+  <rect x="456" y="94" width="132" height="84" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="522" y="112.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">WSL 2</text>
+  <text x="522" y="129" text-anchor="middle" font-size="7.5" fill="#0F766E">Windows 上的 Linux 子系统</text>
+  <text x="522" y="146.25" text-anchor="middle" font-size="7.5" fill="#0F766E">Linux 工具链 + Windows 界面</text>
+  <text x="522" y="163.5" text-anchor="middle" font-size="7.5" fill="#0F766E">适合：Windows 上的后端开发</text>
+  <rect x="598" y="94" width="132" height="84" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="664" y="112.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">云端 IDE</text>
+  <text x="664" y="129" text-anchor="middle" font-size="7.5" fill="#B45309">浏览器即编辑器</text>
+  <text x="664" y="146.25" text-anchor="middle" font-size="7.5" fill="#B45309">开箱即用、按量计费</text>
+  <text x="664" y="163.5" text-anchor="middle" font-size="7.5" fill="#B45309">适合：临时环境/培训/演示</text>
+  <line x1="30" y1="196" x2="730" y2="196" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="60" y="224" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">选型对照</text>
+  <rect x="30" y="236" width="152" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="106" y="251" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">环境一致性要求高</text>
+  <rect x="190" y="236" width="120" height="22" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="250" y="251" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">Dev Container</text>
+  <rect x="318" y="236" width="412" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="524" y="251" text-anchor="middle" font-size="8.5" fill="#334155">devcontainer.json 入库，全员同一镜像</text>
+  <rect x="30" y="262" width="152" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="106" y="277" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">连生产网/内网服务器改代码</text>
+  <rect x="190" y="262" width="120" height="22" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="250" y="277" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">Remote-SSH</text>
+  <rect x="318" y="262" width="412" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="524" y="277" text-anchor="middle" font-size="8.5" fill="#334155">扩展与终端都在远端，只传界面</text>
+  <rect x="30" y="288" width="152" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="106" y="303" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">Windows 上写 Linux 后端</text>
+  <rect x="190" y="288" width="120" height="22" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="250" y="303" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">WSL 2</text>
+  <rect x="318" y="288" width="412" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="524" y="303" text-anchor="middle" font-size="8.5" fill="#334155">把项目放在 \\wsl$ 路径下，注意文件性能</text>
+  <rect x="30" y="314" width="152" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="106" y="329" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">零配置与临时评审</text>
+  <rect x="190" y="314" width="120" height="22" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="250" y="329" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">云端 IDE</text>
+  <rect x="318" y="314" width="412" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="524" y="329" text-anchor="middle" font-size="8.5" fill="#334155">用完即删，注意代码与数据出境合规</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

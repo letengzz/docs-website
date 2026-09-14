@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 412" width="760" height="412" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="412" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">OpenAPI 契约回归：接口悄悄变形，流水线必须拦下来</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">springdoc-openapi 3.x 导出 openapi.json → 与仓库快照比对 → 破坏性变更需显式确认</text>
+  <text x="30" y="80" text-anchor="start" font-size="10.5" fill="#1E3A8A" font-weight="bold">① 契约从运行时导出，而不是手写维护</text>
+  <rect x="30" y="92" width="160" height="76" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="110" y="110.2" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">① 启动应用</text>
+  <text x="110" y="127" text-anchor="middle" font-size="7.2" fill="#4338CA">springdoc 扫描</text>
+  <text x="110" y="143.56" text-anchor="middle" font-size="7.2" fill="#4338CA">注解 + 类型推断</text>
+  <line x1="191" y1="130" x2="209" y2="130" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="210" y="92" width="160" height="76" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="290" y="110.2" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">② 导出契约</text>
+  <text x="290" y="127" text-anchor="middle" font-size="7.2" fill="#4338CA">GET /v3/api-docs</text>
+  <text x="290" y="143.56" text-anchor="middle" font-size="7.2" fill="#4338CA">存 docs/openapi/</text>
+  <line x1="371" y1="130" x2="389" y2="130" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="390" y="92" width="160" height="76" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="470" y="110.2" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">③ CI 内 diff</text>
+  <text x="470" y="127" text-anchor="middle" font-size="7.2" fill="#4338CA">重新导出</text>
+  <text x="470" y="143.56" text-anchor="middle" font-size="7.2" fill="#4338CA">与仓库快照逐行比</text>
+  <line x1="551" y1="130" x2="569" y2="130" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="570" y="92" width="160" height="76" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="650" y="110.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">④ 判定</text>
+  <text x="650" y="127" text-anchor="middle" font-size="7.2" fill="#B91C1C">兼容 → 通过</text>
+  <text x="650" y="143.56" text-anchor="middle" font-size="7.2" fill="#B91C1C">破坏 → 失败</text>
+  <text x="30" y="196" text-anchor="start" font-size="10.5" fill="#1E3A8A" font-weight="bold">② 三种判定结果，处理方式完全不同</text>
+  <rect x="30" y="208" width="226" height="82" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="143" y="226.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">无差异</text>
+  <text x="143" y="243" text-anchor="middle" font-size="7.4" fill="#047857">快照与线上一致</text>
+  <text x="143" y="260.02" text-anchor="middle" font-size="7.4" fill="#047857">流水线直接通过</text>
+  <text x="143" y="277.04" text-anchor="middle" font-size="7.4" fill="#047857">最常见的正常态</text>
+  <rect x="267" y="208" width="226" height="82" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="226.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">仅新增（兼容）</text>
+  <text x="380" y="243" text-anchor="middle" font-size="7.4" fill="#1D4ED8">新增端点 / 可选字段</text>
+  <text x="380" y="260.02" text-anchor="middle" font-size="7.4" fill="#1D4ED8">通过并把新快照提交</text>
+  <text x="380" y="277.04" text-anchor="middle" font-size="7.4" fill="#1D4ED8">变更留痕可追溯</text>
+  <rect x="504" y="208" width="226" height="82" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="617" y="226.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">破坏性变更</text>
+  <text x="617" y="243" text-anchor="middle" font-size="7.4" fill="#B91C1C">删端点 / 改字段类型</text>
+  <text x="617" y="260.02" text-anchor="middle" font-size="7.4" fill="#B91C1C">失败并要求显式确认</text>
+  <text x="617" y="277.04" text-anchor="middle" font-size="7.4" fill="#B91C1C">确认后再更新快照</text>
+  <text x="30" y="314" text-anchor="start" font-size="10.5" fill="#B91C1C" font-weight="bold">③ 会被判为破坏性、必须人工确认的变更</text>
+  <rect x="30" y="326" width="700" height="60" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="348" text-anchor="middle" font-size="8.5" fill="#B91C1C">删除或重命名端点 · 修改路径或查询参数名 · 字段由可选改为必填</text>
+  <text x="380" y="368" text-anchor="middle" font-size="8.5" fill="#B91C1C">字段类型变化（string→integer） · 响应结构层级调整 · 鉴权方案变更</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

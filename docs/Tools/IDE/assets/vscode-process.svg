@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 386" width="760" height="386" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="386" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">VS Code 进程模型：为什么它「轻」却又能很重</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">主进程管调度，渲染进程只管界面，扩展与语言服务各自在独立进程里跑</text>
+  <rect x="300" y="76" width="160" height="62" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="94.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">主进程 Main</text>
+  <text x="380" y="111" text-anchor="middle" font-size="7.5" fill="#6D28D9">窗口 / 菜单 / 更新</text>
+  <text x="380" y="128.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">生命周期与协议中枢</text>
+  <rect x="60" y="176" width="150" height="62" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="135" y="194.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">渲染进程 Workbench</text>
+  <text x="135" y="211" text-anchor="middle" font-size="7.5" fill="#1D4ED8">UI 与编辑器</text>
+  <text x="135" y="228.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">不含扩展代码</text>
+  <rect x="305" y="176" width="150" height="62" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="194.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">扩展宿主 Extension Host</text>
+  <text x="380" y="211" text-anchor="middle" font-size="7.5" fill="#047857">所有扩展在此运行</text>
+  <text x="380" y="228.25" text-anchor="middle" font-size="7.5" fill="#047857">卡死只卡扩展不卡 UI</text>
+  <rect x="550" y="176" width="180" height="62" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="640" y="194.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">共享进程 / 独立进程</text>
+  <text x="640" y="211" text-anchor="middle" font-size="7.5" fill="#0F766E">共享进程：省内存</text>
+  <text x="640" y="228.25" text-anchor="middle" font-size="7.5" fill="#0F766E">独立进程：隔离性好</text>
+  <rect x="60" y="282" width="150" height="58" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="135" y="300.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">语言服务器 LSP</text>
+  <text x="135" y="317" text-anchor="middle" font-size="7.5" fill="#B45309">补全 / 诊断 / 跳转</text>
+  <text x="135" y="334.25" text-anchor="middle" font-size="7.5" fill="#B45309">独立进程按需启动</text>
+  <rect x="305" y="282" width="150" height="58" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="380" y="300.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">调试适配器 DAP</text>
+  <text x="380" y="317" text-anchor="middle" font-size="7.5" fill="#C2410C">断点 / 变量 / 调用栈</text>
+  <text x="380" y="334.25" text-anchor="middle" font-size="7.5" fill="#C2410C">每种语言一个适配器</text>
+  <rect x="550" y="282" width="180" height="58" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.6"/>
+  <text x="640" y="300.2" text-anchor="middle" font-size="9.5" fill="#155E75" font-weight="bold">终端与任务</text>
+  <text x="640" y="317" text-anchor="middle" font-size="7.5" fill="#0E7490">集成终端 / tasks.json</text>
+  <text x="640" y="334.25" text-anchor="middle" font-size="7.5" fill="#0E7490">任务与问题匹配器</text>
+  <line x1="380" y1="138" x2="380" y2="176" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="144" x2="210" y2="144" stroke="#7C3AED" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="210" y1="144" x2="210" y2="176" stroke="#7C3AED" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="210" y1="168" x2="210" y2="176" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="144" x2="640" y2="144" stroke="#7C3AED" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="640" y1="144" x2="640" y2="176" stroke="#7C3AED" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="640" y1="168" x2="640" y2="176" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="455" y1="207" x2="550" y2="207" stroke="#7C3AED" stroke-width="1.4"/>
+  <line x1="135" y1="238" x2="135" y2="282" stroke="#7C3AED" stroke-width="1.4"/>
+  <line x1="380" y1="238" x2="380" y2="282" stroke="#7C3AED" stroke-width="1.4"/>
+  <line x1="640" y1="238" x2="640" y2="282" stroke="#7C3AED" stroke-width="1.4"/>
+  <text x="380" y="366" text-anchor="middle" font-size="10" fill="#1E3A8A">关键推论：UI 卡死 ≠ 扩展卡死；排查扩展问题看「扩展宿主」而非重装 VS Code</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

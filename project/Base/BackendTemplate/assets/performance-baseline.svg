@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 372" width="760" height="372" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="372" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">第 3 周：压测基线与契约回归</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">把「感觉还行」变成「有数字」：基线、覆盖率、契约三层防线，全部进 CI</text>
+
+  <rect x="30" y="76" width="162" height="70" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="111" y="94.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">① 定义指标</text>
+  <text x="111" y="111.2" text-anchor="middle" font-size="7.5" fill="#6D28D9">TPS / P95 / 错误率</text>
+  <text x="111" y="128.2" text-anchor="middle" font-size="7.5" fill="#6D28D9">资源饱和度</text>
+
+  <line x1="193" y1="111" x2="206" y2="111" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="208" y="76" width="162" height="70" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="289" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">② 压测取基线</text>
+  <text x="289" y="111.2" text-anchor="middle" font-size="7.5" fill="#1D4ED8">k6 / JMeter / wrk</text>
+  <text x="289" y="128.2" text-anchor="middle" font-size="7.5" fill="#1D4ED8">固定环境与数据量</text>
+
+  <line x1="371" y1="111" x2="384" y2="111" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="386" y="76" width="162" height="70" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="467" y="94.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">③ 定位瓶颈</text>
+  <text x="467" y="111.2" text-anchor="middle" font-size="7.5" fill="#C2410C">Redis / DB 慢查询</text>
+  <text x="467" y="128.2" text-anchor="middle" font-size="7.5" fill="#C2410C">GC 与线程池排队</text>
+
+  <line x1="549" y1="111" x2="562" y2="111" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="564" y="76" width="162" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="645" y="94.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">④ 优化后复测</text>
+  <text x="645" y="111.2" text-anchor="middle" font-size="7.5" fill="#047857">同一脚本同一环境</text>
+  <text x="645" y="128.2" text-anchor="middle" font-size="7.5" fill="#047857">把基线写进文档</text>
+
+  <text x="380" y="172" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">三道门禁：任一不达标，流水线直接失败</text>
+
+  <rect x="30" y="188" width="226" height="88" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="143" y="206.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">门禁一 · 覆盖率</text>
+  <text x="143" y="223.2" text-anchor="middle" font-size="7.5" fill="#B91C1C">template-security ≥ 75%</text>
+  <text x="143" y="240.2" text-anchor="middle" font-size="7.5" fill="#B91C1C">按模块设阈值，不搞全局</text>
+  <text x="143" y="257.2" text-anchor="middle" font-size="7.5" fill="#B91C1C">JaCoCo check 绑定 verify</text>
+
+  <rect x="267" y="188" width="226" height="88" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="206.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">门禁二 · 契约不破坏</text>
+  <text x="380" y="223.2" text-anchor="middle" font-size="7.5" fill="#1D4ED8">springdoc 导出 openapi.json</text>
+  <text x="380" y="240.2" text-anchor="middle" font-size="7.5" fill="#1D4ED8">与仓库快照比对</text>
+  <text x="380" y="257.2" text-anchor="middle" font-size="7.5" fill="#1D4ED8">破坏性变更必须显式确认</text>
+
+  <rect x="504" y="188" width="226" height="88" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="617" y="206.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">门禁三 · 基线不退化</text>
+  <text x="617" y="223.2" text-anchor="middle" font-size="7.5" fill="#C2410C">P95 不允许超基线 20%</text>
+  <text x="617" y="240.2" text-anchor="middle" font-size="7.5" fill="#C2410C">夜间跑轻量冒烟压测</text>
+  <text x="617" y="257.2" text-anchor="middle" font-size="7.5" fill="#C2410C">结果落后对比看趋势</text>
+
+  <text x="380" y="300" text-anchor="middle" font-size="10" fill="#B91C1C">基线必须记录「环境 + 数据量 + 脚本版本」三要素，否则数字无法复现</text>
+  <text x="380" y="324" text-anchor="middle" font-size="10" fill="#065F46">压测的价值不在「跑出漂亮数字」，而在「下次变慢了能立刻发现」</text>
+  <text x="380" y="350" text-anchor="middle" font-size="9.5" fill="#64748B">顺序不能反：先有基线，再谈优化；没有基线的优化无法证明有效</text>
+
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
