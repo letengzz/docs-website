@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">实战：一条端到端的安全流水线</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">同一条流水线覆盖「提交 → 构建 → 部署 → 运行」四个阶段，任何阶段发现问题都能阻断或告警</text>
+  <rect x="32" y="74" width="696" height="70" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="48" y="98" text-anchor="start" font-size="11.5" fill="#1E3A8A" font-weight="bold">提交阶段</text>
+  <rect x="162" y="86" width="174" height="46" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="249" y="111.09" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">pre-commit 密钥扫描</text>
+  <rect x="348" y="86" width="174" height="46" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="435" y="111.09" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">SAST 代码扫描</text>
+  <rect x="534" y="86" width="174" height="46" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="621" y="111.09" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">依赖 SCA 扫描</text>
+  <rect x="32" y="156" width="696" height="70" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="48" y="180" text-anchor="start" font-size="11.5" fill="#065F46" font-weight="bold">构建阶段</text>
+  <rect x="162" y="168" width="174" height="46" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.1"/>
+  <text x="249" y="193.09" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">生成 SBOM</text>
+  <rect x="348" y="168" width="174" height="46" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.1"/>
+  <text x="435" y="193.09" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">镜像扫描（Trivy）</text>
+  <rect x="534" y="168" width="174" height="46" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.1"/>
+  <text x="621" y="193.09" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">cosign 签名</text>
+  <rect x="32" y="238" width="696" height="70" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="48" y="262" text-anchor="start" font-size="11.5" fill="#9A3412" font-weight="bold">部署阶段</text>
+  <rect x="162" y="250" width="174" height="46" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.1"/>
+  <text x="249" y="275.09" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">配置扫描（IaC）</text>
+  <rect x="348" y="250" width="174" height="46" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.1"/>
+  <text x="435" y="275.09" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">准入策略（Kyverno）</text>
+  <rect x="534" y="250" width="174" height="46" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.1"/>
+  <text x="621" y="275.09" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">验签后才放行</text>
+  <rect x="32" y="320" width="696" height="70" rx="10" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="48" y="344" text-anchor="start" font-size="11.5" fill="#991B1B" font-weight="bold">运行阶段</text>
+  <rect x="162" y="332" width="174" height="46" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.1"/>
+  <text x="249" y="357.09" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">运行时检测（Falco）</text>
+  <rect x="348" y="332" width="174" height="46" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.1"/>
+  <text x="435" y="357.09" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">审计日志集中</text>
+  <rect x="534" y="332" width="174" height="46" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.1"/>
+  <text x="621" y="357.09" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">告警与自动隔离</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">扫描工具链全景：按阶段选工具</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">工具不是越多越好——每个阶段选 1~2 个，接入流水线并统一输出格式（SARIF/JSON）</text>
+  <rect x="30" y="78" width="110" height="74" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="85" y="100.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">代码：源码缺陷</text>
+  <text x="85" y="117.2" text-anchor="middle" font-size="7.0" fill="#6D28D9">SAST：CodeQL</text>
+  <text x="85" y="134.2" text-anchor="middle" font-size="7.0" fill="#6D28D9">Semgrep</text>
+  <rect x="152" y="78" width="110" height="74" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="207" y="100.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">依赖：第三方库</text>
+  <text x="207" y="117.2" text-anchor="middle" font-size="7.0" fill="#1D4ED8">SCA：Trivy fs</text>
+  <text x="207" y="134.2" text-anchor="middle" font-size="7.0" fill="#1D4ED8">Grype + Syft</text>
+  <rect x="274" y="78" width="110" height="74" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="329" y="100.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">镜像：容器镜像</text>
+  <text x="329" y="117.2" text-anchor="middle" font-size="7.0" fill="#047857">Trivy image</text>
+  <text x="329" y="134.2" text-anchor="middle" font-size="7.0" fill="#047857">Grype</text>
+  <rect x="396" y="78" width="110" height="74" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="451" y="91.7" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">配置：IaC/K8s YAML</text>
+  <text x="451" y="108.7" text-anchor="middle" font-size="7.0" fill="#C2410C">Trivy config</text>
+  <text x="451" y="125.7" text-anchor="middle" font-size="7.0" fill="#C2410C">Kubescape</text>
+  <text x="451" y="142.7" text-anchor="middle" font-size="7.0" fill="#C2410C">checkov</text>
+  <rect x="518" y="78" width="110" height="74" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="573" y="100.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">集群：运行中集群</text>
+  <text x="573" y="117.2" text-anchor="middle" font-size="7.0" fill="#0F766E">kube-bench</text>
+  <text x="573" y="134.2" text-anchor="middle" font-size="7.0" fill="#0F766E">Kubescape</text>
+  <rect x="640" y="78" width="110" height="74" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="695" y="100.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">运行时：异常行为</text>
+  <text x="695" y="117.2" text-anchor="middle" font-size="7.0" fill="#B91C1C">Falco</text>
+  <text x="695" y="134.2" text-anchor="middle" font-size="7.0" fill="#B91C1C">eBPF</text>
+  <text x="380" y="186" text-anchor="middle" font-size="12.5" fill="#5B21B6" font-weight="bold">统一接入与门禁</text>
+  <rect x="32" y="200" width="336" height="88" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="200" y="229.42" text-anchor="middle" font-size="11" fill="#5B21B6" font-weight="bold">输出格式</text>
+  <text x="200" y="246.42" text-anchor="middle" font-size="8.0" fill="#6D28D9">SARIF（代码扫描通用）· CycloneDX（SBOM）</text>
+  <text x="200" y="263.42" text-anchor="middle" font-size="8.0" fill="#6D28D9">JSON/JUnit（CI 消费）</text>
+  <rect x="392" y="200" width="336" height="88" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="560" y="229.42" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="bold">门禁策略</text>
+  <text x="560" y="246.42" text-anchor="middle" font-size="8.0" fill="#B91C1C">仅高危阻断 · 允许基线例外（有到期时间）</text>
+  <text x="560" y="263.42" text-anchor="middle" font-size="8.0" fill="#B91C1C">结果进 PR 评论 + 趋势看板</text>
+  <text x="380" y="314" text-anchor="middle" font-size="12.5" fill="#1E3A8A" font-weight="bold">版本速览（2026-09 核对）</text>
+  <rect x="32" y="326" width="224" height="30" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="144" y="343.09" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">Trivy 0.74.0</text>
+  <rect x="264" y="326" width="224" height="30" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.1"/>
+  <text x="376" y="343.09" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">Grype 0.118.0</text>
+  <rect x="496" y="326" width="232" height="30" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.1"/>
+  <text x="612" y="343.09" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">Falco 0.44.1</text>
+  <rect x="32" y="360" width="224" height="30" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="144" y="377.09" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">Kyverno 1.19.0</text>
+  <rect x="264" y="360" width="224" height="30" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.1"/>
+  <text x="376" y="377.09" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">Gatekeeper 1.19.1</text>
+  <rect x="496" y="360" width="232" height="30" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.1"/>
+  <text x="612" y="377.09" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">Kubescape v4.0.12</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
