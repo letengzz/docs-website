@@ -15,6 +15,22 @@ export const Ansible = [
     ],
   },
 ];
+export const Terraform = [
+  {
+    text: "Terraform",
+    link: "/docs/Ops/Terraform/index.md",
+    items: [
+      { text: "概述与选型", link: "/docs/Ops/Terraform/Overview/index.md" },
+      { text: "安装与初始化", link: "/docs/Ops/Terraform/Install/index.md" },
+      { text: "HCL 语法与表达式", link: "/docs/Ops/Terraform/HCL/index.md" },
+      { text: "资源、数据源与变量", link: "/docs/Ops/Terraform/Resource/index.md" },
+      { text: "State 与远程后端", link: "/docs/Ops/Terraform/State/index.md" },
+      { text: "模块与注册表", link: "/docs/Ops/Terraform/Module/index.md" },
+      { text: "实战：交付一套云上环境", link: "/docs/Ops/Terraform/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/Terraform/FAQ/index.md" },
+    ],
+  },
+];
 export const Docker = [
   {
     text: "Docker",

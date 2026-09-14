@@ -34,6 +34,7 @@ export const nav = [
       { text: "虚拟机", link: "/docs/Ops/VM" },
       { text: "Linux", link: "/docs/Ops/Linux" },
       { text: "Ansible", link: "/docs/Ops/Ansible" },
+      { text: "Terraform", link: "/docs/Ops/Terraform" },
       { text: "Nginx", link: "/docs/Ops/Nginx" },
       { text: "网络基础", link: "/docs/Ops/Network" },
       { text: "Docker", link: "/docs/Ops/Docker" },

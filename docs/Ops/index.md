@@ -3,6 +3,7 @@
 - [虚拟机](VM/index.md)
 - [Linux](Linux/index.md)
 - [Ansible](Ansible/index.md)
+- [Terraform](Terraform/index.md)
 - [Nginx](Nginx/index.md)
 - [网络基础](Network/index.md)
 - [Docker](Docker/index.md)
