@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="340" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">实战链路：采集 → 写入 → 降采样 → 看板 → 告警</text>
+  <defs>
+    <marker id="arrP" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#2563EB"/></marker>
+  </defs>
+  <g font-size="11.5">
+    <rect x="20" y="60" width="128" height="92" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+    <text x="84" y="84" text-anchor="middle" fill="#1E3A8A" font-weight="bold">设备 / 服务</text>
+    <text x="34" y="108" fill="#334155">1000 台边缘设备</text>
+    <text x="34" y="128" fill="#334155">每 5s 上报一次</text>
+    <text x="34" y="146" fill="#64748B">HTTP / MQTT</text>
+
+    <rect x="168" y="60" width="128" height="92" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="232" y="84" text-anchor="middle" fill="#065F46" font-weight="bold">采集层</text>
+    <text x="182" y="108" fill="#334155">Telegraf / 自研上报</text>
+    <text x="182" y="128" fill="#334155">批量 + 重试 + 本地缓冲</text>
+    <text x="182" y="146" fill="#64748B">line protocol / SQL</text>
+
+    <rect x="316" y="60" width="128" height="92" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+    <text x="380" y="84" text-anchor="middle" fill="#9A3412" font-weight="bold">时序库</text>
+    <text x="330" y="108" fill="#334155">InfluxDB 3 / TDengine</text>
+    <text x="330" y="128" fill="#334155">分区 + 压缩 + TTL</text>
+    <text x="330" y="146" fill="#64748B">写入 5000 点/秒</text>
+
+    <rect x="464" y="60" width="128" height="92" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+    <text x="528" y="84" text-anchor="middle" fill="#5B21B6" font-weight="bold">降采样任务</text>
+    <text x="478" y="108" fill="#334155">1m / 1h 汇总</text>
+    <text x="478" y="128" fill="#334155">任务或流计算</text>
+    <text x="478" y="146" fill="#64748B">保留策略分级</text>
+
+    <rect x="612" y="60" width="128" height="92" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="2"/>
+    <text x="676" y="84" text-anchor="middle" fill="#9D174D" font-weight="bold">看板 + 告警</text>
+    <text x="626" y="108" fill="#334155">Grafana 图表</text>
+    <text x="626" y="128" fill="#334155">阈值 / 持续时长告警</text>
+    <text x="626" y="146" fill="#64748B">通知到 IM / 电话</text>
+  </g>
+  <g stroke="#2563EB" stroke-width="2.5" fill="none" marker-end="url(#arrP)">
+    <line x1="148" y1="106" x2="164" y2="106"/>
+    <line x1="296" y1="106" x2="312" y2="106"/>
+    <line x1="444" y1="106" x2="460" y2="106"/>
+    <line x1="592" y1="106" x2="608" y2="106"/>
+    <line x1="528" y1="152" x2="528" y2="196"/>
+  </g>
+  <g font-size="11.5">
+    <rect x="20" y="196" width="360" height="120" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="40" y="220" fill="#0F172A" font-weight="bold">验收指标</text>
+    <text x="40" y="244" fill="#334155">写入：5000 点/秒持续 10 分钟，无丢弃</text>
+    <text x="40" y="266" fill="#334155">查询：近 1 小时看板 P95 延迟 &lt; 500ms</text>
+    <text x="40" y="288" fill="#334155">磁盘：压缩后日均增量符合预算（见存储页公式）</text>
+    <text x="40" y="308" fill="#64748B">告警：连续 3 个窗口超阈值才触发，避免抖动误报</text>
+  </g>
+  <g font-size="11.5">
+    <rect x="396" y="196" width="344" height="120" rx="8" fill="#FEF2F2" stroke="#DC2626"/>
+    <text x="416" y="220" fill="#7F1D1D" font-weight="bold">常见坑（本专题各页有详述）</text>
+    <text x="416" y="244" fill="#334155">① 标签基数失控（用户 ID 当标签）</text>
+    <text x="416" y="266" fill="#334155">② 单点写入无批量，连接数打满</text>
+    <text x="416" y="288" fill="#334155">③ 不设 TTL，磁盘几天就满</text>
+    <text x="416" y="308" fill="#334155">④ 看板直接扫原始数据，越用越慢</text>
+  </g>
+</svg>

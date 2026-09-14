@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <rect x="8" y="8" width="224" height="224" rx="28" fill="#EFF6FF" stroke="#2563EB" stroke-width="4"/>
+  <!-- 时间轴 -->
+  <line x1="36" y1="200" x2="204" y2="200" stroke="#2563EB" stroke-width="3"/>
+  <line x1="36" y1="200" x2="36" y2="60" stroke="#2563EB" stroke-width="3"/>
+  <g stroke="#1D4ED8" stroke-width="2.5" fill="none">
+    <polyline points="40,150 70,120 100,138 130,86 160,104 190,64"/>
+  </g>
+  <g fill="#2563EB">
+    <circle cx="70" cy="120" r="4"/>
+    <circle cx="130" cy="86" r="4"/>
+    <circle cx="190" cy="64" r="4"/>
+  </g>
+  <!-- 数据点柱 -->
+  <g fill="#93C5FD" stroke="#2563EB" stroke-width="1.5">
+    <rect x="46" y="182" width="10" height="18"/>
+    <rect x="76" y="176" width="10" height="24"/>
+    <rect x="106" y="184" width="10" height="16"/>
+    <rect x="136" y="170" width="10" height="30"/>
+    <rect x="166" y="174" width="10" height="26"/>
+    <rect x="196" y="166" width="10" height="34"/>
+  </g>
+</svg>

@@ -26,6 +26,7 @@ export const nav = [
       { text: "关系型数据库", link: "/docs/DB/Relational" },
       { text: "非关系型数据库", link: "/docs/DB/NoRelational" },
       { text: "数据建模", link: "/docs/DB/DataModeling" },
+      { text: "时序数据库", link: "/docs/DB/TimeSeries" },
     ]
   },
   {

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="320" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">时序数据 vs 关系型数据：写入模式与查询模式完全不同</text>
+  <g>
+    <rect x="30" y="50" width="330" height="150" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+    <text x="195" y="76" text-anchor="middle" font-size="14" fill="#1E3A8A" font-weight="bold">关系型：随机读写 + 事务</text>
+    <text x="48" y="102" font-size="12" fill="#334155">写入：低频、随机位置 UPDATE</text>
+    <text x="48" y="124" font-size="12" fill="#334155">读：按主键点查、多表 JOIN、强一致</text>
+    <text x="48" y="146" font-size="12" fill="#334155">行存为主，B+ 树索引</text>
+    <text x="48" y="168" font-size="12" fill="#334155">更新频繁，需保证 ACID</text>
+    <text x="48" y="190" font-size="12" fill="#64748B">例：订单、用户、账户余额</text>
+  </g>
+  <g>
+    <rect x="400" y="50" width="330" height="150" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="565" y="76" text-anchor="middle" font-size="14" fill="#065F46" font-weight="bold">时序型：追加写 + 范围聚合</text>
+    <text x="418" y="102" font-size="12" fill="#334155">写入：高频、只追加（刷写即落盘）</text>
+    <text x="418" y="124" font-size="12" fill="#334155">读：按时间范围 + 标签过滤 + 降采样</text>
+    <text x="418" y="146" font-size="12" fill="#334155">列存 + 时间分区 + 高压缩</text>
+    <text x="418" y="168" font-size="12" fill="#334155">几乎不更新，按时间过期删除</text>
+    <text x="418" y="190" font-size="12" fill="#64748B">例：指标、传感器、日志事件</text>
+  </g>
+  <g>
+    <rect x="30" y="220" width="700" height="80" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="48" y="246" font-size="13" fill="#0F172A" font-weight="bold">量级直觉：</text>
+    <text x="118" y="246" font-size="12" fill="#334155">一台设备每秒 1 个指标 × 10 万个测点 = 10 万行/秒 = 86 亿行/天。这种量级下</text>
+    <text x="48" y="270" font-size="12" fill="#334155">关系型库的 B+ 树写入、二级索引维护、行级锁都会成为瓶颈；时序库靠「追加写 + 列存 + 时间分区 + 压缩」把成本压下去。</text>
+    <text x="48" y="292" font-size="12" fill="#64748B">结论：时序场景不是"关系型库调优"能解决的，属于存储引擎层面的差异。</text>
+  </g>
+</svg>

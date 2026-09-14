@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="320" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">降采样链路：原始（秒级）→ 分钟汇总 → 小时汇总 → 冷存</text>
+  <defs>
+    <marker id="arrD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#059669"/></marker>
+  </defs>
+  <g font-size="12">
+    <rect x="24" y="60" width="164" height="110" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+    <text x="106" y="84" text-anchor="middle" fill="#1E3A8A" font-weight="bold">原始数据</text>
+    <text x="38" y="108" fill="#334155">分辨率：1s / 10s</text>
+    <text x="38" y="130" fill="#334155">保留：7~30 天</text>
+    <text x="38" y="152" fill="#64748B">量最大、成本最高</text>
+
+    <rect x="212" y="60" width="164" height="110" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="294" y="84" text-anchor="middle" fill="#065F46" font-weight="bold">分钟汇总</text>
+    <text x="226" y="108" fill="#334155">avg / max / min / count</text>
+    <text x="226" y="130" fill="#334155">保留：3~12 个月</text>
+    <text x="226" y="152" fill="#64748B">看板默认查询层</text>
+
+    <rect x="400" y="60" width="164" height="110" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+    <text x="482" y="84" text-anchor="middle" fill="#9A3412" font-weight="bold">小时 / 天汇总</text>
+    <text x="414" y="108" fill="#334155">趋势与容量分析</text>
+    <text x="414" y="130" fill="#334155">保留：2~5 年</text>
+    <text x="414" y="152" fill="#64748B">报表与同比环比</text>
+
+    <rect x="588" y="60" width="148" height="110" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="2"/>
+    <text x="662" y="84" text-anchor="middle" fill="#475569" font-weight="bold">冷存储</text>
+    <text x="602" y="108" fill="#334155">对象存储</text>
+    <text x="602" y="130" fill="#334155">成本最低</text>
+    <text x="602" y="152" fill="#64748B">按需归档/合规</text>
+  </g>
+  <g stroke="#059669" stroke-width="2.5" fill="none" marker-end="url(#arrD)">
+    <line x1="188" y1="115" x2="208" y2="115"/>
+    <line x1="376" y1="115" x2="396" y2="115"/>
+    <line x1="564" y1="115" x2="584" y2="115"/>
+  </g>
+  <g>
+    <rect x="24" y="196" width="712" height="100" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="44" y="222" font-size="13" fill="#0F172A" font-weight="bold">实现方式（三选一，按数据库能力）：</text>
+    <text x="44" y="246" font-size="12" fill="#334155">① 连续查询 / 物化视图（InfluxDB 3 任务、TDengine 流计算 STREAM）——库内自动完成，推荐；</text>
+    <text x="44" y="268" font-size="12" fill="#334155">② 定时批处理（Telegraf / Flink / 自写任务）把原始数据聚合成新 measurement；</text>
+    <text x="44" y="290" font-size="12" fill="#334155">③ 查询侧降采样（Grafana 的 max data points + GROUP BY time）——不改数据，但每次都扫原始数据。</text>
+  </g>
+</svg>

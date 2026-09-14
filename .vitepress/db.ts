@@ -8,7 +8,6 @@ export const DataModeling = [
   {
     text: "数据建模",
     link: "/docs/DB/DataModeling/index.md",
-    collapsed: true,
     items: [
       { text: "数据建模概述", link: "/docs/DB/DataModeling/Overview/index.md" },
       { text: "核心概念", link: "/docs/DB/DataModeling/CoreConcepts/index.md" },
@@ -168,6 +167,22 @@ export const Relational = [
         ],
       },
       ...SQLOptimization,
+    ],
+  },
+];
+export const TimeSeries = [
+  {
+    text: "时序数据库",
+    link: "/docs/DB/TimeSeries/index.md",
+    items: [
+      { text: "时序数据库概述与选型", link: "/docs/DB/TimeSeries/Overview/index.md" },
+      { text: "数据模型", link: "/docs/DB/TimeSeries/DataModel/index.md" },
+      { text: "InfluxDB 深入", link: "/docs/DB/TimeSeries/InfluxDB/index.md" },
+      { text: "TDengine 深入", link: "/docs/DB/TimeSeries/TDengine/index.md" },
+      { text: "查询与降采样", link: "/docs/DB/TimeSeries/Query/index.md" },
+      { text: "存储与保留策略", link: "/docs/DB/TimeSeries/Storage/index.md" },
+      { text: "实战：设备监控指标平台", link: "/docs/DB/TimeSeries/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/TimeSeries/FAQ/index.md" },
     ],
   },
 ];

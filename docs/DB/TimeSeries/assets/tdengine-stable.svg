@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="340" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">TDengine 核心抽象：一个设备一张子表，超表统一管理</text>
+  <!-- 超级表 -->
+  <g>
+    <rect x="40" y="52" width="680" height="70" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+    <text x="60" y="78" font-size="13" fill="#1E3A8A" font-weight="bold">超级表（STable）meters</text>
+    <text x="60" y="102" font-size="12" fill="#334155">TS 时间戳主键　|　标签列：location、group_id　|　数据列：current、voltage、phase</text>
+  </g>
+  <!-- 子表 -->
+  <g font-size="11">
+    <rect x="40" y="150" width="160" height="76" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="120" y="174" text-anchor="middle" fill="#065F46" font-weight="bold">子表 meters_001</text>
+    <text x="54" y="196" fill="#334155">location=北京.朝阳</text>
+    <text x="54" y="214" fill="#334155">group_id=1</text>
+
+    <rect x="220" y="150" width="160" height="76" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="300" y="174" text-anchor="middle" fill="#065F46" font-weight="bold">子表 meters_002</text>
+    <text x="234" y="196" fill="#334155">location=北京.海淀</text>
+    <text x="234" y="214" fill="#334155">group_id=1</text>
+
+    <rect x="400" y="150" width="160" height="76" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="480" y="174" text-anchor="middle" fill="#065F46" font-weight="bold">子表 meters_003</text>
+    <text x="414" y="196" fill="#334155">location=上海.浦东</text>
+    <text x="414" y="214" fill="#334155">group_id=2</text>
+
+    <rect x="580" y="150" width="140" height="76" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="650" y="180" text-anchor="middle" fill="#64748B">… 百万级子表</text>
+    <text x="650" y="202" text-anchor="middle" fill="#64748B" font-size="10">按设备自动创建</text>
+  </g>
+  <g stroke="#059669" stroke-width="1.6" stroke-dasharray="4 3">
+    <line x1="120" y1="122" x2="120" y2="148"/>
+    <line x1="300" y1="122" x2="300" y2="148"/>
+    <line x1="480" y1="122" x2="480" y2="148"/>
+    <line x1="650" y1="122" x2="650" y2="148"/>
+  </g>
+  <!-- 查询 -->
+  <g>
+    <rect x="40" y="248" width="680" height="76" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="60" y="272" font-size="12" fill="#0F172A" font-weight="bold">查询超表 = 查询所有子表，按标签自动分组聚合：</text>
+    <text x="60" y="296" font-size="11.5" fill="#065F46">SELECT AVG(current) FROM meters WHERE location LIKE '北京%' PARTITION BY location INTERVAL(1m);</text>
+    <text x="60" y="316" font-size="11.5" fill="#64748B">一个设备一个子表 → 写入无锁竞争；标签存在子表元数据里 → 存储与查询都省。</text>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="320" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">存储与保留：时间分区 + 高压缩 + 分级 TTL</text>
+  <g font-size="12">
+    <rect x="30" y="56" width="700" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+    <text x="50" y="82" fill="#1E3A8A" font-weight="bold">① 时间分区（Time Partition / Bucket）</text>
+    <text x="50" y="106" fill="#334155">数据按时间窗口切成独立块（TDengine 的 vnode/数据文件、InfluxDB 的 shard/partition）</text>
+    <text x="50" y="128" fill="#334155">好处：查询只扫涉及的时间块；过期直接丢整块文件，不用逐行 DELETE</text>
+    <text x="50" y="146" fill="#64748B">参数：TDengine 建库时 DURATION（如 10d）；InfluxDB 3 用分区策略按天/小时</text>
+  </g>
+  <g font-size="12">
+    <rect x="30" y="166" width="340" height="130" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="50" y="192" fill="#065F46" font-weight="bold">② 列存 + 压缩</text>
+    <text x="50" y="216" fill="#334155">同一列连续存储，时序数据相邻值差异小</text>
+    <text x="50" y="238" fill="#334155">压缩比通常 5:1 ~ 20:1（取决于波动）</text>
+    <text x="50" y="260" fill="#334155">两段式压缩：先 delta/差分，再通用压缩</text>
+    <text x="50" y="282" fill="#64748B">代价：点查比行存慢，适合范围聚合</text>
+  </g>
+  <g font-size="12">
+    <rect x="390" y="166" width="340" height="130" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+    <text x="410" y="192" fill="#9A3412" font-weight="bold">③ 分级 TTL / 保留策略</text>
+    <text x="410" y="216" fill="#334155">原始 7 天 → 汇总 1 年 → 归档 5 年</text>
+    <text x="410" y="238" fill="#334155">TDengine：库级 KEEP + 多级存储</text>
+    <text x="410" y="260" fill="#334155">InfluxDB：retention period / 删除策略</text>
+    <text x="410" y="282" fill="#64748B">先定 TTL 再上线，避免磁盘爆掉</text>
+  </g>
+  <text x="380" y="312" text-anchor="middle" font-size="11" fill="#64748B">估算公式：磁盘 ≈ 每秒点数 × 86400 × 保留天数 × 单点字节数 ÷ 压缩比（先算再建库）</text>
+</svg>
