@@ -111,8 +111,8 @@
 | 68 | Frontend | Electron 深入 ✅ | 进程模型、IPC、窗口管理、打包、自动更新 |
 | 69 | DB | 数据建模 ✅ | 范式、ER 图、设计原则、反范式、实战案例 |
 | 70 | DB | 时序数据库 ✅ | InfluxDB、TDengine、数据模型、查询、应用场景 |
-| 71 | Ops | Ansible | 概述、Playbook、常用模块、角色、实战案例 |
-| 72 | Ops | Terraform | 概述、资源、状态管理、模块、实战案例 |
+| 71 | Ops | Ansible ✅ | 概述、Playbook、常用模块、角色、实战案例 |
+| 72 | Ops | Terraform ✅ | 概述、资源、状态管理、模块、实战案例 |
 | 73 | Ops | 安全加固 | 系统基线、容器安全、K8s 安全、漏洞管理 |
 | 74 | Tools | IDE 配置 | IntelliJ IDEA、VS Code、插件、快捷键、配置同步 |
 | 75 | Tools | 效率工具 | 终端、剪贴板、截图、笔记、自动化 |
@@ -322,6 +322,11 @@
 - [x] 大版本状态标注巡检（第 71 天取一项）：Ansible 按「ansible-core 2.21.x 主线 + 2.20.x 维护中 + 2.19.x 仅存量（2026-11-30 结束支持）+ 2.18 及更早已 EOL」与「ansible 社区包 13.x 主线（依赖 core 2.20）+ 12.x 维护中（依赖 2.19，2026-12 EOL）+ 11.x 及更早仅存量」在主题首页与页内标注状态；同时把 2.19 起的破坏性变更按状态标注清楚——**Data Tagging**（条件表达式必须返回布尔值，历史 `when: some_string` 写法会报错）、**2.20 的 `INJECT_FACTS_AS_VARS` 弃用**（`ansible_facts` 字典取数、顶层变量取数将移除）、**2.21 的 `ansible-galaxy` 行为变更与 CVE-2026-11332（2.21.1 修复）**；旧写法说明不删除、保留并给出迁移路径，对照 Spring 5/6、Vue2/Vue3、Kafka 4.x/3.9.x、Elastic Stack 9.x/8.x/7.x、InfluxDB/TDengine 的既有版本目录策略保持统一约定（确认 Ansible 内容可在同一主题内按状态表并存，暂不拆分版本目录）
 - [x] 存量文档更新（第 71 天配套，10 篇）：Ops/Linux 目录页（相关专题补 Ansible 批量交付）、Linux/Advanced 导览（手工步骤固化成剧本）、Linux/Advanced/Practice（交付步骤一键执行）、Linux/Advanced/ShellScripting（脚本 → 声明式幂等）、Linux/Advanced/CronTasks（定时任务批量下发与版本管理）、Nginx 目录页（批量安装/下发/reload）、Docker 目录页（批量装引擎与容器验收）、JumpServer 页面（人-机分离，Ansible 接管机器）、Ops/Others 页面（配置管理入口）、Tools/CICD/DeployRollback（虚机/裸机场景的批量部署与灰度）
 - [x] Project 存量补全：当月项目（周期 3「后端通用模板」，第 71 天）添加第 3 个可验证构建步骤——新增数据访问模块页 [数据访问：MyBatis-Plus 接入] 与 1 张 SVG 示意图，覆盖 `BaseEntity`（雪花 ID + 审计字段 + `@TableLogic` + `@Version`）、`MybatisPlusInterceptor` 拦截器链注册顺序（分页 → 乐观锁 → 防全表更新）、分页 `maxLimit` 封顶、`MetaObjectHandler` 审计字段自动填充（`strictInsertFill`/`strictUpdateFill`）、逻辑删除与唯一索引冲突解法、乐观锁失效三类原因与 `PageResult<T>` 统一分页出参、雪花 ID 在 JS 侧精度处理、建表脚本 `V1__init_user.sql`、Testcontainers 数据层四类测试（填充/分页/逻辑删除/乐观锁）与 12 条常见坑；同步更新 [进展记录]（新增第 71 天段落：做了什么 / 如何验证 / 下一步）与项目总览（进度表、交付内容、`project.ts` 侧边栏补 1 个条目），并把 [MockMvc 集成测试] 的「相关文档」接上下一节
+
+- [x] Ops 存量补全：Terraform 专题已建设（第 72 天，9 个页面：目录页 + 概述与选型 + 安装与初始化 + HCL 语法与表达式 + 资源、数据源与变量 + State 与远程后端 + 模块与注册表 + 实战：交付一套云上环境 + 常见问题与最佳实践），含 9 张 SVG 示意图与主题 Logo（PNG，75% 居中，源图为官方 simple-icons 兼容图形）；`ops.ts` 新增 `Terraform` 并挂载 `/docs/Ops/Terraform`，`sidebar.ts` 加入 Ops 大类与主题级挂载，`nav.ts` 运维分组与 `docs/Ops/index.md` 补入口；版本事实按官方渠道核对（Terraform 1.16.x 主线 1.16.2 / 2026-09-09、1.15.x 维护中、1.14 及更早仅存量、1.17 已进 beta；OpenTofu 1.12.x 主线 1.12.6 / 2026-08-19、1.11.x 维护中、1.10 及更早仅存量、1.13 已进 beta）
+- [x] 大版本状态标注巡检（第 72 天取一项）：**Terraform / OpenTofu 分叉与 1.6 许可证变更**。按「Terraform 1.16.x 主线 + 1.15.x 维护中 + 1.14 及更早仅存量」与「OpenTofu 1.12.x 主线 + 1.11.x 维护中 + 1.10 及更早仅存量」在主题首页与 FAQ 页标注状态，并单列版本时间线 SVG（2023-08-10 MPL→BUSL 1.1 自 1.6.0 生效、1.5.7 为最后 MPL 版；2023-09-20 OpenTofu 进 Linux Foundation；2024-01-10 OpenTofu 1.6 GA；2025-02-27 IBM 完成收购 HashiCorp；2025-04-23 OpenTofu 进 CNCF；2026-08~09 功能实质分化）；明确两条线**state 格式互通、可交替 apply**，并给出选型判据表（内部自用 / 对外嵌入产品 / 许可证合规 / HCP Terraform 商业能力 / state 客户端加密 / provider for_each 与 episodic 资源）；旧写法说明不删除、保留并给出迁移路径（命令 `terraform` → `tofu`），对照 Spring 5/6、Vue2/Vue3、Kafka 4.x/3.9.x、Elastic Stack 9.x/8.x/7.x、InfluxDB/TDengine、Ansible 的既有版本目录策略保持统一约定
+- [x] 存量文档更新（第 72 天配套，10 篇）：Ops/Ansible 目录页（补 Terraform 互补分工：Terraform 建机器、Ansible 配机器）、Ops/Kubernetes 目录页（集群本身由 IaC 建，业务负载交给 GitOps）、Ops/Docker 目录页（云主机+网络+存储交 IaC，容器由 CI/CD 拉起）、Ops/ContainerOrchestration 目录页（基础设施层 vs 应用层的交付边界）、Ops/Others 页面（配置管理入口补 IaC）、Ops/Network 目录页（网络怎么工作 vs 网络怎么被声明，含 `cidrsubnet` 网段切分）、Ops/Monitoring/Overview（告警规则与看板若由 IaC 管理需纳入漂移巡检，`plan -detailed-exitcode` 做定时巡检）、Ops/Linux/Advanced 导览（机器建好后的声明式收敛工具）、Ops/Nginx 目录页（主机与 80/443 放行由 IaC 交付）、Tools/CICD/DeployRollback（禁用 CI 直接 `apply -auto-approve`，改用「已审批 plan 文件 + apply 该文件」）
+- [x] Project 存量补全：当月项目（周期 3「后端通用模板」，第 72 天）添加第 4 个可验证构建步骤——新增 [认证授权：Spring Security 7 + JWT] 模块页与 1 张 SVG 示意图（`security-auth-flow.svg`），覆盖无状态认证链路与过滤器顺序（TraceIdFilter → JwtAuthFilter → AuthorizationFilter，`addFilterBefore(..., UsernamePasswordAuthenticationFilter.class)`）、jjwt 0.13.0 令牌签发与校验、`UserContext` 桥接审计字段自动填充（接上第 71 天预留的调用点）、`RestAuthenticationEntryPoint` / `RestAccessDeniedHandler` 让 401/403 统一走 `Result<T>`、`@EnableMethodSecurity` + `@PreAuthorize` 声明式权限与数据级越权防护、`app.jwt.*` 走环境变量注入与密钥长度 >= 32 字节自检、`SecurityIT` 四个 MockMvc 用例（匿名 401 / 有效 200 / 越权 403 / 篡改 401）与 12 条常见坑；同步更新 [进展记录]（新增第 72 天段落：做了什么 / 如何验证 / 下一步）与项目总览（进度表、交付内容、`project.ts` 侧边栏补 1 个条目），并把 [数据访问：MyBatis-Plus 接入] 的「下一步」标注为已完成并接上下一节
 
 ## 节奏建议
 
