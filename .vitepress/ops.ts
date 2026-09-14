@@ -31,6 +31,23 @@ export const Terraform = [
     ],
   },
 ];
+export const SecurityHardening = [
+  {
+    text: "安全加固",
+    link: "/docs/Ops/SecurityHardening/index.md",
+    items: [
+      { text: "安全加固方法论", link: "/docs/Ops/SecurityHardening/Overview/index.md" },
+      { text: "基线合规与自动化", link: "/docs/Ops/SecurityHardening/BaselineCompliance/index.md" },
+      { text: "扫描工具链", link: "/docs/Ops/SecurityHardening/ScanningToolchain/index.md" },
+      { text: "漏洞管理生命周期", link: "/docs/Ops/SecurityHardening/VulnerabilityManagement/index.md" },
+      { text: "SBOM 与软件供应链", link: "/docs/Ops/SecurityHardening/SbomSupplyChain/index.md" },
+      { text: "密钥与凭据治理", link: "/docs/Ops/SecurityHardening/SecretGovernance/index.md" },
+      { text: "审计与检测", link: "/docs/Ops/SecurityHardening/AuditDetection/index.md" },
+      { text: "实战：端到端安全流水线", link: "/docs/Ops/SecurityHardening/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/SecurityHardening/FAQ/index.md" },
+    ],
+  },
+];
 export const Docker = [
   {
     text: "Docker",

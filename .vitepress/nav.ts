@@ -35,6 +35,7 @@ export const nav = [
       { text: "Linux", link: "/docs/Ops/Linux" },
       { text: "Ansible", link: "/docs/Ops/Ansible" },
       { text: "Terraform", link: "/docs/Ops/Terraform" },
+      { text: "安全加固", link: "/docs/Ops/SecurityHardening" },
       { text: "Nginx", link: "/docs/Ops/Nginx" },
       { text: "网络基础", link: "/docs/Ops/Network" },
       { text: "Docker", link: "/docs/Ops/Docker" },
