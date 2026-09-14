@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 444" width="760" height="444" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="444" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Maven Toolchains：把「用哪台 JDK 编译」从机器环境里解耦</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10" fill="#64748B">运行 Maven 的 JDK 与编译代码的 JDK 各论各的；同一份 pom.xml，换 -P 就换编译用 JDK</text>
+
+  <rect x="30" y="66" width="700" height="54" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.6"/>
+  <text x="380" y="88" text-anchor="middle" font-size="11" fill="#334155" font-weight="bold">① 运行 Maven 的 JDK —— JAVA_HOME（例如 JDK 21）</text>
+  <text x="380" y="105" text-anchor="middle" font-size="8.5" fill="#64748B">它只负责把 Maven 跑起来，不代表编译目标版本</text>
+
+  <line x1="380" y1="120" x2="380" y2="138" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#tcA)"/>
+
+  <rect x="30" y="140" width="700" height="54" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="162" text-anchor="middle" font-size="11" fill="#5B21B6" font-weight="bold">② maven-toolchains-plugin：声明「我要哪个版本」</text>
+  <text x="380" y="179" text-anchor="middle" font-size="8.5" fill="#6D28D9">&lt;version&gt;${maven.compiler.release}&lt;/version&gt; —— 与 JDK 轴联动，切 -P jdk-17 就找版本 17</text>
+
+  <line x1="380" y1="194" x2="380" y2="212" stroke="#CA8A04" stroke-width="1.6" marker-end="url(#tcY)"/>
+
+  <rect x="30" y="214" width="700" height="114" rx="8" fill="#FEFCE8" stroke="#CA8A04" stroke-width="1.6"/>
+  <text x="380" y="234" text-anchor="middle" font-size="11" fill="#854D0E" font-weight="bold">③ ~/.m2/toolchains.xml：登记这台机器上有哪些 JDK（不进 Git）</text>
+  <rect x="48" y="244" width="664" height="22" rx="4" fill="#FEF9C3" stroke="#EAB308" stroke-width="1"/>
+  <text x="60" y="259" font-size="8.5" fill="#854D0E">&lt;version&gt;25&lt;/version&gt; · &lt;vendor&gt;temurin&lt;/vendor&gt;  →  &lt;jdkHome&gt;/opt/jdk-25&lt;/jdkHome&gt;</text>
+  <rect x="48" y="272" width="664" height="22" rx="4" fill="#FEF9C3" stroke="#EAB308" stroke-width="1"/>
+  <text x="60" y="287" font-size="8.5" fill="#854D0E">&lt;version&gt;21&lt;/version&gt; · &lt;vendor&gt;temurin&lt;/vendor&gt;  →  &lt;jdkHome&gt;/opt/jdk-21&lt;/jdkHome&gt;</text>
+  <rect x="48" y="300" width="664" height="22" rx="4" fill="#FEF9C3" stroke="#EAB308" stroke-width="1"/>
+  <text x="60" y="315" font-size="8.5" fill="#854D0E">&lt;version&gt;17&lt;/version&gt; · &lt;vendor&gt;temurin&lt;/vendor&gt;  →  &lt;jdkHome&gt;/opt/jdk-17&lt;/jdkHome&gt;</text>
+
+  <line x1="380" y1="328" x2="380" y2="346" stroke="#059669" stroke-width="1.6" marker-end="url(#tcG)"/>
+
+  <rect x="30" y="348" width="700" height="54" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="370" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">④ 所有认 toolchain 的插件统一改用选中的 JDK</text>
+  <text x="380" y="387" text-anchor="middle" font-size="8.5" fill="#047857">maven-compiler-plugin · surefire · failsafe · javadoc · jarsigner · pmd · animal-sniffer</text>
+
+  <text x="380" y="428" text-anchor="middle" font-size="9.5" fill="#991B1B">关键：jdkHome 指向的 JDK 必须 ≥ 目标 release，否则直接报「release version 25 not supported」</text>
+
+  <defs>
+    <marker id="tcA" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/></marker>
+    <marker id="tcY" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#CA8A04"/></marker>
+    <marker id="tcG" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#059669"/></marker>
+  </defs>
+</svg>

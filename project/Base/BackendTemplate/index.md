@@ -1,6 +1,6 @@
 # 后端通用模板
 
-<p style="text-align:center;"><img src="./assets/backend-template-logo.png" style="zoom:75%;" /></p>
+/p>
 
 周期 3（第 61~90 天）的月度项目：从 0 到 1 构建一套**可直接复用的后端通用模板**。目标不是"跑通一个 Hello World"，而是交付一个具备统一响应、全局异常、参数校验、认证授权、多环境配置、数据访问、日志与健康检查、容器化部署的**完整工程基座**——新业务项目 fork 后改配置即可开工。
 
@@ -66,7 +66,7 @@ backend-template/
 
 **第 69 天（骨架与基础能力）**：
 
-1. [骨架与目录结构](./Skeleton/index.md)：Maven 多模块骨架、启动类、配置文件，可 `mvn spring-boot:run` 启动。
+1. [骨架与目录结构](./Skeleton/index.md)：Maven 多模块骨架、启动类、配置文件，可 `mvn spring-boot:run` 启动；并用 **Maven Profile** 管理同一大版本下的依赖小版本与 JDK 编译目标差异（含 BOM 导入取舍、toolchains、`.mvn/maven.config` 与 CI 矩阵）。
 2. [统一响应与全局异常](./CommonResponse/index.md)：`Result<T>` 统一返回结构、`ErrorCode` 错误码、`@RestControllerAdvice` 全局异常处理。
 3. [健康检查与配置](./HealthCheck/index.md)：Actuator 暴露健康与指标端点、多环境配置、启动验证。
 

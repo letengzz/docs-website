@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 452" width="760" height="452" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="452" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Maven Profile：用一份 POM 覆盖构建期差异</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10" fill="#64748B">差异来自「构建期」而非「运行期」时才用 Maven Profile；运行期差异交给 Spring Profile</text>
+  <rect x="280" y="64" width="200" height="50" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="84.14" text-anchor="middle" font-size="12" fill="#5B21B6" font-weight="bold">一份 pom.xml</text>
+  <text x="380" y="99.14" text-anchor="middle" font-size="9.0" fill="#6D28D9">单一真相源，不分叉代码库</text>
+  <line x1="330" y1="116" x2="150" y2="146" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="116" x2="380" y2="146" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="430" y1="116" x2="610" y2="146" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="140" y="160" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">轴 1 · 依赖小版本</text>
+  <rect x="40" y="168" width="200" height="58" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="140" y="191.7" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">spring-boot.version</text>
+  <text x="140" y="206.7" text-anchor="middle" font-size="7.5" fill="#1D4ED8">4.1.1 / 4.1.0 / 4.0.7</text>
+  <text x="380" y="160" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">轴 2 · JDK 目标版本</text>
+  <rect x="280" y="168" width="200" height="58" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="191.7" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">maven.compiler.release</text>
+  <text x="380" y="206.7" text-anchor="middle" font-size="7.5" fill="#047857">17 / 21 / 25</text>
+  <text x="620" y="160" text-anchor="middle" font-size="11" fill="#9A3412" font-weight="bold">轴 3 · 可选功能模块</text>
+  <rect x="520" y="168" width="200" height="58" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="620" y="191.7" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">profile 控制依赖集合</text>
+  <text x="620" y="206.7" text-anchor="middle" font-size="7.5" fill="#C2410C">redis / mq / 监控</text>
+  <rect x="40" y="252" width="680" height="58" rx="8" fill="#FEFCE8" stroke="#CA8A04" stroke-width="1.6"/>
+  <text x="380" y="275.92" text-anchor="middle" font-size="11" fill="#854D0E" font-weight="bold">Maven Profile 选择（三个激活入口，优先级从左到右递减）</text>
+  <text x="380" y="290.92" text-anchor="middle" font-size="7.5" fill="#A16207">-P boot-4.1.1,jdk-25（显式，推荐）　|　.mvn/maven.config 固化默认　|　CI 矩阵逐组合构建</text>
+  <line x1="200" y1="228" x2="200" y2="248" stroke="#CA8A04" stroke-width="1.6" marker-end="url(#arwY)"/>
+  <line x1="380" y1="228" x2="380" y2="248" stroke="#CA8A04" stroke-width="1.6" marker-end="url(#arwY)"/>
+  <line x1="620" y1="228" x2="620" y2="248" stroke="#CA8A04" stroke-width="1.6" marker-end="url(#arwY)"/>
+  <line x1="380" y1="312" x2="380" y2="336" stroke="#2563EB" stroke-width="1.6" marker-end="url(#arwB)"/>
+  <text x="380" y="352" text-anchor="middle" font-size="12" fill="#1E3A8A" font-weight="bold">构建产物矩阵（同一份源码，不同 Profile 组合）</text>
+  <rect x="40" y="362" width="216" height="54" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="148" y="383.7" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">app-4.1.1-jdk25.jar</text>
+  <text x="148" y="398.7" text-anchor="middle" font-size="7.5" fill="#047857">主基线 · 生产</text>
+  <rect x="272" y="362" width="216" height="54" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="383.7" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">app-4.1.1-jdk21.jar</text>
+  <text x="380" y="398.7" text-anchor="middle" font-size="7.5" fill="#1D4ED8">兼容存量运行时</text>
+  <rect x="504" y="362" width="216" height="54" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="612" y="383.7" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">app-4.0.7-jdk17.jar</text>
+  <text x="612" y="398.7" text-anchor="middle" font-size="7.5" fill="#C2410C">老旧环境兜底</text>
+  <text x="380" y="436" text-anchor="middle" font-size="9.5" fill="#991B1B">关键前提：用 spring-boot-starter-parent 时版本被 parent 锁死，Profile 改不动 → 必须改成 import spring-boot-dependencies BOM</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+    <marker id="arwY" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#CA8A04"/>
+    </marker>
+    <marker id="arwB" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#2563EB"/>
+    </marker>
+  </defs>
+</svg>
