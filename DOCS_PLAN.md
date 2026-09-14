@@ -110,7 +110,7 @@
 | 67 | Frontend | 小程序进阶 ✅ | 分包、自定义组件、云开发、性能优化、发布 |
 | 68 | Frontend | Electron 深入 ✅ | 进程模型、IPC、窗口管理、打包、自动更新 |
 | 69 | DB | 数据建模 ✅ | 范式、ER 图、设计原则、反范式、实战案例 |
-| 70 | DB | 时序数据库 | InfluxDB、TDengine、数据模型、查询、应用场景 |
+| 70 | DB | 时序数据库 ✅ | InfluxDB、TDengine、数据模型、查询、应用场景 |
 | 71 | Ops | Ansible | 概述、Playbook、常用模块、角色、实战案例 |
 | 72 | Ops | Terraform | 概述、资源、状态管理、模块、实战案例 |
 | 73 | Ops | 安全加固 | 系统基线、容器安全、K8s 安全、漏洞管理 |
@@ -314,6 +314,10 @@
 - [x] 存量文档更新（第 69 天配套，9 篇）：DB/Overview（学习路线建议 + 数据建模入口）、DB/Relational 目录页（建表之前先建模 + SQL 优化入口）、MySQL/DatabaseTable（DDL 前先有模型 + 三条建模约定）、MySQL/BasicConcept（类型选择判断标准）、MySQL/IndexPerformance（索引前置考虑）、SQLOptimization/Overview（优化上限在建模阶段决定）、PostgreSQL/Practice（标注为建模方法论的 PG 落地版并互链 MySQL 版）、MongoDB/DocumentCollection（文档建模 vs 关系建模）、Tools/DatabaseClients/Navicat（客户端改表结构风险 + 迁移脚本要求）
 - [x] 存量整理任务（第 69 天取一项）：**全库相对链接 + 侧边栏/导航链接双重巡检**。`linkcheck.py` 校验 1958 条相对链接（含图片）、`sidebarlink.py` 校验 1113 条侧边栏/导航链接；本次新增页面暴露 11 处断链（9 处子页图片误写 `./assets/` 应为 `../assets/`、Navicat 跨专题链接层级多一级），逐条修复后 **1958 条相对链接 0 断链、1113 条侧边栏/导航链接 0 缺失**；`bracecheck_all.py` 扫描 1222 个文件，围栏外 `{{ }}` 0 处。
 - [x] Project 存量补全：当月项目（周期 3「后端通用模板」，第 69 天）添加第 1 个可验证构建步骤——新建 `project/Base/BackendTemplate`，覆盖目录结构、统一响应、全局异常、健康检查四个模块，含需求与架构文档、可运行骨架与当日进展文档（做了什么 / 如何验证 / 下一步）。
+- [x] DB 存量补全：时序数据库专题已建设（第 70 天，`docs/DB/TimeSeries` 9 个页面：目录页 + 概述与选型 + 数据模型 + InfluxDB 深入 + TDengine 深入 + 查询与降采样 + 存储与保留策略 + 实战：设备监控指标平台（含建库 DDL、模拟写入脚本、两级流计算、看板查询、告警规则与验收清单）+ 常见问题），含 9 张 SVG 示意图与主题 Logo（PNG，75% 居中）；`db.ts` 新增 `TimeSeries` 并挂载 `/docs/DB/TimeSeries`，`sidebar.ts` 加入 DB 大类与主题级挂载，`nav.ts` 数据库分组与 `docs/DB/index.md` 补入口
+- [x] 大版本状态标注巡检（第 70 天取一项）：InfluxDB 按「3.11.x 主线 + 3.10.x / OSS 2.9.x / OSS 1.13.x 维护中 + 3.9 及更早仅存量（3.9 已于 2026-07-30 结束支持）」、TDengine 按「3.4.1.x 主线 + 3.3.6.x/3.3.8.x 维护中 + 2.x 仅存量」在页内标注状态；旧版本说明不删除、不覆盖，对照 Spring 5/6、Vue2/Vue3、Kafka 4.x/3.9.x、Elastic Stack 9.x/8.x/7.x 的既有版本目录策略保持统一约定（确认 1.x/2.x/3.x 内容可在同一主题内按状态表并存，暂不拆分版本目录）
+- [x] 存量文档更新（第 70 天配套，10 篇）：Ops/Monitoring/Overview（相关专题补时序库）、Prometheus（remote write 长期存储）、MetricsCollect（采集后如何落地存储）、Grafana（时序数据源与看板查询优化）、Alerting（时序侧告警取数与抑制）、Practice（指标长期存储落地）、FAQ（高基数与序列爆炸治理）、Monitoring 目录页（指标存哪里 tip）、DB/index.md（时序库入口）、DB/DataModeling/index.md（时序建模规则差异）
+- [x] Project 存量补全：当月项目（周期 3「后端通用模板」，第 70 天）添加第 2 个可验证构建步骤——新增 3 个模块页（[请求追踪 ID 与日志切面]、[参数校验增强]、[MockMvc 集成测试]）与 2 张 SVG 示意图，覆盖 TraceIdFilter（MDC + 响应头透传）、Logback pattern 串联、WebLogAspect 日志切面、分组校验 + 自定义 `@Mobile` 注解 + 字段级错误明细、MockMvc 契约测试与 JaCoCo 覆盖率门禁；同步更新 [进展记录]（新增第 70 天段落：做了什么 / 如何验证 / 下一步）与项目总览（进度表、交付内容、`project.ts` 侧边栏补 3 个条目并把「当日进展」更名为「进展记录」）
 
 ## 节奏建议
 
