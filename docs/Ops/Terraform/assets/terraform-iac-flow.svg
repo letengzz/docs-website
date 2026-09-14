@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="320" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Terraform 声明式 IaC 工作流</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">描述「最终要什么」，由 Terraform 计算「怎么改」——同一份配置重复执行结果一致（幂等）</text>
+  <rect x="32" y="78" width="128" height="62" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="96" y="102.92" text-anchor="middle" font-size="11" fill="#5B21B6" font-weight="bold">编写配置</text>
+  <text x="96" y="119.92" text-anchor="middle" font-size="9.5" fill="#6D28D9">.tf / .tfvars</text>
+  <line x1="162" y1="109.0" x2="172" y2="109.0" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="174" y="78" width="128" height="62" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="238" y="102.92" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">terraform init</text>
+  <text x="238" y="119.92" text-anchor="middle" font-size="9.5" fill="#1D4ED8">下载 provider</text>
+  <line x1="304" y1="109.0" x2="314" y2="109.0" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="316" y="78" width="128" height="62" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="380" y="102.92" text-anchor="middle" font-size="11" fill="#9A3412" font-weight="bold">terraform plan</text>
+  <text x="380" y="119.92" text-anchor="middle" font-size="9.5" fill="#C2410C">生成变更预览</text>
+  <line x1="446" y1="109.0" x2="456" y2="109.0" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="458" y="78" width="128" height="62" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="522" y="102.92" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">terraform apply</text>
+  <text x="522" y="119.92" text-anchor="middle" font-size="9.5" fill="#047857">执行变更</text>
+  <line x1="588" y1="109.0" x2="598" y2="109.0" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="600" y="78" width="128" height="62" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="664" y="102.92" text-anchor="middle" font-size="11" fill="#1E293B" font-weight="bold">云上真实资源</text>
+  <text x="664" y="119.92" text-anchor="middle" font-size="9.5" fill="#475569">VPC / EC2 / S3</text>
+  <text x="380" y="162" text-anchor="middle" font-size="10.5" fill="#5B21B6">init 可重复执行 · plan 只读预览 · apply 幂等落地 · state 记录当前真相</text>
+  <polyline points="664,142 664,216 590,216" fill="none" stroke="#DC2626" stroke-width="1.6" marker-end="url(#arwR)"/>
+  <text x="700" y="180" text-anchor="middle" font-size="10.5" fill="#B91C1C">destroy</text>
+  <rect x="160" y="192" width="420" height="50" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="370" y="219.42" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="bold">terraform destroy：按同一份配置反向回收全部资源</text>
+  <text x="380" y="266" text-anchor="middle" font-size="11.5" fill="#5B21B6">关键区别：幂等 + 依赖图</text>
+  <text x="380" y="286" text-anchor="middle" font-size="10" fill="#64748B">重复 apply 不会重复建资源；资源间的依赖顺序由 Terraform 自动推导，无需手工排先后</text>
+  <text x="380" y="306" text-anchor="middle" font-size="10" fill="#64748B">手工点控制台：不知道「当前是什么状态」；Terraform：状态写进 state，随时可 diff</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+    <marker id="arwR" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#DC2626"/>
+    </marker>
+  </defs>
+</svg>
