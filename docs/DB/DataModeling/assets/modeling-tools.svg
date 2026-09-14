@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="320" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">建模工具地图：按团队规模与协作方式选型</text>
+  <!-- 在线协作 -->
+  <g>
+    <rect x="40" y="56" width="210" height="180" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+    <rect x="40" y="56" width="210" height="34" rx="10" fill="#2563EB"/>
+    <text x="145" y="79" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="bold">在线 / 协作型</text>
+    <text x="145" y="116" text-anchor="middle" font-size="12" fill="#1E3A8A">drawDB（开源，可自托管）</text>
+    <text x="145" y="140" text-anchor="middle" font-size="12" fill="#1E3A8A">dbdiagram.io（DBML 代码即图）</text>
+    <text x="145" y="164" text-anchor="middle" font-size="12" fill="#1E3A8A">Lucidchart / ProcessOn</text>
+    <text x="145" y="192" text-anchor="middle" font-size="11" fill="#64748B">浏览器即用、多人协作</text>
+    <text x="145" y="212" text-anchor="middle" font-size="11" fill="#64748B">适合中小团队 / 远程评审</text>
+  </g>
+  <!-- 桌面企业级 -->
+  <g>
+    <rect x="275" y="56" width="210" height="180" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <rect x="275" y="56" width="210" height="34" rx="10" fill="#059669"/>
+    <text x="380" y="79" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="bold">桌面 / 企业级</text>
+    <text x="380" y="116" text-anchor="middle" font-size="12" fill="#065F46">SAP PowerDesigner 16.7</text>
+    <text x="380" y="140" text-anchor="middle" font-size="12" fill="#065F46">ER/Studio、ERwin</text>
+    <text x="380" y="164" text-anchor="middle" font-size="12" fill="#065F46">Navicat Data Modeler</text>
+    <text x="380" y="192" text-anchor="middle" font-size="11" fill="#64748B">概念/逻辑/物理全层支持</text>
+    <text x="380" y="212" text-anchor="middle" font-size="11" fill="#64748B">适合大型企业 / 数据治理</text>
+  </g>
+  <!-- 代码即模型 -->
+  <g>
+    <rect x="510" y="56" width="210" height="180" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+    <rect x="510" y="56" width="210" height="34" rx="10" fill="#EA580C"/>
+    <text x="615" y="79" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="bold">代码即模型</text>
+    <text x="615" y="116" text-anchor="middle" font-size="12" fill="#9A3412">DBML（dbdiagram 语法）</text>
+    <text x="615" y="140" text-anchor="middle" font-size="12" fill="#9A3412">Mermaid erDiagram</text>
+    <text x="615" y="164" text-anchor="middle" font-size="12" fill="#9A3412">Hackolade（NoSQL 友好）</text>
+    <text x="615" y="192" text-anchor="middle" font-size="11" fill="#64748B">可进 Git、可 diff、可评审</text>
+    <text x="615" y="212" text-anchor="middle" font-size="11" fill="#64748B">适合工程化团队 / CI 集成</text>
+  </g>
+  <g font-size="12" fill="#334155">
+    <rect x="60" y="256" width="640" height="50" rx="6" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="76" y="278">选型要点：能否双向工程（DDL ⇄ 图）、是否支持团队协作与版本管理、能否生成目标方言的 DDL、</text>
+    <text x="76" y="298">模型能否纳入 Git 做代码评审。小团队推荐 drawDB 或 DBML 起步，大型企业再考虑 PowerDesigner。</text>
+  </g>
+</svg>

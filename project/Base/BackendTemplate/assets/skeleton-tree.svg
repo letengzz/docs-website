@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" font-family="Consolas, Microsoft YaHei, monospace">
+  <rect width="760" height="300" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15" fill="#0F172A" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="bold">多模块骨架：pom 聚合 + 分层依赖</text>
+  <g font-size="12.5" fill="#0F172A">
+    <text x="40" y="64">backend-template/</text>
+    <text x="60" y="88">├─ pom.xml                  &lt;packaging&gt;pom&lt;/packaging&gt;  聚合 + 依赖版本管理</text>
+    <text x="60" y="112">├─ template-common/          统一响应 / 错误码 / 工具类</text>
+    <text x="60" y="136">├─ template-data/            MyBatis-Plus / 分页 / 数据源</text>
+    <text x="60" y="160">├─ template-security/        JWT / 过滤器 / 权限注解</text>
+    <text x="60" y="184">├─ template-web/             Controller / 校验 / 全局异常</text>
+    <text x="60" y="208">├─ template-application/     启动类 / application.yml / 打包入口</text>
+    <text x="60" y="232">├─ docker/  scripts/  docs/  部署与验收资料</text>
+  </g>
+  <g>
+    <rect x="40" y="252" width="680" height="34" rx="6" fill="#F0FDF4" stroke="#059669"/>
+    <text x="56" y="274" font-size="12" fill="#065F46">验证：mvn -q clean package 成功 且 java -jar 启动后日志出现 "Started TemplateApplication"</text>
+  </g>
+</svg>

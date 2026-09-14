@@ -29,6 +29,11 @@
 
 - [MySQL](MySQL/index.md)（概述、安装、核心概念、DDL/DML/DQL、事务、索引优化、常见问题）
 - [PostgreSQL](PostgreSQL/index.md)（概述、安装、SQL 基础、高级特性、索引、备份恢复、性能调优、实战、常见问题）
+- [SQL 优化](SQLOptimization/index.md)（执行计划、索引原理与失效、慢查询、分页与 JOIN 优化、实战案例）
+
+::: warning 建表之前先建模
+关系型数据库的表结构不是"想到就加"，而是设计出来的。表怎么拆、主键怎么选、索引怎么定，都属于[数据建模](../DataModeling/index.md)的范畴——**先在模型层改，别在生产库上改**。
+:::
 
 ::: tip 待补充
 后续继续补充 Oracle、SQL Server、SQLite 等关系型数据库专题。

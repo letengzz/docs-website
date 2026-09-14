@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="760" height="280" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="280" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">健康检查端点：活着 / 依赖可用 / 业务就绪</text>
+  <g font-size="12">
+    <rect x="30" y="60" width="220" height="150" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="140" y="86" text-anchor="middle" fill="#065F46" font-weight="bold">/actuator/health</text>
+    <text x="46" y="112" fill="#334155">探活与就绪的标准端点</text>
+    <text x="46" y="136" fill="#334155">JSON 含 status / components</text>
+    <text x="46" y="160" fill="#334155">K8s 用 livenessProbe 探测</text>
+    <text x="46" y="184" fill="#64748B" font-size="11">期望：{"status":"UP"}</text>
+
+    <rect x="270" y="60" width="220" height="150" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+    <text x="380" y="86" text-anchor="middle" fill="#1E3A8A" font-weight="bold">/actuator/info</text>
+    <text x="286" y="112" fill="#334155">版本、构建时间、Git 提交号</text>
+    <text x="286" y="136" fill="#334155">由 build-info 与 git 插件填充</text>
+    <text x="286" y="160" fill="#334155">排查"线上是哪个版本"最有用</text>
+    <text x="286" y="184" fill="#64748B" font-size="11">期望：含 version / git.commit.id</text>
+
+    <rect x="510" y="60" width="220" height="150" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+    <text x="620" y="86" text-anchor="middle" fill="#9A3412" font-weight="bold">/api/health/ready</text>
+    <text x="526" y="112" fill="#334155">业务就绪：DB / Redis 连通性</text>
+    <text x="526" y="136" fill="#334155">自定义 HealthIndicator</text>
+    <text x="526" y="160" fill="#334155">依赖不可用时返回 DOWN</text>
+    <text x="526" y="184" fill="#64748B" font-size="11">期望：up=2, down=0</text>
+  </g>
+  <g>
+    <rect x="30" y="228" width="700" height="34" rx="6" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="46" y="250" font-size="12" fill="#334155">原则：探活端点必须"轻"（不查库）；依赖检查单独放就绪端点，避免数据库抖动导致实例被反复重启。</text>
+  </g>
+</svg>

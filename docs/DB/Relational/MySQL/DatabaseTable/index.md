@@ -33,6 +33,10 @@ DROP DATABASE IF EXISTS shop;
 
 ## 创建表
 
+::: tip DDL 之前先有模型
+建表语句是**设计的结果**而不是起点。表怎么拆、主键用自然键还是代理键、哪些列要加索引，都在[数据建模](../../../DataModeling/index.md)里定好之后再写 `CREATE TABLE`。上面的 `user` 表已经体现了三条建模约定：自增代理键、`created_at`/`updated_at` 审计列、业务唯一键用 `UNIQUE`。
+:::
+
 ```sql
 CREATE TABLE IF NOT EXISTS user (
   id         BIGINT UNSIGNED AUTO_INCREMENT COMMENT '主键',

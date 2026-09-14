@@ -6,6 +6,10 @@
 
 ![实战流程](./../assets/pg-practice.svg)
 
+::: tip 本文是「建模 → 落地」的 PostgreSQL 版本
+模型本身与数据库无关：实体怎么抽、M:N 怎么拆、索引对应哪些查询，属于[数据建模](../../../DataModeling/index.md)的方法论；本文展示它在 **PostgreSQL** 上的落地（`JSONB`、`GENERATED ... AS IDENTITY`、全文检索列）。MySQL 版本见[数据建模实战：内容社区](../../../DataModeling/Practice/index.md)。
+:::
+
 数据模型：
 
 ```text

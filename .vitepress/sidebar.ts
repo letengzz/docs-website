@@ -4,7 +4,7 @@ import { Auth, DesignPatterns, DotNet, Go, Java, MessageQueue, Microservices, Ne
 import { AI_Agent, AI_LLMApp, AI_LocalModel, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, VM } from "./ops";
-import { DBOverview, NoRelational, Relational, SQLOptimization } from "./db";
+import { DBOverview, DataModeling, NoRelational, Relational, SQLOptimization } from "./db";
 import { APITools, Build, CICD, Collaboration, DatabaseClients, IDE, Others, PackageManager, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
@@ -62,7 +62,7 @@ export const sidebar = {
     {
       text: "数据库",
       collapsed: true,
-      items: [...DBOverview, ...Relational, ...NoRelational],
+      items: [...DBOverview, ...Relational, ...NoRelational, ...DataModeling],
     },
   ],
   "/docs/Ops": [
@@ -128,6 +128,7 @@ export const sidebar = {
   "/docs/DB/Relational": Relational,
   "/docs/DB/Relational/SQLOptimization": SQLOptimization,
   "/docs/DB/NoRelational": NoRelational,
+  "/docs/DB/DataModeling": DataModeling,
   "/docs/Ops/VM": VM,
   "/docs/Ops/Linux": Linux,
   "/docs/Ops/Nginx": Nginx,

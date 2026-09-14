@@ -4,6 +4,25 @@ export const DBOverview = [
     link: "/docs/DB/Overview/index.md",
   },
 ];
+export const DataModeling = [
+  {
+    text: "数据建模",
+    link: "/docs/DB/DataModeling/index.md",
+    collapsed: true,
+    items: [
+      { text: "数据建模概述", link: "/docs/DB/DataModeling/Overview/index.md" },
+      { text: "核心概念", link: "/docs/DB/DataModeling/CoreConcepts/index.md" },
+      { text: "ER 图与建模步骤", link: "/docs/DB/DataModeling/ERDiagram/index.md" },
+      { text: "范式与函数依赖", link: "/docs/DB/DataModeling/Normalization/index.md" },
+      { text: "反范式与权衡", link: "/docs/DB/DataModeling/Denormalization/index.md" },
+      { text: "设计原则与规范", link: "/docs/DB/DataModeling/DesignPrinciples/index.md" },
+      { text: "建模工具选型", link: "/docs/DB/DataModeling/ModelingTools/index.md" },
+      { text: "实战：内容社区数据库设计", link: "/docs/DB/DataModeling/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/DataModeling/FAQ/index.md" },
+    ],
+  },
+];
+
 export const NoRelational = [
   {
     text: "非关系型数据库",

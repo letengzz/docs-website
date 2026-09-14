@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="320" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">规范化 ⇄ 反范式：一对需要主动管理的矛盾</text>
+  <!-- 左：规范化 -->
+  <g>
+    <rect x="40" y="60" width="300" height="170" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="190" y="90" text-anchor="middle" font-size="15" fill="#065F46" font-weight="bold">规范化（3NF/BCNF）</text>
+    <text x="190" y="118" text-anchor="middle" font-size="12" fill="#065F46">✔ 数据只存一份，天然一致</text>
+    <text x="190" y="140" text-anchor="middle" font-size="12" fill="#065F46">✔ 写入简单，无更新异常</text>
+    <text x="190" y="162" text-anchor="middle" font-size="12" fill="#065F46">✘ 查询要 JOIN 多表</text>
+    <text x="190" y="184" text-anchor="middle" font-size="12" fill="#065F46">✘ 大表关联 + 聚合成本高</text>
+    <text x="190" y="210" text-anchor="middle" font-size="12" fill="#64748B">适合：写入频繁、一致性优先的 OLTP 核心链路</text>
+  </g>
+  <!-- 右：反范式 -->
+  <g>
+    <rect x="420" y="60" width="300" height="170" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+    <text x="570" y="90" text-anchor="middle" font-size="15" fill="#9A3412" font-weight="bold">反范式（受控冗余）</text>
+    <text x="570" y="118" text-anchor="middle" font-size="12" fill="#9A3412">✔ 少 JOIN、少聚合，读快</text>
+    <text x="570" y="140" text-anchor="middle" font-size="12" fill="#9A3412">✔ 列表页一次查询出齐</text>
+    <text x="570" y="162" text-anchor="middle" font-size="12" fill="#9A3412">✘ 冗余字段要维护一致性</text>
+    <text x="570" y="184" text-anchor="middle" font-size="12" fill="#9A3412">✘ 写入放大、可能漏改</text>
+    <text x="570" y="210" text-anchor="middle" font-size="12" fill="#64748B">适合：读多写少、热点列表、报表统计场景</text>
+  </g>
+  <!-- 中间策略 -->
+  <g>
+    <rect x="352" y="92" width="56" height="56" rx="28" fill="#2563EB"/>
+    <text x="380" y="118" text-anchor="middle" font-size="13" fill="#FFFFFF" font-weight="bold">权衡</text>
+    <text x="380" y="136" text-anchor="middle" font-size="10" fill="#DBEAFE">Trade-off</text>
+  </g>
+  <line x1="340" y1="120" x2="352" y2="120" stroke="#475569" stroke-width="2"/>
+  <line x1="408" y1="120" x2="420" y2="120" stroke="#475569" stroke-width="2"/>
+  <!-- 底部常用手段 -->
+  <g font-size="12" fill="#334155">
+    <rect x="40" y="252" width="680" height="52" rx="6" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="56" y="274">常用反范式手段：冗余列（articles.author_name）｜汇总列（comment_count / like_count）｜物化视图｜预计算报表表</text>
+    <text x="56" y="294">一致性兜底：先写主表再异步刷冗余（MQ / CDC），或对账任务定时校正，绝不在业务代码里「顺手双写」</text>
+  </g>
+</svg>

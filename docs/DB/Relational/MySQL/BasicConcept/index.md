@@ -57,6 +57,10 @@ SHOW VARIABLES LIKE 'collation_server';
 
 ## 常用数据类型
 
+::: tip 类型选择的判断标准
+选类型的唯一标准是**业务语义**：金额必须 `DECIMAL`（不能用 `DOUBLE`）、时间点用 `DATETIME(3)`（不要用字符串）、状态用 `TINYINT` + 注释。逐条对照见[设计原则与规范](../../../DataModeling/DesignPrinciples/index.md)的「字段类型选择」表。
+:::
+
 ### 数值类型
 
 | 类型 | 说明 |

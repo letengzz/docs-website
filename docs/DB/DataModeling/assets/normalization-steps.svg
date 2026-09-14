@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="300" fill="#FFFFFF"/>
+  <defs>
+    <marker id="arr3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#2563EB"/></marker>
+  </defs>
+  <text x="380" y="28" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">规范化流水线：每一步消除一类冗余/异常</text>
+  <!-- UNF -->
+  <g>
+    <rect x="24" y="70" width="150" height="120" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="2"/>
+    <rect x="24" y="70" width="150" height="32" rx="8" fill="#DC2626"/>
+    <text x="99" y="91" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="bold">UNF 未规范化</text>
+    <text x="99" y="126" text-anchor="middle" font-size="11" fill="#7F1D1D">字段里塞多个值</text>
+    <text x="99" y="146" text-anchor="middle" font-size="11" fill="#7F1D1D">如 tags="MySQL,Redis"</text>
+    <text x="99" y="170" text-anchor="middle" font-size="11" fill="#7F1D1D">无法精确查询/关联</text>
+  </g>
+  <!-- 1NF -->
+  <g>
+    <rect x="212" y="70" width="150" height="120" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+    <rect x="212" y="70" width="150" height="32" rx="8" fill="#EA580C"/>
+    <text x="287" y="91" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="bold">1NF 第一范式</text>
+    <text x="287" y="126" text-anchor="middle" font-size="11" fill="#9A3412">字段原子化</text>
+    <text x="287" y="146" text-anchor="middle" font-size="11" fill="#9A3412">消除多值字段</text>
+    <text x="287" y="170" text-anchor="middle" font-size="11" fill="#9A3412">每列只放一个值</text>
+  </g>
+  <!-- 2NF -->
+  <g>
+    <rect x="400" y="70" width="150" height="120" rx="8" fill="#FEFCE8" stroke="#CA8A04" stroke-width="2"/>
+    <rect x="400" y="70" width="150" height="32" rx="8" fill="#CA8A04"/>
+    <text x="475" y="91" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="bold">2NF 第二范式</text>
+    <text x="475" y="126" text-anchor="middle" font-size="11" fill="#713F12">消除部分依赖</text>
+    <text x="475" y="146" text-anchor="middle" font-size="11" fill="#713F12">非主键字段必须依赖</text>
+    <text x="475" y="170" text-anchor="middle" font-size="11" fill="#713F12">整个联合主键</text>
+  </g>
+  <!-- 3NF -->
+  <g>
+    <rect x="588" y="70" width="150" height="120" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <rect x="588" y="70" width="150" height="32" rx="8" fill="#059669"/>
+    <text x="663" y="91" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="bold">3NF 第三范式</text>
+    <text x="663" y="126" text-anchor="middle" font-size="11" fill="#065F46">消除传递依赖</text>
+    <text x="663" y="146" text-anchor="middle" font-size="11" fill="#065F46">非主键字段不依赖</text>
+    <text x="663" y="170" text-anchor="middle" font-size="11" fill="#065F46">其他非主键字段</text>
+  </g>
+  <line x1="176" y1="130" x2="208" y2="130" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <line x1="364" y1="130" x2="396" y2="130" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <line x1="552" y1="130" x2="584" y2="130" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <!-- 收益 -->
+  <g font-size="12" fill="#334155">
+    <rect x="60" y="216" width="640" height="64" rx="6" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="76" y="240">规范化的收益：消除插入异常（没订单就无法录商品）、删除异常（删订单连带删掉商品信息）、</text>
+    <text x="76" y="262">更新异常（改商品名要改 N 行，漏改就不一致）。BCNF 是 3NF 的强化版，处理候选键重叠的场景。</text>
+  </g>
+</svg>

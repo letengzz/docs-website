@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="720" height="360" fill="#FFFFFF"/>
+  <!-- 根 -->
+  <rect x="280" y="20" width="160" height="44" rx="8" fill="#2563EB"/>
+  <text x="360" y="47" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="bold">数据建模 FAQ</text>
+  <!-- 分支 -->
+  <g font-size="12" fill="#0F172A">
+    <rect x="30" y="110" width="150" height="60" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+    <text x="105" y="135" text-anchor="middle">范式要背到第几层？</text>
+    <text x="105" y="155" text-anchor="middle" fill="#64748B" font-size="11">→ 3NF 打底，懂 BCNF</text>
+    <rect x="200" y="110" width="150" height="60" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+    <text x="275" y="135" text-anchor="middle">M:N 怎么落表？</text>
+    <text x="275" y="155" text-anchor="middle" fill="#64748B" font-size="11">→ 关联表 + 联合主键</text>
+    <rect x="370" y="110" width="150" height="60" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.5"/>
+    <text x="445" y="135" text-anchor="middle">逻辑删除还是物理删？</text>
+    <text x="445" y="155" text-anchor="middle" fill="#64748B" font-size="11">→ 看合规与唯一索引</text>
+    <rect x="540" y="110" width="150" height="60" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+    <text x="615" y="135" text-anchor="middle">要不要外键约束？</text>
+    <text x="615" y="155" text-anchor="middle" fill="#64748B" font-size="11">→ 单体要，微服务不要</text>
+    <rect x="115" y="220" width="150" height="60" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.5"/>
+    <text x="190" y="245" text-anchor="middle">模型改了怎么上线？</text>
+    <text x="190" y="265" text-anchor="middle" fill="#64748B" font-size="11">→ 迁移脚本 + 灰度</text>
+    <rect x="455" y="220" width="150" height="60" rx="8" fill="#FEFCE8" stroke="#CA8A04" stroke-width="1.5"/>
+    <text x="530" y="245" text-anchor="middle">JSON 字段能用吗？</text>
+    <text x="530" y="265" text-anchor="middle" fill="#64748B" font-size="11">→ 扩展属性可以，关联不行</text>
+  </g>
+  <!-- 连线 -->
+  <g stroke="#94A3B8" stroke-width="1.5">
+    <line x1="320" y1="64" x2="105" y2="108"/>
+    <line x1="345" y1="64" x2="275" y2="108"/>
+    <line x1="375" y1="64" x2="445" y2="108"/>
+    <line x1="400" y1="64" x2="615" y2="108"/>
+    <line x1="105" y1="170" x2="190" y2="218"/>
+    <line x1="615" y1="170" x2="530" y2="218"/>
+  </g>
+  <text x="360" y="330" text-anchor="middle" font-size="12" fill="#64748B">每个问题在对应章节都有展开：范式 → Normalization，关联表 → CoreConcepts，演进 → DesignPrinciples</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <rect x="8" y="8" width="224" height="224" rx="28" fill="#EFF6FF" stroke="#2563EB" stroke-width="4"/>
+  <!-- 数据库圆柱 -->
+  <g>
+    <ellipse cx="80" cy="96" rx="44" ry="16" fill="#BFDBFE" stroke="#2563EB" stroke-width="3"/>
+    <path d="M36 96 v52 c0 9 20 16 44 16 s44 -7 44 -16 v-52" fill="#DBEAFE" stroke="#2563EB" stroke-width="3"/>
+    <path d="M36 122 c0 9 20 16 44 16 s44 -7 44 -16" fill="none" stroke="#2563EB" stroke-width="3"/>
+  </g>
+  <!-- ER 节点 -->
+  <g stroke="#1D4ED8" stroke-width="3" fill="#FFFFFF">
+    <rect x="150" y="60" width="52" height="34" rx="6"/>
+    <rect x="150" y="146" width="52" height="34" rx="6"/>
+  </g>
+  <g stroke="#1D4ED8" stroke-width="3">
+    <line x1="150" y1="77" x2="128" y2="90"/>
+    <line x1="150" y1="163" x2="128" y2="150"/>
+    <line x1="176" y1="94" x2="176" y2="146"/>
+  </g>
+  <circle cx="176" cy="120" r="7" fill="#2563EB"/>
+</svg>

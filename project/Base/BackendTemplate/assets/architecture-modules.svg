@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="320" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">模块依赖：严格单向，common 不依赖任何模块</text>
+  <g>
+    <rect x="280" y="46" width="200" height="48" rx="8" fill="#A7F3D0" stroke="#047857" stroke-width="2"/>
+    <text x="380" y="76" text-anchor="middle" font-size="14" fill="#065F46" font-weight="bold">template-application</text>
+  </g>
+  <g>
+    <rect x="120" y="126" width="200" height="48" rx="8" fill="#D1FAE5" stroke="#047857" stroke-width="2"/>
+    <text x="220" y="156" text-anchor="middle" font-size="14" fill="#065F46" font-weight="bold">template-web</text>
+    <rect x="440" y="126" width="200" height="48" rx="8" fill="#D1FAE5" stroke="#047857" stroke-width="2"/>
+    <text x="540" y="156" text-anchor="middle" font-size="14" fill="#065F46" font-weight="bold">template-security</text>
+  </g>
+  <g>
+    <rect x="280" y="206" width="200" height="48" rx="8" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <text x="380" y="236" text-anchor="middle" font-size="14" fill="#065F46" font-weight="bold">template-data</text>
+  </g>
+  <g stroke="#047857" stroke-width="2" fill="none">
+    <line x1="330" y1="94" x2="235" y2="124"/>
+    <line x1="430" y1="94" x2="525" y2="124"/>
+    <line x1="245" y1="174" x2="330" y2="204"/>
+    <line x1="515" y1="174" x2="430" y2="204"/>
+  </g>
+  <g>
+    <rect x="280" y="278" width="200" height="32" rx="8" fill="#F0FDF4" stroke="#059669" stroke-width="2"/>
+    <text x="380" y="300" text-anchor="middle" font-size="13" fill="#065F46" font-weight="bold">template-common（最底层）</text>
+  </g>
+  <g stroke="#059669" stroke-width="2" stroke-dasharray="5 4" fill="none">
+    <line x1="300" y1="230" x2="300" y2="276"/>
+    <line x1="460" y1="230" x2="460" y2="276"/>
+    <line x1="200" y1="150" x2="200" y2="276"/>
+    <line x1="560" y1="150" x2="560" y2="276"/>
+  </g>
+  <text x="620" y="222" font-size="11" fill="#64748B">虚线：所有模块均可依赖 common</text>
+  <text x="620" y="240" font-size="11" fill="#64748B">反向依赖一律禁止</text>
+</svg>

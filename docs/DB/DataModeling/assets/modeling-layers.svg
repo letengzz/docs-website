@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="300" fill="#FFFFFF"/>
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#2563EB"/></marker>
+  </defs>
+  <!-- 三层模型 -->
+  <g>
+    <rect x="30" y="60" width="200" height="150" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+    <rect x="30" y="60" width="200" height="40" rx="10" fill="#2563EB"/>
+    <text x="130" y="86" text-anchor="middle" font-size="16" fill="#FFFFFF" font-weight="bold">概念模型</text>
+    <text x="130" y="122" text-anchor="middle" font-size="12" fill="#1E3A8A">回答「业务上有什么」</text>
+    <text x="130" y="144" text-anchor="middle" font-size="12" fill="#1E3A8A">实体 + 关系，无字段类型</text>
+    <text x="130" y="166" text-anchor="middle" font-size="12" fill="#1E3A8A">产出：ER 图（业务视角）</text>
+    <text x="130" y="192" text-anchor="middle" font-size="12" fill="#64748B">参与者：业务 + 架构师</text>
+  </g>
+  <g>
+    <rect x="280" y="60" width="200" height="150" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <rect x="280" y="60" width="200" height="40" rx="10" fill="#059669"/>
+    <text x="380" y="86" text-anchor="middle" font-size="16" fill="#FFFFFF" font-weight="bold">逻辑模型</text>
+    <text x="380" y="122" text-anchor="middle" font-size="12" fill="#065F46">回答「数据怎么组织」</text>
+    <text x="380" y="144" text-anchor="middle" font-size="12" fill="#065F46">表 + 字段 + 主外键 + 范式</text>
+    <text x="380" y="166" text-anchor="middle" font-size="12" fill="#065F46">产出：规范化表结构</text>
+    <text x="380" y="192" text-anchor="middle" font-size="12" fill="#64748B">参与者：数据建模师</text>
+  </g>
+  <g>
+    <rect x="530" y="60" width="200" height="150" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+    <rect x="530" y="60" width="200" height="40" rx="10" fill="#EA580C"/>
+    <text x="630" y="86" text-anchor="middle" font-size="16" fill="#FFFFFF" font-weight="bold">物理模型</text>
+    <text x="630" y="122" text-anchor="middle" font-size="12" fill="#9A3412">回答「怎么落到具体库」</text>
+    <text x="630" y="144" text-anchor="middle" font-size="12" fill="#9A3412">字段类型 + 索引 + 分区</text>
+    <text x="630" y="166" text-anchor="middle" font-size="12" fill="#9A3412">产出：DDL 建表脚本</text>
+    <text x="630" y="192" text-anchor="middle" font-size="12" fill="#64748B">参与者：DBA + 开发</text>
+  </g>
+  <line x1="232" y1="135" x2="276" y2="135" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arr)"/>
+  <line x1="482" y1="135" x2="526" y2="135" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="380" y="30" text-anchor="middle" font-size="15" fill="#0F172A" font-weight="bold">数据建模的三层抽象：从业务语言到数据库实现</text>
+  <text x="380" y="252" text-anchor="middle" font-size="12" fill="#64748B">逐层细化、逐层可评审：概念模型对齐业务 → 逻辑模型对齐规范 → 物理模型对齐性能与落地</text>
+  <text x="380" y="276" text-anchor="middle" font-size="12" fill="#64748B">物理模型变更（如加索引）不应回改概念模型；业务变更（如新增实体）必须从概念层重新走一遍</text>
+</svg>

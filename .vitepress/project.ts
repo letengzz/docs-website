@@ -31,6 +31,18 @@ export const BaseProject = [
           { text: "常见问题与最佳实践", link: "/project/Base/Vue3Template/FAQ/index.md" },
         ],
       },
+      {
+        text: "后端通用模板",
+        link: "/project/Base/BackendTemplate/index.md",
+        collapsed: true,
+        items: [
+          { text: "需求与架构设计", link: "/project/Base/BackendTemplate/Architecture/index.md" },
+          { text: "骨架与目录结构", link: "/project/Base/BackendTemplate/Skeleton/index.md" },
+          { text: "统一响应与全局异常", link: "/project/Base/BackendTemplate/CommonResponse/index.md" },
+          { text: "健康检查与配置", link: "/project/Base/BackendTemplate/HealthCheck/index.md" },
+          { text: "当日进展", link: "/project/Base/BackendTemplate/Progress/index.md" },
+        ],
+      },
     ],
   },
 ];
