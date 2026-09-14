@@ -21,3 +21,9 @@
 1. 未接触过 Kubernetes 的读者，先看 [Kubernetes 专题](../Kubernetes/index.md) 的基础章节。
 2. 想快速落地生产：按顺序读 Helm → GitOps → Security → Practice。
 3. 关注流量治理与多集群容灾：重点读 ServiceMesh → MultiCluster。
+
+## 相关专题
+
+- [Terraform](../Terraform/index.md)：**基础设施层**的声明式交付——集群、节点池、网络与存储由 IaC 建好，本专题讲的 Helm/Argo CD 负责**应用层**交付。二者的边界与配合见 [Terraform 概述与选型](../Terraform/Overview/index.md)。
+- [Kubernetes](../Kubernetes/index.md)：本专题的前置基础。
+- [CI/CD 自动部署与回滚](../../Tools/CICD/DeployRollback/index.md)：发布策略与回滚演练。

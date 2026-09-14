@@ -39,3 +39,9 @@ Shell 脚本是"**做什么**"（命令式，跑第二遍可能出错），Ansib
 :::
 
 详细支持状态与 2.19 起的破坏性变更（Data Tagging）见 [常见问题与最佳实践](FAQ/index.md)。
+
+## 相关专题
+
+- [Terraform](../Terraform/index.md)：两者互补——**Terraform 建机器（VPC / 子网 / 安全组 / 云主机 / 对象存储），Ansible 配机器（装包、下发配置、重启服务）**。标准组合姿势是 Terraform 用 `output` 输出主机 IP，Ansible 用这份清单做配置收敛，分工与判据见 [Terraform 概述与选型](../Terraform/Overview/index.md)。
+- [Linux 进阶](../Linux/Advanced/index.md)：被 Ansible 接管前，机器本身要先按基线加固好。
+- [CI/CD 自动部署与回滚](../../Tools/CICD/DeployRollback/index.md)：把 Playbook 接进流水线做批量发布与灰度。

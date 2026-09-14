@@ -68,6 +68,7 @@ systemd + 定时任务    → 让脚本变成「服务」和「计划任务」�
 - 容器宿主机调优与安全：[Docker 安全加固](../../Docker/Security/index.md)、[Kubernetes 监控与运维](../../Kubernetes/Monitoring/index.md)
 - 服务器指标采集与告警：[监控告警](../../Monitoring/index.md)
 - 服务器日志采集与留存：[日志体系](../../LogSystem/index.md)
+- 机器建好之后交给声明式工具收敛配置：[Ansible 自动化运维](../../Ansible/index.md)、[Terraform](../../Terraform/index.md)（Terraform 负责"机器存在"，Ansible 负责"机器变对"）
 - 定时任务跑备份脚本的落地示例：[数据库客户端实战](../../../Tools/DatabaseClients/DataOps/index.md)
 
 ## 参考资料

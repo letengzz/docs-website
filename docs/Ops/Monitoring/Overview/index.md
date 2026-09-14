@@ -126,6 +126,7 @@ Prometheus 最新稳定为 **3.14.x**，Grafana 为 **13.x**（13.2.1），Alert
 - [时序数据库](../../../DB/TimeSeries/index.md)：监控指标的长期存储、降采样与保留策略
 - [容器编排进阶 · 弹性伸缩](../../ContainerOrchestration/Autoscaling/index.md)：HPA/KEDA 扩缩与监控指标联动
 - [容器编排进阶 · GitOps 实战](../../ContainerOrchestration/Practice/index.md)：告警规则随应用交付、故障演练后回滚
+- [Terraform · State 与远程后端](../../Terraform/State/index.md)：监控告警规则与看板若由 IaC 声明式管理，请一并纳入漂移巡检；Terraform 的 `plan -detailed-exitcode`（`exit=2` 表示有漂移）适合做成定时巡检
 
 ## 参考资料
 

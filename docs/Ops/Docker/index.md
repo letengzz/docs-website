@@ -33,4 +33,5 @@
 ## 相关专题
 
 - [Ansible 自动化运维](../Ansible/index.md)：批量安装 Docker 引擎、下发 compose 文件与容器状态验收
+- [Terraform](../Terraform/index.md)：把「云主机 + 网络 + 对象存储」这类底座资源交给 IaC，机器建好后再由 CI/CD 拉起容器
 - [Kubernetes](../Kubernetes/index.md)：从单机容器到集群编排
