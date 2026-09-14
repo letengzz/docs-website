@@ -291,7 +291,7 @@ grep -A3 "系统异常" logs/app.log
 
 ## 下一步
 
-第 70 天在这套结构上补齐：**TraceId 注入**（让 `Result.traceId` 有值、日志里能按请求串联）、**参数校验分组与自定义注解**、**MockMvc 集成测试**（把上面四条 curl 验证变成自动化测试，纳入 CI）。
+第 70 天在这套结构上补齐：**TraceId 注入**（让 `Result.traceId` 有值、日志里能按请求串联，见[请求追踪 ID 与日志切面](../TraceId/index.md)）、**参数校验分组与自定义注解**（见[参数校验增强](../Validation/index.md)）、**MockMvc 集成测试**（把上面四条 curl 验证变成自动化测试，纳入 CI，见[集成测试](../IntegrationTest/index.md)）。
 
 ## 参考资料
 

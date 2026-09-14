@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="320" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">MockMvc 全链路测试与测试分层</text>
+
+  <!-- 左：MockMvc 链路 -->
+  <text x="196" y="62" text-anchor="middle" font-size="13" fill="#1E3A8A" font-weight="bold">① MockMvc 覆盖的真实链路</text>
+  <g font-size="11">
+    <rect x="40" y="78" width="120" height="34" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="100" y="100" text-anchor="middle" fill="#1E3A8A">MockMvc.perform()</text>
+
+    <rect x="40" y="126" width="120" height="34" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="100" y="148" text-anchor="middle" fill="#1E3A8A">TraceIdFilter</text>
+
+    <rect x="40" y="174" width="120" height="34" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="100" y="196" text-anchor="middle" fill="#1E3A8A">参数绑定 + 校验</text>
+
+    <rect x="40" y="222" width="120" height="34" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="100" y="244" text-anchor="middle" fill="#1E3A8A">Controller 方法</text>
+
+    <rect x="40" y="270" width="120" height="34" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="100" y="292" text-anchor="middle" fill="#1E3A8A">异常处理 + 序列化</text>
+  </g>
+  <g stroke="#2563EB" stroke-width="1.6" fill="none" marker-end="url(#a3)">
+    <line x1="100" y1="112" x2="100" y2="124"/>
+    <line x1="100" y1="160" x2="100" y2="172"/>
+    <line x1="100" y1="208" x2="100" y2="220"/>
+    <line x1="100" y1="256" x2="100" y2="268"/>
+  </g>
+
+  <!-- 右：测试分层金字塔 -->
+  <text x="540" y="62" text-anchor="middle" font-size="13" fill="#065F46" font-weight="bold">② 测试分层（本模板覆盖下两层）</text>
+
+  <polygon points="540,86 460,158 620,158" fill="#ECFDF5" stroke="#059669" stroke-width="1.8"/>
+  <text x="540" y="132" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">端到端冒烟</text>
+  <text x="540" y="150" text-anchor="middle" font-size="10" fill="#64748B">少量 · TestRestTemplate</text>
+
+  <rect x="452" y="172" width="176" height="56" rx="8" fill="#DCFCE7" stroke="#059669" stroke-width="1.8"/>
+  <text x="540" y="196" text-anchor="middle" font-size="11.5" fill="#065F46" font-weight="bold">集成 / 契约测试</text>
+  <text x="540" y="216" text-anchor="middle" font-size="10" fill="#64748B">MockMvc：接口 + 校验 + 异常</text>
+
+  <rect x="420" y="242" width="240" height="56" rx="8" fill="#BBF7D0" stroke="#059669" stroke-width="1.8"/>
+  <text x="540" y="266" text-anchor="middle" font-size="11.5" fill="#065F46" font-weight="bold">单元测试</text>
+  <text x="540" y="286" text-anchor="middle" font-size="10" fill="#475569">量最大 · Service/Util 纯逻辑</text>
+
+  <defs>
+    <marker id="a3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#2563EB"/>
+    </marker>
+  </defs>
+</svg>

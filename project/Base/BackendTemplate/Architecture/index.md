@@ -127,11 +127,11 @@ curl -s http://localhost:8080/v3/api-docs | head -c 200
 
 收尾确认：依赖树中不存在反向依赖、jar 可执行、OpenAPI 文档能返回 JSON。
 
-## 下一步（第 70 天）
+## 下一步（第 70 天已交付）
 
-1. 接入 TraceId 与日志切面，让 `Result.traceId` 真正有值。
-2. 参数校验分组（新增 / 更新）与自定义校验注解。
-3. 用 MockMvc 为统一响应与异常处理补集成测试。
+1. 接入 TraceId 与日志切面，让 `Result.traceId` 真正有值 → [请求追踪 ID 与日志切面](../TraceId/index.md)。
+2. 参数校验分组（新增 / 更新）与自定义校验注解 → [参数校验增强](../Validation/index.md)。
+3. 用 MockMvc 为统一响应与异常处理补集成测试 → [MockMvc 集成测试](../IntegrationTest/index.md)。
 
 ## 参考资料
 

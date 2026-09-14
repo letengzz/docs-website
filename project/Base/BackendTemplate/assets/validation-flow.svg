@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="300" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">参数校验增强：从注解到字段级错误明细</text>
+
+  <!-- 步骤 1 -->
+  <rect x="24" y="60" width="164" height="92" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+  <text x="106" y="86" text-anchor="middle" font-size="12.5" fill="#1E3A8A" font-weight="bold">① 声明式约束</text>
+  <text x="106" y="108" text-anchor="middle" font-size="10.5" fill="#334155">@NotNull / @Size</text>
+  <text x="106" y="124" text-anchor="middle" font-size="10.5" fill="#334155">@Email / @Pattern</text>
+  <text x="106" y="140" text-anchor="middle" font-size="10.5" fill="#64748B">@Mobile（自定义）</text>
+
+  <!-- 步骤 2 -->
+  <rect x="212" y="60" width="164" height="92" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+  <text x="294" y="86" text-anchor="middle" font-size="12.5" fill="#1E3A8A" font-weight="bold">② 分组校验</text>
+  <text x="294" y="108" text-anchor="middle" font-size="10.5" fill="#334155">AddGroup / UpdateGroup</text>
+  <text x="294" y="124" text-anchor="middle" font-size="10.5" fill="#334155">@Validated(AddGroup)</text>
+  <text x="294" y="140" text-anchor="middle" font-size="10.5" fill="#64748B">同一 DTO 复用于两场景</text>
+
+  <!-- 步骤 3 -->
+  <rect x="400" y="60" width="164" height="92" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+  <text x="482" y="86" text-anchor="middle" font-size="12.5" fill="#9A3412" font-weight="bold">③ 触发校验</text>
+  <text x="482" y="108" text-anchor="middle" font-size="10.5" fill="#334155">@RequestBody @Valid</text>
+  <text x="482" y="124" text-anchor="middle" font-size="10.5" fill="#334155">方法参数 @Min/@NotBlank</text>
+  <text x="482" y="140" text-anchor="middle" font-size="10.5" fill="#64748B">需类上加 @Validated</text>
+
+  <!-- 步骤 4 -->
+  <rect x="588" y="60" width="148" height="92" rx="10" fill="#FEF2F2" stroke="#DC2626" stroke-width="2"/>
+  <text x="662" y="86" text-anchor="middle" font-size="12.5" fill="#991B1B" font-weight="bold">④ 校验失败</text>
+  <text x="662" y="108" text-anchor="middle" font-size="10.5" fill="#334155">MethodArgument-</text>
+  <text x="662" y="122" text-anchor="middle" font-size="10.5" fill="#334155">NotValidException</text>
+  <text x="662" y="140" text-anchor="middle" font-size="10.5" fill="#64748B">被全局异常捕获</text>
+
+  <!-- 箭头 -->
+  <g stroke="#64748B" stroke-width="1.8" fill="none" marker-end="url(#a2)">
+    <line x1="188" y1="106" x2="208" y2="106"/>
+    <line x1="376" y1="106" x2="396" y2="106"/>
+    <line x1="564" y1="106" x2="584" y2="106"/>
+  </g>
+
+  <!-- 输出 -->
+  <rect x="150" y="188" width="460" height="76" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.6"/>
+  <text x="380" y="212" text-anchor="middle" font-size="12" fill="#334155" font-weight="bold">统一响应：HTTP 400 + code=10400 + 字段级明细</text>
+  <text x="380" y="234" text-anchor="middle" font-size="10.5" fill="#475569">{"code":10400,"message":"参数校验失败","data":{"username":"长度需在 3~20 之间","mobile":"手机号格式不正确"}}</text>
+  <text x="380" y="253" text-anchor="middle" font-size="10.5" fill="#64748B">data 用 Map&lt;字段名, 提示&gt;，前端可逐字段高亮</text>
+
+  <line x1="662" y1="154" x2="662" y2="226" stroke="#DC2626" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <line x1="662" y1="226" x2="614" y2="226" stroke="#DC2626" stroke-width="1.6" marker-end="url(#a2)"/>
+
+  <defs>
+    <marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+</svg>

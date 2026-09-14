@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="320" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">TraceId 一次请求的完整流转</text>
+
+  <!-- 客户端 -->
+  <rect x="24" y="120" width="120" height="64" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.6"/>
+  <text x="84" y="148" text-anchor="middle" font-size="13" fill="#334155" font-weight="bold">客户端</text>
+  <text x="84" y="168" text-anchor="middle" font-size="11" fill="#64748B">X-Trace-Id（可选）</text>
+
+  <!-- Filter -->
+  <rect x="184" y="104" width="170" height="96" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+  <text x="269" y="130" text-anchor="middle" font-size="13" fill="#1E3A8A" font-weight="bold">TraceIdFilter</text>
+  <text x="269" y="152" text-anchor="middle" font-size="11" fill="#334155">有则透传，无则生成</text>
+  <text x="269" y="170" text-anchor="middle" font-size="11" fill="#334155">写入 MDC</text>
+  <text x="269" y="188" text-anchor="middle" font-size="11" fill="#64748B">finally 中 clear()</text>
+
+  <!-- MDC -->
+  <rect x="394" y="104" width="140" height="96" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+  <text x="464" y="130" text-anchor="middle" font-size="13" fill="#9A3412" font-weight="bold">MDC</text>
+  <text x="464" y="152" text-anchor="middle" font-size="11" fill="#334155">ThreadLocal 上下文</text>
+  <text x="464" y="170" text-anchor="middle" font-size="11" fill="#334155">key = traceId</text>
+  <text x="464" y="190" text-anchor="middle" font-size="11" fill="#64748B">随请求线程绑定</text>
+
+  <!-- 三处消费 -->
+  <rect x="574" y="56" width="162" height="52" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.8"/>
+  <text x="655" y="80" text-anchor="middle" font-size="12" fill="#065F46" font-weight="bold">日志 pattern 打点</text>
+  <text x="655" y="97" text-anchor="middle" font-size="10.5" fill="#64748B">%X{traceId}</text>
+
+  <rect x="574" y="126" width="162" height="52" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.8"/>
+  <text x="655" y="150" text-anchor="middle" font-size="12" fill="#065F46" font-weight="bold">Result.traceId</text>
+  <text x="655" y="167" text-anchor="middle" font-size="10.5" fill="#64748B">响应体可追溯</text>
+
+  <rect x="574" y="196" width="162" height="52" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.8"/>
+  <text x="655" y="220" text-anchor="middle" font-size="12" fill="#065F46" font-weight="bold">响应头回传</text>
+  <text x="655" y="237" text-anchor="middle" font-size="10.5" fill="#64748B">X-Trace-Id</text>
+
+  <!-- 箭头 -->
+  <g stroke="#64748B" stroke-width="1.8" fill="none" marker-end="url(#arrow)">
+    <line x1="146" y1="152" x2="180" y2="152"/>
+    <line x1="356" y1="152" x2="390" y2="152"/>
+    <line x1="536" y1="140" x2="570" y2="84"/>
+    <line x1="536" y1="152" x2="570" y2="152"/>
+    <line x1="536" y1="164" x2="570" y2="220"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="300" text-anchor="middle" font-size="11" fill="#64748B">同一条 traceId 把「访问日志 / 业务日志 / 异常日志 / 响应体」串成一条链路，排障时一个 ID 查全流程</text>
+</svg>
