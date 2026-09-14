@@ -57,7 +57,7 @@ backend-template/
 | 第 69 天 | 第 2 周：核心编码 ① | 可运行骨架 + 统一响应 + 全局异常 + 健康检查 | ✅ 见下方模块页 |
 | 第 70 天 | 第 2 周：核心编码 ② | 请求追踪 ID + 日志切面 + 参数校验增强 + MockMvc 集成测试 | ✅ 见下方模块页 |
 | 第 71 天 | 第 2 周：核心编码 ③ | MyBatis-Plus 接入 + 分页插件 + 审计字段自动填充 + 逻辑删除/乐观锁 + 数据层集成测试 | ✅ 见下方模块页 |
-| 第 72 天（计划） | 第 2 周：核心编码 ④ | Spring Security 7 + JWT 认证链路 | ⏳ |
+| 第 72 天 | 第 2 周：核心编码 ④ | Spring Security 7 + JWT 无状态认证链路 + 声明式权限 + 401/403 统一出口 | ✅ 见下方模块页 |
 | 第 73-79 天 | 第 3 周：联调与测试 | 单元测试、集成测试、压测、覆盖率门禁 | ⏳ |
 | 第 80-90 天 | 第 4 周：部署与验收 | Docker 镜像、Compose、CI 流水线、验收清单 | ⏳ |
 
@@ -79,7 +79,11 @@ backend-template/
 
 7. [数据访问：MyBatis-Plus 接入](./DataAccess/index.md)：`BaseEntity` + 拦截器链（分页/乐观锁/防全表更新）、`MetaObjectHandler` 审计字段自动填充、逻辑删除、`PageResult` 统一分页出参、Testcontainers 数据层集成测试。
 
-8. [进展记录](./Progress/index.md)：逐日做了什么、如何验证、下一步是什么。
+**第 72 天（认证与授权）**：
+
+8. [认证授权：Spring Security 7 + JWT](./Security/index.md)：无状态认证链路（`JwtAuthenticationFilter` 插在 `UsernamePasswordAuthenticationFilter` 之前）、jjwt 令牌签发与校验、`UserContext` 桥接审计字段、401/403 统一走 `Result<T>` 出口、`@PreAuthorize` 声明式权限与 12 条踩坑清单。
+
+9. [进展记录](./Progress/index.md)：逐日做了什么、如何验证、下一步是什么。
 
 ## 本地运行（快速上手）
 

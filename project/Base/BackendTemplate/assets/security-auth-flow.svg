@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Spring Security 7 无状态认证链路与 JWT 过滤器</text>
+
+  <!-- ① 过滤器链 -->
+  <text x="380" y="56" text-anchor="middle" font-size="13" fill="#1E3A8A" font-weight="bold">① 过滤器链：TraceIdFilter 之后、AuthorizationFilter 之前插入 JWT 校验</text>
+
+  <g font-size="11">
+    <rect x="32" y="72" width="128" height="58" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="96" y="95" text-anchor="middle" fill="#1E3A8A" font-weight="bold">TraceIdFilter</text>
+    <text x="96" y="113" text-anchor="middle" font-size="9" fill="#64748B">生成 / 透传 traceId</text>
+
+    <rect x="174" y="72" width="128" height="58" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+    <text x="238" y="95" text-anchor="middle" fill="#991B1B" font-weight="bold">JwtAuthFilter</text>
+    <text x="238" y="113" text-anchor="middle" font-size="9" fill="#991B1B">解析 Bearer Token</text>
+
+    <rect x="316" y="72" width="128" height="58" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+    <text x="380" y="95" text-anchor="middle" fill="#991B1B" font-weight="bold">SecurityContext</text>
+    <text x="380" y="113" text-anchor="middle" font-size="9" fill="#991B1B">写入 Authentication</text>
+
+    <rect x="458" y="72" width="128" height="58" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="522" y="95" text-anchor="middle" fill="#1E3A8A" font-weight="bold">AuthorizationFilter</text>
+    <text x="522" y="113" text-anchor="middle" font-size="9" fill="#64748B">校验 URL 与 @PreAuthorize</text>
+
+    <rect x="600" y="72" width="128" height="58" rx="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.6"/>
+    <text x="664" y="95" text-anchor="middle" fill="#166534" font-weight="bold">Controller</text>
+    <text x="664" y="113" text-anchor="middle" font-size="9" fill="#166534">业务处理</text>
+  </g>
+
+  <g stroke="#2563EB" stroke-width="1.6" fill="none" marker-end="url(#arw)">
+    <line x1="160" y1="101" x2="172" y2="101"/>
+    <line x1="302" y1="101" x2="314" y2="101"/>
+    <line x1="444" y1="101" x2="456" y2="101"/>
+    <line x1="586" y1="101" x2="598" y2="101"/>
+  </g>
+
+  <!-- ② 登录签发 -->
+  <rect x="32" y="150" width="220" height="250" rx="10" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="142" y="174" text-anchor="middle" font-size="12.5" fill="#92400E" font-weight="bold">② 登录签发</text>
+  <text x="142" y="192" text-anchor="middle" font-size="9.5" fill="#A16207">POST /auth/login</text>
+
+  <g font-size="10.5">
+    <rect x="46" y="204" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#D97706" stroke-width="1.1"/>
+    <text x="58" y="221" fill="#92400E" font-weight="bold">① 校验账号密码</text>
+    <text x="58" y="236" font-size="9" fill="#475569">AuthenticationManager</text>
+
+    <rect x="46" y="250" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#D97706" stroke-width="1.1"/>
+    <text x="58" y="267" fill="#92400E" font-weight="bold">② 生成 Access Token</text>
+    <text x="58" y="282" font-size="9" fill="#475569">sub / roles / exp 短有效期</text>
+
+    <rect x="46" y="296" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#D97706" stroke-width="1.1"/>
+    <text x="58" y="313" fill="#92400E" font-weight="bold">③ 生成 Refresh Token</text>
+    <text x="58" y="328" font-size="9" fill="#475569">长有效期，存 Redis 可吊销</text>
+
+    <rect x="46" y="342" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#D97706" stroke-width="1.1"/>
+    <text x="58" y="359" fill="#92400E" font-weight="bold">④ 返回 token 对</text>
+    <text x="58" y="374" font-size="9" fill="#475569">不写 Session，服务端无状态</text>
+  </g>
+
+  <!-- ③ 每次请求校验 -->
+  <rect x="270" y="150" width="220" height="250" rx="10" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="174" text-anchor="middle" font-size="12.5" fill="#0F172A" font-weight="bold">③ 每次请求校验</text>
+  <text x="380" y="192" text-anchor="middle" font-size="9.5" fill="#64748B">Authorization: Bearer &lt;token&gt;</text>
+
+  <g font-size="10.5">
+    <rect x="284" y="204" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.1"/>
+    <text x="296" y="221" fill="#1E293B" font-weight="bold">① 读取 Authorization 头</text>
+    <text x="296" y="236" font-size="9" fill="#475569">缺失则直接放行到匿名请求</text>
+
+    <rect x="284" y="250" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.1"/>
+    <text x="296" y="267" fill="#1E293B" font-weight="bold">② 校验签名与 exp</text>
+    <text x="296" y="282" font-size="9" fill="#475569">失败抛 JwtException → 401</text>
+
+    <rect x="284" y="296" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.1"/>
+    <text x="296" y="313" fill="#1E293B" font-weight="bold">③ 解析 claims</text>
+    <text x="296" y="328" font-size="9" fill="#475569">sub → 用户 ID，roles → 权限</text>
+
+    <rect x="284" y="342" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.1"/>
+    <text x="296" y="359" fill="#1E293B" font-weight="bold">④ 填充 SecurityContext</text>
+    <text x="296" y="374" font-size="9" fill="#475569">供 @PreAuthorize 声明式鉴权</text>
+  </g>
+
+  <!-- ④ 鉴权结果与异常出口 -->
+  <rect x="508" y="150" width="220" height="250" rx="10" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.6"/>
+  <text x="618" y="174" text-anchor="middle" font-size="12.5" fill="#166534" font-weight="bold">④ 鉴权结果与异常出口</text>
+  <text x="618" y="192" text-anchor="middle" font-size="9.5" fill="#15803D">统一走 Result&lt;T&gt; 返回体</text>
+
+  <g font-size="10.5">
+    <rect x="522" y="204" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.1"/>
+    <text x="534" y="221" fill="#166534" font-weight="bold">未认证 → 401</text>
+    <text x="534" y="236" font-size="9" fill="#475569">AuthenticationEntryPoint</text>
+
+    <rect x="522" y="250" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.1"/>
+    <text x="534" y="267" fill="#166534" font-weight="bold">无权限 → 403</text>
+    <text x="534" y="282" font-size="9" fill="#475569">AccessDeniedHandler</text>
+
+    <rect x="522" y="296" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.1"/>
+    <text x="534" y="313" fill="#166534" font-weight="bold">UserContext 桥接</text>
+    <text x="534" y="328" font-size="9" fill="#475569">从 SecurityContext 取当前用户</text>
+
+    <rect x="522" y="342" width="192" height="40" rx="6" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.1"/>
+    <text x="534" y="359" fill="#166534" font-weight="bold">喂给审计字段</text>
+    <text x="534" y="374" font-size="9" fill="#475569">createBy / updateBy 自动填充</text>
+  </g>
+
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#2563EB"/>
+    </marker>
+  </defs>
+</svg>

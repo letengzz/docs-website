@@ -628,6 +628,8 @@ mysql -uroot -p template -e "SELECT id,deleted FROM t_user WHERE id=1"
 2. **权限注解**：`@PreAuthorize` + 自定义 `@HasPerm`，让接口级鉴权可声明。
 3. **认证集成测试**：MockMvc 覆盖"无 token → 401、过期 token → 401、越权 → 403、正常 → 200"。
 
+以上三项已在 [认证授权：Spring Security 7 + JWT](../Security/index.md) 中落地，本节的 `AuditMetaObjectHandler` 也已接上 `UserContext`。
+
 ## 参考资料
 
 - MyBatis-Plus 官方文档：https://baomidou.com/
@@ -635,4 +637,4 @@ mysql -uroot -p template -e "SELECT id,deleted FROM t_user WHERE id=1"
 - MyBatis-Plus 自动填充：https://baomidou.com/guides/auto-fill-field/
 - 逻辑删除：https://baomidou.com/guides/logic-delete/
 - Testcontainers for Java：https://java.testcontainers.org/
-- 项目总览：[后端通用模板](../index.md) ｜ 上一节 [MockMvc 集成测试](../IntegrationTest/index.md) ｜ 逐日记录 [进展记录](../Progress/index.md)
+- 项目总览：[后端通用模板](../index.md) ｜ 上一节 [MockMvc 集成测试](../IntegrationTest/index.md) ｜ 下一节 [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ 逐日记录 [进展记录](../Progress/index.md)

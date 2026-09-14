@@ -239,7 +239,116 @@ mysql -uroot -p template -e "SELECT id,deleted FROM t_user WHERE id=1"  # 预期
 | 第 3 周（80-86 天） | 联调、单元与集成测试、压测、覆盖率门禁 | ⏳ 已提前落地 MockMvc + JaCoCo + Testcontainers |
 | 第 4 周（87-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始 |
 
+## 2026-09-17（第 72 天）：Spring Security 7 + JWT 无状态认证 + 声明式权限
+
+### 本次做了什么
+
+把模板从"裸接口"变成"默认安全"：
+
+1. **依赖与版本**：`spring-boot-starter-security`（Spring Security 7.1.x）+ jjwt 0.13.0 三件套（`api` / `impl` / `jackson` 版本严格一致）+ `spring-boot-starter-data-redis`（刷新令牌与黑名单）。
+2. **JWT 工具类**：[`JwtProperties`](../Security/index.md)（`@ConfigurationProperties` 承载 secret / ttl / issuer）与 `JwtTokenProvider`（`issueAccessToken` 带 `jti` / `sub` / `roles`，`parse` 校验签名、过期与 issuer）。
+3. **过滤器链**：`SecurityConfig` 用 Lambda DSL 组装——`SessionCreationPolicy.STATELESS`、白名单精确列举、`addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)` 保证顺序是 **TraceIdFilter → JwtAuthFilter → AuthorizationFilter**。
+4. **JWT 过滤器**：`OncePerRequestFilter` 解析 `Bearer` 令牌 → 查黑名单 → 写 `SecurityContext` → `MDC.put("userId")`，并在 `finally` 里清理 MDC 防止线程复用串号。
+5. **用户上下文**：`UserContext.userId()` 从 `SecurityContext` 取当前用户，**把第 71 天 `AuditMetaObjectHandler` 预留的调用点接上**——`create_by` / `update_by` 从此写入真实用户 ID。
+6. **统一异常出口**：`RestAuthenticationEntryPoint`（401）与 `RestAccessDeniedHandler`（403）都返回 `Result<T>`，前端只需一套解析逻辑，不再遇到 Spring 默认 HTML 错误页。
+7. **声明式权限**：`@EnableMethodSecurity` + `@PreAuthorize`，示例覆盖 `hasAuthority` / `hasRole` / 用 `#id == authentication.principal.userId` 做数据级越权防护。
+8. **配置与密钥**：`app.jwt.*` 走 `${JWT_SECRET}` 环境变量注入，长度要求 >= 32 字节（建议启动自检）。
+9. **测试**：`SecurityIT` 四个 MockMvc 用例锁住"匿名 401 / 有效 200 / 越权 403 / 篡改 401"。
+10. 新增示意图 `assets/security-auth-flow.svg`（过滤器链 + 登录签发 + 请求校验 + 异常出口四段）。
+
+### 如何验证
+
+```shell
+# 环境要求：JDK 25、Maven 3.9+、Redis 8.x
+cd backend-template
+export JWT_SECRET="$(openssl rand -base64 48)"   # 长度必须 >= 32 字节
+
+# 1. 编译并跑安全用例
+mvn -q clean test -pl template-security -am
+mvn -q test -pl template-web -Dtest=SecurityIT
+# 预期：Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+# 2. 启动
+mvn -q -pl template-application -am spring-boot:run &
+# 预期日志：Started TemplateApplication in x.xxx seconds
+
+# 3. 匿名访问受保护接口
+curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/api/users
+# 预期：401
+
+curl -s http://localhost:8080/api/users
+# 预期：{"code":40101,"message":"未登录或令牌已失效","data":null}
+
+# 4. 登录拿令牌
+curl -s -X POST http://localhost:8080/api/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{"username":"admin","password":"Admin@123"}' | jq '.data | {tokenType, expiresIn}'
+# 预期：{"tokenType":"Bearer","expiresIn":1800}
+
+# 5. 带令牌访问
+TOKEN=$(curl -s -X POST http://localhost:8080/api/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{"username":"admin","password":"Admin@123"}' | jq -r '.data.accessToken')
+curl -s http://localhost:8080/api/users -H "Authorization: Bearer $TOKEN" | jq .code
+# 预期：0
+
+# 6. 越权（普通用户删用户）
+curl -s -o /dev/null -w "%{http_code}\n" -X DELETE http://localhost:8080/api/users/1 \
+  -H "Authorization: Bearer $USER_TOKEN"
+# 预期：403
+
+# 7. 确认无状态：响应头不应出现 Set-Cookie
+curl -sI http://localhost:8080/api/users -H "Authorization: Bearer $TOKEN" | grep -i "set-cookie" || echo "no session cookie (OK)"
+
+# 8. 审计字段接上了真实用户
+mysql -uroot -p template -e "SELECT id, create_by, update_by FROM t_user ORDER BY id DESC LIMIT 1"
+# 预期：create_by 为登录用户 ID，不是 NULL / 0
+```
+
+验证结果记录（**请在本地执行后填写**，当前编写环境无 JDK / Maven / Redis，未实际运行）：
+
+| 检查项 | 期望 | 实测 | 结论 |
+| --- | --- | --- | --- |
+| `SecurityIT` | 4 passed | 待填写 | ⏳ |
+| 匿名访问 | 401 + 统一 Result 体 | 待填写 | ⏳ |
+| 登录接口 | 返回 tokenType=Bearer | 待填写 | ⏳ |
+| 带有效令牌 | code=0 | 待填写 | ⏳ |
+| 普通用户删用户 | 403 | 待填写 | ⏳ |
+| 篡改令牌 | 401 | 待填写 | ⏳ |
+| `Set-Cookie` | 不出现（无 Session） | 待填写 | ⏳ |
+| 审计字段 `create_by` | 等于登录用户 ID | 待填写 | ⏳ |
+
+### 遇到的问题与决策
+
+| 问题 | 决策 | 原因 |
+| --- | --- | --- |
+| JWT 还是 Session | JWT（无状态） | 目标是可水平扩容的 API 服务；实时吊销的短板用"短 Access + Redis 存 Refresh + `jti` 黑名单"补上 |
+| HS256 还是 RS256 | 模板默认 HS256，文档给出 RS256 适用场景 | 单服务校验场景 HS256 配置最简单；多服务/第三方校验方持有公钥时再换 RS256 |
+| 过滤器插在哪 | `addFilterBefore(..., UsernamePasswordAuthenticationFilter.class)` | 插在 `AuthorizationFilter` 之后会导致鉴权时 `SecurityContext` 为空，所有受保护接口 403 |
+| 401 响应谁写 | 统一交给 `AuthenticationEntryPoint` | 过滤器里直接写响应会让"拦截器异常"和"过滤器异常"两套返回体，前端要写两套解析 |
+| 角色 claim 存什么 | 存 `ROLE_ADMIN`（带前缀大写） | `hasRole('ADMIN')` 内部会拼 `ROLE_` 前缀，存 `ADMIN` 会永远 403 |
+| `@PreAuthorize` 不生效怎么办 | 配置类必须加 `@EnableMethodSecurity` | 该注解缺失时**不报错也不生效**，接口看起来有保护实际完全开放，必须用测试锁住 403 |
+| MDC 要不要清理 | `try/finally` 中 `MDC.remove("userId")` | Tomcat 线程池复用 ThreadLocal，不清理会出现"用户 A 的请求打上用户 B 的标识" |
+| 密钥放哪 | 环境变量 `${JWT_SECRET}` 注入，不入库 | 写进 `application.yml` 等于随仓库泄露 |
+| CSRF 要不要关 | 关（因为不用 Cookie 承载令牌） | 若改用 Cookie 承载令牌必须开启，并配双提交令牌 |
+
+### 下一步（第 73 天）
+
+1. **登录业务闭环**：`AuthService` 实现账号锁定（连续失败 5 次锁定 15 分钟）、密码强度校验、登录日志审计表。
+2. **刷新与登出**：`/api/auth/refresh` 校验 Redis 中的 Refresh Token 有效性；`/api/auth/logout` 把 Access Token 的 `jti` 写入黑名单（TTL 设为剩余有效期）。
+3. **测试扩充与门禁**：把"令牌过期""黑名单命中""Refresh 被复用"补进 `SecurityIT`，并把 401/403 用例纳入 JaCoCo 覆盖率门禁。
+
+### 里程碑对照
+
+| 阶段 | 计划 | 当前状态 |
+| --- | --- | --- |
+| 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
+| 第 2 周（69-79 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **5/5 步完成**，核心编码阶段收口 |
+| 第 3 周（80-86 天） | 联调、单元与集成测试、压测、覆盖率门禁 | ⏳ 已提前落地 MockMvc + JaCoCo + Testcontainers + SecurityIT，待补压测 |
+| 第 4 周（87-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始 |
+
 ## 参考资料
 
 - 项目总览：[后端通用模板](../index.md)
+- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md)
 - 相关文档：[Spring Boot 通用指南](../../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md)
