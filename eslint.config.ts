@@ -32,6 +32,15 @@ export default tseslint.config(
     },
   },
   {
+    // utils/ 下的 Node 脚本（.mjs）也需要 node 全局变量（console、process 等）
+    files: ['**/*.mjs', '**/*.js', '**/*.cjs'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
     files: ['**/*.config.*', 'eslint.config.*'],
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
