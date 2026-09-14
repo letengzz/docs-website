@@ -183,3 +183,4 @@ docker kill -s HUP prometheus
 - PromQL 查询：https://prometheus.io/docs/prometheus/latest/querying/basics/
 - 指标与标签最佳实践：https://prometheus.io/docs/practices/naming/
 - Prometheus 下载：https://prometheus.io/download/
+- 相关专题：[时序数据库](../../../DB/TimeSeries/index.md)（remote write 长期存储、标签基数与降采样）

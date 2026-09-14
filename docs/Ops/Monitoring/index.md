@@ -16,3 +16,7 @@
 - [日志监控](LogMonitoring/index.md)
 - [实战：监控微服务与容器环境](Practice/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+::: tip 指标存哪里？
+Prometheus 本地存储适合短周期（默认 15 天）。要做**几个月到几年的指标长期存储**、降采样与容量治理，见 [时序数据库](../../DB/TimeSeries/index.md) 专题（InfluxDB / TDengine，含建库、降采样与保留策略）。
+:::

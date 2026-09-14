@@ -112,4 +112,5 @@ Prometheus Targets → DOWN
 - Prometheus 存储：https://prometheus.io/docs/prometheus/latest/storage/
 - Grafana 故障排查：https://grafana.com/docs/grafana/latest/troubleshooting/
 - 日志相关问题（丢日志、查询慢、成本失控）：[日志体系常见问题](../../LogSystem/FAQ/index.md)
+- 高基数与序列爆炸的建模治理：[时序数据库 · 数据模型](../../../DB/TimeSeries/DataModel/index.md)
 - 本专题章节入口：[监控告警目录](../index.md)

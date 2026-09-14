@@ -226,6 +226,7 @@ probe_success == 0   # 站点不可达
 
 - [SQL 优化](../../../DB/Relational/SQLOptimization/index.md)：mysqld_exporter 慢查询指标的治理入口
 - [慢查询定位与分析](../../../DB/Relational/SQLOptimization/SlowQuery/index.md)：慢日志聚合与根因分析
+- [时序数据库](../../../DB/TimeSeries/index.md)：采集到的指标如何长期存储、降采样与设置保留期
 
 ## 验证方式
 

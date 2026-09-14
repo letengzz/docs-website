@@ -265,4 +265,5 @@ docker compose ps    # 全部 Running
 - Grafana 仪表盘市场：https://grafana.com/grafana/dashboards/
 - kube-prometheus-stack：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 - Grafana Alloy 文档：https://grafana.com/docs/alloy/latest/
+- 指标长期存储落地（建库、降采样、告警链路）：[时序数据库 · 实战](../../../DB/TimeSeries/Practice/index.md)
 - 本专题其余章节：回到 [监控告警目录](../index.md)

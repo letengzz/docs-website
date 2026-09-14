@@ -123,6 +123,7 @@ Prometheus 最新稳定为 **3.14.x**，Grafana 为 **13.x**（13.2.1），Alert
 ## 相关专题
 
 - [日志体系](../../LogSystem/index.md)：日志的采集、存储、查询、告警与成本控制完整专题
+- [时序数据库](../../../DB/TimeSeries/index.md)：监控指标的长期存储、降采样与保留策略
 - [容器编排进阶 · 弹性伸缩](../../ContainerOrchestration/Autoscaling/index.md)：HPA/KEDA 扩缩与监控指标联动
 - [容器编排进阶 · GitOps 实战](../../ContainerOrchestration/Practice/index.md)：告警规则随应用交付、故障演练后回滚
 
