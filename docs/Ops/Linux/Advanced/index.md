@@ -63,6 +63,7 @@ systemd + 定时任务    → 让脚本变成「服务」和「计划任务」�
 ## 相关专题
 
 - 基础命令、权限、进程与文本处理：[Linux 基础](../index.md)
+- 把本专题的手工步骤固化成可重复执行的剧本：[Ansible 自动化运维](../../Ansible/index.md)
 - 网络分层、DNS 与抓包：[网络基础](../../Network/index.md)
 - 容器宿主机调优与安全：[Docker 安全加固](../../Docker/Security/index.md)、[Kubernetes 监控与运维](../../Kubernetes/Monitoring/index.md)
 - 服务器指标采集与告警：[监控告警](../../Monitoring/index.md)

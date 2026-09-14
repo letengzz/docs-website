@@ -406,3 +406,4 @@ zcat /data/backup/mysql/order_db-*.sql.gz | head -20
 - `systemd.time`（时间表达式语法）：https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html
 - `systemd-analyze`（calendar 校验）：https://www.freedesktop.org/software/systemd/man/latest/systemd-analyze.html
 - 本专题其余章节：[Linux 进阶导览](../index.md)、[systemd 服务管理](../Systemd/index.md)
+- 定时任务脚本的批量下发与版本管理：[Ansible 自动化运维](../../../Ansible/index.md)

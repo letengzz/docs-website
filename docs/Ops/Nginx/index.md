@@ -13,3 +13,8 @@ Nginx 是高性能的 HTTP 服务器与反向代理，同时支持负载均衡�
 - [缓存配置](Cache/index.md)
 - [限流配置](RateLimit/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+## 相关专题
+
+- [Ansible 自动化运维](../Ansible/index.md)：批量安装 Nginx、下发配置、平滑 reload 与灰度验收
+- [Linux](../Linux/index.md)：Nginx 运行环境的系统层基础

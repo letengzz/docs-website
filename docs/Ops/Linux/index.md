@@ -25,3 +25,9 @@
 - [故障排查](Advanced/Troubleshooting/index.md)
 - [实战：交付一台生产可用的服务器](Advanced/Practice/index.md)
 - [进阶常见问题与最佳实践](Advanced/FAQ/index.md)
+
+## 相关专题
+
+- [Ansible 自动化运维](../Ansible/index.md)：把"逐台登录敲命令"变成可重复执行的 Playbook，是 Linux 批量交付的下一步
+- [监控告警](../Monitoring/index.md)：服务器指标采集与告警
+- [日志体系](../LogSystem/index.md)：服务器日志采集与留存

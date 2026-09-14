@@ -29,3 +29,8 @@
 - [安全加固](Security/index.md)
 - [Docker 与 CI/CD 集成](CIIntegration/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+## 相关专题
+
+- [Ansible 自动化运维](../Ansible/index.md)：批量安装 Docker 引擎、下发 compose 文件与容器状态验收
+- [Kubernetes](../Kubernetes/index.md)：从单机容器到集群编排

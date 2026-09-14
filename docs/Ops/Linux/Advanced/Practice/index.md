@@ -487,3 +487,4 @@ Podman：`/etc/containers/containers.conf` 里配 `log_size_max`。
 - node_exporter 发布页：https://github.com/prometheus/node_exporter/releases
 - CIS Benchmark（Ubuntu Linux）：https://www.cisecurity.org/benchmark/ubuntu_linux
 - 本专题其余章节：[Linux 进阶导览](../index.md)、[安全加固](../SecurityHardening/index.md)、[监控告警](../../../Monitoring/index.md)、[日志体系](../../../LogSystem/index.md)
+- 把本文的交付步骤固化成一键执行的剧本：[Ansible 自动化运维](../../../Ansible/index.md)

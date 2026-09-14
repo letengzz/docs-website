@@ -221,3 +221,4 @@ argocd app get order-service
 - Argo CD 文档：https://argo-cd.readthedocs.io/
 - Argo Rollouts（渐进式发布）：https://argoproj.github.io/rollouts/
 - 蓝绿/金丝雀发布模式：https://martinfowler.com/bliki/BlueGreenDeployment.html
+- 传统虚机/裸机场景的批量部署与灰度：[Ansible 自动化运维 · 实战](../../../Ops/Ansible/Practice/index.md)

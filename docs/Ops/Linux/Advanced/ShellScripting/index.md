@@ -532,3 +532,4 @@ systemctl is-active order-service      # 预期：active
 - Google Shell 风格指南：https://google.github.io/styleguide/shellguide.html
 - `flock` 手册：https://man7.org/linux/man-pages/man1/flock.1.html
 - 本专题其余章节：[Linux 进阶导览](../index.md)
+- 脚本写腻了、想改成声明式幂等执行：[Ansible 自动化运维](../../../Ansible/index.md)
