@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  stack-select.py 的验证骨架（fixture），不是可构建的工程。
+
+  真实工程里这个文件叫 backend-template/template-application/pom.xml，是**唯一**
+  依赖具体实现模块的地方。这里只保留 marker 区间，用来验证脚本改写是否正确。
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>backend-template</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>template-application</artifactId>
+    <name>template-application</name>
+
+    <dependencies>
+        <!-- stack:deps:begin -->
+        <!-- 本区间由 scripts/stack-select.py 生成，手工修改会在下次执行或 --check 时暴露 -->
+        <dependency>
+            <groupId>com.example.template</groupId>
+            <artifactId>template-security-spring</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example.template</groupId>
+            <artifactId>template-data-mybatis-plus</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example.template</groupId>
+            <artifactId>template-cache-redis</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+<!-- stack:deps:end -->
+    </dependencies>
+</project>

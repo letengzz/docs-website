@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  stack-select.py 的验证骨架（fixture），不是可构建的工程。
+
+  真实工程 backend-template/pom.xml 的结构与此相同（只是还包含 properties、
+  dependencyManagement、build 等区块）。这里刻意只保留 <modules> 与 marker，
+  目的是让「脚本有没有正确改写 marker 区间」这件事一眼可验证。
+
+  自测方式（在 stack-select 目录下）：
+    python3 stack-select.py --root fixture --preset classic
+    python3 stack-select.py --root fixture --check
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>backend-template</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>backend-template</name>
+
+    <modules>
+        <!-- stack:modules:begin -->
+    <!-- 本区间由 scripts/stack-select.py 生成，手工修改会在下次执行或 --check 时暴露 -->
+    <module>template-common</module>
+    <module>template-spi</module>
+    <module>template-web</module>
+    <module>template-security-spring</module>
+    <module>template-data-mybatis-plus</module>
+    <module>template-cache-redis</module>
+    <module>template-application</module>
+<!-- stack:modules:end -->
+    </modules>
+</project>

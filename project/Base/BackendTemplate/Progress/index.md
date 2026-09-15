@@ -534,17 +534,282 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/swagger-ui.html  
 2. **Compose 一键起**：应用 + MySQL 8.4 + Redis 8 编排，用 `depends_on: condition: service_healthy` 表达依赖顺序。
 3. **配置外置**：数据库 / Redis 连接与令牌密钥全部改为环境变量注入，为 CI 流水线与验收清单铺路。
 
+::: warning 顺序调整（第 75 天记录）
+上面三项属于**第 4 周（部署验收）**的内容，第 75 天实际做的是**第 3 周的第 3 步：测试数据隔离与边界用例**。调整原因见本页「2026-09-20（第 75 天）」段落的「遇到的问题与决策」——先把测试地基打牢再进容器化，避免同一段路走两遍。原计划顺延到第 80 天。
+:::
+
 ### 里程碑对照
 
 | 阶段 | 计划 | 当前状态 |
 | --- | --- | --- |
 | 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
 | 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成** |
-| 第 3 周（73-79 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁 | 🔄 **2/4 步完成**：联调闭环 ✅、性能与契约门禁 ✅，待补边界用例与测试数据隔离 |
+| 第 3 周（73-79 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁 | 🔄 **3/4 步完成**：联调闭环 ✅、性能与契约门禁 ✅、隔离与边界用例 ✅，待做联调异常路径收口 |
 | 第 4 周（80-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始 |
+
+## 2026-09-20（第 75 天）：测试数据隔离 + 边界用例矩阵 + 并行执行
+
+第 74 天之后，整套测试还剩两个**结构性问题**：所有集成测试共用同一个数据库（谁先跑、谁后跑，结果不一样），边界用例几乎全落在"明显合法"和"明显非法"两端，**off-by-one 一个都没碰到**。第 75 天把这两件事一起收掉，并顺手把「用 H2 假装 MySQL」这个最危险的习惯改掉。
+
+### 本次做了什么
+
+| 序号 | 产出 | 位置 |
+| --- | --- | --- |
+| ① | Testcontainers 2.x 接入：真实 MySQL 8.4 + Redis 8，singleton container 模式 + `@DynamicPropertySource` | `IntegrationTestBase`（测试基类） |
+| ② | 隔离三档的方案对比与选型依据（事务回滚 / 清库 / 独立库） | [测试数据隔离与边界用例](../TestIsolation/index.md) + `test-isolation.svg` |
+| ③ | `clean.sql` + `@Sql` 声明式清库；`DatabaseCleaner` 按 `t_` 前缀动态清表 | `src/test/resources/sql/clean.sql` |
+| ④ | Redis 清理：清库与 `flushDb` 成对出现，测试独占 `database: 15` | `src/test/resources/application-test.yml` |
+| ⑤ | JUnit 并行执行配置 + `@ResourceLock` 的类间互斥写法 | `src/test/resources/junit-platform.properties` |
+| ⑥ | 边界用例矩阵（9 类输入 × 三值取法）与四步法 | [测试数据隔离与边界用例](../TestIsolation/index.md) + `boundary-matrix.svg` |
+| ⑦ | 参数化边界用例：`username` 长度（2/3/20/21）、`password` 字符类（两类拒绝 / 恰好三类通过） | `BoundaryIT` |
+| ⑧ | 令牌过期边界：`exp` 前 1s / 恰好 `exp` / 后 1s，并注明 RFC 7519 的临界语义 | `BoundaryIT` |
+| ⑨ | 并发刷新用例：`RANDOM_PORT` + `CountDownLatch` 对齐起跑线，断言"恰好一次成功" | `RefreshConcurrencyIT` |
+| ⑩ | 可控时钟方案：注入 `Clock` 替代 `Thread.sleep`，从根上消灭时间类 flaky | `TestClockConfig` |
+
+同时修正：技术选型表补上测试一行（**Spring Boot 4.0 起默认 JUnit 6**、Testcontainers 2.0.x），并说明集成测试用真实容器而非 H2。
+
+### 如何验证
+
+```shell
+# 0. 先确认 Docker 在跑（Testcontainers 必须有 Docker 守护进程）
+docker info > /dev/null && echo "docker ok"
+
+# 1. 全量测试
+mvn -q test
+# 期望：Tests run: N, Failures: 0, Errors: 0, Skipped: 0
+
+# 2. 确认连的是真 MySQL 而不是 H2
+mvn -q test -Dtest=UserApiIT -Dlogging.level.com.zaxxer.hikari=debug | grep -i "jdbc:mysql"
+# 期望：输出里出现 jdbc:mysql://localhost:<随机端口>/template
+
+# 3. 隔离性反向验证：单个方法单独跑也必须通过
+mvn -q test -Dtest='BoundaryIT#usernameLengthBoundary'
+
+# 4. 顺序无关反向验证：随机顺序跑三遍，结果必须一致
+mvn -q test -Djunit.jupiter.testmethod.order.default=org.junit.jupiter.api.MethodOrderer\$Random
+mvn -q test -Djunit.jupiter.testmethod.order.default=org.junit.jupiter.api.MethodOrderer\$Random
+mvn -q test -Djunit.jupiter.testmethod.order.default=org.junit.jupiter.api.MethodOrderer\$Random
+
+# 5. 并行开关（类内方法并行，类间不并行）
+mvn -q test -Djunit.jupiter.execution.parallel.enabled=true
+
+# 6. 容器复用是否生效（本地第二次跑几乎不等待）
+docker ps --filter "label=org.testcontainers" --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+```
+
+验证结果记录（**请在本地执行后填写**，当前编写环境无 JDK / Maven / Docker，未实际运行）：
+
+| 检查项 | 期望 | 实测 | 结论 |
+| --- | --- | --- | --- |
+| `docker info` | 守护进程可用 | 待填写 | ⏳ |
+| `mvn test` 全量 | Failures: 0, Errors: 0 | 待填写 | ⏳ |
+| Hikari 日志出现 `jdbc:mysql` | 真 MySQL，非 H2 | 待填写 | ⏳ |
+| 单个方法单独跑 | 通过 | 待填写 | ⏳ |
+| 随机顺序跑 3 遍 | 3 次结果一致 | 待填写 | ⏳ |
+| 并行开关打开 | 仍全部通过 | 待填写 | ⏳ |
+| 边界用例条数 | ≥ 25 条参数化用例 | 待填写 | ⏳ |
+| 容器复用 | 第二次跑无容器启动日志 | 待填写 | ⏳ |
+
+### 遇到的问题与决策
+
+| 问题 | 决策 | 原因 |
+| --- | --- | --- |
+| 要不要按第 74 天的计划先做 Docker 化 | 不，先把第 3 周收口 | 测试地基不牢就容器化，回头还要改测试，等于同一段路走两遍；Docker 化顺延到第 80 天（第 4 周） |
+| 集成测试用 H2 还是真 MySQL | **真 MySQL 容器** | H2 的方言差异集中在最危险处（JSON 列、upsert、行锁、排序规则），会造成"测试全绿、上线报错" |
+| 隔离用哪一档 | 分层：Mapper / Service 用第 1 档，接口层用第 2 档 | 一刀切要么太慢（全上容器），要么隔离不够（全用回滚） |
+| 要不要给每个测试类一个独立库 | 暂不做 | 库级隔离的成本（每类 5~15 秒）在当前规模不划算；改用 `@ResourceLock` 表达互斥 |
+| 类之间默认并行吗 | 不并行（`same_thread`） | 所有类共享同一个容器与同一个库，类间并行会互相清表，失败随机且难查 |
+| Testcontainers 用 1.21 还是 2.0 | **2.0** | 新项目直接上主线；同时把 2.0 的三处破坏性变更写进文档（模块加 `testcontainers-` 前缀、容器类迁包、移除 JUnit 4 支持） |
+| 并发用例用 MockMvc 还是真实端口 | 真实端口 + JDK `HttpClient` | MockMvc 不走网络，测不出"两个请求同时到达"；用 JDK 自带客户端可避开测试客户端换代的风险 |
+| 时间边界能不能用 `Thread.sleep` | **不能**，注入 `Clock` | sleep 会被 GC、CPU 抢占、时钟漂移干扰，必然变成"重跑一次就过"的假象 |
+| Redis 要不要一起清 | **必须清** | 失败计数与 `jti` 黑名单住在 Redis；只清库会出现"第二次跑就被锁"的玄学失败 |
+| 边界用例怎么保证不漏 | 四步法 + 矩阵，长度用 `"a".repeat(n)` 生成 | 手敲字符串必然数错位数；矩阵化之后"没覆盖哪个边界"一眼可见 |
+| 第 76 天继续收口测试，还是先做模板产品化 | **先做模板产品化**（插队） | 这一步会决定第 4 周交付物的形态——焊死的基座只需交付 Dockerfile + Compose，可参数化的基座还要包含"参数怎么组合、怎么验证"。先定形态再做部署产物，省一轮返工 |
+
+### 下一步（第 76 天）
+
+::: warning 说明：第 76 天的顺序调整
+原计划第 76-79 天都属于"第 3 周 · 联调与测试"，继续收口测试。实际执行时调整为：
+
+- **第 76 天插入"模板产品化"**：把模板从"一套焊死的基座"改成"可参数化的基座"，并设计把它做成 CLI。
+- **第 77-79 天回到联调收口**：异常路径、用例清单化、测试约定落文档。
+
+为什么插队：**这一步会决定后面所有交付物的形态**。如果模板是"一套焊死的基座"，第 4 周要交付的就是一份 Dockerfile 加一个 Compose 文件；如果模板是"可参数化的基座"，交付物里还要包含"参数怎么组合、组合怎么验证"。先定形态再做部署产物，比反过来省一轮返工。这与第 74→75 天"先打测试地基再容器化"是同一个判断逻辑。
+:::
+
+调整后，第 76 天要做的是：
+
+1. **技术栈可插拔**：模块划分从直线结构改成四层 + 可替换实现层，把变化点收进实现模块。
+2. **选择器脚本**：幂等、可校验（`--check` 当 CI 门禁）、零依赖，并配一份可运行的回归测试。
+3. **模板 CLI 设计**：把上面这套能力产品化，同时解决另一个完全不同的问题——从零生成新项目。
+
+第 77-79 天（第 3 周收口）：
+
+1. **联调异常路径收口**：JSON 反序列化失败、超大请求体、非法枚举值、并发更新冲突，补齐用例并统一出口。
+2. **用例清单化**：把散落在各 `IT` 里的用例整理成「接口 × 场景」对照表，标注已覆盖与待覆盖。
+3. **测试约定落文档**：把"哪一层用第几档隔离"写进团队约定，避免后来者随手加 `@Transactional` 又把并发用例弄坏。
+
+### 里程碑对照
+
+| 阶段 | 计划 | 当前状态 |
+| --- | --- | --- |
+| 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
+| 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成** |
+| 第 3 周（73-79 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁 | 🔄 **3/4 步完成**：联调闭环 ✅、性能与契约门禁 ✅、隔离与边界用例 ✅，剩联调异常路径收口 |
+| 第 4 周（80-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始（已提前规划，见第 75 天「下一步」） |
+
+## 2026-09-21（第 76 天）：技术栈三维可插拔 + 选择器脚本 + 模板 CLI 设计
+
+第 75 天把测试地基打牢之后，本日按计划调整（见上一节「下一步（第 76 天）」的说明）插队做**模板产品化**。
+
+问题是明确的：前七步做出了**一套完整但焊死的**工程基座——安全是 Spring Security、数据是 MyBatis-Plus、缓存是 Redis。换个团队过来，只要有一处技术偏好不同，就只能 fork 之后手工改，改到最后没人敢确认自己删干净了。
+
+本日分两半：前半把"焊死的基座"改成"可参数化的基座"，后半设计把它做成 CLI。
+
+### 本次做了什么
+
+**一、模块重构：从直线结构到四层 + 实现层**
+
+原结构 `application → web → security → data → common` 里，`security` / `data` 既是契约又是实现，换实现就必须改业务模块的依赖。改成：
+
+```text
+template-common → template-spi → template-web / 实现层 → template-application
+```
+
+`template-security-*`（2 个）、`template-data-*`（4 个）、`template-cache-*`（3 个）成为并列的实现模块，**彼此零引用**；`template-web` 只依赖 `spi`，不依赖任何实现；`template-application` 是唯一知道"当前用哪套实现"的模块。
+
+**二、SPI 契约：只定义"业务需要什么"**
+
+| 契约 | 收拢什么 |
+| --- | --- |
+| `AuthPort` | 登录 / 注销 / 当前用户 / 权限判定；不含 `Authentication`、`StpUtil`、`Filter` 等任何框架概念 |
+| `TokenStatePort` | 撤销 / 失败计数 / 账号锁定——**降级边界被显式建模成一个类型**，含 `sharedAcrossInstances()` 让降级可被程序读到 |
+| `CachePort` | 通用缓存；**刻意不做泛型序列化**，用 `getOrLoad(key, type, ttl, loader)` 保持接口中立 |
+| `UserRepository` | 按业务语义定义（`findByUsername` / `countActive`），不是 `save/update/delete` 的模板抄写 |
+
+关键决策：**不统一 ORM 的 CRUD 接口**。取四套 ORM 的 CRUD 交集，得到的是最弱能力集——为了"统一"付出的代价是所有人都只能用最差的那一种。改按业务语义定义仓储接口，代价是换 ORM 时要重写实现，收益是业务逻辑一行不用改。
+
+**三、两层可插拔**
+
+| 层 | 机制 | 解决什么 |
+| --- | --- | --- |
+| 第一层 | Maven profile 决定哪些模块进 reactor | 不该编译的模块根本不编译，依赖树干净（选了 MyBatis 就不该有 Hibernate 的 jar） |
+| 第二层 | `@ConditionalOnClass` + `@ConditionalOnProperty` | classpath 上真有两个实现时，谁生效是确定的 |
+
+顺带记一笔 Boot 4 的坑：自动配置的注册位置已从 `META-INF/spring.factories` 改为 `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports`。
+
+**四、能力降级门禁**
+
+`cache != redis` 时，令牌撤销 / 失败计数 / 账号锁定三项能力在多实例下会各算各的（注销失效、锁定形同虚设）。脚本**默认拒绝，必须 `--allow-degraded-cache` 显式接受**，生成物把三个开关置为 `false`，而 `login-log-enabled` 保持 `true`（它写数据库，与缓存无关）。
+
+**五、选择器脚本 `stack-select.py` + 自测 `selftest.py`**
+
+三条设计性质：**幂等**（生成物是三维取值的纯函数，不含时间戳/用户名/预设名）、**可校验**（`--check` 不一致即非 0 退出）、**只写 marker 区间**（区间外一个字节不动，包括缩进与换行风格）。零第三方依赖。
+
+配一份可提交的回归测试，**57 项断言**：24 种组合全生成且自洽、幂等字节级比对、marker 区间内外行为区分、CRLF 保留、降级门禁、`--check` 非交互。
+
+**六、模板 CLI 设计评审**
+
+把选择能力从脚本推进到 CLI，同时解决另一个问题——从零生成新项目。核心判断：**生成器（greenfield）与切换器（brownfield）是两个不同问题**，不能共用一套约束。并纠正了三处时间敏感的事实（Java 25 才是当前 LTS、Shiro 3.0 已支持 Boot 3/4、版本"最新"与"可复现"不可兼得）。
+
+### 如何验证
+
+```shell
+cd backend-template
+
+# 1. 脚本自测：57 项断言，覆盖幂等 / marker 边界 / 降级门禁 / 24 种组合
+python3 stack-select/selftest.py
+# 期望：共 57 项断言，通过 57，失败 0；退出码 0
+
+# 2. 列取值与预设
+python3 stack-select/stack-select.py --list
+# 期望：security 2 个、orm 4 个、cache 3 个取值，5 个预设
+
+# 3. 生成一套组合
+python3 stack-select/stack-select.py --root . --preset classic
+# 期望：写出 6 个文件，退出码 0
+
+# 4. 幂等：再跑一遍，git 应当干净
+python3 stack-select/stack-select.py --root . --preset classic
+git status --short
+# 期望：无输出
+
+# 5. CI 门禁
+python3 stack-select/stack-select.py --root . --check
+# 期望：OK  --check 通过：6 个生成物与 stack.json 完全一致；退出码 0
+
+# 6. 降级门禁：非共享缓存必须显式接受
+python3 stack-select/stack-select.py --root /tmp/probe --security spring --orm jpa --cache caffeine
+# 期望：退出码 1，列出三项降级能力；且不写任何文件
+
+# 7. 换组合后确认业务代码未被触碰（Maven 部分待本地执行）
+python3 stack-select/stack-select.py --root . --preset satoken-flex
+git status --short
+# 期望：只有 pom.xml / template-application/pom.xml 与 4 个生成物变化
+
+# 8. 生效的 profile 与 reactor（需 JDK + Maven）
+mvn help:active-profiles
+mvn -q validate | grep -E "template-(security|data|cache)-"
+# 期望：只出现选中的三个实现模块
+```
+
+验证结果记录（脚本部分**已实际运行**；Maven 部分当前环境无 JDK / Maven，待本地执行）：
+
+| 检查项 | 期望 | 实测 | 结论 |
+| --- | --- | --- | --- |
+| `selftest.py` 全量 | 57/57 通过 | **57/57** | ✅ |
+| 24 种组合可生成且自洽 | 全部退出码 0 | **24/24** | ✅ |
+| 幂等（字节级） | 6 个文件哈希不变 | **不变** | ✅ |
+| `--check` 一致 | 退出码 0 | **0** | ✅ |
+| `--check` 检出篡改 | 退出码 1 | **1** | ✅ |
+| 降级未接受 | 退出码 1 且不写文件 | **1，pom 哈希未变** | ✅ |
+| marker 区间外不被碰 | 逐字节不变 | **不变** | ✅ |
+| CRLF 仓库保留换行风格 | 写回仍为 CRLF | **仍为 CRLF** | ✅ |
+| `mvn help:active-profiles` | 三个 profile 生效 | 待填写 | ⏳ |
+| reactor 只含选中实现 | 无多余实现模块 | 待填写 | ⏳ |
+| 换组合后业务代码不变 | `template-web` 无 diff | 待填写 | ⏳ |
+| `mvn -q clean verify` | BUILD SUCCESS | 待填写 | ⏳ |
+
+### 遇到的问题与决策
+
+| 问题 | 决策 | 原因 |
+| --- | --- | --- |
+| 要不要在 SPI 里统一 `BaseRepository<T,ID>` | **不统一** | 四套 ORM 的 CRUD 取交集等于最弱能力集（分页模型、条件构造、多表 join 都差异巨大）。改按业务语义定义仓储接口，代价是换 ORM 时重写实现，收益是业务逻辑零改动 |
+| 数据维度能不能做成运行期切换 | **不能，只支持生成期选择** | 换 ORM 要改实体注解、Mapper 接口、分页调用、事务语义，不是加依赖。这条必须写成 CLI 里的硬约束，而不是靠文档提醒 |
+| 为什么不做成"一个 `-D` 属性 + Spring 条件" | **要两层**（Maven profile + Spring 条件） | 只有 Spring 条件时，不该编译的模块照样下载、照样在 classpath 上，依赖审计与镜像体积全被污染。profile 层的价值是"不选的东西根本不存在" |
+| 缺共享存储时自动降级还是报错 | **默认拒绝，必须显式接受** | 三项降级里有两项是安全能力，静默失效比明确报错危险得多；且日志没人看 |
+| 降级判定要不要一刀切 | **逐项判定** | `login-log-enabled` 写数据库不写缓存，不受影响。按"是否真的依赖共享存储"逐项判断 |
+| 生成物里记不记 preset 名 | **不记** | 记了之后 `--check` 必须知道当初用哪个预设才能复现，CI 必出错；且人手改过 `stack.json` 后预设名会变成谎话。生成物必须是三维取值的纯函数 |
+| marker 区间外被手改怎么办 | **脚本完全不碰** | 用户自建业务模块是合法需求。区间外的内容是用户的，脚本不管、`--check` 也不报 |
+| 区间内被手改怎么办 | **报红而不是冲掉** | `--check` 以非 0 退出并在下次执行时收敛；冲突以 diff 形式暴露，不静默覆盖 |
+| 脚本怎么证明自己没问题 | **写可提交的回归测试** | "幂等"和"只写 marker 区间"这两条性质光看代码看不出来，必须跑起来；57 项断言把性质锁住，后续改动破坏的当天就红 |
+| 模板 CLI 是全自研还是复用 Spring Initializr | **复用其生成内核（方案 C）** | Initializr 已把"模块化 + 可插拔 + 条件适用"做成产品，`ProjectDescription` / `ProjectContributor` / `@ProjectGenerationConfiguration` 与需求一一对应，且有 `start.aliyun.com` 生产先例。自研的成本清单（多构建工具产物翻倍、元数据自维护、矩阵测试）在 MVP 阶段立刻发生，收益用不上 |
+| 生成器与切换器要不要做成一个功能 | **不能，必须分开** | 约束相反：生成期可以放开所有组合，装配期必须按变更成本分档（可增量 / 需重建 / 禁止）。混在一起会导致"换 ORM 被默默执行然后运行时崩" |
+| Java 基线取 21 还是 25 | **默认 25，提供 `--java 21`** | 25 才是当前 LTS（支持到 2030-09，比 21 的 2029-12 长）；Boot 4 官方表述是"first-class support for Java 25"。21 留给有 JDK 版本管控的环境 |
+
+### 下一步（第 77 天）
+
+回到第 3 周的收口工作（第 76 天是插队，第 3 周还剩最后一步）：
+
+1. **联调异常路径收口**：JSON 反序列化失败、超大请求体、非法枚举值、并发更新冲突，补齐用例并统一出口。
+2. **用例清单化**：把散落在各 `IT` 里的用例整理成「接口 × 场景」对照表，标注已覆盖与待覆盖。
+3. **测试约定落文档**：把"哪一层用第几档隔离"写进团队约定。
+
+另外，本日设计的 CLI 有一个**尚未验证的前置条件**：`cli-core` 里的 `StackValidator` 必须与 `stack-select.py` 的判定逻辑**逐字节一致**（同一份 marker 契约、同一份 `stack.json` schema）。这件事要等 CLI MVP 落地后用交叉测试确认，已记入待办。
+
+### 里程碑对照
+
+| 阶段 | 计划 | 当前状态 |
+| --- | --- | --- |
+| 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
+| 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成** |
+| 第 3 周（73-79 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁 | 🔄 **3/4 步完成**：联调闭环 ✅、性能与契约门禁 ✅、隔离与边界用例 ✅，剩联调异常路径收口（顺延到第 77 天） |
+| 模板产品化（第 76 天插入） | 技术栈可插拔 + 选择器脚本 + CLI 设计 | ✅ **3/3 完成**；CLI 处于设计阶段，MVP 待排期 |
+| 第 4 周（80-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始（已提前规划，见第 75 天「下一步」） |
 
 ## 参考资料
 
 - 项目总览：[后端通用模板](../index.md)
-- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md)
+- 本日两条：[技术栈可插拔：模块边界与选择器脚本](../StackSelect/index.md) ｜ [模板 CLI：从 0 到 1 的设计评审与路线图](../TemplateCli/index.md)
+- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md) ｜ [测试数据隔离与边界用例](../TestIsolation/index.md)
 - 相关文档：[Spring Boot 通用指南](../../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md)

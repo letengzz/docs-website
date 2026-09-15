@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 556" width="760" height="556" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="556" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">生成器与切换器：两个问题，不是一件事</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">新项目是「渲染模板」，已有项目是「改装配」——约束相反，共用的是选择模型与版本目录</text>
+  <rect x="30" y="76" width="345" height="44" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.8"/>
+  <text x="202.5" y="96" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">通道 A · 新项目生成</text>
+  <text x="202.5" y="112" text-anchor="middle" font-size="8.5" fill="#065F46">greenfield：从 0 到 1</text>
+  <rect x="30" y="132" width="345" height="54" rx="7" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="42" y="149" text-anchor="start" font-size="8.5" fill="#5B21B6" font-weight="bold">输入</text>
+  <text x="42" y="165" text-anchor="start" font-size="7.8" fill="#334155">CLI 选项：--name / --group / --preset</text>
+  <text x="42" y="178" text-anchor="start" font-size="7.8" fill="#334155">或交互菜单逐项确认</text>
+  <rect x="30" y="192" width="345" height="54" rx="7" fill="#FFFFFF" stroke="#059669" stroke-width="1.2"/>
+  <text x="42" y="209" text-anchor="start" font-size="8.5" fill="#065F46" font-weight="bold">机制</text>
+  <text x="42" y="225" text-anchor="start" font-size="7.8" fill="#334155">模板渲染：读模板目录 → 渲染 → 写新目录</text>
+  <text x="42" y="238" text-anchor="start" font-size="7.8" fill="#334155">目标目录必须不存在或为空</text>
+  <rect x="30" y="252" width="345" height="54" rx="7" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="42" y="269" text-anchor="start" font-size="8.5" fill="#1E3A8A" font-weight="bold">写什么</text>
+  <text x="42" y="285" text-anchor="start" font-size="7.8" fill="#334155">只往一个全新目录写</text>
+  <text x="42" y="298" text-anchor="start" font-size="7.8" fill="#334155">不碰任何既有文件，没有覆盖风险</text>
+  <rect x="30" y="312" width="345" height="54" rx="7" fill="#FFFFFF" stroke="#D97706" stroke-width="1.2"/>
+  <text x="42" y="329" text-anchor="start" font-size="8.5" fill="#92400E" font-weight="bold">失败模式</text>
+  <text x="42" y="345" text-anchor="start" font-size="7.8" fill="#334155">模板缺文件 → 生成的项目编译不过</text>
+  <text x="42" y="358" text-anchor="start" font-size="7.8" fill="#334155">版本与模板不匹配 → 依赖解析失败</text>
+  <rect x="30" y="372" width="345" height="54" rx="7" fill="#FFFFFF" stroke="#475569" stroke-width="1.2"/>
+  <text x="42" y="389" text-anchor="start" font-size="8.5" fill="#1E293B" font-weight="bold">硬约束</text>
+  <text x="42" y="405" text-anchor="start" font-size="7.8" fill="#334155">无。新项目是张白纸，怎么选都成立</text>
+  <text x="42" y="418" text-anchor="start" font-size="7.8" fill="#334155">所以生成期可以把 24 种组合全放开</text>
+  <rect x="385" y="76" width="345" height="44" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="557.5" y="96" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="bold">通道 B · 已有项目装配</text>
+  <text x="557.5" y="112" text-anchor="middle" font-size="8.5" fill="#991B1B">brownfield：改装配，不动业务</text>
+  <rect x="385" y="132" width="345" height="54" rx="7" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="397" y="149" text-anchor="start" font-size="8.5" fill="#5B21B6" font-weight="bold">输入</text>
+  <text x="397" y="165" text-anchor="start" font-size="7.8" fill="#334155">stack.json：已有工程当前的三维取值</text>
+  <text x="397" y="178" text-anchor="start" font-size="7.8" fill="#334155">是「读」而不是「问」——CI 里无人值守</text>
+  <rect x="385" y="192" width="345" height="54" rx="7" fill="#FFFFFF" stroke="#059669" stroke-width="1.2"/>
+  <text x="397" y="209" text-anchor="start" font-size="8.5" fill="#065F46" font-weight="bold">机制</text>
+  <text x="397" y="225" text-anchor="start" font-size="7.8" fill="#334155">marker 区间重写 + Maven profile + Spring 条件</text>
+  <text x="397" y="238" text-anchor="start" font-size="7.8" fill="#334155">同 stack-select.py，只是搬到 CLI 里</text>
+  <rect x="385" y="252" width="345" height="54" rx="7" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="397" y="269" text-anchor="start" font-size="8.5" fill="#1E3A8A" font-weight="bold">写什么</text>
+  <text x="397" y="285" text-anchor="start" font-size="7.8" fill="#334155">只写 marker 区间内的内容</text>
+  <text x="397" y="298" text-anchor="start" font-size="7.8" fill="#334155">区间外的业务代码与自建模块一个字节不动</text>
+  <rect x="385" y="312" width="345" height="54" rx="7" fill="#FFFFFF" stroke="#D97706" stroke-width="1.2"/>
+  <text x="397" y="329" text-anchor="start" font-size="8.5" fill="#92400E" font-weight="bold">失败模式</text>
+  <text x="397" y="345" text-anchor="start" font-size="7.8" fill="#334155">手改区间内内容 → 下次执行被覆盖</text>
+  <text x="397" y="358" text-anchor="start" font-size="7.8" fill="#334155">改 stack.json 忘重跑 → 装配与配置漂移</text>
+  <rect x="385" y="372" width="345" height="54" rx="7" fill="#FFFFFF" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="397" y="389" text-anchor="start" font-size="8.5" fill="#991B1B" font-weight="bold">硬约束</text>
+  <text x="397" y="405" text-anchor="start" font-size="7.8" fill="#334155">换 ORM 需重建仓储实现，不能只改装配</text>
+  <text x="397" y="418" text-anchor="start" font-size="7.8" fill="#334155">所以必须拒绝，或明确要求人工迁移</text>
+  <rect x="30" y="444" width="700" height="74" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.6"/>
+  <text x="380" y="462.2" text-anchor="middle" font-size="10" fill="#155E75" font-weight="bold">两条通道共用的东西（这是它们能放在同一个 CLI 里的原因）</text>
+  <text x="380" y="479" text-anchor="middle" font-size="8" fill="#0E7490">同一份选择模型：三维取值 + 坐标 + 基线     同一份版本目录：版本只有一处定义</text>
+  <text x="380" y="497.4" text-anchor="middle" font-size="8" fill="#0E7490">同一套校验：取值白名单、硬约束、降级门禁     同一套幂等与 --check 约定</text>
+  <text x="380" y="536" text-anchor="middle" font-size="9.5" fill="#155E75">把它们当成一个功能做，是这类工具最常见的返工来源</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
