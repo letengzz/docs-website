@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 392" width="760" height="392" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="392" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">截图工作流：捕获 → 标注 → 命名 → 归档</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">截得好不如归档得好；没有命名规则的截图等于没截</text>
+  <rect x="30" y="76" width="167" height="96" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="113.5" y="94.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">① 捕获</text>
+  <text x="113.5" y="111" text-anchor="middle" font-size="7.4" fill="#4338CA">region/window/full</text>
+  <text x="113.5" y="128.02" text-anchor="middle" font-size="7.4" fill="#4338CA">先定选区</text>
+  <line x1="198" y1="124" x2="207" y2="124" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="208" y="76" width="167" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="291.5" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">② 标注</text>
+  <text x="291.5" y="111" text-anchor="middle" font-size="7.4" fill="#1D4ED8">框选/箭头/马赛克</text>
+  <text x="291.5" y="128.02" text-anchor="middle" font-size="7.4" fill="#1D4ED8">重点是「让人一眼看懂」</text>
+  <line x1="376" y1="124" x2="385" y2="124" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="386" y="76" width="167" height="96" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="469.5" y="94.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">③ 命名</text>
+  <text x="469.5" y="111" text-anchor="middle" font-size="7.4" fill="#0F766E">日期-主题-序号</text>
+  <text x="469.5" y="128.02" text-anchor="middle" font-size="7.4" fill="#0F766E">不靠记忆靠规则</text>
+  <line x1="554" y1="124" x2="563" y2="124" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="564" y="76" width="167" height="96" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="647.5" y="94.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">④ 归档</text>
+  <text x="647.5" y="111" text-anchor="middle" font-size="7.4" fill="#047857">按项目/主题落盘</text>
+  <text x="647.5" y="128.02" text-anchor="middle" font-size="7.4" fill="#047857">写进文档或笔记</text>
+  <text x="30" y="202" text-anchor="start" font-size="10.5" fill="#1E3A8A" font-weight="bold">命名示例：截图的价值在「三个月后还能找到」，不在「截得快」</text>
+  <rect x="30" y="214" width="700" height="62" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="235" text-anchor="middle" font-size="8.6" fill="#334155">2026-09-15-login-error-01.png        # 日期-主题-序号</text>
+  <text x="380" y="254" text-anchor="middle" font-size="8.6" fill="#334155">assets/2026-09-15-login-error-01.png # 直接落进文档的 assets/</text>
+  <rect x="30" y="292" width="700" height="58" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="313" text-anchor="middle" font-size="8.4" fill="#92400E">别把截图当唯一证据：出错时同时留下「文本日志」，否则三个月后只能看图猜</text>
+  <text x="380" y="332" text-anchor="middle" font-size="8.4" fill="#92400E">系统自带截图工具够用；需要 OCR 取字、贴图到屏幕上的，再上第三方</text>
+  <text x="380" y="374" text-anchor="middle" font-size="9.5" fill="#065F46">截图工具的「贴图」能力最容易被低估：省掉窗口反复切换的时间</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

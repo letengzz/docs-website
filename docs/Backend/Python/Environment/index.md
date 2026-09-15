@@ -97,3 +97,10 @@ venv + pip 与 uv 的对比：
 2. `.venv` 目录要加入 `.gitignore`，不要提交到仓库。
 3. 依赖锁文件（`requirements.txt` / `uv.lock`）要提交到仓库，保证其他人可以复现环境。
 :::
+
+## 相关文档
+
+- [效率工具 · 终端与 Shell 环境](../../../Tools/Efficiency/Terminal/index.md)：上面出现的 `PowerShell` / `zsh` / `curl` 差异（如 `curl` 在 PowerShell 里是别名、需写 `curl.exe`）在这里有完整说明。
+- [效率工具 · 命令行提效](../../../Tools/Efficiency/ShellProductivity/index.md)：`rg` / `jq` / `fzf` 与 Python 脚本配合的常用组合。
+- [效率工具 · 桌面与任务自动化](../../../Tools/Efficiency/Automation/index.md)：把 `uv sync`、数据拉取这类固定流程交给定时任务。
+- [IDE 配置](../../../Tools/IDE/index.md)：在编辑器里指定解释器与虚拟环境的位置。

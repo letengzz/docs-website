@@ -223,6 +223,7 @@ echo "  请运行 pnpm docs:build 复核"
 - 复盘方法（KPT / GRAI / PDCA）：[复盘方法论](../Overview/index.md)
 - 知识体系整理（前一版）：[知识体系整理](../../Review/KnowledgeMap/index.md)
 - 文档协作与命名规范：[文档协作规范](../../../Tools/Collaboration/DocCollaboration/index.md)
+- 个人知识库的收集/整理/输出三层结构，以及笔记库与发布型文档库（本站）的分工边界：[效率工具 · 笔记与知识管理](../../../Tools/Efficiency/Notes/index.md)
 
 ## 参考资料
 

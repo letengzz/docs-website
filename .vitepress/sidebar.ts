@@ -5,7 +5,7 @@ import { AI_Agent, AI_LLMApp, AI_LocalModel, AI_OpenClaw, AI_PromptEngineering, 
 import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { Ansible, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { DBOverview, DataModeling, NoRelational, Relational, SQLOptimization, TimeSeries } from "./db";
-import { APITools, Build, CICD, Collaboration, DatabaseClients, IDE, Others, PackageManager, VC } from "./tools";
+import { APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 const OthersReview = [
@@ -83,7 +83,7 @@ export const sidebar = {
     {
       text: "工具",
       collapsed: true,
-      items: [...Build, ...CICD, ...DatabaseClients, ...APITools, ...PackageManager, ...IDE, ...VC, ...Collaboration, ...Others],
+      items: [...Build, ...CICD, ...DatabaseClients, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...Others],
     },
   ],
   "/project": [
@@ -157,6 +157,7 @@ export const sidebar = {
   "/docs/Tools/PackageManager": PackageManager,
   "/docs/Tools/Collaboration": Collaboration,
   "/docs/Tools/IDE": IDE,
+  "/docs/Tools/Efficiency": Efficiency,
   "/docs/Tools/VersionControl": VC,
   "/docs/Tools/Others": Others,
   "/project/Base": BaseProject,

@@ -68,6 +68,7 @@
 ## 相关专题
 
 - 版本控制与分支协作：[Git 进阶](../../Tools/VersionControl/Git/index.md)
+- 个人效率工具链（团队规则的执行侧）：[效率工具](../Efficiency/index.md)｜[概述与选型](../Efficiency/Overview/index.md) 里「统一规则、不统一工具」的取舍
 - 流水线与质量门禁：[CI/CD](../../Tools/CICD/index.md)
 - 接口契约与联调：[接口调试工具](../../Tools/APITools/index.md)
 - 需求与设计载体在项目中的落地：[完整项目实战](../../../project/Complete/FullStackProject/index.md)

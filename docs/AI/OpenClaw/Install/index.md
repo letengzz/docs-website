@@ -35,6 +35,10 @@ OpenClaw 基于 **Node.js** 开发，对版本要求严格（**必须 22+**）�
 
 - **以管理员身份打开 PowerShell**（`Win+X` →「Windows PowerShell (管理员)」或「终端 (管理员)」）。
 
+::: tip 用 5.1 还是 PowerShell 7？
+本页命令在 **Windows PowerShell 5.1** 与 **PowerShell 7.6** 下都能执行。若你装的是 PowerShell 7（可执行文件是 `pwsh.exe`），`Win+X` 菜单里对应「终端 (管理员)」；两者的 `$PROFILE` 互相独立，环境变量设置要分别确认。两者的区别、安装与 profile 位置见 [效率工具 · 终端与 Shell 环境](../../../Tools/Efficiency/Terminal/index.md)。
+:::
+
 - **安装并切换 Node.js 版本**：
 
 ```powershell

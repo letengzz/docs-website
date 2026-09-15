@@ -31,3 +31,5 @@
 - [Ansible 自动化运维](../Ansible/index.md)：把"逐台登录敲命令"变成可重复执行的 Playbook，是 Linux 批量交付的下一步
 - [监控告警](../Monitoring/index.md)：服务器指标采集与告警
 - [日志体系](../LogSystem/index.md)：服务器日志采集与留存
+- [效率工具 · 终端与 Shell 环境](../../Tools/Efficiency/Terminal/index.md)：本机侧的四层终端结构、profile 与提示符配置，与服务器侧的 Shell 用法互为对照
+- [效率工具 · 命令行提效](../../Tools/Efficiency/ShellProductivity/index.md)：`rg` / `fzf` / `bat` / `jq` 等工具的用法在服务器上同样适用

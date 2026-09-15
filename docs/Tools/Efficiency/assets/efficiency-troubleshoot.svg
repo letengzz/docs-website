@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 366" width="760" height="366" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="366" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">效率工具排障决策树</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">快捷键冲突 / 启动变慢 / 同步冲突 / 脚本失效，四类问题的路径完全不同</text>
+  <rect x="300" y="76" width="160" height="56" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="94" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">效率工具出问题</text>
+  <text x="380" y="112" text-anchor="middle" font-size="7.5" fill="#334155">先分类，不要重装</text>
+  <text x="380" y="128" text-anchor="middle" font-size="7.5" fill="#334155">重装只解决极少数问题</text>
+  <line x1="380" y1="132" x2="113.5" y2="166" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="166" width="167" height="100" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="113.5" y="184.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">快捷键冲突</text>
+  <text x="113.5" y="201" text-anchor="middle" font-size="7.6" fill="#B45309">① 谁占用了这个组合</text>
+  <text x="113.5" y="218.48" text-anchor="middle" font-size="7.6" fill="#B45309">② 新装了什么工具</text>
+  <text x="113.5" y="235.96" text-anchor="middle" font-size="7.6" fill="#B45309">③ 进程级还是全局</text>
+  <line x1="380" y1="132" x2="291.5" y2="166" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="208" y="166" width="167" height="100" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="291.5" y="184.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">启动变慢</text>
+  <text x="291.5" y="201" text-anchor="middle" font-size="7.6" fill="#1D4ED8">① 开机启动项清单</text>
+  <text x="291.5" y="218.48" text-anchor="middle" font-size="7.6" fill="#1D4ED8">② 脚本是否有轮询</text>
+  <text x="291.5" y="235.96" text-anchor="middle" font-size="7.6" fill="#1D4ED8">③ 杀软扫描开销</text>
+  <line x1="380" y1="132" x2="469.5" y2="166" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="386" y="166" width="167" height="100" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="469.5" y="184.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">同步冲突</text>
+  <text x="469.5" y="201" text-anchor="middle" font-size="7.6" fill="#6D28D9">① 同步范围是否重叠</text>
+  <text x="469.5" y="218.48" text-anchor="middle" font-size="7.6" fill="#6D28D9">② 是否含二进制文件</text>
+  <text x="469.5" y="235.96" text-anchor="middle" font-size="7.6" fill="#6D28D9">③ 冲突副本怎么产生</text>
+  <line x1="380" y1="132" x2="647.5" y2="166" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="564" y="166" width="167" height="100" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="647.5" y="184.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">脚本失效</text>
+  <text x="647.5" y="201" text-anchor="middle" font-size="7.6" fill="#B91C1C">① 报错原文</text>
+  <text x="647.5" y="218.48" text-anchor="middle" font-size="7.6" fill="#B91C1C">② 依赖是否升级</text>
+  <text x="647.5" y="235.96" text-anchor="middle" font-size="7.6" fill="#B91C1C">③ 路径含空格/中文</text>
+  <text x="380" y="296" text-anchor="middle" font-size="10" fill="#1E3A8A">通用兜底顺序：复现 → 二分（禁用一半工具/插件）→ 定位到具体工具 → 再改配置</text>
+  <text x="380" y="320" text-anchor="middle" font-size="9.5" fill="#B91C1C">最有效的三个动作：看工具自己的日志 · 用干净配置对照 · 记录「改动前后」的差异</text>
+  <text x="380" y="344" text-anchor="middle" font-size="9.5" fill="#64748B">反面教材：一上来就重装、清空全部配置——既丢证据也丢时间</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

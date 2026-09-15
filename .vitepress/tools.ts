@@ -131,6 +131,23 @@ export const IDE = [
     ],
   },
 ];
+export const Efficiency = [
+  {
+    text: "效率工具",
+    link: "/docs/Tools/Efficiency/index.md",
+    items: [
+      { text: "概述与选型", link: "/docs/Tools/Efficiency/Overview/index.md" },
+      { text: "终端与 Shell 环境", link: "/docs/Tools/Efficiency/Terminal/index.md" },
+      { text: "命令行提效", link: "/docs/Tools/Efficiency/ShellProductivity/index.md" },
+      { text: "剪贴板与输入效率", link: "/docs/Tools/Efficiency/Clipboard/index.md" },
+      { text: "截图与标注", link: "/docs/Tools/Efficiency/Screenshot/index.md" },
+      { text: "笔记与知识管理", link: "/docs/Tools/Efficiency/Notes/index.md" },
+      { text: "桌面与任务自动化", link: "/docs/Tools/Efficiency/Automation/index.md" },
+      { text: "实战：搭一套个人效率工具链", link: "/docs/Tools/Efficiency/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/Efficiency/FAQ/index.md" },
+    ],
+  },
+];
 export const Others = [{ text: "其他工具", link: "/docs/Tools/Others/index.md" }];
 export const VC = [
   {
