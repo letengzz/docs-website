@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 348" width="760" height="348" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="348" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">可观测性：平台能力与自建路线的边界</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">Agent 的失败往往是概率性的，没有 trace 就只能反复重跑碰运气</text>
+  <rect x="30" y="76" width="340" height="110" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="200" y="94.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">LangSmith 能做的</text>
+  <text x="200" y="111" text-anchor="middle" font-size="8.5" fill="#0F766E">链路追踪：每次模型/工具调用</text>
+  <text x="200" y="130.55" text-anchor="middle" font-size="8.5" fill="#0F766E">评测集与回归对比</text>
+  <text x="200" y="150.1" text-anchor="middle" font-size="8.5" fill="#0F766E">提示词版本与审阅</text>
+  <text x="200" y="169.65" text-anchor="middle" font-size="8.5" fill="#0F766E">托管部署与检查点代管</text>
+  <rect x="390" y="76" width="340" height="110" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="560" y="94.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">它不能替代的</text>
+  <text x="560" y="111" text-anchor="middle" font-size="8.5" fill="#C2410C">你的业务指标与 SLA</text>
+  <text x="560" y="130.55" text-anchor="middle" font-size="8.5" fill="#C2410C">代码与配置的版本管理（那是 Git）</text>
+  <text x="560" y="150.1" text-anchor="middle" font-size="8.5" fill="#C2410C">成本归因（需自建标签体系）</text>
+  <text x="560" y="169.65" text-anchor="middle" font-size="8.5" fill="#C2410C">数据合规（闭源，自托管需授权）</text>
+  <rect x="30" y="200" width="700" height="100" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="380" y="218.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">两条可落地的观测路线</text>
+  <text x="380" y="235" text-anchor="middle" font-size="8" fill="#4338CA">路线 A（用官方）：开发期就接入 LangSmith，靠 trace 定位「哪一步变慢/变贵」；上线前确认数据出境合规。</text>
+  <text x="380" y="253.4" text-anchor="middle" font-size="8" fill="#4338CA">路线 B（自建）：OpenTelemetry 埋点 + 自建看板，或用开源替代；优点是数据不出内网、可对齐现有监控体系。</text>
+  <text x="380" y="271.8" text-anchor="middle" font-size="8" fill="#4338CA">两条路线的公共要求一样：每一步都要有 run_id、模型名、令牌数、耗时——没有这四项，排障只能靠猜。</text>
+  <text x="380" y="324" text-anchor="middle" font-size="9.5" fill="#0F766E">判断标准：观测体系要能回答「这次比上次贵在哪」和「这次错在哪一步」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

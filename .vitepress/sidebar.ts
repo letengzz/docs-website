@@ -1,7 +1,7 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 import { Auth, DesignPatterns, DotNet, Go, Java, MessageQueue, Microservices, NetworkProgramming, Python, SpringCloud } from "./backend";
 
-import { AI_Agent, AI_LLMApp, AI_LocalModel, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
+import { AI_Agent, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { Ansible, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { DBOverview, DataModeling, NoRelational, Relational, SQLOptimization, TimeSeries } from "./db";
@@ -76,7 +76,7 @@ export const sidebar = {
     {
       text: "AI",
       collapsed: true,
-      items: [...AI_LLMApp, ...AI_RAG, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_Agent],
+      items: [...AI_LLMApp, ...AI_LangChain, ...AI_RAG, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_Agent],
     },
   ],
   "/docs/Tools": [
@@ -148,6 +148,7 @@ export const sidebar = {
   "/docs/AI/PromptEngineering": AI_PromptEngineering,
   "/docs/AI/Agent": AI_Agent,
   "/docs/AI/LLMApp": AI_LLMApp,
+  "/docs/AI/LangChain": AI_LangChain,
   "/docs/AI/RAG": AI_RAG,
   "/docs/AI/LocalModel": AI_LocalModel,
   "/docs/Tools/Build": Build,

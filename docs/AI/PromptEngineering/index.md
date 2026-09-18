@@ -18,3 +18,4 @@
 - [大模型应用开发](../LLMApp/index.md)：提示词在真实系统里的落地（结构化输出、上下文预算、成本与限流）
 - [大模型应用开发 · 上下文与记忆管理](../LLMApp/ContextMemory/index.md)：令牌预算与历史裁剪的工程做法
 - [Agent 应用](../Agent/index.md)：提示词之上的自主规划与工具编排
+- [LangChain · 记忆与上下文](../LangChain/Memory/index.md)：四层记忆与摘要压缩——把「上下文预算」这件事落到框架里的做法

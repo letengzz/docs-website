@@ -102,6 +102,7 @@ print("引用片段:", [h["chunk_id"] for h in hits])
 
 - [大模型应用开发](../LLMApp/index.md)：API 调用、上下文管理、成本与限流的工程基础
 - [大模型应用开发 · RAG 接入](../LLMApp/RagOverview/index.md)：把检索接入应用的快速上手版本
+- [LangChain · 实战：带人工审批的检索增强 Agent](../LangChain/Practice/index.md)：把检索链路装配进 Agent 并加上人工审批中断，本页讲「检索」那一段，那里讲「装配」那一段
 - [提示词工程](../PromptEngineering/index.md)：让模型"只依据材料回答"的指令设计
 - [Agent 应用 · 记忆与上下文](../Agent/MemoryContext/index.md)：检索作为长期记忆的使用方式
 

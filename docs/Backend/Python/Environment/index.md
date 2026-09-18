@@ -104,3 +104,4 @@ venv + pip 与 uv 的对比：
 - [效率工具 · 命令行提效](../../../Tools/Efficiency/ShellProductivity/index.md)：`rg` / `jq` / `fzf` 与 Python 脚本配合的常用组合。
 - [效率工具 · 桌面与任务自动化](../../../Tools/Efficiency/Automation/index.md)：把 `uv sync`、数据拉取这类固定流程交给定时任务。
 - [IDE 配置](../../../Tools/IDE/index.md)：在编辑器里指定解释器与虚拟环境的位置。
+- [LangChain · 环境与模型接入](../../../AI/LangChain/Environment/index.md)：依赖管理与版本锁定的一个具体场景（用 `pip index versions` 判版本、把版本写进锁文件）。

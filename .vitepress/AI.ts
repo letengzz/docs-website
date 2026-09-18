@@ -77,6 +77,24 @@ export const AI_LLMApp = [
   },
 ];
 
+export const AI_LangChain = [
+  {
+    text: "LangChain",
+    link: "/docs/AI/LangChain/index.md",
+    collapsed: true,
+    items: [
+      { text: "生态概览与 v1 变更", link: "/docs/AI/LangChain/Overview/index.md" },
+      { text: "环境与模型接入", link: "/docs/AI/LangChain/Environment/index.md" },
+      { text: "从 Chain 到 Runnable", link: "/docs/AI/LangChain/Chains/index.md" },
+      { text: "Agent 与中间件", link: "/docs/AI/LangChain/Agent/index.md" },
+      { text: "记忆与上下文", link: "/docs/AI/LangChain/Memory/index.md" },
+      { text: "LangGraph 编排", link: "/docs/AI/LangChain/LangGraph/index.md" },
+      { text: "实战：带人工审批的检索增强 Agent", link: "/docs/AI/LangChain/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/LangChain/FAQ/index.md" },
+    ],
+  },
+];
+
 export const AI_RAG = [
   {
     text: "RAG 检索增强",

@@ -71,4 +71,6 @@
 
 - AutoGen：https://microsoft.github.io/autogen/
 - CrewAI：https://www.crewai.com/
-- LangGraph Multi-Agent：https://langchain-ai.github.io/langgraph/how-tos/
+- LangGraph 多智能体官方文档：https://docs.langchain.com/oss/python/langchain/multi-agent
+- 本库 [LangChain · LangGraph 编排](../../LangChain/LangGraph/index.md)：多智能体在框架侧怎么落地（子图、路由与检查点），以及 `langgraph-supervisor` / `langgraph-swarm` 已停维护这一现状
+- 本库 [LangChain · 生态概览](../../LangChain/Overview/index.md)：框架 / 运行时 / 平台三层边界，避免把「用了 Agent 框架」误当成「已经有编排与可观测」

@@ -106,4 +106,5 @@ def handle(question: str, user_id: str) -> str:
 - Agents 指南：https://developers.openai.com/api/docs/guides/agents
 - 生产最佳实践：https://developers.openai.com/api/docs/guides/production-best-practices
 - 本库 Agent 专题：[Agent 原理](../../Agent/AgentPrinciples/index.md)、[工作流编排](../../Agent/Workflow/index.md)、[多智能体](../../Agent/MultiAgent/index.md)
+- 本库 LangChain 专题：[Agent 与中间件](../../LangChain/Agent/index.md)（框架侧的 `create_agent` 与六个钩子）、[实战：带人工审批的检索增强 Agent](../../LangChain/Practice/index.md)（把「写操作需人工确认」落成 `interrupt`）
 - 本库 OpenClaw：[核心概念](../../OpenClaw/CoreConcepts/index.md)

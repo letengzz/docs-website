@@ -92,7 +92,9 @@ graph = builder.compile()
 
 ## 参考资料
 
-- LangGraph：https://langchain-ai.github.io/langgraph/
+- LangGraph 官方文档：https://docs.langchain.com/oss/python/langgraph/overview
 - Coze：https://www.coze.cn/
 - Dify：https://dify.ai/
 - n8n：https://n8n.io/
+- 本库 [LangChain · LangGraph 编排](../../LangChain/LangGraph/index.md)：手写工作流遇到「要分支、要恢复、要审批」时，框架侧的承接方案（状态与 reducer、条件边、持久化、`interrupt`）
+- 本库 [Agent 应用 · 多智能体](../../Agent/MultiAgent/index.md)：节点变多之后的协作拓扑与边界

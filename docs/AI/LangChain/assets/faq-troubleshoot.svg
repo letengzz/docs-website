@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 388" width="760" height="388" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="388" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">排障决策树：四类高频故障与各自的第一动作</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先定位到具体一步，再谈改法；直接改提示词是最常见的无效动作</text>
+  <rect x="30" y="76" width="330" height="116" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="195" y="94.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">Agent 不调用工具</text>
+  <text x="195" y="111" text-anchor="middle" font-size="7.5" fill="#B91C1C">① 工具描述是否写清「什么时候用」</text>
+  <text x="195" y="128.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">② 参数 schema 是否过严（必填太多）</text>
+  <text x="195" y="145.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">③ 模型是否支持工具调用</text>
+  <text x="195" y="162.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">④ 是否被中间件过滤掉了工具</text>
+  <rect x="400" y="76" width="330" height="116" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="565" y="94.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">调用工具但结果没用上</text>
+  <text x="565" y="111" text-anchor="middle" font-size="7.5" fill="#B45309">① 工具返回是否被截断</text>
+  <text x="565" y="128.25" text-anchor="middle" font-size="7.5" fill="#B45309">② 返回结构是否可解析</text>
+  <text x="565" y="145.5" text-anchor="middle" font-size="7.5" fill="#B45309">③ 是否需要把结果显式写进提示词</text>
+  <text x="565" y="162.75" text-anchor="middle" font-size="7.5" fill="#B45309">④ 上下文是否已超预算被裁掉</text>
+  <rect x="30" y="206" width="330" height="116" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="195" y="224.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">结果不稳定</text>
+  <text x="195" y="241" text-anchor="middle" font-size="7.5" fill="#C2410C">① 先固化 temperature 与种子</text>
+  <text x="195" y="258.25" text-anchor="middle" font-size="7.5" fill="#C2410C">② 结构化输出加校验与重试</text>
+  <text x="195" y="275.5" text-anchor="middle" font-size="7.5" fill="#C2410C">③ 把「模糊要求」改成可判定的条件</text>
+  <text x="195" y="292.75" text-anchor="middle" font-size="7.5" fill="#C2410C">④ 建评测集，别靠单次观感</text>
+  <rect x="400" y="206" width="330" height="116" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="565" y="224.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">成本/延迟失控</text>
+  <text x="565" y="241" text-anchor="middle" font-size="7.5" fill="#6D28D9">① 按 run_id 看令牌分布</text>
+  <text x="565" y="258.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">② 是否为简单任务用了推理模型</text>
+  <text x="565" y="275.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">③ 历史是否没裁剪</text>
+  <text x="565" y="292.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">④ 是否每次都全量检索</text>
+  <text x="380" y="350" text-anchor="middle" font-size="9.5" fill="#B91C1C">排查顺序：先看 trace（哪一步错）→ 再看输入（是否被裁剪/注入）→ 最后才改提示词</text>
+  <text x="380" y="372" text-anchor="middle" font-size="9.5" fill="#475569">最常见的误判：把「工程问题」当「提示词问题」——上下文被裁、schema 太严、超时重试都会伪装成「模型变笨」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

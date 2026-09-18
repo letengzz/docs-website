@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 408" width="760" height="408" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="408" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">依赖分层：从业务代码到模型网关</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">每一层都有明确职责；把配置和密钥约束在环境变量层，是实现可复现的前提</text>
+  <rect x="30" y="76" width="700" height="46" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="94.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">你的业务代码</text>
+  <text x="380" y="111" text-anchor="middle" font-size="7.5" fill="#6D28D9">agent 装配 / 中间件 / 工具</text>
+  <text x="380" y="128.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">只依赖下面几层的公开接口</text>
+  <rect x="30" y="132" width="700" height="46" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="150.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">langchain（框架）</text>
+  <text x="380" y="167" text-anchor="middle" font-size="7.5" fill="#1D4ED8">create_agent、消息、结构化输出</text>
+  <text x="380" y="184.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">从 langchain-core 再导出基础抽象</text>
+  <rect x="30" y="188" width="700" height="46" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="206.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">langgraph（运行时）</text>
+  <text x="380" y="223" text-anchor="middle" font-size="7.5" fill="#0F766E">图、状态、检查点、中断</text>
+  <text x="380" y="240.25" text-anchor="middle" font-size="7.5" fill="#0F766E">被 langchain 依赖，也可单独使用</text>
+  <rect x="30" y="244" width="700" height="46" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="262.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">供应商集成包</text>
+  <text x="380" y="279" text-anchor="middle" font-size="7.5" fill="#047857">langchain-openai / -anthropic</text>
+  <text x="380" y="296.25" text-anchor="middle" font-size="7.5" fill="#047857">-ollama / -google-genai 等</text>
+  <text x="380" y="313.5" text-anchor="middle" font-size="7.5" fill="#047857">按需安装，不装没用到的</text>
+  <rect x="30" y="300" width="700" height="46" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="318.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">模型网关 / 本地推理</text>
+  <text x="380" y="335" text-anchor="middle" font-size="7.5" fill="#B45309">base_url 指向网关或本地服务</text>
+  <text x="380" y="352.25" text-anchor="middle" font-size="7.5" fill="#B45309">密钥只存在于服务端环境变量</text>
+  <text x="380" y="372" text-anchor="middle" font-size="9.5" fill="#475569">依赖越往下越稳定：业务代码只碰最上面两层，换供应商时改的是集成包与网关配置</text>
+  <text x="380" y="392" text-anchor="middle" font-size="9.5" fill="#B45309">锁版本锁的是「langchain + langchain-core + 集成包」三者，缺一个都会出现「本地能跑、CI 挂掉」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

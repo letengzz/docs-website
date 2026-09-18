@@ -235,3 +235,9 @@ public class CachedChatService {
 }
 ```
 
+## 相关专题
+
+- [LangChain](../../../../AI/LangChain/index.md)：同一问题的 Python 侧实现（Agent 装配 + LangGraph 编排），含 Java / Python 两套生态的分工判据
+- [大模型应用开发](../../../../AI/LLMApp/index.md)：不引入框架、直接调官方 SDK 的路线，以及上线的成本与限流做法
+- [本地模型部署](../../../../AI/LocalModel/index.md)：把模型换成本地推理服务时，接口与显存侧要注意的差异
+

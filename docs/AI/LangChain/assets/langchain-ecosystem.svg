@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 432" width="760" height="432" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="432" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">LangChain 生态三分：框架 / 运行时 / 平台</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">名字被混用，但边界是架构性的——先分清自己在用哪一层，再谈选型</text>
+  <rect x="30" y="76" width="222" height="168" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="141" y="94.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">LangChain（框架）</text>
+  <text x="141" y="111" text-anchor="middle" font-size="7.5" fill="#6D28D9">高层的「装配」层</text>
+  <text x="141" y="128.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">模型 / 消息 / 工具抽象</text>
+  <text x="141" y="145.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">create_agent 与中间件</text>
+  <text x="141" y="162.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">结构化输出与流式</text>
+  <text x="141" y="180" text-anchor="middle" font-size="7.5" fill="#6D28D9">Python 与 TypeScript 两套</text>
+  <text x="141" y="197.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">开源，MIT</text>
+  <rect x="270" y="76" width="222" height="168" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="381" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">LangGraph（运行时）</text>
+  <text x="381" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">低层的编排运行时</text>
+  <text x="381" y="128.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">图、状态、条件分支</text>
+  <text x="381" y="145.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">持久化与检查点</text>
+  <text x="381" y="162.75" text-anchor="middle" font-size="7.5" fill="#1D4ED8">中断与人工审批</text>
+  <text x="381" y="180" text-anchor="middle" font-size="7.5" fill="#1D4ED8">时间旅行与重放</text>
+  <text x="381" y="197.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">开源，MIT</text>
+  <rect x="510" y="76" width="222" height="168" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="621" y="94.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">LangSmith（平台）</text>
+  <text x="621" y="111" text-anchor="middle" font-size="7.5" fill="#0F766E">可观测与评测平台</text>
+  <text x="621" y="128.25" text-anchor="middle" font-size="7.5" fill="#0F766E">链路追踪、评测集</text>
+  <text x="621" y="145.5" text-anchor="middle" font-size="7.5" fill="#0F766E">提示词管理与版本</text>
+  <text x="621" y="162.75" text-anchor="middle" font-size="7.5" fill="#0F766E">部署托管</text>
+  <text x="621" y="180" text-anchor="middle" font-size="7.5" fill="#0F766E">闭源商业产品</text>
+  <text x="621" y="197.25" text-anchor="middle" font-size="7.5" fill="#0F766E">自托管需企业授权</text>
+  <line x1="252" y1="120" x2="270" y2="120" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)" stroke-dasharray="5 4"/>
+  <line x1="492" y1="120" x2="510" y2="120" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)" stroke-dasharray="5 4"/>
+  <text x="380" y="268" text-anchor="middle" font-size="9.5" fill="#475569">三者独立安装、独立授权：可以只用 LangGraph 不用 LangChain，也可以完全不用 LangSmith</text>
+  <text x="60" y="300" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">四问定边界</text>
+  <rect x="30" y="312" width="150" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="105" y="327" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">我只要一次问答</text>
+  <rect x="188" y="312" width="542" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="459" y="327" text-anchor="middle" font-size="8.5" fill="#334155">直接调官方 SDK 即可，不必引入框架（见大模型应用开发专题）</text>
+  <rect x="30" y="338" width="150" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="105" y="353" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">我要工具调用 + 循环</text>
+  <rect x="188" y="338" width="542" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="459" y="353" text-anchor="middle" font-size="8.5" fill="#334155">LangChain 的 create_agent 最短路径，中间件补齐上下文工程</text>
+  <rect x="30" y="364" width="150" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="105" y="379" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">我要长流程与审批</text>
+  <rect x="188" y="364" width="542" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="459" y="379" text-anchor="middle" font-size="8.5" fill="#334155">LangGraph 的图 + 检查点 + interrupt 是正解，不要用内存硬撑</text>
+  <rect x="30" y="390" width="150" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="105" y="405" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">我要看它到底做了什么</text>
+  <rect x="188" y="390" width="542" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="459" y="405" text-anchor="middle" font-size="8.5" fill="#334155">LangSmith 或 OTel / 自建追踪，二者都不依赖对方</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

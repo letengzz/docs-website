@@ -145,6 +145,7 @@ llm-app/
 
 ## 相关专题
 
+- [LangChain](../LangChain/index.md)：把「模型调用、消息、工具、结构化输出、检索」装配成框架的路线，含与本页「不引入框架、直接调 SDK」的分工判据
 - [提示词工程](../PromptEngineering/index.md)：提示词结构、few-shot、思维链与效果评估
 - [Agent 应用](../Agent/index.md)：自主规划、工具调用、多智能体与安全边界
 - [OpenClaw](../OpenClaw/index.md)：开箱即用的智能体工具

@@ -99,6 +99,7 @@ print(resp.choices[0].message.content)
 - [RAG 检索增强](../RAG/index.md)：本地部署下同样需要本地检索（嵌入模型与向量库）
 - [OpenClaw](../OpenClaw/index.md)：可搭配 Ollama 本地模型运行的智能体工具
 - [Java · LangChain4j 模型集成](../../Backend/Java/Frame/Langchain4j/LlmIntegration/index.md)：Java 生态接入本地模型的写法
+- [LangChain · 环境与模型接入](../LangChain/Environment/index.md)：Python 侧把本地推理服务接进框架（`init_chat_model` 与版本锁定）
 - [Kubernetes 部署](../../Ops/Kubernetes/Deployment/index.md)：容器化与 GPU 工作负载编排
 
 ## 验证方式

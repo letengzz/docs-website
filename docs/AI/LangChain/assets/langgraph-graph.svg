@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 376" width="760" height="376" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="376" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">LangGraph：状态、条件边、检查点与中断</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">当流程有分支、要持久、要人工审批时，图的表达力比「链」高一个量级</text>
+  <rect x="40" y="84" width="110" height="52" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="95" y="102.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">START</text>
+  <rect x="170" y="84" width="110" height="52" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="225" y="102.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">检索</text>
+  <rect x="300" y="84" width="110" height="52" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="355" y="102.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">生成</text>
+  <rect x="430" y="84" width="110" height="52" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="485" y="102.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">评审</text>
+  <rect x="560" y="84" width="110" height="52" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="615" y="102.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">END</text>
+  <line x1="150" y1="110" x2="170" y2="110" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="280" y1="110" x2="300" y2="110" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="410" y1="110" x2="430" y2="110" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="540" y1="110" x2="560" y2="110" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="485" y1="136" x2="355" y2="136" stroke="#DC2626" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="420" y="131" text-anchor="middle" font-size="7.5" fill="#64748B">不通过 → 重新生成</text>
+  <text x="380" y="176" text-anchor="middle" font-size="9.5" fill="#B45309">条件边（conditional edge）决定走哪条路；边上的判定是纯函数，可单测</text>
+  <rect x="30" y="194" width="340" height="92" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="200" y="212.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">状态（State）与 reducer</text>
+  <text x="200" y="229" text-anchor="middle" font-size="8" fill="#0F766E">节点只返回「增量」，由 reducer 决定</text>
+  <text x="200" y="247.4" text-anchor="middle" font-size="8" fill="#0F766E">合并方式：覆盖、追加、去重累加</text>
+  <text x="200" y="265.8" text-anchor="middle" font-size="8" fill="#0F766E">状态结构定了，图的形状就定了</text>
+  <rect x="390" y="194" width="340" height="92" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="560" y="212.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">检查点（Checkpoint）</text>
+  <text x="560" y="229" text-anchor="middle" font-size="8" fill="#047857">每步落库：thread_id 定位一条会话</text>
+  <text x="560" y="247.4" text-anchor="middle" font-size="8" fill="#047857">崩溃后从最后检查点续跑</text>
+  <text x="560" y="265.8" text-anchor="middle" font-size="8" fill="#047857">也是「时间旅行」与重放的基础</text>
+  <rect x="30" y="298" width="700" height="62" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="316.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">interrupt：把「等人」做成一等公民</text>
+  <text x="380" y="333" text-anchor="middle" font-size="8" fill="#B91C1C">在敏感节点前中断，把决策权交给人；恢复时从检查点继续，不需要自己写状态机。</text>
+  <text x="380" y="351.4" text-anchor="middle" font-size="8" fill="#B91C1C">适用：金额超限、发外部邮件、改生产数据——凡是不可逆的动作都值得一次人工确认。</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

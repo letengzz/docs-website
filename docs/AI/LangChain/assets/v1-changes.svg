@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 356" width="760" height="356" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="356" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">LangChain v1 的三项核心改动</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">v1 是一次「减法」：核心包只留 Agent 构件，遗留能力迁到 langchain-classic</text>
+  <rect x="30" y="76" width="222" height="150" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="141" y="94.2" text-anchor="middle" font-size="11" fill="#5B21B6" font-weight="bold">create_agent</text>
+  <text x="141" y="111" text-anchor="middle" font-size="7.5" fill="#6D28D9">取代 langgraph.prebuilt</text>
+  <text x="141" y="128.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">  .create_react_agent</text>
+  <text x="141" y="145.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">工具调用成为默认架构</text>
+  <text x="141" y="162.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">中间件是扩展入口</text>
+  <text x="141" y="180" text-anchor="middle" font-size="7.5" fill="#6D28D9">AgentExecutor 归为遗留</text>
+  <rect x="270" y="76" width="222" height="150" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="381" y="94.2" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">标准内容块</text>
+  <text x="381" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">content_blocks 属性</text>
+  <text x="381" y="128.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">统一访问推理轨迹</text>
+  <text x="381" y="145.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">引用、内置工具结果</text>
+  <text x="381" y="162.75" text-anchor="middle" font-size="7.5" fill="#1D4ED8">类型安全、延迟加载</text>
+  <text x="381" y="180" text-anchor="middle" font-size="7.5" fill="#1D4ED8">先覆盖主流集成</text>
+  <rect x="510" y="76" width="222" height="150" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="621" y="94.2" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">命名空间精简</text>
+  <text x="621" y="111" text-anchor="middle" font-size="7.5" fill="#047857">核心只留 Agent 构件</text>
+  <text x="621" y="128.25" text-anchor="middle" font-size="7.5" fill="#047857">遗留功能迁出</text>
+  <text x="621" y="145.5" text-anchor="middle" font-size="7.5" fill="#047857">装 langchain-classic</text>
+  <text x="621" y="162.75" text-anchor="middle" font-size="7.5" fill="#047857">导入路径改为</text>
+  <text x="621" y="180" text-anchor="middle" font-size="7.5" fill="#047857">langchain_classic.*</text>
+  <text x="380" y="250" text-anchor="middle" font-size="9.5" fill="#B45309">升级到 v1 后旧代码报错，八成是第三项：模块路径变了，不是 API 语义变了</text>
+  <rect x="30" y="264" width="700" height="74" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="282.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">版本现状（2026-09 核对）</text>
+  <text x="380" y="299" text-anchor="middle" font-size="8" fill="#334155">Python：langchain 1.3.x ｜ langchain-core 1.5.x ｜ langgraph 1.2.x ｜ deepagents 0.7.x</text>
+  <text x="380" y="317.4" text-anchor="middle" font-size="8" fill="#334155">TypeScript：langchain 1.5.x ｜ @langchain/core 1.2.x ｜ @langchain/langgraph 1.4.x</text>
+  <text x="380" y="335.8" text-anchor="middle" font-size="8" fill="#334155">两套语言独立发版，主次版本号相同不代表兼容；迁移前先锁版本再改导入</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
