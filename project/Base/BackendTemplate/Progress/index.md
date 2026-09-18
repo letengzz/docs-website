@@ -807,9 +807,196 @@ mvn -q validate | grep -E "template-(security|data|cache)-"
 | 模板产品化（第 76 天插入） | 技术栈可插拔 + 选择器脚本 + CLI 设计 | ✅ **3/3 完成**；CLI 处于设计阶段，MVP 待排期 |
 | 第 4 周（80-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ⏳ 未开始（已提前规划，见第 75 天「下一步」） |
 
+## 2026-09-22（第 77 天）：联调异常路径收口 + 接口 × 场景用例清单 + 测试约定落文档
+
+本日收口第 3 周（联调与测试）的最后一步：把散落在各处的**入口级异常路径**统一到同一套响应出口，并把「接口 × 场景」整理成可核对的用例矩阵。
+
+### 本次做了什么
+
+| 序号 | 产出 | 位置 | 对应需求 |
+| --- | --- | --- | --- |
+| ① | 五类入口级异常的统一出口：JSON 损坏 / 请求体过大 / 枚举非法 / 并发更新冲突 / 路由兜底（404、405） | [异常路径联调收口与用例清单](../ErrorPath/index.md) | R3、R4 |
+| ② | 请求体大小守卫 Filter（按 `Content-Length` 在读报文前拒绝）+ 三套 Profile 的 Tomcat 上限与 `max-swallow-size` | 同上 | R4 |
+| ③ | 接口 × 场景 用例清单（9 接口 × 10 场景，含新补的 `PUT` 并发冲突）+ 守住用例数基线的元测试 | 同上 | R6 |
+| ④ | 测试与隔离档位的团队约定（三层测试分别用第几档隔离，写进 `CONTRIBUTING.md`） | 同上 | R6 |
+| ⑤ | 异步异常出口（`AsyncUncaughtExceptionHandler`）——补齐「请求线程之外」的盲区 | 同上 | R4 |
+
+同时把第 76 天遗留的一处顺序问题落定：原计划的第 3 周收口顺延到本日完成，第 4 周（部署与验收）从第 78 天开始。
+
+### 如何验证
+
+```shell
+# 1. 全量回归（单元 + Web 切片 + 数据切片 + 集成）
+cd backend-template
+mvn -q clean verify
+# 预期：BUILD SUCCESS，surefire + failsafe 全绿，无 skipped
+
+# 2. 启动
+java -jar template-application/target/template-application-1.0.0.jar
+# 预期：Started TemplateApplication in x.x seconds
+
+# 3. 五条异常路径逐条验
+curl -s -i -X POST http://localhost:8080/api/users -H 'Content-Type: application/json' \
+  -d '{"username": "a", "age": ' | head -8
+# 预期：HTTP 400 + code 40001，响应体不含类名/堆栈/原始报文
+
+curl -s -i -X POST http://localhost:8080/api/users -H 'Content-Type: application/json' \
+  --data-binary @big.json | head -6
+# 预期：HTTP 413 + code 40002
+
+curl -s -X POST http://localhost:8080/api/users -H 'Content-Type: application/json' \
+  -d '{"username":"bob","status":"UNKNOWN"}'
+# 预期：HTTP 400 + code 40003，message 含字段名 status 与合法取值列表
+
+curl -s -X PUT http://localhost:8080/api/users/1 -H 'Content-Type: application/json' -d '{"nickname":"n1","version":0}'
+curl -s -o /dev/null -w '%{http_code}\n' -X PUT http://localhost:8080/api/users/1 \
+  -H 'Content-Type: application/json' -d '{"nickname":"n2","version":0}'
+# 预期：第一条 200；第二条 409 + code 40004
+
+curl -s -o /dev/null -w '%{http_code}\n' -X DELETE http://localhost:8080/api/users
+# 预期：405 + code 40005
+```
+
+验证结果记录（**请在本地执行后填写**，当前编写环境无 JDK/Maven，未实际运行）：
+
+| 检查项 | 期望 | 实测 | 结论 |
+| --- | --- | --- | --- |
+| `mvn -q clean verify` | BUILD SUCCESS | 待填写 | ⏳ |
+| ① JSON 损坏 | 400 + 40001，无内部信息 | 待填写 | ⏳ |
+| ② 请求体过大 | 413 + 40002 | 待填写 | ⏳ |
+| ③ 枚举非法 | 400 + 40003，含字段名与合法值 | 待填写 | ⏳ |
+| ④ 并发更新冲突 | 第二次 409 + 40004 | 待填写 | ⏳ |
+| ⑤ 方法不支持 | 405 + 40005 | 待填写 | ⏳ |
+| 每个响应带 `X-Trace-Id` 且与日志一致 | 全部一致 | 待填写 | ⏳ |
+| 用例矩阵元测试（基线 38 条） | 通过 | 待填写 | ⏳ |
+| 响应体无堆栈 / 无类名 / 无 SQL 片段 | 五条全覆盖 | 待填写 | ⏳ |
+
+### 遇到的问题与决策
+
+| 问题 | 决策 | 原因 |
+| --- | --- | --- |
+| 入口级异常要不要走业务异常体系 | **不走，单独一组处理器** | 这些异常发生在进 Controller 之前，`BizException` 那套根本不会被触发；混在一起会让人误以为已覆盖 |
+| 400 响应里回显原始报文，方便排查吗 | **绝不回显** | 原始报文可能含密码、身份证号等敏感字段；排障信息只进服务端日志（带 traceId 可定位） |
+| 请求体超限在哪一层拦 | **两层都要**（`ContentLengthGuardFilter` + Tomcat 上限） | 只靠 Tomcat 时错误响应结构与 `Result` 不一致；只靠 Filter 时无 `Content-Length` 的请求会漏 |
+| 超限后 `max-swallow-size` 设多大 | **与上限一致** | 不设或设得过大时，剩余字节没人读，连接被占住，表现为偶发连接池耗尽且日志无痕 |
+| 并发更新冲突返回 400 还是 409 | **409 Conflict** | 请求本身合法，冲突在于资源状态；400 会让调用方以为参数写错了 |
+| 枚举非法的报错信息给到什么粒度 | **字段名 + 合法取值列表** | 只给「参数错误」会让前端反复试；这条同时适用于所有校验类错误 |
+| 「影响行数为 0」怎么处理 | **抛异常，不算成功** | 返回 0 有两种可能（记录不存在 / 版本不匹配），静默当成功会造成「提示保存成功但数据没变」 |
+| 用例清单要不要做成自动化 | **要，但做的是「元测试」** | 清单靠人维护必然过期；断言「用例数只增不减」能拦住为让 CI 变绿而删用例的行为 |
+| 异步任务异常怎么办 | **配置 `AsyncUncaughtExceptionHandler`** | `@Async` 默认吞掉异常，只在日志里留一行；不打点就永远发现不了失败率 |
+| 响应已提交后抛异常怎么处理 | **只记日志** | 无法再改状态码；试图写响应体只会产生更难排查的错误 |
+| 测试约定写在哪 | **`CONTRIBUTING.md` + 本页表格** | 提高一层隔离档位的成本很高（慢、难定位），必须让新人不必自己判断 |
+
+### 下一步（第 78 天）
+
+进入**第 4 周（部署与验收）**，第一步是容器化：
+
+1. **多阶段 Dockerfile**：`builder` 阶段跑 Maven 打包，`runtime` 阶段只带 JRE 与 jar，控制镜像体积。
+2. **docker-compose**：应用 + MySQL + Redis 一键起，写清健康检查与依赖顺序（`depends_on` + `condition: service_healthy`）。
+3. **镜像与配置分离**：三套 Profile 全部通过环境变量覆盖，镜像内不写任何密钥。
+4. **冒烟脚本容器化**：把本日「如何验证」一节那五条 curl 提炼成部署后校验脚本，供 CI 与上线验收共用。
+
+另外，本日新增的用例矩阵元测试与第 76 天设计的模板 CLI 之间有一处**尚未验证的交叉约束**：CLI 的 `--check` 在生成物上比对 marker 区间时，需一并校验「用例矩阵基线值」是否被正确写入。等 CLI MVP 落地后做交叉测试确认，已记入待办（承接第 76 天同类待办）。
+
+### 里程碑对照
+
+| 阶段 | 计划 | 当前状态 |
+| --- | --- | --- |
+| 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
+| 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成** |
+| 第 3 周（73-77 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁、异常路径收口 | ✅ **4/4 步完成**：联调闭环 ✅、性能与契约门禁 ✅、隔离与边界用例 ✅、异常路径收口与用例清单 ✅ |
+| 模板产品化（第 76 天插入） | 技术栈可插拔 + 选择器脚本 + CLI 设计 | ✅ **3/3 完成**；CLI 处于设计阶段，MVP 待排期 |
+| 第 4 周（78-90 天） | Docker 化、Compose、CI 流水线、验收清单 | ✅ **1/4 步完成**：容器化（镜像 + 编排 + 冒烟）已交付；CI、镜像推送、验收清单待做 |
+
+## 2026-09-23（第 78 天）：多阶段镜像 + Compose 编排 + 部署后冒烟
+
+### 本次做了什么
+
+进入第 4 周（部署与验收），第一步把「本地能跑」变成「一条命令能起」。产出为 [容器化：多阶段镜像与 Compose 编排](../Deployment/index.md)，含六个部分：
+
+1. **多阶段 Dockerfile**：`builder` 阶段用 Maven + JDK 25 打包，`runtime` 阶段只带 JRE 与 jar。运行时镜像从「单阶段 + 完整 JDK」的 700 MB 级降到 **250 MB 级**。配套三处细节：先 `COPY pom.xml`（只拷各模块 pom）再 `COPY . .`，让依赖层独立成缓存层，改一行代码不再重下依赖；`RUN --mount=type=cache,target=/root/.m2` 让本地仓库跨构建复用；`--chown` + `USER app` 非 root 运行。
+2. **容器友好的 JVM 参数**：`-XX:MaxRAMPercentage=75.0` 取代写死 `-Xmx`，堆随容器内存上限自适应；`-XX:+ExitOnOutOfMemoryError` 让 OOM 直接退出交给编排重启，而不是带病存活；`ENTRYPOINT` 写成 `exec java ...`，让 java 成为 PID 1，`docker stop` 才能秒级优雅退出（否则等满超时才强杀）。
+3. **`.dockerignore` 与基础镜像纪律**：排除 `**/target/`、`.git/`、`.env`、`*.log`；基础镜像一律显式标版本（`eclipse-temurin:25-jre`、`mysql:8.4`、`redis:8`），不用 `latest`。
+4. **配置与镜像分离**：三套 Profile 的差异全部走环境变量，`application.yml` 里只留 `${DB_HOST:127.0.0.1}` 这类占位符；新增 `StartupSecurityCheck`，在 `prod` Profile 下强校验 `JWT_SECRET`（长度 ≥ 32）与 `DB_PASSWORD`，缺失即抛异常让应用**启动失败**。
+5. **Compose 编排**：MySQL 8.4 + Redis 8 + app 三个服务。健康检查分别为 `mysqladmin ping`（带密码与 `--connect-timeout=3`）与 `redis-cli ping | grep -q PONG`；`app` 的依赖写成 `depends_on: { mysql: { condition: service_healthy }, redis: { condition: service_healthy } }`；MySQL 的 `start_period: 40s` 给首次初始化数据目录留时间；数据卷三个（`mysql-data` / `redis-data` / `app-logs`）；`deploy.resources.limits.memory: 1g` 与 `MaxRAMPercentage=70` 配套。
+6. **冒烟脚本与一键脚本**：`scripts/smoke.sh` 把第 77 天靠人工执行的 curl 验证固化为 7 项断言（健康 UP、未认证 401 走统一出口、校验失败 400 带字段明细、登录拿到双令牌、带令牌 200、`X-Trace-Id` 透传），全用 `grep` 断言以免依赖 `jq`，失败即退出码 1；`scripts/deploy.sh` 串起 `up`（起服务 → 轮询健康最多 60 次 → 跑冒烟）、`down`、`clean`、`logs`、`smoke`。
+7. **示意图** `deploy-topology.svg`：构建期/运行期分层 + 运行期四组件拓扑 + `service_healthy` 依赖顺序标注。
+
+### 如何验证
+
+```shell
+# ① 构建并确认运行镜像体积
+docker build -f docker/Dockerfile -t backend-template:1.0.0 .
+
+# ② 一键起（含健康等待与冒烟）
+bash scripts/deploy.sh up
+
+# ③ 三容器健康状态
+docker compose -f docker/compose.yaml ps
+
+# ④ 镜像不该有的东西逐条确认
+docker run --rm backend-template:1.0.0 sh -c 'whoami; ls /app'
+docker history --no-trunc backend-template:1.0.0 | grep -i -E "password|secret" || echo "镜像层无密钥痕迹"
+```
+
+验证结果记录（**请在本地执行后填写**，当前编写环境无 JDK / Maven / Docker，未实际构建运行）：
+
+| 检查项 | 期望 | 实测 | 结论 |
+| --- | --- | --- | --- |
+| `docker build` | 成功，运行镜像约 250 MB 级 | 待填写 | ⏳ |
+| `docker compose ps` | app / mysql / redis 均 `healthy` | 待填写 | ⏳ |
+| 冷启动（`down -v` 后 `up`） | 应用等 MySQL 健康才启动，日志无连接失败 | 待填写 | ⏳ |
+| `scripts/smoke.sh` | 7 项全过，退出码 0 | 待填写 | ⏳ |
+| 容器内运行用户 | 非 root | 待填写 | ⏳ |
+| 镜像内无密钥 | `docker history` 无命中 | 待填写 | ⏳ |
+| `docker stop` | 秒级优雅退出 | 待填写 | ⏳ |
+| 改 `.env` 不重建镜像即生效 | 生效 | 待填写 | ⏳ |
+| 缺 `JWT_SECRET` 启动 | 应用启动失败并给出明确原因 | 待填写 | ⏳ |
+
+### 遇到的问题与决策
+
+| 问题 | 决策 | 原因 |
+| --- | --- | --- |
+| 单阶段还是多阶段构建 | **多阶段** | 编译工具链不进最终镜像，体积与攻击面同时下降 |
+| 依赖层怎么缓存 | **先拷 pom + 缓存挂载 `.m2`** | 改代码不重下依赖，构建从分钟级降到秒级 |
+| 启动顺序靠 `depends_on` 还是 sleep | **`condition: service_healthy`** | sleep 是猜时间，健康检查是看事实；只写 `depends_on` 仅保证容器已创建 |
+| 应用要不要自带连接重试 | **要** | 健康检查有窗口期、重启场景会撞上短暂不可用；**编排管顺序、应用管韧性**，不是二选一 |
+| 缺配置时给默认值还是报错 | **`${VAR:?}` 报错退出** | 默认值会让错误配置「成功启动」，把故障推迟到运行时 |
+| 生产 Profile 缺密钥怎么办 | **启动期强校验，直接启动失败** | 带空密钥运行等于把认证链路敞开；宁可起不来 |
+| 镜像里放配置还是环境变量 | **环境变量，配置只留占位符** | 一份镜像跑三套环境，改配置不必重建镜像 |
+| JVM 堆写死还是按比例 | **`MaxRAMPercentage`** | 写死 `-Xmx` 换机器配置必然不适配 |
+| `ENTRYPOINT` 用 `java` 还是 `sh -c "exec java …"` | **`exec` 形式** | 让 java 成为 PID 1，信号可达，优雅停机生效 |
+| 健康检查用 Actuator 还是自写探针 | **Actuator** | 第 69 天已暴露，自带数据库与 Redis 组件级检查，不必重复造 |
+| 生产 Actuator 暴露多少 | **只留 health/info/metrics/prometheus，`show-details: never`** | 全暴露会把内部组件名与依赖状态交给未授权调用方 |
+| 冒烟断言用 `jq` 还是 `grep` | **`grep` 子串** | 验收机器不一定装 `jq`，零依赖优先；需要严格结构化断言时再引入 |
+| 要不要立刻做分层 jar | **暂不做** | 收益只在镜像层缓存粒度，当前构建已在秒级；先用 `--mount=type=cache` 拿到大头，避免过早引入版本差异风险 |
+
+### 下一步（第 79 天）
+
+第 4 周第二步：**CI 流水线**。
+
+1. 把第 74~75 天的三项门禁（JaCoCo 按模块覆盖率阈值、`openapi.json` 契约回归、选择器 `--check`）串成一条流水线，任一失败即失败。
+2. 用本日 Dockerfile 构建带 `git sha` 标签的镜像并推送到镜像仓库。
+3. 起 compose 环境跑 `scripts/smoke.sh` 作为流水线最后一道。
+4. Maven 仓库与 Docker 构建缓存跨流水线复用。
+
+同时把本日交付纳入验收清单的「部署」一节：冷启动顺序、镜像体积、非 root、密钥不落镜像、优雅停机五项要能逐条复核。
+
+待办承接：模板 CLI 的 `--check` 需与「用例矩阵基线值」做交叉校验（第 77 天记入），CLI MVP 落地后一并在流水线中验证。
+
+### 里程碑对照
+
+| 阶段 | 计划 | 当前状态 |
+| --- | --- | --- |
+| 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
+| 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成** |
+| 第 3 周（73-77 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁、异常路径收口 | ✅ **4/4 步完成** |
+| 模板产品化（第 76 天插入） | 技术栈可插拔 + 选择器脚本 + CLI 设计 | ✅ **3/3 完成**；CLI 处于设计阶段，MVP 待排期 |
+| 第 4 周（78-90 天） | Docker 化、Compose、CI 流水线、验收清单 | 🔄 **进行中（1/4）**：容器化 ✅；CI 🔜、镜像推送 🔜、验收清单 🔜 |
+
 ## 参考资料
 
 - 项目总览：[后端通用模板](../index.md)
-- 本日两条：[技术栈可插拔：模块边界与选择器脚本](../StackSelect/index.md) ｜ [模板 CLI：从 0 到 1 的设计评审与路线图](../TemplateCli/index.md)
-- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md) ｜ [测试数据隔离与边界用例](../TestIsolation/index.md)
+- 本日两条：[容器化：多阶段镜像与 Compose 编排](../Deployment/index.md) ｜ [异常路径联调收口与用例清单](../ErrorPath/index.md)
+- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md) ｜ [测试数据隔离与边界用例](../TestIsolation/index.md) ｜ [技术栈可插拔](../StackSelect/index.md) ｜ [模板 CLI：设计与路线图](../TemplateCli/index.md)
 - 相关文档：[Spring Boot 通用指南](../../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md)

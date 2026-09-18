@@ -148,6 +148,8 @@ llm-app/
 - [LangChain](../LangChain/index.md)：把「模型调用、消息、工具、结构化输出、检索」装配成框架的路线，含与本页「不引入框架、直接调 SDK」的分工判据
 - [提示词工程](../PromptEngineering/index.md)：提示词结构、few-shot、思维链与效果评估
 - [Agent 应用](../Agent/index.md)：自主规划、工具调用、多智能体与安全边界
+- [多模态应用](../Multimodal/index.md)：图像、语音、视频模型的接入方式与工程链路，把「纯文本应用」扩展到多模态输入
+- [大模型微调](../FineTuning/index.md)：把「行为」固化下来的那一层——什么时候该用训练而不是提示词与检索，以及从数据到上线的完整链路
 - [OpenClaw](../OpenClaw/index.md)：开箱即用的智能体工具
 - [Spring Cloud 消息驱动](../../Backend/SpringCloud/Stream/index.md)：异步任务与事件驱动的工程化基础
 

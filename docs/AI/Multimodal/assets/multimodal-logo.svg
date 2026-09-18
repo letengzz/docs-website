@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="480" height="480" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="480" height="480" fill="#FFFFFF"/>
+  <rect x="40" y="40" width="400" height="400" rx="48" fill="#F5F3FF" stroke="#7C3AED" stroke-width="4"/>
+
+  <!-- 图像：太阳 + 山 -->
+  <rect x="80" y="80" width="150" height="150" rx="24" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
+  <circle cx="170" cy="124" r="10" fill="#2563EB"/>
+  <path d="M98,196 L132,150 L160,180 L188,140 L212,196 Z" fill="#2563EB" opacity="0.85"/>
+
+  <!-- 语音：波形条 -->
+  <rect x="250" y="80" width="150" height="150" rx="24" fill="#F0FDFA" stroke="#0D9488" stroke-width="2.5"/>
+  <rect x="277" y="160" width="14" height="30" rx="7" fill="#0D9488"/>
+  <rect x="301" y="130" width="14" height="60" rx="7" fill="#0D9488"/>
+  <rect x="325" y="100" width="14" height="90" rx="7" fill="#0D9488"/>
+  <rect x="349" y="130" width="14" height="60" rx="7" fill="#0D9488"/>
+  <rect x="373" y="160" width="14" height="30" rx="7" fill="#0D9488"/>
+
+  <!-- 视频：播放三角 -->
+  <rect x="80" y="250" width="150" height="150" rx="24" fill="#FFF7ED" stroke="#EA580C" stroke-width="2.5"/>
+  <path d="M138,290 L188,325 L138,360 Z" fill="#EA580C"/>
+  <rect x="100" y="300" width="16" height="50" rx="4" fill="#EA580C" opacity="0.55"/>
+  <rect x="204" y="300" width="16" height="50" rx="4" fill="#EA580C" opacity="0.55"/>
+
+  <!-- 文档：文本行 -->
+  <rect x="250" y="250" width="150" height="150" rx="24" fill="#ECFDF5" stroke="#059669" stroke-width="2.5"/>
+  <rect x="288" y="286" width="90" height="80" rx="8" fill="none" stroke="#059669" stroke-width="3"/>
+  <line x1="302" y1="312" x2="364" y2="312" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+  <line x1="302" y1="330" x2="364" y2="330" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+  <line x1="302" y1="348" x2="338" y2="348" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- 中心：融合 -->
+  <circle cx="240" cy="240" r="44" fill="#FFFFFF" stroke="#7C3AED" stroke-width="4"/>
+  <path d="M240,212 L249,231 L268,240 L249,249 L240,268 L231,249 L212,240 L231,231 Z" fill="#7C3AED"/>
+</svg>

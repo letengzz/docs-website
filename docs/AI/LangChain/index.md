@@ -102,6 +102,8 @@ Python 与 TypeScript 两套实现**独立发版**，主次版本号相同不代
 - [Agent 应用](../Agent/index.md)：Agent 的通用原理、多智能体与安全边界
 - [提示词工程](../PromptEngineering/index.md)：上下文工程里「写给模型的那部分」
 - [本地模型部署](../LocalModel/index.md)：把模型换成本地推理服务时的接口与显存问题
+- [多模态应用](../Multimodal/index.md)：图片、音频这类内容块怎么进消息——多模态输入的框架侧接法
+- [大模型微调](../FineTuning/index.md)：框架解决**装配**，微调解决**行为**——输出格式与判断口径不稳定时的另一条路
 
 ## 参考资料
 

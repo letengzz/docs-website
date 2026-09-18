@@ -133,3 +133,5 @@ def chat(prompt: str, model: str = "chat-default") -> str:
 - llama.cpp 官方仓库：https://github.com/ggml-org/llama.cpp
 - Ollama OpenAI 兼容接口：https://docs.ollama.com/openai
 - 性能与压测：[性能调优与压测](../Performance/index.md)
+- 多模态模型的推理服务：[多模态应用](../../Multimodal/index.md)
+- 多 LoRA 与适配器热插拔的服务化参数：[适配器服务化与多 LoRA](../../FineTuning/Serving/index.md)

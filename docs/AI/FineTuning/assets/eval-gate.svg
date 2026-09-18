@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 432" width="760" height="432" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="432" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">评测漏斗：把「微调有没有用」变成可判定的事</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">没有对照就没有结论——同一批题，基座与微调各跑一次</text>
+  <rect x="140" y="84" width="480" height="50" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="102.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">① 任务指标</text>
+  <text x="380" y="119" text-anchor="middle" font-size="7.5" fill="#1D4ED8">准确率 / 格式合规率 / 工具名命中 / 人工抽检</text>
+  <rect x="180" y="152" width="400" height="50" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="170.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">② 与基座对照</text>
+  <text x="380" y="187" text-anchor="middle" font-size="7.5" fill="#6D28D9">同一批题、同一套解码参数</text>
+  <rect x="220" y="220" width="320" height="50" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="238.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">③ 回归集</text>
+  <text x="380" y="255" text-anchor="middle" font-size="7.5" fill="#B45309">不能把原来会做的做坏了</text>
+  <rect x="260" y="288" width="240" height="50" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="306.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">④ 门禁阈值</text>
+  <text x="380" y="323" text-anchor="middle" font-size="7.5" fill="#B91C1C">例如回归不得超过 0.5%</text>
+  <line x1="380" y1="134" x2="380" y2="152" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="202" x2="380" y2="220" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="270" x2="380" y2="288" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="338" x2="380" y2="360" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="170" y="360" width="420" height="50" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="378.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">⑤ 通过才上线；不通过就回滚 adapter</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

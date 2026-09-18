@@ -19,3 +19,5 @@ AI Agent（智能体）是能**自主规划、调用工具、完成任务**的�
 - [大模型应用开发 · Agent 框架与应用集成](../LLMApp/AgentIntegration/index.md)：框架选型、集成清单与固定工作流 vs Agent 的判断
 - [大模型应用开发 · 工具与函数调用](../LLMApp/FunctionCalling/index.md)：JSON Schema、strict 模式与并行调用的可运行示例
 - [LangChain](../LangChain/index.md)：Agent 装配的框架侧落点——`create_agent` 与六个中间件钩子，以及 v1 与 `AgentExecutor` 时代的关系
+- [多模态应用](../Multimodal/index.md)：把「看」与「听」交给专用模型再交回 Agent——多模态能力作为工具接入的做法
+- [大模型微调](../FineTuning/index.md)：让模型稳定按你的格式发出工具调用——**工具调用习惯属于「行为」**，是微调的典型场景

@@ -50,6 +50,8 @@ export const BaseProject = [
           { text: "测试数据隔离与边界用例", link: "/project/Base/BackendTemplate/TestIsolation/index.md" },
           { text: "技术栈可插拔：模块边界与选择器脚本", link: "/project/Base/BackendTemplate/StackSelect/index.md" },
           { text: "模板 CLI：设计与路线图", link: "/project/Base/BackendTemplate/TemplateCli/index.md" },
+          { text: "异常路径联调收口与用例清单", link: "/project/Base/BackendTemplate/ErrorPath/index.md" },
+          { text: "容器化：多阶段镜像与 Compose 编排", link: "/project/Base/BackendTemplate/Deployment/index.md" },
           { text: "进展记录", link: "/project/Base/BackendTemplate/Progress/index.md" },
         ],
       },

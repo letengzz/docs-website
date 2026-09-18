@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">LoRA 与 QLoRA：改什么、不改什么</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">冻结底座、只训练低秩增量；QLoRA 再把冻结的那部分压到 4 bit</text>
+  <rect x="40" y="88" width="320" height="58" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="200" y="106.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">冻结的底座 W</text>
+  <text x="200" y="123" text-anchor="middle" font-size="7.5" fill="#334155">不更新、也不存优化器状态</text>
+  <rect x="40" y="168" width="320" height="58" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="200" y="186.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">低秩增量 B·A</text>
+  <text x="200" y="203" text-anchor="middle" font-size="7.5" fill="#6D28D9">r = 8~64；只有它参与训练</text>
+  <rect x="40" y="248" width="320" height="58" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="200" y="266.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">h = Wx + (α/r)·BAx</text>
+  <text x="200" y="283" text-anchor="middle" font-size="7.5" fill="#1D4ED8">推理时可合并回一个权重</text>
+  <line x1="200" y1="146" x2="200" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="200" y1="226" x2="200" y2="248" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="400" y="88" width="320" height="58" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="560" y="106.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">NF4 量化底座（QLoRA）</text>
+  <text x="560" y="123" text-anchor="middle" font-size="7.5" fill="#047857">显存约为 BF16 的 1/4</text>
+  <rect x="400" y="168" width="320" height="58" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="560" y="186.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">双量化</text>
+  <text x="560" y="203" text-anchor="middle" font-size="7.5" fill="#0F766E">量化常数再量化，约再省 0.4 bit/参数</text>
+  <rect x="400" y="248" width="320" height="58" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="560" y="266.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">Paged Optimizer</text>
+  <text x="560" y="283" text-anchor="middle" font-size="7.5" fill="#B45309">显存尖峰时换出优化器状态，防 OOM</text>
+  <line x1="560" y1="146" x2="560" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="560" y1="226" x2="560" y2="248" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="40" y="334" width="680" height="62" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="352.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">能力边界</text>
+  <text x="380" y="369" text-anchor="middle" font-size="7.5" fill="#B91C1C">可训练参数通常只占 0.1%~2%，adapter 几 MB~几十 MB，可插拔可回滚——但它不会让模型记住新事实</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

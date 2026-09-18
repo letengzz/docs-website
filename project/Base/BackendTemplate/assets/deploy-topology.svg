@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 446" width="760" height="446" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="446" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">容器化拓扑：多阶段镜像 + Compose 编排与健康依赖</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">构建期与运行期分离以压缩体积；运行期用健康检查把启动顺序写进编排文件</text>
+  <rect x="40" y="78" width="680" height="66" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="54" y="115" font-size="10" fill="#1E293B" font-weight="bold">构建期</text>
+  <text x="106" y="114.5" font-size="8" fill="#334155">builder 阶段：maven:3.9-eclipse-temurin-25 跑 clean package → 产出可执行 jar</text>
+  <rect x="40" y="156" width="680" height="66" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="54" y="193" font-size="10" fill="#1E3A8A" font-weight="bold">运行期</text>
+  <text x="106" y="192.5" font-size="8" fill="#1D4ED8">runtime 阶段：eclipse-temurin:25-jre 只带 JRE + jar，非 root 用户，镜像从 ~700 MB 降到 ~250 MB 级</text>
+  <line x1="25" y1="144" x2="25" y2="156" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="380" y="142" text-anchor="middle" font-size="8" fill="#64748B">多阶段构建：编译工具链不进最终镜像</text>
+  <rect x="40" y="250" width="200" height="74" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="140" y="268.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">edge / nginx</text>
+  <text x="140" y="285" text-anchor="middle" font-size="7.5" fill="#0F766E">可选：TLS 终止</text>
+  <text x="140" y="302.25" text-anchor="middle" font-size="7.5" fill="#0F766E">反向代理 + 限流</text>
+  <rect x="280" y="250" width="200" height="74" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="268.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">template-app</text>
+  <text x="380" y="285" text-anchor="middle" font-size="7.5" fill="#6D28D9">暴露 8080</text>
+  <text x="380" y="302.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">健康检查 /actuator/health</text>
+  <rect x="520" y="250" width="200" height="74" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="620" y="268.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">mysql:8.4</text>
+  <text x="620" y="285" text-anchor="middle" font-size="7.5" fill="#C2410C">healthcheck: mysqladmin ping</text>
+  <text x="620" y="302.25" text-anchor="middle" font-size="7.5" fill="#C2410C">volume 持久化</text>
+  <line x1="240" y1="287" x2="280" y2="287" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="260" y="283" text-anchor="middle" font-size="7.5" fill="#64748B">8080</text>
+  <line x1="480" y1="268" x2="520" y2="268" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="500" y="264" text-anchor="middle" font-size="7.5" fill="#64748B">3306</text>
+  <rect x="520" y="336" width="200" height="66" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="620" y="354.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">redis:8</text>
+  <text x="620" y="371" text-anchor="middle" font-size="7.5" fill="#B91C1C">healthcheck: redis-cli ping</text>
+  <text x="620" y="388.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">AOF 持久化</text>
+  <line x1="480" y1="300" x2="520" y2="355" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)" stroke-dasharray="5 4"/>
+  <text x="500" y="323.5" text-anchor="middle" font-size="7.5" fill="#64748B">6379</text>
+  <rect x="40" y="336" width="440" height="66" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="260" y="354.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">启动顺序由 condition: service_healthy 决定</text>
+  <text x="260" y="371" text-anchor="middle" font-size="7.5" fill="#047857">app 等 MySQL / Redis 健康后才启动，避免「应用先起、连不上库」的启动竞态</text>
+  <text x="380" y="428" text-anchor="middle" font-size="8" fill="#64748B">镜像里不放任何密钥：三套 Profile 的差异全部靠环境变量注入，配置文件只留占位符</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

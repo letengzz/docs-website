@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 448" width="760" height="448" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="448" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">实战服务架构：两个接口、一条接入层、一套横切能力</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">骨架对了，换模型只是改一行配置；骨架错了，换什么模型都不稳</text>
+  <rect x="24" y="150" width="116" height="62" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="82" y="168.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">客户端</text>
+  <text x="82" y="185" text-anchor="middle" font-size="7.5" fill="#334155">图片 / 音频</text>
+  <line x1="140" y1="181" x2="166" y2="181" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="166" y="132" width="152" height="98" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="242" y="150.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">服务入口</text>
+  <text x="242" y="167" text-anchor="middle" font-size="7.8" fill="#1D4ED8">/v1/vision/ask</text>
+  <text x="242" y="184.94" text-anchor="middle" font-size="7.8" fill="#1D4ED8">/v1/speech/transcribe</text>
+  <text x="242" y="202.88" text-anchor="middle" font-size="7.8" fill="#1D4ED8">生成 traceId</text>
+  <line x1="318" y1="181" x2="344" y2="181" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="344" y="132" width="148" height="98" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="418" y="150.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">预处理</text>
+  <text x="418" y="167" text-anchor="middle" font-size="7.8" fill="#047857">方向校正 + 限长边</text>
+  <text x="418" y="184.94" text-anchor="middle" font-size="7.8" fill="#047857">FFmpeg 归一 16 kHz</text>
+  <text x="418" y="202.88" text-anchor="middle" font-size="7.8" fill="#047857">超限直接拒收</text>
+  <line x1="492" y1="181" x2="518" y2="181" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="518" y="132" width="218" height="98" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="627" y="150.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">模型接入层</text>
+  <text x="627" y="167" text-anchor="middle" font-size="7.8" fill="#6D28D9">多后端链 + 超时</text>
+  <text x="627" y="184.94" text-anchor="middle" font-size="7.8" fill="#6D28D9">内容校验不过即降级</text>
+  <text x="627" y="202.88" text-anchor="middle" font-size="7.8" fill="#6D28D9">记录后端与耗时</text>
+  <line x1="627" y1="230" x2="627" y2="250" stroke="#7C3AED" stroke-width="1.6"/>
+  <line x1="30" y1="250" x2="627" y2="250" stroke="#7C3AED" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <rect x="24" y="250" width="238" height="56" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="143" y="268.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">自托管 vLLM</text>
+  <text x="143" y="285" text-anchor="middle" font-size="8" fill="#6D28D9">Qwen 系 VLM</text>
+  <line x1="143" y1="250" x2="143" y2="232" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="272" y="250" width="238" height="56" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="391" y="268.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">云端 API</text>
+  <text x="391" y="285" text-anchor="middle" font-size="8" fill="#1D4ED8">旗舰多模态</text>
+  <line x1="391" y1="250" x2="391" y2="232" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="520" y="250" width="238" height="56" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="639" y="268.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">本地 ASR</text>
+  <text x="639" y="285" text-anchor="middle" font-size="8" fill="#0F766E">faster-whisper</text>
+  <line x1="639" y1="250" x2="639" y2="232" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="60" y="340" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">横切能力（每个请求都要过）</text>
+  <rect x="24" y="352" width="238" height="58" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="143" y="370.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">输出校验</text>
+  <text x="143" y="387" text-anchor="middle" font-size="8" fill="#B91C1C">非空 / 无重复</text>
+  <text x="143" y="405.4" text-anchor="middle" font-size="8" fill="#B91C1C">完整性 / 业务规则</text>
+  <rect x="272" y="352" width="238" height="58" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="391" y="370.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">日志与计时</text>
+  <text x="391" y="387" text-anchor="middle" font-size="8" fill="#B45309">预处理耗时</text>
+  <text x="391" y="405.4" text-anchor="middle" font-size="8" fill="#B45309">推理耗时 / token</text>
+  <rect x="520" y="352" width="238" height="58" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="639" y="370.2" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">错误出口</text>
+  <text x="639" y="387" text-anchor="middle" font-size="8" fill="#334155">业务码不返堆栈</text>
+  <text x="639" y="405.4" text-anchor="middle" font-size="8" fill="#334155">traceId 串联</text>
+  <text x="380" y="434" text-anchor="middle" font-size="9.5" fill="#B91C1C">验收：五条冒烟用例全绿 · 并发 5 请求不互相拖垮 · 错误路径返回业务码</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

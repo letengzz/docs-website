@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 428" width="760" height="428" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="428" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">异常路径的五道收口与统一出口</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">异常发生在进 Controller 之前，必须逐道拦；拦完汇入同一套响应结构</text>
+  <rect x="25" y="76" width="110" height="78" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="80" y="94.2" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">请求进入</text>
+  <text x="80" y="111" text-anchor="middle" font-size="6.8" fill="#334155">任意客户端</text>
+  <line x1="135" y1="115" x2="145" y2="115" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="145" y="76" width="110" height="78" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="200" y="94.2" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">① 大小守卫</text>
+  <text x="200" y="111" text-anchor="middle" font-size="6.8" fill="#B91C1C">按 Content-Length</text>
+  <text x="200" y="126.64" text-anchor="middle" font-size="6.8" fill="#B91C1C">提前拒绝 413</text>
+  <line x1="255" y1="115" x2="265" y2="115" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="200" y1="154" x2="200" y2="196" stroke="#059669" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="265" y="76" width="110" height="78" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="320" y="94.2" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">② JSON 解析</text>
+  <text x="320" y="111" text-anchor="middle" font-size="6.8" fill="#B45309">解析失败</text>
+  <text x="320" y="126.64" text-anchor="middle" font-size="6.8" fill="#B45309">400 / 40001</text>
+  <line x1="375" y1="115" x2="385" y2="115" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="320" y1="154" x2="320" y2="196" stroke="#059669" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="385" y="76" width="110" height="78" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="440" y="94.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">③ 枚举转换</text>
+  <text x="440" y="111" text-anchor="middle" font-size="6.8" fill="#1D4ED8">非法取值</text>
+  <text x="440" y="126.64" text-anchor="middle" font-size="6.8" fill="#1D4ED8">400 / 40003</text>
+  <line x1="495" y1="115" x2="505" y2="115" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="440" y1="154" x2="440" y2="196" stroke="#059669" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="505" y="76" width="110" height="78" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="560" y="94.2" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">④ 业务处理</text>
+  <text x="560" y="111" text-anchor="middle" font-size="6.8" fill="#6D28D9">乐观锁冲突</text>
+  <text x="560" y="126.64" text-anchor="middle" font-size="6.8" fill="#6D28D9">409 / 40004</text>
+  <line x1="615" y1="115" x2="625" y2="115" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="560" y1="154" x2="560" y2="196" stroke="#059669" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="625" y="76" width="110" height="78" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="680" y="94.2" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">⑤ 路由兜底</text>
+  <text x="680" y="111" text-anchor="middle" font-size="6.8" fill="#0F766E">404 / 405</text>
+  <text x="680" y="126.64" text-anchor="middle" font-size="6.8" fill="#0F766E">400 / 40005</text>
+  <line x1="680" y1="154" x2="680" y2="196" stroke="#059669" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="25" y="196" width="710" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="214.2" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">统一响应出口 Result</text>
+  <text x="380" y="231" text-anchor="middle" font-size="8.4" fill="#047857">{ code, message, data, traceId } —— 结构对所有异常路径完全一致</text>
+  <text x="380" y="250.32" text-anchor="middle" font-size="8.4" fill="#047857">HTTP 状态码表达传输语义，业务码表达可执行的处置方式</text>
+  <text x="380" y="292" text-anchor="middle" font-size="10.5" fill="#0F172A" font-weight="bold">三条铁律（写进团队约定）</text>
+  <rect x="25" y="302" width="226" height="62" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="138" y="320.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">不泄露内部信息</text>
+  <text x="138" y="337" text-anchor="middle" font-size="8" fill="#B91C1C">无堆栈 · 无类名</text>
+  <text x="138" y="355.4" text-anchor="middle" font-size="8" fill="#B91C1C">无 SQL 片段 · 无原始报文</text>
+  <rect x="267" y="302" width="226" height="62" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="320.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">全部带 traceId</text>
+  <text x="380" y="337" text-anchor="middle" font-size="8" fill="#B45309">响应头与响应体一致</text>
+  <text x="380" y="355.4" text-anchor="middle" font-size="8" fill="#B45309">可与日志串联定位</text>
+  <rect x="509" y="302" width="226" height="62" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="622" y="320.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">用例矩阵可核对</text>
+  <text x="622" y="337" text-anchor="middle" font-size="8" fill="#1D4ED8">每格都有结论</text>
+  <text x="622" y="355.4" text-anchor="middle" font-size="8" fill="#1D4ED8">元测试守住用例数基线</text>
+  <text x="380" y="390" text-anchor="middle" font-size="9.5" fill="#B91C1C">反例：让框架默认行为接管异常 → 结构与 Result 不一致，前端每个接口都要写特例</text>
+  <text x="380" y="412" text-anchor="middle" font-size="9" fill="#334155">代价：联调阶段最常见的返工来源，且上线后异常路径占比往往超过 5%</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

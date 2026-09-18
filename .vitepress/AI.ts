@@ -132,3 +132,40 @@ export const AI_LocalModel = [
     ],
   },
 ];
+
+export const AI_Multimodal = [
+  {
+    text: "多模态应用",
+    link: "/docs/AI/Multimodal/index.md",
+    collapsed: true,
+    items: [
+      { text: "概述", link: "/docs/AI/Multimodal/Overview/index.md" },
+      { text: "环境搭建", link: "/docs/AI/Multimodal/Environment/index.md" },
+      { text: "图像与文档理解", link: "/docs/AI/Multimodal/ImageUnderstanding/index.md" },
+      { text: "语音处理", link: "/docs/AI/Multimodal/SpeechProcessing/index.md" },
+      { text: "视频处理", link: "/docs/AI/Multimodal/VideoProcessing/index.md" },
+      { text: "模型接入与选型", link: "/docs/AI/Multimodal/ModelAccess/index.md" },
+      { text: "实战：图片问答 + 语音转写服务", link: "/docs/AI/Multimodal/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/Multimodal/FAQ/index.md" },
+    ],
+  },
+];
+
+export const AI_FineTuning = [
+  {
+    text: "大模型微调",
+    link: "/docs/AI/FineTuning/index.md",
+    collapsed: true,
+    items: [
+      { text: "微调概述与选型", link: "/docs/AI/FineTuning/Overview/index.md" },
+      { text: "环境与显存预算", link: "/docs/AI/FineTuning/Environment/index.md" },
+      { text: "数据工程", link: "/docs/AI/FineTuning/Dataset/index.md" },
+      { text: "LoRA 与 QLoRA", link: "/docs/AI/FineTuning/LoRA/index.md" },
+      { text: "指令微调与偏好对齐", link: "/docs/AI/FineTuning/SFT/index.md" },
+      { text: "评测与发布门禁", link: "/docs/AI/FineTuning/Evaluation/index.md" },
+      { text: "适配器服务化与多 LoRA", link: "/docs/AI/FineTuning/Serving/index.md" },
+      { text: "实战：7B 端到端", link: "/docs/AI/FineTuning/Practice/index.md" },
+      { text: "常见问题与排错", link: "/docs/AI/FineTuning/FAQ/index.md" },
+    ],
+  },
+];

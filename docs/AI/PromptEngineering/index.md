@@ -19,3 +19,5 @@
 - [大模型应用开发 · 上下文与记忆管理](../LLMApp/ContextMemory/index.md)：令牌预算与历史裁剪的工程做法
 - [Agent 应用](../Agent/index.md)：提示词之上的自主规划与工具编排
 - [LangChain · 记忆与上下文](../LangChain/Memory/index.md)：四层记忆与摘要压缩——把「上下文预算」这件事落到框架里的做法
+- [多模态应用](../Multimodal/index.md)：多模态输入的提示组织方式——图文混排的顺序影响、语音转写后如何续接文本链路
+- [大模型微调](../FineTuning/index.md)：当提示词榨不出效果、而需要改的又是**行为**而不是知识时，才轮到这一层

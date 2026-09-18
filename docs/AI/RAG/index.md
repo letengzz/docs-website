@@ -105,6 +105,8 @@ print("引用片段:", [h["chunk_id"] for h in hits])
 - [LangChain · 实战：带人工审批的检索增强 Agent](../LangChain/Practice/index.md)：把检索链路装配进 Agent 并加上人工审批中断，本页讲「检索」那一段，那里讲「装配」那一段
 - [提示词工程](../PromptEngineering/index.md)：让模型"只依据材料回答"的指令设计
 - [Agent 应用 · 记忆与上下文](../Agent/MemoryContext/index.md)：检索作为长期记忆的使用方式
+- [多模态应用](../Multimodal/index.md)：文档版面解析、多模态嵌入与「以图搜图/以文搜图」——本页讲文本检索那条链，那里讲非文本信号怎么解析与编码
+- [大模型微调](../FineTuning/index.md)：与检索互补的另一半——**改行为用微调、补事实用检索**，两者的边界判据见该专题概述页
 
 ## 参考资料
 

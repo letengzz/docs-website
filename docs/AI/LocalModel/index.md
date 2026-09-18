@@ -100,6 +100,8 @@ print(resp.choices[0].message.content)
 - [OpenClaw](../OpenClaw/index.md)：可搭配 Ollama 本地模型运行的智能体工具
 - [Java · LangChain4j 模型集成](../../Backend/Java/Frame/Langchain4j/LlmIntegration/index.md)：Java 生态接入本地模型的写法
 - [LangChain · 环境与模型接入](../LangChain/Environment/index.md)：Python 侧把本地推理服务接进框架（`init_chat_model` 与版本锁定）
+- [多模态应用](../Multimodal/index.md)：本地跑视觉与语音模型（VLM、Whisper 系）的显存账、量化与接入方式
+- [大模型微调](../FineTuning/index.md)：训练侧的显存预算与「一份底座挂多个 LoRA」的服务化形态，与本地部署共用同一套显存规划结论
 - [Kubernetes 部署](../../Ops/Kubernetes/Deployment/index.md)：容器化与 GPU 工作负载编排
 
 ## 验证方式

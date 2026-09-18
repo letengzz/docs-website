@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 394" width="760" height="394" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="394" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">视频处理链路：切而不是喂</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">把一小时视频拆成几十个小任务，是成本与延迟唯一可控的做法</text>
+  <rect x="30" y="80" width="132" height="72" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="96" y="98.2" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">视频输入</text>
+  <text x="96" y="115" text-anchor="middle" font-size="7.5" fill="#334155">mp4 / mkv / webm</text>
+  <line x1="162" y1="116" x2="172" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="172" y="80" width="132" height="72" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.6"/>
+  <text x="238" y="98.2" text-anchor="middle" font-size="9.5" fill="#155E75" font-weight="bold">① 解封装</text>
+  <text x="238" y="115" text-anchor="middle" font-size="7.5" fill="#0E7490">分离音轨</text>
+  <text x="238" y="132.25" text-anchor="middle" font-size="7.5" fill="#0E7490">读出时长帧率</text>
+  <line x1="304" y1="116" x2="314" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="314" y="80" width="132" height="72" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="98.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 抽帧</text>
+  <text x="380" y="115" text-anchor="middle" font-size="7.5" fill="#1D4ED8">按间隔 / 关键帧</text>
+  <text x="380" y="132.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">建立帧号↔秒</text>
+  <line x1="446" y1="116" x2="456" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="456" y="80" width="132" height="72" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="522" y="98.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">③ 分段理解</text>
+  <text x="522" y="115" text-anchor="middle" font-size="7.5" fill="#6D28D9">帧 + 该段转写</text>
+  <text x="522" y="132.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">VLM 逐段摘要</text>
+  <line x1="588" y1="116" x2="598" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="598" y="80" width="132" height="72" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="664" y="98.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">④ 汇总输出</text>
+  <text x="664" y="115" text-anchor="middle" font-size="7.5" fill="#047857">纯文本 LLM 合并</text>
+  <text x="664" y="132.25" text-anchor="middle" font-size="7.5" fill="#047857">带时间戳的事件</text>
+  <text x="380" y="172" text-anchor="middle" font-size="8.5" fill="#065F46">阶段 ④ 一定要用纯文本模型：此时信息已压缩成文本，不必再花视觉 token</text>
+  <text x="60" y="204" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">抽帧策略：帧率是视频成本的总开关</text>
+  <rect x="30" y="216" width="168" height="82" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="114" y="234.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">口播 / 会议</text>
+  <text x="114" y="251" text-anchor="middle" font-size="7.5" fill="#C2410C">每 2~5 秒 1 帧</text>
+  <text x="114" y="268.25" text-anchor="middle" font-size="7.5" fill="#C2410C">信息几乎都在音频</text>
+  <text x="114" y="285.5" text-anchor="middle" font-size="7.5" fill="#C2410C">务必同时转写音轨</text>
+  <rect x="210" y="216" width="168" height="82" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="294" y="234.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">操作演示</text>
+  <text x="294" y="251" text-anchor="middle" font-size="7.5" fill="#1D4ED8">每 1 秒 1 帧</text>
+  <text x="294" y="268.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">场景切换处补帧</text>
+  <text x="294" y="285.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">要看清界面变化</text>
+  <rect x="390" y="216" width="168" height="82" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="474" y="234.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">动作 / 监控</text>
+  <text x="474" y="251" text-anchor="middle" font-size="7.5" fill="#B91C1C">关键帧 + 事件片段</text>
+  <text x="474" y="268.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">需要时序细节</text>
+  <text x="474" y="285.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">不能全量抽帧</text>
+  <rect x="570" y="216" width="168" height="82" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="654" y="234.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">短视频理解</text>
+  <text x="654" y="251" text-anchor="middle" font-size="7.5" fill="#6D28D9">场景切分</text>
+  <text x="654" y="268.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">每段取首中尾 3 帧</text>
+  <text x="654" y="285.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">兼顾节奏与成本</text>
+  <text x="380" y="322" text-anchor="middle" font-size="9.5" fill="#B91C1C">反例：1 分钟视频按 30 fps 全帧 = 1800 帧，成本与延迟双双失控</text>
+  <text x="380" y="346" text-anchor="middle" font-size="9.5" fill="#1E3A8A">正解：先场景切分，再对每个片段取代表帧，最后逐段摘要后合并</text>
+  <text x="380" y="376" text-anchor="middle" font-size="9.5" fill="#334155">抽帧后立刻生成帧号 → 秒的映射文件，否则模型给的时间点无法还原</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
