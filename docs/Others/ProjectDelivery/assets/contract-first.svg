@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 408" width="760" height="408" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="408" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">契约先行：把联调从「对设计」变成「对差异」</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">契约是前后端之间唯一的真相来源；它一旦能被 CI diff，破坏性变更就拦得住</text>
+  <rect x="40" y="80" width="300" height="56" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="190" y="98.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">先写契约</text>
+  <text x="190" y="115" text-anchor="middle" font-size="7.5" fill="#6D28D9">OpenAPI / JSON Schema + 错误码表</text>
+  <text x="190" y="132.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">路径、字段、状态码、示例</text>
+  <rect x="420" y="80" width="300" height="56" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="570" y="98.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">再并行开工</text>
+  <text x="570" y="115" text-anchor="middle" font-size="7.5" fill="#047857">前端按 Mock 开发，后端按契约实现</text>
+  <text x="570" y="132.25" text-anchor="middle" font-size="7.5" fill="#047857">联调时只对差异，不重新对设计</text>
+  <line x1="340" y1="108" x2="420" y2="108" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="190" y1="136" x2="190" y2="176" stroke="#CBD5E1" stroke-width="1.2"/>
+  <line x1="570" y1="136" x2="570" y2="176" stroke="#CBD5E1" stroke-width="1.2"/>
+  <rect x="40" y="176" width="300" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="190" y="194.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">契约变更管理</text>
+  <text x="190" y="211" text-anchor="middle" font-size="7.5" fill="#1D4ED8">新增字段：可选、向后兼容，可随时发</text>
+  <text x="190" y="228.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">改字段类型 / 删字段：破坏性变更，必须走版本</text>
+  <text x="190" y="245.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">变更必须同步：契约 → 前端 → 后端 → 文档</text>
+  <rect x="420" y="176" width="300" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="570" y="194.2" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">契约测试与门禁</text>
+  <text x="570" y="211" text-anchor="middle" font-size="7.5" fill="#B45309">CI 里导出 openapi.json 与基线做 diff</text>
+  <text x="570" y="228.25" text-anchor="middle" font-size="7.5" fill="#B45309">出现破坏性变更即失败，要求显式确认</text>
+  <text x="570" y="245.5" text-anchor="middle" font-size="7.5" fill="#B45309">Mock Server 与实现共用同一份契约</text>
+  <rect x="40" y="292" width="680" height="74" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="310.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">一份契约要能回答的四个问题</text>
+  <text x="380" y="327" text-anchor="middle" font-size="7.5" fill="#B91C1C">① 谁调用、要不要鉴权；② 请求长什么样（含边界与必填）；</text>
+  <text x="380" y="344.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">③ 成功与失败分别返回什么（错误码可枚举）；④ 调用方的重试与幂等约定</text>
+  <text x="380" y="390" text-anchor="middle" font-size="8" fill="#64748B">契约先行的收益不是「更规范」，而是把联调从「对设计」降级成「对差异」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

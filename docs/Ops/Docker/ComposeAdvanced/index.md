@@ -197,6 +197,7 @@ volumes:
 - [Kubernetes 专题](../../Kubernetes/index.md)：容器编排进阶，从 Compose 迁移到 K8s 的部署方式
 - [微服务实战](../../../Backend/Microservices/Practice/index.md)：用 Compose 一键启动 Nacos/Seata/MySQL 微服务基础设施
 - [容器编排进阶](../../ContainerOrchestration/index.md)：从 Compose 走向 Helm、GitOps 与多集群的生产化编排
+- [完整项目交付 · 一键部署与上线验收](../../../Others/ProjectDelivery/Delivery/index.md)：本页给编排语法，该页给**编排该承担到哪一步**——「编排层管顺序、应用层管韧性」的分工边界，以及一键部署脚本该在什么时机跑冒烟
 
 ## 参考资料
 

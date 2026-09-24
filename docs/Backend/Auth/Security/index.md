@@ -82,6 +82,7 @@
 - [会话与 Cookie](../Session/index.md)：Cookie 安全属性
 - [前端安全 · CSRF](../../../Frontend/Others/Security/CSRF/index.md)：浏览器侧协同防护
 - [常见问题与最佳实践](../FAQ/index.md)：问题排查路径
+- [电商系统设计 · 支付、幂等与对账](../../Ecommerce/Payment/index.md)：认证解决「你是谁」，而**重复提交与重放**要靠幂等键解决——支付回调是最典型的场景（同一笔回调会被重复投递，且必须重复投递也能得到同一结果）
 
 ## 参考资料
 

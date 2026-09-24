@@ -152,6 +152,10 @@ class CreatedState implements OrderState {
 2. 用状态模式实现订单状态机，验证非法流转抛异常。
 3. 用观察者实现下单通知，验证多个监听器都能收到事件。
 
+## 相关专题
+
+- [电商系统设计 · 订单状态机](../../Ecommerce/OrderStateMachine/index.md)：状态模式落到**有状态的交易流程**上会长出一整套工程约束——状态与事件分离、`WHERE status = 旧值` 做乐观并发、非法迁移必须抛异常而不是静默忽略、状态字段绝不能由前端直接传入。想把「状态」从设计模式升级成可上线的订单流程，看这一页。
+
 ## 参考资料
 
 - GoF 行为型模式：https://refactoring.guru/design-patterns/behavioral-patterns

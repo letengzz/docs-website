@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">交付排错决策树：需求变 / 联调对不上 / 上线才发现</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先归类再动手——三类问题的处理方式完全不同，混在一起讨论只会越聊越乱</text>
+  <rect x="230" y="72" width="300" height="44" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="90.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">项目卡住了，先看卡在哪一类</text>
+  <line x1="380" y1="116" x2="380" y2="146" stroke="#CBD5E1" stroke-width="1.2"/>
+  <line x1="125" y1="146" x2="635" y2="146" stroke="#CBD5E1" stroke-width="1.2"/>
+  <line x1="125" y1="146" x2="125" y2="170" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="146" x2="380" y2="170" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="635" y1="146" x2="635" y2="170" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="10" y="170" width="230" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="125" y="188.2" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">需求还在变</text>
+  <text x="125" y="205" text-anchor="middle" font-size="7.5" fill="#B45309">先问：变的是目标还是做法</text>
+  <text x="125" y="222.25" text-anchor="middle" font-size="7.5" fill="#B45309">目标变→重排范围并重写验收条件</text>
+  <text x="125" y="239.5" text-anchor="middle" font-size="7.5" fill="#B45309">做法变→改契约并同步调用方</text>
+  <rect x="265" y="170" width="230" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="188.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">联调总是对不上</text>
+  <text x="380" y="205" text-anchor="middle" font-size="7.5" fill="#1D4ED8">先比契约版本，再比错误码</text>
+  <text x="380" y="222.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">字段可选性写清了没有</text>
+  <text x="380" y="239.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">Mock 与实现是否同源</text>
+  <rect x="520" y="170" width="230" height="96" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="635" y="188.2" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">上线后才发现问题</text>
+  <text x="635" y="205" text-anchor="middle" font-size="7.5" fill="#B91C1C">说明验收清单漏了项</text>
+  <text x="635" y="222.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">回滚并补一次预发演练</text>
+  <text x="635" y="239.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">把漏项写进清单模板</text>
+  <rect x="40" y="288" width="680" height="74" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="306.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">三句通用追问</text>
+  <text x="380" y="323" text-anchor="middle" font-size="7.5" fill="#334155">① 这件事的验收判据是什么命令 / 什么输出？② 如果现在回滚，具体怎么做？③ 谁有权做这个决定？</text>
+  <text x="380" y="382" text-anchor="middle" font-size="8" fill="#64748B">卡住通常不是技术问题，而是「没人写下判据」或「没人有权决定」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

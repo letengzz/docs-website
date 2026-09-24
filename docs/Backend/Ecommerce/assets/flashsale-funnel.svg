@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 452" width="760" height="452" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="452" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">秒杀的分层过滤：每一层都在替下一层挡掉数量级</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">秒杀的设计目标不是「扛住 10 万 QPS」，而是让 10 万个请求只有极少数能走到数据库</text>
+  <rect x="40" y="74" width="680" height="40" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="92.2" text-anchor="middle" font-size="10.5" fill="#1E293B" font-weight="bold">10 万请求 / 秒 · 只有 100 件库存</text>
+  <line x1="380" y1="114" x2="380" y2="134" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="40" y="134" width="680" height="40" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="54" y="158" font-size="10" fill="#065F46" font-weight="bold">① 前端</text>
+  <text x="107" y="157.5" font-size="8" fill="#047857">按钮置灰 + 答题 + 时间同步；把明显重复的点击挡在用户手机上</text>
+  <rect x="40" y="180" width="680" height="40" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="54" y="204" font-size="10" fill="#115E59" font-weight="bold">② CDN / 静态化</text>
+  <text x="150" y="203.5" font-size="8" fill="#0F766E">活动页全静态，不在活动瞬间打应用；域名隔离避免影响主站</text>
+  <rect x="40" y="226" width="680" height="40" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="54" y="250" font-size="10" fill="#1E3A8A" font-weight="bold">③ 网关限流</text>
+  <text x="127" y="249.5" font-size="8" fill="#1D4ED8">按用户 + 按 IP + 按全局三档令牌桶，超出直接快速失败（不是排队）</text>
+  <rect x="40" y="272" width="680" height="40" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="54" y="296" font-size="10" fill="#5B21B6" font-weight="bold">④ 库存预扣</text>
+  <text x="127" y="295.5" font-size="8" fill="#6D28D9">Redis + Lua 原子判断并扣减，扣不到就没资格，绝不落库</text>
+  <rect x="40" y="318" width="680" height="40" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="54" y="342" font-size="10" fill="#9A3412" font-weight="bold">⑤ 异步下单</text>
+  <text x="127" y="341.5" font-size="8" fill="#C2410C">符合资格的请求写 MQ，立即返回「排队中」；消费端串行落库</text>
+  <line x1="380" y1="358" x2="380" y2="378" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="40" y="378" width="680" height="58" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="396.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">⑥ 结果查询与超时回收</text>
+  <text x="380" y="413" text-anchor="middle" font-size="7.5" fill="#047857">前端轮询结果接口；未支付订单超时自动释放预扣，库存回到可售</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

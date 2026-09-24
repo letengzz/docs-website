@@ -165,6 +165,11 @@ latest（最新，仅 dev 使用）
 3. 并发触发两次生产部署，确认第二次被拦截或排队。
 4. 检查制品仓库：同一 SHA 只有一份不可变制品。
 
+## 相关专题
+
+- [完整项目交付 · 测试策略与门禁](../../../Others/ProjectDelivery/Testing/index.md)：覆盖率**按模块**设阈值的理由、三档数据隔离的取舍、flaky 当天修或删
+- [完整项目交付](../../../Others/ProjectDelivery/index.md)：本页讲流水线**自身**怎么设计（分阶段、制品、通知），该专题讲**阶段顺序为什么按「失败代价」排**、以及五阶段如何把既有门禁一一挂上去
+
 ## 参考资料
 
 - GitHub Actions 最佳实践：https://docs.github.com/zh/actions/writing-workflows/choosing-what-your-workflow-does/optimizing-workflow-performance

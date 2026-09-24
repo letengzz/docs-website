@@ -1,5 +1,5 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
-import { Auth, DesignPatterns, DotNet, Go, Java, MessageQueue, Microservices, NetworkProgramming, Python, SpringCloud } from "./backend";
+import { Auth, DesignPatterns, DotNet, Ecommerce, Go, Java, MessageQueue, Microservices, NetworkProgramming, Python, SpringCloud } from "./backend";
 
 import { AI_Agent, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
@@ -41,6 +41,24 @@ const OthersAnnualReview = [
   },
 ];
 
+const OthersProjectDelivery = [
+  {
+    text: "完整项目交付",
+    link: "/docs/Others/ProjectDelivery/index.md",
+    collapsed: true,
+    items: [
+      { text: "交付全景与验收标准", link: "/docs/Others/ProjectDelivery/Overview/index.md" },
+      { text: "需求拆分与验收条件", link: "/docs/Others/ProjectDelivery/Requirements/index.md" },
+      { text: "架构设计与技术选型", link: "/docs/Others/ProjectDelivery/Architecture/index.md" },
+      { text: "接口契约先行", link: "/docs/Others/ProjectDelivery/Contract/index.md" },
+      { text: "数据建模与迁移", link: "/docs/Others/ProjectDelivery/DataModel/index.md" },
+      { text: "测试策略与门禁", link: "/docs/Others/ProjectDelivery/Testing/index.md" },
+      { text: "一键部署与上线验收", link: "/docs/Others/ProjectDelivery/Delivery/index.md" },
+      { text: "常见问题与排错", link: "/docs/Others/ProjectDelivery/FAQ/index.md" },
+    ],
+  },
+];
+
 export const sidebar = {
 
   // 与 nav.ts 的大类保持一致（key 不要带尾斜杠，避免与主题 key 同级匹配冲突）
@@ -55,7 +73,7 @@ export const sidebar = {
     {
       text: "后端",
       collapsed: true,
-      items: [...DotNet, ...Go, ...Java, ...Auth, ...MessageQueue, ...Microservices, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python],
+      items: [...DotNet, ...Go, ...Java, ...Auth, ...MessageQueue, ...Microservices, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...Ecommerce],
     },
   ],
   "/docs/DB": [
@@ -102,11 +120,13 @@ export const sidebar = {
         { text: "开源软件许可证", link: "/docs/Others/OpenSourceLicense/index.md" },
         ...OthersReview,
         ...OthersAnnualReview,
+        ...OthersProjectDelivery,
       ],
     },
   ],
   "/docs/Others/Review": OthersReview,
   "/docs/Others/AnnualReview": OthersAnnualReview,
+  "/docs/Others/ProjectDelivery": OthersProjectDelivery,
 
   // 主题级侧边栏：进入具体主题时才展示该主题的侧边栏（子内容默认折叠）
   "/docs/Frontend/Basic": FrontBasic,
@@ -124,6 +144,7 @@ export const sidebar = {
   "/docs/Backend/DesignPatterns": DesignPatterns,
   "/docs/Backend/NetworkProgramming": NetworkProgramming,
   "/docs/Backend/Python": Python,
+  "/docs/Backend/Ecommerce": Ecommerce,
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/Relational": Relational,
   "/docs/DB/Relational/SQLOptimization": SQLOptimization,

@@ -231,3 +231,4 @@ redis-cli SCRIPT EXISTS <sha1>                   # 1) (integer) 1
 - `SET` 命令（NX/EX 选项）：https://redis.io/docs/latest/commands/set/
 - Redisson 官方文档：https://redisson.org/docs/
 - [缓存防护](../CacheProtection/index.md)、[主从复制](../Replication/index.md)
+- [电商系统设计 · 库存模型与超卖防护](../../../../../Backend/Ecommerce/Inventory/index.md)：本页的锁与幂等，在库存扣减场景里会碰到两个真实约束——**锁不能替代数据库约束**（分布式锁失效时仍要保证不超卖，故需 `WHERE stock >= n` 的条件更新兜底），以及**锁的粒度选择**（按 SKU 还是按订单）

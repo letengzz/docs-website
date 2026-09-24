@@ -214,6 +214,11 @@ argocd app get order-service
 3. 用 Argo CD 改 Git 里的镜像 Tag，观察集群自动同步到新版本；再回退 Tag 验证回滚。
 4. 演练蓝绿：切流量、验证、切回，全程记录时间与操作。
 
+## 相关专题
+
+- [完整项目交付 · 一键部署与上线验收](../../../Others/ProjectDelivery/Delivery/index.md)：本页给部署与回滚的**工具与命令**，该页给**判据**——三套环境矩阵、部署六步的不可调换顺序、灰度与回滚必须凑齐的三个前置条件，以及六类 18 项上线验收清单
+- [后端通用模板 · 镜像推送与发布策略](../../../../project/Base/BackendTemplate/Release/index.md)：本页讲「怎么发布与回滚」，该页讲**发布产物本身怎么保证可追溯**——标签按「会不会变」分四层、部署命令只引用不可变标签、`cosign` 签名与验签、registry 标签不可变策略，以及「回滚是换回旧身份而不是重新构建」的完整论证
+
 ## 参考资料
 
 - Kubernetes Deployment 策略：https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/

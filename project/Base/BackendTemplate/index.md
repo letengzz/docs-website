@@ -88,7 +88,9 @@ backend-template/
 | 第 76 天 | 模板产品化 ①（插队） | 技术栈三维可插拔（四层模块划分 + SPI 契约 + 双层装配 + 降级门禁）、选择器脚本与 57 项自测、模板 CLI 设计评审与路线图 | ✅ 见下方模块页 |
 | 第 77 天 | 第 3 周：联调与测试 ④ | 入口级异常路径统一出口（JSON 损坏/请求体过大/枚举非法/并发冲突/路由兜底）、请求体大小守卫、接口 × 场景用例清单（9 × 10）与元测试、测试约定落文档 | ✅ 见下方模块页 |
 | 第 78 天 | 第 4 周：部署与验收 ① | 多阶段 Dockerfile（~250 MB 级运行镜像、非 root、容器感知 JVM 参数）、Compose 编排（MySQL 8.4 / Redis 8 健康检查与 `service_healthy` 依赖顺序）、配置全部走环境变量 + 启动期密钥强校验、部署后冒烟脚本与一键部署脚本 | ✅ 见下方模块页 |
-| 第 79-90 天 | 第 4 周：部署与验收 | CI 流水线、镜像推送、验收清单 | ⏳ |
+| 第 79 天 | 第 4 周：部署与验收 ② | CI 流水线：把第 74~78 天的四道门禁（覆盖率、契约、选择器漂移、用例矩阵基线）连同构建镜像、预发部署、冒烟串成一条五阶段流水线，含分支保护与时长预算 | ✅ 见下方模块页 |
+| 第 80 天 | 第 4 周：部署与验收 ③ | 镜像推送与发布策略：标签四层分层（身份/版本/环境指针/不生成 latest）、registry 标签不可变、七阶段发布流水线（多架构构建 + provenance/SBOM + cosign 签名验签 + 审批后打环境指针）、滚动/蓝绿/金丝雀三档与 readiness 分工、回滚三前提；交付 `Release/tagplan.py` 与 88 项自测 | ✅ 见下方模块页 |
+| 第 81-90 天 | 第 4 周：部署与验收 | 验收清单 | ⏳ |
 
 ## 各阶段交付内容
 
@@ -138,6 +140,14 @@ backend-template/
 
 17. [容器化：多阶段镜像与 Compose 编排](./Deployment/index.md)：**镜像里不该有的东西别放、启动顺序不能靠猜、环境差异只能靠变量**——容器化解决的三件事。多阶段 Dockerfile（`builder` 用 Maven+JDK 打包、`runtime` 只带 JRE 与 jar，运行镜像降到 ~250 MB 级；先拷 pom 再拷源码 + `.m2` 缓存挂载让依赖层可复用；非 root 用户、`MaxRAMPercentage` 取代写死 `-Xmx`、`ExitOnOutOfMemoryError`、`ENTRYPOINT` 用 `exec` 让信号可达所以 `docker stop` 能秒级优雅退出）；`.dockerignore` 与「不许用 `latest` 标签」两条纪律；**配置与镜像分离**（三套 Profile 全部走环境变量、配置文件只留占位符、生产 Profile 启动期强校验密钥缺失即启动失败，宁可起不来也不带空密钥运行）；Compose 编排（`depends_on` + `condition: service_healthy` 才是真启动顺序，只写 `depends_on` 只保证容器创建；`mysqladmin ping` 认证失败也可能返回 0 所以要带密码与 `--connect-timeout`；`start_period` 给首次初始化留时间；`${VAR:?}` 缺配置直接报错而不是给默认值）；**编排层管顺序、应用层管韧性**，连接重试不能省；部署后冒烟脚本（零依赖 `grep` 断言、7 项检查、退出码即门禁）与一键部署脚本（`up` 等健康再冒烟、`clean` 慎用）。
 
+**第 79 天（第 4 周②：CI 流水线）**：
+
+18. [CI 流水线：把门禁串成一条链](./CI/index.md)：**流水线的目标不是「自动」，而是让「这次提交能不能用」有唯一答案**——判据是「删掉 `target/` 与所有缓存后仍能独立跑绿」。五阶段按**失败代价**排序而非逻辑顺序（静态检查 → 测试与门禁 → 构建镜像 → 部署预发 → 冒烟），把 30 秒的 lint 放到 5 分钟的镜像构建之后等于每次笔误都白烧一次构建机。三条硬约束：门禁失败必须让流水线红（不许 `continue-on-error`）、冒烟失败必须打出容器日志（只给红叉等于把排障成本转给下一个人）、镜像标签用 `git sha` 禁止用 `latest` 部署（否则无法回答「线上是哪次提交」）。完整 `.github/workflows/ci.yml`（`concurrency` 取消同分支排队、`paths` 过滤避免无关变更触发、`static-checks` 与 `tests` 拆成两个 job 让单元级反馈不被容器启动拖慢、Testcontainers 镜像预热、`oasdiff breaking` 契约拦截、`upload-artifact` 失败留存 surefire 报告、`if: failure()` 兜底输出容器日志）；两处缓存（Maven 仓库按 pom 哈希、Docker GHA 缓存复用 builder 依赖层）与「每周跑一次无缓存流水线校验缓存没掩盖问题」的纪律；与第 74~78 天四道门禁的一一对应表；分支保护的必需检查要写具体 job 名（名字改而规则没改会出现「有检查却什么都不拦」）；时长预算表与优化顺序（**先「减少重复下载」「提前失败」，再并行化**）；六个会让流水线退化成装饰的写法。
+
+**第 80 天（第 4 周③：发布策略）**：
+
+19. [镜像推送与发布策略](./Release/index.md)：**发布的本质是把「线上跑的是哪一次提交」这个答案固化下来**——判据是「随便挑一个线上实例，从镜像身上就能读出提交号，无需查台账」。标签按**「会不会变」**分四层：身份（`sha-<12>`，永不变，部署/回滚/审计引用）、版本（`1.2.0`，永不变，对外沟通）、环境指针（`prod`/`staging`，**会变**，只能用来问「现在跑的是什么」）、便利标签（`latest`，**不生成**）。完整论证：为什么环境指针进部署命令会让答案的有效期只到下一次发布；为什么 `latest` 在语义上等于「最后被推上来的那个」、任何一次误推都会静默改写它；**「不可变」必须由 registry 强制**（开启标签不可变策略，覆盖推送返回 409 而不是成功）；七阶段发布流水线（多架构 buildx + 内嵌 `revision` 注解 + provenance/SBOM + cosign keyless 签名 + **验签失败即阻断** + 审批后才推环境指针 + `IMAGE_REF=<身份标签>` 部署 + 回滚换回旧身份）；`cosign verify` 的 `--certificate-identity-regexp` 必须收窄到自己的仓库（留空等于任何人的签名都算数）；三档发布策略对照与滚动替换的兼容性要求（**这正是契约门禁存在的理由**）、`liveness`/`readiness` 必须分开（混用会让依赖抖动变成反复重启、预热未完成就放流量）；**回滚的三个前提**（数据结构兼容、旧配置还在、外部副作用不随镜像退回）与「回滚能力取决于旧标签还在不在」（**重新构建一版当时的代码不叫回滚**，等价性无法证明）。交付可执行工具 `Release/tagplan.py`（零第三方依赖，六条不变量 INV1~INV6 机械校验标签分层与「谁可以出现在部署命令里」）与 `Release/selftest.py`（**88 项断言** + 11 组全组合扫描），并记录**工具与自测互相纠错**的两次修正（INV3 逐 token 扫描、INV4 允许回滚引用上一个发布的身份标签）。
+
 ## 本地运行（快速上手）
 
 ```shell
@@ -161,6 +171,16 @@ java -jar template-application/target/template-application-1.0.0.jar
 
 # 4) 改了 stack.json 或 pom 之后，用 --check 确认没漂移（可直接当 CI 门禁）
 python3 stack-select/stack-select.py --root . --check   # 期望：OK，退出码 0
+
+# 5) 提交前本地跑一遍与 CI 完全相同的命令
+#    CI 用哪条本地就用哪条，否则会出现「本地绿、CI 红」
+mvn -B clean verify
+python3 stack-select/stack-select.py --root . --check
+python3 stack-select/selftest.py
+
+# 6) 发布前生成并校验标签计划（不需要 Docker 与 registry 也能跑）
+python3 Release/tagplan.py --version 1.2.0 --sha <40位git sha> --channel prod
+python3 Release/selftest.py          # 期望：selftest: 88/88 通过（全组合扫描 11 组）
 ```
 
 ::: info 关于本文的验证环境
@@ -173,4 +193,7 @@ python3 stack-select/stack-select.py --root . --check   # 期望：OK，退出�
 - Spring Boot 4.0 发布公告：[spring.io/blog](https://spring.io/blog/2025/11/20/spring-boot-4-0-0-available-now)
 - 相关文档：[Spring Boot 通用指南](../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md) / [Spring Security 7](../../../docs/Backend/Java/Frame/SpringSecurity/v7/index.md) / [数据建模](../../../docs/DB/DataModeling/index.md)
 - 本项目的产品化两条：[技术栈可插拔：模块边界与选择器脚本](./StackSelect/index.md) / [模板 CLI：设计与路线图](./TemplateCli/index.md)
+- 本项目的交付与流水线：[容器化：多阶段镜像与 Compose 编排](./Deployment/index.md) / [CI 流水线：把门禁串成一条链](./CI/index.md) / [进展记录](./Progress/index.md)
 - 开发环境与工具链：[效率工具](../../../docs/Tools/Efficiency/index.md)（终端、命令行、脚本自动化）、[效率工具 · 实战](../../../docs/Tools/Efficiency/Practice/index.md)（把脚本、Git 钩子、容器化接进项目的六步清单）
+- 发布与供应链：[镜像推送与发布策略](./Release/index.md) / [完整项目交付 · 一键部署与上线验收](../../../docs/Others/ProjectDelivery/Delivery/index.md)（发布策略在交付流程中的位置）
+- 外部规范：[Docker Build attestations](https://docs.docker.com/build/attestations/) / [Sigstore Cosign 验签](https://docs.sigstore.dev/cosign/verifying/verify/) / [K8s 存活与就绪探针](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)

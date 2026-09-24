@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 436" width="760" height="436" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="436" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">镜像标签的四层分层：谁可以出现在部署命令里</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">身份与版本永不变、环境指针会变、latest 不生成——分层不是命名习惯，是「可追溯」的前提</text>
+  <text x="380" y="78" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">分层依据只有一个问题：这个标签会不会变</text>
+  <rect x="30" y="92" width="118" height="26" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="89" y="109" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">层</text>
+  <rect x="148" y="92" width="226" height="26" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="261" y="109" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">形式</text>
+  <rect x="374" y="92" width="118" height="26" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="433" y="109" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">会不会变</text>
+  <rect x="492" y="92" width="228" height="26" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="606" y="109" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">谁可以引用</text>
+  <rect x="30" y="118" width="118" height="42" rx="0" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <rect x="148" y="118" width="226" height="42" rx="0" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <rect x="374" y="118" width="118" height="42" rx="0" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <rect x="492" y="118" width="228" height="42" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="89" y="143" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">身份</text>
+  <text x="261" y="143" text-anchor="middle" font-size="8.5" fill="#6D28D9">sha-9f2c1a4b6d8e</text>
+  <text x="433" y="143" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">永不变</text>
+  <text x="606" y="143" text-anchor="middle" font-size="8.5" fill="#334155">部署 · 回滚 · 审计 · issue 里贴</text>
+  <rect x="30" y="164" width="118" height="42" rx="0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1"/>
+  <rect x="148" y="164" width="226" height="42" rx="0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1"/>
+  <rect x="374" y="164" width="118" height="42" rx="0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1"/>
+  <rect x="492" y="164" width="228" height="42" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="89" y="189" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">版本</text>
+  <text x="261" y="189" text-anchor="middle" font-size="8.5" fill="#1D4ED8">1.2.0</text>
+  <text x="433" y="189" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">永不变</text>
+  <text x="606" y="189" text-anchor="middle" font-size="8.5" fill="#334155">发布公告 · release note · 对外沟通</text>
+  <rect x="30" y="210" width="118" height="42" rx="0" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+  <rect x="148" y="210" width="226" height="42" rx="0" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+  <rect x="374" y="210" width="118" height="42" rx="0" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+  <rect x="492" y="210" width="228" height="42" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="89" y="235" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">环境指针</text>
+  <text x="261" y="235" text-anchor="middle" font-size="8.5" fill="#B45309">prod / staging / dev</text>
+  <text x="433" y="235" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">会变</text>
+  <text x="606" y="235" text-anchor="middle" font-size="8.5" fill="#334155">只能用来问「现在跑的是什么」</text>
+  <rect x="30" y="256" width="118" height="42" rx="0" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <rect x="148" y="256" width="226" height="42" rx="0" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <rect x="374" y="256" width="118" height="42" rx="0" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <rect x="492" y="256" width="228" height="42" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="89" y="281" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">便利标签</text>
+  <text x="261" y="281" text-anchor="middle" font-size="8.5" fill="#B91C1C">latest</text>
+  <text x="433" y="281" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">不生成</text>
+  <text x="606" y="281" text-anchor="middle" font-size="8.5" fill="#334155">哪里都不许用（下面单独说）</text>
+  <text x="60" y="330" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">为什么环境指针不能进部署命令</text>
+  <rect x="30" y="340" width="700" height="24" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="356" text-anchor="start" font-size="8.8" fill="#334155">· 部署引用 sha-&lt;12&gt;：部署命令本身就记录了「线上是哪次提交」，事后无需查台账</text>
+  <rect x="30" y="368" width="700" height="24" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="384" text-anchor="start" font-size="8.8" fill="#334155">· 部署引用 prod：事后只能看到「当时 prod 指向什么」，而这个答案已被下一次发布覆盖</text>
+  <rect x="30" y="396" width="700" height="24" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="412" text-anchor="start" font-size="8.8" fill="#334155">· latest 不生成：它语义上等于「最后被推上来的那个」，任何一次误推都会静默改变它的含义</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

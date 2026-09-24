@@ -52,6 +52,8 @@ export const BaseProject = [
           { text: "模板 CLI：设计与路线图", link: "/project/Base/BackendTemplate/TemplateCli/index.md" },
           { text: "异常路径联调收口与用例清单", link: "/project/Base/BackendTemplate/ErrorPath/index.md" },
           { text: "容器化：多阶段镜像与 Compose 编排", link: "/project/Base/BackendTemplate/Deployment/index.md" },
+          { text: "CI 流水线：把门禁串成一条链", link: "/project/Base/BackendTemplate/CI/index.md" },
+          { text: "镜像推送与发布策略", link: "/project/Base/BackendTemplate/Release/index.md" },
           { text: "进展记录", link: "/project/Base/BackendTemplate/Progress/index.md" },
         ],
       },

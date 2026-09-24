@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">支付回调的幂等设计与 T+1 对账</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">把「重复执行一次会怎样」答清楚，支付这条路才算走通</text>
+  <rect x="40" y="78" width="200" height="66" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="140" y="96.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">我方发起</text>
+  <text x="140" y="113" text-anchor="middle" font-size="7.5" fill="#6D28D9">生成商户订单号</text>
+  <text x="140" y="130.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">写支付单：待支付</text>
+  <rect x="280" y="78" width="200" height="66" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="96.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">渠道支付</text>
+  <text x="380" y="113" text-anchor="middle" font-size="7.5" fill="#1D4ED8">用户完成付款</text>
+  <text x="380" y="130.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">渠道异步回调</text>
+  <rect x="520" y="78" width="200" height="66" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="620" y="96.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">回调处理</text>
+  <text x="620" y="113" text-anchor="middle" font-size="7.5" fill="#047857">验签 → 幂等 → 改单</text>
+  <text x="620" y="130.25" text-anchor="middle" font-size="7.5" fill="#047857">返回成功应答</text>
+  <line x1="240" y1="111" x2="280" y2="111" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="480" y1="111" x2="520" y2="111" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="40" y="176" width="680" height="76" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="194.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">回调的三道关：顺序不能颠倒</text>
+  <text x="380" y="211" text-anchor="middle" font-size="7.5" fill="#B91C1C">① 验签：先确认是渠道发的（防伪造），再解析业务字段</text>
+  <text x="380" y="228.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">② 幂等：以「渠道流水号」或「我方单号」做唯一键，重复回调直接返回成功</text>
+  <text x="380" y="245.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">③ 落状态：只允许 待支付 → 已支付 这一条边，已支付再收到回调不改任何东西</text>
+  <rect x="40" y="270" width="330" height="90" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="205" y="288.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">为什么必须幂等</text>
+  <text x="205" y="305" text-anchor="middle" font-size="7.5" fill="#B45309">渠道会重试：未收到成功应答就重复推送</text>
+  <text x="205" y="322.25" text-anchor="middle" font-size="7.5" fill="#B45309">网络会重放：同一通知可能到两次</text>
+  <text x="205" y="339.5" text-anchor="middle" font-size="7.5" fill="#B45309">重复生效 = 重复发货 / 重复加积分</text>
+  <rect x="390" y="270" width="330" height="90" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="555" y="288.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">对账兜住「回调丢了」</text>
+  <text x="555" y="305" text-anchor="middle" font-size="7.5" fill="#0F766E">主动查单：超时未回调则轮流查询</text>
+  <text x="555" y="322.25" text-anchor="middle" font-size="7.5" fill="#0F766E">T+1 对账：渠道账单 vs 本地支付单</text>
+  <text x="555" y="339.5" text-anchor="middle" font-size="7.5" fill="#0F766E">差异分三类：长款 / 短款 / 状态不符</text>
+  <text x="380" y="380" text-anchor="middle" font-size="8" fill="#64748B">回调是「尽力而为」的，对账才是「一定会到」的那一层——两者缺一不可</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

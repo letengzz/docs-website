@@ -17,7 +17,8 @@ export const nav = [
       { text: "Spring Cloud", link: "/docs/Backend/SpringCloud" },
       { text: "设计模式", link: "/docs/Backend/DesignPatterns" },
       { text: "网络编程", link: "/docs/Backend/NetworkProgramming" },
-      { text: "Python", link: "/docs/Backend/Python" },]
+      { text: "Python", link: "/docs/Backend/Python" },
+      { text: "电商系统设计", link: "/docs/Backend/Ecommerce" },]
   },
   {
     text: "数据库",
@@ -81,6 +82,7 @@ export const nav = [
   {
     text: "其他", items: [
       { text: "其他", link: "/docs/Others" },
+      { text: "完整项目交付", link: "/docs/Others/ProjectDelivery" },
       { text: "年度复盘", link: "/docs/Others/AnnualReview" },
     ]
   },

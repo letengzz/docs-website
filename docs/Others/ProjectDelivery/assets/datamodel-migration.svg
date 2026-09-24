@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 388" width="760" height="388" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="388" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">数据迁移的六步：让新旧代码在过渡期都能跑</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">数据是唯一删掉就回不来的东西，所以它的变更要拆成「可回退的小步」而不是一次到位</text>
+  <rect x="40" y="80" width="200" height="58" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="140" y="98.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">① 加字段</text>
+  <text x="140" y="115" text-anchor="middle" font-size="7.5" fill="#047857">先加可空列 / 带默认值</text>
+  <text x="140" y="132.25" text-anchor="middle" font-size="7.5" fill="#047857">旧代码可继续运行</text>
+  <rect x="280" y="80" width="200" height="58" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="98.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 双写</text>
+  <text x="380" y="115" text-anchor="middle" font-size="7.5" fill="#1D4ED8">新旧字段同时写</text>
+  <text x="380" y="132.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">数据开始对齐</text>
+  <rect x="520" y="80" width="200" height="58" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="620" y="98.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">③ 回填</text>
+  <text x="620" y="115" text-anchor="middle" font-size="7.5" fill="#6D28D9">分批迁移历史数据</text>
+  <text x="620" y="132.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">可暂停、可重跑</text>
+  <line x1="240" y1="109" x2="280" y2="109" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="480" y1="109" x2="520" y2="109" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="40" y="168" width="200" height="58" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="140" y="186.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">④ 切读</text>
+  <text x="140" y="203" text-anchor="middle" font-size="7.5" fill="#0F766E">代码改读新字段</text>
+  <text x="140" y="220.25" text-anchor="middle" font-size="7.5" fill="#0F766E">旧字段仍保留</text>
+  <rect x="280" y="168" width="200" height="58" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="186.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">⑤ 观察</text>
+  <text x="380" y="203" text-anchor="middle" font-size="7.5" fill="#B45309">比对双写一致性</text>
+  <text x="380" y="220.25" text-anchor="middle" font-size="7.5" fill="#B45309">确认无回退需求</text>
+  <rect x="520" y="168" width="200" height="58" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="620" y="186.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">⑥ 清理</text>
+  <text x="620" y="203" text-anchor="middle" font-size="7.5" fill="#B91C1C">下个版本再删旧列</text>
+  <text x="620" y="220.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">确认不再被引用</text>
+  <line x1="140" y1="138" x2="140" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="138" x2="380" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="620" y1="138" x2="620" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="40" y="256" width="680" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="274.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">三条纪律</text>
+  <text x="380" y="291" text-anchor="middle" font-size="7.5" fill="#334155">① 迁移脚本与代码一起进版本库，前后端同一个提交里对齐（脚本只前进、不改写历史）</text>
+  <text x="380" y="308.25" text-anchor="middle" font-size="7.5" fill="#334155">② 每个迁移都要能被回答「怎么回滚」：加列的回滚是删列，改类型的回滚是另一条迁移</text>
+  <text x="380" y="325.5" text-anchor="middle" font-size="7.5" fill="#334155">③ 破坏性变更（删列 / 改类型 / 加唯一约束）必须拆成两个版本发布，不能一次做完</text>
+  <text x="380" y="370" text-anchor="middle" font-size="8" fill="#64748B">判据：迁移执行期间，老代码与新代码必须能同时运行——做不到就说明这次变更还不该发</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

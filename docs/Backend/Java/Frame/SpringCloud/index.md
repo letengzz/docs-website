@@ -100,6 +100,7 @@ public Consumer<String> orderIn() {
 - [消息队列专题](../../../MessageQueue/index.md)：事件驱动与消息可靠性的基础
 - [Spring Boot 通用指南](../SpringBoot/Common/index.md)：每个微服务都是 Spring Boot 应用
 - [Java 并发专题](../../JavaSE/Multithreading/index.md)：异步与线程池在服务间的使用
+- [电商系统设计 · 支付、幂等与对账](../../../Ecommerce/Payment/index.md)：分布式事务的**业务侧落点**——跨服务的一致性往往不靠强事务，而靠「本地事务 + 幂等键 + 定时对账」这三件套；这也是判断「要不要上分布式事务框架」的现实判据
 
 ::: warning 版本现状提示
 Spring Cloud 当前稳定 Train 为 **2025.1.x（Oakwood，适配 Spring Boot 4.0/4.1）**，2025.0 及更早版本线的 OSS 支持均已结束；版本对照与升级要点见 [版本选择与演进](../../../SpringCloud/Version/index.md)。

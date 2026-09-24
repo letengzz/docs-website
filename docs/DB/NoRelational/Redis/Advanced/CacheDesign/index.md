@@ -240,3 +240,4 @@ redis-cli -p 6379 INFO stats | grep -E "keyspace_hits|keyspace_misses"
 - 官方文档 · 客户端缓存：https://redis.io/docs/latest/develop/clients/client-side-caching/
 - 官方文档 · 作为缓存的用法与淘汰策略：https://redis.io/docs/latest/develop/reference/eviction/
 - [过期与淘汰策略](../../ExpireEvict/index.md)、[缓存防护](../CacheProtection/index.md)
+- [电商系统设计 · 秒杀与流量治理](../../../../../Backend/Ecommerce/FlashSale/index.md)：缓存设计的**极端场景验证**——秒杀把「热点 key、缓存与库存一致性、请求过滤」压到极限，六层过滤漏斗中每一层都在减少打到缓存与数据库的流量

@@ -306,6 +306,10 @@ ALTER TABLE articles
 - [ ] 迁移脚本与回滚脚本成对存在，且已在预发库演练。
 - [ ] ER 图（Mermaid / DBML）与线上表结构一致。
 
+## 相关专题
+
+- [完整项目交付 · 数据建模与迁移](../../../Others/ProjectDelivery/DataModel/index.md)：把本页「第七步：模型演进」的迁移脚本示例扩展为完整的**迁移六步法**（加字段 → 双写 → 回填 → 切读 → 观察 → 清理）、破坏性变更拆两次发布的流程，以及回滚设计——本页回答「表怎么设计」，该页回答「上线中的表怎么改而不停机」
+
 ## 参考资料
 
 - MySQL 官方文档：[CREATE TABLE](https://dev.mysql.com/doc/refman/8.4/en/create-table.html)、[InnoDB 索引与排序](https://dev.mysql.com/doc/refman/8.4/en/order-by-optimization.html)

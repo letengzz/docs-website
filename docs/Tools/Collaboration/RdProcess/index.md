@@ -245,6 +245,11 @@ WIP：status in ("In Progress","In Review","Ready to Test") 的实时计数
 10. **回顾会列 10 条改进项**：一条都落不了地。一次只改 1~2 条。
 :::
 
+## 相关专题
+
+- [完整项目交付 · 需求拆分与验收条件](../../../Others/ProjectDelivery/Requirements/index.md)：本页讲**流程怎么流转**，该页讲**一条需求怎样才算拆到可验收**——用户故事 INVEST 准则、Given/When/Then 四类验收条件、非功能需求的可验收写法，以及变更影响面 L1/L2/L3 分级
+- [完整项目交付 · 架构设计与技术选型](../../../Others/ProjectDelivery/Architecture/index.md)：ADR（架构决策记录）四段式与「可逆 / 不可逆」决策分类——把评审结论固化成文档而不是散在群聊里
+
 ## 参考资料
 
 - Scrum Guide（2020）：https://scrumguides.org/

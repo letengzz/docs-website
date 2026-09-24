@@ -388,3 +388,19 @@ export const Python = [
     ],
   },
 ];
+export const Ecommerce = [
+  {
+    text: "电商系统设计",
+    link: "/docs/Backend/Ecommerce/index.md",
+    items: [
+      { text: "电商系统全景与核心链路", link: "/docs/Backend/Ecommerce/Overview/index.md" },
+      { text: "商品与领域建模", link: "/docs/Backend/Ecommerce/DomainModeling/index.md" },
+      { text: "购物车与价格计算", link: "/docs/Backend/Ecommerce/Cart/index.md" },
+      { text: "订单状态机", link: "/docs/Backend/Ecommerce/OrderStateMachine/index.md" },
+      { text: "库存模型与超卖防护", link: "/docs/Backend/Ecommerce/Inventory/index.md" },
+      { text: "支付、幂等与对账", link: "/docs/Backend/Ecommerce/Payment/index.md" },
+      { text: "秒杀与流量治理", link: "/docs/Backend/Ecommerce/FlashSale/index.md" },
+      { text: "常见问题与排错", link: "/docs/Backend/Ecommerce/FAQ/index.md" },
+    ],
+  },
+];

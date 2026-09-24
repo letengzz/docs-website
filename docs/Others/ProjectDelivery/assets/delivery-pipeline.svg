@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 424" width="760" height="424" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="424" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">部署流水线的六步与不可调换的顺序</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">每一步都可能失败，所以每一步都要有失败后的动作——没有回滚方案的部署不算部署</text>
+  <rect x="10" y="84" width="118" height="92" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="69" y="102.2" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">① 构建</text>
+  <text x="69" y="119" text-anchor="middle" font-size="7.5" fill="#6D28D9">编译 + 测试</text>
+  <text x="69" y="136.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">产出镜像 / 包</text>
+  <rect x="132" y="84" width="118" height="92" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="191" y="102.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">② 迁移</text>
+  <text x="191" y="119" text-anchor="middle" font-size="7.5" fill="#1D4ED8">先跑数据迁移</text>
+  <text x="191" y="136.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">失败即中止</text>
+  <rect x="254" y="84" width="118" height="92" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="313" y="102.2" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">③ 启动</text>
+  <text x="313" y="119" text-anchor="middle" font-size="7.5" fill="#047857">新版本起容器</text>
+  <text x="313" y="136.25" text-anchor="middle" font-size="7.5" fill="#047857">健康检查通过</text>
+  <rect x="376" y="84" width="118" height="92" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="435" y="102.2" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">④ 冒烟</text>
+  <text x="435" y="119" text-anchor="middle" font-size="7.5" fill="#B45309">七项断言</text>
+  <text x="435" y="136.25" text-anchor="middle" font-size="7.5" fill="#B45309">失败即回滚</text>
+  <rect x="498" y="84" width="118" height="92" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="557" y="102.2" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">⑤ 灰度</text>
+  <text x="557" y="119" text-anchor="middle" font-size="7.5" fill="#0F766E">5% → 20% → 100%</text>
+  <text x="557" y="136.25" text-anchor="middle" font-size="7.5" fill="#0F766E">每档看指标</text>
+  <rect x="620" y="84" width="118" height="92" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="679" y="102.2" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">⑥ 回滚</text>
+  <text x="679" y="119" text-anchor="middle" font-size="7.5" fill="#B91C1C">切回上一版</text>
+  <text x="679" y="136.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">保留旧产物</text>
+  <line x1="128" y1="130" x2="132" y2="130" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="250" y1="130" x2="254" y2="130" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="372" y1="130" x2="376" y2="130" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="494" y1="130" x2="498" y2="130" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="616" y1="130" x2="620" y2="130" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="40" y="200" width="680" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="218.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">顺序不能调换，原因写在顺序里</text>
+  <text x="380" y="235" text-anchor="middle" font-size="7.5" fill="#334155">先迁移后启动：新代码可能依赖新字段，反了会启动即报错</text>
+  <text x="380" y="252.25" text-anchor="middle" font-size="7.5" fill="#334155">先启动后冒烟：冒烟要打的是新版本，而不是还没换掉的老实例</text>
+  <text x="380" y="269.5" text-anchor="middle" font-size="7.5" fill="#334155">冒烟通过才灰度：让配置错误在 5% 流量之前暴露，而不是之后</text>
+  <rect x="40" y="312" width="680" height="74" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="330.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">三个必须提前准备好的东西</text>
+  <text x="380" y="347" text-anchor="middle" font-size="7.5" fill="#B91C1C">上一版产物（否则回滚等于重新构建）、迁移的回退方案、以及「谁有权按下回滚」的约定</text>
+  <text x="380" y="406" text-anchor="middle" font-size="8" fill="#64748B">部署脚本的验收标准只有一条：在一台干净的机器上，按文档跑一遍就能起来</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

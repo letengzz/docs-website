@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 356" width="760" height="356" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="356" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">电商故障的三类根因与各自的排查入口</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先归类再动手——三类问题的排查入口完全不同，混在一起讨论只会越聊越乱</text>
+  <rect x="40" y="78" width="680" height="40" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="96.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">电商系统的故障，症状五花八门，但根因基本落在这三类</text>
+  <line x1="230" y1="118" x2="130" y2="140" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="118" x2="380" y2="140" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="530" y1="118" x2="630" y2="140" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="40" y="140" width="200" height="168" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="140" y="158.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">钱对不上</text>
+  <text x="140" y="175" text-anchor="middle" font-size="7.5" fill="#C2410C">金额与前端展示不一致</text>
+  <text x="140" y="192.25" text-anchor="middle" font-size="7.5" fill="#C2410C">退款退多了 / 退少了</text>
+  <text x="140" y="209.5" text-anchor="middle" font-size="7.5" fill="#C2410C">优惠券核销数与用量不符</text>
+  <text x="140" y="226.75" text-anchor="middle" font-size="7.5" fill="#C2410C">→ 查价格快照与分摊</text>
+  <text x="140" y="244" text-anchor="middle" font-size="7.5" fill="#C2410C">→ 快照缺失是根因</text>
+  <text x="140" y="261.25" text-anchor="middle" font-size="7.5" fill="#C2410C">→ 一律按「下单时的快照」算</text>
+  <rect x="280" y="140" width="200" height="168" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="158.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">货对不上</text>
+  <text x="380" y="175" text-anchor="middle" font-size="7.5" fill="#B91C1C">卖超了（超卖）</text>
+  <text x="380" y="192.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">库存少卖（漏释放）</text>
+  <text x="380" y="209.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">两侧对不上（缓存 vs 库）</text>
+  <text x="380" y="226.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">→ 查预占是否成对释放</text>
+  <text x="380" y="244" text-anchor="middle" font-size="7.5" fill="#B91C1C">→ 释放接口必须幂等</text>
+  <text x="380" y="261.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">→ 用对账任务兜底修正</text>
+  <rect x="520" y="140" width="200" height="168" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="620" y="158.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">单对不上</text>
+  <text x="620" y="175" text-anchor="middle" font-size="7.5" fill="#1D4ED8">重复订单 / 重复发货</text>
+  <text x="620" y="192.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">状态卡住不流转</text>
+  <text x="620" y="209.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">回调丢单未收到通知</text>
+  <text x="620" y="226.75" text-anchor="middle" font-size="7.5" fill="#1D4ED8">→ 查幂等键是否唯一</text>
+  <text x="620" y="244" text-anchor="middle" font-size="7.5" fill="#1D4ED8">→ 查状态机是否有断头路</text>
+  <text x="620" y="261.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">→ 主动查单 + T+1 对账</text>
+  <text x="380" y="336" text-anchor="middle" font-size="8" fill="#64748B">三类的排查入口不同：钱查快照、货查预占、单查幂等键——先归类，再动手</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
