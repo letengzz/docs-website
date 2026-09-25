@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "_comment": "MANUAL 项（无法由脚本判定、必须在真实验收环境执行并人工确认的项）的签名表。本文件随仓库提供的是**未签名的模板**——这是刻意的：验收清单最容易的失效方式，就是一份「跑起来全绿」但没人真正验过的表格。`acceptance_check.py --strict` 在签名之前一定会返回 1，那个红色就是你还没验。",
+  "_requiredFields": ["by", "at", "evidence"],
+  "_rules": [
+    "by：姓名 + 角色。只写角色不够——出了事要知道找谁。",
+    "at：ISO 日期开头（YYYY-MM-DD）。写「上周」「昨天」的没法复核。",
+    "evidence：至少 8 个字符，且必须是**能点开或能粘贴复核**的东西：流水线 run 号、看板截图链接、命令输出片段、工单号。写「已验」「OK」会被判为不合格。",
+    "给 AUTO 项签名会被点名：AUTO 项本就该由脚本判定，人去签它等于绕开判据。"
+  ],
+  "_template": {
+    "by": "姓名 · 角色",
+    "at": "YYYY-MM-DD",
+    "evidence": "可复核的证据：流水线 run 号 / 看板链接 / 命令输出片段",
+    "result": "pass"
+  },
+  "_manualItems": {
+    "A1": "主链路端到端通过（打桩数据下逐条走验收条件）",
+    "B1": "压测 p95 达标（k6 阈值门禁全绿）",
+    "B3": "慢查询与长任务已定位（slow_query_log 扫一遍主链路）",
+    "C3": "依赖漏洞扫描无高危（trivy 两条命令退出码 0）",
+    "D3": "数据隔离与脱敏符合要求（跨租户访问必须 403）",
+    "E3": "告警能触达人而非只发群（真实触发一次测试告警）"
+  },
+  "_howToFill": [
+    "在验收环境逐项执行 `python Acceptance/acceptance_check.py --list` 打印出的命令；",
+    "把每一项的证据（run 号 / 链接 / 输出片段）填进下面的 signoffs；",
+    "重跑 `python Acceptance/acceptance_check.py --strict`，直到它返回 0。"
+  ],
+  "signoffs": {}
+}

@@ -1181,7 +1181,7 @@ python3 tagplan.py --verify plan.json   # 期望：OK: plan.json 通过全部不
 | 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成** |
 | 第 3 周（73-77 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁、异常路径收口 | ✅ **4/4 步完成** |
 | 模板产品化（第 76 天插入） | 技术栈可插拔 + 选择器脚本 + CLI 设计 | ✅ **3/3 完成**；CLI 处于设计阶段，MVP 待排期 |
-| 第 4 周（78-90 天） | Docker 化、Compose、CI 流水线、发布策略、验收清单 | 🔄 **进行中（3/4）**：容器化 ✅、CI 流水线 ✅、发布策略 ✅；验收清单 🔜 |
+| 第 4 周（78-90 天） | Docker 化、Compose、CI 流水线、发布策略、验收清单 | ✅ **4/4 完成**：容器化 ✅、CI 流水线 ✅、发布策略 ✅、验收清单 ✅（第 82 天；第 81 天为主库可插拔需求插入，不计入 4 周里程碑步数） |
 
 ## 2026-09-25（第 81 天）：主库可插拔 —— 需求方要求主库不固定 MySQL 8，改为可选
 
@@ -1240,13 +1240,85 @@ DB_PASSWORD=xxx docker compose -f docker-compose.databases.yml --profile mysql u
 | 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成** |
 | 第 3 周（73-77 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁、异常路径收口 | ✅ **4/4 步完成** |
 | 模板产品化（第 76 天插入） | 技术栈可插拔 + 选择器脚本 + CLI 设计 | ✅ **3/3 完成**；CLI 处于设计阶段，MVP 待排期 |
-| 第 4 周（78-90 天） | Docker 化、Compose、CI 流水线、发布策略、验收清单 | 🔄 **进行中（3/4）**：容器化 ✅、CI 流水线 ✅、发布策略 ✅；验收清单 🔜 第 82 天（第 81 天为主库可插拔需求插入，不计入 4 周里程碑步数） |
+| 第 4 周（78-90 天） | Docker 化、Compose、CI 流水线、发布策略、验收清单 | ✅ **4/4 完成**：容器化 ✅、CI 流水线 ✅、发布策略 ✅、验收清单 ✅（第 82 天完成；第 81 天为主库可插拔需求插入，不计入 4 周里程碑步数） |
+
+## 2026-09-25（第 82 天）：上线验收与监控接入 —— 把「都验过了」拆成可判定、可复核的判据
+
+### 本次做了什么
+
+第 81 天把主库定成可插拔之后，验收的备份/恢复命令与监控指标口径才能定下来。本日把原定第 81 天的「验收收口」做完，并结清两笔挂了三天以上的待办。
+
+1. **验收清单从「一张勾选框表格」变成可执行工具**。六类 18 项（功能 / 性能 / 安全 / 数据 / 可观测 / 运维，各 3 项）写进 `Acceptance/acceptance_check.py` 的 `ITEMS` 常量——**清单写在代码里而不是文档里**，因为文档里的表会漂移，代码里的表一改就会让自测报红。
+2. **三层结构定死判定方式**。AUTO 12 项（`file` / `grep` / `matrix` / `script` / `crossrollback` 五类判据，CI 里全跑）、MANUAL 6 项（A1 主链路、B1 压测、B3 慢查询、C3 漏洞扫描、D3 越权、E3 告警触达——需要真实集群、真实流量、真实人员，工具**只打印可直接粘贴的命令与「期望看到什么」，不假装它们通过**）、签名表 `manual_signoff.json`（`--strict` 下 6 项必须登记 `by` / `at` / `evidence`，且 evidence 至少 8 字符、`at` 必须是 ISO 日期开头，**给 AUTO 项签名会被点名**）。
+3. **两条跨交付物交叉断言，结清第 76/77 天与第 80 天的待办**。`--cross` 断言：① CLI `--check` × 用例矩阵基线——基线现在从 `stack.json.caseBaseline` 一路流到 `application-stack.yml` 的 `case-baseline` 与 `STACK.md`，断言它真的进了生成物、**改小一格必报红**、降基线必须被拒；② 回滚命令 × 标签不可变性——用 `tagplan.py --verify` 断言回滚引用身份标签，并做一次变异把 `IMAGE_REF` 换成环境指针 `prod`，`--verify` 必须报红。**两处都用变异测试，而不是「生成后 --check 通过」这种必然成立的检查。**
+4. **备份可恢复演练 `Acceptance/backup_restore.py`**。判据四条：备份非空、恢复到 `<源库>_restore_check` 而不是就地覆盖、**表集合与逐表行数完全一致**（只比总行数会漏掉「A 表少 100 行、B 表多 100 行」）、演练后清理演练库。双方言（`mysqldump` / `pg_dump`）共用一份动作清单，`--dry-run` 在无客户端的环境也能跑通。
+5. **判据文件两份**：`known_issues.md`（A3，遗留缺陷登记 + 「什么不算已知缺陷」+ 豁免时效）与 `rollback_plan.md`（F3，决策人 / 观察窗口三档 / 四类触发阈值 / 升级路径 / 交接记录）。
+6. **`Acceptance/selftest.py` 71 项断言**，含 10 处变异测试（矩阵 5 + 签名表 5）。
+7. **补上 `PerformanceTest/index.md` 的容量拐点一节**（B2 的判据要求）：阶梯加压五档 + 双证据判定（TPS 增量衰减 **且** 资源水位触顶，单独出现都不算），以及找到拐点后的三件事（写进容量台账、只对先触顶的资源扩容、重跑确认可复现）。
+8. 同步更新[项目总览](../index.md)（进度表拆出第 82 天行、交付内容补第 21 项、本地运行补第 8、9 步、参考资料补链接）。
+
+### 如何验证
+
+```shell
+cd project/Base/BackendTemplate
+
+# ① 清单本身：六类 18 项的判据、责任人、判定方式、可直接粘贴的命令
+python Acceptance/acceptance_check.py --list
+
+# ② AUTO 12 项（2026-09-25 实测：12/12 通过，退出码 0）
+python Acceptance/acceptance_check.py
+
+# ③ 跨交付物交叉断言（2026-09-25 实测：两条 PASS，含 3 处变异测试）
+python Acceptance/acceptance_check.py --cross
+
+# ④ 工具自测（2026-09-25 实测：71/71 通过）
+python Acceptance/selftest.py
+
+# ⑤ 严格模式：签名前必然退出码 1，且点名 6 个未签项 —— 这是正确状态，不是缺陷
+python Acceptance/acceptance_check.py --strict
+
+# ⑥ 备份恢复演练的动作清单（真演练需 mysql / pg 客户端，本机用 dry-run 核对）
+python Acceptance/backup_restore.py --dry-run
+
+# ⑦ 被交叉断言复用的两条既有门禁（实测通过）
+cd db && python parity_check.py      # 期望：OK: 2 张表 / 22 列 双方言结构一致
+cd ../Release && python selftest.py  # 期望：selftest: 88/88 通过（全组合扫描 11 组）
+```
+
+### 遇到的问题与决策
+
+| 问题 | 决策 |
+| --- | --- |
+| 验收清单的最优失效方式是什么？ | **「跑起来全绿但没人真验过」**。所以随仓库提供的签名表是**空的**，`--strict` 初始必红；转绿条件只有一个：在验收环境把 6 个 MANUAL 项真做一遍并填证据 |
+| 校验器遇到坏数据该崩还是该报失败？ | **必须报失败**。自测第一次运行就抓到：矩阵里填一个非法符号（`✔` 写成 `X`）会让覆盖数统计 `KeyError` 崩溃——而手工维护的矩阵最容易出的就是写错符号。修法是改用 `.get()`，并把「JSON 损坏 / 缺字段 / 类型不对」都做成 FAIL 而不是异常 |
+| 交叉断言该断言什么？ | 断言**门禁被改坏时会不会拦住**，而不是「正常情况通过」。后者是必然成立的（生成器刚写完生成物当然自洽），跑了等于没跑 |
+| 备份演练用 shell 还是 Python？ | Python。曾写成 Python / POSIX sh 双栖，但因为本机 `bash` 指向被拦截的 WSL、无 `python3`，**双栖无法在本地验证**——一个自己没跑通的脚本放进验收清单，正是本页要反对的事。与 `parity_check.py` / `tagplan.py` / `stack-select.py` 统一 |
+| `mysqldump` 要不要加 `--databases`？ | **不要**。加了会把 `CREATE DATABASE` / `USE <源库>` 写进 dump，「恢复到演练库」会拐回去覆盖源库——备份演练最危险的写法。另加一条自我保护：源库名若已带 `_restore_check` 后缀直接拒绝执行 |
+| 备份判据能不能简化成「总行数一致」？ | 不能。A 表少 100 行、B 表多 100 行时总数相等。判据必须是**表集合一致 + 逐表行数一致** |
+| 容量拐点怎么算拐点？ | **双证据**：TPS 增量衰减到前一段的 50% 以下 **且** 资源水位触顶（CPU > 85% / 连接池排队 / GC 占比 > 10%）。只满足一条可能是压测机自瓶颈或无效并发，两条同时成立才是服务端容量上限 |
+
+### 下一步（第 83 天）
+
+1. **在真实环境执行 6 个 MANUAL 项并回填签名表**，把 `--strict` 从红转绿——不做这一步，前面全是纸上功夫。
+2. **Testcontainers 双库矩阵**（第 81 天起两次记入）：把 `parity_check.py` 的静态结构比对升级为「起真实 MySQL 8.4 + PostgreSQL 17 各跑一次迁移」，覆盖静态比对看不见的行为差异（排序规则、`TEXT` 语义、并发下的 DDL 锁）。
+3. **两条门禁接进 CI**：`db/parity_check.py` 进静态检查 job（秒级、零依赖），`Acceptance/acceptance_check.py --cross` 进测试 job——本日只把断言写出来了，还没挂进流水线。
+4. **监控接入落地**：E1 看板与 E2 traceId 检索已有基础（第 70、74 天），E3「告警触达人」目前还只是判据，需要在验收环境真推一次。
+
+### 里程碑对照
+
+| 阶段 | 计划 | 当前状态 |
+| --- | --- | --- |
+| 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
+| 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成** |
+| 第 3 周（73-77 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁、异常路径收口 | ✅ **4/4 步完成** |
+| 模板产品化（第 76 天插入） | 技术栈可插拔 + 选择器脚本 + CLI 设计 | ✅ **3/3 完成**；CLI 处于设计阶段，MVP 待排期 |
+| 第 4 周（78-90 天） | Docker 化、Compose、CI 流水线、发布策略、验收清单 | ✅ **4/4 完成**：容器化 ✅、CI 流水线 ✅、发布策略 ✅、验收清单 ✅（第 81 天为主库可插拔需求插入，不计入 4 周里程碑步数） |
 
 ## 参考资料
 
 - 项目总览：[后端通用模板](../index.md)
-- 本日两条：[镜像推送与发布策略](../Release/index.md) ｜ [主库可插拔：MySQL / PostgreSQL 双方言](../Database/index.md)
-- 本日交付物：`db/mysql/` + `db/postgres/`（双方言建表脚本）｜ `db/parity_check.py`（结构一致性门禁）｜ `db/selftest.py`（11 项自测）｜ `db/docker-compose.databases.yml`（双 profile 编排）
-- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md) ｜ [测试数据隔离与边界用例](../TestIsolation/index.md) ｜ [技术栈可插拔](../StackSelect/index.md) ｜ [模板 CLI：设计与路线图](../TemplateCli/index.md) ｜ [异常路径联调收口与用例清单](../ErrorPath/index.md) ｜ [容器化：多阶段镜像与 Compose 编排](../Deployment/index.md) ｜ [CI 流水线：把门禁串成一条链](../CI/index.md) ｜ [镜像推送与发布策略](../Release/index.md) ｜ [主库可插拔：MySQL / PostgreSQL 双方言](../Database/index.md)
+- 本日两条：[上线验收与监控接入](../Acceptance/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md)（新增容量拐点一节）
+- 本日交付物：`Acceptance/acceptance_check.py`（六类 18 项可执行清单）｜ `Acceptance/selftest.py`（71 项自测）｜ `Acceptance/backup_restore.py`（双方言备份恢复演练）｜ `Acceptance/case_baseline.json`（用例矩阵机器可读来源）｜ `Acceptance/known_issues.md` + `Acceptance/rollback_plan.md`（A3 / F3 判据文件）｜ `Acceptance/manual_signoff.json`（签名表，随仓库为空）
+- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md) ｜ [测试数据隔离与边界用例](../TestIsolation/index.md) ｜ [技术栈可插拔](../StackSelect/index.md) ｜ [模板 CLI：设计与路线图](../TemplateCli/index.md) ｜ [异常路径联调收口与用例清单](../ErrorPath/index.md) ｜ [容器化：多阶段镜像与 Compose 编排](../Deployment/index.md) ｜ [CI 流水线：把门禁串成一条链](../CI/index.md) ｜ [镜像推送与发布策略](../Release/index.md) ｜ [主库可插拔：MySQL / PostgreSQL 双方言](../Database/index.md) ｜ [上线验收与监控接入](../Acceptance/index.md)
 - 外部规范：[Docker Build attestations](https://docs.docker.com/build/attestations/) ｜ [Sigstore Cosign 验签](https://docs.sigstore.dev/cosign/verifying/verify/) ｜ [K8s 存活、就绪与启动探针](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) ｜ [OCI 镜像注解规范](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
 - 相关文档：[Spring Boot 通用指南](../../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md) ｜ [完整项目交付 · 一键部署与上线验收](../../../../docs/Others/ProjectDelivery/Delivery/index.md)

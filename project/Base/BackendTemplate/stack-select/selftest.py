@@ -32,13 +32,14 @@ FIXTURE = HERE / "fixture"
 
 ROOT_POM = "pom.xml"
 APP_POM = "template-application/pom.xml"
+YML_PATH = "template-application/src/main/resources/application-stack.yml"
 GENERATED = [
     ROOT_POM,
     APP_POM,
     "stack.json",
     "STACK.md",
     ".mvn/stack-profiles.txt",
-    "template-application/src/main/resources/application-stack.yml",
+    YML_PATH,
 ]
 
 VERBOSE = "-v" in sys.argv or "--verbose" in sys.argv
@@ -388,6 +389,78 @@ def case_presets_all(tmp: Path) -> None:
               r.stdout + r.stderr)
 
 
+def case_case_baseline(tmp: Path) -> None:
+    """用例矩阵基线必须「进生成物、受 --check 管辖、默认只增不减」。
+
+    这是第 76 / 77 天记下的交叉约束（CLI `--check` × 用例矩阵基线）的回归测试。
+    关键的不是「写得进」，而是**改得动就会被发现**——所以这里刻意做一次变异测试：
+    把生成物里的 38 改成 37，`--check` 必须报红。
+    """
+    import json
+    root = fresh(tmp, "baseline")
+    run(root, "--preset", "classic")
+
+    data = json.loads(read(root / "stack.json"))
+    check("stack.json 带 caseBaseline=38", data.get("caseBaseline") == 38,
+          read(root / "stack.json"))
+    check("stack.json 记录用例矩阵规模 9 × 10 = 90 格",
+          data.get("caseMatrix") == {"interfaces": 9, "scenarios": 10, "cells": 90},
+          read(root / "stack.json"))
+
+    yml = read(root / YML_PATH)
+    check("application-stack.yml 里写入 case-baseline: 38",
+          "case-baseline: 38" in yml, yml)
+    check("STACK.md 列出用例矩阵基线",
+          "用例矩阵基线：38 条" in read(root / "STACK.md"), read(root / "STACK.md"))
+
+    # ---- 变异测试：手改基线 → 必须报红（这是本用例的核心断言）
+    yml_path = root / YML_PATH
+    yml_path.write_text(yml.replace("case-baseline: 38", "case-baseline: 37"),
+                        encoding="utf-8", newline="")
+    r = run(root, "--check")
+    check("把生成物里的基线 38 改成 37 → --check 报红", r.returncode == 1,
+          r.stdout + r.stderr)
+
+    json_path = root / "stack.json"
+    json_path.write_text(read(json_path).replace('"caseBaseline": 38', '"caseBaseline": 37'),
+                         encoding="utf-8", newline="")
+    r = run(root, "--check")
+    check("把 stack.json 里的 caseBaseline 改成 37 → --check 报红", r.returncode == 1,
+          r.stdout + r.stderr)
+
+    # ---- 收敛：按 stack.json 重跑一次即回到自洽
+    r = run(root, "--yes")
+    check("重跑一次把 caseBaseline=37 收敛进生成物", r.returncode == 0, r.stdout + r.stderr)
+    check("收敛后生成物与 stack.json 一致（此时基线是 37）",
+          "case-baseline: 37" in read(yml_path) and run(root, "--check").returncode == 0)
+
+    # ---- 只增不减：37 → 36 必须被拒绝；37 → 39 允许
+    r = run(root, "--case-baseline", "36")
+    check("降低基线（37 → 36）被拒绝：退出码 1", r.returncode == 1, r.stdout + r.stderr)
+    check("拒绝文案给出了原因与两条出路",
+          "只应随功能增加" in r.stdout and "模块被裁掉" in r.stdout
+          and "--allow-baseline-decrease" in r.stdout, r.stdout)
+    r = run(root, "--case-baseline", "36", "--allow-baseline-decrease")
+    check("显式 --allow-baseline-decrease 后允许降低", r.returncode == 0, r.stdout + r.stderr)
+    r = run(root, "--case-baseline", "39")
+    check("提高基线（→ 39）不需要额外开关", r.returncode == 0, r.stdout + r.stderr)
+    check("提高后生成物同步为 39",
+          "case-baseline: 39" in read(yml_path), read(yml_path))
+
+    r = run(root, "--case-baseline", "0")
+    check("基线必须为正整数，0 被拒绝", r.returncode == 1, r.stdout + r.stderr)
+
+
+def case_case_baseline_is_pure(tmp: Path) -> None:
+    """基线是生成物的纯函数：同一基线 + 同一三维取值 → 逐字节相同。"""
+    root = fresh(tmp, "baseline-pure")
+    run(root, "--preset", "classic", "--case-baseline", "40")
+    first = snapshot(root)
+    run(root, "--preset", "classic", "--case-baseline", "40")
+    check("同基线同组合重复执行：生成物字节不变", snapshot(root) == first)
+    check("重复执行后 --check 通过", run(root, "--check").returncode == 0)
+
+
 # --------------------------------------------------------------------------- 主流程
 def main() -> int:
     if not SCRIPT.exists():
@@ -413,6 +486,8 @@ def main() -> int:
         case_degraded_matrix(tmp)
         case_presets_all(tmp)
         case_all_24_combinations(tmp)
+        case_case_baseline(tmp)
+        case_case_baseline_is_pure(tmp)
 
     total = len(_results)
     failed = [n for n, ok, _ in _results if not ok]

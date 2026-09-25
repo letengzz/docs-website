@@ -91,7 +91,8 @@ backend-template/
 | 第 79 天 | 第 4 周：部署与验收 ② | CI 流水线：把第 74~78 天的四道门禁（覆盖率、契约、选择器漂移、用例矩阵基线）连同构建镜像、预发部署、冒烟串成一条五阶段流水线，含分支保护与时长预算 | ✅ 见下方模块页 |
 | 第 80 天 | 第 4 周：部署与验收 ③ | 镜像推送与发布策略：标签四层分层（身份/版本/环境指针/不生成 latest）、registry 标签不可变、七阶段发布流水线（多架构构建 + provenance/SBOM + cosign 签名验签 + 审批后打环境指针）、滚动/蓝绿/金丝雀三档与 readiness 分工、回滚三前提；交付 `Release/tagplan.py` 与 88 项自测 | ✅ 见下方模块页 |
 | 第 81 天 | 第 4 周：部署与验收 ④（需求插入） | **主库可插拔**：主库不再固定 MySQL 8，改为 MySQL 8.4 / PostgreSQL 17 部署期二选一——双方言建表脚本（`db/mysql` + `db/postgres`）、`parity_check.py` 结构一致性门禁（类型归一化比对）+ 11 项自测、双 profile 数据库编排、分页方言显式注入；「上线验收与监控接入」顺延至第 82 天 | ✅ 见下方模块页 |
-| 第 82-90 天 | 第 4 周：部署与验收 | 上线验收清单、监控接入 | ⏳ |
+| 第 82 天 | 第 4 周：部署与验收 ⑤ | **上线验收与监控接入**：六类 18 项验收清单从「一张勾选框表格」变成**可执行工具**（AUTO 12 项脚本判定 / MANUAL 6 项必须签名 + 证据）；`--check` × 用例矩阵基线的交叉断言与回滚标签不可变性的**变异测试**；`mysqldump`/`pg_dump` 双方言备份恢复演练（逐表行数比对、拒绝写回源库）；`Acceptance/selftest.py` 71 项断言 | ✅ 见下方模块页 |
+| 第 83-90 天 | 第 4 周：部署与验收 | 剩余收尾与验收执行 | ⏳ |
 
 ## 各阶段交付内容
 
@@ -153,6 +154,10 @@ backend-template/
 
 20. [主库可插拔：MySQL / PostgreSQL 双方言](./Database/index.md)：**主库不再固定 MySQL 8，改为部署期可选**（MySQL 8.4 / PostgreSQL 17 二选一），与第 76 天的 ORM 可插拔构成两个正交维度（编译期选 ORM、部署期选引擎，切换引擎是发布事件而非配置热更）。设计三决策：**雪花 ID 是双方言 DDL 能逐列对齐的前提**（无自增差异）；**建表脚本双方言双份**（`db/mysql` + `db/postgres`，Flyway 版本号两侧成对，TINYINT→SMALLINT、DATETIME→TIMESTAMP、行内 COMMENT→COMMENT ON、内联索引→CREATE INDEX 七条翻译规则）；**结构一致性是门禁不是约定**——`db/parity_check.py`（零第三方依赖）做归一化类型比对（列/主键/唯一约束/索引/注释），不一致退出码 1 可直接进 CI，`db/selftest.py` 11 项自测。配套 `db/docker-compose.databases.yml` 双 profile、Spring 双数据源配置、分页方言 `DbType` 显式注入（不从连接推断，避免启动顺序耦合）、双 JDBC 驱动共存免重建镜像。验收判据：`selftest` 11/11 + `parity_check` OK（实测通过）+ 双 profile 冒烟等效。
 
+**第 82 天（第 4 周⑤：上线验收与监控接入）**：
+
+21. [上线验收与监控接入](./Acceptance/index.md)：**验收清单最容易退化成两种东西——一张只有勾选框的表格，和一句口头承诺「都验过了」，两者的共同问题是判据没被写下来，所以也没法被检验**。本日把清单做成可执行的**三层结构**：AUTO 12 项（文件内容 / 脚本退出码 / JSON 字段，CI 里全跑）、MANUAL 6 项（压测、漏洞扫描、备份恢复、越权、告警触达——**永远不可能在本仓库里被自动判定**，工具只列出可直接粘贴的命令与期望输出，不假装它们通过了）、签名表 `manual_signoff.json`（`--strict` 下 MANUAL 项必须登记「谁、何时、结论、证据」，证据不足 8 字符或日期写「上周」都判不合格）。两条**跨交付物交叉断言**结清第 76/77 天的旧账：CLI `--check` × 用例矩阵基线（生成物里真有 `case-baseline`、**改小一格 `--check` 必须报红**、降基线被拒）、回滚命令 × 标签不可变性（把 `IMAGE_REF` 从身份标签换成环境指针 `prod`，`--verify` 必须报红）——两处都用**变异测试**而不是「生成后 --check 通过」这种必然成立的检查。备份恢复演练 `backup_restore.py` 的判据不是「命令没报错」，而是**表集合与逐表行数完全一致**（只比总行数会漏掉「A 表少 100 行、B 表多 100 行」），并刻意不用 `mysqldump --databases`——加了会往 dump 里写 `USE <源库>`，让「恢复到演练库」拐回去覆盖源库。交付 `acceptance_check.py` + `selftest.py`（**71 项断言**，含 10 处变异测试与一次真实 bug 修复：矩阵里填了非法符号会使校验器 `KeyError` 崩溃，而**校验器崩了比校验失败危险**）。
+
 ## 本地运行（快速上手）
 
 ```shell
@@ -190,6 +195,18 @@ python3 Release/selftest.py          # 期望：selftest: 88/88 通过（全组�
 # 7) 主库可插拔：双方言一致性（不需要 Docker）
 python3 db/selftest.py               # 期望：selftest: 11/11 通过
 python3 db/parity_check.py           # 期望：OK: 2 张表 / 22 列 双方言结构一致
+
+# 8) 上线验收：清单与交叉断言（不需要 Docker 与数据库）
+python3 Acceptance/acceptance_check.py          # 期望：AUTO 12/12 通过，退出码 0
+python3 Acceptance/acceptance_check.py --list    # 打印六类 18 项的判据、责任人、命令
+python3 Acceptance/acceptance_check.py --cross   # 跨交付物交叉断言（含变异测试）
+python3 Acceptance/selftest.py                   # 期望：selftest: 71/71 通过
+python3 Acceptance/backup_restore.py --dry-run   # 备份恢复演练的动作清单（真演练需客户端）
+
+# 9) --strict 在签名之前**一定**是红的，这是设计而非缺陷：
+#    MANUAL 项（压测/漏洞扫描/备份恢复/越权/告警触达）无法由脚本判定，
+#    没在验收环境验过之前，`--strict` 返回 0 才是问题。
+python3 Acceptance/acceptance_check.py --strict  # 期望：退出码 1，点名 A1、B1、B3、C3、D3、E3 未签
 ```
 
 ::: info 关于本文的验证环境
@@ -202,7 +219,7 @@ python3 db/parity_check.py           # 期望：OK: 2 张表 / 22 列 双方言�
 - Spring Boot 4.0 发布公告：[spring.io/blog](https://spring.io/blog/2025/11/20/spring-boot-4-0-0-available-now)
 - 相关文档：[Spring Boot 通用指南](../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md) / [Spring Security 7](../../../docs/Backend/Java/Frame/SpringSecurity/v7/index.md) / [数据建模](../../../docs/DB/DataModeling/index.md)
 - 本项目的产品化两条：[技术栈可插拔：模块边界与选择器脚本](./StackSelect/index.md) / [模板 CLI：设计与路线图](./TemplateCli/index.md)
-- 本项目的交付与流水线：[容器化：多阶段镜像与 Compose 编排](./Deployment/index.md) / [CI 流水线：把门禁串成一条链](./CI/index.md) / [镜像推送与发布策略](./Release/index.md) / [主库可插拔](./Database/index.md) / [进展记录](./Progress/index.md)
+- 本项目的交付与流水线：[容器化：多阶段镜像与 Compose 编排](./Deployment/index.md) / [CI 流水线：把门禁串成一条链](./CI/index.md) / [镜像推送与发布策略](./Release/index.md) / [主库可插拔](./Database/index.md) / [上线验收与监控接入](./Acceptance/index.md) / [进展记录](./Progress/index.md)
 - 开发环境与工具链：[效率工具](../../../docs/Tools/Efficiency/index.md)（终端、命令行、脚本自动化）、[效率工具 · 实战](../../../docs/Tools/Efficiency/Practice/index.md)（把脚本、Git 钩子、容器化接进项目的六步清单）
 - 发布与供应链：[镜像推送与发布策略](./Release/index.md) / [完整项目交付 · 一键部署与上线验收](../../../docs/Others/ProjectDelivery/Delivery/index.md)（发布策略在交付流程中的位置）
 - 外部规范：[Docker Build attestations](https://docs.docker.com/build/attestations/) / [Sigstore Cosign 验签](https://docs.sigstore.dev/cosign/verifying/verify/) / [K8s 存活与就绪探针](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)

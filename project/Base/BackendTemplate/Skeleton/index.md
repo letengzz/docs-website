@@ -1,6 +1,6 @@
-# 骨架与目录结构（第 69 天 · 步骤 ①）
+# 骨架与目录结构
 
-本页交付第一个**可运行**的骨架：多模块 Maven 工程、启动类、配置文件。目标是"拉下代码就能跑起来"，这是后续所有模块的基座。
+采用**可运行**的骨架：多模块 Maven 工程、启动类、配置文件。是"拉下代码就能跑起来"，这是后续所有模块的基座。
 
 ![多模块骨架](../assets/skeleton-tree.svg)
 
@@ -266,9 +266,6 @@ backend-template/
     <properties>
       <maven.compiler.release>17</maven.compiler.release>
     </properties>
-    <!-- 这里刻意不再约束「本机 JDK 必须是 17」：
-         目标 JDK 由 toolchains 负责（见下文），Maven 自身跑在哪台 JDK 上无关紧要。
-         写成 requireJavaVersion [17,18) 会把「Maven 跑在 JDK 25、编译目标 17」这种完全正常的场景误杀。 -->
   </profile>
 
   <!-- ============ 轴 3：可选功能模块 ============ -->

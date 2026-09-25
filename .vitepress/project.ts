@@ -55,6 +55,7 @@ export const BaseProject = [
           { text: "CI 流水线：把门禁串成一条链", link: "/project/Base/BackendTemplate/CI/index.md" },
           { text: "镜像推送与发布策略", link: "/project/Base/BackendTemplate/Release/index.md" },
           { text: "主库可插拔：MySQL / PostgreSQL 双方言", link: "/project/Base/BackendTemplate/Database/index.md" },
+          { text: "上线验收与监控接入", link: "/project/Base/BackendTemplate/Acceptance/index.md" },
           { text: "进展记录", link: "/project/Base/BackendTemplate/Progress/index.md" },
         ],
       },

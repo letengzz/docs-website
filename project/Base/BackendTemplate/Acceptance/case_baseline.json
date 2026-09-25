@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "_comment": "接口 × 场景 用例矩阵的唯一机器可读来源。符号与 ErrorPath 页的表格逐字符一致，便于人工比对：✔ = 已覆盖、— = 不适用、? = 待补。本文件由 docs-website 的 BackendTemplate 项目维护，任何一格变化都必须同步改 ErrorPath 页的表格。",
+  "symbols": {
+    "✔": "covered",
+    "—": "n/a",
+    "?": "todo"
+  },
+  "scenarios": [
+    { "key": "ok", "label": "正常" },
+    { "key": "param", "label": "参数非法" },
+    { "key": "json", "label": "JSON 损坏" },
+    { "key": "big", "label": "体过大" },
+    { "key": "enum", "label": "枚举非法" },
+    { "key": "unauth", "label": "未认证" },
+    { "key": "forbidden", "label": "无权限" },
+    { "key": "conflict", "label": "并发冲突" },
+    { "key": "notfound", "label": "资源不存在" },
+    { "key": "method", "label": "方法不支持" }
+  ],
+  "matrix": {
+    "POST /api/auth/login":        ["✔", "✔", "✔", "✔", "—", "—", "—", "—", "✔", "—"],
+    "POST /api/auth/refresh":      ["✔", "✔", "✔", "—", "—", "✔", "—", "—", "✔", "—"],
+    "POST /api/auth/logout":       ["✔", "—", "—", "—", "—", "✔", "—", "—", "—", "—"],
+    "GET /api/users/{id}":         ["✔", "✔", "—", "—", "—", "✔", "✔", "—", "✔", "✔"],
+    "POST /api/users":             ["✔", "✔", "✔", "✔", "✔", "✔", "✔", "—", "—", "—"],
+    "PUT /api/users/{id}":         ["✔", "✔", "✔", "✔", "✔", "✔", "✔", "✔", "✔", "—"],
+    "GET /api/users":              ["✔", "✔", "—", "—", "—", "✔", "✔", "—", "—", "—"],
+    "GET /actuator/health":        ["✔", "—", "—", "—", "—", "—", "—", "—", "—", "—"],
+    "GET /actuator/env":           ["—", "—", "—", "—", "—", "—", "—", "—", "✔", "—"]
+  },
+  "javaMetaTestBaseline": 38,
+  "_baselineNote": "38 是 ApiCaseMatrixTest 里的下限断言值，不是等号。本矩阵实测已覆盖 40 格，余量 2 格。余量本身必须可见——否则矩阵掉到 39 也不会有人发现，等到掉到 38 时元测试才报红，那时已经晚了。"
+}

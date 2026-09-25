@@ -137,6 +137,26 @@ SHARED_STORE_CAPABILITIES = [
     ("account_lock", "账号锁定"),
 ]
 
+# ---------------------------------------------------------------------------
+# 用例矩阵基线（接口 × 场景）
+#
+# 来源：ErrorPath 页的「接口 × 场景」用例清单——9 个接口 × 10 个场景 = 90 格，
+#       其中 38 格「已覆盖」，其余为「不适用」或「待补」。Java 侧的元测试用
+#       `assertThat(total).isGreaterThanOrEqualTo(38)` 守住它。
+#
+# 为什么要把它写进**生成物**（这是第 76 / 77 天记下的待办，本日结清）：
+#   基线原先只活在两个地方——文档表格里和 Java 测试代码里。这两处都不受
+#   `--check` 管辖，于是出现一个安静的漏洞：**切了 ORM / 缓存组合之后，若某个
+#   模块被裁掉、用例数掉到 38 以下，`--check` 依然全绿**，因为生成物里根本没有
+#   这个数字，门禁无从比对。把基线变成 stack.json 的一部分之后：
+#     · 它和三维取值一样受 `--check` 全文比对（改一个数字就报红）；
+#     · 换组合时基线跟着走，不会「文档说 38、生成物说没有」；
+#     · 想改基线必须显式给 `--case-baseline`，且默认**只增不减**（用例被误删
+#       是最常见的退化方式，降基线必须是一次有意识的决定）。
+DEFAULT_CASE_BASELINE = 38
+CASE_MATRIX_INTERFACES = 9
+CASE_MATRIX_SCENARIOS = 10
+
 MARKER_MODULES_BEGIN = "<!-- stack:modules:begin -->"
 MARKER_MODULES_END = "<!-- stack:modules:end -->"
 MARKER_MODULES_NOTE = "<!-- 本区间由 scripts/stack-select.py 生成，手工修改会在下次执行或 --check 时暴露 -->"
@@ -231,12 +251,15 @@ def render_deps_block(selection: dict) -> str:
     return "\n".join(lines)
 
 
-def render_stack_json(selection: dict) -> str:
-    """生成物必须是 (security, orm, cache) 的**纯函数**。
+def render_stack_json(selection: dict, case_baseline: int) -> str:
+    """生成物必须是 (security, orm, cache, case_baseline) 的**纯函数**。
 
     这里刻意不记录 preset 名：预设只是「怎么选」的便捷入口，不是「选成了什么」的一部分。
     一旦把 preset 写进生成物，`--check` 就得知道当初用的预设才能复现，CI 里就会出错；
     人手改 stack.json 也会让 preset 名变成一句谎话。
+
+    `caseBaseline` 是唯一另一个「不是三维取值、但必须受 --check 管辖」的量——
+    它守卫的是「用例有没有被误删」，与守卫「模块有没有被裁错」的 modules 同等重要。
     """
     degraded = degraded_capabilities(selection)
     payload = {
@@ -246,6 +269,12 @@ def render_stack_json(selection: dict) -> str:
         "cache": selection["cache"],
         "sharedCache": shared_store_available(selection),
         "degraded": [key for key, _ in degraded],
+        "caseBaseline": case_baseline,
+        "caseMatrix": {
+            "interfaces": CASE_MATRIX_INTERFACES,
+            "scenarios": CASE_MATRIX_SCENARIOS,
+            "cells": CASE_MATRIX_INTERFACES * CASE_MATRIX_SCENARIOS,
+        },
         "modules": {
             dim: DIMENSIONS[dim]["values"][selection[dim]] for dim in DIMENSIONS
         },
@@ -253,7 +282,7 @@ def render_stack_json(selection: dict) -> str:
     return json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=False) + "\n"
 
 
-def render_stack_yml(selection: dict) -> str:
+def render_stack_yml(selection: dict, case_baseline: int) -> str:
     degraded_keys = {key for key, _ in degraded_capabilities(selection)}
     shared = shared_store_available(selection)
     lines = [
@@ -276,6 +305,11 @@ def render_stack_yml(selection: dict) -> str:
         "    # 登录审计与缓存无关，始终启用",
         "    login-log-enabled: true",
         "",
+        "  test:",
+        "    # 用例矩阵基线（接口 × 场景）。元测试断言「用例总数 >= 该值」，只增不减，",
+        "    # 本值由 stack.json 的 caseBaseline 决定并受 --check 管辖。",
+        "    case-baseline: %d" % case_baseline,
+        "",
     ]
     return "\n".join(lines)
 
@@ -285,7 +319,7 @@ def render_profiles(selection: dict) -> str:
     return " ".join(parts) + "\n"
 
 
-def render_stack_md(selection: dict) -> str:
+def render_stack_md(selection: dict, case_baseline: int) -> str:
     degraded = degraded_capabilities(selection)
     profiles = render_profiles(selection).strip()
     rows = []
@@ -316,6 +350,8 @@ def render_stack_md(selection: dict) -> str:
         "",
         "- Maven profile：`%s`" % profiles,
         "- 共享缓存：%s" % ("是（Redis）" if shared_store_available(selection) else "否"),
+        "- 用例矩阵基线：%d 条（接口 × 场景 %d × %d，只增不减；由 `--check` 管辖）"
+        % (case_baseline, CASE_MATRIX_INTERFACES, CASE_MATRIX_SCENARIOS),
     ]
     if degraded:
         out += ["", "## 降级项（缺少共享存储）", ""]
@@ -399,7 +435,7 @@ def write_text(path: Path, text: str, dry_run: bool, newline: str = "\n") -> Non
         fh.write(out)
 
 
-def build_outputs(root: Path, selection: dict) -> dict:
+def build_outputs(root: Path, selection: dict, case_baseline: int) -> dict:
     """返回 {相对路径: 期望内容}；文本类文件全部在这里生成，便于 --check 比对。"""
     root_pom = read_text(root / ROOT_POM)
     app_pom = read_text(root / APP_POM)
@@ -412,10 +448,10 @@ def build_outputs(root: Path, selection: dict) -> dict:
             app_pom, MARKER_DEPS_BEGIN, MARKER_DEPS_END,
             render_deps_block(selection), APP_POM,
         ),
-        STACK_JSON: render_stack_json(selection),
-        YML_FILE: render_stack_yml(selection),
+        STACK_JSON: render_stack_json(selection, case_baseline),
+        YML_FILE: render_stack_yml(selection, case_baseline),
         PROFILES_FILE: render_profiles(selection),
-        STACK_MD: render_stack_md(selection),
+        STACK_MD: render_stack_md(selection, case_baseline),
     }
 
 
@@ -472,6 +508,10 @@ def parse_args(argv=None):
     parser.add_argument("--print-mvn", action="store_true", help="只输出对应的 mvn 命令")
     parser.add_argument("--allow-degraded-cache", action="store_true",
                         help="显式接受 cache != redis 带来的能力降级（令牌撤销/失败计数/账号锁定）")
+    parser.add_argument("--case-baseline", type=int, metavar="N",
+                        help="设置用例矩阵基线（接口 × 场景的已覆盖用例数），默认 %d" % DEFAULT_CASE_BASELINE)
+    parser.add_argument("--allow-baseline-decrease", action="store_true",
+                        help="允许把用例矩阵基线改小（默认只增不减：用例被误删是最常见的退化方式）")
     parser.add_argument("--yes", "-y", action="store_true", help="非交互模式（缺少维度时用默认值）")
     return parser.parse_args(argv)
 
@@ -492,19 +532,34 @@ def list_options() -> None:
 
 
 def load_current(root: Path) -> dict:
+    """读回当前选择。返回 dict：三维取值 + `case_baseline`。
+
+    注意 `case_baseline` 也以 stack.json 为唯一事实来源——它的默认值只是
+    「第一次生成时填什么」，一旦写进 stack.json，后续一切以文件为准。
+    """
     path = root / STACK_JSON
     if path.exists():
         try:
             data = json.loads(read_text(path))
-            return {dim: data.get(dim, DIMENSIONS[dim]["default"]) for dim in DIMENSIONS}
+            out = {dim: data.get(dim, DIMENSIONS[dim]["default"]) for dim in DIMENSIONS}
+            raw = data.get("caseBaseline", DEFAULT_CASE_BASELINE)
+            try:
+                out["case_baseline"] = int(raw)
+            except (TypeError, ValueError):
+                warn("%s 里的 caseBaseline=%r 不是整数，退回默认值 %d"
+                     % (STACK_JSON, raw, DEFAULT_CASE_BASELINE))
+                out["case_baseline"] = DEFAULT_CASE_BASELINE
+            return out
         except Exception:  # noqa: BLE001
             warn("%s 解析失败，退回默认取值" % STACK_JSON)
-    return {dim: DIMENSIONS[dim]["default"] for dim in DIMENSIONS}
+    out = {dim: DIMENSIONS[dim]["default"] for dim in DIMENSIONS}
+    out["case_baseline"] = DEFAULT_CASE_BASELINE
+    return out
 
 
-def do_check(root: Path, selection: dict) -> int:
+def do_check(root: Path, selection: dict, case_baseline: int) -> int:
     try:
-        expected = build_outputs(root, selection)
+        expected = build_outputs(root, selection, case_baseline)
     except SystemExit as exc:
         fail(str(exc))
         return 1
@@ -518,12 +573,19 @@ def do_check(root: Path, selection: dict) -> int:
         # pom 与 yml：只比 marker 区间 / 全文；这里统一比全文，因为生成物都是受管的
         if got != want:
             mismatched.append((rel, "内容与 stack.json 不一致"))
+    # 基线专项：单独点名，避免「基线被改小」淹没在「内容不一致」里
+    yml_path = root / YML_FILE
+    if yml_path.exists():
+        got_yml = read_text(yml_path)
+        if ("case-baseline: %d" % case_baseline) not in got_yml:
+            mismatched.append((YML_FILE, "用例矩阵基线不等于 caseBaseline=%d" % case_baseline))
     if mismatched:
         fail("--check 未通过，以下文件需要重新生成（执行不带 --check 的同一条命令即可）：")
         for rel, why in mismatched:
             info("  - %s：%s" % (rel, why))
         return 1
-    info("OK    --check 通过：6 个生成物与 stack.json 完全一致")
+    info("OK    --check 通过：6 个生成物与 stack.json 完全一致（含 caseBaseline=%d）"
+         % case_baseline)
     return 0
 
 
@@ -541,6 +603,25 @@ def main(argv=None) -> int:
         return 1
 
     current = load_current(root)
+    case_baseline = current["case_baseline"]
+
+    # ---- 用例矩阵基线：只增不减
+    if args.case_baseline is not None:
+        if args.case_baseline < 1:
+            fail("--case-baseline 必须是正整数，收到 %d" % args.case_baseline)
+            return 1
+        if args.case_baseline < case_baseline and not args.allow_baseline_decrease:
+            fail("拒绝把用例矩阵基线从 %d 降到 %d。" % (case_baseline, args.case_baseline))
+            info("原因：接口 × 场景的用例总数只应随功能增加。基线变小，通常不是「删掉了")
+            info("      不需要的用例」，而是「某个模块被裁掉、其用例一起消失了」——")
+            info("      这种退化如果允许悄悄发生，元测试就再也守不住任何东西。")
+            info("")
+            info("处理方式二选一：")
+            info("  a) 确实要降：    --case-baseline %d --allow-baseline-decrease"
+                 % args.case_baseline)
+            info("  b) 保持基线：    不带该参数，只更新三维取值")
+            return 1
+        case_baseline = args.case_baseline
 
     # ---- 决定本次选择：预设 > 显式维度 > stack.json > 交互
     # --check / --print-mvn 是给 CI 与脚本用的，**永不交互**：完全以 stack.json 为准。
@@ -587,7 +668,7 @@ def main(argv=None) -> int:
 
     # ---- --check 是「核对」，不是「决策」：不做降级门禁（stack.json 已记录该组合）
     if args.check:
-        return do_check(root, selection)
+        return do_check(root, selection, case_baseline)
 
     # ---- 生成前的能力依赖校验：cache != redis 会带来降级，必须显式接受
     degraded = degraded_capabilities(selection)
@@ -605,7 +686,7 @@ def main(argv=None) -> int:
         return 1
 
     # ---- 生成
-    outputs = build_outputs(root, selection)
+    outputs = build_outputs(root, selection, case_baseline)
     for rel, content in outputs.items():
         write_text(root / rel, content, args.dry_run, detect_newline(root / rel))
 
@@ -613,6 +694,8 @@ def main(argv=None) -> int:
     info("选中组合：security=%s  orm=%s  cache=%s%s"
          % (selection["security"], selection["orm"], selection["cache"],
             ("（预设 %s）" % preset) if preset else ""))
+    info("用例矩阵基线：%d 条（接口 %d × 场景 %d，受 --check 管辖）"
+         % (case_baseline, CASE_MATRIX_INTERFACES, CASE_MATRIX_SCENARIOS))
     info("已写出 %d 个文件：%s" % (len(outputs), "、".join(outputs)))
     if degraded:
         info("")
