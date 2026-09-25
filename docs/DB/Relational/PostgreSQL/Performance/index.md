@@ -8,7 +8,7 @@ PostgreSQL 性能调优遵循「**索引 → SQL → 参数 → 硬件**」的�
 
 ## 关键参数
 
-```conf
+``` ini
 # postgresql.conf（按机器内存调整）
 shared_buffers = 4GB              # 建议内存 25%（如 16GB 机器设 4GB）
 effective_cache_size = 12GB       # OS 缓存可用量（约内存 75%）
@@ -57,7 +57,7 @@ WHERE relname = 'users';
 
 ### 开启慢查询日志
 
-```conf
+``` ini
 # postgresql.conf
 logging_collector = on
 log_min_duration_statement = 1000      # 记录超过 1 秒的查询

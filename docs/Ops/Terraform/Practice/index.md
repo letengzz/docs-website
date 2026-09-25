@@ -144,7 +144,9 @@ variable "bucket_suffix" {
 }
 ```
 
-```hcl [terraform.tfvars]（**该文件不入库**，只提交 `terraform.tfvars.example`）
+入库时只提交 `terraform.tfvars.example`，**`terraform.tfvars` 本身不入库**（里面是环境相关的真实值）：
+
+```hcl [terraform.tfvars]
 env            = "dev"
 instance_type  = "t3.micro"
 instance_count = 2

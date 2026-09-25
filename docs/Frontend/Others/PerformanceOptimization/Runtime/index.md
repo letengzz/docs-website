@@ -210,6 +210,56 @@ URL.revokeObjectURL(objectUrl);
 2. 打开 Memory 面板做「快照 → 交互 → 快照」，确认无对象持续增长；
 3. 用 `requestAnimationFrame` 计时验证动画帧率稳定在 60fps（无掉帧）。
 
+## 特例：把计算搬进 WebAssembly
+
+本页讲的是**长任务怎么切分、怎么用 Worker 调度**，让主线程不被阻塞；而 WebAssembly（Wasm）模块通常**也跑在 Worker 里**——两者的关系是**调度 vs 计算**的配合：本页负责「什么时候算、在哪个线程算」，Wasm 负责「这一次计算本身有多快」。把一个热点函数换成 Wasm 实现（如 Rust 编译产物）后，它一般仍挂在上面这套 Worker 调度里，只是每次调用的耗时变短了。
+
+把计算搬进 Wasm 的三条纪律：
+
+1. **把多次小调用合并成一次大数组调用**：JS 与 Wasm 之间的边界穿越有固定开销，逐元素调用（每次只传一个数）会比纯 JS 还慢。正确做法是先把数据攒成一个大数组，一次性传进去，让 Wasm 在内部循环。
+2. **Wasm 内存 `grow()` 之后，旧的 TypedArray 视图会失效必须重建**：`WebAssembly.Memory.grow()` 可能触发底层 `ArrayBuffer` 重新分配（原 buffer 被 detach），此前基于 `memory.buffer` 创建的 `Int32Array` / `Float32Array` 视图会变成「长度 0」，继续读写要么抛错要么读到脏数据。每次 `grow()` 之后都要重新构造视图。
+3. **处理完要调 `free`，否则每帧泄漏**：用 C/C++/Rust 导出的分配函数在 Wasm 堆里申请的内存，不会随 JS 作用域回收。每帧（每次调用）申请了就要在结束时释放，否则内存持续增长——表现就是「页面越用越慢」，与本页第 8 节讲的 JS 内存泄漏是同一类病。
+
+```js [Runtime/wasm-worker.js]
+// worker.js：在 Worker 里实例化 wasm，用 Transferable 把结果零拷贝传回主线程
+let wasm; // { memory, alloc, free, processF32 }
+
+self.onmessage = async (e) => {
+  if (e.data.type === "init") {
+    const { instance } = await WebAssembly.instantiateStreaming(
+      fetch(e.data.url),
+      {}
+    );
+    wasm = instance.exports;
+    return;
+  }
+
+  if (e.data.type === "compute") {
+    const input = new Float32Array(e.data.buffer);   // 主线程转移过来的数据
+    const bytes = input.length * 4;
+    const ptr = wasm.alloc(bytes);                   // ① 在 wasm 堆里申请
+    new Float32Array(wasm.memory.buffer, ptr, input.length).set(input);
+
+    const outPtr = wasm.processF32(ptr, input.length); // ② 一次大调用，内部循环
+
+    // ③ grow() 之后 memory.buffer 可能已换，必须重新建视图
+    const out = new Float32Array(wasm.memory.buffer, outPtr, input.length).slice();
+    wasm.free(ptr);                                  // ④ 成对释放，避免每帧泄漏
+
+    // ⑤ 用 Transferable 把结果零拷贝交回主线程
+    self.postMessage({ type: "done", buffer: out.buffer }, [out.buffer]);
+  }
+};
+```
+
+::: danger 最常见的三个错
+1. **逐元素穿越 JS/Wasm 边界**：调用开销大于计算本身，越「优化」越慢；攒成大数组再一次性传。
+2. **`grow()` 后继续用旧视图**：视图已失效，读到空数组或抛 `TypeError`；每次 grow 后重建。
+3. **只 `alloc` 不 `free`**：单次看不出，动画循环里几十帧就爆内存；申请与释放在同一作用域成对写。
+:::
+
+把 Wasm 以模块方式接入 JS 的完整写法（加载、导出、内存管理）见 [WebAssembly · JS 互操作](../../../WebAssembly/Interop/index.md)。
+
 ## 参考资料
 
 - [web.dev：长任务](https://web.dev/articles/long-tasks)

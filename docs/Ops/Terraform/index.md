@@ -41,3 +41,7 @@ Ansible 回答"**怎么把机器配好**"（配置管理），Terraform 回答"*
 :::
 
 详细支持状态与 1.6 之后的破坏性变更见 [常见问题与最佳实践](FAQ/index.md)。
+
+## 相关专题与分工
+
+- [云原生 · 函数工程](../CloudNative/FunctionEngineering/index.md)：本专题讲 **IaC 的完整工程化**——state 怎么存与加锁、模块怎么定输入输出契约、init/plan/apply 工作流怎么进 CI；该页只给**函数与托管集群的最小 IaC 片段**（Serverless Framework / AWS SAM / 函数类 Terraform 资源），用来把一份函数配置快速跑起来。两者是「片段 vs 工程」：要快速交付一个 Serverless 应用，先看该页的片段，再回来补齐多环境、拆模块与 state 管理；反过来，本专题不重复给函数框架的用法。

@@ -126,7 +126,7 @@ erDiagram
 
 ### DBML（dbdiagram.io 语法）
 
-```dbml
+``` text
 Table users {
   id bigint [pk, increment]
   username varchar(50) [unique, not null]

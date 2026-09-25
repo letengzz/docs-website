@@ -39,3 +39,7 @@
 ::: tip 待补充
 后续继续补充 Oracle、SQL Server、SQLite 等关系型数据库专题。
 :::
+
+## 相关专题与分工
+
+- [WebAssembly · 概述](../../Frontend/WebAssembly/Overview/index.md)：本分类讲**数据库选型、建模与运维**——该用 MySQL 还是 PostgreSQL、表怎么拆、主键怎么选、索引怎么定、备份与迁移怎么做。WebAssembly 专题里提到「把 SQLite 编译成 Wasm 放进浏览器」这一**客户端数据库**场景，属于**引擎的可移植打包**：同一套 SQL 引擎换个运行环境跑，不涉及建模与运维。边界很清晰——要选型、要建模、要运维，看本分类；要让数据库引擎跑到浏览器 / 边缘端，看 WebAssembly 专题。

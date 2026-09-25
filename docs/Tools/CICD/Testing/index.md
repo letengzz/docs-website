@@ -229,6 +229,19 @@ steps:
 - [接口调试工具](../../APITools/index.md)：接口自动化回归与 Newman/Apifox CLI 质量门禁
 - [完整项目交付 · 测试策略与门禁](../../../Others/ProjectDelivery/Testing/index.md)：本页给工具与质量门禁的接法，该页给**测试分层的职责边界**（哪一层该测什么、不该测什么）、覆盖率按模块设阈值的理由、三档数据隔离的取舍与 CI 门禁清单
 
+## 与测试工具专题的分工
+
+本页讲的是**策略层**：测试怎么分层、覆盖率口径怎么定、质量门禁阈值怎么设、SonarQube 怎么卡住流水线——回答「该测什么、卡在什么标准上」。
+
+[测试工具专题](../../TestingTools/index.md) 讲的是**工具层**：每一层具体用哪个工具、脚本怎么写、命令怎么敲（JMeter 做压力、Selenium 4 做跨浏览器端到端、接口自动化怎么组织用例与数据）。两者是「定标准」与「给手段」的关系——换工具不会改变本页的门禁口径，本页也不展开某个工具的具体命令。
+
+| 层 | 本页关心的口径 | 测试工具专题对应页面 |
+| --- | --- | --- |
+| 单元 / 组件 | 新增代码覆盖率阈值、断言有效性、是否碰真实依赖 | [测试工具专题总览](../../TestingTools/index.md) |
+| 接口 / 集成 | 契约破坏性变更拦截、回归范围、测试数据隔离 | [接口自动化](../../TestingTools/APIAutomation/index.md) |
+| 压力 / 性能 | 基线未回退、P95 与 TPS 判据、容量拐点定位 | [JMeter 压力测试](../../TestingTools/JMeter/index.md) |
+| 端到端 / 跨浏览器 | 关键旅程覆盖、等待策略稳定性、flaky 治理 | [Selenium 端到端](../../TestingTools/Selenium/index.md) |
+
 ## 参考资料
 
 - 测试金字塔（Martin Fowler）：https://martinfowler.com/bliki/TestPyramid.html

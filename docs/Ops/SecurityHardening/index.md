@@ -71,3 +71,59 @@ CIS Benchmark 是**版本强相关**的：检查项会随内核、发行版、K8
 :::tip 一句话理解
 安全加固不是「把一堆参数调严」，而是**用工程化手段让「不安全」在流水线里就通不过**——基线进 CI、漏洞进 SLA、密钥进托管、检测进运行时。
 :::
+
+## 云上身份与最小权限
+
+自建环境的第一道门是**主机基线与容器加固**（见本页上方分工表）；托管环境（Lambda、托管 K8s、各类云服务）里机器不是你的，**第一道门就变成了「执行身份」**——谁以什么身份去调云 API。托管场景下真正决定爆炸半径的，往往不是这台机器怎么配，而是**这个工作负载拿到了什么角色**。
+
+| 托管形态 | 身份载体 | 常见叫法 |
+| --- | --- | --- |
+| Serverless 函数 | 函数绑定一个执行角色 | Lambda Execution Role、函数服务账号 |
+| 托管 K8s | Pod 关联云身份，无需把密钥塞进容器 | IRSA（EKS）、Workload Identity（GKE / Azure）、RRSA（阿里云 ACK） |
+| 托管数据库 / 消息 | 实例级访问策略 + 调用方角色 | 实例 RAM 角色 / 服务关联角色 |
+
+三条纪律：
+
+1. **一个函数（工作负载）一个角色**：不要所有负载共用一个「万能角色」。共用意味着任何一处被攻破，等于全部权限被拿走；审计时也分不清是谁调的。
+2. **只列必需的 Action，并写全资源 ARN**：`"Resource": "*"` 与 `"Action": "s3:*"` 这类通配符等于没有限制——一旦触发 SSRF 或依赖投毒，攻击者就能读写整个账号的资源。把资源限定到具体的桶、前缀、表名。
+3. **密钥放密钥管理服务，不要塞进环境变量明文**：环境变量会出现在控制台、日志与崩溃转储里。优先用云密钥管理服务（KMS / Secrets Manager / 参数仓库）在运行时注入，或用上面说的身份载体免密钥调用。
+
+```json [最小权限 IAM 策略片段]
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadWriteOneBucketPrefix",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::shop-order-attachments/prod/uploads/*"
+    },
+    {
+      "Sid": "WriteLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:cn-north-1:123456789012:log-group:/aws/lambda/order-processor:*"
+    },
+    {
+      "Sid": "ReadOneSecretOnly",
+      "Effect": "Allow",
+      "Action": "secretsmanager:GetSecretValue",
+      "Resource": "arn:aws:secretsmanager:cn-north-1:123456789012:secret:order/db-*"
+    }
+  ]
+}
+```
+
+::: danger 托管环境里最容易踩的三个坑
+1. **给函数挂 `AdministratorAccess`「先跑起来再说」**：省下的十分钟，会在某次依赖投毒或 SSRF 时以整个账号为代价还回来。正确做法是从最小集合起步，缺什么补什么，用云审计日志反推还缺哪些 Action。
+2. **用一个角色给所有环境（dev/staging/prod）**：一处泄漏全环境沦陷。按环境拆分角色与资源 ARN，prod 角色只挂到 prod 函数上。
+3. **把密钥写进环境变量或代码**：环境变量在控制台可见、可能进日志；代码进了 Git 就永久留痕。正确做法是走密钥管理服务 + 免密钥身份，轮换时无需改代码。
+:::
+
+更细的密钥生命周期与轮换见 [密钥与凭据治理](SecretGovernance/index.md)，函数侧的身份配置与最小权限实践见 [云原生 · 函数工程](../CloudNative/FunctionEngineering/index.md)。

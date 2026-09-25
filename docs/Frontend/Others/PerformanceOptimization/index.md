@@ -14,3 +14,7 @@
 - [监控与性能预算](Monitoring/index.md)
 - [实战：性能优化全流程](Practice/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+## 相关专题与分工
+
+- [WebAssembly](../../WebAssembly/index.md)：本专题负责**工程级性能**——加载、渲染、包体积、缓存、Core Web Vitals 与性能预算，手段是「让既有的代码跑得更少、更早、更省」；WebAssembly 专题负责**算法级加速**——把一个热点函数整体换成另一种实现（如 Rust/C++ 编译成 Wasm），把单次计算本身做快。两者的度量口径与手段不重叠：先在本专题把工程侧的水分挤干，剩下真正的计算热点才值得搬进 Wasm。

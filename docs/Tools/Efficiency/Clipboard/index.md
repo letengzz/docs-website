@@ -156,7 +156,7 @@ macOS 没有内置历史剪贴板，但第三方工具（如 Maccy、Paste）很
 
 AutoHotkey v2 的最小示例（详见[桌面与任务自动化](../Automation/index.md)）：
 
-```autohotkey
+``` text
 ; 输入 @@ 变成邮箱
 ::@@::me@example.com
 

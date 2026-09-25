@@ -110,7 +110,7 @@ nginx_worker_processes: 4
 ```
 
 ::: warning `.vault_pass` 和 `*.log` 必须进 `.gitignore`
-```gitignore
+``` text
 .vault_pass
 *.log
 collections/
@@ -246,7 +246,7 @@ nginx_site_conf: /etc/nginx/conf.d/site.conf
     state: reloaded
 ```
 
-```jinja2 [roles/nginx/templates/nginx.conf.j2]
+``` jinja [roles/nginx/templates/nginx.conf.j2]
 # {{ ansible_managed }}
 worker_processes  {{ nginx_worker_processes }};
 
@@ -264,7 +264,7 @@ http {
 }
 ```
 
-```jinja2 [roles/nginx/templates/site.conf.j2]
+``` jinja [roles/nginx/templates/site.conf.j2]
 # {{ ansible_managed }}
 server {
     listen       {{ nginx_port }};
@@ -279,7 +279,7 @@ server {
 }
 ```
 
-```jinja2 [roles/nginx/templates/index.html.j2]
+``` jinja [roles/nginx/templates/index.html.j2]
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>

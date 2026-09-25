@@ -141,7 +141,7 @@ msg: "{{ ansible_default_ipv4.address }}"
 
 `template` 模块会把 `.j2` 文件在控制节点渲染后再传过去。模板里可以用完整的 Jinja2 语法。
 
-```jinja2 [templates/nginx.conf.j2]
+``` jinja [templates/nginx.conf.j2]
 # {{ ansible_managed }}
 # 由 Ansible 生成于 {{ ansible_facts['date_time']['iso8601'] }}，手工修改会被覆盖
 
@@ -199,7 +199,7 @@ http {
 
 对应写法（Jinja2 表达式里的管道符表示"把左边的值交给右边的过滤器"）：
 
-```jinja2
+``` jinja
 {{ port  | default(80) }}                        # 未定义时兜底
 {{ list  | default([], true) }}                  # 未定义或为空时兜底
 {{ "yes" | bool }}                               # 转布尔
@@ -221,7 +221,7 @@ http {
 
 ### lookup：读取外部数据
 
-```jinja2
+``` jinja
 # 读控制节点上的文件
 {{ lookup('file', 'files/ops_ed25519.pub') }}
 

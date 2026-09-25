@@ -168,7 +168,7 @@ CMD ["node", "dist/main.js"]
 
 ### .dockerignore
 
-```dockerignore [.dockerignore]
+``` text [.dockerignore]
 node_modules
 dist
 .git

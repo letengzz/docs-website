@@ -208,7 +208,7 @@ const series = raw.map((d) => (d.value == null ? null : d.value));
 
 ## 通用排查流程
 
-```
+```text
 ① 容器有尺寸吗？        → clientHeight / clientWidth
 ② 控制台报错了吗？      → 全部级别打开，搜 echarts
 ③ 数据对得上吗？        → console.log(option)，看 series.data 长度与内容

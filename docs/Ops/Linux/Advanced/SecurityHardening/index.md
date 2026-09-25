@@ -180,7 +180,7 @@ sudo ufw status verbose
 
 ### 4.2 nftables：更精确的控制
 
-```nft
+``` text
 #!/usr/sbin/nft -f
 # /etc/nftables.conf
 flush ruleset

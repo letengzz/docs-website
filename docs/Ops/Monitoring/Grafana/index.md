@@ -51,7 +51,7 @@ docker compose up -d
 2. 选择 Prometheus 数据源。
 3. 查询框输入：
 
-```promql
+``` text
 100 - avg(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100
 ```
 
@@ -82,7 +82,7 @@ docker compose up -d
 
 面板查询中使用变量：
 
-```promql
+``` text
 100 - avg(rate(node_cpu_seconds_total{job="$job_name", mode="idle"}[5m])) * 100
 ```
 

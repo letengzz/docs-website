@@ -181,7 +181,7 @@ styles/
 
 ### 变量分类
 
-```env [.env.local]
+``` dotenv [.env.local]
 # 服务端专用
 DATABASE_URL=postgresql://localhost/mydb
 API_SECRET=secret-key

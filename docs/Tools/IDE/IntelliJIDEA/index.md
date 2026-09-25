@@ -171,7 +171,7 @@ File → Invalidate Caches… → 勾选 "Clear file system cache and Local Hist
 
 推荐的 `.gitignore` 片段：
 
-```gitignore
+``` text
 # IDE 个人状态
 .idea/workspace.xml
 .idea/usage.statistics.xml

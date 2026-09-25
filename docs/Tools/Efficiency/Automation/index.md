@@ -164,7 +164,7 @@ AutoHotkey（AHK）是 Windows 上最灵活的桌面自动化工具。**2026 年
 
 ### 7.2 最小可用脚本
 
-```autohotkey
+``` text
 #Requires AutoHotkey v2.0        ; 显式声明版本，避免用错解释器
 #SingleInstance Force            ; 重复运行时替换旧实例，不弹窗
 

@@ -27,3 +27,7 @@
 - [Terraform](../Terraform/index.md)：**基础设施层**的声明式交付——集群、节点池、网络与存储由 IaC 建好，本专题讲的 Helm/Argo CD 负责**应用层**交付。二者的边界与配合见 [Terraform 概述与选型](../Terraform/Overview/index.md)。
 - [Kubernetes](../Kubernetes/index.md)：本专题的前置基础。
 - [CI/CD 自动部署与回滚](../../Tools/CICD/DeployRollback/index.md)：发布策略与回滚演练。
+
+## 相关专题与分工
+
+- [云原生 · 容器服务](../CloudNative/ContainerService/index.md)：本专题讲**交付工具链本身**——Helm 怎么打包与分发、Operator 怎么把运维经验写成控制器、服务网格怎么治理流量与安全、GitOps（Argo CD）怎么把 Git 当唯一事实来源；该页讲**云上的托管控制面怎么买**——控制面按什么计费、节点怎么弹、Spot 与承诺折扣怎么用。两者是「工具怎么用」与「资源从哪来、钱怎么花」的关系：本专题负责应用层交付，该页负责承载它的托管底座，比如本专题的 Helm/Argo CD 交付目标，往往就是该页讲的托管集群。

@@ -44,7 +44,7 @@ node_network_receive_bytes_total{device="eth0"}
 
 常用查询：
 
-```promql
+``` text
 # CPU 使用率（排除 idle）
 100 - avg(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100
 
@@ -67,7 +67,7 @@ scrape_configs:
 
 常用指标：
 
-```promql
+``` text
 # 容器 CPU 使用率
 rate(container_cpu_usage_seconds_total{container!=""}[5m])
 
@@ -199,7 +199,7 @@ scrape_configs:
         replacement: blackbox-exporter:9115
 ```
 
-```promql
+``` text
 probe_success == 0   # 站点不可达
 ```
 

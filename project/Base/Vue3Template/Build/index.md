@@ -291,7 +291,7 @@ export default defineConfig(({ mode }) => {
 
 安装：
 
-```[pnpm]
+```shell [pnpm]
 pnpm i vite-plugin-checker -D
 ```
 

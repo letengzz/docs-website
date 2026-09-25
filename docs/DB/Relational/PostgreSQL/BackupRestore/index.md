@@ -48,7 +48,7 @@ psql -h localhost -U postgres -d appdb_restore < appdb.sql
 
 ### 1. 开启 WAL 归档
 
-```conf
+``` ini
 # postgresql.conf
 wal_level = replica
 archive_mode = on

@@ -418,7 +418,7 @@ npm config list
 
 2. ```shell
    nrm use npm
-   ```text
+   ```
 
 **说明**：
 
@@ -437,12 +437,13 @@ npm config list
 
 ```shell
 npm config set prefix D:\atguigu\node-global
-```text
+```
 
 查看全局安装路径：
 
 ```shell
 npm config get prefix
+```
 ## 配置缓存路径
 
 ```shell

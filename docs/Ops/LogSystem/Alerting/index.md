@@ -244,7 +244,7 @@ derivedFields:
 
 **步骤 3：创建两条告警规则**
 
-```logql
+``` text
 # 规则 A：致命关键字（命中即告警，for = 0m）
 sum(count_over_time({job="order-service"} |~ "java\\.lang\\.OutOfMemoryError" [5m])) > 0
 

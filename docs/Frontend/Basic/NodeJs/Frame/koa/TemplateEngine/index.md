@@ -29,7 +29,7 @@ app.use(async (ctx) => {
 })
 ```
 
-```ejs [views/index.ejs]
+``` erb [views/index.ejs]
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,7 +106,7 @@ app.use(async (ctx) => {
 
 ### EJS 布局
 
-```ejs [views/layout.ejs]
+``` erb [views/layout.ejs]
 <!DOCTYPE html>
 <html>
 <head>

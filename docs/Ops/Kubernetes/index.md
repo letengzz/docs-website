@@ -20,3 +20,7 @@ Kubernetes（K8s）是容器编排平台的事实标准，负责容器的部署�
 - [Terraform](../Terraform/index.md)：**集群本身怎么建**交给 IaC。Terraform 的 `kubernetes` / `helm` provider 也能管 K8s 资源，但高频变化的业务负载建议交给 GitOps（见下一条）。
 - [容器编排进阶](../ContainerOrchestration/index.md)：集群建成后，用 Helm 打包应用、用 Argo CD 做声明式交付。
 - [Docker](../Docker/index.md)：从单机容器到集群编排的起点。
+
+## 相关专题与分工
+
+- [云原生与服务托管](../CloudNative/index.md)：本专题讲**自建集群的对象模型与运维**——Pod / Deployment / Service / Ingress 这些对象的语义、集群组件（apiserver / etcd / scheduler / kubelet）的职责，以及集群怎么升级；云原生专题讲**托管服务的选型与账单**——控制面按什么计费、节点弹性器（Karpenter / Cluster Autoscaler / Autopilot）怎么选、Spot 与承诺折扣怎么用、成本怎么治理。两者是同一条能力线的两端，关系就是**自建 vs 托管**：先用本专题把对象模型学透，再按团队规模与合规要求决定哪些负载自建、哪些直接交给托管控制面。

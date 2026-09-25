@@ -222,7 +222,7 @@ loki.process "filter_noise" {
 
 **验证降本是否生效**：
 
-```logql
+``` text
 # 1. 各服务日志字节速率（找出「话最多」的服务）
 sum by (service) (bytes_rate({env="prod"}[1h]))
 

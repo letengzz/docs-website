@@ -36,19 +36,19 @@ app.listen(3000, () => {
 
 ### 执行JS代码
 
-```ejs
+``` erb
 <% code %>
 ```
 
 ### 输出转义的数据到模板上
 
-```ejs
+``` erb
 <%= data %>
 ```
 
 ### 输出非转义的数据到模板
 
-```ejs
+``` erb
 <%- data %>
 ```
 
@@ -98,7 +98,7 @@ app.listen(3000)
 
 ### 模板文件
 
-```ejs [views/index.ejs]
+``` erb [views/index.ejs]
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,7 +120,7 @@ app.listen(3000)
 
 ### 变量输出
 
-```ejs [variable.ejs]
+``` erb [variable.ejs]
 <!-- 输出变量 -->
 <p><%= name %></p>
 
@@ -136,7 +136,7 @@ app.listen(3000)
 
 ### 流程控制
 
-```ejs [control.ejs]
+``` erb [control.ejs]
 <!-- if 判断 -->
 <% if (user.age >= 18) { %>
   <p>成年人</p>
@@ -157,7 +157,7 @@ app.listen(3000)
 
 ### 包含子模板
 
-```ejs [include.ejs]
+``` erb [include.ejs]
 <!-- 引入头部 -->
 <%- include('header') %>
 
@@ -169,7 +169,7 @@ app.listen(3000)
 
 ### 注释
 
-```ejs [comment.ejs]
+``` erb [comment.ejs]
 <!-- EJS 注释（不会输出到HTML） -->
 <%# 这是注释 %>
 
@@ -194,7 +194,7 @@ myapp/
 
 ### 布局模板
 
-```ejs [views/layout.ejs]
+``` erb [views/layout.ejs]
 <!DOCTYPE html>
 <html>
 <head>
@@ -214,7 +214,7 @@ myapp/
 
 ### 头部模板
 
-```ejs [views/header.ejs]
+``` erb [views/header.ejs]
 <header>
   <nav>
     <a href="/">首页</a>
@@ -226,7 +226,7 @@ myapp/
 
 ### 底部模板
 
-```ejs [views/footer.ejs]
+``` erb [views/footer.ejs]
 <footer>
   <p>&copy; 2024 我的网站</p>
 </footer>
@@ -234,7 +234,7 @@ myapp/
 
 ### 用户列表模板
 
-```ejs [views/users.ejs]
+``` erb [views/users.ejs]
 <h1>用户列表</h1>
 
 <table>
@@ -298,7 +298,7 @@ console.log(html)
 
 ### 过滤器
 
-```ejs [filter.ejs]
+``` erb [filter.ejs]
 <!-- 转义HTML -->
 <%= '<script>' %>
 <!-- 输出: &lt;script&gt; -->
@@ -310,7 +310,7 @@ console.log(html)
 
 ### 条件渲染
 
-```ejs [conditional.ejs]
+``` erb [conditional.ejs]
 <% if (users && users.length > 0) { %>
   <p>共有 <%= users.length %> 个用户</p>
 <% } else { %>

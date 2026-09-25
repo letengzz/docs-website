@@ -303,7 +303,7 @@ curl -s http://localhost:3100/loki/api/v1/labels
 2. **Connections → Data sources → Add data source → Loki**，URL 填 `http://loki:3100`，保存并点 **Save & test**，看到 `Data source connected`。
 3. **Explore → 选择 Loki → 输入查询**：
 
-```logql
+``` text
 {job="order-service"} |= "订单创建成功"
 ```
 
@@ -359,7 +359,7 @@ URL: https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxxxx
 
 **规则 A：致命关键字（命中即告警）**
 
-```logql
+``` text
 sum(count_over_time({job="order-service"} |~ "java\\.lang\\.OutOfMemoryError|No space left on device" [5m])) > 0
 ```
 
@@ -372,7 +372,7 @@ sum(count_over_time({job="order-service"} |~ "java\\.lang\\.OutOfMemoryError|No 
 
 **规则 B：ERROR 数量突增**
 
-```logql
+``` text
 sum(count_over_time({job="order-service"} | json | level="ERROR" [5m])) > 50
 ```
 

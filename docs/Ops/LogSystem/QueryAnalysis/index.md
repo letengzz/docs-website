@@ -133,7 +133,7 @@ LogQL 分两类查询：**日志查询**（返回日志行）和**指标查询**
 
 ### 日志查询：三步走
 
-```logql
+``` text
 # 第 1 步：流选择器（Stream Selector）——必须存在，决定扫描范围
 {job="order-service", env="prod"}
 
@@ -168,7 +168,7 @@ LogQL 分两类查询：**日志查询**（返回日志行）和**指标查询**
 
 `line_format` 与 `label_format` 使用 Go 模板语法，用双花括号占位符引用解析出来的字段：
 
-```logql
+``` text
 # 只保留 level 与 message 两列，输出更干净
 {job="order-service"} | json | line_format "{{.level}} {{.message}}"
 
@@ -180,7 +180,7 @@ LogQL 分两类查询：**日志查询**（返回日志行）和**指标查询**
 
 这是 Loki 最实用的能力——**不需要改代码，就能从日志得到监控指标**：
 
-```logql
+``` text
 # 错误日志速率（每秒条数）
 sum(rate({job="order-service"} |= "ERROR" [5m]))
 
@@ -251,7 +251,7 @@ sum(rate({job="order-service"} | json | level="ERROR" [5m]))
 
 **第 1 步：确认时间窗口与范围**
 
-```logql
+``` text
 sum by (pod) (rate({job="order-service"} | json | level="ERROR" [1m]))
 ```
 
@@ -259,7 +259,7 @@ sum by (pod) (rate({job="order-service"} | json | level="ERROR" [1m]))
 
 **第 2 步：看错误类型分布**
 
-```logql
+``` text
 topk(5, sum by (message) (count_over_time({pod="order-service-7d9f-abc12"} | json | level="ERROR" [10m])))
 ```
 
@@ -267,7 +267,7 @@ topk(5, sum by (message) (count_over_time({pod="order-service-7d9f-abc12"} | jso
 
 **第 3 步：抽一条完整日志拿 traceId**
 
-```logql
+``` text
 {pod="order-service-7d9f-abc12"} |= "扣减库存失败" | json | line_format "{{.traceId}} {{.message}}"
 ```
 
@@ -275,7 +275,7 @@ topk(5, sum by (message) (count_over_time({pod="order-service-7d9f-abc12"} | jso
 
 **第 4 步：全链路串联**
 
-```logql
+``` text
 {env="prod"} |= "4bf92f3577b34da6"
 ```
 
@@ -283,7 +283,7 @@ topk(5, sum by (message) (count_over_time({pod="order-service-7d9f-abc12"} | jso
 
 **第 5 步：反证**
 
-```logql
+``` text
 sum(rate({job="order-service"} |= "10.0.3.77" [5m]))
 ```
 

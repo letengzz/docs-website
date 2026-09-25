@@ -47,7 +47,7 @@ export default nextConfig
 
 ### 使用环境变量
 
-```env [.env.local]
+``` dotenv [.env.local]
 # 服务端环境变量
 DATABASE_URL=postgresql://localhost/mydb
 API_SECRET=secret-key

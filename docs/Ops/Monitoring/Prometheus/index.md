@@ -68,7 +68,7 @@ docker compose up -d
 
 ### 选择器
 
-```promql
+``` text
 up                                            # 所有 up 指标
 up{job="node"}                                # 按标签过滤
 up{instance=~"10.0.*"}                        # 正则匹配
@@ -88,7 +88,7 @@ http_requests_total{method="GET"}[5m]         # 最近 5 分钟的所有样本
 
 ### 查询示例
 
-```promql
+``` text
 # 每秒请求数（按 method 分组）
 sum(rate(http_requests_total[5m])) by (method)
 

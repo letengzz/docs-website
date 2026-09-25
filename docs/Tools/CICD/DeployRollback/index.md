@@ -219,6 +219,47 @@ argocd app get order-service
 - [完整项目交付 · 一键部署与上线验收](../../../Others/ProjectDelivery/Delivery/index.md)：本页给部署与回滚的**工具与命令**，该页给**判据**——三套环境矩阵、部署六步的不可调换顺序、灰度与回滚必须凑齐的三个前置条件，以及六类 18 项上线验收清单
 - [后端通用模板 · 镜像推送与发布策略](../../../../project/Base/BackendTemplate/Release/index.md)：本页讲「怎么发布与回滚」，该页讲**发布产物本身怎么保证可追溯**——标签按「会不会变」分四层、部署命令只引用不可变标签、`cosign` 签名与验签、registry 标签不可变策略，以及「回滚是换回旧身份而不是重新构建」的完整论证
 
+## 函数与 Serverless 的回滚差异
+
+前面讲的回滚单位都是**镜像 tag 或上一版部署**（`kubectl rollout undo`、切回上一个 Tag）。函数（Lambda / 阿里云函数计算 / 云函数等）没有「实例」这个概念，回滚单位变成**版本与别名（Version & Alias）**，或**流量权重**。理解这个差异，才能在 Serverless 场景里把「一条命令回滚」真正落地。
+
+| 维度 | 容器 / 虚机 | 函数（Serverless） |
+| --- | --- | --- |
+| 回滚粒度 | 镜像 tag / 上一版 Deployment | 版本（Version）+ 别名（Alias）指向，或流量权重 |
+| 回滚耗时 | 秒级到分钟级（等 Pod 就绪） | 秒级（只改一条别名指针，几乎无等待） |
+| 能否按比例灰度 | 需要网关 / Service Mesh / Argo Rollouts 配合 | 原生支持：别名权重（如 5%/95%）即可 |
+| 状态迁移注意 | 新老实例并存，需向前兼容 | 版本间共享同一个后端存储，**数据兼容要求与容器一致** |
+| 常见失败原因 | 探针太宽、拉镜像慢、资源不足 | 别名没绑定版本、版本未发布、并发/内存配额不足导致冷启动超时 |
+
+```shell [把别名指向上一版本，并按权重灰度]
+# 函数每次发布新版本会生成一个不可变版本号（如 42）
+# 查看现有版本与别名
+aws lambda list-versions-by-function --function-name order-processor
+aws lambda list-aliases --function-name order-processor
+
+# 灰度：让 prod 别名 5% 流量打到新版本 43，95% 留在旧版本 42
+aws lambda update-alias \
+  --function-name order-processor \
+  --name prod \
+  --function-version 43 \
+  --routing-config '{"AdditionalVersionWeights":{"42":0.95}}'
+
+# 观察窗口内指标异常 → 直接把别名整体切回旧版本（回滚就是改一条指针）
+aws lambda update-alias \
+  --function-name order-processor \
+  --name prod \
+  --function-version 42 \
+  --routing-config '{}'
+```
+
+::: danger 函数回滚的三个专属陷阱
+1. **函数是有状态的写入方时，回滚代码不等于回滚数据**：函数常直接写数据库 / 对象存储 / 消息队列，把代码切回旧版本，已经写进去的新格式数据仍然在那里。回滚前先确认新版本有没有改变写入的数据结构，必要时把数据回滚计划与代码回滚分开准备。
+2. **冷启动会让灰度期的延迟指标失真**：新版本首次调用要冷启动，灰度期 p95 会被少数冷启动样本拉高，容易误判为「新版本更慢」而急着急回滚。观察延迟时把冷启动样本单独看，或先预热再判断。
+3. **别名与版本必须成对管理，否则无从回滚**：只发布版本、不绑定别名，或直接让别名指向 `$LATEST`，回滚时就没有稳定的旧指向可切。约定「生产只通过别名调用，别名只指向已发布的不可变版本」。
+:::
+
+容器侧的回滚判据、观察窗口与「回滚谁拍板」见 [完整项目交付 · 一键部署与上线验收](../../../Others/ProjectDelivery/Delivery/index.md)；函数工程从代码到上线的完整链路见 [云原生与服务托管 · 实战](../../../Ops/CloudNative/Practice/index.md)。
+
 ## 参考资料
 
 - Kubernetes Deployment 策略：https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/
@@ -229,3 +270,4 @@ argocd app get order-service
 - 传统虚机/裸机场景的批量部署与灰度：[Ansible 自动化运维 · 实战](../../../Ops/Ansible/Practice/index.md)
 - 流水线里最危险的一步是基础设施变更：用 [Terraform · 常见问题与最佳实践](../../../Ops/Terraform/FAQ/index.md) 的「已审批 plan 文件 + apply 该文件」流程，禁止 CI 直接 `apply -auto-approve`
 - 部署前的安全门禁（依赖/镜像扫描、镜像签名与验签）：[安全加固 · 扫描工具链](../../../Ops/SecurityHardening/ScanningToolchain/index.md)
+- AWS Lambda 版本与别名（版本不可变、别名可带权重）：https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html

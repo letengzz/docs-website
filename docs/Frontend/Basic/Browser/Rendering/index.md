@@ -78,11 +78,22 @@ el.style.transform = "translateX(100px)";
 2. Performance 面板录制，查看 Layout/Paint/Composite 阶段耗时。
 3. 用 `transform` 与 `left` 各写一个动画对比帧率。
 
+## 边界：Wasm 参与计算，但不参与渲染
+
+WebAssembly（Wasm）常被误解为「能让渲染更快」，其实**它碰不到 DOM，也不参与渲染管线**：上面这条 **DOM → CSSOM → 渲染树 → 布局 → 绘制 → 合成** 的链路，排版与绘制始终由浏览器和 JS 负责，Wasm 无法插入其中的任何一环。
+
+Wasm 能做的，是作为主线程或 Worker 里**被调用的一段计算**，把链路里「算出结果」这一步做快：比如几何计算、物理模拟、图像与像素处理、加密压缩。算完之后仍然是 JS 拿着结果去改样式、改 DOM、驱动 `transform`——**渲染该走管线还得走管线**。
+
+::: tip 一句话划清边界
+Wasm 加速的是**计算**，不是**渲染**。想减少重排重绘，手段仍是本页讲的批量修改、合成属性动画、读写分离；把计算搬进 Wasm 只能让「每帧的计算」变短，不会让「布局与绘制」变少。
+:::
+
+Wasm 是什么、适合承担哪类计算，见 [WebAssembly · 概述](../../../WebAssembly/Overview/index.md)。
+
 ## 参考资料
 
 - 渲染性能实践：[运行时优化](../../../Others/PerformanceOptimization/Runtime/index.md)
 - 两条绘图支线：[数据可视化 · 渲染路线：Canvas / SVG / WebGL](../../../DataVisualization/Rendering/index.md)——Canvas 走「位图光栅化」、SVG 走「DOM + 矢量绘制」、WebGL 走「GPU 并行」，与本页的渲染管线分工：本页讲管线怎么走，那一页讲图表场景怎么选支线；规模再往上（十万点级）的取舍见 [数据可视化 · 大数据量下的性能工程](../../../DataVisualization/LargeData/index.md)。
-
 - 渲染树构建（Critical Rendering Path）：https://web.dev/articles/critical-rendering-path/render-tree-construction
 - 渲染性能优化：https://web.dev/learn/performance/rendering
 - 强制同步布局说明：https://web.dev/articles/avoid-large-complex-layouts-and-layout-thrash

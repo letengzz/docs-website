@@ -262,7 +262,7 @@ curl -s "http://loki:3100/loki/api/v1/label/<可疑标签>/values"
 
 **校验方法**：上线后用实际数据反推系数，而不是一直用经验值。
 
-```logql
+``` text
 # 实际日志字节速率（Loki）
 sum(bytes_rate({env="prod"}[1h]))
 ```
@@ -323,7 +323,7 @@ docker exec -it app date
 1. **收窄匹配条件**：把 `|~ "error"` 换成精确的错误码或完整类名。
 2. **加 `for` 抖动量**：`for: 5m` 能挡掉绝大多数瞬时毛刺。
 3. **建立白名单**：把已知无害的日志模式加入排除条件。
-   ```logql
+   ``` text
    {job="order-service"} | json | level="ERROR" != "已知无害的第三方超时"
    ```
 4. **按服务分组**：`group_by: [service]`，避免一条通知覆盖所有服务。

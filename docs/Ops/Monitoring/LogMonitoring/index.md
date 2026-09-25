@@ -121,7 +121,7 @@ loki.write "default" {
 
 ## LogQL 速览
 
-```logql
+``` text
 # 按标签过滤 + 关键字
 {job="order-service"} |= "ERROR"
 

@@ -111,7 +111,7 @@ terraform init -migrate-state  # 换了 backend，把旧 state 迁过去
 
 ## 7. `.terraform.lock.hcl`：必须提交
 
-```
+```hcl [.terraform.lock.hcl]
 # .terraform.lock.hcl（自动生成，请提交到 Git）
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "6.12.0"

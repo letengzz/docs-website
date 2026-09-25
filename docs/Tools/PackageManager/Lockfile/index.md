@@ -107,7 +107,7 @@ node_modules/
 
 ## lockfile 与 Git
 
-```gitignore [.gitignore]
+``` text [.gitignore]
 # 以下文件必须提交（不要忽略）
 package-lock.json
 pnpm-lock.yaml
@@ -115,7 +115,7 @@ yarn.lock
 bun.lockb
 ```
 
-```gitignore [.gitignore]
+``` text [.gitignore]
 # node_modules 必须忽略
 node_modules/
 ```

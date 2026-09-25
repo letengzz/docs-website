@@ -220,6 +220,17 @@ mvn -q verify -Djacoco.skip=false && echo "门禁通过"
 grep -rn "Thread.sleep" src/test | grep -v "// 已评估" || echo "无固定等待"
 ```
 
+## 工具层落点
+
+本页给出的是**职责边界、测试数据隔离的三档取舍与 CI 门禁清单**——回答「哪一层该测什么、门禁卡在什么标准、数据怎么隔离」。至于每一层**具体用哪个工具、脚本怎么写、命令怎么敲**，落在 [测试工具专题](../../../Tools/TestingTools/index.md)，那里给的是能照着跑一遍的工具细节。
+
+| 测试目标 | 本项目（本页）的方法 | 对应工具页 |
+| --- | --- | --- |
+| 纯逻辑与边界条件 | 单元测试不碰网络 / 文件 / 时间，三值法覆盖边界 | [测试工具专题总览](../../../Tools/TestingTools/index.md) |
+| 接口主链路与契约 | 集成测试连真实容器，契约破坏性变更进 CI 拦截 | [接口自动化](../../../Tools/TestingTools/APIAutomation/index.md) |
+| 性能基线与容量拐点 | 可复现压测脚本 + 明确判据 + 上一版基线对照 | [JMeter 压力测试](../../../Tools/TestingTools/JMeter/index.md) |
+| 跨浏览器端到端旅程 | 关键旅程 5~10 条，等待策略稳定、flaky 当天处理 | [Selenium 端到端测试](../../../Tools/TestingTools/Selenium/index.md) |
+
 ## 参考资料
 
 - [JUnit 5 用户指南](https://junit.org/junit5/docs/current/user-guide/)

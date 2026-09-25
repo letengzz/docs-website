@@ -22,3 +22,7 @@
 ::: info 分布式事务专题（2026-09 核对）
 [分布式事务](DistributedTransaction/index.md) 已扩展为完整小节：概述与选型、[一致性基础](DistributedTransaction/Consistency/index.md)、[2PC 与 XA](DistributedTransaction/TwoPhaseCommit/index.md)、[TCC](DistributedTransaction/TCC/index.md)、[SAGA](DistributedTransaction/Saga/index.md)、[本地消息表与事务消息](DistributedTransaction/MessageTable/index.md)、[Seata 事务框架](DistributedTransaction/Seata/index.md)、[Seata 1.x 存档（仅存量项目）](DistributedTransaction/Seata/Seata1/index.md)、[实战](DistributedTransaction/Practice/index.md) 与 [常见问题](DistributedTransaction/FAQ/index.md)。主线面向 Seata 2.x（最新发布 2.7.0），1.x 内容保留并标注「仅存量项目使用」。
 :::
+
+## 相关专题与分工
+
+- [JMeter 压力测试](../../Tools/TestingTools/JMeter/index.md)：本专题讲**服务拆分、注册与配置中心、网关、熔断限流降级、链路追踪与分布式事务**这些治理与通信问题——即「服务怎么拆、拆完怎么协作」；这些设计到底扛不扛得住流量，最后要落到压测上验证，JMeter 页给**压测脚本怎么写、报告怎么判读、容量拐点怎么定位**。两者是「设计」与「验证」的关系：拆完服务不等于容量就够，容量验证的落点在压测工具页。

@@ -192,7 +192,7 @@ ANALYZE=true npm run build
 
 ### 创建环境变量文件
 
-```env [.env.local]
+``` dotenv [.env.local]
 # 服务端环境变量
 DATABASE_URL=postgresql://user:password@localhost:5432/mydb
 API_SECRET=your-secret-key

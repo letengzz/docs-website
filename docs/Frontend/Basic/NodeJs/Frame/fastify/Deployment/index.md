@@ -159,7 +159,7 @@ CMD ["node", "app.js"]
 
 ### .dockerignore
 
-```dockerignore [.dockerignore]
+``` text [.dockerignore]
 node_modules
 npm-debug.log
 .git
