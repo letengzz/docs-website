@@ -396,6 +396,8 @@
 
 - [x] 第 81 天收尾巡检：`linkcheck.py` **3129 条相对链接 0 断链**（扫描根 `docs` + `project`）、`bracecheck_all.py` **1398 个文件围栏外花括号 0**、`sidebarcover.py` **Check A/B 错误 0**、`sidebarlink.py` **1281 条侧边栏/导航链接 0 缺失**、`interpcheck.mjs --all` **1398 个文件渲染级插值 0**、`pnpm lint` 通过。新增脚本 `sidebarcover.py` 已与既有四个巡检脚本并列沉淀到技能 `docs-website-doc-ops/scripts/`。
 
+- [x] 第 81 天构建结果：`pnpm docs:build` 输出 **`build complete in 3188.38s`**（判据命中）。本轮比历史基线（2315~2354s）长约 14 分钟，差异全部落在 `dist` 清空阶段；结束时日志停在 12 KB 的位置与历史一致（rollup 分块大小警告之后才是 `rendering pages`），期间用 `find .vitepress/dist -type f | wc -l` 两次采样（2060 → 4111，先降后增）确认在推进而非挂死——**「日志不增长」在这一阶段是正常的，不能用它判挂死**。提交 `60fc70c`（89 文件 / +8233 −20），已推送 `origin/main`，`git rev-parse HEAD` 与 `git ls-remote origin main` 一致。
+
 ## 节奏建议
 
 - 每天至少产出 6 篇（1 个大主题或 2 个小主题）；当天写不完时把欠量顺延到次日补齐，不要用 1 篇概述代替。
