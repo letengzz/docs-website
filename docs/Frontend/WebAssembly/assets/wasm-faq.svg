@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 364" width="760" height="364" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="364" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">WebAssembly 排障决策树</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">加载失败、比 JS 还慢、内存增长，三类问题的根因分别落在部署、调用粒度和内存管理</text>
+  <rect x="300" y="76" width="160" height="56" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="94.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">Wasm 出问题了</text>
+  <text x="380" y="111" text-anchor="middle" font-size="7.5" fill="#334155">先分类：别先怀疑语言</text>
+  <line x1="380" y1="132" x2="134" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="20" y="168" width="228" height="106" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="134" y="186.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">加载失败 / 白屏</text>
+  <text x="134" y="203" text-anchor="middle" font-size="8" fill="#B91C1C">① MIME 是否 application/wasm</text>
+  <text x="134" y="221.4" text-anchor="middle" font-size="8" fill="#B91C1C">② 是否走了 file:// 或重定向丢失</text>
+  <text x="134" y="239.8" text-anchor="middle" font-size="8" fill="#B91C1C">③ 部署是否漏传 .wasm</text>
+  <text x="134" y="258.2" text-anchor="middle" font-size="8" fill="#B91C1C">④ 打包器是否把它当资源内联</text>
+  <line x1="380" y1="132" x2="380" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="266" y="168" width="228" height="106" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="186.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">比 JS 还慢</text>
+  <text x="380" y="203" text-anchor="middle" font-size="8" fill="#B45309">① 是否按行/按元素频繁调用</text>
+  <text x="380" y="221.4" text-anchor="middle" font-size="8" fill="#B45309">② 是否每次都在重复拷贝大数组</text>
+  <text x="380" y="239.8" text-anchor="middle" font-size="8" fill="#B45309">③ JS 版本是否没做优化</text>
+  <text x="380" y="258.2" text-anchor="middle" font-size="8" fill="#B45309">④ 是否忽略了首次编译耗时</text>
+  <line x1="380" y1="132" x2="626" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="512" y="168" width="228" height="106" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="626" y="186.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">内存持续增长 / 崩溃</text>
+  <text x="626" y="203" text-anchor="middle" font-size="8" fill="#6D28D9">① 是否漏调 free</text>
+  <text x="626" y="221.4" text-anchor="middle" font-size="8" fill="#6D28D9">② 是否 grow 后仍用旧视图</text>
+  <text x="626" y="239.8" text-anchor="middle" font-size="8" fill="#6D28D9">③ 是否把整张图留在内存</text>
+  <text x="626" y="258.2" text-anchor="middle" font-size="8" fill="#6D28D9">④ 是否在循环里新建 Memory</text>
+  <text x="380" y="300" text-anchor="middle" font-size="10" fill="#1E3A8A">通用顺序：先看网络面板（有没有拿到且类型对不对）→ 再看调用粒度 → 最后才看算法实现</text>
+  <text x="380" y="324" text-anchor="middle" font-size="9.5" fill="#6D28D9">调试手段：Chrome DevTools 已支持 Wasm 单步与查看线性内存；编译时加 -g 保留 DWARF 才能看到源码行号</text>
+  <text x="380" y="348" text-anchor="middle" font-size="9.5" fill="#991B1B">反面教材：为了「性能」把所有逻辑搬进 Wasm，结果 DOM 与字符串互操作开销把收益全部吃回去</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

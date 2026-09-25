@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">冷启动的五段拆解与治理手段</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先量出「哪一段最贵」，再决定是改代码、改配置还是花钱买常热</text>
+  <rect x="20" y="78" width="136" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="88" y="96.2" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">① 调度</text>
+  <text x="88" y="113" text-anchor="middle" font-size="7" fill="#334155">选择可用区与机器</text>
+  <text x="88" y="129.1" text-anchor="middle" font-size="7" fill="#334155">耗时：&lt; 10 ms</text>
+  <text x="88" y="145.2" text-anchor="middle" font-size="7" fill="#334155">优化空间小</text>
+  <line x1="156" y1="126" x2="168" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="168" y="78" width="136" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="236" y="96.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">② 沙箱创建</text>
+  <text x="236" y="113" text-anchor="middle" font-size="7" fill="#1D4ED8">分配 microVM / isolate</text>
+  <text x="236" y="129.1" text-anchor="middle" font-size="7" fill="#1D4ED8">耗时：10~100 ms</text>
+  <text x="236" y="145.2" text-anchor="middle" font-size="7" fill="#1D4ED8">预热池可消除</text>
+  <line x1="304" y1="126" x2="316" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="316" y="78" width="136" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="384" y="96.2" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">③ 运行时初始化</text>
+  <text x="384" y="113" text-anchor="middle" font-size="7" fill="#6D28D9">载入 Node / JVM / Python</text>
+  <text x="384" y="129.1" text-anchor="middle" font-size="7" fill="#6D28D9">耗时：50~800 ms</text>
+  <text x="384" y="145.2" text-anchor="middle" font-size="7" fill="#6D28D9">改用轻量运行时</text>
+  <line x1="452" y1="126" x2="464" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="464" y="78" width="136" height="96" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="532" y="96.2" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">④ 代码初始化</text>
+  <text x="532" y="113" text-anchor="middle" font-size="7" fill="#C2410C">执行 handler 外代码</text>
+  <text x="532" y="129.1" text-anchor="middle" font-size="7" fill="#C2410C">耗时：看你写了什么</text>
+  <text x="532" y="145.2" text-anchor="middle" font-size="7" fill="#C2410C">最大可控项</text>
+  <line x1="600" y1="126" x2="612" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="612" y="78" width="136" height="96" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="680" y="96.2" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">⑤ 首次执行</text>
+  <text x="680" y="113" text-anchor="middle" font-size="7" fill="#047857">进入 handler</text>
+  <text x="680" y="129.1" text-anchor="middle" font-size="7" fill="#047857">耗时：与业务等长</text>
+  <text x="680" y="145.2" text-anchor="middle" font-size="7" fill="#047857">与冷启动无关</text>
+  <text x="380" y="192" text-anchor="middle" font-size="10" fill="#991B1B">冷启动 = ① + ② + ③ + ④；只有 ③④ 是应用侧能优化的，① 与业务无关</text>
+  <text x="40" y="222" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">五条治理手段（按性价比排序）</text>
+  <rect x="20" y="234" width="136" height="78" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="88" y="252.2" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">① 初始化外提</text>
+  <text x="88" y="269" text-anchor="middle" font-size="7" fill="#047857">把 SDK 客户端、DB 连接、配置</text>
+  <text x="88" y="285.1" text-anchor="middle" font-size="7" fill="#047857">放在 handler 之外复用</text>
+  <rect x="168" y="234" width="136" height="78" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="236" y="252.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">② 缩包体</text>
+  <text x="236" y="269" text-anchor="middle" font-size="7" fill="#1D4ED8">裁剪依赖、用 Layer 拆分</text>
+  <text x="236" y="285.1" text-anchor="middle" font-size="7" fill="#1D4ED8">包越小初始化越快</text>
+  <rect x="316" y="234" width="136" height="78" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="384" y="252.2" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">③ 抬内存</text>
+  <text x="384" y="269" text-anchor="middle" font-size="7" fill="#6D28D9">内存与 CPU 配额同向</text>
+  <text x="384" y="285.1" text-anchor="middle" font-size="7" fill="#6D28D9">抬内存常比降时长更省</text>
+  <rect x="464" y="234" width="136" height="78" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="532" y="252.2" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">④ ARM 架构</text>
+  <text x="532" y="269" text-anchor="middle" font-size="7" fill="#0F766E">Graviton / 倚天</text>
+  <text x="532" y="285.1" text-anchor="middle" font-size="7" fill="#0F766E">性价比高约三成</text>
+  <rect x="612" y="234" width="136" height="78" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="680" y="252.2" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">⑤ 常热手段</text>
+  <text x="680" y="269" text-anchor="middle" font-size="7" fill="#C2410C">预置并发 / SnapStart /</text>
+  <text x="680" y="285.1" text-anchor="middle" font-size="7" fill="#C2410C">最小实例数 ≥ 1</text>
+  <text x="380" y="332" text-anchor="middle" font-size="10" fill="#991B1B">反例：把「建立数据库连接」放在 handler 里 → 每次调用都握一次手，吞吐直接掉一个量级</text>
+  <text x="380" y="356" text-anchor="middle" font-size="9.5" fill="#B45309">进阶：初始化代码里不要缓存带时效的东西（临时凭证、一次性签名），快照恢复后会拿到过期值</text>
+  <text x="380" y="380" text-anchor="middle" font-size="9.5" fill="#64748B">Java 特别提示：JVM 冷启动最贵，SnapStart 最初只支持 Java，后扩展到 Python 与 .NET</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

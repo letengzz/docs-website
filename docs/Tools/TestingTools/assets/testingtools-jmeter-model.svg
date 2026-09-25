@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 486" width="760" height="486" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="486" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">JMeter 组件模型与执行顺序</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">线程组决定「多少虚拟用户」，配置与前置决定「发什么」，后置决定「怎么判定成功」</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">JMeter 的模型很朴素：一棵树 + 一条执行顺序</text>
+  <rect x="280" y="94" width="200" height="64" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="112.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">Test Plan 测试计划</text>
+  <text x="380" y="129" text-anchor="middle" font-size="7.5" fill="#6D28D9">根节点 · 全局变量与用户定义</text>
+  <text x="380" y="146.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">这一层决定整个脚本的可配置性</text>
+  <line x1="380" y1="158" x2="380" y2="178" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="280" y="178" width="200" height="64" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="196.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">Thread Group 线程组</text>
+  <text x="380" y="213" text-anchor="middle" font-size="7.5" fill="#1D4ED8">并发数 / Ramp-Up / 循环或时长</text>
+  <text x="380" y="230.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">一个线程组 = 一类虚拟用户</text>
+  <line x1="380" y1="242" x2="380" y2="262" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="280" y="262" width="200" height="64" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="280.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">Sampler 取样器</text>
+  <text x="380" y="297" text-anchor="middle" font-size="7.5" fill="#047857">真正发起请求的元素</text>
+  <text x="380" y="314.25" text-anchor="middle" font-size="7.5" fill="#047857">HTTP / JDBC / JMS / TCP</text>
+  <line x1="280" y1="210" x2="200" y2="210" stroke="#7C3AED" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="200" y1="210" x2="200" y2="342" stroke="#7C3AED" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="200" y1="342" x2="276" y2="342" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="480" y1="210" x2="560" y2="210" stroke="#7C3AED" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="560" y1="210" x2="560" y2="342" stroke="#7C3AED" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="560" y1="342" x2="484" y2="342" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="20" y="330" width="256" height="92" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="148" y="348.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">前置：配置与前置处理器</text>
+  <text x="148" y="365" text-anchor="middle" font-size="7.5" fill="#B45309">HTTP Request Defaults · CSV Data Set</text>
+  <text x="148" y="382.25" text-anchor="middle" font-size="7.5" fill="#B45309">用户参数 · JSR223 PreProcessor</text>
+  <text x="148" y="399.5" text-anchor="middle" font-size="7.5" fill="#B45309">计时器也在此层生效</text>
+  <rect x="484" y="330" width="256" height="92" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="612" y="348.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">后置：断言与监听器</text>
+  <text x="612" y="365" text-anchor="middle" font-size="7.5" fill="#C2410C">Response Assertion · JSON Assertion</text>
+  <text x="612" y="382.25" text-anchor="middle" font-size="7.5" fill="#C2410C">JSON/JMESPath 提取器</text>
+  <text x="612" y="399.5" text-anchor="middle" font-size="7.5" fill="#C2410C">聚合报告 · HTML 报告</text>
+  <text x="380" y="444" text-anchor="middle" font-size="10" fill="#991B1B">关键认知：JMeter 不是浏览器，它不执行页面里的 JavaScript、不渲染页面</text>
+  <text x="380" y="468" text-anchor="middle" font-size="9.5" fill="#64748B">所以「前端渲染慢」这类问题 JMeter 测不出来，必须靠 Selenium / 真实用户监控（RUM）补</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

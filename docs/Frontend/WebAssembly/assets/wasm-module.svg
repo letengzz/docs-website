@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 438" width="760" height="438" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="438" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Wasm 模块结构与实例化时序</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">搞清 import / export / memory / table 四件事，就掌握了一半的互操作</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">一个 .wasm 模块由四样东西组成：类型、导入导出、内存、表</text>
+  <rect x="20" y="96" width="232" height="118" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="136" y="114.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">模块内部结构</text>
+  <text x="136" y="131" text-anchor="middle" font-size="7.5" fill="#6D28D9">Type 函数签名 · Import 宿主依赖</text>
+  <text x="136" y="148.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">Function 模块函数 · Global 全局变量</text>
+  <text x="136" y="165.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">Memory 线性内存 · Table 间接调用表</text>
+  <text x="136" y="182.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">Export 对外暴露的符号</text>
+  <text x="136" y="200" text-anchor="middle" font-size="7.5" fill="#6D28D9">→ 四样东西：类型 / 导入导出 / 内存 / 表</text>
+  <rect x="264" y="96" width="232" height="118" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="114.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">三种被宿主使用的方式</text>
+  <text x="380" y="131" text-anchor="middle" font-size="7.5" fill="#1D4ED8">instantiateStreaming() 流式实例化</text>
+  <text x="380" y="148.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">WebAssembly.Module 编译一次多次实例化</text>
+  <text x="380" y="165.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">Worker 内实例化，主线程只管收发</text>
+  <text x="380" y="182.75" text-anchor="middle" font-size="7.5" fill="#1D4ED8">共享内存需 SharedArrayBuffer + 线程</text>
+  <rect x="508" y="96" width="232" height="118" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="624" y="114.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">实例化时序（决定首屏体验）</text>
+  <text x="624" y="131" text-anchor="middle" font-size="7.5" fill="#047857">① fetch .wasm（网络）</text>
+  <text x="624" y="148.25" text-anchor="middle" font-size="7.5" fill="#047857">② 编译（CPU，可缓存 CompiledModule）</text>
+  <text x="624" y="165.5" text-anchor="middle" font-size="7.5" fill="#047857">③ 实例化并链接导入</text>
+  <text x="624" y="182.75" text-anchor="middle" font-size="7.5" fill="#047857">④ 执行 init 导出函数</text>
+  <text x="380" y="232" text-anchor="middle" font-size="10" fill="#6D28D9">常用优化：编译结果用 Cache Storage / IndexedDB 缓存，二次加载跳过编译，通常能省 100~300 ms</text>
+  <text x="40" y="262" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">最小可用示例（宿主侧）</text>
+  <rect x="20" y="274" width="720" height="126" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.2"/>
+  <text x="36" y="296" text-anchor="start" font-size="8.5" fill="#1E3A8A">const { instance } = await WebAssembly.instantiateStreaming(fetch('/add.wasm'), {</text>
+  <text x="36" y="317" text-anchor="start" font-size="8.5" fill="#1E3A8A">  env: { memory: new WebAssembly.Memory({ initial: 16 }) },   // 导入宿主提供的对象</text>
+  <text x="36" y="338" text-anchor="start" font-size="8.5" fill="#1E3A8A">});</text>
+  <text x="36" y="359" text-anchor="start" font-size="8.5" fill="#1E3A8A">console.log(instance.exports.add(2, 3));   // 5   —— 导出函数直接调用</text>
+  <text x="36" y="380" text-anchor="start" font-size="8.5" fill="#1E3A8A">console.log(instance.exports.memory.buffer.byteLength);  // 线性内存的字节长度</text>
+  <text x="380" y="420" text-anchor="middle" font-size="9.5" fill="#991B1B">注意：Wasm 只能操作线性内存里的字节，JS 与它之间交换数据必须经过 Memory + TypedArray</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

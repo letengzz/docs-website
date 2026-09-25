@@ -5,6 +5,7 @@ export const nav = [
       { text: "基础", link: "/docs/Frontend/Basic" },
       { text: "框架", link: "/docs/Frontend/Frame" },
       { text: "数据可视化", link: "/docs/Frontend/DataVisualization" },
+      { text: "WebAssembly", link: "/docs/Frontend/WebAssembly" },
       { text: "其他", link: "/docs/Frontend/Others" }
     ]
   },
@@ -43,6 +44,7 @@ export const nav = [
       { text: "Docker", link: "/docs/Ops/Docker" },
       { text: "Kubernetes", link: "/docs/Ops/Kubernetes" },
       { text: "容器编排进阶", link: "/docs/Ops/ContainerOrchestration" },
+      { text: "云原生", link: "/docs/Ops/CloudNative" },
       { text: "监控告警", link: "/docs/Ops/Monitoring" },
       { text: "日志体系", link: "/docs/Ops/LogSystem" },
       { text: "JumpServer", link: "/docs/Ops/JumpServer" },
@@ -70,6 +72,7 @@ export const nav = [
       { text: "协作与项目管理", link: "/docs/Tools/Collaboration" },
       { text: "IDE 配置", link: "/docs/Tools/IDE" },
       { text: "效率工具", link: "/docs/Tools/Efficiency" },
+      { text: "测试工具", link: "/docs/Tools/TestingTools" },
       { text: "版本控制工具", link: "/docs/Tools/VersionControl" },
       { text: "其他", link: "/docs/Tools/Others" }
     ]

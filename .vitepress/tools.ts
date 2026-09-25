@@ -149,6 +149,20 @@ export const Efficiency = [
   },
 ];
 export const Others = [{ text: "其他工具", link: "/docs/Tools/Others/index.md" }];
+export const TestingTools = [
+  {
+    text: "测试工具",
+    link: "/docs/Tools/TestingTools/index.md",
+    items: [
+      { text: "概述与选型", link: "/docs/Tools/TestingTools/Overview/index.md" },
+      { text: "JMeter 性能测试", link: "/docs/Tools/TestingTools/JMeter/index.md" },
+      { text: "Selenium 与 UI 自动化", link: "/docs/Tools/TestingTools/Selenium/index.md" },
+      { text: "接口自动化", link: "/docs/Tools/TestingTools/APIAutomation/index.md" },
+      { text: "实战：回归与压测流水线", link: "/docs/Tools/TestingTools/Practice/index.md" },
+      { text: "常见问题与排错", link: "/docs/Tools/TestingTools/FAQ/index.md" },
+    ],
+  },
+];
 export const VC = [
   {
     text: "版本控制工具",

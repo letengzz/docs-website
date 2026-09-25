@@ -2,10 +2,10 @@
 import { Auth, DesignPatterns, DotNet, Ecommerce, Go, Java, MessageQueue, Microservices, NetworkProgramming, Python, SpringCloud } from "./backend";
 
 import { AI_Agent, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
-import { FrontBasic, FrontDataVisualization, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
-import { Ansible, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
+import { FrontBasic, FrontDataVisualization, FrontWebAssembly, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
+import { Ansible, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { DBOverview, DataModeling, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
-import { APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, VC } from "./tools";
+import { APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 const OthersReview = [
@@ -66,7 +66,7 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontDataVisualization, ...FrontTesting, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontDataVisualization, ...FrontWebAssembly, ...FrontTesting, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
@@ -87,7 +87,7 @@ export const sidebar = {
     {
       text: "运维",
       collapsed: true,
-      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...Monitoring, ...LogSystem, ...JumpServer, ...OpsOthers],
+      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...Monitoring, ...LogSystem, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
@@ -101,7 +101,7 @@ export const sidebar = {
     {
       text: "工具",
       collapsed: true,
-      items: [...Build, ...CICD, ...DatabaseClients, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...Others],
+      items: [...Build, ...CICD, ...DatabaseClients, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...Others],
     },
   ],
   "/project": [
@@ -132,6 +132,7 @@ export const sidebar = {
   "/docs/Frontend/Basic": FrontBasic,
   "/docs/Frontend/Frame": FrontFrame,
   "/docs/Frontend/DataVisualization": FrontDataVisualization,
+  "/docs/Frontend/WebAssembly": FrontWebAssembly,
   "/docs/Frontend/Others": FrontOthers,
   "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,
   "/docs/Frontend/Testing": FrontTesting,
@@ -163,6 +164,7 @@ export const sidebar = {
   "/docs/Ops/Docker": Docker,
   "/docs/Ops/Kubernetes": Kubernetes,
   "/docs/Ops/ContainerOrchestration": ContainerOrchestration,
+  "/docs/Ops/CloudNative": CloudNative,
   "/docs/Ops/Monitoring": Monitoring,
   "/docs/Ops/LogSystem": LogSystem,
   "/docs/Ops/JumpServer": JumpServer,
@@ -184,6 +186,7 @@ export const sidebar = {
   "/docs/Tools/Collaboration": Collaboration,
   "/docs/Tools/IDE": IDE,
   "/docs/Tools/Efficiency": Efficiency,
+  "/docs/Tools/TestingTools": TestingTools,
   "/docs/Tools/VersionControl": VC,
   "/docs/Tools/Others": Others,
   "/project/Base": BaseProject,

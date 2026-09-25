@@ -224,3 +224,18 @@ export const ContainerOrchestration = [
     ],
   },
 ];
+export const CloudNative = [
+  {
+    text: "云原生",
+    link: "/docs/Ops/CloudNative/index.md",
+    items: [
+      { text: "概述与选型", link: "/docs/Ops/CloudNative/Overview/index.md" },
+      { text: "Serverless 与函数计算", link: "/docs/Ops/CloudNative/Serverless/index.md" },
+      { text: "云函数工程化", link: "/docs/Ops/CloudNative/FunctionEngineering/index.md" },
+      { text: "托管容器服务", link: "/docs/Ops/CloudNative/ContainerService/index.md" },
+      { text: "云成本治理（FinOps）", link: "/docs/Ops/CloudNative/FinOps/index.md" },
+      { text: "实战：迁移与验收", link: "/docs/Ops/CloudNative/Practice/index.md" },
+      { text: "常见问题与排错", link: "/docs/Ops/CloudNative/FAQ/index.md" },
+    ],
+  },
+];

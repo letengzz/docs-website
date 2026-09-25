@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 452" width="760" height="452" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="452" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">压测报告怎么读才不被骗</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">错误率、吞吐、分位延迟、资源水位——四个数定生死，平均延迟仅供参考</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">压测报告先看四个数，再看曲线——顺序反了会被平均值的假象骗走</text>
+  <rect x="20" y="96" width="174" height="88" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="107" y="114.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">① 错误率</text>
+  <text x="107" y="131" text-anchor="middle" font-size="7.5" fill="#B91C1C">&gt; 0.5% 就不算通过</text>
+  <text x="107" y="148.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">先看错误类型再谈优化</text>
+  <text x="107" y="165.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">超时也算错误</text>
+  <rect x="206" y="96" width="174" height="88" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="293" y="114.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">② 吞吐量</text>
+  <text x="293" y="131" text-anchor="middle" font-size="7.5" fill="#047857">TPS / RPS 稳态值</text>
+  <text x="293" y="148.25" text-anchor="middle" font-size="7.5" fill="#047857">与并发不线性相关</text>
+  <text x="293" y="165.5" text-anchor="middle" font-size="7.5" fill="#047857">到顶后并发再涨会更慢</text>
+  <rect x="392" y="96" width="174" height="88" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="479" y="114.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">③ p95 / p99</text>
+  <text x="479" y="131" text-anchor="middle" font-size="7.5" fill="#1D4ED8">平均值毫无意义</text>
+  <text x="479" y="148.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">长尾决定用户体验</text>
+  <text x="479" y="165.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">p99 常是瓶颈信号</text>
+  <rect x="578" y="96" width="174" height="88" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="665" y="114.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">④ 资源水位</text>
+  <text x="665" y="131" text-anchor="middle" font-size="7.5" fill="#B45309">被测端 CPU / 内存</text>
+  <text x="665" y="148.25" text-anchor="middle" font-size="7.5" fill="#B45309">DB 连接数与慢查询</text>
+  <text x="665" y="165.5" text-anchor="middle" font-size="7.5" fill="#B45309">压测机自己也是瓶颈</text>
+  <text x="380" y="202" text-anchor="middle" font-size="10" fill="#6D28D9">从「并发 ↑ 吞吐 ↑」到「并发 ↑ 吞吐平、延迟陡增」的那个拐点，就是容量上限</text>
+  <line x1="60" y1="230" x2="720" y2="230" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="40" y="254" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">三种典型的「假结论」与正确读法</text>
+  <rect x="20" y="266" width="300" height="36" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="170" y="288" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">平均响应时间 300 ms，看着还行</text>
+  <rect x="328" y="266" width="412" height="36" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="344" y="288" text-anchor="start" font-size="8" fill="#334155">→ 看 p99：常见 300 ms 均值背后藏着 3 s 长尾；长尾多由 GC、锁、连接池导致</text>
+  <rect x="20" y="308" width="300" height="36" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.4"/>
+  <text x="170" y="330" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">并发加到 500，TPS 反而降了</text>
+  <rect x="328" y="308" width="412" height="36" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="344" y="330" text-anchor="start" font-size="8" fill="#334155">→ 这不是失败，是找到容量拐点；再往上加只会把队列压长、错误率抬高</text>
+  <rect x="20" y="350" width="300" height="36" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.4"/>
+  <text x="170" y="372" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">压测机 CPU 打满，被测端很闲</text>
+  <rect x="328" y="350" width="412" height="36" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="344" y="372" text-anchor="start" font-size="8" fill="#334155">→ 结论无效：JMeter 自身是瓶颈；应改用 CLI 模式 + 分布式压测（多台压测机）</text>
+  <text x="380" y="410" text-anchor="middle" font-size="10" fill="#065F46">出报告的硬要求：写清「压的是什么版本、多少数据量、并发曲线怎么加的、瓶颈在哪一环」</text>
+  <text x="380" y="434" text-anchor="middle" font-size="9.5" fill="#64748B">没有这四要素的报告，三个月后没人能复现，也没人敢据此扩容</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

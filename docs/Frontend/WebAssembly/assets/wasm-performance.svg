@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 388" width="760" height="388" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="388" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">性能对比：哪类负载值得上 Wasm</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">计算密集是 Wasm 的主场；跨边界频率决定它是净收益还是净亏损</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">别信「Wasm 比 JS 快 10 倍」这类说法，要先看是哪一类负载</text>
+  <rect x="20" y="96" width="174" height="86" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="107" y="114.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">纯计算密集</text>
+  <text x="107" y="131" text-anchor="middle" font-size="7.5" fill="#047857">矩阵/卷积/编解码/加密</text>
+  <text x="107" y="148.25" text-anchor="middle" font-size="7.5" fill="#047857">Wasm 常快 2~10 倍</text>
+  <text x="107" y="165.5" text-anchor="middle" font-size="7.5" fill="#047857">收益最确定</text>
+  <rect x="206" y="96" width="174" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="293" y="114.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">大量 DOM 操作</text>
+  <text x="293" y="131" text-anchor="middle" font-size="7.5" fill="#B91C1C">Wasm 不碰 DOM，全靠 JS 转</text>
+  <text x="293" y="148.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">几乎必然更慢</text>
+  <text x="293" y="165.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">不要在 UI 层用 Wasm</text>
+  <rect x="392" y="96" width="174" height="86" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="479" y="114.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">频繁小对象互传</text>
+  <text x="479" y="131" text-anchor="middle" font-size="7.5" fill="#B45309">边界拷贝吃掉全部收益</text>
+  <text x="479" y="148.25" text-anchor="middle" font-size="7.5" fill="#B45309">可能比纯 JS 更慢</text>
+  <text x="479" y="165.5" text-anchor="middle" font-size="7.5" fill="#B45309">合并调用才有意义</text>
+  <rect x="578" y="96" width="174" height="86" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="665" y="114.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">已用 SIMD / 多线程</text>
+  <text x="665" y="131" text-anchor="middle" font-size="7.5" fill="#1D4ED8">JS 侧无对应能力</text>
+  <text x="665" y="148.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">Wasm SIMD 优势明显</text>
+  <text x="665" y="165.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">但要注意浏览器支持</text>
+  <text x="40" y="202" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">基准测试的五个纪律（不做这五条，数字没有意义）</text>
+  <rect x="20" y="214" width="136" height="88" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="88" y="232.2" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">① 预热</text>
+  <text x="88" y="249" text-anchor="middle" font-size="7" fill="#047857">Wasm 需 JIT 热身</text>
+  <text x="88" y="265.1" text-anchor="middle" font-size="7" fill="#047857">JS 需等优化完成</text>
+  <text x="88" y="281.2" text-anchor="middle" font-size="7" fill="#047857">至少丢弃前 10 轮</text>
+  <rect x="168" y="214" width="136" height="88" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="236" y="232.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">② 同口径</text>
+  <text x="236" y="249" text-anchor="middle" font-size="7" fill="#1D4ED8">同样输入、同样次数</text>
+  <text x="236" y="265.1" text-anchor="middle" font-size="7" fill="#1D4ED8">同样取中位数/p95</text>
+  <text x="236" y="281.2" text-anchor="middle" font-size="7" fill="#1D4ED8">不要用平均值</text>
+  <rect x="316" y="214" width="136" height="88" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="384" y="232.2" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">③ 隔离边界</text>
+  <text x="384" y="249" text-anchor="middle" font-size="7" fill="#6D28D9">把拷贝量单独计时</text>
+  <text x="384" y="265.1" text-anchor="middle" font-size="7" fill="#6D28D9">否则测的是「互操作」</text>
+  <text x="384" y="281.2" text-anchor="middle" font-size="7" fill="#6D28D9">不是「计算」</text>
+  <rect x="464" y="214" width="136" height="88" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="532" y="232.2" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">④ 真实数据</text>
+  <text x="532" y="249" text-anchor="middle" font-size="7" fill="#0F766E">用生产规模的样本</text>
+  <text x="532" y="265.1" text-anchor="middle" font-size="7" fill="#0F766E">小数据看不出差异</text>
+  <text x="532" y="281.2" text-anchor="middle" font-size="7" fill="#0F766E">也测不出内存峰值</text>
+  <rect x="612" y="214" width="136" height="88" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="680" y="232.2" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">⑤ 双方都要测</text>
+  <text x="680" y="249" text-anchor="middle" font-size="7" fill="#C2410C">JS 版本也要优化过</text>
+  <text x="680" y="265.1" text-anchor="middle" font-size="7" fill="#C2410C">否则是「Wasm vs 烂 JS」</text>
+  <text x="680" y="281.2" text-anchor="middle" font-size="7" fill="#C2410C">结论不可信</text>
+  <text x="380" y="322" text-anchor="middle" font-size="10" fill="#6D28D9">推荐口径：先看「热点占比 × 加速倍数」，算出的整体收益小于 20% 就不值得引入</text>
+  <text x="380" y="346" text-anchor="middle" font-size="9.5" fill="#64748B">实测参考区间（需自测）：图像卷积类 Wasm 常为 JS 的 2~4 倍；JSON 解析类通常打平；字符串拼接类 JS 更快</text>
+  <text x="380" y="370" text-anchor="middle" font-size="9.5" fill="#B45309">体积代价要一并计入：一个 C++ 编出来的 .wasm 动辄 200 KB ~ 2 MB，需要与收益一起权衡</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

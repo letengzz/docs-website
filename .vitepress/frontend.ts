@@ -673,3 +673,18 @@ export const FrontOthers = [
         ],
     },
 ];
+export const FrontWebAssembly = [
+    {
+        text: "WebAssembly",
+        link: "/docs/Frontend/WebAssembly/index.md",
+        items: [
+            { text: "概述与场景", link: "/docs/Frontend/WebAssembly/Overview/index.md" },
+            { text: "编译工具链", link: "/docs/Frontend/WebAssembly/Toolchain/index.md" },
+            { text: "与 JavaScript 互操作", link: "/docs/Frontend/WebAssembly/Interop/index.md" },
+            { text: "性能对比与实测", link: "/docs/Frontend/WebAssembly/Performance/index.md" },
+            { text: "WASI 与服务端运行时", link: "/docs/Frontend/WebAssembly/WASI/index.md" },
+            { text: "实战：图像处理加速", link: "/docs/Frontend/WebAssembly/Practice/index.md" },
+            { text: "常见问题与排错", link: "/docs/Frontend/WebAssembly/FAQ/index.md" },
+        ],
+    },
+];

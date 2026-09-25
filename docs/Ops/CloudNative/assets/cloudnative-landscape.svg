@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 408" width="760" height="408" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="408" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">云原生服务光谱：从 IaaS 到 FaaS 的五层</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">同一份业务代码，放在哪一层决定了「谁负责运维」与「按什么计费」</text>
+  <rect x="20" y="78" width="136" height="100" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="88" y="96.2" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">IaaS 虚拟机</text>
+  <text x="88" y="113" text-anchor="middle" font-size="7" fill="#334155">IaaS / VM</text>
+  <text x="88" y="129.1" text-anchor="middle" font-size="7" fill="#334155">自管 OS 与运行时</text>
+  <text x="88" y="145.2" text-anchor="middle" font-size="7" fill="#334155">弹性：分钟级</text>
+  <text x="88" y="161.3" text-anchor="middle" font-size="7" fill="#334155">自由度最高</text>
+  <line x1="156" y1="128" x2="168" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="168" y="78" width="136" height="100" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="236" y="96.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">CaaS 托管容器</text>
+  <text x="236" y="113" text-anchor="middle" font-size="7" fill="#1D4ED8">Managed K8s</text>
+  <text x="236" y="129.1" text-anchor="middle" font-size="7" fill="#1D4ED8">自管工作负载</text>
+  <text x="236" y="145.2" text-anchor="middle" font-size="7" fill="#1D4ED8">弹性：秒~分钟</text>
+  <text x="236" y="161.3" text-anchor="middle" font-size="7" fill="#1D4ED8">控制面托管</text>
+  <line x1="304" y1="128" x2="316" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="316" y="78" width="136" height="100" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="384" y="96.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">PaaS 托管中间件</text>
+  <text x="384" y="113" text-anchor="middle" font-size="7" fill="#6D28D9">Managed DB / MQ</text>
+  <text x="384" y="129.1" text-anchor="middle" font-size="7" fill="#6D28D9">自管容量与参数</text>
+  <text x="384" y="145.2" text-anchor="middle" font-size="7" fill="#6D28D9">弹性：按规格</text>
+  <text x="384" y="161.3" text-anchor="middle" font-size="7" fill="#6D28D9">省运维大头</text>
+  <line x1="452" y1="128" x2="464" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="464" y="78" width="136" height="100" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="532" y="96.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">FaaS 函数计算</text>
+  <text x="532" y="113" text-anchor="middle" font-size="7" fill="#047857">Serverless</text>
+  <text x="532" y="129.1" text-anchor="middle" font-size="7" fill="#047857">只管一个函数</text>
+  <text x="532" y="145.2" text-anchor="middle" font-size="7" fill="#047857">弹性：毫秒~秒</text>
+  <text x="532" y="161.3" text-anchor="middle" font-size="7" fill="#047857">按调用计费</text>
+  <line x1="600" y1="128" x2="612" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="612" y="78" width="136" height="100" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="680" y="96.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">BaaS 托管后端</text>
+  <text x="680" y="113" text-anchor="middle" font-size="7" fill="#0F766E">Auth / Storage</text>
+  <text x="680" y="129.1" text-anchor="middle" font-size="7" fill="#0F766E">只管业务装配</text>
+  <text x="680" y="145.2" text-anchor="middle" font-size="7" fill="#0F766E">弹性：自动</text>
+  <text x="680" y="161.3" text-anchor="middle" font-size="7" fill="#0F766E">最省人力</text>
+  <text x="380" y="196" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">托管程度 → 越来越高    单位资源单价 → 越来越贵    运维负担 → 越来越轻</text>
+  <text x="40" y="226" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">选型四维度（按顺序回答，前一问答不上就不用看下一问）</text>
+  <rect x="20" y="238" width="126" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="83" y="253" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">① 负载形态</text>
+  <rect x="154" y="238" width="586" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="447" y="253" text-anchor="middle" font-size="8.5" fill="#334155">长驻且稳定 → IaaS/CaaS；突发且稀疏 → FaaS；两者混合 → 分层组合</text>
+  <rect x="20" y="264" width="126" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="83" y="279" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">② 弹性要求</text>
+  <rect x="154" y="264" width="586" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="447" y="279" text-anchor="middle" font-size="8.5" fill="#334155">秒级冷启动可接受 → FaaS；必须常热 → CaaS + 最小副本；毫秒级 → 边缘隔离</text>
+  <rect x="20" y="290" width="126" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="83" y="305" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">③ 团队能力</text>
+  <rect x="154" y="290" width="586" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="447" y="305" text-anchor="middle" font-size="8.5" fill="#334155">无 K8s 运维人力 → 托管容器或 FaaS；有平台团队 → CaaS 换取自由度</text>
+  <rect x="20" y="316" width="126" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="83" y="331" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">④ 合规与锁死</text>
+  <rect x="154" y="316" width="586" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="447" y="331" text-anchor="middle" font-size="8.5" fill="#334155">数据出境/信创要求 → 私有化或国内云；怕被锁定 → 用 K8s + 可移植中间件</text>
+  <text x="380" y="366" text-anchor="middle" font-size="10" fill="#B91C1C">结论：先定「哪些负载不配进函数」，再谈平台选型——把稳定长驻的核心服务留在容器里</text>
+  <text x="380" y="390" text-anchor="middle" font-size="9.5" fill="#64748B">本专题与 Ops/Kubernetes 的分工：那边讲「自建 K8s 怎么用」，这里讲「托管服务怎么选、账单怎么治」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

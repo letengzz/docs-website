@@ -8,5 +8,6 @@
 - [协作与项目管理](Collaboration/index.md)
 - [IDE 配置](IDE/index.md)
 - [效率工具](Efficiency/index.md)
+- [测试工具](TestingTools/index.md)
 - [版本控制工具](VersionControl/index.md)
 - [其他](Others/index.md)

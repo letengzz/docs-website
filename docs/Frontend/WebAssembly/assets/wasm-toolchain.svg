@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 442" width="760" height="442" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="442" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四条编译工具链与关键命令</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">C/C++ 走 Emscripten，Rust 走 wasm-bindgen，二者覆盖了绝大多数生产场景</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">四条主流工具链：选哪条取决于你手上是哪种语言</text>
+  <rect x="20" y="96" width="174" height="128" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="107" y="114.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">C / C++ → Emscripten</text>
+  <text x="107" y="131" text-anchor="middle" font-size="7" fill="#6D28D9">emsdk 安装与固定版本</text>
+  <text x="107" y="147.1" text-anchor="middle" font-size="7" fill="#6D28D9">emcc / em++ 编译驱动</text>
+  <text x="107" y="163.2" text-anchor="middle" font-size="7" fill="#6D28D9">产物：.wasm + .js + .html</text>
+  <text x="107" y="179.3" text-anchor="middle" font-size="7" fill="#6D28D9">内置 MEMFS / IDBFS 文件系统</text>
+  <text x="107" y="195.4" text-anchor="middle" font-size="7" fill="#6D28D9">SIMD 与 pthread 需显式开启</text>
+  <rect x="206" y="96" width="174" height="128" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="293" y="114.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">Rust → wasm-bindgen</text>
+  <text x="293" y="131" text-anchor="middle" font-size="7" fill="#C2410C">target wasm32-unknown-unknown</text>
+  <text x="293" y="147.1" text-anchor="middle" font-size="7" fill="#C2410C">wasm-bindgen 生成绑定胶水</text>
+  <text x="293" y="163.2" text-anchor="middle" font-size="7" fill="#C2410C">wasm-pack / vite-plugin-wasm</text>
+  <text x="293" y="179.3" text-anchor="middle" font-size="7" fill="#C2410C">字符串与结构体互操作最顺</text>
+  <text x="293" y="195.4" text-anchor="middle" font-size="7" fill="#C2410C">支持 js_sys / web_sys 生态</text>
+  <rect x="392" y="96" width="174" height="128" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="479" y="114.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">Go → TinyGo</text>
+  <text x="479" y="131" text-anchor="middle" font-size="7" fill="#047857">标准 Go 的 Wasm 产物过大</text>
+  <text x="479" y="147.1" text-anchor="middle" font-size="7" fill="#047857">TinyGo 体积小、启动快</text>
+  <text x="479" y="163.2" text-anchor="middle" font-size="7" fill="#047857">但反射与部分标准库受限</text>
+  <text x="479" y="179.3" text-anchor="middle" font-size="7" fill="#047857">适合小工具与嵌入式</text>
+  <text x="479" y="195.4" text-anchor="middle" font-size="7" fill="#047857">goroutine 在 Wasm 上无原生调度</text>
+  <rect x="578" y="96" width="174" height="128" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="665" y="114.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">AssemblyScript / 手写 WAT</text>
+  <text x="665" y="131" text-anchor="middle" font-size="7" fill="#1D4ED8">类 TypeScript 语法 → Wasm</text>
+  <text x="665" y="147.1" text-anchor="middle" font-size="7" fill="#1D4ED8">无需 C 工具链，上手快</text>
+  <text x="665" y="163.2" text-anchor="middle" font-size="7" fill="#1D4ED8">生态与优化不如前三条</text>
+  <text x="665" y="179.3" text-anchor="middle" font-size="7" fill="#1D4ED8">WAT 适合学习与调试</text>
+  <text x="665" y="195.4" text-anchor="middle" font-size="7" fill="#1D4ED8">适合教学与小型工具</text>
+  <text x="40" y="248" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">一行命令对照（版本不同参数可能变化，建议固定工具链版本）</text>
+  <rect x="20" y="260" width="118" height="26" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="79" y="277" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">C / C++</text>
+  <rect x="146" y="260" width="594" height="26" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="162" y="277" text-anchor="start" font-size="8" fill="#1E3A8A">emcc hello.c -O3 -s WASM=1 -s MODULARIZE=1 -s EXPORT_NAME=createModule -o hello.js</text>
+  <rect x="20" y="290" width="118" height="26" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="79" y="307" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">Rust</text>
+  <rect x="146" y="290" width="594" height="26" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="162" y="307" text-anchor="start" font-size="8" fill="#1E3A8A">cargo build --release --target wasm32-unknown-unknown  &amp;&amp;  wasm-bindgen target/.../lib.wasm --target web</text>
+  <rect x="20" y="320" width="118" height="26" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="79" y="337" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">优化体积</text>
+  <rect x="146" y="320" width="594" height="26" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="162" y="337" text-anchor="start" font-size="8" fill="#1E3A8A">wasm-opt -Oz -o out.wasm in.wasm    # Binaryen，常在 emcc 之后单独跑一遍</text>
+  <rect x="20" y="350" width="118" height="26" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="79" y="367" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">本地预览</text>
+  <rect x="146" y="350" width="594" height="26" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="162" y="367" text-anchor="start" font-size="8" fill="#1E3A8A">python -m http.server 8080    # 必须走 HTTP，file:// 下 fetch .wasm 会被 CORS 拦掉</text>
+  <text x="380" y="400" text-anchor="middle" font-size="10" fill="#991B1B">三个最容易踩的工程坑：工具链版本漂移导致产物不可复现 · 忘记固定 --target · 用 file:// 直接打开 HTML</text>
+  <text x="380" y="424" text-anchor="middle" font-size="9.5" fill="#065F46">验证收尾：本地起静态服务器，浏览器网络面板能看到 .wasm 以 application/wasm 返回且未被 gzip 破坏</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

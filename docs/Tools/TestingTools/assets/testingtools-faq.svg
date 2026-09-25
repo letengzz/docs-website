@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 364" width="760" height="364" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="364" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">测试脚本排障决策树</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">UI 抖动、压测不稳、断言批量失败，三类问题的根因分布完全不同</text>
+  <rect x="300" y="76" width="160" height="56" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="94.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">测试脚本不听使唤</text>
+  <text x="380" y="111" text-anchor="middle" font-size="7.5" fill="#334155">先分类：别先加 sleep</text>
+  <line x1="380" y1="132" x2="134" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="20" y="168" width="228" height="106" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="134" y="186.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">UI 用例偶发失败</text>
+  <text x="134" y="203" text-anchor="middle" font-size="8" fill="#B91C1C">① 是否用了强制等待</text>
+  <text x="134" y="221.4" text-anchor="middle" font-size="8" fill="#B91C1C">② 定位是否依赖随机的 class</text>
+  <text x="134" y="239.8" text-anchor="middle" font-size="8" fill="#B91C1C">③ 是否受并行执行互相干扰</text>
+  <text x="134" y="258.2" text-anchor="middle" font-size="8" fill="#B91C1C">④ 是否残留上一次的数据</text>
+  <line x1="380" y1="132" x2="380" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="266" y="168" width="228" height="106" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="186.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">压测结果不稳定</text>
+  <text x="380" y="203" text-anchor="middle" font-size="8" fill="#B45309">① 压测机是否自身打满</text>
+  <text x="380" y="221.4" text-anchor="middle" font-size="8" fill="#B45309">② 是否非 GUI 模式（GUI 模式会拖慢）</text>
+  <text x="380" y="239.8" text-anchor="middle" font-size="8" fill="#B45309">③ 数据量是否与生产同量级</text>
+  <text x="380" y="258.2" text-anchor="middle" font-size="8" fill="#B45309">④ 依赖服务是否在同时做别的事</text>
+  <line x1="380" y1="132" x2="626" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="512" y="168" width="228" height="106" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="626" y="186.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">接口断言大量失败</text>
+  <text x="626" y="203" text-anchor="middle" font-size="8" fill="#6D28D9">① 环境配置是否切对（dev/staging）</text>
+  <text x="626" y="221.4" text-anchor="middle" font-size="8" fill="#6D28D9">② 前置数据是否被别的用例改了</text>
+  <text x="626" y="239.8" text-anchor="middle" font-size="8" fill="#6D28D9">③ 断言是否过严（比全量字段）</text>
+  <text x="626" y="258.2" text-anchor="middle" font-size="8" fill="#6D28D9">④ 服务是否真的改了契约</text>
+  <text x="380" y="300" text-anchor="middle" font-size="10" fill="#1E3A8A">通用原则：先把「不确定性」赶出测试环境（数据、时间、并发、网络），再谈定位业务 bug</text>
+  <text x="380" y="324" text-anchor="middle" font-size="9.5" fill="#6D28D9">两个立刻见效的动作：把随机数据换成固定种子；把「失败重试」当作诊断信息而不是修复手段</text>
+  <text x="380" y="348" text-anchor="middle" font-size="9.5" fill="#991B1B">反面教材：给所有用例套一层「失败自动重试 3 次」——掩盖了真实缺陷，还让流水线变慢</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
