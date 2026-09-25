@@ -642,6 +642,23 @@ export const FrontTesting = [
         ],
     },
 ];
+export const FrontDataVisualization = [
+    {
+        text: "数据可视化",
+        link: "/docs/Frontend/DataVisualization/index.md",
+        collapsed: true,
+        items: [
+            { text: "数据可视化概述与选型", link: "/docs/Frontend/DataVisualization/Overview/index.md" },
+            { text: "渲染路线：Canvas / SVG / WebGL", link: "/docs/Frontend/DataVisualization/Rendering/index.md" },
+            { text: "ECharts 深入：从 option 到像素", link: "/docs/Frontend/DataVisualization/ECharts/index.md" },
+            { text: "数据到图形的映射", link: "/docs/Frontend/DataVisualization/DataMapping/index.md" },
+            { text: "大数据量下的性能工程", link: "/docs/Frontend/DataVisualization/LargeData/index.md" },
+            { text: "数据大屏工程", link: "/docs/Frontend/DataVisualization/Dashboard/index.md" },
+            { text: "实战：实时监控大屏", link: "/docs/Frontend/DataVisualization/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/DataVisualization/FAQ/index.md" },
+        ],
+    },
+];
 export const FrontOthers = [
     {
         text: "其他",

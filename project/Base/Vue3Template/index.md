@@ -21,6 +21,7 @@
 - [配置VueRequest](VueRequest/index.md)
 - [配置国际化](i18n/index.md)
 - [自定义配置网络请求](Http/index.md)
+- [配置服务](Service/index.md)
 
 ### 业务增强
 
@@ -30,7 +31,7 @@
 
 ### 样式体系
 
-- [配置CSS代码检查工具](‌Stylelint/index.md)
+- [配置CSS代码检查工具](Stylelint/index.md)
 - [配置SCSS](SCSS/index.md)
 - [配置UnoCSS](UnoCSS/index.md)
 

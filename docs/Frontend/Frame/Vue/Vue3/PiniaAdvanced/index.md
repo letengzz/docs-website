@@ -204,6 +204,45 @@ export default {
 4. SSR 场景避免在模块顶层 `useStore()`，应在 `setup` 内调用。
 5. 敏感信息（token）不要直接持久化到 localStorage，或至少加密并设置过期。
 
+## 跨框架横向对比
+
+Pinia 只是「状态管理」这件事在 Vue 生态里的一种解。**不同框架的状态方案差异，本质上来自三个问题回答得不一样**：状态放在组件树里还是组件树外、可变还是不可变、异步与副作用写在哪。
+
+| 维度 | Pinia（Vue3） | Redux Toolkit（React） | Zustand（React） | NgRx（Angular） |
+| --- | --- | --- | --- | --- |
+| 状态所处位置 | 组件树外（独立 store 实例） | 组件树外（单一 root store） | 组件树外（闭包函数） | 组件树外 + RxJS 流 |
+| 数据可变性 | 可直接改（`state.x++`） | 必须经 reducer（不可变） | 可直接改（`set`） | 必须经 reducer |
+| 变更入口 | `actions` 直接调 | `dispatch(action)` | `set` / 自定义 action 函数 | `dispatch(action)` + Effect |
+| 异步副作用 | action 内直接 `await` | `createAsyncThunk` / RTK Query | 普通 async 函数 | `@ngrx/effects`（RxJS） |
+| 派生状态 | `getters` / `computed` | `createSelector` | 选择器函数 + `useShallow` | `createSelector` |
+| 上手成本 | 低 | 中（模板代码多） | 低 | 高（需懂 RxJS） |
+| 强约束带来的收益 | 少约束、靠约定 | 可预测、易调试、DevTools 强 | 极简、体积小 | 大型团队一致性 |
+
+三条可直接套用的判据：
+
+1. **「状态该放哪」先于「用哪个库」**——只有被多个远距离组件共享、且生命周期长于组件的状态才进 store；组件内的 UI 开关（弹窗、hover）放 `ref` 就好。所有框架都一样。
+2. **可变 vs 不可变的差别在调试，不在性能**——不可变方案（Redux/NgRx）能用时间旅行调试、能精确 diff 重渲染范围，代价是模板代码；可变方案（Pinia/Zustand）写起来快，代价是要靠约定守住边界。
+3. **异步写法决定了代码形态**——Pinia 与 Zustand 的 action 里可以直接 `await`，读起来和普通函数一样；Redux 与 NgRx 把副作用挤到 `Thunk` / `Effect` 里，好处是「副作用被集中管理」、坏处是调用链变长。团队若在前端之外还写后端，Pinia 的形态最不需要额外解释。
+
+::: tip 一句话
+换框架时**能搬走的是「状态该放哪、哪些该派生、异步写在哪」这三条判断**，`defineStore` / `createSlice` 这些 API 是外壳，不值得记。
+:::
+
+## 版本现状（2026-09 核对）
+
+状态管理库的**主版本长期稳定**，真正的风险不是「版本新不新」，而是「大版本升级时的语义变更」。
+
+| 库 | 当前线 | 迁移要点 |
+| --- | --- | --- |
+| Pinia | 3.x | 2.x → 3.x：删除 `PiniaStorePlugin` 的旧签名、废弃 `@vue/composition-api` 支持；本专题写法在 2.x/3.x 通用 |
+| Redux Toolkit | 2.x | 1.x → 2.x：**`createSlice` 不再隐式使用 `immer` 的自动冻结**的旧行为变更、`combineReducers` 对未初始化 state 的处理收紧；`configureStore` 仍是推荐入口 |
+| Zustand | 5.x | 4.x → 5.x：**默认使用 `useSyncExternalStore`**、要求 React 18+；`create` 的第二个参数（`equalityFn`）被移除，改用 `useShallow` |
+| NgRx | 支持矩阵跟随 Angular 主版本 | 大版本与 Angular 同节奏发布，升级时严格按官方 `update` 命令走，不要手改依赖版本 |
+
+::: warning 别照抄旧文里的版本号
+这几条只需记住**判据**：`npm view <pkg> version` 取当前线、`npm view <pkg> versions` 看历史；写进文档时必须带核对日期——只写「最新版是 2.x」这类表述，一个 minor 周期内就会过期。
+:::
+
 ## 易错点
 
 ::: danger 常见错误

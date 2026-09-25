@@ -13,3 +13,4 @@ Java 框架相关文档：
 - [MyBatis-Plus](MyBatisPlus/index.md)
 - [MyBatis-Flex](MyBatis-Flex/index.md)
 - [Sa-Token](Sa-token/index.md)
+- [LangChain4j](Langchain4j/index.md)

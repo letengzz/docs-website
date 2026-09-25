@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 362" width="760" height="362" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="362" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">数据可视化专题地图</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">九页按「认知 → 编码 → 规模化 → 落地」四步组织，两条横切关注点贯穿全程</text>
+  <rect x="30" y="76" width="164" height="104" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="112" y="94.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">第 1 步 · 认知与选型</text>
+  <text x="112" y="111" text-anchor="middle" font-size="7.5" fill="#6D28D9">① 概述与选型</text>
+  <text x="112" y="128.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">② 渲染路线</text>
+  <text x="112" y="145.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">先分清「画在哪」</text>
+  <text x="112" y="162.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">再决定「用什么画」</text>
+  <line x1="194" y1="128" x2="206" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="206" y="76" width="164" height="104" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="288" y="94.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">第 2 步 · 编码与映射</text>
+  <text x="288" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">③ ECharts 深入</text>
+  <text x="288" y="128.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">④ 数据到图形的映射</text>
+  <text x="288" y="145.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">图表库管「怎么画」</text>
+  <text x="288" y="162.75" text-anchor="middle" font-size="7.5" fill="#1D4ED8">映射管「画成什么样」</text>
+  <line x1="370" y1="128" x2="382" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="382" y="76" width="164" height="104" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="464" y="94.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">第 3 步 · 规模化</text>
+  <text x="464" y="111" text-anchor="middle" font-size="7.5" fill="#047857">⑤ 大数据量性能</text>
+  <text x="464" y="128.25" text-anchor="middle" font-size="7.5" fill="#047857">⑥ 数据大屏工程</text>
+  <text x="464" y="145.5" text-anchor="middle" font-size="7.5" fill="#047857">性能不是优化项</text>
+  <text x="464" y="162.75" text-anchor="middle" font-size="7.5" fill="#047857">是需求的一部分</text>
+  <line x1="546" y1="128" x2="558" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="558" y="76" width="164" height="104" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="640" y="94.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">第 4 步 · 落地</text>
+  <text x="640" y="111" text-anchor="middle" font-size="7.5" fill="#B45309">⑦ 实战：实时监控大屏</text>
+  <text x="640" y="128.25" text-anchor="middle" font-size="7.5" fill="#B45309">⑧ 常见问题与最佳实践</text>
+  <text x="640" y="145.5" text-anchor="middle" font-size="7.5" fill="#B45309">把前六页合成一个</text>
+  <text x="640" y="162.75" text-anchor="middle" font-size="7.5" fill="#B45309">能跑起来的系统</text>
+  <text x="380" y="204" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">一条主线：先想清楚「给谁看、看什么、多久看一次」，再选技术</text>
+  <text x="60" y="236" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">两条横切关注点（每一页都要考虑）</text>
+  <rect x="30" y="248" width="226" height="76" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="143" y="266.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">数据规模</text>
+  <text x="143" y="283" text-anchor="middle" font-size="7.5" fill="#B91C1C">点数级：&lt; 1 万</text>
+  <text x="143" y="300.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">交互级：1 万 ~ 10 万</text>
+  <text x="143" y="317.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">渲染级：&gt; 10 万 → WebGL</text>
+  <rect x="268" y="248" width="226" height="76" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="381" y="266.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">刷新频率</text>
+  <text x="381" y="283" text-anchor="middle" font-size="7.5" fill="#0F766E">静态：日报 / 报告</text>
+  <text x="381" y="300.25" text-anchor="middle" font-size="7.5" fill="#0F766E">准实时：秒级（大屏）</text>
+  <text x="381" y="317.5" text-anchor="middle" font-size="7.5" fill="#0F766E">实时：帧级（曲线）</text>
+  <rect x="506" y="248" width="226" height="76" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="619" y="266.2" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">正确性</text>
+  <text x="619" y="283" text-anchor="middle" font-size="7.5" fill="#334155">坐标轴不能失真</text>
+  <text x="619" y="300.25" text-anchor="middle" font-size="7.5" fill="#334155">聚合不能误导</text>
+  <text x="619" y="317.5" text-anchor="middle" font-size="7.5" fill="#334155">色彩要有序且可辨</text>
+  <text x="380" y="346" text-anchor="middle" font-size="10" fill="#6D28D9">结论：可视化的难点从来不是「调用 API」，而是「在规模与正确性之间做取舍」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

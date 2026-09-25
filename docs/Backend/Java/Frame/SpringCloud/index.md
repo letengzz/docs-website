@@ -106,6 +106,20 @@ public Consumer<String> orderIn() {
 Spring Cloud 当前稳定 Train 为 **2025.1.x（Oakwood，适配 Spring Boot 4.0/4.1）**，2025.0 及更早版本线的 OSS 支持均已结束；版本对照与升级要点见 [版本选择与演进](../../../SpringCloud/Version/index.md)。
 :::
 
+## 历史版本存档
+
+早期整理阶段沉淀在 `SpringCloud/` 下的平铺页面按**原样保留、不删除不覆盖**（AGENTS.md 第 3 节「大版本文档保留、旧内容不改写」的既有约定），仅在此登记状态，便于存量项目查阅：
+
+| 存档目录 / 文件 | 内容 | 状态 |
+| --- | --- | --- |
+| [2020](2020/index.md) | Spring Cloud 2020.x（Ilford，对应 Spring Boot 2.4/2.5）组件概览与 Alibaba 组件笔记 | 仅存量项目使用（2020.0.x 的 OSS 支持早已结束） |
+| `2022/` | Spring Cloud 2022.x（Kilburn，对应 Spring Boot 3.0）笔记、`Nacos Install`、OpenFeign 片段 | 仅存量项目使用，且页面为迁移前的平铺写法（文件名含空格） |
+| `SpringCloud2020/`、`SpringCloud2022/` | 上述两个版本线的另一份草稿 | 仅存量项目使用，内容与上一行高度重复 |
+
+::: warning 为什么不做迁移合并
+这四个目录是**同一专题在不同时期的草稿**，内容互相重复且与 [Spring Cloud 完整专题](../../../SpringCloud/index.md) 的权威版本冲突（版本号、组件选型均已过期）。按「已有内容的主题不做重复补全」原则，本页**只登记不合并**——新内容一律写进完整专题，这里只保证链接可达、状态可辨。
+:::
+
 ## 参考资料
 
 - Spring Cloud 官方文档：https://docs.spring.io/spring-cloud/reference/

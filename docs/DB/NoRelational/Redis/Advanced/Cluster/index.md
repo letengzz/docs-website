@@ -238,6 +238,10 @@ redis-cli -c -p 7001 CLUSTER NODES | grep -E "master|slave"
 
 预期：`cluster_state:ok`、16384 个槽全部覆盖、槽分布均衡、跨槽命令按预期报错、故障演练后从节点变为 `master`。
 
+## 相关专题
+
+- [分库分表](../../../../Relational/Sharding/index.md)：Cluster 的 16384 槽分片与关系型数据库分库分表**同属分片思想**，但取舍完全不同——缓存侧数据**可丢、可重建**，所以允许一致性哈希、允许槽迁移期间的短暂不可用；数据库侧数据是**唯一副本**，必须解决迁移不丢数据、跨分片事务与全局唯一键。本页的槽/哈希标签机制可作为「分片键怎么选」的直观参照。
+
 ## 参考资料
 
 - 官方文档 · Cluster 教程：https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/

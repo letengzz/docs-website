@@ -1169,6 +1169,10 @@ python3 tagplan.py --verify plan.json   # 期望：OK: plan.json 通过全部不
 4. 模板交付形态定稿：`stack-select.py` + CLI 设计 + 发布策略三者的关系收口，明确 MVP 范围。
 5. 承接待办：CLI `--check` 与用例矩阵基线的交叉断言（第 77、79 天两次记入，仍未落地）。
 
+:::warning 顺序调整（2026-09-25，第 81 天实际执行）
+按需求方要求，第 81 天实际优先落地「**主库可插拔**」——主库不再固定 MySQL 8，改为 MySQL 8.4 / PostgreSQL 17 部署期二选一（见[主库可插拔](../Database/index.md)）。上述五项验收收口内容**顺延至第 82 天**，其中「备份与恢复演练」将按选定引擎分别给出 `mysqldump` / `pg_dump` 双版本。理由：主库选择影响验收清单的备份/恢复命令与监控指标口径，先定引擎再收口验收，避免同一件事走两遍。
+:::
+
 ### 里程碑对照
 
 | 阶段 | 计划 | 当前状态 |
@@ -1179,11 +1183,70 @@ python3 tagplan.py --verify plan.json   # 期望：OK: plan.json 通过全部不
 | 模板产品化（第 76 天插入） | 技术栈可插拔 + 选择器脚本 + CLI 设计 | ✅ **3/3 完成**；CLI 处于设计阶段，MVP 待排期 |
 | 第 4 周（78-90 天） | Docker 化、Compose、CI 流水线、发布策略、验收清单 | 🔄 **进行中（3/4）**：容器化 ✅、CI 流水线 ✅、发布策略 ✅；验收清单 🔜 |
 
+## 2026-09-25（第 81 天）：主库可插拔 —— 需求方要求主库不固定 MySQL 8，改为可选
+
+### 本次做了什么
+
+按需求方当日要求，把「主库固定 MySQL 8.4」改为「**主库可插拔**」：同一套业务代码，部署期在 MySQL 8.4 与 PostgreSQL 17 之间二选一。与第 76 天的 ORM 可插拔构成两个正交维度（编译期选 ORM、部署期选引擎），并在页面中写明「切换引擎是发布事件，不是配置热更」的边界。
+
+1. **设计决策三条**：雪花 ID 是双方言 DDL 能逐列对齐的前提（无自增差异）；建表脚本双方言双份、Flyway 版本号两侧成对；结构一致性做成门禁而不是约定。
+2. **双方言建表脚本**：`db/mysql/V1__init_user.sql`、`V2__init_login_log.sql` 与 `db/postgres/` 同名对应，落实七条方言翻译规则（TINYINT→SMALLINT、DATETIME(n)→TIMESTAMP(n)、行内 COMMENT→COMMENT ON、内联 UNIQUE KEY→CONSTRAINT、内联 KEY→表外 CREATE INDEX、ENGINE/CHARSET 删除、INT→INTEGER）。
+3. **一致性门禁 `db/parity_check.py`**（零第三方依赖）：解析两方言 DDL，按归一化类型比对表集合、脚本清单成对、列/可空性/主键/唯一约束/普通索引/表注释，不一致列明细并退出码 1；`--verbose` 输出每张表比对明细。
+4. **校验器自测 `db/selftest.py`**：11 项断言覆盖解析、四种类型归一化（TINYINT/TINYINT(1)/DATETIME(3)/TIMESTAMP(3)）、主键/唯一/索引归并、一致样本空差异、缺列与类型不一致检出。
+5. **部署配套**：`db/docker-compose.databases.yml` 双 profile（mysql/postgres，共用 `${DB_PASSWORD:?}` 缺失即报错，各自挂载方言初始化目录）；Spring 双数据源配置（`application-mysql.yml` / `application-postgres.yml`）；MyBatis-Plus 分页 `DbType` 显式注入而非连接推断；双 JDBC 驱动共存（约 2.5MB）免重建镜像。
+6. 同步更新[项目总览](../index.md)（技术选型表「主库固定」改「主库可插拔」、进度表拆出第 81 天行、交付内容补第 20 项、本地运行补第 7 步）。
+
+### 如何验证
+
+```shell
+cd db
+# ① 校验器自测（2026-09-25 实测通过）
+python selftest.py       # 期望：selftest: 11/11 通过
+# ② 双方言结构一致性（2026-09-25 实测通过，零依赖）
+python parity_check.py   # 期望：OK: 2 张表 / 22 列 双方言结构一致
+# ③ 双 profile 部署路径（需 Docker，验收时执行）
+DB_PASSWORD=xxx docker compose -f docker-compose.databases.yml --profile mysql up -d
+#   等 healthy → 跑冒烟 → down；换 --profile postgres 重复一遍
+# 期望：两侧冒烟全部通过、行为等效
+```
+
+开发过程中的三轮纠错（工具侧，不改测试）：
+
+1. **表体定位**：初版用非贪婪正则 `(.*?)\)\s*;` 匹配表体，MySQL 表尾是 `) ENGINE = ... ;`，`)` 后不是紧跟 `;`，整表匹配失败——改为**括号配平扫描**。
+2. **分数类型归一化**：`DATETIME(3)` / `TIMESTAMP(3)` 不在字面映射表里，归一化落空——补 `TINYINT(n)`、`DATETIME(n)`/`TIMESTAMP(n)` 的正则归一化分支。
+3. **表注释检测**：表体定位方式改变后，原「从整段匹配里找 COMMENT」失效——统一改为在表尾片段（tail）中查 `COMMENT` 关键字（MySQL 表尾 `COMMENT = '...'`、PG 表后 `COMMENT ON TABLE`），并要求两侧都有。
+
+### 遇到的问题与决策
+
+| 问题 | 决策 |
+| --- | --- |
+| 切换引擎能不能做成运行时热切换？ | 不能。引擎切换涉及数据迁移与回滚预案，是发布事件；模板提供「可选」，不承诺「随换」 |
+| 双驱动共存还是 Maven profile 裁剪？ | 默认共存（约 2.5MB），部署期配置切换、免重建镜像；体积敏感再按 profile 裁剪 |
+| 分页方言从哪来？ | 配置项显式注入 `DbType`；连接推断会把「数据库可用」变成启动前置条件 |
+| 一致性校验覆盖什么？ | 结构（列/键/索引/注释）机械比对；行为等效靠双 profile 冒烟，两层缺一不可 |
+| success 字段用 BOOLEAN 还是 SMALLINT？ | SMALLINT，与实体 Integer 映射及 MySQL TINYINT(1) 语义对齐；布尔语义需求出现时两侧同步改 |
+
+### 下一步（第 82 天）
+
+1. **上线验收与监控接入**（原第 81 天计划顺延）：六类 18 项验收清单落地、备份恢复演练（`mysqldump` / `pg_dump` 双版本）、观察窗口与回滚决策人、模板交付形态定稿、CLI `--check` × 用例矩阵基线交叉断言（承接待办）。
+2. **Testcontainers 双库矩阵**：数据层集成测试按引擎参数化各跑一遍，复用第 75 天隔离方案。
+3. 本日新增的 `parity_check.py` 接入 CI 静态检查阶段（秒级、零依赖，放静态检查 job 最合适）。
+
+### 里程碑对照
+
+| 阶段 | 计划 | 当前状态 |
+| --- | --- | --- |
+| 第 1 周（61-68 天） | 需求拆分、技术选型、架构与目录设计 | ✅ 完成 |
+| 第 2 周（69-72 天） | 核心模块编码：骨架 → 响应/异常 → 校验/日志 → 数据访问 → 认证 | ✅ **4/4 步完成** |
+| 第 3 周（73-77 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁、异常路径收口 | ✅ **4/4 步完成** |
+| 模板产品化（第 76 天插入） | 技术栈可插拔 + 选择器脚本 + CLI 设计 | ✅ **3/3 完成**；CLI 处于设计阶段，MVP 待排期 |
+| 第 4 周（78-90 天） | Docker 化、Compose、CI 流水线、发布策略、验收清单 | 🔄 **进行中（3/4）**：容器化 ✅、CI 流水线 ✅、发布策略 ✅；验收清单 🔜 第 82 天（第 81 天为主库可插拔需求插入，不计入 4 周里程碑步数） |
+
 ## 参考资料
 
 - 项目总览：[后端通用模板](../index.md)
-- 本日两条：[镜像推送与发布策略](../Release/index.md) ｜ [CI 流水线：把门禁串成一条链](../CI/index.md)
-- 本日交付物：`Release/tagplan.py`（标签计划生成与校验）｜ `Release/selftest.py`（88 项断言）
-- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md) ｜ [测试数据隔离与边界用例](../TestIsolation/index.md) ｜ [技术栈可插拔](../StackSelect/index.md) ｜ [模板 CLI：设计与路线图](../TemplateCli/index.md) ｜ [异常路径联调收口与用例清单](../ErrorPath/index.md) ｜ [容器化：多阶段镜像与 Compose 编排](../Deployment/index.md) ｜ [CI 流水线：把门禁串成一条链](../CI/index.md) ｜ [镜像推送与发布策略](../Release/index.md)
+- 本日两条：[镜像推送与发布策略](../Release/index.md) ｜ [主库可插拔：MySQL / PostgreSQL 双方言](../Database/index.md)
+- 本日交付物：`db/mysql/` + `db/postgres/`（双方言建表脚本）｜ `db/parity_check.py`（结构一致性门禁）｜ `db/selftest.py`（11 项自测）｜ `db/docker-compose.databases.yml`（双 profile 编排）
+- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md) ｜ [测试数据隔离与边界用例](../TestIsolation/index.md) ｜ [技术栈可插拔](../StackSelect/index.md) ｜ [模板 CLI：设计与路线图](../TemplateCli/index.md) ｜ [异常路径联调收口与用例清单](../ErrorPath/index.md) ｜ [容器化：多阶段镜像与 Compose 编排](../Deployment/index.md) ｜ [CI 流水线：把门禁串成一条链](../CI/index.md) ｜ [镜像推送与发布策略](../Release/index.md) ｜ [主库可插拔：MySQL / PostgreSQL 双方言](../Database/index.md)
 - 外部规范：[Docker Build attestations](https://docs.docker.com/build/attestations/) ｜ [Sigstore Cosign 验签](https://docs.sigstore.dev/cosign/verifying/verify/) ｜ [K8s 存活、就绪与启动探针](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) ｜ [OCI 镜像注解规范](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
 - 相关文档：[Spring Boot 通用指南](../../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md) ｜ [完整项目交付 · 一键部署与上线验收](../../../../docs/Others/ProjectDelivery/Delivery/index.md)

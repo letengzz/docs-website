@@ -1,0 +1,39 @@
+# 仅数据库编排（profiles 二选一或都起，供双库矩阵测试与本地验证）
+# 用法：
+#   docker compose -f docker-compose.databases.yml --profile mysql up -d
+#   docker compose -f docker-compose.databases.yml --profile postgres up -d
+# 注意：主应用容器见 ../Deployment 页的完整 compose；本文件只负责「可插拔主库」的数据库侧。
+services:
+  mysql:
+    image: mysql:8.4
+    profiles: ["mysql"]
+    environment:
+      MYSQL_DATABASE: template
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:?missing DB_PASSWORD}
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${DB_PASSWORD}", "--connect-timeout=5"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 60s
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d:ro
+
+  postgres:
+    image: postgres:17
+    profiles: ["postgres"]
+    environment:
+      POSTGRES_DB: template
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?missing DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d template"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 30s
+    volumes:
+      - ./postgres:/docker-entrypoint-initdb.d:ro

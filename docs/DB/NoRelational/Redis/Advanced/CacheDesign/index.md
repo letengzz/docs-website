@@ -185,6 +185,52 @@ public String get(String key) {
 }
 ```
 
+### 本地缓存的失效难题：三条路线
+
+多级缓存**真正的难点不是「怎么多读一层」，而是「数据改了怎么让所有实例的 L1 同时失效」**。JVM 内缓存不经过网络，别的实例写库时它毫不知情，于是最坏情况下 L1 的 TTL 就是业务能容忍的脏读时间。三条路线按「一致性强度 / 复杂度」排序：
+
+| 路线 | 做法 | 脏读窗口 | 适用 |
+| --- | --- | --- | --- |
+| 广播失效 | 写库后向 Redis 频道发消息，各实例订阅后清 L1 | 毫秒级（消息到达延迟） | 一致性要求高、实例数可控 |
+| 短 TTL 兜底 | L1 只设 1~5 秒 TTL，不广播 | 最长 = TTL | 读多写少、能接受秒级不一致 |
+| 版本号轮换 | key 带数据版本（`product:detail:123:v7`），写时版本 +1 | 无（旧版本不再被访问） | 数据本身有版本字段 |
+
+```java [广播失效：写库后清掉所有实例的 L1]
+public void update(Product p) {
+    db.update(p);
+    redis.del("product:detail:" + p.id());                          // 清 L2
+    redis.convertAndSend("cache:invalidate", "product:" + p.id());  // 广播清 L1
+}
+
+// 每个实例订阅（Spring Data Redis）
+@Bean
+RedisMessageListenerContainer listener(RedisConnectionFactory factory, Cache<String, String> local) {
+    var container = new RedisMessageListenerContainer();
+    container.setConnectionFactory(factory);
+    container.addMessageListener(
+        (msg, pattern) -> local.invalidate(msg.toString()),
+        new ChannelTopic("cache:invalidate"));
+    return container;
+}
+```
+
+::: danger 三条必须注意
+1. **删除顺序不能反**：必须**先删 L2 再广播**，且两级都是「删」而不是「写」。若反过来先写 L2，广播到达前的空窗里其他实例读 L1 未命中 → 读 L2 拿到新值 → 写进自己的 L1，看似没事；可一旦原实例的写库因故回滚，那些实例的 L1 就永久残留了一个从未落库的值。
+2. **广播消息会丢**：Redis Pub/Sub 是「发完即忘」，订阅者掉线期间的消息不补投。因此**任何广播方案都必须配一条短 TTL 兜底**——广播负责把窗口压到毫秒级，TTL 负责保证最终一致。
+3. **不要给 L1 设永不过期**：一旦某条失效消息丢失，永不过期的 L1 就是永久脏数据，只能靠重启进程解决。
+:::
+
+### 一致性与「先删缓存还是先写库」
+
+多级缓存不会改变一致性问题的本质，它只是把不一致窗口从「L2 与 DB 之间」扩展到「L1 / L2 / DB 三层之间」——**每相邻两层之间的顺序逻辑完全相同**，逐层复用同一条规则即可：
+
+```text
+写路径：更新 DB → 删 L2（+ 广播清 L1）
+读路径：L1 → L2 → DB，命中后逐级回填
+```
+
+反过来「先删缓存再写库」在高并发下有一个经典漏洞：删完缓存、写库事务还没提交，此时并发读会把**旧值**从数据库读回并写进缓存，而这次写入晚于写请求的删除，导致缓存长期停在旧值（直到 TTL 到期）。**先写库再删缓存**把窗口压到「读请求恰好穿透、且读到未提交前的旧值」这一极短区间，再配合 TTL 把最坏情况封顶。彻底消除需要延迟双删或订阅 binlog，三种做法的取舍见 [缓存防护](../CacheProtection/index.md) 的「缓存与业务一致性的三种取舍」。
+
 ## 实战：商品详情缓存
 
 ```java [ProductCacheService.java]

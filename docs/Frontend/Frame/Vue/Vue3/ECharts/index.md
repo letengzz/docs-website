@@ -2,6 +2,10 @@
 
 官网：https://echarts.apache.org/zh/option.html#title
 
+:::info 版本现状（2026-09 核对）
+ECharts 当前主线为 **6.1.0（2026-05-19）**；6.0 起默认主题大改（图例默认在底部、坐标系防溢出默认开启），`npm i echarts` 拿到的就是 6.x。本页的 hooks 封装、按需注册写法在 5.x / 6.x 均有效；升级 5→6 的变更清单与还原开关见[数据可视化 · ECharts 深入](../../../../DataVisualization/ECharts/index.md)。
+:::
+
 ## 安装
 
 官网：https://echarts.apache.org/handbook/zh/basics/import
@@ -565,3 +569,9 @@ useRequest(() => apiChartsBarReq(), {
   </div>
 </template>
 ```
+
+## 相关文档
+
+- [数据可视化专题](../../../../DataVisualization/index.md)：本页讲「**工程封装**」（hooks、类型、目录组织）；该专题讲「**可视化本身**」——图表选型、ECharts 配置体系、数据到图形的映射、大数据量治理、Canvas/SVG/WebGL 渲染路线与数据大屏适配。两张图之间是互补关系：先按本页把封装立起来，图怎么选、怎么调优去专题找。
+- [数据可视化 · ECharts 深入](../../../../DataVisualization/ECharts/index.md)：option 配置体系逐项讲解，与本页的通用配置函数配套阅读。
+- [数据可视化 · 实战：实时监控大屏](../../../../DataVisualization/Practice/index.md)：本页 hooks 在大屏场景的完整落地（轮询、缩放、容错）。

@@ -188,3 +188,4 @@ Grafana 告警可直接通知，也可对接 Alertmanager（见 [告警规则与
 - Grafana Alerting：https://grafana.com/docs/grafana/latest/alerting/
 - Loki 数据源、日志面板与日志转链路：[日志体系 · Grafana Loki](../../LogSystem/Loki/index.md)
 - 时序数据源与看板查询优化：[时序数据库](../../../DB/TimeSeries/index.md) / [查询与降采样](../../../DB/TimeSeries/Query/index.md)
+- 业务大屏的自研路线：[数据可视化 · 数据大屏工程](../../../Frontend/DataVisualization/Dashboard/index.md)——Grafana 赢在「数据接进来就有图 + 告警现成」，自研赢在视觉定制与业务交互；按「这个屏给谁看、多久改一次版式」选择，两条路线的适用判据见该页「与 BI 工具的分工」。

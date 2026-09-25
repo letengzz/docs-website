@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="360" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">分库分表专题地图</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">八页按「决策 → 设计 → 落地 → 收口」组织，核心是先把该不该拆想清楚</text>
+  <rect x="30" y="76" width="164" height="100" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="112" y="94.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">决策：要不要拆</text>
+  <text x="112" y="111" text-anchor="middle" font-size="7.5" fill="#6D28D9">① 概述与决策</text>
+  <text x="112" y="128.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">先排除 90% 不该拆的场景</text>
+  <line x1="194" y1="126" x2="206" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="206" y="76" width="164" height="100" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="288" y="94.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">设计：怎么拆</text>
+  <text x="288" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">② 拆分策略与分片键</text>
+  <text x="288" y="128.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">③ 分布式 ID</text>
+  <text x="288" y="145.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">拆错了比不拆更麻烦</text>
+  <line x1="370" y1="126" x2="382" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="382" y="76" width="164" height="100" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="464" y="94.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">落地：用什么拆</text>
+  <text x="464" y="111" text-anchor="middle" font-size="7.5" fill="#047857">④ ShardingSphere</text>
+  <text x="464" y="128.25" text-anchor="middle" font-size="7.5" fill="#047857">⑤ 跨分片查询与事务</text>
+  <text x="464" y="145.5" text-anchor="middle" font-size="7.5" fill="#047857">中间件替你做事</text>
+  <text x="464" y="162.75" text-anchor="middle" font-size="7.5" fill="#047857">但它不替你选分片键</text>
+  <line x1="546" y1="126" x2="558" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="558" y="76" width="164" height="100" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="640" y="94.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">收口：怎么迁</text>
+  <text x="640" y="111" text-anchor="middle" font-size="7.5" fill="#B45309">⑥ 平滑迁移</text>
+  <text x="640" y="128.25" text-anchor="middle" font-size="7.5" fill="#B45309">⑦ 实战：订单表分库分表</text>
+  <text x="640" y="145.5" text-anchor="middle" font-size="7.5" fill="#B45309">⑧ 常见问题与排错</text>
+  <text x="380" y="200" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">顺序不能反：先判「该不该拆」，再定「怎么拆」，最后才选中间件</text>
+  <text x="60" y="232" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">四类典型误用（拆了反而更慢）</text>
+  <rect x="30" y="244" width="164" height="78" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="112" y="262.2" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">把索引问题当成数据量问题</text>
+  <text x="112" y="279" text-anchor="middle" font-size="7.5" fill="#B91C1C">加索引能解决就别分片</text>
+  <text x="112" y="296.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">分片会让 SQL 能力永久受损</text>
+  <rect x="206" y="244" width="164" height="78" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="288" y="262.2" text-anchor="middle" font-size="8.5" fill="#9A3412" font-weight="bold">分片键选成低基数字段</text>
+  <text x="288" y="279" text-anchor="middle" font-size="7.5" fill="#C2410C">如「状态」「性别」→ 热点</text>
+  <text x="288" y="296.25" text-anchor="middle" font-size="7.5" fill="#C2410C">选错后只能重建数据</text>
+  <rect x="382" y="244" width="164" height="78" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="464" y="262.2" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">所有查询都跨分片</text>
+  <text x="464" y="279" text-anchor="middle" font-size="7.5" fill="#B45309">等于把并行查询变成广播</text>
+  <text x="464" y="296.25" text-anchor="middle" font-size="7.5" fill="#B45309">性能比单库更差</text>
+  <rect x="558" y="244" width="164" height="78" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="640" y="262.2" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">没有对账与校验</text>
+  <text x="640" y="279" text-anchor="middle" font-size="7.5" fill="#6D28D9">拆完不知道数据对不对</text>
+  <text x="640" y="296.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">出问题无法定位到分片</text>
+  <text x="380" y="344" text-anchor="middle" font-size="10" fill="#B91C1C">一句话判据：分片解决的是「单机存不下、写不进」，不是「查询慢」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

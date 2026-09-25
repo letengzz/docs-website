@@ -83,6 +83,10 @@ sh.status()   // 查看分片与 chunk 分布
 2. 批量插入数据后观察各 Shard 数据量是否均匀。
 3. 用 `db.users.getShardDistribution()` 查看分布详情。
 
+## 相关专题
+
+- [分库分表](../../../Relational/Sharding/index.md)：同是「把数据分散开」，但**托管分片**与**应用/中间件分片**是两条路——MongoDB 的分片集群由数据库自己负责路由与均衡，业务代码无感；关系型数据库分片要靠中间件或应用层拼接，业务要付出改造代价。选型时对比的是「改造量」与「对数据库形态的约束」。
+
 ## 参考资料
 
 - 分片：https://www.mongodb.com/docs/manual/sharding/

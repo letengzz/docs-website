@@ -81,6 +81,7 @@ el.style.transform = "translateX(100px)";
 ## 参考资料
 
 - 渲染性能实践：[运行时优化](../../../Others/PerformanceOptimization/Runtime/index.md)
+- 两条绘图支线：[数据可视化 · 渲染路线：Canvas / SVG / WebGL](../../../DataVisualization/Rendering/index.md)——Canvas 走「位图光栅化」、SVG 走「DOM + 矢量绘制」、WebGL 走「GPU 并行」，与本页的渲染管线分工：本页讲管线怎么走，那一页讲图表场景怎么选支线；规模再往上（十万点级）的取舍见 [数据可视化 · 大数据量下的性能工程](../../../DataVisualization/LargeData/index.md)。
 
 - 渲染树构建（Critical Rendering Path）：https://web.dev/articles/critical-rendering-path/render-tree-construction
 - 渲染性能优化：https://web.dev/learn/performance/rendering

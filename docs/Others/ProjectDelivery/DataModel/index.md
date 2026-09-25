@@ -188,6 +188,10 @@ for f in $(ls -r db/migrations/V*.sql | head -2); do mysql -h127.0.0.1 -P13306 -
 git log --name-only -1 | grep -E "db/migrations|src/main" | wc -l   # 应 ≥ 2
 ```
 
+## 相关专题
+
+- [分库分表 · 平滑迁移](../../../DB/Relational/Sharding/Migration/index.md)：本页讲**通用迁移方法**（改字段、加索引这类 schema 变更的六步：加→双写→回填→切读→观察→清理）；分片迁移是它在**最重场景**下的具体化——除了表结构变，还要把数据重新分布到多个库，且多出一个「路由规则切换」的不可逆节点。两页的六步骨架一致，可对照阅读。
+
 ## 参考资料
 
 - [MySQL 8.4 官方文档：数据类型与索引](https://dev.mysql.com/doc/refman/8.4/en/)

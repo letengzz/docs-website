@@ -30,6 +30,7 @@
 - [MySQL](MySQL/index.md)（概述、安装、核心概念、DDL/DML/DQL、事务、索引优化、常见问题）
 - [PostgreSQL](PostgreSQL/index.md)（概述、安装、SQL 基础、高级特性、索引、备份恢复、性能调优、实战、常见问题）
 - [SQL 优化](SQLOptimization/index.md)（执行计划、索引原理与失效、慢查询、分页与 JOIN 优化、实战案例）
+- [分库分表](Sharding/index.md)（该不该拆的决策、分片键设计、分布式 ID 生成、ShardingSphere、跨分片查询与分布式事务、平滑迁移、实战）
 
 ::: warning 建表之前先建模
 关系型数据库的表结构不是"想到就加"，而是设计出来的。表怎么拆、主键怎么选、索引怎么定，都属于[数据建模](../DataModeling/index.md)的范畴——**先在模型层改，别在生产库上改**。

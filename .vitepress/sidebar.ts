@@ -2,9 +2,9 @@
 import { Auth, DesignPatterns, DotNet, Ecommerce, Go, Java, MessageQueue, Microservices, NetworkProgramming, Python, SpringCloud } from "./backend";
 
 import { AI_Agent, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
-import { FrontBasic, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
+import { FrontBasic, FrontDataVisualization, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { Ansible, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
-import { DBOverview, DataModeling, NoRelational, Relational, SQLOptimization, TimeSeries } from "./db";
+import { DBOverview, DataModeling, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
 import { APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
@@ -66,7 +66,7 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontTesting, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontDataVisualization, ...FrontTesting, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
@@ -131,6 +131,7 @@ export const sidebar = {
   // 主题级侧边栏：进入具体主题时才展示该主题的侧边栏（子内容默认折叠）
   "/docs/Frontend/Basic": FrontBasic,
   "/docs/Frontend/Frame": FrontFrame,
+  "/docs/Frontend/DataVisualization": FrontDataVisualization,
   "/docs/Frontend/Others": FrontOthers,
   "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,
   "/docs/Frontend/Testing": FrontTesting,
@@ -148,6 +149,7 @@ export const sidebar = {
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/Relational": Relational,
   "/docs/DB/Relational/SQLOptimization": SQLOptimization,
+  "/docs/DB/Relational/Sharding": Sharding,
   "/docs/DB/NoRelational": NoRelational,
   "/docs/DB/DataModeling": DataModeling,
   "/docs/DB/TimeSeries": TimeSeries,

@@ -163,6 +163,7 @@ public class OrderService {
 - [消息队列消费幂等](../../MessageQueue/Idempotency/index.md)：幂等表、状态机、Redis 去重四种方案
 - [MySQL 事务与隔离级别](../../../DB/Relational/MySQL/Transaction/index.md)：单库事务与锁的基础
 - [SQL 优化 · 锁与事务](../../../DB/Relational/SQLOptimization/LockTransaction/index.md)：行锁、死锁与长事务排查
+- [分库分表 · 跨分片查询与分布式事务](../../../DB/Relational/Sharding/CrossShard/index.md)：本页讲**原理与方案选型**（2PC / TCC / Saga / 本地消息表）；那一页讲**分片场景下怎么用**——分片后一个本地事务被拆散到多个库，本地消息表与最终一致性成了默认选项，含可直接落地的表结构与代码
 
 ## 参考资料
 

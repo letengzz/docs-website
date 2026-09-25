@@ -114,6 +114,23 @@ export const SQLOptimization = [
     ],
   },
 ];
+export const Sharding = [
+  {
+    text: "分库分表",
+    link: "/docs/DB/Relational/Sharding/index.md",
+    collapsed: true,
+    items: [
+      { text: "分库分表概述与决策", link: "/docs/DB/Relational/Sharding/Overview/index.md" },
+      { text: "拆分策略与分片键设计", link: "/docs/DB/Relational/Sharding/Strategy/index.md" },
+      { text: "分布式 ID 生成", link: "/docs/DB/Relational/Sharding/IDGeneration/index.md" },
+      { text: "ShardingSphere 主线", link: "/docs/DB/Relational/Sharding/ShardingSphere/index.md" },
+      { text: "跨分片查询与分布式事务", link: "/docs/DB/Relational/Sharding/CrossShard/index.md" },
+      { text: "平滑迁移：从单库到分片", link: "/docs/DB/Relational/Sharding/Migration/index.md" },
+      { text: "实战：订单系统分库分表", link: "/docs/DB/Relational/Sharding/Practice/index.md" },
+      { text: "常见问题与排错", link: "/docs/DB/Relational/Sharding/FAQ/index.md" },
+    ],
+  },
+];
 export const Relational = [
   {
     text: "关系型数据库",
@@ -167,6 +184,7 @@ export const Relational = [
         ],
       },
       ...SQLOptimization,
+      ...Sharding,
     ],
   },
 ];

@@ -24,7 +24,7 @@
 | 校验 | Jakarta Bean Validation | 随 Boot | 声明式校验，错误统一收集 |
 | 文档 | springdoc-openapi | 3.x 线 | 注解即文档，配合 Knife4j 可观感更好；Boot 4.x 必须用 3.x（2.x 会启动失败） |
 | 安全 | Spring Security 7.x ｜ Sa-Token 1.46+ | 二选一 | 默认 Spring Security（与 Boot 4.x 主线匹配）；追求开发效率、要注解式鉴权选 Sa-Token。见[技术栈可插拔](./StackSelect/index.md) |
-| 数据库 | MySQL + JPA ｜ MyBatis ｜ MyBatis-Plus ｜ MyBatis-Flex | MySQL 8.4 LTS | 主库固定 MySQL 8.4；ORM 四选一，默认 MyBatis-Plus（国内团队主流，8.4 支持到 2032） |
+| 数据库 | MySQL / PostgreSQL + JPA ｜ MyBatis ｜ MyBatis-Plus ｜ MyBatis-Flex | MySQL 8.4 LTS / PostgreSQL 17 | **主库可插拔（第 81 天起）**：MySQL 8.4 或 PostgreSQL 17 部署期二选一，双方言 DDL + 一致性门禁（见[主库可插拔](./Database/index.md)）；ORM 四选一，默认 MyBatis-Plus（国内团队主流，8.4 支持到 2032） |
 | 缓存 | Redis 8.x ｜ Caffeine ｜ 无缓存 | 三选一 | 默认 Redis；选 Caffeine 或无缓存会让令牌撤销 / 失败计数 / 账号锁定三项降级，**必须显式接受** |
 | 监控 | Spring Boot Actuator + Micrometer | 随 Boot | 零侵入暴露健康、指标、端点 |
 | 测试 | JUnit + Testcontainers | JUnit 6.x / Testcontainers 2.0.x | **Boot 4.0 起默认 JUnit 6**（JUnit 5 的写法继续可用）；集成测试用**真实 MySQL / Redis 容器**，不用 H2 代替（见 [测试数据隔离与边界用例](./TestIsolation/index.md)） |
@@ -90,7 +90,8 @@ backend-template/
 | 第 78 天 | 第 4 周：部署与验收 ① | 多阶段 Dockerfile（~250 MB 级运行镜像、非 root、容器感知 JVM 参数）、Compose 编排（MySQL 8.4 / Redis 8 健康检查与 `service_healthy` 依赖顺序）、配置全部走环境变量 + 启动期密钥强校验、部署后冒烟脚本与一键部署脚本 | ✅ 见下方模块页 |
 | 第 79 天 | 第 4 周：部署与验收 ② | CI 流水线：把第 74~78 天的四道门禁（覆盖率、契约、选择器漂移、用例矩阵基线）连同构建镜像、预发部署、冒烟串成一条五阶段流水线，含分支保护与时长预算 | ✅ 见下方模块页 |
 | 第 80 天 | 第 4 周：部署与验收 ③ | 镜像推送与发布策略：标签四层分层（身份/版本/环境指针/不生成 latest）、registry 标签不可变、七阶段发布流水线（多架构构建 + provenance/SBOM + cosign 签名验签 + 审批后打环境指针）、滚动/蓝绿/金丝雀三档与 readiness 分工、回滚三前提；交付 `Release/tagplan.py` 与 88 项自测 | ✅ 见下方模块页 |
-| 第 81-90 天 | 第 4 周：部署与验收 | 验收清单 | ⏳ |
+| 第 81 天 | 第 4 周：部署与验收 ④（需求插入） | **主库可插拔**：主库不再固定 MySQL 8，改为 MySQL 8.4 / PostgreSQL 17 部署期二选一——双方言建表脚本（`db/mysql` + `db/postgres`）、`parity_check.py` 结构一致性门禁（类型归一化比对）+ 11 项自测、双 profile 数据库编排、分页方言显式注入；「上线验收与监控接入」顺延至第 82 天 | ✅ 见下方模块页 |
+| 第 82-90 天 | 第 4 周：部署与验收 | 上线验收清单、监控接入 | ⏳ |
 
 ## 各阶段交付内容
 
@@ -148,6 +149,10 @@ backend-template/
 
 19. [镜像推送与发布策略](./Release/index.md)：**发布的本质是把「线上跑的是哪一次提交」这个答案固化下来**——判据是「随便挑一个线上实例，从镜像身上就能读出提交号，无需查台账」。标签按**「会不会变」**分四层：身份（`sha-<12>`，永不变，部署/回滚/审计引用）、版本（`1.2.0`，永不变，对外沟通）、环境指针（`prod`/`staging`，**会变**，只能用来问「现在跑的是什么」）、便利标签（`latest`，**不生成**）。完整论证：为什么环境指针进部署命令会让答案的有效期只到下一次发布；为什么 `latest` 在语义上等于「最后被推上来的那个」、任何一次误推都会静默改写它；**「不可变」必须由 registry 强制**（开启标签不可变策略，覆盖推送返回 409 而不是成功）；七阶段发布流水线（多架构 buildx + 内嵌 `revision` 注解 + provenance/SBOM + cosign keyless 签名 + **验签失败即阻断** + 审批后才推环境指针 + `IMAGE_REF=<身份标签>` 部署 + 回滚换回旧身份）；`cosign verify` 的 `--certificate-identity-regexp` 必须收窄到自己的仓库（留空等于任何人的签名都算数）；三档发布策略对照与滚动替换的兼容性要求（**这正是契约门禁存在的理由**）、`liveness`/`readiness` 必须分开（混用会让依赖抖动变成反复重启、预热未完成就放流量）；**回滚的三个前提**（数据结构兼容、旧配置还在、外部副作用不随镜像退回）与「回滚能力取决于旧标签还在不在」（**重新构建一版当时的代码不叫回滚**，等价性无法证明）。交付可执行工具 `Release/tagplan.py`（零第三方依赖，六条不变量 INV1~INV6 机械校验标签分层与「谁可以出现在部署命令里」）与 `Release/selftest.py`（**88 项断言** + 11 组全组合扫描），并记录**工具与自测互相纠错**的两次修正（INV3 逐 token 扫描、INV4 允许回滚引用上一个发布的身份标签）。
 
+**第 81 天（第 4 周④：主库可插拔，需求插入）**：
+
+20. [主库可插拔：MySQL / PostgreSQL 双方言](./Database/index.md)：**主库不再固定 MySQL 8，改为部署期可选**（MySQL 8.4 / PostgreSQL 17 二选一），与第 76 天的 ORM 可插拔构成两个正交维度（编译期选 ORM、部署期选引擎，切换引擎是发布事件而非配置热更）。设计三决策：**雪花 ID 是双方言 DDL 能逐列对齐的前提**（无自增差异）；**建表脚本双方言双份**（`db/mysql` + `db/postgres`，Flyway 版本号两侧成对，TINYINT→SMALLINT、DATETIME→TIMESTAMP、行内 COMMENT→COMMENT ON、内联索引→CREATE INDEX 七条翻译规则）；**结构一致性是门禁不是约定**——`db/parity_check.py`（零第三方依赖）做归一化类型比对（列/主键/唯一约束/索引/注释），不一致退出码 1 可直接进 CI，`db/selftest.py` 11 项自测。配套 `db/docker-compose.databases.yml` 双 profile、Spring 双数据源配置、分页方言 `DbType` 显式注入（不从连接推断，避免启动顺序耦合）、双 JDBC 驱动共存免重建镜像。验收判据：`selftest` 11/11 + `parity_check` OK（实测通过）+ 双 profile 冒烟等效。
+
 ## 本地运行（快速上手）
 
 ```shell
@@ -181,6 +186,10 @@ python3 stack-select/selftest.py
 # 6) 发布前生成并校验标签计划（不需要 Docker 与 registry 也能跑）
 python3 Release/tagplan.py --version 1.2.0 --sha <40位git sha> --channel prod
 python3 Release/selftest.py          # 期望：selftest: 88/88 通过（全组合扫描 11 组）
+
+# 7) 主库可插拔：双方言一致性（不需要 Docker）
+python3 db/selftest.py               # 期望：selftest: 11/11 通过
+python3 db/parity_check.py           # 期望：OK: 2 张表 / 22 列 双方言结构一致
 ```
 
 ::: info 关于本文的验证环境
@@ -193,7 +202,7 @@ python3 Release/selftest.py          # 期望：selftest: 88/88 通过（全组�
 - Spring Boot 4.0 发布公告：[spring.io/blog](https://spring.io/blog/2025/11/20/spring-boot-4-0-0-available-now)
 - 相关文档：[Spring Boot 通用指南](../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md) / [Spring Security 7](../../../docs/Backend/Java/Frame/SpringSecurity/v7/index.md) / [数据建模](../../../docs/DB/DataModeling/index.md)
 - 本项目的产品化两条：[技术栈可插拔：模块边界与选择器脚本](./StackSelect/index.md) / [模板 CLI：设计与路线图](./TemplateCli/index.md)
-- 本项目的交付与流水线：[容器化：多阶段镜像与 Compose 编排](./Deployment/index.md) / [CI 流水线：把门禁串成一条链](./CI/index.md) / [进展记录](./Progress/index.md)
+- 本项目的交付与流水线：[容器化：多阶段镜像与 Compose 编排](./Deployment/index.md) / [CI 流水线：把门禁串成一条链](./CI/index.md) / [镜像推送与发布策略](./Release/index.md) / [主库可插拔](./Database/index.md) / [进展记录](./Progress/index.md)
 - 开发环境与工具链：[效率工具](../../../docs/Tools/Efficiency/index.md)（终端、命令行、脚本自动化）、[效率工具 · 实战](../../../docs/Tools/Efficiency/Practice/index.md)（把脚本、Git 钩子、容器化接进项目的六步清单）
 - 发布与供应链：[镜像推送与发布策略](./Release/index.md) / [完整项目交付 · 一键部署与上线验收](../../../docs/Others/ProjectDelivery/Delivery/index.md)（发布策略在交付流程中的位置）
 - 外部规范：[Docker Build attestations](https://docs.docker.com/build/attestations/) / [Sigstore Cosign 验签](https://docs.sigstore.dev/cosign/verifying/verify/) / [K8s 存活与就绪探针](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)

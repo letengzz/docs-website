@@ -27,3 +27,7 @@
 - [路由进阶](RouterAdvanced/index.md)
 - [性能优化](Performance/index.md)
 - [实战案例](Practice/index.md)
+
+相关专题：
+
+- [数据可视化](../../../DataVisualization/index.md)：Vue3 整合 ECharts 的「可视化本身」——图表选型、ECharts 6 配置体系、数据到图形的映射、Canvas/SVG/WebGL 原理、大数据量治理与数据大屏；与 [Vue3 整合ECharts](ECharts/index.md)（工程封装）分工互补。

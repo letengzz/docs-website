@@ -1,6 +1,6 @@
 # SpringBoot Web开发
 
-SpringBoot的Web开发能力，由[**SpringMVC**](../../../SpringMVC/v6/index.md)提供。
+SpringBoot的Web开发能力，由[**SpringMVC**](../../../SpringMVC/index.md)提供。
 
 - [SpringMVC自动配置](AutoConfiguration.md)
 - [默认效果](DefaultEffect.md)

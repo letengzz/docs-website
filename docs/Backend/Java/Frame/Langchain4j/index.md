@@ -4,6 +4,8 @@
 
 - [LangChain4j 概述](./Overview/index.md)
 
+- [快速开始](./QuickStart/index.md)
+
 - [Langchain4j 大模型平台](./Platform/index.md)
 
 - [Langchain4j 构建入门程序](./BasicProgram/index.md)

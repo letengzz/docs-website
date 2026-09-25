@@ -215,3 +215,4 @@ URL.revokeObjectURL(objectUrl);
 - [web.dev：长任务](https://web.dev/articles/long-tasks)
 - [web.dev：布局抖动](https://web.dev/articles/avoid-large-complex-layouts-and-layout-thrashings)
 - [MDN：Web Workers](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API)
+- 特例实战：[数据可视化 · 大数据量下的性能工程](../../../DataVisualization/LargeData/index.md)——十万级数据点的降采样、动画取舍与 WebGL 方案，是本页「长任务与帧率」方法论的图表场景落地；大屏内存泄漏（实例/定时器未释放）的排查见 [数据可视化 · 常见问题与最佳实践](../../../DataVisualization/FAQ/index.md)。

@@ -4,6 +4,7 @@ export const nav = [
     text: "前端", items: [
       { text: "基础", link: "/docs/Frontend/Basic" },
       { text: "框架", link: "/docs/Frontend/Frame" },
+      { text: "数据可视化", link: "/docs/Frontend/DataVisualization" },
       { text: "其他", link: "/docs/Frontend/Others" }
     ]
   },

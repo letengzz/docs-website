@@ -200,3 +200,4 @@ document.querySelector('.icon').style.animationPlayState = 'paused';
 - [MDN：CSS 动画性能](https://developer.mozilla.org/zh-CN/docs/Web/Performance/CSS_JavaScript_animation_performance)
 - [MDN：滚动驱动动画](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline)
 - [MDN：View Transitions API](https://developer.mozilla.org/zh-CN/docs/Web/API/View_Transitions_API)
+- 不走 CSS 的动画：[数据可视化 · 渲染路线：Canvas / SVG / WebGL](../../../../DataVisualization/Rendering/index.md)——`requestAnimationFrame` 循环的三条纪律、SVG 属性过渡为何每帧重算，以及图表/粒子动画为何不适用本页的 Composite 优化路径、各自的性能边界在哪。

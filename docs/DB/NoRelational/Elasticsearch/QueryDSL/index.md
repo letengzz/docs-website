@@ -122,6 +122,112 @@ curl -X POST http://localhost:9200/products/_search -H 'Content-Type: applicatio
 }
 ```
 
+## 向量检索与 ES 的衔接
+
+前面所有查询都建立在同一个前提上：**查询词必须和文档里的词对得上**。BM25 再好也解决不了「查询『跨库一致性』却检索不到写『分布式事务』的文档」——因为两者没有共同词项。语义检索靠的是**向量近邻**：把文本编码成一个高维向量，语义相近的文本在向量空间里距离更近。
+
+ES 从 7.x 起内置 `dense_vector` 类型，8.x 起提供原生 `knn` 查询，8.8+ 支持 RRF 混合检索；到 9.x 这套能力已经可以直接用于生产。**它最大的价值不是「替代专用向量库」，而是「让关键词检索与语义检索在同一个引擎、同一份数据上完成」**。
+
+### 第一步：声明向量字段
+
+```json
+PUT docs-vec
+{
+  "mappings": {
+    "properties": {
+      "title":     { "type": "text" },
+      "title_vec": {
+        "type": "dense_vector",
+        "dims": 1024,
+        "index": true,
+        "similarity": "cosine"
+      }
+    }
+  }
+}
+```
+
+四个参数各自的含义与易错点：
+
+| 参数 | 说明 |
+| --- | --- |
+| `dims` | 必须与嵌入模型输出维度**完全一致**，写错直接报错；换模型就要重建索引 |
+| `similarity` | `cosine` 最常用（文本向量通常已归一化）；已归一化的向量用 `dot_product` 更快 |
+| `index` | 为 `true` 才会建立近似近邻索引（HNSW），否则只能做精确但很慢的暴力检索 |
+| `element_type` | 默认 `float`；`byte` / `bit` 可大幅省内存，但需模型侧配合量化 |
+
+### 第二步：kNN 查询
+
+```json
+POST docs-vec/_search
+{
+  "knn": {
+    "field": "title_vec",
+    "query_vector": [0.0123, -0.0456, 0.0789],
+    "k": 10,
+    "num_candidates": 100
+  },
+  "_source": ["title"]
+}
+```
+
+::: warning `num_candidates` 是最该调的参数
+kNN 是**近似**检索：ES 先对每个分片随机取 `num_candidates` 个候选，再在其中挑真正的 top-k。所以 `num_candidates` 越小越快、召回越低。起步经验是 **`num_candidates ≈ 10 × k`**，之后用一组带标准答案的查询做召回率评测再调——只看「查询变快了」而没有召回数据，等于在用准确率换速度。
+:::
+
+kNN 还可以和过滤条件组合，此时**过滤先执行、只在命中的文档里做向量检索**（`filter` 与 `knn` 同级）：
+
+```json
+POST docs-vec/_search
+{
+  "knn": {
+    "field": "title_vec",
+    "query_vector": [0.0123, -0.0456, 0.0789],
+    "k": 10,
+    "num_candidates": 100,
+    "filter": { "term": { "status": "published" } }
+  }
+}
+```
+
+### 第三步：混合检索（RRF 融合）
+
+只靠向量会丢掉**精确词匹配**的能力（比如型号 `AX-2000` 这种向量模型没见过几次的 token），只靠 BM25 又缺语义泛化。ES 8.8+ 提供了 **RRF（Reciprocal Rank Fusion，倒数排名融合）**：不做分数归一化，只看两路结果里的**排名**，因此不需要为「BM25 分数与余弦相似度量纲不同」调权重。
+
+```json
+POST docs-vec/_search
+{
+  "retriever": {
+    "rrf": {
+      "retrievers": [
+        { "standard": { "query": { "match": { "title": "分布式事务" } } } },
+        { "knn": {
+            "field": "title_vec",
+            "query_vector": [0.0123, -0.0456, 0.0789],
+            "k": 50, "num_candidates": 200
+        } }
+      ],
+      "rank_window_size": 50,
+      "rank_constant": 60
+    }
+  }
+}
+```
+
+`rank_constant` 越大，排名靠后的文档被「拉平」得越明显（默认 60 是论文推荐值）；`rank_window_size` 决定每路取多少条参与融合。**RRF 的另一个好处是免调参**——上线时不必先跑一轮离线评测确定两路权重，先用等权融合上线，再按评测结果决定要不要换成加权方案。
+
+### ES 做向量库，什么时候合适
+
+| 判断维度 | 适合用 ES | 更适合专用向量库（Milvus / Qdrant 等） |
+| --- | --- | --- |
+| 检索形态 | 关键词 + 语义**混合**，需要过滤、聚合、高亮 | 纯语义检索，不需要聚合与排序字段 |
+| 已有资产 | 业务数据本来就在 ES 里，不必同步一份到新系统 | 只做向量，没有其他检索需求 |
+| 数据规模 | 千万级向量以内，维度 ≤ 1024 | 上亿向量、超大规模或超高低维张力场景 |
+| 更新频率 | 增量写入为主 | 需要频繁全量重建、多路向量索引实验 |
+| 运维成本 | 复用现有 ES 集群与监控 | 接受引入并维护一个新组件 |
+
+**一句话判据**：如果「语义检索」只是你现有搜索能力的一个补充维度，用 ES 最省事；如果向量检索是产品的全部（比如以图搜图、推荐召回），再考虑专用向量库。选型的完整对比见 [AI · RAG · 向量库与索引](../../../../AI/RAG/VectorStore/index.md)。
+
 ## 易错点
 
 :::danger 查询 DSL 高频坑

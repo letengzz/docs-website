@@ -26,3 +26,7 @@
 - [实战案例](Practice/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
 - [TypeScript 进阶（语言篇）](../../Basic/TypeScript/index.md)
+
+相关专题：
+
+- [数据可视化](../../DataVisualization/index.md)：React 侧画图表的通用原理——图表选型、ECharts 6 配置体系、数据到图形的映射、Canvas/SVG/WebGL 渲染路线、大数据量治理与数据大屏适配；ECharts 在 React 中的 useRef/useEffect 封装与 Vue hooks 逻辑同构（Vue 侧封装见 [Vue3 整合 ECharts](../Vue/Vue3/ECharts/index.md)）。
