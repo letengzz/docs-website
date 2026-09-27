@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 436" width="760" height="436" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="436" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Python Web 框架选型：三个问题定结论</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">选型的关键不是「功能多少」，而是世界观是否与项目匹配</text>
+  <rect x="290" y="76" width="180" height="54" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="94.2" text-anchor="middle" font-size="10.5" fill="#1E293B" font-weight="bold">选一个 Web 框架</text>
+  <text x="380" y="111" text-anchor="middle" font-size="7.5" fill="#334155">先问三个问题</text>
+  <line x1="380" y1="130" x2="380" y2="156" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="250" y="156" width="260" height="46" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="380" y="174.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">需要自带的运营后台吗？</text>
+  <line x1="380" y1="202" x2="120" y2="232" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="40" y="232" width="160" height="76" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="120" y="250.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">要后台</text>
+  <text x="120" y="267" text-anchor="middle" font-size="7.5" fill="#047857">Django</text>
+  <text x="120" y="284.25" text-anchor="middle" font-size="7.5" fill="#047857">Admin + ORM + 迁移</text>
+  <text x="120" y="301.5" text-anchor="middle" font-size="7.5" fill="#047857">一套带走</text>
+  <line x1="380" y1="202" x2="380" y2="232" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="300" y="232" width="160" height="76" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="250.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">不要后台</text>
+  <text x="380" y="267" text-anchor="middle" font-size="7.5" fill="#6D28D9">继续问下一个问题</text>
+  <text x="380" y="284.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">接口是否以 JSON 为主</text>
+  <line x1="380" y1="202" x2="640" y2="232" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="560" y="232" width="160" height="76" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="640" y="250.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">不需要 Python 后端</text>
+  <text x="640" y="267" text-anchor="middle" font-size="7.5" fill="#334155">重新评估需求</text>
+  <text x="640" y="284.25" text-anchor="middle" font-size="7.5" fill="#334155">也许静态站更合适</text>
+  <line x1="300" y1="326" x2="620" y2="326" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="30" y="338" width="226" height="82" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="143" y="356.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">Django 5.2 LTS</text>
+  <text x="143" y="373" text-anchor="middle" font-size="7.5" fill="#047857">内容型 / CRM / 内部系统</text>
+  <text x="143" y="390.25" text-anchor="middle" font-size="7.5" fill="#047857">约定优于配置，组件最全</text>
+  <text x="143" y="407.5" text-anchor="middle" font-size="7.5" fill="#047857">后台页面无人能替</text>
+  <rect x="266" y="338" width="226" height="82" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="379" y="356.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">FastAPI 0.11x</text>
+  <text x="379" y="373" text-anchor="middle" font-size="7.5" fill="#6D28D9">纯 API、高并发 IO 密集</text>
+  <text x="379" y="390.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">类型即契约，文档白送</text>
+  <text x="379" y="407.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">异步优先，冷启动小</text>
+  <rect x="502" y="338" width="228" height="82" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="616" y="356.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">Flask 3.x</text>
+  <text x="616" y="373" text-anchor="middle" font-size="7.5" fill="#B45309">存量项目继续用</text>
+  <text x="616" y="390.25" text-anchor="middle" font-size="7.5" fill="#B45309">新项目不再作为首选</text>
+  <text x="616" y="407.5" text-anchor="middle" font-size="7.5" fill="#B45309">微内核，要什么装什么</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

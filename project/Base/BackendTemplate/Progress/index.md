@@ -1313,12 +1313,46 @@ cd ../Release && python selftest.py  # 期望：selftest: 88/88 通过（全组�
 | 第 3 周（73-77 天） | 联调、单元与集成测试、压测基线、覆盖率与契约门禁、异常路径收口 | ✅ **4/4 步完成** |
 | 模板产品化（第 76 天插入） | 技术栈可插拔 + 选择器脚本 + CLI 设计 | ✅ **3/3 完成**；CLI 处于设计阶段，MVP 待排期 |
 | 第 4 周（78-90 天） | Docker 化、Compose、CI 流水线、发布策略、验收清单 | ✅ **4/4 完成**：容器化 ✅、CI 流水线 ✅、发布策略 ✅、验收清单 ✅（第 81 天为主库可插拔需求插入，不计入 4 周里程碑步数） |
+| 收尾强化（第 91 天） | 统一门禁：12 条检查收敛为 `scripts/gates.json` 单一来源 + 运行器 + 78 项自测 | ✅ 完成 |
+
+## 2026-09-26（第 91 天）：统一门禁 —— 把散落的检查收敛成一份清单
+
+**做了什么**：周期 3 的验收已收口，但「该跑哪些检查」这个元问题一直靠三处手抄（总览「本地运行」小节、CI 步骤、验收文档）各自维护。本日把全部 12 条门禁收敛为机器可读的 `scripts/gates.json`（唯一来源），并交付运行器 `scripts/run-gates.py`：
+
+1. **清单本体**：12 条门禁每条带 `why`（防什么事故）、`owner`（红了找谁）、`cmd`、`timeoutSec`、`weight`（按「改坏哪格最危险」赋权）、`requiresFiles/Env/Exec`（缺前置判 BLOCKED 而不是 FAIL）；
+2. **四种结局状态**：PASS / FAIL / **BLOCKED**（没跑成，与 FAIL 同罪）/ TIMEOUT——核心动机是「没跑」绝不能被当成「跑过了」；
+3. **哨兵项**：`acceptance-strict-canary` 期望退出码 1——`--strict` 在签名表填满之前**必须为红**，红转绿是警报不是好消息，这一语义首次有了自动看护；
+4. **文档防漂移**：`--check` 断言每条 `doc: true` 的命令都出现在总览「本地运行」小节且写了期望结果，改文档忘同步当场报红——判据从「人记得同步」改成「机器拒绝不同步」；
+5. **运行器自测**：`scripts/selftest.py` 78 项断言（变异测试：改坏 `expectRc`、塞必超时命令、删文档命令、把哨兵期望改成 0，运行器都必须报红）；
+6. 顺带把 [骨架与目录结构](../Skeleton/index.md) 里已过时的「方案评审」一节移出（其结论早已吸收进正文），为门禁叙事让位。
+
+**如何验证**（2026-09-26 实测）：
+
+```shell
+# ① 清单三种读法
+python3 scripts/run-gates.py --list    # 期望：打印 12 条门禁
+python3 scripts/run-gates.py --check   # 期望：OK（schema 12 条 + 防漂移断言通过）
+python3 scripts/run-gates.py           # 期望：本机缺 pom.xml/JAVA_HOME 时对应门禁判 BLOCKED、退出码 1
+# ② 运行器自测
+python3 scripts/selftest.py            # 期望：selftest: 78/78 通过（实测 78/78）
+```
+
+**问题与决策**：
+
+| 问题 | 决策 |
+| --- | --- |
+| 清单放 JSON 还是 YAML？ | JSON。零依赖解析（Python 内置），且 schema 校验用 `json.load` 即可，不给运行器添第三方依赖 |
+| BLOCKED 算不算失败？ | 算。缺前置条件等于这一格没被检验，放行就会制造「本地绿、CI 红」之外的第二种漂移：「本地没跑、也报绿」 |
+| 为什么不把 12 条直接写进 CI？ | CI 只是三种执行方式之一；写进 CI 就回到「三处手抄」的原点 |
+| 总览注释里自测数写错（70/70）？ | 收尾时实测为 78/78，已改正——这正是防漂移断言想防的那类「文档与事实分叉」 |
+
+**下一步（第 92 天起）**：① CI 按清单 `id` 引用执行，消除最后一处手抄；② Testcontainers 双库矩阵（三次记入）；③ MANUAL 项在真实环境回填签名表。
 
 ## 参考资料
 
 - 项目总览：[后端通用模板](../index.md)
-- 本日两条：[上线验收与监控接入](../Acceptance/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md)（新增容量拐点一节）
+- 本日两条：[统一门禁：清单收敛为单一来源](../Gates/index.md) ｜ [上线验收与监控接入](../Acceptance/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md)（新增容量拐点一节）
 - 本日交付物：`Acceptance/acceptance_check.py`（六类 18 项可执行清单）｜ `Acceptance/selftest.py`（71 项自测）｜ `Acceptance/backup_restore.py`（双方言备份恢复演练）｜ `Acceptance/case_baseline.json`（用例矩阵机器可读来源）｜ `Acceptance/known_issues.md` + `Acceptance/rollback_plan.md`（A3 / F3 判据文件）｜ `Acceptance/manual_signoff.json`（签名表，随仓库为空）
-- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md) ｜ [测试数据隔离与边界用例](../TestIsolation/index.md) ｜ [技术栈可插拔](../StackSelect/index.md) ｜ [模板 CLI：设计与路线图](../TemplateCli/index.md) ｜ [异常路径联调收口与用例清单](../ErrorPath/index.md) ｜ [容器化：多阶段镜像与 Compose 编排](../Deployment/index.md) ｜ [CI 流水线：把门禁串成一条链](../CI/index.md) ｜ [镜像推送与发布策略](../Release/index.md) ｜ [主库可插拔：MySQL / PostgreSQL 双方言](../Database/index.md) ｜ [上线验收与监控接入](../Acceptance/index.md)
+- 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md) ｜ [测试数据隔离与边界用例](../TestIsolation/index.md) ｜ [技术栈可插拔](../StackSelect/index.md) ｜ [模板 CLI：设计与路线图](../TemplateCli/index.md) ｜ [异常路径联调收口与用例清单](../ErrorPath/index.md) ｜ [容器化：多阶段镜像与 Compose 编排](../Deployment/index.md) ｜ [CI 流水线：把门禁串成一条链](../CI/index.md) ｜ [镜像推送与发布策略](../Release/index.md) ｜ [主库可插拔：MySQL / PostgreSQL 双方言](../Database/index.md) ｜ [上线验收与监控接入](../Acceptance/index.md) ｜ [统一门禁：清单收敛为单一来源](../Gates/index.md)
 - 外部规范：[Docker Build attestations](https://docs.docker.com/build/attestations/) ｜ [Sigstore Cosign 验签](https://docs.sigstore.dev/cosign/verifying/verify/) ｜ [K8s 存活、就绪与启动探针](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) ｜ [OCI 镜像注解规范](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
 - 相关文档：[Spring Boot 通用指南](../../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md) ｜ [完整项目交付 · 一键部署与上线验收](../../../../docs/Others/ProjectDelivery/Delivery/index.md)

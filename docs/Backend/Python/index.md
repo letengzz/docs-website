@@ -1615,3 +1615,21 @@ xpath_data = html.xpath("//span[@lang='EN-US']/text()", encodings="utf-8")
 print(xpath_data)
 
 ```
+
+## 从语言到应用：下一步读什么
+
+本专题讲的是**语言本身**（环境管理、装饰器、异步、常用库）。用 Python 写一个能被部署、能被运维的服务，还差三块内容，已单独成篇：
+
+| 需要解决的问题 | 去哪里看 |
+| --- | --- |
+| 选 Django 还是 FastAPI 还是 Flask | [Python Web 框架选型](../PythonWeb/Overview/index.md) |
+| 装好框架后每一层怎么写（校验、依赖注入、错误处理） | [FastAPI 进阶](../PythonWeb/FastAPI/index.md) |
+| 数据库怎么写（ORM、迁移、连接池） | [数据层：SQLAlchemy 2.0 与 Alembic](../PythonWeb/DataLayer/index.md) |
+| 怎么部署（Gunicorn、容器、探针） | [实战：可部署的 API 服务](../PythonWeb/Practice/index.md) |
+
+::: tip 语言篇与框架篇的分工
+本专题的 [异步编程](Async/index.md) 讲的是**事件循环与协程的机制**；框架篇讲的是**把这些机制用在 Web 服务上时，哪些写法会阻塞事件循环**。先看机制再看用法，比直接抄框架代码更容易理解「为什么 `async def` 里不能写同步调用」。
+
+另一个常见的选型问题——「Python 做后端够不够快」——答案取决于链路：IO 密集（调用外部 API、DB 查询、大模型接口）用异步 Python 完全够用；CPU 密集（图像处理、复杂计算）应该拆到独立进程或换 Go。对照实现见 [Go 微服务](../GoMicroservices/index.md)。
+:::
+

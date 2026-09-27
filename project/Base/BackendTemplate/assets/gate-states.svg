@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 432" width="760" height="432" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="432" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">门禁的四种状态与「哨兵」语义</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">把「不通过」拆成四类，才不会让「没跑」被当成「跑过了」</text>
+  <text x="60" y="78" text-anchor="start" font-size="10.5" fill="#991B1B" font-weight="bold">四种状态必须分清：BLOCKED 与 TIMEOUT 都不是 PASS</text>
+  <rect x="30" y="88" width="108" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="84" y="105" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">状态</text>
+  <rect x="138" y="88" width="296" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="286" y="105" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">什么时候出现</text>
+  <rect x="434" y="88" width="106" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="487" y="105" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">退出码</text>
+  <rect x="540" y="88" width="160" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="620" y="105" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">算不算过</text>
+  <rect x="30" y="118" width="108" height="30" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="84" y="135" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">PASS</text>
+  <rect x="138" y="118" width="296" height="30" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="286" y="135" text-anchor="middle" font-size="8.5" fill="#334155">退出码等于 expectRc —— 哨兵也走这一支</text>
+  <rect x="434" y="118" width="106" height="30" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="487" y="135" text-anchor="middle" font-size="8.5" fill="#334155">= 期望</text>
+  <rect x="540" y="118" width="160" height="30" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="620" y="135" text-anchor="middle" font-size="8.5" fill="#334155">过</text>
+  <rect x="30" y="148" width="108" height="30" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="84" y="165" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">FAIL</text>
+  <rect x="138" y="148" width="296" height="30" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="286" y="165" text-anchor="middle" font-size="8.5" fill="#334155">跑完了，但结果不符合期望</text>
+  <rect x="434" y="148" width="106" height="30" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="487" y="165" text-anchor="middle" font-size="8.5" fill="#334155">≠ 期望</text>
+  <rect x="540" y="148" width="160" height="30" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="620" y="165" text-anchor="middle" font-size="8.5" fill="#334155">不过</text>
+  <rect x="30" y="178" width="108" height="30" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="84" y="195" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">BLOCKED</text>
+  <rect x="138" y="178" width="296" height="30" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="286" y="195" text-anchor="middle" font-size="8.5" fill="#334155">前置不具备：缺文件 / 缺命令 / 缺环境变量</text>
+  <rect x="434" y="178" width="106" height="30" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="487" y="195" text-anchor="middle" font-size="8.5" fill="#334155">未执行</text>
+  <rect x="540" y="178" width="160" height="30" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="620" y="195" text-anchor="middle" font-size="8.5" fill="#334155">不过（默认）</text>
+  <rect x="30" y="208" width="108" height="30" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="84" y="225" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">TIMEOUT</text>
+  <rect x="138" y="208" width="296" height="30" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="286" y="225" text-anchor="middle" font-size="8.5" fill="#334155">超过 timeoutSec 还没结束</text>
+  <rect x="434" y="208" width="106" height="30" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="487" y="225" text-anchor="middle" font-size="8.5" fill="#334155">未结束</text>
+  <rect x="540" y="208" width="160" height="30" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="620" y="225" text-anchor="middle" font-size="8.5" fill="#334155">不过</text>
+  <line x1="30" y1="248" x2="730" y2="248" stroke="#CBD5E1" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="60" y="272" text-anchor="start" font-size="10.5" fill="#92400E" font-weight="bold">哨兵（canary）：expectRc 不为 0 的门禁，变绿才是警报</text>
+  <rect x="30" y="282" width="340" height="88" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="200" y="300.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">返回 expectRc（如 1）→ 合规</text>
+  <text x="200" y="317" text-anchor="middle" font-size="8" fill="#047857">manual_signoff.json 还是空的</text>
+  <text x="200" y="335.4" text-anchor="middle" font-size="8" fill="#047857">MANUAL 项没有被假装通过</text>
+  <text x="200" y="353.8" text-anchor="middle" font-size="8" fill="#047857">这才叫「预期为红是设计」</text>
+  <rect x="390" y="282" width="340" height="88" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="560" y="300.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">返回 0 → 警报，判 FAIL</text>
+  <text x="560" y="317" text-anchor="middle" font-size="8" fill="#B91C1C">要么签名表被填满了</text>
+  <text x="560" y="335.4" text-anchor="middle" font-size="8" fill="#B91C1C">要么 MANUAL 项的判定逻辑被改坏</text>
+  <text x="560" y="353.8" text-anchor="middle" font-size="8" fill="#B91C1C">两种情况都得有人重新拍板</text>
+  <text x="380" y="394" text-anchor="middle" font-size="9.5" fill="#B91C1C">反面写法：把「必须为红」的门禁写成注释里的约定 —— 注释不会拦住任何人，明天它静默变绿也没人知道</text>
+  <text x="380" y="416" text-anchor="middle" font-size="9" fill="#475569">同理，checks 只断言退出码，不去解析输出里的「N 项通过」：那串数字会漂移（实测 stack-select 自测已从 57 涨到 73）</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

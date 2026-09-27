@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 516" width="760" height="516" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="516" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">微前端的工程化体系与三条独立部署流水线</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">独立部署成立的前提是：契约、缓存、回滚三件事一起设计</text>
+  <text x="380" y="76" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">三条独立流水线，共享一份契约包</text>
+  <rect x="30" y="92" width="230" height="104" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="145" y="110.2" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">契约包 micro-contracts</text>
+  <text x="145" y="127" text-anchor="middle" font-size="7.5" fill="#4338CA">零运行时依赖（只有类型与常量）</text>
+  <text x="145" y="144.25" text-anchor="middle" font-size="7.5" fill="#4338CA">只增不改：新增字段一律可选</text>
+  <text x="145" y="161.5" text-anchor="middle" font-size="7.5" fill="#4338CA">破坏性变更走大版本 + 双向兼容期</text>
+  <rect x="280" y="92" width="230" height="104" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="395" y="110.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">子应用流水线</text>
+  <text x="395" y="127" text-anchor="middle" font-size="7.5" fill="#6D28D9">类型检查 → 单测</text>
+  <text x="395" y="144.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">E2E：独立模式 + 嵌入模式各一遍</text>
+  <text x="395" y="161.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">产物门禁：生命周期导出、无相对路径、共享依赖未打入</text>
+  <rect x="530" y="92" width="230" height="104" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="645" y="110.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">主应用流水线</text>
+  <text x="645" y="127" text-anchor="middle" font-size="7.5" fill="#1D4ED8">单测 → E2E → 构建</text>
+  <text x="645" y="144.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">部署后逐个访问每个子应用路由冒烟</text>
+  <text x="645" y="161.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">错误上报必须带 app 字段</text>
+  <line x1="30" y1="212" x2="730" y2="212" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="60" y="238" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">缓存与回滚：分块 404 是微前端最典型的线上故障</text>
+  <rect x="30" y="250" width="350" height="104" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="205" y="268.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">产物的两类文件</text>
+  <text x="205" y="285" text-anchor="middle" font-size="7.5" fill="#B91C1C">入口（entry.js / HTML）：固定名 → 必须不缓存</text>
+  <text x="205" y="302.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">分块（chunk-*.js）：带 hash → 可永久缓存</text>
+  <text x="205" y="319.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">白屏链路：缓存的旧 entry 引用了已删除的旧分块 → 404</text>
+  <text x="205" y="336.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">修法：入口 no-cache + 保留最近 3 个版本的分块</text>
+  <rect x="390" y="250" width="340" height="104" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="560" y="268.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">回滚：指针切换而不是重新构建</text>
+  <text x="560" y="285" text-anchor="middle" font-size="7.5" fill="#047857">releases/20260926-9c0d1e2/（不可变）</text>
+  <text x="560" y="302.25" text-anchor="middle" font-size="7.5" fill="#047857">current -&gt; releases/...（符号链接）</text>
+  <text x="560" y="319.5" text-anchor="middle" font-size="7.5" fill="#047857">回滚 = 一次 ln -sfn，毫秒级</text>
+  <text x="560" y="336.75" text-anchor="middle" font-size="7.5" fill="#047857">回滚到的字节与上线时完全一致</text>
+  <text x="60" y="384" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">产物门禁（把「发布后才发现」变成「构建时失败」）</text>
+  <rect x="30" y="396" width="226" height="84" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="143" y="414.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">生命周期导出</text>
+  <text x="143" y="431" text-anchor="middle" font-size="7.5" fill="#1D4ED8">grep bootstrap / unmount</text>
+  <text x="143" y="448.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">缺任一个 → 嵌入后白屏</text>
+  <rect x="266" y="396" width="226" height="84" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="379" y="414.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">无相对路径资源</text>
+  <text x="379" y="431" text-anchor="middle" font-size="7.5" fill="#6D28D9">src=".../" 会嵌入后 404</text>
+  <text x="379" y="448.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">base / publicPath 必须绝对</text>
+  <rect x="502" y="396" width="228" height="84" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="616" y="414.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">共享依赖未打入</text>
+  <text x="616" y="431" text-anchor="middle" font-size="7.5" fill="#0F766E">产物里不该出现 node_modules/vue</text>
+  <text x="616" y="448.25" text-anchor="middle" font-size="7.5" fill="#0F766E">出现即 externals 未生效</text>
+  <text x="380" y="498" text-anchor="middle" font-size="9.5" fill="#B91C1C">门禁的验收标准：手动删掉一个生命周期导出，门禁必须报红 —— 做不到就等于没有门禁</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -571,7 +571,27 @@ export const FrontFrame = [
                     { text: "微信小程序 常见错误", link: "/docs/Frontend/Frame/WxMini/Errors/index.md" },
                 ]
             },
+            {
+                text: "Nuxt", link: "/docs/Frontend/Frame/Nuxt/index.md", collapsed: true, items: [
+                    { text: "渲染模式与架构", link: "/docs/Frontend/Frame/Nuxt/Overview/index.md" },
+                    { text: "数据获取与状态", link: "/docs/Frontend/Frame/Nuxt/DataFetching/index.md" },
+                    { text: "服务端能力：Server Routes 与中间件", link: "/docs/Frontend/Frame/Nuxt/ServerRoute/index.md" },
+                    { text: "部署与实战", link: "/docs/Frontend/Frame/Nuxt/Deployment/index.md" },
+                ]
+            },
         ]
+    },
+];
+export const FrontMicroFrontend = [
+    {
+        text: "微前端",
+        link: "/docs/Frontend/MicroFrontend/index.md",
+        items: [
+            { text: "拆分策略与边界设计", link: "/docs/Frontend/MicroFrontend/Overview/index.md" },
+            { text: "运行时集成：qiankun 与沙箱", link: "/docs/Frontend/MicroFrontend/Runtime/index.md" },
+            { text: "通信与状态共享", link: "/docs/Frontend/MicroFrontend/Communication/index.md" },
+            { text: "工程化、独立部署与实战", link: "/docs/Frontend/MicroFrontend/Practice/index.md" },
+        ],
     },
 ];
 export const FrontendEngineering = [

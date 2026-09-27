@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 436" width="760" height="436" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="436" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">微前端的拆分维度与三条边界判据</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">拆得对，后面是工程问题；拆得错，后面全是无解的组织问题</text>
+  <text x="380" y="76" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">四种拆分维度：从「按路由」开始，只有硬需求才往细粒度走</text>
+  <rect x="30" y="92" width="172" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="116" y="110.2" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">按路由</text>
+  <text x="116" y="127" text-anchor="middle" font-size="7.5" fill="#1D4ED8">/order/** 一个子应用</text>
+  <text x="116" y="144.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">最易识别、冲突面最小</text>
+  <text x="116" y="161.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">推荐起点</text>
+  <text x="116" y="202" text-anchor="middle" font-size="8" fill="#047857" font-weight="bold">★ 从这里开始</text>
+  <rect x="214" y="92" width="172" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="300" y="110.2" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">按业务域</text>
+  <text x="300" y="127" text-anchor="middle" font-size="7.5" fill="#6D28D9">商品域 / 交易域 / 会员域</text>
+  <text x="300" y="144.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">领域边界清晰时适用</text>
+  <text x="300" y="161.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">跨域操作会变多</text>
+  <rect x="398" y="92" width="172" height="96" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="484" y="110.2" text-anchor="middle" font-size="10.5" fill="#3730A3" font-weight="bold">按团队</text>
+  <text x="484" y="127" text-anchor="middle" font-size="7.5" fill="#4338CA">一个团队一个子应用</text>
+  <text x="484" y="144.25" text-anchor="middle" font-size="7.5" fill="#4338CA">组织边界与业务边界重合</text>
+  <text x="484" y="161.5" text-anchor="middle" font-size="7.5" fill="#4338CA">组织调整时失真</text>
+  <rect x="582" y="92" width="172" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="668" y="110.2" text-anchor="middle" font-size="10.5" fill="#92400E" font-weight="bold">按技术栈</text>
+  <text x="668" y="127" text-anchor="middle" font-size="7.5" fill="#B45309">老系统保留、新功能新栈</text>
+  <text x="668" y="144.25" text-anchor="middle" font-size="7.5" fill="#B45309">渐进式重构</text>
+  <text x="668" y="161.5" text-anchor="middle" font-size="7.5" fill="#B45309">长期维护两套栈</text>
+  <line x1="30" y1="216" x2="730" y2="216" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="60" y="242" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">三条边界判据（任何一条不成立，就不该拆）</text>
+  <rect x="30" y="254" width="226" height="88" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="143" y="272.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">路由属主唯一</text>
+  <text x="143" y="289" text-anchor="middle" font-size="7.5" fill="#1D4ED8">一条路由只属于一个子应用</text>
+  <text x="143" y="306.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">重叠 → 随机出现两种页面</text>
+  <text x="143" y="323.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">维护一张显式路由表</text>
+  <rect x="266" y="254" width="226" height="88" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="379" y="272.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">数据属主唯一</text>
+  <text x="379" y="289" text-anchor="middle" font-size="7.5" fill="#6D28D9">一个实体的写权限只属一个应用</text>
+  <text x="379" y="306.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">共享可变 store → 属主消失</text>
+  <text x="379" y="323.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">跨应用只能事件 + 只读快照</text>
+  <rect x="502" y="254" width="228" height="88" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="616" y="272.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">样式属主明确</text>
+  <text x="616" y="289" text-anchor="middle" font-size="7.5" fill="#0F766E">body / 主题变量只由主应用定义</text>
+  <text x="616" y="306.25" text-anchor="middle" font-size="7.5" fill="#0F766E">子应用禁止写 body / html / *</text>
+  <text x="616" y="323.5" text-anchor="middle" font-size="7.5" fill="#0F766E">隔离强度按需选择</text>
+  <rect x="30" y="354" width="700" height="62" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="372.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">先确认四个前置条件，缺任何一条都有更简单的方案</text>
+  <text x="380" y="389" text-anchor="middle" font-size="8" fill="#B91C1C">多团队 · 需要独立部署 · 技术栈异构或存量无法重写 · 需要运行时组合</text>
+  <text x="380" y="407.4" text-anchor="middle" font-size="8" fill="#B91C1C">只有单团队、同栈时：用 monorepo + 包级拆分，不引入沙箱与通信协议这两类长期成本</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

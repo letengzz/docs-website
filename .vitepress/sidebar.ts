@@ -1,8 +1,8 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
-import { Auth, DesignPatterns, DotNet, Ecommerce, Go, Java, MessageQueue, Microservices, NetworkProgramming, Python, SpringCloud } from "./backend";
+import { Auth, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, Java, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, SpringCloud } from "./backend";
 
 import { AI_Agent, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
-import { FrontBasic, FrontDataVisualization, FrontWebAssembly, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
+import { FrontBasic, FrontDataVisualization, FrontMicroFrontend, FrontWebAssembly, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { Ansible, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { DBOverview, DataModeling, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
 import { APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
@@ -66,14 +66,14 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontDataVisualization, ...FrontWebAssembly, ...FrontTesting, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontWebAssembly, ...FrontTesting, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
     {
       text: "后端",
       collapsed: true,
-      items: [...DotNet, ...Go, ...Java, ...Auth, ...MessageQueue, ...Microservices, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...Ecommerce],
+      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...Auth, ...MessageQueue, ...Microservices, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce],
     },
   ],
   "/docs/DB": [
@@ -131,6 +131,7 @@ export const sidebar = {
   // 主题级侧边栏：进入具体主题时才展示该主题的侧边栏（子内容默认折叠）
   "/docs/Frontend/Basic": FrontBasic,
   "/docs/Frontend/Frame": FrontFrame,
+  "/docs/Frontend/MicroFrontend": FrontMicroFrontend,
   "/docs/Frontend/DataVisualization": FrontDataVisualization,
   "/docs/Frontend/WebAssembly": FrontWebAssembly,
   "/docs/Frontend/Others": FrontOthers,
@@ -138,6 +139,7 @@ export const sidebar = {
   "/docs/Frontend/Testing": FrontTesting,
   "/docs/Backend/DotNet": DotNet,
   "/docs/Backend/Go": Go,
+  "/docs/Backend/GoMicroservices": GoMicroservices,
   "/docs/Backend/Java": Java,
   "/docs/Backend/MessageQueue": MessageQueue,
   "/docs/Backend/Auth": Auth,
@@ -146,6 +148,7 @@ export const sidebar = {
   "/docs/Backend/DesignPatterns": DesignPatterns,
   "/docs/Backend/NetworkProgramming": NetworkProgramming,
   "/docs/Backend/Python": Python,
+  "/docs/Backend/PythonWeb": PythonWeb,
   "/docs/Backend/Ecommerce": Ecommerce,
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/Relational": Relational,

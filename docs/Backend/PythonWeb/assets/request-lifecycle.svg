@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 552" width="760" height="552" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="552" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">FastAPI 一次请求经过的八个阶段</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">依赖解析 → 请求体校验 → 视图 → 序列化 → 异常处理</text>
+  <text x="380" y="76" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">八个阶段，各有可干预点；顺序决定了哪些事能做、哪些不能</text>
+  <rect x="30" y="92" width="200" height="36" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="130" y="114" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">1 连接与路由匹配</text>
+  <rect x="238" y="92" width="492" height="36" rx="0" fill="#F8FAFC" stroke="#475569" stroke-width="1.2"/>
+  <text x="484" y="114" text-anchor="middle" font-size="8.5" fill="#334155">uvicorn（ASGI）</text>
+  <line x1="130" y1="128" x2="130" y2="136" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="136" width="200" height="36" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="130" y="158" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">2 中间件链</text>
+  <rect x="238" y="136" width="492" height="36" rx="0" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="484" y="158" text-anchor="middle" font-size="8.5" fill="#1D4ED8">@app.middleware（trace / timing / CORS）</text>
+  <line x1="130" y1="172" x2="130" y2="180" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="180" width="200" height="36" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="130" y="202" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">3 依赖解析 Depends</text>
+  <rect x="238" y="180" width="492" height="36" rx="0" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="484" y="202" text-anchor="middle" font-size="8.5" fill="#6D28D9">鉴权、DB 会话、分页参数（可缓存去重）</text>
+  <line x1="130" y1="216" x2="130" y2="224" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="224" width="200" height="36" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="130" y="246" text-anchor="middle" font-size="9" fill="#3730A3" font-weight="bold">4 请求体校验</text>
+  <rect x="238" y="224" width="492" height="36" rx="0" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.2"/>
+  <text x="484" y="246" text-anchor="middle" font-size="8.5" fill="#4338CA">Pydantic 模型（extra=forbid 会拒多余字段）</text>
+  <line x1="130" y1="260" x2="130" y2="268" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="268" width="200" height="36" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="130" y="290" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">5 路由函数执行</text>
+  <rect x="238" y="268" width="492" height="36" rx="0" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="484" y="290" text-anchor="middle" font-size="8.5" fill="#047857">async def（IO）或 def（计算，走线程池）</text>
+  <line x1="130" y1="304" x2="130" y2="312" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="312" width="200" height="36" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="130" y="334" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">6 返回体序列化</text>
+  <rect x="238" y="312" width="492" height="36" rx="0" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.2"/>
+  <text x="484" y="334" text-anchor="middle" font-size="8.5" fill="#0F766E">response_model 决定暴露哪些字段</text>
+  <line x1="130" y1="348" x2="130" y2="356" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="356" width="200" height="36" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="130" y="378" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">7 异常处理</text>
+  <rect x="238" y="356" width="492" height="36" rx="0" fill="#FFFBEB" stroke="#D97706" stroke-width="1.2"/>
+  <text x="484" y="378" text-anchor="middle" font-size="8.5" fill="#B45309">exception_handler 统一错误体</text>
+  <line x1="130" y1="392" x2="130" y2="400" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="400" width="200" height="36" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.6"/>
+  <text x="130" y="422" text-anchor="middle" font-size="9" fill="#155E75" font-weight="bold">8 响应写出</text>
+  <rect x="238" y="400" width="492" height="36" rx="0" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.2"/>
+  <text x="484" y="422" text-anchor="middle" font-size="8.5" fill="#0E7490">BackgroundTasks 在响应后执行</text>
+  <text x="60" y="466" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">两个容易忽略的顺序事实</text>
+  <rect x="30" y="478" width="350" height="62" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="205" y="496.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">依赖先于请求体校验</text>
+  <text x="205" y="513" text-anchor="middle" font-size="7.5" fill="#1D4ED8">未授权请求不浪费校验开销</text>
+  <text x="205" y="530.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">但鉴权依赖里读 body 会失败（body 尚未消费）</text>
+  <rect x="390" y="478" width="340" height="62" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="560" y="496.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">中间件最内层才拿得到校验结果</text>
+  <text x="560" y="513" text-anchor="middle" font-size="7.5" fill="#6D28D9">中间件不适合做鉴权与 DB 查询</text>
+  <text x="560" y="530.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">trace 中间件必须放在最外层</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

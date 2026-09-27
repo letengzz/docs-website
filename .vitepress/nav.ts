@@ -4,6 +4,7 @@ export const nav = [
     text: "前端", items: [
       { text: "基础", link: "/docs/Frontend/Basic" },
       { text: "框架", link: "/docs/Frontend/Frame" },
+      { text: "微前端", link: "/docs/Frontend/MicroFrontend" },
       { text: "数据可视化", link: "/docs/Frontend/DataVisualization" },
       { text: "WebAssembly", link: "/docs/Frontend/WebAssembly" },
       { text: "其他", link: "/docs/Frontend/Others" }
@@ -13,6 +14,7 @@ export const nav = [
     text: "后端", items: [
       { text: ".Net", link: "/docs/Backend/DotNet" },
       { text: "Go", link: "/docs/Backend/Go" },
+      { text: "Go 微服务", link: "/docs/Backend/GoMicroservices" },
       { text: "Java", link: "/docs/Backend/Java" },
       { text: "消息队列", link: "/docs/Backend/MessageQueue" },
       { text: "微服务", link: "/docs/Backend/Microservices" },
@@ -20,6 +22,7 @@ export const nav = [
       { text: "设计模式", link: "/docs/Backend/DesignPatterns" },
       { text: "网络编程", link: "/docs/Backend/NetworkProgramming" },
       { text: "Python", link: "/docs/Backend/Python" },
+      { text: "Python Web 框架", link: "/docs/Backend/PythonWeb" },
       { text: "电商系统设计", link: "/docs/Backend/Ecommerce" },]
   },
   {

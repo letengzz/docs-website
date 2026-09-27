@@ -158,6 +158,10 @@ backend-template/
 
 21. [上线验收与监控接入](./Acceptance/index.md)：**验收清单最容易退化成两种东西——一张只有勾选框的表格，和一句口头承诺「都验过了」，两者的共同问题是判据没被写下来，所以也没法被检验**。本日把清单做成可执行的**三层结构**：AUTO 12 项（文件内容 / 脚本退出码 / JSON 字段，CI 里全跑）、MANUAL 6 项（压测、漏洞扫描、备份恢复、越权、告警触达——**永远不可能在本仓库里被自动判定**，工具只列出可直接粘贴的命令与期望输出，不假装它们通过了）、签名表 `manual_signoff.json`（`--strict` 下 MANUAL 项必须登记「谁、何时、结论、证据」，证据不足 8 字符或日期写「上周」都判不合格）。两条**跨交付物交叉断言**结清第 76/77 天的旧账：CLI `--check` × 用例矩阵基线（生成物里真有 `case-baseline`、**改小一格 `--check` 必须报红**、降基线被拒）、回滚命令 × 标签不可变性（把 `IMAGE_REF` 从身份标签换成环境指针 `prod`，`--verify` 必须报红）——两处都用**变异测试**而不是「生成后 --check 通过」这种必然成立的检查。备份恢复演练 `backup_restore.py` 的判据不是「命令没报错」，而是**表集合与逐表行数完全一致**（只比总行数会漏掉「A 表少 100 行、B 表多 100 行」），并刻意不用 `mysqldump --databases`——加了会往 dump 里写 `USE <源库>`，让「恢复到演练库」拐回去覆盖源库。交付 `acceptance_check.py` + `selftest.py`（**71 项断言**，含 10 处变异测试与一次真实 bug 修复：矩阵里填了非法符号会使校验器 `KeyError` 崩溃，而**校验器崩了比校验失败危险**）。
 
+**第 91 天（收尾补记：统一门禁）**：
+
+22. [统一门禁：清单收敛为单一来源](./Gates/index.md)：此前 12 条门禁散落三处（总览本地运行小节、CI 步骤、验收文档）各抄一份，漂移只是时间问题。收敛为机器可读的 `scripts/gates.json`（唯一来源，每条带 `why` / `owner` / `timeoutSec` / `weight` / 前置条件）+ 运行器 `scripts/run-gates.py`：把结局拆成 **PASS / FAIL / BLOCKED / TIMEOUT 四种状态**（「没跑成」与「没跑过」必须分清，缺 `JAVA_HOME` 判 BLOCKED 而非 FAIL）；`--strict` 哨兵作为**期望退红**的门禁入清单（`expectRc: 1`，签名前必须为红，红转绿是警报）；`--check` 做 schema 校验 + **文档防漂移**（每条 `doc: true` 命令必须出现在本页「本地运行」小节且写了期望，判据从「人记得同步」改成「机器拒绝不同步」）；`scripts/selftest.py` **78 项变异测试断言**（改坏 `expectRc` / 塞必超时命令 / 删文档命令都必须报红）。
+
 ## 本地运行（快速上手）
 
 ```shell
@@ -183,13 +187,18 @@ java -jar template-application/target/template-application-1.0.0.jar
 python3 stack-select/stack-select.py --root . --check   # 期望：OK，退出码 0
 
 # 5) 提交前本地跑一遍与 CI 完全相同的命令
-#    CI 用哪条本地就用哪条，否则会出现「本地绿、CI 红」
-mvn -B clean verify
-python3 stack-select/stack-select.py --root . --check
-python3 stack-select/selftest.py
+#    CI 用哪条本地就用哪条，否则会出现「本地绿、CI 红」。
+#    第 91 天起这句话由一条命令承担：门禁清单收敛到 scripts/gates.json，
+#    本地、CI、审计三处都读它，不再各自手抄一份。
+mvn -B clean verify                 # 期望：BUILD SUCCESS，四个模块的测试与覆盖率门禁全过
+python3 scripts/run-gates.py        # 期望：全部符合期望；本机缺 pom.xml / JAVA_HOME 时
+                                    #       stack-select-check 与 mvn-verify 判 BLOCKED 并返回 1
+python3 scripts/run-gates.py --check      # 期望：schema 校验 + 文档防漂移断言通过（返回 0）
+python3 scripts/run-gates.py --list       # 打印清单：判据 / 责任人 / 权重 / 前置条件
+python3 scripts/selftest.py               # 期望：selftest: 78/78 通过（对运行器本身做变异测试）
 
 # 6) 发布前生成并校验标签计划（不需要 Docker 与 registry 也能跑）
-python3 Release/tagplan.py --version 1.2.0 --sha <40位git sha> --channel prod
+python3 Release/tagplan.py --version 1.2.0 --sha <40位git sha> --channel prod  # 期望：标签四层分层正确、INV1~INV6 通过
 python3 Release/selftest.py          # 期望：selftest: 88/88 通过（全组合扫描 11 组）
 
 # 7) 主库可插拔：双方言一致性（不需要 Docker）
@@ -199,7 +208,7 @@ python3 db/parity_check.py           # 期望：OK: 2 张表 / 22 列 双方言�
 # 8) 上线验收：清单与交叉断言（不需要 Docker 与数据库）
 python3 Acceptance/acceptance_check.py          # 期望：AUTO 12/12 通过，退出码 0
 python3 Acceptance/acceptance_check.py --list    # 打印六类 18 项的判据、责任人、命令
-python3 Acceptance/acceptance_check.py --cross   # 跨交付物交叉断言（含变异测试）
+python3 Acceptance/acceptance_check.py --cross   # 期望：两条交叉断言 PASS（含变异测试）
 python3 Acceptance/selftest.py                   # 期望：selftest: 71/71 通过
 python3 Acceptance/backup_restore.py --dry-run   # 备份恢复演练的动作清单（真演练需客户端）
 

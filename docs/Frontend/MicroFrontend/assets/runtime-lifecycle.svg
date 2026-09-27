@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 492" width="760" height="492" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="492" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">运行时集成的生命周期与沙箱能力边界</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">理解沙箱「做不到什么」，才知道该在哪里加约定</text>
+  <text x="380" y="76" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">一次子应用挂载的完整生命周期，以及三处必须清理的东西</text>
+  <rect x="30" y="92" width="112" height="68" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="86" y="110.2" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">加载 entry</text>
+  <text x="86" y="127" text-anchor="middle" font-size="7" fill="#334155">只在首次加载</text>
+  <line x1="142" y1="126" x2="152" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="152" y="92" width="112" height="68" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="208" y="110.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">bootstrap</text>
+  <text x="208" y="127" text-anchor="middle" font-size="7" fill="#1D4ED8">一次；不挂 DOM</text>
+  <line x1="264" y1="126" x2="274" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="274" y="92" width="112" height="68" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="330" y="110.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">创建沙箱</text>
+  <text x="330" y="127" text-anchor="middle" font-size="7" fill="#6D28D9">Proxy / 快照</text>
+  <line x1="386" y1="126" x2="396" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="396" y="92" width="112" height="68" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="452" y="110.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">mount</text>
+  <text x="452" y="127" text-anchor="middle" font-size="7" fill="#047857">每次进入；注册事件与定时器</text>
+  <line x1="508" y1="126" x2="518" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="518" y="92" width="112" height="68" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="574" y="110.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">unmount</text>
+  <text x="574" y="127" text-anchor="middle" font-size="7" fill="#B91C1C">每次离开；必须清理干净</text>
+  <line x1="630" y1="126" x2="640" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="640" y="92" width="112" height="68" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="696" y="110.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">销毁沙箱</text>
+  <text x="696" y="127" text-anchor="middle" font-size="7" fill="#0F766E">回到基线</text>
+  <text x="380" y="186" text-anchor="middle" font-size="9.5" fill="#B91C1C">unmount 里少清一样，来回切换 10 次后就会卡、请求重复、定时器执行 N 遍</text>
+  <text x="60" y="216" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">unmount 必须清理的三样（收敛到一个 dispose 函数）</text>
+  <rect x="30" y="228" width="226" height="84" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="143" y="246.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">① 框架实例</text>
+  <text x="143" y="263" text-anchor="middle" font-size="7.5" fill="#6D28D9">app.unmount()</text>
+  <text x="143" y="280.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">否则响应式依赖仍存活</text>
+  <text x="143" y="297.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">内存只涨不降</text>
+  <rect x="266" y="228" width="226" height="84" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="379" y="246.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 全局事件</text>
+  <text x="379" y="263" text-anchor="middle" font-size="7.5" fill="#1D4ED8">removeEventListener</text>
+  <text x="379" y="280.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">resize / scroll / storage</text>
+  <text x="379" y="297.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">重复注册 → 回调多次执行</text>
+  <rect x="502" y="228" width="228" height="84" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="616" y="246.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">③ 定时器与轮询</text>
+  <text x="616" y="263" text-anchor="middle" font-size="7.5" fill="#B45309">clearInterval / clearTimeout</text>
+  <text x="616" y="280.25" text-anchor="middle" font-size="7.5" fill="#B45309">订阅回调的注销函数</text>
+  <text x="616" y="297.5" text-anchor="middle" font-size="7.5" fill="#B45309">onGlobalStateChange 返回值</text>
+  <line x1="30" y1="326" x2="730" y2="326" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="60" y="352" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">沙箱隔离不了的五件事（决定了要不要选更强隔离）</text>
+  <rect x="30" y="364" width="700" height="92" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="382.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">隔离不了的五处</text>
+  <text x="380" y="399" text-anchor="middle" font-size="8" fill="#B91C1C">① 定时器与事件监听（沙箱不会自动清） · ② document 上的原生调用（document.title / head.appendChild）</text>
+  <text x="380" y="417.4" text-anchor="middle" font-size="8" fill="#B91C1C">③ CSS 的 :root 与 @keyframes 名字（加前缀重写会破坏它们） · ④ 挂在 window 上的三方插件</text>
+  <text x="380" y="435.8" text-anchor="middle" font-size="8" fill="#B91C1C">⑤ localStorage / sessionStorage 同域共享（必须约定键前缀）</text>
+  <text x="380" y="454.2" text-anchor="middle" font-size="8" fill="#B91C1C">结论：真正需要「完全隔离」时只有 iframe 能给你</text>
+  <text x="380" y="474" text-anchor="middle" font-size="9.5" fill="#64748B">开发环境的陷阱：沙箱会代理 document，子应用挂载必须用 props.container 而不是 getElementById</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

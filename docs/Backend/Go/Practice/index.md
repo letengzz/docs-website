@@ -870,3 +870,81 @@ docker images shortlink:local
 - [golang.org/x/time/rate](https://pkg.go.dev/golang.org/x/time/rate)
 - [OWASP：Unvalidated Redirects and Forwards](https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html)
 - [Go 官方：Docker 多阶段构建最佳实践](https://docs.docker.com/build/building/multi-stage/)
+
+## 性能分析：pprof 三件套与调优实战
+
+服务上线后，「慢」和「高」都是现象，不是原因。这一节补上**怎么在 10 分钟内把现象收敛到具体代码行**。做法只有三步：采集 → `top` 找大户 → `list` 看代码。
+
+### 第一步：把 pprof 端点接进去（第一天就要做）
+
+```go [internal/server/ops.go]
+import (
+    "net/http"
+    _ "net/http/pprof"          // 匿名导入即注册到 DefaultServeMux
+)
+
+// 运维端口只在内网暴露，绝不要挂在业务端口上
+func NewOpsServer(addr string) *http.Server {
+    mux := http.NewServeMux()
+    mux.Handle("/debug/pprof/", http.DefaultServeMux)   // 复用已注册的处理器
+    mux.Handle("/metrics", promhttp.Handler())
+    return &http.Server{Addr: addr, Handler: mux}
+}
+```
+
+::: danger 注意：`net/http/pprof` 挂在业务端口上等于把内部结构开放给所有人
+`/debug/pprof/` 会暴露 goroutine 栈、堆分布、CPU 火焰数据，**这些信息足以还原业务逻辑与调用结构**。约定三条：
+1. 单独监听一个**运维端口**（如 `:9100`），与应用端口分离；
+2. 该端口**只绑内网**或只允许跳板机访问（安全组 / NetworkPolicy）；
+3. 生产环境的 `trace` 与 `profile` 端点建议按需临时开启，而不是常年常开。
+:::
+
+### 第二步：按症状选采集对象
+
+| 症状 | 采集命令 | 看什么 |
+| --- | --- | --- |
+| CPU 高 / 吞吐上不去 | `go tool pprof http://127.0.0.1:9100/debug/pprof/profile?seconds=30` | `top` 看累计占比；`top -cum` 看调用链上的「大户」 |
+| 内存只涨不降 | `go tool pprof http://127.0.0.1:9100/debug/pprof/heap` | 对比两次采样的 `inuse_space` 差值 |
+| 卡住 / 不返回 | `curl 'http://127.0.0.1:9100/debug/pprof/goroutine?debug=2'` | goroutine 数是否单调增长；**是否都卡在同一处** |
+| 偶发长尾延迟 | `go tool trace http://127.0.0.1:9100/debug/pprof/trace?seconds=5` | GC 停顿、调度阻塞、`Syscall` 阻塞 |
+| 块操作等待（锁、channel） | `go tool pprof http://127.0.0.1:9100/debug/pprof/block` | 谁在阻塞、阻塞多久（需先 `runtime.SetBlockProfileRate`） |
+| 互斥锁争抢 | `go tool pprof http://127.0.0.1:9100/debug/pprof/mutex` | 哪个锁最热 |
+
+### 第三步：读懂 `top` 的两个关键列
+
+```text [pprof top 输出示例]
+flat  flat%   sum%        cum   cum%
+0.42s 31.34% 31.34%      0.42s 31.34%  runtime.memmove
+0.30s 22.39% 53.73%      0.30s 22.39%  encoding/json.Marshal
+0.12s  8.96% 62.69%      0.95s 70.90%  shop/internal/logic.(*OrderLogic).List
+```
+
+| 列 | 含义 | 什么时候看它 |
+| --- | --- | --- |
+| `flat` | **本函数自身**消耗的时间 | 想知道「哪一行代码最贵」 |
+| `cum`（cumulative） | 本函数**及其所有子调用**消耗的时间 | 想知道「哪条调用链最贵」 |
+
+判据：**`flat` 高 → 改这个函数；`cum` 高但 `flat` 低 → 往下钻**（`list <函数名>` 或 `web` 看调用图）。
+
+::: tip 三个最有效的采集习惯
+1. **固定采样时长**（如 30 秒），且**采样期间要有真实流量**。没有流量的 profile 全是噪声。
+2. **至少采两次**再对比。单次采样只能说明「现在谁最贵」；两次差值才能区分「一直很贵的正常热点」与「一直在涨的泄漏」。
+3. **同时看 pprof 与指标**。pprof 回答「为什么慢」，指标回答「变慢了多少、什么时候开始」。只有 pprof 会陷入「优化了半天发现是容量不够」。
+:::
+
+### 一次完整的调优过程（从现象到改法）
+
+**现象**：列表接口 p99 从 40 ms 涨到 700 ms，CPU 只有 40%。
+
+1. `goroutine?debug=2` → goroutine 从 200 涨到 3000，且大量停在 `database/sql.(*DB).conn` → **在等连接**。
+2. `SHOW PROCESSLIST` → 大量 `Sending data`。**连接是被慢查询占住的，不是池子小**。
+3. `EXPLAIN` 那条 SQL → 联合索引的列顺序与查询条件不匹配，索引只用到了第一列。
+4. 改索引（按「等值列在前、范围列在后」排列）→ 查询从 600 ms 降到 3 ms。
+5. 再压测：p99 回到 25 ms，goroutine 数稳定在 200 左右。**连接池参数一个字没改。**
+
+::: danger 注意：三个最容易被误判的方向
+1. **「连接池不够」几乎总是慢查询的症状**，不是原因。先看 `PROCESSLIST` 与 `EXPLAIN`，再动 `MaxOpenConns`。
+2. **「内存泄漏」要先排除「正常缓存」**。只看 `inuse_space` 单次数值无意义，要看两次采样的**增量**；`alloc_space` 大但 `inuse` 稳定是正常的。
+3. **「加机器」不能解决单点慢**。一个 3 秒的慢查询，加 10 倍机器后它还是 3 秒，只是错误率下降了——而它仍在占着连接。
+:::
+

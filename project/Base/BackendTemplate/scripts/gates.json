@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "note": "门禁的唯一来源。本地、CI、审计三处都读这一份文件；任何一处手抄一份命令清单，漂移就只是时间问题。",
+  "gates": [
+    {
+      "id": "stack-select-check",
+      "name": "选择器漂移门禁",
+      "why": "有人改了 stack.json 或 pom 的 marker 区间而没重新生成，这一格必须红。",
+      "cmd": "{py} stack-select/stack-select.py --root . --check",
+      "owner": "研发",
+      "required": true,
+      "timeoutSec": 120,
+      "weight": 1,
+      "requiresFiles": ["pom.xml"],
+      "doc": true
+    },
+    {
+      "id": "stack-select-selftest",
+      "name": "选择器自测（57 项断言）",
+      "why": "断言的是「改坏一格会不会报红」，不是「生成后 --check 通过」这种必然成立的事。",
+      "cmd": "{py} stack-select/selftest.py",
+      "owner": "研发",
+      "required": true,
+      "timeoutSec": 900,
+      "weight": 6,
+      "doc": true
+    },
+    {
+      "id": "db-parity",
+      "name": "双方言结构一致性",
+      "why": "MySQL 8.4 与 PostgreSQL 17 两套 DDL 逐列比对，防两套脚本悄悄漂移。",
+      "cmd": "{py} db/parity_check.py",
+      "owner": "研发",
+      "required": true,
+      "timeoutSec": 120,
+      "weight": 1,
+      "doc": true
+    },
+    {
+      "id": "db-selftest",
+      "name": "双方言门禁自测（11 项断言）",
+      "why": "归一化比对本身也要被检验，否则「永远 OK」的门禁等于没有门禁。",
+      "cmd": "{py} db/selftest.py",
+      "owner": "研发",
+      "required": true,
+      "timeoutSec": 120,
+      "weight": 1,
+      "doc": true
+    },
+    {
+      "id": "release-tagplan",
+      "name": "标签计划生成与不变量校验",
+      "why": "INV1~INV6 机械校验「哪一层的标签可以出现在部署命令里」，不需要 Docker 与 registry 也能跑。",
+      "cmd": "{py} Release/tagplan.py --version 1.2.0 --sha <SHA40> --channel prod",
+      "owner": "发布负责人",
+      "required": true,
+      "timeoutSec": 120,
+      "weight": 1,
+      "doc": true
+    },
+    {
+      "id": "release-selftest",
+      "name": "标签计划自测（88 项断言）",
+      "why": "含 11 组全组合扫描；规则写错时先被自测抓住，而不是等到线上回滚失败。",
+      "cmd": "{py} Release/selftest.py",
+      "owner": "发布负责人",
+      "required": true,
+      "timeoutSec": 120,
+      "weight": 1,
+      "doc": true
+    },
+    {
+      "id": "acceptance-check",
+      "name": "上线验收 AUTO 项（12 项）",
+      "why": "交付物齐不齐由脚本判定，不靠勾选框；MANUAL 项只打印命令与期望，不假装通过。",
+      "cmd": "{py} Acceptance/acceptance_check.py",
+      "owner": "研发",
+      "required": true,
+      "timeoutSec": 180,
+      "weight": 2,
+      "doc": true
+    },
+    {
+      "id": "acceptance-cross",
+      "name": "跨交付物交叉断言",
+      "why": "CLI --check × 用例矩阵基线、回滚命令 × 标签不可变性，两处都用变异测试。",
+      "cmd": "{py} Acceptance/acceptance_check.py --cross",
+      "owner": "研发",
+      "required": true,
+      "timeoutSec": 300,
+      "weight": 4,
+      "doc": true
+    },
+    {
+      "id": "acceptance-selftest",
+      "name": "验收工具自测（71 项断言）",
+      "why": "含 10 处变异测试；校验器崩了比校验失败危险，所以崩溃路径也要断言。",
+      "cmd": "{py} Acceptance/selftest.py",
+      "owner": "研发",
+      "required": true,
+      "timeoutSec": 1200,
+      "weight": 8,
+      "doc": true
+    },
+    {
+      "id": "acceptance-strict-canary",
+      "name": "哨兵：--strict 在签名之前必须为红",
+      "why": "这一格变绿不是好消息，而是警报——说明签名表被填满了（或 MANUAL 项判定逻辑被改坏），必须有人重新拍板。",
+      "cmd": "{py} Acceptance/acceptance_check.py --strict",
+      "owner": "验收负责人",
+      "required": true,
+      "timeoutSec": 180,
+      "weight": 2,
+      "expectRc": 1,
+      "kind": "canary",
+      "doc": true
+    },
+    {
+      "id": "mvn-verify",
+      "name": "编译 + 测试 + 覆盖率 + 契约门禁",
+      "why": "唯一能回答「这次提交能不能用」的一格；其余门禁都是它的补充。",
+      "cmd": "mvn -B clean verify",
+      "owner": "研发",
+      "required": true,
+      "timeoutSec": 1800,
+      "weight": 10,
+      "requiresFiles": ["pom.xml"],
+      "requiresExec": ["mvn"],
+      "requiresEnv": ["JAVA_HOME"],
+      "doc": true
+    },
+    {
+      "id": "gates-selftest",
+      "name": "门禁运行器自测",
+      "why": "对运行器本身做变异测试：把一道门禁的期望退出码改坏、让一道门禁超时、塞一条假命令进文档——运行器都必须报红。运行器自己错了，上面十一条全是摆设。",
+      "cmd": "{py} scripts/selftest.py",
+      "owner": "研发",
+      "required": true,
+      "timeoutSec": 180,
+      "weight": 1,
+      "nestSafe": false,
+      "doc": true
+    }
+  ]
+}

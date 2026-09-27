@@ -397,6 +397,30 @@ export const Go = [
     ],
   },
 ];
+export const GoMicroservices = [
+  {
+    text: "Go 微服务",
+    link: "/docs/Backend/GoMicroservices/index.md",
+    items: [
+      { text: "Go 微服务概述与选型", link: "/docs/Backend/GoMicroservices/Overview/index.md" },
+      { text: "gRPC 与 Protobuf 工程化", link: "/docs/Backend/GoMicroservices/GRPC/index.md" },
+      { text: "服务治理：注册发现到可观测", link: "/docs/Backend/GoMicroservices/Governance/index.md" },
+      { text: "实战：订单服务", link: "/docs/Backend/GoMicroservices/Practice/index.md" },
+    ],
+  },
+];
+export const PythonWeb = [
+  {
+    text: "Python Web 框架",
+    link: "/docs/Backend/PythonWeb/index.md",
+    items: [
+      { text: "框架选型：FastAPI / Django / Flask", link: "/docs/Backend/PythonWeb/Overview/index.md" },
+      { text: "FastAPI 进阶：类型、异步与依赖注入", link: "/docs/Backend/PythonWeb/FastAPI/index.md" },
+      { text: "数据层：SQLAlchemy 2.0 与 Alembic", link: "/docs/Backend/PythonWeb/DataLayer/index.md" },
+      { text: "实战：可部署的 API 服务", link: "/docs/Backend/PythonWeb/Practice/index.md" },
+    ],
+  },
+];
 export const Python = [
   {
     text: "Python",

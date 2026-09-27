@@ -89,6 +89,39 @@ async def main():
 
 运行上面的 `gather` 示例，对比同步版本的总耗时：三个 1 秒的请求，同步约 3 秒，异步约 1 秒，就说明事件循环生效了。
 
+## 在 Web 框架里：哪些写法会阻塞事件循环
+
+事件循环的机制在上面已经讲清；这一节补上**它在真实 Web 服务里的三条边界**，因为「异步框架跑得比同步框架还慢」几乎都出在这三处。
+
+| 写法 | 后果 | 正确做法 |
+| --- | --- | --- |
+| `async def` 里用 `requests.get()` | **一个请求阻塞全部并发** | 换 `httpx.AsyncClient`，或用 `await run_in_threadpool(...)` 包一层 |
+| `async def` 里做 `bcrypt.hash()` | CPU 密集操作阻塞事件循环 | `await run_in_threadpool(pwd_context.hash, pwd)` |
+| 异步视图 + 同步 DB 驱动 | 等价于在协程里做同步 IO | 换 `asyncmy` / `asyncpg` + `AsyncSession` |
+| `async def` 里 `time.sleep()` / 读大文件 | 同上 | 用 `asyncio.sleep()`；文件 IO 走线程池或 `aiofiles` |
+| 忘记 `await` 一个协程 | 协程从未执行，逻辑静默失效 | 打开 lint 规则（`ruff` 的 `RUF006` 等） |
+
+### 一条 30 秒的自检方法
+
+压测期间另开一个终端：
+
+```shell
+# 若这个接口也要等好几秒才返回，说明事件循环已经被占住了
+time curl -s -o /dev/null http://127.0.0.1:8000/health
+```
+
+**健康检查是所有接口里最轻的一个。它慢，就一定是事件循环的问题，而不是业务的问题。**
+
+::: danger 注意：`def` 与 `async def` 的取舍不是「谁更高级」
+在 FastAPI 里：
+- **`def` 视图会被自动放进线程池**（默认 40 个线程），因此适合**纯计算与短同步操作**；
+- **`async def` 视图直接在事件循环里跑**，因此适合**网络 IO**，且**绝不能有阻塞调用**。
+
+两者的关系是「谁在哪个池子里等」，不是「新旧写法」。把纯计算的函数改成 `async def`，结果只会是「少了一个线程池的隔离，多了一次无意义的调度」。
+
+框架侧的具体写法（依赖注入、`run_in_threadpool`、lifespan 里的连接池）见 [FastAPI 进阶](../../PythonWeb/FastAPI/index.md) 与 [数据层：SQLAlchemy 2.0 与 Alembic](../../PythonWeb/DataLayer/index.md)。
+:::
+
 ## 相关专题
 
 - [消息队列专题](../../MessageQueue/index.md)：异步任务的跨进程解耦——用 Kafka/RabbitMQ 替代进程内 `asyncio.Queue` 实现可靠分发

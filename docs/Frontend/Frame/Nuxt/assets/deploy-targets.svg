@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 530" width="760" height="530" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="530" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Nuxt 的部署形态、缓存策略与上线检查</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">同一份代码，静态托管与 Node 服务的运维成本差一个数量级</text>
+  <text x="380" y="76" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">产物是「静态文件」还是「Node 服务」，由渲染模式决定</text>
+  <rect x="30" y="92" width="132" height="100" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="96" y="110.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">纯静态托管</text>
+  <text x="96" y="127" text-anchor="middle" font-size="7" fill="#047857">SSG / SPA</text>
+  <text x="96" y="143.1" text-anchor="middle" font-size="7" fill="#047857">.output/public</text>
+  <text x="96" y="159.2" text-anchor="middle" font-size="7" fill="#047857">上传对象存储 + CDN</text>
+  <text x="96" y="175.3" text-anchor="middle" font-size="7" fill="#047857">运维成本：零</text>
+  <rect x="172" y="92" width="132" height="100" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="238" y="110.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">Node 服务</text>
+  <text x="238" y="127" text-anchor="middle" font-size="7" fill="#6D28D9">SSR / ISR / 混合</text>
+  <text x="238" y="143.1" text-anchor="middle" font-size="7" fill="#6D28D9">.output/server/index.mjs</text>
+  <text x="238" y="159.2" text-anchor="middle" font-size="7" fill="#6D28D9">依赖已内联，无需 npm install</text>
+  <text x="238" y="175.3" text-anchor="middle" font-size="7" fill="#6D28D9">镜像 150MB 以内</text>
+  <rect x="314" y="92" width="132" height="100" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="380" y="110.2" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">容器 + K8s</text>
+  <text x="380" y="127" text-anchor="middle" font-size="7" fill="#4338CA">任意模式</text>
+  <text x="380" y="143.1" text-anchor="middle" font-size="7" fill="#4338CA">与其他服务一致的交付流程</text>
+  <text x="380" y="159.2" text-anchor="middle" font-size="7" fill="#4338CA">preStop 覆盖端点传播</text>
+  <text x="380" y="175.3" text-anchor="middle" font-size="7" fill="#4338CA">最可控</text>
+  <rect x="456" y="92" width="132" height="100" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="522" y="110.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">平台 preset</text>
+  <text x="522" y="127" text-anchor="middle" font-size="7" fill="#0F766E">Vercel / Netlify</text>
+  <text x="522" y="143.1" text-anchor="middle" font-size="7" fill="#0F766E">Cloudflare / Deno</text>
+  <text x="522" y="159.2" text-anchor="middle" font-size="7" fill="#0F766E">平台自动识别 preset</text>
+  <text x="522" y="175.3" text-anchor="middle" font-size="7" fill="#0F766E">运维成本：低</text>
+  <rect x="598" y="92" width="132" height="100" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="664" y="110.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">边缘函数</text>
+  <text x="664" y="127" text-anchor="middle" font-size="7" fill="#B45309">轻量 SSR</text>
+  <text x="664" y="143.1" text-anchor="middle" font-size="7" fill="#B45309">无 Node API 可用</text>
+  <text x="664" y="159.2" text-anchor="middle" font-size="7" fill="#B45309">冷启动极小</text>
+  <text x="664" y="175.3" text-anchor="middle" font-size="7" fill="#B45309">注意长连接不支持</text>
+  <line x1="30" y1="210" x2="730" y2="210" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="60" y="236" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">缓存策略：SSR 的成本全靠这一层压下来</text>
+  <rect x="30" y="248" width="220" height="26" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="140" y="265" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">资源</text>
+  <rect x="250" y="248" width="240" height="26" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="370" y="265" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">策略</text>
+  <rect x="490" y="248" width="270" height="26" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="625" y="265" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">理由</text>
+  <rect x="30" y="274" width="220" height="26" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="140" y="290" text-anchor="middle" font-size="7.5" fill="#1E293B" font-weight="bold">/_nuxt/**（带 hash）</text>
+  <rect x="250" y="274" width="240" height="26" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="370" y="290" text-anchor="middle" font-size="7.5" fill="#334155">max-age=31536000, immutable</text>
+  <rect x="490" y="274" width="270" height="26" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="625" y="290" text-anchor="middle" font-size="7.5" fill="#334155">内容变了 URL 就变，可永久缓存</text>
+  <rect x="30" y="300" width="220" height="26" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="140" y="316" text-anchor="middle" font-size="7.5" fill="#1E293B" font-weight="bold">public/ 静态文件</text>
+  <rect x="250" y="300" width="240" height="26" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="370" y="316" text-anchor="middle" font-size="7.5" fill="#334155">max-age=3600 + 协商缓存</text>
+  <rect x="490" y="300" width="270" height="26" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="625" y="316" text-anchor="middle" font-size="7.5" fill="#334155">无 hash，需定期回源校验</text>
+  <rect x="30" y="326" width="220" height="26" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="140" y="342" text-anchor="middle" font-size="7.5" fill="#1E293B" font-weight="bold">SSR 页面 HTML</text>
+  <rect x="250" y="326" width="240" height="26" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="370" y="342" text-anchor="middle" font-size="7.5" fill="#334155">swr 60~600 秒</text>
+  <rect x="490" y="326" width="270" height="26" rx="0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="625" y="342" text-anchor="middle" font-size="7.5" fill="#334155">SSR 成本的关键在这一行</text>
+  <rect x="30" y="352" width="220" height="26" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="140" y="368" text-anchor="middle" font-size="7.5" fill="#1E293B" font-weight="bold">用户相关页面</text>
+  <rect x="250" y="352" width="240" height="26" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="370" y="368" text-anchor="middle" font-size="7.5" fill="#334155">private, no-store（或 ssr:false）</text>
+  <rect x="490" y="352" width="270" height="26" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="625" y="368" text-anchor="middle" font-size="7.5" fill="#334155">缓存会串用户数据</text>
+  <text x="60" y="386" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">两个必做的上线检查</text>
+  <rect x="30" y="398" width="350" height="96" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="205" y="416.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">① 用户数据不串</text>
+  <text x="205" y="433" text-anchor="middle" font-size="7.5" fill="#B91C1C">用 A / B 两个账号访问同一路径</text>
+  <text x="205" y="450.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">确认看不到对方的数据</text>
+  <text x="205" y="467.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">缓存头写错会把 A 的 HTML 发给 B</text>
+  <text x="205" y="484.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">ruleRules 里个性化路由绝不能配 swr</text>
+  <rect x="390" y="398" width="340" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="560" y="416.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 跑产物而不只是 dev</text>
+  <text x="560" y="433" text-anchor="middle" font-size="7.5" fill="#1D4ED8">node .output/server/index.mjs</text>
+  <text x="560" y="450.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">dev 与产物是两条代码路径</text>
+  <text x="560" y="467.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">环境变量、自动导入、routeRules 差异</text>
+  <text x="560" y="484.75" text-anchor="middle" font-size="7.5" fill="#1D4ED8">90% 的「dev 能跑线上不行」出在这</text>
+  <text x="380" y="512" text-anchor="middle" font-size="9.5" fill="#B91C1C">首屏 JS 体积是最容易失控的指标：hydration 完成前页面点不动，比白屏更让人困惑</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

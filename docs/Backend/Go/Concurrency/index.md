@@ -632,3 +632,77 @@ go run -race fetchall.go
 - [pkg.go.dev：sync](https://pkg.go.dev/sync)
 - [pkg.go.dev：golang.org/x/sync/errgroup](https://pkg.go.dev/golang.org/x/sync/errgroup)
 - [The Go Memory Model](https://go.dev/ref/mem)
+
+## GMP 调度：goroutine 到底跑在哪儿
+
+前面几节讲的都是「怎么用」goroutine，这一节补上「它被谁调度」。理解 GMP 不是为了背概念，而是为了回答三个真实问题：**为什么 `GOMAXPROCS` 默认等于 CPU 核数、为什么阻塞系统调用不会卡住整个程序、为什么 goroutine 数不等于并发度**。
+
+| 角色 | 全称 | 职责 | 数量 |
+| --- | --- | --- | --- |
+| **G** | Goroutine | 一个待执行的函数与它的栈 | 成千上万，按需创建 |
+| **M** | Machine | 操作系统线程，真正被 CPU 执行的实体 | 按需创建，默认上限 10000 |
+| **P** | Processor | 调度上下文：持有本地运行队列（LRQ）与内存缓存 | **`GOMAXPROCS`，默认 = CPU 核数** |
+
+一条核心不变式：**只有持有 P 的 M 才能执行 Go 代码**。所以「能并行执行的 goroutine 数」上限就是 P 的数量——这就是 `GOMAXPROCS` 的含义。
+
+### 四种调度场景
+
+| 场景 | 触发条件 | 调度行为 |
+| --- | --- | --- |
+| **正常轮转** | goroutine 调用了可被抢占的调用（`channel` 操作、`time.Sleep`、函数调用栈检查点） | 当前 G 放回队列，P 取下一个 G |
+| **本地队列空了** | P 的 LRQ 为空 | 先去全局队列（GRQ）取一批，再不行就**从其他 P 偷一半**（work stealing） |
+| **阻塞系统调用** | G 执行了阻塞的 syscall | M 与 P 解绑，P 交给其他空闲 M 继续跑（**这就是阻塞 IO 不会卡住整个程序的原因**） |
+| **栈增长 / 抢占** | 栈不够或运行时间过长（Go 1.14+ 的异步抢占） | 重新分配更大的栈并复制；长循环也会被抢占 |
+
+::: tip `GOMAXPROCS` 怎么设
+默认值已经正确（等于 CPU 核数），**绝大多数情况下不要改**。两种例外：
+- **容器里 CPU 被限制**（`--cpus=2`）但 Go 读到的是宿主机核数：Go 1.25 起会尊重 cgroup 限制，旧版本需用 `automaxprocs` 或显式设置 `GOMAXPROCS=2`。
+- **大量阻塞系统调用且不释放 P**（如某些 cgo 调用）：可适当调大，但要先确认是这个问题。
+
+**调大 `GOMAXPROCS` 不会让计算变快**，只会增加上下文切换开销。
+:::
+
+:::
+
+## 内存模型：`happens-before` 是唯一的正确性依据
+
+并发程序里最容易写错的一类代码是「靠侥幸工作」的代码：平时能跑，压测或换机器就出错。判断标准只有一条——**有没有建立 `happens-before` 关系**。
+
+### 五条必须记住的 happens-before 规则
+
+| 规则 | 说明 |
+| --- | --- |
+| **同 goroutine 内** | 按程序顺序（前面的语句先于后面的语句） |
+| **`channel` 发送 → 对应接收** | 发送操作 happens-before 接收操作完成 |
+| **`channel` 关闭 → 收到零值** | `close(ch)` happens-before 从 `ch` 读到零值（用于广播退出信号） |
+| **`sync.Mutex` / `RWMutex`** | `Unlock` happens-before 后续的 `Lock` |
+| **`sync.Once` / `WaitGroup`** | `Do` 返回 happens-before 任意 `Do` 调用返回；`Wait` 返回 happens-before 所有 `Done` 之后 |
+
+```go
+// ❌ 数据竞争：读完 done 之后并不能保证 data 已写入（没有任何同步关系）
+var data string
+var done bool
+
+func producer() { data = "x"; done = true }
+func consumer() {
+    for !done { }
+    fmt.Println(data)   // 可能是空串；用 -race 能稳定检出
+}
+
+// ✅ 用 channel 建立 happens-before
+func producer2(ch chan<- string) { ch <- "x" }
+func consumer2(ch <-chan string) { fmt.Println(<-ch) }   // 一定能读到 "x"
+```
+
+::: danger 注意：三个最常见的「数据竞争」写法
+1. **用 `bool` 变量当完成信号**：如上例。`bool` 无同步语义，编译器还可能把它优化进寄存器导致死循环。用 `chan struct{}` 或 `sync.WaitGroup`。
+2. **`map` 并发读写**：Go 的 `map` 明确不支持并发写，运行时会直接 `fatal error: concurrent map writes`（**无法 recover**）。用 `sync.Map` 或加锁。
+3. **在循环里把 `&v` 传给 goroutine**：Go 1.22 起循环变量每轮独立，但**闭包捕获的仍然是变量本身**；要传值就显式 `v := v` 或作为参数传入。
+
+**验证手段**：`go test -race ./...`。`-race` 会让程序变慢 5~20 倍、内存涨 5~10 倍，所以只在测试环境用；但**竞态检测的价值远高于它的成本**——它能给出冲突双方的完整调用栈。
+:::
+
+::: warning 说明：`-race` 只能发现「被执行到」的竞争
+`-race` 是基于实际执行的动态检测。没跑到那条分支、没并发到那一刻，就不会报。所以「`-race` 通过」不等于「没有竞争」，只等于「没测出竞争」。**高并发路径要有针对性的并发测试**（多 goroutine 同时读写同一份数据，跑 `-count=100`）。
+:::
+

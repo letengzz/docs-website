@@ -56,6 +56,7 @@ export const BaseProject = [
           { text: "镜像推送与发布策略", link: "/project/Base/BackendTemplate/Release/index.md" },
           { text: "主库可插拔：MySQL / PostgreSQL 双方言", link: "/project/Base/BackendTemplate/Database/index.md" },
           { text: "上线验收与监控接入", link: "/project/Base/BackendTemplate/Acceptance/index.md" },
+          { text: "统一门禁：清单收敛为单一来源", link: "/project/Base/BackendTemplate/Gates/index.md" },
           { text: "进展记录", link: "/project/Base/BackendTemplate/Progress/index.md" },
         ],
       },
@@ -70,6 +71,18 @@ export const CompleteProject = [
     link: "/project/Complete/index.md",
     items: [
       { text: "完整项目总览", link: "/project/Complete/index.md" },
+      {
+        text: "全栈博客平台",
+        link: "/project/Complete/BlogPlatform/index.md",
+        collapsed: true,
+        items: [
+          { text: "项目总览", link: "/project/Complete/BlogPlatform/index.md" },
+          { text: "需求拆分与验收条件", link: "/project/Complete/BlogPlatform/Requirements/index.md" },
+          { text: "架构设计与技术选型", link: "/project/Complete/BlogPlatform/Architecture/index.md" },
+          { text: "数据库设计", link: "/project/Complete/BlogPlatform/DatabaseDesign/index.md" },
+          { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
+        ],
+      },
       {
         text: "全栈项目实战",
         link: "/project/Complete/FullStackProject/index.md",

@@ -30,6 +30,33 @@
 - [Docker 与 CI/CD 集成](CIIntegration/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
 
+## 两种典型应用的镜像形态：Go 与 Python
+
+镜像体积与构建速度的差异，主要来自**运行时依赖**。同一套多阶段构建思路，对编译型语言与解释型语言的效果差别很大。
+
+| | Go（编译型） | Python（解释型） |
+| --- | --- | --- |
+| 运行阶段需要什么 | **静态二进制 + 证书** | 解释器 + 依赖包 + 部分编译工具链（安装期） |
+| 基础镜像 | `scratch` 或 `gcr.io/distroless/static` | `python:*-slim` |
+| 典型体积 | **5~20 MB** | 100~250 MB |
+| 依赖内联 | 编译进二进制 | 若用 Nitro（Nuxt），服务端依赖也能内联 |
+| 冷启动 | 毫秒级 | 数百毫秒~秒级 |
+
+::: danger 注意：三个跨语言都必须做到的点
+1. **非 root 运行**（`USER`）：容器以 root 跑时，一旦有文件写入漏洞，逃逸影响面完全不同。
+2. **`PYTHONUNBUFFERED=1`（Python）/ 不缓冲 stdout**：不设时容器日志会被缓冲，**进程被 kill 时缓冲区里的日志全部丢失**——这是「容器里看不到日志」的第一原因。
+3. **依赖层与代码层分开 `COPY`**：否则改一行业务代码就要重装全部依赖，构建时间从 20 秒变成 5 分钟。
+
+另加一条常被忽略的：**不要 `COPY . .`**，用 `.dockerignore` 排除 `.env`、`.git`、测试数据——否则凭据会被打进镜像层，且**即使后续删除也在历史层里可恢复**。
+:::
+
+::: tip 两个可对照的完整 Dockerfile
+- [Go 微服务实战](../../Backend/GoMicroservices/Practice/index.md)：从 `docker-compose` 起依赖，到静态二进制镜像
+- [Python Web 实战](../../Backend/PythonWeb/Practice/index.md)：多阶段构建、`HEALTHCHECK`、Gunicorn + uvicorn worker 的启动命令
+
+两者的共同点是**构建阶段与运行阶段严格分离**，运行镜像里只留运行时需要的东西。
+:::
+
 ## 相关专题
 
 - [Ansible 自动化运维](../Ansible/index.md)：批量安装 Docker 引擎、下发 compose 文件与容器状态验收

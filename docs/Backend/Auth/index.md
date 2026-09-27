@@ -93,6 +93,33 @@ curl -i -H "Authorization: Bearer $TOKEN_A" http://localhost:8080/api/orders/100
 3. 执行一次「注销」，确认服务端会话或刷新令牌同时失效（而不是只清了前端存储）。
 4. 记录一次完整登录链路的耗时与令牌有效期，作为后续安全与体验调优的基线。
 
+## 落地对照：Go 与 Python 两侧的写法差异
+
+认证与授权的**协议**是通用的（本专题已讲透 JWT、OAuth2、Session、SSO）。落地时两套技术栈的差异主要在**「把校验代码放在哪里」**：Go 侧靠拦截器统一横切，Python 侧靠依赖注入统一横切。
+
+| 环节 | Go（gRPC / net/http） | Python（FastAPI） |
+| --- | --- | --- |
+| 取 Token | `metadata.FromIncomingContext(ctx)` / `r.Header.Get("Authorization")` | `Header()` 参数 + `Annotated[..., Depends(...)]` |
+| **统一校验的位置** | **拦截器（interceptor）** | **依赖（`Depends`）** |
+| 把身份传给业务 | 写进 `ctx`（`context.WithValue`） | 依赖返回值直接作为参数注入 |
+| 鉴权失败怎么表达 | `status.Error(codes.Unauthenticated, ...)` | `HTTPException(401, ...)` |
+| 授权（权限点） | 拦截器里按 `FullMethod` 查权限表 | 依赖里按路由/权限点判断，或再包一层依赖 |
+| 密钥从哪来 | 配置文件 / 环境变量（`conf.MustLoad`） | `runtimeConfig` 私有段 / `pydantic-settings` |
+
+::: tip 两侧都适用的三条原则
+1. **校验只写一处**：Go 用拦截器、Python 用依赖。散落在每个 handler 里的鉴权迟早会漏掉一个。
+2. **Token 不落日志、不进 URL**：URL 会进浏览器历史、Referer、监控系统与网关访问日志。要么放 `Authorization` 头，要么放 `httpOnly` Cookie。
+3. **内部错误不区分「用户不存在」与「密码错误」**：统一返回「邮箱或密码错误」，避免账号枚举。
+:::
+
+::: danger 注意：两个语言各自容易踩的坑
+**Go 侧：`metadata` 的 key 会被强制转小写。** 写 `X-Trace-Id` 后用小写读取才拿得到；大小写不一致会表现为「有时候能取到有时候取不到」。建议只在**一处**定义常量。
+
+**Python 侧：`async def` 依赖里做同步的密码哈希会阻塞事件循环。** `bcrypt` / `argon2` 是 CPU 密集操作，必须 `await run_in_threadpool(...)`，或在 `def` 依赖里做。这一点会直接表现为「并发上不去、所有请求一起变慢」。
+
+实现细节见 [Go 服务治理](../../Backend/GoMicroservices/Governance/index.md)（拦截器顺序：`recover → trace → timeout → auth`）与 [FastAPI 进阶](../../Backend/PythonWeb/FastAPI/index.md)（`get_db` / `current_user` 依赖与 `Annotated` 写法）。
+:::
+
 ## 相关专题
 
 - [Spring Security 专题](../Java/Frame/SpringSecurity/index.md)：Java 生态的认证、授权与 OAuth2 实现

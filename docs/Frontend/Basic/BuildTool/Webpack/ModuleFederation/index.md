@@ -182,6 +182,33 @@ shared: {
 
 Vite 生态通过 `@originjs/vite-plugin-federation` 与 `@module-federation/enhanced` 支持 MF，但实现路径与 Webpack 不同（Vite 的开发期是 No-Bundle，需要额外协调）。跨构建工具共享时，务必对齐 **shared 依赖的版本与单例策略**，否则仍会出现多实例。
 
+## 与运行时集成（qiankun）的分工
+
+Module Federation 常被当作「微前端的实现」，但它只是**构建期集成**的一种手段。与运行时集成（qiankun / single-spa）的分工需要先认清，否则会在「该不该有沙箱」「独立部署怎么回滚」这类问题上反复摇摆。
+
+| 维度 | 构建期集成（本页的 Module Federation） | 运行时集成（qiankun） |
+| --- | --- | --- |
+| 远程内容的形态 | **模块**（被 `import` 的代码） | **应用**（有生命周期、有容器） |
+| 独立路由 / URL | 通常没有（作为宿主的子路由） | **有**，可独立访问、可分享链接 |
+| 隔离能力 | **无**（共享运行时，全局变量直接互通） | 有沙箱（JS + 样式） |
+| 依赖去重 | **`shared` 按 semver 自动去重，最优** | 需手动 external + 挂全局 |
+| 版本冲突 | **可编译期检测**（`requiredVersion`） | 可能同时加载两份框架，运行时才发现 |
+| 首屏 | 构建期可知，可预加载优化 | 运行时才知道要加载什么 |
+| 技术栈异构 | 支持，但共享依赖会很别扭 | 支持（各自带运行时） |
+
+::: tip 一句话分工
+**「需要独立部署的应用，且有隔离需求」→ qiankun；「同一产品内分包解耦，追求体积最优」→ Module Federation。**
+
+实践中最稳的组合是**两者互补**：用 Module Federation 共享基础库与组件库（Vue、UI 库、工具函数），用 qiankun 做应用级集成。代价是同时引入两套复杂度，只在确有必要时使用。
+
+完整的架构取舍（拆分维度、边界判据、通信协议、独立部署与回滚）见 [微前端](../../../../MicroFrontend/index.md)：[拆分策略](../../../../MicroFrontend/Overview/index.md)、[运行时集成与沙箱](../../../../MicroFrontend/Runtime/index.md)、[工程化与独立部署](../../../../MicroFrontend/Practice/index.md)。
+:::
+
+::: danger 注意：把 Module Federation 当微前端用时最容易忽略的两件事
+1. **远程模块没有沙箱**：它和宿主共享同一个 `window`、同一份 Vue 实例、同一个全局样式作用域。远程模块里写一条 `body { font-size: 14px }` 会直接改掉宿主的样式。
+2. **远程模块的版本兼容靠 `requiredVersion` 兜底，不靠约定**。声明 `{ vue: { requiredVersion: '^3.5.0', singleton: true } }`，让不满足的版本在**构建期**就报错——比运行时出现「响应式行为不一致」好排查得多。
+:::
+
 ## 参考资料
 
 - [Webpack 官方 Module Federation](https://webpack.js.org/concepts/module-federation/)

@@ -441,3 +441,92 @@ go run lru.go
 - [官方泛型教程](https://go.dev/doc/tutorial/generics)
 - [When To Use Generics（官方博客）](https://go.dev/blog/when-generics)
 - [pkg.go.dev：cmp 包](https://pkg.go.dev/cmp)
+
+## 约束设计：近似类型集与类型推断的边界
+
+前面讲了类型参数与基本约束，这一节补上**真正写出可用泛型库所需的三个概念**：近似类型集 `~T`、`comparable`、以及类型推断在什么情况下会失败。
+
+### 近似类型集 `~T`：把「底层类型」纳入约束
+
+```go
+// 约束：底层类型是 int 的任意命名类型
+type SignedInt interface {
+    ~int | ~int8 | ~int16 | ~int32 | ~int64
+}
+
+// 若写成下面这样，自定义类型 MyInt 就不满足约束
+type UnsignedIntBad interface {
+    int   // 只接受 int 本身
+}
+
+type MyInt int
+
+func Sum[T SignedInt](xs []T) T {
+    var s T
+    for _, x := range xs { s += x }
+    return s
+}
+
+Sum([]MyInt{1, 2, 3})   // ✅ 满足 ~int
+// Sum([]MyInt{...}) 用 UnsignedIntBad 会编译失败：MyInt does not satisfy UnsignedIntBad
+```
+
+| 写法 | 含义 | 何时用 |
+| --- | --- | --- |
+| `int` | 只接受 `int` 本身 | 极少——几乎没有理由拒绝命名类型 |
+| `~int` | 底层类型为 `int` 的所有类型 | **绝大多数情况**（`MyInt`、`MyDuration` 都能用） |
+| `interface{ ~int \| ~string }` | 并集 | 需要同时支持多种底层类型 |
+| `cmp.Ordered` | 标准库的「可比较大小」约束（Go 1.21+） | 需要 `<` `>` 运算时，**优先用它** |
+
+::: tip 直接可用的标准库约束（不要自己重复定义）
+| 需求 | 用哪个 |
+| --- | --- |
+| 可比较大小时 | `cmp.Ordered` |
+| 只需相等比较 | `comparable` |
+| 需要 `+` | 自定义 `~int \| ~float64 \| ~string` 之类的并集 |
+:::
+
+### `comparable`：能被 `==` 使用的类型
+
+```go
+// 用 comparable 做泛型集合的键
+type Set[T comparable] map[T]struct{}
+
+func (s Set[T]) Add(v T)  { s[v] = struct{}{} }
+func (s Set[T]) Has(v T) bool { _, ok := s[v]; return ok }
+```
+
+`comparable` 是一个**编译器内置的特殊约束**：它接受所有可比较类型（数字、字符串、指针、channel、以及只含可比较字段的结构体与数组），**不接受** `slice`、`map`、`func`。
+
+::: danger 注意：`comparable` 不等于「任意类型」
+把 `T comparable` 换成 `T any` 后，`s[v]`、`v == v` 这类操作会编译失败。反过来，用 `T comparable` 时传入 `[]int` 会编译失败。**选择约束的原则是「够用即可」**——约束越松，能做的事越少；约束越紧，能接受的类型越少。两者是同一个取舍的两面。
+:::
+
+### 类型推断会失败的四种情况
+
+| 情况 | 例子 | 修法 |
+| --- | --- | --- |
+| **类型参数只出现在返回值里** | `func New[T any]() *T` → `New()` 推不出来 | 显式写 `New[int]()` |
+| **参数类型不同，无法统一** | `func Max[T cmp.Ordered](a, b T) T`，调 `Max(1, 2.0)` | 统一字面量类型：`Max(1.0, 2.0)` 或显式 `Max[float64](1, 2.0)` |
+| **约束是接口，实参是具体类型** | 传给 `func F[T interface{ M() }](t T)` 的值没有方法集 | 检查实参是否满足约束 |
+| **多级泛型嵌套** | `Container[Element[T]]` 这类嵌套推断 | 显式指定最外层类型参数 |
+
+::: warning 说明：Go 的泛型比 C++ 模板「笨」是刻意的
+Go 泛型不做「按需实例化 + 隐式转换」，因此：
+- **没有部分特化、没有模板元编程**；
+- **不支持在类型参数上调用未声明的方法**（必须先写进约束）；
+- **不支持运算符重载**。
+
+换来的是**可预测的编译时间与清晰的错误信息**。所以 Go 里泛型的定位是「安全的容器与算法复用」，不是「代码生成框架」——这一点在选型时要认清，否则会把大量时间花在跟类型推断较劲上。
+:::
+
+### 什么时候不该用泛型
+
+| 该用泛型 | 不该用泛型 |
+| --- | --- |
+| 容器（`Set` / `Stack` / `Cache`） | 只有一两个具体类型时（直接写两个函数更清楚） |
+| 算法（`Map` / `Filter` / `Reduce`） | 需要在不同类型上有**不同行为**时（用接口 + 方法） |
+| 需要类型安全且避免 `interface{}` + 断言 | 需要运行时类型判断时（用 `type switch`） |
+
+**经验法则：如果你需要写一长串约束才能让它编译通过，多半是接口更合适。**
+

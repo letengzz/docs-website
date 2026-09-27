@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 664" width="760" height="664" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="664" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">微前端的五种通信通道与两条纪律</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">能单向就不要双向，能走 URL 就不要走全局状态</text>
+  <text x="380" y="76" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">五种通道，选择顺序：props → URL → 事件 → 全局状态</text>
+  <rect x="30" y="92" width="150" height="78" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="105" y="110.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">props</text>
+  <text x="255" y="135" text-anchor="middle" font-size="8.5" fill="#1D4ED8" font-weight="bold">主 → 子，单向</text>
+  <rect x="330" y="92" width="400" height="78" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="530" y="110" text-anchor="middle" font-size="7.5" fill="#1D4ED8">注入配置与能力（回调）</text>
+  <text x="530" y="127.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">只传只读快照</text>
+  <text x="530" y="144.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">耦合最低，可调试</text>
+  <rect x="30" y="174" width="150" height="78" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="105" y="192.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">URL（query）</text>
+  <text x="255" y="217" text-anchor="middle" font-size="8.5" fill="#047857" font-weight="bold">双向，天然</text>
+  <rect x="330" y="174" width="400" height="78" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="530" y="192" text-anchor="middle" font-size="7.5" fill="#047857">筛选、实体 ID、来源</text>
+  <text x="530" y="209.25" text-anchor="middle" font-size="7.5" fill="#047857">刷新/分享/回退天然可用</text>
+  <text x="530" y="226.5" text-anchor="middle" font-size="7.5" fill="#047857">不放敏感信息</text>
+  <rect x="30" y="256" width="150" height="78" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="105" y="274.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">事件</text>
+  <text x="255" y="299" text-anchor="middle" font-size="8.5" fill="#6D28D9" font-weight="bold">子 → 主，广播</text>
+  <rect x="330" y="256" width="400" height="78" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="530" y="274" text-anchor="middle" font-size="7.5" fill="#6D28D9">通知类（下单成功）</text>
+  <text x="530" y="291.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">不保证有接收方</text>
+  <text x="530" y="308.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">不是 RPC</text>
+  <rect x="30" y="338" width="150" height="78" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="105" y="356.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">全局状态</text>
+  <text x="255" y="381" text-anchor="middle" font-size="8.5" fill="#B45309" font-weight="bold">双向</text>
+  <rect x="330" y="338" width="400" height="78" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="530" y="356" text-anchor="middle" font-size="7.5" fill="#B45309">只放全局低频值</text>
+  <text x="530" y="373.25" text-anchor="middle" font-size="7.5" fill="#B45309">只读快照 + 事件通知</text>
+  <text x="530" y="390.5" text-anchor="middle" font-size="7.5" fill="#B45309">写入者唯一</text>
+  <rect x="30" y="420" width="150" height="78" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="105" y="438.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">CustomEvent / postMessage</text>
+  <text x="255" y="463" text-anchor="middle" font-size="8.5" fill="#334155" font-weight="bold">广播 / 跨窗口</text>
+  <rect x="330" y="420" width="400" height="78" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="530" y="438" text-anchor="middle" font-size="7.5" fill="#334155">iframe 场景</text>
+  <text x="530" y="455.25" text-anchor="middle" font-size="7.5" fill="#334155">类型安全最弱</text>
+  <text x="530" y="472.5" text-anchor="middle" font-size="7.5" fill="#334155">必须做来源校验</text>
+  <line x1="30" y1="516" x2="730" y2="516" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="60" y="542" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">两条纪律，违反哪一条都会让「独立发布」失效</text>
+  <rect x="30" y="554" width="350" height="92" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="205" y="572.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">① 数据属主唯一</text>
+  <text x="205" y="589" text-anchor="middle" font-size="7.5" fill="#B91C1C">跨应用只交换事件与只读数据</text>
+  <text x="205" y="606.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">共享可变 store → 改坏了不知道是谁改的</text>
+  <text x="205" y="623.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">A 改结构 B 必须跟着改 → 独立发布失效</text>
+  <rect x="390" y="554" width="340" height="92" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="560" y="572.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">② 监听必须注销</text>
+  <text x="560" y="589" text-anchor="middle" font-size="7.5" fill="#B91C1C">onGlobalStateChange 返回注销函数</text>
+  <text x="560" y="606.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">不注销 → 回调指数级重复执行</text>
+  <text x="560" y="623.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">切换 5 次后一次状态变化触发 5 次回调</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
