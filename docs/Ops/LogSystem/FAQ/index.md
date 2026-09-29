@@ -20,7 +20,7 @@
     否 → 继续
 
 日志量大（>500GB/天）且团队熟悉 SQL / 已有 ClickHouse？
-    是 → ClickHouse / VictoriaLogs
+    是 → ClickHouse（见 [ClickHouse 专题](../../../DB/ClickHouse/index.md)）/ VictoriaLogs
     否 → Loki 或云日志服务
 ```
 

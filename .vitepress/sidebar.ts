@@ -4,7 +4,7 @@ import { Auth, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, Java, Mes
 import { AI_Agent, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontMicroFrontend, FrontWebAssembly, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { Ansible, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
-import { DBOverview, DataModeling, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
+import { ClickHouse, DBOverview, DataModeling, Middleware, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
 import { APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
@@ -80,7 +80,7 @@ export const sidebar = {
     {
       text: "数据库",
       collapsed: true,
-      items: [...DBOverview, ...Relational, ...NoRelational, ...DataModeling, ...TimeSeries],
+      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...ClickHouse, ...TimeSeries],
     },
   ],
   "/docs/Ops": [
@@ -157,6 +157,8 @@ export const sidebar = {
   "/docs/DB/NoRelational": NoRelational,
   "/docs/DB/DataModeling": DataModeling,
   "/docs/DB/TimeSeries": TimeSeries,
+  "/docs/DB/ClickHouse": ClickHouse,
+  "/docs/DB/Middleware": Middleware,
   "/docs/Ops/VM": VM,
   "/docs/Ops/Linux": Linux,
   "/docs/Ops/Ansible": Ansible,

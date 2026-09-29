@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">行式 vs 列式：为什么聚合查询快了一个数量级</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">行式按行放数据，取一列要读整行；列式按列放数据，取一列只读那一列</text>
+  <text x="60" y="82" text-anchor="start" font-size="11" fill="#9A3412" font-weight="bold">行式存储（MySQL / PostgreSQL）</text>
+  <rect x="30" y="94" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="76" y="109" text-anchor="middle" font-size="8.5" fill="#9A3412">1</text>
+  <rect x="126" y="94" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="172" y="109" text-anchor="middle" font-size="8.5" fill="#9A3412">张三</text>
+  <rect x="222" y="94" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="268" y="109" text-anchor="middle" font-size="8.5" fill="#9A3412">28</text>
+  <rect x="318" y="94" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="364" y="109" text-anchor="middle" font-size="8.5" fill="#9A3412">北京</text>
+  <rect x="414" y="94" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="460" y="109" text-anchor="middle" font-size="8.5" fill="#9A3412">128.5</text>
+  <rect x="30" y="120" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="76" y="135" text-anchor="middle" font-size="8.5" fill="#9A3412">2</text>
+  <rect x="126" y="120" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="172" y="135" text-anchor="middle" font-size="8.5" fill="#9A3412">李四</text>
+  <rect x="222" y="120" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="268" y="135" text-anchor="middle" font-size="8.5" fill="#9A3412">35</text>
+  <rect x="318" y="120" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="364" y="135" text-anchor="middle" font-size="8.5" fill="#9A3412">上海</text>
+  <rect x="414" y="120" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="460" y="135" text-anchor="middle" font-size="8.5" fill="#9A3412">76.2</text>
+  <rect x="30" y="146" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="76" y="161" text-anchor="middle" font-size="8.5" fill="#9A3412">3</text>
+  <rect x="126" y="146" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="172" y="161" text-anchor="middle" font-size="8.5" fill="#9A3412">王五</text>
+  <rect x="222" y="146" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="268" y="161" text-anchor="middle" font-size="8.5" fill="#9A3412">41</text>
+  <rect x="318" y="146" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="364" y="161" text-anchor="middle" font-size="8.5" fill="#9A3412">广州</text>
+  <rect x="414" y="146" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="460" y="161" text-anchor="middle" font-size="8.5" fill="#9A3412">202.9</text>
+  <rect x="30" y="172" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="76" y="187" text-anchor="middle" font-size="8.5" fill="#9A3412">4</text>
+  <rect x="126" y="172" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="172" y="187" text-anchor="middle" font-size="8.5" fill="#9A3412">赵六</text>
+  <rect x="222" y="172" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="268" y="187" text-anchor="middle" font-size="8.5" fill="#9A3412">23</text>
+  <rect x="318" y="172" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="364" y="187" text-anchor="middle" font-size="8.5" fill="#9A3412">深圳</text>
+  <rect x="414" y="172" width="92" height="22" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="460" y="187" text-anchor="middle" font-size="8.5" fill="#9A3412">45.1</text>
+  <rect x="414" y="94" width="138" height="110" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="483" y="120" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">取 age 一列</text>
+  <text x="483" y="138" text-anchor="middle" font-size="8.5" fill="#B91C1C">也要读整行磁盘块</text>
+  <text x="483" y="156" text-anchor="middle" font-size="8.5" fill="#B91C1C">行数越多浪费越大</text>
+  <text x="483" y="186" text-anchor="middle" font-size="8.5" fill="#991B1B">适合：按行取整条</text>
+  <text x="60" y="236" text-anchor="start" font-size="11" fill="#065F46" font-weight="bold">列式存储（ClickHouse）</text>
+  <rect x="30" y="248" width="112" height="24" rx="4" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.3"/>
+  <text x="86" y="264" text-anchor="middle" font-size="8.5" fill="#334155" font-weight="bold">(id)</text>
+  <rect x="30" y="274" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="86" y="288" text-anchor="middle" font-size="8" fill="#334155">1</text>
+  <rect x="30" y="296" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="86" y="310" text-anchor="middle" font-size="8" fill="#334155">2</text>
+  <rect x="30" y="318" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="86" y="332" text-anchor="middle" font-size="8" fill="#334155">3</text>
+  <rect x="30" y="340" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="86" y="354" text-anchor="middle" font-size="8" fill="#334155">4</text>
+  <rect x="152" y="248" width="112" height="24" rx="4" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.3"/>
+  <text x="208" y="264" text-anchor="middle" font-size="8.5" fill="#334155" font-weight="bold">(name)</text>
+  <rect x="152" y="274" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="208" y="288" text-anchor="middle" font-size="8" fill="#334155">张三</text>
+  <rect x="152" y="296" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="208" y="310" text-anchor="middle" font-size="8" fill="#334155">李四</text>
+  <rect x="152" y="318" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="208" y="332" text-anchor="middle" font-size="8" fill="#334155">王五</text>
+  <rect x="152" y="340" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="208" y="354" text-anchor="middle" font-size="8" fill="#334155">赵六</text>
+  <rect x="274" y="248" width="112" height="24" rx="4" fill="#ECFDF5" stroke="#059669" stroke-width="1.3"/>
+  <text x="330" y="264" text-anchor="middle" font-size="8.5" fill="#065F46" font-weight="bold">(age)</text>
+  <rect x="274" y="274" width="112" height="20" rx="3" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="330" y="288" text-anchor="middle" font-size="8" fill="#065F46">28</text>
+  <rect x="274" y="296" width="112" height="20" rx="3" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="330" y="310" text-anchor="middle" font-size="8" fill="#065F46">35</text>
+  <rect x="274" y="318" width="112" height="20" rx="3" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="330" y="332" text-anchor="middle" font-size="8" fill="#065F46">41</text>
+  <rect x="274" y="340" width="112" height="20" rx="3" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="330" y="354" text-anchor="middle" font-size="8" fill="#065F46">23</text>
+  <rect x="396" y="248" width="112" height="24" rx="4" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.3"/>
+  <text x="452" y="264" text-anchor="middle" font-size="8.5" fill="#334155" font-weight="bold">(city)</text>
+  <rect x="396" y="274" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="452" y="288" text-anchor="middle" font-size="8" fill="#334155">北京</text>
+  <rect x="396" y="296" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="452" y="310" text-anchor="middle" font-size="8" fill="#334155">上海</text>
+  <rect x="396" y="318" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="452" y="332" text-anchor="middle" font-size="8" fill="#334155">广州</text>
+  <rect x="396" y="340" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="452" y="354" text-anchor="middle" font-size="8" fill="#334155">深圳</text>
+  <rect x="518" y="248" width="112" height="24" rx="4" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.3"/>
+  <text x="574" y="264" text-anchor="middle" font-size="8.5" fill="#334155" font-weight="bold">(amount)</text>
+  <rect x="518" y="274" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="574" y="288" text-anchor="middle" font-size="8" fill="#334155">128.5</text>
+  <rect x="518" y="296" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="574" y="310" text-anchor="middle" font-size="8" fill="#334155">76.2</text>
+  <rect x="518" y="318" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="574" y="332" text-anchor="middle" font-size="8" fill="#334155">202.9</text>
+  <rect x="518" y="340" width="112" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="574" y="354" text-anchor="middle" font-size="8" fill="#334155">45.1</text>
+  <rect x="648" y="248" width="82" height="110" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="689" y="278" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">只读</text>
+  <text x="689" y="296" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">age 一列</text>
+  <text x="689" y="326" text-anchor="middle" font-size="8.5" fill="#047857">连续存放</text>
+  <text x="689" y="342" text-anchor="middle" font-size="8.5" fill="#047857">压缩极好</text>
+  <text x="380" y="400" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">结论：聚合查询（AVG/COUNT/GROUP BY）天然只碰少数几列 —— 列存把磁盘 IO 降到 1/n</text>
+  <text x="380" y="422" text-anchor="middle" font-size="9.5" fill="#64748B">同列同类型 → 列级压缩（LZ4/ZSTD/专用编码）可达 10 倍以上；代价是单行更新与点查很弱</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

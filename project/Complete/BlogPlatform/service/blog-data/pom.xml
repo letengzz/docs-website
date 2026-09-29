@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.blog</groupId>
+    <artifactId>blog-parent</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>blog-data</artifactId>
+  <name>blog-data</name>
+  <description>数据访问：仓储接口与本地内存实现（JDBC 实现在第 94 天接入）</description>
+
+  <dependencies>
+    <!-- 向下依赖：数据层要返回统一的错误码语义 -->
+    <dependency>
+      <groupId>com.blog</groupId>
+      <artifactId>blog-common</artifactId>
+    </dependency>
+  </dependencies>
+</project>

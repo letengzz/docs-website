@@ -16,9 +16,12 @@ backend-template/
 │     ├─ result/Result.java
 │     ├─ result/ErrorCode.java
 │     └─ exception/BizException.java
-├─ template-data/
-├─ template-security/
-├─ template-web/
+├─ template-data/                 # 依赖 common：MyBatis-Plus / 分页 / 数据源
+│  └─ pom.xml
+├─ template-security/             # 依赖 data：Spring Security / JWT / 过滤器
+│  └─ pom.xml
+├─ template-web/                  # 依赖 security + data + common：Web 栈 / 校验 / 全局异常
+│  └─ pom.xml
 ├─ template-application/          # 唯一可启动模块
 │  ├─ pom.xml
 │  └─ src/main/
@@ -856,6 +859,253 @@ JAVA_HOME=/opt/jdk-25 mvn -P boot-4.0.7,jdk-17 clean verify
 6. **只在 CI 构建主组合**：`jdk-17`、`boot-4.0.7` 这些分支长期不构建，等真要用时才发现编不过。必须上矩阵（`fail-fast: false`）。
 :::
 
+## 各模块 POM：只写「我要什么」，版本留给根 POM
+
+根 POM 解决了「版本从哪来」，剩下四个业务模块的 POM 只干两件事：**声明 parent、列出依赖**。依赖是一条**单向链**，每一层只认它的下一层：
+
+![四个业务模块的 POM：依赖分层与版本来源](../assets/module-pom-deps.svg)
+
+```text
+template-application → template-web → template-security → template-data → template-common
+```
+
+### 四个模块各引什么
+
+| 模块 | 直接依赖 | 职责 | 详解位置 |
+| --- | --- | --- | --- |
+| `template-common` | `starter-validation`、`lombok`（provided） | `Result` / `ErrorCode` / `BizException` / 工具类，**不引 Web、不引任何内部模块** | 本页末「完整 pom.xml 参考」 |
+| `template-data` | `template-common`、`mybatis-plus-spring-boot4-starter`、`mysql-connector-j`（runtime） | Mapper 基类、分页与乐观锁拦截器、审计字段填充 | [数据访问](../DataAccess/index.md) |
+| `template-security` | `template-data`、`starter-security`、`jjwt` 三件套、`starter-data-redis` | JWT 签发与校验、认证过滤器、权限注解 | [认证授权](../Security/index.md) |
+| `template-web` | `template-security`、`template-data`、`template-common`、`starter-web`、`starter-validation`、`starter-aspectj`、`springdoc-openapi-starter-webmvc-ui` | Controller、参数校验、全局异常、API 文档、日志切面 | [统一响应](../CommonResponse/index.md)、[请求追踪](../TraceId/index.md) |
+
+### 三条不能破的规矩
+
+1. **只向下依赖**。`common` 里出现 `@RestController`、`data` 里出现 `SecurityContext`，都是反向引用。Maven 到了 reactor 阶段会直接报 `The projects in the reactor contain a cyclic reference`，那时再拆代价很大。
+2. **子模块不写 `<version>`**。内部模块的版本由根 POM 的 `${project.version}` 给，第三方由根 POM 的 `dependencyManagement` 给。子模块一旦自己写 `<version>`，就等于绕开统一管理——将来升级版本，写了的那几处必然被漏掉。
+3. **直接用的依赖就显式声明**，别靠 A→B→C 的传递依赖「白拿」。传递依赖一旦上游调整（本模板后续就把实现层拆成了独立模块），编译立刻失败；`mvn dependency:analyze` 也会报 `Used undeclared dependencies`。
+
+### 先记住 Spring Boot 4 的 starter 改名清单
+
+从 Boot 3 的教程/存量项目抄构建脚本时，最容易在**坐标**上翻车——Boot 4 做过一次 starter 模块化整理：
+
+| Boot 3 的坐标 | Boot 4 的坐标 | 旧坐标还能用吗 |
+| --- | --- | --- |
+| `spring-boot-starter-aop` | **`spring-boot-starter-aspectj`** | ❌ **已从 BOM 移除**，写了构建直接失败 |
+| `spring-boot-starter-web` | `spring-boot-starter-webmvc` | ✅ 仍在 BOM，可用 |
+| `spring-boot-starter-json` | `spring-boot-starter-jackson` | ✅ 仍在 BOM，可用 |
+| `spring-boot-starter-oauth2-client` | `spring-boot-starter-security-oauth2-client` | ✅ 仍在 BOM，可用 |
+| `spring-boot-starter-oauth2-resource-server` | `spring-boot-starter-security-oauth2-resource-server` | ✅ 仍在 BOM，可用 |
+| `spring-boot-starter-web-services` | `spring-boot-starter-webservices` | ✅ 仍在 BOM，可用 |
+
+**只有 `aop` 这一行是「硬失败」**，而且症状极具误导性：
+
+```shell
+$ mvn validate
+[ERROR] 'dependencies.dependency.version' for org.springframework.boot:spring-boot-starter-aop:jar is missing. @ line 49, column 21
+[ERROR] The build could not read 1 project -> [Help 1]
+```
+
+报的是「缺版本」，看着像**自己漏写了 `<version>`**，实际上是这个坐标在 BOM 里根本不存在。更坑的是**一个模块的 POM 读不了，整个 reactor 都构不动**——多模块工程里表现为「什么都没改，整个项目突然构建失败」，而 IDE 侧则是「Maven 导入不完整、模块依赖表残缺」。
+
+::: danger 依赖「缺版本」时，不要第一反应就补 `<version>`
+子模块报 `version is missing` 时，按顺序排查三件事：
+
+1. **这个坐标在 BOM 里存在吗**：Boot 4 的 `spring-boot-starter-aop` 就是典型反例；
+2. **groupId 写对了吗**：从模板抄代码最容易留下 `com.example:xxx` 这类占位 groupId，而根 POM 的 `dependencyManagement` 里登记的是 `com.yourcompany:xxx`，同样匹配不上；
+3. **根 POM 的 `dependencyManagement` 登记了吗**：BOM 只管 Spring 生态，内部模块与第三方库都得逐个登记。
+
+三条都对，版本自然会下来——**不需要**在子模块补 `<version>`，补上反而是错的方向。
+:::
+
+### template-data/pom.xml：数据层
+
+```xml [template-data/pom.xml]
+<dependencies>
+  <!-- ① 向下依赖：数据层要抛 BizException、返回 ErrorCode -->
+  <dependency>
+    <groupId>com.example</groupId>
+    <artifactId>template-common</artifactId>
+  </dependency>
+
+  <!-- ② 唯一的 ORM starter；坐标随 Spring Boot 大版本换名，见下方注意 -->
+  <dependency>
+    <groupId>com.baomidou</groupId>
+    <artifactId>mybatis-plus-spring-boot4-starter</artifactId>
+  </dependency>
+
+  <!-- ③ 驱动：编译期用不到，runtime 即可，由 template-application 打包时带入 -->
+  <dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <scope>runtime</scope>
+  </dependency>
+
+  <!-- ④ 测试依赖不传递，要写测试的模块各自声明 -->
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+  </dependency>
+</dependencies>
+```
+
+| 依赖 | 为什么放在这里 | 版本从哪来 |
+| --- | --- | --- |
+| `template-common` | 抛 `BizException`、用 `ErrorCode`、返回 `Result` | 根 POM `${project.version}` |
+| `mybatis-plus-spring-boot4-starter` | 分页 / 乐观锁 / 防全表更新拦截器、`BaseMapper`、`MetaObjectHandler` | 根 POM `dependencyManagement`（3.5.17） |
+| `mysql-connector-j` | JDBC 驱动，编译期不参与 | BOM |
+| `spring-boot-starter-test` | 数据层集成测试（Testcontainers 拉起真实 MySQL） | BOM + `scope: test` |
+
+::: danger 数据层 POM 最容易犯的三个错
+1. **starter 坐标抄成 Boot 2 / Boot 3 的名字**。`mybatis-plus-boot-starter`（Boot 2）、`mybatis-plus-spring-boot3-starter`（Boot 3）在 Boot 4 项目里都不会生效，典型报错是 `NoClassDefFoundError: org/mybatis/spring/SqlSessionFactoryBean`，或 `@Mapper` 根本扫不到。当前正解是 `mybatis-plus-spring-boot4-starter`（3.5.13 起提供）。
+2. **为了「审计字段能拿到当前用户」而让 `data` 依赖 `security`**。`security` 本来就依赖 `data`，这么写立刻成环。正解是把「当前用户」这个只读上下文下沉到 `common`（所有模块都能依赖它），或在 `data` 里只定义接口、由 `security` 提供实现——**`data` 永远不认识 JWT**。
+3. **把驱动升成默认 `compile` 范围并挪进 `template-common`**。驱动会被所有模块（包括不需要数据库的）连带引入，`common` 也从「干净的基础模块」变成「带数据库依赖的模块」。驱动留在 `data`、`runtime` 范围即可。
+:::
+
+### template-security/pom.xml：认证层
+
+```xml [template-security/pom.xml]
+<dependencies>
+  <!-- ① 向下依赖：登录要查用户表，登出要写令牌黑名单 -->
+  <dependency>
+    <groupId>com.example</groupId>
+    <artifactId>template-data</artifactId>
+  </dependency>
+
+  <!-- ② Spring Security：版本由 BOM 提供，不要自己写 <version> -->
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+  </dependency>
+
+  <!-- ③ JWT 三件套：api 编译期要用，impl / jackson 运行期加载 -->
+  <dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-api</artifactId>
+    <version>0.13.0</version>
+  </dependency>
+  <dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-impl</artifactId>
+    <version>0.13.0</version>
+    <scope>runtime</scope>
+  </dependency>
+  <dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-jackson</artifactId>
+    <version>0.13.0</version>
+    <scope>runtime</scope>
+  </dependency>
+
+  <!-- ④ 刷新令牌与黑名单需要 Redis -->
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+  </dependency>
+</dependencies>
+```
+
+| 依赖 | 为什么放在这里 | 版本从哪来 |
+| --- | --- | --- |
+| `template-data` | 登录查用户表、登出写黑名单 | 根 POM `${project.version}` |
+| `spring-boot-starter-security` | `SecurityFilterChain`、`@PreAuthorize` | BOM（Spring Security 7.x） |
+| `jjwt-api` / `jjwt-impl` / `jjwt-jackson` | JWT 签发与校验 | **写在模块自身**（见下） |
+| `spring-boot-starter-data-redis` | 刷新令牌、登出黑名单 | BOM |
+| `spring-boot-starter-test` | 认证链路集成测试（`SecurityIT`） | BOM + `scope: test` |
+
+::: warning jjwt 的版本为什么留在模块里
+jjwt 的发版节奏与 Spring Boot 完全无关，BOM 里也没有它，所以暂时就地写版本。**判断标准很简单：这个库有几个模块要用？只有一个就留在模块里，两个以上就上收到根 POM。** 哪天第二个模块也要签令牌，就把它收敛成和 MyBatis-Plus 一样的写法：
+
+```xml [pom.xml（根 POM，收敛后的写法）]
+<properties>
+  <jjwt.version>0.13.0</jjwt.version>
+</properties>
+
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-api</artifactId>
+      <version>${jjwt.version}</version>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+```
+:::
+
+::: danger jjwt 三件套版本必须完全一致
+`jjwt-api` / `jjwt-impl` / `jjwt-jackson` 是同一发版号拆出来的包，版本不一致时症状通常不在编译期，而是运行期 `NoSuchMethodError` 或 `UnsupportedJwtException`——最难查的那一类。**要么三行 `<version>` 都写且保持一致，要么统一收敛到根 POM 后三行都不写**，不要只给 `jjwt-api` 写版本。
+:::
+
+### template-web/pom.xml：业务层
+
+```xml [template-web/pom.xml]
+<dependencies>
+  <!-- ① 下三层：直接用到的类就显式声明，不靠传递依赖 -->
+  <dependency>
+    <groupId>com.example</groupId>
+    <artifactId>template-security</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>com.example</groupId>
+    <artifactId>template-data</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>com.example</groupId>
+    <artifactId>template-common</artifactId>
+  </dependency>
+
+  <!-- ② Web 栈与参数校验 -->
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+  </dependency>
+
+  <!-- ③ 切面：TraceId 过滤器与日志切面都靠它
+       坐标是 aspectj 不是 aop —— Boot 4 已把 starter-aop 从 BOM 移除 -->
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-aspectj</artifactId>
+  </dependency>
+
+  <!-- ④ 接口文档：Boot 4.x 对应 springdoc 3.x，版本由根 POM 提供 -->
+  <dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+  </dependency>
+</dependencies>
+```
+
+| 依赖 | 为什么放在这里 | 版本从哪来 |
+| --- | --- | --- |
+| `template-security` / `template-data` / `template-common` | Controller 直接调用服务、返回 `Result`、取当前用户 | 根 POM `${project.version}` |
+| `spring-boot-starter-web` | `DispatcherServlet`、Jackson、内嵌 Tomcat | BOM |
+| `spring-boot-starter-validation` | `@Valid` / `@Validated` 与自定义校验注解 | BOM |
+| `spring-boot-starter-aspectj` | 日志切面（`WebLogAspect`）；**Boot 4 里 `starter-aop` 已更名为 `starter-aspectj`** | BOM |
+| `springdoc-openapi-starter-webmvc-ui` | `/v3/api-docs` 与 Swagger UI | 根 POM `dependencyManagement`（3.1.0） |
+| `spring-boot-starter-test` | MockMvc 集成测试、契约回归 | BOM + `scope: test` |
+
+::: danger 业务层 POM 的两个坑
+1. **只声明 `template-security`，靠传递拿到 `data` 与 `common`**。能编译，但产生的是「看不见的依赖」：哪天 `security` 不再依赖 `data`，`web` 立刻编译不过，而报错位置与改动位置隔了两层。**凡是直接 `import` 的类，就要有对应的直接 `<dependency>`。**
+2. **springdoc 版本跟着 Boot 3 的文章抄成 2.8.x**。能编译、能启动，只是 Swagger 页面打不开、`/v3/api-docs` 返回 404，属于最难查的一类问题。Boot 4.x 必须用 springdoc **3.x**，版本由根 POM 统一给、模块里不要写。
+:::
+
 ## 启动模块 POM
 
 ```xml [template-application/pom.xml]
@@ -1011,13 +1261,16 @@ curl -i -s http://localhost:8080/actuator/health
 
 ## 完整 pom.xml 参考（可直接复制）
 
-前文各节是按主题拆解的片段，这里把**可直接落地的完整清单**聚在一处，避免拼装时漏项。共 5 个文件：3 个进 Git，2 个属于本机环境。
+前文各节是按主题拆解的片段，这里把**可直接落地的完整清单**聚在一处，避免拼装时漏项。共 8 个文件：7 个进 Git（根 POM + 5 个模块 POM + Maven 默认参数），1 个属于本机环境。
 
 | 文件 | 是否进 Git | 作用 |
 | --- | --- | --- |
 | `pom.xml` | ✅ | 根 POM：聚合、BOM 导入、插件管理、三条差异轴的 Profile |
 | `template-application/pom.xml` | ✅ | 启动模块：依赖装配、`repackage`、构建信息与产物追溯 |
-| `template-common/pom.xml` | ✅ | 基础模块（`template-data` / `template-security` / `template-web` 同构，不重复列出） |
+| `template-common/pom.xml` | ✅ | 基础模块：参数校验 + Lombok，**不引 Web、不引内部模块** |
+| `template-data/pom.xml` | ✅ | 数据模块：MyBatis-Plus starter + JDBC 驱动（runtime） |
+| `template-security/pom.xml` | ✅ | 安全模块：Spring Security + jjwt 三件套 + Redis |
+| `template-web/pom.xml` | ✅ | 业务模块：Web 栈 + 参数校验 + AOP + springdoc |
 | `.mvn/maven.config` | ✅ | 团队默认 Profile 组合，成员无需记忆参数 |
 | `~/.m2/toolchains.xml` | ❌ | 本机 JDK 安装路径清单，含机器绝对路径 |
 
@@ -1515,7 +1768,199 @@ curl -i -s http://localhost:8080/actuator/health
 </project>
 ```
 
-`template-data` / `template-security` / `template-web` 与 `template-common` 结构完全同构，只是依赖不同：`template-data` 加 MyBatis-Plus 与数据源、`template-security` 加 Spring Security、`template-web` 聚合前三个并加 Web 依赖。三者的 `<parent>`、`<artifactId>`、`<packaging>`、测试依赖写法都照抄即可。
+下面三个模块的 POM 与 `template-common` **同构**（`<parent>`、`<artifactId>`、`<packaging>`、测试依赖写法完全一致），差别只在依赖段：`template-data` 加 MyBatis-Plus 与驱动、`template-security` 加 Spring Security 与 jjwt、`template-web` 显式声明下三层再加 Web 栈。每个依赖「为什么引、版本从哪来」见上文「各模块 POM」一节。
+
+### template-data/pom.xml（完整版）
+
+```xml [template-data/pom.xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.example</groupId>
+    <artifactId>backend-template</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>template-data</artifactId>
+  <packaging>jar</packaging>
+  <name>template-data</name>
+
+  <dependencies>
+    <!-- 向下依赖：抛 BizException、用 ErrorCode -->
+    <dependency>
+      <groupId>com.example</groupId>
+      <artifactId>template-common</artifactId>
+    </dependency>
+
+    <!-- ORM：Boot 4 专用坐标，版本由根 POM 的 dependencyManagement 提供 -->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-spring-boot4-starter</artifactId>
+    </dependency>
+
+    <!-- JDBC 驱动：编译期不参与，打包时由启动模块带入 -->
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+```
+
+### template-security/pom.xml（完整版）
+
+```xml [template-security/pom.xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.example</groupId>
+    <artifactId>backend-template</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>template-security</artifactId>
+  <packaging>jar</packaging>
+  <name>template-security</name>
+
+  <properties>
+    <!-- 三件套同版本：只在本模块使用，暂不收敛到根 POM；出现第二个使用方时再上收 -->
+    <jjwt.version>0.13.0</jjwt.version>
+  </properties>
+
+  <dependencies>
+    <!-- 向下依赖：登录查用户表、登出写黑名单 -->
+    <dependency>
+      <groupId>com.example</groupId>
+      <artifactId>template-data</artifactId>
+    </dependency>
+
+    <!-- Spring Security：版本由 BOM 提供 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+    <!-- JWT：api 编译期要用，impl / jackson 运行期加载 -->
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-api</artifactId>
+      <version>${jjwt.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-impl</artifactId>
+      <version>${jjwt.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-jackson</artifactId>
+      <version>${jjwt.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- 刷新令牌与登出黑名单 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+```
+
+::: tip 用属性而不是写死三遍
+三件套的版本抽成 `<jjwt.version>` 后，升级只改一行；也便于将来整体挪到根 POM（把 `<properties>` 与 `dependencyManagement` 一起上收，子模块里的 `<version>` 直接删掉即可）。
+:::
+
+### template-web/pom.xml（完整版）
+
+```xml [template-web/pom.xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.example</groupId>
+    <artifactId>backend-template</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>template-web</artifactId>
+  <packaging>jar</packaging>
+  <name>template-web</name>
+
+  <dependencies>
+    <!-- 直接用到的内部模块全部显式声明，不靠传递依赖 -->
+    <dependency>
+      <groupId>com.example</groupId>
+      <artifactId>template-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.example</groupId>
+      <artifactId>template-data</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.example</groupId>
+      <artifactId>template-common</artifactId>
+    </dependency>
+
+    <!-- Web 栈与参数校验 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+
+    <!-- 切面：TraceId 过滤器与日志切面（Boot 4 坐标为 starter-aspectj） -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aspectj</artifactId>
+    </dependency>
+
+    <!-- 接口文档：Boot 4.x 对应 springdoc 3.x，版本由根 POM 提供 -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+```
+
+::: warning 为什么 `template-web` 不写成「只依赖 `template-security`」
+只声明一层也能编译（`security → data → common` 会传递过来），但那是**隐式依赖**：上游依赖关系一变，`web` 就直接编译不过，而报错位置和改动位置隔了两层。多写两行 `<dependency>`，换来的是依赖树与源码 `import` 一一对应——`mvn -pl template-web dependency:tree` 一眼能看出这个模块到底站谁的肩膀上。
+:::
 
 ### .mvn/maven.config
 

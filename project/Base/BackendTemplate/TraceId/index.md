@@ -215,12 +215,14 @@ public class WebLogAspect {
 }
 ```
 
-引入切面的依赖（`template-web/pom.xml`）：
+引入切面的依赖（`template-web/pom.xml`，该模块完整 POM 见 [骨架与目录结构](../Skeleton/index.md) 的「各模块 POM」一节）：
 
 ```xml [template-web/pom.xml]
+<!-- 坐标是 aspectj，不是 aop：Boot 4 已把 spring-boot-starter-aop 从 BOM 移除，
+     沿用旧坐标会在 mvn validate 阶段报 "dependency.version is missing" -->
 <dependency>
     <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-aop</artifactId>
+    <artifactId>spring-boot-starter-aspectj</artifactId>
 </dependency>
 ```
 

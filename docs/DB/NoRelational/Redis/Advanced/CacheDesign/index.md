@@ -231,6 +231,12 @@ RedisMessageListenerContainer listener(RedisConnectionFactory factory, Cache<Str
 
 反过来「先删缓存再写库」在高并发下有一个经典漏洞：删完缓存、写库事务还没提交，此时并发读会把**旧值**从数据库读回并写进缓存，而这次写入晚于写请求的删除，导致缓存长期停在旧值（直到 TTL 到期）。**先写库再删缓存**把窗口压到「读请求恰好穿透、且读到未提交前的旧值」这一极短区间，再配合 TTL 把最坏情况封顶。彻底消除需要延迟双删或订阅 binlog，三种做法的取舍见 [缓存防护](../CacheProtection/index.md) 的「缓存与业务一致性的三种取舍」。
 
+::: tip 中间件事务边界覆盖不到缓存
+数据库侧一旦接了中间件（读写分离 / 分片 / 影子库），很容易产生一个错觉：「事务由中间件管，所以缓存也在里面」。**中间件的 XA / BASE 只协调数据库**，Redis 与 MQ 不在其中。
+
+所以两条顺序纪律不变：**缓存删除必须在事务提交之后**（`afterCommit`），**消息发送要么在提交后、要么走本地消息表**。中间件侧的配置与「它管不了什么」的边界，见 [数据库中间件 · 中间件视角的分布式事务](../../../../Middleware/DistributedTransaction/index.md)。
+:::
+
 ## 实战：商品详情缓存
 
 ```java [ProductCacheService.java]

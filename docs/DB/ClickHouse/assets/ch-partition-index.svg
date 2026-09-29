@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">分区与索引：两层物理裁剪决定查询下限</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">分区裁时间、排序键裁主过滤列、跳数索引兜底其余列 —— 设计在建表那一刻定型</text>
+  <text x="60" y="82" text-anchor="start" font-size="11" fill="#1E3A8A" font-weight="bold">第一层裁剪：分区（PARTITION BY）</text>
+  <rect x="30" y="94" width="226" height="92" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="143" y="112.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">partition 202607</text>
+  <text x="143" y="129" text-anchor="middle" font-size="8" fill="#1D4ED8">一个月一个分区目录</text>
+  <text x="143" y="147.4" text-anchor="middle" font-size="8" fill="#1D4ED8">查询带时间条件 → 只开相关分区</text>
+  <text x="143" y="165.8" text-anchor="middle" font-size="8" fill="#1D4ED8">TTL 过期整分区直接删</text>
+  <rect x="268" y="94" width="226" height="92" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="381" y="112.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">partition 202608</text>
+  <text x="381" y="129" text-anchor="middle" font-size="8" fill="#334155">不命中，整分区跳过</text>
+  <text x="381" y="147.4" text-anchor="middle" font-size="8" fill="#334155">分区是「物理裁剪」单位</text>
+  <rect x="506" y="94" width="226" height="92" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="619" y="112.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">partition 202609</text>
+  <text x="619" y="129" text-anchor="middle" font-size="8" fill="#047857">命中，参与扫描</text>
+  <text x="619" y="147.4" text-anchor="middle" font-size="8" fill="#047857">分区数建议 &lt; 1000</text>
+  <text x="380" y="214" text-anchor="middle" font-size="9.5" fill="#B91C1C">分区键必须低基数（月/日级）：按 user_id 分区 = 几百万个小目录，直接拖垮元数据</text>
+  <text x="60" y="244" text-anchor="start" font-size="11" fill="#1E3A8A" font-weight="bold">第二层裁剪：排序键（ORDER BY）+ 主键稀疏索引</text>
+  <rect x="30" y="256" width="340" height="96" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="200" y="274.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">排序键设计三原则</text>
+  <text x="200" y="291" text-anchor="middle" font-size="8" fill="#047857">① 把等值过滤列放最前：WHERE user_id = ? 直接定位</text>
+  <text x="200" y="309.4" text-anchor="middle" font-size="8" fill="#047857">② 把时间列放最后：兼顾时间范围内的顺序读</text>
+  <text x="200" y="327.8" text-anchor="middle" font-size="8" fill="#047857">③ 排序键列不要太多：列越多索引收益越稀释</text>
+  <rect x="390" y="256" width="340" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="560" y="274.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">跳数索引（skip index）：二道防线</text>
+  <text x="560" y="291" text-anchor="middle" font-size="8" fill="#B45309">minmax：该 granule 内最大最小值，范围外整块跳过</text>
+  <text x="560" y="309.4" text-anchor="middle" font-size="8" fill="#B45309">set：该 granule 内出现过的值集合</text>
+  <text x="560" y="327.8" text-anchor="middle" font-size="8" fill="#B45309">bloom_filter：等值过滤的大基数列（如 IP、ID）</text>
+  <text x="380" y="380" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">裁剪链路：分区 → 主键 mark 区间 → 跳数索引 → granule 内存精筛 —— 每一层都在减少「要读的数据」</text>
+  <text x="380" y="402" text-anchor="middle" font-size="9.5" fill="#64748B">对照 MySQL：这里没有 B+ 树点查索引，ORDER BY 键上的过滤天然受益，其余列靠跳数索引粗过滤</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

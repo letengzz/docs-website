@@ -1,0 +1,26 @@
+# 生产 profile：所有外部依赖都从环境变量注入，**一律不给默认值**
+# 缺配置就应该启动失败——给默认值的后果是「连到了错误的库，但看起来一切正常」
+spring:
+  flyway:
+    enabled: true
+    # 方言由部署期决定：mysql | postgres，与构建期的 blog.db.vendor 对应
+    locations: classpath:db/migration/${BLOG_DB_VENDOR}
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    hikari:
+      # 连接预算：实例数 × maximum-pool-size + 代理池 + 离线任务 <= max_connections × 0.8
+      maximum-pool-size: ${DB_POOL_MAX:10}
+      max-lifetime: ${DB_POOL_MAX_LIFETIME_MS:1500000}
+
+blog:
+  jwt:
+    secret: ${JWT_SECRET}
+  admin:
+    bootstrap-password: ${ADMIN_BOOTSTRAP_PASSWORD}
+
+logging:
+  level:
+    root: INFO
+    com.blog: INFO

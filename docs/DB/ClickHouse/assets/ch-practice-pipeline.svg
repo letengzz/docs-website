@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 462" width="760" height="462" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="462" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">实战管道：用户行为分析的四步与五项验收</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">建模 → 建表 → 写入 → 查询，每一步都有可实测的验收判据</text>
+  <rect x="30" y="84" width="168" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="114" y="102.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">① 业务建模</text>
+  <text x="114" y="119" text-anchor="middle" font-size="7.5" fill="#1D4ED8">事件粒度定表</text>
+  <text x="114" y="136.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">维度列 vs 指标列</text>
+  <text x="114" y="153.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">低基数列用 LowCardinality</text>
+  <line x1="198" y1="132" x2="212" y2="132" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="212" y="84" width="168" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="296" y="102.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">② 建表</text>
+  <text x="296" y="119" text-anchor="middle" font-size="7.5" fill="#6D28D9">PARTITION BY 月</text>
+  <text x="296" y="136.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">ORDER BY (user_id, ts)</text>
+  <text x="296" y="153.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">TTL 到期自动删</text>
+  <line x1="380" y1="132" x2="394" y2="132" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="394" y="84" width="168" height="96" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="478" y="102.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">③ 写入</text>
+  <text x="478" y="119" text-anchor="middle" font-size="7.5" fill="#047857">客户端攒批 1s 或 10 万行</text>
+  <text x="478" y="136.25" text-anchor="middle" font-size="7.5" fill="#047857">大 INSERT 少次数</text>
+  <text x="478" y="153.5" text-anchor="middle" font-size="7.5" fill="#047857">禁止逐行 INSERT</text>
+  <line x1="562" y1="132" x2="576" y2="132" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="576" y="84" width="168" height="96" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="660" y="102.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">④ 查询</text>
+  <text x="660" y="119" text-anchor="middle" font-size="7.5" fill="#0F766E">高频看板查预聚合表</text>
+  <text x="660" y="136.25" text-anchor="middle" font-size="7.5" fill="#0F766E">明细表兜底</text>
+  <text x="660" y="153.5" text-anchor="middle" font-size="7.5" fill="#0F766E">EXPLAIN 看分区裁剪</text>
+  <text x="380" y="210" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">数据链路：业务库 binlog / 消息队列 → 攒批写入 ClickHouse → 物化视图增量聚合 → 看板与告警</text>
+  <text x="60" y="242" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">验收清单（每项都要有实测输出）</text>
+  <rect x="30" y="254" width="440" height="28" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="44" y="272" text-anchor="start" font-size="8.5" fill="#065F46">✔ 建表执行无报错，system.parts 里分区数 &lt; 1000</text>
+  <rect x="478" y="254" width="252" height="28" rx="5" fill="#ECFEFF" stroke="#0891B2" stroke-width="1"/>
+  <text x="604" y="272" text-anchor="start" font-size="8" fill="#155E75">SHOW PARTITIONS / system.parts 计数</text>
+  <rect x="30" y="288" width="440" height="28" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="44" y="306" text-anchor="start" font-size="8.5" fill="#065F46">✔ 10 万行攒批写入成功，parts 数没有持续增长（合并跟上）</text>
+  <rect x="478" y="288" width="252" height="28" rx="5" fill="#ECFEFF" stroke="#0891B2" stroke-width="1"/>
+  <text x="604" y="306" text-anchor="start" font-size="8" fill="#155E75">SELECT count() FROM system.parts WHERE active</text>
+  <rect x="30" y="322" width="440" height="28" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="44" y="340" text-anchor="start" font-size="8.5" fill="#065F46">✔ 按 user_id + 时间范围查询命中分区裁剪</text>
+  <rect x="478" y="322" width="252" height="28" rx="5" fill="#ECFEFF" stroke="#0891B2" stroke-width="1"/>
+  <text x="604" y="340" text-anchor="start" font-size="8" fill="#155E75">EXPLAIN indexes=1 看到 partition prune</text>
+  <rect x="30" y="356" width="440" height="28" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="44" y="374" text-anchor="start" font-size="8.5" fill="#065F46">✔ 预聚合表查询 P95 &lt; 明细表 10 倍以上</text>
+  <rect x="478" y="356" width="252" height="28" rx="5" fill="#ECFEFF" stroke="#0891B2" stroke-width="1"/>
+  <text x="604" y="374" text-anchor="start" font-size="8" fill="#155E75">两次 EXPLAIN ANALYZE 对比</text>
+  <rect x="30" y="390" width="440" height="28" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="44" y="408" text-anchor="start" font-size="8.5" fill="#065F46">✔ TTL 到期数据自动消失，磁盘占用同步下降</text>
+  <rect x="478" y="390" width="252" height="28" rx="5" fill="#ECFEFF" stroke="#0891B2" stroke-width="1"/>
+  <text x="604" y="408" text-anchor="start" font-size="8" fill="#155E75">TTL 到期后 SELECT 返回 0 行</text>
+  <text x="380" y="444" text-anchor="middle" font-size="10" fill="#B91C1C" font-weight="bold">攒批写入是所有后续优化的前提：小批量高频写会制造海量小 part，合并永远追不上写入</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -64,7 +64,7 @@
 | **TDengine 3.x** | 超级表 + 子表 | 类 SQL（含窗口、流计算） | 单机 / 集群（开源版含集群） | 物联网场景吞吐强、国产化支持、单机就能扛很高写入 | 生态相对小，跨场景通用性弱于 PG 系 |
 | **Prometheus** | metric + label | PromQL | 单机为主（+ 远程存储） | 云原生监控事实标准，K8s 自动发现 | 默认本地存储不适合长期海量存储 |
 | **TimescaleDB** | PostgreSQL 超表 | 完整 SQL | 扩展在 PG 上 | 复用 PG 生态与 SQL 能力 | 海量写入下要精细调优 |
-| **ClickHouse** | 宽表 + MergeTree | SQL | 集群 | 分析能力极强、压缩好 | 不是专门的时序库，需自行设计标签与 TTL |
+| **ClickHouse** | 宽表 + MergeTree | SQL | 集群 | 分析能力极强、压缩好（详见 [ClickHouse 专题](../../ClickHouse/index.md)） | 不是专门的时序库，需自行设计标签与 TTL |
 
 ## 选型决策树
 

@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: blog-platform
+  threads:
+    virtual:
+      # Java 25 + Boot 4：请求线程走虚拟线程，IO 等待不再占着平台线程
+      enabled: true
+  profiles:
+    # 默认 profile —— 只在「一个 active profile 都没指定」时生效（指定 prod 时本项被忽略）。
+    # 没有它的话，直接 `mvn spring-boot:run` 会因为找不到 PostRepository 实现而启动失败，
+    # 报的还是「required a bean ... that could not be found」这种看不出原因的错误：
+    # 实现类挂在 @Profile("local") 上，而「不带参数」的语义应当是「本地跑」。
+    default: local
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      # 对外只暴露 UP/DOWN，细节留给内网排查用
+      show-details: never
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:blog},%X{traceId:-}]"

@@ -80,6 +80,8 @@ export const CompleteProject = [
           { text: "需求拆分与验收条件", link: "/project/Complete/BlogPlatform/Requirements/index.md" },
           { text: "架构设计与技术选型", link: "/project/Complete/BlogPlatform/Architecture/index.md" },
           { text: "数据库设计", link: "/project/Complete/BlogPlatform/DatabaseDesign/index.md" },
+          { text: "接口契约", link: "/project/Complete/BlogPlatform/Contract/index.md" },
+          { text: "工程骨架与验收门禁", link: "/project/Complete/BlogPlatform/Skeleton/index.md" },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

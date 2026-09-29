@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 464" width="760" height="464" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="464" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">类型选择地图：按列的语义选类型，按基数选优化</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">LowCardinality 提速、Decimal 保金额、DateTime64 保精度、Nullable 慎用 —— 六组映射对齐双方言建表</text>
+  <text x="60" y="82" text-anchor="start" font-size="10.5" fill="#1E3A8A" font-weight="bold">按「列里装什么」选类型 —— 先看基数与可空性，再看数值形态</text>
+  <rect x="30" y="94" width="130" height="104" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="95" y="112.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">枚举 / 类别列</text>
+  <text x="95" y="129" text-anchor="middle" font-size="7.2" fill="#047857">基数 &lt; 1 万：LowCardinality</text>
+  <text x="95" y="145.56" text-anchor="middle" font-size="7.2" fill="#047857">事件类型 / 渠道 / 国家</text>
+  <text x="95" y="162.12" text-anchor="middle" font-size="7.2" fill="#047857">比 String 快 2~5 倍</text>
+  <rect x="172" y="94" width="130" height="104" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="237" y="112.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">数值与金额</text>
+  <text x="237" y="129" text-anchor="middle" font-size="7.2" fill="#1D4ED8">计数 UInt64，状态 UInt8</text>
+  <text x="237" y="145.56" text-anchor="middle" font-size="7.2" fill="#1D4ED8">金额一律 Decimal64(2)</text>
+  <text x="237" y="162.12" text-anchor="middle" font-size="7.2" fill="#1D4ED8">Float 只给测量值，不给钱</text>
+  <rect x="314" y="94" width="130" height="104" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="379" y="112.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">时间</text>
+  <text x="379" y="129" text-anchor="middle" font-size="7.2" fill="#0F766E">Date（天）/ DateTime（秒）</text>
+  <text x="379" y="145.56" text-anchor="middle" font-size="7.2" fill="#0F766E">毫秒精度 DateTime64(3)</text>
+  <text x="379" y="162.12" text-anchor="middle" font-size="7.2" fill="#0F766E">分区与排序键都靠它</text>
+  <rect x="456" y="94" width="130" height="104" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="521" y="112.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">字符串与属性</text>
+  <text x="521" y="129" text-anchor="middle" font-size="7.2" fill="#6D28D9">变长 String，定长 FixedString</text>
+  <text x="521" y="145.56" text-anchor="middle" font-size="7.2" fill="#6D28D9">动态属性 Map(String,String)</text>
+  <text x="521" y="162.12" text-anchor="middle" font-size="7.2" fill="#6D28D9">唯一标识用原生 UUID</text>
+  <rect x="598" y="94" width="130" height="104" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="663" y="112.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">慎用区</text>
+  <text x="663" y="129" text-anchor="middle" font-size="7.2" fill="#B91C1C">Nullable：多一个掩码文件</text>
+  <text x="663" y="145.56" text-anchor="middle" font-size="7.2" fill="#B91C1C">Enum：加值要 ALTER</text>
+  <text x="663" y="162.12" text-anchor="middle" font-size="7.2" fill="#B91C1C">用业务默认值替代 NULL</text>
+  <text x="380" y="226" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">决策顺序：基数低 → LowCardinality；金额 → Decimal；时间是时间 → DateTime 家族；其余 String + 业务默认值</text>
+  <text x="60" y="256" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">与 MySQL 类型的对应（双方言建表必查）</text>
+  <rect x="30" y="268" width="240" height="22" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="150" y="283" text-anchor="middle" font-size="8.5" fill="#9A3412">TINYINT / SMALLINT</text>
+  <text x="284" y="283" text-anchor="middle" font-size="9" fill="#94A3B8">→</text>
+  <rect x="304" y="268" width="256" height="22" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="432" y="283" text-anchor="middle" font-size="8.5" fill="#065F46">UInt8 / Int16</text>
+  <rect x="568" y="268" width="162" height="22" rx="5" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="649" y="283" text-anchor="middle" font-size="8" fill="#334155">无符号是默认习惯</text>
+  <rect x="30" y="294" width="240" height="22" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="150" y="309" text-anchor="middle" font-size="8.5" fill="#9A3412">INT / BIGINT</text>
+  <text x="284" y="309" text-anchor="middle" font-size="9" fill="#94A3B8">→</text>
+  <rect x="304" y="294" width="256" height="22" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="432" y="309" text-anchor="middle" font-size="8.5" fill="#065F46">Int32 / UInt64</text>
+  <rect x="568" y="294" width="162" height="22" rx="5" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="649" y="309" text-anchor="middle" font-size="8" fill="#334155">计数类用 UInt64</text>
+  <rect x="30" y="320" width="240" height="22" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="150" y="335" text-anchor="middle" font-size="8.5" fill="#9A3412">VARCHAR(n)</text>
+  <text x="284" y="335" text-anchor="middle" font-size="9" fill="#94A3B8">→</text>
+  <rect x="304" y="320" width="256" height="22" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="432" y="335" text-anchor="middle" font-size="8.5" fill="#065F46">String（或 LowCardinality）</text>
+  <rect x="568" y="320" width="162" height="22" rx="5" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="649" y="335" text-anchor="middle" font-size="8" fill="#334155">CH 的 String 无长度上限</text>
+  <rect x="30" y="346" width="240" height="22" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="150" y="361" text-anchor="middle" font-size="8.5" fill="#9A3412">DATETIME(3)</text>
+  <text x="284" y="361" text-anchor="middle" font-size="9" fill="#94A3B8">→</text>
+  <rect x="304" y="346" width="256" height="22" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="432" y="361" text-anchor="middle" font-size="8.5" fill="#065F46">DateTime64(3)</text>
+  <rect x="568" y="346" width="162" height="22" rx="5" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="649" y="361" text-anchor="middle" font-size="8" fill="#334155">精度显式写进类型名</text>
+  <rect x="30" y="372" width="240" height="22" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="150" y="387" text-anchor="middle" font-size="8.5" fill="#9A3412">DECIMAL(18,2)</text>
+  <text x="284" y="387" text-anchor="middle" font-size="9" fill="#94A3B8">→</text>
+  <rect x="304" y="372" width="256" height="22" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="432" y="387" text-anchor="middle" font-size="8.5" fill="#065F46">Decimal64(2)</text>
+  <rect x="568" y="372" width="162" height="22" rx="5" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="649" y="387" text-anchor="middle" font-size="8" fill="#334155">scale 写在类型名里</text>
+  <rect x="30" y="398" width="240" height="22" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="150" y="413" text-anchor="middle" font-size="8.5" fill="#9A3412">TEXT / MEDIUMTEXT</text>
+  <text x="284" y="413" text-anchor="middle" font-size="9" fill="#94A3B8">→</text>
+  <rect x="304" y="398" width="256" height="22" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="432" y="413" text-anchor="middle" font-size="8.5" fill="#065F46">String</text>
+  <rect x="568" y="398" width="162" height="22" rx="5" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="649" y="413" text-anchor="middle" font-size="8" fill="#334155">同一种类型</text>
+  <text x="380" y="446" text-anchor="middle" font-size="10" fill="#B91C1C" font-weight="bold">写入铁律同页生效：每个 INSERT 批次 = 一个 part —— 攒批 1 万~10 万行，禁逐行写</text>
+</svg>

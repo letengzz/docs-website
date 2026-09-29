@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 446" width="760" height="446" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="446" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">反模式与排错：先分清「用错了」还是「没调优」</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">OLTP 用法、逐行写入、高基数分区、滥用 Nullable —— 四类反模式覆盖了大多数事故</text>
+  <text x="60" y="82" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">四类「用错 ClickHouse」的反模式</text>
+  <rect x="30" y="94" width="168" height="108" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="114" y="112.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">当 OLTP 库用</text>
+  <text x="114" y="129" text-anchor="middle" font-size="7.5" fill="#B91C1C">高频单行 UPDATE / DELETE</text>
+  <text x="114" y="146.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">mutation 重写整列，越改越慢</text>
+  <text x="114" y="163.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">正解：状态放 MySQL/PG，分析副本进 CH</text>
+  <rect x="212" y="94" width="168" height="108" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="296" y="112.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">逐行写入</text>
+  <text x="296" y="129" text-anchor="middle" font-size="7.5" fill="#C2410C">每行一个 INSERT = 每行一个 part</text>
+  <text x="296" y="146.25" text-anchor="middle" font-size="7.5" fill="#C2410C">合并跟不上，Too many parts</text>
+  <text x="296" y="163.5" text-anchor="middle" font-size="7.5" fill="#C2410C">正解：客户端攒批（Buffer/攒批）</text>
+  <rect x="394" y="94" width="168" height="108" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="478" y="112.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">高基数分区</text>
+  <text x="478" y="129" text-anchor="middle" font-size="7.5" fill="#B45309">PARTITION BY user_id 之类</text>
+  <text x="478" y="146.25" text-anchor="middle" font-size="7.5" fill="#B45309">百万小目录，元数据拖垮</text>
+  <text x="478" y="163.5" text-anchor="middle" font-size="7.5" fill="#B45309">正解：分区用月/日，基数放排序键</text>
+  <rect x="576" y="94" width="168" height="108" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="660" y="112.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">滥用 Nullable</text>
+  <text x="660" y="129" text-anchor="middle" font-size="7.5" fill="#6D28D9">每列多一个文件、整体变慢</text>
+  <text x="660" y="146.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">NULL 语义反直觉（默认值变化）</text>
+  <text x="660" y="163.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">正解：业务默认值（0 / '' / 'N/A'）</text>
+  <text x="380" y="232" text-anchor="middle" font-size="10" fill="#B91C1C">共同根因：把「行式 OLTP 的直觉」带进了「列式 OLAP」—— 建表前先回答数据形态问题</text>
+  <text x="60" y="264" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">排错三板斧（先看系统表，再改代码）</text>
+  <rect x="30" y="276" width="226" height="100" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="143" y="294.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">system.query_log</text>
+  <text x="143" y="311" text-anchor="middle" font-size="8" fill="#1D4ED8">每条查询的耗时/扫描量/内存</text>
+  <text x="143" y="329.4" text-anchor="middle" font-size="8" fill="#1D4ED8">read_rows vs result_rows</text>
+  <text x="143" y="347.8" text-anchor="middle" font-size="8" fill="#1D4ED8">定位「扫了太多数据」的查询</text>
+  <rect x="268" y="276" width="226" height="100" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="381" y="294.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">system.parts</text>
+  <text x="381" y="311" text-anchor="middle" font-size="8" fill="#047857">active part 数量与年龄</text>
+  <text x="381" y="329.4" text-anchor="middle" font-size="8" fill="#047857">part 堆积 = 写入模式有问题</text>
+  <text x="381" y="347.8" text-anchor="middle" font-size="8" fill="#047857">合并是否跟上的直接证据</text>
+  <rect x="506" y="276" width="226" height="100" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="619" y="294.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">system.merges / mutations</text>
+  <text x="619" y="311" text-anchor="middle" font-size="8" fill="#6D28D9">正在跑的合并与变更</text>
+  <text x="619" y="329.4" text-anchor="middle" font-size="8" fill="#6D28D9">mutation 卡住会阻塞分区操作</text>
+  <text x="619" y="347.8" text-anchor="middle" font-size="8" fill="#6D28D9">杀不动的 mutation 查 lightweight</text>
+  <text x="380" y="404" text-anchor="middle" font-size="10" fill="#1E3A8A">排障顺序：query_log 看扫描量 → parts 看写入健康度 → merges/mutations 看后台压力</text>
+  <text x="380" y="426" text-anchor="middle" font-size="9.5" fill="#64748B">口诀：查询慢先问「扫了多少行」，写入慢先问「part 有多少」，都答不上来就先去查系统表</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

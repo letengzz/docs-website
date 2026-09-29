@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 458" width="760" height="458" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="458" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">连接数是乘出来的：多路复用与预算</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">600 条连接能被代理压到 20~40 条，前提是别踩「钉住连接」的三种写法</text>
+  <rect x="30" y="88" width="52" height="34" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="56" y="109" text-anchor="middle" font-size="8" fill="#334155">app-1</text>
+  <rect x="92" y="88" width="52" height="34" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="118" y="109" text-anchor="middle" font-size="8" fill="#334155">app-2</text>
+  <rect x="154" y="88" width="52" height="34" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="180" y="109" text-anchor="middle" font-size="8" fill="#334155">app-3</text>
+  <rect x="216" y="88" width="52" height="34" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="242" y="109" text-anchor="middle" font-size="8" fill="#334155">app-4</text>
+  <rect x="278" y="88" width="52" height="34" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="304" y="109" text-anchor="middle" font-size="8" fill="#334155">app-5</text>
+  <rect x="340" y="88" width="52" height="34" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="366" y="109" text-anchor="middle" font-size="8" fill="#334155">app-6</text>
+  <text x="380" y="138" text-anchor="middle" font-size="9.5" fill="#B91C1C">30 个应用实例 × 池上限 20 = 600 条连接（直连时全部打到数据库）</text>
+  <rect x="40" y="160" width="300" height="60" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="190" y="178.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">直连：后端连接 = 客户端连接</text>
+  <text x="190" y="195" text-anchor="middle" font-size="8" fill="#B91C1C">600 条连接 = 600 个会话/线程</text>
+  <text x="190" y="213.4" text-anchor="middle" font-size="8" fill="#B91C1C">max_connections 800 → 峰值即打满</text>
+  <rect x="420" y="160" width="300" height="60" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="570" y="178.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">经代理：多路复用</text>
+  <text x="570" y="195" text-anchor="middle" font-size="8" fill="#047857">400 客户端 → 20~40 后端连接</text>
+  <text x="570" y="213.4" text-anchor="middle" font-size="8" fill="#047857">数据库 Threads_connected 大幅下降</text>
+  <text x="60" y="252" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">两条会「钉住」连接的边界（复用度会掉下来）</text>
+  <rect x="30" y="264" width="226" height="72" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="143" y="282.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">事务</text>
+  <text x="143" y="299" text-anchor="middle" font-size="7.5" fill="#6D28D9">事务内不能换连接</text>
+  <text x="143" y="316.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">长事务把复用度拉回 1</text>
+  <rect x="268" y="264" width="226" height="72" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="381" y="282.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">PREPARE / 会话变量</text>
+  <text x="381" y="299" text-anchor="middle" font-size="7.5" fill="#C2410C">语句级状态绑定连接</text>
+  <text x="381" y="316.25" text-anchor="middle" font-size="7.5" fill="#C2410C">SET 改会话变量在代理下行为会变</text>
+  <rect x="506" y="264" width="226" height="72" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="619" y="282.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">临时表</text>
+  <text x="619" y="299" text-anchor="middle" font-size="7.5" fill="#B45309">临时表属于某个会话</text>
+  <text x="619" y="316.25" text-anchor="middle" font-size="7.5" fill="#B45309">跨连接不可见</text>
+  <text x="60" y="360" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">上线前必须算的一次账</text>
+  <rect x="30" y="372" width="700" height="74" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="390" text-anchor="middle" font-size="8.5" fill="#1D4ED8">实例数 × 池上限 + 代理后端池 + 离线任务 + 管理连接 ≤ max_connections × 0.8</text>
+  <text x="380" y="409.55" text-anchor="middle" font-size="8.5" fill="#1D4ED8">maxLifetime 必须小于数据库 wait_timeout（否则症状是「空闲后第一个请求失败、重试即可成功」）</text>
+  <text x="380" y="429.1" text-anchor="middle" font-size="8.5" fill="#1D4ED8">留 20% 余量是为了给自己留一条能连进去排障的连接——连不上比打满本身更致命</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -77,7 +77,7 @@
 
 ### 三大主流方案对比
 
-| 维度 | Elastic Stack（ELK） | Grafana Loki | ClickHouse / VictoriaLogs |
+| 维度 | Elastic Stack（ELK） | Grafana Loki | [ClickHouse](../../../DB/ClickHouse/index.md) / VictoriaLogs |
 | --- | --- | --- | --- |
 | 索引模型 | 全文倒排索引（每字段可索引） | 仅索引标签，内容压缩块存储 | 列式存储 + 跳数索引 |
 | 查询语言 | KQL / Lucene / ES\|QL | LogQL | SQL |

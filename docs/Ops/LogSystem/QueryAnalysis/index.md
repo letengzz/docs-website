@@ -12,7 +12,7 @@
 | **Lucene** | Elasticsearch | 查询串 | 通配符、模糊、正则、字段加权 | 语法冗长易错 |
 | **ES\|QL** | Elasticsearch 9.x | 管道式（类 SQL） | 聚合、探索式分析、可读性好 | 不覆盖全部检索能力 |
 | **LogQL** | Loki | 标签选择 + 管道 | 日志流过滤与指标化 | 依赖标签，无索引加速 |
-| **SQL** | ClickHouse / ClickHouse 系 | SQL | 任意聚合、关联分析 | 需自己处理日志解析 |
+| **SQL** | [ClickHouse](../../../DB/ClickHouse/index.md) / ClickHouse 系 | SQL | 任意聚合、关联分析 | 需自己处理日志解析 |
 
 ::: tip 选哪套
 **结论先行：**

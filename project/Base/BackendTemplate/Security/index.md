@@ -37,6 +37,8 @@
 
 ## 3. 依赖与版本
 
+本模块在整条依赖链中的位置、以及「哪些版本由根 POM 给、哪些写在模块里」，见 [骨架与目录结构](../Skeleton/index.md) 的「各模块 POM」一节；这里只看认证本身需要什么。
+
 ```xml [template-security/pom.xml]
 <dependencies>
   <!-- Spring Security 7.x：与 Spring Boot 4.x 主线匹配 -->

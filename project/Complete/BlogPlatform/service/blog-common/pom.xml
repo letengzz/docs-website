@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.blog</groupId>
+    <artifactId>blog-parent</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>blog-common</artifactId>
+  <name>blog-common</name>
+  <description>统一响应、错误码与通用异常：不依赖任何框架</description>
+
+  <!--
+    零依赖是这一层的硬约束：
+    统一响应与错误码要被「所有模块」使用，一旦它引了 Web 或数据层，
+    就必然出现反向依赖，多模块工程会在 reactor 阶段直接报循环引用。
+  -->
+</project>

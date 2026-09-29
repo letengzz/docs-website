@@ -1,6 +1,6 @@
 # DBeaver：开源通用查询
 
-DBeaver 是**开源免费**的通用数据库客户端，基于 JDBC 驱动连接 **100+ 数据源**，社区版即可覆盖 MySQL、PostgreSQL、SQLite、Oracle、SQL Server、MongoDB、ClickHouse 等。本页基于 **DBeaver Community 26.1** 编写。
+DBeaver 是**开源免费**的通用数据库客户端，基于 JDBC 驱动连接 **100+ 数据源**，社区版即可覆盖 MySQL、PostgreSQL、SQLite、Oracle、SQL Server、MongoDB、[ClickHouse](../../../DB/ClickHouse/index.md) 等。本页基于 **DBeaver Community 26.1** 编写。
 
 ## 产品定位
 

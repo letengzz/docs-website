@@ -188,6 +188,22 @@ export const Relational = [
     ],
   },
 ];
+export const ClickHouse = [
+  {
+    text: "ClickHouse",
+    link: "/docs/DB/ClickHouse/index.md",
+    items: [
+      { text: "列式存储与 ClickHouse 概述", link: "/docs/DB/ClickHouse/Overview/index.md" },
+      { text: "MergeTree 引擎", link: "/docs/DB/ClickHouse/MergeTree/index.md" },
+      { text: "分区与索引", link: "/docs/DB/ClickHouse/PartitionIndex/index.md" },
+      { text: "数据类型与 SQL 基础", link: "/docs/DB/ClickHouse/SqlBasic/index.md" },
+      { text: "物化视图与预聚合", link: "/docs/DB/ClickHouse/MaterializedView/index.md" },
+      { text: "副本与分片", link: "/docs/DB/ClickHouse/Cluster/index.md" },
+      { text: "实战：用户行为分析", link: "/docs/DB/ClickHouse/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/ClickHouse/FAQ/index.md" },
+    ],
+  },
+];
 export const TimeSeries = [
   {
     text: "时序数据库",
@@ -201,6 +217,22 @@ export const TimeSeries = [
       { text: "存储与保留策略", link: "/docs/DB/TimeSeries/Storage/index.md" },
       { text: "实战：设备监控指标平台", link: "/docs/DB/TimeSeries/Practice/index.md" },
       { text: "常见问题与最佳实践", link: "/docs/DB/TimeSeries/FAQ/index.md" },
+    ],
+  },
+];
+export const Middleware = [
+  {
+    text: "数据库中间件",
+    link: "/docs/DB/Middleware/index.md",
+    items: [
+      { text: "中间件全景与选型", link: "/docs/DB/Middleware/Overview/index.md" },
+      { text: "读写分离工程化", link: "/docs/DB/Middleware/ReadWriteSplit/index.md" },
+      { text: "影子库与全链路压测", link: "/docs/DB/Middleware/ShadowDatabase/index.md" },
+      { text: "代理形态与运维", link: "/docs/DB/Middleware/ProxyMode/index.md" },
+      { text: "连接治理", link: "/docs/DB/Middleware/ConnectionGovernance/index.md" },
+      { text: "中间件视角的分布式事务", link: "/docs/DB/Middleware/DistributedTransaction/index.md" },
+      { text: "实战：为订单服务接入中间件", link: "/docs/DB/Middleware/Practice/index.md" },
+      { text: "常见问题与排错", link: "/docs/DB/Middleware/FAQ/index.md" },
     ],
   },
 ];

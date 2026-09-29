@@ -53,8 +53,10 @@
 
 | 日期 | 产出 | 状态 |
 | --- | --- | --- |
-| 第 91 天 | 立项：需求拆分 + 技术选型 + 架构 + 数据库设计（7 表 DDL + ER 图） | ✅ 本日 |
-| 第 92-97 天 | 第 1 周收尾：接口契约先行 + 工程骨架初始化 | ⏳ |
+| 第 91 天 | 立项：需求拆分 + 技术选型 + 架构 + 数据库设计（7 表 DDL + ER 图） | ✅ |
+| 第 92 天 | 接口契约先行（OpenAPI 3.1，4 链路 12 路径）+ 双方言 DDL + parity/contract 两个本地门禁 | ✅ |
+| 第 93 天 | Maven 多模块骨架 + 两条运行路径（local / prod+flyway）+ 结构门禁与行为冒烟（27 断言 / 9 用例） | ✅ 本日 |
+| 第 94-97 天 | 第 1 周收尾：仓储接真库 + 契约测试上移 `mvn test` + 管理端写接口 | ⏳ |
 | 第 98-104 天 | 第 2 周：核心模块编码 | ⏳ |
 | 第 105-111 天 | 第 3 周：评论 / 搜索 / SSR / 测试 | ⏳ |
 | 第 112-120 天 | 第 4 周：部署 / 监控 / 验收 | ⏳ |
@@ -64,7 +66,25 @@
 1. [需求拆分与验收条件](./Requirements/index.md)：用户故事、INVEST、Given/When/Then、非功能需求
 2. [架构设计与技术选型](./Architecture/index.md)：分层架构、渲染模式、搜索方案取舍、缓存策略
 3. [数据库设计](./DatabaseDesign/index.md)：ER 图、7 张表完整 DDL、索引设计、搜索字段设计
-4. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+4. [接口契约](./Contract/index.md)：OpenAPI 3.1 四条链路定稿、双方言 DDL 与 parity 门禁
+5. [工程骨架与验收门禁](./Skeleton/index.md)：四模块分层、两条运行路径、结构门禁与行为冒烟
+6. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+
+## 本地跑起来
+
+```shell
+cd project/Complete/BlogPlatform/service
+mvn install -DskipTests                         # 首次需联网（本地仓库缺来源元数据，-o 会失败）
+cd blog-application && export SERVER_PORT=18080
+mvn spring-boot:run                             # 默认 profile=local：内存仓储，不需要数据库
+```
+
+```shell
+# 另开终端：结构与行为两道门禁
+cd project/Complete/BlogPlatform/service
+python skeleton_check.py                        # 期望 checks = 27  failed = 0
+python api_smoke.py --base http://127.0.0.1:18080   # 期望 cases = 9  passed = 9
+```
 
 ## 参考资料
 

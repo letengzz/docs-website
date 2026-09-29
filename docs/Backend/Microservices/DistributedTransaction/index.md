@@ -164,6 +164,7 @@ public class OrderService {
 - [MySQL 事务与隔离级别](../../../DB/Relational/MySQL/Transaction/index.md)：单库事务与锁的基础
 - [SQL 优化 · 锁与事务](../../../DB/Relational/SQLOptimization/LockTransaction/index.md)：行锁、死锁与长事务排查
 - [分库分表 · 跨分片查询与分布式事务](../../../DB/Relational/Sharding/CrossShard/index.md)：本页讲**原理与方案选型**（2PC / TCC / Saga / 本地消息表）；那一页讲**分片场景下怎么用**——分片后一个本地事务被拆散到多个库，本地消息表与最终一致性成了默认选项，含可直接落地的表结构与代码
+- [数据库中间件 · 中间件视角的分布式事务](../../../DB/Middleware/DistributedTransaction/index.md)：本页面向**跨服务**的一致性方案；那一页面向**跨库**——中间件提供的三种事务模式（LOCAL / XA / BASE）怎么配、MySQL 上 XA 的四个硬限制、以及「用故障注入断言两侧数据都不存在」的验证方式
 
 ## 参考资料
 

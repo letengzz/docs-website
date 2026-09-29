@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 448" width="760" height="448" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="448" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">中间件夹在哪一层</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">ORM → 连接池 → 中间件 → 数据库：四层的责任边界不能混</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">一条 SQL 从代码到磁盘，中间已经站着几个组件</text>
+  <rect x="120" y="96" width="520" height="56" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="114.2" text-anchor="middle" font-size="10.5" fill="#1E293B" font-weight="bold">业务代码 / DAO</text>
+  <text x="380" y="131" text-anchor="middle" font-size="8" fill="#334155">对象与 SQL 的映射</text>
+  <text x="380" y="149.4" text-anchor="middle" font-size="8" fill="#334155">不负责路由</text>
+  <line x1="380" y1="152" x2="380" y2="170" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="120" y="170" width="520" height="56" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="188.2" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">连接池 HikariCP / Druid</text>
+  <text x="380" y="205" text-anchor="middle" font-size="8" fill="#1D4ED8">连接复用、超时、泄漏检测</text>
+  <text x="380" y="223.4" text-anchor="middle" font-size="8" fill="#1D4ED8">不负责「发给谁」</text>
+  <line x1="380" y1="226" x2="380" y2="244" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="120" y="244" width="520" height="56" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="262.2" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">数据库中间件（本专题）</text>
+  <text x="380" y="279" text-anchor="middle" font-size="8" fill="#6D28D9">路由 / 改写 / 归并</text>
+  <text x="380" y="297.4" text-anchor="middle" font-size="8" fill="#6D28D9">读写分离 / 影子路由</text>
+  <line x1="380" y1="300" x2="380" y2="318" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="120" y="318" width="520" height="56" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="336.2" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">数据库实例</text>
+  <text x="380" y="353" text-anchor="middle" font-size="8" fill="#047857">主库（写）/ 从库（读）</text>
+  <text x="380" y="371.4" text-anchor="middle" font-size="8" fill="#047857">影子库（压测）</text>
+  <text x="60" y="104" text-anchor="start" font-size="9" fill="#475569">越往下</text>
+  <text x="60" y="120" text-anchor="start" font-size="8.5" fill="#64748B">责任越靠近数据</text>
+  <text x="60" y="372" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">分界线</text>
+  <rect x="30" y="384" width="700" height="46" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="402" text-anchor="middle" font-size="8.5" fill="#B45309">连接池管「复用」——它不知道有几个库；中间件管「选路」——它不理解业务语义。配错层就是「改了没生效」的根因</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

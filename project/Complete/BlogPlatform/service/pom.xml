@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!--
+    聚合 POM 自己当 parent：不继承 spring-boot-starter-parent。
+    理由：产品化骨架要把「版本从哪来」集中到一处，BOM 导入比继承父 POM 更可控，
+    也避免上游改了 starter 坐标却由父 POM 悄悄接管。
+  -->
+  <groupId>com.blog</groupId>
+  <artifactId>blog-parent</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>blog-parent</name>
+  <description>全栈博客平台 · 后端服务骨架</description>
+
+  <modules>
+    <module>blog-common</module>
+    <module>blog-data</module>
+    <module>blog-web</module>
+    <module>blog-application</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>25</java.version>
+    <maven.compiler.release>${java.version}</maven.compiler.release>
+    <!-- 版本只在这里出现一次：子模块一律不写 <version> -->
+    <spring-boot.version>4.1.1</spring-boot.version>
+    <springdoc.version>3.1.0</springdoc.version>
+    <!-- 迁移脚本方言：mysql | postgres，构建期决定复制哪一份 DDL -->
+    <blog.db.vendor>mysql</blog.db.vendor>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Spring 生态版本统一由官方 BOM 给 -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- 内部模块版本统一在这里登记 -->
+      <dependency>
+        <groupId>com.blog</groupId>
+        <artifactId>blog-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.blog</groupId>
+        <artifactId>blog-data</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.blog</groupId>
+        <artifactId>blog-web</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.14.1</version>
+          <configuration>
+            <release>${maven.compiler.release}</release>
+            <!--
+              必须显式开启 -parameters：Spring 靠反射读取参数名绑定 @RequestParam / @PathVariable，
+              没有它会在运行时报「name for argument of type [int] not specified」——
+              而且编译期完全正常。继承 spring-boot-starter-parent 时这项由父 POM 给，
+              本工程自己当 parent，就得自己补上。
+            -->
+            <parameters>true</parameters>
+          </configuration>
+        </plugin>
+        <!--
+          迁移脚本复制用的插件：版本同样只在这里出现一次。
+          子模块里只写 <executions>，不写 <version>——否则「版本从哪来」就有两个答案。
+        -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.5.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.5.6</version>
+        </plugin>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

@@ -46,6 +46,8 @@
 - [关系型数据库](../Relational/index.md)
 - [非关系型数据库](../NoRelational/index.md)（含 [Elasticsearch](../NoRelational/Elasticsearch/index.md)：分布式搜索与分析引擎，承担全文检索与日志分析职责）
 - [数据建模](../DataModeling/index.md)：建表之前先设计——三层模型、范式、ER 图与可执行 DDL 的完整方法论
+- [ClickHouse](../ClickHouse/index.md)：列式 OLAP 数据库——行为分析、监控指标、报表看板这类「写入大、更新少、聚合多」的场景
+- [数据库中间件](../Middleware/index.md)：夹在应用与数据库之间的一层——读写分离、影子库压测、连接多路复用与代理运维，属于**「加在数据库前面的那一层」**而不是数据库本身
 
 ::: tip 学习路线的建议顺序
 先看「数据建模」搞清表怎么设计，再看具体数据库（MySQL / PostgreSQL / Redis / MongoDB）怎么实现。**先设计、后选型、再落地**，比一上来就背 `CREATE TABLE` 语法收益高得多。

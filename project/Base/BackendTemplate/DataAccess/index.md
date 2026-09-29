@@ -23,7 +23,7 @@ MyBatis-Plus 是"MyBatis 的增强包，不是替代品"——**已写好的 Map
 
 ## 2. 依赖与版本基线
 
-`template-data/pom.xml` 只加一个 starter：
+`template-data/pom.xml` 只加一个 starter（该模块完整 POM 的依赖分层与版本归属，见 [骨架与目录结构](../Skeleton/index.md) 的「各模块 POM」一节）：
 
 ```xml
 <dependency>

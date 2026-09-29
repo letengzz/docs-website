@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">中间件故障的分层定位路径</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先分「全部错 / 部分错 / 结果不对」，再按证据走，不要凭猜测改配置</text>
+  <rect x="300" y="76" width="160" height="56" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="94.2" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">业务报错 / 结果不对</text>
+  <text x="380" y="111" text-anchor="middle" font-size="7.5" fill="#334155">先分类，不要急着改配置</text>
+  <line x1="380" y1="132" x2="130" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="40" y="168" width="180" height="106" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="130" y="186.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">全部接口都错</text>
+  <text x="130" y="203" text-anchor="middle" font-size="7.5" fill="#B91C1C">代理或数据库整体不可用</text>
+  <text x="130" y="220.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">① 先切直连主库恢复</text>
+  <text x="130" y="237.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">② 确认业务恢复</text>
+  <text x="130" y="254.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">③ 再分析日志</text>
+  <line x1="380" y1="132" x2="370" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="280" y="168" width="180" height="106" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="370" y="186.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">部分接口错</text>
+  <text x="370" y="203" text-anchor="middle" font-size="7.5" fill="#B45309">① 某 SQL 报语法错 → 代理版本不认</text>
+  <text x="370" y="220.25" text-anchor="middle" font-size="7.5" fill="#B45309">② 读不到刚写的 → 路由/写后读</text>
+  <text x="370" y="237.5" text-anchor="middle" font-size="7.5" fill="#B45309">③ 高峰期偶发 → 连接与容量</text>
+  <text x="370" y="254.75" text-anchor="middle" font-size="7.5" fill="#B45309">④ 结果不对 → 路由错库</text>
+  <line x1="380" y1="132" x2="610" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="520" y="168" width="180" height="106" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="610" y="186.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">无报错但结果不对</text>
+  <text x="610" y="203" text-anchor="middle" font-size="7.5" fill="#6D28D9">① 从库是否给了写权限</text>
+  <text x="610" y="220.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">② 规则是否命中（未命中数）</text>
+  <text x="610" y="237.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">③ 规则匹配顺序</text>
+  <text x="610" y="254.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">④ 跨片事务是否真生效</text>
+  <text x="380" y="300" text-anchor="middle" font-size="11" fill="#0F172A" font-weight="bold">三条公共判据（先拿到证据，再动手）</text>
+  <rect x="30" y="312" width="700" height="74" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="330" text-anchor="middle" font-size="8.5" fill="#1D4ED8">① 打开 SQL 日志 / 路由日志，看这条语句的「目标数据源」，比读规则文件可靠</text>
+  <text x="380" y="349.55" text-anchor="middle" font-size="8.5" fill="#1D4ED8">② 运行时条数 vs 磁盘条数：两者不等就是「改了一半」（LOAD 与 SAVE 必须成对）</text>
+  <text x="380" y="369.1" text-anchor="middle" font-size="8.5" fill="#1D4ED8">③ 代理与数据库两侧都要看监控，用 traceId 串起来——只监控一边必然断层</text>
+  <text x="380" y="404" text-anchor="middle" font-size="9.5" fill="#B91C1C">十种反模式里最贵的三条：从库给写权限 · 跨片事务当常态 · 没有演练过的退出路径</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 484" width="760" height="484" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="484" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">代理集群部署与灰度切流</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">代理不能是单点：无状态多实例 + L4，按实例灰度新规则</text>
+  <rect x="300" y="78" width="160" height="46" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="96.2" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">应用实例（N 个）</text>
+  <text x="380" y="113" text-anchor="middle" font-size="7.5" fill="#334155">语言无关：Java / Go / 脚本</text>
+  <rect x="290" y="148" width="180" height="44" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="380" y="166.2" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">L4 负载均衡（TCP 透传）</text>
+  <text x="380" y="183" text-anchor="middle" font-size="7.5" fill="#4338CA">不做协议解析</text>
+  <rect x="120" y="218" width="150" height="44" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="195" y="236.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">proxy-1</text>
+  <text x="195" y="253" text-anchor="middle" font-size="7.5" fill="#6D28D9">无状态 · 可随意扩缩</text>
+  <rect x="300" y="218" width="150" height="44" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="375" y="236.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">proxy-2</text>
+  <text x="375" y="253" text-anchor="middle" font-size="7.5" fill="#1D4ED8">无状态 · 可随意扩缩</text>
+  <rect x="480" y="218" width="150" height="44" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="555" y="236.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">proxy-3</text>
+  <text x="555" y="253" text-anchor="middle" font-size="7.5" fill="#1D4ED8">无状态 · 可随意扩缩</text>
+  <rect x="140" y="296" width="200" height="44" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="240" y="314.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">主库（写）</text>
+  <text x="240" y="331" text-anchor="middle" font-size="7.5" fill="#047857">writer 主机组</text>
+  <rect x="420" y="296" width="200" height="44" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="520" y="314.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">从库 1 / 2（读）</text>
+  <text x="520" y="331" text-anchor="middle" font-size="7.5" fill="#0F766E">reader 主机组</text>
+  <line x1="380" y1="124" x2="380" y2="148" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="192" x2="195" y2="218" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="192" x2="375" y2="218" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="192" x2="555" y2="218" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="195" y1="262" x2="240" y2="296" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="375" y1="262" x2="300" y2="296" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="555" y1="262" x2="520" y2="296" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="690" y="226" text-anchor="start" font-size="8.5" fill="#5B21B6">灰度：先只给 proxy-1 上新规则</text>
+  <text x="690" y="244" text-anchor="start" font-size="8.5" fill="#5B21B6">小比例 → 全量，逐级观测</text>
+  <text x="60" y="372" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">代理层最容易被忽略的观测项</text>
+  <rect x="30" y="384" width="700" height="18" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="120" y="397" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">复用比</text>
+  <text x="380" y="397" text-anchor="middle" font-size="8.5" fill="#334155">客户端连接 ÷ 后端连接</text>
+  <text x="630" y="397" text-anchor="middle" font-size="8" fill="#64748B">接近 1 → 复用没生效</text>
+  <rect x="30" y="406" width="700" height="18" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="120" y="419" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">转发延迟 P99</text>
+  <text x="380" y="419" text-anchor="middle" font-size="8.5" fill="#334155">代理自身引入的耗时</text>
+  <text x="630" y="419" text-anchor="middle" font-size="8" fill="#64748B">升高 → 代理成了瓶颈</text>
+  <rect x="30" y="428" width="700" height="18" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="120" y="441" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">规则未命中数</text>
+  <text x="380" y="441" text-anchor="middle" font-size="8.5" fill="#334155">没命中任何规则的 SQL</text>
+  <text x="630" y="441" text-anchor="middle" font-size="8" fill="#64748B">突增 → 应用发了新形态 SQL</text>
+  <rect x="30" y="450" width="700" height="18" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="120" y="463" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">后端连接错误</text>
+  <text x="380" y="463" text-anchor="middle" font-size="8.5" fill="#334155">到数据库的连接失败</text>
+  <text x="630" y="463" text-anchor="middle" font-size="8" fill="#64748B">与 Aborted_connects 对照</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
