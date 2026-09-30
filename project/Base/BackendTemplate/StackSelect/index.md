@@ -593,6 +593,7 @@ git status --short
 - [认证授权：Spring Security 7 + JWT](../Security/index.md)：`template-security-spring` 的前身
 - [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md)：`TokenStatePort` 三项能力的业务出处
 - [后端通用模板 · 模块划分](../index.md)：更新后的模块结构
+- [Nuxt 通用模板](../../NuxtTemplate/index.md)：**同一套思路的另一个落点**——本页在后端换持久层与安全模块，那里在前端换 UI 组件库。脚本形态不同（这里是 Python 脚本，那边是零依赖 Node ESM），但五条性质（幂等、可校验、可回溯、零依赖、只碰生成物）完全一致，两边的变异测试可以互相参照。
 
 官方文档：
 

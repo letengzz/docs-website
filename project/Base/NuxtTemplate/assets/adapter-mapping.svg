@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 410" width="760" height="410" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="410" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">组件映射链路：从 &lt;XButton&gt; 到真实的库组件</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">业务只写一次，翻译交给映射表；翻译规则必须可枚举、可测试、可校验</text>
+  <rect x="30" y="86" width="180" height="94" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="120" y="104.2" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">业务写法</text>
+  <text x="120" y="121" text-anchor="middle" font-size="7.5" fill="#334155">&lt;XButton type="primary"</text>
+  <text x="120" y="138.25" text-anchor="middle" font-size="7.5" fill="#334155">  :loading="saving"</text>
+  <text x="120" y="155.5" text-anchor="middle" font-size="7.5" fill="#334155">  @click="save"&gt;保存&lt;/XButton&gt;</text>
+  <line x1="210" y1="133" x2="250" y2="133" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="250" y="86" width="160" height="94" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="330" y="104.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">解析器 Resolver</text>
+  <text x="330" y="121" text-anchor="middle" font-size="7.5" fill="#6D28D9">读 ui.config.ts</text>
+  <text x="330" y="138.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">按当前库取映射项</text>
+  <text x="330" y="155.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">透传 props 与事件</text>
+  <line x1="410" y1="133" x2="450" y2="133" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="410" y1="133" x2="430" y2="133" stroke="#7C3AED" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <line x1="430" y1="114" x2="430" y2="282" stroke="#7C3AED" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <rect x="450" y="76" width="280" height="76" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="590" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">Element Plus</text>
+  <text x="590" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">&lt;el-button&gt;</text>
+  <text x="590" y="128.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">type=primary</text>
+  <text x="590" y="145.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">loading 属性名一致</text>
+  <line x1="430" y1="114" x2="450" y2="114" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="450" y="160" width="280" height="76" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="590" y="178.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">Ant Design Vue</text>
+  <text x="590" y="195" text-anchor="middle" font-size="7.5" fill="#047857">&lt;a-button&gt;</text>
+  <text x="590" y="212.25" text-anchor="middle" font-size="7.5" fill="#047857">type=primary</text>
+  <text x="590" y="229.5" text-anchor="middle" font-size="7.5" fill="#047857">loading 一致</text>
+  <line x1="430" y1="198" x2="450" y2="198" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="450" y="244" width="280" height="76" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="590" y="262.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">Nuxt UI</text>
+  <text x="590" y="279" text-anchor="middle" font-size="7.5" fill="#0F766E">&lt;UButton&gt;</text>
+  <text x="590" y="296.25" text-anchor="middle" font-size="7.5" fill="#0F766E">color / variant</text>
+  <text x="590" y="313.5" text-anchor="middle" font-size="7.5" fill="#0F766E">loading 需要另接</text>
+  <line x1="430" y1="282" x2="450" y2="282" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="380" y="348" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">映射只做「属性名与语义的翻译」，不做业务判断，也不吞掉组件库的原生能力</text>
+  <text x="380" y="370" text-anchor="middle" font-size="9.5" fill="#6D28D9">需要用到某库独有能力时：显式开一个逃生口，而不是把差异偷偷写进业务页面</text>
+  <text x="380" y="392" text-anchor="middle" font-size="9.5" fill="#B91C1C">缺口用「能力清单」登记：每新增一个 X 组件，同步补齐三个实现，缺一个就构建不过</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

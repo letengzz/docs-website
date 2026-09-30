@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 416" width="760" height="416" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="416" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">测试分层：越靠近契约越值得写</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">换库的回归成本，取决于契约测试有多厚——这一层是适配层能不能长期维护的分水岭</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">越往下数量越少、越贵；越往上越接近契约，越能拦住「换库后才发现」的问题</text>
+  <rect x="30.0" y="94" width="700" height="48" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="112.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">契约测试（数量最多）</text>
+  <text x="380" y="129" text-anchor="middle" font-size="8" fill="#1D4ED8">每个 X 组件、每个实现，跑同一组用例：渲染成功、props 生效、事件回调被触发</text>
+  <rect x="80.0" y="150" width="600" height="48" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="168.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">组件行为测试</text>
+  <text x="380" y="185" text-anchor="middle" font-size="8" fill="#047857">X 组件自身的行为与可访问性：键盘可达、loading 态、禁用态、插槽渲染</text>
+  <rect x="130.0" y="206" width="500" height="48" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="224.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">端到端关键路径</text>
+  <text x="380" y="241" text-anchor="middle" font-size="8" fill="#0F766E">登录、表单提交、表格分页三条路径在三个实现下都要跑通</text>
+  <rect x="180.0" y="262" width="400" height="48" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="380" y="280.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">门禁与变异测试</text>
+  <text x="380" y="297" text-anchor="middle" font-size="8" fill="#C2410C">改坏映射表 / 删掉一个实现，门禁必须报红——不报红说明门禁是摆设</text>
+  <text x="380" y="328" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">一条最有价值的断言：对同一个 X 组件，三个实现下的用例集合必须完全相同</text>
+  <rect x="30" y="344" width="120" height="26" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="90" y="361" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">可以自动化</text>
+  <rect x="156" y="344" width="574" height="26" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="443" y="361" text-anchor="middle" font-size="8.5" fill="#334155">渲染快照、props 透传、事件、可访问性属性、构建产物存在性</text>
+  <rect x="30" y="374" width="120" height="26" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="90" y="391" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">需要人工确认</text>
+  <rect x="156" y="374" width="574" height="26" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="443" y="391" text-anchor="middle" font-size="8.5" fill="#334155">视觉还原度、动效手感、组件库升级后的观感变化</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

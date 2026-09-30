@@ -41,7 +41,9 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/*.config.*', 'eslint.config.*'],
+    // 收窄到代码扩展名：`**/*.config.*` 会把 `ui.config.json` 这类 JSON 配置也扫进来，
+    // 而 JSON 不是 JS 语法，解析必报错（project/Base/NuxtTemplate/scripts/fixture/ui.config.json 即为此例）。
+    files: ['**/*.config.{js,mjs,cjs,ts,mts,cts}', 'eslint.config.*'],
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
     },

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">换库后的排障决策树</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">三类问题的排查路径完全不同，先分类再动手能省掉大部分无谓的重启</text>
+  <rect x="300" y="78" width="160" height="64" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="96.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">换库后出问题</text>
+  <text x="380" y="113" text-anchor="middle" font-size="7.5" fill="#334155">先分类，不要回滚</text>
+  <text x="380" y="130.25" text-anchor="middle" font-size="7.5" fill="#334155">更不要重装依赖</text>
+  <line x1="380" y1="142" x2="150" y2="170" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="60" y="170" width="180" height="108" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="150" y="188.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">水合不匹配</text>
+  <text x="150" y="205" text-anchor="middle" font-size="8" fill="#B45309">报 hydration mismatch</text>
+  <text x="150" y="223.4" text-anchor="middle" font-size="8" fill="#B45309">① 组件 ID 是否稳定</text>
+  <text x="150" y="241.8" text-anchor="middle" font-size="8" fill="#B45309">② 是否用了 ClientOnly</text>
+  <text x="150" y="260.2" text-anchor="middle" font-size="8" fill="#B45309">③ 服务端与客户端分支</text>
+  <line x1="380" y1="142" x2="380" y2="170" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="290" y="170" width="180" height="108" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="188.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">样式丢失或闪烁</text>
+  <text x="380" y="205" text-anchor="middle" font-size="8" fill="#B91C1C">首屏无样式 / 闪一下</text>
+  <text x="380" y="223.4" text-anchor="middle" font-size="8" fill="#B91C1C">① 样式是否被 tree-shake</text>
+  <text x="380" y="241.8" text-anchor="middle" font-size="8" fill="#B91C1C">② 样式注入顺序</text>
+  <text x="380" y="260.2" text-anchor="middle" font-size="8" fill="#B91C1C">③ 语义令牌是否缺映射</text>
+  <line x1="380" y1="142" x2="610" y2="170" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="520" y="170" width="180" height="108" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="610" y="188.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">类型报错</text>
+  <text x="610" y="205" text-anchor="middle" font-size="8" fill="#6D28D9">组件 props 红线</text>
+  <text x="610" y="223.4" text-anchor="middle" font-size="8" fill="#6D28D9">① 映射表类型是否同步</text>
+  <text x="610" y="241.8" text-anchor="middle" font-size="8" fill="#6D28D9">② 是否需重跑 nuxt prepare</text>
+  <text x="610" y="260.2" text-anchor="middle" font-size="8" fill="#6D28D9">③ 泛型组件签名</text>
+  <text x="380" y="302" text-anchor="middle" font-size="9.5" fill="#1E3A8A">通用顺序：确认现象 → 最小复现（一个页面一个组件）→ 看真实产物（curl 首屏 HTML）→ 再改配置</text>
+  <rect x="30" y="316" width="346" height="86" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="203" y="334.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">最有效的三个动作</text>
+  <text x="203" y="351" text-anchor="middle" font-size="8" fill="#047857">nuxi prepare 重生成类型</text>
+  <text x="203" y="369.4" text-anchor="middle" font-size="8" fill="#047857">构建后再 curl 首屏 HTML 对照</text>
+  <text x="203" y="387.8" text-anchor="middle" font-size="8" fill="#047857">切回上一个库跑同一页面做对照</text>
+  <rect x="388" y="316" width="346" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="561" y="334.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">最没用的三个动作</text>
+  <text x="561" y="351" text-anchor="middle" font-size="8" fill="#B91C1C">不清缓存就反复重启</text>
+  <text x="561" y="369.4" text-anchor="middle" font-size="8" fill="#B91C1C">直接改 node_modules 里的库文件</text>
+  <text x="561" y="387.8" text-anchor="middle" font-size="8" fill="#B91C1C">把差异写进业务页面「先绕过」</text>
+  <text x="380" y="424" text-anchor="middle" font-size="9.5" fill="#6D28D9">记住：换库是一次「接口对齐」，不是一次「碰运气」——所有差异都应该能被枚举出来</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

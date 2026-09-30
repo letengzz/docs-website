@@ -4,3 +4,4 @@
 
 - [Vue3模板](Vue3Template/index.md)
 - [后端通用模板](BackendTemplate/index.md)（周期 3 月度项目：Spring Boot 4.1 + Java 25，覆盖统一响应、全局异常、认证、数据访问、可观测与容器化部署）
+- [Nuxt通用模板](NuxtTemplate/index.md)（从 0 到 1 构建：UI 组件库 Element Plus / Ant Design Vue / Nuxt UI / Vuetify 自由选择，业务代码换库零改动，切换只需一条命令）

@@ -60,6 +60,23 @@ export const BaseProject = [
           { text: "进展记录", link: "/project/Base/BackendTemplate/Progress/index.md" },
         ],
       },
+      {
+        text: "Nuxt 通用模板",
+        link: "/project/Base/NuxtTemplate/index.md",
+        collapsed: true,
+        items: [
+          { text: "需求与可插拔边界", link: "/project/Base/NuxtTemplate/Requirement/index.md" },
+          { text: "脚手架与工程规约", link: "/project/Base/NuxtTemplate/Scaffold/index.md" },
+          { text: "适配层设计", link: "/project/Base/NuxtTemplate/AdapterDesign/index.md" },
+          { text: "三套内置适配器", link: "/project/Base/NuxtTemplate/Adapters/index.md" },
+          { text: "设计令牌与主题桥接", link: "/project/Base/NuxtTemplate/DesignToken/index.md" },
+          { text: "切换工具链与多形态构建", link: "/project/Base/NuxtTemplate/SwitchTooling/index.md" },
+          { text: "测试与门禁", link: "/project/Base/NuxtTemplate/Testing/index.md" },
+          { text: "部署与交付", link: "/project/Base/NuxtTemplate/Deployment/index.md" },
+          { text: "常见问题与反模式", link: "/project/Base/NuxtTemplate/FAQ/index.md" },
+          { text: "进展记录", link: "/project/Base/NuxtTemplate/Progress/index.md" },
+        ],
+      },
     ],
   },
 ];
