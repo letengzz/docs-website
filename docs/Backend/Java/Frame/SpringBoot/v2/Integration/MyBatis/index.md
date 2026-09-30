@@ -40,7 +40,7 @@ mybatis:
 
 :::
 
-# SpringBoot整合Mybatis-Plus
+## SpringBoot整合Mybatis-Plus
 
 官网文档：[简介 | MyBatis-Plus (baomidou.com)](https://baomidou.com/introduce/)
 

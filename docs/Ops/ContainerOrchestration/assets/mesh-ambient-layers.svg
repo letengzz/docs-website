@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 396" width="760" height="396" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="396" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Ambient 模式的三层结构与采纳路径</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">从 0（不进网格）到 1（L4 安全覆盖）再到 2（L7 治理），每一步都能独立回滚</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">分层采纳：不需要 L7 就别付 L7 的代价</text>
+  <rect x="30" y="94" width="700" height="78" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="112.2" text-anchor="middle" font-size="10.5" fill="#92400E" font-weight="bold">第 2 层 · Waypoint（Envoy，按需部署）</text>
+  <text x="380" y="129" text-anchor="middle" font-size="8.5" fill="#B45309">能力：HTTP 路由（VirtualService / HTTPRoute）、L7 授权、L7 遥测、JWT、限流</text>
+  <text x="380" y="148.55" text-anchor="middle" font-size="8.5" fill="#B45309">触发：给命名空间或服务打 istio.io/use-waypoint=&lt;名称&gt; 才会经过它；不打就不经过</text>
+  <text x="380" y="168.1" text-anchor="middle" font-size="8.5" fill="#B45309">代价：多一段网络跳转与一份 Envoy 资源占用，因此按「哪些服务真的需要 L7」逐个开</text>
+  <line x1="380" y1="172" x2="380" y2="194" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="194" width="700" height="78" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="212.2" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">第 1 层 · ztunnel（Rust，节点级 DaemonSet，默认开启）</text>
+  <text x="380" y="229" text-anchor="middle" font-size="8.5" fill="#047857">能力：L3/L4 的 mTLS、身份认证、L4 授权、L4 遥测，用 HBONE 隧道承载</text>
+  <text x="380" y="248.55" text-anchor="middle" font-size="8.5" fill="#047857">特点：每个节点一个，与 Pod 数量解耦；业务 Pod 零注入、零重启</text>
+  <text x="380" y="268.1" text-anchor="middle" font-size="8.5" fill="#047857">边界：不解析 HTTP，所以看得到「谁调谁」，看不到「调了哪个 URL」</text>
+  <line x1="380" y1="272" x2="380" y2="294" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="294" width="700" height="62" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="312.2" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">第 0 层 · 加入网格（一个标签的事）</text>
+  <text x="380" y="329" text-anchor="middle" font-size="8.5" fill="#1D4ED8">kubectl label ns &lt;ns&gt; istio.io/dataplane-mode=ambient</text>
+  <text x="380" y="348.55" text-anchor="middle" font-size="8.5" fill="#1D4ED8">取消加入：kubectl label ns &lt;ns&gt; istio.io/dataplane-mode-（标签移除即退网格）</text>
+  <text x="380" y="380" text-anchor="middle" font-size="9.5" fill="#1E3A8A">回滚设计是这套分层最大的好处：任何一层都能单独关掉，不需要动业务清单</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

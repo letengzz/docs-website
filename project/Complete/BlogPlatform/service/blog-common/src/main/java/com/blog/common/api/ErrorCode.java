@@ -14,6 +14,8 @@ public enum ErrorCode {
     PARAM_PAGE_OUT_OF_RANGE(1002, "分页参数超出允许范围"),
 
     RESOURCE_NOT_FOUND(2001, "资源不存在"),
+    RESOURCE_CONFLICT(2002, "资源冲突：唯一键已存在"),
+    STATE_CONFLICT(2003, "状态冲突：当前状态不允许该操作"),
 
     UNAUTHORIZED(3001, "未认证"),
     FORBIDDEN(3002, "无权限"),

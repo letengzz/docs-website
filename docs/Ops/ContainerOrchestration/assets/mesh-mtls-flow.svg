@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 404" width="760" height="404" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="404" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">mTLS 与三类安全策略的执行位置</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">加密、验签、授权是三件事：Ambient 模式默认把第一件做掉且无法关闭</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">身份来自证书而不是 IP：SPIFFE 主体是授权的唯一可信依据</text>
+  <rect x="30" y="94" width="150" height="92" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="105" y="112.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">调用方 Pod</text>
+  <text x="105" y="129" text-anchor="middle" font-size="7.5" fill="#1D4ED8">业务容器</text>
+  <text x="105" y="146.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">istio-proxy / ztunnel</text>
+  <text x="105" y="163.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">持有 workload 证书</text>
+  <line x1="180" y1="140" x2="218" y2="140" stroke="#059669" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="199" y="132" text-anchor="middle" font-size="7.5" fill="#047857">HBONE</text>
+  <rect x="218" y="94" width="170" height="92" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="303" y="112.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">隧道与认证</text>
+  <text x="303" y="129" text-anchor="middle" font-size="7.5" fill="#047857">mTLS（双向校验证书）</text>
+  <text x="303" y="146.25" text-anchor="middle" font-size="7.5" fill="#047857">主体：cluster.local/ns/</text>
+  <text x="303" y="163.5" text-anchor="middle" font-size="7.5" fill="#047857">      default/sa/xxx</text>
+  <text x="303" y="180.75" text-anchor="middle" font-size="7.5" fill="#047857">证书由 istiod CA 轮换</text>
+  <line x1="388" y1="140" x2="426" y2="140" stroke="#059669" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="426" y="94" width="150" height="92" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="501" y="112.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">被调用方 Pod</text>
+  <text x="501" y="129" text-anchor="middle" font-size="7.5" fill="#6D28D9">ztunnel / istio-proxy</text>
+  <text x="501" y="146.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">先认证，再授权</text>
+  <text x="501" y="163.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">最后才转发给业务</text>
+  <line x1="501" y1="186" x2="501" y2="214" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="426" y="214" width="150" height="76" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="501" y="232.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">拒绝的动作</text>
+  <text x="501" y="249" text-anchor="middle" font-size="8" fill="#B91C1C">401：对端身份缺失</text>
+  <text x="501" y="267.4" text-anchor="middle" font-size="8" fill="#B91C1C">403：身份合法但无权限</text>
+  <text x="501" y="285.8" text-anchor="middle" font-size="8" fill="#B91C1C">两者含义天差地别</text>
+  <line x1="30" y1="202" x2="730" y2="202" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="60" y="232" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">三类策略各管一段，别把它们混成一件事</text>
+  <rect x="30" y="244" width="226" height="92" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="143" y="262.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">PeerAuthentication</text>
+  <text x="143" y="279" text-anchor="middle" font-size="8" fill="#6D28D9">管「传输要不要加密」</text>
+  <text x="143" y="297.4" text-anchor="middle" font-size="8" fill="#6D28D9">STRICT / PERMISSIVE / DISABLE</text>
+  <text x="143" y="315.8" text-anchor="middle" font-size="8" fill="#6D28D9">Ambient 下无 DISABLE</text>
+  <rect x="268" y="244" width="226" height="92" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="381" y="262.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">RequestAuthentication</text>
+  <text x="381" y="279" text-anchor="middle" font-size="8" fill="#0F766E">管「这个 JWT 是谁签的」</text>
+  <text x="381" y="297.4" text-anchor="middle" font-size="8" fill="#0F766E">校验签发方与受众</text>
+  <text x="381" y="315.8" text-anchor="middle" font-size="8" fill="#0F766E">校验通过才产出主体</text>
+  <rect x="506" y="244" width="226" height="92" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="619" y="262.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">AuthorizationPolicy</text>
+  <text x="619" y="279" text-anchor="middle" font-size="8" fill="#B91C1C">管「这个身份能做什么」</text>
+  <text x="619" y="297.4" text-anchor="middle" font-size="8" fill="#B91C1C">ALLOW / DENY / CUSTOM / AUDIT</text>
+  <text x="619" y="315.8" text-anchor="middle" font-size="8" fill="#B91C1C">按路径、方法、主体匹配</text>
+  <text x="380" y="362" text-anchor="middle" font-size="9.5" fill="#B91C1C">推进顺序不能反：先落地 RequestAuthentication（不拦流量）→ 再 AuthorizationPolicy → 最后切 STRICT mTLS</text>
+  <text x="380" y="386" text-anchor="middle" font-size="9.5" fill="#64748B">直接切 STRICT 的代价：所有未入网格的调用方（本地调试、遗留系统、外部依赖）会立刻连不上</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

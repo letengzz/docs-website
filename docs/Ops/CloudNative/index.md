@@ -34,6 +34,7 @@
 - [云函数工程化](FunctionEngineering/index.md) → [CI/CD 自动部署与回滚](../../Tools/CICD/DeployRollback/index.md)：CI/CD 专题讲通用的**发布流水线与回滚策略**；函数同样需要灰度与回滚，但打包产物是部署包/镜像、发布单元是版本与别名，差异在本专题单独说明。
 - [概述与选型](Overview/index.md) → [Terraform](../Terraform/index.md)：Terraform 专题讲 **IaC 的 state、模块与工作流**；本专题只给出函数与托管集群的最小 IaC 片段，完整工程化请回到 Terraform 专题。
 - [云函数工程化](FunctionEngineering/index.md) → [数据库](../../DB/Relational/index.md) 与 [NoSQL 数据库](../../DB/NoRelational/index.md)：数据库专题讲**选型与建模**；本专题只讲函数侧怎么建连接、怎么保证幂等写入。
+- [托管容器服务](ContainerService/index.md) → [服务网格：Istio](../ContainerOrchestration/ServiceMesh/index.md)：网格专题讲**自建流量治理层**——Sidecar 与 Ambient 两种数据面怎么装、VirtualService 怎么写、mTLS 怎么开、可观测性数据从哪来；本专题只回答**这笔能力该自建还是托管**：厂商的托管网格把控制面变成按 Pod 数或按请求量计费的资源，省掉控制面运维，但数据面（每个 Pod 一个 Sidecar 的 CPU/内存）仍记在你的账单上。要算清这笔账，配合[云成本治理（FinOps）](FinOps/index.md)的单位成本口径一起看。
 
 ## 学习路径建议
 

@@ -262,6 +262,16 @@ kubectl -n argocd get pods -l app.kubernetes.io/name=argocd-server
 
 预期：`Sync Status: Synced`、`Health Status: Healthy`；手动漂移在自愈窗口内被纠正；UI 中可以清楚看到「期望 vs 实际」差异视图。
 
+## 相关专题与分工
+
+- [服务网格：Istio 流量与安全治理](../ServiceMesh/index.md)：本专题讲**声明怎么进集群**——Application / ApplicationSet 怎么写、漂移怎么检测与自愈、回滚怎么保证原子性，管的是「期望状态 → 实际状态」这条同步链路；网格专题讲**声明里写什么**——VirtualService 的匹配与路由、DestinationRule 的熔断与连接池、PeerAuthentication 的 mTLS 模式、Sidecar/Ambient 怎么装。两者的接口是同一件事：**网格的全部配置都是 K8s 自定义资源（CRD），因此天然适合放进 Git 由 Argo CD 同步**——Istio 官方推荐的 `istioctl install --set ...` 只是起步，生产环境更稳的做法是把 `Istiod` 的安装清单与流量策略都纳入 GitOps 仓库。
+
+  ::: tip 一条实践建议
+  网格的渐进式发布（[流量管理：匹配、路由与灰度](../ServiceMesh/TrafficManagement/index.md)）天然要求「改一次策略 → 观察指标 → 再改一次」，每个中间状态都必须落盘。把它交给 GitOps，回滚就是 `git revert` + 一次同步，比记着一串 `kubectl apply` 的历史可靠得多。
+  :::
+- [多集群：联邦、MCS 与容灾](../MultiCluster/index.md)：网格的多集群控制面要靠 ApplicationSet 按集群分发配置，两者一起才构成跨集群容灾闭环。
+- [Kubernetes](../../Kubernetes/index.md)：CRD、`kubectl` 与控制器模式的前置知识。
+
 ## 参考资料
 
 - Argo CD 官方文档：<https://argo-cd.readthedocs.io/>

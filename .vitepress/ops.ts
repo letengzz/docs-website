@@ -214,7 +214,22 @@ export const ContainerOrchestration = [
     items: [
       { text: "Helm：Kubernetes 应用包管理", link: "/docs/Ops/ContainerOrchestration/Helm/index.md" },
       { text: "Operator：把运维经验变成代码", link: "/docs/Ops/ContainerOrchestration/Operator/index.md" },
-      { text: "服务网格：Istio 流量与安全治理", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/index.md" },
+      {
+        text: "服务网格：Istio 流量与安全治理",
+        link: "/docs/Ops/ContainerOrchestration/ServiceMesh/index.md",
+        collapsed: true,
+        items: [
+          { text: "架构原理：控制面与两种数据面", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/Architecture/index.md" },
+          { text: "版本演进与升级策略", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/Version/index.md" },
+          { text: "流量管理：匹配、路由与灰度", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/TrafficManagement/index.md" },
+          { text: "韧性设计：超时、重试、熔断与限流", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/Resilience/index.md" },
+          { text: "可观测性：指标、日志与追踪", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/Observability/index.md" },
+          { text: "安全：mTLS、身份与授权", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/Security/index.md" },
+          { text: "Ambient 模式：无 Sidecar 的分层网格", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/AmbientMesh/index.md" },
+          { text: "实战：为博客平台接入网格", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/Practice/index.md" },
+          { text: "常见问题与排错", link: "/docs/Ops/ContainerOrchestration/ServiceMesh/FAQ/index.md" },
+        ],
+      },
       { text: "弹性伸缩：HPA、VPA 与 KEDA", link: "/docs/Ops/ContainerOrchestration/Autoscaling/index.md" },
       { text: "多集群：联邦、MCS 与容灾", link: "/docs/Ops/ContainerOrchestration/MultiCluster/index.md" },
       { text: "GitOps：Argo CD 声明式交付", link: "/docs/Ops/ContainerOrchestration/GitOps/index.md" },

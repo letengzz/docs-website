@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="380" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">网格可观测性：一个代理产出三类遥测</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">不用改一行业务代码就能拿到服务间调用的指标、日志与链路，这是网格最实的收益之一</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">同一个代理同时产出三类遥测，分别回答「现在多快」「刚才发生了什么」「慢在哪一段」</text>
+  <rect x="30" y="94" width="150" height="150" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="105" y="112.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">数据源</text>
+  <text x="105" y="129" text-anchor="middle" font-size="8" fill="#6D28D9">Envoy</text>
+  <text x="105" y="147.4" text-anchor="middle" font-size="8" fill="#6D28D9">（sidecar / waypoint）</text>
+  <text x="105" y="165.8" text-anchor="middle" font-size="8" fill="#6D28D9"></text>
+  <text x="105" y="184.2" text-anchor="middle" font-size="8" fill="#6D28D9">ztunnel</text>
+  <text x="105" y="202.6" text-anchor="middle" font-size="8" fill="#6D28D9">（L4 指标）</text>
+  <text x="105" y="221" text-anchor="middle" font-size="8" fill="#6D28D9"></text>
+  <text x="105" y="239.4" text-anchor="middle" font-size="8" fill="#6D28D9">应用自身 /metrics</text>
+  <line x1="180" y1="140" x2="218" y2="140" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="180" y1="170" x2="218" y2="170" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="180" y1="200" x2="218" y2="200" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="218" y="94" width="236" height="46" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="336" y="112.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">指标 Metrics</text>
+  <text x="336" y="129" text-anchor="middle" font-size="7" fill="#1D4ED8">istio_requests_total</text>
+  <text x="336" y="145.1" text-anchor="middle" font-size="7" fill="#1D4ED8">istio_request_duration_milliseconds</text>
+  <text x="336" y="161.2" text-anchor="middle" font-size="7" fill="#1D4ED8">response_code / response_flags</text>
+  <line x1="454" y1="117" x2="492" y2="117" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="218" y="146" width="236" height="46" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="336" y="164.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">访问日志 Access Log</text>
+  <text x="336" y="181" text-anchor="middle" font-size="7" fill="#0F766E">Telemetry API 统一下发</text>
+  <text x="336" y="197.1" text-anchor="middle" font-size="7" fill="#0F766E">含 upstream_host、时长、上游错误</text>
+  <text x="336" y="213.2" text-anchor="middle" font-size="7" fill="#0F766E">采样率可调，别全量落盘</text>
+  <line x1="454" y1="169" x2="492" y2="169" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="218" y="198" width="236" height="46" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="336" y="216.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">追踪 Traces</text>
+  <text x="336" y="233" text-anchor="middle" font-size="7" fill="#047857">按 Traceparent 请求头串联</text>
+  <text x="336" y="249.1" text-anchor="middle" font-size="7" fill="#047857">网关 → 服务 → 服务</text>
+  <text x="336" y="265.2" text-anchor="middle" font-size="7" fill="#047857">需要应用侧透传上下文</text>
+  <line x1="454" y1="221" x2="492" y2="221" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="492" y="94" width="238" height="150" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="611" y="112.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">后端与分析</text>
+  <text x="611" y="129" text-anchor="middle" font-size="8" fill="#B45309">Prometheus：指标长期存储与告警</text>
+  <text x="611" y="147.4" text-anchor="middle" font-size="8" fill="#B45309">Loki / ES：访问日志检索</text>
+  <text x="611" y="165.8" text-anchor="middle" font-size="8" fill="#B45309">Tempo / Jaeger：链路查询</text>
+  <text x="611" y="184.2" text-anchor="middle" font-size="8" fill="#B45309">Kiali：拓扑与服务健康度</text>
+  <text x="611" y="202.6" text-anchor="middle" font-size="8" fill="#B45309">Grafana：统一看板</text>
+  <text x="380" y="274" text-anchor="middle" font-size="10" fill="#1E3A8A">指标口径要统一：istio_requests_total 按 reporter（source/destination）重复计数，求和时先选一侧</text>
+  <rect x="30" y="288" width="700" height="74" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="306" text-anchor="middle" font-size="8.5" fill="#334155">三类遥测的取舍：指标便宜但要预定义维度，日志最全但最贵，追踪最贵但定位最快</text>
+  <text x="380" y="325.55" text-anchor="middle" font-size="8.5" fill="#334155">落地顺序建议：先指标（5 分钟接入）→ 再访问日志（排障必需）→ 最后追踪（按调用链复杂度决定）</text>
+  <text x="380" y="345.1" text-anchor="middle" font-size="8.5" fill="#334155">采样纪律：追踪「低频全采 + 高频按比例」，访问日志默认只记 error 与慢请求</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

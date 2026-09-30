@@ -118,3 +118,59 @@ python api_smoke.py --selftest           # ✅ 实测：selftest: 9/9（每条�
 | 门禁 OK 的行打印的是失败措辞 | `Result.add` 增加独立的成功/失败措辞——「OK 生产配置缺少占位符」这种输出会让人把通过读成不通过 |
 
 **下一步（第 94 天）**：① 仓储换成真库（JDBC 实现 + `-Pflyway` 装载 `db/mysql/V1__blog_init.sql`，验证真能建出 7 张表）；② 把 `api_smoke.py` 的用例上移成 MockMvc 集成测试，让契约断言进 `mvn test`；③ 实现管理端 `POST /api/v1/admin/posts`，跑通「写 → 渲染 → 读」链路。
+
+## 2026-09-30（第 98 天）：文章写入链路 —— 管理端 CRUD + 发布状态机 + 第三道门禁
+
+:::info 信息
+第 94-97 天的「第 1 周收尾」三项中，**管理端写接口**提前到本日落地；「仓储接真库」与「契约测试上移 `mvn test`」仍在待办中，见文末下一步。这样安排的依据是：写接口是第 2 周核心编码的入口，先把「写 → 渲染 → 读」打通，真库接入才有真实的读写路径可换。
+:::
+
+**做了什么**：
+
+1. **管理端写接口**（[文章写入链路](../WritePath/index.md)）：`POST /api/v1/admin/posts`（建草稿）、`PUT /{id}`（改标题/slug/归属/正文）、`DELETE /{id}`（软删除）、`POST /{id}/publish`（发布）；契约里声明的 400/404/409 分支**首次有了实现**；
+2. **状态只能由动作改变**：`PostUpsert` 入参**没有 `status` 字段**，发布是唯一的"转 PUBLISHED"入口；状态机 `DRAFT → PUBLISHED`，重复发布返回 **409 而不是幂等 200**——假幂等会掩盖调用方手里的过期状态；
+3. **软删除语义**：新增内部终态 `DELETED`（**不在对外契约枚举里**），对外一律表现为 404；软删除同时清空 `publishedAt`，让「有人绕过状态判断」也放不出已删文章；
+4. **分类与标签字典**：新增 `TaxonomyRepository` + 内存实现，读者端 `GET /api/v1/categories|tags`，后台端 `POST /api/v1/admin/{categories|tags}`；**id → slug 的翻译只发生在数据层一处**（写入用 id、读出用 slug 是契约的刻意设计）；
+5. **Markdown 渲染管线**（`MarkdownRenderer`）：**先全量转义、再拼自己产出的标签**；链接只放行 `http/https` 与站内 `/` 路径，`javascript:` 等协议整段降级为纯文本，不做"看起来像但不安全"的降级；
+6. **统一响应补 `detail`**：`BizException` 新增 `(ErrorCode, String detail)`，`message` 变成「错误码文案：定位信息」，让后台表单能直接定位到哪一格错了（如 `参数不合法：categoryId 不存在：999999`）；
+7. **第三道门禁 `admin_smoke.py`**：37 个顺序步骤覆盖写链路全分支，内置 `--selftest` 变异测试；与只读的 `api_smoke.py` **结构性地分开**（只读脚本因此可以安全指向任何环境）。
+
+**如何验证**：
+
+```shell
+cd project/Complete/BlogPlatform/service
+
+# ① 结构门禁
+python skeleton_check.py                  # ✅ 实测：checks = 27  failed = 0  → PASS
+
+# ② 先停服务再安装：运行中的 JVM 会锁住本地仓库里的 jar，顺序反了会报 ...tmp -> ....jar
+mvn -o install -DskipTests                # ✅ 实测：BUILD SUCCESS，四模块全绿
+
+# ③ 两条运行路径都保留，本日用 local（内存仓储，无数据库）
+cd blog-application && SERVER_PORT=18080 mvn -o spring-boot:run
+# ✅ 实测：Started BlogApplication in 7.92s，Tomcat 监听 18080
+
+# ④ 行为门禁（另开终端）
+cd .. && python api_smoke.py --base http://127.0.0.1:18080
+# ✅ 实测：cases = 9  passed = 9  failed = 0  → PASS（只读，不写任何数据）
+python admin_smoke.py --base http://127.0.0.1:18080
+# ✅ 实测：steps = 37  passed = 37  failed = 0  → PASS
+python admin_smoke.py --base http://127.0.0.1:18080
+# ✅ 实测：连跑第二遍仍 37/37 —— 不重启服务即可重复执行
+python admin_smoke.py --selftest
+# ✅ 实测：selftest: 37/37 通过（37 步在空响应下都至少有一条断言报错）
+```
+
+**问题与决策**：
+
+| 问题 | 决策 |
+| --- | --- |
+| 已发布文章改了正文，读者端仍显示旧内容 | `update` 沿用了旧 `contentHtml`。它是 `contentMd` 的**派生物**：已发布时必须重算，草稿保持 `null`（发布时才渲染）。门禁里专门加了「更新后读者端读到新正文」这一步，第二遍跑才暴露 |
+| `BizException` 报「需要 ErrorCode / 找到 ErrorCode,String」 | 异常类补 `(ErrorCode, String detail)` 构造器，并把 `detail` 一路带到统一响应——**只回「参数不合法」，后台表单无法自修** |
+| 门禁写了「检查 id 是正数」却发现它对空响应也通过 | `--selftest` 当场抓出：该步只读上下文、与 HTTP 响应无关，**永远不可能失败**。改为对响应断言 `field_gt("id", 9000)`（用「> 下界」而非「存在」，因为 `null`/`0` 都能骗过存在性判断） |
+| 门禁第一版只能跑一遍 | `total=3` / `list_len(3)` 写死了绝对值，第二遍必然误报。改为「开跑先抓基线、断言 `基线+delta`」 |
+| 连跑两遍时 19 步级联失败，报错指向接口 | 真因是 `RUN_TAG` 只精确到秒，同一秒内两遍撞 slug → 创建拿到 409。修法是给 slug 加随机位（`uuid.uuid4().hex[:4]`）；**这类假失败最耗时间，要在数据生成源头消掉** |
+| 改了 `blog-data` 但 `spring-boot:run` 跑的是旧 jar | `spring-boot:run` 在子模块目录下只编译该模块，其余从本地仓库取。纪律：**改过 `blog-data`/`blog-web` 必须先回 `service/` 跑一次 `mvn install`** |
+| 双脚本重复覆盖同一批断言 | 把 `api_smoke.py` 恢复为纯只读、写链路全部归 `admin_smoke.py`：合成一个文件用 `--readonly` 开关区分，等于把安全边界交给人的记忆 |
+
+**下一步（第 99 天）**：① 仓储接真库（`blog-data` 加 JDBC 实现 + `-Pflyway` 装载 `db/mysql/V1__blog_init.sql`，验证真能建出 7 张表）；② 把 `admin_smoke.py` 的写链路步骤上移成 MockMvc 集成测试，契约断言进 `mvn test`；③ 补契约里已声明但尚未实现的 `401 / 403` 分支（认证与角色）。

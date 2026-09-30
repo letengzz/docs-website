@@ -1,8 +1,8 @@
-## 数据校验：Validation
+# 数据校验：Validation
 
 ![image-20221218154808754](assets/202307161405225.png)
 
-### Spring Validation概述
+## Spring Validation概述
 
 ![image-20221206220207266](assets/202307161405347.png)
 
@@ -18,7 +18,7 @@
 
 - 实现自定义校验
 
-### 通过Validator接口实现
+## 通过Validator接口实现
 
 1. 创建子模块并导入依赖：
 
@@ -129,7 +129,7 @@ public class Person {
 
    ![image-20230716152610738](assets/202307161526581.png)
 
-### Bean Validation注解实现
+## Bean Validation注解实现
 
 使用Bean Validation校验方式，就是如何将Bean Validation需要使用的`javax.validation.ValidatorFactory` 和`javax.validation.Validator`注入到容器中。spring默认有一个实现类LocalValidatorFactoryBean，它实现了上面Bean Validation中的接口，并且也实现了`org.springframework.validation.Validator`接口。
 
@@ -272,7 +272,7 @@ public class Person {
    }
    ```
 
-### 基于方法实现校验
+## 基于方法实现校验
 
 1. 创建配置类，配置MethodValidationPostProcessor：
 
@@ -376,7 +376,7 @@ public class Person {
 
    ![image-20230716155126275](assets/202307161551578.png)
 
-### 实现自定义校验
+## 实现自定义校验
 
 1. 自定义校验注解(参照了`@NotNull`)：
 

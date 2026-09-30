@@ -7,8 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.stream.Collectors;
 
 /**
  * 统一异常出口：**错误码 → HTTP 状态**的映射只在这里出现一次。
@@ -26,11 +29,28 @@ public class GlobalExceptionHandler {
         HttpStatus status = switch (ex.errorCode()) {
             case PARAM_INVALID, PARAM_PAGE_OUT_OF_RANGE -> HttpStatus.BAD_REQUEST;
             case RESOURCE_NOT_FOUND -> HttpStatus.NOT_FOUND;
+            case RESOURCE_CONFLICT, STATE_CONFLICT -> HttpStatus.CONFLICT;
             case UNAUTHORIZED -> HttpStatus.UNAUTHORIZED;
             case FORBIDDEN -> HttpStatus.FORBIDDEN;
             default -> HttpStatus.INTERNAL_SERVER_ERROR;
         };
-        return ResponseEntity.status(status).body(Result.fail(ex.errorCode()));
+        // detail 一路带到响应里：入口校验（如「categoryId 不存在：9」）靠它才能定位到具体值
+        return ResponseEntity.status(status).body(Result.fail(ex.errorCode(), ex.detail()));
+    }
+
+    /**
+     * 参数校验失败：把**字段名与原因**一并返回，而不是笼统的一句「参数不合法」。
+     *
+     * <p>这条是写接口的可用性底线：后台页面拿到 {@code title: 不能为空} 可以直接定位到表单哪一格，
+     * 拿到「参数不合法」只能去翻服务端日志。
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Result<Void>> handleInvalid(MethodArgumentNotValidException ex) {
+        String detail = ex.getBindingResult().getFieldErrors().stream()
+                .map(fe -> fe.getField() + " " + fe.getDefaultMessage())
+                .sorted()
+                .collect(Collectors.joining("；"));
+        return ResponseEntity.badRequest().body(Result.fail(ErrorCode.PARAM_INVALID, detail));
     }
 
     /**

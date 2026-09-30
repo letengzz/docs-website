@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 408" width="760" height="408" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="408" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">韧性四层防线与重试放大效应</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">超时、重试、熔断、限流各拦一类故障；重试是最容易被误用的一条</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">四道防线各自拦一类故障，缺一道就会把故障放大到上一层</text>
+  <rect x="30" y="94" width="168" height="108" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="114" y="112.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">超时 Timeout</text>
+  <text x="114" y="129" text-anchor="middle" font-size="7.5" fill="#1D4ED8">防「无限等待」</text>
+  <text x="114" y="146.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">Istio 默认不设 HTTP 超时</text>
+  <text x="114" y="163.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">必须小于上游调用方的超时</text>
+  <text x="114" y="180.75" text-anchor="middle" font-size="7.5" fill="#1D4ED8">否则你等到了、上游早放弃</text>
+  <rect x="210" y="94" width="168" height="108" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="294" y="112.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">重试 Retry</text>
+  <text x="294" y="129" text-anchor="middle" font-size="7.5" fill="#0F766E">防「偶发抖动」</text>
+  <text x="294" y="146.25" text-anchor="middle" font-size="7.5" fill="#0F766E">默认 attempts=2</text>
+  <text x="294" y="163.5" text-anchor="middle" font-size="7.5" fill="#0F766E">只能用于幂等方法</text>
+  <text x="294" y="180.75" text-anchor="middle" font-size="7.5" fill="#0F766E">指数退避 + 重试预算</text>
+  <rect x="390" y="94" width="168" height="108" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="474" y="112.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">熔断 Outlier</text>
+  <text x="474" y="129" text-anchor="middle" font-size="7.5" fill="#B45309">防「坏实例拖垮全局」</text>
+  <text x="474" y="146.25" text-anchor="middle" font-size="7.5" fill="#B45309">连续 5xx 命中即摘除</text>
+  <text x="474" y="163.5" text-anchor="middle" font-size="7.5" fill="#B45309">baseEjectionTime 后放回</text>
+  <text x="474" y="180.75" text-anchor="middle" font-size="7.5" fill="#B45309">连接池上限是前置闸门</text>
+  <rect x="570" y="94" width="168" height="108" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="654" y="112.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">限流 RateLimit</text>
+  <text x="654" y="129" text-anchor="middle" font-size="7.5" fill="#B91C1C">防「过载蔓延」</text>
+  <text x="654" y="146.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">入口与出口都要设</text>
+  <text x="654" y="163.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">超限返回 429 而非排队</text>
+  <text x="654" y="180.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">阈值必须来自压测数据</text>
+  <text x="60" y="232" text-anchor="start" font-size="11" fill="#991B1B" font-weight="bold">重试放大：为什么「多试几次」反而会打垮下游</text>
+  <rect x="30" y="244" width="216" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="138" y="262.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">L1 网关：重试 3 次</text>
+  <text x="138" y="279" text-anchor="middle" font-size="8" fill="#6D28D9">1 个用户请求 → 4 次下游调用</text>
+  <text x="138" y="297.4" text-anchor="middle" font-size="8" fill="#6D28D9">（首次 + 3 次重试）</text>
+  <line x1="246" y1="292" x2="282" y2="292" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="282" y="244" width="216" height="96" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="390" y="262.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">L2 服务：重试 3 次</text>
+  <text x="390" y="279" text-anchor="middle" font-size="8" fill="#C2410C">4 × 4 = 16 次实际调用</text>
+  <text x="390" y="297.4" text-anchor="middle" font-size="8" fill="#C2410C">多层叠加是乘法，不是加法</text>
+  <line x1="498" y1="292" x2="534" y2="292" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="534" y="244" width="196" height="96" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="632" y="262.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">L3 数据库：被打爆</text>
+  <text x="632" y="279" text-anchor="middle" font-size="8" fill="#B91C1C">故障期间的有效流量被放大 16 倍</text>
+  <text x="632" y="297.4" text-anchor="middle" font-size="8" fill="#B91C1C">越重试越起不来</text>
+  <text x="380" y="366" text-anchor="middle" font-size="9.5" fill="#B91C1C">三条纪律：只重试幂等请求 · 重试预算（RetryBudget）封顶总量 · 每层都有超时且内层小于外层</text>
+  <text x="380" y="390" text-anchor="middle" font-size="9.5" fill="#64748B">反直觉的一点：故障注入的延迟/中止与同一条 VirtualService 上的重试、超时不能组合，否则后两者不生效</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -4,121 +4,298 @@
     "title": "全栈博客平台 API",
     "version": "0.1.0",
     "description": "第 92 天契约先行定稿。四条链路：文章（读者+作者）、分类标签、评论、搜索。统一响应 Result<T>：{code, message, data}；认证 Bearer JWT（复用后端通用模板）。",
-    "license": { "name": "MIT" }
+    "license": {
+      "name": "MIT"
+    }
   },
   "servers": [
-    { "url": "http://localhost:8080", "description": "本地开发" }
+    {
+      "url": "http://localhost:8080",
+      "description": "本地开发"
+    }
   ],
   "tags": [
-    { "name": "文章", "description": "读者端浏览与作者端管理" },
-    { "name": "分类标签", "description": "分类与标签的浏览与维护" },
-    { "name": "评论", "description": "两级评论：楼层 + 楼内回复" },
-    { "name": "搜索", "description": "ngram FULLTEXT 检索，SearchService 单接口" }
+    {
+      "name": "文章",
+      "description": "读者端浏览与作者端管理"
+    },
+    {
+      "name": "分类标签",
+      "description": "分类与标签的浏览与维护"
+    },
+    {
+      "name": "评论",
+      "description": "两级评论：楼层 + 楼内回复"
+    },
+    {
+      "name": "搜索",
+      "description": "ngram FULLTEXT 检索，SearchService 单接口"
+    }
   ],
   "components": {
     "securitySchemes": {
-      "bearerAuth": { "type": "http", "scheme": "bearer", "bearerFormat": "JWT" }
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     },
     "schemas": {
       "Result": {
         "type": "object",
-        "required": ["code", "message"],
+        "required": [
+          "code",
+          "message"
+        ],
         "properties": {
-          "code": { "type": "integer", "description": "0 成功；非 0 业务错误码" },
-          "message": { "type": "string" },
+          "code": {
+            "type": "integer",
+            "description": "0 成功；非 0 业务错误码"
+          },
+          "message": {
+            "type": "string"
+          },
           "data": {}
         }
       },
       "PageParam": {
         "type": "object",
         "properties": {
-          "page": { "type": "integer", "minimum": 1, "default": 1 },
-          "size": { "type": "integer", "minimum": 1, "maximum": 50, "default": 10 }
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 1
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 10
+          }
         }
       },
       "PostSummary": {
         "type": "object",
-        "required": ["id", "slug", "title", "status", "publishedAt"],
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "status",
+          "publishedAt"
+        ],
         "properties": {
-          "id": { "type": "integer", "format": "int64" },
-          "slug": { "type": "string", "maxLength": 128 },
-          "title": { "type": "string", "maxLength": 128 },
-          "status": { "type": "string", "enum": ["DRAFT", "PUBLISHED", "OFFLINE"] },
-          "categorySlug": { "type": "string" },
-          "tagSlugs": { "type": "array", "items": { "type": "string" } },
-          "viewCount": { "type": "integer", "format": "int64" },
-          "publishedAt": { "type": "string", "format": "date-time", "nullable": true }
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PUBLISHED",
+              "OFFLINE"
+            ]
+          },
+          "categorySlug": {
+            "type": "string"
+          },
+          "tagSlugs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "viewCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
         }
       },
       "PostDetail": {
         "allOf": [
-          { "$ref": "#/components/schemas/PostSummary" },
+          {
+            "$ref": "#/components/schemas/PostSummary"
+          },
           {
             "type": "object",
-            "required": ["contentHtml"],
+            "required": [
+              "contentHtml"
+            ],
             "properties": {
-              "authorNickname": { "type": "string" },
-              "contentHtml": { "type": "string", "description": "渲染并消毒后的 HTML；contentMd 不出读者端" }
+              "authorNickname": {
+                "type": "string"
+              },
+              "contentHtml": {
+                "type": "string",
+                "description": "渲染并消毒后的 HTML；contentMd 不出读者端"
+              }
             }
           }
         ]
       },
       "PostUpsert": {
         "type": "object",
-        "required": ["title", "slug", "categoryId", "contentMd"],
+        "required": [
+          "title",
+          "slug",
+          "categoryId",
+          "contentMd"
+        ],
         "properties": {
-          "title": { "type": "string", "maxLength": 128 },
-          "slug": { "type": "string", "maxLength": 128, "pattern": "^[a-z0-9-]+$" },
-          "categoryId": { "type": "integer", "format": "int64" },
-          "tagIds": { "type": "array", "items": { "type": "integer", "format": "int64" } },
-          "contentMd": { "type": "string", "description": "Markdown 原文；contentHtml 服务端渲染并消毒" }
+          "title": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 128,
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tagIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "contentMd": {
+            "type": "string",
+            "description": "Markdown 原文；contentHtml 服务端渲染并消毒"
+          }
         }
       },
       "Category": {
         "type": "object",
-        "required": ["id", "name", "slug"],
+        "required": [
+          "id",
+          "name",
+          "slug"
+        ],
         "properties": {
-          "id": { "type": "integer", "format": "int64" },
-          "name": { "type": "string", "maxLength": 32 },
-          "slug": { "type": "string", "maxLength": 64 }
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 64
+          }
         }
       },
       "Tag": {
         "type": "object",
-        "required": ["id", "name", "slug"],
+        "required": [
+          "id",
+          "name",
+          "slug"
+        ],
         "properties": {
-          "id": { "type": "integer", "format": "int64" },
-          "name": { "type": "string", "maxLength": 32 },
-          "slug": { "type": "string", "maxLength": 64 }
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 64
+          }
         }
       },
       "CommentNode": {
         "type": "object",
-        "required": ["id", "content", "createdAt"],
+        "required": [
+          "id",
+          "content",
+          "createdAt"
+        ],
         "properties": {
-          "id": { "type": "integer", "format": "int64" },
-          "userId": { "type": "integer", "format": "int64" },
-          "nickname": { "type": "string" },
-          "content": { "type": "string", "maxLength": 500 },
-          "createdAt": { "type": "string", "format": "date-time" },
-          "replies": { "type": "array", "items": { "$ref": "#/components/schemas/CommentNode" } }
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "replies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommentNode"
+            }
+          }
         }
       },
       "CommentCreate": {
         "type": "object",
-        "required": ["content"],
+        "required": [
+          "content"
+        ],
         "properties": {
-          "content": { "type": "string", "minLength": 1, "maxLength": 500 },
-          "parentId": { "type": "integer", "format": "int64", "nullable": true, "description": "楼内回复时传父评论 id" }
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "parentId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "description": "楼内回复时传父评论 id"
+          }
         }
       },
       "SearchHit": {
         "type": "object",
         "properties": {
-          "slug": { "type": "string" },
-          "title": { "type": "string", "description": "命中词加 <em> 高亮" },
-          "snippet": { "type": "string" },
-          "publishedAt": { "type": "string", "format": "date-time" }
+          "slug": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "命中词加 <em> 高亮"
+          },
+          "snippet": {
+            "type": "string"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       }
     }
@@ -126,13 +303,41 @@
   "paths": {
     "/api/v1/posts": {
       "get": {
-        "tags": ["文章"],
+        "tags": [
+          "文章"
+        ],
         "summary": "已发布文章分页列表（读者端）",
         "parameters": [
-          { "name": "page", "in": "query", "schema": { "type": "integer", "default": 1 } },
-          { "name": "size", "in": "query", "schema": { "type": "integer", "default": 10 } },
-          { "name": "categorySlug", "in": "query", "schema": { "type": "string" } },
-          { "name": "tagSlug", "in": "query", "schema": { "type": "string" } }
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "categorySlug",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tagSlug",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -141,15 +346,24 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
                     {
                       "type": "object",
                       "properties": {
                         "data": {
                           "type": "object",
                           "properties": {
-                            "total": { "type": "integer" },
-                            "records": { "type": "array", "items": { "$ref": "#/components/schemas/PostSummary" } }
+                            "total": {
+                              "type": "integer"
+                            },
+                            "records": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/PostSummary"
+                              }
+                            }
                           }
                         }
                       }
@@ -164,11 +378,20 @@
     },
     "/api/v1/posts/{slug}": {
       "get": {
-        "tags": ["文章"],
+        "tags": [
+          "文章"
+        ],
         "summary": "文章详情（读者端）",
         "description": "未发布或软删除的文章按 404 处理（不暴露存在性，见需求页 US-02）",
         "parameters": [
-          { "name": "slug", "in": "path", "required": true, "schema": { "type": "string" } }
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -177,20 +400,33 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
-                    { "type": "object", "properties": { "data": { "$ref": "#/components/schemas/PostDetail" } } }
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/PostDetail"
+                        }
+                      }
+                    }
                   ]
                 }
               }
             }
           },
-          "404": { "description": "不存在或未发布" }
+          "404": {
+            "description": "不存在或未发布"
+          }
         }
       }
     },
     "/api/v1/categories": {
       "get": {
-        "tags": ["分类标签"],
+        "tags": [
+          "分类标签"
+        ],
         "summary": "分类列表（读者端）",
         "responses": {
           "200": {
@@ -199,8 +435,20 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
-                    { "type": "object", "properties": { "data": { "type": "array", "items": { "$ref": "#/components/schemas/Category" } } } }
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Category"
+                          }
+                        }
+                      }
+                    }
                   ]
                 }
               }
@@ -211,7 +459,9 @@
     },
     "/api/v1/tags": {
       "get": {
-        "tags": ["分类标签"],
+        "tags": [
+          "分类标签"
+        ],
         "summary": "标签列表（读者端）",
         "responses": {
           "200": {
@@ -220,8 +470,20 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
-                    { "type": "object", "properties": { "data": { "type": "array", "items": { "$ref": "#/components/schemas/Tag" } } } }
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Tag"
+                          }
+                        }
+                      }
+                    }
                   ]
                 }
               }
@@ -232,13 +494,36 @@
     },
     "/api/v1/posts/{slug}/comments": {
       "get": {
-        "tags": ["评论"],
+        "tags": [
+          "评论"
+        ],
         "summary": "楼层列表（读者端）",
         "description": "按楼层返回，root_id 命中 idx_comments_post_root 一条索引取整层",
         "parameters": [
-          { "name": "slug", "in": "path", "required": true, "schema": { "type": "string" } },
-          { "name": "page", "in": "query", "schema": { "type": "integer", "default": 1 } },
-          { "name": "size", "in": "query", "schema": { "type": "integer", "default": 20 } }
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -247,8 +532,20 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
-                    { "type": "object", "properties": { "data": { "type": "array", "items": { "$ref": "#/components/schemas/CommentNode" } } } }
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CommentNode"
+                          }
+                        }
+                      }
+                    }
                   ]
                 }
               }
@@ -257,16 +554,33 @@
         }
       },
       "post": {
-        "tags": ["评论"],
+        "tags": [
+          "评论"
+        ],
         "summary": "发表评论 / 楼内回复",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "slug", "in": "path", "required": true, "schema": { "type": "string" } }
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/CommentCreate" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentCreate"
+              }
+            }
           }
         },
         "responses": {
@@ -276,45 +590,100 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
-                    { "type": "object", "properties": { "data": { "$ref": "#/components/schemas/CommentNode" } } }
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/CommentNode"
+                        }
+                      }
+                    }
                   ]
                 }
               }
             }
           },
-          "401": { "description": "未登录" }
+          "401": {
+            "description": "未登录"
+          }
         }
       }
     },
     "/api/v1/comments/{id}": {
       "delete": {
-        "tags": ["评论"],
+        "tags": [
+          "评论"
+        ],
         "summary": "删除评论（软删除）",
         "description": "仅评论人或 ADMIN；楼中楼随根评论一并消失（软删除语义见数据库设计页）",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int64" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
         ],
         "responses": {
           "200": {
             "description": "删除成功（data 为 null）",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/Result" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
             }
           },
-          "403": { "description": "无权限" }
+          "403": {
+            "description": "无权限"
+          }
         }
       }
     },
     "/api/v1/search": {
       "get": {
-        "tags": ["搜索"],
+        "tags": [
+          "搜索"
+        ],
         "summary": "全文搜索（SearchService 单接口，升级 ES 不改此契约）",
         "parameters": [
-          { "name": "q", "in": "query", "required": true, "schema": { "type": "string", "minLength": 1 } },
-          { "name": "page", "in": "query", "schema": { "type": "integer", "default": 1 } },
-          { "name": "size", "in": "query", "schema": { "type": "integer", "default": 10 } }
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -323,15 +692,24 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
                     {
                       "type": "object",
                       "properties": {
                         "data": {
                           "type": "object",
                           "properties": {
-                            "total": { "type": "integer" },
-                            "records": { "type": "array", "items": { "$ref": "#/components/schemas/SearchHit" } }
+                            "total": {
+                              "type": "integer"
+                            },
+                            "records": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/SearchHit"
+                              }
+                            }
                           }
                         }
                       }
@@ -346,13 +724,23 @@
     },
     "/api/v1/admin/posts": {
       "post": {
-        "tags": ["文章"],
+        "tags": [
+          "文章"
+        ],
         "summary": "创建文章（草稿）",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/PostUpsert" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostUpsert"
+              }
+            }
           }
         },
         "responses": {
@@ -362,31 +750,74 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
-                    { "type": "object", "properties": { "data": { "$ref": "#/components/schemas/PostSummary" } } }
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/PostSummary"
+                        }
+                      }
+                    }
                   ]
                 }
               }
             }
           },
-          "401": { "description": "未登录" },
-          "403": { "description": "非 AUTHOR/ADMIN" },
-          "409": { "description": "slug 冲突" }
+          "400": {
+            "description": "参数校验失败：message 中带字段名与原因",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "未登录"
+          },
+          "403": {
+            "description": "非 AUTHOR/ADMIN"
+          },
+          "409": {
+            "description": "slug 冲突"
+          }
         }
       }
     },
     "/api/v1/admin/posts/{id}": {
       "put": {
-        "tags": ["文章"],
+        "tags": [
+          "文章"
+        ],
         "summary": "更新文章",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int64" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/PostUpsert" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostUpsert"
+              }
+            }
           }
         },
         "responses": {
@@ -396,42 +827,127 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
-                    { "type": "object", "properties": { "data": { "$ref": "#/components/schemas/PostSummary" } } }
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/PostSummary"
+                        }
+                      }
+                    }
                   ]
                 }
               }
             }
           },
-          "403": { "description": "非本人文章或非 AUTHOR/ADMIN" }
+          "400": {
+            "description": "参数校验失败：message 中带字段名与原因",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "非本人文章或非 AUTHOR/ADMIN"
+          },
+          "404": {
+            "description": "文章不存在或已软删除",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "slug 与其他文章冲突",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "tags": ["文章"],
+        "tags": [
+          "文章"
+        ],
         "summary": "删除文章（软删除）",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int64" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
         ],
         "responses": {
           "200": {
             "description": "删除成功（data 为 null）",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/Result" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
             }
           },
-          "403": { "description": "无权限" }
+          "403": {
+            "description": "无权限"
+          },
+          "404": {
+            "description": "文章不存在或已软删除（重复删除不做幂等成功）",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/api/v1/admin/posts/{id}/publish": {
       "post": {
-        "tags": ["文章"],
+        "tags": [
+          "文章"
+        ],
         "summary": "发布文章",
         "description": "DRAFT → PUBLISHED；发布时渲染 contentHtml（消毒后）并写 search_text、published_at",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int64" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -440,26 +956,47 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
-                    { "type": "object", "properties": { "data": { "$ref": "#/components/schemas/PostSummary" } } }
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/PostSummary"
+                        }
+                      }
+                    }
                   ]
                 }
               }
             }
           },
-          "409": { "description": "状态机不允许（OFFLINE 需先回 DRAFT，见架构页状态机）" }
+          "409": {
+            "description": "状态机不允许（OFFLINE 需先回 DRAFT，见架构页状态机）"
+          }
         }
       }
     },
     "/api/v1/admin/categories": {
       "post": {
-        "tags": ["分类标签"],
+        "tags": [
+          "分类标签"
+        ],
         "summary": "创建分类",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/Category" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              }
+            }
           }
         },
         "responses": {
@@ -469,26 +1006,57 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
-                    { "type": "object", "properties": { "data": { "$ref": "#/components/schemas/Category" } } }
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/Category"
+                        }
+                      }
+                    }
                   ]
                 }
               }
             }
           },
-          "409": { "description": "name 或 slug 冲突" }
+          "400": {
+            "description": "参数校验失败：message 中带字段名与原因",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "name 或 slug 冲突"
+          }
         }
       }
     },
     "/api/v1/admin/tags": {
       "post": {
-        "tags": ["分类标签"],
+        "tags": [
+          "分类标签"
+        ],
         "summary": "创建标签",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/Tag" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
           }
         },
         "responses": {
@@ -498,14 +1066,35 @@
               "application/json": {
                 "schema": {
                   "allOf": [
-                    { "$ref": "#/components/schemas/Result" },
-                    { "type": "object", "properties": { "data": { "$ref": "#/components/schemas/Tag" } } }
+                    {
+                      "$ref": "#/components/schemas/Result"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/Tag"
+                        }
+                      }
+                    }
                   ]
                 }
               }
             }
           },
-          "409": { "description": "name 或 slug 冲突" }
+          "400": {
+            "description": "参数校验失败：message 中带字段名与原因",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "name 或 slug 冲突"
+          }
         }
       }
     }

@@ -13,7 +13,21 @@
 | 主机与系统 | SSH、账户权限、防火墙、SELinux/AppArmor、内核参数 | [Linux 安全加固](../Linux/Advanced/SecurityHardening/index.md) |
 | 容器运行时 | 镜像、非 root、capabilities、seccomp、只读根、网络 | [Docker 安全加固](../Docker/Security/index.md) |
 | 集群与编排 | RBAC、NetworkPolicy、PSA、策略即代码、运行时检测 | [容器与集群安全加固](../ContainerOrchestration/Security/index.md) |
+| 服务间调用（东西向流量） | 服务身份（SPIFFE）、mTLS 自动签发与轮换、按身份的调用授权 | [服务网格 · 安全](../ContainerOrchestration/ServiceMesh/Security/index.md) |
 | **跨层治理（本专题）** | 方法论、基线合规、漏洞管理、SBOM、密钥、审计、工具链 | 本页以下各篇 |
+
+这张表按**「管的是哪一层」**切分：主机层管进程与内核，运行时层管容器，编排层管 K8s 的权限与网络策略，**网格层管服务身份与调用授权**，本专题负责跨层的基线、扫描、漏洞、密钥与审计。
+
+最容易混淆的是「集群与编排」与「服务间调用」这两行——它们看着都在管「谁能访问谁」，粒度完全不同：
+
+| | NetworkPolicy（编排层） | AuthorizationPolicy（网格层） |
+| --- | --- | --- |
+| 判据 | Pod 的 IP / 标签 | **服务身份**（SPIFFE ID）与 HTTP 路径、方法 |
+| 生效层 | L3/L4 | L7 |
+| 能否防「同集群内横向移动」 | 能限制可达范围，但同命名空间内默认全通 | 能——即使网络可达，身份不匹配也拒绝 |
+| 是否需要改应用 | 否 | 否（Sidecar/ztunnel 代理） |
+
+生产上两者是**叠加而不是替代**：先用 NetworkPolicy 收紧可达范围，再用 mTLS + AuthorizationPolicy 做身份级零信任。落地步骤与验收判据见[网格安全](../ContainerOrchestration/ServiceMesh/Security/index.md)。
 
 ## 专题导航
 

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">把服务接入网格：六步落地与四道验收</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">接网格是「基础设施改造」，判据必须是可观测的，不能靠「感觉没问题」</text>
+  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">接入不是「装完就完事」：六个步骤各自有可验证的收尾</text>
+  <rect x="30" y="94" width="226" height="78" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="143" y="112.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">① 兼容性预检</text>
+  <text x="143" y="129" text-anchor="middle" font-size="8" fill="#6D28D9">K8s 版本在支持窗口内</text>
+  <text x="143" y="147.4" text-anchor="middle" font-size="8" fill="#6D28D9">istioctl x precheck</text>
+  <text x="143" y="165.8" text-anchor="middle" font-size="8" fill="#6D28D9">列出会受影响的 CRD</text>
+  <line x1="256" y1="133" x2="268" y2="133" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="268" y="94" width="226" height="78" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="381" y="112.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">② 装控制面</text>
+  <text x="381" y="129" text-anchor="middle" font-size="8" fill="#1D4ED8">profile 选择（ambient / default）</text>
+  <text x="381" y="147.4" text-anchor="middle" font-size="8" fill="#1D4ED8">确认 istiod 与 CNI 就绪</text>
+  <text x="381" y="165.8" text-anchor="middle" font-size="8" fill="#1D4ED8">先不动任何业务</text>
+  <line x1="494" y1="133" x2="506" y2="133" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="506" y="94" width="226" height="78" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="619" y="112.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">③ 装 Gateway API CRD</text>
+  <text x="619" y="129" text-anchor="middle" font-size="8" fill="#0F766E">多数集群默认没装</text>
+  <text x="619" y="147.4" text-anchor="middle" font-size="8" fill="#0F766E">版本要对齐官方指引</text>
+  <text x="619" y="165.8" text-anchor="middle" font-size="8" fill="#0F766E">装完再建 Gateway</text>
+  <rect x="30" y="190" width="226" height="78" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="143" y="208.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">④ 加入命名空间</text>
+  <text x="143" y="225" text-anchor="middle" font-size="8" fill="#047857">打 dataplane-mode 标签</text>
+  <text x="143" y="243.4" text-anchor="middle" font-size="8" fill="#047857">验证 ztunnel 有流量</text>
+  <text x="143" y="261.8" text-anchor="middle" font-size="8" fill="#047857">此时业务已加密</text>
+  <line x1="256" y1="229" x2="268" y2="229" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="268" y="190" width="226" height="78" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="381" y="208.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">⑤ 按需加 waypoint</text>
+  <text x="381" y="225" text-anchor="middle" font-size="8" fill="#B45309">只给需要 L7 的服务开</text>
+  <text x="381" y="243.4" text-anchor="middle" font-size="8" fill="#B45309">打 use-waypoint 标签</text>
+  <text x="381" y="261.8" text-anchor="middle" font-size="8" fill="#B45309">验证 5xx / 延迟变化</text>
+  <line x1="494" y1="229" x2="506" y2="229" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="506" y="190" width="226" height="78" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="619" y="208.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">⑥ 上策略与门禁</text>
+  <text x="619" y="225" text-anchor="middle" font-size="8" fill="#B91C1C">先审计后拦截</text>
+  <text x="619" y="243.4" text-anchor="middle" font-size="8" fill="#B91C1C">策略入 Git（GitOps）</text>
+  <text x="619" y="261.8" text-anchor="middle" font-size="8" fill="#B91C1C">CI 里跑 istioctl analyze</text>
+  <line x1="700" y1="133" x2="730" y2="133" stroke="#7C3AED" stroke-width="1.6"/>
+  <line x1="730" y1="133" x2="730" y2="268" stroke="#7C3AED" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <line x1="730" y1="268" x2="256" y2="268" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="380" y="302" text-anchor="middle" font-size="11" fill="#0F172A" font-weight="bold">每步的验收判据（缺一条就算没做完）</text>
+  <rect x="30" y="314" width="700" height="26" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="46" y="331" text-anchor="start" font-size="9" fill="#065F46">✔ istioctl analyze 无 error：配置静态检查先过，再谈流量效果</text>
+  <rect x="30" y="344" width="700" height="26" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="46" y="361" text-anchor="start" font-size="9" fill="#065F46">✔ istioctl proxy-status / waypoint list：所有代理都是 SYNCED，没有 NOT SENT</text>
+  <rect x="30" y="374" width="700" height="26" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="46" y="391" text-anchor="start" font-size="9" fill="#065F46">✔ Kiali 拓扑上能看到真实调用关系，且指标有数据（不是空图）</text>
+  <rect x="30" y="404" width="700" height="26" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="46" y="421" text-anchor="start" font-size="9" fill="#065F46">✔ 灰度期间错误率与延迟与接入前同一量级（差异要在日质量级内）</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
