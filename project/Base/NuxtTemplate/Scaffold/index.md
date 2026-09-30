@@ -6,13 +6,55 @@
 
 ## 一、创建项目
 
+把参数一次给全，`nuxi` 就不会停下来提问：
+
 ```shell
-pnpm dlx nuxi@latest init nuxt-universal --packageManager pnpm --gitInit
+pnpm dlx nuxi@latest init nuxt-universal \
+  -t minimal \
+  --packageManager pnpm \
+  --gitInit \
+  --no-modules
 cd nuxt-universal
 pnpm install
 ```
 
 预期结果：命令结束后目录里出现 `nuxt.config.ts`、`app/`、`package.json`，`pnpm dev` 可启动。
+
+::: tip 两个参数为什么不能省
+- **`-t minimal`**：官方模板列表里只有它是干净的应用骨架（`Minimal starter with a single app.vue.`）。**不要选 `ui`**——那个模板预装了 Nuxt UI 并写死 `nuxt.config.ts` 的 `modules`，与本模板「UI 库四选一」的目标直接冲突；`content` / `module` / `v5-nightly` 分别是内容站、模块开发、Nuxt 5 预览，也不是应用骨架。
+- **`--no-modules`**：跳过最后那道「Would you like to browse and install modules?」确认。本模板要装哪些依赖由第 3 步的适配器决定，不在脚手架阶段装。它是 `-M` / `--modules` 的否定形式，但**不会出现在 `nuxi init --help` 里**（帮助只渲染布尔参数的否定变体，而 `modules` 是字符串参数）。
+:::
+
+::: details 省略参数时会遇到的全部提问（对照 `nuxi` v3.37.0）
+`nuxi` 的提问**各自只在对应参数缺失时才出现**。你的命令已经给了目录名、`--packageManager`、`--gitInit`，所以实际只会撞上**模板选择**与**模块确认**这两个；若 `nuxt-universal` 目录已存在，还会多一个覆盖确认。
+
+| 提问 | 触发条件 | 本项目怎么选 |
+| --- | --- | --- |
+| `Which template would you like to use?` | 未传 `-t` | **`minimal`**（列表默认项，右侧标着 `recommended`）|
+| `Would you like to browse and install modules?` | 未传 `-M` 或 `--no-modules` | **`No`**（默认即 No，直接回车）|
+| `The directory … already exists. What would you like to do?` | 目标目录非空 | `Override its contents` |
+| `Where would you like to create your project?` | 未传目录名 | 回车取默认 `./nuxt-app` |
+| `Which package manager would you like to use?` | 未传 `--packageManager` | `pnpm` |
+| `Initialize git repository?` | 未传 `--gitInit` | `Yes` |
+
+模板列表来自 `nuxt/starter` 仓库的 `templates` 分支。官方把 `v3`、`v4`、`v4-compat`、`v2-bridge`、`layer`、`doc-driven`、`hub`、`module-devtools`、`ui-vue` 都从交互列表里隐藏了，所以你只会看到五项：`content`、`minimal`、`module`、`ui`、`v5-nightly`。
+
+在非 TTY 环境（CI、管道）下 `nuxi` 完全不提问，此时 `dir`、`-t`、`--packageManager`、`--gitInit` 四个**缺一不可**，否则会报 `Non-interactive terminal detected. Missing required arguments: …` 并以退出码 `2` 结束。
+:::
+
+::: warning 提示都选完了，却报 `fetch failed`
+`nuxi` 用 `giget` 拉模板，走的是 **Node 原生 `fetch`**——它默认**不读** `HTTP_PROXY` / `HTTPS_PROXY`，于是会出现「`pnpm` 能装包、`nuxi` 下不动模板」的割裂现象：
+
+```text
+x  Error: Failed to download template from registry: Failed to download
+   https://raw.githubusercontent.com/nuxt/starter/templates/templates/minimal.json:
+   TypeError: fetch failed
+```
+
+最省事的处置是**打开系统级代理（TUN 模式或系统代理开关）**；Node ≥ 24 也可用 `NODE_USE_ENV_PROXY=1` 让原生 `fetch` 认这两个环境变量。
+
+另外要分清**两条链路**：模板选择列表取自 `api.github.com`，模板本体取自 `raw.githubusercontent.com` / `codeload.github.com`。列表拉取失败时 `nuxi` 会退回内置列表、**照常弹出选择提示**——所以「能看到选择提示」并不代表下载一定成功。
+:::
 
 ::: info 版本基线
 本模板以 **Nuxt 4.5.x** 为准（2026-08-05 发布的 4.5.2 为当前稳定版）。Nuxt 4 相对 Nuxt 3 最影响目录约定的变化是：**前端代码收进 `app/`**（`app/pages`、`app/components`、`app/composables`、`app/layouts`），服务端代码留在根级 `server/`，前后端共享代码放 `shared/`。
