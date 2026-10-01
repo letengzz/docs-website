@@ -44,7 +44,7 @@
 | 2 引导页 | 制造 `Nuxt UI + UnoCSS` 冲突 → 按钮必须禁用；改回 Tailwind → 冲突消失且提示降级为 info |
 | 3 服务端 | 未带令牌 403、非法枚举 400、阻断冲突 422、生产构建后 `/api/wizard/schema` 返回 404 |
 | 4 引擎 | `--dry-run` 两次输出 `diff` 为空；真跑后 `verify.mjs` 12/12；手工制造漂移后 `--check` 返回 1 |
-| 5 矩阵 | 160 种有效组合全矩阵 `--dry-run` 通过；12 条规则逐条命中测试 |
+| 5 矩阵 | 176 种有效组合全矩阵 `--dry-run` 通过；12 条规则逐条命中测试 |
 | 6 基线 | 首页能看到令牌色板与技术栈摘要；`curl /about` 能拿到 SSR 直出的内容 |
 | 7 门禁 | 每条门禁配一个变异实验，改坏一格必须报红 |
 | 8 构建 | `pnpm build && pnpm preview` 首屏正常；`.output` 中 grep 不到 `wizard` |
@@ -82,7 +82,7 @@
 | --- | --- | --- | --- |
 | 1 | 引擎与自测脚本**未落库** | 本专题是文档，`scripts/init.mjs` / `verify.mjs` / `selftest.mjs` 只有设计稿与关键片段 | 按 [初始化引擎](../InitEngine/index.md) 落地，并带沙箱自测 |
 | 2 | 引导页 UI 只有结构与样式基线 | 无组件实现细节的完整代码 | 按 [引导页设计](../WizardFrontend/index.md) 实现 |
-| 3 | 160 种组合的矩阵脚本只有约定 | `scripts/matrix.mjs` 未写 | 与引擎一起落地 |
+| 3 | 176 种组合的矩阵脚本只有约定 | `scripts/matrix.mjs` 未写 | 与引擎一起落地 |
 | 4 | 端到端初始化流程未验证 | 无 Playwright 用例 | 引擎落地后补 E2E |
 | 5 | 体积预算无实测基线 | 预算值是按经验给的 | 用真实组合构建后回填实测值 |
 
@@ -95,7 +95,7 @@
 1. **落地引擎**（最优先）：`scripts/init.mjs` + `verify.mjs` + `selftest.mjs`，重点是 `--dry-run` 的幂等与缩进累加这类只有连跑两次才暴露的问题。
 2. **落地引导页**：`options.json` 一次性写全 6 个分组与 12 条规则，避免后期改模型。
 3. **端到端跑通一次**：`Element Plus + Sass + 无原子化 + SSR + Pinia + ESLint + 测试` 作为第一个真实组合，从 clone 到 `pnpm dev` 全程走一遍并录屏留证。
-4. **矩阵扫描**：160 种有效组合的 `--dry-run` 全扫，把异常组合记进规则表。
+4. **矩阵扫描**：176 种有效组合的 `--dry-run` 全扫，把异常组合记进规则表。
 5. **部署验证**：用 Docker 形态部署一次，跑 `smoke.sh` 与 `acceptance.mjs`。
 
 ## 七、相关
