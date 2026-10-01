@@ -96,3 +96,4 @@
 ## 相关专题
 
 - [大模型应用开发 · 工具与函数调用](../../LLMApp/FunctionCalling/index.md)：平铺式 schema、strict 模式与五步循环的完整代码
+- [大模型微调 · 工具调用样本构造](../../FineTuning/Dataset/index.md)：提示词方式稳定性不足时的另一条路——把工具调用习惯用 SFT 写进模型，含 `arguments` JSON 校验、失败/空结果分支样本占比等硬规则

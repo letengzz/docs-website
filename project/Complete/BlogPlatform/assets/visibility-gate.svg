@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="30" text-anchor="middle" font-size="17" font-weight="700" fill="#1e293b">可见性收口：状态 × 入口 → 响应</text>
+
+  <!-- 状态列 -->
+  <text x="90" y="62" text-anchor="middle" font-size="13" font-weight="600" fill="#475569">文章状态</text>
+  <g font-size="13" font-weight="600">
+    <rect x="30" y="76" width="120" height="44" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="90" y="103" text-anchor="middle" fill="#334155">DRAFT</text>
+    <rect x="30" y="136" width="120" height="44" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="90" y="163" text-anchor="middle" fill="#166534">PUBLISHED</text>
+    <rect x="30" y="196" width="120" height="44" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="90" y="223" text-anchor="middle" fill="#334155">OFFLINE</text>
+    <rect x="30" y="256" width="120" height="44" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="90" y="283" text-anchor="middle" fill="#991b1b">DELETED</text>
+    <rect x="30" y="316" width="120" height="44" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="4 3"/>
+    <text x="90" y="343" text-anchor="middle" fill="#334155">不存在的 slug</text>
+  </g>
+
+  <!-- 读者端入口 -->
+  <text x="330" y="62" text-anchor="middle" font-size="13" font-weight="600" fill="#475569">读者端入口（匿名）</text>
+  <g font-size="12">
+    <rect x="230" y="106" width="200" height="64" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="330" y="132" text-anchor="middle" fill="#1e40af" font-weight="600">GET /api/v1/posts</text>
+    <text x="330" y="152" text-anchor="middle" fill="#1e40af">列表：WHERE status = PUBLISHED</text>
+    <rect x="230" y="226" width="200" height="64" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="330" y="252" text-anchor="middle" fill="#1e40af" font-weight="600">GET /api/v1/posts/{slug}</text>
+    <text x="330" y="272" text-anchor="middle" fill="#1e40af">详情：状态校验 + 缓存判定</text>
+  </g>
+
+  <!-- 连线：状态 -> 入口 -->
+  <g stroke="#64748b" stroke-width="1.5" fill="none">
+    <path d="M150,98 C190,98 195,126 226,132" marker-end="url(#arr)"/>
+    <path d="M150,158 C190,158 195,144 226,140" marker-end="url(#arr)"/>
+    <path d="M150,218 C190,218 195,246 226,252" marker-end="url(#arr)"/>
+    <path d="M150,278 C190,278 195,264 226,260" marker-end="url(#arr)"/>
+    <path d="M150,338 C190,338 195,280 226,272" marker-end="url(#arr)"/>
+  </g>
+
+  <!-- 响应列 -->
+  <text x="620" y="62" text-anchor="middle" font-size="13" font-weight="600" fill="#475569">响应</text>
+  <g font-size="13" font-weight="700">
+    <rect x="560" y="106" width="160" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="640" y="132" text-anchor="middle" fill="#166534">200（仅 PUBLISHED）</text>
+    <rect x="560" y="180" width="160" height="40" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="640" y="206" text-anchor="middle" fill="#991b1b">404（逐字节一致）</text>
+  </g>
+  <g stroke="#64748b" stroke-width="1.5" fill="none">
+    <path d="M430,138 C480,120 510,122 556,124" marker-end="url(#arr)"/>
+    <path d="M430,258 C470,258 500,202 556,202" marker-end="url(#arr)"/>
+  </g>
+  <text x="640" y="240" text-anchor="middle" font-size="11" fill="#64748b">404 不区分「不存在 / DRAFT /</text>
+  <text x="640" y="256" text-anchor="middle" font-size="11" fill="#64748b">OFFLINE / DELETED」，不泄漏存在性</text>
+
+  <!-- 管理端 -->
+  <rect x="230" y="330" width="200" height="64" rx="8" fill="#fefce8" stroke="#ca8a04"/>
+  <text x="330" y="356" text-anchor="middle" fill="#854d0e" font-weight="600" font-size="12">管理端（Bearer 令牌）</text>
+  <text x="330" y="376" text-anchor="middle" fill="#854d0e" font-size="12">所有非 DELETED 状态均可见</text>
+  <g stroke="#64748b" stroke-width="1.5" fill="none">
+    <path d="M430,362 C480,362 510,140 556,126" marker-end="url(#arr)"/>
+  </g>
+  <text x="497" y="352" font-size="11" fill="#854d0e">带 token 的请求不走读者端过滤</text>
+
+  <!-- 缓存标注 -->
+  <rect x="560" y="290" width="160" height="104" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="640" y="314" text-anchor="middle" font-size="12" font-weight="600" fill="#334155">缓存纪律</text>
+  <text x="572" y="334" font-size="11" fill="#475569">状态迁移事务提交后</text>
+  <text x="572" y="350" font-size="11" fill="#475569">删除详情 + 列表缓存</text>
+  <text x="572" y="366" font-size="11" fill="#475569">TTL 兜底，读者端独享缓存</text>
+  <text x="572" y="382" font-size="11" fill="#475569">管理端直读数据库</text>
+</svg>

@@ -84,3 +84,4 @@ for level in ["q8", "q4"]:
 - Ollama 官方文档：https://docs.ollama.com/
 - vLLM 官方文档（支持的量化方案）：https://docs.vllm.ai/
 - 显存规划：[GPU 与显存规划](../Hardware/index.md)
+- 量化在**训练侧**的用法（QLoRA：NF4 + 双量化 + Paged Optimizer）：[LoRA 与 QLoRA](../../FineTuning/LoRA/index.md)——本页讲的是推理侧量化（压完直接部署），训练侧量化只压冻结的底座、可训练部分保持 BF16，两者目的与做法都不同

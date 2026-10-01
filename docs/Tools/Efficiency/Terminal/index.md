@@ -199,9 +199,9 @@ Invoke-Expression (&starship init powershell)
 | 找可执行文件 | `Get-Command rg` | `which rg` |
 | 看环境变量 | `$env:PATH` | `echo $PATH` |
 | 设环境变量（当前会话） | `$env:FOO = "bar"` | `export FOO=bar` |
-| 管道过滤对象 | `Get-Process | Where-Object CPU -gt 10` | `ps | grep` |
-| 输出为 JSON | `Get-Service | ConvertTo-Json` | — |
-| 读 JSON | `Get-Content x.json | ConvertFrom-Json` | `cat x.json | jq` |
+| 管道过滤对象 | `Get-Process \| Where-Object CPU -gt 10` | `ps \| grep` |
+| 输出为 JSON | `Get-Service \| ConvertTo-Json` | — |
+| 读 JSON | `Get-Content x.json \| ConvertFrom-Json` | `cat x.json \| jq` |
 
 PowerShell 的核心差异是**管道传的是对象，不是文本**。这是它比 Unix Shell 更强的地方，也是"照抄 Unix 教程会失败"的原因。
 
@@ -228,7 +228,7 @@ curl -sS https://starship.rs/install.sh | sh   # 通用脚本
 | PowerShell | `Invoke-Expression (&starship init powershell)` | `$PROFILE` |
 | zsh | `eval "$(starship init zsh)"` | `~/.zshrc` |
 | bash | `eval "$(starship init bash)"` | `~/.bashrc` |
-| fish | `starship init fish | source` | `~/.config/fish/config.fish` |
+| fish | `starship init fish \| source` | `~/.config/fish/config.fish` |
 
 常用配置：
 

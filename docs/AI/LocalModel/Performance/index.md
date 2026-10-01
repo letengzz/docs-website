@@ -83,3 +83,4 @@ done
 - llama.cpp 官方仓库（线程与卸载参数）：https://github.com/ggml-org/llama.cpp
 - Ollama 官方文档：https://docs.ollama.com/
 - 显存规划：[GPU 与显存规划](../Hardware/index.md)
+- 为什么「评测与压测要分开跑」：高并发下批处理组成不同会让生成结果出现非确定性——压测看吞吐与延迟，质量评测要低并发甚至串行跑，见 [微调评测 · 分数波动](../../FineTuning/Evaluation/index.md)

@@ -344,7 +344,7 @@ echo '{"b":1,"a":2}' | jq -S .
 | `z` 跳错目录 | 关键词太短，命中多个 | 用 `zi` 交互选择，或加更多路径片段 |
 | `jq` 报 `parse error` | 输入不是合法 JSON（含日志前缀） | 用 `rg '^\{'` 先剥离前缀，或 `jq -R 'fromjson?'` |
 | `jq -S` 后 diff 仍有差异 | 数值格式化差异（`1` vs `1.0`） | 比对脚本改用结构化比对，或容忍数值格式 |
-| PowerShell 管道接 fzf 报错 | PowerShell 传对象而非文本 | 用 `| Out-String -Stream` 或 `ForEach-Object` |
+| PowerShell 管道接 fzf 报错 | PowerShell 传对象而非文本 | 用 `\| Out-String -Stream` 或 `ForEach-Object` |
 
 ::: danger 注意：三个最容易踩的坑
 1. **覆盖 `cat`/`ls`/`curl`**。见第 3 节的说明：起新名字，别覆盖内置。

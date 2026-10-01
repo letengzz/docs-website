@@ -132,3 +132,4 @@ if __name__ == "__main__":
 - 检索指南（官方文档）：https://developers.openai.com/api/docs/guides/retrieval
 - 生产工程化：[生产工程化](../Pipeline/index.md)
 - 本库提示词评估：[效果评估](../../PromptEngineering/Evaluation/index.md)
+- LLM-as-Judge 的位置/长度/自我偏好偏见与「交换位置评两次」的校准实现：[微调评测 · 模型裁判的正确用法](../../FineTuning/Evaluation/index.md)
