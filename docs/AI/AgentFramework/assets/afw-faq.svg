@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="380" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">排障决策树：先确认版本 1.x 与 checkpointer，再按症状分支</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">一半的「灵异现象」都是这两件事没做对</text>
+
+  <rect x="290" y="76" width="180" height="40" rx="8" fill="#F1F5F9" stroke="#475569" stroke-width="1.5"/>
+  <text x="380" y="94" text-anchor="middle" font-size="10" fill="#0F172A" font-weight="bold">症状出现</text>
+  <text x="380" y="108" text-anchor="middle" font-size="8.5" fill="#64748B">版本 1.x？checkpointer 已编译？</text>
+
+  <!-- branch 1 state -->
+  <path d="M 300 116 L 160 150" stroke="#2563EB" stroke-width="1.4" fill="none" marker-end="url(#arrBl)"/>
+  <rect x="40" y="152" width="200" height="80" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="140" y="172" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">状态 / 数据异常</text>
+  <text x="140" y="190" text-anchor="middle" font-size="8.5" fill="#475569">读到旧值 → 查 reducer 语义</text>
+  <text x="140" y="205" text-anchor="middle" font-size="8.5" fill="#475569">状态膨胀 → 大对象换 URI</text>
+  <text x="140" y="220" text-anchor="middle" font-size="8.5" fill="#475569">update_state 不触发路由</text>
+
+  <!-- branch 2 flow -->
+  <path d="M 380 116 L 380 150" stroke="#D97706" stroke-width="1.4" marker-end="url(#arrO)"/>
+  <rect x="280" y="152" width="200" height="80" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
+  <text x="380" y="172" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">流程 / 中断异常</text>
+  <text x="380" y="190" text-anchor="middle" font-size="8.5" fill="#475569">RecursionError → 单测终止条件</text>
+  <text x="380" y="205" text-anchor="middle" font-size="8.5" fill="#475569">interrupt 不停 → checkpointer / thread_id</text>
+  <text x="380" y="220" text-anchor="middle" font-size="8.5" fill="#475569">副作用×2 → 移到 interrupt 之后</text>
+
+  <!-- branch 3 crewai -->
+  <path d="M 460 116 L 600 150" stroke="#7C3AED" stroke-width="1.4" fill="none" marker-end="url(#arrV)"/>
+  <rect x="520" y="152" width="200" height="80" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="620" y="172" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">CrewAI 产出异常</text>
+  <text x="620" y="190" text-anchor="middle" font-size="8.5" fill="#475569">格式乱 → expected_output 结构化</text>
+  <text x="620" y="205" text-anchor="middle" font-size="8.5" fill="#475569">漏派任务 → 改 sequential / Flows</text>
+  <text x="620" y="220" text-anchor="middle" font-size="8.5" fill="#475569">成本不明 → 回调接观测</text>
+
+  <!-- production band -->
+  <rect x="40" y="256" width="680" height="42" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="380" y="274" text-anchor="middle" font-size="10" fill="#334155" font-weight="bold">生产环境加查三件</text>
+  <text x="380" y="290" text-anchor="middle" font-size="8.5" fill="#475569">多副本是否共享同一个检查点库 ｜ run_id 能否贯穿日志与 trace ｜ 检查点保留策略是否已配置</text>
+
+  <!-- escalation -->
+  <rect x="40" y="316" width="680" height="34" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="380" y="337.5" text-anchor="middle" font-size="9.5" fill="#047857">以上都排不掉 → 按页内 Q1~Q14 逐条对照；仍无解时带着 run_id 与检查点快照到官方仓库提 issue</text>
+
+  <defs>
+    <marker id="arrBl" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrO" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#D97706"/>
+    </marker>
+    <marker id="arrV" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

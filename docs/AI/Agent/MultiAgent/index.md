@@ -73,4 +73,5 @@
 - CrewAI：https://www.crewai.com/
 - LangGraph 多智能体官方文档：https://docs.langchain.com/oss/python/langchain/multi-agent
 - 本库 [LangChain · LangGraph 编排](../../LangChain/LangGraph/index.md)：多智能体在框架侧怎么落地（子图、路由与检查点），以及 `langgraph-supervisor` / `langgraph-swarm` 已停维护这一现状
+- 本库 [Agent 框架深入 · 多智能体协作模式](../../AgentFramework/Patterns/index.md)：supervisor / handoffs / hierarchical / map-reduce 四种拓扑的 LangGraph 与 CrewAI 两条落地路径，含护栏与判据
 - 本库 [LangChain · 生态概览](../../LangChain/Overview/index.md)：框架 / 运行时 / 平台三层边界，避免把「用了 Agent 框架」误当成「已经有编排与可观测」

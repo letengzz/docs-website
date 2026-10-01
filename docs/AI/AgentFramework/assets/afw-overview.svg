@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Agent 编排框架：LangGraph 与 CrewAI 的定位</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">LangGraph 管「流程怎么走」，CrewAI 管「谁来干什么」——底座是同一套模型与工具</text>
+
+  <rect x="30" y="76" width="330" height="40" rx="8" fill="#F1F5F9" stroke="#475569" stroke-width="1.4"/>
+  <text x="195" y="100.5" text-anchor="middle" font-size="11.5" fill="#0F172A" font-weight="bold">业务流程：多步、有状态、要审批、要恢复？</text>
+
+  <path d="M 195 116 L 195 140" stroke="#475569" stroke-width="1.4"/>
+  <path d="M 140 140 L 620 140" stroke="#475569" stroke-width="1.4"/>
+  <path d="M 140 140 L 140 158" stroke="#2563EB" stroke-width="1.6" marker-end="url(#arrowBlue)"/>
+  <path d="M 620 140 L 620 158" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arrowViolet)"/>
+  <text x="128" y="136" text-anchor="end" font-size="10" fill="#1D4ED8">下一步由业务规则决定</text>
+  <text x="632" y="136" text-anchor="start" font-size="10" fill="#6D28D9">由一组角色分工协作</text>
+
+  <!-- LangGraph lane -->
+  <rect x="30" y="158" width="330" height="196" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="195" y="182" text-anchor="middle" font-size="12.5" fill="#1E3A8A" font-weight="bold">LangGraph —— 图运行时</text>
+  <rect x="48" y="196" width="138" height="46" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="117" y="214" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">StateGraph：状态 + 节点</text>
+  <text x="117" y="230" text-anchor="middle" font-size="9" fill="#475569">reducer 决定合并语义</text>
+  <rect x="204" y="196" width="138" height="46" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="273" y="214" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">条件边 / 并行 / 子图</text>
+  <text x="273" y="230" text-anchor="middle" font-size="9" fill="#475569">控制流显式写在代码里</text>
+  <rect x="48" y="254" width="138" height="46" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="117" y="272" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">Checkpointer 持久化</text>
+  <text x="117" y="288" text-anchor="middle" font-size="9" fill="#475569">断点续跑 + 时间旅行</text>
+  <rect x="204" y="254" width="138" height="46" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="273" y="272" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">interrupt 人工介入</text>
+  <text x="273" y="288" text-anchor="middle" font-size="9" fill="#475569">审批后 Command 恢复</text>
+  <rect x="48" y="312" width="294" height="30" rx="8" fill="#DBEAFE" stroke="#2563EB" stroke-width="1"/>
+  <text x="195" y="331.5" text-anchor="middle" font-size="9.5" fill="#1E3A8A">适合：审核发布流、长任务、强审计、确定性分支</text>
+
+  <!-- CrewAI lane -->
+  <rect x="400" y="158" width="330" height="196" rx="10" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="565" y="182" text-anchor="middle" font-size="12.5" fill="#5B21B6" font-weight="bold">CrewAI —— 剧组模型</text>
+  <rect x="418" y="196" width="138" height="46" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="487" y="214" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">Agent：role / goal</text>
+  <text x="487" y="230" text-anchor="middle" font-size="9" fill="#475569">backstory + 工具</text>
+  <rect x="574" y="196" width="138" height="46" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="643" y="214" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">Task：职责与产出</text>
+  <text x="643" y="230" text-anchor="middle" font-size="9" fill="#475569">expected_output</text>
+  <rect x="418" y="254" width="138" height="46" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="487" y="272" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">Crew + Process</text>
+  <text x="487" y="288" text-anchor="middle" font-size="9" fill="#475569">sequential / hierarchical</text>
+  <rect x="574" y="254" width="138" height="46" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="643" y="272" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">Flows 结构化流程</text>
+  <text x="643" y="288" text-anchor="middle" font-size="9" fill="#475569">@start / @listen 状态机</text>
+  <rect x="418" y="312" width="294" height="30" rx="8" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1"/>
+  <text x="565" y="331.5" text-anchor="middle" font-size="9.5" fill="#5B21B6">适合：调研、内容生产、多角色协作、快速搭出分工</text>
+
+  <!-- shared base -->
+  <rect x="30" y="372" width="700" height="36" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="380" y="394.5" text-anchor="middle" font-size="10.5" fill="#334155">共同底座：模型 SDK（OpenAI 兼容 / Anthropic / 本地推理）· 工具与 MCP · 向量库 · 可观测（LangSmith / Langfuse）</text>
+
+  <defs>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrowViolet" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -146,6 +146,7 @@ llm-app/
 ## 相关专题
 
 - [LangChain](../LangChain/index.md)：把「模型调用、消息、工具、结构化输出、检索」装配成框架的路线，含与本页「不引入框架、直接调 SDK」的分工判据
+- [Agent 框架深入](../AgentFramework/index.md)：确定要引入编排框架之后——LangGraph / CrewAI 的工程化深入（状态机、持久化、审批、角色协作与部署）
 - [提示词工程](../PromptEngineering/index.md)：提示词结构、few-shot、思维链与效果评估
 - [Agent 应用](../Agent/index.md)：自主规划、工具调用、多智能体与安全边界
 - [多模态应用](../Multimodal/index.md)：图像、语音、视频模型的接入方式与工程链路，把「纯文本应用」扩展到多模态输入

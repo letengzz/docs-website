@@ -72,3 +72,4 @@ prompt = f"已知用户信息：{memory}\n当前任务：{task}"
 - Letta（原 MemGPT）：https://www.letta.com/
 - RAG 与上下文工程：https://www.anthropic.com/news/context-engineering
 - 检索式长期记忆的完整实现（切分、向量库、重排与评估）：[RAG 检索增强](../../RAG/index.md)
+- 本库 [Agent 框架深入 · 持久化与记忆](../../AgentFramework/Persistence/index.md)：checkpointer（流程连续性）与 Store（跨会话记忆）两层的分工、后端选型与保留策略

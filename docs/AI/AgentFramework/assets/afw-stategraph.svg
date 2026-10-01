@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">LangGraph 状态机：并行 Send、子图与两道安全阀</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">节点只返回增量，reducer 决定合并语义；分支产出靠追加字段聚合</text>
+
+  <!-- main flow -->
+  <rect x="30" y="90" width="84" height="44" rx="8" fill="#F1F5F9" stroke="#475569" stroke-width="1.5"/>
+  <text x="72" y="116" text-anchor="middle" font-size="10.5" fill="#1E293B" font-weight="bold">START</text>
+  <path d="M 114 112 L 146 112" stroke="#475569" stroke-width="1.4" marker-end="url(#arrGray)"/>
+
+  <rect x="148" y="90" width="96" height="44" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="196" y="109" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">split 拆分</text>
+  <text x="196" y="125" text-anchor="middle" font-size="9" fill="#475569">条件边返回 [Send...]</text>
+
+  <!-- fanout -->
+  <path d="M 244 100 C 284 100 284 76 318 76" stroke="#2563EB" stroke-width="1.4" fill="none" marker-end="url(#arrBlue)"/>
+  <path d="M 244 112 L 318 112" stroke="#2563EB" stroke-width="1.4" marker-end="url(#arrBlue)"/>
+  <path d="M 244 124 C 284 124 284 148 318 148" stroke="#2563EB" stroke-width="1.4" fill="none" marker-end="url(#arrBlue)"/>
+  <text x="281" y="66" text-anchor="middle" font-size="9.5" fill="#1D4ED8">map：每片一个分支（独立状态副本）</text>
+
+  <rect x="320" y="54" width="112" height="44" rx="8" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="376" y="73" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">summarize ①</text>
+  <text x="376" y="89" text-anchor="middle" font-size="9" fill="#475569">写 docs（追加）</text>
+  <rect x="320" y="90" width="112" height="44" rx="8" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="376" y="109" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">summarize ②</text>
+  <text x="376" y="125" text-anchor="middle" font-size="9" fill="#475569">写 docs（追加）</text>
+  <rect x="320" y="126" width="112" height="44" rx="8" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="376" y="145" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">summarize ③</text>
+  <text x="376" y="161" text-anchor="middle" font-size="9" fill="#475569">写 docs（追加）</text>
+
+  <path d="M 432 98 C 462 98 462 112 490 112" stroke="#2563EB" stroke-width="1.4" fill="none" marker-end="url(#arrBlue)"/>
+  <text x="461" y="90" text-anchor="middle" font-size="9.5" fill="#1D4ED8">reduce</text>
+
+  <rect x="492" y="90" width="100" height="44" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="542" y="109" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">collect 汇总</text>
+  <text x="542" y="125" text-anchor="middle" font-size="9" fill="#475569">operator.add 聚合</text>
+  <path d="M 592 112 L 622 112" stroke="#475569" stroke-width="1.4" marker-end="url(#arrGray)"/>
+
+  <!-- subgraph -->
+  <rect x="624" y="72" width="112" height="80" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="1.6" stroke-dasharray="5 3"/>
+  <text x="680" y="94" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">review（子图）</text>
+  <rect x="636" y="104" width="88" height="18" rx="5" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+  <text x="680" y="117" text-anchor="middle" font-size="8.5" fill="#065F46">合规检查节点</text>
+  <rect x="636" y="126" width="88" height="18" rx="5" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+  <text x="680" y="139" text-anchor="middle" font-size="8.5" fill="#065F46">评分节点</text>
+  <text x="680" y="170" text-anchor="middle" font-size="8.5" fill="#047857">同名状态字段交接 = 契约</text>
+
+  <!-- safety valves -->
+  <rect x="30" y="212" width="700" height="52" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+  <text x="50" y="233" font-size="10.5" fill="#9A3412" font-weight="bold">安全阀 ① RetryPolicy（节点级）</text>
+  <text x="50" y="251" font-size="9.5" fill="#9A3412">瞬时故障：max_attempts=3、指数退避——管「网络抖了」，与业务重试分开</text>
+  <text x="380" y="233" font-size="10.5" fill="#9A3412" font-weight="bold">安全阀 ② recursion_limit（图级）</text>
+  <text x="380" y="251" font-size="9.5" fill="#9A3412">超步上限，超出抛 GraphRecursionError——管「逻辑打转」，先单测终止条件再调大</text>
+
+  <!-- state box -->
+  <rect x="30" y="286" width="700" height="92" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="50" y="308" font-size="10.5" fill="#334155" font-weight="bold">状态字段与 reducer（示例 PipelineState）</text>
+  <text x="50" y="328" font-size="9.5" fill="#475569">question: str —— 覆盖（全局入参）　　draft: str —— 覆盖（当前草稿）</text>
+  <text x="50" y="346" font-size="9.5" fill="#475569">docs: Annotated[list, operator.add] —— 追加（并行分支汇总）　　messages: add_messages —— 追加（对话流）</text>
+  <text x="50" y="364" font-size="9.5" fill="#B91C1C" font-weight="bold">两条红线：节点只返回增量；并行分支禁止写覆盖语义字段</text>
+
+  <defs>
+    <marker id="arrGray" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#475569"/>
+    </marker>
+    <marker id="arrBlue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2563EB"/>
+    </marker>
+  </defs>
+</svg>

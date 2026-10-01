@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="360" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">渲染时机收敛：发布时一次渲染，读路径零渲染</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">contentHtml 与发布动作同事务落库；渲染器升级不悄悄改变已发布文章</text>
+
+  <!-- write path -->
+  <rect x="30" y="76" width="440" height="130" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="50" y="98" font-size="11" fill="#1E3A8A" font-weight="bold">写路径（作者端）</text>
+  <rect x="50" y="110" width="88" height="38" rx="7" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="94" y="126" text-anchor="middle" font-size="9" fill="#1E3A8A">保存草稿</text>
+  <text x="94" y="140" text-anchor="middle" font-size="7.5" fill="#475569">html=NULL</text>
+  <rect x="154" y="110" width="88" height="38" rx="7" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="198" y="126" text-anchor="middle" font-size="9" fill="#1E3A8A">编辑回稿</text>
+  <text x="198" y="140" text-anchor="middle" font-size="7.5" fill="#475569">状态回 DRAFT</text>
+  <rect x="258" y="110" width="100" height="38" rx="7" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
+  <text x="308" y="126" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">发布（状态机）</text>
+  <text x="308" y="140" text-anchor="middle" font-size="7.5" fill="#92400E">同一事务内渲染</text>
+  <rect x="374" y="110" width="80" height="38" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.3"/>
+  <text x="414" y="126" text-anchor="middle" font-size="9" fill="#065F46">contentHtml</text>
+  <text x="414" y="140" text-anchor="middle" font-size="7.5" fill="#047857">+ toc 落库</text>
+  <path d="M 138 129 L 154 129 M 242 129 L 258 129 M 358 129 L 374 129" stroke="#475569" stroke-width="1.2"/>
+  <text x="50" y="170" font-size="9" fill="#475569">渲染管线上挂在 PUBLISHED 转移；重新发布时重新渲染（显式批任务可全量重渲）</text>
+  <text x="50" y="188" font-size="9" fill="#475569">补齐能力：表格（坏表整块降级）· 引用块（≤3 层）· TOC 锚点（中文 slug）· 语言标记透传</text>
+
+  <!-- read path -->
+  <rect x="500" y="76" width="230" height="130" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="615" y="98" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">读路径（读者端）</text>
+  <rect x="518" y="112" width="194" height="34" rx="7" fill="#FFFFFF" stroke="#059669" stroke-width="1.2"/>
+  <text x="615" y="133" text-anchor="middle" font-size="9" fill="#047857">GET /api/v1/posts/{slug}</text>
+  <rect x="518" y="158" width="194" height="34" rx="7" fill="#FFFFFF" stroke="#059669" stroke-width="1.2"/>
+  <text x="615" y="179" text-anchor="middle" font-size="9" fill="#047857">只读 contentHtml，零渲染</text>
+  <text x="615" y="200" text-anchor="middle" font-size="8.5" fill="#047857">两次请求逐字节一致 = 验收判据</text>
+
+  <!-- highlight decision -->
+  <rect x="30" y="222" width="340" height="66" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="50" y="242" font-size="10" fill="#5B21B6" font-weight="bold">代码高亮：客户端做</text>
+  <text x="50" y="260" font-size="8.5" fill="#475569">服务端只透传 language-xx（白名单 [a-z0-9+#-]），</text>
+  <text x="50" y="275" font-size="8.5" fill="#475569">着色交给前台高亮库——服务端高亮 HTML 膨胀 3~5 倍</text>
+  <rect x="390" y="222" width="340" height="66" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="410" y="242" font-size="10" fill="#991B1B" font-weight="bold">安全模型不变：先全量转义，后拼自产标签</text>
+  <text x="410" y="260" font-size="8.5" fill="#475569">单元格走既有 inline()；javascript: 链接降级纯文本；</text>
+  <text x="410" y="275" font-size="8.5" fill="#475569">&lt;script&gt; 混排以文本可见而非执行；HTML 混排明确不做</text>
+
+  <!-- verification -->
+  <rect x="30" y="304" width="700" height="40" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="50" y="321" font-size="9.5" fill="#334155" font-weight="bold">验证：mvn test -Dtest=MarkdownRendererTest 全绿</text>
+  <text x="50" y="336" font-size="9.5" fill="#475569">curl 发布 → 断言 contentHtml / table / 锚点 / toc / 转义五条通过；重复 GET 两次逐字节一致</text>
+
+  <defs>
+  </defs>
+</svg>

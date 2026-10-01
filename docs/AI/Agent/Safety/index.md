@@ -86,3 +86,4 @@ Agent 生成执行计划
 - OWASP LLM 安全清单：https://owasp.org/www-project-top-10-for-large-language-model-applications/
 - Anthropic Agent 安全：https://www.anthropic.com/engineering/building-effective-agents
 - Prompt Injection 防御：https://simonwillison.net/2025/Feb/14/prompt-injection-defense-in-the-wild/
+- 本库 [Agent 框架深入 · 生产化](../../AgentFramework/Production/index.md)：工具白名单、注入过滤与检查点库权限在编排层的落点，含上线安全检查清单

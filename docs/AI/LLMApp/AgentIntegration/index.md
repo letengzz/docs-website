@@ -107,4 +107,5 @@ def handle(question: str, user_id: str) -> str:
 - 生产最佳实践：https://developers.openai.com/api/docs/guides/production-best-practices
 - 本库 Agent 专题：[Agent 原理](../../Agent/AgentPrinciples/index.md)、[工作流编排](../../Agent/Workflow/index.md)、[多智能体](../../Agent/MultiAgent/index.md)
 - 本库 LangChain 专题：[Agent 与中间件](../../LangChain/Agent/index.md)（框架侧的 `create_agent` 与六个钩子）、[实战：带人工审批的检索增强 Agent](../../LangChain/Practice/index.md)（把「写操作需人工确认」落成 `interrupt`）
+- 本库 [Agent 框架深入](../../AgentFramework/index.md)：LangGraph（状态机 / 持久化 / 人工介入）与 CrewAI（角色编排）两大框架的深入讲解——**本页讲「选不选框架、怎么集成」，该专题讲「选了之后怎么用好」**
 - 本库 OpenClaw：[核心概念](../../OpenClaw/CoreConcepts/index.md)
