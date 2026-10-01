@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 456" width="760" height="456" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="456" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">初始化后的应用分层：手写区 / 生成区 / 事实来源</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">分清「谁可以改」比分清「文件在哪」更重要——它是漂移检测与回滚的共同前提</text>
+  <rect x="30" y="76" width="460" height="344" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <rect x="46" y="92" width="428" height="100" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="260" y="110.2" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">手写区</text>
+  <text x="260" y="127" text-anchor="middle" font-size="8.2" fill="#047857">app/pages · app/components · app/composables</text>
+  <text x="260" y="145.86" text-anchor="middle" font-size="8.2" fill="#047857">app/layouts · app/middleware · app/stores</text>
+  <text x="260" y="164.72" text-anchor="middle" font-size="8.2" fill="#047857">shared/ —— 引擎永不改动</text>
+  <line x1="500" y1="142" x2="540" y2="142" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="46" y="206" width="428" height="100" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="260" y="224.2" text-anchor="middle" font-size="10.5" fill="#92400E" font-weight="bold">生成区</text>
+  <text x="260" y="241" text-anchor="middle" font-size="8.2" fill="#B45309">nuxt.config.ts 的 marker 区间</text>
+  <text x="260" y="259.86" text-anchor="middle" font-size="8.2" fill="#B45309">app/assets/styles/ 下的方案入口</text>
+  <text x="260" y="278.72" text-anchor="middle" font-size="8.2" fill="#B45309">package.json 依赖 · eslint.config · Dockerfile</text>
+  <line x1="500" y1="256" x2="540" y2="256" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="46" y="320" width="428" height="100" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="260" y="338.2" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">事实来源</text>
+  <text x="260" y="355" text-anchor="middle" font-size="8.2" fill="#6D28D9">template.config.json（选择快照，只读）</text>
+  <text x="260" y="373.86" text-anchor="middle" font-size="8.2" fill="#6D28D9">改它会被 --check 报漂移，被重放覆盖</text>
+  <line x1="500" y1="370" x2="540" y2="370" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="560" y="76" width="170" height="76" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="645" y="94.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">请求层是基线</text>
+  <text x="645" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">useApi 统一基地址</text>
+  <text x="645" y="128.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">鉴权头与错误归一</text>
+  <rect x="560" y="164" width="170" height="76" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="645" y="182.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">样式顺序是硬约束</text>
+  <text x="645" y="199" text-anchor="middle" font-size="7.5" fill="#1D4ED8">原子化 base → 令牌 → 基础</text>
+  <text x="645" y="216.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">→ 组件库 → 业务入口</text>
+  <rect x="560" y="252" width="170" height="76" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="645" y="270.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">store 只放共享 UI 状态</text>
+  <text x="645" y="287" text-anchor="middle" font-size="7.5" fill="#1D4ED8">服务端数据用 useFetch，不进 store 再同步</text>
+  <rect x="560" y="340" width="170" height="76" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="645" y="358.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">SSR 每请求一份 store</text>
+  <text x="645" y="375" text-anchor="middle" font-size="7.5" fill="#1D4ED8">跨请求持久化靠 cookie 与 useCookie</text>
+  <text x="380" y="440" text-anchor="middle" font-size="9.5" fill="#1E3A8A">三条边界：手写区永不被改 · 生成区只动 marker · 事实来源只读</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

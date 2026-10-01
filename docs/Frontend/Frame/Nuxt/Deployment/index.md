@@ -329,4 +329,4 @@ SSR 让首屏「看起来快」，但如果 hydration 需要下载 1 MB JS，**�
 - [前端性能优化](../../../Others/PerformanceOptimization/index.md) —— 加载、构建、运行时优化的完整体系
 - [前端安全](../../../Others/Security/index.md) —— 缓存与 Cookie 相关的安全边界
 - [Docker](../../../../Ops/Docker/index.md) 与 [Kubernetes](../../../../Ops/Kubernetes/index.md) —— 容器化交付与编排
-- [Nuxt 通用模板 · 部署与交付](../../../../../project/Base/NuxtTemplate/Deployment/index.md)：**分工是**——本页讲「Nuxt 项目怎么部署」，那一页讲「**产物形态会随 UI 组件库改变，但交付流程一个字都不改**」。后者关注的是「模板层面的封装是否完整」，而不是某个平台怎么配。
+- [Nuxt 通用模板 · 部署与上线](../../../../../project/Base/NuxtTemplate/Deployment/index.md)：**分工是**——本页讲「Nuxt 项目怎么部署」，那一页讲「**初始化产物怎么进容器、怎么用身份标签发布、怎么回滚**」。后者关注的是「交付链路是否可复现可回退」，而不是某个平台怎么配。

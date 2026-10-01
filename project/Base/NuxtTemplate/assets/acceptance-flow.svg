@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 486" width="760" height="486" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="486" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">验收流程：AUTO → 交叉断言 → MANUAL → Go/No-Go</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">能自动判定的交给脚本，不能的必须签名，两者之间用交叉断言锁死</text>
+  <rect x="30" y="76" width="160" height="92" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="110" y="94.2" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">AUTO</text>
+  <text x="110" y="111" text-anchor="middle" font-size="8.5" fill="#1D4ED8">24 项</text>
+  <text x="110" y="130.55" text-anchor="middle" font-size="8.5" fill="#1D4ED8">脚本判定</text>
+  <text x="110" y="150.1" text-anchor="middle" font-size="8.5" fill="#1D4ED8">CI 里全跑</text>
+  <line x1="190" y1="122" x2="210" y2="122" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="210" y="76" width="160" height="92" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="290" y="94.2" text-anchor="middle" font-size="11" fill="#5B21B6" font-weight="bold">交叉断言</text>
+  <text x="290" y="111" text-anchor="middle" font-size="8.5" fill="#6D28D9">4 项</text>
+  <text x="290" y="130.55" text-anchor="middle" font-size="8.5" fill="#6D28D9">必须带变异</text>
+  <text x="290" y="150.1" text-anchor="middle" font-size="8.5" fill="#6D28D9">改坏一格要报红</text>
+  <line x1="370" y1="122" x2="390" y2="122" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="390" y="76" width="160" height="92" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="470" y="94.2" text-anchor="middle" font-size="11" fill="#92400E" font-weight="bold">MANUAL</text>
+  <text x="470" y="111" text-anchor="middle" font-size="8.5" fill="#B45309">8 项</text>
+  <text x="470" y="130.55" text-anchor="middle" font-size="8.5" fill="#B45309">必须签名</text>
+  <text x="470" y="150.1" text-anchor="middle" font-size="8.5" fill="#B45309">附命令与证据</text>
+  <line x1="550" y1="122" x2="570" y2="122" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="570" y="76" width="160" height="92" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="650" y="94.2" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">Go / No-Go</text>
+  <text x="650" y="111" text-anchor="middle" font-size="8.5" fill="#047857">上线检查表</text>
+  <text x="650" y="130.55" text-anchor="middle" font-size="8.5" fill="#047857">12 类判据</text>
+  <text x="650" y="150.1" text-anchor="middle" font-size="8.5" fill="#047857">回滚已演练</text>
+  <text x="60" y="196" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">初始化结果验收（AUTO 12 项，判据全部可执行）</text>
+  <rect x="30" y="210" width="88" height="24" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="74" y="226" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">A1~A4</text>
+  <rect x="126" y="210" width="604" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="140" y="226" text-anchor="start" font-size="8.3" fill="#334155">快照合法 · 依赖自洽 · 引导器文件与目录残留为 0</text>
+  <rect x="30" y="240" width="88" height="24" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="74" y="256" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">A5~A8</text>
+  <rect x="126" y="240" width="604" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="140" y="256" text-anchor="start" font-size="8.3" fill="#334155">无引导期依赖 · marker 成对且填充正确 · 首页已替换</text>
+  <rect x="30" y="270" width="88" height="24" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="74" y="286" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">A9~A12</text>
+  <rect x="126" y="270" width="604" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="140" y="286" text-anchor="start" font-size="8.3" fill="#334155">手写区逐字节未改 · 锁已清除 · 依赖已装 · 类型检查通过</text>
+  <text x="60" y="330" text-anchor="start" font-size="10.5" fill="#0F172A" font-weight="bold">反向检查（防「清单本身漏了东西」）</text>
+  <rect x="30" y="344" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="359" text-anchor="start" font-size="8.3" fill="#334155">全仓 grep wizard / setup —— 必须排除 .init-backup（那是回滚的依据）</text>
+  <rect x="30" y="370" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="385" text-anchor="start" font-size="8.3" fill="#334155">产物 grep：.output/server 与 .output/public/_nuxt 都不应出现 wizard</text>
+  <rect x="30" y="396" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="411" text-anchor="start" font-size="8.3" fill="#334155">运行时探测：/setup 与 /api/wizard/schema 都应返回 404</text>
+  <line x1="30" y1="428" x2="730" y2="428" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="380" y="448" text-anchor="middle" font-size="9.5" fill="#B91C1C">签名表三条硬规则：--strict 未签必须为红 · 证据不足 8 字符判不合格 · 日期必须 YYYY-MM-DD</text>
+  <text x="380" y="470" text-anchor="middle" font-size="9.5" fill="#64748B">回滚的三前提：数据结构兼容 · 旧配置还在 · 外部副作用不随镜像退回（重新构建不叫回滚）</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

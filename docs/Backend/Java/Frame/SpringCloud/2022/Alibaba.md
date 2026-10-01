@@ -1,4 +1,4 @@
-### 版本选择
+# 版本选择
 - [SpringCloud](https://spring.io/projects/spring-cloud/#learn)
 - [SpringCloud与SpringCloudAlibaba 版本选择](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
 - [SpringCloud与SpringBoot版本选型](https://start.spring.io/actuator/info)
@@ -12,7 +12,7 @@
 | Sentinel | 1.8.0 |
 | Seate | 1.3.0 |
 
-### 注册中心Nacos
+## 注册中心Nacos
 [Nacos](https://nacos.io/zh-cn/)
 > POM
 
@@ -40,7 +40,7 @@ spring:
         group: shop-server
 ```
 
-### 配置中心Nacos
+## 配置中心Nacos
 > POM
 
 ```xml
@@ -130,7 +130,7 @@ extension-configs和shared-configs都需要设置三个属性(dataId,group,refre
 demo-dev.yaml > demo.yaml > extension-configs > shared-configs
 
 
-### SpringCloudGateway
+## SpringCloudGateway
 [Gateway官网](https://spring.io/projects/spring-cloud-gateway)
 
 > POM
@@ -142,4 +142,4 @@ demo-dev.yaml > demo.yaml > extension-configs > shared-configs
 </dependency>
 ```
 
-### Sentinel
+## Sentinel

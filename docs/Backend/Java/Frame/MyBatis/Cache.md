@@ -135,7 +135,7 @@ CachingExecutor类中的`query()`方法在不同情况下使用的具体缓存�
 
   ![image-20230122181401933](assets/202303011624229.png)
 
-# 一级缓存和二级缓存
+## 一级缓存和二级缓存
 
 :::tip 提示
 
@@ -143,13 +143,13 @@ CachingExecutor类中的`query()`方法在不同情况下使用的具体缓存�
 
 :::
 
-## 使用顺序
+### 使用顺序
 
 首先查询二级缓存，因为二级缓存中可能会有其他程序已经查出来的数据，可以拿来直接使用。如果二级缓存没有命中，再查询一级缓存。如果一级缓存也没有命中，则查询数据库。SqlSession关闭之前，一级缓存中的数据会写入二级缓存。
 
 ![./images](assets/202303011624017.png)
 
-## 效用范围
+### 效用范围
 
 - 一级缓存：SqlSession级别
 - 二级缓存：SqlSessionFactory级别
@@ -160,7 +160,7 @@ CachingExecutor类中的`query()`方法在不同情况下使用的具体缓存�
 
 ![./images](assets/202303011623291.png)
 
-## 一级缓存
+### 一级缓存
 
 一级缓存是基于 PerpetualCache(MyBatis自带)的 HashMap 本地缓存，**作用范围为 session 域内**。当 session flush(刷新)或者 close(关闭)之后，该 session 中所有的 cache(缓存)就会被清空。
 
@@ -250,7 +250,7 @@ public class UserMapperTest {
 
 从运行结果可以看出，第一个 SqlSession 实际只发生过一次查询，而第二次查询就从缓存中取出了，也就是 SqlSession 层面的一级缓存。为了克服这个问题，往往需要配置二级缓存，使得缓存在 SqlSessionFactory 层面上能够提供给各个 SqlSession 对象共享。
 
-## 二级缓存
+### 二级缓存
 
 二级缓存与一级缓存其机制相同，默认也是采用 PerpetualCache，HashMap存储，不同在于其**存储作用域为 Mapper(Namespace)**，并且**可自定义存储源**，如 Ehcache。
 
@@ -267,7 +267,7 @@ public class UserMapperTest {
 
 **二级缓存失效的情况**： 两次查询之间执行了任意的增删改，会使一级和二级缓存同时失效。
 
-### 二级缓存的配置
+#### 二级缓存的配置
 
 1. **开启二级缓存功能**：默认不开启。
 
@@ -385,7 +385,7 @@ public class UserMapperTest {
 Cache Hit Ratio [com.hjc.demo.mapper.CacheMapper]: 0.5
 ```
 
-## 自定义缓存
+### 自定义缓存
 
 除了使用 MyBatis 提供的默认缓存方式，你还可以通过实现你自己的缓存或其他第三方缓存方案创建适配器来完全覆盖缓存行为。
 
@@ -668,9 +668,9 @@ public class CacheDemo {
 }
 ```
 
-## 整合EHCache
+### 整合EHCache
 
-### EHCache简介
+#### EHCache简介
 
 官网地址：https://www.ehcache.org/
 
@@ -678,13 +678,13 @@ public class CacheDemo {
 
 > Ehcache is an open source, standards-based cache that boosts performance, offloads your database, and simplifies scalability. **It's the most widely-used Java-based cache because it's robust, proven, full-featured, and integrates with other popular libraries and frameworks**. Ehcache scales from in-process caching, all the way to mixed in-process/out-of-process deployments with terabyte-sized caches.
 
-### 整合操作
+#### 整合操作
 
-#### Mybatis环境
+##### Mybatis环境
 
 在Mybatis环境下整合EHCache，**前提**当然是要先准备好**Mybatis的环境**。
 
-#### 添加依赖
+##### 添加依赖
 
 ```xml [pom.xml]
 <!-- Mybatis EHCache整合包 -->
@@ -714,7 +714,7 @@ public class CacheDemo {
 | slf4j-api       | SLF4J日志门面包                 |
 | logback-classic | 支持SLF4J门面接口的一个具体实现 |
 
-#### 整合EHCache
+##### 整合EHCache
 
 1. 创建EHCache配置文件
 
@@ -778,7 +778,7 @@ public class CacheDemo {
 
    正常按照[二级缓存](#二级缓存)的方式测试即可。因为整合EHCache后，其实就是使用EHCache代替了Mybatis自带的二级缓存。
 
-### EHCache配置文件说明
+#### EHCache配置文件说明
 
 当借助`CacheManager.add("缓存名称")`创建Cache时，EhCache便会采用`<defalutCache/>`指定的的管理策略。
 

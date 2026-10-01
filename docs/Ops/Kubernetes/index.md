@@ -24,3 +24,4 @@ Kubernetes（K8s）是容器编排平台的事实标准，负责容器的部署�
 ## 相关专题与分工
 
 - [云原生与服务托管](../CloudNative/index.md)：本专题讲**自建集群的对象模型与运维**——Pod / Deployment / Service / Ingress 这些对象的语义、集群组件（apiserver / etcd / scheduler / kubelet）的职责，以及集群怎么升级；云原生专题讲**托管服务的选型与账单**——控制面按什么计费、节点弹性器（Karpenter / Cluster Autoscaler / Autopilot）怎么选、Spot 与承诺折扣怎么用、成本怎么治理。两者是同一条能力线的两端，关系就是**自建 vs 托管**：先用本专题把对象模型学透，再按团队规模与合规要求决定哪些负载自建、哪些直接交给托管控制面。
+- [服务网格：Istio 流量与安全治理](../ContainerOrchestration/ServiceMesh/index.md)：本专题的 [Service](Service/index.md) 与 [Ingress 入口](Ingress/index.md) 解决**集群内怎么找到服务、集群外怎么把请求放进来**——对象是 K8s 原生 API，能力是 L4 转发与 L7 入口；服务网格把**调用方与被调用方之间的所有横切关注点**（重试、超时、熔断、灰度、mTLS、链路追踪）下沉到数据面代理，改的是「服务间流量按什么策略走」。交界点很明确：**入口那一跳通常仍由 Ingress / Gateway API 承担**，进去之后的**东西向（east-west）流量**才是网格的主场；虚拟服务与灰度规则怎么写见 [流量管理：匹配、路由与灰度](../ContainerOrchestration/ServiceMesh/TrafficManagement/index.md)。

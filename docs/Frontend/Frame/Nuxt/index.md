@@ -67,4 +67,4 @@ Vue 侧以 **Vue 3.5+** 为准。涉及 Nuxt 3 的差异会明确标注。
 - [前端性能优化](../../Others/PerformanceOptimization/index.md)：SSR 在性能优化中的位置与代价
 - [前端安全](../../Others/Security/index.md)：SSR 特有的安全问题（服务端注入、密钥泄漏）
 - [Docker](../../../Ops/Docker/index.md) 与 [Kubernetes](../../../Ops/Kubernetes/index.md)：Node 服务的交付形态
-- [Nuxt 通用模板](../../../../project/Base/NuxtTemplate/index.md)：**分工是**——本专题讲框架本身（渲染模式、数据获取、服务端能力、部署），通用模板讲「**怎么把 UI 组件库做成可插拔**」。后者是工程组织问题，换到 Vue、React 上同样成立，与框架能力无关。
+- [Nuxt 通用模板](../../../../project/Base/NuxtTemplate/index.md)：**分工是**——本专题讲框架本身（渲染模式、数据获取、服务端能力、部署），通用模板讲「**怎么让模板自己完成技术栈初始化**」（默认零依赖、首次运行打开选择页、引擎自删引导器并按选择装依赖）。后者是工程组织问题，换到 Vue、React 上同样成立，与框架能力无关。

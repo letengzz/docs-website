@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四层门禁：静态 → 类型 → 测试 → 产物复核</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">前三层所有 Nuxt 项目都有；第四层检查的是模板自己的承诺，必须自己写</text>
+  <rect x="30" y="76" width="160" height="104" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="110" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">L1 静态</text>
+  <text x="110" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">ESLint 9 flat</text>
+  <text x="110" y="128.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">Prettier 管好看</text>
+  <text x="110" y="145.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">Stylelint 条件启用</text>
+  <text x="110" y="196" text-anchor="middle" font-size="8" fill="#64748B">秒级</text>
+  <line x1="190" y1="128" x2="210" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="210" y="76" width="160" height="104" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="290" y="94.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">L2 类型</text>
+  <text x="290" y="111" text-anchor="middle" font-size="7.5" fill="#6D28D9">nuxi typecheck</text>
+  <text x="290" y="128.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">strict 全开</text>
+  <text x="290" y="145.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">noUncheckedIndexedAccess</text>
+  <text x="290" y="196" text-anchor="middle" font-size="8" fill="#64748B">十几秒</text>
+  <line x1="370" y1="128" x2="390" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="390" y="76" width="160" height="104" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="470" y="94.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">L3 测试</text>
+  <text x="470" y="111" text-anchor="middle" font-size="7.5" fill="#0F766E">Vitest 4</text>
+  <text x="470" y="128.25" text-anchor="middle" font-size="7.5" fill="#0F766E">@nuxt/test-utils 4</text>
+  <text x="470" y="145.5" text-anchor="middle" font-size="7.5" fill="#0F766E">单元 / 组件 / 服务端 / E2E</text>
+  <text x="470" y="196" text-anchor="middle" font-size="8" fill="#64748B">分钟级</text>
+  <line x1="550" y1="128" x2="570" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="570" y="76" width="160" height="104" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="650" y="94.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">L4 产物复核</text>
+  <text x="650" y="111" text-anchor="middle" font-size="7.5" fill="#047857">verify · --check</text>
+  <text x="650" y="128.25" text-anchor="middle" font-size="7.5" fill="#047857">12 项断言</text>
+  <text x="650" y="145.5" text-anchor="middle" font-size="7.5" fill="#047857">残留 0 · 漂移 0 · 自测全绿</text>
+  <text x="650" y="196" text-anchor="middle" font-size="8" fill="#64748B">分钟级</text>
+  <rect x="30" y="214" width="700" height="74" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="232.2" text-anchor="middle" font-size="10.5" fill="#991B1B" font-weight="bold">L4 检查的是模板自己的承诺</text>
+  <text x="380" y="249" text-anchor="middle" font-size="8.5" fill="#B91C1C">引导器删干净了没有 · 依赖与快照一致没有 · 同选择跑两次结果相同没有</text>
+  <text x="380" y="268.55" text-anchor="middle" font-size="8.5" fill="#B91C1C">这一层没有任何现成工具，必须自己写——也是本专题质量策略的重心</text>
+  <rect x="30" y="302" width="164" height="62" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="112" y="320.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">PASS</text>
+  <text x="112" y="337" text-anchor="middle" font-size="8" fill="#047857">跑完且符合期望</text>
+  <rect x="208" y="302" width="164" height="62" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="290" y="320.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">FAIL</text>
+  <text x="290" y="337" text-anchor="middle" font-size="8" fill="#B91C1C">跑完但不符合期望</text>
+  <rect x="386" y="302" width="164" height="62" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="468" y="320.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">BLOCKED</text>
+  <text x="468" y="337" text-anchor="middle" font-size="8" fill="#B45309">没跑成（缺前置条件）</text>
+  <rect x="564" y="302" width="164" height="62" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="646" y="320.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">TIMEOUT</text>
+  <text x="646" y="337" text-anchor="middle" font-size="8" fill="#334155">超时</text>
+  <line x1="30" y1="382" x2="730" y2="382" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="380" y="402" text-anchor="middle" font-size="9.5" fill="#B91C1C">「没跑成」与「没跑过」必须分清：BLOCKED 混进 FAIL 会把「依赖没装」误判成「代码写错」</text>
+  <text x="380" y="424" text-anchor="middle" font-size="9.5" fill="#065F46">门禁清单收敛到单一来源 gates.json，本地 / CI / 审计三处都读它，并用 --check 断言文档不漂移</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,4 +1,4 @@
-##  Spring Cloud简介
+# Spring Cloud简介
 
 Spring Cloud是Spring提供的微服务框架。它利用Spring Boot的开发特性简化了微服务开发的复杂性，例如：**服务发现注册**、**配置中心**、**消息总线**、**负载均衡**、**断路器**、**数据监控**等，这些工作都可以借助Spring Boot的开发风格做到一键启动和部署。
 

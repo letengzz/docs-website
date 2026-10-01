@@ -1,52 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" font-family="Microsoft YaHei, PingFang SC, sans-serif">
-  <rect width="760" height="390" fill="#FFFFFF"/>
-  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">部署形态与交付流程</text>
-  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">换 UI 库之后产物变了、但部署流程不变，才算模板真的把复杂度封装住了</text>
-  <text x="380" y="80" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">同一份代码，五种交付形态：差异由 Nitro preset 与路由规则决定</text>
-  <rect x="30" y="94" width="132" height="88" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
-  <text x="96" y="112.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">Node 服务</text>
-  <text x="96" y="129" text-anchor="middle" font-size="7.5" fill="#047857">node-server preset</text>
-  <text x="96" y="146.25" text-anchor="middle" font-size="7.5" fill="#047857">自建服务器首选</text>
-  <text x="96" y="163.5" text-anchor="middle" font-size="7.5" fill="#047857">SSR 与接口同机</text>
-  <rect x="172" y="94" width="132" height="88" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
-  <text x="238" y="112.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">静态产物</text>
-  <text x="238" y="129" text-anchor="middle" font-size="7.5" fill="#1D4ED8">prerender 全量</text>
-  <text x="238" y="146.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">对象存储 + CDN</text>
-  <text x="238" y="163.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">零 Node 运行时</text>
-  <rect x="314" y="94" width="132" height="88" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
-  <text x="380" y="112.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">容器镜像</text>
-  <text x="380" y="129" text-anchor="middle" font-size="7.5" fill="#6D28D9">多阶段构建</text>
-  <text x="380" y="146.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">体积可控</text>
-  <text x="380" y="163.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">编排友好</text>
-  <rect x="456" y="94" width="132" height="88" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
-  <text x="522" y="112.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">边缘运行时</text>
-  <text x="522" y="129" text-anchor="middle" font-size="7.5" fill="#0F766E">边缘函数部署</text>
-  <text x="522" y="146.25" text-anchor="middle" font-size="7.5" fill="#0F766E">就近响应</text>
-  <text x="522" y="163.5" text-anchor="middle" font-size="7.5" fill="#0F766E">注意运行时限制</text>
-  <rect x="598" y="94" width="132" height="88" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
-  <text x="664" y="112.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">Serverless</text>
-  <text x="664" y="129" text-anchor="middle" font-size="7.5" fill="#B45309">冷启动需评估</text>
-  <text x="664" y="146.25" text-anchor="middle" font-size="7.5" fill="#B45309">按量计费</text>
-  <text x="664" y="163.5" text-anchor="middle" font-size="7.5" fill="#B45309">适合波动流量</text>
-  <text x="380" y="200" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">UI 可插拔对部署的影响：每个变体是独立产物，部署流程要按变体区分</text>
-  <rect x="30" y="214" width="100" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
-  <text x="80" y="230" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">① 构建</text>
-  <rect x="136" y="214" width="594" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
-  <text x="433" y="230" text-anchor="middle" font-size="8.5" fill="#334155">按 ui.config.json 出产物</text>
-  <rect x="30" y="244" width="100" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
-  <text x="80" y="260" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">② 变量注入</text>
-  <rect x="136" y="244" width="594" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
-  <text x="433" y="260" text-anchor="middle" font-size="8.5" fill="#334155">runtimeConfig 覆盖环境相关项</text>
-  <rect x="30" y="274" width="100" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
-  <text x="80" y="290" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">③ 健康检查</text>
-  <rect x="136" y="274" width="594" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
-  <text x="433" y="290" text-anchor="middle" font-size="8.5" fill="#334155">准备一个不依赖 UI 的探针接口</text>
-  <rect x="30" y="304" width="100" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
-  <text x="80" y="320" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">④ 回滚</text>
-  <rect x="136" y="304" width="594" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
-  <text x="433" y="320" text-anchor="middle" font-size="8.5" fill="#334155">产物按变体命名，可切回上一版</text>
-  <text x="380" y="352" text-anchor="middle" font-size="9.5" fill="#065F46">验收清单里必须有一项：把 UI 库换掉，重新部署，页面功能与视觉都正常</text>
-  <text x="380" y="374" text-anchor="middle" font-size="9.5" fill="#64748B">这一步同时也是「适配层到底做没做干净」的最终检验</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">部署拓扑：静态走 CDN，SSR 走 Node 容器</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">渲染模式决定部署形态——它不是又一个独立选择，而是同一个决定的另一半</text>
+  <rect x="30" y="76" width="130" height="56" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="95" y="94.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">用户</text>
+  <text x="95" y="111" text-anchor="middle" font-size="8" fill="#334155">浏览器 / 爬虫</text>
+  <rect x="200" y="76" width="150" height="56" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="275" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">CDN / 反向代理</text>
+  <text x="275" y="111" text-anchor="middle" font-size="8" fill="#1D4ED8">缓存 · 压缩 · TLS</text>
+  <line x1="160" y1="104" x2="200" y2="104" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="350" y1="104" x2="390" y2="104" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="390" y="76" width="150" height="56" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="465" y="94.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">静态资源</text>
+  <text x="465" y="111" text-anchor="middle" font-size="8" fill="#047857">/_nuxt/* immutable</text>
+  <rect x="390" y="158" width="150" height="56" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="465" y="176.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">SSR 容器</text>
+  <text x="465" y="193" text-anchor="middle" font-size="8" fill="#6D28D9">.output/server</text>
+  <rect x="570" y="158" width="160" height="56" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="650" y="176.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">后端 API</text>
+  <text x="650" y="193" text-anchor="middle" font-size="8" fill="#C2410C">runtimeConfig 注入</text>
+  <line x1="350" y1="104" x2="350" y2="186" stroke="#7C3AED" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="350" y1="186" x2="390" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="540" y1="186" x2="570" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="240" width="220" height="84" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="140" y="258.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">静态托管</text>
+  <text x="140" y="275" text-anchor="middle" font-size="8" fill="#047857">SSG / SPA 产物</text>
+  <text x="140" y="293.4" text-anchor="middle" font-size="8" fill="#047857">对象存储 + CDN</text>
+  <text x="140" y="311.8" text-anchor="middle" font-size="8" fill="#047857">无运行时</text>
+  <rect x="270" y="240" width="220" height="84" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="258.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">Node 服务</text>
+  <text x="380" y="275" text-anchor="middle" font-size="8" fill="#6D28D9">SSR / 混合产物</text>
+  <text x="380" y="293.4" text-anchor="middle" font-size="8" fill="#6D28D9">Docker + Compose</text>
+  <text x="380" y="311.8" text-anchor="middle" font-size="8" fill="#6D28D9">健康检查与探针</text>
+  <rect x="510" y="240" width="220" height="84" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="620" y="258.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">边缘 / Serverless</text>
+  <text x="620" y="275" text-anchor="middle" font-size="8" fill="#B45309">平台专用 preset</text>
+  <text x="620" y="293.4" text-anchor="middle" font-size="8" fill="#B45309">全球低延迟</text>
+  <text x="620" y="311.8" text-anchor="middle" font-size="8" fill="#B45309">冷启动需评估</text>
+  <line x1="30" y1="340" x2="730" y2="340" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="30" y="352" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="367" text-anchor="start" font-size="8.3" fill="#334155">镜像只拷 .output：不把 devDependencies 与构建工具带进生产镜像</text>
+  <rect x="30" y="378" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="393" text-anchor="start" font-size="8.3" fill="#334155">标签分层：身份标签（sha-xxx，不可变）用于部署，环境指针 prod 只能用来查询</text>
+  <rect x="30" y="404" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="419" text-anchor="start" font-size="8.3" fill="#334155">存活与就绪必须分开：依赖抖动摘流量，不要让容器反复重启叠加冷启动</text>
+  <rect x="30" y="430" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="445" text-anchor="start" font-size="8.3" fill="#334155">配置全走环境变量，缺值用 ${VAR:?} 直接启动失败，不用默认值兜住</text>
   <defs>
     <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>

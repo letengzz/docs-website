@@ -86,7 +86,7 @@ server: {
 - [初始化项目](../InitProject/index.md)、[配置环境变量](../Env/index.md)、[配置打包构建优化](../Build/index.md)
 - [网络请求封装](../Http/index.md)、[权限模块](../Permission/index.md)、[主题模块](../Theme/index.md)
 - [组件库集成](../ComponentLibrary/index.md)、[发布模块](../Release/index.md)
-- [Nuxt 通用模板 · 常见问题与反模式](../../NuxtTemplate/FAQ/index.md)：**分工是**——本页是 Vue3 模板自身的常见问题（构建、联调、样式、性能），那一页专讲「**换 UI 组件库之后怎么排障**」，按水合 / 样式 / 类型三类症状组织，另附反模式清单
+- [Nuxt 通用模板 · 技术栈矩阵与组合兼容](../../NuxtTemplate/StackMatrix/index.md)：**分工是**——本页是 Vue3 模板自身的常见问题（构建、联调、样式、性能），那一页专讲「**UI 库 / 预处理器 / 原子化三维组合的冲突与冗余**」，12 条规则逐条给出原因与出路，可作为选型时的对照清单
 
 ## 参考资料
 

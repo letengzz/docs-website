@@ -233,7 +233,7 @@ INSERT INTO roles (username, role) VALUES ('nacos', 'ROLE_ADMIN');
 
 **获取nacos的配置文件**
 
-# 任意启动一容器，将容器内的配置文件复制到宿主机
+## 任意启动一容器，将容器内的配置文件复制到宿主机
 
 docker run -p 8848:8848 --name nacos -d nacos/nacos-server:1.4.1
 mkdir -p /develop_env/nacos/logs/                      #新建logs目录

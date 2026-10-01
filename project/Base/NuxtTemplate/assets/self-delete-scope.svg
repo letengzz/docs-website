@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="500" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">自删除范围：删哪些、留哪些、怎么删</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">删除清单是逐条枚举的白名单；宁可留一个空目录，不可误删一个用户文件</text>
+  <rect x="30" y="76" width="420" height="158" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="240" y="94.2" text-anchor="middle" font-size="10.5" fill="#991B1B" font-weight="bold">前端引导区（删除）</text>
+  <text x="240" y="111" text-anchor="middle" font-size="8.5" fill="#B91C1C">app/pages/setup/index.vue</text>
+  <text x="240" y="130.55" text-anchor="middle" font-size="8.5" fill="#B91C1C">app/pages/setup/progress.vue</text>
+  <text x="240" y="150.1" text-anchor="middle" font-size="8.5" fill="#B91C1C">app/components/wizard/（5 个组件）</text>
+  <text x="240" y="169.65" text-anchor="middle" font-size="8.5" fill="#B91C1C">app/utils/wizard/（option-model · useWizard）</text>
+  <text x="240" y="189.2" text-anchor="middle" font-size="8.5" fill="#B91C1C">app/assets/styles/wizard.css</text>
+  <rect x="30" y="246" width="420" height="140" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="240" y="264.2" text-anchor="middle" font-size="10.5" fill="#991B1B" font-weight="bold">服务端引导区（删除）</text>
+  <text x="240" y="281" text-anchor="middle" font-size="8.5" fill="#B91C1C">server/api/wizard/（4 个接口）</text>
+  <text x="240" y="300.55" text-anchor="middle" font-size="8.5" fill="#B91C1C">server/utils/wizard/options.json</text>
+  <text x="240" y="320.1" text-anchor="middle" font-size="8.5" fill="#B91C1C">server/utils/wizard/（validate · guard · stream）</text>
+  <rect x="470" y="76" width="260" height="310" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="600" y="94.2" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">保留清单（引擎内置）</text>
+  <text x="600" y="111" text-anchor="middle" font-size="8.5" fill="#047857">scripts/init.mjs</text>
+  <text x="600" y="130.55" text-anchor="middle" font-size="8.5" fill="#047857">scripts/verify.mjs</text>
+  <text x="600" y="150.1" text-anchor="middle" font-size="8.5" fill="#047857">app/assets/styles/tokens.css</text>
+  <text x="600" y="169.65" text-anchor="middle" font-size="8.5" fill="#047857">app/assets/styles/base.css</text>
+  <text x="600" y="189.2" text-anchor="middle" font-size="8.5" fill="#047857">nuxt.config.ts</text>
+  <text x="600" y="208.75" text-anchor="middle" font-size="8.5" fill="#047857">package.json</text>
+  <text x="600" y="228.3" text-anchor="middle" font-size="8.5" fill="#047857">pnpm-workspace.yaml</text>
+  <line x1="30" y1="400" x2="730" y2="400" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="30" y="412" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="427" text-anchor="start" font-size="8.3" fill="#334155">① 逐条 unlink + 逐条记录；删除前做「仓库内前缀」与「白名单」双重校验</text>
+  <rect x="30" y="438" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="453" text-anchor="start" font-size="8.3" fill="#334155">② 目录只用 pruneEmptyDirs：读出来是空才删，多一个文件就整体跳过</text>
+  <rect x="30" y="464" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="479" text-anchor="start" font-size="8.3" fill="#334155">③ 绝不用 rm -r / rmSync(recursive)：既可能误删，也可能在受限环境挂住不返回</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,10 +1,10 @@
-## 提前编译：AOT
+# 提前编译：AOT
 
 ![image-20221218154841001](assets/202412102332334.png)
 
-### AOT概述
+## AOT概述
 
-#### JIT与AOT的区别
+### JIT与AOT的区别
 
 JIT和AOT 这个名词是指两种不同的编译方式，这两种编译方式的主要区别在于是否在"运行时"进行编译：
 
@@ -24,7 +24,7 @@ JIT和AOT 这个名词是指两种不同的编译方式，这两种编译方式�
 
 ![image-20221207113544080](assets/202412102332176.png)
 
-#### AOT的优点
+### AOT的优点
 
 - Java 虚拟机加载已经预编译成二进制库，可以直接执行。不必等待及时编译器的预热，减少 Java 应用给人带来"第一次运行慢"的不良体验。
 
@@ -33,7 +33,7 @@ JIT和AOT 这个名词是指两种不同的编译方式，这两种编译方式�
 - 可以在程序运行初期就达到最高性能，程序启动速度快
 - 运行产物只有机器码，打包体积小
 
-#### AOT的缺点
+### AOT的缺点
 
 - 由于是静态提前编译，不能根据硬件情况或程序运行情况择优选择机器指令序列，理论峰值性能不如JIT
 
@@ -45,7 +45,7 @@ AOT提前编译 由新颖的 GraalVM 编译器支持，并允许在构建时将�
 
 现在正处于云原生，降本增效的时代，Java 相比于 Go、Rust 等其他编程语言非常大的弊端就是启动编译和启动进程非常慢，这对于根据实时计算资源，弹性扩缩容的云原生技术相冲突，Spring6 借助 AOT 技术在运行时内存占用低，启动速度快，逐渐的来满足 Java 在云原生时代的需求，对于大规模使用 Java 应用的商业公司可以考虑尽早调研使用 JDK17，通过云原生技术为公司实现降本增效。
 
-#### Graalvm
+### Graalvm
 
 Spring6 支持的 AOT 技术，这个 GraalVM 就是底层的支持，Spring 也对 GraalVM 本机映像提供了一流的支持。GraalVM 是一种高性能 JDK，旨在加速用 Java 和其他 JVM 语言编写的应用程序的执行，同时还为 JavaScript、Python 和许多其他流行语言提供运行时。
 
@@ -63,17 +63,17 @@ GraalVM 提供两种运行 Java 应用程序的方法：在 HotSpot JVM 上使�
 
 总的来说对云原生的要求不算高短期内可以继续使用 2.7.X 的版本和 JDK8，不过 Spring 官方已经对 Spring6 进行了正式版发布。
 
-#### Native Image
+### Native Image
 
 目前业界除了这种在JVM中进行AOT的方案，还有另外一种实现Java AOT的思路，那就是直接摒弃JVM，和C/C++一样通过编译器直接将代码编译成机器代码，然后运行。这无疑是一种直接颠覆Java语言设计的思路，那就是GraalVM Native Image。它通过C语言实现了一个超微缩的运行时组件：Substrate VM，基本实现了JVM的各种特性，但足够轻量、可以被轻松内嵌，这就让Java语言和工程摆脱JVM的限制，能够真正意义上实现和C/C++一样的AOT编译。这一方案在经过长时间的优化和积累后，已经拥有非常不错的效果，基本上成为Oracle官方首推的Java AOT解决方案。
 
 Native Image 是一项创新技术，可将 Java 代码编译成独立的本机可执行文件或本机共享库。在构建本机可执行文件期间处理的 Java 字节码包括所有应用程序类、依赖项、第三方依赖库和任何所需的 JDK 类。生成的自包含本机可执行文件特定于不需要 JVM 的每个单独的操作系统和机器体系结构。
 
-### Native Image构建过程
+## Native Image构建过程
 
-#### GraalVM安装
+### GraalVM安装
 
-##### 下载GraalVM
+#### 下载GraalVM
 
 进入官网下载：https://www.graalvm.org/downloads/
 
@@ -81,7 +81,7 @@ Native Image 是一项创新技术，可将 Java 代码编译成独立的本机�
 
 ![image-20230716162000548](assets/202307161625221.png)
 
-##### 配置环境变量
+#### 配置环境变量
 
 **添加GRAALVM_HOME**：
 
@@ -101,7 +101,7 @@ Native Image 是一项创新技术，可将 Java 代码编译成独立的本机�
 
 ![image-20230716163611625](assets/202307161636987.png)
 
-##### 安装native-image插件
+#### 安装native-image插件
 
 **使用命令 gu install native-image下载安装**
 
@@ -111,21 +111,21 @@ gu install native-image
 
 ![image-20230716163953634](assets/202307161640143.png)
 
-#### 安装C++的编译环境
+### 安装C++的编译环境
 
-##### 下载Visual Studio安装软件
+#### 下载Visual Studio安装软件
 
 https://visualstudio.microsoft.com/zh-hans/downloads/
 
 ![image-20230716164202286](assets/202307161642408.png)
 
-##### 安装Visual Studio
+#### 安装Visual Studio
 
 ![image-20230716165549354](assets/202307161655216.png)
 
 ![image-20230716175636312](assets/202307161756130.png)
 
-##### 添加Visual Studio环境变量
+#### 添加Visual Studio环境变量
 
 INCLUDE：
 
@@ -155,15 +155,15 @@ Path：
 
 ![image-20230716200359542](assets/202307162004878.png)
 
-##### 打开工具，在工具中操作
+#### 打开工具，在工具中操作
 
 ![image-20221207111206279](assets/202307161801011.png)
 
 ![image-20230716180104377](assets/202307161801868.png)
 
-#### 编写代码，构建Native Image
+### 编写代码，构建Native Image
 
-##### 编写Java代码
+#### 编写Java代码
 
 ```java
 public class Hello {
@@ -174,21 +174,21 @@ public class Hello {
 }
 ```
 
-##### 执行编译
+#### 执行编译
 
 ![image-20230716201408030](assets/202307162014640.png)
 
-##### Native Image 进行构建
+#### Native Image 进行构建
 
 ![image-20230716202128905](assets/202307162021804.png)
 
 ![image-20230716202143589](assets/202307162021254.png)
 
-##### 查看构建的文件
+#### 查看构建的文件
 
 ![image-20230716202219242](assets/202307162022562.png)
 
-##### 执行构建的文件
+#### 执行构建的文件
 
 ![image-20230716202256297](assets/202412102332912.png)
 

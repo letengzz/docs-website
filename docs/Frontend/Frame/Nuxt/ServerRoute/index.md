@@ -352,3 +352,4 @@ NUXT_API_BASE=https://changed.example.com nuxi dev
 - [部署与实战](../Deployment/index.md) —— 服务端能力对部署形态的要求
 - [前端安全](../../../Others/Security/index.md) —— XSS、CSRF、Cookie 策略的完整讨论
 - [认证与授权](../../../../Backend/Auth/index.md) —— JWT 与 OAuth2 的服务端实现
+- [Nuxt 通用模板 · 引导器服务端与安全边界](../../../../../project/Base/NuxtTemplate/WizardBackend/index.md) —— **分工是**：本页讲 Server Routes 的通用用法，那一页是「用 Server Routes 做一个只能在本机执行的初始化调度器」，含五道安全闸（仅 dev / 仅 loopback / 一次性令牌 / 单次锁 / 无任意路径）与 SSE 进度转发

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 484" width="760" height="484" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="484" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">引导器接口时序：schema → plan → init（SSE）→ status</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">四个接口里只有 init 会落盘，且真正的文件操作全部交给引擎脚本</text>
+  <rect x="30" y="76" width="180" height="34" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="120" y="98" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">浏览器</text>
+  <rect x="240" y="76" width="200" height="34" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="340" y="98" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">server/api/wizard</text>
+  <rect x="470" y="76" width="260" height="34" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="600" y="98" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">scripts/init.mjs</text>
+  <line x1="120" y1="110" x2="120" y2="348" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <line x1="340" y1="110" x2="340" y2="348" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <line x1="600" y1="110" x2="600" y2="348" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <line x1="120" y1="128" x2="340" y2="128" stroke="#2563EB" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="230" y="122" text-anchor="middle" font-size="8" fill="#334155" font-weight="bold">GET /schema → 候选清单</text>
+  <line x1="120" y1="156" x2="340" y2="156" stroke="#2563EB" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="230" y="150" text-anchor="middle" font-size="8" fill="#334155" font-weight="bold">POST /plan → 校验 + 计划</text>
+  <line x1="340" y1="184" x2="120" y2="184" stroke="#64748B" stroke-width="1.6" marker-end="url(#arw)" stroke-dasharray="5 4"/>
+  <text x="230" y="178" text-anchor="middle" font-size="8" fill="#334155" font-weight="bold">200 计划（不落盘）</text>
+  <line x1="120" y1="212" x2="340" y2="212" stroke="#2563EB" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="230" y="206" text-anchor="middle" font-size="8" fill="#334155" font-weight="bold">POST /init + 一次性令牌</text>
+  <line x1="340" y1="240" x2="600" y2="240" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="470" y="234" text-anchor="middle" font-size="8" fill="#334155" font-weight="bold">spawn(引擎, 选择文件)</text>
+  <line x1="600" y1="268" x2="340" y2="268" stroke="#64748B" stroke-width="1.6" marker-end="url(#arw)" stroke-dasharray="5 4"/>
+  <text x="470" y="262" text-anchor="middle" font-size="8" fill="#334155" font-weight="bold">json-lines 事件流</text>
+  <line x1="340" y1="296" x2="120" y2="296" stroke="#059669" stroke-width="1.6" marker-end="url(#arw)" stroke-dasharray="5 4"/>
+  <text x="230" y="290" text-anchor="middle" font-size="8" fill="#334155" font-weight="bold">SSE stage / log / exit</text>
+  <line x1="30" y1="362" x2="730" y2="362" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="30" y="374" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="389" text-anchor="start" font-size="8.3" fill="#334155">五道安全闸：仅 dev · 仅 loopback · 一次性令牌 · 单次锁 · 无任意路径</text>
+  <rect x="30" y="400" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="415" text-anchor="start" font-size="8.3" fill="#334155">只有 init 会落盘，且落盘动作全部在引擎里完成——接口只做调度与转发</text>
+  <rect x="30" y="426" width="700" height="22" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="44" y="441" text-anchor="start" font-size="8.3" fill="#334155">失败时保留 template.init.lock，用户重开页面能看到错误原文并决定重试或回滚</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

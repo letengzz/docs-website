@@ -1,301 +1,346 @@
-# 第 7 步：部署与交付
+# 部署与上线
 
-模板到此已经能跑、能切、能测。最后一步要回答的是：**这些东西怎么变成线上能访问的产物，以及在换库之后，部署流程为什么一个字都不用改。**
+初始化产物是一份 Nuxt 工程，它的部署方式取决于**渲染模式**：SSG 产物是静态文件，SSR 产物是一个 Node 服务。这一步把它们分别送到对应的地方，并配好「谁能上线、怎么回滚」。
 
-![部署形态与交付流程](../assets/deploy-topology.svg)
+![部署拓扑：静态产物走 CDN，SSR 产物走 Node 容器](../assets/deploy-topology.svg)
 
-## 一、为什么部署要单独写一步
+## 1. 三种部署形态
 
-有个常见误会：既然换库只改 `ui.config.json`，那部署这件事应该与本文档无关。
+| 形态 | 渲染模式 | 产物 | 运行时 | 典型场景 |
+| --- | --- | --- | --- | --- |
+| **静态托管** | SSG / SPA | `.output/public/` | 无（CDN/对象存储） | 文档站、营销页、纯前端后台 |
+| **Node 服务** | SSR / 混合 | `.output/`（含 `server/index.mjs`） | Node 24 LTS | 需要 SEO + 个性化内容 |
+| **边缘 / Serverless** | SSR | 平台专用产物 | 平台运行时 | 全球低延迟、流量波动大 |
 
-恰恰相反——**换库会改产物，而部署流程必须不变**。这两句话同时成立，才是「模板真的把复杂度封装住了」的证明。
-
-具体来说：
-
-| 换库时**会**变的 | 换库时**不该**变的 |
-| --- | --- |
-| 客户端 bundle 的体积与文件名 | 构建命令（还是 `pnpm build`） |
-| 需要预渲染的页面集合（SSG 下） | 产物目录结构（还是 `.output/`） |
-| 依赖树（`deps.json` 驱动的 `pnpm install`） | 环境变量清单（还是那几个 `NUXT_*`） |
-| CSS 里被映射的变量名（`--el-*` → `--ant-*`） | 健康检查路径与探针协议 |
-| 镜像里多/少的几十 MB | 回滚方式（还是切回上一个 tag） |
-
-所以这一步的目标不是「教你怎么部署 Nuxt」——那是框架的事。目标是**把「与 UI 库无关」这条边界，在部署层面也钉死**。
-
-## 二、产物形态由 `render` 决定
-
-`render` 只有一个取值的二元选择，但它决定了产物的**根本形态**：
-
-| `render` | Nitro preset | 产物目录 | 里面有 Node 进程吗 |
-| --- | --- | --- | --- |
-| `ssr` | `node-server` | `.output/server/index.mjs` | **有**，跑的是一个 Node 服务 |
-| `ssg` | `static` | `.output/public/` | **没有**，只有一堆 HTML/CSS/JS |
-
-这条链路在第 5 步是自动打通的：脚本把 `uiNitroPreset` 写进 `nuxt-ui.config.mjs`，
-`nuxt.config.ts` 的 marker 区间把它接进 `nitro.preset`。所以你不需要手工改 preset：
-
-```shell
-node scripts/ui-select.mjs --preset element-admin    # ssr → node-server
-pnpm build
-ls .output/server/index.mjs                          # 存在
-
-node scripts/ui-select.mjs --preset static-demo      # ssg → static
-pnpm build
-ls .output/public/index.html                         # 存在，且没有 .output/server
-```
-
-::: danger SSG 产物里没有 Node 服务
-最常见的错误是在 `render: ssg` 下照抄 SSR 的启动命令：
-
-```shell
-node .output/server/index.mjs    # 报错：文件不存在
-```
-
-SSG 的 `.output/public/` 是**纯静态资源**，交给 Nginx、对象存储或 CDN 就行（见 §五）。
-如果确实需要一个 Node 进程，那就说明这个项目应该用 `ssr`——这不是部署问题，是 `render` 选错了。
+::: tip 形态是渲染模式的函数，不是另一个选择
+引导页已经问过渲染模式了，部署形态就随之确定——两者一致才不会出现「选了 SSG 却想跑 Node 服务」这种错配。选 SSG 时 [构建篇](../Build/index.md) 的 `pnpm generate` 才是主命令。
 :::
 
-## 三、五种交付形态
+## 2. Docker 多阶段构建（Node 服务形态）
 
-同一份代码、同一条构建命令，能落到五种形态。**它们与 UI 库无关**，这也是本文想证明的事：
-
-| 形态 | Nitro preset | 适合 | 需要留意 |
-| --- | --- | --- | --- |
-| **Node 服务** | `node-server` | 自建服务器；SSR 与接口同机 | 进程管理、端口与内存上限 |
-| **静态产物** | `static` | 对象存储 + CDN，零 Node 运行时 | 没有「按请求个性化」能力 |
-| **容器镜像** | `node-server` | 编排平台（K8s / Compose） | 多阶段构建控制体积 |
-| **边缘运行时** | `cloudflare-pages` / `netlify-edge` 等 | 就近响应 | 运行时限制：无 Node 原生模块、体积上限 |
-| **Serverless** | `aws-lambda` / `vercel` 等 | 流量波动大 | 冷启动需要实测评估 |
-
-::: info 边缘与 Serverless 的 preset 名以官方为准
-上表里的 preset 名只是常见写法，Nitro 的 preset 列表会随版本增减。
-落地前请对着 Nitro 部署文档确认当前版本支持的取值，别照抄一份过期的表。
-:::
-
-## 四、交付流程的四个动作
-
-不管落到哪种形态，流程都是这四步——**每一步都不关心 UI 库是什么**。
-
-### 4.1 构建：先验生成物，再构建
-
-```shell
-node scripts/ui-select.mjs --check   # ① 生成物与 ui.config.json 一致
-pnpm install                         # ② 依赖按 deps.json 对齐
-pnpm build                           # ③ 出产物
-```
-
-顺序不能反。先构建再 `--check`，检查的就不再是「源码有没有漂移」，而是「产物的时间戳」——没有意义。
-
-### 4.2 变量注入：环境相关项走 runtimeConfig
-
-`nuxt.config.ts` 里**除 marker 区间外**都是手写区（第 5 步的测试专门证明了这点：换库时这个文件一个字节都不变）。
-所以环境相关配置就直接加在手写区：
-
-```typescript [nuxt.config.ts（手写区节选）]
-export default defineNuxtConfig({
-  compatibilityDate: '2026-09-01',
-  future: { compatibilityVersion: 4 },
-
-  // ui:modules:begin
-  modules: [...baseModules, ...uiModules],
-  // ui:modules:end
-
-  runtimeConfig: {
-    apiBase: '',                    // → NUXT_API_BASE
-    public: {
-      ...uiRuntimeConfigPublic,     // 脚本生成：这个产物挂的是哪个库、哪种渲染
-      siteName: 'Nuxt 通用模板',      // → NUXT_PUBLIC_SITE_NAME
-    },
-  },
-
-  // …其余配置
-})
-```
-
-```shell
-NUXT_API_BASE=https://api.example.com \
-NUXT_PUBLIC_SITE_NAME=订单中心 \
-node .output/server/index.mjs
-```
-
-::: danger 不要用环境变量覆盖 `ui` / `render`
-`NUXT_PUBLIC_UI` 看起来能覆盖生成物里的取值，但这和手工改 `personalize` 是同一类错误：
-
-**`ui` / `render` 描述的是「这个产物是什么」，而不是「这次部署想要什么」。**
-
-一旦允许环境变量覆盖，就会立刻出现自相矛盾的状态——镜像里打包的是 Element Plus，
-环境变量却写着 `antd`，而 `--check` 还会一路绿灯（因为它只看源码生成物）。
-变量注入只应该管「连哪个接口、叫什么名字、上报到哪里」。
-:::
-
-### 4.3 健康检查：一个不依赖 UI 的探针
-
-探针接口**不要渲染任何组件**。UI 库出问题时，探针如果也跟着挂，编排层会误判为「进程死了」然后不停重启——把一个渲染问题升级成可用性事故。
-
-```typescript [server/api/health.get.ts]
-export default defineEventHandler(() => {
-  const cfg = useRuntimeConfig()
-  return {
-    status: 'ok',
-    // 顺手把「这个实例挂的是哪个库」报出来：多形态并行部署时一眼能分辨
-    ui: cfg.public.ui,
-    render: cfg.public.render,
-    personalize: cfg.public.personalize,
-    uptime: Math.round(process.uptime()),
-  }
-})
-```
-
-```shell
-curl -s localhost:3000/api/health
-# {"status":"ok","ui":"element","render":"ssr","personalize":true,"uptime":37}
-```
-
-这个接口的更多设计取舍（就绪与存活探针的区别、探针不该查外部依赖等）见
-[健康检查与配置](../../BackendTemplate/HealthCheck/index.md)。
-
-### 4.4 回滚：产物按变体命名
-
-因为「一个库 × 一种渲染 = 一条独立构建线」，产物天然带两个维度。把它编进名字里，回滚就不需要重新构建：
-
-```shell
-# 镜像 / 制品命名：<ui>-<render>-<sha>
-docker build -t registry.example.com/app:element-ssr-a1b2c3d .
-docker build -t registry.example.com/app:antd-ssr-a1b2c3d .
-
-# 回滚 = 把 tag 指回上一版，不需要重新构建
-docker tag registry.example.com/app:element-ssr-9f8e7d6 registry.example.com/app:element-ssr-current
-```
-
-## 五、两种典型落地
-
-### 5.1 SSR：多阶段容器镜像
+### 2.1 Dockerfile
 
 ```dockerfile [Dockerfile]
-# syntax=docker/dockerfile:1.7
-
-# ---------- 构建期：只有这里出现 pnpm 与源码 ----------
-FROM node:22-alpine AS build
+# ---------- 阶段 1：依赖 ----------
+FROM node:24-alpine AS deps
 WORKDIR /app
 RUN corepack enable
-# 先只拷清单文件，让依赖层独立成缓存层：改业务代码不会重新装依赖
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
+
+# ---------- 阶段 2：构建 ----------
+FROM node:24-alpine AS builder
+WORKDIR /app
+RUN corepack enable
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# 生成物必须与 ui.config.json 一致，否则镜像里的 UI 层和配置是两回事
-RUN node scripts/ui-select.mjs --check
+# 构建期变量：只放会进客户端产物的公开值
+ARG NUXT_PUBLIC_SITE_URL
+ENV NUXT_PUBLIC_SITE_URL=$NUXT_PUBLIC_SITE_URL
 RUN pnpm build
 
-# ---------- 运行期：只有 Node 与产物 ----------
-FROM node:22-alpine AS runtime
+# ---------- 阶段 3：运行时 ----------
+FROM node:24-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-COPY --from=build /app/.output ./.output
-USER node
+ENV HOST=0.0.0.0
+ENV PORT=3000
+
+# 非 root 运行
+RUN addgroup -S app && adduser -S app -G app
+
+# 只复制构建产物：不要把整个 node_modules 带进镜像
+COPY --from=builder --chown=app:app /app/.output ./.output
+
+USER app
 EXPOSE 3000
+
+# 容器内存上限内自适应（不要写死 -Xmx 这类固定值）
+ENV NODE_OPTIONS="--max-old-space-size=384"
+
+# 用 exec 形式，保证信号可达 → docker stop 能秒级优雅退出
 CMD ["node", ".output/server/index.mjs"]
 ```
 
-```text [.dockerignore]
+配套的 `.dockerignore`：
+
+```text
 node_modules
-.output
 .nuxt
+.output
 .git
-.github
+.init-backup
+template.init.lock
 test
+coverage
+*.log
+.env*
+!.env.example
 ```
 
-::: warning `.dockerignore` 里别把 `scripts/` 排掉
-构建期要跑 `node scripts/ui-select.mjs --check`，所以 `scripts/` 必须进镜像的构建阶段。
-只在**运行期**不需要它——多阶段构建天然把这一点分开了。
+::: danger 镜像构建的五个必须
+
+1. **只拷 `.output`**。复制整个 `node_modules` 会把 devDependencies 与构建工具一起打进镜像，体积可能翻十倍。
+2. **`--frozen-lockfile`**。不加意味着容器里可能解析出与本地不同的依赖版本，「构建通过、线上白屏」的经典来源。
+3. **非 root 用户**。Node 镜像默认 root，一旦进程被攻破后果放大。
+4. **`CMD` 用 exec 形式（JSON 数组）**。shell 形式会让 `node` 成为 shell 的子进程，`SIGTERM` 到不了它，`docker stop` 只能等超时强杀。
+5. **`ENV NODE_OPTIONS` 设一个合理上限**。注意这里必须是**运行期**变量，而不是构建期。
 :::
 
-### 5.2 SSG：对象存储 + CDN
+### 2.2 编排
 
-```shell
-node scripts/ui-select.mjs --preset nuxtui-content   # ssg
-pnpm build
-# 产物就是 .output/public/，整目录同步走
-aws s3 sync .output/public/ s3://my-bucket/ --delete --cache-control "public,max-age=31536000,immutable"
-aws s3 cp .output/public/index.html s3://my-bucket/index.html --cache-control "no-cache"
+```yaml [compose.yaml]
+services:
+  web:
+    build:
+      context: .
+      args:
+        NUXT_PUBLIC_SITE_URL: ${NUXT_PUBLIC_SITE_URL:?必须在 .env 中提供}
+    image: registry.example.com/nuxt-app:${IMAGE_TAG:?必须显式指定镜像标签，禁止 latest}
+    env_file:
+      - .env.production
+    environment:
+      # 运行期变量：同一镜像可部署到多环境
+      NUXT_PUBLIC_API_BASE: ${NUXT_PUBLIC_API_BASE:?}
+      NUXT_API_SECRET: ${NUXT_API_SECRET:?}
+    ports:
+      - '127.0.0.1:3000:3000'
+    healthcheck:
+      test: ['CMD', 'node', '-e', "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
 ```
 
-两个要点：
-
-1. **带哈希的静态资源可以长缓存**（`immutable`），`index.html` 必须不缓存——否则换库重新部署后，用户还在用旧 HTML 去请求已经不存在的旧 chunk。
-2. **SSG 下没有 `/api/health` 这种东西**。要探活就用「取一个静态文件看 200」，别指望服务端逻辑。
-
-## 六、把模板本身交付出去
-
-前面六节讲的是「用模板做出来的项目怎么上线」。这一节讲**模板自己怎么发出去**——毕竟它是个通用模板，不是一次性脚手架。
-
-| 方式 | 命令 | 适合 |
-| --- | --- | --- |
-| **克隆后去历史** | `git clone --depth 1 <repo> my-app && rm -rf my-app/.git && git init` | 最直接，无额外依赖 |
-| **Template Repository** | 仓库设置里勾选 Template，页面上「Use this template」 | 团队内统一起点 |
-| **degit** | `pnpm dlx degit <repo> my-app` | 只要快照，不要 git 历史 |
-| **发布 create 包** | `pnpm create nuxt-universal` | 需要维护多个项目、想统一升级 |
-
-::: danger 交付模板时的三个必踩坑
-1. **生成物要和 `ui.config.json` 一起提交**。否则别人克隆下来第一件事就是 `--check` 报红，第一印象直接毁掉。
-   初始化流程固定为：克隆 → `node scripts/ui-select.mjs --preset <预设>` → `git add -A` → 首次提交。
-2. **不要删 `scripts/`**。切换器、自测、fixture 都在里面；删了之后「换库」就退化成手工改八个文件。
-3. **不要把某个库的补丁打进业务代码**。需要绕过某个库的 bug 时，写在实现层的逃生口里（第 2 步），
-   并把原因写成注释——否则换库时这段「先绕过」会变成永远没人敢删的诅咒。
+::: warning `${VAR:?}` 的意义
+它让「缺配置」变成**启动失败**而不是「用默认值悄悄跑起来」。生产环境的密钥缺失如果被默认值兜住，你会得到一个「能访问但功能全错」的站点——比直接起不来难排查得多。
 :::
 
-## 七、验收清单
+### 2.3 反向代理与缓存
 
-第 6 步的验收标准是「行为没坏」，这一步的验收标准是「换库之后交付链路没坏」。逐条对：
+| 场景 | 规则 |
+| --- | --- |
+| 静态资源（`/_nuxt/*`） | 强缓存（`Cache-Control: public, max-age=31536000, immutable`），文件名含哈希可放心 |
+| HTML | 短缓存或不缓存（SSR 内容可能随时变） |
+| API（`/api/*`） | 不缓存 |
+| 压缩 | 已由 `nitro.compressPublicAssets` 预压缩，Nginx 只需 `gzip_static on` |
 
-| # | 动作 | 期望 |
-| --- | --- | --- |
-| 1 | `node scripts/ui-select.mjs --check` | 退出码 0 |
-| 2 | `pnpm build` | 产物目录与 `render` 对应（`ssr` → `.output/server`，`ssg` → `.output/public`） |
-| 3 | `curl /api/health` | `ui` 字段与 `ui.config.json` 一致 |
-| 4 | 换一个库，重跑 1~3 | 仍然全部通过，**且部署脚本一个字都没改** |
-| 5 | 换回原库，重跑 1~3 | 产物回到同一状态（幂等，与第 5 步同源） |
-| 6 | 页面功能与视觉 | 与换库前一致；控制台无 `hydration` 错误 |
+```nginx [nginx 片段]
+location /_nuxt/ {
+  proxy_pass http://127.0.0.1:3000;
+  gzip_static on;
+  add_header Cache-Control "public, max-age=31536000, immutable";
+}
 
-第 4 条是这一步的核心。如果它需要你改部署脚本，说明某个环节漏了封装——通常是两种情况：
-
-- **业务代码里出现了组件库名字**：被 §六 的边界门禁拦住，修业务代码，不要改部署脚本。
-- **部署脚本里手工指定了 preset 或产物路径**：说明它绕过了 `uiNitroPreset`，把这层重新交给脚本。
-
-## 八、验证方式
-
-```shell
-# ① SSR：起服务并确认健康检查报出了正确的 UI 层
-node scripts/ui-select.mjs --ui element --render ssr
-pnpm build
-PORT=3000 node .output/server/index.mjs &
-curl -s localhost:3000/api/health | grep '"ui":"element"' && echo "OK ssr/element"
-
-# ② SSG：产物必须是纯静态的
-node scripts/ui-select.mjs --ui nuxtui --render ssg --allow-degraded-personalize
-pnpm build
-test -f .output/public/index.html && test ! -e .output/server && echo "OK ssg/nuxtui"
-
-# ③ 换库后重新部署，部署脚本零改动（对比两次的构建命令）
-node scripts/ui-select.mjs --ui antd --render ssr
-pnpm build
-PORT=3001 node .output/server/index.mjs &
-curl -s localhost:3001/api/health | grep '"ui":"antd"' && echo "OK 换库后交付链路未变"
+location / {
+  proxy_pass http://127.0.0.1:3000;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;      # SSE / HMR 需要
+}
 ```
 
-三条全部打印 `OK` 即可交付。
+::: danger 反代的三条必配
+1. **`X-Forwarded-For` / `X-Forwarded-Proto`**：不传的话 Nuxt 拿到的都是 `127.0.0.1` 与 `http`，会导致重定向循环、cookie secure 判定错误。
+2. **`proxy_http_version 1.1` + `Upgrade`**：不配则 SSE 与 WebSocket 不可用（注意：引导器只在开发模式存在，生产不需要，但业务可能用）。
+3. **超时**：SSR 首次渲染可能超过默认 60 秒（冷启动 + 慢接口），需要显式设 `proxy_read_timeout`。
+:::
 
-## 九、下一步
+## 3. 环境变量注入
 
-七步走下来，模板已经能切、能测、能交付。但真正落地时，卡住人的往往不是这些主干路径，而是某个下午三点钟的怪异报错。
+| 变量 | 何时注入 | 说明 |
+| --- | --- | --- |
+| `NUXT_PUBLIC_*` | 构建期或运行期均可 | 运行期注入更灵活：同一个镜像可部署多环境 |
+| 服务端秘密（`NUXT_API_SECRET` 等） | **只能运行期** | 绝不能进构建产物 |
+| `PORT` / `HOST` | 运行期 | 交给编排层 |
 
-常见问题与反模式整理在最后一页，建议在踩坑之前先扫一遍。
+```shell
+# 本地验证运行期变量生效（同一个构建产物，两个环境）
+docker build -t nuxt-app:test .
+docker run --rm -p 3000:3000 -e NUXT_PUBLIC_API_BASE=https://a.example.com nuxt-app:test &
+curl -s http://localhost:3000 | grep -o 'a\.example\.com' | head -1
+# 期望：能匹配到（说明运行期变量真的被读取）
+```
 
-- [常见问题与反模式](../FAQ/index.md)
+::: danger 两类变量不要混
+- `NUXT_PUBLIC_*` → `runtimeConfig`，**运行期**读取，改值不用重新构建。
+- `VITE_*` → Vite 构建期变量，会**内联进客户端 JS**，改值必须重新构建，且值会出现在源码里。
+
+需要保密的、需要按环境切换的，一律走前者。这条在 [应用基线](../AppBaseline/index.md) 里也强调过——因为它是 Nuxt 项目最常见的一类安全事故。
+:::
+
+## 4. CI/CD 流水线
+
+五阶段，按**失败代价**排序（秒级检查前置）：
+
+```yaml [.github/workflows/ci.yml]
+name: ci
+on:
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 11 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm dlx nuxi typecheck
+      - run: pnpm test
+
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      # 引擎零依赖，不需要 pnpm install
+      - run: node scripts/selftest.mjs
+      - run: node scripts/init.mjs --check
+```
+
+```yaml [.github/workflows/release.yml（节选）]
+  build-and-push:
+    needs: [static, template]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ vars.REGISTRY }}
+          username: ${{ secrets.REGISTRY_USER }}
+          password: ${{ secrets.REGISTRY_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          # 标签分层：身份标签（不可变）+ 版本标签；不生成 latest
+          tags: |
+            ${{ vars.REGISTRY }}/nuxt-app:sha-${{ github.sha }}
+            ${{ vars.REGISTRY }}/nuxt-app:${{ github.ref_name }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          provenance: true
+          sbom: true
+```
+
+### 4.1 标签策略
+
+| 层 | 例子 | 会不会变 | 用途 |
+| --- | --- | --- | --- |
+| 身份 | `sha-9ecce75a1b2c` | 永不变 | 部署、回滚、审计引用 |
+| 版本 | `1.2.0` | 永不变 | 对外沟通 |
+| 环境指针 | `prod` | **会变** | 只能用来问「现在跑的是什么」 |
+| 便利 | `latest` | 会变 | **不生成** |
+
+::: danger 部署命令里只能出现身份标签
+`IMAGE_TAG=prod` 会被后续任何一次发布静默改写，于是「线上跑的是哪次提交」这个问题永远没有答案。部署必须写 `IMAGE_TAG=sha-<commit>`；`prod` 指针只用于查询当前版本。
+:::
+
+### 4.2 两处缓存与「无缓存周检」
+
+| 缓存 | 键 | 失效风险 |
+| --- | --- | --- |
+| pnpm store | `pnpm-lock.yaml` 哈希 | 锁文件不变但依赖树变了（罕见） |
+| Docker GHA | 镜像层 + 构建上下文 | 缓存命中导致「改了代码产物没变」 |
+
+**每周跑一次无缓存流水线**（`cache-from` 全部去掉），确认缓存没有掩盖问题。这条纪律的价值在于：缓存出问题时，症状是「莫名其妙」而不是「明确报错」。
+
+## 5. 健康检查与可观测
+
+```ts [server/api/health.get.ts]
+export default defineEventHandler(() => ({
+  status: 'ok',
+  uptime: Math.round(process.uptime()),
+}));
+```
+
+| 探针 | 判据 | 频率 | 失败动作 |
+| --- | --- | --- | --- |
+| **存活（liveness）** | 进程能响应 `/api/health` | 15s | 重启容器 |
+| **就绪（readiness）** | 依赖（后端 API / 数据库）可用 | 15s | **摘掉流量**，不重启 |
+
+::: warning 存活与就绪必须分开
+混用的后果很具体：当后端接口抖动时，就绪探针失败会被当成存活失败 → 容器被反复重启 → 冷启动叠加抖动 → 雪崩。存活只问「进程还活着吗」，就绪才问「能不能服务」。
+:::
+
+## 6. 部署流程（可照做）
+
+```shell
+# ① 本地先过全部门禁
+pnpm lint && pnpm dlx nuxi typecheck && pnpm test
+node scripts/selftest.mjs && node scripts/init.mjs --check
+
+# ② 生产构建 + 本地预览（关键的一步，别省）
+pnpm build && pnpm preview
+# 期望：http://localhost:3000 页面正常、控制台 0 error
+
+# ③ 构建并推送镜像（身份标签）
+docker build -t registry.example.com/nuxt-app:sha-$(git rev-parse --short=12 HEAD) .
+docker push registry.example.com/nuxt-app:sha-$(git rev-parse --short=12 HEAD)
+
+# ④ 部署（用身份标签）
+IMAGE_TAG=sha-$(git rev-parse --short=12 HEAD) docker compose up -d
+docker compose ps          # 期望：healthy
+
+# ⑤ 冒烟
+bash scripts/smoke.sh http://127.0.0.1:3000
+# 期望：5/5 通过（首页 200、静态资源 200、health ok、404 正常、无引导器路由）
+
+# ⑥ 回滚（如需）
+IMAGE_TAG=sha-<上一个提交> docker compose up -d
+```
+
+## 7. 验证方式
+
+```shell
+# ① 镜像体积与用户
+docker images registry.example.com/nuxt-app:sha-xxx --format '{{.Size}}'
+docker run --rm registry.example.com/nuxt-app:sha-xxx whoami
+# 期望：体积在几百 MB 量级（不是 GB）；whoami 输出 app（非 root）
+
+# ② 优雅退出
+docker stop <container>   # 期望：1 秒内退出，不是等 10 秒超时
+
+# ③ 运行期变量
+# 见第 3 节的 docker run 验证
+
+# ④ 健康检查
+curl -s http://127.0.0.1:3000/api/health
+# 期望：{"status":"ok","uptime":...}
+
+# ⑤ 引导器不存在于生产
+curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:3000/api/wizard/schema
+# 期望：404
+
+# ⑥ 静态资源缓存头
+curl -sI http://127.0.0.1:3000/_nuxt/entry.xxx.js | grep -i cache-control
+# 期望：含 immutable 与 max-age=31536000
+```
+
+## 相关页面
+
+- [构建与产物形态](../Build/index.md)：`.output/` 里到底是什么
+- [验收与上线检查](../Acceptance/index.md)：部署之后的验收清单
+- [质量门禁与自测](../Quality/index.md)：流水线里各条门禁的来源
+- [后端通用模板 · 容器化与 Compose](../../BackendTemplate/Deployment/index.md)：同一套容器化思路的服务端版本
 
 ## 参考资料
 
-- [Nuxt · Deployment](https://nuxt.com/docs/getting-started/deployment)：产物形态与托管建议
-- [Nitro · Deployment](https://nitro.build/deployment)：preset 列表与各平台的部署说明（本文 §三 的取值以此为准）
-- [Nuxt · Runtime Config](https://nuxt.com/docs/guide/features/runtime-config)：`NUXT_` 前缀环境变量的覆盖规则
-- [Docker · 多阶段构建](https://docs.docker.com/build/building/multi-stage/)：构建期与运行期分离
+- Nuxt 部署指南：[nuxt.com/docs/getting-started/deployment](https://nuxt.com/docs/getting-started/deployment)
+- Nitro 部署预设：[nitro.build/deploy](https://nitro.build/deploy)
+- Docker 多阶段构建：[docs.docker.com/build/building/multi-stage](https://docs.docker.com/build/building/multi-stage/)
+- K8s 存活与就绪探针：[kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)

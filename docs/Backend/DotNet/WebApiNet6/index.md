@@ -1,6 +1,6 @@
 # WebApi-Net6
 
-### Json格式化日期
+## Json格式化日期
 
 安装Nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson （.net 6 对应 Newtonsoft 6.x）
 Program配置
@@ -660,7 +660,7 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 
 ## 整合Automapper
 
-#### nuget引入
+### nuget引入
 
 ```csharp
 // 两个依赖的版本都是 12.0.1

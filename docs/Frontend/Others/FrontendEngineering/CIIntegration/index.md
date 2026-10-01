@@ -210,7 +210,7 @@ jobs:
 
 - 安全门禁（依赖审计）：[依赖与供应链安全](../../Security/Dependency/index.md)
 - 测试侧门禁设计：[测试策略与 CI 集成](../../../Testing/Strategy/index.md)、[覆盖率统计与门禁](../../../Testing/Coverage/index.md)
-- 门禁的自我证明（校验器必须能被变异测试证伪）：[Nuxt 通用模板 · 测试与门禁](../../../../../project/Base/NuxtTemplate/Testing/index.md)
+- 门禁的自我证明（校验器必须能被变异测试证伪）：[Nuxt 通用模板 · 质量门禁与自测](../../../../../project/Base/NuxtTemplate/Quality/index.md)
 - GitHub Actions：https://docs.github.com/zh/actions
 - pnpm 与 CI：https://pnpm.io/zh/continuous-integration
 - Vitest CI 集成：https://cn.vitest.dev/guide/continuous-integration

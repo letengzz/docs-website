@@ -246,3 +246,4 @@ npx nuxi build && node .output/server/index.mjs
 - [Next 框架](../../Next/index.md) —— React 侧的同层方案
 - [Vue 框架](../../Vue/index.md) —— 组件与响应式基础
 - [前端性能优化](../../../Others/PerformanceOptimization/index.md) —— SSR 在性能优化体系里的位置
+- [Nuxt 通用模板 · 技术栈矩阵与组合兼容](../../../../../project/Base/NuxtTemplate/StackMatrix/index.md) —— **分工是**：本页讲「四种渲染模式各自的机制与代价」，那一页把渲染模式当成初始化选项之一，讲它在**混搭 UI 库 / 预处理器 / 原子化框架**时的组合规则与产物差异

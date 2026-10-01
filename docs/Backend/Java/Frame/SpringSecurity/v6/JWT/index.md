@@ -75,7 +75,7 @@ JWT头和有效载荷序列化的算法都用到了Base64URL。该算法和常�
 
 作为令牌的JWT可以放在URL中（例如api.example/?token=xxx）。 Base64中用的三个字符是"`+`"，"`/`"和"`=`"，由于在URL中有特殊含义，因此Base64URL中对他们做了替换："`=`"去掉，"`+`"用"`-`"替换，"`/`"用"`_`"替换，这就是Base64URL算法。
 
-# 用户登录方式
+## 用户登录方式
 
 ### HttpSession
 
@@ -83,7 +83,7 @@ JWT头和有效载荷序列化的算法都用到了Base64URL。该算法和常�
 
 session无法实现共享
 
-### token共享
+#### token共享
 
 每次登录，登录成功之后，返回生成token字符串。
 
@@ -91,7 +91,7 @@ session无法实现共享
 
 每次发送请求携带这个token发送(把token值放到请求头)
 
-## 创建Token
+### 创建Token
 
 subject 组名
 
@@ -119,7 +119,7 @@ public static String createToken(String userId, String username) {
 }
 ```
 
-## 获取Token数据
+### 获取Token数据
 
 ```java
 Jws<Claims> claimsJws = Jwts.parser().setSigningKey(tokenSignKey).parseClaimsJws(token);

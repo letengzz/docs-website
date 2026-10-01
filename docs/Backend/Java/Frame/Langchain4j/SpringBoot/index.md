@@ -1,4 +1,4 @@
-### Spring Boot集成
+# Spring Boot集成
 
 对于企业级应用，将LangChain4j与Spring Boot集成是最常见的选择。Spring Boot提供了依赖注入、配置管理、健康检查等企业级功能，可以显著简化LangChain4j应用的管理。以下是一个完整的Spring Boot集成示例。
 
@@ -83,7 +83,7 @@ public class ChatController {
 
 > com/example/ChatApplication.java
 
-#### DashScope Spring Boot集成
+## DashScope Spring Boot集成
 
 对于Spring Boot应用，DashScope提供了便捷的集成方式。通过自定义配置类和属性绑定，可以将DashScope模型配置纳入Spring的依赖注入体系，实现与其他Spring组件的无缝集成。
 
@@ -230,9 +230,8 @@ public class DashScopeChatService {
 }
 ```
 
-#### 
 
-#### 千帆Spring Boot Starter配置
+## 千帆Spring Boot Starter配置
 
 对于Spring Boot项目，可以使用以下配置方式集成千帆：
 
@@ -355,5 +354,3 @@ public class QianfanProperties {
     }
 }
 ```
-
-#### 

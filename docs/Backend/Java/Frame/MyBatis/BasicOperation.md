@@ -1386,7 +1386,7 @@ Mybatis 实现给映射器传递多个参数：
 
 ## resultType和resultMap
 
-#### resultType
+### resultType
 
 使用resultType进行输出映射，只有查询出来的列名和pojo中的属性名一致，该列才可以映射成功。
 
