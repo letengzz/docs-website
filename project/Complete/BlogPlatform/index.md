@@ -63,8 +63,9 @@
 | 第 93 天 | Maven 多模块骨架 + 两条运行路径（local / prod+flyway）+ 结构门禁与行为冒烟（27 断言 / 9 用例） | ✅ |
 | 第 94-97 天 | 第 1 周收尾：仓储接真库 + 契约测试上移 `mvn test` | ⏳ 待办（管理端写接口已在第 98 天提前落地） |
 | 第 98 天 | 文章写入链路：管理端 CRUD + 发布状态机 + 分类标签字典 + 第三道门禁 `admin_smoke`（37 步，可重复） | ✅ |
-| 第 99 天 | 管理端认证与角色：Bearer 令牌签发与校验、PBKDF2 口令哈希、默认拒绝的鉴权规则、401 先于 403 | ✅ 本日 |
-| 第 100-104 天 | 第 2 周收尾：文章下线动作、Markdown 渲染能力补齐、契约 401/403 分支落地 | ⏳ |
+| 第 99 天 | 管理端认证与角色：Bearer 令牌签发与校验、PBKDF2 口令哈希、默认拒绝的鉴权规则、401 先于 403 | ✅ |
+| 第 100 天 | 文章下线动作：四态状态机（DRAFT / PUBLISHED / OFFLINE / DELETED）+ 时间戳语义 + 第二道写链路门禁 `lifecycle_smoke`（24 步） | ✅ 本日 |
+| 第 101-104 天 | 第 2 周收尾：可见性收敛、Markdown 渲染能力补齐、契约 401/403 分支上移 `mvn test` | ⏳ |
 | 第 105-111 天 | 第 3 周：评论 / 搜索 / SSR / 测试 | ⏳ |
 | 第 112-120 天 | 第 4 周：部署 / 监控 / 验收 | ⏳ |
 
@@ -77,7 +78,8 @@
 5. [工程骨架与验收门禁](./Skeleton/index.md)：四模块分层、两条运行路径、结构门禁与行为冒烟
 6. [文章写入链路](./WritePath/index.md)：管理端 CRUD、发布状态机与软删除、Markdown 消毒、第三道门禁
 7. [管理端认证与角色](./AuthRoles/index.md)：Bearer 令牌、PBKDF2 口令哈希、角色模型与默认拒绝的鉴权规则
-8. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+8. [文章下线动作](./Lifecycle/index.md)：四态状态机、合法/非法迁移矩阵、时间戳语义与第二道写链路门禁
+9. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
 
 ## 在你自己的工程里跑起来
 
@@ -91,15 +93,16 @@ mvn spring-boot:run                             # 默认 profile=local：内存�
 ```
 
 ```shell
-# 另开终端：三道门禁（结构 / 只读行为 / 写链路行为）
+# 另开终端：四道门禁（结构 / 只读行为 / 写链路行为 / 状态迁移）
 cd your-project/service
 python skeleton_check.py                            # 期望 checks = 27  failed = 0
-python api_smoke.py   --base http://127.0.0.1:18080 # 期望 cases = 9   passed = 9
-python admin_smoke.py --base http://127.0.0.1:18080 # 期望 steps = 37  passed = 37（会写数据，只对本地环境跑）
-python admin_smoke.py --selftest                    # 期望 selftest: 37/37 通过（证明断言不是恒真）
+python api_smoke.py       --base http://127.0.0.1:18080 # 期望 cases = 9   passed = 9
+python admin_smoke.py     --base http://127.0.0.1:18080 # 期望 steps = 37  passed = 37（会写数据，只对本地环境跑）
+python lifecycle_smoke.py --base http://127.0.0.1:18080 # 期望 steps = 24  passed = 24（状态迁移矩阵）
+python lifecycle_smoke.py --selftest                    # 期望 selftest: 24/24 通过（证明断言不是恒真）
 ```
 
-三道门禁脚本的完整设计、断言清单与「为什么断言必须能被证伪」，见[工程骨架与验收门禁](./Skeleton/index.md)与[文章写入链路](./WritePath/index.md)。
+四道门禁脚本的完整设计、断言清单与「为什么断言必须能被证伪」，见[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)。
 
 ## 参考资料
 

@@ -5,7 +5,7 @@ import { AI_Agent, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Mul
 import { FrontBasic, FrontDataVisualization, FrontMicroFrontend, FrontWebAssembly, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { ClickHouse, DBOverview, DataModeling, Middleware, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
-import { APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
+import { APIDesign, APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 const OthersReview = [
@@ -101,7 +101,7 @@ export const sidebar = {
     {
       text: "工具",
       collapsed: true,
-      items: [...Build, ...CICD, ...DatabaseClients, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...Others],
+      items: [...Build, ...CICD, ...DatabaseClients, ...APIDesign, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...Others],
     },
   ],
   "/project": [
@@ -188,6 +188,7 @@ export const sidebar = {
   "/docs/Tools/CICD": CICD,
   "/docs/Tools/DatabaseClients": DatabaseClients,
   "/docs/Tools/APITools": APITools,
+  "/docs/Tools/APIDesign": APIDesign,
   "/docs/Tools/PackageManager": PackageManager,
   "/docs/Tools/Collaboration": Collaboration,
   "/docs/Tools/IDE": IDE,

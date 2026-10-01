@@ -234,3 +234,56 @@ python api/contract_check.py        # 期望：路径、$ref、认证链路前�
 | 令牌有效期多长？ | 两小时起步，且不引入 refresh token。个人博客的管理端场景里，长有效期的风险大于频繁登录的成本 |
 
 **下一步（第 100 天）**：① 文章下线动作（`PUBLISHED → OFFLINE → DRAFT` 合法路径与非法路径的 409）；② Markdown 渲染能力补齐（代码块高亮、目录、图片本地化）；③ 把 `auth_smoke.py` 的 401/403 用例上移成 MockMvc 集成测试，让鉴权断言进 `mvn test`。
+
+:::info 状态回填（第 100 天）
+本项 ① 已完成，落地为 [文章下线动作](../Lifecycle/index.md)（四态状态机 + 时间戳语义 + `lifecycle_smoke.py` 24 步门禁）。②③ 仍在待办，见下方第 100 天段落的「下一步」。
+:::
+
+## 2026-10-02（第 100 天）：文章下线动作 —— 四态状态机与第二道写链路门禁
+
+:::info 本日为文档产出
+沿用第 99 天起生效的口径：`project/` **只沉淀文档**，不提交源码与脚本。本页记录的是**设计、迁移矩阵与验收判据**，命令需在你自己的工程里按本页实现后执行。
+:::
+
+**做了什么**：
+
+1. **四态状态机**（[文章下线动作](../Lifecycle/index.md)）：在第 98 天 `DRAFT → PUBLISHED` 的单边上，补齐 `OFFLINE`（已下线）与 `DELETED`（软删除终态），把「发布之后又想撤下来」这条高频路径补上——它在第 98 天的设计里没有落点；
+2. **两个正交维度**：把「对外可见性」与「生命周期位置」分开。`DRAFT` 与 `OFFLINE` 对外表现相同（匿名 404），差别在于**前者从未发布过、后者曾经发布过**——由此推出「`DRAFT` 不能 `unpublish`」「`OFFLINE` 可以 `revoke` 回草稿」这两条判据；
+3. **四个动作的迁移矩阵**：`publish`（DRAFT/OFFLINE → PUBLISHED）、`unpublish`（PUBLISHED → OFFLINE）、`revoke`（OFFLINE → DRAFT）、`delete`（任意非终态 → DELETED）；非法路径一律 **409 + `STATE_CONFLICT`**，并带上「当前状态 → 目标状态」；
+4. **`PUBLISHED → DRAFT` 强制两步**（先 `unpublish` 再 `revoke`）：一步到位会抹掉「曾于某时刻对外可见」这段事实，而后台审计需要它；
+5. **时间戳语义**：`publishedAt` 在**重新发布时刷新**（读者侧排序与「最近更新」依赖它）、不下线时保留；新增 `offlineAt`，在 `unpublish` 时写入、**`publish` 时必须清空**；
+6. **契约补齐**：`api/openapi.json` 新增 `/api/v1/admin/posts/{id}/unpublish` 与 `/revoke` 两条路径、补齐 401/403/404/**409** 分支；并明确 `OFFLINE` / `DELETED` **不进对外枚举**（对外只有 `draft` / `published`），读者端对未发布内容一律 404、不区分原因；
+7. **第二道写链路门禁 `lifecycle_smoke.py`（24 步）**：与 `admin_smoke.py` **结构性分开**（写链路冒烟 vs 状态迁移矩阵），并沿用三条纪律——断言相对基线、测试数据带随机位、`--selftest` 用空上下文做变异测试。
+
+**如何验证**：
+
+```shell
+cd your-project/service
+
+python lifecycle_smoke.py --selftest        # 期望：24/24（每步在空响应下都至少报错一次）
+python skeleton_check.py                    # 期望：checks = 27  failed = 0
+
+# 停服务后再 install（运行中的 JVM 锁着本地仓库的 jar）
+mvn -o install -DskipTests                  # 期望：BUILD SUCCESS，四模块全绿
+cd blog-application && SERVER_PORT=18080 mvn -o spring-boot:run
+
+# 另开终端：四道门禁
+cd .. && python api_smoke.py       --base http://127.0.0.1:18080   # 期望 cases = 9   passed = 9
+python admin_smoke.py              --base http://127.0.0.1:18080   # 期望 steps = 37  passed = 37
+python lifecycle_smoke.py          --base http://127.0.0.1:18080   # 期望 steps = 24  passed = 24
+python lifecycle_smoke.py          --base http://127.0.0.1:18080   # 连跑第二遍仍 24/24（证明断言相对基线）
+python api/contract_check.py                                       # 期望：新增路径与 409 分支齐全
+```
+
+**问题与决策**：
+
+| 问题 | 决策 |
+| --- | --- |
+| `PUBLISHED → DRAFT` 一步还是两步？ | **两步**（先下线再撤回）。一步会抹掉「曾对外可见」的事实，审计需要它 |
+| 重新发布时 `publishedAt` 刷新还是保留？ | **刷新**。读者侧排序与「最近更新」依赖它；首次发布时刻由 `createdAt` 承担 |
+| `OFFLINE` 要不要进对外契约枚举？ | **不进**。进枚举会让「增减内部状态」变成破坏性变更；对外统一只暴露 `draft` / `published` |
+| 状态迁移门禁并进 `admin_smoke.py` 吗？ | **不并**。合成一个文件用开关区分，等于把「只读脚本可安全指向任何环境」这条安全边界交给人的记忆 |
+| 为什么非法迁移必须在**正确的起点**上测？ | 在 `PUBLISHED` 上测 `unpublish` 会得到 200；只有把用例摆到 `DRAFT` 上，那个 409 才是有效的——**起点错了，409 用例会假通过** |
+| `offlineAt` 忘清空会怎样？ | 接口全部 200、状态也对，只有后台列表排序悄悄错。**这是本轮唯一一处「肉眼不可见」的错误**，只能靠门禁断言兜住（第 15 步） |
+
+**下一步（第 101 天）**：① 文章列表的可见性收敛——确认下线后的文章不会因缓存残留继续出现在读者端（缓存失效与状态迁移的先后顺序）；② Markdown 渲染能力补齐（代码块高亮、目录、图片本地化）；③ 把 `lifecycle_smoke.py` 与 `auth_smoke.py` 的用例上移成 MockMvc 集成测试，让状态机与鉴权断言进 `mvn test`。

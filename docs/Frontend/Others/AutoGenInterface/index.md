@@ -390,3 +390,24 @@ proxy: {
   },
 },
 ```
+
+## 相关专题与分工：生成物是契约的消费者
+
+本页讲的是**怎么用工具从后端接口定义生成前端代码**（类型、请求函数、`typings.d.ts` 的处理与格式化细节）。
+
+生成的前提是**有一份可靠的接口定义**——那份定义从哪来、怎么写、怎么保证它半年后还没走样，属于 [API 设计与治理](../../../Tools/APIDesign/index.md)：[OpenAPI 契约工程化](../../../Tools/APIDesign/OpenAPI/index.md)（文档骨架与 `operationId` 为什么必填）、[治理机制](../../../Tools/APIDesign/Governance/index.md)（生成物漂移怎么做成 CI 检查）。
+
+::: tip 把「生成物漂移」做成一条 CI 检查
+生成出来之后最容易出的问题是**契约改了、生成物忘了重新生成**。一条极低成本的检查：在 CI 里重新生成一遍，然后要求 `git diff --exit-code` 为空。
+
+```shell
+npx openapi-typescript docs/api/openapi.yaml -o /tmp/schema.d.ts
+diff -q /tmp/schema.d.ts src/api/schema.d.ts
+```
+
+生成目录建议**进版本控制**（构建不必依赖网络与 Node 工具链），并在文件头标注「自动生成，请勿手改」。
+:::
+
+::: danger 生成器产出的函数名不可读，先查 `operationId`
+如果生成出来的函数是 `get_api_v1_posts_slug_` 这种拼出来的名字，说明契约里**缺 `operationId`**。它既是生成器命名函数的依据，也是「改一次路径全站导入报错」的根源——治理上应当把「`operationId` 必填且全局唯一」定为 error 级规则。
+:::

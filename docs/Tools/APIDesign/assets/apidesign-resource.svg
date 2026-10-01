@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    .hdr { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .cell { fill: #fbfcff; stroke: #ccd8ee; stroke-width: 1; }
+    .cellv { fill: #f4fbf6; stroke: #b6e0c3; stroke-width: 1; }
+    .cellx { fill: #fdf3f3; stroke: #f0cccc; stroke-width: 1; }
+    .box { stroke-width: 1.5; rx: 8; }
+  </style>
+
+  <text class="t" x="430" y="26">资源 × 方法：把「动作」翻译成「对资源的操作」</text>
+
+  <rect class="hdr" x="40" y="46" width="160" height="34"/>
+  <text x="120" y="68">资源（集合 / 单个）</text>
+  <rect class="hdr" x="200" y="46" width="120" height="34"/>
+  <text x="260" y="68">GET</text>
+  <rect class="hdr" x="320" y="46" width="120" height="34"/>
+  <text x="380" y="68">POST</text>
+  <rect class="hdr" x="440" y="46" width="120" height="34"/>
+  <text x="500" y="68">PUT / PATCH</text>
+  <rect class="hdr" x="560" y="46" width="120" height="34"/>
+  <text x="620" y="68">DELETE</text>
+  <rect class="hdr" x="680" y="46" width="140" height="34"/>
+  <text x="750" y="68">语义要点</text>
+
+  <rect class="cell" x="40" y="80" width="160" height="34"/><text x="120" y="102">/posts（集合）</text>
+  <rect class="cellv" x="200" y="80" width="120" height="34"/><text x="260" y="102">列表（分页）</text>
+  <rect class="cellv" x="320" y="80" width="120" height="34"/><text x="380" y="102">创建 → 201</text>
+  <rect class="cellx" x="440" y="80" width="120" height="34"/><text x="500" y="102">整体替换</text>
+  <rect class="cellx" x="560" y="80" width="120" height="34"/><text x="620" y="102">清空集合</text>
+  <rect class="cell" x="680" y="80" width="140" height="34"/><text class="small" x="750" y="102">慎用，几乎总是业务动作</text>
+
+  <rect class="cell" x="40" y="114" width="160" height="34"/><text x="120" y="136">/posts/{id}</text>
+  <rect class="cellv" x="200" y="114" width="120" height="34"/><text x="260" y="136">详情</text>
+  <rect class="cellx" x="320" y="114" width="120" height="34"/><text x="380" y="136">不适用</text>
+  <rect class="cellv" x="440" y="114" width="120" height="34"/><text x="500" y="136">更新</text>
+  <rect class="cellv" x="560" y="114" width="120" height="34"/><text x="620" y="136">删除 → 204</text>
+  <rect class="cell" x="680" y="114" width="140" height="34"/><text class="small" x="750" y="136">两个方法都要能重试</text>
+
+  <rect class="cell" x="40" y="148" width="160" height="34"/><text x="120" y="170">/posts/{id}/publish</text>
+  <rect class="cellx" x="200" y="148" width="120" height="34"/><text x="260" y="170">不适用</text>
+  <rect class="cellv" x="320" y="148" width="120" height="34"/><text x="380" y="170">执行动作</text>
+  <rect class="cellx" x="440" y="148" width="120" height="34"/><text x="500" y="170">不适用</text>
+  <rect class="cellx" x="560" y="148" width="120" height="34"/><text x="620" y="170">不适用</text>
+  <rect class="cell" x="680" y="148" width="140" height="34"/><text class="small" x="750" y="170">状态迁移，不是字段修改</text>
+
+  <rect class="box" x="40" y="206" width="780" height="66" fill="#fff8e8" stroke="#d99a3a"/>
+  <text class="t" x="430" y="232">判断一个路径该不该存在，只问一句：</text>
+  <text x="430" y="256">「如果它是 GET，会不会改变任何状态？」会 → 不是查询；「重复调两次结果一样吗？」不一样 → 必须设计成幂等或改成动作端点</text>
+
+  <rect class="box" x="40" y="292" width="380" height="110" fill="#eefaf0" stroke="#3aa76d"/>
+  <text class="t" x="230" y="318">状态码只用得起的那几个</text>
+  <text class="small" x="230" y="342">200 / 201 / 204 · 400 / 401 / 403 / 404 / 409 / 412 / 422</text>
+  <text class="small" x="230" y="364">429 限流 · 500 / 503 · 410 Gone（已下线）</text>
+  <text class="small" x="230" y="386">409 = 状态冲突，不是参数错；422 = 语法对但语义不可处理</text>
+
+  <rect class="box" x="440" y="292" width="380" height="110" fill="#fdf3f3" stroke="#d9736a"/>
+  <text class="t" x="630" y="318">错误结构必须统一且可程序化消费</text>
+  <text class="small" x="630" y="342">type / title / status / detail / instance（RFC 9457）</text>
+  <text class="small" x="630" y="364">业务码放扩展字段（如 code、traceId）</text>
+  <text class="small" x="630" y="386">禁止只回一句「系统繁忙」，调用方无法据此自愈</text>
+</svg>

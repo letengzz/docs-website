@@ -148,6 +148,23 @@ export const Efficiency = [
     ],
   },
 ];
+export const APIDesign = [
+  {
+    text: "API 设计与治理",
+    link: "/docs/Tools/APIDesign/index.md",
+    items: [
+      { text: "体系概述：契约优先与治理四道关", link: "/docs/Tools/APIDesign/Overview/index.md" },
+      { text: "REST 设计规范", link: "/docs/Tools/APIDesign/RestDesign/index.md" },
+      { text: "OpenAPI 契约工程化", link: "/docs/Tools/APIDesign/OpenAPI/index.md" },
+      { text: "版本策略与兼容性演进", link: "/docs/Tools/APIDesign/Versioning/index.md" },
+      { text: "治理机制：Lint 与破坏性变更拦截", link: "/docs/Tools/APIDesign/Governance/index.md" },
+      { text: "Mock、文档站与沙箱", link: "/docs/Tools/APIDesign/MockAndDocs/index.md" },
+      { text: "网关对接", link: "/docs/Tools/APIDesign/Gateway/index.md" },
+      { text: "实战：博客平台的 API 治理", link: "/docs/Tools/APIDesign/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/APIDesign/FAQ/index.md" },
+    ],
+  },
+];
 export const Others = [{ text: "其他工具", link: "/docs/Tools/Others/index.md" }];
 export const TestingTools = [
   {

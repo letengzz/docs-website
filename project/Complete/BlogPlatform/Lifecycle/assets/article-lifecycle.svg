@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    .leaf { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.6; }
+    .pub { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.6; }
+    .off { fill: #fff8e8; stroke: #d99a3a; stroke-width: 1.6; }
+    .gone { fill: #f3f4f6; stroke: #9aa4b2; stroke-width: 1.6; }
+    .ok { stroke: #3aa76d; stroke-width: 1.8; fill: none; }
+    .bad { stroke: #d9736a; stroke-width: 1.6; stroke-dasharray: 6 4; fill: none; }
+  </style>
+  <defs>
+    <marker id="lc-ok" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+    <marker id="lc-bad" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d9736a"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="440" y="28">文章四态：对外只暴露两种，内部多两种</text>
+
+  <!-- 状态节点 -->
+  <rect class="leaf" x="60" y="90" width="150" height="56" rx="8"/>
+  <text x="135" y="114">DRAFT</text>
+  <text class="small" x="135" y="134">草稿 · 匿名 404</text>
+
+  <rect class="pub" x="360" y="90" width="150" height="56" rx="8"/>
+  <text x="435" y="114">PUBLISHED</text>
+  <text class="small" x="435" y="134">已发布 · 读者可见</text>
+
+  <rect class="off" x="660" y="90" width="150" height="56" rx="8"/>
+  <text x="735" y="114">OFFLINE</text>
+  <text class="small" x="735" y="134">已下线 · 匿名 404</text>
+
+  <rect class="gone" x="360" y="300" width="150" height="56" rx="8"/>
+  <text x="435" y="324">DELETED</text>
+  <text class="small" x="435" y="344">软删除 · 内部终态</text>
+
+  <!-- 合法迁移 -->
+  <line class="ok" x1="210" y1="118" x2="360" y2="118" marker-end="url(#lc-ok)"/>
+  <text class="small" x="285" y="110">publish</text>
+
+  <line class="ok" x1="660" y1="118" x2="510" y2="118" marker-end="url(#lc-ok)"/>
+  <text class="small" x="585" y="110">publish（重新发布）</text>
+
+  <line class="ok" x1="585" y1="146" x2="660" y2="146" marker-end="url(#lc-ok)" transform="translate(0,0)"/>
+  <text class="small" x="625" y="164">unpublish</text>
+
+  <path class="ok" d="M 660 168 C 660 250, 250 260, 190 168" marker-end="url(#lc-ok)"/>
+  <text class="small" x="420" y="262">revoke（下线后再撤回为草稿，可继续编辑）</text>
+
+  <!-- 删除 -->
+  <line class="ok" x1="435" y1="146" x2="435" y2="300" marker-end="url(#lc-ok)"/>
+  <text class="small" x="470" y="225">delete（任意非终态）</text>
+
+  <!-- 非法迁移 -->
+  <path class="bad" d="M 135 200 C 135 300, 300 320, 360 330" marker-end="url(#lc-bad)"/>
+  <text class="small" x="180" y="320">DRAFT → OFFLINE</text>
+  <text class="small" x="180" y="338">非法：从未发布过，没有「下线」可言 → 409</text>
+
+  <path class="bad" d="M 435 240 C 435 268, 300 250, 200 160" marker-end="url(#lc-bad)"/>
+  <text class="small" x="255" y="292">PUBLISHED → DRAFT（跳过 OFFLINE）→ 409</text>
+
+  <rect x="60" y="376" width="750" height="48" rx="8" fill="#fdf3f3" stroke="#d9736a" stroke-width="1.4"/>
+  <text x="435" y="396">判据：状态变更只能由「动作」触发，请求体里永远没有 status 字段</text>
+  <text class="small" x="435" y="414">合法路径返回 200；非法路径返回 409 + STATE_CONFLICT，并带上「当前状态 → 目标状态」的定位信息</text>
+</svg>

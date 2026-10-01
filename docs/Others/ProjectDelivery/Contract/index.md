@@ -229,9 +229,28 @@ docker run --rm -v /tmp:/tmp tufin/oasdiff breaking \
 
 第 ② 步是契约先行的关键验证：**契约与实现必须一致**，不一致时以契约为准修实现（或走变更流程改契约）。
 
+## 本页与「API 设计与治理」专题的分工
+
+本页讲的是**契约在交付流程里的位置**：什么时候产出、谁来评审、怎么和需求/数据库设计对齐、验收时怎么判定「契约与实现一致」。它回答的是**流程问题**。
+
+[API 设计与治理](../../../Tools/APIDesign/index.md) 讲的是**契约自身的技术规范**——资源怎么命名、状态码怎么选、错误结构长什么样、OpenAPI 写到哪个版本、Lint 规则集怎么定、破坏性变更怎么拦、Mock 与文档怎么从契约生成。它回答的是**内容与机制问题**。
+
+| 你想要的 | 去哪里 |
+| --- | --- |
+| 契约在四周里程碑里排第几步、评审要谁参加 | 本页 |
+| 契约该写哪些字段、命名怎么统一、错误体长什么样 | [REST 设计规范](../../../Tools/APIDesign/RestDesign/index.md) |
+| 多文件怎么拆、`$ref` 怎么写、3.0 要不要升 3.1 | [OpenAPI 契约工程化](../../../Tools/APIDesign/OpenAPI/index.md) |
+| 破坏性变更怎么定义、废弃怎么通知调用方 | [版本策略与兼容性演进](../../../Tools/APIDesign/Versioning/index.md) |
+| Lint 规则集怎么写、门禁接在哪一层、怎么证明门禁有效 | [治理机制](../../../Tools/APIDesign/Governance/index.md) |
+| 契约怎么变成 Mock、文档站与前端类型 | [Mock、文档站与沙箱](../../../Tools/APIDesign/MockAndDocs/index.md) |
+
+::: tip 一句话分工
+**本页回答「契约什么时候有、谁签字」；API 设计与治理专题回答「契约里写什么、怎么保证它不走样」。**
+:::
+
 ## 参考资料
 
-- [OpenAPI Specification 3.1](https://spec.openapis.org/oas/latest.html)
+- [OpenAPI Specification 3.2](https://spec.openapis.org/oas/v3.2.0.html)
 - [Redocly CLI：契约 lint 与预览](https://redocly.com/docs/cli/)
 - [oasdiff：OpenAPI 差异与破坏性变更检查](https://github.com/Tufin/oasdiff)
 - [springdoc-openapi：从注解导出契约](https://springdoc.org/)
