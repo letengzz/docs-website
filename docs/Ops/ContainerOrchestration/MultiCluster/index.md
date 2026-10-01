@@ -241,6 +241,12 @@ curl -I https://app.example.com/
 
 预期：两个集群中的应用版本一致（同一 Git 提交），主集群故障后访问仍返回 200，监控无业务错误率飙升。
 
+## 相关专题
+
+- [备份与容灾](../../BackupDR/index.md)：多集群解决的是**平台层**的可用性；**数据层**的 RTO/RPO、切换判据、脑裂防护与回切方案见 [容灾架构](../../BackupDR/DisasterRecovery/index.md)。两者的关系是：多集群提供「能把业务搬过去」，容灾体系回答「什么时候搬、谁来拍板、搬完怎么回去」。
+- [Kubernetes 存储](../../Kubernetes/Storage/index.md)：跨集群的数据卷备份与 CSI 快照；
+- [服务网格 · 架构原理](../ServiceMesh/Architecture/index.md)：跨集群的流量治理与故障转移。
+
 ## 参考资料
 
 - Multi-Cluster Service API：<https://github.com/kubernetes-sigs/mcs-api>

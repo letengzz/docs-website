@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .step { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .gate { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    .warn { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    .line { stroke: #4a7bd8; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="pp-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+
+  <rect class="step" x="30" y="56" width="180" height="70"/>
+  <text x="120" y="84">① 造数据</text>
+  <text class="small" x="120" y="106">写入可校验的基线记录</text>
+
+  <rect class="step" x="240" y="56" width="180" height="70"/>
+  <text x="330" y="84">② 备份</text>
+  <text class="small" x="330" y="106">restic + mysqldump 双通道</text>
+
+  <rect class="gate" x="450" y="56" width="180" height="70"/>
+  <text x="540" y="84">③ 校验</text>
+  <text class="small" x="540" y="106">restic check + SHA256</text>
+
+  <rect class="warn" x="660" y="56" width="170" height="70"/>
+  <text x="745" y="84">④ 异地同步</text>
+  <text class="small" x="745" y="106">第二介质 + 不可变</text>
+
+  <line class="line" x1="210" y1="91" x2="240" y2="91" marker-end="url(#pp-arrow)"/>
+  <line class="line" x1="420" y1="91" x2="450" y2="91" marker-end="url(#pp-arrow)"/>
+  <line class="line" x1="630" y1="91" x2="660" y2="91" marker-end="url(#pp-arrow)"/>
+
+  <rect class="step" x="30" y="176" width="180" height="70"/>
+  <text x="120" y="204">⑤ 销毁现场</text>
+  <text class="small" x="120" y="226">drop 表 + 删文件</text>
+
+  <rect class="step" x="240" y="176" width="180" height="70"/>
+  <text x="330" y="204">⑥ 恢复</text>
+  <text class="small" x="330" y="226">restore 到干净目录</text>
+
+  <rect class="gate" x="450" y="176" width="180" height="70"/>
+  <text x="540" y="204">⑦ 断言</text>
+  <text class="small" x="540" y="226">行数 / 校验和 / 抽样比对</text>
+
+  <rect class="gate" x="660" y="176" width="170" height="70"/>
+  <text x="745" y="204">⑧ 记录</text>
+  <text class="small" x="745" y="226">实际 RTO / RPO 落表</text>
+
+  <line class="line" x1="120" y1="126" x2="120" y2="176" marker-end="url(#pp-arrow)"/>
+  <line class="line" x1="210" y1="211" x2="240" y2="211" marker-end="url(#pp-arrow)"/>
+  <line class="line" x1="420" y1="211" x2="450" y2="211" marker-end="url(#pp-arrow)"/>
+  <line class="line" x1="630" y1="211" x2="660" y2="211" marker-end="url(#pp-arrow)"/>
+
+  <text class="t" x="430" y="292">恢复演练四原则</text>
+  <text class="small" x="430" y="316">① 必须真的删掉现场再恢复：「另存一份」验证的是复制，不是恢复</text>
+  <text class="small" x="430" y="338">② 必须断言数据内容：只验证「进程起来了」等于没验证</text>
+</svg>

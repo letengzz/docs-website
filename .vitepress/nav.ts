@@ -52,6 +52,7 @@ export const nav = [
       { text: "云原生", link: "/docs/Ops/CloudNative" },
       { text: "监控告警", link: "/docs/Ops/Monitoring" },
       { text: "日志体系", link: "/docs/Ops/LogSystem" },
+      { text: "备份与容灾", link: "/docs/Ops/BackupDR" },
       { text: "JumpServer", link: "/docs/Ops/JumpServer" },
       { text: "其他", link: "/docs/Ops/Others" },
     ]

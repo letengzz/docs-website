@@ -128,3 +128,4 @@ mysqladmin -u root -p status
 - [MongoDB 文档数据库](../../../NoRelational/MongoDB/index.md)
 - [SQL 优化](../../SQLOptimization/index.md)：慢查询治理与索引设计
 - [数据库客户端](../../../../Tools/DatabaseClients/index.md)：Navicat/DBeaver 连接管理、导入导出与备份恢复
+- [备份与容灾](../../../../Ops/BackupDR/index.md)：本页只覆盖 MySQL 侧的备份命令与坑（含 MySQL 8.4 移除 `mysqlpump`）；**保留策略、3-2-1-1-0、RTO/RPO、演练与容灾档位**统一在专题里讲，参见 [备份工具矩阵](../../../../Ops/BackupDR/Toolchain/index.md) 与 [恢复与演练](../../../../Ops/BackupDR/Recovery/index.md)

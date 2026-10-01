@@ -1094,9 +1094,9 @@ docker pull ghcr.io/<owner>/<repo>/backend-template:$(git rev-parse HEAD)
 
 6. **回滚的三个前提**：数据结构兼容（破坏性变更是发布前设计的，不是事后补救的）、旧配置还在（配置项改名同样属于破坏性变更）、外部副作用不随镜像回退（已发出的消息、已写的外部记录不会退回去，回滚是止血而非复原）。核心推论：**回滚能力取决于旧标签还在不在**——「重新构建一版当时的代码」不叫回滚，因为产出是否等价于当时线上那个镜像，谁也证明不了；因此镜像清理策略必须按「上一稳定版 + 当前版 + 回滚候选」保留，而不能按「时间最近」。
 
-### 本次新增的可执行交付物
+### 本次新增的校验设计
 
-`Release/tagplan.py`（零第三方依赖）+ `Release/selftest.py`。把发布策略里**与 Docker、registry 都无关**的那部分（标签分层与「谁可以出现在部署命令里」）抽成可离线验证的工具——依赖 registry 才能验证的部分一旦出错，代价是线上事故。
+把发布策略里**与 Docker、registry 都无关**的那部分（标签分层与「谁可以出现在部署命令里」）抽成一个**可离线验证的检查器**（示例实现 `Release/tagplan.py`，零第三方依赖，配套自测 `Release/selftest.py`）——依赖 registry 才能验证的部分一旦出错，代价是线上事故。下面给出六条不变量与判据，按它在你自己的工程里实现即可。
 
 | 编号 | 不变量 | 违反了会发生什么 |
 | --- | --- | --- |
@@ -1289,7 +1289,7 @@ cd ../Release && python selftest.py  # 期望：selftest: 88/88 通过（全组�
 
 | 问题 | 决策 |
 | --- | --- |
-| 验收清单的最优失效方式是什么？ | **「跑起来全绿但没人真验过」**。所以随仓库提供的签名表是**空的**，`--strict` 初始必红；转绿条件只有一个：在验收环境把 6 个 MANUAL 项真做一遍并填证据 |
+| 验收清单的最优失效方式是什么？ | **「跑起来全绿但没人真验过」**。所以签名表模板刻意留成**空的**，`--strict` 初始必红；转绿条件只有一个：在验收环境把 6 个 MANUAL 项真做一遍并填证据 |
 | 校验器遇到坏数据该崩还是该报失败？ | **必须报失败**。自测第一次运行就抓到：矩阵里填一个非法符号（`✔` 写成 `X`）会让覆盖数统计 `KeyError` 崩溃——而手工维护的矩阵最容易出的就是写错符号。修法是改用 `.get()`，并把「JSON 损坏 / 缺字段 / 类型不对」都做成 FAIL 而不是异常 |
 | 交叉断言该断言什么？ | 断言**门禁被改坏时会不会拦住**，而不是「正常情况通过」。后者是必然成立的（生成器刚写完生成物当然自洽），跑了等于没跑 |
 | 备份演练用 shell 还是 Python？ | Python。曾写成 Python / POSIX sh 双栖，但因为本机 `bash` 指向被拦截的 WSL、无 `python3`，**双栖无法在本地验证**——一个自己没跑通的脚本放进验收清单，正是本页要反对的事。与 `parity_check.py` / `tagplan.py` / `stack-select.py` 统一 |
@@ -1352,7 +1352,7 @@ python3 scripts/selftest.py            # 期望：selftest: 78/78 通过（实�
 
 - 项目总览：[后端通用模板](../index.md)
 - 本日两条：[统一门禁：清单收敛为单一来源](../Gates/index.md) ｜ [上线验收与监控接入](../Acceptance/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md)（新增容量拐点一节）
-- 本日交付物：`Acceptance/acceptance_check.py`（六类 18 项可执行清单）｜ `Acceptance/selftest.py`（71 项自测）｜ `Acceptance/backup_restore.py`（双方言备份恢复演练）｜ `Acceptance/case_baseline.json`（用例矩阵机器可读来源）｜ `Acceptance/known_issues.md` + `Acceptance/rollback_plan.md`（A3 / F3 判据文件）｜ `Acceptance/manual_signoff.json`（签名表，随仓库为空）
+- 本日设计产出（按对应页面在你的工程中实现）：验收清单检查器 `acceptance_check.py`（六类 18 项）｜ 自测 `selftest.py`（71 项）｜ 备份恢复演练 `backup_restore.py`（双方言）｜ 用例矩阵基线 `case_baseline.json`｜ 判据文档 [`known_issues.md`](../Acceptance/known_issues.md) + [`rollback_plan.md`](../Acceptance/rollback_plan.md)（A3 / F3）｜ 签名表模板 `manual_signoff.json`（刻意留空）
 - 各日模块页：[骨架与目录结构](../Skeleton/index.md) ｜ [统一响应与全局异常](../CommonResponse/index.md) ｜ [健康检查与配置](../HealthCheck/index.md) ｜ [请求追踪 ID 与日志切面](../TraceId/index.md) ｜ [参数校验增强](../Validation/index.md) ｜ [MockMvc 集成测试](../IntegrationTest/index.md) ｜ [数据访问：MyBatis-Plus 接入](../DataAccess/index.md) ｜ [认证授权：Spring Security 7 + JWT](../Security/index.md) ｜ [登录业务闭环与令牌生命周期](../AuthLifecycle/index.md) ｜ [压测与性能基线](../PerformanceTest/index.md) ｜ [测试数据隔离与边界用例](../TestIsolation/index.md) ｜ [技术栈可插拔](../StackSelect/index.md) ｜ [模板 CLI：设计与路线图](../TemplateCli/index.md) ｜ [异常路径联调收口与用例清单](../ErrorPath/index.md) ｜ [容器化：多阶段镜像与 Compose 编排](../Deployment/index.md) ｜ [CI 流水线：把门禁串成一条链](../CI/index.md) ｜ [镜像推送与发布策略](../Release/index.md) ｜ [主库可插拔：MySQL / PostgreSQL 双方言](../Database/index.md) ｜ [上线验收与监控接入](../Acceptance/index.md) ｜ [统一门禁：清单收敛为单一来源](../Gates/index.md)
 - 外部规范：[Docker Build attestations](https://docs.docker.com/build/attestations/) ｜ [Sigstore Cosign 验签](https://docs.sigstore.dev/cosign/verifying/verify/) ｜ [K8s 存活、就绪与启动探针](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) ｜ [OCI 镜像注解规范](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
 - 相关文档：[Spring Boot 通用指南](../../../../docs/Backend/Java/Frame/SpringBoot/Common/index.md) ｜ [完整项目交付 · 一键部署与上线验收](../../../../docs/Others/ProjectDelivery/Delivery/index.md)

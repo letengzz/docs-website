@@ -4,6 +4,11 @@
 
 一个把 **UI 组件库当作可替换零件**的 Nuxt 4 工程模板：同一套业务代码，改一个配置项就能在 **Element Plus / Ant Design Vue / Nuxt UI / Vuetify** 之间切换，业务页面**一行不改**。本文档按「从 0 到 1」的顺序把它做出来——每一步都有完整文件内容、完整命令与可验证的收尾。
 
+::: warning 本项目只有文档，没有代码
+`project/` 是**纯文档目录**：下面所有章节讲的都是「这个项目怎么做出来」——目录结构、配置内容、代码片段、命令与判据全部写在正文里，但**仓库不存放源码、脚本、SQL 与构建文件**。
+正文里出现「运行 `xxx`」时，指的是**先在你的工程里按本节内容创建好该文件**，再执行。
+:::
+
 ![Nuxt 通用模板全景：一条主线、四层可替换](./assets/template-landscape.svg)
 
 ::: tip 一句话理解
@@ -103,20 +108,18 @@ pnpm build
 2. `pnpm dev` 启动后访问终端提示的地址（默认 `http://localhost:3000`），页面正常渲染、控制台无水合告警。
 3. `pnpm build` 结束时产物目录中生成对应 preset 的产物（SSR 为 `.output/server`，SSG 为 `.output/public`）。
 
-::: tip 切换器与自测不用自己写，已经随本文档提供
-`project/Base/NuxtTemplate/scripts/` 下就是**可直接运行**的文件（零依赖，只用 Node 内置模块）：
+::: tip 切换器与自测要自己落地，实现写在文档第 5 步里
+本站不提供可执行脚本。切换器与自测的**完整结构、关键实现与逐条判据**都在[第 5 步：切换工具链与多形态构建](SwitchTooling/index.md)，按它写进你工程的 `scripts/` 即可（零依赖，只用 Node 内置模块）：
 
 | 文件 | 作用 |
 | --- | --- |
-| `scripts/ui-select.mjs` | 切换器本体：643 行，幂等 / 可校验 / 可回溯 |
+| `scripts/ui-select.mjs` | 切换器本体：约 640 行，幂等 / 可校验 / 可回溯 |
 | `scripts/selftest.mjs` | 自测：**275 项断言**，含「把脚本改坏必须报红」的变异测试 |
 | `scripts/fixture/` | 自测用的最小工程，跑自测时会被复制到临时目录，**不会碰你的工程** |
 
 ```shell
 node scripts/selftest.mjs        # 期望：断言 275 / 失败 0，结果 OK
 ```
-
-拷进自己的工程时，把 `scripts/` 整个目录带走即可。落地过程与五条性质的逐条说明见[第 5 步：切换工具链与多形态构建](SwitchTooling/index.md)。
 :::
 
 ## 推荐阅读顺序

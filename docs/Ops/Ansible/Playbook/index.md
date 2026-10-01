@@ -140,7 +140,7 @@ when: some_list | length > 0
 when: my_var is defined
 ```
 
-临时降级为警告（仅用于迁移期）：`ALLOW_BROKEN_CONDITIONALS=warn`。详见 [常见问题与最佳实践](FAQ/index.md)。
+临时降级为警告（仅用于迁移期）：`ALLOW_BROKEN_CONDITIONALS=warn`。详见 [常见问题与最佳实践](../FAQ/index.md)。
 :::
 
 ## 错误处理：block / rescue / always
@@ -315,4 +315,4 @@ ansible-playbook -i inventory.ini site.yml | tail -5
 - 处理器：[Handlers](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html)
 - 错误处理：[Blocks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_blocks.html)
 - 2.19 移植指南：[Porting Guide 2.19](https://docs.ansible.com/ansible/latest/porting_guides/porting_guide_core_2.19.html)
-- 相关文档：[常用模块与 Ad-hoc](Module/index.md) / [变量、Facts 与模板](Variable/index.md)
+- 相关文档：[常用模块与 Ad-hoc](../Module/index.md) / [变量、Facts 与模板](../Variable/index.md)

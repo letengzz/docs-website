@@ -3,7 +3,7 @@ import { Auth, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, Java, Mes
 
 import { AI_Agent, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontMicroFrontend, FrontWebAssembly, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
-import { Ansible, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
+import { Ansible, BackupDR, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { ClickHouse, DBOverview, DataModeling, Middleware, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
 import { APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
@@ -87,7 +87,7 @@ export const sidebar = {
     {
       text: "运维",
       collapsed: true,
-      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...Monitoring, ...LogSystem, ...JumpServer, ...OpsOthers],
+      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...Monitoring, ...LogSystem, ...BackupDR, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
@@ -172,6 +172,7 @@ export const sidebar = {
   "/docs/Ops/CloudNative": CloudNative,
   "/docs/Ops/Monitoring": Monitoring,
   "/docs/Ops/LogSystem": LogSystem,
+  "/docs/Ops/BackupDR": BackupDR,
   "/docs/Ops/JumpServer": JumpServer,
   "/docs/Ops/Others": OpsOthers,
   "/docs/AI/OpenClaw": AI_OpenClaw,

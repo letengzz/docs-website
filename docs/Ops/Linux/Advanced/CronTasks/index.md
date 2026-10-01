@@ -407,3 +407,4 @@ zcat /data/backup/mysql/order_db-*.sql.gz | head -20
 - `systemd-analyze`（calendar 校验）：https://www.freedesktop.org/software/systemd/man/latest/systemd-analyze.html
 - 本专题其余章节：[Linux 进阶导览](../index.md)、[systemd 服务管理](../Systemd/index.md)
 - 定时任务脚本的批量下发与版本管理：[Ansible 自动化运维](../../../Ansible/index.md)
+- **定时任务最常见的生产用途就是备份**：[备份与容灾](../../../BackupDR/index.md) 讲清了「任务跑了 ≠ 备份可用」——需要 `.incomplete` + 原子改名、校验和比对与新鲜度告警，脚本骨架见 [备份策略设计](../../../BackupDR/Strategy/index.md)

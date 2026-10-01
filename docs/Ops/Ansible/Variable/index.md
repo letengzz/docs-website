@@ -312,4 +312,4 @@ ansible web -m slurp -a 'src=/etc/nginx/nginx.conf' -b | head -5
 - Facts 与魔法变量：[Discovering variables](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html)
 - Jinja2 模板：[Templating](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_templating.html)
 - Jinja2 官方文档：[Jinja Template Designer](https://jinja.palletsprojects.com/en/stable/templates/)
-- 相关文档：[清单与变量作用域](Inventory/index.md) / [角色、Galaxy 与 Collections](Role/index.md)
+- 相关文档：[清单与变量作用域](../Inventory/index.md) / [角色、Galaxy 与 Collections](../Role/index.md)

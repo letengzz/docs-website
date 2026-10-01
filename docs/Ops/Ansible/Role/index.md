@@ -236,7 +236,7 @@ ansible-galaxy collection list | head -20
 | 一个角色只做一件事 | `nginx`、`postgresql`、`app-deploy`，而非 `web-stack` |
 | 对外接口写进 README | 列出所有 `defaults` 变量及其含义、默认值 |
 | 变量加角色前缀 | `nginx_port` 而不是 `port`，避免与其它角色冲突 |
-| 不在角色里写机密 | 机密用 Vault 注入（见[实战](Practice/index.md)） |
+| 不在角色里写机密 | 机密用 Vault 注入（见[实战](../Practice/index.md)） |
 | 版本固定 | `requirements.yml` 里写明确版本号，不写 `latest` |
 
 ## 验证方式
@@ -273,4 +273,4 @@ ansible-inventory -i inventory.ini --host web-01 | grep nginx_
 - Galaxy 用户指南：[Galaxy User Guide](https://docs.ansible.com/ansible/latest/galaxy/user_guide.html)
 - 集合索引：[Ansible Collections](https://docs.ansible.com/ansible/latest/collections/index.html)
 - 2.21 移植指南：[Porting Guide 2.21](https://docs.ansible.com/ansible/latest/porting_guides/porting_guide_core_2.21.html)
-- 相关文档：[Playbook 编写](Playbook/index.md) / [实战：批量交付生产 Web 服务器](Practice/index.md)
+- 相关文档：[Playbook 编写](../Playbook/index.md) / [实战：批量交付生产 Web 服务器](../Practice/index.md)

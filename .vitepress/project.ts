@@ -100,6 +100,7 @@ export const CompleteProject = [
           { text: "接口契约", link: "/project/Complete/BlogPlatform/Contract/index.md" },
           { text: "工程骨架与验收门禁", link: "/project/Complete/BlogPlatform/Skeleton/index.md" },
           { text: "文章写入链路", link: "/project/Complete/BlogPlatform/WritePath/index.md" },
+          { text: "管理端认证与角色", link: "/project/Complete/BlogPlatform/AuthRoles/index.md" },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

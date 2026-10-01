@@ -2,6 +2,11 @@
 
 周期 4（第 91-120 天）的从 0 到 1 完整项目：**前后台 + 评论 + 全文搜索 + 一键部署**。它不是又一个「博客教程」——前三个周期分别沉淀了前端模板（Vue3Template）、全栈方法论（FullStackProject）、后端模板（BackendTemplate），这个项目把这些资产**全部当成现成积木**，在真实业务里组装一遍，验证「模板复用」这条路到底通不通、哪里卡。
 
+::: warning 本项目只有文档，没有代码
+`project/` 是**纯文档目录**：下面所有章节讲的都是「这个项目怎么做出来」——目录结构、配置内容、代码片段、命令与判据全部写在正文里，但**仓库不存放源码、脚本、SQL 与构建文件**。
+正文里出现「运行 `xxx`」时，指的是**先在你的工程里按本节内容创建好该文件**，再执行。
+:::
+
 ## 一句话定位
 
 一个可直接上线的个人/小团队博客系统：前台面向读者（SEO 优先），后台面向作者（写作与管理），核心链路是**写文章 → 发布 → 被搜到 → 被评论**。月末交付判据：一键部署成功、上线验收清单全部通过、按文档能从零复现。
@@ -57,8 +62,9 @@
 | 第 92 天 | 接口契约先行（OpenAPI 3.1，4 链路 12 路径）+ 双方言 DDL + parity/contract 两个本地门禁 | ✅ |
 | 第 93 天 | Maven 多模块骨架 + 两条运行路径（local / prod+flyway）+ 结构门禁与行为冒烟（27 断言 / 9 用例） | ✅ |
 | 第 94-97 天 | 第 1 周收尾：仓储接真库 + 契约测试上移 `mvn test` | ⏳ 待办（管理端写接口已在第 98 天提前落地） |
-| 第 98 天 | 文章写入链路：管理端 CRUD + 发布状态机 + 分类标签字典 + 第三道门禁 `admin_smoke`（37 步，可重复） | ✅ 本日 |
-| 第 99-104 天 | 第 2 周：核心模块编码收尾（认证与角色、下线动作、渲染能力补齐） | ⏳ |
+| 第 98 天 | 文章写入链路：管理端 CRUD + 发布状态机 + 分类标签字典 + 第三道门禁 `admin_smoke`（37 步，可重复） | ✅ |
+| 第 99 天 | 管理端认证与角色：Bearer 令牌签发与校验、PBKDF2 口令哈希、默认拒绝的鉴权规则、401 先于 403 | ✅ 本日 |
+| 第 100-104 天 | 第 2 周收尾：文章下线动作、Markdown 渲染能力补齐、契约 401/403 分支落地 | ⏳ |
 | 第 105-111 天 | 第 3 周：评论 / 搜索 / SSR / 测试 | ⏳ |
 | 第 112-120 天 | 第 4 周：部署 / 监控 / 验收 | ⏳ |
 
@@ -70,12 +76,15 @@
 4. [接口契约](./Contract/index.md)：OpenAPI 3.1 四条链路定稿、双方言 DDL 与 parity 门禁
 5. [工程骨架与验收门禁](./Skeleton/index.md)：四模块分层、两条运行路径、结构门禁与行为冒烟
 6. [文章写入链路](./WritePath/index.md)：管理端 CRUD、发布状态机与软删除、Markdown 消毒、第三道门禁
-7. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+7. [管理端认证与角色](./AuthRoles/index.md)：Bearer 令牌、PBKDF2 口令哈希、角色模型与默认拒绝的鉴权规则
+8. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
 
-## 本地跑起来
+## 在你自己的工程里跑起来
+
+本仓**不含可直接运行的工程**。按下表把对应章节的内容落到你的工程后，验证顺序与判据如下（`your-project/` 指你自己建的工程目录）：
 
 ```shell
-cd project/Complete/BlogPlatform/service
+cd your-project/service
 mvn install -DskipTests                         # 首次需联网（本地仓库缺来源元数据，-o 会失败）
 cd blog-application && export SERVER_PORT=18080
 mvn spring-boot:run                             # 默认 profile=local：内存仓储，不需要数据库
@@ -83,12 +92,14 @@ mvn spring-boot:run                             # 默认 profile=local：内存�
 
 ```shell
 # 另开终端：三道门禁（结构 / 只读行为 / 写链路行为）
-cd project/Complete/BlogPlatform/service
+cd your-project/service
 python skeleton_check.py                            # 期望 checks = 27  failed = 0
 python api_smoke.py   --base http://127.0.0.1:18080 # 期望 cases = 9   passed = 9
 python admin_smoke.py --base http://127.0.0.1:18080 # 期望 steps = 37  passed = 37（会写数据，只对本地环境跑）
 python admin_smoke.py --selftest                    # 期望 selftest: 37/37 通过（证明断言不是恒真）
 ```
+
+三道门禁脚本的完整设计、断言清单与「为什么断言必须能被证伪」，见[工程骨架与验收门禁](./Skeleton/index.md)与[文章写入链路](./WritePath/index.md)。
 
 ## 参考资料
 

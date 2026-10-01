@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .box { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    .alt { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    .warn { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    .axis { stroke: #9aa7b8; stroke-width: 1.2; stroke-dasharray: 5 4; }
+  </style>
+
+  <text class="t" x="150" y="40">高可用（HA）</text>
+  <rect class="box" x="40" y="56" width="220" height="104"/>
+  <text x="150" y="86">同一份数据，多个副本</text>
+  <text class="small" x="150" y="110">目标：把「单点故障」变成</text>
+  <text class="small" x="150" y="128">「自动切换」，用户几乎无感</text>
+  <text class="small" x="150" y="150">RTO 秒~分钟 / RPO≈0</text>
+
+  <text class="t" x="430" y="40">备份（Backup）</text>
+  <rect class="alt" x="320" y="56" width="220" height="104"/>
+  <text x="430" y="86">历史时间点的独立副本</text>
+  <text class="small" x="430" y="110">目标：把「误删、逻辑损坏、</text>
+  <text class="small" x="430" y="128">勒索加密」变成「可回退」</text>
+  <text class="small" x="430" y="150">RTO 小时级 / RPO 看备份频率</text>
+
+  <text class="t" x="710" y="40">容灾（DR）</text>
+  <rect class="warn" x="600" y="56" width="220" height="104"/>
+  <text x="710" y="86">异地可接管的环境</text>
+  <text class="small" x="710" y="110">目标：整机房 / 整地域</text>
+  <text class="small" x="710" y="128">不可用时仍有业务</text>
+  <text class="small" x="710" y="150">RTO 分钟~小时 / RPO 按级别定</text>
+
+  <line class="axis" x1="260" y1="108" x2="320" y2="108"/>
+  <line class="axis" x1="540" y1="108" x2="600" y2="108"/>
+
+  <rect class="box" x="40" y="200" width="780" height="130" rx="10"/>
+  <text class="t" x="430" y="228">三者互不替代：解决的是三类不同的失效</text>
+  <text class="small" x="430" y="254">① 进程/节点挂掉 → 高可用接管（数据是「活的同一份」）</text>
+  <text class="small" x="430" y="276">② 数据被写坏 / 被删 / 被加密 → 只能靠备份回退到出事之前</text>
+  <text class="small" x="430" y="298">③ 整个可用区 / 地域不可用 → 靠容灾把业务搬走</text>
+  <text class="small" x="430" y="320">常见的致命误区：有了主从就以为「数据安全」——主从会同步你的误删</text>
+</svg>

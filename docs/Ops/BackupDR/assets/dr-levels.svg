@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .cold { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 10; }
+    .warm { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 10; }
+    .hot  { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; rx: 10; }
+    .active { fill: #f3eefc; stroke: #8b6fd0; stroke-width: 1.5; rx: 10; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+  </style>
+
+  <text class="t" x="430" y="28">四级容灾：差别只在「备用环境离能用有多近」</text>
+
+  <rect class="cold" x="20" y="48" width="195" height="220"/>
+  <text class="t" x="117" y="76">冷备 / 备份重启</text>
+  <text class="small" x="117" y="102">异地只有备份文件</text>
+  <text class="small" x="117" y="122">没有待命机器</text>
+  <text class="small" x="117" y="150">RTO：小时 ~ 天</text>
+  <text class="small" x="117" y="170">RPO：上次备份点</text>
+  <text class="small" x="117" y="198">成本最低</text>
+  <text class="small" x="117" y="218">适合：内部系统、</text>
+  <text class="small" x="117" y="236">可容忍长时间中断</text>
+  <text class="small" x="117" y="258">验证重点：备份能不能在</text>
+  <text class="small" x="117" y="276">一台干净机器上真正还原</text>
+
+  <rect class="warm" x="227" y="48" width="195" height="220"/>
+  <text class="t" x="324" y="76">温备（Pilot Light）</text>
+  <text class="small" x="324" y="102">异地有最小环境常驻</text>
+  <text class="small" x="324" y="122">数据持续复制过来</text>
+  <text class="small" x="324" y="150">RTO：分钟 ~ 小时</text>
+  <text class="small" x="324" y="170">RPO：分钟级</text>
+  <text class="small" x="324" y="198">成本中等</text>
+  <text class="small" x="324" y="218">适合：多数生产业务</text>
+  <text class="small" x="324" y="236">的性价比落点</text>
+  <text class="small" x="324" y="258">验证重点：切换脚本能在</text>
+  <text class="small" x="324" y="276">规定时间内跑完并自证</text>
+
+  <rect class="hot" x="434" y="48" width="195" height="220"/>
+  <text class="t" x="531" y="76">热备（Active-Passive）</text>
+  <text class="small" x="531" y="102">异地全量环境待命</text>
+  <text class="small" x="531" y="122">与生产同规格</text>
+  <text class="small" x="531" y="150">RTO：分钟级</text>
+  <text class="small" x="531" y="170">RPO：秒级 ~ 近似 0</text>
+  <text class="small" x="531" y="198">成本较高</text>
+  <text class="small" x="531" y="218">适合：核心交易链路</text>
+  <text class="small" x="531" y="236">监管有明确要求时</text>
+  <text class="small" x="531" y="258">验证重点：DNS / 网关切换</text>
+  <text class="small" x="531" y="276">与回切都要演练过</text>
+
+  <rect class="active" x="641" y="48" width="195" height="220"/>
+  <text class="t" x="738" y="76">双活 / 多活</text>
+  <text class="small" x="738" y="102">多站点同时承载流量</text>
+  <text class="small" x="738" y="122">没有「备用」概念</text>
+  <text class="small" x="738" y="150">RTO：近似 0</text>
+  <text class="small" x="738" y="170">RPO：取决于写入模型</text>
+  <text class="small" x="738" y="198">成本最高</text>
+  <text class="small" x="738" y="218">真正的门槛不是部署，</text>
+  <text class="small" x="738" y="236">而是「数据一致 + 无脑裂」</text>
+  <text class="small" x="738" y="258">验证重点：单元化归属、</text>
+  <text class="small" x="738" y="276">冲突解决与全局时钟</text>
+
+  <text class="small" x="430" y="300">选档原则：先定业务能接受的 RTO/RPO，再选最低成本能满足它的那一档</text>
+  <text class="small" x="430" y="322">常见错误：直接照抄「双活」——它会把分布式一致性问题一次性全部引入，代价远超收益</text>
+  <text class="small" x="430" y="344">无论哪一档，都必须有「切换判据 + 决策人 + 回切方案」，否则演练时没人敢按下按钮</text>
+  <text class="small" x="430" y="366">备份是容灾的必要条件：冷备用备份重建，温/热/多活用复制重建，两者并存才是完整方案</text>
+</svg>

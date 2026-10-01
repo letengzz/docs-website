@@ -241,5 +241,5 @@ ansible all -m package -a 'name=rsync state=present' -b --check
 - 内置模块索引：[ansible.builtin modules](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/index.html)
 - Ad-hoc 命令：[Introduction to ad hoc commands](https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html)
 - 模块返回值：[Return Values](https://docs.ansible.com/ansible/latest/reference_appendices/common_return_values.html)
-- 相关文档：[Playbook 编写](Playbook/index.md) / [角色、Galaxy 与 Collections](Role/index.md)
+- 相关文档：[Playbook 编写](../Playbook/index.md) / [角色、Galaxy 与 Collections](../Role/index.md)
 - 延伸阅读：[Linux 进阶 · systemd 服务管理](../../Linux/Advanced/Systemd/index.md)

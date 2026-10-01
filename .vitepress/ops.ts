@@ -205,6 +205,21 @@ export const LogSystem = [
     ],
   },
 ];
+export const BackupDR = [
+  {
+    text: "备份与容灾",
+    link: "/docs/Ops/BackupDR/index.md",
+    items: [
+      { text: "体系概述：备份、高可用与容灾的边界", link: "/docs/Ops/BackupDR/Overview/index.md" },
+      { text: "备份策略设计：全量、增量与保留轮转", link: "/docs/Ops/BackupDR/Strategy/index.md" },
+      { text: "备份工具矩阵：从 mysqldump 到 Velero", link: "/docs/Ops/BackupDR/Toolchain/index.md" },
+      { text: "恢复与演练：PITR、校验与演练设计", link: "/docs/Ops/BackupDR/Recovery/index.md" },
+      { text: "容灾架构：冷备、温备、热备与多活", link: "/docs/Ops/BackupDR/DisasterRecovery/index.md" },
+      { text: "实战：给博客平台做一套备份与容灾方案", link: "/docs/Ops/BackupDR/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/BackupDR/FAQ/index.md" },
+    ],
+  },
+];
 export const OpsOthers = [{ text: "运维其他", link: "/docs/Ops/Others/index.md" }];
 export const VM = [{ text: "虚拟机", link: "/docs/Ops/VM/index.md" }];
 export const ContainerOrchestration = [

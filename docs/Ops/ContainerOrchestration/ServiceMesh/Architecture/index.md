@@ -39,7 +39,7 @@ istioctl proxy-status
 | 升级影响 | 要滚动重启业务 Pod | 升级 ztunnel / waypoint 不动业务 Pod |
 | 成熟度 | 多年生产验证 | 1.29 起生产就绪，1.31 继续补多集群稳定性 |
 
-两种模式**可以在同一个网格里共存**：同一个命名空间里既有注入 Sidecar 的 Pod，也有走 ztunnel 的 Pod，它们之间照常互相调用。这让「逐步迁移」成为现实选项——迁移前需要先做兼容性检查（见 [Ambient 模式](AmbientMesh/index.md)）。
+两种模式**可以在同一个网格里共存**：同一个命名空间里既有注入 Sidecar 的 Pod，也有走 ztunnel 的 Pod，它们之间照常互相调用。这让「逐步迁移」成为现实选项——迁移前需要先做兼容性检查（见 [Ambient 模式](../AmbientMesh/index.md)）。
 
 ## Sidecar 是怎么被注入与劫持的
 

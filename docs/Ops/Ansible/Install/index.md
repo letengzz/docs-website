@@ -209,5 +209,5 @@ ansible all -m command -a 'id' -b
 - Ansible 安装指南：[Installation Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 - 配置文件说明：[ansible.cfg](https://docs.ansible.com/ansible/latest/reference_appendices/config.html)
 - SSH 连接插件：[ssh connection plugin](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ssh_connection.html)
-- 相关文档：[概述与选型](Overview/index.md) / [清单与变量作用域](Inventory/index.md)
+- 相关文档：[概述与选型](../Overview/index.md) / [清单与变量作用域](../Inventory/index.md)
 - 延伸阅读：[Linux 进阶 · 安全加固](../../Linux/Advanced/SecurityHardening/index.md)

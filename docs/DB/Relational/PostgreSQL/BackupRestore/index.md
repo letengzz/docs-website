@@ -159,6 +159,12 @@ psql -U app_user -d appdb -c "SELECT count(*) FROM users;"
 
 预期：删除后通过备份完整恢复，`SELECT count(*)` 与备份前一致。
 
+## 相关专题
+
+- [备份与容灾](../../../../Ops/BackupDR/index.md)：本页讲 **PostgreSQL 怎么备份**，专题讲 **备份这件事怎么设计**——保留策略、3-2-1-1-0、演练判据与容灾档位；其中 [备份策略设计](../../../../Ops/BackupDR/Strategy/index.md) 解释了「全量 + 差异」为什么是默认选择，[恢复与演练](../../../../Ops/BackupDR/Recovery/index.md) 给出了 pgBackRest 的 PITR 参数取舍。
+- [SQL 优化](../../SQLOptimization/index.md)：备份窗口不够时，先确认慢查询没有拖累整体负载。
+- [MySQL 常见问题](../../MySQL/FAQ/index.md)：跨引擎对比两种备份哲学（逻辑导出 vs 物理热备）。
+
 ## 参考资料
 
 - [PostgreSQL 备份文档](https://www.postgresql.org/docs/current/backup.html)

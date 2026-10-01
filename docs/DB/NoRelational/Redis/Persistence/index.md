@@ -161,6 +161,7 @@ INFO persistence
 
 ## 相关专题
 
+- [备份与容灾](../../../../Ops/BackupDR/index.md)：本页讲 **Redis 自己怎么持久化**，专题讲 **这些产物怎么纳入备份体系**——尤其是「点赞/计数这类不可重算的键必须单独规划」这条判据，见 [体系概述](../../../../Ops/BackupDR/Overview/index.md) 与 [备份工具矩阵](../../../../Ops/BackupDR/Toolchain/index.md)。
 - [主从复制](../Advanced/Replication/index.md)：持久化保证单机不丢，复制保证多副本可用
 - [哨兵高可用](../Advanced/Sentinel/index.md)：持久化 + 复制的自动故障转移
 - [性能调优](../Advanced/Performance/index.md)：AOF 刷盘策略与 fork 对延迟的影响

@@ -147,9 +147,13 @@ docker run --rm \
 4. 备份命令执行后，宿主机当前目录出现 `app-data.tar.gz`，`tar tzf` 能列出数据。
 5. `docker inspect <容器>` 的 `Mounts` 字段能正确显示挂载类型、源和目的。
 
-## 参考资料
+## 相关专题
 
-- Docker 存储概述：https://docs.docker.com/engine/storage/
+- [备份与容灾](../../BackupDR/index.md)：卷备份（`tar` 归档）只是**通道**，不是**策略**。「留多久、放几份、异地怎么放、怎么演练」见 [备份策略设计](../../BackupDR/Strategy/index.md)；
+- [Kubernetes 存储](../../Kubernetes/Storage/index.md)：PV/PVC 的备份与 CSI 快照；
+- [容器编排进阶](../../ContainerOrchestration/index.md)：有状态工作负载在集群层面的备份与迁移。
+
+## 参考资料
 - 使用卷：https://docs.docker.com/engine/storage/volumes/
 - 绑定挂载：https://docs.docker.com/engine/storage/bind-mounts/
 - tmpfs 挂载：https://docs.docker.com/engine/storage/tmpfs/
