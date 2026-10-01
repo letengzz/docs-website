@@ -228,6 +228,7 @@ steps:
 - [前端单元测试与组件测试](../../../Frontend/Others/FrontendEngineering/Testing/index.md)：Vitest 覆盖率门禁与 Playwright E2E
 - [接口调试工具](../../APITools/index.md)：接口自动化回归与 Newman/Apifox CLI 质量门禁
 - [完整项目交付 · 测试策略与门禁](../../../Others/ProjectDelivery/Testing/index.md)：本页给工具与质量门禁的接法，该页给**测试分层的职责边界**（哪一层该测什么、不该测什么）、覆盖率按模块设阈值的理由、三档数据隔离的取舍与 CI 门禁清单
+- [API 设计与治理 · 治理机制](../../APIDesign/Governance/index.md)：本页讲**代码侧**门禁（覆盖率、CVE、静态扫描）；该页讲**契约侧**门禁（Lint 规则集、破坏性变更拦截）——两者是同一流水线上的两类卡点，共用同一条原则：**门禁必须能被变异测试证伪**，否则绿色结论不可信。契约门禁的流水线写法与三步变异测试见该页第 2、5 节
 
 ## 与测试工具专题的分工
 

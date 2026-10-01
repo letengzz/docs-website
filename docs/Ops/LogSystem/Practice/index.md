@@ -468,7 +468,7 @@ helm upgrade --install loki grafana-community/loki -n logging --create-namespace
 | 现象 | 排查顺序 | 命令 |
 | --- | --- | --- |
 | Grafana 里查不到日志 | ① 日志文件有没有写入 ② Alloy 是否采集 ③ Loki 是否收到 | `tail -f logs/app.log` → Alloy UI `http://localhost:12345` → `curl localhost:3100/metrics \| grep loki_distributor_bytes_received_total` |
-| 只有部分日志 | 时间范围、标签过滤、丢弃规则 | 去掉 `|=` 过滤条件重查；检查 Alloy `stage.drop` 表达式 |
+| 只有部分日志 | 时间范围、标签过滤、丢弃规则 | 去掉 `\|=` 过滤条件重查；检查 Alloy `stage.drop` 表达式 |
 | 写入 429 | 触发了限流 | `curl localhost:3100/metrics \| grep loki_discarded_samples_total`，调大 `ingestion_rate_mb` |
 | 查询超时 | 时间范围太大 / 无标签过滤 | 缩短范围，加 `{job="..."}` 精确标签 |
 | 索引/流数量暴涨 | 高基数标签 | `curl localhost:3100/metrics \| grep loki_ingester_memory_streams`，检查是否误把 traceId 当标签 |

@@ -1,11 +1,11 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 import { Auth, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, Java, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, SpringCloud } from "./backend";
 
-import { AI_Agent, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
+import { AI_Agent, AI_AgentFramework, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontMicroFrontend, FrontWebAssembly, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
-import { Ansible, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
+import { Ansible, BackupDR, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { ClickHouse, DBOverview, DataModeling, Middleware, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
-import { APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
+import { APIDesign, APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 const OthersReview = [
@@ -87,21 +87,21 @@ export const sidebar = {
     {
       text: "运维",
       collapsed: true,
-      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...Monitoring, ...LogSystem, ...JumpServer, ...OpsOthers],
+      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...Monitoring, ...LogSystem, ...BackupDR, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
     {
       text: "AI",
       collapsed: true,
-      items: [...AI_LLMApp, ...AI_LangChain, ...AI_RAG, ...AI_Multimodal, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_Agent],
+      items: [...AI_LLMApp, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_Agent],
     },
   ],
   "/docs/Tools": [
     {
       text: "工具",
       collapsed: true,
-      items: [...Build, ...CICD, ...DatabaseClients, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...Others],
+      items: [...Build, ...CICD, ...DatabaseClients, ...APIDesign, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...Others],
     },
   ],
   "/project": [
@@ -172,11 +172,13 @@ export const sidebar = {
   "/docs/Ops/CloudNative": CloudNative,
   "/docs/Ops/Monitoring": Monitoring,
   "/docs/Ops/LogSystem": LogSystem,
+  "/docs/Ops/BackupDR": BackupDR,
   "/docs/Ops/JumpServer": JumpServer,
   "/docs/Ops/Others": OpsOthers,
   "/docs/AI/OpenClaw": AI_OpenClaw,
   "/docs/AI/PromptEngineering": AI_PromptEngineering,
   "/docs/AI/Agent": AI_Agent,
+  "/docs/AI/AgentFramework": AI_AgentFramework,
   "/docs/AI/LLMApp": AI_LLMApp,
   "/docs/AI/LangChain": AI_LangChain,
   "/docs/AI/RAG": AI_RAG,
@@ -187,6 +189,7 @@ export const sidebar = {
   "/docs/Tools/CICD": CICD,
   "/docs/Tools/DatabaseClients": DatabaseClients,
   "/docs/Tools/APITools": APITools,
+  "/docs/Tools/APIDesign": APIDesign,
   "/docs/Tools/PackageManager": PackageManager,
   "/docs/Tools/Collaboration": Collaboration,
   "/docs/Tools/IDE": IDE,

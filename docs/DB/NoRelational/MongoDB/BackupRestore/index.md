@@ -86,6 +86,12 @@ mongoimport --db mydb --collection users --file users.json
 2. 用 `mongostat` 观察备份期间负载。
 3. 每月做一次恢复演练并记录耗时。
 
+## 相关专题
+
+- [备份与容灾](../../../../Ops/BackupDR/index.md)：本页只讲 **MongoDB 的备份命令**；「多久备一次、留多久、怎么演练、RTO/RPO 怎么定」在专题里统一讲，避免每个组件各写一遍策略。参见 [备份策略设计](../../../../Ops/BackupDR/Strategy/index.md) 的 GFS 保留与 [恢复与演练](../../../../Ops/BackupDR/Recovery/index.md) 的恢复粒度取舍。
+- [副本集](../ReplicaSet/index.md)：副本集解决「节点挂了」，备份解决「数据被删了」——两者不可互相替代。
+- [分片](../Sharding/index.md)：分片集群的备份不能直接 `mongodump`，需按分片或走专用流程。
+
 ## 参考资料
 
 - mongodump：https://www.mongodb.com/docs/database-tools/mongodump/

@@ -105,7 +105,7 @@ A1 主链路端到端通过（责任人：研发 / 产品）
 还有一条容易被忽略的检查：**给 AUTO 项签名会被点名**。AUTO 项本就该由脚本判定，人去签它等于绕开判据——这是「假绿」的另一种写法。
 
 :::danger 注意
-随仓库提供的 `manual_signoff.json` **是空的，这是刻意的**。所以本地跑：
+签名表模板 `manual_signoff.json` **刻意留成空的**（由你在工程里按本节结构创建）。所以本地跑：
 
 ```shell
 python Acceptance/acceptance_check.py --strict   # 期望：退出码 1
@@ -210,7 +210,7 @@ MYSQL_DATABASE=app_restore_check python Acceptance/backup_restore.py --dry-run
 
 关键一点：**一线值班有权直接执行既定回滚**。如果回滚还要等人审批，观察窗口就是摆设——等审批下来，错误率早把 SLA 打穿了。审批要前置到「阈值是谁定的」，而不是「这次要不要回」。
 
-完整的值班表、升级路径与交接记录见验收清单 F3 的判据文件 `Acceptance/rollback_plan.md`（随仓库提交，与本文同目录）。
+完整的值班表、升级路径与交接记录见验收清单 F3 的判据文件 [`rollback_plan.md`](rollback_plan.md)（与本文同目录）。
 
 ## 监控接入：告警必须触达人
 

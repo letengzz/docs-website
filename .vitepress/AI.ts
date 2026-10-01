@@ -1,4 +1,23 @@
 // AI
+export const AI_AgentFramework = [
+  {
+    text: "Agent 框架深入",
+    link: "/docs/AI/AgentFramework/index.md",
+    collapsed: true,
+    items: [
+      { text: "框架选型与体系总览", link: "/docs/AI/AgentFramework/Overview/index.md" },
+      { text: "LangGraph 状态机深入", link: "/docs/AI/AgentFramework/StateGraph/index.md" },
+      { text: "持久化与记忆", link: "/docs/AI/AgentFramework/Persistence/index.md" },
+      { text: "人工介入工程化", link: "/docs/AI/AgentFramework/HumanLoop/index.md" },
+      { text: "CrewAI 角色编排", link: "/docs/AI/AgentFramework/CrewAI/index.md" },
+      { text: "多智能体协作模式", link: "/docs/AI/AgentFramework/Patterns/index.md" },
+      { text: "生产化：部署与可观测", link: "/docs/AI/AgentFramework/Production/index.md" },
+      { text: "实战：发布流水线与研究小组", link: "/docs/AI/AgentFramework/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/AgentFramework/FAQ/index.md" },
+    ],
+  },
+];
+
 export const AI_Agent = [
   {
     text: "Agent 应用",

@@ -71,3 +71,9 @@ Prometheus 本地存储适合短周期（默认 15 天）。要做**几个月到
 
 应用侧的具体实现见 [Go 服务治理](../../Backend/GoMicroservices/Governance/index.md)（熔断只统计技术失败、Trace 与日志的 trace_id 对齐）与 [Python 服务部署](../../Backend/PythonWeb/Practice/index.md)（结构化日志、指标标签、探针实现）。
 
+## 相关专题
+
+- [备份与容灾](../../Ops/BackupDR/index.md)：监控是备份体系的「眼睛」——**没有告警的备份任务，会在最需要它的时候发现自己早就停了**。具体做法是暴露 `backup_*_last_success_timestamp` 并配一条新鲜度告警，见 [实战 · 接监控](../../Ops/BackupDR/Practice/index.md)。
+- [日志体系](../LogSystem/index.md)：备份脚本的失败详情应当落日志，便于复盘。
+- [定时任务](../Linux/Advanced/CronTasks/index.md)：备份通常由 cron / systemd timer 驱动，静默失败需要监控兜底。
+

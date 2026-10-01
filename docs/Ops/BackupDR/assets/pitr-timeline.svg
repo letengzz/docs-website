@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="320" viewBox="0 0 860 320" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .base { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; rx: 8; }
+    .arch { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; rx: 8; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    .line { stroke: #4a7bd8; stroke-width: 1.6; }
+    .dash { stroke: #d99a3a; stroke-width: 1.4; stroke-dasharray: 6 4; }
+  </style>
+  <defs>
+    <marker id="pt-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+    <marker id="pt-arrow2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d99a3a"/>
+    </marker>
+  </defs>
+
+  <line class="line" x1="50" y1="120" x2="810" y2="120" marker-end="url(#pt-arrow)"/>
+  <text class="small" x="812" y="142">时间</text>
+
+  <rect class="base" x="60" y="76" width="130" height="44"/>
+  <text x="125" y="104">全量备份</text>
+
+  <rect class="arch" x="250" y="76" width="150" height="44"/>
+  <text x="325" y="104">WAL / binlog 连续归档</text>
+
+  <line class="dash" x1="620" y1="120" x2="620" y2="46" marker-end="url(#pt-arrow2)"/>
+  <text class="t" x="620" y="36">故障点 14:07</text>
+
+  <rect class="arch" x="560" y="180" width="180" height="44"/>
+  <text x="650" y="208">恢复到 14:05 的库</text>
+
+  <line class="line" x1="125" y1="176" x2="125" y2="130" />
+  <line class="line" x1="125" y1="176" x2="560" y2="176" marker-end="url(#pt-arrow)"/>
+  <line class="line" x1="125" y1="130" x2="125" y2="176"/>
+
+  <line class="dash" x1="325" y1="180" x2="325" y2="130"/>
+  <text class="small" x="325" y="200">把 WAL 重放到指定时刻</text>
+
+  <text class="small" x="430" y="262">PITR 三要素：① 一份可用的基础备份；② 从该备份起连续不断的事务日志；③ 精确的恢复目标时间</text>
+  <text class="small" x="430" y="284">关键校验：日志链必须无断点（binlog 被 PURGE 掉、WAL 归档失败都会直接毁掉 PITR 能力）</text>
+  <text class="small" x="430" y="306">纪律：恢复目标时间只到故障前一刻，不要「恢复刚刚好」——把故障语句一起重放回来</text>
+</svg>

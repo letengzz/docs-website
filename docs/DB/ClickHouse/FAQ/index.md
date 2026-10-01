@@ -40,13 +40,13 @@ SELECT database, table, command, is_done FROM system.mutations WHERE NOT is_done
 ## 高频问答
 
 **Q：UPDATE 特别慢，是 bug 吗？**
-不是。mutation 的语义就是「重写整列」。少量修正确认要跑，就接受异步等待并用 `system.mutations` 盯进度；高频更新是选型错误，回到 [概述页的判断三问](Overview/index.md)。
+不是。mutation 的语义就是「重写整列」。少量修正确认要跑，就接受异步等待并用 `system.mutations` 盯进度；高频更新是选型错误，回到 [概述页的判断三问](../Overview/index.md)。
 
 **Q：`Too many parts` 怎么根治？**
 提高批量、降低写入频率（服务端还有 `parts_to_delay_insert`/`parts_to_throw_insert` 两个阈值做缓冲）。根治手段是**改写入模式**，不是调这两个阈值。
 
 **Q：ReplacingMergeTree 查询结果有重复，去重不生效？**
-合并是异步的，去重只在合并时发生。查询侧用 `FINAL`（小表）或 `argMax(col, ver)`（大表），见 [MergeTree 引擎页](MergeTree/index.md)。
+合并是异步的，去重只在合并时发生。查询侧用 `FINAL`（小表）或 `argMax(col, ver)`（大表），见 [MergeTree 引擎页](../MergeTree/index.md)。
 
 **Q：内存超限 `Memory limit exceeded`？**
 单条查询默认限额 10 GB 左右（`max_memory_usage`）。先看 `query_log` 里是不是全表扫描没裁剪；确实要扫大范围时用 `max_bytes_to_read` 保护性限额 + `SAMPLE` 采样，而不是无脑调大限额。

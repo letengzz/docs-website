@@ -107,6 +107,12 @@ parameters:
 2. 在 Pod 中写入文件，删除 Pod 后重建，确认数据仍在。
 3. `kubectl describe pvc data-pvc` 查看绑定详情。
 
+## 相关专题
+
+- [备份与容灾](../../BackupDR/index.md)：**PV 存在 ≠ 数据可恢复**。卷只解决「Pod 重建后数据还在」，解决不了「误删了数据想回到昨天」。集群侧的备份（Velero + CSI 快照、etcd 快照）与不可变存储见 [备份工具矩阵](../../BackupDR/Toolchain/index.md)。
+- [监控与运维](../Monitoring/index.md)：容量与 PVC 异常需要告警，否则会静默写满。
+- [容器编排进阶](../../ContainerOrchestration/index.md)：有状态工作负载的跨集群迁移与多集群容灾。
+
 ## 参考资料
 
 - 卷：https://kubernetes.io/zh-cn/docs/concepts/storage/volumes/

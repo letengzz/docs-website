@@ -2,6 +2,9 @@ node_modules
 .DS_Store
 dist
 dist-ssr
+# 构建产物（`dist` 只匹配同名目录，改名保留的旧构建要单独覆盖：
+# `.vitepress/dist-stale-0930/` 曾被误当成源码提交过 732 个文件）
+.vitepress/dist*/
 cache
 .cache
 .temp

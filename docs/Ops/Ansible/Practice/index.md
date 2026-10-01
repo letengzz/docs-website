@@ -454,5 +454,5 @@ git grep -n -E 'S3cr3t|BEGIN (RSA|OPENSSH|PRIVATE)' -- . && echo "发现明文�
 - Vault 指南：[Encrypting content with Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html)
 - 角色最佳实践：[Roles best practices](https://docs.ansible.com/ansible/latest/tips_tricks/ansible_tips_tricks.html)
 - 滚动更新：[Rolling update batch size](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_delegation.html)
-- 相关文档：[角色、Galaxy 与 Collections](Role/index.md) / [Playbook 编写](Playbook/index.md)
+- 相关文档：[角色、Galaxy 与 Collections](../Role/index.md) / [Playbook 编写](../Playbook/index.md)
 - 延伸阅读：[Linux 进阶 · 安全加固](../../Linux/Advanced/SecurityHardening/index.md) / [Linux 进阶 · 定时任务](../../Linux/Advanced/CronTasks/index.md)

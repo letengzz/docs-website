@@ -129,4 +129,5 @@ graph = builder.compile()
 - Dify：https://dify.ai/
 - n8n：https://n8n.io/
 - 本库 [LangChain · LangGraph 编排](../../LangChain/LangGraph/index.md)：手写工作流遇到「要分支、要恢复、要审批」时，框架侧的承接方案（状态与 reducer、条件边、持久化、`interrupt`）
+- 本库 [Agent 框架深入](../../AgentFramework/index.md)：确定用编排框架之后——LangGraph / CrewAI 的工程化深入（状态机、检查点、审批、部署），与低代码平台的取舍判据在本页之外由该专题第 5 节承接
 - 本库 [Agent 应用 · 多智能体](../../Agent/MultiAgent/index.md)：节点变多之后的协作拓扑与边界

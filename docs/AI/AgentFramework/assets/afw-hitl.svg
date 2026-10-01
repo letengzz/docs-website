@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">人工介入：interrupt 暂停 → 人决策 → Command 恢复</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">暂停的是检查点，不是进程——人可以隔一天再回来</text>
+
+  <!-- graph lane -->
+  <rect x="30" y="80" width="700" height="120" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="50" y="104" font-size="11" fill="#334155" font-weight="bold">图的一侧</text>
+  <rect x="50" y="118" width="86" height="40" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="93" y="142" text-anchor="middle" font-size="10" fill="#1E3A8A">生成草稿</text>
+  <rect x="168" y="118" width="120" height="40" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.8"/>
+  <text x="228" y="136" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">interrupt(审批单)</text>
+  <text x="228" y="150" text-anchor="middle" font-size="8.5" fill="#92400E">暂停 + 检查点落库</text>
+  <rect x="320" y="118" width="86" height="40" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="363" y="142" text-anchor="middle" font-size="10" fill="#1E3A8A">执行发布</text>
+  <rect x="438" y="118" width="70" height="40" rx="8" fill="#F1F5F9" stroke="#475569" stroke-width="1.4"/>
+  <text x="473" y="142" text-anchor="middle" font-size="10" fill="#334155">END</text>
+  <path d="M 136 138 L 168 138" stroke="#2563EB" stroke-width="1.4" marker-end="url(#arrB)"/>
+  <path d="M 288 138 L 320 138" stroke="#D97706" stroke-width="1.4" marker-end="url(#arrO)"/>
+  <path d="M 406 138 L 438 138" stroke="#2563EB" stroke-width="1.4" marker-end="url(#arrB)"/>
+  <text x="560" y="132" font-size="9.5" fill="#64748B">恢复后从 interrupt 的</text>
+  <text x="560" y="147" font-size="9.5" fill="#64748B">下一行继续；</text>
+  <text x="560" y="162" font-size="9.5" fill="#B91C1C" font-weight="bold">interrupt 所在节点会重跑，</text>
+  <text x="560" y="177" font-size="9.5" fill="#B91C1C" font-weight="bold">副作用必须放在决策之后</text>
+
+  <!-- human lane -->
+  <rect x="30" y="220" width="700" height="86" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="50" y="244" font-size="11" fill="#065F46" font-weight="bold">人的一侧</text>
+  <rect x="168" y="252" width="120" height="40" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="1.4"/>
+  <text x="228" y="270" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">审批界面</text>
+  <text x="228" y="284" text-anchor="middle" font-size="8.5" fill="#047857">展示 payload（diff 优先）</text>
+  <path d="M 228 158 L 228 252" stroke="#059669" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrG)"/>
+  <text x="238" y="205" font-size="9" fill="#047857">审批单（question / payload / allowed）</text>
+  <rect x="320" y="252" width="200" height="40" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="1.4"/>
+  <text x="420" y="270" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">三种决策（当作不可信输入校验）</text>
+  <text x="420" y="284" text-anchor="middle" font-size="8.5" fill="#047857">approve 原样放行 ｜ edit 改后放行 ｜ reject 否决</text>
+  <path d="M 420 252 L 420 162" stroke="#059669" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrG)"/>
+  <text x="430" y="200" font-size="9" fill="#047857">Command(resume=决策)</text>
+
+  <!-- timeout -->
+  <rect x="30" y="322" width="340" height="58" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+  <text x="50" y="342" font-size="10.5" fill="#9A3412" font-weight="bold">超时策略（interrupt 不会自动超时）</text>
+  <text x="50" y="360" font-size="9.5" fill="#9A3412">SLA 扫描 → 超时升级改派；不可逆动作超时默认拒绝，</text>
+  <text x="50" y="374" font-size="9.5" fill="#9A3412">绝不自动放行</text>
+  <rect x="390" y="322" width="340" height="58" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="410" y="342" font-size="10.5" fill="#991B1B" font-weight="bold">不可逆性判据（决定要不要 interrupt）</text>
+  <text x="410" y="360" font-size="9.5" fill="#991B1B">发邮件 / 发布 / 打款 / 删数据 → 必须；改草稿 / 查数据 → 不需要；</text>
+  <text x="410" y="374" font-size="9.5" fill="#991B1B">批量高危 → 必须 + 抽样展示</text>
+
+  <defs>
+    <marker id="arrB" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrO" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#D97706"/>
+    </marker>
+    <marker id="arrG" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#059669"/>
+    </marker>
+  </defs>
+</svg>

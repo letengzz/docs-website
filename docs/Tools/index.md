@@ -3,6 +3,7 @@
 - [构建和依赖管理工具](Build/index.md)
 - [CI/CD](CICD/index.md)
 - [数据库客户端](DatabaseClients/index.md)
+- [API 设计与治理](APIDesign/index.md)
 - [接口调试工具](APITools/index.md)
 - [包管理器深入](PackageManager/index.md)
 - [协作与项目管理](Collaboration/index.md)

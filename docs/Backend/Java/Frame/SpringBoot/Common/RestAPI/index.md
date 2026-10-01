@@ -185,6 +185,23 @@ public class UserController {
 4. 打开 `/swagger-ui.html`，能看到接口列表和参数说明。
 5. 用 Postman/Apifox 完整走一遍增删改查。
 
+## 相关专题与分工
+
+本页讲的是**框架侧怎么实现 REST**：`@RestController`、`@RequestMapping`、参数绑定、`@Valid` 校验、`ResponseEntity` 与分页返回——回答「用 Spring MVC 怎么把接口写出来」。
+
+[API 设计与治理](../../../../../../Tools/APIDesign/index.md) 讲的是**接口本身该长什么样**：资源怎么命名、方法怎么选、状态码语义、错误结构（RFC 9457）、分页与过滤的统一约定、契约（OpenAPI）怎么写与怎么卡门禁。它语言中立，不依赖 Spring。
+
+| 你想要的 | 去哪里 |
+| --- | --- |
+| 注解怎么写、参数怎么绑、校验怎么生效 | 本页 |
+| 路径该用单数还是复数、`DELETE` 该回 204 还是 200、错误体该长什么样 | [REST 设计规范](../../../../../../Tools/APIDesign/RestDesign/index.md) |
+| `PUT` 与 `PATCH` 的取舍、幂等键怎么设计 | [REST 设计规范](../../../../../../Tools/APIDesign/RestDesign/index.md) 第 2 节 |
+| 分页 `page` 从 1 还是 0、`size` 要不要设上限 | [REST 设计规范](../../../../../../Tools/APIDesign/RestDesign/index.md) 第 5 节 |
+
+::: tip 本页的易错点与规范页的对应关系
+本页「易错点」里列的「分页从 1 开始传、Spring Data 从 0 开始」正是规范页要求**写死 page 起点**的原因；「更新接口用 PUT 却只更新部分字段」也正是规范页区分 PUT/PATCH 语义的落点。**框架层面的 off-by-one 与语义混用，根因都在规范没定。**
+:::
+
 ## 参考资料
 
 - REST 规范：https://restfulapi.net/

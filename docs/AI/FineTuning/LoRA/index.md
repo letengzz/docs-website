@@ -185,6 +185,60 @@ tokenizer.save_pretrained(OUT)          # 模板与特殊 token 必须随适配�
 4. **LoRA 的学习率沿用全参的值**（如 `2e-5`）：LoRA 的可训练参数少，通常需要比全参高 **10 倍左右**（`1e-4`~`3e-4`）才动得起来，表现为「loss 几乎不降」。
 :::
 
+## 显存不够时：按这个顺序降档
+
+「OOM」不是换卡的信号，先按代价从小到大逐项降档，绝大多数 7B 场景一张 24 GB 卡就能解决：
+
+| 顺序 | 手段 | 显存收益 | 代价 |
+| --- | --- | --- | --- |
+| ① | 加大 `gradient_accumulation_steps`，减小 `per_device_train_batch_size` | 与 batch 成正比 | 训练时间变长，效果不变 |
+| ② | 开 `gradient_checkpointing=True` | 激活值降 3~5 倍 | 慢 20%~30% |
+| ③ | 全参 BF16 LoRA → QLoRA | 权重显存降到约 1/4 | 少量精度损失，合并时要用 BF16 底座 |
+| ④ | 缩短 `max_length` | 与长度近似线性 | 超长样本被截断（先查 99 分位再定） |
+| ⑤ | 缩小 `target_modules`（全线性层 → 只加 q/v） | 适配器与优化器状态变小 | 效果通常下降，最后再动 |
+| ⑥ | 单卡 → 多卡（DeepSpeed ZeRO） | 分摊优化器状态与权重 | 配置复杂度明显上升 |
+
+::: tip 为什么 LoRA 场景很少需要 ZeRO-3
+ZeRO 的三阶段按「分摊什么」划分：**ZeRO-1 分摊优化器状态，ZeRO-2 再分摊梯度，ZeRO-3 连权重也切分**。LoRA 的可训练参数只占 0.1%~2%，优化器状态本来就是小头，大头是冻结的底座权重——而 ZeRO-2 不切权重、ZeRO-3 切权重但会显著拉高通信量并使合并/保存流程变复杂。所以 **LoRA 多卡训练默认 ZeRO-2 就够**；只有全参微调或底座大到单卡装不下时才考虑 ZeRO-3。
+
+```json [deepspeed Zero-2 配置骨架（ds_z2.json，节选）]
+{
+  "zero_optimization": { "stage": 2 },
+  "bf16": { "enabled": true },
+  "train_batch_size": "auto",
+  "train_micro_batch_size_per_gpu": "auto"
+}
+```
+
+启动时用 `accelerate launch --config_file` 或 `SFTConfig(deepspeed="ds_z2.json")` 挂载；`per_device_train_batch_size` 从「单卡 batch」变成「每卡 batch」，等效 batch = 每卡 batch × 卡数 × 梯度累积。
+:::
+
+## 断点续训：跑一半挂了怎么办
+
+长训练任务必然遇到中断（抢占、OOM、断电），续训能力在开训前就要验证，不要等挂了才试：
+
+1. **保存策略留出可恢复的检查点**：`save_strategy="steps"` + `save_steps` 按训练时长定（例如每 200 步），`save_total_limit=3` 保留最近几个检查点防磁盘写满。
+2. **续训一行命令**：`trainer.train(resume_from_checkpoint=True)` 会自动找 `output_dir` 里最新的 `checkpoint-*` 目录，从中断的步数、优化器状态与学习率调度位置继续。
+3. **数据顺序是确定的**：Trainer 用 `seed` 控制采样顺序，续训后从上次的 step 接着排，不会重复喂已训过的样本。
+4. **改了配置就不能续**：`resume_from_checkpoint` 要求模型结构与超参和检查点完全一致。改了 `r`、`target_modules` 或数据版本后，正确做法是新开一次训练，而不是硬续。
+
+```python [可恢复的训练配置（节选）]
+cfg = SFTConfig(
+    output_dir=OUT,
+    save_strategy="steps",
+    save_steps=200,
+    save_total_limit=3,          # 磁盘防写满，最新检查点始终保留
+    # ...其余参数同前
+)
+
+# 中断恢复（挂掉后重新执行同一脚本）：
+# trainer.train(resume_from_checkpoint=True)
+```
+
+::: danger 续训前必须验证一次「续训是真的」
+开训后跑 10~20 步，手动中断，再用 `resume_from_checkpoint=True` 跑通一次——确认日志从上次步数继续、loss 曲线无跳变。没验证过续训的训练，第一次真实中断时你大概率只能从头再来。
+:::
+
 ## 保存、加载与合并
 
 三种使用方式，按场景选择：

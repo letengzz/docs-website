@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="380" viewBox="0 0 860 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .full { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .diff { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .incr { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+  </style>
+
+  <text class="t" x="110" y="34">第 1 天</text>
+  <text class="t" x="300" y="34">第 2 天</text>
+  <text class="t" x="490" y="34">第 3 天</text>
+  <text class="t" x="680" y="34">第 4 天</text>
+
+  <!-- 全量 + 增量 -->
+  <text x="30" y="76">全量+增量</text>
+  <rect class="full" x="60" y="52" width="100" height="34"/>
+  <text x="110" y="74">全量</text>
+  <rect class="incr" x="250" y="52" width="100" height="34"/>
+  <text x="300" y="74">增量1</text>
+  <rect class="incr" x="440" y="52" width="100" height="34"/>
+  <text x="490" y="74">增量2</text>
+  <rect class="incr" x="630" y="52" width="100" height="34"/>
+  <text x="680" y="74">增量3</text>
+  <text class="small" x="110" y="104">= 全量</text>
+  <text class="small" x="300" y="104">= 相对增量1</text>
+  <text class="small" x="490" y="104">= 相对增量2</text>
+  <text class="small" x="680" y="104">= 相对增量3</text>
+
+  <!-- 全量 + 差异 -->
+  <text x="30" y="176">全量+差异</text>
+  <rect class="full" x="60" y="152" width="100" height="34"/>
+  <text x="110" y="174">全量</text>
+  <rect class="diff" x="250" y="152" width="100" height="34"/>
+  <text x="300" y="174">差异1</text>
+  <rect class="diff" x="440" y="152" width="100" height="34"/>
+  <text x="490" y="174">差异2</text>
+  <rect class="diff" x="630" y="152" width="100" height="34"/>
+  <text x="680" y="174">差异3</text>
+  <text class="small" x="110" y="204">= 全量</text>
+  <text class="small" x="300" y="204">= 相对全量</text>
+  <text class="small" x="490" y="204">= 相对全量</text>
+  <text class="small" x="680" y="204">= 相对全量</text>
+
+  <rect class="full" x="40" y="232" width="800" height="126" rx="10"/>
+  <text class="t" x="440" y="258">三种备份的取舍</text>
+  <text class="small" x="440" y="282">全量：恢复最快、最省事，但耗时最久、占用最大 —— 是所有策略的「基准点」</text>
+  <text class="small" x="440" y="304">增量：单次最小、最快，但恢复要「全量 + 全部增量」按序重放，链条越长越脆弱</text>
+  <text class="small" x="440" y="326">差异：单次比增量大，恢复只需「全量 + 最新差异」两步 —— 工程上最省心的折中</text>
+  <text class="small" x="440" y="348">纪律：任一增量/差异必须能追溯到它依赖的全量；缺失中间环节的档案要判为不可恢复</text>
+</svg>

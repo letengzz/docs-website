@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四种多智能体协作模式</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">分派规则能写成代码 → supervisor / map-reduce；不能 → handoffs / hierarchical（配护栏）</text>
+
+  <!-- supervisor -->
+  <rect x="30" y="76" width="340" height="130" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="200" y="98" text-anchor="middle" font-size="11.5" fill="#1E3A8A" font-weight="bold">Supervisor（星型）</text>
+  <rect x="145" y="108" width="110" height="30" rx="7" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="200" y="128" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">主管（Command 分派）</text>
+  <rect x="48" y="158" width="86" height="30" rx="7" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="91" y="178" text-anchor="middle" font-size="9" fill="#1E3A8A">检索员</text>
+  <rect x="157" y="158" width="86" height="30" rx="7" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="200" y="178" text-anchor="middle" font-size="9" fill="#1E3A8A">写手</text>
+  <rect x="266" y="158" width="86" height="30" rx="7" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="309" y="178" text-anchor="middle" font-size="9" fill="#1E3A8A">审校</text>
+  <path d="M 178 138 L 96 158 M 200 138 L 200 158 M 222 138 L 304 158" stroke="#2563EB" stroke-width="1.1" fill="none"/>
+  <text x="200" y="200" text-anchor="middle" font-size="8.5" fill="#1D4ED8">CrewAI 对应：hierarchical ｜ 护栏：轮数上限 + 产出校验 + 不知交给谁就转人工</text>
+
+  <!-- handoffs -->
+  <rect x="400" y="76" width="330" height="130" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="565" y="98" text-anchor="middle" font-size="11.5" fill="#065F46" font-weight="bold">Handoffs（接力移交）</text>
+  <rect x="420" y="118" width="80" height="30" rx="7" fill="#FFFFFF" stroke="#059669" stroke-width="1.3"/>
+  <text x="460" y="138" text-anchor="middle" font-size="9" fill="#065F46">前台</text>
+  <rect x="530" y="118" width="90" height="30" rx="7" fill="#FFFFFF" stroke="#059669" stroke-width="1.3"/>
+  <text x="575" y="138" text-anchor="middle" font-size="9" fill="#065F46">退换货专员</text>
+  <rect x="650" y="118" width="60" height="30" rx="7" fill="#FFFFFF" stroke="#DC2626" stroke-width="1.3"/>
+  <text x="680" y="138" text-anchor="middle" font-size="9" fill="#991B1B">人工</text>
+  <path d="M 500 133 L 530 133" stroke="#059669" stroke-width="1.3" marker-end="url(#arrG)"/>
+  <path d="M 620 133 L 650 133" stroke="#DC2626" stroke-width="1.3" marker-end="url(#arrR)"/>
+  <text x="565" y="170" text-anchor="middle" font-size="8.5" fill="#047857">移交 = 显式工具调用 + 交接摘要；禁止回移交（回环头号来源）</text>
+  <text x="565" y="188" text-anchor="middle" font-size="8.5" fill="#047857">handoff_count 进状态，超阈值强制终止</text>
+
+  <!-- hierarchical -->
+  <rect x="30" y="222" width="340" height="120" rx="10" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
+  <text x="200" y="244" text-anchor="middle" font-size="11.5" fill="#92400E" font-weight="bold">Hierarchical（层级树）</text>
+  <rect x="145" y="254" width="110" height="28" rx="7" fill="#FFFFFF" stroke="#D97706" stroke-width="1.3"/>
+  <text x="200" y="273" text-anchor="middle" font-size="9" fill="#92400E">主主管</text>
+  <rect x="58" y="298" width="90" height="28" rx="7" fill="#FFFFFF" stroke="#D97706" stroke-width="1.2"/>
+  <text x="103" y="317" text-anchor="middle" font-size="9" fill="#92400E">子主管 A</text>
+  <rect x="252" y="298" width="90" height="28" rx="7" fill="#FFFFFF" stroke="#D97706" stroke-width="1.2"/>
+  <text x="297" y="317" text-anchor="middle" font-size="9" fill="#92400E">子主管 B</text>
+  <path d="M 178 282 L 108 298 M 222 282 L 292 298" stroke="#D97706" stroke-width="1.1" fill="none"/>
+  <text x="200" y="336" text-anchor="middle" font-size="8.5" fill="#B45309">≤ 2 层；层间交接用 Pydantic 结构；每层独立轮数与预算</text>
+
+  <!-- map-reduce -->
+  <rect x="400" y="222" width="330" height="120" rx="10" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="565" y="244" text-anchor="middle" font-size="11.5" fill="#5B21B6" font-weight="bold">Map-Reduce（扇出/扇入）</text>
+  <rect x="420" y="258" width="70" height="26" rx="6" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="455" y="276" text-anchor="middle" font-size="9" fill="#5B21B6">split</text>
+  <path d="M 490 271 L 520 258 M 490 271 L 520 271 M 490 271 L 520 284" stroke="#7C3AED" stroke-width="1" fill="none"/>
+  <rect x="522" y="252" width="56" height="20" rx="5" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="550" y="266" text-anchor="middle" font-size="8" fill="#5B21B6">map ①</text>
+  <rect x="522" y="276" width="56" height="20" rx="5" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="550" y="290" text-anchor="middle" font-size="8" fill="#5B21B6">map ②</text>
+  <rect x="522" y="300" width="56" height="20" rx="5" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="550" y="314" text-anchor="middle" font-size="8" fill="#5B21B6">map ③</text>
+  <path d="M 578 262 L 606 271 M 578 286 L 606 271 M 578 310 L 606 271" stroke="#7C3AED" stroke-width="1" fill="none"/>
+  <rect x="608" y="258" width="70" height="26" rx="6" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="643" y="276" text-anchor="middle" font-size="9" fill="#5B21B6">reduce</text>
+  <text x="565" y="336" text-anchor="middle" font-size="8.5" fill="#6D28D9">Send 并行 + 检查点续跑；汇总前做完整性校验</text>
+
+  <!-- langgraph/crewai note -->
+  <rect x="30" y="356" width="700" height="30" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.1"/>
+  <text x="380" y="375.5" text-anchor="middle" font-size="9.5" fill="#334155">langgraph-supervisor / langgraph-swarm 已停维护——supervisor 与 handoffs 均用 Command 自建（三十行以内）</text>
+
+  <defs>
+    <marker id="arrG" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#059669"/>
+    </marker>
+    <marker id="arrR" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#DC2626"/>
+    </marker>
+  </defs>
+</svg>

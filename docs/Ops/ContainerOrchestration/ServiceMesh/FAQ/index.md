@@ -96,7 +96,7 @@ kubectl get pods -n <ns> -l version=v2 --show-labels
 
 **原因**：这些调用方没在网格内（本地调试、集群外依赖、没注入代理的 Pod、被排除的端口）。
 
-**处置**：立刻回退到 `PERMISSIVE`，然后按 [安全](Security/index.md) 的顺序推进——先铺 PERMISSIVE，确认 mTLS 覆盖率接近 100%，再切 STRICT。
+**处置**：立刻回退到 `PERMISSIVE`，然后按 [安全](../Security/index.md) 的顺序推进——先铺 PERMISSIVE，确认 mTLS 覆盖率接近 100%，再切 STRICT。
 
 ```shell
 kubectl patch peerauthentication default -n <ns> --type=merge \

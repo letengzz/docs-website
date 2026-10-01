@@ -348,3 +348,4 @@ time curl -s -o /dev/null http://127.0.0.1:8000/health
 - [实战：可部署的 API 服务](../Practice/index.md) —— 把本篇的模式组装成工程
 - [Python 异步编程](../../Python/Async/index.md) —— 事件循环与协程的语言基础
 - [Python 装饰器](../../Python/Decorator/index.md) —— 理解 `@app.get` 与依赖装饰器的前提
+- [API 设计与治理 · OpenAPI 契约工程化](../../../Tools/APIDesign/OpenAPI/index.md) —— FastAPI 由类型注解自动生成 OpenAPI，属于**代码优先**产出；该页讲契约先行那条路、三个大版本的差异，以及「让自动导出当一致性探针而不是事实来源」的组合用法

@@ -297,3 +297,23 @@ public OpenAPI springShopOpenAPI() {
               .url("https://springshop.wiki.github.org/docs"));
 }
 ```
+
+## 相关专题与分工：springdoc 是「一致性探针」，不是契约来源
+
+本页讲的是**从代码反向导出**文档——按注解与分组生成 OpenAPI。这是一种**代码优先**的做法，适合内部服务；但它有一个结构性限制：**契约只能存在实现写完之后**，因此前端无法先行开发，设计评审也只能发生在代码评审里（通常已经太晚）。
+
+**API 设计与治理专题**讲的是**契约优先**的那条路：[REST 设计规范](../../../../../../../Tools/APIDesign/RestDesign/index.md)（接口该长什么样）、[OpenAPI 契约工程化](../../../../../../../Tools/APIDesign/OpenAPI/index.md)（契约怎么写、3.0/3.1/3.2 差异、为什么本项目选手写契约）、[Governance](../../../../../../../Tools/APIDesign/Governance/index.md)（怎么把契约接进 CI 门禁与破坏性变更拦截）。
+
+两者并不冲突，推荐组合是**手写契约作为唯一事实来源，springdoc 在测试环境导出实现并与契约做 `oasdiff` 比对**——差异即为缺陷。这就把「自动导出」从事实来源降级为**一致性探针**，是它最合适的位置：
+
+```shell
+# 实现导出（测试环境）
+curl -fsS http://127.0.0.1:18080/v3/api-docs > /tmp/impl.json
+
+# 与手写契约比对：无输出表示一致，有输出即为缺陷
+oasdiff diff docs/api/openapi.yaml /tmp/impl.json
+```
+
+::: warning 生产环境不要暴露 `/v3/api-docs` 与 Swagger UI
+文档站与实现导出都会泄露内部结构（含未对外发布的接口与参数），且它们默认**没有鉴权**。做法：只在 `test`/`dev` profile 开启，生产环境直接关闭（`springdoc.api-docs.enabled=false`）。
+:::

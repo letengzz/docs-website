@@ -43,7 +43,7 @@ ansible-inventory -i inventory.ini --host web-01 | grep -E 'nginx_port|worker'
 
 ### 为什么 `host_vars` 改不动角色里的值？
 
-角色把该变量写在了 `vars/main.yml`（优先级高于 `host_vars`）。可配置项应放在 `defaults/main.yml`。详见[角色、Galaxy 与 Collections](Role/index.md)。
+角色把该变量写在了 `vars/main.yml`（优先级高于 `host_vars`）。可配置项应放在 `defaults/main.yml`。详见[角色、Galaxy 与 Collections](../Role/index.md)。
 
 ### 主机名和 IP 不一致怎么处理？
 
@@ -150,7 +150,7 @@ forks         = 50
 
 ### 敏感信息怎么管？
 
-用 `ansible-vault`（单文件或多密码 `vault-id`），机密变量文件整体加密或 `encrypt_string` 单值加密；含机密的落地文件 `mode: "0600"`；相关任务加 `no_log: true`。详见[实战第四步](Practice/index.md)。
+用 `ansible-vault`（单文件或多密码 `vault-id`），机密变量文件整体加密或 `encrypt_string` 单值加密；含机密的落地文件 `mode: "0600"`；相关任务加 `no_log: true`。详见[实战第四步](../Practice/index.md)。
 
 ### 怎么防止同事手改配置文件？
 
@@ -267,5 +267,5 @@ facts 注入为顶层变量（`ansible_distribution`）的方式被标记弃用�
 - 版本 EOL 总览：[endoflife.date · ansible-core](https://endoflife.date/ansible-core)
 - 最佳实践：[Ansible Tips and Tricks](https://docs.ansible.com/ansible/latest/tips_tricks/index.html)
 - 配置项全集：[Configuration Settings](https://docs.ansible.com/ansible/latest/reference_appendices/config.html)
-- 相关文档：[概述与选型](Overview/index.md) / [安装与环境准备](Install/index.md) / [实战：批量交付生产 Web 服务器](Practice/index.md)
+- 相关文档：[概述与选型](../Overview/index.md) / [安装与环境准备](../Install/index.md) / [实战：批量交付生产 Web 服务器](../Practice/index.md)
 - 延伸阅读：[CI/CD · 流水线设计](../../../Tools/CICD/PipelineDesign/index.md) / [Linux 进阶 · 安全加固](../../Linux/Advanced/SecurityHardening/index.md)

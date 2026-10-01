@@ -8,6 +8,12 @@
 市面上的模板是「先帮你选好、你再去删」；这个模板是「**先什么都不装，你自己选，它自己改**」。
 :::
 
+::: warning 本页只放文档，可运行实现在独立仓库
+`project/Base/NuxtTemplate/` 下面只有 Markdown 与配图——目录结构、配置内容、代码片段、命令与判据全部写在正文里。
+引导器与初始化引擎的**可运行实现**（`scripts/init.mjs`、`scripts/verify.mjs` 等）放在独立仓库里，本页不存放脚本与工程文件。
+正文里出现「运行 `node scripts/xxx.mjs`」时，指的都是**你那份工程里**的文件：先按本节内容把它创建出来，再执行。
+:::
+
 ![Nuxt 通用模板的完整生命周期](./assets/template-lifecycle.svg)
 
 ## 项目定位

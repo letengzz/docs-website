@@ -101,3 +101,4 @@
 
 - [大模型应用开发 · 实战：智能工单助手](../../LLMApp/Practice/index.md)：分类 + 知识库问答 + 工具查询的完整落地与评测
 - [大模型应用开发 · Agent 框架与应用集成](../../LLMApp/AgentIntegration/index.md)：框架选型与集成检查清单
+- [Agent 框架深入 · 实战](../../AgentFramework/Practice/index.md)：LangGraph 审批发布流水线 + CrewAI 研究小组的完整可运行案例，本页案例框架化之后的落点

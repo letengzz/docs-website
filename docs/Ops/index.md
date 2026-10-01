@@ -13,5 +13,6 @@
 - [云原生](CloudNative/index.md)
 - [监控告警](Monitoring/index.md)
 - [日志体系](LogSystem/index.md)
+- [备份与容灾](BackupDR/index.md)
 - [JumpServer](JumpServer/index.md)
 - [其他](Others/index.md)

@@ -194,6 +194,7 @@ for chunk in graph.stream(inputs, config=config, stream_mode="messages"):
 - [记忆与上下文](../Memory/index.md)：检查点、`thread_id` 与长期记忆的关系
 - [实战：带人工审批的检索增强 Agent](../Practice/index.md)：把本页的图与中间件串起来
 - [Agent 应用 · 工作流编排](../../Agent/Workflow/index.md)：编排层的方法论
+- [Agent 框架深入](../../AgentFramework/index.md)：本页是生态内的入门图；**状态机深入（并行 `Send`、子图、重试）、持久化后端选型、人工介入工程化与生产部署**在专题里系统展开
 
 ## 编排形态的分工：拖拽平台还是状态机代码
 

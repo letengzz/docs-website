@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="380" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">持久化两层：Checkpointer 记流程，Store 记用户</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">崩溃恢复、人工审批靠前者；跨会话偏好与画像靠后者</text>
+
+  <!-- run timeline -->
+  <rect x="30" y="76" width="440" height="150" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="50" y="100" font-size="12" fill="#1E3A8A" font-weight="bold">一次运行（thread_id = order-1001）</text>
+  <rect x="50" y="114" width="76" height="36" rx="7" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="88" y="136" text-anchor="middle" font-size="9.5" fill="#1E3A8A">检索</text>
+  <rect x="142" y="114" width="76" height="36" rx="7" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="180" y="136" text-anchor="middle" font-size="9.5" fill="#1E3A8A">生成</text>
+  <rect x="234" y="114" width="96" height="36" rx="7" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
+  <text x="282" y="131" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">interrupt 审批</text>
+  <text x="282" y="145" text-anchor="middle" font-size="8.5" fill="#92400E">暂停，可隔天回来</text>
+  <rect x="346" y="114" width="76" height="36" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="384" y="136" text-anchor="middle" font-size="9.5" fill="#065F46">发布</text>
+  <path d="M 126 132 L 142 132" stroke="#2563EB" stroke-width="1.3" marker-end="url(#arrB)"/>
+  <path d="M 218 132 L 234 132" stroke="#2563EB" stroke-width="1.3" marker-end="url(#arrB)"/>
+  <path d="M 330 132 L 346 132" stroke="#059669" stroke-width="1.3" marker-end="url(#arrG)"/>
+
+  <path d="M 88 150 L 88 176 L 384 176 L 384 150" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+  <text x="236" y="171" text-anchor="middle" font-size="8.5" fill="#64748B">每个超步后整份状态快照落库（每个小圆点 = 一份检查点）</text>
+  <circle cx="88" cy="176" r="4" fill="#2563EB"/><circle cx="180" cy="176" r="4" fill="#2563EB"/>
+  <circle cx="282" cy="176" r="4" fill="#D97706"/><circle cx="384" cy="176" r="4" fill="#059669"/>
+  <text x="50" y="208" font-size="9.5" fill="#475569">恢复：同 thread_id 再 invoke ｜ 时间旅行：指定 checkpoint_id 重放 ｜ 修状态：update_state</text>
+
+  <!-- store -->
+  <rect x="500" y="76" width="230" height="150" rx="10" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="615" y="100" text-anchor="middle" font-size="12" fill="#5B21B6" font-weight="bold">Store（跨 thread）</text>
+  <rect x="518" y="114" width="194" height="32" rx="7" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.1"/>
+  <text x="615" y="134" text-anchor="middle" font-size="9.5" fill="#5B21B6">("users", u-7) → prefs: 简洁风格</text>
+  <rect x="518" y="154" width="194" height="32" rx="7" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.1"/>
+  <text x="615" y="174" text-anchor="middle" font-size="9.5" fill="#5B21B6">("users", u-7) → history: 工单画像</text>
+  <text x="615" y="212" text-anchor="middle" font-size="9.5" fill="#6D28D9">生命周期跟随用户，不随 thread 消失</text>
+
+  <!-- backends -->
+  <rect x="30" y="246" width="700" height="48" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="50" y="266" font-size="10.5" fill="#334155" font-weight="bold">Checkpointer 后端选型</text>
+  <text x="50" y="284" font-size="9.5" fill="#475569">InMemorySaver（测试）→ SqliteSaver（单机原型）→ PostgresSaver（生产默认）→ 社区 Redis/Mongo（先跑通恢复用例）</text>
+  <text x="470" y="266" font-size="10.5" fill="#334155" font-weight="bold">多 worker 三条硬要求</text>
+  <text x="470" y="284" font-size="9.5" fill="#475569">同库 · thread_id 全局唯一 · 状态可序列化</text>
+
+  <!-- retention -->
+  <rect x="30" y="308" width="700" height="52" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+  <text x="50" y="328" font-size="10.5" fill="#9A3412" font-weight="bold">保留策略三件事</text>
+  <text x="50" y="347" font-size="9.5" fill="#9A3412">① 终态 thread 历史只留 N 天 / 最近 M 条　② 状态瘦身：大对象存 URI　③ 监控检查点表体积与单次写入延迟</text>
+
+  <defs>
+    <marker id="arrB" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrG" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#059669"/>
+    </marker>
+  </defs>
+</svg>

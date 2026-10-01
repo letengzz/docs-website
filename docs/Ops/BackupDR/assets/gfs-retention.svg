@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .day { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; rx: 6; }
+    .week { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; rx: 6; }
+    .month { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; rx: 6; }
+    .year { fill: #f3eefc; stroke: #8b6fd0; stroke-width: 1.4; rx: 6; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+  </style>
+
+  <text class="t" x="430" y="30">GFS（祖父-父-子）保留：把「保留多少」翻译成「能回到多久以前的哪一天」</text>
+
+  <text x="70" y="76">日</text>
+  <rect class="day" x="100" y="58" width="700" height="30"/>
+  <text class="small" x="450" y="78">最近 7 天：每天 1 份（任意一天都能精确回退）</text>
+
+  <text x="70" y="126">周</text>
+  <rect class="week" x="200" y="108" width="600" height="30"/>
+  <text class="small" x="500" y="128">最近 8 周：每周日保留 1 份</text>
+
+  <text x="70" y="176">月</text>
+  <rect class="month" x="320" y="158" width="480" height="30"/>
+  <text class="small" x="560" y="178">最近 12 个月：每月 1 日保留 1 份</text>
+
+  <text x="70" y="226">年</text>
+  <rect class="year" x="620" y="208" width="180" height="30"/>
+  <text class="small" x="710" y="228">每年 1 份</text>
+
+  <text class="small" x="430" y="272">总量估算：7 + 8 + 12 + 3 ≈ 30 份，而不是「每天一份存一年」的 365 份</text>
+  <text class="small" x="430" y="294">淘汰顺序：先删「已无保留价值的中间层」，再删最旧的；删除前必须先确认保留链完整</text>
+  <text class="small" x="430" y="316">硬要求：删除动作不能与备份动作共用同一份凭据（否则勒索软件会顺手删掉你的备份）</text>
+</svg>

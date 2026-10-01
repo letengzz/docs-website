@@ -235,5 +235,5 @@ ansible -i inventory.ini web --list-hosts
 - Ansible 清单指南：[How to build your inventory](https://docs.ansible.com/ansible/latest/inventory_guide/index.html)
 - 动态清单插件列表：[Inventory plugins](https://docs.ansible.com/ansible/latest/plugins/inventory.html)
 - 变量优先级：[Variable precedence](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable)
-- 相关文档：[安装与环境准备](Install/index.md) / [变量、Facts 与模板](Variable/index.md)
+- 相关文档：[安装与环境准备](../Install/index.md) / [变量、Facts 与模板](../Variable/index.md)
 - 延伸阅读：[Kubernetes · 概述](../../Kubernetes/Overview/index.md)

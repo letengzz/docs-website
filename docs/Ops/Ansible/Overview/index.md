@@ -49,7 +49,7 @@ Ansible 是 Red Hat 维护的开源自动化工具，用于**配置管理、应�
 汇总：ok / changed / unreachable / failed / skipped
 ```
 
-关键机制是**幂等（idempotency）**：模块会先检查当前状态，只在需要时才变更。所以同一份 Playbook 跑第二遍，`changed` 数应该是 0——这一点在[实战](Practice/index.md)里会作为验收项。
+关键机制是**幂等（idempotency）**：模块会先检查当前状态，只在需要时才变更。所以同一份 Playbook 跑第二遍，`changed` 数应该是 0——这一点在[实战](../Practice/index.md)里会作为验收项。
 
 ## 与同类工具对比
 
@@ -121,5 +121,5 @@ ansible-doc copy | head -20
 - Ansible 官方文档：[Ansible Documentation](https://docs.ansible.com/)
 - 架构与工作原理：[How Ansible works](https://www.ansible.com/how-ansible-works)
 - 模块索引：[Collection Index](https://docs.ansible.com/ansible/latest/collections/index_module.html)
-- 相关文档：[安装与环境准备](Install/index.md) / [Playbook 编写](Playbook/index.md)
+- 相关文档：[安装与环境准备](../Install/index.md) / [Playbook 编写](../Playbook/index.md)
 - 延伸阅读：[Linux 进阶 · Shell 脚本编程](../../Linux/Advanced/ShellScripting/index.md) / [Linux 进阶 · 进阶总览](../../Linux/Advanced/index.md)

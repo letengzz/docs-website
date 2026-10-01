@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="380" viewBox="0 0 860 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .root { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.6; rx: 10; }
+    .leaf { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; rx: 8; }
+    .leaf2 { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; rx: 8; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    .line { stroke: #9aa7b8; stroke-width: 1.2; }
+  </style>
+
+  <rect class="root" x="330" y="24" width="200" height="46"/>
+  <text class="t" x="430" y="53">数据丢了，先问三件事</text>
+
+  <line class="line" x1="430" y1="70" x2="430" y2="96"/>
+
+  <rect class="leaf" x="40" y="96" width="230" height="70"/>
+  <text x="155" y="122">「是删错了 / 写坏了」</text>
+  <text class="small" x="155" y="144">→ 回退到出事之前</text>
+  <text class="small" x="155" y="160">用备份 + PITR</text>
+
+  <rect class="leaf2" x="315" y="96" width="230" height="70"/>
+  <text x="430" y="122">「整台机 / 整个区不可用」</text>
+  <text class="small" x="430" y="144">→ 容灾切换</text>
+  <text class="small" x="430" y="160">或按文档重建环境</text>
+
+  <rect class="leaf" x="590" y="96" width="230" height="70"/>
+  <text x="705" y="122">「数据还在，但不敢确认」</text>
+  <text class="small" x="705" y="144">→ 先做完整性校验</text>
+  <text class="small" x="705" y="160">再决定是否恢复</text>
+
+  <line class="line" x1="430" y1="96" x2="155" y2="96"/>
+  <line class="line" x1="430" y1="96" x2="705" y2="96"/>
+  <line class="line" x1="155" y1="96" x2="155" y2="96"/>
+
+  <rect class="root" x="30" y="200" width="800" height="158" rx="10"/>
+  <text class="t" x="430" y="228">四条最容易踩的红线</text>
+  <text class="small" x="430" y="254">① 把备份存在同一块盘 / 同一个账号下：勒索软件一次加密全部带走</text>
+  <text class="small" x="430" y="276">② 备份长期没人验证：真出事时才发现文件是空的、损坏的、或者压根没跑过</text>
+  <text class="small" x="430" y="298">③ 有了主从就认为不用备份：主从会把误删和逻辑损坏同步到每一台</text>
+  <text class="small" x="430" y="320">④ 只备份数据库、不备份配置与密钥：数据库回来了，服务照样起不来</text>
+  <text class="small" x="430" y="344">判据：任何一条「备份策略」若从未被恢复演练证明过，就应当视为「尚无备份」</text>
+</svg>
