@@ -1,60 +1,125 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 496" width="760" height="496" font-family="Microsoft YaHei, PingFang SC, sans-serif">
-  <rect width="760" height="496" fill="#FFFFFF"/>
-  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">引导页两栏布局：左栏技术栈 / 右栏预览 + 配置 / 底部初始化</text>
-  <text x="380" y="50" text-anchor="middle" font-size="10.5" fill="#64748B">位置即语义——左栏改「用什么写」，右栏改「怎么跑」；预览常驻右上角，它就是当前选择的结果</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 548" width="760" height="548" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="548" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">引导页两栏布局：左栏技术栈 / 右栏 Nuxt 配置 / 底部操作条</text>
+  <text x="380" y="46" text-anchor="middle" font-size="10.5" fill="#64748B">位置即语义——左栏改「用什么写」，右栏改「怎么跑」；「会发生什么」不占版面，由底部按钮弹出</text>
 
-  <rect x="30" y="66" width="700" height="310" rx="10" fill="#FFFFFF" stroke="#475569" stroke-width="1.6"/>
-  <text x="48" y="86" text-anchor="start" font-size="10" fill="#1E293B" font-weight="bold">技术栈选择页</text>
+  <!-- ===== 页面外框 ===== -->
+  <rect x="30" y="60" width="700" height="340" rx="10" fill="#FFFFFF" stroke="#475569" stroke-width="1.6"/>
+  <text x="48" y="79" text-anchor="start" font-size="10" fill="#1E293B" font-weight="bold">技术栈选择页</text>
 
-  <rect x="398" y="94" width="316" height="50" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
-  <text x="412" y="113" text-anchor="start" font-size="9.5" fill="#92400E" font-weight="bold">依赖与变更预览（右上角 · 可折叠）</text>
-  <text x="412" y="130" text-anchor="start" font-size="7.5" fill="#334155">展开看：运行时/开发依赖 · Nuxt 模块 · 样式入口顺序 · 将删除与将生成的文件</text>
+  <!-- 左栏：三个横向单选组 -->
+  <rect x="48" y="88" width="330" height="42" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="64" y="107" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">UI 框架</text>
+  <text x="362" y="107" text-anchor="end" font-size="7" fill="#93C5FD">radios</text>
+  <text x="64" y="123" text-anchor="start" font-size="7.5" fill="#334155">无 / Element Plus / Ant Design Vue / Nuxt UI / Vuetify</text>
 
-  <rect x="48" y="94" width="330" height="42" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
-  <text x="64" y="113" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">UI 框架</text>
-  <text x="64" y="130" text-anchor="start" font-size="7.5" fill="#334155">无 / Element Plus / Ant Design Vue / Nuxt UI / Vuetify</text>
-  <rect x="48" y="144" width="330" height="42" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
-  <text x="64" y="163" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">CSS 预处理器</text>
-  <text x="64" y="180" text-anchor="start" font-size="7.5" fill="#334155">无 / Sass / Less / Stylus</text>
-  <rect x="48" y="194" width="330" height="42" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
-  <text x="64" y="213" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">原子化框架</text>
-  <text x="64" y="230" text-anchor="start" font-size="7.5" fill="#334155">无 / UnoCSS / Tailwind CSS</text>
+  <rect x="48" y="138" width="330" height="42" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="64" y="157" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">CSS 预处理器</text>
+  <text x="362" y="157" text-anchor="end" font-size="7" fill="#93C5FD">radios</text>
+  <text x="64" y="173" text-anchor="start" font-size="7.5" fill="#334155">无 / Sass / Less / Stylus</text>
 
-  <rect x="398" y="152" width="316" height="42" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
-  <text x="412" y="171" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">渲染模式</text>
-  <text x="412" y="188" text-anchor="start" font-size="7.5" fill="#334155">SSR / SPA / SSG / 混合</text>
-  <rect x="398" y="202" width="316" height="42" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
-  <text x="412" y="221" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">模块</text>
-  <text x="412" y="238" text-anchor="start" font-size="7.5" fill="#334155">Pinia · VueUse · i18n · Icon · Image · SEO</text>
-  <rect x="398" y="252" width="316" height="42" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
-  <text x="412" y="271" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">工程</text>
-  <text x="412" y="288" text-anchor="start" font-size="7.5" fill="#334155">ESLint · 测试 · TS 严格度 · Docker + 包管理器</text>
+  <rect x="48" y="188" width="330" height="42" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="64" y="207" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">原子化框架</text>
+  <text x="362" y="207" text-anchor="end" font-size="7" fill="#93C5FD">radios</text>
+  <text x="64" y="223" text-anchor="start" font-size="7.5" fill="#334155">无 / UnoCSS / Tailwind CSS</text>
 
-  <rect x="48" y="306" width="664" height="24" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
-  <text x="62" y="322" text-anchor="start" font-size="8.5" fill="#B91C1C">冲突提示区：block 置灰并禁用提交 · warn 黄色提示 · info 灰色说明</text>
-  <rect x="48" y="338" width="664" height="26" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
-  <text x="62" y="355" text-anchor="start" font-size="8.5" fill="#475569">恢复推荐默认 · 预览变更</text>
-  <rect x="620" y="340" width="92" height="22" rx="5" fill="#059669" stroke="#047857" stroke-width="1.4"/>
-  <text x="666" y="355" text-anchor="middle" font-size="8.5" fill="#FFFFFF" font-weight="bold">初始化项目</text>
+  <!-- 右栏：渲染模式（单选）+ 两个列表面板 + 包管理器（单选） -->
+  <rect x="398" y="88" width="316" height="36" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="412" y="104" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">渲染模式</text>
+  <text x="702" y="104" text-anchor="end" font-size="7" fill="#5EEAD4">radios</text>
+  <text x="412" y="118" text-anchor="start" font-size="7.5" fill="#334155">SSR / SPA / SSG / 混合</text>
 
-  <text x="30" y="398" text-anchor="start" font-size="9.5" fill="#1E293B" font-weight="bold">两种控件形态（由 options.json 的 renderAs 决定）</text>
+  <rect x="398" y="132" width="316" height="64" rx="8" fill="#FFFFFF" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="412" y="148" text-anchor="start" font-size="8.5" fill="#115E59" font-weight="bold">Nuxt 模块</text>
+  <text x="472" y="148" text-anchor="start" font-size="7.5" fill="#94A3B8">2 / 6</text>
+  <rect x="666" y="138" width="36" height="15" rx="4" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.2"/>
+  <text x="684" y="149" text-anchor="middle" font-size="7" fill="#115E59">新增</text>
+  <line x1="398" y1="157" x2="714" y2="157" stroke="#CCFBF1" stroke-width="1"/>
+  <text x="412" y="172" text-anchor="start" font-size="7.5" fill="#334155">Pinia 状态管理</text>
+  <text x="702" y="172" text-anchor="end" font-size="7" fill="#94A3B8">移除</text>
+  <line x1="398" y1="178" x2="714" y2="178" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="412" y="191" text-anchor="start" font-size="7.5" fill="#334155">Nuxt Icon 图标</text>
+  <text x="702" y="191" text-anchor="end" font-size="7" fill="#94A3B8">移除</text>
 
-  <rect x="30" y="406" width="46" height="20" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
-  <circle cx="41" cy="416" r="3" fill="#2563EB"/>
-  <text x="49" y="421" text-anchor="start" font-size="7.5" fill="#1E3A8A">无</text>
-  <rect x="82" y="406" width="56" height="20" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
-  <circle cx="93" cy="416" r="3" fill="#2563EB"/>
-  <text x="101" y="421" text-anchor="start" font-size="7.5" fill="#1E3A8A">Sass</text>
-  <rect x="144" y="406" width="56" height="20" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
-  <circle cx="155" cy="416" r="3" fill="#2563EB"/>
-  <text x="163" y="421" text-anchor="start" font-size="7.5" fill="#1E3A8A">Less</text>
-  <text x="212" y="421" text-anchor="start" font-size="8.5" fill="#334155">radios：横向排开，一行数完候选；说明与「会装什么」收进悬停提示</text>
+  <rect x="398" y="204" width="316" height="64" rx="8" fill="#FFFFFF" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="412" y="220" text-anchor="start" font-size="8.5" fill="#115E59" font-weight="bold">工程开关</text>
+  <text x="472" y="220" text-anchor="start" font-size="7.5" fill="#94A3B8">3 / 4</text>
+  <text x="702" y="220" text-anchor="end" font-size="7" fill="#5EEAD4">checks</text>
+  <rect x="666" y="210" width="36" height="15" rx="4" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.2"/>
+  <text x="684" y="221" text-anchor="middle" font-size="7" fill="#115E59">新增</text>
+  <line x1="398" y1="229" x2="714" y2="229" stroke="#CCFBF1" stroke-width="1"/>
+  <text x="412" y="244" text-anchor="start" font-size="7.5" fill="#334155">ESLint + Prettier</text>
+  <text x="702" y="244" text-anchor="end" font-size="7" fill="#94A3B8">移除</text>
+  <line x1="398" y1="250" x2="714" y2="250" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="412" y="263" text-anchor="start" font-size="7.5" fill="#334155">Vitest 测试栈 · TypeScript 严格模式 …</text>
 
-  <rect x="32" y="430" width="9" height="9" rx="2" fill="#2563EB"/>
-  <text x="47" y="438" text-anchor="start" font-size="7.5" fill="#1E3A8A">Pinia 状态管理</text>
-  <rect x="32" y="450" width="9" height="9" rx="2" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.2"/>
-  <text x="47" y="458" text-anchor="start" font-size="7.5" fill="#334155">VueUse 工具集</text>
-  <text x="212" y="448" text-anchor="start" font-size="8.5" fill="#334155">checks：纵向复选行，每项都有一行说明要读（多选，勾选后展开附带文件）</text>
+  <rect x="398" y="276" width="316" height="36" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="412" y="292" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">包管理器</text>
+  <text x="702" y="292" text-anchor="end" font-size="7" fill="#5EEAD4">radios</text>
+  <text x="412" y="306" text-anchor="start" font-size="7.5" fill="#334155">pnpm / npm</text>
 
-  <text x="380" y="486" text-anchor="middle" font-size="9.5" fill="#1E3A8A">左栏改「用什么写」，右栏改「怎么跑」，底部是唯一的提交入口</text>
+  <!-- 冲突提示区 + 底部操作条 -->
+  <rect x="48" y="322" width="664" height="20" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="60" y="335" text-anchor="start" font-size="8" fill="#B91C1C">冲突提示区：block 置灰并禁用提交 · warn 黄色提示 · info 灰色说明</text>
+
+  <rect x="48" y="350" width="664" height="28" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="60" y="368" text-anchor="start" font-size="8.5" fill="#475569">恢复推荐默认</text>
+  <rect x="124" y="355" width="66" height="18" rx="4" fill="#FFFFFF" stroke="#D97706" stroke-width="1.4"/>
+  <text x="157" y="368" text-anchor="middle" font-size="8" fill="#92400E" font-weight="bold">预览变更</text>
+  <text x="198" y="368" text-anchor="start" font-size="8" fill="#92400E">← 点它弹出预览弹窗（不占版面）</text>
+  <rect x="620" y="354" width="80" height="20" rx="5" fill="#059669" stroke="#047857" stroke-width="1.4"/>
+  <text x="660" y="368" text-anchor="middle" font-size="8.5" fill="#FFFFFF" font-weight="bold">初始化项目</text>
+
+  <!-- ===== 图例：三种控件形态 ===== -->
+  <text x="30" y="418" text-anchor="start" font-size="9.5" fill="#1E293B" font-weight="bold">三种控件形态（由 options.json 的 renderAs 决定，前端不猜）</text>
+
+  <!-- ① radios -->
+  <rect x="30" y="428" width="44" height="18" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <circle cx="40" cy="437" r="3" fill="#2563EB"/>
+  <text x="46" y="440" text-anchor="start" font-size="7" fill="#1E3A8A">无</text>
+  <rect x="78" y="428" width="52" height="18" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <circle cx="88" cy="437" r="3" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="94" y="440" text-anchor="start" font-size="7" fill="#1E3A8A">Sass</text>
+  <rect x="134" y="428" width="52" height="18" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <circle cx="144" cy="437" r="3" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="150" y="440" text-anchor="start" font-size="7" fill="#1E3A8A">Less</text>
+  <rect x="190" y="428" width="56" height="18" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <circle cx="200" cy="437" r="3" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="206" y="440" text-anchor="start" font-size="7" fill="#1E3A8A">Stylus</text>
+  <text x="30" y="486" text-anchor="start" font-size="8.5" fill="#1E3A8A" font-weight="bold">radios —— 横向单选按钮组</text>
+  <text x="30" y="498" text-anchor="start" font-size="7.5" fill="#64748B">组内互斥，一行数完候选；</text>
+  <text x="30" y="510" text-anchor="start" font-size="7.5" fill="#64748B">说明与「会装什么」收进 title</text>
+
+  <!-- ② checks -->
+  <rect x="266" y="426" width="220" height="52" rx="6" fill="#FFFFFF" stroke="#0D9488" stroke-width="1.4"/>
+  <text x="276" y="440" text-anchor="start" font-size="7.5" fill="#115E59" font-weight="bold">Nuxt 模块</text>
+  <text x="330" y="440" text-anchor="start" font-size="7" fill="#94A3B8">2 / 6</text>
+  <rect x="440" y="429" width="36" height="14" rx="4" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.2"/>
+  <text x="458" y="439" text-anchor="middle" font-size="6.5" fill="#115E59">新增</text>
+  <line x1="266" y1="447" x2="486" y2="447" stroke="#CCFBF1" stroke-width="1"/>
+  <text x="276" y="459" text-anchor="start" font-size="7" fill="#334155">Pinia 状态管理</text>
+  <text x="476" y="459" text-anchor="end" font-size="6.5" fill="#94A3B8">移除</text>
+  <line x1="266" y1="464" x2="486" y2="464" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="276" y="474" text-anchor="start" font-size="7" fill="#334155">Nuxt Icon 图标</text>
+  <text x="476" y="474" text-anchor="end" font-size="6.5" fill="#94A3B8">移除</text>
+  <text x="266" y="492" text-anchor="start" font-size="8.5" fill="#115E59" font-weight="bold">checks —— 「新增」+ 可滑动列表</text>
+  <text x="266" y="504" text-anchor="start" font-size="7.5" fill="#64748B">列表只放已加入项、高度封顶自己滚；</text>
+  <text x="266" y="515" text-anchor="start" font-size="7.5" fill="#64748B">候选与说明都在「新增」弹窗里</text>
+
+  <!-- ③ dialog -->
+  <rect x="508" y="414" width="222" height="60" rx="6" fill="#FFFFFF" stroke="#475569" stroke-width="1.4"/>
+  <line x1="508" y1="430" x2="730" y2="430" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="518" y="425" text-anchor="start" font-size="7.5" fill="#1E293B" font-weight="bold">依赖与变更预览</text>
+  <text x="722" y="425" text-anchor="end" font-size="7.5" fill="#94A3B8">×</text>
+  <text x="518" y="442" text-anchor="start" font-size="6.5" fill="#475569">运行时 3 + 开发 10 个依赖 · 删除 32 个文件</text>
+  <text x="518" y="453" text-anchor="start" font-size="6.5" fill="#475569">将写入的配置区间 10 · 将生成的文件 5</text>
+  <line x1="508" y1="461" x2="730" y2="461" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="518" y="470" text-anchor="start" font-size="6.5" fill="#94A3B8">预览即承诺</text>
+  <rect x="680" y="463" width="42" height="11" rx="3" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+  <text x="701" y="471" text-anchor="middle" font-size="6" fill="#475569">关闭</text>
+  <text x="508" y="492" text-anchor="start" font-size="8.5" fill="#334155" font-weight="bold">dialog —— 预览 / 新增弹窗</text>
+  <text x="508" y="504" text-anchor="start" font-size="7.5" fill="#64748B">遮罩 · 焦点陷阱 · Esc 关闭 · 点遮罩关闭</text>
+  <text x="508" y="515" text-anchor="start" font-size="7.5" fill="#64748B">全部来自浏览器，引导期零依赖</text>
+
+  <text x="380" y="538" text-anchor="middle" font-size="9.5" fill="#1E3A8A">左栏改「用什么写」，右栏改「怎么跑」，「会发生什么」弹出来给你看</text>
 </svg>

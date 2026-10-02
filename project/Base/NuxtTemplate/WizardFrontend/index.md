@@ -2,21 +2,22 @@
 
 引导页要做两件事，而且必须同时做对：**看起来很直观**（用户三十秒内能选完），**模型上没有歧义**（后端拿到的选择一定能被机器校验）。前者靠布局，后者靠一份唯一的选择模型。
 
-![引导页两栏布局：左栏技术栈 / 右栏依赖预览 + Nuxt 配置 / 底部初始化](../assets/wizard-layout.svg)
+![引导页两栏布局：左栏技术栈 / 右栏 Nuxt 配置 / 底部操作条；依赖与变更预览是弹窗](../assets/wizard-layout.svg)
 
 ## 1. 信息架构
 
-页面是**两栏 + 底部操作条**，位置即语义——左栏改变「用什么写」，右栏改变「怎么跑」，右栏顶部常驻一块「依赖与变更预览」（它是当前选择的结果，与右栏的配置项是同一件事的两面）：
+页面是**两栏 + 底部操作条**，位置即语义——左栏改变「用什么写」，右栏改变「怎么跑」。第三件事「即将发生什么」不占这两栏：它以**弹窗**呈现，由底部的「预览变更」按钮唤出。
 
 | 区 | 分组 | 控件 | 默认值 | 影响面 |
 | --- | --- | --- | --- | --- |
-| 右上 | 依赖与变更预览 | 可折叠面板 | 折叠（点「预览变更」后自动展开） | 展示会装什么、删什么、生成什么；不是选择项 |
 | 左 | UI 框架 | 横向单选 ×5（无 / Element Plus / Ant Design Vue / Nuxt UI / Vuetify） | 无 | 依赖 + 自动导入配置 + 样式入口 |
 | 左 | CSS 预处理器 | 横向单选 ×4（无 / Sass / Less / Stylus） | 无 | 依赖 + 组件内样式语言 + Stylelint 配置 |
 | 左 | 原子化框架 | 横向单选 ×3（无 / UnoCSS / Tailwind CSS） | 无 | 依赖 + 构建插件 + 样式入口优先级 |
 | 右 | 渲染模式 | 横向单选 ×4（SSR / SPA / SSG / 混合） | SSR | `ssr` 开关 + `routeRules` + 部署形态 |
-| 右 | 模块 | 复选 ×6（Pinia / VueUse / i18n / Icon / Image / SEO） | Pinia、Icon | `modules` 数组 |
-| 右 | 工程 | 复选 ×4 + 横向单选 ×1（ESLint、测试栈、TS 严格度、Docker；包管理器） | ESLint、测试栈、严格 TS、pnpm | 依赖 + 配置文件 |
+| 右 | Nuxt 模块 | 列表面板 ×6 候选（Pinia / VueUse / i18n / Icon / Image / SEO） | Pinia、Icon | `modules` 数组 |
+| 右 | 工程开关 | 列表面板 ×4 候选（ESLint、测试栈、TS 严格度、Docker） | ESLint、测试栈、严格 TS | 依赖 + 配置文件 |
+| 右 | 包管理器 | 横向单选 ×2（pnpm / npm） | pnpm | 锁文件 + 安装命令 |
+| 弹窗 | 依赖与变更预览 | 模态弹窗（底部「预览变更」唤出） | 不弹出 | 会装什么、删什么、生成什么、写哪些区间；不是选择项 |
 
 ::: tip 为什么「渲染模式」放在右侧而不是左侧
 左侧三个维度是**技术栈身份**——选完基本不会再改，团队之间差异最大。右侧是**运行形态与工程配置**——同一个团队的不同项目会不一样，也可能初始化后再手动调整。把「身份」和「配置」分区，用户的心智负担最小。
@@ -27,16 +28,18 @@
 | 控件形态 | 用于 | 交互 |
 | --- | --- | --- |
 | 横向单选按钮组 | 全部单选组：UI 框架、预处理器、原子化（左栏），渲染模式、包管理器（右栏） | 每个候选一个带边框的小块，整组左右排开、一行放不下才换行；选中态是边框 + 底色 + 标签加粗变色；「说明 + 会装什么」收进 `title`，悬停可见 |
-| 复选行 | 模块、工程开关（右栏） | 左侧复选框，右侧标题 + 一行说明；勾选后展开「附带文件」提示 |
-| 可折叠预览 | 依赖与变更预览（**右上角**） | 展开后汇总运行时/开发依赖、Nuxt 模块、样式入口顺序、将删除与将生成的文件；默认折叠，展开高度有上限（内部自己滚） |
+| 列表面板 | Nuxt 模块、工程开关（右栏） | 面板头左侧是分组名与「已选 n / 共 m」，右侧是「新增」按钮；下方是可滑动列表，每行一个已加入项 + 「移除」。候选项与每项的说明都在「新增」弹窗里 |
+| 模态弹窗 | 依赖与变更预览、新增候选项 | 原生 `<dialog>` + `showModal()`：遮罩、焦点陷阱、Esc 关闭、点遮罩关闭、背景不可交互，全部来自浏览器 |
 
 ### 1.2 「会装什么」必须有地方看得到
 
 单选组一律**横向**排开：组内是互斥关系，横向正好呼应「从这几个里挑一个」；候选彼此相邻时，名字长短、有没有「实验性」标记都是一眼可比的，竖排一列反而要上下移动视线。每项只占一行「○ 名称」，说明与「会装什么」收进元素的 `title`。
 
-多选组（模块、工程开关）保持**纵向复选行**：每项都有一行说明要读，而且它们是「加不加」而不是「选哪个」，横向排开就分不清与单选组的区别了。
+多选组（模块、工程开关）改成**列表面板**：面板只说「已加入哪些」，候选项与每项说明放进「新增」弹窗。理由是这两组属于「按需追加」——多数候选长期处于未选中状态，把它们的说明一直挂在版面上，换来的是「每次都要滚过一段与自己无关的文字」。列表有高度上限、自己滚，所以选满 6 个模块也不会把右栏撑长。
 
-两种形态遵循同一条标准：**选择成本主要来自不确定**——用户不是不知道该选哪个，而是不知道选了会带来什么。所以信息不删，只决定它是「一直占着版面」还是「需要时才展开」。用 `title` 而不是自造 tooltip 还有一层原因：按 HTML-AAM，`title` 就是表单控件的 accessible description，屏幕阅读器拿到的是同一份内容，不是只给鼠标用的。
+第三层是**模态弹窗**：依赖与变更预览回答的是「点下去会发生什么」，属于一次性核对，不是要一直盯着的配置。它先在右栏顶部常驻过一版，问题是展开高度会不断挤压下面那些才要反复调的控件，缩成一行标题又等于没显示——两头不讨好，于是干脆从版面里拿掉，要看时再弹出来。
+
+三种形态遵循同一条标准：**选择成本主要来自不确定**——用户不是不知道该选哪个，而是不知道选了会带来什么。所以信息不删，只决定它是「一直占着版面」「需要时展开」还是「需要时弹出」。用 `title` 而不是自造 tooltip 还有一层原因：按 HTML-AAM，`title` 就是表单控件的 accessible description，屏幕阅读器拿到的是同一份内容，不是只给鼠标用的。
 
 ## 2. 选择模型：`options.json`
 
@@ -146,22 +149,27 @@ export type Selection = Record<string, string | string[]>;
 | `renderAs` | 用于 | 长什么样 |
 | --- | --- | --- |
 | `radios` | 全部单选组（左栏三组 + 渲染模式 + 包管理器） | 横向单选按钮组，每个候选一个「○ 名称」小块，整组左右排开、放不下才换行 |
-| `checks` | 模块、工程开关（多选） | 复选行，勾选后展开「附带文件」 |
+| `checks` | Nuxt 模块、工程开关（多选） | 列表面板：面板头右上角「新增」+ 下方可滑动列表；候选项与说明在「新增」弹窗里 |
 
 ::: info 形态只有两种，是有意收窄的
 早先还有 `cards`（带标题与说明的纵向卡片）与 `select`（原生下拉）：前者在横向排布下与 `radios` 重复，后者只有两个取值、不如直接摊开成单选按钮。**留着没人使用的形态会让「组件实现的」与「类型声明的」对不上**——自测 A10 正是卡这一条（它要求两者一一对应），所以删形态时类型、`options.json`、组件分支三处必须一起动。
 
 `renderAs` 落在联合类型之外时，组件渲染的是一块**可见的报错**而不是空白（服务端的 `assertShape` 只校验选择、不校验这个字段）。静默不渲染的后果是「某个分组整块消失」而控制台干干净净，最难定位。
+
+A10 还给形态本身钉了三条结构断言：多选面板必须有「新增」按钮、必须有 `<dialog>` 弹窗、列表必须有高度上限。三个部件缺任何一个都会**静默退化**——少了弹窗，「新增」就是个点不动的空按钮；少了高度上限，列表一长就回到「把整页撑长」的老样子。三条都做过变异测试（逐条改坏，确认门禁报红）。
 :::
 
 ```vue [app/components/wizard/OptionGroup.vue]
 <script setup lang="ts">
 /**
  * 渲染一个分组。两种控件形态由 options.json 的 `renderAs` 决定，组件不猜：
- * `radios` = 横向单选按钮组，`checks` = 复选行。
+ *   `radios` —— 横向单选按钮组。组内互斥，候选彼此相邻才好比。
+ *   `checks` —— 「右上角新增 + 下方可滑动列表」的多选面板。候选默认不占版面，
+ *               说明与「会装什么」收进「新增」弹窗，需要时再看。
  *
- * 为什么用原生 <input type="radio|checkbox">：
- * ① 键盘导航、屏幕阅读器语义、焦点管理全部白送，自己用 div 造要写两百行还写不对；
+ * 为什么用原生 <input> 与 <dialog>：
+ * ① 键盘导航、屏幕阅读器语义、焦点陷阱、Esc 关闭、遮罩层全部白送，
+ *    自己用 div 造要写两百行还写不对；
  * ② 引导期是零依赖的（dependencies 里只有 nuxt），不能用组件库；
  * ③ 这些组件会在初始化时被删除 —— 不值得为它引入任何依赖。
  * 样式靠 :checked 与 :has() 完成，见 app/assets/styles/wizard.css。
@@ -176,30 +184,57 @@ const props = defineProps<{
 const emit = defineEmits<{ 'update:modelValue': [Selection] }>();
 
 const current = computed(() => props.modelValue[props.group.key]);
+const isPanel = computed(() => props.group.renderAs === 'checks');
+
+/** 面板里列出的是**已加入的项**，按 options.json 的顺序而不是点击顺序 */
+const selected = computed(() => {
+  const picked = current.value;
+  const list = Array.isArray(picked) ? picked : [];
+  return props.group.options.filter((opt) => list.includes(opt.value));
+});
+
+/** 草稿：勾选先落在草稿上，点「确定」才写回 —— 否则「取消」就没有意义了 */
+const draft = ref<string[]>([]);
+
+function openPicker() {
+  draft.value = Array.isArray(current.value) ? [...current.value] : [];
+  picker.value?.showModal();
+}
+
+function toggleDraft(value: string, checked: boolean) {
+  // 只有「加进来」需要拦；「移出去」永远允许 —— 否则某项被规则禁掉后就卡在列表里出不去
+  if (checked && props.blocked.has(value)) return;
+  draft.value = checked ? [...new Set([...draft.value, value])] : draft.value.filter(v => v !== value);
+}
+
+function confirmDraft() {
+  // 按 options.json 的顺序写回：勾选顺序会经 URL 与 localStorage 泄漏出去，
+  // 同样的选择应该得到同样的链接。
+  const next = props.group.options.map(o => o.value).filter(v => draft.value.includes(v));
+  emit('update:modelValue', { ...props.modelValue, [props.group.key]: next });
+  picker.value?.close();
+}
 
 function pick(value: string) {
   if (props.blocked.has(value)) return;
   emit('update:modelValue', { ...props.modelValue, [props.group.key]: value });
 }
 
-function toggle(value: string, checked: boolean) {
-  const list = Array.isArray(current.value) ? [...current.value] : [];
-  const next = checked ? [...new Set([...list, value])] : list.filter(v => v !== value);
-  emit('update:modelValue', { ...props.modelValue, [props.group.key]: next });
-}
-
-/** 横向单选小块的悬停提示：说明 + 会装什么 + 实验性原因，拼成一段 */
+/** 悬停提示：说明 + 会装什么 + 实验性原因，拼成一段。两种形态都靠它兜住细节 */
 function hintFor(opt: OptionItem) {
   const parts = [opt.desc, opt.note];
+  if (opt.files?.length) parts.push(`附带文件：${opt.files.join('、')}`);
   if (opt.experimental) parts.push(`实验性：${opt.experimentalReason}`);
   return parts.filter(Boolean).join('\n');
 }
 </script>
 
 <template>
-  <fieldset class="group">
-    <legend>{{ group.label }}</legend>
-    <p v-if="group.desc" class="group__desc">{{ group.desc }}</p>
+  <!-- 多选面板没有 <legend>（标题在面板头里），用 aria-label 补一个分组名，
+       否则屏幕阅读器只会念出「分组」两个字 -->
+  <fieldset class="group" :aria-label="isPanel ? group.label : undefined">
+    <legend v-if="!isPanel">{{ group.label }}</legend>
+    <p v-if="!isPanel && group.desc" class="group__desc">{{ group.desc }}</p>
 
     <!-- radios：全部单选组。横向排开，说明收进 title -->
     <div v-if="group.renderAs === 'radios'" class="radio-row">
@@ -214,7 +249,7 @@ function hintFor(opt: OptionItem) {
           type="radio"
           :name="group.key"
           :value="opt.value"
-          :checked="current === opt.value"
+          :checked="isSelected(opt.value)"
           :disabled="blocked.has(opt.value)"
           @change="pick(opt.value)"
         >
@@ -223,31 +258,76 @@ function hintFor(opt: OptionItem) {
       </label>
     </div>
 
-    <!-- checks：模块与工程开关（多选，每项一行说明，保持纵向） -->
-    <div v-else-if="group.renderAs === 'checks'" class="row-stack">
-      <label v-for="opt in group.options" :key="opt.value" class="row">
-        <input
-          type="checkbox"
-          :value="opt.value"
-          :checked="Array.isArray(current) && current.includes(opt.value)"
-          :disabled="blocked.has(opt.value)"
-          @change="toggle(opt.value, ($event.target as HTMLInputElement).checked)"
+    <!-- checks：模块与工程开关。面板只说「已加入哪些」，候选与说明在弹窗里 -->
+    <div v-else-if="group.renderAs === 'checks'" class="panel">
+      <div class="panel__head">
+        <h3 class="panel__title">{{ group.label }}</h3>
+        <span class="panel__count">{{ selected.length }} / {{ group.options.length }}</span>
+        <button type="button" class="panel__add" @click="openPicker()">新增</button>
+      </div>
+      <ul class="panel__list">
+        <li
+          v-for="opt in selected"
+          :key="opt.value"
+          class="panel__item"
+          :title="hintFor(opt)"
         >
-        <strong>{{ opt.label }}</strong>
-        <span class="desc">{{ opt.desc }}</span>
-      </label>
+          <span class="panel__item-label">{{ opt.label }}</span>
+          <button type="button" class="panel__remove" @click="remove(opt.value)">移除</button>
+        </li>
+        <li v-if="!selected.length" class="panel__empty">还没有添加，点右上角「新增」挑一个。</li>
+      </ul>
     </div>
 
     <!-- 兜底：renderAs 落到联合类型之外时必须**吵**，不能静默不渲染 -->
     <div v-else class="hint hint--block">
       未知的控件形态 renderAs={{ group.renderAs }}，分组「{{ group.label }}」未能渲染。
     </div>
+
+    <!-- 「新增」弹窗。原生 <dialog> + showModal() 负责遮罩、焦点陷阱与 Esc，
+         零依赖也拿得到一套正确的模态行为 -->
+    <dialog v-if="isPanel" ref="picker" class="modal modal--picker" @click="onBackdropClick">
+      <div class="modal__panel">
+        <header class="modal__head">
+          <h2 class="modal__title">新增 · {{ group.label }}</h2>
+          <button type="button" class="modal__close" aria-label="关闭" @click="closePicker()">×</button>
+        </header>
+        <div class="modal__body">
+          <p class="modal__lead">{{ group.desc }} 勾选后点「确定」写回；已选中的取消勾选即为移除。</p>
+          <label
+            v-for="opt in group.options"
+            :key="opt.value"
+            class="pick"
+            :class="{ 'is-checked': draft.includes(opt.value) }"
+          >
+            <input
+              type="checkbox"
+              :value="opt.value"
+              :checked="draft.includes(opt.value)"
+              :disabled="blocked.has(opt.value)"
+              @change="toggleDraft(opt.value, ($event.target as HTMLInputElement).checked)"
+            >
+            <strong>{{ opt.label }}</strong>
+            <span class="desc">{{ opt.desc }}</span>
+            <span v-if="opt.files?.length" class="desc">附带文件：{{ opt.files.join('、') }}</span>
+            <span v-if="opt.note" class="desc">{{ opt.note }}</span>
+          </label>
+        </div>
+        <footer class="modal__foot">
+          <span class="modal__note">已勾选 {{ draft.length }} / {{ group.options.length }} 项</span>
+          <button type="button" @click="closePicker()">取消</button>
+          <button type="button" data-primary @click="confirmDraft()">确定</button>
+        </footer>
+      </div>
+    </dialog>
   </fieldset>
 </template>
 ```
 
-::: tip 为什么用原生 `<input type="radio|checkbox">`
-① 键盘导航、屏幕阅读器语义、表单可访问性全部白送；② 不依赖任何组件库，符合「引导期零依赖」；③ 初始化后这些组件会被删除，不值得为它引入依赖。样式靠 `:checked + 兄弟选择器` 与 `:has()` 完成。
+::: tip 为什么用原生 `<input>` 与 `<dialog>`
+① 键盘导航、屏幕阅读器语义、表单可访问性，以及弹窗的遮罩、焦点陷阱、Esc 关闭全部白送——自己用 `div` 造一套正确的模态行为要写两百行还写不对；② 不依赖任何组件库，符合「引导期零依赖」；③ 初始化后这些组件会被删除，不值得为它引入依赖。样式靠 `:checked` 与 `:has()` 完成。
+
+弹窗还有一个 `<dialog>` 特有的坑：**不要在 `.modal` 上写 `display`**。浏览器给未打开的 `dialog` 是 `display: none`，一旦覆盖（比如为了排版写成 `display: flex`），关掉的弹窗会一直留在页面上。所以布局只写在 `.modal[open]` 上。
 :::
 
 ## 4. 三层规则：阻断 / 警告 / 提示
@@ -294,8 +374,8 @@ idle ──(加载 schema)──► selecting ──(点「预览变更」)─�
 
 | 状态 | 页面表现 | 可做的事 |
 | --- | --- | --- |
-| `selecting` | 三区表单可编辑，底部按钮为「初始化项目」但点击先出计划 | 改选项 |
-| `planned` | 右上角预览面板自动展开（「将安装的依赖 / 将删除的文件 / 将写入的配置」） | 确认或回退 |
+| `selecting` | 两栏表单可编辑，底部按钮为「初始化项目」但点击先弹预览 | 改选项 |
+| `planned` | 预览弹窗打开（「将安装的依赖 / 将删除的文件 / 将写入的配置区间」） | 确认或回退 |
 | `running` | 表单整体 `disabled`，进度面板接管（五阶段 + 日志行） | 只能等或中断 |
 | `done` | 显示完成摘要 + 下一步命令（`pnpm dev`） | 打开首页 |
 | `failed` | 显示失败的阶段、错误原文、可回滚提示 | 重试 / 联系维护者 |
@@ -313,7 +393,8 @@ idle ──(加载 schema)──► selecting ──(点「预览变更」)─�
 | **默认值就是推荐组合** | 默认 `无 UI / 无预处理器 / 无原子化 / SSR / Pinia + Icon / ESLint + 测试` | 直接点「初始化」也能得到能跑的工程 |
 | **选择状态可分享** | 把 `Selection` 序列化进 URL query（如 `?ui=element-plus&css=sass`） | 同事之间可以发链接对齐技术栈 |
 | **本地记住上次选择** | `localStorage` 存上一次的 `Selection` | 重复初始化第二个项目时省事 |
-| **实时依赖预览** | 右上角常驻折叠面板，展示去重后的依赖清单与大致数量 | 用户对「会装多少东西」有预期 |
+| **依赖数量有预期** | 本地即时估算（不请求服务端），用于「还没算出计划」时的数量提示 | 用户对「会装多少东西」有预期，而不必先等一个往返 |
+| **预览是弹窗，不是常驻面板** | 底部按钮唤出 `<dialog>`，七个清单在里面滚动 | 右栏只剩要反复调的控件；只读面板不占版面，也不推动页面 |
 | **计划与实际一致** | 「预览变更」调用的接口和「初始化」是同一份 `plan` 计算 | 不会出现「说删 7 个文件、实际删了 9 个」 |
 | **错误原文不美化** | 失败时展示引擎的原始输出（可折叠） | 排障时这行字比任何友好文案都有用 |
 | **`prefers-reduced-motion`** | 进度动效在系统设置「减少动态效果」时关闭 | 可访问性 |
@@ -323,10 +404,10 @@ idle ──(加载 schema)──► selecting ──(点「预览变更」)─�
 
 | 组件 | 职责 | 删除时机 |
 | --- | --- | --- |
-| `OptionGroup.vue` | 渲染一个分组的控件（横向单选 / 复选行，由 `renderAs` 决定） | 初始化时删除 |
-| `NuxtConfigPanel.vue` | 右栏容器（渲染模式、模块、工程开关、包管理器） | 初始化时删除 |
+| `OptionGroup.vue` | 渲染一个分组的控件（横向单选 / 新增 + 可滑动列表，由 `renderAs` 决定），并自带「新增」弹窗 | 初始化时删除 |
+| `NuxtConfigPanel.vue` | 右栏容器（渲染模式、模块、工程开关、包管理器）。只放控件，不放任何计划产物 | 初始化时删除 |
 | `ConflictHint.vue` | 三层规则的呈现（红/黄/灰） | 初始化时删除 |
-| `DependencyPreview.vue` | 右上角的依赖与变更预览面板 | 初始化时删除 |
+| `DependencyPreview.vue` | 「预览变更」弹窗：依赖清单 + 文件变更 + 将写入的配置区间 | 初始化时删除 |
 | `ProgressStream.vue` | 消费 SSE，渲染五阶段进度与日志 | 初始化时删除 |
 | `useWizard.ts` | 状态机与接口调用 | 初始化时删除 |
 
@@ -342,21 +423,32 @@ idle ──(加载 schema)──► selecting ──(点「预览变更」)─�
 ```shell
 pnpm dev
 # ① 打开 http://localhost:3000/setup
-#    期望：左栏三个单选组、右栏顶部一块依赖预览 + 四个分组、底部按钮齐备；未加载 schema 时显示骨架态
-#    每个单选组是一行横向排开的小块，悬停任一小块应弹出含「说明 + 会装什么」的原生 tooltip
+#    期望：左栏三个横向单选组；右栏依次为渲染模式、Nuxt 模块面板、工程开关面板、包管理器；
+#          底部「恢复推荐默认 / 预览变更 / 初始化项目」齐备；未加载 schema 时显示骨架态
+#    悬停任一单选项，应弹出含「说明 + 会装什么」的原生 tooltip
 
-# ② 制造一个 block 冲突：UI 选 Nuxt UI、原子化选 UnoCSS
+# ② 点某个面板右上角的「新增」
+#    期望：弹出带遮罩的「新增 · Nuxt 模块」，列出全部 6 个候选与各自说明；
+#          勾选先落在草稿上 —— 点「取消」不改变列表；
+#          点「确定」后新增项按 options.json 的顺序出现在列表里；Esc 与点遮罩都能关掉
+
+# ③ 把模块选满 6 个
+#    期望：面板高度封顶、列表内部滚动，右栏不会被撑长
+
+# ④ 制造一个 block 冲突：UI 选 Nuxt UI、原子化选 UnoCSS
 #    期望：两个冲突项置灰 + 红字说明 + 底部按钮禁用并显示「有 1 项冲突」
 
-# ③ 改成 UI = Nuxt UI、原子化 = Tailwind CSS
+# ⑤ 改成 UI = Nuxt UI、原子化 = Tailwind CSS
 #    期望：冲突消失，提示条变为 info（说明 Tailwind 已随 Nuxt UI 安装）
 
-# ④ 点「预览变更」
-#    期望：右上角面板展开，列出 deps / devDeps / 将删除文件 / 将写入的 marker 区间键名；
-#          文件多时面板内部自己滚动，不会把下面的分组推出屏幕
+# ⑥ 点「预览变更」
+#    期望：弹出「依赖与变更预览」，七个清单（运行时/开发依赖、Nuxt 模块、样式入口顺序、
+#          将写入的配置区间、将删除与将生成的文件）；内容超长时弹窗内部自己滚，
+#          不推动背后的页面；长文件路径要能折行，不出现横向滚动条
 
-# ⑤ 键盘操作
-#    期望：Tab 可遍历全部控件，焦点环清晰，Enter 能触发预览
+# ⑦ 键盘操作
+#    期望：Tab 可遍历全部控件与「新增」按钮，焦点环清晰；
+#          弹窗打开后 Tab 只在弹窗内循环（焦点陷阱由浏览器提供）
 ```
 
 ## 相关页面

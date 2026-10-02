@@ -188,7 +188,7 @@ button:disabled {
 
 ### 3.3 布局层 `app/assets/styles/wizard.css`
 
-只放选择页的两栏栅格与两种控件形态（横向单选按钮组 / 复选行）的样式，**它整体属于引导期资产**：
+只放选择页的两栏栅格与三种控件形态（横向单选按钮组 / 「新增 + 可滑动列表」面板 / 模态弹窗）外加计划清单的样式，**它整体属于引导期资产**：
 
 ```css [app/assets/styles/wizard.css]
 .wizard {
