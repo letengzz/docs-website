@@ -55,7 +55,7 @@ jobs:
       - name: Build with VitePress
         env:
           NODE_OPTIONS: "--max-old-space-size=12288"
-        run: pnpm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+        run: pnpm run docs:build -- --minify false # --minify false 降低构建内存峰值，避免 OOM
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
