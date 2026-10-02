@@ -1,37 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 410" width="760" height="410" font-family="Microsoft YaHei, PingFang SC, sans-serif">
-  <rect width="760" height="410" fill="#FFFFFF"/>
-  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">引导页三区布局：技术栈 / Nuxt 配置 / 初始化</text>
-  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">位置即语义——左侧是技术栈身份，右侧是运行形态与工程配置，两者变更频率不同</text>
-  <rect x="30" y="78" width="700" height="300" rx="10" fill="#FFFFFF" stroke="#475569" stroke-width="1.6"/>
-  <text x="48" y="98" text-anchor="start" font-size="10" fill="#1E293B" font-weight="bold">技术栈选择页</text>
-  <rect x="48" y="112" width="348" height="54" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
-  <text x="64" y="132" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">UI 框架</text>
-  <text x="64" y="150" text-anchor="start" font-size="7.5" fill="#334155">无 / Element Plus / Ant Design Vue / Nuxt UI / Vuetify</text>
-  <rect x="48" y="174" width="348" height="54" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
-  <text x="64" y="194" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">CSS 预处理器</text>
-  <text x="64" y="212" text-anchor="start" font-size="7.5" fill="#334155">无 / Sass / Less / Stylus</text>
-  <rect x="48" y="236" width="348" height="54" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
-  <text x="64" y="256" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">原子化框架</text>
-  <text x="64" y="274" text-anchor="start" font-size="7.5" fill="#334155">无 / UnoCSS / Tailwind CSS</text>
-  <rect x="412" y="112" width="300" height="54" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
-  <text x="428" y="132" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">渲染模式</text>
-  <text x="428" y="150" text-anchor="start" font-size="7.5" fill="#334155">SSR / SPA / SSG / 混合</text>
-  <rect x="412" y="174" width="300" height="54" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
-  <text x="428" y="194" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">模块</text>
-  <text x="428" y="212" text-anchor="start" font-size="7.5" fill="#334155">Pinia · VueUse · i18n · Icon · Image · SEO</text>
-  <rect x="412" y="236" width="300" height="54" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
-  <text x="428" y="256" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">工程</text>
-  <text x="428" y="274" text-anchor="start" font-size="7.5" fill="#334155">ESLint · 测试 · TS 严格度 · Docker</text>
-  <rect x="48" y="300" width="664" height="26" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
-  <text x="62" y="317" text-anchor="start" font-size="8.5" fill="#B91C1C">冲突提示区：block 置灰并禁用提交 · warn 黄色提示 · info 灰色说明</text>
-  <rect x="48" y="334" width="664" height="30" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
-  <text x="62" y="353" text-anchor="start" font-size="8.5" fill="#065F46">折叠预览：将安装的依赖 / 将删除的文件 / 将写入的 marker 区间</text>
-  <rect x="628" y="336" width="82" height="26" rx="5" fill="#059669" stroke="#047857" stroke-width="1.4"/>
-  <text x="669" y="353" text-anchor="middle" font-size="8.5" fill="#FFFFFF" font-weight="bold">初始化项目</text>
-  <text x="380" y="396" text-anchor="middle" font-size="9.5" fill="#1E3A8A">左侧改「用什么写」，右侧改「怎么跑」，底部是唯一的提交入口</text>
-  <defs>
-    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
-      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
-    </marker>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 496" width="760" height="496" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="496" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">引导页两栏布局：左栏技术栈 / 右栏预览 + 配置 / 底部初始化</text>
+  <text x="380" y="50" text-anchor="middle" font-size="10.5" fill="#64748B">位置即语义——左栏改「用什么写」，右栏改「怎么跑」；预览常驻右上角，它就是当前选择的结果</text>
+
+  <rect x="30" y="66" width="700" height="310" rx="10" fill="#FFFFFF" stroke="#475569" stroke-width="1.6"/>
+  <text x="48" y="86" text-anchor="start" font-size="10" fill="#1E293B" font-weight="bold">技术栈选择页</text>
+
+  <rect x="398" y="94" width="316" height="50" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="412" y="113" text-anchor="start" font-size="9.5" fill="#92400E" font-weight="bold">依赖与变更预览（右上角 · 可折叠）</text>
+  <text x="412" y="130" text-anchor="start" font-size="7.5" fill="#334155">展开看：运行时/开发依赖 · Nuxt 模块 · 样式入口顺序 · 将删除与将生成的文件</text>
+
+  <rect x="48" y="94" width="330" height="42" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="64" y="113" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">UI 框架</text>
+  <text x="64" y="130" text-anchor="start" font-size="7.5" fill="#334155">无 / Element Plus / Ant Design Vue / Nuxt UI / Vuetify</text>
+  <rect x="48" y="144" width="330" height="42" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="64" y="163" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">CSS 预处理器</text>
+  <text x="64" y="180" text-anchor="start" font-size="7.5" fill="#334155">无 / Sass / Less / Stylus</text>
+  <rect x="48" y="194" width="330" height="42" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="64" y="213" text-anchor="start" font-size="9.5" fill="#1E3A8A" font-weight="bold">原子化框架</text>
+  <text x="64" y="230" text-anchor="start" font-size="7.5" fill="#334155">无 / UnoCSS / Tailwind CSS</text>
+
+  <rect x="398" y="152" width="316" height="42" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="412" y="171" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">渲染模式</text>
+  <text x="412" y="188" text-anchor="start" font-size="7.5" fill="#334155">SSR / SPA / SSG / 混合</text>
+  <rect x="398" y="202" width="316" height="42" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="412" y="221" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">模块</text>
+  <text x="412" y="238" text-anchor="start" font-size="7.5" fill="#334155">Pinia · VueUse · i18n · Icon · Image · SEO</text>
+  <rect x="398" y="252" width="316" height="42" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="412" y="271" text-anchor="start" font-size="9.5" fill="#115E59" font-weight="bold">工程</text>
+  <text x="412" y="288" text-anchor="start" font-size="7.5" fill="#334155">ESLint · 测试 · TS 严格度 · Docker + 包管理器</text>
+
+  <rect x="48" y="306" width="664" height="24" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="62" y="322" text-anchor="start" font-size="8.5" fill="#B91C1C">冲突提示区：block 置灰并禁用提交 · warn 黄色提示 · info 灰色说明</text>
+  <rect x="48" y="338" width="664" height="26" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="62" y="355" text-anchor="start" font-size="8.5" fill="#475569">恢复推荐默认 · 预览变更</text>
+  <rect x="620" y="340" width="92" height="22" rx="5" fill="#059669" stroke="#047857" stroke-width="1.4"/>
+  <text x="666" y="355" text-anchor="middle" font-size="8.5" fill="#FFFFFF" font-weight="bold">初始化项目</text>
+
+  <text x="30" y="398" text-anchor="start" font-size="9.5" fill="#1E293B" font-weight="bold">两种控件形态（由 options.json 的 renderAs 决定）</text>
+
+  <rect x="30" y="406" width="46" height="20" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <circle cx="41" cy="416" r="3" fill="#2563EB"/>
+  <text x="49" y="421" text-anchor="start" font-size="7.5" fill="#1E3A8A">无</text>
+  <rect x="82" y="406" width="56" height="20" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <circle cx="93" cy="416" r="3" fill="#2563EB"/>
+  <text x="101" y="421" text-anchor="start" font-size="7.5" fill="#1E3A8A">Sass</text>
+  <rect x="144" y="406" width="56" height="20" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <circle cx="155" cy="416" r="3" fill="#2563EB"/>
+  <text x="163" y="421" text-anchor="start" font-size="7.5" fill="#1E3A8A">Less</text>
+  <text x="212" y="421" text-anchor="start" font-size="8.5" fill="#334155">radios：横向排开，一行数完候选；说明与「会装什么」收进悬停提示</text>
+
+  <rect x="32" y="430" width="9" height="9" rx="2" fill="#2563EB"/>
+  <text x="47" y="438" text-anchor="start" font-size="7.5" fill="#1E3A8A">Pinia 状态管理</text>
+  <rect x="32" y="450" width="9" height="9" rx="2" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="47" y="458" text-anchor="start" font-size="7.5" fill="#334155">VueUse 工具集</text>
+  <text x="212" y="448" text-anchor="start" font-size="8.5" fill="#334155">checks：纵向复选行，每项都有一行说明要读（多选，勾选后展开附带文件）</text>
+
+  <text x="380" y="486" text-anchor="middle" font-size="9.5" fill="#1E3A8A">左栏改「用什么写」，右栏改「怎么跑」，底部是唯一的提交入口</text>
 </svg>

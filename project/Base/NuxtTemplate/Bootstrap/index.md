@@ -188,14 +188,16 @@ button:disabled {
 
 ### 3.3 布局层 `app/assets/styles/wizard.css`
 
-只放选择页的三区栅格与四种控件形态（紧凑单选 / 卡片 / 复选 / 下拉）的样式，**它整体属于引导期资产**：
+只放选择页的两栏栅格与两种控件形态（横向单选按钮组 / 复选行）的样式，**它整体属于引导期资产**：
 
 ```css [app/assets/styles/wizard.css]
 .wizard {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  /* 两侧接近等分：单选按钮组改成横向之后，左右都在「一行里数候选」，
+     宽度需求不再有量级差；左栏略多留一点（1.15 : 1）是因为 UI 框架那组有 5 个候选 */
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   gap: var(--sp-6);
-  max-width: 1080px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: var(--sp-8) var(--sp-4);
 }
