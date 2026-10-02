@@ -26,7 +26,7 @@
 | A2 | 选择与依赖自洽 | `verify.mjs` 断言 `plan.deps` = 各选项声明依赖的去重并集 |
 | A3 | 引导器文件残留 0 | `verify.mjs` 逐项 `existsSync`；异常项计数为 0 |
 | A4 | 引导器目录已清空 | `test ! -d app/pages/setup && test ! -d app/components/wizard && test ! -d server/api/wizard` |
-| A5 | 无引导期专用依赖 | `node -e "const p=require('./package.json');if((p.dependencies['h3'])||(p.devDependencies?.unbuild))process.exit(1)"` |
+| A5 | 无引导期专用依赖 | `node -e "const p=require('./package.json');if((p.dependencies['h3'])\|\|(p.devDependencies?.unbuild))process.exit(1)"` |
 | A6 | marker 区间成对且已填充 | `grep -c 'TEMPLATE:MODULES' nuxt.config.ts` 为 2；内容与 `plan.modules` 一致 |
 | A7 | 样式入口与选择一致 | `plan.cssEntries` 全部出现在 `TEMPLATE:CSS` 区间内 |
 | A8 | 首页已替换 | `! grep -q "navigateTo('/setup')" app/pages/index.vue` |
