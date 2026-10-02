@@ -94,6 +94,7 @@ Wasm 是什么、适合承担哪类计算，见 [WebAssembly · 概述](../../..
 
 - 渲染性能实践：[运行时优化](../../../Others/PerformanceOptimization/Runtime/index.md)
 - 两条绘图支线：[数据可视化 · 渲染路线：Canvas / SVG / WebGL](../../../DataVisualization/Rendering/index.md)——Canvas 走「位图光栅化」、SVG 走「DOM + 矢量绘制」、WebGL 走「GPU 并行」，与本页的渲染管线分工：本页讲管线怎么走，那一页讲图表场景怎么选支线；规模再往上（十万点级）的取舍见 [数据可视化 · 大数据量下的性能工程](../../../DataVisualization/LargeData/index.md)。
+- GPU 那条支线怎么落地：[WebGL 与 Three.js](../../../WebGL/index.md)——上面这条 DOM→CSSOM→渲染树→布局→绘制→合成 的链路走的是**浏览器的合成器**；WebGL 画布内部是**另一条完全独立的管线**（顶点 → 图元装配 → 光栅化 → 片元着色），由 GPU 直接执行。想分清这两条线，见 [WebGL 基础与渲染管线](../../../WebGL/Overview/index.md)。
 - 渲染树构建（Critical Rendering Path）：https://web.dev/articles/critical-rendering-path/render-tree-construction
 - 渲染性能优化：https://web.dev/learn/performance/rendering
 - 强制同步布局说明：https://web.dev/articles/avoid-large-complex-layouts-and-layout-thrash

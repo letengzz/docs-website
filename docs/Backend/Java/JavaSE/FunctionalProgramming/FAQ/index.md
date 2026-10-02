@@ -2,6 +2,8 @@
 
 汇总 Java 函数式编程中最常遇到的疑问与坑，覆盖 Stream 使用、性能、并行、Optional 与工程实践，方便快速查阅。
 
+![函数式编程常见问题的判断要点](../assets/functional-faq.svg)
+
 ## 基础类
 
 ### Lambda 和匿名内部类有什么区别？

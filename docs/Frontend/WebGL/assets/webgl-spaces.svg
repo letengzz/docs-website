@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400" role="img" aria-label="坐标空间五连变换">
+  <rect width="880" height="400" fill="#ffffff"/>
+  <text x="440" y="30" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#0f172a">坐标空间五连变换：一个顶点如何走到屏幕上</text>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5">
+    <rect x="24" y="52" width="150" height="72" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="99" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">模型空间</text>
+    <text x="99" y="92" text-anchor="middle" font-size="10.5" fill="#64748b">Local / Object</text>
+    <text x="99" y="110" text-anchor="middle" font-size="10.5" fill="#64748b">几何体自己的原点</text>
+
+    <rect x="202" y="52" width="150" height="72" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="277" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e40af">世界空间</text>
+    <text x="277" y="92" text-anchor="middle" font-size="10.5" fill="#64748b">World</text>
+    <text x="277" y="110" text-anchor="middle" font-size="10.5" fill="#64748b">所有物体统一参考系</text>
+
+    <rect x="380" y="52" width="150" height="72" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="455" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e40af">观察空间</text>
+    <text x="455" y="92" text-anchor="middle" font-size="10.5" fill="#64748b">View / Eye</text>
+    <text x="455" y="110" text-anchor="middle" font-size="10.5" fill="#64748b">以相机为原点</text>
+
+    <rect x="558" y="52" width="150" height="72" rx="8" fill="#f5f3ff" stroke="#7c3aed"/>
+    <text x="633" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5b21b6">裁剪空间</text>
+    <text x="633" y="92" text-anchor="middle" font-size="10.5" fill="#64748b">Clip Space</text>
+    <text x="633" y="110" text-anchor="middle" font-size="10.5" fill="#64748b">齐次坐标 w 分量</text>
+
+    <rect x="736" y="52" width="120" height="72" rx="8" fill="#ecfdf5" stroke="#0d9488"/>
+    <text x="796" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0f766e">屏幕空间</text>
+    <text x="796" y="92" text-anchor="middle" font-size="10.5" fill="#64748b">Screen</text>
+    <text x="796" y="110" text-anchor="middle" font-size="10.5" fill="#64748b">像素坐标</text>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <path d="M174 88 H202"/><path d="M352 88 H380"/><path d="M530 88 H558"/><path d="M708 88 H736"/>
+  </g>
+  <g fill="#94a3b8">
+    <path d="M200 88 l-7 -4 v8 z"/><path d="M378 88 l-7 -4 v8 z"/><path d="M556 88 l-7 -4 v8 z"/><path d="M734 88 l-7 -4 v8 z"/>
+  </g>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#b45309" text-anchor="middle">
+    <text x="188" y="142">× modelMatrix</text>
+    <text x="366" y="142">× viewMatrix</text>
+    <text x="545" y="142">× projectionMatrix</text>
+    <text x="722" y="142">透视除法 + 视口</text>
+  </g>
+  <text x="440" y="166" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748b">四个矩阵在着色器里是预先算好的 uniform，每个顶点只做三次矩阵乘法</text>
+
+  <rect x="24" y="192" width="410" height="186" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="44" y="216" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" font-weight="700" fill="#334155">顶点着色器里最经典的三行</text>
+  <text x="44" y="244" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11.5" fill="#1e40af">gl_Position = projectionMatrix</text>
+  <text x="44" y="262" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11.5" fill="#1e40af">              * modelViewMatrix</text>
+  <text x="44" y="280" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11.5" fill="#1e40af">              * vec4(position, 1.0);</text>
+  <text x="44" y="308" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">position 是 attribute（模型空间顶点）</text>
+  <text x="44" y="328" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">modelViewMatrix 是 three.js 预乘好的</text>
+  <text x="44" y="348" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">写法等价于 视图矩阵 × 模型矩阵</text>
+  <text x="44" y="368" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748b">（先摆到世界，再换到相机视角）</text>
+
+  <rect x="446" y="192" width="410" height="186" rx="10" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="466" y="216" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c">四个最容易搞错的点</text>
+  <text x="466" y="242" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">1. WebGL 的 NDC 是右手系，x/y ∈ [-1,1]，z ∈ [-1,1]</text>
+  <text x="466" y="264" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">2. 贴图 v 轴与图片 y 轴方向相反，需 flipY 处理</text>
+  <text x="466" y="286" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">3. 屏幕 y 轴向下，NDC y 轴向上，换算时要取反</text>
+  <text x="466" y="308" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">4. 近平面太近会 z-fighting，太远会浪费深度精度</text>
+  <text x="466" y="334" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">→ 前三点几乎每个人都会踩一次，第四点在做大场景</text>
+  <text x="466" y="354" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">   时才暴露（默认 near=0.1 / far=2000 已够大多数场景）</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420" role="img" aria-label="PBR 材质与光照">
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="30" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#0f172a">PBR 材质：把「长什么样」拆成四组参数</text>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="24" y="52" width="412" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="44" y="76" font-size="12.5" font-weight="700" fill="#334155">MeshStandardMaterial / MeshPhysicalMaterial 的核心四组</text>
+    <text x="44" y="102" font-size="11.5" fill="#1e40af">① 基础色：color / map</text>
+    <text x="56" y="120" font-size="11" fill="#64748b">漫反射颜色，决定「这是什么颜色的东西」</text>
+    <text x="44" y="144" font-size="11.5" fill="#1e40af">② 金属度与粗糙度：metalness / roughness</text>
+    <text x="56" y="162" font-size="11" fill="#64748b">metalness 1 = 金属（无漫反射，只有反射与环境），0 = 电介质</text>
+    <text x="56" y="180" font-size="11" fill="#64748b">roughness 0 = 镜面，1 = 全漫反射 —— 这两个参数决定「什么材质」</text>
+
+    <rect x="444" y="52" width="412" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="464" y="76" font-size="12.5" font-weight="700" fill="#334155">③ 细节贴图（按用途分工，可叠加）</text>
+    <text x="464" y="102" font-size="11" fill="#475569">normalMap —— 逐像素法线扰动，做凹凸细节而不加面数</text>
+    <text x="464" y="122" font-size="11" fill="#475569">roughnessMap / metalnessMap —— 把上述两个标量变成贴图</text>
+    <text x="464" y="142" font-size="11" fill="#475569">aoMap —— 环境光遮蔽，压暗缝隙（需第二套 UV）</text>
+    <text x="464" y="162" font-size="11" fill="#475569">emissiveMap —— 自发光，做屏幕/灯带</text>
+    <text x="464" y="182" font-size="11" fill="#64748b">④ 环境：envMap —— 没有它，金属会是一团黑</text>
+  </g>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="24" y="220" width="412" height="176" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="44" y="244" font-size="12.5" font-weight="700" fill="#1e40af">五类光源：先用够用的一种，再加</text>
+    <text x="44" y="270" font-size="11" fill="#475569">AmbientLight —— 均匀底色，无方向、无阴影，只用来「兜底提亮」</text>
+    <text x="44" y="292" font-size="11" fill="#475569">HemisphereLight —— 天空色 + 地面色，室外场景的廉价环境光</text>
+    <text x="44" y="314" font-size="11" fill="#475569">DirectionalLight —— 平行光（太阳），有阴影，需要圈定 shadow camera</text>
+    <text x="44" y="336" font-size="11" fill="#475569">PointLight / SpotLight —— 点光/聚光，有 distance 与 decay 衰减</text>
+    <text x="44" y="358" font-size="11" fill="#475569">RectAreaLight —— 面光源（灯箱），只对 Standard/Physical 生效</text>
+    <text x="44" y="382" font-size="11" fill="#b45309">经验：一盏 DirectionalLight + 一盏 Ambient/Hemisphere 就能撑起多数场景</text>
+
+    <rect x="444" y="220" width="412" height="176" rx="10" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="464" y="244" font-size="12.5" font-weight="700" fill="#b91c1c">阴影不出现？按这个顺序查</text>
+    <text x="464" y="270" font-size="11" fill="#475569">1. 光源 shadow 开了吗：light.castShadow = true</text>
+    <text x="464" y="292" font-size="11" fill="#475569">2. 投影物与接收面：castShadow / receiveShadow 都要开</text>
+    <text x="464" y="314" font-size="11" fill="#475569">3. shadow camera 的范围圈住了物体吗（平行光必查）</text>
+    <text x="464" y="336" font-size="11" fill="#475569">4. shadow map 分辨率与 bias：太糊调大，有条纹调 bias</text>
+    <text x="464" y="358" font-size="11" fill="#475569">5. 接收面材质是 Basic 吗 —— Basic 不参与光照，也不接收阴影</text>
+    <text x="464" y="382" font-size="11" fill="#b45309">按这个顺序查，五分钟内必定位；乱调参数会越调越乱</text>
+  </g>
+</svg>

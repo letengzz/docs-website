@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400" role="img" aria-label="3D 排障决策树">
+  <rect width="880" height="400" fill="#ffffff"/>
+  <text x="440" y="30" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#0f172a">排障决策树：先分类，再定位</text>
+
+  <rect x="330" y="52" width="220" height="40" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="440" y="77" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" font-weight="700" fill="#1e40af">现象是什么？</text>
+
+  <g stroke="#94a3b8" stroke-width="1.5" fill="none">
+    <path d="M400 92 V112 H120 V132"/>
+    <path d="M440 92 V132"/>
+    <path d="M480 92 V112 H760 V132"/>
+  </g>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="40" y="132" width="200" height="40" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="140" y="157" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c">全黑 / 全白</text>
+    <rect x="336" y="132" width="208" height="40" rx="8" fill="#fffbeb" stroke="#d97706"/>
+    <text x="440" y="157" text-anchor="middle" font-size="12" font-weight="700" fill="#b45309">掉帧 / 卡顿</text>
+    <rect x="650" y="132" width="220" height="40" rx="8" fill="#f5f3ff" stroke="#7c3aed"/>
+    <text x="760" y="157" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">画面不对 / 发灰发白</text>
+
+    <rect x="40" y="192" width="200" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="56" y="214" font-size="11" fill="#475569">1. 相机在物体里面或看不到物体？</text>
+    <text x="56" y="234" font-size="11" fill="#475569">2. 忘了 scene.add()？</text>
+    <text x="56" y="254" font-size="11" fill="#475569">3. 材质用了自定义着色器且编译失败？（看 console）</text>
+    <text x="56" y="274" font-size="11" fill="#475569">4. 光源全没了（Basic 材质除外）？</text>
+    <text x="56" y="294" font-size="11" fill="#475569">5. canvas 尺寸为 0？容器 display:none？</text>
+    <text x="56" y="314" font-size="11" fill="#475569">6. setAnimationLoop 真的跑起来了吗？</text>
+    <text x="56" y="338" font-size="11" fill="#b91c1c">顺序照查，六个里必有一个</text>
+    <text x="56" y="358" font-size="11" fill="#64748b">（第 5 条最隐蔽：父容器没高度时画布高度为 0）</text>
+
+    <rect x="336" y="192" width="208" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="352" y="214" font-size="11" fill="#475569">1. draw call 数是多少？（info.render.calls）</text>
+    <text x="352" y="236" font-size="11" fill="#475569">2. 像素比是不是设成了 3~4？</text>
+    <text x="352" y="258" font-size="11" fill="#475569">3. 阴影贴图分辨率多大？几盏灯投影？</text>
+    <text x="352" y="280" font-size="11" fill="#475569">4. 后处理链路过长？</text>
+    <text x="352" y="302" font-size="11" fill="#475569">5. 每帧在 new 对象（Vec3/Material）？</text>
+    <text x="352" y="326" font-size="11" fill="#b45309">先量帧时间，再看分布</text>
+    <text x="352" y="346" font-size="11" fill="#64748b">平均 16ms 但 P99 60ms → 找尖刺而非优化均值</text>
+
+    <rect x="650" y="192" width="220" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="666" y="214" font-size="11" fill="#475569">1. 颜色贴图设了 SRGBColorSpace 吗？</text>
+    <text x="666" y="236" font-size="11" fill="#475569">2. 法线贴图误设成 sRGB 了吗？</text>
+    <text x="666" y="258" font-size="11" fill="#475569">3. 色调映射开了吗？曝光合适吗？</text>
+    <text x="666" y="280" font-size="11" fill="#475569">4. 金属材质没有 envMap？</text>
+    <text x="666" y="302" font-size="11" fill="#475569">5. 窗口缩放后有没有更新 aspect？</text>
+    <text x="666" y="326" font-size="11" fill="#5b21b6">颜色类问题九成在色彩空间</text>
+    <text x="666" y="346" font-size="11" fill="#64748b">几何类问题九成在投影矩阵</text>
+  </g>
+
+  <rect x="40" y="382" width="830" height="14" rx="4" fill="#f1f5f9"/>
+  <text x="455" y="393" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#64748b">先确认「是渲染没发生，还是渲染发生了但结果不对」——这一步就能砍掉一半的排查范围</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" width="880" height="360" role="img" aria-label="色彩管理管线">
+  <rect width="880" height="360" fill="#ffffff"/>
+  <text x="440" y="30" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#0f172a">色彩管理：贴图发灰、模型发白，九成出在这一条链上</text>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5">
+    <rect x="24" y="56" width="180" height="76" rx="8" fill="#f8fafc" stroke="#64748b"/>
+    <text x="114" y="80" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">贴图文件</text>
+    <text x="114" y="99" text-anchor="middle" font-size="10.5" fill="#64748b">颜色贴图是 sRGB 编码</text>
+    <text x="114" y="117" text-anchor="middle" font-size="10.5" fill="#64748b">法线/粗糙度是线性数据</text>
+
+    <rect x="234" y="56" width="180" height="76" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="324" y="80" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e40af">解码 → 线性工作空间</text>
+    <text x="324" y="99" text-anchor="middle" font-size="10.5" fill="#64748b">colorSpace = SRGBColorSpace</text>
+    <text x="324" y="117" text-anchor="middle" font-size="10.5" fill="#64748b">法线/数据贴图保持 NoColorSpace</text>
+
+    <rect x="444" y="56" width="180" height="76" rx="8" fill="#ecfdf5" stroke="#0d9488"/>
+    <text x="534" y="80" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0f766e">线性空间里算光照</text>
+    <text x="534" y="99" text-anchor="middle" font-size="10.5" fill="#64748b">乘法、混合、光照叠加</text>
+    <text x="534" y="117" text-anchor="middle" font-size="10.5" fill="#64748b">只在这一步做数学才是对的</text>
+
+    <rect x="654" y="56" width="202" height="76" rx="8" fill="#f5f3ff" stroke="#7c3aed"/>
+    <text x="755" y="80" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5b21b6">色调映射 → 输出 sRGB</text>
+    <text x="755" y="99" text-anchor="middle" font-size="10.5" fill="#64748b">toneMapping + outputColorSpace</text>
+    <text x="755" y="117" text-anchor="middle" font-size="10.5" fill="#64748b">默认 SRGBColorSpace</text>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <path d="M204 94 H234"/><path d="M414 94 H444"/><path d="M624 94 H654"/>
+  </g>
+  <g fill="#94a3b8">
+    <path d="M232 94 l-7 -4 v8 z"/><path d="M442 94 l-7 -4 v8 z"/><path d="M652 94 l-7 -4 v8 z"/>
+  </g>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="24" y="152" width="412" height="88" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="44" y="176" font-size="12.5" font-weight="700" fill="#b91c1c">症状 → 病因对照</text>
+    <text x="44" y="200" font-size="11" fill="#475569">贴图发灰、发白、对比度偏低 → 颜色贴图忘了设 SRGBColorSpace</text>
+    <text x="44" y="220" font-size="11" fill="#475569">法线贴图设成 SRGB → 光照方向全错，表面像被腐蚀</text>
+    <text x="44" y="238" font-size="11" fill="#475569">暗部死黑、亮部过曝 → 未开色调映射或曝光值不合适</text>
+
+    <rect x="444" y="152" width="412" height="88" rx="8" fill="#fffbeb" stroke="#d97706"/>
+    <text x="464" y="176" font-size="12.5" font-weight="700" fill="#b45309">一条判据分清该设哪个</text>
+    <text x="464" y="200" font-size="11" fill="#475569">问一句：这张图是「给人看的颜色」还是「给机器算的数据」？</text>
+    <text x="464" y="220" font-size="11" fill="#475569">颜色/自发光贴图 → 给人看 → SRGBColorSpace</text>
+    <text x="464" y="238" font-size="11" fill="#475569">法线/粗糙度/金属度/AO → 给机器算 → NoColorSpace（默认）</text>
+  </g>
+
+  <rect x="24" y="256" width="832" height="80" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="44" y="280" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" font-weight="700" fill="#334155">最小正确写法</text>
+  <text x="44" y="303" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11.5" fill="#1e40af">renderer.outputColorSpace = THREE.SRGBColorSpace;   // 默认已是 sRGB，确认没被改掉</text>
+  <text x="44" y="322" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11.5" fill="#1e40af">colorMap.colorSpace = THREE.SRGBColorSpace;         // 只给颜色贴图设，数据贴图不设</text>
+</svg>

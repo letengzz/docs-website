@@ -60,7 +60,7 @@ public class SecurityConfiguration {
 
 并且为了防止会话固定问题，在登录之后，JSESSIONID会得到重新分配：
 
-![image-20230703192441811](https://s2.loli.net/2023/07/03/mQpWZMljCt2XTd7.png)
+![image-20230703192441811](../../../assets/springsecurity-authentication-01.png)
 
 ### 退出登录
 

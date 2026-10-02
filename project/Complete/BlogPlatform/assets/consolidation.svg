@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 486" width="900" height="486" role="img" aria-label="判据收口与分类标签联调">
+  <rect width="900" height="486" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#0f172a">判据收口与分类标签联调：第 2 周的两件收尾事</text>
+  <text x="450" y="50" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748b">一条判据只留一处，一个数字只算一处——重复本身就是缺陷，不是冗余保险</text>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <!-- ===== 上半：判据收口 ===== -->
+    <text x="24" y="82" font-size="13" font-weight="700" fill="#334155">① 判据收口：同一判据只留一处</text>
+
+    <!-- 左：收口前 -->
+    <rect x="24" y="94" width="330" height="126" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="189" y="116" text-anchor="middle" font-size="12" font-weight="700" fill="#b45309">收口前（第 103 天上移之后）</text>
+
+    <rect x="40" y="126" width="298" height="38" rx="6" fill="#ffffff" stroke="#fcd34d"/>
+    <text x="52" y="142" font-size="11" font-weight="700" fill="#92400e">mvn test</text>
+    <text x="52" y="157" font-size="10.5" fill="#64748b">语义与分支：渲染 / 状态机 / 401·403 / 可见性 / 计数 —— 32 项</text>
+
+    <rect x="40" y="170" width="298" height="38" rx="6" fill="#ffffff" stroke="#fcd34d"/>
+    <text x="52" y="186" font-size="11" font-weight="700" fill="#92400e">smoke 脚本</text>
+    <text x="52" y="201" font-size="10.5" fill="#dc2626">同样这 32 项还留着 —— 同一判据存在于两处</text>
+
+    <!-- 箭头 -->
+    <path d="M366 157 L404 157" stroke="#94a3b8" stroke-width="2" fill="none"/>
+    <path d="M398 151 L408 157 L398 163 Z" fill="#94a3b8"/>
+    <text x="385" y="146" text-anchor="middle" font-size="10.5" font-weight="700" fill="#475569">删重复</text>
+
+    <!-- 右：收口后 -->
+    <rect x="420" y="94" width="456" height="126" rx="10" fill="#ecfdf5" stroke="#0d9488"/>
+    <text x="648" y="116" text-anchor="middle" font-size="12" font-weight="700" fill="#0f766e">收口后</text>
+
+    <rect x="436" y="126" width="424" height="38" rx="6" fill="#ffffff" stroke="#5eead4"/>
+    <text x="448" y="142" font-size="11" font-weight="700" fill="#0f766e">mvn test —— 唯一归属</text>
+    <text x="448" y="157" font-size="10.5" fill="#64748b">语义与分支；进 PR 门禁；用例数基线防止被删减</text>
+
+    <rect x="436" y="170" width="424" height="38" rx="6" fill="#ffffff" stroke="#5eead4"/>
+    <text x="448" y="186" font-size="11" font-weight="700" fill="#0f766e">smoke —— 只留不可上移的部分</text>
+    <text x="448" y="201" font-size="10.5" fill="#64748b">跨请求时序（缓存收敛）+ 端到端编排（发文→读者可见）</text>
+
+    <!-- ===== 下半：分类与标签 ===== -->
+    <text x="24" y="256" font-size="13" font-weight="700" fill="#334155">② 分类与标签：同一数字只算一处</text>
+
+    <text x="24" y="278" font-size="10.5" fill="#64748b">收口前：三处各算一遍，口径随时可能分叉</text>
+
+    <rect x="24" y="288" width="250" height="38" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="36" y="304" font-size="10.5" font-weight="700" fill="#334155">管理端分类列表页</text>
+    <text x="36" y="319" font-size="10" fill="#64748b">自己数一遍：全部状态都算</text>
+
+    <rect x="24" y="332" width="250" height="38" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="36" y="348" font-size="10.5" font-weight="700" fill="#334155">读者端筛选页</text>
+    <text x="36" y="363" font-size="10" fill="#64748b">自己数一遍：只数可见的</text>
+
+    <rect x="24" y="376" width="250" height="38" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="36" y="392" font-size="10.5" font-weight="700" fill="#334155">文章详情侧栏</text>
+    <text x="36" y="407" font-size="10" fill="#64748b">自己数一遍：又一套写法</text>
+
+    <path d="M286 351 L308 351" stroke="#94a3b8" stroke-width="2" fill="none"/>
+    <path d="M302 345 L312 351 L302 357 Z" fill="#94a3b8"/>
+
+    <rect x="322" y="288" width="554" height="126" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="599" y="310" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">收口后：服务端单一口径</text>
+    <text x="338" y="332" font-size="10.5" fill="#1e3a8a">· countPublished() —— 只计 PUBLISHED，DRAFT / OFFLINE / DELETED 一律不计</text>
+    <text x="338" y="351" font-size="10.5" fill="#1e3a8a">· 写入同事务更新计数 + 提交后失效缓存（复用第 102 天的时序机制）</text>
+    <text x="338" y="370" font-size="10.5" fill="#1e3a8a">· 前端只做展示，不再自己数——三个页面共用同一个接口出参</text>
+    <text x="338" y="389" font-size="10.5" fill="#1e3a8a">· 空分类照样返回（count = 0），是否隐藏由各端自行决定</text>
+    <text x="338" y="406" font-size="10.5" font-weight="700" fill="#1e40af">效果：改一次口径，只改一个地方</text>
+  </g>
+
+  <rect x="24" y="430" width="852" height="40" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="450" y="455" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" font-weight="700" fill="#334155">两件事共用同一个判据：重复即缺陷——先删重复，再补缺口，最后才谈「加测试」</text>
+</svg>

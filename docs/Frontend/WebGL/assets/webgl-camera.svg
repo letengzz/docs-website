@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" width="880" height="380" role="img" aria-label="透视相机与正交相机对比">
+  <rect width="880" height="380" fill="#ffffff"/>
+  <text x="440" y="30" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#0f172a">相机：视锥决定「看得见什么」，投影决定「怎么压缩到屏幕」</text>
+
+  <g>
+    <rect x="24" y="52" width="410" height="200" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="229" y="76" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1e40af">PerspectiveCamera（透视）</text>
+    <path d="M60 152 L150 92 L150 212 z" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="104" y="156" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#1e40af">相机</text>
+    <line x1="150" y1="92" x2="150" y2="212" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="196" y="110" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569">near 平面</text>
+    <line x1="380" y1="52" x2="380" y2="252" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="352" y="270" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569">far 平面</text>
+    <text x="229" y="238" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569">参数：fov / aspect / near / far</text>
+    <text x="229" y="284" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#b45309">近大远小 —— 默认选择</text>
+    <text x="229" y="302" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#64748b">适合：绝大多数 3D 场景、第一人称、产品展示</text>
+  </g>
+
+  <g>
+    <rect x="446" y="52" width="410" height="200" rx="10" fill="#f8fafc" stroke="#0d9488" stroke-width="1.5"/>
+    <text x="651" y="76" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#0f766e">OrthographicCamera（正交）</text>
+    <rect x="482" y="92" width="230" height="120" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.5"/>
+    <text x="506" y="156" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#0f766e">相机</text>
+    <line x1="482" y1="92" x2="482" y2="212" stroke="#0d9488" stroke-width="1.5"/>
+    <line x1="712" y1="92" x2="712" y2="212" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="597" y="238" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569">参数：left / right / top / bottom / near / far</text>
+    <text x="597" y="284" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#b45309">远近同大 —— 尺寸可度量</text>
+    <text x="597" y="302" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#64748b">适合：2.5D 图表、建筑/机械制图、游戏小地图</text>
+  </g>
+
+  <rect x="24" y="326" width="832" height="38" rx="8" fill="#fffbeb" stroke="#d97706"/>
+  <text x="440" y="350" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#b45309">窗口一旦缩放，必须同时更新 aspect 并调用 camera.updateProjectionMatrix()，否则画面被拉伸——这是最高频的「看着就不对」问题之一</text>
+</svg>

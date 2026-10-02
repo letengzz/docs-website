@@ -4,6 +4,8 @@
 
 Java IO/NIO 是处理文件读写、网络传输与数据流的核心能力。传统 `java.io` 以流（Stream）为抽象，NIO（New IO）以通道与缓冲区为抽象，是后端开发中文件处理、网络编程、高并发通信的必修内容。
 
+![Java IO 流体系与 NIO 对照](./assets/io-stream-hierarchy.svg)
+
 本专题默认基于 **Java 25 LTS**（2025 年 9 月发布的最新长期支持版本），涉及大版本差异时在文中标注。
 
 - [文件 IO：File 与 Path/Files](FileIO/index.md)

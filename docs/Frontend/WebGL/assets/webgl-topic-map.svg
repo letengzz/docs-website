@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" role="img" aria-label="WebGL 与 Three.js 专题地图">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <rect x="300" y="14" width="300" height="52" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="450" y="38" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#1e3a8a">WebGL 与 Three.js</text>
+  <text x="450" y="57" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569">从 GPU 原理到可交付的 3D 场景</text>
+
+  <line x1="450" y1="66" x2="450" y2="92" stroke="#94a3b8" stroke-width="1.5"/>
+  <rect x="150" y="92" width="600" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="450" y="114" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#334155">先把「数据怎么变成屏幕上的像素」讲清楚，再谈场景、材质、动画与优化</text>
+
+  <line x1="450" y1="126" x2="450" y2="146" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="105" y1="146" x2="795" y2="146" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <line x1="105" y1="146" x2="105" y2="168" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="20" y="168" width="170" height="52" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="105" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">WebGL 基础与管线</text>
+    <text x="105" y="209" text-anchor="middle" font-size="11" fill="#6b7280">GPU 分工 / 坐标空间 / 着色器</text>
+
+    <line x1="280" y1="146" x2="280" y2="168" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="195" y="168" width="170" height="52" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="280" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">场景与对象模型</text>
+    <text x="280" y="209" text-anchor="middle" font-size="11" fill="#6b7280">Scene / Camera / 对象树</text>
+
+    <line x1="455" y1="146" x2="455" y2="168" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="370" y="168" width="170" height="52" rx="10" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.5"/>
+    <text x="455" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">材质、光照与纹理</text>
+    <text x="455" y="209" text-anchor="middle" font-size="11" fill="#6b7280">PBR / 阴影 / 色彩管理</text>
+
+    <line x1="630" y1="146" x2="630" y2="168" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="545" y="168" width="170" height="52" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+    <text x="630" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="#b45309">动画与交互</text>
+    <text x="630" y="209" text-anchor="middle" font-size="11" fill="#6b7280">帧循环 / 控制器 / 拾取</text>
+
+    <line x1="795" y1="146" x2="795" y2="168" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="710" y="168" width="170" height="52" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="795" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">着色器与自定义材质</text>
+    <text x="795" y="209" text-anchor="middle" font-size="11" fill="#6b7280">GLSL / TSL / 后处理</text>
+  </g>
+
+  <line x1="450" y1="220" x2="450" y2="242" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="200" y1="242" x2="700" y2="242" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <line x1="200" y1="242" x2="200" y2="266" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="115" y="266" width="170" height="52" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+    <text x="200" y="288" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">模型与资源管线</text>
+    <text x="200" y="307" text-anchor="middle" font-size="11" fill="#6b7280">glTF / Draco / KTX2 / dispose</text>
+
+    <line x1="450" y1="242" x2="450" y2="266" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="365" y="266" width="170" height="52" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="450" y="288" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">性能与 WebGPU 边界</text>
+    <text x="450" y="307" text-anchor="middle" font-size="11" fill="#6b7280">draw call / 实例化 / 迁移判据</text>
+
+    <line x1="700" y1="242" x2="700" y2="266" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="615" y="266" width="170" height="52" rx="10" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.5"/>
+    <text x="700" y="288" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">实战与常见问题</text>
+    <text x="700" y="307" text-anchor="middle" font-size="11" fill="#6b7280">可运行看板 / 排障决策树</text>
+  </g>
+
+  <rect x="60" y="344" width="780" height="96" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="5 4"/>
+  <text x="80" y="368" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" font-weight="700" fill="#334155">分工边界（写死在页面上，四者互不替代）</text>
+  <text x="80" y="391" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">· 数据可视化 · 渲染路线 —— 讲「三条路线怎么选」；本专题讲「选了 WebGL 之后怎么写」</text>
+  <text x="80" y="409" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">· 浏览器渲染原理 —— 讲 HTML/CSS 到像素；本专题讲 GPU 管线与 3D 场景</text>
+  <text x="80" y="427" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">· WebAssembly / 前端性能优化 —— 讲算法级加速与工程级加载；本专题讲渲染帧与显存</text>
+</svg>

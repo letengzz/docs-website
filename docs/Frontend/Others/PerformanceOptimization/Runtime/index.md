@@ -266,3 +266,4 @@ self.onmessage = async (e) => {
 - [web.dev：布局抖动](https://web.dev/articles/avoid-large-complex-layouts-and-layout-thrashings)
 - [MDN：Web Workers](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API)
 - 特例实战：[数据可视化 · 大数据量下的性能工程](../../../DataVisualization/LargeData/index.md)——十万级数据点的降采样、动画取舍与 WebGL 方案，是本页「长任务与帧率」方法论的图表场景落地；大屏内存泄漏（实例/定时器未释放）的排查见 [数据可视化 · 常见问题与最佳实践](../../../DataVisualization/FAQ/index.md)。
+- 另一条帧预算线：[WebGL 与 Three.js · 性能与 WebGPU 边界](../../../WebGL/Performance/index.md)——本页讲的是**主线程**上的长任务、布局与内存；WebGL 页讲的是 **GPU 侧**的 draw call、三角形数与显存，两者共同决定 16.7ms 的帧预算。「平均 FPS 会撒谎、要看 P95 与 1% low」的判据也补在那里。

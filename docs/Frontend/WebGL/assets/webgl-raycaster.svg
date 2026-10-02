@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" width="880" height="380" role="img" aria-label="射线拾取与 NDC 换算">
+  <rect width="880" height="380" fill="#ffffff"/>
+  <text x="440" y="30" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#0f172a">鼠标拾取：从二维屏幕坐标到三维射线</text>
+
+  <rect x="40" y="52" width="380" height="212" rx="8" fill="#f8fafc" stroke="#64748b"/>
+  <rect x="56" y="68" width="348" height="180" fill="#ffffff" stroke="#cbd5e1"/>
+  <line x1="230" y1="68" x2="230" y2="248" stroke="#e2e8f0"/>
+  <line x1="56" y1="158" x2="404" y2="158" stroke="#e2e8f0"/>
+  <circle cx="300" cy="112" r="5" fill="#dc2626"/>
+  <text x="312" y="108" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#b91c1c">鼠标点 (clientX, clientY)</text>
+  <text x="70" y="88" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#94a3b8">(0, 0)</text>
+  <text x="70" y="240" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#94a3b8">canvas 左上角为原点，y 轴向下</text>
+
+  <path d="M620 158 L300 112" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="5 4" fill="none"/>
+  <path d="M620 130 L300 104" stroke="#0d9488" stroke-width="1.5" fill="none"/>
+  <path d="M620 186 L300 120" stroke="#0d9488" stroke-width="1.5" fill="none"/>
+  <circle cx="620" cy="158" r="6" fill="#2563eb"/>
+  <text x="634" y="162" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#1e40af">相机位置</text>
+  <text x="500" y="100" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f766e">射线（Raycaster）</text>
+  <text x="440" y="286" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#64748b">蓝色虚线就是射线，从相机出发穿过鼠标位置，与场景求交</text>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="452" y="52" width="398" height="212" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="472" y="76" font-size="12.5" font-weight="700" fill="#1e40af">NDC 换算四步（顺序不能换）</text>
+    <text x="472" y="102" font-size="11.5" fill="#475569">1. 取鼠标相对 canvas 的坐标（要减 rect.left / rect.top）</text>
+    <text x="484" y="120" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1e40af">x = event.clientX - rect.left</text>
+    <text x="472" y="144" font-size="11.5" fill="#475569">2. 归一化到 [-1, 1]，且 y 轴要翻转</text>
+    <text x="484" y="162" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1e40af">ndc.x = (x / rect.width) * 2 - 1</text>
+    <text x="484" y="180" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1e40af">ndc.y = -(y / rect.height) * 2 + 1</text>
+    <text x="472" y="204" font-size="11.5" fill="#475569">3. 用 NDC 设置射线：raycaster.setFromCamera(ndc, camera)</text>
+    <text x="472" y="226" font-size="11.5" fill="#475569">4. 求交：intersects = raycaster.intersectObjects(list, true)</text>
+    <text x="472" y="250" font-size="11" fill="#b45309">返回数组已按距离升序，取 [0] 通常是最近的那个</text>
+  </g>
+
+  <rect x="40" y="286" width="810" height="72" rx="10" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="60" y="310" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c">四个高频坑</text>
+  <text x="60" y="332" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">① 忘了减 rect 偏移 → 页面有滚动或画布不贴边时，命中位置整体偏移</text>
+  <text x="60" y="350" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">② y 没取反 → 鼠标在上半屏却命中下半屏的物体；③ 每帧 new Raycaster → 建议复用同一个实例</text>
+</svg>

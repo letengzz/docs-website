@@ -708,3 +708,20 @@ export const FrontWebAssembly = [
         ],
     },
 ];
+export const FrontWebGL = [
+    {
+        text: "WebGL 与 Three.js",
+        link: "/docs/Frontend/WebGL/index.md",
+        items: [
+            { text: "WebGL 基础与渲染管线", link: "/docs/Frontend/WebGL/Overview/index.md" },
+            { text: "场景与对象模型", link: "/docs/Frontend/WebGL/ThreeCore/index.md" },
+            { text: "材质、光照与纹理", link: "/docs/Frontend/WebGL/Material/index.md" },
+            { text: "动画与交互", link: "/docs/Frontend/WebGL/Animation/index.md" },
+            { text: "着色器与自定义材质", link: "/docs/Frontend/WebGL/Shader/index.md" },
+            { text: "模型与资源管线", link: "/docs/Frontend/WebGL/AssetPipeline/index.md" },
+            { text: "性能与 WebGPU 边界", link: "/docs/Frontend/WebGL/Performance/index.md" },
+            { text: "实战：可运行的数据可视化场景", link: "/docs/Frontend/WebGL/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/WebGL/FAQ/index.md" },
+        ],
+    },
+];

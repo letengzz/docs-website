@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" width="880" height="380" role="img" aria-label="动画帧循环">
+  <rect width="880" height="380" fill="#ffffff"/>
+  <text x="440" y="30" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#0f172a">帧循环：所有动画都长这个样子</text>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5">
+    <rect x="40" y="58" width="190" height="60" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="135" y="82" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e40af">① 取时间差 delta</text>
+    <text x="135" y="101" text-anchor="middle" font-size="10.5" fill="#64748b">timer.getDelta()</text>
+
+    <rect x="270" y="58" width="190" height="60" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="365" y="82" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e40af">② 更新状态</text>
+    <text x="365" y="101" text-anchor="middle" font-size="10.5" fill="#64748b">位置 / 动画混合器 / 控制器</text>
+
+    <rect x="500" y="58" width="190" height="60" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="595" y="82" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e40af">③ 渲染</text>
+    <text x="595" y="101" text-anchor="middle" font-size="10.5" fill="#64748b">renderer.render(scene, camera)</text>
+
+    <rect x="730" y="58" width="120" height="60" rx="8" fill="#ecfdf5" stroke="#0d9488"/>
+    <text x="790" y="82" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0f766e">④ 下一帧</text>
+    <text x="790" y="101" text-anchor="middle" font-size="10.5" fill="#64748b">setAnimationLoop</text>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <path d="M230 88 H270"/><path d="M460 88 H500"/><path d="M690 88 H730"/>
+    <path d="M790 118 V146 H135 V118" stroke-dasharray="6 4"/>
+  </g>
+  <g fill="#94a3b8">
+    <path d="M268 88 l-7 -4 v8 z"/><path d="M498 88 l-7 -4 v8 z"/><path d="M728 88 l-7 -4 v8 z"/>
+    <path d="M135 118 l-4 8 h8 z"/>
+  </g>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="40" y="164" width="400" height="96" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="60" y="188" font-size="12.5" font-weight="700" fill="#b91c1c">两个致命写法</text>
+    <text x="60" y="212" font-size="11" fill="#475569">✗ position.x += 0.01        —— 快机器上转得快，慢机器上转得慢</text>
+    <text x="60" y="232" font-size="11" fill="#475569">✗ position.x += 1 / 60      —— 60Hz 屏上正常，120Hz 屏上快一倍</text>
+    <text x="60" y="252" font-size="11" fill="#b45309">✓ position.x += speed * delta —— 唯一正确写法</text>
+
+    <rect x="460" y="164" width="390" height="96" rx="8" fill="#f8fafc" stroke="#64748b"/>
+    <text x="480" y="188" font-size="12.5" font-weight="700" fill="#334155">delta 的三种口径</text>
+    <text x="480" y="212" font-size="11" fill="#475569">Timer.getDelta() —— 距上次调用的秒数（r183 起推荐）</text>
+    <text x="480" y="232" font-size="11" fill="#475569">Timer.getElapsed() —— 启动至今的总秒数</text>
+    <text x="480" y="252" font-size="11" fill="#475569">更稳的做法：把 delta 夹在 [0, 0.1]，切标签页再回来不跳帧</text>
+  </g>
+
+  <rect x="40" y="278" width="810" height="80" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="60" y="302" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" font-weight="700" fill="#1e40af">为什么用 setAnimationLoop 而不是手写 requestAnimationFrame</text>
+  <text x="60" y="326" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">· WebXR 会话里，浏览器必须接管帧循环 —— 手写 rAF 在 VR/AR 中直接失效</text>
+  <text x="60" y="346" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">· WebGPURenderer 的初始化是异步的，setAnimationLoop 会等 renderer.init() 完成后再开始第一帧</text>
+</svg>

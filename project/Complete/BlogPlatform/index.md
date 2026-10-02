@@ -67,8 +67,8 @@
 | 第 100 天 | 文章下线动作：四态状态机（DRAFT / PUBLISHED / OFFLINE / DELETED）+ 时间戳语义 + 第二道写链路门禁 `lifecycle_smoke`（24 步） | ✅ |
 | 第 101 天 | Markdown 渲染能力补齐：写时渲染（与发布同事务）+ 表格/引用块 + TOC 中文锚点 + 高亮分工（服务端透传、客户端着色） | ✅ |
 | 第 102 天 | 可见性收敛：读者端列表/详情对非 PUBLISHED 一律 404（存在性不泄漏）+ 缓存失效时序（提交后失效 + TTL 兜底）+ 读侧门禁 `visibility_smoke`（22 步） | ✅ |
-| 第 103 天 | 测试分层收口：断言按「依赖什么」分流，渲染器/状态矩阵/401 先于 403/分页边界上移 `mvn test`；分类与标签计数对齐 PUBLISHED 口径 | ✅ 本日 |
-| 第 104 天 | 第 2 周收尾：契约 401/403 分支与分页边界穷举、标签维度计数用例 | ⏳ |
+| 第 103 天 | 测试分层收口：断言按「依赖什么」分流，渲染器/状态矩阵/401 先于 403/分页边界上移 `mvn test`；分类与标签计数对齐 PUBLISHED 口径 | ✅ |
+| 第 104 天 | 判据收口与分类标签联调：smoke 中已上移断言下线 + `assertion_audit.py` 判据唯一性核查；`withCount` 服务端单一口径 + L1-L6 六条两端联调动作 | ✅ 本日 |
 | 第 105-111 天 | 第 3 周：评论 / 搜索 / SSR / 联调与测试 | ⏳ |
 | 第 112-120 天 | 第 4 周：部署 / 监控 / 验收 | ⏳ |
 
@@ -85,7 +85,8 @@
 9. [Markdown 渲染能力补齐](./Rendering/index.md)：写时渲染、表格/引用块、TOC 中文锚点、高亮分工与明确不做
 10. [可见性收敛](./Visibility/index.md)：读者端只看得到 PUBLISHED、404 一致性判据、缓存失效时序与读侧门禁
 11. [测试分层收口](./TestLayers/index.md)：断言按依赖分流、上移与保留清单、`mvn test` 门禁与六道门禁顺序
-12. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+12. [判据收口与分类标签联调](./Consolidation/index.md)：判据唯一性自动核查、分类与标签的服务端单一口径、L1-L6 六条两端联调动作
+13. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
 
 ## 在你自己的工程里跑起来
 
@@ -110,7 +111,14 @@ python visibility_smoke.py --base http://127.0.0.1:18080 # 期望 steps = 22 pas
 python lifecycle_smoke.py --selftest                    # 期望 selftest: 24/24 通过（证明断言不是恒真）
 ```
 
-各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)。
+```shell
+# 判据唯一性与分类标签两端一致（第 104 天新增）
+python assertion_audit.py                   # 期望 PASS：每条判据只有一个归属（退出码 0）
+curl -s 'http://127.0.0.1:18080/api/v1/categories?withCount=true'
+                                            # 期望：每个分类都带 postCount；空分类返回 0 而非消失
+```
+
+各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)。
 
 ## 参考资料
 

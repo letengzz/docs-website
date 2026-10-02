@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="900" height="420" role="img" aria-label="WebGL 渲染管线阶段">
+  <rect width="900" height="420" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#0f172a">WebGL 渲染管线：一次 draw call 里发生了什么</text>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12">
+    <rect x="24" y="56" width="150" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="99" y="80" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">① CPU 侧准备</text>
+    <text x="99" y="99" text-anchor="middle" font-size="10.5" fill="#64748b">缓冲区 / 纹理上传</text>
+    <text x="99" y="112" text-anchor="middle" font-size="10.5" fill="#64748b">状态设置 + draw call</text>
+
+    <rect x="198" y="56" width="150" height="60" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="273" y="80" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e40af">② 顶点着色器</text>
+    <text x="273" y="99" text-anchor="middle" font-size="10.5" fill="#64748b">每个顶点跑一次</text>
+    <text x="273" y="112" text-anchor="middle" font-size="10.5" fill="#64748b">算出裁剪空间坐标</text>
+
+    <rect x="372" y="56" width="150" height="60" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="447" y="80" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e40af">③ 图元装配与裁剪</text>
+    <text x="447" y="99" text-anchor="middle" font-size="10.5" fill="#64748b">拼成三角形</text>
+    <text x="447" y="112" text-anchor="middle" font-size="10.5" fill="#64748b">砍掉视锥外的部分</text>
+
+    <rect x="546" y="56" width="150" height="60" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="621" y="80" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e40af">④ 光栅化</text>
+    <text x="621" y="99" text-anchor="middle" font-size="10.5" fill="#64748b">三角形 → 片元</text>
+    <text x="621" y="112" text-anchor="middle" font-size="10.5" fill="#64748b">属性做插值</text>
+
+    <rect x="720" y="56" width="156" height="60" rx="8" fill="#ecfdf5" stroke="#0d9488"/>
+    <text x="798" y="80" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0f766e">⑤ 片元着色器</text>
+    <text x="798" y="99" text-anchor="middle" font-size="10.5" fill="#64748b">每个片元跑一次</text>
+    <text x="798" y="112" text-anchor="middle" font-size="10.5" fill="#64748b">算出这个像素的颜色</text>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <path d="M174 86 H198"/><path d="M348 86 H372"/><path d="M522 86 H546"/><path d="M696 86 H720"/>
+  </g>
+  <g fill="#94a3b8">
+    <path d="M196 86 l-7 -4 v8 z"/><path d="M370 86 l-7 -4 v8 z"/><path d="M544 86 l-7 -4 v8 z"/><path d="M718 86 l-7 -4 v8 z"/>
+  </g>
+
+  <path d="M798 116 V148 H99 V132" stroke="#94a3b8" stroke-width="1.6" fill="none" stroke-dasharray="6 4"/>
+  <path d="M99 132 l-4 8 h8 z" fill="#94a3b8"/>
+  <text x="448" y="165" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748b">以上全部在 GPU 上并行执行，CPU 只负责「下命令」并等待结果</text>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12">
+    <rect x="24" y="190" width="340" height="88" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="44" y="213" font-size="12.5" font-weight="700" fill="#b91c1c">⑥ 逐片元操作（Per-Fragment Ops）</text>
+    <text x="44" y="234" font-size="11" fill="#475569">· 深度测试（决定是否被前面的物体挡住）</text>
+    <text x="44" y="251" font-size="11" fill="#475569">· 模板测试 · 混合（alpha blending）</text>
+    <text x="44" y="268" font-size="11" fill="#475569">· 写入帧缓冲（frame buffer）</text>
+
+    <rect x="384" y="190" width="220" height="88" rx="8" fill="#f8fafc" stroke="#64748b"/>
+    <text x="404" y="213" font-size="12.5" font-weight="700" fill="#334155">⑦ 合成上屏</text>
+    <text x="404" y="234" font-size="11" fill="#475569">帧缓冲交给浏览器</text>
+    <text x="404" y="251" font-size="11" fill="#475569">与页面其他内容合成</text>
+    <text x="404" y="268" font-size="11" fill="#475569">→ 用户看到这一帧</text>
+
+    <rect x="624" y="190" width="252" height="88" rx="8" fill="#fffbeb" stroke="#d97706"/>
+    <text x="644" y="213" font-size="12.5" font-weight="700" fill="#b45309">三条硬结论</text>
+    <text x="644" y="234" font-size="11" fill="#475569">1. 顶点着色器不能创建新顶点</text>
+    <text x="644" y="251" font-size="11" fill="#475569">2. 片元着色器改不了顶点位置</text>
+    <text x="644" y="268" font-size="11" fill="#475569">3. 两者都是「批量并行」，怕分支</text>
+  </g>
+
+  <rect x="24" y="298" width="852" height="102" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="44" y="322" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" font-weight="700" fill="#334155">为什么这决定了「什么能优化、什么不能」</text>
+  <text x="44" y="344" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">· 顶点阶段的开销 ∝ 顶点数量 —— 所以有「几何简化 / LOD / 视锥剔除」</text>
+  <text x="44" y="363" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">· 片元阶段的开销 ∝ 被覆盖的像素数（含被遮挡的）—— 所以有「减少 overdraw / 控制像素比 / 降低阴影分辨率」</text>
+  <text x="44" y="382" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569">· CPU 侧的开销 ∝ draw call 数量与状态切换次数 —— 所以有「合并几何 / InstancedMesh / 共享材质」</text>
+</svg>

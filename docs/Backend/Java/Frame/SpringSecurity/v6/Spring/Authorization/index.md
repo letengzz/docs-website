@@ -2,7 +2,7 @@
 
 用户登录后，可能会根据用户当前是身份进行角色划分，比如我们最常用的QQ，一个QQ群里面，有群主、管理员和普通群成员三种角色，其中群主具有最高权限，群主可以管理整个群的任何板块，并且具有解散和升级群的资格，而管理员只有群主的一部分权限，只能用于日常管理，普通群成员则只能进行最基本的聊天操作。
 
-![image-20230704222032360](https://s2.loli.net/2023/07/04/e1IXMRgawYoGvSQ.png)
+![image-20230704222032360](../../../assets/springsecurity-authorization-01.png)
 
 对于我们来说，用户的一个操作实际上就是在访问我们提供的`接口`(编写的对应访问路径的Servlet），比如登陆，就需要调用`/login`接口，退出登陆就要调用/`logout`接口，而我们之前的图书管理系统中，新增图书、删除图书，所有的操作都有着对应的Servlet来进行处理。因此，从我们开发者的角度来说，决定用户能否使用某个功能，只需要决定用户是否能够访问对应的Servlet即可。
 
@@ -44,7 +44,7 @@ SpringSecurity为我们提供了两种授权方式：
 
 接着我们需要稍微修改一下验证逻辑，我们在数据库中的用户表上添加一个新的字段，用于表示角色：
 
-![image-20230704222733082](https://s2.loli.net/2023/07/04/1pkfGS9LrsPtjFx.png)
+![image-20230704222733082](../../../assets/springsecurity-authorization-02.png)
 
 修改一下对应的实体类：
 
@@ -76,15 +76,15 @@ public UserDetails loadUserByUsername(String username) throws UsernameNotFoundEx
 
 这样就可以了，我们重启服务器登录看看：
 
-![image-20230703182321093](https://s2.loli.net/2023/07/03/Zns4Vwb7zPLc6SQ.png)
+![image-20230703182321093](../../../assets/springsecurity-shared-01.png)
 
 目前依然是可以正常登录的，但是我们随便访问一个其他的页面，就会被拦截并自动退回到登录界面：
 
-![image-20230704223248124](https://s2.loli.net/2023/07/04/8aoGrM9mpYt6Xie.png)
+![image-20230704223248124](../../../assets/springsecurity-authorization-03.png)
 
 这是因为我们前面配置的是user角色，那么这个角色只能访问首页，其他的都不行，所以就会被自动拦截掉了。现在我们可以到数据库中对这个用户的角色进行修改，看看修改后是否能够访问到其他页面：
 
-![image-20230704223503682](https://s2.loli.net/2023/07/04/l9YkDaRJdtrmSZj.png)
+![image-20230704223503682](../../../assets/springsecurity-authorization-04.png)
 
 这样就可以访问其他页面不会被拦截了，不过因为我们没配置这个路径，所以出来的是404页面。
 

@@ -158,7 +158,7 @@ pnpm electron:build -- --win    # 注意自己包管理工具的语法
 
 我的应用打包完成是320MB，这个体积是非常不友好的。打包完成以后发现有些文件是完全没有必要，如下图
 
-<img src="https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240201212512248.png" alt="image-20240201212512248" style="zoom: 33%;" />
+<img src="../assets/electron-vue-packaging-01.png" alt="image-20240201212512248" style="zoom: 33%;" />
 
 - 其中locales是多语言的配置，36MB，我的应用不需要多语言，因此把除中文的全部排除
 - 资源目录下是我们的asar归档文件，我的是40多M，有优化的空间但是不多，如优化代码，优化依赖项等

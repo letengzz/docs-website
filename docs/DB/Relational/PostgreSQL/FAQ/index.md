@@ -2,6 +2,8 @@
 
 汇总 PostgreSQL 使用中最高频的问题：选型、迁移、膨胀、连接、JSON、备份与升级，方便快速查阅。
 
+![PostgreSQL 常见问题的判断要点](../assets/pg-faq.svg)
+
 ## 选型与迁移
 
 ### PostgreSQL 和 MySQL 怎么选？

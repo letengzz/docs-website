@@ -133,7 +133,7 @@ org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
 
    ![image.png](assets/img202411252128835.png)
 
-   ![image.png](https://cdn.nlark.com/yuque/0/2024/png/21376908/1729847268539-715a377a-ecb9-48fc-ad58-9194d23b7cdf.png?x-oss-process=image%2Fformat%2Cwebp)
+   ![image.png](assets/springboot-autoconfiguration-01.webp)
 
 2. MultipartAutoConfiguration：
 

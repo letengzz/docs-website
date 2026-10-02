@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" width="900" height="430" role="img" aria-label="CSS 3D 变换与 WebGL 三维渲染的边界">
+  <rect width="900" height="430" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#0f172a">CSS 3D 与 WebGL：两条不同的三维路线</text>
+  <text x="450" y="50" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748b">判断标准不是「是不是三维」，而是「三维内容是什么」——是排好版的元素，还是成千上万个三角形</text>
+
+  <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <!-- 左：CSS 3D -->
+    <rect x="24" y="72" width="410" height="286" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="229" y="98" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">CSS 3D（本页）</text>
+    <text x="229" y="118" text-anchor="middle" font-size="11" fill="#64748b">渲染引擎负责，你只写变换</text>
+
+    <rect x="44" y="134" width="370" height="46" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="58" y="153" font-size="11.5" font-weight="700" fill="#334155">操作对象</text>
+    <text x="58" y="170" font-size="11" fill="#475569">已有的 DOM 元素（卡片、图、文字）</text>
+
+    <rect x="44" y="188" width="370" height="46" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="58" y="207" font-size="11.5" font-weight="700" fill="#334155">表达方式</text>
+    <text x="58" y="224" font-size="11" fill="#475569">transform + perspective + preserve-3d</text>
+
+    <rect x="44" y="242" width="370" height="46" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="58" y="261" font-size="11.5" font-weight="700" fill="#334155">擅长</text>
+    <text x="58" y="278" font-size="11" fill="#475569">翻牌、立方体、3D 轮播、深度排序的层叠</text>
+
+    <rect x="44" y="296" width="370" height="46" rx="6" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="58" y="315" font-size="11.5" font-weight="700" fill="#b45309">天花板</text>
+    <text x="58" y="332" font-size="11" fill="#92400e">每个面仍是一个 DOM 元素，几十个面就是上限</text>
+
+    <!-- 右：WebGL -->
+    <rect x="466" y="72" width="410" height="286" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="671" y="98" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">WebGL（独立专题）</text>
+    <text x="671" y="118" text-anchor="middle" font-size="11" fill="#64748b">你负责提交数据，GPU 负责画</text>
+
+    <rect x="486" y="134" width="370" height="46" rx="6" fill="#ffffff" stroke="#bfdbfe"/>
+    <text x="500" y="153" font-size="11.5" font-weight="700" fill="#1e40af">操作对象</text>
+    <text x="500" y="170" font-size="11" fill="#475569">顶点缓冲与纹理（不是 DOM）</text>
+
+    <rect x="486" y="188" width="370" height="46" rx="6" fill="#ffffff" stroke="#bfdbfe"/>
+    <text x="500" y="207" font-size="11.5" font-weight="700" fill="#1e40af">表达方式</text>
+    <text x="500" y="224" font-size="11" fill="#475569">矩阵变换 + GLSL 着色器（顶点/片元）</text>
+
+    <rect x="486" y="242" width="370" height="46" rx="6" fill="#ffffff" stroke="#bfdbfe"/>
+    <text x="500" y="261" font-size="11.5" font-weight="700" fill="#1e40af">擅长</text>
+    <text x="500" y="278" font-size="11" fill="#475569">十万级三角形、纹理光照、粒子、模型与动画</text>
+
+    <rect x="486" y="296" width="370" height="46" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="500" y="315" font-size="11.5" font-weight="700" fill="#1e40af">代价</text>
+    <text x="500" y="332" font-size="11" fill="#1e3a8a">要管坐标空间、显存、着色器与资源释放</text>
+  </g>
+
+  <rect x="24" y="374" width="852" height="40" rx="8" fill="#ecfdf5" stroke="#0d9488"/>
+  <text x="450" y="399" text-anchor="middle" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#0f766e">共同点：两者都走「合成器」的合成阶段，都可能被 transform 提升为独立图层——但只有 WebGL 有自己的渲染管线</text>
+</svg>

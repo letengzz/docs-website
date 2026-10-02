@@ -116,7 +116,7 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 }
 ```
 
-![image-20230705005303736](https://s2.loli.net/2023/07/05/LVxihksHZu2qN6X.png)
+![image-20230705005303736](../../../assets/springsecurity-principle-01.png)
 
 ```java
 private void doFilterInternal(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -304,7 +304,7 @@ protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServle
 
 通过SecurityContext我们就可以快速获取当前用户的名称和授权信息等：
 
-![image-20230706215806040](https://s2.loli.net/2023/07/06/uPjdsgbhv9NqA8B.png)
+![image-20230706215806040](../../../assets/springsecurity-principle-02.png)
 
 除了这种方式以外，我们还可以直接从Session中获取：
 

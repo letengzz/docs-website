@@ -97,7 +97,13 @@ if (!gl) {
 
 - **ECharts GL 系列**：`scatterGL`、`linesGL`、`bar3D`、`map3D` 等，接口与普通系列接近，只需把系列类型换掉。
 - **deck.gl**：面向地理与大规模数据可视化，图层化设计。
-- **three.js**：通用 3D 场景，适合数字孪生类需求。
+- **three.js**：通用 3D 场景引擎，适合数字孪生、三维场景类需求——注意它**不是图表库**，用它做常规统计图表属于选型过度。
+
+::: info 边界：本页讲「选哪条路」，不讲「3D 怎么写」
+本页只回答**渲染路线的取舍**——什么规模该用 Canvas、什么规模必须上 WebGL。至于 WebGL 与 three.js 的**工程细节**（场景图与变换链、PBR 材质与光照、GLSL 着色器、glTF 资源管线与显存回收、draw call 优化、WebGPU 迁移），已独立成专题 [WebGL 与 Three.js](../../WebGL/index.md)，两边不重复。
+
+一句话分流：**二维图表要画得更快** → 留在本专题看 [大数据量下的性能工程](../LargeData/index.md)；**要的是真三维** → 去 [WebGL 与 Three.js](../../WebGL/index.md)。
+:::
 
 ### 什么时候真的需要 WebGL
 

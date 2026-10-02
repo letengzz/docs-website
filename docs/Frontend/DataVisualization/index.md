@@ -11,6 +11,7 @@
 ::: info 本专题与相邻专题的分工
 - **图表库怎么用** → [Vue3 · ECharts](../Frame/Vue/Vue3/ECharts/index.md)：讲在 Vue 项目里怎样接入、封装与按需引入，偏「工程集成」。
 - **可视化怎么做对** → 本专题：讲渲染路线怎么选、数据怎么映射成图形、规模上去了怎么办，偏「方法论与性能」。
+- **要的是真三维场景** → [WebGL 与 Three.js](../WebGL/index.md)：讲三维场景的工程实现（场景图、材质光照、着色器、模型资源管线、显存回收），偏「3D 引擎用法」。本专题的 [渲染路线](Rendering/index.md) 页只负责判断「该不该上 WebGL」，不展开怎么写。
 - **日志与指标怎么采集** → [日志体系](../../Ops/LogSystem/index.md) 与 [监控告警](../../Ops/Monitoring/index.md)：讲数据从哪来。
 - **大屏要嵌进什么系统** → [项目交付 · 一键部署与上线验收](../../Others/ProjectDelivery/Delivery/index.md)：讲做好的东西怎么交付。
 :::
@@ -35,5 +36,6 @@
 - [Vue3 · ECharts](../Frame/Vue/Vue3/ECharts/index.md)：同一套 ECharts 在框架里的工程用法（实例封装、响应式数据、销毁时机）
 - [前端性能优化](../Others/PerformanceOptimization/index.md)：本专题的「大数据量」页是性能优化在可视化场景下的具体化；通用手段（长任务、内存、渲染帧）在那一边
 - [浏览器原理](../Basic/Browser/index.md)：Canvas 与 DOM 的绘制差异、合成层与重绘的底层机制
+- [WebGL 与 Three.js](../WebGL/index.md)：渲染三支线里「GPU 并行」那一支的完整工程实现；本专题讲「怎么用数据画出图」，那一专题讲「怎么用 GPU 画出一个三维世界」
 - [TypeScript](../Basic/TypeScript/index.md)：图表配置项类型（`EChartsOption`）与数据结构的类型建模
 - [监控告警](../../Ops/Monitoring/index.md)：大屏的数据上游；指标口径与采集频率决定了可视化该怎么做
