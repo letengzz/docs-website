@@ -291,7 +291,7 @@ export default defineNuxtConfig({
 ```
 
 ::: warning 为什么 `dependencies` 里只有 `nuxt`
-Nuxt 本身必须放 `dependencies`（生产构建要在 `node_modules` 里能找到它）；其余一切——UI 库、预处理器、原子化引擎、测试工具——都由初始化引擎在**阶段 4** 按选择结果写入。引导期多装一个包，就等于给所有用户强加一个他们可能不需要的依赖。
+Nuxt 本身必须放 `dependencies`（生产构建要在 `node_modules` 里能找到它）；其余一切——UI 库、预处理器、原子化引擎、测试工具——都由初始化引擎在**阶段 3**（`install`，在改写配置之前）按选择结果写入。引导期多装一个包，就等于给所有用户强加一个他们可能不需要的依赖。
 :::
 
 引擎接线时会在这个文件里追加两个 marker 区间：
@@ -306,27 +306,70 @@ Nuxt 本身必须放 `dependencies`（生产构建要在 `node_modules` 里能�
 
 实际的写法是由 `scripts/init.mjs` 插入一段注释包裹的 JSON 片段，再由 `JSON.parse` 复核合法性——**先改文本再校验语法**，避免手写 JSON 时漏逗号。细节见 [初始化引擎](../InitEngine/index.md)。
 
-## 6. pnpm 11 的两个新坑
+## 6. pnpm 11 的三个新坑
 
-pnpm 11 改变了配置的读取位置，这两条不处理就会在 `pnpm install` 阶段直接失败：
+pnpm 11 既改了配置的读取位置，也改了「依赖安装脚本」的默认行为。三条都不处理，`pnpm install` 会在安装阶段直接失败：
 
 ```yaml [pnpm-workspace.yaml]
 # ① pnpm 11 起不再读取 package.json 的 "pnpm" 字段
 #    安全相关的 overrides / allowBuilds 等必须写在这里
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - esbuild
-
-# ② 需要允许执行安装脚本的包要在 allowBuilds 里显式列出
 allowBuilds:
-  - '@parcel/watcher'
-  - esbuild
+  # ② 作用域包名以 @ 开头，YAML 里必须加引号（裸写会被解析器拒绝）
+  '@parcel/watcher': false
+  esbuild: false
+  unrs-resolver: false
 ```
 
-::: danger pnpm 11 的两个必须处理的差异
+注意 `allowBuilds` 是一张**包名 → 布尔**的表，不是列表：`true` 允许执行安装脚本，`false` 明确拒绝，没有第三种取值。
 
-1. **`package.json` 里的 `pnpm` 字段被忽略。**迁移过来的模板如果把 `pnpm.overrides` 留在 `package.json`，pnpm 11 会**静默忽略**它——安全覆盖失效而你毫无察觉。必须整体搬到 `pnpm-workspace.yaml`。
-2. **`strictDepBuilds` 默认为真。**有 `postinstall` 的包（`esbuild`、`@parcel/watcher`、`vue-demi` 等）默认不再执行安装脚本，表现为「装完了但二进制缺失」。处理方式是在 `allowBuilds` 里显式列出，**不要**用 `--ignore-scripts` 绕过去。
+::: danger pnpm 11 的三个必须处理的差异
+
+1. **`package.json` 里的 `pnpm` 字段被忽略。**迁移过来的模板如果把 `pnpm.overrides` 留在 `package.json`，pnpm 11 会**静默忽略**它——安全覆盖失效而你毫无察觉。必须整体搬到 `pnpm-workspace.yaml`。同时被移除的还有 `onlyBuiltDependencies`、`neverBuiltDependencies`、`ignoredBuiltDependencies`，它们统一换成 `allowBuilds`。
+2. **`strictDepBuilds` 默认为真，少列一个包就是硬失败。**没在 `allowBuilds` 里出现过的包一律算「未经审查」，`pnpm install` 以 `ERR_PNPM_IGNORED_BUILDS` 退出，**整条安装命令失败**。症状与 pnpm 10 不同：v10 只是跳过脚本（表现为「装完了但二进制缺失」），v11 直接报错退出。所以这张表必须覆盖**整个依赖闭包**里带 `preinstall` / `install` / `postinstall` 的包，而不是「顺手列两个」。
+3. **`pnpm approve-builds` 是交互式命令。**原始报错让你跑它，但 CI、脚本、AI 代理这些没有 TTY 的地方根本用不了。真正可执行的修法只有一条：把包名写进 `allowBuilds`。
+
+:::
+
+真实的失败长这样（2026-10-02 实际遇到的那条）：
+
+```text
+安装开发依赖（17 个）失败：退出码 1；末尾输出：
+[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: unrs-resolver@1.12.2
+Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.
+```
+
+本模板的依赖闭包里只有三个包带安装脚本，三个都取 `false`：它们的脚本只做一件事——校验并落位**已经由 `optionalDependencies` 装好**的平台二进制（`@parcel/watcher-win32-x64`、`@esbuild/win32-x64`、`@unrs/resolver-binding-*`）。再跑一遍没有收益，离线或受限网络下反而会失败。真正需要跑脚本的是 `@nuxt/image` 带来的 `sharp`，由引擎在初始化时按选择结果追加为 `true`。
+
+这份清单怎么来的、怎么复核：
+
+```shell
+# 让 pnpm 自己点名：装一遍，它会把没审查过的包列在错误里
+pnpm install
+#   [ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: unrs-resolver@1.12.2
+
+# 另一个视角：已被明确拒绝（false）的包
+pnpm ignored-builds
+#   Explicitly ignored package builds (via allowBuilds):
+#     '@parcel/watcher'
+#     esbuild
+#     unrs-resolver
+```
+
+模板自带的 `pnpm-workspace.yaml` 与引擎渲染出的那份必须逐字一致（否则会出现「模板自己能装、初始化后装不上」），`pnpm selftest` 的 **B9** 卡着这一点。
+
+::: warning 别把 pnpm 的占位提示当成配置提交上去
+在本仓库直接跑 `pnpm install` 时，如果闭包里出现了没列进 `allowBuilds` 的包，pnpm 会**自动往这个区间里追加占位行**：
+
+```yaml
+allowBuilds:
+  sharp: set this to true or false
+```
+
+那是它请你补决定的提示，不是配置——占位值不是布尔，下次安装照样报错。本仓库出现它通常意味着 `node_modules` / `pnpm-lock.yaml` 漂移了（比如之前初始化时选过 `@nuxt/image`，`sharp` 被装了进来）。处理方式是把它改成 `true` / `false` 的真实决定，或者把漂移还原掉；B9 会把这种状态判红。
+:::
+
+::: tip 引擎会把这条错误翻成人话
+引擎的安装阶段遇到 `ERR_PNPM_IGNORED_BUILDS` 时，会把错误里的包名转成**可直接粘贴的 YAML 行**（作用域名自动加引号、版本号自动剥掉）再打印出来，省掉「拿到一串包名，该往哪写」这一步。细节见[初始化引擎](../InitEngine/index.md)的阶段 3。
 :::
 
 ## 7. 引导期首页：`/setup` 而不是 `/`

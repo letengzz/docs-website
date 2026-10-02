@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 402" width="760" height="402" font-family="Microsoft YaHei, PingFang SC, sans-serif">
   <rect width="760" height="402" fill="#FFFFFF"/>
-  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">初始化引擎五阶段流水线：plan → snapshot → apply → install → verify</text>
-  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">前三阶段不碰依赖，任何一步失败都能回到「初始化前」——这是可回滚的前提</text>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">初始化引擎五阶段流水线：plan → snapshot → install → apply → verify</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">plan / snapshot 不碰依赖；install 失败即中止，一次 apply 都不跑 —— 这是可回滚的前提</text>
   <rect x="26" y="76" width="132" height="100" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
   <text x="92" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">① plan</text>
   <text x="92" y="111" text-anchor="middle" font-size="7" fill="#1D4ED8">读选择</text>
@@ -14,17 +14,17 @@
   <text x="236" y="127.1" text-anchor="middle" font-size="7" fill="#6D28D9">记 existed 标记</text>
   <text x="236" y="143.2" text-anchor="middle" font-size="7" fill="#6D28D9">写入 manifest</text>
   <line x1="302" y1="126" x2="314" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
-  <rect x="314" y="76" width="132" height="100" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
-  <text x="380" y="94.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">③ apply</text>
-  <text x="380" y="111" text-anchor="middle" font-size="7" fill="#B91C1C">删引导器</text>
-  <text x="380" y="127.1" text-anchor="middle" font-size="7" fill="#B91C1C">改 marker 区间</text>
-  <text x="380" y="143.2" text-anchor="middle" font-size="7" fill="#B91C1C">写 template.config</text>
+  <rect x="314" y="76" width="132" height="100" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="380" y="94.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">③ install</text>
+  <text x="380" y="111" text-anchor="middle" font-size="7" fill="#C2410C">先落 allowBuilds</text>
+  <text x="380" y="127.1" text-anchor="middle" font-size="7" fill="#C2410C">spawn 包管理器</text>
+  <text x="380" y="143.2" text-anchor="middle" font-size="7" fill="#C2410C">prod / dev 分开</text>
   <line x1="446" y1="126" x2="458" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
-  <rect x="458" y="76" width="132" height="100" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
-  <text x="524" y="94.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">④ install</text>
-  <text x="524" y="111" text-anchor="middle" font-size="7" fill="#C2410C">spawn 包管理器</text>
-  <text x="524" y="127.1" text-anchor="middle" font-size="7" fill="#C2410C">prod / dev 分开</text>
-  <text x="524" y="143.2" text-anchor="middle" font-size="7" fill="#C2410C">收敛 lockfile</text>
+  <rect x="458" y="76" width="132" height="100" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="524" y="94.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">④ apply</text>
+  <text x="524" y="111" text-anchor="middle" font-size="7" fill="#B91C1C">删引导器</text>
+  <text x="524" y="127.1" text-anchor="middle" font-size="7" fill="#B91C1C">改 marker 区间</text>
+  <text x="524" y="143.2" text-anchor="middle" font-size="7" fill="#B91C1C">写 template.config</text>
   <line x1="590" y1="126" x2="602" y2="126" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
   <rect x="602" y="76" width="132" height="100" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
   <text x="668" y="94.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">⑤ verify</text>
@@ -40,14 +40,14 @@
   <text x="128" y="262" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">② 快照不完整即退出</text>
   <rect x="234" y="246" width="496" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
   <text x="250" y="262" text-anchor="start" font-size="8.3" fill="#334155">没有快照就不允许动文件</text>
-  <rect x="30" y="276" width="196" height="24" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
-  <text x="128" y="292" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">③ 单文件失败被累积</text>
+  <rect x="30" y="276" width="196" height="24" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="128" y="292" text-anchor="middle" font-size="8.5" fill="#9A3412" font-weight="bold">③ 安装失败即中止</text>
   <rect x="234" y="276" width="496" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
-  <text x="250" y="292" text-anchor="start" font-size="8.3" fill="#334155">不中断，跑完统一报告（半删最危险）</text>
-  <rect x="30" y="306" width="196" height="24" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
-  <text x="128" y="322" text-anchor="middle" font-size="8.5" fill="#9A3412" font-weight="bold">④ 失败保留锁与快照</text>
+  <text x="250" y="292" text-anchor="start" font-size="8.3" fill="#334155">一次 apply 都不跑，仓库保持点击前原样（仅 allowBuilds 已提前写入）</text>
+  <rect x="30" y="306" width="196" height="24" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="128" y="322" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">④ 单文件失败被累积</text>
   <rect x="234" y="306" width="496" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
-  <text x="250" y="322" text-anchor="start" font-size="8.3" fill="#334155">用户可重试或回滚，数据不丢</text>
+  <text x="250" y="322" text-anchor="start" font-size="8.3" fill="#334155">不中断，跑完统一报告（半删最危险）</text>
   <rect x="30" y="336" width="196" height="24" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
   <text x="128" y="352" text-anchor="middle" font-size="8.5" fill="#065F46" font-weight="bold">⑤ 不自动回滚</text>
   <rect x="234" y="336" width="496" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>

@@ -24,9 +24,15 @@
 | --- | --- | --- | --- | --- |
 | 1 | `plan` | 选择（文件 / 快照） | 变更计划（内存对象） | ❌ 校验失败即退出，**不写任何文件** |
 | 2 | `snapshot` | 待修改 / 待删除文件清单 | `.init-backup/<timestamp>/` 下的完整副本 + `manifest.json` | ❌ 快照不完整即退出 |
-| 3 | `apply` | 计划 + 快照 | 引导器已删除、配置文件已改写、`template.config.json` 已写入、锁文件已写 | ⚠️ 单文件失败被累积，最后统一报告 |
-| 4 | `install` | 计划里的依赖清单 | `package.json` 依赖区已更新、`node_modules` 已安装、lockfile 已更新 | ⚠️ 失败保留锁与快照 |
+| 3 | `install` | 计划里的依赖清单 | `pnpm-workspace.yaml` 的 `allowBuilds` 已提前落盘、`package.json` 依赖区已更新、`node_modules` 已安装、lockfile 已更新 | ❌ 失败即中止，**一次 `apply` 都不跑**（仓库保持点击前的样子） |
+| 4 | `apply` | 计划 + 快照 | 引导器已删除、配置文件已改写、`template.config.json` 已写入、锁文件已清除 | ⚠️ 单文件失败被累积，最后统一报告 |
 | 5 | `verify` | 产物 | 12 项断言结果 + 人类可读报告 | ⚠️ 失败不自动回滚，由用户决定 |
+
+::: info 为什么 `install` 排在 `apply` 之前
+原先是 `apply → install`：先把模块写进 `nuxt.config.ts`，再去装它们。这中间有一个真实存在的危险窗口——运行中的 dev 服务一看到配置变了就重启去加载模块，而那一刻它们还没装，于是整页报 `[NUXT_B8017] The module X could not be loaded`，长得却像「你选错了配置」。
+
+改成先装后写，这个窗口就不存在了：**配置里声明模块时，模块已经在 `node_modules` 里**。附带的好处更实在——安装失败时一次 `apply` 都不跑，仓库逐字节保持在点击「初始化项目」之前的样子，用户可以直接重试。代价只有一处：`pnpm-workspace.yaml` 的 `allowBuilds` 必须**提前**落盘（pnpm 在安装那一刻就按它决定跑不跑依赖的构建脚本，事后补写没用），所以它是安装前唯一被写的文件。
+:::
 
 ::: info 为什么快照放在「仓库内」而不是 `/tmp`
 `.init-backup/` 放在仓库根目录（并加进 `.gitignore`），而不是系统临时目录。理由：① 用户可能跨天排查，临时目录会被清；② 出问题时用户可以直接 `diff` 快照与现状，比任何日志都直观；③ 引擎的 `--rollback` 只需读仓库内路径，没有跨盘权限问题。
@@ -56,9 +62,9 @@ function loadSelection(argv) {
 
 | 字段 | 谁产生 | 谁消费 |
 | --- | --- | --- |
-| `deleteFiles` | 引擎内置白名单 ∪ 各选项声明的 `files` | 阶段 3 |
-| `deps` / `devDeps` | 各选项声明的依赖去重排序后 | 阶段 4 |
-| `modules` / `cssEntries` | 各选项声明的模块与样式入口 | 阶段 3（写 marker 区间） |
+| `deleteFiles` | 引擎内置白名单 ∪ 各选项声明的 `files` | 阶段 4（`apply`） |
+| `deps` / `devDeps` | 各选项声明的依赖去重排序后 | 阶段 3（`install`） |
+| `modules` / `cssEntries` | 各选项声明的模块与样式入口 | 阶段 4（写 marker 区间） |
 | `keepFiles` | 引擎内置的保留清单 | 阶段 5（残留检查的对照物） |
 
 ::: danger 白名单必须是「枚举」而不是「模式」
@@ -99,13 +105,58 @@ function snapshot(files) {
 - **文件清单包含配置文件本身**（`nuxt.config.ts`、`package.json`、`pnpm-workspace.yaml`）。
 - **`existed: false` 也要记录**。回滚时要知道「这个文件当时不存在」，才能正确地再次删除它。
 
-## 5. 阶段 3：`apply`——自删除与改写
+## 5. 阶段 3：`install`
+
+安装排在改写之前（理由见上面的信息框）。真实实现只做三件事：**跑命令、逐行转发输出、失败即中止**：
+
+```js [scripts/init.mjs（阶段 3 节选）]
+async function installStage(root, plan, out, failures) {
+  const steps = installSteps(plan);   // ① add deps → ② add -D devDeps → ③ install（收敛 lockfile）
+
+  for (const step of steps) {
+    const result = await runCommand(step.bin, step.args, { cwd: root, out, label: step.command });
+    if (result.code !== 0) {
+      const tail = result.tail.slice(-5).join(' | ');
+      failures.push(`${step.label}失败：退出码 ${result.code}${tail ? `；末尾输出：${tail}` : ''}`);
+      // 已知的、可自助修复的失败，就地翻译成「下一步该做什么」（见下面的 tip）
+      for (const line of ignoredBuildHint(result.tail.join('\n')) ?? []) {
+        out.emit({ type: 'note', message: line });
+      }
+      return;
+    }
+  }
+  plan.installed = true;
+}
+```
+
+跑命令的那套（Windows 的 `.cmd` 绕行、按行转事件、尾部输出采集、超时）住在 `scripts/lib/proc.mjs`，与 `verify.mjs` 的第 12 项断言共用——两处各写一份的话，「install 能跑、verify 说命令不存在」这类分叉会出现在最不该出现的地方。
+
+四条纪律：
+
+| # | 纪律 | 原因 |
+| --- | --- | --- |
+| 1 | `shell: false` + 参数数组 | 用户输入永不经过 shell 解析 |
+| 2 | 分两次安装（prod / dev） | 一次装完无法区分依赖类型，`package.json` 会全进 `dependencies` |
+| 3 | 最后一个裸 `install` | 收敛 lockfile 与 hoisting，避免「本地能跑、CI 装出来不一样」 |
+| 4 | 依赖版本用 `^` 范围而非锁定小版本 | 官方补丁版本随时在动，写死小版本会让模板快速过期；复现性靠 lockfile 保证 |
+
+::: tip 构建脚本被 pnpm 拦下时，报错会被翻成可粘贴的 YAML
+pnpm 11 的 `strictDepBuilds` 默认为真：没在 `pnpm-workspace.yaml` 的 `allowBuilds` 里列出的包一律算「未经审查」，安装直接失败并报 `ERR_PNPM_IGNORED_BUILDS`。它的原文只有包名和一（句）「跑 `pnpm approve-builds`」——而那条命令是交互式的，在引擎里用不了，真正的修法（往 `allowBuilds` 里补一行）原文一个字都没提。
+
+所以 `ignoredBuildHint()` 把错误里的包名转成**能直接粘贴的 YAML 行**（作用域名自动加引号、版本号自动剥掉）再打印。这也是为什么 `allowBuilds` 必须在安装**之前**落盘：pnpm 在安装那一刻就按它决定跑不跑脚本，事后补写没有意义。
+:::
+
+::: warning 依赖安装是唯一无法「逐字节可复现」的一步
+`pnpm add` 会写入当时的最新补丁版本，因此「同选择 + 同模板版本」在**不同时间**跑会有不同的 lockfile。这是接受的：约束 2 的口径是「**同一次执行**的产物确定」，而不是「跨时间的字节一致」。真正需要跨时间复现时，用 `--template-config` + 仓库里的 lockfile 一起重放。
+:::
+
+## 6. 阶段 4：`apply`——自删除与改写
 
 这是全流程最关键的一步，也是唯一有破坏性的一步。
 
 ![自删除范围：删哪些、留哪些](../assets/self-delete-scope.svg)
 
-### 5.1 删除清单（引导器白名单）
+### 6.1 删除清单（引导器白名单）
 
 ```js [scripts/init.mjs（内置白名单）]
 const WIZARD_FILES = [
@@ -143,9 +194,9 @@ const KEEP_FILES = [
 ];
 ```
 
-### 5.2 删除动作：逐条、可失败、有记录
+### 6.2 删除动作：逐条、可失败、有记录
 
-```js [scripts/init.mjs（阶段 3 删除节选）]
+```js [scripts/init.mjs（阶段 4 删除节选）]
 import { unlinkSync, rmdirSync } from 'node:fs';
 
 function removeFiles(files, report) {
@@ -190,7 +241,7 @@ function pruneEmptyDirs(files, report) {
 另外：在部分受限环境（容器、CI 沙箱）里 `rmSync(..., { recursive: true })` 可能挂住不返回。用 `unlinkSync` + `rmdirSync` 的显式组合还可以规避这一类问题。
 :::
 
-### 5.3 marker 区间改写
+### 6.3 marker 区间改写
 
 ```js [scripts/init.mjs（改写节选）]
 const SECTIONS = {
@@ -217,7 +268,11 @@ function rewriteSection(text, key, render, next) {
 从 marker 关键字位置（`text.indexOf(begin)`）而不是**行首**拼接时，`begin` 之前的缩进会被保留一次，而新内容又带一层缩进——结果就是「跑一次正常、跑两次报错」。实测症状极具迷惑性：单次执行全绿，连跑两次 `--check` 立刻报红，CI 上表现为「第一次构建就失败」。修法是上面这段：从 marker 行的行首替换，并在 `end` 之后原样接回尾部。
 :::
 
-### 5.4 覆盖首页与生成快照
+::: info 只有一个区间在阶段 3 就写下去了
+`pnpm-workspace.yaml` 的 `ALLOW_BUILDS` 是唯一的例外：它必须在**安装之前**落盘。原因是 pnpm 在安装那一刻就按 `allowBuilds` 决定跑不跑依赖的构建脚本（见[第 6 节](../Bootstrap/index.md)），事后补写等于没写。所以引擎在 `install` 前单独调一次 `rewriteMarker(WORKSPACE_FILE, …)`——**只有这一个文件**，`nuxt.config.ts` 与 `package.json` 的区间都等安装成功之后才动（提前写 `modules` 就等于把 `NUXT_B8017` 那个窗口放回来）。
+:::
+
+### 6.4 覆盖首页与生成快照
 
 ```js [scripts/init.mjs（收尾节选）]
 // ① 用基线首页覆盖引导期首页
@@ -242,47 +297,6 @@ writeFileSync(resolve(root, 'template.config.json'), JSON.stringify(config, null
 
 ::: tip 顺序不能反
 先在内存里算好 `report.removed`，**再**写 `template.config.json`，**最后**删锁。这样 `template.config.json` 是「初始化已完成」的唯一凭证：它存在 = 引导器已经清干净了。`verify.mjs` 正是靠这个文件判断「该不该检查残留」。
-:::
-
-## 6. 阶段 4：`install`
-
-```js [scripts/init.mjs（阶段 4 节选）]
-import { spawn } from 'node:child_process';
-
-function run(cmd, args) {
-  return new Promise((resolve, reject) => {
-    const child = spawn(cmd, args, { cwd: root, stdio: 'inherit', shell: false });
-    child.on('close', code => code === 0 ? resolve() : reject(new Error(`${cmd} 退出码 ${code}`)));
-  });
-}
-
-async function install(plan, lockfile) {
-  const bin = lockfile === 'npm' ? 'npm' : 'pnpm';
-  if (plan.deps.length) {
-    await run(bin, lockfile === 'npm'
-      ? ['install', '--save', ...plan.deps]
-      : ['add', ...plan.deps]);
-  }
-  if (plan.devDeps.length) {
-    await run(bin, lockfile === 'npm'
-      ? ['install', '--save-dev', ...plan.devDeps]
-      : ['add', '-D', ...plan.devDeps]);
-  }
-  await run(bin, ['install']);                    // 收敛 lockfile
-}
-```
-
-四条纪律：
-
-| # | 纪律 | 原因 |
-| --- | --- | --- |
-| 1 | `shell: false` + 参数数组 | 用户输入永不经过 shell 解析 |
-| 2 | 分两次安装（prod / dev） | 一次装完无法区分依赖类型，`package.json` 会全进 `dependencies` |
-| 3 | 最后一个裸 `install` | 收敛 lockfile 与 hoisting，避免「本地能跑、CI 装出来不一样」 |
-| 4 | 依赖版本用 `^` 范围而非锁定小版本 | 官方补丁版本随时在动，写死小版本会让模板快速过期；复现性靠 lockfile 保证 |
-
-::: warning 依赖安装是唯一无法「逐字节可复现」的一步
-`pnpm add` 会写入当时的最新补丁版本，因此「同选择 + 同模板版本」在**不同时间**跑会有不同的 lockfile。这是接受的：约束 2 的口径是「**同一次执行**的产物确定」，而不是「跨时间的字节一致」。真正需要跨时间复现时，用 `--template-config` + 仓库里的 lockfile 一起重放。
 :::
 
 ## 7. 阶段 5：`verify`

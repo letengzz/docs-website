@@ -169,8 +169,8 @@ pnpm dev
 
 ```shell
 # 初始化完成后终端输出（节选）
-[init] 阶段 3/5 删除引导器（前端 7 个文件 / 服务端 4 个文件）
-[init] 阶段 4/5 安装依赖（element-plus@2.14.x, sass-embedded@1.105.x）
+[init] 阶段 3/5 安装依赖（element-plus@2.14.x, sass-embedded@1.105.x）
+[init] 阶段 4/5 删除引导器（前端 7 个文件 / 服务端 4 个文件）
 [init] 阶段 5/5 自检：12 项通过 / 0 项失败
 [init] 完成。请执行：pnpm dev
 ```
