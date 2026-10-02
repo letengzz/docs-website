@@ -243,29 +243,38 @@ function pruneEmptyDirs(files, report) {
 
 ### 6.3 marker 区间改写
 
-```js [scripts/init.mjs（改写节选）]
-const SECTIONS = {
-  MODULES: m => `modules: [${m.join(', ')}],`,
-  CSS: entries => `css: [${entries.map(e => `'${e}'`).join(', ')}],`,
-  RUNTIME: () => `runtimeConfig: {\n    public: { appName: 'Nuxt Universal' },\n  },`,
-};
-
-function rewriteSection(text, key, render, next) {
-  const begin = `// >>> TEMPLATE:${key}`;
-  const end = `// <<< TEMPLATE:${key}`;
+```js [shared/wizard/sections.mjs（改写节选）]
+export function rewriteSection(text, begin, end, body) {
   const b = text.indexOf(begin);
   const e = text.indexOf(end);
-  if (b === -1 || e === -1) throw new Error(`缺少 marker 区间：${key}`);
+  if (b === -1 || e === -1) throw new Error('缺少 marker 区间');
 
-  const head = text.slice(0, b);
-  const tail = text.slice(e + end.length);
-  // 关键：从「含缩进的行首」接回，避免每跑一次多一层缩进
-  return `${head}${begin}\n  ${render(next)}\n  ${end}${tail}`;
+  // ① 接回点取「行首」：从 marker 关键字位置拼接，缩进会每跑一次多一层
+  const lineStart = text.lastIndexOf('\n', b) + 1;
+  const markerIndent = text.slice(lineStart, b);
+  const head = text.slice(0, lineStart);
+  const tail = text.slice(text.indexOf('\n', e + end.length) + 1);
+
+  // ② 行尾跟随文件本身：写死 \n 会在 CRLF 检出上写出「混合行尾」
+  const eol = text.includes('\r\n') ? '\r\n' : '\n';
+
+  // ③ 正文缩进 = marker 所在行的缩进（没有第二个来源）
+  const indented = body.split('\n').map(line => (line ? markerIndent + line : line)).join(eol);
+
+  return `${head}${markerIndent}${begin}${eol}${indented}${eol}${markerIndent}${end}${eol}${tail}`;
 }
 ```
 
 ::: danger 缩进累加是这类脚本最经典的 bug
 从 marker 关键字位置（`text.indexOf(begin)`）而不是**行首**拼接时，`begin` 之前的缩进会被保留一次，而新内容又带一层缩进——结果就是「跑一次正常、跑两次报错」。实测症状极具迷惑性：单次执行全绿，连跑两次 `--check` 立刻报红，CI 上表现为「第一次构建就失败」。修法是上面这段：从 marker 行的行首替换，并在 `end` 之后原样接回尾部。
+:::
+
+::: warning 行尾也是不可见字符：Windows 检出是 CRLF
+`git` 默认 `core.autocrlf=true`，在 Windows 上检出的文件一律是 CRLF。此时若把行尾写死成 `\n`，就会往一份 CRLF 文件里塞进一段 LF 区间——文件变成**混合行尾**：编辑器看着正常、pnpm 也照读，但 `git diff` 会显示整段被改过，而换台 `autocrlf=false` 的机器就完全复现不出来。实测三个产物文件（`nuxt.config.ts` CR=44/LF=80、`pnpm-workspace.yaml` CR=26/LF=32、`package.json` CR=25/LF=29）全是混合行尾。
+
+比丑更要命的是**比对**：拿工作区里的原文与内存中渲染出的基线（永远是 LF）逐字比，两边打印出来一模一样，差别全在 `\r` 上。本仓库的门禁就因此在每一台 Windows 检出上假红过一次。
+
+所以区间读写对行尾是**透明**的：`rewriteSection` 跟随文件自身的行尾写出，`readSection` 读回时一律归一成 LF 再交给调用方比对。判据取「出现过 `\r\n` 就整份按 CRLF 处理」——宁可整份统一成 CRLF，也不要混合，因为混合行尾同时骗过编辑器和肉眼。
 :::
 
 ::: info 只有一个区间在阶段 3 就写下去了
@@ -426,14 +435,15 @@ git status --short   # 期望：与初始化前一致（仅 .init-backup/ 为新
 
 ## 易错点与最佳实践
 
-::: danger 引擎实现里的六个坑
+::: danger 引擎实现里的七个坑
 
-1. **缩进累加**（见 5.3）。判据是「连跑两次 `--check`」而不是「跑一次看起来对」。
-2. **用模式匹配做删除**。任何 `**`、`*` 都不许出现在删除清单里。
-3. **`rmSync(..., { recursive: true })`**。既可能误删，也可能在受限环境里挂住不返回；用 `unlinkSync` + 空目录判断。
-4. **异常直接 `throw` 中断**。会留下半删状态；正确做法是累积失败、跑完、统一报告。
-5. **在 `--dry-run` 里也写文件**（哪怕只写日志）。`--dry-run` 必须是纯只读，否则用户不敢信任它。
-6. **用 `exec` 拼包管理器命令**。必须 `spawn(bin, [args])` 且 `shell: false`。
+1. **缩进累加**（见 6.3）。判据是「连跑两次 `--check`」而不是「跑一次看起来对」。
+2. **行尾写死 `\n`**（见 6.3）。判据是「在 CRLF 检出上跑一次」而不是「在 LF 机器上跑一次」——两种机器上的报错文本**一模一样**，只有不可见的 `\r` 不同。
+3. **用模式匹配做删除**。任何 `**`、`*` 都不许出现在删除清单里。
+4. **`rmSync(..., { recursive: true })`**。既可能误删，也可能在受限环境里挂住不返回；用 `unlinkSync` + 空目录判断。
+5. **异常直接 `throw` 中断**。会留下半删状态；正确做法是累积失败、跑完、统一报告。
+6. **在 `--dry-run` 里也写文件**（哪怕只写日志）。`--dry-run` 必须是纯只读，否则用户不敢信任它。
+7. **用 `exec` 拼包管理器命令**。必须 `spawn(bin, [args])` 且 `shell: false`。
 :::
 
 ::: tip 三条能省事的地方

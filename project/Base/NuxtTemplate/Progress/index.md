@@ -82,7 +82,7 @@
 
 | 验证项 | 命令 | 实测结果 |
 | --- | --- | --- |
-| 引擎自测 | `node scripts/selftest.mjs` | **76/76 通过**（A~H 九组，含变异测试），耗时 9 秒 |
+| 引擎自测 | `node scripts/selftest.mjs` | **79/79 通过**（A~H 九组，含变异测试），耗时 11 秒 |
 | 全矩阵扫描 | `node scripts/matrix.mjs --dry-run-all` | 名义 240 / 有效 **176** / 阻断 64；扫描通过 176、失败 0 |
 | 产物复核 | `node scripts/verify.mjs` | 12 项断言全部符合预期（跳过 2 项耗时段），引导器残留 0 |
 | 门禁清单 | `node scripts/run-gates.mjs` | 模板本体上 2 条 PASS、5 条 BLOCKED（未初始化，属预期） |
