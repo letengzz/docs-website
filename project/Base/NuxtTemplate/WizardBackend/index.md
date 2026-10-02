@@ -268,7 +268,9 @@ export function assertWizardAllowed(event: H3Event) {
 ```
 
 ::: tip 闸 3 的令牌怎么进页面
-在 `app/pages/setup/index.vue` 里用 `useRequestHeaders(['x-wizard-token'])`，配合一个 dev-only 的 Nitro 插件，在 HTML 首次渲染时把服务端生成的随机 token 注入到 `nuxtApp.payload` 里。这样令牌**不会被任何跨站页面读到**（CSRF 场景下攻击者读不到响应体），而正常页面能拿到。
+dev-only 的 Nitro 插件挂 `render:html` 钩子，在 HTML 首次渲染时把进程级令牌写成一行 `<script>window.__WIZARD__={...}</script>`，前端从它取出来放进请求头。这样令牌**不会被任何跨站页面读到**（CSRF 场景下攻击者读不到响应体），而真正渲染了这一页的人能拿到。
+
+注入**按路径白名单**下发，目前是 `/`、`/setup`、`/setup/progress` 各带一个末尾斜杠变体（见 `server/plugins/wizard-token.ts` 的 `WIZARD_PATHS`）。进度页必须在列：它是一整页，会被刷新、被收藏、在另一个标签页里打开 —— 而令牌只随 HTML 下发，整页加载拿不到它就只剩一串 403。从选择页点过去是**客户端跳转**，令牌已经在 `window` 上，所以只测「点按钮那条路」永远碰不到这个缺口。
 :::
 
 ::: danger 不要用「判断 referer」代替令牌

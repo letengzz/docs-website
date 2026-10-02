@@ -97,11 +97,11 @@ nuxt-universal/
 ├─ app/                              # 前端（Nuxt 4 约定目录）
 │  ├─ app.vue
 │  ├─ pages/
-│  │  ├─ index.vue                   # 引导期首页 = 技术栈选择页
+│  │  ├─ index.vue                   # 引导期首页 = 重定向到 /setup
 │  │  └─ setup/
 │  │     ├─ index.vue                # 选择页主界面（左技术栈 / 右 Nuxt 配置）
-│  │     └─ progress.vue             # 初始化进度面板
-│  ├─ components/wizard/             # 选择页专用组件（表单、分区、冲突提示）
+│  │     └─ progress.vue             # 初始化进度：独立整页
+│  ├─ components/wizard/             # 引导期专用组件（表单、分区、冲突提示、进度）
 │  ├─ assets/styles/
 │  │  ├─ tokens.css                  # 设计令牌：颜色 / 间距 / 圆角 / 字号
 │  │  ├─ base.css                    # 重置 + 基础排版（纯 CSS）

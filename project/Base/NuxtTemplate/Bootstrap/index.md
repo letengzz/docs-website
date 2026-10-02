@@ -31,14 +31,15 @@ nuxt-universal/
 │  ├─ pages/
 │  │  ├─ index.vue                       #   引导期：重定向到 /setup
 │  │  └─ setup/
-│  │     ├─ index.vue                    #   选择页主界面（三区布局）
-│  │     └─ progress.vue                 #   初始化进度面板（SSE 消费端）
+│  │     ├─ index.vue                    #   选择页主界面（只负责「选」）
+│  │     └─ progress.vue                 #   初始化进度：独立整页（SSE / 轮询锁文件）
 │  ├─ components/
-│  │  └─ wizard/                         #   选择页专用控件（随选择页一起删除）
+│  │  └─ wizard/                         #   引导期专用控件（随页面一起删除）
 │  │     ├─ OptionGroup.vue              #     单选/多选分组
 │  │     ├─ NuxtConfigPanel.vue          #     右侧 Nuxt 配置面板
 │  │     ├─ ConflictHint.vue             #     冲突与冗余提示
-│  │     └─ ProgressStream.vue           #     进度流渲染
+│  │     ├─ ProgressStream.vue           #     进度面板（只渲染会滚动的部分）
+│  │     └─ ProgressActions.vue          #     进度页底部吸附区（中断 / 重试）
 │  ├─ assets/styles/
 │  │  ├─ tokens.css                      #   ② 令牌层：颜色/间距/圆角/字号/动效
 │  │  ├─ base.css                        #   ③ 基础层：reset + 排版 + 表单基础样式
