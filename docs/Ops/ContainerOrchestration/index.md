@@ -11,7 +11,7 @@
 - [服务网格：Istio 流量与安全治理](ServiceMesh/index.md)
 - [弹性伸缩：HPA、VPA 与 KEDA](Autoscaling/index.md)
 - [多集群：联邦、MCS 与容灾](MultiCluster/index.md)
-- [GitOps：Argo CD 声明式交付](GitOps/index.md)
+- [GitOps：声明式持续交付](GitOps/index.md)（含理念、Argo CD、Flux、仓库设计、密钥、渐进发布、CI 分工、实战、FAQ 九个子页）
 - [容器与集群安全加固](Security/index.md)
 - [实战：GitOps + 弹性伸缩交付闭环](Practice/index.md)
 - [常见问题与最佳实践](FAQ/index.md)

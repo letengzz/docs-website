@@ -1,280 +1,83 @@
-# GitOps：Argo CD 声明式交付
+# GitOps：声明式持续交付
 
-GitOps 是**以 Git 为唯一事实来源（Single Source of Truth）**的交付模式：所有环境状态都写成代码放进 Git 仓库，由控制器（如 Argo CD）持续把集群状态同步到 Git 声明的状态。本页基于 **Argo CD 3.5**（2026-08 GA）编写，覆盖核心概念、ApplicationSet、漂移检测与回滚。
+<p style="text-align:center;"><img src="../assets/argocd-logo.png" style="zoom:75%;" /></p>
 
-## 核心概念与工作原理
+GitOps 是**以 Git 为唯一事实来源（Single Source of Truth）的持续交付模式**：环境的期望状态全部写成声明式清单放进 Git 仓库，由运行在集群内的控制器（Argo CD、Flux）持续对比「Git 里声明的状态」与「集群实际的状态」，发现漂移就自动对齐。本专题基于 **Argo CD 3.5** 与 **Flux 2.9**（2026-10 口径）编写，覆盖工具选型、配置仓库设计、多环境管理、密钥管理、渐进发布与回滚。
 
-![GitOps 工作流程](./../assets/gitops-flow.svg)
-
-| 概念 | 英文 | 说明 |
-| --- | --- | --- |
-| 声明式清单 | Declarative Manifest | 用 YAML 描述「集群应该长什么样」 |
-| 事实来源 | Source of Truth | Git 仓库中的清单是唯一权威 |
-| 同步 | Sync | 控制器把集群状态对齐到 Git 声明的状态 |
-| 漂移检测 | Drift Detection | 对比「期望（Git）」与「实际（集群）」 |
-| 自愈 | Self-Heal | 检测到漂移后自动把集群改回期望状态 |
-| 回滚 | Rollback | 把集群恢复到历史同步版本 |
-
-工作原理：Argo CD 通过 `Application` 声明「从哪个仓库、哪个路径、同步到哪个集群」→ 定期（默认 3 分钟）对比 Git 与集群差异 → 按 `syncPolicy` 自动或手动同步 → 把 `Sync Status` 与 `Health Status` 展示在 UI/CLI。
-
-## 版本现状
-
-::: info 版本说明
-Argo CD 3.5（2026-08 GA）带来 **ApplicationSet 增强、Source Hydrator、安全删除（Secure Delete）** 等能力。1.x/2.x 的旧概念（Application、Project、Repository）保持兼容，升级主要关注 CLI 与插件迁移。
+::: tip 一句话理解
+传统 CD 是「**推**」——CI 流水线拿着凭据把变更 `kubectl apply` 进集群；GitOps 是「**拉**」——集群里的控制器盯着 Git，自己把状态拉齐。凭据不出集群、变更全有审计、人手改的东西会被改回去，这三件事同时成立，就是 GitOps。
 :::
 
-## 安装 Argo CD
+## 版本状态（2026-10 口径）
+
+| 工具 | 当前主线 | 维护中 | 已 EOL | 说明 |
+| --- | --- | --- | --- | --- |
+| Argo CD | **3.5**（3.5.3 / 2026-09-14） | 3.4、3.3（至 3.6 GA） | 3.2（2026-08-04 EOL） | 每季度一个 minor，**仅最近 3 个 minor 收补丁**；3.6 计划 2026-11-03 GA；内置 Helm 4.2.1 / Kustomize 5.8.1，测试 K8s 1.33~1.36 |
+| Flux | **2.9**（v2.9.5 / 2026-08-31） | 2.8、2.7 | 2.6（随 2.9 宣布） | 升级前先跑 `flux migrate` 清理弃用 API；helm-controller 已支持 Helm v4；测试 K8s 1.34~1.36 |
+| External Secrets Operator | **2.11**（2026-09-18） | 2.10、2.9 | 更早版本（每个 minor 支持窗口很短） | 密钥同步事实标准，`external-secrets.io/v1` 稳定 API，约 41 个 Provider |
+| Sealed Secrets | **0.40**（2026-09-10） | 0.39.x | 更早版本 | 0.40 修复了 `/v1/rotate` 解密预言机安全问题，务必升级 |
+
+::: warning 关于版本窗口
+Argo CD 与 ESO 的支持窗口都很短（Argo CD 只保 3 个 minor；ESO 每个 minor 的 EOL 就是下一个 minor 发布日）。**不要攒大版本升级**，把「跟随 minor 升级」本身做成一条自动化流水线，才是 GitOps 团队管理自己的方式。
+:::
+
+## 快速上手（最小可用）
 
 ```shell
-# 使用官方 Helm Chart
+# 1. 安装 Argo CD
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 kubectl create ns argocd
-helm install argocd argo/argo-cd \
-  --namespace argocd \
-  --set server.service.type=LoadBalancer \
-  --set configs.params."server\.insecure"=true
+helm install argocd argo/argo-cd -n argocd
 
-# 获取初始密码
+# 2. 获取初始密码并登录 CLI
 kubectl -n argocd get secret argocd-initial-admin-secret \
   -o jsonpath="{.data.password}" | base64 -d
-
-# 安装 CLI 并登录
-curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
 argocd login <SERVER-ADDRESS> --insecure
-argocd account update-password
-```
 
-## 第一个 Application
-
-```yaml [application.yaml]
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: web
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/example/app-manifests.git
-    targetRevision: main
-    path: environments/prod
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: web
-  syncPolicy:
-    automated:
-      prune: true        # 删除 Git 中已移除的资源
-      selfHeal: true     # 漂移后自动恢复
-      allowEmpty: false
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
-```
-
-```shell
+# 3. 创建第一个 Application（指向你的清单仓库）
 kubectl apply -f application.yaml
+
+# 4. 验证同步状态
 argocd app get web
+# 期望：Sync Status: Synced、Health Status: Healthy
 ```
 
-## 漂移检测与自愈
+完整安装、Application 字段逐项解释与漂移自愈演练见 [Argo CD：安装与核心对象](ArgoCD/index.md)。
 
-### 演示漂移
+## 专题地图
 
-```shell
-# 手动篡改集群中的副本数（模拟有人直接 kubectl edit）
-kubectl -n web scale deploy/web --replicas=9
-
-# 观察 Argo CD 检测到 OutOfSync
-argocd app get web
-# STATUS: OutOfSync
-
-# selfHeal 开启后，控制器会在 3 分钟内改回 Git 声明的副本数
-kubectl -n web get deploy web -o jsonpath='{.spec.replicas}'
-```
-
-### 关闭自动同步时的操作
-
-```yaml [application-manual.yaml]
-syncPolicy: {}   # 不自动同步
-```
-
-```shell
-argocd app sync web
-argocd app sync web --prune
-argocd app sync web --revision <commit-hash>   # 同步到指定提交
-```
-
-## ApplicationSet：多环境/多集群声明
-
-```yaml [applicationset-envs.yaml]
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: web-envs
-spec:
-  goTemplate: true
-  generators:
-    - list:
-        elements:
-          - env: dev
-          - env: prod
-  template:
-    metadata:
-      name: 'web-{{.env}}'
-    spec:
-      project: default
-      source:
-        repoURL: https://github.com/example/app-manifests.git
-        targetRevision: main
-        path: 'environments/{{.env}}'
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: 'web-{{.env}}'
-      syncPolicy:
-        automated: {prune: true, selfHeal: true}
-        syncOptions: [CreateNamespace=true]
-```
-
-```shell
-kubectl apply -f applicationset-envs.yaml
-argocd app list | grep web-
-```
-
-新增环境只需在 `list` 里加一行，Argo CD 自动生成对应的 Application——这就是「用代码管理交付」。
-
-## 回滚
-
-```shell
-# 查看历史
-argocd app history web
-
-# 回滚到第 3 个修订
-argocd app rollback web 3
-
-# 或直接同步到旧提交（更符合 GitOps 语义）
-git revert HEAD --no-edit
-git push origin main
-argocd app sync web
-```
-
-::: tip 提示
-GitOps 语义下**优先用 Git revert**：把仓库改回旧提交，让所有环境跟随 Git 回滚；`argocd app rollback` 适合临时快速止血，但会让集群状态与 Git 不一致，事后必须补一次同步。
-:::
-
-## 与 CI 的分工
-
-| 阶段 | 工具 | 产物 |
+| 页面 | 内容 | 你将学会 |
 | --- | --- | --- |
-| CI：构建 | GitHub Actions / GitLab CI | 应用镜像、测试报告 |
-| CI：更新清单 | 构建脚本 `kustomize set image` / `helm upgrade` 提交 | Git 新提交 |
-| CD：同步 | Argo CD | 集群状态对齐 Git |
+| [GitOps 理念与工作原理](Overview/index.md) | 四原则、推 vs 拉、适用边界 | 判断什么该进 GitOps、什么不该 |
+| [Argo CD：安装与核心对象](ArgoCD/index.md) | Application、Project、同步策略、RBAC | 从零装好并管住一个 Argo CD |
+| [Flux：另一条主线](FluxCD/index.md) | GitOps Toolkit、Kustomization、HelmRelease | 选型 Argo CD 还是 Flux |
+| [配置仓库设计与多环境](RepoStructure/index.md) | monorepo vs 分仓、overlay、晋级 | 设计一套不烂尾的清单仓库 |
+| [密钥管理](Secrets/index.md) | ESO、Sealed Secrets、SOPS 三路线 | 密钥进 Git 又不泄密 |
+| [渐进发布与回滚](ProgressiveDelivery/index.md) | Sync Waves、Hooks、Canary、git revert | 发布分波走，回滚一条命令 |
+| [镜像更新与 CI 分工](ImageUpdate/index.md) | CI 只构建、谁改镜像标签 | 划清 CI 与 CD 的责任边界 |
+| [实战：博客平台 GitOps 交付](Practice/index.md) | 多环境 + 密钥 + 发布 + 回滚闭环 | 照着做完一套完整落地 |
+| [常见问题与最佳实践](FAQ/index.md) | 排错决策树、六类高频坑 | 出问题知道从哪查 |
 
-```yaml [.github/workflows/ci.yaml]
-name: CI
-on:
-  push:
-    branches: [main]
-jobs:
-  build-and-update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: docker/setup-buildx-action@v3
-      - uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - run: |
-          docker build -t ghcr.io/example/web:${{ github.sha }} .
-          docker push ghcr.io/example/web:${{ github.sha }}
-      - name: Update manifests
-        run: |
-          cd manifests
-          kustomize edit set image ghcr.io/example/web:${{ github.sha }}
-          git config user.name "CI"
-          git config user.email "ci@example.com"
-          git commit -am "chore: update web image to ${{ github.sha }}"
-          git push
-```
+## 与相邻专题的分工
 
-CI 只负责「构建 + 提交新清单」，**部署动作完全由 Argo CD 完成**——这是 GitOps 与「CI 直接 kubectl apply」的本质区别。
+| 专题 | 它讲什么 | 与本专题的边界 |
+| --- | --- | --- |
+| [Kubernetes](../../Kubernetes/index.md) | 平台自带能力：Pod、Deployment、Service | 本专题讲这些清单**怎么被交付进集群** |
+| [Terraform](../../Terraform/index.md) | 基础设施层的声明式交付（集群、网络、存储本身） | IaC 建**机器与集群**，GitOps 交付**集群里跑的应用**；两套事实来源不要混在一个仓库 |
+| [Helm](../Helm/index.md) | 把应用打包成 Chart | Helm 负责**渲染出清单**，Argo CD/Flux 负责**把清单同步进集群**——GitOps 里 Helm 是渲染引擎不是部署工具 |
+| [服务网格 Istio](../ServiceMesh/index.md) | 流量与安全治理的运行时行为 | 网格全部配置都是 CRD，天然适合进 Git；渐进发布的每个中间状态都要落盘 |
+| [多集群](../MultiCluster/index.md) | 集群联邦与跨集群形态 | ApplicationSet 按集群生成 Application，是跨集群配置分发的落点 |
+| [CI/CD（工具）](../../../Tools/CICD/index.md) | 流水线设计与执行 | CI 在流水线里跑，CD 的「最后一公里」从流水线挪进集群内控制器 |
 
-## 易错点与最佳实践
-
-::: danger 常见问题
-1. **`prune: false` 导致资源残留**：Git 里删掉的清单不会清理，测试环境越滚越乱。生产开启 `prune: true`，但先在小环境验证。
-2. **Self-Heal 与手工运维冲突**：有人直接 `kubectl scale`，3 分钟后被改回——这不是 bug，是 GitOps 的约定。所有变更走 Git。
-3. **Secret 进 Git**：明文 Secret 提交后从没真正“删除”，需轮换密钥。用 sealed-secrets、external-secrets 或 SOPS 加密。
-4. **多环境路径写错**：ApplicationSet 模板变量拼错导致 dev 同步到了 prod 路径。加 `goTemplate` 校验与 dry-run。
-5. **忘记给 Argo CD RBAC**：跨项目越权访问。用 Project 的 `sourceRepos`/`destinations` 限定边界。
+::: tip 阅读路径
+第一次接触 GitOps：Overview → ArgoCD → Practice，两天可以跑通闭环。要给团队做选型：Overview → FluxCD → RepoStructure → Secrets。已在生产：直接看 ProgressiveDelivery 与 FAQ。
 :::
-
-::: tip 最佳实践
-- 仓库按 `environments/<env>` 分层，用 Kustomize overlay 或 Helm values 区分环境，避免复制粘贴。
-- 开启 `selfHeal` 的团队必须约定「集群只读、变更只走 Git」，否则会出现拉锯战。
-- 用 **ApplicationSet** 管理多环境/多集群，新增环境只改清单不加配置。
-- 把 `argocd app sync` 与回滚记录进审计日志，配合 Slack/飞书通知。
-- 定期用 `argocd app list` + `argocd app get` 巡检全部应用，避免失管 Application。
-:::
-
-## 实战：GitOps 交付 + 回滚闭环
-
-```shell
-# 1. 准备清单仓库（environments/prod/deployment.yaml）
-#    git init && 提交 deployment.yaml 与 service.yaml
-
-# 2. 创建 Application（见上文 application.yaml）
-kubectl apply -f application.yaml
-
-# 3. 等待首次同步
-argocd app wait web --health
-
-# 4. 修改清单副本数为 5，提交推送
-#    Argo CD 自动同步，观察副本数变化
-kubectl -n web get deploy web -o jsonpath='{.spec.replicas}'
-
-# 5. 回滚：git revert + push，观察自动回到 2 副本
-
-# 6. 演练漂移自愈：kubectl scale 到 9，3 分钟后回到 Git 声明值
-kubectl -n web scale deploy/web --replicas=9
-sleep 200
-kubectl -n web get deploy web -o jsonpath='{.spec.replicas}'
-```
-
-## 验证方式
-
-```shell
-# 应用状态
-argocd app list
-argocd app get web
-argocd app history web
-
-# UI
-argocd appset get web-envs
-
-# 健康检查
-kubectl -n argocd get applications,applicationsets
-kubectl -n argocd get pods -l app.kubernetes.io/name=argocd-server
-```
-
-预期：`Sync Status: Synced`、`Health Status: Healthy`；手动漂移在自愈窗口内被纠正；UI 中可以清楚看到「期望 vs 实际」差异视图。
-
-## 相关专题与分工
-
-- [服务网格：Istio 流量与安全治理](../ServiceMesh/index.md)：本专题讲**声明怎么进集群**——Application / ApplicationSet 怎么写、漂移怎么检测与自愈、回滚怎么保证原子性，管的是「期望状态 → 实际状态」这条同步链路；网格专题讲**声明里写什么**——VirtualService 的匹配与路由、DestinationRule 的熔断与连接池、PeerAuthentication 的 mTLS 模式、Sidecar/Ambient 怎么装。两者的接口是同一件事：**网格的全部配置都是 K8s 自定义资源（CRD），因此天然适合放进 Git 由 Argo CD 同步**——Istio 官方推荐的 `istioctl install --set ...` 只是起步，生产环境更稳的做法是把 `Istiod` 的安装清单与流量策略都纳入 GitOps 仓库。
-
-  ::: tip 一条实践建议
-  网格的渐进式发布（[流量管理：匹配、路由与灰度](../ServiceMesh/TrafficManagement/index.md)）天然要求「改一次策略 → 观察指标 → 再改一次」，每个中间状态都必须落盘。把它交给 GitOps，回滚就是 `git revert` + 一次同步，比记着一串 `kubectl apply` 的历史可靠得多。
-  :::
-- [多集群：联邦、MCS 与容灾](../MultiCluster/index.md)：网格的多集群控制面要靠 ApplicationSet 按集群分发配置，两者一起才构成跨集群容灾闭环。
-- [Kubernetes](../../Kubernetes/index.md)：CRD、`kubectl` 与控制器模式的前置知识。
 
 ## 参考资料
 
 - Argo CD 官方文档：<https://argo-cd.readthedocs.io/>
-- ApplicationSet 文档：<https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/>
-- Argo CD 3.5 发布说明：<https://github.com/argoproj/argo-cd/releases>
-- GitOps 原则（CNCF）：<https://opengitops.dev/>
+- Flux 官方文档：<https://fluxcd.io/flux/>
+- GitOps 原则（OpenGitOps，CNCF）：<https://opengitops.dev/>
+- Argo CD 发布与支持策略：<https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/>
+- External Secrets Operator：<https://external-secrets.io/>

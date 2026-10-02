@@ -167,6 +167,7 @@ latest（最新，仅 dev 使用）
 
 ## 相关专题
 
+- [GitOps · 镜像更新与 CI 分工](../../Ops/ContainerOrchestration/GitOps/ImageUpdate/index.md)：集群采用 GitOps 后，**部署动作从流水线挪进集群内控制器**，流水线的最后一环变成「向配置仓提交晋级 PR」——本页讲流水线怎么设计，该页讲 CI/CD 责任边界怎么划
 - [完整项目交付 · 测试策略与门禁](../../../Others/ProjectDelivery/Testing/index.md)：覆盖率**按模块**设阈值的理由、三档数据隔离的取舍、flaky 当天修或删
 - [完整项目交付](../../../Others/ProjectDelivery/index.md)：本页讲流水线**自身**怎么设计（分阶段、制品、通知），该专题讲**阶段顺序为什么按「失败代价」排**、以及五阶段如何把既有门禁一一挂上去
 

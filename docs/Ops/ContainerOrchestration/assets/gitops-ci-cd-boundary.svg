@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ga" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+    <marker id="gr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d85a4a"/>
+    </marker>
+    <marker id="gg" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .git { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .cd  { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; }
+    .k8s { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .warn{ fill: #fdeeee; stroke: #d85a4a; stroke-width: 1.5; }
+    .mut { fill: #f5f5f7; stroke: #999; stroke-width: 1.2; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <text class="t2" x="450" y="32">镜像 tag 怎么进 Git：两条自动化路线 + 一条人肉兜底</text>
+
+  <rect class="cd" x="40" y="60" width="220" height="90"/>
+  <text x="150" y="86" class="t2">CI 流水线</text>
+  <text class="small" x="150" y="108">构建镜像 → 推仓库</text>
+  <text class="small" x="150" y="126">跑测试 → 产出报告</text>
+  <text class="small" x="150" y="142">到此为止，不碰集群</text>
+
+  <rect class="git" x="640" y="60" width="220" height="90"/>
+  <text x="750" y="86" class="t2">配置仓库</text>
+  <text class="small" x="750" y="108">overlays/dev/ 的 tag 变更</text>
+  <text class="small" x="750" y="126">Git 历史记录每次上线</text>
+  <text class="small" x="750" y="142">Argo CD 盯着它自动同步</text>
+
+  <rect class="k8s" x="340" y="220" width="220" height="80"/>
+  <text x="450" y="246" class="t2">路线 A：控制器自动改</text>
+  <text class="small" x="450" y="266">argocd-image-updater</text>
+  <text class="small" x="450" y="284">Flux image-automation</text>
+
+  <rect class="k8s" x="40" y="220" width="220" height="80"/>
+  <text x="150" y="246" class="t2">路线 B：CI 提 PR</text>
+  <text class="small" x="150" y="266">流水线改 tag 后开 PR</text>
+  <text class="small" x="150" y="284">prod 环境必须人工批准</text>
+
+  <rect class="warn" x="640" y="220" width="220" height="80"/>
+  <text x="750" y="246" class="t2">路线 C：人肉兜底</text>
+  <text class="small" x="750" y="266">紧急修复直接改 tag</text>
+  <text class="small" x="750" y="284">仍走 Git 提交，事后补单</text>
+
+  <line x1="260" y1="120" x2="640" y2="110" marker-end="url(#gg)" stroke-dasharray="4 3"/>
+  <line x1="150" y1="150" x2="150" y2="220" marker-end="url(#ga)"/>
+  <line x1="450" y1="220" x2="600" y2="150" marker-end="url(#ga)"/>
+  <line x1="750" y1="150" x2="750" y2="220" marker-end="url(#gr)"/>
+
+  <text class="small" x="450" y="340">判据：dev 用 A（快）、prod 用 B（可审批可追溯）、事故热修用 C（快且有痕）。</text>
+  <text class="small" x="450" y="362">反模式：CI 里藏集群 kubeconfig 直接 kubectl apply —— 凭据泄露面大、无审计、与 GitOps 事实源打架。</text>
+  <text class="small" x="450" y="384">无论哪条路线，「改镜像 tag」这个动作本身必须以 Git 提交的形式发生。</text>
+
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ga" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+    <marker id="gr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d85a4a"/>
+    </marker>
+    <marker id="gg" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .git { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .cd  { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; }
+    .k8s { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .warn{ fill: #fdeeee; stroke: #d85a4a; stroke-width: 1.5; }
+    .mut { fill: #f5f5f7; stroke: #999; stroke-width: 1.2; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <text class="t2" x="440" y="32">Flux 2.9：GitOps Toolkit 控制器分工</text>
+
+  <rect class="git" x="60" y="70" width="220" height="70"/>
+  <text x="170" y="96">Git / OCI 制品仓库</text>
+  <text class="small" x="170" y="116">清单或 Helm chart</text>
+
+  <rect class="cd" x="60" y="190" width="220" height="70"/>
+  <text x="170" y="214">source-controller</text>
+  <text class="small" x="170" y="232">GitRepository / OCIRepository</text>
+  <text class="small" x="170" y="248">拉取并校验，产出 Artifact</text>
+  <line x1="170" y1="140" x2="170" y2="190" marker-end="url(#ga)"/>
+
+  <rect class="k8s" x="380" y="150" width="200" height="70"/>
+  <text x="480" y="176">kustomize-controller</text>
+  <text class="small" x="480" y="196">Kustomization CR → SSA 应用</text>
+  <line x1="280" y1="215" x2="380" y2="195" marker-end="url(#ga)"/>
+
+  <rect class="k8s" x="380" y="260" width="200" height="70"/>
+  <text x="480" y="286">helm-controller</text>
+  <text class="small" x="480" y="306">HelmRelease CR（支持 Helm v4）</text>
+  <line x1="280" y1="245" x2="380" y2="285" marker-end="url(#gg)"/>
+
+  <rect class="cd" x="660" y="150" width="180" height="70"/>
+  <text x="750" y="176">notification-controller</text>
+  <text class="small" x="750" y="196">事件 → 飞书/Slack/Webhook</text>
+
+  <rect class="cd" x="660" y="260" width="180" height="70"/>
+  <text x="750" y="286">image-automation</text>
+  <text class="small" x="750" y="306">新镜像 → 自动提交 PR</text>
+
+  <line x1="580" y1="180" x2="660" y2="180" marker-end="url(#ga)"/>
+  <line x1="580" y1="295" x2="660" y2="295" marker-end="url(#gg)"/>
+
+  <text class="small" x="440" y="368">与 Argo CD 的差异：Flux 没有 UI 与 Application 对象，一切皆 CR + kubectl/flux CLI；细粒度组合，按需安装控制器</text>
+
+</svg>

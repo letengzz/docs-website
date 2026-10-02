@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ga" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+    <marker id="gr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d85a4a"/>
+    </marker>
+    <marker id="gg" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .git { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .cd  { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; }
+    .k8s { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .warn{ fill: #fdeeee; stroke: #d85a4a; stroke-width: 1.5; }
+    .mut { fill: #f5f5f7; stroke: #999; stroke-width: 1.2; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <text class="t2" x="440" y="32">Application：把「仓库里的路径」绑定到「集群里的命名空间」</text>
+
+  <rect class="git" x="40" y="70" width="300" height="130"/>
+  <text x="190" y="94" class="t2">source（从哪读）</text>
+  <text class="small" x="190" y="118">repoURL: 清单仓库地址</text>
+  <text class="small" x="190" y="136">path: environments/prod</text>
+  <text class="small" x="190" y="154">targetRevision: main</text>
+  <text class="small" x="190" y="176"> Helm chart / Kustomize 均可</text>
+
+  <rect class="k8s" x="540" y="70" width="300" height="130"/>
+  <text x="690" y="94" class="t2">destination（写到哪）</text>
+  <text class="small" x="690" y="118">server: 集群 API 地址</text>
+  <text class="small" x="690" y="136">namespace: web</text>
+  <text class="small" x="690" y="154">集群凭据留在 Argo CD 内</text>
+  <text class="small" x="690" y="176">跨集群经他处注册</text>
+
+  <rect class="cd" x="290" y="250" width="300" height="100"/>
+  <text x="440" y="274" class="t2">Project：租户边界</text>
+  <text class="small" x="440" y="296">sourceRepos 限定可读哪些仓库</text>
+  <text class="small" x="440" y="314">destinations 限定可写哪些集群/命名空间</text>
+  <text class="small" x="440" y="332">RBAC 按项目分权，default 项目禁用于生产</text>
+
+  <line x1="340" y1="140" x2="540" y2="140" marker-end="url(#ga)"/>
+  <text class="small" x="440" y="128">Application 声明绑定</text>
+  <line x1="190" y1="200" x2="330" y2="250" marker-end="url(#gg)"/>
+  <line x1="690" y1="200" x2="550" y2="250" marker-end="url(#gg)"/>
+
+  <text class="small" x="440" y="372">syncPolicy 决定「怎么写」：automated.prune / selfHeal、syncOptions、重试策略</text>
+
+</svg>

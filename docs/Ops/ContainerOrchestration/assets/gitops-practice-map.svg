@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ga" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+    <marker id="gr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d85a4a"/>
+    </marker>
+    <marker id="gg" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .git { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .cd  { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; }
+    .k8s { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .warn{ fill: #fdeeee; stroke: #d85a4a; stroke-width: 1.5; }
+    .mut { fill: #f5f5f7; stroke: #999; stroke-width: 1.2; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <text class="t2" x="450" y="32">实战拓扑：博客平台的 GitOps 交付闭环</text>
+
+  <rect class="cd" x="40" y="70" width="250" height="80"/>
+  <text x="165" y="96" class="t2">GitHub Actions（CI）</text>
+  <text class="small" x="165" y="118">构建 blog 镜像 → ghcr.io</text>
+  <text class="small" x="165" y="136">通过后向配置仓库开 PR</text>
+
+  <rect class="git" x="340" y="70" width="250" height="80"/>
+  <text x="465" y="96" class="t2">config-repo（事实源）</text>
+  <text class="small" x="465" y="118">base + overlays/{dev,prod}</text>
+  <text class="small" x="465" y="136">sealed-secrets 密文入库</text>
+
+  <rect class="k8s" x="620" y="70" width="250" height="80"/>
+  <text x="745" y="96" class="t2">ESO 2.11</text>
+  <text class="small" x="745" y="118">ExternalSecret → 云 KMS</text>
+  <text class="small" x="745" y="136">产出 DB 密码等原生 Secret</text>
+
+  <rect class="k8s" x="150" y="240" width="280" height="130"/>
+  <text x="290" y="264" class="t2">dev 集群 / 命名空间 blog-dev</text>
+  <text class="small" x="290" y="288">Application: blog-dev</text>
+  <text class="small" x="290" y="306">automated + selfHeal + prune</text>
+  <text class="small" x="290" y="324">MySQL: StatefulSet + PVC</text>
+  <text class="small" x="290" y="342">冒烟：/healthz + 登录 + 发文</text>
+
+  <rect class="k8s" x="480" y="240" width="280" height="130"/>
+  <text x="620" y="264" class="t2">prod 集群 / 命名空间 blog-prod</text>
+  <text class="small" x="620" y="288">ApplicationSet 生成</text>
+  <text class="small" x="620" y="306">手动同步 + PR 审批</text>
+  <text class="small" x="620" y="324">Sync Wave：迁移 → 后端 → 入口</text>
+  <text class="small" x="620" y="342">回滚：git revert + 一次同步</text>
+
+  <line x1="290" y1="150" x2="340" y2="150" marker-end="url(#ga)" stroke-dasharray="4 3"/>
+  <line x1="465" y1="150" x2="290" y2="240" marker-end="url(#gg)"/>
+  <line x1="560" y1="150" x2="620" y2="240" marker-end="url(#ga)"/>
+  <line x1="700" y1="150" x2="650" y2="240" marker-end="url(#ga)"/>
+
+  <text class="small" x="450" y="404">八步验收见正文：装 Argo CD → 建仓库 → 双环境 Application → 密钥接 ESO →</text>
+  <text class="small" x="450" y="422">CI 提 PR → 自动/审批同步 → 漂移自愈演练 → git revert 回滚演练。</text>
+
+</svg>

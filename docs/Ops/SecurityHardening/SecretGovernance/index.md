@@ -4,6 +4,10 @@
 
 密钥治理的核心原则只有一句：**不落库、不进 Git、最小可见、可轮换、可追溯、可吊销**。
 
+::: info 「不进 Git」在 GitOps 里怎么落地
+GitOps 要求一切状态进 Git，密钥是唯一例外。工程上的答案是「Git 里放指针或密文，不放明文」——External Secrets Operator（指针）、Sealed Secrets（集群公钥加密的密文）、SOPS+age（整文件加密）三条路线的选型与落地见 [GitOps · 密钥管理](../../ContainerOrchestration/GitOps/Secrets/index.md)；本页解决的是**组织级治理**（生命周期、轮换制度、泄露响应），两页互补。
+:::
+
 ## 一、密钥生命周期六阶段
 
 ![密钥与凭据治理：生命周期六阶段](../assets/security-secret-governance.svg)

@@ -97,7 +97,7 @@ spec:
 
 ::: danger 注意
 Secret 只是**不是明文**，base64 不是加密，任何有权限读取 API 的人都能解码。生产建议：
-1. 使用外部密钥管理（Vault、云厂商 KMS）+ External Secrets Operator。
+1. 使用外部密钥管理（Vault、云厂商 KMS）+ External Secrets Operator；密钥如何安全参与 GitOps 交付（ESO / Sealed Secrets / SOPS 三路线选型），见 [GitOps · 密钥管理](../ContainerOrchestration/GitOps/Secrets/index.md)。
 2. 开启 RBAC 限制 Secret 读取权限。
 3. 开启 etcd 加密存储（EncryptionConfiguration）。
 :::

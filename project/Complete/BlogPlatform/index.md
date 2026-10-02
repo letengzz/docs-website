@@ -69,8 +69,9 @@
 | 第 102 天 | 可见性收敛：读者端列表/详情对非 PUBLISHED 一律 404（存在性不泄漏）+ 缓存失效时序（提交后失效 + TTL 兜底）+ 读侧门禁 `visibility_smoke`（22 步） | ✅ |
 | 第 103 天 | 测试分层收口：断言按「依赖什么」分流，渲染器/状态矩阵/401 先于 403/分页边界上移 `mvn test`；分类与标签计数对齐 PUBLISHED 口径 | ✅ |
 | 第 104 天 | 判据收口与分类标签联调：smoke 中已上移断言下线 + `assertion_audit.py` 判据唯一性核查；`withCount` 服务端单一口径 + L1-L6 六条两端联调动作 | ✅ |
-| 第 105 天 | 评论写入链路：两级楼层模型定稿（`root_id = 自身 id`、`floor` 写时分配 + 唯一索引）+ 写入三约束（PUBLISHED 才可评 / 父评论同文章 / 已删不可回）+ `comment_smoke` 断言清单先行，门禁扩到八道 | ✅ 本日 |
-| 第 106-111 天 | 第 3 周续：评论读侧 / 全文搜索 / 前台 SSR / 联调与测试 | ⏳ |
+| 第 105 天 | 评论写入链路：两级楼层模型定稿（`root_id = 自身 id`、`floor` 写时分配 + 唯一索引）+ 写入三约束（PUBLISHED 才可评 / 父评论同文章 / 已删不可回）+ `comment_smoke` 断言清单先行，门禁扩到八道 | ✅ |
+| 第 106 天 | 评论读侧：楼层 keyset 分页（游标 = floor，禁 offset）+ 楼内回复全量返回 + 已删楼层「占位保留」口径（修订 S2）+ 契约 401/403 分支穷举评论路径（C1~C10）+ 审核状态读侧生效，`comment_smoke` 扩到 28 步 | ✅ 本日 |
+| 第 107-111 天 | 第 3 周续：全文搜索 / 前台 SSR / 联调与测试 | ⏳ |
 | 第 112-120 天 | 第 4 周：部署 / 监控 / 验收 | ⏳ |
 
 ## 各章节
@@ -88,7 +89,8 @@
 11. [测试分层收口](./TestLayers/index.md)：断言按依赖分流、上移与保留清单、`mvn test` 门禁与六道门禁顺序
 12. [判据收口与分类标签联调](./Consolidation/index.md)：判据唯一性自动核查、分类与标签的服务端单一口径、L1-L6 六条两端联调动作
 13. [评论链路：两级楼层的建模与写入](./Comments/index.md)：楼层模型与写时楼层号、写入三约束、`comment_smoke` 断言清单的分层定稿
-14. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+14. [评论读侧：楼层分页、占位渲染与契约穷举](./CommentRead/index.md)：keyset 分页与楼内回复全量、已删楼层占位口径、401/403 分支穷举、审核状态读侧生效
+15. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
 
 ## 在你自己的工程里跑起来
 
@@ -110,7 +112,7 @@ python api_smoke.py       --base http://127.0.0.1:18080 # 期望 cases = 9   pas
 python admin_smoke.py     --base http://127.0.0.1:18080 # 期望 steps = 37  passed = 37（会写数据，只对本地环境跑）
 python lifecycle_smoke.py --base http://127.0.0.1:18080 # 期望 steps = 24  passed = 24（状态迁移矩阵）
 python visibility_smoke.py --base http://127.0.0.1:18080 # 期望 steps = 22 passed = 22（读侧可见性）
-python comment_smoke.py   --base http://127.0.0.1:18080 # 期望 steps = 24 passed = 24（评论链路，第 105 天起）
+python comment_smoke.py   --base http://127.0.0.1:18080 # 期望 steps = 28 passed = 28（评论读写链路，第 105 天起、第 106 天扩）
 python lifecycle_smoke.py --selftest                    # 期望 selftest: 24/24 通过（证明断言不是恒真）
 ```
 

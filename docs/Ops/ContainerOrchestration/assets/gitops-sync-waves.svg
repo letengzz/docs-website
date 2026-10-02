@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ga" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+    <marker id="gr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d85a4a"/>
+    </marker>
+    <marker id="gg" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .git { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .cd  { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; }
+    .k8s { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .warn{ fill: #fdeeee; stroke: #d85a4a; stroke-width: 1.5; }
+    .mut { fill: #f5f5f7; stroke: #999; stroke-width: 1.2; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <text class="t2" x="440" y="32">Sync Waves 与 Hooks：一次同步内部的先后顺序</text>
+
+  <rect class="k8s" x="40" y="70" width="240" height="80"/>
+  <text x="160" y="94" class="t2">Wave -1：数据库迁移</text>
+  <text class="small" x="160" y="116">Job: flyway migrate</text>
+  <text class="small" x="160" y="134">必须成功，否则中止</text>
+
+  <rect class="cd" x="320" y="70" width="240" height="80"/>
+  <text x="440" y="94" class="t2">Wave 0：后端服务</text>
+  <text class="small" x="440" y="116">Deployment: svc-blog</text>
+  <text class="small" x="440" y="134">等迁移完成再滚动</text>
+
+  <rect class="git" x="600" y="70" width="240" height="80"/>
+  <text x="720" y="94" class="t2">Wave 1：前端与网关</text>
+  <text class="small" x="720" y="116">Ingress / 前端 Deployment</text>
+  <text class="small" x="720" y="134">最后对外暴露</text>
+
+  <line x1="280" y1="110" x2="320" y2="110" marker-end="url(#ga)"/>
+  <line x1="560" y1="110" x2="600" y2="110" marker-end="url(#ga)"/>
+  <text class="small" x="440" y="176">argocd.argoproj.io/sync-wave: "-1" / "0" / "1"</text>
+
+  <rect class="mut" x="40" y="210" width="380" height="90"/>
+  <text x="230" y="234" class="t2">PreSync Hook</text>
+  <text class="small" x="230" y="256">同步前执行（备份库、预检）</text>
+  <text class="small" x="230" y="274">hook-delete-policy: hook-succeeded</text>
+
+  <rect class="mut" x="460" y="210" width="380" height="90"/>
+  <text x="650" y="234" class="t2">PostSync Hook</text>
+  <text class="small" x="650" y="256">同步后执行（冒烟测试、通知）</text>
+  <text class="small" x="650" y="274">失败 → 同步标记 Degraded</text>
+
+  <text class="small" x="440" y="330">迁移用 Wave 还是 Hook？会反复跑、要和目标版本同生命周期 → Wave；一次性动作（备份/通知）→ Hook。</text>
+  <text class="small" x="440" y="352">Canary 级别的渐进发布交给 Argo Rollouts / Flagger，Wave 只管「先后的确定性」。</text>
+
+</svg>

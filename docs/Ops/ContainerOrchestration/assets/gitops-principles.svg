@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ga" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+    <marker id="gr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d85a4a"/>
+    </marker>
+    <marker id="gg" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .git { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .cd  { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; }
+    .k8s { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .warn{ fill: #fdeeee; stroke: #d85a4a; stroke-width: 1.5; }
+    .mut { fill: #f5f5f7; stroke: #999; stroke-width: 1.2; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <text class="t2" x="440" y="36">OpenGitOps 四原则（CNCF）</text>
+  <rect class="k8s" x="50" y="70" width="180" height="120"/>
+  <text x="140" y="100" class="t2">① 声明式</text>
+  <text class="small" x="140" y="124">状态用数据描述</text>
+  <text class="small" x="140" y="142">不写过程脚本</text>
+  <text class="small" x="140" y="160">「要什么」而非「怎么做」</text>
+
+  <rect class="git" x="250" y="70" width="180" height="120"/>
+  <text x="340" y="100" class="t2">② 版本化、不可变</text>
+  <text class="small" x="340" y="124">期望状态存 Git</text>
+  <text class="small" x="340" y="142">完整历史、可回退</text>
+  <text class="small" x="340" y="160">禁止 force push 事实源</text>
+
+  <rect class="cd" x="450" y="70" width="180" height="120"/>
+  <text x="540" y="100" class="t2">③ 自动拉取</text>
+  <text class="small" x="540" y="124">由集群内控制器拉取</text>
+  <text class="small" x="540" y="142">凭据最小化</text>
+  <text class="small" x="540" y="160">人不直接碰生产集群</text>
+
+  <rect class="warn" x="650" y="70" width="180" height="120"/>
+  <text x="740" y="100" class="t2">④ 持续对齐</text>
+  <text class="small" x="740" y="124">控制器不断调和</text>
+  <text class="small" x="740" y="142">漂移被检测并纠正</text>
+  <text class="small" x="740" y="160">或至少被大声告警</text>
+
+  <text class="small" x="440" y="230">四条同时满足才是 GitOps：只做①②是「配置进 Git」；只做③是「自动化部署」；</text>
+  <text class="small" x="440" y="250">没有④，手工改过的集群会悄悄偏离 Git 而无人知晓——漂移告警是最后一道防线。</text>
+  <text class="small" x="440" y="280">来源：opengitops.dev</text>
+
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ca" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .fl  { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .del { fill: #f5f5f7; stroke: #999; stroke-width: 1.2; stroke-dasharray: 5 3; }
+    .gate{ fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; }
+    .ok  { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <text class="t2" x="230" y="30">楼层 keyset 分页（游标 = 楼层号）</text>
+
+  <rect class="fl" x="40" y="60" width="180" height="46"/>
+  <text x="130" y="82">floor 1~3</text>
+  <text class="small" x="130" y="99">size=3，整层返回</text>
+  <rect class="fl" x="260" y="60" width="180" height="46"/>
+  <text x="350" y="82">floor 4~6</text>
+  <text class="small" x="350" y="99">cursor=3</text>
+  <rect class="fl" x="480" y="60" width="180" height="46"/>
+  <text x="570" y="82">floor 7~9</text>
+  <text class="small" x="570" y="99">cursor=6</text>
+  <rect class="del" x="700" y="60" width="170" height="46"/>
+  <text x="785" y="82">cursor=9 → next=null</text>
+  <text class="small" x="785" y="99">翻页终止</text>
+  <line x1="220" y1="83" x2="260" y2="83" marker-end="url(#ca)"/>
+  <line x1="440" y1="83" x2="480" y2="83" marker-end="url(#ca)"/>
+  <line x1="660" y1="83" x2="700" y2="83" marker-end="url(#ca)"/>
+
+  <rect class="ok" x="40" y="140" width="400" height="64"/>
+  <text x="240" y="164" class="t2">判据：遍历到底 = 全部楼层，无重复无遗漏</text>
+  <text class="small" x="240" y="184">游标单调（floor 写时分配、删除不回收）→ 新楼层只出现在尾部，已翻过的页不漂移</text>
+  <rect class="del" x="480" y="140" width="390" height="64"/>
+  <text x="675" y="164" class="t2">禁 offset：DELETE 后页内元素重复/漏读</text>
+  <text class="small" x="675" y="184">offset 深翻页还是 O(n) 扫描——量级一大，翻到第 50 页就是全表扫</text>
+
+  <text class="t2" x="230" y="250">已删楼层根：占位保留，讨论不陪葬</text>
+  <rect class="fl" x="40" y="275" width="200" height="90"/>
+  <text x="140" y="300">#7 楼（正常）</text>
+  <text class="small" x="140" y="320">作者昵称 + 内容</text>
+  <text class="small" x="140" y="340">回复按时间全量返回</text>
+  <rect class="del" x="280" y="275" width="200" height="90"/>
+  <text x="380" y="300">#8 楼（已删除）</text>
+  <text class="small" x="380" y="320">「该评论已删除」占位</text>
+  <text class="small" x="380" y="340">不返回内容与作者 id</text>
+  <rect class="fl" x="520" y="275" width="200" height="90"/>
+  <text x="620" y="300">#9 楼（正常）</text>
+  <text class="small" x="620" y="320">楼内回复保留展示</text>
+  <text class="small" x="620" y="340">「回复 @已删除用户」</text>
+  <text class="small" x="450" y="395">可见性门：匿名 → 401（先判）→ 文章不可见/不存在 → 404 → 身份已知无权限 → 403</text>
+</svg>

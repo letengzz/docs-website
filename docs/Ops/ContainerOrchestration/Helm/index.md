@@ -2,6 +2,10 @@
 
 Helm 是 Kubernetes 的**应用包管理器**，把一组 YAML 清单打包成可复用、可配置、可版本回滚的 **Chart**，解决「部署一套复杂应用要粘贴十几个 YAML」的问题。本页基于当前主线 **Helm 4** 编写，并说明与 Helm 3 的差异。
 
+::: tip 与 GitOps 的分工
+在 GitOps 体系里，Helm 是**渲染引擎**而不是部署工具：`helm template`/Argo CD 内置 Helm 把 Chart 渲染成清单，由 [GitOps 控制器](GitOps/index.md)负责同步进集群。直接在 CI 里跑 `helm upgrade` 等于回到推模式——凭据出集群、漂移无人管。
+:::
+
 ## 核心概念与工作原理
 
 ![Helm 工作流程](./../assets/helm-flow.svg)

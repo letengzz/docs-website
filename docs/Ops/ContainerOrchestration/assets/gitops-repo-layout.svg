@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ga" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+    <marker id="gr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d85a4a"/>
+    </marker>
+    <marker id="gg" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .git { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .cd  { fill: #fff3e0; stroke: #e8852d; stroke-width: 1.5; }
+    .k8s { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .warn{ fill: #fdeeee; stroke: #d85a4a; stroke-width: 1.5; }
+    .mut { fill: #f5f5f7; stroke: #999; stroke-width: 1.2; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #666; }
+    line { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <text class="t2" x="450" y="32">配置仓库布局（monorepo + Kustomize overlay）</text>
+
+  <rect class="git" x="40" y="60" width="330" height="250"/>
+  <text x="205" y="84" class="t2">apps-repo（应用代码）</text>
+  <text class="small" x="205" y="110">svc-blog/  Dockerfile + 源码</text>
+  <text class="small" x="205" y="130">CI 在这里：构建镜像 + 跑测试</text>
+  <text class="small" x="205" y="150">产出：镜像 + tag（不部署）</text>
+  <text class="small" x="205" y="180"> —— 两个仓库解耦 —— </text>
+  <text class="small" x="205" y="204">改代码不动环境，改环境不动代码</text>
+  <text class="small" x="205" y="224">回滚应用 = 配置仓库里的 tag 回退</text>
+  <text class="small" x="205" y="244">审计：谁在什么时候改了 prod 的什么</text>
+  <text class="small" x="205" y="272">Git 历史即变更记录，PR 即审批单</text>
+
+  <rect class="git" x="520" y="60" width="340" height="250"/>
+  <text x="690" y="84" class="t2">config-repo（环境清单）</text>
+  <text class="small" x="690" y="110">base/  公共 Deployment / Service</text>
+  <text class="small" x="690" y="132">overlays/dev/    replicas=1, 资源减半</text>
+  <text class="small" x="690" y="152">overlays/staging/ 压测配置</text>
+  <text class="small" x="690" y="172">overlays/prod/   replicas=3, HPA</text>
+  <text class="small" x="690" y="196">clusters/prod/   Application 清单</text>
+  <text class="small" x="690" y="220">铁律：overlay 只写「差异」</text>
+  <text class="small" x="690" y="240">禁止复制整份 YAML 改两行</text>
+  <text class="small" x="690" y="262">镜像 tag 只出现在 overlay</text>
+  <text class="small" x="690" y="288">kustomize build overlays/prod 可本地预览</text>
+
+  <text class="t2" x="450" y="348">晋级 = 把 dev 验证过的 tag 提 PR 到下一个 overlay</text>
+  <line x1="560" y1="300" x2="560" y2="358" marker-end="url(#ga)"/>
+  <text class="small" x="300" y="378">dev（自动合并）→ staging（自动或人工）→ prod（PR 审批 + Argo CD 同步）</text>
+  <text class="small" x="450" y="402">「晋级镜像而非改代码」：三个 overlay 引用同一镜像，不同 tag 才是需要审批的差异</text>
+
+</svg>
