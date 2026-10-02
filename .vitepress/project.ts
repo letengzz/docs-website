@@ -108,6 +108,7 @@ export const CompleteProject = [
           { text: "可见性收敛", link: "/project/Complete/BlogPlatform/Visibility/index.md" },
           { text: "测试分层收口", link: "/project/Complete/BlogPlatform/TestLayers/index.md" },
           { text: "判据收口与分类标签联调", link: "/project/Complete/BlogPlatform/Consolidation/index.md" },
+          { text: "评论链路：两级楼层的建模与写入", link: "/project/Complete/BlogPlatform/Comments/index.md" },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

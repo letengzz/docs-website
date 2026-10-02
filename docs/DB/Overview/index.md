@@ -47,6 +47,7 @@
 - [非关系型数据库](../NoRelational/index.md)（含 [Elasticsearch](../NoRelational/Elasticsearch/index.md)：分布式搜索与分析引擎，承担全文检索与日志分析职责）
 - [数据建模](../DataModeling/index.md)：建表之前先设计——三层模型、范式、ER 图与可执行 DDL 的完整方法论
 - [ClickHouse](../ClickHouse/index.md)：列式 OLAP 数据库——行为分析、监控指标、报表看板这类「写入大、更新少、聚合多」的场景
+- [图数据库 Neo4j](../Neo4j/index.md)：关系本身是业务（社交、推荐、权限、知识图谱）时的专用模型——两跳以上的关系查询不再靠 join 硬扛
 - [数据库中间件](../Middleware/index.md)：夹在应用与数据库之间的一层——读写分离、影子库压测、连接多路复用与代理运维，属于**「加在数据库前面的那一层」**而不是数据库本身
 
 ::: tip 学习路线的建议顺序

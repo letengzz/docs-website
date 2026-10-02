@@ -204,6 +204,23 @@ export const ClickHouse = [
     ],
   },
 ];
+export const Neo4j = [
+  {
+    text: "图数据库 Neo4j",
+    link: "/docs/DB/Neo4j/index.md",
+    items: [
+      { text: "图模型与 Neo4j 概述", link: "/docs/DB/Neo4j/Overview/index.md" },
+      { text: "安装与快速上手", link: "/docs/DB/Neo4j/Install/index.md" },
+      { text: "Cypher 查询语言", link: "/docs/DB/Neo4j/Cypher/index.md" },
+      { text: "索引与约束", link: "/docs/DB/Neo4j/IndexConstraint/index.md" },
+      { text: "图算法与 GDS", link: "/docs/DB/Neo4j/GDS/index.md" },
+      { text: "架构与集群", link: "/docs/DB/Neo4j/Cluster/index.md" },
+      { text: "应用集成", link: "/docs/DB/Neo4j/Integration/index.md" },
+      { text: "实战：社交关注图谱", link: "/docs/DB/Neo4j/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/Neo4j/FAQ/index.md" },
+    ],
+  },
+];
 export const TimeSeries = [
   {
     text: "时序数据库",

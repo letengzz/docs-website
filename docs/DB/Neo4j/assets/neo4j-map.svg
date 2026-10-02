@@ -1,0 +1,61 @@
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="360" fill="#f8fafc"/>
+  <text x="340" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#0b162a">Neo4j 专题地图</text>
+  <text x="340" y="56" text-anchor="middle" font-size="12" fill="#64748b">从「图模型」到「社交图谱实战」的九步路径</text>
+
+  <!-- row 1 -->
+  <g>
+    <rect x="30" y="80" width="190" height="64" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="125" y="106" text-anchor="middle" font-size="14" font-weight="600" fill="#0b162a">图模型与概述</text>
+    <text x="125" y="126" text-anchor="middle" font-size="11" fill="#64748b">节点·关系·属性 | 选型判据</text>
+  </g>
+  <g>
+    <rect x="245" y="80" width="190" height="64" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="340" y="106" text-anchor="middle" font-size="14" font-weight="600" fill="#0b162a">安装与快速上手</text>
+    <text x="340" y="126" text-anchor="middle" font-size="11" fill="#64748b">Docker | Browser | cypher-shell</text>
+  </g>
+  <g>
+    <rect x="460" y="80" width="190" height="64" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="555" y="106" text-anchor="middle" font-size="14" font-weight="600" fill="#0b162a">Cypher 查询语言</text>
+    <text x="555" y="126" text-anchor="middle" font-size="11" fill="#64748b">模式匹配 | MERGE | 参数化</text>
+  </g>
+  <line x1="220" y1="112" x2="245" y2="112" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="435" y1="112" x2="460" y2="112" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- row 2 -->
+  <g>
+    <rect x="30" y="176" width="190" height="64" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="125" y="202" text-anchor="middle" font-size="14" font-weight="600" fill="#0b162a">索引与约束</text>
+    <text x="125" y="222" text-anchor="middle" font-size="11" fill="#64748b">唯一性约束 | RANGE/TEXT/VECTOR</text>
+  </g>
+  <g>
+    <rect x="245" y="176" width="190" height="64" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="340" y="202" text-anchor="middle" font-size="14" font-weight="600" fill="#0b162a">图算法与 GDS</text>
+    <text x="340" y="222" text-anchor="middle" font-size="11" fill="#64748b">投影 | 中心性 | 社区检测</text>
+  </g>
+  <g>
+    <rect x="460" y="176" width="190" height="64" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="555" y="202" text-anchor="middle" font-size="14" font-weight="600" fill="#0b162a">架构与集群</text>
+    <text x="555" y="222" text-anchor="middle" font-size="11" fill="#64748b">Raft | 读写路由 | 因果一致性</text>
+  </g>
+
+  <!-- row 3 -->
+  <g>
+    <rect x="140" y="272" width="190" height="64" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+    <text x="235" y="298" text-anchor="middle" font-size="14" font-weight="600" fill="#0b162a">应用集成</text>
+    <text x="235" y="318" text-anchor="middle" font-size="11" fill="#64748b">Driver 6.x | 事务 | 双库同步</text>
+  </g>
+  <g>
+    <rect x="350" y="272" width="190" height="64" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="2.5"/>
+    <text x="445" y="298" text-anchor="middle" font-size="14" font-weight="700" fill="#0b162a">实战：社交关注图谱</text>
+    <text x="445" y="318" text-anchor="middle" font-size="11" fill="#64748b">共同关注 | 二度人脉 | 推荐</text>
+  </g>
+  <line x1="330" y1="304" x2="350" y2="304" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="560" y="304" text-anchor="middle" font-size="11" fill="#64748b">FAQ 全程陪跑</text>
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

@@ -36,6 +36,7 @@ export const nav = [
       { text: "数据建模", link: "/docs/DB/DataModeling" },
       { text: "数据库中间件", link: "/docs/DB/Middleware" },
       { text: "ClickHouse", link: "/docs/DB/ClickHouse" },
+      { text: "图数据库 Neo4j", link: "/docs/DB/Neo4j" },
       { text: "时序数据库", link: "/docs/DB/TimeSeries" },
     ]
   },

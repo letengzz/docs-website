@@ -1,0 +1,50 @@
+<svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="340" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="16" font-weight="700" fill="#0b162a">四类索引 × 三类约束：查询起点 + 数据底线</text>
+
+  <!-- indexes -->
+  <text x="140" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">索引（加速查询）</text>
+  <g>
+    <rect x="30" y="80" width="110" height="58" rx="8" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="85" y="104" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">RANGE</text>
+    <text x="85" y="122" text-anchor="middle" font-size="9.5" fill="#64748b">等值/范围/排序</text>
+  </g>
+  <g>
+    <rect x="155" y="80" width="110" height="58" rx="8" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="210" y="104" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">TEXT</text>
+    <text x="210" y="122" text-anchor="middle" font-size="9.5" fill="#64748b">前缀/包含</text>
+  </g>
+  <g>
+    <rect x="30" y="152" width="110" height="58" rx="8" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="85" y="176" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">POINT</text>
+    <text x="85" y="194" text-anchor="middle" font-size="9.5" fill="#64748b">空间距离</text>
+  </g>
+  <g>
+    <rect x="155" y="152" width="110" height="58" rx="8" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="210" y="176" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">VECTOR</text>
+    <text x="210" y="194" text-anchor="middle" font-size="9.5" fill="#64748b">向量相似（RAG）</text>
+  </g>
+  <text x="140" y="242" text-anchor="middle" font-size="10.5" fill="#64748b">BTREE 已不存在（5.x）</text>
+  <text x="140" y="262" text-anchor="middle" font-size="10.5" fill="#64748b">EXPLAIN 确认 IndexSeek</text>
+
+  <!-- constraints -->
+  <text x="480" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">约束（保证数据正确）</text>
+  <g>
+    <rect x="380" y="80" width="200" height="48" rx="8" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+    <text x="480" y="100" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">IS UNIQUE</text>
+    <text x="480" y="117" text-anchor="middle" font-size="9.5" fill="#64748b">身份唯一 | 自动带 RANGE 索引 | Community ✅</text>
+  </g>
+  <g>
+    <rect x="380" y="140" width="200" height="48" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="480" y="160" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">IS NOT NULL</text>
+    <text x="480" y="177" text-anchor="middle" font-size="9.5" fill="#64748b">属性必须存在 | 仅 Enterprise</text>
+  </g>
+  <g>
+    <rect x="380" y="200" width="200" height="48" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="480" y="220" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">IS :: TYPE</text>
+    <text x="480" y="237" text-anchor="middle" font-size="9.5" fill="#64748b">类型固定 | 仅 Enterprise</text>
+  </g>
+  <text x="480" y="278" text-anchor="middle" font-size="10.5" fill="#64748b">MERGE 写错时约束替你报错，而不是静默重复</text>
+
+  <line x1="330" y1="150" x2="370" y2="150" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+</svg>

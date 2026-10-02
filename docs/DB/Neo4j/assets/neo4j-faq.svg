@@ -1,0 +1,55 @@
+<svg viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="380" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="16" font-weight="700" fill="#0b162a">该不该引入图数据库？三问决策</text>
+
+  <g>
+    <rect x="230" y="56" width="220" height="52" rx="26" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="340" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0b162a">① 核心查询两跳以上？</text>
+    <text x="340" y="96" text-anchor="middle" font-size="10" fill="#64748b">且跳数会随业务变化</text>
+  </g>
+  <g>
+    <rect x="230" y="146" width="220" height="52" rx="26" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="340" y="168" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0b162a">② 关系有业务语义？</text>
+    <text x="340" y="186" text-anchor="middle" font-size="10" fill="#64748b">关注/授权/依赖，不只是连接</text>
+  </g>
+  <g>
+    <rect x="230" y="236" width="220" height="52" rx="26" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="340" y="258" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0b162a">③ 维护得起双库一致？</text>
+    <text x="340" y="276" text-anchor="middle" font-size="10" fill="#64748b">同步管道 + 补偿 + 监控</text>
+  </g>
+
+  <line x1="340" y1="108" x2="340" y2="146" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#f1)"/>
+  <line x1="340" y1="198" x2="340" y2="236" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#f1)"/>
+  <text x="352" y="130" font-size="10" fill="#16a34a">是 ↓</text>
+  <text x="352" y="222" font-size="10" fill="#16a34a">是 ↓</text>
+
+  <g>
+    <rect x="40" y="160" width="130" height="60" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="105" y="184" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a5f">留在关系型</text>
+    <text x="105" y="202" text-anchor="middle" font-size="9.5" fill="#64748b">一跳外键足够</text>
+  </g>
+  <line x1="230" y1="82" x2="118" y2="160" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#f2)"/>
+  <text x="150" y="118" font-size="10" fill="#b91c1c">否</text>
+
+  <g>
+    <rect x="40" y="250" width="130" height="60" rx="10" fill="#fef9c3" stroke="#eab308" stroke-width="1.5"/>
+    <text x="105" y="274" text-anchor="middle" font-size="12" font-weight="700" fill="#713f12">Redis 集合 / 硬扛</text>
+    <text x="105" y="292" text-anchor="middle" font-size="9.5" fill="#64748b">一跳交集可忍</text>
+  </g>
+  <line x1="230" y1="172" x2="118" y2="258" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#f2)"/>
+  <text x="150" y="212" font-size="10" fill="#b91c1c">否</text>
+
+  <g>
+    <rect x="510" y="236" width="130" height="60" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2.5"/>
+    <text x="575" y="260" text-anchor="middle" font-size="12.5" font-weight="700" fill="#065f46">上 Neo4j</text>
+    <text x="575" y="278" text-anchor="middle" font-size="9.5" fill="#065f46">三问全「是」</text>
+  </g>
+  <line x1="450" y1="262" x2="510" y2="264" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#f2)"/>
+  <text x="478" y="252" font-size="10" fill="#16a34a">是</text>
+
+  <text x="340" y="340" text-anchor="middle" font-size="11.5" fill="#334155">运行中遇到问题：建模坑（MERGE 重复）→ 查询坑（无索引/无界路径）→ 运维坑（一致性/备份），逐类分诊</text>
+  <defs>
+    <marker id="f1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker>
+    <marker id="f2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker>
+  </defs>
+</svg>

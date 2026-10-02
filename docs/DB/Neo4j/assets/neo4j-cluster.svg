@@ -1,0 +1,50 @@
+<svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="340" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="16" font-weight="700" fill="#0b162a">自治集群：Raft 多数派写 + 只读副本横向扩展</text>
+
+  <!-- app -->
+  <rect x="270" y="56" width="140" height="44" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="340" y="76" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0b162a">应用（Driver）</text>
+  <text x="340" y="92" text-anchor="middle" font-size="10" fill="#64748b">neo4j:// 路由 scheme</text>
+
+  <!-- primaries -->
+  <g>
+    <rect x="60" y="150" width="150" height="70" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="135" y="176" text-anchor="middle" font-size="12.5" font-weight="700" fill="#065f46">Primary ①（Leader）</text>
+    <text x="135" y="196" text-anchor="middle" font-size="10" fill="#065f46">接受写入 · Raft 领导者</text>
+  </g>
+  <g>
+    <rect x="265" y="150" width="150" height="70" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="340" y="176" text-anchor="middle" font-size="12.5" font-weight="700" fill="#065f46">Primary ②</text>
+    <text x="340" y="196" text-anchor="middle" font-size="10" fill="#065f46">多数派成员</text>
+  </g>
+  <g>
+    <rect x="470" y="150" width="150" height="70" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="545" y="176" text-anchor="middle" font-size="12.5" font-weight="700" fill="#065f46">Primary ③</text>
+    <text x="545" y="196" text-anchor="middle" font-size="10" fill="#065f46">多数派成员</text>
+  </g>
+  <line x1="300" y1="100" x2="160" y2="150" stroke="#10b981" stroke-width="2" marker-end="url(#k1)"/>
+  <text x="200" y="118" text-anchor="middle" font-size="10.5" fill="#047857">写 → 多数派确认</text>
+
+  <!-- replication arrows between primaries -->
+  <line x1="210" y1="185" x2="265" y2="185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#k2)"/>
+  <line x1="415" y1="185" x2="470" y2="185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#k2)"/>
+
+  <!-- secondary -->
+  <rect x="265" y="262" width="150" height="54" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="340" y="284" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e3a5f">Secondary（只读）</text>
+  <text x="340" y="302" text-anchor="middle" font-size="10" fill="#1e3a5f">读流量横向扩展 · 秒级滞后</text>
+  <line x1="340" y1="220" x2="340" y2="262" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#k3)"/>
+  <text x="410" y="246" text-anchor="middle" font-size="10.5" fill="#2563eb">异步复制</text>
+  <line x1="400" y1="100" x2="600" y2="248" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="620" y="200" text-anchor="middle" font-size="10.5" fill="#64748b">读 → 可路由到副本</text>
+
+  <text x="120" y="290" text-anchor="middle" font-size="10.5" fill="#b91c1c">因果一致性：读己之写必须</text>
+  <text x="120" y="308" text-anchor="middle" font-size="10.5" fill="#b91c1c">传 bookmarks 或读 Primary</text>
+
+  <defs>
+    <marker id="k1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#10b981"/></marker>
+    <marker id="k2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker>
+    <marker id="k3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#3b82f6"/></marker>
+  </defs>
+</svg>

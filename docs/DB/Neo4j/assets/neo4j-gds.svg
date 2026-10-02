@@ -1,0 +1,35 @@
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="300" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="16" font-weight="700" fill="#0b162a">GDS 三步流水线：投影 → 计算 → 释放</text>
+
+  <g>
+    <rect x="40" y="70" width="170" height="120" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="125" y="96" text-anchor="middle" font-size="13" font-weight="600" fill="#0b162a">① 图投影</text>
+    <text x="125" y="118" text-anchor="middle" font-size="10.5" fill="#64748b">gds.graph.project</text>
+    <text x="125" y="138" text-anchor="middle" font-size="10.5" fill="#64748b">子图装入内存（压缩）</text>
+    <text x="125" y="158" text-anchor="middle" font-size="10.5" fill="#64748b">方向 / 聚合可配置</text>
+  </g>
+  <g>
+    <rect x="255" y="70" width="170" height="120" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="340" y="96" text-anchor="middle" font-size="13" font-weight="600" fill="#0b162a">② 跑算法</text>
+    <text x="340" y="118" text-anchor="middle" font-size="10.5" fill="#64748b">stream：结果流回</text>
+    <text x="340" y="138" text-anchor="middle" font-size="10.5" fill="#64748b">write：写回节点属性</text>
+    <text x="340" y="158" text-anchor="middle" font-size="10.5" fill="#64748b">stats：只要统计值</text>
+  </g>
+  <g>
+    <rect x="470" y="70" width="170" height="120" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="1.5"/>
+    <text x="555" y="96" text-anchor="middle" font-size="13" font-weight="600" fill="#0b162a">③ 释放投影</text>
+    <text x="555" y="118" text-anchor="middle" font-size="10.5" fill="#64748b">gds.graph.drop</text>
+    <text x="555" y="138" text-anchor="middle" font-size="10.5" fill="#64748b">内存不自动回收</text>
+    <text x="555" y="158" text-anchor="middle" font-size="10.5" fill="#64748b">gds.graph.list 核查</text>
+  </g>
+  <line x1="210" y1="130" x2="255" y2="130" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#g1)"/>
+  <line x1="425" y1="130" x2="470" y2="130" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#g1)"/>
+
+  <text x="340" y="234" text-anchor="middle" font-size="12" fill="#334155">算法族：路径（怎么到）· 中心性（谁重要）· 社区（谁抱团）· 相似度（谁像谁）</text>
+  <text x="340" y="260" text-anchor="middle" font-size="11" fill="#64748b">Cypher 答「给定起点找局部」，GDS 答「对全图算一个量」</text>
+
+  <defs>
+    <marker id="g1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker>
+  </defs>
+</svg>

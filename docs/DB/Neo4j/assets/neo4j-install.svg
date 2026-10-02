@@ -1,0 +1,41 @@
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="300" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="16" font-weight="700" fill="#0b162a">上手路径：安装 → 连接 → 建模 → 查询</text>
+
+  <g>
+    <rect x="40" y="70" width="140" height="120" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="110" y="96" text-anchor="middle" font-size="13" font-weight="600" fill="#0b162a">① 起容器</text>
+    <text x="110" y="118" text-anchor="middle" font-size="10.5" fill="#64748b">docker run 5.26.31</text>
+    <text x="110" y="136" text-anchor="middle" font-size="10.5" fill="#64748b">7474 = Browser</text>
+    <text x="110" y="154" text-anchor="middle" font-size="10.5" fill="#64748b">7687 = Bolt（驱动）</text>
+  </g>
+  <g>
+    <rect x="220" y="70" width="140" height="120" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="290" y="96" text-anchor="middle" font-size="13" font-weight="600" fill="#0b162a">② 连接</text>
+    <text x="290" y="118" text-anchor="middle" font-size="10.5" fill="#64748b">Browser 交互探索</text>
+    <text x="290" y="136" text-anchor="middle" font-size="10.5" fill="#64748b">cypher-shell 脚本化</text>
+    <text x="290" y="154" text-anchor="middle" font-size="10.5" fill="#64748b">NEO4J_AUTH 设密码</text>
+  </g>
+  <g>
+    <rect x="400" y="70" width="140" height="120" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="470" y="96" text-anchor="middle" font-size="13" font-weight="600" fill="#0b162a">③ 建模</text>
+    <text x="470" y="118" text-anchor="middle" font-size="10.5" fill="#64748b">CREATE 节点 + 关系</text>
+    <text x="470" y="136" text-anchor="middle" font-size="10.5" fill="#64748b">标签分类型</text>
+    <text x="470" y="154" text-anchor="middle" font-size="10.5" fill="#64748b">关系带属性</text>
+  </g>
+  <g>
+    <rect x="580" y="70" width="70" height="120" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+    <text x="615" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#0b162a">④</text>
+    <text x="615" y="122" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">查询</text>
+    <text x="615" y="142" text-anchor="middle" font-size="10.5" fill="#64748b">MATCH</text>
+    <text x="615" y="160" text-anchor="middle" font-size="10.5" fill="#64748b">EXPLAIN</text>
+  </g>
+  <line x1="180" y1="130" x2="220" y2="130" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ai)"/>
+  <line x1="360" y1="130" x2="400" y2="130" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ai)"/>
+  <line x1="540" y1="130" x2="580" y2="130" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ai)"/>
+
+  <text x="340" y="240" text-anchor="middle" font-size="12" fill="#334155">验证收尾：Browser 出图、MATCH count 符合预期、EXPLAIN 出现 IndexSeek/LabelScan</text>
+  <defs>
+    <marker id="ai" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker>
+  </defs>
+</svg>

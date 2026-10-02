@@ -40,7 +40,7 @@ SCARD tags:post:1             # 数量
 SREM tags:post:1 java         # 删除
 
 # 集合运算
-SINTER set1 set2              # 交集（共同关注）
+SINTER set1 set2              # 交集（共同关注）——注意这是**一跳**：多跳（朋友的朋友）不再是集合运算的领地，见 [Neo4j 专题](../../../DB/Neo4j/index.md)
 SUNION set1 set2              # 并集
 SDIFF set1 set2               # 差集
 ```

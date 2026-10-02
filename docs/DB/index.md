@@ -6,4 +6,5 @@
 - [数据建模](DataModeling/index.md)
 - [数据库中间件](Middleware/index.md)
 - [ClickHouse](ClickHouse/index.md)
+- [图数据库 Neo4j](Neo4j/index.md)
 - [时序数据库](TimeSeries/index.md)
