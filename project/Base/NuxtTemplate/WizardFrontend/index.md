@@ -10,9 +10,9 @@
 
 | 区 | 分组 | 控件 | 默认值 | 影响面 |
 | --- | --- | --- | --- | --- |
-| 左 | UI 框架 | 单选卡片 ×5（无 / Element Plus / Ant Design Vue / Nuxt UI / Vuetify） | 无 | 依赖 + 自动导入配置 + 样式入口 |
-| 左 | CSS 预处理器 | 单选 ×4（无 / Sass / Less / Stylus） | 无 | 依赖 + 组件内样式语言 + Stylelint 配置 |
-| 左 | 原子化框架 | 单选 ×3（无 / UnoCSS / Tailwind CSS） | 无 | 依赖 + 构建插件 + 样式入口优先级 |
+| 左 | UI 框架 | 紧凑单选 ×5（无 / Element Plus / Ant Design Vue / Nuxt UI / Vuetify） | 无 | 依赖 + 自动导入配置 + 样式入口 |
+| 左 | CSS 预处理器 | 紧凑单选 ×4（无 / Sass / Less / Stylus） | 无 | 依赖 + 组件内样式语言 + Stylelint 配置 |
+| 左 | 原子化框架 | 紧凑单选 ×3（无 / UnoCSS / Tailwind CSS） | 无 | 依赖 + 构建插件 + 样式入口优先级 |
 | 右 | 渲染模式 | 单选 ×4（SSR / SPA / SSG / 混合） | SSR | `ssr` 开关 + `routeRules` + 部署形态 |
 | 右 | 模块 | 多选 ×6（Pinia / VueUse / i18n / Icon / Image / SEO） | Pinia、Icon | `modules` 数组 |
 | 右 | 工程 | 多选 + 单选混合（ESLint、测试栈、TS 严格度、包管理器、Docker） | ESLint、测试栈、严格 TS | 依赖 + 配置文件 |
@@ -25,14 +25,17 @@
 
 | 控件形态 | 用于 | 交互 |
 | --- | --- | --- |
-| 卡片单选 | UI 框架、预处理器、原子化、渲染模式 | 整卡可点，选中态有边框 + 底色 + 角标；卡片内含一行「会装什么」 |
+| 紧凑单选行 | UI 框架、预处理器、原子化（左栏三组） | 每项占一行「○ 名称」，整行可点；选中态是底色 + 加粗变色；「说明 + 会装什么」收进 `title`，悬停可见 |
+| 卡片单选 | 渲染模式（右栏） | 整卡可点，选中态有边框 + 底色；卡面直接写「会装什么」——右栏每项说明更长，压成一行反而读不动 |
 | 复选行 | 模块、工程开关 | 左侧复选框，右侧标题 + 一行说明；勾选后展开「附带文件」提示 |
-| 下拉单选 | 包管理器、TS 严格度 | 选项少但有 3 个以上取值时用下拉，避免卡片占位 |
+| 下拉单选 | 包管理器 | 取值少、语义简单，用下拉避免占版面 |
 | 只读预览 | 最终依赖列表 | 底部折叠区，实时汇总「将要安装的依赖」 |
 
-### 1.2 「会装什么」必须写在卡片上
+### 1.2 「会装什么」必须有地方看得到
 
-每张卡片底部显示一行小字，例如 Element Plus 卡片显示「`element-plus` + 自动导入 + 中文语言包」。原因是**选择成本主要来自不确定**——用户不是不知道该选哪个，而是不知道选了会带来什么。
+左栏三组每项只有一句话，用卡片会把纵向空间吃光、反而看不清有哪几个候选，于是压成「一行一个候选」，把说明收进元素的 `title`；右栏每项说明更长，继续用卡片，信息**直接写在卡面上**。
+
+两种形态遵循同一条标准：**选择成本主要来自不确定**——用户不是不知道该选哪个，而是不知道选了会带来什么。所以信息不删，只决定它是「一直占着版面」还是「需要时才展开」。用 `title` 而不是自造 tooltip 还有一层原因：按 HTML-AAM，`title` 就是表单控件的 accessible description，屏幕阅读器拿到的是同一份内容，不是只给鼠标用的。
 
 ## 2. 选择模型：`options.json`
 
@@ -137,17 +140,27 @@ export type Selection = Record<string, string | string[]>;
 
 ## 3. 从模型到表单
 
-渲染规则很直白，不需要写复杂抽象：
+呈现形态不由 `multiple` + 选项数猜出来，而是写在 `options.json` 的 `renderAs` 字段里。引擎不解释它的样式，只保证取值合法——加一个分组、换一种形态都不用改前端：
 
-| `multiple` | 选项数 | 控件 |
+| `renderAs` | 用于 | 长什么样 |
 | --- | --- | --- |
-| `false` | ≤ 6 | 卡片单选组 |
-| `false` | > 6 | 原生 `<select>` |
-| `true` | 任意 | 复选行列表 |
+| `radios` | 左栏三组 | 纵向紧凑单选行，每项一行「○ 名称」 |
+| `cards` | 渲染模式 | 卡片单选，说明直接写在卡面 |
+| `checks` | 模块、工程开关 | 复选行，勾选后展开「附带文件」 |
+| `select` | 包管理器 | 原生 `<select>` |
 
 ```vue [app/components/wizard/OptionGroup.vue]
 <script setup lang="ts">
-import type { OptionGroup, Selection } from '~/utils/wizard/option-model';
+/**
+ * 渲染一个分组。四种控件形态由 options.json 的 `renderAs` 决定，组件不猜。
+ *
+ * 为什么用原生 <input type="radio|checkbox">：
+ * ① 键盘导航、屏幕阅读器语义、焦点管理全部白送，自己用 div 造要写两百行还写不对；
+ * ② 引导期是零依赖的（dependencies 里只有 nuxt），不能用组件库；
+ * ③ 这些组件会在初始化时被删除 —— 不值得为它引入任何依赖。
+ * 样式靠 :checked 与 :has() 完成，见 app/assets/styles/wizard.css。
+ */
+import type { OptionGroup, OptionItem, Selection } from '~/utils/wizard/option-model';
 
 const props = defineProps<{
   group: OptionGroup;
@@ -168,19 +181,45 @@ function toggle(value: string, checked: boolean) {
   const next = checked ? [...new Set([...list, value])] : list.filter(v => v !== value);
   emit('update:modelValue', { ...props.modelValue, [props.group.key]: next });
 }
+
+/** 紧凑行的悬停提示：说明 + 会装什么 + 实验性原因，拼成一段 */
+function hintFor(opt: OptionItem) {
+  const parts = [opt.desc, opt.note];
+  if (opt.experimental) parts.push(`实验性：${opt.experimentalReason}`);
+  return parts.filter(Boolean).join('\n');
+}
 </script>
 
 <template>
   <fieldset class="group">
     <legend>{{ group.label }}</legend>
+    <p v-if="group.desc" class="group__desc">{{ group.desc }}</p>
 
-    <template v-if="!group.multiple">
+    <!-- radios：左栏三组，一行一个候选，说明收进 title -->
+    <div v-if="group.renderAs === 'radios'" class="radio-stack">
       <label
         v-for="opt in group.options"
         :key="opt.value"
-        class="card"
+        class="radio"
         :class="{ 'is-active': current === opt.value, 'is-blocked': blocked.has(opt.value) }"
+        :title="hintFor(opt)"
       >
+        <input
+          type="radio"
+          :name="group.key"
+          :value="opt.value"
+          :checked="current === opt.value"
+          :disabled="blocked.has(opt.value)"
+          @change="pick(opt.value)"
+        >
+        <span class="radio__label">{{ opt.label }}</span>
+        <span v-if="opt.experimental" class="radio__flag">实验性</span>
+      </label>
+    </div>
+
+    <!-- cards：渲染模式，说明直接写在卡面上 -->
+    <div v-else-if="group.renderAs === 'cards'" class="card-stack">
+      <label v-for="opt in group.options" :key="opt.value" class="card">
         <input
           type="radio"
           :name="group.key"
@@ -193,9 +232,10 @@ function toggle(value: string, checked: boolean) {
         <span class="desc">{{ opt.desc }}</span>
         <span v-if="opt.note" class="note">{{ opt.note }}</span>
       </label>
-    </template>
+    </div>
 
-    <template v-else>
+    <!-- checks：模块与工程开关（多选） -->
+    <div v-else-if="group.renderAs === 'checks'" class="row-stack">
       <label v-for="opt in group.options" :key="opt.value" class="row">
         <input
           type="checkbox"
@@ -204,12 +244,24 @@ function toggle(value: string, checked: boolean) {
           :disabled="blocked.has(opt.value)"
           @change="toggle(opt.value, ($event.target as HTMLInputElement).checked)"
         >
-        <span>
-          <strong>{{ opt.label }}</strong>
-          <span class="desc">{{ opt.desc }}</span>
-        </span>
+        <strong>{{ opt.label }}</strong>
+        <span class="desc">{{ opt.desc }}</span>
       </label>
-    </template>
+    </div>
+
+    <!-- select：包管理器 -->
+    <div v-else class="select-row">
+      <select :value="String(current ?? '')" @change="pick(($event.target as HTMLSelectElement).value)">
+        <option
+          v-for="opt in group.options"
+          :key="opt.value"
+          :value="opt.value"
+          :disabled="blocked.has(opt.value)"
+        >
+          {{ opt.label }}
+        </option>
+      </select>
+    </div>
   </fieldset>
 </template>
 ```
@@ -224,7 +276,7 @@ function toggle(value: string, checked: boolean) {
 
 | level | 语义 | 页面表现 | 能否提交 |
 | --- | --- | --- | --- |
-| `block` | 组合会导致构建失败或运行冲突 | 冲突卡片置灰、卡片下方红字说明、底部按钮禁用并提示「有 N 项冲突」 | ❌ |
+| `block` | 组合会导致构建失败或运行冲突 | 冲突项置灰、下方红字说明、底部按钮禁用并提示「有 N 项冲突」 | ❌ |
 | `warn` | 能跑，但有冗余或体积代价 | 黄色提示条，列出「为什么冗余、建议怎么改」 | ✅ |
 | `info` | 纯粹的知识性说明 | 灰色提示条 | ✅ |
 
@@ -291,22 +343,30 @@ idle ──(加载 schema)──► selecting ──(点「预览变更」)─�
 
 | 组件 | 职责 | 删除时机 |
 | --- | --- | --- |
-| `OptionGroup.vue` | 渲染一个分组的控件（卡片 / 下拉 / 复选行） | 初始化时删除 |
-| `NuxtConfigPanel.vue` | 右区容器 + 模块与工程开关 | 初始化时删除 |
+| `OptionGroup.vue` | 渲染一个分组的控件（紧凑单选 / 卡片 / 复选 / 下拉，由 `renderAs` 决定） | 初始化时删除 |
+| `NuxtConfigPanel.vue` | 右区容器（渲染模式、模块、工程开关、包管理器） | 初始化时删除 |
 | `ConflictHint.vue` | 三层规则的呈现（红/黄/灰） | 初始化时删除 |
 | `DependencyPreview.vue` | 实时依赖清单 | 初始化时删除 |
 | `ProgressStream.vue` | 消费 SSE，渲染五阶段进度与日志 | 初始化时删除 |
 | `useWizard.ts` | 状态机与接口调用 | 初始化时删除 |
+
+::: danger 组件之间引用必须写显式 `import`
+
+这六个组件都在 `app/components/wizard/` 下，Nuxt 会**按目录加前缀注册**：自动导入的名字是 `WizardOptionGroup`，而不是 `OptionGroup`。所以在别的组件里直接写 `<OptionGroup>` 不会报错、也不会警告，Vue 只会把它当成一个未解析的自定义元素 —— 页面表现是**那一块整片空白**，且控制台干净得让人无从查起（本页的右栏就这么空过一次）。
+
+规范：`app/components/wizard/` 内部的互相引用一律 `import OptionGroup from '~/components/wizard/OptionGroup.vue'`，不依赖自动导入。另注意 `<script setup>` 里一个标识符只能有一个声明——同文件里既要用 `OptionGroup` 这个**类型**又要用它这个**组件**时，把类型改成 `OptionGroupSpec` 之类的别名。
+:::
 
 ## 8. 验证方式
 
 ```shell
 pnpm dev
 # ① 打开 http://localhost:3000/setup
-#    期望：左区三个分组、右区三个分组、底部按钮齐备；未加载 schema 时显示骨架态
+#    期望：左区三个分组（每项一行单选）、右区四个分组、底部按钮齐备；未加载 schema 时显示骨架态
+#    左栏悬停任一选项，应弹出含「说明 + 会装什么」的原生 tooltip
 
 # ② 制造一个 block 冲突：UI 选 Nuxt UI、原子化选 UnoCSS
-#    期望：两张卡片置灰 + 红字说明 + 底部按钮禁用并显示「有 1 项冲突」
+#    期望：两个冲突项置灰 + 红字说明 + 底部按钮禁用并显示「有 1 项冲突」
 
 # ③ 改成 UI = Nuxt UI、原子化 = Tailwind CSS
 #    期望：冲突消失，提示条变为 info（说明 Tailwind 已随 Nuxt UI 安装）

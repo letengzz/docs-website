@@ -188,7 +188,7 @@ button:disabled {
 
 ### 3.3 布局层 `app/assets/styles/wizard.css`
 
-只放选择页的三区栅格与卡片样式，**它整体属于引导期资产**：
+只放选择页的三区栅格与四种控件形态（紧凑单选 / 卡片 / 复选 / 下拉）的样式，**它整体属于引导期资产**：
 
 ```css [app/assets/styles/wizard.css]
 .wizard {
