@@ -370,3 +370,55 @@ mvn test -Dtest='MarkdownRendererTest,SlugifyTest,PostStatusTest,PostVisibilityT
 | 用例去 `mvn test` 还是留 smoke？ | 按断言对象分流（见可见性页第三节表） |
 
 **下一步（第 103 天）**：① 完成上移清单（渲染器、状态机、契约 401/403 分支 → MockMvc），`mvn test` 全绿后确认第 2 周验收；② 分类/标签的文章计数同步收口（下线文章不计数）；③ 进入第 3 周评论链路。
+
+本项 ① ② 已在本日落地，见下方第 103 天段落；③ 顺延至第 105 天。
+
+## 2026-10-02（第 103 天）：测试分层收口 —— 把用例搬进 `mvn test`
+
+:::info 本日为文档产出
+沿用「只沉淀文档」口径。本页记录 [测试分层收口](../TestLayers/index.md) 的分层判据、上移清单与六道门禁顺序，代码在你自己的工程里实现后验证。
+:::
+
+**做了什么**：
+
+1. **给分层定一条判据**：**这条断言依赖什么？** 依赖越少就放得越靠上。纯函数（渲染、slugify、状态迁移矩阵）与 HTTP 语义（401 先于 403、方法与状态码、分页边界）上移 `mvn test`；**跨进程时序**（缓存失效窗口、连跑两遍、重启后状态）与**端到端编排**（建文→发布→读到→下线→404）留在 smoke——上移不是消灭冒烟脚本；
+2. **上移清单按「风险」而不是按「难度」排**：状态迁移矩阵由 `lifecycle_smoke` 抽检 9 格改为 **`@CsvSource` 穷举 16 格**；`auth_smoke` 里的四类 401 与「VIEWER 403 / EDITOR 200」搬进 `AuthFilterTest`；渲染器边界（转义、表格列数不齐降级、引用块层级）改为参数化用例；分页边界独立成 `PaginationTest`；`slugify` 从覆盖盲区补上；
+3. **401 先于 403 必须在快门禁里钉死**：它一旦被改反，攻击者能用 403 与 401 的差别枚举路径存在性——这是安全缺陷，不该等到十秒级的 smoke 才发现，而且很容易被一次「统一异常处理」的重构顺手改坏；
+4. **三条纪律原样带进 JUnit**：测试数据带随机位（同秒撞 slug 的坑第 98 天踩过）、断言相对基线（分页断言「差值等于被过滤条数」而不是 `total == 7`）、**断言必须能被证伪**（改坏一格必须报红，否则删掉）；
+5. **顺手收口分类与标签计数**（第 102 天待办 ②）：计数口径**仅统计 PUBLISHED**，与读者端列表用同一条件；计数进 SQL 的 `GROUP BY` 而不是内存过滤（内存过滤会把分页 `total` 算错）；**不做冗余计数列**，改为只读时实时统计——冗余列要靠状态迁移维护，漏减一处就永久错；用例落在 MockMvc 层，且必须包含「`unpublish` 后计数减回去」这一条；
+6. **六道门禁定序**：按「越靠左越便宜」排为 静态编译 → 单元测试 → 结构 → 契约 → 行为冒烟 → 迁移矩阵；并补一条纪律：**同一断言只在一个门禁里存在**，上移后要删掉 smoke 里的对应抽检，否则两种失败信号指向同一处代码。
+
+**如何验证**：
+
+```shell
+# ① 先证门禁能被证伪（这一步失败，后面全绿也不算数）
+#    把 PostStatusTest 中 "DRAFT, unpublish, DRAFT, STATE_CONFLICT" 的期望改成 ok
+mvn test -Dtest=PostStatusTest
+# ✅ 期望：FAIL，且失败信息指向 DRAFT --unpublish--> 那一格（不是整类报错）
+
+# ② 还原后全绿：秒级，不起服务、不连数据库
+mvn test
+# ✅ 期望：Tests run: NN, Failures: 0, Errors: 0, Skipped: 0 → BUILD SUCCESS
+
+# ③ 第 2 周验收：五道既有门禁仍全绿（先停服务 → 再 install → 后启动）
+cd your-project/service && mvn install -DskipTests
+cd blog-application && export SERVER_PORT=18080 && mvn spring-boot:run
+# 另开终端：
+python skeleton_check.py                             # 期望 checks = 27  failed = 0
+python api_smoke.py        --base http://127.0.0.1:18080   # 期望 cases = 9   passed = 9
+python admin_smoke.py      --base http://127.0.0.1:18080   # 期望 steps = 37  passed = 37
+python lifecycle_smoke.py  --base http://127.0.0.1:18080   # 期望 steps = 24  passed = 24
+python visibility_smoke.py --base http://127.0.0.1:18080   # 期望 steps = 22  passed = 22
+```
+
+**问题与决策**：
+
+| 问题 | 决策 |
+| --- | --- |
+| 单元测试要不要起真库？ | 不起，用 `local` profile 的内存仓储；真库路径由 flyway 迁移与双方言 parity 门禁覆盖 |
+| 要不要引入 Testcontainers？ | 第 4 周部署阶段再评估。现在没有依赖数据库方言的断言，先别为用不到的隔离付启动成本 |
+| 时间相关断言怎么做？ | 注入 `Clock`，测试传固定时钟。直接读 `System.currentTimeMillis()` 的代码无法稳定断言「保留 `publishedAt`、清空 `offlineAt`」 |
+| 计数用冗余列还是实时统计？ | 实时 `GROUP BY`。冗余列要多一个失效入口，当前数据量下收益不成比例 |
+| 上移后 smoke 里的重复用例怎么办？ | **删掉**。同一断言只在那一层存在，否则两边都会漂 |
+
+**下一步（第 104 天）**：① 把契约里 401/403 分支与分页边界**穷举**（本日建了骨架，缺的是分支覆盖），`CategoryCountTest` 扩到标签维度；② 第 2 周完全收口后出「第 2 周验收小结」对照判据逐条勾选；③ 第 105 天进入第 3 周：评论两级嵌套与审核状态，测试策略继续沿用本日的分层判据（评论树构建是纯函数 → 上移 `mvn test`；防刷限流是时序 → 留 smoke）。

@@ -14,3 +14,7 @@
 - [Collectors 收集器详解](Collectors/index.md)
 - [实战：订单统计与数据处理](Practice/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+## 相关专题
+
+- [高性能 Java](../../../HighPerformanceJava/index.md)：Stream 的开销来源与边界——装箱拆箱的分配、捕获变量的 lambda 与逃逸分析失效、并行流在什么数据量与什么操作下才真的更快。本专题讲**怎么用对**（可读性、组合方式、`Optional` 的语义），那里讲**这批写法各自值多少纳秒**，以及什么时候不该用 Stream

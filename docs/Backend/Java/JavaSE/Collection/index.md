@@ -11,3 +11,7 @@ Java 集合框架（Java Collections Framework）是标准库中用于存储和�
 - [并发集合](Concurrent/index.md)
 - [源码要点](Source/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+## 相关专题
+
+- [高性能 Java](../../../HighPerformanceJava/index.md)：集合在**真实负载**下的开销——自动装箱与拆箱的分配成本、扩容时的数组拷贝、`hashCode` 分布对桶冲突的影响，以及这些开销怎么用 JMH 测出来。本专题讲**复杂度与用法**（O(1) 与 O(log n) 的区别、怎么选容器），那里讲同样一次操作实际花了多少纳秒、省在哪儿

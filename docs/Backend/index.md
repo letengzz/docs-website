@@ -4,6 +4,7 @@
 - [Go](Go/index.md)
 - [Go 微服务](GoMicroservices/index.md)
 - [Java](Java/index.md)
+- [高性能 Java](HighPerformanceJava/index.md)
 - [Python](Python/index.md)
 - [Python Web 框架](PythonWeb/index.md)
 - [认证与授权](Auth/index.md)

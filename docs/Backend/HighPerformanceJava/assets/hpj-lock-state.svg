@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="400" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">synchronized 的锁状态：现行 JDK 只有三级，不是四级</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">网上「无锁 → 偏向锁 → 轻量级锁 → 重量级锁」的锁升级口诀停留在 JDK 8 之前</text>
+
+  <!-- removed biased -->
+  <rect x="40" y="76" width="700" height="96" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="58" y="98" font-size="12" fill="#475569" font-weight="bold">已移除：偏向锁（Biased Locking）</text>
+  <text x="58" y="120" font-size="10" fill="#64748B">JDK 15（JEP 374）：默认禁用，相关参数标记废弃，需要 -XX:+UseBiasedLocking 才能打开</text>
+  <text x="58" y="140" font-size="10" fill="#64748B">JDK 18（JDK-8256425）：UseBiasedLocking 与配套的 5 个参数全部作废——传了只打印警告，不再有任何效果</text>
+  <text x="58" y="160" font-size="10" fill="#7F1D1D">移除原因：现代应用普遍是线程池 + 并发集合，「锁总被同一个线程持有」的前提不成立，撤销的停顿代价超过了收益</text>
+
+  <!-- three levels -->
+  <rect x="40" y="188" width="220" height="86" rx="9" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="150" y="212" text-anchor="middle" font-size="11.5" fill="#1E3A8A" font-weight="bold">① 无锁</text>
+  <text x="150" y="234" text-anchor="middle" font-size="9.5" fill="#1E40AF">没有竞争，进出同步块</text>
+  <text x="150" y="251" text-anchor="middle" font-size="9.5" fill="#1E40AF">只剩内存屏障成本</text>
+  <text x="150" y="268" text-anchor="middle" font-size="9" fill="#64748B">可控：把同步块写短</text>
+
+  <rect x="280" y="188" width="220" height="86" rx="9" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
+  <text x="390" y="212" text-anchor="middle" font-size="11.5" fill="#92400E" font-weight="bold">② 轻量级锁</text>
+  <text x="390" y="234" text-anchor="middle" font-size="9.5" fill="#92400E">CAS 抢标记位，抢不到</text>
+  <text x="390" y="251" text-anchor="middle" font-size="9.5" fill="#92400E">就自旋等待一小会儿</text>
+  <text x="390" y="268" text-anchor="middle" font-size="9" fill="#64748B">可控：缩短临界区、减少争抢</text>
+
+  <rect x="520" y="188" width="220" height="86" rx="9" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="630" y="212" text-anchor="middle" font-size="11.5" fill="#991B1B" font-weight="bold">③ 重量级锁</text>
+  <text x="630" y="234" text-anchor="middle" font-size="9.5" fill="#7F1D1D">膨胀到 ObjectMonitor，</text>
+  <text x="630" y="251" text-anchor="middle" font-size="9.5" fill="#7F1D1D">线程 park 由内核唤醒</text>
+  <text x="630" y="268" text-anchor="middle" font-size="9" fill="#64748B">一定不能长期停留在这里</text>
+
+  <path d="M 260 231 L 280 231" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#arrL)"/>
+  <path d="M 500 231 L 520 231" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#arrL)"/>
+  <text x="150" y="292" text-anchor="middle" font-size="9" fill="#64748B">竞争加剧 ↓</text>
+
+  <!-- notes -->
+  <rect x="40" y="306" width="700" height="80" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="58" y="328" font-size="11" fill="#334155" font-weight="bold">两个必须要澄清的实现细节</text>
+  <text x="58" y="350" font-size="10" fill="#475569">① JDK 23 起 HotSpot 用新的轻量级锁实现（Lightweight Locking）替代旧的 legacy stack locking；JDK 25 仍可用 -XX:LockingMode=1 切回旧实现，JDK 26 起该开关已不可用</text>
+  <text x="58" y="370" font-size="10" fill="#475569">② 想知道你手上 JDK 的真实默认值，用 -XX:+PrintFlagsFinal -version ｜ findstr /i locking（Linux 用 grep）看，不要照抄文章里的结论</text>
+
+  <defs>
+    <marker id="arrL" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M 0 0 L 6 3 L 0 6 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

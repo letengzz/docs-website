@@ -106,6 +106,7 @@ export const CompleteProject = [
           { text: "文章下线动作", link: "/project/Complete/BlogPlatform/Lifecycle/index.md" },
           { text: "Markdown 渲染能力补齐", link: "/project/Complete/BlogPlatform/Rendering/index.md" },
           { text: "可见性收敛", link: "/project/Complete/BlogPlatform/Visibility/index.md" },
+          { text: "测试分层收口", link: "/project/Complete/BlogPlatform/TestLayers/index.md" },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

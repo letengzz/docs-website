@@ -1,5 +1,5 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
-import { Auth, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, Java, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, SpringCloud } from "./backend";
+import { Auth, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, HighPerformanceJava, Java, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, SpringCloud } from "./backend";
 
 import { AI_Agent, AI_AgentFramework, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontMicroFrontend, FrontWebAssembly, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
@@ -73,7 +73,7 @@ export const sidebar = {
     {
       text: "后端",
       collapsed: true,
-      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...Auth, ...MessageQueue, ...Microservices, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce],
+      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce],
     },
   ],
   "/docs/DB": [
@@ -141,6 +141,7 @@ export const sidebar = {
   "/docs/Backend/Go": Go,
   "/docs/Backend/GoMicroservices": GoMicroservices,
   "/docs/Backend/Java": Java,
+  "/docs/Backend/HighPerformanceJava": HighPerformanceJava,
   "/docs/Backend/MessageQueue": MessageQueue,
   "/docs/Backend/Auth": Auth,
   "/docs/Backend/Microservices": Microservices,

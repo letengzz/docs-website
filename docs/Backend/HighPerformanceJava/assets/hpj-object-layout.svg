@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="400" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">对象头：从 96 / 128 位压到 64 位（JDK 25 · JEP 519）</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">同一份业务代码、同一份堆参数，只因为头变小了，堆占用与缓存局部性就变了</text>
+
+  <!-- traditional -->
+  <rect x="40" y="76" width="700" height="112" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.5"/>
+  <text x="58" y="98" font-size="12" fill="#9A3412" font-weight="bold">传统布局（64 位、开启压缩指针）：12 字节头 + 字段 + 对齐填充</text>
+
+  <rect x="60" y="110" width="330" height="34" rx="4" fill="#FED7AA" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="225" y="132" text-anchor="middle" font-size="10.5" fill="#7C2D12">Mark Word（64 位）：哈希码 31 + 分代年龄 4 + 锁标记</text>
+  <rect x="392" y="110" width="200" height="34" rx="4" fill="#FFEDD5" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="492" y="132" text-anchor="middle" font-size="10.5" fill="#7C2D12">类指针（32 位压缩）</text>
+  <rect x="594" y="110" width="126" height="34" rx="4" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="657" y="132" text-anchor="middle" font-size="10.5" fill="#991B1B">对齐填充 4 字节</text>
+  <text x="58" y="166" font-size="10" fill="#7C2D12">关掉压缩类指针时类指针变 8 字节，头 = 16 字节；数组还要额外的 4 字节长度字段</text>
+  <text x="58" y="182" font-size="10" fill="#9A3412">9 个 int 的数组：头 16 + 长度 4 + 数据 36 → 60 → 补齐到 64 字节，头占了 25%</text>
+
+  <!-- compact -->
+  <rect x="40" y="204" width="700" height="118" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+  <text x="58" y="226" font-size="12" fill="#065F46" font-weight="bold">紧凑对象头（-XX:+UseCompactObjectHeaders）：单个 64 位字承载全部元数据</text>
+
+  <rect x="60" y="238" width="112" height="34" rx="4" fill="#D1FAE5" stroke="#059669" stroke-width="1.2"/>
+  <text x="116" y="255" text-anchor="middle" font-size="9.5" fill="#065F46">类指针 22 位</text>
+  <text x="116" y="267" text-anchor="middle" font-size="8" fill="#047857">按 1KB 分块寻址</text>
+  <rect x="178" y="238" width="118" height="34" rx="4" fill="#D1FAE5" stroke="#059669" stroke-width="1.2"/>
+  <text x="237" y="255" text-anchor="middle" font-size="9.5" fill="#065F46">哈希码 31 位</text>
+  <text x="237" y="267" text-anchor="middle" font-size="8" fill="#047857">不变</text>
+  <rect x="302" y="238" width="104" height="34" rx="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="354" y="255" text-anchor="middle" font-size="9.5" fill="#1E3A8A">Valhalla 预留</text>
+  <text x="354" y="267" text-anchor="middle" font-size="8" fill="#1D4ED8">4 位</text>
+  <rect x="412" y="238" width="96" height="34" rx="4" fill="#D1FAE5" stroke="#059669" stroke-width="1.2"/>
+  <text x="460" y="255" text-anchor="middle" font-size="9.5" fill="#065F46">分代年龄</text>
+  <text x="460" y="267" text-anchor="middle" font-size="8" fill="#047857">4 位</text>
+  <rect x="514" y="238" width="96" height="34" rx="4" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="562" y="255" text-anchor="middle" font-size="9.5" fill="#5B21B6">Self-Forwarded</text>
+  <text x="562" y="267" text-anchor="middle" font-size="8" fill="#6D28D9">1 位</text>
+  <rect x="616" y="238" width="104" height="34" rx="4" fill="#D1FAE5" stroke="#059669" stroke-width="1.2"/>
+  <text x="668" y="255" text-anchor="middle" font-size="9.5" fill="#065F46">锁标记 2 位</text>
+  <text x="668" y="267" text-anchor="middle" font-size="8" fill="#047857">不变</text>
+
+  <text x="58" y="296" font-size="10" fill="#065F46">类指针从 32 位压到 22 位：类元数据区按 1KB 分块，4GB / 1KB = 4M 块，2²² 刚好够寻址</text>
+  <text x="58" y="312" font-size="10" fill="#065F46">结果：常见对象 24 字节 → 16 字节（如两个 int 的 POJO），小对象密集场景堆占用可降约 20%</text>
+
+  <!-- footer -->
+  <rect x="40" y="334" width="700" height="52" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="58" y="354" font-size="10.5" fill="#334155" font-weight="bold">启用前必须知道的三件事</text>
+  <text x="58" y="374" font-size="10" fill="#475569">① JDK 25 起是产品特性（不再需要 UnlockExperimentalVMOptions），但仍要显式加参数才生效 ② 与 -XX:-UseCompressedClassPointers 互斥 ③ 必须重新压测：它改变的是内存节奏，不是纯赚</text>
+</svg>

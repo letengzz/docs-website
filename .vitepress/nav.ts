@@ -16,6 +16,7 @@ export const nav = [
       { text: "Go", link: "/docs/Backend/Go" },
       { text: "Go 微服务", link: "/docs/Backend/GoMicroservices" },
       { text: "Java", link: "/docs/Backend/Java" },
+      { text: "高性能 Java", link: "/docs/Backend/HighPerformanceJava" },
       { text: "消息队列", link: "/docs/Backend/MessageQueue" },
       { text: "微服务", link: "/docs/Backend/Microservices" },
       { text: "Spring Cloud", link: "/docs/Backend/SpringCloud" },

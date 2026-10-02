@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 380" width="780" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="380" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">new 之后发生了什么：TLAB 与逃逸分析的三条出路</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">绝大多数 new 既不进老年代、也不走全局锁；但「逃逸分析没生效」是性能回归的常见根因</text>
+
+  <!-- allocation path -->
+  <rect x="40" y="76" width="330" height="130" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="58" y="98" font-size="12" fill="#1E3A8A" font-weight="bold">分配路径（快路径 = 指针碰撞）</text>
+  <rect x="58" y="110" width="294" height="30" rx="6" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="205" y="130" text-anchor="middle" font-size="10" fill="#1E3A8A">线程私有 TLAB：只移动 top 指针，无锁</text>
+  <rect x="58" y="146" width="294" height="30" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1.2"/>
+  <text x="205" y="166" text-anchor="middle" font-size="10" fill="#92400E">TLAB 不够 → 新 TLAB / 直接在 Eden 分配（可能加锁）</text>
+  <text x="58" y="196" font-size="10" fill="#1E40AF">调优抓手：-XX:TLABSize / -XX:TLABWasteTargetPercent / -XX:+ResizeTLAB</text>
+
+  <!-- escape analysis -->
+  <rect x="390" y="76" width="350" height="130" rx="10" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="408" y="98" font-size="12" fill="#5B21B6" font-weight="bold">逃逸分析后的三条出路</text>
+  <text x="408" y="122" font-size="10.5" fill="#6D28D9" font-weight="bold">① 完全不逃逸 → 标量替换：不分配对象，字段变成局部变量</text>
+  <text x="408" y="144" font-size="10.5" fill="#6D28D9" font-weight="bold">② 不逃逸但需身份 → 栈上分配（HotSpot 实为标量替换，不真放栈）</text>
+  <text x="408" y="166" font-size="10.5" fill="#6D28D9" font-weight="bold">③ 逃逸 → 正常进堆，走 Eden</text>
+  <text x="408" y="190" font-size="10" fill="#7C3AED">附带效果：对象被消除后，它上面的 synchronized 也一并被锁消除</text>
+
+  <!-- blockers -->
+  <rect x="40" y="220" width="700" height="146" rx="10" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="58" y="242" font-size="12" fill="#991B1B" font-weight="bold">什么写法会让逃逸分析失效（都是「看起来没问题的写法」）</text>
+  <text x="58" y="266" font-size="10" fill="#7F1D1D">① 把对象赋给 static / 成员字段 ② 作为参数传给未知方法（尤其是接口与反射调用）</text>
+  <text x="58" y="288" font-size="10" fill="#7F1D1D">③ 放进集合再返回 ④ 在循环外声明变量、循环内复用（对象跨迭代存活）</text>
+  <text x="58" y="310" font-size="10" fill="#7F1D1D">⑤ 被 lambda / 匿名类捕获后逃出作用域 ⑥ 开启 -XX:-DoEscapeAnalysis（诊断时的对照实验，不要留在生产）</text>
+  <text x="58" y="336" font-size="10.5" fill="#991B1B" font-weight="bold">验证方式：-XX:+PrintEscapeAnalysis / -XX:+PrintEliminateAllocations 看有没有被消除；分配量用 async-profiler -e alloc 直接看</text>
+  <text x="58" y="356" font-size="10" fill="#7F1D1D">注意：这几组诊断参数在部分发行版上需要 -XX:+UnlockDiagnosticVMOptions，且输出量很大，只在本地对照实验用</text>
+</svg>

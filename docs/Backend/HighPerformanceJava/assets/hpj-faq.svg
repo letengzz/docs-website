@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 360" width="780" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="360" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">性能问题排查地图：症状 → 第一件事做什么</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">这张图按「最容易被误判」的顺序排列：多数人第一反应是加缓存与加机器，而它们排在最后一排</text>
+
+  <rect x="40" y="76" width="340" height="120" rx="9" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="58" y="98" font-size="11.5" fill="#991B1B" font-weight="bold">「本地跑很快，线上很慢」</text>
+  <text x="58" y="120" font-size="10" fill="#7F1D1D">先查四条差异，别先改代码：</text>
+  <text x="58" y="140" font-size="9.5" fill="#7F1D1D">① JDK 与 JVM 参数是否一致</text>
+  <text x="58" y="157" font-size="9.5" fill="#7F1D1D">② CPU / 内存配额与容器 limit</text>
+  <text x="58" y="174" font-size="9.5" fill="#7F1D1D">③ 数据量与索引是否同一量级</text>
+  <text x="58" y="191" font-size="9.5" fill="#7F1D1D">④ 预热时间够不够（JIT 未达稳态）</text>
+
+  <rect x="400" y="76" width="340" height="120" rx="9" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+  <text x="418" y="98" font-size="11.5" fill="#9A3412" font-weight="bold">「加了缓存反而更慢」</text>
+  <text x="418" y="120" font-size="10" fill="#7C2D12">常见三个真因：</text>
+  <text x="418" y="140" font-size="9.5" fill="#7C2D12">① 命中率低，序列化成本却照付</text>
+  <text x="418" y="157" font-size="9.5" fill="#7C2D12">② 大对象进缓存，GC 压力上升</text>
+  <text x="418" y="174" font-size="9.5" fill="#7C2D12">③ 同步写缓存，把延迟加到主链路上</text>
+  <text x="418" y="191" font-size="9.5" fill="#7C2D12">先量命中率与单次读耗时，再决定留不留</text>
+
+  <rect x="40" y="208" width="340" height="120" rx="9" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="58" y="230" font-size="11.5" fill="#1E3A8A" font-weight="bold">「优化完没变好，甚至更差」</text>
+  <text x="58" y="252" font-size="10" fill="#1E40AF">高概率是测量口径问题：</text>
+  <text x="58" y="272" font-size="9.5" fill="#1E40AF">① 基线本身噪声就大（差值小于置信区间）</text>
+  <text x="58" y="289" font-size="9.5" fill="#1E40AF">② 改的是非热点路径（没看火焰图就动手）</text>
+  <text x="58" y="306" font-size="9.5" fill="#1E40AF">③ 多改了几处，无法归因</text>
+
+  <rect x="400" y="208" width="340" height="120" rx="9" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="418" y="230" font-size="11.5" fill="#065F46" font-weight="bold">「最后才考虑的两件事」</text>
+  <text x="418" y="252" font-size="10" fill="#047857">只有前面都排除后才值得做：</text>
+  <text x="418" y="272" font-size="9.5" fill="#065F46">① 加机器 / 扩副本（先确认是容量问题）</text>
+  <text x="418" y="289" font-size="9.5" fill="#065F46">② 换语言或重写模块（先确认瓶颈在实现层）</text>
+  <text x="418" y="306" font-size="9.5" fill="#047857">顺序错了，钱花了、问题还在</text>
+
+  <text x="390" y="348" text-anchor="middle" font-size="10" fill="#64748B">判断依据只有一条：你能不能用一条命令或一张图，把「慢在哪」指给别人看</text>
+</svg>

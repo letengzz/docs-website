@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="400" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">实战闭环：从 P99 超标到回归通过，一共六步</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">每一步都有产物，缺一步就会退化成「改了很多、不知道是不是变好了」</text>
+
+  <rect x="40" y="76" width="700" height="48" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.3"/>
+  <text x="58" y="96" font-size="11" fill="#334155" font-weight="bold">① 定指标（产物：一句可证伪的目标）</text>
+  <text x="58" y="115" font-size="10" fill="#475569">「GET /api/v1/posts/{slug} 在 100 并发下 P99 从 240ms 降到 80ms 以内，错误率 0」——不是「优化一下接口」</text>
+
+  <rect x="40" y="132" width="700" height="48" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.3"/>
+  <text x="58" y="152" font-size="11" fill="#1E3A8A" font-weight="bold">② 建基线（产物：可复现的压测脚本 + 一份基线数据）</text>
+  <text x="58" y="171" font-size="10" fill="#1E40AF">同一台机器、同一份数据量、同一脚本版本；记录 P50 / P95 / P99 / TPS / 错误率 / CPU / GC 次数</text>
+
+  <rect x="40" y="188" width="700" height="48" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.3"/>
+  <text x="58" y="208" font-size="11" fill="#5B21B6" font-weight="bold">③ 定位（产物：一张火焰图或一段 JFR，指向具体方法）</text>
+  <text x="58" y="227" font-size="10" fill="#6D28D9">先用 wall-clock 分「等」与「算」，再按症状切到 cpu / alloc / lock；一次只挖一条线</text>
+
+  <rect x="40" y="244" width="700" height="48" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.3"/>
+  <text x="58" y="264" font-size="11" fill="#9A3412" font-weight="bold">④ 提假设并做对照实验（产物：一处改动的对比数据）</text>
+  <text x="58" y="283" font-size="10" fill="#7C2D12">一次只改一处；JMH 只用于「热代码在稳态下的差异」，端到端结论必须来自压测而不是微基准</text>
+
+  <rect x="40" y="300" width="700" height="48" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.3"/>
+  <text x="58" y="320" font-size="11" fill="#065F46" font-weight="bold">⑤ 回归与守住（产物：同一口径的前后对照 + 一条门禁）</text>
+  <text x="58" y="339" font-size="10" fill="#047857">重跑②的脚本得到对照表；把结论固化成阈值（压测门禁、慢查询告警、分配速率看板）</text>
+
+  <rect x="40" y="356" width="700" height="36" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.3"/>
+  <text x="58" y="379" font-size="10.5" fill="#991B1B" font-weight="bold">⑥ 写下来（产物：一页记录——指标、工具、改动、数据、失效条件）</text>
+</svg>

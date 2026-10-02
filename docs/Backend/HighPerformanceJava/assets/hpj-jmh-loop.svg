@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 380" width="780" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="380" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">JMH 一次运行的内部结构：为什么它比手写循环可信</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">每个 Fork 是一个全新 JVM 进程；Warmup 的样本不参与统计；Measurement 的每一轮各自出分</text>
+
+  <!-- fork 1 -->
+  <rect x="40" y="76" width="700" height="120" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="56" y="98" font-size="11.5" fill="#334155" font-weight="bold">Fork #1（独立 JVM 进程）</text>
+  <rect x="150" y="84" width="120" height="20" rx="5" fill="#E2E8F0"/>
+  <text x="210" y="98" text-anchor="middle" font-size="9.5" fill="#475569">JVM 启动 + 参数固定</text>
+
+  <rect x="60" y="114" width="180" height="42" rx="7" fill="#FEF3C7" stroke="#D97706" stroke-width="1.4"/>
+  <text x="150" y="133" text-anchor="middle" font-size="11" fill="#92400E" font-weight="bold">Warmup 5 轮</text>
+  <text x="150" y="148" text-anchor="middle" font-size="9" fill="#92400E">让解释器 → C1 → C2 稳定</text>
+
+  <rect x="256" y="114" width="200" height="42" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="356" y="133" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">Measurement 8 轮</text>
+  <text x="356" y="148" text-anchor="middle" font-size="9" fill="#065F46">每轮独立出 mean / 百分位</text>
+
+  <rect x="472" y="114" width="200" height="42" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="572" y="133" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">统计与置信区间</text>
+  <text x="572" y="148" text-anchor="middle" font-size="9" fill="#1E3A8A">mean ± 99.9% CI、min / max</text>
+
+  <path d="M 240 135 L 256 135" stroke="#94A3B8" stroke-width="1.3" marker-end="url(#a1)"/>
+  <path d="M 456 135 L 472 135" stroke="#94A3B8" stroke-width="1.3" marker-end="url(#a1)"/>
+  <text x="356" y="180" text-anchor="middle" font-size="9.5" fill="#64748B">丢弃</text>
+  <text x="150" y="180" text-anchor="middle" font-size="9.5" fill="#B45309">↑ 这些数字不参与最终结果</text>
+
+  <!-- fork n -->
+  <rect x="40" y="206" width="700" height="42" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="56" y="232" font-size="11.5" fill="#334155" font-weight="bold">Fork #2 … Fork #N（默认 N = 5）</text>
+  <text x="390" y="232" text-anchor="middle" font-size="10" fill="#64748B">每次换一个全新进程，把「同一进程里累积的 JIT 状态」这条干扰路径彻底切断</text>
+
+  <!-- blackhole -->
+  <rect x="40" y="262" width="336" height="100" rx="10" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="56" y="284" font-size="11.5" fill="#991B1B" font-weight="bold">不写 JMH 会遇到的四种「假结果」</text>
+  <text x="56" y="304" font-size="9.5" fill="#7F1D1D">① 死代码消除：结果没人用，整段被 C2 删掉</text>
+  <text x="56" y="320" font-size="9.5" fill="#7F1D1D">② 常量折叠：同一入参被当常量，循环被折叠</text>
+  <text x="56" y="336" font-size="9.5" fill="#7F1D1D">③ 循环不变量外提 / 反复预热，测的是 C2 之后的形态</text>
+  <text x="56" y="352" font-size="9.5" fill="#7F1D1D">④ 单次运行出结论，把噪声当优化成果</text>
+
+  <!-- blackhole right -->
+  <rect x="404" y="262" width="336" height="100" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="420" y="284" font-size="11.5" fill="#065F46" font-weight="bold">JMH 的对应机制</text>
+  <text x="420" y="304" font-size="9.5" fill="#065F46">① 返回值交给 Blackhole.consume，结果必须被「用掉」</text>
+  <text x="420" y="320" font-size="9.5" fill="#065F46">② 参数走 @Param / 从 @State 读字段，编译器无法当常量</text>
+  <text x="420" y="336" font-size="9.5" fill="#065F46">③ 多 Fork + 多轮 Warmup，各自独立进程</text>
+  <text x="420" y="352" font-size="9.5" fill="#065F46">④ 默认输出误差区间，先看 CI 再看均值</text>
+
+  <defs>
+    <marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M 0 0 L 6 3 L 0 6 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

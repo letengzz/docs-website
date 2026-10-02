@@ -66,9 +66,10 @@
 | 第 99 天 | 管理端认证与角色：Bearer 令牌签发与校验、PBKDF2 口令哈希、默认拒绝的鉴权规则、401 先于 403 | ✅ |
 | 第 100 天 | 文章下线动作：四态状态机（DRAFT / PUBLISHED / OFFLINE / DELETED）+ 时间戳语义 + 第二道写链路门禁 `lifecycle_smoke`（24 步） | ✅ |
 | 第 101 天 | Markdown 渲染能力补齐：写时渲染（与发布同事务）+ 表格/引用块 + TOC 中文锚点 + 高亮分工（服务端透传、客户端着色） | ✅ |
-| 第 102 天 | 可见性收敛：读者端列表/详情对非 PUBLISHED 一律 404（存在性不泄漏）+ 缓存失效时序（提交后失效 + TTL 兜底）+ 读侧门禁 `visibility_smoke`（22 步） | ✅ 本日 |
-| 第 103-104 天 | 第 2 周收尾：渲染器用例、状态机用例与契约 401/403 分支上移 `mvn test` | ⏳ |
-| 第 105-111 天 | 第 3 周：评论 / 搜索 / SSR / 测试 | ⏳ |
+| 第 102 天 | 可见性收敛：读者端列表/详情对非 PUBLISHED 一律 404（存在性不泄漏）+ 缓存失效时序（提交后失效 + TTL 兜底）+ 读侧门禁 `visibility_smoke`（22 步） | ✅ |
+| 第 103 天 | 测试分层收口：断言按「依赖什么」分流，渲染器/状态矩阵/401 先于 403/分页边界上移 `mvn test`；分类与标签计数对齐 PUBLISHED 口径 | ✅ 本日 |
+| 第 104 天 | 第 2 周收尾：契约 401/403 分支与分页边界穷举、标签维度计数用例 | ⏳ |
+| 第 105-111 天 | 第 3 周：评论 / 搜索 / SSR / 联调与测试 | ⏳ |
 | 第 112-120 天 | 第 4 周：部署 / 监控 / 验收 | ⏳ |
 
 ## 各章节
@@ -83,7 +84,8 @@
 8. [文章下线动作](./Lifecycle/index.md)：四态状态机、四个动作的迁移矩阵、非法路径 409 与时间戳语义
 9. [Markdown 渲染能力补齐](./Rendering/index.md)：写时渲染、表格/引用块、TOC 中文锚点、高亮分工与明确不做
 10. [可见性收敛](./Visibility/index.md)：读者端只看得到 PUBLISHED、404 一致性判据、缓存失效时序与读侧门禁
-11. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+11. [测试分层收口](./TestLayers/index.md)：断言按依赖分流、上移与保留清单、`mvn test` 门禁与六道门禁顺序
+12. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
 
 ## 在你自己的工程里跑起来
 
@@ -92,21 +94,23 @@
 ```shell
 cd your-project/service
 mvn install -DskipTests                         # 首次需联网（本地仓库缺来源元数据，-o 会失败）
+mvn test                                        # ② 单元测试：秒级，不起服务、不连数据库
 cd blog-application && export SERVER_PORT=18080
 mvn spring-boot:run                             # 默认 profile=local：内存仓储，不需要数据库
 ```
 
 ```shell
-# 另开终端：四道门禁（结构 / 只读行为 / 写链路行为 / 状态迁移）
+# 另开终端：五道行为门禁（结构 / 只读行为 / 写链路行为 / 状态迁移 / 读侧可见性）
 cd your-project/service
 python skeleton_check.py                            # 期望 checks = 27  failed = 0
 python api_smoke.py       --base http://127.0.0.1:18080 # 期望 cases = 9   passed = 9
 python admin_smoke.py     --base http://127.0.0.1:18080 # 期望 steps = 37  passed = 37（会写数据，只对本地环境跑）
 python lifecycle_smoke.py --base http://127.0.0.1:18080 # 期望 steps = 24  passed = 24（状态迁移矩阵）
+python visibility_smoke.py --base http://127.0.0.1:18080 # 期望 steps = 22 passed = 22（读侧可见性）
 python lifecycle_smoke.py --selftest                    # 期望 selftest: 24/24 通过（证明断言不是恒真）
 ```
 
-四道门禁脚本的完整设计、断言清单与「为什么断言必须能被证伪」，见[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)。
+各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)。
 
 ## 参考资料
 

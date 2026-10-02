@@ -122,3 +122,4 @@ EXPLAIN SELECT * FROM user WHERE email = 'zs@example.com';
 - [执行计划](../../SQLOptimization/ExplainPlan/index.md)：EXPLAIN 字段与访问类型详解
 - [索引原理与失效场景](../../SQLOptimization/IndexPrinciple/index.md)：最左前缀、覆盖索引与十大失效场景
 - [数据建模：设计原则与规范](../../../DataModeling/DesignPrinciples/index.md)：索引前置考虑——在建模阶段就定好索引，而不是等慢查询出现
+- [高性能 Java](../../../../Backend/HighPerformanceJava/index.md)：**慢在存储层**（执行计划选择、索引失效、分页深翻）用本页与 [SQL 优化](../../SQLOptimization/index.md)；**慢在应用进程内部**（JIT 预热、对象分配、锁竞争、GC 停顿）用该专题。两者最常被混在一起的是「接口慢」——判据是分别取一次证据：一条 SQL 的 `EXPLAIN` 与一张 CPU 火焰图，哪一侧有结果就是哪一侧的问题

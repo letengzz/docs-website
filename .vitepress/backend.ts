@@ -365,6 +365,23 @@ export const NetworkProgramming = [
     ],
   },
 ];
+export const HighPerformanceJava = [
+  {
+    text: "高性能 Java",
+    link: "/docs/Backend/HighPerformanceJava/index.md",
+    items: [
+      { text: "性能工程全景：指标口径与优化决策", link: "/docs/Backend/HighPerformanceJava/Overview/index.md" },
+      { text: "JMH 基准测试", link: "/docs/Backend/HighPerformanceJava/JmhBenchmark/index.md" },
+      { text: "JIT 与分层编译", link: "/docs/Backend/HighPerformanceJava/JitCompiler/index.md" },
+      { text: "对象布局：从对象头到紧凑对象头", link: "/docs/Backend/HighPerformanceJava/MemoryLayout/index.md" },
+      { text: "分配与内存效率", link: "/docs/Backend/HighPerformanceJava/AllocationOptimize/index.md" },
+      { text: "锁与并发原语的性能", link: "/docs/Backend/HighPerformanceJava/LockOptimize/index.md" },
+      { text: "剖析工具链：JFR 与 async-profiler", link: "/docs/Backend/HighPerformanceJava/Profiling/index.md" },
+      { text: "实战：把慢接口的 P99 打下来", link: "/docs/Backend/HighPerformanceJava/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/HighPerformanceJava/FAQ/index.md" },
+    ],
+  },
+];
 export const Go = [
   {
     text: "Go",

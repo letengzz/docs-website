@@ -10,3 +10,7 @@ JVM（Java Virtual Machine）是 Java 跨平台与自动内存管理的基石。
 - [JVM 调优参数](Tuning/index.md)
 - [故障排查](Troubleshoot/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
+
+## 相关专题
+
+- [高性能 Java](../../../HighPerformanceJava/index.md)：回答「**慢在哪儿、怎么改、怎么证明改好了**」——指标口径、JMH 基准测试、JIT 与去优化、对象布局与分配、锁开销、火焰图与生产采样纪律。本专题讲**运行时是什么**（内存结构、GC 算法与收集器、参数与故障），那里讲**怎么测量与优化**；两边的「对象布局」页分工是：本页看结构，那边看它怎么影响占用与缓存

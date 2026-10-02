@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 506" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="28" text-anchor="middle" font-size="17" font-weight="700" fill="#1e293b">测试分层与六道门禁：一条断言只属于一层</text>
+
+  <!-- 六道门禁流水线 -->
+  <text x="24" y="52" font-size="12" font-weight="600" fill="#475569">提交前的六道门禁（越靠左越便宜，越靠右越接近真实）</text>
+  <g font-size="11" font-weight="600" text-anchor="middle">
+    <rect x="24" y="60" width="108" height="40" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="78" y="85" fill="#334155">① 静态扫描</text>
+    <rect x="144" y="60" width="108" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="198" y="85" fill="#166534">② 单元测试</text>
+    <rect x="264" y="60" width="108" height="40" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="318" y="85" fill="#334155">③ 结构门禁</text>
+    <rect x="384" y="60" width="108" height="40" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="438" y="85" fill="#334155">④ 契约门禁</text>
+    <rect x="504" y="60" width="108" height="40" rx="8" fill="#fefce8" stroke="#ca8a04"/>
+    <text x="558" y="85" fill="#854d0e">⑤ 行为冒烟</text>
+    <rect x="624" y="60" width="112" height="40" rx="8" fill="#fefce8" stroke="#ca8a04"/>
+    <text x="680" y="85" fill="#854d0e">⑥ 迁移矩阵</text>
+  </g>
+  <g stroke="#64748b" stroke-width="1.5" fill="none">
+    <path d="M134,80 L142,80" marker-end="url(#arr2)"/>
+    <path d="M254,80 L262,80" marker-end="url(#arr2)"/>
+    <path d="M374,80 L382,80" marker-end="url(#arr2)"/>
+    <path d="M494,80 L502,80" marker-end="url(#arr2)"/>
+    <path d="M614,80 L622,80" marker-end="url(#arr2)"/>
+  </g>
+  <text x="198" y="116" text-anchor="middle" font-size="11" fill="#166534">本日新增：把用例搬到这里</text>
+  <text x="558" y="116" text-anchor="middle" font-size="11" fill="#854d0e">只保留跨进程时序与端到端</text>
+
+  <!-- 分层 -->
+  <text x="24" y="146" font-size="12" font-weight="600" fill="#475569">按「这条断言依赖什么」分流 —— 依赖越少，就该放得越靠上</text>
+
+  <!-- 第 1 层 -->
+  <rect x="24" y="158" width="712" height="58" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+  <rect x="32" y="168" width="100" height="38" rx="6" fill="#ffffff" stroke="#16a34a"/>
+  <text x="82" y="184" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">第 1 层</text>
+  <text x="82" y="199" text-anchor="middle" font-size="11" fill="#166534">纯函数</text>
+  <text x="148" y="181" font-size="13" font-weight="700" fill="#166534">mvn test（JUnit 5）</text>
+  <text x="148" y="201" font-size="11" fill="#166534">例：Markdown 渲染、slugify、状态迁移矩阵、404 响应体一致性</text>
+  <text x="728" y="181" text-anchor="end" font-size="11" fill="#475569">不依赖进程与数据库</text>
+  <text x="728" y="199" text-anchor="end" font-size="11" fill="#475569">毫秒级 · 可穷举边界</text>
+
+  <!-- 第 2 层 -->
+  <rect x="24" y="226" width="712" height="58" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+  <rect x="32" y="236" width="100" height="38" rx="6" fill="#ffffff" stroke="#2563eb"/>
+  <text x="82" y="252" text-anchor="middle" font-size="11" font-weight="700" fill="#1e40af">第 2 层</text>
+  <text x="82" y="267" text-anchor="middle" font-size="11" fill="#1e40af">HTTP 语义</text>
+  <text x="148" y="249" font-size="13" font-weight="700" fill="#1e40af">mvn test（MockMvc 切片）</text>
+  <text x="148" y="269" font-size="11" fill="#1e40af">例：无令牌 401 先行于 403、方法与状态码、分页边界、媒体类型</text>
+  <text x="728" y="249" text-anchor="end" font-size="11" fill="#475569">需真实过滤器链与序列化</text>
+  <text x="728" y="267" text-anchor="end" font-size="11" fill="#475569">秒级 · 不起真网络</text>
+
+  <!-- 第 3 层 -->
+  <rect x="24" y="294" width="712" height="58" rx="8" fill="#fffbeb" stroke="#ca8a04"/>
+  <rect x="32" y="304" width="100" height="38" rx="6" fill="#ffffff" stroke="#ca8a04"/>
+  <text x="82" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="#854d0e">第 3 层</text>
+  <text x="82" y="335" text-anchor="middle" font-size="11" fill="#854d0e">跨进程时序</text>
+  <text x="148" y="317" font-size="13" font-weight="700" fill="#854d0e">smoke 脚本（原地保留）</text>
+  <text x="148" y="337" font-size="11" fill="#854d0e">例：缓存失效窗口、连续两遍仍全绿、重启后状态仍一致</text>
+  <text x="728" y="317" text-anchor="end" font-size="11" fill="#475569">需真实服务与真实时间</text>
+  <text x="728" y="335" text-anchor="end" font-size="11" fill="#475569">十秒级 · 起进程</text>
+
+  <!-- 第 4 层 -->
+  <rect x="24" y="362" width="712" height="58" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+  <rect x="32" y="372" width="100" height="38" rx="6" fill="#ffffff" stroke="#dc2626"/>
+  <text x="82" y="388" text-anchor="middle" font-size="11" font-weight="700" fill="#991b1b">第 4 层</text>
+  <text x="82" y="403" text-anchor="middle" font-size="11" fill="#991b1b">端到端编排</text>
+  <text x="148" y="385" font-size="13" font-weight="700" fill="#991b1b">smoke 脚本（原地保留）</text>
+  <text x="148" y="405" font-size="11" fill="#991b1b">例：建文 → 发布 → 读者读到 → 下线 → 404，多请求有状态依赖</text>
+  <text x="728" y="385" text-anchor="end" font-size="11" fill="#475569">多请求有状态依赖</text>
+  <text x="728" y="405" text-anchor="end" font-size="11" fill="#475569">分钟级 · 写数据</text>
+
+  <!-- 纪律 -->
+  <rect x="24" y="428" width="712" height="66" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="36" y="448" font-size="12" font-weight="700" fill="#334155">三条铁律</text>
+  <text x="36" y="468" font-size="11" fill="#475569">① 同一断言只在一层里存在（两处都放 = 两处都会漂）　② 搬过去后 mock 数量超过断言数量，说明搬错了层</text>
+  <text x="36" y="486" font-size="11" fill="#475569">③ 每条门禁都要能被变异测试证伪：把断言改坏一格必须报红，否则绿灯没有意义</text>
+</svg>
