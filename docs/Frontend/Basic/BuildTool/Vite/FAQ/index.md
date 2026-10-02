@@ -123,7 +123,7 @@ import { createApp } from 'vue'
 ```
 :::
 
-::: details 图片路径在生产环境 404
+:::: details 图片路径在生产环境 404
 三种情况的正确写法：
 
 | 位置 | 引用方式 | 说明 |
@@ -135,7 +135,7 @@ import { createApp } from 'vue'
 ::: danger 注意
 **绝对路径 `/xxx.png` 在子路径部署下会 404。** 部署到 `https://example.com/app/` 时，必须写成 `/app/xxx.png` 或使用 `import.meta.env.BASE_URL` 拼接。
 :::
-:::
+::::
 
 ::: details CSS 预处理器报错
 预处理器需要显式安装，Vite 只内置了配置入口：
@@ -194,7 +194,7 @@ createRouter({ history: createWebHashHistory(), routes })
 ```
 :::
 
-::: details 构建报 JavaScript heap out of memory
+:::: details 构建报 JavaScript heap out of memory
 ```shell
 # 提高 Node 堆上限（单位 MB）
 NODE_OPTIONS=--max-old-space-size=4096 npm run build
@@ -208,7 +208,7 @@ $env:NODE_OPTIONS="--max-old-space-size=4096"; npm run build
 ::: warning 说明
 **不要长期靠加内存解决。** 内存不足通常意味着单包体积过大或构建过程中保留了过多中间数据，应优先做分包、检查是否有插件做了全量 AST 处理。
 :::
-:::
+::::
 
 ::: details 构建很慢
 按收益顺序排查：
@@ -249,7 +249,7 @@ declare module '*.vue' {
 确认该文件在 `tsconfig.json` 的 `include` 范围内。
 :::
 
-::: details import.meta.env.XXX 类型是 any / 报错
+:::: details import.meta.env.XXX 类型是 any / 报错
 在声明文件里扩展 `ImportMetaEnv`：
 
 ```ts [src/types/env.d.ts]
@@ -266,7 +266,7 @@ interface ImportMeta {
 ::: danger 注意
 **不要给这两个 interface 加 `export`**。一旦文件变成模块，全局合并失效，Vite 内置的 `import.meta.env` 类型会全部丢失。
 :::
-:::
+::::
 
 ::: details 环境变量读不到值
 1. 客户端变量必须有 `VITE_` 前缀。

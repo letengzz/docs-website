@@ -106,7 +106,7 @@ CrewAI：`verbose=True` 仅用于开发；生产用回调 / 事件监听接 Lang
 - [人工介入工程化](HumanLoop/index.md)：审批闭环是生产系统的标配
 - [实战](Practice/index.md)：本页骨架代码在实战页串成完整流水线
 - [大模型应用开发 · 成本核算与限流降级](../../LLMApp/CostRateLimit/index.md)：不引框架时的成本口径，本页沿用其方法
-- [Ops · 监控告警](../../Ops/Monitoring/index.md)：基础设施层的监控体系
+- [Ops · 监控告警](../../../Ops/Monitoring/index.md)：基础设施层的监控体系
 
 ## 参考资料
 
