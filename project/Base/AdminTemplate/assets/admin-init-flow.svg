@@ -47,7 +47,7 @@
   <text x="560" y="241" text-anchor="middle" font-size="8.5" fill="#0F766E">app/（骨架层，业务层另起）</text>
   <text x="560" y="260.55" text-anchor="middle" font-size="8.5" fill="#0F766E">├─ layouts/ default.vue · auth.vue</text>
   <text x="560" y="280.1" text-anchor="middle" font-size="8.5" fill="#0F766E">├─ components/admin/ 骨架组件</text>
-  <text x="560" y="299.65" text-anchor="middle" font-size="8.5" fill="#0F766E">├─ components/ui/ 适配层组件</text>
+  <text x="560" y="299.65" text-anchor="middle" font-size="8.5" fill="#0F766E">├─ ui-impl/ 适配层实现（不在 components/ 下）</text>
   <text x="560" y="319.2" text-anchor="middle" font-size="8.5" fill="#0F766E">├─ composables/useAuth.ts</text>
   <text x="560" y="338.75" text-anchor="middle" font-size="8.5" fill="#0F766E">├─ config/menu.ts 菜单单一来源</text>
   <text x="560" y="358.3" text-anchor="middle" font-size="8.5" fill="#0F766E">├─ middleware/auth.ts 路由守卫</text>

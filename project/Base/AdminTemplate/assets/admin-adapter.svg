@@ -12,17 +12,17 @@
   <text x="110" y="277" text-anchor="middle" font-size="8" fill="#047857">永不出现框架</text>
   <text x="110" y="295.4" text-anchor="middle" font-size="8" fill="#047857">真实标签</text>
   <rect x="260" y="112" width="200" height="216" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
-  <text x="360" y="130.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">适配层 app/components/ui/</text>
+  <text x="360" y="130.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">适配层 app/ui-impl/</text>
   <text x="360" y="147" text-anchor="middle" font-size="8" fill="#6D28D9">UiButton · UiInput · UiForm</text>
   <text x="360" y="165.4" text-anchor="middle" font-size="8" fill="#6D28D9">UiMenu · UiDropdown</text>
   <text x="360" y="183.8" text-anchor="middle" font-size="8" fill="#6D28D9">UiMessage · UiTable</text>
   <text x="360" y="202.2" text-anchor="middle" font-size="8" fill="#6D28D9"></text>
-  <text x="360" y="220.6" text-anchor="middle" font-size="8" fill="#6D28D9">每个组件一组实现文件：</text>
-  <text x="360" y="239" text-anchor="middle" font-size="8" fill="#6D28D9">UiButton.ep.vue（Element）</text>
-  <text x="360" y="257.4" text-anchor="middle" font-size="8" fill="#6D28D9">UiButton.antd.vue（Ant）</text>
-  <text x="360" y="275.8" text-anchor="middle" font-size="8" fill="#6D28D9">UiButton.nuxtui.vue</text>
-  <text x="360" y="294.2" text-anchor="middle" font-size="8" fill="#6D28D9">UiButton.vuetify.vue</text>
-  <text x="360" y="312.6" text-anchor="middle" font-size="8" fill="#6D28D9">UiButton.plain.vue（兜底）</text>
+  <text x="360" y="220.6" text-anchor="middle" font-size="8" fill="#6D28D9">每个组件一个目录 + 一份实现：</text>
+  <text x="360" y="239" text-anchor="middle" font-size="8" fill="#6D28D9">element-plus/Button.vue</text>
+  <text x="360" y="257.4" text-anchor="middle" font-size="8" fill="#6D28D9">antd/Button.vue · nuxtui/Button.vue</text>
+  <text x="360" y="275.8" text-anchor="middle" font-size="8" fill="#6D28D9">vuetify/Button.vue</text>
+  <text x="360" y="294.2" text-anchor="middle" font-size="8" fill="#6D28D9">plain/Button.vue（兜底）</text>
+  <text x="360" y="312.6" text-anchor="middle" font-size="8" fill="#6D28D9">（刻意放在 components/ 之外）</text>
   <line x1="190" y1="216" x2="260" y2="216" stroke="#059669" stroke-width="1.6" marker-end="url(#arw)"/>
   <text x="225" y="211" text-anchor="middle" font-size="7.5" fill="#64748B">只用适配名</text>
   <rect x="530" y="76" width="200" height="58" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
