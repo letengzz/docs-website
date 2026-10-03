@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
+    "docs:build": "cross-env NODE_OPTIONS=--max-old-space-size=12288 vitepress build --minify false",
     "docs:preview": "vitepress preview"
   },
   "dependencies": {

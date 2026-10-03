@@ -53,9 +53,10 @@ jobs:
       - name: Install dependencies
         run:  pnpm install # 或 npm ci / yarn install / bun install
       - name: Build with VitePress
-        env:
-          NODE_OPTIONS: "--max-old-space-size=12288"
-        run: pnpm run docs:build -- --minify false # --minify false 降低构建内存峰值，避免 OOM
+        # 内存上限与 --minify false 都写在 package.json 的 docs:build 里，这里不要再传参数
+        # （pnpm run <script> -- <flag> 会把字面量 `--` 一起传下去，VitePress 会把 flag 当成构建根目录，
+        #  产物落到 ./--minify/.vitepress/dist，导致后续上传 .vitepress/dist 报 “No such file or directory”）
+        run: pnpm run docs:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
