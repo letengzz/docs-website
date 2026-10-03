@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 516" width="760" height="516" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="516" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">登录与路由守卫：一次完整跳转的六个节点</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">演示接口跑通闭环，替换真实后端时只动 server/api/auth 一处</text>
+  <rect x="55" y="74" width="110" height="34" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="110" y="92.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">浏览器</text>
+  <rect x="265" y="74" width="110" height="34" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="320" y="92.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">middleware/auth</text>
+  <rect x="475" y="74" width="110" height="34" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="530" y="92.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">登录页 /login</text>
+  <rect x="625" y="74" width="110" height="34" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="680" y="92.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">server/api/auth</text>
+  <line x1="150" y1="138" x2="265" y2="138" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <circle cx="380" cy="135" r="9" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="380" y="138" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">1</text>
+  <text x="404" y="135" text-anchor="start" font-size="9" fill="#0F172A" font-weight="bold">访问 /dashboard</text>
+  <text x="404" y="149" text-anchor="start" font-size="7.5" fill="#64748B">未登录 → 302 到 /login?redirect=…</text>
+  <line x1="475" y1="182" x2="360" y2="182" stroke="#059669" stroke-width="1.6" marker-end="url(#arw)"/>
+  <circle cx="380" cy="179" r="9" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="380" y="182" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">2</text>
+  <text x="404" y="179" text-anchor="start" font-size="9" fill="#0F172A" font-weight="bold">守卫放行登录页</text>
+  <text x="404" y="193" text-anchor="start" font-size="7.5" fill="#64748B">已登录访问 /login → 弹回 /dashboard</text>
+  <line x1="570" y1="226" x2="625" y2="226" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <circle cx="380" cy="223" r="9" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="380" y="226" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">3</text>
+  <text x="404" y="223" text-anchor="start" font-size="9" fill="#0F172A" font-weight="bold">POST /api/auth/login</text>
+  <text x="404" y="237" text-anchor="start" font-size="7.5" fill="#64748B">校验演示账号 → 签发令牌</text>
+  <line x1="625" y1="270" x2="570" y2="270" stroke="#059669" stroke-width="1.6" marker-end="url(#arw)"/>
+  <circle cx="380" cy="267" r="9" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="380" y="270" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">4</text>
+  <text x="404" y="267" text-anchor="start" font-size="9" fill="#0F172A" font-weight="bold">Set-Cookie + {user}</text>
+  <text x="404" y="281" text-anchor="start" font-size="7.5" fill="#64748B">令牌进 HttpOnly Cookie</text>
+  <line x1="475" y1="314" x2="360" y2="314" stroke="#059669" stroke-width="1.6" marker-end="url(#arw)"/>
+  <circle cx="380" cy="311" r="9" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="380" y="314" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">5</text>
+  <text x="404" y="311" text-anchor="start" font-size="9" fill="#0F172A" font-weight="bold">navigateTo(redirect)</text>
+  <text x="404" y="325" text-anchor="start" font-size="7.5" fill="#64748B">回到来源页，守卫复查通过</text>
+  <line x1="265" y1="358" x2="150" y2="358" stroke="#059669" stroke-width="1.6" marker-end="url(#arw)"/>
+  <circle cx="380" cy="355" r="9" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="380" y="358" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">6</text>
+  <text x="404" y="355" text-anchor="start" font-size="9" fill="#0F172A" font-weight="bold">进入 default 布局</text>
+  <text x="404" y="369" text-anchor="start" font-size="7.5" fill="#64748B">侧边栏 + 顶栏，登录闭环完成</text>
+  <rect x="30" y="414" width="340" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="200" y="432.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">易错点 ① · 令牌放哪</text>
+  <text x="200" y="449" text-anchor="middle" font-size="8" fill="#B91C1C">SSR 项目里状态在服务端也要能读到：</text>
+  <text x="200" y="467.4" text-anchor="middle" font-size="8" fill="#B91C1C">存 Cookie（useCookie），不要存 localStorage——</text>
+  <text x="200" y="485.8" text-anchor="middle" font-size="8" fill="#B91C1C">那样刷新后服务端 middleware 永远认为未登录</text>
+  <rect x="390" y="414" width="340" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="560" y="432.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">易错点 ② · 重定向死循环</text>
+  <text x="560" y="449" text-anchor="middle" font-size="8" fill="#B91C1C">守卫的放行名单必须含 /login 本身；</text>
+  <text x="560" y="467.4" text-anchor="middle" font-size="8" fill="#B91C1C">redirect 只允许站内路径（必须以 / 开头），</text>
+  <text x="560" y="485.8" text-anchor="middle" font-size="8" fill="#B91C1C">拒绝 //evil.com 这类协议相对地址</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -79,6 +79,19 @@ export const BaseProject = [
           { text: "进展记录", link: "/project/Base/NuxtTemplate/Progress/index.md" },
         ],
       },
+      {
+        text: "后台管理系统通用模板",
+        link: "/project/Base/AdminTemplate/index.md",
+        collapsed: true,
+        items: [
+          { text: "需求与方案定位", link: "/project/Base/AdminTemplate/Requirement/index.md" },
+          { text: "初始化：从 NuxtTemplate 拿到基线", link: "/project/Base/AdminTemplate/Bootstrap/index.md" },
+          { text: "技术栈适配层", link: "/project/Base/AdminTemplate/StackAdapter/index.md" },
+          { text: "后台骨架：双布局与菜单", link: "/project/Base/AdminTemplate/Skeleton/index.md" },
+          { text: "登录与路由守卫", link: "/project/Base/AdminTemplate/Login/index.md" },
+          { text: "进展记录", link: "/project/Base/AdminTemplate/Progress/index.md" },
+        ],
+      },
     ],
   },
 ];

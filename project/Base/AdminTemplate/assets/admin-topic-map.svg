@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 386" width="760" height="386" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="386" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">后台管理系统通用模板：专题地图</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">站在 NuxtTemplate 的初始化产物之上，补齐后台管理系统必需的骨架、适配层与登录闭环</text>
+  <rect x="30" y="76" width="132" height="82" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="96" y="94.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">① 需求与定位</text>
+  <text x="96" y="111" text-anchor="middle" font-size="7.5" fill="#6D28D9">为什么站在模板上</text>
+  <text x="96" y="128.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">三条硬约束</text>
+  <text x="96" y="145.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">明确不做的事</text>
+  <line x1="162" y1="117" x2="172" y2="117" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="172" y="76" width="132" height="82" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="238" y="94.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 初始化基线</text>
+  <text x="238" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">走 NuxtTemplate 选择页</text>
+  <text x="238" y="128.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">读 template.config.json</text>
+  <text x="238" y="145.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">验证基线可跑</text>
+  <line x1="304" y1="117" x2="314" y2="117" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="314" y="76" width="132" height="82" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="94.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">③ 技术栈适配层</text>
+  <text x="380" y="111" text-anchor="middle" font-size="7.5" fill="#0F766E">Ui* 组件适配</text>
+  <text x="380" y="128.25" text-anchor="middle" font-size="7.5" fill="#0F766E">构建期 alias 切换</text>
+  <text x="380" y="145.5" text-anchor="middle" font-size="7.5" fill="#0F766E">纯 CSS 兜底</text>
+  <line x1="446" y1="117" x2="456" y2="117" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="456" y="76" width="132" height="82" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="522" y="94.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">④ 后台骨架</text>
+  <text x="522" y="111" text-anchor="middle" font-size="7.5" fill="#047857">双布局 layouts</text>
+  <text x="522" y="128.25" text-anchor="middle" font-size="7.5" fill="#047857">菜单单一来源</text>
+  <text x="522" y="145.5" text-anchor="middle" font-size="7.5" fill="#047857">面包屑与 404</text>
+  <line x1="588" y1="117" x2="598" y2="117" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="598" y="76" width="132" height="82" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="664" y="94.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">⑤ 登录与守卫</text>
+  <text x="664" y="111" text-anchor="middle" font-size="7.5" fill="#C2410C">登录页与 useAuth</text>
+  <text x="664" y="128.25" text-anchor="middle" font-size="7.5" fill="#C2410C">middleware 守卫</text>
+  <text x="664" y="145.5" text-anchor="middle" font-size="7.5" fill="#C2410C">令牌存 Cookie</text>
+  <text x="380" y="184" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">顺序即依赖：③④⑤ 的代码都从 ② 的 template.config.json 读「选了什么」</text>
+  <text x="60" y="214" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">与相邻项目的分工（写死在页面上）</text>
+  <rect x="30" y="226" width="130" height="24" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1"/>
+  <text x="95" y="242" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">Nuxt 通用模板</text>
+  <rect x="168" y="226" width="562" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="449" y="242" text-anchor="middle" font-size="8.5" fill="#334155">讲「怎么选栈、怎么初始化、怎么自删引导器」——选择页与引擎一行不改</text>
+  <rect x="30" y="256" width="130" height="24" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="95" y="272" text-anchor="middle" font-size="8.5" fill="#065F46" font-weight="bold">本模板</text>
+  <rect x="168" y="256" width="562" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="449" y="272" text-anchor="middle" font-size="8.5" fill="#334155">讲「初始化完之后怎么盖后台」：适配层、骨架布局、登录与路由守卫</text>
+  <rect x="30" y="286" width="130" height="24" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="95" y="302" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">Vue3 模板</text>
+  <rect x="168" y="286" width="562" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="449" y="302" text-anchor="middle" font-size="8.5" fill="#334155">纯 SPA 通用模板；本模板是 Nuxt 全栈形态，服务端接口由 server/api 提供</text>
+  <rect x="30" y="316" width="130" height="24" rx="5" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+  <text x="95" y="332" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">后端通用模板</text>
+  <rect x="168" y="316" width="562" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="449" y="332" text-anchor="middle" font-size="8.5" fill="#334155">真实后端服务的模板；本模板的演示接口仅用于跑通登录闭环</text>
+  <text x="380" y="366" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">阅读顺序：按 ①→⑤ 走一遍，每页末尾都有「验证方式」，做完一步验一步</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

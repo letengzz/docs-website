@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 396" width="760" height="396" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="396" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">后台骨架：双布局与菜单数据流</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">default 负责登录后的工作台，auth 负责登录前的独立外壳</text>
+  <text x="190" y="84" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">default 布局（登录后的所有页面）</text>
+  <rect x="30" y="94" width="320" height="230" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <rect x="38" y="102" width="88" height="214" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="82" y="120" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">SideNav</text>
+  <rect x="46" y="130" width="72" height="16" rx="4" fill="#EDE9FE" stroke="#A78BFA" stroke-width="1"/>
+  <text x="82" y="141" text-anchor="middle" font-size="7.5" fill="#5B21B6">仪表盘</text>
+  <rect x="46" y="152" width="72" height="16" rx="4" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+  <text x="82" y="163" text-anchor="middle" font-size="7.5" fill="#6D28D9">用户管理</text>
+  <rect x="46" y="174" width="72" height="16" rx="4" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+  <text x="82" y="185" text-anchor="middle" font-size="7.5" fill="#6D28D9">订单管理</text>
+  <rect x="46" y="196" width="72" height="16" rx="4" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+  <text x="82" y="207" text-anchor="middle" font-size="7.5" fill="#6D28D9">系统设置</text>
+  <rect x="134" y="102" width="208" height="30" rx="4" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+  <text x="238" y="121" text-anchor="middle" font-size="7.5" fill="#1E3A8A" font-weight="bold">TopBar：折叠按钮 · 面包屑 · 用户菜单</text>
+  <rect x="134" y="140" width="208" height="168" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="238" y="158.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">内容区 &lt;slot /&gt;</text>
+  <text x="238" y="175" text-anchor="middle" font-size="7.5" fill="#1D4ED8">页面内容由各业务页面填充</text>
+  <text x="238" y="192.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">面包屑从 menu.ts 派生</text>
+  <text x="238" y="209.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">标题取当前菜单项</text>
+  <text x="570" y="84" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">auth 布局（登录 / 未认证页）</text>
+  <rect x="410" y="94" width="320" height="230" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <rect x="490" y="130" width="160" height="158" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="570" y="150" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">登录卡片</text>
+  <rect x="502" y="160" width="136" height="18" rx="4" fill="#FFEDD5" stroke="#FDBA74" stroke-width="1"/>
+  <text x="570" y="172" text-anchor="middle" font-size="7.5" fill="#9A3412">账号输入 UiInput</text>
+  <rect x="502" y="184" width="136" height="18" rx="4" fill="#FFEDD5" stroke="#FDBA74" stroke-width="1"/>
+  <text x="570" y="196" text-anchor="middle" font-size="7.5" fill="#9A3412">密码输入 UiInput</text>
+  <rect x="502" y="208" width="136" height="20" rx="4" fill="#EA580C" stroke="#C2410C" stroke-width="1"/>
+  <text x="570" y="221" text-anchor="middle" font-size="7.5" fill="#FFFFFF" font-weight="bold">登录 UiButton</text>
+  <text x="570" y="258" text-anchor="middle" font-size="7.5" fill="#64748B">definePageMeta({ layout: 'auth' })</text>
+  <text x="570" y="274" text-anchor="middle" font-size="7.5" fill="#64748B">整页无侧边栏 / 顶栏</text>
+  <text x="380" y="352" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">菜单数据流：config/menu.ts（唯一来源）→ SideNav 渲染 · TopBar 面包屑 · / 重定向到首个菜单项</text>
+  <text x="380" y="376" text-anchor="middle" font-size="9.5" fill="#475569">侧边栏可折叠状态存 Cookie（SSR 首屏不闪）；骨架组件全部放 components/admin/，与业务组件隔离</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
