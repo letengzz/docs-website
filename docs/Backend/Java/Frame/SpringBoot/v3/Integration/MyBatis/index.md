@@ -78,11 +78,11 @@ mybatis:
 
 - **第一种方式：查询语句使用as关键字起别名，让查询结果列名和实体类的属性名对应上。**
 
-  ![](assets/img202411222259883.png)
+  ![配置mybatis规则、使⽤MyBatisPlus则此项配置⽆效](assets/img202411222259883.png)
 
   再次测试：
 
-  ![](assets/img202411222259070.png)
+  ![配置mybatis规则、使⽤MyBatisPlus则此项配置⽆效](assets/img202411222259070.png)
 
 - **第二种方式：通过配置自动映射**：在`application.properties`配置文件中进行如下配置：
 

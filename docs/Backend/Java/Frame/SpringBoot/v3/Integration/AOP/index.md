@@ -14,7 +14,7 @@ Spring Boot中AOP编程需要引入aop启动器：
 </dependency>
 ```
 
-![](assets/img202411211512305.png)
+![Spring Boot AOP概述](assets/img202411211512305.png)
 
 可以看到，当引入aop启动器之后，会引入aop依赖和aspectj依赖：
 
@@ -138,4 +138,4 @@ class AopApplicationTests {
 
 执行结果如下：
 
-![](assets/img202411211514495.png)
+![测试](assets/img202411211514495.png)

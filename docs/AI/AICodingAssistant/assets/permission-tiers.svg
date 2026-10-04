@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .t0 { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .t1 { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .t2 { fill: #fff7e8; stroke: #d89614; stroke-width: 1.5; }
+    .t3 { fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2b { font-size: 15px; font-weight: bold; }
+    .h   { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+  </style>
+
+  <text class="t2b" x="450" y="26">权限四级：不是「给不给权限」，是「每类动作各给哪一级」</text>
+
+  <rect class="t0" x="30" y="50" width="200" height="290"/>
+  <text class="h" x="130" y="78">L0 只读</text>
+  <text class="small" x="130" y="100">读文件、grep、看 git log</text>
+  <text x="130" y="134">默认全放行</text>
+  <text class="small" x="130" y="158">理由：只读不会造成损失，</text>
+  <text class="small" x="130" y="174">拦它只会把人变成复读机</text>
+  <text class="small" x="130" y="208">例外：密钥文件、.env、</text>
+  <text class="small" x="130" y="224">生产配置 → 显式 deny</text>
+  <text class="small" x="130" y="262">典型：分析、答疑、评审</text>
+
+  <rect class="t1" x="240" y="50" width="200" height="290"/>
+  <text class="h" x="340" y="78">L1 工作区内写</text>
+  <text class="small" x="340" y="100">改源码、加测试、写文档</text>
+  <text x="340" y="134">放行 + diff 评审兜底</text>
+  <text class="small" x="340" y="158">理由：写错了 diff 里看得见，</text>
+  <text class="small" x="340" y="174">成本由评审环节承担</text>
+  <text class="small" x="340" y="208">边界：只许写「可改目录」</text>
+  <text class="small" x="340" y="224">生成物目录显式禁止</text>
+  <text class="small" x="340" y="262">典型：日常编码、重构</text>
+
+  <rect class="t2" x="450" y="50" width="200" height="290"/>
+  <text class="h" x="550" y="78">L2 有副作用</text>
+  <text class="small" x="550" y="100">装依赖、改 schema、起服务、</text>
+  <text class="small" x="550" y="116">访问网络</text>
+  <text x="550" y="146">默认 ask，白名单放行</text>
+  <text class="small" x="550" y="170">理由：副作用出了工作区，</text>
+  <text class="small" x="550" y="186">出错不一定能当场发现</text>
+  <text class="small" x="550" y="216">白名单要写具体命令</text>
+  <text class="small" x="550" y="232">而不是「允许 npm」</text>
+  <text class="small" x="550" y="262">典型：开发依赖、本地容器</text>
+
+  <rect class="t3" x="660" y="50" width="210" height="290"/>
+  <text class="h" x="765" y="78">L3 禁止（deny）</text>
+  <text class="small" x="765" y="100">删库、推远程、发布、改 CI、</text>
+  <text class="small" x="765" y="116">terraform destroy</text>
+  <text x="765" y="146">显式 deny，不商量</text>
+  <text class="small" x="765" y="170">理由：不可逆或影响他人，</text>
+  <text class="small" x="765" y="186">「事后发现」等于没防</text>
+  <text class="small" x="765" y="216">auto 模式下的护栏</text>
+  <text class="small" x="765" y="232">必须覆盖这一级</text>
+  <text class="small" x="765" y="262">典型：生产凭据、发布流程</text>
+
+  <text class="small" x="450" y="372">落地要点：把这张表写进团队规范与指令文件，工具之间可以不同名，但四级的语义要一致</text>
+</svg>

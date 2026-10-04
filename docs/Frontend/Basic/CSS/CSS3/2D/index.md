@@ -4,7 +4,7 @@
 
 二维坐标系：
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0.jpg)
+![前提](assets/CSS3%E7%AC%94%E8%AE%B0.jpg)
 
 ## 2D位移
 

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .up { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .dn { fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    .mid{ fill: #fff7e8; stroke: #d89614; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2 { font-size: 15px; font-weight: bold; }
+    .h  { font-size: 14px; font-weight: bold; }
+    .big{ font-size: 26px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+  </style>
+
+  <text class="t2" x="450" y="26">同一件事的三组数据：任务类型不同，结论相反——所以结论必须带适用范围</text>
+
+  <rect class="up" x="30" y="52" width="270" height="230"/>
+  <text class="big" x="165" y="100" fill="#2c7a4f">+55%</text>
+  <text class="h" x="165" y="130">受控实验 · 定义好的编码任务</text>
+  <text class="small" x="165" y="154">GitHub / Microsoft Research（2022）</text>
+  <text class="small" x="165" y="184">任务边界清晰、上下文小、</text>
+  <text class="small" x="165" y="200">接近绿地代码</text>
+  <text class="small" x="165" y="228">适用：脚本、样板、单测、</text>
+  <text class="small" x="165" y="244">新函数、新页面</text>
+
+  <rect class="dn" x="315" y="52" width="270" height="230"/>
+  <text class="big" x="450" y="100" fill="#b8322b">−19%</text>
+  <text class="h" x="450" y="130">随机对照 · 资深开发者在自己的老仓库</text>
+  <text class="small" x="450" y="154">METR（2025 年初，2026 年仍被反复引用）</text>
+  <text class="small" x="450" y="184">参与者事前自估会快 20%~24%，</text>
+  <text class="small" x="450" y="200">事后也自认更快——实际更慢</text>
+  <text class="small" x="450" y="228">适用：大型生产仓库、</text>
+  <text class="small" x="450" y="244">隐性约束多的存量代码</text>
+
+  <rect class="mid" x="600" y="52" width="270" height="230"/>
+  <text class="big" x="735" y="100" fill="#b07a10">账单后置</text>
+  <text class="h" x="735" y="130">仓库级质量信号（GitClear）</text>
+  <text class="small" x="735" y="154">移动/重构代码占比：21% → 3.8%</text>
+  <text class="small" x="735" y="172">复制粘贴新增代码：9.4% → 15.7%</text>
+  <text class="small" x="735" y="190">每百万行变更的重复块：40.3 → 73.0</text>
+  <text class="small" x="735" y="214">两周内被重写的 churn：约 16% → 约 19%</text>
+  <text class="small" x="735" y="240">注：相关性研究，非因果证明</text>
+
+  <rect class="mid" x="60" y="300" width="780" height="96"/>
+  <text x="450" y="324" font-weight="bold">三组数据怎么同时成立</text>
+  <text class="small" x="450" y="346">AI 把「写」的时间压掉了，把「读、验、调」的时间顶上来了：Stack Overflow 2026（4.9 万人）里 66% 的首要抱怨</text>
+  <text class="small" x="450" y="364">是「几乎对但没全对」，45% 说调试 AI 代码比自己写还慢——工作没有消失，是挪进了评审环节</text>
+  <text class="small" x="450" y="388">→ 所以度量要看全链路（DORA），不能只看编码段；所以评审口径要为「几乎对」重新设计（团队规范页）</text>
+</svg>

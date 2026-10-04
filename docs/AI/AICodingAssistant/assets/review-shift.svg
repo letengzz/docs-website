@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="rs" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7a5bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .l { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .r { fill: #f0ecff; stroke: #7a5bd8; stroke-width: 1.5; }
+    .k { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .w { fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2 { font-size: 15px; font-weight: bold; }
+    .h  { font-size: 14px; font-weight: bold; }
+    .big{ font-size: 24px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+    .ar { stroke: #7a5bd8; stroke-width: 1.6; fill: none; }
+  </style>
+
+  <text class="t2" x="450" y="26">评审重心的位移：AI 生成代码占比越高，评审越像主要工作</text>
+
+  <rect class="l" x="60" y="52" width="360" height="120"/>
+  <text class="h" x="240" y="78">2024 年的画像</text>
+  <text class="big" x="240" y="112">写 &gt; 评审</text>
+  <text class="small" x="240" y="140">人写代码、人评审；AI 以补全为主，</text>
+  <text class="small" x="240" y="156">每次产出一个函数以内</text>
+
+  <rect class="r" x="480" y="52" width="360" height="120"/>
+  <text class="h" x="660" y="78">2026 年的画像（活跃 Copilot 用户）</text>
+  <text class="big" x="660" y="112">评审 &gt; 写</text>
+  <text class="small" x="660" y="140">每周约 9.8 小时写作 vs 11.4 小时评审；</text>
+  <text class="small" x="660" y="156">AI 生成代码占比平均约 46%（Java 约 61%）</text>
+
+  <line class="ar" x1="450" y1="112" x2="478" y2="112" marker-end="url(#rs)"/>
+
+  <rect class="w" x="60" y="192" width="780" height="100"/>
+  <text x="450" y="216" font-weight="bold">位移带来的两件事必须跟上，否则吞吐的收益会被事故吃掉</text>
+  <text class="small" x="450" y="240">① 评审产能是硬约束：PR 数 +20% 的同一组数据里，每 PR 事故率 +23.5% —— 生成侧提速、评审侧不提速，事故率必然上行</text>
+  <text class="small" x="450" y="262">② 评审清单要换：从「找 bug」转向「仓库里是不是已经有这个实现」「异常是否被吞」「边界与并发」「测试是不是被改弱来迁就实现」</text>
+
+  <rect class="k" x="60" y="312" width="780" height="72"/>
+  <text x="450" y="336" font-weight="bold">可落地的三条（详见团队规范页）</text>
+  <text class="small" x="450" y="358">小 PR（AI 的 diff 天然适合小批量）· 先跑门禁再交人（把机械检查交给 CI）· 机器可判据优先（重复度、空 catch、覆盖率阈值进 CI）</text>
+</svg>

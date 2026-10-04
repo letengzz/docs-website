@@ -91,11 +91,11 @@ Spring Boot 的启动器本质上就是一组预定义的依赖集合，它们�
 
 - 官方提供简化开发的场景启动器：命名为：`spring-boot-starter-*`
 
-  ![](assets/img202411172030764.png)
+  ![starter场景启动器](assets/img202411172030764.png)
 
 - 第三方提供简化开发的场景启动器：命名为：`*-spring-boot-starter`
 
-  ![](assets/img202411172030855.png)
+  ![starter场景启动器](assets/img202411172030855.png)
 
 默认支持的所有场景：https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters
 

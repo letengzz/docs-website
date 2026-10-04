@@ -86,7 +86,7 @@ public class TagMsgListener implements RocketMQListener<String> {
 
 在RocketMQ中的消息，默认会有一个messageId当做消息的唯一标识，可以给消息携带一个key，用作唯一标识或者业务标识，包括在控制面板查询的时候也可以使用messageId或者key来进行查询
 
-![](assets/img202403200004263.png)
+![发送带key的消息](assets/img202403200004263.png)
 
 ### 生产者
 

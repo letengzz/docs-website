@@ -166,7 +166,7 @@ app.mount('#app')
 
 此时开发者工具中已经有了`pinia`选项
 
-<img src="../assets/img202402111427410.png" style="zoom:80%;border:1px solid black;border-radius:10px" />
+<img src="../assets/img202402111427410.png" alt="搭建 Pinia 环境" style="zoom:80%;border:1px solid black;border-radius:10px" />
 
 ## 存储+读取数据
 

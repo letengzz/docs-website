@@ -75,7 +75,7 @@ public class Account {
 
 ## 常用注解
 
-![](assets/img202404172339378.png)
+![常用注解](assets/img202404172339378.png)
 
 相关注解参考源码：
 

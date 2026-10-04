@@ -345,7 +345,7 @@ text-decoration: text-decoration-line || text-decoration-style || text-decoratio
 background-image: linear-gradient(red,yellow,green);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0.jpg)
+![线性渐变](assets/CSS3%E7%AC%94%E8%AE%B0.jpg)
 
 使用关键词设置线性**渐变的方向**：
 
@@ -354,7 +354,7 @@ background-image: linear-gradient(to top,red,yellow,green);
 background-image: linear-gradient(to right top,red,yellow,green);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-17714203329752.jpg)
+![线性渐变](assets/CSS3%E7%AC%94%E8%AE%B0-17714203329752.jpg)
 
 使用角度设置线性**渐变的方向**：
 
@@ -362,7 +362,7 @@ background-image: linear-gradient(to right top,red,yellow,green);
 background-image: linear-gradient(30deg,red,yellow,green);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-17714203927226.jpg)
+![线性渐变](assets/CSS3%E7%AC%94%E8%AE%B0-17714203927226.jpg)
 
 调整开始**渐变的位置**：
 
@@ -370,7 +370,7 @@ background-image: linear-gradient(30deg,red,yellow,green);
 background-image: linear-gradient(red 50px,yellow 100px ,green 150px);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-17714204175698.jpg)
+![线性渐变](assets/CSS3%E7%AC%94%E8%AE%B0-17714204175698.jpg)
 
 ### 径向渐变
 
@@ -386,7 +386,7 @@ background-image: linear-gradient(red 50px,yellow 100px ,green 150px);
 background-image: radial-gradient(red,yellow,green);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-177142047290110.jpg)
+![径向渐变](assets/CSS3%E7%AC%94%E8%AE%B0-177142047290110.jpg)
 
 使用关键词调整渐变圆的圆心位置：
 
@@ -394,7 +394,7 @@ background-image: radial-gradient(red,yellow,green);
 background-image: radial-gradient(at right top,red,yellow,green);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-17714760441961.jpg)
+![径向渐变](assets/CSS3%E7%AC%94%E8%AE%B0-17714760441961.jpg)
 
 使用像素值调整渐变圆的圆心位置：
 
@@ -402,7 +402,7 @@ background-image: radial-gradient(at right top,red,yellow,green);
 background-image: radial-gradient(at 100px 50px,red,yellow,green);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-17714760726433.jpg)
+![径向渐变](assets/CSS3%E7%AC%94%E8%AE%B0-17714760726433.jpg)
 
 调整渐变形状为正圆：
 
@@ -410,7 +410,7 @@ background-image: radial-gradient(at 100px 50px,red,yellow,green);
 background-image: radial-gradient(circle,red,yellow,green);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-17714760897605.jpg)
+![径向渐变](assets/CSS3%E7%AC%94%E8%AE%B0-17714760897605.jpg)
 
 调整形状的半径：
 
@@ -418,13 +418,13 @@ background-image: radial-gradient(circle,red,yellow,green);
 background-image: radial-gradient(100px,red,yellow,green);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-17714761106437.jpg)
+![径向渐变](assets/CSS3%E7%AC%94%E8%AE%B0-17714761106437.jpg)
 
 ```css
 background-image: radial-gradient(50px 100px,red,yellow,green);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-17714761214669.jpg)
+![径向渐变](assets/CSS3%E7%AC%94%E8%AE%B0-17714761214669.jpg)
 
 调整开始渐变的位置：
 
@@ -432,7 +432,7 @@ background-image: radial-gradient(50px 100px,red,yellow,green);
 background-image: radial-gradient(red 50px,yellow 100px,green 150px);
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-177147613210311.jpg)
+![径向渐变](assets/CSS3%E7%AC%94%E8%AE%B0-177147613210311.jpg)
 
 ###  重复渐变
 

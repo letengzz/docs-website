@@ -71,8 +71,9 @@
 | 第 104 天 | 判据收口与分类标签联调：smoke 中已上移断言下线 + `assertion_audit.py` 判据唯一性核查；`withCount` 服务端单一口径 + L1-L6 六条两端联调动作 | ✅ |
 | 第 105 天 | 评论写入链路：两级楼层模型定稿（`root_id = 自身 id`、`floor` 写时分配 + 唯一索引）+ 写入三约束（PUBLISHED 才可评 / 父评论同文章 / 已删不可回）+ `comment_smoke` 断言清单先行，门禁扩到八道 | ✅ |
 | 第 106 天 | 评论读侧：楼层 keyset 分页（游标 = floor，禁 offset）+ 楼内回复全量返回 + 已删楼层「占位保留」口径（修订 S2）+ 契约 401/403 分支穷举评论路径（C1~C10）+ 审核状态读侧生效，`comment_smoke` 扩到 28 步 | ✅ |
-| 第 107 天 | 全文搜索：`search_text` 与渲染同事务 + 两处服务端配置（`ngram_token_size` 只读、`innodb_ft_enable_stopword=OFF`）+ 查询串净化与布尔模式短语匹配 + `EXPLAIN` 走索引断言 + `search_smoke`（9 步），门禁扩到九道 | ✅ 本日 |
-| 第 108-111 天 | 第 3 周收尾：前台 SSR（Nuxt 服务端取数、SEO 元信息、搜索页服务端渲染）/ 联调与测试 | ⏳ |
+| 第 107 天 | 全文搜索：`search_text` 与渲染同事务 + 两处服务端配置（`ngram_token_size` 只读、`innodb_ft_enable_stopword=OFF`）+ 查询串净化与布尔模式短语匹配 + `EXPLAIN` 走索引断言 + `search_smoke`（9 步），门禁扩到九道 | ✅ |
+| 第 108 天 | 前台 SSR：`useAsyncData` 四纪律 + hydration 三红线 + SEO 元信息（TDK/canonical/og:）+ SSR 缓存头与失效时序 + 搜索页 400 转友好提示 + `ssr_smoke`（R1~R10，10 步），门禁扩到十道 | ✅ 本日 |
+| 第 108-111 天 | 第 3 周收尾：联调与测试收口（十道门禁全绿 / 三链路一条龙回归 / 补跑 Docker 验证 DDL） | ⏳ |
 | 第 112-120 天 | 第 4 周：部署 / 监控 / 验收 | ⏳ |
 
 ## 各章节
@@ -92,7 +93,8 @@
 13. [评论链路：两级楼层的建模与写入](./Comments/index.md)：楼层模型与写时楼层号、写入三约束、`comment_smoke` 断言清单的分层定稿
 14. [评论读侧：楼层分页、占位渲染与契约穷举](./CommentRead/index.md)：keyset 分页与楼内回复全量、已删楼层占位口径、401/403 分支穷举、审核状态读侧生效
 15. [全文搜索：MySQL ngram 先行](./Search/index.md)：`search_text` 写入时机、两处服务端配置、布尔模式短语匹配与净化、`EXPLAIN` 走索引断言
-16. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+16. [前台 SSR：服务端取数、hydration 一致与 SEO 元信息](./FrontendSSR/index.md)：`useAsyncData` 四纪律、软 404 透传、TDK/canonical/og:、SSR 缓存头与失效、搜索页服务端渲染
+17. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
 
 ## 在你自己的工程里跑起来
 
@@ -107,7 +109,7 @@ mvn spring-boot:run                             # 默认 profile=local：内存�
 ```
 
 ```shell
-# 另开终端：七道行为门禁（结构 / 只读行为 / 写链路行为 / 状态迁移 / 读侧可见性 / 评论链路 / 全文搜索）
+# 另开终端：十道行为门禁（结构 / 只读行为 / 写链路行为 / 状态迁移 / 读侧可见性 / 评论链路 / 全文搜索 / 前台 SSR）
 cd your-project/service
 python skeleton_check.py                            # 期望 checks = 27  failed = 0
 python api_smoke.py       --base http://127.0.0.1:18080 # 期望 cases = 9   passed = 9
@@ -116,8 +118,10 @@ python lifecycle_smoke.py --base http://127.0.0.1:18080 # 期望 steps = 24  pas
 python visibility_smoke.py --base http://127.0.0.1:18080 # 期望 steps = 22 passed = 22（读侧可见性）
 python comment_smoke.py   --base http://127.0.0.1:18080 # 期望 steps = 28 passed = 28（评论读写链路，第 105 天起、第 106 天扩）
 python search_smoke.py    --base http://127.0.0.1:18080 # 期望 steps = 9  passed = 9（全文搜索，第 107 天起；需 MySQL 已按第 107 天配好 ngram 参数）
+python ssr_smoke.py --base http://127.0.0.1:3000 --api http://127.0.0.1:18080 # 期望 steps = 10 passed = 10（前台 SSR，第 108 天起；需前台已按第 108 天构建并启动）
 python lifecycle_smoke.py --selftest                    # 期望 selftest: 24/24 通过（证明断言不是恒真）
 python search_smoke.py    --selftest                    # 期望 selftest: 9/9 通过
+python ssr_smoke.py       --selftest                    # 期望 selftest: 10/10 通过
 ```
 
 ```shell
@@ -127,7 +131,7 @@ curl -s 'http://127.0.0.1:18080/api/v1/categories?withCount=true'
                                             # 期望：每个分类都带 postCount；空分类返回 0 而非消失
 ```
 
-各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)；评论链路见[评论链路：两级楼层的建模与写入](./Comments/index.md)与[评论读侧](./CommentRead/index.md)；全文搜索的两处服务端配置与 `EXPLAIN` 断言见[全文搜索：MySQL ngram 先行](./Search/index.md)。
+各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)；评论链路见[评论链路：两级楼层的建模与写入](./Comments/index.md)与[评论读侧](./CommentRead/index.md)；全文搜索的两处服务端配置与 `EXPLAIN` 断言见[全文搜索：MySQL ngram 先行](./Search/index.md)；前台 SSR 的 `useAsyncData` 纪律、软 404 透传与 SEO 元信息见[前台 SSR](./FrontendSSR/index.md)。
 
 ## 参考资料
 

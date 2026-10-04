@@ -14,7 +14,7 @@
 
 CSS 像素 (CSS Pixel)是 CSS 中用于定义长度、尺寸的单位 (简写为 px)。
 
-![](./assets/CSS2笔记-17573427336542.jpg)
+![像素](./assets/CSS2笔记-17573427336542.jpg)
 
 ## 颜色表示
 
@@ -112,7 +112,7 @@ HSLA 其实就是在 HSL 的基础上，添加了透明度。
 
 - 色相：取值范围是 0~360 度，具体度数对应的颜色：
 
-  <img src="./assets/%E9%A2%9C%E8%89%B2HSL.jpg" style="zoom:50%;" />
+  <img src="./assets/%E9%A2%9C%E8%89%B2HSL.jpg" alt="HSL/HSLA" style="zoom:50%;" />
 
 - 饱和度：取值范围是 0%~100% (向色相中对应颜色中添加灰色， 0% 全灰， 100% 没有灰)
 
@@ -176,7 +176,7 @@ font-family: Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Hei
 
 **无衬线字体**：网页建议开发使用无衬线字体。
 
-<img src="./assets/%E6%97%A0%E8%A1%AC%E7%BA%BF%E5%AD%97%E4%BD%93.jpg" style="zoom:17%;" />
+<img src="./assets/%E6%97%A0%E8%A1%AC%E7%BA%BF%E5%AD%97%E4%BD%93.jpg" alt="字体族" style="zoom:17%;" />
 
 ### 字体风格
 

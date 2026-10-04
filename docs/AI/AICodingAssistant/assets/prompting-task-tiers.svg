@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="pt" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+  </defs>
+  <style>
+    .t1 { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .t2 { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .t3 { fill: #fff7e8; stroke: #d89614; stroke-width: 1.5; }
+    .t4 { fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    .t5 { fill: #f0ecff; stroke: #7a5bd8; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2b { font-size: 15px; font-weight: bold; }
+    .h   { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+    .ar  { stroke: #3aa76d; stroke-width: 1.4; fill: none; }
+  </style>
+
+  <text class="t2b" x="450" y="26">任务分级：先判断这是哪类任务，再选提示策略</text>
+
+  <rect class="t1" x="30" y="52" width="160" height="150"/>
+  <text class="h" x="110" y="78">T1 样板 / 转换</text>
+  <text class="small" x="110" y="102">判据客观</text>
+  <text class="small" x="110" y="122">一句话 + 样例</text>
+  <text class="small" x="110" y="152">期望：一次过</text>
+
+  <rect class="t2" x="205" y="52" width="160" height="150"/>
+  <text class="h" x="285" y="78">T2 单点实现</text>
+  <text class="small" x="285" y="102">要守约定</text>
+  <text class="small" x="285" y="122">约定 + 测试先行</text>
+  <text class="small" x="285" y="152">期望：一次过</text>
+  <text class="small" x="285" y="168">少量修改</text>
+
+  <rect class="t3" x="380" y="52" width="160" height="150"/>
+  <text class="h" x="460" y="78">T3 特性开发</text>
+  <text class="small" x="460" y="102">有设计决策</text>
+  <text class="small" x="460" y="122">先计划后代码</text>
+  <text class="small" x="460" y="152">期望：两轮</text>
+  <text class="small" x="460" y="168">计划确认 → 实现</text>
+
+  <rect class="t4" x="555" y="52" width="160" height="150"/>
+  <text class="h" x="635" y="78">T4 重构 / 排障</text>
+  <text class="small" x="635" y="102">隐性约束多</text>
+  <text class="small" x="635" y="122">判据 + 小步走</text>
+  <text class="small" x="635" y="152">期望：多轮</text>
+  <text class="small" x="635" y="168">每轮可验证</text>
+
+  <rect class="t5" x="730" y="52" width="140" height="150"/>
+  <text class="h" x="800" y="78">T5 学习解释</text>
+  <text class="small" x="800" y="102">无产出代码</text>
+  <text class="small" x="800" y="122">要求带行号引用</text>
+  <text class="small" x="800" y="152">提问质量</text>
+  <text class="small" x="800" y="168">决定质量</text>
+
+  <text class="small" x="110" y="230" font-weight="bold">风险低</text>
+  <text class="small" x="800" y="230" font-weight="bold">风险高</text>
+  <line class="ar" x1="160" y1="226" x2="740" y2="226" marker-end="url(#pt)"/>
+
+  <rect class="t2" x="60" y="260" width="780" height="120"/>
+  <text x="450" y="284" font-weight="bold">两个最大杠杆（对 T2~T4 都适用）</text>
+  <text class="small" x="450" y="308">① 给判据不给结论：「处理一下错误」→「不许吞异常：要么类型化错误要么记日志再抛」</text>
+  <text class="small" x="450" y="330">② 让它先复述约束：三句话确认改哪些文件、守哪些约定、怎么验证，确认后再动手</text>
+  <text class="small" x="450" y="356">最常见错配：把 T3/T4 当 T1 用——预算该花在第一轮澄清，而不是最后一轮返工</text>
+</svg>

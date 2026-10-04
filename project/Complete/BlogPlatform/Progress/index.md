@@ -615,3 +615,50 @@ EXPLAIN SELECT id FROM posts
 | 单字查询为什么 400 而不是返回空？ | 返回空是静默无结果，用户会以为站内没有；400 让前台能提示「至少输入 2 个字」 |
 
 **下一步（第 108 天）**：前台 SSR——Nuxt 服务端取数与 hydration（`useAsyncData` 与首屏 HTML 一致）、文章列表与详情的 SSR 缓存头、搜索页在服务端渲染时把 Q4 的 400 转成友好提示、SEO 元信息（`title` / `description` / `og:`）由服务端渲进 HTML。判据：查看源代码能看到正文与 TDK；禁用 JavaScript 后页面仍可读。里程碑对照：第 3 周（105-111 天）进行中 3/4。
+
+## 2026-10-04（第 108 天）：前台 SSR —— 服务端取数、hydration 一致与 SEO 元信息
+
+:::info 本日为文档产出
+本页记录 [前台 SSR](../FrontendSSR/index.md) 的实现口径：`useAsyncData` 四纪律、软 404 透传、TDK/canonical/og: 由服务端渲进 HTML、SSR 缓存头与失效时序、搜索页 400 转友好提示，代码与配置在你自己的工程里落地后验证。
+:::
+
+**做了什么**：
+
+1. **服务端取数四纪律**：key 全局唯一（`post:` + slug）、不传 `server: false`（关掉即退化 CSR、SEO 失效）、结果进 payload（客户端 hydration 不重复请求）、错误用 `createError` 抛真状态码——**软 404 是本日最贵的错误**：后端 404 被前台吞成「漂亮的 404 组件 + 200」，第 102 天的存在性不泄漏就白做了，故 R3 断言打在前台 HTTP 状态码上；
+2. **hydration 三条红线**：setup 顶层不碰 `window`/`document`/`localStorage`（放 `onMounted` 或 `<ClientOnly>`）、不用每次都变的值参与渲染（`Date.now()`/`Math.random()`/本地时区——时间在服务端格式化成字符串再下发）、列表 key 与顺序稳定（两端吃同一份 payload）；
+3. **SEO 元信息一处写全**：详情页 title=文章标题、description=摘要（**服务端已有纯文本，前台只取不加工**，两端各截一遍必然不一致）、`og:` 全套、canonical=`{SITE_URL}/posts/{slug}`；**搜索页反向操作**——`noindex` 且不设 canonical（同一 URL 对应无限多内容，收录只会稀释权重），但搜索页本体仍要 SSR；
+4. **SSR 缓存头与失效**：详情 `public, max-age=60, stale-while-revalidate=300`、列表 30 秒、带 hash 的静态资源 `immutable`、搜索 `no-store`；失效口径与第 102 天同一条原则——版本号（`updated_at`）进后端缓存键、提交后失效、TTL 只兜底，R9 验证「发布新版后下一次请求源码立即更新」；
+5. **搜索页服务端渲染**：`q` 缺失或 < 2 字**不发请求**直接渲染「至少输入 2 个字」（HTTP 200）；上游 500 渲染页内错误态而非裸抛（搜索是站内增强功能，5xx 会让爬虫把整站降权）；R5 断言「提示出现在服务端渲染的 HTML 里」，不等客户端 JS 起来；
+6. **断言分层**：T15（摘要取值纯函数）/T16（缓存头计算纯函数）上移 `mvn test`；R1~R10 留 `ssr_smoke.py`（要起前台、要 curl 源码），其中 **R1/R2 的判据是「看源码能看到正文与 TDK」而非看开发者工具的 DOM**——后者在任何页面都会显示，没有判别力；门禁从九道扩到**十道**，`assertion_audit.py` 前缀核查扩展到 `R1~R10`。
+
+**如何验证**：
+
+```shell
+cd your-project/web
+npx nuxt build                                # 期望：构建成功，产物含 SSR 服务端入口（R10）
+node .output/server/index.mjs &               # 期望：监听 3000
+
+python ssr_smoke.py --base http://127.0.0.1:3000 --api http://127.0.0.1:18080
+# 期望 steps = 10  passed = 10
+python ssr_smoke.py --selftest                # 期望 selftest: 10/10（断言可证伪）
+python assertion_audit.py                     # 期望 PASS：T1~T16 / S1~S6 / Q1~Q9 / C1~C10 / R1~R10 各只出现一次
+
+# 手工抽查：SEO 的最终判据是看源码
+curl -s http://127.0.0.1:3000/posts/hello-world | grep -o '<title>[^<]*</title>'   # 期望文章标题
+curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:3000/posts/draft-slug    # 期望 404（R3）
+curl -sI http://127.0.0.1:3000/posts/hello-world | grep -i cache-control           # 期望 max-age=60 前缀（R4）
+curl -s 'http://127.0.0.1:3000/search?q=' | grep -c '至少输入 2 个字'               # 期望 ≥ 1（R5）
+```
+
+**问题与决策**：
+
+| 问题 | 决策 |
+| --- | --- |
+| 详情页要不要 SSG？ | 不做。文章随时发布/下线，ISR 失效复杂度大于收益；SSR + 60 秒缓存头已平衡 TTFB 与新鲜度 |
+| 软 404 谁负责？ | 前台。后端 404 是对的，前台吞成 200 就错了——断言打在前台状态码上 |
+| 搜索出错返回什么？ | 200 + 页内错误态 + `noindex`；不裸抛 5xx（避免整站被降权） |
+| mismatch 怎么发现？ | 构建期警告不忽略 + R7「禁 JS 语义」兜底 |
+| 缓存失效放哪？ | 版本号在后端缓存键，前台只读响应头——不另起炉灶 |
+| description 谁截？ | 服务端（写时渲染产物已是纯文本），前台只取 |
+
+**下一步（第 109 天）**：第 3 周收尾——① 十道门禁全绿并记录实测输出；② 跨链路一条龙回归（发布 → 进列表 → 被搜到 → 可评论 → SSR 源码同步）；③ 第 1 周遗留的 Docker 验证 DDL 补跑（部署周前最后窗口）。里程碑对照：第 3 周（105-111 天）4/4。

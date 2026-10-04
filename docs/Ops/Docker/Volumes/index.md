@@ -154,7 +154,7 @@ docker run -it --name=c1 -v ~/data:/root/data_container:rw centos:7 /bin/bash
 
 多容器进行数据交换，多个容器挂载同一个数据卷容器，完成数据交互。
 
-![](assets/img202406151644479.png)
+![配置数据卷容器](assets/img202406151644479.png)
 
 通过简单方式实现数据卷配置：创建一个容器，挂载一个目录，让其他容器继承自该容器( --volume-from )
 

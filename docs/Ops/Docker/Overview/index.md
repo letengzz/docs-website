@@ -14,7 +14,7 @@ Docker 中文库：https://www.docker.org.cn/
 当前最新稳定版为 Docker Engine 29.7.x（29.7.2，2026-08-05 发布），Docker Compose 为 v2.40+。BuildKit 已是默认构建器；Docker Engine 29.2 起全新安装默认使用 containerd 镜像存储。
 :::
 
-![](assets/img202406071302358.png)
+![Docker 概述](assets/img202406071302358.png)
 
 ## Docker 应用场景
 
@@ -25,11 +25,11 @@ Docker 应用场景：
 - 在服务型环境中部署和调整数据库或其他的后台应用。
 - 从头编译或者扩展现有的 OpenShift 或 Cloud Foundry 平台来搭建自己的 PaaS 环境。
 
-![](assets/img202406062310340.png)
+![Docker 应用场景](assets/img202406062310340.png)
 
 ## Docker 架构
 
-![](assets/img202406062312498.png)
+![Docker 架构](assets/img202406062312498.png)
 
 - Docker Daemon：Docker Daemon，即 Dockerd，Docker 守护进程，其监听着 Docker API 请求并管理Docker对象，例如镜像、容器、网络和卷。
 
@@ -60,7 +60,7 @@ Docker Hub (https://hub.docker.com) 提供了庞大的镜像集合供使用。�
 4. Container(Docker容器)，在宿主机器、宿主机器操作系统上创建Docker引擎，在引擎的基础上再安装应用。
 5. 新建一个容器的时候，docker不需要像虚拟机一样重新加载一个操作系统，避免引导。docker是利用宿主机的操作系统，省略了这个复杂的过程，秒级，虚拟机是加载Guest OS ，这是分钟级别的
 
-![](assets/img202406062317947.png)
+![Docker和VM的区别](assets/img202406062317947.png)
 
 ## Docker 特性
 
@@ -88,7 +88,7 @@ Docker用于应用程序时是最有用的，但并不包含数据。日志、�
   所以，Runc 所在层也称为 OCI 层。这使得 Docker Daemon 中不用再包含任何容器运行时的代码了，简化了 Docker Daemon。
   Runc 只有一个作用—创建容器，其本质是一个独立的容器运行时 CLI 工具。其在 fork 出一个容器子进程后会启动该容器进程。在容器进程启动完毕后，Runc 会自动退出。
 
-![](assets/img202406062327486.png)
+![引擎架构](assets/img202406062327486.png)
 
 ### Shim
 
@@ -122,9 +122,9 @@ Docker Image 是有一个层级结构的，最底层的 Layer 为 BaseImage（�
 
 每一次都是一个被联合的目录：
 
-![](assets/img202406062336855.png)
+![Docker 底层技术](assets/img202406062336855.png)
 
-![](assets/img202406062337979.png)
+![Docker 底层技术](assets/img202406062337979.png)
 
 ## Docker 运行原理
 
@@ -135,7 +135,7 @@ Docker 使用客户端-服务器 (C/S) 架构模式，使用远程API来管理�
 
 Docker 容器通过 Docker 镜像来创建。
 
-![](assets/img202410212153144.png)
+![Docker 运行原理](assets/img202410212153144.png)
 
 ## Docker 操作步骤
 

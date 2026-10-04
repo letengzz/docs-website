@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="sr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .sv { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .cl { fill: #f0ecff; stroke: #7a5bd8; stroke-width: 1.5; }
+    .api { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .warn{ fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+    .mono { font-family: Consolas, monospace; font-size: 11px; }
+    .ar { stroke: #4a7bd8; stroke-width: 1.4; fill: none; }
+    .ard{ stroke: #7a5bd8; stroke-width: 1.4; stroke-dasharray: 5 3; fill: none; }
+  </style>
+
+  <text class="t2" x="450" y="26">前台 SSR：一次请求的两条路径，产出必须完全一致</text>
+
+  <!-- 服务端 -->
+  <rect class="sv" x="40" y="52" width="380" height="46"/>
+  <text x="230" y="74">读者请求 /posts/my-slug</text>
+  <text class="small" x="230" y="92">爬虫 / 首屏 / 禁用 JavaScript 的浏览器都走这条路</text>
+
+  <line class="ar" x1="230" y1="98" x2="230" y2="120" marker-end="url(#sr)"/>
+
+  <rect class="sv" x="40" y="124" width="380" height="66"/>
+  <text x="230" y="148">Nuxt 服务端取数</text>
+  <text class="mono" x="230" y="168">useAsyncData('post:' + slug, () =&gt; $fetch('/api/v1/...'))</text>
+  <text class="small" x="230" y="186">key 唯一 · 服务端执行一次 · 结果随 HTML 下发</text>
+
+  <line class="ar" x1="230" y1="190" x2="230" y2="212" marker-end="url(#sr)"/>
+
+  <rect class="sv" x="40" y="216" width="380" height="66"/>
+  <text x="230" y="240">渲成完整 HTML</text>
+  <text class="small" x="230" y="262">正文 + title/description/og: + canonical 进源码</text>
+  <text class="small" x="230" y="280">404 时返回真 404 状态码（不是渲染一个假 404 页）</text>
+
+  <line class="ar" x1="230" y1="282" x2="230" y2="304" marker-end="url(#sr)"/>
+
+  <rect class="api" x="40" y="308" width="380" height="52"/>
+  <text x="230" y="330">缓存层：Cache-Control + 失效</text>
+  <text class="mono" x="230" y="350">public, max-age=60, stale-while-revalidate=300</text>
+
+  <!-- 客户端 -->
+  <rect class="cl" x="480" y="124" width="380" height="66"/>
+  <text x="670" y="148">客户端 hydration</text>
+  <text class="small" x="670" y="168">用 HTML 里自带的 payload 接管，不重新请求</text>
+  <text class="small" x="670" y="186">此后才有交互（评论、点赞、客户端跳转）</text>
+
+  <line class="ard" x1="420" y1="157" x2="478" y2="157" marker-end="url(#sr)"/>
+  <text class="small" x="450" y="150">同一份 payload</text>
+
+  <rect class="warn" x="480" y="216" width="380" height="94"/>
+  <text x="670" y="240" font-weight="bold">hydration 一致性是硬判据</text>
+  <text class="small" x="670" y="262">服务端与客户端各自算一遍再对不上 = mismatch</text>
+  <text class="small" x="670" y="280">典型来源：setup 顶层读 window / Date.now() / 随机数 / 本地时区</text>
+  <text class="small" x="670" y="300">→ 只能放在 onMounted 或 ClientOnly 里</text>
+
+  <rect class="api" x="480" y="336" width="380" height="72"/>
+  <text x="670" y="360" font-weight="bold">四条验证（R1~R4，ssr_smoke 覆盖）</text>
+  <text class="small" x="670" y="382">curl 源码能看到正文与 TDK · 草稿 slug 返回 404 状态码</text>
+  <text class="small" x="670" y="400">缓存头正确 · 发布新版本后源码立即更新（失效生效）</text>
+
+  <text class="small" x="450" y="438">SEO 的判据只有一句：查看网页源代码（不是开发者工具的 DOM）能看到正文与元信息</text>
+</svg>

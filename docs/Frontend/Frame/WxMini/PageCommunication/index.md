@@ -10,7 +10,7 @@
 
 这两个 `EventChannel` 对象间可以使用 `emit` 和 `on` 方法相互发送、监听事件。
 
-<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2%E9%97%B4%E9%80%9A%E4%BF%A1.png" style="zoom: 60%;" />
+<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2%E9%97%B4%E9%80%9A%E4%BF%A1.png" alt="微信小程序 页面间通信" style="zoom: 60%;" />
 
 > 页面 .js 文件
 >

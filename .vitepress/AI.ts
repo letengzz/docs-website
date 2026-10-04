@@ -1,4 +1,23 @@
 // AI
+export const AI_AICodingAssistant = [
+  {
+    text: "AI 编程助手",
+    link: "/docs/AI/AICodingAssistant/index.md",
+    collapsed: true,
+    items: [
+      { text: "概述：从补全到 Agent", link: "/docs/AI/AICodingAssistant/Overview/index.md" },
+      { text: "工具全景与选型", link: "/docs/AI/AICodingAssistant/ToolLandscape/index.md" },
+      { text: "上下文工程", link: "/docs/AI/AICodingAssistant/Context/index.md" },
+      { text: "协作式提示技巧", link: "/docs/AI/AICodingAssistant/Prompting/index.md" },
+      { text: "Agent 模式与自动化", link: "/docs/AI/AICodingAssistant/AgentMode/index.md" },
+      { text: "团队规范与治理", link: "/docs/AI/AICodingAssistant/TeamStandard/index.md" },
+      { text: "度量与收益论证", link: "/docs/AI/AICodingAssistant/Metrics/index.md" },
+      { text: "实战：给本仓库接一套 AI 编程工作流", link: "/docs/AI/AICodingAssistant/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/AICodingAssistant/FAQ/index.md" },
+    ],
+  },
+];
+
 export const AI_AgentFramework = [
   {
     text: "Agent 框架深入",

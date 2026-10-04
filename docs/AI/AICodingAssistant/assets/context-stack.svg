@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="cx" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7a5bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .g  { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .p  { fill: #f0ecff; stroke: #7a5bd8; stroke-width: 1.5; }
+    .sub{ fill: #f7f2ff; stroke: #9b7be0; stroke-width: 1.2; stroke-dasharray: 4 3; }
+    .warn{ fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+    .mono { font-family: Consolas, monospace; font-size: 11px; }
+    .ar { stroke: #7a5bd8; stroke-width: 1.4; }
+  </style>
+
+  <text class="t2" x="450" y="26">指令文件的装载顺序：从全局到目录，越近越优先（nearest wins）</text>
+
+  <rect class="g" x="60" y="52" width="240" height="72"/>
+  <text x="180" y="76">全局指令</text>
+  <text class="mono" x="180" y="96">~/.codex/AGENTS.md</text>
+  <text class="small" x="180" y="114">个人偏好、本机路径，不入库</text>
+
+  <line class="ar" x1="180" y1="124" x2="180" y2="146" marker-end="url(#cx)"/>
+
+  <rect class="p" x="60" y="150" width="240" height="72"/>
+  <text x="180" y="174">仓库根</text>
+  <text class="mono" x="180" y="194">AGENTS.md</text>
+  <text class="small" x="180" y="212">团队共享：构建 / 测试 / 边界，入库</text>
+
+  <line class="ar" x1="180" y1="222" x2="180" y2="244" marker-end="url(#cx)"/>
+
+  <rect class="sub" x="30" y="248" width="140" height="66"/>
+  <text class="mono" x="100" y="274">service/</text>
+  <text class="mono" x="100" y="292">AGENTS.md</text>
+  <rect class="sub" x="190" y="248" width="140" height="66"/>
+  <text class="mono" x="260" y="274">web/</text>
+  <text class="mono" x="260" y="292">AGENTS.md</text>
+
+  <rect class="ok" x="380" y="52" width="250" height="120"/>
+  <text x="505" y="76" font-weight="bold">合并规则（Codex 口径）</text>
+  <text class="small" x="505" y="98">① 同目录优先级：AGENTS.override.md</text>
+  <text class="small" x="505" y="116">　　&gt; AGENTS.md</text>
+  <text class="small" x="505" y="136">② 从 Git 根一路合并到当前目录，</text>
+  <text class="small" x="505" y="154">　　后面的（更近的）覆盖前面的</text>
+
+  <rect class="warn" x="380" y="186" width="250" height="112"/>
+  <text x="505" y="210" font-weight="bold">两条硬限制</text>
+  <text class="small" x="505" y="232">合并后的指令默认上限 32 KiB</text>
+  <text class="small" x="505" y="250">（project_doc_max_bytes），超出的</text>
+  <text class="small" x="505" y="268">内容不进上下文、也不报错</text>
+  <text class="small" x="505" y="290">→ 所以规则文件必须短</text>
+
+  <rect class="g" x="660" y="52" width="215" height="120"/>
+  <text x="767" y="76" font-weight="bold">工具私有文件</text>
+  <text class="mono" x="767" y="96">CLAUDE.md（Claude Code）</text>
+  <text class="mono" x="767" y="114">.cursor/rules/（Cursor）</text>
+  <text class="mono" x="767" y="132">.github/copilot-instructions.md</text>
+  <text class="small" x="767" y="154">收口到 AGENTS.md 一份</text>
+
+  <rect class="ok" x="660" y="186" width="215" height="112"/>
+  <text x="767" y="210" font-weight="bold">Claude Code 的接法</text>
+  <text class="mono" x="767" y="232">CLAUDE.md 只写一行：</text>
+  <text class="mono" x="767" y="252">@AGENTS.md</text>
+  <text class="small" x="767" y="276">一个事实来源，两个工具都认</text>
+
+  <text class="small" x="450" y="354">该写什么：项目概览 / 常用命令（安装、跑测试、只测改动）/ 可改与禁改目录 / 代码风格 / 动手前要问的事</text>
+  <text class="small" x="450" y="376">不该写什么：密钥与凭据、README 里的项目介绍、会与 lint/CI 冲突的重复规范</text>
+  <text class="small" x="450" y="404">反例与判据见上下文工程页第 3 节</text>
+</svg>

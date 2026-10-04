@@ -8,7 +8,7 @@
 
 在构建成功以后，默认会在小程序项目根目录，也就是 `node_modules` 同级目录下生成 `miniprogram_npm`目录，里面存放这构建打包后的 npm 包，也就是小程序运行过程中真正使用的包。
 
-<img src="./assets/%E6%9E%84%E5%BB%BA%E5%AE%8C%E6%88%90.jpg" style="zoom:80%;" />
+<img src="./assets/%E6%9E%84%E5%BB%BA%E5%AE%8C%E6%88%90.jpg" alt="构建 npm" style="zoom:80%;" />
 
 以使用 Vant Weapp 小程序 UI 组件库为例，来说明小程序如何安装和构建 npm，构建 npm 的步骤：
 
@@ -33,7 +33,7 @@
    npm init -y
    ```
 
-   <img src="./assets/46-%E5%88%9D%E5%A7%8B%E5%8C%96package.jpg" style="zoom:80%;" />
+   <img src="./assets/46-%E5%88%9D%E5%A7%8B%E5%8C%96package.jpg" alt="构建 npm" style="zoom:80%;" />
 
 2. 通过 npm 安装 `@vant/weapp` 包：
 
@@ -41,13 +41,13 @@
    npm i @vant/weapp
    ```
 
-   ![](assets/vant-weapp.jpg)
+   ![构建 npm](assets/vant-weapp.jpg)
 
 3. 构建 npm：
 
-   <img src="./assets/%E6%9E%84%E5%BB%BAvant-weapp.jpg" style="zoom:60%;" />
+   <img src="./assets/%E6%9E%84%E5%BB%BAvant-weapp.jpg" alt="构建 npm" style="zoom:60%;" />
 
-   <img src="./assets/vant%20%E6%9E%84%E5%BB%BA%E5%AE%8C%E6%88%90.jpg" style="zoom:67.8%;" />
+   <img src="./assets/vant%20%E6%9E%84%E5%BB%BA%E5%AE%8C%E6%88%90.jpg" alt="构建 npm" style="zoom:67.8%;" />
 
 4. 修改 app.json： `Vant` 组件库，会和基础组件的样式冲突，因此需要继续往下配置。
 
@@ -76,7 +76,7 @@
 
 6. 页面预览效果：
 
-   <img src="./assets/vant%20%E7%BB%84%E4%BB%B6%E5%BA%93.jpg" style="zoom:60%; border: 1px solid #ccc" />
+   <img src="./assets/vant%20%E7%BB%84%E4%BB%B6%E5%BA%93.jpg" alt="构建 npm" style="zoom:60%; border: 1px solid #ccc" />
 
 ## 自定义构建 npm
 
@@ -84,7 +84,7 @@
 
 但是在调整目录以后，进行构建项目时，发现没有构建成功，并且弹出构建失败的弹框。
 
-<img src="./assets/%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5.jpg" style="zoom:76%;" />
+<img src="./assets/%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5.jpg" alt="自定义构建 npm" style="zoom:76%;" />
 
 [错误提示翻译意思是] ：没有找到可以构建的 npm 包
 

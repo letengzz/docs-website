@@ -138,7 +138,7 @@ Page({
 
 :::
 
-<img src="./assets/%E4%BA%8B%E4%BB%B6%E4%BC%A0%E5%8F%82.png" style="zoom:80%;" />
+<img src="./assets/%E4%BA%8B%E4%BB%B6%E4%BC%A0%E5%8F%82.png" alt="data-\*自定义数据" style="zoom:80%;" />
 
 在 wxml 文件中，使用 `data-*` 属性将数据传递给事件处理函数：
 
@@ -203,7 +203,7 @@ Page({
 
 - `dataset` 仅包含触发事件那一个节点的 `data-` 属性值。
 
-<img src="./assets/%E4%BA%8B%E4%BB%B6%E4%BC%A0%E5%8F%82.png" style="zoom:80%;" />
+<img src="./assets/%E4%BA%8B%E4%BB%B6%E4%BC%A0%E5%8F%82.png" alt="mark 自定义数据" style="zoom:80%;" />
 
 在 wxml 文件中，使用 `mark:自定义属性` 的方式将数据传递给事件处理函数：
 

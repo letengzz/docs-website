@@ -530,7 +530,7 @@ function changeGender() {
 
 作用：根据已有数据计算出新数据（和`Vue2`中的`computed`作用一致）。
 
-<img src="../assets/img202402091439573.gif" style="zoom:20%;" />
+<img src="../assets/img202402091439573.gif" alt="computed 计算属性" style="zoom:20%;" />
 
 ```vue
 <template>

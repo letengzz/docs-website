@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="ml" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .b { fill: #f0ecff; stroke: #7a5bd8; stroke-width: 1.5; }
+    .c { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .w { fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2 { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+    .ar { stroke: #4a7bd8; stroke-width: 1.4; fill: none; }
+  </style>
+
+  <text class="t2" x="450" y="26">度量三层：下层好算但会撒谎，上层难算但不撒谎</text>
+
+  <rect class="a" x="60" y="52" width="780" height="96"/>
+  <text x="450" y="76" font-weight="bold">第 1 层　活动指标（最便宜，只回答「用没用」）</text>
+  <text class="small" x="450" y="98">席位激活率 · 周/日活跃 · 补全采纳率 · agent 任务数 · token 消耗与预算</text>
+  <text class="small" x="450" y="120">用途：算成本、找幽灵席位。不能用来证明生产力</text>
+
+  <line class="ar" x1="450" y1="148" x2="450" y2="166" marker-end="url(#ml)"/>
+
+  <rect class="b" x="60" y="170" width="780" height="96"/>
+  <text x="450" y="194" font-weight="bold">第 2 层　产出指标（回答「产出变了没」，但要防博收视）</text>
+  <text class="small" x="450" y="216">PR 数（+20%）· commit 量（+43%）· AI 生成代码占比 · 测试覆盖率变化 · 两周内被重写的 churn（~19%）</text>
+  <text class="small" x="450" y="240">陷阱：产出涨、事故也涨——每 PR 事故率 +23.5% 与 PR 数 +20% 是同一组数据</text>
+
+  <line class="ar" x1="450" y1="266" x2="450" y2="284" marker-end="url(#ml)"/>
+
+  <rect class="c" x="60" y="288" width="780" height="96"/>
+  <text x="450" y="312" font-weight="bold">第 3 层　交付指标（DORA 四项 + DevEx，回答「整个流程变好了没」）</text>
+  <text class="small" x="450" y="334">部署频率 · 变更前置时间 · 变更失败率 · MTTR；AI 主要压缩「编码 → PR」段（25%~40%）</text>
+  <text class="small" x="450" y="358">关键结论：吞吐上去了、稳定性未必跟——DORA 数据里高 AI 采纳与交付不稳定性同升</text>
+
+  <text class="small" x="450" y="412">举证顺序：先定基线 → 分任务类型分组 → 对照组 → 只对第 3 层下结论（方法见度量页第 4 节）</text>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="al" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa76d"/>
+    </marker>
+    <marker id="alr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d8443c"/>
+    </marker>
+  </defs>
+  <style>
+    .st { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .act{ fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .gate{ fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    .ind { fill: #f0ecff; stroke: #7a5bd8; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+    .mono { font-family: Consolas, monospace; font-size: 11px; }
+    .ar  { stroke: #3aa76d; stroke-width: 1.6; fill: none; }
+    .arr { stroke: #d8443c; stroke-width: 1.4; fill: none; }
+  </style>
+
+  <text class="t2" x="450" y="26">Agent 循环：模型只负责「决定下一步」，每一步落地都过权限闸门</text>
+
+  <rect class="st" x="60" y="60" width="180" height="62"/>
+  <text x="150" y="86">读上下文</text>
+  <text class="small" x="150" y="106">指令文件 + 检索 + 打开的文件</text>
+
+  <line class="ar" x1="240" y1="91" x2="268" y2="91" marker-end="url(#al)"/>
+
+  <rect class="st" x="270" y="60" width="180" height="62"/>
+  <text x="360" y="86">出计划 / 选工具</text>
+  <text class="small" x="360" y="106">要改哪些文件、跑哪些命令</text>
+
+  <line class="ar" x1="450" y1="91" x2="478" y2="91" marker-end="url(#al)"/>
+
+  <rect class="gate" x="480" y="60" width="180" height="62"/>
+  <text x="570" y="86">权限闸门</text>
+  <text class="small" x="570" y="106">allow / ask / deny 规则匹配</text>
+
+  <line class="ar" x1="660" y1="78" x2="688" y2="78" marker-end="url(#al)"/>
+  <line class="arr" x1="660" y1="104" x2="688" y2="104" marker-end="url(#alr)"/>
+
+  <rect class="act" x="690" y="48" width="180" height="52"/>
+  <text x="780" y="70">放行：静默执行</text>
+  <text class="small" x="780" y="88">读文件、跑测试、lint</text>
+  <rect class="gate" x="690" y="108" width="180" height="52"/>
+  <text x="780" y="130">需确认：停下来等人</text>
+  <text class="small" x="780" y="148">写文件、装依赖、删东西</text>
+
+  <line class="ar" x1="780" y1="100" x2="780" y2="166" marker-end="url(#al)"/>
+  <line class="arr" x1="780" y1="160" x2="780" y2="166" marker-end="url(#alr)"/>
+
+  <rect class="st" x="60" y="200" width="180" height="62"/>
+  <text x="150" y="226">看结果</text>
+  <text class="small" x="150" y="246">测试输出 / 编译报错 / diff</text>
+
+  <rect class="st" x="290" y="200" width="180" height="62"/>
+  <text x="380" y="226">修正或继续</text>
+  <text class="small" x="380" y="246">把报错原样喂回上下文</text>
+
+  <rect class="st" x="520" y="200" width="180" height="62"/>
+  <text x="610" y="226">达成判据</text>
+  <text class="small" x="610" y="246">门禁全绿 = 停下来的条件</text>
+
+  <rect class="ind" x="750" y="200" width="120" height="62"/>
+  <text x="810" y="226">提交 / 出 PR</text>
+  <text class="small" x="810" y="246">等人评审</text>
+
+  <line class="ar" x1="150" y1="122" x2="150" y2="198" marker-end="url(#al)"/>
+  <line class="ar" x1="240" y1="231" x2="288" y2="231" marker-end="url(#al)"/>
+  <line class="ar" x1="470" y1="231" x2="518" y2="231" marker-end="url(#al)"/>
+  <line class="ar" x1="700" y1="231" x2="748" y2="231" marker-end="url(#al)"/>
+  <path class="ar" d="M 610 262 C 610 300, 380 300, 360 264" marker-end="url(#al)"/>
+  <text class="small" x="490" y="316">结果不达标 → 回到「修正或继续」（循环必须有退出条件，否则烧 token）</text>
+
+  <rect class="gate" x="60" y="336" width="380" height="96"/>
+  <text x="250" y="360" font-weight="bold">自动模式的护栏（Claude Code 2.1.183+ 同类做法）</text>
+  <text class="small" x="250" y="382">自动挡下默认拦截：破坏性 git 命令、terraform/pulumi destroy</text>
+  <text class="small" x="250" y="400">项目设置不得改写配置目录与临时目录（防越权）</text>
+  <text class="small" x="250" y="420">→ 护栏的价值：让「无人值守」敢开</text>
+
+  <rect class="ok" x="480" y="336" width="390" height="96"/>
+  <text x="675" y="360" font-weight="bold">并行 agent 的隔离（前提）</text>
+  <text class="small" x="675" y="382">多个 agent 同时改一个工作区 = 互相覆盖</text>
+  <text class="small" x="675" y="400">正确做法：每个 agent 一个 git worktree / 独立沙箱</text>
+  <text class="small" x="675" y="420">合并仍由人做：PR 是并行 agent 的唯一交汇点</text>
+</svg>

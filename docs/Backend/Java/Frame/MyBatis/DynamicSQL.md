@@ -10,7 +10,7 @@ MyBatis 采用功能强大的基于 OGNL(`Object Graph Navigation Language`，�
 
 MyBatis 的动态 SQL 包括以下几种元素：
 
-![](assets/202303011628126.png)
+![MyBatis 动态SQL](assets/202303011628126.png)
 
 :::tip 提示
 

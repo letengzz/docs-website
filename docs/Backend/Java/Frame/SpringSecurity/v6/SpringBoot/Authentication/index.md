@@ -732,7 +732,7 @@ public class SecurityConfiguration {
 
 直接进行登录，使用方式和之前是完全一样的：
 
-![ ](assets/202309202211352.png)
+![MySQL 数据源](assets/202309202211352.png)
 
 当下次需要快速创建一个用户登录的应用程序时，直接使用这种方式就能快速完成了。
 

@@ -10,7 +10,7 @@
 2. 同步 API：约定以 `Sync` 结尾的 API 都是同步 API，例如：`wx.setStorageSync()`
 3. 异步 API：大多数 API 都是异步 API，例如：`wx.setStorage()`
 
-<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%20API%20%E7%B1%BB%E5%9E%8B.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%20API%20%E7%B1%BB%E5%9E%8B.png" alt="API 基础" style="zoom:80%; border: 1px solid #ccc" />
 
 异步 API 支持 callback & Promise 两种调用方式：
 
@@ -57,21 +57,21 @@ wx.request({
 
 `wx.request()` 请求的域名需要在小程序管理平台进行配置，如果小程序正式版使用wx.request请求未配置的域名，在控制台会有相应的报错。
 
-<img src="./assets/038-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF.png" style="zoom:80%;" />
+<img src="./assets/038-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF.png" alt="网络请求错误" style="zoom:80%;" />
 
 :::
 
 这时候就需要在小程序管理后台进行设置请求的域名，打开微信公众后台：点击左侧 开发 → 开发管理 → 开发设置 → 服务器域名。**域名只支持 `https` 而且要求已备案**。
 
-<img src="./assets/39-%E5%BC%80%E5%8F%91%E8%AE%BE%E7%BD%AE.png" style="zoom:47.5%; border: 1px solid #ccc" />
+<img src="./assets/39-%E5%BC%80%E5%8F%91%E8%AE%BE%E7%BD%AE.png" alt="网络请求" style="zoom:47.5%; border: 1px solid #ccc" />
 
-<img src="./assets/40-%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%9F%E5%90%8D.png" style="zoom:49.4%; border: 1px solid #ccc" />
+<img src="./assets/40-%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%9F%E5%90%8D.png" alt="网络请求" style="zoom:49.4%; border: 1px solid #ccc" />
 
 但一般在开发阶段时，处于开发阶段的服务器接口可能还没部署到对应的域名下，经常会通过另一个域名来进行开发调试，考虑到这一点，为了方便开发者进行开发调试，开发者工具、小程序的开发版和小程序的体验版在某些情况下允许 `wx.request` 请求任意域名 (只适用于开发环境，只能在小程序开发者工具中生效)，在开发工具中设置步骤如下：
 
 将 **不校验合法域名、web-view (业务域名)、TLS版本以及HTTPS证书** 勾选上：
 
-​      <img src="./assets/41-%E4%B8%8D%E6%A0%A1%E9%AA%8C%E5%90%88%E6%B3%95%E5%9F%9F%E5%90%8D-175386279512711.png" style="zoom:61%;" />  <img src="./assets/image-20250730161555409.png" alt="image-20250730161555409" style="zoom:60%;" />     
+​      <img src="./assets/41-%E4%B8%8D%E6%A0%A1%E9%AA%8C%E5%90%88%E6%B3%95%E5%9F%9F%E5%90%8D-175386279512711.png" alt="网络请求" style="zoom:61%;" />  <img src="./assets/image-20250730161555409.png" alt="image-20250730161555409" style="zoom:60%;" />     
 
 :::danger 注意
 
@@ -112,7 +112,7 @@ Page({
 
 小程序提供了一些用于界面交互的 API，例如： loading 提示框、消息提示框、模态对话框等 API。
 
-<img src="./assets/loading%20%E6%8F%90%E7%A4%BA%E6%A1%86.gif" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/loading%20%E6%8F%90%E7%A4%BA%E6%A1%86.gif" alt="loading 提示框" style="zoom:80%; border: 1px solid #ccc" />
 
 loading 提示框常配合网络请求来使用，用于增加用户体验，对应的 API 有两个：
 
@@ -230,7 +230,7 @@ wx.showModal({
 
 - wx.showModal 官方文档：https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showModal.html
 
-<img src="./assets/%E6%A8%A1%E6%80%81%E5%AF%B9%E8%AF%9D%E6%A1%86%E4%BB%A5%E5%8F%8A%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%A1%86.gif" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E6%A8%A1%E6%80%81%E5%AF%B9%E8%AF%9D%E6%A1%86%E4%BB%A5%E5%8F%8A%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%A1%86.gif" alt="模态对话框以及消息提示框" style="zoom:80%; border: 1px solid #ccc" />
 
 ```js
 Page({
@@ -278,7 +278,7 @@ Page({
 | `wx.removeStorageSync` | `wx.removeStorage`    | 从本地缓存中移除指定 key            |
 | `wx.clearStorageSync`  | `wx.clearStorageSync` | 清理本地数据缓存                    |
 
-<img src="./assets/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8.png" alt="本地存储" style="zoom:80%; border: 1px solid #ccc" />
 
 异步方式的 `API`，在调用的时候都需要传入对象类型的参数。
 
@@ -405,7 +405,7 @@ Page({
    - 不同参数用 `&` 分隔。
    - 例如 `path?key=value&key2=value2`。
 
-<img src="./assets/%E8%B7%AF%E7%94%B1%E4%B8%8E%E9%80%9A%E4%BF%A1.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E8%B7%AF%E7%94%B1%E4%B8%8E%E9%80%9A%E4%BF%A1.png" alt="路由与通信" style="zoom:80%; border: 1px solid #ccc" />
 
 ```js
 Page({
@@ -495,7 +495,7 @@ Page({
 
 2. 在 页面.js 中定义 onReachBottom 事件监听用户上拉加载。
 
-<img src="./assets/%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A%E6%A1%88%E4%BE%8B-17529386275539.gif" style="zoom:80%;" />
+<img src="./assets/%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A%E6%A1%88%E4%BE%8B-17529386275539.gif" alt="上拉加载更多案例" style="zoom:80%;" />
 
 ```html
 <view wx:for="{{ numList }}" wx:key="*this">{{ item }}</view>
@@ -581,7 +581,7 @@ Page({
 
 2. 在 页面.js 中定义 onPullDownRefresh 事件监听用户下拉刷新。
 
-​                  <img src="./assets/%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0-175386409783018.gif" style="zoom:67%;" />      <img src="./assets/%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%A1%88%E4%BE%8B.gif" style="zoom:70%;" />     
+​                  <img src="./assets/%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0-175386409783018.gif" alt="下拉刷新" style="zoom:67%;" />      <img src="./assets/%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%A1%88%E4%BE%8B.gif" alt="下拉刷新案例" style="zoom:70%;" />     
 
 ```html
 <view wx:for="{{ numList }}" wx:key="*this">{{ item }}</view>
@@ -651,7 +651,7 @@ lower-threshold：距底部/右边多远时，触发 scrolltolower 事件。
 
 enable-back-to-top：**让滚动条返回顶部**，iOS 点击顶部状态栏、安卓双击标题栏时，只支持竖向。
 
-<img src="./assets/scroll-%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A.gif" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/scroll-%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A.gif" alt="scroll-view 上拉加载" style="zoom:80%; border: 1px solid #ccc" />
 
 ```html
 <scroll-view
@@ -721,7 +721,7 @@ bindrefresherrefresh：自定义下拉刷新状态回调。
 
 refresher-triggered：设置当前下拉刷新状态，(true 下拉刷新被触发，false 表示下拉刷新未被触发，**用来关闭下拉效果**)。
 
-<img src="./assets/scroll-%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0.gif" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/scroll-%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0.gif" alt="scroll-view 下拉刷新" style="zoom:80%; border: 1px solid #ccc" />
 
 ```html
 <scroll-view

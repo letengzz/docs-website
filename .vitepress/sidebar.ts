@@ -1,7 +1,7 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 import { Auth, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, HighPerformanceJava, Java, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, SpringCloud } from "./backend";
 
-import { AI_Agent, AI_AgentFramework, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
+import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontMicroFrontend, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { ClickHouse, DBOverview, DataModeling, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
@@ -94,7 +94,7 @@ export const sidebar = {
     {
       text: "AI",
       collapsed: true,
-      items: [...AI_LLMApp, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_Agent],
+      items: [...AI_LLMApp, ...AI_AICodingAssistant, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_Agent],
     },
   ],
   "/docs/Tools": [
@@ -179,6 +179,7 @@ export const sidebar = {
   "/docs/Ops/JumpServer": JumpServer,
   "/docs/Ops/Others": OpsOthers,
   "/docs/AI/OpenClaw": AI_OpenClaw,
+  "/docs/AI/AICodingAssistant": AI_AICodingAssistant,
   "/docs/AI/PromptEngineering": AI_PromptEngineering,
   "/docs/AI/Agent": AI_Agent,
   "/docs/AI/AgentFramework": AI_AgentFramework,

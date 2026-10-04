@@ -244,6 +244,14 @@ steps:
 | 压力 / 性能 | 基线未回退、P95 与 TPS 判据、容量拐点定位 | [JMeter 压力测试](../../TestingTools/JMeter/index.md) |
 | 端到端 / 跨浏览器 | 关键旅程覆盖、等待策略稳定性、flaky 治理 | [Selenium 端到端](../../TestingTools/Selenium/index.md) |
 
+## AI 生成代码对门禁的新要求
+
+AI 参与编码后，本页的口径**一条都不能松，还要加三条**（完整论证见 [AI 编程助手 · 团队规范](../../AI/AICodingAssistant/TeamStandard/index.md)）：
+
+1. **测试变更是高危 diff**：AI 可能改弱断言来让实现通过——测试文件与实现文件的变更比异常时要在 PR 里显式说明理由。
+2. **重复度检查升级**：AI 倾向于新写一个而不是复用已有工具函数，重复度阈值要从「风格问题」提到「门禁问题」。
+3. **空 catch / 吞异常零容忍**：AI 生成代码里「几乎对」的掩盖式错误是事故主因（行业数据显示每 PR 事故率随 PR 数同升约 23.5%）——这类规则必须进 CI，不能只靠评审。
+
 ## 参考资料
 
 - 测试金字塔（Martin Fowler）：https://martinfowler.com/bliki/TestPyramid.html

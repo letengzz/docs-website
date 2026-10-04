@@ -80,7 +80,7 @@ protected WebApplicationContext createWebApplicationContext(@Nullable Applicatio
 
 调用流程图解：
 
-![](assets/202412102235790.png)
+![SSM 整合](assets/202412102235790.png)
 
 ---
 
@@ -128,7 +128,7 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 
 图解配置类和容器配置：
 
-![](assets/202412102235060.png)
+![SSM 整合](assets/202412102235060.png)
 
 ## 操作步骤
 

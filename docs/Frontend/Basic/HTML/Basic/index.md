@@ -38,7 +38,7 @@
 
 - **双标签**：
 
-  <img src="./assets/%E5%8F%8C%E6%A0%87%E7%AD%BE.jpg" style="zoom:20%;" />
+  <img src="./assets/%E5%8F%8C%E6%A0%87%E7%AD%BE.jpg" alt="HTML 标签" style="zoom:20%;" />
 
   **例**：
 
@@ -48,7 +48,7 @@
 
 - **单标签**：
 
-  <img src="./assets/%E5%8D%95%E6%A0%87%E7%AD%BE.jpg" style="zoom:20%;" />
+  <img src="./assets/%E5%8D%95%E6%A0%87%E7%AD%BE.jpg" alt="HTML 标签" style="zoom:20%;" />
 
   **例**：
 
@@ -79,7 +79,7 @@
 
 可以写在**起始标签**或**单标签**中，形式如下：
 
-<img src="./assets/%E6%A0%87%E7%AD%BE%E5%B1%9E%E6%80%A7.jpg" style="zoom:25%;" />
+<img src="./assets/%E6%A0%87%E7%AD%BE%E5%B1%9E%E6%80%A7.jpg" alt="HTML 标签属性" style="zoom:25%;" />
 
 ```html
 <marquee loop="1" bgcolor="orange">Hello World！</marquee> <input type="password" />
@@ -128,7 +128,7 @@
 3. head 标签中的内容不会出现在网页中，包含了文档的元 (meta)数据，主要保存供机器处理的信息，而非人类可读信息。
 4. head 标签中的 title 标签可以指定网页的标题。
 
-<img src="./assets/%E7%BD%91%E9%A1%B5%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.jpg" style="zoom:25%;" />
+<img src="./assets/%E7%BD%91%E9%A1%B5%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.jpg" alt="HTML 基本结构" style="zoom:25%;" />
 
 ```html
 <html>

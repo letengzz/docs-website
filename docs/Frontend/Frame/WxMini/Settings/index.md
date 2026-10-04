@@ -45,7 +45,7 @@
 
 官方文档：https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#window
 
-<img src="./assets/window%E9%85%8D%E7%BD%AE%E9%A1%B9.png" style="zoom:60%;" />
+<img src="./assets/window%E9%85%8D%E7%BD%AE%E9%A1%B9.png" alt="配置项" style="zoom:60%;" />
 
 |             属性             |                     描述                      |   类型   |  默认值  |
 | :--------------------------: | :-------------------------------------------: | :------: | :------: |
@@ -172,7 +172,7 @@
 |    enablePullDownRefresh     |            是否开启全局的下拉刷新             | boolean  |  false   |
 |    onReachBottomDistance     | 页面上拉触底事件触发时距页面底部距离单位为 px |  number  |    50    |
 
-<img src="./assets/%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB.png" style="zoom: 67%; border: 1px solid rgb(204, 204, 204);" />
+<img src="./assets/%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB.png" alt="页面配置" style="zoom: 67%; border: 1px solid rgb(204, 204, 204);" />
 
 ```json
 {
@@ -194,7 +194,7 @@
 
 官方文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html
 
-<img src="./assets/%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" style="zoom:67%;" />
+<img src="./assets/%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="项目配置文件" style="zoom:67%;" />
 
 项目根目录中的`project.config.json`和`project.private.config.json` 文件都可以对项目进行配置：
 
@@ -213,7 +213,7 @@
 
 可以在微信开发者工具，点击以下两个配置选项进行相关的设置，然后观察两个文件的变化即可。
 
-<img src="./assets/%E6%B5%8B%E8%AF%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" style="zoom:60%;" />
+<img src="./assets/%E6%B5%8B%E8%AF%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="项目配置文件" style="zoom:60%;" />
 
 ## 支持使用 sass/less
 
@@ -249,7 +249,7 @@
 
 小程序默认的导航栏与 APP 一样都位于顶部固定位置。但是默认导航栏可能会影响小程序整体风格，且无法满足特定的设计需求，这时候，就需要进行自定义导航栏。
 
-<img src="./assets/%E8%87%AA%E5%AE%9A%E4%B9%89%20TabBar.png" style="zoom:60%;" />
+<img src="./assets/%E8%87%AA%E5%AE%9A%E4%B9%89%20TabBar.png" alt="自定义导航栏" style="zoom:60%;" />
 
 在 app.json 或者 page.json 中，**配置 navigationStyle 属性为 custom**，即可实现自定义导航栏。
 

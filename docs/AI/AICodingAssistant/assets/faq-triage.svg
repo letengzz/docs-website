@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="fq" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .q  { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .a  { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .w  { fill: #fff7e8; stroke: #d89614; stroke-width: 1.5; }
+    .d  { fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2 { font-size: 15px; font-weight: bold; }
+    .h  { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+    .ar { stroke: #4a7bd8; stroke-width: 1.4; fill: none; }
+  </style>
+
+  <text class="t2" x="450" y="26">按症状分诊：先定位是哪一类，再进对应小节</text>
+
+  <rect class="q" x="330" y="50" width="240" height="54"/>
+  <text x="450" y="74" font-weight="bold">症状是什么？</text>
+  <text class="small" x="450" y="92">四类最常见的起点</text>
+
+  <line class="ar" x1="400" y1="104" x2="180" y2="140" marker-end="url(#fq)"/>
+  <line class="ar" x1="425" y1="104" x2="370" y2="140" marker-end="url(#fq)"/>
+  <line class="ar" x1="475" y1="104" x2="530" y2="140" marker-end="url(#fq)"/>
+  <line class="ar" x1="500" y1="104" x2="720" y2="140" marker-end="url(#fq)"/>
+
+  <rect class="d" x="40" y="144" width="200" height="140"/>
+  <text class="h" x="140" y="168">答非所问 / 编造 API</text>
+  <text class="small" x="140" y="192">① 冷启动测试：指令文件装载了吗</text>
+  <text class="small" x="140" y="210">② 相关文件显式引用了吗</text>
+  <text class="small" x="140" y="228">③ 指令合并后超 32 KiB 了吗</text>
+  <text class="small" x="140" y="246">④ 引的 API 是不是旧年代写法</text>
+  <text class="small" x="140" y="270">→ 上下文工程页</text>
+
+  <rect class="w" x="265" y="144" width="200" height="140"/>
+  <text class="h" x="365" y="168">越改越多 / 动了不该动的</text>
+  <text class="small" x="365" y="192">① 任务分级对了吗（T3/T4≠T1）</text>
+  <text class="small" x="365" y="210">② 说了「不做什么」吗</text>
+  <text class="small" x="365" y="228">③ 先要计划再要代码了吗</text>
+  <text class="small" x="365" y="252">→ 提示技巧页</text>
+
+  <rect class="w" x="490" y="144" width="200" height="140"/>
+  <text class="h" x="590" y="168">构建过了但页面不对</text>
+  <text class="small" x="590" y="192">① 图片路径层级（../assets/）</text>
+  <text class="small" x="590" y="210">② 围栏未闭合（正文被吞）</text>
+  <text class="small" x="590" y="228">③ 正文里的双花括号</text>
+  <text class="small" x="590" y="252">→ 实战页 / 仓库巡检</text>
+
+  <rect class="d" x="715" y="144" width="200" height="140"/>
+  <text class="h" x="815" y="168">停不下来 / 成本失控</text>
+  <text class="small" x="815" y="192">① 停止条件是判据还是感觉</text>
+  <text class="small" x="815" y="210">② 三重上限（token/时长/轮数）</text>
+  <text class="small" x="815" y="228">③ L3 禁止项被交给它了吗</text>
+  <text class="small" x="815" y="252">→ Agent 模式页</text>
+
+  <rect class="a" x="60" y="316" width="780" height="110"/>
+  <text x="450" y="340" font-weight="bold">通用三步（四类都适用）</text>
+  <text class="small" x="450" y="364">① 先诊断再重试：连续两轮不达标，几乎一定是上下文问题，不是措辞问题</text>
+  <text class="small" x="450" y="384">② 把错误原样喂回去：报错 + 已排除的假设 + 期望判据，而不是换说法再试</text>
+  <text class="small" x="450" y="406">③ 沉淀：修完把这条坑写进指令文件或评审清单，下次不再踩</text>
+</svg>

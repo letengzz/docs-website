@@ -19,25 +19,25 @@
 
 1. 打开 [微信公众平台](https://mp.weixin.qq.com/)，点击立即注册：
 
-   <img src="./assets/02-%E7%AB%8B%E5%8D%B3%E6%B3%A8%E5%86%8C.png" style="zoom:60%; border: 1px solid #ccc" />
+   <img src="./assets/02-%E7%AB%8B%E5%8D%B3%E6%B3%A8%E5%86%8C.png" alt="微信小程序账号注册" style="zoom:60%; border: 1px solid #ccc" />
 
 2. 选择注册的帐号类型，在这里需要 **选择小程序**：
 
-   <img src="./assets/03-%E9%80%89%E6%8B%A9%E7%B1%BB%E5%9E%8B.png" style="zoom:63%; border: 1px solid #ccc" />
+   <img src="./assets/03-%E9%80%89%E6%8B%A9%E7%B1%BB%E5%9E%8B.png" alt="微信小程序账号注册" style="zoom:63%; border: 1px solid #ccc" />
 
 3. 输入账号信息：
 
-   <img src="./assets/04-%E8%B4%A6%E5%8F%B7%E4%BF%A1%E6%81%AF.png" style="zoom:60%; border: 1px solid #ccc" />
+   <img src="./assets/04-%E8%B4%A6%E5%8F%B7%E4%BF%A1%E6%81%AF.png" alt="微信小程序账号注册" style="zoom:60%; border: 1px solid #ccc" />
 
 4. 邮箱激活，需要进入邮箱进行激活：
 
-   <img src="./assets/05-%E9%82%AE%E7%AE%B1%E6%BF%80%E6%B4%BB.png" style="zoom:60%;  border: 1px solid #ccc" />
+   <img src="./assets/05-%E9%82%AE%E7%AE%B1%E6%BF%80%E6%B4%BB.png" alt="微信小程序账号注册" style="zoom:60%;  border: 1px solid #ccc" />
 
-   <img src="./assets/06-%E8%B4%A6%E5%8F%B7%E6%BF%80%E6%B4%BB.png" style="zoom:43%; border: 1px solid #ccc" />
+   <img src="./assets/06-%E8%B4%A6%E5%8F%B7%E6%BF%80%E6%B4%BB.png" alt="微信小程序账号注册" style="zoom:43%; border: 1px solid #ccc" />
 
 5. 信息登记，注册类型 (需要选择中国大陆和个人，企业其他需要资质认证)：
 
-   <img src="./assets/07-%E4%BF%A1%E6%81%AF%E7%99%BB%E8%AE%B0.png" style="zoom:51%; border: 1px solid #ccc" />
+   <img src="./assets/07-%E4%BF%A1%E6%81%AF%E7%99%BB%E8%AE%B0.png" alt="微信小程序账号注册" style="zoom:51%; border: 1px solid #ccc" />
 
 6. 主体信息登记与确认：
 
@@ -47,15 +47,15 @@
 
    :::
 
-   <img src="./assets/08-%E4%B8%BB%E4%BD%93%E4%BF%A1%E6%81%AF%E7%99%BB%E8%AE%B0.png" style="zoom:52%; border: 1px solid #ccc" />
+   <img src="./assets/08-%E4%B8%BB%E4%BD%93%E4%BF%A1%E6%81%AF%E7%99%BB%E8%AE%B0.png" alt="微信小程序账号注册" style="zoom:52%; border: 1px solid #ccc" />
 
-   <img src="./assets/08-%E4%B8%BB%E4%BD%93%E4%BF%A1%E6%81%AF%E7%99%BB%E8%AE%B0-%E7%A1%AE%E8%AE%A4.png" style="zoom:54%; border: 1px solid #ccc" />
+   <img src="./assets/08-%E4%B8%BB%E4%BD%93%E4%BF%A1%E6%81%AF%E7%99%BB%E8%AE%B0-%E7%A1%AE%E8%AE%A4.png" alt="微信小程序账号注册" style="zoom:54%; border: 1px solid #ccc" />
 
 7. 小程序注册完成，点击前往小程序，即可进入小程序后台：
 
-   <img src="./assets/09-%E6%B3%A8%E5%86%8C%E5%AE%8C%E6%88%90.png" style="zoom:54%; border: 1px solid #ccc" />
+   <img src="./assets/09-%E6%B3%A8%E5%86%8C%E5%AE%8C%E6%88%90.png" alt="微信小程序账号注册" style="zoom:54%; border: 1px solid #ccc" />
 
-   <img src="./assets/10-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0.png" style="zoom:46.5%; border: 1px solid #ccc" />
+   <img src="./assets/10-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0.png" alt="微信小程序账号注册" style="zoom:46.5%; border: 1px solid #ccc" />
 
 ## 完善小程序账号信息
 
@@ -67,25 +67,25 @@
 
 :::
 
-<img src="./assets/11-%E5%AE%8C%E5%96%84%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BF%A1%E6%81%AF.png" style="zoom:60%; border: 1px solid #ccc" />
+<img src="./assets/11-%E5%AE%8C%E5%96%84%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BF%A1%E6%81%AF.png" alt="完善小程序账号信息" style="zoom:60%; border: 1px solid #ccc" />
 
 点击 **前往填写**，填写小程序基本信息即可：
 
-<img src="./assets/12-%E5%A1%AB%E5%86%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BF%A1%E6%81%AF.png" style="zoom:75%; border: 1px solid #ccc" />
+<img src="./assets/12-%E5%A1%AB%E5%86%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BF%A1%E6%81%AF.png" alt="完善小程序账号信息" style="zoom:75%; border: 1px solid #ccc" />
 
 点击 **前往设置** , 设置小程序类目信息：
 
 1. 点击右上角添加类目：
 
-   <img src="./assets/13-%E6%B7%BB%E5%8A%A0%E7%B1%BB%E7%9B%AE.png"  style="zoom:68%; border: 1px solid #ccc" />
+   <img src="./assets/13-%E6%B7%BB%E5%8A%A0%E7%B1%BB%E7%9B%AE.png" alt="完善小程序账号信息"  style="zoom:68%; border: 1px solid #ccc" />
 
 2. 管理员授权：
 
-   <img src="./assets/14-%E7%AE%A1%E7%90%86%E5%91%98%E9%AA%8C%E8%AF%81.png" style="zoom:63%; border: 1px solid #ccc" />
+   <img src="./assets/14-%E7%AE%A1%E7%90%86%E5%91%98%E9%AA%8C%E8%AF%81.png" alt="完善小程序账号信息" style="zoom:63%; border: 1px solid #ccc" />
 
 3. 手机微信进行认证：
 
-<img src="./assets/015-%E8%B5%84%E8%B4%A8%E4%BD%BF%E7%94%A8%E7%A1%AE%E8%AE%A4.png" style="zoom:20%; border: 1px solid #ccc" />
+<img src="./assets/015-%E8%B5%84%E8%B4%A8%E4%BD%BF%E7%94%A8%E7%A1%AE%E8%AE%A4.png" alt="完善小程序账号信息" style="zoom:20%; border: 1px solid #ccc" />
 
 4. 添加小程序类目：
 
@@ -95,9 +95,9 @@
    
    :::
    
-   <img src="./assets/018-%E7%B1%BB%E7%9B%AE%E9%80%89%E6%8B%A9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png"  style="zoom:80%; border: 1px solid #ccc" />
+   <img src="./assets/018-%E7%B1%BB%E7%9B%AE%E9%80%89%E6%8B%A9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png" alt="完善小程序账号信息"  style="zoom:80%; border: 1px solid #ccc" />
    
-   <img src="./assets/017-%E7%B1%BB%E7%9B%AE%E9%80%89%E6%8B%A9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png" style="zoom:80%; border: 1px solid #ccc" />
+   <img src="./assets/017-%E7%B1%BB%E7%9B%AE%E9%80%89%E6%8B%A9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png" alt="完善小程序账号信息" style="zoom:80%; border: 1px solid #ccc" />
 
 ## 小程序开发者 ID
 
@@ -111,7 +111,7 @@
 
 在微信公众后台，单击左侧开发标签，选择 "开发管理"，在新的页面中点击 "开发设置"，就可以看到开发者 ID 信息。请妥善保管你的小程序 ID 和小程序密钥，在后续的开发中会经常使用到，获取位置见下图：
 
-<img src="./assets/019-%E5%BC%80%E5%8F%91%E7%AE%A1%E7%90%86.png" style="zoom:80%;" />
+<img src="./assets/019-%E5%BC%80%E5%8F%91%E7%AE%A1%E7%90%86.png" alt="小程序开发者 ID" style="zoom:80%;" />
 
 ## 开发成员和体验成员
 
@@ -121,9 +121,9 @@
 
 - **体验成员**：参与小程序内测体验的成员，可使用体验版小程序，但不属于项目成员。管理员及项目成员均可添加、删除体验成员。
 
-<img src="./assets/%E6%88%90%E5%91%98%E7%AE%A1%E7%90%86.jpg" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E6%88%90%E5%91%98%E7%AE%A1%E7%90%86.jpg" alt="开发成员和体验成员" style="zoom:80%; border: 1px solid #ccc" />
 
-<img src="./assets/%E6%B7%BB%E5%8A%A0%E6%88%90%E5%91%98.jpg" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E6%B7%BB%E5%8A%A0%E6%88%90%E5%91%98.jpg" alt="开发成员和体验成员" style="zoom:80%; border: 1px solid #ccc" />
 
 ## 微信开发者工具
 
@@ -137,7 +137,7 @@
 
 3. 开发版：稳定性差，主要用于尽快修复缺陷和敏捷上线小的特性，如果想体验新特性，可以使用这个版本
 
-<img src="./assets/020-%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E7%89%88%E6%9C%AC.png" style="zoom:70%; border: 1px solid #ccc" />
+<img src="./assets/020-%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E7%89%88%E6%9C%AC.png" alt="微信开发者工具版本" style="zoom:70%; border: 1px solid #ccc" />
 
 选择合适的版本进行下载，在下载完成后，双击下载好的微信开发者工具安装包，根据引导点击下一步、我接受、直至安装完成。第一次使用微信开发者工具的时候，需要使用手机微信扫码登录，登录成功即可进入项目选择界面。
 
@@ -147,9 +147,9 @@
 
 :::
 
-<img src="./assets/021-%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95.png" style="zoom:67%; border: 1px solid #cccc" />
+<img src="./assets/021-%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95.png" alt="微信开发者工具" style="zoom:67%; border: 1px solid #cccc" />
 
-<img src="./assets/023-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F.png" style="zoom:70%; border: 1px solid #ccc" />
+<img src="./assets/023-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F.png" alt="微信开发者工具" style="zoom:70%; border: 1px solid #ccc" />
 
 ## 创建小程序项目
 
@@ -157,7 +157,7 @@
 
 1. 打开微信开发者工具，左侧选择小程序，点击 + 号即可新建项目：
 
-   <img src="./assets/024-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.png" style="zoom:60%; border: 1px solid #ccc" />
+   <img src="./assets/024-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.png" alt="创建小程序项目" style="zoom:60%; border: 1px solid #ccc" />
 
 2. 在弹出的新页面，填写项目信息：
 
@@ -168,13 +168,13 @@
    - 后端服务：选择不使用云服务。
    - 模板选择：选择不使用模板。
 
-   <img src="./assets/025-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.png" style="zoom:70%; border: 1px solid #ccc" />
+   <img src="./assets/025-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.png" alt="创建小程序项目" style="zoom:70%; border: 1px solid #ccc" />
 
-   <img src="./assets/026-%E7%9B%AE%E5%BD%95%E4%B8%8D%E4%B8%BA%E7%A9%BA.png" style="zoom:70%; border: 1px solid #ccc" />
+   <img src="./assets/026-%E7%9B%AE%E5%BD%95%E4%B8%8D%E4%B8%BA%E7%A9%BA.png" alt="创建小程序项目" style="zoom:70%; border: 1px solid #ccc" />
 
 3. 点击确定，如果能够看到小程序的开发主界面，说明小程序项目已经创建成功：
 
-   <img src="./assets/027-%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE.png" style="zoom:60%; border-right: 1px solid #ccc" />
+   <img src="./assets/027-%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE.png" alt="创建小程序项目" style="zoom:60%; border-right: 1px solid #ccc" />
 
 ## 开发者工具设置
 
@@ -184,25 +184,25 @@
 
 1. 将小程序模拟器移动右侧：点击菜单栏的"视图-外观-将模拟器移到右侧"，小程序模拟器即可调整到右侧：
 
-   <img src="./assets/028-%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%BD%8D%E7%BD%AE.png" style="zoom:80%; border: 1px solid #ccc" />
+   <img src="./assets/028-%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%BD%8D%E7%BD%AE.png" alt="开发者工具设置" style="zoom:80%; border: 1px solid #ccc" />
 
-   <img src="./assets/029-%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%BD%8D%E7%BD%AE.png" style="zoom:80%; border: 1px solid #ccc" />
+   <img src="./assets/029-%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%BD%8D%E7%BD%AE.png" alt="开发者工具设置" style="zoom:80%; border: 1px solid #ccc" />
 
 2. 小程序主题设置，点击菜单栏的 "设置-外观设置 " 在弹框中将主题和调试工具选择为深色：
 
-   <img src="./assets/030-%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.png" style="zoom:80%; border: 1px solid #ccc" />
+   <img src="./assets/030-%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.png" alt="开发者工具设置" style="zoom:80%; border: 1px solid #ccc" />
 
-   <img src="./assets/031-%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.png" style="zoom:80%; border: 1px solid #ccc" />
+   <img src="./assets/031-%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.png" alt="开发者工具设置" style="zoom:80%; border: 1px solid #ccc" />
 
 3. 编辑区的设置，点击菜单栏的 "设置-编辑器设置" 按照自己的洗好调整行距和字号，或者其他设置：
 
-   <img src="./assets/032-%E7%BC%96%E8%BE%91%E5%99%A8%E8%AE%BE%E7%BD%AE.png" style="zoom:80%; border: 1px solid #ccc" />
+   <img src="./assets/032-%E7%BC%96%E8%BE%91%E5%99%A8%E8%AE%BE%E7%BD%AE.png" alt="开发者工具设置" style="zoom:80%; border: 1px solid #ccc" />
 
 ## 小程序目录结构和文件介绍
 
 在将小程序项目创建好以后，小程序项目的目录结构：
 
-<img src="./assets/033-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/033-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95.png" alt="小程序目录结构和文件介绍" style="zoom:80%; border: 1px solid #ccc" />
 
 一个完整的小程序项目分为两个部分：**主体文件**、**页面文件**
 
@@ -267,9 +267,9 @@
 
 :::
 
-<img src="./assets/%E8%B0%83%E8%AF%95%E9%9D%A2%E6%9D%BF.png" style="zoom:70%; border: 1px solid  #ccc"/>
+<img src="./assets/%E8%B0%83%E8%AF%95%E9%9D%A2%E6%9D%BF.png" alt="调试小程序" style="zoom:70%; border: 1px solid  #ccc"/>
 
-<img src="./assets/%E5%B7%A5%E5%85%B7%E6%A0%8F.png" style="zoom:61%; border: 1px solid  #ccc"/>
+<img src="./assets/%E5%B7%A5%E5%85%B7%E6%A0%8F.png" alt="调试小程序" style="zoom:61%; border: 1px solid  #ccc"/>
 
 ## 新建页面
 
@@ -302,4 +302,4 @@
 
 每个小程序有自己所允许使用的基础库最低版本要求，开发者需要选择要兼容的基础库版本，从而确保小程序的功能正常运行。
 
-<img src="./assets/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80%E5%BA%93.png" style="zoom:80%; border: 1px solid  #ccc"/>
+<img src="./assets/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80%E5%BA%93.png" alt="调试基础库" style="zoom:80%; border: 1px solid  #ccc"/>

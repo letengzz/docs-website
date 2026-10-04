@@ -2,7 +2,7 @@
 
 专门用于实现类似于报纸的布局。
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0.jpg)
+![CSS3 多列布局](assets/CSS3%E7%AC%94%E8%AE%B0.jpg)
 
 **常用属性**：
 

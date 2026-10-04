@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="330" viewBox="0 0 900 330" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="pf" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .s1 { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .s2 { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .s3 { fill: #fff7e8; stroke: #d89614; stroke-width: 1.5; }
+    .s4 { fill: #f0ecff; stroke: #7a5bd8; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2 { font-size: 15px; font-weight: bold; }
+    .h  { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+    .ar { stroke: #4a7bd8; stroke-width: 1.6; fill: none; }
+  </style>
+
+  <text class="t2" x="450" y="26">给本仓库接 AI 工作流的四步：先可读、再可判、再定权、后度量</text>
+
+  <rect class="s1" x="30" y="52" width="200" height="150"/>
+  <text class="h" x="130" y="78">① 仓库先可读</text>
+  <text class="small" x="130" y="102">AGENTS.md 写清</text>
+  <text class="small" x="130" y="120">命令 / 边界 / 命名规范</text>
+  <text class="small" x="130" y="148">产出：AI 冷启动即正确</text>
+  <text class="small" x="130" y="166">不再靠口头交代</text>
+
+  <rect class="s2" x="240" y="52" width="200" height="150"/>
+  <text class="h" x="340" y="78">② 判据 agent 化</text>
+  <text class="small" x="340" y="102">巡检脚本 = 完成判据</text>
+  <text class="small" x="340" y="120">退出码可判定、可证伪</text>
+  <text class="small" x="340" y="148">产出：Agent 有明确</text>
+  <text class="small" x="340" y="166">停止条件，不靠猜</text>
+
+  <rect class="s3" x="450" y="52" width="200" height="150"/>
+  <text class="h" x="550" y="78">③ 权限三级定表</text>
+  <text class="small" x="550" y="102">放行：读 + 巡检</text>
+  <text class="small" x="550" y="118">白名单：install / build</text>
+  <text class="small" x="550" y="134">禁止：push / 改配置</text>
+  <text class="small" x="550" y="162">产出：敢让 Agent 动手</text>
+
+  <rect class="s4" x="660" y="52" width="210" height="150"/>
+  <text class="h" x="765" y="78">④ 基线与度量</text>
+  <text class="small" x="765" y="102">人时 / 首轮错误数</text>
+  <text class="small" x="765" y="118">评审占比 / 构建失败率</text>
+  <text class="small" x="765" y="146">产出：续费与扩面</text>
+  <text class="small" x="765" y="164">拿得出证据</text>
+
+  <line class="ar" x1="230" y1="127" x2="238" y2="127" marker-end="url(#pf)"/>
+  <line class="ar" x1="440" y1="127" x2="448" y2="127" marker-end="url(#pf)"/>
+  <line class="ar" x1="650" y1="127" x2="658" y2="127" marker-end="url(#pf)"/>
+
+  <text class="small" x="450" y="246">顺序不能换：没有判据就定权限是冒险，没有权限就放开手是事故，没有基线就谈收益是自欺</text>
+  <text class="small" x="450" y="282">人始终保留三件事：选题与分工边界、事实核对、最终评审与提交</text>
+</svg>

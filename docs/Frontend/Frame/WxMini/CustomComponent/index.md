@@ -33,7 +33,7 @@
 3. 在新建的组件文件夹上，点击右键，选择"新建 Component"，然后输入组件的名称，组件的名称建议和文件夹保持一致。
 4. 此时就已经创建了一个功能组件。
 
-![](assets/%E5%88%9B%E5%BB%BA%E5%92%8C%E6%B3%A8%E5%86%8C%E7%BB%84%E4%BB%B6.png)
+![创建自定义组件](assets/%E5%88%9B%E5%BB%BA%E5%92%8C%E6%B3%A8%E5%86%8C%E7%BB%84%E4%BB%B6.png)
 
 ## 使用自定义组件
 
@@ -42,7 +42,7 @@
 1. **全局注册**：在 `app.json` 文件中配置 `usingComponents` 节点进行引用声明，注册后可在任意组件使用。
 2. **局部注册**：在页面的 `json` 文件中配置 `usingComponents` 节点进行引用声明，只可在当前页面使用。
 
-![](assets/%E5%88%9B%E5%BB%BA%E5%92%8C%E6%B3%A8%E5%86%8C%E7%BB%84%E4%BB%B6-1.png)
+![使用自定义组件](assets/%E5%88%9B%E5%BB%BA%E5%92%8C%E6%B3%A8%E5%86%8C%E7%BB%84%E4%BB%B6-1.png)
 
 在配置 `usingComponents` 节点进行引用声明时，需要提供自定义组件的标签名和对应的自定义组件文件路径。
 
@@ -87,7 +87,7 @@
 - `methods` 方法：在组件中事件处理程序需要写到 `methods` 中才可以
 
 
-<img src="./assets/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%A1%88%E4%BE%8B.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%A1%88%E4%BE%8B.png" alt="数据和方法" style="zoom:80%; border: 1px solid #ccc" />
 
 > components/custom-checkbox/custom-checkbox.wxml
 
@@ -178,7 +178,7 @@ Component({
 
 :::
 
-<img src="./assets/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%A1%88%E4%BE%8B.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%A1%88%E4%BE%8B.png" alt="属性" style="zoom:80%; border: 1px solid #ccc" />
 
 > index.wxml
 >
@@ -307,13 +307,13 @@ Component({
 
 只不过在组件模板中需要定义 `<slot />` 节点，用于承载组件引用时提供的子节点。
 
-<img src="./assets/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%20slot.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%20slot.png" alt="组件插槽" style="zoom:80%; border: 1px solid #ccc" />
 
 默认情况下，一个组件的 wxml 中只能有一个 slot 。需要使用多 slot 时，可以在组件 js 中声明启用。
 
 同时需要给 slot 添加 name 来区分不同的 slot，给子节点内容添加 slot 属性来将节点插入到 对应的 slot 中。
 
-<img src="./assets/%E7%BB%84%E4%BB%B6-%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E7%BB%84%E4%BB%B6-%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD.png" alt="组件插槽" style="zoom:80%; border: 1px solid #ccc" />
 
 > custom01.html
 >
@@ -1080,7 +1080,7 @@ Page({
 | moved      | 在组件实例被移动到节点树另一个位置时执行                     |
 | `detached` | 在组件实例被从页面节点树移除时执行 (组件被销毁了)            |
 
-<img src="./assets/%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="组件生命周期" style="zoom:80%; border: 1px solid #ccc" />
 
 1. 【组件实例刚刚被创建好时】， `created` 生命周期被触发。此时，组件数据 `this.data` 就是在 `Component` 构造器中定义的数据 `data` 。 **此时还不能调用 `setData` 。** 通常情况下，这个生命周期只应该用于给组件 `this` 添加一些自定义属性字段。
 
@@ -1120,7 +1120,7 @@ Component({
 
 组件所在页面的生命周期有 4 个： show、 hide、 resize、 routeDone，需要在 `pageLifetimes` 字段内进行声明
 
-<img src="./assets/%E7%BB%84%E4%BB%B6%E6%89%80%E5%9C%A8%E9%A1%B5%E9%9D%A2%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" style="zoom:70%; border: 1px solid #ccc" />
+<img src="./assets/%E7%BB%84%E4%BB%B6%E6%89%80%E5%9C%A8%E9%A1%B5%E9%9D%A2%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="组件所在页面的生命周期" style="zoom:70%; border: 1px solid #ccc" />
 
 ```js
 // components/custom06/custom06.js
@@ -1151,15 +1151,15 @@ Component({
 
 小程序冷启动，钩子函数执行的顺序：
 
-<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%80%BB%E7%BB%93-1.png" style="zoom:80%;border: 1px solid #ccc" />
+<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%80%BB%E7%BB%93-1.png" alt="小程序生命周期总结" style="zoom:80%;border: 1px solid #ccc" />
 
 保留当前页面(navigate) 以及 关闭当前页面(redirect)：
 
-<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%80%BB%E7%BB%93-2.png"  style="zoom:80%;border: 1px solid #ccc" />
+<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%80%BB%E7%BB%93-2.png" alt="小程序生命周期总结"  style="zoom:80%;border: 1px solid #ccc" />
 
 切后台 以及 切前台(热启动)：
 
-<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%80%BB%E7%BB%93-3.png"  style="zoom:80%;border: 1px solid #ccc"  />
+<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%80%BB%E7%BB%93-3.png" alt="小程序生命周期总结"  style="zoom:80%;border: 1px solid #ccc"  />
 
 ## 使用 Component 构造页面
 
@@ -1370,7 +1370,7 @@ Component({
 
 技巧：在官方文档，找到官方提供的案例，审查元素，就能看到对应的类名。
 
-<img src="./assets/%E4%BF%AE%E6%94%B9%E5%A4%8D%E9%80%89%E6%A1%86%E6%A0%B7%E5%BC%8F.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E4%BF%AE%E6%94%B9%E5%A4%8D%E9%80%89%E6%A1%86%E6%A0%B7%E5%BC%8F.png" alt="小程序修改checkbox样式" style="zoom:80%; border: 1px solid #ccc" />
 
 :::danger 
 

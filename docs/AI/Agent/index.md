@@ -16,6 +16,7 @@ AI Agent（智能体）是能**自主规划、调用工具、完成任务**的�
 ## 相关专题
 
 - [Agent 框架深入](../AgentFramework/index.md)：LangGraph / CrewAI 的框架级工程化——状态机、持久化、人工介入与角色编排；**本专题讲框架无关的概念与原理，具体框架用法在那边展开**
+- [AI 编程助手 · Agent 模式](../AICodingAssistant/AgentMode/index.md)：Agent 原理在编码场景的产品化落点——权限四级、并行隔离、无人值守的护栏；本专题讲原理循环，那边讲怎么把它管起来
 - [大模型应用开发](../LLMApp/index.md)：从接口调用到上线指标的应用工程视角
 - [大模型应用开发 · Agent 框架与应用集成](../LLMApp/AgentIntegration/index.md)：框架选型、集成清单与固定工作流 vs Agent 的判断
 - [大模型应用开发 · 工具与函数调用](../LLMApp/FunctionCalling/index.md)：JSON Schema、strict 模式与并行调用的可运行示例

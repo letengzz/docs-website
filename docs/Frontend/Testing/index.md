@@ -24,3 +24,4 @@
 ## 相关专题与分工
 
 - [Selenium 端到端测试](../../Tools/TestingTools/Selenium/index.md)：本专题讲**前端的单元/组件测试与 Playwright E2E**，加上前端侧的覆盖率门禁与 CI 接法；该页讲 **Selenium + WebDriver BiDi 的跨浏览器端到端**——多浏览器矩阵怎么跑、显式等待与隐式等待的等待策略、POM（Page Object Model）分层怎么写。两者按技术栈分工：前端组件行为与单页应用主链路用本专题的 Playwright，需要覆盖多浏览器 / 多版本的端到端回归走该页，**同一批用例不重复造两遍**。
+- [AI 编程助手](../../AI/AICodingAssistant/index.md)：AI 参与生成测试后，本专题的口径更要用起来——**契约由人定、用例由 AI 补**，警惕断言被改弱来迁就实现；评审清单里的「测试被改弱」一查见 [团队规范](../../AI/AICodingAssistant/TeamStandard/index.md)。

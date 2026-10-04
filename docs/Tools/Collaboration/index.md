@@ -73,6 +73,7 @@
 - 接口契约与联调：[接口调试工具](../../Tools/APITools/index.md)
 - 需求与设计载体在项目中的落地：[完整项目实战](../../../project/Complete/FullStackProject/index.md)
 - 复盘方法与模板：[复盘杂项](../../Others/Review/index.md)、[年度复盘](../../Others/AnnualReview/index.md)
+- 团队级 AI 使用规范：[AI 编程助手](../../AI/AICodingAssistant/index.md)——允许/禁止清单、评审口径改版、成本治理是协作规范的新增章节，写法与判据在那边
 
 ## 参考资料
 

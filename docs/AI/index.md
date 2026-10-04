@@ -1,6 +1,7 @@
 # AI
 
 - [大模型应用开发](LLMApp/index.md)
+- [AI 编程助手](AICodingAssistant/index.md)
 - [LangChain](LangChain/index.md)
 - [RAG 检索增强](RAG/index.md)
 - [多模态应用](Multimodal/index.md)

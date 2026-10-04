@@ -92,7 +92,7 @@
 
 :::
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0.jpg)
+![主轴方向](assets/CSS3%E7%AC%94%E8%AE%B0.jpg)
 
 ```css
 .box {
@@ -109,15 +109,15 @@ flex-wrap属性决定主轴换行不换行以及换行的方向。
 
 1. nowrap (默认)：不换行
 
-   ![](assets/CSS3%E7%AC%94%E8%AE%B0-17714847163052.jpg)
+   ![主轴换行方式](assets/CSS3%E7%AC%94%E8%AE%B0-17714847163052.jpg)
 
 2. wrap：自动换行，第一行在上方，伸缩容器不够自动换行。
 
-   ![](assets/CSS3%E7%AC%94%E8%AE%B0-17714847279894.jpg)
+   ![主轴换行方式](assets/CSS3%E7%AC%94%E8%AE%B0-17714847279894.jpg)
 
 3. wrap-reverse：换行，第一行在下方，反向换行。
 
-   ![](assets/CSS3%E7%AC%94%E8%AE%B0-17714847383106.jpg)
+   ![主轴换行方式](assets/CSS3%E7%AC%94%E8%AE%B0-17714847383106.jpg)
 
 ```css
 .box {
@@ -166,7 +166,7 @@ flex-flow 是一个复合属性，复合了 flex-direction 和 flex-wrap 两个�
 }
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-17714852300008.jpg)
+![主轴对齐方式](assets/CSS3%E7%AC%94%E8%AE%B0-17714852300008.jpg)
 
 ## 侧轴对齐方式
 
@@ -195,7 +195,7 @@ align-items属性定义项目在侧轴 (交叉轴)上如何对齐。
 }
 ```
 
-![](assets/CSS3%E7%AC%94%E8%AE%B0-177148624450110.jpg)
+![一行](assets/CSS3%E7%AC%94%E8%AE%B0-177148624450110.jpg)
 
 ### 多行
 

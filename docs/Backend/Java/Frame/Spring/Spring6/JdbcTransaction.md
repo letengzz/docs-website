@@ -393,7 +393,7 @@ try {
 
 2. Spring声明式事务对应事务管理器接口：
 
-   ![](assets/202310042218672.png)
+   ![Spring事务管理器](assets/202310042218672.png)
 
    现在使用的事务管理器是org.springframework.jdbc.datasource.DataSourceTransactionManager，将来整合 JDBC方式、JdbcTemplate方式、Mybatis方式的事务实现。
 

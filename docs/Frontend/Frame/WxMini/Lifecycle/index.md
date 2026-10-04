@@ -2,7 +2,7 @@
 
 ## 小程序运行机制
 
-<img src="./assets/%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.png" style="zoom:60%;  border: 1px solid #ccc" />
+<img src="./assets/%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.png" alt="小程序运行机制" style="zoom:60%;  border: 1px solid #ccc" />
 
 **冷启动与热启动**：小程序启动可以分为两种情况，一种是冷启动，一种是热启动：
 
@@ -23,7 +23,7 @@
 - 安卓点击返回键离开小程序。
 - 屏幕左侧右滑离开小程序。
 
-<img src="./assets/%E5%90%8E%E5%8F%B0%E4%B8%8E%E5%89%8D%E5%8F%B0.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E5%90%8E%E5%8F%B0%E4%B8%8E%E5%89%8D%E5%8F%B0.png" alt="小程序运行机制" style="zoom:80%; border: 1px solid #ccc" />
 
 **挂起：**
 
@@ -133,7 +133,7 @@ App({
 
 小程序的生命周期分类三类：应用级别、页面级别和组件级别 3 种类型，我们先学习应用级别和页面级别的生命周期。
 
-<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%BB%8B%E7%BB%8D.png" style="zoom:80%;" />
+<img src="./assets/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%BB%8B%E7%BB%8D.png" alt="小程序生命周期介绍" style="zoom:80%;" />
 
 ### 应用级别生命周期
 
@@ -149,7 +149,7 @@ App({
 | [onShow](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object) |  否  | 监听小程序启动或切前台              |
 | [onHide](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onHide) |  否  | 监听小程序切后台                    |
 
-<img src="./assets/%E5%BA%94%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" style="zoom:90%; border: 1px solid #ccc" />
+<img src="./assets/%E5%BA%94%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="应用级别生命周期" style="zoom:90%; border: 1px solid #ccc" />
 
 :::danger 注意
 
@@ -209,7 +209,7 @@ App({
 | [onHide](https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onHide) |  否  |                   页面隐藏/切入后台时触发                    |
 | [onUnload](https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onUnload) |  否  |                        页面卸载时触发                        |
 
-<img src="./assets/%E9%A1%B5%E9%9D%A2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0-17530214480371.png" style="zoom:80%; border: 1px solid #ccc" />
+<img src="./assets/%E9%A1%B5%E9%9D%A2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0-17530214480371.png" alt="页面级别生命周期" style="zoom:80%; border: 1px solid #ccc" />
 
 ```js
 // pages/home/home.js
@@ -251,7 +251,7 @@ Page({
 
 2. 点击左上角，返回上一个页面，会销毁当前页面(被打开页面)。
 
-<img src="./assets/%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F%E4%B8%A4%E4%B8%AA%E7%BB%86%E8%8A%82-17529382594401.png" style="zoom:50%;" />
+<img src="./assets/%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F%E4%B8%A4%E4%B8%AA%E7%BB%86%E8%8A%82-17529382594401.png" alt="补充说明" style="zoom:50%;" />
 
 
 

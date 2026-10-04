@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="tm" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .box2{ fill: #f0ecff; stroke: #7a5bd8; stroke-width: 1.5; }
+    .box3{ fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .warn{ fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+    .ar { stroke: #4a7bd8; stroke-width: 1.4; fill: none; }
+  </style>
+
+  <text class="t2" x="450" y="26">AI 编程助手专题地图：10 页各管一层</text>
+
+  <!-- 能力层 -->
+  <rect class="box" x="30" y="52" width="255" height="150"/>
+  <text x="157" y="76" font-weight="bold">① 这是什么（能力分层）</text>
+  <text class="small" x="157" y="98">补全 → 编辑 → 会话 → Agent → 平台</text>
+  <text class="small" x="157" y="116">自主度递增，人工介入方式改变</text>
+  <text class="small" x="157" y="140">→ 概述 · 工具全景</text>
+  <text class="small" x="157" y="158">（两页讲清楚「它是什么、用哪个」）</text>
+
+  <!-- 怎么用好 -->
+  <rect class="box2" x="322" y="52" width="255" height="150"/>
+  <text x="449" y="76" font-weight="bold">② 怎么用好</text>
+  <text class="small" x="449" y="98">上下文工程：仓库写给 AI 读</text>
+  <text class="small" x="449" y="116">提示技巧：任务分级与判据</text>
+  <text class="small" x="449" y="140">→ 上下文工程</text>
+  <text class="small" x="449" y="158">→ 协作式提示技巧</text>
+
+  <!-- 怎么放开手 -->
+  <rect class="box3" x="614" y="52" width="255" height="150"/>
+  <text x="741" y="76" font-weight="bold">③ 怎么放开手</text>
+  <text class="small" x="741" y="98">Agent 循环、权限分级、并行隔离</text>
+  <text class="small" x="741" y="116">CI 里的无人值守 agent</text>
+  <text class="small" x="741" y="140">→ Agent 模式</text>
+  <text class="small" x="741" y="158">（配协作式提示技巧使用）</text>
+
+  <!-- 团队层 -->
+  <rect class="warn" x="30" y="232" width="400" height="140"/>
+  <text x="230" y="256" font-weight="bold">④ 团队层：规范与度量</text>
+  <text class="small" x="230" y="278">指令文件入库评审 · 允许/禁止清单</text>
+  <text class="small" x="230" y="296">评审口径改版 · 成本与席位治理</text>
+  <text class="small" x="230" y="318">→ 团队规范与治理</text>
+  <text class="small" x="230" y="340">→ 度量与收益论证</text>
+
+  <!-- 落地 -->
+  <rect class="box" x="460" y="232" width="409" height="140"/>
+  <text x="664" y="256" font-weight="bold">⑤ 落地与答疑</text>
+  <text class="small" x="664" y="278">实战：把本仓库当靶子接一遍</text>
+  <text class="small" x="664" y="296">（规则文件 / 门禁判据 / 评审口径 / 度量基线）</text>
+  <text class="small" x="664" y="318">→ 实战 · 常见问题</text>
+  <text class="small" x="664" y="340">建议先读概述页的分工表再跳页</text>
+
+  <text class="small" x="450" y="405">证据先行：本专题所有生产力结论都标注来源与核对时间，不采信单点百分比</text>
+</svg>

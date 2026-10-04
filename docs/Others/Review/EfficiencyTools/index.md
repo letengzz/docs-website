@@ -5,7 +5,7 @@
 ![效率工具分类](../assets/tool-grid.svg)
 
 ::: info 本页是「安利清单」，系统方法论见专题
-本页只做**横向罗列**（有哪些工具、适合什么场景）。终端四层结构、命令行提效、剪贴板与输入、截图归档、笔记体系、自动化的**判断标准与落地步骤**，见系统性专题 [效率工具](../../../Tools/Efficiency/index.md)——建议先读专题的 [概述与选型](../../../Tools/Efficiency/Overview/index.md)，再回到本页做减法。
+本页只做**横向罗列**（有哪些工具、适合什么场景）。终端四层结构、命令行提效、剪贴板与输入、截图归档、笔记体系、自动化的**判断标准与落地步骤**，见系统性专题 [效率工具](../../../Tools/Efficiency/index.md)——建议先读专题的 [概述与选型](../../../Tools/Efficiency/Overview/index.md)，再回到本页做减法。AI 编程助手这一类的**系统性讲法**（选型、上下文工程、Agent 权限、团队规范、度量）见 [AI 编程助手](../../../AI/AICodingAssistant/index.md)。
 :::
 
 ## 开发效率
@@ -43,7 +43,8 @@
 
 | 工具 | 用途 |
 | --- | --- |
-| Codex / Copilot | AI 编程助手 |
+| GitHub Copilot / Cursor / Claude Code | AI 编程（补全 / 原生编辑器 / 终端 Agent 三种形态） |
+| TRAE / 通义灵码 / CodeBuddy | 国产三线，个人档普遍免费 |
 | ChatGPT / Claude | 问答、写作、分析 |
 | Midjourney / 即梦 | 配图生成 |
 | n8n / Coze | 自动化工作流 |

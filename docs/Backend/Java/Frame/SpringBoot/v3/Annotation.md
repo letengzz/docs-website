@@ -6,7 +6,7 @@ SpringBoot摒弃XML配置方式，改为**全注解驱动**
 
 Spring Boot的主入口程序被`@SpringBootApplication`注解标注，可见这个注解的重要性，查看它的源码：
 
-![](assets/img202411172040344.png)
+![@SpringBootApplication注解](assets/img202411172040344.png)
 
 可以看出这个注解属于**组合注解**。拥有`@SpringBootConfiguration`、`@EnableAutoConfiguration`、`@ComponentScan`的功能。
 

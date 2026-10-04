@@ -41,7 +41,7 @@ Page({
 })
 ```
 
-<img src="./assets/50-getApp.jpg" style="zoom:70%;" />
+<img src="./assets/50-getApp.jpg" alt="微信小程序 getApp" style="zoom:70%;" />
 
 ## App 实例还能放什么
 

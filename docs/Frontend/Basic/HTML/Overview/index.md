@@ -46,7 +46,7 @@ HTML 由一系列的标签组成。标记也称为标签 (元素)。大小写都
 
 从 HTML 1.0 开始发展，期间经历了很多版本，目前HTML的最新标准是：HMTL 5
 
-![](assets/HTML4%E7%AC%94%E8%AE%B0.jpg)
+![HTML 发展历史](assets/HTML4%E7%AC%94%E8%AE%B0.jpg)
 
 ## HTML5 概述
 

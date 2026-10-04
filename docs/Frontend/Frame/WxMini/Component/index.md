@@ -203,7 +203,7 @@ swiper {
 
 :::
 
-<img src="./assets/%E5%85%AC%E5%8F%B8%E5%AE%A3%E4%BC%A0%E8%AF%AD.png" style="zoom:60%;" />
+<img src="./assets/%E5%85%AC%E5%8F%B8%E5%AE%A3%E4%BC%A0%E8%AF%AD.png" alt="text 组件" style="zoom:60%;" />
 
 > pages/index/index.wxml
 >
@@ -343,7 +343,7 @@ swiper {
 
 使用横向滚动时，需要添加 scroll-x 属性，然后通过 css 进行结构绘制，实现页面横向滚动
 
-<img src="./assets/scroll-x.gif" style=" border: 1px solid #ccc" />
+<img src="./assets/scroll-x.gif" alt="横向滚动" style=" border: 1px solid #ccc" />
 
 > pages/index/index.wxml
 >
@@ -392,7 +392,7 @@ swiper {
 
 使用竖向滚动时，需要给[scroll-view](https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html)一个固定高度，同时添加 scroll-y 属性，实现页面纵向滚动
 
-<img src="./assets/scroll-y.gif" style="zoom:90%; border: 1px solid #ccc" />
+<img src="./assets/scroll-y.gif" alt="纵向滚动" style="zoom:90%; border: 1px solid #ccc" />
 
 > pages/index/index.wxml
 >
@@ -475,7 +475,7 @@ swiper {
 
 点击链接，会将生成的 `CSS` 在新的链接页面进行打开，`ctrl + s`，将该文件重命名为`.wxss` 后缀名，然后保存到项目根目录下的`static` 文件夹下。
 
-<img src="./assets/%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87%20CSS.jpg" style="zoom:45%; border: 1px solid  #ccc" />
+<img src="./assets/%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87%20CSS.jpg" alt="字体图标" style="zoom:45%; border: 1px solid  #ccc" />
 
 在全局样式文件`app.wxss`中导入`fonts.wxss`字体图标文件，然后获取到图标类名，在项目中使用即可，应用于页面：
 
@@ -562,7 +562,7 @@ swiper {
 
 如图，在使用了本地资源图片以后，微信开发者工具提供的提示：
 
-<img src="./assets/%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87.jpg" style="zoom: 80%;" />
+<img src="./assets/%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87.jpg" alt="背景图片" style="zoom: 80%;" />
 
 **本地资源图片无法通过 WXSS 获取，可以使用网络图片，或者 base64，或者使用`<image/>`标签**：
 
@@ -585,4 +585,4 @@ swiper {
 }
 ```
 
-<img src="./assets/%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%89%87.jpg" style="zoom:50%; border: 1px solid #ccc" />
+<img src="./assets/%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%89%87.jpg" alt="背景图片" style="zoom:50%; border: 1px solid #ccc" />

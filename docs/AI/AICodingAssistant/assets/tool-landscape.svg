@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .col { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .col2{ fill: #f0ecff; stroke: #7a5bd8; stroke-width: 1.5; }
+    .col3{ fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .col4{ fill: #fff7e8; stroke: #d89614; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 15px; font-weight: bold; }
+    .h   { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+  </style>
+
+  <text class="t2" x="450" y="26">四类形态 × 代表工具（2026-10 口径，版本以官方发布页为准）</text>
+
+  <rect class="col" x="30" y="50" width="200" height="340"/>
+  <text class="h" x="130" y="76">① 编辑器插件</text>
+  <text class="small" x="130" y="96">装进你现有的 IDE</text>
+  <text x="130" y="124" font-weight="bold">GitHub Copilot</text>
+  <text class="small" x="130" y="144">覆盖 VS Code / JetBrains</text>
+  <text class="small" x="130" y="160">Xcode / Eclipse / Neovim</text>
+  <text x="130" y="188" font-weight="bold">通义灵码</text>
+  <text class="small" x="130" y="208">个人版免费，中文场景</text>
+  <text x="130" y="236" font-weight="bold">CodeBuddy</text>
+  <text class="small" x="130" y="256">插件 + IDE + CLI 三端</text>
+  <text class="small" x="130" y="290">优点：迁移成本≈0</text>
+  <text class="small" x="130" y="310">缺点：能力上限取决于</text>
+  <text class="small" x="130" y="326">宿主编辑器的形态</text>
+
+  <rect class="col2" x="245" y="50" width="200" height="340"/>
+  <text class="h" x="345" y="76">② AI 原生编辑器</text>
+  <text class="small" x="345" y="96">整个编辑器为 AI 重做</text>
+  <text x="345" y="124" font-weight="bold">Cursor</text>
+  <text class="small" x="345" y="144">Tab / Composer / Agent</text>
+  <text class="small" x="345" y="160">最多 8 个并行 agent</text>
+  <text x="345" y="188" font-weight="bold">Windsurf</text>
+  <text class="small" x="345" y="208">Cascade 全项目上下文</text>
+  <text x="345" y="236" font-weight="bold">TRAE</text>
+  <text class="small" x="345" y="256">基础版免费，多模型</text>
+  <text class="small" x="345" y="290">优点：多文件与 agent 体验</text>
+  <text class="small" x="345" y="306">目前最顺</text>
+  <text class="small" x="345" y="330">缺点：要换编辑器</text>
+
+  <rect class="col3" x="460" y="50" width="200" height="340"/>
+  <text class="h" x="560" y="76">③ 终端 Agent</text>
+  <text class="small" x="560" y="96">不住在编辑器里</text>
+  <text x="560" y="124" font-weight="bold">Claude Code</text>
+  <text class="small" x="560" y="144">子代理 / hooks / skills</text>
+  <text class="small" x="560" y="160">嵌套子代理最多 5 层</text>
+  <text x="560" y="188" font-weight="bold">Copilot CLI / Codex CLI</text>
+  <text class="small" x="560" y="208">Gemini CLI 等</text>
+  <text class="small" x="560" y="240">优点：可进 CI、可脚本化、</text>
+  <text class="small" x="560" y="256">可在服务器上跑</text>
+  <text class="small" x="560" y="280">缺点：没有图形界面，</text>
+  <text class="small" x="560" y="296">diff 阅读要自己接工具</text>
+
+  <rect class="col4" x="675" y="50" width="200" height="340"/>
+  <text class="h" x="775" y="76">④ 平台级云 Agent</text>
+  <text class="small" x="775" y="96">在仓库平台上跑</text>
+  <text x="775" y="124" font-weight="bold">Copilot coding agent</text>
+  <text class="small" x="775" y="144">派 issue → 出 PR</text>
+  <text class="small" x="775" y="160">单次会话上限 59 分钟</text>
+  <text x="775" y="188" font-weight="bold">Cursor 云 agent / Bugbot</text>
+  <text class="small" x="775" y="208">PR 监控与自动修复</text>
+  <text x="775" y="236" font-weight="bold">Jules / Devin 等</text>
+  <text class="small" x="775" y="270">优点：异步并行、可批量</text>
+  <text class="small" x="775" y="290">缺点：必须先把仓库</text>
+  <text class="small" x="775" y="306">规则与门禁写清楚</text>
+
+  <text class="small" x="450" y="424">一个团队通常会同时用两类：编辑器内一类（L1~L4），平台级一类（L5）——选型判据见正文</text>
+</svg>

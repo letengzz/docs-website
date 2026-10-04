@@ -250,7 +250,7 @@ Page({
 
 小程序为开发者提供了客服能力，同时为客服人员提供移动端、网页端客服工作台便于及时处理消息。
 
-<img src="./assets/%E5%AE%A2%E6%9C%8D%E8%83%BD%E5%8A%9B.png" style="zoom:67%;" />
+<img src="./assets/%E5%AE%A2%E6%9C%8D%E8%83%BD%E5%8A%9B.png" alt="客服能力" style="zoom:67%;" />
 
 使用方式：
 

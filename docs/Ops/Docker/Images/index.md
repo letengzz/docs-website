@@ -127,9 +127,9 @@ docker pull <repository>@<digest>
 
 从 Docker Hub 中具体镜像中可查看到其 digest：
 
-![](assets/img202406151345000.png)
+![拉取镜像](assets/img202406151345000.png)
 
-![](assets/img202406151345750.png)
+![拉取镜像](assets/img202406151345750.png)
 
 ## 删除本地镜像
 
@@ -278,9 +278,9 @@ Docker 镜像由一些松耦合的只读镜像层组成，Docker Daemon 负责�
 
 redis:latest 镜像就包含 6 个镜像层：
 
-![](assets/img202406151401994.png)
+![镜像分层](assets/img202406151401994.png)
 
-![](assets/img202406151401845.png)
+![镜像分层](assets/img202406151401845.png)
 
 采用分层结构的优势很多，例如，每个分层都是只读的，所有对分层的修改都是以新分层的形式出现，并不会破坏原分层内容；再如，每个分层只记录变更内容，所以有利于节省存储空间等。
 
@@ -297,7 +297,7 @@ redis:latest 镜像就包含 6 个镜像层：
 
 而这些只读镜像层根据其位置与功能的不同可分为两类：基础镜像层与扩展镜像层。
 
-![](assets/img202406151403720.png)
+![镜像FS构成](assets/img202406151403720.png)
 
 - 基础镜像层：所有镜像的最下层都具有一个可以看得到的基础镜像层 Base Image，基础镜像层的文件系统称为根文件系统 rootfs。而 rootfs 则是建立在 Linux 系统中“看不到的”引导文件系统bootfs 之上。
 
@@ -308,7 +308,7 @@ redis:latest 镜像就包含 6 个镜像层：
   容器的这个文件系统是在 docker 镜像最外层之上增加了一个可读写的容器层，对文件的任何更改都只存在于容器层。因此任何对容器的操作都不会影响到镜像本身。
   容器层如果需要修改某个文件，系统会从容器层开始向下一层层的查找该文件，直到找到为止。任何对于文件的操作都会记录在容器层。例如，要修改某文件，容器层会首先把在镜像层找到的文件 copy 到容器层，然后再进行修改。删除文件也只会将存在于容器层中的文件副本删除。
 
-  ![](assets/img202406151406894.png)
+  ![镜像FS构成](assets/img202406151406894.png)
 
 - Docker 容器就是一个叠加后的文件系统，而这个容器层称为 Union File System，联合文件系统。
 
@@ -318,7 +318,7 @@ redis:latest 镜像就包含 6 个镜像层：
 
 在 docker pull 镜像结束后会给出该拉取的镜像的摘要 digest。
 
-![](assets/img202406151407790.png)
+![镜像摘要](assets/img202406151407790.png)
 
 查看摘要：
 
@@ -328,7 +328,7 @@ docker images 镜像名称 --digests
 
 通过 docker inspect 命令可以查看指定镜像的详细信息。其中就包含该镜像的摘要信息。
 
-![](assets/img202406151408573.png)
+![镜像摘要](assets/img202406151408573.png)
 
 摘要的作用：
 
@@ -344,7 +344,7 @@ docker pull <repository>@<digest>
 
 先查出 zookeeper:3.8 镜像的 digest，然后将该镜像删除，然后再通过digest 对其进行拉取。
 
-![](assets/img202406151409741.png)
+![镜像摘要](assets/img202406151409741.png)
 
 不过，不方便的是，镜像的摘要需要由运维人员在本地进行手工维护。
 
@@ -362,10 +362,10 @@ Multi-architecture Image，即多架构镜像，是某`<repository>`中的某`<t
 
 在 Docker Hub 中，镜像的多架构信息保存在 Manifest 文件中。在拉取镜像时，Docker会随着 pull 命令将当前 Docker 系统的 OS 与架构信息一并提交给 Docker Hub。Docker Hub 首先会根据镜像的`<repository>:<tag>`查找是否存在 Manifest。如果不存在，则直接查找并返回`<repository>:<tag>`镜像即可；如果存在，则会在 Manifest 中查找是否存在指定系统/架构的镜像。如果存在该系统/架构，则根据 Manifest 中记录的地址找到该镜像的位置。
 
-![](assets/img202406151404029.png)
+![多架构镜像](assets/img202406151404029.png)
 
 ## 悬空镜像
 
 悬虚镜像，即没有`<repository>`与`<tag>`的镜像。悬虚镜像一般都是由于某些失误操作或其它一些操作而生成的副产物，一般是要被清除掉的。如果非要使用悬虚镜像，那只能通过其 ImageID 来使用了。
 
-![](assets/img202406151356764.png)
+![悬空镜像](assets/img202406151356764.png)
