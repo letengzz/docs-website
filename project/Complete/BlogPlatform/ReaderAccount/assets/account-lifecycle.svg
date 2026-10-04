@@ -1,0 +1,52 @@
+<svg viewBox="0 0 680 366" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="366" fill="#f8fafc"/>
+  <text x="340" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#0b162a">账号生命周期：五个状态、六条迁移</text>
+
+  <!-- states -->
+  <rect x="26" y="48" width="110" height="56" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="81" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">未注册</text>
+  <text x="81" y="90" text-anchor="middle" font-size="9" fill="#94a3b8">表里没有这一行</text>
+
+  <rect x="152" y="48" width="110" height="56" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="207" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#92400e">PENDING</text>
+  <text x="207" y="90" text-anchor="middle" font-size="9" fill="#b45309">可登录，不可写</text>
+
+  <rect x="278" y="48" width="110" height="56" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="333" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#065f46">ACTIVE</text>
+  <text x="333" y="90" text-anchor="middle" font-size="9" fill="#047857">可评论、可评论管理</text>
+
+  <rect x="404" y="48" width="110" height="56" rx="10" fill="#fef2f2" stroke="#f87171" stroke-width="1.5"/>
+  <text x="459" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#991b1b">FROZEN</text>
+  <text x="459" y="90" text-anchor="middle" font-size="9" fill="#b91c1c">登录 423 Locked</text>
+
+  <rect x="530" y="48" width="110" height="56" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="5 3"/>
+  <text x="585" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#475569">CLOSED</text>
+  <text x="585" y="90" text-anchor="middle" font-size="9" fill="#64748b">终态，不可恢复</text>
+
+  <!-- arrows -->
+  <g stroke="#64748b" stroke-width="1.2" fill="none">
+    <line x1="136" y1="76" x2="148" y2="76"/><polygon points="148,76 143,73 143,79" fill="#64748b"/>
+    <line x1="262" y1="76" x2="274" y2="76"/><polygon points="274,76 269,73 269,79" fill="#64748b"/>
+    <line x1="388" y1="76" x2="400" y2="76"/><polygon points="400,76 395,73 395,79" fill="#64748b"/>
+    <line x1="514" y1="76" x2="526" y2="76"/><polygon points="526,76 521,73 521,79" fill="#64748b"/>
+    <line x1="459" y1="104" x2="459" y2="112" stroke-dasharray="3 3"/>
+  </g>
+  <text x="207" y="122" text-anchor="middle" font-size="8.5" fill="#b45309">① 注册</text>
+  <text x="333" y="122" text-anchor="middle" font-size="8.5" fill="#047857">② 邮箱验证</text>
+  <text x="459" y="122" text-anchor="middle" font-size="8.5" fill="#b91c1c">③ 冻结</text>
+  <text x="585" y="122" text-anchor="middle" font-size="8.5" fill="#64748b">⑤ 注销</text>
+  <text x="514" y="140" text-anchor="middle" font-size="8.5" fill="#64748b">④ 解冻（回 ACTIVE）</text>
+
+  <!-- transitions -->
+  <rect x="26" y="152" width="628" height="148" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="44" y="174" font-size="11" fill="#334155">① 未注册 → PENDING：提交注册。用户名与邮箱唯一性在数据库唯一索引上判，不在应用层「先查再插」</text>
+  <text x="44" y="196" font-size="11" fill="#334155">② PENDING → ACTIVE：邮箱验证通过。验证链接本地开发写日志、不接真实邮件服务</text>
+  <text x="44" y="218" font-size="11" fill="#334155">③ ACTIVE → FROZEN：管理员冻结，或口令在时间窗内连续失败达阈值（防撞库，见接口页）</text>
+  <text x="44" y="240" font-size="11" fill="#334155">④ FROZEN → ACTIVE：只能管理员解冻，用户不提供自助解冻（否则等于给了攻击者重置入口）</text>
+  <text x="44" y="262" font-size="11" fill="#334155">⑤ ACTIVE / PENDING / FROZEN → CLOSED：用户注销。只置状态位 + 打散用户名与邮箱</text>
+  <text x="44" y="284" font-size="11" fill="#334155">⑥ CLOSED 是终态：登录一律 401，且与「用户名不存在」逐字节一致</text>
+
+  <rect x="26" y="312" width="628" height="44" rx="10" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="44" y="332" font-size="10.5" fill="#1e3a5f">为什么注销不删行：第 1 周的数据库设计已定「users 不做软删除」，而 comments.user_id 是指向它的强引用。</text>
+  <text x="44" y="349" font-size="10.5" fill="#1e3a5f">删行会让历史评论要么级联消失、要么留下悬空外键——两者都不可接受。脱敏 + 状态位同时保住了引用与隐私。</text>
+</svg>

@@ -1051,9 +1051,9 @@ public interface UserMapper {
 }
 ```
 
-使用了 [`@Select` 注解](Annotation.md#@Select:实现查询功能)，并且注入了和 XML 中相同的 select 语句。
+使用了 [`@Select` 注解](Annotation.md#select-实现查询功能)，并且注入了和 XML 中相同的 select 语句。
 
-- [SQL语句映射注解](Annotation.md#SQL 语句映射)
+- [SQL语句映射注解](Annotation.md#1)
 
 ::: danger 注意
 

@@ -32,7 +32,7 @@
   <text x="680" y="131" text-anchor="middle" font-size="7" fill="#C2410C">退化超阈值阻断</text>
   <text x="680" y="147.1" text-anchor="middle" font-size="7" fill="#C2410C">报告归档到 CI</text>
   <text x="680" y="163.2" text-anchor="middle" font-size="7" fill="#C2410C">失败自动留现场</text>
-  <text x="380" y="208" text-anchor="middle" font-size="10" fill="#6D28D9">关键：压测与功能回归跑在**同一份**脚本上，避免「功能脚本」与「压测脚本」两套各修各的 bug</text>
+  <text x="380" y="208" text-anchor="middle" font-size="10" fill="#6D28D9">关键：压测与功能回归跑在同一份脚本上，避免「功能脚本」与「压测脚本」两套各修各的 bug</text>
   <rect x="20" y="228" width="720" height="130" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.2"/>
   <text x="40" y="248" text-anchor="start" font-size="9.5" fill="#0F172A" font-weight="bold">可直接抄的命令（JMeter CLI + 非 GUI 模式）</text>
   <text x="36" y="268" text-anchor="start" font-size="8.5" fill="#1E3A8A">$ docker compose up -d db redis      # 起依赖与固定种子数据</text>

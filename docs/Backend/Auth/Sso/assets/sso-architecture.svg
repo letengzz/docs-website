@@ -30,6 +30,6 @@
   <text x="50" y="318" font-size="13" font-weight="bold" fill="#1f2937">协议选择</text>
   <text x="50" y="344" font-size="11" fill="#374151">OIDC：基于 OAuth 2.1 + JWT，移动端与前后端分离项目首选，生态最好。</text>
   <text x="50" y="368" font-size="11" fill="#374151">SAML 2.0：企业级（对接 AD/Okta 等）最常见，XML 断言较重，适合 Web 单点登录。</text>
-  <text x="50" y="392" font-size="11" fill="#374151">CAS：轻量、校园/企业内部常见，**属存量方案**；新项目建议优先 OIDC。</text>
+  <text x="50" y="392" font-size="11" fill="#374151">CAS：轻量、校园/企业内部常见，属存量方案；新项目建议优先 OIDC。</text>
   <text x="50" y="412" font-size="10" fill="#6b7280">无论用哪种协议，都要处理：会话超时、单点登出、账号禁用同步、跨域 Cookie（SameSite）限制。</text>
 </svg>

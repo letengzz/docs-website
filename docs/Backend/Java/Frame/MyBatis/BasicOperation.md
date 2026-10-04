@@ -133,7 +133,7 @@ MyBatis获取参数值的两种方式：`${}`和`#{}`
 
 ### 使用注解标识参数
 
-可以通过[`@Param`注解](Annotation.md#@Param:映射多个参数)标识mapper接口中的方法参数 此时，会将这些参数放在map集合中，以@Param注解的value属性值为键，以参数为值；以 param1,param2...为键，以参数为值；只需要通过`${}`和`#{}`访问map集合的键就可以获取相对应的值
+可以通过[`@Param`注解](Annotation.md#param-映射多个参数)标识mapper接口中的方法参数 此时，会将这些参数放在map集合中，以@Param注解的value属性值为键，以参数为值；以 param1,param2...为键，以参数为值；只需要通过`${}`和`#{}`访问map集合的键就可以获取相对应的值
 
 :::danger 注意
 
@@ -303,7 +303,7 @@ Mybatis 实现给映射器传递多个参数：
 
 #### 使用注解传递参数
 
-可以使用 MyBatis 提供的[`@Param`注解](Annotation.md#@Param:映射多个参数)给注解器传递参数。
+可以使用 MyBatis 提供的[`@Param`注解](Annotation.md#param-映射多个参数)给注解器传递参数。
 
 1. mapper接口中定义一个`insertUserByParam()`方法：
 
@@ -731,7 +731,7 @@ Mybatis 实现给映射器传递多个参数：
 
 #### 使用注解传递参数
 
-我们还可以使用 MyBatis 提供的[`@Param`注解](Annotation.md#@Param:映射多个参数)注解给注解器传递参数。
+我们还可以使用 MyBatis 提供的[`@Param`注解](Annotation.md#param-映射多个参数)注解给注解器传递参数。
 
 1. mapper接口中定义一个`updateUserByParam()`方法：
 
@@ -997,7 +997,7 @@ Mybatis 实现给映射器传递多个参数：
 
 #### 使用注解传递参数
 
-可以使用 MyBatis 提供的[`@Param`注解](Annotation.md#@Param:映射多个参数)注解给注解器传递参数。
+可以使用 MyBatis 提供的[`@Param`注解](Annotation.md#param-映射多个参数)注解给注解器传递参数。
 
 1. mapper接口中定义一个`deleteUserByParam()`方法：
 
@@ -1263,7 +1263,7 @@ Mybatis 实现给映射器传递多个参数：
 
 #### 使用注解传递参数
 
-使用 MyBatis 的注解[`@Param`注解](Annotation.md#@Param:映射多个参数)传递参数。
+使用 MyBatis 的注解[`@Param`注解](Annotation.md#param-映射多个参数)传递参数。
 
 :::warning 说明
 

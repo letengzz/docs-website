@@ -14,6 +14,14 @@
 
 本节对应第 99 天，是第 2 周核心编码收尾的第一步。
 
+::: tip 本页只管后台，读者账号在第 109 天单独成章
+本页说的「认证与角色」是**管理端**那一套：配置/表驱动的后台账号、`AdminRole` 三级、`/api/v1/admin/**` 的默认拒绝规则表。
+
+**读者端是另一套**：注册、登录、刷新令牌轮换、数据归属（只能动自己的评论），落地在[读者账号与权限](../ReaderAccount/index.md)。两者的分工边界与那条「读者令牌不得进入 `/admin/**`」的硬判据，写在[读者账号 · 章节入口](../ReaderAccount/index.md#模块边界-一张表、两套身份、一条硬边界)。
+
+为什么必须把两者分开讲：它们**共用同一张 `users` 表**，但入口前缀、令牌载体、可撤销性、失败语义全都不一样。混在一页里写，最容易出现的就是「读者令牌碰巧能过管理端的鉴权规则表」——因为它确实验签通过了。
+:::
+
 ## 认证与鉴权要回答的四个问题
 
 | 问题 | 属于 | 失败时的语义 | 本项目落在 |
@@ -96,7 +104,7 @@ if (exp <= Instant.now().getEpochSecond() - 30) return null;
 ### PBKDF2 参数与存储格式
 
 ```java [PasswordHasher.java 结构示意]
-private static final int ITERATIONS = 120_000;   // OWASP 对 PBKDF2-HMAC-SHA256 的下限附近
+private static final int ITERATIONS = 600_000;   // OWASP 现行基线（第 109 天对齐，原为 120_000）
 private static final int SALT_BYTES = 16;        // 每个用户独立随机盐
 private static final int KEY_BITS   = 256;
 
@@ -120,6 +128,14 @@ boolean matches(String raw, String stored) {
 | 盐多长 | 16 字节随机 | 防彩虹表；逐用户独立，避免「同一口令哈希相同」被看出来 |
 | 比较方式 | `MessageDigest.isEqual` | 恒定时间，避免按字节短路 |
 | 口令从哪来 | `prod` 只接受预置哈希 | 见下文「配置」一节 |
+
+::: danger 迭代次数的两处修正（第 109 天）
+本页最初写的 `120_000` 并注为「OWASP 下限附近」，**这个注释是错的**：OWASP 密码存储速查表对 PBKDF2-HMAC-SHA256 的现行基线是 **600,000 次**（且明确只在「必须满足 FIPS-140 合规」时才选 PBKDF2；首选是 Argon2id `m=19456, t=2, p=1`，其次是 scrypt `N=2^17, r=8, p=1`，bcrypt 只留给遗留系统且成本因子 ≥ 10、输入上限 72 字节）。
+
+值得记的不是这个数字，而是**它的性质**：这类参数会随硬件贬值，写死在代码里迟早过期。所以真正要保证的不是「数字对」，而是**存储串自描述 + 登录时按需升级**这条机制——有了它，改这个常量就能完成全站迁移，不需要任何一次强制改密。
+
+数字与出处见[表设计 · 口径 ①](../ReaderAccount/DataModel/index.md)与 [OWASP Password Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)（核对时间 2026-10）。
+:::
 
 ## 角色模型
 
@@ -146,6 +162,10 @@ public enum AdminRole {
 ::: tip 为什么不做「一个操作一个布尔开关」
 布尔开关的组合会随接口数量平方增长，且无法回答「新增一个接口时该给谁开」。**有序角色 + 一个阈值**让新增接口只需回答一个问题：它属于哪一级。
 :::
+
+第 109 天把这三个等级落到了库表的 `users.admin_role` 列上（取值 `NULL` / `VIEWER` / `EDITOR` / `ADMIN`），并把读者侧的 `READER` / `AUTHOR` 留在 `users.role` 列里。
+
+**为什么不能继续用一列**：两套枚举取值重叠但语义不同——`role = ADMIN` 说的是「这个人是站长」，`AdminRole.ADMIN` 说的是「这个人的后台权限等级是 3」。挤在一列时，`AdminRole.VIEWER` 到底该映射成哪个 `role`？如果映射成 `READER`，那么「只读后台的运营」和「纯读者」在库里就长得一模一样。**权限系统里最危险的词就是「长得一样」。**
 
 ## 鉴权规则表：默认拒绝
 
@@ -222,6 +242,12 @@ public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Objec
 ## 配置：本地与生产的语义差异
 
 同一份配置结构，在两种 profile 下的**约束强度不同**——这是刻意的。
+
+::: info 第 109 天起：账号来源从配置迁到表里
+下面这段 `blog.auth.users` 是**第 99 天的形态**——那时还没有任何「可用于登录的用户表」，配置文件是最短路径。第 109 天有了 `users` 表之后，账号统一收敛进表，配置只保留**引导用的首个管理员**（环境变量 `BOOTSTRAP_ADMIN_*`），且该通道在「表里已存在管理员」时自动跳过。
+
+演进理由与「引导通道必须自失效」的判据见[表设计 · 口径 ③](../ReaderAccount/DataModel/index.md)。**下面这段配置保留原文不改写**——它是第 99 天的设计快照，也是「配置引导 → 表管理」这条演进路径的起点。
+:::
 
 ```yaml [application-prod.yml（片段）]
 blog:
@@ -330,6 +356,24 @@ python api/contract_check.py
 1. **文章下线动作**：补 `PUBLISHED → OFFLINE → DRAFT` 的合法路径，非法迁移仍返回 `409`；下线必须同时清空可被读者命中的检索结果。
 2. **Markdown 渲染能力补齐**：代码块高亮、目录生成、图片本地化——渲染管线已有消毒基础，这一步只加能力不加信任。
 3. **鉴权断言上移**：把 `auth_smoke.py` 的 `401` / `403` 用例改写成 MockMvc 集成测试，让权限断言随 `mvn test` 一起跑，而不是依赖人记得起服务。
+
+## 后续演进（截至第 109 天）
+
+第 99 天页末列的三条「下一步」后来的落点，回填在这里，避免读者以为它们还悬着：
+
+| 第 99 天的下一步 | 落地情况 |
+| --- | --- |
+| 文章下线动作（`PUBLISHED → OFFLINE → DRAFT`） | 第 100 天落地，四态状态机与 `lifecycle_smoke`（24 步）见[文章下线动作](../Lifecycle/index.md) |
+| Markdown 渲染能力补齐 | 第 101 天落地，写时渲染与 TOC 中文锚点见[渲染能力补齐](../Rendering/index.md) |
+| 鉴权断言上移（`401` / `403` 从冒烟改写成 MockMvc） | 第 103 天落地，`AuthFilterTest` 收下四类 `401` 与「`VIEWER` 403 / `EDITOR` 200」，见[测试分层收口](../TestLayers/index.md) |
+| — | **第 109 天新增**：管理端角色落库为 `users.admin_role`；新增读者端账号链路（第十一道门禁 `account_smoke.py`），见[读者账号与权限](../ReaderAccount/index.md) |
+
+## 再次回看这一页时最容易问的两个问题
+
+| 问题 | 答案 |
+| --- | --- |
+| 读者登录了，为什么还进不去后台？ | 因为 `aud` 不匹配会被判 `401`（读者令牌的 `aud=reader`），而不是 `403`——**拿错门票属于「身份未被证实」**，见[读者账号 · `aud` 边界](../ReaderAccount/API/index.md) |
+| 为什么读者有 `refresh` 而管理端没有？ | 后台是 SPA 且会话短（access 2 小时），重新登录的成本可接受；前台是 SSR 且面向长期登录的读者，必须有可撤销的长效凭据，所以第 109 天给它补了 `user_tokens` 表 |
 
 ## 参考资料
 

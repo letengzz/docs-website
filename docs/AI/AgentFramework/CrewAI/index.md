@@ -63,7 +63,7 @@ result = crew.kickoff(inputs={"topic": "AI 编排框架"})
 | **hierarchical** | 自动生成一个「管理者」Agent 动态分派 | 任务集可并行、谁先谁后难预知 |
 
 ::: warning hierarchical 不是免费的
-管理者模型也是模型，会分派失误、会漏任务、会增加一次模型调用的延迟与成本。**流程能写死就用 sequential**；确实需要动态分派时，对比一下「hierarchical」与「用 [Flows](#3-flows-要精确控制流时的结构化层) 写死分派逻辑」——后者可测试、可重放。
+管理者模型也是模型，会分派失误、会漏任务、会增加一次模型调用的延迟与成本。**流程能写死就用 sequential**；确实需要动态分派时，对比一下「hierarchical」与「用 [Flows](#_3-flows-要精确控制流时的结构化层) 写死分派逻辑」——后者可测试、可重放。
 :::
 
 ## 3. Flows：要精确控制流时的结构化层

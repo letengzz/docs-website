@@ -159,7 +159,7 @@ Xxxx xxx = context.getBean(Xxxx.class);
 
 ## 整合JUnit4
 
-使用Junit 4 时，方法同整合[Junit 5](#整合JUnit5)
+使用Junit 4 时，方法同整合[Junit 5](#整合junit5)
 
 需要变动：
 

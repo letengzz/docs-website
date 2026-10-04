@@ -13,7 +13,7 @@
 处理字段和属性的映射关系三种方式：
 
 - [通过设置字段别名处理映射关系](#通过设置字段别名处理映射关系)
-- [通过resultMap处理映射关系](#通过resultMap处理映射关系)
+- [通过resultMap处理映射关系](#通过resultmap处理映射关系)
 - [通过配置文件处理映射关系](#通过配置文件处理映射关系)
 
 ### 通过设置字段别名处理映射关系
@@ -78,7 +78,7 @@ resultMap 是 MyBatis 中最复杂的元素，主要用于解决实体类属性�
 
 通过sql语句查询出来的数据就会通过resultMap设置的自定义映射的关系进行映射
 
-**拓展**：[resultMap用法](Annotation.md#ResultMap)
+**拓展**：[resultMap用法](Annotation.md#resultmap)
 
 - mapper接口中定义一个`selectAllByResultMap()`方法：
 
@@ -696,7 +696,7 @@ public void commit(boolean required) throws SQLException {
 
 ## 获取自增的主键
 
-- [主键（自动递增）回填](<BasicOperation.md#主键(自动递增)回填>)
+- [主键（自动递增）回填](<BasicOperation.md#主键-自动递增-回填>)
 
 ## 各类查询功能
 
@@ -714,7 +714,7 @@ public void commit(boolean required) throws SQLException {
 - 若查询出的数据有多条：
   1. 可以通过list集合接收。一定不能通过实体类对象接收，此时会抛异常TooManyResultsException
   2. 可以通过map类型的list集合接收
-  3. 可以在mapper接口的方法上添加[`@MapKey`注解](Annotation.md#@MapKey:设置当前map的键)，此时可以将每条数据转换的map集合作为值，以某个字段的值作为键，放在同一个map集合中
+  3. 可以在mapper接口的方法上添加[`@MapKey`注解](Annotation.md#mapkey-设置当前map的键)，此时可以将每条数据转换的map集合作为值，以某个字段的值作为键，放在同一个map集合中
 
 ### 查询单个数据
 

@@ -6,6 +6,12 @@
 
 6 张业务表 + 1 张回写表：**users / posts / categories / tags / post_tags / comments** + view_count_daily。雪花 ID 主键、`utf8mb4`、软删除只给 posts 与 comments（用户不可删）。
 
+::: info 第 109 天的增量
+读者账号模块在 V1 之上加了增量脚本 `db/mysql/V2__reader_account.sql`：给 `users` 补 6 列（`email` / `admin_role` / `status` / `email_verified_at` / `last_login_at` / `closed_at`）、新增第 7 张业务表 `user_tokens`，并**收敛了三处与实现不符的口径**。
+
+本页只保留 V1 的原始 DDL 作为第 1 周的设计快照（历史不改写），增量与三处口径的完整论证见 [读者账号 · 表设计](../ReaderAccount/DataModel/index.md)。**注意本页第 29 行 `password_hash` 的列注释已在增量中修正**——它原来写的是「BCrypt 哈希」，而实现一直是自描述 PBKDF2 串。
+:::
+
 ![全栈博客平台 ER 图](../assets/blog-er.svg)
 
 ## 设计决策
@@ -17,7 +23,7 @@
 | 正文存储 | `content_md`（原文）+ `content_html`（渲染后）双列 | 渲染结果落库，读路径零渲染成本；消毒在写 `content_html` 之前完成 |
 | 搜索字段 | 冗余 `search_text` 列建 FULLTEXT | 检索字段与展示字段解耦（架构页硬约定 2） |
 | 评论层级 | `parent_id` + `root_id` 冗余 | 物理两级、展示两层；`root_id` 让「取整层回复」一个索引搞定 |
-| 删除 | posts/comments `deleted_at` 软删除 | 评论删除楼中楼同步消失是硬需求；users/categories/tags 物理不删 |
+| 删除 | posts/comments `deleted_at` 软删除 | 评论删除楼中楼同步消失是硬需求；users/categories/tags 物理不删。**第 109 天补充**：`users` 的「注销」因此只能是「状态位 + 打散用户名与邮箱」，`posts.author_id` 与 `comments.user_id` 两处强引用不允许悬空 |
 | 浏览计数 | Redis 计数 + `view_count_daily` 回写 | 高频写不压主库；按天回写顺带产出访问趋势数据 |
 
 ## 建表 DDL（MySQL 8.4）
@@ -26,7 +32,7 @@
 CREATE TABLE users (
     id            BIGINT       NOT NULL COMMENT '雪花 ID',
     username      VARCHAR(32)  NOT NULL COMMENT '登录名',
-    password_hash VARCHAR(100) NOT NULL COMMENT 'BCrypt 哈希',
+    password_hash VARCHAR(100) NOT NULL COMMENT 'BCrypt 哈希（注释已于第 109 天修正：实际是自描述哈希串）',
     nickname      VARCHAR(32)  NOT NULL COMMENT '展示昵称',
     role          VARCHAR(16)  NOT NULL DEFAULT 'READER' COMMENT 'ADMIN/AUTHOR/READER',
     created_at    DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -129,4 +135,8 @@ docker run --rm -i mysql:8.4 mysql -uroot -proot -e "
 # 期望：无报错退出；SHOW TABLES 列出 7 张表
 ```
 
-设计自检（第 1 周验收判据）：每个需求页的 US 都能在表结构上落位（US-04 评论两级 → `parent_id`/`root_id`；US-05 搜索 → `ft_posts_search`）；每个高频查询都有对应索引且被后续 EXPLAIN 验证。
+::: tip 这条命令的欠账在第 109 天结清
+第 1 周写下这条命令时本机没有 Docker，标注为「待本地验证」，此后一直挂着。第 109 天新增了增量脚本 `V2__reader_account.sql`，正好把「V1 → V2 连续执行」一起验完，命令与判据见 [验收与第 3 周收尾](../ReaderAccount/Acceptance/index.md)。
+:::
+
+设计自检（第 1 周验收判据）：每个需求页的 US 都能在表结构上落位（US-04 评论两级 → `parent_id`/`root_id`；US-05 搜索 → `ft_posts_search`；**US-11 数据归属 → `comments.user_id` 与令牌里的 `sub` 比对**）；每个高频查询都有对应索引且被后续 EXPLAIN 验证。

@@ -1,0 +1,40 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="400" fill="#f8fafc"/>
+  <text x="340" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#0b162a">断言按「依赖什么」分流：A 类进 mvn test，B 类留冒烟</text>
+
+  <!-- A -->
+  <rect x="26" y="46" width="306" height="244" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+  <text x="179" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">A1~A10 语义类 → mvn test</text>
+  <text x="40" y="90" font-size="9.5" fill="#334155" font-family="Menlo, monospace">A1  哈希自描述：旧参数仍可验，登录后升级</text>
+  <text x="40" y="110" font-size="9.5" fill="#334155" font-family="Menlo, monospace">A2  口令上限 256 字节，超限 400（哈希之前）</text>
+  <text x="40" y="130" font-size="9.5" fill="#334155" font-family="Menlo, monospace">A3  用户名重复 409；邮箱按不泄漏口径处理</text>
+  <text x="40" y="150" font-size="9.5" fill="#334155" font-family="Menlo, monospace">A4  口令强度：太短 / 纯数字 / 含用户名 → 400</text>
+  <text x="40" y="170" font-size="9.5" fill="#334155" font-family="Menlo, monospace">A5  登录失败响应逐字节一致（不泄漏账号）</text>
+  <text x="40" y="190" font-size="9.5" fill="#334155" font-family="Menlo, monospace">A6  状态门禁：PENDING 403 / FROZEN 423 /</text>
+  <text x="40" y="206" font-size="9.5" fill="#334155" font-family="Menlo, monospace">    CLOSED 401</text>
+  <text x="40" y="226" font-size="9.5" fill="#334155" font-family="Menlo, monospace">A7  refresh 轮换后旧票立即失效</text>
+  <text x="40" y="246" font-size="9.5" fill="#334155" font-family="Menlo, monospace">A8  旧票复用 → 整族撤销</text>
+  <text x="40" y="266" font-size="9.5" fill="#334155" font-family="Menlo, monospace">A9  归属矩阵：6 动作 × 3 身份全部命中期望码</text>
+  <text x="40" y="284" font-size="9.5" fill="#334155" font-family="Menlo, monospace">A10 aud 边界：读者令牌打管理端 → 401 而非 403</text>
+
+  <!-- B -->
+  <rect x="348" y="46" width="306" height="244" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="501" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">B1~B6 时序类 → account_smoke.py</text>
+  <text x="362" y="92" font-size="9.5" fill="#334155" font-family="Menlo, monospace">B1 注册→验证→登录→发评论→我的评论可见</text>
+  <text x="362" y="112" font-size="9" fill="#64748b">   端到端编排，测的是装配而不是某一层</text>
+  <text x="362" y="136" font-size="9.5" fill="#334155" font-family="Menlo, monospace">B2 登出后下一个请求就失效</text>
+  <text x="362" y="156" font-size="9" fill="#64748b">   跨进程时序，不能靠 access 自己过期</text>
+  <text x="362" y="180" font-size="9.5" fill="#334155" font-family="Menlo, monospace">B3 同一 refresh 并发两次：恰好一成一败</text>
+  <text x="362" y="200" font-size="9" fill="#64748b">   轮换正确性的唯一抓法，单元测不出来</text>
+  <text x="362" y="224" font-size="9.5" fill="#334155" font-family="Menlo, monospace">B4 改密后其他会话失效、当前会话保留</text>
+  <text x="362" y="244" font-size="9.5" fill="#334155" font-family="Menlo, monospace">B5 登录频控：窗口内超限 429，过后恢复</text>
+  <text x="362" y="264" font-size="9.5" fill="#334155" font-family="Menlo, monospace">B6 两账号并发不串号 + 连跑两遍幂等</text>
+  <text x="362" y="284" font-size="9" fill="#b91c1c">   SSR 串号是真事故，必须压测式验证</text>
+
+  <!-- gates -->
+  <rect x="26" y="304" width="628" height="80" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="44" y="326" font-size="11" font-weight="700" fill="#1e3a5f">门禁全景：第十一道 = account_smoke.py</text>
+  <text x="44" y="346" font-size="9.5" fill="#1e40af" font-family="Menlo, monospace">结构 skeleton │ mvn test │ api │ admin │ lifecycle │ visibility │ comment</text>
+  <text x="44" y="364" font-size="9.5" fill="#1e40af" font-family="Menlo, monospace">│ search │ ssr │ account │ assertion_audit（判据唯一性）</text>
+  <text x="44" y="380" font-size="9" fill="#64748b">契约 contract_check 与双方言 parity_check 属结构类，第 1 周已建立，不重复计入</text>
+</svg>

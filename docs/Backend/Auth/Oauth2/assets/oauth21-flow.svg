@@ -28,7 +28,7 @@
 
   <rect x="30" y="164" width="840" height="140" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
   <text x="50" y="190" font-size="13" font-weight="bold" fill="#1f2937">授权模式现状（OAuth 2.1）</text>
-  <text x="50" y="216" font-size="11" fill="#374151">授权码 + PKCE：**唯一推荐**的交互式模式，浏览器与原生 App 都适用；PKCE 不再只用于公共客户端。</text>
+  <text x="50" y="216" font-size="11" fill="#374151">授权码 + PKCE：唯一推荐的交互式模式，浏览器与原生 App 都适用；PKCE 不再只用于公共客户端。</text>
   <text x="50" y="240" font-size="11" fill="#374151">客户端凭据：服务间调用（无用户参与）的标准做法。</text>
   <text x="50" y="264" font-size="11" fill="#92400e">隐式模式（Implicit）：已废弃，仅存量系统使用——令牌直接暴露在 URL 片段中。</text>
   <text x="50" y="288" font-size="11" fill="#92400e">密码模式（Password）：已废弃，仅存量系统使用——第三方应用不应接触用户密码。</text>

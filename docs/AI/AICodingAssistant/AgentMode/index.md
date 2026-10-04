@@ -69,7 +69,7 @@ Agent 模式是 2025 年以来编程助手最大的范式变化：**从「它建
 ```
 
 ::: warning 平台级云 Agent 的硬约束
-以 Copilot coding agent 为例：单次会话上限 **59 分钟**，每次任务消耗 AI Credits **和** GitHub Actions 分钟数，且不在免费档。派任务前先算这两笔账（见[工具全景](ToolLandscape/index.md#计费口径三代模式与算账方法)）。
+以 Copilot coding agent 为例：单次会话上限 **59 分钟**，每次任务消耗 AI Credits **和** GitHub Actions 分钟数，且不在免费档。派任务前先算这两笔账（见[工具全景](../ToolLandscape/index.md#计费口径-三代模式与算账方法)）。
 :::
 
 ## hooks 与 skills：把流程固化

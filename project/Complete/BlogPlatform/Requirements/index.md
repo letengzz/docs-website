@@ -22,7 +22,7 @@
 
 ```text
 Given 作者已登录并有写作权限
-When 提交 POST /api/admin/posts（title + markdown 正文）
+When 提交 POST /api/v1/admin/posts（title + markdown 正文）
 Then 返回 201 与文章 ID，状态为 DRAFT，正文按原文存储
 
 Given 存在状态为 DRAFT 的文章
@@ -30,7 +30,7 @@ When 作者再次 PUT 提交修改
 Then 内容更新且 updated_at 变化，状态仍为 DRAFT
 
 Given 未登录
-When 访问任意 /api/admin/* 接口
+When 访问任意 /api/v1/admin/* 接口
 Then 返回 401，响应体走统一错误结构
 ```
 
@@ -40,11 +40,11 @@ Then 返回 401，响应体走统一错误结构
 
 ```text
 Given 状态为 DRAFT 的文章
-When 作者点击发布（POST /api/admin/posts/{id}/publish）
+When 作者点击发布（POST /api/v1/admin/posts/{id}/publish）
 Then 状态变为 PUBLISHED，published_at 写入当前时间
 
 Given 一篇 PUBLISHED 文章
-When 匿名读者请求 GET /api/posts/{slug}
+When 匿名读者请求 GET /api/v1/posts/{slug}
 Then 返回 200 与渲染所需数据；已登录用户与匿名用户看到相同内容
 
 Given 状态为 DRAFT 的文章
@@ -91,15 +91,15 @@ Then 返回 401，前端引导登录
 
 ```text
 Given 已发布文章《MySQL 索引深入》正文包含「覆盖索引」
-When 请求 GET /api/search?q=覆盖索引
+When 请求 GET /api/v1/search?q=覆盖索引
 Then 结果包含该文章，且命中片段高亮返回
 
 Given 搜索词为空或纯空格
-When 请求 /api/search
+When 请求 /api/v1/search
 Then 返回 400 与「搜索词不能为空」
 
 Given 搜索词 100 字
-When 请求 /api/search
+When 请求 /api/v1/search
 Then 截断到最大长度并正常返回（不 500）
 ```
 
@@ -108,6 +108,18 @@ Then 截断到最大长度并正常返回（不 500）
 > 作为管理员，我可以下架违规文章、删除垃圾评论、看到访问量。
 
 验收条件：下架后前台 404；评论删除后楼中楼同步消失（软删除）；访问量计数为文章维度的浏览数（Redis 计数 + 定时回写，判据见架构页）。
+
+### US-07 ~ US-11 读者账号与数据归属（第 109 天补充）
+
+> 作为读者，我可以注册、登录、管理自己的资料与评论，并且只能动自己的东西。
+
+五条故事（注册与验证、登录与登出、资料与改密、我的评论、数据归属）在第 109 天单独成章：[读者账号与权限 · 需求与验收条件](../ReaderAccount/Requirements/index.md)。
+
+放在独立页的理由：它们同时触及两件本页没覆盖的事——**账号生命周期**（`PENDING` / `ACTIVE` / `FROZEN` / `CLOSED`）与**数据归属**（自己的 vs 他人的）。但编号接在本页之后（`US-07`~`US-11`），以保证「一个故事至少一条断言」的映射表能跨页对齐。
+
+::: tip 顺带统一的一处路径口径
+本页早期写的接口路径是 `/api/admin/posts` 形态，而第 92 天的契约早已统一为 `/api/v1/...`（见[接口契约](../Contract/index.md)）。本日已把本页出现的全部路径改为 `/api/v1/` 前缀，与契约一致。
+:::
 
 ## 非功能需求（可验收写法）
 

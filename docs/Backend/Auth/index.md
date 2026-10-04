@@ -128,6 +128,12 @@ curl -i -H "Authorization: Bearer $TOKEN_A" http://localhost:8080/api/orders/100
 - [微服务专题](../Microservices/index.md)：服务拆分后的身份传递与安全边界
 - [前端安全 · CSRF](../../Frontend/Others/Security/CSRF/index.md)：前后端协同的浏览器侧防护
 
+::: tip 一个把本专题串起来的实战
+[全栈博客平台 · 读者账号与权限](../../../project/Complete/BlogPlatform/ReaderAccount/index.md) 把这一专题的四个点串成了一条落地链路：**账号生命周期**（`PENDING`/`ACTIVE`/`FROZEN`/`CLOSED`）、**刷新令牌轮换与复用检测**（本页「JWT 的吊销」那一节的具体做法）、**数据归属**（本页「仅本人」这一档）、以及**同一张表上两套身份**（读者端 vs 管理端）该如何用 `aud` 划清边界。
+
+本专题讲协议与模型的通用原理（语言无关），那里讲这一套在 SSR + MySQL 环境里怎么落地、以及落地时的取舍。
+:::
+
 ## 参考资料
 
 - RFC 6749（OAuth 2.0 授权框架）：https://www.rfc-editor.org/rfc/rfc6749

@@ -301,11 +301,11 @@ p.ex2
 
 1. [颜色名](#颜色名)
 
-2. [rgb 或 rgba](#rgb/rgba)
+2. [rgb 或 rgba](#rgb-rgba)
 
-3. [HEX 或 HEXA (十六进制)](#HEX/HEXA)
+3. [HEX 或 HEXA (十六进制)](#hex-hexa)
 
-4. [HSL 或 HSLA](#HSL/HSLA)
+4. [HSL 或 HSLA](#hsl-hsla)
 
 :::warning 
 

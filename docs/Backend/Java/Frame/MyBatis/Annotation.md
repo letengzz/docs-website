@@ -30,7 +30,7 @@
   int insertEmpToBean(Employee emp);
   ```
 
-- 通过 [`@SelectKey` 注解](#@SelectKey:插入后,获取id的值)获取刚刚插入数据的 ID：
+- 通过 [`@SelectKey` 注解](#selectkey-插入后-获取id的值)获取刚刚插入数据的 ID：
 
   ```java
   @Insert("insert into t_emp(emp_name, emp_salary) values (#{emp.empName},#{emp.empSalary})")

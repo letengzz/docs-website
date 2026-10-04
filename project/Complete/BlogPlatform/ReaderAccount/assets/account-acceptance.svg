@@ -1,0 +1,68 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="400" fill="#f8fafc"/>
+  <text x="340" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#0b162a">越权矩阵：六类动作 × 三种身份，每格都有唯一期望码</text>
+
+  <!-- table header -->
+  <rect x="26" y="44" width="628" height="26" fill="#1e3a5f"/>
+  <text x="40" y="62" font-size="10.5" font-weight="700" fill="#ffffff">动作</text>
+  <text x="290" y="62" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">游客（无令牌）</text>
+  <text x="398" y="62" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">本人</text>
+  <text x="592" y="62" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">他人</text>
+
+  <!-- rows -->
+  <rect x="26" y="70" width="628" height="34" fill="#ffffff"/>
+  <text x="40" y="91" font-size="10" fill="#334155" font-family="Menlo, monospace">PUT /api/v1/me（改昵称）</text>
+  <text x="290" y="91" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">401</text>
+  <text x="398" y="91" text-anchor="middle" font-size="10" fill="#047857" font-family="Menlo, monospace">200</text>
+  <text x="592" y="91" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">403</text>
+
+  <rect x="26" y="104" width="628" height="34" fill="#f8fafc"/>
+  <text x="40" y="125" font-size="10" fill="#334155" font-family="Menlo, monospace">GET /api/v1/me/comments</text>
+  <text x="290" y="125" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">401</text>
+  <text x="398" y="125" text-anchor="middle" font-size="10" fill="#047857" font-family="Menlo, monospace">200 只含本人</text>
+  <text x="592" y="125" text-anchor="middle" font-size="10" fill="#047857" font-family="Menlo, monospace">200 只含本人</text>
+
+  <rect x="26" y="138" width="628" height="34" fill="#ffffff"/>
+  <text x="40" y="159" font-size="10" fill="#334155" font-family="Menlo, monospace">DELETE /comments/{本人的}</text>
+  <text x="290" y="159" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">401</text>
+  <text x="398" y="159" text-anchor="middle" font-size="10" fill="#047857" font-family="Menlo, monospace">204</text>
+  <text x="592" y="159" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">403</text>
+
+  <rect x="26" y="172" width="628" height="34" fill="#f8fafc"/>
+  <text x="40" y="193" font-size="10" fill="#334155" font-family="Menlo, monospace">DELETE /comments/{他人的}</text>
+  <text x="290" y="193" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">401</text>
+  <text x="398" y="193" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">403</text>
+  <text x="592" y="193" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">403</text>
+
+  <rect x="26" y="206" width="628" height="34" fill="#ffffff"/>
+  <text x="40" y="227" font-size="10" fill="#334155" font-family="Menlo, monospace">GET /api/v1/admin/posts（读者令牌）</text>
+  <text x="290" y="227" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">401</text>
+  <text x="398" y="227" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">401 aud 不符</text>
+  <text x="592" y="227" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">401</text>
+
+  <rect x="26" y="240" width="628" height="34" fill="#f8fafc"/>
+  <text x="40" y="261" font-size="10" fill="#334155" font-family="Menlo, monospace">POST /auth/refresh（已撤销的票）</text>
+  <text x="290" y="261" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">401</text>
+  <text x="398" y="261" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">401 整族撤销</text>
+  <text x="592" y="261" text-anchor="middle" font-size="10" fill="#b91c1c" font-family="Menlo, monospace">401</text>
+
+  <!-- border lines -->
+  <g stroke="#cbd5e1" fill="none">
+    <line x1="26" y1="70" x2="26" y2="274"/><line x1="276" y1="44" x2="276" y2="274"/>
+    <line x1="394" y1="44" x2="394" y2="274"/><line x1="526" y1="44" x2="526" y2="274"/>
+    <line x1="654" y1="44" x2="654" y2="274"/><line x1="26" y1="274" x2="654" y2="274"/>
+    <line x1="104" y1="70" x2="104" y2="274"/>
+  </g>
+  <g stroke="#e2e8f0" fill="none">
+    <line x1="26" y1="104" x2="654" y2="104"/><line x1="26" y1="138" x2="654" y2="138"/>
+    <line x1="26" y1="172" x2="654" y2="172"/><line x1="26" y1="206" x2="654" y2="206"/>
+    <line x1="26" y1="240" x2="654" y2="240"/>
+  </g>
+
+  <!-- long chain -->
+  <rect x="26" y="288" width="628" height="104" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="44" y="310" font-size="11" font-weight="700" fill="#1e3a5f">第 3 周收尾：跨链路一条龙回归（三件事一起过）</text>
+  <text x="44" y="332" font-size="10" fill="#334155">① 注册 → 登录 → 发评论 → 我的评论可见 → 改密 → 其他会话失效 → 注销 → 评论保留、作者显示「已注销用户」</text>
+  <text x="44" y="352" font-size="10" fill="#334155">② 前台 SSR 的源码里，登录态与未登录态必须渲染出不同 HTML（不能靠客户端补登录入口）</text>
+  <text x="44" y="372" font-size="10" fill="#991b1b">③ 补跑第 1 周遗留的 Docker 验证 DDL —— 本次有增量 DDL，正好把这条欠账一起结掉</text>
+</svg>

@@ -37,7 +37,7 @@
   <!-- 结论 -->
   <rect x="40" y="352" width="820" height="86" rx="12" fill="#f9fafb" stroke="#d1d5db"/>
   <text x="60" y="378" font-size="13" font-weight="bold" fill="#1f2937">适用判断</text>
-  <text x="60" y="402" font-size="11" fill="#374151">适合：资金、库存等**可预留资源**且对一致性要求高的场景（并发量高、不能长期持锁）。</text>
+  <text x="60" y="402" font-size="11" fill="#374151">适合：资金、库存等可预留资源且对一致性要求高的场景（并发量高、不能长期持锁）。</text>
   <text x="60" y="426" font-size="11" fill="#374151">不适合：无法预留资源的操作（发短信、调用第三方）、简单的单库事务、团队没有幂等与状态机设计经验时。</text>
 
   <defs>
