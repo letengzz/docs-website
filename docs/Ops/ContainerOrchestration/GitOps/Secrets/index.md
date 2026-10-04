@@ -120,8 +120,8 @@ spec:
 
 ## 与其他专题的分工
 
-- Secret 的**静态治理**（扫描、轮换制度、泄露响应）见 [安全加固 · 密钥与凭据治理](../../../Ops/SecurityHardening/SecretGovernance/index.md)；本页只解决「密钥如何安全地参与 GitOps 交付」。
-- 集群启用 etcd 加密与 Secret 的 RBAC 属于集群基线，见 [Kubernetes · ConfigMap 与 Secret](../../../Ops/Kubernetes/ConfigMapSecret/index.md)。
+- Secret 的**静态治理**（扫描、轮换制度、泄露响应）见 [安全加固 · 密钥与凭据治理](../../../../Ops/SecurityHardening/SecretGovernance/index.md)；本页只解决「密钥如何安全地参与 GitOps 交付」。
+- 集群启用 etcd 加密与 Secret 的 RBAC 属于集群基线，见 [Kubernetes · ConfigMap 与 Secret](../../../../Ops/Kubernetes/ConfigMapSecret/index.md)。
 
 ## 易错点与最佳实践
 

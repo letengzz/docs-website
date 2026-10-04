@@ -207,16 +207,118 @@ Register-ScheduledTask -TaskName "fetch-daily" -Action $action -Trigger $trigger
 | 脚本越来越多但没省时间 | 自动化了低频或不稳定的任务 | 用三个标准重新筛，删掉不满足的 |
 | 提示符变慢、开标签要等 | profile 里放了耗时命令 | profile 只做轻量配置；重活交给定时任务 |
 | 定时任务静默失败 | 没日志 | 脚本内落地日志，退出码非 0 时写错误日志 |
+| 关掉窗口构建就没了 | 长任务跑在普通窗口里 | 用独立 tmux 会话（第 9.2 步第 4 步） |
+| 装了替代型工具后脚本行为变了 | 覆盖了 `ls`/`cat` 等内置命令 | 给新工具起新名字，别覆盖原命令 |
+| 换台机器现场全没了 | 会话模板脚本没进 dotfiles | 把 `dev-up.sh`、`.tmux.conf`、profile 一起提交 |
 
-## 9. 参考与延伸
+## 9. 实战二：把"终端现场"固定下来
+
+第 4 节的六步解决的是**从零装机**。这一节解决另一个问题：装完之后，**每天的"工作现场"仍然靠手搭**——开几个窗口、cd 到哪、看哪个日志，全靠临时决定。把现场固定下来，收益比再装两个工具大得多。
+
+### 9.1 三个可观测的目标
+
+| 目标 | 判据（一周后自查） |
+| --- | --- |
+| 开工不用手搭现场 | 从零到"服务已起、日志已跟、能开始改代码"≤ 1 条命令 |
+| 长任务不再怕断线 | ssh 断线 / 合盖后，构建输出还在（`tmux attach` 有内容） |
+| 现场本身可版本化 | 会话模板脚本、`.tmux.conf`、现代化命令别名都在 dotfiles 仓库里 |
+
+### 9.2 五步落地
+
+**第 1 步：会话模板脚本（约 15 分钟）**
+
+把"我每天开工要开什么"写成一个幂等脚本，完整内容见[终端页 7.5](../Terminal/index.md)的 `dev-up.sh`。判据：连续跑两遍，会话数与窗口数不变。
+
+```shell
+# 放到 ~/bin/dev-up.sh 并 chmod +x，然后
+~/bin/dev-up.sh
+tmux ls                    # 期望：只有一个同名会话（不是两个）
+```
+
+**第 2 步：装三个"替代型"工具（约 10 分钟）**
+
+按[命令行提效 9.3](../ShellProductivity/index.md)的建议，只装回本最快的三个：`eza`（替 `ls`）、`delta`（增强 `git diff`）、`dust`（替 `du`）。
+
+```shell
+eza --version && dust --version && git config --get core.pager
+# 期望：0.23.x / 1.2.x / delta
+```
+
+::: danger 注意：装完必须做一件事
+**给它们起新名字，不要覆盖 `ls` / `cat` / `curl`。** 把 `ll = eza -lah --git`、`lt = eza --tree --level=2` 写进 profile/`.zshrc`，理由见[终端页的别名纪律](../Terminal/index.md)。
+:::
+
+**第 3 步：一条"进项目"的命令（约 10 分钟）**
+
+```shell [~/.zshrc 或 $PROFILE]
+# 目标：不管在哪个目录，一条命令回到项目现场
+proj() {
+  local d="${1:-blog}"
+  case "$d" in
+    blog) cd ~/project/blog-platform/service ;;
+    notes) cd ~/notes ;;
+    *) cd ~/project/"$d" ;;
+  esac
+  ll
+}
+```
+
+判据：在任意目录执行 `proj blog`，落在项目目录且立刻看到目录概览。
+
+**第 4 步：长任务规范（约 15 分钟）**
+
+把"长任务必须跑在独立会话里 + 输出 tee 到日志"变成肌肉记忆，脚本见[终端页 7.6](../Terminal/index.md)。
+
+```shell
+tmux new-session -d -s longrun -c ~/project/blog-platform/service
+tmux send-keys -t longrun "mvn -q clean verify 2>&1 | tee ~/logs/verify-$(date +%Y%m%d-%H%M).log" C-m
+tmux capture-pane -p -t longrun | tail -20      # 不 attach 也能看进度
+```
+
+判据：**关掉终端窗口，重新打开后 `tmux attach -t longrun` 能看到输出继续增长。**
+
+**第 5 步：一个无人值守脚本（约 30 分钟）**
+
+只做一个，按[自动化页 9.6](../Automation/index.md)的五件套骨架写：幂等 + 锁 + 日志 + 退出码 + 告警。
+
+```shell
+# 注册（Linux）；Windows 见自动化页第 5 节
+sudo systemctl enable --now fetch-daily.timer
+systemctl list-timers --all | grep fetch-daily
+journalctl -u fetch-daily.service -n 20 --no-pager
+```
+
+判据：手动 `start` 一次成功；**再做一次补跑演练**（改时间 → 休眠 → 唤醒 → 看日志），步骤见[自动化页 8.3](../Automation/index.md)。
+
+### 9.3 验收清单
+
+| 检查项 | 命令 | 期望 |
+| --- | --- | --- |
+| 现场脚本幂等 | `~/bin/dev-up.sh` 连跑两次 | 会话数不变 |
+| 会话可存活 | 关窗口后 `tmux ls` | 会话仍在，且是 detached |
+| 替代型工具生效 | `eza --version` | 0.23.x |
+| 别名纪律 | `type ls` / `Get-Alias ls` | 仍是系统原生命令（**没被覆盖**） |
+| 一键进项目 | `proj blog` | 落在项目目录 |
+| 长任务日志 | `ls -lt ~/logs \| head -3` | 有本次构建的日志文件 |
+| 无人值守可验证 | `systemctl list-timers \| grep fetch-daily` | 有 NEXT 时间 |
+| 补跑已演练 | 休眠→唤醒→看日志 | 唤醒后有那次运行记录 |
+| 现场可版本化 | `git -C ~/dotfiles log --oneline -3` | 最近的改动已提交 |
+
+::: tip 一句话理解
+**第 4 节的验收标准是"装好了"，第 9 节的验收标准是"明天早上不用想就知道怎么开工"。** 后者才是效率工具的终点。
+:::
+
+## 10. 参考与延伸
 
 本专题全部页面，建议按落地顺序读：
 
-1. [概述与选型](../Overview/index.md) → 2. [终端与 Shell 环境](../Terminal/index.md) → 3. [命令行提效](../ShellProductivity/index.md) → 4. [剪贴板与输入效率](../Clipboard/index.md) → 5. [截图与标注](../Screenshot/index.md) → 6. [笔记与知识管理](../Notes/index.md) → 7. [桌面与任务自动化](../Automation/index.md) → 8. **实战（本页）** → 9. [常见问题与最佳实践](../FAQ/index.md)
+1. [概述与选型](../Overview/index.md) → 2. [终端、Shell 与会话复用](../Terminal/index.md) → 3. [命令行提效与现代 CLI](../ShellProductivity/index.md) → 4. [剪贴板与输入效率](../Clipboard/index.md) → 5. [截图与标注](../Screenshot/index.md) → 6. [笔记与知识管理](../Notes/index.md) → 7. [自动化：桌面、调度与脚本](../Automation/index.md) → 8. **实战（本页）** → 9. [常见问题与最佳实践](../FAQ/index.md)
 
 相关专题：
 
 - [IDE 配置](../../IDE/index.md)：编辑器侧的效率（快捷键、插件、配置同步、远程开发）
 - [版本控制工具](../../VersionControl/index.md)：dotfiles 与笔记库的版本化
+- [运维 · Linux · Shell 基础](../../../Ops/Linux/ShellBasic/index.md)：服务器侧的 Shell 用法（与本节"本机现场"的分工）
+- [运维 · Linux · 定时任务](../../../Ops/Linux/Advanced/CronTasks/index.md)：更完整的 cron / systemd timer 用法
 - [项目管理 · 后端通用模板](../../../../project/Base/BackendTemplate/index.md)：把脚本、Git 钩子、容器化落到真实项目
 - [后端通用模板 · 集成测试](../../../../project/Base/BackendTemplate/IntegrationTest/index.md)：自动化脚本的"验收"如何变成可重复执行的测试

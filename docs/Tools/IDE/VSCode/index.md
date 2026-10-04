@@ -338,6 +338,10 @@ code --list-extensions | sort > /tmp/ext.now
 
 ## 相关文档
 
+- [IDE 配置 · 概述](../Overview/index.md)、[插件与扩展](../Plugins/index.md)、[配置同步](../ConfigSync/index.md)
+- [远程开发与容器化环境](../RemoteDev/index.md)：把整套开发环境搬到远端
+- **集成终端与终端环境的边界**：VS Code 的集成终端是"**编辑器里的第 N 个面板**"，它解决的是"写代码时不用切窗口"；[效率工具 · 终端、Shell 与会话复用](../../Efficiency/Terminal/index.md)讲的是"**终端本身怎么配、怎么让它扛住断线**"（Windows Terminal 的字体与配色、starship、tmux 会话复用）。**两者共用同一份 Shell 配置**（`$PROFILE` / `.zshrc`），所以在那边配好的别名与提示符在这边立刻生效——但**tmux 与集成终端的分屏是两套东西**，不要指望它们互相替代。
+
 - [IDE 配置总览](../index.md)：生态与选型。
 - [IntelliJ IDEA 深入](../IntelliJIDEA/index.md)：如果你同时用 IDEA，可对照它的 `.idea/` 管理方式。
 - [快捷键与高效操作](../Shortcuts/index.md)：键位对照与自定义。

@@ -55,7 +55,7 @@ CNCF 的 OpenGitOps 工作组把 GitOps 归纳为四条原则，四条**同时�
 | Kubernetes 应用交付 | ✅ 首选 | 资源天然声明式，与控制器模式完美契合 |
 | 多环境一致性管理 | ✅ | overlay/values 表达差异，事实源唯一 |
 | 合规审计要求高的团队 | ✅ | Git 历史 = 变更审计记录 |
-| 频繁变更的基础设施（建机器、建集群） | ⚠️ 用 IaC | 归 [Terraform](../../Terraform/index.md)，别和应用清单混在一个仓库 |
+| 频繁变更的基础设施（建机器、建集群） | ⚠️ 用 IaC | 归 [Terraform](../../../Terraform/index.md)，别和应用清单混在一个仓库 |
 | 传统虚机上的命令式运维 | ❌ | 状态无法声明式描述，硬套只会得到一份没人信的「假事实源」 |
 | 数据库数据本身 | ❌ | GitOps 管结构（DDL 变更清单）不管数据；数据归备份体系 |
 
@@ -81,7 +81,7 @@ argocd app get web
 
 - 工具落地：[Argo CD：安装与核心对象](../ArgoCD/index.md)、[Flux：另一条主线](../FluxCD/index.md)
 - 仓库怎么设计：[配置仓库设计与多环境](../RepoStructure/index.md)
-- 与 IaC 的边界：[Terraform 概述与选型](../../Terraform/Overview/index.md)
+- 与 IaC 的边界：[Terraform 概述与选型](../../../Terraform/Overview/index.md)
 
 ## 参考资料
 

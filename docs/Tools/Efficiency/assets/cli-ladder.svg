@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">现代 CLI 工具的三层：替代型 / 增强型 / 专用型</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">判断一个工具该不该装，先问一句「它替掉了哪个我每天都在敲的命令」</text>
+
+  <rect x="28" y="74" width="228" height="222" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="142" y="96" text-anchor="middle" font-size="10.5" fill="#3730A3" font-weight="bold">① 替代型：换一个更好的实现</text>
+  <text x="142" y="114" text-anchor="middle" font-size="7.8" fill="#4338CA">命令名变了，用法几乎不变</text>
+  <text x="46" y="140" font-size="8.2" fill="#1E1B4B">eza　→ 替 ls（树形、Git 状态、图标）</text>
+  <text x="46" y="160" font-size="8.2" fill="#1E1B4B">bat　→ 替 cat（高亮、行号、分页）</text>
+  <text x="46" y="180" font-size="8.2" fill="#1E1B4B">dust　→ 替 du（按大小排序的树）</text>
+  <text x="46" y="200" font-size="8.2" fill="#1E1B4B">duf　→ 替 df（彩色表格、易读单位）</text>
+  <text x="46" y="220" font-size="8.2" fill="#1E1B4B">procs　→ 替 ps（彩色、可搜索列）</text>
+  <text x="46" y="240" font-size="8.2" fill="#1E1B4B">sd　→ 替 sed（不用记转义规则）</text>
+  <text x="46" y="268" font-size="7.8" fill="#3730A3">安装成本最低、回本最快的一层</text>
+  <text x="46" y="284" font-size="7.8" fill="#3730A3">先装这一层，别急着装第三层</text>
+
+  <rect x="266" y="74" width="228" height="222" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="96" text-anchor="middle" font-size="10.5" fill="#115E59" font-weight="bold">② 增强型：不改命令，只改输出</text>
+  <text x="380" y="114" text-anchor="middle" font-size="7.8" fill="#0F766E">通过配置挂到既有命令上，随时可摘</text>
+  <text x="284" y="140" font-size="8.2" fill="#134E4A">delta　→ git diff / show 的分页器</text>
+  <text x="284" y="160" font-size="8.2" fill="#134E4A">　　（行内高亮、并排视图、行号）</text>
+  <text x="284" y="180" font-size="8.2" fill="#134E4A">glow　→ 终端里预览 Markdown</text>
+  <text x="284" y="200" font-size="8.2" fill="#134E4A">tokei　→ 代码行数统计（按语言）</text>
+  <text x="284" y="220" font-size="8.2" fill="#134E4A">btop　→ top 的可视化版本</text>
+  <text x="284" y="240" font-size="8.2" fill="#134E4A">atuin　→ Ctrl+R 历史的可搜索升级</text>
+  <text x="284" y="268" font-size="7.8" fill="#115E59">判据：摘掉它之后，原命令照样能用</text>
+  <text x="284" y="284" font-size="7.8" fill="#115E59">不满足这条的，都属于「侵入式替换」</text>
+
+  <rect x="504" y="74" width="228" height="222" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="618" y="96" text-anchor="middle" font-size="10.5" fill="#9A3412" font-weight="bold">③ 专用型：新增一种能力</text>
+  <text x="618" y="114" text-anchor="middle" font-size="7.8" fill="#C2410C">没有它做这件事要手工，装它要学新概念</text>
+  <text x="522" y="140" font-size="8.2" fill="#7C2D12">fzf　→ 把任何列表变成选择器</text>
+  <text x="522" y="160" font-size="8.2" fill="#7C2D12">zoxide　→ 目录记忆（z 关键词）</text>
+  <text x="522" y="180" font-size="8.2" fill="#7C2D12">hyperfine　→ 命令耗时基准测试</text>
+  <text x="522" y="200" font-size="8.2" fill="#7C2D12">direnv　→ 目录级环境变量自动加载</text>
+  <text x="522" y="220" font-size="8.2" fill="#7C2D12">yq　→ YAML / JSON 切片器（jq 的姊妹）</text>
+  <text x="522" y="240" font-size="8.2" fill="#7C2D12">just　→ 本机任务入口（make 的简化版）</text>
+  <text x="522" y="268" font-size="7.8" fill="#9A3412">学习成本最高的一层，一次只装一个</text>
+  <text x="522" y="284" font-size="7.8" fill="#9A3412">装完一周没用到，就卸载</text>
+
+  <rect x="28" y="312" width="704" height="52" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="332" text-anchor="middle" font-size="8.6" fill="#991B1B">替代型工具一律起新名字（ll / cc / du2），不要覆盖 ls / cat / curl —— PowerShell 里这些是内置别名，</text>
+  <text x="380" y="350" text-anchor="middle" font-size="8.6" fill="#991B1B">覆盖后脚本会「看起来一样、返回类型不同」，排查成本远高于多敲两个字母</text>
+
+  <text x="380" y="392" text-anchor="middle" font-size="9.5" fill="#64748B">一层的工具解决一类问题；跨层混装会让「哪个工具在起作用」变得不可判断</text>
+  <text x="380" y="410" text-anchor="middle" font-size="9.5" fill="#64748B">同一层里也不要装两个功能重复的：eza 和 lsd、delta 和 diff-so-fancy，选一个就好</text>
+</svg>

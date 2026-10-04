@@ -326,4 +326,4 @@ curl -s 'http://127.0.0.1:18080/api/v1/categories?withCount=true' | head -c 400
 - [文章写入链路](../WritePath/index.md)：分类标签字典的来源
 - [接口契约](../Contract/index.md)：本日 `withCount` 参数的增量落点
 - [工程骨架与验收门禁](../Skeleton/index.md)：门禁分层原则与自测（`--selftest`）的由来
-- 方法论：[完整项目交付](../../../docs/Others/ProjectDelivery/index.md)——契约先行与验收条件写法
+- 方法论：[完整项目交付](../../../../docs/Others/ProjectDelivery/index.md)——契约先行与验收条件写法

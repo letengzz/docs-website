@@ -102,7 +102,7 @@ spec:
 ```
 
 ::: info 与网格的关系
-Rollouts/Flagger 切流量依赖 Service/Ingress 或服务网格（VirtualService）。网格侧的流量规则怎么写，见 [服务网格 · 流量管理](../ServiceMesh/TrafficManagement/index.md)；本页只强调一点：**渐进发布的每个中间状态都必须落盘**——由 Rollouts 清单进 Git，控制器按声明推进，而不是人在终端里手敲 `kubectl patch`。
+Rollouts/Flagger 切流量依赖 Service/Ingress 或服务网格（VirtualService）。网格侧的流量规则怎么写，见 [服务网格 · 流量管理](../../ServiceMesh/TrafficManagement/index.md)；本页只强调一点：**渐进发布的每个中间状态都必须落盘**——由 Rollouts 清单进 Git，控制器按声明推进，而不是人在终端里手敲 `kubectl patch`。
 :::
 
 ## 回滚：一切回到 Git
@@ -141,7 +141,7 @@ git push origin main
 :::
 
 ::: tip 最佳实践
-- 每次发布前 PreSync 备份数据库（发布与备份的关系见 [备份与容灾](../../BackupDR/index.md)——备份恢复的是**数据与集群状态**，`git revert` 恢复的是**清单声明**，两者互补不可替代）；
+- 每次发布前 PreSync 备份数据库（发布与备份的关系见 [备份与容灾](../../../BackupDR/index.md)——备份恢复的是**数据与集群状态**，`git revert` 恢复的是**清单声明**，两者互补不可替代）；
 - prod 的自动化同步关掉，用「合并 PR」当发布按钮；
 - 发布窗口内盯 `argocd app wait --health` 的输出或通知，Degraded 不留过夜。
 :::

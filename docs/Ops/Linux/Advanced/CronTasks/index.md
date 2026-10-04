@@ -408,3 +408,4 @@ zcat /data/backup/mysql/order_db-*.sql.gz | head -20
 - 本专题其余章节：[Linux 进阶导览](../index.md)、[systemd 服务管理](../Systemd/index.md)
 - 定时任务脚本的批量下发与版本管理：[Ansible 自动化运维](../../../Ansible/index.md)
 - **定时任务最常见的生产用途就是备份**：[备份与容灾](../../../BackupDR/index.md) 讲清了「任务跑了 ≠ 备份可用」——需要 `.incomplete` + 原子改名、校验和比对与新鲜度告警，脚本骨架见 [备份策略设计](../../../BackupDR/Strategy/index.md)
+- **分工边界**：本页讲的是**服务器上的平台细节**（cron 与 systemd timer 的语法、迁移对照、`Persistent=true` 这类开关的具体写法）。"**这件事到底该不该自动化**""**脚本自己怎么写才叫靠得住**"（幂等 / 互斥 / 日志 / 退出码 / 告警）在 [效率工具 · 自动化：桌面、调度与脚本](../../../../Tools/Efficiency/Automation/index.md)第 8~9 节，那里还给了一张**跨平台补跑语义对照表**（Windows 任务计划 / systemd timer / cron）。

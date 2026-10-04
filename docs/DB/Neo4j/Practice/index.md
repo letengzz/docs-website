@@ -112,7 +112,7 @@ public Result<List<RecommendItem>> recommend(String uid) {
 }
 ```
 
-接口约定（对齐[博客平台的契约风格](../../../project/Complete/BlogPlatform/Contract/index.md)）：`GET /api/v1/users/{uid}/recommendations`，200 返回 `Result<List<RecommendItem>>`，用户不存在返回 `Result.fail(USER_NOT_FOUND)`——**空列表与不存在是两个语义**，别合并成 200 空数组糊弄调用方。
+接口约定（对齐[博客平台的契约风格](../../../../project/Complete/BlogPlatform/Contract/index.md)）：`GET /api/v1/users/{uid}/recommendations`，200 返回 `Result<List<RecommendItem>>`，用户不存在返回 `Result.fail(USER_NOT_FOUND)`——**空列表与不存在是两个语义**，别合并成 200 空数组糊弄调用方。
 
 ## 验收清单
 
@@ -135,4 +135,4 @@ public Result<List<RecommendItem>> recommend(String uid) {
 
 - [Neo4j 社交推荐官方示例](https://neo4j.com/docs/get-started/)
 - [EXISTS 子查询](https://neo4j.com/docs/cypher-manual/current/subqueries/exists-subqueries/)
-- [本项目接口契约风格](../../../project/Complete/BlogPlatform/Contract/index.md)
+- [本项目接口契约风格](../../../../project/Complete/BlogPlatform/Contract/index.md)

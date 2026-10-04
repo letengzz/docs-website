@@ -533,3 +533,4 @@ systemctl is-active order-service      # 预期：active
 - `flock` 手册：https://man7.org/linux/man-pages/man1/flock.1.html
 - 本专题其余章节：[Linux 进阶导览](../index.md)
 - 脚本写腻了、想改成声明式幂等执行：[Ansible 自动化运维](../../../Ansible/index.md)
+- **分工边界**：本页的定位是"**脚本要能在别人的机器上跑**"——所以开场 `set -euo pipefail`、变量一律引号、不用 zsh 专有语法、用 `shellcheck` 兜底。[效率工具 · 命令行提效与现代 CLI](../../../../Tools/Efficiency/ShellProductivity/index.md)第 10~11 节讲的是另一半：**在你自己的机器上做一次性批量操作**（`xargs` 并行、`hyperfine` 测量、替代型工具）。判据只有一条——**这段代码会不会进仓库、进 CI、交给别人？** 会，就按本页写。

@@ -1,8 +1,8 @@
-# 桌面与任务自动化
+# 自动化：桌面、调度与脚本
 
 自动化是效率工具的**最后一层**，也是最容易被误用的一层：写脚本本身有成本，**写错一个脚本的代价可能比手工做一年还高**（比如脚本静默跑错、误删文件、在错误的时间发邮件）。
 
-这一页讲三件事：**该不该自动化**（三个标准 + 一笔账）、**三层自动化**分别用什么、以及**什么时候应该停手**。
+这一页讲四件事：**该不该自动化**（三个标准 + 一笔账）、**三层自动化**分别用什么、**无人值守的调度怎么写才可靠**（第 8~9 节），以及**什么时候应该停手**。
 
 ## 1. 一句话定位
 
@@ -218,7 +218,224 @@ dotfiles/
     └── Microsoft.PowerShell_profile.ps1
 ```
 
-## 8. 什么时候应该停手
+## 8. 三平台调度对照：补跑语义才是硬差别
+
+第 5 节给了 Windows 侧的一份可用配置。这一节把三个平台的**语义差异**摊开——因为本机定时任务的失败形态里，**"它压根没跑"远多于"它跑错了"**，而"没跑"几乎总是补跑配置的问题。
+
+![无人值守调度的三平台对照：错过了会不会补跑](../assets/schedule-compare.svg)
+
+### 8.1 定式对照表
+
+| 维度 | Windows 任务计划程序 | systemd timer | cron |
+| --- | --- | --- | --- |
+| 定义方式 | `Register-ScheduledTask`（可脚本化、可入版本控制） | `.timer` + `.service` 两个单元文件 | `crontab -e` 一行 |
+| 时间表达式 | `New-ScheduledTaskTrigger`（结构化参数） | `OnCalendar=`（不是 cron 语法） | `分 时 日 月 周` 五段 |
+| **补跑** | `-StartWhenAvailable`（**必须显式加**） | `Persistent=true`（**必须显式写**） | **没有这个概念** |
+| 输出去哪 | 事件查看器 `TaskScheduler/Operational`；脚本自己的输出要重定向 | 自动进 journal（`journalctl -u`） | 默认丢弃（还会尝试发本地邮件） |
+| 运行身份 | `-User` / `-RunLevel`，可指定是否提权 | `User=` / `Group=`，或用户级 `systemctl --user` | 跟随 `crontab` 的所有者 |
+| 适合 | Windows 本机、需要提权或与桌面交互的任务 | Linux 服务器与常开机器 | 服务器上"常开且一次两次没跑也没关系"的任务 |
+
+::: danger 注意：三个平台各有一条"默认就会坑你"的设置
+1. **Windows**：不加 `-StartWhenAvailable`，**机器休眠/关机期间错过的任务不会补跑**，而且任务状态仍显示"上次运行成功"（上一次，不是这一次）。
+2. **systemd**：`OnCalendar=` 写成 cron 的 `30 9 * * 1-5` 会直接报错（要用 `Mon..Fri 09:30`）；另外**只有 `.timer` 被 enable 才有效**，只 enable `.service` 不会定时执行。
+3. **cron**：**笔记本上不要用**。合盖期间的时间点没有任何机制补跑，而你大概率不会发现——直到某天发现数据缺了一大段。
+:::
+
+### 8.2 systemd timer 最小可用示例
+
+```ini [/etc/systemd/system/fetch-daily.service]
+[Unit]
+Description=Daily fetch
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/scripts
+ExecStart=/usr/bin/bash /opt/scripts/fetch-daily.sh
+# 显式指定环境，别指望登录时的 PATH
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+```
+
+```ini [/etc/systemd/system/fetch-daily.timer]
+[Unit]
+Description=Run fetch-daily every weekday at 09:30
+
+[Timer]
+OnCalendar=Mon..Fri 09:30
+Persistent=true                 # ← 错过了补跑，笔记本场景必写
+AccuracySec=1min                # 允许合并唤醒，省电
+Unit=fetch-daily.service
+
+[Install]
+WantedBy=timers.target
+```
+
+```shell
+sudo systemctl daemon-reload
+sudo systemctl enable --now fetch-daily.timer
+
+# 验证三连（缺一不可）
+systemctl list-timers --all | grep fetch-daily     # NEXT 列有下一次触发时间
+sudo systemctl start fetch-daily.service           # 手动跑一次，立刻看到结果
+journalctl -u fetch-daily.service -n 50 --no-pager # 看输出与退出码
+```
+
+::: tip 一句话理解
+**"怎么定义时间"和"错了怎么办"是两件事。** 上表里 6 行维度，真正决定"任务可不可靠"的只有 `补跑` 一行——另外五行只影响你写起来顺不顺手。
+:::
+
+### 8.3 验证补跑：唯一有效的方法
+
+补跑配置**无法靠读配置确认**，只能实测：
+
+```text
+① 把触发时间设成 2 分钟后
+② 让机器进入休眠（合盖 / 挂起），等到触发时间过去
+③ 唤醒机器，等 1~2 分钟
+④ 看日志里有没有那次运行：时间戳是「唤醒后不久」，不是「设定时间」
+   - Windows：Get-ScheduledTaskInfo -TaskName xxx 看 LastRunTime
+   - systemd：journalctl -u xxx.service 看最新一条
+   - cron：默认没有日志，先自己 >> log 2>&1 才有得看
+```
+
+| 结果 | 结论 |
+| --- | --- |
+| 日志里有那次运行，时间是唤醒之后 | 补跑生效 |
+| 日志里完全没有 | 补跑没配，或配置没生效（重载/重启对应服务） |
+| 有运行但时间是"设定时间"（早于唤醒） | 说明有 `anacron` 类机制在补，注意排查链路 |
+
+## 9. 无人值守脚本的健壮性：五件套
+
+调度只是"什么时候跑"。**跑起来之后能不能靠得住，取决于脚本自己。** 下面五条与脚本用 PowerShell 还是 shell 无关。
+
+### 9.1 幂等
+
+| 反例（不幂等） | 后果 | 正确做法 |
+| --- | --- | --- |
+| `echo "$data" >> out.csv` | 补跑一次就多一份重复数据 | 先写临时文件，再原子替换：`mv tmp out.csv` |
+| `INSERT INTO t VALUES (...)` | 补跑直接主键冲突或脏数据 | 用 `INSERT ... ON DUPLICATE KEY UPDATE` / `MERGE` |
+| `mkdir out` | 第二次报错退出 | `mkdir -p` / `New-Item -Force` |
+| `git clone` | 第二次失败 | `if [ ! -d repo ]; then git clone …; fi`，或 `git -C repo pull --ff-only` |
+
+```shell [月报生成：唯一能接受"追加"的场景要显式去重]
+#!/usr/bin/env bash
+set -euo pipefail
+OUT=~/reports/$(date +%Y-%m).csv
+TMP=$(mktemp)
+grep -v '^#' "$OUT" 2>/dev/null | grep -v '^timestamp,' > "$TMP" || true   # 保留既有数据
+printf 'timestamp,value\n' >> "$TMP"
+date '+%F %T,123' >> "$TMP"
+mv "$TMP" "$OUT"        # 原子替换：中途失败也不会留下半个文件
+```
+
+### 9.2 互斥（防重入）
+
+上一次还没跑完，下一次就叠上来了——这是定时任务最典型的"雪崩起点"。
+
+```shell [锁文件：简单、跨平台、够用]
+#!/usr/bin/env bash
+set -euo pipefail
+LOCK=/tmp/fetch-daily.lock
+
+# mkdir 是原子的：创建成功才算拿到锁（比 [ -f ] && exit 更可靠）
+if ! mkdir "$LOCK" 2>/dev/null; then
+  echo "$(date '+%F %T') SKIP 上一次仍在运行" >> ~/logs/fetch-daily.log
+  exit 0
+fi
+trap 'rmdir "$LOCK"' EXIT        # 无论正常结束还是报错都释放
+
+# …真正的任务…
+```
+
+```powershell
+# PowerShell 侧的等价做法（用命名 Mutex）
+$mtx = [System.Threading.Mutex]::new($false, 'Local\fetch-daily')
+if (-not $mtx.WaitOne(0)) { Write-Warning '上一次仍在运行，本次跳过'; exit 0 }
+try { <# 任务主体 #> } finally { $mtx.ReleaseMutex(); $mtx.Dispose() }
+```
+
+::: danger 注意：锁文件的两个死角
+1. **`trap` 只处理"脚本自己被终止"**。如果机器直接断电，锁目录会留在磁盘上，**下一次运行会永远跳过**。所以锁要有"过期"机制：记录启动时间，超过阈值就视为陈旧锁并清理。
+2. **`rmdir` 在 EXIT 时可能因路径已不存在而报错**，在 `set -e` 下会改变退出码。写 `trap 'rmdir "$LOCK" 2>/dev/null || true' EXIT`。
+:::
+
+### 9.3 日志
+
+```text
+每条记录一行，字段固定，便于 rg 和后续统计：
+2026-10-04 09:30:01 START  pid=22118
+2026-10-04 09:30:17 SKIP   上一次仍在运行
+2026-10-04 09:30:44 END    rc=0  耗时=43s  输出=12 行
+```
+
+| 原则 | 原因 |
+| --- | --- |
+| **结构化 + 定长字段** | `rg '^END.*rc=[^0]'` 一条命令就能筛出所有失败运行 |
+| **开始和结束都记** | 只有 END 的话，脚本崩溃时就什么都看不到 |
+| **同时留 stdout/stderr** | 但**分开重定向**，否则不清楚某行是正常输出还是错误 |
+| **日志要轮转** | 每天一条可能全年都没人看，用 `logrotate` 或按月切文件 |
+
+```shell
+# cron 侧：三个流分开，便于排查
+30 9 * * 1-5 /opt/scripts/fetch-daily.sh >> /var/log/fetch-daily.log 2>> /var/log/fetch-daily.err
+```
+
+### 9.4 退出码
+
+::: danger 注意：三种"看起来成功"的写法
+1. **`cmd | tee log` 之后 `exit 0`**：`tee` 永远成功，失败被吞掉。用 `set -o pipefail`，或取 `${PIPESTATUS[0]}`。
+2. **`try { … } catch { Write-Warning $_.Exception.Message }` 后照常结束**：PowerShell 脚本的退出码仍是 0。要么 `exit 1`，要么用 `$ErrorActionPreference = 'Stop'` 让错误直接终止。
+3. **`cmd || true`**：把真实失败一起吞掉。只在"这条失败确实是预期内的"时用，并写注释说明原因。
+:::
+
+### 9.5 告警：静默失败才是真的失败
+
+无人值守的核心风险不是"跑错"，而是**"没跑，而且没人知道"**。最小的告警方案按成本从低到高：
+
+| 级别 | 做法 | 成本 |
+| --- | --- | --- |
+| 最低 | 失败时写一条 `FAIL` 日志（至少可被 `rg` 搜到） | 零 |
+| 低 | 失败时 `curl` 一个 Webhook（企业微信/钉钉/飞书机器人） | 一个 URL |
+| 中 | 收集日志到 Loki/ES，配一条"24 小时没有 END 记录"的告警规则 | 一套日志栈 |
+| 高 | 接入正式告警通道（值班、分级、抑制） | 组织级成本 |
+
+```shell
+# 最小可用的失败告警（Webhook 用环境变量传，不要硬编码在脚本里）
+if ! "$TASK"; then
+  rc=$?
+  echo "$(date '+%F %T') FAIL rc=$rc" >> "$LOG"
+  if [ -n "${ALERT_WEBHOOK:-}" ]; then
+    curl -s -m 5 -X POST "$ALERT_WEBHOOK" \
+      -H 'Content-Type: application/json' \
+      -d "{\"msgtype\":\"text\",\"text\":{\"content\":\"fetch-daily 失败 rc=$rc\"}}" > /dev/null || true
+  fi
+  exit "$rc"
+fi
+```
+
+::: tip 一句话理解
+**"没有告警的定时任务"等于"没有定时任务"**——它只在你恰好想起来去看日志的那天才存在。**先加一条 FAIL 日志，再加一个 Webhook**，这两步加起来不到 10 行。
+:::
+
+### 9.6 五件套的组合骨架
+
+```shell [无人值守脚本的标准开头]
+#!/usr/bin/env bash
+set -euo pipefail                       # ④ 退出码：失败要能被看见
+LOG=~/logs/task.log
+LOCK=/tmp/task.lock
+
+log() { printf '%s %-5s %s\n' "$(date '+%F %T')" "$1" "$2" | tee -a "$LOG"; }
+
+mkdir -p "$(dirname "$LOG")"             # ① 幂等
+if ! mkdir "$LOCK" 2>/dev/null; then log SKIP '上一次仍在运行'; exit 0; fi   # ② 互斥
+trap 'rmdir "$LOCK" 2>/dev/null || true' EXIT
+
+log START "pid=$$"                        # ③ 日志：开始
+# …任务主体（幂等）…
+log END "rc=0"                            # ③ 日志：结束
+```
+
+## 10. 什么时候应该停手
 
 自动化到一定程度后，**新增自动化的边际收益会变成负数**。出现以下信号就该停：
 
@@ -233,7 +450,7 @@ dotfiles/
 **自动化的目标是"少做重复劳动"，不是"证明我能写脚本"。** 一个健康的个人自动化集合通常是 **3~8 个脚本**，每个不超过 100 行，每个都能一眼看懂它在做什么。
 :::
 
-## 9. 验证清单
+## 11. 验证清单
 
 | 检查项 | 命令 / 操作 | 期望 |
 | --- | --- | --- |
@@ -243,7 +460,7 @@ dotfiles/
 | 文本扩展生效 | 在记事本里输入 `]date` | 变成当天日期 |
 | 脚本可恢复 | 脚本在 Git 仓库里，`git log` 有记录 | 换机器 `git clone` 后可用 |
 
-## 10. 常见坑
+## 12. 常见坑
 
 | 现象 | 原因 | 解决 |
 | --- | --- | --- |
@@ -254,15 +471,24 @@ dotfiles/
 | AHK 在管理员窗口里按键无效 | UIPI 限制 | 脚本也以管理员运行 |
 | 路径含空格时 `Run` 失败 | 未加引号 | `Run "`"C:\My Tools\a.exe`""` |
 | 脚本改了系统文件难以撤销 | 未做备份 | 批量操作前先 `Copy-Item` 备份；先`-WhatIf`（PowerShell 支持时）或先小批量试跑 |
-| 自动化静默失败无人知道 | 没有日志、没有通知 | 脚本内落地日志；失败时 `TrayTip` / 写事件日志 |
+| 自动化静默失败无人知道 | 没有日志、没有通知 | 脚本内落地日志；失败时 `TrayTip` / 写事件日志 / 调 Webhook（第 9.5 节） |
+| 定时任务重复跑、数据多了一份 | 不幂等（用了追加写） | 写临时文件后原子替换；SQL 用 upsert（第 9.1 节） |
+| 上一次没跑完就叠上了第二次 | 没有互斥 | 用锁目录 / 命名 Mutex（第 9.2 节） |
+| 机器断电后任务再也不跑了 | 锁文件残留，没人清理 | 锁要带过期时间，或启动时清理陈旧锁 |
+| systemd timer enable 了但不触发 | 只 enable 了 `.service` | `systemctl enable --now xxx.timer`，用 `list-timers` 核对 |
+| `OnCalendar` 照抄 cron 表达式报错 | 两者语法不同 | `Mon..Fri 09:30` 形式（第 8.2 节） |
+| cron 任务没有日志 | cron 默认丢弃输出 | `>> log 2>> err` 显式重定向 |
 
-## 11. 参考与延伸
+## 13. 参考与延伸
 
-- [命令行提效](../ShellProductivity/index.md)：脚本里要用的 CLI 工具
+- [命令行提效与现代 CLI](../ShellProductivity/index.md)：脚本里要用的 CLI 工具（以及"脚本里不要用新工具"的判据）
+- [终端、Shell 与会话复用](../Terminal/index.md)：长任务在现场怎么跑（tmux），与本节"无人值守"的区别见该页 7.8
 - [剪贴板与输入效率](../Clipboard/index.md)：文本扩展的完整方案
 - [实战：搭一套个人效率工具链](../Practice/index.md)：自动化在整条链路里的位置
 - [版本控制工具](../../VersionControl/index.md)：把脚本与 dotfiles 版本化
-- [运维 · CICD](../../CICD/index.md)：仓库级自动化的对照（把"本机定时"升级为"服务端流水线"）
+- [CI/CD](../../CICD/index.md)：仓库级自动化的对照（把"本机定时"升级为"服务端流水线"）
+- [运维 · Linux · 定时任务](../../../Ops/Linux/Advanced/CronTasks/index.md)：服务器侧的 cron / systemd timer 完整用法
+- [运维 · Linux · Shell 脚本编程](../../../Ops/Linux/Advanced/ShellScripting/index.md)：第 9 节五件套在真实脚本里的工程写法
 
 官方文档：
 
@@ -271,3 +497,4 @@ dotfiles/
 - AutoHotkey v2 从 v1 迁移：[autohotkey.com/docs/v2/v1-changes](https://www.autohotkey.com/docs/v2/v1-changes.htm)
 - PowerToys Keyboard Manager / PowerRename：[learn.microsoft.com/windows/powertoys](https://learn.microsoft.com/zh-cn/windows/powertoys/)
 - systemd timer：[freedesktop.org/software/systemd/man/systemd.timer.html](https://www.freedesktop.org/software/systemd/man/latest/systemd.timer.html)
+- systemd `OnCalendar` 时间格式：[freedesktop.org/software/systemd/man/systemd.time.html](https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html)

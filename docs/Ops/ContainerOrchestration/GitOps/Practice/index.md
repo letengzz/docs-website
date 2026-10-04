@@ -168,8 +168,8 @@ kubectl -n blog-prod get deploy blog -o jsonpath='{.spec.template.spec.container
 ## 下一步
 
 - 发布编排细化：迁移 Job 的 Wave 编排与 Canary，见 [渐进发布与回滚](../ProgressiveDelivery/index.md)；
-- 集群级备份（Argo CD 管不到的数据与状态），见 [备份与容灾](../../BackupDR/index.md)；
-- 监控 Argo CD 自身：`argocd_*` 指标接入 Prometheus，见 [监控告警](../../Monitoring/index.md)。
+- 集群级备份（Argo CD 管不到的数据与状态），见 [备份与容灾](../../../BackupDR/index.md)；
+- 监控 Argo CD 自身：`argocd_*` 指标接入 Prometheus，见 [监控告警](../../../Monitoring/index.md)。
 
 ## 参考资料
 

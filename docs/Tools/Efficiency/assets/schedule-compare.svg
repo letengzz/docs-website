@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">无人值守调度的三平台对照：「错过了会不会补跑」是唯一的硬差别</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">本机定时任务的失败形态几乎全是「它压根没跑」，而不是「它跑错了」</text>
+
+  <rect x="28" y="76" width="228" height="46" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="142" y="97" text-anchor="middle" font-size="10.5" fill="#3730A3" font-weight="bold">Windows 任务计划程序</text>
+  <text x="142" y="113" text-anchor="middle" font-size="7.8" fill="#4338CA">Register-ScheduledTask（可脚本化）</text>
+  <rect x="266" y="76" width="228" height="46" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="97" text-anchor="middle" font-size="10.5" fill="#115E59" font-weight="bold">systemd timer</text>
+  <text x="380" y="113" text-anchor="middle" font-size="7.8" fill="#0F766E">.timer + .service 两个单元文件</text>
+  <rect x="504" y="76" width="228" height="46" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="618" y="97" text-anchor="middle" font-size="10.5" fill="#9A3412" font-weight="bold">cron</text>
+  <text x="618" y="113" text-anchor="middle" font-size="7.8" fill="#C2410C">crontab -e 一行搞定，最省事</text>
+
+  <text x="28" y="146" font-size="8.6" fill="#334155">补跑语义</text>
+  <text x="266" y="146" font-size="8.6" fill="#334155">补跑语义</text>
+  <text x="504" y="146" font-size="8.6" fill="#334155">补跑语义</text>
+
+  <rect x="28" y="154" width="228" height="58" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="142" y="174" text-anchor="middle" font-size="8.2" fill="#991B1B">默认不补跑</text>
+  <text x="142" y="190" text-anchor="middle" font-size="7.8" fill="#B91C1C">必须显式加 -StartWhenAvailable</text>
+  <text x="142" y="205" text-anchor="middle" font-size="7.8" fill="#B91C1C">休眠 / 关机期间错过的会丢</text>
+  <rect x="266" y="154" width="228" height="58" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="174" text-anchor="middle" font-size="8.2" fill="#991B1B">默认不补跑</text>
+  <text x="380" y="190" text-anchor="middle" font-size="7.8" fill="#B91C1C">必须显式写 Persistent=true</text>
+  <text x="380" y="205" text-anchor="middle" font-size="7.8" fill="#B91C1C">写作 OnCalendar=，不是 cron 语法</text>
+  <rect x="504" y="154" width="228" height="58" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="618" y="174" text-anchor="middle" font-size="8.2" fill="#991B1B">永远不补跑</text>
+  <text x="618" y="190" text-anchor="middle" font-size="7.8" fill="#B91C1C">没有补跑开关，也没有这个概念</text>
+  <text x="618" y="205" text-anchor="middle" font-size="7.8" fill="#B91C1C">服务器常开可以用，笔记本不要用</text>
+
+  <text x="28" y="238" font-size="8.6" fill="#334155">日志去哪</text>
+  <text x="266" y="238" font-size="8.6" fill="#334155">日志去哪</text>
+  <text x="504" y="238" font-size="8.6" fill="#334155">日志去哪</text>
+
+  <rect x="28" y="246" width="228" height="48" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="142" y="266" text-anchor="middle" font-size="7.8" fill="#334155">事件查看器 TaskScheduler/Operational</text>
+  <text x="142" y="282" text-anchor="middle" font-size="7.8" fill="#334155">脚本自己的输出要手动重定向</text>
+  <rect x="266" y="246" width="228" height="48" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="266" text-anchor="middle" font-size="7.8" fill="#334155">journalctl -u xxx.timer / -u xxx.service</text>
+  <text x="380" y="282" text-anchor="middle" font-size="7.8" fill="#334155">标准输出与错误自动进 journal</text>
+  <rect x="504" y="246" width="228" height="48" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="618" y="266" text-anchor="middle" font-size="7.8" fill="#334155">默认丢弃输出（还会尝试发邮件）</text>
+  <text x="618" y="282" text-anchor="middle" font-size="7.8" fill="#334155">必须自己 &gt;&gt; log 2&gt;&amp;1</text>
+
+  <rect x="28" y="308" width="704" height="90" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="328" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">无论用哪个平台，脚本自己都要满足这五条（缺一条就等于给自己埋雷）</text>
+  <text x="44" y="350" font-size="8.2" fill="#047857">① 幂等　重复跑一次结果不变（用 MERGE / 覆盖写，别用追加）</text>
+  <text x="44" y="367" font-size="8.2" fill="#047857">② 互斥　有锁文件，防上一次还没跑完就叠上第二次</text>
+  <text x="44" y="384" font-size="8.2" fill="#047857">③ 日志　每次运行追加一条「开始 / 结束 / 退出码」，带时间戳</text>
+  <text x="420" y="350" font-size="8.2" fill="#047857">④ 退出码　非 0 必须能让外部看见（不要 catch 完继续 0 退出）</text>
+  <text x="420" y="367" font-size="8.2" fill="#047857">⑤ 告警　失败时至少留下一条可被搜到的记录</text>
+  <text x="420" y="384" font-size="8.2" fill="#047857">↑ 这五条和脚本是 PowerShell 还是 shell 无关</text>
+
+  <text x="380" y="420" text-anchor="middle" font-size="9.5" fill="#64748B">判据：把机器休眠一晚再唤醒，看日志里当天那次运行有没有补上——这是唯一能验出补跑配置的方法</text>
+</svg>

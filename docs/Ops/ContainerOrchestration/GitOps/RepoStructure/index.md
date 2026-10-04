@@ -87,7 +87,7 @@ spec:
         automated: {}   # automated 参数按 env 由 policy 决定，见下
 ```
 
-生成器不止 `list`：`git` 生成器按目录生成（一个 overlay 目录 = 一个 Application）、`cluster` 生成器按注册集群生成（**多集群分发的落点**，与[多集群](../MultiCluster/index.md)专题衔接）、`pull request` 生成器为每个 PR 生成临时预览环境（合并即销毁）。
+生成器不止 `list`：`git` 生成器按目录生成（一个 overlay 目录 = 一个 Application）、`cluster` 生成器按注册集群生成（**多集群分发的落点**，与[多集群](../../MultiCluster/index.md)专题衔接）、`pull request` 生成器为每个 PR 生成临时预览环境（合并即销毁）。
 
 ::: danger 模板变量是生产事故高发区
 模板变量拼错一个字母，dev 的 Application 就可能同步到 prod 路径。防护三件套：`goTemplate: true` 开启后用模板校验拒绝非法组合（模板里可以直接 `fail`）；ApplicationSet 的 `syncPolicy` 加 `preserveResourcesOnDeletion: true`（生成器误删时资源不陪葬）；**所有环境变更先在一个隔离的「沙箱集群」试跑**。

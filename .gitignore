@@ -1,12 +1,18 @@
 node_modules
 .DS_Store
-dist
-dist-ssr
 # 构建产物（`dist` 只匹配同名目录，改名保留的旧构建要单独覆盖：
 # `.vitepress/dist-stale-0930/` 曾被误当成源码提交过 732 个文件）
 .vitepress/dist*/
-cache
-.cache
+/dist/
+/dist-ssr/
+# 构建缓存。**禁止写成裸 `cache` / `dist` 这类目录名**：裸名会匹配任意层级的同名目录，
+# 2026-10-04 实测裸 `cache` 把 `docs/Frontend/Basic/Browser/Cache/` 与
+# `docs/Ops/Nginx/Cache/` 两页整棵忽略（Windows 文件系统大小写不敏感，`Cache` 也被 `cache` 命中），
+# 而侧边栏 `.vitepress/frontend.ts` / `ops.ts` 与两个目录页早已引用这两页 ——
+# 结果是线上长期 404，且被忽略的文件在 `git status` 里**根本不出现**，排查时毫无线索。
+# 一个以目录名组织内容的文档库，忽略规则必须带路径作用域。
+.vitepress/cache/
+.cache/
 .temp
 *.local
 build.log

@@ -94,7 +94,39 @@ A：**统一规则，不统一工具**。代码风格、提交规范、目录结
 **Q：怎么把效率工具实践推给团队？**
 A：从**规矩最清楚、收益最直观**的一件开始（通常是提交规范 + Git 钩子），先跑两周拿出数据，再推第二件。不要一次性发一份 50 页的规范。
 
-## 3. 15 条踩坑清单
+### 2.6 终端进阶类
+
+**Q：终端本来就能分屏，为什么还要 tmux？**
+A：两者解决的不是同一件事。终端分屏解决"**同一时刻看几样东西**"，tmux 解决"**进程脱离窗口活着**"。判别方法：**如果你从不需要"关掉窗口但命令继续跑"，可以不用 tmux**；一旦有远程服务器或超过 10 分钟的构建，它就是刚需。详见[终端页第 7 节](../Terminal/index.md)。
+
+**Q：`tmux ls` 里有会话，但我看不见它的内容？**
+A：没 attach 就是"看不见"的正常状态。用 `tmux attach -t <名字>` 接上；只想瞄一眼当前进度用 `tmux capture-pane -p -t <名字> | tail -20`（不需要 TTY，能在脚本里用）。
+
+**Q：我在 tmux 里滚鼠标，看不到之前的输出？**
+A：终端自己的滚动条看不到 tmux 面板内部的历史。用 tmux 的复制模式：`Prefix + [`（默认 `Ctrl+b` 然后 `[`），`PageUp`/方向键翻页，`q` 退出。
+
+**Q：升级了 tmux，为什么行为还是旧版？**
+A：**正在运行的 server 不会因为升级而重启**，它会继续跑旧代码。要让新版本生效，需要结束现有 server（`tmux kill-server`）再重建会话——注意这会终结该 server 下的**所有**会话与程序，先确认没有长任务在跑。
+
+**Q：zsh 的 Tab 补全好像没比 bash 强？**
+A：多半是没初始化补全系统。`.zshrc` 里需要 `autoload -Uz compinit && compinit`，再配 `zstyle ':completion:*' menu select` 让 Tab 能循环候选。见[终端页 8.1](../Terminal/index.md)。
+
+**Q：从 bash 换到 zsh 后，脚本报 `no matches found`？**
+A：这是 zsh 的 glob 默认行为：**无匹配时直接报错并中止**，而 bash 会把通配符原样传给命令。用 `setopt null_glob`（不匹配展开为空）或 `setopt nonomatch`（原样传递）。跨 Shell 的脚本应显式写 `#!/usr/bin/env bash`。
+
+**Q：为什么我的 `for` 循环只跑了一次？**
+A：多行输出没被切成数组。zsh 里要写 `lines=("${(@f)$(cmd)}")`——少了 `(@f)`，整段输出会变成一个元素。见[终端页 8.3](../Terminal/index.md)。
+
+**Q：新装的 `eza` / `delta` / `dust` 要不要直接覆盖 `ls` / `git diff` / `du`？**
+A：**不要覆盖 `ls`**（脚本与 AI 生成的代码会拿到不同的返回类型）。`delta` 是可以挂到 `core.pager` 的例外——它只改"给人看"的输出，但**脚本里判断 diff 要加 `--no-pager`**，否则会拿到带 ANSI 颜色的文本。
+
+**Q：定时任务显示"已运行"但数据没更新？**
+A：先分清三种情况：① 任务是"上次运行成功"而不是"本次"（`-StartWhenAvailable` 没配，休眠期间错过了）；② 脚本本身没幂等，补跑后被去重逻辑吞了；③ 脚本失败但退出码是 0（`cmd | tee log` 未开 `pipefail`）。三种的排查入口都是**日志**，见[自动化页第 9 节](../Automation/index.md)。
+
+**Q：本机定时任务到底该用哪个方案？**
+A：**常开的服务器用 cron（最省事），会休眠的机器用 systemd timer 加 `Persistent=true`（Linux）/ `launchd`（macOS）/ `-StartWhenAvailable`（Windows）。** 唯一的硬判据是"错过了会不会补跑"，对照表见[自动化页 8.1](../Automation/index.md)。
+
+## 3. 20 条踩坑清单
 
 | # | 坑 | 后果 | 正确做法 |
 | --- | --- | --- | --- |
@@ -113,8 +145,13 @@ A：从**规矩最清楚、收益最直观**的一件开始（通常是提交规
 | 13 | AHK 用 v1 语法 | 直接报错 | v2 语法 + `#Requires` |
 | 14 | AHK `Run` 未给含空格路径加引号 | 路径被拆成两段 | 路径一律加引号 |
 | 15 | 任务计划未设工作目录与日志 | 静默失败，且找不到原因 | 设 `-WorkingDirectory` + 落地日志 |
+| 16 | 用 `kill-server` 收尾 | 顺手终结了所有会话（含在跑的任务） | 只用 `kill-session -t <名字>` |
+| 17 | 定时任务不幂等（追加写） | 补跑一次多一份重复数据 | 写临时文件后原子替换；SQL 用 upsert |
+| 18 | 定时任务没有互斥 | 上一次没跑完就叠上第二次 | 锁目录 / 命名 Mutex + 过期清理 |
+| 19 | 覆盖 `ls`/`cat`/`curl` 装新工具 | 脚本"看起来一样、行为不同" | 起新名字（`ll`/`cc`），并用 `type ls` 复核 |
+| 20 | 把新工具写进脚本与 CI | runner 上没有 `eza`/`dust`，命令直接失败 | 脚本用基础命令，交互式才用新工具 |
 
-## 4. 12 条最佳实践
+## 4. 15 条最佳实践
 
 1. **键盘优先**。鼠标往返平均 2 秒；能在键盘上做完的，不碰鼠标。
 2. **配置进 Git**。dotfiles、`settings.json`、`.ahk` 脚本、笔记库，全部版本化。
@@ -128,6 +165,9 @@ A：从**规矩最清楚、收益最直观**的一件开始（通常是提交规
 10. **脚本必须有日志与退出码**。静默失败的自动化比不自动化更危险。
 11. **批量与删除操作先小批量试跑**。加 `-WhatIf`，或先只打印不执行。
 12. **每季度做一次减法**。列出所有工具与脚本，标出"最近 30 天用过吗"，没用过的清掉。
+13. **现场可复现**。开工现场（会话布局、目录、日志）用一条幂等脚本搭起来，并和 dotfiles 一起版本化。
+14. **长任务一律跑在独立会话里**，输出同时 `tee` 到日志文件——tmux 的缓冲区有上限，日志文件没有。
+15. **无人值守的任务先做一次"休眠→唤醒"演练**。补跑配置无法靠读配置确认，只能实测。
 
 ::: danger 三条不可逆操作，做前先备份
 1. **批量重命名**——先在小批量上确认预览。
@@ -148,6 +188,13 @@ A：从**规矩最清楚、收益最直观**的一件开始（通常是提交规
 | **MOC（Map of Content）** | 手动维护的主题索引页，替代文件夹分类 |
 | **本地优先（Local-first）** | 数据以本地纯文件为准，工具只是查看器 |
 | **会话复用（Session Multiplexer）** | tmux / zellij，断开连接后会话仍继续运行 |
+| **detach / attach** | 断开（进程继续）与接回（恢复显示）会话；**与 kill 完全不同** |
+| **prefix（前缀键）** | tmux 的快捷键前缀，默认 `Ctrl+b`，常改成 `Ctrl+a` |
+| **capture-pane** | 抓取某个面板当前内容，不需要 TTY，可在脚本与 CI 里用 |
+| **幂等（Idempotent）** | 重复执行一次结果不变；定时任务的第一条纪律 |
+| **补跑（Persistent / StartWhenAvailable）** | 休眠或关机期间错过的触发点，唤醒后是否补上；三平台语义不同 |
+| **替代型 / 增强型 / 专用型工具** | 现代 CLI 工具的三层：换实现 / 改输出 / 加新能力（见[命令行提效 9.1](../ShellProductivity/index.md)） |
+| **`pipefail`** | Shell 选项：管道中任一环节失败即整体失败；不开启则只看最后一环的退出码 |
 | **UIPI** | Windows 的用户界面权限隔离，导致普通进程无法向提权窗口发送输入 |
 | **括号粘贴模式（Bracketed Paste）** | 终端识别"这是一次粘贴"而非逐行输入，避免多行命令被直接执行 |
 | **回本周期** | 学习/配置成本 ÷ 每周节省的时间，用于决定"值不值得学" |
@@ -171,12 +218,12 @@ A：从**规矩最清楚、收益最直观**的一件开始（通常是提交规
 本专题九个页面：
 
 - [效率工具 · 概述与选型](../Overview/index.md)
-- [终端与 Shell 环境](../Terminal/index.md)
-- [命令行提效](../ShellProductivity/index.md)
+- [终端、Shell 与会话复用](../Terminal/index.md)
+- [命令行提效与现代 CLI](../ShellProductivity/index.md)
 - [剪贴板与输入效率](../Clipboard/index.md)
 - [截图与标注](../Screenshot/index.md)
 - [笔记与知识管理](../Notes/index.md)
-- [桌面与任务自动化](../Automation/index.md)
+- [自动化：桌面、调度与脚本](../Automation/index.md)
 - [实战：搭一套个人效率工具链](../Practice/index.md)
 - **常见问题与最佳实践（本页）**
 
@@ -185,7 +232,9 @@ A：从**规矩最清楚、收益最直观**的一件开始（通常是提交规
 - [IDE 配置](../../IDE/index.md)：编辑器侧的效率与排障
 - [版本控制工具](../../VersionControl/index.md)：dotfiles 与配置的版本化
 - [协作与项目管理](../../Collaboration/index.md)：把效率规则推广到团队
-- [运维 · Linux](../../../Ops/Linux/index.md)：服务器侧的终端与 Shell 排障
+- [运维 · Linux · Shell 基础](../../../Ops/Linux/ShellBasic/index.md)：服务器侧的终端与 Shell
+- [运维 · Linux · Shell 脚本编程](../../../Ops/Linux/Advanced/ShellScripting/index.md)：脚本健壮性的完整工程约束
+- [运维 · Linux · 定时任务](../../../Ops/Linux/Advanced/CronTasks/index.md)：cron / systemd timer 的平台细节
 
 官方文档：
 

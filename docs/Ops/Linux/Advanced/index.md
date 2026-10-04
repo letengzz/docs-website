@@ -64,6 +64,7 @@ systemd + 定时任务    → 让脚本变成「服务」和「计划任务」�
 
 - 基础命令、权限、进程与文本处理：[Linux 基础](../index.md)
 - 把本专题的手工步骤固化成可重复执行的剧本：[Ansible 自动化运维](../../Ansible/index.md)
+- **分工边界**：本专题是"**服务器视角**"——脚本要能上生产、定时任务要能补跑、故障要能定位；[效率工具](../../../Tools/Efficiency/index.md)是"**个人视角**"——终端与 Shell 怎么配、命令行怎么提速、本机现场怎么固定。两处都讲 Shell，但**一句话就能分清**：出现在 `ssh` 之后的场景看本专题，出现在你键盘前的场景看效率工具专题。其中"会话复用（tmux）"与"三平台补跑语义"分别在[终端页第 7 节](../../../Tools/Efficiency/Terminal/index.md)与[自动化页第 8 节](../../../Tools/Efficiency/Automation/index.md)。
 - 网络分层、DNS 与抓包：[网络基础](../../Network/index.md)
 - 容器宿主机调优与安全：[Docker 安全加固](../../Docker/Security/index.md)、[Kubernetes 监控与运维](../../Kubernetes/Monitoring/index.md)
 - 服务器指标采集与告警：[监控告警](../../Monitoring/index.md)

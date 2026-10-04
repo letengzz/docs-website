@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="486" viewBox="0 0 900 486" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <marker id="sp" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a7bd8"/>
+    </marker>
+  </defs>
+  <style>
+    .fl  { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .idx { fill: #f0ecff; stroke: #7a5bd8; stroke-width: 1.5; }
+    .warn{ fill: #fff1f0; stroke: #d8443c; stroke-width: 1.5; }
+    .ok  { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    text { fill: #222; font-size: 13px; text-anchor: middle; }
+    .t2  { font-size: 14px; font-weight: bold; }
+    .small { font-size: 11px; fill: #555; }
+    .mono { font-family: Consolas, monospace; font-size: 11px; }
+    line.ar { stroke: #4a7bd8; stroke-width: 1.4; }
+  </style>
+
+  <text class="t2" x="450" y="24">写入侧：search_text 与 ngram 索引（与发布同事务，复用第 101 天写时渲染）</text>
+
+  <rect class="fl" x="30" y="38" width="200" height="52"/>
+  <text x="130" y="60">文章保存 / 编辑</text>
+  <text class="small" x="130" y="78">发布与下线都走同一条写路径</text>
+
+  <rect class="fl" x="250" y="38" width="200" height="52"/>
+  <text x="350" y="60">Markdown 渲染</text>
+  <text class="small" x="350" y="78">渲染结果落 content_html</text>
+
+  <rect class="fl" x="470" y="38" width="200" height="52"/>
+  <text x="570" y="60">search_text 纯文本</text>
+  <text class="small" x="570" y="78">剥离围栏代码块，不对外展示</text>
+
+  <rect class="idx" x="690" y="38" width="185" height="52"/>
+  <text x="782" y="60">ft_posts_search</text>
+  <text class="small" x="782" y="78">FULLTEXT(title, search_text)</text>
+
+  <line class="ar" x1="232" y1="64" x2="248" y2="64" marker-end="url(#sp)"/>
+  <line class="ar" x1="452" y1="64" x2="468" y2="64" marker-end="url(#sp)"/>
+  <line class="ar" x1="672" y1="64" x2="688" y2="64" marker-end="url(#sp)"/>
+
+  <text class="small" x="450" y="110">MySQL 没有「部分索引」：FULLTEXT 覆盖全表行，可见性靠 WHERE status = 'PUBLISHED' 过滤（复用第 102 天口径）</text>
+
+  <text class="t2" x="450" y="142">查询侧：净化 → 短语匹配 → 相关度排序 → 摘要片段</text>
+
+  <rect class="fl" x="30" y="156" width="270" height="58"/>
+  <text x="165" y="178">q（用户原始输入）</text>
+  <text class="small" x="165" y="196">可能含 + - * " ( ) ~ 等布尔元字符</text>
+
+  <rect class="fl" x="320" y="156" width="270" height="58"/>
+  <text x="455" y="178">净化 + 长度校验</text>
+  <text class="small" x="455" y="196">剥元字符、压缩空白；长度 &lt; 2 → 400</text>
+
+  <rect class="idx" x="610" y="156" width="265" height="58"/>
+  <text x="742" y="176">MATCH(title, search_text)</text>
+  <text class="mono" x="742" y="192">AGAINST(? IN BOOLEAN MODE)</text>
+  <text class="small" x="742" y="207">两列必须同时在 MATCH 里才走索引</text>
+
+  <line class="ar" x1="302" y1="185" x2="318" y2="185" marker-end="url(#sp)"/>
+  <line class="ar" x1="592" y1="185" x2="608" y2="185" marker-end="url(#sp)"/>
+
+  <rect class="ok" x="30" y="230" width="845" height="46"/>
+  <text x="452" y="250">相关度排序 order by score DESC, published_at DESC, id DESC —— score 不是稳定列，故本页用 offset 分页（page×size 封顶 500）</text>
+  <text class="small" x="452" y="266">摘要片段：命中处 ±40 字、HTML 转义、命中词包 &lt;mark&gt; —— 纯函数，上移 mvn test</text>
+
+  <text class="t2" x="220" y="300">ngram 的三个默认值陷阱</text>
+  <text class="t2" x="680" y="300">本项目的三处配置（缺一不可）</text>
+
+  <rect class="warn" x="30" y="314" width="410" height="126"/>
+  <text class="small" x="235" y="336">① ngram_token_size 默认 2，且是只读变量</text>
+  <text class="small" x="235" y="356">   只能写 my.cnf 或启动参数，改后需重启 + 重建索引</text>
+  <text class="small" x="235" y="376">② 默认套用英文停用词表，ngram 剔除「含停用词的词元」</text>
+  <text class="small" x="235" y="396">   → java 的 ja / av / va 含 a，整片被剔除，搜不到</text>
+  <text class="small" x="235" y="416">③ 单字查询命中 0：不足 2 字不成 ngram</text>
+  <text class="small" x="235" y="432">   空格是分隔符：「a bc」只剩 bc</text>
+
+  <rect class="ok" x="460" y="314" width="415" height="126"/>
+  <text class="small" x="667" y="336">① my.cnf: ngram_token_size = 2</text>
+  <text class="small" x="667" y="356">② innodb_ft_enable_stopword = OFF</text>
+  <text class="small" x="667" y="376">   （或自建 CJK 停用词表；改后 OPTIMIZE TABLE 重建）</text>
+  <text class="small" x="667" y="396">③ 查询串净化 + 最小长度 2，否则 400</text>
+  <text class="small" x="667" y="416">   自然语言模式是 OR 并集（召回噪声大），不用</text>
+  <text class="small" x="667" y="432">   布尔模式 = ngram 短语匹配，与「找这个词」意图一致</text>
+
+  <text class="small" x="450" y="466">门禁 search_smoke.py：Q1~Q9 —— 其中 Q7 断言 EXPLAIN 的 key = ft_posts_search，防「索引建了但查询不走」（第 1 周数据库设计页留下的承诺）</text>
+</svg>

@@ -27,9 +27,9 @@
 
 **内存怎么配？** 堆内存（`server.heap.initial/max.size`）服务查询执行与事务状态；页缓存（`server.memory.pagecache.size`）决定热点图数据是否在内存——**页缓存能装下常用子图是图查询快的前提**，两者加起来留够 OS 缓存。粗略起点：页缓存 ≈ 图文件大小，堆 8~16 GB 起步再按 `PROFILE` 调。
 
-**备份怎么做？** Community 只能停机 `dump`；生产用 Enterprise 的在线 `backup`（增量链）+ 定期演练恢复——[备份与容灾](../../Ops/BackupDR/index.md)的 RTO/RPO 方法论完全适用。
+**备份怎么做？** Community 只能停机 `dump`；生产用 Enterprise 的在线 `backup`（增量链）+ 定期演练恢复——[备份与容灾](../../../Ops/BackupDR/index.md)的 RTO/RPO 方法论完全适用。
 
-**监控看什么？** 页缓存命中率（`neo4j.page_cache.hits`）、事务延迟、Raft 提交延迟（集群）、检查点时长。接 Prometheus 的方法见[监控告警专题](../../Ops/Monitoring/index.md)。
+**监控看什么？** 页缓存命中率（`neo4j.page_cache.hits`）、事务延迟、Raft 提交延迟（集群）、检查点时长。接 Prometheus 的方法见[监控告警专题](../../../Ops/Monitoring/index.md)。
 
 ## 升级路径（2026-10 口径）
 
@@ -38,7 +38,7 @@
                     ↑ 必经中转：4.4 不能直跳日历版           ↑ 集群滚动升级不停机
 ```
 
-升级前必做三件事：**重放查询日志**清掉 Cypher 弃用告警（决定 Cypher 5 / Cypher 25 方言）、确认 BTREE 索引已重建为 RANGE/TEXT/POINT/VECTOR、High_limit 库在下一个 LTS 前迁移到 Block 格式（见首页版本表的预告）。这些判据与[数据库版本状态标注的统一约定](../TimeSeries/index.md)一致：主线 + 维护中 + 仅存量，逐条可核对。
+升级前必做三件事：**重放查询日志**清掉 Cypher 弃用告警（决定 Cypher 5 / Cypher 25 方言）、确认 BTREE 索引已重建为 RANGE/TEXT/POINT/VECTOR、High_limit 库在下一个 LTS 前迁移到 Block 格式（见首页版本表的预告）。这些判据与[数据库版本状态标注的统一约定](../../TimeSeries/index.md)一致：主线 + 维护中 + 仅存量，逐条可核对。
 
 ## 上线前自查表
 

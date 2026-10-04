@@ -96,7 +96,7 @@ PR diff 就是上线的全部内容——**审批 PR 就是审批发布**，这�
 2. **ImagePolicy 排序字段选错**：按字母序排 tag，`v2` 会排在 `v10` 前面。数值型 tag 用 `numerical`，时间戳后缀是最稳的排序键。
 3. **机器人 token 权限过大**：CI 机器人只需要**配置仓的写权限**，不需要其他任何仓库，更不需要集群权限。
 4. **PR 自动合并没有保护**：`auto-merge` 只该用于 dev overlay；prod 的分支保护（要求 review、要求状态检查）缺一不可。
-5. **镜像构建完没有 SBOM 与签名**：GitOps 让「谁部署的」可审计，但「部署的是什么」需要 SBOM/cosign 补全，供应链治理见 [安全加固 · SBOM 与软件供应链](../../../Ops/SecurityHardening/SbomSupplyChain/index.md)。
+5. **镜像构建完没有 SBOM 与签名**：GitOps 让「谁部署的」可审计，但「部署的是什么」需要 SBOM/cosign 补全，供应链治理见 [安全加固 · SBOM 与软件供应链](../../../../Ops/SecurityHardening/SbomSupplyChain/index.md)。
 :::
 
 ::: tip 最佳实践
@@ -129,7 +129,7 @@ kubectl -n blog-prod get deploy blog -o jsonpath='{.spec.template.spec.container
 
 - 晋级落到哪些目录：[配置仓库设计与多环境](../RepoStructure/index.md)
 - 发布编排与回滚细节：[渐进发布与回滚](../ProgressiveDelivery/index.md)
-- 流水线本体设计：[CI/CD · 流水线设计](../../../Tools/CICD/PipelineDesign/index.md)
+- 流水线本体设计：[CI/CD · 流水线设计](../../../../Tools/CICD/PipelineDesign/index.md)
 
 ## 参考资料
 

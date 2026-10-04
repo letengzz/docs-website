@@ -136,3 +136,4 @@ for i in 1 2 3; do echo $i; done
 - 把重复操作写成可维护的脚本（变量、流程控制、错误处理、`shellcheck`）：[Linux 进阶 · Shell 脚本编程](../Advanced/ShellScripting/index.md)
 - 让脚本以服务方式常驻运行：[Linux 进阶 · systemd 服务管理](../Advanced/Systemd/index.md)
 - 进阶内容总览：[Linux 进阶](../Advanced/index.md)
+- **分工边界**：本页讲的是"**在服务器上把命令敲对**"（变量、判断、循环、函数的标准写法），语言以 POSIX/bash 为准；[效率工具 · 终端、Shell 与会话复用](../../../Tools/Efficiency/Terminal/index.md)讲的是"**在你自己机器上把操作变快**"（终端模拟器、starship 提示符、tmux 会话复用、zsh 的补全与参数展开）。**同一段语法在两处的取舍不同**：这里优先可移植，那边优先少敲键盘。

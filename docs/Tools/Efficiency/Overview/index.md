@@ -163,10 +163,23 @@ ps -Ao %cpu,pmem,comm | sort -k2 -nr | head -10
 
 预期：常驻的效率类工具 **不超过 3 个**；新增工具后开机时间没有可感知变化。
 
-## 9. 参考资料
+## 9. 两条容易被跳过、但收益很大的补全
+
+上面的"只装五个"清单里没有两样东西——因为它们**不是"工具"，而是"层"**。一旦你开始有远程服务器、超过 10 分钟的构建、或者任何需要定时跑的事，它们会立刻变成刚需。
+
+| 补全 | 解决什么 | 什么时候必须补上 | 去哪看 |
+| --- | --- | --- | --- |
+| **会话复用层**（tmux / zellij） | 进程脱离窗口活着：断线、合盖、终端崩溃后命令继续跑 | 有远程服务器；或任一日常任务超过 10 分钟 | [终端、Shell 与会话复用 · 第 7 节](../Terminal/index.md) |
+| **调度层**（任务计划 / systemd timer / cron） | 无人值守地按时执行，且"错过了能补跑" | 有"每天/每周都要做一次"的事 | [自动化：桌面、调度与脚本 · 第 8~9 节](../Automation/index.md) |
+
+::: warning 说明
+两条补全的判断顺序是**先看"要不要"，再看"用哪个"**。会话复用判据：**你需要过"关掉窗口命令还在跑"吗？** 调度层判据：**这件事的频率 × 耗时 × 稳定性够自动化门槛吗？**（见[自动化页第 2 节](../Automation/index.md)）。两个问题任一答"否"，就先别装。
+:::
+
+## 10. 参考资料
 
 - Windows Terminal 官方文档：[learn.microsoft.com/windows/terminal](https://learn.microsoft.com/zh-cn/windows/terminal/)
 - Windows Terminal 发布说明：[github.com/microsoft/terminal/releases](https://github.com/microsoft/terminal/releases)
 - Microsoft PowerToys 发布说明：[github.com/microsoft/PowerToys/releases](https://github.com/microsoft/PowerToys/releases)
 - PowerShell 生命周期：[learn.microsoft.com/lifecycle/products/powershell](https://learn.microsoft.com/zh-cn/lifecycle/products/powershell)
-- 相关页面：[终端与 Shell 环境](../Terminal/index.md) / [命令行提效](../ShellProductivity/index.md) / [桌面与任务自动化](../Automation/index.md)
+- 相关页面：[终端、Shell 与会话复用](../Terminal/index.md) / [命令行提效与现代 CLI](../ShellProductivity/index.md) / [自动化：桌面、调度与脚本](../Automation/index.md)

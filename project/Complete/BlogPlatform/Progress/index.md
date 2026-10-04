@@ -561,3 +561,57 @@ curl -s -o /dev/null -w '%{http_code}\n' -X DELETE http://127.0.0.1:18080/api/v1
 | 审核开关为什么读侧不感知？ | 开关决定写入初值，读侧只认状态——读写解耦 |
 
 **下一步（第 107 天）**：全文搜索（MySQL ngram 全文索引先行：`ngram_token_size`、`FULLTEXT(title, content)`、`MATCH...AGAINST` 出参与相关度排序、空查询 400），ES 作为中文召回不达标时的后备。里程碑对照：第 3 周（105-111 天）进行中 2/4。
+
+## 2026-10-04（第 107 天）：全文搜索 —— MySQL ngram 先行
+
+:::info 本日为文档产出
+沿用「只沉淀文档」口径。本页记录 [全文搜索：MySQL ngram 先行](../Search/index.md) 的写入侧时机、两处服务端配置、查询净化与短语匹配、`EXPLAIN` 走索引断言，代码与配置在你自己的工程里落地后验证。
+:::
+
+**做了什么**：
+
+1. **`search_text` 与渲染同事务**：复用第 101 天写时渲染机制，发布/编辑/重渲染时一起写；内容取「渲染后纯文本（标题 + 正文）」，**剥离围栏代码块**（大段代码会把相关度拉高）、保留行内代码（`ngram_token_size` 这类术语要能搜）；草稿照写（MySQL 无部分索引），可见性留给查询期 `WHERE status='PUBLISHED'`；
+2. **两处服务端配置（都不是代码问题）**：① `ngram_token_size = 2` 是**只读变量**，只能写 `my.cnf` / 启动参数，改后需重启 **且重建 FULLTEXT 索引**；② `innodb_ft_enable_stopword = OFF`——**ngram 剔除的是「包含停用词的词元」**，默认英文停用词表会让 `java` 被切成 `ja`/`av`/`va`（都含 `a`）而整片剔除、搜不到；它是动态变量但**光改不重建索引无效**；
+3. **索引「建了不用」的口径变断言**：FULLTEXT 建在 `(title, search_text)`，`MATCH()` 的列集合必须与索引定义逐字一致才能吃掉索引；反例 `MATCH(search_text)` **语法合法、结果看着也对，只是全表扫**——唯一能发现它的是 `EXPLAIN` 的 `key` 列，故写成 Q7 门禁；
+4. **查询模式定为布尔模式**：ngram 下 `IN NATURAL LANGUAGE MODE` 是 ngram 词的**并集（OR）**（搜「数据库设计」会命中只含「数据」的文章），`IN BOOLEAN MODE` 是 ngram **短语**匹配（只命中含完整词的文档），后者与「找这个词」的意图一致；代价是必须净化布尔元字符（`+ - * " ( ) ~ @ > <`）+ 最小长度 2（不足 2 字不成 ngram，必然命中 0，直接 400 而不是静默空结果）；
+5. **排序与分页**：排序键写全三级 `score DESC, published_at DESC, id DESC`（同分是常态，少一级就会在页边界重复/漏读）；分页**退回 offset**——游标分页要求排序键是稳定列，而 `score` 是随查询串变化的计算值，keyset 无从下手，改用「`size` 封顶 50 + `page×size` 封顶 500」；只返回 `hasMore`、不精算 `total`（精算要给全文索引再跑一次 `COUNT(*)`），`hasMore` 用多取一条探边；
+6. **摘要片段为服务端纯函数**：命中处 ±40 字、HTML 转义、命中词包 `<mark>`；无命中取前 80 字（不做「直接截前 80 字」，那样用户看不出为什么命中）；
+7. **断言清单 T11~T14 / Q1~Q9**：T11（净化纯函数）/ T12（摘要纯函数）/ T13（三级排序稳定）/ T14（分页边界钳制）上移 `mvn test`（`SearchQueryTest` / `SearchServiceTest`）；Q1~Q9 留在 `search_smoke.py`，其中 **Q7 断言 `EXPLAIN` 的 `key = ft_posts_search`**、**Q9 是停用词回归（搜 `java` 必须命中）**；门禁全集从八道扩到**九道**，`assertion_audit.py` 前缀核查扩展到 `T11~T14` 与 `Q1~Q9`。
+
+**如何验证**：
+
+```shell
+# 前提：MySQL 已配好 ngram_token_size=2 与 innodb_ft_enable_stopword=OFF 并重启，且已重建索引
+cd your-project/service
+mvn test                            # 期望 BUILD SUCCESS；T1~T14 全绿（新增 SearchQueryTest / SearchServiceTest）
+python search_smoke.py --base http://127.0.0.1:18080   # 期望 steps = 9  passed = 9
+python search_smoke.py --selftest                      # 期望 selftest: 9/9（断言可证伪）
+python assertion_audit.py                              # 期望 PASS：T1~T14 / S1~S6 / Q1~Q9 各只出现一次
+
+# 手工抽查
+curl -s 'http://127.0.0.1:18080/api/v1/search?q=全文搜索'      # 期望命中标题含该词的文章、首条 score 最高
+curl -s -o /dev/null -w '%{http_code}\n' 'http://127.0.0.1:18080/api/v1/search?q='        # 期望 400（空查询）
+curl -s -o /dev/null -w '%{http_code}\n' 'http://127.0.0.1:18080/api/v1/search?q=%E6%90%9C' # 期望 400（单字）
+curl -s 'http://127.0.0.1:18080/api/v1/search?q=java'          # 期望非空（Q9：停用词表已关）
+```
+
+```sql
+-- Q7 执行计划：key 必须是 ft_posts_search，为 NULL 则说明 MATCH 列集合与索引定义不一致
+EXPLAIN SELECT id FROM posts
+ WHERE MATCH(title, search_text) AGAINST('全文搜索' IN BOOLEAN MODE) AND status='PUBLISHED';
+```
+
+**问题与决策**：
+
+| 问题 | 决策 |
+| --- | --- |
+| `search_text` 什么时候生成？ | 与渲染同事务。不留「渲染了但搜不到 / 搜到了但页面没内容」的半边窗口 |
+| 围栏代码块进不进索引？ | 不进。大段代码会拉高相关度；行内代码保留 |
+| `ngram_token_size` 要不要调？ | 保持默认 2。只读变量、改它要重启 + 重建索引，代价与收益不成比例；真正要改的是停用词表 |
+| 为什么必须关停用词表？ | ngram 剔除「**包含**停用词的词元」，默认英文表会让 `java` 整片消失——「搜不到却查不出原因」的典型 |
+| 自然语言模式还是布尔模式？ | 布尔模式。NL 在 ngram 下是 OR 并集（噪声大），布尔是短语匹配（与意图一致） |
+| 搜索分页为什么能退回 offset？ | 游标分页要稳定排序键，`score` 是计算值——**这里用不了 keyset**，用上限封顶代替；与评论区的 keyset 是两种不同的正确解 |
+| 为什么断言 `EXPLAIN` 而不只看结果？ | 「建了不用」两条路都通、无报错，只有执行计划能证明索引在起作用 |
+| 单字查询为什么 400 而不是返回空？ | 返回空是静默无结果，用户会以为站内没有；400 让前台能提示「至少输入 2 个字」 |
+
+**下一步（第 108 天）**：前台 SSR——Nuxt 服务端取数与 hydration（`useAsyncData` 与首屏 HTML 一致）、文章列表与详情的 SSR 缓存头、搜索页在服务端渲染时把 Q4 的 400 转成友好提示、SEO 元信息（`title` / `description` / `og:`）由服务端渲进 HTML。判据：查看源代码能看到正文与 TDK；禁用 JavaScript 后页面仍可读。里程碑对照：第 3 周（105-111 天）进行中 3/4。

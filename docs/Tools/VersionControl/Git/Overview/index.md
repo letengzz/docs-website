@@ -69,6 +69,14 @@ git branch -d feature/xxx     # 删除分支（删除指针，不影响提交）
 5. 把大文件提交进仓库，历史永远无法真正删除（除非重写历史）。
 :::
 
+## 阅读体验与脚本：分页器（Pager）
+
+Git 的多数命令默认走分页器（`less`），这带来一个反复踩的坑：**同样的命令，在终端里好用、在脚本或 CI 里却卡住**（等一个永远不来的输入）。
+
+- **`git --no-pager <cmd>`**：明确关掉分页，是脚本、`$(...)`、CI 日志里的**安全写法**。也可整段设 `GIT_PAGER=cat`。
+- **`core.pager` 可换成现代化差异工具**：`git config --global core.pager delta` 即可把 `git diff` / `git log -p` 的输出交给 [delta](../../../Efficiency/ShellProductivity/index.md)，获得并排对比与语法高亮；只想对 diff 生效可用 `pager.diff`。
+- **判据是"输出会被谁读"**：人读 → 让分页器与着色工具接手；机器读 → `--no-pager` 或 `-c core.pager=cat`。二者冲突时（比如在交互式 shell 的函数里捕获输出）以机器读为准。
+
 ## 验证方式
 
 1. `git --version` 确认版本为 2.55.x 或更高。
@@ -81,3 +89,5 @@ git branch -d feature/xxx     # 删除分支（删除指针，不影响提交）
 - Git 官方文档：https://git-scm.com/doc
 - Pro Git 中文版：https://git-scm.com/book/zh/v2
 - Git 2.55 发布说明：https://github.com/git/git/blob/master/Documentation/RelNotes/2.55.0.txt
+- `git config` 手册（`core.pager` / `pager.diff`）：https://git-scm.com/docs/git-config
+- delta（`core.pager` 增强器）：https://github.com/dandavison/delta

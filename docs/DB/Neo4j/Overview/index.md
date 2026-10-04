@@ -58,7 +58,7 @@ CREATE (a:Person {name: '张三', uid: 'u1'})-[:FOLLOWS {since: date('2026-01-15
 
 ## 与存量判断的衔接
 
-[数据建模 · 核心概念](../DataModeling/CoreConcepts/index.md)里说过：「共同关注、二度人脉这类查询在关系型库里代价很高，不建议硬扛，必要时引入图数据库」——本专题就是那句「必要时」的落地手册。[Redis 的集合](../NoRelational/Redis/ListSetZSet/index.md)用 `SINTER` 一跳也能算共同关注，但它**只擅长一跳**；一旦要「关注的人的关注」，Redis 与关系型一起出局。
+[数据建模 · 核心概念](../../DataModeling/CoreConcepts/index.md)里说过：「共同关注、二度人脉这类查询在关系型库里代价很高，不建议硬扛，必要时引入图数据库」——本专题就是那句「必要时」的落地手册。[Redis 的集合](../../NoRelational/Redis/ListSetZSet/index.md)用 `SINTER` 一跳也能算共同关注，但它**只擅长一跳**；一旦要「关注的人的关注」，Redis 与关系型一起出局。
 
 ## 参考资料
 

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">tmux 三层结构：一个 server 管多个会话，一个会话管多个窗口</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">进程活在 session 里，窗口只是「看它的镜头」——镜头关了，进程照跑</text>
+
+  <rect x="28" y="80" width="132" height="36" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="94" y="102.5" text-anchor="middle" font-size="9" fill="#3730A3" font-weight="bold">终端窗口 A（client）</text>
+  <rect x="28" y="126" width="132" height="36" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="94" y="148.5" text-anchor="middle" font-size="9" fill="#3730A3" font-weight="bold">终端窗口 B（client）</text>
+  <text x="94" y="180" text-anchor="middle" font-size="8" fill="#64748B">关窗口只等于 detach</text>
+
+  <line x1="162" y1="116" x2="182" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="184" y="86" width="144" height="52" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="256" y="106" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">tmux server</text>
+  <text x="256" y="123" text-anchor="middle" font-size="7.6" fill="#6D28D9">每用户一个，进程号即入口</text>
+  <text x="256" y="160" text-anchor="middle" font-size="8" fill="#64748B">attach 就是挂回来</text>
+
+  <line x1="330" y1="112" x2="348" y2="112" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="350" y="76" width="382" height="106" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="366" y="94" font-size="9.5" fill="#115E59" font-weight="bold">session「work」</text>
+  <rect x="366" y="102" width="350" height="30" rx="6" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.2"/>
+  <text x="541" y="121" text-anchor="middle" font-size="8" fill="#0F766E">window 1：editor（vim + 一个空面板）</text>
+  <rect x="366" y="138" width="350" height="30" rx="6" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.2"/>
+  <text x="541" y="157" text-anchor="middle" font-size="8" fill="#0F766E">window 2：logs（tail -f / 压测输出）</text>
+
+  <rect x="350" y="192" width="382" height="34" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="541" y="213" text-anchor="middle" font-size="8.6" fill="#065F46">session「debug」——里面跑的进程不会因为窗口关掉而停</text>
+
+  <text x="28" y="266" font-size="10.5" fill="#1E3A8A" font-weight="bold">三个动作，语义完全不同（混用就会丢进程）</text>
+  <rect x="28" y="276" width="228" height="62" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="142" y="296" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">attach　接上</text>
+  <text x="142" y="314" text-anchor="middle" font-size="7.8" fill="#1D4ED8">tmux attach -t work</text>
+  <text x="142" y="329" text-anchor="middle" font-size="7.8" fill="#1D4ED8">同一会话可在多个窗口同时看</text>
+  <rect x="266" y="276" width="228" height="62" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="296" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">detach　断开</text>
+  <text x="380" y="314" text-anchor="middle" font-size="7.8" fill="#0F766E">Prefix + d　或　tmux detach</text>
+  <text x="380" y="329" text-anchor="middle" font-size="7.8" fill="#0F766E">进程继续跑，这是它的全部价值</text>
+  <rect x="504" y="276" width="228" height="62" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="618" y="296" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">kill　终结</text>
+  <text x="618" y="314" text-anchor="middle" font-size="7.8" fill="#B91C1C">Prefix + &amp;　或　tmux kill-session</text>
+  <text x="618" y="329" text-anchor="middle" font-size="7.8" fill="#B91C1C">会话与其中所有程序一起没了</text>
+
+  <rect x="28" y="352" width="704" height="44" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="370" text-anchor="middle" font-size="8.6" fill="#991B1B">tmux kill-server 会终结该 server 下全部会话与正在运行的程序；升级 tmux 后旧 server 仍跑旧版本</text>
+  <text x="380" y="386" text-anchor="middle" font-size="8.6" fill="#991B1B">想只清掉自己这一个，用 kill-session -t &lt;名字&gt;，不要顺手敲 kill-server</text>
+
+  <text x="380" y="422" text-anchor="middle" font-size="9.5" fill="#64748B">判据：ssh 断线、笔记本合盖、终端崩了——重新 attach 后命令的输出还在，说明这一层用对了</text>
+
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

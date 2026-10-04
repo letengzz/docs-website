@@ -123,6 +123,7 @@ export const CompleteProject = [
           { text: "判据收口与分类标签联调", link: "/project/Complete/BlogPlatform/Consolidation/index.md" },
           { text: "评论链路：两级楼层的建模与写入", link: "/project/Complete/BlogPlatform/Comments/index.md" },
           { text: "评论读侧：楼层分页、占位渲染与契约穷举", link: "/project/Complete/BlogPlatform/CommentRead/index.md" },
+          { text: "全文搜索：MySQL ngram 先行", link: "/project/Complete/BlogPlatform/Search/index.md" },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

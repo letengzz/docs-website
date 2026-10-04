@@ -282,6 +282,7 @@ ls -d ~/.m2/repository >/dev/null && echo "m2 cache mounted"
 - [配置同步与团队统一](../ConfigSync/index.md)：环境可复现这一层的完整方法。
 - [Docker](../../../Ops/Docker/index.md)：镜像与 Compose 的基础。
 - [Kubernetes](../../../Ops/Kubernetes/index.md)：部署侧的编排。
+- **容器内环境与本机终端环境的边界**：远程开发把"环境"搬到了远端，但**终端配置不会跟着搬**。容器里通常是一个干净的 `sh`/`bash`，没有你本机的别名、`starship` 提示符和[会话复用器](../../Efficiency/Terminal/index.md)；而 tmux 默认不会装在 devcontainer 镜像里，容器重建时里面的会话也一起消失。两条实用结论：① **本机侧的终端体验归本机管**（Windows Terminal 字体、starship、tmux 配置），**容器侧要用就写进 `devcontainer.json` 的 `postCreateCommand`**，别指望从宿主机继承；② **容器里的长任务要么走 `docker exec` 挂到外层会话，要么在 `tmux` 里手动 `apt-get install` 后 `tmux new -d`**——直接开一个交互式 shell 跑长任务，断线即被杀（对应上面常见坑第 10 条）。
 
 ## 参考资料
 

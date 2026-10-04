@@ -91,7 +91,7 @@ BSON 文档最大 16MB。大对象用 GridFS 或对象存储，文档内不要�
 
 ## 相关专题
 
-- [图数据库 Neo4j](../../Neo4j/index.md)：文档模型擅长「一条记录长什么样」，图模型擅长「记录之间怎么连」——两跳以上的关系查询（社交、权限、知识图谱）不是 MongoDB 的领地
+- [图数据库 Neo4j](../../../Neo4j/index.md)：文档模型擅长「一条记录长什么样」，图模型擅长「记录之间怎么连」——两跳以上的关系查询（社交、权限、知识图谱）不是 MongoDB 的领地
 - [Elasticsearch](../../Elasticsearch/index.md)：同为文档型系统的检索延伸——MongoDB 负责存储与简单查询，全文搜索与聚合分析交给 ES，选型对比见 [ES 概述](../../Elasticsearch/Overview/index.md)
 
 ## 参考资料

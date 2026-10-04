@@ -167,9 +167,10 @@ latest（最新，仅 dev 使用）
 
 ## 相关专题
 
-- [GitOps · 镜像更新与 CI 分工](../../Ops/ContainerOrchestration/GitOps/ImageUpdate/index.md)：集群采用 GitOps 后，**部署动作从流水线挪进集群内控制器**，流水线的最后一环变成「向配置仓提交晋级 PR」——本页讲流水线怎么设计，该页讲 CI/CD 责任边界怎么划
+- [GitOps · 镜像更新与 CI 分工](../../../Ops/ContainerOrchestration/GitOps/ImageUpdate/index.md)：集群采用 GitOps 后，**部署动作从流水线挪进集群内控制器**，流水线的最后一环变成「向配置仓提交晋级 PR」——本页讲流水线怎么设计，该页讲 CI/CD 责任边界怎么划
 - [完整项目交付 · 测试策略与门禁](../../../Others/ProjectDelivery/Testing/index.md)：覆盖率**按模块**设阈值的理由、三档数据隔离的取舍、flaky 当天修或删
 - [完整项目交付](../../../Others/ProjectDelivery/index.md)：本页讲流水线**自身**怎么设计（分阶段、制品、通知），该专题讲**阶段顺序为什么按「失败代价」排**、以及五阶段如何把既有门禁一一挂上去
+- **runner 上不要依赖本机终端环境**：runner 是一个**干净、无 dotfiles、无 home 别名**的容器/机器。本机跑通的自动化脚本搬到 CI 上常因三点失败：① 依赖 `~/.zshrc` 里的别名或 `starship` 提示符（CI 用非交互 `sh`，这些根本不加载）；② 依赖只在本机装了的新 CLI（[eza/delta/ripgrep 等](../../Efficiency/ShellProductivity/index.md)），runner 上没有；③ 依赖交互式行为（分页器、确认提示），CI 里没有 TTY 会挂住。**对策一律是"显式化"**：脚本头部 `set -euo pipefail`、工具用绝对调用的基础命令或显式安装步骤、需要 TTY 的分页器一律 `--no-pager` / `| cat`。判据很简单——**把脚本丢进一个全新的 `debian:stable-slim` 容器里能不能跑**。
 
 ## 参考资料
 

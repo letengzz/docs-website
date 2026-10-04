@@ -114,7 +114,7 @@ exit 1
 
 ## GitOps：Argo CD
 
-GitOps 把 **Git 仓库当作部署的唯一事实来源**：应用清单（Deployment/Service）提交到 Git，Argo CD 监听变更并自动把集群收敛到期望状态。回滚 = 改回 Git 里的旧版本。本节是快速上手；从安装、Project 边界、仓库设计、密钥到回滚演练的**完整专题**见 [GitOps：声明式持续交付](../../Ops/ContainerOrchestration/GitOps/index.md)。
+GitOps 把 **Git 仓库当作部署的唯一事实来源**：应用清单（Deployment/Service）提交到 Git，Argo CD 监听变更并自动把集群收敛到期望状态。回滚 = 改回 Git 里的旧版本。本节是快速上手；从安装、Project 边界、仓库设计、密钥到回滚演练的**完整专题**见 [GitOps：声明式持续交付](../../../Ops/ContainerOrchestration/GitOps/index.md)。
 
 ![GitOps：Argo CD 自动同步](../assets/gitops-argocd.svg)
 

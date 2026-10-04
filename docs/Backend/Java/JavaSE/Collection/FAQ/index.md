@@ -73,14 +73,14 @@ List<String> list = new ArrayList<>(Arrays.asList("a", "b"));
 ## 验证方式
 
 1. 把本 FAQ 的 10 个问题各写成最小 demo，逐个跑一遍，记录异常与输出。
-2. 用 JMH 或简单循环对比 ArrayList/LinkedList 的随机访问和头插性能。注意：手写循环计时很容易被 JIT 优化掉，对比集合性能请用 [JMH 基准测试](../../../../HighPerformanceJava/JMH/index.md)。
+2. 用 JMH 或简单循环对比 ArrayList/LinkedList 的随机访问和头插性能。注意：手写循环计时很容易被 JIT 优化掉，对比集合性能请用 [JMH 基准测试](../../../../HighPerformanceJava/JmhBenchmark/index.md)。
 3. 在 IDEA 中安装 Java Stream Debugger，观察集合遍历与 Stream 执行过程。
 
 ## 参考资料
 
 - 函数式处理集合：[Java 函数式编程](../../FunctionalProgramming/index.md)
-- 集合选型的性能对比怎么做才可信：[JMH 基准测试](../../../../HighPerformanceJava/JMH/index.md)
-- 集合的内存访问代价（数组 vs 链表、原始类型 vs 包装类型）：[内存布局与缓存友好](../../../../HighPerformanceJava/MemoryAccess/index.md)
+- 集合选型的性能对比怎么做才可信：[JMH 基准测试](../../../../HighPerformanceJava/JmhBenchmark/index.md)
+- 集合的内存访问代价（数组 vs 链表、原始类型 vs 包装类型）：[内存布局与缓存友好](../../../../HighPerformanceJava/MemoryLayout/index.md)
 - Oracle 集合教程：https://docs.oracle.com/javase/tutorial/collections/
 - 集合接口 API：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/package-summary.html
 - 并发集合包：https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/package-summary.html
