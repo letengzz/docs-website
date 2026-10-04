@@ -167,3 +167,4 @@ curl -sI http://127.0.0.1:3000/posts/hello-world | grep -i cache-control
 - [可见性收敛](../Visibility/index.md)：R3 的 404 一致性口径来源
 - [Markdown 渲染能力补齐](../Rendering/index.md)：description 的纯文本来源（写时渲染）
 - [测试分层收口](../TestLayers/index.md)：T15/T16 上移 `mvn test` 的分层判据
+- [核心业务流 · 端到端走查](../CoreFlow/EndToEnd/index.md)：SSR 在五段时序中的位置——「身份片段不进 SSR 输出」是走查重点盯的第三个接缝，一条龙 CF3 把「源码含正文与 TDK」固化为链路断言

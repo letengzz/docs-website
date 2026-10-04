@@ -223,6 +223,7 @@ python api/contract_check.py
 ## 七、相关页面
 
 - [文章写入链路](../WritePath/index.md)：第 98 天落地的管理端 CRUD、发布状态机与第三道门禁
+- [核心业务流 · 状态机驱动](../CoreFlow/StateMachine/index.md)：把本页的迁移矩阵延伸成「转移 × 副作用矩阵」——每次迁移牵动的渲染、缓存、搜索与评论语义收口成一张表，改动状态机时按格检查
 - [管理端认证与角色](../AuthRoles/index.md)：本日新增的两个动作沿用 `EDITOR` 角色与「默认拒绝」的鉴权规则
 - [工程骨架与验收门禁](../Skeleton/index.md)：四模块结构与两道门禁的设计
 - [接口契约](../Contract/index.md)：契约文件的位置与校验方式

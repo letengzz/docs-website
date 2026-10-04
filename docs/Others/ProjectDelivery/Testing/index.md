@@ -238,3 +238,7 @@ grep -rn "Thread.sleep" src/test | grep -v "// 已评估" || echo "无固定等�
 - [JaCoCo：覆盖率与 check 规则](https://www.jacoco.org/jacoco/trunk/doc/check-mojo.html)
 - [Awaitility：异步断言](https://github.com/awaitility/awaitility)
 - [Martin Fowler：测试金字塔与实用主义](https://martinfowler.com/articles/practical-test-pyramid.html)
+
+## 相关实战
+
+- [博客平台 · 一条龙回归](/project/Complete/BlogPlatform/CoreFlow/Regression/index.md)（第 110 天）：端到端回归报告的固定五节结构与 CF1~CF14 步骤表——本页「分层职责」中「端到端测试越少越接近用户」一条的完整落档示例，含「实测列只填真跑出来的输出」的报告纪律。

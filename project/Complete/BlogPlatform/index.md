@@ -73,8 +73,9 @@
 | 第 106 天 | 评论读侧：楼层 keyset 分页（游标 = floor，禁 offset）+ 楼内回复全量返回 + 已删楼层「占位保留」口径（修订 S2）+ 契约 401/403 分支穷举评论路径（C1~C10）+ 审核状态读侧生效，`comment_smoke` 扩到 28 步 | ✅ |
 | 第 107 天 | 全文搜索：`search_text` 与渲染同事务 + 两处服务端配置（`ngram_token_size` 只读、`innodb_ft_enable_stopword=OFF`）+ 查询串净化与布尔模式短语匹配 + `EXPLAIN` 走索引断言 + `search_smoke`（9 步），门禁扩到九道 | ✅ |
 | 第 108 天 | 前台 SSR：`useAsyncData` 四纪律 + hydration 三红线 + SEO 元信息（TDK/canonical/og:）+ SSR 缓存头与失效时序 + 搜索页 400 转友好提示 + `ssr_smoke`（R1~R10，10 步），门禁扩到十道 | ✅ |
-| 第 109 天 | 读者账号与权限：账号生命周期五状态 + `users` 扩列与 `user_tokens` 新表 + 令牌轮换与复用检测 + 数据归属（只能动自己的）+ 三处口径收敛；`account_smoke`（22 步），门禁扩到十一道 | ✅ 本日 |
-| 第 110-111 天 | 第 3 周收尾剩余：一条龙回归报告落档、DDL 欠账结清（三段清单与命令本日已定稿，待实测回填） | ⏳ |
+| 第 109 天 | 读者账号与权限：账号生命周期五状态 + `users` 扩列与 `user_tokens` 新表 + 令牌轮换与复用检测 + 数据归属（只能动自己的）+ 三处口径收敛；`account_smoke`（22 步），门禁扩到十一道 | ✅ |
+| 第 110 天 | 核心业务流收口：三个聚合与事务边界 + 转移 × 副作用矩阵 + 字段依赖清单 D1~D10 + 五段时序走查 + 一条龙回归 CF1~CF14（`coreflow_smoke`），门禁扩到十二道 | ✅ 本日 |
+| 第 111 天 | 第 3 周收尾剩余：回归报告实测回填、DDL 欠账结清（判据已定稿，待实测输出） | ⏳ |
 | 第 112-120 天 | 第 4 周：部署 / 监控 / 验收 | ⏳ |
 
 ## 各章节
@@ -96,7 +97,8 @@
 15. [全文搜索：MySQL ngram 先行](./Search/index.md)：`search_text` 写入时机、两处服务端配置、布尔模式短语匹配与净化、`EXPLAIN` 走索引断言
 16. [前台 SSR：服务端取数、hydration 一致与 SEO 元信息](./FrontendSSR/index.md)：`useAsyncData` 四纪律、软 404 透传、TDK/canonical/og:、SSR 缓存头与失效、搜索页服务端渲染
 17. [读者账号与权限](./ReaderAccount/index.md)：账号生命周期、`users` 扩列与 `user_tokens`、令牌轮换与复用检测、数据归属矩阵、SSR 下的登录态与缓存切分
-18. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+18. [核心业务流收口](./CoreFlow/index.md)：三个聚合、转移 × 副作用矩阵、字段依赖清单、五段时序走查、一条龙回归 CF1~CF14 与第 3 周验收结论
+19. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
 
 ## 在你自己的工程里跑起来
 
@@ -111,7 +113,7 @@ mvn spring-boot:run                             # 默认 profile=local：内存�
 ```
 
 ```shell
-# 另开终端：十一道行为门禁（结构 / 只读行为 / 写链路行为 / 状态迁移 / 读侧可见性 / 评论链路 / 全文搜索 / 读者账号 / 前台 SSR / 判据唯一性）
+# 另开终端：十二道行为门禁（结构 / 只读行为 / 写链路行为 / 状态迁移 / 读侧可见性 / 评论链路 / 全文搜索 / 读者账号 / 前台 SSR / 核心业务流一条龙 / 判据唯一性）
 cd your-project/service
 python skeleton_check.py                            # 期望 checks = 27  failed = 0
 python api_smoke.py       --base http://127.0.0.1:18080 # 期望 cases = 9   passed = 9
@@ -122,6 +124,7 @@ python comment_smoke.py   --base http://127.0.0.1:18080 # 期望 steps = 28 pass
 python search_smoke.py    --base http://127.0.0.1:18080 # 期望 steps = 9  passed = 9（全文搜索，第 107 天起；需 MySQL 已按第 107 天配好 ngram 参数）
 python account_smoke.py   --base http://127.0.0.1:18080 # 期望 steps = 22 passed = 22（读者账号，第 109 天起；需先执行 V2 增量 DDL）
 python ssr_smoke.py --base http://127.0.0.1:3000 --api http://127.0.0.1:18080 # 期望 steps = 10 passed = 10（前台 SSR，第 108 天起；需前台已按第 108 天构建并启动）
+python coreflow_smoke.py  --base http://127.0.0.1:18080 # 期望 steps = 14 passed = 14（核心业务流一条龙，第 110 天起；覆盖五段时序与三个接缝）
 python lifecycle_smoke.py --selftest                    # 期望 selftest: 24/24 通过（证明断言不是恒真）
 python search_smoke.py    --selftest                    # 期望 selftest: 9/9 通过
 python account_smoke.py   --selftest                    # 期望 selftest: 22/22 通过
@@ -135,7 +138,7 @@ curl -s 'http://127.0.0.1:18080/api/v1/categories?withCount=true'
                                             # 期望：每个分类都带 postCount；空分类返回 0 而非消失
 ```
 
-各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)；评论链路见[评论链路：两级楼层的建模与写入](./Comments/index.md)与[评论读侧](./CommentRead/index.md)；全文搜索的两处服务端配置与 `EXPLAIN` 断言见[全文搜索：MySQL ngram 先行](./Search/index.md)；前台 SSR 的 `useAsyncData` 纪律、软 404 透传与 SEO 元信息见[前台 SSR](./FrontendSSR/index.md)；读者账号的生命周期、令牌轮换与数据归属矩阵见[读者账号与权限](./ReaderAccount/index.md)。
+各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)；评论链路见[评论链路：两级楼层的建模与写入](./Comments/index.md)与[评论读侧](./CommentRead/index.md)；全文搜索的两处服务端配置与 `EXPLAIN` 断言见[全文搜索：MySQL ngram 先行](./Search/index.md)；前台 SSR 的 `useAsyncData` 纪律、软 404 透传与 SEO 元信息见[前台 SSR](./FrontendSSR/index.md)；读者账号的生命周期、令牌轮换与数据归属矩阵见[读者账号与权限](./ReaderAccount/index.md)；三个聚合、状态机副作用矩阵、字段依赖清单与一条龙回归 CF1~CF14 见[核心业务流收口](./CoreFlow/index.md)。
 
 ## 参考资料
 

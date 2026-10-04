@@ -1,0 +1,90 @@
+<svg viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="430" fill="#f8fafc"/>
+  <text x="340" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#0b162a">转移 × 副作用矩阵：一次状态迁移，一批按序执行的后果</text>
+
+  <!-- header row -->
+  <rect x="22" y="44" width="118" height="30" fill="#e2e8f0"/>
+  <text x="32" y="63" font-size="10" font-weight="700" fill="#334155">动作（合法起点）</text>
+  <rect x="140" y="44" width="196" height="30" fill="#e2e8f0"/>
+  <text x="150" y="63" font-size="10" font-weight="700" fill="#334155">同事务（要么全做要么全不做）</text>
+  <rect x="336" y="44" width="150" height="30" fill="#e2e8f0"/>
+  <text x="346" y="63" font-size="10" font-weight="700" fill="#334155">提交后（失败可重试）</text>
+  <rect x="486" y="44" width="172" height="30" fill="#e2e8f0"/>
+  <text x="496" y="63" font-size="10" font-weight="700" fill="#334155">读者端效果</text>
+
+  <!-- publish -->
+  <rect x="22" y="74" width="118" height="86" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="32" y="94" font-size="10" font-weight="700" fill="#065f46" font-family="Menlo, monospace">publish</text>
+  <text x="32" y="110" font-size="9" fill="#64748b">DRAFT / OFFLINE</text>
+  <text x="32" y="128" font-size="9" fill="#b91c1c">重复发布 409</text>
+  <rect x="140" y="74" width="196" height="86" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="150" y="94" font-size="9" fill="#334155">status=PUBLISHED</text>
+  <text x="150" y="110" font-size="9" fill="#334155">渲染 content_html / toc</text>
+  <text x="150" y="126" font-size="9" fill="#334155">写 search_text（同源）</text>
+  <text x="150" y="142" font-size="9" fill="#334155">published_at 刷新</text>
+  <text x="150" y="156" font-size="9" fill="#b45309">offline_at 清空</text>
+  <rect x="336" y="74" width="150" height="86" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="346" y="94" font-size="9" fill="#334155">删详情 + 列表缓存</text>
+  <text x="346" y="110" font-size="9" fill="#334155">（宁多删不漏删）</text>
+  <text x="346" y="130" font-size="9" fill="#64748b">全文索引在表上，</text>
+  <text x="346" y="146" font-size="9" fill="#64748b">不需要单独同步</text>
+  <rect x="486" y="74" width="172" height="86" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="496" y="94" font-size="9" fill="#334155">详情 200（content_html）</text>
+  <text x="496" y="110" font-size="9" fill="#334155">进列表与分类计数</text>
+  <text x="496" y="126" font-size="9" fill="#334155">可被搜到（布尔模式）</text>
+  <text x="496" y="142" font-size="9" fill="#334155">可被评论</text>
+  <text x="496" y="156" font-size="9" fill="#334155">SSR 缓存按头策略回源</text>
+
+  <!-- unpublish -->
+  <rect x="22" y="160" width="118" height="70" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="32" y="180" font-size="10" font-weight="700" fill="#065f46" font-family="Menlo, monospace">unpublish</text>
+  <text x="32" y="196" font-size="9" fill="#64748b">PUBLISHED</text>
+  <text x="32" y="214" font-size="9" fill="#b91c1c">DRAFT / OFFLINE 409</text>
+  <rect x="140" y="160" width="196" height="70" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="150" y="180" font-size="9" fill="#334155">status=OFFLINE</text>
+  <text x="150" y="196" font-size="9" fill="#334155">offline_at 写入</text>
+  <text x="150" y="216" font-size="9" fill="#64748b">content_html / search_text 留库</text>
+  <rect x="336" y="160" width="150" height="70" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="346" y="180" font-size="9" fill="#334155">删详情 + 列表缓存</text>
+  <text x="346" y="200" font-size="9" fill="#64748b">先提交后删缓存，</text>
+  <text x="346" y="216" font-size="9" fill="#64748b">顺序反了会回填旧值</text>
+  <rect x="486" y="160" width="172" height="70" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="496" y="180" font-size="9" fill="#334155">详情 404（逐字节一致）</text>
+  <text x="496" y="196" font-size="9" fill="#334155">搜索不再命中（WHERE）</text>
+  <text x="496" y="216" font-size="9" fill="#334155">管理端仍可见（不走读者缓存）</text>
+
+  <!-- revoke -->
+  <rect x="22" y="230" width="118" height="56" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="32" y="250" font-size="10" font-weight="700" fill="#065f46" font-family="Menlo, monospace">revoke</text>
+  <text x="32" y="266" font-size="9" fill="#64748b">OFFLINE → DRAFT</text>
+  <text x="32" y="280" font-size="9" fill="#b91c1c">PUBLISHED 409</text>
+  <rect x="140" y="230" width="196" height="56" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="150" y="250" font-size="9" fill="#334155">status=DRAFT</text>
+  <text x="150" y="270" font-size="9" fill="#64748b">渲染产物保留（回到可编辑）</text>
+  <rect x="336" y="230" width="150" height="56" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="346" y="250" font-size="9" fill="#334155">缓存失效（同上）</text>
+  <text x="346" y="270" font-size="9" fill="#64748b">状态本就不可见，双保险</text>
+  <rect x="486" y="230" width="172" height="56" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="496" y="250" font-size="9" fill="#334155">仍是 404（与下线时相同）</text>
+  <text x="496" y="270" font-size="9" fill="#64748b">对外无差别 = 不泄存在性</text>
+
+  <!-- delete -->
+  <rect x="22" y="286" width="118" height="56" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="32" y="306" font-size="10" font-weight="700" fill="#065f46" font-family="Menlo, monospace">delete</text>
+  <text x="32" y="322" font-size="9" fill="#64748b">任意非终态</text>
+  <text x="32" y="336" font-size="9" fill="#b91c1c">DELETED 409（终态）</text>
+  <rect x="140" y="286" width="196" height="56" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="150" y="306" font-size="9" fill="#334155">status=DELETED</text>
+  <text x="150" y="322" font-size="9" fill="#b45309">published_at 清空</text>
+  <rect x="336" y="286" width="150" height="56" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="346" y="306" font-size="9" fill="#334155">缓存失效（同上）</text>
+  <text x="346" y="326" font-size="9" fill="#64748b">软删：行保留，绕不过状态判断</text>
+  <rect x="486" y="286" width="172" height="56" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="496" y="306" font-size="9" fill="#334155">404；历史评论按文章口径保留</text>
+  <text x="496" y="326" font-size="9" fill="#64748b">评论列表按 status 收敛</text>
+
+  <!-- bottom note -->
+  <rect x="22" y="356" width="636" height="58" rx="10" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="38" y="378" font-size="10.5" font-weight="700" fill="#1e40af">矩阵怎么用：每个模块只实现「读状态」，副作用只登记在这一张表里</text>
+  <text x="38" y="398" font-size="9.5" fill="#1e40af">下游各自判断状态 = 判据漂移的起点；判断逻辑收口在 PostStatus 一处（lifecycle_smoke 第 15 步守 offline_at 被清空这类静默错误）</text>
+</svg>

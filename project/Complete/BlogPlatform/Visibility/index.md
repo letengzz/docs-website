@@ -139,6 +139,7 @@ mvn test -Dtest='MarkdownRendererTest,SlugifyTest,PostStatusTest,PostVisibilityT
 ## 七、相关页面
 
 - [文章下线动作](../Lifecycle/index.md)：四态状态机与写侧 409 判据——本页是它的读侧收口
+- [核心业务流 · 端到端走查](../CoreFlow/EndToEnd/index.md)：缓存回填窗口在整条链路中的位置（一条龙 CF11 的「unpublish 后连续两次 GET 均 404」即本页第 ⑤ 步的链路化）
 - [Markdown 渲染能力补齐](../Rendering/index.md)：渲染挂 `PUBLISHED` 转移，本页决定缓存何时失效
 - [管理端认证与角色](../AuthRoles/index.md)：401 先于 403 的写侧判据，与读侧 404 判据合起来构成完整可见性语义
 - [接口契约](../Contract/index.md)：US-02 的原文与本日语义补强

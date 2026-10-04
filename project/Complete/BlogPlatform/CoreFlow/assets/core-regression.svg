@@ -1,0 +1,47 @@
+<svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="420" fill="#f8fafc"/>
+  <text x="340" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#0b162a">一条龙回归报告：五节固定结构，步骤表是它的脊柱</text>
+
+  <!-- report skeleton -->
+  <rect x="22" y="44" width="200" height="352" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="122" y="66" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e3a5f">报告固定五节</text>
+  <text x="38" y="90" font-size="10" font-weight="700" fill="#334155">1. 环境与版本</text>
+  <text x="50" y="106" font-size="9" fill="#64748b">MySQL 8.4 / JDK / Redis / 启动方式</text>
+  <text x="38" y="128" font-size="10" font-weight="700" fill="#334155">2. 门禁矩阵输出</text>
+  <text x="50" y="144" font-size="9" fill="#64748b">十一道门禁的 cases/steps 原样粘贴</text>
+  <text x="38" y="166" font-size="10" font-weight="700" fill="#334155">3. 一条龙步骤表</text>
+  <text x="50" y="182" font-size="9" fill="#64748b">CF1~CF14：命令 / 期望 / 实测 / 结论</text>
+  <text x="38" y="204" font-size="10" font-weight="700" fill="#334155">4. DDL 欠账回填</text>
+  <text x="50" y="220" font-size="9" fill="#64748b">V1+V2 连跑实测输出、SHOW TABLES=8</text>
+  <text x="38" y="242" font-size="10" font-weight="700" fill="#334155">5. 结论与遗留</text>
+  <text x="50" y="258" font-size="9" fill="#64748b">通过项 / 顺延项（压测 → 第 119 天）</text>
+  <text x="38" y="286" font-size="9" fill="#b91c1c">铁律：实测列只填真的跑出来的输出；</text>
+  <text x="38" y="302" font-size="9" fill="#b91c1c">跑不了就写「未跑 + 原因」，</text>
+  <text x="38" y="318" font-size="9" fill="#b91c1c">禁止把期望值抄进实测列。</text>
+  <text x="38" y="344" font-size="9" fill="#64748b">判据不是实测的口径自第 99 天起</text>
+  <text x="38" y="360" font-size="9" fill="#64748b">沿用；报告的价值在「可复核」。</text>
+  <text x="38" y="384" font-size="8.5" fill="#94a3b8">落档：Progress 章当日段落链接</text>
+
+  <!-- chain steps -->
+  <rect x="240" y="44" width="416" height="352" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="256" y="66" font-size="11.5" font-weight="700" fill="#334155">一条龙 14 步（CF1~CF14，覆盖五个环节 + 三个接缝）</text>
+  <text x="256" y="88" font-size="9" fill="#475569" font-family="Menlo, monospace">CF1  作者登录 → 200，aud=admin</text>
+  <text x="256" y="104" font-size="9" fill="#475569" font-family="Menlo, monospace">CF2  建文 → 201 DRAFT；publish → 200</text>
+  <text x="256" y="120" font-size="9" fill="#475569" font-family="Menlo, monospace">CF3  详情 contentHtml 非空；禁 JS 可读</text>
+  <text x="256" y="136" font-size="9" fill="#475569" font-family="Menlo, monospace">CF4  游客搜索命中该文（布尔短语）</text>
+  <text x="256" y="152" font-size="9" fill="#475569" font-family="Menlo, monospace">CF5  游客发评论 401（先于可见性判断）</text>
+  <text x="256" y="168" font-size="9" fill="#475569" font-family="Menlo, monospace">CF6  注册 202（无令牌）→ 验证 → ACTIVE</text>
+  <text x="256" y="184" font-size="9" fill="#475569" font-family="Menlo, monospace">CF7  登录 → Cookie 下发；me/comments 空</text>
+  <text x="256" y="200" font-size="9" fill="#475569" font-family="Menlo, monospace">CF8  读者评论 → 201，楼层号回显</text>
+  <text x="256" y="216" font-size="9" fill="#475569" font-family="Menlo, monospace">CF9  me/comments 含该条且跳回原文</text>
+  <text x="256" y="232" font-size="9" fill="#b45309" font-family="Menlo, monospace">CF10 作者后台列表看到该评论（接缝①）</text>
+  <text x="256" y="248" font-size="9" fill="#b45309" font-family="Menlo, monospace">CF11 unpublish 后读者端立即 404×2（接缝②）</text>
+  <text x="256" y="264" font-size="9" fill="#b45309" font-family="Menlo, monospace">CF12 重新 publish → 搜索恢复命中</text>
+  <text x="256" y="280" font-size="9" fill="#b45309" font-family="Menlo, monospace">CF13 读者注销 → 评论仍在，显示「已注销用户」</text>
+  <text x="256" y="296" font-size="9" fill="#b45309" font-family="Menlo, monospace">CF14 全程 traceId 串得起日志（接缝③）</text>
+  <text x="256" y="324" font-size="9.5" fill="#334155">三个接缝就是「单接口测不出来」的三类：</text>
+  <text x="256" y="340" font-size="9.5" fill="#334155">① 跨端可见（写侧发生的事读侧立刻看到）</text>
+  <text x="256" y="356" font-size="9.5" fill="#334155">② 时序收敛（缓存回填窗口、同事务半边）</text>
+  <text x="256" y="372" font-size="9.5" fill="#334155">③ 身份残留（注销/登出后的显示与缓存）</text>
+  <text x="256" y="392" font-size="8.5" fill="#94a3b8">CF 前缀入 assertion_audit：与前缀 A/B/T/S/Q/C/R 不冲突</text>
+</svg>

@@ -91,6 +91,10 @@ python assertion_audit.py                                  # PASS
 
 ### ② 一条龙：一个读者从注册到注销的完整轨迹
 
+:::tip 第 110 天补记：本节轨迹已扩展为全链路回归
+下面的 9 步骨架在第 110 天扩展为覆盖五个环节 + 三个接缝的 **CF1~CF14**（新增发文与发布、搜索命中、反馈回路可见、下线收敛、traceId 串链），归入第十二道门禁 `coreflow_smoke`，步骤表与回归报告结构见[核心业务流 · 一条龙回归](../CoreFlow/Regression/index.md)。
+:::
+
 ```text
 注册（PENDING，不发令牌）
   → 邮件验证（本地：验证链接从服务端日志取）→ ACTIVE

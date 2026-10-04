@@ -1,0 +1,59 @@
+<svg viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="460" fill="#f8fafc"/>
+  <text x="340" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#0b162a">端到端五段时序：每一段都有身份、动作与守它的门禁</text>
+
+  <!-- lanes header -->
+  <rect x="22" y="44" width="140" height="26" fill="#3b82f6" rx="6"/>
+  <text x="92" y="61" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">作者（后台）</text>
+  <rect x="270" y="44" width="140" height="26" fill="#8b5cf6" rx="6"/>
+  <text x="340" y="61" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">服务端（事务边界）</text>
+  <rect x="518" y="44" width="140" height="26" fill="#10b981" rx="6"/>
+  <text x="588" y="61" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">读者（前台）</text>
+
+  <!-- segment 1 -->
+  <text x="30" y="96" font-size="10.5" font-weight="700" fill="#1e3a5f">① 发文与发布</text>
+  <text x="30" y="114" font-size="9" fill="#475569">登录后台（aud=admin）</text>
+  <text x="30" y="130" font-size="9" fill="#475569">创建 → publish</text>
+  <text x="278" y="114" font-size="9" fill="#5b21b6">同事务：状态 + 渲染三列</text>
+  <text x="278" y="130" font-size="9" fill="#5b21b6">提交后：删详情/列表缓存</text>
+  <text x="526" y="114" font-size="9" fill="#047857">详情 200、进列表</text>
+  <text x="526" y="130" font-size="9" fill="#047857">TDK/og: 渲进 HTML</text>
+
+  <!-- segment 2 -->
+  <text x="30" y="158" font-size="10.5" font-weight="700" fill="#1e3a5f">② 被搜到</text>
+  <text x="30" y="176" font-size="9" fill="#64748b">（无作者动作）</text>
+  <text x="278" y="176" font-size="9" fill="#5b21b6">ngram 布尔模式</text>
+  <text x="278" y="192" font-size="9" fill="#5b21b6">WHERE status='PUBLISHED' 先过滤</text>
+  <text x="526" y="176" font-size="9" fill="#047857">搜索 → 命中 → 点开</text>
+  <text x="526" y="192" font-size="9" fill="#047857">禁 JS 仍可读（SSR）</text>
+
+  <!-- segment 3 -->
+  <text x="30" y="220" font-size="10.5" font-weight="700" fill="#1e3a5f">③ 读者身份</text>
+  <text x="30" y="238" font-size="9" fill="#64748b">（不参与，aud 隔离）</text>
+  <text x="278" y="238" font-size="9" fill="#5b21b6">注册 202 → 验证 ACTIVE</text>
+  <text x="278" y="254" font-size="9" fill="#5b21b6">登录 → Cookie access + refresh</text>
+  <text x="526" y="238" font-size="9" fill="#047857">评论框出现</text>
+  <text x="526" y="254" font-size="9" fill="#047857">（登录态不进 SSR 缓存）</text>
+
+  <!-- segment 4 -->
+  <text x="30" y="282" font-size="10.5" font-weight="700" fill="#1e3a5f">④ 被评论</text>
+  <text x="30" y="300" font-size="9" fill="#64748b">后台评论列表可见</text>
+  <text x="278" y="300" font-size="9" fill="#5b21b6">三约束校验 → 201</text>
+  <text x="278" y="316" font-size="9" fill="#5b21b6">楼层写时分配（root_id、floor）</text>
+  <text x="526" y="300" font-size="9" fill="#047857">发评论 → 楼层号回显</text>
+  <text x="526" y="316" font-size="9" fill="#047857">me/comments 可跳回原文</text>
+
+  <!-- segment 5 -->
+  <text x="30" y="344" font-size="10.5" font-weight="700" fill="#1e3a5f">⑤ 反馈回路</text>
+  <text x="30" y="362" font-size="9" fill="#475569">后台看到新评论</text>
+  <text x="30" y="378" font-size="9" fill="#475569">下线文章 → 读者端 404</text>
+  <text x="278" y="362" font-size="9" fill="#5b21b6">unpublish → 缓存失效</text>
+  <text x="278" y="378" font-size="9" fill="#5b21b6">历史评论占位保留</text>
+  <text x="526" y="362" font-size="9" fill="#047857">已注销作者显示</text>
+  <text x="526" y="378" font-size="9" fill="#047857">「已注销用户」</text>
+
+  <!-- gates band -->
+  <rect x="22" y="398" width="636" height="48" rx="10" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="38" y="418" font-size="10" font-weight="700" fill="#1e40af">守门禁分布：admin_smoke(37) / lifecycle_smoke(24) / visibility_smoke(22) / search_smoke(9) / account_smoke(22) / comment_smoke(28) / ssr_smoke(10)</text>
+  <text x="38" y="436" font-size="9.5" fill="#1e40af">单段正确 ≠ 链路正确：段与段的接缝（缓存回填窗口、同事务半边、SSR 身份片段）由一条龙回归专门守（Regression 页）</text>
+</svg>

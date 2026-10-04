@@ -1,0 +1,49 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="400" fill="#f8fafc"/>
+  <text x="340" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#0b162a">三个聚合：Post / Comment / User，聚合间只传 id</text>
+
+  <!-- Post aggregate -->
+  <rect x="26" y="50" width="200" height="190" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="126" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Post 聚合（根：posts）</text>
+  <text x="40" y="92" font-size="9" fill="#475569" font-family="Menlo, monospace">posts（状态机 + 内容）</text>
+  <text x="40" y="110" font-size="9" fill="#7c3aed" font-family="Menlo, monospace">├ content_html  写时渲染</text>
+  <text x="40" y="126" font-size="9" fill="#7c3aed" font-family="Menlo, monospace">├ toc           同事务生成</text>
+  <text x="40" y="142" font-size="9" fill="#7c3aed" font-family="Menlo, monospace">└ search_text   同事务生成</text>
+  <text x="40" y="164" font-size="9" fill="#475569" font-family="Menlo, monospace">categories / tags（字典）</text>
+  <text x="40" y="186" font-size="9.5" fill="#334155">不变量：对外可见 ⇔ PUBLISHED</text>
+  <text x="40" y="204" font-size="9.5" fill="#334155">渲染产物与内容同生共死，</text>
+  <text x="40" y="220" font-size="9.5" fill="#334155">永远在同一事务里更新。</text>
+  <text x="40" y="236" font-size="8.5" fill="#64748b">定义出处：WritePath / Rendering / Search 章</text>
+
+  <!-- Comment aggregate -->
+  <rect x="244" y="50" width="200" height="190" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="344" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">Comment 聚合（根：comments）</text>
+  <text x="258" y="92" font-size="9" fill="#475569" font-family="Menlo, monospace">comments（两级楼层）</text>
+  <text x="258" y="110" font-size="9" fill="#b45309" font-family="Menlo, monospace">├ root_id = 楼层自身 id</text>
+  <text x="258" y="126" font-size="9" fill="#b45309" font-family="Menlo, monospace">├ floor 写时分配，删除不回收</text>
+  <text x="258" y="142" font-size="9" fill="#b45309" font-family="Menlo, monospace">└ deleted_at 软删，占位保留</text>
+  <text x="258" y="164" font-size="9.5" fill="#334155">不变量：只能评 PUBLISHED；</text>
+  <text x="258" y="180" font-size="9.5" fill="#334155">父评论必须属于同一篇文章；</text>
+  <text x="258" y="196" font-size="9.5" fill="#334155">楼层号与物理删除解耦。</text>
+  <text x="258" y="220" font-size="8.5" fill="#64748b">定义出处：Comments / CommentRead 章</text>
+
+  <!-- User aggregate -->
+  <rect x="462" y="50" width="192" height="190" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+  <text x="558" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">User 聚合（身份与凭据）</text>
+  <text x="476" y="92" font-size="9" fill="#475569" font-family="Menlo, monospace">users（生命周期五态）</text>
+  <text x="476" y="110" font-size="9" fill="#047857" font-family="Menlo, monospace">user_tokens（按族轮换）</text>
+  <text x="476" y="126" font-size="9" fill="#047857" font-family="Menlo, monospace">├ family_id 分族</text>
+  <text x="476" y="142" font-size="9" fill="#047857" font-family="Menlo, monospace">└ 复用检测：整族撤销</text>
+  <text x="476" y="164" font-size="9.5" fill="#334155">不变量：用户行只增不删</text>
+  <text x="476" y="180" font-size="9.5" fill="#334155">（注销 = CLOSED + 打散）；</text>
+  <text x="476" y="196" font-size="9.5" fill="#334155">显示名实时联表，不留快照。</text>
+  <text x="476" y="220" font-size="8.5" fill="#64748b">定义出处：ReaderAccount 章</text>
+
+  <!-- references -->
+  <rect x="26" y="258" width="628" height="118" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="44" y="280" font-size="11" font-weight="700" fill="#334155">跨聚合引用只传 id，事务边界按「谁的不变量被破坏」划</text>
+  <text x="44" y="302" font-size="10" fill="#334155">· comments.user_id / reply_to_user_id → users.id（强引用，所以注销不删行，只改状态与打散字段）</text>
+  <text x="44" y="322" font-size="10" fill="#334155">· comments.post_slug → posts.slug（评审动作前校验 PUBLISHED——读对方状态，不改对方）</text>
+  <text x="44" y="342" font-size="10" fill="#334155">· posts.author_id → users.id（第 1 周即定；同事务写的只有 Post 聚合内部三列，跨聚合不并事务）</text>
+  <text x="44" y="366" font-size="9" fill="#64748b">与 DatabaseDesign 章的分工：那边讲「表怎么建」，本页讲「不变量归谁管、事务边界划在哪」</text>
+</svg>

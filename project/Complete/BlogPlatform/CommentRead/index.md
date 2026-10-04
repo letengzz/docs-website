@@ -144,3 +144,5 @@ curl -s -o /dev/null -w '%{http_code}\n' -X DELETE http://127.0.0.1:18080/api/v1
 ## 四、下一步（第 107 天）
 
 进入第 3 周中段，开始**全文搜索**：MySQL ngram 全文索引先行（`ngram_token_size`、`FULLTEXT(title, content)`、搜索出参与排序口径），判据为「建索引后 `MATCH...AGAINST` 命中标题与正文、结果按相关度排序、空查询 400」。若 ngram 中文召回不达标，Elasticsearch 方案作为后备（依赖库内 [ES 专题](../../../../docs/DB/NoRelational/Elasticsearch/index.md)）。里程碑对照：第 3 周（105-111 天）进行中 2/4。
+
+**后续衔接（第 110 天补记）**：占位保留与「已注销用户」显示口径在端到端链路里的落点是一条龙回归的 CF13（读者注销后评论仍在、作者显示「已注销用户」），见[核心业务流 · 一条龙回归](../CoreFlow/Regression/index.md)；「我的评论是过滤不是权限」的归属判据收口见[核心业务流 · 领域建模](../CoreFlow/DomainModel/index.md)。

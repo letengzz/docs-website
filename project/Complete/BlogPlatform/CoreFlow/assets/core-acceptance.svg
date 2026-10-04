@@ -1,0 +1,36 @@
+<svg viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="380" fill="#f8fafc"/>
+  <text x="340" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#0b162a">第 3 周验收结论与第 4 周交接：判据已齐，实测随报告回填</text>
+
+  <!-- week 3 verdict -->
+  <rect x="22" y="44" width="316" height="200" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+  <text x="180" y="66" text-anchor="middle" font-size="11.5" font-weight="700" fill="#065f46">第 3 周（105-111）里程碑对照</text>
+  <text x="38" y="90" font-size="10" fill="#334155">评论链路通　　comment_smoke 28 步 ✅</text>
+  <text x="38" y="110" font-size="10" fill="#334155">中文搜索可用　search_smoke 9 步 ✅</text>
+  <text x="38" y="130" font-size="10" fill="#334155">前台 SSR 可用　ssr_smoke 10 步 ✅</text>
+  <text x="38" y="150" font-size="10" fill="#334155">读者账号可用　account_smoke 22 步 ✅</text>
+  <text x="38" y="170" font-size="10" fill="#334155">联调通过　　　越权矩阵 + 一条龙判据 ✅</text>
+  <text x="38" y="190" font-size="10" fill="#334155">测试全绿　　　A1~A10 + T/S/Q/C/R 全绿 ✅</text>
+  <text x="38" y="216" font-size="10" fill="#b91c1c">压测达标 ⏳ 明确顺延到第 119 天</text>
+  <text x="38" y="232" font-size="8.5" fill="#64748b">（无稳定部署形态前，数字不可比也不可复用）</text>
+
+  <!-- handover -->
+  <rect x="356" y="44" width="302" height="200" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="507" y="66" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e3a5f">交接第 4 周（112-120）的三件事</text>
+  <text x="372" y="92" font-size="10" font-weight="700" fill="#334155">① 一键部署</text>
+  <text x="384" y="108" font-size="9" fill="#64748b">Compose 四服务 + my.cnf 挂载（ngram 配置进镜像）</text>
+  <text x="372" y="130" font-size="10" font-weight="700" fill="#334155">② 监控接入</text>
+  <text x="384" y="146" font-size="9" fill="#64748b">traceId 已贯穿（CF14）；补指标与告警口径</text>
+  <text x="372" y="168" font-size="10" font-weight="700" fill="#334155">③ 上线验收清单</text>
+  <text x="384" y="184" font-size="9" fill="#64748b">账号十项自查（ReaderAccount · Acceptance 第五节）</text>
+  <text x="384" y="200" font-size="9" fill="#64748b">+ 全项目维度收敛为一张上线清单</text>
+  <text x="372" y="228" font-size="9.5" fill="#1e40af">第 4 周验收判据：Compose 一键起、监控看得到、</text>
+  <text x="372" y="244" font-size="9.5" fill="#1e40af">清单全过、能按文档从零复现</text>
+
+  <!-- risks -->
+  <rect x="22" y="260" width="636" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="40" y="282" font-size="11" font-weight="700" fill="#334155">顺延与风险登记（进第 4 周清单，不允许「忘了它存在」）</text>
+  <text x="40" y="304" font-size="10" fill="#334155">· 压测 → 第 119 天与联调合并成「压 → 定位 → 优化 → 复压」闭环（排期矛盾已在第 109 天写明）</text>
+  <text x="40" y="324" font-size="10" fill="#334155">· 邮件发送未接真实服务 = 上线阻塞项（注册验证流程断在第一环，替换实现是第 4 周必做）</text>
+  <text x="40" y="344" font-size="10" fill="#334155">· DDL 欠账：V1+V2 实测输出随回归报告回填（判据已定稿，见 Regression 页第 4 节）</text>
+</svg>

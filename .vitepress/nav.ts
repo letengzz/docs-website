@@ -2,6 +2,7 @@ export const nav = [
   { text: "首页", link: "/" },
   {
     text: "前端", items: [
+      { text: "前端总览", link: "/docs/Frontend/index.md" },
       { text: "基础", link: "/docs/Frontend/Basic" },
       { text: "框架", link: "/docs/Frontend/Frame" },
       { text: "微前端", link: "/docs/Frontend/MicroFrontend" },
@@ -13,6 +14,7 @@ export const nav = [
   },
   {
     text: "后端", items: [
+      { text: "后端总览", link: "/docs/Backend/index.md" },
       { text: ".Net", link: "/docs/Backend/DotNet" },
       { text: "Go", link: "/docs/Backend/Go" },
       { text: "Go 微服务", link: "/docs/Backend/GoMicroservices" },
@@ -30,6 +32,7 @@ export const nav = [
   {
     text: "数据库",
     items: [
+      { text: "数据库总览", link: "/docs/DB/index.md" },
       { text: "概述", link: "/docs/DB/Overview" },
       { text: "关系型数据库", link: "/docs/DB/Relational" },
       { text: "非关系型数据库", link: "/docs/DB/NoRelational" },
@@ -42,6 +45,7 @@ export const nav = [
   },
   {
     text: "运维", items: [
+      { text: "运维总览", link: "/docs/Ops/index.md" },
       { text: "虚拟机", link: "/docs/Ops/VM" },
       { text: "Linux", link: "/docs/Ops/Linux" },
       { text: "Ansible", link: "/docs/Ops/Ansible" },
@@ -61,6 +65,7 @@ export const nav = [
     ]
   },
   { text: "AI", items: [
+      { text: "AI 总览", link: "/docs/AI/index.md" },
       { text: "大模型应用开发", link: "/docs/AI/LLMApp" },
       { text: "AI 编程助手", link: "/docs/AI/AICodingAssistant" },
       { text: "LangChain", link: "/docs/AI/LangChain" },
@@ -75,6 +80,7 @@ export const nav = [
     ] },
   {
     text: "工具", items: [
+      { text: "工具总览", link: "/docs/Tools/index.md" },
       { text: "构建和依赖管理工具", link: "/docs/Tools/Build" },
       { text: "CI/CD", link: "/docs/Tools/CICD" },
       { text: "数据库客户端", link: "/docs/Tools/DatabaseClients" },
