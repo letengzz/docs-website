@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:16px;fill:#0F172A;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.lt{font-size:14px;fill:#334155;font-weight:600}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="40" text-anchor="middle" class="h">领域事件：用既成事实解耦协作</text>
+<rect x="60" y="90" width="250" height="110" rx="10" class="box blue"/>
+<text x="185" y="125" text-anchor="middle" class="lt">文章上下文</text>
+<text x="185" y="150" text-anchor="middle" class="s">Post.publish() 改状态</text>
+<text x="185" y="178" text-anchor="middle" class="s">提交事务，发出 ArticlePublished</text>
+<rect x="370" y="90" width="200" height="110" rx="10" class="box amber"/>
+<text x="470" y="125" text-anchor="middle" class="lt">事件存储</text>
+<text x="470" y="150" text-anchor="middle" class="s">与业务同一事务落库</text>
+<text x="470" y="178" text-anchor="middle" class="s">（Transactional Outbox）</text>
+<rect x="620" y="90" width="250" height="110" rx="10" class="box green"/>
+<text x="745" y="125" text-anchor="middle" class="lt">搜索上下文</text>
+<text x="745" y="150" text-anchor="middle" class="s">@ApplicationModuleListener</text>
+<text x="745" y="178" text-anchor="middle" class="s">新事务里写索引 · 失败可重投</text>
+<line x1="310" y1="145" x2="370" y2="145" class="line"/>
+<line x1="570" y1="145" x2="620" y2="145" class="line"/>
+<text x="340" y="132" text-anchor="middle" class="s">同事务</text>
+<text x="595" y="132" text-anchor="middle" class="s">异步投递</text>
+<rect x="60" y="240" width="800" height="120" rx="10" class="box"/>
+<text x="460" y="275" text-anchor="middle" class="lt">为什么必须 Outbox：直接发 MQ 会丢事件</text>
+<text x="460" y="305" text-anchor="middle" class="s">「改库成功 + 发 MQ 失败」或「发 MQ 成功 + 回滚」都会造成两个上下文状态不一致</text>
+<text x="460" y="335" text-anchor="middle" class="s">把事件先当一行数据写进自己库，再由发布器投递——业务成功与事件留存要么都成、要么都不成</text>
+<rect x="60" y="390" width="390" height="170" rx="10" class="box rose"/>
+<text x="255" y="425" text-anchor="middle" class="lt">事件设计三条</text>
+<text x="255" y="455" text-anchor="middle" class="s">1. 过去时命名：ArticlePublished，不是 PublishArticle</text>
+<text x="255" y="482" text-anchor="middle" class="s">2. 事件带消费方需要的最小字段（ID + 关键快照）</text>
+<text x="255" y="509" text-anchor="middle" class="s">3. 消费必须幂等——按事件 ID 去重，重投是常态</text>
+<rect x="470" y="390" width="390" height="170" rx="10" class="box blue"/>
+<text x="665" y="425" text-anchor="middle" class="lt">单体阶段 vs 微服务阶段</text>
+<text x="665" y="455" text-anchor="middle" class="s">单体：进程内事件（Spring 事件 / Modulith）</text>
+<text x="665" y="482" text-anchor="middle" class="s">微服务：同一事件模型换成 MQ 投递</text>
+<text x="665" y="509" text-anchor="middle" class="s">事件是接缝——先在进程内跑通，拆分时接缝已经存在</text>
+
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:16px;fill:#0F172A;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.lt{font-size:14px;fill:#334155;font-weight:600}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="40" text-anchor="middle" class="h">实战四步：博客平台「文章发布」域</text>
+<rect x="60" y="90" width="180" height="90" rx="10" class="box blue"/>
+<text x="150" y="125" text-anchor="middle" class="lt">第一步</text>
+<text x="150" y="150" text-anchor="middle" class="s">划上下文</text>
+<text x="150" y="168" text-anchor="middle" class="s">单体的包结构</text>
+<rect x="290" y="90" width="180" height="90" rx="10" class="box amber"/>
+<text x="380" y="125" text-anchor="middle" class="lt">第二步</text>
+<text x="380" y="150" text-anchor="middle" class="s">建聚合</text>
+<text x="380" y="168" text-anchor="middle" class="s">不变量先于表结构</text>
+<rect x="520" y="90" width="180" height="90" rx="10" class="box green"/>
+<text x="610" y="125" text-anchor="middle" class="lt">第三步</text>
+<text x="610" y="150" text-anchor="middle" class="s">定接口</text>
+<text x="610" y="168" text-anchor="middle" class="s">仓储 + 应用服务</text>
+<rect x="750" y="90" width="130" height="90" rx="10" class="box rose"/>
+<text x="815" y="125" text-anchor="middle" class="lt">第四步</text>
+<text x="815" y="150" text-anchor="middle" class="s">接事件</text>
+<text x="815" y="168" text-anchor="middle" class="s">跨域解耦</text>
+<line x1="240" y1="135" x2="290" y2="135" class="line"/>
+<line x1="470" y1="135" x2="520" y2="135" class="line"/>
+<line x1="700" y1="135" x2="750" y2="135" class="line"/>
+<rect x="60" y="220" width="390" height="160" rx="10" class="box"/>
+<text x="255" y="255" text-anchor="middle" class="lt">识别出三个上下文</text>
+<text x="255" y="285" text-anchor="middle" class="s">article：写作、状态机、渲染（核心域）</text>
+<text x="255" y="312" text-anchor="middle" class="s">reader：读者账号、评论互动（核心域）</text>
+<text x="255" y="339" text-anchor="middle" class="s">search：全文检索（支撑域）</text>
+<text x="255" y="366" text-anchor="middle" class="s">一个包一个上下文，边界进 CI 门禁</text>
+<rect x="470" y="220" width="390" height="160" rx="10" class="box"/>
+<text x="665" y="255" text-anchor="middle" class="lt">Post 聚合的不变量清单</text>
+<text x="665" y="285" text-anchor="middle" class="s">已发布 ⟹ slug 全局唯一且非空</text>
+<text x="665" y="312" text-anchor="middle" class="s">已发布 ⟹ 正文渲染结果非空</text>
+<text x="665" y="339" text-anchor="middle" class="s">下线后读者端不可见（404 口径一致）</text>
+<text x="665" y="366" text-anchor="middle" class="s">评论数不在清单里 → 不属于此聚合</text>
+<rect x="60" y="410" width="800" height="150" rx="10" class="box blue"/>
+<text x="460" y="445" text-anchor="middle" class="lt">验证：判据写在测试里，不写在文档里</text>
+<text x="460" y="475" text-anchor="middle" class="s">领域层单测：publish() 转移矩阵逐格断言（MockMvc 进 mvn test）</text>
+<text x="460" y="502" text-anchor="middle" class="s">Modulith verify()：跨上下文非法访问直接构建失败</text>
+<text x="460" y="529" text-anchor="middle" class="s">smoke 断言：发布 → 列表可见 → 搜索命中 → 下线后 404，一条链跑通</text>
+
+</svg>

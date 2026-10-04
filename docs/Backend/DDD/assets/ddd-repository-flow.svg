@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:16px;fill:#0F172A;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.lt{font-size:14px;fill:#334155;font-weight:600}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="40" text-anchor="middle" class="h">仓储：聚合的集合语义，不是数据库的门面</text>
+<rect x="60" y="90" width="200" height="80" rx="10" class="box blue"/>
+<text x="160" y="125" text-anchor="middle" class="lt">应用服务</text>
+<text x="160" y="150" text-anchor="middle" class="s">用例编排 · 事务开启</text>
+<rect x="300" y="90" width="200" height="80" rx="10" class="box amber"/>
+<text x="400" y="125" text-anchor="middle" class="lt">仓储接口（领域层）</text>
+<text x="400" y="150" text-anchor="middle" class="s">findById / save / delete</text>
+<rect x="540" y="90" width="200" height="80" rx="10" class="box green"/>
+<text x="640" y="125" text-anchor="middle" class="lt">仓储实现（基础设施层）</text>
+<text x="640" y="150" text-anchor="middle" class="s">JPA / MyBatis / JDBC</text>
+<rect x="780" y="90" width="100" height="80" rx="10" class="box"/>
+<text x="830" y="135" text-anchor="middle" class="lt">数据库</text>
+<line x1="260" y1="130" x2="300" y2="130" class="line"/>
+<line x1="500" y1="130" x2="540" y2="130" class="line"/>
+<line x1="740" y1="130" x2="780" y2="130" class="line"/>
+<text x="280" y="115" text-anchor="middle" class="s">依赖接口</text>
+<text x="520" y="115" text-anchor="middle" class="s">实现接口</text>
+<rect x="60" y="210" width="380" height="180" rx="10" class="box"/>
+<text x="250" y="245" text-anchor="middle" class="lt">仓储的四条纪律</text>
+<text x="250" y="275" text-anchor="middle" class="s">1. 一个聚合一个仓储——为聚合整体存取，</text>
+<text x="250" y="300" text-anchor="middle" class="s">   不为聚合内部实体单开仓储</text>
+<text x="250" y="330" text-anchor="middle" class="s">2. 接口定义在领域层，实现在基础设施层</text>
+<text x="250" y="360" text-anchor="middle" class="s">3. 返回领域对象，不返回 DTO / Entity 泄漏</text>
+<rect x="480" y="210" width="380" height="180" rx="10" class="box rose"/>
+<text x="670" y="245" text-anchor="middle" class="lt">贫血 vs 充血</text>
+<text x="670" y="275" text-anchor="middle" class="s">贫血：对象只有 getter/setter，</text>
+<text x="670" y="300" text-anchor="middle" class="s">业务逻辑全在 Service——模型名存实亡</text>
+<text x="670" y="335" text-anchor="middle" class="s">充血：不变量校验、状态转移写在</text>
+<text x="670" y="360" text-anchor="middle" class="s">聚合内部，Service 只做编排</text>
+<rect x="60" y="420" width="800" height="140" rx="10" class="box amber"/>
+<text x="460" y="455" text-anchor="middle" class="lt">事务边界 = 聚合边界</text>
+<text x="460" y="485" text-anchor="middle" class="s">一个事务内只改一个聚合；应用服务方法 = 一个事务 = 一个用例</text>
+<text x="460" y="515" text-anchor="middle" class="s">跨聚合协作：先在事务 A 里改聚合并发事件，监听方在新事务里改另一个聚合</text>
+<text x="460" y="542" text-anchor="middle" class="s">判据：事务里出现两个聚合根的 save()，就是聚合切错了或该改用事件</text>
+
+</svg>

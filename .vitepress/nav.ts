@@ -27,7 +27,8 @@ export const nav = [
       { text: "网络编程", link: "/docs/Backend/NetworkProgramming" },
       { text: "Python", link: "/docs/Backend/Python" },
       { text: "Python Web 框架", link: "/docs/Backend/PythonWeb" },
-      { text: "电商系统设计", link: "/docs/Backend/Ecommerce" },]
+      { text: "电商系统设计", link: "/docs/Backend/Ecommerce" },
+      { text: "领域驱动设计", link: "/docs/Backend/DDD" },]
   },
   {
     text: "数据库",

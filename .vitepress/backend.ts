@@ -190,7 +190,17 @@ export const Java = [
               { text: "Spring Security 5.x（仅存量）", link: "/docs/Backend/Java/Frame/SpringSecurity/v5/index.md" },
             ],
           },
-          { text: "Spring Cloud", link: "/docs/Backend/Java/Frame/SpringCloud/index.md" },
+          {
+            text: "Spring Cloud",
+            link: "/docs/Backend/Java/Frame/SpringCloud/index.md",
+            collapsed: true,
+            items: [
+              { text: "Spring Cloud 2020（仅存量）", link: "/docs/Backend/Java/Frame/SpringCloud/SpringCloud2020/Overview/index.md" },
+              { text: "Spring Cloud 2020 · Alibaba", link: "/docs/Backend/Java/Frame/SpringCloud/SpringCloud2020/Alibaba/index.md" },
+              { text: "Spring Cloud 2022（仅存量）", link: "/docs/Backend/Java/Frame/SpringCloud/SpringCloud2022/Overview/index.md" },
+              { text: "Spring Cloud 2022 · Alibaba", link: "/docs/Backend/Java/Frame/SpringCloud/SpringCloud2022/Alibaba/index.md" },
+            ],
+          },
           { text: "MyBatis", link: "/docs/Backend/Java/Frame/MyBatis/index.md" },
           { text: "MyBatis-Plus", link: "/docs/Backend/Java/Frame/MyBatisPlus/index.md" },
           { text: "MyBatis-Flex", link: "/docs/Backend/Java/Frame/MyBatis-Flex/index.md" },
@@ -206,6 +216,7 @@ export const Java = [
               { text: "构建入门程序", link: "/docs/Backend/Java/Frame/Langchain4j/BasicProgram/index.md" },
               { text: "核心概念", link: "/docs/Backend/Java/Frame/Langchain4j/Concepts/index.md" },
               { text: "大语言模型集成", link: "/docs/Backend/Java/Frame/Langchain4j/LlmIntegration/index.md" },
+              { text: "国产大模型集成", link: "/docs/Backend/Java/Frame/Langchain4j/NationalModels/index.md" },
               { text: "提示词模板", link: "/docs/Backend/Java/Frame/Langchain4j/PromptTemplate/index.md" },
               { text: "内存管理", link: "/docs/Backend/Java/Frame/Langchain4j/MemoryManagement/index.md" },
               { text: "链式调用", link: "/docs/Backend/Java/Frame/Langchain4j/Chain/index.md" },
@@ -463,6 +474,23 @@ export const Ecommerce = [
       { text: "支付、幂等与对账", link: "/docs/Backend/Ecommerce/Payment/index.md" },
       { text: "秒杀与流量治理", link: "/docs/Backend/Ecommerce/FlashSale/index.md" },
       { text: "常见问题与排错", link: "/docs/Backend/Ecommerce/FAQ/index.md" },
+    ],
+  },
+];
+export const DDD = [
+  {
+    text: "领域驱动设计",
+    link: "/docs/Backend/DDD/index.md",
+    items: [
+      { text: "DDD 概述", link: "/docs/Backend/DDD/Overview/index.md" },
+      { text: "战略设计", link: "/docs/Backend/DDD/StrategicDesign/index.md" },
+      { text: "战术设计", link: "/docs/Backend/DDD/TacticalDesign/index.md" },
+      { text: "聚合设计", link: "/docs/Backend/DDD/Aggregate/index.md" },
+      { text: "仓储与持久化", link: "/docs/Backend/DDD/Repository/index.md" },
+      { text: "领域事件", link: "/docs/Backend/DDD/DomainEvent/index.md" },
+      { text: "落地架构", link: "/docs/Backend/DDD/Architecture/index.md" },
+      { text: "实战：博客平台文章发布域", link: "/docs/Backend/DDD/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/DDD/FAQ/index.md" },
     ],
   },
 ];

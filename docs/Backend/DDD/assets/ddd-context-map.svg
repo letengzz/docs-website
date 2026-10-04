@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:16px;fill:#0F172A;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.lt{font-size:14px;fill:#334155;font-weight:600}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="40" text-anchor="middle" class="h">六种上下文协作模式：防腐层是默认首选</text>
+<rect x="50" y="80" width="390" height="150" rx="10" class="box blue"/>
+<text x="245" y="115" text-anchor="middle" class="lt">客户-供应商（Customer-Supplier）</text>
+<text x="245" y="145" text-anchor="middle" class="s">上游照顾下游的需求，把下游当客户</text>
+<text x="245" y="170" text-anchor="middle" class="s">适合同一团队/同一公司内部</text>
+<text x="245" y="200" text-anchor="middle" class="s">关键：上游变更要过下游的验收测试</text>
+<rect x="480" y="80" width="390" height="150" rx="10" class="box amber"/>
+<text x="675" y="115" text-anchor="middle" class="lt">遵从者（Conformist）</text>
+<text x="675" y="145" text-anchor="middle" class="s">上游强势且不迁就，下游直接跟随其模型</text>
+<text x="675" y="170" text-anchor="middle" class="s">省掉翻译成本，但模型被上游绑架</text>
+<text x="675" y="200" text-anchor="middle" class="s">适合模型质量高、改动少的上游</text>
+<rect x="50" y="260" width="390" height="150" rx="10" class="box rose"/>
+<text x="245" y="295" text-anchor="middle" class="lt">防腐层（ACL）—— 默认首选</text>
+<text x="245" y="325" text-anchor="middle" class="s">在两个模型之间放一层独立翻译</text>
+<text x="245" y="350" text-anchor="middle" class="s">外部模型的脏概念止步于防腐层</text>
+<text x="245" y="380" text-anchor="middle" class="s">适合对接第三方、遗留系统、外部供应商</text>
+<rect x="480" y="260" width="390" height="150" rx="10" class="box green"/>
+<text x="675" y="295" text-anchor="middle" class="lt">开放主机服务 + 发布语言（OHS+PL）</text>
+<text x="675" y="325" text-anchor="middle" class="s">上游提供稳定的公开协议（如 OpenAPI）</text>
+<text x="675" y="350" text-anchor="middle" class="s">多个下游按同一份契约接入</text>
+<text x="675" y="380" text-anchor="middle" class="s">适合平台型上游服务多个消费方</text>
+<rect x="50" y="440" width="390" height="130" rx="10" class="box"/>
+<text x="245" y="475" text-anchor="middle" class="lt">共享内核（Shared Kernel）</text>
+<text x="245" y="505" text-anchor="middle" class="s">两个上下文共享一小块模型，共同维护</text>
+<text x="245" y="535" text-anchor="middle" class="s">改动必须双方评审——共享越小越好</text>
+<rect x="480" y="440" width="390" height="130" rx="10" class="box"/>
+<text x="675" y="475" text-anchor="middle" class="lt">各行其道（Separate Ways）</text>
+<text x="675" y="505" text-anchor="middle" class="s">不集成，重复建设或放弃该功能</text>
+<text x="675" y="535" text-anchor="middle" class="s">集成成本高于重复成本时的清醒选择</text>
+
+</svg>

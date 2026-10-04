@@ -108,16 +108,21 @@ Spring Cloud 当前稳定 Train 为 **2025.1.x（Oakwood，适配 Spring Boot 4.
 
 ## 历史版本存档
 
-早期整理阶段沉淀在 `SpringCloud/` 下的平铺页面按**原样保留、不删除不覆盖**（AGENTS.md 第 3 节「大版本文档保留、旧内容不改写」的既有约定），仅在此登记状态，便于存量项目查阅：
+早期整理阶段沉淀在 `SpringCloud/` 下的旧版内容按 **AGENTS.md 第 3 节「大版本文档保留、旧内容不改写」** 的约定保留入口，已迁移为规范的「英文目录 + index.md」结构并挂载侧边栏：
 
-| 存档目录 / 文件 | 内容 | 状态 |
+| 存档目录 | 内容 | 状态 |
 | --- | --- | --- |
-| [2020](2020/index.md) | Spring Cloud 2020.x（Ilford，对应 Spring Boot 2.4/2.5）组件概览与 Alibaba 组件笔记 | 仅存量项目使用（2020.0.x 的 OSS 支持早已结束） |
-| `2022/` | Spring Cloud 2022.x（Kilburn，对应 Spring Boot 3.0）笔记、`Nacos Install`、OpenFeign 片段 | 仅存量项目使用，且页面为迁移前的平铺写法（文件名含空格） |
-| `SpringCloud2020/`、`SpringCloud2022/` | 上述两个版本线的另一份草稿 | 仅存量项目使用，内容与上一行高度重复 |
+| [SpringCloud2020](SpringCloud2020/Overview/index.md) | Spring Cloud 2020.x（Ilford，对应 Spring Boot 2.4/2.5）简介与架构图、Alibaba 组件速览（Nacos/Sentinel/Seata 版本表） | 仅存量项目使用（2020.0.x 的 OSS 支持早已结束） |
+| [SpringCloud2022](SpringCloud2022/Overview/index.md) | Spring Cloud 2022.x（Kilburn，对应 Spring Boot 3.0）简介与架构图、Alibaba 组件速览 | 仅存量项目使用 |
 
-::: warning 为什么不做迁移合并
-这四个目录是**同一专题在不同时期的草稿**，内容互相重复且与 [Spring Cloud 完整专题](../../../SpringCloud/index.md) 的权威版本冲突（版本号、组件选型均已过期）。按「已有内容的主题不做重复补全」原则，本页**只登记不合并**——新内容一律写进完整专题，这里只保证链接可达、状态可辨。
+::: warning 2026-10 整理说明
+本轮孤儿页面巡检时处置了四处重复残留，逐文件 `diff` 核对内容唯一性后才删除：
+
+1. `2020/`、`2022/` 两个目录：与 `SpringCloud2020/`、`SpringCloud2022/` 内容**逐字节相同**（另一时期草稿），删除重复副本。
+2. 根目录 `READ1ME.md`（310 行，文件名拼写错误）：内容为 2018 年代 Nacos 1.x 的建库 SQL 全量贴入 + Docker 安装笔记，**Nacos 安装已被 [环境搭建](../../../SpringCloud/Environment/index.md) 的 Nacos 3.x 方案完全覆盖**，删除。
+3. 根目录 `Nacos Install.md`（7 行存根）：同上，删除。
+
+存量页面只做结构迁移与状态标注，**正文不改写**；新内容一律写进 [Spring Cloud 完整专题](../../../SpringCloud/index.md)。
 :::
 
 ## 配图说明

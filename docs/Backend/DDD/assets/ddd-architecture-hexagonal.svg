@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:16px;fill:#0F172A;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.lt{font-size:14px;fill:#334155;font-weight:600}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="40" text-anchor="middle" class="h">落地架构：依赖指向领域层</text>
+<rect x="330" y="80" width="260" height="200" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+<text x="460" y="120" text-anchor="middle" class="lt">领域层（核心）</text>
+<text x="460" y="150" text-anchor="middle" class="s">聚合 · 实体 · 值对象</text>
+<text x="460" y="175" text-anchor="middle" class="s">领域服务 · 领域事件</text>
+<text x="460" y="200" text-anchor="middle" class="s">仓储接口</text>
+<text x="460" y="235" text-anchor="middle" class="s">不依赖任何框架与数据库</text>
+<rect x="60" y="80" width="240" height="200" rx="12" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/>
+<text x="180" y="120" text-anchor="middle" class="lt">应用层</text>
+<text x="180" y="150" text-anchor="middle" class="s">用例编排 · 事务边界</text>
+<text x="180" y="175" text-anchor="middle" class="s">不写业务规则</text>
+<text x="180" y="205" text-anchor="middle" class="s">依赖：应用层 → 领域层</text>
+<rect x="620" y="80" width="240" height="200" rx="12" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+<text x="740" y="120" text-anchor="middle" class="lt">基础设施层</text>
+<text x="740" y="150" text-anchor="middle" class="s">仓储实现 · MQ · 缓存</text>
+<text x="740" y="175" text-anchor="middle" class="s">外部系统客户端</text>
+<text x="740" y="205" text-anchor="middle" class="s">依赖：基础设施 → 领域层</text>
+<line x1="300" y1="180" x2="330" y2="180" class="line"/>
+<line x1="590" y1="180" x2="620" y2="180" class="line"/>
+<rect x="60" y="320" width="800" height="110" rx="10" class="box"/>
+<text x="460" y="355" text-anchor="middle" class="lt">适配器（Adapter）与端口（Port）</text>
+<text x="460" y="385" text-anchor="middle" class="s">入站适配器：REST 控制器、定时任务、消息消费 → 调用应用服务</text>
+<text x="460" y="412" text-anchor="middle" class="s">出站端口：领域层定义的仓储接口 → 基础设施层实现——六边形架构的本质就是「接口属核心，实现属外围」</text>
+<rect x="60" y="460" width="800" height="110" rx="10" class="box amber"/>
+<text x="460" y="495" text-anchor="middle" class="lt">模块化单体：DDD 落地的默认形态</text>
+<text x="460" y="525" text-anchor="middle" class="s">一个部署单元 + 包结构按限界上下文划分 + 架构测试（Spring Modulith verify）把边界变成 CI 门禁</text>
+<text x="460" y="552" text-anchor="middle" class="s">Spring Modulith 2.1.1（2026-10 主线）：包根类型 = 公开 API，internal 子包对外不可见，违规访问让构建失败</text>
+
+</svg>

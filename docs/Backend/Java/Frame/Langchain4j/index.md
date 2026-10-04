@@ -10,7 +10,7 @@
 
 - [Langchain4j 构建入门程序](./BasicProgram/index.md)
 - [Langchain4j 大语言模型集成](./LlmIntegration/index.md)
-- 
+- [国产大模型集成](./NationalModels/index.md) - 通义千问、智谱 GLM、DeepSeek、文心千帆、讯飞星火等国产平台的依赖配置与模型实例代码（OpenAI 兼容 + `langchain4j-community-*` 原生模块两条路线）
 - [Langchain4j 流式响应](./Streaming/index.md)
 - 
 - [核心概念](./Concepts/index.md) - 深入理解 ChatLanguageModel、消息类型（UserMessage、AiMessage、SystemMessage）、提示词模板、RAG 组件以及 Service 类的抽象设计

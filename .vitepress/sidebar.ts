@@ -1,5 +1,5 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
-import { Auth, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, HighPerformanceJava, Java, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, SpringCloud } from "./backend";
+import { Auth, DDD, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, HighPerformanceJava, Java, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, SpringCloud } from "./backend";
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontMicroFrontend, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
@@ -73,7 +73,7 @@ export const sidebar = {
     {
       text: "后端",
       collapsed: true,
-      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce],
+      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...DDD],
     },
   ],
   "/docs/DB": [
@@ -152,6 +152,7 @@ export const sidebar = {
   "/docs/Backend/Python": Python,
   "/docs/Backend/PythonWeb": PythonWeb,
   "/docs/Backend/Ecommerce": Ecommerce,
+  "/docs/Backend/DDD": DDD,
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/Relational": Relational,
   "/docs/DB/Relational/SQLOptimization": SQLOptimization,

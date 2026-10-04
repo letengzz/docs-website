@@ -25,6 +25,10 @@ iBatis一词来源于"internet"和"abatis"的组合，是一个基于Java的持�
 
 > MyBatis基本操作：执行SQL的两种方式(SqlSession发送SQL、Mapper接口发送 SQL)、获取参数的两种方式、插入标签、更新标签、删除标签、查询标签、resultType和resultMap
 
+- [SqlSession 原理](SqlSession.md)
+
+> SqlSession 是 MyBatis 最重要的核心构建：select/insert/update/delete 方法与 Mapper 接口动态代理的关系、Executor/StatementHandler/ParameterHandler/ResultHandler 四大对象、selectOne 语义
+
 - [MyBatis 处理特殊操作](SpecialOperation.md)
 
 > MyBatis处理特殊操作：模糊查询、批量删除、动态设置表名、获取自增的主键、处理字段和属性的映射关系、各类查询功能、批量插入大量数据

@@ -1,3 +1,9 @@
+::: info 版本与维护状态
+
+本组文档面向 **Spring Cloud 2022（Kilburn 线，配套 Spring Boot 3.x / Spring Cloud Alibaba 2022.x）**，为存量教程内容（**仅存量项目使用**，日常新项目请阅读 [Spring Cloud 完整专题](../../../index.md)）。内容保留原貌，不再随新版本更新。
+
+:::
+
 # Spring Cloud简介
 
 Spring Cloud是Spring提供的微服务框架。它利用Spring Boot的开发特性简化了微服务开发的复杂性，例如：**服务发现注册**、**配置中心**、**消息总线**、**负载均衡**、**断路器**、**数据监控**等，这些工作都可以借助Spring Boot的开发风格做到一键启动和部署。
@@ -10,15 +16,15 @@ Spring Cloud的目标是通过一系列组件(一系列框架的有序集合)，
 
 **Spring Cloud的架构图**：
 
-![image-20240117224806591](../assets/springcloud-01.png)
+![image-20240117224806591](../../assets/springcloud-01.png)
 
-![image.png](../assets/springcloud-02.png)
+![image.png](../../assets/springcloud-02.png)
 
-![image_rR3xK4zw_I](../assets/springcloud-03.png)
+![image_rR3xK4zw_I](../../assets/springcloud-03.png)
 
 Spring Cloud实现微服务的治理功能产品很多，Spring Cloud各个产品的作用，以及采用的原则：
 
-![image-20240302123331979](../assets/springcloud-04.png)
+![image-20240302123331979](../../assets/springcloud-04.png)
 
 例：基于Netflix（奈飞）的开源分布式解决方案提供的组件：
 
@@ -40,7 +46,7 @@ Spring Cloud是一个由许多子项目组成的综合项目，各子项目有�
 
 当SpringCloud的发布内容积累到临界点或者一个重大BUG被解决后，会发布一个"service releases"版本，简称SRX版本，比如Greenwich.SR2就是SpringCloud发布的Greenwich版本的第2个SRX版本。
 
-![image-20240405152616569](../assets/springcloud-05.png)
+![image-20240405152616569](../../assets/springcloud-05.png)
 
 **Spring Cloud 和Spring Boot版本对应关系**：
 

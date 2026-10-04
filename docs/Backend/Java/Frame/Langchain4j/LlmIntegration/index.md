@@ -145,6 +145,17 @@ VertexAiChatModel model = VertexAiChatModel.builder()
 
 ## Ollama 本地模型
 
+Ollama 是一个允许在本地运行大语言模型的平台，支持 Windows、macOS 和 Linux 一键安装。安装后先拉取并运行模型（默认在本地 `11434` 端口启动 API 服务），LangChain4j 与该 API 通信，体验与调用云端 API 一致：
+
+```shell
+# 安装 Ollama 后，拉取模型
+ollama pull llama3.2
+ollama pull qwen2
+
+# 运行模型服务（默认监听 http://localhost:11434）
+ollama serve
+```
+
 ### Maven 依赖
 
 ```xml
@@ -227,7 +238,12 @@ String response = model.generate("你好");
 
 ## 下一步
 
+- [国产大模型集成](../NationalModels/index.md) - 通义千问、智谱 GLM、DeepSeek、文心千帆等国产平台的接入方式与代码
 - [提示词模板](../PromptTemplate/index.md) - 学习构建高效的提示词
 - [内存管理](../MemoryManagement/index.md) - 管理对话状态
 - [RAG 检索增强生成](../Rag/index.md) - 构建知识库问答
 - [多模态应用](../../../../../AI/Multimodal/index.md) - 图像、语音与视频链路在应用侧的接法
+
+::: warning 2026-10 整理说明
+本页由早期两份 LLM 集成文档合并而来（原 833 行的 `index2.md` 孤页已拆分）：OpenAI 兼容的国际平台留在本页，**国产大模型平台独立成页**（见上方链接），Ollama 安装步骤已并入本节。
+:::

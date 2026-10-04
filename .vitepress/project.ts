@@ -153,6 +153,14 @@ export const CompleteProject = [
               { text: "第 3 周验收结论与顺延项登记", link: "/project/Complete/BlogPlatform/CoreFlow/Acceptance/index.md" },
             ],
           },
+          {
+            text: "第 3 周收口",
+            link: "/project/Complete/BlogPlatform/Week3Close/index.md",
+            collapsed: true,
+            items: [
+              { text: "第 3 周收口：回归报告回填与第 4 周启动", link: "/project/Complete/BlogPlatform/Week3Close/index.md" },
+            ],
+          },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

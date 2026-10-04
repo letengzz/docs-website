@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:16px;fill:#0F172A;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.lt{font-size:14px;fill:#334155;font-weight:600}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="40" text-anchor="middle" class="h">战术设计六大构件：各自回答一个问题</text>
+<rect x="50" y="80" width="270" height="200" rx="10" class="box blue"/>
+<text x="185" y="115" text-anchor="middle" class="lt">实体 Entity</text>
+<text x="185" y="145" text-anchor="middle" class="s">「它是谁？」</text>
+<text x="185" y="172" text-anchor="middle" class="s">有唯一标识，属性可变</text>
+<text x="185" y="198" text-anchor="middle" class="s">生命周期内身份不变</text>
+<text x="185" y="224" text-anchor="middle" class="s">例：订单号不变的订单</text>
+<text x="185" y="256" text-anchor="middle" class="s">相等性 = 标识相等</text>
+<rect x="330" y="80" width="270" height="200" rx="10" class="box amber"/>
+<text x="465" y="115" text-anchor="middle" class="lt">值对象 Value Object</text>
+<text x="465" y="145" text-anchor="middle" class="s">「它是什么？」</text>
+<text x="465" y="172" text-anchor="middle" class="s">无标识，不可变</text>
+<text x="465" y="198" text-anchor="middle" class="s">整体替换而不是修改</text>
+<text x="465" y="224" text-anchor="middle" class="s">例：金额、地址、时间段</text>
+<text x="465" y="256" text-anchor="middle" class="s">相等性 = 属性相等</text>
+<rect x="610" y="80" width="270" height="200" rx="10" class="box green"/>
+<text x="745" y="115" text-anchor="middle" class="lt">聚合 Aggregate</text>
+<text x="745" y="145" text-anchor="middle" class="s">「谁能一起改？」</text>
+<text x="745" y="172" text-anchor="middle" class="s">一致性边界</text>
+<text x="745" y="198" text-anchor="middle" class="s">内部不变量由聚合根守护</text>
+<text x="745" y="224" text-anchor="middle" class="s">外部只能通过根访问</text>
+<text x="745" y="256" text-anchor="middle" class="s">详见聚合设计一章</text>
+<rect x="50" y="310" width="270" height="200" rx="10" class="box rose"/>
+<text x="185" y="345" text-anchor="middle" class="lt">领域服务 Domain Service</text>
+<text x="185" y="375" text-anchor="middle" class="s">「逻辑放不进单个对象？」</text>
+<text x="185" y="402" text-anchor="middle" class="s">跨实体/跨聚合的纯业务逻辑</text>
+<text x="185" y="428" text-anchor="middle" class="s">无状态，业务语言命名</text>
+<text x="185" y="454" text-anchor="middle" class="s">与应用服务的区别：不含</text>
+<text x="185" y="480" text-anchor="middle" class="s">用例编排、事务、鉴权</text>
+<rect x="330" y="310" width="270" height="200" rx="10" class="box green"/>
+<text x="465" y="345" text-anchor="middle" class="lt">领域事件 Domain Event</text>
+<text x="465" y="375" text-anchor="middle" class="s">「发生过什么？」</text>
+<text x="465" y="402" text-anchor="middle" class="s">过去时命名的既成事实</text>
+<text x="465" y="428" text-anchor="middle" class="s">解耦上下文间协作</text>
+<text x="465" y="454" text-anchor="middle" class="s">例：文章已发布、订单已支付</text>
+<text x="465" y="480" text-anchor="middle" class="s">详见领域事件一章</text>
+<rect x="610" y="310" width="270" height="200" rx="10" class="box blue"/>
+<text x="745" y="345" text-anchor="middle" class="lt">工厂 Factory / 模块 Module</text>
+<text x="745" y="375" text-anchor="middle" class="s">「复杂对象怎么生出来？」</text>
+<text x="745" y="402" text-anchor="middle" class="s">工厂封装复杂创建规则</text>
+<text x="745" y="428" text-anchor="middle" class="s">模块在代码层固化边界</text>
+<text x="745" y="454" text-anchor="middle" class="s">模块化单体是 2026 年</text>
+<text x="745" y="480" text-anchor="middle" class="s">最务实的落地形态</text>
+
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:14px;fill:#334155;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.b{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.ln{stroke:#94A3B8;fill:none;stroke-width:2}</style>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="40" text-anchor="middle" class="h">第 3 周收口：能收的收掉，不能收的显式移交给第 4 周</text>
+<rect x="50" y="80" width="400" height="170" rx="10" class="b green"/>
+<text x="250" y="115" text-anchor="middle" class="t">本周已完成（判据已闭环）</text>
+<text x="250" y="143" text-anchor="middle" class="s">联调通过：十一道门禁 + 越权矩阵 + CF1~CF14</text>
+<text x="250" y="169" text-anchor="middle" class="s">自动化测试全绿：mvn test + 各 smoke selftest</text>
+<text x="250" y="195" text-anchor="middle" class="s">回归报告结构定稿：四件套 + 实测列纪律</text>
+<text x="250" y="221" text-anchor="middle" class="s">里程碑七项对照与风险登记表 7 项</text>
+<rect x="470" y="80" width="400" height="170" rx="10" class="b rose"/>
+<text x="670" y="115" text-anchor="middle" class="t">显式移交给第 4 周（不悬空）</text>
+<text x="670" y="143" text-anchor="middle" class="s">Docker DDL 实测：V1+V2 连跑 + SHOW TABLES</text>
+<text x="670" y="169" text-anchor="middle" class="s">→ Compose 起来后的第一个动作（第 112 天）</text>
+<text x="670" y="195" text-anchor="middle" class="s">压测达标：顺延第 119 天（三处口径一致）</text>
+<text x="670" y="221" text-anchor="middle" class="s">邮件发送真实实现：上线阻塞项</text>
+<rect x="50" y="280" width="820" height="120" rx="10" class="b amber"/>
+<text x="460" y="315" text-anchor="middle" class="t">回归报告实测回填四步（读者在自家工程执行）</text>
+<text x="460" y="345" text-anchor="middle" class="s">① 按环境节启动 app + mysql + redis → ② 逐项跑十二道门禁与 CF1~CF14</text>
+<text x="460" y="372" text-anchor="middle" class="s">③ 实测列只填真跑出来的输出（状态码、字段值、tables_ = 8）</text>
+<text x="460" y="392" text-anchor="middle" class="s">④ 四条合格判据自检：有实测输出、数字是查出来的、无「OK」式措辞、失败项写原因</text>
+<rect x="50" y="430" width="820" height="100" rx="10" class="b blue"/>
+<text x="460" y="465" text-anchor="middle" class="t">第 4 周（112~120 天）：一键部署 → 监控接入 → 上线验收</text>
+<text x="460" y="495" text-anchor="middle" class="s">Compose 四服务（app / mysql / redis / 前台）+ my.cnf 挂载——ngram 两项配置必须进镜像，search_smoke Q9 是部署后第一道验证</text>
+<text x="460" y="517" text-anchor="middle" class="s">出口判据：一键起、看得到、清单全过、能按文档从零复现</text>
+</svg>

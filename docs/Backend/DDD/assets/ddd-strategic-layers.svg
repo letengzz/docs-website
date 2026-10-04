@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:16px;fill:#0F172A;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.lt{font-size:14px;fill:#334155;font-weight:600}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="40" text-anchor="middle" class="h">战略设计：先划地盘，再谈实现</text>
+<rect x="60" y="90" width="240" height="120" rx="10" class="box blue"/>
+<text x="180" y="130" text-anchor="middle" class="lt">核心子域</text>
+<text x="180" y="155" text-anchor="middle" class="s">业务的竞争力所在</text>
+<text x="180" y="178" text-anchor="middle" class="s">投入最好的设计与人力</text>
+<rect x="340" y="90" width="240" height="120" rx="10" class="box amber"/>
+<text x="460" y="130" text-anchor="middle" class="lt">支撑子域</text>
+<text x="460" y="155" text-anchor="middle" class="s">必须有、但不是卖点</text>
+<text x="460" y="178" text-anchor="middle" class="s">简化设计或外包</text>
+<rect x="620" y="90" width="240" height="120" rx="10" class="box green"/>
+<text x="740" y="130" text-anchor="middle" class="lt">通用子域</text>
+<text x="740" y="155" text-anchor="middle" class="s">人人都要、人人一样</text>
+<text x="740" y="178" text-anchor="middle" class="s">直接买现成方案</text>
+<text x="460" y="250" text-anchor="middle" class="s">▼ 每个子域内，按语言与团队边界切出限界上下文</text>
+<rect x="60" y="280" width="240" height="130" rx="10" fill="#F5F3FF" stroke="#8B5CF6"/>
+<text x="180" y="330" text-anchor="middle" class="lt">限界上下文 A</text>
+<text x="180" y="356" text-anchor="middle" class="s">同一套模型与通用语言</text>
+<text x="180" y="380" text-anchor="middle" class="s">「商品」只在此处有唯一定义</text>
+<rect x="340" y="280" width="240" height="130" rx="10" fill="#F5F3FF" stroke="#8B5CF6"/>
+<text x="460" y="330" text-anchor="middle" class="lt">限界上下文 B</text>
+<text x="460" y="356" text-anchor="middle" class="s">独立的模型与通用语言</text>
+<text x="460" y="380" text-anchor="middle" class="s">「商品」在这里可以是 SKU</text>
+<rect x="620" y="280" width="240" height="130" rx="10" fill="#F5F3FF" stroke="#8B5CF6"/>
+<text x="740" y="330" text-anchor="middle" class="lt">限界上下文 C</text>
+<text x="740" y="356" text-anchor="middle" class="s">独立的模型与通用语言</text>
+<text x="740" y="380" text-anchor="middle" class="s">对 B 通过契约协作</text>
+<rect x="60" y="450" width="800" height="110" rx="10" class="box"/>
+<text x="460" y="488" text-anchor="middle" class="lt">上下文映射图（Context Map）：把上下文之间的关系画出来</text>
+<text x="460" y="515" text-anchor="middle" class="s">合作关系 · 共享内核 · 客户-供应商 · 防腐层（ACL） · 开放主机服务 · 发布语言 · 各行其道</text>
+<text x="460" y="540" text-anchor="middle" class="s">映射图是集成策略的说明书，不是组织架构图</text>
+
+</svg>

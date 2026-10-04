@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:16px;fill:#0F172A;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.lt{font-size:14px;fill:#334155;font-weight:600}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="40" text-anchor="middle" class="h">聚合：一次事务只改一个聚合</text>
+<rect x="60" y="80" width="380" height="290" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+<text x="250" y="115" text-anchor="middle" class="lt">聚合：Post（文章）</text>
+<rect x="90" y="140" width="140" height="60" rx="8" fill="#3B82F6"/>
+<text x="160" y="176" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="600">Post（根）</text>
+<rect x="270" y="140" width="140" height="60" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+<text x="340" y="170" text-anchor="middle" class="s">Slug（值对象）</text>
+<text x="340" y="190" text-anchor="middle" class="s">状态 DRAFT/PUBLISHED</text>
+<rect x="270" y="215" width="140" height="60" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+<text x="340" y="245" text-anchor="middle" class="s">标签列表（值对象）</text>
+<rect x="270" y="290" width="140" height="60" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+<text x="340" y="320" text-anchor="middle" class="s">作者ID（只存标识）</text>
+<text x="250" y="360" text-anchor="middle" class="s">不变量：已发布文章必须有唯一 slug 与非空正文</text>
+<rect x="480" y="80" width="380" height="290" rx="12" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+<text x="670" y="115" text-anchor="middle" class="lt">聚合：Comment（评论）</text>
+<rect x="510" y="140" width="150" height="60" rx="8" fill="#10B981"/>
+<text x="585" y="176" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="600">Comment（根）</text>
+<rect x="690" y="140" width="150" height="60" rx="8" fill="#FFFFFF" stroke="#6EE7B7"/>
+<text x="765" y="170" text-anchor="middle" class="s">postId（跨聚合引用</text>
+<text x="765" y="190" text-anchor="middle" class="s">只存 ID，不存对象）</text>
+<rect x="690" y="215" width="150" height="60" rx="8" fill="#FFFFFF" stroke="#6EE7B7"/>
+<text x="765" y="245" text-anchor="middle" class="s">floor（楼层号）</text>
+<text x="585" y="240" text-anchor="middle" class="s">每层楼是内部实体</text>
+<text x="585" y="270" text-anchor="middle" class="s">楼号不可回收是不变量</text>
+<text x="670" y="360" text-anchor="middle" class="s">评论数不是 Post 的不变量 → 不放进 Post 聚合</text>
+<rect x="60" y="400" width="800" height="160" rx="10" class="box rose"/>
+<text x="460" y="435" text-anchor="middle" class="lt">三条铁律</text>
+<text x="460" y="465" text-anchor="middle" class="s">1. 聚合之间只通过标识引用，不持有对方对象引用</text>
+<text x="460" y="492" text-anchor="middle" class="s">2. 一次事务只修改一个聚合；跨聚合一致性交给领域事件 + 最终一致</text>
+<text x="460" y="519" text-anchor="middle" class="s">3. 聚合宁小勿大——大聚合 = 锁竞争 + 合并冲突 + 加载性能全线下滑</text>
+<text x="460" y="546" text-anchor="middle" class="s">判断「谁的不变量被破坏」，而不是「哪些数据经常一起查」</text>
+
+</svg>

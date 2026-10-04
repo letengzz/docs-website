@@ -1,3 +1,9 @@
+::: info 版本与维护状态
+
+本页是 **Spring Cloud 2022（Kilburn 线，配套 Spring Boot 3.x / Spring Cloud Alibaba 2022.x）** 对应的 Spring Cloud Alibaba 组件速览（Nacos / Sentinel / Seata），为存量教程内容（**仅存量项目使用**）。版本号以页面内表格为准，不再随新版本更新；新项目请阅读 [Spring Cloud 完整专题](../../../index.md)。
+
+:::
+
 # 版本选择
 - [SpringCloud](https://spring.io/projects/spring-cloud/#learn)
 - [SpringCloud与SpringCloudAlibaba 版本选择](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
