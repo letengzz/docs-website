@@ -96,6 +96,7 @@ export const nav = [
       { text: "效率工具", link: "/docs/Tools/Efficiency" },
       { text: "测试工具", link: "/docs/Tools/TestingTools" },
       { text: "版本控制工具", link: "/docs/Tools/VersionControl" },
+      { text: "文档体系建设", link: "/docs/Tools/DocsInfra" },
       { text: "其他", link: "/docs/Tools/Others" }
     ]
   },

@@ -204,3 +204,21 @@ export const VC = [
     ],
   },
 ];
+
+export const DocsInfra = [
+  {
+    text: "文档体系建设",
+    link: "/docs/Tools/DocsInfra/index.md",
+    collapsed: true,
+    items: [
+      { text: "文档体系概览", link: "/docs/Tools/DocsInfra/Overview/index.md" },
+      { text: "静态站点生成选型", link: "/docs/Tools/DocsInfra/Ssg/index.md" },
+      { text: "全文搜索", link: "/docs/Tools/DocsInfra/Search/index.md" },
+      { text: "多版本文档", link: "/docs/Tools/DocsInfra/Versioning/index.md" },
+      { text: "写作规范", link: "/docs/Tools/DocsInfra/Standards/index.md" },
+      { text: "文档自动化", link: "/docs/Tools/DocsInfra/Automation/index.md" },
+      { text: "实战：从零搭一个文档站", link: "/docs/Tools/DocsInfra/Practice/index.md" },
+      { text: "常见问题", link: "/docs/Tools/DocsInfra/FAQ/index.md" },
+    ],
+  },
+];

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+  <rect width="880" height="520" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">多版本文档的两种组织方式</text>
+
+  <rect x="40" y="90" width="380" height="46" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="230" y="119" text-anchor="middle" font-size="16" font-weight="bold" fill="#1D4ED8">方式一 · 版本目录（Git 内组织）</text>
+
+  <text x="60" y="172" font-size="13" fill="#334155" font-family="monospace">docs/Backend/Java/Frame/Spring/</text>
+  <text x="80" y="196" font-size="13" fill="#334155" font-family="monospace">├─ Spring5/   仅存量 · 已 EOL</text>
+  <text x="80" y="220" font-size="13" fill="#334155" font-family="monospace">├─ Spring6/   当前主线</text>
+  <text x="80" y="244" font-size="13" fill="#334155" font-family="monospace">└─ index.md  版本入口 + 差异指南</text>
+
+  <rect x="60" y="270" width="340" height="110" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="80" y="296" font-size="13" fill="#334155">✓ 链接即路径，简单直观</text>
+  <text x="80" y="318" font-size="13" fill="#334155">✓ 与仓库大版本规则一致</text>
+  <text x="80" y="340" font-size="13" fill="#334155">✗ 无自动切换器，靠目录页引导</text>
+  <text x="80" y="362" font-size="13" fill="#334155">✗ 版本数多时侧边栏膨胀</text>
+
+  <rect x="460" y="90" width="380" height="46" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="650" y="119" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">方式二 · 生成器内置版本化</text>
+
+  <text x="480" y="172" font-size="13" fill="#334155" font-family="monospace">docusaurus.config.js:</text>
+  <text x="500" y="196" font-size="13" fill="#334155" font-family="monospace">docs/current → v2 快照</text>
+  <text x="500" y="220" font-size="13" fill="#334155" font-family="monospace">/docs → 最新</text>
+  <text x="500" y="244" font-size="13" fill="#334155" font-family="monospace">/docs/2.0.0 → 存量快照</text>
+
+  <rect x="480" y="270" width="340" height="110" rx="8" fill="#FEF9C3" stroke="#EAB308" stroke-width="1.5"/>
+  <text x="500" y="296" font-size="13" fill="#334155">✓ 顶部自动版本切换器</text>
+  <text x="500" y="318" font-size="13" fill="#334155">✓ 断链由工具自动校验</text>
+  <text x="500" y="340" font-size="13" fill="#334155">✗ 快照是副本，修复要打两份</text>
+  <text x="500" y="362" font-size="13" fill="#334155">✗ 仅 Docusaurus 等少数支持</text>
+
+  <rect x="40" y="410" width="800" height="80" rx="10" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+  <text x="70" y="438" font-size="14" font-weight="bold" fill="#334155">本库的落地口径</text>
+  <text x="70" y="462" font-size="13" fill="#334155">用方式一：大版本差异用「官方名 + 大版本号」目录（Spring5/Spring6、Vue2/Vue3），旧版不删除、顶部标维护状态；小版本差异只写 info 块，不建目录</text>
+</svg>

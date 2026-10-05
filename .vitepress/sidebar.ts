@@ -5,7 +5,7 @@ import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_La
 import { FrontBasic, FrontDataVisualization, FrontIntlA11y, FrontMicroFrontend, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, ChaosEngineering, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { CDC, ClickHouse, DBOverview, DataModeling, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
-import { APIDesign, APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
+import { APIDesign, APITools, Build, CICD, Collaboration, DatabaseClients, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 const OthersReview = [
@@ -101,7 +101,7 @@ export const sidebar = {
     {
       text: "工具",
       collapsed: true,
-      items: [...Build, ...CICD, ...DatabaseClients, ...APIDesign, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...Others],
+      items: [...Build, ...CICD, ...DatabaseClients, ...APIDesign, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...DocsInfra, ...Others],
     },
   ],
   "/project": [
@@ -199,6 +199,7 @@ export const sidebar = {
   "/docs/Tools/APITools": APITools,
   "/docs/Tools/APIDesign": APIDesign,
   "/docs/Tools/PackageManager": PackageManager,
+  "/docs/Tools/DocsInfra": DocsInfra,
   "/docs/Tools/Collaboration": Collaboration,
   "/docs/Tools/IDE": IDE,
   "/docs/Tools/Efficiency": Efficiency,

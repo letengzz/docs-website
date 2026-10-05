@@ -26,7 +26,7 @@
 3. 提示容器：:::tip / :::warning / :::danger / :::info / :::details
 
 ## 常用命令
-- pnpm docs:build    # 写完必须跑一次验证
+- pnpm docs:build    # 写完必须跑一次验证（巡检门禁与流水线设计见[文档自动化](../../../Tools/DocsInfra/Automation/index.md)）
 - pnpm lint          # 检查 .vitepress 下配置代码
 
 ## 目录与命名

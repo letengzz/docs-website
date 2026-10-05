@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <rect width="880" height="560" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">实战：一个文档站的完整目录结构</text>
+
+  <rect x="60" y="80" width="420" height="430" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="270" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">docs-site/（读者自建工程）</text>
+  <text x="90" y="140" font-size="13" fill="#334155" font-family="monospace">├─ docs/                    内容源</text>
+  <text x="90" y="164" font-size="13" fill="#334155" font-family="monospace">│  ├─ guide/</text>
+  <text x="90" y="188" font-size="13" fill="#334155" font-family="monospace">│  └─ reference/</text>
+  <text x="90" y="212" font-size="13" fill="#334155" font-family="monospace">├─ .vitepress/</text>
+  <text x="90" y="236" font-size="13" fill="#334155" font-family="monospace">│  ├─ config.mts   站点配置</text>
+  <text x="90" y="260" font-size="13" fill="#334155" font-family="monospace">│  ├─ nav.ts       顶部导航</text>
+  <text x="90" y="284" font-size="13" fill="#334155" font-family="monospace">│  └─ sidebar.ts   侧边栏</text>
+  <text x="90" y="308" font-size="13" fill="#334155" font-family="monospace">├─ scripts/</text>
+  <text x="90" y="332" font-size="13" fill="#334155" font-family="monospace">│  └─ linkcheck.py  巡检门禁</text>
+  <text x="90" y="356" font-size="13" fill="#334155" font-family="monospace">├─ .github/workflows/</text>
+  <text x="90" y="380" font-size="13" fill="#334155" font-family="monospace">│  └─ ci.yml        检查 + 部署</text>
+  <text x="90" y="404" font-size="13" fill="#334155" font-family="monospace">├─ package.json</text>
+  <text x="90" y="428" font-size="13" fill="#334155" font-family="monospace">└─ AGENTS.md        写作规范总纲</text>
+
+  <rect x="520" y="80" width="320" height="200" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="680" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#1D4ED8">三条骨架原则</text>
+  <text x="545" y="140" font-size="13" fill="#334155">① 内容与配置分离：docs/ 只放正文</text>
+  <text x="545" y="166" font-size="13" fill="#334155">② 规范进仓库：AGENTS.md 随代码评审</text>
+  <text x="545" y="192" font-size="13" fill="#334155">③ 门禁可本地复跑：CI 只跑同一条命令</text>
+  <text x="545" y="222" font-size="13" fill="#64748B">「CI 里跑的命令，本地必须能先跑通」</text>
+
+  <rect x="520" y="310" width="320" height="200" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="680" y="340" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803D">验收三步</text>
+  <text x="545" y="370" font-size="13" fill="#334155">① pnpm docs:dev 起本地预览</text>
+  <text x="545" y="396" font-size="13" fill="#334155">② python scripts/linkcheck.py 全绿</text>
+  <text x="545" y="422" font-size="13" fill="#334155">③ push 后 Actions 构建成功、站点可访问</text>
+  <text x="545" y="452" font-size="13" fill="#64748B">收尾可验证：访问首页与一个深层页面</text>
+  <text x="545" y="478" font-size="13" fill="#64748B">确认侧边栏、搜索、锚点均正常</text>
+</svg>

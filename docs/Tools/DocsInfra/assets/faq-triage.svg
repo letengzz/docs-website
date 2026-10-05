@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <rect width="880" height="480" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">文档站故障分诊树：从现象到处置</text>
+
+  <rect x="330" y="80" width="220" height="50" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="440" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#1D4ED8">站点出问题了？</text>
+
+  <path d="M440 130 L 440 160 M440 160 L 150 160 L 150 190 M440 160 L 440 190 M440 160 L 730 160 L 730 190" stroke="#64748B" stroke-width="2" fill="none"/>
+
+  <rect x="40" y="190" width="220" height="120" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="150" y="218" text-anchor="middle" font-size="15" font-weight="bold" fill="#B91C1C">打不开 / 白屏</text>
+  <text x="150" y="244" text-anchor="middle" font-size="12" fill="#334155">查 base 与部署路径是否一致</text>
+  <text x="150" y="266" text-anchor="middle" font-size="12" fill="#334155">查构建产物是否发布成功</text>
+  <text x="150" y="288" text-anchor="middle" font-size="12" fill="#334155">回滚上一个构建产物止血</text>
+
+  <rect x="330" y="190" width="220" height="120" rx="10" fill="#FEF9C3" stroke="#EAB308" stroke-width="2"/>
+  <text x="440" y="218" text-anchor="middle" font-size="15" font-weight="bold" fill="#A16207">部分页面异常</text>
+  <text x="440" y="244" text-anchor="middle" font-size="12" fill="#334155">图片 404 → 查相对路径</text>
+  <text x="440" y="266" text-anchor="middle" font-size="12" fill="#334155">内容缺失 → 查未闭合围栏</text>
+  <text x="440" y="288" text-anchor="middle" font-size="12" fill="#334155">锚点失效 → 查标题跳级</text>
+
+  <rect x="620" y="190" width="220" height="120" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="730" y="218" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803D">内容不对</text>
+  <text x="730" y="244" text-anchor="middle" font-size="12" fill="#334155">版本不适配 → 标注维护状态</text>
+  <text x="730" y="266" text-anchor="middle" font-size="12" fill="#334155">事实过期 → 联网核对后更新</text>
+  <text x="730" y="288" text-anchor="middle" font-size="12" fill="#334155">重复分叉 → 合并为单一来源</text>
+
+  <rect x="40" y="350" width="800" height="90" rx="10" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+  <text x="70" y="378" font-size="14" font-weight="bold" fill="#334155">分诊总原则</text>
+  <text x="70" y="402" font-size="13" fill="#334155">先止血（回滚构建产物）再根因（查巡检报告与构建日志）；每次故障修复后反问一句——</text>
+  <text x="70" y="424" font-size="13" fill="#334155">「这个错误能不能被现有门禁拦住？」不能就补一条巡检规则，让同类问题不再靠人眼发现。</text>
+</svg>

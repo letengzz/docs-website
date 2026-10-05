@@ -61,7 +61,7 @@ PowerDesigner 的核心价值在**大型组织**：一份模型可以有概念�
 
 ### Mermaid
 
-VitePress、GitHub、GitLab 原生支持 `erDiagram`，写在 Markdown 里就能渲染，零成本进 Git：
+VitePress、GitHub、GitLab 原生支持 `erDiagram`，写在 Markdown 里就能渲染，零成本进 Git（示意图与配图规范见[写作规范](../../../Tools/DocsInfra/Standards/index.md)）：
 
 ```mermaid
 erDiagram

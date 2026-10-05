@@ -1,5 +1,7 @@
 # 开源软件许可证
 
+<p style="text-align:center;"><img src="./assets/opensource-license-logo.png" style="zoom:75%;" /></p>
+
 开源软件许可证是开源软件的开发者与使用者之间的法律协议。它规定了使用者在获取、使用、修改和分发开源软件时的权利和限制。
 
 ## 什么是开源软件许可证

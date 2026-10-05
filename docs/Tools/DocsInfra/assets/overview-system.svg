@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <rect width="880" height="560" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">文档体系全景：源文件到读者的四层流水线</text>
+
+  <rect x="40" y="90" width="800" height="70" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="70" y="120" font-size="16" font-weight="bold" fill="#1D4ED8">第 1 层 · 内容源</text>
+  <text x="70" y="144" font-size="13" fill="#334155">Markdown 源文件 + 配图 assets/ + 版本目录（Spring5/Spring6）——全部进 Git，改动可评审、可回滚</text>
+
+  <rect x="40" y="185" width="800" height="70" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="70" y="215" font-size="16" font-weight="bold" fill="#15803D">第 2 层 · 构建与校验</text>
+  <text x="70" y="239" font-size="13" fill="#334155">静态站点生成（VitePress / Docusaurus…）+ 巡检门禁（死链 / 表格 / 围栏 / 侧边栏一致性）——构建不过不上线</text>
+
+  <rect x="40" y="280" width="800" height="70" rx="10" fill="#FEF9C3" stroke="#EAB308" stroke-width="2"/>
+  <text x="70" y="310" font-size="16" font-weight="bold" fill="#A16207">第 3 层 · 站点能力</text>
+  <text x="70" y="334" font-size="13" fill="#334155">导航与侧边栏 + 全文搜索 + 多版本入口 + 深链锚点——读者「找得到、看得懂、回得来」的三件套</text>
+
+  <rect x="40" y="375" width="800" height="70" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="70" y="405" font-size="16" font-weight="bold" fill="#BE185D">第 4 层 · 分发与反馈</text>
+  <text x="70" y="429" font-size="13" fill="#334155">CI 自动部署到静态托管 + 构建产物可回滚 + 读者反馈入口（页面底部「发现问题」链接）</text>
+
+  <path d="M 440 445 L 440 490" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+  <rect x="240" y="490" width="400" height="44" rx="10" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+  <text x="440" y="517" text-anchor="middle" font-size="14" fill="#334155">四层任何一层缺失，都会在「读者搜不到 / 内容过期 / 链接断裂」处还债</text>
+</svg>

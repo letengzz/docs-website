@@ -160,7 +160,7 @@ grep -rEn '\]\((\.\.?/)+[^)]+\.md\)' docs --include='*.md' | head -40
 
 - [知识体系整理（前一版）](../../Review/KnowledgeMap/index.md)
 ```
-VitePress 会在构建时校验相对路径，断链会在 `pnpm docs:build` 中暴露出来。
+VitePress 会在构建时校验相对路径，断链会在 `pnpm docs:build` 中暴露出来；配合独立死链巡检与 CI 门禁的做法见[文档自动化](../../../Tools/DocsInfra/Automation/index.md)。
 :::
 
 ## 五、不反弹的维护机制

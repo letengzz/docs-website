@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600">
+  <rect width="880" height="600" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">文档 SSG 选型版图（2026-10 状态）</text>
+
+  <rect x="40" y="90" width="256" height="180" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="168" y="120" text-anchor="middle" font-size="17" font-weight="bold" fill="#1D4ED8">VitePress</text>
+  <text x="168" y="146" text-anchor="middle" font-size="13" fill="#334155">Vue / Vite 驱动，构建最快</text>
+  <text x="168" y="168" text-anchor="middle" font-size="13" fill="#334155">稳定线 1.6.4（2025-08）</text>
+  <text x="168" y="190" text-anchor="middle" font-size="13" fill="#334155">2.0 处于 alpha（2026-09）</text>
+  <text x="168" y="216" text-anchor="middle" font-size="13" fill="#334155">内建本地搜索（MiniSearch）</text>
+  <text x="168" y="244" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">Vue 团队 / 求快 → 首选</text>
+
+  <rect x="312" y="90" width="256" height="180" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="440" y="120" text-anchor="middle" font-size="17" font-weight="bold" fill="#15803D">Docusaurus</text>
+  <text x="440" y="146" text-anchor="middle" font-size="13" fill="#334155">React / MDX，生态最全</text>
+  <text x="440" y="168" text-anchor="middle" font-size="13" fill="#334155">3.10.2（2026-07），v4 在路上</text>
+  <text x="440" y="190" text-anchor="middle" font-size="13" fill="#334155">内置多版本 + i18n</text>
+  <text x="440" y="216" text-anchor="middle" font-size="13" fill="#334155">插件生态最大</text>
+  <text x="440" y="244" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803D">要版本化 / i18n → 首选</text>
+
+  <rect x="584" y="90" width="256" height="180" rx="10" fill="#FEF9C3" stroke="#EAB308" stroke-width="2"/>
+  <text x="712" y="120" text-anchor="middle" font-size="17" font-weight="bold" fill="#A16207">Rspress / Starlight</text>
+  <text x="712" y="146" text-anchor="middle" font-size="13" fill="#334155">Rspack / Astro 内容优先</text>
+  <text x="712" y="168" text-anchor="middle" font-size="13" fill="#334155">Rspress 2.0.21 · 活跃</text>
+  <text x="712" y="190" text-anchor="middle" font-size="13" fill="#334155">Starlight 0.42.0 · pre-1.0</text>
+  <text x="712" y="216" text-anchor="middle" font-size="13" fill="#334155">llms.txt 等新能力跟进快</text>
+  <text x="712" y="244" text-anchor="middle" font-size="13" font-weight="bold" fill="#A16207">新项目尝鲜可评估</text>
+
+  <rect x="40" y="300" width="380" height="150" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="230" y="330" text-anchor="middle" font-size="17" font-weight="bold" fill="#B91C1C">MkDocs Material：维护模式</text>
+  <text x="230" y="356" text-anchor="middle" font-size="13" fill="#334155">MkDocs 1.6.1（2024-08）后无发版</text>
+  <text x="230" y="378" text-anchor="middle" font-size="13" fill="#334155">主题 9.7.x 维护模式（2025-11 起）</text>
+  <text x="230" y="400" text-anchor="middle" font-size="13" fill="#334155">关键修复承诺到 2026-11</text>
+  <text x="230" y="426" text-anchor="middle" font-size="13" font-weight="bold" fill="#B91C1C">新项目不要起，存量评估 Zensical</text>
+
+  <rect x="460" y="300" width="380" height="150" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="650" y="330" text-anchor="middle" font-size="17" font-weight="bold" fill="#475569">Docsify：无构建</text>
+  <text x="650" y="356" text-anchor="middle" font-size="13" fill="#334155">5.0.0（2026-07）转稳定</text>
+  <text x="650" y="378" text-anchor="middle" font-size="13" fill="#334155">浏览器现场渲染 Markdown</text>
+  <text x="650" y="400" text-anchor="middle" font-size="13" fill="#334155">爬虫拿到的是空壳 HTML</text>
+  <text x="650" y="426" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">仅内网 / 登录后文档可用</text>
+
+  <rect x="40" y="490" width="800" height="70" rx="10" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+  <text x="70" y="518" font-size="14" font-weight="bold" fill="#334155">选型四问</text>
+  <text x="70" y="542" font-size="13" fill="#334155">① 团队技术栈（Vue→VitePress，React→Docusaurus）② 需不需要内置多版本 / i18n ③ 站点是否要被搜索引擎与 AI 爬虫收录 ④ 存量站点的迁移成本</text>
+</svg>

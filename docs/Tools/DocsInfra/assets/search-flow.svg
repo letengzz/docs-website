@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <rect width="880" height="480" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">文档站全文搜索的两条路线</text>
+
+  <rect x="40" y="90" width="380" height="46" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="230" y="119" text-anchor="middle" font-size="16" font-weight="bold" fill="#1D4ED8">路线 A · 构建期本地索引</text>
+
+  <rect x="60" y="170" width="150" height="70" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <text x="135" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">构建时</text>
+  <text x="135" y="222" text-anchor="middle" font-size="12" fill="#64748B">爬全部页面</text>
+  <path d="M210 205 L 250 205" stroke="#64748B" stroke-width="2" marker-end="url(#ar1)"/>
+  <rect x="255" y="170" width="150" height="70" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <text x="330" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">生成索引</text>
+  <text x="330" y="222" text-anchor="middle" font-size="12" fill="#64748B">MiniSearch JSON</text>
+  <path d="M330 240 L 330 280" stroke="#64748B" stroke-width="2" marker-end="url(#ar1)"/>
+  <rect x="255" y="285" width="150" height="70" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <text x="330" y="315" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">浏览器加载</text>
+  <text x="330" y="337" text-anchor="middle" font-size="12" fill="#64748B">按需分片拉取</text>
+  <path d="M255 320 L 215 320" stroke="#64748B" stroke-width="2" marker-end="url(#ar1)"/>
+  <rect x="60" y="285" width="150" height="70" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="135" y="315" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">本地即时查询</text>
+  <text x="135" y="337" text-anchor="middle" font-size="12" fill="#64748B">零外部依赖</text>
+
+  <rect x="460" y="90" width="380" height="46" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="650" y="119" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">路线 B · 托管搜索服务</text>
+
+  <rect x="480" y="170" width="150" height="70" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <text x="555" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">部署后</text>
+  <text x="555" y="222" text-anchor="middle" font-size="12" fill="#64748B">爬虫抓取站点</text>
+  <path d="M630 205 L 670 205" stroke="#64748B" stroke-width="2" marker-end="url(#ar1)"/>
+  <rect x="675" y="170" width="150" height="70" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <text x="750" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">云端建索引</text>
+  <text x="750" y="222" text-anchor="middle" font-size="12" fill="#64748B">Algolia 等</text>
+  <path d="M750 240 L 750 280" stroke="#64748B" stroke-width="2" marker-end="url(#ar1)"/>
+  <rect x="675" y="285" width="150" height="70" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <text x="750" y="315" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">前端调 API</text>
+  <text x="750" y="337" text-anchor="middle" font-size="12" fill="#64748B">打点 / 排序/AB</text>
+  <path d="M675 320 L 635 320" stroke="#64748B" stroke-width="2" marker-end="url(#ar1)"/>
+  <rect x="480" y="285" width="150" height="70" rx="8" fill="#FEF9C3" stroke="#EAB308" stroke-width="2"/>
+  <text x="555" y="315" text-anchor="middle" font-size="14" font-weight="bold" fill="#A16207">中文体验好</text>
+  <text x="555" y="337" text-anchor="middle" font-size="12" fill="#64748B">需外网与配额</text>
+
+  <defs>
+    <marker id="ar1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <rect x="40" y="390" width="800" height="60" rx="10" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+  <text x="70" y="415" font-size="14" font-weight="bold" fill="#334155">判据</text>
+  <text x="70" y="437" font-size="13" fill="#334155">站点可公开 + 想省事 → 路线 B；内网 / 离线 / 不想引第三方 → 路线 A，并接受中文按字切分的折中（可用 pagefind 缓解）</text>
+</svg>

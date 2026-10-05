@@ -185,6 +185,14 @@ export const CompleteProject = [
               { text: "备份恢复演练与上线验收清单", link: "/project/Complete/BlogPlatform/BackupDrill/index.md" },
             ],
           },
+          {
+            text: "第 4 周收口",
+            link: "/project/Complete/BlogPlatform/Week4Close/index.md",
+            collapsed: true,
+            items: [
+              { text: "第 4 周收口：上线验收清单实测回填", link: "/project/Complete/BlogPlatform/Week4Close/index.md" },
+            ],
+          },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

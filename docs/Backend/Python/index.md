@@ -1,5 +1,7 @@
 # Python
 
+<p style="text-align:center;"><img src="./assets/python-logo.png" style="zoom:75%;" /></p>
+
 ## 进阶专题
 
 - [环境管理](Environment/index.md)

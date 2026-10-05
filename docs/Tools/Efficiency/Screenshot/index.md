@@ -133,7 +133,7 @@ YYYY-MM-DD-主题-序号.png
 
 这是本页最重要的部分：**截图的终点不是"存下来"，是"被引用"**。
 
-VitePress 文档库的约定（见 [AGENTS.md §7](../../../../AGENTS.md)）：每个主题的配图放在该主题目录下的 `assets/` 里，正文用**相对路径**引用。
+VitePress 文档库的约定（见 [AGENTS.md §7](../../../../AGENTS.md)，图片规范的完整口径见[写作规范](../../DocsInfra/Standards/index.md)）：每个主题的配图放在该主题目录下的 `assets/` 里，正文用**相对路径**引用。
 
 ```text
 docs/Tools/Efficiency/

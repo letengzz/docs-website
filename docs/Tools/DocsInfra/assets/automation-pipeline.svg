@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <rect width="880" height="500" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">文档 CI 流水线：提交即体检，体检不过不上线</text>
+
+  <rect x="40" y="100" width="180" height="80" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="130" y="132" text-anchor="middle" font-size="15" font-weight="bold" fill="#1D4ED8">git push</text>
+  <text x="130" y="156" text-anchor="middle" font-size="12" fill="#334155">Markdown + 配图进主干</text>
+
+  <rect x="260" y="100" width="180" height="80" rx="10" fill="#FEF9C3" stroke="#EAB308" stroke-width="2"/>
+  <text x="350" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#A16207">静态检查</text>
+  <text x="350" y="148" text-anchor="middle" font-size="12" fill="#334155">死链 / 表格 / 围栏 / H1</text>
+  <text x="350" y="166" text-anchor="middle" font-size="12" fill="#334155">侧边栏一致性 / Logo</text>
+
+  <rect x="480" y="100" width="180" height="80" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="570" y="132" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803D">构建站点</text>
+  <text x="570" y="156" text-anchor="middle" font-size="12" fill="#334155">vitepress build</text>
+  <text x="570" y="174" text-anchor="middle" font-size="12" fill="#64748B">断链与语法在此兜底</text>
+
+  <rect x="700" y="100" width="140" height="80" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="770" y="132" text-anchor="middle" font-size="15" font-weight="bold" fill="#BE185D">部署</text>
+  <text x="770" y="156" text-anchor="middle" font-size="12" fill="#334155">Pages / 静态托管</text>
+
+  <path d="M220 140 L 260 140 M440 140 L 480 140 M660 140 L 700 140" stroke="#64748B" stroke-width="2" marker-end="url(#ar2)"/>
+
+  <rect x="260" y="230" width="400" height="90" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="460" y="260" text-anchor="middle" font-size="15" font-weight="bold" fill="#B91C1C">任一门禁失败 → 流水线标红，不部署</text>
+  <text x="460" y="286" text-anchor="middle" font-size="13" fill="#334155">修复只允许「改内容」或「改门禁 + 说明理由」，禁止临时注skip</text>
+  <text x="460" y="306" text-anchor="middle" font-size="13" fill="#334155">门禁脚本与文档同仓维护，规则即代码</text>
+
+  <rect x="40" y="360" width="800" height="100" rx="10" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+  <text x="70" y="388" font-size="14" font-weight="bold" fill="#334155">检查项与错误等级（与本库巡检族一致）</text>
+  <text x="70" y="412" font-size="13" fill="#334155">错误（E）：阻断——断链、表格缺分隔行、围栏未闭合、多 H1、侧边栏指向不存在的页面</text>
+  <text x="70" y="436" font-size="13" fill="#334155">告警（W）：不阻断但要清——孤立配图、近似重复页、短于 60 行的未完成页</text>
+
+  <defs>
+    <marker id="ar2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+</svg>

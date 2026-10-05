@@ -1,5 +1,7 @@
 # RAG 检索增强
 
+<p style="text-align:center;"><img src="./assets/rag-logo.png" style="zoom:75%;" /></p>
+
 RAG（Retrieval-Augmented Generation，检索增强生成）是当前最通用的「让大模型用上私有知识」的方案：**先检索、再生成**。它把"知识"从模型参数里拿出来，放进可随时更新的知识库，从而同时解决三个问题——模型不知道你的业务、知识会过期、回答无法溯源。
 
 ![RAG 系统全景：索引链路、检索链路与工程能力](assets/rag-architecture.svg)
