@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <rect width="880" height="560" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">「要不要做混沌工程」分诊树</text>
+
+  <rect x="320" y="80" width="240" height="70" rx="12" fill="#1E293B"/>
+  <text x="440" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">你们做混沌工程了吗？</text>
+  <text x="440" y="134" text-anchor="middle" font-size="12.5" fill="#CBD5E1">从这个问题开始往下走</text>
+
+  <rect x="60" y="200" width="280" height="110" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="200" y="230" text-anchor="middle" font-size="15" font-weight="bold" fill="#B91C1C">监控告警都没有？</text>
+  <text x="200" y="256" text-anchor="middle" font-size="13" fill="#334155">先别做混沌。把监控、告警、</text>
+  <text x="200" y="278" text-anchor="middle" font-size="13" fill="#334155">日志补齐——盲跑注入只是制造事故</text>
+
+  <rect x="380" y="200" width="240" height="110" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="500" y="230" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">有发布回滚吗？</text>
+  <text x="500" y="256" text-anchor="middle" font-size="13" fill="#334155">先验证回滚能止血，</text>
+  <text x="500" y="278" text-anchor="middle" font-size="13" fill="#334155">再谈主动注入故障</text>
+
+  <rect x="640" y="200" width="200" height="110" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="740" y="230" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803D">监控回滚都齐了</text>
+  <text x="740" y="256" text-anchor="middle" font-size="13" fill="#334155">从测试/预发环境的一个</text>
+  <text x="740" y="278" text-anchor="middle" font-size="13" fill="#334155">最小实验起步</text>
+
+  <line x1="340" y1="132" x2="210" y2="195" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#a6)"/>
+  <line x1="440" y1="150" x2="490" y2="195" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#a6)"/>
+  <line x1="540" y1="132" x2="730" y2="195" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#a6)"/>
+
+  <rect x="60" y="370" width="760" height="150" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="90" y="400" font-size="15" font-weight="bold" fill="#1E293B">三个「不必做」的信号</text>
+  <text x="90" y="428" font-size="14" fill="#334155">① 团队没有权限触碰环境（纯外包运维）——注入了也改不了发现的问题</text>
+  <text x="90" y="454" font-size="14" fill="#334155">② 系统还没上线或没有真实流量模式——稳态基线不存在，实验没有标尺</text>
+  <text x="90" y="480" font-size="14" fill="#334155">③ 组织把「发现弱点」当事故追责——没人敢报真话，实验结论必然失真</text>
+  <text x="90" y="506" font-size="13" fill="#64748B">命中任意一条：先把地基补齐，混沌工程放回路线图</text>
+  <defs>
+    <marker id="a6" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

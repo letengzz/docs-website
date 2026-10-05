@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+  <rect width="880" height="520" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">稳态假设：混沌实验的「标尺」从哪里来</text>
+
+  <rect x="60" y="90" width="330" height="150" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="225" y="125" text-anchor="middle" font-size="18" font-weight="bold" fill="#1D4ED8">稳态（Steady State）</text>
+  <text x="225" y="155" text-anchor="middle" font-size="14" fill="#334155">系统在正常状态下可量化的</text>
+  <text x="225" y="178" text-anchor="middle" font-size="14" fill="#334155">业务指标与系统指标</text>
+  <text x="225" y="208" text-anchor="middle" font-size="13" fill="#64748B">如：错误率 &lt; 0.1%、P95 &lt; 300ms</text>
+
+  <rect x="490" y="90" width="330" height="150" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="655" y="125" text-anchor="middle" font-size="18" font-weight="bold" fill="#15803D">假设（Hypothesis）</text>
+  <text x="655" y="155" text-anchor="middle" font-size="14" fill="#334155">注入 X 故障后，稳态指标</text>
+  <text x="655" y="178" text-anchor="middle" font-size="14" fill="#334155">仍会回到基线区间</text>
+  <text x="655" y="208" text-anchor="middle" font-size="13" fill="#64748B">可证伪：跑完必须有一个明确结论</text>
+
+  <rect x="60" y="280" width="330" height="150" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="225" y="315" text-anchor="middle" font-size="18" font-weight="bold" fill="#B45309">注入（Injection）</text>
+  <text x="225" y="345" text-anchor="middle" font-size="14" fill="#334155">受控、可中止地制造故障</text>
+  <text x="225" y="368" text-anchor="middle" font-size="14" fill="#334155">模拟真实世界事件</text>
+  <text x="225" y="398" text-anchor="middle" font-size="13" fill="#64748B">网络延迟 / 节点宕机 / 依赖超时</text>
+
+  <rect x="490" y="280" width="330" height="150" rx="12" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="655" y="315" text-anchor="middle" font-size="18" font-weight="bold" fill="#BE185D">验证（Verification）</text>
+  <text x="655" y="345" text-anchor="middle" font-size="14" fill="#334155">对照稳态指标判断结果：</text>
+  <text x="655" y="368" text-anchor="middle" font-size="14" fill="#334155">通过 / 发现弱点 / 假设存疑</text>
+  <text x="655" y="398" text-anchor="middle" font-size="13" fill="#64748B">发现弱点是收益，不是失败</text>
+
+  <line x1="390" y1="165" x2="485" y2="165" stroke="#94A3B8" stroke-width="3" marker-end="url(#a1)"/>
+  <line x1="655" y1="240" x2="655" y2="275" stroke="#94A3B8" stroke-width="3" marker-end="url(#a1)"/>
+  <line x1="490" y1="355" x2="395" y2="355" stroke="#94A3B8" stroke-width="3" marker-end="url(#a1)"/>
+  <line x1="225" y1="280" x2="225" y2="245" stroke="#94A3B8" stroke-width="3" marker-end="url(#a1)"/>
+
+  <text x="440" y="490" text-anchor="middle" font-size="15" fill="#475569">没有稳态指标就没有实验 —— 先定标尺，再注入故障</text>
+  <defs>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

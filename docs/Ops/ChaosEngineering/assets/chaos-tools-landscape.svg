@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="620" viewBox="0 0 880 620">
+  <rect width="880" height="620" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">混沌工程工具全景（2026-10）：先选形态，再选工具</text>
+
+  <rect x="40" y="80" width="390" height="150" rx="12" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="235" y="112" text-anchor="middle" font-size="16" font-weight="bold" fill="#6D28D9">Kubernetes 原生平台</text>
+  <text x="235" y="140" text-anchor="middle" font-size="14" fill="#334155">Chaos Mesh 2.8.4（CNCF 孵化）</text>
+  <text x="235" y="164" text-anchor="middle" font-size="14" fill="#334155">LitmusChaos 3.31.0（CNCF 孵化）</text>
+  <text x="235" y="188" text-anchor="middle" font-size="14" fill="#334155">Krkn（红帽开源）</text>
+  <text x="235" y="214" text-anchor="middle" font-size="13" fill="#64748B">适合：工作负载全在 K8s，要 CRD 与 GitOps</text>
+
+  <rect x="450" y="80" width="390" height="150" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="645" y="112" text-anchor="middle" font-size="16" font-weight="bold" fill="#1D4ED8">CLI 与实验框架</text>
+  <text x="645" y="140" text-anchor="middle" font-size="14" fill="#334155">ChaosBlade 1.8.0（CNCF Sandbox）</text>
+  <text x="645" y="164" text-anchor="middle" font-size="14" fill="#334155">Chaos Toolkit（OpenChaos 规范）</text>
+  <text x="645" y="188" text-anchor="middle" font-size="14" fill="#334155">toxiproxy / tc netem（单点注入）</text>
+  <text x="645" y="214" text-anchor="middle" font-size="13" fill="#64748B">适合：VM、单机、CI 流水线、最小依赖起步</text>
+
+  <rect x="40" y="250" width="390" height="150" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="235" y="282" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">云厂商托管服务</text>
+  <text x="235" y="310" text-anchor="middle" font-size="14" fill="#334155">AWS Fault Injection Service</text>
+  <text x="235" y="334" text-anchor="middle" font-size="14" fill="#334155">Azure Chaos Studio</text>
+  <text x="235" y="358" text-anchor="middle" font-size="14" fill="#334155">腾讯云混沌故障生成器等</text>
+  <text x="235" y="384" text-anchor="middle" font-size="13" fill="#64748B">适合：故障面集中在云资源（宕机/断网/限流）</text>
+
+  <rect x="450" y="250" width="390" height="150" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="645" y="282" text-anchor="middle" font-size="16" font-weight="bold" fill="#B45309">商业平台</text>
+  <text x="645" y="310" text-anchor="middle" font-size="14" fill="#334155">Gremlin（故障注入 + 安全护栏）</text>
+  <text x="645" y="334" text-anchor="middle" font-size="14" fill="#334155">Steadybit（依赖图谱 + 无代码实验）</text>
+  <text x="645" y="358" text-anchor="middle" font-size="14" fill="#334155">Harness Chaos Engineering</text>
+  <text x="645" y="384" text-anchor="middle" font-size="13" fill="#64748B">适合：要开箱即用的治理、审计与报告</text>
+
+  <rect x="40" y="430" width="800" height="150" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="70" y="462" font-size="15" font-weight="bold" fill="#1E293B">选型判据四问</text>
+  <text x="70" y="490" font-size="14" fill="#334155">① 环境形态：全在 K8s → Chaos Mesh / Litmus；VM 与混合 → ChaosBlade / Chaos Toolkit；全在单一云 → 云托管服务</text>
+  <text x="70" y="516" font-size="14" fill="#334155">② 故障深度：要注入 JVM 方法级 → ChaosBlade 几乎是开源唯一解；只要网络层 → toxiproxy 就够</text>
+  <text x="70" y="542" font-size="14" fill="#334155">③ 组织成熟度：第一次做混沌 → 从 CLI 单点注入起步，别一上来部署控制面</text>
+  <text x="70" y="566" font-size="13" fill="#64748B">④ 版本核对时间：2026-10；LitmusChaos v3 术语为 Chaos Fault / Chaos Experiment，与 v2 资料差异大，查文档认准 v3</text>
+</svg>

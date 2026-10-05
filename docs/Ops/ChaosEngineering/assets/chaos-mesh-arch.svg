@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <rect width="880" height="560" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">Chaos Mesh 架构：三个组件各管一段</text>
+
+  <rect x="60" y="90" width="240" height="120" rx="12" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="180" y="125" text-anchor="middle" font-size="16" font-weight="bold" fill="#6D28D9">Controller Manager</text>
+  <text x="180" y="152" text-anchor="middle" font-size="13" fill="#334155">调谐实验 CRD、准入校验、</text>
+  <text x="180" y="174" text-anchor="middle" font-size="13" fill="#334155">调度 Workflow 与 Schedule</text>
+  <text x="180" y="196" text-anchor="middle" font-size="13" fill="#64748B">不碰节点，只做编排</text>
+
+  <rect x="320" y="90" width="240" height="120" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="440" y="125" text-anchor="middle" font-size="16" font-weight="bold" fill="#1D4ED8">Chaos Daemon</text>
+  <text x="440" y="152" text-anchor="middle" font-size="13" fill="#334155">以特权 DaemonSet 跑在每个节点</text>
+  <text x="440" y="174" text-anchor="middle" font-size="13" fill="#334155">真正执行网络 / IO / 时钟 / 进程注入</text>
+  <text x="440" y="196" text-anchor="middle" font-size="13" fill="#64748B">权限最大，重点盯防</text>
+
+  <rect x="580" y="90" width="240" height="120" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="700" y="125" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">Chaos Dashboard</text>
+  <text x="700" y="152" text-anchor="middle" font-size="13" fill="#334155">Web UI 与 HTTP API，</text>
+  <text x="700" y="174" text-anchor="middle" font-size="13" fill="#334155">可选组件（2.7.3 起 ctrl server</text>
+  <text x="700" y="196" text-anchor="middle" font-size="13" fill="#64748B">默认关闭）</text>
+
+  <rect x="60" y="270" width="760" height="90" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="90" y="300" font-size="15" font-weight="bold" fill="#1E293B">用户侧入口（声明式 CRD）</text>
+  <text x="90" y="328" font-size="13.5" fill="#334155">PodChaos / NetworkChaos / StressChaos / IOChaos / TimeChaos / KernelChaos / DNSChaos / HTTPChaos / JVMChaos / PhysicalMachineChaos + Schedule + Workflow + StatusCheck</text>
+  <text x="90" y="350" font-size="13" fill="#64748B">实验即资源：可用 kubectl / GitOps 管理，天然幂等、可审计、可回滚</text>
+
+  <line x1="180" y1="210" x2="180" y2="265" stroke="#94A3B8" stroke-width="3" marker-end="url(#a3)"/>
+  <line x1="440" y1="210" x2="440" y2="265" stroke="#94A3B8" stroke-width="3" marker-end="url(#a3)"/>
+  <line x1="700" y1="210" x2="700" y2="265" stroke="#94A3B8" stroke-width="3" marker-end="url(#a3)"/>
+
+  <rect x="60" y="400" width="370" height="120" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="90" y="430" font-size="15" font-weight="bold" fill="#B91C1C">安全基线三条</text>
+  <text x="90" y="456" font-size="13" fill="#334155">1. Dashboard 不暴露公网，RBAC 按命名空间收敛</text>
+  <text x="90" y="480" font-size="13" fill="#334155">2. Chaos Daemon 特权容器仅部署在演练命名空间可达范围</text>
+  <text x="90" y="504" font-size="13" fill="#334155">3. 实验清单走 Git 审批，禁止 kubectl 临时手搓</text>
+
+  <rect x="450" y="400" width="370" height="120" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="480" y="430" font-size="15" font-weight="bold" fill="#C2410C">版本事实（2026-10）</text>
+  <text x="480" y="456" font-size="13" fill="#334155">主线 2.8.4（2026-08-18）；支持线 2.8.x / 2.7.3</text>
+  <text x="480" y="480" font-size="13" fill="#334155">2.8 支持 Kubernetes 1.30~1.35；CNCF 孵化项目</text>
+  <text x="480" y="504" font-size="13" fill="#334155">旧 install.sh 已废弃，统一走 Helm 安装</text>
+  <defs>
+    <marker id="a3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

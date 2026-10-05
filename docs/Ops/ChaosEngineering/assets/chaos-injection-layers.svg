@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600">
+  <rect width="880" height="600" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">故障注入的四个层次：越往上越接近业务，越往下越接近硬件</text>
+
+  <rect x="60" y="80" width="760" height="100" rx="12" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="90" y="115" font-size="17" font-weight="bold" fill="#BE185D">④ 应用与依赖层</text>
+  <text x="90" y="142" font-size="14" fill="#334155">方法延迟（JVM 字节码注入）、依赖调用超时、连接池耗尽、时钟偏移、配置错误</text>
+  <text x="90" y="165" font-size="13" fill="#64748B">对应真实事件：依赖服务抖动、NTP 跳变、慢 SQL 拖垮连接池</text>
+
+  <rect x="60" y="200" width="760" height="100" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="90" y="235" font-size="17" font-weight="bold" fill="#1D4ED8">③ 进程与容器层</text>
+  <text x="90" y="262" font-size="14" fill="#334155">kill 进程、容器暂停（pause）、OOM、重启风暴、磁盘写满</text>
+  <text x="90" y="285" font-size="13" fill="#64748B">对应真实事件：发布重启、内存泄漏被 OOM Kill、日志打满磁盘</text>
+
+  <rect x="60" y="320" width="760" height="100" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="90" y="355" font-size="17" font-weight="bold" fill="#15803D">② 网络层</text>
+  <text x="90" y="382" font-size="14" fill="#334155">延迟、丢包、乱序、带宽限速、网络分区、DNS 解析失败</text>
+  <text x="90" y="405" font-size="13" fill="#64748B">对应真实事件：交换机故障、跨机房抖动、DNS 服务异常</text>
+
+  <rect x="60" y="440" width="760" height="100" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="90" y="475" font-size="17" font-weight="bold" fill="#B45309">① 资源层</text>
+  <text x="90" y="502" font-size="14" fill="#334155">CPU 打满、内存压力、磁盘 IO 压力、内核故障（少用）、物理机宕机</text>
+  <text x="90" y="525" font-size="13" fill="#64748B">对应真实事件：相邻租户抢资源、内核 bug、机房断电</text>
+
+  <text x="440" y="580" text-anchor="middle" font-size="15" font-weight="bold" fill="#475569">选择原则：从最近 90 天真实事故里挑故障类型，而不是从工具菜单里挑</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <rect width="880" height="560" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">博客平台演练拓扑（Docker Compose 本地环境）</text>
+
+  <rect x="60" y="90" width="180" height="70" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="150" y="118" text-anchor="middle" font-size="15" font-weight="bold" fill="#1D4ED8">nginx</text>
+  <text x="150" y="142" text-anchor="middle" font-size="12.5" fill="#334155">入口 + 静态资源</text>
+
+  <rect x="60" y="210" width="180" height="70" rx="10" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="150" y="238" text-anchor="middle" font-size="15" font-weight="bold" fill="#0E7490">blog-web (Nuxt SSR)</text>
+  <text x="150" y="262" text-anchor="middle" font-size="12.5" fill="#334155">前台渲染</text>
+
+  <rect x="330" y="150" width="200" height="80" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="430" y="180" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803D">blog-server (Boot)</text>
+  <text x="430" y="204" text-anchor="middle" font-size="12.5" fill="#334155">restart: always</text>
+  <text x="430" y="222" text-anchor="middle" font-size="12.5" fill="#334155">暴露 /actuator/prometheus</text>
+
+  <rect x="630" y="80" width="190" height="70" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="725" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">mysql:8.4</text>
+  <text x="725" y="132" text-anchor="middle" font-size="12.5" fill="#334155">实验① 延迟注入目标</text>
+
+  <rect x="630" y="240" width="190" height="70" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="725" y="268" text-anchor="middle" font-size="15" font-weight="bold" fill="#BE185D">redis:8.x</text>
+  <text x="725" y="292" text-anchor="middle" font-size="12.5" fill="#334155">实验③ 不可达注入目标</text>
+
+  <rect x="330" y="380" width="200" height="80" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="430" y="410" text-anchor="middle" font-size="15" font-weight="bold" fill="#6D28D9">toxiproxy 容器</text>
+  <text x="430" y="434" text-anchor="middle" font-size="12.5" fill="#334155">实验①② 网络层注入</text>
+  <text x="430" y="452" text-anchor="middle" font-size="12.5" fill="#334155">latency / timeout / down</text>
+
+  <line x1="240" y1="125" x2="325" y2="165" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <line x1="240" y1="245" x2="325" y2="215" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <line x1="530" y1="175" x2="625" y2="125" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <line x1="530" y1="210" x2="625" y2="262" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <line x1="430" y1="375" x2="430" y2="235" stroke="#EC4899" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a5)"/>
+  <line x1="530" y1="420" x2="700" y2="152" stroke="#EC4899" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a5)"/>
+
+  <rect x="60" y="490" width="760" height="50" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="90" y="521" font-size="13.5" fill="#334155">粉色虚线 = 注入路径。实验②「杀容器」直接对 blog-server 执行 docker kill + restart 策略验证，无需代理。</text>
+  <defs>
+    <marker id="a5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

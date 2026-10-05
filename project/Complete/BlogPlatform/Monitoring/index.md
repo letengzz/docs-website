@@ -128,6 +128,8 @@ up{job="blog-server"}
 
 ## 参考资料
 
+- 监控告警的实验级验证（注入故障看告警响不响）：[混沌工程 · 实战：博客平台故障注入演练](../../../../docs/Ops/ChaosEngineering/Practice/index.md)
+
 - Spring Boot Actuator：https://docs.spring.io/spring-boot/reference/actuator/index.html
 - Micrometer 与 Prometheus：https://docs.micrometer.io/micrometer/reference/implementations/prometheus.html
 - Prometheus 查询基础：https://prometheus.io/docs/prometheus/latest/querying/basics/

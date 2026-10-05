@@ -77,8 +77,9 @@
 | 第 110 天 | 核心业务流收口：三个聚合与事务边界 + 转移 × 副作用矩阵 + 字段依赖清单 D1~D10 + 五段时序走查 + 一条龙回归 CF1~CF14（`coreflow_smoke`），门禁扩到十二道 | ✅ |
 | 第 111 天 | 第 3 周正式收口：回归报告实测回填四步清单定稿 + 两项欠账显式处置（Docker DDL 实测移至第 112 天 Compose 首验；压测顺延第 119 天）+ 第 4 周交接 | ✅ |
 | 第 112 天 | 第 4 周起点「一键部署」：Compose 五服务（nginx / 前台 SSR / 后端 / MySQL / Redis）+ `my.cnf` 挂载（ngram 两配置进容器为红线）+ 依赖注入矩阵 + 首次 DDL 实测回填 | ✅ |
-| 第 113 天 | 监控接入：三层信号落点（指标/日志/追踪，追踪刻意不做）+ 六项指标口径（QPS / P95 / 错误率 / 缓存命中率 / 连接池 / JVM）+ 基线推导的告警阈值与「谁来看」+ traceId 串链三条判据 | ✅ 本日 |
-| 第 114-120 天 | 第 4 周收尾：备份恢复演练 / 验收清单 / 文档沉淀（压测第 119 天） | ⏳ |
+| 第 113 天 | 监控接入：三层信号落点（指标/日志/追踪，追踪刻意不做）+ 六项指标口径（QPS / P95 / 错误率 / 缓存命中率 / 连接池 / JVM）+ 基线推导的告警阈值与「谁来看」+ traceId 串链三条判据 | ✅ |
+| 第 114 天 | 备份恢复演练与上线验收清单：备份策略（dump + binlog + 保留期）+ 临时容器恢复四步与 R1~R6 对账判据 + 上线验收清单九项合并定稿 | ✅ 本日 |
+| 第 115-120 天 | 第 4 周收尾：验收清单实测回填与第 4 周收口（第 115 天）/ 文档沉淀（压测第 119 天） | ⏳ |
 
 ## 各章节
 
@@ -103,7 +104,8 @@
 19. [第 3 周收口](./Week3Close/index.md)：回归报告实测回填四步清单、Docker DDL 与压测两项欠账的显式处置、第 4 周交接
 20. [一键部署](./Deployment/index.md)：Compose 五服务、`my.cnf` 红线、依赖注入矩阵与从零复现六步
 21. [监控接入](./Monitoring/index.md)：三层信号落点、六项指标口径、基线推导的告警阈值、traceId 串链三条判据
-22. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+22. [备份恢复演练与上线验收清单](./BackupDrill/index.md)：备份策略、临时容器恢复四步、R1~R6 对账判据、上线验收清单九项合并
+23. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
 
 ## 在你自己的工程里跑起来
 
@@ -143,7 +145,7 @@ curl -s 'http://127.0.0.1:18080/api/v1/categories?withCount=true'
                                             # 期望：每个分类都带 postCount；空分类返回 0 而非消失
 ```
 
-各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)；评论链路见[评论链路：两级楼层的建模与写入](./Comments/index.md)与[评论读侧](./CommentRead/index.md)；全文搜索的两处服务端配置与 `EXPLAIN` 断言见[全文搜索：MySQL ngram 先行](./Search/index.md)；前台 SSR 的 `useAsyncData` 纪律、软 404 透传与 SEO 元信息见[前台 SSR](./FrontendSSR/index.md)；读者账号的生命周期、令牌轮换与数据归属矩阵见[读者账号与权限](./ReaderAccount/index.md)；三个聚合、状态机副作用矩阵、字段依赖清单与一条龙回归 CF1~CF14 见[核心业务流收口](./CoreFlow/index.md)；第 4 周的一键部署形态（五服务、`my.cnf` 红线、从零复现六步）见[一键部署](./Deployment/index.md)；监控的三层信号落点、六项指标口径、基线推导的告警阈值与 traceId 串链判据见[监控接入](./Monitoring/index.md)。
+各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)；评论链路见[评论链路：两级楼层的建模与写入](./Comments/index.md)与[评论读侧](./CommentRead/index.md)；全文搜索的两处服务端配置与 `EXPLAIN` 断言见[全文搜索：MySQL ngram 先行](./Search/index.md)；前台 SSR 的 `useAsyncData` 纪律、软 404 透传与 SEO 元信息见[前台 SSR](./FrontendSSR/index.md)；读者账号的生命周期、令牌轮换与数据归属矩阵见[读者账号与权限](./ReaderAccount/index.md)；三个聚合、状态机副作用矩阵、字段依赖清单与一条龙回归 CF1~CF14 见[核心业务流收口](./CoreFlow/index.md)；第 4 周的一键部署形态（五服务、`my.cnf` 红线、从零复现六步）见[一键部署](./Deployment/index.md)；监控的三层信号落点、六项指标口径、基线推导的告警阈值与 traceId 串链判据见[监控接入](./Monitoring/index.md)；备份策略、临时容器恢复四步与上线验收清单九项合并见[备份恢复演练与上线验收清单](./BackupDrill/index.md)。
 
 ## 参考资料
 

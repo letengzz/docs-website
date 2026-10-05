@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <rect width="880" height="560" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">备份恢复演练：数据链与验证链是两条独立的线</text>
+
+  <rect x="60" y="90" width="220" height="90" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="170" y="122" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">现役 MySQL 容器</text>
+  <text x="170" y="148" text-anchor="middle" font-size="13" fill="#334155">八张业务表</text>
+  <text x="170" y="168" text-anchor="middle" font-size="13" fill="#64748B">数据卷：mysql-data</text>
+
+  <rect x="360" y="70" width="220" height="60" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="470" y="96" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">每日全量：mysqldump</text>
+  <text x="470" y="118" text-anchor="middle" font-size="12" fill="#334155">--single-transaction 保留 7 天</text>
+
+  <rect x="360" y="150" width="220" height="60" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="470" y="176" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">持续增量：binlog</text>
+  <text x="470" y="198" text-anchor="middle" font-size="12" fill="#334155">MySQL 8.4 默认开启 log_bin</text>
+
+  <rect x="640" y="90" width="180" height="90" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="730" y="122" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">备份目录</text>
+  <text x="730" y="148" text-anchor="middle" font-size="13" fill="#334155">backups/（卷外）</text>
+  <text x="730" y="168" text-anchor="middle" font-size="13" fill="#64748B">dump + binlog 快照</text>
+
+  <line x1="280" y1="120" x2="355" y2="100" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#a7)"/>
+  <line x1="280" y1="150" x2="355" y2="180" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#a7)"/>
+  <line x1="580" y1="100" x2="635" y2="120" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#a7)"/>
+  <line x1="580" y1="180" x2="635" y2="155" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#a7)"/>
+
+  <rect x="60" y="280" width="760" height="100" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="90" y="310" font-size="15" font-weight="bold" fill="#B45309">演练链（临时容器，不碰现役卷）</text>
+  <text x="90" y="338" font-size="13.5" fill="#334155">① 启动临时 mysql:8.4 容器（空卷 + 同款 my.cnf）→ ② 导入全量 dump → ③ mysqlbinlog 重放至「目标时间点 T」</text>
+  <text x="90" y="362" font-size="13.5" fill="#334155">④ 对账判据：表数 = 8、三张核心表行数一致、T 时点被删除的文章在恢复库中存在</text>
+
+  <rect x="60" y="410" width="760" height="110" rx="12" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="90" y="440" font-size="15" font-weight="bold" fill="#BE185D">红线</text>
+  <text x="90" y="466" font-size="13.5" fill="#334155">1. 恢复验证永远在临时容器做，禁止向现役库反向导入；2. 备份目录不放在 mysql-data 同一卷上；</text>
+  <text x="90" y="490" font-size="13.5" fill="#334155">3. 没有经过「恢复实测」的备份视同没有备份——备份的有效性只由恢复动作定义。</text>
+  <defs>
+    <marker id="a7" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

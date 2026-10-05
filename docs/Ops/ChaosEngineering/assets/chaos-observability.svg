@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <rect width="880" height="560" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">演练中的可观测闭环：注入必须被「看见」，恢复必须被「计时」</text>
+
+  <rect x="60" y="90" width="220" height="100" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="170" y="122" text-anchor="middle" font-size="16" font-weight="bold" fill="#B45309">注入开始</text>
+  <text x="170" y="150" text-anchor="middle" font-size="13" fill="#334155">记录精确时间戳与</text>
+  <text x="170" y="172" text-anchor="middle" font-size="13" fill="#334155">实验 ID（对齐监控图）</text>
+
+  <rect x="330" y="90" width="220" height="100" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="440" y="122" text-anchor="middle" font-size="16" font-weight="bold" fill="#1D4ED8">指标偏离</text>
+  <text x="440" y="150" text-anchor="middle" font-size="13" fill="#334155">错误率 / P95 / 饱和度</text>
+  <text x="440" y="172" text-anchor="middle" font-size="13" fill="#334155">在面板上肉眼可见</text>
+
+  <rect x="600" y="90" width="220" height="100" rx="12" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="710" y="122" text-anchor="middle" font-size="16" font-weight="bold" fill="#BE185D">告警触发</text>
+  <text x="710" y="150" text-anchor="middle" font-size="13" fill="#334155">值班渠道收到通知，</text>
+  <text x="710" y="172" text-anchor="middle" font-size="13" fill="#334155">并标注「演练」标签</text>
+
+  <rect x="600" y="250" width="220" height="100" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="710" y="282" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">注入停止</text>
+  <text x="710" y="310" text-anchor="middle" font-size="13" fill="#334155">按计划停止或被中止条件</text>
+  <text x="710" y="332" text-anchor="middle" font-size="13" fill="#334155">自动终止</text>
+
+  <rect x="330" y="250" width="220" height="100" rx="12" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="440" y="282" text-anchor="middle" font-size="16" font-weight="bold" fill="#0E7490">指标回基线</text>
+  <text x="440" y="310" text-anchor="middle" font-size="13" fill="#334155">记录 MTTD（发现耗时）</text>
+  <text x="440" y="332" text-anchor="middle" font-size="13" fill="#334155">与 MTTR（恢复耗时）</text>
+
+  <rect x="60" y="250" width="220" height="100" rx="12" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="170" y="282" text-anchor="middle" font-size="16" font-weight="bold" fill="#6D28D9">结论归档</text>
+  <text x="170" y="310" text-anchor="middle" font-size="13" fill="#334155">告警是否响、恢复多久、</text>
+  <text x="170" y="332" text-anchor="middle" font-size="13" fill="#334155">有无未知副作用</text>
+
+  <line x1="280" y1="140" x2="325" y2="140" stroke="#94A3B8" stroke-width="3" marker-end="url(#a4)"/>
+  <line x1="550" y1="140" x2="595" y2="140" stroke="#94A3B8" stroke-width="3" marker-end="url(#a4)"/>
+  <line x1="710" y1="190" x2="710" y2="245" stroke="#94A3B8" stroke-width="3" marker-end="url(#a4)"/>
+  <line x1="595" y1="300" x2="555" y2="300" stroke="#94A3B8" stroke-width="3" marker-end="url(#a4)"/>
+  <line x1="325" y1="300" x2="285" y2="300" stroke="#94A3B8" stroke-width="3" marker-end="url(#a4)"/>
+
+  <rect x="60" y="400" width="760" height="120" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="90" y="430" font-size="15" font-weight="bold" fill="#B91C1C">红线：没有可观测，就没有混沌</text>
+  <text x="90" y="458" font-size="14" fill="#334155">注入后自己都看不见偏离，实验等于盲跑；告警没接到通知，等于告警链路未被验证。</text>
+  <text x="90" y="484" font-size="14" fill="#334155">每个演练目标至少绑定一条告警规则与一个 Grafana 面板，缺失时先补监控再做实验。</text>
+  <text x="90" y="508" font-size="13" fill="#64748B">相关页：监控体系与可观测性、告警规则与 Alertmanager（见文末深入阅读）</text>
+  <defs>
+    <marker id="a4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <rect width="880" height="560" fill="#FFFFFF"/>
+  <text x="440" y="46" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">混沌工程专题地图：从稳态假设到演练落地</text>
+  <rect x="40" y="80" width="190" height="70" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="135" y="110" text-anchor="middle" font-size="17" font-weight="bold" fill="#1D4ED8">Overview</text>
+  <text x="135" y="134" text-anchor="middle" font-size="13" fill="#334155">稳态假设与五条原则</text>
+
+  <rect x="40" y="190" width="190" height="70" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="135" y="220" text-anchor="middle" font-size="17" font-weight="bold" fill="#15803D">FaultInjection</text>
+  <text x="135" y="244" text-anchor="middle" font-size="13" fill="#334155">注入什么故障</text>
+
+  <rect x="40" y="300" width="190" height="70" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="135" y="330" text-anchor="middle" font-size="17" font-weight="bold" fill="#B45309">ExperimentDesign</text>
+  <text x="135" y="354" text-anchor="middle" font-size="13" fill="#334155">怎么设计一次实验</text>
+
+  <rect x="330" y="80" width="190" height="70" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="425" y="110" text-anchor="middle" font-size="17" font-weight="bold" fill="#6D28D9">ChaosMesh</text>
+  <text x="425" y="134" text-anchor="middle" font-size="13" fill="#334155">K8s 平台深入</text>
+
+  <rect x="330" y="190" width="190" height="70" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="425" y="220" text-anchor="middle" font-size="17" font-weight="bold" fill="#6D28D9">Platforms</text>
+  <text x="425" y="244" text-anchor="middle" font-size="13" fill="#334155">工具全景与选型</text>
+
+  <rect x="330" y="300" width="190" height="70" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="425" y="330" text-anchor="middle" font-size="17" font-weight="bold" fill="#BE185D">Observability</text>
+  <text x="425" y="354" text-anchor="middle" font-size="13" fill="#334155">演练中看什么</text>
+
+  <rect x="620" y="80" width="190" height="70" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="715" y="110" text-anchor="middle" font-size="17" font-weight="bold" fill="#C2410C">GameDays</text>
+  <text x="715" y="134" text-anchor="middle" font-size="13" fill="#334155">演练日组织流程</text>
+
+  <rect x="620" y="190" width="190" height="70" rx="10" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="715" y="220" text-anchor="middle" font-size="17" font-weight="bold" fill="#0E7490">Practice</text>
+  <text x="715" y="244" text-anchor="middle" font-size="13" fill="#334155">博客平台三个实验</text>
+
+  <rect x="620" y="300" width="190" height="70" rx="10" fill="#F1F5F9" stroke="#64748B" stroke-width="2"/>
+  <text x="715" y="330" text-anchor="middle" font-size="17" font-weight="bold" fill="#334155">FAQ</text>
+  <text x="715" y="354" text-anchor="middle" font-size="13" fill="#334155">排障树与自查清单</text>
+
+  <line x1="230" y1="115" x2="325" y2="115" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="230" y1="225" x2="325" y2="225" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="230" y1="335" x2="325" y2="335" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="520" y1="115" x2="615" y2="115" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="520" y1="225" x2="615" y2="225" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="520" y1="335" x2="615" y2="335" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="40" y="420" width="770" height="100" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="70" y="452" font-size="15" font-weight="bold" fill="#1E293B">建议阅读顺序</text>
+  <text x="70" y="480" font-size="14" fill="#334155">想懂概念：Overview → ExperimentDesign → Observability</text>
+  <text x="70" y="504" font-size="14" fill="#334155">想直接动手：FaultInjection → ChaosMesh / Platforms → Practice，演练日组织随时可看 GameDays</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

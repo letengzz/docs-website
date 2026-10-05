@@ -177,6 +177,14 @@ export const CompleteProject = [
               { text: "监控接入：指标口径、告警阈值与 traceId 串链", link: "/project/Complete/BlogPlatform/Monitoring/index.md" },
             ],
           },
+          {
+            text: "备份恢复演练",
+            link: "/project/Complete/BlogPlatform/BackupDrill/index.md",
+            collapsed: true,
+            items: [
+              { text: "备份恢复演练与上线验收清单", link: "/project/Complete/BlogPlatform/BackupDrill/index.md" },
+            ],
+          },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

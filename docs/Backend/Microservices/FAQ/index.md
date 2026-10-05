@@ -125,4 +125,5 @@
 - 微服务架构模式目录：https://microservices.io/patterns/
 - 十二要素应用：https://12factor.net/zh_cn/
 - 反脆弱架构与故障演练（Chaos Engineering）：https://principlesofchaos.org/
+- 服务间治理语义的实验验证（故障注入、演练设计、GameDay 组织）：[混沌工程专题](../../../Ops/ChaosEngineering/index.md)
 - 本专题章节入口：[微服务目录](../index.md)

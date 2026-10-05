@@ -1,5 +1,7 @@
 # CrewAI 角色编排
 
+<p style="text-align:center;"><img src="../assets/crewai-logo.png" alt="CrewAI" style="zoom:60%;" /></p>
+
 CrewAI 用「**剧组**」组织多智能体：每个 Agent 有角色（role）、目标（goal）、人设（backstory），每个 Task 有职责与预期产出，Crew 把它们攒在一起开工。它解决的不是「流程怎么走」（那是 LangGraph 的事），而是「**怎么把一段模糊的协作需求拆成一组明确的角色与任务**」。
 
 ![CrewAI：Agent、Task、Crew 与 Flows](../assets/afw-crewai.svg)

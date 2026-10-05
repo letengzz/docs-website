@@ -220,6 +220,23 @@ export const BackupDR = [
     ],
   },
 ];
+export const ChaosEngineering = [
+  {
+    text: "混沌工程",
+    link: "/docs/Ops/ChaosEngineering/index.md",
+    items: [
+      { text: "概述与稳态假设", link: "/docs/Ops/ChaosEngineering/Overview/index.md" },
+      { text: "故障注入分类", link: "/docs/Ops/ChaosEngineering/FaultInjection/index.md" },
+      { text: "实验设计方法", link: "/docs/Ops/ChaosEngineering/ExperimentDesign/index.md" },
+      { text: "Chaos Mesh 深入", link: "/docs/Ops/ChaosEngineering/ChaosMesh/index.md" },
+      { text: "工具全景与选型", link: "/docs/Ops/ChaosEngineering/Platforms/index.md" },
+      { text: "演练中的可观测", link: "/docs/Ops/ChaosEngineering/Observability/index.md" },
+      { text: "演练日组织（GameDay）", link: "/docs/Ops/ChaosEngineering/GameDays/index.md" },
+      { text: "实战：博客平台故障注入演练", link: "/docs/Ops/ChaosEngineering/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/ChaosEngineering/FAQ/index.md" },
+    ],
+  },
+];
 export const OpsOthers = [{ text: "运维其他", link: "/docs/Ops/Others/index.md" }];
 export const VM = [{ text: "虚拟机", link: "/docs/Ops/VM/index.md" }];
 export const ContainerOrchestration = [

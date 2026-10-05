@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600">
+  <rect width="880" height="600" fill="#FFFFFF"/>
+  <text x="440" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#1E293B">一次混沌实验的完整流程：六步走，缺一步就不算实验</text>
+
+  <rect x="40" y="90" width="240" height="90" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="160" y="122" text-anchor="middle" font-size="16" font-weight="bold" fill="#1D4ED8">① 定稳态指标</text>
+  <text x="160" y="148" text-anchor="middle" font-size="13" fill="#334155">选 1~2 个可自动采集的业务指标</text>
+  <text x="160" y="168" text-anchor="middle" font-size="13" fill="#334155">并记录 7 天基线区间</text>
+
+  <rect x="320" y="90" width="240" height="90" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="440" y="122" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">② 提出可证伪假设</text>
+  <text x="440" y="148" text-anchor="middle" font-size="13" fill="#334155">「注入 X 后指标将在 N 分钟内</text>
+  <text x="440" y="168" text-anchor="middle" font-size="13" fill="#334155">回到基线」——写下来</text>
+
+  <rect x="600" y="90" width="240" height="90" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="720" y="122" text-anchor="middle" font-size="16" font-weight="bold" fill="#B45309">③ 控制爆炸半径</text>
+  <text x="720" y="148" text-anchor="middle" font-size="13" fill="#334155">从最小环境、最小范围、</text>
+  <text x="720" y="168" text-anchor="middle" font-size="13" fill="#334155">最小比例开始</text>
+
+  <rect x="600" y="240" width="240" height="90" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="720" y="272" text-anchor="middle" font-size="16" font-weight="bold" fill="#BE185D">④ 设定中止条件</text>
+  <text x="720" y="298" text-anchor="middle" font-size="13" fill="#334155">指标越过红线自动终止注入</text>
+  <text x="720" y="318" text-anchor="middle" font-size="13" fill="#334155">且全程有人工「急停」按钮</text>
+
+  <rect x="320" y="240" width="240" height="90" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="440" y="272" text-anchor="middle" font-size="16" font-weight="bold" fill="#6D28D9">⑤ 执行注入并观察</text>
+  <text x="440" y="298" text-anchor="middle" font-size="13" fill="#334155">记录告警是否触发、指标偏离、</text>
+  <text x="440" y="318" text-anchor="middle" font-size="13" fill="#334155">恢复耗时（MTTR）</text>
+
+  <rect x="40" y="240" width="240" height="90" rx="10" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="160" y="272" text-anchor="middle" font-size="16" font-weight="bold" fill="#0E7490">⑥ 判定结论并归档</text>
+  <text x="160" y="298" text-anchor="middle" font-size="13" fill="#334155">通过 / 发现弱点 / 假设存疑</text>
+  <text x="160" y="318" text-anchor="middle" font-size="13" fill="#334155">实验清单入库、弱点进改进队列</text>
+
+  <line x1="280" y1="135" x2="315" y2="135" stroke="#94A3B8" stroke-width="3" marker-end="url(#a2)"/>
+  <line x1="560" y1="135" x2="595" y2="135" stroke="#94A3B8" stroke-width="3" marker-end="url(#a2)"/>
+  <line x1="720" y1="180" x2="720" y2="235" stroke="#94A3B8" stroke-width="3" marker-end="url(#a2)"/>
+  <line x1="595" y1="285" x2="565" y2="285" stroke="#94A3B8" stroke-width="3" marker-end="url(#a2)"/>
+  <line x1="315" y1="285" x2="285" y2="285" stroke="#94A3B8" stroke-width="3" marker-end="url(#a2)"/>
+
+  <rect x="40" y="390" width="800" height="170" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="70" y="422" font-size="15" font-weight="bold" fill="#1E293B">实验结论只有三种，且都要归档</text>
+  <text x="70" y="452" font-size="14" fill="#334155">✔ 韧性验证通过：指标回基线、告警如约触发——把实验固化为回归，防韧性退化</text>
+  <text x="70" y="482" font-size="14" fill="#334155">✘ 发现弱点：告警没响、恢复超时、级联失败——这是最大收益，登记改进项并跟踪闭环</text>
+  <text x="70" y="512" font-size="14" fill="#334155">? 假设存疑：稳态没破坏但说不清为什么——通常是观测不足，先补监控再谈实验</text>
+  <text x="70" y="542" font-size="13" fill="#64748B">危险做法：没有中止条件就注入、只报「通过」不报「发现弱点」、实验完不归档</text>
+  <defs>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

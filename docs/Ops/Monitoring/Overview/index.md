@@ -136,3 +136,4 @@ Prometheus 最新稳定为 **3.14.x**，Grafana 为 **13.x**（13.2.1），Alert
 - 可观测性工程（O'Reilly 书籍）
 - Google SRE 手册：https://sre.google/sre-book/
 - RED/USE 方法：https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/
+- 用故障注入实测监控告警是否真的有效：[混沌工程 · 演练中的可观测](../../ChaosEngineering/Observability/index.md)
