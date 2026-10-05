@@ -337,7 +337,7 @@ ORDER BY created_at DESC
 LIMIT 100;
 ```
 
-**数据同步**：用 CDC 工具（Canal / Debezium / Flink CDC）订阅分片集群的 binlog，增量写入 `t_order_ops`。这类「异构数据同步」是独立的能力，与分片本身解耦——分片只负责把数据存下，同步链路负责把它送到适合查询的地方。
+**数据同步**：用 CDC 工具（Canal / Debezium / Flink CDC）订阅分片集群的 binlog，增量写入 `t_order_ops`。这类「异构数据同步」是独立的能力，与分片本身解耦——分片只负责把数据存下，同步链路负责把它送到适合查询的地方。工具选型、位点管理与一致性保障的完整做法见 [数据同步与 CDC](../../../CDC/index.md) 专题。
 
 **改造前后对照**：
 

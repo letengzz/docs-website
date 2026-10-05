@@ -1,0 +1,65 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <defs>
+    <marker id="a3" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#0891b2"/>
+    </marker>
+  </defs>
+  <rect width="680" height="400" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#0b162a">快照 + 增量：两段式，而不是二选一</text>
+  <text x="340" y="54" text-anchor="middle" font-size="12" fill="#64748b">全量解决「存量」、增量解决「变化」，中间那一段必须无缝焊上</text>
+
+  <!-- timeline -->
+  <line x1="60" y1="104" x2="630" y2="104" stroke="#cbd5e1" stroke-width="3"/>
+  <line x1="250" y1="104" x2="250" y2="88" stroke="#dc2626" stroke-width="2"/>
+  <text x="250" y="82" text-anchor="middle" font-size="10.5" fill="#dc2626">快照起点（一致性位点）</text>
+  <line x1="400" y1="104" x2="400" y2="88" stroke="#0891b2" stroke-width="2"/>
+  <text x="400" y="82" text-anchor="middle" font-size="10.5" fill="#0891b2">追平：快照读完 + 增量追到位点</text>
+
+  <rect x="60" y="112" width="190" height="34" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="155" y="134" text-anchor="middle" font-size="11" fill="#64748b">历史（不可回放）</text>
+  <rect x="250" y="112" width="150" height="34" rx="6" fill="#ecfeff" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="325" y="134" text-anchor="middle" font-size="11" fill="#0e7490">快照读存量</text>
+  <rect x="400" y="112" width="230" height="34" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="515" y="134" text-anchor="middle" font-size="11" fill="#6d28d9">binlog 增量（持续）</text>
+
+  <!-- four phases -->
+  <text x="30" y="182" font-size="12" font-weight="600" fill="#334155">增量快照：不锁表、可续跑的四阶段</text>
+  <g>
+    <rect x="28" y="196" width="148" height="88" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.2"/>
+    <text x="102" y="218" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">① 切分 Chunk</text>
+    <text x="102" y="238" text-anchor="middle" font-size="10" fill="#64748b">按主键区间切片</text>
+    <text x="102" y="256" text-anchor="middle" font-size="10" fill="#64748b">大表变成小任务</text>
+    <text x="102" y="274" text-anchor="middle" font-size="10" fill="#64748b">可并行、可断点续</text>
+
+    <rect x="188" y="196" width="148" height="88" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.2"/>
+    <text x="262" y="218" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">② 读快照</text>
+    <text x="262" y="238" text-anchor="middle" font-size="10" fill="#64748b">只读当前 Chunk</text>
+    <text x="262" y="256" text-anchor="middle" font-size="10" fill="#64748b">不锁全表（低水位）</text>
+    <text x="262" y="274" text-anchor="middle" font-size="10" fill="#64748b">期间变更同时收着</text>
+
+    <rect x="348" y="196" width="148" height="88" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.2"/>
+    <text x="422" y="218" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">③ 回填</text>
+    <text x="422" y="238" text-anchor="middle" font-size="10" fill="#64748b">该 Chunk 的历史变更</text>
+    <text x="422" y="256" text-anchor="middle" font-size="10" fill="#64748b">比快照新的要胜出</text>
+    <text x="422" y="274" text-anchor="middle" font-size="10" fill="#dc2626">回填顺序错了=旧覆盖新</text>
+
+    <rect x="508" y="196" width="144" height="88" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.2"/>
+    <text x="580" y="218" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">④ 追平水位线</text>
+    <text x="580" y="238" text-anchor="middle" font-size="10" fill="#64748b">增量越过起点位点</text>
+    <text x="580" y="256" text-anchor="middle" font-size="10" fill="#64748b">进入纯增量模式</text>
+    <text x="580" y="274" text-anchor="middle" font-size="10" fill="#64748b">延迟指标从这里算</text>
+  </g>
+
+  <g font-size="10.5">
+    <line x1="176" y1="240" x2="184" y2="240" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a3)"/>
+    <line x1="336" y1="240" x2="344" y2="240" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a3)"/>
+    <line x1="496" y1="240" x2="504" y2="240" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a3)"/>
+  </g>
+
+  <rect x="28" y="302" width="624" height="80" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="42" y="324" font-size="11.5" font-weight="600" fill="#92400e">四种快照模式的取舍（Debezium 口径）</text>
+  <g font-size="10.5" fill="#78716c">
+    <text x="42" y="346">initial：先快照再增量（默认，适合新接入）；schema_only：只同步结构，跳过存量（适合先建管道后补数）；</text>
+    <text x="42" y="366">initial_only：只快照不增量（适合一次性搬运）；when_needed：需要时才快照（适合位点失效后的自愈）。</text>
+  </g>
+</svg>

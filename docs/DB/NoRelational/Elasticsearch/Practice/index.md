@@ -129,7 +129,7 @@ public class SearchService {
 
 ## 数据同步：定时增量方案
 
-小数据量/分钟级延迟可接受时，最简单的同步器（Canal / Flink CDC 方案见扩展阅读）：
+小数据量/分钟级延迟可接受时，最简单的同步器（Canal / Flink CDC 等日志订阅方案的完整做法与一致性保障，见 [数据同步与 CDC](../../../CDC/index.md) 专题）：
 
 ```java [ProductSyncJob.java]
 @Scheduled(fixedDelay = 60_000)   // 每分钟增量一次

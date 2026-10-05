@@ -1,0 +1,45 @@
+<svg viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="380" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#0b162a">一条变更事件的信封结构</text>
+  <text x="340" y="54" text-anchor="middle" font-size="12" fill="#64748b">下游要的从来不是「表里现在是什么」，而是「刚刚发生了什么」</text>
+
+  <rect x="28" y="78" width="624" height="176" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="1.5"/>
+  <g font-size="11" font-family="'SF Mono', Menlo, monospace" fill="#334155">
+    <text x="46" y="104">{</text>
+    <text x="62" y="126">"op"     : "u",            <tspan fill="#0e7490">// 操作类型</tspan></text>
+    <text x="62" y="148">"before" : { "status": "DRAFT"   },  <tspan fill="#0e7490">// 仅 UPDATE 有</tspan></text>
+    <text x="62" y="170">"after"  : { "status": "PUBLISHED" },  <tspan fill="#0e7490">// DELETE 时为 null</tspan></text>
+    <text x="62" y="192">"source" : { "file": "mysql-bin.000042", "pos": 15820, "gtid": "..." },</text>
+    <text x="62" y="214">"ts_ms"  : 1780000000123,   <tspan fill="#0e7490">// 事件时间（毫秒）</tspan></text>
+    <text x="46" y="236">}</text>
+  </g>
+
+  <g>
+    <rect x="28" y="272" width="150" height="86" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1.2"/>
+    <text x="103" y="294" text-anchor="middle" font-size="12" font-weight="700" fill="#0b162a">op = c</text>
+    <text x="103" y="314" text-anchor="middle" font-size="10.5" fill="#475569">INSERT</text>
+    <text x="103" y="332" text-anchor="middle" font-size="10.5" fill="#64748b">before 为 null</text>
+    <text x="103" y="350" text-anchor="middle" font-size="10.5" fill="#64748b">下游要能「插入或覆盖」</text>
+  </g>
+  <g>
+    <rect x="190" y="272" width="150" height="86" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1.2"/>
+    <text x="265" y="294" text-anchor="middle" font-size="12" font-weight="700" fill="#0b162a">op = u</text>
+    <text x="265" y="314" text-anchor="middle" font-size="10.5" fill="#475569">UPDATE</text>
+    <text x="265" y="332" text-anchor="middle" font-size="10.5" fill="#64748b">before/after 都有</text>
+    <text x="265" y="350" text-anchor="middle" font-size="10.5" fill="#64748b">能算出「变了哪个字段」</text>
+  </g>
+  <g>
+    <rect x="352" y="272" width="150" height="86" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="427" y="294" text-anchor="middle" font-size="12" font-weight="700" fill="#0b162a">op = d</text>
+    <text x="427" y="314" text-anchor="middle" font-size="10.5" fill="#475569">DELETE</text>
+    <text x="427" y="332" text-anchor="middle" font-size="10.5" fill="#dc2626">after 为 null</text>
+    <text x="427" y="350" text-anchor="middle" font-size="10.5" fill="#64748b">只靠时间戳方案必漏这一格</text>
+  </g>
+  <g>
+    <rect x="514" y="272" width="138" height="86" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.2"/>
+    <text x="583" y="294" text-anchor="middle" font-size="12" font-weight="700" fill="#0b162a">op = r / t</text>
+    <text x="583" y="314" text-anchor="middle" font-size="10.5" fill="#475569">快照读 / 截断</text>
+    <text x="583" y="332" text-anchor="middle" font-size="10.5" fill="#475569">r = 全量初始化</text>
+    <text x="583" y="350" text-anchor="middle" font-size="10.5" fill="#475569">t = 表清空</text>
+  </g>
+</svg>

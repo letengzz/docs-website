@@ -169,6 +169,14 @@ export const CompleteProject = [
               { text: "一键部署：Compose 五服务与首次 DDL 实测", link: "/project/Complete/BlogPlatform/Deployment/index.md" },
             ],
           },
+          {
+            text: "监控接入",
+            link: "/project/Complete/BlogPlatform/Monitoring/index.md",
+            collapsed: true,
+            items: [
+              { text: "监控接入：指标口径、告警阈值与 traceId 串链", link: "/project/Complete/BlogPlatform/Monitoring/index.md" },
+            ],
+          },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

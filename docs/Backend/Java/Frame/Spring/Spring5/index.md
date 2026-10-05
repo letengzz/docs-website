@@ -1,5 +1,9 @@
 # Spring Framework介绍
 
+::: info 版本与维护状态
+本组文档面向 **Spring Framework 5.3（JDK 8+）**。5.3 线的 OSS 维护已于 **2024-08-31 结束**（企业支持至 2029-06），属于**仅存量项目使用**的状态，不再随新版本更新；新项目请阅读 [Spring 6 文档](../Spring6/index.md)（JDK 17 基线，主线已到 Spring Framework 7.0）。
+:::
+
 Spring 框架是一个分层的、面向切面的 Java 应用程序的一站式轻量级解决方案，它是 Spring 技术栈的核心和基础，是为了解决企业级应用开发的复杂性而创建的。
 
 ## Spring 核心模块

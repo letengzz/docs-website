@@ -1,0 +1,72 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <defs>
+    <marker id="am" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="680" height="400" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#0b162a">监控接入：三层信号、六项指标与告警去向</text>
+  <text x="340" y="54" text-anchor="middle" font-size="12" fill="#64748b">先定口径再谈阈值——「QPS、P95、缓存命中率」每项都要能指出是谁产出的</text>
+
+  <!-- three signals -->
+  <text x="30" y="86" font-size="12" font-weight="600" fill="#334155">三层信号在本项目的落点</text>
+  <g>
+    <rect x="28" y="96" width="200" height="64" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1.8"/>
+    <text x="128" y="118" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">指标：Micrometer → Prometheus</text>
+    <text x="128" y="138" text-anchor="middle" font-size="10" fill="#475569">/actuator/prometheus 拉取</text>
+    <text x="128" y="154" text-anchor="middle" font-size="10" fill="#0e7490">本日主体</text>
+
+    <rect x="240" y="96" width="200" height="64" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="340" y="118" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">日志：结构化 + traceId</text>
+    <text x="340" y="138" text-anchor="middle" font-size="10" fill="#475569">docker logs 可 grep，不上 ELK</text>
+    <text x="340" y="154" text-anchor="middle" font-size="10" fill="#64748b">CF14 的落点</text>
+
+    <rect x="452" y="96" width="200" height="64" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="552" y="118" text-anchor="middle" font-size="12" font-weight="600" fill="#0b162a">链路追踪：刻意不做</text>
+    <text x="552" y="138" text-anchor="middle" font-size="10" fill="#64748b">单体内 traceId 日志串联够用</text>
+    <text x="552" y="154" text-anchor="middle" font-size="10" fill="#64748b">升级时机写进决策表</text>
+  </g>
+
+  <!-- metrics table -->
+  <text x="30" y="192" font-size="12" font-weight="600" fill="#334155">六项指标口径（起点阈值 = 影子期基线推导，不拍脑袋）</text>
+  <g font-size="10.5">
+    <rect x="28" y="204" width="202" height="74" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.3"/>
+    <text x="42" y="224" font-size="11.5" font-weight="600" fill="#0b162a">QPS</text>
+    <text x="42" y="242" font-size="10" fill="#64748b">http_server_requests_seconds_count</text>
+    <text x="42" y="258" font-size="10" fill="#64748b">按 uri 与 status 聚合</text>
+    <text x="42" y="272" font-size="10" fill="#0e7490">跌幅 &gt; 50%（非低峰时段）→ 严重</text>
+
+    <rect x="240" y="204" width="202" height="74" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.3"/>
+    <text x="254" y="224" font-size="11.5" font-weight="600" fill="#0b162a">P95 / P99 延迟</text>
+    <text x="254" y="242" font-size="10" fill="#64748b">同指标按 quantile 分位数</text>
+    <text x="254" y="258" font-size="10" fill="#64748b">只看读接口与写接口两条线</text>
+    <text x="254" y="272" font-size="10" fill="#0e7490">P95 &gt; 基线 × 3 → 警告</text>
+
+    <rect x="452" y="204" width="200" height="74" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.3"/>
+    <text x="466" y="224" font-size="11.5" font-weight="600" fill="#0b162a">错误率</text>
+    <text x="466" y="242" font-size="10" fill="#64748b">5xx 计数 ÷ 总请求数</text>
+    <text x="466" y="258" font-size="10" fill="#64748b">401/403/404 是语义不算错误</text>
+    <text x="466" y="272" font-size="10" fill="#dc2626">&gt; 1%（5 分钟窗口）→ 严重</text>
+
+    <rect x="28" y="290" width="202" height="74" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.3"/>
+    <text x="42" y="310" font-size="11.5" font-weight="600" fill="#0b162a">缓存命中率</text>
+    <text x="42" y="328" font-size="10" fill="#64748b">cache.gets{result=hit} ÷ 总 get</text>
+    <text x="42" y="344" font-size="10" fill="#64748b">分「详情」「列表」两个缓存名</text>
+    <text x="42" y="358" font-size="10" fill="#6d28d9">&lt; 60% 且持续 10 分钟 → 警告</text>
+
+    <rect x="240" y="290" width="202" height="74" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.3"/>
+    <text x="254" y="310" font-size="11.5" font-weight="600" fill="#0b162a">DB 连接池</text>
+    <text x="254" y="328" font-size="10" fill="#64748b">hikaricp_connections_active/pending</text>
+    <text x="254" y="344" font-size="10" fill="#64748b">pending &gt; 0 即排队</text>
+    <text x="254" y="358" font-size="10" fill="#6d28d9">pending 持续 &gt; 0 → 警告</text>
+
+    <rect x="452" y="290" width="200" height="74" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+    <text x="466" y="310" font-size="11.5" font-weight="600" fill="#0b162a">JVM 内存 / GC</text>
+    <text x="466" y="328" font-size="10" fill="#64748b">jvm_memory_used、gc pause</text>
+    <text x="466" y="344" font-size="10" fill="#64748b">只做观察，不设阈值</text>
+    <text x="466" y="358" font-size="10" fill="#64748b">避免为拍参数而告警</text>
+  </g>
+
+  <rect x="28" y="374" width="624" height="20" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1"/>
+  <text x="42" y="388" font-size="10" fill="#92400e">告警去向：单值守语境下进邮箱 + 即时消息；每条告警必须带「现象描述 + 两条处置入口」，收不到回应视为未闭环。</text>
+</svg>

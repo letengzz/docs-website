@@ -1,0 +1,59 @@
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <defs>
+    <marker id="a1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#0891b2"/>
+    </marker>
+    <marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="680" height="360" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#0b162a">binlog 是怎么被「订阅」走的</text>
+  <text x="340" y="54" text-anchor="middle" font-size="12" fill="#64748b">CDC 组件本质上是「一个假装成从库的客户端」，走的是同一条复制协议</text>
+
+  <!-- master -->
+  <rect x="28" y="86" width="176" height="150" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="116" y="110" text-anchor="middle" font-size="13" font-weight="600" fill="#0b162a">MySQL 主库</text>
+  <text x="116" y="132" text-anchor="middle" font-size="10.5" fill="#64748b">事务提交时写两份：</text>
+  <text x="116" y="150" text-anchor="middle" font-size="10.5" fill="#475569">① redo log（崩溃恢复）</text>
+  <text x="116" y="168" text-anchor="middle" font-size="10.5" fill="#475569">② binlog（复制与 PITR）</text>
+  <text x="116" y="194" text-anchor="middle" font-size="10.5" fill="#0e7490">binlog 是逻辑日志</text>
+  <text x="116" y="212" text-anchor="middle" font-size="10.5" fill="#0e7490">不依赖页格式，可跨版本读</text>
+
+  <!-- binlog file -->
+  <rect x="252" y="86" width="176" height="150" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+  <text x="340" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#0b162a">binlog 文件</text>
+  <g font-size="10.5" fill="#475569">
+    <text x="266" y="134">FORMAT_DESCRIPTION</text>
+    <text x="266" y="152">TABLE_MAP  ← 表结构快照</text>
+    <text x="266" y="170">WRITE_ROWS / UPDATE_ROWS</text>
+    <text x="266" y="188">DELETE_ROWS  ← 删除也能捕获</text>
+    <text x="266" y="206">XID  ← 事务提交点</text>
+  </g>
+  <text x="340" y="228" text-anchor="middle" font-size="10" fill="#0e7490">默认 ROW 格式，才有前后镜像</text>
+
+  <!-- consumer -->
+  <rect x="476" y="86" width="176" height="150" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="564" y="110" text-anchor="middle" font-size="13" font-weight="600" fill="#0b162a">CDC 消费端</text>
+  <text x="564" y="132" text-anchor="middle" font-size="10.5" fill="#64748b">发一条 dump 请求</text>
+  <text x="564" y="150" text-anchor="middle" font-size="10.5" fill="#475569">（server_id 必须唯一）</text>
+  <text x="564" y="172" text-anchor="middle" font-size="10.5" fill="#475569">持续接收事件流</text>
+  <text x="564" y="194" text-anchor="middle" font-size="10.5" fill="#0e7490">记录位点 = GTID 集合</text>
+  <text x="564" y="212" text-anchor="middle" font-size="10.5" fill="#0e7490">或 binlog 文件名 + 偏移</text>
+
+  <line x1="206" y1="160" x2="248" y2="160" stroke="#0891b2" stroke-width="1.8" marker-end="url(#a1)"/>
+  <line x1="430" y1="160" x2="472" y2="160" stroke="#0891b2" stroke-width="1.8" marker-end="url(#a1)"/>
+  <text x="340" y="80" text-anchor="middle" font-size="10.5" fill="#64748b">提交即写 · 追加有序</text>
+
+  <!-- notes -->
+  <line x1="28" y1="256" x2="652" y2="256" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="28" y="272" width="300" height="72" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="42" y="294" font-size="11.5" font-weight="600" fill="#92400e">位点为什么是「命门」</text>
+  <text x="42" y="314" font-size="10.5" fill="#78716c">binlog 有保留期（默认 30 天），过期即删；</text>
+  <text x="42" y="332" font-size="10.5" fill="#78716c">位点一旦过期，订阅端只能全量重来。</text>
+
+  <rect x="352" y="272" width="300" height="72" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="366" y="294" font-size="11.5" font-weight="600" fill="#991b1b">CDC 与从库的三个冲突</text>
+  <text x="366" y="314" font-size="10.5" fill="#78716c">server_id 撞车 ⇒ 互相踢下线；</text>
+  <text x="366" y="332" font-size="10.5" fill="#78716c">大事务 ⇒ 一个事件几 MB，延迟尖峰。</text>
+</svg>

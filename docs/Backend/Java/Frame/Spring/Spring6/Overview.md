@@ -1,97 +1,77 @@
-# Spring Framework介绍
+# Spring Framework 6 概述
 
-Spring 框架是一个分层的、面向切面的 Java 应用程序的一站式轻量级解决方案，它是 Spring 技术栈的核心和基础，是为了解决企业级应用开发的复杂性而创建的。
+::: info 版本与维护状态
+本组文档面向 **Spring Framework 6.x（6.0 ~ 6.2，JDK 17 基线）**。6.x 线的 OSS 维护已按 Spring 官方支持日历陆续结束（6.0 于 2024-08、6.1 于 2025-06、**6.2 于 2026-06-30**），企业支持最长延伸至 2032 年；**2025-11 起的主线是 Spring Framework 7.0**。6.x 内容仍适用于绝大多数现网项目，新立项项目可直接评估 7.0（要求 JDK 17+、Jakarta EE 11）。
+:::
 
-## Spring 核心模块
+Spring Framework 6 是 Spring 技术栈在 5.x 之后的一次**基线升级**：它没有改变 IoC 与 AOP 的使用方式，而是把运行环境的下限抬高（JDK 17）、把命名空间整体迁移（`javax.*` → `jakarta.*`），并把原生可执行与可观测性变成框架内建能力。本页讲 6.x 相对 5.3 的差异与迁移要点；框架本身的模块划分、IoC / AOP 概念与 5.3 一致，完整介绍见 [Spring 5 文档](../Spring5/index.md)。
 
-Spring 有两个最核心模块： IoC 和 AOP。
+## 一、JDK 基线：17 起步
 
-**IoC**(控制反转，`Inverse of Control`)： 把创建对象过程交给 Spring 进行管理。
+![JDK Version Range](assets/202307042002052.png)
 
-**AOP**(面向切面编程，`Aspect Oriented Programming`) ：AOP 用来封装多个类的公共行为，将那些与业务无关，却为业务模块所共同调用的逻辑封装起来，减少系统的重复代码，降低模块间的耦合度。另外，AOP 还解决一些系统层面上的问题，比如日志、事务、权限等。
+| 版本 | JDK 范围 | 说明 |
+| --- | --- | --- |
+| Spring Framework 6.0.x | **JDK 17-21**（native image：JDK 17-19） | 官方推荐 JDK 17 LTS 起步 |
+| Spring Framework 5.3.x | JDK 8-19 | 唯一还在 8 上运行的 Spring 大版本 |
 
-## Spring 特点
+三个推论：
 
-- **非侵入式**：使用 Spring Framework 开发应用程序时，Spring 对应用程序本身的结构影响非常小。对领域模型可以做到零污染；对功能性组件也只需要使用几个简单的注解进行标记，完全不会破坏原有结构，反而能将组件结构进一步简化。这就使得基于 Spring Framework 开发应用程序时结构清晰、简洁优雅。
+1. **升级 Spring 6 之前先升级 JDK**——这是硬前置，不是建议；
+2. 依赖 Spring 内部 API 的老库（如旧版字节码增强、`cglib` 深度耦合的组件）在 JDK 17 下会被强封装模块系统拦下，需要 `--add-opens` 或升级依赖；
+3. 构建工具链（Lombok、MapStruct、旧版 maven-compiler-plugin）都要同步升到支持 JDK 17 的版本。
 
-- **控制反转**：IoC——Inversion of Control，翻转资源获取方向。把自己创建资源、向环境索取资源变成环境将资源准备好，我们享受资源注入。
+## 二、命名空间迁移：`javax.*` → `jakarta.*`
 
-- **面向切面编程**：AOP——Aspect Oriented Programming，在不修改源代码的基础上增强代码功能。
+Spring 6 基于 **Jakarta EE 9**，所有 JavaEE 规范注解与接口换包名：
 
-- **容器**：Spring IoC 是一个容器，因为它包含并且管理组件对象的生命周期。组件享受到了容器化的管理，替程序员屏蔽了组件创建过程中的大量细节，极大的降低了使用门槛，大幅度提高了开发效率。
+```java
+// Spring 5.3（javax 命名空间）—— 6.0 起不再可用
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
 
-- **组件化**：Spring 实现了使用简单的组件配置组合成一个复杂的应用。在 Spring 中可以使用 XML 和 Java 注解组合这些对象。这使得我们可以基于一个个功能明确、边界清晰的组件有条不紊的搭建超大型复杂应用系统。
+// Spring 6（jakarta 命名空间）
+import jakarta.annotation.PostConstruct;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.constraints.NotNull;
+```
 
-- **一站式**：在 IoC 和 AOP 的基础上可以整合各种企业应用的开源框架和优秀的第三方类库。而且 Spring 旗下的项目已经覆盖了广泛领域，很多方面的功能性需求可以在 Spring Framework 的基础上全部使用 Spring 来实现。
+这是迁移工作量最大的一步：**业务代码、公司内框架、第三方依赖三处都要换**。判据很简单——编译能过只是第一步，运行时反射相关的注解（校验、持久化、Servlet 过滤器）漏改一个就是一个线上问题，所以迁移完成后必须全量回归，不能只看编译绿。
 
-## Spring 模块组成
+## 三、6.x 的四个新能力
 
-![image-20230220154255847](assets/202307042000510.png)
+| 能力 | 一句话说明 | 典型用法 |
+| --- | --- | --- |
+| **AOT 与 GraalVM Native Image** | 启动前完成 Bean 定义的静态化，产物可编译为原生可执行文件 | 云原生场景冷启动从秒级降到毫秒级（详见本目录 [AOT](AOT.md)） |
+| **Micrometer Observation** | 统一的可观测性门面，一次埋点同时产出指标与链路 | 服务方法上的计时、追踪自动导出到 Prometheus / Tracing |
+| **HTTP 接口客户端** | 声明式 HTTP 客户端，写接口就行，实现由框架生成 | `@HttpExchange` 定义远程服务接口，替代手写 RestTemplate |
+| **RFC 7807 问题细节** | 标准化错误响应结构（`application/problem+json`） | 全局异常处理返回统一的 `ProblemDetail` |
 
-![2097896352](assets/202307042002409.png)
+## 四、从 5.3 迁移的最小清单
 
-包含了 Spring 框架的所有模块，这些模块可以满足一切企业级应用开发的需求，在开发过程中可以根据需求有选择性地使用所需要的模块。
+1. JDK 升到 17+（见第一节）；
+2. 全局替换 `javax.` 规范包到 `jakarta.`（依赖里有旧 Servlet/Validation/持久化规范的都要同步升）；
+3. 逐个核对第三方 starter 与 Spring 6 的兼容矩阵（Spring Boot 3 起才适配 6.x，**Spring Boot 2.7 + Spring 6 不可组合**）；
+4. 跑全量回归，重点覆盖校验、过滤器、AOP 代理、序列化四处反射敏感区。
 
-- **Spring Core(核心容器)**：
+::: danger Spring Boot 版本与 Framework 版本是绑定的
+不要在 Spring Boot 2.7 项目里手工把 Framework 提到 6.x——Boot 2.7 的自动装配、依赖管理都按 5.3 设计，强升会以难以定位的方式坏掉。正确路径是 **Boot 2.7 → 3.x（连带 Framework 6）**，按官方迁移指南走。
+:::
 
-  spring core提供了IOC,DI,Bean配置装载创建的核心实现。核心概念： Beans、BeanFactory、BeanDefinitions、ApplicationContext。
+## 五、验证方式
 
-  - spring-core ：IOC和DI的基本实现，在 Spring 环境下使用任何功能都必须基于 IOC 容器。
+升级完成后，用三条命令确认基线：
 
-  - spring-beans：BeanFactory和Bean的装配管理(BeanFactory)
+```shell
+java -version        # 期望 17+，输出里确认是运行时实际版本而非 JAVA_HOME 猜测
+mvn dependency:tree | grep -E "spring-(core|web)"   # 期望 spring-core 6.x
+mvn clean verify     # 期望全量测试通过；校验与过滤器相关用例必须包含在内
+```
 
-  - spring-context：Spring context上下文，即IOC容器(AppliactionContext)
+## 参考资料
 
-  - spring-expression：spring表达式语言
-
-- **Spring AOP**：
-
-  - spring-aop：面向切面编程的应用模块，整合ASM，CGLib，JDK Proxy
-  - spring-aspects：集成AspectJ，AOP应用框架
-  - spring-instrument：动态Class Loading模块
-
-- **Spring Data Access**：
-
-  - spring-jdbc：spring对JDBC的封装，用于简化jdbc操作
-
-  - spring-orm：java对象与数据库数据的映射框架
-
-  - spring-oxm：对象与xml文件的映射框架
-
-  - spring-jms： Spring对Java Message Service(java消息服务)的封装，用于服务之间相互通信
-
-  - spring-tx：spring jdbc事务管理
-
-- **Spring Web**：
-
-  - spring-web：最基础的web支持，建立于spring-context之上，通过servlet或listener来初始化IOC容器
-
-  - spring-webmvc：实现web mvc
-
-  - spring-websocket：与前端的全双工通信协议
-
-  - spring-webflux：Spring 5.0提供的，用于取代传统java servlet，非阻塞式Reactive Web框架，异步，非阻塞，事件驱动的服务
-
-- **Spring Message**：
-
-  - Spring-messaging：spring 4.0提供的，为Spring集成一些基础的报文传送服务
-
-- **Spring test**：
-  - spring-test：集成测试支持，主要是对junit的封装
-
-## Spring 主要优势
-
-1.  丰富的生态系统：Spring 生态系统非常丰富，支持许多模块和库，如 Spring Boot、Spring Security、Spring Cloud 等等，可以帮助开发人员快速构建高可靠性的企业应用程序。
-2.  模块化的设计：框架组件之间的松散耦合和模块化设计使得 Spring Framework 具有良好的可重用性、可扩展性和可维护性。开发人员可以轻松地选择自己需要的模块，根据自己的需求进行开发。
-3.  简化 Java 开发：Spring Framework 简化了 Java 开发，提供了各种工具和 API，可以降低开发复杂度和学习成本。同时，Spring Framework 支持各种应用场景，包括 Web 应用程序、RESTful API、消息传递、批处理等等。
-4.  不断创新和发展：Spring Framework 开发团队一直在不断创新和发展，保持与最新技术的接轨，为开发人员提供更加先进和优秀的工具和框架。
-
-因此，这些优点使得 Spring Framework 成为了一个稳定、可靠、且创新的框架，为企业级 Java 开发提供了一站式的解决方案。
-
-Spring 使创建 Java 企业应用程序变得容易。它提供了在企业环境中采用 Java 语言所需的一切，支持 Groovy 和 Kotlin 作为 JVM 上的替代语言，并且可以根据应用程序的需求灵活地创建多种架构。
-
-## Spring 版本要求
-
-从Spring Framework 6开始，Spring 需要 Java 17+(**JDK最低版本是JDK17**)：
-
-![image-20221201103138194](assets/202307042002052.png)
+- Spring Framework 6.0 What's New（官方 wiki）：https://github.com/spring-projects/spring-framework/wiki/What%27s-New-in-Spring-Framework-6.0
+- Spring 官方支持日历：https://spring.io/support
+- 迁移指南（Spring Boot 3.0 Migration Guide）：https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Migration-Guide
+- [Spring 5 文档（5.3 线，仅存量维护）](../Spring5/index.md)

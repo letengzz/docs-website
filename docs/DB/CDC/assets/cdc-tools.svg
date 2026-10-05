@@ -1,0 +1,47 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="400" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#0b162a">四条主流路线的定位差异</text>
+  <text x="340" y="54" text-anchor="middle" font-size="12" fill="#64748b">同样是读 binlog，差别在「谁来消费、要不要中间件、能不能做流计算」</text>
+
+  <g>
+    <rect x="28" y="76" width="308" height="130" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+    <text x="44" y="100" font-size="13" font-weight="700" fill="#0b162a">Debezium · 生态最全</text>
+    <text x="44" y="122" font-size="10.5" fill="#475569">形态：Kafka Connect Source / Debezium Server</text>
+    <text x="44" y="142" font-size="10.5" fill="#475569">强项：快照模式最多、SMT 生态、多源库支持</text>
+    <text x="44" y="162" font-size="10.5" fill="#475569">代价：要维护 Connect 集群与 schema 历史</text>
+    <text x="44" y="184" font-size="10.5" fill="#0e7490">适合：下游是 Kafka、要做多路分发</text>
+    <text x="44" y="200" font-size="10.5" fill="#64748b">版本：3.7.0（2026-09-29），JDK 17+</text>
+  </g>
+
+  <g>
+    <rect x="344" y="76" width="308" height="130" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="360" y="100" font-size="13" font-weight="700" fill="#0b162a">Flink CDC · 直连 + 流计算</text>
+    <text x="360" y="122" font-size="10.5" fill="#475569">形态：YAML Pipeline / Flink SQL / DataStream</text>
+    <text x="360" y="142" font-size="10.5" fill="#475569">强项：整库同步一句话、内置转换与路由</text>
+    <text x="360" y="162" font-size="10.5" fill="#475569">代价：要有一个 Flink 作业与 checkpoint 体系</text>
+    <text x="360" y="184" font-size="10.5" fill="#6d28d9">适合：多表汇一库、要顺路做清洗聚合</text>
+    <text x="360" y="200" font-size="10.5" fill="#64748b">版本：3.6.0（2026-03-30），JDK 11+</text>
+  </g>
+
+  <g>
+    <rect x="28" y="222" width="308" height="130" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="44" y="246" font-size="13" font-weight="700" fill="#0b162a">Canal · 国内落地最多</text>
+    <text x="44" y="268" font-size="10.5" fill="#475569">形态：Server + Client（protobuf），或直投 MQ</text>
+    <text x="44" y="288" font-size="10.5" fill="#475569">强项：Admin 白屏运维、Adapter 直写 ES</text>
+    <text x="44" y="308" font-size="10.5" fill="#475569">代价：生态以 MySQL 为圆心，跨源能力弱</text>
+    <text x="44" y="330" font-size="10.5" fill="#b45309">注意：Admin 默认口令与历史 RCE 都要处理</text>
+    <text x="44" y="346" font-size="10.5" fill="#64748b">版本：1.1.8（2026-01-16）</text>
+  </g>
+
+  <g>
+    <rect x="344" y="222" width="308" height="130" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="360" y="246" font-size="13" font-weight="700" fill="#0b162a">Maxwell · 最轻的一档</text>
+    <text x="360" y="268" font-size="10.5" fill="#475569">形态：单进程，读 binlog 直出 JSON 到 Kafka</text>
+    <text x="360" y="288" font-size="10.5" fill="#475569">强项：装起来就能跑、bootstrap 一条命令</text>
+    <text x="360" y="308" font-size="10.5" fill="#475569">代价：无 Connect 生态，复杂转换得自己写</text>
+    <text x="360" y="330" font-size="10.5" fill="#64748b">HA：靠 jgroups-raft 选主，不是分布式集群</text>
+    <text x="360" y="346" font-size="10.5" fill="#64748b">版本：1.45.0（2026-07-04）</text>
+  </g>
+
+  <text x="30" y="380" font-size="10.5" fill="#64748b">四者不是替代关系：Debezium 与 Flink CDC 已被大量项目同时使用（Flink CDC 内部就复用了 Debezium 的连接器能力）。</text>
+</svg>

@@ -43,6 +43,7 @@ export const nav = [
       { text: "ClickHouse", link: "/docs/DB/ClickHouse" },
       { text: "图数据库 Neo4j", link: "/docs/DB/Neo4j" },
       { text: "时序数据库", link: "/docs/DB/TimeSeries" },
+      { text: "数据同步与 CDC", link: "/docs/DB/CDC" },
     ]
   },
   {

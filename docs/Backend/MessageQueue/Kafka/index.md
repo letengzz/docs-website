@@ -2,7 +2,7 @@
 
 <p style="text-align:center;"><img src="./assets/kafka-logo.png" alt="Apache Kafka" style="zoom:75%;" /></p>
 
-Apache Kafka 是一个**分布式事件流平台**：它把消息以「日志」形式追加到分区中，消费者通过 offset 自行控制读取位置，因此既支持高吞吐消息传递，也支持历史数据回溯。日志采集、事件驱动、CDC 同步、大数据管道、流式计算都能用它承载。
+Apache Kafka 是一个**分布式事件流平台**：它把消息以「日志」形式追加到分区中，消费者通过 offset 自行控制读取位置，因此既支持高吞吐消息传递，也支持历史数据回溯。日志采集、事件驱动、CDC 同步（把数据库变更经 [数据同步与 CDC](../../../DB/CDC/index.md) 管道送进 Kafka 是最典型的接入方式）、大数据管道、流式计算都能用它承载。
 
 ![Kafka 核心架构（KRaft 模式）](../assets/kafka-architecture.svg)
 

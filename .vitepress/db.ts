@@ -253,3 +253,20 @@ export const Middleware = [
     ],
   },
 ];
+export const CDC = [
+  {
+    text: "数据同步与 CDC",
+    link: "/docs/DB/CDC/index.md",
+    items: [
+      { text: "同步全景与选型", link: "/docs/DB/CDC/Overview/index.md" },
+      { text: "binlog 与 CDC 原理", link: "/docs/DB/CDC/Binlog/index.md" },
+      { text: "Debezium", link: "/docs/DB/CDC/Debezium/index.md" },
+      { text: "Canal 与 Maxwell", link: "/docs/DB/CDC/Canal/index.md" },
+      { text: "Flink CDC", link: "/docs/DB/CDC/FlinkCDC/index.md" },
+      { text: "一致性保障", link: "/docs/DB/CDC/Consistency/index.md" },
+      { text: "生产运维", link: "/docs/DB/CDC/Ops/index.md" },
+      { text: "实战：博客平台 MySQL → ES 检索同步", link: "/docs/DB/CDC/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/CDC/FAQ/index.md" },
+    ],
+  },
+];

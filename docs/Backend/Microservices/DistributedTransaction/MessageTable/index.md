@@ -175,7 +175,7 @@ public class RocketMqTransactionProducer {
 
 ### 进阶：用 CDC 代替轮询
 
-轮询扫描消息表实现简单，但存在延迟（取决于定时间隔）与额外查询压力。数据量很大时，可以用 **CDC（Change Data Capture，如 Debezium）订阅业务库的 binlog**，把消息表的插入直接转成 MQ 消息：
+轮询扫描消息表实现简单，但存在延迟（取决于定时间隔）与额外查询压力。数据量很大时，可以用 **CDC（Change Data Capture，如 Debezium）订阅业务库的 binlog**，把消息表的插入直接转成 MQ 消息（Debezium 对 outbox 场景有专门的 Outbox Event Router，配置与位点管理的完整做法见 [数据同步与 CDC](../../../../DB/CDC/index.md) 专题）：
 
 | 方式 | 延迟 | 数据库压力 | 复杂度 |
 | --- | --- | --- | --- |

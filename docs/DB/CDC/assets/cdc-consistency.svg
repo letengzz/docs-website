@@ -1,0 +1,60 @@
+<svg viewBox="0 0 680 390" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="390" fill="#f8fafc"/>
+  <text x="340" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#0b162a">一致性只能靠这三种手段买回来</text>
+  <text x="340" y="54" text-anchor="middle" font-size="12" fill="#64748b">顺序、重复、丢失：每一个都要一条明确的对策，不能靠「应该不会」</text>
+
+  <g>
+    <rect x="28" y="76" width="200" height="112" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="128" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">① 顺序问题</text>
+    <text x="128" y="122" text-anchor="middle" font-size="10.5" fill="#78716c">同一行更新 1→2→3</text>
+    <text x="128" y="140" text-anchor="middle" font-size="10.5" fill="#78716c">下游看到 3→1→2</text>
+    <text x="128" y="162" text-anchor="middle" font-size="10.5" fill="#475569">对策：按主键分区</text>
+    <text x="128" y="180" text-anchor="middle" font-size="10.5" fill="#475569">下游串行消费同一 key</text>
+
+    <rect x="240" y="76" width="200" height="112" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="340" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">② 重复问题</text>
+    <text x="340" y="122" text-anchor="middle" font-size="10.5" fill="#78716c">重试与重启必然带来重复</text>
+    <text x="340" y="140" text-anchor="middle" font-size="10.5" fill="#78716c">至少一次是默认语义</text>
+    <text x="340" y="162" text-anchor="middle" font-size="10.5" fill="#475569">对策：把写入做成幂等</text>
+    <text x="340" y="180" text-anchor="middle" font-size="10.5" fill="#475569">不要试图「保证不重复」</text>
+
+    <rect x="452" y="76" width="200" height="112" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="552" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">③ 丢失问题</text>
+    <text x="552" y="122" text-anchor="middle" font-size="10.5" fill="#78716c">位点过期、磁盘满、权限不足</text>
+    <text x="552" y="140" text-anchor="middle" font-size="10.5" fill="#78716c">都会让管道「悄悄停住」</text>
+    <text x="552" y="162" text-anchor="middle" font-size="10.5" fill="#475569">对策：对账 + 全量重灌</text>
+    <text x="552" y="180" text-anchor="middle" font-size="10.5" fill="#475569">延迟指标要有人看</text>
+  </g>
+
+  <text x="30" y="222" font-size="12" font-weight="600" fill="#334155">幂等写入的五种手段（按可靠性从高到低）</text>
+  <g font-size="10.5">
+    <rect x="28" y="236" width="120" height="62" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.2"/>
+    <text x="88" y="258" text-anchor="middle" font-size="11" font-weight="600" fill="#0b162a">主键 UPSERT</text>
+    <text x="88" y="276" text-anchor="middle" font-size="10" fill="#64748b">目标库唯一键</text>
+    <text x="88" y="292" text-anchor="middle" font-size="10" fill="#64748b">天然幂等</text>
+
+    <rect x="160" y="236" width="120" height="62" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.2"/>
+    <text x="220" y="258" text-anchor="middle" font-size="11" font-weight="600" fill="#0b162a">版本号比较</text>
+    <text x="220" y="276" text-anchor="middle" font-size="10" fill="#64748b">updated_at / 版本列</text>
+    <text x="220" y="292" text-anchor="middle" font-size="10" fill="#64748b">旧值不许覆盖新值</text>
+
+    <rect x="292" y="236" width="120" height="62" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.2"/>
+    <text x="352" y="258" text-anchor="middle" font-size="11" font-weight="600" fill="#0b162a">幂等表</text>
+    <text x="352" y="276" text-anchor="middle" font-size="10" fill="#64748b">事件 id 去重</text>
+    <text x="352" y="292" text-anchor="middle" font-size="10" fill="#64748b">代价是一次查询</text>
+
+    <rect x="424" y="236" width="120" height="62" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.2"/>
+    <text x="484" y="258" text-anchor="middle" font-size="11" font-weight="600" fill="#0b162a">状态机 CAS</text>
+    <text x="484" y="276" text-anchor="middle" font-size="10" fill="#64748b">只允许合法迁移</text>
+    <text x="484" y="292" text-anchor="middle" font-size="10" fill="#64748b">重放自动被拒</text>
+
+    <rect x="556" y="236" width="96" height="62" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2"/>
+    <text x="604" y="258" text-anchor="middle" font-size="11" font-weight="600" fill="#0b162a">只写增量</text>
+    <text x="604" y="276" text-anchor="middle" font-size="10" fill="#64748b">计数器 +delta</text>
+    <text x="604" y="292" text-anchor="middle" font-size="10" fill="#dc2626">最不可靠</text>
+  </g>
+
+  <rect x="28" y="316" width="624" height="62" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1.2"/>
+  <text x="42" y="338" font-size="11.5" font-weight="600" fill="#0e7490">一条纪律：幂等必须在「目标侧」实现</text>
+  <text x="42" y="358" font-size="10.5" fill="#475569">管道侧的「不重复投递」只能降低概率；只有目标侧的 UPSERT / 版本比较 / 状态机，才能让重复到达也不产生错误结果。</text>
+</svg>
