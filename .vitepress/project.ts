@@ -161,6 +161,14 @@ export const CompleteProject = [
               { text: "第 3 周收口：回归报告回填与第 4 周启动", link: "/project/Complete/BlogPlatform/Week3Close/index.md" },
             ],
           },
+          {
+            text: "一键部署",
+            link: "/project/Complete/BlogPlatform/Deployment/index.md",
+            collapsed: true,
+            items: [
+              { text: "一键部署：Compose 五服务与首次 DDL 实测", link: "/project/Complete/BlogPlatform/Deployment/index.md" },
+            ],
+          },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

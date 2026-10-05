@@ -134,8 +134,8 @@ Store 是给「Agent 记忆」设计的键值 / 向量接口，不是业务数�
 
 ## 相关文档
 
-- [LangGraph 状态机深入](StateGraph/index.md)：状态设计直接决定检查点体积
-- [人工介入工程化](HumanLoop/index.md)：`interrupt` 依赖检查点才能「暂停一周再继续」
+- [LangGraph 状态机深入](../StateGraph/index.md)：状态设计直接决定检查点体积
+- [人工介入工程化](../HumanLoop/index.md)：`interrupt` 依赖检查点才能「暂停一周再继续」
 - [LangChain · 记忆与上下文](../../LangChain/Memory/index.md)：四层记忆模型与本页 checkpointer/store 的对应
 - [Agent 应用 · 记忆与上下文](../../Agent/MemoryContext/index.md)：记忆分层的框架无关方法论
 

@@ -10,11 +10,11 @@ GitOps 落地一两年后的团队，问题会从「怎么装」变成「为什�
 
 ### Argo CD 还是 Flux？
 
-一句话判据：**要给多个团队一个可视化交付平台 → Argo CD；平台组自管集群、一切配置走 Git → Flux**。详细对照见 [Flux：另一条主线](FluxCD/index.md)。两者都满足 OpenGitOps 四原则，选错的主要代价是迁移，不是灾难——但迁移很痛，先看组织再选。
+一句话判据：**要给多个团队一个可视化交付平台 → Argo CD；平台组自管集群、一切配置走 Git → Flux**。详细对照见 [Flux：另一条主线](../FluxCD/index.md)。两者都满足 OpenGitOps 四原则，选错的主要代价是迁移，不是灾难——但迁移很痛，先看组织再选。
 
 ### 密钥方案怎么选？
 
-已有 Vault/云 KMS → ESO；从零小团队 → Sealed Secrets 先跑；整文件加密托管 → SOPS。详细判据与迁移路径见 [密钥管理](Secrets/index.md)。
+已有 Vault/云 KMS → ESO；从零小团队 → Sealed Secrets 先跑；整文件加密托管 → SOPS。详细判据与迁移路径见 [密钥管理](../Secrets/index.md)。
 
 ## 排障决策树
 
@@ -65,13 +65,13 @@ GitOps 落地一两年后的团队，问题会从「怎么装」变成「为什�
 
 | 想做的事 | 去哪个页面 |
 | --- | --- |
-| 从零安装、看懂 Application | [Argo CD：安装与核心对象](ArgoCD/index.md) |
-| 评估不用 Argo CD 的选项 | [Flux：另一条主线](FluxCD/index.md) |
-| 设计仓库与多环境 | [配置仓库设计与多环境](RepoStructure/index.md) |
-| 密钥安全进 Git | [密钥管理](Secrets/index.md) |
-| 发布编排与回滚 | [渐进发布与回滚](ProgressiveDelivery/index.md) |
-| 镜像 tag 谁来改 | [镜像更新与 CI 分工](ImageUpdate/index.md) |
-| 完整可复现落地 | [实战：博客平台 GitOps 交付](Practice/index.md) |
+| 从零安装、看懂 Application | [Argo CD：安装与核心对象](../ArgoCD/index.md) |
+| 评估不用 Argo CD 的选项 | [Flux：另一条主线](../FluxCD/index.md) |
+| 设计仓库与多环境 | [配置仓库设计与多环境](../RepoStructure/index.md) |
+| 密钥安全进 Git | [密钥管理](../Secrets/index.md) |
+| 发布编排与回滚 | [渐进发布与回滚](../ProgressiveDelivery/index.md) |
+| 镜像 tag 谁来改 | [镜像更新与 CI 分工](../ImageUpdate/index.md) |
+| 完整可复现落地 | [实战：博客平台 GitOps 交付](../Practice/index.md) |
 
 ## 参考资料
 

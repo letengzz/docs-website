@@ -178,11 +178,11 @@ if __name__ == "__main__":
 
 ## 相关文档
 
-- [LangGraph 状态机深入](StateGraph/index.md)：本页 `route_after_compliance` 的路由函数写法与单测
-- [人工介入工程化](HumanLoop/index.md)：`human_approval` 节点的机制细节与超时策略
-- [持久化与记忆](Persistence/index.md)：`SqliteSaver` 换 `PostgresSaver` 上生产的步骤
-- [CrewAI 角色编排](CrewAI/index.md)：案例二的构件细节
-- [生产化](Production/index.md)：本页骨架升级为异步 run + 观测的完整口径
+- [LangGraph 状态机深入](../StateGraph/index.md)：本页 `route_after_compliance` 的路由函数写法与单测
+- [人工介入工程化](../HumanLoop/index.md)：`human_approval` 节点的机制细节与超时策略
+- [持久化与记忆](../Persistence/index.md)：`SqliteSaver` 换 `PostgresSaver` 上生产的步骤
+- [CrewAI 角色编排](../CrewAI/index.md)：案例二的构件细节
+- [生产化](../Production/index.md)：本页骨架升级为异步 run + 观测的完整口径
 
 ## 参考资料
 

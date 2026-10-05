@@ -78,7 +78,7 @@ CrewAI：`verbose=True` 仅用于开发；生产用回调 / 事件监听接 Lang
 
 **安全**：
 
-- **工具白名单**：每个节点 / Agent 只给最小工具集；高危工具（执行 SQL、发外部请求）必须过 [人工介入](HumanLoop/index.md)。
+- **工具白名单**：每个节点 / Agent 只给最小工具集；高危工具（执行 SQL、发外部请求）必须过 [人工介入](../HumanLoop/index.md)。
 - **注入边界**：检索内容、用户输入进入提示词前过一遍注入过滤（详见 [Agent 应用 · 安全边界](../../Agent/Safety/index.md) 与 [提示词安全](../../PromptEngineering/index.md)）。
 - **数据最小化**：日志与 trace 不落敏感全文；检查点库的访问权限按生产库标准管理（里面有完整业务状态）。
 
@@ -102,9 +102,9 @@ CrewAI：`verbose=True` 仅用于开发；生产用回调 / 事件监听接 Lang
 
 ## 相关文档
 
-- [持久化与记忆](Persistence/index.md)：部署形态的先决条件——checkpointer 后端与多副本共享
-- [人工介入工程化](HumanLoop/index.md)：审批闭环是生产系统的标配
-- [实战](Practice/index.md)：本页骨架代码在实战页串成完整流水线
+- [持久化与记忆](../Persistence/index.md)：部署形态的先决条件——checkpointer 后端与多副本共享
+- [人工介入工程化](../HumanLoop/index.md)：审批闭环是生产系统的标配
+- [实战](../Practice/index.md)：本页骨架代码在实战页串成完整流水线
 - [大模型应用开发 · 成本核算与限流降级](../../LLMApp/CostRateLimit/index.md)：不引框架时的成本口径，本页沿用其方法
 - [Ops · 监控告警](../../../Ops/Monitoring/index.md)：基础设施层的监控体系
 

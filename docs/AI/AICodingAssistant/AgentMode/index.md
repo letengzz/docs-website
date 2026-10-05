@@ -100,4 +100,4 @@ Agent 模式是 2025 年以来编程助手最大的范式变化：**从「它建
 - Claude Code 文档：权限与 hooks、子代理、skills
 - GitHub Copilot：coding agent 与 Actions 环境说明
 - Cursor 文档：并行 Agent 与后台任务
-- 本仓库 [AGENTS.md](../../../AGENTS.md)：可执行判据的仓库样例
+- 本仓库 [AGENTS.md](../../../../AGENTS.md)：可执行判据的仓库样例

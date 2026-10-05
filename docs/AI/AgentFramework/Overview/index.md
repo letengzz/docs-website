@@ -49,7 +49,7 @@ LangGraph 只有一个运行时包，但围绕它有三层东西，别混为一�
 | **预置 Agent** | `create_agent` 等预构建图 | `langchain.agents`（`langgraph.prebuilt` 已迁出并弃用） |
 | **平台** | 托管部署、持久化、Cron、Studio 调试 UI | LangGraph Platform（商业），自托管用 `langgraph-cli` 起本地 server |
 
-开源运行时**不依赖** LangChain——可以只用 `langgraph` 加任意模型 SDK；但生态里绝大多数示例默认你装了 LangChain。生产系统用 LangSmith 做追踪是常见搭配，但换 Langfuse 等开源方案也完全可行（见 [生产化](Production/index.md)）。
+开源运行时**不依赖** LangChain——可以只用 `langgraph` 加任意模型 SDK；但生态里绝大多数示例默认你装了 LangChain。生产系统用 LangSmith 做追踪是常见搭配，但换 Langfuse 等开源方案也完全可行（见 [生产化](../Production/index.md)）。
 
 ## 4. CrewAI 的分层体系
 
@@ -62,7 +62,7 @@ LangGraph 只有一个运行时包，但围绕它有三层东西，别混为一�
 | **Enterprise** | 托管部署与观测 | 商业产品，与开源版分工明确 |
 
 ::: danger CrewAI 不是「低代码玩具」也不要神化
-CrewAI 的装配模型上手快，但**角色不等于可靠**：Agent 会偏离角色设定、任务产出不符合 `expected_output`、层级 Process 里的管理者模型也会判断失误。把它当「把提示词工程组织成结构」的手段，而不是「免调试的自动化」——验证与评估一节（[生产化](Production/index.md)）对 CrewAI 同样适用。
+CrewAI 的装配模型上手快，但**角色不等于可靠**：Agent 会偏离角色设定、任务产出不符合 `expected_output`、层级 Process 里的管理者模型也会判断失误。把它当「把提示词工程组织成结构」的手段，而不是「免调试的自动化」——验证与评估一节（[生产化](../Production/index.md)）对 CrewAI 同样适用。
 :::
 
 ## 5. 与相邻方案的边界
@@ -78,14 +78,14 @@ CrewAI 的装配模型上手快，但**角色不等于可靠**：Agent 会偏离
 
 1. **环境就绪**：`pip install langgraph crewai` 后执行 `python -c "import langgraph, crewai; print(langgraph.__version__ if hasattr(langgraph,'__version__') else 'langgraph ok', crewai.__version__)"`，确认无 import 错误。
 2. **版本对齐**：`pip index versions langgraph && pip index versions crewai`，输出与本页版本速览同代（1.x）。
-3. **最小图可跑**：能按 [LangGraph 状态机深入](StateGraph/index.md) 第 2 节跑通一个三节点图。
-4. **最小 Crew 可跑**：能按 [CrewAI 角色编排](CrewAI/index.md) 第 2 节跑通一个双 Agent Crew。
+3. **最小图可跑**：能按 [LangGraph 状态机深入](../StateGraph/index.md) 第 2 节跑通一个三节点图。
+4. **最小 Crew 可跑**：能按 [CrewAI 角色编排](../CrewAI/index.md) 第 2 节跑通一个双 Agent Crew。
 
 ## 相关文档
 
-- [LangGraph 状态机深入](StateGraph/index.md)：图的四大件——状态、节点、边、检查点
-- [CrewAI 角色编排](CrewAI/index.md)：Role/Task/Crew/Flow 的装配细节
-- [多智能体协作模式](Patterns/index.md)：supervisor / handoffs / hierarchical 的落地对照
+- [LangGraph 状态机深入](../StateGraph/index.md)：图的四大件——状态、节点、边、检查点
+- [CrewAI 角色编排](../CrewAI/index.md)：Role/Task/Crew/Flow 的装配细节
+- [多智能体协作模式](../Patterns/index.md)：supervisor / handoffs / hierarchical 的落地对照
 - [Agent 应用 · 工作流编排](../../Agent/Workflow/index.md)：编排方法论与低代码平台对比
 
 ## 参考资料

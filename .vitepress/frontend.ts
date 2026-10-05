@@ -725,3 +725,21 @@ export const FrontWebGL = [
         ],
     },
 ];
+export const FrontIntlA11y = [
+    {
+        text: "国际化与无障碍",
+        link: "/docs/Frontend/IntlA11y/index.md",
+        items: [
+            { text: "概述：两层职责与标准速览", link: "/docs/Frontend/IntlA11y/Overview/index.md" },
+            { text: "多语言架构：抽取、组织与加载", link: "/docs/Frontend/IntlA11y/I18nArchitecture/index.md" },
+            { text: "原生 Intl：格式化与本地化", link: "/docs/Frontend/IntlA11y/IntlApi/index.md" },
+            { text: "翻译工作流：从 key 冻结到灰度", link: "/docs/Frontend/IntlA11y/TranslationWorkflow/index.md" },
+            { text: "框架落地：Vue / React / Nuxt", link: "/docs/Frontend/IntlA11y/FrameworkIntegration/index.md" },
+            { text: "无障碍基础：WCAG 与语义化", link: "/docs/Frontend/IntlA11y/A11yFoundation/index.md" },
+            { text: "键盘、焦点与复合组件", link: "/docs/Frontend/IntlA11y/KeyboardFocus/index.md" },
+            { text: "无障碍测试与 CI 门禁", link: "/docs/Frontend/IntlA11y/A11yTesting/index.md" },
+            { text: "实战：双语化与 AA 达标", link: "/docs/Frontend/IntlA11y/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/IntlA11y/FAQ/index.md" },
+        ],
+    },
+];

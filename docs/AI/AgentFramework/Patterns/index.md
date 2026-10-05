@@ -35,7 +35,7 @@ for expert in ("researcher", "writer", "reviewer"):
     builder.add_edge(expert, "supervisor")
 ```
 
-**CrewAI**：hierarchical Process 天然就是 supervisor——管理者自动分派（见 [CrewAI 角色编排](CrewAI/index.md) 第 2 节）；sequential 是「预写死分派」的退化形态。
+**CrewAI**：hierarchical Process 天然就是 supervisor——管理者自动分派（见 [CrewAI 角色编排](../CrewAI/index.md) 第 2 节）；sequential 是「预写死分派」的退化形态。
 
 **护栏三件**：① 主管决策轮数上限（复用 `recursion_limit`）；② 专家产出要校验（结构化输出 + 白名单检查）；③ 主管提示词里写明「不知道交给谁就结束并转人工」。
 
@@ -61,7 +61,7 @@ for expert in ("researcher", "writer", "reviewer"):
 
 ## 5. Map-Reduce：批量同构子任务
 
-见 [LangGraph 状态机深入](StateGraph/index.md) 第 3 节的 `Send` 实现。补充两条批处理特有纪律：
+见 [LangGraph 状态机深入](../StateGraph/index.md) 第 3 节的 `Send` 实现。补充两条批处理特有纪律：
 
 - **子任务结果先落库再汇总**：100 个分片跑到第 80 个失败，靠检查点从断点续跑，而不是从头再来。
 - **汇总前做完整性校验**：分片数对不上、有空产出就先补跑——汇总节点不要默默吞错。
@@ -88,10 +88,10 @@ for expert in ("researcher", "writer", "reviewer"):
 
 ## 相关文档
 
-- [LangGraph 状态机深入](StateGraph/index.md)：`Command` 与 `Send` 是本页所有模式的原语
-- [CrewAI 角色编排](CrewAI/index.md)：sequential / hierarchical / Flows 的框架侧细节
+- [LangGraph 状态机深入](../StateGraph/index.md)：`Command` 与 `Send` 是本页所有模式的原语
+- [CrewAI 角色编排](../CrewAI/index.md)：sequential / hierarchical / Flows 的框架侧细节
 - [Agent 应用 · 多智能体](../../Agent/MultiAgent/index.md)：概念层——协作的收益、代价与边界
-- [人工介入工程化](HumanLoop/index.md)：所有模式的最终兜底都是「转人工」
+- [人工介入工程化](../HumanLoop/index.md)：所有模式的最终兜底都是「转人工」
 
 ## 参考资料
 

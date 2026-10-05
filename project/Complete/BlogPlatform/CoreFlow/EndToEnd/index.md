@@ -5,7 +5,7 @@
 ![端到端五段时序](../assets/core-e2e-sequence.svg)
 
 ::: warning 走查的口径
-「走查」指**逐段人工核对一遍**：按本页表格，每一段用对应的身份与命令打一遍，确认出口符合预期。它是一条龙回归（[Regression 页](./Regression/index.md)）的**预演**——走查发现的问题在回归里固化成断言。
+「走查」指**逐段人工核对一遍**：按本页表格，每一段用对应的身份与命令打一遍，确认出口符合预期。它是一条龙回归（[Regression 页](../Regression/index.md)）的**预演**——走查发现的问题在回归里固化成断言。
 :::
 
 ## 一句话定位
@@ -62,7 +62,7 @@
 | 入口 | 后台评论列表 / `GET /api/v1/me/comments` |
 | 动作 | 作者看到新评论并处置；必要时 `unpublish` 下线 → 读者端 404 → 历史评论占位保留 |
 | 出口 | 链路闭合：写侧发生的事，读侧在一致的时间内可见 |
-| 门禁 | CF10（反馈可见）、CF11（下线收敛）、CF13（注销显示）——见[一条龙回归](./Regression/index.md) |
+| 门禁 | CF10（反馈可见）、CF11（下线收敛）、CF13（注销显示）——见[一条龙回归](../Regression/index.md) |
 
 ## 二、走查中重点盯的三个接缝
 
@@ -103,6 +103,6 @@ python coreflow_smoke.py   --base http://127.0.0.1:18080   # 期望 14/14
 
 ## 五、相关页面
 
-- 章节入口：[核心业务流收口](../index.md) ｜ 上一页：[接口联调](../Integration/index.md) ｜ 下一页：[一条龙回归](./Regression/index.md)
+- 章节入口：[核心业务流收口](../index.md) ｜ 上一页：[接口联调](../Integration/index.md) ｜ 下一页：[一条龙回归](../Regression/index.md)
 - 各段详设：[WritePath](../../WritePath/index.md) ｜ [Visibility](../../Visibility/index.md) ｜ [Search](../../Search/index.md) ｜ [ReaderAccount](../../ReaderAccount/index.md) ｜ [Comments](../../Comments/index.md)
 - 进展记录：[Progress](../../Progress/index.md)

@@ -75,7 +75,8 @@
 | 第 108 天 | 前台 SSR：`useAsyncData` 四纪律 + hydration 三红线 + SEO 元信息（TDK/canonical/og:）+ SSR 缓存头与失效时序 + 搜索页 400 转友好提示 + `ssr_smoke`（R1~R10，10 步），门禁扩到十道 | ✅ |
 | 第 109 天 | 读者账号与权限：账号生命周期五状态 + `users` 扩列与 `user_tokens` 新表 + 令牌轮换与复用检测 + 数据归属（只能动自己的）+ 三处口径收敛；`account_smoke`（22 步），门禁扩到十一道 | ✅ |
 | 第 110 天 | 核心业务流收口：三个聚合与事务边界 + 转移 × 副作用矩阵 + 字段依赖清单 D1~D10 + 五段时序走查 + 一条龙回归 CF1~CF14（`coreflow_smoke`），门禁扩到十二道 | ✅ |
-| 第 111 天 | 第 3 周正式收口：回归报告实测回填四步清单定稿 + 两项欠账显式处置（Docker DDL 实测移至第 112 天 Compose 首验；压测顺延第 119 天）+ 第 4 周交接 | ✅ 本日 |
+| 第 111 天 | 第 3 周正式收口：回归报告实测回填四步清单定稿 + 两项欠账显式处置（Docker DDL 实测移至第 112 天 Compose 首验；压测顺延第 119 天）+ 第 4 周交接 | ✅ |
+| 第 112 天 | 第 4 周起点「一键部署」：Compose 五服务（nginx / 前台 SSR / 后端 / MySQL / Redis）+ `my.cnf` 挂载（ngram 两配置进容器为红线）+ 依赖注入矩阵 + 首次 DDL 实测回填 | ✅ 本日 |
 | 第 112-120 天 | 第 4 周：部署 / 监控 / 验收 | ⏳ |
 
 ## 各章节
@@ -139,7 +140,7 @@ curl -s 'http://127.0.0.1:18080/api/v1/categories?withCount=true'
                                             # 期望：每个分类都带 postCount；空分类返回 0 而非消失
 ```
 
-各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)；评论链路见[评论链路：两级楼层的建模与写入](./Comments/index.md)与[评论读侧](./CommentRead/index.md)；全文搜索的两处服务端配置与 `EXPLAIN` 断言见[全文搜索：MySQL ngram 先行](./Search/index.md)；前台 SSR 的 `useAsyncData` 纪律、软 404 透传与 SEO 元信息见[前台 SSR](./FrontendSSR/index.md)；读者账号的生命周期、令牌轮换与数据归属矩阵见[读者账号与权限](./ReaderAccount/index.md)；三个聚合、状态机副作用矩阵、字段依赖清单与一条龙回归 CF1~CF14 见[核心业务流收口](./CoreFlow/index.md)。
+各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)；评论链路见[评论链路：两级楼层的建模与写入](./Comments/index.md)与[评论读侧](./CommentRead/index.md)；全文搜索的两处服务端配置与 `EXPLAIN` 断言见[全文搜索：MySQL ngram 先行](./Search/index.md)；前台 SSR 的 `useAsyncData` 纪律、软 404 透传与 SEO 元信息见[前台 SSR](./FrontendSSR/index.md)；读者账号的生命周期、令牌轮换与数据归属矩阵见[读者账号与权限](./ReaderAccount/index.md)；三个聚合、状态机副作用矩阵、字段依赖清单与一条龙回归 CF1~CF14 见[核心业务流收口](./CoreFlow/index.md)；第 4 周的一键部署形态（五服务、`my.cnf` 红线、从零复现六步）见[一键部署](./Deployment/index.md)。
 
 ## 参考资料
 

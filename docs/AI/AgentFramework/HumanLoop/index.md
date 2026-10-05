@@ -119,7 +119,7 @@ builder.add_edge("security_review", "merge_review")
 
 ## 6. 与 CrewAI 人工介入的分工
 
-CrewAI 提供 `human_input` / `human_feedback` 钩子，适合**任务产出的人工确认**（写完一段让人看一眼再继续）；但它没有检查点级恢复——**「人三天后回来继续跑」这种场景只有 LangGraph 能接**。两者的取舍见 [CrewAI 角色编排](CrewAI/index.md) 与 [多智能体协作模式](Patterns/index.md)。
+CrewAI 提供 `human_input` / `human_feedback` 钩子，适合**任务产出的人工确认**（写完一段让人看一眼再继续）；但它没有检查点级恢复——**「人三天后回来继续跑」这种场景只有 LangGraph 能接**。两者的取舍见 [CrewAI 角色编排](../CrewAI/index.md) 与 [多智能体协作模式](../Patterns/index.md)。
 
 ## 7. 验证方式
 
@@ -131,9 +131,9 @@ CrewAI 提供 `human_input` / `human_feedback` 钩子，适合**任务产出的�
 
 ## 相关文档
 
-- [持久化与记忆](Persistence/index.md)：interrupt 能暂停多久，取决于 checkpointer 的后端与保留策略
-- [LangGraph 状态机深入](StateGraph/index.md)：审批分支用条件边表达，路由函数可单测
-- [实战](Practice/index.md)：一个带两级审批的完整发布流水线
+- [持久化与记忆](../Persistence/index.md)：interrupt 能暂停多久，取决于 checkpointer 的后端与保留策略
+- [LangGraph 状态机深入](../StateGraph/index.md)：审批分支用条件边表达，路由函数可单测
+- [实战](../Practice/index.md)：一个带两级审批的完整发布流水线
 - [LangChain · 实战：带人工审批的检索增强 Agent](../../LangChain/Practice/index.md)：中间件层的轻量做法
 
 ## 参考资料

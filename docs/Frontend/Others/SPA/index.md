@@ -39,4 +39,5 @@
 
 - [前端安全](../Security/index.md)：SPA 的 XSS/CSRF 与 Token 存储要点
 - [浏览器原理](../../Basic/Browser/index.md)
+- [国际化与无障碍 · 键盘与焦点](../../IntlA11y/KeyboardFocus/index.md)：**SPA 独有的一类无障碍缺陷**——整页刷新会自动把焦点与读屏上下文重置，而路由切换不会。所以单页应用必须手动做两件事：路由切换后把焦点移到新页面的主标题、并同步更新 `document.title`。完整做法见该页「焦点转移的三种场景」
 

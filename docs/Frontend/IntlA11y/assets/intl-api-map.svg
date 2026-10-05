@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 370" width="760" height="370" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="370" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">原生 Intl API 地图</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">这八件事浏览器都自带，引库之前先确认真缺的是哪一件</text>
+  <text x="380" y="78" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">先问「浏览器原生有没有」，再决定要不要引库</text>
+  <rect x="30" y="94" width="165" height="108" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="112.5" y="112.2" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">Intl.DateTimeFormat</text>
+  <text x="112.5" y="129" text-anchor="middle" font-size="7.5" fill="#1D4ED8">日期时间本地化</text>
+  <text x="112.5" y="146.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">注意时区必须显式</text>
+  <text x="112.5" y="163.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">timeZone: 'Asia/Shanghai'</text>
+  <rect x="210" y="94" width="165" height="108" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="292.5" y="112.2" text-anchor="middle" font-size="9" fill="#3730A3" font-weight="bold">Intl.NumberFormat</text>
+  <text x="292.5" y="129" text-anchor="middle" font-size="7.5" fill="#4338CA">数字/货币/百分比</text>
+  <text x="292.5" y="146.25" text-anchor="middle" font-size="7.5" fill="#4338CA">单位与紧凑记法</text>
+  <text x="292.5" y="163.5" text-anchor="middle" font-size="7.5" fill="#4338CA">分组符随 locale 变</text>
+  <rect x="390" y="94" width="165" height="108" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="472.5" y="112.2" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">Intl.PluralRules</text>
+  <text x="472.5" y="129" text-anchor="middle" font-size="7.5" fill="#6D28D9">复数类别 one/other</text>
+  <text x="472.5" y="146.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">还能取序数类别</text>
+  <text x="472.5" y="163.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">中文只有 other</text>
+  <rect x="570" y="94" width="165" height="108" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="652.5" y="112.2" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">Intl.RelativeTimeFormat</text>
+  <text x="652.5" y="129" text-anchor="middle" font-size="7.5" fill="#0F766E">「3 天前」类文案</text>
+  <text x="652.5" y="146.25" text-anchor="middle" font-size="7.5" fill="#0F766E">numeric: 'auto'</text>
+  <text x="652.5" y="163.5" text-anchor="middle" font-size="7.5" fill="#0F766E">单位与语序自动处理</text>
+  <rect x="30" y="218" width="165" height="108" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="112.5" y="236.2" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">Intl.ListFormat</text>
+  <text x="112.5" y="253" text-anchor="middle" font-size="7.5" fill="#047857">枚举连接词</text>
+  <text x="112.5" y="270.25" text-anchor="middle" font-size="7.5" fill="#047857">「A、B 和 C」</text>
+  <text x="112.5" y="287.5" text-anchor="middle" font-size="7.5" fill="#047857">conjunction/disjunction</text>
+  <rect x="210" y="218" width="165" height="108" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.6"/>
+  <text x="292.5" y="236.2" text-anchor="middle" font-size="9" fill="#155E75" font-weight="bold">Intl.Segmenter</text>
+  <text x="292.5" y="253" text-anchor="middle" font-size="7.5" fill="#0E7490">按词/字/句切分</text>
+  <text x="292.5" y="270.25" text-anchor="middle" font-size="7.5" fill="#0E7490">中文分词友好</text>
+  <text x="292.5" y="287.5" text-anchor="middle" font-size="7.5" fill="#0E7490">统计字数用得上</text>
+  <rect x="390" y="218" width="165" height="108" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="472.5" y="236.2" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">Intl.DisplayNames</text>
+  <text x="472.5" y="253" text-anchor="middle" font-size="7.5" fill="#B45309">语言/地区/货币名</text>
+  <text x="472.5" y="270.25" text-anchor="middle" font-size="7.5" fill="#B45309">语言选择器必备</text>
+  <text x="472.5" y="287.5" text-anchor="middle" font-size="7.5" fill="#B45309">不用维护名字表</text>
+  <rect x="570" y="218" width="165" height="108" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="652.5" y="236.2" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">Intl.Collator</text>
+  <text x="652.5" y="253" text-anchor="middle" font-size="7.5" fill="#C2410C">本地化排序比较</text>
+  <text x="652.5" y="270.25" text-anchor="middle" font-size="7.5" fill="#C2410C">localeCompare 底层</text>
+  <text x="652.5" y="287.5" text-anchor="middle" font-size="7.5" fill="#C2410C">别用默认 sort 排中文</text>
+  <text x="380" y="352" text-anchor="middle" font-size="9.5" fill="#B45309">全局对象一次性在运行时构造，构造开销大：在同一 locale 下复用实例，不要在循环里 new</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -2,7 +2,7 @@
 import { Auth, DDD, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, HighPerformanceJava, Java, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, SpringCloud } from "./backend";
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_RAG } from "./AI";
-import { FrontBasic, FrontDataVisualization, FrontMicroFrontend, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
+import { FrontBasic, FrontDataVisualization, FrontIntlA11y, FrontMicroFrontend, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { ClickHouse, DBOverview, DataModeling, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
 import { APIDesign, APITools, Build, CICD, Collaboration, DatabaseClients, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
@@ -66,7 +66,7 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontWebAssembly, ...FrontWebGL, ...FrontTesting, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontWebAssembly, ...FrontWebGL, ...FrontIntlA11y, ...FrontTesting, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
@@ -135,6 +135,7 @@ export const sidebar = {
   "/docs/Frontend/DataVisualization": FrontDataVisualization,
   "/docs/Frontend/WebAssembly": FrontWebAssembly,
   "/docs/Frontend/WebGL": FrontWebGL,
+  "/docs/Frontend/IntlA11y": FrontIntlA11y,
   "/docs/Frontend/Others": FrontOthers,
   "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,
   "/docs/Frontend/Testing": FrontTesting,

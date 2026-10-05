@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 366" width="760" height="366" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="366" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">首次部署：六步闭环与判据</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">一键部署的价值不在脚本长度，而在「换台机器照文档走一遍能起来」</text>
+  <text x="380" y="78" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">首次拉起与验收：六步闭环</text>
+  <rect x="30" y="94" width="220" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="140" y="112.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">① 准备环境</text>
+  <text x="140" y="129" text-anchor="middle" font-size="8" fill="#334155">.env 填四项必填</text>
+  <text x="140" y="147.4" text-anchor="middle" font-size="8" fill="#334155">检查端口未占用</text>
+  <text x="140" y="165.8" text-anchor="middle" font-size="8" fill="#334155">Docker 版本核对</text>
+  <line x1="250" y1="142" x2="270" y2="142" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="270" y="94" width="220" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="112.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">② 起依赖</text>
+  <text x="380" y="129" text-anchor="middle" font-size="8" fill="#B45309">先起 mysql redis</text>
+  <text x="380" y="147.4" text-anchor="middle" font-size="8" fill="#B45309">等 healthcheck 通过</text>
+  <text x="380" y="165.8" text-anchor="middle" font-size="8" fill="#B45309">再看日志确认无告警</text>
+  <line x1="490" y1="142" x2="510" y2="142" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="510" y="94" width="220" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="620" y="112.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">③ 跑迁移</text>
+  <text x="620" y="129" text-anchor="middle" font-size="8" fill="#1D4ED8">V1 建七张表</text>
+  <text x="620" y="147.4" text-anchor="middle" font-size="8" fill="#1D4ED8">V2 建 user_tokens</text>
+  <text x="620" y="165.8" text-anchor="middle" font-size="8" fill="#1D4ED8">SHOW TABLES 期望 8</text>
+  <rect x="30" y="206" width="220" height="96" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="140" y="224.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">④ 起服务</text>
+  <text x="140" y="241" text-anchor="middle" font-size="8" fill="#4338CA">后端与前台依次起</text>
+  <text x="140" y="259.4" text-anchor="middle" font-size="8" fill="#4338CA">健康端点返回 200</text>
+  <text x="140" y="277.8" text-anchor="middle" font-size="8" fill="#4338CA">nginx 反代可达</text>
+  <rect x="270" y="206" width="220" height="96" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="224.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">⑤ 冒烟验收</text>
+  <text x="380" y="241" text-anchor="middle" font-size="8" fill="#047857">十二道门禁全跑</text>
+  <text x="380" y="259.4" text-anchor="middle" font-size="8" fill="#047857">search_smoke Q9 中文</text>
+  <text x="380" y="277.8" text-anchor="middle" font-size="8" fill="#047857">输出回填报告</text>
+  <rect x="510" y="206" width="220" height="96" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="620" y="224.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">⑥ 记录与回滚</text>
+  <text x="620" y="241" text-anchor="middle" font-size="8" fill="#B91C1C">写下实际版本号</text>
+  <text x="620" y="259.4" text-anchor="middle" font-size="8" fill="#B91C1C">留一次回滚演练</text>
+  <text x="620" y="277.8" text-anchor="middle" font-size="8" fill="#B91C1C">镜像标签写进文档</text>
+  <text x="380" y="348" text-anchor="middle" font-size="9.5" fill="#5B21B6">判据：从零到可访问不依赖任何手工改数据库；每条命令都能只看文档复现</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

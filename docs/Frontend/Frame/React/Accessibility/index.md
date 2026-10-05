@@ -363,3 +363,21 @@ describe('Button', () => {
 | 动态内容 | 使用 aria-live 通知变化 |
 | 屏幕阅读器 | 测试屏幕阅读器兼容性 |
 | 缩放 | 支持 200% 缩放 |
+
+## 与「国际化与无障碍」专题的分工
+
+本页讲的是 **React 生态内**的具体做法：`useId`、ref 转发、JSX 写法、`eslint-plugin-jsx-a11y` 的规则配置、React Testing Library 的可访问性查询。
+
+[国际化与无障碍](../../../IntlA11y/index.md)专题讲的是**框架无关**的那一半：
+
+| 维度 | 本页（React 专属） | 该专题（框架无关） |
+| --- | --- | --- |
+| 标准与判据 | 不展开 | [无障碍基础](../../../IntlA11y/A11yFoundation/index.md)：WCAG 2.2 条目怎么落地、A/AA/AAA 口径 |
+| 语义与名称 | React 里怎么写 JSX 属性 | 可访问名称的计算顺序、ARIA 五条规则 |
+| 键盘与焦点 | React 组件的 ref 与聚焦调用 | [键盘与焦点](../../../IntlA11y/KeyboardFocus/index.md)：焦点纪律、跳转链接、APG 模式 |
+| 测试 | axe-core 在 React Testing Library 里的接法 | [无障碍测试与门禁](../../../IntlA11y/A11yTesting/index.md)：四层投入、自动化覆盖率现实、CI 基线对比 |
+| 国际化 | 本页不涉及 | 该专题的前四页：文案抽取、`Intl` 格式化、翻译工作流、SSR 水合 |
+
+**一句话分工**：这里回答「React 里这个属性该写在哪」，那里回答「这个界面按什么标准验收、为什么这么要求」。
+
+- [国际化与无障碍](../../../IntlA11y/index.md)：标准、判据与工程化的完整版

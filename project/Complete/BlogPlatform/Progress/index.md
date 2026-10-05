@@ -804,3 +804,66 @@ curl -s http://127.0.0.1:18080/api/v1/admin/comments \
 - 回归报告四步清单与总览页命令、期望值两处一致。
 
 **下一步**：第 112 天进入第 4 周——Compose 四服务搭建 + `my.cnf` 挂载，完成后第一个动作执行 V1+V2 DDL 实测并回填回归报告第二节。
+
+## 2026-10-05（第 112 天）：一键部署 —— Compose 五服务与首次 DDL 实测（第 4 周起点）
+
+:::info 本日为文档产出
+产出为[一键部署](../Deployment/index.md)页 + 部署配置约定（Compose 结构、`.env` 矩阵、`my.cnf` 挂载）。**本日不新增业务代码、不新增门禁**——门禁数量仍是十二道，本日做的是给它们换一个**稳定部署形态**，并兑现第 3 周登记的欠账 1。
+:::
+
+**做了什么**：
+
+1. **五个角色定形**：`nginx`（唯一对外端口）、`blog-web`（前台 SSR，3000）、`blog-server`（18080）、`mysql`（8.4，带卷）、`redis`（7，带卷）。除 nginx 外全部只在内网可达。
+2. **启动顺序靠健康检查**：MySQL 与 Redis 用 `healthcheck` + `depends_on: condition: service_healthy`，后端等数据库真的能连上再起。**上一版 `depends_on: [mysql]` 的写法会留下「首次启动必失败」的窗口**，本日改掉。
+3. **`my.cnf` 挂载（红线）**：`ngram_token_size = 2` 与 `innodb_ft_enable_stopword = OFF` 随容器启动生效，并顺带把字符集钉成 `utf8mb4`。漏配的后果是**搜索接口不报错、只是永远搜不到中文词**，所以把 `search_smoke` 的 Q9 定为部署后的第一道验证。
+4. **依赖注入矩阵**：一份 `.env` 是唯一事实来源，必填四项（库口令、库名、应用账号、令牌密钥）不给默认值；服务里一律用 `${VAR}` 引用，不在多个 `environment` 块里重复写。
+5. **首次部署六步闭环**：准备环境 → 起依赖 → 跑迁移 → 起服务 → 冒烟验收 → 记录版本与回滚演练，每一步都配命令与期望输出。
+6. **欠账 1 结清口径**：V1 + V2 连跑 + `tables_ = 8` + `parity_check` PASS 的判据不变，**实测列按真实输出回填**，不在文档里预先填好。
+
+**如何验证**：
+
+```shell
+# ① 配置自检：有未定义变量会在这里报错
+cd deploy && docker compose config >/dev/null
+
+# ② 依赖先起，等 healthy（MySQL 首启要几十秒）
+docker compose up -d mysql redis
+docker compose ps --format 'table {{.Service}}\t{{.Status}}'
+# 期望：两行都出现 (healthy)
+
+# ③ 迁移连跑 + 表数量核对（欠账 1 的实测动作）
+docker compose exec -T mysql mysql -uroot -p"$DB_ROOT_PASSWORD" "$DB_NAME" < ../blog-server/db/migration/V1__init.sql
+docker compose exec -T mysql mysql -uroot -p"$DB_ROOT_PASSWORD" "$DB_NAME" < ../blog-server/db/migration/V2__reader_account.sql
+docker compose exec -T mysql mysql -uroot -p"$DB_ROOT_PASSWORD" "$DB_NAME" \
+  -e "SELECT COUNT(*) AS tables_ FROM information_schema.tables WHERE table_schema='$DB_NAME' AND table_type='BASE TABLE';"
+# 期望：tables_ = 8
+
+# ④ ngram 两项看运行时实际生效值（不看配置文件）
+docker compose exec mysql mysql -uroot -p"$DB_ROOT_PASSWORD" -e "
+  SHOW VARIABLES LIKE 'ngram_token_size';
+  SHOW VARIABLES LIKE 'innodb_ft_enable_stopword';"
+# 期望：2 / OFF
+
+# ⑤ 起业务服务并对外验收
+docker compose up -d blog-server blog-web nginx
+curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1/api/v1/posts    # 期望 200
+curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1/               # 期望 200
+
+# ⑥ 部署后第一道专项验证 + 十二道门禁（把输出原样贴进回归报告实测列）
+python search_smoke.py --base http://127.0.0.1    # 期望 steps = 9 passed = 9（Q9 中文词元）
+python skeleton_check.py --base http://127.0.0.1  # 期望 checks = 27 failed = 0
+python coreflow_smoke.py --base http://127.0.0.1  # 期望 steps = 14 passed = 14
+```
+
+**问题与决策**：
+
+| 问题 | 决策 |
+| --- | --- |
+| 迁移脚本自动跑还是手工跑 | **手工跑**。自动迁移在多副本编排下有竞态；单副本阶段手工执行更可控、可回滚 |
+| 前台与后端合不合一个镜像 | **不合成**。Node 产物与 JVM 产物构建目标不同，合成后体积翻倍且缓存互相干扰 |
+| 数据库端口要不要对外 | **不暴露**。调试走 `docker compose exec`，长期暴露 3306 是常见事故入口 |
+| `my.cnf` 挂载还是写进自定义镜像 | **本阶段挂载**。可审计、改配置不重建镜像；「配置即代码进镜像」留到需要分发镜像时 |
+| 健康检查为什么给 40 秒 `start_period` | MySQL 首次初始化数据目录很慢；`start_period` 内的失败不计入 `retries`，避免提前判死 |
+| 前端 SSR 的 `PUBLIC_BASE_URL` 从哪来 | 从 `.env` 注入，不写死——同一份镜像要能跑在 localhost 与正式域名上 |
+
+**下一步**：第 113 天做第 4 周第二件事——**监控接入**。CF14 已断言 `traceId` 能串起一条链路，在其之上补三项指标口径（QPS / P95 延迟 / 缓存命中率）与告警阈值，并明确「谁来看、什么时候看」。压测仍顺延第 119 天，归属口径与[第 3 周收口页](../Week3Close/index.md)、[验收结论](../CoreFlow/Acceptance/index.md)三处一致。

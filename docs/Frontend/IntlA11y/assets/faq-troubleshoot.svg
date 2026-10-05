@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="360" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">常见问题排查树</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">三类高频现象各有自己的排查路径，混在一起查最费时间</text>
+  <rect x="300" y="74" width="160" height="50" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="92.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">页面出问题了</text>
+  <text x="380" y="109" text-anchor="middle" font-size="7.5" fill="#334155">先分类，别急着重装</text>
+  <text x="380" y="140" text-anchor="middle" font-size="9.5" fill="#64748B">三类高频现象的排查顺序</text>
+  <line x1="380" y1="124" x2="135" y2="160" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="160" width="210" height="104" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="135" y="178.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">文案还是中文 / 没换</text>
+  <text x="135" y="195" text-anchor="middle" font-size="7.5" fill="#1D4ED8">① 语言包是否真的加载了</text>
+  <text x="135" y="212.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">② key 是否命中（看 fallback 打点）</text>
+  <text x="135" y="229.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">③ 是否命中了硬编码文案</text>
+  <text x="135" y="246.75" text-anchor="middle" font-size="7.5" fill="#1D4ED8">④ 构建产物是否含新语言包</text>
+  <line x1="380" y1="124" x2="395" y2="160" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="290" y="160" width="210" height="104" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="395" y="178.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">日期数字不对</text>
+  <text x="395" y="195" text-anchor="middle" font-size="7.5" fill="#6D28D9">① 时区是否显式指定</text>
+  <text x="395" y="212.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">② locale 是否传进了 Intl</text>
+  <text x="395" y="229.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">③ 是否手写了格式而非 Intl</text>
+  <text x="395" y="246.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">④ 服务端与客户端 locale 是否一致</text>
+  <line x1="380" y1="124" x2="625" y2="160" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="520" y="160" width="210" height="104" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="625" y="178.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">辅助技术读不出来</text>
+  <text x="625" y="195" text-anchor="middle" font-size="7.5" fill="#047857">① 元素语义对不对（div 还是 button）</text>
+  <text x="625" y="212.25" text-anchor="middle" font-size="7.5" fill="#047857">② 可访问名称从哪来</text>
+  <text x="625" y="229.5" text-anchor="middle" font-size="7.5" fill="#047857">③ 动态内容是否用状态消息播报</text>
+  <text x="625" y="246.75" text-anchor="middle" font-size="7.5" fill="#047857">④ 用屏幕阅读器实听一遍</text>
+  <text x="380" y="292" text-anchor="middle" font-size="9.5" fill="#1E3A8A">通用兜底：先关 JS 看源码，再切语言看水合，最后只用键盘 + 屏幕阅读器走一遍</text>
+  <text x="380" y="316" text-anchor="middle" font-size="9.5" fill="#64748B">反面教材：把 i18n 与 a11y 的问题都当成「加个库就好了」</text>
+  <text x="380" y="340" text-anchor="middle" font-size="9.5" fill="#475569">判据要落在输出上：语言切换看 HTML 的 lang 与文本，无障碍看「不点鼠标能不能走完」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

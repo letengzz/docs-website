@@ -57,7 +57,7 @@
 账户上下文（账户、余额、流水）
 ```
 
-限界上下文的完整划法（子域类型、通用语言、上下文映射六种协作模式）见 [DDD · 战略设计](../DDD/StrategicDesign/index.md)；**推荐先做模块化单体再按需拆分**的路径见 [DDD · 落地架构](../DDD/Architecture/index.md)。
+限界上下文的完整划法（子域类型、通用语言、上下文映射六种协作模式）见 [DDD · 战略设计](../../DDD/StrategicDesign/index.md)；**推荐先做模块化单体再按需拆分**的路径见 [DDD · 落地架构](../../DDD/Architecture/index.md)。
 
 ### 3. 按变化频率与团队边界拆
 

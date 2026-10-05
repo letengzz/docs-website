@@ -324,3 +324,41 @@ label 标签可与表单控件相关联，关联之后点击文字，与之对�
     <input type="radio" name="sex" />
   </label>
   ```
+
+## 表单的无障碍要求
+
+`<label>` 的两种关联写法不只是「点标签能聚焦输入框」的便利功能——它同时决定了**读屏软件能不能念出这个输入框是干什么的**。表单是无障碍缺陷最集中的地方，四条要求必须满足：
+
+| 要求 | 做法 | 判据 |
+| --- | --- | --- |
+| 每个控件都有标签 | `<label for>` 关联，或 `<label>` 包裹；**不要用 `placeholder` 当标签** | 读屏念出「邮箱 输入框」而不是「编辑框」 |
+| 必填与格式可感知 | `required` + `aria-required="true"`，格式提示写在可见文本里 | 焦点进入时能听到必填与格式要求 |
+| 错误与字段关联 | 容器加 `aria-invalid="true"`，错误文本的 `id` 写进 `aria-describedby` | 焦点进入报错字段时，错误信息被念出 |
+| 错误提示可执行 | 说明「哪一项、错在哪、怎么改」，并给示例 | 不看颜色也能知道错在哪、怎么改 |
+
+```html
+<div class="field">
+  <label for="email">邮箱</label>
+  <input
+    id="email"
+    name="email"
+    type="email"
+    autocomplete="email"
+    aria-required="true"
+    aria-invalid="true"
+    aria-describedby="email-err"
+  />
+  <p id="email-err" class="err">
+    <span aria-hidden="true">⚠</span>
+    邮箱格式不正确，示例：name@example.com
+  </p>
+</div>
+```
+
+::: danger 三类常见错误
+1. **用 `placeholder` 代替 `<label>`**：输入内容后提示消失，且 `placeholder` 不是可访问名称的可靠来源。
+2. **错误提示只靠红色边框**：色盲用户区分不了；必须同时有图标或文字。
+3. **错误文本与输入框没有任何程序化关联**：视觉上挨着，读屏用户却不知道这条错误属于哪个字段。
+:::
+
+完整的可访问名称计算顺序、ARIA 五条规则与对比度判据，见 [国际化与无障碍 · 无障碍基础](../../../IntlA11y/A11yFoundation/index.md)。

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 352" width="760" height="352" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="352" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">键盘与焦点：四条纪律与跳转链接三要素</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">焦点管理是最容易被自动化工具漏掉的一类问题，必须人工按 Tab 走一遍</text>
+  <text x="380" y="78" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">焦点是键盘用户的「鼠标指针」：它去哪，用户就以为自己在哪</text>
+  <rect x="30" y="94" width="165" height="100" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="112.5" y="112.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">焦点顺序</text>
+  <text x="112.5" y="129" text-anchor="middle" font-size="7.5" fill="#1D4ED8">DOM 顺序即 tab 顺序</text>
+  <text x="112.5" y="146.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">正 tabindex 一律不要用</text>
+  <text x="112.5" y="163.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">视觉顺序与 DOM 顺序对齐</text>
+  <rect x="210" y="94" width="165" height="100" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="292.5" y="112.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">焦点可见</text>
+  <text x="292.5" y="129" text-anchor="middle" font-size="7.5" fill="#047857">:focus-visible 显式描边</text>
+  <text x="292.5" y="146.25" text-anchor="middle" font-size="7.5" fill="#047857">不要 outline: none</text>
+  <text x="292.5" y="163.5" text-anchor="middle" font-size="7.5" fill="#047857">与背景对比 ≥ 3:1</text>
+  <rect x="390" y="94" width="165" height="100" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="472.5" y="112.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">焦点转移</text>
+  <text x="472.5" y="129" text-anchor="middle" font-size="7.5" fill="#6D28D9">对话框打开后移入首个控件</text>
+  <text x="472.5" y="146.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">关闭后回到触发元素</text>
+  <text x="472.5" y="163.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">路由切换后移到主标题</text>
+  <rect x="570" y="94" width="165" height="100" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="652.5" y="112.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">键盘陷阱</text>
+  <text x="652.5" y="129" text-anchor="middle" font-size="7.5" fill="#B91C1C">模态内循环是允许的</text>
+  <text x="652.5" y="146.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">但必须能 Esc 退出</text>
+  <text x="652.5" y="163.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">不得困住非模态容器</text>
+  <line x1="30" y1="210" x2="730" y2="210" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="60" y="234" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">跳转链接：让键盘用户跳过重复导航</text>
+  <rect x="30" y="246" width="700" height="62" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="46" y="266" text-anchor="start" font-size="8.5" fill="#334155">① 作为 body 的第一个可聚焦元素（平时用 CSS 移出视口，聚焦时才出现）</text>
+  <text x="46" y="284" text-anchor="start" font-size="8.5" fill="#334155">② 点击后把焦点移到 &lt;main id="main"&gt;（容器加 tabindex="-1" 才能被程序化聚焦）</text>
+  <text x="46" y="302" text-anchor="start" font-size="8.5" fill="#334155">③ 判据：按 Tab 一次出现「跳到主内容」，回车后下一次 Tab 落在侧边栏之后的正文链接上</text>
+  <text x="380" y="334" text-anchor="middle" font-size="9.5" fill="#B91C1C">复合组件别自己发明：菜单/标签页/树/组合框一律照 APG 的模式清单实现键盘交互</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -30,7 +30,7 @@
   - [WebClient](WebClient.md)： 响应式编程开发
   - [Http Interface](HttpInterface.md)： 声明式编程
 - Spring Cloud分布式解决方案方式：
-  - [Spring Cloud OpenFeign](../../../SpringCloud/2022/SpringCloud/OpenFeign.md)
+  - [Spring Cloud OpenFeign](../../../../../SpringCloud/OpenFeign/index.md)
 - 第三方框架：
   - Dubbo
   - gRPC

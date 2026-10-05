@@ -83,7 +83,7 @@ spec:
 
 ## 多集群 GitOps：一套清单多集群交付
 
-Argo CD 支持把同一个 ApplicationSet 下发到多个集群，是当前最主流的多集群交付方式（ApplicationSet 的生成器、模板校验与防误删配置，见 [GitOps · 配置仓库设计与多环境](GitOps/RepoStructure/index.md)）：
+Argo CD 支持把同一个 ApplicationSet 下发到多个集群，是当前最主流的多集群交付方式（ApplicationSet 的生成器、模板校验与防误删配置，见 [GitOps · 配置仓库设计与多环境](../GitOps/RepoStructure/index.md)）：
 
 ```yaml [applicationset-multi.yaml]
 apiVersion: argoproj.io/v1alpha1

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 362" width="760" height="362" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="362" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">语义化优先：角色、名称与 ARIA 五规则</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先用原生元素拿到免费的语义与键盘行为，再用 ARIA 补原生确实缺的那部分</text>
+  <rect x="30" y="74" width="340" height="150" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="200" y="92.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">优先用语义化元素</text>
+  <text x="200" y="96" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">原生元素自带角色与行为</text>
+  <rect x="44" y="112" width="76" height="24" rx="5" fill="#FFFFFF" stroke="#059669" stroke-width="1.1"/>
+  <text x="82" y="128" text-anchor="middle" font-size="8" fill="#065F46" font-weight="bold">button</text>
+  <rect x="126" y="112" width="230" height="24" rx="5" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+  <text x="241" y="128" text-anchor="middle" font-size="7.5" fill="#047857">可聚焦、可回车空格激活、自动进 tab 序</text>
+  <rect x="44" y="140" width="76" height="24" rx="5" fill="#FFFFFF" stroke="#059669" stroke-width="1.1"/>
+  <text x="82" y="156" text-anchor="middle" font-size="8" fill="#065F46" font-weight="bold">a href</text>
+  <rect x="126" y="140" width="230" height="24" rx="5" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+  <text x="241" y="156" text-anchor="middle" font-size="7.5" fill="#047857">角色 link，键盘可跳转，右键可复制地址</text>
+  <rect x="44" y="168" width="76" height="24" rx="5" fill="#FFFFFF" stroke="#059669" stroke-width="1.1"/>
+  <text x="82" y="184" text-anchor="middle" font-size="8" fill="#065F46" font-weight="bold">label for + input</text>
+  <rect x="126" y="168" width="230" height="24" rx="5" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+  <text x="241" y="184" text-anchor="middle" font-size="7.5" fill="#047857">点击标签聚焦输入框，名称自动关联</text>
+  <rect x="44" y="196" width="76" height="24" rx="5" fill="#FFFFFF" stroke="#059669" stroke-width="1.1"/>
+  <text x="82" y="212" text-anchor="middle" font-size="8" fill="#065F46" font-weight="bold">ul / li</text>
+  <rect x="126" y="196" width="230" height="24" rx="5" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+  <text x="241" y="212" text-anchor="middle" font-size="7.5" fill="#047857">播报列表与条目数，无需 role=list</text>
+  <rect x="390" y="74" width="340" height="150" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="560" y="92.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">可访问名称从哪来</text>
+  <text x="560" y="96" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">按顺序取第一个非空来源</text>
+  <rect x="404" y="112" width="26" height="24" rx="5" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="417" y="128" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">1</text>
+  <rect x="436" y="112" width="280" height="24" rx="5" fill="#FFFFFF" stroke="#2563EB" stroke-width="1"/>
+  <text x="576" y="128" text-anchor="middle" font-size="7.5" fill="#1D4ED8">aria-labelledby 指向的元素文本</text>
+  <rect x="404" y="140" width="26" height="24" rx="5" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="417" y="156" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">2</text>
+  <rect x="436" y="140" width="280" height="24" rx="5" fill="#FFFFFF" stroke="#2563EB" stroke-width="1"/>
+  <text x="576" y="156" text-anchor="middle" font-size="7.5" fill="#1D4ED8">aria-label 属性值</text>
+  <rect x="404" y="168" width="26" height="24" rx="5" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="417" y="184" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">3</text>
+  <rect x="436" y="168" width="280" height="24" rx="5" fill="#FFFFFF" stroke="#2563EB" stroke-width="1"/>
+  <text x="576" y="184" text-anchor="middle" font-size="7.5" fill="#1D4ED8">关联的 label / 元素内容</text>
+  <rect x="404" y="196" width="26" height="24" rx="5" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="417" y="212" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">4</text>
+  <rect x="436" y="196" width="280" height="24" rx="5" fill="#FFFFFF" stroke="#2563EB" stroke-width="1"/>
+  <text x="576" y="212" text-anchor="middle" font-size="7.5" fill="#1D4ED8">title 属性（最后兜底）</text>
+  <rect x="30" y="240" width="700" height="74" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="258.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">ARIA 五条规则（违反了比不用 ARIA 更糟）</text>
+  <text x="380" y="275" text-anchor="middle" font-size="8" fill="#B91C1C">① 能用原生元素就用原生元素 · ② 不要改原生语义（除非确实需要） · ③ 所有可交互 ARIA 控件必须键盘可达</text>
+  <text x="380" y="293.4" text-anchor="middle" font-size="8" fill="#B91C1C">④ 不要给可见可聚焦元素加 role=presentation · ⑤ 所有 ARIA 元素必须有可访问名称</text>
+  <text x="380" y="344" text-anchor="middle" font-size="9.5" fill="#475569">检查方式：拿掉 CSS 与 JS，只看 HTML —— 一条内容是否还能被读懂、被操作</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

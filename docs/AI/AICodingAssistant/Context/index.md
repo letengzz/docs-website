@@ -101,7 +101,7 @@ Java 21 + Spring Boot 4.1，MySQL 8.4；TypeScript 全程。
 | 破坏性操作显式化（Makefile 目标命名、危险脚本标注） | 少手滑 | 权限规则有落点 |
 
 ::: tip 本仓库就是一个例子
-本仓库根目录的 `AGENTS.md` 写明了「Markdown 规范、侧边栏维护、构建验证命令」，`docs-website` 的各类巡检脚本（链接、表格、容器、图片 alt）把「写得对不对」变成**可执行判据**——这正是 Agent 时代仓库该有的样子。完整做法见[实战页](Practice/index.md)。
+本仓库根目录的 `AGENTS.md` 写明了「Markdown 规范、侧边栏维护、构建验证命令」，`docs-website` 的各类巡检脚本（链接、表格、容器、图片 alt）把「写得对不对」变成**可执行判据**——这正是 Agent 时代仓库该有的样子。完整做法见[实战页](../Practice/index.md)。
 :::
 
 ## MCP：给工具接外部上下文

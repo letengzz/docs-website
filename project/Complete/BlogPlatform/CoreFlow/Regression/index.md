@@ -20,7 +20,7 @@
 | 2. 门禁矩阵输出 | 十一道门禁的 `cases/steps = N passed = N` 原样粘贴，不摘要 | 对照项目总览命令块 |
 | 3. 一条龙步骤表 | CF1~CF14，四列：命令 / 期望 / **实测** / 结论 | 实测列与期望列同形（状态码、字段值） |
 | 4. DDL 欠账回填 | V1+V2 连续执行的实测输出、`SHOW TABLES` 结果、`parity_check` PASS | 第二节的命令原样可跑 |
-| 5. 结论与遗留 | 通过项、顺延项（压测 → 第 119 天）、新发现问题登记 | 与 [Acceptance 页](./Acceptance/index.md)风险表一致 |
+| 5. 结论与遗留 | 通过项、顺延项（压测 → 第 119 天）、新发现问题登记 | 与 [Acceptance 页](../Acceptance/index.md)风险表一致 |
 
 ## 二、DDL 欠账的回填口径
 
@@ -96,6 +96,6 @@ python assertion_audit.py                    # 期望 PASS
 
 ## 六、相关页面
 
-- 章节入口：[核心业务流收口](../index.md) ｜ 上一页：[端到端走查](../EndToEnd/index.md) ｜ 下一页：[第 3 周验收结论](./Acceptance/index.md)
+- 章节入口：[核心业务流收口](../index.md) ｜ 上一页：[端到端走查](../EndToEnd/index.md) ｜ 下一页：[第 3 周验收结论](../Acceptance/index.md)
 - 轨迹骨架出处：[读者账号 · 验收](../../ReaderAccount/Acceptance/index.md)（第 109 天 9 步一条龙） ｜ 分层原则：[测试分层收口](../../TestLayers/index.md)
 - 进展记录：[Progress](../../Progress/index.md)

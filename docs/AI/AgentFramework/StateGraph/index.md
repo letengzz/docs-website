@@ -172,9 +172,9 @@ builder.add_node(
 
 ## 相关文档
 
-- [持久化与记忆](Persistence/index.md)：检查点把每一步状态落库，是本页一切可恢复能力的基础
-- [人工介入工程化](HumanLoop/index.md)：`interrupt` 暂停图并等待审批
-- [多智能体协作模式](Patterns/index.md)：`Command` 路由在 supervisor / handoffs 中的系统用法
+- [持久化与记忆](../Persistence/index.md)：检查点把每一步状态落库，是本页一切可恢复能力的基础
+- [人工介入工程化](../HumanLoop/index.md)：`interrupt` 暂停图并等待审批
+- [多智能体协作模式](../Patterns/index.md)：`Command` 路由在 supervisor / handoffs 中的系统用法
 - [LangChain · LangGraph 编排](../../LangChain/LangGraph/index.md)：入门篇——最小图与 `interrupt` 初识
 
 ## 参考资料

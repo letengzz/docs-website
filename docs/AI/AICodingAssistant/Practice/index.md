@@ -66,7 +66,7 @@ pnpm docs:build
 
 ## 第三步：权限与流程约定
 
-按[权限四级](AgentMode/index.md)给本仓库定表：
+按[权限四级](../AgentMode/index.md)给本仓库定表：
 
 | 级别 | 本仓库的对应动作 | 策略 |
 | --- | --- | --- |
@@ -107,7 +107,7 @@ pnpm docs:build
 
 ## 第五步：度量基线
 
-按[度量页](Metrics/index.md)的四步法为本场景定基线：
+按[度量页](../Metrics/index.md)的四步法为本场景定基线：
 
 | 指标 | 基线收集点 | 预期 |
 | --- | --- | --- |
@@ -117,7 +117,7 @@ pnpm docs:build
 | 构建失败率 | 每轮构建结果 | 应趋近 0 |
 
 ::: warning 这个案例的边界
-本仓库是**内容仓库**：判据全是机器可验证的文本规则，所以 AI 化收益极高。**不要把它直接套到核心业务代码上**——那里的隐性约束多得多（METR 实验 −19% 的场景）。业务代码的推进策略见[概述页](Overview/index.md)的任务分级。
+本仓库是**内容仓库**：判据全是机器可验证的文本规则，所以 AI 化收益极高。**不要把它直接套到核心业务代码上**——那里的隐性约束多得多（METR 实验 −19% 的场景）。业务代码的推进策略见[概述页](../Overview/index.md)的任务分级。
 :::
 
 ## 可复制清单
@@ -135,7 +135,7 @@ pnpm docs:build
 
 ## 参考资料
 
-- 本仓库 [AGENTS.md](../../../AGENTS.md)（判据式规则文件样例）
-- [上下文工程](Context/index.md)、[Agent 模式](AgentMode/index.md)、[团队规范](TeamStandard/index.md)
-- [CI/CD 专题](../../Tools/CICD/index.md)：把判据搬进流水线
+- 本仓库 [AGENTS.md](../../../../AGENTS.md)（判据式规则文件样例）
+- [上下文工程](../Context/index.md)、[Agent 模式](../AgentMode/index.md)、[团队规范](../TeamStandard/index.md)
+- [CI/CD 专题](../../../Tools/CICD/index.md)：把判据搬进流水线
 - Anthropic：Claude Code Best Practices（探索 → 计划 → 实现 → 提交）

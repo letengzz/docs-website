@@ -93,7 +93,7 @@ class WritingFlow(Flow[ReviewState]):
 ```
 
 ::: tip CrewAI 与 LangGraph 的分工边界
-**协作语义（谁负责什么、产出给谁）交给 CrewAI 的 Agent/Task；控制流（分支、循环、审批、恢复）交给 Flow 或 LangGraph。** 在 CrewAI 里需要「暂停三天等审批」时，要么用 Flows 的状态 + 外部触发模拟，要么承认这活儿该由 LangGraph 干（见 [人工介入工程化](HumanLoop/index.md) 第 6 节）。
+**协作语义（谁负责什么、产出给谁）交给 CrewAI 的 Agent/Task；控制流（分支、循环、审批、恢复）交给 Flow 或 LangGraph。** 在 CrewAI 里需要「暂停三天等审批」时，要么用 Flows 的状态 + 外部触发模拟，要么承认这活儿该由 LangGraph 干（见 [人工介入工程化](../HumanLoop/index.md) 第 6 节）。
 :::
 
 ## 4. 工具与记忆
@@ -119,7 +119,7 @@ class WritingFlow(Flow[ReviewState]):
 2. **hierarchical 当默认**：管理者模型引入新的不确定性——能 sequential 就 sequential。
 3. **把控制流塞进 backstory**：「如果质量不行就重写」这类逻辑应写在 Flow / 代码里。
 4. **工具堆给每个 Agent**：工具越多选择越乱——按角色给最小工具集。
-5. **指望 human_input 做审批流**：它阻塞且不持久——审批场景用 LangGraph（见 [HumanLoop](HumanLoop/index.md)）。
+5. **指望 human_input 做审批流**：它阻塞且不持久——审批场景用 LangGraph（见 [HumanLoop](../HumanLoop/index.md)）。
 6. **忽略成本**：一次 `kickoff` 是 N 次模型调用（含内部重试），先小规模试跑估算单次成本。
 
 ## 7. 验证方式
@@ -132,9 +132,9 @@ class WritingFlow(Flow[ReviewState]):
 
 ## 相关文档
 
-- [框架选型与体系总览](Overview/index.md)：两大框架的定位差异
-- [多智能体协作模式](Patterns/index.md)：supervisor / handoffs 在 LangGraph 侧的对等做法
-- [实战](Practice/index.md)：CrewAI 研究小组的完整可运行案例
+- [框架选型与体系总览](../Overview/index.md)：两大框架的定位差异
+- [多智能体协作模式](../Patterns/index.md)：supervisor / handoffs 在 LangGraph 侧的对等做法
+- [实战](../Practice/index.md)：CrewAI 研究小组的完整可运行案例
 - [提示词工程 · 结构化提示词](../../PromptEngineering/StructuredPrompts/index.md)：backstory 与 expected_output 的写法根
 - [Agent 应用 · 多智能体](../../Agent/MultiAgent/index.md)：多智能体的概念层（框架无关）
 

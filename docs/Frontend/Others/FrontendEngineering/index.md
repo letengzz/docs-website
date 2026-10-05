@@ -43,3 +43,4 @@
 
 - [跨端开发 · 多端工程架构](../../Frame/CrossPlatform/Architecture/index.md)：monorepo 分层、共享层与适配层
 - [跨端开发 · 版本与兼容矩阵](../../Frame/CrossPlatform/Version/index.md)：多端构建链路的版本管理
+- [国际化与无障碍 · 翻译工作流](../../IntlA11y/TranslationWorkflow/index.md)：**分工是**——本专题讲构建、规范与 CI 的整体骨架，该页讲**在既有骨架里多挂的两条门禁**：语言包一致性校验（key 缺失/多余、占位符不一致、复数类别缺失七条规则）与伪本地化走查。它们不改变工程结构，只是往流水线里加两个可失败的检查点，正好挂在「构建期检查」这一环

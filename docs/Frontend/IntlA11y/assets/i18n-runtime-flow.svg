@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="360" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">运行时链路：从请求到像素</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">六步链路里，前一步的口径错一次，后面全是错的</text>
+  <text x="380" y="78" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">一次请求里，locale 是怎么走到像素上的</text>
+  <rect x="30" y="94" width="220" height="78" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="140" y="112.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">探测 locale</text>
+  <text x="140" y="129" text-anchor="middle" font-size="8" fill="#334155">URL 前缀 &gt; Cookie</text>
+  <text x="140" y="147.4" text-anchor="middle" font-size="8" fill="#334155">&gt; Accept-Language</text>
+  <line x1="250" y1="133" x2="270" y2="133" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="270" y="94" width="220" height="78" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="112.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">选语言包</text>
+  <text x="380" y="129" text-anchor="middle" font-size="8" fill="#1D4ED8">命名空间按路由</text>
+  <text x="380" y="147.4" text-anchor="middle" font-size="8" fill="#1D4ED8">命中即停</text>
+  <line x1="490" y1="133" x2="510" y2="133" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="510" y="94" width="220" height="78" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="620" y="112.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">装载资源</text>
+  <text x="620" y="129" text-anchor="middle" font-size="8" fill="#4338CA">构建产物内</text>
+  <text x="620" y="147.4" text-anchor="middle" font-size="8" fill="#4338CA">不阻塞首帧</text>
+  <line x1="690" y1="172" x2="690" y2="196" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="690" y1="196" x2="250" y2="196" stroke="#7C3AED" stroke-width="1.6"/>
+  <line x1="250" y1="196" x2="250" y2="214" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="214" width="220" height="78" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="140" y="232.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">格式化</text>
+  <text x="140" y="249" text-anchor="middle" font-size="8" fill="#6D28D9">Intl 日期/数字</text>
+  <text x="140" y="267.4" text-anchor="middle" font-size="8" fill="#6D28D9">复数与相对时间</text>
+  <line x1="250" y1="253" x2="270" y2="253" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="270" y="214" width="220" height="78" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="232.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">渲染</text>
+  <text x="380" y="249" text-anchor="middle" font-size="8" fill="#0F766E">SSR 出带 lang 的</text>
+  <text x="380" y="267.4" text-anchor="middle" font-size="8" fill="#0F766E">完整 HTML</text>
+  <line x1="490" y1="253" x2="510" y2="253" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="510" y="214" width="220" height="78" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="620" y="232.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">水合校验</text>
+  <text x="620" y="249" text-anchor="middle" font-size="8" fill="#C2410C">首帧文本必须</text>
+  <text x="620" y="267.4" text-anchor="middle" font-size="8" fill="#C2410C">与 SSR 逐字一致</text>
+  <text x="380" y="316" text-anchor="middle" font-size="10" fill="#B91C1C" font-weight="bold">两个高频断裂点：水合前切了语言、时区在两端口径不同</text>
+  <text x="380" y="340" text-anchor="middle" font-size="9.5" fill="#475569">验证方式：禁 JS 打开页面，文本与数字口径必须与开启 JS 后完全一致</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
