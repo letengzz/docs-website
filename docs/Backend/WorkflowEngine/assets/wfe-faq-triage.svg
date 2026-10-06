@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">排障分诊：先看「有没有实例」，再看「任务在谁那」</text>
+<text x="460" y="62" text-anchor="middle" class="tag">工作流问题的根因九成落在这四类：定义没部署 · 任务没人接 · 作业没执行 · 变量没传进去</text>
+
+<rect x="320" y="82" width="280" height="52" rx="10" class="box blue"/>
+<text x="460" y="114" text-anchor="middle" class="lt">流程没往前走，第一步查什么？</text>
+<line x1="460" y1="134" x2="460" y2="164" class="line"/>
+
+<rect x="40" y="164" width="200" height="78" rx="10" class="box"/>
+<text x="140" y="192" text-anchor="middle" class="lt">实例都没创建</text>
+<text x="140" y="214" text-anchor="middle" class="s">查 ACT_RE_PROCDEF</text>
+<text x="140" y="232" text-anchor="middle" class="s">是不是部署版本不对</text>
+
+<rect x="256" y="164" width="200" height="78" rx="10" class="box"/>
+<text x="356" y="192" text-anchor="middle" class="lt">实例在跑但没任务</text>
+<text x="356" y="214" text-anchor="middle" class="s">查 ACT_RU_EXECUTION</text>
+<text x="356" y="232" text-anchor="middle" class="s">卡在哪个活动</text>
+
+<rect x="472" y="164" width="200" height="78" rx="10" class="box"/>
+<text x="572" y="192" text-anchor="middle" class="lt">有任务但没人办</text>
+<text x="572" y="214" text-anchor="middle" class="s">查候选人与解析结果</text>
+<text x="572" y="232" text-anchor="middle" class="s">多次解析是否空</text>
+
+<rect x="688" y="164" width="192" height="78" rx="10" class="box"/>
+<text x="784" y="192" text-anchor="middle" class="lt">办了但不往下走</text>
+<text x="784" y="214" text-anchor="middle" class="s">查 ACT_RU_JOB</text>
+<text x="784" y="232" text-anchor="middle" class="s">作业是否重试失败</text>
+
+<rect x="40" y="272" width="270" height="140" rx="10" class="box amber"/>
+<text x="60" y="300" class="lt">「部署了但版本不对」的成因</text>
+<text x="60" y="326" class="s">自动扫描目录与手动部署混用；</text>
+<text x="60" y="346" class="s">resource 里的 bpmn 与线上不一致；</text>
+<text x="60" y="366" class="s">改了图但 key 没变、版本号照样 +1，</text>
+<text x="60" y="386" class="s">结果新实例跑的是你以为的旧图。</text>
+<text x="60" y="406" class="s" fill="#B45309">判据：启动实例时打印流程定义 id 与版本。</text>
+
+<rect x="325" y="272" width="270" height="140" rx="10" class="box rose"/>
+<text x="345" y="300" class="lt">「候选人解析为空」的成因</text>
+<text x="345" y="326" class="s">表达式抛异常被吞；组织树返回空；</text>
+<text x="345" y="346" class="s">角色下无人或人员已停用；</text>
+<text x="345" y="366" class="s">多实例 collection 变量未传。</text>
+<text x="345" y="386" class="s">共同点：任务创建成功了，但 assignee</text>
+<text x="345" y="406" class="s" fill="#B91C1C">与候选人全为空——必须要有兜底审批人。</text>
+
+<rect x="610" y="272" width="270" height="140" rx="10" class="box green"/>
+<text x="630" y="300" class="lt">「定时器/异步作业不跑」的成因</text>
+<text x="630" y="326" class="s">async-executor-activate 没开；</text>
+<text x="630" y="346" class="s">集群多节点但未启用独占锁；</text>
+<text x="630" y="366" class="s">作业连续重试失败被移到死信；</text>
+<text x="630" y="386" class="s">系统时钟漂移导致到期判定不成立。</text>
+<text x="630" y="406" class="s" fill="#047857">判据：ACT_RU_JOB 的 RETRIES 与 EXCEPTION_。</text>
+
+<rect x="40" y="436" width="840" height="136" rx="10" class="box violet"/>
+<text x="60" y="464" class="lt">最高频的十二问（详见 FAQ 页）</text>
+<text x="60" y="490" class="s">流程改了图为什么不生效 ｜ 会签只办了一人 ｜ 退回后历史轨迹断了 ｜ 事务回滚了但流程还在跑 ｜ 流程实例越积越多没人清理</text>
+<text x="60" y="514" class="s">规则不生效（议程顺序 / 事实没 insert / 规则没编译进 kjar）｜ 规则改了要重启 ｜ 表达式注入 ｜ 版本升级后存量实例行为不一致</text>
+<text x="60" y="538" class="s">该不该把状态机换成工作流 ｜ 该不该上 Drools ｜ 流程定义要不要放进 Git ｜ 审批留痕到底存业务库还是读引擎历史表</text>
+<text x="60" y="562" class="s" fill="#6D28D9">共性口径：业务事实进业务库，流程形状交给引擎；两者用 businessKey 对齐，永远不要互相抄字段。</text>
+</svg>

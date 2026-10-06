@@ -110,4 +110,4 @@
 - OWASP LLM Top 10 逐条解读（2025 版）：https://genai.owasp.org/llm-top-10/
 - MITRE ATLAS（AI 攻击战术与技术知识库）：https://atlas.mitre.org/
 - NIST AI Risk Management Framework（治理侧语言体系）：https://www.nist.gov/itl/ai-risk-management-framework
-- 本仓相邻页：[提示词工程](../PromptEngineering/index.md)（方法论）、[Agent 应用 · 安全边界](../../Agent/Safety/index.md)（边界设计）、[RAG 检索增强](../../RAG/index.md)（语料与检索链路）
+- 本仓相邻页：[提示词工程](../../PromptEngineering/index.md)（方法论）、[Agent 应用 · 安全边界](../../Agent/Safety/index.md)（边界设计）、[RAG 检索增强](../../RAG/index.md)（语料与检索链路）

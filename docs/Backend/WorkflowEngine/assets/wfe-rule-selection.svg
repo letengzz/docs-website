@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 580" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="920" height="580" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">规则引擎选型决策：先问需求，再看工具</text>
+<text x="460" y="62" text-anchor="middle" class="tag">绝大多数项目真正需要的不是「规则引擎」，而是「把判定逻辑从代码里搬出来」这一个动作</text>
+
+<rect x="330" y="82" width="260" height="52" rx="10" class="box blue"/>
+<text x="460" y="114" text-anchor="middle" class="lt">判定逻辑会频繁变吗？</text>
+<line x1="460" y1="134" x2="460" y2="164" class="line"/>
+
+<rect x="40" y="164" width="250" height="86" rx="10" class="box"/>
+<text x="165" y="192" text-anchor="middle" class="lt">不变（一年 &lt; 2 次）</text>
+<text x="165" y="216" text-anchor="middle" class="s">不要引入引擎</text>
+<text x="165" y="238" text-anchor="middle" class="s">用策略模式 + 单元测试就够</text>
+
+<rect x="330" y="164" width="260" height="86" rx="10" class="box amber"/>
+<text x="460" y="192" text-anchor="middle" class="lt">会变，且是「条件判定」</text>
+<text x="460" y="216" text-anchor="middle" class="s">进入规则引擎分支</text>
+<text x="460" y="238" text-anchor="middle" class="s">看规则数量与是否需编排</text>
+
+<rect x="630" y="164" width="250" height="86" rx="10" class="box green"/>
+<text x="755" y="192" text-anchor="middle" class="lt">会变，且是「流程走向」</text>
+<text x="755" y="216" text-anchor="middle" class="s">用工作流引擎</text>
+<text x="755" y="238" text-anchor="middle" class="s">BPMN 建模 + 实例状态</text>
+
+<rect x="40" y="282" width="270" height="126" rx="10" class="box violet"/>
+<text x="60" y="310" class="lt">规则独立、无顺序依赖</text>
+<text x="60" y="336" class="s">规则数 &lt; 30：Easy Rules</text>
+<text x="60" y="358" class="s">规则数 ≥ 30 或需决策表：Drools</text>
+<text x="60" y="380" class="s">要求业务人员在页面维护：</text>
+<text x="60" y="400" class="s">URule / 自研决策表 UI</text>
+
+<rect x="325" y="282" width="270" height="126" rx="10" class="box green"/>
+<text x="345" y="310" class="lt">规则之间要编排成链路</text>
+<text x="345" y="336" class="s">串并行、条件分支、重试降级</text>
+<text x="345" y="358" class="s">→ LiteFlow（组件化 EL 编排）</text>
+<text x="345" y="380" class="s">需要跨服务编排与持久状态：</text>
+<text x="345" y="400" class="s">Temporal / 工作流引擎</text>
+
+<rect x="610" y="282" width="270" height="126" rx="10" class="box blue"/>
+<text x="630" y="310" class="lt">只是「算一个值」</text>
+<text x="630" y="336" class="s">表达式引擎：AviatorScript / QLExpress</text>
+<text x="630" y="358" class="s">必须显式开启沙箱 + 白名单 + 超时</text>
+<text x="630" y="380" class="s">来自公网的输入：MVEL 直接排除</text>
+<text x="630" y="400" class="s">（默认可调用任意 Java，等同 RCE）</text>
+
+<rect x="40" y="432" width="840" height="130" rx="10" class="box rose"/>
+<text x="60" y="460" class="lt">三条选型红线（比功能对比更重要）</text>
+<text x="60" y="486" class="s">① 许可：Camunda 8 是 source-available，不再是 Apache 2.0；AviatorScript 是 LGPL-3.0，商用前必须过法务</text>
+<text x="60" y="510" class="s">② 维护：Easy Rules 4.1.x 自 2020-12 起维护模式；Activiti 7 是 rc 版本且社区活跃度低——长期资产不要押在上面</text>
+<text x="60" y="534" class="s">③ 治理：规则改动的审批、版本、回滚、审计谁来负责？没有这套治理，规则引擎只会把 if-else 换个地方藏起来</text>
+</svg>

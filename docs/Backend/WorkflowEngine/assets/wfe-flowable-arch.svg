@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 580" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="920" height="580" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">Flowable 引擎分层与 ACT_ 表族分工</text>
+<text x="460" y="62" text-anchor="middle" class="tag">排障第一原则：查「现在卡在哪」去 RU，查「上个月谁批的」去 HI，查「部署了几版」去 RE</text>
+
+<rect x="40" y="86" width="840" height="150" rx="10" class="box blue"/>
+<text x="60" y="114" class="lt">对外服务接口（Engine Services）</text>
+<rect x="60" y="128" width="188" height="90" rx="8" class="box"/>
+<text x="154" y="158" text-anchor="middle" class="lt">RepositoryService</text>
+<text x="154" y="180" text-anchor="middle" class="s">部署 BPMN / 流程定义</text>
+<text x="154" y="200" text-anchor="middle" class="s">挂起与激活</text>
+<rect x="262" y="128" width="188" height="90" rx="8" class="box"/>
+<text x="356" y="158" text-anchor="middle" class="lt">RuntimeService</text>
+<text x="356" y="180" text-anchor="middle" class="s">启动实例 / 变量 / 信号</text>
+<text x="356" y="200" text-anchor="middle" class="s">查询执行流</text>
+<rect x="464" y="128" width="188" height="90" rx="8" class="box"/>
+<text x="558" y="158" text-anchor="middle" class="lt">TaskService</text>
+<text x="558" y="180" text-anchor="middle" class="s">待办查询 / 认领 / 完成</text>
+<text x="558" y="200" text-anchor="middle" class="s">候选人 / 委派</text>
+<rect x="666" y="128" width="194" height="90" rx="8" class="box"/>
+<text x="763" y="158" text-anchor="middle" class="lt">HistoryService</text>
+<text x="763" y="180" text-anchor="middle" class="s">已办 / 流转轨迹</text>
+<text x="763" y="200" text-anchor="middle" class="s">审计与报表</text>
+
+<rect x="40" y="258" width="500" height="176" rx="10" class="box green"/>
+<text x="60" y="286" class="lt">核心运行时</text>
+<rect x="60" y="302" width="220" height="54" rx="8" class="box"/>
+<text x="170" y="326" text-anchor="middle" class="lt">流程虚拟机</text>
+<text x="170" y="344" text-anchor="middle" class="s">令牌（token）推进</text>
+<rect x="300" y="302" width="220" height="54" rx="8" class="box"/>
+<text x="410" y="326" text-anchor="middle" class="lt">表达式解析</text>
+<text x="410" y="344" text-anchor="middle" class="s">${...} · UEL</text>
+<rect x="60" y="366" width="220" height="54" rx="8" class="box"/>
+<text x="170" y="390" text-anchor="middle" class="lt">作业执行器</text>
+<text x="170" y="408" text-anchor="middle" class="s">定时器 / 异步作业 / 重试</text>
+<rect x="300" y="366" width="220" height="54" rx="8" class="box"/>
+<text x="410" y="390" text-anchor="middle" class="lt">事件与监听器</text>
+<text x="410" y="408" text-anchor="middle" class="s">执行 / 任务 / 全局</text>
+
+<rect x="560" y="258" width="320" height="176" rx="10" class="box amber"/>
+<text x="580" y="286" class="lt">五张表族的职责</text>
+<text x="580" y="312" class="s">ACT_RE_* 定义与部署（静态）</text>
+<text x="580" y="334" class="s">ACT_RU_* 运行中实例 · 任务 · 变量</text>
+<text x="580" y="356" class="s">ACT_HI_* 历史实例 · 任务 · 活动</text>
+<text x="580" y="378" class="s">ACT_ID_* 身份（未接入自有用户体系时为空）</text>
+<text x="580" y="400" class="s">ACT_GE_* 通用：BYTEARRAY / PROPERTY</text>
+<text x="580" y="424" class="s" fill="#B45309">进程结束 → RU 行删除，HI 行保留（受历史级别影响）</text>
+
+<rect x="40" y="456" width="840" height="96" rx="10" class="box rose"/>
+<text x="60" y="484" class="lt">两个必须显式决定的开关</text>
+<text x="60" y="510" class="s">database-schema-update：开发 true 图省事，生产必须 false —— 由 DDL 脚本预先建表，避免启动期去 diff 表结构误改线上</text>
+<text x="60" y="534" class="s">async-executor-activate：只要有定时器/边界定时/异步节点就必须开，否则那些节点永远不触发（且不报错，只是不执行）</text>
+</svg>

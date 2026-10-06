@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">Rete 网络：规则「一次编译、反复匹配」的代价与收益</text>
+<text x="460" y="62" text-anchor="middle" class="tag">规则数量少时它比 if-else 慢；规则多且频繁重算时它才赢——这才是选型的分水岭</text>
+
+<rect x="40" y="86" width="180" height="60" rx="10" class="box blue"/>
+<text x="130" y="112" text-anchor="middle" class="lt">事实（Fact）</text>
+<text x="130" y="132" text-anchor="middle" class="s">Fact 插入工作内存</text>
+<line x1="220" y1="116" x2="262" y2="116" class="line"/>
+<rect x="262" y="86" width="180" height="60" rx="10" class="box amber"/>
+<text x="352" y="112" text-anchor="middle" class="lt">Alpha 节点</text>
+<text x="352" y="132" text-anchor="middle" class="s">单事实条件筛（无 join）</text>
+<line x1="442" y1="116" x2="484" y2="116" class="line"/>
+<rect x="484" y="86" width="180" height="60" rx="10" class="box green"/>
+<text x="574" y="112" text-anchor="middle" class="lt">Beta 节点</text>
+<text x="574" y="132" text-anchor="middle" class="s">多事实 join 与关联</text>
+<line x1="664" y1="116" x2="706" y2="116" class="line"/>
+<rect x="706" y="86" width="174" height="60" rx="10" class="box rose"/>
+<text x="793" y="112" text-anchor="middle" class="lt">Terminal</text>
+<text x="793" y="132" text-anchor="middle" class="s">规则进入议程</text>
+
+<rect x="40" y="176" width="410" height="160" rx="10" class="box blue"/>
+<text x="60" y="204" class="lt">为什么它快</text>
+<text x="60" y="230" class="s">编译期把条件拆成共享前缀网络，</text>
+<text x="60" y="250" class="s">同一组 join 只算一次，被多条规则复用。</text>
+<text x="60" y="276" class="s">增量求值：新增/修改一个事实时只重算</text>
+<text x="60" y="296" class="s">受影响的分支（节点内存保存中间结果）。</text>
+<text x="60" y="322" class="s">规则互相触发（前向链）时优势最明显。</text>
+
+<rect x="470" y="176" width="410" height="160" rx="10" class="box rose"/>
+<text x="490" y="204" class="lt">为什么它可能更慢、更难维护</text>
+<text x="490" y="230" class="s">网络构建有固定成本：规则少（&lt;50 条）时纯亏。</text>
+<text x="490" y="256" class="s">共享前缀让规则之间产生隐式耦合：</text>
+<text x="490" y="276" class="s">改一条条件，可能改变另一条的匹配次数。</text>
+<text x="490" y="302" class="s">节点内存长期驻留，会话不释放就是内存泄漏。</text>
+<text x="490" y="328" class="s" fill="#B91C1C">典型症状：规则数 10 条却引入了整套 BRMS。</text>
+
+<rect x="40" y="362" width="840" height="76" rx="10" class="box amber"/>
+<text x="60" y="390" class="lt">议程（Agenda）与冲突消解：同一个事实匹配到多条规则时，谁先执行</text>
+<text x="60" y="416" class="s">salience 显式调序 ｜ activation-group 同组只执行一条 ｜ agenda-group 分组按栈/队列推进 ｜ no-loop 防自触发死循环</text>
+
+<rect x="40" y="456" width="840" height="66" rx="10" class="box green"/>
+<text x="60" y="484" class="lt">落地纪律</text>
+<text x="60" y="508" class="s">无状态优先（每次新建会话，用完即扔）；有状态会话必须显式 dispose；每条规则必须有唯一可追责的标识与责任人</text>
+</svg>

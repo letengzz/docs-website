@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:14px;fill:#334155;font-weight:600}.s{font-size:12.5px;fill:#475569}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}.bn{font-size:13px;fill:#0F172A;font-weight:600}</style>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">三层能力：别把三种引擎混为一谈</text>
+<text x="460" y="62" text-anchor="middle" class="tag">判断标准只有一个：变化的到底是什么——流程走向、参与人，还是判定条件</text>
+
+<rect x="40" y="88" width="270" height="200" rx="10" class="box blue"/>
+<text x="175" y="118" text-anchor="middle" class="lt">工作流引擎（BPMN）</text>
+<text x="175" y="146" text-anchor="middle" class="s">编排「谁在什么时候做什么」</text>
+<text x="175" y="172" text-anchor="middle" class="s">长事务 · 人工任务 · 定时器</text>
+<text x="175" y="198" text-anchor="middle" class="s">状态落在引擎库（ACT_ 表族）</text>
+<rect x="62" y="222" width="226" height="48" rx="8" class="box"/>
+<text x="175" y="243" text-anchor="middle" class="bn">Flowable · Camunda 7</text>
+<text x="175" y="261" text-anchor="middle" class="s">jBPM · Activiti · Turbo</text>
+
+<rect x="325" y="88" width="270" height="200" rx="10" class="box amber"/>
+<text x="460" y="118" text-anchor="middle" class="lt">规则引擎（BRMS）</text>
+<text x="460" y="146" text-anchor="middle" class="s">判定「满足什么条件得出什么结论」</text>
+<text x="460" y="172" text-anchor="middle" class="s">无状态 · 可组合 · 可热更</text>
+<text x="460" y="198" text-anchor="middle" class="s">规则是数据，不进主流程事务</text>
+<rect x="347" y="222" width="226" height="48" rx="8" class="box"/>
+<text x="460" y="243" text-anchor="middle" class="bn">Drools · LiteFlow</text>
+<text x="460" y="261" text-anchor="middle" class="s">Easy Rules · URule · 决策表</text>
+
+<rect x="610" y="88" width="270" height="200" rx="10" class="box green"/>
+<text x="745" y="118" text-anchor="middle" class="lt">表达式引擎（轻量求值）</text>
+<text x="745" y="146" text-anchor="middle" class="s">只算「这个表达式等于什么」</text>
+<text x="745" y="172" text-anchor="middle" class="s">无规则编排 · 无议程 · 无历史</text>
+<text x="745" y="198" text-anchor="middle" class="s">必须配白名单与超时</text>
+<rect x="632" y="222" width="226" height="48" rx="8" class="box"/>
+<text x="745" y="243" text-anchor="middle" class="bn">AviatorScript · QLExpress</text>
+<text x="745" y="261" text-anchor="middle" class="s">MVEL · SpEL · 自研 DSL</text>
+
+<rect x="40" y="330" width="840" height="88" rx="10" class="box rose"/>
+<text x="460" y="360" text-anchor="middle" class="lt">误用图谱：三种引擎互换带来的典型故障</text>
+<text x="460" y="386" text-anchor="middle" class="s">用表达式引擎做审批 → 参与人解析散落各处，改一次要发一次版 ｜ 用规则引擎做长流程 → 没人知道现在是第几步（没有实例状态）</text>
+<text x="460" y="407" text-anchor="middle" class="s">用工作流引擎做参数校验 → 为了一个 if 建了张表，QPS 掉一个数量级</text>
+
+<rect x="230" y="450" width="460" height="80" rx="10" class="box green"/>
+<text x="460" y="480" text-anchor="middle" class="lt">组合才是常态</text>
+<text x="460" y="505" text-anchor="middle" class="s">工作流引擎管「走到哪一步」，规则引擎管「这一步批不批」，表达式引擎管「这个值算多少」</text>
+<line x1="310" y1="188" x2="325" y2="188" class="line"/>
+<line x1="595" y1="188" x2="610" y2="188" class="line"/>
+</svg>

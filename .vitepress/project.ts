@@ -194,6 +194,14 @@ export const CompleteProject = [
             ],
           },
           {
+            text: "交付文档包与运维手册",
+            link: "/project/Complete/BlogPlatform/Delivery/index.md",
+            collapsed: true,
+            items: [
+              { text: "交付文档包与运维手册：交付物清单、配置对账与 Runbook 四条 SOP", link: "/project/Complete/BlogPlatform/Delivery/index.md" },
+            ],
+          },
+          {
             text: "第 4 周收口",
             link: "/project/Complete/BlogPlatform/Week4Close/index.md",
             collapsed: true,

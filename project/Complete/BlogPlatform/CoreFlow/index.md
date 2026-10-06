@@ -83,3 +83,4 @@ python coreflow_smoke.py --selftest         # 期望 selftest: 14/14
 - 上一环节章节：[读者账号与权限](../ReaderAccount/index.md)（链路的身份主语）
 - 链路各段：[文章写入链路](../WritePath/index.md) ｜ [文章下线动作](../Lifecycle/index.md) ｜ [可见性收敛](../Visibility/index.md) ｜ [全文搜索](../Search/index.md) ｜ [评论链路](../Comments/index.md) ｜ [前台 SSR](../FrontendSSR/index.md)
 - 进展记录：[Progress](../Progress/index.md)
+- 状态机与工作流引擎的边界：[工作流与规则引擎](../../../../docs/Backend/WorkflowEngine/index.md)：本章的三个聚合与转移矩阵管**业务状态**（DRAFT/PUBLISHED/OFFLINE/DELETED 由业务动作改变，状态机是权威）；那边管**审批流转**（谁审、办到哪一步、超时怎么办）。**第 116 天的 AI 预审与本章的关系**：AI 只打标（写 `ai_verdict`），不改 `review_status`，可见性只认业务状态——这正是「业务状态由业务动作改变」这条纪律在项目里的落点。

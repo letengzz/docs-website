@@ -1,6 +1,6 @@
 # 实战：博客平台文章发布域
 
-本页用本库项目实战中的博客平台，把前面所有章节**串成一次完整落地**：从划上下文到接事件，四步走完。项目侧的对应记录在 [CoreFlow · 领域建模](/project/Complete/BlogPlatform/CoreFlow/DomainModeling/index.md)——本页讲方法论视角，项目页讲执行记录视角，两处判据一致。
+本页用本库项目实战中的博客平台，把前面所有章节**串成一次完整落地**：从划上下文到接事件，四步走完。项目侧的对应记录在 [CoreFlow · 领域建模](/project/Complete/BlogPlatform/CoreFlow/DomainModel/index.md)——本页讲方法论视角，项目页讲执行记录视角，两处判据一致。
 
 ![实战四步](../assets/ddd-practice-flow.svg)
 

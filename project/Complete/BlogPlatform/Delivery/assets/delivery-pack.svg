@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">第 117 天：交付文档包与运维手册（Runbook）</text>
+<text x="460" y="62" text-anchor="middle" class="tag">把散落在 24 个章节里的交付物收敛成「换个人也能接手」的一套文档</text>
+
+<rect x="40" y="86" width="270" height="150" rx="10" class="box blue"/>
+<text x="175" y="116" text-anchor="middle" class="lt">一、交付物清单</text>
+<text x="60" y="146" class="s">· 代码结构与模块边界</text>
+<text x="60" y="168" class="s">· 配置清单与环境变量表</text>
+<text x="60" y="190" class="s">· 接口契约索引（OpenAPI）</text>
+<text x="60" y="212" class="s">· 数据库 DDL 与迁移脚本清单</text>
+<text x="60" y="230" class="s" fill="#1D4ED8">判据：每一项都能指出「在哪个章节、怎么验证」</text>
+
+<rect x="325" y="86" width="270" height="150" rx="10" class="box amber"/>
+<text x="460" y="116" text-anchor="middle" class="lt">二、运维手册 Runbook</text>
+<text x="345" y="146" class="s">四条 SOP，每条五段式：</text>
+<text x="345" y="168" class="s">症状 → 5 分钟确认 → 处置</text>
+<text x="345" y="190" class="s">→ 回滚 → 判据</text>
+<text x="345" y="212" class="s">· 文章页 502</text>
+<text x="345" y="230" class="s" fill="#B45309">判据：按 SOP 走一遍能定位到具体容器</text>
+
+<rect x="610" y="86" width="270" height="150" rx="10" class="box green"/>
+<text x="745" y="116" text-anchor="middle" class="lt">三、配置对账</text>
+<text x="630" y="146" class="s">`.env.example` 的键</text>
+<text x="630" y="168" class="s">⇄ 文档里的配置表</text>
+<text x="630" y="190" class="s">· 双向一致：不少、不多、不重名</text>
+<text x="630" y="212" class="s">· 缺失即部署失败项</text>
+<text x="630" y="230" class="s" fill="#047857">判据：diff 输出为空</text>
+
+<rect x="40" y="266" width="840" height="132" rx="10" class="box rose"/>
+<text x="60" y="294" class="lt">四、交接清单：十项断言 D1~D10</text>
+<text x="60" y="320" class="s">D1 交付物清单每项都能定位到章节 ｜ D2 `.env.example` 与配置表 diff 为空 ｜ D3 一键部署六步可复现 ｜ D4 健康检查三个端点全通</text>
+<text x="60" y="344" class="s">D5 Runbook 四条 SOP 各有「症状—确认—处置—回滚—判据」 ｜ D6 每条确认命令 5 分钟内可执行完 ｜ D7 监控六项指标可拉取</text>
+<text x="60" y="368" class="s">D8 备份恢复 R1~R6 有判据 ｜ D9 接口契约索引与实现一致 ｜ D10 十二道门禁命令与期望输出齐全</text>
+<text x="60" y="390" class="s" fill="#B91C1C">纪律：能实测的标实测输出，未跑的一律标 ⏳ + 原因，不把期望值抄进实测列</text>
+
+<rect x="40" y="428" width="410" height="150" rx="10" class="box violet"/>
+<text x="60" y="456" class="lt">与既有章节的分工（不重复造内容）</text>
+<text x="60" y="482" class="s">一键部署 → Deployment（六步复现）</text>
+<text x="60" y="504" class="s">指标口径 → Monitoring（六项指标）</text>
+<text x="60" y="526" class="s">备份恢复 → BackupDrill（R1~R6）</text>
+<text x="60" y="548" class="s">验收清单 → Week4Close（九项回填）</text>
+<text x="60" y="566" class="s" fill="#6D28D9">本页只做「收敛与交接」，不新增判据</text>
+
+<rect x="470" y="428" width="410" height="150" rx="10" class="box blue"/>
+<text x="490" y="456" class="lt">本页新增的唯一一件东西</text>
+<text x="490" y="482" class="s">Runbook：四条 SOP 的「5 分钟确认命令」</text>
+<text x="490" y="504" class="s">此前所有章节讲的都是「正常怎么跑起来」，</text>
+<text x="490" y="526" class="s">只有本页回答「坏了先看哪一行」。</text>
+<text x="490" y="548" class="s" fill="#1D4ED8">判据：每条确认命令都能在 5 分钟内给出结论</text>
+</svg>

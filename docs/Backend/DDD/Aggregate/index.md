@@ -43,7 +43,7 @@ public class Comment {
 | B 有自己独立的生命周期（单独创建、删除）？ | 是 → 强烈信号分开 | 楼层不能脱离评论独立存在（内部实体），评论可以脱离文章独立删除（独立聚合） |
 
 ::: tip 与项目实战的一致性
-项目侧 [CoreFlow · 领域建模](/project/Complete/BlogPlatform/CoreFlow/DomainModeling/index.md) 用同一判据把博客平台划成了 Post / Comment / User 三个聚合——「事务边界按谁的不变量被破坏划」两侧口径完全一致。
+项目侧 [CoreFlow · 领域建模](/project/Complete/BlogPlatform/CoreFlow/DomainModel/index.md) 用同一判据把博客平台划成了 Post / Comment / User 三个聚合——「事务边界按谁的不变量被破坏划」两侧口径完全一致。
 :::
 
 ## 三条铁律

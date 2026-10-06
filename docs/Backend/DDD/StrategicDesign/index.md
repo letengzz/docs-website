@@ -31,7 +31,7 @@
 
 1. **一个词在同一个上下文里只有一个含义**——出现歧义就是切分上下文的信号。
 2. **代码即文档**——改了业务术语，代码里的命名必须跟着改，否则语言立刻失效。
-3. **词典要有人维护**——像维护表结构一样维护术语表（参考项目实战中的[通用语言表](/project/Complete/BlogPlatform/CoreFlow/DomainModeling/index.md)）。
+3. **词典要有人维护**——像维护表结构一样维护术语表（参考项目实战中的[通用语言表](/project/Complete/BlogPlatform/CoreFlow/DomainModel/index.md)）。
 
 ## 限界上下文（Bounded Context）
 
@@ -74,7 +74,7 @@
 | reader（读者） | 核心 | User、Comment 聚合、账号生命周期 | 消费 article 事件做反查 |
 | search（检索） | 支撑 | 文档索引模型 | 只消费 ArticlePublished 事件 |
 
-完整的落地记录见[项目实战 · 核心业务流](/project/Complete/BlogPlatform/CoreFlow/DomainModeling/index.md)。
+完整的落地记录见[项目实战 · 核心业务流](/project/Complete/BlogPlatform/CoreFlow/DomainModel/index.md)。
 
 ## 验证方式
 

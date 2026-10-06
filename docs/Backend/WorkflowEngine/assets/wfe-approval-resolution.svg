@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 580" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="920" height="580" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">审批人解析：把「谁审批」从流程里抽出来</text>
+<text x="460" y="62" text-anchor="middle" class="tag">流程定义只写「角色/策略」，具体人由解析器在运行时算出——否则组织一调整就要重新部署流程</text>
+
+<rect x="40" y="86" width="260" height="130" rx="10" class="box blue"/>
+<text x="60" y="114" class="lt">① 流程定义里写什么</text>
+<text x="60" y="140" class="s">assignee = ${approverResolver.resolve(...)}</text>
+<text x="60" y="162" class="s">或 candidateGroups = ${deptRole}</text>
+<text x="60" y="184" class="s">禁止写死人名与工号：</text>
+<text x="60" y="204" class="s" fill="#B91C1C">一旦某人离职，流程永久卡死</text>
+
+<line x1="300" y1="150" x2="340" y2="150" class="line"/>
+
+<rect x="340" y="86" width="270" height="130" rx="10" class="box amber"/>
+<text x="360" y="114" class="lt">② 解析器（应用层代码）</text>
+<text x="360" y="140" class="s">发起人本人 / 直属主管（沿组织树上溯）</text>
+<text x="360" y="162" class="s">角色（可展开为多人）</text>
+<text x="360" y="184" class="s">指定人 / 上一节点处理人 / 发起人自选</text>
+<text x="360" y="204" class="s">解析结果写入流程变量并留痕</text>
+
+<line x1="610" y1="150" x2="650" y2="150" class="line"/>
+
+<rect x="650" y="86" width="230" height="130" rx="10" class="box green"/>
+<text x="670" y="114" class="lt">③ 引擎落成待办</text>
+<text x="670" y="140" class="s">单人任务：assignee</text>
+<text x="670" y="162" class="s">多人候选：candidateUsers</text>
+<text x="670" y="184" class="s">组候选：candidateGroups</text>
+<text x="670" y="204" class="s">多实例：collection + 会签口径</text>
+
+<rect x="40" y="240" width="410" height="150" rx="10" class="box violet"/>
+<text x="60" y="268" class="lt">会签 / 或签 / 顺签：语义必须写死在需求里</text>
+<text x="60" y="294" class="s">会签 parallel multi-instance：全部人都要办，</text>
+<text x="60" y="314" class="s">完成条件可设为「一人否决即整体否决」</text>
+<text x="60" y="336" class="s">或签：任一候选认领并完成后，其余任务取消</text>
+<text x="60" y="358" class="s">顺签：按顺序串行，前一人办完才生成下一人任务</text>
+<text x="60" y="380" class="s" fill="#6D28D9">三者用同一张 BPMN 图几乎看不出来，必须靠注释与用例锁定</text>
+
+<rect x="470" y="240" width="410" height="150" rx="10" class="box rose"/>
+<text x="490" y="268" class="lt">四个高频缺陷</text>
+<text x="490" y="294" class="s">① 解析出空集合 → 任务无候选人，流程静默卡死</text>
+<text x="490" y="316" class="s">② 主管为自己 → 自审自批（须显式加「不得自审」规则）</text>
+<text x="490" y="338" class="s">③ 会签用 candidateUsers 而非多实例 → 一人办完全流程通过</text>
+<text x="490" y="360" class="s">④ 退回时直接改状态 → 历史轨迹断裂，审计对不上账</text>
+<text x="490" y="382" class="s" fill="#B91C1C">共性根因：把「流程动作」当成了「数据库字段更新」</text>
+
+<rect x="40" y="414" width="840" height="140" rx="10" class="box"/>
+<text x="60" y="442" class="lt">退回、撤销、加签的正确姿势</text>
+<text x="60" y="468" class="s">退回：用「流程内回退到上一个用户任务」或「重新发起」，不要手改 act_ru_task 的 assignee —— 否则 RU 与 HI 不一致</text>
+<text x="60" y="492" class="s">撤销：只有发起人可撤销，且仅限「未产生下游生效副作用」的节点；已生效的副作用要显式补偿，不能靠删任务糊弄</text>
+<text x="60" y="516" class="s">加签：前加签（先插一人）用顺序多实例更自然；后加签（办完再补一人）需要新建一个用户任务并保留父实例的引用</text>
+<text x="60" y="540" class="s" fill="#B45309">共同判据：任何审批动作结束后，HI 表的轨迹必须能完整还原「谁、在什么时候、把哪一步从谁交给谁」</text>
+</svg>

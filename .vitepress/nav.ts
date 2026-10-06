@@ -29,7 +29,8 @@ export const nav = [
       { text: "Python", link: "/docs/Backend/Python" },
       { text: "Python Web 框架", link: "/docs/Backend/PythonWeb" },
       { text: "电商系统设计", link: "/docs/Backend/Ecommerce" },
-      { text: "领域驱动设计", link: "/docs/Backend/DDD" },]
+      { text: "领域驱动设计", link: "/docs/Backend/DDD" },
+      { text: "工作流与规则引擎", link: "/docs/Backend/WorkflowEngine" },]
   },
   {
     text: "数据库",

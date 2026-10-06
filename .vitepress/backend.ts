@@ -494,3 +494,20 @@ export const DDD = [
     ],
   },
 ];
+export const WorkflowEngine = [
+  {
+    text: "工作流与规则引擎",
+    link: "/docs/Backend/WorkflowEngine/index.md",
+    items: [
+      { text: "总览：三层能力与选型边界", link: "/docs/Backend/WorkflowEngine/Overview/index.md" },
+      { text: "BPMN 2.0 建模", link: "/docs/Backend/WorkflowEngine/Modeling/index.md" },
+      { text: "Flowable 引擎深入", link: "/docs/Backend/WorkflowEngine/Flowable/index.md" },
+      { text: "审批流设计", link: "/docs/Backend/WorkflowEngine/ApprovalFlow/index.md" },
+      { text: "Drools 规则引擎", link: "/docs/Backend/WorkflowEngine/Drools/index.md" },
+      { text: "规则引擎选型与轻量替代", link: "/docs/Backend/WorkflowEngine/RuleEngine/index.md" },
+      { text: "与业务系统集成", link: "/docs/Backend/WorkflowEngine/Integration/index.md" },
+      { text: "实战：投稿—审核—发布", link: "/docs/Backend/WorkflowEngine/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/WorkflowEngine/FAQ/index.md" },
+    ],
+  },
+];

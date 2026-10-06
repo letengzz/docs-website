@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">实战：投稿 → 规则预判 → 人工审核 → 发布</text>
+<text x="460" y="62" text-anchor="middle" class="tag">规则引擎先做「预判与分派」，工作流引擎管「谁审、审到哪一步」，两者职责不重叠</text>
+
+<rect x="40" y="86" width="150" height="70" rx="10" class="box blue"/>
+<text x="115" y="116" text-anchor="middle" class="lt">作者投稿</text>
+<text x="115" y="138" text-anchor="middle" class="s">POST /submissions</text>
+<line x1="190" y1="121" x2="232" y2="121" class="line"/>
+
+<rect x="232" y="86" width="180" height="70" rx="10" class="box violet"/>
+<text x="322" y="112" text-anchor="middle" class="lt">规则引擎预判</text>
+<text x="322" y="132" text-anchor="middle" class="s">字数/敏感词/重复度</text>
+<text x="322" y="150" text-anchor="middle" class="s">→ 风险等级与分流</text>
+<line x1="412" y1="121" x2="454" y2="121" class="line"/>
+
+<rect x="454" y="86" width="200" height="70" rx="10" class="box amber"/>
+<text x="554" y="112" text-anchor="middle" class="lt">启动审批流程</text>
+<text x="554" y="132" text-anchor="middle" class="s">businessKey = postId</text>
+<text x="554" y="150" text-anchor="middle" class="s">变量带 riskLevel</text>
+<line x1="654" y1="121" x2="696" y2="121" class="line"/>
+
+<rect x="696" y="86" width="184" height="70" rx="10" class="box green"/>
+<text x="788" y="112" text-anchor="middle" class="lt">人工审核</text>
+<text x="788" y="132" text-anchor="middle" class="s">初审 → 复审</text>
+<text x="788" y="150" text-anchor="middle" class="s">通过 / 退回</text>
+
+<rect x="40" y="188" width="410" height="150" rx="10" class="box amber"/>
+<text x="60" y="216" class="lt">规则在流程里的两个落点</text>
+<text x="60" y="242" class="s">落点 1（前置）：启动前判定风险等级，</text>
+<text x="60" y="262" class="s">据此选择流程分支与审核人数（同一张 BPMN）。</text>
+<text x="60" y="288" class="s">落点 2（节点内）：审核人点「通过」时，</text>
+<text x="60" y="308" class="s">规则再次校验（如正文被改过、超期），</text>
+<text x="60" y="328" class="s" fill="#B45309">不通过则不允许提交该动作，并给出命中规则名。</text>
+
+<rect x="470" y="188" width="410" height="150" rx="10" class="box rose"/>
+<text x="490" y="216" class="lt">必须显式处理的四种状态</text>
+<text x="490" y="242" class="s">草稿（未提交）· 审核中（有活跃流程实例）</text>
+<text x="490" y="264" class="s">已发布（业务状态终态之一）</text>
+<text x="490" y="286" class="s">已退回（可再次提交，生成新实例）</text>
+<text x="490" y="312" class="s" fill="#B91C1C">「审核中」不是流程状态，是业务状态——</text>
+<text x="490" y="332" class="s" fill="#B91C1C">业务状态由业务库权威，流程状态由引擎权威。</text>
+
+<rect x="40" y="360" width="840" height="112" rx="10" class="box blue"/>
+<text x="60" y="388" class="lt">两个接口的契约（可本地验证）</text>
+<text x="60" y="414" class="s">POST /api/v1/submissions {postId} → 202 {instanceId, riskLevel, branch}；重复提交同一 postId 返回 409（幂等键 = postId）</text>
+<text x="60" y="438" class="s">POST /api/v1/reviews/{taskId}/complete {decision, comment} → 200 {postStatus, nextAssignee}；decision=reject 必须带 comment</text>
+<text x="60" y="462" class="s">GET /api/v1/submissions/{postId}/trace → 200 [ {step, assignee, action, at} ... ]（直接读 ACT_HI_* 投影）</text>
+
+<rect x="40" y="494" width="840" height="88" rx="10" class="box green"/>
+<text x="60" y="522" class="lt">验收断言（P1 ~ P8）</text>
+<text x="60" y="546" class="s">P1 高风险稿件进入复审分支 ｜ P2 审核中再次提交返回 409 ｜ P3 退回必须带意见 ｜ P4 退回后业务状态回到可再提交</text>
+<text x="60" y="568" class="s">P5 trace 轨迹与 HI 表一致 ｜ P6 规则命中名可回放 ｜ P7 并发两人认领只成功一次 ｜ P8 流程实例办结后 RU 无残留、HI 有完整轨迹</text>
+</svg>

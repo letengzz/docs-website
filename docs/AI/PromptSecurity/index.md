@@ -49,7 +49,7 @@
 | OWASP Top 10 for LLM Applications | **2025 版** | LLM01 提示注入蝉联第一；LLM07 系统提示词泄露、LLM08 向量与嵌入弱点为新增；另有配套的 Agentic AI Top 10 |
 | garak（NVIDIA） | **0.17.0**（2026-09-09） | LLM 漏洞扫描器；CLI 旗标为 `--target_type` / `--target_name`（旧资料里的 `--model_*` 是历史写法），探针族用 `--spec probes.<族>` 选择；0.17 新增 EU AI Act 映射标签；要求 Python **≥ 3.11**（3.11 / 3.12 / 3.13 均在官方 classifiers 内） |
 | PyRIT（Microsoft） | **1.1.0**（2026-09-04，PyPI 核实） | AI 红队框架；1.0 起完成 API 稳定化，多轮编排（Crescendo / TAP）与 XPIA 是核心能力 |
-| promptfoo | **0.124.0**（2026-10-06，npm 核实） | 2026-03-09 被 OpenAI 收购、保持 MIT 开源；红队预设覆盖 OWASP / NIST / MITRE；要求 Node ≥ 22.22.0；**收购带来「裁判独立性」问题**，见[红队测试](../RedTeam/index.md) |
+| promptfoo | **0.124.0**（2026-10-06，npm 核实） | 2026-03-09 被 OpenAI 收购、保持 MIT 开源；红队预设覆盖 OWASP / NIST / MITRE；要求 Node ≥ 22.22.0；**收购带来「裁判独立性」问题**，见[红队测试](RedTeam/index.md) |
 | NeMo Guardrails（NVIDIA） | **0.24.1**（2026-09-16） | 编排框架，五类 rails；0.20 起 IORails 支持并行输入输出检查 |
 | Llama Guard 4（Meta） | 12B（2025-04 发布） | 由 Llama 4 Scout 裁剪而来的**原生多模态**安全分类器，对齐 MLCommons 风险分类法；Llama Guard 3 转为 legacy |
 | Llama Prompt Guard 2（Meta） | 86M / 22M 两个尺寸 | 专做**输入侧**筛查的小模型：把 prompt 判为 benign / prompt injection / jailbreak；22M 版 CPU / 边缘可跑 |

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}.ev{fill:#ECFDF5;stroke:#10B981}.tk{fill:#EFF6FF;stroke:#3B82F6}.gw{fill:#FFFBEB;stroke:#F59E0B}.sf{fill:#F5F3FF;stroke:#8B5CF6}.dgr{fill:#FFF1F2;stroke:#F43F5E}</style>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">BPMN 2.0 核心元素与三个网关的语义差别</text>
+<text x="460" y="62" text-anchor="middle" class="tag">网关选错的代价：并发变互斥、互斥变并发，且两者在图上看起来都很像</text>
+
+<text x="60" y="100" class="lt">事件（Event）</text>
+<rect x="60" y="112" width="240" height="120" rx="10" class="box"/>
+<circle cx="98" cy="152" r="16" class="ev" stroke-width="2"/>
+<text x="128" y="148" class="lt">开始事件</text>
+<text x="128" y="166" class="s">无 / 定时 / 消息触发</text>
+<circle cx="98" cy="200" r="16" class="dgr" stroke-width="4"/>
+<text x="128" y="196" class="lt">结束事件</text>
+<text x="128" y="214" class="s">终止还是「结束这条分支」</text>
+
+<text x="340" y="100" class="lt">任务（Task）</text>
+<rect x="340" y="112" width="240" height="120" rx="10" class="box"/>
+<rect x="352" y="126" width="216" height="34" rx="6" class="tk" stroke-width="2"/>
+<text x="460" y="148" text-anchor="middle" class="s">用户任务 userTask（等人办）</text>
+<rect x="352" y="168" width="216" height="34" rx="6" class="sf" stroke-width="2"/>
+<text x="460" y="190" text-anchor="middle" class="s">服务任务 serviceTask（系统办）</text>
+<rect x="352" y="210" width="216" height="14" rx="4" class="gw" stroke-width="2"/>
+<text x="460" y="221" text-anchor="middle" class="s">接收/发送/脚本/子流程</text>
+
+<text x="620" y="100" class="lt">网关（Gateway）</text>
+<rect x="620" y="112" width="260" height="120" rx="10" class="box"/>
+<path d="M660 140 L680 160 L660 180 L640 160 Z" class="gw" stroke-width="2"/>
+<text x="694" y="156" class="s">排他 exclusive：只走一条</text>
+<text x="694" y="174" class="s">第一个为真的条件胜出</text>
+<path d="M660 196 L680 212 L660 228 L640 212 Z" class="gw" stroke-width="2"/>
+<text x="694" y="216" class="s">并行 parallel：全走，各一条</text>
+
+<rect x="40" y="262" width="400" height="130" rx="10" class="box"/>
+<text x="60" y="290" class="lt">包含网关 inclusive：最容易被误用</text>
+<text x="60" y="316" class="s">满足条件的分支全部走（可能多条），</text>
+<text x="60" y="336" class="s">但没有分支满足时必须走默认分支，</text>
+<text x="60" y="356" class="s">否则流程抛出「无出口」异常原地卡死。</text>
+<text x="60" y="378" class="s">口诀：真并行用 parallel，条件并行用 inclusive。</text>
+
+<rect x="470" y="262" width="410" height="130" rx="10" class="box"/>
+<text x="490" y="290" class="lt">事件网关 eventBased：排队等外部信号</text>
+<text x="490" y="316" class="s">后续必须是「捕获型事件」：定时器、消息、信号。</text>
+<text x="490" y="336" class="s">典型用法：催办与超时升级——</text>
+<text x="490" y="356" class="s">等待审批（定时器 24h）→ 超时则催办 / 继续等待。</text>
+<text x="490" y="378" class="s">它不做条件判断，只做「谁先到谁赢」。</text>
+
+<rect x="40" y="414" width="840" height="110" rx="10" class="box" fill="#FFFBEB" stroke="#F59E0B"/>
+<text x="60" y="442" class="lt">建模顺序建议：先画主干，再补异常</text>
+<text x="60" y="468" class="s">① 顺序流主干（谁接谁）→ ② 网关补分支（互斥/并发）→ ③ 边界事件补异常（超时、取消、补偿）→ ④ 泳道定职责（谁的任务落在谁的池子里）</text>
+<text x="60" y="494" class="s">顺序反了就会出现「分支上叠分支」的意大利面图：人人都能看懂箭头，没人说得清第一个异常该谁接。</text>
+<line x1="300" y1="172" x2="340" y2="172" class="line"/>
+<line x1="580" y1="172" x2="620" y2="172" class="line"/>
+</svg>
