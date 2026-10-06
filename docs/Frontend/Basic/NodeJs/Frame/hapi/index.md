@@ -60,3 +60,11 @@ process.on('unhandledRejection', (err) => {
 
 init()
 ```
+
+## 子页导航
+
+- [Hapi 概述](Overview/index.md)
+- [Hapi 基础操作](BasicOperations/index.md)
+- [Hapi 插件系统](Plugins/index.md)
+- [Hapi 错误处理](ErrorHandling/index.md)
+- [Hapi 部署](Deployment/index.md)

@@ -9,6 +9,7 @@ export const nav = [
       { text: "数据可视化", link: "/docs/Frontend/DataVisualization" },
       { text: "WebAssembly", link: "/docs/Frontend/WebAssembly" },
       { text: "WebGL 与 Three.js", link: "/docs/Frontend/WebGL" },
+      { text: "PWA 与离线应用", link: "/docs/Frontend/PWA" },
       { text: "国际化与无障碍", link: "/docs/Frontend/IntlA11y" },
       { text: "其他", link: "/docs/Frontend/Others" }
     ]

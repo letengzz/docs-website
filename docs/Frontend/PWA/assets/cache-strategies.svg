@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 452" width="760" height="452" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="452" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">五种缓存策略与它们的失效模式</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">所有策略都只是两句话的组合：先看缓存还是先看网络 × 拿到响应后要不要写回</text>
+
+  <rect x="30" y="76" width="220" height="108" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="140" y="98" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">Cache First</text>
+  <text x="140" y="116" text-anchor="middle" font-size="8" fill="#047857">缓存优先，未命中才回源</text>
+  <text x="140" y="134" text-anchor="middle" font-size="8" fill="#047857">适合：带内容哈希的静态资源</text>
+  <text x="140" y="152" text-anchor="middle" font-size="8" fill="#DC2626">失效：文件名不带哈希 → 永远旧</text>
+  <text x="140" y="170" text-anchor="middle" font-size="8" fill="#047857">✓ 最快，几乎不耗流量</text>
+
+  <rect x="270" y="76" width="220" height="108" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="98" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">Network First</text>
+  <text x="380" y="116" text-anchor="middle" font-size="8" fill="#1D4ED8">网络优先，失败回缓存</text>
+  <text x="380" y="134" text-anchor="middle" font-size="8" fill="#1D4ED8">适合：会变的接口、HTML 文档</text>
+  <text x="380" y="152" text-anchor="middle" font-size="8" fill="#DC2626">失效：弱网要等超时才回缓存</text>
+  <text x="380" y="170" text-anchor="middle" font-size="8" fill="#1D4ED8">✓ 必须配 networkTimeoutSeconds</text>
+
+  <rect x="510" y="76" width="220" height="108" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="620" y="98" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">Stale While Revalidate</text>
+  <text x="620" y="116" text-anchor="middle" font-size="8" fill="#6D28D9">立即给缓存，同时后台更新</text>
+  <text x="620" y="134" text-anchor="middle" font-size="8" fill="#6D28D9">适合：头像、列表摘要、CSS</text>
+  <text x="620" y="152" text-anchor="middle" font-size="8" fill="#DC2626">失效：用户看到上一次的结果</text>
+  <text x="620" y="170" text-anchor="middle" font-size="8" fill="#6D28D9">✓ 首屏最快且能自更新</text>
+
+  <rect x="30" y="196" width="220" height="108" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="140" y="218" text-anchor="middle" font-size="10.5" fill="#991B1B" font-weight="bold">Network Only</text>
+  <text x="140" y="236" text-anchor="middle" font-size="8" fill="#B91C1C">只走网络，失败就是失败</text>
+  <text x="140" y="254" text-anchor="middle" font-size="8" fill="#B91C1C">适合：认证、写接口、个人化数据</text>
+  <text x="140" y="272" text-anchor="middle" font-size="8" fill="#B91C1C">断网即失败——这是正确的</text>
+  <text x="140" y="290" text-anchor="middle" font-size="8" fill="#991B1B">✓ 离线场景交给离线队列</text>
+
+  <rect x="270" y="196" width="220" height="108" rx="8" fill="#F1F5F9" stroke="#334155" stroke-width="1.6"/>
+  <text x="380" y="218" text-anchor="middle" font-size="10.5" fill="#0F172A" font-weight="bold">Cache Only</text>
+  <text x="380" y="236" text-anchor="middle" font-size="8" fill="#334155">只读缓存，不访问网络</text>
+  <text x="380" y="254" text-anchor="middle" font-size="8" fill="#334155">适合：应用壳、离线兜底页</text>
+  <text x="380" y="272" text-anchor="middle" font-size="8" fill="#334155">前提：这些 URL 已被预缓存</text>
+  <text x="380" y="290" text-anchor="middle" font-size="8" fill="#334155">✓ 离线可用性的最后一道保险</text>
+
+  <rect x="510" y="196" width="220" height="108" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="620" y="218" text-anchor="middle" font-size="10.5" fill="#9A3412" font-weight="bold">三条必然出事的配法</text>
+  <text x="620" y="238" text-anchor="middle" font-size="8" fill="#C2410C">① 带哈希的 JS/CSS 配 Network First</text>
+  <text x="620" y="256" text-anchor="middle" font-size="8" fill="#C2410C">② 会变的接口配 Cache First</text>
+  <text x="620" y="274" text-anchor="middle" font-size="8" fill="#C2410C">③ 把写请求纳入缓存路由</text>
+  <text x="620" y="292" text-anchor="middle" font-size="8" fill="#C2410C">共同点：都「不报错但错」</text>
+
+  <rect x="30" y="320" width="700" height="112" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="342" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">按资源类型的默认答案（新项目可直接照抄）</text>
+  <text x="380" y="364" text-anchor="middle" font-size="8.5" fill="#334155">带哈希的构建产物 / 图片 / 字体 → Cache First ｜ HTML 导航 → Network First + 离线兜底（超时 3s）</text>
+  <text x="380" y="382" text-anchor="middle" font-size="8.5" fill="#334155">公开只读接口（分类、标签、列表）→ Network First + 5 分钟过期 ｜ 个人化接口 → Network Only</text>
+  <text x="380" y="400" text-anchor="middle" font-size="8.5" fill="#334155">写接口（评论、点赞、提交）→ Network Only，离线场景走离线队列，绝不进缓存</text>
+  <text x="380" y="420" text-anchor="middle" font-size="8.5" fill="#DC2626">每个 cache 都要 maxEntries 与 maxAgeSeconds 双限：只设一个就会撑爆磁盘或撑爆淘汰</text>
+</svg>

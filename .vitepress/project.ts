@@ -209,6 +209,14 @@ export const CompleteProject = [
               { text: "第 4 周收口：上线验收清单实测回填", link: "/project/Complete/BlogPlatform/Week4Close/index.md" },
             ],
           },
+          {
+            text: "前台 PWA 与离线可读",
+            link: "/project/Complete/BlogPlatform/PwaOffline/index.md",
+            collapsed: true,
+            items: [
+              { text: "前台 PWA 与离线可读：能力取舍、离线三层与 F1~F10 断言", link: "/project/Complete/BlogPlatform/PwaOffline/index.md" },
+            ],
+          },
           { text: "进展记录", link: "/project/Complete/BlogPlatform/Progress/index.md" },
         ],
       },

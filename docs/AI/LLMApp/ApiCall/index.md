@@ -169,6 +169,10 @@ def call_with_retry(payload: dict, max_attempts: int = 4) -> str:
 3. 人为把 `max_output_tokens` 调到 16，观察 `incomplete_details` 字段，确认程序能识别截断。
 4. 用错误密钥与不存在的模型 ID 各调用一次，确认错误被明确捕获且不会重试。
 
+## 子页导航
+
+- [Chat Completions 兼容用法（存量集成）](ChatCompletions/index.md)
+
 ## 参考资料
 
 - OpenAI API 文档总览：https://developers.openai.com/api/docs

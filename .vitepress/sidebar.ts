@@ -2,7 +2,7 @@
 import { Auth, DDD, DesignPatterns, DotNet, Ecommerce, Go, GoMicroservices, HighPerformanceJava, Java, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, SpringCloud, WorkflowEngine } from "./backend";
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG } from "./AI";
-import { FrontBasic, FrontDataVisualization, FrontIntlA11y, FrontMicroFrontend, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontOthers, FrontTesting } from "./frontend";
+import { FrontBasic, FrontDataVisualization, FrontIntlA11y, FrontMicroFrontend, FrontOthers, FrontPWA, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, ChaosEngineering, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { CDC, ClickHouse, DBOverview, DataModeling, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
 import { APIDesign, APITools, Build, CICD, Collaboration, DatabaseClients, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
@@ -66,7 +66,7 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontWebAssembly, ...FrontWebGL, ...FrontIntlA11y, ...FrontTesting, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontIntlA11y, ...FrontTesting, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
@@ -135,6 +135,7 @@ export const sidebar = {
   "/docs/Frontend/DataVisualization": FrontDataVisualization,
   "/docs/Frontend/WebAssembly": FrontWebAssembly,
   "/docs/Frontend/WebGL": FrontWebGL,
+  "/docs/Frontend/PWA": FrontPWA,
   "/docs/Frontend/IntlA11y": FrontIntlA11y,
   "/docs/Frontend/Others": FrontOthers,
   "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,

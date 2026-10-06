@@ -69,3 +69,4 @@ Vue 侧以 **Vue 3.5+** 为准。涉及 Nuxt 3 的差异会明确标注。
 - [前端安全](../../Others/Security/index.md)：SSR 特有的安全问题（服务端注入、密钥泄漏）
 - [Docker](../../../Ops/Docker/index.md) 与 [Kubernetes](../../../Ops/Kubernetes/index.md)：Node 服务的交付形态
 - [Nuxt 通用模板](../../../../project/Base/NuxtTemplate/index.md)：**分工是**——本专题讲框架本身（渲染模式、数据获取、服务端能力、部署），通用模板讲「**怎么让模板自己完成技术栈初始化**」（默认零依赖、首次运行打开选择页、引擎自删引导器并按选择装依赖）。后者是工程组织问题，换到 Vue、React 上同样成立，与框架能力无关。
+- [PWA 与离线应用](../../PWA/index.md)：**分工是**——本专题讲 Nuxt 怎么把页面渲染出来；该专题讲**渲染产物之外的那一层**：Service Worker 缓存、离线兜底、安装与推送。两者在 Nuxt 上会正面相遇，共三处必须处理的冲突：① **HTML 不该进预缓存**（SSR 的 HTML 是每次请求现渲染的，预缓存等于把构建那一刻的页面冻结），② **`useAsyncData` 的服务端取数不经过 SW**（首访内容已在 HTML 里，客户端不会再发那次接口请求，所以「配了接口缓存却离线仍是空的」是预期现象），③ **`navigateFallbackDenylist` 必须排除 `/api/`**（Nitro 路由不能被回退成 HTML）。三条的完整配置与判据见[框架与构建落地](../../PWA/Framework/index.md)第四节。

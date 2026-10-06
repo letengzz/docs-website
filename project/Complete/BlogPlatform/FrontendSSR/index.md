@@ -168,3 +168,4 @@ curl -sI http://127.0.0.1:3000/posts/hello-world | grep -i cache-control
 - [Markdown 渲染能力补齐](../Rendering/index.md)：description 的纯文本来源（写时渲染）
 - [测试分层收口](../TestLayers/index.md)：T15/T16 上移 `mvn test` 的分层判据
 - [核心业务流 · 端到端走查](../CoreFlow/EndToEnd/index.md)：SSR 在五段时序中的位置——「身份片段不进 SSR 输出」是走查重点盯的第三个接缝，一条龙 CF3 把「源码含正文与 TDK」固化为链路断言
+- [PWA 与离线应用](../../../../docs/Frontend/PWA/index.md)：**分工是**——本页讲前台怎么在**服务端**把首屏渲染出来（`useAsyncData` 四纪律、hydration 三红线、SEO 元信息）；该专题讲**渲染产物之外的那一层**（Service Worker 缓存、离线兜底、安装）。两者在本项目上正面对撞的地方就是本页的 SSR 口径：**HTML 是每次请求现渲染的，因此不该进预缓存**；而首访内容已在 HTML 里，客户端不会再发那次接口请求，所以「配了接口缓存、离线打开文章却仍然是空的」是预期现象而非 bug。离线可读的落地与 P1~P10 验收断言见[项目第 118 天章节](../PwaOffline/index.md)。

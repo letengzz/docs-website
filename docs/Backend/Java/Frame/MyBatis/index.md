@@ -67,4 +67,5 @@ iBatis一词来源于"internet"和"abatis"的组合，是一个基于Java的持�
 - [封装SqlSessionUtils工具类](SqlSessionUtils.md)
 - [MyBatis 源码解析](SourcePrinciple.md)
 - [MyBatis 常见错误](Errors.md)
+- [MyBatis 表结构专题](Table/index.md)：练习用三张表（t_dept/t_emp、student、user）的建表语句与它们各自覆盖的映射场景
 - [设计模式 · 框架中的应用](../../../DesignPatterns/FrameworkUsage/index.md)：MyBatis Mapper 动态代理原理

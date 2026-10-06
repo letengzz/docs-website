@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 452" width="760" height="452" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="452" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">安装判据：三家浏览器三套规则</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">Manifest 决定「能不能装」，Service Worker 决定「能不能离线」——这两件事已经解耦</text>
+
+  <rect x="30" y="72" width="700" height="34" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="380" y="94" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">旧公式「Manifest + Service Worker + HTTPS」已失效：Chrome 108(Android)/112(桌面) 起移除了 SW 这一门槛</text>
+
+  <rect x="30" y="118" width="220" height="140" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="140" y="140" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">Chromium（Chrome / Edge）</text>
+  <text x="140" y="160" text-anchor="middle" font-size="8" fill="#1D4ED8">✅ HTTPS（或 localhost）</text>
+  <text x="140" y="178" text-anchor="middle" font-size="8" fill="#1D4ED8">✅ name 或 short_name</text>
+  <text x="140" y="196" text-anchor="middle" font-size="8" fill="#1D4ED8">✅ 192×192 与 512×512 图标</text>
+  <text x="140" y="214" text-anchor="middle" font-size="8" fill="#1D4ED8">✅ start_url ｜ display 非 browser</text>
+  <text x="140" y="232" text-anchor="middle" font-size="8" fill="#1D4ED8">✅ prefer_related_applications: false</text>
+  <text x="140" y="250" text-anchor="middle" font-size="8" fill="#DC2626">❌ Service Worker（不再要求）</text>
+
+  <rect x="270" y="118" width="220" height="140" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="140" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">Safari（macOS）</text>
+  <text x="380" y="160" text-anchor="middle" font-size="8" fill="#6D28D9">✅ HTTPS</text>
+  <text x="380" y="178" text-anchor="middle" font-size="8" fill="#6D28D9">✅ 链接可达的 Manifest</text>
+  <text x="380" y="196" text-anchor="middle" font-size="8" fill="#6D28D9">✅ name / short_name、start_url</text>
+  <text x="380" y="214" text-anchor="middle" font-size="8" fill="#6D28D9">✅ display 影响窗口形态</text>
+  <text x="380" y="232" text-anchor="middle" font-size="8" fill="#6D28D9">图标以 manifest 为准</text>
+  <text x="380" y="250" text-anchor="middle" font-size="8" fill="#DC2626">❌ 无 beforeinstallprompt</text>
+
+  <rect x="510" y="118" width="220" height="140" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="620" y="140" text-anchor="middle" font-size="10.5" fill="#9A3412" font-weight="bold">Safari（iOS / iPadOS）</text>
+  <text x="620" y="160" text-anchor="middle" font-size="8" fill="#C2410C">✅ HTTPS</text>
+  <text x="620" y="178" text-anchor="middle" font-size="8" fill="#C2410C">⚠️ 图标优先读 apple-touch-icon</text>
+  <text x="620" y="196" text-anchor="middle" font-size="8" fill="#C2410C">⚠️ 无程序化安装 API</text>
+  <text x="620" y="214" text-anchor="middle" font-size="8" fill="#C2410C">安装路径只有：分享 → 添加到主屏幕</text>
+  <text x="620" y="232" text-anchor="middle" font-size="8" fill="#C2410C">产物是 Web Clip（本质是书签）</text>
+  <text x="620" y="250" text-anchor="middle" font-size="8" fill="#9A3412">不支持 shortcuts / screenshots</text>
+
+  <rect x="30" y="274" width="340" height="104" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="200" y="296" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">beforeinstallprompt 正确用法</text>
+  <text x="200" y="316" text-anchor="middle" font-size="8.5" fill="#334155">① 事件里 preventDefault，把机会留给自己</text>
+  <text x="200" y="334" text-anchor="middle" font-size="8.5" fill="#334155">② 显示自定义安装按钮（不触发就不显示）</text>
+  <text x="200" y="352" text-anchor="middle" font-size="8.5" fill="#334155">③ prompt() 只能在用户点击里调</text>
+  <text x="200" y="370" text-anchor="middle" font-size="8.5" fill="#DC2626">④ event 一次性，userChoice 后必须置空</text>
+
+  <rect x="390" y="274" width="340" height="104" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="560" y="296" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">「为什么没有安装按钮」四个高频原因</text>
+  <text x="560" y="316" text-anchor="middle" font-size="8.5" fill="#047857">① Chromium 参与度不足，或已经安装过</text>
+  <text x="560" y="334" text-anchor="middle" font-size="8.5" fill="#047857">② Manifest 面板报红：缺字段或 display: browser</text>
+  <text x="560" y="352" text-anchor="middle" font-size="8.5" fill="#047857">③ Manifest 被鉴权 / WAF / 错误 MIME 拦掉</text>
+  <text x="560" y="370" text-anchor="middle" font-size="8.5" fill="#047857">④ Safari / Firefox 本来就不触发该事件</text>
+
+  <text x="380" y="404" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">验收不要看分数：Lighthouse 12.0 已移除 PWA 分类，JSON 里 categories.pwa 键也删了</text>
+  <text x="380" y="426" text-anchor="middle" font-size="9.5" fill="#64748B">改为看运行时信号：beforeinstallprompt 是否触发 ｜ DevTools → Manifest 面板是否报红 ｜ 浏览器安装入口是否出现</text>
+  <text x="380" y="446" text-anchor="middle" font-size="9.5" fill="#64748B">Manifest 必须能被匿名 GET 到——带鉴权或被 CORS 拦截时浏览器不报错，只是永远不给安装入口</text>
+</svg>

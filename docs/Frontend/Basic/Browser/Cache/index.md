@@ -136,3 +136,4 @@ curl -sI https://example.com/index.html | grep -i 'cache-control'
 - [浏览器存储](../Storage/index.md)：`Cache API` 与 Service Worker 的显式缓存
 - [性能指标](../Performance/index.md)：LCP 与缓存命中率的关系
 - [Nginx 缓存配置](../../../../Ops/Nginx/Cache/index.md)：代理层缓存（另一套机制）
+- [PWA 与离线应用 · 缓存策略](../../../PWA/CachingStrategy/index.md)：**分工是**——本页讲**浏览器与 HTTP 协议自己决定的那一层缓存**（`Cache-Control` / `ETag` / 强缓存与协商缓存，刷新行为由浏览器规范定义），该页讲**你用 Service Worker 显式接管的第二层缓存**（预缓存与运行时缓存、五种策略、离线回退）。两者的判据也不一样：本页看 `Size` 列是否出现 `(disk cache)`，该页看是否出现 `(ServiceWorker)`。**一个常见误判**：勾上 DevTools 的 Disable cache 只影响本页这一层，**不会**绕过 Service Worker——要真正绕过必须勾 Application 里的 Bypass for network。

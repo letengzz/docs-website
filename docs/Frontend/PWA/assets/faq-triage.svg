@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">PWA 排障决策树：按现象分诊</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先定位到「现象」，再去对应页面查判据——不要一上来就读代码</text>
+
+  <rect x="30" y="70" width="700" height="34" rx="6" fill="#F1F5F9" stroke="#334155" stroke-width="1.4"/>
+  <text x="380" y="92" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">万能第一步：先 Unregister SW，再清 Storage，再刷新——问题消失＝缓存/SW 问题；不消失才去怀疑业务代码</text>
+
+  <rect x="30" y="116" width="220" height="38" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="140" y="140" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">一、页面与内容类</text>
+  <rect x="30" y="162" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="140" y="181" text-anchor="middle" font-size="8.5" fill="#1D4ED8">改了代码刷新还是旧的</text>
+  <text x="140" y="199" text-anchor="middle" font-size="8" fill="#1E293B">→ 生命周期：waiting 与更新提示</text>
+  <rect x="30" y="214" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="140" y="233" text-anchor="middle" font-size="8.5" fill="#1D4ED8">连 SW 都不更新</text>
+  <text x="140" y="251" text-anchor="middle" font-size="8" fill="#1E293B">→ 构建落地：sw.js 被 HTTP/CDN 缓存</text>
+  <rect x="30" y="266" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="140" y="285" text-anchor="middle" font-size="8.5" fill="#1D4ED8">res.json() 报错、拿到 HTML</text>
+  <text x="140" y="303" text-anchor="middle" font-size="8" fill="#1E293B">→ 缓存策略：denylist 没排除 /api/</text>
+  <rect x="30" y="318" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="140" y="337" text-anchor="middle" font-size="8.5" fill="#1D4ED8">数据长期不变 / 断网白屏</text>
+  <text x="140" y="355" text-anchor="middle" font-size="8" fill="#1E293B">→ 缓存策略：接口被 Cache First／无兜底</text>
+
+  <rect x="270" y="116" width="220" height="38" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="380" y="140" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">二、安装与图标类</text>
+  <rect x="270" y="162" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="380" y="181" text-anchor="middle" font-size="8.5" fill="#C2410C">没有任何安装入口</text>
+  <text x="380" y="199" text-anchor="middle" font-size="8" fill="#1E293B">→ 安装体验：第七节排查表（4 个原因）</text>
+  <rect x="270" y="214" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="380" y="233" text-anchor="middle" font-size="8.5" fill="#C2410C">主屏图标是白块或网页截图</text>
+  <text x="380" y="251" text-anchor="middle" font-size="8" fill="#1E293B">→ 图标清单：192/512 与 apple-touch-icon</text>
+  <rect x="270" y="266" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="380" y="285" text-anchor="middle" font-size="8.5" fill="#C2410C">点了返回直接退出应用</text>
+  <text x="380" y="303" text-anchor="middle" font-size="8" fill="#1E293B">→ 安装体验：standalone 下的返回键接管</text>
+  <rect x="270" y="318" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="380" y="337" text-anchor="middle" font-size="8.5" fill="#C2410C">测试环境装不上 / 离线不生效</text>
+  <text x="380" y="355" text-anchor="middle" font-size="8" fill="#1E293B">→ 实战：内网 HTTP 不是安全上下文</text>
+
+  <rect x="510" y="116" width="220" height="38" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="620" y="140" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">三、推送与离线写类</text>
+  <rect x="510" y="162" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="620" y="181" text-anchor="middle" font-size="8.5" fill="#6D28D9">iOS 点订阅没反应</text>
+  <text x="620" y="199" text-anchor="middle" font-size="8" fill="#1E293B">→ 推送：没装到主屏（iOS 硬前置）</text>
+  <rect x="510" y="214" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="620" y="233" text-anchor="middle" font-size="8.5" fill="#6D28D9">推送发出去了但没显示</text>
+  <text x="620" y="251" text-anchor="middle" font-size="8" fill="#1E293B">→ 推送：showNotification 没进 waitUntil</text>
+  <rect x="510" y="266" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="620" y="285" text-anchor="middle" font-size="8.5" fill="#6D28D9">离线提交丢了 / 出现重复记录</text>
+  <text x="620" y="303" text-anchor="middle" font-size="8" fill="#1E293B">→ 离线数据：localStorage／缺幂等键</text>
+  <rect x="510" y="318" width="220" height="46" rx="6" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="620" y="337" text-anchor="middle" font-size="8.5" fill="#6D28D9">发送成功率长期很低</text>
+  <text x="620" y="355" text-anchor="middle" font-size="8" fill="#1E293B">→ 推送：先清理 404/410 死订阅</text>
+
+  <rect x="30" y="378" width="700" height="56" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="400" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">另一条通用判据：这条响应是谁给的？</text>
+  <text x="380" y="420" text-anchor="middle" font-size="8.5" fill="#047857">Network 面板显示 (ServiceWorker) 说明响应来自缓存；服务器日志里没有 ≠ 用户没访问</text>
+
+  <text x="380" y="456" text-anchor="middle" font-size="9.5" fill="#64748B">排查顺序：先排除缓存与 SW（最容易被误判为业务 bug），再按上表定位到具体页面</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 452" width="760" height="452" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="452" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">三条接入路线与部署期的四个接缝</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">开发期正常、生产期异常的问题，九成出在「开发期不注册 SW」与「部署顺序」这两件事上</text>
+
+  <rect x="30" y="76" width="220" height="112" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="140" y="98" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">Vite：vite-plugin-pwa</text>
+  <text x="140" y="118" text-anchor="middle" font-size="8" fill="#1D4ED8">当前 2.0.0（2026-10-03）</text>
+  <text x="140" y="136" text-anchor="middle" font-size="8" fill="#1D4ED8">peer：Vite 3.1~8，Node ≥ 20.19</text>
+  <text x="140" y="154" text-anchor="middle" font-size="8" fill="#1D4ED8">generateSW：只写配置</text>
+  <text x="140" y="172" text-anchor="middle" font-size="8" fill="#1D4ED8">injectManifest：自己写 SW</text>
+
+  <rect x="270" y="76" width="220" height="112" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="98" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">Nuxt：@vite-pwa/nuxt</text>
+  <text x="380" y="118" text-anchor="middle" font-size="8" fill="#6D28D9">当前 1.1.1（2026-02-06）</text>
+  <text x="380" y="136" text-anchor="middle" font-size="8" fill="#6D28D9">配置写在 nuxt.config.ts</text>
+  <text x="380" y="154" text-anchor="middle" font-size="8" fill="#6D28D9">SSR 要决定哪些资源进预缓存</text>
+  <text x="380" y="172" text-anchor="middle" font-size="8" fill="#DC2626">首访 HTML 已渲染，接口不走 SW</text>
+
+  <rect x="510" y="76" width="220" height="112" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="620" y="98" text-anchor="middle" font-size="10.5" fill="#9A3412" font-weight="bold">无插件（Next 等）</text>
+  <text x="620" y="118" text-anchor="middle" font-size="8" fill="#C2410C">四件事全自己做：</text>
+  <text x="620" y="136" text-anchor="middle" font-size="8" fill="#C2410C">① SW 输出到根路径、固定名</text>
+  <text x="620" y="154" text-anchor="middle" font-size="8" fill="#C2410C">② 生成预缓存清单 ③ 注入清单</text>
+  <text x="620" y="172" text-anchor="middle" font-size="8" fill="#DC2626">④ 排除 SPA 回退对 /sw.js 的改写</text>
+
+  <rect x="30" y="204" width="340" height="112" rx="8" fill="#F1F5F9" stroke="#334155" stroke-width="1.6"/>
+  <text x="200" y="226" text-anchor="middle" font-size="10" fill="#0F172A" font-weight="bold">开发期（vite dev）</text>
+  <text x="200" y="246" text-anchor="middle" font-size="8.5" fill="#334155">SW 默认不注册（devOptions.enabled: false）</text>
+  <text x="200" y="264" text-anchor="middle" font-size="8.5" fill="#334155">资源文件名不带哈希，缓存基本不命中</text>
+  <text x="200" y="282" text-anchor="middle" font-size="8.5" fill="#334155">Manifest 由插件在内存中提供</text>
+  <text x="200" y="302" text-anchor="middle" font-size="8.5" fill="#DC2626">打开 devOptions 后要先 Unregister 再刷新</text>
+
+  <rect x="390" y="204" width="340" height="112" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="560" y="226" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">生产期（build + 静态服务）</text>
+  <text x="560" y="246" text-anchor="middle" font-size="8.5" fill="#047857">SW 注册并按 registerType 决定更新行为</text>
+  <text x="560" y="264" text-anchor="middle" font-size="8.5" fill="#047857">资源带哈希，预缓存清单与产物强绑定</text>
+  <text x="560" y="282" text-anchor="middle" font-size="8.5" fill="#047857">Manifest 是 dist 下的真实文件</text>
+  <text x="560" y="302" text-anchor="middle" font-size="8.5" fill="#DC2626">内网 HTTP 域名不是安全上下文，测不了</text>
+
+  <rect x="30" y="330" width="700" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="352" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">部署期必须确认的四个接缝</text>
+  <text x="380" y="372" text-anchor="middle" font-size="8.5" fill="#B91C1C">① sw.js 与 manifest 的 Cache-Control: no-cache ｜ ② 先传新资源、最后替换 HTML/SW（旧资源至少保留一个缓存周期）</text>
+  <text x="380" y="390" text-anchor="middle" font-size="8.5" fill="#B91C1C">③ /sw.js 不能被 CDN 长期缓存、不能被网关改写 ｜ ④ sw.js 不能带内容哈希：更新检查靠「同 URL 字节是否变化」</text>
+  <text x="380" y="408" text-anchor="middle" font-size="8.5" fill="#991B1B">违反 ② 的典型后果：旧页面引用已被替换的 chunk → 懒加载 404 → 「发版后白屏」</text>
+
+  <text x="380" y="438" text-anchor="middle" font-size="9.5" fill="#64748B">验证永远用生产构建 + 静态服务（pnpm build &amp;&amp; pnpm preview），不要用 dev server 验证 PWA</text>
+</svg>

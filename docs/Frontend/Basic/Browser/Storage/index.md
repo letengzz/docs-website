@@ -95,3 +95,4 @@ const res = await cache.match("/index.html");
 - Web Storage（MDN）：https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API
 - IndexedDB（MDN）：https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API
 - Cookie 与 SameSite：https://web.dev/articles/samesite-cookies-explained
+- [PWA 与离线应用 · 离线数据](../../../PWA/OfflineData/index.md)：**分工是**——本页讲**四种存储各自是什么、能存什么**（Cookie / Web Storage / IndexedDB / Cache API 的能力与限制），该页讲**把它们用作离线底座时怎么组合**（Cache Storage 存响应、IndexedDB 存离线写队列、OPFS 存大文件），以及 `localStorage` 在 Service Worker 里**根本访问不到**这条硬约束的工程后果。补充两个本页未涉及的存储位置：**Cache Storage**（`Request → Response`，只认 HTTP 语义）与 **OPFS**（源私有文件系统，适合大文件与二进制流）。

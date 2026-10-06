@@ -743,3 +743,20 @@ export const FrontIntlA11y = [
         ],
     },
 ];
+export const FrontPWA = [
+    {
+        text: "PWA 与离线应用",
+        link: "/docs/Frontend/PWA/index.md",
+        items: [
+            { text: "概述：离线能力的四个层次", link: "/docs/Frontend/PWA/Overview/index.md" },
+            { text: "Service Worker：生命周期与更新", link: "/docs/Frontend/PWA/ServiceWorker/index.md" },
+            { text: "缓存策略：预缓存与运行时缓存", link: "/docs/Frontend/PWA/CachingStrategy/index.md" },
+            { text: "离线数据：存储、队列与同步", link: "/docs/Frontend/PWA/OfflineData/index.md" },
+            { text: "消息推送：从订阅到触达", link: "/docs/Frontend/PWA/Push/index.md" },
+            { text: "安装体验：Manifest 与安装引导", link: "/docs/Frontend/PWA/Installability/index.md" },
+            { text: "框架与构建落地", link: "/docs/Frontend/PWA/Framework/index.md" },
+            { text: "实战：给博客前台做离线可读", link: "/docs/Frontend/PWA/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/PWA/FAQ/index.md" },
+        ],
+    },
+];

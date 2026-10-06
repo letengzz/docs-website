@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 452" width="760" height="452" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+    <marker id="arR" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#DC2626"/>
+    </marker>
+  </defs>
+  <rect width="760" height="452" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Service Worker 生命周期的六个阶段</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">新版本装好后会停在「等待」不动——这是设计，不是 bug</text>
+
+  <rect x="30" y="76" width="220" height="86" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="140" y="98" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">① 注册 register</text>
+  <text x="140" y="118" text-anchor="middle" font-size="8" fill="#1D4ED8">页面调用 register('/sw.js')</text>
+  <text x="140" y="136" text-anchor="middle" font-size="8" fill="#1D4ED8">scope 由文件路径决定</text>
+  <text x="140" y="154" text-anchor="middle" font-size="8" fill="#DC2626">失败必须上报，浏览器不提示</text>
+  <line x1="250" y1="119" x2="266" y2="119" stroke="#7C3AED" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="270" y="76" width="220" height="86" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="98" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">② 解析 parsing</text>
+  <text x="380" y="118" text-anchor="middle" font-size="8" fill="#1D4ED8">顶层语法错误直接失败</text>
+  <text x="380" y="136" text-anchor="middle" font-size="8" fill="#1D4ED8">不能访问 document / window</text>
+  <text x="380" y="154" text-anchor="middle" font-size="8" fill="#1D4ED8">支持 importScripts / ESM</text>
+  <line x1="490" y1="119" x2="506" y2="119" stroke="#7C3AED" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="510" y="76" width="220" height="86" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="620" y="98" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">③ 安装 installing</text>
+  <text x="620" y="118" text-anchor="middle" font-size="8" fill="#6D28D9">install 事件里做预缓存</text>
+  <text x="620" y="136" text-anchor="middle" font-size="8" fill="#6D28D9">任一资源失败则整体失败</text>
+  <text x="620" y="154" text-anchor="middle" font-size="8" fill="#DC2626">不要在这里无条件 skipWaiting</text>
+  <line x1="620" y1="162" x2="620" y2="206" stroke="#7C3AED" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="510" y="208" width="220" height="86" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="620" y="230" text-anchor="middle" font-size="10.5" fill="#9A3412" font-weight="bold">④ 等待 waiting</text>
+  <text x="620" y="250" text-anchor="middle" font-size="8" fill="#C2410C">已装好，但旧版本还在控制页面</text>
+  <text x="620" y="268" text-anchor="middle" font-size="8" fill="#C2410C">← 更新问题的唯一根源</text>
+  <text x="620" y="286" text-anchor="middle" font-size="8" fill="#C2410C">此处应提示用户「有新版本」</text>
+  <line x1="506" y1="251" x2="490" y2="251" stroke="#7C3AED" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="270" y="208" width="220" height="86" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="230" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">⑤ 激活 activating</text>
+  <text x="380" y="250" text-anchor="middle" font-size="8" fill="#047857">删除不属于当前版本的缓存</text>
+  <text x="380" y="268" text-anchor="middle" font-size="8" fill="#047857">clients.claim() 接管空闲页面</text>
+  <text x="380" y="286" text-anchor="middle" font-size="8" fill="#047857">只做清理与接管，别写业务</text>
+  <line x1="266" y1="251" x2="250" y2="251" stroke="#7C3AED" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="30" y="208" width="220" height="86" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="140" y="230" text-anchor="middle" font-size="10.5" fill="#115E59" font-weight="bold">⑥ 已激活 activated</text>
+  <text x="140" y="250" text-anchor="middle" font-size="8" fill="#0F766E">拦截 fetch / 接收 push 与 sync</text>
+  <text x="140" y="268" text-anchor="middle" font-size="8" fill="#0F766E">随时会被回收，状态要持久化</text>
+  <text x="140" y="286" text-anchor="middle" font-size="8" fill="#0F766E">页面改 UI 只能靠 postMessage</text>
+
+  <rect x="30" y="318" width="700" height="70" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="340" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">终态 redundant（已作废）：不再有任何事件，持有它的引用已经失效</text>
+  <text x="380" y="360" text-anchor="middle" font-size="8.5" fill="#B91C1C">触发条件：脚本 404 / MIME 不对 / 语法错误 → 注册失败；install 失败；或被新版本顶替</text>
+  <text x="380" y="378" text-anchor="middle" font-size="8.5" fill="#B91C1C">排查时先看它——登录 Application → Service Workers，红色状态就是它</text>
+
+  <text x="380" y="424" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">正确顺序：waiting 时提示用户 → 用户点击 → postMessage 触发 skipWaiting → controllerchange 时刷新页面</text>
+  <text x="380" y="444" text-anchor="middle" font-size="9" fill="#64748B">只要页面还开着，新 SW 就不会接管——所以要靠「提示 + 刷新」把版本对齐，而不是靠等</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 452" width="760" height="452" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="452" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">博客前台离线架构：三层 + 六步</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">三层职责不混：壳管启动、快照管回看、兜底管「什么都没有的时候」</text>
+
+  <text x="195" y="80" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">离线可读的三层</text>
+  <rect x="30" y="90" width="330" height="98" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="195" y="112" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">① 壳 shell —— 预缓存 + Cache First</text>
+  <text x="195" y="132" text-anchor="middle" font-size="8" fill="#1D4ED8">JS / CSS / 字体 / 图标 / offline.html</text>
+  <text x="195" y="150" text-anchor="middle" font-size="8" fill="#1D4ED8">带内容哈希 → 永远不会陈旧</text>
+  <text x="195" y="168" text-anchor="middle" font-size="8" fill="#1D4ED8">缓存名 workbox-precache-*（版本驱动）</text>
+  <text x="195" y="184" text-anchor="middle" font-size="8" fill="#DC2626">最大风险：塞进大文件 → install 全败</text>
+
+  <rect x="30" y="198" width="330" height="98" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="195" y="220" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">② 内容快照 —— Network First（3s 超时）</text>
+  <text x="195" y="240" text-anchor="middle" font-size="8" fill="#6D28D9">只快照「访问过的」文章详情页 HTML</text>
+  <text x="195" y="258" text-anchor="middle" font-size="8" fill="#6D28D9">缓存名 pages：maxEntries 30 / 7 天</text>
+  <text x="195" y="276" text-anchor="middle" font-size="8" fill="#6D28D9">联网时永远看到最新（网络优先）</text>
+  <text x="195" y="292" text-anchor="middle" font-size="8" fill="#6D28D9">不做全站预缓存：总量不可控</text>
+
+  <rect x="30" y="306" width="330" height="98" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="195" y="328" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">③ 兜底 —— navigateFallback: /offline.html</text>
+  <text x="195" y="348" text-anchor="middle" font-size="8" fill="#047857">纯静态、不依赖框架，最坏情况也能用</text>
+  <text x="195" y="366" text-anchor="middle" font-size="8" fill="#047857">读出 pages 缓存，列出「离线可读的文章」</text>
+  <text x="195" y="384" text-anchor="middle" font-size="8" fill="#047857">让离线状态仍然有用，而不是死路一条</text>
+  <text x="195" y="400" text-anchor="middle" font-size="8" fill="#DC2626">必须排除 /api/，否则接口会拿到 HTML</text>
+
+  <text x="555" y="80" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">六步落地（每步一条判据）</text>
+
+  <rect x="380" y="90" width="165" height="62" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="462" y="110" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">① Manifest 与图标</text>
+  <text x="462" y="128" text-anchor="middle" font-size="8" fill="#334155">Manifest 面板无红色错误</text>
+  <text x="462" y="144" text-anchor="middle" font-size="8" fill="#334155">MIME 为 application/manifest+json</text>
+
+  <rect x="555" y="90" width="175" height="62" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="642" y="110" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">② 插件配置</text>
+  <text x="642" y="128" text-anchor="middle" font-size="8" fill="#334155">预缓存清单全是静态资源</text>
+  <text x="642" y="144" text-anchor="middle" font-size="8" fill="#334155">无 HTML、无 /api/</text>
+
+  <rect x="380" y="160" width="165" height="62" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="462" y="180" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">③ 离线兜底页</text>
+  <text x="462" y="198" text-anchor="middle" font-size="8" fill="#334155">勾 Offline 刷新出现兜底页</text>
+  <text x="462" y="214" text-anchor="middle" font-size="8" fill="#334155">且列出已读文章链接</text>
+
+  <rect x="555" y="160" width="175" height="62" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="642" y="180" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">④ 更新提示</text>
+  <text x="642" y="198" text-anchor="middle" font-size="8" fill="#334155">改文案后出现提示</text>
+  <text x="642" y="214" text-anchor="middle" font-size="8" fill="#334155">点击后加载新版本</text>
+
+  <rect x="380" y="230" width="165" height="62" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="462" y="250" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">⑤ 安装引导</text>
+  <text x="462" y="268" text-anchor="middle" font-size="8" fill="#334155">Chromium 走 beforeinstallprompt</text>
+  <text x="462" y="284" text-anchor="middle" font-size="8" fill="#334155">iOS 走图文引导，不调不存在的 API</text>
+
+  <rect x="555" y="230" width="175" height="62" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="642" y="250" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">⑥ 离线评论队列</text>
+  <text x="642" y="268" text-anchor="middle" font-size="8" fill="#334155">断网入队、恢复后自动发出</text>
+  <text x="642" y="284" text-anchor="middle" font-size="8" fill="#334155">服务端只有一条记录</text>
+
+  <rect x="380" y="302" width="350" height="102" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="555" y="324" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">三条硬红线</text>
+  <text x="555" y="344" text-anchor="middle" font-size="8.5" fill="#B91C1C">① /api/ 必须在 navigateFallbackDenylist 里</text>
+  <text x="555" y="362" text-anchor="middle" font-size="8.5" fill="#B91C1C">② /api/v1/me、admin、写接口绝不进缓存</text>
+  <text x="555" y="380" text-anchor="middle" font-size="8.5" fill="#B91C1C">③ 接口响应要限 200，否则 404 也会被缓存</text>
+  <text x="555" y="398" text-anchor="middle" font-size="8.5" fill="#991B1B">三条都是「不报错但错」，只能靠判据拦</text>
+
+  <text x="380" y="426" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">交付判据：P1~P10 十条断言全部通过，并且 P10 证明 SEO（SSR HTML）没有被离线能力换掉</text>
+  <text x="380" y="446" text-anchor="middle" font-size="9.5" fill="#64748B">下一步（第 119 天）压测时要在 DevTools 里勾 Bypass for network，把 SW 命中这个旁路变量排除掉</text>
+</svg>

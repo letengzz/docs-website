@@ -232,3 +232,8 @@ if (increased.length > 0) {
 - [Lighthouse：无障碍审计说明](https://developer.chrome.com/docs/lighthouse/accessibility/scoring)
 - [eslint-plugin-jsx-a11y 规则列表](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
 - [W3C：WCAG 一致性评估方法（手测清单）](https://www.w3.org/WAI/test-evaluate/)
+
+## 相关专题与分工
+
+- [PWA 与离线应用](../../PWA/index.md)：**分工是**——本页讲**无障碍这一条专门的门禁线**（axe 规则分级、人工走查、对照基线），该专题讲**另外两条与它同源的门禁**：① Service Worker 与 Manifest 的存在性断言（`sw.js` 可匿名 GET、MIME 为 `application/manifest+json`、Manifest 面板无红色错误），② 离线状态下的行为断言（勾 Offline 后出现兜底页而非白屏）。三者的工程形态完全一致——都是「能被证伪的检查点」，可以挂在同一条 CI 流水线与同一套 Playwright 基础设施上；差别只在断言对象：本页断言 DOM 语义，该专题断言**页面之外的产物与网络行为**。清单见[实战 · P1~P10](../../PWA/Practice/index.md) 与[常见问题 · 上线自查](../../PWA/FAQ/index.md)。
+- [浏览器原理 · 性能指标](../../Basic/Browser/Performance/index.md)：**一条容易被忽略的时效性提醒**——Lighthouse **12.0（2024-04）已移除 PWA 分类**，JSON 输出里的 `categories.pwa` 键也一并删除（因为它的判据就是 Chrome 安装判据，而 Chrome 已放宽）。所以**不要把「Lighthouse PWA 分数」写进验收清单**，安装能力只能看运行时信号（该专题的[安装体验](../../PWA/Installability/index.md)第七节给了完整排查表）。
