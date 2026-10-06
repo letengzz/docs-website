@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+  <rect width="900" height="480" fill="#FFFFFF"/>
+  <text x="450" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#1E293B">优化落地：一次一个变量，复压才算数</text>
+
+  <rect x="40" y="78" width="820" height="86" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="70" y="104" font-size="15" font-weight="bold" fill="#1D4ED8">单变量流水线（每一项优化都走一遍）</text>
+  <text x="70" y="130" font-size="13.5" fill="#334155">① 改前快照 → ② 只改一处 → ③ 复跑十二道门禁 → ④ 同参数复压 → ⑤ 环比 P95 与错误率</text>
+  <text x="70" y="152" font-size="12.5" fill="#B91C1C">唯一允许回退的粒度 = 一个文件族；三项同改则收益无法归因、故障无法二分</text>
+
+  <text x="60" y="204" font-size="16" font-weight="bold" fill="#1E293B">优化顺序：先便宜后昂贵</text>
+
+  <rect x="40" y="220" width="156" height="86" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="118" y="248" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#15803D">1 索引与 SQL</text>
+  <text x="118" y="272" text-anchor="middle" font-size="12" fill="#475569">收益：数量级</text>
+  <text x="118" y="292" text-anchor="middle" font-size="12" fill="#475569">成本：一条 DDL</text>
+
+  <rect x="206" y="220" width="156" height="86" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="284" y="248" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#B45309">2 缓存</text>
+  <text x="284" y="272" text-anchor="middle" font-size="12" fill="#475569">收益：数量级</text>
+  <text x="284" y="292" text-anchor="middle" font-size="12" fill="#B91C1C">风险：一致性</text>
+
+  <rect x="372" y="220" width="156" height="86" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="450" y="248" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">3 配置</text>
+  <text x="450" y="272" text-anchor="middle" font-size="12" fill="#475569">收益：30%~2×</text>
+  <text x="450" y="292" text-anchor="middle" font-size="12" fill="#475569">成本：改配置</text>
+
+  <rect x="538" y="220" width="156" height="86" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="616" y="248" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">4 应用代码</text>
+  <text x="616" y="272" text-anchor="middle" font-size="12" fill="#475569">收益：20%~2×</text>
+  <text x="616" y="292" text-anchor="middle" font-size="12" fill="#475569">成本：要回归</text>
+
+  <rect x="704" y="220" width="156" height="86" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="782" y="248" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">5 架构</text>
+  <text x="782" y="272" text-anchor="middle" font-size="12" fill="#475569">收益：2× 以上</text>
+  <text x="782" y="292" text-anchor="middle" font-size="12" fill="#64748B">前置：前四类榨干</text>
+
+  <rect x="40" y="326" width="820" height="72" rx="12" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+  <text x="70" y="352" font-size="14.5" font-weight="bold" fill="#B91C1C">头号危险区：缓存类改动</text>
+  <text x="70" y="376" font-size="13" fill="#334155">延长 TTL 换命中率 → 直接破坏第 102 天的可见性时序。性能提升是真的，功能坏了也是真的。</text>
+
+  <rect x="40" y="410" width="820" height="56" rx="12" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="70" y="434" font-size="14" font-weight="bold" fill="#BE185D">复压判据必须含「原因」</text>
+  <text x="70" y="455" font-size="12.5" fill="#334155">只写 P95 ≤ 360ms，下次索引被误删时会整条链路重走一遍；把 EXPLAIN 形态写进判据，原因本身也可断言</text>
+</svg>

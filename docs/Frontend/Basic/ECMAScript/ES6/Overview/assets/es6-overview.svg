@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">ES6（ES2015）特性的四类划分</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#6b7280">一次版本升级塞进了 20 多项特性，按「解决了什么」分类才好记</text>
+
+  <rect x="40" y="80" width="195" height="180" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="137" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">语法糖</text>
+  <text x="137" y="128" text-anchor="middle" font-size="11" fill="#6366f1">写起来更短</text>
+  <line x1="60" y1="142" x2="215" y2="142" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="60" y="166" font-size="12" fill="#4b5563">箭头函数</text>
+  <text x="60" y="188" font-size="12" fill="#4b5563">模板字符串</text>
+  <text x="60" y="210" font-size="12" fill="#4b5563">解构赋值</text>
+  <text x="60" y="232" font-size="12" fill="#4b5563">展开与剩余</text>
+  <text x="60" y="252" font-size="11" fill="#64748b">改的是写法，不改能力</text>
+
+  <rect x="245" y="80" width="195" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="342" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">作用域与模块</text>
+  <text x="342" y="128" text-anchor="middle" font-size="11" fill="#10b981">组织结构变了</text>
+  <line x1="265" y1="142" x2="420" y2="142" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="265" y="166" font-size="12" fill="#4b5563">let / const</text>
+  <text x="265" y="188" font-size="12" fill="#4b5563">块级作用域</text>
+  <text x="265" y="210" font-size="12" fill="#4b5563">import / export</text>
+  <text x="265" y="232" font-size="12" fill="#4b5563">class 语法</text>
+  <text x="265" y="252" font-size="11" fill="#64748b">编译期即可发现错误</text>
+
+  <rect x="450" y="80" width="195" height="180" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="547" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">数据结构与集合</text>
+  <text x="547" y="128" text-anchor="middle" font-size="11" fill="#f59e0b">补上缺失的容器</text>
+  <line x1="470" y1="142" x2="625" y2="142" stroke="#fde68a" stroke-width="1"/>
+  <text x="470" y="166" font-size="12" fill="#4b5563">Set / Map</text>
+  <text x="470" y="188" font-size="12" fill="#4b5563">WeakSet / WeakMap</text>
+  <text x="470" y="210" font-size="12" fill="#4b5563">Symbol</text>
+  <text x="470" y="232" font-size="12" fill="#4b5563">Proxy / Reflect</text>
+  <text x="470" y="252" font-size="11" fill="#64748b">元编程与引用型键</text>
+
+  <rect x="655" y="80" width="185" height="180" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="747" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#be123c">异步流程</text>
+  <text x="747" y="128" text-anchor="middle" font-size="11" fill="#f43f5e">告别回调地狱</text>
+  <line x1="675" y1="142" x2="820" y2="142" stroke="#fecdd3" stroke-width="1"/>
+  <text x="675" y="166" font-size="12" fill="#4b5563">Promise</text>
+  <text x="675" y="188" font-size="12" fill="#4b5563">Generator</text>
+  <text x="675" y="210" font-size="12" fill="#4b5563">Iterator 协议</text>
+  <text x="675" y="232" font-size="12" fill="#4b5563">for...of</text>
+  <text x="675" y="252" font-size="11" fill="#64748b">async/await 在 ES2017</text>
+
+  <rect x="40" y="280" width="800" height="72" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="440" y="306" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">命名变更：ES6 之后改用年份</text>
+  <text x="440" y="330" text-anchor="middle" font-size="12" fill="#4b5563">ES2015 = ES6 · ES2016 = ES7 · ES2017 = ES8 …… 每年 6 月发布，功能集定型早于发布</text>
+
+  <rect x="40" y="368" width="800" height="62" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="440" y="394" text-anchor="middle" font-size="12" fill="#3730a3">TC39 五阶段：Stage 0 提案 → 1 草案 → 2 规范草案 → 3 候选 → 4 已完成（进下一版规范）</text>
+  <text x="440" y="416" text-anchor="middle" font-size="11" fill="#6366f1">只有进入 Stage 4 才算「一定会有」；Stage 3 的语法常被 Babel 提前试用，但不保证最终形态</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">Windows 卸载 Docker：三层清理</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#6b7280">WSL 发行版与虚拟磁盘常常被留到最后，占掉的正是最大那块空间</text>
+
+  <rect x="40" y="82" width="250" height="186" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="165" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">第一层 · 应用层</text>
+  <text x="165" y="130" text-anchor="middle" font-size="11" fill="#10b981">标准卸载入口</text>
+  <line x1="60" y1="144" x2="270" y2="144" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="60" y="170" font-size="12" fill="#4b5563">设置 → 应用 → 卸载 Docker Desktop</text>
+  <text x="60" y="194" font-size="12" fill="#4b5563">或「控制面板 → 程序和功能」</text>
+  <text x="60" y="222" font-size="11" fill="#64748b">会移除主程序与大部分注册</text>
+  <text x="60" y="244" font-size="11" fill="#b91c1c">但不会注销 WSL 发行版</text>
+
+  <rect x="315" y="82" width="250" height="186" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="440" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">第二层 · WSL 层</text>
+  <text x="440" y="130" text-anchor="middle" font-size="11" fill="#f59e0b">最容易被忘掉</text>
+  <line x1="335" y1="144" x2="545" y2="144" stroke="#fde68a" stroke-width="1"/>
+  <text x="335" y="168" font-size="11" font-family="monospace" fill="#1f2937">wsl --list --verbose</text>
+  <text x="335" y="190" font-size="11" font-family="monospace" fill="#1f2937">wsl --unregister docker-desktop</text>
+  <text x="335" y="212" font-size="11" font-family="monospace" fill="#1f2937">wsl --unregister docker-desktop-data</text>
+  <text x="335" y="238" font-size="11" fill="#b91c1c">不注销则磁盘永远不释放</text>
+  <text x="335" y="258" font-size="11" fill="#64748b">unregister 会删除该发行版全部数据</text>
+
+  <rect x="590" y="82" width="250" height="186" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="715" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">第三层 · 配置与磁盘</text>
+  <text x="715" y="130" text-anchor="middle" font-size="11" fill="#6366f1">手动收尾</text>
+  <line x1="610" y1="144" x2="820" y2="144" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="610" y="168" font-size="11" font-family="monospace" fill="#3730a3">%APPDATA%\Docker</text>
+  <text x="610" y="190" font-size="11" font-family="monospace" fill="#3730a3">%LOCALAPPDATA%\Docker</text>
+  <text x="610" y="212" font-size="11" font-family="monospace" fill="#3730a3">%USERPROFILE%\.docker</text>
+  <text x="610" y="238" font-size="11" fill="#4b5563">settings.json / 登录凭据</text>
+  <text x="610" y="258" font-size="11" fill="#64748b">删除前先关闭所有容器与 WSL 终端</text>
+
+  <path d="M290 175 L313 175" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M565 175 L588 175" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="40" y="288" width="800" height="72" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="440" y="314" text-anchor="middle" font-size="13" font-weight="bold" fill="#be123c">顺序不能颠倒</text>
+  <text x="440" y="338" text-anchor="middle" font-size="12" fill="#4b5563">先卸主程序 → 再注销 WSL 发行版 → 最后删配置目录；反序会让 wsl --unregister 找不到目标</text>
+
+  <rect x="40" y="374" width="800" height="62" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="440" y="400" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">验证：三层都清了才算完成</text>
+  <text x="440" y="422" text-anchor="middle" font-size="12" font-family="monospace" fill="#4b5563">docker --version          期望：command not found</text>
+
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#1E293B">瓶颈定位：找到第一个动的指标，而不是最显眼的</text>
+
+  <rect x="30" y="76" width="180" height="92" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="120" y="104" text-anchor="middle" font-size="15" font-weight="bold" fill="#1D4ED8">① nginx</text>
+  <text x="120" y="128" text-anchor="middle" font-size="12.5" fill="#334155">连接数 / worker</text>
+  <text x="120" y="150" text-anchor="middle" font-size="12" fill="#64748B">客户端超时但后端不忙</text>
+
+  <rect x="230" y="76" width="200" height="92" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="330" y="104" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803D">② 应用 blog-server</text>
+  <text x="330" y="128" text-anchor="middle" font-size="12.5" fill="#334155">CPU / pending / P95</text>
+  <text x="330" y="150" text-anchor="middle" font-size="12" fill="#B91C1C">pending 先动 → 这是"结果"</text>
+
+  <rect x="450" y="76" width="200" height="92" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="550" y="104" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">②b 前台 SSR</text>
+  <text x="550" y="128" text-anchor="middle" font-size="12.5" fill="#334155">Node 单线程 / 事件循环</text>
+  <text x="550" y="150" text-anchor="middle" font-size="12" fill="#B45309">TTFB 涨而 API 平稳</text>
+
+  <rect x="670" y="76" width="200" height="92" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="770" y="100" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">③ Redis / ④ MySQL</text>
+  <text x="770" y="124" text-anchor="middle" font-size="12.5" fill="#334155">命中率 / 慢查询 / 行锁</text>
+  <text x="770" y="146" text-anchor="middle" font-size="12" fill="#64748B">命中率崩 → 写入口漏了失效</text>
+
+  <line x1="210" y1="122" x2="225" y2="122" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#bn)"/>
+  <line x1="430" y1="122" x2="445" y2="122" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#bn)"/>
+  <line x1="650" y1="122" x2="665" y2="122" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#bn)"/>
+
+  <text x="60" y="212" font-size="16" font-weight="bold" fill="#1E293B">五类典型瓶颈与「一句话确认法」</text>
+
+  <rect x="30" y="228" width="860" height="46" rx="9" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <text x="52" y="256" font-size="13.5" fill="#334155"><tspan font-weight="bold" fill="#334155">1 应用 CPU 饱和</tspan>　docker stats CPU &gt; 90% 且 QPS 不再上升</text>
+
+  <rect x="30" y="282" width="860" height="46" rx="9" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="52" y="310" font-size="13.5" fill="#334155"><tspan font-weight="bold" fill="#B91C1C">2 连接池耗尽</tspan>　hikaricp_connections_pending 持续 &gt; 0（先修 SQL，再谈扩池）</text>
+
+  <rect x="30" y="336" width="860" height="46" rx="9" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <text x="52" y="364" font-size="13.5" fill="#334155"><tspan font-weight="bold" fill="#334155">3 慢 SQL</tspan>　慢日志 rows_examined 远大于 rows_sent，EXPLAIN 为 ALL + filesort</text>
+
+  <rect x="30" y="390" width="860" height="46" rx="9" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <text x="52" y="418" font-size="13.5" fill="#334155"><tspan font-weight="bold" fill="#334155">4 缓存命中率崩</tspan>　命中率从稳态掉档且不回升</text>
+
+  <rect x="30" y="444" width="860" height="46" rx="9" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+  <text x="52" y="472" font-size="13.5" fill="#334155"><tspan font-weight="bold" fill="#334155">5 SSR 单线程阻塞</tspan>　ssr_ttfb 上涨但同一时刻 API 直连仍快 → 问题在前台进程</text>
+
+  <defs>
+    <marker id="bn" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

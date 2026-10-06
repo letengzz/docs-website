@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="430" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">指数运算符 ** 的两条硬规则</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#6b7280">右结合性 · 一元运算符禁区</text>
+
+  <text x="440" y="98" text-anchor="middle" font-size="18" font-weight="bold" font-family="monospace" fill="#1f2937">2 ** 3 ** 2</text>
+
+  <rect x="70" y="118" width="340" height="132" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="240" y="146" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">若按左结合（假想，错误）</text>
+  <text x="240" y="176" text-anchor="middle" font-size="14" font-family="monospace" fill="#64748b">(2 ** 3) ** 2</text>
+  <text x="240" y="200" text-anchor="middle" font-size="14" font-family="monospace" fill="#64748b">= 8 ** 2</text>
+  <text x="240" y="236" text-anchor="middle" font-size="24" font-weight="bold" fill="#94a3b8">64</text>
+
+  <rect x="470" y="118" width="340" height="132" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="640" y="146" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">实际右结合（正确）</text>
+  <text x="640" y="176" text-anchor="middle" font-size="14" font-family="monospace" fill="#4b5563">2 ** (3 ** 2)</text>
+  <text x="640" y="200" text-anchor="middle" font-size="14" font-family="monospace" fill="#4b5563">= 2 ** 9</text>
+  <text x="640" y="236" text-anchor="middle" font-size="24" font-weight="bold" fill="#4f46e5">512</text>
+
+  <rect x="70" y="272" width="740" height="122" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="440" y="300" text-anchor="middle" font-size="14" font-weight="bold" fill="#be123c">禁区：一元运算符不能紧贴 ** 左侧</text>
+  <text x="440" y="330" text-anchor="middle" font-size="15" font-family="monospace" fill="#9f1239">-2 ** 2   →   SyntaxError（不是 -4）</text>
+  <text x="440" y="356" text-anchor="middle" font-size="13" font-family="monospace" fill="#4b5563">(-2) ** 2 = 4        -(2 ** 2) = -4</text>
+  <text x="440" y="380" text-anchor="middle" font-size="12" fill="#64748b">规范刻意禁止的原因：无法判断意图是 (-2)**2 还是 -(2**2)，必须显式加括号</text>
+</svg>

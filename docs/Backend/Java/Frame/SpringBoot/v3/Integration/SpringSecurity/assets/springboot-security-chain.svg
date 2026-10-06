@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="460" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">SpringBoot 与 Spring Security 的整合位置</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#6b7280">过滤器链在「进入 Controller 之前」完成认证与授权，链上顺序决定谁能先看到请求</text>
+
+  <rect x="40" y="84" width="800" height="52" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="440" y="116" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">HTTP 请求进入 Servlet 容器</text>
+
+  <path d="M440 136 L440 156" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="40" y="156" width="800" height="120" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="440" y="182" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">SecurityFilterChain（Spring Security 过滤器链）</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="62" y="198" width="168" height="56" rx="8" fill="#ffffff" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="146" y="220" fill="#3730a3" font-weight="bold">SecurityContext</text>
+    <text x="146" y="240" fill="#4b5563">从 Session / Token 还原身份</text>
+
+    <rect x="240" y="198" width="168" height="56" rx="8" fill="#ffffff" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="324" y="220" fill="#3730a3" font-weight="bold">认证过滤器</text>
+    <text x="324" y="240" fill="#4b5563">表单 / JWT / Basic</text>
+
+    <rect x="418" y="198" width="168" height="56" rx="8" fill="#ffffff" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="502" y="220" fill="#3730a3" font-weight="bold">ExceptionTranslation</text>
+    <text x="502" y="240" fill="#4b5563">转成 401 / 403</text>
+
+    <rect x="596" y="198" width="222" height="56" rx="8" fill="#ffffff" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="707" y="220" fill="#3730a3" font-weight="bold">AuthorizationFilter</text>
+    <text x="707" y="240" fill="#4b5563">按 requestMatchers 判定放行</text>
+  </g>
+
+  <path d="M440 276 L440 298" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="40" y="298" width="800" height="52" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="440" y="330" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">Controller / Service（此时 SecurityContext 已就绪）</text>
+
+  <rect x="40" y="368" width="800" height="80" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="440" y="394" text-anchor="middle" font-size="13" font-weight="bold" fill="#be123c">Spring Security 6 的两处关键变化</text>
+  <text x="60" y="418" font-size="12" fill="#4b5563">① 方法链全面替换：WebSecurityConfigurerAdapter 已移除，改为声明 SecurityFilterChain Bean</text>
+  <text x="60" y="438" font-size="12" fill="#4b5563">② 授权默认逐层收紧：authorizeHttpRequests 取代 authorizeRequests，匹配顺序自上而下、先匹配先生效</text>
+
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

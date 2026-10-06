@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+  <rect width="900" height="480" fill="#FFFFFF"/>
+  <text x="450" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#1E293B">联调复核：压测跑的是真实链路，与开发链路差一段</text>
+
+  <rect x="40" y="80" width="390" height="112" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="235" y="108" text-anchor="middle" font-size="16" font-weight="bold" fill="#1D4ED8">开发直连（第 98~110 天）</text>
+  <text x="235" y="134" text-anchor="middle" font-size="13" fill="#334155">浏览器 → web:3000 → api:18080</text>
+  <text x="235" y="158" text-anchor="middle" font-size="12.5" fill="#64748B">nginx 不在链路里</text>
+  <text x="235" y="180" text-anchor="middle" font-size="12.5" fill="#B91C1C">测不到：前缀改写 / XFF / 真实 IP 限流</text>
+
+  <rect x="470" y="80" width="390" height="112" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="665" y="108" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">单入口（Compose，压测只认这条）</text>
+  <text x="665" y="134" text-anchor="middle" font-size="13" fill="#334155">浏览器 → nginx:80 → web → api</text>
+  <text x="665" y="158" text-anchor="middle" font-size="12.5" fill="#64748B">与线上同构</text>
+  <text x="665" y="180" text-anchor="middle" font-size="12.5" fill="#15803D">限流真实生效 / 软 404 可验证</text>
+
+  <line x1="430" y1="136" x2="465" y2="136" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#ig)"/>
+
+  <text x="60" y="240" font-size="16" font-weight="bold" fill="#1E293B">四项复核（I1~I8）</text>
+
+  <rect x="40" y="258" width="192" height="96" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="136" y="284" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">契约一致性</text>
+  <text x="136" y="307" text-anchor="middle" font-size="12.5" fill="#475569">必填字段齐全</text>
+  <text x="136" y="327" text-anchor="middle" font-size="12.5" fill="#475569">游标类型为 string</text>
+
+  <rect x="248" y="258" width="192" height="96" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="344" y="284" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">错误语义</text>
+  <text x="344" y="307" text-anchor="middle" font-size="12.5" fill="#475569">401 → 403</text>
+  <text x="344" y="327" text-anchor="middle" font-size="12.5" fill="#475569">软 404 不泄漏存在性</text>
+
+  <rect x="456" y="258" width="192" height="96" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.8"/>
+  <text x="552" y="284" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">字段对齐</text>
+  <text x="552" y="307" text-anchor="middle" font-size="12.5" fill="#475569">大整数精度</text>
+  <text x="552" y="327" text-anchor="middle" font-size="12.5" fill="#475569">null vs 空数组 / 时区</text>
+
+  <rect x="664" y="258" width="196" height="96" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="1.8"/>
+  <text x="762" y="284" text-anchor="middle" font-size="14" font-weight="bold" fill="#BE185D">登录态与缓存</text>
+  <text x="762" y="307" text-anchor="middle" font-size="12.5" fill="#475569">两账号不串号</text>
+  <text x="762" y="327" text-anchor="middle" font-size="12.5" fill="#475569">带身份的页不进共享缓存</text>
+
+  <rect x="40" y="378" width="820" height="72" rx="12" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+  <text x="70" y="404" font-size="14.5" font-weight="bold" fill="#B91C1C">三个「不报错但错」的沉默坑</text>
+  <text x="70" y="428" font-size="13" fill="#334155">雪花 ID 超 2^53 被抹低位 → 翻页重复；空集合返回 null 而非 [] → 前端崩；无时区时间戳 → 差 8 小时</text>
+
+  <defs>
+    <marker id="ig" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

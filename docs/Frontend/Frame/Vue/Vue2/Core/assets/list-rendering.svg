@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">v-for 的复用策略与 key 的作用</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#6b7280">不加 key 时 Vue 按「就地复用」策略打补丁，加对 key 才按身份匹配</text>
+
+  <text x="60" y="94" font-size="13" font-weight="bold" fill="#334155">初始列表</text>
+  <g font-size="13" text-anchor="middle" font-weight="bold">
+    <rect x="180" y="78" width="120" height="34" rx="6" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="240" y="100" fill="#3730a3">A</text>
+    <rect x="310" y="78" width="120" height="34" rx="6" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="370" y="100" fill="#3730a3">B</text>
+    <rect x="440" y="78" width="120" height="34" rx="6" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="500" y="100" fill="#3730a3">C</text>
+  </g>
+  <text x="600" y="100" font-size="12" fill="#6b7280">→ 在头部插入 X</text>
+
+  <rect x="60" y="130" width="370" height="180" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="245" y="156" text-anchor="middle" font-size="14" font-weight="bold" fill="#be123c">✗ 无 key / 用 index 当 key</text>
+  <text x="245" y="178" text-anchor="middle" font-size="11" fill="#9f1239">按「位置」就地复用已有 DOM</text>
+  <g font-size="12" text-anchor="middle" font-weight="bold">
+    <rect x="80" y="192" width="70" height="30" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="115" y="212" fill="#b91c1c">X</text>
+    <rect x="158" y="192" width="70" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="193" y="212" fill="#475569">A</text>
+    <rect x="236" y="192" width="70" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="271" y="212" fill="#475569">B</text>
+    <rect x="314" y="192" width="70" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="349" y="212" fill="#475569">C</text>
+  </g>
+  <text x="245" y="250" text-anchor="middle" font-size="12" fill="#4b5563">DOM 元素被原地复用、只改文本</text>
+  <text x="245" y="272" text-anchor="middle" font-size="12" fill="#b91c1c">输入框内容 / 组件内部状态会「串位」</text>
+  <text x="245" y="294" text-anchor="middle" font-size="11" fill="#9f1239">渲染开销小，但状态容易错乱</text>
+
+  <rect x="450" y="130" width="370" height="180" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="635" y="156" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">✓ 用稳定唯一的业务 id 作 key</text>
+  <text x="635" y="178" text-anchor="middle" font-size="11" fill="#065f46">按「身份」匹配，新增节点独立创建</text>
+  <g font-size="12" text-anchor="middle" font-weight="bold">
+    <rect x="470" y="192" width="70" height="30" rx="6" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+    <text x="505" y="212" fill="#047857">X</text>
+    <rect x="548" y="192" width="70" height="30" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+    <text x="583" y="212" fill="#065f46">A</text>
+    <rect x="626" y="192" width="70" height="30" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+    <text x="661" y="212" fill="#065f46">B</text>
+    <rect x="704" y="192" width="70" height="30" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+    <text x="739" y="212" fill="#065f46">C</text>
+  </g>
+  <text x="635" y="250" text-anchor="middle" font-size="12" fill="#4b5563">A / B / C 的 DOM 被复用并整体移动</text>
+  <text x="635" y="272" text-anchor="middle" font-size="12" fill="#059669">组件内部状态与输入内容不串位</text>
+  <text x="635" y="294" text-anchor="middle" font-size="11" fill="#065f46">X 作为新节点创建，代价可控</text>
+
+  <rect x="60" y="328" width="760" height="88" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="440" y="354" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">三条判断规则</text>
+  <text x="80" y="378" font-size="12" fill="#4b5563">① 纯静态文本列表且不会插入/删除 → 可以不加 key，收益是省掉一次 diff 匹配</text>
+  <text x="80" y="398" font-size="12" fill="#4b5563">② 列表里有表单控件、组件、动画 → 必须用稳定唯一的业务 id 作 key</text>
+  <text x="80" y="418" font-size="12" fill="#4b5563">③ index 作 key 只在「永不重排、只追加到末尾」时安全，本质上它不稳定</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="500" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">PageHelper 的拦截位置与分页改写</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#6b7280">参数走 ThreadLocal，改写发生在 Executor.query 前后——不是内存截取</text>
+
+  <rect x="60" y="80" width="360" height="58" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="240" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">① PageHelper.startPage(pageNo, pageSize)</text>
+  <text x="240" y="126" text-anchor="middle" font-size="11" fill="#4b5563">参数写入 ThreadLocal，不返回值</text>
+
+  <rect x="60" y="152" width="360" height="58" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="240" y="177" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">② 紧随其后的第一条查询</text>
+  <text x="240" y="198" text-anchor="middle" font-size="11" fill="#b91c1c">中间插入任何其他查询 → 分页落到那一条上</text>
+
+  <rect x="60" y="224" width="360" height="58" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="240" y="249" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">③ 拦截器捕获 Executor.query</text>
+  <text x="240" y="270" text-anchor="middle" font-size="11" fill="#4b5563">读到 ThreadLocal 里有分页参数 → 进入改写</text>
+
+  <rect x="470" y="80" width="360" height="58" rx="10" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+  <text x="650" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f766e">④ 生成并执行 count SQL</text>
+  <text x="650" y="126" text-anchor="middle" font-size="11" fill="#4b5563">SELECT count(0) FROM ... → 得到 total</text>
+
+  <rect x="470" y="152" width="360" height="58" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="650" y="177" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">⑤ 改写原 SQL 追加方言子句</text>
+  <text x="650" y="198" text-anchor="middle" font-size="11" font-family="monospace" fill="#065f46">... ORDER BY id LIMIT 10, 10</text>
+
+  <rect x="470" y="224" width="360" height="58" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="650" y="249" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338ca">⑥ 返回 Page（List 的子类）</text>
+  <text x="650" y="270" text-anchor="middle" font-size="11" fill="#4b5563">extra 里带着 total —— PageInfo 的数据源</text>
+
+  <path d="M240 138 L240 152" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M240 210 L240 224" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M420 253 L470 253 L470 253" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M650 282 L650 282 L650 282" stroke="#475569" stroke-width="2"/>
+  <path d="M470 253 L470 109 L468 109" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M650 138 L650 152" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M650 210 L650 224" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="60" y="306" width="770" height="70" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="445" y="332" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">⑦ new PageInfo&lt;&gt;(rows) —— 这一步决定了 total 能不能拿到</text>
+  <text x="445" y="356" text-anchor="middle" font-size="12" fill="#b91c1c">rows 必须是「直接来自 MyBatis 的 Page」；若被 stream().map() 包过，total 恒为 0</text>
+
+  <rect x="60" y="392" width="770" height="86" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="445" y="418" text-anchor="middle" font-size="13" font-weight="bold" fill="#be123c">验证「真的是物理分页」的唯一判据</text>
+  <text x="445" y="442" text-anchor="middle" font-size="12" fill="#4b5563">打开 MyBatis SQL 日志，检查最终语句里是否真的追加了 LIMIT</text>
+  <text x="445" y="464" text-anchor="middle" font-size="12" font-family="monospace" fill="#9f1239">logging.level.com.example.blog.mapper = debug</text>
+
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

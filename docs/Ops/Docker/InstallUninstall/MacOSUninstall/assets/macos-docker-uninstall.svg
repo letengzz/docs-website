@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="460" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">macOS 卸载 Docker：删应用只是第一步</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#6b7280">GUI 卸载后残留的磁盘镜像与配置，才是真正占空间的部分</text>
+
+  <rect x="40" y="82" width="190" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="135" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">① 应用程序</text>
+  <line x1="60" y1="124" x2="210" y2="124" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="60" y="150" font-size="11" font-family="monospace" fill="#1f2937">/Applications/</text>
+  <text x="66" y="170" font-size="11" font-family="monospace" fill="#1f2937">Docker.app</text>
+  <text x="60" y="198" font-size="11" fill="#4b5563">拖入废纸篓并清空</text>
+  <text x="60" y="220" font-size="11" fill="#059669">体积最小的一步</text>
+
+  <rect x="245" y="82" width="190" height="150" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="340" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">② 用户配置</text>
+  <line x1="265" y1="124" x2="415" y2="124" stroke="#fde68a" stroke-width="1"/>
+  <text x="265" y="150" font-size="11" font-family="monospace" fill="#1f2937">~/.docker</text>
+  <text x="265" y="170" font-size="11" font-family="monospace" fill="#1f2937">~/.docker/contexts</text>
+  <text x="265" y="198" font-size="11" fill="#4b5563">登录凭据、context 配置</text>
+  <text x="265" y="220" font-size="11" fill="#4b5563">不删会导致下次登录冲突</text>
+
+  <rect x="450" y="82" width="190" height="150" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="545" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#be123c">③ 支持文件</text>
+  <line x1="470" y1="124" x2="620" y2="124" stroke="#fecdd3" stroke-width="1"/>
+  <text x="470" y="148" font-size="11" font-family="monospace" fill="#9f1239">~/Library/Group Containers/</text>
+  <text x="476" y="166" font-size="11" font-family="monospace" fill="#9f1239">  group.com.docker</text>
+  <text x="470" y="190" font-size="11" font-family="monospace" fill="#9f1239">~/Library/Containers/</text>
+  <text x="476" y="208" font-size="11" font-family="monospace" fill="#9f1239">  com.docker.docker</text>
+  <text x="470" y="228" font-size="11" fill="#b91c1c">常被漏掉</text>
+
+  <rect x="655" y="82" width="185" height="150" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="747" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">④ 磁盘镜像</text>
+  <line x1="675" y1="124" x2="820" y2="124" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="675" y="150" font-size="11" font-family="monospace" fill="#3730a3">Docker.raw</text>
+  <text x="675" y="170" font-size="11" fill="#4b5563">虚拟机磁盘文件</text>
+  <text x="675" y="196" font-size="11" fill="#b91c1c">通常几十 GB</text>
+  <text x="675" y="218" font-size="11" fill="#4b5563">不删则空间不释放</text>
+
+  <path d="M230 157 L243 157" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M435 157 L448 157" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M640 157 L653 157" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="40" y="252" width="800" height="96" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="440" y="278" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">卸载前先记住：你真正想删的是哪一类</text>
+  <text x="60" y="304" font-size="12" fill="#4b5563">只想换版本 → 保留 ② ③ ④，只替换 ①，重启后镜像与卷都还在</text>
+  <text x="60" y="326" font-size="12" fill="#4b5563">彻底清理 / 释放空间 → 四类全清，操作前先 docker image ls 确认没有必须留的数据</text>
+  <text x="60" y="344" font-size="11" fill="#9f1239">删除操作不可撤销，建议先把 DOCKER_HOST 指向的卷目录做一次拷贝备份</text>
+
+  <rect x="40" y="362" width="800" height="80" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="440" y="388" text-anchor="middle" font-size="13" font-weight="bold" fill="#be123c">清理后的验证</text>
+  <text x="60" y="412" font-size="12" font-family="monospace" fill="#4b5563">docker --version        # 期望：command not found</text>
+  <text x="60" y="432" font-size="12" font-family="monospace" fill="#4b5563">du -sh ~/Library/Containers/com.docker.docker   # 期望：目录不存在</text>
+
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

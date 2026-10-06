@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#1E293B">压测脚本：负载模型决定结论可信度</text>
+
+  <rect x="40" y="76" width="400" height="120" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="240" y="104" text-anchor="middle" font-size="16" font-weight="bold" fill="#1D4ED8">闭模型 closed（VU-based）</text>
+  <text x="240" y="130" text-anchor="middle" font-size="13" fill="#334155">固定 VU 数，循环 请求 → sleep → 请求</text>
+  <text x="240" y="154" text-anchor="middle" font-size="12.5" fill="#64748B">吞吐由系统速度决定</text>
+  <text x="240" y="178" text-anchor="middle" font-size="12.5" fill="#B91C1C">系统变慢 → 压测机也变慢 → 延迟偏乐观</text>
+
+  <rect x="460" y="76" width="400" height="120" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="660" y="104" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">开模型 open（arrival-rate）</text>
+  <text x="660" y="130" text-anchor="middle" font-size="13" fill="#334155">固定到达率，每秒发起 N 个请求</text>
+  <text x="660" y="154" text-anchor="middle" font-size="12.5" fill="#64748B">系统慢了就排队，延迟如实记录</text>
+  <text x="660" y="178" text-anchor="middle" font-size="12.5" fill="#15803D">本项目容量验证一律用它</text>
+
+  <rect x="40" y="212" width="820" height="92" rx="12" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+  <text x="70" y="238" font-size="15" font-weight="bold" fill="#B91C1C">协调遗漏 coordinated omission</text>
+  <text x="70" y="262" font-size="13" fill="#334155">系统卡了 2s：开模型发出这 2s 内的 200 个请求并如实记录排队时间；闭模型的 VU 全卡在等响应上，</text>
+  <text x="70" y="284" font-size="13" fill="#334155">只发出 1 个请求 —— 本该排队的 199 个"消失"了，于是 P99 看起来只有几百毫秒，而用户已经在骂了。</text>
+
+  <text x="60" y="338" font-size="16" font-weight="bold" fill="#1E293B">五种场景模型</text>
+
+  <rect x="40" y="354" width="152" height="76" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="116" y="380" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">smoke</text>
+  <text x="116" y="402" text-anchor="middle" font-size="12" fill="#475569">1~5 VU / 1 min</text>
+  <text x="116" y="421" text-anchor="middle" font-size="12" fill="#15803D">✅ 每次先跑</text>
+
+  <rect x="204" y="354" width="152" height="76" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="280" y="380" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">load</text>
+  <text x="280" y="402" text-anchor="middle" font-size="12" fill="#475569">目标档恒定</text>
+  <text x="280" y="421" text-anchor="middle" font-size="12" fill="#15803D">✅ 主场景</text>
+
+  <rect x="368" y="354" width="152" height="76" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="444" y="380" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">stress</text>
+  <text x="444" y="402" text-anchor="middle" font-size="12" fill="#475569">逐级加档</text>
+  <text x="444" y="421" text-anchor="middle" font-size="12" fill="#15803D">✅ 找拐点</text>
+
+  <rect x="532" y="354" width="152" height="76" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="608" y="380" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">spike</text>
+  <text x="608" y="402" text-anchor="middle" font-size="12" fill="#475569">瞬时高并发</text>
+  <text x="608" y="421" text-anchor="middle" font-size="12" fill="#B45309">⏳ 待独立机器</text>
+
+  <rect x="696" y="354" width="164" height="76" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="778" y="380" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">soak</text>
+  <text x="778" y="402" text-anchor="middle" font-size="12" fill="#475569">目标档 1~4 h</text>
+  <text x="778" y="421" text-anchor="middle" font-size="12" fill="#B45309">⏳ 登记不做</text>
+
+  <rect x="40" y="448" width="820" height="56" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="70" y="472" font-size="14" font-weight="bold" fill="#B45309">许可证是决策项：k6 为 AGPL-3.0</text>
+  <text x="70" y="493" font-size="12.5" fill="#334155">当工具跑自己的系统没问题；把压测能力嵌进要交付或托管的平台，需先过法务</text>
+</svg>

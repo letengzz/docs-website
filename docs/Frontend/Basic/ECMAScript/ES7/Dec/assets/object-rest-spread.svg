@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="450" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">对象剩余（rest）与展开（spread）</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#6b7280">两个方向，两种场合——别把语法位置搞混</text>
+
+  <rect x="60" y="82" width="370" height="196" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="245" y="112" text-anchor="middle" font-size="15" font-weight="bold" fill="#4338ca">剩余属性 rest：收进来</text>
+  <text x="245" y="136" text-anchor="middle" font-size="11" fill="#6366f1">出现在「解构模式」中，且必须在最后一位</text>
+  <text x="245" y="168" text-anchor="middle" font-size="12" font-family="monospace" fill="#1f2937">const { a, ...rest } = obj</text>
+  <text x="245" y="196" text-anchor="middle" font-size="11" fill="#4b5563">obj = { a: 1, b: 2, c: 3 }</text>
+  <text x="245" y="218" text-anchor="middle" font-size="11" fill="#4b5563">→ a = 1，rest = { b: 2, c: 3 }</text>
+  <text x="245" y="248" text-anchor="middle" font-size="11" fill="#059669">非枚举 / 原型链上的键不会被收进 rest</text>
+  <text x="245" y="268" text-anchor="middle" font-size="11" fill="#b91c1c">键会被复制，值是引用（浅拷贝）</text>
+
+  <rect x="450" y="82" width="370" height="196" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="635" y="112" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">展开属性 spread：摊出去</text>
+  <text x="635" y="136" text-anchor="middle" font-size="11" fill="#10b981">出现在「对象字面量」中，可放在任意位置</text>
+  <text x="635" y="168" text-anchor="middle" font-size="12" font-family="monospace" fill="#1f2937">const clone = { ...obj }</text>
+  <text x="635" y="196" text-anchor="middle" font-size="11" fill="#4b5563">obj = { a: 1, b: 2 }</text>
+  <text x="635" y="218" text-anchor="middle" font-size="11" fill="#4b5563">→ clone = { a: 1, b: 2 }</text>
+  <text x="635" y="248" text-anchor="middle" font-size="11" fill="#059669">{ ...null } 与 { ...undefined } 均得到 {}</text>
+  <text x="635" y="268" text-anchor="middle" font-size="11" fill="#b91c1c">同名键后写者胜：{ ...a, x: 1 } 覆盖前面的 x</text>
+
+  <rect x="60" y="296" width="760" height="132" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="440" y="324" text-anchor="middle" font-size="14" font-weight="bold" fill="#c2410c">三条最容易踩的规则</text>
+  <text x="96" y="352" font-size="12" fill="#4b5563">① 剩余模式里 ...rest 必须写最后，「{ ...rest, a }」直接是语法错误</text>
+  <text x="96" y="376" font-size="12" fill="#4b5563">② 只在字面量里能「摊出去」；「{ ...a } = b」不是合法赋值目标</text>
+  <text x="96" y="400" font-size="12" fill="#4b5563">③ 浅拷贝：clone.nested === obj.nested 为 true，改嵌套对象会互相影响</text>
+  <text x="440" y="422" text-anchor="middle" font-size="11" fill="#94a3b8">需要深拷贝请用 structuredClone()，不是靠反复展开</text>
+</svg>

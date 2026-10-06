@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#1E293B">联调与压测：先把两端对齐，再谈扛得住多少</text>
+  <text x="450" y="70" text-anchor="middle" font-size="14" fill="#64748B">前 26 章回答「功能对不对」；本章回答「对得上吗」与「扛得住吗」</text>
+
+  <rect x="40" y="100" width="400" height="72" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="240" y="130" text-anchor="middle" font-size="17" font-weight="bold" fill="#1D4ED8">联调复核　I1~I8</text>
+  <text x="240" y="154" text-anchor="middle" font-size="13" fill="#334155">契约 / 错误语义 / 字段对齐 / 登录态切分</text>
+
+  <rect x="460" y="100" width="400" height="72" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="660" y="130" text-anchor="middle" font-size="17" font-weight="bold" fill="#15803D">压测　Pr1~Pr8 → L1~L14</text>
+  <text x="660" y="154" text-anchor="middle" font-size="13" fill="#334155">前置口径 → 脚本 → 定位 → 优化 → 验收</text>
+
+  <line x1="440" y1="136" x2="455" y2="136" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#ov)"/>
+
+  <rect x="40" y="205" width="164" height="120" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="122" y="234" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#334155">① 联调复核</text>
+  <text x="122" y="258" text-anchor="middle" font-size="12.5" fill="#475569">单入口三探活</text>
+  <text x="122" y="278" text-anchor="middle" font-size="12.5" fill="#475569">大整数精度</text>
+  <text x="122" y="298" text-anchor="middle" font-size="12.5" fill="#475569">软 404 不泄漏</text>
+
+  <rect x="224" y="205" width="164" height="120" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="306" y="234" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#334155">② 压测前置</text>
+  <text x="306" y="258" text-anchor="middle" font-size="12.5" fill="#475569">口径三档</text>
+  <text x="306" y="278" text-anchor="middle" font-size="12.5" fill="#475569">万级数据量</text>
+  <text x="306" y="298" text-anchor="middle" font-size="12.5" fill="#475569">八项旁路变量</text>
+
+  <rect x="408" y="205" width="164" height="120" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="490" y="234" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#334155">③ 压测脚本</text>
+  <text x="490" y="258" text-anchor="middle" font-size="12.5" fill="#475569">k6 开模型</text>
+  <text x="490" y="278" text-anchor="middle" font-size="12.5" fill="#475569">五种场景</text>
+  <text x="490" y="298" text-anchor="middle" font-size="12.5" fill="#475569">thresholds 判据</text>
+
+  <rect x="592" y="205" width="164" height="120" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="674" y="234" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#334155">④ 瓶颈定位</text>
+  <text x="674" y="258" text-anchor="middle" font-size="12.5" fill="#475569">四层顺序</text>
+  <text x="674" y="278" text-anchor="middle" font-size="12.5" fill="#475569">五类瓶颈</text>
+  <text x="674" y="298" text-anchor="middle" font-size="12.5" fill="#475569">第一个动的指标</text>
+
+  <rect x="776" y="205" width="84" height="120" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="818" y="240" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">⑤</text>
+  <text x="818" y="264" text-anchor="middle" font-size="13" fill="#475569">优化</text>
+
+  <line x1="204" y1="265" x2="219" y2="265" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#ov)"/>
+  <line x1="388" y1="265" x2="403" y2="265" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#ov)"/>
+  <line x1="572" y1="265" x2="587" y2="265" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#ov)"/>
+  <line x1="756" y1="265" x2="771" y2="265" stroke="#94A3B8" stroke-width="2.5" marker-end="url(#ov)"/>
+
+  <rect x="40" y="355" width="820" height="66" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="70" y="383" font-size="15" font-weight="bold" fill="#B45309">⑥ 验收闭环：L1~L14 + 结果三态</text>
+  <text x="70" y="407" font-size="13" fill="#334155">通过 = 实测满足；不通过 = 有实测失败值；阻塞 = 前置不满足并写明解除条件（不抄期望值）</text>
+
+  <rect x="40" y="440" width="820" height="58" rx="12" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="70" y="466" font-size="14.5" font-weight="bold" fill="#BE185D">压测口径三处锁定，本章不改</text>
+  <text x="70" y="488" font-size="13" fill="#334155">第 3 周收口 / 验收结论 / 项目总览 —— 归属第 119 天，不重新排期、不并入第 120 天</text>
+
+  <defs>
+    <marker id="ov" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="470" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">SharedArrayBuffer 与 Atomics</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#6b7280">跨线程真正共享同一块内存，而不是复制一份</text>
+
+  <rect x="60" y="80" width="200" height="90" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="160" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">主线程</text>
+  <text x="160" y="136" text-anchor="middle" font-size="11" fill="#4b5563">new Worker(...)</text>
+  <text x="160" y="156" text-anchor="middle" font-size="11" fill="#4b5563">postMessage(sab)</text>
+
+  <rect x="620" y="80" width="200" height="90" rx="10" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+  <text x="720" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f766e">Worker 线程</text>
+  <text x="720" y="136" text-anchor="middle" font-size="11" fill="#4b5563">onmessage</text>
+  <text x="720" y="156" text-anchor="middle" font-size="11" fill="#4b5563">收到同一个 sab</text>
+
+  <rect x="290" y="80" width="300" height="90" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="440" y="106" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">SharedArrayBuffer(8)</text>
+  <text x="440" y="130" text-anchor="middle" font-size="11" fill="#4b5563">字节长度固定，两端看到的是同一块内存</text>
+  <text x="440" y="152" text-anchor="middle" font-size="11" fill="#059669">往返开销 O(1)：不复制数据</text>
+
+  <path d="M262 125 L288 125" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M592 125 L618 125" stroke="#475569" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="60" y="192" width="760" height="112" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="440" y="218" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">Atomics：让「读-改-写」变成不可中断的一步</text>
+  <text x="96" y="246" font-size="12" font-family="monospace" fill="#b91c1c">view[0]++        ← 三步：读 / 加 / 写，可能被另一线程插入，结果丢失</text>
+  <text x="96" y="270" font-size="12" font-family="monospace" fill="#059669">Atomics.add(view, 0, 1)   ← 单步完成，且建立顺序保证</text>
+  <text x="96" y="294" font-size="12" fill="#4b5563">add / sub / and / or / xor / exchange / compareExchange / load / store / isLockFree</text>
+
+  <rect x="60" y="318" width="370" height="132" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="245" y="346" text-anchor="middle" font-size="14" font-weight="bold" fill="#4338ca">线程同步三件套</text>
+  <text x="245" y="374" text-anchor="middle" font-size="12" fill="#4b5563">Atomics.wait(view, 0, 0)</text>
+  <text x="245" y="396" text-anchor="middle" font-size="12" fill="#4b5563">Atomics.notify(view, 0, 1)</text>
+  <text x="245" y="418" text-anchor="middle" font-size="11" fill="#64748b">等待期间线程真正休眠，不空转 CPU</text>
+  <text x="245" y="438" text-anchor="middle" font-size="11" fill="#b91c1c">浏览器主线程禁 wait；Node 主线程放开</text>
+
+  <rect x="450" y="318" width="370" height="132" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="635" y="346" text-anchor="middle" font-size="14" font-weight="bold" fill="#be123c">浏览器侧前置条件</text>
+  <text x="635" y="374" text-anchor="middle" font-size="12" fill="#4b5563">必须是「跨源隔离」页面</text>
+  <text x="635" y="396" text-anchor="middle" font-size="11" font-family="monospace" fill="#4b5563">Cross-Origin-Opener-Policy: same-origin</text>
+  <text x="635" y="416" text-anchor="middle" font-size="11" font-family="monospace" fill="#4b5563">Cross-Origin-Embedder-Policy: require-corp</text>
+  <text x="635" y="438" text-anchor="middle" font-size="11" fill="#64748b">否则构造函数不可用（Node 无此限制）</text>
+
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <rect width="880" height="470" fill="#ffffff"/>
+  <text x="440" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">JavaScript 模块化的四种方案演进</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#6b7280">共同目标只有一个：解决全局变量污染与依赖顺序靠人手维护的问题</text>
+
+  <rect x="40" y="82" width="195" height="216" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="137" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">CJS</text>
+  <text x="137" y="130" text-anchor="middle" font-size="11" fill="#64748b">CommonJS · Node 默认</text>
+  <line x1="60" y1="144" x2="215" y2="144" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="60" y="168" font-size="11" font-family="monospace" fill="#1f2937">require('./a')</text>
+  <text x="60" y="188" font-size="11" font-family="monospace" fill="#1f2937">module.exports = {}</text>
+  <text x="60" y="212" font-size="11" fill="#4b5563">同步加载</text>
+  <text x="60" y="232" font-size="11" fill="#4b5563">运行时解析</text>
+  <text x="60" y="252" font-size="11" fill="#4b5563">值是拷贝 / 缓存</text>
+  <text x="137" y="282" text-anchor="middle" font-size="11" fill="#64748b">不适用于浏览器原生</text>
+
+  <rect x="245" y="82" width="195" height="216" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="342" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">AMD</text>
+  <text x="342" y="130" text-anchor="middle" font-size="11" fill="#64748b">RequireJS 时代</text>
+  <line x1="265" y1="144" x2="420" y2="144" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="265" y="168" font-size="11" font-family="monospace" fill="#1f2937">define([...], fn)</text>
+  <text x="265" y="188" font-size="11" font-family="monospace" fill="#1f2937">require([...], fn)</text>
+  <text x="265" y="212" font-size="11" fill="#4b5563">异步加载</text>
+  <text x="265" y="232" font-size="11" fill="#4b5563">浏览器优先</text>
+  <text x="265" y="252" font-size="11" fill="#4b5563">依赖前置声明</text>
+  <text x="342" y="282" text-anchor="middle" font-size="11" fill="#64748b">语法冗长，已基本退出</text>
+
+  <rect x="450" y="82" width="195" height="216" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="547" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">UMD</text>
+  <text x="547" y="130" text-anchor="middle" font-size="11" fill="#f59e0b">兼容层的产物</text>
+  <line x1="470" y1="144" x2="625" y2="144" stroke="#fde68a" stroke-width="1"/>
+  <text x="470" y="168" font-size="11" font-family="monospace" fill="#1f2937">typeof define === 'function'</text>
+  <text x="470" y="188" font-size="11" font-family="monospace" fill="#1f2937">? define(...) : module.exports</text>
+  <text x="470" y="212" font-size="11" fill="#4b5563">一段判断三种环境</text>
+  <text x="470" y="232" font-size="11" fill="#4b5563">不是「写」的方言</text>
+  <text x="470" y="252" font-size="11" fill="#4b5563">是「打包出」的格式</text>
+  <text x="547" y="282" text-anchor="middle" font-size="11" fill="#b45309">库作者仍需产出这种格式</text>
+
+  <rect x="655" y="82" width="185" height="216" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="747" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">ESM</text>
+  <text x="747" y="130" text-anchor="middle" font-size="11" fill="#10b981">语言级标准</text>
+  <line x1="675" y1="144" x2="820" y2="144" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="675" y="168" font-size="11" font-family="monospace" fill="#1f2937">import x from './a.js'</text>
+  <text x="675" y="188" font-size="11" font-family="monospace" fill="#1f2937">export default / export const</text>
+  <text x="675" y="212" font-size="11" fill="#4b5563">静态分析</text>
+  <text x="675" y="232" font-size="11" fill="#4b5563">实时绑定（live binding）</text>
+  <text x="675" y="252" font-size="11" fill="#4b5563">可被 Tree-shaking</text>
+  <text x="747" y="282" text-anchor="middle" font-size="11" fill="#047857">浏览器 / Node 双端原生支持</text>
+
+  <rect x="40" y="316" width="800" height="140" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="440" y="342" text-anchor="middle" font-size="13" font-weight="bold" fill="#be123c">两处最容易被忽略的语义差异</text>
+  <text x="60" y="370" font-size="12" fill="#4b5563">① CJS 的 require 是「拷贝导出值 + 缓存」；ESM 的 import 是「指向同一份绑定的实时视图」</text>
+  <text x="60" y="392" font-size="12" fill="#4b5563">　　所以 CJS 里对导出的基本类型变量重新赋值，引用方拿不到新值；ESM 拿得到</text>
+  <text x="60" y="416" font-size="12" fill="#4b5563">② ESM 必须是顶层静态语句（不能写在 if 里），这让打包器能在不执行代码的前提下分析依赖</text>
+  <text x="60" y="440" font-size="12" fill="#4b5563">　　「动态导入」用 import() 表达式，返回 Promise，也是代码分割的入口</text>
+</svg>
