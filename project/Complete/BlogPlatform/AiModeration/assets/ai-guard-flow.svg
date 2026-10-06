@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 560" width="680" height="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
+  <rect x="0" y="0" width="680" height="560" fill="#ffffff"/>
+  <text x="340" y="28" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">评论 AI 预审与文章摘要：两条链路、一条门禁</text>
+
+  <!-- ================= 链路 A ================= -->
+  <rect x="16" y="48" width="648" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="32" y="70" font-size="12.5" font-weight="700" fill="#1e293b">链路 A：评论 AI 预审（输入完全不可信）</text>
+
+  <rect x="32" y="86" width="136" height="46" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="100" y="105" font-size="11" fill="#0f172a" text-anchor="middle">评论写入 API</text>
+  <text x="100" y="121" font-size="10" fill="#64748b" text-anchor="middle">POST /comments</text>
+
+  <rect x="192" y="86" width="136" height="46" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="260" y="105" font-size="11" fill="#0f172a" text-anchor="middle">comments 表</text>
+  <text x="260" y="121" font-size="10" fill="#64748b" text-anchor="middle">review_status 初值</text>
+
+  <rect x="352" y="86" width="136" height="46" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="420" y="105" font-size="11" fill="#1e3a8a" text-anchor="middle">AI 预审 worker</text>
+  <text x="420" y="121" font-size="10" fill="#1d4ed8" text-anchor="middle">异步 + 可重试</text>
+
+  <rect x="512" y="86" width="136" height="46" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="580" y="105" font-size="11" fill="#1e3a8a" text-anchor="middle">LLM 契约输出</text>
+  <text x="580" y="121" font-size="10" fill="#1d4ed8" text-anchor="middle">action / reason</text>
+
+  <line x1="168" y1="109" x2="188" y2="109" stroke="#64748b" stroke-width="1.4"/>
+  <polygon points="188,109 182,106 182,112" fill="#64748b"/>
+  <line x1="328" y1="109" x2="348" y2="109" stroke="#64748b" stroke-width="1.4"/>
+  <polygon points="348,109 342,106 342,112" fill="#64748b"/>
+  <line x1="488" y1="109" x2="508" y2="109" stroke="#64748b" stroke-width="1.4"/>
+  <polygon points="508,109 502,106 502,112" fill="#64748b"/>
+
+  <rect x="32" y="152" width="200" height="46" rx="6" fill="#fffbeb" stroke="#d97706"/>
+  <text x="132" y="171" font-size="11" fill="#78350f" text-anchor="middle">写 comments.ai_verdict</text>
+  <text x="132" y="187" font-size="10" fill="#92400e" text-anchor="middle">只标注，不改可见性</text>
+
+  <rect x="256" y="152" width="200" height="46" rx="6" fill="#ecfdf5" stroke="#059669"/>
+  <text x="356" y="171" font-size="11" fill="#064e3b" text-anchor="middle">后台人审动作（第 116 天补齐）</text>
+  <text x="356" y="187" font-size="10" fill="#047857" text-anchor="middle">POST /admin/comments/:id/moderate</text>
+
+  <rect x="480" y="152" width="168" height="46" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="564" y="171" font-size="11" fill="#0f172a" text-anchor="middle">review_status 生效</text>
+  <text x="564" y="187" font-size="10" fill="#64748b" text-anchor="middle">读侧只认状态</text>
+
+  <line x1="232" y1="175" x2="252" y2="175" stroke="#64748b" stroke-width="1.4"/>
+  <polygon points="252,175 246,172 246,178" fill="#64748b"/>
+  <line x1="456" y1="175" x2="476" y2="175" stroke="#64748b" stroke-width="1.4"/>
+  <polygon points="476,175 470,172 470,178" fill="#64748b"/>
+  <line x1="420" y1="132" x2="420" y2="148" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <line x1="132" y1="132" x2="132" y2="148" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="32" y="216" font-size="10.5" fill="#b45309">AI 全程不碰 review_status —— 模型输出只落 ai_verdict，可见性由人审动作决定（fail-safe）</text>
+
+  <!-- ================= 链路 B ================= -->
+  <rect x="16" y="240" width="648" height="118" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="32" y="262" font-size="12.5" font-weight="700" fill="#1e293b">链路 B：文章 AI 摘要（输入半可信：作者正文可能夹带间接注入）</text>
+
+  <rect x="32" y="276" width="140" height="46" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="102" y="295" font-size="11" fill="#0f172a" text-anchor="middle">文章发布</text>
+  <text x="102" y="311" font-size="10" fill="#64748b" text-anchor="middle">状态机转入 PUBLISHED</text>
+
+  <rect x="196" y="276" width="196" height="46" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="294" y="295" font-size="11" fill="#1e3a8a" text-anchor="middle">摘要生成（写时）</text>
+  <text x="294" y="311" font-size="10" fill="#1d4ed8" text-anchor="middle">失败不阻断发布</text>
+
+  <rect x="416" y="276" width="232" height="46" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="532" y="295" font-size="11" fill="#0f172a" text-anchor="middle">posts.summary 落库（复用既有字段）</text>
+  <text x="532" y="311" font-size="10" fill="#64748b" text-anchor="middle">无摘要时兜底取正文前 80 字</text>
+
+  <line x1="172" y1="299" x2="192" y2="299" stroke="#64748b" stroke-width="1.4"/>
+  <polygon points="192,299 186,296 186,302" fill="#64748b"/>
+  <line x1="392" y1="299" x2="412" y2="299" stroke="#64748b" stroke-width="1.4"/>
+  <polygon points="412,299 406,296 406,302" fill="#64748b"/>
+  <text x="32" y="342" font-size="10.5" fill="#475569">兜底口径与第 108 天 T15 一致：有 summary 用 summary，否则取正文前 80 字（纯文本、去 markdown 记号）</text>
+
+  <!-- ================= 评估与门禁 ================= -->
+  <rect x="16" y="368" width="648" height="152" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="32" y="390" font-size="12.5" font-weight="700" fill="#1e293b">评估集与回归门禁：让防护「持续有效」而不是「上线时有效」</text>
+
+  <rect x="32" y="404" width="150" height="46" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="107" y="423" font-size="11" fill="#0f172a" text-anchor="middle">eval_l2.jsonl</text>
+  <text x="107" y="439" font-size="10" fill="#64748b" text-anchor="middle">30 条 / L2 安全层</text>
+
+  <rect x="206" y="404" width="170" height="46" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="291" y="423" font-size="11" fill="#0f172a" text-anchor="middle">eval_runner</text>
+  <text x="291" y="439" font-size="10" fill="#64748b" text-anchor="middle">本地桩 / 真实模型</text>
+
+  <rect x="400" y="404" width="124" height="46" rx="6" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="462" y="423" font-size="11" fill="#7f1d1d" text-anchor="middle">第 13 道门禁</text>
+  <text x="462" y="439" font-size="10" fill="#b91c1c" text-anchor="middle">ai_guard</text>
+
+  <rect x="548" y="404" width="116" height="46" rx="6" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="606" y="423" font-size="11" fill="#7f1d1d" text-anchor="middle">exit 0 / 1</text>
+  <text x="606" y="439" font-size="10" fill="#b91c1c" text-anchor="middle">阻断变更</text>
+
+  <line x1="182" y1="427" x2="202" y2="427" stroke="#64748b" stroke-width="1.4"/>
+  <polygon points="202,427 196,424 196,430" fill="#64748b"/>
+  <line x1="376" y1="427" x2="396" y2="427" stroke="#64748b" stroke-width="1.4"/>
+  <polygon points="396,427 390,424 390,430" fill="#64748b"/>
+  <line x1="524" y1="427" x2="544" y2="427" stroke="#64748b" stroke-width="1.4"/>
+  <polygon points="544,427 538,424 538,430" fill="#64748b"/>
+
+  <text x="32" y="472" font-size="10.5" fill="#475569">红队有效发现 → 评估集 L3 对抗层 → 永久回归样本（发现不过夜，当天进集）</text>
+  <text x="32" y="492" font-size="10.5" fill="#b91c1c">门禁可被证伪：把桩切到 unsafe 模式（一律 pass），同一套评估集立即 22/30 报红并 exit 1</text>
+  <text x="32" y="510" font-size="10.5" fill="#475569">实测边界：本地桩只验证「契约解析 + 判据执行 + 门禁接线」，模型行为本身须接真实模型重跑</text>
+</svg>

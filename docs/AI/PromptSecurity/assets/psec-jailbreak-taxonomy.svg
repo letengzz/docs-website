@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" width="680" height="400">
+  <rect width="680" height="400" fill="#ffffff"/>
+  <text x="24" y="38" font-size="20" font-weight="bold" fill="#1e293b">越狱手法分类与多轮升级路径</text>
+  <text x="24" y="60" font-size="12" fill="#64748b">注入要的是「改任务」，越狱要的是「解除限制」——两者常被组合使用</text>
+
+  <g font-family="sans-serif">
+    <!-- 左：单轮手法 -->
+    <rect x="24" y="84" width="300" height="230" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+    <text x="174" y="112" font-size="14" font-weight="bold" fill="#92400e" text-anchor="middle">单轮手法</text>
+    <text x="48" y="140" font-size="12" fill="#78350f">· 角色扮演：DAN 家族、「开发者模式」</text>
+    <text x="48" y="164" font-size="12" fill="#78350f">· 编码绕过：Base64 / ROT13 / 拼音拆字</text>
+    <text x="48" y="188" font-size="12" fill="#78350f">· 虚构框架：「写小说角色台词」「学术研究」</text>
+    <text x="48" y="212" font-size="12" fill="#78350f">· 前缀注入：预设「当然可以，答案是…」开头</text>
+    <text x="48" y="236" font-size="12" fill="#78350f">· 语境切换：低资源语言、方言、错字噪声</text>
+    <text x="48" y="260" font-size="12" fill="#78350f">· 令牌走私：系统提示词先「补全」再拒绝</text>
+    <text x="174" y="294" font-size="10.5" fill="#b45309" text-anchor="middle">garak 的 dan / encoding / promptinject 探针族</text>
+
+    <!-- 右：多轮升级 -->
+    <rect x="356" y="84" width="300" height="230" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="506" y="112" font-size="14" font-weight="bold" fill="#991b1b" text-anchor="middle">多轮升级（更难防）</text>
+    <text x="380" y="142" font-size="12" fill="#7f1d1d">Crescendo 渐进：每轮都无害，</text>
+    <text x="380" y="162" font-size="12" fill="#7f1d1d">十轮之后到达禁区</text>
+    <text x="380" y="194" font-size="12" fill="#7f1d1d">TAP 攻击树：并行探索多条话术路径，</text>
+    <text x="380" y="214" font-size="12" fill="#7f1d1d">剪掉失败分支</text>
+    <text x="380" y="246" font-size="12" fill="#7f1d1d">GOAT：用另一个模型当「攻击手」，</text>
+    <text x="380" y="266" font-size="12" fill="#7f1d1d">根据拒绝原因实时改写话术</text>
+    <text x="506" y="294" font-size="10.5" fill="#b91c1c" text-anchor="middle">PyRIT 的 CrescendoAttack / TAPAttack 编排</text>
+
+    <!-- 底部：防守三件事 -->
+    <rect x="24" y="328" width="632" height="56" rx="10" fill="#f1f5f9" stroke="#475569"/>
+    <text x="340" y="352" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">防守三件事：输出侧分类器（不看「说法」看「内容」）· 多轮上下文监控 · 高危动作的人工确认</text>
+    <text x="340" y="372" font-size="11" fill="#334155" text-anchor="middle">对齐是统计性的、对抗是自适应的——「这轮挡住了」不等于「永远挡住了」，必须回到评估集与门禁</text>
+  </g>
+</svg>

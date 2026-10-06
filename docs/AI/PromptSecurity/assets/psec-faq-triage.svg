@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" width="680" height="380">
+  <rect width="680" height="380" fill="#ffffff"/>
+  <text x="24" y="38" font-size="20" font-weight="bold" fill="#1e293b">FAQ 分诊树：先定位问题属于哪一类</text>
+
+  <g font-family="sans-serif">
+    <rect x="250" y="66" width="180" height="44" rx="10" fill="#f1f5f9" stroke="#475569" stroke-width="1.5"/>
+    <text x="340" y="94" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">症状是什么？</text>
+
+    <path d="M340 110 V140 M340 140 H110 M340 140 H340 M340 140 H570" stroke="#94a3b8" stroke-width="1.5"/>
+    <path d="M110 140 V166 M340 140 V166 M570 140 V166" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a3)"/>
+
+    <rect x="24" y="166" width="180" height="70" rx="10" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="114" y="190" font-size="12" font-weight="bold" fill="#991b1b" text-anchor="middle">模型被「带偏」了</text>
+    <text x="114" y="208" font-size="10" fill="#b91c1c" text-anchor="middle">执行了不该执行的指令</text>
+    <text x="114" y="226" font-size="10" fill="#b91c1c" text-anchor="middle">→ Injection / Defense</text>
+
+    <rect x="250" y="166" width="180" height="70" rx="10" fill="#fffbeb" stroke="#d97706"/>
+    <text x="340" y="190" font-size="12" font-weight="bold" fill="#92400e" text-anchor="middle">限制被「解除」了</text>
+    <text x="340" y="208" font-size="10" fill="#b45309" text-anchor="middle">输出违规内容</text>
+    <text x="340" y="226" font-size="10" fill="#b45309" text-anchor="middle">→ Jailbreak / Defense</text>
+
+    <rect x="476" y="166" width="180" height="70" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="566" y="190" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">行为「悄悄变了」</text>
+    <text x="566" y="208" font-size="10" fill="#1d4ed8" text-anchor="middle">没改任何东西却变差</text>
+    <text x="566" y="226" font-size="10" fill="#1d4ed8" text-anchor="middle">→ RegressionGate（L4 漂移）</text>
+
+    <rect x="24" y="272" width="632" height="84" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="340" y="298" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">定位类别后按本页第 2 节查对应问答；上线前的完整检查用第 3 节十二条自查清单</text>
+    <text x="340" y="322" font-size="11" fill="#64748b" text-anchor="middle">红队相关（怎么打、用什么工具）→ RedTeam 页；评估集怎么建 → EvalSet 页</text>
+    <text x="340" y="344" font-size="11" fill="#94a3b8" text-anchor="middle">本仓所有工具版本与安全口径按 2026-10 联网核对，随时间推移请以官方发布页为准</text>
+  </g>
+  <defs>
+    <marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0 0 L6 3 L0 6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

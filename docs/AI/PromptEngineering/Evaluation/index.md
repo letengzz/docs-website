@@ -105,3 +105,4 @@ python evaluate.py --dataset gold.json --prompt v1.2
 - [大模型应用开发 · 成本核算与限流降级](../../LLMApp/CostRateLimit/index.md)：把准确率与成本放在一起比较
 - [RAG 检索增强 · 评估体系](../../RAG/Evaluation/index.md)：检索层、生成层与业务层的三层指标
 - [大模型微调 · 评测与发布门禁](../../FineTuning/Evaluation/index.md)：把评测结果变成可执行的硬/软门禁，以及「提升多少个百分点才算真」的波动判据
+- [提示词安全与评估 · 评估集建设](../../PromptSecurity/EvalSet/index.md)：本页讲评估**方法**（维度、方法、judge 用法），那边讲评估集的**工程化**——功能 / 安全 / 对抗 / 哨兵四层结构、样本治理与防过拟合；安全类样本（该拒的拒、不该说的不说）的门禁口径在那边

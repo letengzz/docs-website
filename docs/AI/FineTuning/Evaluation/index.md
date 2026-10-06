@@ -290,3 +290,7 @@ python gate_check.py && echo "门禁通过" || echo "已阻断"
 - [TRL 评测与训练日志说明](https://huggingface.co/docs/trl/index)
 - [Judging LLM-as-a-Judge（位置偏见与一致性）](https://arxiv.org/abs/2306.05685)
 - [OpenAI Evals 设计思路](https://github.com/openai/evals)
+
+## 相关专题
+
+- [提示词安全与评估 · 评估集建设](../../PromptSecurity/EvalSet/index.md)：本页讲**模型权重**侧的评测与门禁（能力、遗忘、波动判据），那边讲**提示词 + 模型 + 防护**组合成的应用行为评估集；两套评估集阈值不同，但「2×SE 波动判据」的统计口径两边通用。

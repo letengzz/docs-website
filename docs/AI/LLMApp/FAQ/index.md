@@ -186,4 +186,5 @@ def traced_call(payload: dict):
 - 速率限制：https://developers.openai.com/api/docs/guides/rate-limits
 - 结构化输出与拒绝（refusal）：https://developers.openai.com/api/docs/guides/structured-outputs
 - 本库提示词工程：[常见问题与最佳实践](../../PromptEngineering/FAQ/index.md)
+- [提示词安全与评估](../../PromptSecurity/index.md)：本页第 2 步那条注入样本只是起点——注入的完整通道（直接 / 间接）、防护纵深与「红队发现 → 评估集 → 回归门禁」的机制化闭环在那边
 - 检索类问答的排查路径：[RAG 检索增强 · 常见问题与最佳实践](../../RAG/FAQ/index.md)

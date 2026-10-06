@@ -79,8 +79,9 @@
 | 第 112 天 | 第 4 周起点「一键部署」：Compose 五服务（nginx / 前台 SSR / 后端 / MySQL / Redis）+ `my.cnf` 挂载（ngram 两配置进容器为红线）+ 依赖注入矩阵 + 首次 DDL 实测回填 | ✅ |
 | 第 113 天 | 监控接入：三层信号落点（指标/日志/追踪，追踪刻意不做）+ 六项指标口径（QPS / P95 / 错误率 / 缓存命中率 / 连接池 / JVM）+ 基线推导的告警阈值与「谁来看」+ traceId 串链三条判据 | ✅ |
 | 第 114 天 | 备份恢复演练与上线验收清单：备份策略（dump + binlog + 保留期）+ 临时容器恢复四步与 R1~R6 对账判据 + 上线验收清单九项合并定稿 | ✅ |
-| 第 115 天 | 第 4 周收口：上线验收清单九项逐条回填（实测 ⏳ 未跑 + 原因，欠账收敛为 Docker 环境单一前置）+ 第 4 周里程碑四项对照定稿 | ✅ 本日 |
-| 第 116-120 天 | 第 4 周收尾：文档沉淀（压测第 119 天）；九项实测回填随 Docker 环境兑现 | ⏳ |
+| 第 115 天 | 第 4 周收口：上线验收清单九项逐条回填（实测 ⏳ 未跑 + 原因，欠账收敛为 Docker 环境单一前置）+ 第 4 周里程碑四项对照定稿 | ✅ |
+| 第 116 天 | AI 预审与摘要模块：模块契约（1 列 + 2 内部接口 + 人审动作，补齐第 106 天悬置项）+ L2 安全评估集 30 条 + 本地桩四场景实测（正常 30/30、防护失效 8/30 报红、空集与不可达均 exit 1）；**第 13 道 AI 评估门禁判据已定义并实测可证伪，接入 `gates.json` 待环境（M10 ⏳）** | ✅ 本日 |
+| 第 117-120 天 | 第 4 周收尾：文档沉淀（压测第 119 天）；九项实测回填随 Docker 环境兑现 | ⏳ |
 
 ## 各章节
 
@@ -107,7 +108,8 @@
 21. [监控接入](./Monitoring/index.md)：三层信号落点、六项指标口径、基线推导的告警阈值、traceId 串链三条判据
 22. [备份恢复演练与上线验收清单](./BackupDrill/index.md)：备份策略、临时容器恢复四步、R1~R6 对账判据、上线验收清单九项合并
 23. [第 4 周收口](./Week4Close/index.md)：上线验收清单九项实测回填、欠账显式登记与第 4 周里程碑对照
-24. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+24. [评论 AI 预审与文章摘要](./AiModeration/index.md)：模块契约与三条红线、提示词与防护五层落位、L2 评估集 30 条、本地桩四场景实测、断言清单 M1~M10
+25. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
 
 ## 在你自己的工程里跑起来
 
@@ -122,7 +124,8 @@ mvn spring-boot:run                             # 默认 profile=local：内存�
 ```
 
 ```shell
-# 另开终端：十二道行为门禁（结构 / 只读行为 / 写链路行为 / 状态迁移 / 读侧可见性 / 评论链路 / 全文搜索 / 读者账号 / 前台 SSR / 核心业务流一条龙 / 判据唯一性）
+# 另开终端：十二道「已接入」行为门禁（结构 / 只读行为 / 写链路行为 / 状态迁移 / 读侧可见性 / 评论链路 / 全文搜索 / 读者账号 / 前台 SSR / 核心业务流一条龙 / 判据唯一性）
+# 第 13 道（AI 预审评估）判据已定义并实测可证伪，接入 gates.json 待环境——见第 116 天的 M10
 cd your-project/service
 python skeleton_check.py                            # 期望 checks = 27  failed = 0
 python api_smoke.py       --base http://127.0.0.1:18080 # 期望 cases = 9   passed = 9
@@ -138,6 +141,14 @@ python lifecycle_smoke.py --selftest                    # 期望 selftest: 24/24
 python search_smoke.py    --selftest                    # 期望 selftest: 9/9 通过
 python account_smoke.py   --selftest                    # 期望 selftest: 22/22 通过
 python ssr_smoke.py       --selftest                    # 期望 selftest: 10/10 通过
+```
+
+```shell
+# 第 13 道：AI 预审与摘要的 L2 安全评估门禁（第 116 天新增，判据已定义、接入待环境）
+python eval_runner.py --suite eval_l2.jsonl --base-url http://127.0.0.1:8099/v1
+   # 期望 RESULT: PASS  30/30  exit=0（对象为本地桩时）；换真实模型端点后必须重跑取得新基线
+python eval_runner.py --suite empty.jsonl
+   # 期望 RESULT: FAIL (activity check: empty suite)  exit=1（空集不许静默通过）
 ```
 
 ```shell

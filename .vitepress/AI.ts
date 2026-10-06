@@ -73,6 +73,25 @@ export const AI_PromptEngineering = [
   },
 ];
 
+export const AI_PromptSecurity = [
+  {
+    text: "提示词安全与评估",
+    link: "/docs/AI/PromptSecurity/index.md",
+    collapsed: true,
+    items: [
+      { text: "概述：攻击面与 OWASP Top 10", link: "/docs/AI/PromptSecurity/Overview/index.md" },
+      { text: "提示注入深入", link: "/docs/AI/PromptSecurity/Injection/index.md" },
+      { text: "防护工程：纵深防御五层", link: "/docs/AI/PromptSecurity/Defense/index.md" },
+      { text: "越狱与对抗", link: "/docs/AI/PromptSecurity/Jailbreak/index.md" },
+      { text: "红队测试", link: "/docs/AI/PromptSecurity/RedTeam/index.md" },
+      { text: "评估集建设", link: "/docs/AI/PromptSecurity/EvalSet/index.md" },
+      { text: "回归门禁", link: "/docs/AI/PromptSecurity/RegressionGate/index.md" },
+      { text: "实战：博客平台评论预审与摘要", link: "/docs/AI/PromptSecurity/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/PromptSecurity/FAQ/index.md" },
+    ],
+  },
+];
+
 export const AI_OpenClaw = [
   {
     text: "OpenClaw",

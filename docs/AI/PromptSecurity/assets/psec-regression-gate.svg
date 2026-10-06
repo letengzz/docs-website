@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" width="680" height="300">
+  <rect width="680" height="300" fill="#ffffff"/>
+  <text x="24" y="38" font-size="20" font-weight="bold" fill="#1e293b">回归门禁：把「改提示词」当成一次部署</text>
+  <text x="24" y="60" font-size="12" fill="#64748b">提示词、模型版本、温度、供应商、防护规则——任何一项变更都触发同一套门禁</text>
+
+  <g font-family="sans-serif">
+    <rect x="24" y="88" width="140" height="64" rx="10" fill="#f8fafc" stroke="#64748b"/>
+    <text x="94" y="114" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">变更触发</text>
+    <text x="94" y="134" font-size="10" fill="#475569" text-anchor="middle">提示词 diff / 模型升级</text>
+
+    <rect x="196" y="88" width="140" height="64" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="266" y="114" font-size="12.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">跑评估集</text>
+    <text x="266" y="134" font-size="10" fill="#1d4ed8" text-anchor="middle">L1~L4 分层执行</text>
+
+    <rect x="368" y="88" width="140" height="64" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+    <text x="438" y="108" font-size="12.5" font-weight="bold" fill="#14532d" text-anchor="middle">分层阈值</text>
+    <text x="438" y="126" font-size="9.5" fill="#166534" text-anchor="middle">L1 = 100% · L2 = 0 违规</text>
+    <text x="438" y="142" font-size="9.5" fill="#166534" text-anchor="middle">L3 ≤ 基线 · L4 漂移预警</text>
+
+    <rect x="540" y="88" width="116" height="64" rx="10" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="598" y="114" font-size="12.5" font-weight="bold" fill="#991b1b" text-anchor="middle">不达标阻断</text>
+    <text x="598" y="134" font-size="10" fill="#b91c1c" text-anchor="middle">非零退出码</text>
+
+    <path d="M164 120 H196 M336 120 H368 M508 120 H540" stroke="#94a3b8" stroke-width="2" marker-end="url(#a2)"/>
+
+    <!-- 失败分支 -->
+    <rect x="368" y="196" width="288" height="76" rx="10" fill="#fff7ed" stroke="#ea580c"/>
+    <text x="512" y="222" font-size="12.5" font-weight="bold" fill="#9a3412" text-anchor="middle">失败处置三选一</text>
+    <text x="512" y="244" font-size="10.5" fill="#c2410c" text-anchor="middle">修提示词 → 修防护规则 → 判定评估集误报并修订评估集</text>
+    <text x="512" y="262" font-size="10.5" fill="#c2410c" text-anchor="middle">「改评估集迁就结果」必须走评审，留下变更记录</text>
+    <path d="M598 152 V196" stroke="#ea580c" stroke-width="1.6" marker-end="url(#o2)"/>
+
+    <!-- 提示词版本侧栏 -->
+    <rect x="24" y="196" width="300" height="76" rx="10" fill="#faf5ff" stroke="#9333ea"/>
+    <text x="174" y="222" font-size="12.5" font-weight="bold" fill="#581c87" text-anchor="middle">提示词版本管理（与代码同待遇）</text>
+    <text x="174" y="244" font-size="10.5" fill="#7e22ce" text-anchor="middle">进 git + 语义化版本 + 变更日志 + 可回滚</text>
+    <text x="174" y="262" font-size="10.5" fill="#7e22ce" text-anchor="middle">线上跑的版本号与 git 提交可对应</text>
+  </g>
+  <defs>
+    <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0 0 L6 3 L0 6 Z" fill="#94a3b8"/>
+    </marker>
+    <marker id="o2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0 0 L6 3 L0 6 Z" fill="#ea580c"/>
+    </marker>
+  </defs>
+</svg>

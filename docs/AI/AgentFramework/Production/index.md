@@ -68,6 +68,8 @@ CrewAI：`verbose=True` 仅用于开发；生产用回调 / 事件监听接 Lang
 `expected_output` 写成可校验的结构（条数、必含字段、来源数），每次 `kickoff` 后自动校验并记录通过率——这是 CrewAI 场景下最便宜的回归门禁。
 :::
 
+> 本节是框架视角的操作清单。评估集怎么**分层**（功能 / 安全策略 / 红队沉淀 / 漂移哨兵）、样本怎么治理、防过拟合怎么做，见专题 [提示词安全与评估 · 评估集建设](../../PromptSecurity/EvalSet/index.md)；Agent 场景的注入与越权边界另见 [Agent 应用 · 安全边界](../../Agent/Safety/index.md)。
+
 ## 4. 成本与安全
 
 **成本**：

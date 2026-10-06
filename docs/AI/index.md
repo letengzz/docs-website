@@ -9,6 +9,7 @@
 - [本地模型部署](LocalModel/index.md)
 - [OpenClaw](OpenClaw/index.md)
 - [提示词工程](PromptEngineering/index.md)
+- [提示词安全与评估](PromptSecurity/index.md)
 - [Agent 应用](Agent/index.md)
 - [Agent 框架深入](AgentFramework/index.md)
 - [Java（AI 专题）](Java/index.md)

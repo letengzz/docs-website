@@ -132,4 +132,5 @@ if __name__ == "__main__":
 - 检索指南（官方文档）：https://developers.openai.com/api/docs/guides/retrieval
 - 生产工程化：[生产工程化](../Pipeline/index.md)
 - 本库提示词评估：[效果评估](../../PromptEngineering/Evaluation/index.md)
+- [提示词安全与评估 · 评估集建设](../../PromptSecurity/EvalSet/index.md)：RAG 语料是**间接注入**的主要载体——本页评估「答得准不准」，安全层评估「被投毒的语料会不会让系统越界」，两层评估集互补；样本治理与防过拟合规则也在那边
 - LLM-as-Judge 的位置/长度/自我偏好偏见与「交换位置评两次」的校准实现：[微调评测 · 模型裁判的正确用法](../../FineTuning/Evaluation/index.md)

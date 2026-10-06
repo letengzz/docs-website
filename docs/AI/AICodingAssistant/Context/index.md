@@ -143,3 +143,4 @@ MCP（Model Context Protocol）是把外部系统（数据库、API、内部文�
 - Claude Code 记忆与导入：https://docs.anthropic.com/en/docs/claude-code/memory
 - Model Context Protocol：https://modelcontextprotocol.io/
 - GitHub Copilot MCP 允许清单（官方文档）
+- [提示词安全与评估 · 提示注入深入](../../PromptSecurity/Injection/index.md)：仓库里的 README、注释、issue 文本与第三方依赖文档都是**间接注入**载体——本页讲「上下文怎么装」，注入怎么打进来、怎么防与怎么测在那边

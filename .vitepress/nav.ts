@@ -79,6 +79,7 @@ export const nav = [
       { text: "本地模型部署", link: "/docs/AI/LocalModel" },
       { text: "OpenClaw", link: "/docs/AI/OpenClaw" },
       { text: "提示词工程", link: "/docs/AI/PromptEngineering" },
+      { text: "提示词安全与评估", link: "/docs/AI/PromptSecurity" },
       { text: "Agent 应用", link: "/docs/AI/Agent" },
       { text: "Agent 框架深入", link: "/docs/AI/AgentFramework" },
     ] },

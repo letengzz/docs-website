@@ -186,6 +186,14 @@ export const CompleteProject = [
             ],
           },
           {
+            text: "评论 AI 预审与文章摘要",
+            link: "/project/Complete/BlogPlatform/AiModeration/index.md",
+            collapsed: true,
+            items: [
+              { text: "评论 AI 预审与文章摘要：模块契约、防护落位与门禁实测", link: "/project/Complete/BlogPlatform/AiModeration/index.md" },
+            ],
+          },
+          {
             text: "第 4 周收口",
             link: "/project/Complete/BlogPlatform/Week4Close/index.md",
             collapsed: true,

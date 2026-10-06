@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 430" width="680" height="430">
+  <rect width="680" height="430" fill="#ffffff"/>
+  <text x="24" y="38" font-size="20" font-weight="bold" fill="#1e293b">实战架构：博客平台的两个 LLM 功能</text>
+  <text x="24" y="60" font-size="12" fill="#64748b">评论 AI 预审（输入不可信）与文章 AI 摘要（输入半可信）共用一套防护与评估</text>
+
+  <g font-family="sans-serif">
+    <!-- 读者评论链路 -->
+    <rect x="24" y="84" width="300" height="300" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="174" y="112" font-size="14" font-weight="bold" fill="#1e3a8a" text-anchor="middle">链路 A：评论 AI 预审</text>
+    <text x="174" y="132" font-size="10.5" fill="#1d4ed8" text-anchor="middle">输入完全不可信（互联网公众）</text>
+
+    <rect x="44" y="150" width="260" height="40" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="174" y="175" font-size="11.5" fill="#1e40af" text-anchor="middle">读者提交评论（含对抗样本可能）</text>
+
+    <rect x="44" y="202" width="260" height="40" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="174" y="227" font-size="11.5" fill="#1e40af" text-anchor="middle">输入分类器（Prompt Guard 2 类，可先省略）</text>
+
+    <rect x="44" y="254" width="260" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed"/>
+    <text x="174" y="272" font-size="11.5" font-weight="bold" fill="#4c1d95" text-anchor="middle">审核提示词：只输出 JSON</text>
+    <text x="174" y="290" font-size="10" fill="#6b21a8" text-anchor="middle">{ "action": "pass|review|reject", "reason": "..." }</text>
+
+    <rect x="44" y="310" width="260" height="56" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="174" y="330" font-size="11.5" font-weight="bold" fill="#1e40af" text-anchor="middle">代码侧：白名单三值校验</text>
+    <text x="174" y="348" font-size="10" fill="#1d4ed8" text-anchor="middle">非法值一律 review（宁可错杀进人审队列）</text>
+
+    <!-- 摘要链路 -->
+    <rect x="356" y="84" width="300" height="300" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="506" y="112" font-size="14" font-weight="bold" fill="#14532d" text-anchor="middle">链路 B：文章 AI 摘要</text>
+    <text x="506" y="132" font-size="10.5" fill="#166534" text-anchor="middle">输入半可信（作者内容可夹带间接注入）</text>
+
+    <rect x="376" y="150" width="260" height="40" rx="8" fill="#ffffff" stroke="#86efac"/>
+    <text x="506" y="175" font-size="11.5" fill="#166534" text-anchor="middle">PUBLISHED 文章 contentHtml 转纯文本</text>
+
+    <rect x="376" y="202" width="260" height="44" rx="8" fill="#f5f3ff" stroke="#7c3aed"/>
+    <text x="506" y="220" font-size="11.5" font-weight="bold" fill="#4c1d95" text-anchor="middle">摘要提示词：固定角色 + 输出契约</text>
+    <text x="506" y="238" font-size="10" fill="#6b21a8" text-anchor="middle">系统提示词不含机密、不承担鉴权职责</text>
+
+    <rect x="376" y="258" width="260" height="50" rx="8" fill="#ffffff" stroke="#86efac"/>
+    <text x="506" y="278" font-size="11.5" font-weight="bold" fill="#166534" text-anchor="middle">输出只进 summary 字段</text>
+    <text x="506" y="296" font-size="10" fill="#15803d" text-anchor="middle">前端按纯文本渲染——杜绝 LLM05 输出处理不当</text>
+
+    <rect x="376" y="320" width="260" height="46" rx="8" fill="#ffffff" stroke="#86efac"/>
+    <text x="506" y="340" font-size="11.5" fill="#166534" text-anchor="middle">忠实性断言：摘要中的论断</text>
+    <text x="506" y="356" font-size="10" fill="#15803d" text-anchor="middle">必须能在原文找到依据（LLM-as-judge）</text>
+
+    <!-- 底部共享层 -->
+    <rect x="24" y="396" width="632" height="0" fill="none"/>
+  </g>
+  <text x="340" y="414" font-size="11" fill="#475569" text-anchor="middle">共用：评估集（L1~L4）+ 回归门禁 + 红队一轮 garak 扫描——细节见 Practice 页</text>
+</svg>
