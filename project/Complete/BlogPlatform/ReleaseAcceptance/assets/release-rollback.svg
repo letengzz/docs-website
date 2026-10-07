@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="40" text-anchor="middle" font-size="23" font-weight="bold" fill="#1E293B">回滚预案：先判「该不该回」，再判「回得去吗」</text>
+
+  <rect x="40" y="66" width="820" height="46" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.6"/>
+  <text x="62" y="94" font-size="13" fill="#334155"><tspan font-weight="bold" fill="#B91C1C">回滚是止血动作，不是定位动作</tspan>　先让用户可用，再在安全环境里查根因。</text>
+
+  <text x="60" y="152" font-size="16" font-weight="bold" fill="#1E293B">Rb1~Rb3：命中任一条即回滚，不等确认根因</text>
+
+  <rect x="40" y="168" width="820" height="40" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="62" y="194" font-size="12.5" fill="#334155"><tspan font-weight="bold" fill="#B91C1C">Rb1</tspan>　写链路 5xx 比例 &gt; 5% 且持续 3 分钟：读者发不出评论、作者发不出文章</text>
+
+  <rect x="40" y="214" width="820" height="40" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="62" y="240" font-size="12.5" fill="#334155"><tspan font-weight="bold" fill="#B91C1C">Rb2</tspan>　读者端文章详情 404 比例异常上升：可见性判据被破坏，等于内容不可达</text>
+
+  <rect x="40" y="260" width="820" height="40" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="62" y="286" font-size="12.5" fill="#334155"><tspan font-weight="bold" fill="#B91C1C">Rb3</tspan>　登录 / 令牌链路失败：身份不可证实，等于所有人被挡在门外</text>
+
+  <text x="60" y="336" font-size="16" font-weight="bold" fill="#1E293B">三类回滚：代价与可逆性完全不同</text>
+
+  <rect x="40" y="352" width="266" height="118" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="173" y="378" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">应用回滚</text>
+  <text x="173" y="400" text-anchor="middle" font-size="11.5" fill="#334155">切回上一个镜像 tag</text>
+  <text x="173" y="420" text-anchor="middle" font-size="11.5" fill="#334155">分钟级、几乎无代价</text>
+  <text x="173" y="446" text-anchor="middle" font-size="11.5" fill="#15803D">首选：先把流量切回去</text>
+
+  <rect x="317" y="352" width="266" height="118" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="450" y="378" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">配置回滚</text>
+  <text x="450" y="400" text-anchor="middle" font-size="11.5" fill="#334155">还原上一版配置与开关</text>
+  <text x="450" y="420" text-anchor="middle" font-size="11.5" fill="#334155">要重启或热加载才生效</text>
+  <text x="450" y="446" text-anchor="middle" font-size="11.5" fill="#B45309">陷阱：改了配置忘了重启</text>
+
+  <rect x="594" y="352" width="266" height="118" rx="10" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+  <text x="727" y="378" text-anchor="middle" font-size="14" font-weight="bold" fill="#B91C1C">数据回滚</text>
+  <text x="727" y="400" text-anchor="middle" font-size="11.5" fill="#334155">只对「加列 / 加表」可逆</text>
+  <text x="727" y="420" text-anchor="middle" font-size="11.5" fill="#334155">DROP 之后只能靠备份</text>
+  <text x="727" y="446" text-anchor="middle" font-size="11.5" fill="#B91C1C">最后手段，走 R1~R6 恢复</text>
+
+  <rect x="40" y="486" width="820" height="24" rx="6" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="62" y="503" font-size="12" fill="#475569">铁律：能只回应用就不回数据 —— 数据回滚的每一步都在赌备份的完整性。</text>
+</svg>

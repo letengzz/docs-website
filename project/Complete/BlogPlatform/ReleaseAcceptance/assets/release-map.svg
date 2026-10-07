@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="40" text-anchor="middle" font-size="23" font-weight="bold" fill="#1E293B">上线发布与结项验收：章节地图</text>
+
+  <rect x="40" y="66" width="820" height="52" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.6"/>
+  <text x="62" y="88" font-size="13" fill="#334155"><tspan font-weight="bold" fill="#1D4ED8">本章只做一件事：把已经定稿的判据「兑现」成实测记录。</tspan></text>
+  <text x="62" y="107" font-size="12.5" fill="#475569">不新增判据、不新增门禁、不改口径 —— 与第 3 / 第 4 周收口同一原则。</text>
+
+  <rect x="40" y="134" width="256" height="150" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="168" y="160" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803D">① 发布</text>
+  <text x="168" y="184" text-anchor="middle" font-size="12" fill="#334155">发布窗口与前置检查</text>
+  <text x="168" y="204" text-anchor="middle" font-size="12" fill="#334155">迁移优先的发布顺序</text>
+  <text x="168" y="224" text-anchor="middle" font-size="12" fill="#334155">观察窗口与三级处置</text>
+  <text x="168" y="256" text-anchor="middle" font-size="11.5" fill="#64748B">GL1~GL6</text>
+
+  <rect x="322" y="134" width="256" height="150" rx="12" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="450" y="160" text-anchor="middle" font-size="15" font-weight="bold" fill="#B91C1C">② 回滚</text>
+  <text x="450" y="184" text-anchor="middle" font-size="12" fill="#334155">回滚判据与触发时点</text>
+  <text x="450" y="204" text-anchor="middle" font-size="12" fill="#334155">应用 / 配置 / 数据三类</text>
+  <text x="450" y="224" text-anchor="middle" font-size="12" fill="#334155">「不可回滚点」在哪</text>
+  <text x="450" y="256" text-anchor="middle" font-size="11.5" fill="#64748B">Rb1~Rb8</text>
+
+  <rect x="604" y="134" width="256" height="150" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="732" y="160" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">③ 兑现</text>
+  <text x="732" y="184" text-anchor="middle" font-size="12" fill="#334155">五批欠账合并成一次</text>
+  <text x="732" y="204" text-anchor="middle" font-size="12" fill="#334155">开环境的执行序列</text>
+  <text x="732" y="224" text-anchor="middle" font-size="12" fill="#334155">每条命令附期望输出</text>
+  <text x="732" y="256" text-anchor="middle" font-size="11.5" fill="#64748B">第 115/116/117/118/119 天</text>
+
+  <rect x="40" y="306" width="256" height="130" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="1.6"/>
+  <text x="168" y="332" text-anchor="middle" font-size="15" font-weight="bold" fill="#1E293B">④ 验收终版</text>
+  <text x="168" y="356" text-anchor="middle" font-size="12" fill="#334155">九项 ∪ L ∪ F ∪ D ∪ M</text>
+  <text x="168" y="376" text-anchor="middle" font-size="12" fill="#334155">合并成一张终表</text>
+  <text x="168" y="396" text-anchor="middle" font-size="12" fill="#334155">结果三态登记</text>
+  <text x="168" y="424" text-anchor="middle" font-size="11.5" fill="#64748B">不重开判据，只并表</text>
+
+  <rect x="322" y="306" width="256" height="130" rx="12" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="1.6"/>
+  <text x="450" y="332" text-anchor="middle" font-size="15" font-weight="bold" fill="#6D28D9">⑤ 结项交接</text>
+  <text x="450" y="356" text-anchor="middle" font-size="12" fill="#334155">验收报告与签收</text>
+  <text x="450" y="376" text-anchor="middle" font-size="12" fill="#334155">知识转移与结项判据</text>
+  <text x="450" y="396" text-anchor="middle" font-size="12" fill="#334155">周期 4 资产索引</text>
+  <text x="450" y="424" text-anchor="middle" font-size="11.5" fill="#64748B">H1~H8</text>
+
+  <rect x="604" y="306" width="256" height="130" rx="12" fill="#ECFEFF" stroke="#06B6D4" stroke-width="1.6"/>
+  <text x="732" y="332" text-anchor="middle" font-size="15" font-weight="bold" fill="#0E7490">⑥ 文档与复现</text>
+  <text x="732" y="356" text-anchor="middle" font-size="12" fill="#334155">从零复现的最短路径</text>
+  <text x="732" y="376" text-anchor="middle" font-size="12" fill="#334155">用巡检脚本验收文档本身</text>
+  <text x="732" y="396" text-anchor="middle" font-size="12" fill="#334155">复现验收断言</text>
+  <text x="732" y="424" text-anchor="middle" font-size="11.5" fill="#64748B">17 项巡检 = 文档门禁</text>
+
+  <rect x="40" y="456" width="820" height="46" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="62" y="484" font-size="12.5" fill="#475569">末章不闭环「代码」——闭环的是「判据是否被兑现」。本项目自第 111 天起只认实测列。</text>
+</svg>

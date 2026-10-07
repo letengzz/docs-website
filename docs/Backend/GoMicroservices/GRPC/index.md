@@ -333,7 +333,7 @@ func UnaryTimeout(d time.Duration) grpc.UnaryClientInterceptor {
 ::: tip 三个高频问题的定位命令
 1. **「连接不上」** → `grpcurl -plaintext -v 127.0.0.1:8080 list`（`list` 依赖反射）。如果报 `server does not support the reflection API`，说明**服务是活的**，只是关了反射，不是网络问题。
 2. **「请求很大/很小」** → gRPC 默认单条消息上限 **4 MB**（发送端 `MaxCallRecvMsgSize` / 接收端 `MaxSendMsgSize`）。超限报 `ResourceExhausted: grpc: received message larger than max`。修法优先是**改成分页或流式**，其次才是调大上限。
-3. **「偶发 `Unavailable: connection error: desc = transport: Error while dialing」** → 通常是服务端在滚动重启，或 keepalive 探活把空闲连接回收了。检查 `grpc.KeepaliveParams(keepalive.ServerParameters{...})` 与客户端的 `WithBlock` / 重试策略。
+3. **「偶发 `Unavailable: connection error: desc = transport: Error while dialing`」** → 通常是服务端在滚动重启，或 keepalive 探活把空闲连接回收了。检查 `grpc.KeepaliveParams(keepalive.ServerParameters{...})` 与客户端的 `WithBlock` / 重试策略。
 :::
 
 ::: danger 注意：四个必踩的坑

@@ -84,7 +84,7 @@
 | 第 117 天 | 交付文档包与运维手册：交付物清单（11 行，每行标章节+验证方式+判据）+ 配置对账做成可执行判据（14 项配置的缺失后果，含 `TZ`/`AI_TIMEOUT_MS` 两个「不报错但错」的隐蔽项）+ **Runbook 四条 SOP（文章页 502 / 接口超时 / Redis 不可达 / 磁盘写满，每条五段式）** + 交接清单 D1~D10（4 项本日核对 ✅、2 项沿既有收口 ✅、4 项 ⏳ 待 Docker 与工程环境） | ✅ 本日 |
 | 第 118 天 | 前台 PWA 与离线可读：四项能力取舍（**推送明确不做**）+ 三层落位（壳预缓存 / 内容快照 Network First / `offline.html` 兜底）+ 三条硬红线（`/api/` 进 denylist、个人化与写接口不进缓存、只缓存 200）+ 更新提示与安装引导按平台分叉 + 离线评论队列（IndexedDB + UUID 幂等键 + 三个补发触发点）+ 断言清单 F1~F10 | ✅ 本日 |
 | 第 119 天 | 联调与压测：单入口联调复核 I1~I8（大整数精度 / 软 404 不泄漏 / 两账号不串号）+ 压测三段判据（前置 Pr1~Pr8、脚本、验收 L1~L14）+ 四层瓶颈定位与单变量优化闭环；口径三处不变 | ✅ 本日 |
-| 第 120 天 | 第 4 周收尾：把第 119 天的 I1~I8 / L1~L14 并入上线验收清单，随 Docker 环境一次性兑现九项实测回填与第 26 章 F2/F3/F8/F9、第 117 天 D3/D4/D6/D7 | ⏳ |
+| 第 120 天 | 周期 4 收口：上线发布与结项验收（8 页）——发布方案 `GL1~GL6`（含「迁移必须早于应用」与「L3 命中即回滚、不需审批」）+ 回滚预案 `Rb1~Rb8`（三类回滚代价排序、不可回滚点判定法）+ 欠账合并兑现 `S1~S8`（把五个工作日的 `⏳` 合并成一次开环境跑完）+ 上线验收终版（五个编号族按验收对象重排为 A~D 四组，只归类不重写）+ 结项交接 `H1~H8`（零**无主**遗留）+ 文档门禁 17 项巡检 | ✅ 本日 |
 
 ## 各章节
 
@@ -115,7 +115,8 @@
 25. [交付文档包与运维手册](./Delivery/index.md)：交付物清单、配置对账判据、Runbook 四条 SOP（五段式）、交接清单 D1~D10
 26. [前台 PWA 与离线可读](./PwaOffline/index.md)：四项能力取舍（推送不做）、离线三层落位、三条硬红线、更新提示与安装引导、离线评论队列与断言清单 F1~F10
 27. [联调与压测](./LoadTesting/index.md)：单入口联调复核 I1~I8、压测前置 Pr1~Pr8、k6 脚本与场景模型、四层瓶颈定位、单变量优化闭环、验收断言 L1~L14
-28. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
+28. [上线发布与结项验收](./ReleaseAcceptance/index.md)：发布方案 `GL1~GL6`、回滚预案 `Rb1~Rb8`、欠账合并兑现 `S1~S8`、上线验收终版（A~D 四组）、结项交接 `H1~H8`、从零复现八段路径
+29. [进展记录](./Progress/index.md)：每天做了什么、如何验证、下一步
 
 ## 在你自己的工程里跑起来
 
@@ -183,11 +184,33 @@ k6 run -e BASE=http://127.0.0.1 --summary-export results/baseline.json post-deta
 k6 version > results/tool-version.txt   # 工具版本必须留痕（k6 为 AGPL-3.0）
 ```
 
+```shell
+# 第 120 天新增：上线验收的「文档层门禁」与发布/回滚判据（全部可复制执行）
+# ① 文档门禁：17 项巡检全部退出码 0 才算「文档可交付」（H4）——pnpm docs:build 只证明语法没错
+for s in altcheck anchorcheck casecheck codelangcheck containercheck depthcheck dupcheck \
+         fencecheck frontmattercheck headingcheck imagecheck indexlinkcheck inlinecheck \
+         linkcheck logocheck sidebarcheck tablecheck; do
+  python3 ~/.workbuddy/skills/docs-website-doc-ops/scripts/$s.py > /dev/null 2>&1 || echo "FAIL $s"
+done                                        # 期望：无输出
+# ② 发布前置：回滚包必须真拉一次（GL3），这是最容易被跳过、也最贵的一条
+docker pull <registry>/blog-server:<previous-tag>     # 期望：拉取成功
+# ③ 发布顺序：迁移必须早于应用替换（GL5）；停止时先停最靠近用户的
+docker compose stop blog-web
+docker compose exec -T mysql mysql -uroot -p"$MYSQL_ROOT_PASSWORD" blog < migrations/V3__xxx.sql
+docker compose up -d --no-deps blog-server && docker compose up -d --no-deps blog-web
+docker compose ps                            # 期望：五服务全 Up，关键服务 (healthy)
+# ④ 回滚演练：应用回滚 ≤ 5 分钟，回滚后必须重跑冒烟（Rb4 / Rb7）
+time docker compose up -d --no-deps blog-server
+python api_smoke.py --base http://127.0.0.1:18080   # 期望：cases = 9  passed = 9
+```
+
+第 120 天的两条纪律要点：**「迁移必须早于应用」是唯一顺序错了就不可逆的规则**（先发应用会让新代码访问不存在的列，全量 500）；**回滚后必须补 `git revert` 并重新走发布流程**，否则下一次发布会把同一个问题原样带回来。完整判据见[上线发布与结项验收](./ReleaseAcceptance/index.md)。
+
 压测前必须先做完两件事：**联调复核 I1~I8 全通过**（单入口三探活、大整数精度、软 404 不泄漏、两账号不串号），以及**排除旁路变量**——DevTools 里勾上 Application → Service Workers → **Bypass for network** 与 Network → **Disable cache**，否则 Service Worker 命中的请求根本不回源，QPS 与服务端负载没有可比性。
 
 F2/F3/F5/F8/F9 属浏览器侧实测（DevTools → Application），操作与期望逐条列在[前台 PWA 与离线可读](./PwaOffline/index.md)的 F1~F10 断言表里。
 
-各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)；评论链路见[评论链路：两级楼层的建模与写入](./Comments/index.md)与[评论读侧](./CommentRead/index.md)；全文搜索的两处服务端配置与 `EXPLAIN` 断言见[全文搜索：MySQL ngram 先行](./Search/index.md)；前台 SSR 的 `useAsyncData` 纪律、软 404 透传与 SEO 元信息见[前台 SSR](./FrontendSSR/index.md)；读者账号的生命周期、令牌轮换与数据归属矩阵见[读者账号与权限](./ReaderAccount/index.md)；三个聚合、状态机副作用矩阵、字段依赖清单与一条龙回归 CF1~CF14 见[核心业务流收口](./CoreFlow/index.md)；第 4 周的一键部署形态（五服务、`my.cnf` 红线、从零复现六步）见[一键部署](./Deployment/index.md)；监控的三层信号落点、六项指标口径、基线推导的告警阈值与 traceId 串链判据见[监控接入](./Monitoring/index.md)；备份策略、临时容器恢复四步与上线验收清单九项合并见[备份恢复演练与上线验收清单](./BackupDrill/index.md)；交付物清单、配置对账判据与 Runbook 四条 SOP 见[交付文档包与运维手册](./Delivery/index.md)；前台 PWA 的四项能力取舍、离线三层落位、三条硬红线与断言清单 F1~F10 见[前台 PWA 与离线可读](./PwaOffline/index.md)（通用原理与工具链见 [PWA 与离线应用](../../../docs/Frontend/PWA/index.md)）；单入口联调复核 I1~I8、压测前置 Pr1~Pr8、k6 脚本与场景模型、四层瓶颈定位与验收断言 L1~L14 见[联调与压测](./LoadTesting/index.md)（工具与原理见 [测试工具专题](../../../docs/Tools/TestingTools/index.md)与 [高性能 Java](../../../docs/Backend/HighPerformanceJava/index.md)）。
+各门禁脚本的完整设计、断言清单，以及「哪条断言该放单元测试、哪条必须留在冒烟脚本」的分层判据，见[测试分层收口](./TestLayers/index.md)、[工程骨架与验收门禁](./Skeleton/index.md)、[文章写入链路](./WritePath/index.md)与[文章下线动作](./Lifecycle/index.md)；判据唯一性核查与分类标签两端一致见[判据收口与分类标签联调](./Consolidation/index.md)；评论链路见[评论链路：两级楼层的建模与写入](./Comments/index.md)与[评论读侧](./CommentRead/index.md)；全文搜索的两处服务端配置与 `EXPLAIN` 断言见[全文搜索：MySQL ngram 先行](./Search/index.md)；前台 SSR 的 `useAsyncData` 纪律、软 404 透传与 SEO 元信息见[前台 SSR](./FrontendSSR/index.md)；读者账号的生命周期、令牌轮换与数据归属矩阵见[读者账号与权限](./ReaderAccount/index.md)；三个聚合、状态机副作用矩阵、字段依赖清单与一条龙回归 CF1~CF14 见[核心业务流收口](./CoreFlow/index.md)；第 4 周的一键部署形态（五服务、`my.cnf` 红线、从零复现六步）见[一键部署](./Deployment/index.md)；监控的三层信号落点、六项指标口径、基线推导的告警阈值与 traceId 串链判据见[监控接入](./Monitoring/index.md)；备份策略、临时容器恢复四步与上线验收清单九项合并见[备份恢复演练与上线验收清单](./BackupDrill/index.md)；交付物清单、配置对账判据与 Runbook 四条 SOP 见[交付文档包与运维手册](./Delivery/index.md)；前台 PWA 的四项能力取舍、离线三层落位、三条硬红线与断言清单 F1~F10 见[前台 PWA 与离线可读](./PwaOffline/index.md)（通用原理与工具链见 [PWA 与离线应用](../../../docs/Frontend/PWA/index.md)）；单入口联调复核 I1~I8、压测前置 Pr1~Pr8、k6 脚本与场景模型、四层瓶颈定位与验收断言 L1~L14 见[联调与压测](./LoadTesting/index.md)（工具与原理见 [测试工具专题](../../../docs/Tools/TestingTools/index.md)与 [高性能 Java](../../../docs/Backend/HighPerformanceJava/index.md)）；全项目最后一次收口的发布方案 `GL1~GL6`、回滚预案 `Rb1~Rb8`、欠账合并兑现 `S1~S8`、上线验收终版 A~D 四组、结项交接 `H1~H8` 与从零复现八段路径见[上线发布与结项验收](./ReleaseAcceptance/index.md)（发布与回滚方法论见 [CI/CD 部署与回滚](../../../docs/Tools/CICD/DeployRollback/index.md)、交付方法见 [完整项目交付](../../../docs/Others/ProjectDelivery/index.md)）。
 
 ## 参考资料
 

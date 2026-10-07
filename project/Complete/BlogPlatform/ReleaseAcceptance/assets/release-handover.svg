@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <rect width="900" height="500" fill="#FFFFFF"/>
+  <text x="450" y="40" text-anchor="middle" font-size="23" font-weight="bold" fill="#1E293B">结项交接：验收答「能不能上」，交接答「换人接得住吗」</text>
+
+  <rect x="40" y="66" width="400" height="112" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="240" y="94" text-anchor="middle" font-size="15.5" font-weight="bold" fill="#15803D">验收（Acceptance）</text>
+  <text x="60" y="122" font-size="12.5" fill="#334155">判据形态：可执行命令 + 期望输出</text>
+  <text x="60" y="144" font-size="12.5" fill="#334155">回答的是：这一版能不能对外</text>
+  <text x="60" y="166" font-size="12.5" fill="#334155">失败表现：清单里有一项 ❌</text>
+
+  <rect x="460" y="66" width="400" height="112" rx="12" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="660" y="94" text-anchor="middle" font-size="15.5" font-weight="bold" fill="#6D28D9">交接（Handover）</text>
+  <text x="480" y="122" font-size="12.5" fill="#334155">判据形态：别人能否独立完成一次变更</text>
+  <text x="480" y="144" font-size="12.5" fill="#334155">回答的是：下一个人的上手成本</text>
+  <text x="480" y="166" font-size="12.5" fill="#334155">失败表现：只有原作者知道怎么修</text>
+
+  <text x="60" y="218" font-size="16" font-weight="bold" fill="#1E293B">结项判据 H1~H8：四条硬条件 + 四条可验证</text>
+
+  <rect x="40" y="234" width="820" height="34" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.4"/>
+  <text x="62" y="256" font-size="12.5" fill="#334155"><tspan font-weight="bold" fill="#6D28D9">H1~H3</tspan>　交付物 11 项可定位 · 配置对账 diff 为空 · Runbook 四条 SOP 可执行</text>
+
+  <rect x="40" y="276" width="820" height="34" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.4"/>
+  <text x="62" y="298" font-size="12.5" fill="#334155"><tspan font-weight="bold" fill="#6D28D9">H4~H6</tspan>　文档能闭环（巡检 E=0）· 从零复现成功 · 备份可恢复</text>
+
+  <rect x="40" y="318" width="820" height="34" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.4"/>
+  <text x="62" y="340" font-size="12.5" fill="#334155"><tspan font-weight="bold" fill="#6D28D9">H7~H8</tspan>　口径唯一（判据无二义）· 遗留项全部有归属人与解除条件</text>
+
+  <rect x="40" y="366" width="820" height="52" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.6"/>
+  <text x="62" y="389" font-size="12.5" fill="#334155">结项不等于「零遗留」。结项的标准是：每一条遗留都写明「谁在什么条件下解除」。</text>
+  <text x="62" y="409" font-size="12.5" fill="#475569">没有归属人的遗留项 = 静默销账，这正是本项目反复拒绝的做法。</text>
+
+  <text x="60" y="452" font-size="15" font-weight="bold" fill="#1E293B">知识转移的三个动作（缺一个都不算完成）</text>
+  <text x="60" y="478" font-size="12.5" fill="#334155">① 走一遍 Runbook 的四条 SOP（对方操作、原作者只看不说）　② 独立完成一次发布　③ 独立处置一次演练故障</text>
+</svg>

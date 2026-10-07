@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="40" text-anchor="middle" font-size="23" font-weight="bold" fill="#1E293B">发布方案：一次可回滚的发布由五段组成</text>
+
+  <rect x="40" y="68" width="150" height="86" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="115" y="94" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">① 冻结</text>
+  <text x="115" y="116" text-anchor="middle" font-size="11.5" fill="#334155">合并窗口关闭</text>
+  <text x="115" y="134" text-anchor="middle" font-size="11.5" fill="#334155">冻结提交 SHA</text>
+
+  <rect x="206" y="68" width="150" height="86" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="281" y="94" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">② 前置检查</text>
+  <text x="281" y="116" text-anchor="middle" font-size="11.5" fill="#334155">GL1~GL4 全绿</text>
+  <text x="281" y="134" text-anchor="middle" font-size="11.5" fill="#334155">回滚包已就位</text>
+
+  <rect x="372" y="68" width="150" height="86" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="447" y="94" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">③ 迁移</text>
+  <text x="447" y="116" text-anchor="middle" font-size="11.5" fill="#334155">先 V 后应用</text>
+  <text x="447" y="134" text-anchor="middle" font-size="11.5" fill="#334155">只加不减</text>
+
+  <rect x="538" y="68" width="150" height="86" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="613" y="94" text-anchor="middle" font-size="14" font-weight="bold" fill="#6D28D9">④ 切流</text>
+  <text x="613" y="116" text-anchor="middle" font-size="11.5" fill="#334155">静态资源在前</text>
+  <text x="613" y="134" text-anchor="middle" font-size="11.5" fill="#334155">应用在后</text>
+
+  <rect x="704" y="68" width="156" height="86" rx="10" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="782" y="94" text-anchor="middle" font-size="14" font-weight="bold" fill="#0E7490">⑤ 观察</text>
+  <text x="782" y="116" text-anchor="middle" font-size="11.5" fill="#334155">15 分钟稳态</text>
+  <text x="782" y="134" text-anchor="middle" font-size="11.5" fill="#334155">GL5~GL6 确认</text>
+
+  <text x="60" y="192" font-size="16" font-weight="bold" fill="#1E293B">发布顺序为什么不能反：迁移与应用的时间窗</text>
+
+  <rect x="40" y="208" width="820" height="44" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.4"/>
+  <text x="62" y="235" font-size="12.5" fill="#334155"><tspan font-weight="bold" fill="#15803D">正确</tspan>　V 迁移先跑（加列 / 加表 / 加索引）→ 旧代码忽略新列照样工作 → 应用发布 → 新代码开始写新列</text>
+
+  <rect x="40" y="260" width="820" height="44" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="62" y="287" font-size="12.5" fill="#334155"><tspan font-weight="bold" fill="#B91C1C">错误</tspan>　应用先发 → 新代码访问不存在的列 / 表 → 全量 500，且此时回滚应用也救不回被写坏的数据</text>
+
+  <rect x="40" y="312" width="820" height="44" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.4"/>
+  <text x="62" y="339" font-size="12.5" fill="#334155"><tspan font-weight="bold" fill="#B91C1C">不可回滚点</tspan>　DROP COLUMN / 删表 / 数据回填之外的一致性破坏 —— 到了这里只能前滚，不能再回滚</text>
+
+  <text x="60" y="392" font-size="16" font-weight="bold" fill="#1E293B">发布后的三级处置（判据不是「感觉不对」）</text>
+
+  <rect x="40" y="408" width="266" height="88" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="173" y="434" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">L1 继续观察</text>
+  <text x="173" y="457" text-anchor="middle" font-size="11.5" fill="#475569">错误率与 P95 在基线内</text>
+  <text x="173" y="477" text-anchor="middle" font-size="11.5" fill="#475569">放行并登记发布记录</text>
+
+  <rect x="317" y="408" width="266" height="88" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="450" y="434" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">L2 停止放量</text>
+  <text x="450" y="457" text-anchor="middle" font-size="11.5" fill="#475569">指标劣化但功能可用</text>
+  <text x="450" y="477" text-anchor="middle" font-size="11.5" fill="#475569">冻结变更、就地定位</text>
+
+  <rect x="594" y="408" width="266" height="88" rx="10" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+  <text x="727" y="434" text-anchor="middle" font-size="14" font-weight="bold" fill="#B91C1C">L3 立即回滚</text>
+  <text x="727" y="457" text-anchor="middle" font-size="11.5" fill="#475569">命中 Rb1~Rb3 任一硬判据</text>
+  <text x="727" y="477" text-anchor="middle" font-size="11.5" fill="#475569">先止血、再定位、后补 revert</text>
+</svg>

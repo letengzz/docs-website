@@ -228,6 +228,13 @@ psql -U postgres -c "SELECT * FROM pg_stat_archiver;"
 | `restic restore` 报缺对象 | 仓库对象被删除或损坏 | 定期 `restic check`；开启不可变存储 |
 | 恢复耗时远超 RTO | 从未测过；并行度未开；网络为瓶颈 | 演练时必须记录实际耗时并回填 |
 
+## 相关专题与分工
+
+- [备份与容灾 · 容灾分级与切换](../DisasterRecovery/index.md)：本页讲**怎么把数据恢复出来**（PITR 坐标、演练脚本、失败模式），那页讲**什么时候决定换场地**（分级、切换判据、回切）。
+- [备份与容灾 · 备份策略](../Strategy/index.md)：恢复能力的天花板由备份策略决定——备份频率定 RPO、恢复流程定 RTO。
+- [自动部署与回滚](../../../Tools/CICD/DeployRollback/index.md)：**分工是**——常规故障处置的第一选择是**回滚应用**（分钟级、几乎无代价），本页的数据恢复是**最后手段**（十几分钟起、会丢恢复点之后的写入）。铁律是「能只回应用就绝不回数据」，理由不只是慢：数据恢复的每一步都在赌备份的完整性（备份是不是恢复点之前的？是否可用？恢复点之后所有人的写入都会丢）。三类回滚的代价排序与「不可回滚点」的判定方法见该页。
+- [上线发布与结项验收](../../../../project/Complete/BlogPlatform/ReleaseAcceptance/index.md)：一个真实项目里，恢复判据（`R1~R6`）如何与发布、回滚、验收判据并列进同一张终表——那里也写清了「回滚走应用、恢复走备份」这条分界线在验收清单上怎么体现。
+
 ## 参考资料
 
 - MySQL 官方 · Point-in-Time Recovery Using Binary Log：https://dev.mysql.com/doc/refman/8.4/en/point-in-time-recovery-binlog.html

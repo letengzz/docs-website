@@ -59,7 +59,7 @@
 
 1. **先读 [总览](./Overview/index.md)**：先判断你的项目需不需要引擎——大多数项目不需要，这比学会用引擎更重要。
 2. **需要建流程的先读 [BPMN 2.0 建模](./Modeling/index.md)**：图里选错一个网关，代码里要填十个坑。
-3. **再读 [Flowable 引擎深入](./Flowable/index.md)** 与 [审批流设计](./ApprovalFlow/index.md)**：一个讲引擎怎么运转，一个讲业务流程怎么设计得让人不骂。
+3. **再读 [Flowable 引擎深入](./Flowable/index.md) 与 [审批流设计](./ApprovalFlow/index.md)**：一个讲引擎怎么运转，一个讲业务流程怎么设计得让人不骂。
 4. **需要动态判定的读 [Drools](./Drools/index.md)**，选型摇摆的读 [规则引擎选型](./RuleEngine/index.md)。
 5. **动手前必读 [与业务系统集成](./Integration/index.md)**：事务、幂等、版本迁移的坑都在这里。
 6. **走一遍 [实战](./Practice/index.md)**，再对照项目里的 [核心业务流](/project/Complete/BlogPlatform/CoreFlow/index.md) 看状态机与工作流如何分工。

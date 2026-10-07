@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <rect width="900" height="500" fill="#FFFFFF"/>
+  <text x="450" y="40" text-anchor="middle" font-size="23" font-weight="bold" fill="#1E293B">上线日排障分诊：先看损害，再看现象</text>
+
+  <rect x="340" y="62" width="220" height="44" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="450" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">发布后出现异常</text>
+
+  <path d="M 450 106 L 450 128" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M 450 128 L 120 128 L 120 148" fill="none" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M 450 128 L 450 148" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M 450 128 L 780 128 L 780 148" fill="none" stroke="#94A3B8" stroke-width="2"/>
+
+  <rect x="30" y="148" width="180" height="52" rx="9" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+  <text x="120" y="170" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#B91C1C">① 损害已兑现？</text>
+  <text x="120" y="190" text-anchor="middle" font-size="11.5" fill="#475569">写失败 / 404 / 登录挂</text>
+
+  <rect x="360" y="148" width="180" height="52" rx="9" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="450" y="170" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#B45309">② 指标劣化？</text>
+  <text x="450" y="190" text-anchor="middle" font-size="11.5" fill="#475569">P95 / 错误率 / pending</text>
+
+  <rect x="690" y="148" width="180" height="52" rx="9" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="780" y="170" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#15803D">③ 只是有人报错？</text>
+  <text x="780" y="190" text-anchor="middle" font-size="11.5" fill="#475569">个例、无法复现</text>
+
+  <path d="M 120 200 L 120 226" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M 450 200 L 450 226" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M 780 200 L 780 226" stroke="#94A3B8" stroke-width="2"/>
+
+  <rect x="30" y="226" width="180" height="104" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.8"/>
+  <text x="120" y="250" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#B91C1C">立即回滚</text>
+  <text x="120" y="272" text-anchor="middle" font-size="11.5" fill="#334155">命中 Rb1~Rb3</text>
+  <text x="120" y="292" text-anchor="middle" font-size="11.5" fill="#334155">先切应用镜像</text>
+  <text x="120" y="312" text-anchor="middle" font-size="11.5" fill="#334155">再登记发布记录</text>
+
+  <rect x="360" y="226" width="180" height="104" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.8"/>
+  <text x="450" y="250" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#B45309">停止放量</text>
+  <text x="450" y="272" text-anchor="middle" font-size="11.5" fill="#334155">冻结所有变更</text>
+  <text x="450" y="292" text-anchor="middle" font-size="11.5" fill="#334155">按四层定位法查</text>
+  <text x="450" y="312" text-anchor="middle" font-size="11.5" fill="#334155">15 分钟内定去留</text>
+
+  <rect x="690" y="226" width="180" height="104" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.8"/>
+  <text x="780" y="250" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#15803D">继续观察</text>
+  <text x="780" y="272" text-anchor="middle" font-size="11.5" fill="#334155">按 traceId 取证</text>
+  <text x="780" y="292" text-anchor="middle" font-size="11.5" fill="#334155">登记到遗留项</text>
+  <text x="780" y="312" text-anchor="middle" font-size="11.5" fill="#334155">不阻塞本次发布</text>
+
+  <rect x="40" y="352" width="820" height="52" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.4"/>
+  <text x="62" y="375" font-size="12.5" fill="#334155">分诊的第一问永远是「损害兑现了吗」，而不是「报错说的是什么」。</text>
+  <text x="62" y="395" font-size="12.5" fill="#475569">报错文本可能只是噪音；用户拿不到内容才是事实。先分诊，再取证。</text>
+
+  <rect x="40" y="416" width="820" height="70" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="62" y="440" font-size="12.5" fill="#334155"><tspan font-weight="bold">最容易漏的一条</tspan>　回滚完成了 ≠ 事情结束了。</text>
+  <text x="62" y="460" font-size="12.5" fill="#475569">回滚只把「错误版本」换下来，正确版本里的修复必须补一次 revert 并重新走发布流程，</text>
+  <text x="62" y="478" font-size="12.5" fill="#475569">否则下一次发布会把同一个问题原样带回来。</text>
+</svg>
