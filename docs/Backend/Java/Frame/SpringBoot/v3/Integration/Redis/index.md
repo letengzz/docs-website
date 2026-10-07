@@ -245,5 +245,11 @@ public User getUser(long id) {
 - [分布式锁与 Lua](../../../../../../../DB/NoRelational/Redis/Advanced/DistributedLock/index.md)：Redisson 可重入锁与看门狗
 - [实战：高可用缓存集群](../../../../../../../DB/NoRelational/Redis/Advanced/Practice/index.md)：一主二从三哨兵 + Spring Boot 完整落地
 - [SpringBoot 整合 Sa-Token](../../../../Sa-token/index.md)：登录态存储常与 Redis 配合使用
+- [分布式缓存深入](../../../../../../DistributedCache/index.md)：本页讲**怎么连、怎么配、怎么序列化**；该专题讲**连上之后缓存体系怎么设计**（多级失效、一致性、热点与韧性）
+
+::: tip 两页的分工
+把本页看成「接入层」：连接池参数、超时、哨兵/集群配置、序列化规则、key 可读性——都是**一次性配置**。
+真正需要长期维护的是「缓存怎么用」：本地缓存那一层怎么失效、失效链路断了怎么办、缓存挂掉时降级到什么。这些不在本页展开，见 [分布式缓存深入](../../../../../../DistributedCache/index.md)。
+:::
 
 

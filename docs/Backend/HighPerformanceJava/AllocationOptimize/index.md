@@ -211,6 +211,13 @@ JSON 序列化（Jackson / Gson / fastjson 等）常常是**单次请求里分�
 - [JVM 基础 · 内存结构](../../Java/JavaSE/JVM/MemoryStructure/index.md)：堆、TLAB、元空间的位置关系
 - [Java 集合框架](../../Java/JavaSE/Collection/Overview/index.md)：各集合的复杂度与扩容行为
 - [Java 函数式编程](../../Java/JavaSE/FunctionalProgramming/index.md)：`Stream` 的开销来源
+- [分布式缓存深入 · 多级缓存](../../DistributedCache/MultiLevel/index.md)：本地缓存（Caffeine）是应用侧最常见的一处「大对象常驻」——本页讲它**占多少堆、进哪一代、什么时候被回收**，该页讲它**该放什么、怎么失效、容量上限怎么设**
+
+::: tip 本地缓存的内存账要两页合起来算
+本页给出的工具（`jcmd GC.class_histogram`、JFR 分配采样、async-profiler `-e alloc`）能回答「本地缓存实际占了多少堆、它的晋升路径是什么」；
+但**「能占多少」这个预算不是 JVM 决定的，而是缓存语义决定的**——`maximumSize` 与 `maximumWeight` 应当由「业务能容忍多少 miss」反推，而不是由「堆还剩多少」正推。
+反推的方法与失效成本见 [多级缓存深入](../../DistributedCache/MultiLevel/index.md)。
+:::
 
 ## 参考资料
 

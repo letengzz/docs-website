@@ -31,7 +31,8 @@ export const nav = [
       { text: "Python Web 框架", link: "/docs/Backend/PythonWeb" },
       { text: "电商系统设计", link: "/docs/Backend/Ecommerce" },
       { text: "领域驱动设计", link: "/docs/Backend/DDD" },
-      { text: "工作流与规则引擎", link: "/docs/Backend/WorkflowEngine" },]
+      { text: "工作流与规则引擎", link: "/docs/Backend/WorkflowEngine" },
+      { text: "分布式缓存深入", link: "/docs/Backend/DistributedCache" },]
   },
   {
     text: "数据库",

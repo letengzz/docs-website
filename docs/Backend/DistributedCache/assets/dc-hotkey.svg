@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:14px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="940" height="600" fill="#FFFFFF"/>
+<text x="470" y="34" text-anchor="middle" class="h">热 key 治理：从「发现」到「兜住」的四步</text>
+<text x="470" y="56" text-anchor="middle" class="tag">热 key 是流量问题，大 key 是结构问题——两者的处置手段完全不同</text>
+
+<rect x="30" y="82" width="210" height="200" rx="10" class="box blue"/>
+<text x="135" y="112" text-anchor="middle" class="lt">① 发现</text>
+<text x="135" y="140" text-anchor="middle" class="s">代理层统计（Proxy / LB）</text>
+<text x="135" y="162" text-anchor="middle" class="s">客户端采样上报</text>
+<text x="135" y="184" text-anchor="middle" class="s">服务端采集（如 8.6+ 热 key 能力）</text>
+<text x="135" y="206" text-anchor="middle" class="s">压测/大促前主动构造</text>
+<text x="135" y="240" text-anchor="middle" class="tag">前提：先有单 key QPS 指标</text>
+<text x="135" y="262" text-anchor="middle" class="tag">没有它就只剩「线上抖了才知道」</text>
+
+<rect x="260" y="82" width="210" height="200" rx="10" class="box amber"/>
+<text x="365" y="112" text-anchor="middle" class="lt">② 判断类型</text>
+<text x="365" y="140" text-anchor="middle" class="s">热 key：命中量大、值不大</text>
+<text x="365" y="162" text-anchor="middle" class="s">大 key：值大、单次成本高</text>
+<text x="365" y="184" text-anchor="middle" class="s">两者常同时出现</text>
+<text x="365" y="206" text-anchor="middle" class="s">（热卖品详情页）</text>
+<text x="365" y="240" text-anchor="middle" class="tag">处置手段不通用：</text>
+<text x="365" y="262" text-anchor="middle" class="tag">热 key 要分散，大 key 要拆分</text>
+
+<rect x="490" y="82" width="210" height="200" rx="10" class="box green"/>
+<text x="595" y="112" text-anchor="middle" class="lt">③ 分散与兜底</text>
+<text x="595" y="140" text-anchor="middle" class="s">本地缓存兜住读流量</text>
+<text x="595" y="162" text-anchor="middle" class="s">key 打散成 N 个副本</text>
+<text x="595" y="184" text-anchor="middle" class="s">读写分离 / 独立实例组</text>
+<text x="595" y="206" text-anchor="middle" class="s">入口限流 + 降级返回</text>
+<text x="595" y="240" text-anchor="middle" class="tag">顺序：先兜住再治理</text>
+<text x="595" y="262" text-anchor="middle" class="tag">兜不住时打散也没意义</text>
+
+<rect x="720" y="82" width="190" height="200" rx="10" class="box rose"/>
+<text x="815" y="112" text-anchor="middle" class="lt">④ 防复发</text>
+<text x="815" y="140" text-anchor="middle" class="s">热 key 告警阈值</text>
+<text x="815" y="162" text-anchor="middle" class="s">大促前预热脚本</text>
+<text x="815" y="184" text-anchor="middle" class="s">缓存淘汰策略复核</text>
+<text x="815" y="206" text-anchor="middle" class="s">容量水位联动</text>
+<text x="815" y="240" text-anchor="middle" class="tag">没有④，同样的</text>
+<text x="815" y="262" text-anchor="middle" class="tag">事故会按季度重演</text>
+
+<path class="line" d="M240 182 H260"/>
+<path class="line" d="M470 182 H490"/>
+<path class="line" d="M700 182 H720"/>
+
+<rect x="30" y="308" width="880" height="120" rx="10" class="box violet"/>
+<text x="470" y="338" text-anchor="middle" class="lt">key 打散：什么时候有用、什么时候是自欺欺人</text>
+<text x="470" y="364" text-anchor="middle" class="s">读多写少的场景（商品详情、文章详情）：打散成 N 份，读时随机取一份 —— 读流量被摊到 N 个节点，有效。</text>
+<text x="470" y="386" text-anchor="middle" class="s">写一次读多次但要求「写后立即读到新值」：打散后 N 份都要更新，收敛变慢，一致性更差 —— 不适合。</text>
+<text x="470" y="410" text-anchor="middle" class="s">真正的兜底是本地缓存：L1 命中后请求根本不落到 Redis，比任何打散都更有效。</text>
+
+<rect x="30" y="448" width="880" height="132" rx="10" class="box rose"/>
+<text x="470" y="478" text-anchor="middle" class="lt">热点治理的三条硬红线</text>
+<text x="470" y="504" text-anchor="middle" class="s">① 打散用的副本 key 必须能「一次失效全部」—— 只删一个副本等于没删，这是最隐蔽的脏读来源。</text>
+<text x="470" y="526" text-anchor="middle" class="s">② 大 key 拆分后要保证「要么全读到、要么全不读到」，否则业务会看到半成品对象。</text>
+<text x="470" y="548" text-anchor="middle" class="s">③ 降级返回的兜底值必须与「真值」可区分——否则排查时无法判断这是降级结果还是真实数据。</text>
+</svg>

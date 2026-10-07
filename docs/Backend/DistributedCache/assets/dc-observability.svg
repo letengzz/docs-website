@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 580" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:14px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="940" height="580" fill="#FFFFFF"/>
+<text x="470" y="34" text-anchor="middle" class="h">缓存可观测：把「缓存好不好」翻译成能上告警的指标</text>
+<text x="470" y="56" text-anchor="middle" class="tag">命中率是结果指标，它下降了不代表缓存有问题——必须成组看</text>
+
+<rect x="30" y="80" width="285" height="220" rx="10" class="box blue"/>
+<text x="172" y="110" text-anchor="middle" class="lt">① 效率层</text>
+<text x="172" y="138" text-anchor="middle" class="s">命中率（keyspace_hits / (hits+misses)）</text>
+<text x="172" y="160" text-anchor="middle" class="s">应用侧命中率（含 L1，可高于 Redis）</text>
+<text x="172" y="182" text-anchor="middle" class="s">回源 QPS（真正的成本指标）</text>
+<text x="172" y="204" text-anchor="middle" class="s">写放大倍数（每次变更产生几次删除）</text>
+<text x="172" y="236" text-anchor="middle" class="tag">只看 Redis 命中率会漏掉 L1：</text>
+<text x="172" y="258" text-anchor="middle" class="tag">L1 命中时请求根本没到 Redis，</text>
+<text x="172" y="280" text-anchor="middle" class="tag">Redis 命中率反而「看起来正常」</text>
+
+<rect x="327" y="80" width="285" height="220" rx="10" class="box amber"/>
+<text x="469" y="110" text-anchor="middle" class="lt">② 性能层</text>
+<text x="469" y="138" text-anchor="middle" class="s">命令延迟分位（P50 / P99 / P999）</text>
+<text x="469" y="160" text-anchor="middle" class="s">慢查询条数与最大耗时</text>
+<text x="469" y="182" text-anchor="middle" class="s">连接数与被拒绝连接数</text>
+<text x="469" y="204" text-anchor="middle" class="s">网络重连、重定向（MOVED/ASK）次数</text>
+<text x="469" y="236" text-anchor="middle" class="tag">平均值会骗人：一个 500ms 的命令</text>
+<text x="469" y="258" text-anchor="middle" class="tag">在百万次调用里均值只涨 0.5ms，</text>
+<text x="469" y="280" text-anchor="middle" class="tag">但那一刻的用户全都感知到了</text>
+
+<rect x="624" y="80" width="286" height="220" rx="10" class="box rose"/>
+<text x="767" y="110" text-anchor="middle" class="lt">③ 容量与结构层</text>
+<text x="767" y="138" text-anchor="middle" class="s">内存使用率与淘汰速率</text>
+<text x="767" y="160" text-anchor="middle" class="s">内存碎片率（used_memory_rss / used_memory）</text>
+<text x="767" y="182" text-anchor="middle" class="s">key 数量与平均 TTL 分布</text>
+<text x="767" y="204" text-anchor="middle" class="s">大 key 扫描结果与增长趋势</text>
+<text x="767" y="236" text-anchor="middle" class="tag">淘汰速率 > 0 且持续上升，</text>
+<text x="767" y="258" text-anchor="middle" class="tag">说明容量规划已经失效——</text>
+<text x="767" y="280" text-anchor="middle" class="tag">此时命中率下降是结果不是原因</text>
+
+<rect x="30" y="320" width="880" height="112" rx="10" class="box violet"/>
+<text x="470" y="348" text-anchor="middle" class="lt">四个必须成对看的组合（单看任一项都会误判）</text>
+<text x="470" y="374" text-anchor="middle" class="s">命中率 ↓ + 回源 QPS ↑ = 缓存真的没兜住；命中率 ↓ + 淘汰速率 ↑ = 容量不足，先扩容而不是清缓存；</text>
+<text x="470" y="396" text-anchor="middle" class="s">P99 ↑ + 慢查询 ↑ = 有大 key 或复杂命令；P99 ↑ + 重连数 ↑ = 网络或主从切换，与业务无关。</text>
+<text x="470" y="420" text-anchor="middle" class="tag">把四组关系画在同一张面板上，比把十二个指标各画一张更有用。</text>
+
+<rect x="30" y="448" width="880" height="110" rx="10" class="box green"/>
+<text x="470" y="476" text-anchor="middle" class="lt">告警阈值怎么定：由基线推导，不抄别人的数字</text>
+<text x="470" y="502" text-anchor="middle" class="s">① 连续观测 7 天的同一时段，取 P95 作为正常上限；② 阈值设在「略高于历史峰值但低于 SLA」的位置；</text>
+<text x="470" y="524" text-anchor="middle" class="s">③ 每条告警必须写清「先看哪一个指标、看它的哪一段」，否则收到告警的人第一时间还是去猜。</text>
+</svg>

@@ -72,5 +72,6 @@ Redis 8 的开源许可为三选一：**RSALv2 / SSPLv1 / AGPLv3**，商用前�
 - [Elasticsearch 专题](../../Elasticsearch/index.md)：检索场景的另一种选型
 - [消息队列专题](../../../../Backend/MessageQueue/index.md)：Redis Stream 与 Kafka/RabbitMQ 的边界
 - [数据库客户端](../../../../Tools/DatabaseClients/index.md)：RedisInsight 可视化排查
+- [分布式缓存深入](../../../../Backend/DistributedCache/index.md)：本目录的进阶内容仍以 **Redis 这个组件**为中心（复制、哨兵、Cluster、缓存设计、性能、锁）；该专题把视角抬到**应用侧的缓存体系**——多级缓存的本地失效、一致性的四档方案、热点治理、缓存层韧性与观测，两处的边界见其「与相邻专题的分工」表
 - Redis 官方文档：https://redis.io/docs/latest/
 - Redis 版本与支持周期：https://redis.io/docs/latest/operate/oss_and_stack/install/version-mgmt

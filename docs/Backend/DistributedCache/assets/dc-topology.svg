@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:15px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.slate{fill:#F1F5F9;stroke:#94A3B8}.line{stroke:#94A3B8;fill:none;stroke-width:2}.dash{stroke:#94A3B8;fill:none;stroke-width:2;stroke-dasharray:6 5}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="960" height="620" fill="#FFFFFF"/>
+<text x="480" y="34" text-anchor="middle" class="h">三种拓扑形态：谁来决定「这个 key 在哪台机器上」</text>
+<text x="480" y="56" text-anchor="middle" class="tag">区别不在缓存本身，而在「路由表放在哪、由谁维护、变更时谁来动」</text>
+
+<rect x="30" y="80" width="290" height="470" rx="10" class="box slate"/>
+<text x="175" y="110" text-anchor="middle" class="lt">① 集中式 / 服务端路由</text>
+<text x="175" y="132" text-anchor="middle" class="s">客户端连一个入口，路由在服务端</text>
+<rect x="55" y="150" width="240" height="46" rx="8" class="box blue"/>
+<text x="175" y="179" text-anchor="middle" class="t">应用（连一个地址）</text>
+<rect x="55" y="212" width="240" height="46" rx="8" class="box amber"/>
+<text x="175" y="241" text-anchor="middle" class="t">Proxy / LB（一致性哈希）</text>
+<path class="line" d="M175 196 V212"/>
+<rect x="55" y="286" width="70" height="46" rx="8" class="box green"/>
+<text x="90" y="315" text-anchor="middle" class="t">S1</text>
+<rect x="140" y="286" width="70" height="46" rx="8" class="box green"/>
+<text x="175" y="315" text-anchor="middle" class="t">S2</text>
+<rect x="225" y="286" width="70" height="46" rx="8" class="box green"/>
+<text x="260" y="315" text-anchor="middle" class="t">S3</text>
+<path class="line" d="M175 258 V286"/><path class="dash" d="M90 286 V272 H260 V286"/>
+<text x="175" y="366" text-anchor="middle" class="s">代表：Twemproxy、Envoy Redis Proxy、</text>
+<text x="175" y="384" text-anchor="middle" class="s">云厂商缓存代理（如部分托管集群）</text>
+<path class="line" d="M175 400 H265 V420"/>
+<text x="175" y="440" text-anchor="middle" class="s">扩容要改路由表并迁移槽位</text>
+<text x="175" y="458" text-anchor="middle" class="s">应用零改动，代价是多一跳</text>
+<text x="175" y="482" text-anchor="middle" class="s">代理是单点：必须自身高可用</text>
+<text x="175" y="512" text-anchor="middle" class="tag">适合：客户端种类多、无法统一升级</text>
+
+<rect x="335" y="80" width="290" height="470" rx="10" class="box slate"/>
+<text x="480" y="110" text-anchor="middle" class="lt">② 客户端分片</text>
+<text x="480" y="132" text-anchor="middle" class="s">路由表在客户端，逐节点直连</text>
+<rect x="360" y="150" width="240" height="46" rx="8" class="box blue"/>
+<text x="480" y="179" text-anchor="middle" class="t">应用 + 分片组件（含路由表）</text>
+<rect x="360" y="286" width="70" height="46" rx="8" class="box green"/>
+<text x="395" y="315" text-anchor="middle" class="t">S1</text>
+<rect x="445" y="286" width="70" height="46" rx="8" class="box green"/>
+<text x="480" y="315" text-anchor="middle" class="t">S2</text>
+<rect x="530" y="286" width="70" height="46" rx="8" class="box green"/>
+<text x="565" y="315" text-anchor="middle" class="t">S3</text>
+<path class="dash" d="M395 196 V286"/><path class="dash" d="M480 196 V286"/><path class="dash" d="M565 196 V286"/>
+<text x="480" y="366" text-anchor="middle" class="s">少一跳、延迟最低</text>
+<text x="480" y="384" text-anchor="middle" class="s">但路由表分布在每个进程里</text>
+<text x="480" y="440" text-anchor="middle" class="s">扩缩容必须所有客户端同时换表</text>
+<text x="480" y="458" text-anchor="middle" class="s">换表期间新旧表并存 = 读不到</text>
+<text x="480" y="512" text-anchor="middle" class="tag">适合：单一语言栈、能统一发版</text>
+
+<rect x="640" y="80" width="290" height="470" rx="10" class="box slate"/>
+<text x="785" y="110" text-anchor="middle" class="lt">③ 服务端分片（Cluster）</text>
+<text x="785" y="132" text-anchor="middle" class="s">路由表在服务端，客户端只订阅</text>
+<rect x="665" y="150" width="240" height="46" rx="8" class="box blue"/>
+<text x="785" y="179" text-anchor="middle" class="t">应用（智能客户端）</text>
+<rect x="665" y="212" width="240" height="46" rx="8" class="box violet"/>
+<text x="785" y="241" text-anchor="middle" class="t">16384 槽位分配表（Gossip 传播）</text>
+<path class="line" d="M785 196 V212"/>
+<rect x="665" y="286" width="70" height="46" rx="8" class="box green"/>
+<text x="700" y="315" text-anchor="middle" class="t">N1</text>
+<rect x="750" y="286" width="70" height="46" rx="8" class="box green"/>
+<text x="785" y="315" text-anchor="middle" class="t">N2</text>
+<rect x="835" y="286" width="70" height="46" rx="8" class="box green"/>
+<text x="870" y="315" text-anchor="middle" class="t">N3</text>
+<path class="line" d="M700 258 V286"/><path class="dash" d="M785 258 V286"/><path class="line" d="M870 258 V286"/>
+<text x="785" y="366" text-anchor="middle" class="s">重定向（MOVED / ASK）自己纠正</text>
+<text x="785" y="384" text-anchor="middle" class="s">客户端缓存槽位映射即可</text>
+<text x="785" y="440" text-anchor="middle" class="s">槽位迁移是集群自己完成</text>
+<text x="785" y="458" text-anchor="middle" class="s">代价：多 key 操作受同槽限制</text>
+<text x="785" y="512" text-anchor="middle" class="tag">适合：规模大、需要在线扩缩容</text>
+
+<text x="480" y="580" text-anchor="middle" class="tag">选型一句话：能接受多一跳就选代理，能统一发版就选客户端分片，要在线扩缩容就选 Cluster。</text>
+<text x="480" y="602" text-anchor="middle" class="tag">三种形态可以叠加——「代理 + Cluster」同时存在，但每叠加一层就多一个需要观测的环节。</text>
+</svg>

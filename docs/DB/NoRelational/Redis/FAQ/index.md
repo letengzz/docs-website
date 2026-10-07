@@ -137,3 +137,4 @@ redis-cli monitor         # 打印所有命令（生产慎用，有性能开销�
 - [消息队列专题](../../../../Backend/MessageQueue/index.md)：Redis Pub/Sub、Stream 与 Kafka/RabbitMQ 的选型边界
 - [数据库客户端](../../../../Tools/DatabaseClients/index.md)：用 RedisInsight 可视化浏览 Key、内存分析与慢查询
 - [监控告警专题](../../../../Ops/Monitoring/index.md)：Redis 指标接入 Prometheus 与告警规则
+- [分布式缓存深入](../../../../Backend/DistributedCache/index.md)：本专题讲 Redis **这个产品怎么用**（命令、数据结构、持久化、集群、故障排查），该专题讲**多实例、多层缓存体系的整体设计**（本地缓存失效、一致性、热点与韧性）——用 Redis 之前先看一眼它的「总览：缓存的四条边界」，能避免把不需要缓存的东西也加上缓存

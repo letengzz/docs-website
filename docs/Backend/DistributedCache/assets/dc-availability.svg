@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:14px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="940" height="600" fill="#FFFFFF"/>
+<text x="470" y="34" text-anchor="middle" class="h">缓存层韧性：四道闸门，逐层决定「缓存挂了会发生什么」</text>
+<text x="470" y="56" text-anchor="middle" class="tag">韧性不是「缓存永不挂」，而是「缓存挂了，用户还能不能看到页面」</text>
+
+<rect x="30" y="82" width="880" height="74" rx="10" class="box blue"/>
+<text x="470" y="110" text-anchor="middle" class="lt">闸门 1 · 入口限流：先保住数据库</text>
+<text x="470" y="134" text-anchor="middle" class="s">缓存不可用时，回源流量会被放大数倍。没有限流，数据库是第一个倒下的。</text>
+
+<rect x="30" y="170" width="880" height="74" rx="10" class="box amber"/>
+<text x="470" y="198" text-anchor="middle" class="lt">闸门 2 · 熔断与超时：不让慢调用拖垮线程</text>
+<text x="470" y="222" text-anchor="middle" class="s">缓存超时必须远小于接口 SLA（如 50~200ms）；超时后按「未命中」处理，而不是继续等。</text>
+
+<rect x="30" y="258" width="880" height="74" rx="10" class="box green"/>
+<text x="470" y="286" text-anchor="middle" class="lt">闸门 3 · 多级兜底：L1 本地缓存与只读静态化</text>
+<text x="470" y="310" text-anchor="middle" class="s">L2 挂了，L1 还能命中一批；再不济，退到「最近一次成功渲染的静态页」。</text>
+
+<rect x="30" y="346" width="880" height="74" rx="10" class="box violet"/>
+<text x="470" y="374" text-anchor="middle" class="lt">闸门 4 · 降级返回：明确告诉调用方「这是降级结果」</text>
+<text x="470" y="398" text-anchor="middle" class="s">可降级的读（推荐位、计数器）返回兜底值；不可降级的读（详情、下单）直接失败并告警。</text>
+
+<path class="line" d="M470 156 V170"/>
+<path class="line" d="M470 244 V258"/>
+<path class="line" d="M470 332 V346"/>
+
+<rect x="30" y="444" width="430" height="136" rx="10" class="box rose"/>
+<text x="245" y="474" text-anchor="middle" class="lt">冷启动：缓存刚清空时最危险</text>
+<text x="245" y="500" text-anchor="middle" class="s">重启、扩容、实例驱逐都会让命中率瞬间归零</text>
+<text x="245" y="522" text-anchor="middle" class="s">处置：发布前预热 + 分批重启 + 命中率门禁</text>
+<text x="245" y="544" text-anchor="middle" class="s">并发回源用「进程内互斥 + 逻辑过期」抑制</text>
+<text x="245" y="566" text-anchor="middle" class="tag">判据：缓存清空后 5 分钟内命中率回到 80% 以上</text>
+
+<rect x="480" y="444" width="430" height="136" rx="10" class="box green"/>
+<text x="695" y="474" text-anchor="middle" class="lt">「雪崩不再宕机」的可验证判据</text>
+<text x="695" y="500" text-anchor="middle" class="s">在预发环境把缓存实例全部停掉，压测 5 分钟：</text>
+<text x="695" y="522" text-anchor="middle" class="s">① 数据库 QPS 不高于基线的 1.5 倍（限流生效）</text>
+<text x="695" y="544" text-anchor="middle" class="s">② 核心接口 P99 不超过 SLA（或明确降级而非超时）</text>
+<text x="695" y="566" text-anchor="middle" class="s">③ 恢复缓存后命中率 5 分钟内回正（无脏数据残留）</text>
+</svg>

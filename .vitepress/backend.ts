@@ -511,3 +511,21 @@ export const WorkflowEngine = [
     ],
   },
 ];
+
+export const DistributedCache = [
+  {
+    text: "分布式缓存深入",
+    link: "/docs/Backend/DistributedCache/index.md",
+    items: [
+      { text: "总览：缓存的四条边界", link: "/docs/Backend/DistributedCache/Overview/index.md" },
+      { text: "拓扑与路由", link: "/docs/Backend/DistributedCache/Topology/index.md" },
+      { text: "多级缓存深入", link: "/docs/Backend/DistributedCache/MultiLevel/index.md" },
+      { text: "一致性方案深入", link: "/docs/Backend/DistributedCache/Consistency/index.md" },
+      { text: "热点与倾斜治理", link: "/docs/Backend/DistributedCache/HotKey/index.md" },
+      { text: "缓存层韧性", link: "/docs/Backend/DistributedCache/Availability/index.md" },
+      { text: "可观测与容量治理", link: "/docs/Backend/DistributedCache/Observability/index.md" },
+      { text: "实战：博客平台内容缓存体系", link: "/docs/Backend/DistributedCache/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/DistributedCache/FAQ/index.md" },
+    ],
+  },
+];

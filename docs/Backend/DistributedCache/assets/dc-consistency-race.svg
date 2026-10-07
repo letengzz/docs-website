@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 620" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:14px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.line{stroke:#94A3B8;fill:none;stroke-width:2}.bad{stroke:#F43F5E;fill:none;stroke-width:3}.good{stroke:#10B981;fill:none;stroke-width:3}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="940" height="620" fill="#FFFFFF"/>
+<text x="470" y="34" text-anchor="middle" class="h">Cache Aside 的脏读窗口：为什么「先删缓存再写库」不成立</text>
+<text x="470" y="56" text-anchor="middle" class="tag">两个线程、四步操作，只要读写并发落在特定顺序上，旧值就会被永久写回缓存</text>
+
+<text x="130" y="96" class="lt">线程 A（写）</text>
+<text x="700" y="96" class="lt">线程 B（读）</text>
+
+<path class="line" d="M240 108 V560"/>
+<path class="line" d="M640 108 V560"/>
+
+<rect x="40" y="126" width="200" height="46" rx="8" class="box rose"/>
+<text x="140" y="155" text-anchor="middle" class="t">A1 删除缓存</text>
+<rect x="650" y="186" width="200" height="46" rx="8" class="box blue"/>
+<text x="750" y="215" text-anchor="middle" class="t">B1 读缓存未命中</text>
+<rect x="650" y="248" width="200" height="46" rx="8" class="box blue"/>
+<text x="750" y="277" text-anchor="middle" class="t">B2 读库（拿到旧值）</text>
+<rect x="40" y="310" width="200" height="46" rx="8" class="box rose"/>
+<text x="140" y="339" text-anchor="middle" class="t">A2 写库并提交</text>
+<rect x="650" y="370" width="200" height="46" rx="8" class="box rose"/>
+<text x="750" y="399" text-anchor="middle" class="t">B3 把旧值写回缓存</text>
+<rect x="40" y="432" width="200" height="46" rx="8" class="box rose"/>
+<text x="140" y="461" text-anchor="middle" class="t">写请求结束</text>
+
+<path class="bad" d="M240 149 V149"/>
+<path class="line" d="M240 149 H650" stroke-dasharray="4 4"/>
+<path class="line" d="M640 209 H240" stroke-dasharray="4 4"/>
+<path class="line" d="M640 271 V310 H240" stroke-dasharray="4 4"/>
+
+<rect x="270" y="392" width="330" height="52" rx="8" class="box amber"/>
+<text x="435" y="423" text-anchor="middle" class="t">结果：缓存里是 A2 之前的旧值</text>
+
+<text x="470" y="486" text-anchor="middle" class="s">这个窗口在低并发下几乎不会出现，所以它常在压测或大促当天才第一次露面。</text>
+
+<rect x="40" y="506" width="860" height="98" rx="10" class="box green"/>
+<text x="470" y="534" text-anchor="middle" class="lt">为什么「先写库、再删缓存」是默认答案</text>
+<text x="470" y="558" text-anchor="middle" class="s">它的坏窗口要求「读请求在删缓存之前就完成读库、却在删缓存之后才写回」，概率低得多；</text>
+<text x="470" y="580" text-anchor="middle" class="s">代价是「删除失败」会长期脏读 —— 所以删除动作必须重试，或改为「订阅变更日志后异步删」。</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 620" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:14px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.line{stroke:#94A3B8;fill:none;stroke-width:2}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="940" height="620" fill="#FFFFFF"/>
+<text x="470" y="34" text-anchor="middle" class="h">缓存问题分诊：第一问永远是「脏数据兑现了吗」</text>
+<text x="470" y="56" text-anchor="middle" class="tag">「觉得缓存有问题」有四种完全不同的走向，先分清是哪一种再动手</text>
+
+<rect x="355" y="80" width="230" height="56" rx="8" class="box blue"/>
+<text x="470" y="114" text-anchor="middle" class="t">现象：数据不对 / 变慢 / 报错</text>
+<path class="line" d="M470 136 V164 H150"/>
+<path class="line" d="M470 136 V164 H363"/>
+<path class="line" d="M470 136 V164 H577"/>
+<path class="line" d="M470 136 V164 H790"/>
+
+<rect x="30" y="164" width="240" height="120" rx="10" class="box rose"/>
+<text x="150" y="192" text-anchor="middle" class="lt">A · 读到旧值</text>
+<text x="150" y="218" text-anchor="middle" class="s">先确认窗口：单个用户偶发，</text>
+<text x="150" y="238" text-anchor="middle" class="s">还是所有人长期如此？</text>
+<text x="150" y="262" text-anchor="middle" class="tag">方向：失效链路 / 本地缓存未删</text>
+
+<rect x="283" y="164" width="240" height="120" rx="10" class="box amber"/>
+<text x="403" y="192" text-anchor="middle" class="lt">B · 变慢但没报错</text>
+<text x="403" y="218" text-anchor="middle" class="s">看命中率与回源 QPS 是否同向变差</text>
+<text x="403" y="238" text-anchor="middle" class="s">再看 P99 与大 key 扫描</text>
+<text x="403" y="262" text-anchor="middle" class="tag">方向：容量 / 大 key / 冷启动</text>
+
+<rect x="536" y="164" width="240" height="120" rx="10" class="box violet"/>
+<text x="656" y="192" text-anchor="middle" class="lt">C · 直接报错</text>
+<text x="656" y="218" text-anchor="middle" class="s">连接类错误 → 网络 / 主从切换</text>
+<text x="656" y="238" text-anchor="middle" class="s">命令类错误 → 槽位 / 类型 / 权限</text>
+<text x="656" y="262" text-anchor="middle" class="tag">方向：不要先重启，先看日志</text>
+
+<rect x="789" y="164" width="121" height="120" rx="10" class="box green"/>
+<text x="849" y="192" text-anchor="middle" class="lt">D · 没异常</text>
+<text x="849" y="218" text-anchor="middle" class="s">但「感觉」</text>
+<text x="849" y="238" text-anchor="middle" class="s">没生效</text>
+<text x="849" y="262" text-anchor="middle" class="tag">先加指标</text>
+
+<path class="line" d="M150 284 V312"/><path class="line" d="M403 284 V312"/><path class="line" d="M656 284 V312"/>
+
+<rect x="30" y="312" width="420" height="140" rx="10" class="box rose"/>
+<text x="240" y="340" text-anchor="middle" class="lt">A 的三步确认（5 分钟内出结论）</text>
+<text x="240" y="366" text-anchor="middle" class="s">① 直接查 L2：`GET` 该 key，看值与库里是否一致</text>
+<text x="240" y="388" text-anchor="middle" class="s">② 一致 → 问题在 L1 或客户端本地缓存（含浏览器）</text>
+<text x="240" y="410" text-anchor="middle" class="s">③ 不一致 → 问题在失效链路：事件是否消费、消费是否报错</text>
+<text x="240" y="434" text-anchor="middle" class="tag">不要用「清空缓存」作为第一步——它会让根因消失且事故复发</text>
+
+<rect x="470" y="312" width="440" height="140" rx="10" class="box amber"/>
+<text x="690" y="340" text-anchor="middle" class="lt">B 的三步确认</text>
+<text x="690" y="366" text-anchor="middle" class="s">① 命中率 ↓ 且回源 ↑ → 看淘汰速率与内存水位（容量问题）</text>
+<text x="690" y="388" text-anchor="middle" class="s">② 命中率正常但 P99 ↑ → 扫描大 key 与慢查询</text>
+<text x="690" y="410" text-anchor="middle" class="s">③ 命中率骤降且与发布时间重合 → 冷启动，看预热</text>
+<text x="690" y="434" text-anchor="middle" class="tag">先扩容量还是先清大 key，取决于「内存水位」这一项</text>
+
+<rect x="30" y="474" width="880" height="128" rx="10" class="box blue"/>
+<text x="470" y="502" text-anchor="middle" class="lt">排查三纪律</text>
+<text x="470" y="528" text-anchor="middle" class="s">① 先取证后动手：把命中率、回源 QPS、失效事件延迟三个曲线截图存档，再开始改配置。</text>
+<text x="470" y="550" text-anchor="middle" class="s">② 一次只改一个变量：同时清缓存 + 改 TTL + 重启实例，之后无法判断是哪一项起了作用。</text>
+<text x="470" y="572" text-anchor="middle" class="s">③ 恢复后补判据：把这次的触发条件写成一条告警或一条门禁，否则同类事故会按期重演。</text>
+</svg>

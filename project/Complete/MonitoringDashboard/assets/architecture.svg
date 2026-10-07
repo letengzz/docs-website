@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:14px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.slate{fill:#F1F5F9;stroke:#94A3B8}.line{stroke:#94A3B8;fill:none;stroke-width:2}.arrow{stroke:#64748B;fill:none;stroke-width:2;marker-end:url(#mdarrow)}.tag{font-size:12px;fill:#64748B}</style>
+<defs>
+  <marker id="mdarrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0 0 L10 5 L0 10 z" fill="#64748B"/>
+  </marker>
+</defs>
+<rect width="960" height="600" fill="#FFFFFF"/>
+<text x="480" y="34" text-anchor="middle" class="h">实时监控大盘 · 第 121 天架构草案</text>
+<text x="480" y="56" text-anchor="middle" class="tag">五段链路：采集 → 汇聚 → 存储 → 查询 → 呈现；告警是查询的一种消费方式</text>
+
+<rect x="30" y="88" width="180" height="150" rx="10" class="box blue"/>
+<text x="120" y="116" text-anchor="middle" class="lt">① 采集</text>
+<text x="120" y="142" text-anchor="middle" class="s">应用指标：/metrics 暴露</text>
+<text x="120" y="162" text-anchor="middle" class="s">主机指标：exporter</text>
+<text x="120" y="182" text-anchor="middle" class="s">业务指标：自定义埋点</text>
+<text x="120" y="208" text-anchor="middle" class="tag">推 vs 拉：本期选拉</text>
+<text x="120" y="228" text-anchor="middle" class="tag">理由见选型表</text>
+
+<rect x="240" y="88" width="180" height="150" rx="10" class="box amber"/>
+<text x="330" y="116" text-anchor="middle" class="lt">② 汇聚与规整</text>
+<text x="330" y="142" text-anchor="middle" class="s">服务发现与任务分组</text>
+<text x="330" y="162" text-anchor="middle" class="s">标签归一（禁止高基数）</text>
+<text x="330" y="182" text-anchor="middle" class="s">采样与丢弃规则</text>
+<text x="330" y="208" text-anchor="middle" class="tag">本期只做「标签纪律」</text>
+<text x="330" y="228" text-anchor="middle" class="tag">与丢弃规则两项</text>
+
+<rect x="450" y="88" width="180" height="150" rx="10" class="box green"/>
+<text x="540" y="116" text-anchor="middle" class="lt">③ 时序存储</text>
+<text x="540" y="142" text-anchor="middle" class="s">时序库 + 保留策略</text>
+<text x="540" y="162" text-anchor="middle" class="s">本地盘起步</text>
+<text x="540" y="182" text-anchor="middle" class="s">容量预估 = 序列数 × 采样间隔</text>
+<text x="540" y="208" text-anchor="middle" class="tag">15s 间隔 / 15 天保留</text>
+<text x="540" y="228" text-anchor="middle" class="tag">本期不引入对象存储</text>
+
+<rect x="660" y="88" width="270" height="150" rx="10" class="box violet"/>
+<text x="795" y="116" text-anchor="middle" class="lt">④ 查询与规则（本期最薄弱的一环）</text>
+<text x="795" y="142" text-anchor="middle" class="s">指标查询语言（PromQL 形态）</text>
+<text x="795" y="162" text-anchor="middle" class="s">recording rule 预聚合</text>
+<text x="795" y="182" text-anchor="middle" class="s">alerting rule 阈值判定</text>
+<text x="795" y="208" text-anchor="middle" class="tag">没有 recording rule 的大盘</text>
+<text x="795" y="228" text-anchor="middle" class="tag">会在数据量上来后集体变慢</text>
+
+<path class="arrow" d="M210 163 H240"/>
+<path class="arrow" d="M420 163 H450"/>
+<path class="arrow" d="M630 163 H660"/>
+
+<rect x="30" y="272" width="180" height="120" rx="10" class="box rose"/>
+<text x="120" y="300" text-anchor="middle" class="lt">⑤ 告警通知</text>
+<text x="120" y="326" text-anchor="middle" class="s">分组与抑制</text>
+<text x="120" y="346" text-anchor="middle" class="s">通知渠道与值班</text>
+<text x="120" y="366" text-anchor="middle" class="tag">配套：每条告警写清排查路径</text>
+
+<rect x="240" y="272" width="300" height="120" rx="10" class="box slate"/>
+<text x="390" y="300" text-anchor="middle" class="lt">⑥ 呈现：三张必看大盘</text>
+<text x="390" y="326" text-anchor="middle" class="s">服务健康：QPS / P95 / 错误率</text>
+<text x="390" y="346" text-anchor="middle" class="s">资源水位：CPU / 内存 / 磁盘 / 连接池</text>
+<text x="390" y="366" text-anchor="middle" class="s">业务脉冲：注册 / 下单 / 发布</text>
+
+<rect x="570" y="272" width="360" height="120" rx="10" class="box blue"/>
+<text x="750" y="300" text-anchor="middle" class="lt">⑦ 自监控：谁监控监控系统</text>
+<text x="750" y="326" text-anchor="middle" class="s">指标采集是否停更（up / 抓取耗时）</text>
+<text x="750" y="346" text-anchor="middle" class="s">规则是否在评估（规则评估耗时）</text>
+<text x="750" y="366" text-anchor="middle" class="s">通知是否发得出（通知失败计数）</text>
+
+<path class="arrow" d="M380 238 V272"/>
+<path class="arrow" d="M120 238 V272"/>
+<path class="arrow" d="M660 238 V272"/>
+
+<rect x="30" y="428" width="900" height="140" rx="10" class="box amber"/>
+<text x="480" y="456" text-anchor="middle" class="lt">四周边界：本期明确不做（写在需求文档里，避免范围蔓延）</text>
+<text x="480" y="484" text-anchor="middle" class="s">不做分布式链路追踪（第 144 天「可观测性深入」覆盖）｜ 不做日志检索（已有 Ops/LogSystem 专题覆盖）</text>
+<text x="480" y="508" text-anchor="middle" class="s">不做多租户与权限细粒度（本期单人使用）｜ 不做长期冷存储归档（15 天保留足够）</text>
+<text x="480" y="536" text-anchor="middle" class="tag">理由统一为一条：这些能力每一项都要单独占一个周期，先做出一个「真的有人每天看」的大盘更有价值。</text>
+</svg>

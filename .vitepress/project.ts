@@ -250,6 +250,15 @@ export const CompleteProject = [
         ],
       },
       {
+        text: "实时监控大盘",
+        link: "/project/Complete/MonitoringDashboard/index.md",
+        collapsed: true,
+        items: [
+          { text: "项目总览", link: "/project/Complete/MonitoringDashboard/index.md" },
+          { text: "需求拆分与技术选型", link: "/project/Complete/MonitoringDashboard/Requirements/index.md" },
+        ],
+      },
+      {
         text: "全栈项目实战",
         link: "/project/Complete/FullStackProject/index.md",
         collapsed: true,

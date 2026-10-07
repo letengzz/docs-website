@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 640" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.t{font-size:16px;fill:#0F172A;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.box{fill:#F8FAFC;stroke:#CBD5E1;rx:10}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.line{stroke:#94A3B8;fill:none;stroke-width:2}.lt{font-size:14px;fill:#334155;font-weight:600}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="920" height="640" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">分布式缓存深入 · 专题地图</text>
+<text x="460" y="62" text-anchor="middle" class="tag">先问「缓存要不要跨节点 / 跨层」，再问「怎么保持一致」</text>
+
+<rect x="40" y="86" width="270" height="96" rx="10" class="box blue"/>
+<text x="175" y="122" text-anchor="middle" class="lt">总览：缓存的四条边界</text>
+<text x="175" y="147" text-anchor="middle" class="s">本地缓存 / 集中式 / 多级</text>
+<text x="175" y="167" text-anchor="middle" class="s">什么时候不该把缓存搬出去</text>
+
+<rect x="325" y="86" width="270" height="96" rx="10" class="box violet"/>
+<text x="460" y="122" text-anchor="middle" class="lt">拓扑与路由</text>
+<text x="460" y="147" text-anchor="middle" class="s">一致性哈希 · 虚拟节点</text>
+<text x="460" y="167" text-anchor="middle" class="s">Cluster slots · Proxy 方案</text>
+
+<rect x="610" y="86" width="270" height="96" rx="10" class="box green"/>
+<text x="745" y="122" text-anchor="middle" class="lt">多级缓存</text>
+<text x="745" y="147" text-anchor="middle" class="s">L1 Caffeine + L2 Redis</text>
+<text x="745" y="167" text-anchor="middle" class="s">本地失效的三条路线</text>
+
+<rect x="40" y="216" width="270" height="96" rx="10" class="box amber"/>
+<text x="175" y="252" text-anchor="middle" class="lt">一致性方案</text>
+<text x="175" y="277" text-anchor="middle" class="s">Cache Aside 竞态窗口</text>
+<text x="175" y="297" text-anchor="middle" class="s">延迟双删 · 订阅变更日志</text>
+
+<rect x="325" y="216" width="270" height="96" rx="10" class="box rose"/>
+<text x="460" y="252" text-anchor="middle" class="lt">热点与倾斜治理</text>
+<text x="460" y="277" text-anchor="middle" class="s">探测 · 打散 · 本地兜底</text>
+<text x="460" y="297" text-anchor="middle" class="s">热 key 与大 key 的区别</text>
+
+<rect x="610" y="216" width="270" height="96" rx="10" class="box blue"/>
+<text x="745" y="252" text-anchor="middle" class="lt">缓存层韧性</text>
+<text x="745" y="277" text-anchor="middle" class="s">降级 · 兜底 · 预热</text>
+<text x="745" y="297" text-anchor="middle" class="s">「雪崩不再宕机」的判据</text>
+
+<rect x="40" y="346" width="270" height="96" rx="10" class="box green"/>
+<text x="175" y="382" text-anchor="middle" class="lt">可观测与容量</text>
+<text x="175" y="407" text-anchor="middle" class="s">命中率两口径 · 延迟分位</text>
+<text x="175" y="427" text-anchor="middle" class="s">内存碎片 · 大 key 扫描</text>
+
+<rect x="325" y="346" width="555" height="96" rx="10" class="box amber"/>
+<text x="602" y="382" text-anchor="middle" class="lt">实战：博客平台内容缓存体系</text>
+<text x="602" y="407" text-anchor="middle" class="s">两级缓存 + 失效链路 + 热点预案 + 观测面板</text>
+<text x="602" y="427" text-anchor="middle" class="s">C1~C12 验收断言清单</text>
+
+<rect x="40" y="476" width="840" height="76" rx="10" class="box rose"/>
+<text x="460" y="512" text-anchor="middle" class="lt">常见问题与最佳实践</text>
+<text x="460" y="537" text-anchor="middle" class="s">上线日分诊表 · 十二问 · 上线自查 12 项 · 术语表</text>
+
+<path class="line" d="M175 182 V216"/>
+<path class="line" d="M460 182 V216"/>
+<path class="line" d="M745 182 V216"/>
+<path class="line" d="M175 312 V346"/>
+<path class="line" d="M460 312 V346"/>
+<path class="line" d="M745 312 V346"/>
+<path class="line" d="M460 442 V476"/>
+</svg>
