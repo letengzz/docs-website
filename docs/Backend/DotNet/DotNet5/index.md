@@ -890,7 +890,7 @@ app.UseExceptionHandler(errorApp =>
 
 ### ResultFilter
 
-![image.png](assets/202412101727396.png)
+![image.png](assets/202412101726862.png)
 
 1. 自定义一个类，继承Attribute,实现IResultFilter接口，实现方法
 2. 标记在Action方法头上

@@ -171,3 +171,4 @@ pnpm build && pnpm preview
 - [MDN：CacheStorage](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage)
 - [MDN：Storage quotas and eviction criteria](https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria)
 - [web.dev：Offline cookbook](https://web.dev/articles/offline-cookbook)
+- [分布式缓存深入 · 概述：缓存的代价](../../../Backend/DistributedCache/Overview/index.md)：Service Worker 缓存是**服务端控制不了失效时机**的一层——该页讲清了「哪些层可以做可见性保证、哪些层只能做性能加速」，是判断「这段数据该不该进 SW」的判据

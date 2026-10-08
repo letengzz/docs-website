@@ -103,6 +103,6 @@ df -h / | tail -1
 
 ## 六、深入阅读
 
-- [Docker 安装/卸载总览](index.md) ｜ [MacOS 安装 Docker](MacOSInstall/index.md)
-- [Linux 卸载 Docker](LinuxUninstall/index.md)（存储目录与 systemd 侧的清理口径）
+- [Docker 安装/卸载总览](../index.md) ｜ [MacOS 安装 Docker](../MacOSInstall/index.md)
+- [Linux 卸载 Docker](../LinuxUninstall/index.md)（存储目录与 systemd 侧的清理口径）
 - Docker 官方文档 · Docker Desktop for Mac：[docs.docker.com/desktop/setup/install/mac-install](https://docs.docker.com/desktop/setup/install/mac-install/)

@@ -17,6 +17,7 @@
 | [本地消息表](../../Backend/Microservices/DistributedTransaction/MessageTable/index.md) | 分布式事务里用消息表 + 轮询发事件 | 那里已经写了「用 CDC 代替轮询」的进阶方向，本专题展开完整做法 |
 | [Elasticsearch 实战](../NoRelational/Elasticsearch/Practice/index.md) | MySQL → ES 的两条同步路径 | 本专题实战一章就是那条链路的「完整版」：判据、断言、回滚都补齐 |
 | [缓存设计](../NoRelational/Redis/Advanced/CacheDesign/index.md) | 缓存一致性的策略选型 | 「订阅 binlog 异步删缓存」在本专题里给出落地方案 |
+| [分布式缓存深入 · 一致性方案](../../Backend/DistributedCache/Consistency/index.md) | 缓存与数据源之间的一致性问题与方案 | **分工边界**：本专题讲同步管道本身（binlog 解析、工具选型、位点与幂等），那边讲「缓存该在什么时机失效、选哪种一致性模型」；本页的「订阅 binlog 异步删缓存」正是两边的交汇点 |
 | [数据仓库 ClickHouse](../ClickHouse/index.md) | 分析型存储的引擎与建模 | ClickHouse 是 CDC 的常见下游之一，本专题只讲「怎么送过去」 |
 | [项目实战 · 全文搜索](/project/Complete/BlogPlatform/Search/index.md) | 博客平台 ngram 搜索的落地记录 | 实战一章与之衔接：什么时候值得从 ngram 升级到 ES |
 

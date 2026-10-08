@@ -98,7 +98,7 @@ uname -r
    docker version
    ```
 
-   ![image-20240401222521119](assets/img202404012225981-174296611088311.png)
+   ![image-20240401222521119](assets/img202404012225981.png)
 
 ## 使用安装脚本自动安装
 
@@ -242,4 +242,4 @@ sudo systemctl restart docker
 docker info
 ```
 
-![image-20240401224734219](assets/img202404012247498.png)
+![image-20240401224734219](assets/img202404012257197.png)

@@ -905,7 +905,7 @@ public class UserController {
 
 访问 http://localhost:8080/user/index 添加用户：
 
-![image-20240213182427288](assets/img202402141711500.png)
+![image-20240213182427288](assets/img202402141710798.png)
 
 使用该新建账号登录，发现登录成功。
 
@@ -1736,7 +1736,7 @@ public class DBUserDetailsManager implements UserDetailsManager, UserDetailsPass
 
 访问 http://localhost:8080/user/index 添加用户：
 
-![image-20240213182427288](assets/img202402141711068.png)
+![image-20240213182427288](assets/img202402141710798.png)
 
 退出登录并使用`zhangsan`账号进行登录，发现可以登录成功。
 

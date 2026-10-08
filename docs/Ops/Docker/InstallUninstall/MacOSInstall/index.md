@@ -106,7 +106,7 @@ docker system df                      # 四类占用：镜像 / 容器 / 卷 / �
 
 ## 五、卸载
 
-见 [MacOS 卸载 Docker](MacOSUninstall/index.md)——卸载要清的不只是 `/Applications/Docker.app`，还有虚拟机磁盘镜像与配置目录，漏了会残留几十 GB。
+见 [MacOS 卸载 Docker](../MacOSUninstall/index.md)——卸载要清的不只是 `/Applications/Docker.app`，还有虚拟机磁盘镜像与配置目录，漏了会残留几十 GB。
 
 ## 六、问题排查
 
@@ -120,6 +120,6 @@ docker system df                      # 四类占用：镜像 / 容器 / 卷 / �
 
 ## 七、深入阅读
 
-- [Docker 安装/卸载总览](index.md) ｜ [Windows 安装](WindowsInstall/index.md) ｜ [Linux 安装](LinuxInstall/index.md)
-- [MacOS 卸载 Docker](MacOSUninstall/index.md)
+- [Docker 安装/卸载总览](../index.md) ｜ [Windows 安装](../WindowsInstall/index.md) ｜ [Linux 安装](../LinuxInstall/index.md)
+- [MacOS 卸载 Docker](../MacOSUninstall/index.md)
 - Docker 官方文档 · Install Docker Desktop on Mac：[docs.docker.com/desktop/setup/install/mac-install](https://docs.docker.com/desktop/setup/install/mac-install/)

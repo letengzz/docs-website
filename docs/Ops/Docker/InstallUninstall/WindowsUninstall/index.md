@@ -117,6 +117,6 @@ foreach ($d in @("$env:APPDATA\Docker","$env:LOCALAPPDATA\Docker","$env:ProgramD
 
 ## 八、深入阅读
 
-- [Docker 安装/卸载总览](index.md) ｜ [Windows 安装](WindowsInstall/index.md)
-- [Linux 卸载 Docker](LinuxUninstall/index.md) ｜ [MacOS 卸载 Docker](MacOSUninstall/index.md)
+- [Docker 安装/卸载总览](../index.md) ｜ [Windows 安装](../WindowsInstall/index.md)
+- [Linux 卸载 Docker](../LinuxUninstall/index.md) ｜ [MacOS 卸载 Docker](../MacOSUninstall/index.md)
 - Docker 官方文档 · Install Docker Desktop on Windows：[docs.docker.com/desktop/setup/install/windows-install](https://docs.docker.com/desktop/setup/install/windows-install/)

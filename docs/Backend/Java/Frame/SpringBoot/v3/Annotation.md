@@ -487,7 +487,7 @@ public class SpringbootAnnotationApplication {
 }
 ```
 
-![image-20230730220336087](assets/202307302203804-174384486129315.png)
+![image-20230730220336087](assets/202307302203804.png)
 
 该注解表示`启用自动配置`。
 

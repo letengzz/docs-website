@@ -168,5 +168,5 @@ docker compose exec -T kafka kafka-console-consumer.sh \
 
 - [消息队列 · Kafka 深入专题（架构、分区副本、Exactly-Once、集群运维）](../../../../../../MessageQueue/Kafka/index.md)
 - [消息队列 · 可靠投递与幂等](../../../../../../MessageQueue/Reliability/index.md)
-- [SpringBoot 整合 RocketMQ](RocketMQ/index.md) ｜ [SpringBoot 整合 RabbitMQ](RabbitMQ/index.md)
+- [SpringBoot 整合 RocketMQ](../RocketMQ/index.md) ｜ [SpringBoot 整合 RabbitMQ](../RabbitMQ/index.md)
 - Spring for Apache Kafka 官方文档：[docs.spring.io/spring-kafka/reference](https://docs.spring.io/spring-kafka/reference/)

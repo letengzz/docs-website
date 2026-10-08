@@ -1034,7 +1034,7 @@ public class CalculatorTest {
 
 执行结果：
 
-![202307212230933.png](assets/202412102325737.png)
+![202307212230933.png](assets/202412102324657.png)
 
 ## Spring AOP对获取Bean的影响理解
 

@@ -48,7 +48,7 @@ JavaScript中的困扰：
 - TypeScript不能被JavaScript解析器直接执行，但是TypeScript代码可以编译为任意版本的JavaScript代码，可有效解决不同JavaScript运行环境的兼容问题
 - 同样的功能，TypeScript的代码量要大于JavaScript，但由于TypeScript的代码结构更加清晰，变量类型更加明确，在后期代码的维护中TypeScript却远远胜于JavaScript。
 
-![TypeScript Logo](../assets/img202406081213688-17429678431963.webp)
+![TypeScript Logo](../assets/img202406081213688.webp)
 
 ## 继续学习
 

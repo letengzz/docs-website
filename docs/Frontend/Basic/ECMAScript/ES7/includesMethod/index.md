@@ -121,5 +121,5 @@ node --input-type=module -e "console.log([{id:1}].includes({id:1}))"
 
 - [数组新方法](../../ES6/NewArrayMethod/index.md)：ES6 的 `find` / `findIndex` / `fill` 等方法
 - [Set 和 Map](../../ES6/SetMap/index.md)：去重与成员判断的另一条路
-- [指数运算符](IndexOper/index.md)：ES2016 的另一项新特性
+- [指数运算符](../IndexOper/index.md)：ES2016 的另一项新特性
 - MDN · Array.prototype.includes：[developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)

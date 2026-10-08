@@ -127,6 +127,7 @@ Prometheus 最新稳定为 **3.14.x**，Grafana 为 **13.x**（13.2.1），Alert
 - [容器编排进阶 · 弹性伸缩](../../ContainerOrchestration/Autoscaling/index.md)：HPA/KEDA 扩缩与监控指标联动
 - [容器编排进阶 · GitOps 实战](../../ContainerOrchestration/Practice/index.md)：告警规则随应用交付、故障演练后回滚
 - [Terraform · State 与远程后端](../../Terraform/State/index.md)：监控告警规则与看板若由 IaC 声明式管理，请一并纳入漂移巡检；Terraform 的 `plan -detailed-exitcode`（`exit=2` 表示有漂移）适合做成定时巡检
+- [分布式缓存深入 · 可观测与容量治理](../../../Backend/DistributedCache/Observability/index.md)：缓存层的**指标口径与告警设计**——为什么用「回源比例」而不是「命中率」当主指标，以及命中率骤降该怎么定性（被穿透、被逐出，还是后端变慢）
 
 ## 参考资料
 

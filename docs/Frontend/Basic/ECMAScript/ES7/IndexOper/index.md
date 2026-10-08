@@ -3,7 +3,7 @@
 > `**` 是 **ES2016（ES7）** 新增的运算符，用来替代 `Math.pow()`。它不只是「写法更短」——**结合性是右结合**，且能和赋值运算符组合成 `**=`，这两点决定了它在链式幂运算里的行为与函数调用完全不同。
 
 ::: info 版本归属
-指数运算符属于 **ES2016（即 ES7）**，与 [`Array.prototype.includes()`](includesMethod/index.md) 同为该版本仅有的两项语言特性。
+指数运算符属于 **ES2016（即 ES7）**，与 [`Array.prototype.includes()`](../includesMethod/index.md) 同为该版本仅有的两项语言特性。
 :::
 
 ![指数运算符与 Math.pow 的差异](assets/exponent-operator.svg)
@@ -96,7 +96,7 @@ console.log(2n ** 53n + 1n);
 
 ## 五、深入阅读
 
-- [Array.prototype.includes()方法](includesMethod/index.md)：ES2016 的另一项新特性
+- [Array.prototype.includes()方法](../includesMethod/index.md)：ES2016 的另一项新特性
 - [ES6 概述](../../ES6/Overview/index.md)：ES2015 的特性全景与版本命名变更
 - [Symbol](../../ES6/Symbol/index.md)：精度与类型的另一类边界问题
 - MDN · 指数运算符：[developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Exponentiation](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Exponentiation)

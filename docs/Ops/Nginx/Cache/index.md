@@ -197,3 +197,4 @@ sudo systemctl stop backend && curl -sI http://127.0.0.1/api/users | grep -i x-c
 - [静态资源服务](../StaticResources/index.md)：`expires` / `add_header` 控制静态资源缓存
 - [限流配置](../RateLimit/index.md)：缓存与限流常一起上，注意 `limit_req` 对回源路径的影响
 - [Redis 缓存设计](../../../DB/NoRelational/Redis/Advanced/CacheDesign/index.md)：应用层缓存的键设计与一致性
+- [分布式缓存深入 · 多级缓存深入](../../../Backend/DistributedCache/MultiLevel/index.md)：Nginx 处在多级缓存的最外层，**网关缓存很难被业务主动 purge，因此不能让它承担「保证新值可见」的职责**；该页给出各级缓存的失效责任划分

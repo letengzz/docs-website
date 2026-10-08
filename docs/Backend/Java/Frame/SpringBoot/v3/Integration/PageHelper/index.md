@@ -120,7 +120,7 @@ curl -s 'http://127.0.0.1:18080/api/v1/vips?pageNo=99999&pageSize=10' | jq '.lis
 
 ## 七、深入阅读
 
-- [SpringBoot 整合 MyBatis](MyBatis/index.md) ｜ [SpringBoot 数据访问](../../DataAccess/index.md)
+- [SpringBoot 整合 MyBatis](../MyBatis/index.md) ｜ [SpringBoot 数据访问](../../DataAccess/index.md)
 - [MyBatis-Plus 专题](../../../../MyBatisPlus/index.md)（自带分页插件的另一种做法）
 - [SQL 优化 · 深分页的代价与 keyset 改造](../../../../../../../DB/Relational/SQLOptimization/index.md)
 - PageHelper 官方文档：[pagehelper.github.io](https://pagehelper.github.io/)
