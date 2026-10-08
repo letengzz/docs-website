@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 432" width="760" height="432" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="432" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">装配与订阅：响应式管道的两个时刻</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">写下来 ≠ 跑起来，副作用只发生在订阅之后</text>
+  <rect x="20" y="72" width="720" height="46" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="90.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">装配期：只返回一个描述对象</text>
+  <text x="380" y="107" text-anchor="middle" font-size="7.5" fill="#1D4ED8">Mono.just(x).map(f).filter(g) → 一行行写下来，但一行都还没执行</text>
+  <line x1="380" y1="118" x2="380" y2="140" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="430" y="134" text-anchor="start" font-size="9" fill="#64748B">subscribe() / 被框架订阅</text>
+  <rect x="20" y="144" width="720" height="52" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="162.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">订阅期：一次性把信号从源头推到末尾</text>
+  <text x="380" y="179" text-anchor="middle" font-size="7.5" fill="#6D28D9">onSubscribe → request(n) → onNext × n → onComplete（或 onError）</text>
+  <line x1="60" y1="122" x2="60" y2="140" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="700" y1="122" x2="700" y2="140" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="20" y="216" width="350" height="130" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="195" y="234.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">订阅期才成立的六件事</text>
+  <text x="195" y="251" text-anchor="middle" font-size="7.5" fill="#6D28D9">① 中间操作符一次装配、多次复用</text>
+  <text x="195" y="268.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">② 每次 subscribe 得到独立执行（除非 cache/share）</text>
+  <text x="195" y="285.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">③ 没有订阅就没有任何副作用</text>
+  <text x="195" y="302.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">④ 副作用要放 doOnNext 而不是 map</text>
+  <text x="195" y="320" text-anchor="middle" font-size="7.5" fill="#6D28D9">⑤ 冷流与热流的差别只在订阅时机</text>
+  <text x="195" y="337.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">⑥ 错误也是信号：onError 必须有人接</text>
+  <rect x="390" y="216" width="350" height="130" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="565" y="234.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">三类最容易写错的位置</text>
+  <text x="565" y="251" text-anchor="middle" font-size="7.5" fill="#B91C1C">① 在 map 里做 IO（同步阻塞在事件循环上）</text>
+  <text x="565" y="268.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">② 忘了 subscribe，接口静默返回空</text>
+  <text x="565" y="285.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">③ 把 Mono 当返回值塞进 JSON（序列化成 {}）</text>
+  <rect x="20" y="362" width="720" height="56" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="380.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">一条纪律：先问「这段代码在装配期还是订阅期执行」</text>
+  <text x="380" y="397" text-anchor="middle" font-size="7.5" fill="#B45309">装配期只能做不产生副作用的事；订阅期才允许碰 IO、线程与外部状态</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

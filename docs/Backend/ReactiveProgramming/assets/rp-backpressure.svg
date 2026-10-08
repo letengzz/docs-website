@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 412" width="760" height="412" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="412" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">背压：需求从下游往上游流</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">request(n) 是唯一真正的流量控制信号</text>
+  <rect x="20" y="76" width="168" height="72" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="104" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">Publisher</text>
+  <text x="104" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">生产速率未知</text>
+  <text x="104" y="128.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">可能来自网络</text>
+  <rect x="212" y="76" width="168" height="72" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="296" y="94.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">Operator</text>
+  <text x="296" y="111" text-anchor="middle" font-size="7.5" fill="#4338CA">中间缓冲</text>
+  <text x="296" y="128.25" text-anchor="middle" font-size="7.5" fill="#4338CA">可合并 / 可丢弃</text>
+  <rect x="404" y="76" width="168" height="72" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="488" y="94.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">Subscriber</text>
+  <text x="488" y="111" text-anchor="middle" font-size="7.5" fill="#047857">消费速率已知</text>
+  <text x="488" y="128.25" text-anchor="middle" font-size="7.5" fill="#047857">它说了算</text>
+  <rect x="596" y="76" width="144" height="72" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="668" y="94.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">Scheduler</text>
+  <text x="668" y="111" text-anchor="middle" font-size="7.5" fill="#334155">切换执行线程</text>
+  <text x="668" y="128.25" text-anchor="middle" font-size="7.5" fill="#334155">不影响背压</text>
+  <line x1="188" y1="96" x2="212" y2="96" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="96" x2="404" y2="96" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="572" y1="96" x2="596" y2="96" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="488" y1="148" x2="296" y2="148" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="392" y="143" text-anchor="middle" font-size="7.5" fill="#64748B">request(n) 向上游要数据</text>
+  <text x="380" y="176" text-anchor="middle" font-size="9.5" fill="#475569">背压的方向与数据相反：需求从下游往上流</text>
+  <rect x="20" y="196" width="350" height="128" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="195" y="214.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">缓冲满了的四种处置</text>
+  <text x="195" y="231" text-anchor="middle" font-size="7.5" fill="#C2410C">① 报错（onBackpressureError）：宁可失败不可静默丢</text>
+  <text x="195" y="248.25" text-anchor="middle" font-size="7.5" fill="#C2410C">② 丢弃最新（Latest）：只看实时值的场景</text>
+  <text x="195" y="265.5" text-anchor="middle" font-size="7.5" fill="#C2410C">③ 丢弃最旧（Drop）：允许跳样本的指标流</text>
+  <text x="195" y="282.75" text-anchor="middle" font-size="7.5" fill="#C2410C">④ 落盘 / 溢出到磁盘：日志与采集类流</text>
+  <rect x="390" y="196" width="350" height="128" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="565" y="214.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">三种「看起来有背压其实没有」</text>
+  <text x="565" y="231" text-anchor="middle" font-size="7.5" fill="#B91C1C">① 中间用了无界队列（unbounded）——内存说了算</text>
+  <text x="565" y="248.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">② 上游本来就不可回压（Kafka 拉模式才有真背压）</text>
+  <text x="565" y="265.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">③ 下游是 HTTP 客户端：只能缓，缓不住就断连接</text>
+  <rect x="20" y="340" width="720" height="58" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="358.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">判据：能不能举出「下游慢下来时上游真的少发了」的证据</text>
+  <text x="380" y="375" text-anchor="middle" font-size="7.5" fill="#B45309">举不出证据，就只是异步，不是背压</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

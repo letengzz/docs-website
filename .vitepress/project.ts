@@ -256,6 +256,7 @@ export const CompleteProject = [
         items: [
           { text: "项目总览", link: "/project/Complete/MonitoringDashboard/index.md" },
           { text: "需求拆分与技术选型", link: "/project/Complete/MonitoringDashboard/Requirements/index.md" },
+          { text: "架构细化：组件与接口边界", link: "/project/Complete/MonitoringDashboard/Architecture/index.md" },
         ],
       },
       {

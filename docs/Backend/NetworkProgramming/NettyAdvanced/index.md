@@ -314,6 +314,24 @@ public class ReconnectHandler extends ChannelInboundHandlerAdapter {
 - 虚拟线程（另一种高并发解法）：[虚拟线程与高并发模型](../VirtualThread/index.md)
 - 压测方法：[性能基准与压测](../BenchmarkPractice/index.md)
 
+## 与响应式背压的分工
+
+本页第 3 节的「写缓冲水位线」与 [响应式编程 · 背压](../../ReactiveProgramming/Backpressure/index.md) 讲的 `request(n)` 都在做流量控制，但**层次完全不同**，不能互相替代：
+
+| 对比项 | 本页：写缓冲水位线 | 响应式：`request(n)` |
+| --- | --- | --- |
+| 所在层 | **传输层**（TCP 连接上的字节） | **应用层**（数据元素的需求） |
+| 控制对象 | 连接的发包节奏（`isWritable`） | 上游元素的发送数量 |
+| 触发条件 | 未写出字节超过高水位 | 下游调用 `request(n)` |
+| 失效表现 | 队列无限增长 → 内存溢出；或直接关闭连接 | 上游不停发 → 应用内存溢出 |
+| 典型误用 | 忽略 `channel.isWritable()` 就一路 `writeAndFlush` | 中间加了无界缓冲，以为「已经背压了」 |
+
+**三层正确的配合方式**：应用层用背压控制**发多少元素**，传输层用水位线控制**何时暂停写字节**，连接层用 TCP 窗口兜底。
+
+::: warning 一个查了很久才会发现的组合缺陷
+只做了应用层背压，却**没管 `isWritable`**：下游按 `request(n)` 要数据没问题，但连接对端读得很慢，Netty 的写队列会持续增长——**背压看起来「生效了」（上游真的少发了），内存却照样涨**。排查时先分别看这两个指标：待发元素量（应用层）与待写字节量（传输层）。
+:::
+
 ## 参考资料
 
 - Netty 官方文档（4.2）：https://netty.io/wiki/

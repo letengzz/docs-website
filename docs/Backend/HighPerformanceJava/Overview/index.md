@@ -141,6 +141,21 @@ GC 次数/分      12           3
 - [实战：把慢接口的 P99 打下来](../Practice/index.md)：这六步的完整走法
 - [JVM 基础](../../Java/JavaSE/JVM/Tuning/index.md)：L4 层的内存与 GC 参数怎么定
 - [网络编程 · 性能基准与压测](../../NetworkProgramming/BenchmarkPractice/index.md)：当瓶颈在「等」的网络侧时去的页面
+- [响应式编程 · 总览](../../ReactiveProgramming/Overview/index.md)：当瓶颈**不在 JVM 层**、而在「线程数与并发连接数」上时去的专题
+
+::: info 与响应式编程专题的分工
+本页（性能工程）回答的是**同一台机器上怎么跑得更快**：JIT 与内联、内存布局与分配、锁竞争、Profiling 与基准测试方法。响应式专题回答的是**同一份资源怎么承载更多并发连接**：事件循环、背压、非阻塞驱动、线程模型。
+
+两者的判据完全不同，因此**先测再选**：
+
+| 观测到的现象 | 该看哪一页 |
+| --- | --- |
+| CPU 高、GC 频繁、单请求 RT 长 | **本页**（JVM 层优化） |
+| QPS 上不去但 CPU 很低、线程都在等 IO | 响应式专题 · [调试与排障](../../ReactiveProgramming/Debugging/index.md) |
+| 需要判断「要不要改成响应式」 | 响应式专题 · [总览](../../ReactiveProgramming/Overview/index.md) 的四条边界 |
+
+反过来也成立：**响应式改造解决不了 CPU 密集型的性能问题**——事件循环线程数默认等于 CPU 核数，计算型接口改成响应式通常更慢。
+:::
 
 ## 参考资料
 

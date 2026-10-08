@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 414" width="760" height="414" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="414" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">三条高并发路线：同一个问题的三种答案</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">阻塞式平台线程 / 阻塞式虚拟线程 / 非阻塞响应式</text>
+  <rect x="20" y="72" width="233" height="128" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="136.5" y="90.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">平台线程（阻塞）</text>
+  <text x="136.5" y="107" text-anchor="middle" font-size="7.5" fill="#334155">一个请求占一个 OS 线程</text>
+  <text x="136.5" y="124.25" text-anchor="middle" font-size="7.5" fill="#334155">池子大小就是并发上限</text>
+  <text x="136.5" y="141.5" text-anchor="middle" font-size="7.5" fill="#334155">超时与排队都看得见</text>
+  <text x="136.5" y="158.75" text-anchor="middle" font-size="7.5" fill="#334155">写起来最直白</text>
+  <rect x="273" y="72" width="233" height="128" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="389.5" y="90.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">虚拟线程（阻塞）</text>
+  <text x="389.5" y="107" text-anchor="middle" font-size="7.5" fill="#047857">一个请求占一个虚拟线程</text>
+  <text x="389.5" y="124.25" text-anchor="middle" font-size="7.5" fill="#047857">阻塞时卸载载体线程</text>
+  <text x="389.5" y="141.5" text-anchor="middle" font-size="7.5" fill="#047857">代码与平台线程完全一样</text>
+  <text x="389.5" y="158.75" text-anchor="middle" font-size="7.5" fill="#047857">瓶颈转移到连接池</text>
+  <rect x="526" y="72" width="233" height="128" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="642.5" y="90.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">响应式（非阻塞）</text>
+  <text x="642.5" y="107" text-anchor="middle" font-size="7.5" fill="#6D28D9">少量事件循环线程复用</text>
+  <text x="642.5" y="124.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">任何阻塞都伤害整条链路</text>
+  <text x="642.5" y="141.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">用 Mono / Flux 表达</text>
+  <text x="642.5" y="158.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">背压是一等公民</text>
+  <text x="380" y="222" text-anchor="middle" font-size="10" fill="#475569">同一个「等待下游返回」的问题，三条路线给了三种答案</text>
+  <line x1="20" y1="240" x2="740" y2="240" stroke="#CBD5E1" stroke-width="1.0" stroke-dasharray="5 4"/>
+  <rect x="20" y="256" width="350" height="116" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="195" y="274.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">什么时候响应式不可替代</text>
+  <text x="195" y="291" text-anchor="middle" font-size="7.5" fill="#6D28D9">① 连接极多且单个请求很慢（SSE / WebSocket / 长轮询）</text>
+  <text x="195" y="308.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">② 数据是流：水位会超过任何缓冲，必须能回压</text>
+  <text x="195" y="325.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">③ 下游只有响应式驱动，或链路是网关型转发</text>
+  <text x="195" y="342.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">④ 需要把多次远程调用组合成声明式管道</text>
+  <rect x="390" y="256" width="350" height="116" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="565" y="274.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">什么时候虚拟线程更划算</text>
+  <text x="565" y="291" text-anchor="middle" font-size="7.5" fill="#047857">① 业务是「取数据—算—写回」的 CRUD，天然串行</text>
+  <text x="565" y="308.25" text-anchor="middle" font-size="7.5" fill="#047857">② 团队没有响应式经验，链路里到处是阻塞库</text>
+  <text x="565" y="325.5" text-anchor="middle" font-size="7.5" fill="#047857">③ 调试与排障必须靠普通堆栈（虚拟线程堆栈可读）</text>
+  <text x="565" y="342.75" text-anchor="middle" font-size="7.5" fill="#047857">④ 已经有大量同步代码，改造面大于收益</text>
+  <text x="380" y="394" text-anchor="middle" font-size="10" fill="#475569">判据不是「谁快」，而是「谁的约束你的系统满足得了」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

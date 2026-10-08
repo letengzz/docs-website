@@ -252,6 +252,29 @@ jcmd <pid> JFR.start name=vt settings=profile duration=30s filename=vt.jfr
 - 压测与性能基准：[性能基准与压测](../BenchmarkPractice/index.md)
 - 现代 Java 语言特性（ScopedValue / record）：[现代 Java 与设计模式](../../DesignPatterns/ModernJava/index.md)
 
+## 与响应式编程的分工
+
+虚拟线程与响应式（WebFlux / Reactor）是**解决同一个问题的两条路线**，不是上下层关系，两者可以共存，但**不该互相替代**：
+
+| 维度 | 虚拟线程（本页） | 响应式（[响应式编程](../../ReactiveProgramming/Overview/index.md)） |
+| --- | --- | --- |
+| 代码形态 | 与平台线程**完全一致** | 改写成 `Mono` / `Flux` 管道 |
+| 换取吞吐的方式 | 「等待」时让出载体线程 | 「等待」时不占线程（回调驱动） |
+| 流量控制 | 信号量 / 队列排队（**非协议级**） | **背压**：`request(n)` 是协议级信号 |
+| 生态兼容 | 全部同步库 | 需要非阻塞驱动（R2DBC / WebClient / Lettuce） |
+| 排障 | 普通线程栈，**可读** | 需要 `StepVerifier` / BlockHound / `Context` 等专门工具 |
+| 主要风险 | 连接池成为新瓶颈、`synchronized` 钉住载体 | 一处阻塞拖垮整条链路 |
+
+**判据（什么时候翻哪一页）**：
+
+- 只有「请求多、每个请求都在等 IO」，用**虚拟线程**——改动一行、调试体验不变。
+- 出现「生产速率超过消费速率」（流式采集、推送、大结果集）或「连接数远超线程数」（SSE / WebSocket / 网关转发），才需要**响应式**——这时背压与连接复用是硬需求。
+- 两者混用时**边界必须显式**：哪一段是响应式、哪一段是阻塞式、在哪个线程上切换。**最糟的组合是「响应式入口 + 同步 JDBC 出口」**，它比纯阻塞栈更差（事件循环线程被占住，而可用线程数只有 CPU 核数）。
+
+::: warning 一条反直觉的对照
+同一条「阻塞式写法 + 虚拟线程」在多数场景下与「WebFlux + Reactor」互相打平甚至略优；响应式的优势集中在**极端并发连接**与**流式/背压**场景（数据来源见 [总览](../../ReactiveProgramming/Overview/index.md)）。因此**把已有同步代码全量改写成响应式，通常不是性能优化，而是复杂度投资**。
+:::
+
 ## 参考资料
 
 - JEP 444：Virtual Threads：https://openjdk.org/jeps/444

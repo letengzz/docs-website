@@ -529,3 +529,20 @@ export const DistributedCache = [
     ],
   },
 ];
+
+export const ReactiveProgramming = [
+  {
+    text: "响应式编程",
+    link: "/docs/Backend/ReactiveProgramming/index.md",
+    items: [
+      { text: "总览：响应式的四条边界", link: "/docs/Backend/ReactiveProgramming/Overview/index.md" },
+      { text: "Reactor 核心", link: "/docs/Backend/ReactiveProgramming/Reactor/index.md" },
+      { text: "背压", link: "/docs/Backend/ReactiveProgramming/Backpressure/index.md" },
+      { text: "WebFlux 落地", link: "/docs/Backend/ReactiveProgramming/WebFlux/index.md" },
+      { text: "响应式数据访问", link: "/docs/Backend/ReactiveProgramming/DataAccess/index.md" },
+      { text: "调试与排障", link: "/docs/Backend/ReactiveProgramming/Debugging/index.md" },
+      { text: "实战：一次聚合查询的改造", link: "/docs/Backend/ReactiveProgramming/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/ReactiveProgramming/FAQ/index.md" },
+    ],
+  },
+];

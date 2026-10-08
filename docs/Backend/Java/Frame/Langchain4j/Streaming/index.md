@@ -12,7 +12,7 @@ LangChain4j通过StreamingChatModel接口支持流式响应。您需要实现监
 import dev.langchain4j.model.streaming.StreamingChatModel;
 import dev.langchain4j.model.openai.OpenAiStreamingChatModel;
 import dev.langchain4j.data.message.ChatMessage;
-import dev.langchain4j.model streaming.StreamingChatResponseListener;
+import dev.langchain4j.model.streaming.StreamingChatResponseListener;
 
 public class StreamingChatDemo {
 
@@ -71,3 +71,23 @@ public class ReactiveStreamingDemo {
 ```
 
 > com/example/streaming/ReactiveStreamingDemo.java
+
+## 与响应式编程专题的分工
+
+本页讲的是**怎么把模型的流式输出接出来**（`StreamingChatModel` / `Flux<chunk>` / SSE 返回给前端）；[响应式编程](../../../../ReactiveProgramming/index.md) 讲的是**这条流接入之后怎么被非阻塞链路正确承载**：
+
+| 问题 | 看哪一页 |
+| --- | --- |
+| 流式输出怎么写、回调与 `Flux` 两种形态怎么选 | **本页** |
+| 返回 `Flux` 后怎么用 SSE 推给浏览器、客户端断开怎么释放订阅 | 响应式编程 · [WebFlux 落地](../../../../ReactiveProgramming/WebFlux/index.md) |
+| 模型产得快、下游写得慢时怎么不把内存撑爆 | 响应式编程 · [背压](../../../../ReactiveProgramming/Backpressure/index.md) |
+| 流式链路上的超时、降级与「半截结果」怎么处理 | 响应式编程 · [实战：一次聚合查询的改造](../../../../ReactiveProgramming/Practice/index.md) |
+
+::: danger 流式输出最容易被忽略的两件事
+1. **客户端断开必须终止上游**：用户关掉页面后，模型调用仍在继续并持续计费。接口返回 `Flux` 时要绑定取消信号（`doOnCancel` / `doFinally`），让取消一路传到模型客户端的 HTTP 连接。
+2. **流式响应没有真背压**：模型侧已开始生成，服务端只能缓冲。必须给流设上限（总时长 / 最大 token），并监控待发队列，否则「几百个用户同时开着对话框」会把服务端内存吃光。
+:::
+
+::: info 版本适用性提示
+上面的 `StreamingChatResponseListener` 与 `generate(...)` 属于**旧版回调式写法**；Langchain4j 1.x 起流式接口已演进（`StreamingChatModel` + 响应式形态的处理器/`Flux`）。**升级前请以所用版本的官方文档为准核对包名与类名**，本页保留旧写法仅供存量项目参考，不覆盖其内容。
+:::

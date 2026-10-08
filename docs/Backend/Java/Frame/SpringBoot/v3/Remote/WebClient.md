@@ -148,3 +148,18 @@ Mono<Void> result = client.post()
         .retrieve()
         .bodyToMono(Void.class);
 ```
+
+## 与响应式编程专题的分工
+
+本页讲的是**客户端这一层怎么用**（建连、编码、获取响应、错误处理），属于「接入层」；[响应式编程](../../../../../ReactiveProgramming/index.md) 讲的是**多个调用怎么组合成一条链路**（并行聚合、超时预算、背压、线程模型）。
+
+| 问题 | 看哪一页 |
+| --- | --- |
+| `WebClient` 怎么配超时、怎么设连接池、怎么读响应体 | **本页** |
+| 三个下游怎么并行调用、单次与总超时怎么分配、失败怎么降级 | 响应式编程 · [实战：一次聚合查询的改造](../../../../../ReactiveProgramming/Practice/index.md) |
+| `timeout` 到底该放在哪一层、重试与超时怎么相乘 | 响应式编程 · [Reactor 核心](../../../../../ReactiveProgramming/Reactor/index.md) |
+| 客户端本身是阻塞的（`RestTemplate`）会造成什么后果 | 响应式编程 · [响应式数据访问](../../../../../ReactiveProgramming/DataAccess/index.md) |
+
+::: warning 一条硬边界
+**`WebClient` 只是客户端，不是「链路无阻塞」的证明。** 如果链路下游还有 JDBC 调用，压测照样会表现为「并发上不去、CPU 很低」。判断标准是把整条链路的外部依赖逐个过一遍，而不是只看 HTTP 这一层。
+:::
