@@ -20,6 +20,7 @@
 | [分布式缓存深入 · 一致性方案](../../Backend/DistributedCache/Consistency/index.md) | 缓存与数据源之间的一致性问题与方案 | **分工边界**：本专题讲同步管道本身（binlog 解析、工具选型、位点与幂等），那边讲「缓存该在什么时机失效、选哪种一致性模型」；本页的「订阅 binlog 异步删缓存」正是两边的交汇点 |
 | [数据仓库 ClickHouse](../ClickHouse/index.md) | 分析型存储的引擎与建模 | ClickHouse 是 CDC 的常见下游之一，本专题只讲「怎么送过去」 |
 | [项目实战 · 全文搜索](/project/Complete/BlogPlatform/Search/index.md) | 博客平台 ngram 搜索的落地记录 | 实战一章与之衔接：什么时候值得从 ngram 升级到 ES |
+| [账务与清结算 · 对账体系与差错处理](../../Backend/Ledger/Reconciliation/index.md) | 三方对账、差异分类、挂账与冲正 | 两者在**对账取数**上互补：本专题讲「怎么把业务库的变更可靠地送出去」（binlog → 对账准备库），那边讲「送出来之后比什么、差异怎么处置」。判据：**CDC 解决「数据到得齐不齐」，对账专题解决「到了之后差多少、谁来处理」**；用 CDC 把业务库实时同步到对账库后，对账不必等日终批处理 |
 
 ## 专题地图
 

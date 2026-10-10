@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 396" width="760" height="396" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="396" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">记账幂等：让「重试」不改变结果</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">幂等的判据不是「不报错」，而是「重放后账面一个字节都不变」</text>
+  <rect x="20" y="84" width="232" height="116" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="136" y="102.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">三道幂等闸门</text>
+  <text x="136" y="119" text-anchor="middle" font-size="7.5" fill="#6D28D9">① 业务单号唯一键（库级）</text>
+  <text x="136" y="136.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">② 分录组唯一键（同组不可重复）</text>
+  <text x="136" y="153.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">③ 状态机：只允许一次成功迁移</text>
+  <rect x="264" y="84" width="232" height="116" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="102.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">重试的三种来源</text>
+  <text x="380" y="119" text-anchor="middle" font-size="7.5" fill="#1D4ED8">上游超时后重发（最常见）</text>
+  <text x="380" y="136.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">消息队列的重复投递</text>
+  <text x="380" y="153.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">运维手工补数 / 回放</text>
+  <rect x="508" y="84" width="232" height="116" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="624" y="102.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">乱序的两种形态</text>
+  <text x="624" y="119" text-anchor="middle" font-size="7.5" fill="#B45309">先到「受理」后到「成功」</text>
+  <text x="624" y="136.25" text-anchor="middle" font-size="7.5" fill="#B45309">先到「退款」后到「支付成功」</text>
+  <text x="624" y="153.5" text-anchor="middle" font-size="7.5" fill="#B45309">结论：不能假设顺序</text>
+  <rect x="20" y="220" width="356" height="152" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="198" y="238.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">正确写法（要点）</text>
+  <text x="198" y="255" text-anchor="middle" font-size="7.5" fill="#047857">捕获唯一键冲突，读回已有结果返回同一答案</text>
+  <text x="198" y="272.25" text-anchor="middle" font-size="7.5" fill="#047857">绝不用「先 select 再 insert」当幂等（并发不可靠）</text>
+  <text x="198" y="289.5" text-anchor="middle" font-size="7.5" fill="#047857">跨服务用同一 biz_no 贯穿，不每跳新生成</text>
+  <text x="198" y="306.75" text-anchor="middle" font-size="7.5" fill="#047857">失败重试必须走同一条处理路径，不写第二套</text>
+  <rect x="392" y="220" width="352" height="152" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="568" y="238.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">反例与代价</text>
+  <text x="568" y="255" text-anchor="middle" font-size="7.5" fill="#B91C1C">先查后插 → 并发下记两条分录，账直接不平</text>
+  <text x="568" y="272.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">用时间戳随机数当幂等键 → 每次重试都是新单</text>
+  <text x="568" y="289.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">幂等键只在网关生成 → 内网直调即可绕过</text>
+  <text x="568" y="306.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">失败删记录重试 → 审计断链，事后查不出</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

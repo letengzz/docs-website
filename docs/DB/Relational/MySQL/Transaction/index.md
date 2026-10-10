@@ -137,3 +137,4 @@ SELECT * FROM account WHERE id = 1 FOR UPDATE;
 - [2PC 与 XA](../../../../Backend/Microservices/DistributedTransaction/TwoPhaseCommit/index.md)：MySQL XA 语句、PREPARED 事务与 InnoDB 限制
 - [消息队列消费幂等](../../../../Backend/MessageQueue/Idempotency/index.md)：本地消息表方案中事务与消息投递的一致性
 - [SQL 优化 · 锁与事务](../../SQLOptimization/LockTransaction/index.md)：锁等待、死锁与长事务对查询的影响
+- [账务与清结算 · 账户、余额与流水](../../../../Backend/Ledger/AccountModel/index.md)：本页讲**通用机制**（隔离级别、行锁、条件更新、死锁成因）；那一页讲**账务场景下的具体取舍**——余额为什么必须用条件更新而不是「先查再改」、一次业务涉及两个账户时为什么要按 `account_no` 排序加锁（否则必然死锁）、热点账户怎么拆。判据：**本页给你工具，那一页给你在这个场景里的参数与红线**

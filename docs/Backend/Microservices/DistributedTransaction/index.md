@@ -171,6 +171,7 @@ public class OrderService {
 - [SQL 优化 · 锁与事务](../../../DB/Relational/SQLOptimization/LockTransaction/index.md)：行锁、死锁与长事务排查
 - [分库分表 · 跨分片查询与分布式事务](../../../DB/Relational/Sharding/CrossShard/index.md)：本页讲**原理与方案选型**（2PC / TCC / Saga / 本地消息表）；那一页讲**分片场景下怎么用**——分片后一个本地事务被拆散到多个库，本地消息表与最终一致性成了默认选项，含可直接落地的表结构与代码
 - [数据库中间件 · 中间件视角的分布式事务](../../../DB/Middleware/DistributedTransaction/index.md)：本页面向**跨服务**的一致性方案；那一页面向**跨库**——中间件提供的三种事务模式（LOCAL / XA / BASE）怎么配、MySQL 上 XA 的四个硬限制、以及「用故障注入断言两侧数据都不存在」的验证方式
+- [账务与清结算](../../Ledger/index.md)：本页保证的是「跨服务的操作**都发生**」（2PC / TCC / SAGA / 本地消息表）；账务专题保证的是「发生后**账本是平的**」（借贷相等、余额可重算、结算可追溯）。判据：**协议解决「做不做」，账本解决「做完对不对」**——两者缺一不可，只做协议的系统可以做到「每一笔都成功」却仍然对不上账
 
 ## 参考资料
 

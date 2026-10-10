@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 392" width="760" height="392" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="392" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">清分与结算：四个时间点、四种状态</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">交易发生 ≠ 钱能用 ≠ 钱已到账，把「何时可用」与「何时划付」拆开</text>
+  <rect x="20" y="88" width="172" height="106" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="106" y="106.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">T 日 · 交易</text>
+  <text x="106" y="123" text-anchor="middle" font-size="7.5" fill="#1D4ED8">用户支付成功</text>
+  <text x="106" y="140.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">账务记「在途」</text>
+  <text x="106" y="157.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">此时钱还不属于商户</text>
+  <line x1="196" y1="141" x2="200" y2="141" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="204" y="88" width="172" height="106" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="290" y="106.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">T 日 · 清分</text>
+  <text x="290" y="123" text-anchor="middle" font-size="7.5" fill="#0F766E">算清谁该给谁多少</text>
+  <text x="290" y="140.25" text-anchor="middle" font-size="7.5" fill="#0F766E">扣手续费与分账</text>
+  <text x="290" y="157.5" text-anchor="middle" font-size="7.5" fill="#0F766E">可重算，结果应一致</text>
+  <line x1="380" y1="141" x2="384" y2="141" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="388" y="88" width="172" height="106" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="474" y="106.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">T+1 · 结算</text>
+  <text x="474" y="123" text-anchor="middle" font-size="7.5" fill="#047857">形成结算单</text>
+  <text x="474" y="140.25" text-anchor="middle" font-size="7.5" fill="#047857">金额 = 清分 − 手续费</text>
+  <text x="474" y="157.5" text-anchor="middle" font-size="7.5" fill="#047857">仍是「应付」，未打款</text>
+  <line x1="564" y1="141" x2="568" y2="141" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="572" y="88" width="172" height="106" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="658" y="106.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">T+1 · 划付</text>
+  <text x="658" y="123" text-anchor="middle" font-size="7.5" fill="#B45309">向银行或渠道发起打款</text>
+  <text x="658" y="140.25" text-anchor="middle" font-size="7.5" fill="#B45309">回执到了才关单</text>
+  <text x="658" y="157.5" text-anchor="middle" font-size="7.5" fill="#B45309">银行流水必须能对上</text>
+  <rect x="20" y="222" width="356" height="150" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="198" y="240.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">三段各自的可靠性要求</text>
+  <text x="198" y="257" text-anchor="middle" font-size="7.5" fill="#4338CA">交易：可用性优先，宁可少一笔也不多一条错账</text>
+  <text x="198" y="274.25" text-anchor="middle" font-size="7.5" fill="#4338CA">清分：可重算，同一天重跑两次结果必须一致</text>
+  <text x="198" y="291.5" text-anchor="middle" font-size="7.5" fill="#4338CA">结算：幂等 + 人工复核，金额差错不自动改</text>
+  <text x="198" y="308.75" text-anchor="middle" font-size="7.5" fill="#4338CA">划付：先提交后确认，回执与账面必须能对上</text>
+  <rect x="392" y="222" width="352" height="150" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="568" y="240.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">常见口径陷阱</text>
+  <text x="568" y="257" text-anchor="middle" font-size="7.5" fill="#B91C1C">把「已支付」当「已入账」→ 提前放款</text>
+  <text x="568" y="274.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">把「已清分」当「已结算」→ 对不上银行流水</text>
+  <text x="568" y="291.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">手续费两边各扣一次 → 重复计费</text>
+  <text x="568" y="308.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">结算周期靠人记 → 漏结算没人发现</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

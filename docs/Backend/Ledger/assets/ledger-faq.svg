@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="390" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">钱对不上时，按这个顺序查</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先分类、再锁定样本、最后复现 —— 不要一上来就改代码</text>
+  <rect x="20" y="84" width="232" height="118" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="136" y="102.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">第一步：判断是哪一类</text>
+  <text x="136" y="119" text-anchor="middle" font-size="7.5" fill="#1D4ED8">金额差 → 分录 / 精度 / 分账</text>
+  <text x="136" y="136.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">笔数差 → 重复记账或漏记</text>
+  <text x="136" y="153.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">状态差 → 幂等与补偿的问题</text>
+  <rect x="264" y="84" width="232" height="118" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="102.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">第二步：锁定一条样本</text>
+  <text x="380" y="119" text-anchor="middle" font-size="7.5" fill="#0F766E">取最小区间：单笔 + 单日</text>
+  <text x="380" y="136.25" text-anchor="middle" font-size="7.5" fill="#0F766E">四个键串起来：biz_no → 支付单</text>
+  <text x="380" y="153.5" text-anchor="middle" font-size="7.5" fill="#0F766E">→ 分录 → 结算单</text>
+  <rect x="508" y="84" width="232" height="118" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="624" y="102.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">第三步：看它怎么产生的</text>
+  <text x="624" y="119" text-anchor="middle" font-size="7.5" fill="#B45309">是重放、乱序，还是手工改数</text>
+  <text x="624" y="136.25" text-anchor="middle" font-size="7.5" fill="#B45309">对照审计日志与原始入参</text>
+  <text x="624" y="153.5" text-anchor="middle" font-size="7.5" fill="#B45309">复现一次再动手修</text>
+  <rect x="20" y="224" width="356" height="150" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="198" y="242.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">高频三问</text>
+  <text x="198" y="259" text-anchor="middle" font-size="7.5" fill="#6D28D9">「余额对不上分录」→ 先搜有没有直改余额的代码</text>
+  <text x="198" y="276.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">「同一天重跑对账结果不同」→ 对账任务不幂等</text>
+  <text x="198" y="293.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">「差一分钱」→ 精度与分摊尾差没有定义</text>
+  <text x="198" y="310.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">「月结差一笔」→ 跨周期挂账没有明确归属</text>
+  <rect x="392" y="224" width="352" height="150" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="568" y="242.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">一条底线</text>
+  <text x="568" y="259" text-anchor="middle" font-size="7.5" fill="#B91C1C">任何一次资金差异都必须能回答四个问题：</text>
+  <text x="568" y="276.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">① 差异金额是多少</text>
+  <text x="568" y="293.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">② 差在链路的哪一环</text>
+  <text x="568" y="310.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">③ 谁在什么时候怎么处理的</text>
+  <text x="568" y="328" text-anchor="middle" font-size="7.5" fill="#B91C1C">④ 拿什么证明已经打平</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

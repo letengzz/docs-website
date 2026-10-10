@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 402" width="760" height="402" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="402" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">账户、余额与流水：三张表各存什么</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">分录是事实、余额是缓存、流水是凭证 —— 三者必须能互相重算出来</text>
+  <rect x="20" y="84" width="220" height="138" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="130" y="102.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">账户树（示例）</text>
+  <text x="130" y="119" text-anchor="middle" font-size="7.5" fill="#1D4ED8">平台总账</text>
+  <text x="130" y="136.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">├ 用户余额账户</text>
+  <text x="130" y="153.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">├ 平台收入账户</text>
+  <text x="130" y="170.75" text-anchor="middle" font-size="7.5" fill="#1D4ED8">├ 渠道在途账户</text>
+  <text x="130" y="188" text-anchor="middle" font-size="7.5" fill="#1D4ED8">└ 手续费支出账户</text>
+  <rect x="256" y="84" width="220" height="138" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="366" y="102.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">余额的三种口径</text>
+  <text x="366" y="119" text-anchor="middle" font-size="7.5" fill="#047857">账面余额 = 分录累加</text>
+  <text x="366" y="136.25" text-anchor="middle" font-size="7.5" fill="#047857">可用余额 = 账面 − 冻结</text>
+  <text x="366" y="153.5" text-anchor="middle" font-size="7.5" fill="#047857">冻结余额 = 出金在途</text>
+  <text x="366" y="170.75" text-anchor="middle" font-size="7.5" fill="#047857">谁都不能直改，只能由分录驱动</text>
+  <rect x="492" y="84" width="248" height="138" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="616" y="102.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">热点账户的三种解法</text>
+  <text x="616" y="119" text-anchor="middle" font-size="7.5" fill="#B45309">① 串行化：单账户行锁排队</text>
+  <text x="616" y="136.25" text-anchor="middle" font-size="7.5" fill="#B45309">② 拆子账户：分片后合并汇总</text>
+  <text x="616" y="153.5" text-anchor="middle" font-size="7.5" fill="#B45309">③ 异步记账：先流水后批处理</text>
+  <text x="616" y="170.75" text-anchor="middle" font-size="7.5" fill="#B45309">④ 限额与排队：把尖峰摊平</text>
+  <rect x="20" y="238" width="356" height="140" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="198" y="256.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">表结构要点</text>
+  <text x="198" y="273" text-anchor="middle" font-size="7.5" fill="#0F766E">账户表：account_no / 类型 / 币种 / 状态</text>
+  <text x="198" y="290.25" text-anchor="middle" font-size="7.5" fill="#0F766E">余额表：账面 / 可用 / 冻结 / version</text>
+  <text x="198" y="307.5" text-anchor="middle" font-size="7.5" fill="#0F766E">流水表：biz_no 唯一 / 方向 / 金额 / 结余</text>
+  <text x="198" y="324.75" text-anchor="middle" font-size="7.5" fill="#0F766E">分录表：entry_id / 科目 / 方向 / 金额 / 分组</text>
+  <rect x="392" y="238" width="352" height="140" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="568" y="256.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">并发与精度</text>
+  <text x="568" y="273" text-anchor="middle" font-size="7.5" fill="#B91C1C">金额一律 DECIMAL(x,2) 或「分」整数，禁用 float</text>
+  <text x="568" y="290.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">改余额必须带 version 条件并检查影响行数</text>
+  <text x="568" y="307.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">同一账户的记账在库内串行（行锁或排队）</text>
+  <text x="568" y="324.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">跨账户先落分录再异步改余额，保证不丢</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

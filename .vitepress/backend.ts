@@ -546,3 +546,20 @@ export const ReactiveProgramming = [
     ],
   },
 ];
+
+export const Ledger = [
+  {
+    text: "账务与清结算",
+    link: "/docs/Backend/Ledger/index.md",
+    items: [
+      { text: "总览：账务系统的四条边界", link: "/docs/Backend/Ledger/Overview/index.md" },
+      { text: "复式记账与账本模型", link: "/docs/Backend/Ledger/DoubleEntry/index.md" },
+      { text: "账户、余额与流水", link: "/docs/Backend/Ledger/AccountModel/index.md" },
+      { text: "记账幂等与一致性", link: "/docs/Backend/Ledger/Idempotency/index.md" },
+      { text: "清分与结算", link: "/docs/Backend/Ledger/Settlement/index.md" },
+      { text: "对账体系与差错处理", link: "/docs/Backend/Ledger/Reconciliation/index.md" },
+      { text: "实战：从一笔支付到日终打平", link: "/docs/Backend/Ledger/Practice/index.md" },
+      { text: "常见问题与排错", link: "/docs/Backend/Ledger/FAQ/index.md" },
+    ],
+  },
+];
