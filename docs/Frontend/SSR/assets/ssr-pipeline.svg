@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">一次 SSR 请求的两次渲染</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">同一份组件代码跑两遍，中间靠「注入的状态」对齐</text>
+  <rect x="40" y="80" width="300" height="150" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="190" y="103" text-anchor="middle" font-size="10.5" fill="#3730A3" font-weight="bold">第一遍：服务端</text>
+  <text x="60" y="126" font-size="8" fill="#4338CA">① 接收请求（URL / Cookie / Header）</text>
+  <text x="60" y="144" font-size="8" fill="#4338CA">② 路由匹配</text>
+  <text x="60" y="162" font-size="8" fill="#4338CA">③ 数据预取（首屏必需）</text>
+  <text x="60" y="180" font-size="8" fill="#4338CA">④ 每请求新建 app / router / store</text>
+  <text x="60" y="198" font-size="8" fill="#4338CA">⑤ 渲染为字符串或流</text>
+  <text x="60" y="216" font-size="8" fill="#4338CA">⑥ 注入状态　⑦ 输出响应与缓存头</text>
+  <rect x="420" y="80" width="300" height="150" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="570" y="103" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">第二遍：浏览器</text>
+  <text x="440" y="126" font-size="8" fill="#047857">① 解析 HTML 建 DOM（此时用户已能看）</text>
+  <text x="440" y="144" font-size="8" fill="#047857">② 加载并执行 JS，重建虚拟 DOM</text>
+  <text x="440" y="162" font-size="8" fill="#047857">③ 水合：逐节点比对 + 绑定事件</text>
+  <text x="440" y="186" font-size="8" fill="#065F46" font-weight="bold">比对通过 → 可交互</text>
+  <text x="440" y="206" font-size="8" fill="#B91C1C">比对失败 → mismatch，退化为客户端重渲染</text>
+  <path d="M 300 155 H 415" stroke="#4F46E5" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="357" y="148" text-anchor="middle" font-size="8" fill="#4338CA">HTML + 状态</text>
+  <rect x="60" y="255" width="640" height="52" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="276" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">同构的边界</text>
+  <text x="380" y="296" text-anchor="middle" font-size="8" fill="#334155">可共享：纯计算、组件、框架跨端能力 ｜ 不可共享：window/document、浏览器库、Node 专属 API</text>
+  <rect x="60" y="320" width="640" height="56" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="342" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">第 ④ 步是最容易被忽略、后果最严重的一步</text>
+  <text x="380" y="362" text-anchor="middle" font-size="8" fill="#B91C1C">模块级单例会让服务端所有请求共用一份状态 —— 跨用户数据串味</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#4F46E5"/>
+    </marker>
+  </defs>
+</svg>

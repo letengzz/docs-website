@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="380" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">把 SPA 改造成可缓存的 SSR：六步</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">不要跳步：第 4、5 步跳过通常会在两周内回滚</text>
+  <rect x="40" y="78" width="220" height="72" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="150" y="100" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">① 路由盘点与模式分配</text>
+  <text x="150" y="120" text-anchor="middle" font-size="8" fill="#4338CA">产出「路由 → 模式 → 缓存策略」表</text>
+  <text x="150" y="138" text-anchor="middle" font-size="8" fill="#4338CA">判据 P1：至少有一行选了「不改」</text>
+  <rect x="270" y="78" width="220" height="72" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="100" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 跑通最小 SSR 骨架</text>
+  <text x="380" y="120" text-anchor="middle" font-size="8" fill="#1D4ED8">只迁一个最简单路由</text>
+  <text x="380" y="138" text-anchor="middle" font-size="8" fill="#1D4ED8">判据 P2：curl 到的 HTML 里有内容</text>
+  <rect x="500" y="78" width="220" height="72" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="610" y="100" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">③ 迁移路由与数据</text>
+  <text x="610" y="120" text-anchor="middle" font-size="8" fill="#0F766E">先静态、后动态、最后个性化</text>
+  <text x="610" y="138" text-anchor="middle" font-size="8" fill="#0F766E">判据 P3：带/不带 Cookie 结果不同</text>
+  <rect x="40" y="164" width="220" height="72" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.6"/>
+  <text x="150" y="186" text-anchor="middle" font-size="9.5" fill="#9D174D" font-weight="bold">④ 水合错误清零</text>
+  <text x="150" y="206" text-anchor="middle" font-size="8" fill="#BE185D">时间/随机/平台 API/客户端库全部治理</text>
+  <text x="150" y="224" text-anchor="middle" font-size="8" fill="#BE185D">判据 P4：警告数为 0（CI 门禁）</text>
+  <rect x="270" y="164" width="220" height="72" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="380" y="186" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">⑤ 缓存分层与响应头</text>
+  <text x="380" y="206" text-anchor="middle" font-size="8" fill="#C2410C">先数据层，再整页；私有页必须 no-store</text>
+  <text x="380" y="224" text-anchor="middle" font-size="8" fill="#C2410C">判据 P5：Age 递增 / private 生效</text>
+  <rect x="500" y="164" width="220" height="72" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="610" y="186" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">⑥ 监控、降级与发布</text>
+  <text x="610" y="206" text-anchor="middle" font-size="8" fill="#047857">P95 / 错误率 / 命中率 / 降级次数</text>
+  <text x="610" y="224" text-anchor="middle" font-size="8" fill="#047857">判据 P6：下游故障时返回兜底</text>
+  <path d="M 260 114 H 265" stroke="#4F46E5" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M 490 114 H 495" stroke="#2563EB" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M 610 150 V 160" stroke="#0D9488" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M 260 200 H 265" stroke="#DB2777" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M 490 200 H 495" stroke="#EA580C" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="60" y="258" width="310" height="98" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="215" y="280" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">验收判据（P1~P10 摘要）</text>
+  <text x="80" y="300" font-size="8" fill="#334155">P7 首屏字节数 ≤ 改造前 +20%</text>
+  <text x="80" y="316" font-size="8" fill="#334155">P8 注入状态不含凭据　P9 SSR P95 达标</text>
+  <text x="80" y="332" font-size="8" fill="#334155">P10 缓存未命中压测下错误率 &lt; 1%</text>
+  <text x="80" y="348" font-size="8" fill="#B91C1C">判据不是实测记录：未跑就写「未跑 + 原因」</text>
+  <rect x="390" y="258" width="310" height="98" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="545" y="280" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">本方案明确不做</text>
+  <text x="410" y="300" font-size="8" fill="#B91C1C">不做全站 SSR（后台保持 CSR）</text>
+  <text x="410" y="316" font-size="8" fill="#B91C1C">不做自研边缘缓存</text>
+  <text x="410" y="332" font-size="8" fill="#B91C1C">不做细粒度片段缓存</text>
+  <text x="410" y="348" font-size="8" fill="#B91C1C">不做无降级的 SSR</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#4F46E5"/>
+    </marker>
+  </defs>
+</svg>

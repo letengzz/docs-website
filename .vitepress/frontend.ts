@@ -760,3 +760,20 @@ export const FrontPWA = [
         ],
     },
 ];
+export const FrontSSR = [
+    {
+        text: "服务端渲染深入",
+        link: "/docs/Frontend/SSR/index.md",
+        items: [
+            { text: "概述：渲染模式全景", link: "/docs/Frontend/SSR/Overview/index.md" },
+            { text: "渲染管线与同构", link: "/docs/Frontend/SSR/CoreConcepts/index.md" },
+            { text: "水合深入", link: "/docs/Frontend/SSR/Hydration/index.md" },
+            { text: "流式渲染", link: "/docs/Frontend/SSR/Streaming/index.md" },
+            { text: "缓存体系", link: "/docs/Frontend/SSR/Caching/index.md" },
+            { text: "服务端数据获取", link: "/docs/Frontend/SSR/DataFetching/index.md" },
+            { text: "性能与成本", link: "/docs/Frontend/SSR/Performance/index.md" },
+            { text: "实战：把 SPA 改造成可缓存的 SSR", link: "/docs/Frontend/SSR/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/SSR/FAQ/index.md" },
+        ],
+    },
+];

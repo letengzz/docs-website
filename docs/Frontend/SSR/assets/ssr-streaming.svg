@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="390" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">流式渲染：先发能发的，慢的后补</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">Shell 与边界分开交付，慢依赖不再阻塞首字节</text>
+  <rect x="40" y="80" width="680" height="70" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="102" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">不流式：最慢依赖决定一切（850ms 后才见到第一个字节的内容）</text>
+  <rect x="60" y="114" width="120" height="20" rx="4" fill="#FECACA"/>
+  <text x="120" y="128" text-anchor="middle" font-size="7.5" fill="#991B1B">快 A 20ms</text>
+  <rect x="185" y="114" width="130" height="20" rx="4" fill="#FECACA"/>
+  <text x="250" y="128" text-anchor="middle" font-size="7.5" fill="#991B1B">快 B 30ms</text>
+  <rect x="320" y="114" width="380" height="20" rx="4" fill="#FCA5A5"/>
+  <text x="510" y="128" text-anchor="middle" font-size="7.5" fill="#7F1D1D">慢 C 800ms —— 前 30ms 就能渲染的部分被压住</text>
+  <rect x="40" y="165" width="680" height="86" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="187" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">流式：Shell 先到，边界后补</text>
+  <rect x="60" y="199" width="110" height="20" rx="4" fill="#A7F3D0"/>
+  <text x="115" y="213" text-anchor="middle" font-size="7.5" fill="#065F46">Shell（~40ms）</text>
+  <rect x="175" y="199" width="120" height="20" rx="4" fill="#BBF7D0"/>
+  <text x="235" y="213" text-anchor="middle" font-size="7.5" fill="#065F46">边界① 快区块</text>
+  <rect x="300" y="199" width="150" height="20" rx="4" fill="#D9F99D"/>
+  <text x="375" y="213" text-anchor="middle" font-size="7.5" fill="#3F6212">边界② 中速区块</text>
+  <rect x="455" y="199" width="245" height="20" rx="4" fill="#FDE68A"/>
+  <text x="577" y="213" text-anchor="middle" font-size="7.5" fill="#92400E">边界③ 慢区块（800ms，占位先显示）</text>
+  <text x="380" y="240" text-anchor="middle" font-size="8" fill="#047857">响应头在 Shell 阶段就已写出 → 无法再把 200 改成 500</text>
+  <rect x="60" y="268" width="330" height="76" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="225" y="290" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">指标会怎么变</text>
+  <text x="80" y="310" font-size="8" fill="#C2410C">TTFB ↓（但它失去可比性，别单独用）</text>
+  <text x="80" y="326" font-size="8" fill="#C2410C">FCP ↓　LCP 视最大元素位置　CLS 可能变差</text>
+  <rect x="400" y="268" width="320" height="76" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="560" y="290" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">两个必查的生产坑</text>
+  <text x="420" y="310" font-size="8" fill="#B91C1C">中间层缓冲（proxy_buffering off / X-Accel-Buffering: no）</text>
+  <text x="420" y="326" font-size="8" fill="#B91C1C">占位尺寸与真实内容不一致 → CLS 爆表</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

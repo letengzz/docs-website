@@ -241,6 +241,7 @@ npx nuxi build && node .output/server/index.mjs
 ## 相关页面
 
 - [数据获取与状态](../DataFetching/index.md) —— payload 与缓存键的机制展开
+- [服务端渲染深入 · 概述](../../../SSR/Overview/index.md) —— **分工是**：本页讲 Nuxt 四种渲染模式各自的机制与代价；那一页把渲染模式抽象成**框架无关的判据**（可缓存性 / 时效性 / 个性化）与决策树，并给出「什么时候不该上 SSR」的四类反例。
 - [服务端能力：Server Routes 与中间件](../ServerRoute/index.md) —— `server/` 目录怎么写
 - [部署与实战](../Deployment/index.md) —— 四种模式各自的部署形态
 - [Next 框架](../../Next/index.md) —— React 侧的同层方案

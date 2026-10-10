@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="380" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">SSR 问题分诊：症状到根因</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先看证据再看代码：curl · curl -I · 控制台第一条警告</text>
+  <rect x="40" y="78" width="330" height="230" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="205" y="100" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">症状 → 先看什么</text>
+  <text x="60" y="124" font-size="8" fill="#334155">首屏白屏久 → curl 到的 HTML 里有没有内容</text>
+  <text x="60" y="146" font-size="8" fill="#334155">内容闪一下 → 控制台是否报 hydration mismatch</text>
+  <text x="60" y="168" font-size="8" fill="#334155">能看但点不动 → 水合是否完成 / 主线程长任务</text>
+  <text x="60" y="190" font-size="8" fill="#334155">内容忽新忽旧 → 缓存头与命中情况</text>
+  <text x="60" y="212" font-size="8" fill="#991B1B">用户间串数据 → 缓存头是否 public（立即改）</text>
+  <text x="60" y="234" font-size="8" fill="#334155">刷新掉登录 → 内部调用是否带 Cookie</text>
+  <text x="60" y="256" font-size="8" fill="#334155">流式没生效 → 响应是否 chunked（中间层缓冲）</text>
+  <text x="60" y="278" font-size="8" fill="#334155">上了反而更慢 → 串行瀑布 / 无缓存 / 注入过大</text>
+  <text x="60" y="298" font-size="8" fill="#64748B">定位顺序固定，跳过它会在错误的层里打转</text>
+  <rect x="390" y="78" width="330" height="108" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="555" y="100" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">三条命令定乾坤</text>
+  <text x="410" y="122" font-size="8" fill="#1D4ED8">curl -s &lt;url&gt; | grep 关键文案 → 首屏是否有内容</text>
+  <text x="410" y="142" font-size="8" fill="#1D4ED8">curl -I &lt;url&gt; → 缓存语义（s-maxage / private / Age）</text>
+  <text x="410" y="162" font-size="8" fill="#1D4ED8">控制台第一条警告 → 水合差异的真实位置</text>
+  <text x="410" y="180" font-size="8" fill="#64748B">这三条能覆盖绝大多数「玄学问题」</text>
+  <rect x="390" y="200" width="330" height="108" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="555" y="222" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">四类问题归谁管</text>
+  <text x="410" y="244" font-size="8" fill="#047857">渲染模式与决策 → 概述页</text>
+  <text x="410" y="264" font-size="8" fill="#047857">两端不一致 → 水合深入页</text>
+  <text x="410" y="284" font-size="8" fill="#047857">内容新旧与串号 → 缓存体系页</text>
+  <text x="410" y="304" font-size="8" fill="#047857">快慢与容量 → 性能与成本页</text>
+  <rect x="60" y="324" width="660" height="44" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="390" y="351" text-anchor="middle" font-size="9" fill="#991B1B">一条纪律：把「水合警告 = 0」写进 CI，把「私有页不进共享缓存」写进上线检查表</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

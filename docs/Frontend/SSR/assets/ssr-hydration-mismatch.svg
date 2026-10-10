@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">水合不匹配的六类成因</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">任何「两端输入不同」都会在这里爆发</text>
+  <rect x="40" y="78" width="220" height="52" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="150" y="100" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">① 时间相关</text>
+  <text x="150" y="118" text-anchor="middle" font-size="8" fill="#047857">new Date() 直接进模板 → 服务端注入</text>
+  <rect x="270" y="78" width="220" height="52" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="100" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 随机值</text>
+  <text x="380" y="118" text-anchor="middle" font-size="8" fill="#1D4ED8">Math.random() / uuid() → 稳定 key</text>
+  <rect x="500" y="78" width="220" height="52" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="610" y="100" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">③ 平台差异</text>
+  <text x="610" y="118" text-anchor="middle" font-size="8" fill="#0F766E">读 window/navigator → 默认值 + 挂载后校正</text>
+  <rect x="40" y="142" width="220" height="52" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="150" y="164" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">④ 环境变量泄漏</text>
+  <text x="150" y="182" text-anchor="middle" font-size="8" fill="#B45309">process.env 两端不同 → 显式注入</text>
+  <rect x="270" y="142" width="220" height="52" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="380" y="164" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">⑤ 数据不一致</text>
+  <text x="380" y="182" text-anchor="middle" font-size="8" fill="#C2410C">两端各取一次 → 复用注入状态</text>
+  <rect x="500" y="142" width="220" height="52" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="610" y="164" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">⑥ HTML 结构非法</text>
+  <text x="610" y="182" text-anchor="middle" font-size="8" fill="#B91C1C">浏览器纠正嵌套 → 用合法结构</text>
+  <rect x="60" y="215" width="300" height="80" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="210" y="238" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">定位顺序（照做省时间）</text>
+  <text x="80" y="258" font-size="8" fill="#4338CA">① 只看控制台第一条警告（后面多是连锁反应）</text>
+  <text x="80" y="274" font-size="8" fill="#4338CA">② curl 看原始 HTML 该区块长什么样</text>
+  <text x="80" y="290" font-size="8" fill="#4338CA">③ 二分：可疑区块加 ClientOnly 看警告是否消失</text>
+  <rect x="400" y="215" width="320" height="80" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="560" y="238" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">代价：退化为客户端渲染</text>
+  <text x="420" y="258" font-size="8" fill="#334155">· 内容闪动、交互延迟</text>
+  <text x="420" y="274" font-size="8" fill="#334155">· SEO 抓到的仍是服务端版本（可能与用户看到的不同）</text>
+  <text x="420" y="290" font-size="8" fill="#334155">· 事件绑定错位时表现为「点不动」</text>
+  <rect x="60" y="310" width="660" height="62" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="390" y="333" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">把水合警告纳入 CI</text>
+  <text x="390" y="353" text-anchor="middle" font-size="8" fill="#B91C1C">E2E 拦截 console.error / console.warn，出现即失败 —— 否则它只表现为用户侧的「轻微闪动」，没人会报 bug</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

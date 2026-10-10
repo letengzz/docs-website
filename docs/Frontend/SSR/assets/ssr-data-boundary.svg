@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="390" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">服务端取数的三条硬约束</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">没有浏览器环境 · Cookie 不会自动透传 · 请求会被放大</text>
+  <rect x="40" y="78" width="220" height="96" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="150" y="100" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">① 没有浏览器环境</text>
+  <text x="60" y="122" font-size="8" fill="#4338CA">window / document 不存在</text>
+  <text x="60" y="140" font-size="8" fill="#4338CA">fetch 的相对路径会抛错</text>
+  <text x="60" y="158" font-size="8" fill="#4338CA">→ 用配置里的站点绝对地址</text>
+  <rect x="270" y="78" width="220" height="96" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="380" y="100" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">② Cookie 不自动透传</text>
+  <text x="290" y="122" font-size="8" fill="#C2410C">内部调用是一次全新请求</text>
+  <text x="290" y="140" font-size="8" fill="#C2410C">现象：SSR 首屏未登录</text>
+  <text x="290" y="158" font-size="8" fill="#C2410C">→ 显式把入站 cookie 头带上</text>
+  <rect x="500" y="78" width="220" height="96" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.6"/>
+  <text x="610" y="100" text-anchor="middle" font-size="9.5" fill="#9D174D" font-weight="bold">③ 请求会放大</text>
+  <text x="520" y="122" font-size="8" fill="#BE185D">列表页 N+1 → 打爆下游</text>
+  <text x="520" y="140" font-size="8" fill="#BE185D">同请求重复取同一数据</text>
+  <text x="520" y="158" font-size="8" fill="#BE185D">→ 批量查 + 请求级去重</text>
+  <rect x="60" y="192" width="310" height="86" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="215" y="214" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">两种取数时机</text>
+  <text x="80" y="234" font-size="8" fill="#0F766E">渲染前预取：组件是纯函数，Shell 一定有内容</text>
+  <text x="80" y="252" font-size="8" fill="#0F766E">渲染中异步：进 Suspense 边界，快区块先出</text>
+  <text x="80" y="270" font-size="8" fill="#115E59">判据：这块内容是否首屏可见且与布局强相关</text>
+  <rect x="390" y="192" width="310" height="86" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="545" y="214" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">超时预算（示例）</text>
+  <text x="410" y="234" font-size="8" fill="#B45309">内部服务 300~800ms ｜ 数据库 500ms~2s</text>
+  <text x="410" y="252" font-size="8" fill="#B45309">第三方 1~3s，必须降级不可阻塞首屏</text>
+  <text x="410" y="270" font-size="8" fill="#92400E">降级要带标记（degraded: true）才看得见</text>
+  <rect x="60" y="294" width="640" height="70" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="317" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">请求级缓存必须随请求创建、随请求销毁</text>
+  <text x="380" y="337" text-anchor="middle" font-size="8" fill="#B91C1C">用模块级 Map 当容器 = 变成没有失效策略的跨请求缓存 → 内存泄漏 + 数据串味</text>
+  <text x="380" y="355" text-anchor="middle" font-size="8" fill="#B91C1C">只导出状态快照，不要把缓存容器带出请求边界</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

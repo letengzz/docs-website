@@ -163,6 +163,8 @@ curl -sI http://127.0.0.1:3000/posts/hello-world | grep -i cache-control
 
 ## 相关章节
 
+- [服务端渲染深入](../../../../docs/Frontend/SSR/index.md)：**分工是**——本页讲这个项目**具体怎么落地**（四纪律、三红线、P1~P10 判据）；该专题讲**框架无关的原理与判据**（渲染模式取舍、水合六类成因、缓存分层与失效、流式回退），本页的每条纪律都能在那边找到「为什么」。
+
 - [全文搜索：MySQL ngram 先行](../Search/index.md)：R5/R6/R8 承接其 Q4 与 Q7 判据
 - [可见性收敛](../Visibility/index.md)：R3 的 404 一致性口径来源
 - [Markdown 渲染能力补齐](../Rendering/index.md)：description 的纯文本来源（写时渲染）

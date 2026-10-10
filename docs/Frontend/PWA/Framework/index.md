@@ -233,6 +233,10 @@ pnpm build && pnpm preview
    期望：SW 为 `no-cache`；Manifest 的 Content-Type 为 `application/manifest+json`。
 5. 若为 SSR 项目：勾 Offline 后打开某篇文章 → 确认**不会**出现「HTML 回来了但接口是错的数据」这种半残状态（要么完整可读，要么干净地落到离线页）。
 
+::: tip 相关专题
+[服务端渲染深入](../../SSR/index.md)：**分工是**——本页讲「渲染产物之外的那一层」（Service Worker 缓存、离线兜底）以及它与 SSR 的三处冲突；该专题讲**渲染这一层本身**（渲染模式取舍、水合对齐、缓存分层与流式回退）。两边共用同一条判据：**SSR 的 HTML 是每次请求现渲染的，因此不该进预缓存。**
+:::
+
 ## 参考资料
 
 - [vite-plugin-pwa 官方文档](https://vite-pwa-org.netlify.app/)

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">服务端渲染深入：专题地图</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先定渲染模式，再管水合与缓存；四类问题各有归属页</text>
+  <rect x="40" y="80" width="150" height="66" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="115" y="104" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">概述与决策</text>
+  <text x="115" y="122" text-anchor="middle" font-size="7.5" fill="#4338CA">五种形态 · 三维判据</text>
+  <text x="115" y="136" text-anchor="middle" font-size="7.5" fill="#4338CA">什么时候不该上 SSR</text>
+  <rect x="215" y="80" width="150" height="66" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="290" y="104" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">渲染管线与同构</text>
+  <text x="290" y="122" text-anchor="middle" font-size="7.5" fill="#1D4ED8">服务端七步 · 浏览器三步</text>
+  <text x="290" y="136" text-anchor="middle" font-size="7.5" fill="#1D4ED8">序列化边界与状态注入</text>
+  <rect x="390" y="80" width="150" height="66" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="465" y="104" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">水合深入</text>
+  <text x="465" y="122" text-anchor="middle" font-size="7.5" fill="#0F766E">六类不匹配成因</text>
+  <text x="465" y="136" text-anchor="middle" font-size="7.5" fill="#0F766E">选择性水合与岛屿架构</text>
+  <rect x="565" y="80" width="155" height="66" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="642" y="104" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">流式渲染</text>
+  <text x="642" y="122" text-anchor="middle" font-size="7.5" fill="#047857">Shell 与边界划分</text>
+  <text x="642" y="136" text-anchor="middle" font-size="7.5" fill="#047857">错误回退与缓冲陷阱</text>
+  <rect x="40" y="175" width="150" height="66" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="115" y="199" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">缓存体系</text>
+  <text x="115" y="217" text-anchor="middle" font-size="7.5" fill="#C2410C">四层缓存与缓存键</text>
+  <text x="115" y="231" text-anchor="middle" font-size="7.5" fill="#C2410C">ISR 与失效策略</text>
+  <rect x="215" y="175" width="150" height="66" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="290" y="199" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">服务端数据获取</text>
+  <text x="290" y="217" text-anchor="middle" font-size="7.5" fill="#B45309">Cookie 透传与请求合并</text>
+  <text x="290" y="231" text-anchor="middle" font-size="7.5" fill="#B45309">超时预算与降级</text>
+  <rect x="390" y="175" width="150" height="66" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.6"/>
+  <text x="465" y="199" text-anchor="middle" font-size="10" fill="#9D174D" font-weight="bold">性能与成本</text>
+  <text x="465" y="217" text-anchor="middle" font-size="7.5" fill="#BE185D">指标口径与串行瀑布</text>
+  <text x="465" y="231" text-anchor="middle" font-size="7.5" fill="#BE185D">命中率与容量估算</text>
+  <rect x="565" y="175" width="155" height="66" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="642" y="199" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">实战与 FAQ</text>
+  <text x="642" y="217" text-anchor="middle" font-size="7.5" fill="#6D28D9">六步改造与判据 P1~P10</text>
+  <text x="642" y="231" text-anchor="middle" font-size="7.5" fill="#6D28D9">分诊表与上线自查</text>
+  <rect x="90" y="275" width="580" height="58" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="298" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">三条主线</text>
+  <text x="380" y="318" text-anchor="middle" font-size="8" fill="#334155">① 首屏从哪来（模式与取数） ② 两端怎么对齐（同构与水合） ③ 这份 HTML 能不能被缓存（分层与失效）</text>
+  <rect x="90" y="350" width="580" height="52" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="372" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">最严重的事故类型：个性化页面进了共享缓存</text>
+  <text x="380" y="390" text-anchor="middle" font-size="8" fill="#B91C1C">凡是响应随身份变化，就必须 private/no-store 或把身份写进缓存键</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

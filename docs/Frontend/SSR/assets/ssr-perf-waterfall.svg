@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="380" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">串行瀑布：SSR 最大的性能杀手</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">时间轴上的空白 = 在等，不是在算</text>
+  <rect x="40" y="78" width="680" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="100" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">串行（总耗时 = 各项之和 ≈ 900ms）</text>
+  <rect x="60" y="112" width="140" height="22" rx="4" fill="#FECACA"/>
+  <text x="130" y="127" text-anchor="middle" font-size="7.5" fill="#991B1B">取用户 200ms</text>
+  <rect x="205" y="112" width="110" height="22" rx="4" fill="#FECACA"/>
+  <text x="260" y="127" text-anchor="middle" font-size="7.5" fill="#991B1B">取权限 150ms</text>
+  <rect x="320" y="112" width="210" height="22" rx="4" fill="#FCA5A5"/>
+  <text x="425" y="127" text-anchor="middle" font-size="7.5" fill="#7F1D1D">取订单 300ms</text>
+  <rect x="535" y="112" width="165" height="22" rx="4" fill="#FCA5A5"/>
+  <text x="617" y="127" text-anchor="middle" font-size="7.5" fill="#7F1D1D">取推荐 250ms</text>
+  <text x="380" y="155" text-anchor="middle" font-size="8" fill="#B91C1C">每个下游都在等上一个返回，CPU 大部分时间空闲</text>
+  <rect x="40" y="178" width="680" height="96" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="200" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">并行（总耗时 = 最慢的一项 ≈ 350ms）</text>
+  <rect x="60" y="212" width="140" height="20" rx="4" fill="#A7F3D0"/>
+  <text x="130" y="226" text-anchor="middle" font-size="7.5" fill="#065F46">取用户 200ms</text>
+  <rect x="60" y="236" width="110" height="20" rx="4" fill="#BBF7D0"/>
+  <text x="115" y="250" text-anchor="middle" font-size="7.5" fill="#065F46">取权限 150ms</text>
+  <rect x="60" y="212" width="210" height="20" rx="4" fill="#D9F99D" opacity="0.85"/>
+  <text x="230" y="226" text-anchor="middle" font-size="7.5" fill="#3F6212">取订单 300ms</text>
+  <rect x="60" y="236" width="165" height="20" rx="4" fill="#FDE68A"/>
+  <text x="200" y="250" text-anchor="middle" font-size="7.5" fill="#92400E">取推荐 250ms</text>
+  <text x="380" y="268" text-anchor="middle" font-size="8" fill="#047857">无依赖的取数一律 Promise.all；有依赖的先「扁平化」依赖链</text>
+  <rect x="60" y="290" width="310" height="74" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="215" y="312" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">识别三步</text>
+  <text x="80" y="332" font-size="8" fill="#1D4ED8">① 每个取数调用打点（traceId + 起止时间）</text>
+  <text x="80" y="350" font-size="8" fill="#1D4ED8">② 同一 traceId 画时间轴，找空白</text>
+  <text x="80" y="366" font-size="8" fill="#1D4ED8">③ 消除依赖：并行 或 进 Suspense 边界</text>
+  <rect x="390" y="290" width="310" height="74" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="545" y="312" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">容量估算</text>
+  <text x="410" y="332" font-size="8" fill="#B45309">实例数 ≈ 峰值 QPS × 渲染耗时 ÷ 单实例并发</text>
+  <text x="410" y="350" font-size="8" fill="#B45309">渲染是 CPU 密集型，CPU 限额先于内存见顶</text>
+  <text x="410" y="366" font-size="8" fill="#92400E">慢下游会让所需实例数成倍上升</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -258,6 +258,7 @@ export const CompleteProject = [
           { text: "需求拆分与技术选型", link: "/project/Complete/MonitoringDashboard/Requirements/index.md" },
           { text: "架构细化：组件与接口边界", link: "/project/Complete/MonitoringDashboard/Architecture/index.md" },
           { text: "指标模型与保留策略", link: "/project/Complete/MonitoringDashboard/MetricModel/index.md" },
+          { text: "规范落地校验门禁", link: "/project/Complete/MonitoringDashboard/MetricGate/index.md" },
         ],
       },
       {

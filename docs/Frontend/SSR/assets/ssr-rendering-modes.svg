@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">五种渲染形态：HTML 在什么时刻生成</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">按路由选择，而不是按项目选择</text>
+  <rect x="30" y="78" width="132" height="120" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="96" y="100" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">CSR</text>
+  <text x="96" y="120" text-anchor="middle" font-size="7.5" fill="#334155">浏览器生成 HTML</text>
+  <text x="96" y="136" text-anchor="middle" font-size="7.5" fill="#334155">服务端几乎不计算</text>
+  <text x="96" y="152" text-anchor="middle" font-size="7.5" fill="#334155">首屏依赖 JS</text>
+  <text x="96" y="172" text-anchor="middle" font-size="7.5" fill="#64748B">后台系统</text>
+  <text x="96" y="188" text-anchor="middle" font-size="7.5" fill="#64748B">登录后工作台</text>
+  <rect x="172" y="78" width="132" height="120" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="238" y="100" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">SSR</text>
+  <text x="238" y="120" text-anchor="middle" font-size="7.5" fill="#4338CA">每次请求生成</text>
+  <text x="238" y="136" text-anchor="middle" font-size="7.5" fill="#4338CA">服务端承担渲染</text>
+  <text x="238" y="152" text-anchor="middle" font-size="7.5" fill="#4338CA">通常不进共享缓存</text>
+  <text x="238" y="172" text-anchor="middle" font-size="7.5" fill="#6366F1">个性化首页</text>
+  <text x="238" y="188" text-anchor="middle" font-size="7.5" fill="#6366F1">搜索结果</text>
+  <rect x="314" y="78" width="132" height="120" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="100" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">SSG</text>
+  <text x="380" y="120" text-anchor="middle" font-size="7.5" fill="#047857">构建时生成</text>
+  <text x="380" y="136" text-anchor="middle" font-size="7.5" fill="#047857">产物是静态文件</text>
+  <text x="380" y="152" text-anchor="middle" font-size="7.5" fill="#047857">天然可 CDN 缓存</text>
+  <text x="380" y="172" text-anchor="middle" font-size="7.5" fill="#10B981">文档站</text>
+  <text x="380" y="188" text-anchor="middle" font-size="7.5" fill="#10B981">博客文章</text>
+  <rect x="456" y="78" width="132" height="120" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="522" y="100" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">ISR</text>
+  <text x="522" y="120" text-anchor="middle" font-size="7.5" fill="#C2410C">先给旧副本</text>
+  <text x="522" y="136" text-anchor="middle" font-size="7.5" fill="#C2410C">后台再生成</text>
+  <text x="522" y="152" text-anchor="middle" font-size="7.5" fill="#C2410C">可控延迟窗口</text>
+  <text x="522" y="172" text-anchor="middle" font-size="7.5" fill="#F97316">商品详情</text>
+  <text x="522" y="188" text-anchor="middle" font-size="7.5" fill="#F97316">内容列表</text>
+  <rect x="598" y="78" width="132" height="120" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="664" y="100" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">流式 SSR</text>
+  <text x="664" y="120" text-anchor="middle" font-size="7.5" fill="#0F766E">分块产出 HTML</text>
+  <text x="664" y="136" text-anchor="middle" font-size="7.5" fill="#0F766E">慢区块后补</text>
+  <text x="664" y="152" text-anchor="middle" font-size="7.5" fill="#0F766E">难整页缓存</text>
+  <text x="664" y="172" text-anchor="middle" font-size="7.5" fill="#14B8A6">快慢不均的页面</text>
+  <text x="664" y="188" text-anchor="middle" font-size="7.5" fill="#14B8A6">多依赖聚合页</text>
+  <rect x="40" y="222" width="330" height="86" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="205" y="245" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">三维判据</text>
+  <text x="205" y="266" text-anchor="middle" font-size="8" fill="#1D4ED8">① 可缓存性：所有用户看到的 HTML 一样吗？</text>
+  <text x="205" y="283" text-anchor="middle" font-size="8" fill="#1D4ED8">② 时效性：内容能接受多久的延迟？</text>
+  <text x="205" y="300" text-anchor="middle" font-size="8" fill="#1D4ED8">③ 个性化：是否依赖 Cookie / 地域 / 实验分组？</text>
+  <rect x="390" y="222" width="330" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="555" y="245" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">什么时候不该上 SSR</text>
+  <text x="555" y="266" text-anchor="middle" font-size="8" fill="#B91C1C">没有 SEO 需求的后台系统 · 内容几乎不变的页面</text>
+  <text x="555" y="283" text-anchor="middle" font-size="8" fill="#B91C1C">没有服务端运维能力 · 强依赖浏览器 API 的页面</text>
+  <text x="555" y="300" text-anchor="middle" font-size="8" fill="#B91C1C">用 SSR 换取的收益，抵不过水合与缓存的成本</text>
+  <rect x="90" y="330" width="580" height="62" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="353" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">混合渲染是常态</text>
+  <text x="380" y="373" text-anchor="middle" font-size="8" fill="#334155">首页走 ISR、文章页走 SSG、账户中心走 SSR、后台走 CSR —— 同一应用内按路由声明</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

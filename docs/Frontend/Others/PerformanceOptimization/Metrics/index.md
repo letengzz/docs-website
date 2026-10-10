@@ -132,6 +132,7 @@ Lab 定位问题（Lighthouse / Performance 面板）
 ## 参考资料
 
 - [web.dev：Core Web Vitals](https://web.dev/articles/vitals)
+- 相邻专题：[服务端渲染深入 · 性能与成本](../../../SSR/Performance/index.md)——本页给的指标口径是通用的；那一页讲 **SSR 场景下这些口径会怎么变形**：流式让 TTFB 失去可比性（它只表示「响应开始了」），必须与 FCP/LCP/INP 一起看，并给出串行瀑布的识别方法与服务端容量估算。
 - [web-vitals npm 包](https://www.npmjs.com/package/web-vitals)
 - [Lighthouse 文档](https://developer.chrome.com/docs/lighthouse)
 - [PageSpeed Insights](https://pagespeed.web.dev/)

@@ -62,6 +62,7 @@ Vue 侧以 **Vue 3.5+** 为准。涉及 Nuxt 3 的差异会明确标注。
 ## 相关专题
 
 - [Vue](../Vue/index.md)：组件与响应式的语言基础
+- [服务端渲染深入](../../SSR/index.md)：**分工是**——本专题讲 Nuxt 这一框架怎么把四种渲染模式落地（配置、目录约定、部署形态）；该专题讲**框架无关的原理与判据**（渲染模式取舍、水合不匹配的六类成因、缓存分层与失效、流式渲染的错误回退），同一套判据在 Next.js 上同样成立。
 - [Next](../Next/index.md)：React 侧的同层方案，架构决策可互相对照
 - [国际化与无障碍](../../IntlA11y/index.md)：**分工是**——本专题讲 Nuxt 的渲染模式与数据获取，该专题讲**多语言在服务端渲染下的口径**（locale 从 URL/Cookie 解析、首屏语言必须与 HTML 一致、`hreflang` 与 `canonical` 由服务端写入）。三条「接缝」在 [框架落地](../../IntlA11y/FrameworkIntegration/index.md) 里逐条展开
 - [Vite](../../Basic/BuildTool/Vite/index.md)：Nuxt 的开发与构建底座
