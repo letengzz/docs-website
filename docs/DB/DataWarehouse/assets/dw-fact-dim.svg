@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">三类事实表与可加性</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">事实表按「一行代表什么」分成三类，度量按「能不能加」分成三类</text>
+  <rect x="40" y="78" width="215" height="140" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="147" y="100" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">事务事实表</text>
+  <text x="60" y="122" font-size="8" fill="#4338CA">一行 = 一次业务事件</text>
+  <text x="60" y="140" font-size="8" fill="#4338CA">事件发生时追加</text>
+  <text x="60" y="158" font-size="8" fill="#4338CA">最细、最灵活</text>
+  <text x="60" y="176" font-size="8" fill="#4338CA">可推导其他两类</text>
+  <text x="60" y="198" font-size="8" fill="#64748B">下单 / 支付 / 退款</text>
+  <text x="60" y="212" font-size="8" fill="#64748B">代价：体量最大</text>
+  <rect x="272" y="78" width="215" height="140" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="379" y="100" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">周期快照事实表</text>
+  <text x="292" y="122" font-size="8" fill="#1D4ED8">一行 = 一个周期末状态</text>
+  <text x="292" y="140" font-size="8" fill="#1D4ED8">周期末批量写入</text>
+  <text x="292" y="158" font-size="8" fill="#1D4ED8">查「某天状态」极快</text>
+  <text x="292" y="176" font-size="8" fill="#1D4ED8">无法回答期内变化过程</text>
+  <text x="292" y="198" font-size="8" fill="#64748B">每日库存 / 每日余额</text>
+  <text x="292" y="212" font-size="8" fill="#64748B">度量多为半可加</text>
+  <rect x="504" y="78" width="216" height="140" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="612" y="100" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">累积快照事实表</text>
+  <text x="524" y="122" font-size="8" fill="#0F766E">一行 = 流程全生命周期</text>
+  <text x="524" y="140" font-size="8" fill="#0F766E">多次更新同一行</text>
+  <text x="524" y="158" font-size="8" fill="#0F766E">一次看完整流程与耗时</text>
+  <text x="524" y="176" font-size="8" fill="#0F766E">违背「只追加」→ 需幂等</text>
+  <text x="524" y="198" font-size="8" fill="#64748B">下单→支付→发货→签收</text>
+  <text x="524" y="212" font-size="8" fill="#64748B">保留 etl_time 追溯更新</text>
+  <rect x="40" y="236" width="330" height="146" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="205" y="258" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">度量的可加性</text>
+  <text x="60" y="282" font-size="8" fill="#B45309">可加：金额、数量、次数 —— 任意维度与时间都能加</text>
+  <text x="60" y="302" font-size="8" fill="#B45309">半可加：库存量、账户余额 —— 跨时间相加无意义</text>
+  <text x="60" y="322" font-size="8" fill="#B45309">不可加：比率、单价、去重人数 —— 求和无意义</text>
+  <text x="60" y="346" font-size="8" fill="#92400E">错误示范：三个月支付率相加</text>
+  <text x="60" y="364" font-size="8" fill="#92400E">正确：先还原分子分母，再重新计算</text>
+  <rect x="390" y="236" width="330" height="146" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="555" y="258" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">维度表设计要点</text>
+  <text x="410" y="282" font-size="8" fill="#B91C1C">代理键（一版一个值）≠ 业务键（一个实体一个值）</text>
+  <text x="410" y="302" font-size="8" fill="#B91C1C">事实表存代理键 → 与历史版本正确关联</text>
+  <text x="410" y="322" font-size="8" fill="#B91C1C">退化维（订单号）、角色维、杂项维</text>
+  <text x="410" y="346" font-size="8" fill="#B91C1C">不要把度量放进维度表</text>
+  <text x="410" y="364" font-size="8" fill="#B91C1C">维度表不按天分区，用 start_dt/end_dt 表达时间</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="390" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">数仓问题分诊：症状到根因</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先看粒度与口径，再看 SQL</text>
+  <rect x="40" y="78" width="420" height="232" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="250" y="100" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">症状 → 第一步查什么</text>
+  <text x="60" y="126" font-size="8" fill="#334155">两报表同指标不一致 → 两侧过滤条件与粒度</text>
+  <text x="60" y="150" font-size="8" fill="#334155">金额莫名翻倍 → 是否跨粒度 Join</text>
+  <text x="60" y="174" font-size="8" fill="#334155">历史数据「改嫁」新属性 → 事实表存代理键还是业务键</text>
+  <text x="60" y="198" font-size="8" fill="#334155">维表查不到 → is_current 与关联条件</text>
+  <text x="60" y="222" font-size="8" fill="#334155">汇总相加荒谬 → 度量可加性标注</text>
+  <text x="60" y="246" font-size="8" fill="#334155">重跑一次翻倍 → 写入是否幂等</text>
+  <text x="60" y="270" font-size="8" fill="#334155">补数后口径错乱 → 依赖顺序与影响面</text>
+  <text x="60" y="296" font-size="8" fill="#64748B">三句话定位：一行代表什么？分母是什么？跨了几个粒度？</text>
+  <rect x="480" y="78" width="240" height="110" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="600" y="100" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">四条不可让步的纪律</text>
+  <text x="500" y="124" font-size="8" fill="#1D4ED8">粒度写进表注释</text>
+  <text x="500" y="144" font-size="8" fill="#1D4ED8">汇总层只放可加度量</text>
+  <text x="500" y="164" font-size="8" fill="#1D4ED8">写入必须幂等</text>
+  <text x="500" y="184" font-size="8" fill="#1D4ED8">口径只有一个来源</text>
+  <rect x="480" y="200" width="240" height="110" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="600" y="222" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">四类最该先覆盖的规则</text>
+  <text x="500" y="246" font-size="8" fill="#047857">关键表非空 + 唯一</text>
+  <text x="500" y="266" font-size="8" fill="#047857">跨层对账（金额/笔数）</text>
+  <text x="500" y="286" font-size="8" fill="#047857">维表引用完整</text>
+  <text x="500" y="306" font-size="8" fill="#047857">金额非负与值域</text>
+  <rect x="60" y="326" width="660" height="48" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="390" y="348" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">投入产出比最高的一件事：把口径写下来并让机器执行</text>
+  <text x="390" y="367" text-anchor="middle" font-size="8" fill="#B91C1C">口径文档 + 加工 SQL 单一来源 + 对账 SQL 日常巡检</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

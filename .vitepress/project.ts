@@ -260,6 +260,7 @@ export const CompleteProject = [
           { text: "指标模型与保留策略", link: "/project/Complete/MonitoringDashboard/MetricModel/index.md" },
           { text: "规范落地校验门禁", link: "/project/Complete/MonitoringDashboard/MetricGate/index.md" },
           { text: "采集任务配置", link: "/project/Complete/MonitoringDashboard/ScrapeConfig/index.md" },
+          { text: "查询与规则设计", link: "/project/Complete/MonitoringDashboard/Rules/index.md" },
         ],
       },
       {

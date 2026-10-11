@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">维度建模：事实、维度与总线矩阵</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">能 GROUP BY 的是维度，只能被聚合的是事实</text>
+  <rect x="40" y="78" width="330" height="132" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="205" y="100" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">事实（Fact）：发生了什么、多少</text>
+  <text x="60" y="124" font-size="8" fill="#4338CA">数值 + 外键；随业务事件无限增长</text>
+  <text x="60" y="142" font-size="8" fill="#4338CA">只追加、不就地更新（累积快照例外）</text>
+  <text x="60" y="160" font-size="8" fill="#4338CA">度量必须标注可加性</text>
+  <text x="60" y="182" font-size="8" fill="#64748B">例：订单金额、支付笔数、库存数量</text>
+  <text x="60" y="200" font-size="8" fill="#64748B">粒度：一行 = 订单行 / 用户×天 / 快照</text>
+  <rect x="390" y="78" width="330" height="132" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="555" y="100" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">维度（Dimension）：从哪些角度看</text>
+  <text x="410" y="124" font-size="8" fill="#047857">描述性属性；增长缓慢</text>
+  <text x="410" y="142" font-size="8" fill="#047857">代理键（一版一个值）+ 业务键</text>
+  <text x="410" y="160" font-size="8" fill="#047857">会变更 → 用 SCD 处理历史</text>
+  <text x="410" y="182" font-size="8" fill="#64748B">例：用户、商品、日期、门店、渠道</text>
+  <text x="410" y="200" font-size="8" fill="#64748B">特殊型：退化维/角色维/杂项维/一致性维</text>
+  <rect x="40" y="226" width="680" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="248" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">总线矩阵：业务过程 × 一致性维度</text>
+  <text x="70" y="272" font-size="8" fill="#334155">下单　　日期 ✅　用户 ✅　商品 ✅　门店 ✅　渠道 ✅　促销 ✅</text>
+  <text x="70" y="290" font-size="8" fill="#334155">支付　　日期 ✅　用户 ✅　商品 ❌　门店 ✅　渠道 ✅　促销 ❌</text>
+  <text x="70" y="308" font-size="8" fill="#334155">库存快照 日期 ✅　用户 ❌　商品 ✅　门店 ✅　渠道 ❌　促销 ❌</text>
+  <rect x="60" y="334" width="640" height="52" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="380" y="356" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">星型 vs 雪花：分析场景优先星型</text>
+  <text x="380" y="375" text-anchor="middle" font-size="8" fill="#C2410C">扁平维度少 Join、业务可读；雪花的多跳 Join 反而更容易写错关联条件</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

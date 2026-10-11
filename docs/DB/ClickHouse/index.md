@@ -48,6 +48,7 @@ ClickHouse 采用**日历版本号**（Year.Month.Patch.Build，如 26.8.12.53�
 | [时序数据库](../TimeSeries/index.md) | 互补：InfluxDB/TDengine 面向指标场景，ClickHouse 面向事件明细 + 任意维度聚合 |
 | [Elasticsearch](../NoRelational/Elasticsearch/index.md) | 检索 vs 聚合：全文检索用 ES，多维统计用 ClickHouse |
 | [SQL 优化](../Relational/SQLOptimization/index.md) | 思想相通：都是「少读数据」，但 ClickHouse 的手段是物理裁剪而非 B+ 树 |
+| [数仓建模](../DataWarehouse/index.md) | **引擎 vs 模型**：本专题讲列存引擎怎么用（MergeTree、分区索引、物化视图、副本分片）；该专题讲引擎之上**建模怎么做**（ODS/DWD/DWS/ADS 分层、维度建模、SCD2、粒度与可加性）。换掉引擎这些建模判据依然成立 |
 
 ## 参考资料
 

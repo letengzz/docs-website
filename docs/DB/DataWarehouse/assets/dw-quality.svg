@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="390" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">质量、血缘与调度：三者咬合成闭环</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">质量问题要在「发布前」被拦住，而不是等业务发现报表异常</text>
+  <rect x="40" y="78" width="680" height="86" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="100" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">五类质量规则（可 SQL 化、可调度执行）</text>
+  <text x="70" y="124" font-size="8" fill="#1D4ED8">非空：关键字段不能为空　｜　唯一：粒度不能重复　｜　引用完整：外键能关联到维度</text>
+  <text x="70" y="144" font-size="8" fill="#1D4ED8">值域：取值在预期范围（status 枚举、amount ≥ 0）　｜　一致性：跨层/跨表对账相等</text>
+  <rect x="40" y="178" width="330" height="92" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="205" y="200" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">血缘两个方向</text>
+  <text x="60" y="224" font-size="8" fill="#047857">向上溯源：这个数从哪来（排查错误）</text>
+  <text x="60" y="244" font-size="8" fill="#047857">向下影响：改这张表影响谁（变更评审、补数范围）</text>
+  <text x="60" y="262" font-size="8" fill="#64748B">最小形态：表级依赖边列表（up_tbl / down_tbl）</text>
+  <rect x="390" y="178" width="330" height="92" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="555" y="200" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">调度三条要求</text>
+  <text x="410" y="224" font-size="8" fill="#C2410C">不重：写入幂等（覆盖分区 / 主键合并）</text>
+  <text x="410" y="244" font-size="8" fill="#C2410C">不漏：依赖「数据就绪信号」而非固定时间</text>
+  <text x="410" y="262" font-size="8" fill="#C2410C">可重跑：每次运行带 bizdate 参数</text>
+  <rect x="60" y="284" width="640" height="46" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="306" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">闭环：调度触发加工 → 产出分区 → 质量校验 →（通过）发布 /（失败）阻断 + 告警 + 用血缘圈定影响面</text>
+  <text x="380" y="324" text-anchor="middle" font-size="8" fill="#334155">阈值建议同时设绝对差与相对差两条，避免大盘波动误报与小额长尾漏报</text>
+  <rect x="60" y="340" width="640" height="44" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="367" text-anchor="middle" font-size="9" fill="#991B1B">默认「阻断出数」：出错的数比没有数更危险</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

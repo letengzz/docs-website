@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="360" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">聚合的三层结构：桶 → 指标 → 管道</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">层层嵌套形成分析树，等价于 SQL 的 GROUP BY + 聚合函数 + 窗口二次计算</text>
+  <rect x="60" y="80" width="640" height="52" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="110" y="103" font-size="9.5" fill="#3730A3" font-weight="bold">桶聚合 Bucket</text>
+  <text x="300" y="103" font-size="8" fill="#4338CA">terms / range / date_histogram / filter —— 决定「怎么分组」，类比 GROUP BY</text>
+  <text x="300" y="122" font-size="8" fill="#64748B">分桶数受 size 与 shard_size 限制，桶太多会先在各分片取 TopN 再归并</text>
+  <rect x="60" y="146" width="640" height="52" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="110" y="169" font-size="9.5" fill="#065F46" font-weight="bold">指标聚合 Metric</text>
+  <text x="300" y="169" font-size="8" fill="#047857">sum / avg / max / min / value_count / cardinality —— 桶内统计，类比 SUM/AVG/COUNT</text>
+  <text x="300" y="188" font-size="8" fill="#64748B">cardinality 是近似去重（HLL），要精确值必须用 script 或改写方案</text>
+  <rect x="60" y="212" width="640" height="52" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="110" y="235" font-size="9.5" fill="#9A3412" font-weight="bold">管道聚合 Pipeline</text>
+  <text x="300" y="235" font-size="8" fill="#C2410C">bucket_sort / derivative / cumulative_sum —— 对「聚合结果」再计算</text>
+  <text x="300" y="254" font-size="8" fill="#64748B">类比窗口函数（环比、累计、TopN 截断），不产生新的桶</text>
+  <rect x="60" y="278" width="640" height="60" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="300" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">三个高频性能点</text>
+  <text x="380" y="320" text-anchor="middle" font-size="8" fill="#B91C1C">① 深分页与超大 size 的分桶极贵；② doc_values 关闭的字段无法聚合；③ 嵌套聚合层数越多，内存越高</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

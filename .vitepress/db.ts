@@ -270,3 +270,20 @@ export const CDC = [
     ],
   },
 ];
+export const DataWarehouse = [
+  {
+    text: "数仓建模",
+    link: "/docs/DB/DataWarehouse/index.md",
+    items: [
+      { text: "概述：数仓全景与四种建模方法论", link: "/docs/DB/DataWarehouse/Overview/index.md" },
+      { text: "分层设计", link: "/docs/DB/DataWarehouse/Layering/index.md" },
+      { text: "维度建模", link: "/docs/DB/DataWarehouse/DimensionalModeling/index.md" },
+      { text: "事实表与维度表设计", link: "/docs/DB/DataWarehouse/FactAndDimension/index.md" },
+      { text: "缓慢变化维与拉链表", link: "/docs/DB/DataWarehouse/SCD/index.md" },
+      { text: "粒度与聚合设计", link: "/docs/DB/DataWarehouse/Grain/index.md" },
+      { text: "数据质量、血缘与调度", link: "/docs/DB/DataWarehouse/Quality/index.md" },
+      { text: "实战：电商订单域数仓", link: "/docs/DB/DataWarehouse/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/DataWarehouse/FAQ/index.md" },
+    ],
+  },
+];

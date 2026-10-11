@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">实战：电商订单域数仓全链路</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">从业务库订单表到大盘指标，五层逐层收敛粒度与口径</text>
+  <rect x="40" y="76" width="680" height="42" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="70" y="102" font-size="9" fill="#334155">数据源：订单库（order / order_item / user / sku）　→　CDC 同步　→　按业务日期分区落地</text>
+  <rect x="40" y="126" width="680" height="42" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="70" y="152" font-size="9" fill="#1E3A8A">ODS：ods_order / ods_order_item —— 只加分区与 etl_time，按主键去重，不写业务口径</text>
+  <rect x="40" y="176" width="330" height="74" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="205" y="198" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">DIM（含 SCD2）</text>
+  <text x="60" y="218" font-size="8" fill="#6D28D9">dim_user / dim_sku / dim_date</text>
+  <text x="60" y="238" font-size="8" fill="#6D28D9">类目与品牌做版本追溯，代理键一版一个值</text>
+  <rect x="390" y="176" width="330" height="74" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="555" y="198" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">DWD 明细</text>
+  <text x="410" y="218" font-size="8" fill="#047857">dwd_trade_order_detail（一行 = 订单行）</text>
+  <text x="410" y="238" font-size="8" fill="#047857">清洗 + 代理键 + 订单级优惠按金额比例分摊</text>
+  <rect x="40" y="260" width="330" height="74" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="205" y="282" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">DWS 汇总</text>
+  <text x="60" y="302" font-size="8" fill="#0F766E">dws_trade_user_1d（一行 = 用户 × 天）</text>
+  <text x="60" y="322" font-size="8" fill="#0F766E">只放可加度量；订单数须 COUNT(DISTINCT order_id)</text>
+  <rect x="390" y="260" width="330" height="74" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="555" y="282" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">ADS 应用</text>
+  <text x="410" y="302" font-size="8" fill="#C2410C">ads_trade_overview_1d（一行 = 天）</text>
+  <text x="410" y="322" font-size="8" fill="#C2410C">GMV / 支付订单数 / 下单数 / 去重买家数</text>
+  <rect x="60" y="344" width="640" height="46" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="366" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">P1~P10 判据：粒度唯一 · 外键完整 · 分摊守恒 · 跨层对账 · 幂等 · 不可加度量未落汇总层</text>
+  <text x="380" y="384" text-anchor="middle" font-size="8" fill="#B91C1C">判据不是实测记录：未跑就写「未跑 + 原因」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

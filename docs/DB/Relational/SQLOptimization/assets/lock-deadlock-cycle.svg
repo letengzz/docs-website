@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="360" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">锁等待与死锁：查询变慢的另一条路径</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">MVCC 让读写不互相阻塞，但写写之间仍会排队；环路一环即死锁</text>
+  <rect x="40" y="78" width="330" height="120" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="205" y="100" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">MVCC：读写不阻塞</text>
+  <text x="60" y="124" font-size="8" fill="#047857">普通 SELECT 走一致性读，不加锁</text>
+  <text x="60" y="144" font-size="8" fill="#047857">undo log 保留旧版本，read view 决定可见性</text>
+  <text x="60" y="164" font-size="8" fill="#047857">代价：长事务让 undo 无法回收，历史版本膨胀</text>
+  <text x="60" y="184" font-size="8" fill="#64748B">所以「慢」有时是长事务造成的，而不是 SQL 本身</text>
+  <rect x="390" y="78" width="330" height="120" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="555" y="100" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">锁等待：写写排队</text>
+  <text x="410" y="124" font-size="8" fill="#C2410C">行锁 / 间隙锁 / 临键锁按索引与范围加锁</text>
+  <text x="410" y="144" font-size="8" fill="#C2410C">无索引更新会退化为大范围锁，并发急剧下降</text>
+  <text x="410" y="164" font-size="8" fill="#C2410C">排查：information_schema.INNODB_TRX 与锁等待视图</text>
+  <text x="410" y="184" font-size="8" fill="#64748B">判据：锁等待时间占查询耗时比例高 → 先治事务粒度</text>
+  <rect x="120" y="216" width="520" height="66" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="238" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">死锁：两个事务的加锁顺序相反，形成环路</text>
+  <text x="380" y="258" text-anchor="middle" font-size="8" fill="#B91C1C">事务 A：锁行 1 → 等行 2　　事务 B：锁行 2 → 等行 1　　→ 数据库检测后回滚代价较小的一方</text>
+  <text x="380" y="276" text-anchor="middle" font-size="8" fill="#B91C1C">预防：统一访问顺序 · 缩短事务 · 一次锁定所需行 · 关键路径避免无索引更新</text>
+  <rect x="120" y="296" width="520" height="46" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="318" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">排查顺序：先看是否有长事务 → 再看锁等待与持有者 → 最后回到 SQL 与索引</text>
+  <text x="380" y="334" text-anchor="middle" font-size="8" fill="#334155">顺序反了会白花大量时间：多数「查不动」的根因是未提交的事务，而不是 SQL 写得差</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

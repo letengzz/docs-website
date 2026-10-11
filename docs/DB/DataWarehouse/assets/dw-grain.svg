@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="380" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">粒度：数仓最不可逆的决策</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">宁可细不要粗：细粒度能推出粗粒度，反之不行</text>
+  <rect x="40" y="78" width="330" height="106" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="205" y="100" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">粒度三要素</text>
+  <text x="60" y="124" font-size="8" fill="#4338CA">主体：一行描述谁（订单行 / 用户 / 商品）</text>
+  <text x="60" y="144" font-size="8" fill="#4338CA">时间：一行覆盖哪个范围（时刻 / 天 / 小时）</text>
+  <text x="60" y="164" font-size="8" fill="#4338CA">事件：一行对应什么动作（下单 / 支付 / 快照）</text>
+  <rect x="390" y="78" width="330" height="106" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="555" y="100" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">四问决策</text>
+  <text x="410" y="124" font-size="8" fill="#047857">业务会问到这么细吗？</text>
+  <text x="410" y="144" font-size="8" fill="#047857">能从细粒度推出粗粒度吗？（能 → 选细）</text>
+  <text x="410" y="164" font-size="8" fill="#047857">存储代价能承受吗？上游能给到这么细吗？</text>
+  <rect x="40" y="196" width="330" height="106" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="205" y="218" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">预聚合的收益边界</text>
+  <text x="60" y="242" font-size="8" fill="#C2410C">值得：高频 + 扫描量远大于结果 + 维度稳定</text>
+  <text x="60" y="262" font-size="8" fill="#C2410C">不值得：低频、维度易变（会变成过期数据）</text>
+  <text x="60" y="282" font-size="8" fill="#92400E">代价：多一份存储 + 口径变更要重刷</text>
+  <rect x="390" y="196" width="330" height="106" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="555" y="218" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">粒度不匹配的三个症状</text>
+  <text x="410" y="242" font-size="8" fill="#B91C1C">金额莫名翻倍（跨粒度 Join）</text>
+  <text x="410" y="262" font-size="8" fill="#B91C1C">汇总与明细对不上（过滤/去重不一致）</text>
+  <text x="410" y="282" font-size="8" fill="#B91C1C">越钻越少（INNER JOIN 丢行）</text>
+  <rect x="60" y="318" width="640" height="50" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="340" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">订单级优惠必须分摊到行</text>
+  <text x="380" y="358" text-anchor="middle" font-size="8" fill="#334155">按 item_amount 比例分摊，并校验「各行之和 = 订单级优惠」（1 分以内分位差按最大余额行修正）</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

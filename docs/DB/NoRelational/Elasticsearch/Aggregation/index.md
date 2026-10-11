@@ -2,6 +2,8 @@
 
 聚合（Aggregations）是 ES 的分析能力：对检索结果做分组统计、数值计算与嵌套下钻，类似 SQL 的 `GROUP BY` + `SUM/COUNT/AVG`，但可以层层嵌套形成分析树。本页覆盖三类聚合、与 SQL 的对应关系、桶内再查（top_hits）以及性能要点。
 
+![聚合的三层结构：桶 → 指标 → 管道](../assets/es-aggregation-tree.svg)
+
 ## 聚合的三类
 
 | 类别 | 关键字 | 作用 | SQL 类比 |

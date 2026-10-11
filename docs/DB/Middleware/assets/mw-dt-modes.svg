@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="360" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">中间件视角：三种事务模式的边界</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">原理与选型见分布式事务专题，本图只讲「在中间件这一层怎么开、哪里会失灵」</text>
+  <rect x="40" y="78" width="215" height="132" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="147" y="100" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">本地事务</text>
+  <text x="60" y="124" font-size="8" fill="#4338CA">单库场景，@Transactional 直接生效</text>
+  <text x="60" y="144" font-size="8" fill="#4338CA">中间件不介入，行为与单库一致</text>
+  <text x="60" y="164" font-size="8" fill="#4338CA">判据：所有写操作落在同一物理库</text>
+  <text x="60" y="188" font-size="8" fill="#64748B">能力边界：跨库即失效</text>
+  <rect x="272" y="78" width="215" height="132" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="379" y="100" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">XA / 2PC</text>
+  <text x="292" y="124" font-size="8" fill="#1D4ED8">中间件充当协调者，两阶段提交</text>
+  <text x="292" y="144" font-size="8" fill="#1D4ED8">强一致，但同步阻塞、协调者单点</text>
+  <text x="292" y="164" font-size="8" fill="#1D4ED8">需显式开启 XA 事务</text>
+  <text x="292" y="188" font-size="8" fill="#64748B">失灵点：单库不支持 XA / 连接被断开</text>
+  <rect x="504" y="78" width="216" height="132" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="612" y="100" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">柔性事务</text>
+  <text x="524" y="124" font-size="8" fill="#047857">SAGA / TCC / 本地消息表</text>
+  <text x="524" y="144" font-size="8" fill="#047857">最终一致，靠补偿或重试收敛</text>
+  <text x="524" y="164" font-size="8" fill="#047857">由业务或框架承担补偿逻辑</text>
+  <text x="524" y="188" font-size="8" fill="#64748B">失灵点：补偿不幂等 / 缺对账</text>
+  <rect x="40" y="228" width="680" height="60" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="380" y="250" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">怎么验「它真的回滚了」：故障注入</text>
+  <text x="380" y="270" text-anchor="middle" font-size="8" fill="#C2410C">在第二阶段前人为断开一个参与者，观察：要么全部回滚，要么进入可查的补偿/悬挂状态（不能静默半成功）</text>
+  <rect x="40" y="300" width="680" height="48" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="322" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">三条硬边界</text>
+  <text x="380" y="340" text-anchor="middle" font-size="8" fill="#B91C1C">① 中间件不能替你写补偿逻辑；② 跨库事务的性能代价必须量化；③ 无对账的柔性事务等于没有一致性保证</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">缓慢变化维：三种方案与拉链表版本链</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">纠错用 SCD1，追溯用 SCD2，只看变化前后用 SCD3</text>
+  <rect x="40" y="78" width="220" height="112" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="150" y="100" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">SCD1 直接覆盖</text>
+  <text x="60" y="122" font-size="8" fill="#334155">UPDATE 旧值，不保留历史</text>
+  <text x="60" y="140" font-size="8" fill="#334155">存储最小、实现最简单</text>
+  <text x="60" y="158" font-size="8" fill="#334155">追溯能力：无</text>
+  <text x="60" y="180" font-size="8" fill="#64748B">适用：纠错类修正（名称拼错）</text>
+  <rect x="270" y="78" width="220" height="112" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="100" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">SCD2 追加版本</text>
+  <text x="290" y="122" font-size="8" fill="#047857">新版本一行，start/end 标记有效期</text>
+  <text x="290" y="140" font-size="8" fill="#047857">历史完整保留</text>
+  <text x="290" y="158" font-size="8" fill="#047857">每个版本一个新代理键</text>
+  <text x="290" y="180" font-size="8" fill="#64748B">适用：需要「按当时属性分析」</text>
+  <rect x="500" y="78" width="220" height="112" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="610" y="100" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">SCD3 加一列</text>
+  <text x="520" y="122" font-size="8" fill="#C2410C">previous_value 保存上一版</text>
+  <text x="520" y="140" font-size="8" fill="#C2410C">只保留一次变化</text>
+  <text x="520" y="158" font-size="8" fill="#C2410C">不加行、不加键</text>
+  <text x="520" y="180" font-size="8" fill="#64748B">适用：只看「变没变、上次是什么」</text>
+  <rect x="40" y="206" width="680" height="112" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="380" y="228" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">拉链表：同一商品的版本链（dim_sku）</text>
+  <text x="70" y="252" font-size="8" fill="#4338CA">sku_sk=1001　sku_id=S1　类目=数码　start=2024-01-01　end=2026-06-30　is_current=0</text>
+  <text x="70" y="272" font-size="8" fill="#4338CA">sku_sk=1002　sku_id=S1　类目=智能设备　start=2026-07-01　end=9999-12-31　is_current=1</text>
+  <text x="70" y="296" font-size="8" fill="#64748B">区间约定：start 闭、end 开 —— 同一天不会同时属于两个版本</text>
+  <text x="70" y="312" font-size="8" fill="#64748B">事实表存 sku_sk → 等值关联即得「发生当时」的属性</text>
+  <rect x="60" y="334" width="640" height="52" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="356" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">四个高频错：end 用闭区间 · 代理键复用 · 不幂等 · 漏 is_current</text>
+  <text x="380" y="375" text-anchor="middle" font-size="8" fill="#B91C1C">代理键复用是最隐蔽的一种：历史事实会自动「改嫁」到新属性上</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

@@ -230,6 +230,10 @@ SELECT COUNT(*) AS sku_total FROM t_sku WHERE spu_id = 2001;
 
 ## 参考资料
 
+::: tip 相关专题
+[数仓建模](../../../DB/DataWarehouse/index.md)：**分工是**——本页讲交易系统的**领域模型**（SPU/SKU 两层、价格六层计算、订单状态机、库存防超卖），判据是「业务写不写得对」；该专题讲把同一批交易数据**重组成分析模型**（事实表怎么切、维度怎么一致性化、历史变化怎么用 SCD2 保留、度量可不可加），判据是「任意维度能不能重新切分且口径一致」。
+:::
+
 - [MySQL 8.4 · JSON 类型与生成列索引](https://dev.mysql.com/doc/refman/8.4/en/create-table-generated-columns.html)
 - [MySQL 8.4 · CHECK 约束](https://dev.mysql.com/doc/refman/8.4/en/create-table-check-constraints.html)
 - [Elasticsearch 官方文档](https://www.elastic.co/docs)：商品筛选与全文检索的落地位置

@@ -63,6 +63,10 @@
 4. **精读 [一致性保障](./Consistency/index.md)**：顺序、幂等、对账，这三件事决定管道可不可信。
 5. **走一遍 [实战](./Practice/index.md)**，再对照项目侧的 [搜索章节](/project/Complete/BlogPlatform/Search/index.md) 看「什么时候值得升级到独立检索库」。
 
+::: tip 相关专题
+[数仓建模](../DataWarehouse/index.md)：**分工是**——本专题讲**数据怎么搬**（binlog 解析、快照+增量、幂等与顺序、断点续传）；该专题讲数据搬来之后**怎么组织**（落到 ODS 还是 DWD、以什么粒度沉淀、历史变化用 SCD2 还是就地覆盖）。一条完整的数仓链路是「CDC 搬运 → 分层加工 → 质量校验 → 对外服务」。
+:::
+
 ## 参考资料
 
 - Debezium 官方文档：https://debezium.io/documentation/

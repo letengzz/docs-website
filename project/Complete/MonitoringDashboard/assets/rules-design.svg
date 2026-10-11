@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">查询与规则：recording、alerting 与不吵的三道闸门</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">recording 解决「算得慢」，alerting 解决「要不要叫人」</text>
+  <rect x="40" y="78" width="320" height="130" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="200" y="100" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">recording rule：产出新序列</text>
+  <text x="60" y="124" font-size="8" fill="#4338CA">命名：level:metric:operations（冒号分隔）</text>
+  <text x="60" y="144" font-size="8" fill="#4338CA">分子分母先分别聚合，再相除</text>
+  <text x="60" y="164" font-size="8" fill="#4338CA">不做多层嵌套；与保留策略对齐（90d 趋势必须有聚合）</text>
+  <text x="60" y="184" font-size="8" fill="#64748B">窗口 ≥ 评估间隔 × 4，避免锯齿</text>
+  <text x="60" y="200" font-size="8" fill="#64748B">失败表现：大盘出现空洞</text>
+  <rect x="400" y="78" width="320" height="130" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="560" y="100" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">alerting rule：要不要叫人</text>
+  <text x="420" y="124" font-size="8" fill="#B91C1C">for = 抖动周期（抓取间隔的 2~5 倍）</text>
+  <text x="420" y="144" font-size="8" fill="#B91C1C">keep_firing_for 防「闪断式恢复」反复开关</text>
+  <text x="420" y="164" font-size="8" fill="#B91C1C">必填 severity / team / summary / description</text>
+  <text x="420" y="184" font-size="8" fill="#64748B">for: 0s 仅限「聚合后的硬故障」（如全站不可用）</text>
+  <text x="420" y="200" font-size="8" fill="#64748B">失败表现：该响的没响（最危险）</text>
+  <rect x="40" y="224" width="220" height="112" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="150" y="246" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">闸门一：分组</text>
+  <text x="60" y="270" font-size="8" fill="#B45309">group_by: alertname + svc</text>
+  <text x="60" y="290" font-size="8" fill="#B45309">group_wait 30s：避免「响一片」</text>
+  <text x="60" y="310" font-size="8" fill="#B45309">repeat_interval 4h，不要 5 分钟一刷</text>
+  <text x="60" y="328" font-size="8" fill="#64748B">一次故障 = 一条通知</text>
+  <rect x="270" y="224" width="220" height="112" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="246" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">闸门二：抑制</text>
+  <text x="290" y="270" font-size="8" fill="#0F766E">根因响时压掉下游同类告警</text>
+  <text x="290" y="290" font-size="8" fill="#0F766E">equal 卡同一维度（svc）</text>
+  <text x="290" y="310" font-size="8" fill="#0F766E">宁可少抑制：写宽了会静默真故障</text>
+  <text x="290" y="328" font-size="8" fill="#64748B">上线前用根因告警实测压掉了谁</text>
+  <rect x="500" y="224" width="220" height="112" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="610" y="246" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">闸门三：静默</text>
+  <text x="520" y="270" font-size="8" fill="#334155">计划内维护使用</text>
+  <text x="520" y="290" font-size="8" fill="#334155">必须带到期时间与原因</text>
+  <text x="520" y="310" font-size="8" fill="#334155">禁止永久静默</text>
+  <text x="520" y="328" font-size="8" fill="#64748B">静默到期后要复核是否需要保留</text>
+  <rect x="40" y="350" width="680" height="42" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="377" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">三个「不可接受」失败模式必须真的能响：C1 采集失效 · C2 可达但零样本 · C3 服务不可用</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>
