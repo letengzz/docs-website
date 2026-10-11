@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 396" width="760" height="396" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="396" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">采集任务配置：四段链路与失败处置</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">配错的写法必须能被拦住 —— 这是这一步的验收判据</text>
+  <rect x="10" y="74" width="150" height="78" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="85" y="92.2" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">目标发现</text>
+  <text x="85" y="109" text-anchor="middle" font-size="7" fill="#4338CA">file_sd（虚机）</text>
+  <text x="85" y="125.1" text-anchor="middle" font-size="7" fill="#4338CA">k8s_sd（Pod）</text>
+  <text x="85" y="141.2" text-anchor="middle" font-size="7" fill="#4338CA">不用静态配置</text>
+  <line x1="160" y1="113" x2="186" y2="113" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="186" y="74" width="170" height="78" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="271" y="92.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">relabel_configs</text>
+  <text x="271" y="109" text-anchor="middle" font-size="7" fill="#1D4ED8">作用对象：目标</text>
+  <text x="271" y="125.1" text-anchor="middle" font-size="7" fill="#1D4ED8">过滤 / 改地址 / 丰富标签</text>
+  <line x1="356" y1="113" x2="382" y2="113" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="382" y="74" width="178" height="78" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="471" y="92.2" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">抓取</text>
+  <text x="471" y="109" text-anchor="middle" font-size="6.8" fill="#0F766E">interval 15s</text>
+  <text x="471" y="124.64" text-anchor="middle" font-size="6.8" fill="#0F766E">timeout 10s（必须更小）</text>
+  <text x="471" y="140.28" text-anchor="middle" font-size="6.8" fill="#0F766E">sample_limit / label_limit</text>
+  <line x1="560" y1="113" x2="586" y2="113" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="586" y="74" width="164" height="78" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="668" y="92.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">metric_relabel</text>
+  <text x="668" y="109" text-anchor="middle" font-size="7" fill="#C2410C">作用对象：样本</text>
+  <text x="668" y="125.1" text-anchor="middle" font-size="7" fill="#C2410C">drop 必须已在字典登记</text>
+  <line x1="668" y1="152" x2="668" y2="176" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="500" y="176" width="250" height="42" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="625" y="194.2" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">时序库（只保存活下来的序列）</text>
+  <text x="380" y="246" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">抓取失败的四种处置：让「该响的响、不该响的不响」</text>
+  <rect x="10" y="262" width="176" height="74" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="98" y="280.2" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">进程重启</text>
+  <text x="98" y="297" text-anchor="middle" font-size="7" fill="#334155">up 掉 1~2 个周期</text>
+  <text x="98" y="313.1" text-anchor="middle" font-size="7" fill="#334155">用 for: 3m 抑制</text>
+  <rect x="198" y="262" width="176" height="74" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="286" y="280.2" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">目标被下线</text>
+  <text x="286" y="297" text-anchor="middle" font-size="7" fill="#047857">发现结果里消失</text>
+  <text x="286" y="313.1" text-anchor="middle" font-size="7" fill="#047857">不告警（拉模型优势）</text>
+  <rect x="386" y="262" width="176" height="74" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="474" y="280.2" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">持续不可达</text>
+  <text x="474" y="297" text-anchor="middle" font-size="7" fill="#B91C1C">up == 0 持续</text>
+  <text x="474" y="313.1" text-anchor="middle" font-size="7" fill="#B91C1C">TargetDown 告警</text>
+  <rect x="574" y="262" width="176" height="74" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="662" y="280.2" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">可达但 0 样本</text>
+  <text x="662" y="297" text-anchor="middle" font-size="7" fill="#B45309">up=1 且 samples=0</text>
+  <text x="662" y="313.1" text-anchor="middle" font-size="7" fill="#B45309">独立 critical 告警</text>
+  <text x="380" y="372" text-anchor="middle" font-size="8.5" fill="#475569">判据衔接：SC-D ↔ MG6（标签规范）、SC-G ↔ MG7（丢弃必须登记）</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

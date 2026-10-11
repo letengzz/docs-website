@@ -51,6 +51,7 @@
 | [Module Federation](../Basic/BuildTool/Webpack/ModuleFederation/index.md) | 构建工具能力 | 讲「怎么配出一个远程模块」，本专题讲「用它来做微前端时的架构取舍」 |
 | [前端工程化](../Others/FrontendEngineering/index.md) | 工程体系 | monorepo、包管理、CI；微前端是「多仓库独立部署」路线的对立面 |
 | [前端性能优化](../Others/PerformanceOptimization/index.md) | 性能 | 微前端的体积与加载代价要在这一层核算 |
+| [低代码平台](../LowCode/index.md) | 页面描述 | **正交的两条路线**：微前端解决「多个应用怎么拼进一个壳」，低代码解决「一个页面怎么被一份 JSON 描述出来」；两者可叠加——低代码产物作为一个子应用参与微前端组合。当拆分粒度到「页面配置」级别时优先低代码，到「团队独立发布」级别时优先微前端 |
 | [微服务](../../Backend/Microservices/index.md) | 后端对照 | 组织维度的问题同构（康威定律），但技术手段完全不同 |
 
 ::: warning 说明：先试「模块化 monorepo」，再考虑微前端

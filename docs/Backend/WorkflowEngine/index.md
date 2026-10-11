@@ -20,6 +20,7 @@
 | [Spring Boot](../Java/Frame/SpringBoot/index.md) | 自动配置、依赖注入、事务管理 | Flowable/Drools 的集成载体，本专题不重复讲框架细节 |
 | [项目实战 · 核心业务流](/project/Complete/BlogPlatform/CoreFlow/index.md) | 博客平台的状态机与转移矩阵 | 本专题实战一章与之衔接：状态机管业务状态，引擎管审批流转 |
 | [项目实战 · 评论 AI 预审](/project/Complete/BlogPlatform/AiModeration/index.md) | LLM 打标与人审闭环 | 「AI 打标 + 人审定终值」是规则预判的一种形态，本项目里用规则引擎做同一件事 |
+| [低代码平台](../../Frontend/LowCode/index.md) | 页面描述、物料、搭建器、出码 | **两者共用「表单」与「表达式」两块地基，但讲的是两件事**：本专题讲「状态怎么按流程流转」（节点、网关、审批人、超时与补偿）；低代码专题讲「表单页怎么被一份 JSON 描述出来」（协议、物料、搭建器与出码）。典型组合是「流程引擎管流转 + 低代码表单设计器管表单」——此时表达式沙箱要**共用同一套**，否则同一个条件在两处结果不一致 |
 
 ## 专题地图
 

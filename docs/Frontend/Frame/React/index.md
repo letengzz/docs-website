@@ -30,3 +30,4 @@
 相关专题：
 
 - [数据可视化](../../DataVisualization/index.md)：React 侧画图表的通用原理——图表选型、ECharts 6 配置体系、数据到图形的映射、Canvas/SVG/WebGL 渲染路线、大数据量治理与数据大屏适配；ECharts 在 React 中的 useRef/useEffect 封装与 Vue hooks 逻辑同构（Vue 侧封装见 [Vue3 整合 ECharts](../Vue/Vue3/ECharts/index.md)）。
+- [低代码平台](../../LowCode/index.md)：**分工是**——本专题讲「组件怎么写、状态与错误边界怎么用」；低代码专题讲「一份 JSON 描述怎么被递归映射成组件树」。React 是低代码渲染器最常见的宿主：`createElement`（把 `componentName` 变成元素）、Error Boundary（**只包住单个节点**、让一个坏组件不拖垮整页）、按 id 规范化的状态（避免「改一个属性全页重渲」）正好对应渲染层的三个关键判据；出码产物同样是普通 React 组件，本专题的知识直接适用。

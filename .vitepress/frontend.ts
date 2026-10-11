@@ -679,6 +679,23 @@ export const FrontDataVisualization = [
         ],
     },
 ];
+export const FrontLowCode = [
+    {
+        text: "低代码平台",
+        link: "/docs/Frontend/LowCode/index.md",
+        items: [
+            { text: "总览：低代码的边界与四种形态", link: "/docs/Frontend/LowCode/Overview/index.md" },
+            { text: "协议设计：页面 Schema 的契约", link: "/docs/Frontend/LowCode/Schema/index.md" },
+            { text: "渲染引擎：从 Schema 到视图", link: "/docs/Frontend/LowCode/RenderEngine/index.md" },
+            { text: "物料体系：组件即积木", link: "/docs/Frontend/LowCode/Materials/index.md" },
+            { text: "搭建器：画布、属性与撤销重做", link: "/docs/Frontend/LowCode/Designer/index.md" },
+            { text: "数据源与联动：表达式、变量与动作", link: "/docs/Frontend/LowCode/DataBinding/index.md" },
+            { text: "交付与运行时：出码、版本与安全", link: "/docs/Frontend/LowCode/Runtime/index.md" },
+            { text: "实战：从零搭一个表单页搭建器", link: "/docs/Frontend/LowCode/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/LowCode/FAQ/index.md" },
+        ],
+    },
+];
 export const FrontOthers = [
     {
         text: "其他",
