@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.arrow{stroke:#64748B;fill:none;stroke-width:2;marker-end:url(#cz)}.fd{fill:none;stroke:#3B82F6;stroke-width:1.5;stroke-dasharray:6 5}</style>
+<defs><marker id="cz" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748B"/></marker></defs>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">可用性拓扑：可用区、地域与它们的失败域</text>
+<text x="460" y="56" text-anchor="middle" class="tag">先问「哪种故障要能扛住」，再决定拓扑——反过来做会买到用不上的冗余</text>
+
+<rect x="40" y="86" width="840" height="212" rx="12" class="fd"/>
+<text x="56" y="110" class="lt">地域（Region）：故障域 = 整个城市 / 大区，物理距离通常几十到几百公里</text>
+
+<rect x="66" y="126" width="256" height="152" rx="10" class="box green"/>
+<text x="194" y="150" text-anchor="middle" class="s">可用区 A</text>
+<text x="194" y="172" text-anchor="middle" class="tag">独立供电 / 制冷 / 网络</text>
+<text x="194" y="194" text-anchor="middle" class="tag">同地域内 AZ 间延迟 &lt; 2ms</text>
+<text x="194" y="216" text-anchor="middle" class="tag">不额外收费（同地域内网互通）</text>
+<text x="194" y="244" text-anchor="middle" class="tag">除跨 AZ 数据传输费</text>
+<text x="194" y="266" text-anchor="middle" class="tag">→ 这是多活最便宜的一档</text>
+
+<rect x="332" y="126" width="256" height="152" rx="10" class="box green"/>
+<text x="460" y="150" text-anchor="middle" class="s">可用区 B</text>
+<text x="460" y="172" text-anchor="middle" class="tag">与 A 完全对称</text>
+<text x="460" y="194" text-anchor="middle" class="tag">同步复制可行（RPO ≈ 0）</text>
+<text x="460" y="216" text-anchor="middle" class="tag">但写入延迟 = 两区中最慢的那个</text>
+<text x="460" y="244" text-anchor="middle" class="tag">判据：A 区全下线，业务错误率 0</text>
+<text x="460" y="266" text-anchor="middle" class="tag">且恢复后数据不丢、不重</text>
+
+<rect x="598" y="126" width="266" height="152" rx="10" class="box amber"/>
+<text x="731" y="150" text-anchor="middle" class="s">可用区 C（可有可无）</text>
+<text x="731" y="172" text-anchor="middle" class="tag">第三个 AZ 买的是「两个同时坏」的概率</text>
+<text x="731" y="194" text-anchor="middle" class="tag">两个 AZ 已能扛单点；三 AZ 的价值在</text>
+<text x="731" y="216" text-anchor="middle" class="tag">「滚动维护时仍有两个在服务」</text>
+<text x="731" y="244" text-anchor="middle" class="tag">多数业务的性价比在 2 AZ</text>
+<text x="731" y="266" text-anchor="middle" class="tag">需要 4 个 9 以上再上 3 AZ</text>
+
+<rect x="40" y="322" width="410" height="128" rx="10" class="box rose"/>
+<text x="245" y="350" text-anchor="middle" class="lt">跨地域（多 Region）：贵，且难</text>
+<text x="245" y="374" text-anchor="middle" class="tag">难点不是机器，是「数据怎么同步」</text>
+<text x="245" y="396" text-anchor="middle" class="tag">异步复制 → RPO > 0，且冲突需要业务裁决</text>
+<text x="245" y="418" text-anchor="middle" class="tag">同步复制 → 写入延迟被两地距离锁死</text>
+<text x="245" y="440" text-anchor="middle" class="tag">所以多地域的前提是「先能接受丢多少数据」</text>
+
+<rect x="470" y="322" width="410" height="128" rx="10" class="box slate"/>
+<text x="675" y="350" text-anchor="middle" class="lt">上线前必须实测的两件事</text>
+<text x="675" y="374" text-anchor="middle" class="tag">① 摘除演练：把 A 区实例全部置为不健康，看错误率与恢复时间</text>
+<text x="675" y="396" text-anchor="middle" class="tag">② 数据核对：切换后逐表比对行数与关键字段校验和</text>
+<text x="675" y="418" text-anchor="middle" class="tag">没做过 ① 的多可用区，只是「机器在两个区」而已</text>
+<text x="675" y="440" text-anchor="middle" class="tag">没做过 ② 的容灾，等于把「不丢数据」当作信仰</text>
+
+<rect x="40" y="470" width="840" height="72" rx="10" class="box"/>
+<text x="460" y="498" text-anchor="middle" class="s">一条经验判据：如果一次「可用区故障演练」需要停机窗口才可以做，那它就不是演练，是一次变更</text>
+<text x="460" y="522" text-anchor="middle" class="tag">能随时做、且不影响用户的才叫演练；做不到就先补「优雅摘除 + 无状态化」这两件事</text>
+</svg>

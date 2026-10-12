@@ -41,7 +41,7 @@
 
 | # | 判据 | 校验点 | 级别 |
 | --- | --- | --- | --- |
-| MG1 | 指标名必须匹配命名模板（`^[a-z][a-z0-9_]*_(total|seconds|bytes|ratio|count)$` 等）且以单位后缀结尾 | ① | E |
+| MG1 | 指标名必须匹配命名模板（`^[a-z][a-z0-9_]*_(total\|seconds\|bytes\|ratio\|count)$` 等）且以单位后缀结尾 | ① | E |
 | MG2 | 指标名必须在 `metric_def` 中登记（未登记 = 不许出现） | ① | E |
 | MG3 | 标签名必须在 `metric_label_def` 中登记，且取值满足 `value_regex` | ① | E |
 | MG4 | `bounded = false` 的标签**禁止出现在任何指标上** | ① | E |

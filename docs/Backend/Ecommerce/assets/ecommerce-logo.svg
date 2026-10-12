@@ -1,5 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" font-family="Microsoft YaHei, PingFang SC, sans-serif">
   <rect width="760" height="300" fill="#FFFFFF"/>
+  <defs>
+    <marker id="arw" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
   <rect x="90" y="70" width="180" height="120" rx="14" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
   <text x="180" y="116" text-anchor="middle" font-size="15" fill="#5B21B6" font-weight="bold">商品与库存</text>
   <text x="180" y="144" text-anchor="middle" font-size="10.5" fill="#6D28D9">SPU / SKU / 预占</text>

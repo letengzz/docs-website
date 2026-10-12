@@ -35,6 +35,7 @@
 - [概述与选型](Overview/index.md) → [Terraform](../Terraform/index.md)：Terraform 专题讲 **IaC 的 state、模块与工作流**；本专题只给出函数与托管集群的最小 IaC 片段，完整工程化请回到 Terraform 专题。
 - [云函数工程化](FunctionEngineering/index.md) → [数据库](../../DB/Relational/index.md) 与 [NoSQL 数据库](../../DB/NoRelational/index.md)：数据库专题讲**选型与建模**；本专题只讲函数侧怎么建连接、怎么保证幂等写入。
 - [托管容器服务](ContainerService/index.md) → [服务网格：Istio](../ContainerOrchestration/ServiceMesh/index.md)：网格专题讲**自建流量治理层**——Sidecar 与 Ambient 两种数据面怎么装、VirtualService 怎么写、mTLS 怎么开、可观测性数据从哪来；本专题只回答**这笔能力该自建还是托管**：厂商的托管网格把控制面变成按 Pod 数或按请求量计费的资源，省掉控制面运维，但数据面（每个 Pod 一个 Sidecar 的 CPU/内存）仍记在你的账单上。要算清这笔账，配合[云成本治理（FinOps）](FinOps/index.md)的单位成本口径一起看。
+- [概述与选型](Overview/index.md) → [云上架构](../CloudArchitecture/index.md)：本专题回答「**用云托管服务的哪种形态**」（IaaS → BaaS 五层光谱、选型四维度）；云上架构专题回答「**形态定了之后，在资源编排层怎么摆**」（VPC 与网段、入口层数与健康检查、可用区拓扑、弹性与计费模型）。两者的交接处正是[云成本治理（FinOps）](FinOps/index.md)：治理口径在本专题，而**哪些架构决定会在账单上留下不可逆痕迹**（网段选小了无法打通 IDC、入口按量却未设告警、单 NAT 是隐性单点）在云上架构专题。
 
 ## 学习路径建议
 

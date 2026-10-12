@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.arrow{stroke:#64748B;fill:none;stroke-width:2;marker-end:url(#cl)}</style>
+<defs><marker id="cl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748B"/></marker></defs>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">负载均衡：先选层数，再谈别的</text>
+<text x="460" y="56" text-anchor="middle" class="tag">层数决定了它能看多深、能退化到什么程度，也决定了后端健康检查该怎么做</text>
+
+<rect x="40" y="88" width="410" height="200" rx="12" class="box blue"/>
+<text x="245" y="116" text-anchor="middle" class="lt">四层（TCP / UDP）</text>
+<text x="245" y="142" text-anchor="middle" class="s">看不到 HTTP：只认连接与包</text>
+<text x="245" y="164" text-anchor="middle" class="s">适合：数据库代理、长连接、音视频、IoT</text>
+<text x="245" y="186" text-anchor="middle" class="s">优点：连接数上限极高、延迟最低、按连接均衡</text>
+<text x="245" y="212" text-anchor="middle" class="tag">健康检查只能探端口存活 ——</text>
+<text x="245" y="234" text-anchor="middle" class="tag">端口通但业务已死时，它仍会把流量送过去</text>
+<text x="245" y="262" text-anchor="middle" class="tag">对策：让 /health 由业务语义决定（见 WebFlux 上游依赖）</text>
+
+<rect x="470" y="88" width="410" height="200" rx="12" class="box amber"/>
+<text x="675" y="116" text-anchor="middle" class="lt">七层（HTTP / HTTPS / gRPC / QUIC）</text>
+<text x="675" y="142" text-anchor="middle" class="s">能看到域名、路径、Header、Cookie</text>
+<text x="675" y="164" text-anchor="middle" class="s">适合：Web、API、微服务、灰度与蓝绿</text>
+<text x="675" y="186" text-anchor="middle" class="s">优点：按请求均衡、可摘除故障实例、可终止 TLS</text>
+<text x="675" y="212" text-anchor="middle" class="tag">代价：多一次解析与连接复用层，</text>
+<text x="675" y="234" text-anchor="middle" class="tag">长连接与流式响应要显式调超时，否则会被「空闲」掐断</text>
+<text x="675" y="262" text-anchor="middle" class="tag">对策：SSE / WebSocket 的 idle timeout 必须大于心跳间隔</text>
+
+<rect x="40" y="310" width="270" height="128" rx="10" class="box green"/>
+<text x="175" y="338" text-anchor="middle" class="lt">健康检查参数怎么定</text>
+<text x="175" y="362" text-anchor="middle" class="tag">间隔 10s / 超时 3s / 连续 2 次失败摘除</text>
+<text x="175" y="384" text-anchor="middle" class="tag">连续 3 次成功才放回（避免抖动）</text>
+<text x="175" y="406" text-anchor="middle" class="tag">摘除等待时间 ≥ 应用优雅停机时间</text>
+<text x="175" y="428" text-anchor="middle" class="tag">否则「停机」会变成用户可见的 502</text>
+
+<rect x="326" y="310" width="270" height="128" rx="10" class="box violet" style="fill:#F5F3FF;stroke:#8B5CF6"/>
+<text x="461" y="338" text-anchor="middle" class="lt">跨可用区</text>
+<text x="461" y="362" text-anchor="middle" class="tag">开启：A 区整体故障时自动全量转给 B 区</text>
+<text x="461" y="384" text-anchor="middle" class="tag">关闭：只在单区内分发，跨区流量费为 0</text>
+<text x="461" y="406" text-anchor="middle" class="tag">判据：把 A 区实例全部下线，错误率必须为 0</text>
+<text x="461" y="428" text-anchor="middle" class="tag">这是「多可用区」从图纸变成事实的唯一验法</text>
+
+<rect x="612" y="310" width="268" height="128" rx="10" class="box rose"/>
+<text x="746" y="338" text-anchor="middle" class="lt">会话保持：默认不要开</text>
+<text x="746" y="362" text-anchor="middle" class="tag">开了它，扩缩容与摘除都会「不均匀」</text>
+<text x="746" y="384" text-anchor="middle" class="tag">被摘除实例上的会话直接丢失</text>
+<text x="746" y="406" text-anchor="middle" class="tag">正解：会话外置（Redis / 无状态令牌）</text>
+<text x="746" y="428" text-anchor="middle" class="tag">若必须开：用「按 Cookie 粘性 + 短 TTL」而非源 IP</text>
+
+<rect x="40" y="462" width="840" height="72" rx="10" class="box slate"/>
+<text x="460" y="490" text-anchor="middle" class="s">一条常被忽略的判据：负载均衡自身的「连接被拒 / 后端全不健康」必须有两个独立告警</text>
+<text x="460" y="514" text-anchor="middle" class="tag">前者说明入口满了（要扩入口），后者说明后端全挂（要回滚）—— 合在一起会让人猜错方向</text>
+</svg>

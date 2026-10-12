@@ -160,7 +160,7 @@ diff /tmp/used.txt /tmp/declared.txt
 | W1-B | 四个契约文件齐全且各含「约定 / 后果 / 验证」三段 | `grep -c` 统计三段标记，期望 12 | 未跑（无工程仓库） |
 | W1-C | 四条契约的校验命令全部可执行且输出符合期望 | `scripts/check-contracts.sh`，期望全 PASS | ⏳ 阻塞（本机无容器运行时） |
 | W1-D | 配置对账无差异 | 上文 `diff` 命令，期望无输出 | 未跑（无工程仓库） |
-| W1-E | 密钥类内容未进入 Git | `git grep -iE 'token|password' -- '*.yaml'`，期望无命中 | 未跑（无工程仓库） |
+| W1-E | 密钥类内容未进入 Git | `git grep -iE -e token -e password -- '*.yaml'`，期望无命中 | 未跑（无工程仓库） |
 | W1-F | README 覆盖起停、验证、排障三件事 | 人工核对三节标题存在 | 未跑（无工程仓库） |
 | W1-G | 第 1 周的全部判据可被一条命令复跑 | `scripts/check-contracts.sh && scripts/check-metrics.sh` | ⏳ 阻塞（同上） |
 

@@ -5,35 +5,35 @@
   <rect x="20" y="70" width="720" height="46" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
   <text x="380" y="88.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">部署形态：单机 Docker Compose 一键起（第 4 周验收项之一）</text>
   <text x="380" y="105" text-anchor="middle" font-size="7.5" fill="#334155">七个组件全部落在同一台机器上，数据卷持久化；不引入 K8s（选型理由见需求章节）</text>
-  <rect x="20" y="132" width="136" height="108" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
-  <text x="88" y="150.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">被监控目标</text>
-  <text x="88" y="167" text-anchor="middle" font-size="7" fill="#1D4ED8">业务服务</text>
-  <text x="88" y="183.1" text-anchor="middle" font-size="7" fill="#1D4ED8">暴露 /metrics</text>
-  <text x="88" y="199.2" text-anchor="middle" font-size="7" fill="#1D4ED8">（自研）</text>
-  <rect x="172" y="132" width="136" height="108" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
-  <text x="240" y="150.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">采集器</text>
-  <text x="240" y="167" text-anchor="middle" font-size="7" fill="#6D28D9">拉模型 15s</text>
-  <text x="240" y="183.1" text-anchor="middle" font-size="7" fill="#6D28D9">服务发现</text>
-  <text x="240" y="199.2" text-anchor="middle" font-size="7" fill="#6D28D9">（现成）</text>
-  <rect x="324" y="132" width="136" height="108" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
-  <text x="392" y="150.2" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">时序存储</text>
-  <text x="392" y="167" text-anchor="middle" font-size="7" fill="#4338CA">单机 TSDB</text>
-  <text x="392" y="183.1" text-anchor="middle" font-size="7" fill="#4338CA">保留 15 天</text>
-  <text x="392" y="199.2" text-anchor="middle" font-size="7" fill="#4338CA">（现成）</text>
-  <rect x="476" y="132" width="136" height="108" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.6"/>
-  <text x="544" y="150.2" text-anchor="middle" font-size="9.5" fill="#155E75" font-weight="bold">查询与规则</text>
-  <text x="544" y="167" text-anchor="middle" font-size="7" fill="#0E7490">PromQL</text>
-  <text x="544" y="183.1" text-anchor="middle" font-size="7" fill="#0E7490">recording</text>
-  <text x="544" y="199.2" text-anchor="middle" font-size="7" fill="#0E7490">alerting</text>
-  <rect x="628" y="132" width="136" height="108" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
-  <text x="696" y="150.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">告警路由</text>
-  <text x="696" y="167" text-anchor="middle" font-size="7" fill="#C2410C">分组 / 抑制</text>
-  <text x="696" y="183.1" text-anchor="middle" font-size="7" fill="#C2410C">静默</text>
-  <text x="696" y="199.2" text-anchor="middle" font-size="7" fill="#C2410C">（现成）</text>
-  <line x1="156" y1="186" x2="172" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
-  <line x1="308" y1="186" x2="324" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
-  <line x1="460" y1="186" x2="476" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
-  <line x1="612" y1="186" x2="628" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="20" y="132" width="128" height="108" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="84" y="150.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">被监控目标</text>
+  <text x="84" y="167" text-anchor="middle" font-size="7" fill="#1D4ED8">业务服务</text>
+  <text x="84" y="183.1" text-anchor="middle" font-size="7" fill="#1D4ED8">暴露 /metrics</text>
+  <text x="84" y="199.2" text-anchor="middle" font-size="7" fill="#1D4ED8">（自研）</text>
+  <rect x="168" y="132" width="128" height="108" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="232" y="150.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">采集器</text>
+  <text x="232" y="167" text-anchor="middle" font-size="7" fill="#6D28D9">拉模型 15s</text>
+  <text x="232" y="183.1" text-anchor="middle" font-size="7" fill="#6D28D9">服务发现</text>
+  <text x="232" y="199.2" text-anchor="middle" font-size="7" fill="#6D28D9">（现成）</text>
+  <rect x="316" y="132" width="128" height="108" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="380" y="150.2" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">时序存储</text>
+  <text x="380" y="167" text-anchor="middle" font-size="7" fill="#4338CA">单机 TSDB</text>
+  <text x="380" y="183.1" text-anchor="middle" font-size="7" fill="#4338CA">保留 15 天</text>
+  <text x="380" y="199.2" text-anchor="middle" font-size="7" fill="#4338CA">（现成）</text>
+  <rect x="464" y="132" width="128" height="108" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.6"/>
+  <text x="528" y="150.2" text-anchor="middle" font-size="9.5" fill="#155E75" font-weight="bold">查询与规则</text>
+  <text x="528" y="167" text-anchor="middle" font-size="7" fill="#0E7490">PromQL</text>
+  <text x="528" y="183.1" text-anchor="middle" font-size="7" fill="#0E7490">recording</text>
+  <text x="528" y="199.2" text-anchor="middle" font-size="7" fill="#0E7490">alerting</text>
+  <rect x="612" y="132" width="128" height="108" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="676" y="150.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">告警路由</text>
+  <text x="676" y="167" text-anchor="middle" font-size="7" fill="#C2410C">分组 / 抑制</text>
+  <text x="676" y="183.1" text-anchor="middle" font-size="7" fill="#C2410C">静默</text>
+  <text x="676" y="199.2" text-anchor="middle" font-size="7" fill="#C2410C">（现成）</text>
+  <line x1="148" y1="186" x2="168" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="296" y1="186" x2="316" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="444" y1="186" x2="464" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="592" y1="186" x2="612" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
   <rect x="20" y="268" width="350" height="118" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
   <text x="195" y="286.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">自研组件只有两个</text>
   <text x="195" y="303" text-anchor="middle" font-size="7.5" fill="#047857">① 业务侧指标暴露：六项指标口径 + 路径参数归一</text>

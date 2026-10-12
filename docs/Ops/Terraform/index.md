@@ -45,3 +45,4 @@ Ansible 回答"**怎么把机器配好**"（配置管理），Terraform 回答"*
 ## 相关专题与分工
 
 - [云原生 · 函数工程](../CloudNative/FunctionEngineering/index.md)：本专题讲 **IaC 的完整工程化**——state 怎么存与加锁、模块怎么定输入输出契约、init/plan/apply 工作流怎么进 CI；该页只给**函数与托管集群的最小 IaC 片段**（Serverless Framework / AWS SAM / 函数类 Terraform 资源），用来把一份函数配置快速跑起来。两者是「片段 vs 工程」：要快速交付一个 Serverless 应用，先看该页的片段，再回来补齐多环境、拆模块与 state 管理；反过来，本专题不重复给函数框架的用法。
+- [云上架构](../CloudArchitecture/index.md)：本专题讲 **IaC 的工具与工作流**（state 存哪、模块怎么定输入输出、init/plan/apply 怎么进 CI）；该页讲**哪些资源必须先想清楚、再写进代码**（网段「先大后小」、可用区与子网数量、入口层数、弹性与计费模型），并给出「改起来的代价」等级。两者是「**怎么写**」与「**写什么**」的分工：该页的[最小起步骨架](../CloudArchitecture/Overview/index.md)（网段、两组子网、安全组、伸缩组）正是最该被本专题纳入 state 与模块的那部分。

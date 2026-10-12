@@ -76,4 +76,5 @@ Prometheus 本地存储适合短周期（默认 15 天）。要做**几个月到
 - [备份与容灾](../../Ops/BackupDR/index.md)：监控是备份体系的「眼睛」——**没有告警的备份任务，会在最需要它的时候发现自己早就停了**。具体做法是暴露 `backup_*_last_success_timestamp` 并配一条新鲜度告警，见 [实战 · 接监控](../../Ops/BackupDR/Practice/index.md)。
 - [日志体系](../LogSystem/index.md)：备份脚本的失败详情应当落日志，便于复盘。
 - [定时任务](../Linux/Advanced/CronTasks/index.md)：备份通常由 cron / systemd timer 驱动，静默失败需要监控兜底。
+- [云上架构](../CloudArchitecture/index.md)：本专题讲**指标类型与告警规则设计的方法论**（怎么选指标、怎么定 `for`、阈值怎么由基线反推）；该页只列**云资源该暴露哪些容量与成本水位指标**（实例数、CPU / 内存水位、NAT 出口流量、快照份数），以及「成本随流量同步上涨」的那几个组件。口径不重复：要设计一条新规则回到本专题，要确认「**该盯哪个云资源**」去该页。
 

@@ -262,6 +262,7 @@ export const CompleteProject = [
           { text: "采集任务配置", link: "/project/Complete/MonitoringDashboard/ScrapeConfig/index.md" },
           { text: "查询与规则设计", link: "/project/Complete/MonitoringDashboard/Rules/index.md" },
           { text: "接口契约与工程骨架", link: "/project/Complete/MonitoringDashboard/Contracts/index.md" },
+          { text: "指标暴露端点（C1）", link: "/project/Complete/MonitoringDashboard/MetricsEndpoint/index.md" },
         ],
       },
       {

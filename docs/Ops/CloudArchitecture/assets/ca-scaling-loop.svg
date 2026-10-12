@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.arrow{stroke:#64748B;fill:none;stroke-width:2;marker-end:url(#cs)}</style>
+<defs><marker id="cs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748B"/></marker></defs>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">弹性伸缩的闭环：一个决策周期里发生了什么</text>
+<text x="460" y="56" text-anchor="middle" class="tag">扩容与缩容不是对称的——扩容要快，缩容要慢，这是本页最重要的一条不对称</text>
+
+<rect x="40" y="88" width="180" height="104" rx="10" class="box blue"/>
+<text x="130" y="116" text-anchor="middle" class="lt">① 采集指标</text>
+<text x="130" y="140" text-anchor="middle" class="tag">CPU / 队列深度 / QPS</text>
+<text x="130" y="162" text-anchor="middle" class="tag">优先选「与负载线性」的指标</text>
+<text x="130" y="182" text-anchor="middle" class="tag">CPU 对 I/O 密集负载会撒谎</text>
+
+<rect x="250" y="88" width="180" height="104" rx="10" class="box amber"/>
+<text x="340" y="116" text-anchor="middle" class="lt">② 判定与选策略</text>
+<text x="340" y="140" text-anchor="middle" class="tag">目标跟踪 / 步进 / 定时</text>
+<text x="340" y="162" text-anchor="middle" class="tag">先设「最小实例数」再设阈值</text>
+<text x="340" y="182" text-anchor="middle" class="tag">最小数 = 挂掉一个还剩几个</text>
+
+<rect x="460" y="88" width="180" height="104" rx="10" class="box green"/>
+<text x="550" y="116" text-anchor="middle" class="lt">③ 创建实例</text>
+<text x="550" y="140" text-anchor="middle" class="tag">选规格族（可混用多种）</text>
+<text x="550" y="162" text-anchor="middle" class="tag">选计费模型（按量 / 竞价 / 预留）</text>
+<text x="550" y="182" text-anchor="middle" class="tag">预热脚本属于启动时间的一部分</text>
+
+<rect x="670" y="88" width="210" height="104" rx="10" class="box violet" style="fill:#F5F3FF;stroke:#8B5CF6"/>
+<text x="775" y="116" text-anchor="middle" class="lt">④ 注册进负载均衡</text>
+<text x="775" y="140" text-anchor="middle" class="tag">通过健康检查后才接流量</text>
+<text x="775" y="162" text-anchor="middle" class="tag">缩容时先摘除、等 30~60s</text>
+<text x="775" y="182" text-anchor="middle" class="tag">再终止 —— 顺序反了就是 502</text>
+
+<line class="arrow" x1="224" y1="140" x2="246" y2="140"/>
+<line class="arrow" x1="434" y1="140" x2="456" y2="140"/>
+<line class="arrow" x1="644" y1="140" x2="666" y2="140"/>
+
+<rect x="40" y="222" width="200" height="96" rx="10" class="box rose"/>
+<text x="140" y="250" text-anchor="middle" class="lt">扩容：冷却期要短</text>
+<text x="140" y="274" text-anchor="middle" class="tag">30~60 秒即可</text>
+<text x="140" y="296" text-anchor="middle" class="tag">宁可多开两台，也不要慢</text>
+
+<rect x="260" y="222" width="200" height="96" rx="10" class="box rose"/>
+<text x="360" y="250" text-anchor="middle" class="lt">缩容：冷却期要长</text>
+<text x="360" y="274" text-anchor="middle" class="tag">300 秒起步</text>
+<text x="360" y="296" text-anchor="middle" class="tag">抖动型流量下缩太快会来回震荡</text>
+
+<rect x="480" y="222" width="400" height="96" rx="10" class="box slate"/>
+<text x="680" y="250" text-anchor="middle" class="lt">震荡（flapping）的根因与止血</text>
+<text x="680" y="274" text-anchor="middle" class="tag">根因：扩缩容的滞后时间 ≈ 流量波动周期。止血三条 ——</text>
+<text x="680" y="296" text-anchor="middle" class="tag">拉长缩容冷却 · 用多个周期均值判定 · 设最小实例数兜底</text>
+
+<rect x="40" y="342" width="840" height="130" rx="10" class="box"/>
+<text x="460" y="370" text-anchor="middle" class="lt">时间轴：为什么「加了机器」不等于「好了」</text>
+<text x="90" y="400" class="s">t=0 触发</text>
+<text x="240" y="400" class="s">t=+45s 实例就绪</text>
+<text x="470" y="400" class="s">t=+75s 健康检查通过</text>
+<text x="720" y="400" class="s">t=+90s 开始分担流量</text>
+<line x1="90" y1="418" x2="830" y2="418" stroke="#94A3B8" stroke-width="2"/>
+<circle cx="90" cy="418" r="5" fill="#3B82F6"/><circle cx="240" cy="418" r="5" fill="#10B981"/>
+<circle cx="470" cy="418" r="5" fill="#10B981"/><circle cx="720" cy="418" r="5" fill="#F59E0B"/>
+<text x="90" y="446" class="tag">监控在抖</text>
+<text x="240" y="446" class="tag">进程已起</text>
+<text x="470" y="446" class="tag">可接流量</text>
+<text x="720" y="446" class="tag">曲线才开始回落</text>
+<text x="460" y="466" text-anchor="middle" class="tag">这一分半钟里容量是「缺」的：所以扩容阈值必须留出这段余量，而不是等水位打满才动</text>
+
+<rect x="40" y="492" width="840" height="72" rx="10" class="box amber"/>
+<text x="460" y="520" text-anchor="middle" class="s">与 Kubernetes 的分工：HPA 决定「要几个副本」，伸缩组决定「有没有机器给这些副本」</text>
+<text x="460" y="544" text-anchor="middle" class="tag">只配 HPA 不配集群伸缩，会出现「副本数涨了但一直 Pending」—— 那是一个容量问题，不是一个调度问题</text>
+</svg>

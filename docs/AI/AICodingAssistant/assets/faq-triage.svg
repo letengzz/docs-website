@@ -22,39 +22,39 @@
   <text x="450" y="74" font-weight="bold">症状是什么？</text>
   <text class="small" x="450" y="92">四类最常见的起点</text>
 
-  <line class="ar" x1="400" y1="104" x2="180" y2="140" marker-end="url(#fq)"/>
-  <line class="ar" x1="425" y1="104" x2="370" y2="140" marker-end="url(#fq)"/>
-  <line class="ar" x1="475" y1="104" x2="530" y2="140" marker-end="url(#fq)"/>
-  <line class="ar" x1="500" y1="104" x2="720" y2="140" marker-end="url(#fq)"/>
+  <line class="ar" x1="400" y1="104" x2="152" y2="140" marker-end="url(#fq)"/>
+  <line class="ar" x1="425" y1="104" x2="342" y2="140" marker-end="url(#fq)"/>
+  <line class="ar" x1="475" y1="104" x2="502" y2="140" marker-end="url(#fq)"/>
+  <line class="ar" x1="500" y1="104" x2="692" y2="140" marker-end="url(#fq)"/>
 
-  <rect class="d" x="40" y="144" width="200" height="140"/>
-  <text class="h" x="140" y="168">答非所问 / 编造 API</text>
-  <text class="small" x="140" y="192">① 冷启动测试：指令文件装载了吗</text>
-  <text class="small" x="140" y="210">② 相关文件显式引用了吗</text>
-  <text class="small" x="140" y="228">③ 指令合并后超 32 KiB 了吗</text>
-  <text class="small" x="140" y="246">④ 引的 API 是不是旧年代写法</text>
-  <text class="small" x="140" y="270">→ 上下文工程页</text>
+  <rect class="d" x="12" y="144" width="200" height="140"/>
+  <text class="h" x="112" y="168">答非所问 / 编造 API</text>
+  <text class="small" x="112" y="192">① 冷启动测试：指令文件装载了吗</text>
+  <text class="small" x="112" y="210">② 相关文件显式引用了吗</text>
+  <text class="small" x="112" y="228">③ 指令合并后超 32 KiB 了吗</text>
+  <text class="small" x="112" y="246">④ 引的 API 是不是旧年代写法</text>
+  <text class="small" x="112" y="270">→ 上下文工程页</text>
 
-  <rect class="w" x="265" y="144" width="200" height="140"/>
-  <text class="h" x="365" y="168">越改越多 / 动了不该动的</text>
-  <text class="small" x="365" y="192">① 任务分级对了吗（T3/T4≠T1）</text>
-  <text class="small" x="365" y="210">② 说了「不做什么」吗</text>
-  <text class="small" x="365" y="228">③ 先要计划再要代码了吗</text>
-  <text class="small" x="365" y="252">→ 提示技巧页</text>
+  <rect class="w" x="237" y="144" width="200" height="140"/>
+  <text class="h" x="337" y="168">越改越多 / 动了不该动的</text>
+  <text class="small" x="337" y="192">① 任务分级对了吗（T3/T4≠T1）</text>
+  <text class="small" x="337" y="210">② 说了「不做什么」吗</text>
+  <text class="small" x="337" y="228">③ 先要计划再要代码了吗</text>
+  <text class="small" x="337" y="252">→ 提示技巧页</text>
 
-  <rect class="w" x="490" y="144" width="200" height="140"/>
-  <text class="h" x="590" y="168">构建过了但页面不对</text>
-  <text class="small" x="590" y="192">① 图片路径层级（../assets/）</text>
-  <text class="small" x="590" y="210">② 围栏未闭合（正文被吞）</text>
-  <text class="small" x="590" y="228">③ 正文里的双花括号</text>
-  <text class="small" x="590" y="252">→ 实战页 / 仓库巡检</text>
+  <rect class="w" x="462" y="144" width="200" height="140"/>
+  <text class="h" x="562" y="168">构建过了但页面不对</text>
+  <text class="small" x="562" y="192">① 图片路径层级（../assets/）</text>
+  <text class="small" x="562" y="210">② 围栏未闭合（正文被吞）</text>
+  <text class="small" x="562" y="228">③ 正文里的双花括号</text>
+  <text class="small" x="562" y="252">→ 实战页 / 仓库巡检</text>
 
-  <rect class="d" x="715" y="144" width="200" height="140"/>
-  <text class="h" x="815" y="168">停不下来 / 成本失控</text>
-  <text class="small" x="815" y="192">① 停止条件是判据还是感觉</text>
-  <text class="small" x="815" y="210">② 三重上限（token/时长/轮数）</text>
-  <text class="small" x="815" y="228">③ L3 禁止项被交给它了吗</text>
-  <text class="small" x="815" y="252">→ Agent 模式页</text>
+  <rect class="d" x="687" y="144" width="200" height="140"/>
+  <text class="h" x="787" y="168">停不下来 / 成本失控</text>
+  <text class="small" x="787" y="192">① 停止条件是判据还是感觉</text>
+  <text class="small" x="787" y="210">② 三重上限（token/时长/轮数）</text>
+  <text class="small" x="787" y="228">③ L3 禁止项被交给它了吗</text>
+  <text class="small" x="787" y="252">→ Agent 模式页</text>
 
   <rect class="a" x="60" y="316" width="780" height="110"/>
   <text x="450" y="340" font-weight="bold">通用三步（四类都适用）</text>

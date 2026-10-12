@@ -19,3 +19,4 @@
 - [Nginx](../Nginx/index.md)：应用层的代理、负载均衡与 TLS 终止。
 - [Docker 网络模式深入](../Docker/NetworkAdvanced/index.md)：容器网络的实现细节。
 - [服务网格：Istio 流量与安全治理](../ContainerOrchestration/ServiceMesh/index.md)：本专题回答「**包怎么走、为什么不通**」——分层模型、DNS 解析、TCP/IP 状态机、TLS 握手，以及用 tcpdump/Wireshark 把证据抓下来；网格专题回答「**服务之间的调用该守什么策略**」——重试、超时、熔断、灰度、身份与授权。排障顺序天然是先本专题、后网格：抓包看到 RST、重传或 TLS 握手失败，回到[抓包分析](Capture/index.md)与[网络排查方法论](Troubleshoot/index.md)定位底层，而不是先去改网格策略；反过来，抓包显示每跳都 200 而业务仍超时，才轮到检查网格的重试与超时配置（见[韧性设计](../ContainerOrchestration/ServiceMesh/Resilience/index.md)）。一个具体的例子：网格里 mTLS 开启后容器内 `curl` 直连上游会失败，那不是网络故障，而是流量没走 Sidecar——判断依据在[安全：mTLS、身份与授权](../ContainerOrchestration/ServiceMesh/Security/index.md)。
+- [云上架构 · VPC 与网络边界](../CloudArchitecture/Network/index.md)：本专题讲**协议本身**（分层模型、DNS 解析、TCP/IP 状态机、TLS 握手、抓包取证）；该页讲**协议跑在什么资源上**（网段划分「先大后小」、公有/私有子网分工、安全组与网络 ACL、私网出口的三个选择）。排障顺序固定：**先用本专题的分层方法定位到「哪一层不通」，再落到 VPC 的安全组与路由表**——抓包看到 RST 只是现象，能不能连上由子网分类与安全组规则决定。

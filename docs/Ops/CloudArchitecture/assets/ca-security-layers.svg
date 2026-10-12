@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 552" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.hd{fill:#0F172A}.arrow{stroke:#64748B;fill:none;stroke-width:2;marker-end:url(#sl)}</style>
+<defs><marker id="sl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748B"/></marker></defs>
+<rect width="920" height="552" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">云上安全边界：三道边界 + 一层审计</text>
+<text x="460" y="56" text-anchor="middle" class="tag">验证方式只有一句话：能证明「没暴露」，而不是「我关掉了」</text>
+
+<rect x="40" y="76" width="840" height="26" class="hd"/>
+<text x="120" y="94" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">边界</text>
+<text x="340" y="94" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">由什么实现</text>
+<text x="690" y="94" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">最常见失效点 → 事故形态</text>
+
+<rect x="40" y="102" width="160" height="80" class="rose"/>
+<text x="120" y="130" text-anchor="middle" class="lt">身份边界</text>
+<text x="120" y="150" text-anchor="middle" class="tag">最容易失守</text>
+<text x="120" y="168" text-anchor="middle" class="tag">失守面积最大</text>
+<rect x="200" y="102" width="280" height="80" class="box"/>
+<text x="340" y="128" text-anchor="middle" class="s">账号 / 角色 / 策略</text>
+<text x="340" y="150" text-anchor="middle" class="tag">临时凭证（实例角色）取代长期密钥</text>
+<text x="340" y="170" text-anchor="middle" class="tag">授权给资源 ID，而不是通配 *</text>
+<rect x="480" y="102" width="400" height="80" class="box"/>
+<text x="680" y="128" text-anchor="middle" class="s">用主账号长期密钥跑应用</text>
+<text x="680" y="150" text-anchor="middle" class="tag">密钥泄漏 = 全账号失守</text>
+<text x="680" y="170" text-anchor="middle" class="tag">且无法溯源到具体服务</text>
+
+<rect x="40" y="188" width="160" height="80" class="amber"/>
+<text x="120" y="216" text-anchor="middle" class="lt">网络边界</text>
+<text x="120" y="236" text-anchor="middle" class="tag">暴露面可枚举</text>
+<text x="120" y="254" text-anchor="middle" class="tag">但会「一次配置长期失守」</text>
+<rect x="200" y="188" width="280" height="80" class="box"/>
+<text x="340" y="214" text-anchor="middle" class="s">安全组 / 私网 / 端点</text>
+<text x="340" y="236" text-anchor="middle" class="tag">管理端口只允许来自跳板机安全组</text>
+<text x="340" y="256" text-anchor="middle" class="tag">对象存储默认私有，公开须有清单</text>
+<rect x="480" y="188" width="400" height="80" class="box"/>
+<text x="680" y="214" text-anchor="middle" class="s">为临时排查把管理端口开给 0.0.0.0/0</text>
+<text x="680" y="236" text-anchor="middle" class="tag">数据库被扫到并勒索</text>
+<text x="680" y="256" text-anchor="middle" class="tag">为静态站点整桶公开，含备份目录</text>
+
+<rect x="40" y="274" width="160" height="80" class="blue"/>
+<text x="120" y="302" text-anchor="middle" class="lt">数据边界</text>
+<text x="120" y="322" text-anchor="middle" class="tag">看「快照」</text>
+<text x="120" y="340" text-anchor="middle" class="tag">而不是看「主库」</text>
+<rect x="200" y="274" width="280" height="80" class="box"/>
+<text x="340" y="300" text-anchor="middle" class="s">静态加密 / 传输加密 / 密钥轮换</text>
+<text x="340" y="322" text-anchor="middle" class="tag">入口终止 TLS + 后端确认是私网</text>
+<text x="340" y="342" text-anchor="middle" class="tag">密钥放到另一个账号，只授「解密」</text>
+<rect x="480" y="274" width="400" height="80" class="box"/>
+<text x="680" y="300" text-anchor="middle" class="s">加密了主库，忘了备份与快照</text>
+<text x="680" y="322" text-anchor="middle" class="tag">快照泄漏 = 全量数据泄漏</text>
+<text x="680" y="342" text-anchor="middle" class="tag">密钥与数据同一权限边界 = 不防账号被攻破</text>
+
+<rect x="40" y="372" width="840" height="88" class="green"/>
+<text x="120" y="404" text-anchor="middle" class="lt">审计层</text>
+<text x="120" y="424" text-anchor="middle" class="tag">横切三道边界</text>
+<text x="120" y="442" text-anchor="middle" class="tag">事后唯一证据</text>
+<text x="200" y="400" class="s">操作审计（控制面）：谁在什么时候改了哪个资源 —— 保留 ≥ 90 天</text>
+<text x="200" y="420" class="s">数据面日志：谁访问了哪个对象 / 接口 —— 按合规要求开启</text>
+<text x="200" y="444" class="tag">最低要求：日志写到「被审计对象拿不到」的地方，否则有人恶意操作时等于不存在</text>
+
+<rect x="40" y="474" width="840" height="62" class="slate"/>
+<text x="460" y="498" text-anchor="middle" class="lt">三个可执行的收尾判据</text>
+<text x="460" y="520" text-anchor="middle" class="tag">① 全库凭证关键词扫描输出为空 ② 管理端口从公网探测全部拒绝或超时 ③ 真实轮换一次密钥且期间错误率为 0</text>
+</svg>

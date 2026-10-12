@@ -301,3 +301,20 @@ export const CloudNative = [
     ],
   },
 ];
+export const CloudArchitecture = [
+  {
+    text: "云上架构",
+    link: "/docs/Ops/CloudArchitecture/index.md",
+    items: [
+      { text: "总览：上云先要决定的五件事", link: "/docs/Ops/CloudArchitecture/Overview/index.md" },
+      { text: "VPC 与网络边界", link: "/docs/Ops/CloudArchitecture/Network/index.md" },
+      { text: "负载均衡", link: "/docs/Ops/CloudArchitecture/LoadBalancing/index.md" },
+      { text: "弹性伸缩", link: "/docs/Ops/CloudArchitecture/AutoScaling/index.md" },
+      { text: "可用性拓扑", link: "/docs/Ops/CloudArchitecture/Availability/index.md" },
+      { text: "云上安全边界", link: "/docs/Ops/CloudArchitecture/Security/index.md" },
+      { text: "成本与规格选型", link: "/docs/Ops/CloudArchitecture/Cost/index.md" },
+      { text: "实战：把监控大盘搬上云", link: "/docs/Ops/CloudArchitecture/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/CloudArchitecture/FAQ/index.md" },
+    ],
+  },
+];

@@ -1,5 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
   <rect width="900" height="450" fill="#ffffff"/>
+  <defs>
+    <marker id="s1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
   <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f2937">单点登录（SSO）架构与协议选择</text>
 
   <rect x="340" y="60" width="220" height="80" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>

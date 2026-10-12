@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.slate{fill:#F1F5F9;stroke:#94A3B8}.arrow{stroke:#64748B;fill:none;stroke-width:2;marker-end:url(#cm)}</style>
+<defs><marker id="cm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748B"/></marker></defs>
+<rect width="920" height="620" fill="#FFFFFF"/>
+<text x="460" y="36" text-anchor="middle" class="h">云上架构专题地图</text>
+<text x="460" y="58" text-anchor="middle" class="tag">一条主线：地域 → 可用区 → 子网 → 负载均衡 → 实例组 → 数据；四个横切面：成本、安全、可观测、IaC</text>
+
+<rect x="40" y="92" width="240" height="120" rx="12" class="box blue"/>
+<text x="160" y="120" text-anchor="middle" class="lt">① 网络边界</text>
+<text x="160" y="144" text-anchor="middle" class="s">VPC / 子网 / 路由表</text>
+<text x="160" y="164" text-anchor="middle" class="s">安全组 · NACL · 私网出口</text>
+<text x="160" y="192" text-anchor="middle" class="tag">Network</text>
+
+<rect x="320" y="92" width="240" height="120" rx="12" class="box amber"/>
+<text x="440" y="120" text-anchor="middle" class="lt">② 流量入口</text>
+<text x="440" y="144" text-anchor="middle" class="s">四层 / 七层负载均衡</text>
+<text x="440" y="164" text-anchor="middle" class="s">健康检查 · 会话 · 证书</text>
+<text x="440" y="192" text-anchor="middle" class="tag">LoadBalancing</text>
+
+<rect x="600" y="92" width="280" height="120" rx="12" class="box green"/>
+<text x="740" y="120" text-anchor="middle" class="lt">③ 容量与弹性</text>
+<text x="740" y="144" text-anchor="middle" class="s">伸缩组 · 冷却 · 预热</text>
+<text x="740" y="164" text-anchor="middle" class="s">与负载均衡的注册/摘除</text>
+<text x="740" y="192" text-anchor="middle" class="tag">AutoScaling</text>
+
+<line class="arrow" x1="284" y1="152" x2="314" y2="152"/>
+<line class="arrow" x1="564" y1="152" x2="594" y2="152"/>
+
+<rect x="40" y="244" width="240" height="120" rx="12" class="box violet"/>
+<text x="160" y="272" text-anchor="middle" class="lt">④ 可用性拓扑</text>
+<text x="160" y="296" text-anchor="middle" class="s">多可用区 / 多地域</text>
+<text x="160" y="316" text-anchor="middle" class="s">RTO / RPO 落到复制方式</text>
+<text x="160" y="344" text-anchor="middle" class="tag">Availability</text>
+
+<rect x="320" y="244" width="240" height="120" rx="12" class="box rose"/>
+<text x="440" y="272" text-anchor="middle" class="lt">⑤ 云上安全边界</text>
+<text x="440" y="296" text-anchor="middle" class="s">账号与角色最小权限</text>
+<text x="440" y="316" text-anchor="middle" class="s">私网可达 · 静态加密 · 审计</text>
+<text x="440" y="344" text-anchor="middle" class="tag">Security</text>
+
+<rect x="600" y="244" width="280" height="120" rx="12" class="box slate"/>
+<text x="740" y="272" text-anchor="middle" class="lt">⑥ 成本的架构决定</text>
+<text x="740" y="296" text-anchor="middle" class="s">规格族 · 计费模型 · 跨 AZ 流量</text>
+<text x="740" y="316" text-anchor="middle" class="s">闲置与孤儿的识别</text>
+<text x="740" y="344" text-anchor="middle" class="tag">Cost</text>
+
+<rect x="40" y="396" width="400" height="96" rx="12" class="box blue"/>
+<text x="240" y="424" text-anchor="middle" class="lt">实战：把监控大盘搬上云</text>
+<text x="240" y="448" text-anchor="middle" class="s">先定边界与可用区 → 再定入口与弹性</text>
+<text x="240" y="470" text-anchor="middle" class="s">最后算成本并写出验收判据</text>
+
+<rect x="480" y="396" width="400" height="96" rx="12" class="box amber"/>
+<text x="680" y="424" text-anchor="middle" class="lt">常见问题与最佳实践</text>
+<text x="680" y="448" text-anchor="middle" class="s">分诊表 · 高频问答 · 上线自查</text>
+<text x="680" y="470" text-anchor="middle" class="s">术语表 · 参考资料</text>
+
+<line class="arrow" x1="284" y1="212" x2="284" y2="240"/>
+<line class="arrow" x1="160" y1="364" x2="160" y2="392"/>
+<line class="arrow" x1="720" y1="364" x2="700" y2="392"/>
+
+<rect x="40" y="520" width="840" height="72" rx="12" class="box"/>
+<text x="460" y="548" text-anchor="middle" class="s">阅读顺序建议：Overview（先决定五件事）→ Network → LoadBalancing → AutoScaling → Availability</text>
+<text x="460" y="572" text-anchor="middle" class="s">Security 与 Cost 是横切面，任何一页读到「这里要花钱/要授权」时都可以跳过去对照</text>
+</svg>

@@ -71,7 +71,8 @@
 | 第 125 天 | 采集任务配置：目标发现方式定稿（`file_sd` 虚机 + `k8s_sd` Pod，**不用静态配置**）、`job` 分组口径（按抓取参数 + 归属，禁止「一服务一 job」）、完整 `scrape.yaml`（三个 job、限额对齐容量公式）、划清 `relabel_configs`（目标）与 `metric_relabel_configs`（样本）的边界、抓取失败四类处置与两条健康告警，产出 `scrape-config.svg` 与 SC-A~SC-G 判据表 | ✅ 本日 |
 | 第 126 天 | 查询与规则设计：划清 recording（算得慢）与 alerting（要不要叫人）的边界、定稿 recording 命名三段式与三条实现纪律、`recording.yaml`（错误率**分子分母先分别聚合**）与 `alerting.yaml`、`for`/`keep_firing_for` 定值依据、分组抑制静默三道闸门，并把第 122 天三个「不可接受」失败模式落成 `TargetDown` / `TargetScrapedZeroSamples` / `ServiceDown`；产出 `rules-design.svg` 与 RL-A~RL-G 判据表 | ✅ 本日 |
 | 第 127 天 | 第 1 周收口：接口契约与工程骨架——定稿 8 个一级目录的工程骨架（配置与代码分离、契约单独成目录）、把四个接口边界写成含「约定 / 后果 / 可执行验证」三段的契约文件、定稿配置三层划分与对账命令，产出 `contracts.svg` 与 W1-A~W1-G 收口清单 | ✅ 本日 |
-| 第 128-134 天 | 第 2 周：采集模块、规则模块、告警模块、大盘数据接口 | ⏳ 待办 |
+| 第 128 天 | 第 2 周起步：**业务侧指标暴露（C1）**——把契约一实现成可抓取的 `/metrics` 端点，把字典表前三个指标与五条标签登记抄进代码，建立高基数的三个拦截位置，`check-metrics.sh` 首次接上 MG1~MG5，产出 `metrics-endpoint.svg` 与 EP-A~EP-H 判据表 | ✅ 本日 |
+| 第 129-134 天 | 第 2 周其余：看板数据服务（C6）、规则加载与热更新、告警路由联调、大盘数据接口、第 2 周收口 | ⏳ 待办 |
 | 第 135-141 天 | 第 3 周：端到端联调、告警实测、压测与容量验证 | ⏳ 待办 |
 | 第 142-150 天 | 第 4 周：部署、监控系统自监控、文档沉淀、上线验收 | ⏳ 待办 |
 
@@ -84,8 +85,9 @@
 5. [采集任务配置](./ScrapeConfig/index.md)：五种目标发现方式的对照与「不用静态配置」的理由、`job` 分组口径、完整 `scrape.yaml`（含 `honor_labels` / `sample_limit` / `labeldrop` 的取舍）、`relabel_configs` 与 `metric_relabel_configs` 的边界与值班判别法、抓取失败四类处置与 `TargetDown` / `TargetScrapedZeroSamples` 两条健康告警、四段静态校验命令与 SC-A~SC-G 判据表
 6. [查询与规则设计](./Rules/index.md)：recording 与 alerting 的边界、命名三段式（`level:metric:operations`）与三条实现纪律、`recording.yaml` 与 `alerting.yaml` 定稿、`for`/`keep_firing_for`/`interval` 的定值依据、分组/抑制/静默三道闸门、三个「不可接受」失败模式的告警映射、RL-A~RL-G 判据表
 7. [接口契约与工程骨架](./Contracts/index.md)：第 1 周收口——8 个一级目录的工程骨架（配置与代码分离、契约单独成目录）、四个接口边界的契约文件写法（约定 / 定错的后果 / 可执行验证三段）、配置三层划分（结构进仓库 / 值进环境变量 / 密钥进密钥管理）与配置对账命令、W1-A~W1-G 收口清单
+8. [指标暴露端点（C1）](./MetricsEndpoint/index.md)：第 2 周起步——把契约一实现成 `/metrics` 端点（`base-path` + `path-mapping`）、三个指标与五条标签登记抄进代码、高基数的三个拦截位置（业务代码 / 端点输出 / 门禁脚本）、框架默认指标名与契约冲突的处置、`check-metrics.sh` 首次接上 MG1~MG5、EP-A~EP-H 判据表
 
-**第 1 周（第 121-127 天）已全部交付**，共 7 个章节。第 2 周（第 128-134 天）进入核心模块编码：采集模块、规则模块、告警模块、大盘数据接口。
+**第 1 周（第 121-127 天）已全部交付**，共 7 个章节。第 2 周（第 128-134 天）进入核心模块编码：**第 128 天已交付指标暴露端点（C1）**；其余为规则模块、告警模块与大盘数据接口。
 
 ## 迭代记录
 
@@ -98,6 +100,7 @@
 | 第 125 天 | 采集任务配置：把边界二与失败矩阵 C1/C2 落到配置文件上——定稿双轨目标发现（`file_sd_configs` 虚机 + `kubernetes_sd_configs` Pod，明确不用静态配置以排除「扩容漏配监控」）、`job` 按「抓取参数 + 归属」分组（禁止一服务一 job）、给出完整 `scrape.yaml` 与四段**不需要容器运行时**的静态校验（超时关系 / 元标签清理 / 丢弃项登记）、把「目标不可达」与「可达但 0 样本」拆成两条独立告警；新增 `ScrapeConfig/index.md` 与 `scrape-config.svg`，判据 SC-A~SC-G 中 SC-A~SC-G 的动态部分标注「未跑 + 原因：本机无容器运行时」，静态校验为本机实跑 |
 | 第 126 天 | 查询与规则设计：把「算得慢」与「要不要叫人」拆开——定稿 recording 命名三段式与三条实现纪律（不引用告警规则 / 不做多层嵌套 / 与保留策略对齐），给出错误率等三条核心预聚合（**分子分母先分别聚合再相除**）；定稿 `alerting.yaml`，把第 122 天三个「不可接受」失败模式落成 `TargetDown`（C1）、`TargetScrapedZeroSamples`（C2）、`ServiceDown`（C3），并给出 `for` / `keep_firing_for` / `interval` 的定值依据与「`for: 0s` 仅限聚合后的硬故障」口径；定稿分组 / 抑制 / 静默三道闸门并写下「宁可少抑制，抑制写宽会静默真故障」的纪律；新增 `Rules/index.md` 与 `rules-design.svg`，判据 RL-A~RL-G 标注为判据而非实测 |
 | 第 127 天 | 第 1 周收口：把前五天的「决定」收成「约束」——定稿 8 个一级目录的工程骨架（`deploy` 与 `app` 分离的理由是变更节奏与责任人不同，`contracts/` 单独成目录的理由是改它必须走评审）；把四个接口边界写成四份契约文件，每份必须回答「约定是什么 / 定错的后果是什么 / 怎么验证没被破坏」，且每条契约都配一条可执行校验命令；定稿配置三层划分（**结构进仓库、值进环境变量、密钥进密钥管理**）与「用了没声明 / 声明了没用」的双向对账命令；本章刻意**不新增判据族**（判据唯一性），只按「归位」与「可执行」两类收口并给出 W1-A~W1-G；新增 `Contracts/index.md` 与 `assets/contracts.svg`。**第 1 周（121-127）至此全部交付**（7 章） |
+| 第 128 天 | 第 2 周起步：**业务侧指标暴露（C1）**——自研两件的第一件。把契约一实现成 `/metrics` 端点（`base-path` + `path-mapping`），把 `metric_def` / `metric_label_def` 的前三个指标与五条标签登记抄进代码，建立「业务代码 / 端点输出 / 门禁脚本」三个高基数拦截位置，并把 `check-metrics.sh` 首次接上第 124 天的 MG1~MG5；新增 `MetricsEndpoint/index.md` 与 `assets/metrics-endpoint.svg`，判据 EP-A~EP-H 中静态两条（EP-F/EP-G）为本机可判、动态六条标 `⏳ 未跑`（原因：本仓无工程代码 + 本机 JDK 17 与工程基线 Java 25 不一致） |
 
 ## 与 docs 的关系
 

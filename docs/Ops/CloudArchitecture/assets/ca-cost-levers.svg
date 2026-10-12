@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">成本的七个杠杆：按「能否反悔」排序</text>
+<text x="460" y="56" text-anchor="middle" class="tag">左侧的杠杆效果大但改起来痛；右侧的杠杆随时可改。先动右侧，别用左侧的复杂度换右侧的小钱</text>
+
+<rect x="40" y="88" width="256" height="230" rx="12" class="box rose"/>
+<text x="168" y="116" text-anchor="middle" class="lt">不可逆 / 高代价（架构级）</text>
+<text x="168" y="146" text-anchor="middle" class="s">① 地域与可用区选择</text>
+<text x="168" y="168" text-anchor="middle" class="tag">区域单价差异可达数倍；选定后迁不动</text>
+<text x="168" y="196" text-anchor="middle" class="s">② 实例规格族与代际</text>
+<text x="168" y="218" text-anchor="middle" class="tag">同代不同架构（x86 / Arm）价差 20~40%</text>
+<text x="168" y="246" text-anchor="middle" class="s">③ 数据分层与保留期</text>
+<text x="168" y="268" text-anchor="middle" class="tag">热数据越久，存储与备份成本线性上涨</text>
+<text x="168" y="296" text-anchor="middle" class="tag">判据：先写清「多少天前的数据还有人查」</text>
+
+<rect x="332" y="88" width="256" height="230" rx="12" class="box amber"/>
+<text x="460" y="116" text-anchor="middle" class="lt">半可逆（配置级）</text>
+<text x="460" y="146" text-anchor="middle" class="s">④ 计费模型组合</text>
+<text x="460" y="168" text-anchor="middle" class="tag">按量 / 预留 / 竞价按「稳态基线 + 峰值」</text>
+<text x="460" y="190" text-anchor="middle" class="tag">拆分，而不是全选一种</text>
+<text x="460" y="218" text-anchor="middle" class="s">⑤ 弹性策略本身</text>
+<text x="460" y="240" text-anchor="middle" class="tag">过大的最小实例数 = 每天的固定浪费</text>
+<text x="460" y="262" text-anchor="middle" class="tag">过慢的缩容 = 夜间也在为峰值付费</text>
+<text x="460" y="290" text-anchor="middle" class="tag">判据：非高峰时段的实例数应等于最小值</text>
+
+<rect x="624" y="88" width="256" height="230" rx="12" class="box green"/>
+<text x="752" y="116" text-anchor="middle" class="lt">随时可改（运营级）</text>
+<text x="752" y="146" text-anchor="middle" class="s">⑥ 数据流向与跨区流量</text>
+<text x="752" y="168" text-anchor="middle" class="tag">同区域内跨 AZ 流量按出向计费</text>
+<text x="752" y="190" text-anchor="middle" class="tag">把「高频读写 + 低延迟」的两个组件</text>
+<text x="752" y="212" text-anchor="middle" class="tag">放同一个 AZ，是最容易拿到的一笔钱</text>
+<text x="752" y="240" text-anchor="middle" class="s">⑦ 闲置与孤儿资源</text>
+<text x="752" y="262" text-anchor="middle" class="tag">未挂载的磁盘 / 未用的弹性 IP / 旧快照</text>
+<text x="752" y="284" text-anchor="middle" class="tag">周扫描一次，比任何优化都便宜</text>
+<text x="752" y="306" text-anchor="middle" class="tag">它们不出现在任何监控大盘上</text>
+
+<rect x="40" y="344" width="840" height="122" rx="12" class="box slate"/>
+<text x="460" y="372" text-anchor="middle" class="lt">「三个问题」定单位成本（不依赖账单工具也能算）</text>
+<text x="90" y="402" class="s">① 这个服务的月成本是多少？</text>
+<text x="420" y="402" class="s">② 它同期处理了多少业务量？</text>
+<text x="680" y="402" class="s">③ 单位成本是涨还是跌？</text>
+<text x="90" y="428" class="tag">把账单按标签归因到服务</text>
+<text x="420" y="428" class="tag">用已埋点的业务指标做分母</text>
+<text x="680" y="428" class="tag">总量涨、单位成本跌 = 健康的增长</text>
+<text x="460" y="454" text-anchor="middle" class="tag">只盯总额会得出错误结论：总额翻倍但单位成本减半，通常是好事而不是坏事</text>
+
+<rect x="40" y="492" width="840" height="84" rx="12" class="box rose"/>
+<text x="460" y="520" text-anchor="middle" class="s">一个反面清单：这些「省钱」手段通常会更贵</text>
+<text x="460" y="544" text-anchor="middle" class="tag">把数据库放竞价实例 · 为了省钱关掉跨可用区 · 把备份周期从 1 天改成 7 天 · 用最小规格跑压测</text>
+<text x="460" y="566" text-anchor="middle" class="tag">它们的共同点：省的是确定的小钱，赌的是不确定的大钱（一次故障的代价）</text>
+</svg>

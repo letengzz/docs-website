@@ -161,6 +161,10 @@ mvn -q dependency:tree -Dincludes=com.example.domain | grep -q "infrastructure" 
 # ③ 模块图中的每个模块都能在代码里找到对应目录
 ```
 
+## 相关专题
+
+- [云上架构](../../../Ops/CloudArchitecture/index.md)：本页给出「**可逆 / 不可逆决策**」的分界方法（判断标准是「改它需不需要停业务、需不需要搬数据」）；云上架构专题是这条分界在**资源编排层**的一次完整兑现——地域、网段、可用区数量、入口形态、计费模型这五件事被逐条标上「改起来的代价」等级，并说明**为什么第 2 件（网段）是最多人后悔的一个**。要练「分界」这套手感，该页的[五件事对照表](../../../Ops/CloudArchitecture/Overview/index.md)比本页的抽象原则更好上手。
+
 ## 参考资料
 
 - [Architecture Decision Records（ADR）官网与模板](https://adr.github.io/)

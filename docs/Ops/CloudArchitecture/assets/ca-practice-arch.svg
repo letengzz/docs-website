@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.arrow{stroke:#64748B;fill:none;stroke-width:2;marker-end:url(#cp)}.fd{fill:none;stroke:#F43F5E;stroke-width:1.5;stroke-dasharray:6 5}</style>
+<defs><marker id="cp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748B"/></marker></defs>
+<rect width="920" height="620" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">实战：把「实时监控大盘」从单机 Compose 搬到云上</text>
+<text x="460" y="56" text-anchor="middle" class="tag">沿用周期 5 项目的七个组件，本页只回答「它们在云上分别落在哪、边界怎么划、钱花在哪」</text>
+
+<rect x="40" y="86" width="840" height="180" rx="12" class="fd"/>
+<text x="56" y="110" class="lt">地域（1 个）—— 选离「人」最近而不是离「机器」最近</text>
+
+<rect x="66" y="126" width="390" height="124" rx="10" class="box green"/>
+<text x="261" y="150" text-anchor="middle" class="s">可用区 A</text>
+<rect x="82" y="164" width="358" height="34" rx="6" class="box slate"/>
+<text x="261" y="186" text-anchor="middle" class="tag">公有子网：七层负载均衡 + 第二个 NAT 网关</text>
+<rect x="82" y="204" width="358" height="34" rx="6" class="box amber"/>
+<text x="261" y="226" text-anchor="middle" class="tag">私有子网：看板服务 · 时序库 · 通知组件</text>
+
+<rect x="464" y="126" width="390" height="124" rx="10" class="box green"/>
+<text x="659" y="150" text-anchor="middle" class="s">可用区 B</text>
+<rect x="480" y="164" width="358" height="34" rx="6" class="box slate"/>
+<text x="659" y="186" text-anchor="middle" class="tag">公有子网：NAT 网关 + 跳板入口</text>
+<rect x="480" y="204" width="358" height="34" rx="6" class="box amber"/>
+<text x="659" y="226" text-anchor="middle" class="tag">私有子网：只读副本 / 冷备组件</text>
+
+<rect x="40" y="284" width="268" height="132" rx="10" class="box blue"/>
+<text x="174" y="312" text-anchor="middle" class="lt">入口：七层负载均衡</text>
+<text x="174" y="336" text-anchor="middle" class="tag">证书在 LB 上终止，减少一处运维面</text>
+<text x="174" y="358" text-anchor="middle" class="tag">健康检查指向 /api/health</text>
+<text x="174" y="380" text-anchor="middle" class="tag">长连接 / 流式（若采用）的 idle timeout 要显式调大</text>
+<text x="174" y="402" text-anchor="middle" class="tag">否则「大盘不刷新」会被误判为后端卡死</text>
+
+<rect x="326" y="284" width="268" height="132" rx="10" class="box violet" style="fill:#F5F3FF;stroke:#8B5CF6"/>
+<text x="460" y="312" text-anchor="middle" class="lt">计算：两类实例分开</text>
+<text x="460" y="336" text-anchor="middle" class="tag">看板服务：无状态 → 伸缩组 + 竞价混合</text>
+<text x="460" y="358" text-anchor="middle" class="tag">时序库：有状态 → 固定实例 + 大容量盘</text>
+<text x="460" y="380" text-anchor="middle" class="tag">把两者塞进同一组，是成本与可用性双输</text>
+<text x="460" y="402" text-anchor="middle" class="tag">判据：竞价实例被回收时，曲线不断档</text>
+
+<rect x="612" y="284" width="268" height="132" rx="10" class="box rose"/>
+<text x="746" y="312" text-anchor="middle" class="lt">存储与保留：成本的主项</text>
+<text x="746" y="336" text-anchor="middle" class="tag">时序数据按 15 天保留 + 降采样</text>
+<text x="746" y="358" text-anchor="middle" class="tag">对象存储走生命周期规则自动转冷</text>
+<text x="746" y="380" text-anchor="middle" class="tag">快照保留数写死（如最近 7 天 + 每月 1 份）</text>
+<text x="746" y="402" text-anchor="middle" class="tag">判据：月度存储费用增幅 ≈ 数据量增幅</text>
+
+<rect x="40" y="436" width="840" height="128" rx="10" class="box slate"/>
+<text x="460" y="464" text-anchor="middle" class="lt">与既有章节的衔接</text>
+  <text x="90" y="492" class="tag">网络与边界 → 本专题 Network 页 + docs/Ops/Network 页</text>
+  <text x="90" y="514" class="tag">入口与跨区 → 本专题 LoadBalancing 页 + docs/Ops/BackupDR 页</text>
+  <text x="90" y="536" class="tag">弹性与成本 → 本专题 AutoScaling / Cost 页 + docs/Ops/CloudNative 页</text>
+<text x="460" y="558" text-anchor="middle" class="tag">项目侧的组件清单与故障域定义见项目侧「架构细化」一章</text>
+
+<rect x="40" y="578" width="840" height="30" rx="8" class="box amber"/>
+<text x="460" y="598" text-anchor="middle" class="tag">验收底线：可用区级演练做一次，且过程中告警能正常发出——监控系统自己失明时，演练不算通过</text>
+</svg>

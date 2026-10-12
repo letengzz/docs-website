@@ -182,6 +182,7 @@ dig +nocmd blog.example.com +noall +answer | awk '{print $2}'
 - **容器应用的跨站点交付**：见 [容器编排进阶](../../ContainerOrchestration/index.md) 与 [GitOps](../../ContainerOrchestration/GitOps/index.md)。
 - **流量层切换的具体配置**：见 [Nginx 负载均衡](../../Nginx/LoadBalance/index.md)。
 - **切完怎么发现「切得不对」**：见 [监控告警](../../Monitoring/index.md)。
+- **云上的容灾落位（子网跨 AZ、负载均衡跨 AZ、数据复制方式）**：见 [云上架构 · 可用性拓扑](../../CloudArchitecture/Availability/index.md)。本页回答「**要哪个档位**」（冷 / 温 / 热 / 多活与 RTO / RPO 怎么定），该页回答「档位落到云上**长什么样**」。一条最容易被打脸的判据：**「多可用区」是不是真的，取决于入口的跨可用区开关是否开启、后端是否真的分布在两个 AZ**——而不是文档里写了「已多活」。
 
 ## 参考资料
 
