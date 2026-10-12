@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 402" width="760" height="402" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="402" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">第 1 周收口：工程骨架与四个契约边界</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">结构定完、模型定完、规范定完、规则定完，剩下的就是把它们收成一份能复制、能验证的骨架</text>
+  <rect x="30" y="76" width="340" height="176" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="200" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">工程骨架（读者自己的仓库）</text>
+  <text x="200" y="111" text-anchor="middle" font-size="7.6" fill="#1D4ED8">monitoring-dashboard/</text>
+  <text x="200" y="128.48" text-anchor="middle" font-size="7.6" fill="#1D4ED8">├─ deploy/          compose.yaml · prometheus/ · grafana/</text>
+  <text x="200" y="145.96" text-anchor="middle" font-size="7.6" fill="#1D4ED8">├─ app/             自研：指标暴露 + 看板数据服务</text>
+  <text x="200" y="163.44" text-anchor="middle" font-size="7.6" fill="#1D4ED8">│   ├─ metrics/     指标定义（与字典表一致）</text>
+  <text x="200" y="180.92" text-anchor="middle" font-size="7.6" fill="#1D4ED8">│   └─ dashboard/   看板查询接口</text>
+  <text x="200" y="198.4" text-anchor="middle" font-size="7.6" fill="#1D4ED8">├─ rules/           recording.yaml · alerting.yaml</text>
+  <text x="200" y="215.88" text-anchor="middle" font-size="7.6" fill="#1D4ED8">├─ contracts/       四个边界的契约原文</text>
+  <text x="200" y="233.36" text-anchor="middle" font-size="7.6" fill="#1D4ED8">└─ scripts/         校验与对账脚本</text>
+  <rect x="390" y="76" width="340" height="176" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="560" y="94.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">四个接口边界（契约落定处）</text>
+  <text x="560" y="111" text-anchor="middle" font-size="7.6" fill="#6D28D9">① 暴露端：指标名 + 标签集合 + 单位</text>
+  <text x="560" y="128.48" text-anchor="middle" font-size="7.6" fill="#6D28D9">② 采集端：间隔 / 超时 / 保留期</text>
+  <text x="560" y="145.96" text-anchor="middle" font-size="7.6" fill="#6D28D9">③ 规则端：recording 与 alerting 命名</text>
+  <text x="560" y="163.44" text-anchor="middle" font-size="7.6" fill="#6D28D9">④ 告警端：severity / service / runbook_url / summary</text>
+  <text x="560" y="180.92" text-anchor="middle" font-size="7.6" fill="#6D28D9"></text>
+  <text x="560" y="198.4" text-anchor="middle" font-size="7.6" fill="#6D28D9">纪律：先改契约再改实现，契约变更需评审</text>
+  <text x="560" y="215.88" text-anchor="middle" font-size="7.6" fill="#6D28D9">载体：contracts/*.md + 可执行校验脚本</text>
+  <line x1="30" y1="272" x2="730" y2="272" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="60" y="296" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">三条收口纪律</text>
+  <rect x="30" y="308" width="130" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="95" y="323" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">契约可执行</text>
+  <rect x="168" y="308" width="562" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="449" y="323" text-anchor="middle" font-size="8.5" fill="#334155">每条契约都要有一条命令能验证，不能只写在文档里</text>
+  <rect x="30" y="334" width="130" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="95" y="349" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">配置分层</text>
+  <rect x="168" y="334" width="562" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="449" y="349" text-anchor="middle" font-size="8.5" fill="#334155">值放环境变量、结构放配置仓、密钥放密钥管理，三者不混</text>
+  <rect x="30" y="360" width="130" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="95" y="375" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">骨架可复制</text>
+  <rect x="168" y="360" width="562" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="449" y="375" text-anchor="middle" font-size="8.5" fill="#334155">换个人照目录树建一遍，能跑通第 1 周的全部验证</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

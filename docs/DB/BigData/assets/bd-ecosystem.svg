@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 358" width="760" height="358" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="358" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">生态组件：消息、湖表、调度与元数据</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">四类组件各自解决一个「边界」问题，边界没对齐的地方就是事故高发区</text>
+  <rect x="30" y="78" width="340" height="116" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="200" y="96.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">消息总线：Kafka</text>
+  <text x="200" y="113" text-anchor="middle" font-size="8" fill="#1D4ED8">分区 = 并行度与顺序的边界</text>
+  <text x="200" y="131.4" text-anchor="middle" font-size="8" fill="#1D4ED8">同一 key 落同一分区，才有 key 内有序</text>
+  <text x="200" y="149.8" text-anchor="middle" font-size="8" fill="#1D4ED8">副本 ISR + min.insync.replicas 决定不丢</text>
+  <text x="200" y="168.2" text-anchor="middle" font-size="8" fill="#1D4ED8">保留期是「能否重放」的前提</text>
+  <rect x="390" y="78" width="340" height="116" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="560" y="96.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">开放湖表：Iceberg / Paimon</text>
+  <text x="560" y="113" text-anchor="middle" font-size="8" fill="#0F766E">表 = 元数据 + 快照，不是一堆目录</text>
+  <text x="560" y="131.4" text-anchor="middle" font-size="8" fill="#0F766E">快照隔离：读不阻塞写，可时间旅行</text>
+  <text x="560" y="149.8" text-anchor="middle" font-size="8" fill="#0F766E">隐藏分区与分区演进：不必改 SQL</text>
+  <text x="560" y="168.2" text-anchor="middle" font-size="8" fill="#0F766E">小文件靠 compaction 治，不是靠人</text>
+  <rect x="30" y="206" width="340" height="110" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="200" y="224.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">资源与调度：YARN / K8s + Airflow</text>
+  <text x="200" y="241" text-anchor="middle" font-size="8" fill="#B45309">调度器只负责「什么时候跑」</text>
+  <text x="200" y="259.4" text-anchor="middle" font-size="8" fill="#B45309">补数、重跑、依赖先后是调度器的活</text>
+  <text x="200" y="277.8" text-anchor="middle" font-size="8" fill="#B45309">任务幂等 + 分区可覆盖 = 可重跑</text>
+  <text x="200" y="296.2" text-anchor="middle" font-size="8" fill="#B45309">别把业务逻辑写进调度脚本</text>
+  <rect x="390" y="206" width="340" height="110" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="560" y="224.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">元数据：HMS 与 Catalog</text>
+  <text x="560" y="241" text-anchor="middle" font-size="8" fill="#6D28D9">HMS 是 Hive/Spark/Trino 的共同入口</text>
+  <text x="560" y="259.4" text-anchor="middle" font-size="8" fill="#6D28D9">湖表用 Catalog 管表与快照</text>
+  <text x="560" y="277.8" text-anchor="middle" font-size="8" fill="#6D28D9">元数据不一致 = 最难排查的一类故障</text>
+  <text x="560" y="296.2" text-anchor="middle" font-size="8" fill="#6D28D9">升级 Hive 必须先升 metastore schema</text>
+  <text x="380" y="340" text-anchor="middle" font-size="10" fill="#B91C1C">组件之间没有「自动一致」：消息位点、湖表快照、元数据版本必须显式对齐</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

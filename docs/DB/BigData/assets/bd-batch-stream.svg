@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 408" width="760" height="408" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="408" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">批、流、湖仓：三条路线的边界</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">同一份数据可以走三条路线，差别在时效、成本与一致性要求</text>
+  <rect x="30" y="78" width="700" height="74" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="96.2" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">批处理（Batch）</text>
+  <text x="380" y="113" text-anchor="middle" font-size="8.5" fill="#1D4ED8">输入是「有限数据集」，攒够了再算；延迟以小时/天计</text>
+  <text x="380" y="132.55" text-anchor="middle" font-size="8.5" fill="#1D4ED8">追求吞吐与成本；失败重跑代价低；语义简单</text>
+  <rect x="30" y="164" width="700" height="74" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="182.2" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">流处理（Streaming）</text>
+  <text x="380" y="199" text-anchor="middle" font-size="8.5" fill="#6D28D9">输入是「无界数据集」，来一条算一条；延迟以秒/分计</text>
+  <text x="380" y="218.55" text-anchor="middle" font-size="8.5" fill="#6D28D9">追求延迟与新鲜度；失败恢复要求有状态与一致性快照</text>
+  <rect x="30" y="250" width="700" height="74" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="268.2" text-anchor="middle" font-size="10.5" fill="#115E59" font-weight="bold">湖仓一体（Lakehouse）</text>
+  <text x="380" y="285" text-anchor="middle" font-size="8.5" fill="#0F766E">存算分离 + 开放表格式（Iceberg/Paimon）：批流读写同一份数据</text>
+  <text x="380" y="304.55" text-anchor="middle" font-size="8.5" fill="#0F766E">用快照与元数据把「谁在读、读的哪一版」讲清楚</text>
+  <line x1="30" y1="340" x2="730" y2="340" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="380" y="366" text-anchor="middle" font-size="10" fill="#1E3A8A">三条路线的取舍不是技术偏好，而是「下游多久要用到这份数据」算出来的</text>
+  <text x="380" y="390" text-anchor="middle" font-size="9.5" fill="#B91C1C">先上批处理把口径与链路跑通，再为真正需要的场景切流——反向操作通常两件都做不好</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

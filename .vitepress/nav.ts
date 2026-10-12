@@ -46,6 +46,7 @@ export const nav = [
       { text: "关系型数据库", link: "/docs/DB/Relational" },
       { text: "非关系型数据库", link: "/docs/DB/NoRelational" },
       { text: "数仓建模", link: "/docs/DB/DataWarehouse" },
+      { text: "大数据生态", link: "/docs/DB/BigData" },
       { text: "数据建模", link: "/docs/DB/DataModeling" },
       { text: "数据库中间件", link: "/docs/DB/Middleware" },
       { text: "ClickHouse", link: "/docs/DB/ClickHouse" },

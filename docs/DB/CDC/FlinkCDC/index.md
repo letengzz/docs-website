@@ -90,6 +90,12 @@ mysql -uroot -p blog -e "ALTER TABLE posts ADD COLUMN read_count INT NOT NULL DE
 # 期望：恢复后同一行数据以最新值为准，行数与源库一致
 ```
 
+::: tip 与大数据生态专题的分工
+本页讲**采集端**：Flink CDC 的增量快照算法、YAML Pipeline、schema 演进与 Exactly-Once 语义——回答「怎么把变更稳定地抓出来」。
+[大数据生态](../../BigData/index.md) 讲**承载端**：抓出来之后落到湖表还是 OLAP、批流怎么共用一份数据、分区分桶与 compaction 怎么配——回答「抓出来之后放到哪、按什么语义落」。
+判据是一句话：**问题出在「数据没到」还是「数据到了但对不上」**——前者看本页，后者看大数据生态专题的[实战：从 binlog 到实时看板](../../BigData/Practice/index.md)。
+:::
+
 ## 参考资料
 
 - Flink CDC 官方文档：https://nightlies.apache.org/flink/flink-cdc-docs-stable/

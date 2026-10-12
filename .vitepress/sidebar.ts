@@ -4,7 +4,7 @@ import { Auth, DDD, DesignPatterns, DistributedCache, DotNet, Ecommerce, Go, GoM
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontOthers, FrontPWA, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, ChaosEngineering, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
-import { CDC, ClickHouse, DBOverview, DataModeling, DataWarehouse, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
+import { BigData, CDC, ClickHouse, DBOverview, DataModeling, DataWarehouse, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
 import { APIDesign, APITools, Build, CICD, Collaboration, DatabaseClients, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
@@ -80,7 +80,7 @@ export const sidebar = {
     {
       text: "数据库",
       collapsed: true,
-      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...DataWarehouse, ...ClickHouse, ...Neo4j, ...TimeSeries, ...CDC],
+      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...DataWarehouse, ...BigData, ...ClickHouse, ...Neo4j, ...TimeSeries, ...CDC],
     },
   ],
   "/docs/Ops": [
@@ -167,6 +167,7 @@ export const sidebar = {
   "/docs/DB/Relational/Sharding": Sharding,
   "/docs/DB/NoRelational": NoRelational,
   "/docs/DB/DataWarehouse": DataWarehouse,
+  "/docs/DB/BigData": BigData,
   "/docs/DB/DataModeling": DataModeling,
   "/docs/DB/TimeSeries": TimeSeries,
   "/docs/DB/ClickHouse": ClickHouse,

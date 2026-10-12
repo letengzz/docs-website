@@ -287,3 +287,20 @@ export const DataWarehouse = [
     ],
   },
 ];
+export const BigData = [
+  {
+    text: "大数据生态",
+    link: "/docs/DB/BigData/index.md",
+    items: [
+      { text: "概述：大数据栈的四层与四条主线", link: "/docs/DB/BigData/Overview/index.md" },
+      { text: "Hadoop：HDFS 与 YARN", link: "/docs/DB/BigData/Hadoop/index.md" },
+      { text: "Hive：数仓 SQL 层", link: "/docs/DB/BigData/Hive/index.md" },
+      { text: "Spark：批与微批引擎", link: "/docs/DB/BigData/Spark/index.md" },
+      { text: "Flink：有状态流处理", link: "/docs/DB/BigData/Flink/index.md" },
+      { text: "生态组件：消息、湖表与调度", link: "/docs/DB/BigData/Ecosystem/index.md" },
+      { text: "选型与架构决策", link: "/docs/DB/BigData/Selection/index.md" },
+      { text: "实战：从 binlog 到实时看板", link: "/docs/DB/BigData/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/BigData/FAQ/index.md" },
+    ],
+  },
+];

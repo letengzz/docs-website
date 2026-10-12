@@ -49,6 +49,7 @@ ClickHouse 采用**日历版本号**（Year.Month.Patch.Build，如 26.8.12.53�
 | [Elasticsearch](../NoRelational/Elasticsearch/index.md) | 检索 vs 聚合：全文检索用 ES，多维统计用 ClickHouse |
 | [SQL 优化](../Relational/SQLOptimization/index.md) | 思想相通：都是「少读数据」，但 ClickHouse 的手段是物理裁剪而非 B+ 树 |
 | [数仓建模](../DataWarehouse/index.md) | **引擎 vs 模型**：本专题讲列存引擎怎么用（MergeTree、分区索引、物化视图、副本分片）；该专题讲引擎之上**建模怎么做**（ODS/DWD/DWS/ADS 分层、维度建模、SCD2、粒度与可加性）。换掉引擎这些建模判据依然成立 |
+| [大数据生态](../BigData/index.md) | **一跳 vs 整条链路**：本专题讲 ClickHouse 这个引擎自己的原理与用法；该专题讲它在链路里处在哪一跳、与湖表/Hive/Flink 怎么分工。判据是「单表查询怎么快」看本专题，「为什么要有这一跳、数据怎么流过来」看大数据生态专题 |
 
 ## 参考资料
 

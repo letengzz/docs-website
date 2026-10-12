@@ -162,11 +162,11 @@ com.hjc.demo.config.InterceptorAutoConfiguration
 
 SpringBoot 2.7.x开始，自动装配的机制开始改动，但是有向后兼容的机制
 
-![image.png](assets/1717120070536-7bb2068a-0b1f-45be-8bf1-81ed0452833d.png)
+![image.png](../assets/1717120070536-7bb2068a-0b1f-45be-8bf1-81ed0452833d.png)
 
-![image.png](assets/1717120037789-8877d632-27f0-431e-a69b-7358b867ac1a.png)
+![image.png](../assets/1717120037789-8877d632-27f0-431e-a69b-7358b867ac1a.png)
 
-![image.png](assets/1717120144266-3eecbdf7-70bf-4dd6-ba6a-9b2c41c33f9e.png)
+![image.png](../assets/1717120144266-3eecbdf7-70bf-4dd6-ba6a-9b2c41c33f9e.png)
 
 ## 报错
 
