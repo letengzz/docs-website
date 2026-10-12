@@ -204,6 +204,21 @@ mvn help:effective-settings                  # 查看生效的 settings
 2. 执行 `mvn test` 跑通测试，验证依赖在 test 作用域可用。
 3. 删除本地仓库中的某个 jar（`~/.m2/repository/...`），重新 `mvn compile`，确认自动重新下载。
 
+## 相关专题
+
+本页讲**依赖怎么声明与解析**：作用域、传递依赖与冲突、`dependencyManagement`、仓库体系、发布到私服。它回答「这条依赖是怎么进来的、版本由谁定」。
+
+[依赖与安全治理](../../../DependencyGovernance/index.md) 接手的是下一个问题：**解析出来的这批坐标，能不能放行**。两页的顺序是先后关系，不是重叠关系：
+
+| 环节 | 本页 | 依赖与安全治理 |
+| --- | --- | --- |
+| 依赖从哪来 | 仓库体系与 `settings.xml` 配置 | **准入**：为什么必须只从受控私服取包，以及私服上要配哪四种准入手段 |
+| 依赖有哪些 | `mvn dependency:tree` 看树 | **清点**：把树固化成 SBOM（含 `purl`），并回答「哪些服务用了这个坐标」 |
+| 依赖能不能用 | 冲突仲裁与排除 | **评估**：漏洞优先级（KEV / EPSS / CVSS）与**许可证禁止档**（fat-jar 接近静态组合，`LGPL` 与 `AGPL` 必须单独评审） |
+| 版本怎么定 | `dependencyManagement` 统一版本 | **持续**：版本固定纪律（禁止 `SNAPSHOT` 进生产）与更新机器人策略 |
+
+一个具体提醒：Maven 生态里「一个 starter 带进几十个坐标」是常态，`dependency:tree` 的输出长度**约等于** SBOM 的组件规模——**这也是为什么只靠人看树是治理不过来的**。
+
 ## 参考资料
 
 - 依赖机制介绍：https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 466" width="900" height="466" role="img" aria-label="许可证三档分类与策略引擎">
+  <rect x="0" y="0" width="900" height="466" fill="#f7fafc"/>
+  <text x="30" y="38" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#16324f">按「传染性」分三档，再把三档写成一条规则</text>
+  <text x="30" y="62" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#5a6b7b">LICENSE 有几百种，判断逻辑只有三档；三档之外还需要一档给「查不到许可证」。</text>
+
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="30" y="82" width="270" height="112" rx="10" fill="#eafaf4" stroke="#3fae8c" stroke-width="2"/>
+    <text x="165" y="110" font-size="15" font-weight="bold" fill="#1f6b4f" text-anchor="middle">A 档 · 宽松</text>
+    <text x="46" y="134" font-size="12" fill="#40566b">不要求你的代码开源</text>
+    <text x="46" y="156" font-size="11" fill="#5a6b7b">MIT · Apache-2.0 · BSD-2/3-Clause · ISC</text>
+    <text x="46" y="178" font-size="11" fill="#8a5312">义务：保留声明、附许可证全文</text>
+
+    <rect x="315" y="82" width="270" height="112" rx="10" fill="#fdf7ec" stroke="#c47a2c" stroke-width="2"/>
+    <text x="450" y="110" font-size="15" font-weight="bold" fill="#8a5312" text-anchor="middle">B 档 · 弱传染</text>
+    <text x="331" y="134" font-size="12" fill="#40566b">改库本身才开源该库</text>
+    <text x="331" y="156" font-size="11" fill="#5a6b7b">LGPL-2.1/3.0 · MPL-2.0 · EPL-2.0</text>
+    <text x="331" y="178" font-size="11" fill="#8a5312">静态链接 / 改源码 → 必须评审</text>
+
+    <rect x="600" y="82" width="270" height="112" rx="10" fill="#fdf3f3" stroke="#a23b3b" stroke-width="2"/>
+    <text x="735" y="110" font-size="15" font-weight="bold" fill="#a23b3b" text-anchor="middle">C 档 · 强传染</text>
+    <text x="616" y="134" font-size="12" fill="#40566b">组合作品可能需整体开源</text>
+    <text x="616" y="156" font-size="11" fill="#5a6b7b">GPL-2.0/3.0 · AGPL-3.0 · SSPL-1.0</text>
+    <text x="616" y="178" font-size="11" fill="#a23b3b">AGPL：只提供网络服务也可能触发</text>
+
+    <path d="M165 194 L165 214 L450 214" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+    <path d="M450 194 L450 214" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+    <path d="M735 194 L735 214 L450 214" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+    <path d="M450 214 L450 232" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#dgArrow4)"/>
+
+    <rect x="30" y="236" width="840" height="52" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="450" y="258" font-size="14" font-weight="bold" fill="#16324f" text-anchor="middle">策略引擎：把「档位」变成 allow / review / deny 三档规则</text>
+    <text x="450" y="278" font-size="11" fill="#5a6b7b" text-anchor="middle">规则写在文件里、纳入版本控制、随构建执行 —— 而不是停留在会议结论中</text>
+
+    <path d="M130 288 L130 312" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#dgArrow4)"/>
+    <path d="M450 288 L450 312" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#dgArrow4)"/>
+    <path d="M770 288 L770 312" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#dgArrow4)"/>
+
+    <rect x="30" y="320" width="270" height="106" rx="10" fill="#eafaf4" stroke="#3fae8c" stroke-width="2"/>
+    <text x="165" y="346" font-size="14" font-weight="bold" fill="#1f6b4f" text-anchor="middle">allow</text>
+    <text x="46" y="370" font-size="11" fill="#40566b">直接放行，只需履行署名义务</text>
+    <text x="46" y="390" font-size="11" fill="#40566b">A 档 + 经确认未修改的 B 档</text>
+    <text x="46" y="412" font-size="11" fill="#1f6b4f">门禁行为：通过（仍生成 NOTICE）</text>
+
+    <rect x="315" y="320" width="270" height="106" rx="10" fill="#fdf7ec" stroke="#c47a2c" stroke-width="2"/>
+    <text x="450" y="346" font-size="14" font-weight="bold" fill="#8a5312" text-anchor="middle">review</text>
+    <text x="331" y="370" font-size="11" fill="#40566b">法务 + 架构评审后给出结论</text>
+    <text x="331" y="390" font-size="11" fill="#40566b">结论有时效，需记录批准人与到期日</text>
+    <text x="331" y="412" font-size="11" fill="#8a5312">门禁行为：需要显式例外才能通过</text>
+
+    <rect x="600" y="320" width="270" height="106" rx="10" fill="#fdf3f3" stroke="#a23b3b" stroke-width="2"/>
+    <text x="735" y="346" font-size="14" font-weight="bold" fill="#a23b3b" text-anchor="middle">deny</text>
+    <text x="616" y="370" font-size="11" fill="#40566b">C 档 + 未知许可证（UNKNOWN）</text>
+    <text x="616" y="390" font-size="11" fill="#a23b3b">UNKNOWN 必须按禁止处理：</text>
+    <text x="616" y="410" font-size="11" fill="#a23b3b">无许可证 = 默认保留所有权利</text>
+
+    <text x="450" y="452" font-size="12" font-weight="bold" fill="#16324f" text-anchor="middle">署名自检：第三方声明文件里的组件数应与 SBOM 组件数接近，而不是等于「直接依赖数」。</text>
+  </g>
+
+  <defs>
+    <marker id="dgArrow4" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 0 L 5 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

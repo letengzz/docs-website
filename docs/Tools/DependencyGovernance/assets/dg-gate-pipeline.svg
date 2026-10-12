@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 492" width="900" height="492" role="img" aria-label="依赖治理门禁：三个检查点与三档强度">
+  <rect x="0" y="0" width="900" height="492" fill="#f7fafc"/>
+  <text x="30" y="38" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#16324f">门禁：三个检查点，一条判据只在一个点生效</text>
+  <text x="30" y="62" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#5a6b7b">把同一条判据放在多个点上，结果是同一问题报三次、每次修三处，最后被人整体关掉。</text>
+
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="30" y="84" width="270" height="96" rx="10" fill="#eef4f9" stroke="#2d7d9a" stroke-width="2.5"/>
+    <text x="165" y="112" font-size="15" font-weight="bold" fill="#16324f" text-anchor="middle">① 依赖变更点</text>
+    <text x="165" y="134" font-size="11" fill="#40566b" text-anchor="middle">时机：PR / 合并前</text>
+    <text x="165" y="156" font-size="11" fill="#1f6b4f" text-anchor="middle">拦：新增依赖是否合规</text>
+    <text x="165" y="172" font-size="10" fill="#8a97a3" text-anchor="middle">锁文件一致性 · 许可证禁止档</text>
+
+    <rect x="315" y="84" width="270" height="96" rx="10" fill="#eef4f9" stroke="#3fae8c" stroke-width="2.5"/>
+    <text x="450" y="112" font-size="15" font-weight="bold" fill="#16324f" text-anchor="middle">② 构建产物点</text>
+    <text x="450" y="134" font-size="11" fill="#40566b" text-anchor="middle">时机：构建完成后</text>
+    <text x="450" y="156" font-size="11" fill="#1f6b4f" text-anchor="middle">拦：SBOM 是否生成且完整</text>
+    <text x="450" y="172" font-size="10" fill="#8a97a3" text-anchor="middle">组件无 purl · 镜像扫描未通过</text>
+
+    <rect x="600" y="84" width="270" height="96" rx="10" fill="#eef4f9" stroke="#6b5bd2" stroke-width="2.5"/>
+    <text x="735" y="112" font-size="15" font-weight="bold" fill="#16324f" text-anchor="middle">③ 发布点</text>
+    <text x="735" y="134" font-size="11" fill="#40566b" text-anchor="middle">时机：发布前</text>
+    <text x="735" y="156" font-size="11" fill="#1f6b4f" text-anchor="middle">拦：签名与来源是否可验证</text>
+    <text x="735" y="172" font-size="10" fill="#8a97a3" text-anchor="middle">制品与 SBOM 是否绑定归档</text>
+
+    <path d="M300 132 L315 132" stroke="#c7d7e4" stroke-width="2"/>
+    <path d="M585 132 L600 132" stroke="#c7d7e4" stroke-width="2"/>
+  </g>
+
+  <rect x="30" y="196" width="860" height="104" rx="10" fill="#ffffff" stroke="#dbe4ec" stroke-width="1.5"/>
+  <text x="48" y="222" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#16324f">三档强度：门禁必须显式分档，否则一定会被静默降级</text>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="48" y="234" width="268" height="52" rx="8" fill="#fdf7ec"/>
+    <text x="182" y="256" font-size="12" font-weight="bold" fill="#8a5312" text-anchor="middle">提示（advisory）</text>
+    <text x="182" y="276" font-size="10" fill="#8a97a3" text-anchor="middle">只出报告不阻断；新检查项的头 1~2 个迭代</text>
+
+    <rect x="326" y="234" width="268" height="52" rx="8" fill="#fdf3f3"/>
+    <text x="460" y="256" font-size="12" font-weight="bold" fill="#a23b3b" text-anchor="middle">阻断（blocking）</text>
+    <text x="460" y="276" font-size="10" fill="#8a97a3" text-anchor="middle">新增问题即失败；只能通过「例外」放行</text>
+
+    <rect x="604" y="234" width="268" height="52" rx="8" fill="#eafaf4"/>
+    <text x="738" y="256" font-size="12" font-weight="bold" fill="#1f6b4f" text-anchor="middle">限时（time-boxed）</text>
+    <text x="738" y="276" font-size="10" fill="#8a97a3" text-anchor="middle">允许存量存在但带到期日；到期自动升级</text>
+  </g>
+
+  <rect x="30" y="314" width="860" height="116" rx="10" fill="#fdf3f3" stroke="#e7c3c3" stroke-width="1.5"/>
+  <text x="48" y="340" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#a23b3b">六种会让体系静默死亡的做法</text>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#8a3535">
+    <text x="48" y="364">① 把阻断改成警告</text>
+    <text x="330" y="364">② 用 continue-on-error 包住门禁步骤</text>
+    <text x="640" y="364">③ 例外写在聊天记录里</text>
+    <text x="48" y="388">④ 长期密钥硬编码在流水线变量里</text>
+    <text x="330" y="388">⑤ 自动合并对所有依赖生效</text>
+    <text x="640" y="388">⑥ 门禁跑在发布之后</text>
+    <text x="48" y="414" fill="#40566b">判断门禁是否活着只需要一件事：它上一次让构建失败，是什么时候？</text>
+  </g>
+
+  <text x="450" y="462" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#16324f" text-anchor="middle">门禁的失败信息必须告诉人「怎么办」（例如指向例外文件），否则下一个人的做法就是把它关掉。</text>
+  <text x="450" y="482" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#5a6b7b" text-anchor="middle">存量治理的正确起点：冻结增量 + 给存量一个到期日 + 用「每周净减少数」跟踪，而不是一次性全清。</text>
+</svg>

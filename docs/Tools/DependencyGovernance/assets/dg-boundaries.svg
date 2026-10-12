@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 452" width="900" height="452" role="img" aria-label="依赖治理的四条边界">
+  <rect x="0" y="0" width="900" height="452" fill="#f7fafc"/>
+  <text x="30" y="38" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#16324f">四条边界：从「有依赖」到「可追溯」</text>
+  <text x="30" y="62" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#5a6b7b">每条边界都对应一个具体产物与一条可验证判据；缺哪一条，就会在这里断掉。</text>
+
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="30" y="86" width="190" height="118" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <rect x="30" y="86" width="190" height="30" rx="10" fill="#2d7d9a"/>
+    <text x="125" y="107" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">边界一 · 清单</text>
+    <text x="125" y="137" font-size="13" font-weight="bold" fill="#16324f" text-anchor="middle">知道自己有什么</text>
+    <text x="46" y="160" font-size="11" fill="#5a6b7b">产物：SBOM（随产物归档）</text>
+    <text x="46" y="178" font-size="11" fill="#5a6b7b">判据：按组件能反查服务</text>
+    <text x="46" y="196" font-size="11" fill="#a23b3b">断掉：事故时只能全库 grep</text>
+
+    <path d="M224 145 L246 145" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow)"/>
+    <path d="M444 145 L466 145" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow)"/>
+    <path d="M664 145 L686 145" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow)"/>
+
+    <rect x="250" y="86" width="190" height="118" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <rect x="250" y="86" width="190" height="30" rx="10" fill="#3fae8c"/>
+    <text x="345" y="107" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">边界二 · 判据</text>
+    <text x="345" y="137" font-size="13" font-weight="bold" fill="#16324f" text-anchor="middle">能不能用、先修哪个</text>
+    <text x="266" y="160" font-size="11" fill="#5a6b7b">产物：优先级口径 + 许可策略</text>
+    <text x="266" y="178" font-size="11" fill="#5a6b7b">判据：口径固化成规则文件</text>
+    <text x="266" y="196" font-size="11" fill="#a23b3b">断掉：人力投到错误的地方</text>
+
+    <rect x="470" y="86" width="190" height="118" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <rect x="470" y="86" width="190" height="30" rx="10" fill="#c47a2c"/>
+    <text x="565" y="107" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">边界三 · 来源</text>
+    <text x="565" y="137" font-size="13" font-weight="bold" fill="#16324f" text-anchor="middle">拿到的是不是那个包</text>
+    <text x="486" y="160" font-size="11" fill="#5a6b7b">产物：签名 + 溯源证明</text>
+    <text x="486" y="178" font-size="11" fill="#5a6b7b">判据：仅从受控私服取包</text>
+    <text x="486" y="196" font-size="11" fill="#a23b3b">断掉：脚本与二进制无法校验</text>
+
+    <rect x="690" y="86" width="190" height="118" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <rect x="690" y="86" width="190" height="30" rx="10" fill="#6b5bd2"/>
+    <text x="785" y="107" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">边界四 · 门禁</text>
+    <text x="785" y="137" font-size="13" font-weight="bold" fill="#16324f" text-anchor="middle">让它自动发生</text>
+    <text x="706" y="160" font-size="11" fill="#5a6b7b">产物：门禁规则 + 例外期限</text>
+    <text x="706" y="178" font-size="11" fill="#5a6b7b">判据：新增问题即失败</text>
+    <text x="706" y="196" font-size="11" fill="#a23b3b">断掉：降级为警告 = 失效</text>
+  </g>
+
+  <rect x="30" y="228" width="850" height="96" rx="10" fill="#eef4f9" stroke="#c7d7e4" stroke-width="1.5"/>
+  <text x="48" y="254" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#16324f">最容易漏掉的一层：运行环境里的 OS 包</text>
+  <text x="48" y="278" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#40566b">依赖扫描器只看包管理器视角（npm / Maven / pip / Go），基础镜像里的 openssl、libc、curl 结构上就扫不到。</text>
+  <text x="48" y="300" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#a23b3b">正确做法：一次发布做两次清点——依赖扫 + 镜像扫，两份结论的并集才是这个产物的真实成分。</text>
+  <text x="48" y="318" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#5a6b7b">自检：拿 SBOM 搜 openssl，能搜到且带版本 = 做了镜像扫描；只有语言生态包 = 只做了依赖扫描。</text>
+
+  <rect x="30" y="340" width="850" height="92" rx="10" fill="#ffffff" stroke="#dbe4ec" stroke-width="1.5"/>
+  <text x="48" y="366" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#16324f">反查能力的验收标准（唯一一条）</text>
+  <text x="48" y="392" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#16324f">给一个「组件名 + 版本」，能在 10 分钟内列出「哪些服务、哪个版本」包含它。</text>
+  <text x="48" y="416" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#5a6b7b">做不到这条，说明还停在「有一份报告」阶段——报告是易腐的，清单才是资产。</text>
+
+  <defs>
+    <marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

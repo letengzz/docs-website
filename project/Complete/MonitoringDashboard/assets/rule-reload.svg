@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 478" width="900" height="478" role="img" aria-label="规则加载与热更新：从版本控制到运行时生效">
+  <rect x="0" y="0" width="900" height="478" fill="#f7fafc"/>
+  <text x="30" y="38" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#16324f">规则加载：从「文件存在」到「规则真的在跑」</text>
+  <text x="30" y="62" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#5a6b7b">改阈值是运维动作，不是发布动作；但它必须留下审计线索，所以不要用文件监听。</text>
+
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="30" y="86" width="190" height="92" rx="10" fill="#eef4f9" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="125" y="112" font-size="13" font-weight="bold" fill="#16324f" text-anchor="middle">① 版本控制</text>
+    <text x="125" y="134" font-size="11" fill="#40566b" text-anchor="middle">rules/recording.yaml</text>
+    <text x="125" y="152" font-size="11" fill="#40566b" text-anchor="middle">rules/alerting.yaml</text>
+    <text x="125" y="170" font-size="10" fill="#1f6b4f" text-anchor="middle">唯一真相来源</text>
+
+    <path d="M224 132 L246 132" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow7)"/>
+
+    <rect x="250" y="86" width="190" height="92" rx="10" fill="#eafaf4" stroke="#3fae8c" stroke-width="2"/>
+    <text x="345" y="112" font-size="13" font-weight="bold" fill="#1f6b4f" text-anchor="middle">② 只读挂载</text>
+    <text x="345" y="134" font-size="11" fill="#40566b" text-anchor="middle">./rules:/etc/rules:ro</text>
+    <text x="345" y="152" font-size="11" fill="#40566b" text-anchor="middle">进程不能改自己的规则</text>
+    <text x="345" y="170" font-size="10" fill="#a23b3b" text-anchor="middle">写权限比接口权限更宽 = 隐患</text>
+
+    <path d="M444 132 L466 132" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow7)"/>
+
+    <rect x="470" y="86" width="190" height="92" rx="10" fill="#fdf7ec" stroke="#c47a2c" stroke-width="2"/>
+    <text x="565" y="112" font-size="13" font-weight="bold" fill="#8a5312" text-anchor="middle">③ 受控 reload</text>
+    <text x="565" y="134" font-size="11" fill="#40566b" text-anchor="middle">仅内网可达的入口</text>
+    <text x="565" y="152" font-size="11" fill="#40566b" text-anchor="middle">返回明确成功 / 失败</text>
+    <text x="565" y="170" font-size="10" fill="#a23b3b" text-anchor="middle">失败必须保留旧规则（原子）</text>
+
+    <path d="M664 132 L686 132" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow7)"/>
+
+    <rect x="690" y="86" width="190" height="92" rx="10" fill="#f3f0fd" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="785" y="112" font-size="13" font-weight="bold" fill="#16324f" text-anchor="middle">④ 运行时生效</text>
+    <text x="785" y="134" font-size="11" fill="#40566b" text-anchor="middle">核对规则数量</text>
+    <text x="785" y="152" font-size="11" fill="#40566b" text-anchor="middle">产生日志与计数指标</text>
+    <text x="785" y="170" font-size="10" fill="#8a97a3" text-anchor="middle">这一步才是「生效」</text>
+  </g>
+
+  <text x="30" y="212" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#16324f">「加载成功」≠「规则生效」：三种失败形态</text>
+
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="30" y="226" width="270" height="106" rx="10" fill="#fdf3f3" stroke="#a23b3b" stroke-width="2"/>
+    <text x="165" y="252" font-size="13" font-weight="bold" fill="#a23b3b" text-anchor="middle">语法错误 → 整文件被拒</text>
+    <text x="46" y="276" font-size="11" fill="#40566b">不是只丢出问题那一条，</text>
+    <text x="46" y="294" font-size="11" fill="#40566b">而是该文件里全部规则都不生效</text>
+    <text x="46" y="316" font-size="11" fill="#a23b3b">对策：reload 后必须核对规则数量</text>
+
+    <rect x="315" y="226" width="270" height="106" rx="10" fill="#fdf3f3" stroke="#a23b3b" stroke-width="2"/>
+    <text x="450" y="252" font-size="13" font-weight="bold" fill="#a23b3b" text-anchor="middle">表达式能编译但算不出结果</text>
+    <text x="331" y="276" font-size="11" fill="#40566b">加载成功、规则存在、永远不触发</text>
+    <text x="331" y="294" font-size="11" fill="#40566b">例如引用了不存在的指标名</text>
+    <text x="331" y="316" font-size="11" fill="#a23b3b">对策：新增「规则长期零触发」复核口径</text>
+
+    <rect x="600" y="226" width="280" height="106" rx="10" fill="#fdf3f3" stroke="#a23b3b" stroke-width="2"/>
+    <text x="740" y="252" font-size="13" font-weight="bold" fill="#a23b3b" text-anchor="middle">规则加载了但没人消费</text>
+    <text x="616" y="276" font-size="11" fill="#40566b">评估正常，告警却发不出去</text>
+    <text x="616" y="294" font-size="11" fill="#40566b">症状与「一切正常」完全一致</text>
+    <text x="616" y="316" font-size="11" fill="#a23b3b">对策：第 131 天做告警路由联调</text>
+  </g>
+
+  <rect x="30" y="346" width="850" height="60" rx="10" fill="#eef4f9" stroke="#c7d7e4" stroke-width="1.5"/>
+  <text x="48" y="372" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#16324f">可热更新与必须发布的边界</text>
+  <text x="48" y="394" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#40566b">阈值、for、keep_firing_for 这类参数 → 走热更新；命名、分组、标签语义的变更 → 必须当发布对待（下游大盘与 recording 有依赖）。</text>
+
+  <text x="450" y="436" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#16324f" text-anchor="middle">reload 必须原子：要么全部新规则生效，要么全部保留旧规则。「一半新一半旧」会让事故调查失去基准。</text>
+  <text x="450" y="462" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#a23b3b" text-anchor="middle">最贵的误解：以为 reload 返回成功就等于规则生效 —— 语法错误会让整个文件被静默拒掉。</text>
+
+  <defs>
+    <marker id="dgArrow7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

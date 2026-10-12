@@ -264,6 +264,7 @@ export const CompleteProject = [
           { text: "接口契约与工程骨架", link: "/project/Complete/MonitoringDashboard/Contracts/index.md" },
           { text: "指标暴露端点（C1）", link: "/project/Complete/MonitoringDashboard/MetricsEndpoint/index.md" },
           { text: "看板数据服务（C6）", link: "/project/Complete/MonitoringDashboard/DashboardAPI/index.md" },
+          { text: "规则加载与热更新", link: "/project/Complete/MonitoringDashboard/RuleReload/index.md" },
         ],
       },
       {

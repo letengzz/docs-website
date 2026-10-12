@@ -170,6 +170,21 @@ pnpm why lodash
 
 预期：审计无 high/critical 漏洞；`outdated` 列出可升级依赖；`why` 显示依赖引入路径。故意在 package.json 引入一个已知漏洞旧版本，确认 `pnpm audit` 能检出并给出修复版本。
 
+## 相关专题
+
+本页是**前端生态视角的依赖安全入口**：`package.json` / lockfile、`pnpm audit`、Dependabot、最小依赖原则。它解决的是「前端项目里这件事具体怎么做」。
+
+更完整的展开在 [依赖与安全治理](../../../../Tools/DependencyGovernance/index.md)——它把同一套流程放到跨生态的尺度上（Java / Python / Go / 容器镜像），并补齐本页刻意没深入的三块：
+
+| 本页讲 | 治理专题补齐 |
+| --- | --- |
+| `pnpm audit` 怎么跑 | **扫出几百条后先修哪条**：CVSS v4.0 × EPSS × KEV 三把尺子，以及「有修复版本 / 无修复版本」的队列二分 |
+| Dependabot 自动升级 | **冷却期**：Dependabot 自 2026-07-14 起默认 3 天；Renovate 的 `minimumReleaseAge` **无默认值**，不配置就是更激进的那个 |
+| 「顺手看一眼许可证」 | **许可证合规**：三档传染性分类、声明与结论许可证的差异、`UNKNOWN` 必须按禁止处理 |
+| 前端依赖数量大 | **镜像里还有一层 OS 包**：依赖扫描器结构上看不见 `openssl` / `libc`，要另做镜像级清点 |
+
+一句话分工：**本页管前端项目的日常动作，治理专题管判据与跨生态收口。**
+
 ## 参考资料
 
 - [npm audit 文档](https://docs.npmjs.com/cli/v10/commands/npm-audit)

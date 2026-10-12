@@ -226,3 +226,4 @@ gitleaks detect --source /tmp --no-git ; echo "exit=$? (预期非 0)"
 - [SBOM 与软件供应链](../SbomSupplyChain/index.md)
 - [Docker 安全加固](../../Docker/Security/index.md)
 - [工具：CI/CD](../../../Tools/CICD/index.md)
+- [工具：依赖与安全治理](../../../Tools/DependencyGovernance/index.md)：**分工是**——本页与 [SBOM 与软件供应链](../SbomSupplyChain/index.md) 属于**安全侧的扫描能力**（工具、阶段划分、结果治理）；那一专题属于**工程侧的治理流程**（清单怎么建与归档、漏洞怎么排优先级、许可证怎么判、来源怎么验、门禁怎么分档）。两者扫的对象不同也不可互替：**本页的镜像扫描覆盖 OS 包与配置，依赖治理覆盖你构建进去的组件**；反过来，**依赖治理的优先级口径（CVSS v4.0 × EPSS × KEV）与许可证三档策略，本页不做**。一次发布要跑两套扫描，结论取并集。

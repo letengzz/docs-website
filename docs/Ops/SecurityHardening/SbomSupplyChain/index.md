@@ -222,9 +222,29 @@ kubectl run test --image=registry.example.com/app:unsigned
 - CISA SBOM 资源：<https://www.cisa.gov/sbom>
 - PURL 规范：<https://github.com/package-url/purl-spec>
 
+## 与依赖治理专题的分工（第 130 天补充）
+
+本页是**安全视角的单页速览**：它把 SBOM 格式、Syft/Trivy 生成、Grype 扫描、SLSA 等级、cosign 签名与准入策略**串成一条链**，让安全同学能快速建立起整体认知。
+
+[工具 · 依赖与安全治理](../../../Tools/DependencyGovernance/index.md) 是把这条链**拆成流程并做到可执行**的十页专题。两者的分工要写清楚，避免"看了一页以为齐了"：
+
+| 本页给到的 | 治理专题补齐的 |
+| --- | --- |
+| 「SPDX 偏合规、CycloneDX 偏安全」 | **版本与标准的事实**：CycloneDX 1.7（ECMA-424 第二版）与 SPDX 3.0.1；ISO/IEC 5962:2021 对应的是 SPDX **2.2.1**，不是 3.0.1 |
+| `syft dir:.` 与 `syft registry:...` 两条命令 | **生成粒度与时机**：源码 / 产物 / 镜像三种粒度**不是替代关系**；镜像清单才有 OS 包；必须与产物**绑定时点**生成 |
+| 「用 Grype 扫 SBOM」 | **扫出几百条之后**：CVSS v4.0 × EPSS × KEV 三把尺子、按「有无修复版本」先二分、可达性与 VEX 去噪 |
+| 「VEX 能减少误报」（一句话） | **VEX 的完整用法**：什么时候必须出具、字段要求、以及它在客户安全问卷里的实际价值 |
+| SLSA Level 1~3 表格 | **落到轨道的口径**：当前规范为 **v1.2**（含 Build 与 Source Track）、v1.1 已 Retired；多数团队的现实落点是 Build **L2** |
+| `cosign sign` / `cosign verify` | **验证必须校验身份**：`--certificate-identity-regexp` 与签发方；以及"只签不验等于没签"的五种反模式 |
+| 依赖卫生五条（锁版本、完整性、私有源……） | **准入与门禁的完整机制**：私服四种准入手段、**冷却期三处都要配**（含 Renovate 无默认值这一事实）、门禁三档强度与例外到期日、许可证三档策略 |
+| —— | **本页不涉及的一块**：许可证合规（三档传染性、声明与结论许可证、`UNKNOWN` 按禁止处理）与**多语言仓库的完整实战** |
+
+**一句话分工**：**本页讲「这条链上有哪些环节、用什么工具」；治理专题讲「每个环节的判据是什么、怎么让它在流水线里自动拦住」。链要动手时看治理专题，概念铺底看本页。**
+
 ## 相关专题
 
 - [漏洞管理生命周期](../VulnerabilityManagement/index.md)
 - [扫描工具链](../ScanningToolchain/index.md)
 - [容器与集群安全加固](../../ContainerOrchestration/Security/index.md)
 - [Docker 安全加固](../../Docker/Security/index.md)
+- [工具 · 依赖与安全治理](../../../Tools/DependencyGovernance/index.md)

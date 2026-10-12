@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 496" width="900" height="496" role="img" aria-label="密钥less 签名链路与 SLSA 构建等级">
+  <rect x="0" y="0" width="900" height="496" fill="#f7fafc"/>
+  <text x="30" y="38" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#16324f">密钥less 签名：把「密钥管理」这个放弃点去掉</text>
+  <text x="30" y="62" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#5a6b7b">传统签名的障碍不是技术，是密钥；密钥less 把长期私钥换成了几分钟就过期的证书。</text>
+
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="30" y="86" width="160" height="88" rx="10" fill="#eef4f9" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="110" y="112" font-size="13" font-weight="bold" fill="#16324f" text-anchor="middle">1. 证明身份</text>
+    <text x="110" y="134" font-size="11" fill="#40566b" text-anchor="middle">CI 任务出示 OIDC 令牌</text>
+    <text x="110" y="154" font-size="10" fill="#8a97a3" text-anchor="middle">如 GitHub Actions 工作流身份</text>
+
+    <path d="M194 130 L201 130" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow6)"/>
+
+    <rect x="205" y="86" width="160" height="88" rx="10" fill="#eef4f9" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="285" y="112" font-size="13" font-weight="bold" fill="#16324f" text-anchor="middle">2. 换短时证书</text>
+    <text x="285" y="134" font-size="11" fill="#40566b" text-anchor="middle">有效期通常只有几分钟</text>
+    <text x="285" y="154" font-size="10" fill="#3fae8c" text-anchor="middle">私钥不可导出、用完即弃</text>
+
+    <path d="M369 130 L376 130" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow6)"/>
+
+    <rect x="380" y="86" width="160" height="88" rx="10" fill="#eafaf4" stroke="#3fae8c" stroke-width="2"/>
+    <text x="460" y="112" font-size="13" font-weight="bold" fill="#1f6b4f" text-anchor="middle">3. 签名</text>
+    <text x="460" y="134" font-size="11" fill="#40566b" text-anchor="middle">对镜像 / SBOM / 证明签名</text>
+    <text x="460" y="154" font-size="10" fill="#8a97a3" text-anchor="middle">签名者身份写在证书里</text>
+
+    <path d="M544 130 L551 130" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow6)"/>
+
+    <rect x="555" y="86" width="160" height="88" rx="10" fill="#f3f0fd" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="635" y="112" font-size="13" font-weight="bold" fill="#16324f" text-anchor="middle">4. 写透明日志</text>
+    <text x="635" y="134" font-size="11" fill="#40566b" text-anchor="middle">签名记录不可偷偷删除</text>
+    <text x="635" y="154" font-size="10" fill="#8a97a3" text-anchor="middle">这是"可审计"的技术实现</text>
+
+    <path d="M719 130 L726 130" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow6)"/>
+
+    <rect x="730" y="86" width="160" height="88" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="810" y="112" font-size="13" font-weight="bold" fill="#16324f" text-anchor="middle">5. 验证</text>
+    <text x="810" y="134" font-size="11" fill="#40566b" text-anchor="middle">从签名反查证书</text>
+    <text x="810" y="154" font-size="10" fill="#a23b3b" text-anchor="middle">必须校验身份，不能只看"有签名"</text>
+  </g>
+
+  <rect x="30" y="196" width="860" height="70" rx="10" fill="#fff8e6" stroke="#d9b25a" stroke-width="1.5"/>
+  <text x="48" y="220" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#8a5312">完整性与来源是两个问题</text>
+  <text x="48" y="242" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#40566b">校验和证明「内容没被改」；签名与溯源证明「是谁做的」。攻击者可以同时提供被篡改的产物与匹配的哈希 —— 只做校验和挡不住它。</text>
+  <text x="48" y="260" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#40566b">而 CVE 匹配机制天生抓不到「昨天干净、今天投毒」的包：它在漏洞库里不会有任何记录。</text>
+
+  <text x="30" y="300" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#16324f">SLSA v1.2 · Build Track 三级</text>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="30" y="316" width="270" height="106" rx="10" fill="#ffffff" stroke="#c7d7e4" stroke-width="2"/>
+    <text x="165" y="342" font-size="14" font-weight="bold" fill="#16324f" text-anchor="middle">L1 · 有构建证明</text>
+    <text x="46" y="366" font-size="11" fill="#40566b">描述谁构建的、从哪份源码构建</text>
+    <text x="46" y="388" font-size="11" fill="#40566b">能防：事后完全不可追溯</text>
+    <text x="46" y="410" font-size="11" fill="#8a97a3">防不住：伪造与手工上传</text>
+
+    <rect x="315" y="316" width="270" height="106" rx="10" fill="#eafaf4" stroke="#3fae8c" stroke-width="2.5"/>
+    <text x="450" y="342" font-size="14" font-weight="bold" fill="#1f6b4f" text-anchor="middle">L2 · 托管构建签发</text>
+    <text x="331" y="366" font-size="11" fill="#40566b">证明由托管构建平台签发</text>
+    <text x="331" y="388" font-size="11" fill="#40566b">能防：本地构建后手工上传的伪造</text>
+    <text x="331" y="410" font-size="11" fill="#1f6b4f">多数团队的现实落点 · 性价比最高</text>
+
+    <rect x="600" y="316" width="290" height="106" rx="10" fill="#ffffff" stroke="#c7d7e4" stroke-width="2"/>
+    <text x="745" y="342" font-size="14" font-weight="bold" fill="#16324f" text-anchor="middle">L3 · 加固构建环境</text>
+    <text x="616" y="366" font-size="11" fill="#40566b">构建过程本身无法被篡改、身份难伪造</text>
+    <text x="616" y="388" font-size="11" fill="#40566b">能防：构建环境入侵与流水线注入</text>
+    <text x="616" y="410" font-size="11" fill="#8a97a3">从 L2 到 L3 的边际收益远小于 L0 → L2</text>
+
+    <text x="450" y="450" font-size="12" font-weight="bold" fill="#16324f" text-anchor="middle">另外还有 Source Track（源码可信度），两个轨道可以分别评级；当前规范为 SLSA v1.2。</text>
+    <text x="450" y="476" font-size="12" font-weight="bold" fill="#a23b3b" text-anchor="middle">最大的坑：签了名却从不验证 —— 签名的价值 100% 来自验证环节，只签不验是纯成本。</text>
+  </g>
+
+  <defs>
+    <marker id="dgArrow6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" width="900" height="430" role="img" aria-label="SBOM 生命周期：生成、签名、归档、反查与复扫">
+  <rect x="0" y="0" width="900" height="430" fill="#f7fafc"/>
+  <text x="30" y="38" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#16324f">SBOM 生命周期：五步，缺一步就贬值</text>
+  <text x="30" y="62" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#5a6b7b">前三步让清单"存在且可信"，后两步让清单"能被用起来"。</text>
+
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="30" y="92" width="156" height="76" rx="10" fill="#2d7d9a"/>
+    <text x="108" y="124" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1. 生成</text>
+    <text x="108" y="148" font-size="11" fill="#d9edf5" text-anchor="middle">构建任务内、与产物同源</text>
+
+    <path d="M190 130 L202 130" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow2)"/>
+
+    <rect x="206" y="92" width="156" height="76" rx="10" fill="#3fae8c"/>
+    <text x="284" y="124" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">2. 签名</text>
+    <text x="284" y="148" font-size="11" fill="#dff4ec" text-anchor="middle">证明清单没有被替换</text>
+
+    <path d="M366 130 L378 130" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow2)"/>
+
+    <rect x="382" y="92" width="156" height="76" rx="10" fill="#c47a2c"/>
+    <text x="460" y="124" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">3. 归档</text>
+    <text x="460" y="148" font-size="11" fill="#fbeeda" text-anchor="middle">与镜像放一起、按版本可定位</text>
+
+    <path d="M542 130 L554 130" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow2)"/>
+
+    <rect x="558" y="92" width="156" height="76" rx="10" fill="#6b5bd2"/>
+    <text x="636" y="124" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">4. 反查</text>
+    <text x="636" y="148" font-size="11" fill="#e7e3fb" text-anchor="middle">推入可按组件检索的库</text>
+
+    <path d="M718 130 L730 130" stroke="#94a3b8" stroke-width="3" marker-end="url(#dgArrow2)"/>
+
+    <rect x="734" y="92" width="136" height="76" rx="10" fill="#1f4e79"/>
+    <text x="802" y="124" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">5. 复扫</text>
+    <text x="802" y="148" font-size="11" fill="#cfe6f2" text-anchor="middle">定期重比漏洞库</text>
+
+    <path d="M802 176 L802 206 L636 206 L636 176" fill="none" stroke="#6b5bd2" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#dgArrow2v)"/>
+    <text x="719" y="224" font-size="11" fill="#6b5bd2" text-anchor="middle">新的 CVE 用旧清单再比一次</text>
+  </g>
+
+  <rect x="30" y="244" width="840" height="76" rx="10" fill="#ffffff" stroke="#dbe4ec" stroke-width="1.5"/>
+  <text x="48" y="270" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#16324f">三种生成粒度：不是替代关系，是不同用途</text>
+  <text x="48" y="294" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#40566b">源码目录（dir:.）→ 解析 lock / manifest，用于 PR 对比；构建产物（jar / whl / 二进制）→ 最接近"产物包含什么"，用于交付。</text>
+  <text x="48" y="312" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#40566b">容器镜像（registry/repo:tag）→ 覆盖 OS 包，是依赖扫描结构上缺失的那一层。</text>
+
+  <rect x="30" y="332" width="840" height="80" rx="10" fill="#fdf3f3" stroke="#e7c3c3" stroke-width="1.5"/>
+  <text x="48" y="358" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#a23b3b">三种最容易做错的生成方式</text>
+  <text x="48" y="382" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#8a3535">事后补跑（描述的是"现在的仓库"而不是"当时发出去的那一份"）· 只对源码生成（缺 OS 包与构建期下载项）· 一个仓库只生成一份（模块归属查不出来）。</text>
+  <text x="48" y="402" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#8a3535">后果一致：清单看起来有，真出事时用不上，而且审计时经不起与产物哈希交叉验证。</text>
+
+  <defs>
+    <marker id="dgArrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="dgArrow2v" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 0 L 5 10 z" fill="#6b5bd2"/>
+    </marker>
+  </defs>
+</svg>

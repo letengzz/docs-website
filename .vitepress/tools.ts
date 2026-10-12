@@ -222,3 +222,22 @@ export const DocsInfra = [
     ],
   },
 ];
+
+export const DependencyGovernance = [
+  {
+    text: "依赖与安全治理",
+    link: "/docs/Tools/DependencyGovernance/index.md",
+    items: [
+      { text: "总览：依赖治理的四条边界", link: "/docs/Tools/DependencyGovernance/Overview/index.md" },
+      { text: "软件物料清单（SBOM）", link: "/docs/Tools/DependencyGovernance/SBOM/index.md" },
+      { text: "漏洞扫描与优先级", link: "/docs/Tools/DependencyGovernance/VulnerabilityScan/index.md" },
+      { text: "许可证合规", link: "/docs/Tools/DependencyGovernance/License/index.md" },
+      { text: "私服治理与制品仓库", link: "/docs/Tools/DependencyGovernance/Registry/index.md" },
+      { text: "来源可信：签名与溯源", link: "/docs/Tools/DependencyGovernance/Provenance/index.md" },
+      { text: "门禁与自动化更新", link: "/docs/Tools/DependencyGovernance/Automation/index.md" },
+      { text: "实战：给一个多语言仓库做依赖治理", link: "/docs/Tools/DependencyGovernance/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/DependencyGovernance/FAQ/index.md" },
+    ],
+  },
+];
+

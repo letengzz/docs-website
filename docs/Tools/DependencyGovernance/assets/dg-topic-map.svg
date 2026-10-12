@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 566" width="900" height="566" role="img" aria-label="依赖与安全治理专题地图">
+  <rect x="0" y="0" width="900" height="566" fill="#f7fafc"/>
+  <text x="30" y="40" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#16324f">依赖与安全治理 · 四个层次与九个页面</text>
+  <text x="30" y="66" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#5a6b7b">顺序不可颠倒：先有组件清单，评估才有对象；先有评估结论，准入才有依据。</text>
+
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="30" y="88" width="150" height="90" rx="10" fill="#2d7d9a"/>
+    <text x="105" y="124" font-size="19" font-weight="bold" fill="#ffffff" text-anchor="middle">① 清点</text>
+    <text x="105" y="150" font-size="12" fill="#d9edf5" text-anchor="middle">我们在用哪些组件</text>
+
+    <rect x="200" y="88" width="670" height="90" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="228" y="124" font-size="17" font-weight="bold" fill="#16324f">软件物料清单（SBOM）</text>
+    <text x="228" y="150" font-size="13" fill="#5a6b7b">CycloneDX 1.7 与 SPDX 3.0.1 的取舍 · 四大要素 · 生成时机 · 存储与反查 · 生命周期</text>
+    <text x="228" y="168" font-size="12" fill="#8a97a3">这一层缺失时，下面三层全部无从开始</text>
+
+    <rect x="30" y="198" width="150" height="90" rx="10" fill="#3fae8c"/>
+    <text x="105" y="234" font-size="19" font-weight="bold" fill="#ffffff" text-anchor="middle">② 评估</text>
+    <text x="105" y="260" font-size="12" fill="#dff4ec" text-anchor="middle">能不能用 / 怎么排优先级</text>
+
+    <rect x="200" y="198" width="320" height="90" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="228" y="232" font-size="16" font-weight="bold" fill="#16324f">漏洞扫描与优先级</text>
+    <text x="228" y="256" font-size="12" fill="#5a6b7b">扫描器原理与误报来源</text>
+    <text x="228" y="274" font-size="12" fill="#5a6b7b">CVSS v4.0 × EPSS × KEV 三把尺子</text>
+
+    <rect x="550" y="198" width="320" height="90" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="578" y="232" font-size="16" font-weight="bold" fill="#16324f">许可证合规</text>
+    <text x="578" y="256" font-size="12" fill="#5a6b7b">传染性分类与义务清单</text>
+    <text x="578" y="274" font-size="12" fill="#5a6b7b">声明不一致 · 策略引擎 · 例外管理</text>
+
+    <rect x="30" y="308" width="150" height="90" rx="10" fill="#c47a2c"/>
+    <text x="105" y="344" font-size="19" font-weight="bold" fill="#ffffff" text-anchor="middle">③ 准入</text>
+    <text x="105" y="370" font-size="12" fill="#fbeeda" text-anchor="middle">进来的包是不是那个包</text>
+
+    <rect x="200" y="308" width="320" height="90" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="228" y="342" font-size="16" font-weight="bold" fill="#16324f">私服治理与制品仓库</text>
+    <text x="228" y="366" font-size="12" fill="#5a6b7b">代理与隔离 · 封禁与冷却期</text>
+    <text x="228" y="384" font-size="12" fill="#5a6b7b">purl 与命名规范 · 多生态统一入口</text>
+
+    <rect x="550" y="308" width="320" height="90" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="578" y="342" font-size="16" font-weight="bold" fill="#16324f">来源可信：签名与溯源</text>
+    <text x="578" y="366" font-size="12" fill="#5a6b7b">供应链攻击形态 · SLSA v1.2</text>
+    <text x="578" y="384" font-size="12" fill="#5a6b7b">cosign 密钥less 签名 · 证明校验</text>
+
+    <rect x="30" y="418" width="150" height="90" rx="10" fill="#6b5bd2"/>
+    <text x="105" y="454" font-size="19" font-weight="bold" fill="#ffffff" text-anchor="middle">④ 持续</text>
+    <text x="105" y="480" font-size="12" fill="#e7e3fb" text-anchor="middle">怎么让它自动发生</text>
+
+    <rect x="200" y="418" width="320" height="90" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="228" y="452" font-size="16" font-weight="bold" fill="#16324f">门禁与自动化更新</text>
+    <text x="228" y="476" font-size="12" fill="#5a6b7b">Dependabot / Renovate 取舍与冷却期</text>
+    <text x="228" y="494" font-size="12" fill="#5a6b7b">三档门禁强度 · 例外与豁免期限</text>
+
+    <rect x="550" y="418" width="320" height="90" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="578" y="452" font-size="16" font-weight="bold" fill="#16324f">实战：多语言仓库治理</text>
+    <text x="578" y="476" font-size="12" fill="#5a6b7b">从零到可交付的完整流程</text>
+    <text x="578" y="494" font-size="12" fill="#5a6b7b">P1~P12 验收判据</text>
+  </g>
+
+  <rect x="200" y="524" width="670" height="30" rx="8" fill="#eaf1f7"/>
+  <text x="228" y="544" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#16324f">四个层次都写到之后，用「常见问题与最佳实践」当分诊表：出问题时先定位卡在哪一层。</text>
+</svg>
