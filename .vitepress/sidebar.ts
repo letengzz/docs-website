@@ -3,7 +3,7 @@ import { Auth, DDD, DesignPatterns, DistributedCache, DotNet, Ecommerce, Go, GoM
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontOthers, FrontPWA, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
-import { Ansible, BackupDR, ChaosEngineering, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
+import { Ansible, BackupDR, ChaosEngineering, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { BigData, CDC, ClickHouse, DBOverview, DataModeling, DataWarehouse, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
 import { APIDesign, APITools, Build, CICD, Collaboration, DatabaseClients, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
@@ -87,7 +87,7 @@ export const sidebar = {
     {
       text: "运维",
       collapsed: true,
-      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...CloudArchitecture, ...Monitoring, ...LogSystem, ...BackupDR, ...ChaosEngineering, ...JumpServer, ...OpsOthers],
+      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...CloudArchitecture, ...Monitoring, ...LogSystem, ...BackupDR, ...ChaosEngineering, ...IncidentResponse, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
@@ -190,6 +190,7 @@ export const sidebar = {
   "/docs/Ops/LogSystem": LogSystem,
   "/docs/Ops/BackupDR": BackupDR,
   "/docs/Ops/ChaosEngineering": ChaosEngineering,
+  "/docs/Ops/IncidentResponse": IncidentResponse,
   "/docs/Ops/JumpServer": JumpServer,
   "/docs/Ops/Others": OpsOthers,
   "/docs/AI/OpenClaw": AI_OpenClaw,

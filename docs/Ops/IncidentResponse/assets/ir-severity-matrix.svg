@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>故障定级矩阵：影响面与严重程度两个轴决定响应规模</title>
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:12px;fill:#334155;font-weight:600}.s{font-size:11px;fill:#475569}.tag{font-size:10px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="32" text-anchor="middle" class="h">定级只用两件事算：影响了多少用户，坏到什么程度</text>
+<text x="460" y="54" text-anchor="middle" class="tag">时长不作为定级输入，而是作为「启动之后多久没修好就升级」的触发条件——这两件事必须分开，否则定级永远吵不完</text>
+
+<rect x="60" y="88" width="1" height="1" fill="#FFFFFF"/>
+<rect x="60" y="80" width="500" height="34" rx="6" class="box slate"/>
+<text x="120" y="102" text-anchor="middle" class="tag">影响面 →</text>
+<text x="270" y="102" text-anchor="middle" class="tag">全部用户</text>
+<text x="440" y="102" text-anchor="middle" class="tag">部分用户 / 部分能力</text>
+
+<rect x="60" y="122" width="110" height="70" rx="6" class="box slate"/>
+<text x="115" y="150" text-anchor="middle" class="tag">核心链路完全不可用</text>
+<text x="115" y="170" text-anchor="middle" class="tag">或数据有错</text>
+<rect x="180" y="122" width="180" height="70" rx="6" class="box rose"/>
+<text x="270" y="150" text-anchor="middle" class="lt">SEV-1</text>
+<text x="270" y="170" text-anchor="middle" class="tag">拉指挥、通知负责人与用户</text>
+<rect x="370" y="122" width="190" height="70" rx="6" class="box rose"/>
+<text x="465" y="150" text-anchor="middle" class="lt">SEV-2</text>
+<text x="465" y="170" text-anchor="middle" class="tag">拉指挥、通知负责人</text>
+
+<rect x="60" y="202" width="110" height="70" rx="6" class="box slate"/>
+<text x="115" y="230" text-anchor="middle" class="tag">明显降级但还能用</text>
+<text x="115" y="250" text-anchor="middle" class="tag">或错误率显著上升</text>
+<rect x="180" y="202" width="180" height="70" rx="6" class="box amber"/>
+<text x="270" y="150" text-anchor="middle" class="tag"/>
+<text x="270" y="230" text-anchor="middle" class="lt">SEV-2</text>
+<text x="270" y="250" text-anchor="middle" class="tag">值班人处置 + 同步负责人</text>
+<rect x="370" y="202" width="190" height="70" rx="6" class="box amber"/>
+<text x="465" y="230" text-anchor="middle" class="lt">SEV-3</text>
+<text x="465" y="250" text-anchor="middle" class="tag">当班人处置、按手册走</text>
+
+<rect x="60" y="282" width="110" height="70" rx="6" class="box slate"/>
+<text x="115" y="310" text-anchor="middle" class="tag">有绕行方案</text>
+<text x="115" y="330" text-anchor="middle" class="tag">用户几乎无感</text>
+<rect x="180" y="282" width="180" height="70" rx="6" class="box green"/>
+<text x="270" y="310" text-anchor="middle" class="lt">SEV-3</text>
+<text x="270" y="330" text-anchor="middle" class="tag">工作时间处置</text>
+<rect x="370" y="282" width="190" height="70" rx="6" class="box green"/>
+<text x="465" y="310" text-anchor="middle" class="lt">SEV-4</text>
+<text x="465" y="330" text-anchor="middle" class="tag">登记为工单，排期处理</text>
+
+<rect x="60" y="362" width="110" height="70" rx="6" class="box slate"/>
+<text x="115" y="390" text-anchor="middle" class="tag">用户完全无感</text>
+<text x="115" y="410" text-anchor="middle" class="tag">只有内部可见</text>
+<rect x="180" y="362" width="180" height="70" rx="6" class="box green"/>
+<text x="270" y="390" text-anchor="middle" class="lt">SEV-4</text>
+<text x="270" y="410" text-anchor="middle" class="tag">工单</text>
+<rect x="370" y="362" width="190" height="70" rx="6" class="box slate"/>
+<text x="465" y="390" text-anchor="middle" class="lt">SEV-5</text>
+<text x="465" y="410" text-anchor="middle" class="tag">仅记录，不排期也可接受</text>
+
+<rect x="580" y="80" width="300" height="352" rx="10" class="box blue"/>
+<text x="730" y="106" text-anchor="middle" class="lt">定级四条纪律</text>
+<text x="730" y="134" text-anchor="middle" class="tag">① 拿不准就往高定，事后可以下调，</text>
+<text x="730" y="152" text-anchor="middle" class="tag">在事故进行中争论级别是最贵的浪费</text>
+<text x="730" y="180" text-anchor="middle" class="tag">② 定级权在接下这一单的人手里，</text>
+<text x="730" y="198" text-anchor="middle" class="tag">不在级别最高的人手里</text>
+<text x="730" y="226" text-anchor="middle" class="tag">③ 定级会变：随着影响面被查清，</text>
+<text x="730" y="244" text-anchor="middle" class="tag">可以升也可以降，但每次变化要记时点</text>
+<text x="730" y="272" text-anchor="middle" class="tag">④ 定级只用于启动响应规模，</text>
+<text x="730" y="290" text-anchor="middle" class="tag">不用于评价个人——</text>
+<text x="730" y="308" text-anchor="middle" class="tag">一旦级别会牵连到人，</text>
+<text x="730" y="326" text-anchor="middle" class="tag">定级就会被系统性压低</text>
+<text x="730" y="358" text-anchor="middle" class="tag">这四条不是理念，是防止</text>
+<text x="730" y="376" text-anchor="middle" class="tag">「定级表被架空」的唯一办法</text>
+<text x="730" y="404" text-anchor="middle" class="tag">表越简单越好：现场没人翻文档</text>
+
+<rect x="60" y="452" width="820" height="72" rx="10" class="box rose"/>
+<text x="470" y="476" text-anchor="middle" class="lt">与国标口径的对应关系（对外报告场合用国标，对内处置用 SEV）</text>
+<text x="470" y="500" text-anchor="middle" class="tag">GB/T 20986-2023 把网络安全事件分为四级：特别重大（一级）、重大（二级）、较大（三级）、一般（四级）</text>
+<text x="470" y="518" text-anchor="middle" class="tag">两套口径不要混用：SEV 服务于「内部动员多大」，国标服务于「要不要以及多久内对外报告」</text>
+</svg>

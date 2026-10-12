@@ -16,5 +16,6 @@
 - [日志体系](LogSystem/index.md)
 - [备份与容灾](BackupDR/index.md)
 - [混沌工程](ChaosEngineering/index.md)：稳态假设、故障注入、实验设计、平台工具、演练日、实战
+- [故障应急体系](IncidentResponse/index.md)：值班制度、故障定级、应急指挥、应急预案、定位与止损、演练、实战、常见问题
 - [JumpServer](JumpServer/index.md)
 - [其他](Others/index.md)

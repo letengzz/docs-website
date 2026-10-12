@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>故障应急体系专题地图：制度层、动作层与验证层</title>
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:12px;fill:#334155;font-weight:600}.s{font-size:11px;fill:#475569}.tag{font-size:10px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.purple{fill:#F5F3FF;stroke:#8B5CF6}</style>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="32" text-anchor="middle" class="h">故障应急体系：三层九页，缺一层就断链</text>
+<text x="460" y="54" text-anchor="middle" class="tag">制度层定义「谁被叫醒、叫到多严重」；动作层定义「醒来之后按什么顺序做」；验证层证明前两层真的能跑</text>
+
+<rect x="40" y="76" width="270" height="34" rx="8" class="box purple"/>
+<text x="175" y="98" text-anchor="middle" class="lt">制度层 · 故障发生前必须写完</text>
+<rect x="40" y="118" width="270" height="52" rx="8" class="box blue"/>
+<text x="175" y="139" text-anchor="middle" class="s">总览：故障应急的四条边界</text>
+<text x="175" y="157" text-anchor="middle" class="tag">什么算事故、什么时候不用这套流程</text>
+<rect x="40" y="178" width="270" height="52" rx="8" class="box blue"/>
+<text x="175" y="199" text-anchor="middle" class="s">值班制度：保证有人能醒</text>
+<text x="175" y="217" text-anchor="middle" class="tag">轮值人数、班次、升级链路、告警门禁</text>
+<rect x="40" y="238" width="270" height="52" rx="8" class="box blue"/>
+<text x="175" y="259" text-anchor="middle" class="s">故障定级：决定启动多大响应</text>
+<text x="175" y="277" text-anchor="middle" class="tag">五档判据、国标对照、拿不准往高定</text>
+
+<rect x="325" y="76" width="270" height="34" rx="8" class="box purple"/>
+<text x="460" y="98" text-anchor="middle" class="lt">动作层 · 事故进行中按顺序做</text>
+<rect x="325" y="118" width="270" height="52" rx="8" class="box amber"/>
+<text x="460" y="139" text-anchor="middle" class="s">应急指挥与协同</text>
+<text x="460" y="157" text-anchor="middle" class="tag">指挥不修故障、双通道、状态更新节奏</text>
+<rect x="325" y="178" width="270" height="52" rx="8" class="box amber"/>
+<text x="460" y="199" text-anchor="middle" class="s">应急预案与运行手册</text>
+<text x="460" y="217" text-anchor="middle" class="tag">预案三段式、八段结构、防腐化</text>
+<rect x="325" y="238" width="270" height="52" rx="8" class="box amber"/>
+<text x="460" y="259" text-anchor="middle" class="s">定位与止损</text>
+<text x="460" y="277" text-anchor="middle" class="tag">先止损后定位、证据保全、四类止血手段</text>
+
+<rect x="610" y="76" width="270" height="34" rx="8" class="box purple"/>
+<text x="745" y="98" text-anchor="middle" class="lt">验证层 · 证明前两层不是摆设</text>
+<rect x="610" y="118" width="270" height="52" rx="8" class="box green"/>
+<text x="745" y="139" text-anchor="middle" class="s">演练与预案校验</text>
+<text x="745" y="157" text-anchor="middle" class="tag">桌面推演、单点演练、实战演练</text>
+<rect x="610" y="178" width="270" height="52" rx="8" class="box green"/>
+<text x="745" y="199" text-anchor="middle" class="s">实战：一次连接池耗尽事故</text>
+<text x="745" y="217" text-anchor="middle" class="tag">T+0 到 T+72h 的时间线与判据</text>
+<rect x="610" y="238" width="270" height="52" rx="8" class="box green"/>
+<text x="745" y="259" text-anchor="middle" class="s">常见问题与最佳实践</text>
+<text x="745" y="277" text-anchor="middle" class="tag">分诊表、十二问、上线自查清单</text>
+
+<rect x="40" y="312" width="840" height="96" rx="10" class="box rose"/>
+<text x="460" y="336" text-anchor="middle" class="lt">贯穿全流程的一条主线：判据必须落在「可执行」上</text>
+<text x="460" y="358" text-anchor="middle" class="tag">值班表要能演练呼叫、定级表要能拿历史事故回归校准、预案要能一条命令跑通、演练要能量出 MTTA</text>
+<text x="460" y="378" text-anchor="middle" class="tag">凡是写不出「怎么验证没坏」的条款，都只是愿望，不是制度</text>
+<text x="460" y="398" text-anchor="middle" class="tag">本专题不给工具清单就完事：每一页都要落到「谁在几点做什么、怎么知道做对了」</text>
+
+<rect x="40" y="424" width="840" height="112" rx="10" class="box slate"/>
+<text x="460" y="448" text-anchor="middle" class="lt">与本专题相邻的专题（分工边界写在目录页表格里）</text>
+<text x="460" y="472" text-anchor="middle" class="tag">混沌工程讲「怎么主动注入故障」，本专题讲「故障真的来了怎么办」——前者是演练的手段之一，不是应急流程本身</text>
+<text x="460" y="492" text-anchor="middle" class="tag">监控告警讲「怎么发现异常」，本专题从「已经确认对用户有影响」那一刻开始接手</text>
+<text x="460" y="512" text-anchor="middle" class="tag">备份容灾讲「怎么把数据拿回来」，本专题讲「谁决定切、切完怎么确认切对了」</text>
+</svg>

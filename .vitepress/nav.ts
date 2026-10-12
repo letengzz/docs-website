@@ -74,6 +74,7 @@ export const nav = [
       { text: "日志体系", link: "/docs/Ops/LogSystem" },
       { text: "备份与容灾", link: "/docs/Ops/BackupDR" },
       { text: "混沌工程", link: "/docs/Ops/ChaosEngineering" },
+      { text: "故障应急体系", link: "/docs/Ops/IncidentResponse" },
       { text: "JumpServer", link: "/docs/Ops/JumpServer" },
       { text: "其他", link: "/docs/Ops/Others" },
     ]

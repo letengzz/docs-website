@@ -301,6 +301,23 @@ export const CloudNative = [
     ],
   },
 ];
+export const IncidentResponse = [
+  {
+    text: "故障应急体系",
+    link: "/docs/Ops/IncidentResponse/index.md",
+    items: [
+      { text: "总览：故障应急的四条边界", link: "/docs/Ops/IncidentResponse/Overview/index.md" },
+      { text: "值班制度：保证有人能醒", link: "/docs/Ops/IncidentResponse/OnCall/index.md" },
+      { text: "故障定级", link: "/docs/Ops/IncidentResponse/Severity/index.md" },
+      { text: "应急指挥与协同", link: "/docs/Ops/IncidentResponse/Command/index.md" },
+      { text: "应急预案与运行手册", link: "/docs/Ops/IncidentResponse/Runbook/index.md" },
+      { text: "定位与止损", link: "/docs/Ops/IncidentResponse/Diagnosis/index.md" },
+      { text: "演练与预案校验", link: "/docs/Ops/IncidentResponse/Drill/index.md" },
+      { text: "实战：一次连接池耗尽事故", link: "/docs/Ops/IncidentResponse/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/IncidentResponse/FAQ/index.md" },
+    ],
+  },
+];
 export const CloudArchitecture = [
   {
     text: "云上架构",

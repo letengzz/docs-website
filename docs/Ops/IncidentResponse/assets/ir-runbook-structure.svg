@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>应急预案的八段结构与三级形态</title>
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:12px;fill:#334155;font-weight:600}.s{font-size:11px;fill:#475569}.tag{font-size:10px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="32" text-anchor="middle" class="h">预案不是文档，预案是「在压力下不用想就能照着做」</text>
+<text x="460" y="54" text-anchor="middle" class="tag">判断一份预案是否合格，只看一件事：凌晨三点、脑子不清醒的人能不能照着它把事故止住</text>
+
+<rect x="40" y="76" width="840" height="96" rx="10" class="box blue"/>
+<text x="460" y="100" text-anchor="middle" class="lt">三级形态：颗粒度从粗到细，缺哪一级都会断</text>
+<text x="460" y="124" text-anchor="middle" class="tag">一级 应急预案：面向「这一类事故」，说明触发条件、角色、处置顺序与晋升条件，通常一页</text>
+<text x="460" y="144" text-anchor="middle" class="tag">二级 运行手册（Runbook）：面向「这一个告警 / 这一个组件」，给具体命令、期望输出、判读方式</text>
+<text x="460" y="164" text-anchor="middle" class="tag">三级 自动化：把手册里重复且高风险的步骤固化成一条命令或一个脚本，减少手抖的机会</text>
+
+<rect x="40" y="186" width="410" height="230" rx="10" class="box green"/>
+<text x="245" y="210" text-anchor="middle" class="lt">一段合格 Runbook 的八段结构</text>
+<text x="245" y="236" text-anchor="middle" class="tag">① 触发条件：什么信号下用它（越具体越好）</text>
+<text x="245" y="258" text-anchor="middle" class="tag">② 三十秒判断：用户是否受影响、影响面多大</text>
+<text x="245" y="280" text-anchor="middle" class="tag">③ 处置动作：按顺序编号，一步只做一件事</text>
+<text x="245" y="302" text-anchor="middle" class="tag">④ 期望输出：每步之后应该看到什么</text>
+<text x="245" y="324" text-anchor="middle" class="tag">⑤ 回退点：这一步如何撤销、撤销后多久生效</text>
+<text x="245" y="346" text-anchor="middle" class="tag">⑥ 升级条件：做完这几步还不好就找谁</text>
+<text x="245" y="368" text-anchor="middle" class="tag">⑦ 收口判据：满足什么才算处置完成</text>
+<text x="245" y="390" text-anchor="middle" class="tag">⑧ 最后更新：日期与最近一次演练结果</text>
+<text x="245" y="410" text-anchor="middle" class="tag">第 ④ 与第 ⑧ 段是最常被漏掉的两段</text>
+
+<rect x="470" y="186" width="410" height="230" rx="10" class="box amber"/>
+<text x="675" y="210" text-anchor="middle" class="lt">四类高频预案与各自的判据</text>
+<text x="675" y="236" text-anchor="middle" class="tag">容量类（连接池 / 线程池 / 磁盘 / 队列）：</text>
+<text x="675" y="254" text-anchor="middle" class="tag">判据是「扩容与限流哪个先做」写清了没有</text>
+<text x="675" y="278" text-anchor="middle" class="tag">依赖类（数据库 / 缓存 / 消息 / 第三方）：</text>
+<text x="675" y="296" text-anchor="middle" class="tag">判据是「可降级与不可降级」分开了没有</text>
+<text x="675" y="320" text-anchor="middle" class="tag">数据类（错数 / 丢数 / 重复）：</text>
+<text x="675" y="338" text-anchor="middle" class="tag">判据是「先止血还是先保数据」有结论没有</text>
+<text x="675" y="362" text-anchor="middle" class="tag">发布类（上线即崩 / 配置错 / 灰度跑偏）：</text>
+<text x="675" y="380" text-anchor="middle" class="tag">判据是「回滚步骤与回滚耗时」量过没有</text>
+<text x="675" y="404" text-anchor="middle" class="tag">四类之外的事故，多半是这四类的组合</text>
+
+<rect x="40" y="436" width="840" height="88" rx="10" class="box rose"/>
+<text x="460" y="460" text-anchor="middle" class="lt">预案腐化：过期的手册比没有手册更危险</text>
+<text x="460" y="484" text-anchor="middle" class="tag">有人照着废弃手册执行过一次错误动作之后，团队的普遍反应不再是「不再相信手册」，而是「不再相信任何手册」</text>
+<text x="460" y="506" text-anchor="middle" class="tag">防腐化只有两个抓手：把「最后更新日期」写在页面最上方，以及在演练中真的按手册执行一次并回填结果</text>
+</svg>

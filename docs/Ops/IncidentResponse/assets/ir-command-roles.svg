@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>应急指挥角色分工与双通道信息流</title>
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:12px;fill:#334155;font-weight:600}.s{font-size:11px;fill:#475569}.tag{font-size:10px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="32" text-anchor="middle" class="h">一个角色不修故障，两个通道不能合并</text>
+<text x="460" y="54" text-anchor="middle" class="tag">应急协同的全部难点就这两句话：指挥必须腾出手来，信息必须分开发</text>
+
+<rect x="40" y="76" width="840" height="120" rx="10" class="box rose"/>
+<text x="460" y="100" text-anchor="middle" class="lt">应急指挥（IC）：全场唯一不碰键盘的人</text>
+<text x="460" y="124" text-anchor="middle" class="tag">职责：宣布进入应急并定级、确认影响面、按需升级、决定止损方案、决定何时宣布恢复、主持状态同步</text>
+<text x="460" y="146" text-anchor="middle" class="tag">不做什么：不登录机器、不改配置、不查日志、不参与定位——「指挥插手的瞬间，协调就停止了」</text>
+<text x="460" y="168" text-anchor="middle" class="tag">为什么这条最难做到：最好的排障者上手指令的那一刻，恰好是全局信息开始失序的那一刻</text>
+<text x="460" y="188" text-anchor="middle" class="tag">小团队可以一人多角，但「指挥」这个角色必须被显式指认出来，不能默认由嗓门最大的人担任</text>
+
+<rect x="40" y="212" width="270" height="150" rx="10" class="box blue"/>
+<text x="175" y="236" text-anchor="middle" class="lt">副指挥</text>
+<text x="175" y="260" text-anchor="middle" class="tag">热备份：指挥要休息、</text>
+<text x="175" y="278" text-anchor="middle" class="tag">要接电话时立刻接手</text>
+<text x="175" y="302" text-anchor="middle" class="tag">管通话与协作工具</text>
+<text x="175" y="320" text-anchor="middle" class="tag">（会议室、通话桥）</text>
+<text x="175" y="344" text-anchor="middle" class="tag">交接必须口头宣布：</text>
+<text x="175" y="356" text-anchor="middle" class="tag">「指挥现在交给某人」</text>
+
+<rect x="325" y="212" width="270" height="150" rx="10" class="box blue"/>
+<text x="460" y="236" text-anchor="middle" class="lt">记录员</text>
+<text x="460" y="260" text-anchor="middle" class="tag">只做一件事：带时间戳地记</text>
+<text x="460" y="278" text-anchor="middle" class="tag">「谁在什么时候做了什么</text>
+<text x="460" y="296" text-anchor="middle" class="tag">以及当时看到了什么」</text>
+<text x="460" y="320" text-anchor="middle" class="tag">这份记录是后面所有</text>
+<text x="460" y="338" text-anchor="middle" class="tag">工作的时间线来源</text>
+<text x="460" y="356" text-anchor="middle" class="tag">不能靠回忆补记</text>
+
+<rect x="610" y="212" width="270" height="150" rx="10" class="box blue"/>
+<text x="745" y="236" text-anchor="middle" class="lt">技术负责人</text>
+<text x="745" y="260" text-anchor="middle" class="tag">真正诊断与动手的人</text>
+<text x="745" y="278" text-anchor="middle" class="tag">可以多人并行分工</text>
+<text x="745" y="302" text-anchor="middle" class="tag">任何会改动生产环境的动作，</text>
+<text x="745" y="320" text-anchor="middle" class="tag">先向指挥说明「做什么、</text>
+<text x="745" y="338" text-anchor="middle" class="tag">预期怎样、怎么回退」</text>
+<text x="745" y="356" text-anchor="middle" class="tag">而非自己拍板就改</text>
+
+<rect x="40" y="376" width="410" height="148" rx="10" class="box green"/>
+<text x="245" y="400" text-anchor="middle" class="lt">通道一：作战室（只放事实与动作）</text>
+<text x="245" y="424" text-anchor="middle" class="tag">只有参与的处置人员在内</text>
+<text x="245" y="446" text-anchor="middle" class="tag">只允许三种内容：观测到的事实、</text>
+<text x="245" y="464" text-anchor="middle" class="tag">正在执行的动作、需要谁配合</text>
+<text x="245" y="486" text-anchor="middle" class="tag">不允许：猜测当结论、情绪评价、</text>
+<text x="245" y="504" text-anchor="middle" class="tag">「我觉得肯定是某某干的」</text>
+<text x="245" y="520" text-anchor="middle" class="tag">安静是为了让做事的人做得下去</text>
+
+<rect x="470" y="376" width="410" height="148" rx="10" class="box amber"/>
+<text x="675" y="400" text-anchor="middle" class="lt">通道二：干系人通道（定时播报）</text>
+<text x="675" y="424" text-anchor="middle" class="tag">业务方、管理层、客服在内</text>
+<text x="675" y="446" text-anchor="middle" class="tag">固定格式：现状 + 影响 + 已做 +</text>
+<text x="675" y="464" text-anchor="middle" class="tag">下一步 + 下次更新时间</text>
+<text x="675" y="486" text-anchor="middle" class="tag">没进展也要按点播报：</text>
+<text x="675" y="504" text-anchor="middle" class="tag">「仍在排查，无新增影响，</text>
+<text x="675" y="520" text-anchor="middle" class="tag">下次更新 15:30」比沉默便宜得多</text>
+</svg>

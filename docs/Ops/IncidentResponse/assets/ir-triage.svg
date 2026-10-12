@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>故障应急问题分诊：先问是哪一层在拒绝服务</title>
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:12px;fill:#334155;font-weight:600}.s{font-size:11px;fill:#475569}.tag{font-size:10px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="32" text-anchor="middle" class="h">分诊：应急现场的第一问不是「哪里坏了」而是「卡在哪一段」</text>
+<text x="460" y="54" text-anchor="middle" class="tag">顺序固定：先问影响面、再问最近改了什么、最后才问哪一层——跳步的代价是十几分钟</text>
+
+<rect x="40" y="76" width="840" height="46" rx="10" class="box blue"/>
+<text x="460" y="104" text-anchor="middle" class="s">第一问：所有用户都受影响，还是只有一部分？全部受影响 → 先看入口、证书、配置这类「全局性」的东西</text>
+
+<rect x="40" y="134" width="205" height="170" rx="10" class="box rose"/>
+<text x="142" y="158" text-anchor="middle" class="lt">第二问：最近改了什么</text>
+<text x="142" y="182" text-anchor="middle" class="tag">发布、配置、开关、</text>
+<text x="142" y="198" text-anchor="middle" class="tag">依赖升级、证书轮换、</text>
+<text x="142" y="214" text-anchor="middle" class="tag">定时任务、容量变更</text>
+<text x="142" y="238" text-anchor="middle" class="tag">有变更且时间吻合：</text>
+<text x="142" y="254" text-anchor="middle" class="tag">先撤回，不要先分析</text>
+<text x="142" y="278" text-anchor="middle" class="tag">无变更不代表没原因，</text>
+<text x="142" y="294" text-anchor="middle" class="tag">但优先级排在后面</text>
+
+<rect x="256" y="134" width="205" height="170" rx="10" class="box amber"/>
+<text x="358" y="158" text-anchor="middle" class="lt">第三问：卡在哪一段</text>
+<text x="358" y="182" text-anchor="middle" class="tag">入口层：连接被拒、证书</text>
+<text x="358" y="198" text-anchor="middle" class="tag">过期、WAF 拦截</text>
+<text x="358" y="222" text-anchor="middle" class="tag">应用层：线程打满、连接池</text>
+<text x="358" y="238" text-anchor="middle" class="tag">耗尽、GC 停顿、死锁</text>
+<text x="358" y="262" text-anchor="middle" class="tag">依赖层：数据库、缓存、</text>
+<text x="358" y="278" text-anchor="middle" class="tag">消息、第三方接口</text>
+<text x="358" y="296" text-anchor="middle" class="tag">每一层的判据都不同</text>
+
+<rect x="472" y="134" width="205" height="170" rx="10" class="box blue"/>
+<text x="574" y="158" text-anchor="middle" class="lt">第四问：是「拒绝」</text>
+<text x="574" y="178" text-anchor="middle" class="tag">还是「变慢」</text>
+<text x="574" y="202" text-anchor="middle" class="tag">拒绝服务：错误率高、</text>
+<text x="574" y="218" text-anchor="middle" class="tag">成功率掉下来 —— 通常是</text>
+<text x="574" y="234" text-anchor="middle" class="tag">资源耗尽或被人打到限流</text>
+<text x="574" y="258" text-anchor="middle" class="tag">变慢：成功率没掉但 P99</text>
+<text x="574" y="274" text-anchor="middle" class="tag">拉长 —— 通常是排队、</text>
+<text x="574" y="290" text-anchor="middle" class="tag">锁竞争或下游变慢</text>
+
+<rect x="688" y="134" width="192" height="170" rx="10" class="box green"/>
+<text x="784" y="158" text-anchor="middle" class="lt">第五问：现在该做</text>
+<text x="784" y="178" text-anchor="middle" class="tag">哪一档止损</text>
+<text x="784" y="202" text-anchor="middle" class="tag">按可逆性与生效速度</text>
+<text x="784" y="218" text-anchor="middle" class="tag">排序：先撤回变更，</text>
+<text x="784" y="234" text-anchor="middle" class="tag">再挪流量，然后降级，</text>
+<text x="784" y="250" text-anchor="middle" class="tag">最后才动数据</text>
+<text x="784" y="274" text-anchor="middle" class="tag">每一档都要能说出</text>
+<text x="784" y="290" text-anchor="middle" class="tag">它怎么撤销</text>
+
+<rect x="40" y="322" width="840" height="92" rx="10" class="box slate"/>
+<text x="460" y="346" text-anchor="middle" class="lt">三条纪律：它们比任何技巧都更能缩短恢复时间</text>
+<text x="460" y="370" text-anchor="middle" class="tag">① 先取证后动手：任何重启、摘除、回滚之前，先把当时的现场留下来，几十秒的成本换一条完整线索</text>
+<text x="460" y="390" text-anchor="middle" class="tag">② 一次只改一个变量：除非正在流血，否则并行多个动作会让你失去「哪个动作起了作用」这个信息</text>
+<text x="460" y="408" text-anchor="middle" class="tag">③ 恢复后补判据：把「当时怎么确认好了」写成一条能复现的检查，否则下一次还要重新想一遍</text>
+
+<rect x="40" y="430" width="840" height="90" rx="10" class="box rose"/>
+<text x="460" y="454" text-anchor="middle" class="lt">四个最贵的误判</text>
+<text x="460" y="478" text-anchor="middle" class="tag">把「灰度导致的局部失败」当成「全量故障」→ 定级过高、动作过大，反而把影响面放大</text>
+<text x="460" y="498" text-anchor="middle" class="tag">把「监控缺失」当成「服务正常」→ 指标平静有可能是指标本身已经不采集了，要先确认观测链路是活的</text>
+</svg>

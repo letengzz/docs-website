@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>一次连接池耗尽事故的处置时间线</title>
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:12px;fill:#334155;font-weight:600}.s{font-size:11px;fill:#475569}.tag{font-size:10px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}</style>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="32" text-anchor="middle" class="h">实战时间线：每一格右侧是「当时能证明它做对了」的判据</text>
+<text x="460" y="54" text-anchor="middle" class="tag">下面这条线不是最佳实践演示，而是把「从容」还原成具体动作——注意第一次止损发生在知道根因之前</text>
+
+<rect x="40" y="76" width="840" height="40" rx="8" class="box rose"/>
+<text x="460" y="101" text-anchor="middle" class="s">T+0 到 T+8 分钟：确认影响面与定级（此阶段只回答一个问题：用户受影响了吗）</text>
+
+<rect x="40" y="124" width="205" height="104" rx="8" class="box blue"/>
+<text x="142" y="146" text-anchor="middle" class="lt">T+0 告警触发</text>
+<text x="142" y="166" text-anchor="middle" class="tag">接口 P99 越过 SLO、</text>
+<text x="142" y="182" text-anchor="middle" class="tag">错误率 0.1% 升到 9%</text>
+<text x="142" y="202" text-anchor="middle" class="tag">判据：告警规则命中，</text>
+<text x="142" y="218" text-anchor="middle" class="tag">且指向具体服务而非主机</text>
+
+<rect x="256" y="124" width="205" height="104" rx="8" class="box blue"/>
+<text x="358" y="146" text-anchor="middle" class="lt">T+3 值班人接单</text>
+<text x="358" y="166" text-anchor="middle" class="tag">确认不是误报：抓一条</text>
+<text x="358" y="182" text-anchor="middle" class="tag">真实请求，看到 5xx</text>
+<text x="358" y="202" text-anchor="middle" class="tag">判据：MTTA 实测值，</text>
+<text x="358" y="218" text-anchor="middle" class="tag">本轮为 3 分钟</text>
+
+<rect x="472" y="124" width="205" height="104" rx="8" class="box amber"/>
+<text x="574" y="146" text-anchor="middle" class="lt">T+6 定级 SEV-2</text>
+<text x="574" y="166" text-anchor="middle" class="tag">核心下单链路降级，</text>
+<text x="574" y="182" text-anchor="middle" class="tag">非全部用户不可用</text>
+<text x="574" y="202" text-anchor="middle" class="tag">判据：定级表命中「部分</text>
+<text x="574" y="218" text-anchor="middle" class="tag">用户 + 明显降级」这一格</text>
+
+<rect x="688" y="124" width="192" height="104" rx="8" class="box amber"/>
+<text x="784" y="146" text-anchor="middle" class="lt">T+8 拉起指挥</text>
+<text x="784" y="166" text-anchor="middle" class="tag">按升级链第二级叫到</text>
+<text x="784" y="182" text-anchor="middle" class="tag">备份值班人，建通道</text>
+<text x="784" y="202" text-anchor="middle" class="tag">判据：被叫到的人真的</text>
+<text x="784" y="218" text-anchor="middle" class="tag">回应了，不是留言</text>
+
+<rect x="40" y="240" width="840" height="40" rx="8" class="box rose"/>
+<text x="460" y="265" text-anchor="middle" class="s">T+8 到 T+35 分钟：先止损，根因还在未知状态</text>
+
+<rect x="40" y="288" width="270" height="112" rx="8" class="box green"/>
+<text x="175" y="310" text-anchor="middle" class="lt">T+10 抓现场再重启</text>
+<text x="175" y="330" text-anchor="middle" class="tag">先取线程栈与连接数快照，</text>
+<text x="175" y="346" text-anchor="middle" class="tag">再重启异常实例</text>
+<text x="175" y="366" text-anchor="middle" class="tag">判据：抓到线程栈里有大量</text>
+<text x="175" y="382" text-anchor="middle" class="tag">等待获取连接的线程</text>
+
+<rect x="325" y="288" width="270" height="112" rx="8" class="box green"/>
+<text x="460" y="310" text-anchor="middle" class="lt">T+18 降级非核心出口</text>
+<text x="460" y="330" text-anchor="middle" class="tag">关掉推荐与榜单这两个</text>
+<text x="460" y="346" text-anchor="middle" class="tag">非核心接口，腾出连接</text>
+<text x="460" y="366" text-anchor="middle" class="tag">判据：错误率从 9% 回落到</text>
+<text x="460" y="382" text-anchor="middle" class="tag">0.6%，下单成功率回升</text>
+
+<rect x="610" y="288" width="270" height="112" rx="8" class="box amber"/>
+<text x="745" y="310" text-anchor="middle" class="lt">T+35 根因确认</text>
+<text x="745" y="330" text-anchor="middle" class="tag">当天上线的「相似商品」</text>
+<text x="745" y="346" text-anchor="middle" class="tag">查询没走索引，逐条查库</text>
+<text x="745" y="366" text-anchor="middle" class="tag">判据：慢查询日志里出现</text>
+<text x="745" y="382" text-anchor="middle" class="tag">同一个只跑到全表扫描的 SQL</text>
+
+<rect x="40" y="416" width="840" height="40" rx="8" class="box rose"/>
+<text x="460" y="441" text-anchor="middle" class="s">T+35 分钟到 T+72 小时：从恢复变成「不再复发」</text>
+
+<rect x="40" y="464" width="270" height="80" rx="8" class="box blue"/>
+<text x="175" y="486" text-anchor="middle" class="lt">T+50 宣布恢复</text>
+<text x="175" y="506" text-anchor="middle" class="tag">观察满 30 分钟，指标回到基线，</text>
+<text x="175" y="522" text-anchor="middle" class="tag">临时降级逐步放回</text>
+
+<rect x="325" y="464" width="270" height="80" rx="8" class="box blue"/>
+<text x="460" y="486" text-anchor="middle" class="lt">T+6h 预案修订</text>
+<text x="460" y="506" text-anchor="middle" class="tag">把「非核心出口清单」写进预案，</text>
+<text x="460" y="522" text-anchor="middle" class="tag">下次不必再临场决定关哪个</text>
+
+<rect x="610" y="464" width="270" height="80" rx="8" class="box blue"/>
+<text x="745" y="486" text-anchor="middle" class="lt">T+72h 观测补齐</text>
+<text x="745" y="506" text-anchor="middle" class="tag">补一条连接池等待时长的指标</text>
+<text x="745" y="522" text-anchor="middle" class="tag">与告警，让下次提前 20 分钟发现</text>
+</svg>

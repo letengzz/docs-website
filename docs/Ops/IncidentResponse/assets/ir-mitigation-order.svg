@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 530" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>四类止损手段按可逆性与生效速度排序</title>
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:12px;fill:#334155;font-weight:600}.s{font-size:11px;fill:#475569}.tag{font-size:10px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}</style>
+<rect width="920" height="530" fill="#FFFFFF"/>
+<text x="460" y="32" text-anchor="middle" class="h">止损手段的选择顺序：先挑「能撤销、见效快」的</text>
+<text x="460" y="54" text-anchor="middle" class="tag">止损不是「谁想到什么就试什么」，而是从下面这四档里按顺序挑——前两档通常是可逆的，后两档往往不是</text>
+
+<rect x="40" y="76" width="200" height="160" rx="10" class="box green"/>
+<text x="140" y="100" text-anchor="middle" class="lt">第一档：撤回上一次变更</text>
+<text x="140" y="124" text-anchor="middle" class="tag">回滚发布、撤销配置、</text>
+<text x="140" y="142" text-anchor="middle" class="tag">关掉刚打开的功能开关</text>
+<text x="140" y="166" text-anchor="middle" class="tag">可逆性：最高</text>
+<text x="140" y="184" text-anchor="middle" class="tag">生效速度：分钟级</text>
+<text x="140" y="208" text-anchor="middle" class="tag">前提：变更与故障的</text>
+<text x="140" y="224" text-anchor="middle" class="tag">时间相关，不必先证明</text>
+
+<rect x="256" y="76" width="200" height="160" rx="10" class="box green"/>
+<text x="356" y="100" text-anchor="middle" class="lt">第二档：把流量挪走</text>
+<text x="356" y="124" text-anchor="middle" class="tag">摘除异常实例、切到另一</text>
+<text x="356" y="142" text-anchor="middle" class="tag">个可用区或另一套集群</text>
+<text x="356" y="166" text-anchor="middle" class="tag">可逆性：高</text>
+<text x="356" y="184" text-anchor="middle" class="tag">生效速度：分钟级</text>
+<text x="356" y="208" text-anchor="middle" class="tag">前提：有第二个能接的</text>
+<text x="356" y="224" text-anchor="middle" class="tag">地方，且它确实健康</text>
+
+<rect x="472" y="76" width="200" height="160" rx="10" class="box amber"/>
+<text x="572" y="100" text-anchor="middle" class="lt">第三档：放弃一部分</text>
+<text x="572" y="124" text-anchor="middle" class="tag">限流、降级、只读、</text>
+<text x="572" y="142" text-anchor="middle" class="tag">关闭非核心功能</text>
+<text x="572" y="166" text-anchor="middle" class="tag">可逆性：中</text>
+<text x="572" y="184" text-anchor="middle" class="tag">生效速度：秒级到分钟级</text>
+<text x="572" y="208" text-anchor="middle" class="tag">代价：一部分用户</text>
+<text x="572" y="224" text-anchor="middle" class="tag">从「不能用」变成「降级用」</text>
+
+<rect x="688" y="76" width="192" height="160" rx="10" class="box rose"/>
+<text x="784" y="100" text-anchor="middle" class="lt">第四档：动数据</text>
+<text x="784" y="124" text-anchor="middle" class="tag">切主库、改数据、</text>
+<text x="784" y="142" text-anchor="middle" class="tag">重跑任务、手工补数</text>
+<text x="784" y="166" text-anchor="middle" class="tag">可逆性：低到不可逆</text>
+<text x="784" y="184" text-anchor="middle" class="tag">生效速度：不确定</text>
+<text x="784" y="208" text-anchor="middle" class="tag">必须先想清楚「做错了</text>
+<text x="784" y="224" text-anchor="middle" class="tag">怎么退回来」再动手</text>
+
+<rect x="40" y="252" width="410" height="128" rx="10" class="box blue"/>
+<text x="245" y="276" text-anchor="middle" class="lt">止损与保全是并行动作，不是二选一</text>
+<text x="245" y="300" text-anchor="middle" class="tag">重启之前先抓现场：线程栈、堆快照、连接数、</text>
+<text x="245" y="318" text-anchor="middle" class="tag">最近的错误日志片段、当时的指标截图</text>
+<text x="245" y="342" text-anchor="middle" class="tag">抓现场通常只要几十秒，而重启会把罪证一起清掉</text>
+<text x="245" y="366" text-anchor="middle" class="tag">「先重启了，现在好了，也不知道为什么」</text>
+
+<rect x="470" y="252" width="410" height="128" rx="10" class="box amber"/>
+<text x="675" y="276" text-anchor="middle" class="lt">一次只改一个变量</text>
+<text x="675" y="300" text-anchor="middle" class="tag">同时回滚发布 + 重启 + 扩容，故障消失了，</text>
+<text x="675" y="318" text-anchor="middle" class="tag">但你不知道是谁救的——下次还会再犯一遍</text>
+<text x="675" y="342" text-anchor="middle" class="tag">例外：正在流血的数据类事故，允许先全都做上，</text>
+<text x="675" y="366" text-anchor="middle" class="tag">但必须在记录里写清「这次是多变量并行」</text>
+
+<rect x="40" y="396" width="840" height="116" rx="10" class="box slate"/>
+<text x="460" y="420" text-anchor="middle" class="lt">四个「定位陷阱」——它们让处置变慢，而且看起来都很合理</text>
+<text x="460" y="444" text-anchor="middle" class="tag">① 从最熟悉的那一层开始看（多数人先看应用日志，而问题在依赖或入口）</text>
+<text x="460" y="464" text-anchor="middle" class="tag">② 把「最近改了什么」留到最后才问（这一问应该排在新事故的第一位）</text>
+<text x="460" y="484" text-anchor="middle" class="tag">③ 把相关性当因果（指标同时变了不等于一个导致另一个，要能说出中间机制）</text>
+<text x="460" y="500" text-anchor="middle" class="tag">④ 在一个已经饱和的组件上继续加压（扩容、重启都可能让雪崩更大）</text>
+</svg>

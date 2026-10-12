@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>演练设计的六个步骤与三道安全阀</title>
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:12px;fill:#334155;font-weight:600}.s{font-size:11px;fill:#475569}.tag{font-size:10px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="32" text-anchor="middle" class="h">演练是唯一能证明「预案与值班表真的能跑」的手段</text>
+<text x="460" y="54" text-anchor="middle" class="tag">读一百遍预案不会发现它写错了；照着它做一次，第一分钟就会暴露断在哪</text>
+
+<rect x="40" y="76" width="840" height="88" rx="10" class="box blue"/>
+<text x="460" y="100" text-anchor="middle" class="lt">三类演练，成本与收益依次上升</text>
+<text x="460" y="124" text-anchor="middle" class="tag">桌面推演：不动系统，一群人对着一个假设场景口述处置，桌面推演便宜且不冒险，适合高频做</text>
+<text x="460" y="144" text-anchor="middle" class="tag">单点演练：在预发或小流量环境真实执行一段预案，验证命令、权限、判据是否成立</text>
+<text x="460" y="162" text-anchor="middle" class="tag">实战演练：在生产或生产等价的流量上注入故障，验证完整链路，含值班响应与升级</text>
+
+<rect x="40" y="178" width="410" height="216" rx="10" class="box green"/>
+<text x="245" y="202" text-anchor="middle" class="lt">六步：一次演练的最小设计</text>
+<text x="245" y="228" text-anchor="middle" class="tag">① 假设：断言「注入 X 之后系统应当保持 Y」</text>
+<text x="245" y="250" text-anchor="middle" class="tag">② 范围：明确打谁、不打谁，写死选择器</text>
+<text x="245" y="272" text-anchor="middle" class="tag">③ 注入：用什么手段、持续多久、怎么恢复</text>
+<text x="245" y="294" text-anchor="middle" class="tag">④ 观测：看哪些指标、谁负责看、达标线是多少</text>
+<text x="245" y="316" text-anchor="middle" class="tag">⑤ 判据：写成可判定的句子，不写「表现良好」</text>
+<text x="245" y="338" text-anchor="middle" class="tag">⑥ 收口：修预案、修值班表、修观测缺口，</text>
+<text x="245" y="358" text-anchor="middle" class="tag">三样至少产出一项，否则这次演练白做</text>
+<text x="245" y="382" text-anchor="middle" class="tag">第 ⑤ 步是最容易糊弄的一步</text>
+
+<rect x="470" y="178" width="410" height="216" rx="10" class="box rose"/>
+<text x="675" y="202" text-anchor="middle" class="lt">三道安全阀：没有它们就不要做实战演练</text>
+<text x="675" y="228" text-anchor="middle" class="tag">① 熔断人：有一名不参与处置的人，</text>
+<text x="675" y="246" text-anchor="middle" class="tag">拥有无条件终止实验的权限</text>
+<text x="675" y="270" text-anchor="middle" class="tag">② 影响边界：实验必须带自动到期的时长，</text>
+<text x="675" y="288" text-anchor="middle" class="tag">不允许无限期挂在那里</text>
+<text x="675" y="312" text-anchor="middle" class="tag">③ 停止条件：事先写下「出现哪些信号立即停」，</text>
+<text x="675" y="330" text-anchor="middle" class="tag">例如错误率超过某个值、有人真的在受影响</text>
+<text x="675" y="354" text-anchor="middle" class="tag">三条之外还有一条惯例：生产演练要选</text>
+<text x="675" y="372" text-anchor="middle" class="tag">业务低谷，且提前告知客服与业务方</text>
+<text x="675" y="392" text-anchor="middle" class="tag">不告知的演练会把客服变成第二批受害者</text>
+
+<rect x="40" y="410" width="840" height="110" rx="10" class="box slate"/>
+<text x="460" y="434" text-anchor="middle" class="lt">演练最常见的三种失败形态（都不是技术问题）</text>
+<text x="460" y="458" text-anchor="middle" class="tag">① 演变成表演：提前把答案告诉参与者，演练变成背诵，掩盖了真实的响应时延</text>
+<text x="460" y="478" text-anchor="middle" class="tag">② 只演处置不演协同：只让人去修，不验证「叫不叫得到人、升级链断不断、播报发不发」</text>
+<text x="460" y="498" text-anchor="middle" class="tag">③ 演完就散：产物一项也没落地，预案与值班表原样不动，下一次演练重复暴露同一个断点</text>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>故障应急五个阶段与各阶段必须留下的产物</title>
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:12px;fill:#334155;font-weight:600}.s{font-size:11px;fill:#475569}.tag{font-size:10px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}</style>
+<rect width="920" height="520" fill="#FFFFFF"/>
+<text x="460" y="32" text-anchor="middle" class="h">五个阶段，每一阶段都必须留下一个「产物」</text>
+<text x="460" y="54" text-anchor="middle" class="tag">没有产物的阶段等于没发生：出事时最常见的失控不是技术不行，而是没有人知道现在到底在做什么</text>
+
+<rect x="40" y="76" width="160" height="150" rx="10" class="box blue"/>
+<text x="120" y="100" text-anchor="middle" class="lt">① 发现与分级</text>
+<text x="120" y="124" text-anchor="middle" class="tag">信号来了，先问一句</text>
+<text x="120" y="142" text-anchor="middle" class="tag">「用户受影响了吗」</text>
+<text x="120" y="166" text-anchor="middle" class="tag">产物：一个级别</text>
+<text x="120" y="184" text-anchor="middle" class="tag">+ 一个响应责任人</text>
+<text x="120" y="206" text-anchor="middle" class="tag">这两样写不出来</text>
+<text x="120" y="220" text-anchor="middle" class="tag">就还没进入应急</text>
+
+<rect x="212" y="76" width="160" height="150" rx="10" class="box rose"/>
+<text x="292" y="100" text-anchor="middle" class="lt">② 止损</text>
+<text x="292" y="124" text-anchor="middle" class="tag">先停止失血</text>
+<text x="292" y="142" text-anchor="middle" class="tag">不要求知道原因</text>
+<text x="292" y="166" text-anchor="middle" class="tag">产物：影响面被限制住</text>
+<text x="292" y="184" text-anchor="middle" class="tag">+ 一个可用的临时绕行</text>
+<text x="292" y="206" text-anchor="middle" class="tag">回滚、摘除、限流</text>
+<text x="292" y="220" text-anchor="middle" class="tag">降级都算这一步</text>
+
+<rect x="384" y="76" width="160" height="150" rx="10" class="box amber"/>
+<text x="464" y="100" text-anchor="middle" class="lt">③ 动员与升级</text>
+<text x="464" y="124" text-anchor="middle" class="tag">回收复窗口</text>
+<text x="464" y="142" text-anchor="middle" class="tag">窗口在滑走就升级</text>
+<text x="464" y="166" text-anchor="middle" class="tag">产物：对的人进了屋</text>
+<text x="464" y="184" text-anchor="middle" class="tag">+ 一个明确的窗口</text>
+<text x="464" y="206" text-anchor="middle" class="tag">升级不是失败</text>
+<text x="464" y="220" text-anchor="middle" class="tag">叫不来人才是失败</text>
+
+<rect x="556" y="76" width="160" height="150" rx="10" class="box green"/>
+<text x="636" y="100" text-anchor="middle" class="lt">④ 恢复与确认</text>
+<text x="636" y="124" text-anchor="middle" class="tag">服务回到目标之内</text>
+<text x="636" y="142" text-anchor="middle" class="tag">数据一致性要查</text>
+<text x="636" y="166" text-anchor="middle" class="tag">产物：指标回到基线</text>
+<text x="636" y="184" text-anchor="middle" class="tag">+ 临时绕行已关闭</text>
+<text x="636" y="206" text-anchor="middle" class="tag">观察窗不满</text>
+<text x="636" y="220" text-anchor="middle" class="tag">就不能宣布结束</text>
+
+<rect x="728" y="76" width="152" height="150" rx="10" class="box slate"/>
+<text x="804" y="100" text-anchor="middle" class="lt">⑤ 交棒</text>
+<text x="804" y="124" text-anchor="middle" class="tag">临时处置不能</text>
+<text x="804" y="142" text-anchor="middle" class="tag">变成永久状态</text>
+<text x="804" y="166" text-anchor="middle" class="tag">产物：带责任人与</text>
+<text x="804" y="184" text-anchor="middle" class="tag">期限的整改项</text>
+<text x="804" y="206" text-anchor="middle" class="tag">本专题到「服务恢复</text>
+<text x="804" y="220" text-anchor="middle" class="tag">并确认」为止</text>
+
+<rect x="40" y="250" width="840" height="86" rx="10" class="box blue"/>
+<text x="460" y="274" text-anchor="middle" class="lt">为什么阶段划分要按「产物」而不是按「心情」</text>
+<text x="460" y="298" text-anchor="middle" class="tag">应急现场的压力会让人跳过步骤：还没分级就先开始查日志、还没止损就先开始找根因、指标刚好看了一点就宣布恢复</text>
+<text x="460" y="318" text-anchor="middle" class="tag">按产物划分的好处是每一步都可被旁观者检查：级别写了吗？影响面限制住了吗？指标回到基线满观察窗了吗？</text>
+
+<rect x="40" y="352" width="410" height="140" rx="10" class="box green"/>
+<text x="245" y="376" text-anchor="middle" class="lt">三个可以直接量出来的时间</text>
+<text x="245" y="400" text-anchor="middle" class="tag">MTTD 检测到：从故障发生到有人知道</text>
+<text x="245" y="420" text-anchor="middle" class="tag">MTTA 确认到：从叫醒到有人接下这一单</text>
+<text x="245" y="440" text-anchor="middle" class="tag">MTTR 恢复到：从接下到影响面消失</text>
+<text x="245" y="466" text-anchor="middle" class="tag">三者分别对应「监控」「值班」「处置」三件事</text>
+<text x="245" y="484" text-anchor="middle" class="tag">盯总时长会掩盖真正的短板在哪一段</text>
+
+<rect x="470" y="352" width="410" height="140" rx="10" class="box rose"/>
+<text x="675" y="376" text-anchor="middle" class="lt">一条贯穿全专题的红线</text>
+<text x="675" y="400" text-anchor="middle" class="tag">先止损，后定位</text>
+<text x="675" y="420" text-anchor="middle" class="tag">用户的痛苦按分钟计价，根因可以事后慢慢找</text>
+<text x="675" y="440" text-anchor="middle" class="tag">只有「回滚不可逆」这一类改动例外，</text>
+<text x="675" y="460" text-anchor="middle" class="tag">而它恰恰应该在发布前就写好回滚方案</text>
+<text x="675" y="484" text-anchor="middle" class="tag">止损时同步抓现场，两者不冲突</text>
+</svg>

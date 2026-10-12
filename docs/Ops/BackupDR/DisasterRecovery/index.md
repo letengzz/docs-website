@@ -193,3 +193,16 @@ dig +nocmd blog.example.com +noall +answer | awk '{print $2}'
 - MongoDB 手册 · Replica Set Read/Write Semantics 与 Write Concern `majority`：https://www.mongodb.com/docs/manual/replication/
 - CNCF · Disaster Recovery 指引（Kubernetes 场景）：https://www.cncf.io/
 - 本专题其余章节：[体系概述](../Overview/index.md) ｜ [恢复与演练](../Recovery/index.md) ｜ [实战](../Practice/index.md)
+
+## 8. 与故障应急体系的分工（第 129 天补充）
+
+本页与 [故障应急体系](../../IncidentResponse/index.md) 的交界在**「切换」这个动作上**，两边各管一半：
+
+| 问题 | 归谁 | 说明 |
+| --- | --- | --- |
+| 要哪个容灾档位（冷/温/热/多活） | **本页** | 由 RTO / RPO 与成本决定，是架构决策 |
+| 切换**技术上**怎么做（复制方向、回切顺序、数据一致性检查） | **本页** | 含切换后的校验清单 |
+| **谁有权决定切**、切完怎么对外播报、切换过程纳入哪个响应级别 | [故障应急体系](../../IncidentResponse/index.md) | 切换是一次**不可逆量级**的动作，属于该专题「第四档止损手段」，必须先回答「做错了怎么退回来」 |
+| 演练谁组织 | **两边都有** | 本页写**切换演练的技术步骤**，该专题写**让值班人真正按下切换键的流程** |
+
+**最需要对齐的一条**：容灾档位写在架构文档里、切换命令写在手册里、而**「谁在凌晨三点有权决定切换」常常没人写过**。这一条属于故障应急体系，且必须在事故之前写死——因为切换决策一旦需要「先请示」，多出来的每一分钟都在 RTO 的账上。

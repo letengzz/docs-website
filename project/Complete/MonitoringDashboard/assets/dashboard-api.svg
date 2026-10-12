@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>看板数据服务 C6：请求流、契约五与结果预算</title>
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:12px;fill:#334155;font-weight:600}.s{font-size:11px;fill:#475569}.tag{font-size:10px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.purple{fill:#F5F3FF;stroke:#8B5CF6}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="32" text-anchor="middle" class="h">看板数据服务（C6）：只做裁剪与组装，不做计算</text>
+<text x="460" y="54" text-anchor="middle" class="tag">它是「大盘与告警同源」这条纪律唯一能被机器检查的地方——因为两边的指标在这里合流</text>
+
+<rect x="40" y="76" width="180" height="70" rx="8" class="box slate"/>
+<text x="130" y="102" text-anchor="middle" class="lt">C7 可视化</text>
+<text x="130" y="122" text-anchor="middle" class="tag">三张固定大盘</text>
+<text x="130" y="138" text-anchor="middle" class="tag">只认面板 ID，不认查询语言</text>
+
+<rect x="250" y="76" width="230" height="70" rx="8" class="box green"/>
+<text x="365" y="102" text-anchor="middle" class="lt">C6 看板数据服务（自研）</text>
+<text x="365" y="122" text-anchor="middle" class="tag">get(panel_id, range)</text>
+<text x="365" y="138" text-anchor="middle" class="tag">查白名单 → 裁剪 → 组装 → 预算控制</text>
+
+<rect x="510" y="76" width="370" height="70" rx="8" class="box blue"/>
+<text x="695" y="102" text-anchor="middle" class="lt">C3 + C4 查询层与规则层</text>
+<text x="695" y="122" text-anchor="middle" class="tag">同一套 recording 指标：rules.yaml 算一次</text>
+<text x="695" y="138" text-anchor="middle" class="tag">大盘只读它的结果，不在前端重算</text>
+
+<rect x="40" y="162" width="840" height="96" rx="10" class="box purple"/>
+<text x="460" y="186" text-anchor="middle" class="lt">契约五（第 129 天新增）：C6 → C7 的只读数据接口</text>
+<text x="460" y="210" text-anchor="middle" class="tag">约定：请求只带 panel_id 与时间范围；服务端按 panels.yaml 解析出查询、step 与单位</text>
+<text x="460" y="230" text-anchor="middle" class="tag">定错的后果：前端能传任意查询 → 时序库读权限被开放；前端能传 step → 一个人就能把存储打满</text>
+<text x="460" y="248" text-anchor="middle" class="tag">验证：curl 单面板接口，检查返回结构含 unit / step / 点数上限标记，且请求里没有查询语言字符串</text>
+
+<rect x="40" y="274" width="410" height="152" rx="10" class="box green"/>
+<text x="245" y="298" text-anchor="middle" class="lt">统一返回结构（四个字段缺一不可）</text>
+<text x="245" y="322" text-anchor="middle" class="tag">panel_id / title：这块面板是什么</text>
+<text x="245" y="342" text-anchor="middle" class="tag">unit：由服务端给，前端不做单位换算</text>
+<text x="245" y="362" text-anchor="middle" class="tag">series[]：labels + points，已裁剪为画图所需</text>
+<text x="245" y="382" text-anchor="middle" class="tag">meta：from/to/step/generated_at/truncated</text>
+<text x="245" y="402" text-anchor="middle" class="tag">空结果必须带明确原因，不能只返回空数组</text>
+<text x="245" y="418" text-anchor="middle" class="tag">空数组会被值班人误读成「一切正常」</text>
+
+<rect x="470" y="274" width="410" height="152" rx="10" class="box rose"/>
+<text x="675" y="298" text-anchor="middle" class="lt">结果预算：三个拦截位置</text>
+<text x="675" y="322" text-anchor="middle" class="tag">① 点数预算：单面板点数上限，超出自动加大 step</text>
+<text x="675" y="342" text-anchor="middle" class="tag">并在 meta 里声明「已降采样」</text>
+<text x="675" y="366" text-anchor="middle" class="tag">② 序列预算：超过 N 条时只返回 top-K 聚合值</text>
+<text x="675" y="384" text-anchor="middle" class="tag">并带 truncated 标记</text>
+<text x="675" y="408" text-anchor="middle" class="tag">③ 资源预算：单查询超时 + 并发上限 + 慢查询日志</text>
+<text x="675" y="428" text-anchor="middle" class="tag">三者缺一，一个刷新键就能变成一次事故</text>
+
+<rect x="40" y="446" width="840" height="80" rx="10" class="box amber"/>
+<text x="460" y="470" text-anchor="middle" class="lt">它不做什么（写下来才算定了边界）</text>
+<text x="460" y="494" text-anchor="middle" class="tag">不做计算：所有预聚合由规则层完成，C6 只做裁剪与结构组装，保证「大盘与告警同源」可被检查</text>
+<text x="460" y="514" text-anchor="middle" class="tag">不存数据：无状态、可随时重启；不缓存跨用户结果，避免把「谁在看什么」变成新的状态</text>
+</svg>
