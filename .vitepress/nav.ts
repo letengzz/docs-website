@@ -12,6 +12,7 @@ export const nav = [
       { text: "WebGL 与 Three.js", link: "/docs/Frontend/WebGL" },
       { text: "PWA 与离线应用", link: "/docs/Frontend/PWA" },
       { text: "服务端渲染深入", link: "/docs/Frontend/SSR" },
+      { text: "桌面应用深入", link: "/docs/Frontend/DesktopApp" },
       { text: "国际化与无障碍", link: "/docs/Frontend/IntlA11y" },
       { text: "其他", link: "/docs/Frontend/Others" }
     ]

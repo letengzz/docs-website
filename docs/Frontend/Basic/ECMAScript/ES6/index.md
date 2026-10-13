@@ -1,5 +1,9 @@
 # ECMAScript 6(ES6)
 
+::: info 版本与维护状态
+ECMAScript 版本是**一次性发布、永久冻结**的规范，没有「停止维护 / EOL」这回事。ES2015（ES6）是 ES5 之后改动最大的一版，`let/const`、箭头函数、类、模块、Promise 等语法至今仍是现代前端的默认写法，本页内容长期有效。
+:::
+
 - [ES6 概述](Overview/index.md)
 - [let 和 const](LetConst/index.md)
 - [解构赋值](Destructuring/index.md)

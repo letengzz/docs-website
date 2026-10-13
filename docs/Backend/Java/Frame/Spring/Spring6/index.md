@@ -1,5 +1,9 @@
 # Spring Framework 6
 
+::: info 版本与维护状态
+本组文档面向 **Spring Framework 6.x（JDK 17 基线）**。6.2 是第 6 代的最后一条特性线，**OSS 支持已于 2026-06-30 结束**（企业支持可到 2032-06）；主线自 2025-11 起迁移到 Spring Framework 7.0，因此本目录属于**仅存量项目参考**的状态，不再随上游更新。好消息是 IoC、AOP 等核心概念在 6.x 与 7.x 之间基本不变，本节大部分内容可以照用；确切的版本边界以 [Spring Framework 版本说明](https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Versions) 为准。
+:::
+
 ![img](assets/202412102232238.jpeg)
 
 - [Spring 介绍](Overview.md)

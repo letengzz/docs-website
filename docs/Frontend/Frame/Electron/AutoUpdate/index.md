@@ -255,6 +255,7 @@ autoUpdater.on('update-downloaded', () => {
 - [Electron 安全最佳实践](../Security/index.md)：签名与完整性校验
 - [Electron 性能优化](../Performance/index.md)：更新对启动耗时的影响
 - [Electron 自动化测试](../Testing/index.md)：把更新检查纳入观测
+- [桌面应用深入 · 自动更新与签名](../../../DesktopApp/Updater/index.md)：**分工是**——本页讲 Electron 侧 `electron-updater` 的用法（更新服务器配置、强制更新的写法、错误处理与失败原则）；该页讲**跨运行时的更新器判据**：更新器签名与平台代码签名是**两套东西**、信任链的五步、`latest.json` 的模板变量、灰度与回滚「为什么不是把旧版本重新发一遍」，以及 U1~U8 验收清单。两者共享同一条底线——**更新通道必须验签**，否则前一步的签名与公证全部作废。
 
 ::: tip 一句话原则
 **自动更新是「可用性」而非「关键路径」**。它挂掉时应用必须照常可用；只有当用户主动选择升级时才让它影响使用。

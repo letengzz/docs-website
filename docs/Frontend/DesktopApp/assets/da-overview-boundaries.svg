@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="obArw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="480" fill="#ffffff"/>
+
+  <text x="450" y="36" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2328">六条真实约束 → 四条边界</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#57606a">你交付的不是页面，而是一个装在别人机器上、你改不了的程序</text>
+
+  <!-- 左：六条约束 -->
+  <rect x="36" y="80" width="392" height="372" rx="12" fill="#f7f9fc" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="232" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">六条真实约束</text>
+
+  <rect x="56" y="120" width="352" height="46" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="72" y="139" font-size="12" font-weight="700" fill="#1f2328">1 看不到运行现场</text>
+  <text x="72" y="156" font-size="11" fill="#57606a">用户机器上出事时，你只有一个版本号</text>
+
+  <rect x="56" y="176" width="352" height="46" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="72" y="195" font-size="12" font-weight="700" fill="#1f2328">2 改不了已发布的版本</text>
+  <text x="72" y="212" font-size="11" fill="#57606a">修 bug 的唯一通道是自己做的更新链路</text>
+
+  <rect x="56" y="232" width="352" height="46" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="72" y="251" font-size="12" font-weight="700" fill="#1f2328">3 三平台三套渲染引擎</text>
+  <text x="72" y="268" font-size="11" fill="#57606a">WebView2 / WKWebView / WebKitGTK 行为不同</text>
+
+  <rect x="56" y="288" width="352" height="46" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="72" y="307" font-size="12" font-weight="700" fill="#1f2328">4 交付成本是持续成本</text>
+  <text x="72" y="324" font-size="11" fill="#57606a">证书、公证、CI 每年都要付并要能轮换</text>
+
+  <rect x="56" y="344" width="352" height="46" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="72" y="363" font-size="12" font-weight="700" fill="#1f2328">5 前端一定会被攻破</text>
+  <text x="72" y="380" font-size="11" fill="#57606a">防线只能建在「能调哪些系统能力」这一层</text>
+
+  <rect x="56" y="400" width="352" height="42" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="72" y="419" font-size="12" font-weight="700" fill="#1f2328">6 更新通道是最高权限</text>
+  <text x="72" y="436" font-size="11" fill="#57606a">它能替换整个程序，必须独立设计信任链</text>
+
+  <path d="M 432 266 L 462 266" stroke="#8b949e" stroke-width="1.8" marker-end="url(#obArw)"/>
+
+  <!-- 右：四条边界 -->
+  <rect x="472" y="80" width="392" height="372" rx="12" fill="#f7f9fc" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="668" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">四条边界（顺序不可换）</text>
+
+  <rect x="492" y="122" width="352" height="62" rx="8" fill="#eef4ff" stroke="#2f6feb" stroke-width="1.6"/>
+  <text x="508" y="143" font-size="12" font-weight="700" fill="#1f2328">① 演进边界</text>
+  <text x="508" y="161" font-size="11" fill="#57606a">装出去的版本怎么升级、坏了怎么退</text>
+  <text x="508" y="177" font-size="11" fill="#57606a">→ 更新页 · 采购提前期最长</text>
+
+  <rect x="492" y="192" width="352" height="62" rx="8" fill="#eef9f0" stroke="#1a7f37" stroke-width="1.6"/>
+  <text x="508" y="213" font-size="12" font-weight="700" fill="#1f2328">② 交付边界</text>
+  <text x="508" y="231" font-size="11" fill="#57606a">用户怎么拿到、凭什么相信它</text>
+  <text x="508" y="247" font-size="11" fill="#57606a">→ 打包页 · 签名与公证</text>
+
+  <rect x="492" y="262" width="352" height="62" rx="8" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.6"/>
+  <text x="508" y="283" font-size="12" font-weight="700" fill="#1f2328">③ 能力边界</text>
+  <text x="508" y="301" font-size="11" fill="#57606a">前端到底能碰系统上的什么</text>
+  <text x="508" y="317" font-size="11" fill="#57606a">→ 安全模型页 · 默认全关</text>
+
+  <rect x="492" y="332" width="352" height="62" rx="8" fill="#f2f0fd" stroke="#8250df" stroke-width="1.6"/>
+  <text x="508" y="353" font-size="12" font-weight="700" fill="#1f2328">④ 渲染边界</text>
+  <text x="508" y="371" font-size="11" fill="#57606a">页面由谁渲染、引擎谁升级</text>
+  <text x="508" y="387" font-size="11" fill="#57606a">→ 架构页 · 三引擎差异</text>
+
+  <rect x="492" y="404" width="352" height="38" rx="8" fill="#fdeff0" stroke="#cf222e" stroke-width="1.6"/>
+  <text x="668" y="428" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2328">顺序反了 = 第 4 周才发现无法交付</text>
+</svg>

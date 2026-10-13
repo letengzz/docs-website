@@ -1,5 +1,9 @@
 # ES9
 
+::: info 版本与维护状态
+ECMAScript 版本是**一次性发布、永久冻结**的规范，不存在「停止维护 / EOL」的概念。ES2018（ES9）带来的对象 Rest/Spread 属性、异步迭代器（`for await...of`）与正则命名捕获组至今有效。
+:::
+
 ECMAScript 2018（ES9）于 2018 年 6 月发布。
 
 - 官方规范：https://262.ecma-international.org/9.0/

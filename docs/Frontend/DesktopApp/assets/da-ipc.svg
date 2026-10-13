@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="ipcArw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="470" fill="#ffffff"/>
+
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2328">IPC 三种原语：先选对，再写代码</text>
+
+  <!-- 列 A 命令 -->
+  <rect x="36" y="56" width="264" height="272" rx="12" fill="#eef4ff" stroke="#2f6feb" stroke-width="1.8"/>
+  <text x="168" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">① 命令 invoke</text>
+  <text x="168" y="104" text-anchor="middle" font-size="11" fill="#57606a">请求 / 响应（形如 fetch）</text>
+
+  <rect x="56" y="118" width="224" height="40" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="168" y="143" text-anchor="middle" font-size="12" fill="#1f2328">前端 invoke("save_note")</text>
+  <path d="M 168 158 L 168 182" stroke="#57606a" stroke-width="1.6" marker-end="url(#ipcArw)"/>
+  <rect x="56" y="184" width="224" height="40" rx="8" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.2"/>
+  <text x="168" y="203" text-anchor="middle" font-size="12" fill="#1f2328">② ③ ④ 权限 / scope 检查</text>
+  <text x="168" y="218" text-anchor="middle" font-size="10" fill="#57606a">不通过 → 拒绝，代码不执行</text>
+  <path d="M 168 224 L 168 248" stroke="#57606a" stroke-width="1.6" marker-end="url(#ipcArw)"/>
+  <rect x="56" y="250" width="224" height="40" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="168" y="275" text-anchor="middle" font-size="12" fill="#1f2328">Rust 函数返回 Result</text>
+  <text x="168" y="310" text-anchor="middle" font-size="11" fill="#1f2328">适用：有明确返回值的动作</text>
+  <text x="168" y="326" text-anchor="middle" font-size="10" fill="#57606a">读文件 · 查数据 · 保存 · 计算</text>
+
+  <!-- 列 B 事件 -->
+  <rect x="318" y="56" width="264" height="272" rx="12" fill="#eef9f0" stroke="#1a7f37" stroke-width="1.8"/>
+  <text x="450" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">② 事件 emit / listen</text>
+  <text x="450" y="104" text-anchor="middle" font-size="11" fill="#57606a">单向、无响应、双向可发</text>
+
+  <rect x="338" y="118" width="224" height="40" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="450" y="143" text-anchor="middle" font-size="12" fill="#1f2328">核心 emit("import://started")</text>
+  <path d="M 450 158 L 450 182" stroke="#57606a" stroke-width="1.6" marker-end="url(#ipcArw)"/>
+  <rect x="338" y="184" width="224" height="40" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="450" y="209" text-anchor="middle" font-size="12" fill="#1f2328">前端 listen 收到 payload</text>
+  <path d="M 450 224 L 450 248" stroke="#57606a" stroke-width="1.6" marker-end="url(#ipcArw)"/>
+  <rect x="338" y="250" width="224" height="40" rx="8" fill="#fdeff0" stroke="#cf222e" stroke-width="1.2"/>
+  <text x="450" y="269" text-anchor="middle" font-size="12" fill="#1f2328">必须保存 unlisten 并调用</text>
+  <text x="450" y="284" text-anchor="middle" font-size="10" fill="#57606a">不清理 → HMR 下回调成倍触发</text>
+  <text x="450" y="310" text-anchor="middle" font-size="11" fill="#1f2328">适用：告知，不承载返回值</text>
+  <text x="450" y="326" text-anchor="middle" font-size="10" fill="#57606a">焦点变化 · 文件拖入 · 任务起止</text>
+
+  <!-- 列 C 通道 -->
+  <rect x="600" y="56" width="264" height="272" rx="12" fill="#f2f0fd" stroke="#8250df" stroke-width="1.8"/>
+  <text x="732" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">③ 通道 Channel</text>
+  <text x="732" y="104" text-anchor="middle" font-size="11" fill="#57606a">流式，只发给发起者</text>
+
+  <rect x="620" y="118" width="224" height="40" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="732" y="143" text-anchor="middle" font-size="12" fill="#1f2328">new Channel(onmessage)</text>
+  <path d="M 732 158 L 732 182" stroke="#57606a" stroke-width="1.6" marker-end="url(#ipcArw)"/>
+  <rect x="620" y="184" width="224" height="40" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="732" y="203" text-anchor="middle" font-size="12" fill="#1f2328">命令内多次 send(进度)</text>
+  <text x="732" y="218" text-anchor="middle" font-size="10" fill="#57606a">Started / Progress / Finished</text>
+  <path d="M 732 224 L 732 248" stroke="#57606a" stroke-width="1.6" marker-end="url(#ipcArw)"/>
+  <rect x="620" y="250" width="224" height="40" rx="8" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.2"/>
+  <text x="732" y="275" text-anchor="middle" font-size="12" fill="#1f2328">隔离模式下需 isolated: true</text>
+  <text x="732" y="310" text-anchor="middle" font-size="11" fill="#1f2328">适用：长任务进度</text>
+  <text x="732" y="326" text-anchor="middle" font-size="10" fill="#57606a">下载 · 批量导入 · 大文件处理</text>
+
+  <!-- 底部：边界提醒 -->
+  <rect x="36" y="348" width="828" height="46" rx="10" fill="#fdeff0" stroke="#cf222e" stroke-width="1.4"/>
+  <text x="450" y="368" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2328">不要用 IPC 传大 payload：JSON 表示二进制膨胀约 1/3，且两个进程各占一份内存</text>
+  <text x="450" y="386" text-anchor="middle" font-size="11" fill="#57606a">图片走 convertFileSrc + 资源协议；解析放到 Rust 侧只回传结构化结果</text>
+
+  <!-- 底部：排查顺序 -->
+  <rect x="36" y="406" width="828" height="46" rx="10" fill="#f7f9fc" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="450" y="426" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2328">排查顺序固定：② capability → ③ permission → ④ scope → ⑤ 参数反序列化 → 业务逻辑</text>
+  <text x="450" y="444" text-anchor="middle" font-size="11" fill="#57606a">前四步都在你的代码之前，且都是「静默拒绝 + 泛化错误」</text>
+</svg>

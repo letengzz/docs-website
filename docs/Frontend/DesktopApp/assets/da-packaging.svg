@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 510" width="900" height="510" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="pkArw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="510" fill="#ffffff"/>
+
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2328">打包与分发：一次构建，三条签名线</text>
+
+  <!-- 第 1 行：构建 -->
+  <rect x="34" y="56" width="832" height="76" rx="10" fill="#f7f9fc" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="54" y="80" font-size="12" font-weight="700" fill="#1f2328">① 构建：npm run tauri build</text>
+  <text x="54" y="102" font-size="11" fill="#57606a">Windows: .msi (WiX) / .exe (NSIS)　　macOS: .app / .dmg　　Linux: .deb / .rpm / .AppImage</text>
+  <text x="54" y="122" font-size="11" fill="#57606a">identifier 必须与历史版本逐字符一致；version 与 tag 一致；createUpdaterArtifacts 决定是否产出 latest.json 与 *.sig</text>
+
+  <path d="M 450 132 L 450 156" stroke="#57606a" stroke-width="1.8" marker-end="url(#pkArw)"/>
+
+  <!-- 第 2 行：三平台签名 -->
+  <rect x="34" y="158" width="264" height="228" rx="12" fill="#fdeff0" stroke="#cf222e" stroke-width="1.8"/>
+  <text x="166" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">macOS</text>
+  <text x="166" y="204" text-anchor="middle" font-size="10.5" fill="#cf222e">不做 → 显示「已损坏，无法打开」</text>
+  <rect x="52" y="216" width="228" height="34" rx="7" fill="#ffffff" stroke="#d0d7de" stroke-width="1.1"/>
+  <text x="64" y="238" font-size="10.5" fill="#1f2328">① codesign（Developer ID + 硬化运行时）</text>
+  <rect x="52" y="256" width="228" height="34" rx="7" fill="#ffffff" stroke="#d0d7de" stroke-width="1.1"/>
+  <text x="64" y="278" font-size="10.5" fill="#1f2328">② notarytool 提交公证</text>
+  <rect x="52" y="296" width="228" height="34" rx="7" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.3"/>
+  <text x="64" y="318" font-size="10.5" fill="#1f2328">③ 等待 Accepted</text>
+  <rect x="52" y="336" width="228" height="34" rx="7" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.3"/>
+  <text x="64" y="358" font-size="10.5" fill="#1f2328">④ stapling（漏掉则首次打开仍需联网）</text>
+  <text x="166" y="380" text-anchor="middle" font-size="10.5" fill="#57606a">$99/年 · 账号注册数天</text>
+
+  <rect x="318" y="158" width="264" height="228" rx="12" fill="#fdeff0" stroke="#cf222e" stroke-width="1.8"/>
+  <text x="450" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">Windows</text>
+  <text x="450" y="204" text-anchor="middle" font-size="10.5" fill="#cf222e">不做 → SmartScreen 红屏</text>
+  <rect x="336" y="216" width="228" height="52" rx="7" fill="#ffffff" stroke="#d0d7de" stroke-width="1.1"/>
+  <text x="348" y="236" font-size="10.5" fill="#1f2328">路线 A：云 HSM 证书</text>
+  <text x="348" y="255" font-size="10" fill="#57606a">约 $300–600/年；走 signCommand</text>
+  <rect x="336" y="276" width="228" height="52" rx="7" fill="#eef9f0" stroke="#1a7f37" stroke-width="1.3"/>
+  <text x="348" y="296" font-size="10.5" fill="#1f2328">路线 B：Azure Trusted Signing</text>
+  <text x="348" y="315" font-size="10" fill="#57606a">约 $10/月；需资格审核（有提前期）</text>
+  <text x="450" y="350" text-anchor="middle" font-size="10.5" fill="#1f2328">普通 .pfx 自 2023 硬件令牌要求后不可签发</text>
+  <text x="450" y="380" text-anchor="middle" font-size="10.5" fill="#57606a">验证：Get-AuthenticodeSignature = Valid</text>
+
+  <rect x="602" y="158" width="264" height="228" rx="12" fill="#eef9f0" stroke="#1a7f37" stroke-width="1.8"/>
+  <text x="734" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">Linux</text>
+  <text x="734" y="204" text-anchor="middle" font-size="10.5" fill="#1a7f37">无原生代码签名，不阻塞交付</text>
+  <rect x="620" y="216" width="228" height="52" rx="7" fill="#fdeff0" stroke="#cf222e" stroke-width="1.3"/>
+  <text x="632" y="236" font-size="10.5" fill="#1f2328">真正的坑：glibc 基线</text>
+  <text x="632" y="255" font-size="10" fill="#57606a">在过新系统构建 → GLIBC_2.xx not found</text>
+  <rect x="620" y="276" width="228" height="52" rx="7" fill="#ffffff" stroke="#d0d7de" stroke-width="1.1"/>
+  <text x="632" y="296" font-size="10.5" fill="#1f2328">做法：在最老基线系统构建</text>
+  <text x="632" y="315" font-size="10" fill="#57606a">Ubuntu 22.04 / Debian 12 或容器 / CI</text>
+  <text x="734" y="350" text-anchor="middle" font-size="10.5" fill="#1f2328">需要 WebKitGTK 4.1（决定基线）</text>
+  <text x="734" y="380" text-anchor="middle" font-size="10.5" fill="#57606a">发布页提供 SHA256 校验值</text>
+
+  <path d="M 450 386 L 450 410" stroke="#57606a" stroke-width="1.8" marker-end="url(#pkArw)"/>
+
+  <!-- 第 3 行：更新产物与 CI -->
+  <rect x="34" y="412" width="404" height="82" rx="10" fill="#eef4ff" stroke="#2f6feb" stroke-width="1.6"/>
+  <text x="54" y="436" font-size="12" font-weight="700" fill="#1f2328">② 更新签名（与上面三条线互相独立）</text>
+  <text x="54" y="458" font-size="11" fill="#57606a">minisign / Ed25519：产出 latest.json 与每个产物的 *.sig</text>
+  <text x="54" y="478" font-size="11" fill="#57606a">私钥只在 CI secret 与本机；配置里只有公钥（plugins.updater.pubkey）</text>
+
+  <rect x="462" y="412" width="404" height="82" rx="10" fill="#f2f0fd" stroke="#8250df" stroke-width="1.6"/>
+  <text x="482" y="436" font-size="12" font-weight="700" fill="#1f2328">③ CI 矩阵的三条纪律</text>
+  <text x="482" y="458" font-size="11" fill="#57606a">fail-fast: false（拿到三平台全部结果）</text>
+  <text x="482" y="478" font-size="11" fill="#57606a">固定 ubuntu-22.04（不用 ubuntu-latest）· pin Rust 工具链 1.90</text>
+</svg>

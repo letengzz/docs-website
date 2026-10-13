@@ -1,5 +1,9 @@
 # Vue 3
 
+::: info 版本与维护状态
+Vue 3 是**当前主线（维护中）**版本，本组文档随 3.x 演进而更新。**截至 2026-10，稳定线是 3.5（最新 3.5.43）**；3.6 尚在 RC 阶段（`3.6.0-rc.*`），标志性特性是 Vapor Mode 编译模式与基于 alien-signals 的响应式重构，看到「Vue 3.6 已发布」的说法请先核对官方发布页。上一代 [Vue 2](../Vue2/index.md) 已于 2023-12-31 EOL，仅作存量参考。
+:::
+
 - [Vue3 概述](Overview/index.md)
 - [Vue3 创建工程](CreateProject/index.md)
 - [Vue3 基本操作](BasicOperations/index.md)

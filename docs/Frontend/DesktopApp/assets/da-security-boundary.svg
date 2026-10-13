@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="secArw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="500" fill="#ffffff"/>
+
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2328">安全模型：默认全关，写到哪条才有哪条</text>
+
+  <!-- 请求流：前端 → 三层闸 → 核心 -->
+  <rect x="34" y="76" width="150" height="96" rx="10" fill="#eef4ff" stroke="#2f6feb" stroke-width="1.6"/>
+  <text x="109" y="102" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2328">前端不受信</text>
+  <text x="109" y="122" text-anchor="middle" font-size="10.5" fill="#57606a">依赖链里任何一层</text>
+  <text x="109" y="140" text-anchor="middle" font-size="10.5" fill="#57606a">被投毒 / 一次 XSS</text>
+  <text x="109" y="158" text-anchor="middle" font-size="10.5" fill="#57606a">都能发出 IPC</text>
+
+  <path d="M 186 124 L 218 124" stroke="#57606a" stroke-width="1.8" marker-end="url(#secArw)"/>
+
+  <!-- 三层闸 -->
+  <rect x="222" y="66" width="470" height="116" rx="12" fill="#f7f9fc" stroke="#8250df" stroke-width="1.8"/>
+  <text x="457" y="88" text-anchor="middle" font-size="12" font-weight="700" fill="#8250df">三层闸门（缺一层就是「调用被拒绝」）</text>
+
+  <rect x="238" y="98" width="138" height="70" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="307" y="118" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1f2328">① Capability</text>
+  <text x="307" y="136" text-anchor="middle" font-size="10" fill="#57606a">哪些窗口 / WebView</text>
+  <text x="307" y="152" text-anchor="middle" font-size="10" fill="#57606a">匹配 → 靠窗口 label</text>
+
+  <rect x="388" y="98" width="138" height="70" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="457" y="118" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1f2328">② Permission</text>
+  <text x="457" y="136" text-anchor="middle" font-size="10" fill="#57606a">能不能调这条命令</text>
+  <text x="457" y="152" text-anchor="middle" font-size="10" fill="#57606a">allow-* / deny-*</text>
+
+  <rect x="538" y="98" width="138" height="70" rx="8" fill="#fdeff0" stroke="#cf222e" stroke-width="1.4"/>
+  <text x="607" y="118" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1f2328">③ Scope</text>
+  <text x="607" y="136" text-anchor="middle" font-size="10" fill="#57606a">对什么调用</text>
+  <text x="607" y="152" text-anchor="middle" font-size="10" fill="#57606a">路径 / URL / 参数</text>
+
+  <path d="M 694 124 L 726 124" stroke="#57606a" stroke-width="1.8" marker-end="url(#secArw)"/>
+
+  <rect x="730" y="76" width="136" height="96" rx="10" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.6"/>
+  <text x="798" y="102" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2328">你的命令</text>
+  <text x="798" y="122" text-anchor="middle" font-size="10.5" fill="#57606a">类型化参数</text>
+  <text x="798" y="140" text-anchor="middle" font-size="10.5" fill="#57606a">边界校验</text>
+  <text x="798" y="158" text-anchor="middle" font-size="10.5" fill="#57606a">Result 返回</text>
+
+  <!-- 最易被忽略的一处 -->
+  <rect x="34" y="200" width="832" height="70" rx="10" fill="#fdeff0" stroke="#cf222e" stroke-width="1.8"/>
+  <text x="54" y="224" font-size="12.5" font-weight="700" fill="#cf222e">最易忽略的一处：自研命令默认对所有窗口开放</text>
+  <text x="54" y="246" font-size="11" fill="#1f2328">通过 invoke_handler 注册的应用自身命令，默认允许所有窗口与 WebView 调用 —— 三层结构只强制约束插件。</text>
+  <text x="54" y="263" font-size="11" fill="#1f2328">要收紧必须在 build.rs 里用 AppManifest::commands 声明命令清单，它们才会生成 allow- / deny- 标识符。</text>
+
+  <!-- 对照表 -->
+  <rect x="34" y="286" width="404" height="196" rx="10" fill="#f7f9fc" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="54" y="310" font-size="12.5" font-weight="700" fill="#1f2328">它防什么（取决于你的配置）</text>
+  <text x="54" y="334" font-size="11" fill="#57606a">· 把「前端被攻破」的影响面收窄到已授予的能力</text>
+  <text x="54" y="356" font-size="11" fill="#57606a">· 阻止本地系统接口与数据被意外暴露</text>
+  <text x="54" y="378" font-size="11" fill="#57606a">· 阻止从前端到后端的权限提升</text>
+  <text x="54" y="406" font-size="11.5" font-weight="700" fill="#1a7f37">这一层是框架给你的机制</text>
+  <text x="54" y="428" font-size="11" fill="#57606a">隔离模式（isolation）作为可选加强：</text>
+  <text x="54" y="448" font-size="11" fill="#57606a">在核心之前插一个可信 JS 检查点，拦截</text>
+  <text x="54" y="466" font-size="11" fill="#57606a">并校验全部 IPC 消息（含事件）。</text>
+
+  <rect x="462" y="286" width="404" height="196" rx="10" fill="#f7f9fc" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="482" y="310" font-size="12.5" font-weight="700" fill="#1f2328">它不防什么（四项）</text>
+  <text x="482" y="334" font-size="11" fill="#57606a">· 恶意或不安全的 Rust 代码</text>
+  <text x="482" y="356" font-size="11" fill="#57606a">· 过宽的 scope 与错误配置</text>
+  <text x="482" y="378" font-size="11" fill="#57606a">· 命令实现里错误的 scope 校验、Rust 侧有意绕过</text>
+  <text x="482" y="400" font-size="11" fill="#57606a">· 系统 WebView 的 0-day / 未修补 1-day</text>
+  <text x="482" y="422" font-size="11" fill="#57606a">· 供应链攻击与被攻破的开发者机器</text>
+  <text x="482" y="450" font-size="11.5" font-weight="700" fill="#cf222e">后两项是你的责任，不是框架的</text>
+  <text x="482" y="470" font-size="10.5" fill="#57606a">→ 依赖与安全治理专题 · 打包与分发（签名）</text>
+</svg>

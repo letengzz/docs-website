@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="ncArw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="500" fill="#ffffff"/>
+
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2328">原生能力：30+ 插件，每个都要显式授权</text>
+  <text x="450" y="56" text-anchor="middle" font-size="12" fill="#57606a">npm run tauri add &lt;plugin&gt; 会同时装包、加依赖、并在 capabilities 里插权限</text>
+
+  <!-- 安全等级横轴 -->
+  <text x="60" y="86" font-size="11" font-weight="700" fill="#1a7f37">低风险：只读或只作用于自身数据</text>
+  <text x="840" y="86" text-anchor="end" font-size="11" font-weight="700" fill="#cf222e">高风险：能影响用户机器</text>
+  <rect x="60" y="94" width="780" height="6" rx="3" fill="#e6e9ee"/>
+  <rect x="60" y="94" width="300" height="6" rx="3" fill="#1a7f37"/>
+  <rect x="360" y="94" width="300" height="6" rx="3" fill="#9a6700"/>
+  <rect x="660" y="94" width="180" height="6" rx="3" fill="#cf222e"/>
+
+  <!-- 低风险组 -->
+  <rect x="36" y="118" width="268" height="230" rx="12" fill="#eef9f0" stroke="#1a7f37" stroke-width="1.6"/>
+  <text x="170" y="144" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">低风险</text>
+  <text x="56" y="172" font-size="11.5" fill="#1f2328">store　少量配置与状态键值</text>
+  <text x="56" y="196" font-size="11.5" fill="#1f2328">os　平台 / 架构信息</text>
+  <text x="56" y="220" font-size="11.5" fill="#1f2328">log　本地日志落盘</text>
+  <text x="56" y="244" font-size="11.5" fill="#1f2328">clipboard-manager　剪贴板</text>
+  <text x="56" y="268" font-size="11.5" fill="#1f2328">window-state　窗口尺寸位置</text>
+  <text x="56" y="292" font-size="11.5" fill="#1f2328">notification　系统通知</text>
+  <text x="56" y="316" font-size="11.5" fill="#1f2328">dialog　原生选择框（也是授权通道）</text>
+  <text x="56" y="336" font-size="10.5" fill="#57606a">共同点：不直接改变用户数据</text>
+
+  <!-- 中风险组 -->
+  <rect x="316" y="118" width="268" height="230" rx="12" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.6"/>
+  <text x="450" y="144" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">中风险：要 scope 收紧</text>
+  <text x="336" y="172" font-size="11.5" fill="#1f2328">fs　文件读写</text>
+  <text x="336" y="190" font-size="10.5" fill="#57606a">scope：$APPDATA/** 而不是 $HOME/**</text>
+  <text x="336" y="214" font-size="11.5" fill="#1f2328">http　走 Rust 的 HTTP 客户端</text>
+  <text x="336" y="232" font-size="10.5" fill="#57606a">scope：按 URL 白名单</text>
+  <text x="336" y="256" font-size="11.5" fill="#1f2328">sql　本地数据库（sqlx）</text>
+  <text x="336" y="280" font-size="11.5" fill="#1f2328">stronghold　加密数据库</text>
+  <text x="336" y="304" font-size="11.5" fill="#1f2328">deep-link　URL 处理程序</text>
+  <text x="336" y="328" font-size="11.5" fill="#1f2328">single-instance　单实例</text>
+  <text x="336" y="344" font-size="10.5" fill="#57606a">共同点：能碰到用户数据，但可限定范围</text>
+
+  <!-- 高风险组 -->
+  <rect x="596" y="118" width="268" height="230" rx="12" fill="#fdeff0" stroke="#cf222e" stroke-width="1.8"/>
+  <text x="730" y="144" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">高风险：默认不授予</text>
+  <text x="616" y="172" font-size="11.5" fill="#1f2328">shell　执行外部程序</text>
+  <text x="616" y="190" font-size="10.5" fill="#cf222e">args: true 等价于允许任意命令</text>
+  <text x="616" y="214" font-size="11.5" fill="#1f2328">externalBin / sidecar　随包分发二进制</text>
+  <text x="616" y="232" font-size="10.5" fill="#57606a">必须一起签名 / 公证，且算进体积</text>
+  <text x="616" y="256" font-size="11.5" fill="#1f2328">global-shortcut　全局按键</text>
+  <text x="616" y="274" font-size="10.5" fill="#57606a">会与用户其他软件冲突，需可关闭</text>
+  <text x="616" y="298" font-size="11.5" fill="#1f2328">autostart　开机自启</text>
+  <text x="616" y="322" font-size="11.5" fill="#1f2328">updater　替换整个应用</text>
+  <text x="616" y="340" font-size="10.5" fill="#cf222e">越过 capability 体系，需独立信任链</text>
+
+  <!-- 底部：两条纪律 -->
+  <rect x="36" y="366" width="400" height="112" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="56" y="390" font-size="12" font-weight="700" fill="#1f2328">纪律一：授权交给用户，不要预先放开</text>
+  <text x="56" y="412" font-size="11" fill="#57606a">需要「导出到任意位置」时，不要把 fs scope</text>
+  <text x="56" y="430" font-size="11" fill="#57606a">写成 $HOME/**；而应用 dialog 让用户亲手选，</text>
+  <text x="56" y="448" font-size="11" fill="#57606a">再对该路径做运行时授权并持久化。</text>
+  <text x="56" y="468" font-size="11" fill="#57606a">「能访问什么」由用户的选择决定。</text>
+
+  <rect x="464" y="366" width="400" height="112" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="484" y="390" font-size="12" font-weight="700" fill="#1f2328">纪律二：能用命令包装的，不要用 shell</text>
+  <text x="484" y="412" font-size="11" fill="#57606a">优先级：自研 #[tauri::command] &gt; opener</text>
+  <text x="484" y="430" font-size="11" fill="#57606a">插件 &gt; shell 枚举参数白名单。</text>
+  <text x="484" y="448" font-size="11" fill="#57606a">命令的参数是类型化的、校验写在 Rust 里；</text>
+  <text x="484" y="468" font-size="11" fill="#57606a">shell 的参数是字符串，校验只能靠你自己的正则。</text>
+</svg>

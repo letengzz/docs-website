@@ -1,5 +1,9 @@
 # ES10
 
+::: info 版本与维护状态
+ECMAScript 版本是**一次性发布、永久冻结**的规范，不存在「停止维护 / EOL」的概念。ES2019（ES10）的 `Array.prototype.flat/flatMap`、`Object.fromEntries`、`String.prototype.trimStart/trimEnd` 与可选 `catch` 绑定至今有效。
+:::
+
 ECMAScript 2019（ES10）于 2019 年 6 月发布。
 
 - 官方规范：https://262.ecma-international.org/10.0/

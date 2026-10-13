@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="第 2 周收口（终）：三条验收的可执行步骤与阻塞项">
+  <title>第 2 周收口（终）：三条验收 × 四个阻塞项</title>
+  <rect x="0" y="0" width="900" height="520" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="23" font-weight="bold" fill="#16324f">第 2 周收口（终）：步骤写好了，环境还没到</text>
+    <text x="30" y="64" font-size="13" fill="#5a6b7b">挡住三条验收的不是设计缺陷，是四个前置条件 —— BL-1 与 BL-2 一解除，L1~L4 会一次性解锁大半。</text>
+
+    <rect x="30" y="88" width="424" height="252" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="48" y="114" font-size="15" font-weight="bold" fill="#2d7d9a">三条验收：每步都有通过标准</text>
+
+    <text x="48" y="142" font-size="13" font-weight="bold" fill="#16324f">验收一 · 目标能被采集（A1 ~ A5）</text>
+    <text x="48" y="160" font-size="11" fill="#5a6b7b">标准：目标全覆盖 + up==1 且样本非零 + 5 分钟无 up==0</text>
+    <text x="48" y="176" font-size="11" fill="#c0392b">只有 up==1 不够 —— 可达但 0 样本是另一条独立告警</text>
+
+    <text x="48" y="204" font-size="13" font-weight="bold" fill="#16324f">验收二 · 规则能评估（B1 ~ B4）</text>
+    <text x="48" y="222" font-size="11" fill="#5a6b7b">标准：条数一致 + 有 state + recording 有结果</text>
+    <text x="48" y="238" font-size="11" fill="#16324f">「加载成功」与「规则生效」分开判：文件被拒 / 算不出结果 / 没人消费</text>
+
+    <text x="48" y="266" font-size="13" font-weight="bold" fill="#16324f">验收三 · 告警能发出一条（C1 ~ C5）</text>
+    <text x="48" y="284" font-size="11" fill="#5a6b7b">标准：5 实例同因故障 → 只收到 1 条（= 分组数）</text>
+    <text x="48" y="300" font-size="11" font-weight="bold" fill="#c0392b">「收到告警」不算通过，「收到 1 条」才算通过</text>
+
+    <text x="48" y="326" font-size="11" fill="#6b5bd2">里程碑第四条「接口可调用」由第 133 天单独核对，本章不重复</text>
+
+    <rect x="472" y="88" width="398" height="252" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="490" y="114" font-size="15" font-weight="bold" fill="#c0392b">阻塞项台账：BL-1 ~ BL-4</text>
+    <text x="490" y="134" font-size="11" fill="#5a6b7b">每条 = 挡住哪些验收 + 前置条件 + 解除判据</text>
+
+    <text x="490" y="162" font-size="12" font-weight="bold" fill="#16324f">BL-1　本机无容器运行时</text>
+    <text x="490" y="180" font-size="11" fill="#5a6b7b">挡：三条验收的全部动态步骤 → compose up 能起两个容器</text>
+
+    <text x="490" y="206" font-size="12" font-weight="bold" fill="#16324f">BL-2　本仓无工程代码（project 为纯文档目录）</text>
+    <text x="490" y="224" font-size="11" fill="#5a6b7b">挡：三条验收 → 按第 123-131 天在建自己工程里建文件</text>
+
+    <text x="490" y="250" font-size="12" font-weight="bold" fill="#16324f">BL-3　本机 JDK 17 ≠ 工程基线 Java 25</text>
+    <text x="490" y="268" font-size="11" fill="#5a6b7b">挡：验收二（reload 接口）→ 装 JDK 25 或降基线并记偏差</text>
+
+    <text x="490" y="294" font-size="12" font-weight="bold" fill="#16324f">BL-4　真实通知渠道未接</text>
+    <text x="490" y="312" font-size="11" fill="#5a6b7b">挡：验收三 → 最低成本先用本地日志接收器把 C3 跑通</text>
+
+    <text x="490" y="332" font-size="11" font-weight="bold" fill="#c0392b">阻塞项不是缺陷：单列成台账，不进判据表</text>
+
+    <rect x="30" y="352" width="270" height="112" rx="10" fill="#eaf4f8" stroke="#3fae8c" stroke-width="1.5"/>
+    <text x="48" y="378" font-size="13" font-weight="bold" fill="#3fae8c">本机真的跑过的只有三处</text>
+    <text x="48" y="400" font-size="11" fill="#16324f">W2-C 边界推演（第 132 天）</text>
+    <text x="48" y="420" font-size="11" fill="#16324f">300 组合 step 网格：160/300 → 0/300</text>
+    <text x="48" y="440" font-size="11" fill="#16324f">第 125 / 126 天的静态校验命令</text>
+    <text x="48" y="458" font-size="11" fill="#5a6b7b">其余全部标「未跑 + 原因」，没有编造数字</text>
+
+    <rect x="314" y="352" width="270" height="112" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="1.5"/>
+    <text x="332" y="378" font-size="13" font-weight="bold" fill="#6b5bd2">W2F-A ~ W2F-H</text>
+    <text x="332" y="400" font-size="11" fill="#16324f">只登记两类，不新增组件级判据：</text>
+    <text x="332" y="420" font-size="11" fill="#16324f">① 里程碑判据是否可执行</text>
+    <text x="332" y="440" font-size="11" fill="#16324f">② 阻塞项是否登记完整</text>
+    <text x="332" y="458" font-size="11" fill="#3fae8c" font-weight="bold">八条全部本机可判（文档级）</text>
+
+    <rect x="598" y="352" width="272" height="112" rx="10" fill="#fdf3e6" stroke="#c47a2c" stroke-width="1.5"/>
+    <text x="616" y="378" font-size="13" font-weight="bold" fill="#c47a2c">第 135 天入口清单</text>
+    <text x="616" y="400" font-size="11" fill="#16324f">BL-1 ~ BL-4 ＋ L1 ~ L4 合并去重</text>
+    <text x="616" y="420" font-size="11" fill="#16324f">BL-1 与 BL-2 是其余全部项的前置</text>
+    <text x="616" y="440" font-size="11" fill="#5a6b7b">只做合并，不新增需求（W2F-H）</text>
+    <text x="616" y="458" font-size="11" fill="#16324f" font-weight="bold">第 3 周先解环境，再跑验收，最后压测</text>
+
+    <rect x="30" y="478" width="840" height="30" rx="8" fill="#ffffff" stroke="#5a6b7b" stroke-width="1"/>
+    <text x="48" y="498" font-size="12" fill="#16324f">第 2 周交付的是「可以照着做出来的完整设计」，不是「已经跑起来并证明过的系统」—— 这个区分决定了第 3 周是「联调」还是「返工」。</text>
+  </g>
+</svg>

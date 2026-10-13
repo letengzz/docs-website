@@ -246,6 +246,8 @@ app.whenReady().then(() => {
 
 ::: tip 进阶阅读
 Web 侧安全原理（XSS/CSRF/CSP/HTTPS）见 [前端安全专题](../../../Others/Security/index.md)；依赖审计方法见 [依赖与供应链安全](../../../Others/Security/Dependency/index.md)。
+
+本页的 `webPreferences`、`contextBridge`、fuses 是 **Electron 的实现手法**；要理解这套手法背后的**能力 / 权限 / scope 三层模型、默认拒绝的配置结构、官方威胁模型「防什么、不防什么」**，见 [桌面应用深入 · 安全模型](../../../DesktopApp/Security/index.md)——两者可以逐条对照，用来检查自己的白名单是不是写宽了（最常见的写宽模式：把 `$APPDATA/*` 当成递归通配、把用户选中的路径直接当授权、给同一个窗口挂多个 capability 后取并集）。
 :::
 
 ## 验证方式

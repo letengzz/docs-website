@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="prArw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="500" fill="#ffffff"/>
+
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2328">DA Notes：五段链路，每段都有可验证的收尾</text>
+
+  <!-- 时间轴 -->
+  <rect x="60" y="86" width="780" height="6" rx="3" fill="#e6e9ee"/>
+
+  <!-- 段 1 -->
+  <circle cx="140" cy="89" r="10" fill="#2f6feb"/>
+  <text x="140" y="94" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">1</text>
+  <rect x="46" y="112" width="188" height="150" rx="10" fill="#eef4ff" stroke="#2f6feb" stroke-width="1.6"/>
+  <text x="140" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2328">需求与范围</text>
+  <text x="62" y="158" font-size="10.5" fill="#57606a">US-01~US-08 用户故事</text>
+  <text x="62" y="176" font-size="10.5" fill="#57606a">每条的验收条件</text>
+  <text x="62" y="194" font-size="10.5" fill="#57606a">四项「明确不做」</text>
+  <text x="62" y="218" font-size="10.5" font-weight="700" fill="#2f6feb">收尾</text>
+  <text x="62" y="236" font-size="10.5" fill="#57606a">范围冻结，不再膨胀</text>
+  <text x="62" y="254" font-size="10.5" fill="#57606a">第 4 周能交付是可预测的</text>
+
+  <!-- 段 2 -->
+  <circle cx="330" cy="89" r="10" fill="#8250df"/>
+  <text x="330" y="94" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">2</text>
+  <rect x="236" y="112" width="188" height="150" rx="10" fill="#f2f0fd" stroke="#8250df" stroke-width="1.6"/>
+  <text x="330" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2328">脚手架与结构</text>
+  <text x="252" y="158" font-size="10.5" fill="#57606a">tauri info 确认依赖齐全</text>
+  <text x="252" y="176" font-size="10.5" fill="#57606a">src/ipc/ 集中所有 invoke</text>
+  <text x="252" y="194" font-size="10.5" fill="#57606a">capabilities 从最小开始</text>
+  <text x="252" y="218" font-size="10.5" font-weight="700" fill="#8250df">收尾</text>
+  <text x="252" y="236" font-size="10.5" fill="#57606a">命令集可枚举（能被门禁校验）</text>
+  <text x="252" y="254" font-size="10.5" fill="#57606a">权限变更是可审计的 diff</text>
+
+  <!-- 段 3 -->
+  <circle cx="520" cy="89" r="10" fill="#1a7f37"/>
+  <text x="520" y="94" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">3</text>
+  <rect x="426" y="112" width="188" height="150" rx="10" fill="#eef9f0" stroke="#1a7f37" stroke-width="1.6"/>
+  <text x="520" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2328">存储与检索</text>
+  <text x="442" y="158" font-size="10.5" fill="#57606a">fs + BaseDirectory 落盘</text>
+  <text x="442" y="176" font-size="10.5" fill="#57606a">ID 校验 → 拼接路径</text>
+  <text x="442" y="194" font-size="10.5" fill="#57606a">临时文件 + rename 原子写</text>
+  <text x="442" y="218" font-size="10.5" font-weight="700" fill="#1a7f37">收尾</text>
+  <text x="442" y="236" font-size="10.5" fill="#57606a">杀掉进程重启后笔记仍在</text>
+  <text x="442" y="254" font-size="10.5" fill="#57606a">检索在 Rust 侧，不过大 payload</text>
+
+  <!-- 段 4 -->
+  <circle cx="710" cy="89" r="10" fill="#9a6700"/>
+  <text x="710" y="94" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">4</text>
+  <rect x="616" y="112" width="188" height="150" rx="10" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.6"/>
+  <text x="710" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2328">原生能力与安全</text>
+  <text x="632" y="158" font-size="10.5" fill="#57606a">托盘 / 窗口状态 / 关于页</text>
+  <text x="632" y="176" font-size="10.5" fill="#57606a">导出走对话框授权</text>
+  <text x="632" y="194" font-size="10.5" fill="#57606a">build.rs 声明自研命令</text>
+  <text x="632" y="218" font-size="10.5" font-weight="700" fill="#9a6700">收尾</text>
+  <text x="632" y="236" font-size="10.5" fill="#57606a">默认拒绝 + scope 生效都实测过</text>
+  <text x="632" y="254" font-size="10.5" fill="#57606a">范围缩到只读后写操作被拒</text>
+
+  <!-- 段 5 -->
+  <rect x="46" y="286" width="808" height="98" rx="10" fill="#fdeff0" stroke="#cf222e" stroke-width="1.8"/>
+  <circle cx="76" cy="311" r="10" fill="#cf222e"/>
+  <text x="76" y="316" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">5</text>
+  <text x="100" y="316" font-size="12.5" font-weight="700" fill="#1f2328">构建、签名与更新：把「能装」和「能升」闭环</text>
+  <text x="66" y="342" font-size="11" fill="#57606a">signer generate 生成密钥对 → 公钥写进配置、私钥进 CI secret → tauri build 产出安装包 + latest.json + *.sig</text>
+  <text x="66" y="362" font-size="11" fill="#57606a">收尾：V1~V14 本机实测通过（含篡改签名被拒绝）；V15 / V15b 如实标注需三平台与干净机器</text>
+  <text x="66" y="378" font-size="10.5" fill="#cf222e">红线：私钥不进仓库、不进配置；identifier 发布后永不修改</text>
+
+  <!-- 判据条 -->
+  <rect x="46" y="398" width="808" height="86" rx="10" fill="#f7f9fc" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="66" y="422" font-size="12" font-weight="700" fill="#1f2328">三条最该亲手做一遍的判据（它们失效时都不会报错）</text>
+  <text x="66" y="446" font-size="11" fill="#57606a">V3　不给权限 → 调用被拒绝且 Rust 侧无日志（证明「默认拒绝」是真的）</text>
+  <text x="66" y="466" font-size="11" fill="#57606a">V8　scope 缩到只读 → 写操作被拒（证明 scope 真的在生效，而不是「看起来给了」）</text>
+  <text x="560" y="446" font-size="11" fill="#57606a">V13　篡改签名一个字符 → 拒绝安装</text>
+  <text x="560" y="466" font-size="11" fill="#57606a">（证明更新签名真的在校验）</text>
+</svg>

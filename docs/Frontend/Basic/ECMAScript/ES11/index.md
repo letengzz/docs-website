@@ -1,5 +1,9 @@
 # ES11
 
+::: info 版本与维护状态
+ECMAScript 版本是**一次性发布、永久冻结**的规范，不存在「停止维护 / EOL」的概念。ES2020（ES11）的可选链 `?.` 与空值合并 `??` 已成为日常标配写法，`BigInt`、`Promise.allSettled`、`globalThis` 与动态 `import()` 也自本版起可用。
+:::
+
 ECMAScript 2020（ES11）于 2020 年 6 月发布。
 
 - 官方规范：https://262.ecma-international.org/11.0/

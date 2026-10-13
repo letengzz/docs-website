@@ -98,6 +98,7 @@ const content = await window.desktop.readFile('/path/to/file.txt')
 
 ## 相关专题
 
+- [桌面应用深入](../../../DesktopApp/index.md)：**分工是**——本页只做**选型与跨端视角**（三条路线判据、什么时候不该做桌面应用、渲染/能力/交付/演进四条边界）；一旦路线选定，**实现细节与验收判据**去该专题：选 Electron 走 [Electron 专题](../../Electron/index.md)，选 Tauri 走桌面应用深入（架构、IPC、原生能力、安全模型、打包签名、更新器、实战、FAQ）。
 - [Electron 专题](../../Electron/index.md)：进程模型、IPC、打包与自动更新
 - [多端工程架构](../Architecture/index.md)：桌面端如何复用共享层
 - [多端兼容与差异处理](../Compatibility/index.md)：路由、存储、弹窗的端间差异

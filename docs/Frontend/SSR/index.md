@@ -60,6 +60,7 @@
 | [PWA 与离线应用](../PWA/index.md) | Service Worker、离线缓存与推送 | SSR 的 HTML 缓存**不在浏览器里**（CDN/边缘/服务端），两者层次不同、可叠加使用 |
 | [SPA 单页应用](../Others/SPA/index.md) | 纯客户端路由与渲染的形态 | 本专题讲**从 CSR 迁移到 SSR** 的判据与代价，是同一件事的两个阶段 |
 | [完整项目实战 · 博客 SSR](/project/Complete/BlogPlatform/FrontendSSR/index.md) | 某个真实项目里**怎么落地**（具体配置、命令与验收） | 项目页负责「照着做一遍」，本专题负责「为什么这么做、判据是什么」 |
+| [桌面应用深入](../DesktopApp/index.md) | Tauri / Electron 桌面应用的架构、安全与交付 | 桌面应用常常**内嵌** SSR 页面（WebView 加载远程站点）。该专题只讲**桌面这一侧**多出来的问题：远程内容与本地能力的边界、离线时的降级、打包后 CSP 的变化、更新怎么发。SSR 自身的缓存与流式取舍仍归本专题，两者不重叠 |
 
 ## 参考资料
 

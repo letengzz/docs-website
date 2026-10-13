@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="faArw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="480" fill="#ffffff"/>
+
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2328">常见问题分诊：先定位阶段，再看具体</text>
+
+  <!-- 根 -->
+  <rect x="350" y="56" width="200" height="46" rx="10" fill="#eef4ff" stroke="#2f6feb" stroke-width="1.8"/>
+  <text x="450" y="85" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">它是哪个阶段坏的？</text>
+
+  <path d="M 450 102 L 450 122" stroke="#57606a" stroke-width="1.6"/>
+  <path d="M 140 122 L 760 122" stroke="#57606a" stroke-width="1.6"/>
+  <path d="M 140 122 L 140 142" stroke="#57606a" stroke-width="1.6" marker-end="url(#faArw)"/>
+  <path d="M 345 122 L 345 142" stroke="#57606a" stroke-width="1.6" marker-end="url(#faArw)"/>
+  <path d="M 555 122 L 555 142" stroke="#57606a" stroke-width="1.6" marker-end="url(#faArw)"/>
+  <path d="M 760 122 L 760 142" stroke="#57606a" stroke-width="1.6" marker-end="url(#faArw)"/>
+
+  <!-- 列 1 开发期 -->
+  <rect x="34" y="144" width="212" height="216" rx="12" fill="#f2f0fd" stroke="#8250df" stroke-width="1.6"/>
+  <text x="140" y="170" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">开发期（tauri dev）</text>
+
+  <text x="48" y="194" font-size="10.5" fill="#1f2328">命令不存在 → 名字不一致 /</text>
+  <text x="48" y="210" font-size="10.5" fill="#57606a">未注册进 generate_handler!</text>
+  <text x="48" y="232" font-size="10.5" fill="#1f2328">被拒绝且无日志 → capability /</text>
+  <text x="48" y="248" font-size="10.5" fill="#57606a">permission 未命中</text>
+  <text x="48" y="270" font-size="10.5" fill="#1f2328">报缺字段 → 结构体少了</text>
+  <text x="48" y="286" font-size="10.5" fill="#57606a">serde camelCase 转换</text>
+  <text x="48" y="308" font-size="10.5" fill="#1f2328">有权限仍被拒 → scope 不匹配</text>
+  <text x="48" y="330" font-size="10.5" fill="#1f2328">回调触发多次 → listen 未清理</text>
+  <text x="48" y="346" font-size="10.5" fill="#57606a">（HMR 会放大观感）</text>
+
+  <!-- 列 2 IPC 边界 -->
+  <rect x="262" y="144" width="166" height="216" rx="12" fill="#eef9f0" stroke="#1a7f37" stroke-width="1.6"/>
+  <text x="345" y="170" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">IPC 边界</text>
+  <text x="276" y="194" font-size="10.5" fill="#1f2328">Promise 永不返回 →</text>
+  <text x="276" y="210" font-size="10.5" fill="#57606a">同步命令做长耗时</text>
+  <text x="276" y="232" font-size="10.5" fill="#1f2328">图片加载不出 →</text>
+  <text x="276" y="248" font-size="10.5" fill="#57606a">CSP 与权限两者之一</text>
+  <text x="276" y="270" font-size="10.5" fill="#1f2328">子目录写不进 →</text>
+  <text x="276" y="286" font-size="10.5" fill="#57606a">scope 用了单层通配</text>
+  <text x="276" y="308" font-size="10.5" fill="#1f2328">state 注入报错 →</text>
+  <text x="276" y="324" font-size="10.5" fill="#57606a">manage 与 State 类型</text>
+  <text x="276" y="340" font-size="10.5" fill="#57606a">不一致（编译期不报）</text>
+
+  <!-- 列 3 打包后 -->
+  <rect x="444" y="144" width="222" height="216" rx="12" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.6"/>
+  <text x="555" y="170" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">打包后才出现</text>
+  <text x="458" y="194" font-size="10.5" fill="#1f2328">找不到命令 / 环境变量缺失 →</text>
+  <text x="458" y="210" font-size="10.5" fill="#57606a">GUI 不继承 shell 的 PATH</text>
+  <text x="458" y="232" font-size="10.5" fill="#1f2328">通知不生效 → 应用未签名</text>
+  <text x="458" y="254" font-size="10.5" fill="#1f2328">路由 / 静态资源 404 →</text>
+  <text x="458" y="270" font-size="10.5" fill="#57606a">devUrl 是 http 源，</text>
+  <text x="458" y="286" font-size="10.5" fill="#57606a">打包后是自定义协议</text>
+  <text x="458" y="308" font-size="10.5" fill="#1f2328">白屏 → 缺 WebView2 运行时</text>
+  <text x="458" y="324" font-size="10.5" fill="#57606a">（webviewInstallMode 写成 skip）</text>
+  <text x="458" y="346" font-size="10.5" font-weight="700" fill="#9a6700">对策：每周打一次包并双击</text>
+
+  <!-- 列 4 用户侧 -->
+  <rect x="682" y="144" width="184" height="216" rx="12" fill="#fdeff0" stroke="#cf222e" stroke-width="1.6"/>
+  <text x="774" y="170" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">用户机器上</text>
+  <text x="696" y="194" font-size="10.5" fill="#1f2328">「已损坏」→ macOS 未公证</text>
+  <text x="696" y="210" font-size="10.5" fill="#57606a">或漏了 stapling</text>
+  <text x="696" y="232" font-size="10.5" fill="#1f2328">SmartScreen → Windows 未签名</text>
+  <text x="696" y="254" font-size="10.5" fill="#1f2328">GLIBC 报错 → 构建基线过新</text>
+  <text x="696" y="276" font-size="10.5" fill="#1f2328">数据没了 → 改过 identifier</text>
+  <text x="696" y="298" font-size="10.5" fill="#1f2328">窗口不见了 →</text>
+  <text x="696" y="314" font-size="10.5" fill="#57606a">位置落在已断开的显示器</text>
+  <text x="696" y="336" font-size="10.5" fill="#1f2328">升级失败 → 清单 / 签名 /</text>
+  <text x="696" y="352" font-size="10.5" fill="#57606a">权限 / 磁盘任一环节静默失败</text>
+
+  <!-- 底部 -->
+  <rect x="34" y="376" width="832" height="46" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="450" y="396" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1f2328">最容易被误判的一类：「开发时一切正常，打包后就不对」</text>
+  <text x="450" y="414" text-anchor="middle" font-size="10.5" fill="#57606a">三个根因：环境变量继承差异 · 未签名 · devUrl 与打包后协议不同</text>
+
+  <rect x="34" y="432" width="832" height="40" rx="10" fill="#f7f9fc" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="450" y="457" text-anchor="middle" font-size="11" fill="#57606a">逃生通道：无论窗口状态多诡异，托盘菜单里的「显示主窗口」必须永远可用（它不是可选项）</text>
+</svg>

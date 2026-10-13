@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 490" width="900" height="490" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="upArw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="490" fill="#ffffff"/>
+
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2328">自动更新：两套签名，各管一段</text>
+
+  <!-- 上：构建侧 -->
+  <rect x="34" y="56" width="832" height="128" rx="12" fill="#f7f9fc" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="54" y="80" font-size="12" font-weight="700" fill="#1f2328">构建侧（你这边）</text>
+
+  <rect x="54" y="92" width="180" height="76" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="144" y="114" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1f2328">① 生成密钥对</text>
+  <text x="144" y="134" text-anchor="middle" font-size="10" fill="#57606a">tauri signer generate</text>
+  <text x="144" y="152" text-anchor="middle" font-size="10" fill="#57606a">私钥 → CI secret</text>
+
+  <path d="M 236 130 L 262 130" stroke="#57606a" stroke-width="1.6" marker-end="url(#upArw)"/>
+
+  <rect x="264" y="92" width="200" height="76" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="364" y="114" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1f2328">② 构建期签名</text>
+  <text x="364" y="134" text-anchor="middle" font-size="10" fill="#57606a">TAURI_SIGNING_PRIVATE_KEY</text>
+  <text x="364" y="152" text-anchor="middle" font-size="10" fill="#57606a">产出每个产物的 *.sig</text>
+
+  <path d="M 466 130 L 492 130" stroke="#57606a" stroke-width="1.6" marker-end="url(#upArw)"/>
+
+  <rect x="494" y="92" width="200" height="76" rx="8" fill="#eef4ff" stroke="#2f6feb" stroke-width="1.4"/>
+  <text x="594" y="114" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1f2328">③ 发布 latest.json</text>
+  <text x="594" y="134" text-anchor="middle" font-size="10" fill="#57606a">version / notes / platforms</text>
+  <text x="594" y="152" text-anchor="middle" font-size="10" fill="#57606a">每平台含 url + signature</text>
+
+  <path d="M 696 130 L 722 130" stroke="#57606a" stroke-width="1.6" marker-end="url(#upArw)"/>
+
+  <rect x="724" y="92" width="124" height="76" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="786" y="114" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1f2328">④ 公钥</text>
+  <text x="786" y="134" text-anchor="middle" font-size="10" fill="#57606a">编译进应用</text>
+  <text x="786" y="152" text-anchor="middle" font-size="10" fill="#57606a">pubkey 配置项</text>
+
+  <path d="M 450 184 L 450 208" stroke="#57606a" stroke-width="1.8" marker-end="url(#upArw)"/>
+
+  <!-- 中：信任链 -->
+  <rect x="34" y="210" width="832" height="120" rx="12" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.6"/>
+  <text x="54" y="234" font-size="12" font-weight="700" fill="#1f2328">运行侧：信任链的四个校验点</text>
+
+  <rect x="54" y="246" width="180" height="70" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="144" y="268" text-anchor="middle" font-size="11" fill="#1f2328">① 拉取 latest.json</text>
+  <text x="144" y="288" text-anchor="middle" font-size="10" fill="#57606a">只走 HTTPS</text>
+  <text x="144" y="306" text-anchor="middle" font-size="10" fill="#57606a">端点支持模板变量</text>
+
+  <path d="M 236 281 L 260 281" stroke="#57606a" stroke-width="1.6" marker-end="url(#upArw)"/>
+
+  <rect x="262" y="246" width="180" height="70" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="352" y="268" text-anchor="middle" font-size="11" fill="#1f2328">② 用内置公钥校验签名</text>
+  <text x="352" y="288" text-anchor="middle" font-size="10" fill="#57606a">清单本身带 signature</text>
+  <text x="352" y="306" text-anchor="middle" font-size="10" fill="#57606a">失败即中止</text>
+
+  <path d="M 444 281 L 468 281" stroke="#57606a" stroke-width="1.6" marker-end="url(#upArw)"/>
+
+  <rect x="470" y="246" width="180" height="70" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.2"/>
+  <text x="560" y="268" text-anchor="middle" font-size="11" fill="#1f2328">③ 下载更新包</text>
+  <text x="560" y="288" text-anchor="middle" font-size="10" fill="#57606a">按 target / arch 模板变量</text>
+  <text x="560" y="306" text-anchor="middle" font-size="10" fill="#57606a">仅下载校验通过的条目</text>
+
+  <path d="M 652 281 L 676 281" stroke="#57606a" stroke-width="1.6" marker-end="url(#upArw)"/>
+
+  <rect x="678" y="246" width="170" height="70" rx="8" fill="#fdeff0" stroke="#cf222e" stroke-width="1.4"/>
+  <text x="763" y="268" text-anchor="middle" font-size="11" font-weight="700" fill="#1f2328">④ 安装前再校验</text>
+  <text x="763" y="288" text-anchor="middle" font-size="10" fill="#57606a">对更新包本身验签</text>
+  <text x="763" y="306" text-anchor="middle" font-size="10" fill="#57606a">通过才替换</text>
+
+  <!-- 下左：两套签名 -->
+  <rect x="34" y="342" width="404" height="126" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.4"/>
+  <text x="54" y="366" font-size="12" font-weight="700" fill="#1f2328">两套签名，缺一不可</text>
+  <text x="54" y="390" font-size="11" fill="#57606a">平台代码签名（Authenticode / Developer ID）</text>
+  <text x="54" y="408" font-size="10.5" fill="#57606a">→ 由操作系统校验，解决「系统允不允许运行」</text>
+  <text x="54" y="432" font-size="11" fill="#57606a">更新签名（minisign / Ed25519）</text>
+  <text x="54" y="450" font-size="10.5" fill="#57606a">→ 由应用自己校验，解决「应用敢不敢装」</text>
+
+  <!-- 下右：回滚警告 -->
+  <rect x="462" y="342" width="404" height="126" rx="10" fill="#fdeff0" stroke="#cf222e" stroke-width="1.6"/>
+  <text x="482" y="366" font-size="12" font-weight="700" fill="#cf222e">回滚的真相：改回旧版本号不会生效</text>
+  <text x="482" y="390" font-size="11" fill="#57606a">更新逻辑按版本号比较：已升到 0.2.0 的用户不会</text>
+  <text x="482" y="408" font-size="11" fill="#57606a">接受 0.1.0（因为 0.2.0 &gt; 0.1.0）。</text>
+  <text x="482" y="432" font-size="11" fill="#57606a">唯一可靠做法：发一个版本号更高、功能回退的版本。</text>
+  <text x="482" y="454" font-size="11" font-weight="700" fill="#1f2328">结论：能快速发版，比能回滚更重要。</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="daArw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" fill="#ffffff"/>
+
+  <text x="450" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">桌面应用深入 · 专题地图</text>
+  <text x="450" y="62" text-anchor="middle" font-size="12" fill="#57606a">主线：Tauri 2.x（系统 WebView + Rust 核心）</text>
+
+  <!-- 起点 -->
+  <rect x="345" y="86" width="210" height="52" rx="10" fill="#eef4ff" stroke="#2f6feb" stroke-width="2"/>
+  <text x="450" y="108" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">Overview 概述</text>
+  <text x="450" y="126" text-anchor="middle" font-size="11" fill="#57606a">四条边界 · 三路线判据</text>
+
+  <path d="M 450 138 L 450 168" stroke="#8b949e" stroke-width="1.6" marker-end="url(#daArw)"/>
+
+  <!-- 第二层：Architecture -->
+  <rect x="345" y="170" width="210" height="52" rx="10" fill="#f2f0fd" stroke="#8250df" stroke-width="2"/>
+  <text x="450" y="192" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">Architecture 架构</text>
+  <text x="450" y="210" text-anchor="middle" font-size="11" fill="#57606a">Rust 核心 + 系统 WebView</text>
+
+  <path d="M 450 222 L 450 250" stroke="#8b949e" stroke-width="1.6" marker-end="url(#daArw)"/>
+  <path d="M 150 250 L 750 250" stroke="#8b949e" stroke-width="1.6"/>
+  <path d="M 150 250 L 150 274" stroke="#8b949e" stroke-width="1.6" marker-end="url(#daArw)"/>
+  <path d="M 450 250 L 450 274" stroke="#8b949e" stroke-width="1.6" marker-end="url(#daArw)"/>
+  <path d="M 750 250 L 750 274" stroke="#8b949e" stroke-width="1.6" marker-end="url(#daArw)"/>
+
+  <!-- 第三层：三个能力轴 -->
+  <rect x="45" y="276" width="210" height="52" rx="10" fill="#eef9f0" stroke="#1a7f37" stroke-width="2"/>
+  <text x="150" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">IPC 与命令</text>
+  <text x="150" y="316" text-anchor="middle" font-size="11" fill="#57606a">命令 / 事件 / Channel</text>
+
+  <rect x="345" y="276" width="210" height="52" rx="10" fill="#fdf6e7" stroke="#9a6700" stroke-width="2"/>
+  <text x="450" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">原生能力</text>
+  <text x="450" y="316" text-anchor="middle" font-size="11" fill="#57606a">fs / tray / shell / sql…</text>
+
+  <rect x="645" y="276" width="210" height="52" rx="10" fill="#fdeff0" stroke="#cf222e" stroke-width="2"/>
+  <text x="750" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">安全模型</text>
+  <text x="750" y="316" text-anchor="middle" font-size="11" fill="#57606a">capability / permission / scope</text>
+
+  <path d="M 150 328 L 150 356" stroke="#8b949e" stroke-width="1.6" marker-end="url(#daArw)"/>
+  <path d="M 750 328 L 750 356" stroke="#8b949e" stroke-width="1.6" marker-end="url(#daArw)"/>
+
+  <!-- 第四层：交付与演进 -->
+  <rect x="45" y="358" width="210" height="52" rx="10" fill="#eef4ff" stroke="#2f6feb" stroke-width="2"/>
+  <text x="150" y="380" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">打包与分发</text>
+  <text x="150" y="398" text-anchor="middle" font-size="11" fill="#57606a">签名 · 公证 · CI 矩阵</text>
+
+  <rect x="645" y="358" width="210" height="52" rx="10" fill="#eef4ff" stroke="#2f6feb" stroke-width="2"/>
+  <text x="750" y="380" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">自动更新</text>
+  <text x="750" y="398" text-anchor="middle" font-size="11" fill="#57606a">minisign · 清单 · 回滚</text>
+
+  <path d="M 150 410 L 150 438" stroke="#8b949e" stroke-width="1.6" marker-end="url(#daArw)"/>
+  <path d="M 750 410 L 750 438" stroke="#8b949e" stroke-width="1.6" marker-end="url(#daArw)"/>
+
+  <rect x="45" y="440" width="210" height="46" rx="10" fill="#f6f8fa" stroke="#8b949e" stroke-width="1.6"/>
+  <text x="150" y="468" text-anchor="middle" font-size="12" fill="#1f2328">实战：可安装的笔记应用</text>
+  <rect x="645" y="440" width="210" height="46" rx="10" fill="#f6f8fa" stroke="#8b949e" stroke-width="1.6"/>
+  <text x="750" y="468" text-anchor="middle" font-size="12" fill="#1f2328">FAQ：分诊表 + 上线自查</text>
+
+  <!-- 右侧提示 -->
+  <rect x="290" y="358" width="320" height="128" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="450" y="382" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2328">阅读顺序建议</text>
+  <text x="450" y="404" text-anchor="middle" font-size="11" fill="#57606a">1 概述 → 2 架构 → 3 IPC</text>
+  <text x="450" y="424" text-anchor="middle" font-size="11" fill="#57606a">4 安全模型（动手前必读）</text>
+  <text x="450" y="444" text-anchor="middle" font-size="11" fill="#57606a">5 原生能力 → 6 打包 → 7 更新</text>
+  <text x="450" y="466" text-anchor="middle" font-size="11" fill="#57606a">8 实战走一遍 → 9 FAQ 收尾</text>
+</svg>

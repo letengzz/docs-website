@@ -52,6 +52,7 @@ Electron（原名 Atom Shell）是**用 Web 技术构建跨平台桌面应用**�
 
 ## 相关专题
 
+- [桌面应用深入](../../DesktopApp/index.md)：**分工是**——本专题讲 **Electron 自身的实现细节**（进程模型、Preload、IPC、窗口菜单托盘、打包、自动更新、测试、性能）；该专题讲**跨运行时的桌面工程判断**：以 Tauri 2.x 为主线，给出「套壳与桌面应用」的判据、能力/权限/scope 三层安全模型、签名与公证的成本与流程口径、更新器的信任链，以及一套可验收的实战与 FAQ。**选型与跨端视角**归 [桌面端跨端](../CrossPlatform/Desktop/index.md)，本专题不重复三者的对比表。
 - [桌面端跨端](../CrossPlatform/Desktop/index.md)：Electron / Tauri / 纯 Web 的选型对比与安全基线
 - [多端工程架构](../CrossPlatform/Architecture/index.md)：桌面端如何与 H5、小程序共用共享层
 - [跨端开发专题](../CrossPlatform/index.md)：整体方案地图与上线顺序

@@ -794,3 +794,21 @@ export const FrontSSR = [
         ],
     },
 ];
+
+export const FrontDesktopApp = [
+    {
+        text: "桌面应用深入",
+        link: "/docs/Frontend/DesktopApp/index.md",
+        items: [
+            { text: "概述：桌面应用的六条真实约束", link: "/docs/Frontend/DesktopApp/Overview/index.md" },
+            { text: "架构与进程模型", link: "/docs/Frontend/DesktopApp/Architecture/index.md" },
+            { text: "IPC 与命令", link: "/docs/Frontend/DesktopApp/IPC/index.md" },
+            { text: "原生能力", link: "/docs/Frontend/DesktopApp/NativeCapabilities/index.md" },
+            { text: "安全模型", link: "/docs/Frontend/DesktopApp/Security/index.md" },
+            { text: "打包与分发", link: "/docs/Frontend/DesktopApp/Packaging/index.md" },
+            { text: "自动更新", link: "/docs/Frontend/DesktopApp/Updater/index.md" },
+            { text: "实战：一个可安装的本地笔记应用", link: "/docs/Frontend/DesktopApp/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/DesktopApp/FAQ/index.md" },
+        ],
+    },
+];

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="archArw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="500" fill="#ffffff"/>
+
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2328">架构：一个核心进程 + 每窗口一个 WebView 进程</text>
+
+  <!-- 进程边界框 -->
+  <rect x="40" y="56" width="392" height="410" rx="12" fill="#f7f9fc" stroke="#8250df" stroke-width="1.8" stroke-dasharray="7 5"/>
+  <text x="56" y="80" font-size="12" font-weight="700" fill="#8250df">进程 A · 应用核心（Rust，一个进程）</text>
+
+  <rect x="60" y="94" width="352" height="70" rx="9" fill="#ffffff" stroke="#d0d7de" stroke-width="1.3"/>
+  <text x="76" y="116" font-size="12" font-weight="700" fill="#1f2328">应用代码（lib.rs / 命令 / 插件注册）</text>
+  <text x="76" y="135" font-size="11" fill="#57606a">你的业务逻辑；2.x 写 lib.rs，main.rs 只留入口</text>
+  <text x="76" y="153" font-size="11" fill="#57606a">改这里 → 触发 cargo 重编译</text>
+
+  <rect x="60" y="176" width="352" height="70" rx="9" fill="#ffffff" stroke="#d0d7de" stroke-width="1.3"/>
+  <text x="76" y="198" font-size="12" font-weight="700" fill="#1f2328">运行时底座：tao（窗口 / 事件循环）</text>
+  <text x="76" y="217" font-size="11" fill="#57606a">tao 管窗口与事件；wry 管 WebView 抽象</text>
+  <text x="76" y="235" font-size="11" fill="#57606a">一般不直接接触，除非写插件</text>
+
+  <rect x="60" y="258" width="352" height="88" rx="9" fill="#fdf6e7" stroke="#9a6700" stroke-width="1.5"/>
+  <text x="76" y="280" font-size="12" font-weight="700" fill="#1f2328">权限检查点（在命令之前）</text>
+  <text x="76" y="299" font-size="11" fill="#57606a">② 窗口 label 是否匹配 capability</text>
+  <text x="76" y="317" font-size="11" fill="#57606a">③ 该命令的 permission 是否授予</text>
+  <text x="76" y="335" font-size="11" fill="#57606a">④ 参数是否落在 scope 范围内</text>
+
+  <rect x="60" y="358" width="352" height="90" rx="9" fill="#fdeff0" stroke="#cf222e" stroke-width="1.5"/>
+  <text x="76" y="380" font-size="12" font-weight="700" fill="#1f2328">核心负责（框架不代劳）</text>
+  <text x="76" y="399" font-size="11" fill="#57606a">· 命令内部的输入校验（类型 + 边界）</text>
+  <text x="76" y="417" font-size="11" fill="#57606a">· 文件写入的原子性（先写临时文件再改名）</text>
+  <text x="76" y="435" font-size="11" fill="#57606a">· 日志落盘、崩溃处理、WebView 失败回调</text>
+
+  <!-- 进程边界框 B -->
+  <rect x="468" y="56" width="392" height="410" rx="12" fill="#f7f9fc" stroke="#2f6feb" stroke-width="1.8" stroke-dasharray="7 5"/>
+  <text x="484" y="80" font-size="12" font-weight="700" fill="#2f6feb">进程 B/C/D · 每个 WebView 一个进程</text>
+
+  <rect x="488" y="94" width="352" height="70" rx="9" fill="#ffffff" stroke="#d0d7de" stroke-width="1.3"/>
+  <text x="504" y="116" font-size="12" font-weight="700" fill="#1f2328">系统 WebView（不是打包进来的）</text>
+  <text x="504" y="135" font-size="11" fill="#57606a">Windows: WebView2 · macOS: WKWebView</text>
+  <text x="504" y="153" font-size="11" fill="#57606a">Linux: WebKitGTK 4.1 · 版本由系统决定</text>
+
+  <rect x="488" y="176" width="352" height="70" rx="9" fill="#eef4ff" stroke="#2f6feb" stroke-width="1.5"/>
+  <text x="504" y="198" font-size="12" font-weight="700" fill="#1f2328">你的前端（Vue / React / 任意框架）</text>
+  <text x="504" y="217" font-size="11" fill="#57606a">改这里 → 热更新，不重编译 Rust</text>
+  <text x="504" y="235" font-size="11" fill="#57606a">默认没有任何系统能力</text>
+
+  <rect x="488" y="258" width="352" height="64" rx="9" fill="#f2f0fd" stroke="#8250df" stroke-width="1.5"/>
+  <text x="504" y="280" font-size="12" font-weight="700" fill="#1f2328">隔离模式（可选）：沙箱化可信检查点</text>
+  <text x="504" y="299" font-size="11" fill="#57606a">拦截并校验所有 IPC 消息（含事件）</text>
+  <text x="504" y="315" font-size="11" fill="#57606a">Windows 上沙箱 iframe 不加载 ES Module</text>
+
+  <rect x="488" y="334" width="352" height="114" rx="9" fill="#ffffff" stroke="#d0d7de" stroke-width="1.3"/>
+  <text x="504" y="356" font-size="12" font-weight="700" fill="#1f2328">安全边界按「窗口 label」划分（不是标题）</text>
+  <text x="504" y="375" font-size="11" fill="#57606a">· label 一旦写进 capability 就是契约</text>
+  <text x="504" y="393" font-size="11" fill="#57606a">· 一个窗口匹配多个 capability → 权限取并集</text>
+  <text x="504" y="411" font-size="11" fill="#57606a">· 多 WebView 窗口建议用 webviews 精确指定</text>
+  <text x="504" y="431" font-size="11" fill="#57606a">· 没有匹配任何 capability = 连一条命令都调不到</text>
+
+  <!-- 跨进程箭头 -->
+  <path d="M 412 150 L 488 150" stroke="#57606a" stroke-width="1.8" marker-end="url(#archArw)"/>
+  <text x="450" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#57606a">命令</text>
+  <path d="M 488 214 L 412 214" stroke="#57606a" stroke-width="1.8" marker-end="url(#archArw)"/>
+  <text x="450" y="204" text-anchor="middle" font-size="11" font-weight="700" fill="#57606a">事件</text>
+
+  <text x="450" y="488" text-anchor="middle" font-size="11" fill="#57606a">IPC 底层是类 JSON-RPC 的消息传递：所有参数与返回值必须能序列化成 JSON</text>
+</svg>

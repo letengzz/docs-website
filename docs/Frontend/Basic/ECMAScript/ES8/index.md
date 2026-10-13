@@ -1,5 +1,9 @@
 # ES8
 
+::: info 版本与维护状态
+ECMAScript 版本是**一次性发布、永久冻结**的规范，不存在「停止维护 / EOL」的概念。ES2017（ES8）引入的 `async/await` 至今仍是异步代码的主要写法，另外它还补上了 `Object.entries/values` 与字符串填充方法。
+:::
+
 ECMAScript 2017（ES8）于 2017 年 6 月发布。
 
 - 官方规范：https://262.ecma-international.org/8.0/
