@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="成本的五个构成与四格看板">
+  <title>成本与单位经济学</title>
+  <rect x="0" y="0" width="900" height="520" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="24" font-weight="bold" fill="#16324f">成本的五个构成与归因路径</text>
+    <text x="30" y="66" font-size="14" fill="#5a6b7b">主指标是「每千次成功交互成本」，不是总花费。</text>
+    <rect x="30" y="96" width="200" height="62" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="50" y="122" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">输入 token</text>
+    <text x="50" y="142" font-size="11.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">按百万 token 计价</text>
+    <rect x="244" y="96" width="626" height="62" rx="10" fill="#eaf1f7"/>
+    <text x="264" y="132" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">检索注入的长上下文常是第一项</text>
+    <rect x="30" y="166" width="200" height="62" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="50" y="192" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">输出 token</text>
+    <text x="50" y="212" font-size="11.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">单价通常高于输入</text>
+    <rect x="244" y="166" width="626" height="62" rx="10" fill="#eaf1f7"/>
+    <text x="264" y="202" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">回答越长越贵</text>
+    <rect x="30" y="236" width="200" height="62" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="50" y="262" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">缓存读 / 写</text>
+    <text x="50" y="282" font-size="11.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">命中部分有独立单价</text>
+    <rect x="244" y="236" width="626" height="62" rx="10" fill="#eaf1f7"/>
+    <text x="264" y="272" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">只在输入前缀完全一致时有效</text>
+    <rect x="30" y="306" width="200" height="62" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="50" y="332" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">推理 token</text>
+    <text x="50" y="352" font-size="11.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">2026 年起单独计数</text>
+    <rect x="244" y="306" width="626" height="62" rx="10" fill="#eaf1f7"/>
+    <text x="264" y="342" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">推理模型的主要成本项</text>
+    <rect x="30" y="376" width="200" height="62" rx="10" fill="#ffffff" stroke="#c0392b" stroke-width="2"/>
+    <text x="50" y="402" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">评估与观测自身</text>
+    <text x="50" y="422" font-size="11.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">裁判 + 存储 + 订阅</text>
+    <rect x="244" y="376" width="626" height="62" rx="10" fill="#eaf1f7"/>
+    <text x="264" y="412" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">最容易漏，必须单独建预算线</text>
+  </g>
+  <rect x="30" y="452" width="840" height="52" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="52" y="478" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">四格看板：总览（每千次成功交互成本） · 归因（各步 token 占比） · 异常（单 Trace 成本 P99） · 质量联动（成本 vs 分数）</text>
+    <text x="52" y="496" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">只有第四格是 LLM 应用特有的：把「钱」和「好不好」画在同一张图上，降本是否伤了质量一眼可见。</text>
+</svg>

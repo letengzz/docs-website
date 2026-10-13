@@ -227,7 +227,7 @@ module.exports = async (context) => {
 
 ## 最后
 
-​		electron-builder有三个钩子：`artifactBuildCompleted`、`afterPack`、`afterSign`，分别是构建完成、打包完成、签名完成、可以自动化构建流程。我这里还用到了构建完成，自动化命名构建文件（当然，手动命名也是可以的）。
+electron-builder有三个钩子：`artifactBuildCompleted`、`afterPack`、`afterSign`，分别是构建完成、打包完成、签名完成、可以自动化构建流程。我这里还用到了构建完成，自动化命名构建文件（当然，手动命名也是可以的）。
 
 ```js
 const fs = require("fs");
@@ -265,4 +265,4 @@ module.exports = async function (params) {
 };
 ```
 
-​		其他还有一些进阶语法，比如增量更新，有这种需求官网和stackoverflow、issues区都可以，其他的见仁见智吧，国内用的人还是不太多，有的回答API都废弃了，注意版本。
+其他还有一些进阶语法，比如增量更新，有这种需求官网和stackoverflow、issues区都可以，其他的见仁见智吧，国内用的人还是不太多，有的回答API都废弃了，注意版本。

@@ -105,6 +105,7 @@ Python 与 TypeScript 两套实现**独立发版**，主次版本号相同不代
 - [本地模型部署](../LocalModel/index.md)：把模型换成本地推理服务时的接口与显存问题
 - [多模态应用](../Multimodal/index.md)：图片、音频这类内容块怎么进消息——多模态输入的框架侧接法
 - [大模型微调](../FineTuning/index.md)：框架解决**装配**，微调解决**行为**——输出格式与判断口径不稳定时的另一条路
+- [AI 应用观测与评估](../LLMObservability/index.md)：**本专题讲「怎么把 LangChain / LangGraph 应用装配起来」，该专题讲「装配好之后在生产上怎么被看见」**——Trace 模型与六种 span kind、OTel GenAI 语义约定的不稳定现状、线上采样打分、成本归因与质量告警。框架自带的回调式 tracing 只是入口，语义字段与评估闭环在那边展开
 
 ## 参考资料
 

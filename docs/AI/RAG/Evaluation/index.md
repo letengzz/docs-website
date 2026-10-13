@@ -134,3 +134,5 @@ if __name__ == "__main__":
 - 本库提示词评估：[效果评估](../../PromptEngineering/Evaluation/index.md)
 - [提示词安全与评估 · 评估集建设](../../PromptSecurity/EvalSet/index.md)：RAG 语料是**间接注入**的主要载体——本页评估「答得准不准」，安全层评估「被投毒的语料会不会让系统越界」，两层评估集互补；样本治理与防过拟合规则也在那边
 - LLM-as-Judge 的位置/长度/自我偏好偏见与「交换位置评两次」的校准实现：[微调评测 · 模型裁判的正确用法](../../FineTuning/Evaluation/index.md)
+- [AI 应用观测与评估 · 在线评估](../../LLMObservability/OnlineEval/index.md)：**本页给指标的定义与算法，该页给「把这些指标接到线上真实流量上」的工程**——分层采样（错误必留、正常流量 1%~5%）、规则型先行与裁判型收尾的取舍、用 30~50 条人工标注校准裁判、分数挂回 Trace 以便从低分跳回现场
+- [AI 应用观测与评估 · Trace 模型](../../LLMObservability/Tracing/index.md)：指标要挂在可定位的步骤上，前提是 span kind 划对——`RETRIEVER` 与 `LLM` 必须分开，否则「检索问题」与「生成问题」在报表里无法区分

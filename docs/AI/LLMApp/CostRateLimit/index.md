@@ -158,3 +158,4 @@ class TokenBucket:
 - 生产最佳实践：https://developers.openai.com/api/docs/guides/production-best-practices
 - 检索类应用的成本结构（嵌入 / 向量库 / 重排 / 生成）：[RAG 检索增强 · 生产工程化](../../RAG/Pipeline/index.md)
 - 自建推理的成本构成（GPU 折旧 / 电费 / 运维）：[本地模型部署 · 常见问题与最佳实践](../../LocalModel/FAQ/index.md)
+- [AI 应用观测与评估 · 成本与单位经济学](../../LLMObservability/Cost/index.md)：**本页是「怎么少花钱」的控制手段（预算、限流、缓存、降级），该页是「怎么知道钱花在哪一步、值不值」的观测**——token 归因到 span、每千次**成功**交互成本、以及三个会把账算错且不报错的坑（两代 token 字段相加、保留期被静默升级、把平台计量单位当美元）。两页合起来才构成完整的成本治理：先能量出来，才谈得上控制

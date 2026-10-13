@@ -1,7 +1,7 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 import { Auth, DDD, DesignPatterns, DistributedCache, DotNet, Ecommerce, Go, GoMicroservices, HighPerformanceJava, Java, Ledger, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, ReactiveProgramming, SpringCloud, WorkflowEngine } from "./backend";
 
-import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG } from "./AI";
+import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontOthers, FrontPWA, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, ChaosEngineering, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
 import { BigData, CDC, ClickHouse, DBOverview, DataModeling, DataWarehouse, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
@@ -94,7 +94,7 @@ export const sidebar = {
     {
       text: "AI",
       collapsed: true,
-      items: [...AI_LLMApp, ...AI_AICodingAssistant, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_PromptSecurity, ...AI_Agent],
+      items: [...AI_LLMApp, ...AI_AICodingAssistant, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_PromptSecurity, ...AI_Agent, ...AI_LLMObservability],
     },
   ],
   "/docs/Tools": [
@@ -200,6 +200,7 @@ export const sidebar = {
   "/docs/AI/Agent": AI_Agent,
   "/docs/AI/AgentFramework": AI_AgentFramework,
   "/docs/AI/LLMApp": AI_LLMApp,
+  "/docs/AI/LLMObservability": AI_LLMObservability,
   "/docs/AI/LangChain": AI_LangChain,
   "/docs/AI/RAG": AI_RAG,
   "/docs/AI/Multimodal": AI_Multimodal,

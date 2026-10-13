@@ -93,6 +93,7 @@ export const nav = [
       { text: "提示词安全与评估", link: "/docs/AI/PromptSecurity" },
       { text: "Agent 应用", link: "/docs/AI/Agent" },
       { text: "Agent 框架深入", link: "/docs/AI/AgentFramework" },
+      { text: "AI 应用观测与评估", link: "/docs/AI/LLMObservability" },
     ] },
   {
     text: "工具", items: [

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 566" width="900" height="566" role="img" aria-label="AI 应用观测与评估专题地图">
+  <title>专题地图</title>
+  <rect x="0" y="0" width="900" height="566" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="24" font-weight="bold" fill="#16324f">AI 应用观测与评估 · 四层与九个页面</text>
+    <text x="30" y="66" font-size="14" fill="#5a6b7b">顺序不可颠倒：先有完整记录，评估才有对象；先有分数，告警才有判据。</text>
+    <rect x="30" y="88" width="150" height="90" rx="10" fill="#2d7d9a"/>
+    <text x="105.0" y="129.0" font-size="19" fill="#ffffff" font-weight="bold" text-anchor="middle">① 记录</text>
+    <text x="105.0" y="153.0" font-size="12" fill="#eaf4f8" font-weight="normal" text-anchor="middle">看不见就修不了</text>
+    <rect x="200.0" y="88" width="670.0" height="90" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="218.0" y="114" font-size="15" fill="#16324f" font-weight="bold" text-anchor="start">Trace 模型与会话</text>
+    <text x="218.0" y="138" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">Span 树与六种 span kind</text>
+    <text x="218.0" y="156" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">OTel GenAI 约定仍为 Development 级</text>
+    <text x="218.0" y="174" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">双字段 coalesce，禁止相加</text>
+    <rect x="30" y="196" width="150" height="90" rx="10" fill="#3fae8c"/>
+    <text x="105.0" y="237.0" font-size="19" fill="#ffffff" font-weight="bold" text-anchor="middle">② 打分</text>
+    <text x="105.0" y="261.0" font-size="12" fill="#eaf4f8" font-weight="normal" text-anchor="middle">好不好要能量化</text>
+    <rect x="200.0" y="196" width="325.0" height="90" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="218.0" y="222" font-size="15" fill="#16324f" font-weight="bold" text-anchor="start">在线评估</text>
+    <text x="218.0" y="246" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">分层采样：错误必留、正常流量 1%~5%</text>
+    <text x="218.0" y="264" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">规则型先行，裁判型收尾</text>
+    <rect x="545.0" y="196" width="325.0" height="90" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="563.0" y="222" font-size="15" fill="#16324f" font-weight="bold" text-anchor="start">离线评估与回归门禁</text>
+    <text x="563.0" y="246" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">数据集以生产回流为主</text>
+    <text x="563.0" y="264" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">分层阈值 + CI 集成 + 豁免流程</text>
+    <rect x="30" y="304" width="150" height="90" rx="10" fill="#c47a2c"/>
+    <text x="105.0" y="345.0" font-size="19" fill="#ffffff" font-weight="bold" text-anchor="middle">③ 度量</text>
+    <text x="105.0" y="369.0" font-size="12" fill="#eaf4f8" font-weight="normal" text-anchor="middle">钱与时间花在哪</text>
+    <rect x="200.0" y="304" width="325.0" height="90" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="218.0" y="330" font-size="15" fill="#16324f" font-weight="bold" text-anchor="start">成本与单位经济学</text>
+    <text x="218.0" y="354" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">每千次成功交互成本</text>
+    <text x="218.0" y="372" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">缓存 / 路由 / 上下文三杠杆</text>
+    <rect x="545.0" y="304" width="325.0" height="90" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="563.0" y="330" font-size="15" fill="#16324f" font-weight="bold" text-anchor="start">质量告警与漂移</text>
+    <text x="563.0" y="354" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">模型 / 数据 / 检索 / 语义四类漂移</text>
+    <text x="563.0" y="372" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">分组 抑制 静默三道闸门</text>
+    <rect x="30" y="412" width="150" height="90" rx="10" fill="#6b5bd2"/>
+    <text x="105.0" y="453.0" font-size="19" fill="#ffffff" font-weight="bold" text-anchor="middle">④ 运转</text>
+    <text x="105.0" y="477.0" font-size="12" fill="#eaf4f8" font-weight="normal" text-anchor="middle">让它自己发生</text>
+    <rect x="200.0" y="412" width="325.0" height="90" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="218.0" y="438" font-size="15" fill="#16324f" font-weight="bold" text-anchor="start">平台选型</text>
+    <text x="218.0" y="462" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">数据边界 成本形状 许可 治理四维</text>
+    <text x="218.0" y="480" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">自建与 SaaS 的取舍</text>
+    <rect x="545.0" y="412" width="325.0" height="90" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="563.0" y="438" font-size="15" fill="#16324f" font-weight="bold" text-anchor="start">实战：给 RAG 服务接上观测</text>
+    <text x="563.0" y="462" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">五步落地 + V1~V15 判据</text>
+    <text x="563.0" y="480" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">明确不做的四件事</text>
+  </g>
+  <rect x="200" y="524" width="670" height="30" rx="8" fill="#eaf1f7"/>
+    <text x="228" y="544" font-size="13" fill="#16324f" font-weight="normal" text-anchor="start">卡住时用「常见问题」当分诊表：从现象出发，而不是从工具出发。</text>
+</svg>

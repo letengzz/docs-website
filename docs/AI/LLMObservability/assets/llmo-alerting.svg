@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 545" width="900" height="545" role="img" aria-label="四类漂移与三道闸门">
+  <title>质量告警与漂移</title>
+  <rect x="0" y="0" width="900" height="545" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="24" font-weight="bold" fill="#16324f">四类漂移与三道收敛闸门</text>
+    <text x="30" y="66" font-size="14" fill="#5a6b7b">告警的价值 90% 在归因，不在发现。</text>
+    <rect x="30" y="92" width="174" height="74" rx="10" fill="#c0392b"/>
+    <text x="117" y="124" font-size="15" fill="#ffffff" font-weight="bold" text-anchor="middle">① 模型漂移</text>
+    <text x="117" y="146" font-size="11" fill="#eef4f7" font-weight="normal" text-anchor="middle">代码没变，输出变了</text>
+    <rect x="214" y="92" width="330" height="74" rx="10" fill="#eaf1f7"/>
+    <text x="232" y="136" font-size="12" fill="#16324f" font-weight="normal" text-anchor="start">比 response_model 与基线</text>
+    <rect x="556" y="92" width="314" height="74" rx="10" fill="#ffffff" stroke="#c0392b" stroke-width="1.5"/>
+    <text x="574" y="136" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">向供应商确认发布记录</text>
+    <rect x="30" y="174" width="174" height="74" rx="10" fill="#c47a2c"/>
+    <text x="117" y="206" font-size="15" fill="#ffffff" font-weight="bold" text-anchor="middle">② 数据漂移</text>
+    <text x="117" y="228" font-size="11" fill="#eef4f7" font-weight="normal" text-anchor="middle">输入分布变了</text>
+    <rect x="214" y="174" width="330" height="74" rx="10" fill="#eaf1f7"/>
+    <text x="232" y="218" font-size="12" fill="#16324f" font-weight="normal" text-anchor="start">输入长度 / 语言 / 主题分布</text>
+    <rect x="556" y="174" width="314" height="74" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="1.5"/>
+    <text x="574" y="218" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">更新评估集与提示词</text>
+    <rect x="30" y="256" width="174" height="74" rx="10" fill="#2d7d9a"/>
+    <text x="117" y="288" font-size="15" fill="#ffffff" font-weight="bold" text-anchor="middle">③ 检索漂移</text>
+    <text x="117" y="310" font-size="11" fill="#eef4f7" font-weight="normal" text-anchor="middle">语料更新后命中变差</text>
+    <rect x="214" y="256" width="330" height="74" rx="10" fill="#eaf1f7"/>
+    <text x="232" y="300" font-size="12" fill="#16324f" font-weight="normal" text-anchor="start">no_hit 率与相似度分布</text>
+    <rect x="556" y="256" width="314" height="74" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="574" y="300" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">复核索引与嵌入模型版本</text>
+    <rect x="30" y="338" width="174" height="74" rx="10" fill="#6b5bd2"/>
+    <text x="117" y="370" font-size="15" fill="#ffffff" font-weight="bold" text-anchor="middle">④ 语义漂移</text>
+    <text x="117" y="392" font-size="11" fill="#eef4f7" font-weight="normal" text-anchor="middle">上游系统含义变了</text>
+    <rect x="214" y="338" width="330" height="74" rx="10" fill="#eaf1f7"/>
+    <text x="232" y="382" font-size="12" fill="#16324f" font-weight="normal" text-anchor="start">端到端分数降但各步正常</text>
+    <rect x="556" y="338" width="314" height="74" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="1.5"/>
+    <text x="574" y="382" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">沿 Trace 向上游追</text>
+    <rect x="30" y="424" width="840" height="96" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="52" y="450" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">三道闸门（缺一不可，否则一次故障变成几百条通知）</text>
+    <text x="52" y="476" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">分组 grouping：按根因聚合，不要按 trace_id。质量场景的键是 evaluator / model / prompt_version / session_id。</text>
+    <text x="52" y="496" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">抑制 inhibition：上游故障时抑制下游质量告警——分数下降是「果」，不是「因」。</text>
+    <text x="52" y="516" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">静默 silence：发布与压测窗口临时关闭，但必须有到期时间，不允许永久静默。</text>
+  </g>
+</svg>

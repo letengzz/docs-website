@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="五件套的落地顺序与验收">
+  <title>实战落地顺序</title>
+  <rect x="0" y="0" width="900" height="520" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="24" font-weight="bold" fill="#16324f">五步落地，顺序不可换</text>
+    <text x="30" y="66" font-size="14" fill="#5a6b7b">Trace 是其余四件的地基：没有输入输出对，评估没有对象。</text>
+    <rect x="30" y="96" width="96" height="60" rx="10" fill="#2d7d9a"/>
+    <text x="78" y="122" font-size="15" fill="#ffffff" font-weight="bold" text-anchor="middle">第 1 步</text>
+    <text x="78" y="142" font-size="12" fill="#eef4f7" font-weight="normal" text-anchor="middle">01</text>
+    <rect x="140" y="96" width="300" height="60" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="160" y="122" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">OTel 管道与表结构</text>
+    <text x="160" y="142" font-size="11.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">Collector 尾部采样 + ClickHouse spans 表</text>
+    <rect x="454" y="96" width="416" height="60" rx="10" fill="#eaf1f7"/>
+    <text x="474" y="132" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">一次请求能查到完整 span 树</text>
+    <text x="90" y="170" font-size="16" fill="#8a97a3" font-weight="normal" text-anchor="middle">↓</text>
+    <rect x="30" y="166" width="96" height="60" rx="10" fill="#3fae8c"/>
+    <text x="78" y="192" font-size="15" fill="#ffffff" font-weight="bold" text-anchor="middle">第 2 步</text>
+    <text x="78" y="212" font-size="12" fill="#eef4f7" font-weight="normal" text-anchor="middle">02</text>
+    <rect x="140" y="166" width="300" height="60" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="160" y="192" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">应用埋点</text>
+    <text x="160" y="212" font-size="11.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">五类 span + 三个必填字段</text>
+    <rect x="454" y="166" width="416" height="60" rx="10" fill="#eaf1f7"/>
+    <text x="474" y="202" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">能回答「当时喂给模型的是什么」</text>
+    <text x="90" y="240" font-size="16" fill="#8a97a3" font-weight="normal" text-anchor="middle">↓</text>
+    <rect x="30" y="236" width="96" height="60" rx="10" fill="#c47a2c"/>
+    <text x="78" y="262" font-size="15" fill="#ffffff" font-weight="bold" text-anchor="middle">第 3 步</text>
+    <text x="78" y="282" font-size="12" fill="#eef4f7" font-weight="normal" text-anchor="middle">03</text>
+    <rect x="140" y="236" width="300" height="60" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="160" y="262" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">成本归因</text>
+    <text x="160" y="282" font-size="11.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">token 归因到 span 与请求类型</text>
+    <rect x="454" y="236" width="416" height="60" rx="10" fill="#eaf1f7"/>
+    <text x="474" y="272" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">账实相符，差异小于 5%</text>
+    <text x="90" y="310" font-size="16" fill="#8a97a3" font-weight="normal" text-anchor="middle">↓</text>
+    <rect x="30" y="306" width="96" height="60" rx="10" fill="#6b5bd2"/>
+    <text x="78" y="332" font-size="15" fill="#ffffff" font-weight="bold" text-anchor="middle">第 4 步</text>
+    <text x="78" y="352" font-size="12" fill="#eef4f7" font-weight="normal" text-anchor="middle">04</text>
+    <rect x="140" y="306" width="300" height="60" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="160" y="332" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">在线采样评估</text>
+    <text x="160" y="352" font-size="11.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">分层采样 + 规则先行 + 裁判收尾</text>
+    <rect x="454" y="306" width="416" height="60" rx="10" fill="#eaf1f7"/>
+    <text x="474" y="342" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">有可信分数，且裁判已校准</text>
+    <text x="90" y="380" font-size="16" fill="#8a97a3" font-weight="normal" text-anchor="middle">↓</text>
+    <rect x="30" y="376" width="96" height="60" rx="10" fill="#c0392b"/>
+    <text x="78" y="402" font-size="15" fill="#ffffff" font-weight="bold" text-anchor="middle">第 5 步</text>
+    <text x="78" y="422" font-size="12" fill="#eef4f7" font-weight="normal" text-anchor="middle">05</text>
+    <rect x="140" y="376" width="300" height="60" rx="10" fill="#ffffff" stroke="#c0392b" stroke-width="2"/>
+    <text x="160" y="402" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">告警与门禁</text>
+    <text x="160" y="422" font-size="11.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">P1 硬红线 / P2 统计分数 + 分层门禁</text>
+    <rect x="454" y="376" width="416" height="60" rx="10" fill="#eaf1f7"/>
+    <text x="474" y="412" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">告警可证伪，门禁能变红</text>
+  </g>
+  <rect x="30" y="452" width="840" height="52" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="52" y="478" font-size="12" fill="#16324f" font-weight="normal" text-anchor="start">验收判据 V1~V15 分两类：静态可判（字段是否齐全、是否有永久静默）与需真实环境（账实相符、门禁可证伪、影子不污染看板）。</text>
+    <text x="52" y="496" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">标注「未跑」的判据必须写清原因，不能抄期望值——「文档里写了」不等于「真的跑了」。</text>
+</svg>

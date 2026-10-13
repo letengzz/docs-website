@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="四类正常但错与所需信号">
+  <title>四类正常但错</title>
+  <rect x="0" y="0" width="900" height="520" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="24" font-weight="bold" fill="#16324f">四类「正常但错」与所需信号</text>
+    <text x="30" y="66" font-size="14" fill="#5a6b7b">共同点：HTTP 200、无异常、无告警。区别：需要的信号完全不同。</text>
+    <rect x="30" y="92" width="270" height="88" rx="10" fill="#ffffff" stroke="#c0392b" stroke-width="2"/>
+    <text x="52" y="126" font-size="17" fill="#c0392b" font-weight="bold" text-anchor="start">① 检索空转</text>
+    <text x="52" y="152" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">检索返回空上下文，模型流畅地自己编</text>
+    <rect x="320" y="92" width="550" height="88" rx="10" fill="#eaf1f7"/>
+    <text x="342" y="126" font-size="12" fill="#8a97a3" font-weight="normal" text-anchor="start">需要的信号</text>
+    <text x="342" y="152" font-size="13" fill="#16324f" font-weight="normal" text-anchor="start">检索 status 与 returned、忠实度分数</text>
+    <text x="310" y="144" font-size="18" fill="#8a97a3" font-weight="normal" text-anchor="middle">→</text>
+    <rect x="30" y="190" width="270" height="88" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="52" y="224" font-size="17" fill="#c47a2c" font-weight="bold" text-anchor="start">② 上下文污染</text>
+    <text x="52" y="250" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">某一步塞进错误事实，后面全部被带偏</text>
+    <rect x="320" y="190" width="550" height="88" rx="10" fill="#eaf1f7"/>
+    <text x="342" y="224" font-size="12" fill="#8a97a3" font-weight="normal" text-anchor="start">需要的信号</text>
+    <text x="342" y="250" font-size="13" fill="#16324f" font-weight="normal" text-anchor="start">完整输入输出对、每一步的中间产物</text>
+    <text x="310" y="242" font-size="18" fill="#8a97a3" font-weight="normal" text-anchor="middle">→</text>
+    <rect x="30" y="288" width="270" height="88" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="52" y="322" font-size="17" fill="#2d7d9a" font-weight="bold" text-anchor="start">③ 静默降级</text>
+    <text x="52" y="348" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">供应商侧路由到别的模型，或缓存未命中</text>
+    <rect x="320" y="288" width="550" height="88" rx="10" fill="#eaf1f7"/>
+    <text x="342" y="322" font-size="12" fill="#8a97a3" font-weight="normal" text-anchor="start">需要的信号</text>
+    <text x="342" y="348" font-size="13" fill="#16324f" font-weight="normal" text-anchor="start">response_model、cache 命中标记、fallback 标记</text>
+    <text x="310" y="340" font-size="18" fill="#8a97a3" font-weight="normal" text-anchor="middle">→</text>
+    <rect x="30" y="386" width="270" height="88" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="52" y="420" font-size="17" fill="#6b5bd2" font-weight="bold" text-anchor="start">④ 缓慢漂移</text>
+    <text x="52" y="446" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">每周差一点，一个月后「以前挺好」</text>
+    <rect x="320" y="386" width="550" height="88" rx="10" fill="#eaf1f7"/>
+    <text x="342" y="420" font-size="12" fill="#8a97a3" font-weight="normal" text-anchor="start">需要的信号</text>
+    <text x="342" y="446" font-size="13" fill="#16324f" font-weight="normal" text-anchor="start">质量分数时间序列 + 基线对比</text>
+  </g>
+  <rect x="30" y="484" width="840" height="26" rx="8" fill="#eaf1f7"/>
+    <text x="52" y="502" font-size="12" fill="#16324f" font-weight="normal" text-anchor="start">判据：检索命中 0 条必须是显式事件（hit / no_hit / error 三态），空数组区分不了「没有资料」与「检索坏了」。</text>
+</svg>

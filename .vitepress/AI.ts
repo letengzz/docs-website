@@ -226,3 +226,22 @@ export const AI_FineTuning = [
     ],
   },
 ];
+
+export const AI_LLMObservability = [
+  {
+    text: "AI 应用观测与评估",
+    link: "/docs/AI/LLMObservability/index.md",
+    collapsed: true,
+    items: [
+      { text: "概述：HTTP 200 掩盖了什么", link: "/docs/AI/LLMObservability/Overview/index.md" },
+      { text: "Trace 模型与会话", link: "/docs/AI/LLMObservability/Tracing/index.md" },
+      { text: "平台选型", link: "/docs/AI/LLMObservability/Platforms/index.md" },
+      { text: "在线评估", link: "/docs/AI/LLMObservability/OnlineEval/index.md" },
+      { text: "离线评估与回归门禁", link: "/docs/AI/LLMObservability/OfflineEval/index.md" },
+      { text: "成本与单位经济学", link: "/docs/AI/LLMObservability/Cost/index.md" },
+      { text: "质量告警与漂移", link: "/docs/AI/LLMObservability/Alerting/index.md" },
+      { text: "实战：给 RAG 服务接上观测", link: "/docs/AI/LLMObservability/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/LLMObservability/FAQ/index.md" },
+    ],
+  },
+];

@@ -25,9 +25,9 @@ Electron 中，主要使用 ipcMain 和 ipcRenderer 来定义"通道"，进行�
 
 在渲染器进程中 ipcRenderer.send 发送消息，在主进程中使用 ipcMain.on 接收消息。常用于在Web中调用主进程的API。
 
-**例**：点击按钮后，在用户的 D 盘创建一个﻿hello.txt﻿文件，文件内容来自于用户输入。
+**例**：点击按钮后，在用户的 D 盘创建一个hello.txt文件，文件内容来自于用户输入。
 
-1. 页面中添加相关元素， render.js﻿中添加对应脚本
+1. 页面中添加相关元素， render.js中添加对应脚本
 
    > index.html
 
@@ -36,7 +36,7 @@ Electron 中，主要使用 ipcMain 和 ipcRenderer 来定义"通道"，进行�
    <button id="btn">在用户的D盘创建一个hello.txt</button>
    ```
 
-   >  render.js﻿
+   >  render.js
 
    ```js
    const btn = document.getElementById('btn')
@@ -48,7 +48,7 @@ Electron 中，主要使用 ipcMain 和 ipcRenderer 来定义"通道"，进行�
    })
    ```
 
-2. preload.js﻿中使用 ﻿`ipcRenderer.send('信道',参数)`﻿发送消息，与主进程通信：
+2. preload.js中使用 `ipcRenderer.send('信道',参数)`发送消息，与主进程通信：
 
    ```js
    const {contextBridge,ipcRenderer} = require('electron')
@@ -61,7 +61,7 @@ Electron 中，主要使用 ipcMain 和 ipcRenderer 来定义"通道"，进行�
    })
    ```
 
-3. 主进程中，在加载页面之前，使用 `ipcMain.on('信道',回调)`﻿配置对应回调函数，接收消息
+3. 主进程中，在加载页面之前，使用 `ipcMain.on('信道',回调)`配置对应回调函数，接收消息
 
    ```js
    const { app, BrowserWindow,ipcMain } = require('electron')
@@ -85,9 +85,9 @@ Electron 中，主要使用 ipcMain 和 ipcRenderer 来定义"通道"，进行�
 
 渲染进程通过ipcRenderer.invoke 发送消息，主进程使用 ipcMain.handle 接收并处理消息。ipcRederer.invoke 的返回值是Promise实例。常用于：从渲染器进程调用主进程方法并等待结果。
 
-**例**：点击按钮从 D 盘读取﻿hello.txt﻿中的内容，并将结果呈现在页面上。
+**例**：点击按钮从 D 盘读取hello.txt中的内容，并将结果呈现在页面上。
 
-1. 页面中添加相关元素， render.js﻿中添加对应脚本
+1. 页面中添加相关元素， render.js中添加对应脚本
 
    > index.html
 
@@ -105,7 +105,7 @@ Electron 中，主要使用 ipcMain 和 ipcRenderer 来定义"通道"，进行�
    })
    ```
 
-2. preload.js﻿中使用 ﻿`ipcRenderer.invoke('信道',参数)`﻿发送消息，与主进程通信
+2. preload.js中使用 `ipcRenderer.invoke('信道',参数)`发送消息，与主进程通信
 
    ```js
    const {contextBridge,ipcRenderer} = require('electron')
@@ -117,7 +117,7 @@ Electron 中，主要使用 ipcMain 和 ipcRenderer 来定义"通道"，进行�
    }
    ```
 
-3. 主进程中，在加载页面之前，使用 `ipcMain.handle('信道',回调)`﻿接收消息，并配置回调函数
+3. 主进程中，在加载页面之前，使用 `ipcMain.handle('信道',回调)`接收消息，并配置回调函数
 
    ```js
    // 用于创建窗口
@@ -140,7 +140,7 @@ Electron 中，主要使用 ipcMain 和 ipcRenderer 来定义"通道"，进行�
 
 **例**：应用加载 6 秒钟后，主动给渲染进程发送一个消息，内容是：你好啊！
 
-1. 页面中添加相关元素， render.js﻿中添加对应脚本
+1. 页面中添加相关元素， render.js中添加对应脚本
 
    ```js
    window.onload = ()=>{
@@ -151,7 +151,7 @@ Electron 中，主要使用 ipcMain 和 ipcRenderer 来定义"通道"，进行�
    }
    ```
 
-2. preload.js﻿中使用 ﻿`ipcRenderer.on ('信道',回调)`﻿接收消息，并配置回调函数
+2. preload.js中使用 `ipcRenderer.on ('信道',回调)`接收消息，并配置回调函数
 
    ```js
    const {contextBridge,ipcRenderer} = require('electron')
@@ -163,7 +163,7 @@ Electron 中，主要使用 ipcMain 和 ipcRenderer 来定义"通道"，进行�
    })
    ```
 
-3. 主进程中，在合适的时候，使用 `win.webContents.send('信道',数据)`﻿发送消息
+3. 主进程中，在合适的时候，使用 `win.webContents.send('信道',数据)`发送消息
 
    ```js
    // 用于创建窗口

@@ -109,6 +109,7 @@ CrewAI：`verbose=True` 仅用于开发；生产用回调 / 事件监听接 Lang
 - [实战](../Practice/index.md)：本页骨架代码在实战页串成完整流水线
 - [大模型应用开发 · 成本核算与限流降级](../../LLMApp/CostRateLimit/index.md)：不引框架时的成本口径，本页沿用其方法
 - [Ops · 监控告警](../../../Ops/Monitoring/index.md)：基础设施层的监控体系
+- [AI 应用观测与评估](../../LLMObservability/index.md)：**本页的「可观测」是框架视角的操作清单（装什么、开什么开关），该专题把同一件事展开到可实施颗粒度**——六种 span kind 的划分、OTel GenAI 语义约定「全部 Development 级、不可当表结构」的现状与 `coalesce` 双字段查询、[线上采样打分](../../LLMObservability/OnlineEval/index.md)与[成本归因](../../LLMObservability/Cost/index.md)。框架回调能给你 Trace，但**评估闭环与成本语义要按那边的做法补**
 
 ## 参考资料
 

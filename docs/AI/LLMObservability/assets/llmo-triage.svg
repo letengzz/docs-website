@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="从现象出发定位">
+  <title>现象分诊表</title>
+  <rect x="0" y="0" width="900" height="560" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="24" font-weight="bold" fill="#16324f">现象分诊：先找现象，再找章节</text>
+    <text x="30" y="66" font-size="14" fill="#5a6b7b">不要从工具出发。出问题时先问「我看到的现象是什么」。</text>
+    <rect x="30" y="92" width="34" height="46" rx="6" fill="#c0392b"/>
+    <text x="47" y="121" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">1</text>
+    <rect x="72" y="92" width="300" height="46" rx="10" fill="#eaf1f7"/>
+    <text x="90" y="121" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">指标全绿但答得不对</text>
+    <rect x="380" y="92" width="200" height="46" rx="10" fill="#ffffff" stroke="#c0392b" stroke-width="1.5"/>
+    <text x="398" y="121" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">四类「正常但错」</text>
+    <rect x="588" y="92" width="282" height="46" rx="10" fill="#ffffff" stroke="#c0392b" stroke-width="1.5"/>
+    <text x="606" y="121" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">先看检索 status 与 response_model</text>
+    <rect x="30" y="146" width="34" height="46" rx="6" fill="#c0392b"/>
+    <text x="47" y="175" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">2</text>
+    <rect x="72" y="146" width="300" height="46" rx="10" fill="#eaf1f7"/>
+    <text x="90" y="175" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">成本与账单对不上</text>
+    <rect x="380" y="146" width="200" height="46" rx="10" fill="#ffffff" stroke="#c0392b" stroke-width="1.5"/>
+    <text x="398" y="175" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">两代 token 字段被相加</text>
+    <rect x="588" y="146" width="282" height="46" rx="10" fill="#ffffff" stroke="#c0392b" stroke-width="1.5"/>
+    <text x="606" y="175" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">改 coalesce，禁止相加</text>
+    <rect x="30" y="200" width="34" height="46" rx="6" fill="#c47a2c"/>
+    <text x="47" y="229" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">3</text>
+    <rect x="72" y="200" width="300" height="46" rx="10" fill="#eaf1f7"/>
+    <text x="90" y="229" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">账单翻倍但用量没变</text>
+    <rect x="380" y="200" width="200" height="46" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="1.5"/>
+    <text x="398" y="229" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">保留期被静默升级</text>
+    <rect x="588" y="200" width="282" height="46" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="1.5"/>
+    <text x="606" y="229" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">查平台保留期与费率规则</text>
+    <rect x="30" y="254" width="34" height="46" rx="6" fill="#c47a2c"/>
+    <text x="47" y="283" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">4</text>
+    <rect x="72" y="254" width="300" height="46" rx="10" fill="#eaf1f7"/>
+    <text x="90" y="283" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">评估分数天天告警</text>
+    <rect x="380" y="254" width="200" height="46" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="1.5"/>
+    <text x="398" y="283" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">采样率过低 + 未校准</text>
+    <rect x="588" y="254" width="282" height="46" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="1.5"/>
+    <text x="606" y="283" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">拉长窗口 / 改分位数 / 先校准</text>
+    <rect x="30" y="308" width="34" height="46" rx="6" fill="#2d7d9a"/>
+    <text x="47" y="337" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">5</text>
+    <rect x="72" y="308" width="300" height="46" rx="10" fill="#eaf1f7"/>
+    <text x="90" y="337" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">门禁全绿但线上退化</text>
+    <rect x="380" y="308" width="200" height="46" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="398" y="337" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">评估集与线上分布脱节</text>
+    <rect x="588" y="308" width="282" height="46" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="606" y="337" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">把低分样本回流进数据集</text>
+    <rect x="30" y="362" width="34" height="46" rx="6" fill="#2d7d9a"/>
+    <text x="47" y="391" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">6</text>
+    <rect x="72" y="362" width="300" height="46" rx="10" fill="#eaf1f7"/>
+    <text x="90" y="391" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">一次故障几百条通知</text>
+    <rect x="380" y="362" width="200" height="46" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="398" y="391" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">分组键写成了 trace_id</text>
+    <rect x="588" y="362" width="282" height="46" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="606" y="391" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">按 evaluator / model 分组</text>
+    <rect x="30" y="416" width="34" height="46" rx="6" fill="#6b5bd2"/>
+    <text x="47" y="445" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">7</text>
+    <rect x="72" y="416" width="300" height="46" rx="10" fill="#eaf1f7"/>
+    <text x="90" y="445" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">换后端要改业务代码</text>
+    <rect x="380" y="416" width="200" height="46" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="1.5"/>
+    <text x="398" y="445" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">把 gen_ai.* 当内部契约</text>
+    <rect x="588" y="416" width="282" height="46" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="1.5"/>
+    <text x="606" y="445" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">建内部模型 + 边界适配</text>
+    <rect x="30" y="470" width="34" height="46" rx="6" fill="#6b5bd2"/>
+    <text x="47" y="499" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">8</text>
+    <rect x="72" y="470" width="300" height="46" rx="10" fill="#eaf1f7"/>
+    <text x="90" y="499" font-size="12.5" fill="#16324f" font-weight="normal" text-anchor="start">回答「话说一半」</text>
+    <rect x="380" y="470" width="200" height="46" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="1.5"/>
+    <text x="398" y="499" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">finish_reason = length</text>
+    <rect x="588" y="470" width="282" height="46" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="1.5"/>
+    <text x="606" y="499" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">记 finish_reason，压上下文</text>
+  </g>
+  <rect x="30" y="528" width="840" height="24" rx="8" fill="#eaf1f7"/>
+    <text x="52" y="545" font-size="12" fill="#16324f" font-weight="normal" text-anchor="start">十二问与二十一项上线自查清单见「常见问题」页。</text>
+</svg>

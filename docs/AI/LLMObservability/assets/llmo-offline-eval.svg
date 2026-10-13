@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="从生产回流到四层评估集">
+  <title>离线评估</title>
+  <rect x="0" y="0" width="900" height="520" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="24" font-weight="bold" fill="#16324f">数据集以回流为主，按稳定性分层</text>
+    <text x="30" y="66" font-size="14" fill="#5a6b7b">构造用例测的是团队的想象；回流样本测的是用户的现实。</text>
+    <rect x="30" y="96" width="168" height="140" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="114" y="124" font-size="14" fill="#16324f" font-weight="bold" text-anchor="middle">线上流量</text>
+    <text x="114" y="150" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="middle">低分 / 负反馈</text>
+    <text x="114" y="172" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="middle">事故回填</text>
+    <text x="114" y="200" font-size="13" fill="#6b5bd2" font-weight="bold" text-anchor="middle">50%~70%</text>
+    <text x="210" y="170" font-size="20" fill="#8a97a3" font-weight="normal" text-anchor="middle">→</text>
+    <rect x="240" y="96" width="168" height="140" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="324" y="124" font-size="14" fill="#16324f" font-weight="bold" text-anchor="middle">导出与复核</text>
+    <text x="324" y="150" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="middle">按分数筛 + 人工抽检</text>
+    <text x="324" y="172" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="middle">每条带 source_trace_id</text>
+    <text x="324" y="200" font-size="13" fill="#2d7d9a" font-weight="bold" text-anchor="middle">dataset.jsonl</text>
+    <text x="420" y="170" font-size="20" fill="#8a97a3" font-weight="normal" text-anchor="middle">→</text>
+    <rect x="450" y="96" width="420" height="140" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="470" y="124" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">四层评估集（按稳定性分层）</text>
+    <text x="470" y="150" font-size="12" fill="#3fae8c" font-weight="bold" text-anchor="start">L1 冒烟 3~10 条</text>
+    <text x="640" y="150" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">每次提交，小于 10 秒，硬断言必须全绿</text>
+    <text x="470" y="172" font-size="12" fill="#3fae8c" font-weight="bold" text-anchor="start">L2 主集 50~200 条</text>
+    <text x="640" y="172" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">每个 PR，分钟级，均值 + 下界双阈值</text>
+    <text x="470" y="194" font-size="12" fill="#3fae8c" font-weight="bold" text-anchor="start">L3 全量 500~2000 条</text>
+    <text x="640" y="194" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">每日 / 发布前，十分钟级以上，看趋势</text>
+    <text x="470" y="216" font-size="12" fill="#3fae8c" font-weight="bold" text-anchor="start">L4 对抗样本</text>
+    <text x="640" y="216" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">发布前 + 定时，与安全专题共用，红线 0 容忍</text>
+    <rect x="30" y="258" width="840" height="96" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="52" y="286" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">CI 集成四条纪律</text>
+    <text x="52" y="310" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">只在相关路径变更时触发（提示词 / 模型调用层 / 评估集），不要每个 PR 都烧裁判预算。</text>
+    <text x="52" y="330" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">门禁必须非 0 退出；慢的层放每日定时，不要塞进每次提交——否则会被 --skip 绕过。</text>
+    <text x="52" y="350" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">阈值要能刷新（取最近 7 天同层中位数作基线），写死会在换模型那天产生大量假警报。</text>
+    <text x="52" y="370" font-size="12" fill="#5a6b7b" font-weight="normal" text-anchor="start">裁判版本与种子一并落盘；结果作为 CI 制品保留，日志会被清理。</text>
+  </g>
+  <rect x="30" y="372" width="840" height="118" rx="10" fill="#eaf1f7"/>
+    <text x="52" y="400" font-size="14" fill="#16324f" font-weight="bold" text-anchor="start">一个必须提前算好的数：裁判调用是网络调用</text>
+    <text x="52" y="426" font-size="12.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">公开实测：串行跑 10 条用例约 126.8 秒。外推到 100 条就是 20 分钟以上。</text>
+    <text x="52" y="450" font-size="12.5" fill="#5a6b7b" font-weight="normal" text-anchor="start">推论：L2 必须并行；L4 不能进每次提交；设计数据集规模之前先算这条账。</text>
+    <text x="52" y="476" font-size="12" fill="#c47a2c" font-weight="normal" text-anchor="start">与安全门禁的分工：本页评「质量退化了没有」，安全门禁评「防线被突破了没有」。两者不可共用一套阈值。</text>
+</svg>

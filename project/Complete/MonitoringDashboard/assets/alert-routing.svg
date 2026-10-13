@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 556" width="900" height="556" role="img" aria-label="告警从规则触发到人收到通知的四段链路与三道闸门">
+  <title>告警路由联调：四段链路与三道闸门</title>
+  <rect x="0" y="0" width="900" height="556" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="24" font-weight="bold" fill="#16324f">从规则触发到人收到通知：四段链路</text>
+    <text x="30" y="66" font-size="14" fill="#5a6b7b">联调的目标不是「告警能发出去」，而是「同因的一条故障，恰好产生一条通知」。</text>
+
+    <rect x="30" y="92" width="195" height="86" rx="10" fill="#2d7d9a"/>
+    <text x="127" y="124" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">① 规则触发</text>
+    <text x="127" y="148" font-size="11.5" fill="#dcecf3" text-anchor="middle">Prometheus 按 interval 求值</text>
+    <text x="127" y="166" font-size="11.5" fill="#dcecf3" text-anchor="middle">for 满足后状态转 firing</text>
+
+    <rect x="245" y="92" width="195" height="86" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="342" y="124" font-size="15" font-weight="bold" fill="#16324f" text-anchor="middle">② 进入路由</text>
+    <text x="342" y="148" font-size="11.5" fill="#5a6b7b" text-anchor="middle">按标签树形匹配第一条 route</text>
+    <text x="342" y="166" font-size="11.5" fill="#5a6b7b" text-anchor="middle">去重：同指纹只保留一条</text>
+
+    <rect x="460" y="92" width="195" height="86" rx="10" fill="#3fae8c"/>
+    <text x="557" y="124" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">③ 三道闸门</text>
+    <text x="557" y="148" font-size="11.5" fill="#dff4ec" text-anchor="middle">分组 grouping</text>
+    <text x="557" y="166" font-size="11.5" fill="#dff4ec" text-anchor="middle">抑制 inhibition / 静默 silence</text>
+
+    <rect x="675" y="92" width="195" height="86" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="772" y="124" font-size="15" font-weight="bold" fill="#16324f" text-anchor="middle">④ 通知渠道</text>
+    <text x="772" y="148" font-size="11.5" fill="#5a6b7b" text-anchor="middle">P1 电话 + 值班群 @</text>
+    <text x="772" y="166" font-size="11.5" fill="#5a6b7b" text-anchor="middle">P2 群提醒 / P3 日报</text>
+
+    <path d="M225 135 H245" stroke="#8a97a3" stroke-width="2" fill="none"/>
+    <path d="M440 135 H460" stroke="#8a97a3" stroke-width="2" fill="none"/>
+    <path d="M655 135 H675" stroke="#8a97a3" stroke-width="2" fill="none"/>
+
+    <text x="30" y="212" font-size="16" font-weight="bold" fill="#16324f">三道闸门：各自解决一个不同的问题，缺任一条都会「吵」</text>
+
+    <rect x="30" y="226" width="270" height="118" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="52" y="252" font-size="14" font-weight="bold" fill="#c47a2c">分组 grouping</text>
+    <text x="52" y="276" font-size="12" fill="#5a6b7b">解决「一次故障几十条」</text>
+    <text x="52" y="298" font-size="12" fill="#5a6b7b">group_by 选根因标签：</text>
+    <text x="52" y="318" font-size="12" fill="#16324f">alertname / service / target</text>
+    <text x="52" y="336" font-size="11.5" fill="#8a97a3">按 trace_id 分组等于不分组</text>
+
+    <rect x="315" y="226" width="270" height="118" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="337" y="252" font-size="14" font-weight="bold" fill="#6b5bd2">抑制 inhibition</text>
+    <text x="337" y="276" font-size="12" fill="#5a6b7b">解决「因和果一起响」</text>
+    <text x="337" y="298" font-size="12" fill="#5a6b7b">源告警生效时压掉目标告警</text>
+    <text x="337" y="318" font-size="12" fill="#16324f">equal 只写稳定标签</text>
+    <text x="337" y="336" font-size="11.5" fill="#8a97a3">写宽了会静默真故障</text>
+
+    <rect x="600" y="226" width="270" height="118" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="622" y="252" font-size="14" font-weight="bold" fill="#2d7d9a">静默 silence</text>
+    <text x="622" y="276" font-size="12" fill="#5a6b7b">解决「计划内变更扰民」</text>
+    <text x="622" y="298" font-size="12" fill="#5a6b7b">只用于已排期的窗口</text>
+    <text x="622" y="318" font-size="12" fill="#16324f">必须带 endsAt 且可查询</text>
+    <text x="622" y="336" font-size="11.5" fill="#8a97a3">永久静默等于关闭监控</text>
+
+    <rect x="30" y="362" width="840" height="86" rx="10" fill="#eaf1f7"/>
+    <text x="52" y="388" font-size="14" font-weight="bold" fill="#16324f">三个时间参数决定「会不会刷屏」</text>
+    <text x="52" y="412" font-size="12" fill="#5a6b7b">group_wait：同组首批容忍窗口（等待同因告警聚齐后一次发出）</text>
+    <text x="52" y="432" font-size="12" fill="#5a6b7b">group_interval：同一组内新告警的最短发间隔；repeat_interval：未恢复时的提醒间隔（必须大于 group_interval）</text>
+
+    <rect x="30" y="466" width="840" height="72" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="52" y="492" font-size="14" font-weight="bold" fill="#16324f">联调的验收判据是「计数」而不是「某条消息到没到」</text>
+    <text x="52" y="516" font-size="12" fill="#5a6b7b">制造一次同因故障，通知条数应当等于「分组数」；条数随实例数线性增长，说明分组键写错。</text>
+    <text x="52" y="532" font-size="12" fill="#5a6b7b">抑制生效的证据是通知里出现被抑制记录，而不是「什么都没收到」——后者也可能是渠道坏了。</text>
+  </g>
+</svg>

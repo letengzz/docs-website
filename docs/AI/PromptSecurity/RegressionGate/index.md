@@ -190,4 +190,4 @@ if __name__ == "__main__":
 - promptfoo 红队插件与预设（OWASP / NIST / MITRE）：https://www.promptfoo.dev/docs/red-team/plugins/
 - GitHub Actions 条件执行与产物归档：https://docs.github.com/actions
 - OWASP GenAI Security Project：https://genai.owasp.org/
-- 本仓相邻页：[评估集建设](../EvalSet/index.md)（样本与断言）、[微调 · 评测与发布门禁](../../FineTuning/Evaluation/index.md)（波动显著性统计口径）
+- 本仓相邻页：[评估集建设](../EvalSet/index.md)（样本与断言）、[微调 · 评测与发布门禁](../../FineTuning/Evaluation/index.md)（波动显著性统计口径）、[AI 应用观测与评估 · 离线评估与回归门禁](../../LLMObservability/OfflineEval/index.md)（**质量回归门禁**：数据集以生产回流为主、阈值分四层、CI 只在相关路径变更时触发；与本页的分工是「防线有没有被突破」与「质量有没有退化」的差别，两套阈值不可互换）

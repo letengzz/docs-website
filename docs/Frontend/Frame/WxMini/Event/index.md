@@ -111,7 +111,7 @@ Page({
 :::danger 注意
 
  除上表之外的其他组件自定义事件，如无特殊声明都是非冒泡事件
-​ 例如 [form](https://developers.weixin.qq.com/miniprogram/dev/component/form.html) 的`submit`事件，[input](https://developers.weixin.qq.com/miniprogram/dev/component/input.html) 的`input`事件。
+例如 [form](https://developers.weixin.qq.com/miniprogram/dev/component/form.html) 的`submit`事件，[input](https://developers.weixin.qq.com/miniprogram/dev/component/input.html) 的`input`事件。
 
 :::
 

@@ -71,7 +71,7 @@ wx.request({
 
 将 **不校验合法域名、web-view (业务域名)、TLS版本以及HTTPS证书** 勾选上：
 
-​      <img src="./assets/41-%E4%B8%8D%E6%A0%A1%E9%AA%8C%E5%90%88%E6%B3%95%E5%9F%9F%E5%90%8D-175386279512711.png" alt="网络请求" style="zoom:61%;" />  <img src="./assets/image-20250730161555409.png" alt="image-20250730161555409" style="zoom:60%;" />     
+<img src="./assets/41-%E4%B8%8D%E6%A0%A1%E9%AA%8C%E5%90%88%E6%B3%95%E5%9F%9F%E5%90%8D-175386279512711.png" alt="网络请求" style="zoom:61%;" />  <img src="./assets/image-20250730161555409.png" alt="image-20250730161555409" style="zoom:60%;" />     
 
 :::danger 注意
 
@@ -581,7 +581,7 @@ Page({
 
 2. 在 页面.js 中定义 onPullDownRefresh 事件监听用户下拉刷新。
 
-​                  <img src="./assets/%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0-175386409783018.gif" alt="下拉刷新" style="zoom:67%;" />      <img src="./assets/%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%A1%88%E4%BE%8B.gif" alt="下拉刷新案例" style="zoom:70%;" />     
+<img src="./assets/%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0-175386409783018.gif" alt="下拉刷新" style="zoom:67%;" />      <img src="./assets/%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%A1%88%E4%BE%8B.gif" alt="下拉刷新案例" style="zoom:70%;" />     
 
 ```html
 <view wx:for="{{ numList }}" wx:key="*this">{{ item }}</view>
