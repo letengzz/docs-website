@@ -879,7 +879,7 @@ button {
 
 首先，需要定义一个统一的插件接口，所有网络请求相关的功能（如取消、防重、重试等）都将作为插件，需要实现该接口。
 
-在 `src/http/core/`目录下创建 `plugin.ts`：：
+在 `src/http/core/`目录下创建 `plugin.ts`：
 
 ```text
 import type { AxiosInstance } from 'axios'

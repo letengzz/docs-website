@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 452" width="760" height="452" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <title>HNSW 分层图结构与一次查询的下降路径</title>
+  <rect width="760" height="452" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">HNSW：三层近邻图 + 自顶向下的贪心下降</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">上层稀疏负责「跳得远」，下层稠密负责「收得准」；每层内部是同一套贪心算法</text>
+
+  <rect x="28" y="70" width="470" height="300" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="44" y="90" font-size="10" fill="#334155" font-weight="bold">三层图（示意，L2 最稀疏、L0 含全部向量）</text>
+
+  <g fill="none" stroke="#A78BFA" stroke-width="1.6">
+    <path d="M120 128 L300 112"/>
+    <path d="M300 112 L430 140"/>
+    <path d="M430 140 L120 128"/>
+  </g>
+  <g fill="#7C3AED">
+    <circle cx="120" cy="128" r="7"/>
+    <circle cx="300" cy="112" r="7"/>
+    <circle cx="430" cy="140" r="7"/>
+  </g>
+  <text x="44" y="118" font-size="9" fill="#5B21B6" font-weight="bold">L2</text>
+  <text x="460" y="118" font-size="8.5" fill="#6D28D9">入口 → 一跳能跨半个空间</text>
+
+  <g fill="none" stroke="#38BDF8" stroke-width="1.6">
+    <path d="M96 208 L216 196"/>
+    <path d="M216 196 L356 214"/>
+    <path d="M356 214 L468 200"/>
+    <path d="M96 208 L356 214"/>
+    <path d="M216 196 L468 200"/>
+  </g>
+  <g fill="#0EA5E9">
+    <circle cx="96" cy="208" r="7"/>
+    <circle cx="216" cy="196" r="7"/>
+    <circle cx="356" cy="214" r="7"/>
+    <circle cx="468" cy="200" r="7"/>
+  </g>
+  <text x="44" y="198" font-size="9" fill="#0369A1" font-weight="bold">L1</text>
+  <text x="504" y="206" font-size="8.5" fill="#0284C7">候选收敛到目标附近</text>
+
+  <g fill="none" stroke="#94A3B8" stroke-width="1.4">
+    <path d="M84 300 L156 280"/>
+    <path d="M156 280 L232 296"/>
+    <path d="M232 296 L308 278"/>
+    <path d="M308 278 L384 300"/>
+    <path d="M384 300 L452 284"/>
+    <path d="M452 284 L500 306"/>
+    <path d="M84 300 L232 296"/>
+    <path d="M232 296 L384 300"/>
+    <path d="M308 278 L452 284"/>
+    <path d="M156 280 L308 278"/>
+  </g>
+  <g fill="#64748B">
+    <circle cx="84" cy="300" r="6"/>
+    <circle cx="156" cy="280" r="6"/>
+    <circle cx="232" cy="296" r="6"/>
+    <circle cx="308" cy="278" r="6"/>
+    <circle cx="384" cy="300" r="6"/>
+    <circle cx="452" cy="284" r="6"/>
+    <circle cx="500" cy="306" r="6"/>
+  </g>
+  <text x="44" y="290" font-size="9" fill="#334155" font-weight="bold">L0</text>
+  <text x="510" y="330" font-size="8.5" fill="#475569">全部向量都在这一层：M 条边 / 点</text>
+
+  <g stroke="#DC2626" stroke-width="2.2" fill="none" stroke-dasharray="6 4">
+    <path d="M300 112 L430 140"/>
+    <path d="M430 140 L356 214"/>
+    <path d="M356 214 L308 278"/>
+    <path d="M308 278 L384 300"/>
+  </g>
+  <text x="150" y="352" font-size="8.5" fill="#B91C1C">红色虚线 = 一次查询的下降路径：每层都贪心地走向离查询更近的点，直到本层无法再近</text>
+
+  <rect x="518" y="70" width="214" height="300" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="534" y="90" font-size="10" fill="#991B1B" font-weight="bold">三个参数各自的代价</text>
+
+  <text x="534" y="114" font-size="9" fill="#7F1D1D" font-weight="bold">M（每点邻居数）</text>
+  <text x="534" y="130" font-size="8" fill="#B91C1C">建索引时固定，改它要重建</text>
+  <text x="534" y="146" font-size="8" fill="#B91C1C">内存 ≈ N × M × 2 × 8B 之外再加</text>
+  <text x="534" y="162" font-size="8" fill="#B91C1C">常用 16~32；64 只在召回有硬指标时用</text>
+
+  <text x="534" y="190" font-size="9" fill="#7F1D1D" font-weight="bold">efConstruction（建图候选数）</text>
+  <text x="534" y="206" font-size="8" fill="#B91C1C">只影响建索引的时间与质量</text>
+  <text x="534" y="222" font-size="8" fill="#B91C1C">取 M 的若干倍（如 100~400）</text>
+  <text x="534" y="238" font-size="8" fill="#B91C1C">设低了只能重建，改不回来</text>
+
+  <text x="534" y="266" font-size="9" fill="#7F1D1D" font-weight="bold">efSearch（查询候选数）</text>
+  <text x="534" y="282" font-size="8" fill="#B91C1C">唯一可以运行时逐查询调的量</text>
+  <text x="534" y="298" font-size="8" fill="#B91C1C">按「召回—延迟」曲线取拐点</text>
+  <text x="534" y="314" font-size="8" fill="#B91C1C">必须 ≥ 返回条数 k，否则被截断</text>
+  <text x="534" y="336" font-size="8.5" fill="#991B1B" font-weight="bold">调参顺序：先固定前两个并重建，</text>
+  <text x="534" y="352" font-size="8.5" fill="#991B1B" font-weight="bold">再单独扫 efSearch。</text>
+
+  <rect x="28" y="382" width="704" height="56" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.2"/>
+  <text x="44" y="402" font-size="10" fill="#92400E" font-weight="bold">HNSW 的硬伤在「删除」，不在「插入」</text>
+  <text x="44" y="422" font-size="8.5" fill="#B45309">插入只改局部邻域；删除若真的摘点会把图切断 → 主流实现都改成「标记删除 + 查询时跳过」，于是指针密度不变、有效连通性下降：</text>
+  <text x="44" y="436" font-size="8.5" fill="#B45309">表现是「召回随时间缓慢下滑」。因此高频增删的场景要设重建周期（如每周重建 L0），或直接换 IVF-PQ / 落盘索引。</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="环境前置：四道闸门与它们解锁的判据">
+  <title>环境前置：四道闸门 × 解锁的判据</title>
+  <rect x="0" y="0" width="900" height="520" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="23" font-weight="bold" fill="#16324f">环境前置：把「未跑」变成「可跑」</text>
+    <text x="30" y="64" font-size="13" fill="#5a6b7b">第 134 天的结论是「设计完成、运行期未证明」—— 今天不写新需求，只把四道闸门变成能判定过不过的命令。</text>
+
+    <rect x="30" y="88" width="470" height="300" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="48" y="114" font-size="15" font-weight="bold" fill="#2d7d9a">四道闸门：BL-1 与 BL-2 是公共前置</text>
+
+    <rect x="44" y="130" width="442" height="58" rx="8" fill="#eaf4f8" stroke="#c0392b" stroke-width="1.5"/>
+    <text x="58" y="150" font-size="13" font-weight="bold" fill="#16324f">BL-1　容器运行时（公共前置）</text>
+    <text x="58" y="168" font-size="11" fill="#5a6b7b">解除判据：docker compose up -d tsdb collector 能起两个容器</text>
+    <text x="58" y="182" font-size="11" fill="#c0392b">挡：三条验收的全部动态步骤（A1~A4 / B1~B4 / C1~C5）</text>
+
+    <rect x="44" y="192" width="442" height="58" rx="8" fill="#eaf4f8" stroke="#c0392b" stroke-width="1.5"/>
+    <text x="58" y="212" font-size="13" font-weight="bold" fill="#16324f">BL-2　工程骨架（公共前置）</text>
+    <text x="58" y="230" font-size="11" fill="#5a6b7b">解除判据：A2 返回三个 job、B2 能看到两组规则</text>
+    <text x="58" y="244" font-size="11" fill="#c0392b">挡：配置文件与最小服务骨架一个都不能少</text>
+
+    <rect x="44" y="254" width="442" height="58" rx="8" fill="#ffffff" stroke="#c47a2c" stroke-width="1.5"/>
+    <text x="58" y="274" font-size="13" font-weight="bold" fill="#16324f">BL-3　JDK 基线（只挡一条）</text>
+    <text x="58" y="292" font-size="11" fill="#5a6b7b">解除判据：服务能起且 reload 端口在监听</text>
+    <text x="58" y="306" font-size="11" fill="#c47a2c">解锁 L2（RR-C / RR-D）；或降基线到 17 并记录偏差</text>
+
+    <rect x="44" y="316" width="442" height="58" rx="8" fill="#ffffff" stroke="#6b5bd2" stroke-width="1.5"/>
+    <text x="58" y="336" font-size="13" font-weight="bold" fill="#16324f">BL-4　通知渠道（可先用替代）</text>
+    <text x="58" y="354" font-size="11" fill="#5a6b7b">解除判据：本地日志接收器收到 1 条通知</text>
+    <text x="58" y="368" font-size="11" fill="#6b5bd2">解锁 L3（AR-C/D/E/F/H）；真实渠道随后接，不影响分组逻辑</text>
+
+    <rect x="520" y="88" width="350" height="118" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="1.5"/>
+    <text x="536" y="112" font-size="13" font-weight="bold" fill="#3fae8c">解锁：三条验收的动态步骤</text>
+    <text x="536" y="134" font-size="11" fill="#16324f">验收一 A1~A4（A5 静态校验早已可跑）</text>
+    <text x="536" y="152" font-size="11" fill="#16324f">验收二 B1~B4（B2 的语法与条数已可跑）</text>
+    <text x="536" y="170" font-size="11" fill="#16324f">验收三 C1~C5（C3 可先用接收器跑通）</text>
+    <text x="536" y="192" font-size="11" fill="#3fae8c" font-weight="bold">通过标准不变：覆盖 + 非零样本 + 条数 = 分组数</text>
+
+    <rect x="520" y="214" width="350" height="112" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="1.5"/>
+    <text x="536" y="238" font-size="13" font-weight="bold" fill="#6b5bd2">解锁：第 3 周遗留项 L1~L4</text>
+    <text x="536" y="260" font-size="11" fill="#16324f">L1　DA-A / DA-D / DA-H（第 129 天）</text>
+    <text x="536" y="278" font-size="11" fill="#16324f">L2　RR-C / RR-D（第 130 天）</text>
+    <text x="536" y="296" font-size="11" fill="#16324f">L3　AR-C / D / E / F / H（第 131 天）</text>
+    <text x="536" y="314" font-size="11" fill="#16324f">L4　E2E-B / E2E-D / E2E-F（第 133 天）</text>
+
+    <rect x="520" y="334" width="350" height="54" rx="10" fill="#fdf3e6" stroke="#c47a2c" stroke-width="1.5"/>
+    <text x="536" y="354" font-size="12" font-weight="bold" fill="#c47a2c">不解锁的三样（顺序纪律）</text>
+    <text x="536" y="372" font-size="10.5" fill="#16324f">静态判据（已跑过）· 压测与容量（第 3 周末）· 部署与上线验收（第 4 周）</text>
+
+    <rect x="30" y="396" width="840" height="112" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="48" y="420" font-size="14" font-weight="bold" fill="#2d7d9a">一条命令判定「现在能不能开始跑验收」：preflight.sh</text>
+    <text x="48" y="442" font-size="11" fill="#16324f">PR1 容器运行时可用　PR2 端口未被占用（9090 / 9093 / 3000 / 8080）　PR3 磁盘余量 ≥ 5 GB</text>
+    <text x="48" y="460" font-size="11" fill="#16324f">PR4 JDK 版本符合基线或已登记偏差　PR5 规则文件语法与条数　PR6 通知接收器可达</text>
+    <text x="48" y="482" font-size="11" fill="#5a6b7b">退出码 0 = 六项全过，可以开跑　1 = 有前置未满足，先修再跑　2 = 环境不完整但可部分执行</text>
+    <text x="48" y="500" font-size="11" fill="#c0392b" font-weight="bold">它的输出是「现在能跑哪几条」，不是「一切正常」—— 后者会让人以为验收已经过了</text>
+  </g>
+</svg>

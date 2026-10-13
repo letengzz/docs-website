@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <title>带过滤的向量检索：三种流派与「选择性悬崖」实测</title>
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">过滤把图打碎：越严的过滤，召回掉得越狠</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">同一条查询、同一个索引，只是换了一个 WHERE，召回率可以从 99% 掉到 0.1%</text>
+
+  <text x="60" y="78" font-size="11" fill="#0F172A" font-weight="bold">三种流派（按「过滤发生在哪一步」划分）</text>
+
+  <rect x="28" y="90" width="228" height="126" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="142" y="110" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">后置过滤 Post-filter</text>
+  <text x="44" y="130" font-size="8.5" fill="#1D4ED8">先搜 top-k，再丢掉不合格的</text>
+  <text x="44" y="148" font-size="8.5" fill="#1D4ED8">实现最简单，兼容任何索引</text>
+  <text x="44" y="168" font-size="8.5" fill="#B91C1C">问题：返回条数不足</text>
+  <text x="44" y="184" font-size="8.5" fill="#B91C1C">「要 10 条只来 1 条」</text>
+  <text x="44" y="204" font-size="8.5" fill="#1E3A8A" font-weight="bold">补救：放大 k 或 ef，浪费算力</text>
+
+  <rect x="266" y="90" width="228" height="126" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+  <text x="380" y="110" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">前置过滤 Pre-filter</text>
+  <text x="282" y="130" font-size="8.5" fill="#0F766E">先用标量索引取候选 ID 集</text>
+  <text x="282" y="148" font-size="8.5" fill="#0F766E">再在子集上做暴力或建子图</text>
+  <text x="282" y="168" font-size="8.5" fill="#047857">过滤极严时最稳：召回可达 100%</text>
+  <text x="282" y="184" font-size="8.5" fill="#047857">（子集小，暴力就够）</text>
+  <text x="282" y="204" font-size="8.5" fill="#115E59" font-weight="bold">代价：宽过滤时等于全量扫描</text>
+
+  <rect x="504" y="90" width="228" height="126" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="618" y="110" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">图内过滤 Filter-aware</text>
+  <text x="520" y="130" font-size="8.5" fill="#6D28D9">两种实现：索引期加边 / 查询期绕行</text>
+  <text x="520" y="148" font-size="8.5" fill="#6D28D9">加边：把共享同一标量值的点连起来</text>
+  <text x="520" y="166" font-size="8.5" fill="#6D28D9">绕行（ACORN）：穿过被滤掉的邻居</text>
+  <text x="520" y="186" font-size="8.5" fill="#6D28D9">查询规划器按选择性自动选路</text>
+  <text x="520" y="204" font-size="8.5" fill="#5B21B6" font-weight="bold">代价：内存/延迟上升</text>
+
+  <text x="60" y="248" font-size="11" fill="#0F172A" font-weight="bold">「选择性悬崖」实测（100 万条 96 维向量，hnsw_ef=64，单关键字过滤）</text>
+
+  <rect x="28" y="260" width="704" height="130" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="44" y="280" font-size="8.5" fill="#475569">左列：过滤命中的比例（选择性）。百分比越低 = 过滤越严。数值为 Recall@10 与平均服务端延迟。</text>
+
+  <text x="60" y="304" font-size="8.5" fill="#1E293B" font-weight="bold">纯图（不加边、不绕行）</text>
+  <rect x="250" y="294" width="120" height="14" rx="3" fill="#10B981"/>
+  <text x="378" y="305" font-size="8.5" fill="#065F46">20% 过滤：62.9% @ 1.6ms</text>
+  <rect x="250" y="312" width="40" height="14" rx="3" fill="#F59E0B"/>
+  <text x="300" y="323" font-size="8.5" fill="#92400E">10%：20.6% @ 1.7ms</text>
+  <rect x="250" y="330" width="6" height="14" rx="3" fill="#DC2626"/>
+  <text x="266" y="341" font-size="8.5" fill="#991B1B">1%：0.1% @ 1.6ms —— 图被打碎，几乎全漏</text>
+  <text x="250" y="360" font-size="8.5" fill="#475569">延迟几乎不变，说明「漏」不是算得不够多，而是图本身已经不连通</text>
+
+  <text x="44" y="382" font-size="8.5" fill="#1E293B" font-weight="bold">修法对照</text>
+  <text x="120" y="382" font-size="8.5" fill="#0F766E">索引期加边：1% 过滤 → 99.8% @ 1.0ms（延迟几乎不涨，代价是内存与建索引时间）</text>
+  <text x="120" y="398" font-size="8.5" fill="#6D28D9">查询期绕行：1% 过滤 → 67.7% @ 4.7ms（延迟涨 3~5 倍，且在极严过滤上仍有上限）</text>
+  <text x="120" y="414" font-size="8.5" fill="#1D4ED8">规划器 + 两法并用：四个过滤档位均达 99.9%~100%（极严过滤直接走标量索引）</text>
+  <text x="44" y="432" font-size="8.5" fill="#991B1B" font-weight="bold">结论：不要只测一个平均召回率——先测「覆盖约五分之一集合的那个值」和「两个条件的 AND」，它们是最容易崩的两类形状。</text>
+</svg>

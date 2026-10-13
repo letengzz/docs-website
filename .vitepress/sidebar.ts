@@ -4,7 +4,7 @@ import { Auth, DDD, DesignPatterns, DistributedCache, DotNet, Ecommerce, Gateway
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontOthers, FrontPWA, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, ChaosEngineering, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, SecurityHardening, Terraform, VM } from "./ops";
-import { BigData, CDC, ClickHouse, DBOverview, DataModeling, DataWarehouse, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries } from "./db";
+import { BigData, CDC, ClickHouse, DBOverview, DataModeling, DataWarehouse, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
@@ -80,7 +80,7 @@ export const sidebar = {
     {
       text: "数据库",
       collapsed: true,
-      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...DataWarehouse, ...BigData, ...ClickHouse, ...Neo4j, ...TimeSeries, ...CDC],
+      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...DataWarehouse, ...BigData, ...ClickHouse, ...Neo4j, ...TimeSeries, ...CDC, ...VectorDatabase],
     },
   ],
   "/docs/Ops": [
@@ -176,6 +176,7 @@ export const sidebar = {
   "/docs/DB/Neo4j": Neo4j,
   "/docs/DB/Middleware": Middleware,
   "/docs/DB/CDC": CDC,
+  "/docs/DB/VectorDatabase": VectorDatabase,
   "/docs/Ops/VM": VM,
   "/docs/Ops/Linux": Linux,
   "/docs/Ops/Ansible": Ansible,

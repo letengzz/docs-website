@@ -136,3 +136,4 @@ if __name__ == "__main__":
 - LLM-as-Judge 的位置/长度/自我偏好偏见与「交换位置评两次」的校准实现：[微调评测 · 模型裁判的正确用法](../../FineTuning/Evaluation/index.md)
 - [AI 应用观测与评估 · 在线评估](../../LLMObservability/OnlineEval/index.md)：**本页给指标的定义与算法，该页给「把这些指标接到线上真实流量上」的工程**——分层采样（错误必留、正常流量 1%~5%）、规则型先行与裁判型收尾的取舍、用 30~50 条人工标注校准裁判、分数挂回 Trace 以便从低分跳回现场
 - [AI 应用观测与评估 · Trace 模型](../../LLMObservability/Tracing/index.md)：指标要挂在可定位的步骤上，前提是 span kind 划对——`RETRIEVER` 与 `LLM` 必须分开，否则「检索问题」与「生成问题」在报表里无法区分
+- [向量数据库深入 · HNSW 原理](../../../DB/VectorDatabase/HNSW/index.md)：**本页给的是「召回掉没掉」的判据，该页给的是「为什么会掉」的机制**——`M` / `efConstruction` / `efSearch` 三参数各自换到什么、删除为什么会让图退化、内存怎么随 `M` 线性增长。两边的闭环是：本页测出 Recall@K 不达标 → 去那边按可复现流程调参 → 回到本页用同一评测集复核，**参数只认这套闭环的结果，不认经验值**

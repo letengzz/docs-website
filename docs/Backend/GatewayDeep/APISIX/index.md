@@ -64,7 +64,7 @@ APISIX 用 **radixtree（基数树）** 做路由匹配,支持多种模式,比�
 | `uri` / `uris` | 单个或多个路径;**`uri` 与 `uris` 不能同时出现** |
 | `host` / `hosts` | 单个或多个域名,支持通配（`*.example.com`） |
 | `methods` | HTTP 方法 |
-| `vars` | **表达式条件**（如 `["arg_version", "==", "beta"]`),灰度与 A/B 的主力 |
+| `vars` | **表达式条件**（如 `["arg_version", "==", "beta"]`），灰度与 A/B 的主力 |
 | `filter_func` | 自定义 Lua 匹配函数（最灵活也最不可控） |
 | `priority` | 数值,越大越优先;相同时按匹配的具体程度 |
 

@@ -287,6 +287,23 @@ export const DataWarehouse = [
     ],
   },
 ];
+export const VectorDatabase = [
+  {
+    text: "向量数据库深入",
+    link: "/docs/DB/VectorDatabase/index.md",
+    items: [
+      { text: "概述：向量检索的四条边界", link: "/docs/DB/VectorDatabase/Overview/index.md" },
+      { text: "HNSW 原理深入", link: "/docs/DB/VectorDatabase/HNSW/index.md" },
+      { text: "索引算法全景", link: "/docs/DB/VectorDatabase/IndexAlgorithms/index.md" },
+      { text: "量化深入", link: "/docs/DB/VectorDatabase/Quantization/index.md" },
+      { text: "过滤与元数据检索", link: "/docs/DB/VectorDatabase/Filtering/index.md" },
+      { text: "混合检索", link: "/docs/DB/VectorDatabase/HybridSearch/index.md" },
+      { text: "运维与容量", link: "/docs/DB/VectorDatabase/Operations/index.md" },
+      { text: "实战：企业知识库检索链路", link: "/docs/DB/VectorDatabase/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/VectorDatabase/FAQ/index.md" },
+    ],
+  },
+];
 export const BigData = [
   {
     text: "大数据生态",

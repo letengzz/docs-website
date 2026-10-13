@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 432" width="760" height="432" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <title>容量估算与运维周期：内存预算、重建、升级与观测</title>
+  <rect width="760" height="432" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">容量先算，再选型；索引是「会老」的资产</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">向量库最容易在「上线三个月后」出问题：数据涨了、图旧了、量化和原文的比例忘了</text>
+
+  <text x="60" y="78" font-size="11" fill="#0F172A" font-weight="bold">内存预算：三段相加，别只算向量本身</text>
+
+  <rect x="28" y="90" width="222" height="120" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="139" y="110" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">① 原始向量（或量化码）</text>
+  <text x="44" y="130" font-size="8.5" fill="#1D4ED8">N × d × 4B（float32）</text>
+  <text x="44" y="148" font-size="8.5" fill="#1D4ED8">量化后按压缩比替换</text>
+  <text x="44" y="166" font-size="8.5" fill="#1D4ED8">示例：1 亿 × 768 维 ≈ 286 GB</text>
+  <text x="44" y="188" font-size="8.5" fill="#1E3A8A" font-weight="bold">这是最容易算的一段</text>
+  <text x="44" y="204" font-size="8.5" fill="#1E3A8A" font-weight="bold">也是唯一会随维度线性增长的一段</text>
+
+  <rect x="266" y="90" width="222" height="120" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="377" y="110" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">② 图 / 倒排结构</text>
+  <text x="282" y="130" font-size="8.5" fill="#6D28D9">图路线：约 N × M × 8B × 2</text>
+  <text x="282" y="148" font-size="8.5" fill="#6D28D9">M=32 时 ≈ 48 GB（对上例）</text>
+  <text x="282" y="166" font-size="8.5" fill="#6D28D9">倒排路线：远小于图</text>
+  <text x="282" y="188" font-size="8.5" fill="#5B21B6" font-weight="bold">这段最容易被漏，也是</text>
+  <text x="282" y="204" font-size="8.5" fill="#5B21B6" font-weight="bold">M 调大的真实代价所在</text>
+
+  <rect x="504" y="90" width="228" height="120" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+  <text x="618" y="110" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">③ 标量字段与运行时开销</text>
+  <text x="520" y="130" font-size="8.5" fill="#0F766E">payload / 元数据与它的索引</text>
+  <text x="520" y="148" font-size="8.5" fill="#0F766E">段（segment）副本与合并余量</text>
+  <text x="520" y="166" font-size="8.5" fill="#0F766E">查询时的候选集与排序缓冲</text>
+  <text x="520" y="188" font-size="8.5" fill="#115E59" font-weight="bold">经验做法：把①②之和再</text>
+  <text x="520" y="204" font-size="8.5" fill="#115E59" font-weight="bold">乘 1.3~1.5 作为机器预留</text>
+
+  <rect x="28" y="224" width="704" height="30" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.1"/>
+  <text x="44" y="244" font-size="8.5" fill="#92400E">上例合计 ≈ 334 GB（286 + 48）→ 单机放不下的三条出路：量化到 int8（约 72 GB 级）、换落盘索引（HFresh / DiskANN）、按租户或时间分片。</text>
+
+  <text x="60" y="276" font-size="11" fill="#0F172A" font-weight="bold">运维周期：四件必须排进日历的事</text>
+
+  <rect x="28" y="288" width="170" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="44" y="308" font-size="9.5" fill="#1E293B" font-weight="bold">重建索引</text>
+  <text x="44" y="326" font-size="8" fill="#334155">删除与高频更新会让图劣化</text>
+  <text x="44" y="342" font-size="8" fill="#334155">按更新量定周期（如每周 L0）</text>
+  <text x="44" y="358" font-size="8" fill="#334155">重建要能在线进行、可回滚</text>
+  <text x="44" y="374" font-size="8" fill="#475569">判据：重建后召回回升到基线</text>
+
+  <rect x="206" y="288" width="170" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="222" y="308" font-size="9.5" fill="#1E293B" font-weight="bold">换嵌入模型</text>
+  <text x="222" y="326" font-size="8" fill="#334155">维度或归一化变了就不能混用</text>
+  <text x="222" y="342" font-size="8" fill="#334155">做法：新建集合 → 双写 → 回填</text>
+  <text x="222" y="358" font-size="8" fill="#334155">→ 灰度切读 → 删旧集合</text>
+  <text x="222" y="374" font-size="8" fill="#475569">判据：新旧集合召回对齐</text>
+
+  <rect x="384" y="288" width="170" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="400" y="308" font-size="9.5" fill="#1E293B" font-weight="bold">版本升级</text>
+  <text x="400" y="326" font-size="8" fill="#334155">先读升级说明里的索引格式变更</text>
+  <text x="400" y="342" font-size="8" fill="#334155">索引格式变了必须重建而非就地升</text>
+  <text x="400" y="358" font-size="8" fill="#334155">滚动升级要留副本余量</text>
+  <text x="400" y="374" font-size="8" fill="#475569">判据：升级后召回与延迟对比基线</text>
+
+  <rect x="562" y="288" width="170" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="578" y="308" font-size="9.5" fill="#1E293B" font-weight="bold">观测与告警</text>
+  <text x="578" y="326" font-size="8" fill="#334155">向量条数 / 索引状态 / 段数</text>
+  <text x="578" y="342" font-size="8" fill="#334155">查询延迟分位 + 召回抽样</text>
+  <text x="578" y="358" font-size="8" fill="#334155">内存水位、磁盘余量、慢查询</text>
+  <text x="578" y="374" font-size="8" fill="#475569">判据：召回抽样能自动报警</text>
+
+  <rect x="28" y="392" width="704" height="32" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.1"/>
+  <text x="44" y="412" font-size="8.5" fill="#991B1B">最容易被忽略的一条：召回率不会「自然地」出现在监控里——它需要一个带标准答案的小样本集定期跑，否则索引劣化会一直静默。</text>
+</svg>

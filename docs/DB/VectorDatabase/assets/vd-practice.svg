@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <title>实战：企业知识库检索链路的七跳</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="17" fill="#0F172A" font-weight="bold">实战：企业知识库检索链路的七跳</text>
+  <text x="450" y="56" text-anchor="middle" font-size="10.5" fill="#64748B">每一跳都有一个「看起来正常但结果是错的」失败模式；判据写在跳与跳之间，而不是只写在终点</text>
+
+  <rect x="30" y="78" width="120" height="86" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="90" y="98" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">① 接入与切分</text>
+  <text x="90" y="116" text-anchor="middle" font-size="7.5" fill="#1D4ED8">按结构切分</text>
+  <text x="90" y="131" text-anchor="middle" font-size="7.5" fill="#1D4ED8">保留标题层级</text>
+  <text x="90" y="146" text-anchor="middle" font-size="7.5" fill="#1D4ED8">记录来源与 ACL</text>
+  <text x="90" y="159" text-anchor="middle" font-size="7.5" fill="#B91C1C">坑：固定长度切</text>
+
+  <rect x="162" y="78" width="120" height="86" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="222" y="98" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 嵌入</text>
+  <text x="222" y="116" text-anchor="middle" font-size="7.5" fill="#1D4ED8">模型与维度定稿</text>
+  <text x="222" y="131" text-anchor="middle" font-size="7.5" fill="#1D4ED8">写入归一化口径</text>
+  <text x="222" y="146" text-anchor="middle" font-size="7.5" fill="#1D4ED8">批处理与重试</text>
+  <text x="222" y="159" text-anchor="middle" font-size="7.5" fill="#B91C1C">坑：查询侧换了模型</text>
+
+  <rect x="294" y="78" width="120" height="86" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="354" y="98" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">③ 建索引</text>
+  <text x="354" y="116" text-anchor="middle" font-size="7.5" fill="#6D28D9">选 M / efConstruction</text>
+  <text x="354" y="131" text-anchor="middle" font-size="7.5" fill="#6D28D9">量化档位与重排</text>
+  <text x="354" y="146" text-anchor="middle" font-size="7.5" fill="#6D28D9">标量字段建索引</text>
+  <text x="354" y="159" text-anchor="middle" font-size="7.5" fill="#B91C1C">坑：只算向量内存</text>
+
+  <rect x="426" y="78" width="120" height="86" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="486" y="98" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">④ 检索</text>
+  <text x="486" y="116" text-anchor="middle" font-size="7.5" fill="#0F766E">两腿并发</text>
+  <text x="486" y="131" text-anchor="middle" font-size="7.5" fill="#0F766E">过滤前置或图内</text>
+  <text x="486" y="146" text-anchor="middle" font-size="7.5" fill="#0F766E">ef 按曲线定</text>
+  <text x="486" y="159" text-anchor="middle" font-size="7.5" fill="#B91C1C">坑：过滤后置</text>
+
+  <rect x="558" y="78" width="120" height="86" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="618" y="98" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">⑤ 融合</text>
+  <text x="618" y="116" text-anchor="middle" font-size="7.5" fill="#B45309">RRF / 加权 RRF</text>
+  <text x="618" y="131" text-anchor="middle" font-size="7.5" fill="#B45309">融合前去重</text>
+  <text x="618" y="146" text-anchor="middle" font-size="7.5" fill="#B45309">保留名次证据</text>
+  <text x="618" y="159" text-anchor="middle" font-size="7.5" fill="#B91C1C">坑：混着加原始分</text>
+
+  <rect x="690" y="78" width="180" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="780" y="98" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">⑥ 重排与⑦ 授权裁剪</text>
+  <text x="780" y="116" text-anchor="middle" font-size="7.5" fill="#B91C1C">交叉编码器重排 top 50</text>
+  <text x="780" y="131" text-anchor="middle" font-size="7.5" fill="#B91C1C">按用户可见范围裁剪结果</text>
+  <text x="780" y="146" text-anchor="middle" font-size="7.5" fill="#B91C1C">返回原文片段与出处</text>
+  <text x="780" y="159" text-anchor="middle" font-size="7.5" fill="#991B1B">坑：只在应用层过滤</text>
+
+  <g stroke="#94A3B8" stroke-width="1.6" fill="none">
+    <path d="M150 121 L162 121"/>
+    <path d="M282 121 L294 121"/>
+    <path d="M414 121 L426 121"/>
+    <path d="M546 121 L558 121"/>
+    <path d="M678 121 L690 121"/>
+  </g>
+
+  <text x="50" y="196" font-size="11" fill="#0F172A" font-weight="bold">跳与跳之间的判据（本页实测口径，全部可在本机执行）</text>
+
+  <rect x="30" y="208" width="270" height="126" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="46" y="228" font-size="9.5" fill="#1E293B" font-weight="bold">切分与嵌入（①→②）</text>
+  <text x="46" y="248" font-size="8" fill="#334155">· 每条向量的「来源 + 层级路径」非空</text>
+  <text x="46" y="266" font-size="8" fill="#334155">· 向量维度与模型名写进集合元数据</text>
+  <text x="46" y="284" font-size="8" fill="#334155">· 查询向量与入库向量同模型（校验哈希）</text>
+  <text x="46" y="302" font-size="8" fill="#334155">· 归一化：用余弦就必须都归一化</text>
+  <text x="46" y="322" font-size="8" fill="#991B1B" font-weight="bold">判据失败的样子：召回「还行」但答案总是偏</text>
+
+  <rect x="312" y="208" width="270" height="126" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="328" y="228" font-size="9.5" fill="#1E293B" font-weight="bold">索引与检索（③→④）</text>
+  <text x="328" y="248" font-size="8" fill="#334155">· 对暴力基准测 recall@10，样本 ≥ 200 条</text>
+  <text x="328" y="266" font-size="8" fill="#334155">· 每个过滤形状单独测，不只测平均</text>
+  <text x="328" y="284" font-size="8" fill="#334155">· ef ≥ k，且量化时开 oversampling</text>
+  <text x="328" y="302" font-size="8" fill="#334155">· p95 延迟在 1.5 倍预算内</text>
+  <text x="328" y="322" font-size="8" fill="#991B1B" font-weight="bold">判据失败的样子：延迟漂亮、召回 60%</text>
+
+  <rect x="594" y="208" width="276" height="126" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="610" y="228" font-size="9.5" fill="#1E293B" font-weight="bold">融合与授权（⑤→⑦）</text>
+  <text x="610" y="248" font-size="8" fill="#334155">· 同一文档不会在结果页出现三次以上</text>
+  <text x="610" y="266" font-size="8" fill="#334155">· 关掉稀疏腿后 recall@10 下降 ≤ 10 个点（否则它没在干活）</text>
+  <text x="610" y="284" font-size="8" fill="#334155">· 越权文档在「重排前」就被剔除，不是在返回前</text>
+  <text x="610" y="302" font-size="8" fill="#334155">· 每条结果都能给出「命中理由」</text>
+  <text x="610" y="322" font-size="8" fill="#991B1B" font-weight="bold">判据失败的样子：答案正确但引用了无权文档</text>
+
+  <rect x="30" y="348" width="840" height="76" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="46" y="368" font-size="10" fill="#991B1B" font-weight="bold">这条链路里最容易越权的一处：向量库的过滤条件写错，等于把「权限」交给了应用层的一行代码</text>
+  <text x="46" y="388" font-size="8.5" fill="#7F1D1D">正确做法是让「可见范围」成为检索请求的一部分（租户键 / ACL 前缀），并让向量库在索引层就参与过滤；</text>
+  <text x="46" y="404" font-size="8.5" fill="#7F1D1D">之后再叠加一次应用层校验。两层都做，代价是少量延迟；只做一层，代价是一次数据泄露。</text>
+  <text x="46" y="420" font-size="8.5" fill="#7F1D1D">判据：用无权用户的身份跑同一条查询，结果里出现 0 条越权文档——这条必须能被自动化重复执行。</text>
+
+  <rect x="30" y="436" width="840" height="66" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="46" y="456" font-size="10" fill="#065F46" font-weight="bold">本页明确不做的四件事</text>
+  <text x="46" y="476" font-size="8.5" fill="#047857">① 不做模型微调与训练（属模型侧）；② 不做图结构与多跳推理（属图检索/GraphRAG）；③ 不做全文检索的完整工程化（属搜索引擎专题）；</text>
+  <text x="46" y="492" font-size="8.5" fill="#047857">④ 不做大模型侧的答案生成与幻觉治理（属 RAG 应用侧）。本页只把「检索这一段」做到可验收，其余四件事各归其位。</text>
+</svg>

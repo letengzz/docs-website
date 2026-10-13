@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 428" width="760" height="428" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <title>向量数据库深入专题地图：写入、索引、检索、重排四段</title>
+  <rect width="760" height="428" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">向量数据库深入：一条查询在系统里走过的四段</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">索引与量化决定了「能不能装下、快不快」，过滤与融合决定了「答案对不对」</text>
+
+  <rect x="28" y="70" width="164" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="110" y="90" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">① 写入</text>
+  <text x="110" y="110" text-anchor="middle" font-size="8" fill="#1D4ED8">嵌入模型 → 向量 + 标量</text>
+  <text x="110" y="126" text-anchor="middle" font-size="8" fill="#1D4ED8">维度与归一化口径</text>
+  <text x="110" y="142" text-anchor="middle" font-size="8" fill="#1D4ED8">schema 与过滤字段</text>
+  <text x="110" y="158" text-anchor="middle" font-size="8" fill="#1D4ED8">分片键 / 租户键</text>
+
+  <rect x="204" y="70" width="164" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="286" y="90" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">② 索引</text>
+  <text x="286" y="110" text-anchor="middle" font-size="8" fill="#6D28D9">HNSW / IVF / DiskANN</text>
+  <text x="286" y="126" text-anchor="middle" font-size="8" fill="#6D28D9">量化：SQ / PQ / BQ / RQ</text>
+  <text x="286" y="142" text-anchor="middle" font-size="8" fill="#6D28D9">内存预算与重建周期</text>
+  <text x="286" y="158" text-anchor="middle" font-size="8" fill="#6D28D9">过滤图的加边策略</text>
+
+  <rect x="380" y="70" width="164" height="96" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="462" y="90" text-anchor="middle" font-size="10.5" fill="#115E59" font-weight="bold">③ 检索</text>
+  <text x="462" y="110" text-anchor="middle" font-size="8" fill="#0F766E">候选集：ef / probes / nprobe</text>
+  <text x="462" y="126" text-anchor="middle" font-size="8" fill="#0F766E">过滤：前置 / 图内 / 后置</text>
+  <text x="462" y="142" text-anchor="middle" font-size="8" fill="#0F766E">稀疏腿：BM25 / 学习稀疏</text>
+  <text x="462" y="158" text-anchor="middle" font-size="8" fill="#0F766E">多向量：后期交互</text>
+
+  <rect x="556" y="70" width="176" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="644" y="90" text-anchor="middle" font-size="10.5" fill="#92400E" font-weight="bold">④ 融合与重排</text>
+  <text x="644" y="110" text-anchor="middle" font-size="8" fill="#B45309">RRF / 加权融合 / 相对分数</text>
+  <text x="644" y="126" text-anchor="middle" font-size="8" fill="#B45309">去重与多样性（MMR）</text>
+  <text x="644" y="142" text-anchor="middle" font-size="8" fill="#B45309">交叉编码器重排</text>
+  <text x="644" y="158" text-anchor="middle" font-size="8" fill="#B45309">top-k 交给上层</text>
+
+  <g stroke="#94A3B8" stroke-width="1.6" fill="none">
+    <path d="M192 118 L204 118"/>
+    <path d="M368 118 L380 118"/>
+    <path d="M544 118 L556 118"/>
+  </g>
+
+  <text x="60" y="196" font-size="11" fill="#0F172A" font-weight="bold">两条正交轴（本专题的主线）</text>
+
+  <rect x="28" y="208" width="342" height="102" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="44" y="228" font-size="10" fill="#1E293B" font-weight="bold">轴一 · 空间：能不能装下</text>
+  <text x="44" y="248" font-size="8.5" fill="#334155">内存 = N ×（d × 4B + 图开销）；量化是唯一的大杠杆</text>
+  <text x="44" y="266" font-size="8.5" fill="#334155">SQ int8 ≈ 4×、BQ ≈ 32×、PQ ≈ 10~30× 压缩</text>
+  <text x="44" y="284" font-size="8.5" fill="#334155">量化只用于「找候选」，最终必须用原始向量重排</text>
+  <text x="44" y="302" font-size="8.5" fill="#334155">装不下的三条出路：量化 / 落盘索引 / 分片</text>
+
+  <rect x="390" y="208" width="342" height="102" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="406" y="228" font-size="10" fill="#1E293B" font-weight="bold">轴二 · 时间：答案对不对</text>
+  <text x="406" y="248" font-size="8.5" fill="#334155">召回率是唯一可信的指标，必须对暴力基准测</text>
+  <text x="406" y="266" font-size="8.5" fill="#334155">过滤会把图打碎：最严的过滤往往召回最差</text>
+  <text x="406" y="284" font-size="8.5" fill="#334155">单一稠密腿必然漏掉编码、编号、专名</text>
+  <text x="406" y="302" font-size="8.5" fill="#334155">两腿融合后再重排：召回在检索，精度在重排</text>
+
+  <rect x="28" y="326" width="704" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="44" y="346" font-size="10" fill="#991B1B" font-weight="bold">四条边界（先定边界再选型）</text>
+  <text x="44" y="366" font-size="8.5" fill="#7F1D1D">① 数据边界：向量是派生物，删除源数据时必须同步删除向量，否则「已删除」的内容还能被检索出来</text>
+  <text x="44" y="382" font-size="8.5" fill="#7F1D1D">② 一致性边界：向量库与业务库不是同一个事务域，接受秒级到分钟级的最终一致</text>
+  <text x="44" y="398" font-size="8.5" fill="#7F1D1D">③ 精度边界：ANN 是概率算法，「查不到」是正常输出，必须能区分「确实没有」与「索引没找到」</text>
+  <text x="44" y="414" font-size="8.5" fill="#7F1D1D">④ 成本边界：内存比磁盘贵一个数量级，容量规划必须在写入之前完成</text>
+</svg>

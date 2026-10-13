@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 428" width="760" height="428" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <title>量化四档：压缩比、精度代价与「找候选 + 原始向量重排」两段式</title>
+  <rect width="760" height="428" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">量化：用精度换空间，再用重排把精度买回来</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">四档压缩比对应四种完全不同的使用位置——搞错位置就会出现「省了内存、答案没了」</text>
+
+  <text x="60" y="78" font-size="11" fill="#0F172A" font-weight="bold">四档（以 1536 维 float32 = 6144 B / 条 为基准）</text>
+
+  <rect x="28" y="90" width="170" height="132" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="113" y="110" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">标量量化 SQ（int8）</text>
+  <text x="113" y="130" text-anchor="middle" font-size="8.5" fill="#1D4ED8">每维 1 字节 · 4× 压缩</text>
+  <text x="113" y="148" text-anchor="middle" font-size="8.5" fill="#1D4ED8">1536 维 → 1536 B</text>
+  <text x="113" y="168" text-anchor="middle" font-size="8.5" fill="#1D4ED8">损失最小，通常 ≤ 1%</text>
+  <text x="113" y="186" text-anchor="middle" font-size="8.5" fill="#1D4ED8">无需训练（按分位数裁剪）</text>
+  <text x="113" y="208" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">生产默认首选</text>
+
+  <rect x="206" y="90" width="170" height="132" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="291" y="110" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">乘积量化 PQ</text>
+  <text x="291" y="130" text-anchor="middle" font-size="8.5" fill="#6D28D9">切子向量 + 码本 · 10~30×</text>
+  <text x="291" y="148" text-anchor="middle" font-size="8.5" fill="#6D28D9">768 维 96 子段 → 96 B</text>
+  <text x="291" y="168" text-anchor="middle" font-size="8.5" fill="#6D28D9">码本要训练，依赖数据分布</text>
+  <text x="291" y="186" text-anchor="middle" font-size="8.5" fill="#6D28D9">距离用查表近似，有额外开销</text>
+  <text x="291" y="208" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">内存最紧时的主力</text>
+
+  <rect x="384" y="90" width="170" height="132" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+  <text x="469" y="110" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">二值量化 BQ / BBQ</text>
+  <text x="469" y="130" text-anchor="middle" font-size="8.5" fill="#0F766E">每维 1 bit · 32× 压缩</text>
+  <text x="469" y="148" text-anchor="middle" font-size="8.5" fill="#0F766E">1536 维 → 192 B</text>
+  <text x="469" y="168" text-anchor="middle" font-size="8.5" fill="#0F766E">距离用位运算，最快</text>
+  <text x="469" y="186" text-anchor="middle" font-size="8.5" fill="#0F766E">高维（≥1024）效果才好</text>
+  <text x="469" y="208" text-anchor="middle" font-size="8.5" fill="#115E59" font-weight="bold">必须配重排才可用</text>
+
+  <rect x="562" y="90" width="170" height="132" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="647" y="110" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">旋转量化 RQ（新）</text>
+  <text x="647" y="130" text-anchor="middle" font-size="8.5" fill="#B45309">先旋转再分桶 · 4~32×</text>
+  <text x="647" y="148" text-anchor="middle" font-size="8.5" fill="#B45309">RQ-8 压质心（4×）</text>
+  <text x="647" y="166" text-anchor="middle" font-size="8.5" fill="#B45309">RQ-1 压落盘向量（32×）</text>
+  <text x="647" y="184" text-anchor="middle" font-size="8.5" fill="#B45309">4-bit 档刚落地，尚在预览</text>
+  <text x="647" y="208" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">关注演进，慎当基线</text>
+
+  <text x="60" y="248" font-size="11" fill="#0F172A" font-weight="bold">两段式：量化只负责「找候选」，原始向量负责「定顺序」</text>
+
+  <rect x="28" y="260" width="150" height="66" rx="8" fill="#F1F5F9" stroke="#475569" stroke-width="1"/>
+  <text x="103" y="282" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">① 查询向量</text>
+  <text x="103" y="302" text-anchor="middle" font-size="8" fill="#475569">同一模型、同一归一化</text>
+  <text x="103" y="318" text-anchor="middle" font-size="8" fill="#475569">同一距离度量</text>
+
+  <rect x="196" y="260" width="166" height="66" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="279" y="282" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 量化向量上扫图</text>
+  <text x="279" y="302" text-anchor="middle" font-size="8" fill="#1D4ED8">oversampling 放大候选数</text>
+  <text x="279" y="318" text-anchor="middle" font-size="8" fill="#1D4ED8">（如取 k × 3 ~ k × 10）</text>
+
+  <rect x="380" y="260" width="166" height="66" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.2"/>
+  <text x="463" y="282" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">③ 原始向量重排</text>
+  <text x="463" y="302" text-anchor="middle" font-size="8" fill="#0F766E">对候选重算精确距离</text>
+  <text x="463" y="318" text-anchor="middle" font-size="8" fill="#0F766E">这一步决定最终顺序</text>
+
+  <rect x="564" y="260" width="168" height="66" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="648" y="282" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">④ 返回 top-k</text>
+  <text x="648" y="302" text-anchor="middle" font-size="8" fill="#475569">分数来自精确距离</text>
+  <text x="648" y="318" text-anchor="middle" font-size="8" fill="#475569">而不是量化近似值</text>
+
+  <g stroke="#94A3B8" stroke-width="1.6" fill="none">
+    <path d="M178 293 L196 293"/>
+    <path d="M362 293 L380 293"/>
+    <path d="M546 293 L564 293"/>
+  </g>
+
+  <rect x="28" y="340" width="704" height="76" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="44" y="360" font-size="10" fill="#991B1B" font-weight="bold">三个会静默出错的点</text>
+  <text x="44" y="380" font-size="8.5" fill="#7F1D1D">① 只收了量化向量、没留原始向量 → 重排无从谈起，「省了内存」直接变成「精度不可恢复」；主流实现会额外占 3%~25% 磁盘存原文</text>
+  <text x="44" y="396" font-size="8.5" fill="#7F1D1D">② oversampling 没开或太小 → 量化把真邻居挤出候选集，召回掉十几个点，而延迟指标一切正常</text>
+  <text x="44" y="412" font-size="8.5" fill="#7F1D1D">③ 低维向量（如 384 维）上强上二值量化 → 信息量不足，损失不可逆；维度越低越不该激进压缩</text>
+</svg>

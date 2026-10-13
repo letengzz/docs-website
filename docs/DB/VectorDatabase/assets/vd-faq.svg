@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 424" width="760" height="424" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <title>向量检索问题分诊：五类现象对应的层次与处置</title>
+  <rect width="760" height="424" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">先分诊，再改参数：五类现象对应的层次</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">同一个现象可能出自三个完全不同的层次——「召回掉了」有九成情况不是索引参数的问题</text>
+
+  <rect x="28" y="70" width="704" height="152" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="44" y="90" font-size="9.5" fill="#1E293B" font-weight="bold">现象 → 最可能出问题的层次 → 第一件事</text>
+
+  <text x="44" y="114" font-size="8.5" fill="#334155" font-weight="bold">① 结果看起来「沾边但不对」</text>
+  <text x="300" y="114" font-size="8.5" fill="#1D4ED8">嵌入与口径层</text>
+  <text x="470" y="114" font-size="8.5" fill="#047857">先核对查询侧与入库侧是不是同一个模型、同一归一化</text>
+
+  <text x="44" y="136" font-size="8.5" fill="#334155" font-weight="bold">② 「明明有却查不到」</text>
+  <text x="300" y="136" font-size="8.5" fill="#1D4ED8">过滤与切分层</text>
+  <text x="470" y="136" font-size="8.5" fill="#047857">先看过滤是不是后置；再看切分是不是把答案切断了</text>
+
+  <text x="44" y="158" font-size="8.5" fill="#334155" font-weight="bold">③ 召回随时间下滑</text>
+  <text x="300" y="158" font-size="8.5" fill="#7C3AED">索引健康层</text>
+  <text x="470" y="158" font-size="8.5" fill="#047857">删除与高频更新让图劣化 → 排重建；并建立召回抽样</text>
+
+  <text x="44" y="180" font-size="8.5" fill="#334155" font-weight="bold">④ 延迟抖动、内存打满</text>
+  <text x="300" y="180" font-size="8.5" fill="#7C3AED">容量与索引层</text>
+  <text x="470" y="180" font-size="8.5" fill="#047857">先量内存三段；看候选集与 oversampling 是不是开太大</text>
+
+  <text x="44" y="202" font-size="8.5" fill="#334155" font-weight="bold">⑤ 结果里出现不该看到的内容</text>
+  <text x="300" y="202" font-size="8.5" fill="#DC2626">权限边界层</text>
+  <text x="470" y="202" font-size="8.5" fill="#047857">立刻停用该查询路径：过滤必须在索引层参与，不能只靠应用层</text>
+
+  <text x="60" y="250" font-size="11" fill="#0F172A" font-weight="bold">三条「先别急着调参」的提醒</text>
+
+  <rect x="28" y="262" width="230" height="94" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.2"/>
+  <text x="44" y="282" font-size="9.5" fill="#92400E" font-weight="bold">先建立标准答案</text>
+  <text x="44" y="302" font-size="8.5" fill="#B45309">没有「查询 + 正确结果」</text>
+  <text x="44" y="318" font-size="8.5" fill="#B45309">的小样本集，就无法判断</text>
+  <text x="44" y="334" font-size="8.5" fill="#B45309">改动是变好还是变坏</text>
+  <text x="44" y="350" font-size="8.5" fill="#92400E">50~100 条就已足够起步</text>
+
+  <rect x="266" y="262" width="230" height="94" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="282" y="282" font-size="9.5" fill="#1E3A8A" font-weight="bold">先量再调</text>
+  <text x="282" y="302" font-size="8.5" fill="#1D4ED8">把「暴力检索的结果」</text>
+  <text x="282" y="318" font-size="8.5" fill="#1D4ED8">当作基准跑一遍</text>
+  <text x="282" y="334" font-size="8.5" fill="#1D4ED8">如果暴力也不对，</text>
+  <text x="282" y="350" font-size="8.5" fill="#1E3A8A">问题根本不在索引</text>
+
+  <rect x="504" y="262" width="228" height="94" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.2"/>
+  <text x="520" y="282" font-size="9.5" fill="#115E59" font-weight="bold">一次只改一个量</text>
+  <text x="520" y="302" font-size="8.5" fill="#0F766E">同时改切分、模型、</text>
+  <text x="520" y="318" font-size="8.5" fill="#0F766E">ef 与权重，等于没有</text>
+  <text x="520" y="334" font-size="8.5" fill="#0F766E">任何一次是可归因的</text>
+  <text x="520" y="350" font-size="8.5" fill="#115E59">改动要能被回滚</text>
+
+  <rect x="28" y="368" width="704" height="46" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="44" y="388" font-size="9.5" fill="#991B1B" font-weight="bold">最后一条纪律：召回率下降不会自己报警</text>
+  <text x="44" y="406" font-size="8.5" fill="#7F1D1D">它不产生错误日志、不影响延迟、不触发任何超时。唯一的发现方式是「定期用固定样本集复测」，把结论画成一条随时间变化的线。</text>
+</svg>

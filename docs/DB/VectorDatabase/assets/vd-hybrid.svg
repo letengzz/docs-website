@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 424" width="760" height="424" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <title>混合检索：两条腿并行、RRF 融合、重排收窄</title>
+  <rect width="760" height="424" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">混合检索：两条腿各自会漏，融合之后互相补齐</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">稠密腿答「意思相近」，稀疏腿答「字面出现」；两者的盲区几乎不重叠</text>
+
+  <rect x="28" y="70" width="150" height="52" rx="8" fill="#F1F5F9" stroke="#475569" stroke-width="1.2"/>
+  <text x="103" y="92" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">用户查询</text>
+  <text x="103" y="110" text-anchor="middle" font-size="8" fill="#475569">可能是问题，也可能是编号</text>
+
+  <rect x="212" y="70" width="212" height="88" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="318" y="90" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">稠密腿（向量）</text>
+  <text x="228" y="108" font-size="8" fill="#1D4ED8">擅长：换个说法也能找到</text>
+  <text x="228" y="124" font-size="8" fill="#1D4ED8">盲区：罕见词、错误码、专名、编号</text>
+  <text x="228" y="142" font-size="8" fill="#1D4ED8">产出：top-N 有序列表（N 取 50~100）</text>
+
+  <rect x="212" y="170" width="212" height="88" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+  <text x="318" y="190" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">稀疏腿（BM25 / 学习稀疏）</text>
+  <text x="228" y="208" font-size="8" fill="#0F766E">擅长：字面精确匹配、可解释的命中理由</text>
+  <text x="228" y="224" font-size="8" fill="#0F766E">盲区：同义改写、口语化提问</text>
+  <text x="228" y="242" font-size="8" fill="#0F766E">产出：top-N 有序列表（N 取 50~100）</text>
+
+  <rect x="452" y="118" width="140" height="92" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="522" y="138" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">融合</text>
+  <text x="468" y="156" font-size="8" fill="#6D28D9">RRF：只看名次</text>
+  <text x="468" y="172" font-size="8" fill="#6D28D9">Σ 1/(k+rank)，k 默认 60</text>
+  <text x="468" y="188" font-size="8" fill="#6D28D9">加权 RRF / 分数融合</text>
+  <text x="468" y="204" font-size="8" fill="#6D28D9">融合前先去重</text>
+
+  <rect x="620" y="118" width="112" height="92" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="676" y="138" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">重排</text>
+  <text x="634" y="156" font-size="8" fill="#B45309">交叉编码器</text>
+  <text x="634" y="172" font-size="8" fill="#B45309">只对 top 50~100</text>
+  <text x="634" y="188" font-size="8" fill="#B45309">产出最终 top 10~20</text>
+  <text x="634" y="204" font-size="8" fill="#B45309">可选：MMR 去同质</text>
+
+  <g stroke="#94A3B8" stroke-width="1.6" fill="none">
+    <path d="M178 96 L212 96"/>
+    <path d="M178 130 L196 130 L196 196 L212 196"/>
+    <path d="M424 114 L438 114 L438 150 L452 150"/>
+    <path d="M424 214 L438 214 L438 178 L452 178"/>
+    <path d="M592 164 L620 164"/>
+  </g>
+
+  <rect x="28" y="276" width="342" height="136" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="44" y="296" font-size="10" fill="#991B1B" font-weight="bold">为什么不能直接把两个分数加起来</text>
+  <text x="44" y="316" font-size="8.5" fill="#7F1D1D">BM25 分数是上不封顶的正数，余弦相似度固定在 [-1, 1]。</text>
+  <text x="44" y="332" font-size="8.5" fill="#7F1D1D">直接相加等于把权重默认全给了 BM25，而且每次查询的</text>
+  <text x="44" y="348" font-size="8.5" fill="#7F1D1D">量纲还不一样——归一化又会被极端值带偏。</text>
+  <text x="44" y="370" font-size="8.5" fill="#991B1B" font-weight="bold">RRF 的本质是「绕开分数，只用名次」，因此几乎不需要调参；</text>
+  <text x="44" y="386" font-size="8.5" fill="#991B1B" font-weight="bold">要加权就用「加权 RRF」，而不是回去混原始分数。</text>
+  <text x="44" y="404" font-size="8.5" fill="#7F1D1D">例外：只有当某条腿的「自信程度」确实携带信息、且有标注评估集时，才值得做分数融合。</text>
+
+  <rect x="390" y="276" width="342" height="136" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="406" y="296" font-size="10" fill="#065F46" font-weight="bold">五个落地纪律</text>
+  <text x="406" y="316" font-size="8.5" fill="#047857">① 两条腿并发执行：总延迟是 max，不是 sum</text>
+  <text x="406" y="332" font-size="8.5" fill="#047857">② 融合前去重：近似重复的块会在两腿都靠前，</text>
+  <text x="406" y="348" font-size="8.5" fill="#047857">   融合后被放大成「占满整个结果页」</text>
+  <text x="406" y="364" font-size="8.5" fill="#047857">③ 检索要宽、重排要窄：两腿各取 50~100，融合后重排</text>
+  <text x="406" y="380" font-size="8.5" fill="#047857">④ 没有标注评估集就别调 k 与权重——先做 50~100 条真实查询的</text>
+  <text x="406" y="396" font-size="8.5" fill="#047857">   评估集，把 recall@k / nDCG 测出来，参数才有意义</text>
+  <text x="406" y="408" font-size="8.5" fill="#065F46" font-weight="bold">⑤ 重排救不回「两条腿都没检索到」的文档</text>
+</svg>

@@ -685,7 +685,7 @@ public class CustomActionAsyncFilterAttribute : Attribute, IAsyncActionFilter
 builder.RegisterType(typeof(CustomActionFilterAttribute)).PropertiesAutowired();
 ```
 
-依赖注入是如何支持的？其实是是IOC来做到的。。。如何自定义。。。
+依赖注入是如何支持的？其实是 IOC 来做到的……如何自定义……
 
 ### FilterFactory扩展定制
 
@@ -955,7 +955,7 @@ public class CustomResultFilterAttribute : Attribute, IResultFilter
 
 通过中间件来支持；
 第一步：
-在 app.UseRouting();之后，在app.UseEndpoints(）之前，增加鉴权授权；
+在 app.UseRouting() 之后，在 app.UseEndpoints() 之前，增加鉴权授权；
 鉴权： app.UseAuthentication();---检测用户是否登录
 授权：app.UseAuthorization();//授权 检测有没有权限，是否能够访问后续的页面功能
 第二步:
@@ -1186,7 +1186,7 @@ Scaffold-DbContext "Data Source=雾岚\SQLSERVER1;Initial Catalog=db_efcore;User
 
 ### EFCoreCodeFirst
 
-(迁移）：代码先行，现有代码再有数据库；数据库随着业务变化迁移改变；
+（迁移）：代码先行，现有代码再有数据库；数据库随着业务变化迁移改变；
 
 1. 可以通过EfCore带有的api来完成从代码生成数据库
 2. 迁移

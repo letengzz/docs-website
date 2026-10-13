@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <title>三类 ANN 索引家族与「召回—延迟—内存」三角</title>
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">三类索引家族：图、倒排、分区</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">它们不是「新旧替代」关系，而是三种不同的省时间方式——选错方向比调错参数代价大得多</text>
+
+  <rect x="28" y="70" width="230" height="158" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="143" y="90" text-anchor="middle" font-size="10.5" fill="#5B21B6" font-weight="bold">① 图路线</text>
+  <text x="44" y="110" font-size="8.5" fill="#6D28D9">把邻近关系显式存成边，查询就是「走图」</text>
+  <text x="44" y="128" font-size="8.5" fill="#6D28D9">HNSW：多层图，全内存，延迟最低</text>
+  <text x="44" y="146" font-size="8.5" fill="#6D28D9">DiskANN（Vamana）：单层图 + SSD 驻留</text>
+  <text x="44" y="164" font-size="8.5" fill="#6D28D9">优点：召回—延迟曲线最好</text>
+  <text x="44" y="182" font-size="8.5" fill="#6D28D9">缺点：图占内存、删除会劣化、建图慢</text>
+  <text x="44" y="206" font-size="8.5" fill="#5B21B6" font-weight="bold">首要适配：读多写少、延迟敏感</text>
+  <text x="44" y="222" font-size="8.5" fill="#5B21B6" font-weight="bold">（语义检索 / 推荐召回 / 去重）</text>
+
+  <rect x="266" y="70" width="230" height="158" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="381" y="90" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">② 倒排路线</text>
+  <text x="282" y="110" font-size="8.5" fill="#1D4ED8">先聚类成若干倒排列表，查询只扫 probed 的簇</text>
+  <text x="282" y="128" font-size="8.5" fill="#1D4ED8">IVF：只切空间，簇内仍是原始向量</text>
+  <text x="282" y="146" font-size="8.5" fill="#1D4ED8">IVF-PQ：簇内再量化，是省内存主力</text>
+  <text x="282" y="164" font-size="8.5" fill="#1D4ED8">优点：建得快、更新便宜、内存可压到极低</text>
+  <text x="282" y="182" font-size="8.5" fill="#1D4ED8">缺点：簇边界上的真邻居会被漏掉</text>
+  <text x="282" y="206" font-size="8.5" fill="#1E3A8A" font-weight="bold">首要适配：内存是约束、数据量大</text>
+  <text x="282" y="222" font-size="8.5" fill="#1E3A8A" font-weight="bold">（十亿级、成本敏感、可接受重排）</text>
+
+  <rect x="504" y="70" width="228" height="158" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="618" y="90" text-anchor="middle" font-size="10.5" fill="#115E59" font-weight="bold">③ 分区路线（新）</text>
+  <text x="520" y="110" font-size="8.5" fill="#0F766E">把空间切成许多小分区，只读命中的分区</text>
+  <text x="520" y="128" font-size="8.5" fill="#0F766E">HFresh（SPFresh 路线）：小 HNSW 找质心</text>
+  <text x="520" y="146" font-size="8.5" fill="#0F766E">+ posting 落盘 + 增量再平衡（不整体重建）</text>
+  <text x="520" y="164" font-size="8.5" fill="#0F766E">优点：内存只需质心索引；更新友好</text>
+  <text x="520" y="182" font-size="8.5" fill="#0F766E">缺点：延迟百毫秒级、能力仍在演进</text>
+  <text x="520" y="206" font-size="8.5" fill="#115E59" font-weight="bold">首要适配：写入频繁、内存受限</text>
+  <text x="520" y="222" font-size="8.5" fill="#115E59" font-weight="bold">（流式语料、成本敏感型大集合）</text>
+
+  <text x="60" y="258" font-size="11" fill="#0F172A" font-weight="bold">三角：任何一次选型都是放弃其中一个角</text>
+
+  <rect x="28" y="272" width="232" height="112" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="44" y="292" font-size="10" fill="#1E293B" font-weight="bold">角一 · 高召回 + 低延迟</text>
+  <text x="44" y="312" font-size="8.5" fill="#334155">代价：内存最高、建图最慢</text>
+  <text x="44" y="330" font-size="8.5" fill="#334155">写法：HNSW，M=32 / efConstruction=200</text>
+  <text x="44" y="348" font-size="8.5" fill="#334155">内存估算 N ×（d×4B + M×8B×2）</text>
+  <text x="44" y="370" font-size="8.5" fill="#475569">1 亿 × 768 维 float32 + M=32</text>
+  <text x="44" y="384" font-size="8.5" fill="#475569">≈ 334 GB → 必须量化或落盘</text>
+
+  <rect x="268" y="272" width="232" height="112" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="284" y="292" font-size="10" fill="#1E293B" font-weight="bold">角二 · 高召回 + 低内存</text>
+  <text x="284" y="312" font-size="8.5" fill="#334155">代价：延迟与工程复杂度上升</text>
+  <text x="284" y="330" font-size="8.5" fill="#334155">写法：HNSW + 量化 + 重排</text>
+  <text x="284" y="348" font-size="8.5" fill="#334155">或 IVF-PQ（原始向量留在磁盘）</text>
+  <text x="284" y="370" font-size="8.5" fill="#475569">量化只用来「找候选」，</text>
+  <text x="284" y="384" font-size="8.5" fill="#475569">最终分数必须用原始向量算</text>
+
+  <rect x="508" y="272" width="224" height="112" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="524" y="292" font-size="10" fill="#1E293B" font-weight="bold">角三 · 低内存 + 低延迟</text>
+  <text x="524" y="312" font-size="8.5" fill="#334155">代价：召回有上限</text>
+  <text x="524" y="330" font-size="8.5" fill="#334155">写法：放宽 efSearch 下限、</text>
+  <text x="524" y="348" font-size="8.5" fill="#334155">接受 85%~90% 召回</text>
+  <text x="524" y="370" font-size="8.5" fill="#475569">先问一句：这个场景</text>
+  <text x="524" y="384" font-size="8.5" fill="#475569">真的记得住 15% 的漏检吗？</text>
+
+  <rect x="28" y="396" width="704" height="34" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.1"/>
+  <text x="44" y="418" font-size="8.5" fill="#92400E">选型第一步不是选算法，而是量三个数：向量条数 N、维度 d、可接受的 p95 延迟。三个数一填，「三角」里哪个角被放弃就已经定了。</text>
+</svg>

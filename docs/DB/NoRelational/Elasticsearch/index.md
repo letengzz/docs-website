@@ -29,3 +29,4 @@ Elasticsearch（简称 ES）是基于 Apache Lucene 的**分布式搜索与分�
 - [Redis](../Redis/index.md)：缓存层常与 ES 组合使用
 - [MySQL](../../Relational/MySQL/index.md)：ES 常作为 MySQL 的「搜索外挂」，同步方案见实战页
 - [SQL 优化](../../Relational/SQLOptimization/index.md)：数据库侧的检索优化，与 ES 侧互补
+- [向量数据库深入](../../VectorDatabase/index.md)：ES 自 8.x 起把 `dense_vector` 与 kNN 搜索纳入主线、9.1 起 **BBQ（二值量化）成为 ≥384 维的默认**，因此「ES 能不能当向量库」已成为选型必答题。分工是——**本专题讲 ES 自身怎么用**（映射、DSL、聚合、分词、集群、商品搜索实战），[向量数据库深入](../../VectorDatabase/index.md) 讲**向量检索的引擎侧机制**（HNSW / IVF-PQ / DiskANN、量化四档、过滤三流派、混合检索融合与容量预算）。判据一句话：**「这个引擎怎么装、怎么写查询」看本专题；「索引参数换到什么、召回与延迟怎么权衡」看那边。** 用 ES 做混合检索前，先读[混合检索 · RRF 与加权 RRF](../../VectorDatabase/HybridSearch/index.md)

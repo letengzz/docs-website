@@ -269,6 +269,7 @@ export const CompleteProject = [
           { text: "第 2 周收口：四组件 × 五契约对账", link: "/project/Complete/MonitoringDashboard/Week2Close/index.md" },
           { text: "大盘数据接口端到端核对", link: "/project/Complete/MonitoringDashboard/DashboardE2E/index.md" },
           { text: "第 2 周收口（终）：三条验收与阻塞项", link: "/project/Complete/MonitoringDashboard/Week2Final/index.md" },
+          { text: "环境前置：把「未跑」变成「可跑」", link: "/project/Complete/MonitoringDashboard/EnvPrereq/index.md" },
         ],
       },
       {
