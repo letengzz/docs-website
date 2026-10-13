@@ -117,3 +117,8 @@ UDP 无连接、无状态，直接发送数据报：
 - RFC 768（UDP）：https://www.rfc-editor.org/rfc/rfc768
 - TCP 拥塞控制（RFC 5681）：https://www.rfc-editor.org/rfc/rfc5681
 - 网络调试工具：https://www.man7.org/linux/man-pages/man8/tcpdump.8.html
+
+## 相关专题
+
+- [运维 · 网络基础](../../../Ops/Network/index.md)：分层模型、DNS 解析、TLS 握手与抓包取证的完整方法论。
+- [语音与音视频 AI · 实时传输协议](../../../AI/SpeechAudioAI/StreamingProtocols/index.md)：本页讲的 TCP/UDP 差异，在实时语音里有一个**直接推论**——**实时音频宁可丢包也不能等重传**。TCP 的重传与有序交付在丢包时会阻塞后续数据（队头阻塞），对文件传输是优点、对实时语音是致命缺陷；因此用户侧的音频走 UDP（WebRTC/SRTP），而 WebSocket（TCP）只用于服务端之间。**一句话判据：延迟敏感的数据选 UDP，完整性敏感的数据选 TCP——实时语音属于前者。**

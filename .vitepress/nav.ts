@@ -94,6 +94,7 @@ export const nav = [
       { text: "Agent 应用", link: "/docs/AI/Agent" },
       { text: "Agent 框架深入", link: "/docs/AI/AgentFramework" },
       { text: "AI 应用观测与评估", link: "/docs/AI/LLMObservability" },
+      { text: "语音与音视频 AI", link: "/docs/AI/SpeechAudioAI" },
     ] },
   {
     text: "工具", items: [

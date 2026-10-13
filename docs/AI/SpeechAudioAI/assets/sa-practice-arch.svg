@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="实战系统的三条边界、四个组件与验收链">
+  <title>实战系统：三条边界、四个可替换组件、一条验收链</title>
+  <rect x="0" y="0" width="900" height="500" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="23" font-weight="bold" fill="#16324f">实战：一个可本地运行的实时语音对话服务</text>
+    <text x="30" y="64" font-size="13" fill="#5a6b7b">目标不是「最自然」，而是「每一段都能单独验证」。</text>
+
+    <rect x="300" y="84" width="300" height="48" rx="10" fill="#6b5bd2"/>
+    <text x="450" y="114" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">浏览器（采集 + 播放 + 打断）</text>
+
+    <rect x="300" y="148" width="300" height="48" rx="10" fill="#2d7d9a"/>
+    <text x="450" y="170" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">接入层</text>
+    <text x="450" y="188" font-size="11" fill="#eaf4f8" text-anchor="middle">会话管理 / 鉴权 / 背压（有界队列）</text>
+
+    <rect x="300" y="212" width="300" height="48" rx="10" fill="#c47a2c"/>
+    <text x="450" y="234" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">对话编排（状态机）</text>
+    <text x="450" y="252" font-size="11" fill="#fdf3e6" text-anchor="middle">IDLE → LISTENING → THINKING → SPEAKING</text>
+
+    <rect x="30" y="290" width="196" height="64" rx="10" fill="#3fae8c"/>
+    <text x="128" y="316" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">VAD</text>
+    <text x="128" y="338" font-size="11" fill="#eaf4f8" text-anchor="middle">接口：feed() → 事件</text>
+
+    <rect x="240" y="290" width="196" height="64" rx="10" fill="#3fae8c"/>
+    <text x="338" y="316" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">ASR</text>
+    <text x="338" y="338" font-size="11" fill="#eaf4f8" text-anchor="middle">必须给 final 文本</text>
+
+    <rect x="450" y="290" width="196" height="64" rx="10" fill="#3fae8c"/>
+    <text x="548" y="316" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">LLM</text>
+    <text x="548" y="338" font-size="11" fill="#eaf4f8" text-anchor="middle">流式输出</text>
+
+    <rect x="660" y="290" width="210" height="64" rx="10" fill="#3fae8c"/>
+    <text x="765" y="316" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">TTS</text>
+    <text x="765" y="338" font-size="11" fill="#eaf4f8" text-anchor="middle">记录「已播出文本」</text>
+
+    <text x="30" y="384" font-size="13" font-weight="bold" fill="#5a6b7b">↑ 四个可替换组件：全部只暴露接口，不泄漏厂商对象（R1）</text>
+
+    <rect x="30" y="400" width="440" height="82" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="48" y="424" font-size="13" font-weight="bold" fill="#2d7d9a">三条边界（定错就要重构）</text>
+    <text x="48" y="446" font-size="12" fill="#16324f">① 接入层 ↔ 编排：只传音频分片与事件</text>
+    <text x="48" y="466" font-size="12" fill="#16324f">② 编排 ↔ 组件：接口而非 SDK 调用</text>
+
+    <rect x="490" y="400" width="380" height="82" rx="10" fill="#eaf4f8" stroke="#3fae8c" stroke-width="1.5"/>
+    <text x="508" y="424" font-size="13" font-weight="bold" fill="#3fae8c">验收链：R1~R12</text>
+    <text x="508" y="446" font-size="12" fill="#16324f">R1~R9 静态可判（本机可直接跑）</text>
+    <text x="508" y="466" font-size="12" fill="#c0392b">R10~R12 需服务在监听 / 音频设备</text>
+  </g>
+</svg>

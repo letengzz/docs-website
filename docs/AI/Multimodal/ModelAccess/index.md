@@ -256,3 +256,10 @@ curl -s http://localhost:8000/v1/chat/completions -H "Content-Type: application/
 - OpenAI 兼容 Chat Completions 规范（图像内容块）：<https://platform.openai.com/docs/api-reference/chat>
 - Qwen 系列模型卡（多模态权重与部署建议）：<https://github.com/QwenLM/Qwen3-VL>
 - 项目内相关：[本地模型部署](../../LocalModel/index.md)（显存规划、量化、压测）
+
+## 与实时语音专题的分工（第 132 天补充）
+
+本页回答「**用云 API、自托管还是本地**」这一层选型，这个方法论对实时链路同样适用、本页不重复。但**实时链路在接入层多出一条本页不涉及的约束**：
+
+- **形态从「请求-响应」变成「长连接」**。本页介绍的三种接入形态（云 API / vLLM / Ollama）都是**请求-响应式**的；实时语音需要的是**有状态长连接**，它带来三个新问题——**会话粘性**（一条通话必须回到同一实例）、**线协议版本**（如 OpenAI Realtime 的 beta 线协议已于 2026-05-12 移除、事件已改名）、以及**按音频分钟计费**（而不是按 token）。
+- **因此「换后端」在实时链路里不是改一个 `base_url`**，而是换一套协议与状态管理。具体差异见[实时传输协议](../../SpeechAudioAI/StreamingProtocols/index.md)与[端到端语音到语音](../../SpeechAudioAI/SpeechToSpeech/index.md)。

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="第 2 周收口：四个组件、五份契约、四类接缝">
+  <title>第 2 周收口：四个组件 × 五份契约 × 四类接缝</title>
+  <rect x="0" y="0" width="900" height="520" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="23" font-weight="bold" fill="#16324f">第 2 周收口：组件都对，不等于系统对</text>
+    <text x="30" y="64" font-size="13" fill="#5a6b7b">四份契约两两相交，只在四处产生真实约束 —— 这四处就是今天要对的账。</text>
+
+    <rect x="30" y="88" width="200" height="188" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="48" y="114" font-size="15" font-weight="bold" fill="#2d7d9a">四天交付的四个组件</text>
+    <text x="48" y="142" font-size="12" fill="#16324f">C1 指标暴露（第 128 天）</text>
+    <text x="48" y="164" font-size="12" fill="#16324f">C6 看板数据服务（第 129 天）</text>
+    <text x="48" y="186" font-size="12" fill="#16324f">规则热更新（第 130 天）</text>
+    <text x="48" y="208" font-size="12" fill="#16324f">告警路由（第 131 天）</text>
+    <text x="48" y="240" font-size="12" fill="#5a6b7b">各自判据：EP / DA / RR / AR</text>
+    <text x="48" y="262" font-size="12" fill="#c0392b">共同点：只在一个组件内成立</text>
+
+    <rect x="248" y="88" width="200" height="188" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="266" y="114" font-size="15" font-weight="bold" fill="#c47a2c">五份契约（第 127 天）</text>
+    <text x="266" y="142" font-size="12" fill="#16324f">01 暴露端</text>
+    <text x="266" y="164" font-size="12" fill="#16324f">02 采集端</text>
+    <text x="266" y="186" font-size="12" fill="#16324f">03 规则端</text>
+    <text x="266" y="208" font-size="12" fill="#16324f">04 告警端</text>
+    <text x="266" y="230" font-size="12" fill="#16324f">05 看板端（第 129 天新增）</text>
+    <text x="266" y="262" font-size="12" fill="#5a6b7b">每份 = 约定 + 后果 + 可执行校验</text>
+
+    <rect x="466" y="88" width="404" height="188" rx="10" fill="#fdf3e6" stroke="#c47a2c" stroke-width="2"/>
+    <text x="484" y="114" font-size="15" font-weight="bold" fill="#c47a2c">四类真实接缝</text>
+
+    <text x="484" y="142" font-size="13" fill="#16324f" font-weight="bold">S1 标签保真（01 ↔ 02）</text>
+    <text x="484" y="162" font-size="11" fill="#5a6b7b">relabel 改掉契约标签 → 聚合分裂 / instance 被改名</text>
+
+    <text x="484" y="188" font-size="13" fill="#16324f" font-weight="bold">S2 时间相容（02 ↔ 03 ↔ 05）</text>
+    <text x="484" y="208" font-size="11" fill="#5a6b7b">保留期 ≥ 规则窗口 ≥ 3×抓取间隔</text>
+
+    <text x="484" y="234" font-size="13" fill="#16324f" font-weight="bold">S3 标签合约（03 ↔ 04）</text>
+    <text x="484" y="254" font-size="11" fill="#5a6b7b">severity 取值域不一致 → 匹配不到 route，静默丢弃</text>
+
+    <text x="484" y="272" font-size="11" fill="#16324f" font-weight="bold">S4 粒度相容（02 ↔ 05）—— 见下</text>
+
+    <rect x="30" y="296" width="840" height="104" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="48" y="322" font-size="15" font-weight="bold" fill="#c0392b">S4 是本轮最容易被漏的一条：step 必须 ≥ 抓取间隔</text>
+    <text x="48" y="348" font-size="12" fill="#16324f">契约五的 step 推导只看 (to-from) 与 max_points，<tspan font-weight="bold">天生不知道抓取间隔是多少</tspan>。</text>
+    <text x="48" y="370" font-size="12" fill="#16324f">把 max_points 调大后，30 天范围上算出的 step 可能掉到 15s 以下 → 同一样本被重复取两次。</text>
+    <text x="48" y="392" font-size="12" fill="#c0392b" font-weight="bold">结果：台阶状假曲线，值班人以为是业务在抖 —— 服务端与大盘都不会报错。</text>
+
+    <rect x="30" y="416" width="270" height="86" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="48" y="442" font-size="13" font-weight="bold" fill="#2d7d9a">W2-A ~ W2-H</text>
+    <text x="48" y="466" font-size="12" fill="#16324f">只登记两类断言：</text>
+    <text x="48" y="488" font-size="12" fill="#16324f">「接缝是否成立」+「跨文件读配置是否声明」</text>
+
+    <rect x="314" y="416" width="270" height="86" rx="10" fill="#eaf4f8" stroke="#3fae8c" stroke-width="1.5"/>
+    <text x="332" y="442" font-size="13" font-weight="bold" fill="#3fae8c">本周唯一 ✅：W2-C</text>
+    <text x="332" y="466" font-size="12" fill="#16324f">step 边界推演是纯算术</text>
+    <text x="332" y="488" font-size="12" fill="#16324f">不依赖工程仓库与容器运行时</text>
+
+    <rect x="598" y="416" width="272" height="86" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="1.5"/>
+    <text x="616" y="442" font-size="13" font-weight="bold" fill="#6b5bd2">遗留项 L1 ~ L4</text>
+    <text x="616" y="466" font-size="12" fill="#16324f">每条写明前置条件</text>
+    <text x="616" y="488" font-size="12" fill="#c0392b">前置不满足就继续如实标注</text>
+  </g>
+</svg>

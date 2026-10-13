@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="实时语音的传输协议与分帧、缓冲、背压">
+  <title>三条传输路径与分帧、缓冲、背压</title>
+  <rect x="0" y="0" width="900" height="500" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="23" font-weight="bold" fill="#16324f">传输层决定了延迟的下限</text>
+    <text x="30" y="64" font-size="13" fill="#5a6b7b">模型侧再怎么优化，也压不掉传输层的抖动与缓冲。</text>
+
+    <rect x="30" y="84" width="276" height="150" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="48" y="112" font-size="16" font-weight="bold" fill="#2d7d9a">WebSocket（WSS）</text>
+    <text x="48" y="138" font-size="12" fill="#16324f">TCP 之上的长连接</text>
+    <text x="48" y="158" font-size="12" fill="#c0392b">队头阻塞：一丢就全等</text>
+    <text x="48" y="178" font-size="12" fill="#5a6b7b">无内置 AEC / 抖动缓冲</text>
+    <text x="48" y="198" font-size="12" fill="#3fae8c">服务端编排最方便</text>
+    <text x="48" y="220" font-size="12" fill="#16324f">用：服务端 ↔ 模型（内网）</text>
+
+    <rect x="312" y="84" width="276" height="150" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="330" y="112" font-size="16" font-weight="bold" fill="#3fae8c">WebRTC</text>
+    <text x="330" y="138" font-size="12" fill="#16324f">UDP（SRTP）为主</text>
+    <text x="330" y="158" font-size="12" fill="#3fae8c">丢包即丢：延迟优先</text>
+    <text x="330" y="178" font-size="12" fill="#3fae8c">内置 AEC / NS / 抖动缓冲</text>
+    <text x="330" y="198" font-size="12" fill="#c0392b">要信令 + ICE + TURN</text>
+    <text x="330" y="220" font-size="12" fill="#16324f">用：浏览器 / 移动端直连</text>
+
+    <rect x="594" y="84" width="276" height="150" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="612" y="112" font-size="16" font-weight="bold" fill="#6b5bd2">SIP</text>
+    <text x="612" y="138" font-size="12" fill="#16324f">信令协议，媒体走 RTP</text>
+    <text x="612" y="158" font-size="12" fill="#3fae8c">电话网络原生</text>
+    <text x="612" y="178" font-size="12" fill="#5a6b7b">浏览器不原生讲 SIP</text>
+    <text x="612" y="198" font-size="12" fill="#c0392b">需要网关对接</text>
+    <text x="612" y="220" font-size="12" fill="#16324f">用：外呼 / 客服热线</text>
+
+    <text x="30" y="272" font-size="18" font-weight="bold" fill="#16324f">分帧：20ms 是行业默认，别随手改</text>
+
+    <rect x="30" y="290" width="270" height="76" rx="10" fill="#eaf4f8" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="48" y="316" font-size="13" fill="#16324f" font-weight="bold">10 ms 帧 = 320 B</text>
+    <text x="48" y="338" font-size="12" fill="#c0392b">延迟最低，但头部开销占比翻倍</text>
+    <text x="48" y="356" font-size="12" fill="#5a6b7b">包数量最多</text>
+
+    <rect x="314" y="290" width="270" height="76" rx="10" fill="#eaf4f8" stroke="#3fae8c" stroke-width="1.5"/>
+    <text x="332" y="316" font-size="13" fill="#16324f" font-weight="bold">20 ms 帧 = 640 B</text>
+    <text x="332" y="338" font-size="12" fill="#3fae8c">Opus 与 WebRTC 默认档</text>
+    <text x="332" y="356" font-size="12" fill="#5a6b7b">16 kHz / 单声道 / s16le</text>
+
+    <rect x="598" y="290" width="272" height="76" rx="10" fill="#fdf3e6" stroke="#c47a2c" stroke-width="1.5"/>
+    <text x="616" y="316" font-size="13" fill="#16324f" font-weight="bold">40 ms 帧 = 1280 B</text>
+    <text x="616" y="338" font-size="12" fill="#c0392b">「省带宽」实为「借延迟」</text>
+    <text x="616" y="356" font-size="12" fill="#5a6b7b">抖动缓冲至少要按一帧对齐</text>
+
+    <rect x="30" y="384" width="840" height="96" rx="10" fill="#ffffff" stroke="#16324f" stroke-width="1.5"/>
+    <text x="48" y="410" font-size="15" font-weight="bold" fill="#16324f">两条与延迟直接相关的纪律</text>
+    <text x="48" y="434" font-size="13" fill="#3fae8c" font-weight="bold">抖动缓冲：可以变大，但必须能变小</text>
+    <text x="48" y="454" font-size="12" fill="#5a6b7b">只增不减的自适应，会让一次网络尖峰的代价持续整场通话。</text>
+    <text x="48" y="472" font-size="13" fill="#c0392b" font-weight="bold">背压：队列要有界，且上界能翻译成毫秒（10 帧 × 20ms = 200ms）</text>
+  </g>
+</svg>

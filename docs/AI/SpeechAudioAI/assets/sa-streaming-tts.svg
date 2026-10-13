@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" role="img" aria-label="流式语音合成的分句、流式合成与打断">
+  <title>流式合成：分句、流式合成、增量播放与打断</title>
+  <rect x="0" y="0" width="900" height="480" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="23" font-weight="bold" fill="#16324f">流式合成：用户对音质的评价，一半来自等待</text>
+    <text x="30" y="64" font-size="13" fill="#5a6b7b">TTFA（首音频延迟）才是核心指标；总时延是另一个数。</text>
+
+    <text x="30" y="100" font-size="17" font-weight="bold" fill="#16324f">正确的数据流：LLM 流式 → 分句 → 每句立刻合成 → 边收边播</text>
+
+    <rect x="30" y="116" width="150" height="66" rx="10" fill="#c47a2c"/>
+    <text x="105" y="144" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">LLM 流式输出</text>
+    <text x="105" y="166" font-size="12" fill="#fdf3e6" text-anchor="middle">按 token 出</text>
+
+    <rect x="196" y="116" width="150" height="66" rx="10" fill="#3fae8c"/>
+    <text x="271" y="144" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">按子句切分</text>
+    <text x="271" y="166" font-size="12" fill="#eaf4f8" text-anchor="middle">标点优先 + 24 字兜底</text>
+
+    <rect x="362" y="116" width="150" height="66" rx="10" fill="#2d7d9a"/>
+    <text x="437" y="144" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">流式合成</text>
+    <text x="437" y="166" font-size="12" fill="#eaf4f8" text-anchor="middle">首句一出即送</text>
+
+    <rect x="528" y="116" width="150" height="66" rx="10" fill="#6b5bd2"/>
+    <text x="603" y="144" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">增量播放</text>
+    <text x="603" y="166" font-size="12" fill="#eaf4f8" text-anchor="middle">浅缓冲，便于打断</text>
+
+    <rect x="694" y="116" width="176" height="66" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="782" y="144" font-size="13" fill="#c0392b" font-weight="bold" text-anchor="middle">错误做法</text>
+    <text x="782" y="166" font-size="12" fill="#16324f" text-anchor="middle">等整段写完再合成</text>
+
+    <text x="30" y="222" font-size="17" font-weight="bold" fill="#16324f">三条判据：怎么识别「伪流式」与「坏分句」</text>
+
+    <rect x="30" y="238" width="272" height="100" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="48" y="264" font-size="14" font-weight="bold" fill="#2d7d9a">① TTFA 与文本长度无关</text>
+    <text x="48" y="288" font-size="12" fill="#16324f">合成 5 字与 50 字，</text>
+    <text x="48" y="308" font-size="12" fill="#16324f">TTFA 差值应在个位数毫秒级</text>
+    <text x="48" y="330" font-size="12" fill="#c0392b">明显更慢 = 伪流式</text>
+
+    <rect x="314" y="238" width="272" height="100" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="1.5"/>
+    <text x="332" y="264" font-size="14" font-weight="bold" fill="#3fae8c">② 不切断数字与单位</text>
+    <text x="332" y="288" font-size="12" fill="#16324f">「金额是1280元」不能切在</text>
+    <text x="332" y="308" font-size="12" fill="#16324f">12 与 80 之间</text>
+    <text x="332" y="330" font-size="12" fill="#5a6b7b">单测可覆盖</text>
+
+    <rect x="598" y="238" width="272" height="100" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="1.5"/>
+    <text x="616" y="264" font-size="14" font-weight="bold" fill="#6b5bd2">③ 关键字段逐字核验</text>
+    <text x="616" y="288" font-size="12" fill="#16324f">合成音频再送自己的 ASR，</text>
+    <text x="616" y="308" font-size="12" fill="#16324f">与期望字段比对</text>
+    <text x="616" y="330" font-size="12" fill="#5a6b7b">同时验证 TTS 与 ASR</text>
+
+    <text x="30" y="374" font-size="17" font-weight="bold" fill="#16324f">打断时要做三件事（少一件就出问题）</text>
+
+    <rect x="30" y="390" width="272" height="72" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="48" y="416" font-size="13" fill="#c0392b" font-weight="bold">① 清空播放队列</text>
+    <text x="48" y="440" font-size="12" fill="#16324f">只停当前帧，整句会接着播完</text>
+
+    <rect x="314" y="390" width="272" height="72" rx="10" fill="#fdf3e6" stroke="#c47a2c" stroke-width="2"/>
+    <text x="332" y="416" font-size="13" fill="#c47a2c" font-weight="bold">② 通知合成侧取消</text>
+    <text x="332" y="440" font-size="12" fill="#16324f">按分钟计费时这是真金白银</text>
+
+    <rect x="598" y="390" width="272" height="72" rx="10" fill="#eaf4f8" stroke="#3fae8c" stroke-width="2"/>
+    <text x="616" y="416" font-size="13" fill="#3fae8c" font-weight="bold">③ 记录「已播出文本」</text>
+    <text x="616" y="440" font-size="12" fill="#16324f">用户没听到的不算模型说过</text>
+  </g>
+</svg>

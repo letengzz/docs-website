@@ -95,6 +95,7 @@ export const AI_PromptSecurity = [
 export const AI_OpenClaw = [
   {
     text: "OpenClaw",
+    link: "/docs/AI/OpenClaw/index.md",
     items: [
       { text: "概述", link: "/docs/AI/OpenClaw/Overview/index.md" },
       { text: "安装", link: "/docs/AI/OpenClaw/Install/index.md" },
@@ -242,6 +243,25 @@ export const AI_LLMObservability = [
       { text: "质量告警与漂移", link: "/docs/AI/LLMObservability/Alerting/index.md" },
       { text: "实战：给 RAG 服务接上观测", link: "/docs/AI/LLMObservability/Practice/index.md" },
       { text: "常见问题与最佳实践", link: "/docs/AI/LLMObservability/FAQ/index.md" },
+    ],
+  },
+];
+
+export const AI_SpeechAudioAI = [
+  {
+    text: "语音与音视频 AI",
+    link: "/docs/AI/SpeechAudioAI/index.md",
+    collapsed: true,
+    items: [
+      { text: "概述：从「文件进文件出」到「边说边出」", link: "/docs/AI/SpeechAudioAI/Overview/index.md" },
+      { text: "实时传输协议", link: "/docs/AI/SpeechAudioAI/StreamingProtocols/index.md" },
+      { text: "流式语音识别", link: "/docs/AI/SpeechAudioAI/StreamingASR/index.md" },
+      { text: "流式语音合成", link: "/docs/AI/SpeechAudioAI/StreamingTTS/index.md" },
+      { text: "端到端语音到语音", link: "/docs/AI/SpeechAudioAI/SpeechToSpeech/index.md" },
+      { text: "语音智能体工程", link: "/docs/AI/SpeechAudioAI/VoiceAgent/index.md" },
+      { text: "实时音视频（RTC）", link: "/docs/AI/SpeechAudioAI/RTC/index.md" },
+      { text: "实战：可本地运行的实时语音对话服务", link: "/docs/AI/SpeechAudioAI/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/SpeechAudioAI/FAQ/index.md" },
     ],
   },
 ];

@@ -266,6 +266,7 @@ export const CompleteProject = [
           { text: "看板数据服务（C6）", link: "/project/Complete/MonitoringDashboard/DashboardAPI/index.md" },
           { text: "规则加载与热更新", link: "/project/Complete/MonitoringDashboard/RuleReload/index.md" },
           { text: "告警路由联调", link: "/project/Complete/MonitoringDashboard/AlertRouting/index.md" },
+          { text: "第 2 周收口：四组件 × 五契约对账", link: "/project/Complete/MonitoringDashboard/Week2Close/index.md" },
         ],
       },
       {

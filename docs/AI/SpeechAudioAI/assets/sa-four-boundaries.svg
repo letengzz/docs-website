@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="实时语音的四条边界">
+  <title>四条边界：什么算实时、谁先开口、状态放哪、坏了怎么办</title>
+  <rect x="0" y="0" width="900" height="520" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="23" font-weight="bold" fill="#16324f">四条边界：先把范围划出来</text>
+    <text x="30" y="64" font-size="13" fill="#5a6b7b">不知道用户何时说完 + 说完后必须很快出声 —— 这两个约束决定了后面所有选择。</text>
+
+    <rect x="30" y="86" width="198" height="196" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="48" y="114" font-size="16" font-weight="bold" fill="#2d7d9a">边界一 · 什么算实时</text>
+    <text x="48" y="140" font-size="12" fill="#16324f">P50 &lt; 700ms  自然</text>
+    <text x="48" y="162" font-size="12" fill="#16324f">700ms ~ 1.2s  可接受</text>
+    <text x="48" y="184" font-size="12" fill="#16324f">1.2s ~ 2s     已受损</text>
+    <text x="48" y="206" font-size="12" fill="#16324f">&gt; 2s          不可用</text>
+    <text x="48" y="236" font-size="12" fill="#c0392b">盯 P95/P99，不看平均</text>
+    <text x="48" y="258" font-size="12" fill="#5a6b7b">很多业务在 1s 档就够用</text>
+
+    <rect x="240" y="86" width="198" height="196" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="258" y="114" font-size="16" font-weight="bold" fill="#3fae8c">边界二 · 谁先开口</text>
+    <text x="258" y="142" font-size="12" fill="#16324f" font-weight="bold">半双工</text>
+    <text x="258" y="162" font-size="12" fill="#5a6b7b">严格轮次，靠打断补偿</text>
+    <text x="258" y="188" font-size="12" fill="#16324f" font-weight="bold">全双工</text>
+    <text x="258" y="208" font-size="12" fill="#5a6b7b">两路同时，能插话与「嗯」</text>
+    <text x="258" y="238" font-size="12" fill="#c0392b">体感常由「能否打断」决定</text>
+    <text x="258" y="260" font-size="12" fill="#5a6b7b">而不是由「延迟」决定</text>
+
+    <rect x="450" y="86" width="198" height="196" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="468" y="114" font-size="16" font-weight="bold" fill="#c47a2c">边界三 · 状态放哪</text>
+    <text x="468" y="142" font-size="12" fill="#16324f">连接会断，会话要能续</text>
+    <text x="468" y="166" font-size="12" fill="#5a6b7b">连接态：实例内存</text>
+    <text x="468" y="186" font-size="12" fill="#5a6b7b">会话态：外置存储</text>
+    <text x="468" y="206" font-size="12" fill="#5a6b7b">业务态：业务系统</text>
+    <text x="468" y="236" font-size="12" fill="#c0392b">会话粘性是第一道架构墙</text>
+    <text x="468" y="258" font-size="12" fill="#5a6b7b">滚动发布断谁？先回答它</text>
+
+    <rect x="660" y="86" width="200" height="196" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="678" y="114" font-size="16" font-weight="bold" fill="#6b5bd2">边界四 · 坏了怎么办</text>
+    <text x="678" y="142" font-size="12" fill="#16324f">失败是「部分失败」</text>
+    <text x="678" y="166" font-size="12" fill="#5a6b7b">首包延迟</text>
+    <text x="678" y="186" font-size="12" fill="#5a6b7b">打断成功率</text>
+    <text x="678" y="206" font-size="12" fill="#5a6b7b">端点误判率</text>
+    <text x="678" y="226" font-size="12" fill="#5a6b7b">挂断率 / 有效会话时长</text>
+    <text x="678" y="252" font-size="12" fill="#c0392b">成功率在这里不管用</text>
+
+    <text x="30" y="320" font-size="18" font-weight="bold" fill="#16324f">延迟预算：把 800ms 拆到每一段（级联链路）</text>
+
+    <rect x="30" y="340" width="200" height="72" rx="10" fill="#2d7d9a"/>
+    <text x="130" y="368" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">VAD 端点判定</text>
+    <text x="130" y="392" font-size="13" fill="#eaf4f8" text-anchor="middle">10 ~ 30 ms</text>
+
+    <rect x="244" y="340" width="200" height="72" rx="10" fill="#3fae8c"/>
+    <text x="344" y="368" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">流式 ASR</text>
+    <text x="344" y="392" font-size="13" fill="#eaf4f8" text-anchor="middle">100 ~ 300 ms</text>
+
+    <rect x="458" y="340" width="200" height="72" rx="10" fill="#c47a2c"/>
+    <text x="558" y="368" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">LLM 首 token</text>
+    <text x="558" y="392" font-size="13" fill="#eaf4f8" text-anchor="middle">200 ~ 800 ms</text>
+
+    <rect x="672" y="340" width="198" height="72" rx="10" fill="#6b5bd2"/>
+    <text x="771" y="368" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">流式 TTS 首包</text>
+    <text x="771" y="392" font-size="13" fill="#eaf4f8" text-anchor="middle">50 ~ 200 ms</text>
+
+    <rect x="30" y="428" width="840" height="66" rx="10" fill="#fdf3e6" stroke="#c47a2c" stroke-width="2"/>
+    <text x="48" y="454" font-size="13" fill="#16324f" font-weight="bold">只看一段会误判：把 ASR 从 300ms 压到 150ms，总延迟改善不到 20%（LLM 那 600ms 没动）。</text>
+    <text x="48" y="478" font-size="13" fill="#16324f">真正的做法是先量分布、找最长的一段，再动手。</text>
+  </g>
+</svg>

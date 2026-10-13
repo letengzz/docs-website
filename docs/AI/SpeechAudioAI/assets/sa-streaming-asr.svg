@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" role="img" aria-label="流式语音识别的三段结构与端点检测">
+  <title>流式识别：分块、稳定化、端点判决</title>
+  <rect x="0" y="0" width="900" height="480" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="23" font-weight="bold" fill="#16324f">流式识别：尽快出字，并且不出完又改</text>
+    <text x="30" y="64" font-size="13" fill="#5a6b7b">两个目标互相拉扯，工程参数就落在这个拉扯之间。</text>
+
+    <text x="30" y="100" font-size="17" font-weight="bold" fill="#16324f">一 · 部分结果的稳定化（同一个词会被反复改写）</text>
+
+    <rect x="30" y="116" width="840" height="112" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="1.5"/>
+    <text x="52" y="144" font-size="13" fill="#5a6b7b">t=0.4s</text>
+    <text x="130" y="144" font-size="13" fill="#9aa7b4">我想订一张去北</text>
+    <text x="52" y="168" font-size="13" fill="#5a6b7b">t=0.8s</text>
+    <text x="130" y="168" font-size="13" fill="#9aa7b4">我想订一张去北京的</text>
+    <text x="52" y="192" font-size="13" fill="#5a6b7b">t=1.2s</text>
+    <text x="130" y="192" font-size="13" fill="#9aa7b4">我想订一张去北京的机</text>
+    <text x="52" y="216" font-size="13" fill="#5a6b7b">t=1.6s</text>
+    <text x="130" y="216" font-size="13" fill="#3fae8c" font-weight="bold">我想订一张去北京的机票   ← final</text>
+
+    <rect x="30" y="244" width="410" height="118" rx="10" fill="#fdf3e6" stroke="#c47a2c" stroke-width="2"/>
+    <text x="48" y="270" font-size="15" font-weight="bold" fill="#c47a2c">部分结果只能做两件事</text>
+    <text x="48" y="296" font-size="12" fill="#16324f">① 给 UI 显示「正在听」</text>
+    <text x="48" y="318" font-size="12" fill="#16324f">② 预热下游（提前查可能的意图）</text>
+    <text x="48" y="344" font-size="12" fill="#c0392b" font-weight="bold">不能进历史，不能做工具调用</text>
+
+    <rect x="460" y="244" width="410" height="118" rx="10" fill="#eaf4f8" stroke="#3fae8c" stroke-width="2"/>
+    <text x="478" y="270" font-size="15" font-weight="bold" fill="#3fae8c">稳定化：共同前缀 + 1 个字符</text>
+    <text x="478" y="296" font-size="12" fill="#16324f">连续 N 次结果共享同一前缀才提交</text>
+    <text x="478" y="318" font-size="12" fill="#16324f">N=3 是常见起点；过大会显得卡</text>
+    <text x="478" y="344" font-size="12" fill="#5a6b7b">纯 UI 选择，不得漏进业务逻辑</text>
+
+    <text x="30" y="398" font-size="17" font-weight="bold" fill="#16324f">二 · 端点检测：唯一一个判错会双向受罚的判断</text>
+
+    <rect x="30" y="414" width="410" height="52" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="48" y="438" font-size="13" fill="#c0392b" font-weight="bold">判早了（把思考停顿当说完）</text>
+    <text x="48" y="458" font-size="12" fill="#16324f">模型抢话 → 用户重复 → 连锁出错（最伤）</text>
+
+    <rect x="460" y="414" width="410" height="52" rx="10" fill="#fdf3e6" stroke="#c47a2c" stroke-width="2"/>
+    <text x="478" y="438" font-size="13" fill="#c47a2c" font-weight="bold">判晚了（用户说完还在等）</text>
+    <text x="478" y="458" font-size="12" fill="#16324f">首包延迟凭空增加（像在卡顿）</text>
+  </g>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="实时语音问题的分诊路径">
+  <title>分诊：从现象到环节</title>
+  <rect x="0" y="0" width="900" height="500" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="23" font-weight="bold" fill="#16324f">分诊：先说现象，再定环节</text>
+    <text x="30" y="64" font-size="13" fill="#5a6b7b">不要从工具出发。先回答「慢在哪一段 / 断在哪一层」。</text>
+
+    <rect x="330" y="84" width="240" height="52" rx="10" fill="#16324f"/>
+    <text x="450" y="116" font-size="15" fill="#ffffff" font-weight="bold" text-anchor="middle">现象是什么？</text>
+
+    <rect x="30" y="160" width="200" height="66" rx="10" fill="#c47a2c"/>
+    <text x="130" y="186" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">感觉很慢</text>
+    <text x="130" y="208" font-size="11" fill="#fdf3e6" text-anchor="middle">用户会等</text>
+
+    <rect x="240" y="160" width="200" height="66" rx="10" fill="#2d7d9a"/>
+    <text x="340" y="186" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">声音断续 / 卡顿</text>
+    <text x="340" y="208" font-size="11" fill="#eaf4f8" text-anchor="middle">固定断还是偶发断？</text>
+
+    <rect x="450" y="160" width="200" height="66" rx="10" fill="#3fae8c"/>
+    <text x="550" y="186" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">抢话 / 插话没反应</text>
+    <text x="550" y="208" font-size="11" fill="#eaf4f8" text-anchor="middle">端点 or 打断</text>
+
+    <rect x="660" y="160" width="210" height="66" rx="10" fill="#6b5bd2"/>
+    <text x="765" y="186" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">自言自语 / 回声</text>
+    <text x="765" y="208" font-size="11" fill="#e9e6fb" text-anchor="middle">AEC 与双讲检测</text>
+
+    <rect x="30" y="246" width="200" height="96" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="48" y="270" font-size="12" fill="#16324f" font-weight="bold">先拆两段</text>
+    <text x="48" y="292" font-size="11" fill="#5a6b7b">说完 → 开始算</text>
+    <text x="48" y="310" font-size="11" fill="#5a6b7b">开始算 → 出声</text>
+    <text x="48" y="332" font-size="11" fill="#c0392b">哪一段更长？</text>
+
+    <rect x="240" y="246" width="200" height="96" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="258" y="270" font-size="12" fill="#16324f" font-weight="bold">查三处</text>
+    <text x="258" y="292" font-size="11" fill="#5a6b7b">抖动缓冲有没有衰减</text>
+    <text x="258" y="310" font-size="11" fill="#5a6b7b">队列有没有界</text>
+    <text x="258" y="332" font-size="11" fill="#c0392b">是否用了 WebSocket 传音频</text>
+
+    <rect x="450" y="246" width="200" height="96" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="468" y="270" font-size="12" fill="#16324f" font-weight="bold">区分两个阶段</text>
+    <text x="468" y="292" font-size="11" fill="#5a6b7b">SPEAKING 被打断：清队列</text>
+    <text x="468" y="310" font-size="11" fill="#5a6b7b">THINKING 被打断：取消生成</text>
+    <text x="468" y="332" font-size="11" fill="#c0392b">漏了后者会「突然开播」</text>
+
+    <rect x="660" y="246" width="210" height="96" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="678" y="270" font-size="12" fill="#16324f" font-weight="bold">三条防线</text>
+    <text x="678" y="292" font-size="11" fill="#5a6b7b">参考信号是否接好</text>
+    <text x="678" y="310" font-size="11" fill="#5a6b7b">播放时是否抑制自身声纹</text>
+    <text x="678" y="332" font-size="11" fill="#c0392b">自触发连续计数是否超阈值</text>
+
+    <rect x="30" y="368" width="840" height="112" rx="10" fill="#fdf3e6" stroke="#c47a2c" stroke-width="2"/>
+    <text x="48" y="394" font-size="15" font-weight="bold" fill="#c47a2c">交付前先埋四类事件（投入产出比最高的一步）</text>
+    <text x="48" y="420" font-size="13" fill="#16324f" font-weight="bold">user_speech_start　·　agent_audio_start　·　agent_audio_stop_by_bargein　·　session_end</text>
+    <text x="48" y="444" font-size="12" fill="#5a6b7b">全部带 session_id 与时间戳，落到日志即可离线算出四个实时指标 —— 不需要先建大盘。</text>
+    <text x="48" y="468" font-size="12" fill="#16324f">有了这四个数，你才有资格谈优化；没有它们，所有改进都只是感觉。</text>
+  </g>
+</svg>

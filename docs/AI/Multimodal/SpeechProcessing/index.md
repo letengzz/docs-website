@@ -260,3 +260,21 @@ print('WER =', round(jiwer.wer(ref, hyp), 4))
 - OpenAI Realtime API 文档：<https://platform.openai.com/docs/guides/realtime>
 - jiwer（WER/CER 计算库）：<https://github.com/jitsi/jiwer>
 - 项目内相关：[多模态应用概述](../Overview/index.md) ｜ [视频处理](../VideoProcessing/index.md)（字幕与时间轴对齐同一套思路） ｜ [模型接入与选型](../ModelAccess/index.md)
+
+## 与实时语音专题的分工（第 132 天补充）
+
+本页与[语音与音视频 AI](../../SpeechAudioAI/index.md) 共用同一批模型（Silero VAD、Whisper 系、Kokoro / CosyVoice），但**解决的是两类问题**，不可以互相替代。
+
+| | 本页（离线批处理） | [语音与音视频 AI](../../SpeechAudioAI/index.md)（实时双工） |
+| --- | --- | --- |
+| **输入形态** | 一个**已经存在、长度已知**的文件 | 一个**此刻还没结束**的流 |
+| **核心目标** | **准确**——算慢一点可以接受 | **及时**——在用户开始怀疑之前出声 |
+| **延迟预算** | 秒 ~ 分钟 | **几百毫秒**（P50 < 700ms） |
+| **调用方式** | 批量调用，一次给完整音频 | **流式驱动**：分块送入、增量产出 |
+| **评测口径** | CER / WER、MOS | 首包延迟、打断成功率、端点误判率、挂断率 |
+| **本页哪一节对应** | 「三、ASR」「四、TTS」 | [流式识别](../../SpeechAudioAI/StreamingASR/index.md)、[流式合成](../../SpeechAudioAI/StreamingTTS/index.md) |
+
+::: warning 两处最容易互相误用的地方
+1. **把本页的「五、实时语音对话」当成完整方案**。那一节是**延迟预算的预览**，只交代了「有级联与端到端两条路」；真正的工程内容——传输协议选型、流式分块与端点检测、打断状态机、RTC 音频处理——在实时专题里，本页不重复展开。
+2. **把本页的 CER/WER 基准直接搬去评实时链路**。实时识别**必然**比离线差：官方公布的 Gemini 3.5 Transcribe 数据是**流式 WER 4.0% / 非流式 2.6%**——流式高出 1.4 个百分点是常态。用离线基准去卡实时链路，会让团队去优化一个本就不存在的差距。
+:::

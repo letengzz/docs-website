@@ -171,3 +171,20 @@ def complete(text: str, must_have: list[str]) -> bool:
 - MinerU 许可条款（标注义务与阈值）：<https://github.com/opendatalab/MinerU>
 - FFmpeg 官方文档（音视频预处理）：<https://ffmpeg.org/documentation.html>
 - 项目内相关：[多模态应用概述](../Overview/index.md) ｜ [实战：图片问答 + 语音转写服务](../Practice/index.md)
+
+## 十、与实时语音专题的分工（第 132 天补充）
+
+本页的分诊表针对**离线链路**（文件进、结果出）。如果用户的问题里出现「**延迟**」「**打断**」「**边说边出**」「**打电话**」这几个词，那属于[语音与音视频 AI](../../SpeechAudioAI/index.md)，本页的排障路径不适用：
+
+| 你的现象 | 归哪一边 | 入口 |
+| --- | --- | --- |
+| 转写不准、静音幻觉、长音频切分乱 | **本页**（离线）：精度问题 | [排查总原则](#一排查总原则) |
+| 一批文件跑得慢、成本高 | **本页**（离线）：吞吐与预算问题 | [延迟与成本类问题](#五延迟与成本类问题) |
+| 一期录音要出字幕、要摘要 | **本页**：批量链路 | [视频处理](../VideoProcessing/index.md) |
+| 说话到听到回应之间有明显等待 | [语音与音视频 AI](../../SpeechAudioAI/index.md)：延迟预算 | [概述](../../SpeechAudioAI/Overview/index.md) |
+| 用户插话时系统不理会 / 系统抢话 | 那边：打断与端点判定 | [端到端语音到语音](../../SpeechAudioAI/SpeechToSpeech/index.md) |
+| 有回声、啸叫、音画不同步 | 那边：RTC 音频处理 | [实时音视频（RTC）](../../SpeechAudioAI/RTC/index.md) |
+
+::: tip 一条简单的判断规则
+**问一句「输入是不是已经完整存在了」。** 是 → 本页（精度优先、慢慢算）；不是（用户还在说、麦克风还开着）→ 实时专题（延迟优先、必须及时）。**这一句话能省掉一半的误查。**
+:::

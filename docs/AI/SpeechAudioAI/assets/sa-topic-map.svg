@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 566" width="900" height="566" role="img" aria-label="语音与音视频 AI 专题地图">
+  <title>专题地图：四段链路与九个页面</title>
+  <rect x="0" y="0" width="900" height="566" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="24" font-weight="bold" fill="#16324f">语音与音视频 AI · 四段链路与九个页面</text>
+    <text x="30" y="66" font-size="14" fill="#5a6b7b">顺序即依赖：先定传输，再定识别与合成，最后才是会话与工程。</text>
+
+    <rect x="30" y="88" width="140" height="96" rx="10" fill="#2d7d9a"/>
+    <text x="100" y="130" font-size="19" fill="#ffffff" font-weight="bold" text-anchor="middle">① 传输</text>
+    <text x="100" y="156" font-size="12" fill="#eaf4f8" text-anchor="middle">音频怎么走</text>
+
+    <rect x="186" y="88" width="684" height="96" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="204" y="116" font-size="15" fill="#16324f" font-weight="bold">实时传输协议</text>
+    <text x="204" y="140" font-size="12" fill="#5a6b7b">WebSocket / WebRTC / SIP 三选</text>
+    <text x="204" y="158" font-size="12" fill="#5a6b7b">20ms 分帧与 Opus 参数</text>
+    <text x="204" y="176" font-size="12" fill="#5a6b7b">抖动缓冲要有衰减；背压要丢旧保新</text>
+
+    <rect x="30" y="200" width="140" height="96" rx="10" fill="#3fae8c"/>
+    <text x="100" y="242" font-size="19" fill="#ffffff" font-weight="bold" text-anchor="middle">② 听</text>
+    <text x="100" y="268" font-size="12" fill="#eaf4f8" text-anchor="middle">把声音变成文本</text>
+
+    <rect x="186" y="200" width="334" height="96" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="204" y="228" font-size="15" fill="#16324f" font-weight="bold">流式语音识别</text>
+    <text x="204" y="252" font-size="12" fill="#5a6b7b">部分结果只给 UI，不给历史</text>
+    <text x="204" y="270" font-size="12" fill="#5a6b7b">端点检测：判早比判晚更伤</text>
+    <text x="204" y="288" font-size="12" fill="#5a6b7b">预判早于抢话：加回滚窗口</text>
+
+    <rect x="536" y="200" width="334" height="96" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="554" y="228" font-size="15" fill="#16324f" font-weight="bold">流式语音合成</text>
+    <text x="554" y="252" font-size="12" fill="#5a6b7b">TTFA 才是体感，总时延是错觉</text>
+    <text x="554" y="270" font-size="12" fill="#5a6b7b">按子句切分，第一句一出就播</text>
+    <text x="554" y="288" font-size="12" fill="#5a6b7b">音色来源与许可三条红线</text>
+
+    <rect x="30" y="312" width="140" height="96" rx="10" fill="#c47a2c"/>
+    <text x="100" y="354" font-size="19" fill="#ffffff" font-weight="bold" text-anchor="middle">③ 说</text>
+    <text x="100" y="380" font-size="12" fill="#eaf4f8" text-anchor="middle">从文本回到声音</text>
+
+    <rect x="186" y="312" width="334" height="96" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="204" y="340" font-size="15" fill="#16324f" font-weight="bold">端到端语音到语音</text>
+    <text x="204" y="364" font-size="12" fill="#5a6b7b">级联 vs 端到端：很难回头的决定</text>
+    <text x="204" y="382" font-size="12" fill="#5a6b7b">全双工、打断与轮次状态机</text>
+    <text x="204" y="400" font-size="12" fill="#5a6b7b">混合架构：外圈实时、内核文本</text>
+
+    <rect x="536" y="312" width="334" height="96" rx="10" fill="#ffffff" stroke="#c47a2c" stroke-width="2"/>
+    <text x="554" y="340" font-size="15" fill="#16324f" font-weight="bold">语音智能体工程</text>
+    <text x="554" y="364" font-size="12" fill="#5a6b7b">工具调用不冻结对话</text>
+    <text x="554" y="382" font-size="12" fill="#5a6b7b">四个实时专属指标</text>
+    <text x="554" y="400" font-size="12" fill="#5a6b7b">按分钟计费的成本归因</text>
+
+    <rect x="30" y="424" width="140" height="96" rx="10" fill="#6b5bd2"/>
+    <text x="100" y="466" font-size="19" fill="#ffffff" font-weight="bold" text-anchor="middle">④ 工程</text>
+    <text x="100" y="492" font-size="12" fill="#eaf4f8" text-anchor="middle">让它真的能用</text>
+
+    <rect x="186" y="424" width="334" height="96" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="204" y="452" font-size="15" fill="#16324f" font-weight="bold">实时音视频（RTC）</text>
+    <text x="204" y="476" font-size="12" fill="#5a6b7b">拓扑：P2P / SFU / MCU</text>
+    <text x="204" y="494" font-size="12" fill="#5a6b7b">AEC 必须有参考信号，顺序不可换</text>
+    <text x="204" y="512" font-size="12" fill="#5a6b7b">弱网时先关视频，再降音频码率</text>
+
+    <rect x="536" y="424" width="334" height="96" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="554" y="452" font-size="15" fill="#16324f" font-weight="bold">实战与常见问题</text>
+    <text x="554" y="476" font-size="12" fill="#5a6b7b">可本地运行的最小系统</text>
+    <text x="554" y="494" font-size="12" fill="#5a6b7b">R1~R12 验收判据</text>
+    <text x="554" y="512" font-size="12" fill="#5a6b7b">分诊表与 15 项上线自查</text>
+  </g>
+  <rect x="30" y="532" width="840" height="26" rx="8" fill="#eaf1f7"/>
+  <text x="48" y="550" font-size="13" fill="#16324f">卡住时从「常见问题」的分诊表进入：先说现象，再定环节。</text>
+</svg>

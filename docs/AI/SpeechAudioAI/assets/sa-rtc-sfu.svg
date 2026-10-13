@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="RTC 拓扑选择与音频处理链路">
+  <title>RTC：拓扑选择、音频处理顺序、弱网降级</title>
+  <rect x="0" y="0" width="900" height="500" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="40" font-size="23" font-weight="bold" fill="#16324f">RTC：多出三件语音里没有的事</text>
+    <text x="30" y="64" font-size="13" fill="#5a6b7b">回声与啸叫、音画同步、弱网自适应。</text>
+
+    <text x="30" y="102" font-size="17" font-weight="bold" fill="#16324f">拓扑：人数决定一切</text>
+
+    <rect x="30" y="120" width="272" height="96" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="48" y="146" font-size="14" font-weight="bold" fill="#2d7d9a">Mesh（P2P 全网状）</text>
+    <text x="48" y="170" font-size="12" fill="#16324f">每人上行 N-1 路</text>
+    <text x="48" y="190" font-size="12" fill="#3fae8c">服务端零成本</text>
+    <text x="48" y="210" font-size="12" fill="#c0392b">仅适合 2~4 人</text>
+
+    <rect x="314" y="120" width="272" height="96" rx="10" fill="#ffffff" stroke="#3fae8c" stroke-width="2"/>
+    <text x="332" y="146" font-size="14" font-weight="bold" fill="#3fae8c">SFU（只转发不解码）</text>
+    <text x="332" y="170" font-size="12" fill="#16324f">每人上行 1 路</text>
+    <text x="332" y="190" font-size="12" fill="#3fae8c">主流选择，4 人以上</text>
+    <text x="332" y="210" font-size="12" fill="#c0392b">转发策略成了你的责任</text>
+
+    <rect x="598" y="120" width="272" height="96" rx="10" fill="#ffffff" stroke="#6b5bd2" stroke-width="2"/>
+    <text x="616" y="146" font-size="14" font-weight="bold" fill="#6b5bd2">MCU（解码+混流+重编码）</text>
+    <text x="616" y="170" font-size="12" fill="#16324f">服务器做转码</text>
+    <text x="616" y="190" font-size="12" fill="#c0392b">单机容量低</text>
+    <text x="616" y="210" font-size="12" fill="#5a6b7b">老式会议桥</text>
+
+    <text x="30" y="256" font-size="17" font-weight="bold" fill="#16324f">音频处理顺序：AEC → NS → AGC，不可交换</text>
+
+    <rect x="30" y="274" width="140" height="56" rx="10" fill="#2d7d9a"/>
+    <text x="100" y="308" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">麦克风</text>
+
+    <rect x="186" y="274" width="140" height="56" rx="10" fill="#c0392b"/>
+    <text x="256" y="300" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">AEC</text>
+    <text x="256" y="320" font-size="11" fill="#fdecea" text-anchor="middle">必须最先</text>
+
+    <rect x="342" y="274" width="140" height="56" rx="10" fill="#c47a2c"/>
+    <text x="412" y="300" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">NS</text>
+    <text x="412" y="320" font-size="11" fill="#fdf3e6" text-anchor="middle">在 AEC 之后</text>
+
+    <rect x="498" y="274" width="140" height="56" rx="10" fill="#3fae8c"/>
+    <text x="568" y="300" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">AGC</text>
+    <text x="568" y="320" font-size="11" fill="#eaf4f8" text-anchor="middle">在 NS 之后</text>
+
+    <rect x="654" y="274" width="216" height="56" rx="10" fill="#6b5bd2"/>
+    <text x="762" y="300" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="middle">编码 → 网络</text>
+    <text x="762" y="320" font-size="11" fill="#e9e6fb" text-anchor="middle">Opus 20ms 帧</text>
+
+    <rect x="186" y="340" width="452" height="34" rx="8" fill="#fdecea" stroke="#c0392b" stroke-width="1.5"/>
+    <text x="204" y="362" font-size="12" fill="#c0392b" font-weight="bold">AEC 必须有「参考信号」（你正在播的音频）；自己拼链路时这条回路要自己接</text>
+
+    <text x="30" y="410" font-size="17" font-weight="bold" fill="#16324f">弱网降级顺序：先关视频，再降音频码率</text>
+
+    <rect x="30" y="428" width="130" height="56" rx="8" fill="#eaf4f8" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="95" y="452" font-size="12" fill="#16324f" font-weight="bold" text-anchor="middle">① 降分辨率</text>
+    <text x="95" y="472" font-size="11" fill="#5a6b7b" text-anchor="middle">最先牺牲</text>
+
+    <rect x="172" y="428" width="130" height="56" rx="8" fill="#eaf4f8" stroke="#2d7d9a" stroke-width="1.5"/>
+    <text x="237" y="452" font-size="12" fill="#16324f" font-weight="bold" text-anchor="middle">② 降编码层</text>
+    <text x="237" y="472" font-size="11" fill="#5a6b7b" text-anchor="middle">画面糊一点</text>
+
+    <rect x="314" y="428" width="130" height="56" rx="8" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="379" y="452" font-size="12" fill="#c0392b" font-weight="bold" text-anchor="middle">③ 关掉视频</text>
+    <text x="379" y="472" font-size="11" fill="#16324f" text-anchor="middle">能听见 &gt; 能看见</text>
+
+    <rect x="456" y="428" width="130" height="56" rx="8" fill="#fdf3e6" stroke="#c47a2c" stroke-width="1.5"/>
+    <text x="521" y="452" font-size="12" fill="#16324f" font-weight="bold" text-anchor="middle">④ 降音频码率</text>
+    <text x="521" y="472" font-size="11" fill="#5a6b7b" text-anchor="middle">16k → 8k</text>
+
+    <rect x="598" y="428" width="130" height="56" rx="8" fill="#f0f2f5" stroke="#9aa7b4" stroke-width="1.5"/>
+    <text x="663" y="452" font-size="12" fill="#16324f" font-weight="bold" text-anchor="middle">⑤ 加长帧长</text>
+    <text x="663" y="472" font-size="11" fill="#c0392b" text-anchor="middle">每 20ms 都是真延迟</text>
+
+    <rect x="740" y="428" width="130" height="56" rx="8" fill="#f0f2f5" stroke="#9aa7b4" stroke-width="1.5"/>
+    <text x="805" y="452" font-size="12" fill="#16324f" font-weight="bold" text-anchor="middle">⑥ 降级为文本</text>
+    <text x="805" y="472" font-size="11" fill="#5a6b7b" text-anchor="middle">最后手段</text>
+  </g>
+</svg>
