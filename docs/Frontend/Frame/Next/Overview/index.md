@@ -1,5 +1,7 @@
 # Next 概述与安装
 
+![Next 版本与渲染模式的选择路径](./assets/next-router-versions.svg)
+
 ## Next.js 简介
 
 Next.js 是由 Vercel 开发的基于 React 的全栈框架，提供了服务端渲染（SSR）、静态站点生成（SSG）、API 路由等开箱即用的功能。

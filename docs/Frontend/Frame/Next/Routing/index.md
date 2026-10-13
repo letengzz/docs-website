@@ -1,5 +1,7 @@
 # Next 路由系统
 
+![Next 文件系统路由的六种约定到 URL 的映射](./assets/next-routing-map.svg)
+
 Next.js 采用基于文件系统的路由机制，App Router 基于 React Server Components 提供了更强大的路由能力。
 
 ## 路由基础

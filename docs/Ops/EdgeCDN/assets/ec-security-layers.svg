@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="边缘安全的四层与责任分界">
+  <defs>
+    <marker id="ec-sec-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">边缘安全：四层防线与「谁负责哪一段」</text>
+  <text x="32" y="66" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">每一层都要能单独回答：拦住了什么、误伤了谁、日志能不能取回</text>
+
+  <!-- 四层 -->
+  <rect x="30" y="96" width="840" height="52" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="52" y="120" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">第 1 层 · 传输与证书</text>
+  <text x="288" y="120" font-family="system-ui, sans-serif" font-size="12" fill="#334155">TLS 终结在边缘、证书由平台托管或自管；要点是续期自动化与到期告警</text>
+  <text x="288" y="138" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">判据：证书链完整、协议版本与加密套件符合内部基线、续期失败有人知道</text>
+
+  <rect x="30" y="158" width="840" height="52" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="52" y="182" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#075985">第 2 层 · 流量与攻击防护</text>
+  <text x="288" y="182" font-family="system-ui, sans-serif" font-size="12" fill="#334155">DDoS 清洗、WAF 规则、限速；要点是「先观察再拦截」与误伤可控</text>
+  <text x="288" y="200" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">判据：规则上线先记日志、拦截量可下钻、误伤有申诉通道</text>
+
+  <rect x="30" y="220" width="840" height="52" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="52" y="244" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">第 3 层 · 访问控制（最容易被做错）</text>
+  <text x="288" y="244" font-family="system-ui, sans-serif" font-size="12" fill="#334155">签名 URL、Token 鉴权、防盗链；要点是密钥管理与「鉴权与缓存不能互相污染」</text>
+  <text x="288" y="262" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">判据：凭证有过期时间、能一键吊销、密钥有轮换周期</text>
+
+  <rect x="30" y="282" width="840" height="52" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="52" y="306" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#5b21b6">第 4 层 · 可见性与取证</text>
+  <text x="288" y="306" font-family="system-ui, sans-serif" font-size="12" fill="#334155">边缘日志、Bot 报告、攻击明细；要点是「能取回」而不是「平台里能看到」</text>
+  <text x="288" y="324" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">判据：日志能落地到你自己的存储、保留期满足审计、字段含真实客户端 IP</text>
+
+  <!-- 责任分界 -->
+  <rect x="30" y="356" width="404" height="140" rx="12" fill="#ffffff" stroke="#86efac"/>
+  <text x="232" y="382" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#15803d" text-anchor="middle">平台负责（SLA 内）</text>
+  <text x="52" y="406" font-family="system-ui, sans-serif" font-size="11" fill="#334155">物理网络与骨干、节点自身的可用性、</text>
+  <text x="52" y="426" font-family="system-ui, sans-serif" font-size="11" fill="#334155">通用 DDoS 清洗能力、证书签发通道。</text>
+  <text x="52" y="452" font-family="system-ui, sans-serif" font-size="11" fill="#15803d">但：它不会替你决定「哪些路径要鉴权」</text>
+  <text x="52" y="472" font-family="system-ui, sans-serif" font-size="11" fill="#15803d">，也不会替你判断「这条规则误伤了多少」。</text>
+
+  <rect x="466" y="356" width="404" height="140" rx="12" fill="#ffffff" stroke="#fca5a5"/>
+  <text x="668" y="382" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c" text-anchor="middle">你负责（写进自己的运行手册）</text>
+  <text x="488" y="406" font-family="system-ui, sans-serif" font-size="11" fill="#334155">规则内容与阈值、密钥生命周期、签名</text>
+  <text x="488" y="426" font-family="system-ui, sans-serif" font-size="11" fill="#334155">策略、日志落地与保留期、误伤申诉。</text>
+  <text x="488" y="452" font-family="system-ui, sans-serif" font-size="11" fill="#b91c1c">最容易漏的一条：回源必须只接受边缘</text>
+  <text x="488" y="472" font-family="system-ui, sans-serif" font-size="11" fill="#b91c1c">的流量，否则所有防护都可以被绕过。</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="边缘的成本由什么决定：计费维度与降本杠杆">
+  <defs>
+    <marker id="ec-cost-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">账单由计费维度决定，不由「快不快」决定</text>
+
+  <!-- 三个输入 -->
+  <rect x="30" y="76" width="196" height="66" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="128" y="102" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a" text-anchor="middle">请求数</text>
+  <text x="128" y="124" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">缓存命中也要计</text>
+
+  <rect x="248" y="76" width="196" height="66" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="346" y="102" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#075985" text-anchor="middle">出网流量</text>
+  <text x="346" y="124" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">响应体大小 × 请求数</text>
+
+  <rect x="466" y="76" width="196" height="66" rx="10" fill="#eef2ff" stroke="#818cf8" stroke-width="1.5"/>
+  <text x="564" y="102" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3" text-anchor="middle">CPU 时间</text>
+  <text x="564" y="124" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">只算代码执行，不等 I/O</text>
+
+  <rect x="684" y="76" width="186" height="66" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="777" y="102" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#5b21b6" text-anchor="middle">存储与其它</text>
+  <text x="777" y="124" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">KV 读写、图片处理、日志</text>
+
+  <!-- 算例 -->
+  <rect x="30" y="162" width="840" height="164" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="188" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">同一个用量，两种计费口径差 20 倍以上（本页算例，全部用本机实算）</text>
+  <text x="52" y="212" font-family="system-ui, sans-serif" font-size="12" fill="#334155">用量假设：每月 5000 万次请求、缓存命中率 92%、命中响应 180 KB、边缘函数覆盖 30% 请求且平均 6 ms CPU。</text>
+  <text x="52" y="238" font-family="system-ui, sans-serif" font-size="12" fill="#1e3a8a">口径 A（按请求 + CPU 计费，出网不计费）：$12.00 请求 + $1.20 CPU + $5.00 订阅 = <tspan font-weight="700">$18.20 / 月</tspan>　每千次请求 $0.000364</text>
+  <text x="52" y="264" font-family="system-ui, sans-serif" font-size="12" fill="#b45309">口径 B（按流量 + 请求计费）：8583 GB × ¥0.31 = ¥2661，加 5000 万次 × ¥5/百万 = ¥250，<tspan font-weight="700">合计 ¥2911 ≈ $410 / 月</tspan></text>
+  <text x="52" y="290" font-family="system-ui, sans-serif" font-size="12" fill="#334155">总出网流量 9,000,000,000 KB = 8583.1 GB（十进制）= 8.38 TiB；回源 400 万次（8%）、回源流量约 915 GB。</text>
+  <text x="52" y="314" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">同一份用量在两种口径下相差约 22.5 倍——这就是「选型前先看计费维度」的全部理由。</text>
+
+  <!-- 降本杠杆排序 -->
+  <rect x="30" y="342" width="500" height="146" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="52" y="368" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#15803d">降本杠杆（按量级排序，流量口径下）</text>
+  <text x="52" y="392" font-family="system-ui, sans-serif" font-size="12" fill="#334155">① 减小响应体：−30% 体积 ≈ 省 ¥798 / 月（最大的一条）</text>
+  <text x="52" y="414" font-family="system-ui, sans-serif" font-size="12" fill="#334155">② 用更便宜的大文件分发通道（视频走专门通道）</text>
+  <text x="52" y="436" font-family="system-ui, sans-serif" font-size="12" fill="#334155">③ 提高命中率：92% → 96% 只省回源流量约 458 GB</text>
+  <text x="52" y="458" font-family="system-ui, sans-serif" font-size="12" fill="#334155">④ 砍边缘函数调用（把不改变响应体的逻辑下移到规则）</text>
+  <text x="52" y="478" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">注意 ③ 的收益在流量口径下很小：用户侧流量不因命中率而减少。</text>
+
+  <rect x="546" y="342" width="324" height="146" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="568" y="368" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">三个会算错账的地方</text>
+  <text x="568" y="392" font-family="system-ui, sans-serif" font-size="11" fill="#334155">① 缓存命中仍计请求数，却常被当成「免费」</text>
+  <text x="568" y="414" font-family="system-ui, sans-serif" font-size="11" fill="#334155">② 只盯回源比：真正决定账单的是响应体大小</text>
+  <text x="568" y="436" font-family="system-ui, sans-serif" font-size="11" fill="#334155">③ 用十进制 GB 估 TiB 预算：8600 与 8400 之别</text>
+  <text x="568" y="462" font-family="system-ui, sans-serif" font-size="11" fill="#b45309">先用一周真实数据算一次，再谈优化。</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-label="UmiJS 目录结构职责地图">
+  <defs>
+    <marker id="ud-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="470" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">UmiJS 目录：谁在什么时机读它</text>
+  <text x="32" y="62" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Umi 是「约定优于配置」：目录名本身就是配置。所以目录结构第一位的价值不是好看，而是少写配置。</text>
+
+  <rect x="30" y="82" width="196" height="66" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="46" y="104" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">config/</text>
+  <text x="46" y="123" font-family="system-ui, sans-serif" font-size="11" fill="#334155">构建与运行期配置</text>
+  <text x="46" y="139" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">config.ts / proxy / routes</text>
+
+  <rect x="240" y="82" width="196" height="66" rx="9" fill="#ecfdf5" stroke="#34d399"/>
+  <text x="256" y="104" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#065f46">src/</text>
+  <text x="256" y="123" font-family="system-ui, sans-serif" font-size="11" fill="#334155">业务代码，约定式入口</text>
+  <text x="256" y="139" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">pages / components / models</text>
+
+  <rect x="450" y="82" width="196" height="66" rx="9" fill="#fff7ed" stroke="#fb923c"/>
+  <text x="466" y="104" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#9a3412">public/</text>
+  <text x="466" y="123" font-family="system-ui, sans-serif" font-size="11" fill="#334155">原样拷进产物、不过构建</text>
+  <text x="466" y="139" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">favicon / robots.txt</text>
+
+  <rect x="660" y="82" width="210" height="66" rx="9" fill="#fef2f2" stroke="#f87171"/>
+  <text x="676" y="104" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#991b1b">mock/</text>
+  <text x="676" y="123" font-family="system-ui, sans-serif" font-size="11" fill="#334155">接口模拟，只在 dev 生效</text>
+  <text x="676" y="139" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">不明文进生产包</text>
+
+  <rect x="30" y="164" width="266" height="60" rx="9" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="46" y="186" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">.umirc.ts 与 config/config.ts</text>
+  <text x="46" y="205" font-family="system-ui, sans-serif" font-size="11" fill="#334155">同时存在时 .umirc.ts 优先；两者不要写重复项</text>
+
+  <rect x="312" y="164" width="266" height="60" rx="9" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="328" y="186" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">src/.umi/ （产物，勿手改）</text>
+  <text x="328" y="205" font-family="system-ui, sans-serif" font-size="11" fill="#334155">Umi 生成的临时入口与路由表，改了下一次 dev 会被覆盖</text>
+
+  <rect x="594" y="164" width="276" height="60" rx="9" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="610" y="186" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">dist/ （产物，进 .gitignore）</text>
+  <text x="610" y="205" font-family="system-ui, sans-serif" font-size="11" fill="#334155">构建输出，绝不提交；提交了会导致「本地能跑、CI 结果不符」</text>
+
+  <path d="M 128 148 L 128 164" stroke="#475569" stroke-width="1.6" marker-end="url(#ud-arrow)"/>
+  <path d="M 338 148 L 338 164" stroke="#475569" stroke-width="1.6" marker-end="url(#ud-arrow)"/>
+  <path d="M 548 148 L 548 164" stroke="#475569" stroke-width="1.6" marker-end="url(#ud-arrow)"/>
+
+  <rect x="30" y="248" width="840" height="120" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="50" y="274" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">三类目录的判据：改动它的后果不同</text>
+  <text x="50" y="299" font-family="system-ui, sans-serif" font-size="12" fill="#334155">① 写代码的地方（src/、config/）——改完要跑类型检查与构建，评审看 diff。</text>
+  <text x="50" y="322" font-family="system-ui, sans-serif" font-size="12" fill="#334155">② 原样拷走的地方（public/）——文件名即 URL，改名字等于改线上链接，属于破坏性变更。</text>
+  <text x="50" y="345" font-family="system-ui, sans-serif" font-size="12" fill="#334155">③ 由工具生成的地方（src/.umi/、dist/）——只能删不能改；手动改了会被下一次构建静默覆盖。</text>
+
+  <rect x="30" y="384" width="840" height="62" rx="12" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="50" y="408" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">一句话记住：目录名是 Umi 的配置语言</text>
+  <text x="50" y="431" font-family="system-ui, sans-serif" font-size="12" fill="#334155">想知道某个能力在哪配，先问「有没有一个约定目录对应它」；目录能表达的，就不要写成配置项。</text>
+</svg>

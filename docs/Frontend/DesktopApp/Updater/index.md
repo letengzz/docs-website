@@ -68,9 +68,9 @@ npm run tauri signer generate -- -w ~/.tauri/da-notes.key
 
 | 变量 | 取值 | 例子 |
 | --- | --- | --- |
-| `{{target}}` | 平台族 | `darwin` / `windows` / `linux` |
-| `{{arch}}` | 架构 | `x86_64` / `aarch64` / `i686` / `armv7` |
-| `{{current_version}}` | 当前版本 | `0.1.0` |
+| <span v-pre>`{{target}}`</span> | 平台族 | `darwin` / `windows` / `linux` |
+| <span v-pre>`{{arch}}`</span> | 架构 | `x86_64` / `aarch64` / `i686` / `armv7` |
+| <span v-pre>`{{current_version}}`</span> | 当前版本 | `0.1.0` |
 
 ```json [tauri.conf.json（updater 配置）]
 {
@@ -147,7 +147,7 @@ async fn check_silently(app: tauri::AppHandle) -> tauri_plugin_updater::Result<(
 
 | 手段 | 做法 | 代价 |
 | --- | --- | --- |
-| **分批放量** | 端点按 `{{current_version}}` / 用户分组返回不同 `latest.json`，先给 5% 用户 | 需要自己的服务端逻辑 |
+| **分批放量** | 端点按 <span v-pre>`{{current_version}}`</span> / 用户分组返回不同 `latest.json`，先给 5% 用户 | 需要自己的服务端逻辑 |
 | **按渠道** | 维护 `stable` / `beta` 两条端点，用户可切换 | 需要两条发布流水线 |
 | **延迟发布** | 先让「手动检查更新」的用户拿到，观察几天再让自动检查的用户拿到 | 简单，但只覆盖主动用户 |
 | **回滚** | **把 `latest.json` 的 `version` 改回旧版本号**，并把 `url`/`signature` 指向旧产物 | 只能回滚到「已发布过的版本」；**低版本号不会被自动升级逻辑接受**——见下方警告 |

@@ -1,5 +1,7 @@
 # Next 布局系统
 
+![Next 嵌套布局的复用边界](./assets/next-layout-nesting.svg)
+
 Next.js App Router 提供了强大的布局系统，支持嵌套布局、路由组布局等多种布局模式。
 
 ## 根布局

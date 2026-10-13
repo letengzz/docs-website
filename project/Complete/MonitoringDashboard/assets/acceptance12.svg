@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="验收一与验收二的实测形状，以及三条死掉的告警规则">
+  <defs>
+    <marker id="ar-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">验收一 / 验收二的实测形状，与那条最贵的发现</text>
+  <text x="32" y="62" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">链路全绿，不代表规则是活的。本轮唯一的红点不在运行结果里，在「选择器匹配不到任何序列」这件事上。</text>
+
+  <rect x="30" y="82" width="404" height="196" rx="12" fill="#ecfdf5" stroke="#34d399"/>
+  <text x="50" y="108" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#065f46">验收一：采集链路（A1 ~ A4）</text>
+  <rect x="50" y="122" width="364" height="42" rx="7" fill="#ffffff" stroke="#a7f3d0"/>
+  <text x="62" y="140" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">A1 按文档写下的服务名起不来</text>
+  <text x="62" y="156" font-family="ui-monospace, monospace" font-size="10" fill="#334155">no such service: tsdb → 实际是 metrics-collector</text>
+  <rect x="50" y="172" width="364" height="36" rx="7" fill="#ffffff" stroke="#a7f3d0"/>
+  <text x="62" y="195" font-family="system-ui, sans-serif" font-size="11" fill="#334155">A2 配置里三个 job 与契约一致（core / edge / pods）</text>
+  <rect x="50" y="216" width="364" height="36" rx="7" fill="#ffffff" stroke="#a7f3d0"/>
+  <text x="62" y="239" font-family="system-ui, sans-serif" font-size="11" fill="#334155">A3 三个目标 up = 1，无一条 up = 0</text>
+  <rect x="50" y="252" width="364" height="20" rx="7" fill="#ffffff" stroke="#a7f3d0"/>
+  <text x="62" y="267" font-family="system-ui, sans-serif" font-size="10" fill="#065f46">A4 20 / 5 / 20，与 300 ÷ scrape_interval 完全吻合</text>
+
+  <rect x="466" y="82" width="404" height="196" rx="12" fill="#eff6ff" stroke="#60a5fa"/>
+  <text x="486" y="108" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1e40af">验收二：规则链路（B1 ~ B4）</text>
+  <rect x="486" y="122" width="364" height="42" rx="7" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="498" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">B1 reload 返回 200；日志给出 rules=2.087 ms</text>
+  <text x="498" y="156" font-family="system-ui, sans-serif" font-size="10" fill="#b45309">但日志里没有「加载条数」——那条判据要改口径</text>
+  <rect x="486" y="172" width="364" height="36" rx="7" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="498" y="195" font-family="system-ui, sans-serif" font-size="11" fill="#334155">B2 2 组 / 7 条，与两个文件逐条对齐</text>
+  <rect x="486" y="216" width="364" height="36" rx="7" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="498" y="239" font-family="system-ui, sans-serif" font-size="11" fill="#334155">B3 有样本：4 / 3 / 3 条序列（但值会退化）</text>
+  <rect x="486" y="252" width="364" height="20" rx="7" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="498" y="267" font-family="system-ui, sans-serif" font-size="10" fill="#1e40af">B4 四条告警规则都有 state（此时全是 inactive）</text>
+
+  <rect x="30" y="294" width="840" height="130" rx="12" fill="#fef2f2" stroke="#f87171"/>
+  <text x="50" y="320" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#991b1b">头号发现：4 条告警规则里有 3 条「不可能触发」</text>
+  <rect x="50" y="332" width="252" height="76" rx="8" fill="#ffffff" stroke="#fecaca"/>
+  <text x="62" y="351" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#991b1b">规则里写的选择器</text>
+  <text x="62" y="372" font-family="ui-monospace, monospace" font-size="10" fill="#334155">job="app"</text>
+  <text x="62" y="390" font-family="ui-monospace, monospace" font-size="10" fill="#334155">job=~"app|node"</text>
+  <rect x="312" y="332" width="252" height="76" rx="8" fill="#ffffff" stroke="#fecaca"/>
+  <text x="324" y="351" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#991b1b">契约里声明的 job</text>
+  <text x="324" y="372" font-family="ui-monospace, monospace" font-size="10" fill="#334155">core-services</text>
+  <text x="324" y="390" font-family="ui-monospace, monospace" font-size="10" fill="#334155">edge-services / kubernetes-pods</text>
+  <rect x="574" y="332" width="276" height="76" rx="8" fill="#ffffff" stroke="#fecaca"/>
+  <text x="586" y="351" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#991b1b">结果</text>
+  <text x="586" y="372" font-family="system-ui, sans-serif" font-size="11" fill="#334155">三条规则匹配 0 条序列</text>
+  <text x="586" y="390" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 永远不会进入 pending / firing</text>
+  <path d="M 302 370 L 312 370" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar-arrow)"/>
+  <path d="M 564 370 L 574 370" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar-arrow)"/>
+
+  <rect x="30" y="440" width="840" height="104" rx="12" fill="#fff7ed" stroke="#fb923c"/>
+  <text x="50" y="466" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#9a3412">为什么它藏得住：失败的样子和健康的样子一样</text>
+  <text x="50" y="490" font-family="system-ui, sans-serif" font-size="12" fill="#334155">① 三条规则照常被加载、照常有 state、照常每次评估 → 从「加载成功」看不出任何异常；</text>
+  <text x="50" y="512" font-family="system-ui, sans-serif" font-size="12" fill="#334155">② 没有告警这件事，与「系统一切正常」在告警列表上长得完全一样；</text>
+  <text x="50" y="534" font-family="system-ui, sans-serif" font-size="12" fill="#334155">③ 只有主动去问「这条规则的选择器能匹配到几条序列」，才会暴露。这是本轮唯一不可靠肉眼发现的缺陷。</text>
+</svg>

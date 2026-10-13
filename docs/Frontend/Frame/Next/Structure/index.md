@@ -1,5 +1,7 @@
 # Next 项目结构
 
+![Next 项目结构与目录特殊文件](./assets/next-structure-map.svg)
+
 Next.js 项目采用约定优于配置的设计，理解项目结构是高效开发的基础。
 
 ## App Router 目录结构

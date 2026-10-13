@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="CDN 请求链路：DNS 调度、边缘缓存、分层回源">
+  <defs>
+    <marker id="ec-cdn-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="ec-cdn-arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">一次未命中请求走过的四跳</text>
+  <text x="32" y="66" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">每一跳都有自己的判据；把四跳的数混着看，就会把「缓存键被写坏」误判成「源站太慢」</text>
+
+  <!-- 第 0 跳：用户 + DNS -->
+  <rect x="30" y="100" width="150" height="72" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="105" y="126" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#0f172a" text-anchor="middle">用户</text>
+  <text x="105" y="146" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">发起请求</text>
+  <text x="105" y="162" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">（就近解析）</text>
+
+  <rect x="212" y="100" width="176" height="72" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="300" y="126" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">① DNS 调度</text>
+  <text x="300" y="146" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">按位置 / 策略返回</text>
+  <text x="300" y="162" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">一个就近节点地址</text>
+
+  <!-- 第 1 跳：边缘节点 -->
+  <rect x="420" y="92" width="246" height="88" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="543" y="118" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1e3a8a" text-anchor="middle">② 边缘节点（就近城市）</text>
+  <rect x="440" y="130" width="100" height="38" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="490" y="147" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">TLS 终结</text>
+  <text x="490" y="161" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">WAF / Bot</text>
+  <rect x="556" y="130" width="94" height="38" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="603" y="147" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">缓存查找</text>
+  <text x="603" y="161" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">（按键）</text>
+
+  <path d="M 184 136 L 208 136" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ec-cdn-arrow)"/>
+  <path d="M 392 136 L 416 136" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ec-cdn-arrow)"/>
+
+  <!-- 命中分支 -->
+  <rect x="30" y="204" width="196" height="56" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="128" y="228" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#15803d" text-anchor="middle">命中 → 直接返回</text>
+  <text x="128" y="247" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">要看的数：命中率、Age</text>
+  <path d="M 470 180 C 400 208 300 216 228 220" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#ec-cdn-arrow)"/>
+
+  <!-- 第 2 跳：上层缓存 -->
+  <rect x="420" y="204" width="246" height="56" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="543" y="228" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309" text-anchor="middle">③ 上层缓存 / 中间层（可选）</text>
+  <text x="543" y="247" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">多个边缘节点共用它，减少回源次数</text>
+
+  <!-- 第 3 跳：源站 -->
+  <rect x="420" y="288" width="246" height="76" rx="10" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+  <text x="543" y="314" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">④ 源站（你唯一能登上去的一跳）</text>
+  <text x="543" y="334" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">回源比的分母在这里，</text>
+  <text x="543" y="350" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">源站压力也在这里</text>
+
+  <path d="M 543 180 L 543 200" stroke="#b45309" stroke-width="2" fill="none" marker-end="url(#ec-cdn-arrow2)"/>
+  <path d="M 543 260 L 543 284" stroke="#b45309" stroke-width="2" fill="none" marker-end="url(#ec-cdn-arrow2)"/>
+  <path d="M 500 260 C 430 250 340 236 232 232" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="5 4" fill="none" marker-end="url(#ec-cdn-arrow)"/>
+
+  <!-- 底部：三段判据 -->
+  <rect x="30" y="392" width="840" height="146" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="418" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">三段各自的判据（不要互相借用）</text>
+  <text x="52" y="444" font-family="system-ui, sans-serif" font-size="12" fill="#334155">① DNS：解析结果是不是「你预期的那个就近节点」——换网络环境、换解析器各看一次，别只看自己这一台。</text>
+  <text x="52" y="468" font-family="system-ui, sans-serif" font-size="12" fill="#334155">② 缓存：命中率是不是达到设计值（例如 ≥ 90%）；不达标先查缓存键，再查 TTL 是否被某条规则覆盖成 0。</text>
+  <text x="52" y="492" font-family="system-ui, sans-serif" font-size="12" fill="#334155">③ 回源：回源比的构成是什么（真未命中 / 被强制回源 / 参数打散），三类处理方式完全不同。</text>
+  <text x="52" y="520" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">④ 源站：只在这里才有资格谈「源站性能」。前两跳没达标时扩容源站，是用钱买一个错觉。</text>
+</svg>

@@ -128,6 +128,20 @@ curl -sI https://example.com/index.html | grep -i 'cache-control'
 
 浏览器侧核对：DevTools → Network → 勾选 **Disable cache 之前**先刷新一次（让资源落盘），再普通刷新看 Size 列是否出现 `(disk cache)`；对 HTML 与带 hash 的 JS **分别**验证，两者表现应当不同。
 
+## 与「边缘计算与 CDN」专题的分工
+
+这是全库最容易混的一处：**浏览器缓存是链路的最后一跳，CDN 是中间跳。同一套响应头在这两跳上的含义不一样。**
+
+| 指令 | 在浏览器（最后一跳） | 在边缘（中间跳） |
+| --- | --- | --- |
+| `max-age` | 生效，决定用户本地存多久 | 只约束私有缓存，共享缓存看 `s-maxage` |
+| `s-maxage` | **不生效**（浏览器是私有缓存） | **只在这里生效**，优先级高于 `max-age` |
+| `no-cache` | 存下来但每次校验 | 同样存下来、每次回源校验 |
+| `no-store` | 不存 | 不存 |
+| `Vary` | 按会话维度打散本地副本 | **按这个头把节点上的副本打散**，基数一高命中率就崩 |
+
+判断「改一条响应头会影响到谁」时，先数清链路上有几跳缓存：浏览器 → 边缘 → 可能还有一层代理 → 应用。**留有余地的写法是同时写 `max-age` 与 `s-maxage`，并把各自要约束的那一跳想清楚。** 边缘侧的完整口径与诊断命令见 [缓存策略](../../../../Ops/EdgeCDN/CacheStrategy/index.md)。
+
 ## 参考资料
 
 - MDN：HTTP 缓存 —— https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching

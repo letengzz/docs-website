@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" role="img" aria-label="边缘问题分诊表：按现象定位到页">
+  <defs>
+    <marker id="ec-faq-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="480" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">先按现象分诊，再翻页</text>
+
+  <rect x="30" y="70" width="404" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="88" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b91c1c">「改了没生效」</text>
+  <text x="48" y="106" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 缓存策略（键 / 时效 / 失效）</text>
+  <rect x="466" y="70" width="404" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="484" y="88" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b91c1c">「看到别人的内容」</text>
+  <text x="484" y="106" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 已越界，先止血：该路径立即不缓存</text>
+
+  <rect x="30" y="126" width="404" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="144" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b45309">「接了 CDN 还是慢」</text>
+  <text x="48" y="162" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 性能与成本（先拆 TTFB 四段）</text>
+  <rect x="466" y="126" width="404" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="484" y="144" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b45309">「源站压力没降」</text>
+  <text x="484" y="162" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ CDN 原理（回源比的三类构成）</text>
+
+  <rect x="30" y="182" width="404" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="200" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b45309">「账单比预期高」</text>
+  <text x="48" y="218" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 性能与成本（先看计费维度）</text>
+  <rect x="466" y="182" width="404" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="484" y="200" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b45309">「命中率突然掉」</text>
+  <text x="484" y="218" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 缓存策略（参数打散 / TTL 被覆盖）</text>
+
+  <rect x="30" y="238" width="404" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="256" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b91c1c">「边缘函数 5xx / 超时」</text>
+  <text x="48" y="274" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 边缘计算（限额与两条降级路径）</text>
+  <rect x="466" y="238" width="404" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="484" y="256" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f766e">「边缘读到的数据是旧的」</text>
+  <text x="484" y="274" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 边缘数据（一致性档位与传播窗口）</text>
+
+  <rect x="30" y="294" width="404" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="312" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b91c1c">「证书 / 鉴权出问题」</text>
+  <text x="48" y="330" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 边缘安全（四层防线与自查清单）</text>
+  <rect x="466" y="294" width="404" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="484" y="312" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#5b21b6">「要迁站，从哪开始」</text>
+  <text x="484" y="330" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 实战（六步 + ED-A ~ ED-H 判据）</text>
+
+  <rect x="30" y="362" width="840" height="94" rx="12" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="52" y="388" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">分诊的第一条纪律：先分「哪一层」再分「什么问题」</text>
+  <text x="52" y="412" font-family="system-ui, sans-serif" font-size="12" fill="#334155">边缘链路上有四层可能出问题：DNS 调度 / 缓存 / 边缘逻辑 / 回源。任何现象都先用一条命令确定它在哪一层——</text>
+  <text x="52" y="436" font-family="system-ui, sans-serif" font-size="12" fill="#334155">连续请求两次比较 Age、对比源站直连、看响应头里有没有你的标记。三层判完再去看具体页，能省掉一半的排查时间。</text>
+</svg>

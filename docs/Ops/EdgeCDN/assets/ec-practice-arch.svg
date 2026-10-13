@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" role="img" aria-label="迁移到边缘的六步与验收判据">
+  <defs>
+    <marker id="ec-pr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="540" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">六步迁移：每一步都留下一个可核对的东西</text>
+
+  <rect x="30" y="70" width="840" height="48" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="52" y="94" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">第 1 步 · 盘点</text>
+  <text x="226" y="94" font-family="system-ui, sans-serif" font-size="11" fill="#334155">把全部路径分成「静态 / 公开可缓存 / 带身份 / 会写」四类</text>
+  <text x="52" y="110" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">产出：一张路径分类表（这是后面所有配置的输入）</text>
+
+  <rect x="30" y="126" width="840" height="48" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="52" y="150" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">第 2 步 · 量基线</text>
+  <text x="226" y="150" font-family="system-ui, sans-serif" font-size="11" fill="#334155">按四类分别记录 TTFB、响应体大小、请求数</text>
+  <text x="52" y="166" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">产出：接入前的数字（没有它，后面所有「快了没」都是感觉）</text>
+
+  <rect x="30" y="182" width="840" height="48" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="52" y="206" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">第 3 步 · 只接静态资源</text>
+  <text x="226" y="206" font-family="system-ui, sans-serif" font-size="11" fill="#334155">长 TTL + 内容哈希文件名；先不开任何边缘逻辑</text>
+  <text x="52" y="222" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">产出：命中率与回源比（第一次能看到这两个数）</text>
+
+  <rect x="30" y="238" width="840" height="48" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="52" y="262" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">第 4 步 · 缓存策略落表</text>
+  <text x="226" y="262" font-family="system-ui, sans-serif" font-size="11" fill="#334155">四列：路径模式 / 缓存键 / 时效 / 失效方式，进仓库评审</text>
+  <text x="52" y="278" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">产出：缓存的分配置表 + 发布时的刷新检查单</text>
+
+  <rect x="30" y="294" width="840" height="48" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="52" y="318" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">第 5 步 · 带身份的走「加速转发」</text>
+  <text x="226" y="318" font-family="system-ui, sans-serif" font-size="11" fill="#334155">不缓存，但走边缘接入；受保护资源加签名并剥离签名参数</text>
+  <text x="52" y="334" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">产出：一张「哪些路径不缓存」的清单与理由</text>
+
+  <rect x="30" y="350" width="840" height="48" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="52" y="374" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">第 6 步 · 上边缘逻辑（最后才做）</text>
+  <text x="226" y="374" font-family="system-ui, sans-serif" font-size="11" fill="#334155">先做不改内容的（改写、头注入、A/B），再做鉴权；每条都要有降级路径</text>
+  <text x="52" y="390" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">产出：降级策略表（哪条路由回源、哪条兜底）</text>
+
+  <!-- 判据 -->
+  <rect x="30" y="414" width="840" height="110" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="440" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">ED-A ~ ED-H：本机可判的验收点位</text>
+  <text x="52" y="464" font-family="system-ui, sans-serif" font-size="11" fill="#334155">A 分类表齐全（四条规则无遗漏路径）　B 基线数字存在且按四类分开　C 命中率 ≥ 90% 且有时间序列</text>
+  <text x="52" y="484" font-family="system-ui, sans-serif" font-size="11" fill="#334155">D 回源比 ≤ 15% 且能按路径下钻　E 无「带身份响应被共享缓存」的证据　F 边缘注入标记头可见</text>
+  <text x="52" y="504" font-family="system-ui, sans-serif" font-size="11" fill="#334155">G 降级路径实测可用（人为让边缘报错，用户仍得到正确结果）　H 单位成本可算且能环比</text>
+</svg>

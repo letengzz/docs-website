@@ -1,5 +1,7 @@
 # Uniapp 项目结构
 
+![UniApp 项目结构与多端编译关系](./assets/uniapp-structure-map.svg)
+
 ## 标准项目结构
 
 ```text

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="缓存键的四个维度与命中判定">
+  <defs>
+    <marker id="ec-ck-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">缓存键：四个维度决定「这是不是同一份内容」</text>
+  <text x="32" y="66" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">少一个维度会「改了不生效」或「串号」；多一个维度会让命中率碎成渣</text>
+
+  <!-- 请求 -->
+  <rect x="30" y="112" width="150" height="60" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="105" y="137" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#0f172a" text-anchor="middle">一次请求</text>
+  <text x="105" y="156" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">GET /a.js?v=3</text>
+
+  <!-- 四维度 -->
+  <rect x="214" y="100" width="176" height="42" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="302" y="126" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a" text-anchor="middle">① 主机 + 路径</text>
+  <rect x="214" y="150" width="176" height="42" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="302" y="176" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a" text-anchor="middle">② 查询参数（部分）</text>
+  <rect x="214" y="200" width="176" height="42" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="302" y="226" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a" text-anchor="middle">③ 指定的请求头</text>
+  <rect x="214" y="250" width="176" height="42" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="302" y="276" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a" text-anchor="middle">④ 设备 / 语言 / 地域</text>
+
+  <path d="M 184 142 L 210 142" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ec-ck-arrow)"/>
+  <path d="M 302 100 L 302 92 L 640 92 L 640 120" stroke="#93c5fd" stroke-width="1.5" fill="none"/>
+  <path d="M 302 150 L 302 142" stroke="#93c5fd" stroke-width="0" fill="none"/>
+  <path d="M 302 292 L 302 320 L 640 320 L 640 300" stroke="#93c5fd" stroke-width="1.5" fill="none"/>
+
+  <!-- 键 -->
+  <rect x="430" y="180" width="150" height="60" rx="10" fill="#0f172a" stroke="#0f172a"/>
+  <text x="505" y="205" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">缓存键</text>
+  <text x="505" y="225" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">拼成一个字符串</text>
+  <path d="M 394 210 L 426 210" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#ec-ck-arrow)"/>
+
+  <!-- 结果 -->
+  <rect x="620" y="112" width="250" height="56" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="745" y="136" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#15803d" text-anchor="middle">命中：直接返回</text>
+  <text x="745" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">前提：内容与「谁在看」无关</text>
+
+  <rect x="620" y="252" width="250" height="70" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="745" y="276" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c" text-anchor="middle">未命中：回源</text>
+  <text x="745" y="296" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">先问「有没有把键写花」</text>
+  <text x="745" y="313" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">再看 TTL 与节点淘汰</text>
+
+  <path d="M 584 196 L 616 156" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#ec-ck-arrow)"/>
+  <path d="M 584 226 L 616 268" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#ec-ck-arrow)"/>
+
+  <!-- 底部三档 TTL -->
+  <rect x="30" y="348" width="840" height="148" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="374" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">按「内容变化频率」分三档设时效，比给全站设一个 TTL 安全得多</text>
+  <rect x="52" y="388" width="256" height="88" rx="10" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="180" y="412" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#15803d" text-anchor="middle">带内容哈希的静态资源</text>
+  <text x="180" y="434" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">max-age=31536000, immutable</text>
+  <text x="180" y="456" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">改内容就换文件名，永远不用刷新</text>
+
+  <rect x="322" y="388" width="256" height="88" rx="10" fill="#fffbeb" stroke="#fcd34d"/>
+  <text x="450" y="412" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b45309" text-anchor="middle">固定名称的静态与公开页面</text>
+  <text x="450" y="434" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">s-maxage=60, stale-while-revalidate=300</text>
+  <text x="450" y="456" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">用户永远不等待回源</text>
+
+  <rect x="592" y="388" width="256" height="88" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="720" y="412" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b91c1c" text-anchor="middle">HTML 入口与个性化响应</text>
+  <text x="720" y="434" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">no-cache（可存但每次校验）</text>
+  <text x="720" y="456" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">或直接不缓存，只做加速转发</text>
+</svg>

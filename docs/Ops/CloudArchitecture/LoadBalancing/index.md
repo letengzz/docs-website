@@ -191,3 +191,16 @@ curl -N -m 60 https://<你的域名>/api/stream
 - 阿里云 SLB 产品家族介绍（ALB / NLB / CLB 能力对比）：https://help.aliyun.com/zh/slb/product-overview/slb-overview
 - AWS Application Load Balancer 用户指南（含目标组与健康检查）：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html
 - AWS 负载均衡器取消注册延迟说明：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-deregistration-delay.html
+
+## 与「边缘计算与 CDN」专题的分工
+
+负载均衡与 CDN 都叫「调度」，但选的东西不一样：**负载均衡选哪台机器，CDN 选哪个城市。**
+
+| 维度 | 本页（负载均衡） | [边缘计算与 CDN](../../EdgeCDN/index.md) |
+| --- | --- | --- |
+| 调度粒度 | 实例级（健康检查、权重、会话保持） | 地域级（就近接入、Anycast、地理调度） |
+| 判据来源 | 主动健康检查、连接数、响应时间 | 网络拓扑、运营商、节点健康状态 |
+| 调度失败时 | 剔除异常实例，请求仍在你的集群内 | 退到更远的节点，甚至直接回源 |
+| 典型误用 | 把跨可用区开关当成容灾 | 把「节点多」当成性能——关键是那个节点**有没有你要的内容** |
+
+两者是串联关系：边缘把你带到**离用户近的入口**，负载均衡再把你带到**集群里的一台机器**。跨可用区开关与跨城调度是两件事，只做前者会得到「跨城仍是一次长途回源」，只做后者会得到「用户进了近的节点，之后又被甩到远的机房」。

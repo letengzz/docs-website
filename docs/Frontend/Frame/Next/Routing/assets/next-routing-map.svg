@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="Next 文件系统路由的六种约定到 URL 的映射">
+  <defs>
+    <marker id="nr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">文件名 → URL：六条约定，一张表</text>
+  <text x="32" y="62" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">App Router 的路由不是「配」出来的，是「放」出来的。识别口径只有一条：一个目录是否成为 URL 段，看它有没有 page.tsx。</text>
+
+  <rect x="30" y="80" width="46" height="30" rx="6" fill="#e2e8f0"/>
+  <text x="53" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#334155">目录</text>
+  <rect x="76" y="80" width="484" height="30" rx="6" fill="#e2e8f0"/>
+  <text x="318" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#334155">写在文件系统里</text>
+  <rect x="560" y="80" width="310" height="30" rx="6" fill="#e2e8f0"/>
+  <text x="715" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#334155">实际请求的 URL</text>
+
+  <rect x="30" y="112" width="46" height="42" rx="6" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="53" y="138" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">静态</text>
+  <rect x="76" y="112" width="484" height="42" rx="0" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="90" y="138" font-family="ui-monospace, monospace" font-size="12" fill="#0f172a">app/blog/page.tsx</text>
+  <rect x="560" y="112" width="310" height="42" rx="0" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="576" y="138" font-family="ui-monospace, monospace" font-size="12" fill="#0f766e">/blog</text>
+
+  <rect x="30" y="156" width="46" height="42" rx="6" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="53" y="182" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">动态</text>
+  <rect x="76" y="156" width="484" height="42" rx="0" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="90" y="182" font-family="ui-monospace, monospace" font-size="12" fill="#0f172a">app/blog/[slug]/page.tsx</text>
+  <rect x="560" y="156" width="310" height="42" rx="0" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="576" y="182" font-family="ui-monospace, monospace" font-size="12" fill="#0f766e">/blog/hello（一段）</text>
+
+  <rect x="30" y="200" width="46" height="42" rx="6" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="53" y="226" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">捕获</text>
+  <rect x="76" y="200" width="484" height="42" rx="0" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="90" y="226" font-family="ui-monospace, monospace" font-size="12" fill="#0f172a">app/docs/[...path]/page.tsx</text>
+  <rect x="560" y="200" width="310" height="42" rx="0" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="576" y="226" font-family="ui-monospace, monospace" font-size="12" fill="#0f766e">/docs/a/b/c（多段）</text>
+
+  <rect x="30" y="244" width="46" height="42" rx="6" fill="#fff7ed" stroke="#fb923c"/>
+  <text x="53" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a3412">分组</text>
+  <rect x="76" y="244" width="484" height="42" rx="0" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="90" y="270" font-family="ui-monospace, monospace" font-size="12" fill="#0f172a">app/(marketing)/about/page.tsx</text>
+  <rect x="560" y="244" width="310" height="42" rx="0" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="576" y="270" font-family="ui-monospace, monospace" font-size="12" fill="#b45309">/about（括号不进 URL）</text>
+
+  <rect x="30" y="288" width="46" height="42" rx="6" fill="#fef2f2" stroke="#f87171"/>
+  <text x="53" y="314" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#991b1b">插槽</text>
+  <rect x="76" y="288" width="484" height="42" rx="0" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="90" y="314" font-family="ui-monospace, monospace" font-size="12" fill="#0f172a">app/dash/@team/page.tsx</text>
+  <rect x="560" y="288" width="310" height="42" rx="0" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="576" y="314" font-family="ui-monospace, monospace" font-size="12" fill="#b91c1c">/dash（作为 props 传入）</text>
+
+  <rect x="30" y="332" width="46" height="42" rx="6" fill="#fef2f2" stroke="#f87171"/>
+  <text x="53" y="358" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#991b1b">拦截</text>
+  <rect x="76" y="332" width="484" height="42" rx="0" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="90" y="358" font-family="ui-monospace, monospace" font-size="12" fill="#0f172a">app/feed/(..)photo/[id]/page.tsx</text>
+  <rect x="560" y="332" width="310" height="42" rx="0" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="576" y="358" font-family="ui-monospace, monospace" font-size="12" fill="#b91c1c">/feed 内软导航弹层</text>
+
+  <rect x="30" y="386" width="840" height="52" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="50" y="410" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">目录不等于路由段：没有 page.tsx 的目录只是「放文件的文件夹」</text>
+  <text x="50" y="430" font-family="system-ui, sans-serif" font-size="12" fill="#334155">这条规则解释了为什么可以放心地把组件、样式、测试放在 app/ 下与页面同级——它们不会变成 URL。</text>
+
+  <rect x="30" y="448" width="840" height="58" rx="12" fill="#fef2f2" stroke="#f87171"/>
+  <text x="50" y="472" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#991b1b">嵌套的代价：越靠里的目录，越难被外部链接复用</text>
+  <text x="50" y="493" font-family="system-ui, sans-serif" font-size="12" fill="#334155">动态段与捕获段会「吃掉」同级静态段，命中顺序是写死的：静态 &gt; 动态 &gt; 捕获 &gt; 兜底。</text>
+</svg>

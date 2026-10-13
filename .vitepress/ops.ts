@@ -335,3 +335,20 @@ export const CloudArchitecture = [
     ],
   },
 ];
+export const EdgeCDN = [
+  {
+    text: "边缘计算与 CDN",
+    link: "/docs/Ops/EdgeCDN/index.md",
+    items: [
+      { text: "总览：边缘与 CDN 的四条边界", link: "/docs/Ops/EdgeCDN/Overview/index.md" },
+      { text: "CDN 原理：从调度到回源", link: "/docs/Ops/EdgeCDN/CDNPrinciple/index.md" },
+      { text: "缓存策略：键、时效与失效", link: "/docs/Ops/EdgeCDN/CacheStrategy/index.md" },
+      { text: "边缘计算与边缘函数", link: "/docs/Ops/EdgeCDN/EdgeCompute/index.md" },
+      { text: "边缘数据与状态", link: "/docs/Ops/EdgeCDN/EdgeData/index.md" },
+      { text: "边缘安全", link: "/docs/Ops/EdgeCDN/Security/index.md" },
+      { text: "性能与成本", link: "/docs/Ops/EdgeCDN/PerformanceCost/index.md" },
+      { text: "实战：把一个站点与 API 迁到边缘", link: "/docs/Ops/EdgeCDN/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/EdgeCDN/FAQ/index.md" },
+    ],
+  },
+];
