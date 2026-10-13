@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="大盘数据接口端到端核对：六段链路、判据修正与服务端显式不变量">
+  <title>大盘数据接口端到端核对：六段链路、W2-C 判据修正与服务端显式不变量</title>
+  <rect x="0" y="0" width="900" height="560" fill="#f7fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="30" y="38" font-size="23" font-weight="bold" fill="#16324f">大盘数据接口端到端核对</text>
+    <text x="30" y="62" font-size="13" fill="#5a6b7b">一条请求从进到出，六段链路逐段核对契约五；并把 step 约束从「文档里的注释」升级为「服务端启动期不变量」。</text>
+
+    <rect x="30" y="84" width="500" height="252" rx="10" fill="#ffffff" stroke="#2d7d9a" stroke-width="2"/>
+    <text x="48" y="112" font-size="15" font-weight="bold" fill="#2d7d9a">一条请求的六段链路（每段都要有失败表现）</text>
+
+    <text x="48" y="142" font-size="12" font-weight="bold" fill="#16324f">① 请求入参</text>
+    <text x="196" y="142" font-size="11" fill="#5a6b7b">只有 panel_id 与时间范围；出现 query 即契约五被破坏</text>
+
+    <text x="48" y="174" font-size="12" font-weight="bold" fill="#16324f">② 面板白名单</text>
+    <text x="196" y="174" font-size="11" fill="#5a6b7b">未登记必须 404，否则等于把时序库读能力开放出去</text>
+
+    <text x="48" y="206" font-size="12" font-weight="bold" fill="#16324f">③ step 推导</text>
+    <text x="196" y="206" font-size="11" fill="#5a6b7b">先算再对齐；不对齐会得到 44s / 173s / 1210s 这类步长</text>
+
+    <text x="48" y="238" font-size="12" font-weight="bold" fill="#16324f">④ 查询下发</text>
+    <text x="196" y="238" font-size="11" fill="#5a6b7b">查询语句只存在于服务端 panels.yaml，请求方无法影响</text>
+
+    <text x="48" y="270" font-size="12" font-weight="bold" fill="#16324f">⑤ 结构组装</text>
+    <text x="196" y="270" font-size="11" fill="#5a6b7b">六要点齐全；缺字段前端只画一片空白，不报错</text>
+
+    <text x="48" y="302" font-size="12" font-weight="bold" fill="#16324f">⑥ 空原因判定</text>
+    <text x="196" y="302" font-size="11" fill="#5a6b7b">no_series / all_zero / out_of_retention 三选一，不许空数组</text>
+
+    <text x="48" y="326" font-size="11" fill="#2d7d9a">核对顺序固定：任一段不通过，后面的段不必再看。</text>
+
+    <rect x="546" y="84" width="324" height="252" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="564" y="112" font-size="15" font-weight="bold" fill="#c0392b">核对中发现的缺陷</text>
+
+    <text x="564" y="142" font-size="12" font-weight="bold" fill="#16324f">W2-C 的判据写弱了</text>
+    <text x="564" y="164" font-size="11" fill="#5a6b7b">原判据：step ≥ scrape_interval</text>
+    <text x="564" y="184" font-size="11" fill="#c0392b">44s ≥ 15s 也 PASS —— 拦不住</text>
+
+    <text x="564" y="210" font-size="11" fill="#16324f">300 组合网格实测：</text>
+    <text x="564" y="230" font-size="11" fill="#c0392b">原式不 snap：160 / 300 非整数倍</text>
+    <text x="564" y="250" font-size="11" fill="#2f855a">修正后 snap：0 / 300</text>
+
+    <text x="564" y="276" font-size="11" fill="#16324f">根本原因：ceil(range / max_points)</text>
+    <text x="564" y="294" font-size="11" fill="#16324f">一旦超过 minStep，step 就完全</text>
+    <text x="564" y="312" font-size="11" fill="#16324f">脱离 scrape_interval 的约束。</text>
+    <text x="564" y="330" font-size="11" fill="#c47a2c">判据应为「整数倍」，不是「大于等于」。</text>
+
+    <rect x="30" y="352" width="840" height="150" rx="10" fill="#eaf7ef" stroke="#2f855a" stroke-width="2"/>
+    <text x="48" y="380" font-size="15" font-weight="bold" fill="#2f855a">服务端显式不变量（启动期断言，不满足拒绝启动，不回退到常数）</text>
+
+    <text x="48" y="408" font-size="12" fill="#16324f" font-weight="bold">INV-1</text>
+    <text x="130" y="408" font-size="12" fill="#16324f">minStep 必须同时读两处配置：recording.interval 与 scrape_interval</text>
+    <text x="130" y="426" font-size="11" fill="#5a6b7b">取两者较大者，再向上对齐到 scrape_interval 的整数倍；只读一处会在另一种取样周期下失效。</text>
+
+    <text x="48" y="452" font-size="12" fill="#16324f" font-weight="bold">INV-2</text>
+    <text x="130" y="452" font-size="12" fill="#16324f">step = snap( max(minStep, ceil((to − from) / max_points)), scrape_interval )</text>
+
+    <text x="48" y="478" font-size="12" fill="#16324f" font-weight="bold">INV-3</text>
+    <text x="130" y="478" font-size="12" fill="#16324f">启动时必须断言 step % scrape_interval == 0 且 step ≥ minStep，并写入 meta.step</text>
+    <text x="130" y="494" font-size="11" fill="#5a6b7b">同时兜住边界：当 step 大于整个查询范围时，仍须返回该范围内的点，而不是判定为 no_series。</text>
+
+    <text x="30" y="530" font-size="11" fill="#5a6b7b">口径来源：契约五（第 129 天）+ 接缝 S4（第 132 天）。本章把 W2-C 从「静态对账项」升级为「运行期不变量」；</text>
+    <text x="30" y="548" font-size="11" fill="#5a6b7b">动态验证项一律如实标注，不把期望值抄进实测列。</text>
+  </g>
+</svg>

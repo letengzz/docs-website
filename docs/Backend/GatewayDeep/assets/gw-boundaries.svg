@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 604" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.hd{fill:#0F172A}</style>
+<rect width="920" height="604" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">网关的四条边界：四条判据，四种越界后果</text>
+<text x="460" y="56" text-anchor="middle" class="tag">放错边界不会报错，只会在半年后变成一个谁都不敢动的巨石</text>
+
+<rect x="40" y="78" width="840" height="26" class="hd"/>
+<text x="125" y="96" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">边界</text>
+<text x="360" y="96" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">判据：怎么算越界</text>
+<text x="695" y="96" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">越界的后果</text>
+
+<rect x="40" y="104" width="170" height="78" class="rose"/>
+<text x="125" y="132" text-anchor="middle" class="lt">① 什么放进网关</text>
+<text x="125" y="152" text-anchor="middle" class="tag">入口的职责清单</text>
+<text x="125" y="170" text-anchor="middle" class="tag">与业务无关 + 所有服务都需要</text>
+<rect x="210" y="104" width="300" height="78" class="box"/>
+<text x="360" y="130" text-anchor="middle" class="s">同时满足两条才放进来</text>
+<text x="360" y="152" text-anchor="middle" class="tag">不需要知道「这条数据属于谁」</text>
+<text x="360" y="172" text-anchor="middle" class="tag">只有两个服务要用的，属于那两个服务</text>
+<rect x="510" y="104" width="370" height="78" class="box"/>
+<text x="695" y="130" text-anchor="middle" class="s">网关变成业务巨石</text>
+<text x="695" y="152" text-anchor="middle" class="tag">改一条业务规则要发布全局（影响所有服务）</text>
+<text x="695" y="172" text-anchor="middle" class="tag">校验逻辑在网关与服务双份维护，必然漂移</text>
+
+<rect x="40" y="186" width="170" height="78" class="amber"/>
+<text x="125" y="214" text-anchor="middle" class="lt">② 什么坚决不放</text>
+<text x="125" y="234" text-anchor="middle" class="tag">细粒度授权 / 参数校验</text>
+<text x="125" y="252" text-anchor="middle" class="tag">响应聚合 / 业务编排</text>
+<rect x="210" y="186" width="300" height="78" class="box"/>
+<text x="360" y="212" text-anchor="middle" class="s">换掉网关，业务代码要不要改？</text>
+<text x="360" y="234" text-anchor="middle" class="tag">要 → 说明业务逻辑已经漏进网关</text>
+<text x="360" y="254" text-anchor="middle" class="tag">细粒度判定必须基于数据，网关看不到数据</text>
+<rect x="510" y="186" width="370" height="78" class="box"/>
+<text x="695" y="212" text-anchor="middle" class="s">鉴权被切成两半</text>
+<text x="695" y="234" text-anchor="middle" class="tag">网关判路径 + 服务判数据，两者之间的缝隙</text>
+<text x="695" y="254" text-anchor="middle" class="tag">就是越权漏洞的产地</text>
+
+<rect x="40" y="268" width="170" height="78" class="blue"/>
+<text x="125" y="296" text-anchor="middle" class="lt">③ 状态放在哪里</text>
+<text x="125" y="316" text-anchor="middle" class="tag">网关必须是无状态的</text>
+<text x="125" y="334" text-anchor="middle" class="tag">「看起来像状态」的三处</text>
+<rect x="210" y="268" width="300" height="78" class="box"/>
+<text x="360" y="294" text-anchor="middle" class="s">多副本下，这个值还一致吗？</text>
+<text x="360" y="316" text-anchor="middle" class="tag">限流计数：本地计数误差 = 副本数</text>
+<text x="360" y="336" text-anchor="middle" class="tag">灰度分桶：必须由请求特征确定性推导</text>
+<rect x="510" y="268" width="370" height="78" class="box"/>
+<text x="695" y="294" text-anchor="middle" class="s">限流形同虚设 / 扩缩容丢会话</text>
+<text x="695" y="316" text-anchor="middle" class="tag">10 副本限 100 QPS → 实际可放行 1000 QPS</text>
+<text x="695" y="336" text-anchor="middle" class="tag">共享字典是「每 worker 一份」，不是全局</text>
+
+<rect x="40" y="350" width="170" height="78" class="green"/>
+<text x="125" y="378" text-anchor="middle" class="lt">④ 网关坏了怎么办</text>
+<text x="125" y="398" text-anchor="middle" class="tag">先承认它是单点</text>
+<text x="125" y="416" text-anchor="middle" class="tag">再谈怎么办</text>
+<rect x="210" y="350" width="300" height="78" class="box"/>
+<text x="360" y="376" text-anchor="middle" class="s">控制面停掉，存量流量还转吗？</text>
+<text x="360" y="398" text-anchor="middle" class="tag">这条路径必须被真实停过、验过</text>
+<text x="360" y="418" text-anchor="middle" class="tag">绕开网关的应急路径必须演练过</text>
+<rect x="510" y="350" width="370" height="78" class="box"/>
+<text x="695" y="376" text-anchor="middle" class="s">从「可用性风险」变成「业务中断」</text>
+<text x="695" y="398" text-anchor="middle" class="tag">数据面单副本：一次重启全站不可访问</text>
+<text x="695" y="418" text-anchor="middle" class="tag">文档里写了应急预案，但从未真的切过一次</text>
+
+<rect x="40" y="442" width="840" height="94" class="slate"/>
+<text x="460" y="466" text-anchor="middle" class="lt">最小起步三步（每一步都独立可验收）</text>
+<text x="64" y="490" class="s">① 只做路由 + 健康检查</text>
+<text x="304" y="490" class="tag">验收：请求到达正确上游；摘掉一个节点后流量不再打到它</text>
+<text x="64" y="512" class="s">② 补鉴权 + 限流</text>
+<text x="304" y="512" class="tag">验收：无令牌 401 且不进内网；超配额 429 且其余请求不受影响</text>
+<text x="64" y="530" class="s">③ 补可观测 + 灰度</text>
+<text x="304" y="530" class="tag">验收：能按 request_id 定位一条请求；5% 切流能在一分钟内切回</text>
+
+<rect x="40" y="548" width="840" height="44" class="box"/>
+<text x="460" y="576" text-anchor="middle" class="s">判据一句话：把网关配置全丢掉、只留「路径 → 上游」，系统还能正确工作 —— 能，说明配置是治理；不能，说明配置里藏了业务</text>
+</svg>

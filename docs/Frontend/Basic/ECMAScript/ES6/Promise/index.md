@@ -50,6 +50,46 @@ console.dir(Promise)
 
 ## 基本流程
 
+Promise 对象代表一个异步操作，它的状态流转是**单向、不可逆**的：
+
+```text
+pending ──resolve(value)──▶ resolved（成功）
+   │
+   └────reject(reason)────▶ rejected（失败）
+```
+
+两条铁律：
+
+1. **状态只能变一次**。从 `pending` 变成 `resolved` 之后再调用 `resolve` / `reject` 都不会生效：先执行的那个「抢跑」，后面的全部被忽略。
+2. **状态确定后回调才执行，并且是异步执行**。`then` 注册的回调不会立即运行，而是被放进微任务队列，等当前同步代码跑完再执行。
+
+**使用流程**：
+
+1. 用 `new Promise(executor)` 创建对象，`executor` 是一个**同步执行**的函数，形参为 `resolve` 和 `reject`；
+2. 在 `executor` 里发起异步操作（定时器、请求……），成功时调用 `resolve(value)`，失败时调用 `reject(reason)`；
+3. 用 `.then(onResolved, onRejected)` 处理结果，用 `.catch()` 捕获异常，用 `.finally()` 做收尾；
+4. `then` 返回的是一个**新的 Promise**，所以可以链式调用；链式调用中抛出的异常会被后面的 `catch` 捕获。
+
+```javascript
+const p = new Promise((resolve, reject) => {
+  console.log('1. executor 同步执行')
+  setTimeout(() => {
+    const ok = Math.random() > 0.5
+    ok ? resolve('成功的数据') : reject('失败的原因')
+  }, 1000)
+})
+
+console.log('2. then 之前，状态仍是 pending')
+
+p.then((value) => console.log('4. resolved:', value))
+ .catch((reason) => console.log('4. rejected:', reason))
+ .finally(() => console.log('5. 无论成败都会执行'))
+
+console.log('3. 同步代码先跑完')
+```
+
+**输出顺序是 `1 → 2 → 3 → 4 → 5`**。注意 `3` 排在 `4` 之前——这正是「回调被放进微任务队列」的直接证据。
+
 ## 实现定时器
 
 ```javascript

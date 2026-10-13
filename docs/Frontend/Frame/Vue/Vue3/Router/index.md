@@ -875,13 +875,81 @@ function showNewsDetail(news: NewsInter) {
 
 默认情况下路由切换时，路由组件会被销毁。有时需要在切换路由时保留组件。
 
+```vue
+<template>
+  <!-- 用 keep-alive 包裹 router-view 即可保留被缓存组件的状态 -->
+  <keep-alive :include="['News', 'Message']">
+    <router-view></router-view>
+  </keep-alive>
+</template>
+```
+
+三个常用属性：
+
+| 属性 | 说明 |
+| --- | --- |
+| `include` | 值为组件 `name` 的数组（或逗号分隔的字符串），只有被包含的组件才缓存 |
+| `exclude` | 与 `include` 相反，**优先级更高**，同时出现在两者中时以 `exclude` 为准 |
+| `max` | 最多缓存多少个组件实例，超出时按 LRU 淘汰最久未使用的 |
+
+**要点**：`include` / `exclude` 匹配的是组件的 `name` 选项，**不是路由的 `name`**。在 `<script setup>` 中组件名会退化为文件名，需要额外用 `defineOptions({ name: 'News' })` 显式声明，否则匹配不上、缓存静默失效。
+
+被缓存的组件不会再次触发 `created` / `mounted`，需要在进入时刷新数据的话，改用 `onActivated` 钩子。
+
 
 
 ## 路由守卫
 
 ### 全局前置守卫
 
+通过 `router.beforeEach` 注册，在**每次路由跳转前**调用，是登录鉴权最常用的位置。
+
+```javascript
+router.beforeEach((to, from, next) => {
+  // to：即将进入的目标路由对象
+  // from：当前正要离开的路由对象
+  // next：放行函数，必须调用，否则路由会一直挂起
+})
+```
+
+`next` 有四种用法，用错是这一块最常见的 bug 来源：
+
+| 写法 | 含义 |
+| --- | --- |
+| `next()` | 放行，进入下一个守卫 |
+| `next(false)` | 中断本次导航，URL 回退到 `from` |
+| `next('/login')` 或 `next({ path: '/login' })` | 跳转到另一个地址 |
+| `next(new Error('...'))` | 中断导航，并把错误传给 `router.onError` |
+
+```javascript
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+  if (to.meta.requiresAuth && !token) {
+    // 带上 redirect，登录后可以跳回原页面
+    next({ path: '/login', query: { redirect: to.fullPath } })
+  } else {
+    next()
+  }
+})
+```
+
+> **必须调用 `next`**：`beforeEach` 里漏写 `next()`，页面会白屏且控制台不报错——这是排查时最容易忽略的一环。同时注意 `next()` 不要在同一个分支里被调用两次，Vue Router 4 会抛出 `NavigationDuplicated`。
+
 ### 全局后置守卫
+
+通过 `router.afterEach` 注册，在导航**确认完成后**调用。
+
+它**没有 `next` 参数**，因为此时导航结果已经确定，无法再改变。常用来做收尾工作：
+
+```javascript
+router.afterEach((to, from, failure) => {
+  if (failure) return                 // 导航被取消或失败时跳过
+  document.title = to.meta.title || '默认标题'
+  // 关闭全局 loading、上报埋点……
+})
+```
+
+> Vue Router 4 为 `afterEach` 增加了第三个参数 `failure`：导航被取消或失败时它不是 `undefined`，可以据此判断这次导航是否真的落地。
 
 
 
@@ -889,6 +957,58 @@ function showNewsDetail(news: NewsInter) {
 
 ### 局部路由守卫
 
+作用范围比全局守卫小，只在特定的路由或组件上生效。
+
 #### path守卫
 
+写在**路由配置**里，只对当前这条路由生效，也叫「路由独享守卫」，最常用的是 `beforeEnter`。
+
+```javascript
+{
+  path: '/admin',
+  component: Admin,
+  beforeEnter: (to, from, next) => {
+    if (!store.state.user.isAdmin) {
+      next('/403')
+    } else {
+      next()
+    }
+  }
+}
+```
+
+`beforeEnter` 只在**从其他路由进入**时触发。带有动态参数的路由在同一组件内切换参数（如 `/user/1` → `/user/2`）**不会**触发它，这种情况要改用组件内的 `onBeforeRouteUpdate`。
+
 #### component守卫
+
+写在**组件内部**，作用范围最小，也叫「组件内守卫」。Vue 3 组合式 API 里通过 `onBeforeRouteLeave` / `onBeforeRouteUpdate` 注册。
+
+```javascript
+import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
+
+// 离开当前组件时触发，常用于「有未保存内容，确认离开？」
+onBeforeRouteLeave((to, from) => {
+  if (hasUnsavedChanges.value) {
+    return window.confirm('内容尚未保存，确定离开吗？')
+    // 返回 false 等价于 next(false)，中断导航
+  }
+  // 不返回值等价于 next()，放行
+})
+
+// 同一组件内路由参数变化时触发（/user/1 → /user/2）
+onBeforeRouteUpdate((to, from) => {
+  loadUser(to.params.id)
+})
+```
+
+**完整执行顺序**（从外到内，再由内到外）：
+
+```text
+全局 beforeEach
+  → 路由独享 beforeEnter
+    → 组件内 beforeRouteEnter
+      → 全局 afterEach
+```
+
+`beforeRouteEnter` 因为组件实例尚未创建，**不能访问 `this`**；需要拿到实例时通过 `next(vm => { ... })` 回调。
+

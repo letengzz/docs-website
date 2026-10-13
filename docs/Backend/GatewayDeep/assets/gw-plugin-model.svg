@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.hd{fill:#0F172A}</style>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">插件的三条扩展路线与六个执行阶段</text>
+<text x="460" y="56" text-anchor="middle" class="tag">选择方法只有一句：先问「这段逻辑一天要跑多少次」</text>
+
+<rect x="40" y="76" width="272" height="166" class="green"/>
+<text x="176" y="100" text-anchor="middle" class="lt">① 原生 Lua 插件</text>
+<text x="56" y="124" class="s">语言：Lua（OpenResty）</text>
+<text x="56" y="144" class="s">性能：最高（同进程，无跨进程开销）</text>
+<text x="56" y="164" class="s">隔离：最低（崩了就是网关崩了）</text>
+<text x="56" y="184" class="s">改动代价：重新打包 / 重载网关</text>
+<text x="56" y="210" class="tag">选它：每个请求都要跑、逻辑轻、性能敏感</text>
+<text x="56" y="230" class="tag">例：改头、打标、轻量判断</text>
+
+<rect x="324" y="76" width="272" height="166" class="amber"/>
+<text x="460" y="100" text-anchor="middle" class="lt">② 外部插件（Plugin Runner）</text>
+<text x="340" y="124" class="s">语言：Java / Go / Python / Node.js</text>
+<text x="340" y="144" class="s">性能：中（Unix Socket 跨进程通信）</text>
+<text x="340" y="164" class="s">隔离：较高（侧车崩了不影响网关）</text>
+<text x="340" y="184" class="s">改动代价：只发侧车，不动网关</text>
+<text x="340" y="210" class="tag">选它：团队没有 Lua 能力、要复用现有 SDK</text>
+<text x="340" y="230" class="tag">例：调第三方、查库、复杂鉴权</text>
+
+<rect x="608" y="76" width="272" height="166" class="blue"/>
+<text x="744" y="100" text-anchor="middle" class="lt">③ Wasm 插件（Proxy-Wasm）</text>
+<text x="624" y="124" class="s">语言：C / C++ / Rust / Go（TinyGo）</text>
+<text x="624" y="144" class="s">性能：高（接近原生，独立 VM）</text>
+<text x="624" y="164" class="s">隔离：高（可超时中断）</text>
+<text x="624" y="184" class="s">改动代价：换 .wasm 文件 + reload</text>
+<text x="624" y="210" class="tag">选它：要性能又要隔离、还希望跨产品复用</text>
+<text x="624" y="230" class="tag">例：中等复杂度的每请求逻辑</text>
+
+<text x="40" y="272" class="lt">六个执行阶段：写在哪一段，决定了你能改什么</text>
+<rect x="40" y="284" width="120" height="60" class="box"/>
+<text x="100" y="308" text-anchor="middle" class="lt">rewrite</text>
+<text x="100" y="328" text-anchor="middle" class="tag">改路径 / 重定向</text>
+<rect x="184" y="284" width="120" height="60" class="rose"/>
+<text x="244" y="308" text-anchor="middle" class="lt">access</text>
+<text x="244" y="328" text-anchor="middle" class="tag">鉴权 / 限流 / 拒绝</text>
+<rect x="328" y="284" width="120" height="60" class="box"/>
+<text x="388" y="308" text-anchor="middle" class="lt">balancer</text>
+<text x="388" y="328" text-anchor="middle" class="tag">选上游节点</text>
+<rect x="472" y="284" width="120" height="60" class="box"/>
+<text x="532" y="308" text-anchor="middle" class="lt">header_filter</text>
+<text x="532" y="328" text-anchor="middle" class="tag">改响应头</text>
+<rect x="616" y="284" width="120" height="60" class="rose"/>
+<text x="676" y="308" text-anchor="middle" class="lt">body_filter</text>
+<text x="676" y="328" text-anchor="middle" class="tag">改响应体（分块）</text>
+<rect x="760" y="284" width="120" height="60" class="box"/>
+<text x="820" y="308" text-anchor="middle" class="lt">log</text>
+<text x="820" y="328" text-anchor="middle" class="tag">日志 / 指标</text>
+
+<rect x="40" y="356" width="840" height="86" class="amber"/>
+<text x="460" y="380" text-anchor="middle" class="lt">并发模型是网关插件与普通应用代码最大的差别</text>
+<text x="64" y="404" class="s">应用里：开一个线程去查库（阻塞 20ms）→ 只影响这一个请求。</text>
+<text x="64" y="424" class="tag">网关里：在事件循环里查库（阻塞 20ms）→ 这 20ms 内该 worker 上的所有其它请求都在排队。</text>
+<text x="64" y="436" class="tag">四条「阻塞事件循环」的写法：同步 HTTP 客户端、同步 DNS、系统调用式阻塞、Lua 里的 CPU 密集计算（含正则回溯）。</text>
+
+<rect x="40" y="450" width="840" height="94" class="box"/>
+<text x="460" y="474" text-anchor="middle" class="lt">四段最容易写错的细节</text>
+<text x="64" y="496" class="s">priority：不要抄文档里的数字，按依赖关系倒推，并把理由写进注释。</text>
+<text x="64" y="516" class="tag">body_filter：会被多次调用、不知道总体长度；改长度必须同时改 Content-Length，否则客户端截断或挂起。</text>
+<text x="64" y="536" class="tag">外部插件：Runner 是新的故障点 —— 它挂了是「拒绝」还是「放行」，必须显式确认并写进预案。</text>
+</svg>

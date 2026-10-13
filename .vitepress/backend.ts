@@ -317,6 +317,23 @@ export const Microservices = [
     ],
   },
 ];
+export const GatewayDeep = [
+  {
+    text: "网关深入",
+    link: "/docs/Backend/GatewayDeep/index.md",
+    items: [
+      { text: "概述：四条边界", link: "/docs/Backend/GatewayDeep/Overview/index.md" },
+      { text: "Kong 深入", link: "/docs/Backend/GatewayDeep/Kong/index.md" },
+      { text: "APISIX 深入", link: "/docs/Backend/GatewayDeep/APISIX/index.md" },
+      { text: "插件开发", link: "/docs/Backend/GatewayDeep/Plugin/index.md" },
+      { text: "流量治理与灰度", link: "/docs/Backend/GatewayDeep/TrafficManagement/index.md" },
+      { text: "网关可观测", link: "/docs/Backend/GatewayDeep/Observability/index.md" },
+      { text: "网关安全", link: "/docs/Backend/GatewayDeep/Security/index.md" },
+      { text: "实战：生产级网关", link: "/docs/Backend/GatewayDeep/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/GatewayDeep/FAQ/index.md" },
+    ],
+  },
+];
 export const SpringCloud = [
   {
     text: "Spring Cloud",

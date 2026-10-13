@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.hd{fill:#0F172A}.num{fill:#0F172A}</style>
+<rect width="920" height="600" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">实战五步：从最小转发到可运营入口</text>
+<text x="460" y="56" text-anchor="middle" class="tag">每一步都给出完整配置 + 可执行验证 + 预期输出；验收判据汇总为 P1~P12</text>
+
+<rect x="40" y="88" width="60" height="68" class="num"/>
+<text x="70" y="128" text-anchor="middle" font-size="24" fill="#FFFFFF" font-weight="700">1</text>
+<rect x="112" y="88" width="768" height="68" class="green"/>
+<text x="132" y="112" class="lt">最小转发：路由 + 上游 + 健康检查</text>
+<text x="132" y="134" class="tag">目标：请求到达正确上游；摘掉一个节点后流量不再打到它</text>
+<text x="132" y="150" class="tag">验证 V1~V5：配置以 #END 结尾 / 路由命中 / 后端收到的路径 / 节点摘除 / 健康检查摘除与恢复</text>
+
+<rect x="40" y="164" width="60" height="68" class="num"/>
+<text x="70" y="204" text-anchor="middle" font-size="24" fill="#FFFFFF" font-weight="700">2</text>
+<rect x="112" y="164" width="768" height="68" class="rose"/>
+<text x="132" y="188" class="lt">鉴权：API Key + 白名单豁免</text>
+<text x="132" y="210" class="tag">目标：未带令牌的请求在网关被拒，且后端完全看不到这条请求</text>
+<text x="132" y="226" class="tag">验证 V6~V9：401 / 正确令牌 200 / 错误令牌 401 / 豁免只对指定路径生效（并做反向验证）</text>
+
+<rect x="40" y="240" width="60" height="68" class="num"/>
+<text x="70" y="280" text-anchor="middle" font-size="24" fill="#FFFFFF" font-weight="700">3</text>
+<rect x="112" y="240" width="768" height="68" class="blue"/>
+<text x="132" y="264" class="lt">限流 + 超时：保护自己也保护上游</text>
+<text x="132" y="286" class="tag">目标：配额在多副本下真的生效；超时按「网关 &lt; 客户端」与「上游内部 &lt; 网关 read」配置</text>
+<text x="132" y="302" class="tag">验证 V10~V13：限流维度 / 多副本一致性 / 分阶段超时 / 共享存储不可用时的行为是显式决策</text>
+
+<rect x="40" y="316" width="60" height="68" class="num"/>
+<text x="70" y="356" text-anchor="middle" font-size="24" fill="#FFFFFF" font-weight="700">4</text>
+<rect x="112" y="316" width="768" height="68" class="amber"/>
+<text x="132" y="340" class="lt">灰度：按 Header 切流 + 可一分钟回退</text>
+<text x="132" y="362" class="tag">目标：能按可控条件把部分流量切到新版本，回退是一条命令的事</text>
+<text x="132" y="378" class="tag">验证 V14~V16：灰度切流可控 / 不带灰度头仍走稳定版本 / 回退实耗时 &lt; 60 秒并记录</text>
+
+<rect x="40" y="392" width="60" height="68" class="num"/>
+<text x="70" y="432" text-anchor="middle" font-size="24" fill="#FFFFFF" font-weight="700">5</text>
+<rect x="112" y="392" width="768" height="68" class="blue"/>
+<text x="132" y="416" class="lt">可观测与回滚</text>
+<text x="132" y="438" class="tag">目标：能从日志定位一条请求经过了什么；能区分「网关拦的」与「上游返的」；配置回滚是一条命令</text>
+<text x="132" y="454" class="tag">验证 V17~V20：指标按路由维度 / upstream_status 可分辨 / traceparent 透传 / 整份文件回滚后 diff 为空</text>
+
+<rect x="40" y="476" width="412" height="52" class="box"/>
+<text x="246" y="498" text-anchor="middle" class="lt">P1 是本机可静态判定</text>
+<text x="64" y="518" class="tag">其余 P2~P12 依赖网关进程在运行 —— 如实标 ⏳，不把期望值抄进实际结果</text>
+
+<rect x="468" y="476" width="412" height="52" class="rose"/>
+<text x="674" y="498" text-anchor="middle" class="lt">刻意不做的四件事</text>
+<text x="492" y="518" class="tag">不做 BFF 聚合 / 不做东西向治理 / 不做动态上游 / 不做流量镜像</text>
+
+<rect x="40" y="538" width="840" height="50" class="slate"/>
+<text x="460" y="562" text-anchor="middle" class="lt">下一步：把配置纳入 CI，加两道能拦住「安静失效」的门</text>
+<text x="460" y="580" text-anchor="middle" class="tag">① 静态校验（#END / schema / 必填字段）　② 鉴权反向验证（受保护路径必须仍然 401）</text>
+</svg>

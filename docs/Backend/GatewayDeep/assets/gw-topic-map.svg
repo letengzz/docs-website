@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.hd{fill:#0F172A}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">网关深入：四层阅读顺序与十个页面</text>
+<text x="460" y="56" text-anchor="middle" class="tag">每一步的前提是上一步的结论 —— 跳过「判断」直接选产品，是最常见的返工来源</text>
+
+<rect x="40" y="84" width="140" height="56" class="rose"/>
+<text x="110" y="108" text-anchor="middle" class="lt">① 先判断</text>
+<text x="110" y="128" text-anchor="middle" class="tag">要不要独立网关</text>
+<rect x="196" y="84" width="684" height="56" class="box"/>
+<text x="216" y="108" class="lt">概述：网关的四条边界</text>
+<text x="216" y="128" class="tag">网关 / 反代 / 负载均衡 / 服务网格 / BFF 五者分清 · 控制面与数据面 · 四条边界 · 成熟度五档 · 最小起步三步</text>
+
+<rect x="40" y="152" width="140" height="56" class="amber"/>
+<text x="110" y="176" text-anchor="middle" class="lt">② 选产品</text>
+<text x="110" y="196" text-anchor="middle" class="tag">配置存在哪，就决定了运维方式</text>
+<rect x="196" y="152" width="332" height="56" class="box"/>
+<text x="216" y="176" class="lt">Kong 深入</text>
+<text x="216" y="196" class="tag">五实体模型 · 三种部署模式 · strip_path · 路由优先级 · 插件顺序</text>
+<rect x="548" y="152" width="332" height="56" class="box"/>
+<text x="568" y="176" class="lt">APISIX 深入</text>
+<text x="568" y="196" class="tag">etcd 秒级下发 · radixtree · standalone · 限流维度 · 3.19 破坏性变更</text>
+
+<rect x="40" y="220" width="140" height="56" class="blue"/>
+<text x="110" y="244" text-anchor="middle" class="lt">③ 建能力</text>
+<text x="110" y="264" text-anchor="middle" class="tag">四件事，缺一件都不算能运营</text>
+<rect x="196" y="220" width="156" height="56" class="box"/>
+<text x="274" y="244" text-anchor="middle" class="lt">插件开发</text>
+<text x="274" y="264" text-anchor="middle" class="tag">Lua / 外部 / Wasm</text>
+<rect x="372" y="220" width="156" height="56" class="box"/>
+<text x="450" y="244" text-anchor="middle" class="lt">流量治理</text>
+<text x="450" y="264" text-anchor="middle" class="tag">限流·熔断·重试·灰度</text>
+<rect x="548" y="220" width="156" height="56" class="box"/>
+<text x="626" y="244" text-anchor="middle" class="lt">网关可观测</text>
+<text x="626" y="264" text-anchor="middle" class="tag">四信号·trace·脱敏</text>
+<rect x="724" y="220" width="156" height="56" class="box"/>
+<text x="802" y="244" text-anchor="middle" class="lt">网关安全</text>
+<text x="802" y="264" text-anchor="middle" class="tag">三层边界·SSRF</text>
+
+<rect x="40" y="288" width="140" height="56" class="green"/>
+<text x="110" y="312" text-anchor="middle" class="lt">④ 跑一遍</text>
+<text x="110" y="332" text-anchor="middle" class="tag">对照与排障</text>
+<rect x="196" y="288" width="332" height="56" class="box"/>
+<text x="216" y="312" class="lt">实战：从零配一个生产级网关</text>
+<text x="216" y="332" class="tag">五步 · V1~V20 验证 · P1~P12 判据 · 明确不做的四件事</text>
+<rect x="548" y="288" width="332" height="56" class="box"/>
+<text x="568" y="312" class="lt">常见问题与最佳实践</text>
+<text x="568" y="332" class="tag">现象分诊 16 行 · 十二问 · 上线自查 18 项 · 最佳实践 12 条</text>
+
+<rect x="40" y="362" width="840" height="152" class="slate"/>
+<text x="460" y="386" text-anchor="middle" class="lt">贯穿全专题的三条主线</text>
+<text x="64" y="412" class="s">主线一：边界。网关只做「与业务无关、且所有服务都需要」的横切关注点。</text>
+<text x="64" y="432" class="tag">判据：换掉网关，业务代码需不需要改？需要 → 说明业务逻辑漏进了网关（越权漏洞的产地）。</text>
+<text x="64" y="460" class="s">主线二：基数。网关的每一步额外处理都要乘以全部真实流量。</text>
+<text x="64" y="480" class="tag">判据：任何插件的 p99 超过 1ms 都必须解释；指标标签必须先答「取值上限是多少」。</text>
+<text x="64" y="504" class="s">主线三：静默。网关的绝大多数配置错误不报错，只是安静地不生效。</text>
+<text x="64" y="524" class="tag">判据：每一条治理策略都要配一条「能证伪」的反向验证（例：鉴权豁免后，受保护路径仍须 401）。</text>
+</svg>

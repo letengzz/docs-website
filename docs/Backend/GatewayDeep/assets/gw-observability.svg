@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 632" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.hd{fill:#0F172A}</style>
+<rect width="920" height="632" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">网关可观测：只有网关能回答的四个问题</text>
+<text x="460" y="56" text-anchor="middle" class="tag">网关是唯一能同时看到「请求进来」和「上游返回」两侧的位置</text>
+
+<rect x="40" y="80" width="204" height="132" class="blue"/>
+<text x="142" y="104" text-anchor="middle" class="lt">路由命中率</text>
+<text x="56" y="128" class="s">我加的路由有流量吗？</text>
+<text x="56" y="150" class="tag">标签用 route_name</text>
+<text x="56" y="168" class="tag">不要用 uri / path</text>
+<text x="56" y="192" class="tag">这是「路由不生效」</text>
+<text x="56" y="206" class="tag">唯一的确认手段</text>
+
+<rect x="252" y="80" width="204" height="132" class="amber"/>
+<text x="354" y="104" text-anchor="middle" class="lt">上游延迟（分段）</text>
+<text x="268" y="128" class="s">慢的是网关还是后端？</text>
+<text x="268" y="150" class="tag">connect 耗时</text>
+<text x="268" y="168" class="tag">上游 TTFB</text>
+<text x="268" y="192" class="tag">一段一个数，不要只</text>
+<text x="268" y="206" class="tag">记一个总耗时</text>
+
+<rect x="464" y="80" width="204" height="132" class="green"/>
+<text x="566" y="104" text-anchor="middle" class="lt">插件耗时</text>
+<text x="480" y="128" class="s">是我的逻辑拖慢的吗？</text>
+<text x="480" y="150" class="tag">按 plugin 名单独统计</text>
+<text x="480" y="168" class="tag">p99 &gt; 1ms 必须解释</text>
+<text x="480" y="192" class="tag">外部插件的跨进程</text>
+<text x="480" y="206" class="tag">往返成本要单独量</text>
+
+<rect x="676" y="80" width="204" height="132" class="rose"/>
+<text x="778" y="104" text-anchor="middle" class="lt">4xx / 5xx 归因</text>
+<text x="692" y="128" class="s">这批错误是谁产生的？</text>
+<text x="692" y="150" class="tag">关键：upstream_status</text>
+<text x="692" y="168" class="tag">为空 = 网关自己产的</text>
+<text x="692" y="186" class="tag">（401 / 429 / 404）</text>
+<text x="692" y="206" class="tag">有值 = 上游返回的</text>
+
+<text x="40" y="240" class="lt">三个观测面：日志、指标、链路 —— 各管一段，缺一段就有一条查不下去的路径</text>
+<rect x="40" y="252" width="272" height="176" class="box"/>
+<text x="176" y="276" text-anchor="middle" class="lt">访问日志</text>
+<text x="56" y="300" class="tag">request_id / route / upstream_addr</text>
+<text x="56" y="318" class="tag">upstream_status / 两类耗时</text>
+<text x="56" y="336" class="tag">consumer / traceparent</text>
+<text x="56" y="362" class="s">只记「凭证的存在与类型」，不记原值</text>
+<text x="56" y="382" class="tag">默认不记请求体 —— 需要时按路由开启</text>
+<text x="56" y="402" class="tag">并对字段做白名单脱敏</text>
+<text x="56" y="422" class="tag">字段不全 = 一条请求没有「出生证明」</text>
+
+<rect x="324" y="252" width="272" height="176" class="box"/>
+<text x="460" y="276" text-anchor="middle" class="lt">指标（Prometheus）</text>
+<text x="340" y="300" class="tag">安全标签：route / upstream / status</text>
+<text x="340" y="318" class="tag">谨慎：consumer（取值可能很多）</text>
+<text x="340" y="336" class="tag">危险：uri / user_agent</text>
+<text x="340" y="354" class="tag">禁止：request_id / trace_id</text>
+<text x="340" y="380" class="s">加任何标签前先问：取值上限是多少？</text>
+<text x="340" y="400" class="tag">答不出来就不加 —— 基数爆炸不是性能</text>
+<text x="340" y="420" class="tag">问题，是「最需要看监控时监控挂了」</text>
+
+<rect x="608" y="252" width="272" height="176" class="box"/>
+<text x="744" y="276" text-anchor="middle" class="lt">链路追踪</text>
+<text x="624" y="300" class="tag">网关要做的两件事：</text>
+<text x="624" y="320" class="tag">① 解析并保留传入的 traceparent</text>
+<text x="624" y="338" class="tag">② 把同一个 traceparent 透传给上游</text>
+<text x="624" y="364" class="s">采样决策只在入口做一次，下游遵循</text>
+<text x="624" y="384" class="tag">只按比例采样 → 每小时 3 次的错误</text>
+<text x="624" y="404" class="tag">永远采不到</text>
+<text x="624" y="422" class="tag">正确做法：错误与慢请求必采</text>
+
+<rect x="40" y="444" width="840" height="88" class="rose"/>
+<text x="460" y="468" text-anchor="middle" class="lt">最值钱的一条：把「网关状态」与「上游状态」分开统计</text>
+<text x="64" y="492" class="s">只记 status 不记 upstream_status → 网关限流拦下的 429 与上游自己返回的 429 混为一谈。</text>
+<text x="64" y="512" class="tag">结果：你无法判断「后端是否真的在报错」，会在排障时把大量时间花在错误的方向上。</text>
+<text x="64" y="526" class="tag">做法：任何 4xx/5xx 都同时带 status 与 upstream_status；前者是「客户端看到的」，后者是「上游给的」。</text>
+
+<rect x="40" y="546" width="840" height="72" class="slate"/>
+<text x="460" y="570" text-anchor="middle" class="lt">与通用监控的分工</text>
+<text x="64" y="592" class="s">通用监控（Ops/Monitoring）告诉你「网关整体不健康了」；本页告诉你「是哪条路由、哪个插件、哪个上游」。</text>
+<text x="64" y="610" class="tag">两者都不覆盖对方 —— 少了任一侧，都是从「知道有问题」到「知道问题在哪」之间的一段盲区。</text>
+</svg>

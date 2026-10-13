@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 648" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.hd{fill:#0F172A}</style>
+<rect width="920" height="648" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">流量治理的四件事：目的不同，参数不能互相借用</text>
+<text x="460" y="56" text-anchor="middle" class="tag">最典型的错误：用「提高重试次数」来解决「上游变慢」—— 上游已经慢了，重试只会让它更慢</text>
+
+<rect x="40" y="80" width="400" height="156" class="rose"/>
+<text x="64" y="104" class="lt">① 限流：保护自己</text>
+<text x="64" y="128" class="s">四算法行为完全不同</text>
+<text x="64" y="148" class="tag">固定窗口：窗口边界可放行 2 倍流量</text>
+<text x="64" y="166" class="tag">滑动窗口：边界平滑，近似准确</text>
+<text x="64" y="184" class="tag">令牌桶：允许「不超过桶容量」的突发</text>
+<text x="64" y="202" class="tag">漏桶 / 并发限制：输出平滑</text>
+<text x="64" y="224" class="tag">先答「按什么算」：优先认证身份，而不是 IP</text>
+
+<rect x="480" y="80" width="400" height="156" class="amber"/>
+<text x="504" y="104" class="lt">② 熔断：保护上游</text>
+<text x="504" y="128" class="s">与健康检查不是同一件事</text>
+<text x="504" y="148" class="tag">健康检查看「节点死活」（主动探测）</text>
+<text x="504" y="166" class="tag">熔断看「真实业务结果」（5xx 比例 / 耗时）</text>
+<text x="504" y="184" class="tag">一个节点可以「健康检查通过、业务全在报错」</text>
+<text x="504" y="206" class="tag">两者都要配 —— 且要知道自己配的是哪一类</text>
+<text x="504" y="224" class="tag">网关侧熔断管「整组上游」，服务侧管「单个依赖」</text>
+
+<rect x="40" y="248" width="400" height="156" class="blue"/>
+<text x="64" y="272" class="lt">③ 超时：保护调用方</text>
+<text x="64" y="296" class="s">三条必须成立的关系（分散在三个人手里）</text>
+<text x="64" y="318" class="tag">网关超时 &lt; 客户端超时</text>
+<text x="64" y="336" class="tag">上游内部超时 &lt; 网关 read 超时</text>
+<text x="64" y="354" class="tag">重试次数 × 单次超时 &lt; 总请求预算</text>
+<text x="64" y="378" class="tag">否则：客户端先断，网关还在等；或上游先断，</text>
+<text x="64" y="396" class="tag">上游以为成功、结果被丢弃 —— 数据不一致的来源</text>
+
+<rect x="480" y="248" width="400" height="156" class="rose"/>
+<text x="504" y="272" class="lt">④ 重试：掩盖偶发</text>
+<text x="504" y="296" class="s">重试不是免费的：每次重试都给已经出问题的上游再加负载</text>
+<text x="504" y="318" class="tag">该重试：连接失败、503、幂等的读操作</text>
+<text x="504" y="336" class="tag">绝不重试：已收到业务响应、非幂等写操作</text>
+<text x="504" y="358" class="tag">重试风暴完整因果链：一个实例变慢 → 重试把负载转给其它 9 个</text>
+<text x="504" y="376" class="tag">→ 它们也开始变慢 → 健康检查失败 → 负载集中 → 雪崩</text>
+<text x="504" y="396" class="tag">三件必须同时定：退避策略、重试预算、何时停止重试</text>
+
+<rect x="40" y="416" width="840" height="26" class="hd"/>
+<text x="250" y="434" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">灰度四种切分</text>
+<text x="540" y="434" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">切分依据</text>
+<text x="800" y="434" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">最容易踩的坑</text>
+
+<rect x="40" y="442" width="840" height="40" class="box"/>
+<text x="250" y="467" text-anchor="middle" class="lt">蓝绿（Blue-Green）</text>
+<text x="540" y="467" text-anchor="middle" class="s">全量切换，两套环境各一份</text>
+<text x="800" y="467" text-anchor="middle" class="tag">回退靠切回旧环境，必须提前演练</text>
+
+<rect x="40" y="486" width="840" height="40" class="box"/>
+<text x="250" y="511" text-anchor="middle" class="lt">金丝雀（Canary）</text>
+<text x="540" y="511" text-anchor="middle" class="s">按权重 / 比例逐步放量</text>
+<text x="800" y="511" text-anchor="middle" class="tag">同一用户可能看到两个版本</text>
+
+<rect x="40" y="530" width="840" height="40" class="box"/>
+<text x="250" y="555" text-anchor="middle" class="lt">A/B 测试</text>
+<text x="540" y="555" text-anchor="middle" class="s">按用户特征稳定分桶</text>
+<text x="800" y="555" text-anchor="middle" class="tag">用随机数分桶 → 用户一会儿新一会儿旧</text>
+
+<rect x="40" y="574" width="840" height="40" class="box"/>
+<text x="250" y="599" text-anchor="middle" class="lt">流量镜像（Mirror）</text>
+<text x="540" y="599" text-anchor="middle" class="s">复制一份流量到新版本，只观察不返回</text>
+<text x="800" y="599" text-anchor="middle" class="tag">镜像流量会真的打到下游依赖；写操作会污染数据</text>
+
+<rect x="40" y="618" width="840" height="26" class="slate"/>
+<text x="460" y="636" text-anchor="middle" class="tag">灰度必须与「按维度观测」同时上线：没有分版本指标，你会在灰度期间看不到新版本已经出问题</text>
+</svg>

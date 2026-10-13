@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 552" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.hd{fill:#0F172A}</style>
+<rect width="920" height="552" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">现象分诊：四类问题，四种排查起点</text>
+<text x="460" y="56" text-anchor="middle" class="tag">网关的绝大多数错误不报错，只是安静地不生效 —— 所以「先确认哪一类」比「先改配置」重要</text>
+
+<rect x="40" y="80" width="204" height="344" class="blue"/>
+<text x="142" y="104" text-anchor="middle" class="lt">① 路由不生效</text>
+<text x="56" y="130" class="tag">加了路由但一直 404</text>
+<text x="64" y="148" class="tag">→ 被更宽的路由吃掉</text>
+<text x="56" y="172" class="tag">后端收到的是 /</text>
+<text x="64" y="190" class="tag">→ strip_path 或 rewrite</text>
+<text x="56" y="214" class="tag">改了配置要等一会儿</text>
+<text x="64" y="232" class="tag">→ 控制面下发延迟</text>
+<text x="56" y="256" class="tag">改了完全没生效</text>
+<text x="64" y="274" class="tag">→ standalone 未重载</text>
+<text x="56" y="298" class="tag">文件末尾的路由不生效</text>
+<text x="64" y="316" class="tag">→ apisix.yaml 缺 #END</text>
+<text x="56" y="348" class="s">排查起点：用响应头或访问日志</text>
+<text x="56" y="366" class="s">确认「命中的是哪条路由」</text>
+<text x="56" y="390" class="tag">不要靠「我明明加了」下结论</text>
+<text x="56" y="410" class="tag">→ 见 概述 / APISIX</text>
+
+<rect x="252" y="80" width="204" height="344" class="amber"/>
+<text x="354" y="104" text-anchor="middle" class="lt">② 治理不生效</text>
+<text x="268" y="130" class="tag">限流不生效 / 忽紧忽松</text>
+<text x="276" y="148" class="tag">→ policy 留在 local</text>
+<text x="268" y="172" class="tag">高峰期出现 429</text>
+<text x="276" y="190" class="tag">→ 限流键按 IP，NAT 出口</text>
+<text x="268" y="214" class="tag">重试后上游被打崩</text>
+<text x="276" y="232" class="tag">→ 重试风暴</text>
+<text x="268" y="256" class="tag">灰度用户一会儿新一会儿旧</text>
+<text x="276" y="274" class="tag">→ 随机分桶</text>
+<text x="268" y="298" class="tag">上游偶发 502</text>
+<text x="276" y="316" class="tag">→ 读超时 &lt; 上游耗时</text>
+<text x="268" y="348" class="s">排查起点：这类问题的共同点是</text>
+<text x="268" y="366" class="s">「参数没选，而不是参数选错」</text>
+<text x="268" y="390" class="tag">先问「按什么算 / 存在哪 / 谁先超时」</text>
+<text x="268" y="410" class="tag">→ 见 流量治理</text>
+
+<rect x="464" y="80" width="204" height="344" class="green"/>
+<text x="566" y="104" text-anchor="middle" class="lt">③ 观测与排障</text>
+<text x="480" y="130" class="tag">Trace 断在网关</text>
+<text x="488" y="148" class="tag">→ 未透传 traceparent</text>
+<text x="480" y="172" class="tag">监控内存暴涨</text>
+<text x="488" y="190" class="tag">→ 标签用了 uri</text>
+<text x="480" y="214" class="tag">日志里有令牌原文</text>
+<text x="488" y="232" class="tag">→ 未脱敏</text>
+<text x="480" y="256" class="tag">分不清谁的 4xx</text>
+<text x="488" y="274" class="tag">→ 只记 status</text>
+<text x="480" y="298" class="tag">插件上线后全站变慢</text>
+<text x="488" y="316" class="tag">→ 阻塞事件循环</text>
+<text x="480" y="348" class="s">排查起点：先把「网关状态」</text>
+<text x="480" y="366" class="s">与「上游状态」分开</text>
+<text x="480" y="390" class="tag">再谈其它 —— 否则方向一开始就错</text>
+<text x="480" y="410" class="tag">→ 见 网关可观测 / 插件开发</text>
+
+<rect x="676" y="80" width="204" height="344" class="rose"/>
+<text x="778" y="104" text-anchor="middle" class="lt">④ 安全与升级</text>
+<text x="692" y="130" class="tag">管理端口暴露在公网</text>
+<text x="700" y="148" class="tag">→ 沿用默认密钥</text>
+<text x="692" y="172" class="tag">网关成为攻击跳板</text>
+<text x="700" y="190" class="tag">→ 上游地址来自请求</text>
+<text x="692" y="214" class="tag">越权被绕过</text>
+<text x="700" y="232" class="tag">→ 鉴权豁免写成全局</text>
+<text x="692" y="256" class="tag">升级后一批上游 502</text>
+<text x="700" y="274" class="tag">→ 破坏性变更</text>
+<text x="692" y="298" class="tag">拉到的镜像不是要的版本</text>
+<text x="700" y="316" class="tag">→ 用了 latest 标签</text>
+<text x="692" y="348" class="s">排查起点：先读 release notes</text>
+<text x="692" y="366" class="s">的 Breaking Changes 段</text>
+<text x="692" y="390" class="tag">升级前必须在预发验证「字段</text>
+<text x="692" y="410" class="tag">作用域被扩大」类变更</text>
+
+<rect x="40" y="438" width="840" height="96" class="slate"/>
+<text x="460" y="462" text-anchor="middle" class="lt">三类问题各自最快的一条判据</text>
+<text x="64" y="486" class="s">路由：用一条真实请求确认「命中的是哪条路由」，而不是确认「配置里有没有这条路由」。</text>
+<text x="64" y="508" class="s">治理：先问「按什么维度算、存在哪里、谁先超时」——治理类问题十有八九是这三个参数没选。</text>
+<text x="64" y="528" class="tag">安全：任何一条治理策略都必须配一条能证伪的反向验证（例：鉴权豁免后，受保护路径仍须 401）。</text>
+</svg>

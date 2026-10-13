@@ -2,7 +2,7 @@
 
 ## 1. 基础准备
 
-## 1.1 .Net相关概念
+### 1.1 .Net相关概念
 
 .Net：是一种用于构建多种应用的免费开源开发平台，可以在其平台上支持各种语言进行开发。.Net是.Net系列开发框架的总称。包含.NET Framework、.Net Core 、Xamarin.
 .Net Framework:是一个由微软设计和开发的软件框架,主要用来开发可以在 Windows 平台上运行的应用程序。提供托管执行环境、简化的开发和部署以及与各种编程语言的集成。.NET Framework 支持 多种编程语言，如C#、VB.NET、C++等等。
@@ -49,7 +49,7 @@ WinForm 是 **Windows Form** 的简称，它是一种 .NET Framework 的客户�
 
 ## 2. 项目相关基础知识
 
-## Winform项目窗口
+### Winform项目窗口
 
 Winform项目窗体设计窗口组成：
 
@@ -98,7 +98,7 @@ namespace **Zhaoxi.FirstConsoleAppCourse** 当前程序的命名空间，默认�
 
 ## 3. 基础语法
 
-## 3.1 基本语法知识
+### 3.1 基本语法知识
 
 **using 关键字**
 

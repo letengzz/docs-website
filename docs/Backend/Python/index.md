@@ -1504,6 +1504,58 @@ data_dict = {"name": "张三", "age": 13}
 
 ### pyecharts 包的使用
 
+pyecharts 是 ECharts 的 Python 封装，用来在 Python 里生成交互式图表。它的产物是**一段 HTML**（内部是 ECharts 的 JS 配置），不是图片，因此必须在浏览器里查看。
+
+**安装**：
+
+```bash
+pip install pyecharts
+```
+
+**最小示例**：
+
+```python
+from pyecharts.charts import Bar
+from pyecharts import options as opts
+
+bar = (
+    Bar()
+    .add_xaxis(["衬衫", "毛衣", "领带", "裤子", "风衣", "高跟鞋", "袜子"])
+    .add_yaxis("商家A", [114, 55, 27, 101, 125, 27, 105])
+    .add_yaxis("商家B", [57, 134, 137, 129, 145, 60, 49])
+    .set_global_opts(
+        title_opts=opts.TitleOpts(title="某商场销售情况"),
+        yaxis_opts=opts.AxisOpts(name="销售额"),
+    )
+)
+
+bar.render()            # 生成 render.html，用浏览器打开即可看到交互图表
+```
+
+**输出方式**：
+
+```python
+bar.render("sales.html")   # 写到指定文件
+html = bar.render_embed()  # 直接拿到 HTML 字符串，可嵌进 Flask / Django 模板
+```
+
+**常用图表类**（都在 `pyecharts.charts` 下）：
+
+| 类 | 图表 |
+| --- | --- |
+| `Bar` | 柱状图 / 条形图 |
+| `Line` | 折线图 |
+| `Pie` | 饼图 |
+| `Scatter` | 散点图 |
+| `Map` / `Geo` | 地图 |
+| `Radar` | 雷达图 |
+| `Funnel` | 漏斗图 |
+
+**两个容易踩的坑**：
+
+1. `render()` 生成的是 HTML，不是 PNG。需要图片时要么在浏览器里截图，要么配合 `snapshot-selenium` / `snapshot-phantomjs` 扩展做服务端渲染。
+2. 中文标签乱码通常是字符集问题。`render()` 生成的 HTML 头部已声明 UTF-8；如果是自己拼接 HTML，要确保 `<meta charset="utf-8">` 在最前面。
+
 ### PySpark 框架的简单使用
 
 pyspark 框架是 python 大数据方向的一个框架，实现的功能就是对大量数据的处理。遵循数据输入-数据处理-数据写出的模式。在使用之前需要使用 pip 命令把包下载下来。

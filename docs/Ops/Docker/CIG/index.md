@@ -67,13 +67,35 @@ docker compose up -d
 
 ### 查看 influxdb 页面
 
+在浏览器输入 `http://<Docker 宿主机 IP>:8086` 即可打开 InfluxDB 的 Web 界面（InfluxDB 2.x 的 UI 默认在 8086）。用它确认「cAdvisor 采集到的原始数据到底进没进来」——这一步不能跳过，**后面 Grafana 查不到数据时，先回到这里判断问题在采集端还是在展示端**。
+
 ### 查看 grafana 页面
+
+在浏览器输入 `http://<Docker 宿主机 IP>:3000` 打开 Grafana。首次登录账号与密码都是 `admin`，会要求立即修改密码。默认监听 3000 端口。
 
 ## 配置 grafana
 
 ### 添加数据源
 
+进入 `Connections → Data sources → Add new data source`，选择 **InfluxDB**，然后按容器内可达的地址填写：
+
+| 字段 | 值 | 说明 |
+| --- | --- | --- |
+| Query Language | InfluxQL / Flux | 与 InfluxDB 版本对应，选错会导致查询语法不匹配 |
+| URL | `http://influxdb:8086` | 同编排里用**服务名**，不要写 `localhost` |
+| Database | `cadvisor` | 必须与 InfluxDB 里实际写入的库名一致 |
+| User / Password | 编排里配置的账号 | 见本页 compose 文件 |
+
+点 `Save & test`，期望出现 `datasource is working` 之类的成功提示。
+
 ### 配置 Dashboards
+
+在 `Dashboards → New → Import` 中导入 cAdvisor 的官方看板（社区常用 ID 为 `14282`），导入时选择刚建好的 InfluxDB 数据源即可看到容器维度的 CPU、内存、网络与磁盘曲线。
+
+::: danger 两处最容易卡住的地方
+1. **数据源地址写成 `localhost`**。Grafana 自己是容器，`localhost` 指向的是 Grafana 容器，不是 InfluxDB 容器——必须用**服务名**（`influxdb`）或宿主机 IP。
+2. **看板导入成功但全是 `No data`**。这时按「InfluxDB 页面 → Grafana 数据源 → 看板变量」的顺序倒查：先确认原始数据在不在，再确认数据源能否连通，最后才怀疑看板本身。
+:::
 
 ## 相关专题
 

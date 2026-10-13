@@ -362,10 +362,236 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 
 ### 控制层配置(SpringMVC整合)
 
+控制层配置类交给 **web 容器**（子容器）加载，只扫描 controller 包，并负责视图解析、静态资源放行、拦截器等 Web 层专属能力。
+
+```java
+/**
+ * Web 层配置类 —— 由 DispatcherServlet 创建的子容器加载
+ */
+@Configuration
+@ComponentScan("com.atguigu.controller")   // 只扫控制层
+@EnableWebMvc                              // 等价于 <mvc:annotation-driven/>
+public class WebJavaConfig implements WebMvcConfigurer {
+
+    // 视图解析器：/WEB-INF/views/*.jsp
+    @Bean
+    public InternalResourceViewResolver viewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
+
+    // 静态资源放行，交给容器默认 Servlet 处理
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+
+    // 拦截器（登录校验、日志等）
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        // registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
+        //         .excludePathPatterns("/login", "/static/**");
+    }
+}
+```
+
+> **要点**：`@ComponentScan` 的包路径**不要写成项目根包**，否则会把 service、mapper 也扫进子容器，导致父容器里的实例和子容器里的实例不是同一个对象，声明式事务会静默失效（事务代理挂在父容器的 Bean 上，而实际调用的是子容器的那一份）。
+
 ### 业务层配置(AOP/TX整合)
+
+业务层配置类交给 **root 容器**（父容器）加载。它需要三样东西：service 包扫描、AOP 注解驱动、事务管理器。
+
+```java
+/**
+ * Service 层配置类 —— 由 ContextLoaderListener 创建的 root 容器加载
+ */
+@Configuration
+@ComponentScan("com.atguigu.service")
+@EnableAspectJAutoProxy          // 开启 AspectJ 注解驱动（Spring 6 默认 proxyTargetClass = true）
+@EnableTransactionManagement     // 开启 @Transactional 声明式事务
+public class ServiceJavaConfig {
+
+    /**
+     * 事务管理器：必须拿到上面持久层配置提供的 DataSource
+     * 这里由 Spring 自动按类型注入 MapperJavaConfig 中的 dataSource Bean
+     */
+    @Bean
+    public DataSourceTransactionManager transactionManager(DataSource dataSource) {
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
+        transactionManager.setDataSource(dataSource);
+        return transactionManager;
+    }
+}
+```
+
+**为什么 `@EnableTransactionManagement` 是必需的**：Spring 只会为标注了 `@Transactional` 的 Bean 生成代理，而生成代理的开关就是这个注解。漏掉它，事务注解会被**静默忽略**——方法照常执行，异常照常抛出，只是不回滚。
 
 ### 持久层配置(MyBatis整合)
 
+持久层配置类同样交给 root 容器。整合的本质是把 `SqlSessionFactory` 交给 Spring 管理，并用 `MapperScannerConfigurer` 批量注册 Mapper 接口为 Bean。
+
+```java
+@Configuration
+public class MapperJavaConfig {
+
+    // 1. 数据源
+    @Bean
+    public DataSource dataSource() {
+        DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/ssm?serverTimezone=Asia/Shanghai");
+        dataSource.setUsername("root");
+        dataSource.setPassword("root");
+        return dataSource;
+    }
+
+    // 2. SqlSessionFactory：MyBatis 的核心对象，交给 Spring 管理
+    //    返回值类型必须是 SqlSessionFactoryBean，Spring 会自动调用它的 getObject()
+    @Bean
+    public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
+        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+        factoryBean.setDataSource(dataSource);
+        factoryBean.setTypeAliasesPackage("com.atguigu.pojo"); // 别名包
+        // 如需 XML 映射文件，指定位置
+        // factoryBean.setMapperLocations(
+        //     new PathMatchingResourcePatternResolver()
+        //         .getResources("classpath:mapper/*.xml"));
+        return factoryBean;
+    }
+
+    // 3. 扫描 Mapper 接口，为每个接口生成代理对象并注册到容器
+    //    与 @MapperScan 二选一
+    @Bean
+    public MapperScannerConfigurer mapperScannerConfigurer() {
+        MapperScannerConfigurer configurer = new MapperScannerConfigurer();
+        configurer.setBasePackage("com.atguigu.mapper");
+        return configurer;
+    }
+}
+```
+
+> **易错点**：Mapper 接口是接口，不是类，**不能用 `@ComponentScan` 扫描**——扫不到任何东西，容器里也就没有 Mapper Bean。必须用 `MapperScannerConfigurer` 或 `@MapperScan`。
+
 ### 容器初始化配置类
 
+配置类写完了，还要有人「启动」它们。Spring 6 在 Jakarta EE 10 环境下推荐用 `AbstractAnnotationConfigDispatcherServletInitializer`，由 Servlet 容器通过 SPI 自动发现。
+
+```java
+/**
+ * 替代 web.xml：Servlet 容器启动时会自动发现本类
+ * 它同时创建 root 容器与 web 容器，并建立父子关系
+ */
+public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+    // root 容器（父）：service + mapper
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class<?>[]{ServiceJavaConfig.class, MapperJavaConfig.class};
+    }
+
+    // web 容器（子）：controller
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class<?>[]{WebJavaConfig.class};
+    }
+
+    // DispatcherServlet 的映射路径
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
+
+    // 顺带注册过滤器（如中文乱码处理）
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+        encodingFilter.setEncoding("UTF-8");
+        encodingFilter.setForceEncoding(true);
+        return new Filter[]{encodingFilter};
+    }
+}
+```
+
+三类配置类与两个容器的对应关系，可以整理成一张表：
+
+| 配置类 | 目标容器 | 管理的组件 |
+| --- | --- | --- |
+| `WebJavaConfig` | web 容器（子） | Controller、视图解析器、拦截器 |
+| `ServiceJavaConfig` | root 容器（父） | Service、事务管理器、切面 |
+| `MapperJavaConfig` | root 容器（父） | DataSource、SqlSessionFactory、Mapper 代理 |
+
 ### 整合测试
+
+整合完成后的自检顺序：**先证数据层通，再证事务生效，最后证 Web 层能调通**。三层各自可独立测试，不必启动整个 Tomcat。
+
+```java
+/**
+ * 只加载 root 容器，验证「Service + Mapper + 事务」链路
+ * 不加载 web 容器，因此不需要 Servlet 环境
+ */
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {ServiceJavaConfig.class, MapperJavaConfig.class})
+public class ServiceLayerTest {
+
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public void testFindAll() {
+        userService.findAll().forEach(System.out::println);
+    }
+
+    /** 事务自检：抛异常后数据应当回滚 */
+    @Test
+    public void testTransactionRollback() {
+        try {
+            userService.saveWithRollback();
+        } catch (Exception ignored) {
+        }
+        // 断言行数没有增加
+    }
+}
+```
+
+```java
+/**
+ * 加载 web 容器（父子容器一起），验证控制层
+ * 需要 @WebAppConfiguration 提供 ServletContext
+ */
+@ExtendWith(SpringExtension.class)
+@WebAppConfiguration
+@ContextConfiguration(classes = {ServiceJavaConfig.class, MapperJavaConfig.class, WebJavaConfig.class})
+public class ControllerLayerTest {
+
+    @Autowired
+    private WebApplicationContext wac;
+
+    private MockMvc mockMvc;
+
+    @BeforeEach
+    public void setup() {
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    }
+
+    @Test
+    public void testList() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/list"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("user/list"));
+    }
+}
+```
+
+**整合完成的判据**（逐条核对，任一条不通过就说明对应环节没接上）：
+
+| 编号 | 检查项 | 期望结果 |
+| --- | --- | --- |
+| S1 | `MapperJavaConfig` 是否产出 `MapperScannerConfigurer` | 容器中存在 Mapper 代理 Bean |
+| S2 | `ServiceJavaConfig.transactionManager` 注入的 DataSource | 与 `MapperJavaConfig.dataSource` 是同一个 Bean |
+| S3 | `@ComponentScan` 包路径是否越界 | web 容器里不应出现 service、mapper |
+| S4 | 抛异常后数据库是否回滚 | 行数不变 |
+| S5 | `MyWebAppInitializer.getServletMappings()` | 返回 `"/"`，不是 `"/*"` |
+
+> `"/*"` 会拦截包括 `.jsp` 在内的所有请求，导致视图解析后再次进入 DispatcherServlet 形成死循环；`"/"` 才会把静态资源交给默认 Servlet。

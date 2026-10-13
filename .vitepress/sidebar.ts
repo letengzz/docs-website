@@ -1,5 +1,5 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
-import { Auth, DDD, DesignPatterns, DistributedCache, DotNet, Ecommerce, Go, GoMicroservices, HighPerformanceJava, Java, Ledger, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, ReactiveProgramming, SpringCloud, WorkflowEngine } from "./backend";
+import { Auth, DDD, DesignPatterns, DistributedCache, DotNet, Ecommerce, GatewayDeep, Go, GoMicroservices, HighPerformanceJava, Java, Ledger, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, ReactiveProgramming, SpringCloud, WorkflowEngine } from "./backend";
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontOthers, FrontPWA, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
@@ -73,7 +73,7 @@ export const sidebar = {
     {
       text: "后端",
       collapsed: true,
-      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...Ledger, ...DDD, ...WorkflowEngine, ...DistributedCache, ...ReactiveProgramming],
+      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...GatewayDeep, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...Ledger, ...DDD, ...WorkflowEngine, ...DistributedCache, ...ReactiveProgramming],
     },
   ],
   "/docs/DB": [
@@ -150,6 +150,7 @@ export const sidebar = {
   "/docs/Backend/MessageQueue": MessageQueue,
   "/docs/Backend/Auth": Auth,
   "/docs/Backend/Microservices": Microservices,
+  "/docs/Backend/GatewayDeep": GatewayDeep,
   "/docs/Backend/SpringCloud": SpringCloud,
   "/docs/Backend/DesignPatterns": DesignPatterns,
   "/docs/Backend/NetworkProgramming": NetworkProgramming,

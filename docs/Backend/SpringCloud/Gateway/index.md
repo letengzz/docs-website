@@ -275,3 +275,21 @@ public class RateLimitConfig {
 - Spring Cloud Gateway 官方文档：https://docs.spring.io/spring-cloud-gateway/reference/
 - Gateway 内置断言与过滤器清单：https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/
 - Spring WebFlux：https://docs.spring.io/spring-framework/reference/web/webflux.html
+
+## 与网关深入专题的分工（第 133 天补充）
+
+本页讲的是 **Spring Cloud Gateway 这个框架**（断言、过滤器、与注册中心联动）；[网关深入](../../GatewayDeep/index.md) 讲的是**独立部署的网关进程**（Kong / APISIX）。两者的**判据可以互相借用，配置写法不能互相搬运**。
+
+| 维度 | 本页（Spring Cloud Gateway） | 网关深入（Kong / APISIX） |
+| --- | --- | --- |
+| 配置载体 | Spring 的 YAML + Bean，跟着应用一起发布 | 控制面 API / 声明式配置文件，网关自己热生效 |
+| 运行模型 | 建在 WebFlux（Reactor）之上 | 建在 Nginx / OpenResty 事件循环之上 |
+| 扩展方式 | 写 `GlobalFilter` / `GatewayFilter`（Java） | 原生 Lua / 外部 Plugin Runner / Wasm |
+| 变更代价 | 需要重新发布应用 | 改一条路由通常不需要重启进程 |
+
+**三条可以共用、两条绝不能共用**：
+
+- **可以共用**：限流维度的选择（按 IP / 按用户 / 按路由）；「超时预算要小于上游熔断判定窗口」；「灰度必须能从指标回滚」。这三条是「网关」这一层的通用判据，与产品无关。
+- **不能共用**：**路由优先级的表达方式**（Spring 用 `Ordered` 与断言顺序，APISIX 用 `radixtree` + `priority`，Kong 用 `regex_priority`）；**过滤器的执行顺序模型**（WebFlux 的 filter chain 与 OpenResty 的 `rewrite` / `access` 阶段不是一回事）。
+
+本页上文「为什么网关必须跑在非阻塞运行时上」给出的理由，在 Kong / APISIX 上同样成立——只是它们的「非阻塞」由 Nginx 事件循环提供，而不是由 Reactor 提供。

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 556" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.hd{fill:#0F172A}.arrow{stroke:#64748B;fill:none;stroke-width:2;marker-end:url(#ax)}</style>
+<defs><marker id="ax" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748B"/></marker></defs>
+<rect width="920" height="556" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">APISIX 的架构：etcd 是唯一真相源，数据面靠 watch 秒级感知</text>
+<text x="460" y="56" text-anchor="middle" class="tag">没有 reload 这一步 —— 所以「改了没生效」几乎总是「改的不是生效的那一份」</text>
+
+<rect x="40" y="88" width="150" height="56" class="slate"/>
+<text x="115" y="112" text-anchor="middle" class="lt">运维 / CI</text>
+<text x="115" y="132" text-anchor="middle" class="tag">PR 改路由，不直连控制台</text>
+<line x1="192" y1="116" x2="246" y2="116" class="arrow"/>
+
+<rect x="250" y="88" width="190" height="56" class="amber"/>
+<text x="345" y="112" text-anchor="middle" class="lt">Admin API（:9180）</text>
+<text x="345" y="132" text-anchor="middle" class="tag">默认只监听 127.0.0.1 + API Key</text>
+<line x1="442" y1="116" x2="496" y2="116" class="arrow"/>
+
+<rect x="500" y="88" width="190" height="56" class="blue"/>
+<text x="595" y="112" text-anchor="middle" class="lt">etcd 集群</text>
+<text x="595" y="132" text-anchor="middle" class="tag">3 节点起步，跨故障域</text>
+
+<text x="760" y="112" class="tag">写：校验 + 下发</text>
+<text x="760" y="132" class="tag">可用性 = 能否改配置</text>
+
+<line x1="595" y1="146" x2="595" y2="176" class="arrow"/>
+<rect x="380" y="180" width="430" height="34" class="green"/>
+<text x="595" y="202" text-anchor="middle" class="s">watch（长连接）—— 秒级生效，无需重启也无需 reload</text>
+<line x1="450" y1="216" x2="200" y2="256" class="arrow"/>
+<line x1="595" y1="216" x2="595" y2="256" class="arrow"/>
+<line x1="740" y1="216" x2="880" y2="256" class="arrow"/>
+
+<rect x="110" y="260" width="180" height="60" class="green"/>
+<text x="200" y="284" text-anchor="middle" class="lt">数据面 #1</text>
+<text x="200" y="304" text-anchor="middle" class="tag">:9080 / :9443</text>
+<rect x="505" y="260" width="180" height="60" class="green"/>
+<text x="595" y="284" text-anchor="middle" class="lt">数据面 #2</text>
+<text x="595" y="304" text-anchor="middle" class="tag">:9080 / :9443</text>
+<rect x="790" y="260" width="90" height="60" class="green"/>
+<text x="835" y="284" text-anchor="middle" class="lt">#3</text>
+<text x="835" y="304" text-anchor="middle" class="tag">…</text>
+
+<rect x="40" y="340" width="840" height="86" class="slate"/>
+<text x="460" y="364" text-anchor="middle" class="lt">三条必须记住的推论</text>
+<text x="64" y="388" class="s">① 没有 reload。写入 etcd 后所有节点秒级生效 —— 若「等了很久还没生效」，先确认改的是不是生效的那一份（如 disabled 字段）。</text>
+<text x="64" y="410" class="s">② etcd 是新的单点。它挂了 = 「还能不能改配置」这件事挂了 —— 按数据库同等级别做备份与监控。</text>
+<text x="64" y="430" class="tag">③ 「etcd 不可用」必须实测过：数据面应保留本地缓存继续转发，新配置失败但存量流量不受影响。</text>
+
+<rect x="40" y="438" width="400" height="102" class="box"/>
+<text x="240" y="462" text-anchor="middle" class="lt">etcd 模式</text>
+<text x="64" y="484" class="s">配置来源：etcd + Admin API</text>
+<text x="64" y="504" class="s">适合：需要动态增删路由、有控制台</text>
+<text x="64" y="524" class="tag">代价：etcd 必须按生产标准运维</text>
+
+<rect x="480" y="438" width="400" height="102" class="box"/>
+<text x="680" y="462" text-anchor="middle" class="lt">standalone（apisix.yaml）</text>
+<text x="504" y="484" class="s">配置来源：本地 YAML 文件</text>
+<text x="504" y="504" class="s">适合：K8s / 配置即代码 / 无 etcd 场景</text>
+<text x="504" y="524" class="tag">代价：整体替换语义；文件必须以 #END 结尾</text>
+</svg>

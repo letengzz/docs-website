@@ -50,6 +50,14 @@ docker compose version
 
 ## 语法
 
+Compose 文件的「语法」由三部分组成：**顶层元素**（`services` / `networks` / `volumes` / `configs` / `secrets`）、**每个服务的字段**（`image` / `build` / `ports` / `environment` / `volumes` / `depends_on` / `healthcheck` 等），以及**跨服务的引用关系**（网络名、卷名、`depends_on` 的条件）。
+
+下面按「顶层元素 → 常用字段」的顺序展开。
+
+::: info 关于 version 字段
+Compose V2 起，文件顶部的 `version:` 字段**已经废弃**：`docker compose` 会提示 `the attribute 'version' is obsolete`，但不会报错。新写的文件可以省略它；存量文件保留也不影响运行。
+:::
+
 ## 常用命令
 
 - Docker Compose：

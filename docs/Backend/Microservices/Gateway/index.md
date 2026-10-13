@@ -212,3 +212,20 @@ public KeyResolver userKeyResolver() {
 ::: tip 相关文档
 Spring Cloud Gateway 的落地细节（断言/过滤器清单、全局过滤器鉴权、Redis 限流、网关模块依赖坑位）见 [Spring Cloud 专题：API 网关](../../SpringCloud/Gateway/index.md)，方法论参考同目录的 [Spring Cloud 版本与实现专题](../../SpringCloud/index.md)。
 :::
+
+## 与网关深入专题的分工（第 133 天补充）
+
+本页回答的是「**要不要一个统一入口、网关该有哪几件功能**」；装上去之后的所有具体决定，全部移交 [网关深入](../../GatewayDeep/index.md)。一句话划界：**本页给你结论，该专题给你配置。**
+
+| | 本页（概念） | 网关深入（落地） |
+| --- | --- | --- |
+| 关注点 | 职责清单、产品一览、为什么需要网关 | 路由怎么写、插件怎么排、灰度怎么切、坏了怎么看 |
+| 输入 | 你的架构现状 | 你的**真实流量**与**升级窗口** |
+| 输出 | 「需要一个网关」这个结论 | 一份能在预发跑通、能验收、能回滚的配置 |
+
+**四处最容易「概念懂了但落地翻车」的地方**，本页只送到门口：
+
+1. **路由加了但不生效**——本页讲「网关要能做路由」，[Kong](../../GatewayDeep/Kong/index.md) 与 [APISIX](../../GatewayDeep/APISIX/index.md) 讲路由匹配优先级、`strip_path` 这类会悄悄改掉上游路径的默认值。
+2. **限流忽紧忽松**——本页讲「网关要能限流」，[流量治理](../../GatewayDeep/TrafficManagement/index.md) 讲限流维度（按 IP 还是按用户）、窗口边界，以及为什么「网关限流 + 服务限流」是两层而不是重复。
+3. **鉴权放错位置**——本页讲「网关可以做认证」，[网关安全](../../GatewayDeep/Security/index.md) 讲**哪一层核什么**、本地验签与 introspection 的取舍、以及把网关当 SSRF 跳板的真实路径。
+4. **出问题查不到**——本页讲「网关要有日志」，[网关可观测](../../GatewayDeep/Observability/index.md) 讲网关这一跳专属的四个信号，以及为什么 `status` 与 `upstream_status` 必须分开看。

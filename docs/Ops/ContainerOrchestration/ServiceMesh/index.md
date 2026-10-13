@@ -146,3 +146,21 @@ istioctl proxy-config routes deploy/productpage-v1  # 看代理里真实生效�
 - Istio 1.31 发布说明：<https://istio.io/latest/news/releases/1.31.x/>
 - Ambient 模式总览：<https://istio.io/latest/docs/ambient/overview/>
 - Gateway API 文档：<https://gateway-api.sigs.k8s.io/>
+
+## 与网关深入专题的分工（第 133 天补充）
+
+本专题治理的是**服务之间的东西向流量**；[网关深入](../../../Backend/GatewayDeep/index.md) 治理的是**客户端进来的南北向流量**。两者都是「控制面 + 数据面」，也都能做 mTLS、限流、重试，因此**最容易互相误用**。
+
+| | 本专题（服务网格） | 网关深入（南北向网关） |
+| --- | --- | --- |
+| 流量方向 | 服务 ↔ 服务（东西向） | 客户端 → 集群（南北向） |
+| 流量识别 | 基于工作负载身份（ServiceAccount / SPIFFE） | 基于 HTTP 语义（Host、Path、Header、方法） |
+| 数据面部署 | 每 Pod 一个 sidecar，或每节点一个 ztunnel | 独立的一组进程 / 一组副本 |
+| 典型控制对象 | mTLS 策略、AuthorizationPolicy、流量拆分 | 路由、插件、限流、灰度、API 鉴权 |
+| 变更粒度 | 按命名空间 / 工作负载 | 按路由 / 消费者 |
+
+**三条不要跨层使用的做法**：
+
+1. **不要用网格解外部 API 治理。** 网格没有「消费者」「API Key」「配额」这些概念，硬要用 `AuthorizationPolicy` 去表达，会得到一份没人维护得动的策略。
+2. **不要用南北向网关解服务间治理。** 网关看不见 Pod 级身份，也没有 sidecar 那样的「零信任」位置；服务间的东西向流量如果绕不开网关，说明网关被放错了位置。
+3. **两者的重试/超时预算要一次算清。** 南北向网关、服务网格、应用内客户端三层各自重试，最坏情况是**乘积级放大**。超时预算必须从最外层往里递减，并且只允许**一层**做重试。

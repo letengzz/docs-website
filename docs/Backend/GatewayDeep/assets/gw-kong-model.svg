@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<style>.h{font-size:18px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#334155;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.slate{fill:#F1F5F9;stroke:#94A3B8}.hd{fill:#0F172A}.arrow{stroke:#64748B;fill:none;stroke-width:2;marker-end:url(#kg)}</style>
+<defs><marker id="kg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748B"/></marker></defs>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">Kong 的五个实体：一条请求的完整走向</text>
+<text x="460" y="56" text-anchor="middle" class="tag">Route 决定「谁匹配」，Service 决定「打给哪组节点」，Upstream 决定「怎么挑节点」</text>
+
+<rect x="40" y="90" width="110" height="56" class="slate"/>
+<text x="95" y="114" text-anchor="middle" class="lt">客户端</text>
+<text x="95" y="134" text-anchor="middle" class="tag">带令牌与路径</text>
+<line x1="152" y1="118" x2="186" y2="118" class="arrow"/>
+
+<rect x="190" y="90" width="130" height="56" class="blue"/>
+<text x="255" y="114" text-anchor="middle" class="lt">Route</text>
+<text x="255" y="134" text-anchor="middle" class="tag">paths / hosts / methods</text>
+<line x1="322" y1="118" x2="356" y2="118" class="arrow"/>
+
+<rect x="360" y="90" width="130" height="56" class="blue"/>
+<text x="425" y="114" text-anchor="middle" class="lt">Service</text>
+<text x="425" y="134" text-anchor="middle" class="tag">host + port + path</text>
+<line x1="492" y1="118" x2="526" y2="118" class="arrow"/>
+
+<rect x="530" y="90" width="130" height="56" class="green"/>
+<text x="595" y="114" text-anchor="middle" class="lt">Upstream</text>
+<text x="595" y="134" text-anchor="middle" class="tag">算法 + 健康检查</text>
+<line x1="662" y1="118" x2="696" y2="118" class="arrow"/>
+
+<rect x="700" y="90" width="180" height="56" class="green"/>
+<text x="790" y="114" text-anchor="middle" class="lt">Target × N</text>
+<text x="790" y="134" text-anchor="middle" class="tag">10.0.1.7:8080 / 10.0.1.8:8080</text>
+
+<text x="40" y="186" class="lt">插件可以挂在三个层级 + 一个身份维度上（同一个插件挂多层会各执行一次，不是覆盖）</text>
+<rect x="40" y="200" width="200" height="62" class="amber"/>
+<text x="140" y="224" text-anchor="middle" class="lt">global（全局）</text>
+<text x="140" y="246" text-anchor="middle" class="tag">对所有请求生效，适合观测类</text>
+<rect x="256" y="200" width="200" height="62" class="amber"/>
+<text x="356" y="224" text-anchor="middle" class="lt">service / route</text>
+<text x="356" y="246" text-anchor="middle" class="tag">越具体越靠后叠加</text>
+<rect x="472" y="200" width="200" height="62" class="amber"/>
+<text x="572" y="224" text-anchor="middle" class="lt">consumer</text>
+<text x="572" y="246" text-anchor="middle" class="tag">按调用方身份差异化策略</text>
+<rect x="688" y="200" width="192" height="62" class="rose"/>
+<text x="784" y="224" text-anchor="middle" class="lt">Consumer + Credential</text>
+<text x="784" y="246" text-anchor="middle" class="tag">凭证用于识别「谁在调」</text>
+
+<rect x="40" y="284" width="840" height="26" class="hd"/>
+<text x="200" y="302" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">部署模式</text>
+<text x="440" y="302" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">配置存哪</text>
+<text x="700" y="302" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="600">主要代价</text>
+
+<rect x="40" y="310" width="840" height="52" class="box"/>
+<text x="200" y="334" text-anchor="middle" class="lt">traditional（DB-backed）</text>
+<text x="440" y="334" text-anchor="middle" class="s">PostgreSQL / Cassandra</text>
+<text x="700" y="334" text-anchor="middle" class="tag">数据库是新的单点；可用 Admin API 增量改</text>
+
+<rect x="40" y="366" width="840" height="52" class="box"/>
+<text x="200" y="390" text-anchor="middle" class="lt">DB-less（声明式）</text>
+<text x="440" y="390" text-anchor="middle" class="s">kong.yaml（不连数据库）</text>
+<text x="700" y="390" text-anchor="middle" class="tag">改配置是整体重载；Admin API 只读</text>
+
+<rect x="40" y="422" width="840" height="52" class="blue"/>
+<text x="200" y="446" text-anchor="middle" class="lt">hybrid（CP / DP）</text>
+<text x="440" y="446" text-anchor="middle" class="s">CP 连库，DP 从 CP 拉</text>
+<text x="700" y="446" text-anchor="middle" class="tag">CP 不可用时 DP 靠本地缓存；CP↔DP 通道是安全边界</text>
+
+<rect x="40" y="486" width="840" height="58" class="rose"/>
+<text x="460" y="508" text-anchor="middle" class="lt">必须升级的一条：Kong OSS 3.9.4 修的是 hybrid 模式集群 RPC 的 SQL 注入</text>
+<text x="460" y="530" text-anchor="middle" class="tag">用 hybrid 模式就必须升到 3.9.4+；且不要用 latest 标签 —— 官方镜像的 latest 曾仍指向 3.9.3</text>
+</svg>

@@ -194,3 +194,20 @@ curl -sI http://127.0.0.1:8080/api/v1/search?q=x | grep -i '^retry-after:'
 - [OWASP API Security Top 10 · API5:2023 功能级授权失效](https://owasp.org/API-Security/editions/2023/en/0xa5-broken-function-level-authorization/)：路径级授权的风险来源
 - [NIST SP 800-228](https://csrc.nist.gov/pubs/sp/800/228/final)：API 保护在开发与运行时阶段的控制建议（2026-03 更新）
 - 相邻页：[微服务 · 网关](../../../Backend/Microservices/index.md)、[Spring Cloud · 网关](../../../Backend/SpringCloud/index.md)、[Nginx 反向代理](../../../Ops/Nginx/index.md)
+
+## 7. 与网关深入专题的分工（第 133 天补充）
+
+本页只解决一件事：**契约与网关配置之间的漂移**——契约改了，网关那边有没有同步。它刻意不碰「网关自己那一堆配置怎么组织」，那部分全部在 [网关深入](../../../Backend/GatewayDeep/index.md)。
+
+| | 本页（契约 ↔ 网关） | 网关深入（网关自身） |
+| --- | --- | --- |
+| 关注点 | 两份文件之间**是否一致** | 网关侧**怎么组织、怎么验证、怎么回滚** |
+| 输入 | OpenAPI / Proto 与网关导出的路由清单 | 真实流量、升级窗口、故障现场 |
+| 输出 | 一份差异报告 + 校验脚本 | 可执行的配置与验收判据 |
+| 判据 | 字段级一致（路径、方法、参数、状态码） | 「配置是对的」与「配置是能跑的」是两件事 |
+
+**交接点只有三处**，其余不要越界：
+
+1. **路由清单的来源**：本页需要网关导出的路由清单作为对账输入。Kong 用 `GET /routes`、APISIX 用 `GET /apisix/admin/routes`，两者的**分页方式与字段命名不同**，对账脚本要按产品适配——这部分在 [Kong](../../../Backend/GatewayDeep/Kong/index.md) 与 [APISIX](../../../Backend/GatewayDeep/APISIX/index.md)。
+2. **校验脚本落在哪道门**：本页产出的一致性校验，应当在 CI 里跑（见 [CI/CD](../../CICD/index.md)）；但「跑过之后怎么把配置发到网关」是网关侧的事。
+3. **「网关不该做的事」清单**：本页第 4 节讲的是**不要把业务编排放进网关**；网关深入补充的是同一件事的另一面——**网关每一步额外处理都会乘以全部真实流量**（见[插件开发](../../../Backend/GatewayDeep/Plugin/index.md)）。

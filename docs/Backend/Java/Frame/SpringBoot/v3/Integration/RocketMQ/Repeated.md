@@ -117,6 +117,122 @@ https://hutool.cn/docs/#/bloomFilter/%E6%A6%82%E8%BF%B0
 
 #### 使用redis的bitmap类型手写布隆过滤器
 
+上一节的 hutool 布隆过滤器是**进程内**的：每个消费者实例各存一份位数组，彼此互不知晓。在多实例集群消费的场景下，同一条消息会被 A、B 两个实例各判一次「没来过」，去重直接失效。把位数组搬到 Redis 上，所有实例共享同一份位图，才能做到全局去重。
+
+Redis 的 `SETBIT` / `GETBIT` 本身就是位操作，天然可以当作布隆过滤器的位数组使用，不需要额外引入组件。
+
+**参数怎么定**：
+
+- 位数组长度 `m ≈ -n·ln(p) / (ln 2)²`，其中 `n` 是预计元素个数，`p` 是可接受的误判率
+- 哈希函数个数 `k ≈ (m / n) · ln 2`
+
+例如预计 `n = 1000 万`、误判率 `p = 1%`，则 `m ≈ 9585 万` 位（约 11.4 MB），`k ≈ 7`。相比用 `SET` 存字符串（假设 key 平均 40 字节，需要约 400 MB），位图把内存压到了几十分之一。
+
+> **两个必须在生产里补上的细节**：
+>
+> 1. 位图**不能删除元素**。如果业务需要「消息可重放」，要么按天切 key（`bloom:msg:2026-10-13`）并设过期时间，要么改用数据库唯一索引方案。
+> 2. `EXPIRE` 要设置在 key 上，**不能在每次 SETBIT 后重置过期时间**，否则活跃量大的 key 永远不过期，内存只增不减。
+
+```java
+@Component
+public class RedisBloomFilter {
+
+    private final StringRedisTemplate redisTemplate;
+
+    /** 位数组长度 m */
+    private static final long BIT_SIZE = 95_850_000L;
+    /** 哈希个数 k */
+    private static final int HASH_COUNT = 7;
+    /** 位图 key 前缀，按天切分便于回收 */
+    private static final String KEY_PREFIX = "bloom:msg:";
+
+    public RedisBloomFilter(StringRedisTemplate redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
+
+    private byte[] currentKey() {
+        return (KEY_PREFIX + LocalDate.now()).getBytes(StandardCharsets.UTF_8);
+    }
+
+    /** 用 k 个不同种子对同一 value 做哈希，得到 k 个 bit 偏移 */
+    private long[] offsets(String value) {
+        long[] offsets = new long[HASH_COUNT];
+        for (int i = 0; i < HASH_COUNT; i++) {
+            // 不同种子 → 不同 hashCode，避免同一位被反复命中
+            int h = (value + "#seed" + i).hashCode();
+            offsets[i] = Math.abs(h) % BIT_SIZE;
+        }
+        return offsets;
+    }
+
+    /**
+     * 存在则返回 true（视为重复消息）；
+     * 不存在则写入全部 k 位并返回 false（视为首次出现）
+     */
+    public boolean exists(String value) {
+        long[] offsets = offsets(value);
+        byte[] key = currentKey();
+        return Boolean.TRUE.equals(redisTemplate.execute((RedisCallback<Boolean>) conn -> {
+            boolean allSet = true;
+            for (long offset : offsets) {
+                if (!Boolean.TRUE.equals(conn.getBit(key, offset))) {
+                    allSet = false;
+                    break;
+                }
+            }
+            if (!allSet) {
+                for (long offset : offsets) {
+                    conn.setBit(key, offset, true);
+                }
+                conn.expire(key, Duration.ofDays(2).getSeconds()); // 到期自动回收
+            }
+            return allSet;
+        }));
+    }
+}
+```
+
+在消费者里替换掉原来的进程内布隆过滤器即可：
+
+```java
+@Component
+@RocketMQMessageListener(
+        topic = "order-topic",
+        consumerGroup = "order-consumer-group",
+        consumeMode = ConsumeMode.CONCURRENTLY)
+public class OrderConsumer implements RocketMQListener<MessageExt> {
+
+    @Resource
+    private RedisBloomFilter redisBloomFilter;
+
+    @Override
+    public void onMessage(MessageExt messageExt) {
+        // 业务唯一键优先用业务字段，msgId 兜底
+        String keys = messageExt.getKeys() != null
+                ? messageExt.getKeys()
+                : messageExt.getMsgId();
+
+        if (redisBloomFilter.exists(keys)) {
+            System.out.println("该消息已经来过了，直接返回");
+            return;
+        }
+        // 首次出现，执行业务
+        System.out.println(new String(messageExt.getBody()));
+    }
+}
+```
+
+**这套方案的边界**（想清楚再上生产）：
+
+| 问题 | 说明 | 应对 |
+| --- | --- | --- |
+| 误判 | 布隆过滤器只会「假阳性」（把没来过的判成来过），不会「假阴性」，因此**不会重复消费，但可能漏消费** | 误判率调到 0.1% 以下；漏消费场景改用数据库唯一索引 |
+| 删除 | 位图不支持删除单个元素 | 按时间切 key + 过期时间 |
+| 并发 | 多个实例同时 `exists` 同一条消息时可能都读到「不存在」 | 用 `SET key value NX` 先抢占，或直接用 Redis 原子命令 `SETBIT` 的返回值判断 |
+| 热 key | 单 key 的位图在集群模式下会集中在同一个分片上 | 按业务维度加哈希后缀，拆成多个 key |
+
+> **一句话选型**：只要消费者是单实例、或者允许少量重复，进程内布隆过滤器够用；只要消费者是多实例集群，就必须把位图放到 Redis 上，否则「去重」只是看起来生效。
+
 ### 使用数据库解决问题
 
 可以借助关系数据库进行去重。首先需要确定消息的唯一键，可以是msgId，也可以是消息内容中的唯一标识字段，例如订单Id等。在消费之前判断唯一键是否在关系数据库中存在。如果不存在则插入，并消费，否则跳过。

@@ -267,6 +267,7 @@ export const CompleteProject = [
           { text: "规则加载与热更新", link: "/project/Complete/MonitoringDashboard/RuleReload/index.md" },
           { text: "告警路由联调", link: "/project/Complete/MonitoringDashboard/AlertRouting/index.md" },
           { text: "第 2 周收口：四组件 × 五契约对账", link: "/project/Complete/MonitoringDashboard/Week2Close/index.md" },
+          { text: "大盘数据接口端到端核对", link: "/project/Complete/MonitoringDashboard/DashboardE2E/index.md" },
         ],
       },
       {
