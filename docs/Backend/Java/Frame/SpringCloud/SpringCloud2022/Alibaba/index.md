@@ -290,4 +290,4 @@ Gateway 基于 WebFlux（响应式），与 Spring MVC 的 Servlet 拦截器不�
 | 南北向入口 | SpringCloudGateway + `RequestRateLimiter` | 抵挡外部洪峰，保护整个集群 |
 | 东西向服务间 | Sentinel | 保护单个服务不被下游拖垮，防止雪崩 |
 
-两者不冲突：网关限流是「第一道闸门」，Sentinel 是「每个服务自己的保险丝」。网关侧更完整的流量治理见 [GatewayDeep 网关深入](../../../../../GatewayDeep/)。
+两者不冲突：网关限流是「第一道闸门」，Sentinel 是「每个服务自己的保险丝」。网关侧更完整的流量治理见 [GatewayDeep 网关深入](../../../../../GatewayDeep/index.md)。

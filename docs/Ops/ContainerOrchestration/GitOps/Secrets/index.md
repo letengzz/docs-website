@@ -91,7 +91,7 @@ sops --encrypt --age age1xxxx --in-place overlays/prod/secrets.enc.yaml
 git add overlays/prod/secrets.enc.yaml
 ```
 
-```yaml [kustomization-decrypt.yaml]   # Flux 侧声明解密
+```yaml [kustomization-decrypt.yaml]
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:

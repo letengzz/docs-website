@@ -2,6 +2,8 @@
 
 Angular 项目有严格的目录组织规范，理解项目结构有助于高效开发。
 
+![Angular 项目结构：根目录四个关键文件、src 分层与三套 tsconfig 的编译范围](../assets/angular-structure.svg)
+
 ## 根目录文件
 
 ```text

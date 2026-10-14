@@ -126,9 +126,9 @@ docs-website/
 1. 代码块必须标注语言：`html`、`css`、`js`、`ts`、`shell`、`json`、`properties`、`vue`、`sql`、`yaml`、`dockerfile` 等。
 2. 涉及具体文件时使用代码块标题语法：
 
-   ```markdown
+   ````markdown
    ```typescript [src/main.ts]
-   ```
+   ````
 
 3. 示例代码保持可复制、可运行；超长配置用 `...` 省略并注释说明。
 4. 命令行统一放 `shell` 代码块，完整给出 `cd`、安装、启动等命令。
