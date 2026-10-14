@@ -13,6 +13,7 @@
 - [云原生](CloudNative/index.md)
 - [云上架构](CloudArchitecture/index.md)：VPC 与网络边界、负载均衡、弹性伸缩、可用性拓扑、安全边界、成本与规格选型、实战、常见问题
 - [边缘计算与 CDN](EdgeCDN/index.md)：四条边界、调度与回源、缓存键与失效、边缘函数与限额、边缘数据一致性、边缘安全、性能与成本、迁移实战、常见问题
+- [性能与容量工程](PerformanceEngineering/index.md)：四条边界（性能 ≠ 容量 / 平均 ≠ 分位 / 压测 ≠ 容量 / 优化 ≠ 扩容）、SLO 与错误预算、定量建模与排队、开环压测方法论、瓶颈定位、容量规划与弹性、常见问题
 - [监控告警](Monitoring/index.md)
 - [日志体系](LogSystem/index.md)
 - [备份与容灾](BackupDR/index.md)

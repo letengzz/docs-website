@@ -183,3 +183,15 @@ python tools/check_traceability.py docs/requirements.md tests/   # 按需自建
 - [Given-When-Then 与行为驱动开发](https://cucumber.io/docs/gherkin/reference/)
 - [Atlassian：验收标准（Acceptance Criteria）写法](https://www.atlassian.com/work-management/project-management/acceptance-criteria)
 - [IEEE 830 软件需求规格说明（历史参考）](https://standards.ieee.org/ieee/830/1222/)
+
+## 与项目实战的分工
+
+本页讲**需求与验收条件怎么写**（方法论）：用户故事的三段式、Given/When/Then、四类验收条件、非功能需求的可测化与「本轮不做」清单。新周期项目「在线协作任务看板」的 [需求与验收条件](/project/Complete/TeamBoard/Requirements/index.md) 是同一套方法在一件真实项目上的**实例**——它把本页的模板逐条填成了可交付的句子。
+
+| 本页讲什么 | 对方讲什么 | 遇到什么问题时该去哪边 |
+| --- | --- | --- |
+| 方法论：故事怎么写、条件怎么拆、边界用三值法怎么取 | 实例：一个看板项目里角色有几个、每条故事配了几条验收条件 | 「这套方法具体长什么样」→ [TeamBoard 需求](/project/Complete/TeamBoard/Requirements/index.md) |
+| 怎么把非功能需求写成可执行判据 | 实例：该项目的性能 / 安全 / 兼容性判据与验证方式 | 「方法论如何落到一个项目上」→ [TeamBoard 验收](/project/Complete/TeamBoard/Acceptance/index.md) |
+| 只给方法与模板，不含具体业务 | 只给该项目的具体结论，不重复讲方法 | 学方法回本页，看实例去项目页 |
+
+用法建议：**先读本页把口径定下来，再对照实例检查自己有没有漏项**——方法论与实例互为对照，两边都要看。

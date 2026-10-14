@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="性能问题分诊：从现象到三层判断，再到归宿页面的决策示意图">
+  <title>性能问题分诊：现象 → 三层判断 → 归宿页面</title>
+  <defs>
+    <marker id="pef-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">性能问题分诊：现象 → 三层判断 → 归宿页面</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">顺序不能反：先分类，再定位，最后归属。反了，就会在错误的层上花掉两周。</text>
+
+  <text x="30" y="98" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">① 现象：用户看到的是结果，不是原因</text>
+  <rect x="30" y="110" width="156" height="38" rx="8" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="42" y="134" font-family="system-ui, sans-serif" font-size="11" fill="#0f172a">平均很好但投诉慢</text>
+  <rect x="198" y="110" width="156" height="38" rx="8" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="210" y="134" font-family="system-ui, sans-serif" font-size="11" fill="#0f172a">扩容后没变快</text>
+  <rect x="366" y="110" width="156" height="38" rx="8" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="378" y="134" font-family="system-ui, sans-serif" font-size="11" fill="#0f172a">压测过、线上不过</text>
+  <rect x="534" y="110" width="156" height="38" rx="8" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="546" y="134" font-family="system-ui, sans-serif" font-size="11" fill="#0f172a">P99 抖动大</text>
+  <rect x="702" y="110" width="156" height="38" rx="8" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="714" y="134" font-family="system-ui, sans-serif" font-size="11" fill="#0f172a">CPU 不高但很慢</text>
+
+  <line x1="450" y1="150" x2="450" y2="168" stroke="#334155" stroke-width="1.6" marker-end="url(#pef-ar)"/>
+
+  <text x="30" y="188" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">② 三层判断（顺序不能反）</text>
+  <rect x="30" y="198" width="270" height="96" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="44" y="222" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">第一层 · 判形态</text>
+  <text x="44" y="244" font-family="system-ui, sans-serif" font-size="10" fill="#334155">先排除资源（最短的那块板）</text>
+  <text x="44" y="262" font-family="system-ui, sans-serif" font-size="10" fill="#334155">再判断吞吐是否已过膝点</text>
+  <text x="44" y="280" font-family="system-ui, sans-serif" font-size="10" fill="#334155">最后才谈延迟与成本</text>
+  <rect x="315" y="198" width="270" height="96" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="329" y="222" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">第二层 · 判位置</text>
+  <text x="329" y="244" font-family="system-ui, sans-serif" font-size="10" fill="#334155">先问一句：在跑，还是在等？</text>
+  <text x="329" y="262" font-family="system-ui, sans-serif" font-size="10" fill="#334155">vmstat 的 r 高→在跑；b 高→在等</text>
+  <text x="329" y="280" font-family="system-ui, sans-serif" font-size="10" fill="#334155">再找哪一层先到水位线</text>
+  <rect x="600" y="198" width="270" height="96" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="614" y="222" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">第三层 · 判归属</text>
+  <text x="614" y="244" font-family="system-ui, sans-serif" font-size="10" fill="#334155">瓶颈在你手里 → 优化</text>
+  <text x="614" y="262" font-family="system-ui, sans-serif" font-size="10" fill="#334155">不在（下游 / 共享库）→ 限流降级</text>
+  <text x="614" y="280" font-family="system-ui, sans-serif" font-size="10" fill="#334155">只有膝点区才是该扩容的时候</text>
+
+  <line x1="165" y1="294" x2="165" y2="312" stroke="#334155" stroke-width="1.6" marker-end="url(#pef-ar)"/>
+  <line x1="450" y1="294" x2="450" y2="312" stroke="#334155" stroke-width="1.6" marker-end="url(#pef-ar)"/>
+  <line x1="735" y1="294" x2="735" y2="312" stroke="#334155" stroke-width="1.6" marker-end="url(#pef-ar)"/>
+
+  <text x="30" y="332" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">③ 归宿页面：带着证据去翻，而不是带着感觉</text>
+  <rect x="30" y="342" width="128" height="82" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="40" y="366" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">SLO 与性能需求</text>
+  <text x="40" y="388" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">写成可判定的目标</text>
+  <text x="40" y="404" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">分位 + 阈值 + 窗口</text>
+  <rect x="172" y="342" width="128" height="82" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="182" y="366" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">定量建模</text>
+  <text x="182" y="388" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">先算量级与水位线</text>
+  <text x="182" y="404" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">Little · 排队 · USL</text>
+  <rect x="314" y="342" width="128" height="82" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="324" y="366" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">压测方法论</text>
+  <text x="324" y="388" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">量单点能力与膝点</text>
+  <text x="324" y="404" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">开环 · 恒定到达率</text>
+  <rect x="456" y="342" width="128" height="82" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="466" y="366" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">瓶颈定位</text>
+  <text x="466" y="388" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">找排队发生在哪层</text>
+  <text x="466" y="404" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">USE · 四段拆解</text>
+  <rect x="598" y="342" width="128" height="82" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="608" y="366" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">容量规划与弹性</text>
+  <text x="608" y="388" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">峰值 + 冗余 → 实例数</text>
+  <text x="608" y="404" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">饱和度触发 · 门禁</text>
+  <rect x="740" y="342" width="128" height="82" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="750" y="366" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">常见问题</text>
+  <text x="750" y="388" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">本页：现象 → 归宿</text>
+  <text x="750" y="404" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">分诊 · 自查 · 术语</text>
+
+  <line x1="450" y1="424" x2="450" y2="440" stroke="#334155" stroke-width="1.6" marker-end="url(#pef-ar)"/>
+
+  <rect x="30" y="448" width="840" height="94" rx="10" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="44" y="472" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">判据速记：三张表就是全部判断依据</text>
+  <rect x="46" y="482" width="258" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="60" y="501" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">对外结论口径</text>
+  <text x="60" y="521" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">阈值计数 ≥99%，不用均值</text>
+  <rect x="321" y="482" width="258" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="335" y="501" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">水位线 → 排队放大（M/M/1）</text>
+  <text x="335" y="521" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">50% → 2.00 倍；80% → 5.00 倍</text>
+  <rect x="596" y="482" width="258" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="610" y="501" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">膝点判据（阶梯压测）</text>
+  <text x="610" y="521" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">p99 / p50 比值突然跳档</text>
+</svg>

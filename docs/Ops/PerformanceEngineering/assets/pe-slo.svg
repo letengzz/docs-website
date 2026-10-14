@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="从用户体验到 SLO 的四层推导，以及错误预算与双窗口燃烧率告警">
+  <title>从用户体验到 SLO：三层推导与错误预算</title>
+  <defs>
+    <marker id="pes-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="38" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">从用户体验到 SLO：三层推导与错误预算</text>
+  <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">把「要快」变成一句可以判定真假的话：好事件 / 总事件 / 窗口 / 目标 / 预算策略。</text>
+  <text x="32" y="126" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">① 用户体验</text>
+  <text x="32" y="146" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">起点必须实测</text>
+  <rect x="200" y="96" width="157" height="72" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="214" y="124" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">页面加载</text>
+  <text x="214" y="146" font-family="system-ui, sans-serif" font-size="10" fill="#334155">LCP / TTFB 分位</text>
+  <rect x="371" y="96" width="157" height="72" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="385" y="124" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">API 调用</text>
+  <text x="385" y="146" font-family="system-ui, sans-serif" font-size="10" fill="#334155">端到端耗时分布</text>
+  <rect x="542" y="96" width="157" height="72" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="556" y="124" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">批处理</text>
+  <text x="556" y="146" font-family="system-ui, sans-serif" font-size="10" fill="#334155">窗口内完成率</text>
+  <rect x="713" y="96" width="157" height="72" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="727" y="124" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">内部依赖</text>
+  <text x="727" y="146" font-family="system-ui, sans-serif" font-size="10" fill="#334155">上游视角的成功率</text>
+  <line x1="300" y1="170" x2="300" y2="192" stroke="#334155" stroke-width="1.5" marker-end="url(#pes-ar)"/>
+  <line x1="535" y1="170" x2="535" y2="192" stroke="#334155" stroke-width="1.5" marker-end="url(#pes-ar)"/>
+  <line x1="770" y1="170" x2="770" y2="192" stroke="#334155" stroke-width="1.5" marker-end="url(#pes-ar)"/>
+  <text x="32" y="226" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">② SLI 三要素</text>
+  <text x="32" y="246" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">分母错了全盘皆错</text>
+  <rect x="200" y="196" width="214" height="72" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="214" y="224" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">好事件 good events</text>
+  <text x="214" y="246" font-family="system-ui, sans-serif" font-size="10" fill="#334155">状态码正常且耗时达标</text>
+  <rect x="428" y="196" width="214" height="72" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="442" y="224" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">总事件 valid events</text>
+  <text x="442" y="246" font-family="system-ui, sans-serif" font-size="10" fill="#334155">全部有效请求，非成功请求</text>
+  <rect x="656" y="196" width="214" height="72" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="670" y="224" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">统计窗口 window</text>
+  <text x="670" y="246" font-family="system-ui, sans-serif" font-size="10" fill="#334155">滚动 28 天或滚动 30 天</text>
+  <line x1="300" y1="270" x2="300" y2="292" stroke="#334155" stroke-width="1.5" marker-end="url(#pes-ar)"/>
+  <line x1="535" y1="270" x2="535" y2="292" stroke="#334155" stroke-width="1.5" marker-end="url(#pes-ar)"/>
+  <line x1="770" y1="270" x2="770" y2="292" stroke="#334155" stroke-width="1.5" marker-end="url(#pes-ar)"/>
+  <text x="32" y="326" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">③ SLO 判定</text>
+  <text x="32" y="346" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">一句可判真假的话</text>
+  <rect x="200" y="296" width="670" height="76" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="216" y="324" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">SLO = 目标 + 窗口 + 预算策略</text>
+  <text x="216" y="348" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">示例：滚动 30 天内，HTTP 请求中「非 5xx 且服务端耗时不超过 300 ms」的比例不低于 99%。</text>
+  <text x="216" y="364" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#3730a3">阈值计数可加、可聚合、可直接换算成错误预算，比分位数更适合当 SLO。</text>
+  <line x1="300" y1="374" x2="300" y2="396" stroke="#334155" stroke-width="1.5" marker-end="url(#pes-ar)"/>
+  <line x1="535" y1="374" x2="535" y2="396" stroke="#334155" stroke-width="1.5" marker-end="url(#pes-ar)"/>
+  <line x1="770" y1="374" x2="770" y2="396" stroke="#334155" stroke-width="1.5" marker-end="url(#pes-ar)"/>
+  <text x="32" y="454" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b45309">④ 错误预算</text>
+  <text x="32" y="474" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">与燃烧率告警</text>
+  <rect x="200" y="400" width="670" height="27" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="212" y="418" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#b91c1c">快速燃烧</text>
+  <text x="300" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#334155">14.4x / 1 小时窗口</text>
+  <text x="450" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#334155">消耗 2% 预算</text>
+  <text x="590" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#334155">立即告警，人工响应</text>
+  <rect x="200" y="430" width="670" height="27" rx="6" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="212" y="448" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#b45309">慢速燃烧</text>
+  <text x="300" y="448" font-family="system-ui, sans-serif" font-size="10" fill="#334155">6x / 6 小时窗口</text>
+  <text x="450" y="448" font-family="system-ui, sans-serif" font-size="10" fill="#334155">消耗 5% 预算</text>
+  <text x="590" y="448" font-family="system-ui, sans-serif" font-size="10" fill="#334155">当天建单排查</text>
+  <rect x="200" y="460" width="670" height="27" rx="6" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="212" y="478" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#3730a3">单窗口</text>
+  <text x="300" y="478" font-family="system-ui, sans-serif" font-size="10" fill="#334155">1x / 72 小时窗口</text>
+  <text x="450" y="478" font-family="system-ui, sans-serif" font-size="10" fill="#334155">消耗 10% 预算</text>
+  <text x="590" y="478" font-family="system-ui, sans-serif" font-size="10" fill="#334155">纳入迭代，不打断发布</text>
+  <rect x="200" y="490" width="670" height="27" rx="6" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="212" y="508" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f766e">多窗口</text>
+  <text x="300" y="508" font-family="system-ui, sans-serif" font-size="10" fill="#334155">长窗 + 短窗同时命中</text>
+  <text x="450" y="508" font-family="system-ui, sans-serif" font-size="10" fill="#334155">抑制抖动</text>
+  <text x="590" y="508" font-family="system-ui, sans-serif" font-size="10" fill="#334155">只在两者同时命中时升级</text>
+  <text x="30" y="540" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">30 天窗口、99% 目标 → 允许不可用 7.2 小时（432 分钟）；分母写错比分子写错更危险。</text>
+</svg>

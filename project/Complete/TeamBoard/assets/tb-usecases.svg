@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="在线协作任务看板的角色与用例泳道图：三条泳道对应 owner、editor、viewer 三个角色，三列对应工作区与成员、看板与卡片、协作与实时三组用例">
+  <title>在线协作任务看板 · 三类角色与主要用例</title>
+  <defs>
+    <marker id="tbuc-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">在线协作任务看板 · 三类角色与主要用例</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">三条泳道 = 三个角色（角色属于 memberships，不是用户属性）；三列 = 三组用例；箭头指向该角色的主要用例。</text>
+
+  <text x="194" y="98" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">工作区 · 成员 · 权限</text>
+  <text x="414" y="98" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">看板 · 列 · 卡片</text>
+  <text x="634" y="98" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#92400e">协作 · 实时 · 检索</text>
+  <line x1="30" y1="106" x2="870" y2="106" stroke="#e2e8f0" stroke-width="1"/>
+
+  <rect x="30" y="112" width="108" height="100" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="84" y="152" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">owner</text>
+  <text x="84" y="172" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155" text-anchor="middle">工作区所有者</text>
+  <line x1="140" y1="162" x2="176" y2="162" stroke="#334155" stroke-width="1.6" marker-end="url(#tbuc-ar)"/>
+
+  <rect x="180" y="112" width="205" height="100" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="194" y="138" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">建工作区 · 邀请成员</text>
+  <text x="194" y="160" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">改角色 · 移除成员</text>
+  <text x="194" y="178" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">专属能力：成员与角色</text>
+  <text x="194" y="196" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">US-01 · US-09 · US-10</text>
+
+  <rect x="400" y="112" width="205" height="100" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="414" y="138" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">建看板 · 建列 · 建卡 · 拖动</text>
+  <text x="414" y="160" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">与 editor 能力完全重合</text>
+  <text x="414" y="178" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">写操作留一条 audit_log</text>
+  <text x="414" y="196" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">US-02 · US-03</text>
+
+  <rect x="620" y="112" width="250" height="100" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="634" y="138" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">评论 / @ / 附件 / 搜索 / 实时</text>
+  <text x="634" y="160" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">三类通知：评论、提及、被指派</text>
+  <text x="634" y="178" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">事务内写 outbox，异步投递去重</text>
+  <text x="634" y="196" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">US-04 ~ US-08</text>
+
+  <rect x="30" y="224" width="108" height="100" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="84" y="264" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle">editor</text>
+  <text x="84" y="284" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155" text-anchor="middle">工作区成员</text>
+  <line x1="140" y1="274" x2="176" y2="274" stroke="#334155" stroke-width="1.6" marker-end="url(#tbuc-ar)"/>
+
+  <rect x="180" y="224" width="205" height="100" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="194" y="250" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">查看成员 · 留在工作区</text>
+  <text x="194" y="272" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">不能改角色</text>
+  <text x="194" y="290" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">不能删工作区</text>
+
+  <rect x="400" y="224" width="205" height="100" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="414" y="250" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">建卡 · 拖动 · 指派 · 设到期</text>
+  <text x="414" y="272" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">拖动并发安全：只更新一行</text>
+  <text x="414" y="290" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">乐观锁冲突返回 409 带现状</text>
+  <text x="414" y="308" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">US-03 · US-05</text>
+
+  <rect x="620" y="224" width="250" height="100" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="634" y="250" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">评论与 @ · 附件上下载 · 搜索</text>
+  <text x="634" y="272" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">实时同步是它的日常</text>
+  <text x="634" y="290" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">附件直传对象存储，不经业务进程</text>
+  <text x="634" y="308" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">US-04 · US-06 ~ US-08</text>
+
+  <rect x="30" y="336" width="108" height="100" rx="9" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="84" y="376" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#334155" text-anchor="middle">viewer</text>
+  <text x="84" y="396" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155" text-anchor="middle">只读访客</text>
+  <line x1="140" y1="386" x2="176" y2="386" stroke="#334155" stroke-width="1.6" marker-end="url(#tbuc-ar)"/>
+
+  <rect x="180" y="336" width="205" height="100" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="194" y="362" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">只读成员列表</text>
+  <text x="194" y="384" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">邀请时只能选 editor / viewer</text>
+  <text x="194" y="402" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">外部分享访客只有这一种形态</text>
+
+  <rect x="400" y="336" width="205" height="100" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="414" y="362" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">只看，写按钮都点不动</text>
+  <text x="414" y="384" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">写入一律 403，且不落库</text>
+  <text x="414" y="402" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">跨工作区一律 404</text>
+  <text x="414" y="420" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">US-11</text>
+
+  <rect x="620" y="336" width="250" height="100" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="634" y="362" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">读评论 · 读附件 · 搜索 · 实时</text>
+  <text x="634" y="384" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">读的范围与 editor 一样多</text>
+  <text x="634" y="402" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">附件下载每次重新判权限</text>
+  <text x="634" y="420" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">US-07 · US-08 · US-11</text>
+
+  <rect x="30" y="448" width="840" height="98" rx="10" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="44" y="472" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">怎么读这张图：四条边界</text>
+  <text x="44" y="492" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">① 角色属于 memberships（用户与工作区的关系）：同一个账号在不同工作区可以是不同角色。</text>
+  <text x="44" y="510" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">② 写动作只有 owner 与 editor 能做；viewer 的读范围与 editor 完全一样（含附件下载）。</text>
+  <text x="44" y="528" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">③ 外部分享访客只有一种形态：邀请成 viewer 走 memberships——不存在凭链接即可读的暗门。</text>
+  <text x="44" y="546" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">④ 权限判定只在服务端三处发生（HTTP / WebSocket 订阅 / 附件签名），客户端的判断都不算。</text>
+</svg>

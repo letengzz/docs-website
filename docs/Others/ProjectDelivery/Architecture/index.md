@@ -171,3 +171,15 @@ mvn -q dependency:tree -Dincludes=com.example.domain | grep -q "infrastructure" 
 - [C4 Model：上下文图 / 容器图 / 组件图](https://c4model.com/)
 - [Martin Fowler：架构决策记录](https://martinfowler.com/bliki/ArchitectureDecisionRecord.html)
 - [十二要素应用（12-Factor App）](https://12factor.net/zh_cn/)
+
+## 与项目实战的分工
+
+本页讲**架构文档该产出什么**：可逆 / 不可逆决策怎么分、ADR 的四段式、边界怎么切、选型评分表、最小文档集合（三张图 + ADR 目录）。新周期项目的 [架构设计](/project/Complete/TeamBoard/Architecture/index.md) 与 [数据模型](/project/Complete/TeamBoard/Database/index.md) 是这套产出的**实例**——前者把模块边界与关键时序画成了具体的图，后者把建模结论落成了可执行的 DDL。
+
+| 本页讲什么 | 对方讲什么 | 遇到什么问题时该去哪边 |
+| --- | --- | --- |
+| 架构文档要包含哪几样、ADR 怎么写、选型怎么打分 | 实例：TeamBoard 的模块图、依赖方向与关键时序 | 「这份架构文档少了什么」→ 本页 |
+| 通用原则：不可逆决策先论证、边界单向依赖 | 实例：该项目每个边界决策背后的取舍与重新评估条件 | 「这条边界为什么这么切」→ [TeamBoard 架构](/project/Complete/TeamBoard/Architecture/index.md) |
+| 只给方法与模板，不含具体技术栈结论 | 只给该项目的具体选型，不重复讲方法 | 学方法回本页，看实例去项目页 |
+
+一句话：**本页是「怎么写」，项目页是「写成什么样」**。写完自己的架构文档后，拿 [TeamBoard 架构](/project/Complete/TeamBoard/Architecture/index.md) 与 [TeamBoard 数据模型](/project/Complete/TeamBoard/Database/index.md) 对照一遍，检查是否漏了「不选什么」与「重新评估条件」。

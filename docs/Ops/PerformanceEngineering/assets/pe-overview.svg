@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="性能与容量工程的四条边界、四种问题形态与关键量化锚点">
+  <title>性能与容量工程：四条边界与四种问题形态</title>
+  <defs>
+    <marker id="peo-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">性能与容量工程：四条边界与四种问题形态</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">「快」不是一个数，而是一组可判定的关系；容量不是一个数字，而是一条曲线。</text>
+  <rect x="30" y="84" width="195" height="132" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="110" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">边界一</text>
+  <text x="44" y="133" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">性能 ≠ 容量</text>
+  <text x="44" y="158" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">快慢是「单次体验」，</text>
+  <text x="44" y="175" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">容量是「够不够用」。</text>
+  <text x="44" y="196" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#3730a3">一个讲延迟，一个讲数量</text>
+  <rect x="245" y="84" width="195" height="132" rx="10" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="259" y="110" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">边界二</text>
+  <text x="259" y="133" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">平均 ≠ 分位</text>
+  <text x="259" y="158" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">均值会把 1% 的糟糕体验</text>
+  <text x="259" y="175" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">平均掉，面板依然全绿。</text>
+  <text x="259" y="196" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#0f766e">对外口径只认分位数</text>
+  <rect x="460" y="84" width="195" height="132" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="474" y="110" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">边界三</text>
+  <text x="474" y="133" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">压测 ≠ 容量</text>
+  <text x="474" y="158" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">压出来的是单点能力：</text>
+  <text x="474" y="175" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">一个实例能扛多少。</text>
+  <text x="474" y="196" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#3730a3">能力要再乘以水位线</text>
+  <rect x="675" y="84" width="195" height="132" rx="10" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="689" y="110" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">边界四</text>
+  <text x="689" y="133" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">优化 ≠ 扩容</text>
+  <text x="689" y="158" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">先问瓶颈在不在你手里；</text>
+  <text x="689" y="175" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">不在手里，只是挪个队。</text>
+  <text x="689" y="196" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#0f766e">排队地点必须重新画</text>
+  <line x1="127" y1="218" x2="127" y2="242" stroke="#334155" stroke-width="1.6" marker-end="url(#peo-ar)"/>
+  <line x1="342" y1="218" x2="342" y2="242" stroke="#334155" stroke-width="1.6" marker-end="url(#peo-ar)"/>
+  <line x1="557" y1="218" x2="557" y2="242" stroke="#334155" stroke-width="1.6" marker-end="url(#peo-ar)"/>
+  <line x1="772" y1="218" x2="772" y2="242" stroke="#334155" stroke-width="1.6" marker-end="url(#peo-ar)"/>
+  <rect x="30" y="248" width="840" height="88" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="44" y="272" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">四种问题形态：边界画错，最终都会以这四种形态之一暴露出来</text>
+  <text x="44" y="298" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">延迟</text>
+  <text x="44" y="316" font-family="system-ui, sans-serif" font-size="10" fill="#334155">p99 抖动、超时不报错</text>
+  <text x="246" y="298" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">吞吐</text>
+  <text x="246" y="316" font-family="system-ui, sans-serif" font-size="10" fill="#334155">一过某个点收益率骤降</text>
+  <text x="448" y="298" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">资源</text>
+  <text x="448" y="316" font-family="system-ui, sans-serif" font-size="10" fill="#334155">某一层先到水位线</text>
+  <text x="650" y="298" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">成本</text>
+  <text x="650" y="316" font-family="system-ui, sans-serif" font-size="10" fill="#334155">单位请求成本不降反升</text>
+  <line x1="450" y1="338" x2="450" y2="356" stroke="#334155" stroke-width="1.6" marker-end="url(#peo-ar)"/>
+  <rect x="30" y="360" width="840" height="176" rx="10" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="44" y="384" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">四条边界的量化锚点（2026-10 口径，本机实测）</text>
+  <rect x="46" y="396" width="258" height="58" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="60" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">Little 定律 L = λ · W</text>
+  <text x="60" y="440" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">200 QPS x 80 ms = 16 并发</text>
+  <rect x="321" y="396" width="258" height="58" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="335" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">水位线换算</text>
+  <text x="335" y="440" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">120 QPS x 50% = 60 QPS</text>
+  <rect x="596" y="396" width="258" height="58" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="610" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">峰均比放大</text>
+  <text x="610" y="440" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">34.72 QPS x 5 = 173.61 QPS</text>
+  <rect x="46" y="462" width="258" height="58" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="60" y="484" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">排队放大 M/M/1</text>
+  <text x="60" y="506" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3">ρ = 0.90 时放大 10.00 倍</text>
+  <rect x="321" y="462" width="258" height="58" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="335" y="484" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">USL 峰值点</text>
+  <text x="335" y="506" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3">α=0.05 β=0.001 时 N* = 30.82</text>
+  <rect x="596" y="462" width="258" height="58" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="610" y="484" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">Amdahl 上限</text>
+  <text x="610" y="506" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3">p=0.8、s 无限大时 5.000 倍</text>
+</svg>

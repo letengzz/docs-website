@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="在线协作任务看板的本地最小可跑集与启动顺序：依赖到迁移到服务到前端四步，每步配一条可执行的验证点">
+  <title>在线协作任务看板 · 本地最小可跑集与启动顺序</title>
+  <defs>
+    <marker id="tbb-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">在线协作任务看板 · 本地最小可跑集与启动顺序</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">四步顺序不可换：每一步失败都不要往下走——后面三步的现象会因为前面没起来而失真。</text>
+
+  <text x="30" y="96" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">启动顺序（依赖 → 迁移 → 服务 → 前端）</text>
+
+  <rect x="30" y="108" width="195" height="118" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="132" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">① 起依赖</text>
+  <text x="44" y="154" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155">compose up -d db cache object</text>
+  <text x="44" y="176" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">三个长驻服务 + 一个一次性 object-init</text>
+  <text x="44" y="196" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">db 带 pg_isready 健康检查</text>
+
+  <line x1="227" y1="167" x2="243" y2="167" stroke="#334155" stroke-width="1.6" marker-end="url(#tbb-ar)"/>
+
+  <rect x="245" y="108" width="195" height="118" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="259" y="132" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">② 迁移</text>
+  <text x="259" y="154" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155">migrations/V1 ~ V4</text>
+  <text x="259" y="176" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">14 张表 + audit_log 按月分区</text>
+  <text x="259" y="196" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">由 db 的首次初始化执行</text>
+
+  <line x1="442" y1="167" x2="458" y2="167" stroke="#334155" stroke-width="1.6" marker-end="url(#tbb-ar)"/>
+
+  <rect x="460" y="108" width="195" height="118" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="474" y="132" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">③ 起服务</text>
+  <text x="474" y="154" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155">app: 0.0.0.0:8080</text>
+  <text x="474" y="176" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">/actuator/health 与拖动、建工作区接口</text>
+  <text x="474" y="196" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">连服务名 db / cache / object，不是 localhost</text>
+
+  <line x1="657" y1="167" x2="673" y2="167" stroke="#334155" stroke-width="1.6" marker-end="url(#tbb-ar)"/>
+
+  <rect x="675" y="108" width="195" height="118" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="689" y="132" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">④ 起前端</text>
+  <text x="689" y="154" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155">pnpm dev → :5173</text>
+  <text x="689" y="176" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">dev 代理 /api 指向 8080</text>
+  <text x="689" y="196" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">没配代理的典型现象是接口 404</text>
+
+  <text x="30" y="252" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">四条验证点（每条对应上面一步，命令可照跑）</text>
+
+  <rect x="30" y="264" width="195" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="44" y="288" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">V1 依赖真的在跑</text>
+  <text x="44" y="310" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155">docker compose ps</text>
+  <text x="44" y="328" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">三个 running / healthy</text>
+  <text x="44" y="346" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">object-init 是 exited (0)</text>
+
+  <rect x="245" y="264" width="195" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="259" y="288" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">V2 表结构建出来了</text>
+  <text x="259" y="310" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155">psql -c "\dt"</text>
+  <text x="259" y="328" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">期望 14 张业务表</text>
+  <text x="259" y="346" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">外加 audit_log 的分区子表</text>
+
+  <rect x="460" y="264" width="195" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="474" y="288" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">V3 健康检查</text>
+  <text x="474" y="310" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155">curl :8080/actuator/health</text>
+  <text x="474" y="328" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">期望 {"status":"UP"}</text>
+  <text x="474" y="346" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">只返回 UP 不等于连得上库</text>
+
+  <rect x="675" y="264" width="195" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="689" y="288" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">V4 页面与链路通</text>
+  <text x="689" y="310" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155">open :5173</text>
+  <text x="689" y="328" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">列表页可访问、控制台无报错</text>
+  <text x="689" y="346" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">建一个工作区并看到它</text>
+
+  <rect x="30" y="384" width="840" height="118" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="44" y="408" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#92400e">「最小」的意义与口径</text>
+  <text x="44" y="430" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">「最小」不是先粗糙一点，而是把「能不能验证」与「功能是否完整」解耦：最小集的判据只有一条——四条验证能不能跑。</text>
+  <text x="44" y="450" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">不在最小集里：完整拖拽交互、搜索结果页、通知投递循环、审计查询界面——它们晚一天不影响今天解锁。</text>
+  <text x="44" y="470" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">服务名：db / cache / object / object-init / app。端口：app 8080、PostgreSQL 5432、Redis 6379、对象存储 9000 与 9001、前端 dev 5173。</text>
+  <text x="44" y="490" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">数据库名与用户都是 teamboard；三层划分：结构进仓库、值进环境变量、密钥进密钥管理。</text>
+</svg>

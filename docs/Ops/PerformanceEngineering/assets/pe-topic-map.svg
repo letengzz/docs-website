@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="性能与容量工程专题地图：入口按诉求选，六个内容页互补，出口是容量结论与门禁">
+  <title>性能与容量工程 · 专题地图</title>
+  <defs>
+    <marker id="pet-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">性能与容量工程 · 专题地图</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">入口按诉求选，六个内容页互补而非替代，出口是一条会变红的流水线。</text>
+
+  <text x="30" y="98" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">入口（按诉求选）</text>
+  <rect x="30" y="112" width="170" height="72" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="140" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">要定指标</text>
+  <text x="44" y="162" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">把它写成可判定的话</text>
+  <rect x="30" y="194" width="170" height="72" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="44" y="222" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">要算容量</text>
+  <text x="44" y="244" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">先用算术算出量级</text>
+  <rect x="30" y="276" width="170" height="72" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="304" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">要量真值</text>
+  <text x="44" y="326" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">开环量出单点能力</text>
+
+  <line x1="204" y1="248" x2="226" y2="248" stroke="#334155" stroke-width="1.6" marker-end="url(#pet-ar)"/>
+
+  <text x="230" y="98" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">六个内容页（互补，缺一即有盲区）</text>
+  <rect x="230" y="112" width="195" height="72" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="244" y="137" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">SLO 与性能需求</text>
+  <text x="244" y="158" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">把「要快」写成</text>
+  <text x="244" y="174" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">可判定的目标</text>
+  <rect x="440" y="112" width="195" height="72" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="454" y="137" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">定量建模</text>
+  <text x="454" y="158" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">Little · 排队 · USL</text>
+  <text x="454" y="174" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">先算量级再压测</text>
+  <rect x="230" y="194" width="195" height="72" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="244" y="219" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">压测方法论</text>
+  <text x="244" y="240" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">开环量单点能力</text>
+  <text x="244" y="256" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">与膝点位置</text>
+  <rect x="440" y="194" width="195" height="72" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="454" y="219" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">瓶颈定位</text>
+  <text x="454" y="240" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">USE + 四段拆解</text>
+  <text x="454" y="256" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">找排队在哪一层</text>
+  <rect x="230" y="276" width="195" height="72" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="244" y="301" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">容量规划与弹性</text>
+  <text x="244" y="322" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">峰值 × 水位线</text>
+  <text x="244" y="338" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">→ 实例数与触发</text>
+  <rect x="440" y="276" width="195" height="72" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="454" y="301" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">常见问题</text>
+  <text x="454" y="322" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">现象 → 三层判断</text>
+  <text x="454" y="338" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">→ 归宿页面</text>
+
+  <line x1="639" y1="230" x2="661" y2="230" stroke="#334155" stroke-width="1.6" marker-end="url(#pet-ar)"/>
+
+  <rect x="665" y="112" width="205" height="236" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="679" y="140" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#92400e">出口 · 容量结论与门禁</text>
+  <text x="679" y="166" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">峰值 × 水位线 → 实例数</text>
+  <text x="679" y="184" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">乘冗余 → 一条容量曲线</text>
+  <line x1="679" y1="198" x2="856" y2="198" stroke="#f59e0b" opacity="0.5"/>
+  <text x="679" y="218" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">三条触发：饱和度 / 队列 / 延迟</text>
+  <text x="679" y="236" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">扩容用饱和度，延迟只告警</text>
+  <line x1="679" y1="250" x2="856" y2="250" stroke="#f59e0b" opacity="0.5"/>
+  <text x="679" y="270" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">阈值写进脚本，退出码判定</text>
+  <text x="679" y="288" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">故意引入退化 → 流水线变红</text>
+  <text x="679" y="322" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#92400e">产物：一条会变红的流水线</text>
+
+  <rect x="30" y="376" width="840" height="124" rx="10" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="44" y="402" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">怎么读这张图：三条主干路径</text>
+  <rect x="46" y="414" width="258" height="68" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="60" y="438" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">要定指标（把「要快」变成判据）</text>
+  <text x="60" y="462" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">SLO 与性能需求 → 挂一条门禁</text>
+  <rect x="321" y="414" width="258" height="68" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="335" y="438" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">要算容量（把能力换成实例数）</text>
+  <text x="335" y="462" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">定量建模 → 压测 → 容量规划</text>
+  <rect x="596" y="414" width="258" height="68" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="610" y="438" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">要定位问题（现象不明时）</text>
+  <text x="610" y="462" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">瓶颈定位 → 常见问题分诊表</text>
+</svg>

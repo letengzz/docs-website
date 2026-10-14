@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="在线协作任务看板的分层技术栈：客户端、接入层、领域模块、支撑设施四层单向依赖，右侧是三条被否掉的方案与它们的代价">
+  <title>在线协作任务看板 · 分层技术栈与三条被否掉的方案</title>
+  <defs>
+    <marker id="tbts-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">在线协作任务看板 · 分层技术栈</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">四层单向依赖：每一层只允许依赖它下面那一层；右侧三条是同一批选型里被否掉的方案与它们的代价。</text>
+
+  <text x="44" y="90" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">依赖方向只能向下（反向依赖一律视为缺陷）</text>
+  <text x="634" y="90" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#92400e">被否掉的方案与它们的代价</text>
+
+  <rect x="30" y="98" width="570" height="76" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="124" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">客户端 · Vue 3.5.43 + Vite + TypeScript + Pinia</text>
+  <text x="44" y="146" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">拖拽用成熟库，不自研手势 · 乐观更新队列 · WebSocket 客户端 · 本地状态</text>
+  <text x="44" y="164" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">纪律：客户端的任何判断都不是权限判断，任何排序都不是最终顺序</text>
+
+  <line x1="90" y1="176" x2="90" y2="186" stroke="#334155" stroke-width="1.6" marker-end="url(#tbts-ar)"/>
+
+  <rect x="30" y="190" width="570" height="76" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="44" y="216" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">接入层 · Spring Boot 4.1.1（底层 Spring Framework 7.0.x）</text>
+  <text x="44" y="238" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">HTTP 路由与鉴权 · WebSocket 握手与订阅鉴权 · 限流 · 请求日志 · 幂等键</text>
+  <text x="44" y="256" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">纪律：所有身份与租户的判定都发生在这里或它下面，且只发生一次</text>
+
+  <line x1="90" y1="268" x2="90" y2="278" stroke="#334155" stroke-width="1.6" marker-end="url(#tbts-ar)"/>
+
+  <rect x="30" y="282" width="570" height="76" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="44" y="308" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">领域模块 · 九个模块，不直接读对方的表</text>
+  <text x="44" y="330" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">identity · workspace · board · card · comment · notification · attachment · search · audit</text>
+  <text x="44" y="348" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">纪律：只通过服务接口或事件通信；模块划分的判据是「改它时谁必须一起来评审」</text>
+
+  <line x1="90" y1="360" x2="90" y2="370" stroke="#334155" stroke-width="1.6" marker-end="url(#tbts-ar)"/>
+
+  <rect x="30" y="374" width="570" height="76" rx="9" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="44" y="400" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#334155">支撑设施 · PostgreSQL 18.6 · Redis 8.10 系 · S3 兼容对象存储</text>
+  <text x="44" y="422" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">关系 + 并发控制 + 全文搜索同库（tsvector + GIN）· 发布订阅做多实例广播 · 附件直传</text>
+  <text x="44" y="440" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">纪律：设施不承载业务规则；换掉 Redis 不应该需要改业务代码</text>
+
+  <rect x="620" y="98" width="250" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="634" y="126" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#92400e">① SSE / 轮询 而不是 WebSocket</text>
+  <text x="634" y="150" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">SSE 只有单向：订阅与 since 补拉</text>
+  <text x="634" y="168" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">要另开一条 HTTP 通道去补</text>
+  <text x="634" y="186" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">轮询做不到 ≤ 1 s，请求量随看板数涨</text>
+
+  <rect x="620" y="216" width="250" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="634" y="244" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#92400e">② Kafka / 消息队列 而不是 Redis</text>
+  <text x="634" y="268" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">30 天周期内不引入 Kafka：多运维</text>
+  <text x="634" y="286" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">一个有状态集群，且价值不产生</text>
+  <text x="634" y="304" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">需重放 / 需交叉投递时就必须换</text>
+
+  <rect x="620" y="334" width="250" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="634" y="362" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#92400e">③ Elasticsearch 而不是 PostgreSQL</text>
+  <text x="634" y="386" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">权限前置是正确性问题：可见工作区</text>
+  <text x="634" y="404" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">来自 memberships，就在同一个库里</text>
+  <text x="634" y="422" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">换引擎只改 search 模块实现，契约不变</text>
+
+  <rect x="30" y="464" width="840" height="42" rx="9" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="44" y="482" font-family="system-ui, sans-serif" font-size="10.5" fill="#92400e">运行时基线：Java 25（LTS）· Spring Boot 4.1.1 · PostgreSQL 18.6 · Vue 3.5.43 · Node.js 24 LTS · pnpm 12.x · Redis 8.10 系</text>
+  <text x="44" y="499" font-family="system-ui, sans-serif" font-size="10.5" fill="#92400e">部署：Docker Compose v2 一键起（service：db / cache / object / app）　·　版本组织：本项目不建版本目录</text>
+</svg>

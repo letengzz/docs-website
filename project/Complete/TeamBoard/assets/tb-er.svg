@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="在线协作任务看板：14 张表按账号与租户、看板与卡片、协作与治理三组划分及主要外键关系">
+  <title>在线协作任务看板 · 14 张表与三组关系</title>
+  <defs>
+    <marker id="tbe-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">在线协作任务看板 · 14 张表与三组关系</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">读法：先看每张表的键与约束（粗体），再看三组之间的箭头——箭头只画必须成立的外键。</text>
+
+  <rect x="20" y="88" width="220" height="416" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="340" y="88" width="220" height="416" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="660" y="88" width="220" height="416" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="30" y="110" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">账号与租户（5 张）</text>
+  <text x="350" y="110" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">看板与卡片（4 张）</text>
+  <text x="670" y="110" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#9a3412">协作与治理（5 张）</text>
+
+  <rect x="30" y="122" width="200" height="54" rx="7" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="42" y="142" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">users</text>
+  <text x="42" y="158" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">id uuidv7 · email citext 唯一</text>
+  <text x="42" y="170" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">display_name 1~40 · disabled_at</text>
+  <rect x="30" y="186" width="200" height="54" rx="7" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="42" y="206" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">user_tokens</text>
+  <text x="42" y="222" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">family_id 分族 · token_hash 唯一</text>
+  <text x="42" y="234" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">replaced_by 串链 · 只存散列</text>
+  <rect x="30" y="250" width="200" height="54" rx="7" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="42" y="270" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">workspaces</text>
+  <text x="42" y="286" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">租户根对象 · name 1~60</text>
+  <text x="42" y="298" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">created_by 指向 users</text>
+  <rect x="30" y="314" width="200" height="54" rx="7" fill="#fef3c7" stroke="#fbbf24"/>
+  <text x="42" y="334" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">memberships（权限唯一数据源）</text>
+  <text x="42" y="350" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">PK(workspace_id, user_id)</text>
+  <text x="42" y="362" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">role ∈ owner/editor/viewer</text>
+  <rect x="30" y="378" width="200" height="54" rx="7" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="42" y="398" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">invitations</text>
+  <text x="42" y="414" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">不含 owner 角色 · token_hash 唯一</text>
+  <text x="42" y="426" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">UNIQUE(workspace_id, email)</text>
+
+  <rect x="350" y="122" width="200" height="54" rx="7" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="362" y="142" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">boards</text>
+  <text x="362" y="158" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">workspace_id 收窄 · seq 单调递增</text>
+  <text x="362" y="170" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">archived_at 软删</text>
+  <rect x="350" y="186" width="200" height="54" rx="7" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="362" y="206" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">board_lists</text>
+  <text x="362" y="222" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">position text COLLATE "C"</text>
+  <text x="362" y="234" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">UNIQUE(board_id, position)</text>
+  <rect x="350" y="250" width="200" height="54" rx="7" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="362" y="270" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">cards</text>
+  <text x="362" y="286" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">list_id · position · version 乐观锁</text>
+  <text x="362" y="298" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">search_doc tsvector + GIN</text>
+  <rect x="350" y="314" width="200" height="54" rx="7" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="362" y="334" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">board_events</text>
+  <text x="362" y="350" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">PK(board_id, seq) · type · payload</text>
+  <text x="362" y="362" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">增量补拉唯一依据 · 可裁剪</text>
+  <text x="362" y="418" font-family="system-ui, sans-serif" font-size="9" fill="#334155">三组之间的三条硬关系：</text>
+  <text x="362" y="436" font-family="system-ui, sans-serif" font-size="9" fill="#334155">workspaces → boards（收窄租户）</text>
+  <text x="362" y="454" font-family="system-ui, sans-serif" font-size="9" fill="#334155">cards → comments / attachments</text>
+  <text x="362" y="472" font-family="system-ui, sans-serif" font-size="9" fill="#334155">users → notifications_outbox</text>
+
+  <rect x="670" y="122" width="200" height="54" rx="7" fill="#ffedd5" stroke="#fdba74"/>
+  <text x="682" y="142" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">comments</text>
+  <text x="682" y="158" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">card_id · author_id · mentions uuid[]</text>
+  <text x="682" y="170" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">索引 (card_id, created_at)</text>
+  <rect x="670" y="186" width="200" height="54" rx="7" fill="#ffedd5" stroke="#fdba74"/>
+  <text x="682" y="206" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">notifications_outbox</text>
+  <text x="682" y="222" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">dedup_key 唯一 · recipient_id</text>
+  <text x="682" y="234" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">事务内写入 · 异步投递 · 至少一次</text>
+  <rect x="670" y="250" width="200" height="54" rx="7" fill="#ffedd5" stroke="#fdba74"/>
+  <text x="682" y="270" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">attachments</text>
+  <text x="682" y="286" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">object_key 唯一 · checksum 回读校验</text>
+  <text x="682" y="298" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">≤ 25 MiB · 权限靠签名不靠键</text>
+  <rect x="670" y="314" width="200" height="54" rx="7" fill="#ffedd5" stroke="#fdba74"/>
+  <text x="682" y="334" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">audit_log</text>
+  <text x="682" y="350" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">按月 RANGE 分区 · 只追加</text>
+  <text x="682" y="362" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">action · target · diff jsonb</text>
+  <rect x="670" y="378" width="200" height="54" rx="7" fill="#ffedd5" stroke="#fdba74"/>
+  <text x="682" y="398" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">idempotency_keys</text>
+  <text x="682" y="414" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">PK(scope, client_op_id)</text>
+  <text x="682" y="426" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">只留 24~48 小时，定期清理</text>
+
+  <line x1="230" y1="277" x2="344" y2="146" stroke="#475569" stroke-width="1.5" marker-end="url(#tbe-ar)"/>
+  <text x="238" y="222" font-family="system-ui, sans-serif" font-size="8.5" fill="#475569">workspace_id</text>
+  <line x1="550" y1="272" x2="664" y2="146" stroke="#475569" stroke-width="1.5" marker-end="url(#tbe-ar)"/>
+  <text x="556" y="216" font-family="system-ui, sans-serif" font-size="8.5" fill="#475569">card_id</text>
+  <line x1="550" y1="286" x2="664" y2="274" stroke="#475569" stroke-width="1.5" marker-end="url(#tbe-ar)"/>
+  <text x="556" y="300" font-family="system-ui, sans-serif" font-size="8.5" fill="#475569">card_id</text>
+  <line x1="550" y1="380" x2="664" y2="208" stroke="#475569" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#tbe-ar)"/>
+  <text x="576" y="380" font-family="system-ui, sans-serif" font-size="8.5" fill="#475569">recipient_id</text>
+
+  <rect x="20" y="520" width="860" height="72" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="34" y="542" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">六条不变量（验收要逐条测）</text>
+  <text x="34" y="562" font-family="system-ui, sans-serif" font-size="9" fill="#334155">INV-1 卡片与列同看板 · INV-2 同列内位置唯一 · INV-3 board.seq = max(board_events.seq)</text>
+  <text x="34" y="580" font-family="system-ui, sans-serif" font-size="9" fill="#334155">INV-4 每次写都有审计 · INV-5 任何查询都带 workspace_id · INV-6 version 严格单调递增</text>
+</svg>

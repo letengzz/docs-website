@@ -199,3 +199,15 @@ git log --name-only -1 | grep -E "db/migrations|src/main" | wc -l   # 应 ≥ 2
 - [Liquibase：迁移与回滚](https://docs.liquibase.com/)
 - [Use The Index, Luke：索引与 SQL 性能](https://use-the-index-luke.com/)
 - [Evolutionary Database Design（Fowler & Sadalage）](https://martinfowler.com/articles/evodb.html)
+
+## 与项目实战的分工
+
+本页讲**数据建模与迁移的方法论**：从验收条件反推实体、命名与类型规范、主键策略、索引怎么建、迁移六步法与回滚方案。新周期项目的 [数据模型](/project/Complete/TeamBoard/Database/index.md) 是这套方法落成的**一张可执行的 DDL**——它能直接建库跑起来，而不是一份抽象说明。
+
+| 本页讲什么 | 对方讲什么 | 遇到什么问题时该去哪边 |
+| --- | --- | --- |
+| 方法论：字段怎么定类型、主键怎么选、迁移怎么拆六步 | 实例：TeamBoard 的每张表、每个字段与索引的最终形态 | 「我这个字段该用什么类型」→ 本页 |
+| 讲**为什么**这么做（能由约束保证的就不靠代码自觉） | 给**具体是什么**（可直接执行的建表语句） | 「这张表到底长什么样」→ [TeamBoard 数据模型](/project/Complete/TeamBoard/Database/index.md) |
+| 通用迁移与回滚流程 | 实例：该项目的迁移脚本与种子数据 | 「这条迁移怎么回滚」→ 本页，再对照实例 |
+
+一句话：**本页给方法，实例给一张能跑的表结构。** 定完自己的模型后，去 [TeamBoard 数据模型](/project/Complete/TeamBoard/Database/index.md) 对照命名规范与索引建法。

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="Little 定律、排队放大与通用可扩展性定律三张定量模型">
+  <title>并发、排队与扩展性：三张定量模型</title>
+  <defs>
+    <marker id="pem-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="38" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">并发、排队与扩展性：三张定量模型</text>
+  <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">压测之前先用算术把量级算出来：算错的量级，压测也救不回来。</text>
+  <rect x="30" y="80" width="270" height="372" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="46" y="106" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3">1 Little 定律：定并发</text>
+  <rect x="46" y="120" width="238" height="46" rx="8" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="58" y="140" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">λ 到达率</text>
+  <text x="58" y="157" font-family="system-ui, sans-serif" font-size="10" fill="#334155">每秒到达多少请求，单位 QPS</text>
+  <rect x="46" y="172" width="238" height="46" rx="8" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="58" y="192" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">W 平均驻留时间</text>
+  <text x="58" y="209" font-family="system-ui, sans-serif" font-size="10" fill="#334155">从进入到离开的平均秒数</text>
+  <rect x="46" y="224" width="238" height="46" rx="8" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="58" y="244" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">L 并发数</text>
+  <text x="58" y="261" font-family="system-ui, sans-serif" font-size="10" fill="#334155">同时在系统里的请求个数</text>
+  <text x="46" y="294" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">L = λ x W</text>
+  <text x="46" y="312" font-family="system-ui, sans-serif" font-size="10" fill="#334155">并发 = 到达率 x 平均驻留时间</text>
+  <text x="46" y="340" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">200 QPS x 80 ms 得到 L = 16</text>
+  <text x="46" y="360" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">1000 QPS x 50 ms 得到 L = 50</text>
+  <text x="46" y="380" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">500 QPS x 120 ms 得到 L = 60</text>
+  <text x="46" y="400" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">2000 QPS x 45 ms 得到 L = 90</text>
+  <text x="46" y="428" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#3730a3">两种用法：反推并发、反推吞吐</text>
+  <rect x="315" y="80" width="270" height="372" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="331" y="106" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">2 排队放大：定水位线</text>
+  <rect x="331" y="120" width="238" height="26" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="343" y="138" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#334155">利用率 ρ</text><text x="435" y="138" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#334155">放大倍数</text><text x="521" y="138" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#334155">队列个数</text>
+  <rect x="331" y="148" width="238" height="30" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="343" y="167" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">0.50</text><text x="435" y="167" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">2.00 倍</text><text x="521" y="167" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">1</text>
+  <rect x="331" y="178" width="238" height="30" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="343" y="197" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">0.60</text><text x="435" y="197" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">2.50 倍</text><text x="521" y="197" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">1.5</text>
+  <rect x="331" y="208" width="238" height="30" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="343" y="227" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">0.70</text><text x="435" y="227" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#b45309">3.33 倍</text><text x="521" y="227" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">2.33</text>
+  <rect x="331" y="238" width="238" height="30" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="343" y="257" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">0.80</text><text x="435" y="257" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#b45309">5.00 倍</text><text x="521" y="257" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">4</text>
+  <rect x="331" y="268" width="238" height="30" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="343" y="287" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">0.90</text><text x="435" y="287" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#b91c1c">10.00 倍</text><text x="521" y="287" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">9</text>
+  <rect x="331" y="298" width="238" height="30" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="343" y="317" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">0.95</text><text x="435" y="317" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#b91c1c">20.00 倍</text><text x="521" y="317" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">19</text>
+  <rect x="331" y="328" width="238" height="30" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="343" y="347" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">0.99</text><text x="435" y="347" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#b91c1c">100.00 倍</text><text x="521" y="347" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">99</text>
+  <text x="331" y="380" font-family="system-ui, sans-serif" font-size="10" fill="#334155">W / Ws = 1 / (1 - ρ)，ρ 越高放大越快</text>
+  <text x="331" y="400" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#b45309">膝点：ρ 约 0.7 之后开始陡增</text>
+  <text x="331" y="428" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#0f766e">水位线由这张表倒推，不是 80%</text>
+  <rect x="600" y="80" width="270" height="372" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="616" y="106" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3">3 USL：定加机器边界</text>
+  <text x="616" y="150" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">C(N)</text>
+  <line x1="646" y1="140" x2="646" y2="340" stroke="#cbd5e1" stroke-width="1.2"/><line x1="646" y1="340" x2="834" y2="340" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="640" y="154" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b" text-anchor="end">10</text><text x="640" y="249" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b" text-anchor="end">5</text><text x="640" y="344" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b" text-anchor="end">0</text>
+  <text x="646" y="354" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">0</text><text x="693" y="354" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">32</text><text x="740" y="354" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">64</text><text x="787" y="354" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">96</text><text x="834" y="354" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">128</text>
+  <polyline points="646,340 647.5,321 651.9,274.6 657.8,231.9 669.5,187.2 681.3,171.2 690.1,168.3 693,168.4 704.8,171.5 716.5,177.3 740,191.4 787,217.3 834,237.0" fill="none" stroke="#3730a3" stroke-width="2.2"/>
+  <circle cx="690.1" cy="168.3" r="4" fill="#3730a3"/>
+  <text x="697" y="162" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#3730a3">N* = 30.82，C = 9.038</text>
+  <text x="656" y="250" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748b">线性区</text><text x="756" y="212" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#b45309">超峰后下降</text>
+  <text x="616" y="380" font-family="system-ui, sans-serif" font-size="10" fill="#334155">C(4) = 3.442，C(16) = 8.040，C(64) = 7.822</text>
+  <text x="616" y="400" font-family="system-ui, sans-serif" font-size="10" fill="#334155">单节点吞吐系数 C(N)/N：0.5025 到 0.1222</text>
+  <text x="616" y="428" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#3730a3">加机器不再变快的那一点就是它</text>
+  <rect x="30" y="468" width="840" height="68" rx="10" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="46" y="492" font-family="system-ui, sans-serif" font-size="11" fill="#334155">线程池：maxThreads = 200、平均 50 ms 得到 4000 QPS；1% 请求各占 800 ms 后降到 3448.28 QPS。</text>
+  <text x="46" y="516" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f766e">容量：10 万 DAU 乘 30 请求每天得到 34.72 QPS，峰均比 5 得到 173.61 QPS，4 实例即单实例 43.40 QPS、利用率 36.2%。</text>
+</svg>

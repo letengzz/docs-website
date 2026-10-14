@@ -74,6 +74,7 @@ export const nav = [
       { text: "云原生", link: "/docs/Ops/CloudNative" },
       { text: "云上架构", link: "/docs/Ops/CloudArchitecture" },
       { text: "边缘计算与 CDN", link: "/docs/Ops/EdgeCDN" },
+      { text: "性能与容量工程", link: "/docs/Ops/PerformanceEngineering" },
       { text: "监控告警", link: "/docs/Ops/Monitoring" },
       { text: "日志体系", link: "/docs/Ops/LogSystem" },
       { text: "备份与容灾", link: "/docs/Ops/BackupDR" },

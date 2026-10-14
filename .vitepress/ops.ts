@@ -352,3 +352,18 @@ export const EdgeCDN = [
     ],
   },
 ];
+export const PerformanceEngineering = [
+  {
+    text: "性能与容量工程",
+    link: "/docs/Ops/PerformanceEngineering/index.md",
+    items: [
+      { text: "总览：性能与容量的四条边界", link: "/docs/Ops/PerformanceEngineering/Overview/index.md" },
+      { text: "SLO 与性能需求", link: "/docs/Ops/PerformanceEngineering/SLO/index.md" },
+      { text: "定量建模：并发、排队与扩展性", link: "/docs/Ops/PerformanceEngineering/Modeling/index.md" },
+      { text: "压测方法论与工具", link: "/docs/Ops/PerformanceEngineering/LoadTesting/index.md" },
+      { text: "瓶颈定位", link: "/docs/Ops/PerformanceEngineering/Bottleneck/index.md" },
+      { text: "容量规划与弹性", link: "/docs/Ops/PerformanceEngineering/Capacity/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/PerformanceEngineering/FAQ/index.md" },
+    ],
+  },
+];

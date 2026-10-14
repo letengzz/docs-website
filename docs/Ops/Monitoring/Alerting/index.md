@@ -263,3 +263,14 @@ curl -X POST http://localhost:9093/api/v2/silences -d '{
 - 时序侧告警取数与抑制策略：[时序数据库 · 常见问题与最佳实践](../../../DB/TimeSeries/FAQ/index.md)
 - 安全事件的审计与运行时检测告警：[安全加固 · 审计与检测](../../SecurityHardening/AuditDetection/index.md)
 - 告警链路的端到端实测（规则 → 路由 → 通知）：[混沌工程 · 演练中的可观测](../../ChaosEngineering/Observability/index.md)
+
+## 与性能与容量工程的分工
+
+本页只管**规则怎么写、怎么不吵**——`for` 设多长、怎么分组抑制、路由到谁；而**阈值该取什么值，来源在 [性能与容量工程 · SLO](../../PerformanceEngineering/SLO/index.md) 的错误预算与燃烧率**，不在本页。
+
+| 本页讲什么 | 对方讲什么 | 遇到什么问题时该去哪边 |
+| --- | --- | --- |
+| PromQL 表达式、`for`、分组 / 抑制 / 静默、分级与路由 | 错误预算与燃烧率决定了阈值该定成多少 | 「这条规则为什么天天响」→ 本页 |
+| 保证告警「能响、有人管、不轰炸」 | 保证告警阈值「与业务承诺一致、不拍脑袋」 | 「这个 5% 是拍脑袋还是算出来的」→ [SLO](../../PerformanceEngineering/SLO/index.md) |
+
+一句话：**规则是工程问题（本页），阈值是业务与容量问题（那边）。** 阈值拿不稳时，先去 [SLO 与错误预算](../../PerformanceEngineering/SLO/index.md) 把口径定下来，再回到本页把它写成一条规则。

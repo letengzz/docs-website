@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="在线协作任务看板：四层分层、九个领域模块，以及一次拖动卡片要穿过的六段链路">
+  <title>在线协作任务看板 · 分层与实时链路</title>
+  <defs>
+    <marker id="tba-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">在线协作任务看板 · 分层与实时链路</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">每一层只依赖它下面那一层；实时推送是每一次写操作的副产品，不是一条独立的业务链路。</text>
+
+  <rect x="30" y="88" width="530" height="104" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="110" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">客户端（Vue 3.5 单页应用）</text>
+  <rect x="42" y="122" width="164" height="54" rx="7" fill="#ffffff" stroke="#c7d2fe"/>
+  <text x="54" y="143" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">乐观更新队列</text>
+  <text x="54" y="161" font-family="system-ui, sans-serif" font-size="9" fill="#334155">本地先动，冲突再回滚</text>
+  <rect x="213" y="122" width="164" height="54" rx="7" fill="#ffffff" stroke="#c7d2fe"/>
+  <text x="225" y="143" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">WebSocket 客户端</text>
+  <text x="225" y="161" font-family="system-ui, sans-serif" font-size="9" fill="#334155">按 seq 排序与去重</text>
+  <rect x="384" y="122" width="164" height="54" rx="7" fill="#ffffff" stroke="#c7d2fe"/>
+  <text x="396" y="143" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">Pinia 状态</text>
+  <text x="396" y="161" font-family="system-ui, sans-serif" font-size="9" fill="#334155">看板按块订阅</text>
+  <line x1="295" y1="194" x2="295" y2="212" stroke="#334155" stroke-width="1.6" marker-end="url(#tba-ar)"/>
+
+  <rect x="30" y="215" width="530" height="104" rx="10" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="44" y="237" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">接入层（身份与租户只在这一层判一次）</text>
+  <rect x="42" y="249" width="122" height="54" rx="7" fill="#ffffff" stroke="#99f6e4"/>
+  <text x="52" y="270" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">HTTP 鉴权</text>
+  <text x="52" y="288" font-family="system-ui, sans-serif" font-size="9" fill="#334155">令牌 + 成员 + 角色</text>
+  <rect x="172" y="249" width="122" height="54" rx="7" fill="#ffffff" stroke="#99f6e4"/>
+  <text x="182" y="270" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">订阅鉴权</text>
+  <text x="182" y="288" font-family="system-ui, sans-serif" font-size="9" fill="#334155">看板必须属于该租户</text>
+  <rect x="302" y="249" width="122" height="54" rx="7" fill="#ffffff" stroke="#99f6e4"/>
+  <text x="312" y="270" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">限流与幂等</text>
+  <text x="312" y="288" font-family="system-ui, sans-serif" font-size="9" fill="#334155">用户 + 工作区两维度</text>
+  <rect x="432" y="249" width="116" height="54" rx="7" fill="#ffffff" stroke="#99f6e4"/>
+  <text x="442" y="270" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">审计入口</text>
+  <text x="442" y="288" font-family="system-ui, sans-serif" font-size="9" fill="#334155">每次写都留痕</text>
+  <line x1="295" y1="321" x2="295" y2="339" stroke="#334155" stroke-width="1.6" marker-end="url(#tba-ar)"/>
+
+  <rect x="30" y="342" width="530" height="126" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="44" y="364" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">领域模块（模块之间不直接读对方的表）</text>
+  <rect x="42" y="374" width="164" height="26" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="52" y="392" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">identity · workspace</text>
+  <rect x="213" y="374" width="164" height="26" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="223" y="392" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">board · card</text>
+  <rect x="384" y="374" width="164" height="26" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="394" y="392" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">comment · notification</text>
+  <rect x="42" y="406" width="164" height="26" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="52" y="424" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">attachment · search</text>
+  <rect x="213" y="406" width="164" height="26" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="223" y="424" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">audit</text>
+  <rect x="384" y="406" width="164" height="26" rx="6" fill="#fef3c7" stroke="#fbbf24"/>
+  <text x="394" y="424" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">推送出口（横切）</text>
+  <text x="42" y="452" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">权限只有 workspace.require_member() 一个出口；审计不可绕过；推送内容与落库内容同源。</text>
+  <line x1="295" y1="470" x2="295" y2="488" stroke="#334155" stroke-width="1.6" marker-end="url(#tba-ar)"/>
+
+  <rect x="30" y="491" width="530" height="100" rx="10" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="44" y="513" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#78350f">支撑设施（不承载业务规则）</text>
+  <rect x="42" y="523" width="164" height="52" rx="7" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="54" y="544" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">PostgreSQL 18.6</text>
+  <text x="54" y="562" font-family="system-ui, sans-serif" font-size="9" fill="#334155">关系 · 并发 · 全文搜索</text>
+  <rect x="213" y="523" width="164" height="52" rx="7" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="225" y="544" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">Redis</text>
+  <text x="225" y="562" font-family="system-ui, sans-serif" font-size="9" fill="#334155">跨实例广播 · 在线状态</text>
+  <rect x="384" y="523" width="164" height="52" rx="7" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="396" y="544" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">对象存储</text>
+  <text x="396" y="562" font-family="system-ui, sans-serif" font-size="9" fill="#334155">附件直传，不过业务进程</text>
+
+  <text x="592" y="98" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">一次拖动卡片：十二步（此处六段）</text>
+  <rect x="588" y="110" width="282" height="44" rx="8" fill="#ffffff" stroke="#818cf8"/>
+  <text x="600" y="130" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">①-② 客户端乐观更新 + 发起请求</text>
+  <text x="600" y="146" font-family="system-ui, sans-serif" font-size="9" fill="#334155">带 client_op_id 与 version</text>
+  <line x1="729" y1="156" x2="729" y2="170" stroke="#334155" stroke-width="1.6" marker-end="url(#tba-ar)"/>
+  <rect x="588" y="172" width="282" height="44" rx="8" fill="#ffffff" stroke="#818cf8"/>
+  <text x="600" y="192" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">③-④ 鉴权 + 权限判定</text>
+  <text x="600" y="208" font-family="system-ui, sans-serif" font-size="9" fill="#334155">跨租户一律 404，不暴露存在性</text>
+  <line x1="729" y1="218" x2="729" y2="232" stroke="#334155" stroke-width="1.6" marker-end="url(#tba-ar)"/>
+  <rect x="588" y="234" width="282" height="44" rx="8" fill="#ffffff" stroke="#818cf8"/>
+  <text x="600" y="254" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">⑤-⑥ 幂等检查 + 读当前卡片</text>
+  <text x="600" y="270" font-family="system-ui, sans-serif" font-size="9" fill="#334155">只锁被拖动的那一行</text>
+  <line x1="729" y1="280" x2="729" y2="294" stroke="#334155" stroke-width="1.6" marker-end="url(#tba-ar)"/>
+  <rect x="588" y="296" width="282" height="44" rx="8" fill="#ffffff" stroke="#818cf8"/>
+  <text x="600" y="316" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">⑦-⑧ 乐观锁校验 + 算顺序键</text>
+  <text x="600" y="332" font-family="system-ui, sans-serif" font-size="9" fill="#334155">版本不符返回 409 与最新状态</text>
+  <line x1="729" y1="342" x2="729" y2="356" stroke="#334155" stroke-width="1.6" marker-end="url(#tba-ar)"/>
+  <rect x="588" y="358" width="282" height="44" rx="8" fill="#ffffff" stroke="#818cf8"/>
+  <text x="600" y="378" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">⑨ 一个事务里写四张表</text>
+  <text x="600" y="394" font-family="system-ui, sans-serif" font-size="9" fill="#334155">cards · audit_log · events · outbox</text>
+  <line x1="729" y1="404" x2="729" y2="418" stroke="#334155" stroke-width="1.6" marker-end="url(#tba-ar)"/>
+  <rect x="588" y="420" width="282" height="44" rx="8" fill="#fef3c7" stroke="#fbbf24"/>
+  <text x="600" y="440" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">⑩-⑫ 提交后广播 → 各实例推送</text>
+  <text x="600" y="456" font-family="system-ui, sans-serif" font-size="9" fill="#334155">顺序不能反：先广播会读到旧数据</text>
+
+  <rect x="588" y="480" width="282" height="111" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="600" y="500" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f766e">为什么需要 seq</text>
+  <text x="600" y="520" font-family="system-ui, sans-serif" font-size="9" fill="#334155">推送不保证顺序：按 seq 排序去重</text>
+  <text x="600" y="538" font-family="system-ui, sans-serif" font-size="9" fill="#334155">断线会丢事件：重连带 since 补拉</text>
+  <text x="600" y="556" font-family="system-ui, sans-serif" font-size="9" fill="#334155">缺口能发现：seq 不连续即触发补拉</text>
+  <text x="600" y="574" font-family="system-ui, sans-serif" font-size="9" fill="#334155">兜底对账：每 30 秒比对一次最大 seq</text>
+</svg>

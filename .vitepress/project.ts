@@ -273,6 +273,21 @@ export const CompleteProject = [
           { text: "验收一与验收二：把 ⏳ 换成实测数字", link: "/project/Complete/MonitoringDashboard/Acceptance12/index.md" },
           { text: "验收三：告警风暴联调", link: "/project/Complete/MonitoringDashboard/Acceptance3/index.md" },
           { text: "遗留项结清：把 ⏳ 换成实测数字", link: "/project/Complete/MonitoringDashboard/ResidualClose/index.md" },
+          { text: "压测与容量：把单点能力变成容量结论", link: "/project/Complete/MonitoringDashboard/CapacityTest/index.md" },
+        ],
+      },
+      {
+        text: "在线协作任务看板",
+        link: "/project/Complete/TeamBoard/index.md",
+        collapsed: true,
+        items: [
+          { text: "项目总览", link: "/project/Complete/TeamBoard/index.md" },
+          { text: "需求拆分：角色、故事与验收条件", link: "/project/Complete/TeamBoard/Requirements/index.md" },
+          { text: "技术选型与版本基线", link: "/project/Complete/TeamBoard/TechStack/index.md" },
+          { text: "架构设计：模块边界与实时链路", link: "/project/Complete/TeamBoard/Architecture/index.md" },
+          { text: "数据库设计：表、约束与顺序字段", link: "/project/Complete/TeamBoard/Database/index.md" },
+          { text: "环境与工程骨架", link: "/project/Complete/TeamBoard/Environment/index.md" },
+          { text: "验收：把「做完了」变成可执行的步骤", link: "/project/Complete/TeamBoard/Acceptance/index.md" },
         ],
       },
       {

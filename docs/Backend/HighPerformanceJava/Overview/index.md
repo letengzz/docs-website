@@ -163,3 +163,15 @@ GC 次数/分      12           3
 - async-profiler 文档（wall-clock 与 CPU 模式的区别）：https://github.com/async-profiler/async-profiler/blob/master/docs/ProfilerOptions.md
 - JDK Flight Recorder 官方文档：https://docs.oracle.com/en/java/javase/25/jfapi/
 - k6 官方文档（压测脚本与阈值）：https://grafana.com/docs/k6/latest/
+
+## 与性能与容量工程的分工
+
+本专题管**单机 / 单进程**：把一段代码跑得更快（JMH 基准、JIT 与内联、对象布局与分配、锁竞争）。[性能与容量工程](/docs/Ops/PerformanceEngineering/index.md) 管**系统级容量**：这套系统要扛多少、水位线怎么留、冗余与峰均比、单位成本。**两者的输入输出都不同，结论不能互相推导。**
+
+| 本页讲什么（单机视角） | 对方讲什么（系统视角） | 遇到什么问题时该去哪边 |
+| --- | --- | --- |
+| 同一台机器上，某方法 / 某数据结构的耗时与分配 | 一个接口在 100 并发下的 P99 与容量拐点 | 「这段代码还能不能更快」→ 本页 |
+| JFR / 火焰图给出的是**热点与方法级归因** | 容量建模给出的是**需要几个副本、水位到多少** | 「慢是因为代码还是因为压满」→ [建模](/docs/Ops/PerformanceEngineering/Modeling/index.md) |
+| 优化目标是「降低单请求成本」 | 优化目标是「用最小副本数扛住峰值」 | 「该扩机器还是该改代码」→ [瓶颈定位](/docs/Ops/PerformanceEngineering/Bottleneck/index.md) |
+
+一条最常被越界的推论：**JFR 显示某方法慢，推不出「需要扩容」**——它可能只是一次可省掉的分配；反过来「CPU 打满需要扩容」也推不出「某方法有性能问题」。**先判层，再动手**：问题落在单机层就用本专题的工具，落在容量层就去性能与容量工程。

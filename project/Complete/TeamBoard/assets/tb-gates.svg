@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="在线协作任务看板的验收视图：左侧是 A1 到 A8 八级验收阶梯，只有 A1 本机可判；右侧是六动作乘三角色的权限矩阵十八格">
+  <title>在线协作任务看板 · A1~A8 验收阶梯与权限矩阵 18 格</title>
+  <defs>
+    <marker id="tbg-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">在线协作任务看板 · A1~A8 验收阶梯与权限矩阵</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">左：八级门槛顺序不可换，前一级不过就不要往下走。右：18 格每一格都要能失败，任何一格与表中值不符即为不过。</text>
+
+  <text x="30" y="96" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">验收阶梯 A1~A8（越往下越靠近「能跑起来」）</text>
+  <text x="580" y="96" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">权限矩阵 18 格（6 动作 × 3 角色）</text>
+
+  <line x1="44" y1="118" x2="44" y2="468" stroke="#334155" stroke-width="1.6" marker-end="url(#tbg-ar)"/>
+  <line x1="480" y1="300" x2="574" y2="300" stroke="#334155" stroke-width="1.6" marker-end="url(#tbg-ar)"/>
+
+  <rect x="60" y="110" width="470" height="38" rx="8" fill="#d1fae5" stroke="#34d399"/>
+  <text x="74" y="134" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#065f46">A1 设计齐备 · DDL 与 ER 一致、契约齐备</text>
+  <text x="516" y="134" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="end">✅ 本机可判</text>
+
+  <rect x="76" y="156" width="439" height="38" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="90" y="180" font-family="system-ui, sans-serif" font-size="10.5" fill="#0f172a">A2 依赖可起（db / cache / object）</text>
+  <text x="501" y="180" font-family="system-ui, sans-serif" font-size="9.5" fill="#b45309" text-anchor="end">⏳ 未跑</text>
+
+  <rect x="91" y="202" width="408" height="38" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="105" y="226" font-family="system-ui, sans-serif" font-size="10.5" fill="#0f172a">A3 服务可启动（health 返回 UP）</text>
+  <text x="485" y="226" font-family="system-ui, sans-serif" font-size="9.5" fill="#b45309" text-anchor="end">⏳ 未跑</text>
+
+  <rect x="107" y="248" width="377" height="38" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="121" y="272" font-family="system-ui, sans-serif" font-size="10.5" fill="#0f172a">A4 接口可调用（含幂等与乐观锁）</text>
+  <text x="470" y="272" font-family="system-ui, sans-serif" font-size="9.5" fill="#b45309" text-anchor="end">⏳ 未跑</text>
+
+  <rect x="122" y="294" width="346" height="38" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="136" y="318" font-family="system-ui, sans-serif" font-size="10.5" fill="#0f172a">A5 页面可访问（5173 列表页）</text>
+  <text x="454" y="318" font-family="system-ui, sans-serif" font-size="9.5" fill="#b45309" text-anchor="end">⏳ 未跑</text>
+
+  <rect x="138" y="340" width="315" height="38" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="152" y="364" font-family="system-ui, sans-serif" font-size="10.5" fill="#0f172a">A6 实时同步可观测（≤ 1 s）</text>
+  <text x="439" y="364" font-family="system-ui, sans-serif" font-size="9.5" fill="#b45309" text-anchor="end">⏳ 未跑</text>
+
+  <rect x="153" y="386" width="284" height="38" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="167" y="410" font-family="system-ui, sans-serif" font-size="10.5" fill="#0f172a">A7 权限矩阵 18 格无漏判</text>
+  <text x="423" y="410" font-family="system-ui, sans-serif" font-size="9.5" fill="#b45309" text-anchor="end">⏳ 未跑</text>
+
+  <rect x="169" y="432" width="253" height="38" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="183" y="456" font-family="system-ui, sans-serif" font-size="10.5" fill="#0f172a">A8 一键部署 + 成本判据</text>
+  <text x="408" y="456" font-family="system-ui, sans-serif" font-size="9.5" fill="#b45309" text-anchor="end">⏳ 未跑</text>
+
+  <rect x="580" y="110" width="284" height="26" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="590" y="128" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#334155">动作</text>
+  <text x="714" y="128" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#334155" text-anchor="middle">owner</text>
+  <text x="774" y="128" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#334155" text-anchor="middle">editor</text>
+  <text x="834" y="128" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#334155" text-anchor="middle">viewer</text>
+
+  <rect x="580" y="136" width="284" height="34" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="590" y="158" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">读看板</text>
+  <text x="714" y="158" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="774" y="158" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="834" y="158" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+
+  <rect x="580" y="174" width="284" height="34" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="590" y="196" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">建卡</text>
+  <text x="714" y="196" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="774" y="196" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="834" y="196" font-family="system-ui, sans-serif" font-size="9.5" fill="#b91c1c" text-anchor="middle">拒绝 403</text>
+
+  <rect x="580" y="212" width="284" height="34" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="590" y="234" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">拖动卡片</text>
+  <text x="714" y="234" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="774" y="234" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="834" y="234" font-family="system-ui, sans-serif" font-size="9.5" fill="#b91c1c" text-anchor="middle">拒绝 403</text>
+
+  <rect x="580" y="250" width="284" height="34" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="590" y="272" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">评论</text>
+  <text x="714" y="272" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="774" y="272" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="834" y="272" font-family="system-ui, sans-serif" font-size="9.5" fill="#b91c1c" text-anchor="middle">拒绝 403</text>
+
+  <rect x="580" y="288" width="284" height="34" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="590" y="310" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">改成员角色</text>
+  <text x="714" y="310" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="774" y="310" font-family="system-ui, sans-serif" font-size="9.5" fill="#b91c1c" text-anchor="middle">拒绝 403</text>
+  <text x="834" y="310" font-family="system-ui, sans-serif" font-size="9.5" fill="#b91c1c" text-anchor="middle">拒绝 403</text>
+
+  <rect x="580" y="326" width="284" height="34" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="590" y="348" font-family="system-ui, sans-serif" font-size="10" fill="#0f172a">下载附件</text>
+  <text x="714" y="348" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="774" y="348" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+  <text x="834" y="348" font-family="system-ui, sans-serif" font-size="9.5" fill="#065f46" text-anchor="middle">允许</text>
+
+  <rect x="580" y="376" width="284" height="94" rx="9" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="594" y="400" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#92400e">两条贯穿全表的边界</text>
+  <text x="594" y="422" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">跨工作区一律 404，不是 403——</text>
+  <text x="594" y="438" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">「无权」与「不存在」必须长得一样。</text>
+  <text x="594" y="458" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">越权订阅实时流返回 403，不是静默不推。</text>
+
+  <line x1="60" y1="478" x2="422" y2="478" stroke="#e2e8f0"/>
+  <text x="60" y="500" font-family="system-ui, sans-serif" font-size="10" fill="#065f46">✅ 本机可判（文档级 · TB-A）</text>
+  <text x="60" y="520" font-family="system-ui, sans-serif" font-size="10" fill="#b45309">⏳ 未跑 · 本机无容器运行时 / 本仓无工程代码（BL-1 / BL-2）</text>
+  <text x="580" y="520" font-family="system-ui, sans-serif" font-size="10" fill="#334155">18 格 = 6 动作 × 3 角色；每格都要能失败。</text>
+</svg>

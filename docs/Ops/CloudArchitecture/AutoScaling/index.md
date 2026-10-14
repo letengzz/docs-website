@@ -205,3 +205,15 @@ done
 - AWS EC2 Auto Scaling 用户指南（含混合实例策略与容量再平衡）：https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html
 - AWS Spot 实例中断通知与最佳实践：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-instance-termination-notices.html
 - 阿里云弹性伸缩（ESS）产品文档：https://help.aliyun.com/zh/auto-scaling/
+
+## 与性能与容量工程的分工
+
+本页讲**用哪个信号扩缩容、怎么配阈值与冷却期**——它回答「机器已经在跑，之后怎么自己加」；[性能与容量工程 · 容量规划](../../PerformanceEngineering/Capacity/index.md) 讲**先算清需要几个副本，再谈扩容**——它回答「峰值来之前，底座该有多大」。**HPA 触发 ≠ 容量规划**：HPA 只是在既有的最小 / 最大副本区间里做反应，区间定错了，扩容与缩容都会错。
+
+| 本页讲什么 | 对方讲什么 | 遇到什么问题时该去哪边 |
+| --- | --- | --- |
+| 信号选型（队列深度 / CPU / 业务指标）、阈值、冷却期、混合计费 | 峰均比、水位线、需要几个副本、单位成本 | 「伸缩组该怎么配、为什么从不触发」→ 本页 |
+| 扩缩容的**不对称**：扩错了损失钱，缩错了损失可用性 | SLO 与错误预算决定「最小副本数至少要留多少」 | 「最小 / 最大副本数该定几台」→ [容量规划](../../PerformanceEngineering/Capacity/index.md) |
+| 反应式：指标越过阈值后才动作 | 预测式：按峰值与冗余提前备好底座 | 「大促前要压到多少台」→ [SLO 与冗余](../../PerformanceEngineering/SLO/index.md) |
+
+一条必须写死的边界：**缩容不对称**——容量规划给出的是「常态需要几个」，本页负责「怎么退出多余的那个」，且退出永远要更保守。配置的写法回本页，副本数与水位线的算法去 [性能与容量工程 · 容量规划](../../PerformanceEngineering/Capacity/index.md)。

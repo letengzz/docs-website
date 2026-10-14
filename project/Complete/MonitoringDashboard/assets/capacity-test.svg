@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="压测与容量：补流量、压测阶梯、单点能力、容量结论四步关系，以及 R-9 因果链与三处判据缺陷的收口">
+  <title>压测与容量：把单点能力变成容量结论</title>
+  <defs>
+    <marker id="ct-arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f7f8fa" stroke="#d8dee6"/>
+
+  <text x="30" y="42" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1f2328" text-anchor="start">压测与容量：把单点能力变成容量结论</text>
+  <text x="30" y="66" font-family="system-ui, sans-serif" font-size="12" font-weight="400" fill="#57606a" text-anchor="start">第 139 天 · 四步不可换：补流量解 R-9 → 量出单点能力 → 换算成容量结论（按峰值，不按均值）</text>
+
+  <!-- ① 补流量 -->
+  <rect x="30" y="90" width="192" height="104" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="44" y="114" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e" text-anchor="start">① 补流量（解 R-9）</text>
+  <text x="44" y="138" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">恒定到达率打 app:8080</text>
+  <text x="44" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">rate() 由 0 → 非 0</text>
+  <text x="44" y="178" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#b91c1c" text-anchor="start">错误率不再 4/4 全 NaN</text>
+
+  <!-- ② 压测阶梯 -->
+  <rect x="246" y="90" width="192" height="104" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="260" y="114" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="start">② 压测阶梯</text>
+  <text x="260" y="138" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">5 档 × 5 分钟，2 倍递增</text>
+  <text x="260" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">开环（恒定到达率）</text>
+  <text x="260" y="178" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">阈值：p99 / 错误率</text>
+
+  <!-- ③ 单点能力 -->
+  <rect x="462" y="90" width="192" height="104" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="476" y="114" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309" text-anchor="start">③ 单点能力</text>
+  <text x="476" y="138" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">取「阈值内的最大档」</text>
+  <text x="476" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">水位线 = 该档的前一档</text>
+  <text x="476" y="178" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#b91c1c" text-anchor="start">不取压测最大值</text>
+
+  <!-- ④ 容量结论 -->
+  <rect x="678" y="90" width="192" height="104" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="692" y="114" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#7c3aed" text-anchor="start">④ 容量结论</text>
+  <text x="692" y="138" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">能力 × 水位线 × 实例数</text>
+  <text x="692" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">÷ 峰均比</text>
+  <text x="692" y="178" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">按峰值，不按均值</text>
+
+  <!-- 箭头 -->
+  <line x1="224" y1="142" x2="242" y2="142" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ct-arw)"/>
+  <line x1="440" y1="142" x2="458" y2="142" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ct-arw)"/>
+  <line x1="656" y1="142" x2="674" y2="142" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ct-arw)"/>
+
+  <!-- R-9 因果链 -->
+  <rect x="30" y="210" width="430" height="104" rx="10" fill="#fff1f2" stroke="#fda4af"/>
+  <text x="46" y="234" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#9f1239" text-anchor="start">R-9 的因果链（第 138 天 6.4 节）</text>
+  <text x="46" y="257" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">计数器不增长 → rate() 恒 0 → 0 / 0 = NaN</text>
+  <text x="46" y="277" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">→ svc:http_error_ratio:rate5m 4/4 全 NaN</text>
+  <text x="46" y="297" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b91c1c" text-anchor="start">→ 预算类判据测的是空集：「点数 ≤ 2000」恒真</text>
+
+  <!-- 四因子换算 -->
+  <rect x="470" y="210" width="400" height="104" rx="10" fill="#eef2ff" stroke="#a5b4fc"/>
+  <text x="486" y="234" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3" text-anchor="start">单点能力 ≠ 容量：四因子换算</text>
+  <text x="486" y="257" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">平均容量 = 能力 × 水位线 × 实例数 ÷ 峰均比</text>
+  <text x="486" y="277" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">例：400 × 50% × 3 ÷ 4 = 150 RPS</text>
+  <text x="486" y="297" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3" text-anchor="start">「能扛 400」缩水到 150（−62.5%）</text>
+
+  <!-- 三处判据缺陷收口 -->
+  <text x="30" y="342" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#1f2328" text-anchor="start">今天同时收掉三处判据缺陷（归属原族，不新立判据码）</text>
+
+  <rect x="30" y="356" width="272" height="92" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="46" y="379" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e" text-anchor="start">收 RC-1：序列数预算</text>
+  <text x="46" y="400" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">step 补上 × S（S = max_series）</text>
+  <text x="46" y="417" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">二选一：保守上界 / 两步查询</text>
+  <text x="46" y="434" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">选保守上界（复用 INV-2）</text>
+
+  <rect x="314" y="356" width="272" height="92" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="330" y="379" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="start">收 RC-2：两种口径都判</text>
+  <text x="330" y="400" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">A 范围长度 / B 时间点</text>
+  <text x="330" y="417" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">meta.reason_detail 说明哪一种</text>
+  <text x="330" y="434" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">两者同时成立时取 B</text>
+
+  <rect x="598" y="356" width="272" height="92" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="614" y="379" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b45309" text-anchor="start">收 RC-7：判据对象</text>
+  <text x="614" y="400" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">对「契约版本」alertmanager 判</text>
+  <text x="614" y="417" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#b91c1c" text-anchor="start">联调简化版 → 路由接受域是全集</text>
+  <text x="614" y="434" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">→ 恒真；必须换回契约版本</text>
+
+  <!-- 底部两块 -->
+  <rect x="30" y="462" width="430" height="82" rx="10" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="46" y="485" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#78350f" text-anchor="start">容量与保留策略：基线怎么变</text>
+  <text x="46" y="506" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">12.76 MiB/d 是「补流量之前」的基线，15d 外推 ≈ 191 MiB</text>
+  <text x="46" y="526" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">补流量改变的是「有多少条序列在写」，不是「每条样本多大」</text>
+
+  <rect x="470" y="462" width="400" height="82" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="486" y="485" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#065f46" text-anchor="start">判据表 CT-A ~ CT-H（八条）</text>
+  <text x="486" y="506" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">✅ 六条文档级：本机可判，其中 CT-D 本机已跑</text>
+  <text x="486" y="526" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">⏳ CT-A / CT-B（BL-1）· CT-F（BL-2）</text>
+
+  <!-- 结论 -->
+  <rect x="30" y="556" width="840" height="44" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="46" y="575" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328" text-anchor="start">压测量的是「一个实例的能力」；容量是四个因子换算出来的结果，其中三个是故意留的余量。</text>
+  <text x="46" y="592" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c" text-anchor="start">而补流量不是为了好看——不填满数据，所有预算类判据测的都是空集。</text>
+</svg>
