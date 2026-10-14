@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="部署前置：联调态的三类「临时」（临时造数、临时放行、临时上限）如何收敛成可交付态，五项第 4 周欠账 R-6、RC-3、RC-4、RC-5、L3 的处置，以及 DP-A~DP-H 判据的类型划分">
+  <title>部署前置：把联调态收敛成可交付态</title>
+  <defs>
+    <marker id="dp-arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#818cf8"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+
+  <text x="30" y="44" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#0f172a" text-anchor="start">部署前置：把联调态收敛成可交付态</text>
+  <text x="30" y="68" font-family="system-ui, sans-serif" font-size="12" font-weight="400" fill="#334155" text-anchor="start">第 140 天 · 第 4 周第 1 步：先收敛三类「临时」，再谈部署</text>
+
+  <text x="30" y="100" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3" text-anchor="start">一、三类「临时」——联调态留在系统里的东西</text>
+
+  <rect x="30" y="112" width="272" height="90" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="44" y="136" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="start">临时造数</text>
+  <text x="44" y="158" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#334155" text-anchor="start">grouping-test（5 target → app:8080）</text>
+  <text x="44" y="176" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#334155" text-anchor="start">为造「5 实例同因故障」而加</text>
+  <text x="44" y="194" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#3730a3" text-anchor="start">处置：R-6 删除 + 重测容量基线</text>
+
+  <rect x="314" y="112" width="272" height="90" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="328" y="136" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="start">临时放行</text>
+  <text x="328" y="158" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#334155" text-anchor="start">联调简化版 alertmanager.yaml</text>
+  <text x="328" y="176" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#334155" text-anchor="start">为抑制实验把 severity 路由压平</text>
+  <text x="328" y="194" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#3730a3" text-anchor="start">处置：换回契约版本</text>
+
+  <rect x="598" y="112" width="272" height="90" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="612" y="136" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="start">临时上限</text>
+  <text x="612" y="158" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#334155" text-anchor="start">sample_limit 收到 2（一次实验）</text>
+  <text x="612" y="176" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#334155" text-anchor="start">retention.size = 0B（等于不设）</text>
+  <text x="612" y="194" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#3730a3" text-anchor="start">处置：留余量 + 补体积上限</text>
+
+  <line x1="166" y1="206" x2="166" y2="222" stroke="#818cf8" stroke-width="1.5" marker-end="url(#dp-arw)"/>
+  <line x1="450" y1="206" x2="450" y2="222" stroke="#818cf8" stroke-width="1.5" marker-end="url(#dp-arw)"/>
+  <line x1="734" y1="206" x2="734" y2="222" stroke="#818cf8" stroke-width="1.5" marker-end="url(#dp-arw)"/>
+
+  <text x="30" y="250" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">二、五项第 4 周欠账与今天的处置（逐条收口）</text>
+
+  <rect x="30" y="262" width="160" height="112" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="44" y="286" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e" text-anchor="start">R-6</text>
+  <text x="44" y="308" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">删 grouping-test</text>
+  <text x="44" y="326" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">采集 / 规则 / 曲线三处</text>
+  <text x="44" y="344" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">3 条 grep + 1 条运行期</text>
+  <text x="44" y="362" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="start">曲线少一个台阶</text>
+
+  <rect x="202" y="262" width="160" height="112" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="216" y="286" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3" text-anchor="start">RC-3</text>
+  <text x="216" y="308" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">runbook_url 满覆盖</text>
+  <text x="216" y="326" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">对象是 4 条会叫人的</text>
+  <text x="216" y="344" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">规则条数 == runbook 条数</text>
+  <text x="216" y="362" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#0f766e" text-anchor="start">当前 4 == 4</text>
+
+  <rect x="374" y="262" width="160" height="112" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="388" y="286" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e" text-anchor="start">RC-4</text>
+  <text x="388" y="308" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">采集器抓自己</text>
+  <text x="388" y="326" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">补一个 job: prometheus</text>
+  <text x="388" y="344" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">tsdb_* 指标才有值</text>
+  <text x="388" y="362" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="start">采集器挂了没人告诉你</text>
+
+  <rect x="546" y="262" width="160" height="112" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="560" y="286" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3" text-anchor="start">RC-5</text>
+  <text x="560" y="308" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">体积上限不再是 0B</text>
+  <text x="560" y="326" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">191 MiB × 5 ≈ 1 GB</text>
+  <text x="560" y="344" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">上限取自实测速率反推</text>
+  <text x="560" y="362" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#0f766e" text-anchor="start">时间与体积先到者触发</text>
+
+  <rect x="718" y="262" width="152" height="112" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="732" y="286" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e" text-anchor="start">L3</text>
+  <text x="732" y="308" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">真实通知渠道前置</text>
+  <text x="732" y="326" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">凭据落点 / 模板</text>
+  <text x="732" y="344" font-family="system-ui, sans-serif" font-size="9.5" font-weight="400" fill="#334155" text-anchor="start">限流重试 / resolved</text>
+  <text x="732" y="362" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="start">能验与不能验划清</text>
+
+  <text x="30" y="404" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">三、判据 DP-A ~ DP-H（八条）</text>
+
+  <rect x="30" y="416" width="840" height="70" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="46" y="440" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f766e" text-anchor="start">文档级（本机可跑 grep / ls）：</text>
+  <text x="240" y="440" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">三类「临时」是否登记、删除清单是否三类齐全、runbook 覆盖口径、上限反推算式、先到者口径、L3 边界</text>
+  <text x="46" y="464" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#3730a3" text-anchor="start">运行期（需容器运行时，未跑）：</text>
+  <text x="240" y="464" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">删掉 grouping-test 后 count(up{…}) 由 8 → 3；up{job="prometheus"} 出现且为 1；retention.size 回读不再是 0B</text>
+  <text x="46" y="482" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#334155" text-anchor="start">状态列只写「当前可执行性」，不把期望值抄进去。</text>
+
+  <text x="30" y="510" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e" text-anchor="start">收敛的本质：把「为了让现象出现」而做的改动，换回「为了让系统交付」而做的设计。</text>
+</svg>

@@ -165,6 +165,22 @@ mvn -q dependency:tree -Dincludes=com.example.domain | grep -q "infrastructure" 
 
 - [云上架构](../../../Ops/CloudArchitecture/index.md)：本页给出「**可逆 / 不可逆决策**」的分界方法（判断标准是「改它需不需要停业务、需不需要搬数据」）；云上架构专题是这条分界在**资源编排层**的一次完整兑现——地域、网段、可用区数量、入口形态、计费模型这五件事被逐条标上「改起来的代价」等级，并说明**为什么第 2 件（网段）是最多人后悔的一个**。要练「分界」这套手感，该页的[五件事对照表](../../../Ops/CloudArchitecture/Overview/index.md)比本页的抽象原则更好上手。
 
+## 与在线协作任务看板的架构实例
+
+本页讲**架构文档怎么写**：模块边界、依赖方向、关键取舍的记录方式。
+
+[在线协作任务看板 · 领域核心与读写服务](../../../../project/Complete/TeamBoard/DomainCore/index.md) 是本页要求的「模块边界」落到**方法粒度**之后的形态——架构文档说「谁不做什么」，编码期文档要接着说「所以事务边界落在哪一层、幂等键插在哪一步」。
+
+| 架构文档里的一句话 | 编码期必须回答的问题 | 落在哪一页 |
+| --- | --- | --- |
+| 「九个模块，`card` 不直接写 `notification`」 | 通知到底靠什么机制解耦？跨模块失败怎么兜？ | [评论与通知：事务内 outbox](../../../../project/Complete/TeamBoard/Comments/index.md) |
+| 「实时推送走独立模块」 | 鉴权在哪一段进场？推送与事务的先后顺序谁保证？ | [实时网关](../../../../project/Complete/TeamBoard/RealtimeGateway/index.md) |
+| 「权限有三处判定点」 | 三处各自的失败表现是什么？哪一处是静默的？ | [架构设计](../../../../project/Complete/TeamBoard/Architecture/index.md) 与 [实时网关](../../../../project/Complete/TeamBoard/RealtimeGateway/index.md) |
+
+::: tip 判断架构文档写没写够的一条标准
+拿一个具体操作（例如「拖动一张卡片」）从头走一遍，**每一步都能指出它属于哪个模块、失败时表现为哪一类现象**——走不通，说明架构文档还停在名词层面。本页给出判据，任务看板的 [架构设计](../../../../project/Complete/TeamBoard/Architecture/index.md) 给出走通的样例。
+:::
+
 ## 参考资料
 
 - [Architecture Decision Records（ADR）官网与模板](https://adr.github.io/)

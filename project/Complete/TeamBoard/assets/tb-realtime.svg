@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="在线协作任务看板的实时网关概览：上半是连接生命周期六段（握手鉴权、订阅、心跳、背压、重连、订阅变更）及每段的失败表现，中部是 seq 的四种用途，下部是事件形状示例、两条铁律与订阅鉴权结论">
+  <title>在线协作任务看板 · 实时网关的六段生命周期与 seq 机制</title>
+  <defs>
+    <marker id="tbrt-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">在线协作任务看板 · 实时网关的六段生命周期与 seq 机制</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">网关只推送、不裁决：推送是加速器，拉取是兜底。六段顺序固定，每段都写清失败时用户看到什么。</text>
+
+  <text x="30" y="96" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">连接生命周期六段（握手鉴权 → 订阅 → 心跳 → 背压 → 重连 → 订阅变更）</text>
+
+  <rect x="30" y="108" width="270" height="82" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="130" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">① 握手鉴权</text>
+  <text x="44" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#334155">先取一次性票据，不把令牌放 query</text>
+  <text x="44" y="166" font-family="system-ui, sans-serif" font-size="9" fill="#334155">票据 60 s 有效、用一次即废</text>
+  <text x="44" y="182" font-family="system-ui, sans-serif" font-size="9" fill="#b45309">失败：升级阶段 401，控制台报错码</text>
+
+  <line x1="302" y1="149" x2="313" y2="149" stroke="#334155" stroke-width="1.6" marker-end="url(#tbrt-ar)"/>
+
+  <rect x="315" y="108" width="270" height="82" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="329" y="130" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">② 订阅</text>
+  <text x="329" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#334155">每次订阅逐 topic 判 require_member</text>
+  <text x="329" y="166" font-family="system-ui, sans-serif" font-size="9" fill="#334155">成功回 subscribed 并带上当前 seq</text>
+  <text x="329" y="182" font-family="system-ui, sans-serif" font-size="9" fill="#b45309">失败：静默不推，与「没有事件」同形</text>
+
+  <line x1="587" y1="149" x2="598" y2="149" stroke="#334155" stroke-width="1.6" marker-end="url(#tbrt-ar)"/>
+
+  <rect x="600" y="108" width="270" height="82" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="614" y="130" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">③ 心跳</text>
+  <text x="614" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#334155">服务端 30 s 一次 ping</text>
+  <text x="614" y="166" font-family="system-ui, sans-serif" font-size="9" fill="#334155">客户端 10 s 无 pong，服务端 60 s 强关</text>
+  <text x="614" y="182" font-family="system-ui, sans-serif" font-size="9" fill="#b45309">失败：半开连接污染订阅计数</text>
+
+  <rect x="30" y="200" width="270" height="82" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="44" y="222" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">④ 背压</text>
+  <text x="44" y="242" font-family="system-ui, sans-serif" font-size="9" fill="#334155">队列上限 256 条 / 1 MB</text>
+  <text x="44" y="258" font-family="system-ui, sans-serif" font-size="9" fill="#334155">超限清空队列并推 resync_required</text>
+  <text x="44" y="274" font-family="system-ui, sans-serif" font-size="9" fill="#b45309">失败：无限缓冲，拖垮所有连接</text>
+
+  <line x1="302" y1="241" x2="313" y2="241" stroke="#334155" stroke-width="1.6" marker-end="url(#tbrt-ar)"/>
+
+  <rect x="315" y="200" width="270" height="82" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="329" y="222" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">⑤ 重连</text>
+  <text x="329" y="242" font-family="system-ui, sans-serif" font-size="9" fill="#334155">退避 1 → 2 → 4 → 8 s，上限 30 s + 抖动</text>
+  <text x="329" y="258" font-family="system-ui, sans-serif" font-size="9" fill="#334155">必须带 since，并重新订阅原看板</text>
+  <text x="329" y="274" font-family="system-ui, sans-serif" font-size="9" fill="#b45309">失败：连接活着，事件一条不来</text>
+
+  <line x1="587" y1="241" x2="598" y2="241" stroke="#334155" stroke-width="1.6" marker-end="url(#tbrt-ar)"/>
+
+  <rect x="600" y="200" width="270" height="82" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="614" y="222" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">⑥ 订阅变更</text>
+  <text x="614" y="242" font-family="system-ui, sans-serif" font-size="9" fill="#334155">先 unsubscribe，应答后再 subscribe</text>
+  <text x="614" y="258" font-family="system-ui, sans-serif" font-size="9" fill="#334155">角色变更 / 移除事件到达时踢人</text>
+  <text x="614" y="274" font-family="system-ui, sans-serif" font-size="9" fill="#b45309">失败：订阅数随切过的看板增长</text>
+
+  <text x="30" y="308" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">seq 的四种用途（粒度是「每块看板」，不是全局序列）</text>
+
+  <rect x="30" y="320" width="195" height="62" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="42" y="344" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">排序</text>
+  <text x="42" y="364" font-family="system-ui, sans-serif" font-size="9" fill="#334155">按 seq 应用，不按到达时间</text>
+
+  <rect x="240" y="320" width="195" height="62" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="252" y="344" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">追平</text>
+  <text x="252" y="364" font-family="system-ui, sans-serif" font-size="9" fill="#334155">重连带 since 拉回增量</text>
+
+  <rect x="450" y="320" width="195" height="62" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="462" y="344" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">缺口检测</text>
+  <text x="462" y="364" font-family="system-ui, sans-serif" font-size="9" fill="#334155">本地 105 收到 108 就去补</text>
+
+  <rect x="660" y="320" width="195" height="62" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="672" y="344" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">对账</text>
+  <text x="672" y="364" font-family="system-ui, sans-serif" font-size="9" fill="#334155">每 30 s 比一次，超阈值重载</text>
+
+  <rect x="30" y="394" width="420" height="142" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="418" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">事件形状：自解释、带 version</text>
+  <text x="44" y="440" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155">{"type":"event","seq":108,</text>
+  <text x="44" y="458" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155"> "event":{"type":"card.moved",</text>
+  <text x="44" y="476" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155"> "version":7,"actorId":"…",</text>
+  <text x="44" y="494" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155"> "payload":{"cardId":"…","toListId":"…",</text>
+  <text x="44" y="512" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155"> "position":"0|b/003"}}}</text>
+
+  <rect x="470" y="394" width="400" height="142" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="484" y="418" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">两条铁律</text>
+  <text x="484" y="440" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">铁律一：事务提交成功之后才广播。</text>
+  <text x="484" y="458" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">先广播后提交 → 别人的界面比广播更旧，</text>
+  <text x="484" y="476" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">而库里最终是对的：刷新一下就好了。</text>
+  <text x="484" y="494" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">铁律二：出口没有真背压，超限清空队列</text>
+  <text x="484" y="512" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">并推一帧 resync_required；Redis 只让别的</text>
+  <text x="484" y="530" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">实例尽快知道，事实来源是 board_events。</text>
+
+  <rect x="30" y="548" width="840" height="56" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="44" y="570" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#92400e">订阅鉴权：一处静默的漏洞 —— 越权订阅的响应形状写死为「拒绝订阅」，不是「静默不推送」</text>
+  <text x="44" y="590" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">理由：①「没数据」与「没权限」必须可区分；② 它既留得下审计痕迹，又不会引发重连风暴；③ 对「不存在」与「无权」返回同一种拒绝，不泄漏存在性。</text>
+</svg>

@@ -274,6 +274,7 @@ export const CompleteProject = [
           { text: "验收三：告警风暴联调", link: "/project/Complete/MonitoringDashboard/Acceptance3/index.md" },
           { text: "遗留项结清：把 ⏳ 换成实测数字", link: "/project/Complete/MonitoringDashboard/ResidualClose/index.md" },
           { text: "压测与容量：把单点能力变成容量结论", link: "/project/Complete/MonitoringDashboard/CapacityTest/index.md" },
+          { text: "部署前置：把联调态收敛成可交付态", link: "/project/Complete/MonitoringDashboard/DeployPrep/index.md" },
         ],
       },
       {
@@ -288,6 +289,13 @@ export const CompleteProject = [
           { text: "数据库设计：表、约束与顺序字段", link: "/project/Complete/TeamBoard/Database/index.md" },
           { text: "环境与工程骨架", link: "/project/Complete/TeamBoard/Environment/index.md" },
           { text: "验收：把「做完了」变成可执行的步骤", link: "/project/Complete/TeamBoard/Acceptance/index.md" },
+          { text: "领域核心与读写服务", link: "/project/Complete/TeamBoard/DomainCore/index.md" },
+          { text: "卡片拖动：一次拖动只更新一行", link: "/project/Complete/TeamBoard/CardMove/index.md" },
+          { text: "评论与通知：事务内 outbox", link: "/project/Complete/TeamBoard/Comments/index.md" },
+          { text: "实时网关：订阅鉴权与断线追平", link: "/project/Complete/TeamBoard/RealtimeGateway/index.md" },
+          { text: "接口契约定稿：路径、错误码与幂等", link: "/project/Complete/TeamBoard/Contracts/index.md" },
+          { text: "可运行验证：从零起一套能跑的环境", link: "/project/Complete/TeamBoard/Verification/index.md" },
+          { text: "常见问题与最佳实践：编码期分诊与自查", link: "/project/Complete/TeamBoard/FAQ/index.md" },
         ],
       },
       {

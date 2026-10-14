@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="在线协作任务看板的编码期分诊：先分诊四段、再把十二条现象归到三处、最后用自查清单与判据收尾">
+  <title>在线协作任务看板 · 编码期分诊与自查</title>
+  <defs>
+    <marker id="tbf-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">在线协作任务看板 · 编码期分诊与自查</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">顺序不可换：先分类，再看原因，最后才动手——顺序反了会在「调拖拽动画」上耗掉一天，而真正的问题在订阅与提交顺序上。</text>
+
+  <text x="30" y="96" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">① 分诊四段：每条现象都按这四段记，缺一段就不算排查过</text>
+
+  <rect x="30" y="106" width="195" height="76" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="130" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">① 现象</text>
+  <text x="44" y="152" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">拖动后没变 / 收到 403 /</text>
+  <text x="44" y="170" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">卡在旧 seq —— 先描述它</text>
+
+  <line x1="227" y1="144" x2="243" y2="144" stroke="#334155" stroke-width="1.6" marker-end="url(#tbf-ar)"/>
+
+  <rect x="245" y="106" width="195" height="76" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="259" y="130" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">② 先跑什么</text>
+  <text x="259" y="152" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#334155">websocat / psql / redis-cli</text>
+  <text x="259" y="170" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">一条能区分两层的命令</text>
+
+  <line x1="442" y1="144" x2="458" y2="144" stroke="#334155" stroke-width="1.6" marker-end="url(#tbf-ar)"/>
+
+  <rect x="460" y="106" width="195" height="76" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="474" y="130" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">③ 最可能的原因</text>
+  <text x="474" y="152" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">先怀疑链路顺序（提交与广播、</text>
+  <text x="474" y="170" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">seq 与去重），再怀疑代码</text>
+
+  <line x1="657" y1="144" x2="673" y2="144" stroke="#334155" stroke-width="1.6" marker-end="url(#tbf-ar)"/>
+
+  <rect x="675" y="106" width="195" height="76" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="689" y="130" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">④ 处置</text>
+  <text x="689" y="152" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">按对应章节的正确做法改一次；</text>
+  <text x="689" y="170" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">不要用「延迟 200 ms」打补丁</text>
+
+  <text x="30" y="216" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">② 十二条现象归到三处：先按这个分类，再翻对应章节</text>
+
+  <rect x="30" y="228" width="270" height="150" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="254" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">顺序与并发（4 条）</text>
+  <text x="44" y="278" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· 拖动后别人看不到顺序变化</text>
+  <text x="44" y="300" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· 相邻位置无空隙，插入失败</text>
+  <text x="44" y="322" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· version 冲突被吞成 200</text>
+  <text x="44" y="344" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· 一次拖动改动了整列</text>
+  <text x="44" y="368" font-family="system-ui, sans-serif" font-size="9" fill="#3730a3">归宿：数据库设计 · 第 四 节</text>
+
+  <rect x="315" y="228" width="270" height="150" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="329" y="254" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">权限与可见性（3 条）</text>
+  <text x="329" y="278" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· 越权订阅收到别人事件</text>
+  <text x="329" y="300" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· 跨工作区 403 暴露存在性</text>
+  <text x="329" y="322" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· 签名 URL 转发后仍可下载</text>
+  <text x="329" y="368" font-family="system-ui, sans-serif" font-size="9" fill="#0f766e">归宿：架构设计 · 第 七 节</text>
+
+  <rect x="600" y="228" width="270" height="150" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="614" y="254" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">实时与通知（5 条）</text>
+  <text x="614" y="278" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· 先广播后提交，别人读到旧数据</text>
+  <text x="614" y="300" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· seq 有缺口，前端卡在旧状态</text>
+  <text x="614" y="322" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· 多实例时事件只到一个实例</text>
+  <text x="614" y="344" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· outbox 丢投或投重</text>
+  <text x="614" y="366" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">· 无限缓冲把事件堆在服务端</text>
+
+  <rect x="30" y="398" width="840" height="102" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="44" y="422" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#92400e">③ 收尾三件套：能勾、能背、能查</text>
+  <text x="44" y="446" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">编码期自查清单 18 项 —— 每项都写清「做到什么算做到」，勾不上就不算编完。</text>
+  <text x="44" y="466" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">十二条最佳实践 + 术语表 16 项（fractional ranking / outbox / backpressure 等口径统一）。</text>
+  <text x="44" y="486" font-family="system-ui, sans-serif" font-size="9.5" fill="#334155">判据族 FQ-A ~ FQ-F：六条 grep -c 本机可判，实测值写在第六节，不把设计完成写成运行期验证完成。</text>
+</svg>

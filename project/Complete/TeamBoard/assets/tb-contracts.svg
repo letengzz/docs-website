@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="在线协作任务看板的接口契约概览：左上三份契约载体与各自的依赖方，中部八组资源路径，左下六个状态码的口径表，右下是幂等键与并发版本的取舍，底部是守约三件套">
+  <title>在线协作任务看板 · 契约载体、路径分组、错误码口径与守约三件套</title>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">在线协作任务看板 · 接口契约：载体、路径与错误码口径</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">契约单独成目录，改它必须走评审。每一条都要能回答：约定是什么、定错的后果、怎么验证没被破坏。</text>
+
+  <text x="30" y="96" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">三份载体（按「谁依赖它、改它时谁必须一起评审」划分）</text>
+
+  <rect x="30" y="108" width="270" height="86" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="130" font-family="ui-monospace, Menlo, monospace" font-size="11.5" font-weight="700" fill="#3730a3">contracts/rest/</text>
+  <text x="44" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#334155">HTTP 路径、请求与响应 schema、成功与错误码</text>
+  <text x="44" y="166" font-family="system-ui, sans-serif" font-size="9" fill="#334155">依赖方：前端类型生成、后端路由、契约测试</text>
+  <text x="44" y="184" font-family="system-ui, sans-serif" font-size="9" fill="#b45309">改错：字段对不上，要到运行时才发现</text>
+
+  <rect x="315" y="108" width="270" height="86" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="329" y="130" font-family="ui-monospace, Menlo, monospace" font-size="11.5" font-weight="700" fill="#3730a3">contracts/realtime/</text>
+  <text x="329" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#334155">主题命名、订阅帧、事件形状（含 seq 与 version）</text>
+  <text x="329" y="166" font-family="system-ui, sans-serif" font-size="9" fill="#334155">依赖方：实时网关、客户端、事件补拉接口</text>
+  <text x="329" y="184" font-family="system-ui, sans-serif" font-size="9" fill="#b45309">改错：推送与补拉两边对不上</text>
+
+  <rect x="600" y="108" width="270" height="86" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="614" y="130" font-family="ui-monospace, Menlo, monospace" font-size="11.5" font-weight="700" fill="#3730a3">contracts/errors/</text>
+  <text x="614" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#334155">状态码语义、错误体结构、重试语义</text>
+  <text x="614" y="166" font-family="system-ui, sans-serif" font-size="9" fill="#334155">依赖方：全部接口、前端统一错误处理</text>
+  <text x="614" y="184" font-family="system-ui, sans-serif" font-size="9" fill="#b45309">改错：前端写不出通用重试与提示</text>
+
+  <text x="30" y="218" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">路径清单共 23 条（/api/v1 之下，按资源分组；握手路径 /ws 不带版本前缀）</text>
+
+  <rect x="30" y="230" width="195" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="42" y="252" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">登录与握手票据</text>
+  <text x="42" y="270" font-family="ui-monospace, Menlo, monospace" font-size="8.5" fill="#334155">login / realtime/ticket</text>
+
+  <rect x="240" y="230" width="195" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="252" y="252" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">工作区与成员</text>
+  <text x="252" y="270" font-family="ui-monospace, Menlo, monospace" font-size="8.5" fill="#334155">workspaces / members / invitations</text>
+
+  <rect x="450" y="230" width="195" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="462" y="252" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">看板与列</text>
+  <text x="462" y="270" font-family="ui-monospace, Menlo, monospace" font-size="8.5" fill="#334155">GET /boards/{id} / lists</text>
+
+  <rect x="660" y="230" width="195" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="672" y="252" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">卡片与拖动</text>
+  <text x="672" y="270" font-family="ui-monospace, Menlo, monospace" font-size="8.5" fill="#334155">cards / cards/{id}/move</text>
+
+  <rect x="30" y="294" width="195" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="42" y="316" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">评论与提及</text>
+  <text x="42" y="334" font-family="ui-monospace, Menlo, monospace" font-size="8.5" fill="#334155">cards/{id}/comments</text>
+
+  <rect x="240" y="294" width="195" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="252" y="316" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">附件与签名</text>
+  <text x="252" y="334" font-family="ui-monospace, Menlo, monospace" font-size="8.5" fill="#334155">attachments:sign / download:sign</text>
+
+  <rect x="450" y="294" width="195" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="462" y="316" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">搜索</text>
+  <text x="462" y="334" font-family="ui-monospace, Menlo, monospace" font-size="8.5" fill="#334155">search?q= workspaceId= cursor=</text>
+
+  <rect x="660" y="294" width="195" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="672" y="316" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a">事件补拉与握手</text>
+  <text x="672" y="334" font-family="ui-monospace, Menlo, monospace" font-size="8.5" fill="#334155">boards/{id}/events / ws</text>
+
+  <rect x="30" y="366" width="470" height="184" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="44" y="390" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">错误码口径：六个码，每个只有一个含义</text>
+  <text x="44" y="412" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" fill="#3730a3">401</text>
+  <text x="100" y="412" font-family="system-ui, sans-serif" font-size="9" fill="#334155">令牌缺失 / 无效 / 过期 / 已撤销：不判权限，先于 403</text>
+  <text x="44" y="434" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" fill="#3730a3">403</text>
+  <text x="100" y="434" font-family="system-ui, sans-serif" font-size="9" fill="#334155">是成员但角色不允许；跨工作区一律不用它</text>
+  <text x="44" y="456" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" fill="#3730a3">404</text>
+  <text x="100" y="456" font-family="system-ui, sans-serif" font-size="9" fill="#334155">资源不存在，或该用户不可见：与「无权」完全同形</text>
+  <text x="44" y="478" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" fill="#3730a3">409</text>
+  <text x="100" y="478" font-family="system-ui, sans-serif" font-size="9" fill="#334155">version 不匹配 / 幂等键复用 / 唯一键冲突：必须带最新现状</text>
+  <text x="44" y="500" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" fill="#3730a3">422</text>
+  <text x="100" y="500" font-family="system-ui, sans-serif" font-size="9" fill="#334155">语法合法但语义错：400 管语法，422 管语义</text>
+  <text x="44" y="522" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" fill="#3730a3">429</text>
+  <text x="100" y="522" font-family="system-ui, sans-serif" font-size="9" fill="#334155">触发限流：必须带 Retry-After 与限流维度</text>
+
+  <rect x="516" y="366" width="354" height="184" rx="9" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="530" y="390" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">幂等与并发：两件事，别混</text>
+  <text x="530" y="412" font-family="system-ui, sans-serif" font-size="9" fill="#334155">幂等键 Idempotency-Key，值由客户端生成</text>
+  <text x="530" y="430" font-family="system-ui, sans-serif" font-size="9" fill="#334155">命中范围 = 方法 + 路径模板 + client_op_id</text>
+  <text x="530" y="448" font-family="system-ui, sans-serif" font-size="9" fill="#334155">命中且体相同 → 上次结果 + Idempotency-Replayed</text>
+  <text x="530" y="466" font-family="system-ui, sans-serif" font-size="9" fill="#334155">命中但体不同 → 409 IDEMPOTENCY_KEY_REUSED</text>
+  <text x="530" y="484" font-family="system-ui, sans-serif" font-size="9" fill="#334155">上一次仍在处理中 → 409 IDEMPOTENCY_IN_PROGRESS</text>
+  <text x="530" y="502" font-family="system-ui, sans-serif" font-size="9" fill="#334155">并发版本写死走请求体里的 version，不用 If-Match</text>
+  <text x="530" y="520" font-family="system-ui, sans-serif" font-size="9" fill="#b45309">代价：不是 HTTP 标准做法，换来一套统一冲突处理</text>
+
+  <rect x="30" y="562" width="840" height="42" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="44" y="584" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#92400e">守约三件套：生成的 TypeScript 类型 + 契约测试 + 「生成物 diff 为空」的漂移检查</text>
+  <text x="44" y="600" font-family="system-ui, sans-serif" font-size="8.5" fill="#334155">没有机器检查的契约，会在两周内变成一份过期文档；破坏性变更只有四类，必须走「加新版 → 双跑并观测 → 删旧」三步。</text>
+</svg>
