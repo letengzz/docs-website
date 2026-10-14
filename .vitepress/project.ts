@@ -272,6 +272,7 @@ export const CompleteProject = [
           { text: "环境前置：把「未跑」变成「可跑」", link: "/project/Complete/MonitoringDashboard/EnvPrereq/index.md" },
           { text: "验收一与验收二：把 ⏳ 换成实测数字", link: "/project/Complete/MonitoringDashboard/Acceptance12/index.md" },
           { text: "验收三：告警风暴联调", link: "/project/Complete/MonitoringDashboard/Acceptance3/index.md" },
+          { text: "遗留项结清：把 ⏳ 换成实测数字", link: "/project/Complete/MonitoringDashboard/ResidualClose/index.md" },
         ],
       },
       {

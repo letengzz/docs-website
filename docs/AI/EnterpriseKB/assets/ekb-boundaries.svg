@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="企业知识库的四条边界：检索权限与生成权限、索引权限与源权限、能答与可信、覆盖面与可审计">
+  <title>四条边界：企业知识库与普通 RAG 的分界</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">四条边界：企业知识库与普通 RAG 的分界</text>
+  <rect x="30" y="76" width="840" height="96" rx="10" fill="#fee2e2" stroke="#e2e8f0"/>
+  <text x="52" y="106" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="start">边界一</text>
+  <text x="120" y="106" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">检索权限 ≠ 生成权限</text>
+  <text x="120" y="132" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">生成模型没有权限概念，它只处理你递给它的上下文</text>
+  <text x="120" y="154" font-family="system-ui, sans-serif" font-size="11.5" font-weight="600" fill="#b91c1c" text-anchor="start">→ 过滤必须在检索阶段，不能在生成之后补救</text>
+  <rect x="30" y="184" width="840" height="96" rx="10" fill="#fef3c7" stroke="#e2e8f0"/>
+  <text x="52" y="214" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start">边界二</text>
+  <text x="120" y="214" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">索引里的权限 ≠ 源系统的权限</text>
+  <text x="120" y="240" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">索引是副本，副本上的权限是某一时刻的快照</text>
+  <text x="120" y="262" font-family="system-ui, sans-serif" font-size="11.5" font-weight="600" fill="#b45309" text-anchor="start">→ 单向同步 + 覆盖删除 + 生效时延写成 SLO</text>
+  <rect x="30" y="292" width="840" height="96" rx="10" fill="#e0f2fe" stroke="#e2e8f0"/>
+  <text x="52" y="322" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0369a1" text-anchor="start">边界三</text>
+  <text x="120" y="322" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">答得出来 ≠ 答案可信</text>
+  <text x="120" y="348" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">0.95 忠实度可以忠实地复述一个作废口径</text>
+  <text x="120" y="370" font-family="system-ui, sans-serif" font-size="11.5" font-weight="600" fill="#0369a1" text-anchor="start">→ 补语料可信度判据（责任人 / 有效期 / 权威源）</text>
+  <rect x="30" y="400" width="840" height="96" rx="10" fill="#eef2ff" stroke="#e2e8f0"/>
+  <text x="52" y="430" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3" text-anchor="start">边界四</text>
+  <text x="120" y="430" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">覆盖面 ≠ 可审计</text>
+  <text x="120" y="456" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">每多接一个源，多一套权限模型与删除语义</text>
+  <text x="120" y="478" font-family="system-ui, sans-serif" font-size="11.5" font-weight="600" fill="#3730a3" text-anchor="start">→ 先接三个源跑通权限与删除，再扩覆盖</text>
+  <text x="32" y="500" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">四条边界画错的代价不同：边界一错了是安全事件，边界二与三错了是信任问题，边界四错了是维护成本。</text>
+</svg>

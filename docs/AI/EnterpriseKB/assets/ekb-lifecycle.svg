@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="企业知识库语料生命周期六阶段：采集、解析切分、索引、服务期、下架、销毁">
+  <title>语料生命周期六阶段：每一步都必须留下记录</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">语料生命周期六阶段：每一步都必须留下记录</text>
+  <rect x="30" y="84" width="132" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="44" y="112" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0369a1" text-anchor="start">① 采集</text>
+  <text x="44" y="140" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">内容 + 权限元数据</text>
+  <text x="44" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start"></text>
+  <text x="44" y="190" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="start">必留：</text>
+  <text x="44" y="208" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start">记录采集水位</text>
+  <text x="44" y="224" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start"></text>
+  <path d="M 162 159 L 170 159" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="172" y="84" width="132" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="186" y="112" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0369a1" text-anchor="start">② 解析与切分</text>
+  <text x="186" y="140" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">按结构切、权限边界不</text>
+  <text x="186" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">跨块</text>
+  <text x="186" y="190" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="start">必留：</text>
+  <text x="186" y="208" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start">记录切分参数与版本</text>
+  <text x="186" y="224" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start"></text>
+  <path d="M 304 159 L 312 159" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="314" y="84" width="132" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="328" y="112" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0369a1" text-anchor="start">③ 索引</text>
+  <text x="328" y="140" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">向量 + 可过滤权限</text>
+  <text x="328" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">字段</text>
+  <text x="328" y="190" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="start">必留：</text>
+  <text x="328" y="208" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start">记录嵌入模型与索引版本</text>
+  <text x="328" y="224" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start"></text>
+  <path d="M 446 159 L 454 159" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="456" y="84" width="132" height="150" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="470" y="112" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3" text-anchor="start">④ 服务期</text>
+  <text x="470" y="140" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">被检索、被引用</text>
+  <text x="470" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start"></text>
+  <text x="470" y="190" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="start">必留：</text>
+  <text x="470" y="208" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start">审计留痕（问题 + 命</text>
+  <text x="470" y="224" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start">中文档）</text>
+  <path d="M 588 159 L 596 159" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="598" y="84" width="132" height="150" rx="10" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="612" y="112" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start">⑤ 下架</text>
+  <text x="612" y="140" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">源删除 / 权限回收</text>
+  <text x="612" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start"> / 到期</text>
+  <text x="612" y="190" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="start">必留：</text>
+  <text x="612" y="208" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start">记录下架原因与操作者</text>
+  <text x="612" y="224" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start"></text>
+  <path d="M 730 159 L 738 159" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="740" y="84" width="132" height="150" rx="10" fill="#fee2e2" stroke="#fca5a5"/>
+  <text x="754" y="112" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="start">⑥ 销毁</text>
+  <text x="754" y="140" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">索引 · 缓存 · </text>
+  <text x="754" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">备份全部移除</text>
+  <text x="754" y="190" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="start">必留：</text>
+  <text x="754" y="208" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start">销毁确认记录</text>
+  <text x="754" y="224" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#64748b" text-anchor="start"></text>
+  <text x="32" y="272" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">删除传播是三种不同难度的问题，很多系统只做了第一个：</text>
+  <rect x="30" y="288" width="840" height="30" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="46" y="308" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">形态</text>
+  <text x="346" y="308" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">触发</text>
+  <text x="646" y="308" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">实现</text>
+  <text x="946" y="308" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">难度</text>
+  <rect x="30" y="318" width="840" height="48" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="46" y="347" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e" text-anchor="start">文档级删除</text>
+  <text x="346" y="347" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">删一份文档</text>
+  <text x="646" y="347" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">删该 doc_id 的全部 chunk</text>
+  <text x="806" y="347" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e" text-anchor="start">低</text>
+  <rect x="30" y="370" width="840" height="48" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="46" y="399" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start">权限回收</text>
+  <text x="346" y="399" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">某人被移出一个组</text>
+  <text x="646" y="399" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">内容不变，但权限元数据必须同步</text>
+  <text x="806" y="399" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start">中</text>
+  <rect x="30" y="422" width="840" height="48" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="46" y="451" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c" text-anchor="start">租户 / 范围删除</text>
+  <text x="346" y="451" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">整个库被删除</text>
+  <text x="646" y="451" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">批量删除 + 残留确认</text>
+  <text x="806" y="451" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c" text-anchor="start">高</text>
+  <text x="32" y="494" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">兜底：每日增量对账 + 每周全量对账（FULL 语义：不在本次快照里的文档视为已删除）+ 每日抽样校验。</text>
+</svg>

@@ -12,6 +12,7 @@
 - [提示词安全与评估](PromptSecurity/index.md)
 - [AI 应用观测与评估](LLMObservability/index.md)
 - [语音与音视频 AI](SpeechAudioAI/index.md)
+- [企业知识库落地](EnterpriseKB/index.md)
 - [Agent 应用](Agent/index.md)
 - [Agent 框架深入](AgentFramework/index.md)
 - [Java（AI 专题）](Java/index.md)

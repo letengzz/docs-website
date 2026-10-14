@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="企业知识库六层架构：源系统、身份、接入治理、索引、检索、生成与审计，并标出身份进场位置">
+  <title>六层架构与身份进场点</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">六层架构与身份进场点</text>
+  <rect x="30" y="74" width="620" height="66" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="50" y="102" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="start">① 源系统层</text>
+  <text x="50" y="124" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">wiki / 网盘 / 工单 / 邮件 / 代码库 / 数据库</text>
+  <text x="392" y="114" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="start">权限的权威源</text>
+  <rect x="30" y="150" width="620" height="66" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="50" y="178" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0369a1" text-anchor="start">② 身份层</text>
+  <text x="50" y="200" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">用户目录 · 组关系（含嵌套组）· 标签体系</text>
+  <text x="392" y="190" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="start">组解析必须与源系统一致</text>
+  <rect x="30" y="226" width="620" height="66" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="50" y="254" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#3730a3" text-anchor="start">③ 接入治理层</text>
+  <text x="50" y="276" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">连接器 · 解析 · 切分 · 权限元数据装配</text>
+  <text x="392" y="266" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="start">权限元数据随 chunk 落盘</text>
+  <rect x="30" y="302" width="620" height="66" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="50" y="330" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="start">④ 索引层</text>
+  <text x="50" y="352" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">向量 + 关键词 + 可过滤的权限字段</text>
+  <text x="392" y="342" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="start">权限字段必须可下推过滤</text>
+  <rect x="30" y="378" width="620" height="66" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="50" y="406" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#3730a3" text-anchor="start">⑤ 检索层</text>
+  <text x="50" y="428" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">查询改写 · 多路召回 · 融合 · 重排</text>
+  <text x="392" y="418" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="start">权限条件由服务端施加，每一路都要注入</text>
+  <rect x="30" y="454" width="620" height="66" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="50" y="482" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="start">⑥ 生成与审计层</text>
+  <text x="50" y="504" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">拼装上下文 · 生成 · 引用回填 · 留痕</text>
+  <text x="392" y="494" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="start">上下文里只允许出现已裁剪内容</text>
+  <rect x="672" y="74" width="198" height="386" rx="10" fill="#fee2e2" stroke="#fca5a5"/>
+  <text x="690" y="102" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c" text-anchor="start">身份从哪一段进场？</text>
+  <text x="690" y="138" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">① 请求进来</text>
+  <text x="690" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">必须携带终端用户身份</text>
+  <text x="690" y="196" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">③ 装配</text>
+  <text x="690" y="216" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">权限写进每个 chunk</text>
+  <text x="690" y="254" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">⑤ 检索</text>
+  <text x="690" y="274" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">过滤必填，缺失即拒绝</text>
+  <text x="690" y="312" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">⑧ 生成</text>
+  <text x="690" y="332" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">上下文已裁剪完成</text>
+  <text x="690" y="370" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">⑩ 留痕</text>
+  <text x="690" y="390" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">记录命中文档与判定</text>
+  <text x="690" y="440" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#b91c1c" text-anchor="start">身份只在最外层进场 =</text>
+  <text x="690" y="452" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#b91c1c" text-anchor="start">中间各段全是服务身份 =</text>
+  <text x="690" y="464" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#b91c1c" text-anchor="start">过滤静默失效</text>
+  <path d="M 340 140 L 340 148" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <path d="M 340 216 L 340 224" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <path d="M 340 292 L 340 300" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <path d="M 340 368 L 340 376" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <path d="M 340 444 L 340 452" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <text x="32" y="500" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">六层里只有 ③⑤ 两层是「企业化」多出来的：③ 让权限进索引，⑤ 让权限在检索时生效。</text>
+  <text x="32" y="524" font-family="system-ui, sans-serif" font-size="11.5" font-weight="600" fill="#b91c1c" text-anchor="start">而这两层各自的失败形态都不报错——③ 漏字段只是漏权，⑤ 漏条件就是越权。</text>
+</svg>

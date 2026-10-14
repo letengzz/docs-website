@@ -27,7 +27,7 @@
 
 ## 二、通知渠道分级
 
-渠道分级不是「看喜好」，而是由**打扰成本**反推的。这与 [/docs/Ops/Monitoring/Alerting](/docs/Ops/Monitoring/Alerting/index.md) 里那套三档强度是同一套口径，只是落到具体的 receiver 上。
+渠道分级不是「看喜好」，而是由**打扰成本**反推的。这与 [告警规则与 Alertmanager](/docs/Ops/Monitoring/Alerting/index.md) 里那套三档强度是同一套口径，只是落到具体的 receiver 上。
 
 | 档 | 触发来源 | 渠道 | 升级链路 | 适用 |
 | --- | --- | --- | --- | --- |

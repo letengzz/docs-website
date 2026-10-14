@@ -629,13 +629,13 @@ echo '{"b":1,"a":2}' | jq -S .
 
 ## 15. 参考资料
 
-- fzf 官方仓库与用法示例：[github.com/junegunn/fzf](https://github.com/junegunn/fzf)
-- ripgrep 用户指南：[github.com/BurntSushi/ripgrep/blob/master/GUIDE.md](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md)
-- bat 官方仓库：[github.com/sharkdp/bat](https://github.com/sharkdp/bat)
-- zoxide 官方仓库与迁移说明：[github.com/ajeetdsouza/zoxide](https://github.com/ajeetdsouza/zoxide)
-- jq 手册：[jqlang.github.io/jq/manual](https://jqlang.github.io/jq/manual/)
+- fzf 官方仓库与用法示例：[junegunn/fzf](https://github.com/junegunn/fzf)
+- ripgrep 用户指南：[ripgrep GUIDE.md](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md)
+- bat 官方仓库：[sharkdp/bat](https://github.com/sharkdp/bat)
+- zoxide 官方仓库与迁移说明：[ajeetdsouza/zoxide](https://github.com/ajeetdsouza/zoxide)
+- jq 手册：[jq 官方手册](https://jqlang.github.io/jq/manual/)
 - eza / delta / dust / duf / procs / sd / tokei / glow 官方仓库见各自的 `github.com/<owner>/<repo>`（版本见第 9.2 节表格）
-- hyperfine 官方仓库与使用建议：[github.com/sharkdp/hyperfine](https://github.com/sharkdp/hyperfine)
-- GNU Parallel 手册：[gnu.org/software/parallel/parallel_tutorial.html](https://www.gnu.org/software/parallel/parallel_tutorial.html)
-- xargs 手册（`-0` / `-P` / `-n` / `-r` 的权威说明）：[man7.org/linux/man-pages/man1/xargs.1.html](https://man7.org/linux/man-pages/man1/xargs.1.html)
+- hyperfine 官方仓库与使用建议：[sharkdp/hyperfine](https://github.com/sharkdp/hyperfine)
+- GNU Parallel 手册：[GNU Parallel 教程](https://www.gnu.org/software/parallel/parallel_tutorial.html)
+- xargs 手册（`-0` / `-P` / `-n` / `-r` 的权威说明）：[xargs(1) man page](https://man7.org/linux/man-pages/man1/xargs.1.html)
 - 相关页面：[终端、Shell 与会话复用](../Terminal/index.md) / [自动化：桌面、调度与脚本](../Automation/index.md) / [实战：搭一套个人效率工具链](../Practice/index.md)

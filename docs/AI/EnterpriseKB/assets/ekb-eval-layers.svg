@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" role="img" aria-label="企业知识库评估三层指标：质量指标（分数）、权限指标（布尔）、语料可信度（元数据）">
+  <title>评估的三层指标：分数、布尔与元数据</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="540" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">评估的三层指标：分数、布尔与元数据</text>
+  <rect x="30" y="76" width="260" height="300" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="50" y="106" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3" text-anchor="start">第一类：质量指标</text>
+  <text x="50" y="128" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">形态：分数（分层阈值）</text>
+  <text x="50" y="162" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#3730a3" text-anchor="start">上下文精确率 ≥ 0.80</text>
+  <text x="50" y="180" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">检索是否干净</text>
+  <text x="50" y="202" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#3730a3" text-anchor="start">上下文召回率 ≥ 0.75</text>
+  <text x="50" y="220" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">是否漏召</text>
+  <text x="50" y="242" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#3730a3" text-anchor="start">忠实度 ≥ 0.90</text>
+  <text x="50" y="260" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">是否在编</text>
+  <text x="50" y="282" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#3730a3" text-anchor="start">答案相关性 ≥ 0.85</text>
+  <text x="50" y="300" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">是否答非所问</text>
+  <text x="50" y="322" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#3730a3" text-anchor="start">引用有效性 ≥ 0.85</text>
+  <text x="50" y="340" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">引用可核 + 有权访问</text>
+  <rect x="320" y="76" width="260" height="300" rx="10" fill="#fee2e2" stroke="#fca5a5"/>
+  <text x="340" y="106" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c" text-anchor="start">第二类：权限指标</text>
+  <text x="340" y="128" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">形态：布尔（零容忍）</text>
+  <text x="340" y="162" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="start">越权召回率 = 0</text>
+  <text x="340" y="180" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">硬门禁，不是阈值</text>
+  <text x="340" y="202" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="start">漏权率 ≤ 5%</text>
+  <text x="340" y="220" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">与越权率成跷跷板</text>
+  <text x="340" y="242" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="start">权限稳定性 ≥ 99%</text>
+  <text x="340" y="260" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">变更在 SLO 内反映</text>
+  <text x="340" y="282" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="start">拒答正确率 ≥ 0.90</text>
+  <text x="340" y="300" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">库里没有时不编</text>
+  <text x="340" y="322" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="start">过度拒答率 ≤ 0.10</text>
+  <text x="340" y="340" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">别把系统做成不可用</text>
+  <rect x="610" y="76" width="260" height="300" rx="10" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="630" y="106" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e" text-anchor="start">第三类：语料可信度</text>
+  <text x="630" y="128" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">形态：元数据判据</text>
+  <text x="630" y="162" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f766e" text-anchor="start">过期文档数 = 0</text>
+  <text x="630" y="180" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">超过 refresh_expect</text>
+  <text x="630" y="202" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f766e" text-anchor="start">doc_version 未落后</text>
+  <text x="630" y="220" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">权限元数据是最新抽的</text>
+  <text x="630" y="242" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f766e" text-anchor="start">权威源唯一</text>
+  <text x="630" y="260" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">同一主题一份权威内容</text>
+  <text x="630" y="282" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f766e" text-anchor="start">责任人存在</text>
+  <text x="630" y="300" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">每条内容线有 owner</text>
+  <text x="630" y="322" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f766e" text-anchor="start">模型打分不到这一层</text>
+  <text x="630" y="340" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">只能靠元数据判</text>
+  <rect x="30" y="396" width="840" height="60" rx="10" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="50" y="422" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start">为什么必须三层都有：忠实度 0.97 + 精确率 0.91 的系统，可以非常忠实地复述一个作废的补贴金额。</text>
+  <text x="50" y="444" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">前两类指标对这个缺陷完全无感 —— 能发现它的只有第三类的「内容未过期」判据。</text>
+  <text x="32" y="486" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">门禁顺序：权限门禁（前置）→ 质量门禁 → 可信度门禁。权限先红，质量分数作废。</text>
+  <text x="32" y="512" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">汇报纪律：任何百分比都必须同时给出样本量 —— 20 条上的 92% 与 2000 条上的 92% 不是一回事。</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 566" width="900" height="566" role="img" aria-label="企业知识库运营闭环：四条分诊通道、迭代优先级、例行巡检">
+  <title>运营闭环：bad case → 分诊 → 迭代 → 巡检</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="566" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">运营闭环：bad case → 分诊 → 迭代 → 巡检</text>
+  <text x="32" y="74" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">四条分诊通道（先查 ①②，再查 ③④）</text>
+  <rect x="30" y="92" width="440" height="52" rx="10" fill="#fee2e2" stroke="#fca5a5"/>
+  <text x="46" y="114" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c" text-anchor="start">① 权限类</text>
+  <text x="120" y="114" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">「我不该看到这个」</text>
+  <text x="46" y="134" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="start">权限模型 / 身份传递 / 组展开</text>
+  <rect x="30" y="150" width="440" height="52" rx="10" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="46" y="172" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start">② 语料类</text>
+  <text x="120" y="172" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">「这个说法早改了」</text>
+  <text x="46" y="192" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="start">采集遗漏 / 增量失败 / 删除未传播</text>
+  <rect x="30" y="208" width="440" height="52" rx="10" fill="#e0f2fe" stroke="#7dd3fc"/>
+  <text x="46" y="230" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0369a1" text-anchor="start">③ 检索类</text>
+  <text x="120" y="230" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">「明明有却找不到」</text>
+  <text x="46" y="250" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="start">切分 / 嵌入 / 改写 / 过滤选择性</text>
+  <rect x="30" y="266" width="440" height="52" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="46" y="288" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="start">④ 生成类</text>
+  <text x="120" y="288" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">「检索到了却答错」</text>
+  <text x="46" y="308" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="start">上下文拼装 / 提示词 / 模型能力</text>
+  <rect x="490" y="92" width="380" height="226" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="508" y="118" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">迭代优先级（顺序不可换）</text>
+  <text x="508" y="148" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">1. 修权限与数据缺陷 —— 从不可用到可用</text>
+  <text x="508" y="180" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">2. 补语料覆盖 —— 用户想找的东西库里没有</text>
+  <text x="508" y="212" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">3. 修检索 —— 切分 / 混合召回 / 重排</text>
+  <text x="508" y="244" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">4. 调提示词 —— 检索稳定之后</text>
+  <text x="508" y="276" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">5. 换模型 —— 最后考虑，收益最低成本最高</text>
+  <text x="508" y="306" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#b91c1c" text-anchor="start">判据：bad case 里「检索为空」> 30% → 先补语料。</text>
+  <text x="32" y="344" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">例行巡检：把「等它浮出来」改成「主动去找」</text>
+  <rect x="30" y="360" width="840" height="38" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="46" y="384" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e" text-anchor="start">每天</text>
+  <text x="140" y="384" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">抽样 30 份索引文档回源 + 删除对账</text>
+  <rect x="30" y="402" width="840" height="38" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="46" y="426" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e" text-anchor="start">每周</text>
+  <text x="140" y="426" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">完整三类指标评估 + 权限变更时延探针</text>
+  <rect x="30" y="444" width="840" height="38" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="46" y="468" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start">每月</text>
+  <text x="140" y="468" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">嵌套组对拍 + 「零命中权限组」复核</text>
+  <rect x="30" y="486" width="840" height="38" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="46" y="510" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c" text-anchor="start">每季度</text>
+  <text x="140" y="510" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">资产台账复核 + 合规报告产出</text>
+  <text x="32" y="550" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#b91c1c" text-anchor="start">「零命中权限组」要单独复核：六个月没有任何命中，可能是真没人需要，也可能是该看到的人看不到 —— 而后者永远不会有人发现。</text>
+</svg>

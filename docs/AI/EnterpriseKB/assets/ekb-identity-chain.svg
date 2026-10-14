@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="身份传递链分叉：直连检索带终端用户令牌（过滤生效）与工具包装带服务身份（过滤失效）">
+  <title>身份传递链：两条入口，只差一个请求头</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">身份传递链：两条入口，只差一个请求头</text>
+  <rect x="30" y="76" width="400" height="200" rx="10" fill="#ccfbf1" stroke="#5eead4"/>
+  <text x="52" y="106" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0f766e" text-anchor="start">入口 A：应用直连检索服务</text>
+  <text x="52" y="138" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">① 浏览器 / 客户端</text>
+  <text x="52" y="154" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">携带用户登录态</text>
+  <text x="52" y="172" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">② 应用构造请求</text>
+  <text x="52" y="188" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">请求头带终端用户令牌</text>
+  <text x="52" y="206" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">③ 检索服务</text>
+  <text x="52" y="222" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">校验客户端角色 + 按令牌裁剪结果</text>
+  <text x="52" y="240" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">④ 返回</text>
+  <text x="52" y="256" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">只含该用户可见的文档</text>
+  <text x="52" y="262" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e" text-anchor="start">✅ 过滤生效</text>
+  <rect x="470" y="76" width="400" height="200" rx="10" fill="#fee2e2" stroke="#fca5a5"/>
+  <text x="492" y="106" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#b91c1c" text-anchor="start">入口 B：Agent / 工具包装调用</text>
+  <text x="492" y="138" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">① 用户在对话框提问</text>
+  <text x="492" y="154" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">身份止步于应用层</text>
+  <text x="492" y="172" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">② 工具执行检索</text>
+  <text x="492" y="188" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">用的是应用的凭据（服务身份）</text>
+  <text x="492" y="206" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">③ 检索服务</text>
+  <text x="492" y="222" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">没有用户身份 → 过滤条件无从施加</text>
+  <text x="492" y="240" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="start">④ 返回</text>
+  <text x="492" y="256" font-family="system-ui, sans-serif" font-size="10.5" font-weight="400" fill="#334155" text-anchor="start">索引内全部文档可达</text>
+  <text x="492" y="262" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b91c1c" text-anchor="start">❌ 全部越权（且不报错）</text>
+  <text x="32" y="306" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">正确的三条必须同时成立：</text>
+  <text x="52" y="332" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">1. 工具执行时把终端用户身份透传下去，而不是用应用身份代替；</text>
+  <text x="52" y="358" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">2. 服务端对未携带用户身份的检索请求直接拒绝（4xx），而不是「不带就不过滤」；</text>
+  <text x="52" y="384" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">3. 对每一条入口路径都跑一次越权用例 —— 路径清单进配置，新增路径必须补测试。</text>
+  <line x1="30" y1="416" x2="870" y2="416" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="32" y="444" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="start">四个会静默失效的默认行为：</text>
+  <text x="52" y="468" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">「不带权限元数据就不过滤」——空条件的语义就是匹配全部；</text>
+  <text x="52" y="490" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">令牌过期后 try/except 兜底并继续查询——退化成服务身份查询；</text>
+  <text x="470" y="468" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">嵌套组未按源系统展开（漏权或越权）；</text>
+  <text x="470" y="490" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">多路召回只在一路注入过滤条件。</text>
+</svg>

@@ -265,3 +265,22 @@ export const AI_SpeechAudioAI = [
     ],
   },
 ];
+
+export const AI_EnterpriseKB = [
+  {
+    text: "企业知识库落地",
+    link: "/docs/AI/EnterpriseKB/index.md",
+    collapsed: true,
+    items: [
+      { text: "概述：从「能答」到「该答」", link: "/docs/AI/EnterpriseKB/Overview/index.md" },
+      { text: "参考架构与端到端链路", link: "/docs/AI/EnterpriseKB/Architecture/index.md" },
+      { text: "权限隔离", link: "/docs/AI/EnterpriseKB/AccessControl/index.md" },
+      { text: "数据治理与审计", link: "/docs/AI/EnterpriseKB/DataGovernance/index.md" },
+      { text: "接入与解析", link: "/docs/AI/EnterpriseKB/Ingestion/index.md" },
+      { text: "问答评估", link: "/docs/AI/EnterpriseKB/Evaluation/index.md" },
+      { text: "运营与迭代", link: "/docs/AI/EnterpriseKB/Operations/index.md" },
+      { text: "实战：给一家公司立起企业知识库", link: "/docs/AI/EnterpriseKB/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/EnterpriseKB/FAQ/index.md" },
+    ],
+  },
+];
