@@ -225,6 +225,8 @@ grep -riE "(password|secret|token)\s*[:=]\s*\S{8,}" /var/log/app/ | head
 - gitleaks：<https://github.com/gitleaks/gitleaks>
 - OWASP Secrets Management Cheat Sheet：<https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html>
 - GitHub OIDC 硬编码凭据：<https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services>
+- TruffleHog：<https://github.com/trufflesecurity/trufflehog>
+- GitHub Secret Scanning：<https://docs.github.com/en/code-security/secret-scanning>
 
 ## 相关专题
 
@@ -233,3 +235,4 @@ grep -riE "(password|secret|token)\s*[:=]\s*\S{8,}" /var/log/app/ | head
 - [审计与检测](../AuditDetection/index.md)（凭据读取的审计）
 - [Linux 安全加固](../../Linux/Advanced/SecurityHardening/index.md)
 - [JumpServer](../../JumpServer/index.md)（特权访问管理）
+- [工具：代码质量平台](../../../Tools/CodeQuality/index.md)：**分工是**——本页把凭据当作**需要全生命周期治理的资产**（存储、分发、轮换、泄漏响应），密钥扫描只是其中「发现」这一环；那一专题把密钥检测当作**代码质量平台三层安全能力的第一层**（密钥检测 / 安全热点 / SAST），重点在「怎么在提交前就拦住、误报怎么处置」。**本页回答「泄漏之后怎么办」，那一专题回答「怎么不让它进仓库」。**

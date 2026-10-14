@@ -218,6 +218,9 @@ gitleaks detect --source /tmp --no-git ; echo "exit=$? (预期非 0)"
 - Grype / Syft：<https://github.com/anchore/grype>
 - SARIF 规范：<https://sarifweb.azurewebsites.net/>
 - OSV（开源漏洞数据库）：<https://osv.dev/>
+- SonarQube 服务端文档：<https://docs.sonarsource.com/sonarqube-server/>
+- CWE 官方站点：<https://cwe.mitre.org/>
+- OWASP 源码分析工具清单：<https://owasp.org/www-community/Source_Code_Analysis_Tools>
 
 ## 相关专题
 
@@ -227,3 +230,4 @@ gitleaks detect --source /tmp --no-git ; echo "exit=$? (预期非 0)"
 - [Docker 安全加固](../../Docker/Security/index.md)
 - [工具：CI/CD](../../../Tools/CICD/index.md)
 - [工具：依赖与安全治理](../../../Tools/DependencyGovernance/index.md)：**分工是**——本页与 [SBOM 与软件供应链](../SbomSupplyChain/index.md) 属于**安全侧的扫描能力**（工具、阶段划分、结果治理）；那一专题属于**工程侧的治理流程**（清单怎么建与归档、漏洞怎么排优先级、许可证怎么判、来源怎么验、门禁怎么分档）。两者扫的对象不同也不可互替：**本页的镜像扫描覆盖 OS 包与配置，依赖治理覆盖你构建进去的组件**；反过来，**依赖治理的优先级口径（CVSS v4.0 × EPSS × KEV）与许可证三档策略，本页不做**。一次发布要跑两套扫描，结论取并集。
+- [工具：代码质量平台](../../../Tools/CodeQuality/index.md)：**分工是**——本页编排的是**安全侧的扫描器**（Semgrep 管规则、gitleaks 管密钥、Trivy/Grype 管镜像与依赖），判据是「有没有引入新的安全缺陷」；那一专题运营的是**工程侧的质量平台本身**——SonarQube 怎么装与怎么升、规则怎么裁剪、门禁阈值怎么定、怎么挂进流水线卡合并。重叠区正在 SAST：**本页用它扫安全，那一专题用它扫可维护性**，同一份扫描喂两套判据，结论取并集。

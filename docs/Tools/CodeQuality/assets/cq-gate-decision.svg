@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="质量门禁的判定链路：从新代码口径到门禁结论">
+  <defs>
+    <marker id="cq-gate-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">门禁判定的四段链路</text>
+
+  <rect x="30" y="66" width="192" height="96" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="48" y="92" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">① 定口径</text>
+  <text x="48" y="114" font-family="system-ui, sans-serif" font-size="10" fill="#334155">哪一段算「新代码」</text>
+  <text x="48" y="132" font-family="system-ui, sans-serif" font-size="10" fill="#334155">上一个版本 / 指定天数</text>
+  <text x="48" y="150" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">没定义 = 全是新代码</text>
+
+  <path d="M 228 114 L 250 114" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-gate-arrow)"/>
+
+  <rect x="258" y="66" width="192" height="96" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="276" y="92" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">② 取度量</text>
+  <text x="276" y="114" font-family="system-ui, sans-serif" font-size="10" fill="#334155">新问题数 / 新覆盖率</text>
+  <text x="276" y="132" font-family="system-ui, sans-serif" font-size="10" fill="#334155">新重复率 / 热点评审率</text>
+  <text x="276" y="150" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">缺度量 ≠ 判失败，是跳过</text>
+
+  <path d="M 456 114 L 478 114" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-gate-arrow)"/>
+
+  <rect x="486" y="66" width="192" height="96" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="504" y="92" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">③ 比阈值</text>
+  <text x="504" y="114" font-family="system-ui, sans-serif" font-size="10" fill="#334155">度量 + 比较符 + 错误值</text>
+  <text x="504" y="132" font-family="system-ui, sans-serif" font-size="10" fill="#334155">必须用差分值</text>
+  <text x="504" y="150" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">绝对量条件 = 永久红</text>
+
+  <path d="M 684 114 L 706 114" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-gate-arrow)"/>
+
+  <rect x="714" y="66" width="156" height="96" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="732" y="92" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">④ 出结论</text>
+  <text x="732" y="114" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">OK / ERROR</text>
+  <text x="732" y="132" font-family="system-ui, sans-serif" font-size="10" fill="#334155">逐条条件明细</text>
+  <text x="732" y="150" font-family="system-ui, sans-serif" font-size="10" fill="#334155">可回读可对账</text>
+
+  <rect x="30" y="184" width="410" height="130" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="210" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">默认门禁 Sonar way 的四条条件</text>
+  <text x="48" y="234" font-family="system-ui, sans-serif" font-size="11" fill="#334155">不引入新问题（新代码问题数 = 0）</text>
+  <text x="48" y="254" font-family="system-ui, sans-serif" font-size="11" fill="#334155">新安全热点全部评审完成（评审率 = 100%）</text>
+  <text x="48" y="274" font-family="system-ui, sans-serif" font-size="11" fill="#334155">新代码测试覆盖率 大于等于 80.0%</text>
+  <text x="48" y="294" font-family="system-ui, sans-serif" font-size="11" fill="#334155">新代码重复率 小于等于 3.0%</text>
+
+  <rect x="460" y="184" width="410" height="130" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="478" y="210" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#5b21b6">Sonar way for AI Code 多出来的三条</text>
+  <text x="478" y="234" font-family="system-ui, sans-serif" font-size="11" fill="#334155">前四条与新门禁相同（作用于新代码）</text>
+  <text x="478" y="254" font-family="system-ui, sans-serif" font-size="11" fill="#334155">Security Rating = A（作用于整体代码）</text>
+  <text x="478" y="274" font-family="system-ui, sans-serif" font-size="11" fill="#334155">全部安全热点已评审（作用于整体代码）</text>
+  <text x="478" y="294" font-family="system-ui, sans-serif" font-size="11" fill="#334155">Reliability Rating 不差于 C（作用于整体代码）</text>
+
+  <rect x="30" y="332" width="840" height="76" rx="12" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="52" y="358" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">为什么 AI Code 门禁要加整体条件</text>
+  <text x="52" y="382" font-family="system-ui, sans-serif" font-size="12" fill="#334155">AI 生成的代码可以混进老代码区，而那一块不在新代码口径范围内 —— 只用普通门禁，这类代码可以从缝里过去。</text>
+  <text x="52" y="402" font-family="system-ui, sans-serif" font-size="12" fill="#334155">判据：仓库里存在批量生成的代码、且可能落在历史模块里，就该用 AI Code 门禁，或把这三条加到自己的门禁上。</text>
+
+  <rect x="30" y="424" width="840" height="80" rx="12" fill="#fee2e2" stroke="#fca5a5"/>
+  <text x="52" y="450" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">三个静默失效：出问题时都不会报错</text>
+  <text x="52" y="474" font-family="system-ui, sans-serif" font-size="11" fill="#334155">度量缺失 → 条件被跳过而非判失败，门禁反而变绿 ｜ 百分比口径写错（80 与 0.8）→ 永远绿或永远红</text>
+  <text x="52" y="494" font-family="system-ui, sans-serif" font-size="11" fill="#334155">条件写成绝对量 → 所有大型项目永久红着，最后被人删掉 —— 硬门禁被绕过一次，第二次就更容易被绕过。</text>
+</svg>

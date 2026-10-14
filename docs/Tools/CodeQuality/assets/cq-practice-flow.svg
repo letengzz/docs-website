@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" role="img" aria-label="质量门禁落地六步：从钉版本到开阻断">
+  <defs>
+    <marker id="cq-practice-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="540" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">六步落地：顺序不可换，换一步就要重算</text>
+
+  <rect x="30" y="62" width="270" height="92" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="88" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">第 1 步 · 钉住版本与前置</text>
+  <text x="48" y="110" font-family="system-ui, sans-serif" font-size="10" fill="#334155">数据库版本 / 服务端运行时基线</text>
+  <text x="48" y="130" font-family="system-ui, sans-serif" font-size="10" fill="#334155">镜像 tag 与扫描器版本写进仓库</text>
+  <text x="48" y="148" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">半天 · 判据：版本号在仓库里搜得到</text>
+
+  <path d="M 306 108 L 326 108" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-practice-arrow)"/>
+
+  <rect x="334" y="62" width="270" height="92" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="352" y="88" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">第 2 步 · 定新代码口径</text>
+  <text x="352" y="110" font-family="system-ui, sans-serif" font-size="10" fill="#334155">没有版本 → 指定天数（取 30 天）</text>
+  <text x="352" y="130" font-family="system-ui, sans-serif" font-size="10" fill="#334155">逐项目显式设置，多项目口径要一致</text>
+  <text x="352" y="148" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">半天 · 判据：每个项目读得出一条记录</text>
+
+  <path d="M 610 108 L 630 108" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-practice-arrow)"/>
+
+  <rect x="638" y="62" width="232" height="92" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="656" y="88" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">第 3 步 · 装机 + 全量扫描</text>
+  <text x="656" y="110" font-family="system-ui, sans-serif" font-size="10" fill="#334155">这次扫描只为取分布，不看门禁</text>
+  <text x="656" y="130" font-family="system-ui, sans-serif" font-size="10" fill="#334155">修报告路径直到覆盖率非空</text>
+  <text x="656" y="148" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">一天 · 判据：能读到七个指标</text>
+
+  <rect x="30" y="172" width="270" height="92" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="198" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">第 4 步 · 按分布定阈值</text>
+  <text x="48" y="220" font-family="system-ui, sans-serif" font-size="10" fill="#334155">覆盖率取「略高于中位数」的位置</text>
+  <text x="48" y="240" font-family="system-ui, sans-serif" font-size="10" fill="#334155">重复率先放宽到 5，第 8 周回到 3</text>
+  <text x="48" y="258" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">半天 · 判据：四条条件全在新代码口径</text>
+
+  <path d="M 306 218 L 326 218" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-practice-arrow)"/>
+
+  <rect x="334" y="172" width="270" height="92" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="352" y="198" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">第 5 步 · 接流水线（只报告）</text>
+  <text x="352" y="220" font-family="system-ui, sans-serif" font-size="10" fill="#334155">qualitygate.wait=false，故意不阻断</text>
+  <text x="352" y="240" font-family="system-ui, sans-serif" font-size="10" fill="#334155">取一周真实失败率，作为开阻断依据</text>
+  <text x="352" y="258" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">两天 · 判据：每天都能读到具体数值</text>
+
+  <path d="M 610 218 L 630 218" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-practice-arrow)"/>
+
+  <rect x="638" y="172" width="232" height="92" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="656" y="198" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">第 6 步 · 开阻断 + 误报通道</text>
+  <text x="656" y="220" font-family="system-ui, sans-serif" font-size="10" fill="#334155">失败率小于 20% 才开阻断</text>
+  <text x="656" y="240" font-family="system-ui, sans-serif" font-size="10" fill="#334155">同时落地误报标记与文件排除</text>
+  <text x="656" y="258" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">一天 · 判据：连续两周绿且有误报记录</text>
+
+  <rect x="30" y="282" width="840" height="76" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="308" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">预期管理：这次落地不做什么</text>
+  <text x="52" y="332" font-family="system-ui, sans-serif" font-size="11" fill="#334155">不清存量债（6000 条问题不在范围，只被度量与记录趋势） ｜ 不自研规则（先跑默认集拿真实数据）</text>
+  <text x="52" y="352" font-family="system-ui, sans-serif" font-size="11" fill="#334155">不追求一次到位（覆盖率分三阶段爬升，每阶段有回看日期） ｜ 不动发布流程（只卡合并）</text>
+
+  <rect x="30" y="374" width="840" height="152" rx="12" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="52" y="400" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">验收判据 CQ-A ~ CQ-H（全部文档级、本机可判）</text>
+  <text x="52" y="424" font-family="system-ui, sans-serif" font-size="11" fill="#334155">CQ-A 版本已钉住 ｜ CQ-B 新代码口径显式且多项目一致 ｜ CQ-C 四条条件全在新代码口径且有定值依据</text>
+  <text x="52" y="444" font-family="system-ui, sans-serif" font-size="11" fill="#334155">CQ-D 覆盖率被服务端收到 ｜ CQ-E 步骤顺序正确且有断言 ｜ CQ-F 误报通道有留痕</text>
+  <text x="52" y="464" font-family="system-ui, sans-serif" font-size="11" fill="#334155">CQ-G 不存在「门禁 ERROR 但已合并」的 PR（需至少一个月历史）｜ CQ-H 存量趋势可读</text>
+  <text x="52" y="490" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">CQ-A ~ CQ-F 与 CQ-H 一周内可全部通过；CQ-G 才是「门禁真的在拦」的唯一证据，刻意留在最后。</text>
+  <text x="52" y="512" font-family="system-ui, sans-serif" font-size="11" fill="#334155">口径纪律：状态列填「当前可执行性」，不把期望值抄进实测列；未跑就写未跑与原因。</text>
+</svg>

@@ -58,3 +58,18 @@ Spring Security核心功能包括：
 ****
 
 网络安全基础
+
+## 相关专题
+
+- [Spring Security 6 专题首页](../index.md)
+- [Spring Security 总目录](../../index.md)（含 v5 / v6 / v7 的版本状态）
+- [安全加固体系](../../../../../Ops/SecurityHardening/index.md)：跨层安全治理视角（基线合规、漏洞管理、供应链、密钥治理、审计检测）
+- [工具 · 代码质量平台](../../../../../Tools/CodeQuality/index.md)：**分工是**——Spring Security 管的是**运行时的认证与授权**（谁能不能访问哪个接口），代码质量平台管的是**编码阶段的缺陷密度**（校验逻辑有没有写漏、`permitAll` 有没有误开到生产）。**框架选对不等于用对**：前者提供机制，后者负责在合并前把「用错机制」拦住。
+
+## 参考资料
+
+- Spring Security 官方站点：<https://spring.io/projects/spring-security>
+- Spring Security 参考文档：<https://docs.spring.io/spring-security/reference/index.html>
+- Spring Security 各版本新特性：<https://docs.spring.io/spring-security/reference/whats-new.html>
+- CWE-287 认证机制不当（本框架主要防御的缺陷类型）：<https://cwe.mitre.org/data/definitions/287.html>
+- OWASP 认证备忘单：<https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html>

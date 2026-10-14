@@ -270,6 +270,8 @@ export const CompleteProject = [
           { text: "大盘数据接口端到端核对", link: "/project/Complete/MonitoringDashboard/DashboardE2E/index.md" },
           { text: "第 2 周收口（终）：三条验收与阻塞项", link: "/project/Complete/MonitoringDashboard/Week2Final/index.md" },
           { text: "环境前置：把「未跑」变成「可跑」", link: "/project/Complete/MonitoringDashboard/EnvPrereq/index.md" },
+          { text: "验收一与验收二：把 ⏳ 换成实测数字", link: "/project/Complete/MonitoringDashboard/Acceptance12/index.md" },
+          { text: "验收三：告警风暴联调", link: "/project/Complete/MonitoringDashboard/Acceptance3/index.md" },
         ],
       },
       {

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="代码质量的四条边界：机器判与人判、新代码与整体、阻断与提示、判完谁改">
+  <defs>
+    <marker id="cq-layers-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">四条边界：定不下来，后面全是白配</text>
+
+  <rect x="30" y="64" width="410" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="90" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">边界一：机器判 vs 人判</text>
+  <text x="48" y="114" font-family="system-ui, sans-serif" font-size="11" fill="#334155">机器：能在语法树与控制流图上证明的</text>
+  <text x="48" y="133" font-family="system-ui, sans-serif" font-size="11" fill="#334155">人：需要业务意图的（过度设计、命名语义）</text>
+  <text x="48" y="158" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">把右边一列塞进规则集 = 长期误报</text>
+  <text x="48" y="178" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">= 整条门禁被忽略</text>
+
+  <rect x="460" y="64" width="410" height="150" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="478" y="90" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">边界二：判新代码 vs 判全部代码</text>
+  <text x="478" y="114" font-family="system-ui, sans-serif" font-size="11" fill="#334155">存量：作者可能已离职、要考古、只能排期</text>
+  <text x="478" y="133" font-family="system-ui, sans-serif" font-size="11" fill="#334155">新代码：就是本次 PR，等合并就没了</text>
+  <text x="478" y="158" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f766e">推论：门禁绿 ≠ 代码库干净</text>
+  <text x="478" y="178" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f766e">推论：改动即进入新代码范围</text>
+
+  <rect x="30" y="230" width="410" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="256" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">边界三：阻断 vs 提示</text>
+  <text x="48" y="280" font-family="system-ui, sans-serif" font-size="11" fill="#334155">阻断：会造成事故、损坏、泄漏的缺陷</text>
+  <text x="48" y="299" font-family="system-ui, sans-serif" font-size="11" fill="#334155">提示：可维护性问题（复杂度、重复率）</text>
+  <text x="48" y="324" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b45309">「只统计」这一档必须存在</text>
+  <text x="48" y="344" font-family="system-ui, sans-serif" font-size="11" fill="#334155">新规则先跑两周，看命中的是真问题还是噪音</text>
+
+  <rect x="460" y="230" width="410" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="478" y="256" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">边界四：判完谁改</text>
+  <text x="478" y="280" font-family="system-ui, sans-serif" font-size="11" fill="#334155">PR 作者自己改 —— 唯一可规模化的答案</text>
+  <text x="478" y="299" font-family="system-ui, sans-serif" font-size="11" fill="#334155">平台管理员代改 —— 两周内这个平台被骂停</text>
+  <text x="478" y="324" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">没有人知道谁改 —— 就是「扫出几千条没人看」</text>
+  <text x="478" y="344" font-family="system-ui, sans-serif" font-size="11" fill="#334155">纪律：答不出「谁在什么时候看到它」的规则不要开</text>
+
+  <path d="M 450 396 L 450 420" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-layers-arrow)"/>
+  <rect x="30" y="428" width="840" height="72" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="454" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">四层漏斗：编辑器内 → 提交钩子 → PR 流水线 → 主干与夜间</text>
+  <text x="52" y="480" font-family="system-ui, sans-serif" font-size="12" fill="#334155">它们的成本差一个量级 —— 一个缺陷在第几层被拦住，直接决定要花多少时间改回来。这不是备份关系，是漏斗关系。</text>
+</svg>

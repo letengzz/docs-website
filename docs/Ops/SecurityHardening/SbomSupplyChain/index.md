@@ -248,3 +248,4 @@ kubectl run test --image=registry.example.com/app:unsigned
 - [容器与集群安全加固](../../ContainerOrchestration/Security/index.md)
 - [Docker 安全加固](../../Docker/Security/index.md)
 - [工具 · 依赖与安全治理](../../../Tools/DependencyGovernance/index.md)
+- [工具 · 代码质量平台](../../../Tools/CodeQuality/index.md)：**分工是**——本页的抓手是**成分清单**（SBOM 里有什么、来源是否可信、有没有签名），面向**制品**；那一专题的抓手是**源码文本**（规则命中在哪一行、坏味道怎么算），面向**代码**。两者的扫描对象不可互换：SBOM 答不出「这行代码为什么这么写」，静态分析也答不出「这个二进制里装的到底是哪个版本的 log4j」。

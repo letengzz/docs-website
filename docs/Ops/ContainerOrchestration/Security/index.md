@@ -329,3 +329,4 @@ kubectl -n web get events --sort-by=.lastTimestamp | tail -20
 - [安全加固](../../SecurityHardening/index.md)：跨层的安全治理视角（基线合规、漏洞管理、供应链、密钥治理、审计检测）
 - [密钥与凭据治理](../../SecurityHardening/SecretGovernance/index.md)：K8s Secret 的集中托管、轮换与 External Secrets
 - [审计与检测](../../SecurityHardening/AuditDetection/index.md)：K8s 审计日志、auditd 与 Falco 告警闭环
+- [工具 · 代码质量平台](../../../Tools/CodeQuality/index.md)：**分工是**——本页管的是**集群与运行时侧**（Pod 安全标准、准入控制、运行时检测），对象是「已经跑起来的负载」；那一专题管的是**编码与合并阶段**（静态分析、质量门禁、PR 卡点），对象是「还没构建的代码」。同一个 CVE 会在两处露面：**镜像层扫描在本页，源码层可达性在那一专题**，谁先发现谁先记录。

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="质量门禁在流水线四个位置的接入点与反馈延迟">
+  <defs>
+    <marker id="cq-pipe-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">四个集成点：是一个漏斗，不是四份备份</text>
+
+  <rect x="30" y="66" width="204" height="112" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="92" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">IDE 插件</text>
+  <text x="48" y="114" font-family="system-ui, sans-serif" font-size="10" fill="#334155">写代码时触发</text>
+  <text x="48" y="134" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">延迟目标：秒级</text>
+  <text x="48" y="156" font-family="system-ui, sans-serif" font-size="10" fill="#334155">单文件可判的规则</text>
+  <text x="48" y="172" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">拦不住跨文件数据流</text>
+
+  <path d="M 240 122 L 258 122" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-pipe-arrow)"/>
+
+  <rect x="266" y="66" width="204" height="112" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="284" y="92" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">提交钩子</text>
+  <text x="284" y="114" font-family="system-ui, sans-serif" font-size="10" fill="#334155">git commit 时触发</text>
+  <text x="284" y="134" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">延迟目标：秒级</text>
+  <text x="284" y="156" font-family="system-ui, sans-serif" font-size="10" fill="#334155">格式与可自动修复项</text>
+  <text x="284" y="172" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">需要编译的规则跑不动</text>
+
+  <path d="M 476 122 L 494 122" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-pipe-arrow)"/>
+
+  <rect x="502" y="66" width="204" height="112" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="520" y="92" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">PR 流水线</text>
+  <text x="520" y="114" font-family="system-ui, sans-serif" font-size="10" fill="#334155">PR 发起 / 更新时触发</text>
+  <text x="520" y="134" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">延迟目标：分钟级</text>
+  <text x="520" y="156" font-family="system-ui, sans-serif" font-size="10" fill="#334155">新代码引入的新问题</text>
+  <text x="520" y="172" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">免费版不可用（许可边界）</text>
+
+  <path d="M 712 122 L 730 122" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-pipe-arrow)"/>
+
+  <rect x="738" y="66" width="132" height="112" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="756" y="92" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">主干 / 夜间</text>
+  <text x="756" y="114" font-family="system-ui, sans-serif" font-size="10" fill="#334155">合并后触发</text>
+  <text x="756" y="134" font-family="system-ui, sans-serif" font-size="10" fill="#b45309">延迟：分钟到小时</text>
+  <text x="756" y="156" font-family="system-ui, sans-serif" font-size="10" fill="#334155">跨文件才暴露的问题</text>
+  <text x="756" y="172" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">拦不住已合并的代码</text>
+
+  <rect x="30" y="198" width="840" height="68" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="224" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">分界线只有一条：这条规则需要几个文件的信息？</text>
+  <text x="52" y="248" font-family="system-ui, sans-serif" font-size="11" fill="#334155">单文件能判的，前移到本地（零成本修复）；需要跨文件的，留给流水线（不要在本地跑，慢且不准，会让人失去对结论的信任）。</text>
+
+  <rect x="30" y="282" width="840" height="104" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="308" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">流水线里的步骤顺序：顺序反了，门禁会静默变绿</text>
+  <text x="52" y="332" font-family="system-ui, sans-serif" font-size="11" fill="#334155">① 构建 + 跑测试（产出覆盖率报告） → ② 断言报告存在（这一步是防「条件被跳过」的唯一护栏）</text>
+  <text x="52" y="354" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ ③ 扫描（可选 sonar.qualitygate.wait=true 阻塞到结论） → ④ 把结论写进 PR 或 Job Summary</text>
+  <text x="52" y="376" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">顺序 ①③ 颠倒时，覆盖率条件不参与判定 —— 门禁绿，但绿得毫无意义。</text>
+
+  <rect x="30" y="398" width="410" height="106" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="424" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">五条纪律（最容易违反的在前）</text>
+  <text x="48" y="446" font-family="system-ui, sans-serif" font-size="10" fill="#334155">1 先测试再扫描 ｜ 2 报告路径与产物同名</text>
+  <text x="48" y="464" font-family="system-ui, sans-serif" font-size="10" fill="#334155">3 不用 skipTests 换绿灯 ｜ 4 版本都钉住</text>
+  <text x="48" y="482" font-family="system-ui, sans-serif" font-size="10" fill="#334155">5 结论必须落到 PR 上，不只留在 CI 日志</text>
+  <text x="48" y="498" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">第 1 条被违反时没有任何报错，只是结论失真</text>
+
+  <rect x="460" y="398" width="410" height="106" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="478" y="424" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">免费版没有 PR 分析：三条可行路径</text>
+  <text x="478" y="446" font-family="system-ui, sans-serif" font-size="10" fill="#334155">1 主干分析 + 阻断后续发布步骤（推荐）</text>
+  <text x="478" y="464" font-family="system-ui, sans-serif" font-size="10" fill="#334155">2 把能本地跑的部分前移（IDE + 钩子）</text>
+  <text x="478" y="482" font-family="system-ui, sans-serif" font-size="10" fill="#334155">3 升级到含分支/PR 分析的发行版</text>
+  <text x="478" y="498" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">不要硬传 sonar.pullrequest.* 参数：结果挂错分支，比不做更糟</text>
+</svg>

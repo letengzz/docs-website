@@ -82,3 +82,9 @@
 - GitClear：AI 代码质量的仓库级信号分析（6.23 亿行变更）
 - AGENTS.md 规范：agents.md（现由 Linux Foundation 旗下 Agentic AI Foundation 治理）
 - 各工具定价与版本：以 GitHub Copilot Plans、Cursor Pricing、Claude Code 官方发布页为准
+- DORA 研究主页（历年 State of AI-assisted Software Development 报告入口）：https://dora.dev/
+- METR 研究主页（含随机对照实验的原始报告与后续更正）：https://metr.org/
+- Stack Overflow Developer Survey 官方站（历年调查数据可下载）：https://survey.stackoverflow.co/
+- GitClear 官方站（AI 代码质量仓库级信号分析的方法说明）：https://www.gitclear.com/
+- AGENTS.md 规范主页（跨工具通用的仓库级 agent 指令约定）：https://agents.md/
+- GitHub Docs · Copilot（官方能力清单与计划对照，替代第三方汇总）：https://docs.github.com/en/copilot

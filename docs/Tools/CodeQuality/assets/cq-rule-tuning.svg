@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="规则定制的三层结构：规则、质量配置与质量门禁">
+  <defs>
+    <marker id="cq-rule-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">三层结构：规则 → 质量配置 → 质量门禁</text>
+
+  <rect x="30" y="66" width="270" height="120" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="92" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">规则 Rule</text>
+  <text x="48" y="114" font-family="system-ui, sans-serif" font-size="11" fill="#334155">一条判据的定义</text>
+  <text x="48" y="134" font-family="system-ui, sans-serif" font-size="11" fill="#334155">类型 / 描述 / 参数</text>
+  <text x="48" y="158" font-family="system-ui, sans-serif" font-size="11" fill="#b45309">全局作用：改了影响所有引用它的</text>
+  <text x="48" y="176" font-family="system-ui, sans-serif" font-size="11" fill="#b45309">profile —— 改动前先想清楚影响面</text>
+
+  <path d="M 306 126 L 330 126" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-rule-arrow)"/>
+
+  <rect x="338" y="66" width="270" height="120" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="356" y="92" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">质量配置 Quality Profile</text>
+  <text x="356" y="114" font-family="system-ui, sans-serif" font-size="11" fill="#334155">一组规则的集合</text>
+  <text x="356" y="134" font-family="system-ui, sans-serif" font-size="11" fill="#334155">按语言组织，绑定到项目</text>
+  <text x="356" y="158" font-family="system-ui, sans-serif" font-size="11" fill="#b91c1c">推荐「继承 Sonar way」</text>
+  <text x="356" y="176" font-family="system-ui, sans-serif" font-size="11" fill="#b91c1c">而不是复制一份再改</text>
+
+  <path d="M 614 126 L 638 126" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-rule-arrow)"/>
+
+  <rect x="646" y="66" width="224" height="120" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="664" y="92" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">质量门禁</text>
+  <text x="664" y="114" font-family="system-ui, sans-serif" font-size="11" fill="#334155">一组阈值条件</text>
+  <text x="664" y="134" font-family="system-ui, sans-serif" font-size="11" fill="#334155">按度量指标判定</text>
+  <text x="664" y="158" font-family="system-ui, sans-serif" font-size="11" fill="#0f766e">决定「过 / 不过」</text>
+  <text x="664" y="176" font-family="system-ui, sans-serif" font-size="11" fill="#334155">详见门禁设计页</text>
+
+  <rect x="30" y="204" width="840" height="60" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="228" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">一句话分清：profile 决定「能发现什么」，门禁决定「发现多少就不让过」</text>
+  <text x="52" y="250" font-family="system-ui, sans-serif" font-size="11" fill="#334155">大量「调不对」的案例是在错误的地方做正确的事：缺陷没拦住，去改门禁阈值 —— 结果门禁红了，问题照样进主干。</text>
+
+  <rect x="30" y="280" width="410" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="306" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">准入判据：三条都要满足</text>
+  <text x="48" y="330" font-family="system-ui, sans-serif" font-size="11" fill="#334155">1 可判性：机器能证明的性质</text>
+  <text x="48" y="350" font-family="system-ui, sans-serif" font-size="11" fill="#334155">2 有责任人：由变更作者改</text>
+  <text x="48" y="370" font-family="system-ui, sans-serif" font-size="11" fill="#334155">3 可验证：能给出验证命令</text>
+  <text x="48" y="398" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f766e">答不出「谁在什么时候看到它」就别开</text>
+
+  <rect x="460" y="280" width="410" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="478" y="306" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">退出判据：满足一条就关掉</text>
+  <text x="478" y="330" font-family="system-ui, sans-serif" font-size="11" fill="#334155">连续两个季度零命中 → 关（与项目类型不匹配）</text>
+  <text x="478" y="350" font-family="system-ui, sans-serif" font-size="11" fill="#334155">长期被标记误报 → 关或调参</text>
+  <text x="478" y="370" font-family="system-ui, sans-serif" font-size="11" fill="#334155">与其他规则重复 → 只留一条</text>
+  <text x="478" y="398" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">「关闭并记录原因」比「开着不管」重要得多</text>
+
+  <rect x="30" y="446" width="840" height="58" rx="12" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="52" y="470" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">误报无法消灭，只能给它一条固定的处理通道</text>
+  <text x="52" y="492" font-family="system-ui, sans-serif" font-size="11" fill="#334155">单条标记 / 文件排除 / 调参 / 关规则四种，各有适用判断；关键纪律是「月度量 + 台账」，没有留痕的处理不构成治理。</text>
+</svg>

@@ -116,6 +116,7 @@ export const nav = [
       { text: "版本控制工具", link: "/docs/Tools/VersionControl" },
       { text: "文档体系建设", link: "/docs/Tools/DocsInfra" },
       { text: "依赖与安全治理", link: "/docs/Tools/DependencyGovernance" },
+      { text: "代码质量平台", link: "/docs/Tools/CodeQuality" },
       { text: "其他", link: "/docs/Tools/Others" }
     ]
   },

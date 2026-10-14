@@ -77,3 +77,7 @@ AI 编程助手是一种**以大模型为内核、以你的仓库为上下文、
 - GitHub / Microsoft Research：The Impact of AI on Developer Productivity: Evidence from GitHub Copilot（+55%）
 - GitClear：AI 代码质量仓库级信号（6.23 亿行变更）
 - Stack Overflow Developer Survey 2026（84% 采用、3% 高信任、66%「几乎对」抱怨）
+- DORA 研究主页（本页引用的采用率与吞吐/稳定性结论出处）：https://dora.dev/
+- METR 随机对照实验原始报告入口：https://metr.org/
+- Stack Overflow Developer Survey 2026 官方数据页：https://survey.stackoverflow.co/2026/
+- GitClear 官方站（AI 代码质量信号的度量口径）：https://www.gitclear.com/

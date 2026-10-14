@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img" aria-label="验收三：同一个故障在三种分组配置下的通知条数，以及通路断裂与 R-1 的定论">
+  <defs>
+    <marker id="a3-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="600" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">验收三：同一个故障，三种分组，三种通知条数</text>
+  <text x="32" y="62" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">故障形状全程不变——1 个 job 下 5 个实例同时不可达。变的只有 Alertmanager 的配置。</text>
+
+  <rect x="30" y="82" width="840" height="54" rx="10" fill="#fef2f2" stroke="#f87171"/>
+  <text x="50" y="104" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#991b1b">A ｜ group_by: ['alertname', 'instance']，无抑制</text>
+  <text x="50" y="124" font-family="system-ui, sans-serif" font-size="11" fill="#334155">TargetDown 按 instance 各成一组建 5 个组，ServiceDown 自成 1 组 —— 每条通知里只装 1 个告警</text>
+  <text x="852" y="118" text-anchor="end" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#b91c1c">6 条</text>
+
+  <rect x="30" y="144" width="840" height="54" rx="10" fill="#fffbeb" stroke="#fbbf24"/>
+  <text x="50" y="166" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#92400e">B ｜ group_by: ['alertname', 'job']，无抑制</text>
+  <text x="50" y="186" font-family="system-ui, sans-serif" font-size="11" fill="#334155">同样那 5 条 TargetDown 告警被合并进同一个组 —— 通知条数不再随实例数增长</text>
+  <text x="852" y="180" text-anchor="end" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#b45309">2 条</text>
+
+  <rect x="30" y="206" width="840" height="54" rx="10" fill="#ecfdf5" stroke="#34d399"/>
+  <text x="50" y="228" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#065f46">C ｜ group_by: ['alertname', 'job'] + inhibit_rules（equal: ['job']）</text>
+  <text x="50" y="248" font-family="system-ui, sans-serif" font-size="11" fill="#334155">5 条 TargetDown 全部进入 suppressed，一条通知都不发 —— 只剩 ServiceDown 这一条根因</text>
+  <text x="852" y="242" text-anchor="end" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#0f766e">1 条</text>
+
+  <rect x="30" y="272" width="840" height="96" rx="12" fill="#eff6ff" stroke="#60a5fa"/>
+  <text x="50" y="296" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e40af">联调暴露的第一件事：规则是活的，但告警从来没有离开过 Prometheus</text>
+  <text x="50" y="320" font-family="system-ui, sans-serif" font-size="11" fill="#334155">规则能 pending、能 firing、Alertmanager 也能起来，可活跃 Alertmanager 列表是空的：</text>
+  <text x="50" y="342" font-family="ui-monospace, monospace" font-size="11" fill="#b91c1c">activeAlertmanagers: []　←　prometheus.yml 里根本没有 alerting: 这一段</text>
+  <text x="50" y="360" font-family="system-ui, sans-serif" font-size="11" fill="#334155">「规则能触发」和「告警能送达」是两件事，中间那条线得自己接上。</text>
+
+  <rect x="30" y="380" width="840" height="118" rx="12" fill="#f5f3ff" stroke="#a78bfa"/>
+  <text x="50" y="404" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#5b21b6">R-1 的定论：svc 是被监控目标自报的业务维度，采集侧补不出来</text>
+  <text x="50" y="426" font-family="system-ui, sans-serif" font-size="11" fill="#334155">up 的标签空间只有 job 与 instance，所以 sum by (svc) 一旦触发，注解里的服务名就是空的。</text>
+  <text x="50" y="448" font-family="system-ui, sans-serif" font-size="11" fill="#334155">试着在采集侧给目标注入 svc 之后，暴露端同名的标签被改名成 exported_svc —— 观测维度从一个变成了两个：</text>
+  <text x="50" y="470" font-family="ui-monospace, monospace" font-size="11" fill="#b45309">{exported_svc="web", svc="core-api"}　{exported_svc="api", svc="core-api"}</text>
+  <text x="50" y="490" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#5b21b6">结论：规则改按 job 聚合，不往采集侧补 svc。</text>
+
+  <rect x="30" y="510" width="840" height="72" rx="12" fill="#fff7ed" stroke="#fb923c"/>
+  <text x="50" y="534" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#9a3412">resolved 会滞后一个 group_interval</text>
+  <text x="50" y="556" font-family="system-ui, sans-serif" font-size="11" fill="#334155">08:13:46 恢复目标，直到 08:20:52 才收到 resolved —— 组内已经有告警时，新的状态变化要等 group_interval 才 flush。</text>
+  <text x="50" y="574" font-family="system-ui, sans-serif" font-size="11" fill="#334155">「没收到恢复通知」不等于「系统没恢复」，先看 group_interval 再怀疑链路。</text>
+</svg>

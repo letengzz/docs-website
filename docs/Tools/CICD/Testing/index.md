@@ -145,12 +145,17 @@ jobs:
 
 ## SonarQube 质量门禁
 
-SonarQube 是静态代码质量平台：扫描 Bug、漏洞、坏味道、重复代码、覆盖率。截至 2026 年 8 月，SonarQube Server 当前版本为 **2026.x（2026.1 LTA）**。
+SonarQube 是静态代码质量平台：扫描 Bug、漏洞、坏味道、重复代码、覆盖率。当前 LTA 为 **2026.5**（补丁已到 `2026.5.2`），上一个 LTA 是 2026.1，**2025.1 LTA 已不活跃**。
+
+::: warning 版本号规则已变更
+自 **2026.1** 起，SonarQube Server 的版本号不再是 `MAJOR.MINOR.PATCH`，而是「年份 + 发布序号 + 补丁」（`2026.5.2`）。老的镜像 tag `sonarqube:9.9-community`、`sonarqube:10-lts` **都已不是有效名字**，照老名字拉会拉到很旧的版本或直接失败。免费版的 Community Build 走**独立的每月列车**（当前 `26.9.0.129388`），版本号与 Server 完全不同轨，**两者不能按数字比新旧**。
+:::
 
 ### 启动 SonarQube
 
 ```shell
-docker run -d --name sonarqube -p 9000:9000 sonarqube:lts-community
+# 免费版即 Community Build，镜像名 sonarqube:community（没有 LTA 概念，跟随最新月度 Build）
+docker run -d --name sonarqube -p 9000:9000 sonarqube:community
 ```
 
 ### 流水线集成（GitHub Actions）
@@ -176,6 +181,8 @@ steps:
 | 坏味道/重复率 | 按团队约定 |
 
 门禁失败 → 流水线阻断 → 开发者修复再跑。
+
+上面这张表是**起步值**。真实的门禁还要回答四个问题：条件按**新代码**还是**整体代码**算、阈值定多少才既拦得住又不卡死交付、多套门禁怎么分工、到底卡**合并**还是卡**发布**。完整机制见 [代码质量平台专题](../../CodeQuality/index.md)；本页只负责把它**挂在 CI 的哪一步**上。
 
 ## 安全扫描
 
@@ -255,7 +262,8 @@ AI 参与编码后，本页的口径**一条都不能松，还要加三条**（�
 ## 参考资料
 
 - 测试金字塔（Martin Fowler）：https://martinfowler.com/bliki/TestPyramid.html
-- SonarQube 文档：https://docs.sonarsource.com/sonarqube/
+- SonarQube 文档：https://docs.sonarsource.com/sonarqube-server/
+- SonarQube 下载页（当前 LTA、Community Build 版本号与各发行版能力对照）：https://www.sonarsource.com/products/sonarqube/downloads/
 - JaCoCo 文档：https://www.jacoco.org/jacoco/trunk/doc/
 - Playwright 文档：https://playwright.dev/docs/ci
 - Trivy 文档：https://aquasecurity.github.io/trivy/

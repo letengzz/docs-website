@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="静态分析的六个信息层次：从词法到跨过程污点分析">
+  <defs>
+    <marker id="cq-levels-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">六个信息层次：规则的能力上限由「它需要哪一层」决定</text>
+
+  <rect x="30" y="66" width="700" height="54" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="88" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">1. 词法 Lexical</text>
+  <text x="48" y="108" font-family="system-ui, sans-serif" font-size="11" fill="#334155">字符流与正则：硬编码凭据、可疑字符串。注释里的 eval( 也会命中</text>
+  <rect x="746" y="66" width="124" height="54" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="762" y="99" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">代价：极低</text>
+
+  <rect x="30" y="130" width="700" height="54" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="152" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">2. 语法 Syntactic / AST</text>
+  <text x="48" y="172" font-family="system-ui, sans-serif" font-size="11" fill="#334155">语法树形状：空 catch、缺 default、少花括号。不懂类型，也不知道变量指向谁</text>
+  <rect x="746" y="130" width="124" height="54" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="762" y="163" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">代价：低</text>
+
+  <rect x="30" y="194" width="700" height="54" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="216" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">3. 语义 Semantic / 类型</text>
+  <text x="48" y="236" font-family="system-ui, sans-serif" font-size="11" fill="#334155">类型系统与符号表：== 比对象、废弃 API。不知道执行顺序</text>
+  <rect x="746" y="194" width="124" height="54" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="762" y="227" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">代价：低</text>
+
+  <rect x="30" y="258" width="700" height="54" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="280" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">4. 控制流 CFG</text>
+  <text x="48" y="300" font-family="system-ui, sans-serif" font-size="11" fill="#334155">控制流图：可达性、分支是否都有 return。不知道数据从哪来</text>
+  <rect x="746" y="258" width="124" height="54" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="762" y="291" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b45309">代价：中</text>
+
+  <rect x="30" y="322" width="700" height="54" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="344" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">5. 数据流 DFA</text>
+  <text x="48" y="364" font-family="system-ui, sans-serif" font-size="11" fill="#334155">定义-使用链：异常路径上的资源泄漏、未初始化使用。不知道调用方传了什么</text>
+  <rect x="746" y="322" width="124" height="54" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="762" y="355" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b45309">代价：高</text>
+
+  <rect x="30" y="386" width="700" height="54" rx="8" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="48" y="408" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">6. 过程间 / 污点 Inter-procedural / Taint</text>
+  <text x="48" y="428" font-family="system-ui, sans-serif" font-size="11" fill="#334155">全程序调用图 + 数据依赖：HTTP 参数能不能走到 SQL。反射与动态派发是盲区</text>
+  <rect x="746" y="386" width="124" height="54" rx="8" fill="#fee2e2" stroke="#fca5a5"/>
+  <text x="762" y="419" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b91c1c">代价：很高</text>
+
+  <path d="M 880 96 L 880 424" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#cq-levels-arrow)"/>
+  <text x="846" y="260" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b" transform="rotate(90 846 260)">信息增多 · 成本升高 · 误报率上升</text>
+
+  <rect x="30" y="456" width="840" height="84" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="482" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">用法：一条规则报错位置「看起来不对」时，先问它需要哪一层</text>
+  <text x="52" y="506" font-family="system-ui, sans-serif" font-size="12" fill="#334155">第 2 层的规则看不懂类型，第 5 层的规则看不到跨文件的数据来源。判据的精度上限由信息层决定，不由配置项决定。</text>
+  <text x="52" y="528" font-family="system-ui, sans-serif" font-size="12" fill="#334155">绝大多数规则集中在第 1~4 层，因为它们能在单文件里算完 —— 这也是增量分析能省下大量时间的原因。</text>
+</svg>

@@ -141,3 +141,7 @@ public class Post {
 
 - Eric Evans,《Domain-Driven Design》第 5~6 章（模型驱动设计、值对象与服务的划分）
 - Vaughn Vernon,《Implementing Domain-Driven Design》第 5~6 章
+- Martin Fowler · DomainDrivenDesign（战术模式的原始表述与后续修正）：https://martinfowler.com/bliki/DomainDrivenDesign.html
+- Martin Fowler · ValueObject（值对象「无标识」这条判据的出处）：https://martinfowler.com/bliki/ValueObject.html
+- Microsoft Learn · DDD-oriented microservice architecture（聚合、限界上下文与仓储的工程落地对照）：https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice
+- Alistair Cockburn · Hexagonal Architecture（端口与适配器，领域层不被框架侵入的由来）：https://alistair.cockburn.us/hexagonal-architecture/

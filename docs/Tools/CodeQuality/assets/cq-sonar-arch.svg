@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="SonarQube 组件拓扑与一次分析的七个阶段">
+  <defs>
+    <marker id="cq-arch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">组件拓扑与一次分析的七个阶段</text>
+
+  <text x="32" y="76" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">服务端（你要运维的部分）</text>
+  <rect x="30" y="88" width="196" height="76" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="114" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Web Server</text>
+  <text x="48" y="134" font-family="system-ui, sans-serif" font-size="10" fill="#334155">UI 与 REST API</text>
+  <text x="48" y="150" font-family="system-ui, sans-serif" font-size="10" fill="#0f766e">无状态，可多实例</text>
+
+  <rect x="238" y="88" width="196" height="76" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="256" y="114" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Compute Engine</text>
+  <text x="256" y="134" font-family="system-ui, sans-serif" font-size="10" fill="#334155">消费报告、算门禁</text>
+  <text x="256" y="150" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">单实例，堆积即排队</text>
+
+  <rect x="446" y="88" width="196" height="76" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="464" y="114" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">搜索引擎</text>
+  <text x="464" y="134" font-family="system-ui, sans-serif" font-size="10" fill="#334155">检索与聚合</text>
+  <text x="464" y="150" font-family="system-ui, sans-serif" font-size="10" fill="#b45309">对 mmap 与句柄最敏感</text>
+
+  <rect x="654" y="88" width="216" height="76" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="672" y="114" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">数据库 PostgreSQL</text>
+  <text x="672" y="134" font-family="system-ui, sans-serif" font-size="10" fill="#334155">项目 / 问题 / 度量 / 用户</text>
+  <text x="672" y="150" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c">唯一权威，必须单独备份</text>
+
+  <text x="32" y="196" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">分析器侧（无状态，可随处运行）</text>
+  <rect x="30" y="208" width="840" height="56" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="48" y="232" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Scanner：CI 或开发者机器上执行，产出报告后推送</text>
+  <text x="48" y="252" font-family="system-ui, sans-serif" font-size="11" fill="#334155">Scanner CLI（不负责编译） / 构建工具插件（mvn、gradle） / dotnet sonarscanner begin-end / npm 包 / 官方容器镜像</text>
+
+  <path d="M 450 268 L 450 292" stroke="#0f172a" stroke-width="1.5" marker-end="url(#cq-arch-arrow)"/>
+
+  <rect x="30" y="300" width="840" height="128" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="326" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">七个阶段：卡住时先确定停在哪一段</text>
+  <text x="52" y="350" font-family="system-ui, sans-serif" font-size="11" fill="#334155">1 取源码（浅克隆会让「新代码」判定失真）  2 语言识别与构建（编译失败即中止）  3 本地规则执行</text>
+  <text x="52" y="372" font-family="system-ui, sans-serif" font-size="11" fill="#334155">4 上传报告  5 服务端归并 —— ☆ 这一步决定「哪些算新代码」，是整套体系的胜负手</text>
+  <text x="52" y="394" font-family="system-ui, sans-serif" font-size="11" fill="#334155">6 门禁计算（度量缺失时条件被跳过，而不是判失败）  7 结果反馈（PR 装饰需商业版）</text>
+  <text x="52" y="416" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">前四步只是「把数据搬上来」，第 5 步才决定判哪一段代码。</text>
+
+  <rect x="30" y="444" width="840" height="96" rx="12" fill="#fee2e2" stroke="#fca5a5"/>
+  <text x="52" y="470" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">升级路径不是自由的：路径上有 LTA 就必须逐个停下</text>
+  <text x="52" y="494" font-family="system-ui, sans-serif" font-size="11" fill="#334155">9.9 → 2025.1 → 2026.1 → 2026.5：跨两个 LTA 以上时必须逐站升。数据库迁移是单向的，升完不能降级。</text>
+  <text x="52" y="516" font-family="system-ui, sans-serif" font-size="11" fill="#334155">三条纪律：写清路径并演练 / 先在非生产走一遍 / 升级前必定备份数据库（卷里只是索引，库才是权威）。</text>
+  <text x="52" y="536" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">绝不用浮动 tag：一次 compose pull 就可能把数据库迁移掉。</text>
+</svg>

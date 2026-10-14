@@ -241,3 +241,21 @@ export const DependencyGovernance = [
   },
 ];
 
+
+export const CodeQuality = [
+  {
+    text: "代码质量平台",
+    link: "/docs/Tools/CodeQuality/index.md",
+    items: [
+      { text: "总览：代码质量的四条边界", link: "/docs/Tools/CodeQuality/Overview/index.md" },
+      { text: "静态分析与检测器", link: "/docs/Tools/CodeQuality/StaticAnalysis/index.md" },
+      { text: "SonarQube 平台与部署", link: "/docs/Tools/CodeQuality/SonarQube/index.md" },
+      { text: "规则定制与质量配置", link: "/docs/Tools/CodeQuality/RuleCustomization/index.md" },
+      { text: "质量门禁设计", link: "/docs/Tools/CodeQuality/QualityGate/index.md" },
+      { text: "流水线与 PR 集成", link: "/docs/Tools/CodeQuality/PipelineIntegration/index.md" },
+      { text: "安全分析与污点追踪", link: "/docs/Tools/CodeQuality/SecurityAnalysis/index.md" },
+      { text: "实战：给一个仓库立起质量门禁", link: "/docs/Tools/CodeQuality/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/CodeQuality/FAQ/index.md" },
+    ],
+  },
+];
