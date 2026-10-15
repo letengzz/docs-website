@@ -154,6 +154,18 @@ sql2dbml --mysql /tmp/schema.sql -o /tmp/roundtrip.dbml && wc -l /tmp/roundtrip.
 
 收尾确认：DDL 生成与执行均无报错、反向工程结果与原模型表数量一致、模型文件已在 Git 中可 diff。
 
+## 与数据治理专题的分工
+
+建模工具天然会产出「数据字典」，因此很容易被当成治理平台的一部分。两者的边界：
+
+| 建模工具承载的东西 | 治理要补的东西 |
+| --- | --- |
+| 字段名、类型、注释、模型版本 | **业务定义、口径边界、已知差异**（[数据标准与主数据](../../DataGovernance/StandardsMasterData/index.md) 的三件套） |
+| 表与表之间的外键与引用关系 | **跨系统的实体一致性**（同一个客户在三个系统里怎么算同一个人） |
+| 模型文件本身的版本历史 | **谁批准了这次结构变更、下游通知了没有**（[组织、角色与流程](../../DataGovernance/OrgAndProcess/index.md)） |
+
+判断方法：**工具里「能画出来」的部分交给建模工具；「要说清楚」的部分只能靠标准文档。** 一个只有注释、没有业务定义的数据字典，会把「这个字段什么意思」这个问题从「没有文档」变成「有文档但没人信」——后者更难修。
+
 ## 参考资料
 
 - drawDB 官网与仓库：[drawdb.app](https://www.drawdb.app/) / [github.com/drawdb-io/drawdb](https://github.com/drawdb-io/drawdb)

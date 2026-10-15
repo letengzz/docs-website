@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 470" width="860" height="470" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="860" height="470" fill="#FFFFFF"/>
+  <text x="430" y="32" text-anchor="middle" font-size="17" fill="#0F172A" font-weight="bold">数据标准三件套与主数据的三种管理模式</text>
+  <text x="430" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">标准管「字段该怎么描述」，主数据管「同一个实体在不同系统里怎么算同一个」</text>
+
+  <rect x="36" y="74" width="788" height="136" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.8"/>
+  <text x="430" y="98" text-anchor="middle" font-size="11.5" fill="#5B21B6" font-weight="bold">数据标准三件套：三栏缺一栏，标准就只是一句口号</text>
+  <rect x="56" y="112" width="248" height="82" rx="7" fill="#FFFFFF" stroke="#A78BFA" stroke-width="1.4"/>
+  <text x="180" y="134" text-anchor="middle" font-size="10.5" fill="#6D28D9" font-weight="bold">① 业务定义</text>
+  <text x="180" y="156" text-anchor="middle" font-size="9" fill="#7C3AED">业务上它是什么意思</text>
+  <text x="180" y="174" text-anchor="middle" font-size="9" fill="#7C3AED">含不含税、算不算退款</text>
+  <text x="180" y="190" text-anchor="middle" font-size="8.5" fill="#64748B">读者：业务方、分析师</text>
+  <rect x="316" y="112" width="248" height="82" rx="7" fill="#FFFFFF" stroke="#A78BFA" stroke-width="1.4"/>
+  <text x="440" y="134" text-anchor="middle" font-size="10.5" fill="#6D28D9" font-weight="bold">② 技术定义</text>
+  <text x="440" y="156" text-anchor="middle" font-size="9" fill="#7C3AED">类型、长度、精度、单位</text>
+  <text x="440" y="174" text-anchor="middle" font-size="9" fill="#7C3AED">是否可空、默认值、编码</text>
+  <text x="440" y="190" text-anchor="middle" font-size="8.5" fill="#64748B">读者：开发、DBA</text>
+  <rect x="576" y="112" width="228" height="82" rx="7" fill="#FFFFFF" stroke="#A78BFA" stroke-width="1.4"/>
+  <text x="690" y="134" text-anchor="middle" font-size="10.5" fill="#6D28D9" font-weight="bold">③ 值域</text>
+  <text x="690" y="156" text-anchor="middle" font-size="9" fill="#7C3AED">允许取哪些值 / 范围</text>
+  <text x="690" y="174" text-anchor="middle" font-size="9" fill="#7C3AED">枚举变更走什么流程</text>
+  <text x="690" y="190" text-anchor="middle" font-size="8.5" fill="#64748B">读者：测试、质量规则</text>
+
+  <rect x="36" y="224" width="788" height="140" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="430" y="248" text-anchor="middle" font-size="11.5" fill="#1E3A8A" font-weight="bold">主数据的三种管理模式：按「谁有权改」区分，而不是按技术架构区分</text>
+  <rect x="56" y="262" width="248" height="88" rx="7" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.4"/>
+  <text x="180" y="284" text-anchor="middle" font-size="10.5" fill="#1D4ED8" font-weight="bold">① 集中式</text>
+  <text x="180" y="306" text-anchor="middle" font-size="9" fill="#1D4ED8">主数据只在一处维护</text>
+  <text x="180" y="324" text-anchor="middle" font-size="9" fill="#1D4ED8">其余系统订阅/同步</text>
+  <text x="180" y="342" text-anchor="middle" font-size="8.5" fill="#64748B">代价：改动要排期到中心团队</text>
+  <rect x="316" y="262" width="248" height="88" rx="7" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.4"/>
+  <text x="440" y="284" text-anchor="middle" font-size="10.5" fill="#1D4ED8" font-weight="bold">② 注册式（推荐起步）</text>
+  <text x="440" y="306" text-anchor="middle" font-size="9" fill="#1D4ED8">各系统仍能改，但变更</text>
+  <text x="440" y="324" text-anchor="middle" font-size="9" fill="#1D4ED8">必须登记到注册中心</text>
+  <text x="440" y="342" text-anchor="middle" font-size="8.5" fill="#64748B">代价：靠纪律，需要判据兜底</text>
+  <rect x="576" y="262" width="228" height="88" rx="7" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.4"/>
+  <text x="690" y="284" text-anchor="middle" font-size="10.5" fill="#1D4ED8" font-weight="bold">③ 共存式</text>
+  <text x="690" y="306" text-anchor="middle" font-size="9" fill="#1D4ED8">各系统自治，靠映射表</text>
+  <text x="690" y="324" text-anchor="middle" font-size="9" fill="#1D4ED8">在分析层统一</text>
+  <text x="690" y="342" text-anchor="middle" font-size="8.5" fill="#64748B">代价：映射表会腐烂</text>
+
+  <rect x="36" y="376" width="788" height="80" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="430" y="400" text-anchor="middle" font-size="11.5" fill="#991B1B" font-weight="bold">主数据识别四问：四个都答「是」才是主数据</text>
+  <text x="56" y="424" font-size="9.5" fill="#B91C1C">① 是多个系统共享的吗？　② 生命周期长于系统本身吗？　③ 需要全局唯一标识吗？　④ 有唯一权威来源吗？</text>
+  <text x="56" y="446" font-size="9" fill="#64748B">任一为「否」，它就不该被列为主数据——硬拉进来会得到一个永远对不齐的清单</text>
+</svg>

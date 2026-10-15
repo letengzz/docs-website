@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="860" height="480" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="860" height="480" fill="#FFFFFF"/>
+  <text x="430" y="32" text-anchor="middle" font-size="17" fill="#0F172A" font-weight="bold">八类检查：行级四类只管一行，表级四类才管整张表</text>
+  <text x="430" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">真实事故里，每一行都合法、整张表却错的情况非常常见——这正是表级四类存在的理由</text>
+
+  <rect x="36" y="74" width="788" height="118" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="430" y="98" text-anchor="middle" font-size="11.5" fill="#1E3A8A" font-weight="bold">行级四类（逐行判断，便宜、必做，但远远不够）</text>
+  <text x="56" y="126" font-size="9.5" fill="#1D4ED8">① 非空：主键与关键字段不得为空 —— 抓「上游漏采 / 清洗丢字段」</text>
+  <text x="56" y="150" font-size="9.5" fill="#1D4ED8">② 唯一：粒度键不得重复 —— 抓「重复投递 / Join 放大」</text>
+  <text x="56" y="174" font-size="9.5" fill="#1D4ED8">③ 值域：取值在预期集合或区间内 —— 抓「上游枚举变更 / 脏数据」</text>
+  <text x="56" y="192" font-size="9.5" fill="#1D4ED8">④ 关联：外键能关联到维表 —— 抓「维表晚到 / 口径不一致」</text>
+
+  <rect x="36" y="208" width="788" height="118" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.8"/>
+  <text x="430" y="232" text-anchor="middle" font-size="11.5" fill="#9A3412" font-weight="bold">表级四类（看整体形状，抓「每行都对、整体错了」）</text>
+  <text x="56" y="260" font-size="9.5" fill="#C2410C">⑤ 量：行数 / 金额总量相对历史基线的偏离 —— 抓「一半数据没进来」</text>
+  <text x="56" y="284" font-size="9.5" fill="#C2410C">⑥ 新鲜度：最新一条数据距现在多久 —— 抓「任务没跑 / 卡住」</text>
+  <text x="56" y="308" font-size="9.5" fill="#C2410C">⑦ 跳变：单个值变动幅度超出物理可能 —— 抓「单位写错 / 汇率漏乘」</text>
+  <text x="56" y="326" font-size="9.5" fill="#C2410C">⑧ 断档：应连续的时间序列中间缺格 —— 抓「调度跳过某天」</text>
+
+  <rect x="36" y="342" width="384" height="122" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="228" y="366" text-anchor="middle" font-size="11.5" fill="#991B1B" font-weight="bold">阻断级（blocking）</text>
+  <text x="56" y="390" font-size="9.5" fill="#B91C1C">失败动作：拦住下游出数、把分区标记为不可信</text>
+  <text x="56" y="412" font-size="9.5" fill="#B91C1C">适用：错了会让业务做错决策的规则</text>
+  <text x="56" y="434" font-size="9.5" fill="#B91C1C">要求：必须有明确接收人与复现方式</text>
+  <text x="56" y="456" font-size="9" fill="#64748B">数量原则：少而硬，通常不超过规则总数的两成</text>
+
+  <rect x="440" y="342" width="384" height="122" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="632" y="366" text-anchor="middle" font-size="11.5" fill="#475569" font-weight="bold">告警级（warning）</text>
+  <text x="460" y="390" font-size="9.5" fill="#475569">失败动作：只记录与通知，不拦下游</text>
+  <text x="460" y="412" font-size="9.5" fill="#475569">适用：可疑但不一定错、需要人判断的规则</text>
+  <text x="460" y="434" font-size="9.5" fill="#475569">风险：长期无人处理 → 所有人加过滤 → 告警信用破产</text>
+  <text x="460" y="456" font-size="9" fill="#64748B">纪律：告警级规则必须配「多久没人处理就升级」</text>
+</svg>

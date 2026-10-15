@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 540" width="860" height="540" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="860" height="540" fill="#FFFFFF"/>
+  <text x="430" y="32" text-anchor="middle" font-size="17" fill="#0F172A" font-weight="bold">五个源系统到一个治理体系：八步路线与三个阶段的产物</text>
+  <text x="430" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">每步都有独立产物与判据；没有产物的步骤不算完成，判据不可执行的产品不算交付</text>
+
+  <rect x="36" y="72" width="252" height="132" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="162" y="95" text-anchor="middle" font-size="11.5" fill="#1E3A8A" font-weight="bold">阶段一：有账本（S1~S3）</text>
+  <text x="52" y="120" font-size="9.5" fill="#1D4ED8">S1 圈范围：关键资产清单（15 张）</text>
+  <text x="52" y="142" font-size="9.5" fill="#1D4ED8">S2 建账本：技术元数据自动采集</text>
+  <text x="52" y="164" font-size="9.5" fill="#1D4ED8">S3 补业务元数据：按访问热度排优先级</text>
+  <text x="52" y="190" font-size="9" fill="#64748B">产出：可搜索的资产目录 + 责任人回执</text>
+
+  <rect x="304" y="72" width="252" height="132" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.8"/>
+  <text x="430" y="95" text-anchor="middle" font-size="11.5" fill="#9A3412" font-weight="bold">阶段二：有判据（S4~S6）</text>
+  <text x="320" y="120" font-size="9.5" fill="#C2410C">S4 血缘采集 + A/B/C 可信度分级</text>
+  <text x="320" y="142" font-size="9.5" fill="#C2410C">S5 标准三件套 + 主数据统一 ID</text>
+  <text x="320" y="164" font-size="9.5" fill="#C2410C">S6 质量规则：先表级四类，再行级四类</text>
+  <text x="320" y="190" font-size="9" fill="#64748B">产出：可执行断言 + 失败闭环与升级链</text>
+
+  <rect x="572" y="72" width="252" height="132" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="698" y="95" text-anchor="middle" font-size="11.5" fill="#475569" font-weight="bold">阶段三：有度量（S7~S8）</text>
+  <text x="588" y="120" font-size="9.5" fill="#475569">S7 告警接入值班与分诊手册</text>
+  <text x="588" y="142" font-size="9.5" fill="#475569">S8 结果指标 + 固定例会与登记</text>
+  <text x="588" y="164" font-size="9.5" fill="#475569">度量成对：投入指标 + 结果指标</text>
+  <text x="588" y="190" font-size="9" fill="#64748B">产出：能回答「治理做得怎么样」</text>
+
+  <line x1="36" y1="222" x2="824" y2="222" stroke="#CBD5E1" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="430" y="245" text-anchor="middle" font-size="11.5" fill="#0F172A" font-weight="bold">本月实测的四个缺口数字（设定场景，本机可复现）</text>
+
+  <rect x="36" y="258" width="188" height="86" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="130" y="280" text-anchor="middle" font-size="10.5" fill="#991B1B" font-weight="bold">关键资产覆盖率 66.7%</text>
+  <text x="48" y="302" font-size="9.5" fill="#B91C1C">15 张关键资产里 10 张有业务定义</text>
+  <text x="48" y="322" font-size="9.5" fill="#B91C1C">对照：全部资产口径只有 55.0%</text>
+
+  <rect x="240" y="258" width="188" height="86" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="334" y="280" text-anchor="middle" font-size="10.5" fill="#991B1B" font-weight="bold">无人认领关键表 1 张</text>
+  <text x="252" y="302" font-size="9.5" fill="#B91C1C">oms_refund（退款流水）</text>
+  <text x="252" y="322" font-size="9.5" fill="#B91C1C">它既是缺口，也是本轮第一个产出</text>
+
+  <rect x="444" y="258" width="188" height="86" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="538" y="280" text-anchor="middle" font-size="10.5" fill="#92400E" font-weight="bold">血缘 B/C 级占比 40%</text>
+  <text x="456" y="302" font-size="9.5" fill="#B45309">A 级 6 条、B 级 2 条、C 级 2 条</text>
+  <text x="456" y="322" font-size="9.5" fill="#B45309">超过 30% → 暂不可作评审依据</text>
+
+  <rect x="648" y="258" width="176" height="86" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="736" y="280" text-anchor="middle" font-size="10.5" fill="#92400E" font-weight="bold">临时表残留 2 张</text>
+  <text x="660" y="302" font-size="9.5" fill="#B45309">30 天内访问次数均为 0</text>
+  <text x="660" y="322" font-size="9.5" fill="#B45309">命名规则 + 生命周期两道清理</text>
+
+  <rect x="36" y="360" width="788" height="66" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="430" y="383" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">四条本机可跑的验证命令（不需要任何治理平台）</text>
+  <text x="56" y="405" font-size="9.5" fill="#1D4ED8">V1 账本对账（sqlite3）　V2 无人认领清单（sqlite3）　V3 血缘可信度分布（sqlite3）　V4 runbook 可达性巡检（curl）</text>
+  <text x="56" y="419" font-size="9" fill="#64748B">V4 必须具备 canary：清单里放一条保留域名，用来证明「脚本真的会报错」，而不是永远全绿</text>
+
+  <rect x="36" y="440" width="788" height="86" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="430" y="463" text-anchor="middle" font-size="11" fill="#475569" font-weight="bold">明确不做的四件事（本轮的边界，写下来比做下去更重要）</text>
+  <text x="56" y="486" font-size="9.5" fill="#475569">① 不做全量盘点　② 不上列级血缘　③ 不建指标平台与自助取数　④ 不背 DCMM 评估：先做 L1~L3，再拿标准核对空白</text>
+  <text x="56" y="508" font-size="9" fill="#64748B">理由统一为一句：每一项都能把工期从三个月拉到一年，而它们都不影响本轮要回答的四个问题能否答上来。</text>
+</svg>

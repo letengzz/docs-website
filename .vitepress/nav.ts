@@ -58,6 +58,7 @@ export const nav = [
       { text: "时序数据库", link: "/docs/DB/TimeSeries" },
       { text: "数据同步与 CDC", link: "/docs/DB/CDC" },
       { text: "向量数据库深入", link: "/docs/DB/VectorDatabase" },
+      { text: "数据治理入门", link: "/docs/DB/DataGovernance" },
     ]
   },
   {

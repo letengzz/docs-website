@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 560" width="860" height="560" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="860" height="560" fill="#FFFFFF"/>
+  <text x="430" y="32" text-anchor="middle" font-size="17" fill="#0F172A" font-weight="bold">三类元数据决定「能回答什么」，四种采集方式决定「信得过多久」</text>
+  <text x="430" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">只有技术元数据能自动采全；业务元数据与操作元数据才是目录成败的分水岭</text>
+
+  <rect x="36" y="74" width="788" height="150" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="430" y="97" text-anchor="middle" font-size="11.5" fill="#1E3A8A" font-weight="bold">① 三类元数据：混在一起谈，就会出现「目录里什么都有、什么都查不到」</text>
+
+  <rect x="54" y="110" width="248" height="100" rx="6" fill="#DBEAFE" stroke="#60A5FA" stroke-width="1.4"/>
+  <text x="178" y="132" text-anchor="middle" font-size="11" fill="#1E40AF" font-weight="bold">技术元数据</text>
+  <text x="66" y="154" font-size="9.5" fill="#1D4ED8">回答：系统里实际存在什么</text>
+  <text x="66" y="174" font-size="9.5" fill="#1D4ED8">内容：库 / 表 / 字段 / 类型 / 分区键</text>
+  <text x="66" y="194" font-size="9.5" fill="#1D4ED8">来源：采集器自动抓</text>
+
+  <rect x="306" y="110" width="248" height="100" rx="6" fill="#DBEAFE" stroke="#60A5FA" stroke-width="1.4"/>
+  <text x="430" y="132" text-anchor="middle" font-size="11" fill="#1E40AF" font-weight="bold">业务元数据</text>
+  <text x="318" y="154" font-size="9.5" fill="#1D4ED8">回答：这些字段是什么意思</text>
+  <text x="318" y="174" font-size="9.5" fill="#1D4ED8">内容：定义 / 口径 / 值域 / 敏感级别</text>
+  <text x="318" y="194" font-size="9.5" fill="#1D4ED8">来源：业务负责人 + 数据管理员</text>
+
+  <rect x="558" y="110" width="248" height="100" rx="6" fill="#DBEAFE" stroke="#60A5FA" stroke-width="1.4"/>
+  <text x="682" y="132" text-anchor="middle" font-size="11" fill="#1E40AF" font-weight="bold">操作元数据</text>
+  <text x="570" y="154" font-size="9.5" fill="#1D4ED8">回答：什么时候怎么产生的</text>
+  <text x="570" y="174" font-size="9.5" fill="#1D4ED8">内容：作业 / 频率 / 上次状态 / 耗时</text>
+  <text x="570" y="194" font-size="9.5" fill="#1D4ED8">来源：调度与作业框架上报</text>
+
+  <rect x="36" y="240" width="788" height="182" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.8"/>
+  <text x="430" y="263" text-anchor="middle" font-size="11.5" fill="#9A3412" font-weight="bold">② 四种采集方式：按类型分工，不是四选一</text>
+  <text x="56" y="288" font-size="9.5" fill="#C2410C">直连系统目录　　采技术元数据　　准确率高（引擎自己说的）、新鲜度按调度周期、成本低　　失效形态：新库没加进来 → 静默漏采</text>
+  <text x="56" y="312" font-size="9.5" fill="#C2410C">解析查询与日志　采血缘与热度　　准确率中（取决于 SQL 解析覆盖）、近实时、成本中　　失效形态：动态拼 SQL → 边断，无提示</text>
+  <text x="56" y="336" font-size="9.5" fill="#C2410C">调度框架上报　　采作业与产出　　准确率中高、新鲜度实时、成本中　　　　失效形态：框架外执行的作业 → 不进图</text>
+  <text x="56" y="360" font-size="9.5" fill="#C2410C">人工登记　　　　采业务定义　　　准确率取决于纪律、只在被要求时更新、成本高　失效形态：一劳永逸地过期</text>
+
+  <rect x="56" y="374" width="748" height="36" rx="5" fill="#FFEDD5" stroke="#FDBA74" stroke-width="1.2"/>
+  <text x="66" y="390" font-size="9.5" fill="#9A3412">前三种都建立在同一个前提上：执行过程是可观测的。动态 SQL、框架外执行、人工补数都采不到，</text>
+  <text x="66" y="404" font-size="9.5" fill="#9A3412">处置不是禁止这些写法，而是给它们一个「人工登记入口」，并在目录里显式标注来源与刷新时间。</text>
+
+  <rect x="36" y="434" width="384" height="108" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="228" y="457" text-anchor="middle" font-size="11.5" fill="#475569" font-weight="bold">元数据自己的质量：三个可算的指标</text>
+  <text x="56" y="480" font-size="9.5" fill="#475569">覆盖率　被登记的资产 / 实际存在的资产（关键资产健康线 ≥ 80%）</text>
+  <text x="56" y="502" font-size="9.5" fill="#475569">新鲜度　距上次成功采集多久（按数据源看，健康线 ≤ 2 个采集周期）</text>
+  <text x="56" y="524" font-size="9.5" fill="#475569">完整性　责任人 / 业务定义 / 敏感级别为空的比例（责任人缺失应为 0）</text>
+
+  <rect x="440" y="434" width="384" height="108" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="632" y="457" text-anchor="middle" font-size="11.5" fill="#991B1B" font-weight="bold">可用 ≠ 已部署：五条验完才算</text>
+  <text x="460" y="480" font-size="9.5" fill="#B91C1C">MD-A 按业务名词能搜到资产（不是按表名）</text>
+  <text x="460" y="502" font-size="9.5" fill="#B91C1C">MD-B 关键资产有真人责任人　MD-C 新鲜度有上界</text>
+  <text x="460" y="524" font-size="9.5" fill="#B91C1C">MD-D 血缘边有来源与刷新时间　MD-E 有补录入口与时限</text>
+</svg>

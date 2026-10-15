@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 540" width="860" height="540" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="860" height="540" fill="#FFFFFF"/>
+  <text x="430" y="32" text-anchor="middle" font-size="17" fill="#0F172A" font-weight="bold">数据治理问题分诊：先定类，再定页</text>
+  <text x="430" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">分诊只问一个问题——「这是定义问题、链路问题、还是人的问题」，问错这一句会让人在错误的层次上排查半小时</text>
+
+  <rect x="300" y="72" width="260" height="56" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="430" y="96" text-anchor="middle" font-size="11.5" fill="#1E3A8A" font-weight="bold">现象：有人报「这个数不对」</text>
+  <text x="430" y="116" text-anchor="middle" font-size="9.5" fill="#1D4ED8">先看它是「算出来的」还是「搬过来的」</text>
+
+  <line x1="430" y1="128" x2="430" y2="146" stroke="#94A3B8" stroke-width="1.4"/>
+  <line x1="122" y1="146" x2="738" y2="146" stroke="#94A3B8" stroke-width="1.4"/>
+  <line x1="122" y1="146" x2="122" y2="164" stroke="#94A3B8" stroke-width="1.4"/>
+  <line x1="327" y1="146" x2="327" y2="164" stroke="#94A3B8" stroke-width="1.4"/>
+  <line x1="533" y1="146" x2="533" y2="164" stroke="#94A3B8" stroke-width="1.4"/>
+  <line x1="738" y1="146" x2="738" y2="164" stroke="#94A3B8" stroke-width="1.4"/>
+
+  <rect x="36" y="164" width="172" height="86" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="122" y="186" text-anchor="middle" font-size="10.5" fill="#991B1B" font-weight="bold">① 定义问题</text>
+  <text x="48" y="206" font-size="9.5" fill="#B91C1C">两处算法不一致</text>
+  <text x="48" y="224" font-size="9.5" fill="#B91C1C">症状：都对，但不等</text>
+  <text x="48" y="242" font-size="9" fill="#64748B">页面：标准与主数据</text>
+
+  <rect x="241" y="164" width="172" height="86" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.5"/>
+  <text x="327" y="186" text-anchor="middle" font-size="10.5" fill="#9A3412" font-weight="bold">② 链路问题</text>
+  <text x="253" y="206" font-size="9.5" fill="#C2410C">数据没到 / 只到一半</text>
+  <text x="253" y="224" font-size="9.5" fill="#C2410C">症状：空、少、延迟</text>
+  <text x="253" y="242" font-size="9" fill="#64748B">页面：质量规则与闭环</text>
+
+  <rect x="447" y="164" width="172" height="86" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="533" y="186" text-anchor="middle" font-size="10.5" fill="#92400E" font-weight="bold">③ 元数据问题</text>
+  <text x="459" y="206" font-size="9.5" fill="#B45309">搜不到 / 信息过期</text>
+  <text x="459" y="224" font-size="9.5" fill="#B45309">症状：找不到、对不上账</text>
+  <text x="459" y="242" font-size="9" fill="#64748B">页面：元数据与资产目录</text>
+
+  <rect x="652" y="164" width="172" height="86" rx="6" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="738" y="186" text-anchor="middle" font-size="10.5" fill="#475569" font-weight="bold">④ 人的问题</text>
+  <text x="664" y="206" font-size="9.5" fill="#475569">没人认领 / 没人裁决</text>
+  <text x="664" y="224" font-size="9.5" fill="#475569">症状：推不动、没人修</text>
+  <text x="664" y="242" font-size="9" fill="#64748B">页面：组织、角色与流程</text>
+
+  <rect x="36" y="268" width="788" height="120" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="430" y="291" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">四类各自的第一句追问（问对了，一半的问题当场定性）</text>
+  <text x="56" y="314" font-size="9.5" fill="#1D4ED8">① 定义　问：「这两个数各自的归属时间点是什么？」——分歧几乎总在时间归属与范围边界，不在计算逻辑</text>
+  <text x="56" y="336" font-size="9.5" fill="#1D4ED8">② 链路　先分「数据没到」与「数据错了」：看新鲜度指标，别先看明细。前者查调度，后者查变更</text>
+  <text x="56" y="358" font-size="9.5" fill="#1D4ED8">③ 元数据　问：「这张表在这张图上是什么时候采集的？」——过期信息比没有信息更危险</text>
+  <text x="56" y="380" font-size="9.5" fill="#1D4ED8">④ 人的　问：「上次改这个字段，是谁点头才生效的？」——答不出人名，说明责任人这个角色是空的</text>
+
+  <rect x="36" y="404" width="384" height="122" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="228" y="427" text-anchor="middle" font-size="11.5" fill="#991B1B" font-weight="bold">三个最贵的误诊</text>
+  <text x="56" y="450" font-size="9.5" fill="#B91C1C">① 把「口径不一致」当「数据错」→ 改数据、越修越乱</text>
+  <text x="56" y="472" font-size="9.5" fill="#B91C1C">② 把「数据没到」当「数据错了」→ 在明细里查半小时</text>
+  <text x="56" y="494" font-size="9.5" fill="#B91C1C">③ 把「组织问题」当「工具问题」→ 买平台，问题原样保留</text>
+  <text x="56" y="516" font-size="9" fill="#64748B">共同特征：误诊后动作很大、见效为零</text>
+
+  <rect x="440" y="404" width="384" height="122" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="632" y="427" text-anchor="middle" font-size="11.5" fill="#475569" font-weight="bold">判据自检：别让巡检永远全绿</text>
+  <text x="460" y="450" font-size="9.5" fill="#475569">① 每条判据都要有「一次动作」能验证它</text>
+  <text x="460" y="472" font-size="9.5" fill="#475569">② 应当有失败样本的检查，必须放 canary</text>
+  <text x="460" y="494" font-size="9.5" fill="#475569">③ 「存在」与「可达」是两条判据，不能合并</text>
+  <text x="460" y="516" font-size="9" fill="#64748B">本页 V4 实测：12 条里 1 条 404、2 条不可达</text>
+</svg>

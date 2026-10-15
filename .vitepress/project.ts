@@ -277,6 +277,7 @@ export const CompleteProject = [
           { text: "部署前置：把联调态收敛成可交付态", link: "/project/Complete/MonitoringDashboard/DeployPrep/index.md" },
           { text: "容量基线重测：把 ⏳ 换成交付态实测值", link: "/project/Complete/MonitoringDashboard/CapacityBaseline/index.md" },
           { text: "一键起与大盘可用性", link: "/project/Complete/MonitoringDashboard/OneClickUp/index.md" },
+          { text: "上线验收收口：把交付判据变成可勾选项", link: "/project/Complete/MonitoringDashboard/LaunchAcceptance/index.md" },
         ],
       },
       {

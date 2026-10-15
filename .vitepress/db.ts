@@ -321,3 +321,19 @@ export const BigData = [
     ],
   },
 ];
+export const DataGovernance = [
+  {
+    text: "数据治理入门",
+    link: "/docs/DB/DataGovernance/index.md",
+    items: [
+      { text: "概述：数据治理的四条边界", link: "/docs/DB/DataGovernance/Overview/index.md" },
+      { text: "元数据与资产目录", link: "/docs/DB/DataGovernance/Metadata/index.md" },
+      { text: "数据血缘与影响分析", link: "/docs/DB/DataGovernance/Lineage/index.md" },
+      { text: "数据质量规则与闭环", link: "/docs/DB/DataGovernance/DataQuality/index.md" },
+      { text: "数据标准与主数据", link: "/docs/DB/DataGovernance/StandardsMasterData/index.md" },
+      { text: "组织、角色与流程", link: "/docs/DB/DataGovernance/OrgAndProcess/index.md" },
+      { text: "实战：五个源系统到一个治理体系", link: "/docs/DB/DataGovernance/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/DataGovernance/FAQ/index.md" },
+    ],
+  },
+];

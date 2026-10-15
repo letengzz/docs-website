@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="900" height="560" fill="#FFFFFF"/>
+  <text x="450" y="34" text-anchor="middle" font-size="18" fill="#0F172A" font-weight="bold">数据治理全景：四根支柱与一条贯穿线</text>
+  <text x="450" y="58" text-anchor="middle" font-size="11" fill="#64748B">四根支柱全部长在「元数据」这张账本上；组织与流程不是第五根柱子，而是让四根柱子生效的前提</text>
+
+  <rect x="40" y="84" width="820" height="64" rx="9" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="450" y="108" text-anchor="middle" font-size="12" fill="#1E3A8A" font-weight="bold">① 元数据与资产目录（账本）</text>
+  <text x="450" y="132" text-anchor="middle" font-size="10" fill="#1D4ED8">有什么数据 · 在哪 · 谁负责 · 字段是什么意思 · 上次刷新是什么时候</text>
+
+  <rect x="40" y="166" width="262" height="150" rx="9" fill="#ECFDF5" stroke="#059669" stroke-width="1.8"/>
+  <text x="171" y="192" text-anchor="middle" font-size="12" fill="#065F46" font-weight="bold">② 数据血缘</text>
+  <text x="60" y="218" font-size="10" fill="#047857">向上溯源：这个数从哪来</text>
+  <text x="60" y="240" font-size="10" fill="#047857">向下影响：改一列会坏谁</text>
+  <text x="60" y="268" font-size="9" fill="#64748B">表级 / 列级两种粒度</text>
+  <text x="60" y="288" font-size="9" fill="#64748B">来源必须是执行日志，不是手画</text>
+  <text x="60" y="306" font-size="9" fill="#B91C1C">手画的图失效时没有任何提示</text>
+
+  <rect x="319" y="166" width="262" height="150" rx="9" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.8"/>
+  <text x="450" y="192" text-anchor="middle" font-size="12" fill="#9A3412" font-weight="bold">③ 数据质量</text>
+  <text x="339" y="218" font-size="10" fill="#C2410C">行级四类：非空 / 唯一 / 值域 / 关联</text>
+  <text x="339" y="240" font-size="10" fill="#C2410C">表级四类：量 / 新鲜度 / 跳变 / 断档</text>
+  <text x="339" y="268" font-size="9" fill="#64748B">规则五要素：对象 / 条件 / 分级 /</text>
+  <text x="339" y="286" font-size="9" fill="#64748B">动作 / 接收人</text>
+  <text x="339" y="306" font-size="9" fill="#B91C1C">只告警不阻断 = 规则全部空转</text>
+
+  <rect x="598" y="166" width="262" height="150" rx="9" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.8"/>
+  <text x="729" y="192" text-anchor="middle" font-size="12" fill="#5B21B6" font-weight="bold">④ 标准与主数据</text>
+  <text x="618" y="218" font-size="10" fill="#6D28D9">数据标准三件套：</text>
+  <text x="618" y="238" font-size="9" fill="#7C3AED">业务定义 / 技术定义 / 值域</text>
+  <text x="618" y="266" font-size="9" fill="#64748B">主数据：跨系统共享的核心实体</text>
+  <text x="618" y="286" font-size="9" fill="#64748B">识别四问：共享 / 稳定 / 唯一 / 权威</text>
+  <text x="618" y="306" font-size="9" fill="#B91C1C">一个实体多个 ID = 永远对不上的账</text>
+
+  <rect x="40" y="334" width="820" height="86" rx="9" fill="#F8FAFC" stroke="#475569" stroke-width="1.8"/>
+  <text x="450" y="358" text-anchor="middle" font-size="12" fill="#1E293B" font-weight="bold">贯穿线：组织、角色与流程（不是第五根支柱）</text>
+  <text x="60" y="382" font-size="10" fill="#334155">三类角色：负责人（定口径、担结果）· 管理员（守标准、管目录）· 保管人（跑链路、修故障）</text>
+  <text x="60" y="404" font-size="10" fill="#334155">两条流程：口径变更要走受理裁决 · 质量失败要走分诊与闭环时限</text>
+
+  <rect x="40" y="436" width="260" height="92" rx="9" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="170" y="460" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="bold">失败形态一</text>
+  <text x="170" y="482" text-anchor="middle" font-size="9" fill="#B91C1C">目录建成了，没人用</text>
+  <text x="170" y="502" text-anchor="middle" font-size="9" fill="#B91C1C">查到的是过期的信息</text>
+  <text x="170" y="520" text-anchor="middle" font-size="9" fill="#64748B">→ 大家开始不信任所有文档</text>
+
+  <rect x="320" y="436" width="260" height="92" rx="9" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="450" y="460" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="bold">失败形态二</text>
+  <text x="450" y="482" text-anchor="middle" font-size="9" fill="#B91C1C">规则很多，一条都不拦人</text>
+  <text x="450" y="502" text-anchor="middle" font-size="9" fill="#B91C1C">通知太多，全被过滤掉</text>
+  <text x="450" y="520" text-anchor="middle" font-size="9" fill="#64748B">→ 告警系统的信用破产</text>
+
+  <rect x="600" y="436" width="260" height="92" rx="9" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="730" y="460" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="bold">失败形态三</text>
+  <text x="730" y="482" text-anchor="middle" font-size="9" fill="#B91C1C">只报投入指标</text>
+  <text x="730" y="502" text-anchor="middle" font-size="9" fill="#B91C1C">资产数、规则数、覆盖率</text>
+  <text x="730" y="520" text-anchor="middle" font-size="9" fill="#64748B">→ 指标可被口径放大，必被优化</text>
+</svg>

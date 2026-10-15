@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="900" height="560" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="17" fill="#0F172A" font-weight="bold">上线验收清单：六层逐条回填，三种状态必须分开写</text>
+  <text x="450" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">「实测通过」与「交付件里没有配置」是两种结论；把后者写成前者，就是把缺陷留在交付物里</text>
+
+  <rect x="30" y="72" width="840" height="330" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+
+  <rect x="46" y="84" width="560" height="44" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="60" y="102" font-size="10.5" fill="#1E3A8A" font-weight="bold">① 容器与幂等</text>
+  <text x="60" y="119" font-size="9.5" fill="#1D4ED8">三服务 running；二次 `up -d` 三行 `Running`、无 `Recreated`</text>
+  <rect x="616" y="84" width="238" height="44" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="735" y="103" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">✅ 实测通过</text>
+  <text x="735" y="120" text-anchor="middle" font-size="9.5" fill="#047857">幂等是可重复验收的前提</text>
+
+  <rect x="46" y="136" width="560" height="44" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="60" y="154" font-size="10.5" fill="#1E3A8A" font-weight="bold">② 文件一致性</text>
+  <text x="60" y="171" font-size="9.5" fill="#1D4ED8">六个文件宿主 / 容器 sha256 前 16 位逐条相等 + `promtool` 双 SUCCESS</text>
+  <rect x="616" y="136" width="238" height="44" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="735" y="155" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">✅ 实测通过</text>
+  <text x="735" y="172" text-anchor="middle" font-size="9.5" fill="#047857">「加载成功」要有指纹级证据</text>
+
+  <rect x="46" y="188" width="560" height="44" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="60" y="206" font-size="10.5" fill="#1E3A8A" font-weight="bold">③ 采集与规则</text>
+  <text x="60" y="223" font-size="9.5" fill="#1D4ED8">5 个活动目标全 up、unknown = 0；alerting 6 条 + recording 3 条；activeAlertmanagers = 1</text>
+  <rect x="616" y="188" width="238" height="44" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="735" y="207" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">✅ 实测通过</text>
+  <text x="735" y="224" text-anchor="middle" font-size="9.5" fill="#047857">规则名集合比条数更可靠</text>
+
+  <rect x="46" y="240" width="560" height="44" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+  <text x="60" y="258" font-size="10.5" fill="#9A3412" font-weight="bold">④ 三张大盘数据源</text>
+  <text x="60" y="275" font-size="9.5" fill="#C2410C">「非空」有三种含义：有值 / 有序列但值为 0 / 值是 NaN —— 三者处置完全不同</text>
+  <rect x="616" y="240" width="238" height="44" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.4"/>
+  <text x="735" y="259" text-anchor="middle" font-size="10.5" fill="#92400E" font-weight="bold">⚠️ 通过，口径要改</text>
+  <text x="735" y="276" text-anchor="middle" font-size="9.5" fill="#B45309">业务流量实测 0 / 比值 NaN</text>
+
+  <rect x="46" y="292" width="560" height="44" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="60" y="310" font-size="10.5" fill="#1E3A8A" font-weight="bold">⑤ 自监控</text>
+  <text x="60" y="327" font-size="9.5" fill="#1D4ED8">自采集目标 1、HEAD 序列 877、规则评估失败 0、采集耗时 4.4 ms（阈值内）</text>
+  <rect x="616" y="292" width="238" height="44" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="735" y="311" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">✅ 实测通过</text>
+  <text x="735" y="328" text-anchor="middle" font-size="9.5" fill="#047857">采集器挂了没人告诉你</text>
+
+  <rect x="46" y="344" width="560" height="44" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="60" y="362" font-size="10.5" fill="#991B1B" font-weight="bold">⑥ 保留策略与告警覆盖</text>
+  <text x="60" y="379" font-size="9.5" fill="#B91C1C">`prometheus_tsdb_retention_limit_bytes` 回读 0；三份编排文件里搜不到 `retention.size`</text>
+  <rect x="616" y="344" width="238" height="44" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="735" y="363" text-anchor="middle" font-size="10.5" fill="#991B1B" font-weight="bold">❌ 判 FAIL（交付件缺配置）</text>
+  <text x="735" y="380" text-anchor="middle" font-size="9.5" fill="#B91C1C">数字在文档里，配置不在文件里</text>
+
+  <rect x="30" y="416" width="410" height="128" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.5"/>
+  <text x="235" y="439" text-anchor="middle" font-size="11" fill="#9A3412" font-weight="bold">三处判据侧修正（今天实测出来）</text>
+  <text x="46" y="462" font-size="9.5" fill="#C2410C">① `grep -c runbook_url` 把注释也算进去 → 6 条规则数出 7 处，</text>
+  <text x="46" y="478" font-size="9.5" fill="#C2410C">　　判据必须作用于非注释行（与第 141 天同族，第二次出现）</text>
+  <text x="46" y="498" font-size="9.5" fill="#C2410C">② 期望值为 0 时，PromQL 的空向量与真正的 0 长得一样：</text>
+  <text x="46" y="514" font-size="9.5" fill="#C2410C">　　`count(up == 0)` 返回空向量，须写 `or vector(0)` 或改判式</text>
+  <text x="46" y="534" font-size="9.5" fill="#C2410C">③ 「数据源非空」不能只判「有没有序列」，要判三个状态</text>
+
+  <rect x="460" y="416" width="410" height="128" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="665" y="439" text-anchor="middle" font-size="11" fill="#475569" font-weight="bold">新立待办 `LA-1 ~ LA-3`（不并入 `RC-*`）</text>
+  <text x="476" y="462" font-size="9.5" fill="#475569">`LA-1` 把 `retention.size` 落进编排文件并回读为数字</text>
+  <text x="476" y="482" font-size="9.5" fill="#475569">`LA-2` 修 `RC-3` 判据的非注释口径，复扫 6 == 6</text>
+  <text x="476" y="502" font-size="9.5" fill="#475569">`LA-3` 三张大盘「非空」判据补三个状态的判别式</text>
+  <text x="476" y="526" font-size="9" fill="#64748B">沿用第 138 天纪律：新待办另立编号族，避免旧编号漂移</text>
+</svg>

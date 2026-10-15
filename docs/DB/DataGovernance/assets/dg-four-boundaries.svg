@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 440" width="820" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="820" height="440" fill="#FFFFFF"/>
+  <text x="410" y="32" text-anchor="middle" font-size="17" fill="#0F172A" font-weight="bold">四条边界：看起来像，其实不是一回事</text>
+  <text x="410" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">每一条的右侧才是治理；左侧都是「做了一半」</text>
+
+  <rect x="40" y="76" width="350" height="72" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="215" y="100" text-anchor="middle" font-size="11" fill="#475569" font-weight="bold">采集了元数据</text>
+  <text x="215" y="122" text-anchor="middle" font-size="9.5" fill="#64748B">表结构进了目录，能搜到字段名</text>
+  <text x="215" y="139" text-anchor="middle" font-size="9.5" fill="#64748B">但没人对内容负责</text>
+  <text x="404" y="118" text-anchor="middle" font-size="18" fill="#2563EB" font-weight="bold">≠</text>
+  <rect x="430" y="76" width="350" height="72" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="605" y="100" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">有治理</text>
+  <text x="605" y="122" text-anchor="middle" font-size="9.5" fill="#1D4ED8">每张表有真人责任人、有业务定义</text>
+  <text x="605" y="139" text-anchor="middle" font-size="9.5" fill="#1D4ED8">搜不到时有人负责补录</text>
+
+  <rect x="40" y="166" width="350" height="72" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="215" y="190" text-anchor="middle" font-size="11" fill="#475569" font-weight="bold">数据质量监控</text>
+  <text x="215" y="212" text-anchor="middle" font-size="9.5" fill="#64748B">回答「这个数现在对不对」</text>
+  <text x="215" y="229" text-anchor="middle" font-size="9.5" fill="#64748B">输出通过 / 失败</text>
+  <text x="404" y="208" text-anchor="middle" font-size="18" fill="#2563EB" font-weight="bold">≠</text>
+  <rect x="430" y="166" width="350" height="72" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="605" y="190" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">数据治理</text>
+  <text x="605" y="212" text-anchor="middle" font-size="9.5" fill="#1D4ED8">回答「谁定义、错了谁修、改了坏谁」</text>
+  <text x="605" y="229" text-anchor="middle" font-size="9.5" fill="#1D4ED8">输出归属 / 口径 / 流程</text>
+
+  <rect x="40" y="256" width="350" height="72" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="215" y="280" text-anchor="middle" font-size="11" fill="#475569" font-weight="bold">买平台 / 上工具</text>
+  <text x="215" y="302" text-anchor="middle" font-size="9.5" fill="#64748B">降低履行职责的成本</text>
+  <text x="215" y="319" text-anchor="middle" font-size="9.5" fill="#64748B">但不能替代履职</text>
+  <text x="404" y="298" text-anchor="middle" font-size="18" fill="#2563EB" font-weight="bold">≠</text>
+  <rect x="430" y="256" width="350" height="72" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="605" y="280" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">组织问题被解决</text>
+  <text x="605" y="302" text-anchor="middle" font-size="9.5" fill="#1D4ED8">有人被追责过、有裁决权在某个岗位</text>
+  <text x="605" y="319" text-anchor="middle" font-size="9.5" fill="#1D4ED8">工具才有作用面</text>
+
+  <rect x="40" y="346" width="350" height="72" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="215" y="370" text-anchor="middle" font-size="11" fill="#475569" font-weight="bold">手画一张血缘图</text>
+  <text x="215" y="392" text-anchor="middle" font-size="9.5" fill="#64748B">上线当天是对的</text>
+  <text x="215" y="409" text-anchor="middle" font-size="9.5" fill="#64748B">第一次改表结构后悄悄失效</text>
+  <text x="404" y="388" text-anchor="middle" font-size="18" fill="#2563EB" font-weight="bold">≠</text>
+  <rect x="430" y="346" width="350" height="72" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="605" y="370" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">可用的血缘</text>
+  <text x="605" y="392" text-anchor="middle" font-size="9.5" fill="#1D4ED8">从执行日志自动采集、有刷新时间</text>
+  <text x="605" y="409" text-anchor="middle" font-size="9.5" fill="#1D4ED8">能作为变更评审的依据</text>
+</svg>
