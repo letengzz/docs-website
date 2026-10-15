@@ -1,6 +1,6 @@
 # Spring Security 7
 
-Spring Security 7.x 是**当前主线版本**（对应 Spring Boot 4.x 与 Spring Framework 7）。它延续了 6.x 的 `SecurityFilterChain` Bean 配置模型，同时移除了更多历史遗留 API，是**新项目的默认选择**。
+Spring Security 7.x 是**当前主线版本**（2026-09 口径，对应 Spring Boot 4.x 与 Spring Framework 7）。它延续了 6.x 的 `SecurityFilterChain` Bean 配置模型，同时移除了更多历史遗留 API，是**新项目的默认选择**。
 
 ::: tip 与 6.x 的关系
 7.x 不是在 6.x 上"换了一套用法"，而是**在 6.x 的配置模型上继续收敛**：过滤链 Bean、`@EnableMethodSecurity`、`AuthenticationManager` 等核心模型保持一致。因此 6.x 的大量内容（认证流程、授权注解、过滤器链原理）在 7.x 中仍然适用。

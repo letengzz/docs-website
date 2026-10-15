@@ -16,6 +16,7 @@
 - [性能与容量工程](PerformanceEngineering/index.md)：四条边界（性能 ≠ 容量 / 平均 ≠ 分位 / 压测 ≠ 容量 / 优化 ≠ 扩容）、SLO 与错误预算、定量建模与排队、开环压测方法论、瓶颈定位、容量规划与弹性、常见问题
 - [监控告警](Monitoring/index.md)
 - [日志体系](LogSystem/index.md)
+- [可观测性深入](Observability/index.md)：四条边界（监控 ≠ 可观测）、OpenTelemetry 标准与接入、Collector 管道、采样决策（看到什么与不能宣称什么）、持续剖析与火焰图、后端选型、观测成本治理、端到端接入实战、常见问题
 - [备份与容灾](BackupDR/index.md)
 - [混沌工程](ChaosEngineering/index.md)：稳态假设、故障注入、实验设计、平台工具、演练日、实战
 - [故障应急体系](IncidentResponse/index.md)：值班制度、故障定级、应急指挥、应急预案、定位与止损、演练、实战、常见问题

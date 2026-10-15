@@ -6,7 +6,7 @@ Spring Security 是 Spring 生态的**认证与授权框架**：提供过滤器�
 
 | 版本 | 对应 Spring Boot | 状态 | 入口 |
 | --- | --- | --- | --- |
-| Spring Security 7.x | Spring Boot 4.x | **当前主线** | [Spring Security 7](v7/index.md) |
+| Spring Security 7.x | Spring Boot 4.x | **当前主线（2026-10 口径）** | [Spring Security 7](v7/index.md) |
 | Spring Security 6.x | Spring Boot 3.x | 上一代，仍在大量使用 | [Spring Security 6](v6/index.md) |
 | Spring Security 5.x | Spring Boot 2.x | **仅存量项目使用** | [Spring Security 5（存档）](v5/index.md) |
 

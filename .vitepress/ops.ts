@@ -153,6 +153,23 @@ export const Monitoring = [
     ],
   },
 ];
+export const Observability = [
+  {
+    text: "可观测性深入",
+    link: "/docs/Ops/Observability/index.md",
+    items: [
+      { text: "概述：从监控到可观测性的四条边界", link: "/docs/Ops/Observability/Overview/index.md" },
+      { text: "OpenTelemetry：统一标准与接入", link: "/docs/Ops/Observability/OpenTelemetry/index.md" },
+      { text: "Collector：管道工程化", link: "/docs/Ops/Observability/Collector/index.md" },
+      { text: "采样决策：看到什么，与不能宣称什么", link: "/docs/Ops/Observability/Sampling/index.md" },
+      { text: "持续剖析：第四类信号与火焰图", link: "/docs/Ops/Observability/Profiles/index.md" },
+      { text: "后端与存储选型", link: "/docs/Ops/Observability/Backends/index.md" },
+      { text: "观测成本治理", link: "/docs/Ops/Observability/Cost/index.md" },
+      { text: "实战：给实时监控大盘接入端到端观测", link: "/docs/Ops/Observability/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Ops/Observability/FAQ/index.md" },
+    ],
+  },
+];
 export const Nginx = [
   {
     text: "Nginx",

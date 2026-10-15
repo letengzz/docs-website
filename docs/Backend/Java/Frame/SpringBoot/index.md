@@ -1,5 +1,8 @@
 # SpringBoot
 
+本节涉及的版本与时效性结论按 2026-08 口径整理；使用前请以官方发布页为准。
+
+
 <p style="text-align:center;"><img src="./assets/spring-boot-logo.png" alt="Spring Boot 官方 Logo" style="zoom:75%;" /></p>
 
 ![image-20230722002105472](assets/202307220027897.png)

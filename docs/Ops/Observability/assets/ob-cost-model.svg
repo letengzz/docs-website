@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="ob-cost-model.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">成本模型：把账单拆成可操作的四个杠杆</text>
+  <rect x="32" y="92" width="836" height="84" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">先写成一条公式（比背单价有用得多）</text>
+  <text x="48" y="140" font-family="system-ui, sans-serif" font-size="10" fill="#334155">成本 ≈（每月 span 数 × 单个 span 平均字节）+（每月日志字节）+（时间序列数 × 保留时长）+（剖析样本数）</text>
+  <text x="48" y="152" font-family="system-ui, sans-serif" font-size="10" fill="#334155">再乘以各自的单价。四个括号里每一个都能单独减小，而单价你几乎改不了——这就是为什么成本治理的抓手全在左</text>
+  <text x="48" y="164" font-family="system-ui, sans-serif" font-size="10" fill="#334155">边。</text>
+  <rect x="32" y="190" width="200" height="168" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="214" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">杠杆一 · 少生产</text>
+  <text x="48" y="238" font-family="system-ui, sans-serif" font-size="11" fill="#334155">不产生比产生后再删便宜。</text>
+  <text x="48" y="253" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="48" y="268" font-family="system-ui, sans-serif" font-size="11" fill="#334155">做法：</text>
+  <text x="48" y="283" font-family="system-ui, sans-serif" font-size="11" fill="#334155">关掉无用的自动埋点；</text>
+  <text x="48" y="298" font-family="system-ui, sans-serif" font-size="11" fill="#334155">过滤健康检查与探针流量；</text>
+  <text x="48" y="313" font-family="system-ui, sans-serif" font-size="11" fill="#334155">删掉没人查的属性字段；</text>
+  <text x="48" y="328" font-family="system-ui, sans-serif" font-size="11" fill="#334155">把调试用的大字段移到采样</text>
+  <text x="48" y="343" font-family="system-ui, sans-serif" font-size="11" fill="#334155">开关后面。</text>
+  <rect x="248" y="190" width="200" height="168" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="264" y="214" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">杠杆二 · 早删</text>
+  <text x="264" y="238" font-family="system-ui, sans-serif" font-size="10" fill="#334155">过滤发生在最靠左的位置</text>
+  <text x="264" y="250" font-family="system-ui, sans-serif" font-size="10" fill="#334155">最便宜。</text>
+  <text x="264" y="262" font-family="system-ui, sans-serif" font-size="10" fill="#334155"></text>
+  <text x="264" y="274" font-family="system-ui, sans-serif" font-size="10" fill="#334155">做法：</text>
+  <text x="264" y="286" font-family="system-ui, sans-serif" font-size="10" fill="#334155">在 SDK 侧先丢健康检查；</text>
+  <text x="264" y="298" font-family="system-ui, sans-serif" font-size="10" fill="#334155">在 Collector 侧过滤；</text>
+  <text x="264" y="310" font-family="system-ui, sans-serif" font-size="10" fill="#334155">最后才在后端写保留策略。</text>
+  <text x="264" y="322" font-family="system-ui, sans-serif" font-size="10" fill="#334155"></text>
+  <text x="264" y="334" font-family="system-ui, sans-serif" font-size="10" fill="#334155">顺序反过来，</text>
+  <text x="264" y="346" font-family="system-ui, sans-serif" font-size="10" fill="#334155">就是花钱把垃圾运到了仓库。</text>
+  <rect x="464" y="190" width="200" height="168" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="480" y="214" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">杠杆三 · 降基数</text>
+  <text x="480" y="238" font-family="system-ui, sans-serif" font-size="8" fill="#334155">基数是指标侧唯一会</text>
+  <text x="480" y="248" font-family="system-ui, sans-serif" font-size="8" fill="#334155">「无声爆炸」的维度。</text>
+  <text x="480" y="258" font-family="system-ui, sans-serif" font-size="8" fill="#334155"></text>
+  <text x="480" y="268" font-family="system-ui, sans-serif" font-size="8" fill="#334155">做法：</text>
+  <text x="480" y="278" font-family="system-ui, sans-serif" font-size="8" fill="#334155">动态段归一为路由模板；</text>
+  <text x="480" y="288" font-family="system-ui, sans-serif" font-size="8" fill="#334155">把用户 ID / 订单号移到日志；</text>
+  <text x="480" y="298" font-family="system-ui, sans-serif" font-size="8" fill="#334155">为每个新标签问一次</text>
+  <text x="480" y="308" font-family="system-ui, sans-serif" font-size="8" fill="#334155">「它的取值有多少种」。</text>
+  <text x="480" y="318" font-family="system-ui, sans-serif" font-size="8" fill="#334155"></text>
+  <text x="480" y="328" font-family="system-ui, sans-serif" font-size="8" fill="#334155">标签是永久成本，</text>
+  <text x="480" y="338" font-family="system-ui, sans-serif" font-size="8" fill="#334155">不是一次性成本。</text>
+  <rect x="680" y="190" width="188" height="168" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="696" y="214" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">杠杆四 · 分级保留</text>
+  <text x="696" y="238" font-family="system-ui, sans-serif" font-size="8" fill="#334155">不同信号的成本敏感度</text>
+  <text x="696" y="248" font-family="system-ui, sans-serif" font-size="8" fill="#334155">完全不同。</text>
+  <text x="696" y="258" font-family="system-ui, sans-serif" font-size="8" fill="#334155"></text>
+  <text x="696" y="268" font-family="system-ui, sans-serif" font-size="8" fill="#334155">做法：</text>
+  <text x="696" y="278" font-family="system-ui, sans-serif" font-size="8" fill="#334155">指标长期、低精度；</text>
+  <text x="696" y="288" font-family="system-ui, sans-serif" font-size="8" fill="#334155">链路短期、高精度；</text>
+  <text x="696" y="298" font-family="system-ui, sans-serif" font-size="8" fill="#334155">日志短期并按关键字过滤；</text>
+  <text x="696" y="308" font-family="system-ui, sans-serif" font-size="8" fill="#334155">剖析样本只留聚合结果。</text>
+  <text x="696" y="318" font-family="system-ui, sans-serif" font-size="8" fill="#334155"></text>
+  <text x="696" y="328" font-family="system-ui, sans-serif" font-size="8" fill="#334155">保留期是一个要被写进</text>
+  <text x="696" y="338" font-family="system-ui, sans-serif" font-size="8" fill="#334155">文档的数值，不是默认值。</text>
+  <rect x="32" y="374" width="836" height="96" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="398" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">三个必须算进去、最常被漏掉的分母</text>
+  <text x="48" y="422" font-family="system-ui, sans-serif" font-size="8" fill="#334155">自监控：观测系统自己的指标、日志、链路也会进入同一套存储。Prometheus 抓 Prometheus 不是冗余，是必须的——它挂了没人知道你瞎了。</text>
+  <text x="48" y="435" font-family="system-ui, sans-serif" font-size="8" fill="#334155">单位成本：只报总花费无法决策；要报「每千次请求的观测成本」「每个服务的观测成本」，才能定位是哪个团队或哪条管道在涨。</text>
+  <text x="48" y="448" font-family="system-ui, sans-serif" font-size="8" fill="#334155">容量拐点：数据量增长通常是阶梯式的（上一个新服务、开一个新埋点），要按月看趋势并把「下次扩容」提前安排，而不是等写满。</text>
+</svg>

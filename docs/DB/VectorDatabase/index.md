@@ -67,7 +67,7 @@
 按仓库约定「涉及大版本时按版本目录组织、旧版本保留并标注状态」，本专题的处理方式是**不建版本目录**，理由有三条：
 
 1. **主题不是某一个产品**。本专题讲的是「近似检索」这一层机制，Milvus、Qdrant、Weaviate、pgvector、Elasticsearch 都是它的实例。为其中任何一个产品建版本目录，都会让另外几个失去位置。
-2. **没有两条并行维护的破坏性版本线**。上面六个产品的当前主线都只有一条；Milvus 2.6 与 3.0 并存的窗口确实存在（2.6 仍在出补丁），但差异集中在**数据怎么放**（本地 vs 湖原生）而不是**检索语义怎么变**，用 `::: info` 在页内标注即可，不需要拆成两套教程。
+2. **没有两条并行维护的破坏性版本线**。上面六个产品的当前主线（2026-10 口径）都只有一条；Milvus 2.6 与 3.0 并存的窗口确实存在（2.6 仍在出补丁），但差异集中在**数据怎么放**（本地 vs 湖原生）而不是**检索语义怎么变**，用 `::: info` 在页内标注即可，不需要拆成两套教程。
 3. **拆目录会产生大量重复**。索引、量化、过滤、融合四块的原理在两个版本里是一样的，拆开等于把同一套内容写两遍，与「不做重复章节」的约定直接冲突。
 
 因此：**旧版本口径一律保留、不删除**，凡与当前主线有实质差异处，页内用 `::: info` 单独标注，并写清「该口径适用于哪个版本区间」。真正需要按版本目录组织的主题（`javax` → `jakarta` 这类**工程做法必须分开写**的破坏性变化），本仓库内已有范例可参照：[Spring 5 / Spring 6](/docs/Backend/Java/Frame/Spring/Spring6/index.md)、[Vue 2 / Vue 3](/docs/Frontend/Frame/Vue/Vue3/index.md)、Spring Boot [v2](/docs/Backend/Java/Frame/SpringBoot/v2/index.md) / [v3](/docs/Backend/Java/Frame/SpringBoot/v3/index.md) / [v4](/docs/Backend/Java/Frame/SpringBoot/v4/index.md)。

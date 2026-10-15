@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="ob-context-propagation.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">上下文传播：一条 trace_id 串起四类数据</text>
+  <rect x="32" y="96" width="130" height="56" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="97.0" y="128" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">客户端</text>
+  <rect x="186" y="96" width="130" height="56" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="251.0" y="128" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">网关</text>
+  <rect x="340" y="96" width="130" height="56" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="405.0" y="128" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">服务 A</text>
+  <rect x="494" y="96" width="130" height="56" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="559.0" y="128" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">服务 B</text>
+  <rect x="648" y="96" width="130" height="56" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="713.0" y="128" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">数据库</text>
+  <path d="M 162 124 L 182 124" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <path d="M 316 124 L 336 124" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <path d="M 470 124 L 490 124" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <path d="M 624 124 L 644 124" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <rect x="32" y="176" width="746" height="92" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="200" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">透传的是两样东西，而且必须成对</text>
+  <text x="48" y="224" font-family="system-ui, sans-serif" font-size="8" fill="#334155">trace_id：整条链路一个，用来把跨进程的所有 span 收成一棵树。</text>
+  <text x="48" y="237" font-family="system-ui, sans-serif" font-size="8" fill="#334155">span_id + parent_span_id：每一跳一个，用来还原调用顺序；只传 trace_id 会得到一堆平级的 span，仍然不知道谁调用了谁。</text>
+  <text x="48" y="250" font-family="system-ui, sans-serif" font-size="8" fill="#334155">采样标记（sampled flag）与采样概率：决定下游是继续采还是直接丢，以及采样后如何还原统计口径。</text>
+  <rect x="32" y="284" width="366" height="148" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="308" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">在另外三类数据里怎么关联</text>
+  <text x="48" y="332" font-family="system-ui, sans-serif" font-size="12" fill="#334155">日志：把 trace_id 写进结构化字段</text>
+  <text x="48" y="346" font-family="system-ui, sans-serif" font-size="12" fill="#334155">（不是拼进消息文本），查日志时用</text>
+  <text x="48" y="360" font-family="system-ui, sans-serif" font-size="12" fill="#334155">trace_id 反查；</text>
+  <text x="48" y="374" font-family="system-ui, sans-serif" font-size="12" fill="#334155">指标：用 exemplar 携带一个代表</text>
+  <text x="48" y="388" font-family="system-ui, sans-serif" font-size="12" fill="#334155">性 trace_id，从分位数直接跳到实例；</text>
+  <text x="48" y="402" font-family="system-ui, sans-serif" font-size="12" fill="#334155">剖析：profile 样本可携带 trace_id，</text>
+  <text x="48" y="416" font-family="system-ui, sans-serif" font-size="12" fill="#334155">从「哪个函数热」回到「哪次请求热」。</text>
+  <rect x="412" y="284" width="366" height="148" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="428" y="308" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">传播失败最常见的三个位置</text>
+  <text x="428" y="332" font-family="system-ui, sans-serif" font-size="12" fill="#334155">① 异步边界：线程池、消息队列、</text>
+  <text x="428" y="346" font-family="system-ui, sans-serif" font-size="12" fill="#334155">定时任务——上下文不会自己跟过去；</text>
+  <text x="428" y="360" font-family="system-ui, sans-serif" font-size="12" fill="#334155">② 协议边界：自研 HTTP 头、老的</text>
+  <text x="428" y="374" font-family="system-ui, sans-serif" font-size="12" fill="#334155">RPC 框架、跨语言调用；</text>
+  <text x="428" y="388" font-family="system-ui, sans-serif" font-size="12" fill="#334155">③ 跨租户 / 跨信任域：被有意剥离</text>
+  <text x="428" y="402" font-family="system-ui, sans-serif" font-size="12" fill="#334155">（这是对的，但要在文档里写明），</text>
+  <text x="428" y="416" font-family="system-ui, sans-serif" font-size="12" fill="#334155">表现为链路在该处断成两截。</text>
+  <rect x="32" y="448" width="746" height="56" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="472" font-family="system-ui, sans-serif" font-size="12" fill="#334155">验证方式：从日志里随便挑一条带 trace_id 的记录，用它在链路后端检索，必须能查到同一</text>
+  <text x="48" y="489" font-family="system-ui, sans-serif" font-size="12" fill="#334155">条链路的其余 span。</text>
+</svg>

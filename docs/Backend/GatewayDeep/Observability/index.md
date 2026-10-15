@@ -153,6 +153,23 @@ curl -s http://127.0.0.1:9090/api/v1/label/__name__/values | jq -r '.[]' | grep 
 - [AI 应用观测与评估 · 在线评估](../../../AI/LLMObservability/OnlineEval/index.md)：分层采样的同一个原则
 - [实战：从零配一个生产级网关](../Practice/index.md)
 
+## 与可观测性深入的分工
+
+本页讲的是**网关这一跳专属的四个信号**，以及日志、链路、脱敏三件事在网关这一层的落地口径。它是「一个具体组件该怎么观测」。
+
+[可观测性深入](../../../Ops/Observability/index.md) 讲的是**把这些信号运出去的管道**：SDK 与 `traceparent` 传播、Collector 的接收与处理、采样、存储与成本。网关在这里有个特殊身份——**它常常是整条链路的第一个 span**，所以它决定了后面所有的服务质量：
+
+| 网关侧要做的决定 | 依据在哪 |
+| --- | --- |
+| 入站请求的 `traceparent` 是透传、重建还是拒绝 | [上下文传播](../../../Ops/Observability/OpenTelemetry/index.md)：**网关是唯一能决定「链路从哪里开始」的位置** |
+| 网关自身要不要采样、采样率与后端是不是同一套 | [采样决策](../../../Ops/Observability/Sampling/index.md)：**网关能采到用户侧全貌**，但采样决策粒度要看它手上有什么标签 |
+| 日志里放什么字段、放多久、走不走 OTLP | [Collector 管道](../../../Ops/Observability/Collector/index.md)：脱敏应当是**管道里的一个处理器**，而不是散落在各语言的代码里 |
+| 高基数标签（用户 ID、原始路径）带来的成本 | [观测成本治理](../../../Ops/Observability/Cost/index.md)：网关是最容易制造基数爆炸的位置 |
+
+::: danger 网关上的两个不可逆决定
+① **丢弃上下文不可逆**：如果网关把入站的 `traceparent` 直接丢掉另起一条新链路，那么**上游（CDN / 浏览器 / 上一个网关上）的证据就永久对不上了**——下游再全也补不回来。② **写入高基数标签不可逆**：标签一旦进入指标，之后每个时间序列都要单独存一份，把某个高基数标签加进指标之后再想移除，历史数据仍然是按高基数计费的。
+:::
+
 ## 参考资料
 
 - W3C Trace Context：https://www.w3.org/TR/trace-context/

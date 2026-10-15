@@ -179,3 +179,20 @@ services:
 ::: tip 相关文档
 Micrometer Tracing 的 Spring Cloud 接入（依赖、采样率、日志 traceId、跨线程上下文丢失坑位）见 [Spring Cloud 专题：链路追踪与可观测性](../../SpringCloud/Tracing/index.md)。
 :::
+
+## 与可观测性深入的分工
+
+本页是**业务视角**：微服务拓扑下为什么要追踪、traceId 怎么把跨服务调用串成时间线、拿到链路后怎么看瓶颈与慢 SQL。它不回答「这套东西在生产上怎么长期跑下去」。
+
+[可观测性深入](../../../Ops/Observability/index.md) 是**工程视角**：标准（OpenTelemetry）、管道（Collector）、采样、后端与成本。两者的边界在「谁负责让链路一直在、且可信」：
+
+| 问题 | 去哪边 |
+| --- | --- |
+| 一次请求跨了哪些服务、慢在哪一跳 | 本页 |
+| 用什么 SDK、`traceparent` 怎么传播、跨线程/跨 MQ 怎么不丢上下文 | [OpenTelemetry 接入](../../../Ops/Observability/OpenTelemetry/index.md) |
+| 采样率设成 10% 之后，我看板上的错误率还准吗 | [采样决策](../../../Ops/Observability/Sampling/index.md)：**采样之后不能宣称全量结论** |
+| trace 数据存哪、存多久、一个月多少钱 | [后端选型](../../../Ops/Observability/Backends/index.md) 与 [成本治理](../../../Ops/Observability/Cost/index.md) |
+
+::: warning 本页最容易被误读的一条
+**「有 traceId」不等于「链路完整」。** 只要中间任何一跳没接上（自研线程池、异步回调、消息队列消费者、老的语言栈），那条链路就会从中间断开——下游看起来是「一次新请求」，上游那段耗时凭空消失。断链问题在业务视角看不出来（图还是画得出来），必须回到工程视角检查**传播链路是否处处贯通**。这也是 [实战接入](../../../Ops/Observability/Practice/index.md) 里把「跨线程上下文」单列为一个验收项的原因。
+:::

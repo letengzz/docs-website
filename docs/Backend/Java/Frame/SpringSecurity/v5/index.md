@@ -31,7 +31,7 @@
 ## 相关专题
 
 - [Spring Security 6](../v6/index.md)：上一代主线（Spring Boot 3.x）
-- [Spring Security 7](../v7/index.md)：当前主线（Spring Boot 4.x）
+- [Spring Security 7](../v7/index.md)：当前主线（2026-09 口径，对应 Spring Boot 4.x）
 - [认证与授权 · 版本与兼容矩阵](../../../../Auth/Version/index.md)：框架与协议版本对照
 
 ## 参考资料

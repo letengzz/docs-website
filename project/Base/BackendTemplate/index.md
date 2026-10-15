@@ -101,6 +101,9 @@ backend-template/
 
 ## 各阶段交付内容
 
+本节涉及的版本与时效性结论按 2026-10 口径整理；使用前请以官方发布页为准。
+
+
 **第 69 天（骨架与基础能力）**：
 
 1. [骨架与目录结构](./Skeleton/index.md)：Maven 多模块骨架、启动类、配置文件，可 `mvn spring-boot:run` 启动；并用 **Maven Profile** 管理同一大版本下的依赖小版本与 JDK 编译目标差异（含 BOM 导入取舍、toolchains、`.mvn/maven.config` 与 CI 矩阵）。

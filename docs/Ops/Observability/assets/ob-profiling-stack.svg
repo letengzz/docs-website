@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="ob-profiling-stack.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">持续剖析：把「哪一行在烧 CPU」变成常驻能力</text>
+  <rect x="32" y="92" width="268" height="180" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">原理：定时采样调用栈</text>
+  <text x="48" y="140" font-family="system-ui, sans-serif" font-size="8" fill="#334155">以固定频率（如 100 Hz）</text>
+  <text x="48" y="150" font-family="system-ui, sans-serif" font-size="8" fill="#334155">抓取当前调用栈，</text>
+  <text x="48" y="160" font-family="system-ui, sans-serif" font-size="8" fill="#334155">按栈聚合后就是火焰图。</text>
+  <text x="48" y="170" font-family="system-ui, sans-serif" font-size="8" fill="#334155"></text>
+  <text x="48" y="180" font-family="system-ui, sans-serif" font-size="8" fill="#334155">所以它回答的是</text>
+  <text x="48" y="190" font-family="system-ui, sans-serif" font-size="8" fill="#334155">「这段时间 CPU 大致花在</text>
+  <text x="48" y="200" font-family="system-ui, sans-serif" font-size="8" fill="#334155">哪些函数上」，</text>
+  <text x="48" y="210" font-family="system-ui, sans-serif" font-size="8" fill="#334155">而不是每一次调用的精确耗时。</text>
+  <text x="48" y="220" font-family="system-ui, sans-serif" font-size="8" fill="#334155"></text>
+  <text x="48" y="230" font-family="system-ui, sans-serif" font-size="8" fill="#334155">采样天然会漏掉</text>
+  <text x="48" y="240" font-family="system-ui, sans-serif" font-size="8" fill="#334155">极短但极热的函数——</text>
+  <text x="48" y="250" font-family="system-ui, sans-serif" font-size="8" fill="#334155">这是方法本身的边界。</text>
+  <rect x="316" y="92" width="268" height="180" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="332" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">两条采集路线</text>
+  <text x="332" y="140" font-family="system-ui, sans-serif" font-size="8" fill="#334155">语言级剖析：</text>
+  <text x="332" y="150" font-family="system-ui, sans-serif" font-size="8" fill="#334155">JVM 用 JFR / async-profiler，</text>
+  <text x="332" y="160" font-family="system-ui, sans-serif" font-size="8" fill="#334155">Go 用 pprof，Python 用 py-spy。</text>
+  <text x="332" y="170" font-family="system-ui, sans-serif" font-size="8" fill="#334155">精度高、能看到语言语义，</text>
+  <text x="332" y="180" font-family="system-ui, sans-serif" font-size="8" fill="#334155">但每语言一套。</text>
+  <text x="332" y="190" font-family="system-ui, sans-serif" font-size="8" fill="#334155"></text>
+  <text x="332" y="200" font-family="system-ui, sans-serif" font-size="8" fill="#334155">eBPF 无侵入：</text>
+  <text x="332" y="210" font-family="system-ui, sans-serif" font-size="8" fill="#334155">在节点上按进程抓栈，</text>
+  <text x="332" y="220" font-family="system-ui, sans-serif" font-size="8" fill="#334155">不重启不改启动参数，</text>
+  <text x="332" y="230" font-family="system-ui, sans-serif" font-size="8" fill="#334155">覆盖所有语言；</text>
+  <text x="332" y="240" font-family="system-ui, sans-serif" font-size="8" fill="#334155">代价是符号解析与权限模型</text>
+  <text x="332" y="250" font-family="system-ui, sans-serif" font-size="8" fill="#334155">更复杂。</text>
+  <rect x="600" y="92" width="268" height="180" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="616" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">成熟度（2026-10 口径）</text>
+  <text x="616" y="140" font-family="system-ui, sans-serif" font-size="10" fill="#334155">OTLP 侧：profiles 仍为</text>
+  <text x="616" y="152" font-family="system-ui, sans-serif" font-size="10" fill="#334155">Development，官方标记为</text>
+  <text x="616" y="164" font-family="system-ui, sans-serif" font-size="10" fill="#334155">public Alpha（2026-03 宣布）。</text>
+  <text x="616" y="176" font-family="system-ui, sans-serif" font-size="10" fill="#334155"></text>
+  <text x="616" y="188" font-family="system-ui, sans-serif" font-size="10" fill="#334155">可直接用的选择：</text>
+  <text x="616" y="200" font-family="system-ui, sans-serif" font-size="10" fill="#334155">先用厂商 / 社区形态</text>
+  <text x="616" y="212" font-family="system-ui, sans-serif" font-size="10" fill="#334155">（Grafana Pyroscope、Parca、</text>
+  <text x="616" y="224" font-family="system-ui, sans-serif" font-size="10" fill="#334155">云厂商剖析服务）落地，</text>
+  <text x="616" y="236" font-family="system-ui, sans-serif" font-size="10" fill="#334155">同时按 OTLP profiles</text>
+  <text x="616" y="248" font-family="system-ui, sans-serif" font-size="10" fill="#334155">数据模型设计自己的字段，</text>
+  <text x="616" y="260" font-family="system-ui, sans-serif" font-size="10" fill="#334155">等它转正再切管道。</text>
+  <rect x="32" y="288" width="836" height="112" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="312" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">读火焰图的四条纪律</text>
+  <text x="48" y="336" font-family="system-ui, sans-serif" font-size="10" fill="#334155">① 宽度是「占采样总数的比例」，不是耗时：横轴不是时间轴，别按从左到右的顺序读。</text>
+  <text x="48" y="351" font-family="system-ui, sans-serif" font-size="10" fill="#334155">② 看顶部的宽块：叶子宽 = 这个函数自己在烧；中间层宽 = 它调用的东西加在一起在烧，两者处置完全不同。</text>
+  <text x="48" y="366" font-family="system-ui, sans-serif" font-size="10" fill="#334155">③ 一次只能比一份数据：不同采样频率、不同负载下的两份火焰图之间没有可比性。</text>
+  <text x="48" y="381" font-family="system-ui, sans-serif" font-size="10" fill="#334155">④ 火焰图证明「热」，不证明「慢」：热函数可能完全应该热；要判断是否值得优化，得回到链路与业务口径。</text>
+  <rect x="32" y="416" width="836" height="84" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="440" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">与链路的关系（最有价值的一步）</text>
+  <text x="48" y="464" font-family="system-ui, sans-serif" font-size="8" fill="#334155">把剖析样本挂上 trace_id 与 span_id，就能从「某次慢请求」直接跳到「这段代码的运行时画像」，把「哪一段慢」和「为什么慢」接上。</text>
+  <text x="48" y="477" font-family="system-ui, sans-serif" font-size="8" fill="#334155">这是四类信号里唯一一条从「业务现象」直通「代码行为」的路径；在 profiles 转正之前，这条路径通常要用采样标签自己接起来。</text>
+</svg>

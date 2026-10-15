@@ -11,7 +11,7 @@ Terraform 的安装门槛极低——**它就是一个单独的静态二进制**
 | 方式 | 适用场景 | 升级方式 | 备注 |
 | --- | --- | --- | --- |
 | 官方二进制（zip） | 任何平台、CI 镜像、需要固定版本 | 手动替换 + 用 `tfenv` 管理 | 最可控，推荐 CI 使用 |
-| APT 官方源（HashiCorp） | Ubuntu / Debian 服务器 | `apt upgrade terraform` | 自动跟随最新稳定版 |
+| APT 官方源（HashiCorp） | Ubuntu / Debian 服务器 | `apt upgrade terraform` | 自动跟随最新稳定版（2026-09 口径） |
 | Homebrew `hashicorp/tap` | macOS / Linux 开发者机器 | `brew upgrade` | 与官方 release 同步 |
 | Chocolatey / Scoop | Windows 开发机 | `choco upgrade` / `scoop update` | 需管理员或用户级权限 |
 | OpenTofu 包源 | 需要 MPL 许可证 | 同上游 | 命令为 `tofu`，其余流程一致 |

@@ -278,6 +278,7 @@ export const CompleteProject = [
           { text: "容量基线重测：把 ⏳ 换成交付态实测值", link: "/project/Complete/MonitoringDashboard/CapacityBaseline/index.md" },
           { text: "一键起与大盘可用性", link: "/project/Complete/MonitoringDashboard/OneClickUp/index.md" },
           { text: "上线验收收口：把交付判据变成可勾选项", link: "/project/Complete/MonitoringDashboard/LaunchAcceptance/index.md" },
+          { text: "交付件收敛：把待办回填成配置", link: "/project/Complete/MonitoringDashboard/ArtifactConvergence/index.md" },
         ],
       },
       {

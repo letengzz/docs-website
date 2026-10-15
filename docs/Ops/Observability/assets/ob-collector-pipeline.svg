@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="ob-collector-pipeline.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">Collector 管道：处理器顺序本身就是一条判据</text>
+  <rect x="32" y="92" width="836" height="104" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">三段结构</text>
+  <text x="48" y="140" font-family="system-ui, sans-serif" font-size="12" fill="#334155">receivers（接收）→ processors（处理）→ exporters（导出）；service.pipelines 把它们按</text>
+  <text x="48" y="154" font-family="system-ui, sans-serif" font-size="12" fill="#334155">信号串起来（traces / metrics / logs / profiles 各自独立）。</text>
+  <text x="48" y="168" font-family="system-ui, sans-serif" font-size="12" fill="#334155">同一条管道里组件的顺序不是风格问题：把 batch 放到 tail_sampling 之前，采样决策就要为已</text>
+  <text x="48" y="182" font-family="system-ui, sans-serif" font-size="12" fill="#334155">批处理过的数据付出内存代价。</text>
+  <rect x="32" y="212" width="836" height="188" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="236" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">推荐顺序（traces 管道）与每一环的理由</text>
+  <text x="48" y="260" font-family="system-ui, sans-serif" font-size="12" fill="#334155">memory_limiter → 第一道，先保护 Collector 自己不被流量打挂（保护优先级高于数据完整性</text>
+  <text x="48" y="277" font-family="system-ui, sans-serif" font-size="12" fill="#334155">，这是必须提前接受的有损决定）</text>
+  <text x="48" y="294" font-family="system-ui, sans-serif" font-size="12" fill="#334155">resourcedetection / k8sattributes → 富化资源属性，必须在采样之前，否则被采样留下的数</text>
+  <text x="48" y="311" font-family="system-ui, sans-serif" font-size="12" fill="#334155">据缺少定位所需属性</text>
+  <text x="48" y="328" font-family="system-ui, sans-serif" font-size="12" fill="#334155">transform / filter / redaction → 删敏感与大字段，必须在 tail_sampling 之前，因为尾采</text>
+  <text x="48" y="345" font-family="system-ui, sans-serif" font-size="12" fill="#334155">样要把整条链路的 span 留在内存里等决策</text>
+  <text x="48" y="362" font-family="system-ui, sans-serif" font-size="12" fill="#334155">tail_sampling → 决定留下哪些链路（只能出现在同一实例上看到整条链路的前提下）</text>
+  <text x="48" y="379" font-family="system-ui, sans-serif" font-size="12" fill="#334155">batch → 最后一道，攒批降低后端压力；放在尾采样之前会让内存峰值成倍上升</text>
+  <rect x="32" y="416" width="404" height="136" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="440" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">两类部署形态</text>
+  <text x="48" y="464" font-family="system-ui, sans-serif" font-size="10" fill="#334155">Agent 形态（每节点一个）：</text>
+  <text x="48" y="476" font-family="system-ui, sans-serif" font-size="10" fill="#334155">离数据源近、故障域小、成本低；</text>
+  <text x="48" y="488" font-family="system-ui, sans-serif" font-size="10" fill="#334155">适合做富化与批量，不适合尾采样。</text>
+  <text x="48" y="500" font-family="system-ui, sans-serif" font-size="10" fill="#334155"></text>
+  <text x="48" y="512" font-family="system-ui, sans-serif" font-size="10" fill="#334155">Gateway 形态（集中一层）：</text>
+  <text x="48" y="524" font-family="system-ui, sans-serif" font-size="10" fill="#334155">做采样、路由、限流、审计；</text>
+  <text x="48" y="536" font-family="system-ui, sans-serif" font-size="10" fill="#334155">成为关键路径，必须多副本 + 限流。</text>
+  <rect x="452" y="416" width="416" height="136" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="468" y="440" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">两条可靠性纪律</text>
+  <text x="468" y="464" font-family="system-ui, sans-serif" font-size="10" fill="#334155">① 队列与重试是「缓冲」不是「保证」：</text>
+  <text x="468" y="476" font-family="system-ui, sans-serif" font-size="10" fill="#334155">内存队列满了就是丢，要监控丢弃指标</text>
+  <text x="468" y="488" font-family="system-ui, sans-serif" font-size="10" fill="#334155">而不是等告警发现缺数据。</text>
+  <text x="468" y="500" font-family="system-ui, sans-serif" font-size="10" fill="#334155">② 升级前先读 core 与 contrib 两份</text>
+  <text x="468" y="512" font-family="system-ui, sans-serif" font-size="10" fill="#334155">changelog：配置字段改名（如 0.162 把</text>
+  <text x="468" y="524" font-family="system-ui, sans-serif" font-size="10" fill="#334155">queuebatch 改名为 queue_batch）会让</text>
+  <text x="468" y="536" font-family="system-ui, sans-serif" font-size="10" fill="#334155">Collector 直接起不来，且报错在启动阶段。</text>
+  <rect x="32" y="564" width="836" height="44" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="588" font-family="system-ui, sans-serif" font-size="8" fill="#334155">验证方式：otelcol-contrib validate --config otelcol.yaml 退出码为 0，再启动容器、在日志里看到「Everything is ready」。</text>
+</svg>

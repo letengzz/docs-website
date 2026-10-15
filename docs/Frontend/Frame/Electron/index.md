@@ -43,7 +43,7 @@ Electron（原名 Atom Shell）是**用 Web 技术构建跨平台桌面应用**�
 - [Electron+Vue3 项目打包](VuePackaging/index.md)
 
 ::: info 版本约定
-本专题以**当前稳定大版本**为主线（Electron 采用「最近三个大版本」的支持策略）。示例代码按最新稳定版的 API 编写；旧版本写法与已废弃能力（如 `remote` 模块）**保留说明并标注「仅存量项目使用」**，不删除、不覆盖。各版本的 Chromium / Node.js 对应关系见 [Electron 概述](Overview/index.md)。
+本专题以**当前稳定大版本**为主线（Electron 采用「最近三个大版本」的支持策略）。示例代码按最新稳定版（2026-10 口径）的 API 编写；旧版本写法与已废弃能力（如 `remote` 模块）**保留说明并标注「仅存量项目使用」**，不删除、不覆盖。各版本的 Chromium / Node.js 对应关系见 [Electron 概述](Overview/index.md)。
 :::
 
 ::: tip 学习路径建议

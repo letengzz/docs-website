@@ -12,7 +12,7 @@
 
 | Spring Boot | Spring Security | 说明 |
 | --- | --- | --- |
-| 4.x | **7.x** | 当前主线；配置写法与 6.x 一致（lambda DSL） |
+| 4.x | **7.x** | 当前主线（2026-10 口径）；配置写法与 6.x 一致（lambda DSL） |
 | 3.x | **6.x** | 本页的基线；JDK 17 起 |
 | 2.x | 5.x | **仅存量项目使用**；`WebSecurityConfigurerAdapter` 写法 |
 

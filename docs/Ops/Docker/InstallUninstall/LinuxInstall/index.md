@@ -73,7 +73,7 @@ uname -r
      yum install --setopt=obsoletes=0 -y docker-ce-19.03.10-3.el7 docker-ce-cli-19.03.10-3.el7 containerd.io
      ```
 
-   - 安装最新稳定版(由于repo中默认只开启stable仓库)：
+   - 安装最新稳定版 (由于repo中默认只开启stable仓库，口径 2026-10)：
 
      ```sh
      sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin

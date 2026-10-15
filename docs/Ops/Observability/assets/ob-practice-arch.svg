@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="ob-practice-arch.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">实战：给实时监控大盘项目接上端到端观测</text>
+  <rect x="32" y="96" width="160" height="54" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="112.0" y="127" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">应用服务</text>
+  <text x="32" y="168" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#64748b" text-anchor="start">OTel SDK + 自动埋点</text>
+  <rect x="212" y="96" width="170" height="54" rx="10" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="297.0" y="127" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e3a8a" text-anchor="middle">OTLP 4317/4318</text>
+  <rect x="402" y="96" width="170" height="54" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="487.0" y="127" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b45309" text-anchor="middle">Collector</text>
+  <rect x="592" y="96" width="276" height="54" rx="10" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="730.0" y="127" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f766e" text-anchor="middle">后端：Tempo / Jaeger + Prometheus</text>
+  <path d="M 192 123 L 208 123" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <path d="M 382 123 L 398 123" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <path d="M 572 123 L 588 123" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <rect x="32" y="192" width="268" height="156" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="216" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">当日要做的四件事</text>
+  <text x="48" y="240" font-family="system-ui, sans-serif" font-size="10" fill="#334155">① 在 Compose 里加 Collector 与</text>
+  <text x="48" y="252" font-family="system-ui, sans-serif" font-size="10" fill="#334155">链路后端两个服务，端口固定；</text>
+  <text x="48" y="264" font-family="system-ui, sans-serif" font-size="10" fill="#334155">② 应用侧挂 SDK，只开自动埋点，</text>
+  <text x="48" y="276" font-family="system-ui, sans-serif" font-size="10" fill="#334155">先不写业务 span；</text>
+  <text x="48" y="288" font-family="system-ui, sans-serif" font-size="10" fill="#334155">③ Collector 配三段管道，</text>
+  <text x="48" y="300" font-family="system-ui, sans-serif" font-size="10" fill="#334155">顺序 memory_limiter → 过滤 →</text>
+  <text x="48" y="312" font-family="system-ui, sans-serif" font-size="10" fill="#334155">tail_sampling → batch；</text>
+  <text x="48" y="324" font-family="system-ui, sans-serif" font-size="10" fill="#334155">④ 用 telemetrygen 造三条链路：</text>
+  <text x="48" y="336" font-family="system-ui, sans-serif" font-size="10" fill="#334155">快而成功、慢而成功、失败。</text>
+  <rect x="316" y="192" width="268" height="156" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="332" y="216" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">验收断言（R1~R6）</text>
+  <text x="332" y="240" font-family="system-ui, sans-serif" font-size="12" fill="#334155">R1 Collector 配置文件 validate 通过；</text>
+  <text x="332" y="256" font-family="system-ui, sans-serif" font-size="12" fill="#334155">R2 OTLP 端口有数据进来；</text>
+  <text x="332" y="272" font-family="system-ui, sans-serif" font-size="12" fill="#334155">R3 快而成功的链路被采样掉；</text>
+  <text x="332" y="288" font-family="system-ui, sans-serif" font-size="12" fill="#334155">R4 失败与慢链路 100% 留下；</text>
+  <text x="332" y="304" font-family="system-ui, sans-serif" font-size="12" fill="#334155">R5 日志里能用 trace_id 反查到链路；</text>
+  <text x="332" y="320" font-family="system-ui, sans-serif" font-size="12" fill="#334155">R6 关闭后端后应用仍正常，</text>
+  <text x="332" y="336" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Collector 出现丢弃计数而非崩溃。</text>
+  <rect x="600" y="192" width="268" height="156" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="616" y="216" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">不允许出现的四种结果</text>
+  <text x="616" y="240" font-family="system-ui, sans-serif" font-size="11" fill="#334155">① 造了数据但后端查不到，</text>
+  <text x="616" y="253" font-family="system-ui, sans-serif" font-size="11" fill="#334155">却把原因归结为「采样」；</text>
+  <text x="616" y="266" font-family="system-ui, sans-serif" font-size="11" fill="#334155">② 断言只看「有没有数据」，</text>
+  <text x="616" y="279" font-family="system-ui, sans-serif" font-size="11" fill="#334155">不看「哪条被留下」；</text>
+  <text x="616" y="292" font-family="system-ui, sans-serif" font-size="11" fill="#334155">③ 把用户 ID 当成 span 属性，</text>
+  <text x="616" y="305" font-family="system-ui, sans-serif" font-size="11" fill="#334155">制造无界基数；</text>
+  <text x="616" y="318" font-family="system-ui, sans-serif" font-size="11" fill="#334155">④ 在文档里写「已接入」</text>
+  <text x="616" y="331" font-family="system-ui, sans-serif" font-size="11" fill="#334155">而没有一条可复制的验证命令。</text>
+  <rect x="32" y="364" width="836" height="96" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="388" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">三条可复制的验证命令（读者可执行）</text>
+  <text x="48" y="412" font-family="system-ui, sans-serif" font-size="8" fill="#334155">① 造数据：telemetrygen traces --otlp-endpoint 127.0.0.1:4317 --otlp-insecure --traces 1 --status-code Error --span-duration 200m</text>
+  <text x="48" y="424" font-family="system-ui, sans-serif" font-size="8" fill="#334155">s</text>
+  <text x="48" y="436" font-family="system-ui, sans-serif" font-size="8" fill="#334155">② 查后端：curl -s 'http://localhost:3200/api/search/tag/service.name/values'（Tempo）或 Jaeger UI 的服务下拉列表出现该服务名</text>
+  <text x="48" y="448" font-family="system-ui, sans-serif" font-size="8" fill="#334155">③ 查丢弃：Collector 自监控指标中出现队列长度与丢弃计数，且在后端停掉时可观测到它上升</text>
+  <rect x="32" y="476" width="836" height="70" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="500" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">与周期 5 项目已有的三层信号如何衔接</text>
+  <text x="48" y="524" font-family="system-ui, sans-serif" font-size="8" fill="#334155">项目此前的监控只做指标（刻意不做日志与链路，避免假完整）：本日补上链路这一层，口径是「指标算速率、链路答归因」，</text>
+  <text x="48" y="534" font-family="system-ui, sans-serif" font-size="8" fill="#334155">日志仍不纳入，理由写进项目页面——避免三个半成品比一个可用的更糟。</text>
+</svg>

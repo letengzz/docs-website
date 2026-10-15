@@ -372,6 +372,9 @@ curl -s -o /dev/null -w "%{http_code} %{time_total}\n" http://localhost:8080/api
 
 ## 八、参考资料
 
+本节涉及的版本与时效性结论按 2026-10 口径整理；使用前请以官方发布页为准。
+
+
 - [nginx `ngx_http_limit_req_module`（漏桶、`burst`、`dry_run`、`$limit_req_status`）](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html)
 - [redis-cell（`CL.THROTTLE` / GCRA，注意其维护模式声明）](https://github.com/t-ho/redis-cell)
 - [Bucket4j 官方文档（令牌桶的 Java 实现与集群支持）](https://bucket4j.com/)

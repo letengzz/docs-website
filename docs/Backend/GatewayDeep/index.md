@@ -91,7 +91,7 @@
 
 处理方式与 [`CloudArchitecture`](../../Ops/CloudArchitecture/index.md)、[`SpeechAudioAI`](../../AI/SpeechAudioAI/index.md) 一致：在页内用 `::: info` / `::: danger` 标注**生效时点与旧口径**,需要对比时并列写,**旧口径不删除**。
 
-需要看「按大版本建目录」的范例,可参考 [Spring5 / Spring6](../Java/Frame/Spring/Spring6/index.md)、[Vue2 / Vue3](../../Frontend/Frame/Vue/index.md),以及 Spring Boot 的 [v2](../Java/Frame/SpringBoot/v2/index.md) / [v3](../Java/Frame/SpringBoot/v3/index.md) / [v4](../Java/Frame/SpringBoot/v4/index.md)——那边的规则是「**旧版本目录保留、页内标注维护状态、新内容只面向最新稳定版**」。
+需要看「按大版本建目录」的范例,可参考 [Spring5 / Spring6](../Java/Frame/Spring/Spring6/index.md)、[Vue2 / Vue3](../../Frontend/Frame/Vue/index.md),以及 Spring Boot 的 [v2](../Java/Frame/SpringBoot/v2/index.md) / [v3](../Java/Frame/SpringBoot/v3/index.md) / [v4](../Java/Frame/SpringBoot/v4/index.md)——那边的规则是「**旧版本目录保留、页内标注维护状态、新内容只面向最新稳定版**」（2026-10 口径）。
 
 ## 成熟度自评：你在哪一档
 

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="ob-otel-stack.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">OpenTelemetry 的分层：三个编号体系，装的时候别混</text>
+  <rect x="32" y="92" width="150" height="62" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="107.0" y="128" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#0f172a" text-anchor="middle">业务进程</text>
+  <rect x="32" y="168" width="150" height="158" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="192" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">应用侧</text>
+  <text x="48" y="216" font-family="system-ui, sans-serif" font-size="11" fill="#334155">API：写埋点代码</text>
+  <text x="48" y="232" font-family="system-ui, sans-serif" font-size="11" fill="#334155">SDK：实现与配置</text>
+  <text x="48" y="248" font-family="system-ui, sans-serif" font-size="11" fill="#334155">自动埋点：agent 或</text>
+  <text x="48" y="264" font-family="system-ui, sans-serif" font-size="11" fill="#334155">库钩子，零改代码</text>
+  <text x="48" y="280" font-family="system-ui, sans-serif" font-size="11" fill="#334155">语义约定：属性名</text>
+  <text x="48" y="296" font-family="system-ui, sans-serif" font-size="11" fill="#334155">统一在这一层定</text>
+  <rect x="200" y="92" width="190" height="234" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="216" y="116" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">三条编号线（2026-10 口径）</text>
+  <text x="216" y="140" font-family="system-ui, sans-serif" font-size="9" fill="#334155">规范（Specification）</text>
+  <text x="216" y="151" font-family="system-ui, sans-serif" font-size="9" fill="#334155">v1.61.0 / 2026-09-14</text>
+  <text x="216" y="162" font-family="system-ui, sans-serif" font-size="9" fill="#334155">→ 语言无关的契约</text>
+  <text x="216" y="173" font-family="system-ui, sans-serif" font-size="9" fill="#334155"></text>
+  <text x="216" y="184" font-family="system-ui, sans-serif" font-size="9" fill="#334155">协议（OTLP）</text>
+  <text x="216" y="195" font-family="system-ui, sans-serif" font-size="9" fill="#334155">1.11.0：traces / metrics /</text>
+  <text x="216" y="206" font-family="system-ui, sans-serif" font-size="9" fill="#334155">logs 为 Stable，</text>
+  <text x="216" y="217" font-family="system-ui, sans-serif" font-size="9" fill="#334155">profiles 为 Development</text>
+  <text x="216" y="228" font-family="system-ui, sans-serif" font-size="9" fill="#334155"></text>
+  <text x="216" y="239" font-family="system-ui, sans-serif" font-size="9" fill="#334155">实现（Collector）</text>
+  <text x="216" y="250" font-family="system-ui, sans-serif" font-size="9" fill="#334155">v0.162.0 / 2026-09-28</text>
+  <text x="216" y="261" font-family="system-ui, sans-serif" font-size="9" fill="#334155">→ 双周发布，无 LTS，</text>
+  <text x="216" y="272" font-family="system-ui, sans-serif" font-size="9" fill="#334155">升级要读两份 changelog</text>
+  <text x="216" y="283" font-family="system-ui, sans-serif" font-size="9" fill="#334155"></text>
+  <text x="216" y="294" font-family="system-ui, sans-serif" font-size="9" fill="#334155">SDK 各自版本，与上面</text>
+  <text x="216" y="305" font-family="system-ui, sans-serif" font-size="9" fill="#334155">三条线都不同步。</text>
+  <rect x="408" y="92" width="200" height="234" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="424" y="116" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">两类接入方式</text>
+  <text x="424" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">自动埋点（先做）</text>
+  <text x="424" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#334155">覆盖 HTTP 服务与客户端、</text>
+  <text x="424" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#334155">主流数据库驱动、消息库；</text>
+  <text x="424" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#334155">看不到业务语义。</text>
+  <text x="424" y="200" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="424" y="215" font-family="system-ui, sans-serif" font-size="11" fill="#334155">手动埋点（后补）</text>
+  <text x="424" y="230" font-family="system-ui, sans-serif" font-size="11" fill="#334155">只补业务那一段：</text>
+  <text x="424" y="245" font-family="system-ui, sans-serif" font-size="11" fill="#334155">下单、支付、结算，</text>
+  <text x="424" y="260" font-family="system-ui, sans-serif" font-size="11" fill="#334155">以及跨组件的自定义传播。</text>
+  <text x="424" y="275" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="424" y="290" font-family="system-ui, sans-serif" font-size="11" fill="#334155">顺序反了会写出大量</text>
+  <text x="424" y="305" font-family="system-ui, sans-serif" font-size="11" fill="#334155">重复且口径不一的 span。</text>
+  <rect x="624" y="92" width="244" height="234" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="640" y="116" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b45309">Collector 的位置</text>
+  <text x="640" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">接收 OTLP（gRPC 4317 /</text>
+  <text x="640" y="154" font-family="system-ui, sans-serif" font-size="11" fill="#334155">HTTP 4318）</text>
+  <text x="640" y="168" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 处理（过滤、富化、</text>
+  <text x="640" y="182" font-family="system-ui, sans-serif" font-size="11" fill="#334155">脱敏、采样、批处理）</text>
+  <text x="640" y="196" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ 导出到一个或多个后端</text>
+  <text x="640" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="640" y="224" font-family="system-ui, sans-serif" font-size="11" fill="#334155">把「重试、批量、加密、</text>
+  <text x="640" y="238" font-family="system-ui, sans-serif" font-size="11" fill="#334155">敏感字段过滤」从应用侧</text>
+  <text x="640" y="252" font-family="system-ui, sans-serif" font-size="11" fill="#334155">挪到一处统一实现，</text>
+  <text x="640" y="266" font-family="system-ui, sans-serif" font-size="11" fill="#334155">是它的核心价值。</text>
+  <text x="640" y="280" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="640" y="294" font-family="system-ui, sans-serif" font-size="11" fill="#334155">组件稳定性分级，</text>
+  <text x="640" y="308" font-family="system-ui, sans-serif" font-size="11" fill="#334155">部署前逐条核对。</text>
+  <rect x="32" y="344" width="836" height="108" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="368" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">为什么会关心「装的是哪一条线的哪个号」</text>
+  <text x="48" y="392" font-family="system-ui, sans-serif" font-size="10" fill="#334155">「我装了 OpenTelemetry 1.61」是一句无法执行的话：规范 1.61 不等于任何组件 1.61。真要写进文档与升级计划</text>
+  <text x="48" y="404" font-family="system-ui, sans-serif" font-size="10" fill="#334155">，必须同时写清四件事——</text>
+  <text x="48" y="416" font-family="system-ui, sans-serif" font-size="10" fill="#334155">规范版本（决定行为契约）／Collector 版本（决定有哪些组件与配置字段）／各语言 SDK 版本（决定埋点覆盖与语</text>
+  <text x="48" y="428" font-family="system-ui, sans-serif" font-size="10" fill="#334155">义约定切换开关）／后端版本（决定能收哪些协议）。</text>
+  <text x="48" y="440" font-family="system-ui, sans-serif" font-size="10" fill="#334155">升级风险最大的往往不是规范，而是语义约定在 SDK 里从实验转正式的那一次切换（属性名与单位会同时变）。</text>
+  <rect x="32" y="466" width="836" height="62" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="490" font-family="system-ui, sans-serif" font-size="12" fill="#334155">判据：写下一行 otelcol --version、一行 SDK 依赖版本、一行后端镜像 tag，三者互不冲突，才</text>
+  <text x="48" y="507" font-family="system-ui, sans-serif" font-size="12" fill="#334155">算「装清楚了」。</text>
+</svg>

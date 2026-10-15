@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="ob-topic-map.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">可观测性深入：十页地图</text>
+  <text x="32" y="66" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">目录页 → 概述 → 标准 → 管道 → 采样 → 剖析 → 后端 → 成本 → 实战 → FAQ（2026-10 口径）</text>
+  <rect x="32" y="92" width="200" height="74" rx="10" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="132.0" y="134" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle">可观测性深入</text>
+  <text x="32" y="186" font-family="system-ui, sans-serif" font-size="12" font-weight="400" fill="#64748b" text-anchor="start">回答「为什么」，而不只</text>
+  <text x="32" y="203" font-family="system-ui, sans-serif" font-size="12" font-weight="400" fill="#64748b" text-anchor="start">是「有没有事」</text>
+  <rect x="256" y="92" width="200" height="92" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="272" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">1  概述</text>
+  <text x="272" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">四条边界</text>
+  <text x="272" y="156" font-family="system-ui, sans-serif" font-size="11" fill="#334155">四类信号各答什么</text>
+  <text x="272" y="172" font-family="system-ui, sans-serif" font-size="11" fill="#334155">关联三件套</text>
+  <rect x="472" y="92" width="200" height="92" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="488" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">2  OpenTelemetry</text>
+  <text x="488" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">规范 / API / SDK</text>
+  <text x="488" y="156" font-family="system-ui, sans-serif" font-size="11" fill="#334155">语义约定 semconv</text>
+  <text x="488" y="172" font-family="system-ui, sans-serif" font-size="11" fill="#334155">自动埋点与手动埋点</text>
+  <rect x="688" y="92" width="200" height="92" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="704" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">3  Collector</text>
+  <text x="704" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">三段管道</text>
+  <text x="704" y="156" font-family="system-ui, sans-serif" font-size="11" fill="#334155">处理器顺序</text>
+  <text x="704" y="172" font-family="system-ui, sans-serif" font-size="11" fill="#334155">部署形态与背压</text>
+  <rect x="256" y="200" width="200" height="92" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="272" y="224" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">4  采样决策</text>
+  <text x="272" y="248" font-family="system-ui, sans-serif" font-size="11" fill="#334155">头采样 vs 尾采样</text>
+  <text x="272" y="264" font-family="system-ui, sans-serif" font-size="11" fill="#334155">一致概率采样</text>
+  <text x="272" y="280" font-family="system-ui, sans-serif" font-size="11" fill="#334155">采样后数字怎么不失真</text>
+  <rect x="472" y="200" width="200" height="92" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="488" y="224" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">5  持续剖析</text>
+  <text x="488" y="248" font-family="system-ui, sans-serif" font-size="11" fill="#334155">第四类信号的边界</text>
+  <text x="488" y="264" font-family="system-ui, sans-serif" font-size="11" fill="#334155">eBPF 与语言级采样</text>
+  <text x="488" y="280" font-family="system-ui, sans-serif" font-size="11" fill="#334155">火焰图读法与限制</text>
+  <rect x="688" y="200" width="200" height="92" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="704" y="224" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">6  后端与存储</text>
+  <text x="704" y="248" font-family="system-ui, sans-serif" font-size="11" fill="#334155">选型矩阵</text>
+  <text x="704" y="264" font-family="system-ui, sans-serif" font-size="11" fill="#334155">对象存储的经济性</text>
+  <text x="704" y="280" font-family="system-ui, sans-serif" font-size="11" fill="#334155">查询入口与保留</text>
+  <rect x="256" y="308" width="200" height="92" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="272" y="332" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">7  成本治理</text>
+  <text x="272" y="356" font-family="system-ui, sans-serif" font-size="11" fill="#334155">成本 = 数据量 × 单价</text>
+  <text x="272" y="372" font-family="system-ui, sans-serif" font-size="11" fill="#334155">四个杠杆</text>
+  <text x="272" y="388" font-family="system-ui, sans-serif" font-size="11" fill="#334155">基数与单位成本</text>
+  <rect x="472" y="308" width="200" height="92" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="488" y="332" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">8  实战</text>
+  <text x="488" y="356" font-family="system-ui, sans-serif" font-size="11" fill="#334155">给监控大盘接入</text>
+  <text x="488" y="372" font-family="system-ui, sans-serif" font-size="11" fill="#334155">断言清单</text>
+  <text x="488" y="388" font-family="system-ui, sans-serif" font-size="11" fill="#334155">验证命令</text>
+  <rect x="688" y="308" width="200" height="92" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="704" y="332" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">9  常见问题</text>
+  <text x="704" y="356" font-family="system-ui, sans-serif" font-size="11" fill="#334155">分诊树</text>
+  <text x="704" y="372" font-family="system-ui, sans-serif" font-size="11" fill="#334155">十二问</text>
+  <text x="704" y="388" font-family="system-ui, sans-serif" font-size="11" fill="#334155">上线自查 12 项</text>
+  <rect x="32" y="300" width="200" height="100" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="324" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b91c1c">不回答什么</text>
+  <text x="48" y="348" font-family="system-ui, sans-serif" font-size="8" fill="#334155">不教 Prometheus 查询语法 → 监控告</text>
+  <text x="48" y="361" font-family="system-ui, sans-serif" font-size="8" fill="#334155">警</text>
+  <text x="48" y="374" font-family="system-ui, sans-serif" font-size="8" fill="#334155">不教日志采集器部署 → 日志体系</text>
+  <text x="48" y="387" font-family="system-ui, sans-serif" font-size="8" fill="#334155">不教压测与容量 → 性能与容量工程</text>
+  <rect x="32" y="414" width="200" height="122" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="438" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">本专题的判据纪律</text>
+  <text x="48" y="462" font-family="system-ui, sans-serif" font-size="9" fill="#334155">每条设计决定都要能回答：</text>
+  <text x="48" y="474" font-family="system-ui, sans-serif" font-size="9" fill="#334155">约定是什么、</text>
+  <text x="48" y="486" font-family="system-ui, sans-serif" font-size="9" fill="#334155">定错会怎样、</text>
+  <text x="48" y="498" font-family="system-ui, sans-serif" font-size="9" fill="#334155">怎么验证它没被破坏。</text>
+  <text x="48" y="510" font-family="system-ui, sans-serif" font-size="9" fill="#334155">判据族前缀 OBV / OBM / OBC / OB</text>
+  <text x="48" y="522" font-family="system-ui, sans-serif" font-size="9" fill="#334155">S / OBP / OBD / OBK / OBR / OBQ</text>
+</svg>

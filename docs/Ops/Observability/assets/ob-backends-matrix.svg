@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 630" width="900" height="630" role="img" aria-label="ob-backends-matrix.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="630" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">后端选型：先按「能不能收 OTLP」筛，再按「存储成本模型」选</text>
+  <rect x="32" y="92" width="836" height="56" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="114" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">Jaeger v2</text>
+  <text x="176" y="114" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e3a8a" text-anchor="start">traces</text>
+  <text x="48" y="134" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">2.22.0 / 2026-10-06；v2 起基于 Collector 框架；2.21.0 起 ClickHouse 存储转正、移除 v1 HTTP 端点</text>
+  <rect x="32" y="156" width="836" height="56" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="178" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">Grafana Tempo</text>
+  <text x="176" y="178" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e3a8a" text-anchor="start">traces</text>
+  <text x="48" y="198" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">3.1.0 / 2026-09-29；只依赖对象存储；3.0 起微服务模式的写入路径改为 Kafka</text>
+  <rect x="32" y="220" width="836" height="56" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="242" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">Grafana Loki</text>
+  <text x="176" y="242" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e3a8a" text-anchor="start">logs</text>
+  <text x="48" y="262" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">日志后端，与 Tempo 共用「标签 + 对象存储」模型，适合按标签粗筛再细查</text>
+  <rect x="32" y="284" width="836" height="56" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="306" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">Grafana Pyroscope</text>
+  <text x="176" y="306" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e3a8a" text-anchor="start">profiles</text>
+  <text x="48" y="326" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">2.4.0 / 2026-10-09；持续剖析后端，与 Tempo 的 trace 可做关联</text>
+  <rect x="32" y="348" width="836" height="56" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="370" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">Prometheus</text>
+  <text x="176" y="370" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e3a8a" text-anchor="start">metrics</text>
+  <text x="48" y="390" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">3.15.0 / 2026-09-25；3.13 为 LTS 线；远端长期存储交给时序库</text>
+  <rect x="32" y="412" width="836" height="56" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="434" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">SigNoz</text>
+  <text x="176" y="434" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e3a8a" text-anchor="start">四类信号</text>
+  <text x="48" y="454" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">0.145.0 / 2026-10-05；ClickHouse 为存储核心，自带 APM 界面</text>
+  <rect x="32" y="496" width="836" height="118" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="520" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">三条选型判据</text>
+  <text x="48" y="544" font-family="system-ui, sans-serif" font-size="12" fill="#334155">① 能不能只依赖对象存储：决定成本量级，也决定你有一天要不要为存储集群招人。</text>
+  <text x="48" y="561" font-family="system-ui, sans-serif" font-size="12" fill="#334155">② 查询方式是不是「先按标签筛再细看」：这决定了它适不适合高基数、长周期的原始数据。</text>
+  <text x="48" y="578" font-family="system-ui, sans-serif" font-size="12" fill="#334155">③ 界面与数据是不是同一家：后端只存不画时，要看 Grafana 侧的查询入口是否覆盖你需要的字</text>
+  <text x="48" y="595" font-family="system-ui, sans-serif" font-size="12" fill="#334155">段。</text>
+</svg>

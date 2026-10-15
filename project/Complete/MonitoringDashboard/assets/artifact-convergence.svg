@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 668" width="900" height="668" role="img" aria-label="artifact-convergence.svg">
+  <rect x="0" y="0" width="900" height="668" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">交付件收敛：三条待办各自收敛成一条「能失败」的判据</text>
+  <text x="32" y="66" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">第 143 天判出的是「交付件里没有配置」，不是「配置写错了」——能把后者拦住的层，全都拦不住前者</text>
+  <rect x="32" y="84" width="572" height="156" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="108" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">LA-1 保留上限：编排文件里一行都没有</text>
+  <text x="48" y="132" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">第 143 天判 FAIL 的性质：promtool 全绿、三容器 running、六条规则全加载、目标 5/5 up</text>
+  <text x="48" y="148.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">回填后四路证据：编排文件声明 1GB → 容器 Args 同名 → flags 回显 1GiB → 运行期回读 107374</text>
+  <text x="48" y="165.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">1824 B</text>
+  <text x="48" y="181.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">顺带抓出新形状：两份编排文件 sha256 前 16 位同为 ad29bfb5f7f6cbc2 —— 改一份、漏一份，无</text>
+  <text x="48" y="198.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">人发现</text>
+  <text x="48" y="214.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">一字之差：文件里写 1GB、进程里回显 1GiB、回读 1073741824 —— 三个都要落到文档里</text>
+  <rect x="620" y="84" width="248" height="156" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="636" y="108" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">✅ 闭环判据</text>
+  <text x="636" y="132" font-family="system-ui, sans-serif" font-size="11" fill="#334155">起栈前查成对声明</text>
+  <text x="636" y="148" font-family="system-ui, sans-serif" font-size="11" fill="#334155">起栈后回读数字</text>
+  <text x="636" y="164" font-family="system-ui, sans-serif" font-size="11" fill="#334155">期望值由交付件推导，不抄数</text>
+  <rect x="32" y="254" width="572" height="156" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="278" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">LA-2 RC-3：从「比总数」改成「逐条覆盖」</text>
+  <text x="48" y="302" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">形状一（假 FAIL）：注释行里写的正是判据自身的定义，被算进了 runbook_url 的次数 → 7 vs 6</text>
+  <text x="48" y="318.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">形状二（假 PASS）：把 A 的复制一份、删掉 B 的那一份，总数仍是 6 —— 而 B 已经没人知道怎么</text>
+  <text x="48" y="335.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">做</text>
+  <text x="48" y="351.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">反例自证三用例：基线 PASS ／ 删一条＋复制一条必须 FAIL ／ 注释再写一次仍 PASS</text>
+  <text x="48" y="368.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">两条约束合起来：凡「数某个词出现几次」的判据，必须剔注释，且必须逐条判定</text>
+  <rect x="620" y="254" width="248" height="156" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="636" y="278" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">✅ 反例自证</text>
+  <text x="636" y="302" font-family="system-ui, sans-serif" font-size="11" fill="#334155">每条告警各自 ≥ 1 次</text>
+  <text x="636" y="318" font-family="system-ui, sans-serif" font-size="11" fill="#334155">只作用于非注释行</text>
+  <text x="636" y="334" font-family="system-ui, sans-serif" font-size="11" fill="#334155">判据自己带反例</text>
+  <rect x="32" y="424" width="572" height="156" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="448" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">LA-3 三张大盘：把「非空」拆成三态</text>
+  <text x="48" y="472" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">第一版把「非零」写成 N - 非NaN - 零值，实测得到 -4（4-4-4）：无 NaN 时两者是同一个数，被减</text>
+  <text x="48" y="487.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">了两次</text>
+  <text x="48" y="503.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">正确划分必须来自同一层：总数 = NaN + 零值 + 非零，三个数各自可读且相加必须回到总数</text>
+  <text x="48" y="518.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">新事实：错误率面板的 3 条序列全部是 NaN —— max() 掩盖了「全部是 NaN」与「只有一条是 NaN</text>
+  <text x="48" y="534.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">」的差别</text>
+  <text x="48" y="549.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">反例三条：指标名写错 → D1 红；值 0 是正确态 → 判「值 &gt; 0」会假 FAIL；NaN 使「不等于 0」</text>
+  <text x="48" y="565.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">恒真</text>
+  <rect x="620" y="424" width="248" height="156" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="636" y="448" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">✅ 三态可分</text>
+  <text x="636" y="472" font-family="system-ui, sans-serif" font-size="11" fill="#334155">D1 有序列</text>
+  <text x="636" y="488" font-family="system-ui, sans-serif" font-size="11" fill="#334155">D2 三态可分</text>
+  <text x="636" y="504" font-family="system-ui, sans-serif" font-size="11" fill="#334155">D3 值可解释，各配反例</text>
+  <rect x="32" y="594" width="836" height="54" rx="12" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="48" y="618" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">「把待办做掉」不等于「交付件收敛」：收敛的产物必须是一条能被第二个人跑出同样读数的判据。</text>
+  <text x="48" y="634.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">今天三条待办全部回填完毕：一键起 + 保留上限闭环 + 告警自检 + 大盘三态，端到端 2 s 全绿。</text>
+</svg>

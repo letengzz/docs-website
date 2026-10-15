@@ -239,6 +239,9 @@ ffmpeg -ss 6 -i input.mp4 -frames:v 1 check.jpg
 
 ## 参考资料
 
+本节涉及的版本与时效性结论按 2026-10 口径整理；使用前请以官方发布页为准。
+
+
 - FFmpeg 官方文档（`fps` / `select` / `-skip_frame` / `scale` 滤镜）：<https://ffmpeg.org/ffmpeg-filters.html>
 - FFmpeg 官方下载与版本说明（当前主线 9.0 "Lei"）：<https://ffmpeg.org/download.html>
 - faster-whisper（字幕与 SRT 输出）：<https://github.com/SYSTRAN/faster-whisper>

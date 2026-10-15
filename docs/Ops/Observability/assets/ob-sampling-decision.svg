@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" role="img" aria-label="ob-sampling-decision.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="540" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">采样决策：决策点在哪里，决定了你能问什么问题</text>
+  <rect x="32" y="92" width="268" height="206" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">SDK 头采样（入口决定）</text>
+  <text x="48" y="140" font-family="system-ui, sans-serif" font-size="9" fill="#334155">决策时点：请求刚开始。</text>
+  <text x="48" y="151" font-family="system-ui, sans-serif" font-size="9" fill="#334155">依据：trace_id 哈希 + 概率。</text>
+  <text x="48" y="162" font-family="system-ui, sans-serif" font-size="9" fill="#334155"></text>
+  <text x="48" y="173" font-family="system-ui, sans-serif" font-size="9" fill="#334155">优点：</text>
+  <text x="48" y="184" font-family="system-ui, sans-serif" font-size="9" fill="#334155">从源头省带宽、省 CPU，</text>
+  <text x="48" y="195" font-family="system-ui, sans-serif" font-size="9" fill="#334155">成本立即下降；</text>
+  <text x="48" y="206" font-family="system-ui, sans-serif" font-size="9" fill="#334155">同一条链路不会一会儿采</text>
+  <text x="48" y="217" font-family="system-ui, sans-serif" font-size="9" fill="#334155">一会儿不采。</text>
+  <text x="48" y="228" font-family="system-ui, sans-serif" font-size="9" fill="#334155"></text>
+  <text x="48" y="239" font-family="system-ui, sans-serif" font-size="9" fill="#334155">代价：</text>
+  <text x="48" y="250" font-family="system-ui, sans-serif" font-size="9" fill="#334155">决策时还不知道这条链路</text>
+  <text x="48" y="261" font-family="system-ui, sans-serif" font-size="9" fill="#334155">会成功还是失败，</text>
+  <text x="48" y="272" font-family="system-ui, sans-serif" font-size="9" fill="#334155">「只留错误」这类规则</text>
+  <text x="48" y="283" font-family="system-ui, sans-serif" font-size="9" fill="#334155">在原理上做不到。</text>
+  <rect x="316" y="92" width="268" height="206" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="332" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">Collector 尾采样（完成决定）</text>
+  <text x="332" y="140" font-family="system-ui, sans-serif" font-size="10" fill="#334155">决策时点：链路基本结束后。</text>
+  <text x="332" y="152" font-family="system-ui, sans-serif" font-size="10" fill="#334155">依据：状态码、时长、</text>
+  <text x="332" y="164" font-family="system-ui, sans-serif" font-size="10" fill="#334155">属性、速率、组合条件。</text>
+  <text x="332" y="176" font-family="system-ui, sans-serif" font-size="10" fill="#334155"></text>
+  <text x="332" y="188" font-family="system-ui, sans-serif" font-size="10" fill="#334155">优点：</text>
+  <text x="332" y="200" font-family="system-ui, sans-serif" font-size="10" fill="#334155">能实现「错误全留 +</text>
+  <text x="332" y="212" font-family="system-ui, sans-serif" font-size="10" fill="#334155">慢请求全留 + 其余 1%」。</text>
+  <text x="332" y="224" font-family="system-ui, sans-serif" font-size="10" fill="#334155"></text>
+  <text x="332" y="236" font-family="system-ui, sans-serif" font-size="10" fill="#334155">代价：</text>
+  <text x="332" y="248" font-family="system-ui, sans-serif" font-size="10" fill="#334155">所有 span 都要在内存里</text>
+  <text x="332" y="260" font-family="system-ui, sans-serif" font-size="10" fill="#334155">等决策（默认 30 秒窗口）；</text>
+  <text x="332" y="272" font-family="system-ui, sans-serif" font-size="10" fill="#334155">同一链路必须落到</text>
+  <text x="332" y="284" font-family="system-ui, sans-serif" font-size="10" fill="#334155">同一个实例上。</text>
+  <rect x="600" y="92" width="268" height="206" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="616" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">一致概率采样（数字不失真的前提）</text>
+  <text x="616" y="140" font-family="system-ui, sans-serif" font-size="9" fill="#334155">要解决的问题：</text>
+  <text x="616" y="151" font-family="system-ui, sans-serif" font-size="9" fill="#334155">多层采样叠加后，</text>
+  <text x="616" y="162" font-family="system-ui, sans-serif" font-size="9" fill="#334155">「采了多少」这件事</text>
+  <text x="616" y="173" font-family="system-ui, sans-serif" font-size="9" fill="#334155">在链路上说不清。</text>
+  <text x="616" y="184" font-family="system-ui, sans-serif" font-size="9" fill="#334155"></text>
+  <text x="616" y="195" font-family="system-ui, sans-serif" font-size="9" fill="#334155">做法：</text>
+  <text x="616" y="206" font-family="system-ui, sans-serif" font-size="9" fill="#334155">把采样概率作为属性</text>
+  <text x="616" y="217" font-family="system-ui, sans-serif" font-size="9" fill="#334155">随链路一起传下去，</text>
+  <text x="616" y="228" font-family="system-ui, sans-serif" font-size="9" fill="#334155">下游按同一阈值判断，</text>
+  <text x="616" y="239" font-family="system-ui, sans-serif" font-size="9" fill="#334155">统计时用概率加权。</text>
+  <text x="616" y="250" font-family="system-ui, sans-serif" font-size="9" fill="#334155"></text>
+  <text x="616" y="261" font-family="system-ui, sans-serif" font-size="9" fill="#334155">否则：10% 的采样率</text>
+  <text x="616" y="272" font-family="system-ui, sans-serif" font-size="9" fill="#334155">会让错误率看起来</text>
+  <text x="616" y="283" font-family="system-ui, sans-serif" font-size="9" fill="#334155">比真实值高一个量级。</text>
+  <rect x="32" y="314" width="836" height="108" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="338" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">三种不得不接受的失真，必须写在页面与看板上</text>
+  <text x="48" y="362" font-family="system-ui, sans-serif" font-size="10" fill="#334155">① 尾采样之后，链路数量不能当请求量用：错误全留 + 基线 1% 的组合会把错误率放大数十倍。要看真实速率，用</text>
+  <text x="48" y="374" font-family="system-ui, sans-serif" font-size="10" fill="#334155">采样之前就算好的指标（span metrics 或应用侧指标）。</text>
+  <text x="48" y="386" font-family="system-ui, sans-serif" font-size="10" fill="#334155">② 采样会放大长尾的可见度：慢请求被全留，于是「P99 变好了」可能只是采样规则变了，而不是系统变快了。</text>
+  <text x="48" y="398" font-family="system-ui, sans-serif" font-size="10" fill="#334155">③ 跨实例的链路会断：负载不按 trace_id 亲和时，一条链路被拆到多台 Collector，两侧各自以为看到的是不完整</text>
+  <text x="48" y="410" font-family="system-ui, sans-serif" font-size="10" fill="#334155">链路，尾采样会把它当新链路处理。</text>
+  <rect x="32" y="438" width="836" height="84" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="462" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">顺序建议（成本与能力的取舍）</text>
+  <text x="48" y="486" font-family="system-ui, sans-serif" font-size="10" fill="#334155">先做尾采样（保错误与慢请求），再把入口头采样当作「总量封顶」的保险丝；不要反过来——一旦在入口把错误链</text>
+  <text x="48" y="498" font-family="system-ui, sans-serif" font-size="10" fill="#334155">路丢掉了，后面任何规则都补不回来。</text>
+  <text x="48" y="510" font-family="system-ui, sans-serif" font-size="10" fill="#334155">判据：同一条链路在 SDK 与 Collector 两侧的采样决定必须能对齐；对齐方式写在文档里，而不是靠记得。</text>
+</svg>

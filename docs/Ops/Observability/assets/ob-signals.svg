@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="ob-signals.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">四类信号：每一类都能回答另三类答不了的问题</text>
+  <rect x="32" y="92" width="200" height="250" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">Metrics 指标</text>
+  <text x="48" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">回答：系统是否健康、</text>
+  <text x="48" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#334155">是否在退化。</text>
+  <text x="48" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="48" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#334155">典型问题：</text>
+  <text x="48" y="200" font-family="system-ui, sans-serif" font-size="11" fill="#334155">错误率现在是多少？</text>
+  <text x="48" y="215" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="48" y="230" font-family="system-ui, sans-serif" font-size="11" fill="#334155">不能回答：</text>
+  <text x="48" y="245" font-family="system-ui, sans-serif" font-size="11" fill="#334155">这一次请求慢在哪一段。</text>
+  <text x="48" y="260" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="48" y="275" font-family="system-ui, sans-serif" font-size="11" fill="#334155">成本特征：</text>
+  <text x="48" y="290" font-family="system-ui, sans-serif" font-size="11" fill="#334155">按时间序列数与标签基数</text>
+  <text x="48" y="305" font-family="system-ui, sans-serif" font-size="11" fill="#334155">线性增长，最容易被基数</text>
+  <text x="48" y="320" font-family="system-ui, sans-serif" font-size="11" fill="#334155">打爆的一种。</text>
+  <rect x="248" y="92" width="200" height="250" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="264" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">Logs 日志</text>
+  <text x="264" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">回答：具体发生了什么。</text>
+  <text x="264" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="264" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#334155">典型问题：</text>
+  <text x="264" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#334155">这个订单为什么报错？</text>
+  <text x="264" y="200" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="264" y="215" font-family="system-ui, sans-serif" font-size="11" fill="#334155">不能回答：</text>
+  <text x="264" y="230" font-family="system-ui, sans-serif" font-size="11" fill="#334155">缺了 trace 上下文时，</text>
+  <text x="264" y="245" font-family="system-ui, sans-serif" font-size="11" fill="#334155">无法确定「这是哪一次</text>
+  <text x="264" y="260" font-family="system-ui, sans-serif" font-size="11" fill="#334155">请求的日志」。</text>
+  <text x="264" y="275" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="264" y="290" font-family="system-ui, sans-serif" font-size="11" fill="#334155">成本特征：</text>
+  <text x="264" y="305" font-family="system-ui, sans-serif" font-size="11" fill="#334155">按字节线性增长，</text>
+  <text x="264" y="320" font-family="system-ui, sans-serif" font-size="11" fill="#334155">是最容易失控的一类。</text>
+  <rect x="464" y="92" width="200" height="250" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="480" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">Traces 链路</text>
+  <text x="480" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">回答：时间花在哪、</text>
+  <text x="480" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#334155">错误产生在哪一跳。</text>
+  <text x="480" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="480" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#334155">典型问题：</text>
+  <text x="480" y="200" font-family="system-ui, sans-serif" font-size="11" fill="#334155">这次结算是哪个下游慢？</text>
+  <text x="480" y="215" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="480" y="230" font-family="system-ui, sans-serif" font-size="11" fill="#334155">不能回答：</text>
+  <text x="480" y="245" font-family="system-ui, sans-serif" font-size="11" fill="#334155">服务内部哪一行代码在烧</text>
+  <text x="480" y="260" font-family="system-ui, sans-serif" font-size="11" fill="#334155">CPU（只能到 span 粒度）。</text>
+  <text x="480" y="275" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="480" y="290" font-family="system-ui, sans-serif" font-size="11" fill="#334155">成本特征：</text>
+  <text x="480" y="305" font-family="system-ui, sans-serif" font-size="11" fill="#334155">按 span 数与属性大小</text>
+  <text x="480" y="320" font-family="system-ui, sans-serif" font-size="11" fill="#334155">增长，采样是主要杠杆。</text>
+  <rect x="680" y="92" width="188" height="250" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="696" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">Profiles 剖析</text>
+  <text x="696" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">回答：代码运行时</text>
+  <text x="696" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#334155">到底怎么花资源的。</text>
+  <text x="696" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="696" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#334155">典型问题：</text>
+  <text x="696" y="200" font-family="system-ui, sans-serif" font-size="11" fill="#334155">哪个函数占了 40% CPU？</text>
+  <text x="696" y="215" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="696" y="230" font-family="system-ui, sans-serif" font-size="11" fill="#334155">不能回答：</text>
+  <text x="696" y="245" font-family="system-ui, sans-serif" font-size="11" fill="#334155">跨进程时间，</text>
+  <text x="696" y="260" font-family="system-ui, sans-serif" font-size="11" fill="#334155">也无法证明业务影响。</text>
+  <text x="696" y="275" font-family="system-ui, sans-serif" font-size="11" fill="#334155"></text>
+  <text x="696" y="290" font-family="system-ui, sans-serif" font-size="11" fill="#334155">成熟度（2026-10）：</text>
+  <text x="696" y="305" font-family="system-ui, sans-serif" font-size="11" fill="#334155">OTLP 侧仍为 Development、</text>
+  <text x="696" y="320" font-family="system-ui, sans-serif" font-size="11" fill="#334155">官方标记 public Alpha。</text>
+  <rect x="32" y="366" width="836" height="126" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="390" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">把四类信号串起来的三件套（缺一件就退化成三个孤立工具）</text>
+  <text x="48" y="414" font-family="system-ui, sans-serif" font-size="12" fill="#334155">① 统一资源标识：service.name / service.namespace / deployment.environment 在四类数据</text>
+  <text x="48" y="430" font-family="system-ui, sans-serif" font-size="12" fill="#334155">上口径必须完全一致，否则关联在第一步就断了。</text>
+  <text x="48" y="446" font-family="system-ui, sans-serif" font-size="12" fill="#334155">② 贯穿标识：trace_id 与 span_id 从入口一路透传，日志里注入、指标里用 exemplar 携带、</text>
+  <text x="48" y="462" font-family="system-ui, sans-serif" font-size="12" fill="#334155">剖析样本里挂在 span 上。</text>
+  <text x="48" y="478" font-family="system-ui, sans-serif" font-size="12" fill="#334155">③ 统一时间源：各进程的时钟偏差会把「因果」变成「巧合」，关联前先确认 NTP 同步状态。</text>
+</svg>
