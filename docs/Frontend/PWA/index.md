@@ -76,3 +76,26 @@
 - [RFC 8291：Message Encryption for Web Push](https://www.rfc-editor.org/rfc/rfc8291) ｜ [RFC 8292：VAPID](https://www.rfc-editor.org/rfc/rfc8292)
 - [Apple：Sending web push notifications in web apps and browsers](https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers)
 - [Lighthouse 12.0 变更说明（PWA 分类移除）](https://github.com/GoogleChrome/lighthouse/releases/tag/v12.0.0)
+
+## 与移动端 H5 深入的分工（第 142 天补充）
+
+
+「PWA 与离线应用」与新增的[移动端 H5 深入](../MobileH5/index.md)专题最容易重复。把边界写死如下——**判据可以互相借用，结论不能互相搬运**。
+
+| 本页回答什么 | 移动端 H5 深入回答什么 | 为什么不能互相替代 |
+| --- | --- | --- |
+| 断网之后**还能不能用**：Service Worker、缓存策略、离线数据、后台同步 | 联网时**快不快、好不好点**：首屏关键路径、触摸与手势、桥接与降级 | PWA 关心「网络消失之后」，那一页关心「网络存在时的一秒」 |
+| 安装体验：Manifest、安装引导、桌面图标 | 安全区与状态栏：`viewport-fit=cover`、`env(safe-area-inset-*)`、`dvh` | 「装到主屏之后」的窗口形态属于移动端视口体系 |
+| 推送订阅与触达 | 宿主能力协商（`getCapabilities`）与桥接调用 | 推送走 Web 标准通道，桥接走宿主私有通道，两者的失败处理不同 |
+
+**可以共用的两条**：
+
+1. **首屏预算**：两者都要给首屏定一个可回归的数
+2. **CLS 的治理手段**：显式宽高与占位
+
+**绝不能共用的两条**：
+
+1. **离线与降级的关系**：离线是「主动设计的一条能力」，降级是「能力缺失时的替代路径」——前者要用户可感知，后者要用户无感
+2. **安装后的视口语义**：装到主屏后是否仍有动态工具栏、安全区如何变化，属于移动端视口问题
+
+一句话分诊：**问「断网之后怎么办」看本页；问「联网时这一秒发生了什么」看那一页。**

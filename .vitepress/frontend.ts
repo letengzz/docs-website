@@ -812,3 +812,21 @@ export const FrontDesktopApp = [
         ],
     },
 ];
+
+export const FrontMobileH5 = [
+    {
+        text: "移动端 H5 深入",
+        link: "/docs/Frontend/MobileH5/index.md",
+        items: [
+            { text: "总览：四条边界", link: "/docs/Frontend/MobileH5/Overview/index.md" },
+            { text: "视口与适配体系", link: "/docs/Frontend/MobileH5/ViewportAdapter/index.md" },
+            { text: "首屏与运行时性能", link: "/docs/Frontend/MobileH5/PagePerformance/index.md" },
+            { text: "触摸、手势与输入", link: "/docs/Frontend/MobileH5/TouchInteraction/index.md" },
+            { text: "桥接通信", link: "/docs/Frontend/MobileH5/Bridge/index.md" },
+            { text: "兼容与真机排障", link: "/docs/Frontend/MobileH5/Compatibility/index.md" },
+            { text: "WebView 与桥接的安全面", link: "/docs/Frontend/MobileH5/Security/index.md" },
+            { text: "实战：PC 页面改造成移动端 H5", link: "/docs/Frontend/MobileH5/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/MobileH5/FAQ/index.md" },
+        ],
+    },
+];

@@ -2,7 +2,7 @@
 import { Auth, DDD, DesignPatterns, DistributedCache, DotNet, Ecommerce, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, Java, Ledger, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, ReactiveProgramming, SpringCloud, WorkflowEngine } from "./backend";
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_EnterpriseKB, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
-import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontOthers, FrontPWA, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
+import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontOthers, FrontPWA, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, ChaosEngineering, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
 import { BigData, CDC, ClickHouse, DBOverview, DataModeling, DataWarehouse, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
@@ -66,7 +66,7 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontLowCode, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontSSR, ...FrontDesktopApp, ...FrontIntlA11y, ...FrontTesting, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontLowCode, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontSSR, ...FrontDesktopApp, ...FrontIntlA11y, ...FrontMobileH5, ...FrontTesting, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
@@ -140,6 +140,7 @@ export const sidebar = {
   "/docs/Frontend/SSR": FrontSSR,
   "/docs/Frontend/DesktopApp": FrontDesktopApp,
   "/docs/Frontend/IntlA11y": FrontIntlA11y,
+  "/docs/Frontend/MobileH5": FrontMobileH5,
   "/docs/Frontend/Others": FrontOthers,
   "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,
   "/docs/Frontend/Testing": FrontTesting,

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>触摸手势的状态机与三类常见缺陷</title>
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11.5px;fill:#64748B}.box{stroke-width:1.5}.mono{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;fill:#1E293B}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">一次触摸的完整状态机：终态有三个，不是一个</text>
+<text x="460" y="56" text-anchor="middle" class="tag">只处理了 touchend（或 pointerup）就等于只处理了三分之二</text>
+
+<rect x="40" y="80" width="150" height="58" rx="9" fill="#EFF6FF" stroke="#3B82F6" class="box"/>
+<text x="115" y="105" text-anchor="middle" class="lt">pointerdown</text>
+<text x="115" y="126" text-anchor="middle" class="tag">记录起点、置按下态</text>
+
+<rect x="222" y="80" width="150" height="58" rx="9" fill="#F5F3FF" stroke="#8B5CF6" class="box"/>
+<text x="297" y="105" text-anchor="middle" class="lt">pointermove</text>
+<text x="297" y="126" text-anchor="middle" class="tag">判方向 / 启动拖动</text>
+
+<rect x="404" y="80" width="150" height="58" rx="9" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<text x="479" y="105" text-anchor="middle" class="lt">pointerup</text>
+<text x="479" y="126" text-anchor="middle" class="tag">正常抬起 → 收尾</text>
+
+<rect x="586" y="80" width="150" height="58" rx="9" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<text x="661" y="105" text-anchor="middle" class="lt">pointercancel</text>
+<text x="661" y="126" text-anchor="middle" class="tag">系统中止 → 也要收尾</text>
+
+<rect x="768" y="80" width="112" height="58" rx="9" fill="#FFF7ED" stroke="#F59E0B" class="box"/>
+<text x="824" y="105" text-anchor="middle" class="lt">click</text>
+<text x="824" y="126" text-anchor="middle" class="tag">可能不触发</text>
+
+<path d="M190 109 L222 109" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<path d="M372 109 L404 109" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<path d="M554 109 L586 109" stroke="#94A3B8" stroke-width="1.6" marker-end="url"/>
+<path d="M736 109 L768 109" stroke="#94A3B8" stroke-width="1.6" marker-end="url"/>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#94A3B8"/></marker></defs>
+
+<rect x="40" y="156" width="840" height="112" rx="10" fill="#FEFCE8" stroke="#CA8A04" class="box"/>
+<text x="60" y="182" class="lt">为什么要用 Pointer Events 而不是 Touch Events</text>
+<text x="60" y="206" class="s">① 一套代码覆盖鼠标 / 触摸 / 触控笔，不必再写两条路径；Touch Events 在桌面 Safari 上不暴露。</text>
+<text x="60" y="228" class="s">② 提供 pressure / tiltX / width 等硬件信息；多指用 pointerId 跟踪，不必操作 TouchList。</text>
+<text x="60" y="250" class="tag">Pointer Events Level 3 已于 2026-06-30 成为 W3C 正式推荐标准；Touch Events 至今仍是 Limited availability（非 Baseline）</text>
+
+<rect x="40" y="284" width="272" height="152" rx="10" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<text x="60" y="310" class="lt">缺陷一：只处理 up，不处理 cancel</text>
+<text x="60" y="334" class="s">来电、切后台、系统手势、屏幕旋转、</text>
+<text x="60" y="354" class="s">掌压误触、手指超出上限——都会中止</text>
+<text x="60" y="376" class="s">后果：按钮永久停在按下态、拖拽图标</text>
+<text x="60" y="396" class="s">卡在半空、长按计时器还在跑</text>
+<text x="60" y="420" class="tag">判据：把终态写成两处，up 与 cancel 共用</text>
+
+<rect x="324" y="284" width="272" height="152" rx="10" fill="#FFF7ED" stroke="#F59E0B" class="box"/>
+<text x="344" y="310" class="lt">缺陷二：监听器不写 passive</text>
+<text x="344" y="334" class="s">touchstart / touchmove 上调用</text>
+<text x="344" y="354" class="mono">preventDefault()</text>
+<text x="344" y="376" class="s">会让浏览器不敢先滚动，每次都要等</text>
+<text x="344" y="396" class="s">JS 决定——滚动立刻变黏</text>
+<text x="344" y="420" class="tag">只观察的监听器一律加 { passive: true }</text>
+
+<rect x="608" y="284" width="272" height="152" rx="10" fill="#F1F5F9" stroke="#475569" class="box"/>
+<text x="628" y="310" class="lt">缺陷三：滚动穿透与手势打架</text>
+<text x="628" y="334" class="s">弹窗打开后背景仍在滚、横向轮播与</text>
+<text x="628" y="354" class="s">页面纵向滚动抢方向、下拉刷新与</text>
+<text x="628" y="374" class="s">内部列表冲突</text>
+<text x="628" y="396" class="s">正解：用 touch-action 交给浏览器仲裁，</text>
+<text x="628" y="416" class="s">不要用 preventDefault 硬抢</text>
+<text x="628" y="438" class="tag">判据：弹窗打开时背景 scrollTop 不变</text>
+
+<rect x="40" y="452" width="840" height="72" rx="10" fill="#EFF6FF" stroke="#2563EB" class="box"/>
+<text x="60" y="478" class="lt">两条手感底线</text>
+<text x="60" y="502" class="s">可点击区域短边 ≥ 44×44 独立像素；按下反馈必须在 100ms 内出现（用 CSS :active 或 pointerdown 置态，不要等请求回来）</text>
+</svg>

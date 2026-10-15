@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>三种视口与三套尺寸体系</title>
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:14px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11.5px;fill:#64748B}.box{stroke-width:1.5}.mono{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;fill:#1E293B}</style>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">先分清三个视口，再选尺寸体系</text>
+<text x="460" y="56" text-anchor="middle" class="tag">绝大多数适配问题，根因是把这三个视口当成了一个</text>
+
+<rect x="40" y="78" width="270" height="168" rx="10" fill="#EFF6FF" stroke="#3B82F6" class="box"/>
+<text x="60" y="104" class="lt">布局视口 layout viewport</text>
+<text x="60" y="126" class="s">CSS 里 100% 参照的那个框</text>
+<text x="60" y="146" class="mono">document.documentElement.clientWidth</text>
+<text x="60" y="168" class="s">由 viewport meta 决定</text>
+<text x="60" y="188" class="s">软键盘默认不动它</text>
+<text x="60" y="212" class="tag">媒体查询与 vw 用的就是它</text>
+<text x="60" y="232" class="tag">默认 980px 宽，这才是「字很小」的根因</text>
+
+<rect x="325" y="78" width="270" height="168" rx="10" fill="#F5F3FF" stroke="#8B5CF6" class="box"/>
+<text x="345" y="104" class="lt">视觉视口 visual viewport</text>
+<text x="345" y="126" class="s">用户此刻真正看见的那块区域</text>
+<text x="345" y="146" class="mono">window.visualViewport.height</text>
+<text x="345" y="168" class="s">捏合缩放、软键盘只改它</text>
+<text x="345" y="188" class="s">与布局视口是两个独立的量</text>
+<text x="345" y="212" class="tag">键盘弹起后「输入框被挡住」</text>
+<text x="345" y="232" class="tag">要靠它算偏移，不能靠 resize</text>
+
+<rect x="610" y="78" width="270" height="168" rx="10" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<text x="630" y="104" class="lt">理想视口 ideal viewport</text>
+<text x="630" y="126" class="s">设备给出的「最合适」宽度</text>
+<text x="630" y="146" class="mono">width=device-width</text>
+<text x="630" y="168" class="s">等于独立像素下的屏宽</text>
+<text x="630" y="188" class="s">375 / 390 / 414 / 360 …</text>
+<text x="630" y="212" class="tag">不是「固定值」而是「一台机器一个值」</text>
+<text x="630" y="232" class="tag">写成固定 375 会在折叠屏上塌掉</text>
+
+<rect x="40" y="266" width="840" height="130" rx="10" fill="#FFF7ED" stroke="#F59E0B" class="box"/>
+<text x="460" y="292" text-anchor="middle" class="lt">三套尺寸体系：各解决一半问题</text>
+<text x="60" y="318" class="s">① 固定 px + 弹性布局：字号与点击区不缩放，只让容器伸缩。缺点：大屏留白多，密集列表浪费空间。</text>
+<text x="60" y="340" class="s">② 整体等比（px→vw / px→rem）：一份设计稿连续缩放到任意宽度。缺点：320 宽时字号掉到 13px 以下不可读。</text>
+<text x="60" y="362" class="s">③ 混合（推荐）：容器与间距用 vw / rem 缩放，字号与点击区用 clamp() 夹在绝对上下限之间。</text>
+<text x="60" y="384" class="tag">判据：把屏幕宽度拉到 320 与 480，正文行高与按钮高度都还在可读、可点的范围内</text>
+
+<rect x="40" y="414" width="410" height="126" rx="10" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<text x="60" y="440" class="lt">三个「必须用绝对值」的地方</text>
+<text x="60" y="462" class="s">正文与说明文字：最小 12~14px，用 clamp 夹住</text>
+<text x="60" y="482" class="s">可点击区域：短边不小于 44×44 独立像素</text>
+<text x="60" y="502" class="s">1px 分隔线：不要缩放，用 0.5px 或 transform</text>
+<text x="60" y="524" class="tag">把它们交给等比体系，就是「越大的屏越难读」</text>
+
+<rect x="470" y="414" width="410" height="126" rx="10" fill="#F1F5F9" stroke="#475569" class="box"/>
+<text x="490" y="440" class="lt">键盘与安全区：两个 env / 单位的边界</text>
+<text x="490" y="462" class="mono">env(safe-area-inset-bottom)</text>
+<text x="490" y="482" class="mono">height: 100svh / 100dvh</text>
+<text x="490" y="502" class="s">safari 未支持 interactive-widget 时要靠 visualViewport 兜底</text>
+<text x="490" y="524" class="tag">dvh 默认不随软键盘变化，这点最常被搞错</text>
+</svg>

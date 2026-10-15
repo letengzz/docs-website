@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>移动端首屏关键路径五段拆解</title>
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11.5px;fill:#64748B}.box{stroke-width:1.5}.num{font-size:15px;fill:#FFFFFF;font-weight:700}</style>
+<rect width="920" height="520" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">首屏 = 关键路径上五段之和，不是总资源之和</text>
+<text x="460" y="56" text-anchor="middle" class="tag">优化动作必须落在「当前最长的那一段」上，否则白做</text>
+
+<rect x="40" y="84" width="152" height="118" rx="10" fill="#EFF6FF" stroke="#3B82F6" class="box"/>
+<circle cx="70" cy="110" r="13" fill="#3B82F6"/>
+<text x="70" y="115" text-anchor="middle" class="num">1</text>
+<text x="86" y="115" class="lt">网络</text>
+<text x="60" y="142" class="s">DNS / TCP / TLS</text>
+<text x="60" y="162" class="s">首字节 TTFB</text>
+<text x="60" y="182" class="tag">移动网络 RTT 高，</text>
+<text x="60" y="196" class="tag">3 次握手就吃掉 200ms</text>
+
+<rect x="208" y="84" width="152" height="118" rx="10" fill="#F5F3FF" stroke="#8B5CF6" class="box"/>
+<circle cx="238" cy="110" r="13" fill="#8B5CF6"/>
+<text x="238" y="115" text-anchor="middle" class="num">2</text>
+<text x="254" y="115" class="lt">解析</text>
+<text x="228" y="142" class="s">HTML → DOM</text>
+<text x="228" y="162" class="s">CSS → CSSOM</text>
+<text x="228" y="182" class="tag">阻塞渲染的 CSS</text>
+<text x="228" y="196" class="tag">要串行等待</text>
+
+<rect x="376" y="84" width="152" height="118" rx="10" fill="#FFF7ED" stroke="#F59E0B" class="box"/>
+<circle cx="406" cy="110" r="13" fill="#F59E0B"/>
+<text x="406" y="115" text-anchor="middle" class="num">3</text>
+<text x="422" y="115" class="lt">执行</text>
+<text x="396" y="142" class="s">JS 下载 + 编译</text>
+<text x="396" y="162" class="s">+ 主线程执行</text>
+<text x="396" y="182" class="tag">低端机上执行时间</text>
+<text x="396" y="196" class="tag">常是中端机的 3~5 倍</text>
+
+<rect x="544" y="84" width="152" height="118" rx="10" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<circle cx="574" cy="110" r="13" fill="#10B981"/>
+<text x="574" y="115" text-anchor="middle" class="num">4</text>
+<text x="590" y="115" class="lt">样式与布局</text>
+<text x="564" y="142" class="s">样式计算 / 布局</text>
+<text x="564" y="162" class="s">→ 绘制 → 合成</text>
+<text x="564" y="182" class="tag">字体未就绪会触发</text>
+<text x="564" y="196" class="tag">二次布局，直接推高 CLS</text>
+
+<rect x="712" y="84" width="168" height="118" rx="10" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<circle cx="742" cy="110" r="13" fill="#F43F5E"/>
+<text x="742" y="115" text-anchor="middle" class="num">5</text>
+<text x="758" y="115" class="lt">首屏绘制</text>
+<text x="732" y="142" class="s">LCP 元素出现</text>
+<text x="732" y="162" class="s">= 首屏结束</text>
+<text x="732" y="182" class="tag">LCP 元素通常就是</text>
+<text x="732" y="196" class="tag">首屏最大的那张图或标题</text>
+
+<rect x="40" y="222" width="840" height="118" rx="10" fill="#FEFCE8" stroke="#CA8A04" class="box"/>
+<text x="60" y="248" class="lt">三档手机上的同一份代码（经验区间，用于建立量级直觉）</text>
+<text x="60" y="274" class="s">中端机（4 年前安卓）：JS 执行 ≈ 基线 ×1　　低端机：×3~5　　老旧机型：×5~10</text>
+<text x="60" y="296" class="s">所以「我的电脑上 1.2s」不能推出任何结论——真机中位数通常是最差的 25% 用户的两倍以上</text>
+<text x="60" y="318" class="tag">判据：性能结论必须带机型与网络档位，只写「很快」的结论一律无效</text>
+
+<rect x="40" y="356" width="410" height="140" rx="10" fill="#EFF6FF" stroke="#2563EB" class="box"/>
+<text x="60" y="382" class="lt">三个指标的定义（2026 口径）</text>
+<text x="60" y="406" class="s">LCP ≤ 2.5s：最大内容元素出现时间</text>
+<text x="60" y="428" class="s">INP ≤ 200ms：所有交互的响应延迟</text>
+<text x="60" y="450" class="s">CLS ≤ 0.1：非预期布局偏移累计</text>
+<text x="60" y="474" class="tag">取第 75 百分位（P75），移动端与桌面端分开算</text>
+
+<rect x="470" y="356" width="410" height="140" rx="10" fill="#F1F5F9" stroke="#475569" class="box"/>
+<text x="490" y="382" class="lt">移动端特有的三类长任务来源</text>
+<text x="490" y="406" class="s">① 首屏必须跑的业务 JS（路由、依赖注入、状态恢复）</text>
+<text x="490" y="428" class="s">② 第三方 SDK（埋点、客服、风控、视频播放器）</text>
+<text x="490" y="450" class="s">③ 数据回来之后的整表重建（一次响应渲染 500 条）</text>
+<text x="490" y="474" class="tag">三者共同点是「一次性占满主线程」——INP 的主因</text>
+</svg>

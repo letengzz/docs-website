@@ -14,6 +14,7 @@ export const nav = [
       { text: "服务端渲染深入", link: "/docs/Frontend/SSR" },
       { text: "桌面应用深入", link: "/docs/Frontend/DesktopApp" },
       { text: "国际化与无障碍", link: "/docs/Frontend/IntlA11y" },
+      { text: "移动端 H5 深入", link: "/docs/Frontend/MobileH5" },
       { text: "其他", link: "/docs/Frontend/Others" }
     ]
   },

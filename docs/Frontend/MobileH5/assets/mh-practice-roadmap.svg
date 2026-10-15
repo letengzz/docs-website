@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>把 PC 页面改造成移动端 H5 的六步路线</title>
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#0F172A;font-weight:600}.s{font-size:11.5px;fill:#475569}.tag{font-size:11.5px;fill:#64748B}.box{stroke-width:1.5}.num{font-size:14px;fill:#FFFFFF;font-weight:700}</style>
+<rect width="920" height="500" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">六步改造路线：每一步都有可验证的收尾</text>
+<text x="460" y="56" text-anchor="middle" class="tag">顺序不可换——先量基线，否则后面所有「变快了」都是没有参照的</text>
+
+<rect x="40" y="80" width="840" height="62" rx="9" fill="#EFF6FF" stroke="#3B82F6" class="box"/>
+<circle cx="72" cy="111" r="14" fill="#3B82F6"/><text x="72" y="116" text-anchor="middle" class="num">1</text>
+<text x="100" y="106" class="lt">量基线并定支持面</text>
+<text x="100" y="128" class="tag">真机取 LCP / INP / CLS 中位数；写清机型 × 内核 × 版本的支持范围与不支持时的表现</text>
+
+<rect x="40" y="152" width="840" height="62" rx="9" fill="#F5F3FF" stroke="#8B5CF6" class="box"/>
+<circle cx="72" cy="183" r="14" fill="#8B5CF6"/><text x="72" y="188" text-anchor="middle" class="num">2</text>
+<text x="100" y="178" class="lt">立尺寸体系</text>
+<text x="100" y="200" class="tag">viewport meta 一行到位；容器与间距走相对单位，字号与点击区用 clamp 夹在绝对上下限内</text>
+
+<rect x="40" y="224" width="840" height="62" rx="9" fill="#FFF7ED" stroke="#F59E0B" class="box"/>
+<circle cx="72" cy="255" r="14" fill="#F59E0B"/><text x="72" y="260" text-anchor="middle" class="num">3</text>
+<text x="100" y="250" class="lt">收关键路径</text>
+<text x="100" y="272" class="tag">先找出最长的那一段再动手：压缩总量、提前关键资源、把非关键脚本推到交互之后</text>
+
+<rect x="40" y="296" width="840" height="62" rx="9" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<circle cx="72" cy="327" r="14" fill="#10B981"/><text x="72" y="332" text-anchor="middle" class="num">4</text>
+<text x="100" y="322" class="lt">修输入链路</text>
+<text x="100" y="344" class="tag">Pointer Events + 双终态收尾；touch-action 交给浏览器仲裁；键盘用 visualViewport 兜底</text>
+
+<rect x="40" y="368" width="840" height="62" rx="9" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<circle cx="72" cy="399" r="14" fill="#F43F5E"/><text x="72" y="404" text-anchor="middle" class="num">5</text>
+<text x="100" y="394" class="lt">接桥接与降级</text>
+<text x="100" y="416" class="tag">每次调用都能落到四个终态之一；不支持桥接时页面必须有可用的页内替代路径</text>
+
+<rect x="40" y="440" width="840" height="52" rx="9" fill="#F1F5F9" stroke="#475569" class="box"/>
+<circle cx="72" cy="466" r="14" fill="#475569"/><text x="72" y="471" text-anchor="middle" class="num">6</text>
+<text x="100" y="461" class="lt">真机矩阵验收</text>
+<text x="100" y="483" class="tag">逐行过一遍支持面：首屏、键盘、横竖屏、切后台、弱网、桥接缺失六种状态各跑一次并留证据</text>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="一键起与大盘可用性：三级就绪信号的时间刻度、五层验收清单，以及本轮被判据抓出来的三个缺陷">
+  <title>一键起与大盘可用性：三级就绪 → 五层验收 → 三个被抓住的缺陷</title>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f7f8fa" stroke="#d8dee6"/>
+
+  <text x="30" y="42" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1f2328" text-anchor="start">一键起与大盘可用性：三级就绪 → 五层验收 → 三个缺陷</text>
+  <text x="30" y="66" font-family="system-ui, sans-serif" font-size="12" font-weight="400" fill="#57606a" text-anchor="start">第 142 天 · up -d 返回只要 0~1 s，但「能看」要等 41 s、全部验收通过要 50 s——中间那 49 s 就是「起得来」和「能用」的距离</text>
+
+  <!-- ① 三级就绪 -->
+  <text x="30" y="108" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="start">① 三级就绪信号（冷启动实测时刻）</text>
+
+  <rect x="30" y="120" width="840" height="56" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <rect x="30" y="120" width="5" height="56" rx="2" fill="#94a3b8"/>
+  <text x="48" y="146" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#334155" text-anchor="start">第 1 级 · 容器</text>
+  <text x="48" y="164" font-family="system-ui, sans-serif" font-size="10.5" fill="#64748b" text-anchor="start">三个服务 State=running</text>
+  <text x="176" y="146" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#334155" text-anchor="start">docker compose ps</text>
+  <text x="176" y="164" font-family="system-ui, sans-serif" font-size="10.5" fill="#64748b" text-anchor="start">只看「进程在不在」，与「能不能用」无关</text>
+  <text x="854" y="152" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f766e" text-anchor="end">0~1 s</text>
+
+  <rect x="30" y="184" width="840" height="56" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <rect x="30" y="184" width="5" height="56" rx="2" fill="#94a3b8"/>
+  <text x="48" y="210" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#334155" text-anchor="start">第 2 级 · 进程就绪</text>
+  <text x="48" y="228" font-family="system-ui, sans-serif" font-size="10.5" fill="#64748b" text-anchor="start">HTTP 200</text>
+  <text x="176" y="210" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#334155" text-anchor="start">/-/ready = 200</text>
+  <text x="176" y="228" font-family="system-ui, sans-serif" font-size="10.5" fill="#64748b" text-anchor="start">不是 /-/healthy：healthy 只说明进程活着，ready 才代表 TSDB 已加载</text>
+  <text x="854" y="216" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f766e" text-anchor="end">1 s</text>
+
+  <rect x="30" y="248" width="840" height="62" rx="9" fill="#eff6ff" stroke="#60a5fa" stroke-width="1.5"/>
+  <rect x="30" y="248" width="5" height="62" rx="2" fill="#1d4ed8"/>
+  <text x="48" y="274" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="start">第 3 级 · 监控就绪</text>
+  <text x="48" y="292" font-family="system-ui, sans-serif" font-size="10.5" fill="#3b82f6" text-anchor="start">大盘真的能画</text>
+  <text x="176" y="274" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1d4ed8" text-anchor="start">目标数 ≥ job 数 且 unknown = 0（二维）</text>
+  <text x="176" y="292" font-family="system-ui, sans-serif" font-size="10.5" fill="#3b82f6" text-anchor="start">上界从配置读：max scrape_interval = 60 s；只判 unknown=0 会在空集上恒真</text>
+  <text x="854" y="284" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#1d4ed8" text-anchor="end">41 s</text>
+
+  <!-- ② 五层验收 -->
+  <text x="30" y="344" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f766e" text-anchor="start">② 五层验收（每层都有可复算的读数）</text>
+
+  <rect x="40" y="356" width="156" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="52" y="380" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#334155" text-anchor="start">容器</text>
+  <text x="52" y="402" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="start">三服务</text>
+  <text x="52" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="start">State=running</text>
+  <text x="52" y="442" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e" text-anchor="start">✅ 3/3</text>
+
+  <rect x="206" y="356" width="156" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="218" y="380" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#334155" text-anchor="start">文件一致</text>
+  <text x="218" y="402" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="start">宿主/容器 sha256</text>
+  <text x="218" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="start">promtool 6 rules</text>
+  <text x="218" y="442" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e" text-anchor="start">✅ cc587ff9</text>
+
+  <rect x="372" y="356" width="156" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="384" y="380" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#334155" text-anchor="start">活动目标</text>
+  <text x="384" y="402" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="start">5 个 job 全 up</text>
+  <text x="384" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="start">unknown = 0</text>
+  <text x="384" y="442" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e" text-anchor="start">✅ 5/5</text>
+
+  <rect x="538" y="356" width="156" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="550" y="380" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#334155" text-anchor="start">三张大盘数据源</text>
+  <text x="550" y="402" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="start">业务流量 1 条</text>
+  <text x="550" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="start">服务健康 5 · 自监控 1</text>
+  <text x="550" y="442" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e" text-anchor="start">✅ 非空</text>
+
+  <rect x="704" y="356" width="156" height="104" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="716" y="380" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#334155" text-anchor="start">告警端到端</text>
+  <text x="716" y="402" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="start">停 app 造故障</text>
+  <text x="716" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="start">webhook 6 条通知</text>
+  <text x="716" y="442" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e" text-anchor="start">✅ 106 s 送达</text>
+
+  <!-- ③ 三个缺陷 -->
+  <text x="30" y="496" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#b91c1c" text-anchor="start">③ 被判据抓出来的三个缺陷（都不是「系统坏了」，是「判据错了」）</text>
+
+  <rect x="30" y="508" width="268" height="80" rx="9" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="44" y="530" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c" text-anchor="start">口径过宽 → 正常态假阳性</text>
+  <text x="44" y="550" font-family="system-ui, sans-serif" font-size="10" fill="#7f1d1d" text-anchor="start">max by (job) 把业务目标拉进来，</text>
+  <text x="44" y="566" font-family="system-ui, sans-serif" font-size="10" fill="#7f1d1d" text-anchor="start">重启尖峰 3.147 s 被记 15 分钟</text>
+
+  <rect x="316" y="508" width="268" height="80" rx="9" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="330" y="530" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c" text-anchor="start">搜索域含非生效文件 → 假红</text>
+  <text x="330" y="550" font-family="system-ui, sans-serif" font-size="10" fill="#7f1d1d" text-anchor="start">grep -r 搜到实验备份，</text>
+  <text x="330" y="566" font-family="system-ui, sans-serif" font-size="10" fill="#7f1d1d" text-anchor="start">按目录搜 ≠ 按生效配置搜</text>
+
+  <rect x="602" y="508" width="268" height="80" rx="9" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="616" y="530" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#b91c1c" text-anchor="start">空集上恒真 → 静默放行</text>
+  <text x="616" y="550" font-family="system-ui, sans-serif" font-size="10" fill="#7f1d1d" text-anchor="start">targets=[] 时 unknown 自然为 0，</text>
+  <text x="616" y="566" font-family="system-ui, sans-serif" font-size="10" fill="#7f1d1d" text-anchor="start">第 3 级在没注册目标时就报 ✅</text>
+</svg>

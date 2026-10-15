@@ -14,15 +14,13 @@
 
     - 适当的设置最大的消费线程数量 (根据`IO(2n)/CPU(n+1)`)
 
-           ```java [SpringBoot]
-
+      ```java [SpringBoot]
       @RocketMQMessageListener(
       consumerTHread = 40
       )
       ```
 
-           ```java [Java]
-
+      ```java [Java]
       consumer.setConsumeThreadMax(40)
       ```
 

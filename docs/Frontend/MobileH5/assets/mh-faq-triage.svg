@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>移动端 H5 现象分诊：从现象走回正确的页面</title>
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#0F172A;font-weight:600}.s{font-size:11.5px;fill:#475569}.tag{font-size:11.5px;fill:#64748B}.box{stroke-width:1.5}.mono{font-family:ui-monospace,Menlo,monospace;font-size:11px;fill:#1E293B}</style>
+<rect width="920" height="470" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">先看现象，再看该翻哪一页</text>
+<text x="460" y="56" text-anchor="middle" class="tag">「一句话描述现象 → 先跑什么 → 翻哪页」比从目录开始读快得多</text>
+
+<rect x="40" y="80" width="840" height="38" rx="8" fill="#EFF6FF" stroke="#3B82F6" class="box"/>
+<text x="60" y="104" class="lt">现象 → 第一件要做的事 → 归属页面</text>
+
+<rect x="40" y="128" width="840" height="52" rx="8" fill="#F8FAFC" stroke="#CBD5E1" class="box"/>
+<text x="60" y="150" class="s">整页字很小、要双指放大才能看　　　　　　　　　</text>
+<text x="360" y="150" class="mono">document.documentElement.clientWidth</text>
+<text x="60" y="170" class="tag">→ 等于 980，说明 viewport meta 没生效或没写 → ViewportAdapter</text>
+
+<rect x="40" y="188" width="840" height="52" rx="8" fill="#F8FAFC" stroke="#CBD5E1" class="box"/>
+<text x="60" y="210" class="s">大屏上元素被拉长、间距变得很松　　　　　　　　　</text>
+<text x="360" y="210" class="mono">设备宽度 → 480 / 折叠屏</text>
+<text x="60" y="230" class="tag">→ 等比体系缺少最大宽度约束 → ViewportAdapter</text>
+
+<rect x="40" y="248" width="840" height="52" rx="8" fill="#F8FAFC" stroke="#CBD5E1" class="box"/>
+<text x="60" y="270" class="s">首次进页面白屏很久，之后却很快　　　　　　　　　</text>
+<text x="360" y="270" class="mono">Performance 面板 + 网络面板</text>
+<text x="60" y="290" class="tag">→ 关键路径上有一段没被提前 → PagePerformance</text>
+
+<rect x="40" y="308" width="840" height="52" rx="8" fill="#F8FAFC" stroke="#CBD5E1" class="box"/>
+<text x="60" y="330" class="s">点了没反应，第二下才生效　　　　　　　　　　　　</text>
+<text x="360" y="330" class="mono">长任务 + INP</text>
+<text x="60" y="350" class="tag">→ 主线程被占满，或按下反馈等到了请求返回 → TouchInteraction / PagePerformance</text>
+
+<rect x="40" y="368" width="840" height="52" rx="8" fill="#F8FAFC" stroke="#CBD5E1" class="box"/>
+<text x="60" y="390" class="s">原生能力调不通、Bridge 有时通有时不通　　　　　　</text>
+<text x="360" y="390" class="mono">控制台 + 宿主日志</text>
+<text x="60" y="410" class="tag">→ 注入时机 / 版本协商 / 回调终态缺失 → Bridge（先查 Security 的来源校验）</text>
+
+<rect x="40" y="428" width="840" height="32" rx="8" fill="#FEFCE8" stroke="#CA8A04" class="box"/>
+<text x="60" y="449" class="tag">不在上表里的现象：先在真机上复现一次，把「机型 / 系统 / 内核版本 / 现象 / 步骤」五样记全，再回到 Compatibility 的矩阵里定位</text>
+</svg>
