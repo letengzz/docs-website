@@ -1,5 +1,7 @@
 # Mybatis-Plus注解
 
+本页只讲三个实体注解：`@TableName`、`@TableId`、`@TableField`，以及它们各自解决哪一个「表结构与 Java 命名对不上」的问题。适用于已引入 MyBatis-Plus、准备把实体类对齐表结构的读者；字段填充与类型处理器不在本页。
+
 ## @TableName
 
 在使用MyBatis-Plus实现基本的CRUD时，并没有指定要操作的表，只是在 Mapper接口继承BaseMapper时，设置了泛型User，而操作的表为user表。

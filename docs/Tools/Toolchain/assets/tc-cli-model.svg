@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 630" width="900" height="630" role="img" aria-label="tc-cli-model.svg">
+  <title>一个 CLI 的解剖：命令树、参数、退出码</title>
+  <defs>
+    <marker id="c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="630" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">一个 CLI 的解剖：命令树、参数、退出码</text>
+
+  <text x="32" y="88" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">命令模型：最多两级子命令</text>
+  <rect x="32" y="104" width="420" height="40" rx="10" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="46" y="122" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1e3a8a">acme</text>
+  <text x="46" y="138" font-family="system-ui, sans-serif" font-size="10" fill="#334155">一个可执行文件、一个入口；--help 是唯一保证存在的子命令</text>
+
+  <line x1="242" y1="144" x2="242" y2="156" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="132" y1="156" x2="352" y2="156" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="132" y1="156" x2="132" y2="166" stroke="#2563eb" stroke-width="1.5" marker-end="url(#c1)"/>
+  <line x1="352" y1="156" x2="352" y2="166" stroke="#2563eb" stroke-width="1.5" marker-end="url(#c1)"/>
+
+  <rect x="32" y="170" width="200" height="48" rx="9" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="44" y="188" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">acme verify</text>
+  <text x="44" y="204" font-family="system-ui, sans-serif" font-size="10" fill="#334155">只读检查，可随时跑，进 CI</text>
+
+  <rect x="252" y="170" width="200" height="48" rx="9" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="264" y="188" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">acme gen &lt;kind&gt;</text>
+  <text x="264" y="204" font-family="system-ui, sans-serif" font-size="10" fill="#334155">生成，写文件，必须幂等</text>
+
+  <rect x="32" y="226" width="200" height="48" rx="9" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="44" y="244" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">acme create &lt;kind&gt;</text>
+  <text x="44" y="260" font-family="system-ui, sans-serif" font-size="10" fill="#334155">新建，一次性，拒绝覆盖</text>
+
+  <rect x="252" y="226" width="200" height="48" rx="9" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="264" y="244" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">acme config</text>
+  <text x="264" y="260" font-family="system-ui, sans-serif" font-size="10" fill="#334155">config show 打印生效值</text>
+
+  <rect x="32" y="288" width="420" height="56" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="46" y="308" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b45309">不允许出现第三级子命令</text>
+  <text x="46" y="326" font-family="system-ui, sans-serif" font-size="10" fill="#334155">acme gen api user 里的 user 是位置参数，不是子命令；放开三级后，</text>
+  <text x="46" y="340" font-family="system-ui, sans-serif" font-size="10" fill="#334155">帮助文本与自动补全会迅速失控，用户也记不住路径。</text>
+
+  <text x="468" y="88" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">发出去就改不动的四样东西</text>
+
+  <rect x="468" y="104" width="400" height="40" rx="9" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="482" y="122" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b91c1c">① 命令名</text>
+  <text x="482" y="137" font-family="system-ui, sans-serif" font-size="10" fill="#334155">改名等于让所有人的脚本当场失效</text>
+
+  <rect x="468" y="150" width="400" height="40" rx="9" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="482" y="168" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b91c1c">② 参数名与顺序</text>
+  <text x="482" y="183" font-family="system-ui, sans-serif" font-size="10" fill="#334155">位置参数加一个，后面全部错位</text>
+
+  <rect x="468" y="196" width="400" height="40" rx="9" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="482" y="214" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b91c1c">③ 退出码</text>
+  <text x="482" y="229" font-family="system-ui, sans-serif" font-size="10" fill="#334155">CI 只认它；改语义等于改判据</text>
+
+  <rect x="468" y="242" width="400" height="40" rx="9" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="482" y="260" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b91c1c">④ stdout 与 stderr 的分工</text>
+  <text x="482" y="275" font-family="system-ui, sans-serif" font-size="10" fill="#334155">stdout 只出数据，人话一律去 stderr</text>
+
+  <rect x="468" y="296" width="400" height="48" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="482" y="316" font-family="system-ui, sans-serif" font-size="10" fill="#334155">实现、依赖、措辞都可以随便改；上面四样每改一次，</text>
+  <text x="482" y="332" font-family="system-ui, sans-serif" font-size="10" fill="#334155">都会静默打断某个人的自动化 —— 打断时不会有任何报错。</text>
+
+  <rect x="32" y="360" width="836" height="76" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="382" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">三类参数</text>
+  <text x="48" y="404" font-family="system-ui, sans-serif" font-size="11" fill="#334155">位置参数（不超过 2 个，顺序固定）· 选项参数（--out &lt;dir&gt;，有没有默认值要写清）· 全局参数（--json / --yes / --config，放最外层）</text>
+  <text x="48" y="424" font-family="system-ui, sans-serif" font-size="11" fill="#334155">交互式追问只在三者都不满足时出现：CI 环境、非 TTY、显式 --yes，三种情况下必须自动关掉。</text>
+
+  <text x="32" y="456" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">退出码约定：这是唯一能被机器读到的结论</text>
+
+  <rect x="32" y="468" width="131" height="76" rx="9" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="42" y="494" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#0f766e">0</text>
+  <text x="70" y="492" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">成功</text>
+  <text x="42" y="516" font-family="system-ui, sans-serif" font-size="9" fill="#334155">「无事可做」也是 0</text>
+  <text x="42" y="532" font-family="system-ui, sans-serif" font-size="9" fill="#334155">幂等动作尤其如此</text>
+
+  <rect x="173" y="468" width="131" height="76" rx="9" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="183" y="494" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#b91c1c">1</text>
+  <text x="211" y="492" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">通用失败</text>
+  <text x="183" y="516" font-family="system-ui, sans-serif" font-size="9" fill="#334155">兜底，不要用它</text>
+  <text x="183" y="532" font-family="system-ui, sans-serif" font-size="9" fill="#334155">区分具体原因</text>
+
+  <rect x="314" y="468" width="131" height="76" rx="9" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="324" y="494" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#b45309">2</text>
+  <text x="352" y="492" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">用法错误</text>
+  <text x="324" y="516" font-family="system-ui, sans-serif" font-size="9" fill="#334155">参数写错了</text>
+  <text x="324" y="532" font-family="system-ui, sans-serif" font-size="9" fill="#334155">该引导用户改命令</text>
+
+  <rect x="455" y="468" width="131" height="76" rx="9" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="465" y="494" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e3a8a">3</text>
+  <text x="493" y="492" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">无事可做</text>
+  <text x="465" y="516" font-family="system-ui, sans-serif" font-size="9" fill="#334155">「已经做过了」</text>
+  <text x="465" y="532" font-family="system-ui, sans-serif" font-size="9" fill="#334155">与 0 的区别要写死</text>
+
+  <rect x="596" y="468" width="131" height="76" rx="9" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="606" y="494" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#3730a3">4</text>
+  <text x="634" y="492" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">前置不满足</text>
+  <text x="606" y="516" font-family="system-ui, sans-serif" font-size="9" fill="#334155">环境不对</text>
+  <text x="606" y="532" font-family="system-ui, sans-serif" font-size="9" fill="#334155">重试多少次都没用</text>
+
+  <rect x="737" y="468" width="131" height="76" rx="9" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="747" y="494" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#b45309">5</text>
+  <text x="775" y="492" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">校验失败</text>
+  <text x="747" y="516" font-family="system-ui, sans-serif" font-size="9" fill="#334155">输入不合法</text>
+  <text x="747" y="532" font-family="system-ui, sans-serif" font-size="9" fill="#334155">要在动任何文件之前</text>
+
+  <rect x="32" y="560" width="836" height="50" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="580" font-family="system-ui, sans-serif" font-size="11" fill="#334155">判据：任意一条命令都能在一张 A4 纸上写清「它读什么、写什么、退出码有哪些」，</text>
+  <text x="48" y="598" font-family="system-ui, sans-serif" font-size="11" fill="#334155">并且这张纸不需要看实现代码就能写出来。写不出来的部分就是还没设计完的部分。</text>
+</svg>

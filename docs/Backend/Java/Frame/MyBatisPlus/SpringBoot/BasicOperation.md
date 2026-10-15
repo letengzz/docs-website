@@ -1,5 +1,7 @@
 # MyBatis-Plus基本操作
 
+本页讲 MyBatis-Plus 通过 `BaseMapper` 与 `IService` 送出来的基础能力：单条增删改查、批量操作与通用 Service。它回答的是「哪些方法不用自己写」，自定义 SQL 仍走 MyBatis 那一侧。
+
 ## 基本功能
 
 MyBatis-Plus中的基本CRUD在内置的BaseMapper中都已得到了实现：

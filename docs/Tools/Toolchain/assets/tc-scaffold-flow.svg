@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" width="900" height="580" role="img" aria-label="tc-scaffold-flow.svg">
+  <title>脚手架的三段：模板 → 变量 → 生成</title>
+  <defs>
+    <marker id="s1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#14b8a6"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="580" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">脚手架的三段：模板 → 变量 → 生成（难点在第三段之后）</text>
+
+  <rect x="32" y="104" width="240" height="130" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="128" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">段一 · 模板</text>
+  <text x="48" y="154" font-family="system-ui, sans-serif" font-size="11" fill="#334155">目录树本身就是一份规格</text>
+  <text x="48" y="176" font-family="system-ui, sans-serif" font-size="11" fill="#334155">占位符带唯一前缀，避免碰撞</text>
+  <text x="48" y="198" font-family="system-ui, sans-serif" font-size="11" fill="#334155">模板文件自身要有版本</text>
+  <text x="48" y="220" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">难点：低 —— 静态文件搬运</text>
+
+  <line x1="276" y1="169" x2="324" y2="169" stroke="#14b8a6" stroke-width="2" marker-end="url(#s1)"/>
+
+  <rect x="330" y="104" width="240" height="130" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="346" y="128" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">段二 · 变量</text>
+  <text x="346" y="154" font-family="system-ui, sans-serif" font-size="11" fill="#334155">三个来源，优先级写死</text>
+  <text x="346" y="176" font-family="system-ui, sans-serif" font-size="11" fill="#334155">校验放在最早的那一步</text>
+  <text x="346" y="198" font-family="system-ui, sans-serif" font-size="11" fill="#334155">缺一个就整体失败，不降级</text>
+  <text x="346" y="220" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">难点：中 —— 校验时机</text>
+
+  <line x1="574" y1="169" x2="622" y2="169" stroke="#14b8a6" stroke-width="2" marker-end="url(#s1)"/>
+
+  <rect x="628" y="104" width="240" height="130" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="644" y="128" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">段三 · 生成</text>
+  <text x="644" y="154" font-family="system-ui, sans-serif" font-size="11" fill="#334155">目标已存在则中止</text>
+  <text x="644" y="176" font-family="system-ui, sans-serif" font-size="11" fill="#334155">永不静默覆盖</text>
+  <text x="644" y="198" font-family="system-ui, sans-serif" font-size="11" fill="#334155">结束打印下一步命令</text>
+  <text x="644" y="220" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">难点：高 —— 冲突与重入</text>
+
+  <text x="32" y="264" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">渲染完之后的三件事 —— 脚手架的难点全在这里</text>
+
+  <rect x="32" y="276" width="240" height="118" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="46" y="298" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f172a">① 生成物属于项目</text>
+  <text x="46" y="320" font-family="system-ui, sans-serif" font-size="10" fill="#334155">生成后即提交进项目仓库</text>
+  <text x="46" y="338" font-family="system-ui, sans-serif" font-size="10" fill="#334155">脚手架升级不回写老项目</text>
+  <text x="46" y="356" font-family="system-ui, sans-serif" font-size="10" fill="#334155">边界画在时间点，不画在文件</text>
+  <text x="46" y="380" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">否则改模板会改坏线上代码</text>
+
+  <rect x="330" y="276" width="240" height="118" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="344" y="298" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f172a">② 自己必须能被重跑</text>
+  <text x="344" y="320" font-family="system-ui, sans-serif" font-size="10" fill="#334155">幂等，或者明确拒绝并说明</text>
+  <text x="344" y="338" font-family="system-ui, sans-serif" font-size="10" fill="#334155">不允许「一半成功」的中间态</text>
+  <text x="344" y="356" font-family="system-ui, sans-serif" font-size="10" fill="#334155">失败要能就地清理干净</text>
+  <text x="344" y="380" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">半成品比彻底失败更贵</text>
+
+  <rect x="628" y="276" width="240" height="118" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="642" y="298" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f172a">③ 不能被脚手架绑死</text>
+  <text x="642" y="320" font-family="system-ui, sans-serif" font-size="10" fill="#334155">不留只有脚手架看得懂的引用</text>
+  <text x="642" y="338" font-family="system-ui, sans-serif" font-size="10" fill="#334155">删掉脚手架，项目仍能构建</text>
+  <text x="642" y="356" font-family="system-ui, sans-serif" font-size="10" fill="#334155">不然它是运行时依赖</text>
+  <text x="642" y="380" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">依赖就得按依赖的方式维护</text>
+
+  <rect x="32" y="404" width="836" height="88" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="430" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">最常见的错法：把「渲染模板」当成难点</text>
+  <text x="48" y="456" font-family="system-ui, sans-serif" font-size="12" fill="#334155">渲染一棵目录树只要二十行；真正的难点是「生成完之后，生成物归谁管」。</text>
+  <text x="48" y="476" font-family="system-ui, sans-serif" font-size="12" fill="#334155">反例：变量校验放在渲染之后 —— 生成了半棵树才报错，留下需要手工清理的残骸。</text>
+
+  <rect x="32" y="508" width="836" height="56" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="532" font-family="system-ui, sans-serif" font-size="11" fill="#334155">判据：三段的失败都能被单独复现（模板错 / 变量错 / 目标冲突），</text>
+  <text x="48" y="552" font-family="system-ui, sans-serif" font-size="11" fill="#334155">且任何一种失败都不产生需要手工收拾的半成品。</text>
+</svg>

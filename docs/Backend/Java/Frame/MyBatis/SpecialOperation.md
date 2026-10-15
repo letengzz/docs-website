@@ -1,5 +1,7 @@
 # MyBatis 处理特殊操作
 
+本页收 MyBatis 里「SQL 不好直接表达」的几类操作：动态 SQL、批量处理、类型处理器与主键回填。示例基于同目录的 student 表。
+
 :::tip 提示
 
 下列各项操作均使用[student表](Table/student.md)来操作。

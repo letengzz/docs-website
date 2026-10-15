@@ -1,5 +1,7 @@
 # 资源操作：Resources
 
+本页讲 Spring 的资源抽象：`Resource` 接口的定位、常见实现类，以及它们各自对应的路径前缀（`classpath:`、`file:`、`http:` 等）。适用于需要从 jar 内、文件系统或网络读取同一份资源的读者。
+
 ## Spring Resources概述
 
 ![image-20221218154945878](assets/202307181339219.png)

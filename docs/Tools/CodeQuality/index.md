@@ -95,6 +95,12 @@
 7. **涉及安全规则，读 [安全分析与污点追踪](./SecurityAnalysis/index.md)**：污点分析的主要成本是误报治理，不是工具安装。
 8. **要完整走一遍，跟 [实战](./Practice/index.md) 的 `CQ-A ~ CQ-H` 判据**，再用 [常见问题](./FAQ/index.md) 的自查清单收尾。
 
+## 与自建工具链专题的分工
+
+- **本页**讲门禁侧：静态分析器怎么选、规则怎么定、条件与阈值怎么设。
+- [自建工具链](../Toolchain/index.md) 讲**执行载体**：把散落的检查收成一条 `verify` 命令、定好它的退出码，再让 CI、pre-commit、内部平台都调这一条。
+- 判据：**门禁条件怎么定归本页，门禁怎么被跑起来、退出码怎么约定归自建工具链专题**。两侧共用同一批命令，本页只决定「哪几条算不通过」。
+
 ## 参考资料
 
 - Sonar 官方下载页（当前 LTA 与 Community Build 版本号、各发行版能力对照）：https://www.sonarsource.com/products/sonarqube/downloads/

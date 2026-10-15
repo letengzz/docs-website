@@ -1,5 +1,7 @@
 # MyBatis 关联查询及延迟加载
 
+本页讲关联查询与延迟加载：多表结果如何映射到对象、`association` 与 `collection` 怎么用，以及延迟加载在什么条件下才真正生效。示例基于 `t_dept` 与 `t_emp` 两张表。
+
 :::tip 提示
 
 下列各项操作均使用[t_dept表、t_emp表](Table/dept_emp.md)来操作。

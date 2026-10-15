@@ -1,5 +1,7 @@
 # SpringBoot 基本操作及特性
 
+本页收 Spring Boot 的日常操作：配置文件怎么写、Bean 怎么自定义、banner 怎么换。它面向「已经能跑起来」的工程，不重复入门步骤。
+
 ## 配置文件
 
 SpringBoot 集中化管理配置，配置文件为`application.properties`或`application.yaml`，配置基本都有默认值。

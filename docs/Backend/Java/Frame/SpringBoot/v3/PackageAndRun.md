@@ -1,5 +1,7 @@
 # SpringBoot 项目打包和运行
 
+本页讲打包与运行：插件怎么加、可执行 jar 的内部结构、命令行参数如何覆盖配置。它不涉及容器镜像与 CI，那属于交付环节。
+
 ## 添加打包插件
 
 在Spring Boot项目中添加`spring-boot-maven-plugin`插件是为了支持将项目打包成可执行的可运行jar包。如果不添加`spring-boot-maven-plugin`插件配置，使用常规的`java -jar`命令来运行打包后的Spring Boot项目是无法找到应用程序的入口点，因此导致无法运行。

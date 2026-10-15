@@ -1,5 +1,7 @@
 # 默认效果
 
+本页列 Spring Boot Web 起步依赖带来的默认行为：默认注册了哪些组件、静态资源与消息转换的默认规则是什么。它的用途是「先知道默认，再决定改哪一项」，所以只摆事实、不给建议。
+
 **默认配置**：
 
 1. 包含了 ContentNegotiatingViewResolver 和 BeanNameViewResolver 组件，**方便视图解析**

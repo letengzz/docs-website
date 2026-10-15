@@ -5,7 +5,7 @@ import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_EnterpriseKB, AI_
 import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontOthers, FrontPWA, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, ChaosEngineering, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
 import { BigData, CDC, ClickHouse, DBOverview, DataGovernance, DataModeling, DataWarehouse, Middleware, Neo4j, NoRelational, Relational, SQLOptimization, Sharding, TimeSeries, VectorDatabase } from "./db";
-import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, VC } from "./tools";
+import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 const OthersReview = [
@@ -101,7 +101,7 @@ export const sidebar = {
     {
       text: "工具",
       collapsed: true,
-      items: [...Build, ...CICD, ...DatabaseClients, ...APIDesign, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...DocsInfra, ...DependencyGovernance, ...CodeQuality, ...Others],
+      items: [...Build, ...CICD, ...DatabaseClients, ...APIDesign, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...DocsInfra, ...DependencyGovernance, ...CodeQuality, ...Toolchain, ...Others],
     },
   ],
   "/project": [
@@ -226,6 +226,7 @@ export const sidebar = {
   "/docs/Tools/DocsInfra": DocsInfra,
   "/docs/Tools/DependencyGovernance": DependencyGovernance,
   "/docs/Tools/CodeQuality": CodeQuality,
+  "/docs/Tools/Toolchain": Toolchain,
   "/docs/Tools/Collaboration": Collaboration,
   "/docs/Tools/IDE": IDE,
   "/docs/Tools/Efficiency": Efficiency,

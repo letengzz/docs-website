@@ -1,5 +1,7 @@
 # SpringBoot 提前编译AOT
 
+本页讲 Spring Boot 3 的 AOT 支持：JIT 与 AOT 的取舍、GraalVM 编译器在构建链里的位置，以及 Boot 3 为 AOT 做了哪些准备。运行期行为不因 AOT 改变，这是本页反复强调的前提。
+
 ## JIT与AOT的区别
 
 JIT和AOT 这个名词是指两种不同的编译方式，这两种编译方式的主要区别在于是否在"运行时"进行编译：

@@ -1,5 +1,7 @@
 # 数据校验：Validation
 
+本页讲 Spring 的数据校验两条路：实现 `Validator` 接口，或使用 Bean Validation 注解。重点在于「在哪一层触发校验、失败结果怎么变成可读的报错」，适用于准备把校验从 Controller 里搬出来的读者。
+
 ![image-20221218154808754](assets/202307161405225.png)
 
 ## Spring Validation概述

@@ -259,3 +259,21 @@ export const CodeQuality = [
     ],
   },
 ];
+
+export const Toolchain = [
+  {
+    text: "自建工具链",
+    link: "/docs/Tools/Toolchain/index.md",
+    items: [
+      { text: "总览：自建工具链的四条边界", link: "/docs/Tools/Toolchain/Overview/index.md" },
+      { text: "脚手架：模板、变量与项目生成", link: "/docs/Tools/Toolchain/Scaffold/index.md" },
+      { text: "CLI 设计：命令模型与用户体验", link: "/docs/Tools/Toolchain/CliDesign/index.md" },
+      { text: "CLI 工程化：选型、依赖、测试与发布", link: "/docs/Tools/Toolchain/CliImplementation/index.md" },
+      { text: "代码生成：从文本模板到语法树", link: "/docs/Tools/Toolchain/Codegen/index.md" },
+      { text: "分发与版本治理", link: "/docs/Tools/Toolchain/Distribution/index.md" },
+      { text: "内部平台：从命令到自助服务", link: "/docs/Tools/Toolchain/InternalPlatform/index.md" },
+      { text: "实战：给一个多语言仓库搭一条工具链", link: "/docs/Tools/Toolchain/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/Toolchain/FAQ/index.md" },
+    ],
+  },
+];

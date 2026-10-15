@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 530" width="900" height="530" role="img" aria-label="tc-platform-layers.svg">
+  <title>内部平台三层：动作层 → 编排层 → 门户层</title>
+  <defs>
+    <marker id="p1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#818cf8"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="530" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">内部平台的三层：动作层是唯一执行体</text>
+
+  <rect x="32" y="92" width="560" height="104" rx="11" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="118" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">门户层 · 给谁用</text>
+  <text x="48" y="144" font-family="system-ui, sans-serif" font-size="11" fill="#334155">非工程师自己就能完成：表单、参数校验、审批、可见的进度。</text>
+  <text x="48" y="164" font-family="system-ui, sans-serif" font-size="11" fill="#334155">它不需要补权限，只需要补「该敲什么、敲错了会怎样」。</text>
+  <text x="48" y="186" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1e3a8a">关键：门户层不承载任何真实动作</text>
+
+  <line x1="312" y1="196" x2="312" y2="206" stroke="#818cf8" stroke-width="2" marker-end="url(#p1)"/>
+
+  <rect x="32" y="208" width="560" height="104" rx="11" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="234" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">编排层 · 谁在跑</text>
+  <text x="48" y="260" font-family="system-ui, sans-serif" font-size="11" fill="#334155">调用动作、记状态、写审计、发通知、控制并发与重试。</text>
+  <text x="48" y="280" font-family="system-ui, sans-serif" font-size="11" fill="#334155">它可以被重写，因为它不拥有动作，只拥有流程。</text>
+  <text x="48" y="302" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#3730a3">关键：编排层出现业务逻辑时，平台开始变成遗留系统</text>
+
+  <line x1="312" y1="312" x2="312" y2="322" stroke="#818cf8" stroke-width="2" marker-end="url(#p1)"/>
+
+  <rect x="32" y="324" width="560" height="104" rx="11" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="350" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">动作层 · 唯一执行体</text>
+  <text x="48" y="376" font-family="system-ui, sans-serif" font-size="11" fill="#334155">所有真实动作只在 CLI 里实现一次；人、CI、平台调的是同一个入口。</text>
+  <text x="48" y="396" font-family="system-ui, sans-serif" font-size="11" fill="#334155">动作层稳定，平台才敢改；动作层不稳，门户越漂亮越危险。</text>
+  <text x="48" y="418" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f766e">关键：这一层是唯一允许写文件、调接口的地方</text>
+
+  <text x="612" y="88" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">平台侧的三条硬规则</text>
+
+  <rect x="612" y="98" width="256" height="118" rx="11" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="628" y="122" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b45309">平台调 CLI 时，三条强制</text>
+  <text x="628" y="146" font-family="system-ui, sans-serif" font-size="10" fill="#334155">① 强制非交互（CI 或 --yes）</text>
+  <text x="628" y="168" font-family="system-ui, sans-serif" font-size="10" fill="#334155">② 强制 --json（数据走 stdout）</text>
+  <text x="628" y="190" font-family="system-ui, sans-serif" font-size="10" fill="#334155">③ 强制显式超时（不许无限等）</text>
+  <text x="628" y="210" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">缺一条，就会挂在无人值守的夜里</text>
+
+  <rect x="612" y="228" width="256" height="126" rx="11" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="628" y="252" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b91c1c">状态机：五态，不是一个布尔</text>
+  <text x="628" y="274" font-family="system-ui, sans-serif" font-size="10" fill="#334155">pending / running / succeeded</text>
+  <text x="628" y="290" font-family="system-ui, sans-serif" font-size="10" fill="#334155">failed / unknown</text>
+  <text x="628" y="312" font-family="system-ui, sans-serif" font-size="10" fill="#334155">超时 ≠ 失败 —— unknown 要独立成态</text>
+  <text x="628" y="332" font-family="system-ui, sans-serif" font-size="10" fill="#334155">非幂等动作在 unknown 时不许自动重试</text>
+  <text x="628" y="350" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">重试安全与否，取决于动作本身</text>
+
+  <rect x="612" y="366" width="256" height="62" rx="11" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="628" y="388" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Golden Path 必须留出口</text>
+  <text x="628" y="408" font-family="system-ui, sans-serif" font-size="10" fill="#334155">平台覆盖八成；剩下两成要能绕过</text>
+  <text x="628" y="424" font-family="system-ui, sans-serif" font-size="10" fill="#334155">平台直接跑同一条 CLI 命令</text>
+
+  <rect x="32" y="444" width="836" height="66" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="468" font-family="system-ui, sans-serif" font-size="11" fill="#334155">判据：任意一个平台动作，都能在「不经过平台」的情况下被复现出来。</text>
+  <text x="48" y="490" font-family="system-ui, sans-serif" font-size="11" fill="#334155">复现不出来的那部分，就是被藏进编排层的业务逻辑 —— 它会连同平台一起变得没人敢改。</text>
+</svg>

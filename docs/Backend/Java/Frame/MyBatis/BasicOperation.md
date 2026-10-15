@@ -1,5 +1,7 @@
 # MyBatis 基本操作
 
+本页讲 MyBatis 的基本操作：`insert`、`update`、`delete`、`select` 四种语句在映射器里的写法，以及参数传递与返回值的常见取值方式。所有示例都基于同目录的 user 表。
+
 :::tip 提示
 
 下列各项操作均使用[user表](Table/user.md)来操作。

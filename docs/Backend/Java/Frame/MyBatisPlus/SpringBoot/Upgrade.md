@@ -1,5 +1,7 @@
 # Mybatis升级成Mybatis-plus
 
+本页是 MyBatis 迁移到 MyBatis-Plus 的落地清单：依赖怎么换、配置类怎么加、注册中心里的配置要改哪几项。它假定原有 MyBatis 工程可以正常运行，不负责修原本就存在的问题。
+
 ## 引入Maven 依赖
 
 注释掉原来的Mybatis依赖，否则可能会报错。引入 Mybatis-plus 的包：

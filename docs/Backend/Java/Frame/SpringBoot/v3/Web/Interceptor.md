@@ -1,5 +1,7 @@
 # 拦截器
 
+本页讲拦截器：它在请求链路里的位置、`HandlerInterceptor` 三个回调的执行时机，以及如何注册与排除路径。与过滤器、AOP 的分工写在开头。
+
 ## 拦截器原理
 
 1. 根据当前请求，找到`HandlerExecutionChain`【可以处理请求的handler以及handler的所有 拦截器】

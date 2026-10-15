@@ -1,5 +1,7 @@
 # Web新特性
 
+本页收 Spring Boot 3 Web 侧的两项新能力：`ProblemDetail` 错误响应与函数式 Web 端点。两者都是可选写法，既有注解式代码不需要改动。
+
 ## Problemdetails
 
 RFC 7807: https://www.rfc-editor.org/rfc/rfc7807

@@ -1,5 +1,7 @@
 # 提前编译：AOT
 
+本页讲 Spring 6 的提前编译：AOT 与 JIT 的取舍、GraalVM Native Image 的构建过程，以及哪些写法在编译期无法解析。它给 Spring Boot 侧的 AOT 提供上位背景，二者不重复。
+
 ![image-20221218154841001](assets/202412102332334.png)
 
 ## AOT概述

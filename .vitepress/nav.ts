@@ -123,6 +123,7 @@ export const nav = [
       { text: "文档体系建设", link: "/docs/Tools/DocsInfra" },
       { text: "依赖与安全治理", link: "/docs/Tools/DependencyGovernance" },
       { text: "代码质量平台", link: "/docs/Tools/CodeQuality" },
+      { text: "自建工具链", link: "/docs/Tools/Toolchain" },
       { text: "其他", link: "/docs/Tools/Others" }
     ]
   },

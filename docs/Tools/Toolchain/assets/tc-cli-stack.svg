@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 530" width="900" height="530" role="img" aria-label="tc-cli-stack.svg">
+  <title>CLI 的工程栈：运行时、依赖、测试、分发</title>
+  <rect x="0" y="0" width="900" height="530" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">CLI 的工程栈：命令写完之后才会暴露的四层</text>
+
+  <rect x="32" y="92" width="560" height="74" rx="11" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="116" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b91c1c">分发 · 别人怎么装上</text>
+  <text x="48" y="140" font-family="system-ui, sans-serif" font-size="11" fill="#334155">三条路：公开 registry / 内部 registry / 单文件产物。装不上的工具等于没做。</text>
+  <text x="48" y="158" font-family="system-ui, sans-serif" font-size="11" fill="#334155">发布前先跑 npm pack --dry-run，看真实的产物清单，而不是看 .gitignore。</text>
+
+  <rect x="32" y="178" width="560" height="74" rx="11" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="202" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b45309">测试 · 三层，从便宜到贵</text>
+  <text x="48" y="226" font-family="system-ui, sans-serif" font-size="11" fill="#334155">单元（函数级）→ 集成（真起子进程，断言退出码与 stdout）→ e2e（打包安装后再跑）。</text>
+  <text x="48" y="244" font-family="system-ui, sans-serif" font-size="11" fill="#334155">集成层最容易被跳过，也最值：退出码与 stdout 才是契约。</text>
+
+  <rect x="32" y="264" width="560" height="74" rx="11" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="288" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">依赖 · 能少则少，能锁则锁</text>
+  <text x="48" y="312" font-family="system-ui, sans-serif" font-size="11" fill="#334155">运行时依赖越少，「一条命令装上」的成功率越高；开发依赖不进产物。</text>
+  <text x="48" y="330" font-family="system-ui, sans-serif" font-size="11" fill="#334155">engines 写清楚运行时下限，让装不上发生在安装期而不是运行期。</text>
+
+  <rect x="32" y="350" width="560" height="74" rx="11" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="374" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">运行时 · 决定启动成本与分发形态</text>
+  <text x="48" y="398" font-family="system-ui, sans-serif" font-size="11" fill="#334155">Node ≥ 22.12（commander 15 的 engines 下限）/ Python ≥ 3.10（typer 0.27）/ 编译型单文件。</text>
+  <text x="48" y="416" font-family="system-ui, sans-serif" font-size="11" fill="#334155">选运行时之前先量启动耗时：它是一笔每次调用都交的固定税。</text>
+
+  <rect x="612" y="92" width="256" height="150" rx="11" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="628" y="114" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f172a">先量再选：启动耗时中位数</text>
+  <text x="628" y="136" font-family="system-ui, sans-serif" font-size="10" fill="#334155">node -e ''</text>
+  <text x="852" y="136" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#1e3a8a" text-anchor="end">52.7 ms</text>
+  <text x="628" y="156" font-family="system-ui, sans-serif" font-size="10" fill="#334155">commander 15 最小 CLI</text>
+  <text x="852" y="156" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#1e3a8a" text-anchor="end">72.4 ms</text>
+  <text x="628" y="176" font-family="system-ui, sans-serif" font-size="10" fill="#334155">同一 CLI 的 --help</text>
+  <text x="852" y="176" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#1e3a8a" text-anchor="end">72.3 ms</text>
+  <text x="628" y="196" font-family="system-ui, sans-serif" font-size="10" fill="#334155">python3 -c ''</text>
+  <text x="852" y="196" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#b45309" text-anchor="end">204.9 ms</text>
+  <text x="628" y="222" font-family="system-ui, sans-serif" font-size="9" fill="#64748b">本机 macOS x64 实测中位数，不是单次取值。</text>
+
+  <rect x="612" y="258" width="256" height="166" rx="11" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="628" y="280" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f172a">三条读法</text>
+  <text x="628" y="304" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#334155">① 启动是固定税</text>
+  <text x="628" y="320" font-family="system-ui, sans-serif" font-size="10" fill="#334155">短命令被它吃掉的比例最大</text>
+  <text x="628" y="344" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#334155">② 不是「慢」，是成本位置不同</text>
+  <text x="628" y="360" font-family="system-ui, sans-serif" font-size="10" fill="#334155">解释型运行时把成本放在每次启动</text>
+  <text x="628" y="384" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#334155">③ 数字必须来自你自己的机器</text>
+  <text x="628" y="400" font-family="system-ui, sans-serif" font-size="10" fill="#334155">抄来的数字会随版本静默过期</text>
+
+  <rect x="32" y="440" width="836" height="64" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="464" font-family="system-ui, sans-serif" font-size="11" fill="#334155">判据：四层各自回答一个「会不会装不上 / 跑不起来」的问题，互不替代。</text>
+  <text x="48" y="486" font-family="system-ui, sans-serif" font-size="11" fill="#334155">任意一层答不出来，最后都会以同一句话暴露：功能全对，npx 装不上。</text>
+</svg>

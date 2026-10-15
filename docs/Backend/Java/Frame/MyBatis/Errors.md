@@ -1,5 +1,7 @@
 # MyBatis 常见错误
 
+本页按「症状 → 根因 → 处置」收 MyBatis 的常见报错，每条都给出可直接对照的异常文本。它是一份查阅清单，不承担原理解释。
+
 - [mabatis报错:Result typenot match for select id=XXX](#jump1)
 - [判断Integer类型，值为0动态SQL不生效](#jump2)
 

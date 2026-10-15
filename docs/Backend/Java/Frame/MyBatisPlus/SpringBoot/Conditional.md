@@ -1,5 +1,7 @@
 # MyBatis-Plus条件构造器
 
+本页讲条件构造器 `Wrapper` 家族：`QueryWrapper` 与 `UpdateWrapper` 的差别、条件拼接的常用写法，以及什么时候该换回手写 SQL。它不试图穷举全部 API，只覆盖日常查询里真正会用到的部分。
+
 ## wapper
 
 通过观察BaseMapper中的方法，大多方法中都有Wrapper类型的形参，此为条件构造器，可针对于SQL语句设置不同的条件，若没有条件，则可以为该形参赋值null，即查询（删除/修改）所有数据。

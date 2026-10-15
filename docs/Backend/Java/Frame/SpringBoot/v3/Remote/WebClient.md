@@ -1,5 +1,7 @@
 # WebClient
 
+本页讲 Spring 6 引入的 `WebClient`：非阻塞、响应式的 HTTP 客户端，以及它与 `RestTemplate` 的分工。适用于需要并发调用下游、或已经在使用响应式栈的读者。
+
 非阻塞、响应式HTTP客户端
 
 :::danger 注意

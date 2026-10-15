@@ -15,6 +15,12 @@
 - [实战：迁移 pnpm 与 monorepo 落地](Practice/index.md)
 - [常见问题与最佳实践](FAQ/index.md)
 
+## 与自建工具链专题的分工
+
+- **本页**讲解析与安装：lockfile、版本求解、pnpm 的存储与链接原理。
+- [自建工具链](../Toolchain/index.md) 讲**发布与分发**：自建包发到哪个 registry、`.npmrc` 怎么只做 scope 定向、令牌怎么不进仓库、版本怎么在多个包之间传播。
+- 判据：**「装得上吗」归本页，「我发布的包别人装得上吗」归自建工具链专题**。一个是解析器行为，一个是分发动作。
+
 ## 阅读建议
 
 1. 还没接触过 npm/pnpm 基础命令：先读 [Node.js 包管理工具](../../Frontend/Basic/NodeJs/PackageManagementTool/index.md) 再回来。

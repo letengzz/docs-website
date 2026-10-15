@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 590" width="900" height="590" role="img" aria-label="tc-boundaries.svg">
+  <title>自建工具链的四条边界</title>
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="590" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">四条边界：自建工具链之前必须回答的四个问题</text>
+
+  <rect x="32" y="92" width="836" height="88" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="118" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e3a8a">边界一</text>
+  <text x="118" y="118" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">什么该做成工具，不是「什么写成了脚本」</text>
+  <text x="48" y="144" font-family="system-ui, sans-serif" font-size="12" fill="#334155">判据：N × (t₁ − t₂) × 存活月数 &gt; C。左边三个都是乘数，右边只出现一次。</text>
+  <text x="48" y="163" font-family="system-ui, sans-serif" font-size="12" fill="#334155">N 是要重复的次数 —— 把它放大一个数量级，结论常常会反过来。</text>
+
+  <rect x="32" y="194" width="836" height="88" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="220" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f766e">边界二</text>
+  <text x="118" y="220" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">工具链有成熟度台阶，不是「有或没有」</text>
+  <text x="48" y="246" font-family="system-ui, sans-serif" font-size="12" fill="#334155">L0 手工文档 → L1 本机脚本 → L2 可分发 CLI → L3 自助平台。</text>
+  <text x="48" y="265" font-family="system-ui, sans-serif" font-size="12" fill="#334155">跳级做 L3 是最常见的失败起点：动作层还没稳定，门户层先做出来了。</text>
+
+  <rect x="32" y="296" width="836" height="88" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="322" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b45309">边界三</text>
+  <text x="118" y="322" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">工具链是「契约」，不是「代码」</text>
+  <text x="48" y="348" font-family="system-ui, sans-serif" font-size="12" fill="#334155">命令名、参数名、退出码、输出字段这四样发出去就改不动了。</text>
+  <text x="48" y="367" font-family="system-ui, sans-serif" font-size="12" fill="#334155">实现可以重写；契约改动会静默打断某个人的自动化，而且不会报错。</text>
+
+  <rect x="32" y="398" width="836" height="88" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="424" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b91c1c">边界四</text>
+  <text x="118" y="424" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">要有人负责，也要能退役</text>
+  <text x="48" y="450" font-family="system-ui, sans-serif" font-size="12" fill="#334155">无主工具比没有工具更糟：它会被继续依赖，却没人接故障单。</text>
+  <text x="48" y="469" font-family="system-ui, sans-serif" font-size="12" fill="#334155">每个工具需要三样东西：owner、出故障时找谁、什么条件下允许下线。</text>
+
+  <rect x="32" y="506" width="836" height="62" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="530" font-family="system-ui, sans-serif" font-size="11" fill="#334155">判据：四条边界都要能用一句话说清「这件事落在哪一侧」。</text>
+  <text x="48" y="550" font-family="system-ui, sans-serif" font-size="11" fill="#334155">说不出来的那一条，就是当前真正的风险点 —— 而不是你正在写的那个脚本。</text>
+</svg>
