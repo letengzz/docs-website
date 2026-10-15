@@ -275,6 +275,7 @@ export const CompleteProject = [
           { text: "遗留项结清：把 ⏳ 换成实测数字", link: "/project/Complete/MonitoringDashboard/ResidualClose/index.md" },
           { text: "压测与容量：把单点能力变成容量结论", link: "/project/Complete/MonitoringDashboard/CapacityTest/index.md" },
           { text: "部署前置：把联调态收敛成可交付态", link: "/project/Complete/MonitoringDashboard/DeployPrep/index.md" },
+          { text: "容量基线重测：把 ⏳ 换成交付态实测值", link: "/project/Complete/MonitoringDashboard/CapacityBaseline/index.md" },
         ],
       },
       {

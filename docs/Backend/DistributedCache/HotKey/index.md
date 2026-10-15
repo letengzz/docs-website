@@ -194,3 +194,19 @@ done
 - Redis 官方文档 · `MEMORY USAGE` 命令：https://redis.io/docs/latest/commands/memory-usage/
 - Redis 8.6 / 8.10 发布说明（热 key 相关能力与新增命令）：https://github.com/redis/redis/releases
 - Amazon Builders' Library · 缓存热点与驱逐策略：https://aws.amazon.com/builders-library/caching-challenges-and-strategies/
+
+## 与高并发系统设计的分工（第 141 天补充）
+
+本页的「热点」限定在**缓存/存储的键层**：热 key 怎么发现（`--hotkeys`、代理层统计、埋点）、怎么分散（键打散、本地缓存、读写分离）、大 key 怎么拆。
+
+[高并发系统设计 · 热点识别与拆分](../../HighConcurrency/HotspotSplit/index.md) 的「热点」是**系统层的一类现象**：不限于缓存键，还包括「同一个数据库行被反复更新」「同一个接口被反复调用」「同一台实例承担了大部分流量」。它给的是**先判断热点在哪一维（数据维 / 请求维 / 实例维）再决定拆什么**的判据。
+
+| 问题 | 本页（键层热点） | 高并发系统设计（系统层热点） |
+| --- | --- | --- |
+| 判据来源 | Redis 侧统计（`--hotkeys`、`MONITOR` 抽样、代理埋点） | 全链路指标（单行更新次数、单接口 QPS 占比、实例流量方差） |
+| 处置对象 | key 本身（打散、加本地缓存、分片） | 资源与顺序（拆行、拆表、串行化到单点、按用户分桶） |
+| 不覆盖 | 拆完之后一致性怎么补（写入放大、副本同步） | 不覆盖 Redis 特有的键结构问题（大 key 拆分、`UNLINK`） |
+
+::: danger 一条最容易被漏掉的分界
+**热 key 只是热点的一种**。最常见的写热点是**热点行**——秒杀库存、计数器的单行更新，此时 Redis 侧一切正常（没有热 key、没有大 key），瓶颈在被反复锁住的那一行上。判断方法很便宜：**看数据库的等待事件与行锁争用**，而不是看 Redis 的键分布。
+:::

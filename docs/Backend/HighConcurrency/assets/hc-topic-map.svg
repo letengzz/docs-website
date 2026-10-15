@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 640" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>高并发系统设计专题地图</title>
+<style>.t{font-size:16px;fill:#0F172A;font-weight:600}.s{font-size:13px;fill:#475569}.h{font-size:20px;fill:#0F172A;font-weight:700}.box{fill:#F8FAFC;stroke:#CBD5E1}.blue{fill:#EFF6FF;stroke:#3B82F6}.amber{fill:#FFFBEB;stroke:#F59E0B}.green{fill:#ECFDF5;stroke:#10B981}.rose{fill:#FFF1F2;stroke:#F43F5E}.violet{fill:#F5F3FF;stroke:#8B5CF6}.lt{font-size:14px;fill:#334155;font-weight:600}.tag{font-size:12px;fill:#64748B}</style>
+<rect width="920" height="640" fill="#FFFFFF"/>
+<text x="460" y="38" text-anchor="middle" class="h">高并发系统设计 · 专题地图</text>
+<text x="460" y="62" text-anchor="middle" class="tag">先问「超容量时系统会表现成什么」，再问「用什么手段把它设计成那样」</text>
+
+<rect x="40" y="86" width="270" height="104" rx="10" class="box blue" stroke-width="1.5"/>
+<text x="175" y="120" text-anchor="middle" class="lt">① 总览：四条边界</text>
+<text x="175" y="145" text-anchor="middle" class="s">并发 ≠ QPS</text>
+<text x="175" y="165" text-anchor="middle" class="s">容量 ≠ 性能 · 过载 ≠ 故障</text>
+<text x="175" y="182" text-anchor="middle" class="s">降级必须有序</text>
+
+<rect x="325" y="86" width="270" height="104" rx="10" class="box violet" stroke-width="1.5"/>
+<text x="460" y="120" text-anchor="middle" class="lt">② 分层防御与预算</text>
+<text x="460" y="145" text-anchor="middle" class="s">接入 / 应用 / 资源 / 依赖</text>
+<text x="460" y="165" text-anchor="middle" class="s">四层配额单调递减</text>
+<text x="460" y="182" text-anchor="middle" class="s">余量写明留给谁</text>
+
+<rect x="610" y="86" width="270" height="104" rx="10" class="box green" stroke-width="1.5"/>
+<text x="745" y="120" text-anchor="middle" class="lt">③ 限流</text>
+<text x="745" y="145" text-anchor="middle" class="s">六种算法取舍</text>
+<text x="745" y="165" text-anchor="middle" class="s">单机 / 集中式 / 配额下发</text>
+<text x="745" y="182" text-anchor="middle" class="s">限流键就是业务口径</text>
+
+<rect x="40" y="214" width="270" height="104" rx="10" class="box amber" stroke-width="1.5"/>
+<text x="175" y="248" text-anchor="middle" class="lt">④ 排队与削峰</text>
+<text x="175" y="273" text-anchor="middle" class="s">队列必须有界</text>
+<text x="175" y="293" text-anchor="middle" class="s">结果 / 补偿 / 顺序三笔账</text>
+<text x="175" y="310" text-anchor="middle" class="s">陈旧消息直接丢弃</text>
+
+<rect x="325" y="214" width="270" height="104" rx="10" class="box rose" stroke-width="1.5"/>
+<text x="460" y="248" text-anchor="middle" class="lt">⑤ 热点识别与拆分</text>
+<text x="460" y="273" text-anchor="middle" class="s">从方差里找热点</text>
+<text x="460" y="293" text-anchor="middle" class="s">读用本地缓存 · 写用分桶</text>
+<text x="460" y="310" text-anchor="middle" class="s">失效必须覆盖全部副本</text>
+
+<rect x="610" y="214" width="270" height="104" rx="10" class="box blue" stroke-width="1.5"/>
+<text x="745" y="248" text-anchor="middle" class="lt">⑥ 过载行为</text>
+<text x="745" y="273" text-anchor="middle" class="s">过载曲线三阶段</text>
+<text x="745" y="293" text-anchor="middle" class="s">快速失败优于超时</text>
+<text x="745" y="310" text-anchor="middle" class="s">降级分级要能下行</text>
+
+<rect x="40" y="342" width="270" height="104" rx="10" class="box green" stroke-width="1.5"/>
+<text x="175" y="376" text-anchor="middle" class="lt">⑦ 资源隔离</text>
+<text x="175" y="401" text-anchor="middle" class="s">线程池 / 信号量 / 连接池</text>
+<text x="175" y="421" text-anchor="middle" class="s">按「阻塞原因」分池</text>
+<text x="175" y="438" text-anchor="middle" class="s">找出隐藏的共享资源</text>
+
+<rect x="325" y="342" width="270" height="104" rx="10" class="box amber" stroke-width="1.5"/>
+<text x="460" y="376" text-anchor="middle" class="lt">⑧ 实战</text>
+<text x="460" y="401" text-anchor="middle" class="s">报名写接口</text>
+<text x="460" y="421" text-anchor="middle" class="s">四条不变式</text>
+<text x="460" y="438" text-anchor="middle" class="s">HC-P1 ~ HC-P7 可执行断言</text>
+
+<rect x="610" y="342" width="270" height="104" rx="10" class="box rose" stroke-width="1.5"/>
+<text x="745" y="376" text-anchor="middle" class="lt">⑨ 常见问题</text>
+<text x="745" y="401" text-anchor="middle" class="s">14 行现象分诊</text>
+<text x="745" y="421" text-anchor="middle" class="s">高频十二问</text>
+<text x="745" y="438" text-anchor="middle" class="s">20 项上线自查</text>
+
+<rect x="40" y="474" width="840" height="60" rx="10" class="box" stroke-width="1.5"/>
+<text x="460" y="500" text-anchor="middle" class="lt">贯穿全专题的一条判据：过载时的行为必须是「设计出来的」，不是「涌现出来的」</text>
+<text x="460" y="522" text-anchor="middle" class="s">给定输入超过容量，系统的拒绝率 / 延迟分布 / 错误形态 / 恢复时间，都应当能被提前写出并逐条验证</text>
+
+<rect x="40" y="556" width="840" height="52" rx="10" class="box" stroke-width="1.5"/>
+<text x="460" y="580" text-anchor="middle" class="tag">阅读顺序建议：只想建立判断力读 ① ⑥；正在排障先看 ⑨；要动手改造按 ② → ③ → ④ → ⑤ → ⑦ 再落到 ⑧</text>
+<text x="460" y="599" text-anchor="middle" class="tag">判据族：HC- / LD- / RL- / QS- / HS- / OB- / IS- / HC-P，逐页独立不重叠</text>
+</svg>

@@ -38,7 +38,8 @@ export const nav = [
       { text: "领域驱动设计", link: "/docs/Backend/DDD" },
       { text: "工作流与规则引擎", link: "/docs/Backend/WorkflowEngine" },
       { text: "分布式缓存深入", link: "/docs/Backend/DistributedCache" },
-      { text: "响应式编程", link: "/docs/Backend/ReactiveProgramming" },]
+      { text: "响应式编程", link: "/docs/Backend/ReactiveProgramming" },
+      { text: "高并发系统设计", link: "/docs/Backend/HighConcurrency" },]
   },
   {
     text: "数据库",

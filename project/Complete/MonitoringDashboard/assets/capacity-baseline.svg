@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="容量基线重测：交付态收敛四项、重测方法两步、两组基线读数、以及结论落点">
+  <title>重测容量基线：收敛 → 重测 → 两组读数 → 结论落点</title>
+  <defs>
+    <marker id="cb-arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f7f8fa" stroke="#d8dee6"/>
+
+  <text x="30" y="42" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1f2328" text-anchor="start">重测容量基线：收敛 → 重测 → 两组读数 → 结论落点</text>
+  <text x="30" y="66" font-family="system-ui, sans-serif" font-size="12" font-weight="400" fill="#57606a" text-anchor="start">第 141 天 · 前提是第 140 天的四项收敛真的落到了配置文件里，而不是写在文档里</text>
+
+  <!-- ① 收敛 -->
+  <rect x="30" y="90" width="196" height="122" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="44" y="114" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e" text-anchor="start">① 收敛（第 140 天四项）</text>
+  <text x="44" y="138" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">R-6 删 grouping-test</text>
+  <text x="44" y="157" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">RC-4 加自采集 job</text>
+  <text x="44" y="176" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">RC-3 runbook_url 满覆盖</text>
+  <text x="44" y="195" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">RC-5 retention.size=1GB</text>
+
+  <!-- ② 重测 -->
+  <rect x="252" y="90" width="196" height="122" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="266" y="114" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="start">② 重测（两步不可省）</text>
+  <text x="266" y="138" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">阶梯：100→3200 rps 找墙</text>
+  <text x="266" y="157" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">稳态窗口：200 rps × 601 s</text>
+  <text x="266" y="176" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">开环（恒定到达率）</text>
+  <text x="266" y="195" font-family="system-ui, sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="start">闭模型测不出吞吐墙</text>
+
+  <!-- ③ 两组读数 -->
+  <rect x="474" y="90" width="196" height="122" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="488" y="114" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309" text-anchor="start">③ 两组读数（实测）</text>
+  <text x="488" y="138" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">稳态：写入 B/s → MiB/d</text>
+  <text x="488" y="157" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">峰值：吞吐墙在 2200 rps</text>
+  <text x="488" y="176" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">峰均比 = 峰值 ÷ 稳态</text>
+  <text x="488" y="195" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">序列 827，自采集占 95.5%</text>
+
+  <!-- ④ 结论落点 -->
+  <rect x="696" y="90" width="174" height="122" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="710" y="114" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#7c3aed" text-anchor="start">④ 结论落点</text>
+  <text x="710" y="138" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">先趴下的是哪一层</text>
+  <text x="710" y="157" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">时序库磁盘？</text>
+  <text x="710" y="176" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">抓取耗时？查询耗时？</text>
+  <text x="710" y="195" font-family="system-ui, sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="start">结论必须带动作</text>
+
+  <line x1="226" y1="151" x2="248" y2="151" stroke="#6b7280" stroke-width="1.6" marker-end="url(#cb-arw)"/>
+  <line x1="448" y1="151" x2="470" y2="151" stroke="#6b7280" stroke-width="1.6" marker-end="url(#cb-arw)"/>
+  <line x1="670" y1="151" x2="692" y2="151" stroke="#6b7280" stroke-width="1.6" marker-end="url(#cb-arw)"/>
+
+  <!-- 吞吐墙曲线 -->
+  <rect x="30" y="232" width="840" height="212" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="46" y="256" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1f2328" text-anchor="start">实测吞吐墙：到达率涨 33%，吞吐一动没动（两条线在同一处分开）</text>
+
+  <!-- 坐标轴 -->
+  <line x1="86" y1="410" x2="836" y2="410" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="86" y1="272" x2="86" y2="410" stroke="#94a3b8" stroke-width="1.2"/>
+  <text x="80" y="424" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="end">100</text>
+  <text x="212" y="424" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">400</text>
+  <text x="338" y="424" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">800</text>
+  <text x="464" y="424" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">1600</text>
+  <text x="590" y="424" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">2400</text>
+  <text x="716" y="424" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">3200</text>
+  <text x="470" y="442" font-family="system-ui, sans-serif" font-size="10.5" fill="#475569" text-anchor="middle">压力工具的目标到达率（req/s）</text>
+  <text x="72" y="346" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle" transform="rotate(-90 72 346)">P99 / 吞吐</text>
+
+  <!-- 吞吐折线（前段线性上升，2200 之后平台） -->
+  <polyline points="86,404 212,376 338,344 464,310 590,308 716,307" fill="none" stroke="#1d4ed8" stroke-width="2.2"/>
+  <circle cx="86" cy="404" r="3.2" fill="#1d4ed8"/><circle cx="212" cy="376" r="3.2" fill="#1d4ed8"/>
+  <circle cx="338" cy="344" r="3.2" fill="#1d4ed8"/><circle cx="464" cy="310" r="3.2" fill="#1d4ed8"/>
+  <circle cx="590" cy="308" r="3.4" fill="#b91c1c"/><circle cx="716" cy="307" r="3.4" fill="#b91c1c"/>
+
+  <!-- P99 折线 -->
+  <polyline points="86,398 212,392 338,388 464,372 590,346 716,318" fill="none" stroke="#b45309" stroke-width="2.2" stroke-dasharray="6 4"/>
+  <circle cx="86" cy="398" r="3.2" fill="#b45309"/><circle cx="212" cy="392" r="3.2" fill="#b45309"/>
+  <circle cx="338" cy="388" r="3.2" fill="#b45309"/><circle cx="464" cy="372" r="3.2" fill="#b45309"/>
+  <circle cx="590" cy="346" r="3.4" fill="#b91c1c"/><circle cx="716" cy="318" r="3.4" fill="#b91c1c"/>
+
+  <!-- 墙标注 -->
+  <line x1="530" y1="272" x2="530" y2="410" stroke="#b91c1c" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="538" y="288" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#b91c1c" text-anchor="start">墙：吞吐 2200 rps 封顶</text>
+  <text x="538" y="303" font-family="system-ui, sans-serif" font-size="10" fill="#b91c1c" text-anchor="start">再多也只转化为排队</text>
+
+  <!-- 图例 -->
+  <line x1="600" y1="452" x2="628" y2="452" stroke="#1d4ed8" stroke-width="2.2"/>
+  <text x="634" y="456" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">实际吞吐</text>
+  <line x1="716" y1="452" x2="744" y2="452" stroke="#b45309" stroke-width="2.2" stroke-dasharray="6 4"/>
+  <text x="750" y="456" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155" text-anchor="start">P99 延迟</text>
+
+  <!-- 底部：三条纪律 -->
+  <rect x="30" y="462" width="840" height="132" rx="10" fill="#fffdf5" stroke="#e3d9a5"/>
+  <text x="46" y="486" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#92400e" text-anchor="start">重测时最容易做错的三件事</text>
+  <text x="46" y="512" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="start">① 只看「删了什么」不看「加了什么」：R-6 删掉 5 条序列，RC-4 却加进 771 条——净效果是写入速率上升，不是下降。</text>
+  <text x="46" y="536" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="start">② 直接拿旧的 MiB/d 乘新序列数：单位成本从 55.9 B/样本掉到 9.83 B/样本（du 口径），必须重测而不是换算。</text>
+  <text x="46" y="560" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="start">③ 用均值建容量：均值是在稀疏期取的，而容量结论要按峰值——两组读数都要给，缺一组就无法复算。</text>
+  <text x="46" y="584" font-family="system-ui, sans-serif" font-size="10.5" fill="#92400e" text-anchor="start">落盘证据：本机容器运行时实测（Prometheus v3.5.0），命令与读数逐条写在正文，均可复跑。</text>
+</svg>

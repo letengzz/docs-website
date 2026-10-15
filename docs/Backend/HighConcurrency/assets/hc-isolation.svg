@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>资源隔离的三个维度与失效点</title>
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11.5px;fill:#64748B}.box{stroke-width:1.5}.lbl{font-size:11.5px;fill:#FFFFFF;font-weight:600}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">隔离不限制总量，它限制「谁可以占多少」</text>
+<text x="460" y="56" text-anchor="middle" class="tag">一个下游变慢就能占满全部线程，与「流量大不大」无关——这是隔离要解决的问题</text>
+
+<text x="60" y="94" class="lt">隔离前：共享一个线程池</text>
+<rect x="60" y="108" width="380" height="150" rx="10" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<rect x="80" y="128" width="340" height="40" rx="6" fill="#334155"/>
+<text x="250" y="154" text-anchor="middle" class="lbl">公共线程池 200 个线程</text>
+<text x="80" y="192" class="s">风控（10%）调用从 150 ms 变 10 s</text>
+<text x="80" y="212" class="s">风控 QPS &gt; 20 即可占满全部 200 线程</text>
+<text x="80" y="236" class="s">→ 查询订单（85%）无线程可用，整服务不可用</text>
+<text x="80" y="254" class="tag">但主库其实完全健康</text>
+
+<text x="500" y="94" class="lt">隔离后：按「阻塞原因」分池</text>
+<rect x="500" y="108" width="380" height="150" rx="10" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<rect x="520" y="128" width="160" height="34" rx="6" fill="#3B82F6"/>
+<text x="600" y="150" text-anchor="middle" class="lbl">风控池 32</text>
+<rect x="690" y="128" width="170" height="34" rx="6" fill="#10B981"/>
+<text x="775" y="150" text-anchor="middle" class="lbl">查询池 64</text>
+<rect x="520" y="170" width="160" height="34" rx="6" fill="#8B5CF6"/>
+<text x="600" y="192" text-anchor="middle" class="lbl">支付池 16</text>
+<rect x="690" y="170" width="170" height="34" rx="6" fill="#F59E0B"/>
+<text x="775" y="192" text-anchor="middle" class="lbl">导出池 8</text>
+<text x="520" y="228" class="s">风控池满 → 只影响风控，其余三池不受影响</text>
+<text x="520" y="248" class="s">判据：说不出「B 慢为何影响 A」就不该分池</text>
+
+<text x="60" y="296" class="lt">三种原语的取舍</text>
+<rect x="60" y="310" width="270" height="112" rx="10" fill="#EFF6FF" stroke="#3B82F6" class="box"/>
+<text x="80" y="336" class="lt">线程池隔离</text>
+<text x="80" y="358" class="s">能超时中断已发起的调用</text>
+<text x="80" y="378" class="s">开销高（线程 + 队列 + 切换）</text>
+<text x="80" y="400" class="s">适用：同步阻塞 + 需要硬超时</text>
+<text x="80" y="416" class="tag">core == max，拒绝策略必须是快速失败</text>
+
+<rect x="345" y="310" width="270" height="112" rx="10" fill="#FFFBEB" stroke="#F59E0B" class="box"/>
+<text x="365" y="336" class="lt">信号量隔离</text>
+<text x="365" y="358" class="s">不能中断已发起的调用</text>
+<text x="365" y="378" class="s">开销低（一次 CAS）</text>
+<text x="365" y="400" class="s">适用：只限制并发、调用本身很快</text>
+<text x="365" y="416" class="tag">公平模式 + tryAcquire 必须带超时</text>
+
+<rect x="630" y="310" width="250" height="112" rx="10" fill="#F5F3FF" stroke="#8B5CF6" class="box"/>
+<text x="650" y="336" class="lt">连接池隔离</text>
+<text x="650" y="358" class="s">按下游各配一个池</text>
+<text x="650" y="378" class="s">获取超时是关键参数</text>
+<text x="650" y="400" class="s">适用：数据库、Redis 等</text>
+<text x="650" y="416" class="tag">获取超时必须小于上游读超时</text>
+
+<rect x="60" y="438" width="820" height="86" rx="10" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<text x="80" y="464" class="lt">隔离失效最常见的原因：还有一个共享资源没被隔离</text>
+<text x="80" y="488" class="s">公共队列 · Tomcat 工作线程池 · 三个下游共用的连接池 · 定时任务调度线程（Spring 默认只有 1 个）</text>
+<text x="80" y="510" class="s">同步日志 appender · 指标与追踪上报 · GC 与堆（内存是全局的，任何一个池的增长都会影响全部）</text>
+</svg>

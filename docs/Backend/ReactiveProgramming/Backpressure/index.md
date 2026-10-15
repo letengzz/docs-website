@@ -243,3 +243,19 @@ ps -o rss= -p <pid>
 - Reactor 官方文档 · `limitRate` 与预取：https://projectreactor.io/docs/core/release/reference/#_on_backpressure_and_ways_to_reshape_requests
 - Reactor `BufferOverflowStrategy` Javadoc：https://projectreactor.io/docs/core/release/api/reactor/util/backpressure/BufferOverflowStrategy.html
 - Reactor 官方 · 背压相关算子总览：https://projectreactor.io/docs/core/release/reference/#which-backpressure
+
+## 与高并发系统设计的分工（第 141 天补充）
+
+本页讲的是**有反向通道时**的背压：`request(n)` 的语义、预取与溢出策略、为什么 `onBackpressureDrop` 并不等于背压。
+
+[高并发系统设计 · 过载行为与有损服务](../../HighConcurrency/OverloadBehavior/index.md) 要处理的是**没有反向通道**的那一大类链路——HTTP 短连接、一次性的写接口、被网关转发的请求。这些链路上消费者无法告知生产者「慢一点」，于是只能**用别的手段近似出背压**：入口限流（在源头降速）、有界队列 + 快速失败（把溢出显式化）、降级分级（明确丢弃什么）。
+
+| | 本页（流式背压） | 高并发系统设计（近似背压） |
+| --- | --- | --- |
+| 通道 | 有一条显式的反向通道（`request(n)`） | 没有；只能用「入口限速 + 有界队列 + 拒绝」近似 |
+| 溢出行为 | 由算子决定（缓存 / 丢弃 / 报错） | 由防线顺序决定（谁先被拒） |
+| 可观测点 | 请求量、预取水位 | 队列深度、线程活跃数、被拒计数 |
+
+::: danger 一条最容易被误以为「已经做了」的事
+**「响应式链路用了 `limitRate`」推不出「入口有过载保护」**：`limitRate` 约束的是**一个订阅者向上游要多少**，它管不到「有多少个订阅者同时进来」。当外部到达率超过服务能力时，最先堆起来的并不是流内部，而是**连接建立与请求排队**这一层，而那一层没有任何背压：它是本页讲不到、只能靠限流与隔离解决的部分。
+:::

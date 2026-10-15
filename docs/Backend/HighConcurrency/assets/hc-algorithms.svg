@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>六种限流算法对照</title>
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13.5px;fill:#0F172A;font-weight:600}.s{font-size:12px;fill:#475569}.tag{font-size:11.5px;fill:#64748B}.box{stroke-width:1.5}</style>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">六种限流算法：先问「要不要允许突发」</text>
+<text x="460" y="56" text-anchor="middle" class="tag">同一个配额，不同算法对同一段流量的处置结果完全不同</text>
+
+<rect x="40" y="76" width="270" height="118" rx="10" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<text x="60" y="102" class="lt">固定窗口计数</text>
+<text x="60" y="124" class="s">状态：1 个整数</text>
+<text x="60" y="144" class="s">允许突发：是（在窗口边界）</text>
+<text x="60" y="164" class="s">缺陷：2 倍超限</text>
+<text x="60" y="184" class="s">2 秒内可放行 2 × limit</text>
+
+<rect x="325" y="76" width="270" height="118" rx="10" fill="#FFFBEB" stroke="#F59E0B" class="box"/>
+<text x="345" y="102" class="lt">滑动日志</text>
+<text x="345" y="124" class="s">状态：窗口内每个时间戳</text>
+<text x="345" y="144" class="s">允许突发：否</text>
+<text x="345" y="164" class="s">精度：精确</text>
+<text x="345" y="184" class="s">代价：内存 O(N)</text>
+
+<rect x="610" y="76" width="270" height="118" rx="10" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<text x="630" y="102" class="lt">滑动窗口计数</text>
+<text x="630" y="124" class="s">状态：2 个整数</text>
+<text x="630" y="144" class="s">允许突发：近似</text>
+<text x="630" y="164" class="s">误差：约 0.003%（4 亿请求实测）</text>
+<text x="630" y="184" class="s">推荐：API 默认首选</text>
+
+<rect x="40" y="214" width="270" height="118" rx="10" fill="#EFF6FF" stroke="#3B82F6" class="box"/>
+<text x="60" y="240" class="lt">令牌桶</text>
+<text x="60" y="262" class="s">状态：令牌数 + 上次填充时间</text>
+<text x="60" y="282" class="s">允许突发：是，上限 = 桶容量</text>
+<text x="60" y="302" class="s">对安静后突发的调用方友好</text>
+<text x="60" y="322" class="s">经验：capacity / rate 取 3~5 秒</text>
+
+<rect x="325" y="214" width="270" height="118" rx="10" fill="#F5F3FF" stroke="#8B5CF6" class="box"/>
+<text x="345" y="240" class="lt">漏桶（队列）</text>
+<text x="345" y="262" class="s">状态：队列 + 计数</text>
+<text x="345" y="282" class="s">允许突发：否，被延迟</text>
+<text x="345" y="302" class="s">nginx limit_req 即此实现</text>
+<text x="345" y="322" class="s">burst 是排队容量，不是额外放行</text>
+
+<rect x="610" y="214" width="270" height="118" rx="10" fill="#F8FAFC" stroke="#94A3B8" class="box"/>
+<text x="630" y="240" class="lt">漏桶 / GCRA</text>
+<text x="630" y="262" class="s">状态：1 个时间戳</text>
+<text x="630" y="282" class="s">允许突发：否</text>
+<text x="630" y="302" class="s">O(1) 空间，适合分布式</text>
+<text x="630" y="322" class="s">redis-cell 用它实现 CL.THROTTLE</text>
+
+<rect x="40" y="352" width="410" height="188" rx="10" fill="#F8FAFC" stroke="#CBD5E1" class="box"/>
+<text x="60" y="378" class="lt">单机限流 vs 分布式限流</text>
+<text x="60" y="402" class="s">① 各实例独立：总量 = 实例数 × 单实例配额</text>
+<text x="60" y="422" class="s">　适用「保护本实例资源」，不适用于对外承诺</text>
+<text x="60" y="446" class="s">② 集中式：精确，代价是每请求一次网络往返</text>
+<text x="60" y="466" class="s">　读写必须原子（Lua / 单命令）</text>
+<text x="60" y="490" class="s">③ 配额下发：本地消耗 + 周期补充</text>
+<text x="60" y="510" class="s">　误差 = 单次预取量 × 实例数；单 key 超 5 万 QPS 才值得</text>
+<text x="60" y="530" class="s">三者的选择由「限流在保护谁」决定</text>
+
+<rect x="470" y="352" width="410" height="188" rx="10" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<text x="490" y="378" class="lt">限流键（key）比算法更容易出错</text>
+<text x="490" y="402" class="s">判据：限流 key 的基数必须可控</text>
+<text x="490" y="422" class="s">回答不了「一天有多少个不同 key」就不能用</text>
+<text x="490" y="448" class="s">三个典型错误：</text>
+<text x="490" y="468" class="s">· 只按 IP 限流（NAT 出口会误伤整层公司）</text>
+<text x="490" y="488" class="s">· 不区分 HTTP 方法（读写成本差 100 倍）</text>
+<text x="490" y="508" class="s">· key 里带可变参数（key 空间爆炸，保护不到任何东西）</text>
+<text x="490" y="530" class="s">已登录按 uid、未登录按 IP 是常见正确组合</text>
+</svg>

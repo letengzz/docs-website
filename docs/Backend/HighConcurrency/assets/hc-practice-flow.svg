@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>报名写接口的过载治理链路</title>
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:13px;fill:#0F172A;font-weight:600}.s{font-size:11.5px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{stroke-width:1.5}.num{font-size:12px;fill:#FFFFFF;font-weight:700}</style>
+<rect width="920" height="560" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">实战：报名写接口的四道闸门与四条不变式</text>
+<text x="460" y="56" text-anchor="middle" class="tag">写接口过载时会「写错」——降级与拒绝都不能破坏数据的不变量</text>
+
+<rect x="40" y="76" width="840" height="40" rx="8" fill="#334155"/>
+<text x="460" y="102" text-anchor="middle" font-size="13" fill="#FFFFFF" font-weight="600">POST /api/v1/enroll　·　峰值 20000 QPS　·　名额 5000　·　必须同步返回</text>
+
+<rect x="40" y="136" width="196" height="150" rx="10" fill="#EFF6FF" stroke="#3B82F6" class="box"/>
+<circle cx="66" cy="160" r="13" fill="#3B82F6"/>
+<text x="66" y="164" text-anchor="middle" class="num">1</text>
+<text x="84" y="165" class="lt">接入层</text>
+<text x="60" y="192" class="s">LimitIP 5 r/s burst 2</text>
+<text x="60" y="212" class="s">LimitAll 15000 r/s burst 3000</text>
+<text x="60" y="232" class="s">limit_conn 10</text>
+<text x="60" y="252" class="s">Limit_req_status 429</text>
+<text x="60" y="274" class="tag">proxy_read_timeout 800ms</text>
+
+<rect x="248" y="136" width="196" height="150" rx="10" fill="#F5F3FF" stroke="#8B5CF6" class="box"/>
+<circle cx="274" cy="160" r="13" fill="#8B5CF6"/>
+<text x="274" y="164" text-anchor="middle" class="num">2</text>
+<text x="292" y="165" class="lt">应用层</text>
+<text x="268" y="192" class="s">幂等缓存（最前）</text>
+<text x="268" y="212" class="s">单用户信号量 20 ms</text>
+<text x="268" y="232" class="s">Redis 原子扣减</text>
+<text x="268" y="254" class="tag">唯一键 (activity, user)</text>
+
+<rect x="456" y="136" width="196" height="150" rx="10" fill="#FFFBEB" stroke="#F59E0B" class="box"/>
+<circle cx="482" cy="160" r="13" fill="#F59E0B"/>
+<text x="482" y="164" text-anchor="middle" class="num">3</text>
+<text x="500" y="165" class="lt">资源层</text>
+<text x="476" y="192" class="s">池大小 30</text>
+<text x="476" y="212" class="s">获取连接 300 ms</text>
+<text x="476" y="232" class="s">语句超时 500 ms</text>
+<text x="476" y="254" class="tag">校验链：300 &lt; 500 &lt; 800 &lt; 1000</text>
+
+<rect x="664" y="136" width="216" height="150" rx="10" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<circle cx="690" cy="160" r="13" fill="#F43F5E"/>
+<text x="690" y="164" text-anchor="middle" class="num">4</text>
+<text x="708" y="165" class="lt">依赖层</text>
+<text x="684" y="192" class="s">审计写入熔断</text>
+<text x="684" y="212" class="s">最小样本 20</text>
+<text x="684" y="232" class="s">openDuration 10 s</text>
+<text x="684" y="254" class="tag">半开放行 3</text>
+
+<text x="60" y="320" class="lt">四条不变式（过载时全部有被破坏的风险）</text>
+<rect x="60" y="334" width="400" height="90" rx="10" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<text x="80" y="358" class="s">INV-1 报名成功数 ≤ 活动总量配额（不超发）</text>
+<text x="80" y="380" class="s">INV-2 同一用户在同一活动下最多 1 条成功记录</text>
+<text x="80" y="402" class="s">INV-3 被拒绝的请求不消耗名额</text>
+<text x="80" y="418" class="tag">INV-4 报名成功必有对应的审计记录</text>
+
+<rect x="480" y="334" width="400" height="90" rx="10" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<text x="500" y="358" class="lt">最易被破坏的三处</text>
+<text x="500" y="380" class="s">INV-1：先查再插的写法在并发下必然超发</text>
+<text x="500" y="400" class="s">INV-3：失败路径漏了 release() → 名额泄漏</text>
+<text x="500" y="418" class="tag">INV-4：审计被当作「非核心」降级关闭</text>
+
+<rect x="60" y="440" width="820" height="104" rx="10" fill="#F8FAFC" stroke="#CBD5E1" class="box"/>
+<text x="80" y="466" class="lt">验收断言：HC-P1 ~ HC-P7（每条回答「约定 / 定错后果 / 怎么验证」）</text>
+<text x="80" y="490" class="s">P1 时间预算单调　P2 Redis 是唯一判定点　P3 失败路径归还名额　P4 幂等命中不扣减</text>
+<text x="80" y="510" class="s">P5 成功数 == 审计数　P6 拒绝语义可区分且都不消耗名额　P7 降级每一级都能恢复</text>
+<text x="80" y="532" class="tag">判据纪律：能降级的是「让用户看到什么」，不能降级的是「账要平」</text>
+</svg>

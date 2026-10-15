@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<title>过载现象分诊决策树</title>
+<style>.h{font-size:20px;fill:#0F172A;font-weight:700}.lt{font-size:12.5px;fill:#0F172A;font-weight:600}.s{font-size:11.5px;fill:#475569}.tag{font-size:11px;fill:#64748B}.box{stroke-width:1.5}.q{font-size:11.5px;fill:#334155}</style>
+<rect width="920" height="540" fill="#FFFFFF"/>
+<text x="460" y="34" text-anchor="middle" class="h">过载现象分诊：先看「损害有没有兑现」，再看「机制有没有生效」</text>
+<text x="460" y="56" text-anchor="middle" class="tag">大部分排障时间浪费在调参数上，真实原因往往是「某一层根本没生效」</text>
+
+<rect x="320" y="72" width="280" height="40" rx="8" fill="#334155"/>
+<text x="460" y="97" text-anchor="middle" font-size="12.5" fill="#FFFFFF" font-weight="600">看到的现象是什么？</text>
+
+<rect x="30" y="146" width="200" height="70" rx="8" fill="#EFF6FF" stroke="#3B82F6" class="box"/>
+<text x="130" y="170" text-anchor="middle" class="lt">吞吐上不去</text>
+<text x="130" y="192" text-anchor="middle" class="s">加机器也无效</text>
+<text x="130" y="208" text-anchor="middle" class="tag">→ 打印四层配额</text>
+
+<rect x="244" y="146" width="200" height="70" rx="8" fill="#FFFBEB" stroke="#F59E0B" class="box"/>
+<text x="344" y="170" text-anchor="middle" class="lt">限流好像没生效</text>
+<text x="344" y="192" text-anchor="middle" class="s">请求全放行</text>
+<text x="344" y="208" text-anchor="middle" class="tag">→ 查 dry_run 与状态变量</text>
+
+<rect x="458" y="146" width="200" height="70" rx="8" fill="#FFF1F2" stroke="#F43F5E" class="box"/>
+<text x="558" y="170" text-anchor="middle" class="lt">大量 503 而非 429</text>
+<text x="558" y="192" text-anchor="middle" class="s">客户端开始疯狂重试</text>
+<text x="558" y="208" text-anchor="middle" class="tag">→ 查 limit_req_status 与 Retry-After</text>
+
+<rect x="672" y="146" width="218" height="70" rx="8" fill="#F5F3FF" stroke="#8B5CF6" class="box"/>
+<text x="781" y="170" text-anchor="middle" class="lt">一个下游慢全站慢</text>
+<text x="781" y="192" text-anchor="middle" class="s">延迟上升错误率为 0</text>
+<text x="781" y="208" text-anchor="middle" class="tag">→ jstack 看线程名分布</text>
+
+<rect x="30" y="240" width="200" height="70" rx="8" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<text x="130" y="264" text-anchor="middle" class="lt">p50 快 p99 极慢</text>
+<text x="130" y="286" text-anchor="middle" class="s">平均值看不出问题</text>
+<text x="130" y="302" text-anchor="middle" class="tag">→ 同刻取全部分片算方差</text>
+
+<rect x="244" y="240" width="200" height="70" rx="8" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<text x="344" y="264" text-anchor="middle" class="lt">还有库存却显示已满</text>
+<text x="344" y="286" text-anchor="middle" class="s">名额对不上</text>
+<text x="344" y="302" text-anchor="middle" class="tag">→ 查扣减与归还是否成对</text>
+
+<rect x="458" y="240" width="200" height="70" rx="8" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<text x="558" y="264" text-anchor="middle" class="lt">熔断一直不触发</text>
+<text x="558" y="286" text-anchor="middle" class="s">下游坏了还在调</text>
+<text x="558" y="302" text-anchor="middle" class="tag">→ 查最小样本数是否过大</text>
+
+<rect x="672" y="240" width="218" height="70" rx="8" fill="#ECFDF5" stroke="#10B981" class="box"/>
+<text x="781" y="264" text-anchor="middle" class="lt">过载后一直没恢复</text>
+<text x="781" y="286" text-anchor="middle" class="s">系统长期带伤运行</text>
+<text x="781" y="302" text-anchor="middle" class="tag">→ 查降级级别是否停在 L2/L3</text>
+
+<rect x="30" y="336" width="860" height="76" rx="10" fill="#F8FAFC" stroke="#CBD5E1" class="box"/>
+<text x="50" y="362" class="lt">判读的两条顺序原则</text>
+<text x="50" y="384" class="s">① 先确认「损害有没有兑现」：错误率 / 一致性 / 数据对账先看，再看性能指标——损害一旦兑现，任何参数调整都只是掩盖</text>
+<text x="50" y="404" class="s">② 再确认「机制有没有生效」：先证明那一层真的在拒绝（有非 200 的响应），再去调阈值</text>
+
+<rect x="30" y="428" width="860" height="96" rx="10" fill="#FFFBEB" stroke="#F59E0B" class="box"/>
+<text x="50" y="454" class="lt">三条最短路径</text>
+<text x="50" y="478" class="s">只想建立判断力 → 总览 + 过载行为　·　正在排障 → 本页分诊表 → 对应手段页　·　要动手改造 → 分层防御 → 限流 → 排队 → 热点 → 隔离 → 实战</text>
+<text x="50" y="502" class="s">上线前 → 20 项自查清单；其中「容量类指标告警早于结果类指标」与「降级必须有下行」是最常被漏掉的两条</text>
+<text x="50" y="519" class="tag">判据族 HC- / LD- / RL- / QS- / HS- / OB- / IS- / HC-P，逐页独立、互不重叠</text>
+</svg>

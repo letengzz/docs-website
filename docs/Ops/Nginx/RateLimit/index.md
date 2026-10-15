@@ -112,3 +112,19 @@ location @rate_limited {
 - limit_req 模块：https://nginx.org/en/docs/http/ngx_http_limit_req_module.html
 - limit_conn 模块：https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html
 - 限流与削峰指南：https://www.nginx.com/blog/rate-limiting-nginx/
+
+## 与高并发系统设计的分工（第 141 天补充）
+
+本页是**一份配置文件怎么写**：`limit_req_zone` 的 `rate` / `burst` / `nodelay` 取值、`limit_conn` 的并发上限、按接口精细化的 key 设计、白名单与拒绝码。它的产物是能直接贴进 `nginx.conf` 的片段。
+
+[高并发系统设计 · 限流：算法与分布式实现](../../../Backend/HighConcurrency/RateLimit/index.md) 回答的是**这一行数字从哪来**：六种算法的取舍（固定窗口的 2 倍边界、滑动计数的 `prev` 窗口、漏桶与令牌桶的差别）、单机限流与集中式限流的适用边界、限流键该按什么选。两者的分工写死如下：
+
+| 问题 | 本页（nginx 配置） | 高并发系统设计（算法与口径） |
+| --- | --- | --- |
+| 回答 | 「这一行怎么写」 | 「为什么是 200 r/s、为什么选漏桶」 |
+| 典型坑 | `burst` 当成「额外放行数」（实际是**排队容量**） | 用固定窗口而不知其 2 倍边界；集中式限流不做原子操作 |
+| 拒绝形态 | 默认 `503`，可用 `limit_req_status 429` | 写死一条判据：**限流拒绝必须是 `429` + `Retry-After`**，`503` 会被客户端当成服务端故障而重试 |
+
+::: danger 一条会影响容量结论的配置细节
+**加了 `burst` 不加 `nodelay`，限流就不成立**：超出的请求会被**延迟处理**（进漏桶排队）而不是被拒绝，此时入口的「保护」变成了「把压力推后」——上游看到的 QPS 没降、延迟却在涨。要快速失败就写 `nodelay`，要排队就得承认它同时是**排队延迟的来源**。
+:::

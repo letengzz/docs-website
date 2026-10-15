@@ -580,3 +580,21 @@ export const Ledger = [
     ],
   },
 ];
+
+export const HighConcurrency = [
+  {
+    text: "高并发系统设计",
+    link: "/docs/Backend/HighConcurrency/index.md",
+    items: [
+      { text: "总览：高并发的四条边界", link: "/docs/Backend/HighConcurrency/Overview/index.md" },
+      { text: "分层防御与预算分配", link: "/docs/Backend/HighConcurrency/LayeredDefense/index.md" },
+      { text: "限流：算法与分布式实现", link: "/docs/Backend/HighConcurrency/RateLimit/index.md" },
+      { text: "排队与削峰", link: "/docs/Backend/HighConcurrency/QueueShaping/index.md" },
+      { text: "热点识别与拆分", link: "/docs/Backend/HighConcurrency/HotspotSplit/index.md" },
+      { text: "过载行为与有损服务", link: "/docs/Backend/HighConcurrency/OverloadBehavior/index.md" },
+      { text: "资源隔离与并发控制", link: "/docs/Backend/HighConcurrency/Isolation/index.md" },
+      { text: "实战：写接口的过载治理", link: "/docs/Backend/HighConcurrency/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/HighConcurrency/FAQ/index.md" },
+    ],
+  },
+];

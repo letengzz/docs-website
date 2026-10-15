@@ -2,6 +2,8 @@
 
 <p style="text-align:center;"><img src="./assets/linux-logo.png" alt="Linux" style="zoom:75%;" /></p>
 
+Linux 是**开源的类 Unix 操作系统**，由内核与围绕内核的发行版组成，是服务器、云计算、容器与嵌入式领域的事实标准。本专题按「基础 → 进阶 → 运维」三层组织，从命令与权限讲起，一直到服务管理、网络与排障——它是本库运维类内容的地基。
+
 ## 基础
 
 - [Linux 概述](Overview/index.md)

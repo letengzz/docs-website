@@ -20,3 +20,4 @@
 - [工作流与规则引擎](WorkflowEngine/index.md)
 - [分布式缓存深入](DistributedCache/index.md)
 - [响应式编程](ReactiveProgramming/index.md)
+- [高并发系统设计](HighConcurrency/index.md)
