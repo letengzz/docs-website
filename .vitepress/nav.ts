@@ -40,7 +40,8 @@ export const nav = [
       { text: "工作流与规则引擎", link: "/docs/Backend/WorkflowEngine" },
       { text: "分布式缓存深入", link: "/docs/Backend/DistributedCache" },
       { text: "响应式编程", link: "/docs/Backend/ReactiveProgramming" },
-      { text: "高并发系统设计", link: "/docs/Backend/HighConcurrency" },]
+      { text: "高并发系统设计", link: "/docs/Backend/HighConcurrency" },
+      { text: "遗留系统改造", link: "/docs/Backend/LegacyModernization" },]
   },
   {
     text: "数据库",

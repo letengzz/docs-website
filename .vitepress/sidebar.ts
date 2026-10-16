@@ -1,5 +1,5 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
-import { Auth, DDD, DesignPatterns, DistributedCache, DotNet, Ecommerce, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, Java, Ledger, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, ReactiveProgramming, SpringCloud, WorkflowEngine } from "./backend";
+import { Auth, DDD, DesignPatterns, DistributedCache, DotNet, Ecommerce, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, Java, Ledger, LegacyModernization, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, ReactiveProgramming, SpringCloud, WorkflowEngine } from "./backend";
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_Multimodal, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontOthers, FrontPWA, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
@@ -73,7 +73,7 @@ export const sidebar = {
     {
       text: "后端",
       collapsed: true,
-      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...GatewayDeep, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...Ledger, ...DDD, ...WorkflowEngine, ...DistributedCache, ...ReactiveProgramming, ...HighConcurrency],
+      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...GatewayDeep, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...Ledger, ...DDD, ...WorkflowEngine, ...DistributedCache, ...ReactiveProgramming, ...HighConcurrency, ...LegacyModernization],
     },
   ],
   "/docs/DB": [
@@ -165,6 +165,7 @@ export const sidebar = {
   "/docs/Backend/DistributedCache": DistributedCache,
   "/docs/Backend/ReactiveProgramming": ReactiveProgramming,
   "/docs/Backend/HighConcurrency": HighConcurrency,
+  "/docs/Backend/LegacyModernization": LegacyModernization,
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/Relational": Relational,
   "/docs/DB/Relational/SQLOptimization": SQLOptimization,

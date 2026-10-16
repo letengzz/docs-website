@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700" role="img" aria-label="lm-coexistence.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="700" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">共存期：切换是几天，共存是几百天</text>
+  <rect x="32" y="92" width="836" height="96" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">把共存期当成「过渡」，会导出一个错误的默认动作：什么都不做，等它自然结束</text>
+  <text x="48" y="140" font-family="system-ui, sans-serif" font-size="10" fill="#334155">实际发生的是：旧系统仍在接收流量、仍出安全告警、仍需备份与恢复演练；业务仍会提需求；迁移排期被推迟数月</text>
+  <text x="48" y="152" font-family="system-ui, sans-serif" font-size="10" fill="#334155">；成本是 1.3～2 倍。</text>
+  <text x="48" y="164" font-family="system-ui, sans-serif" font-size="10" fill="#334155">所以第一件事是把它写成一个明确的运营状态：责任人、值班方式、变更规则、成本口径、以及一个带日期的退出条</text>
+  <text x="48" y="176" font-family="system-ui, sans-serif" font-size="10" fill="#334155">件。</text>
+  <rect x="32" y="202" width="836" height="56" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="228" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="start">变更四分类</text>
+  <text x="190" y="228" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">缺陷修复（必须允许，新系统侧要同步）· 合规补丁（优先于迁移）· 小改动（不改对外行为）· 新功能（绝不做在旧系统上）</text>
+  <rect x="32" y="264" width="836" height="56" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="290" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="start">单一权威方向</text>
+  <text x="190" y="290" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">同一个业务动作只能有一个系统接受写入——这条规则的作用是「责任」，不是性能</text>
+  <rect x="32" y="326" width="836" height="56" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="352" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start">双份运维清单</text>
+  <text x="190" y="352" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">监控 / 备份与恢复演练 / 值班 / 补丁与证书 / 依赖升级 / 容量配额 / 文档，七项成对存在</text>
+  <rect x="32" y="388" width="836" height="56" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="414" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3" text-anchor="start">值班写名字</text>
+  <text x="190" y="414" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">给旧系统指定责任人并写进值班表；职责是让它「可以被安全地放着」</text>
+  <rect x="32" y="450" width="836" height="56" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="476" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#1e3a8a" text-anchor="start">知识即刻记录</text>
+  <text x="190" y="476" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">数据字典 · 调用方清单 · 部署与回滚 · 不可动清单（人的流动性在这个尺度上必然发生）</text>
+  <rect x="32" y="512" width="836" height="56" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="538" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="start">退役可判定</text>
+  <text x="190" y="538" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">零调用（覆盖完整业务周期）· 零写入（含定时与补数通道）· 数据已归档且验证可读</text>
+  <rect x="32" y="586" width="404" height="92" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="610" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">六个日常数字</text>
+  <text x="48" y="634" font-family="system-ui, sans-serif" font-size="11" fill="#334155">进度 · 流量占比 · 差异条数</text>
+  <text x="48" y="650" font-family="system-ui, sans-serif" font-size="11" fill="#334155">旁路调用数 · 补丁到期天数 · 实际成本</text>
+  <rect x="452" y="586" width="416" height="92" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="468" y="610" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">它们的共同点</text>
+  <text x="468" y="634" font-family="system-ui, sans-serif" font-size="11" fill="#334155">失效都是静默的——结构完备、监控无信号、</text>
+  <text x="468" y="650" font-family="system-ui, sans-serif" font-size="11" fill="#334155">验收清单里没有条目。</text>
+</svg>

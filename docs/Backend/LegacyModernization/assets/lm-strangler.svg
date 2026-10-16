@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img" aria-label="lm-strangler.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="600" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">四个阶段是四类状态，不是四次发布</text>
+  <rect x="32" y="92" width="836" height="84" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="122" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1e3a8a" text-anchor="start">① 引入外观</text>
+  <text x="200" y="122" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#0f172a" text-anchor="start">请求全部经过拦截点，但一条都没改道</text>
+  <text x="200" y="148" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">退出条件：能证明「改一条路由配置真的生效」</text>
+  <rect x="756" y="114" width="96" height="40" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="804" y="139" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#64748b" text-anchor="middle">可长期重叠</text>
+  <rect x="32" y="184" width="836" height="84" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="214" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f766e" text-anchor="start">② 增量分解</text>
+  <text x="200" y="214" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#0f172a" text-anchor="start">功能一块一块搬走，新旧同时承担生产流量</text>
+  <text x="200" y="240" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">退出条件：旧系统里没有任何调用方（不是「没有流量」）</text>
+  <rect x="756" y="206" width="96" height="40" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="804" y="231" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#64748b" text-anchor="middle">可长期重叠</text>
+  <rect x="32" y="276" width="836" height="84" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="306" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#b45309" text-anchor="start">③ 停用遗留</text>
+  <text x="200" y="306" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#0f172a" text-anchor="start">旧功能被置为只读或关闭入口，但仍可启动</text>
+  <text x="200" y="332" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">退出条件：连续 N 天零调用，且可随时只读挂起</text>
+  <rect x="756" y="298" width="96" height="40" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="804" y="323" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#64748b" text-anchor="middle">可长期重叠</text>
+  <rect x="32" y="368" width="836" height="84" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="398" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#b91c1c" text-anchor="start">④ 移除外观</text>
+  <text x="200" y="398" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#0f172a" text-anchor="start">拦截层的分支被删掉，只剩一条直路</text>
+  <text x="200" y="424" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">退出条件：配置里不再有任何指向旧系统的路由条目</text>
+  <rect x="756" y="390" width="96" height="40" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="804" y="415" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#64748b" text-anchor="middle">可长期重叠</text>
+  <rect x="32" y="464" width="404" height="118" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="488" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">回退时间的四段构成</text>
+  <text x="48" y="512" font-family="system-ui, sans-serif" font-size="12" fill="#334155">① 判断：从看到异常到决定回退</text>
+  <text x="48" y="526" font-family="system-ui, sans-serif" font-size="12" fill="#334155">② 生效：改配置并让所有节点加载</text>
+  <text x="48" y="540" font-family="system-ui, sans-serif" font-size="12" fill="#334155">③ 数据：新系统这段时间写过的怎么办</text>
+  <text x="48" y="554" font-family="system-ui, sans-serif" font-size="12" fill="#334155">④ 验证：确认流量真的回到旧系统</text>
+  <text x="48" y="568" font-family="system-ui, sans-serif" font-size="12" fill="#334155">最容易漏算的是第 ③ 段。</text>
+  <rect x="452" y="464" width="416" height="118" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="468" y="488" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">五个接缝候选</text>
+  <text x="468" y="512" font-family="system-ui, sans-serif" font-size="12" fill="#334155">边缘网关 / 反向代理 · 门面服务 · 视图组合</text>
+  <text x="468" y="526" font-family="system-ui, sans-serif" font-size="12" fill="#334155">消息拦截（消费侧切换）· 数据库视图 / 别名</text>
+  <text x="468" y="540" font-family="system-ui, sans-serif" font-size="12" fill="#334155">三条判别：改一条配置能否改变归属 /</text>
+  <text x="468" y="554" font-family="system-ui, sans-serif" font-size="12" fill="#334155">改回来要不要动数据 / 有没有第二条路绕过它</text>
+  <text x="468" y="568" font-family="system-ui, sans-serif" font-size="12" fill="#334155">。</text>
+</svg>

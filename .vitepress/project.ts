@@ -281,6 +281,10 @@ export const CompleteProject = [
           { text: "交付件收敛：把待办回填成配置", link: "/project/Complete/MonitoringDashboard/ArtifactConvergence/index.md" },
           { text: "交付文档三件套：三份文档各只回答一个问题", link: "/project/Complete/MonitoringDashboard/DeliveryDocs/index.md" },
           { text: "交付演练：把三份文档原样用一次", link: "/project/Complete/MonitoringDashboard/DeliveryDrill/index.md" },
+          { text: "交付包：把台账上的每一行变成「存在的东西」", link: "/project/Complete/MonitoringDashboard/DeliveryPackage/index.md" },
+          { text: "└ 从零复现指南", link: "/project/Complete/MonitoringDashboard/DeliveryPackage/Reproduce/index.md" },
+          { text: "└ 上线验收清单", link: "/project/Complete/MonitoringDashboard/DeliveryPackage/Acceptance/index.md" },
+          { text: "└ 故障应对索引", link: "/project/Complete/MonitoringDashboard/DeliveryPackage/RunbookIndex/index.md" },
         ],
       },
       {

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="reproduce-steps.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">从零复现：0 → 5 六步，每一步之后都要停下来核对</text>
+  <text x="32" y="66" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">对不上就停在第几步，不要往下走——后面每一步都依赖前面那一步是真的通的</text>
+  <rect x="32" y="100" width="270" height="196" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="124" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">0 · 前置检查</text>
+  <text x="48" y="148" font-family="system-ui, sans-serif" font-size="11" fill="#334155">bash scripts/preflight.sh</text>
+  <text x="48" y="164" font-family="system-ui, sans-serif" font-size="11" fill="#334155">退出码 0 = 齐备；1 = 未通过；2 = 无法判定</text>
+  <text x="48" y="180" font-family="system-ui, sans-serif" font-size="11" fill="#334155">最容易犯的错：把 1 当成警告继续走</text>
+  <rect x="315" y="100" width="270" height="196" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="331" y="124" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">1 · 起栈</text>
+  <text x="331" y="148" font-family="system-ui, sans-serif" font-size="11" fill="#334155">bash bin/one-click-up.sh</text>
+  <text x="331" y="164" font-family="system-ui, sans-serif" font-size="11" fill="#334155">三级就绪信号依次出现，末行退出码 0</text>
+  <text x="331" y="180" font-family="system-ui, sans-serif" font-size="11" fill="#334155">此时大盘还不一定有数据</text>
+  <rect x="598" y="100" width="270" height="196" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="614" y="124" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">2 · 产生流量</text>
+  <text x="614" y="148" font-family="system-ui, sans-serif" font-size="11" fill="#334155">for i in $(seq 1 50); do curl ... work; d</text>
+  <text x="614" y="164" font-family="system-ui, sans-serif" font-size="11" fill="#334155">one</text>
+  <text x="614" y="180" font-family="system-ui, sans-serif" font-size="11" fill="#334155">50 次请求全部返回 2xx</text>
+  <text x="614" y="196" font-family="system-ui, sans-serif" font-size="11" fill="#334155">省了这步，第 3 步会看到空面板</text>
+  <rect x="32" y="320" width="270" height="196" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="344" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">3 · 看三张大盘</text>
+  <text x="48" y="368" font-family="system-ui, sans-serif" font-size="11" fill="#334155">打开 http://localhost:3000</text>
+  <text x="48" y="384" font-family="system-ui, sans-serif" font-size="11" fill="#334155">请求总览 / 错误率 / 资源水位各一条曲线</text>
+  <text x="48" y="400" font-family="system-ui, sans-serif" font-size="11" fill="#334155">「空面板」与「值为 0」是两件事</text>
+  <rect x="315" y="320" width="270" height="196" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="331" y="344" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">4 · 核对告警链路</text>
+  <text x="331" y="368" font-family="system-ui, sans-serif" font-size="11" fill="#334155">curl 9093/api/v2/status</text>
+  <text x="331" y="384" font-family="system-ui, sans-serif" font-size="11" fill="#334155">curl 9090/api/v1/rules → 条数 = 6</text>
+  <text x="331" y="400" font-family="system-ui, sans-serif" font-size="11" fill="#334155">交付验收时不要制造一次告警</text>
+  <rect x="598" y="320" width="270" height="196" rx="12" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="614" y="344" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">5 · 收尾自查</text>
+  <text x="614" y="368" font-family="system-ui, sans-serif" font-size="11" fill="#334155">bash scripts/check-panels.sh</text>
+  <text x="614" y="384" font-family="system-ui, sans-serif" font-size="11" fill="#334155">docker compose ps（无一行 Recreated）</text>
+  <text x="614" y="400" font-family="system-ui, sans-serif" font-size="11" fill="#334155">三张大盘各一行结论才算过</text>
+  <rect x="32" y="540" width="836" height="58" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="450.0" y="574" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">停点是判据，不是礼貌：前一步没有真通，后面的「成功」只能是脏机器上的成功</text>
+</svg>

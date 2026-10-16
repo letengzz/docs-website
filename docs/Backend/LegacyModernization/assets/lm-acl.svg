@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="lm-acl.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">防腐层：一层膜，两个方向——它挡住什么，什么会穿过它</text>
+  <rect x="32" y="96" width="240" height="62" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="152.0" y="131" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">旧系统（上游语境）</text>
+  <rect x="288" y="96" width="240" height="62" rx="10" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="408.0" y="131" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e3a8a" text-anchor="middle">FACADE + ADAPTER</text>
+  <rect x="544" y="96" width="324" height="62" rx="10" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="706.0" y="131" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f766e" text-anchor="middle">新系统领域服务（下游语言）</text>
+  <path d="M 272 127 L 286 127" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <path d="M 528 127 L 542 127" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <rect x="32" y="176" width="240" height="168" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="200" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">会被挡住的东西</text>
+  <text x="48" y="224" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">字段名与表结构</text>
+  <text x="48" y="238.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">状态码与枚举取值</text>
+  <text x="48" y="253.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">空值的多种表示</text>
+  <text x="48" y="267.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">（空串 / NULL / 0 / 缺字段</text>
+  <text x="48" y="282.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">）</text>
+  <text x="48" y="296.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">时间与时区</text>
+  <text x="48" y="311.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">金额的含税口径</text>
+  <text x="48" y="325.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">标识符生成规则</text>
+  <rect x="288" y="176" width="240" height="168" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="304" y="200" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c">会穿过它的东西</text>
+  <text x="304" y="224" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">业务规则的「解释」</text>
+  <text x="304" y="240.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">——一旦在翻译层里定规则，</text>
+  <text x="304" y="257.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">它就变成了一个没有</text>
+  <text x="304" y="273.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">领域模型的领域层。</text>
+  <text x="304" y="290.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155"></text>
+  <text x="304" y="306.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">处置：翻译层只搬语义，</text>
+  <text x="304" y="323.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">定语义留在领域层。</text>
+  <rect x="544" y="176" width="324" height="168" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="560" y="200" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3">改造场景给 ACL 加的三个约束</text>
+  <text x="560" y="224" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">① 它自己也是共存期的一个系统：</text>
+  <text x="560" y="237.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">   要部署、监控、回退，且有明确删</text>
+  <text x="560" y="251.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">除条件</text>
+  <text x="560" y="264.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">② 它必须只有一个入口：</text>
+  <text x="560" y="278.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">   凭据只发给它；旁路调用是一条可</text>
+  <text x="560" y="291.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">监控指标</text>
+  <text x="560" y="305.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">③ 翻译规则应当是数据而不是代码：</text>
+  <text x="560" y="318.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">   映射表版本化在仓库，改它不需要</text>
+  <text x="560" y="332.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">发版</text>
+  <rect x="32" y="360" width="548" height="118" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="384" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a">五处高频翻译位置（每一处都要有往返测试）</text>
+  <text x="48" y="408" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">标识符：自增 ID ↔ UUID —— 旧 ID 是否必须在新增里保留</text>
+  <text x="48" y="422.5" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">空值语义：空串 / 'NULL' 字面量 / 0 / 缺字段 —— 「未填写」与「已删除」是不是同一个表示</text>
+  <text x="48" y="437.0" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">状态机：一个字段承载多维 → 拆成正交字段 —— 旧系统里不存在的组合怎么表达</text>
+  <text x="48" y="451.5" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">时间：本地时间字符串、无时区、秒级 → UTC 毫秒 —— 截断精度不同会让「同一时刻」判定失败</text>
+  <text x="48" y="466.0" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">金额：浮点 / 分为单位 / 含税未标注 → 定点数 + 币种 + 含税标记</text>
+  <rect x="600" y="360" width="268" height="126" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="616" y="384" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">什么时候该删掉它</text>
+  <text x="616" y="408" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">先看「它里面剩下了什么」</text>
+  <text x="616" y="424.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">剩翻译 → 该删掉</text>
+  <text x="616" y="441.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">剩业务规则 → 放错了位置</text>
+  <text x="616" y="457.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">剩校验鉴权 → 改名归入边界层</text>
+  <rect x="32" y="502" width="836" height="84" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="526" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">差异必须分三类，不能只有「一样 / 不一样」</text>
+  <text x="48" y="550" font-family="system-ui, sans-serif" font-size="10" fill="#334155">一致：符合预期。 有意不同：新旧语义本就应当不同，逐条登记并写清「取哪边为准」。 非预期不同：缺陷。</text>
+  <text x="48" y="565" font-family="system-ui, sans-serif" font-size="10" fill="#334155">把后两类合并成「不一样」，结果是两类都要人工判断——而人工判断很快会退化成「不管它」。</text>
+</svg>

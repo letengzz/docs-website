@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640" role="img" aria-label="lm-faq-triage.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="640" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">分诊：先问「卡在哪一类问题上」，再问「先跑什么」</text>
+  <rect x="32" y="92" width="836" height="62" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="119" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c" text-anchor="start">找不出接缝</text>
+  <text x="200" y="119" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">接缝选不出 / 网关与门面之间摇摆</text>
+  <text x="48" y="140" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">→ 绞杀者 §2：三条判别标准逐条打分；有第二条旁路就还没选完</text>
+  <rect x="32" y="160" width="836" height="62" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="187" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309" text-anchor="start">说不出回退时间</text>
+  <text x="200" y="187" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">问「退回去要多久」答不上来</text>
+  <text x="48" y="208" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">→ 总览 §2/§4：把回退拆成四段逐段给分钟数，给不出的那一段就是盲区</text>
+  <rect x="32" y="228" width="836" height="62" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="255" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e3a8a" text-anchor="start">字段口径打架</text>
+  <text x="200" y="255" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">有人问「这个字段以哪边为准」</text>
+  <text x="48" y="276" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">→ 数据迁移 §2：先查「哪边是权威」有没有写下来——先写它，而不是先修数据</text>
+  <rect x="32" y="296" width="836" height="62" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="323" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e" text-anchor="start">旧语义漏进新代码</text>
+  <text x="200" y="323" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">新代码里出现旧字段名或状态字符串</text>
+  <text x="48" y="344" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">→ 防腐层 §2：在领域目录里搜旧字段名，命中数应当是 0</text>
+  <rect x="32" y="364" width="836" height="62" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="391" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3" text-anchor="start">行数对得上但数字不对</text>
+  <text x="200" y="391" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">业务方说数字不对，校验却通过</text>
+  <text x="48" y="412" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">→ 数据迁移 §5：上 L3 业务口径校验；先定义口径，否则会报假差异</text>
+  <rect x="32" y="432" width="836" height="62" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="459" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309" text-anchor="start">切了但没人知道切了多少</text>
+  <text x="200" y="459" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">新系统到底收了多少流量说不清</text>
+  <text x="48" y="480" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">→ 灰度 §3：同时看三个数（输入量 / 失败分布 / 旧系统负载变化）</text>
+  <rect x="32" y="500" width="836" height="62" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="527" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c" text-anchor="start">旧系统不敢下线</text>
+  <text x="200" y="527" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">「没人用了」但没人敢关</text>
+  <text x="48" y="548" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">→ 共存期 §2/§6：查零调用是否覆盖完整业务周期；查定时与补数通道</text>
+  <rect x="32" y="568" width="836" height="62" rx="12" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="48" y="595" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">项目停摆</text>
+  <text x="200" y="595" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start">三个月没人推进</text>
+  <text x="48" y="616" font-family="system-ui, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start">→ 总览 §4 第 5 条：检查「有没有人能持续投入」——一次性投入后抽走比不做更糟</text>
+</svg>

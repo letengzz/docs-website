@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="lm-traffic-cutover.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">灰度切换：每一步都是一次独立决策，不是一段时间</text>
+  <rect x="32" y="92" width="836" height="58" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="118" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#1e3a8a" text-anchor="start">0 冒烟</text>
+  <text x="150" y="118" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="start">内部账号 / 白名单</text>
+  <text x="320" y="118" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">观察窗口：1 小时</text>
+  <text x="560" y="118" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">功能是否真的可用（不是性能）</text>
+  <rect x="32" y="158" width="836" height="58" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="184" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="start">1 首批</text>
+  <text x="150" y="184" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="start">1%（粘性维度）</text>
+  <text x="320" y="184" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">观察窗口：一个完整业务周期</text>
+  <text x="560" y="184" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">错误率、耗时、数据对账</text>
+  <rect x="32" y="224" width="836" height="58" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="48" y="250" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="start">2 扩大</text>
+  <text x="150" y="250" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="start">5%</text>
+  <text x="320" y="250" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">观察窗口：同上，可缩短</text>
+  <text x="560" y="250" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">资源水位、依赖侧压力</text>
+  <rect x="32" y="290" width="836" height="58" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="316" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start">3 过半</text>
+  <text x="150" y="316" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="start">20% → 50%</text>
+  <text x="320" y="316" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">观察窗口：同上</text>
+  <text x="560" y="316" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">与旧系统的资源争抢</text>
+  <rect x="32" y="356" width="836" height="58" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="382" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start">4 主体</text>
+  <text x="150" y="382" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="start">80%</text>
+  <text x="320" y="382" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">观察窗口：同上</text>
+  <text x="560" y="382" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">旧系统降载后暴露的新问题</text>
+  <rect x="32" y="422" width="836" height="58" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="448" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="start">5 收口</text>
+  <text x="150" y="448" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="start">100%</text>
+  <text x="320" y="448" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">观察窗口：—</text>
+  <text x="560" y="448" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">旧系统零调用满 N 天</text>
+  <rect x="32" y="490" width="268" height="118" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="514" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c">观察窗口由「最慢的信号」决定</text>
+  <text x="48" y="538" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">实时错误率 → 秒级</text>
+  <text x="48" y="552.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">异步积压与重试 → 分钟级</text>
+  <text x="48" y="567.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">日终批处理 → 1 天</text>
+  <text x="48" y="581.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">对账 / 结算 → 1 天到 1 个月</text>
+  <text x="48" y="596.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">涉及月结时，窗口必须跨过月结。</text>
+  <rect x="316" y="490" width="268" height="118" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="332" y="514" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">窗口里要有三个数</text>
+  <text x="332" y="538" font-family="system-ui, sans-serif" font-size="9" fill="#334155">① 新系统的输入量</text>
+  <text x="332" y="549" font-family="system-ui, sans-serif" font-size="9" fill="#334155">   （防止「以为切了 5%，实际是 0」）</text>
+  <text x="332" y="560" font-family="system-ui, sans-serif" font-size="9" fill="#334155">② 新系统的失败类型分布</text>
+  <text x="332" y="571" font-family="system-ui, sans-serif" font-size="9" fill="#334155">③ 旧系统的负载变化</text>
+  <text x="332" y="582" font-family="system-ui, sans-serif" font-size="9" fill="#334155">只写切流动作、不验证效果，</text>
+  <text x="332" y="593" font-family="system-ui, sans-serif" font-size="9" fill="#334155">是共存期最常见的一类假状态。</text>
+  <rect x="600" y="490" width="268" height="118" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="616" y="514" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3">并行运行：切流前最便宜的验证</text>
+  <text x="616" y="538" font-family="system-ui, sans-serif" font-size="9" fill="#334155">镜像流量 → 验证性能与异常</text>
+  <text x="616" y="549" font-family="system-ui, sans-serif" font-size="9" fill="#334155">库级并行 → 验证行为等价</text>
+  <text x="616" y="560" font-family="system-ui, sans-serif" font-size="9" fill="#334155">  （Scientist 2016：调用方</text>
+  <text x="616" y="571" font-family="system-ui, sans-serif" font-size="9" fill="#334155">   永远只拿到旧实现的结果）</text>
+  <text x="616" y="582" font-family="system-ui, sans-serif" font-size="9" fill="#334155">服务级并行 → Diffy 2015</text>
+  <text x="616" y="593" font-family="system-ui, sans-serif" font-size="9" fill="#334155">副作用必须被拦住，且要有断言。</text>
+</svg>

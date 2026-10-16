@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="runbook-index.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="560" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">故障应对索引：第一层分类是「现象」，第二层才是「原因」</text>
+  <text x="32" y="66" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">凌晨被叫起来的人手里只有一个现象；按组件组织的索引要求他先猜对组件——这正是他最做不到的事</text>
+  <rect x="32" y="96" width="418" height="168" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="120" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">不采用：按「组件」组织</text>
+  <text x="48" y="144" font-family="system-ui, sans-serif" font-size="12" fill="#334155">「Prometheus 问题」「Alertmanager 问题」</text>
+  <text x="48" y="161" font-family="system-ui, sans-serif" font-size="12" fill="#334155">读者要先猜对组件，才找得到条目</text>
+  <text x="48" y="178" font-family="system-ui, sans-serif" font-size="12" fill="#334155">猜组件需要经验，而套索引不需要</text>
+  <rect x="450" y="96" width="418" height="168" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="466" y="120" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f766e">本索引：按「现象」组织</text>
+  <text x="466" y="144" font-family="system-ui, sans-serif" font-size="12" fill="#334155">第一列 现象：读者手上已有的那句话</text>
+  <text x="466" y="161" font-family="system-ui, sans-serif" font-size="12" fill="#334155">第二列 先跑什么：一条命令</text>
+  <text x="466" y="178" font-family="system-ui, sans-serif" font-size="12" fill="#334155">第三列 结论怎么读：一个读数 + 一个分支</text>
+  <text x="466" y="195" font-family="system-ui, sans-serif" font-size="12" fill="#334155">第四列 找谁：一个角色</text>
+  <rect x="32" y="288" width="250" height="58" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="157.0" y="322" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#b45309" text-anchor="middle">① 现象</text>
+  <path d="M 288 317 L 317 317" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#a3)"/>
+  <rect x="325" y="288" width="250" height="58" rx="10" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="450.0" y="322" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#1e3a8a" text-anchor="middle">② 一条命令</text>
+  <path d="M 581 317 L 610 317" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <rect x="618" y="288" width="250" height="58" rx="10" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="743.0" y="322" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#3730a3" text-anchor="middle">③ 一个角色</text>
+  <rect x="32" y="372" width="418" height="150" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="396" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">索引里不许出现的东西</text>
+  <text x="48" y="420" font-family="system-ui, sans-serif" font-size="11" fill="#334155">「检查系统是否正常」——不是可执行命令</text>
+  <text x="48" y="436" font-family="system-ui, sans-serif" font-size="11" fill="#334155">「根据经验判断」——现象必须映射到命令 + 读数</text>
+  <text x="48" y="452" font-family="system-ui, sans-serif" font-size="11" fill="#334155">「联系相关负责人」——要找的是一个角色</text>
+  <text x="48" y="468" font-family="system-ui, sans-serif" font-size="11" fill="#334155">只写组件名的行——第一列必须是现象</text>
+  <rect x="450" y="372" width="418" height="150" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="466" y="396" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">升级路径与边界</text>
+  <text x="466" y="420" font-family="system-ui, sans-serif" font-size="11" fill="#334155">① 值班 SRE → ② 指标 / 规则负责人</text>
+  <text x="466" y="436" font-family="system-ui, sans-serif" font-size="11" fill="#334155">→ ③ 应用负责人 → ④ 项目负责人</text>
+  <text x="466" y="452" font-family="system-ui, sans-serif" font-size="11" fill="#334155">索引只负责把问题定位到一层；</text>
+  <text x="466" y="468" font-family="system-ui, sans-serif" font-size="11" fill="#334155">「回退到上一版本」是独立决定，不属于故障应对</text>
+</svg>

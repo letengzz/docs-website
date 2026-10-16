@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640" role="img" aria-label="lm-data-migration.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="640" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">数据迁移：三条路径 + 一条水位 + 三档校验</text>
+  <rect x="32" y="92" width="268" height="150" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="48" y="116" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#1e3a8a">路径一 · 读时迁移</text>
+  <text x="48" y="140" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">读旧库时顺带写新库。</text>
+  <text x="48" y="156.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">适用：数据只读不更新。</text>
+  <text x="48" y="173.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">代价：只有被读到的数据</text>
+  <text x="48" y="189.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">才会迁移——漏掉的数据</text>
+  <text x="48" y="206.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">没有任何信号，直到某天</text>
+  <text x="48" y="222.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">有人访问它。</text>
+  <rect x="316" y="92" width="268" height="150" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="332" y="116" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">路径二 · 写时迁移（双写）</text>
+  <text x="332" y="140" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">写入时同时写两边。</text>
+  <text x="332" y="156.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">适用：写入量可控。</text>
+  <text x="332" y="173.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">代价：一致性由应用保证，</text>
+  <text x="332" y="189.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">任何一处旁路写入都会</text>
+  <text x="332" y="206.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">造成永久偏差。</text>
+  <text x="332" y="222.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">顺序必须服从「哪边是权威」。</text>
+  <rect x="600" y="92" width="268" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="616" y="116" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b45309">路径三 · 后台迁移</text>
+  <text x="616" y="140" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">独立任务全量搬运 +</text>
+  <text x="616" y="156.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">增量追平（CDC 或轮询）。</text>
+  <text x="616" y="173.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">适用：数据量大、</text>
+  <text x="616" y="189.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">允许停机窗口短。</text>
+  <text x="616" y="206.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">代价：需要一条能持续追平</text>
+  <text x="616" y="222.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">的通道，且要有重放机制。</text>
+  <rect x="32" y="256" width="404" height="150" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="280" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">双写顺序：这不是风格问题</text>
+  <text x="48" y="304" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">旧 → 新：旧库完整，新库缺的可以重放补齐</text>
+  <text x="48" y="320.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">         → 适合「旧库仍是权威」的迁移早期</text>
+  <text x="48" y="337.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">新 → 旧：旧库会缺数据，回退时这条写入就丢了</text>
+  <text x="48" y="353.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">         → 适合「新库已是权威」的迁移后期</text>
+  <text x="48" y="370.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">判据：「哪边是权威」与「回退时以谁为准」</text>
+  <text x="48" y="386.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">是同一句话，双写顺序必须服从它。</text>
+  <rect x="452" y="256" width="416" height="150" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="468" y="280" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">水位：回退的起点</text>
+  <text x="468" y="304" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">三种形态：时间戳 / 单调版本号 / 事件位点。</text>
+  <text x="468" y="320.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">推荐版本号——不受时钟偏差与并发写入影响。</text>
+  <text x="468" y="337.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">回退 = ① 路由切回旧系统</text>
+  <text x="468" y="353.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">     + ② 从水位之后反向重放这段时间的写入</text>
+  <text x="468" y="370.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">     + ③ 确认重放条数 = 新库这段时间的写入条数</text>
+  <text x="468" y="386.5" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">没有水位，第 ② 步无法进行（只能全量重搬）。</text>
+  <rect x="32" y="420" width="836" height="152" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="48" y="444" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3730a3">三档校验：每一档能证明什么，明确不能证明什么</text>
+  <text x="48" y="468" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">L1 结构校验（行数 / 主键集合 / 校验和）—— 能证明「没有整块丢失、数量级对」；不能证明「相同</text>
+  <text x="48" y="480.5" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">行数下的内容差异」</text>
+  <text x="48" y="493.0" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">L2 抽样逐行校验（分层抽样后逐字段比对）—— 能证明「抽样范围内一致」；不能证明「抽样之外」，</text>
+  <text x="48" y="505.5" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">且有偏抽样会让结论系统性错误</text>
+  <text x="48" y="518.0" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">L3 业务口径校验（总额 / 笔数 / 分状态计数 / 按日汇总）—— 能证明「业务上看得见的口径一致」</text>
+  <text x="48" y="530.5" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">；不能证明「单条差异」，它会被聚合抹平</text>
+  <text x="48" y="543.0" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">三档互为盲区：只有 L1 看不出内容错，只有 L2 覆盖率通常低于 1%，只有 L3 掩盖单条差异且需要先</text>
+  <text x="48" y="555.5" font-family="system-ui, sans-serif" font-size="10.5" fill="#334155">有口径定义。</text>
+  <rect x="32" y="586" width="836" height="42" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="48" y="610" font-family="system-ui, sans-serif" font-size="11" fill="#334155">差异的三种归因：缺陷（修复后重放）／口径（写进「有意不同」）／历史脏数据（登记，不修改）。</text>
+</svg>

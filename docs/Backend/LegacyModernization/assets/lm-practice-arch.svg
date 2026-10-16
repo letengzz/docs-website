@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="lm-practice-arch.svg">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">实战：给一个交易单体换掉「库存查询与占用」这块能力</text>
+  <rect x="32" y="96" width="190" height="56" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="127.0" y="128" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">客户端</text>
+  <rect x="246" y="96" width="190" height="56" rx="10" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="341.0" y="128" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e3a8a" text-anchor="middle">Nginx（既有）= 接缝</text>
+  <rect x="460" y="96" width="190" height="56" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="555.0" y="128" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b45309" text-anchor="middle">单体（权威，早期）</text>
+  <rect x="674" y="96" width="194" height="56" rx="10" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="771.0" y="128" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0f766e" text-anchor="middle">库存服务（新）</text>
+  <path d="M 222 124 L 242 124" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <path d="M 436 124 L 456 124" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <path d="M 650 124 L 670 124" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a1)"/>
+  <text x="32" y="172" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start">路由逐条列举，不留兜底；分流粘性（哈希输入含客户端标识）；写路径最后才切。</text>
+  <rect x="32" y="200" width="836" height="44" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="46" y="227" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#1e3a8a" text-anchor="start">S1</text>
+  <text x="92" y="227" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">立项与四条边界</text>
+  <text x="240" y="227" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">完成定义：四个数字 + 不可停机清单三档</text>
+  <rect x="32" y="250" width="836" height="44" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="46" y="277" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="start">S2</text>
+  <text x="92" y="277" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">建接缝</text>
+  <text x="240" y="277" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">完成定义：改一条配置能让 1% 走新服务，30 秒内生效</text>
+  <rect x="32" y="300" width="836" height="44" rx="12" fill="#ccfbf1" stroke="#14b8a6"/>
+  <text x="46" y="327" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="start">S3</text>
+  <text x="92" y="327" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">建防腐层</text>
+  <text x="240" y="327" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">完成定义：往返测试通过；未映射值被计数</text>
+  <rect x="32" y="350" width="836" height="44" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="46" y="377" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start">S4</text>
+  <text x="92" y="377" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">并行运行</text>
+  <text x="240" y="377" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">完成定义：差异三类分完，非预期差异 = 0</text>
+  <rect x="32" y="400" width="836" height="44" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="46" y="427" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start">S5</text>
+  <text x="92" y="427" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">双写与水位</text>
+  <text x="240" y="427" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">完成定义：水位可读；反向重放演练并对平条数</text>
+  <rect x="32" y="450" width="836" height="44" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="46" y="477" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start">S6</text>
+  <text x="92" y="477" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">灰度切流</text>
+  <text x="240" y="477" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">完成定义：1% → 5% → 20% → 80%，各跑满 26 小时</text>
+  <rect x="32" y="500" width="836" height="44" rx="12" fill="#e0e7ff" stroke="#818cf8"/>
+  <text x="46" y="527" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#3730a3" text-anchor="start">S7</text>
+  <text x="92" y="527" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">共存期规则</text>
+  <text x="240" y="527" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">完成定义：六项规则生效；旧系统写入值班表</text>
+  <rect x="32" y="550" width="836" height="44" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="46" y="577" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="start">S8</text>
+  <text x="92" y="577" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">退役收口</text>
+  <text x="240" y="577" font-family="system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#334155" text-anchor="start">完成定义：零调用满 35 天；归档验证可读</text>
+</svg>

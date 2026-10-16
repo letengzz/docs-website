@@ -60,6 +60,22 @@ DDD 本身是方法论（Evans 2003 年著作《Domain-Driven Design》奠基，
 4. **按需读 [落地架构](./Architecture/index.md)**：推荐直接从模块化单体的默认形态开始。
 5. **走一遍 [实战](./Practice/index.md)**，再对照项目实战记录 [CoreFlow](/project/Complete/BlogPlatform/CoreFlow/index.md) 看方法论落到真实项目里的样子。
 
+## 与「遗留系统改造」专题的分工（第 147 天补充）
+本专题给出**限界上下文、上下文映射、防腐层（ACL）的概念定义**——回答「什么叫防腐层、它由哪几部分组成、为什么它属于战略设计」。
+
+[遗留系统改造 · 防腐层](../LegacyModernization/AntiCorruption/index.md) 讲的是**改造场景给 ACL 多出来的三个工程约束**：
+
+| 边界问题 | 归本专题 | 归遗留系统改造 |
+| --- | --- | --- |
+| 「ACL 的定义与组成」 | ✅ Evans 的原义：FACADE + ADAPTER + 领域服务 | — |
+| 「ACL 自己要不要部署、监控、回退、删除」 | — | ✅ 它也是共存期的一个系统 |
+| 「怎么阻止别人绕过 ACL」 | 概念上：它是下游的边界 | ✅ 工程上：**凭据只发给 ACL**，旁路调用是一条可监控指标 |
+| 「映射规则写代码还是写配置」 | 不涉及 | ✅ 写成数据，且映射表版本化在仓库 |
+
+一句话分工：**定义在 DDD 专题，改造期的三条约束在遗留系统改造专题。**
+
+本页特有的一个坑：把 ACL 藏进 UI 层是 Evans 时代就记下的经典失败模式；改造场景下它更常见，因为**旧系统的调用点本来就散落在定时任务、运维脚本、报表里**。定义上「绕过了 ACL」，工程上表现为「凭据散在四处」。
+
 ## 参考资料
 
 - Eric Evans,《Domain-Driven Design: Tackling Complexity in the Heart of Software》（2003，"蓝皮书"）

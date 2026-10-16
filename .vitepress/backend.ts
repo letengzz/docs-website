@@ -598,3 +598,20 @@ export const HighConcurrency = [
     ],
   },
 ];
+
+export const LegacyModernization = [
+  {
+    text: "遗留系统改造",
+    link: "/docs/Backend/LegacyModernization/index.md",
+    items: [
+      { text: "总览：四条边界与改造判据", link: "/docs/Backend/LegacyModernization/Overview/index.md" },
+      { text: "绞杀者模式：把替换拆成可回退的步骤", link: "/docs/Backend/LegacyModernization/Strangler/index.md" },
+      { text: "防腐层：让旧模型停在一层里", link: "/docs/Backend/LegacyModernization/AntiCorruption/index.md" },
+      { text: "数据迁移：双写、追平与三档校验", link: "/docs/Backend/LegacyModernization/DataMigration/index.md" },
+      { text: "灰度切换：把流量当成开关", link: "/docs/Backend/LegacyModernization/TrafficCutover/index.md" },
+      { text: "共存期工程：两套系统同时活着时的约束", link: "/docs/Backend/LegacyModernization/Coexistence/index.md" },
+      { text: "实战：从单体到新服务的一次完整改造", link: "/docs/Backend/LegacyModernization/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/LegacyModernization/FAQ/index.md" },
+    ],
+  },
+];
