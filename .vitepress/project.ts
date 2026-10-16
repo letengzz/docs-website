@@ -280,6 +280,7 @@ export const CompleteProject = [
           { text: "上线验收收口：把交付判据变成可勾选项", link: "/project/Complete/MonitoringDashboard/LaunchAcceptance/index.md" },
           { text: "交付件收敛：把待办回填成配置", link: "/project/Complete/MonitoringDashboard/ArtifactConvergence/index.md" },
           { text: "交付文档三件套：三份文档各只回答一个问题", link: "/project/Complete/MonitoringDashboard/DeliveryDocs/index.md" },
+          { text: "交付演练：把三份文档原样用一次", link: "/project/Complete/MonitoringDashboard/DeliveryDrill/index.md" },
         ],
       },
       {

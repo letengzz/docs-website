@@ -35,11 +35,11 @@
 | ID | 风险 | 一句话描述 | 本专题对应页面 |
 | --- | --- | --- | --- |
 | LLM01 | 提示注入 | 精心构造的输入改变模型行为 | [Injection](../Injection/index.md) / [Defense](../Defense/index.md) |
-| LLM02 | 敏感信息泄露 | PII、凭据、内部规则经输出或日志外泄 | [Defense](../Defense/index.md) |
-| LLM03 | 供应链 | 第三方模型、数据集、插件、依赖被污染 | 规划中的「AI 安全与合规」主题 |
+| LLM02 | 敏感信息泄露 | PII、凭据、内部规则经输出或日志外泄 | [Defense](../Defense/index.md)、[数据最小化](../../AISecurityCompliance/DataMinimization/index.md)、[审计链](../../AISecurityCompliance/Audit/index.md) |
+| LLM03 | 供应链 | 第三方模型、数据集、插件、依赖被污染 | [依赖与安全治理](../../../Tools/DependencyGovernance/index.md)（**本专题与 AI 安全与合规都不展开这一层**：它的对象是「材料」而不是「内容」） |
 | LLM04 | 数据与模型投毒 | 训练 / 微调 / RAG 数据被植入后门 | [Injection](../Injection/index.md)（RAG 投毒） |
-| LLM05 | 输出处理不当 | 模型输出未经校验直接进下游系统 | [Defense](../Defense/index.md)（输出消毒） |
-| LLM06 | 过度授权 | 模型被授予过多功能、权限或自主性 | [Defense](../Defense/index.md)（权限最小化）、[Agent 应用 · 安全边界](../../Agent/Safety/index.md) |
+| LLM05 | 输出处理不当 | 模型输出未经校验直接进下游系统 | [Defense](../Defense/index.md)（输出消毒）、[护栏工程](../../AISecurityCompliance/Guardrails/index.md)（输出即不可信输入） |
+| LLM06 | 过度授权 | 模型被授予过多功能、权限或自主性 | [Defense](../Defense/index.md)（权限最小化）、[Agent 应用 · 安全边界](../../Agent/Safety/index.md)、[护栏工程](../../AISecurityCompliance/Guardrails/index.md)（工具白名单与审批闸门） |
 | LLM07 | 系统提示词泄露 | 系统提示词及其中的机密被套出 | [Injection](../Injection/index.md) / [Defense](../Defense/index.md) |
 | LLM08 | 向量与嵌入弱点 | RAG 向量库被投毒、跨租户信息泄漏 | [Injection](../Injection/index.md) / [RAG 检索增强](../../RAG/index.md) |
 | LLM09 | 错误信息 | 自信的幻觉输出被当成事实 | [评估集建设](../EvalSet/index.md)（忠实性断言） |

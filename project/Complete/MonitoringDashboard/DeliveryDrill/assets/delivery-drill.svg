@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img" aria-label="交付演练：把三份文档真的用一次，抓到的是判据的输入没有交付，以及区分不可执行与检查未通过的三态退出码">
+  <title>交付演练：三份文档照做一次，抓到「判据的输入没交付」</title>
+  <rect x="0" y="0" width="900" height="88" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">交付演练：把三份文档真的用一次</text>
+  <text x="32" y="68" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">第 145 天的 DD-G 读出「环境脏」（rc=1）；第 146 天第 0 步第一次读出「判据不可执行」——两者不是同一种失败</text>
+  <rect x="32" y="110" width="836" height="148" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="48" y="136" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">演练第 0 步：原样照做（不改任何东西，只执行文档里写的命令）</text>
+  <text x="48" y="160" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">命令　cd /tmp/monitoring-run/docs &amp;&amp; bash ../scripts/preflight.sh</text>
+  <text x="48" y="177.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">实测　ls: /tmp/monitoring-run/docs: No such file or directory</text>
+  <text x="48" y="194.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">实测　bash: ../scripts/preflight.sh: No such file or directory（退出码 127）</text>
+  <text x="48" y="211.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">实测　三份交付文档（reproduce / acceptance / runbook-index）在磁盘上同样不存在</text>
+  <text x="48" y="228.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#b91c1c">结论　这条判据<tspan font-weight="700">不可执行</tspan>：不是「没通过」，而是「没有输入可供检查」</text>
+  <text x="48" y="245.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">　　　同上：文档里引用的 check-panels.sh / check-alerts.py 也只在 /tmp，不在仓库</text>
+  <rect x="32" y="274" width="836" height="96" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="48" y="300" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b45309">三态退出码：把两类结论分开，是今天唯一的代码改动</text>
+  <text x="48" y="324" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">0　　前置齐备，检查全绿　　　　　→ 可以往下走</text>
+  <text x="48" y="341.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">1　　前置齐备，检查未通过　　　　→ 结论：环境脏（第 145 天 DD-G 就是这一态）</text>
+  <text x="48" y="358.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">2　　前置缺失到无法判定　　　　　→ 结论：输入丢失，不可执行（今天第一次出现）</text>
+  <rect x="32" y="386" width="836" height="112" rx="12" fill="#dcfce7" stroke="#22c55e"/>
+  <text x="48" y="412" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#15803d">修法：把「判据的输入」也当成交付件</text>
+  <text x="48" y="436" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">1　preflight.sh 落进仓库（与本页同目录），默认只读，三态退出码</text>
+  <text x="48" y="453.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">2　MANIFEST.txt：本仓交付件的 sha256，shasum -a 256 -c 现场可复算</text>
+  <text x="48" y="470.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">3　env-fingerprint.txt：环境侧 8 份交付件的指纹记录（沙盒重建后复核，不作门禁）</text>
+  <text x="48" y="487.0" font-family="system-ui, sans-serif" font-size="11.5" fill="#15803d">4　复跑　同一条判据：127（不可执行）→ 0（齐备且全绿）</text>
+  <rect x="32" y="514" width="836" height="56" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="48" y="540" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">不动点：清单里不能包含 MANIFEST.txt 自身的哈希——所以外部锚点必须是别的东西（本次取 commit SHA）。</text>
+  <text x="48" y="558" font-family="system-ui, sans-serif" font-size="11.5" fill="#334155">指纹只固化「不应变化」的交付件；文档正文会持续修订，把它固化进指纹只会让指纹天天变红。</text>
+</svg>

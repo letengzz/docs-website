@@ -284,3 +284,21 @@ export const AI_EnterpriseKB = [
     ],
   },
 ];
+
+export const AI_AISecurityCompliance = [
+  {
+    text: "AI 安全与合规",
+    link: "/docs/AI/AISecurityCompliance/index.md",
+    collapsed: true,
+    items: [
+      { text: "总览：四条边界与责任模型", link: "/docs/AI/AISecurityCompliance/Overview/index.md" },
+      { text: "数据脱敏与最小化：进模型之前的三道闸", link: "/docs/AI/AISecurityCompliance/DataMinimization/index.md" },
+      { text: "内容安全：输入与输出的双向审核", link: "/docs/AI/AISecurityCompliance/ContentSafety/index.md" },
+      { text: "运行时护栏：工具、权限与预算", link: "/docs/AI/AISecurityCompliance/Guardrails/index.md" },
+      { text: "审计与溯源：谁在什么时候做了什么", link: "/docs/AI/AISecurityCompliance/Audit/index.md" },
+      { text: "合规清单：法规地图与证据包", link: "/docs/AI/AISecurityCompliance/Compliance/index.md" },
+      { text: "实战：给一个 RAG 客服应用补齐四段", link: "/docs/AI/AISecurityCompliance/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/AISecurityCompliance/FAQ/index.md" },
+    ],
+  },
+];

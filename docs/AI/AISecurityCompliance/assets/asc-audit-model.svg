@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="asc-audit-model.svg">
+  <title>审计事件模型：五元组 + 哈希链 + 链外锚点</title>
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="19" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">审计事件模型：五元组 + 哈希链 + 链外锚点</text>
+  <rect x="32" y="60" width="836" height="76" rx="12" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="48" y="84" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#3730a3" text-anchor="start" letter-spacing="0">五元组（第一天就要定死，之后改不了）</text>
+  <rect x="48" y="96" width="156" height="28" rx="8" fill="#ffffff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="56" y="114" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">actor 谁</text>
+  <rect x="212" y="96" width="156" height="28" rx="8" fill="#ffffff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="220" y="114" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">at 何时（UTC）</text>
+  <rect x="376" y="96" width="156" height="28" rx="8" fill="#ffffff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="384" y="114" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">model_ref 哪个模型+版本</text>
+  <rect x="540" y="96" width="156" height="28" rx="8" fill="#ffffff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="548" y="114" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">data_ref 哪条数据（引用）</text>
+  <rect x="704" y="96" width="156" height="28" rx="8" fill="#ffffff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="712" y="114" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">decision 什么决定（枚举）</text>
+  <rect x="32" y="148" width="836" height="96" rx="12" fill="#dcfce7" stroke="#4ade80" stroke-width="1.2"/>
+  <text x="48" y="172" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#14532d" text-anchor="start" letter-spacing="0">三个必带扩展字段</text>
+  <text x="48" y="198" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#14532d" text-anchor="start" letter-spacing="0">pii_types</text>
+  <text x="48" y="220" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">命中类型集合</text>
+  <text x="322" y="198" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#14532d" text-anchor="start" letter-spacing="0">pii_masked</text>
+  <text x="322" y="220" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">降级条数（0 是合法值）</text>
+  <text x="596" y="198" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#14532d" text-anchor="start" letter-spacing="0">policy_ver</text>
+  <text x="596" y="220" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">本次生效规则版本</text>
+  <rect x="32" y="256" width="540" height="208" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+  <text x="48" y="280" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">哈希链：每行含前一行的哈希</text>
+  <rect x="48" y="300" width="508" height="44" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+  <text x="60" y="318" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">T1 u-8812  read</text>
+  <text x="60" y="334" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="9.5" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">prev=0000000000000000  hash=64dd587553c63d48</text>
+  <rect x="48" y="352" width="508" height="44" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+  <text x="60" y="370" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">T2 u-8812  summarize</text>
+  <text x="60" y="386" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="9.5" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">prev=64dd587553c63d48  hash=827393d25314e31f</text>
+  <rect x="48" y="404" width="508" height="44" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+  <text x="60" y="422" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">T3 agent-7 deny:APPROVAL_REQUIRED</text>
+  <text x="60" y="438" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="9.5" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">prev=827393d25314e31f  hash=2f19002574a32ce8</text>
+  <text x="48" y="456" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#166534" text-anchor="start" letter-spacing="0">本机实测：改中间 → HASH_MISMATCH,1；删中间 → BROKEN_LINK,1</text>
+  <rect x="600" y="256" width="268" height="208" rx="12" fill="#fee2e2" stroke="#f87171" stroke-width="1.2"/>
+  <text x="616" y="280" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#7f1d1d" text-anchor="start" letter-spacing="0">链的盲区</text>
+  <text x="616" y="304" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#b91c1c" text-anchor="start" letter-spacing="0">截断末尾 → 链自校验仍返回 OK</text>
+  <text x="616" y="326" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">因为链条自己不知道</text>
+  <text x="616" y="344" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">「本来应该还有一条」。</text>
+  <text x="616" y="372" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">所以必须有链外锚点：</text>
+  <text x="616" y="392" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">把链尾 1e49111a0eb31b5e</text>
+  <text x="616" y="410" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">定期记到另一个账号 / 介质，</text>
+  <text x="616" y="428" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">下次对账看能否复现。</text>
+  <rect x="32" y="478" width="836" height="118" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="1.2"/>
+  <text x="48" y="502" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#9a3412" text-anchor="start" letter-spacing="0">审计 ≠ 日志（三条相反）</text>
+  <text x="48" y="526" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">采样</text>
+  <text x="140" y="526" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">日志：可按 1% 采样</text>
+  <text x="400" y="526" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#7c2d12" text-anchor="start" letter-spacing="0">审计：不采样 —— 那一次可能恰在 99% 里</text>
+  <text x="48" y="548" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">留存</text>
+  <text x="140" y="548" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">日志：7~30 天滚动</text>
+  <text x="400" y="548" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#7c2d12" text-anchor="start" letter-spacing="0">审计：按法规 / 合同留存期</text>
+  <text x="48" y="570" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">可写</text>
+  <text x="140" y="570" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">日志：应用可改可删</text>
+  <text x="400" y="570" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#7c2d12" text-anchor="start" letter-spacing="0">审计：应用只可追加；改 / 删必须被检出</text>
+</svg>

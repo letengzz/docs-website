@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="asc-content-pipeline.svg">
+  <title>内容安全流水线：双向判定 + 两条阈值线 + 第三态</title>
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="19" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">内容安全流水线：双向判定 + 两条阈值线 + 第三态</text>
+  <rect x="32" y="60" width="836" height="76" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+  <text x="48" y="84" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">输入侧（偏向「意图」与「越权」）</text>
+  <text x="48" y="106" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">附件 / 文档 → 文本规则 ｜ 图像提示词分类 ｜ 检索片段 ｜ 多轮上下文</text>
+  <text x="48" y="126" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">输出侧（偏向「事实性违规定性」与「标识义务」）</text>
+  <rect x="32" y="148" width="836" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+  <text x="48" y="172" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">两级阈值，三态判定</text>
+  <line x1="90" y1="212" x2="850" y2="212" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="300" y1="200" x2="300" y2="224" stroke="#16a34a" stroke-width="2.5"/>
+  <line x1="620" y1="200" x2="620" y2="224" stroke="#dc2626" stroke-width="2.5"/>
+  <text x="96" y="200" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#64748b" text-anchor="start" letter-spacing="0">0</text>
+  <text x="846" y="200" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#64748b" text-anchor="700" letter-spacing="end">1</text>
+  <text x="300" y="190" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#15803d" text-anchor="middle" letter-spacing="0">升级线</text>
+  <text x="620" y="190" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#b91c1c" text-anchor="middle" letter-spacing="0">拦截线</text>
+  <text x="96" y="244" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#15803d" text-anchor="start" letter-spacing="0">放行区（低分）</text>
+  <text x="316" y="244" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#a16207" text-anchor="start" letter-spacing="0">升级区（第三态，区间必须非空）</text>
+  <text x="636" y="244" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#b91c1c" text-anchor="start" letter-spacing="0">拦截区（高分）</text>
+  <rect x="32" y="278" width="836" height="106" rx="12" fill="#dcfce7" stroke="#4ade80" stroke-width="1.2"/>
+  <text x="48" y="302" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#14532d" text-anchor="start" letter-spacing="0">三级判定链：逐级更贵</text>
+  <text x="48" y="330" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#14532d" text-anchor="start" letter-spacing="0">第 1 级 关键词 / 正则</text>
+  <text x="48" y="352" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">微秒 · 明确违规与明确放行</text>
+  <text x="320" y="330" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#14532d" text-anchor="start" letter-spacing="0">第 2 级 分类模型</text>
+  <text x="320" y="352" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">毫秒 · 给置信度，落区间就升级</text>
+  <text x="592" y="330" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#14532d" text-anchor="start" letter-spacing="0">第 3 级 人工 / 大模型复核</text>
+  <text x="592" y="352" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10.5" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">分钟 · 产出新规则，不是只产出结论</text>
+  <text x="48" y="374" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#166534" text-anchor="start" letter-spacing="0">不确定 → 升级，不是放行。规则必须有退役机制（last_hit_at 超期进复核）。</text>
+  <rect x="32" y="396" width="836" height="100" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="1.2"/>
+  <text x="48" y="420" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#9a3412" text-anchor="start" letter-spacing="0">成本不对称：误杀 vs 漏放</text>
+  <text x="48" y="444" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#7c2d12" text-anchor="start" letter-spacing="0">漏放：监管风险 + 投诉 + 报告义务（一次性、可追责）</text>
+  <text x="48" y="466" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#7c2d12" text-anchor="start" letter-spacing="0">误杀：体验下降 + 支持成本（分摊到每次交互、无人认领）</text>
+  <text x="48" y="488" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">只看准确率会骗人：全部放行的模型在违规率 1% 语料上准确率 99% —— 这个数字没有意义。</text>
+  <rect x="32" y="508" width="836" height="88" rx="12" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="48" y="532" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#3730a3" text-anchor="start" letter-spacing="0">多模态投入顺序：附件 / 文档 → 图像 → 音频 → 视频</text>
+  <text x="48" y="556" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#4338ca" text-anchor="start" letter-spacing="0">理由不是重要性，而是「先堵成本最低、暴露面最大的那一类」——附件是间接注入的主要入口。</text>
+  <text x="48" y="580" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">判据：两侧配置哈希不等（真的两套）；升级区间非空；拦截 100% 可解释（reason 非空）。</text>
+</svg>

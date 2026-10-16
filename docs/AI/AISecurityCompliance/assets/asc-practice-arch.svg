@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="asc-practice-arch.svg">
+  <title>实战路线：八步 S1~S8 与五个读数</title>
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="620" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="19" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">实战路线：八步 S1~S8 与五个读数</text>
+  <rect x="32" y="60" width="836" height="84" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+  <text x="48" y="84" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">起点：只有「模型调通」的 RAG 客服应用</text>
+  <text x="48" y="108" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">用户提问 → 检索工单/知识库 → 整段塞进 prompt → 调第三方模型 → 返回直接渲染</text>
+  <text x="48" y="130" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#b91c1c" text-anchor="start" letter-spacing="0">缺口：数据闸门缺 · 内容闸门只有半条 · 护栏缺 · 审计用的是应用日志 · 合规没有依据</text>
+  <rect x="48" y="162" width="386" height="40" rx="9" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="60" y="187" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">S1 画流线</text>
+  <rect x="48" y="212" width="386" height="40" rx="9" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="60" y="237" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">S2 数据闸门</text>
+  <rect x="48" y="262" width="386" height="40" rx="9" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="60" y="287" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">S3 内容双闸</text>
+  <rect x="48" y="312" width="386" height="40" rx="9" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="60" y="337" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">S4 护栏</text>
+  <rect x="458" y="162" width="386" height="40" rx="9" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="470" y="187" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">S5 审计</text>
+  <rect x="458" y="212" width="386" height="40" rx="9" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="470" y="237" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#4338ca" text-anchor="start" letter-spacing="0">S6 合规</text>
+  <rect x="458" y="262" width="386" height="40" rx="9" fill="#fff7ed" stroke="#fdba74" stroke-width="1.2"/>
+  <text x="470" y="287" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#9a3412" text-anchor="start" letter-spacing="0">S7 逐道关闸</text>
+  <rect x="458" y="312" width="386" height="40" rx="9" fill="#fff7ed" stroke="#fdba74" stroke-width="1.2"/>
+  <text x="470" y="337" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11.5" font-weight="700" fill="#9a3412" text-anchor="start" letter-spacing="0">S8 变更触发</text>
+  <rect x="32" y="380" width="836" height="116" rx="12" fill="#dcfce7" stroke="#4ade80" stroke-width="1.2"/>
+  <text x="48" y="404" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#14532d" text-anchor="start" letter-spacing="0">本机实测五个读数（每行只改一个开关）</text>
+  <text x="48" y="428" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10" font-weight="400" fill="#166534" text-anchor="start" letter-spacing="0">四闸全开   pii_masked=2 出站含PII=0 block=1 escalate=1 工具放行=3 拒绝=1 审计行=4 链=OK</text>
+  <text x="48" y="442" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">关数据闸   pii_masked=0 出站含PII=1  ← 恰好 1 条把原始身份证号带到出站口</text>
+  <text x="48" y="456" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">关内容闸   block=0 escalate=0        ← 拦截与升级同时归零，出自同一条判定链</text>
+  <text x="48" y="470" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">关护栏     工具放行=4 拒绝=0         ← 需批准未获批的写操作被放行（后果最严重）</text>
+  <text x="48" y="484" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="10" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">关审计     审计行=0 链=SKIPPED       ← SKIPPED 与 OK 是两个不同状态</text>
+  <rect x="32" y="508" width="836" height="88" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="1.2"/>
+  <text x="48" y="532" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#9a3412" text-anchor="start" letter-spacing="0">这一页最想让你看到的一件事</text>
+  <text x="48" y="556" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#7c2d12" text-anchor="start" letter-spacing="0">如果关掉任意一道闸门后所有读数都没变，那你拥有的不是四道闸门，而是四个装饰品 —— 它们挂在同一个开关上，</text>
+  <text x="48" y="578" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#7c2d12" text-anchor="start" letter-spacing="0">或者根本没接在请求路径上。</text>
+</svg>

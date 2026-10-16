@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img" aria-label="asc-boundaries.svg">
+  <title>四条边界：AI 安全管的是内容，不是边界</title>
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="600" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="32" y="42" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="19" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">四条边界：AI 安全管的是内容，不是边界</text>
+  <rect x="32" y="68" width="398" height="190" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+  <rect x="48" y="82" width="366" height="28" rx="8" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="60" y="101" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#3730a3" text-anchor="start" letter-spacing="0">边界一 · 对象</text>
+  <text x="48" y="134" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">传统安全管「谁能访问什么」（边界）</text>
+  <text x="48" y="158" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">AI 安全管「这段内容能不能进 / 出」</text>
+  <line x1="48" y1="174" x2="414" y2="174" stroke="#e2e8f0"/>
+  <text x="48" y="196" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#b91c1c" text-anchor="start" letter-spacing="0">典型误判</text>
+  <text x="48" y="218" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="400" fill="#7f1d1d" text-anchor="start" letter-spacing="0">内容是语义，没有字段边界可拦</text>
+  <text x="48" y="244" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">→ 判据必须落在这条边界上，不能跨着写</text>
+  <rect x="470" y="68" width="398" height="190" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+  <rect x="486" y="82" width="366" height="28" rx="8" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="498" y="101" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#3730a3" text-anchor="start" letter-spacing="0">边界二 · 管道</text>
+  <text x="486" y="134" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">「进」与「出」是两条独立管道</text>
+  <text x="486" y="158" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">两侧规则集、负责人、证据各不相同</text>
+  <line x1="486" y1="174" x2="852" y2="174" stroke="#e2e8f0"/>
+  <text x="486" y="196" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#b91c1c" text-anchor="start" letter-spacing="0">典型误判</text>
+  <text x="486" y="218" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="400" fill="#7f1d1d" text-anchor="start" letter-spacing="0">合成一个模块 = 在两类上同时做错</text>
+  <text x="486" y="244" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">→ 判据必须落在这条边界上，不能跨着写</text>
+  <rect x="32" y="278" width="398" height="190" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+  <rect x="48" y="292" width="366" height="28" rx="8" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="60" y="311" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#3730a3" text-anchor="start" letter-spacing="0">边界三 · 时间</text>
+  <text x="48" y="344" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">日志：为排障写（可采样、可丢弃）</text>
+  <text x="48" y="368" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">审计：为追问写（不可改、留存期）</text>
+  <line x1="48" y1="384" x2="414" y2="384" stroke="#e2e8f0"/>
+  <text x="48" y="406" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#b91c1c" text-anchor="start" letter-spacing="0">典型误判</text>
+  <text x="48" y="428" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="400" fill="#7f1d1d" text-anchor="start" letter-spacing="0">被问到的那次恰被采样 = 永久无解</text>
+  <text x="48" y="454" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">→ 判据必须落在这条边界上，不能跨着写</text>
+  <rect x="470" y="278" width="398" height="190" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+  <rect x="486" y="292" width="366" height="28" rx="8" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.2"/>
+  <text x="498" y="311" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#3730a3" text-anchor="start" letter-spacing="0">边界四 · 变化</text>
+  <text x="486" y="344" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="400" fill="#334155" text-anchor="start" letter-spacing="0">合规不是一次性清单，是移动靶</text>
+  <text x="486" y="368" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#0f172a" text-anchor="start" letter-spacing="0">每条结论都必须带「生效日」</text>
+  <line x1="486" y1="384" x2="852" y2="384" stroke="#e2e8f0"/>
+  <text x="486" y="406" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="700" fill="#b91c1c" text-anchor="start" letter-spacing="0">典型误判</text>
+  <text x="486" y="428" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="400" fill="#7f1d1d" text-anchor="start" letter-spacing="0">没有日期的「最新」等于没有信息</text>
+  <text x="486" y="454" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">→ 判据必须落在这条边界上，不能跨着写</text>
+  <rect x="32" y="494" width="836" height="74" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="1.2"/>
+  <text x="48" y="518" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="700" fill="#9a3412" text-anchor="start" letter-spacing="0">一句话判据</text>
+  <text x="140" y="518" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="12" font-weight="400" fill="#7c2d12" text-anchor="start" letter-spacing="0">要问「模型会不会被骗」，去提示词安全专题；要问「法务会不会找我」，来本专题。</text>
+  <text x="48" y="544" font-family='system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif' font-size="11" font-weight="400" fill="#64748b" text-anchor="start" letter-spacing="0">四条边界的判据形态各不相同：进去的少了多少 / 该拦的拦了吗 / 这次调用超授权了吗 / 记录还在不在</text>
+</svg>
