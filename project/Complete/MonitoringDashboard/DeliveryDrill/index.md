@@ -120,15 +120,21 @@ SANDBOX=/nonexistent-monitoring bash preflight.sh  # 期望 rc=2，实测输出�
 
 ## 五、修法：把「判据的输入」也当成交付件
 
-修法不是「把文件补到 `/tmp` 里」——那只是一种更贵的原地踏步。修法是**让第 0 步从仓库里就能被拿到**。
+修法不是「把文件补到 `/tmp` 里」——那只是一种更贵的原地踏步。修法是**让第 0 步的输入变成任何人拷贝得走的东西**。
 
-本次在 `project/Complete/MonitoringDashboard/DeliveryDrill/` 落了三个文件，三者的分工是刻意分开的：
+本次把三份交付件的**完整内容**放进本页第十节（附录），三者的分工是刻意分开的：
 
-| 文件 | 是什么 | 参与 rc 吗 |
+| 交付件 | 是什么 | 参与 rc 吗 |
 | --- | --- | --- |
 | `preflight.sh` | 第 0 步本体：**只读**自检，三态退出码 | —— |
 | `MANIFEST.txt` | **本仓**交付件的 sha256，`shasum -a 256 -c` 现场可复算 | **参与**（不一致 → rc=1） |
 | `env-fingerprint.txt` | **环境侧**那 9 份交付件的指纹记录（编排、抓取配置、告警规则、验收脚本） | **不参与**（沙盒重建后本来就该变） |
+
+::: danger 形态纪律：脚本以「围栏代码块」交付，不以「文件」交付
+`AGENTS.md` 第 9 节写死：`project/` 下**只允许** `*.md` 与配图。第 146 天第一版把这三份东西落成了三个文件（`preflight.sh` / `MANIFEST.txt` / `env-fingerprint.txt`），于是第 147 天的判据 `PK-A` **第一次运行就判 `FAIL`**：三份文件都在 git 里，而 `project/` 的边界已经被越过。
+
+第 148 天的处置是**换形态而不是删内容**：内容一字不动地搬进本页第十节，读者按第十节在**自己的工程目录**里创建后再执行；仓库里不再保留这三份文件。第 148 天新立的第四十项巡检 `projectpuritycheck.py` 就是守这条边界的——**边界写在文档里 ≠ 边界没被越过，能失败的判据才是守卫。**
+:::
 
 第三行的取舍需要解释一句：环境侧的交付件活在 `/tmp` 里，机器一清就没了。把它们的指纹也做成门禁，结果是**每次重建沙盒都红一次**，而红的原因不是「有人改坏了东西」，是「这是新的一份」——这种门禁很快就会被忽略。所以它们**只记录、复核、不判红**。**判红的东西必须是「不应该变化」的东西。**
 
@@ -137,7 +143,9 @@ SANDBOX=/nonexistent-monitoring bash preflight.sh  # 期望 rc=2，实测输出�
 `MANIFEST.txt` 里如果写上 `MANIFEST.txt` 自己的 sha256，这个文件就不可能有稳定内容——写进去的哈希会让它自己变化，变化之后哈希又不再成立。所以清单的外锚点必须是**另一个东西**，本次取 **commit SHA**：
 
 ```shell
-cd project/Complete/MonitoringDashboard/DeliveryDrill
+# 在「你自己的工程目录」里创建 MANIFEST.txt（内容见本页第十节），然后：
+WORK=~/monitoring-run                 # 换成你的目录
+cd "$WORK"
 shasum -a 256 preflight.sh assets/delivery-drill.svg > MANIFEST.txt
 grep -c 'MANIFEST.txt' MANIFEST.txt      # 期望 0
 ```
@@ -194,10 +202,11 @@ grep -c 'MANIFEST.txt' MANIFEST.txt      # 期望 0
 
 ## 八、如何验证
 
-全部命令都在本页同一目录（`project/Complete/MonitoringDashboard/DeliveryDrill/`）下执行，且**全部只读**。
+全部命令都**只读**，且都要在**你自己创建的工程目录**里执行——本仓库不含这三份交付件（原因见第五节的形态纪律），**先按第十节把它们创建出来**。
 
 ```shell
-cd project/Complete/MonitoringDashboard/DeliveryDrill
+WORK=~/monitoring-run                 # 换成你按第十节创建好三份交付件的目录
+cd "$WORK"
 
 # 0) 第 0 步一次性跑完（DR-A / DR-B / DR-C）—— 期望：12 项通过、rc=0
 bash preflight.sh | tail -3
@@ -212,24 +221,24 @@ SANDBOX=/nonexistent-monitoring bash preflight.sh >/dev/null; echo "退出码=$?
 
 # 3) DR-C：只读性 —— 跑前跑后容器集合与工作区指纹必须一致
 before=$(docker ps --format '{{.ID}} {{.Names}} {{.Status}}' | sort)
-g0=$(git -C ../../../.. status --porcelain | sort | shasum -a 256)
+g0=$(find "$WORK" -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256)
 bash preflight.sh >/dev/null
 after=$(docker ps --format '{{.ID}} {{.Names}} {{.Status}}' | sort)
-g1=$(git -C ../../../.. status --porcelain | sort | shasum -a 256)
+g1=$(find "$WORK" -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256)
 [ "$before" = "$after" ] && echo "容器未变 OK" || echo "容器被动了"
 [ "$g0" = "$g1" ] && echo "工作区未变 OK" || echo "脚本写了文件"
 
 # 4) DR-D + DR-E + DR-F：指纹可复算、清单项都存在、清单不含自身哈希
-shasum -a 256 -c MANIFEST.txt          # 期望两行 OK
+shasum -a 256 -c MANIFEST.txt          # 期望两行 OK（你不必是那两项，见第十节说明）
 grep -c 'MANIFEST.txt' MANIFEST.txt    # 期望 0
 while IFS= read -r l; do f="${l#*  }"; [ -e "$f" ] && echo "存在 $f"; done < MANIFEST.txt
 
 # 5) DR-D 的反例：改一个字节，必须点名到项
-cp assets/delivery-drill.svg /tmp/_bk.svg
-printf ' ' >> assets/delivery-drill.svg
+cp preflight.sh /tmp/_bk.sh
+printf '\n' >> preflight.sh
 bash preflight.sh | grep '本仓交付件指纹'   # 期望：仅 1/2 项一致
-cp /tmp/_bk.svg assets/delivery-drill.svg
-shasum -a 256 preflight.sh assets/delivery-drill.svg > MANIFEST.txt
+cp /tmp/_bk.sh preflight.sh
+shasum -a 256 preflight.sh assets/delivery-drill.svg > MANIFEST.txt   # 换成你自己的两项
 bash preflight.sh | tail -1                 # 期望：rc=0
 
 # 6) DR-G：环境侧指纹只记录、不参与 rc
@@ -253,6 +262,227 @@ grep -c '^[0-9a-f]\{64\}  ' env-fingerprint.txt   # 期望 9 行记录，但上�
 
 这两件事之间没有任何矛盾——**判据跑过 ≠ 判据能被别人跑**。判据管的是「这份东西自己有没有写坏」，交付管的是「换一个人、换一台机器、换一天，能不能照着做一遍」。中间那道缝只能靠**一次原样照做**去量，而量出来的第一件东西往往不是别人的问题：**是判据的输入压根没有被交付**。
 :::
+
+## 十、附录：三份交付件的完整内容
+
+这三份东西**不以文件形态入库**（`project/` 只放 Markdown 与配图，见第五节的形态纪律）。下面是第 146 天的**实录内容**：把它们在**你自己的工程目录**里创建成同名文件，即可复跑第八节的全部命令。
+
+三处口径先说清，否则读数会对不上：
+
+1. `MANIFEST.txt` 的两项实录是 `preflight.sh` 与 `assets/delivery-drill.svg`。**你自己的工程里第二项多半不是这张图**——把它换成你自己的一个交付件即可；下文所有 `2/2` 与 `仅 1/2 项一致` 都是**第 146 天的实录读数**，在你的工程里请读作「你的项数」。
+2. `env-fingerprint.txt` 里的哈希对应第 146 天那台机器的沙盒（`/tmp/monitoring-run`）。**它们本来就该变**，所以这份文件只记录、不参与 `rc`（判据 `DR-G`）。
+3. `preflight.sh` 里的 `SANDBOX` 默认值是记录当时的沙盒路径，跨机器使用时用环境变量覆盖：`SANDBOX=/your/path bash preflight.sh`。
+
+### 10.1 `preflight.sh`（167 行，只读，三态退出码）
+
+```shell [preflight.sh]
+#!/usr/bin/env bash
+# 交付演练 · 第 0 步：前置自检（**只读**）
+#
+# 为什么第 0 步必须是一个脚本，而不是文档里的一段「请先确认…」清单：
+#   第 145 天写出的三份交付文档，第 0 步原文是 `bash scripts/preflight.sh` —— 而**这个
+#   文件当时并不存在**，它所在的 `/tmp/monitoring-run/docs/` 与 `/tmp/monitoring-run/scripts/`
+#   在第二天做演练时都已经不在了。于是那条判据（`DD-G`）当天得到的读数是「退出码 1」，
+#   第二天复跑得到的却是 `No such file or directory` + rc=127。
+#
+#   这两件事**不是同一种失败**，这也是本脚本存在的原因：
+#     · 检查不通过（rc=1）：环境不干净 —— 这是**结论**；
+#     · 判据不可执行（rc=2）：连判失败的机会都没有 —— 这是**输入丢失**。
+#   把两者混成一个「没通过」，就等于承认「判据的输入可以不交付」。
+#
+# 退出码（三态，刻意区分）：
+#   0  前置齐备且检查全绿
+#   1  前置齐备，但有检查项未通过（环境脏）
+#   2  前置缺失到无法判定（沙盒目录 / docker / curl 不可用）——**不可执行**，不是失败
+#
+# 全部动作**只读**：不启停容器、不写任何文件（`MANIFEST.txt` 的校验也是只读的）。
+# 唯一会写盘的动作被排除在外：本脚本不生成 MANIFEST，生成它是另一个动作。
+set -uo pipefail
+
+HERE="$(cd "$(dirname "$0")" && pwd)"
+SANDBOX="${SANDBOX:-/tmp/monitoring-run}"
+BASE="${BASE:-http://localhost:19090}"
+AM="${AM:-http://localhost:9093}"
+PY="${PY:-python3}"
+
+pass=0; miss=0; skip=0; blocking=0
+# 刻意**不做列对齐**：printf 的 `%-Ns` 按字节计数，中文标签每字 3 字节，
+# 标签一长一短就会把「期望」列推得参差不齐——看起来像排版事故，实际是宽度口径不同。
+# 交付脚本的输出第一要求是**能被 grep 稳定认出来**，不是好看，所以固定成 key=value 形态。
+ok()   { printf '  [OK]    %s：期望=%s 实测=%s\n' "$1" "$2" "$3"; pass=$((pass+1)); }
+no()   { printf '  [MISS]  %s：期望=%s 实测=%s\n' "$1" "$2" "$3"; miss=$((miss+1)); }
+sk()   { printf '  [SKIP]  %s：原因=%s\n' "$1" "$2"; skip=$((skip+1)); }
+blk()  { printf '  [BLOCK] %s：期望=%s 实测=%s\n' "$1" "$2" "$3"; blocking=$((blocking+1)); }
+
+echo "=== 第 0 步：前置自检（只读）==="
+echo "沙盒 SANDBOX=$SANDBOX"
+echo "--- A. 前置工具与目录（决定「能不能判」）---"
+
+# ---- A1/A2：沙盒目录。目录不存在时后面所有检查都无从谈起，直接判 2 ----
+if [ -d "$SANDBOX" ]; then
+  ok "沙盒目录" "存在" "$SANDBOX"
+else
+  blk "沙盒目录" "存在" "缺失：$SANDBOX"
+fi
+
+if command -v docker >/dev/null 2>&1; then
+  if docker version --format '{{.Server.Version}}' >/dev/null 2>&1; then
+    ok "docker CLI + daemon" "client 与 daemon 均可达" \
+      "$(docker version --format '{{.Client.Version}}/{{.Server.Version}}')"
+  else
+    blk "docker CLI + daemon" "daemon 可达" "CLI 有，daemon 不可达"
+  fi
+else
+  blk "docker CLI + daemon" "命令存在" "未安装 docker"
+fi
+
+if command -v curl >/dev/null 2>&1; then ok "curl" "命令存在" "$(curl --version | head -1 | cut -d' ' -f1-2)";
+else blk "curl" "命令存在" "未安装 curl"; fi
+
+if [ "$blocking" -gt 0 ]; then
+  echo
+  echo "前置：$pass 项通过，$blocking 项缺失 —— **不可执行**（rc=2）"
+  echo "注意：这不是「检查未通过」，而是「没有输入可供检查」。两者必须分开处置。"
+  exit 2
+fi
+
+echo "--- B. 交付件完整性（决定「交付的东西还是不是那一份」）---"
+if [ -f "$HERE/MANIFEST.txt" ]; then
+  if command -v shasum >/dev/null 2>&1; then
+    sha_tool=(shasum -a 256)
+  elif command -v sha256sum >/dev/null 2>&1; then
+    sha_tool=(sha256sum)
+  else
+    sha_tool=()
+  fi
+  if [ "${#sha_tool[@]}" -eq 0 ]; then
+    sk "本仓交付件指纹" "本机无 shasum / sha256sum"
+  else
+    # 数「有几条 OK」而不是「有几条不 OK」：`shasum -c` 在不一致时会**额外**打印一行
+    # `WARNING: n computed checksum did NOT match`，用「非 OK 行数」当失败数会把这一行
+    # 也算成一项失败（首轮实测：改一个字节报出「2 项不一致」，而清单里只有 2 项）。
+    total_n=$(grep -c '^[0-9a-f]\{64\}  ' "$HERE/MANIFEST.txt" || true)
+    ok_n=$( (cd "$HERE" && "${sha_tool[@]}" -c MANIFEST.txt) 2>/dev/null | grep -c ': OK$' || true)
+    if [ "${ok_n:-0}" = "$total_n" ]; then
+      ok "本仓交付件指纹" "${total_n} 项 sha256 全部一致" "OK ${ok_n}/${total_n}"
+    else
+      no "本仓交付件指纹" "${total_n} 项 sha256 全部一致" "仅 ${ok_n}/${total_n} 项一致"
+    fi
+  fi
+else
+  no "本仓交付件清单" "MANIFEST.txt 存在" "缺失"
+fi
+
+echo "--- C. 编排文件与「成对声明」判据（第 0 层，起栈之前就该查）---"
+COMPOSE_FILE="$SANDBOX/compose.yaml"
+if [ -f "$COMPOSE_FILE" ]; then
+  ok "编排文件" "存在" "$COMPOSE_FILE"
+  pairs=0; pair_bad=0
+  while IFS= read -r f; do
+    pairs=$((pairs+1))
+    grep -q 'storage\.tsdb\.retention\.size' "$f" || pair_bad=$((pair_bad+1))
+  done < <(grep -rl --include='*.yaml' --include='*.yml' 'storage\.tsdb\.retention\.time' "$SANDBOX" 2>/dev/null | sort)
+  if [ "$pairs" = "0" ]; then
+    no "保留上限成对声明" "≥1 份文件声明 time+size" "0 份文件声明 retention.time"
+  elif [ "$pair_bad" = "0" ]; then
+    ok "保留上限成对声明" "${pairs} 份都成对" "OK ${pairs}/${pairs}"
+  else
+    no "保留上限成对声明" "${pairs} 份都成对" "${pair_bad} 份只声明了 time"
+  fi
+else
+  no "编排文件" "存在" "缺失：$COMPOSE_FILE"
+fi
+
+echo "--- D. 运行态（栈已在跑时才有意义）---"
+running=$(cd "$SANDBOX" 2>/dev/null && docker compose ps --format '{{.State}}' 2>/dev/null | grep -c '^running$' || echo 0)
+if [ "${running:-0}" = "3" ]; then ok "容器 running" "3 个" "3 个";
+else no "容器 running" "3 个" "${running:-0} 个（未起栈时这是预期，起栈后不是）"; fi
+
+http_code() { curl -s -o /dev/null -w '%{http_code}' --max-time 5 "$1" 2>/dev/null || echo 000; }
+
+c=$(http_code "$BASE/-/ready")
+if [ "$c" = "200" ]; then ok "Prometheus /-/ready" "200" "200"; else no "Prometheus /-/ready" "200" "$c"; fi
+c=$(http_code "$AM/-/ready")
+if [ "$c" = "200" ]; then ok "Alertmanager /-/ready" "200" "200"; else no "Alertmanager /-/ready" "200" "$c"; fi
+
+if ! command -v "$PY" >/dev/null 2>&1; then
+  sk "抓取目标与规则" "本机无 $PY，无法解析 JSON"
+else
+  t=$(curl -s --max-time 5 "$BASE/api/v1/targets?state=any" 2>/dev/null | "$PY" -c \
+      "import sys,json
+try:
+    d=json.load(sys.stdin)['data']['activeTargets']
+except Exception:
+    print('-,-'); raise SystemExit
+print('%d,%d' % (len(d), sum(1 for x in d if x['health']=='up')))" 2>/dev/null || echo "-,-")
+  # 切分用 `##*,` 而**不是** `##*, `：后者把分隔符定义成「逗号+空格」，
+  # 而 Python 端输出的是 `5,5`（无空格），于是永远切不开，两个值会一起进「实测」。
+  tn=${t%%,*}; tu=${t##*,}
+  if [ "$tu" = "$tn" ] && [ "$tn" != "-" ]; then ok "抓取目标 health=up" "全 up" "${tu}/${tn} up";
+  else no "抓取目标 health=up" "全 up" "${tu}/${tn} up"; fi
+
+  r=$(curl -s --max-time 5 "$BASE/api/v1/rules" 2>/dev/null | "$PY" -c \
+      "import sys,json
+try:
+    g=json.load(sys.stdin)['data']['groups']
+except Exception:
+    print('-,-'); raise SystemExit
+al=sum(1 for x in g for y in x['rules'] if y['type']=='alerting')
+rc=sum(1 for x in g for y in x['rules'] if y['type']=='recording')
+print('%d,%d' % (al, rc))" 2>/dev/null || echo "-,-")
+  al=${r%%,*}; rc=${r##*,}
+  if [ "$al" = "6" ]; then ok "告警规则条数" "6" "$al"; else no "告警规则条数" "6" "$al"; fi
+  if [ "$rc" = "3" ]; then ok "记录规则条数" "3" "$rc"; else no "记录规则条数" "3" "$rc"; fi
+fi
+
+echo
+if [ "$miss" = "0" ]; then
+  echo "前置：$pass 项通过，0 项缺失，$skip 项跳过 —— 全绿（rc=0）"
+  exit 0
+fi
+echo "前置：$pass 项通过，$miss 项缺失，$skip 项跳过 —— 环境未就绪（rc=1）"
+echo "读法：rc=1 是**结论**（环境脏），rc=2 是**输入丢失**（不可执行）。两者不可合并。"
+exit 1
+```
+
+### 10.2 `MANIFEST.txt`（2 行，参与 `rc`）
+
+```text [MANIFEST.txt]
+20efbdafd5951dee3293959cc440c05fc0a0afa553648067c7daf2a81fb3b857  preflight.sh
+21aea32ce215376242dd6a142ef2ef5648ad7c8693a8866e7b9f73c2973d350c  assets/delivery-drill.svg
+```
+
+### 10.3 `env-fingerprint.txt`（9 行记录，不参与 `rc`）
+
+```text [env-fingerprint.txt]
+# 环境侧交付件指纹（第 146 天实测，沙盒 SANDBOX=/tmp/monitoring-run）
+#
+# 这些文件是**真正被交付的东西**（编排、抓取配置、告警规则、验收脚本），
+# 但它们不随仓库交付：它们活在 /tmp 里，机器一清就没了——这正是第 146 天演练抓到的第一件事。
+# 本文件不扮演门禁：沙盒重建后这些值**本来就应当变**，所以只做记录与复核，不参与 rc。
+# 本仓交付件的门禁在 MANIFEST.txt（shasum -a 256 -c 可复算）。
+#
+# 取法（在 $SANDBOX 下）：
+#   shasum -a 256 compose.yaml prometheus/*.yaml alertmanager/*.yaml bin/one-click-up.sh scripts/check-*.{sh,py}
+#
+# 格式：<sha256>  <相对 $SANDBOX 的路径>  <字节数>
+
+ad29bfb5f7f6cbc2bd3d2ff9bae033aeacd787148f6693a2b10e1f45861f234b  compose.yaml  910
+ad29bfb5f7f6cbc2bd3d2ff9bae033aeacd787148f6693a2b10e1f45861f234b  compose.singlefile.yaml  910
+d319e4500319daad7abbbc78e82e45e2aa2ef8408195007b5e214b17c091a040  prometheus/prometheus.yml  2017
+cc587ff9383a884ea4f6d959c9ed5fb5bda76b61c64e0468ce149422183fa61a  prometheus/alerting.yaml  5661
+af9c7ad2ef3d6f829ac3e7602373d483b54f4ca364743250b6ba38bcb381d50e  prometheus/recording.yaml  431
+144d959ec93ddc9475b76521f2581dfee63dd92fbe81d7fe59b4e978f6a5c7cf  alertmanager/alertmanager.yaml  480
+67f5c4a078a025d00ac8980e800ef556bc3dbf3ad2cd4b1664bc6e8ca5833d21  bin/one-click-up.sh  7614
+5fc3c91438f4cf9e7b19982c80553f51dc9bfb2dc4b84b3a957c6809097d13ea  scripts/check-panels.sh  8095
+7f11bfbb797574b5e2b5ed22dc70ce2f82e5684e6a266d5aa61fb19902aa52d3  scripts/check-alerts.py  12278
+
+# 两条现场读数（与上表同一次采集）：
+#   · compose.yaml 与 compose.singlefile.yaml 内容完全相同（cmp 无声），sha256 前 16 位
+#     ad29bfb5f7f6cbc2 —— 与第 144 天的记录一致，说明沙盒这份交付件没有被改动过。
+#   · 本表**不包含** MANIFEST.txt 与文档正文：前者的哈希不可能出现在自身里（不动点），
+#     后者会持续修订，固化它只会让指纹天天变红。
+```
 
 ## 参考资料
 

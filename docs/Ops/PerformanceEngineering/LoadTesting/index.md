@@ -320,6 +320,19 @@ k6 version && git rev-parse --short HEAD && sha256sum config/application.yaml
 
 预期输出：第一条命令末尾出现 `thresholds ... have been crossed` 且 `exit=99`（非零）——**先证明它会红，再去调它变绿**；后一条输出三行可粘贴进报告的标识——**没有这三行，这份结果三个月后没人能复现**。
 
+## 与「压测与容量验收」章节的分工（第 148 天补充）
+
+[压测与容量验收](/project/Complete/TeamBoard/CapacityTest/index.md)（属[在线协作任务看板](/project/Complete/TeamBoard/index.md)）是本页方法论的**一次完整落地**，两者分工如下：
+
+| 边界问题 | 归本页 | 归该章节 |
+| --- | --- | --- |
+| 压测方法与工具选型 | 给开环 / 闭环、执行器与生成器选型、阈值判定机制（k6 `thresholds`） | 只给**四个场景的到达率与混合比例**（写 40 / 读 120 / 拖动 30 / 长连接 1 万） |
+| 容量结论怎么表述 | 给「结论必须带前提」这条通用要求 | 给四个具体前提（硬件 / 数据量 / 混合比例 / SLO）与「少了它会怎样」 |
+| 瓶颈怎么定位 | 给分层定位的方法与常见误判 | 给该项目**特有**的第 4 层：广播放大系数与出站消息量 |
+| 「并发正确性」与「容量」的关系 | 一般性说明两者不可互相替代 | 写死分工的**两个方向**：压测全绿不证明幂等生效；并发一成一败不证明容量够 |
+
+一句话：**本页讲「怎么量」；该章节讲「看板这类带广播扇出的系统，量出来该长什么形状」。**
+
 ## 参考资料
 
 - Grafana k6 官方文档 · Constant Arrival Rate 执行器（开环模型与 `preAllocatedVUs` / `maxVUs`）：https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/constant-arrival-rate/

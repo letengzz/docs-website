@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-label="在线协作任务看板的端到端测试：上部是跨进程、跨存储、链路完整性三条准入，中部是七条用例与三条等待纪律，下部是失败的四类归属">
+  <title>在线协作任务看板 · 端到端层的准入、用例与失败归属</title>
+  <rect width="900" height="560" fill="#ffffff"/>
+  <text x="30" y="38" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#1f2328">在线协作任务看板 · 端到端层的准入、用例与失败归属</text>
+  <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11.5" fill="#57606a">端到端不是「测得更全」的那一层，而是「下面三层都测不了」的那一层。</text>
+
+  <text x="30" y="90" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">三条准入（满足其一才允许进这一层）</text>
+
+  <rect x="30" y="100" width="270" height="86" rx="9" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="44" y="122" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0969da">① 跨进程</text>
+  <text x="44" y="142" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">两个及以上进程之间的时序或状态</text>
+  <text x="44" y="160" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">实例：拖动后两端看到同一个 seq</text>
+  <text x="44" y="178" font-family="system-ui, sans-serif" font-size="9" fill="#9a6700">桩替换后断言不再成立</text>
+
+  <rect x="315" y="100" width="270" height="86" rx="9" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="329" y="122" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0969da">② 跨存储</text>
+  <text x="329" y="142" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">两个存储之间的一致性</text>
+  <text x="329" y="160" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">实例：写入、事件表、广播三者对得上</text>
+  <text x="329" y="178" font-family="system-ui, sans-serif" font-size="9" fill="#9a6700">任一存储单独看都是对的</text>
+
+  <rect x="600" y="100" width="270" height="86" rx="9" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="614" y="122" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0969da">③ 链路完整性</text>
+  <text x="614" y="142" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">从用户动作到用户可见结果整条链路</text>
+  <text x="614" y="160" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">实例：登录 → 建卡 → 刷新仍在</text>
+  <text x="614" y="178" font-family="system-ui, sans-serif" font-size="9" fill="#9a6700">中间换任何一段等于没测</text>
+
+  <text x="30" y="212" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">七条用例（每条都要能回答一句话：它为什么不能下沉）</text>
+
+  <rect x="34" y="222" width="112" height="86" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="90" y="244" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328">E2E-1</text>
+  <text x="90" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">建卡后刷新</text>
+  <text x="90" y="276" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">仍在同一列</text>
+  <text x="90" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#9a6700">跨四段</text>
+
+  <rect x="154" y="222" width="112" height="86" rx="8" fill="#dafbe1" stroke="#1a7f37"/>
+  <text x="210" y="244" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1a7f37">E2E-2</text>
+  <text x="210" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">两端同一条</text>
+  <text x="210" y="276" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">card.moved</text>
+  <text x="210" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#1a7f37">最核心</text>
+
+  <rect x="274" y="222" width="112" height="86" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="330" y="244" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328">E2E-3</text>
+  <text x="330" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">409 后回滚</text>
+  <text x="330" y="276" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">到服务端位置</text>
+  <text x="330" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#9a6700">易漏落点</text>
+
+  <rect x="394" y="222" width="112" height="86" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="450" y="244" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328">E2E-4</text>
+  <text x="450" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">权限两条抽样</text>
+  <text x="450" y="276" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">404 而非 403</text>
+  <text x="450" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#9a6700">防枚举</text>
+
+  <rect x="514" y="222" width="112" height="86" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="570" y="244" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328">E2E-5</text>
+  <text x="570" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">断线重连</text>
+  <text x="570" y="276" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">补拉不重不漏</text>
+  <text x="570" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#9a6700">真连接才有</text>
+
+  <rect x="634" y="222" width="112" height="86" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="690" y="244" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328">E2E-6</text>
+  <text x="690" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">附件签名</text>
+  <text x="690" y="276" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">跨上下文可读</text>
+  <text x="690" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#9a6700">验签名足够</text>
+
+  <rect x="754" y="222" width="112" height="86" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="810" y="244" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328">E2E-7</text>
+  <text x="810" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">一次拖动</text>
+  <text x="810" y="276" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">只更新一行</text>
+  <text x="810" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#9a6700">前端也参与</text>
+
+  <text x="30" y="334" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">三条等待纪律（「脆」几乎都出自这三处）</text>
+
+  <rect x="30" y="344" width="270" height="76" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="44" y="366" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">靠角色与语义定位</text>
+  <text x="44" y="386" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">getByRole / getByTestId</text>
+  <text x="44" y="406" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">反例：样式类名与 nth-child</text>
+
+  <rect x="315" y="344" width="270" height="76" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="329" y="366" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">等待由框架负责</text>
+  <text x="329" y="386" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">waitFor + expect 自动重试</text>
+  <text x="329" y="406" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">反例：固定 sleep 掩盖真慢</text>
+
+  <rect x="600" y="344" width="270" height="76" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="614" y="366" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">等条件，不睡时长</text>
+  <text x="614" y="386" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">实时断言读帧，不读 DOM</text>
+  <text x="614" y="406" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">反例：靠重试才绿 = 有失败率</text>
+
+  <text x="30" y="450" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">失败先归层（先判断这条红归谁，再改代码）</text>
+
+  <rect x="30" y="460" width="195" height="72" rx="9" fill="#fff1e5" stroke="#bc4c00"/>
+  <text x="44" y="482" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#bc4c00">环境坏</text>
+  <text x="44" y="500" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">全组同时红、且都在第一步</text>
+  <text x="44" y="518" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">只在 CI 红、本地绿</text>
+
+  <rect x="240" y="460" width="195" height="72" rx="9" fill="#fff8c5" stroke="#9a6700"/>
+  <text x="254" y="482" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">用例坏</text>
+  <text x="254" y="500" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">偶发红、重跑就绿</text>
+  <text x="254" y="518" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">先查 sleep 与 DOM 代替数据</text>
+
+  <rect x="450" y="460" width="195" height="72" rx="9" fill="#ffebe9" stroke="#cf222e"/>
+  <text x="464" y="482" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#cf222e">产品坏</text>
+  <text x="464" y="500" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">稳定红，且下方三层全绿</text>
+  <text x="464" y="518" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">规则与契约已被排除</text>
+
+  <rect x="660" y="460" width="195" height="72" rx="9" fill="#eef2f6" stroke="#57606a"/>
+  <text x="674" y="482" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">口径坏</text>
+  <text x="674" y="500" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">稳定红但「看起来一切正常」</text>
+  <text x="674" y="518" font-family="system-ui, sans-serif" font-size="9.5" fill="#cf222e">最危险：被当成产品坏</text>
+</svg>

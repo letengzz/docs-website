@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="自动化测试分层概览：四层金字塔与量化配比、测试替身红线、测试数据三类与隔离三手段的代价">
+  <title>自动化测试分层 · 四层金字塔、替身红线、数据三类与隔离三手段</title>
+  <rect x="0" y="0" width="900" height="520" fill="#ffffff"/>
+  <text x="30" y="34" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1f2328">自动化测试分层 · 四层金字塔、替身红线、数据三类与隔离三手段</text>
+  <text x="30" y="56" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">越往上层越慢越脆，所以上层只放「必须跨进程才能证伪」的断言——每条断言只写在能证伪它的那一层。</text>
+
+  <text x="30" y="90" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0969da">一、四层金字塔与量化配比</text>
+
+  <rect x="150" y="98" width="320" height="42" rx="7" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="162" y="124" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0969da">端到端</text>
+  <text x="340" y="124" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">5% · 十秒级 · 交互与实时</text>
+
+  <rect x="110" y="144" width="360" height="42" rx="7" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="122" y="170" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0969da">契约</text>
+  <text x="340" y="170" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">10% · 秒级 · 两端口径一致</text>
+
+  <rect x="70" y="190" width="400" height="42" rx="7" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="82" y="216" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0969da">集成</text>
+  <text x="340" y="216" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">25% · 秒级 · 约束、事务、成本</text>
+
+  <rect x="30" y="236" width="440" height="42" rx="7" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="42" y="262" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0969da">单元</text>
+  <text x="340" y="262" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">60% · 毫秒级 · 业务规则</text>
+
+  <text x="490" y="90" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#cf222e">二、测试替身的边界</text>
+
+  <rect x="490" y="98" width="380" height="86" rx="9" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="502" y="120" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1a7f37">可以替身（本条断言不关心它）</text>
+  <text x="502" y="141" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">第三方 HTTP / 事件回调</text>
+  <text x="502" y="157" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">系统时间与随机数（固定成已知值）</text>
+  <text x="502" y="173" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">通知出口 / 对象存储的签名与上传</text>
+
+  <rect x="490" y="192" width="380" height="86" rx="9" fill="#ffebe9" stroke="#ff8182"/>
+  <text x="502" y="214" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#cf222e">必须真依赖（替身会让断言失去意义）</text>
+  <text x="502" y="235" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">数据库约束与唯一索引：替身里没有索引</text>
+  <text x="502" y="251" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">事务：替身没有回滚，写一半失败也算成功</text>
+  <text x="502" y="267" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">并发与 UPDATE 计数：成本类判据全靠它</text>
+
+  <text x="30" y="316" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#9a6700">三、测试数据的三类</text>
+
+  <rect x="30" y="324" width="420" height="176" rx="9" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="42" y="348" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">三类数据：负责「像真的 / 最小 / 够多」</text>
+  <text x="42" y="370" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">种子数据：像真的（3 工作区 / 4 列 / 每列 5 卡）</text>
+  <text x="42" y="388" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">夹具：最小（一张卡 + 一条过期的 version）</text>
+  <text x="42" y="406" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">生成器：够多（填满一列 / 抵达 200 RPS 的量）</text>
+  <text x="42" y="430" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">混用的判据只有一条：这条用例的失败信息里，</text>
+  <text x="42" y="446" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">需要出现哪个数字？需要「恰好 +1」用夹具，</text>
+  <text x="42" y="462" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">需要「P99 在 200 RPS 下」用生成器。</text>
+  <text x="42" y="484" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">三类不是替代关系，是三种用途。</text>
+
+  <text x="470" y="316" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1a7f37">四、隔离三手段（隔离强度 vs 代价）</text>
+
+  <rect x="470" y="324" width="400" height="176" rx="9" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="482" y="348" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1a7f37">没有一种手段全都划算，按需升级</text>
+  <text x="482" y="370" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">事务回滚：最强，但只对单连接有效</text>
+  <text x="482" y="388" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">独立 schema：强，建 schema 有开销</text>
+  <text x="482" y="406" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">独立库：最强也最慢，只用于真实迁移</text>
+  <text x="482" y="430" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">默认事务回滚；需要真实并发或新事务时，</text>
+  <text x="482" y="446" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">才升到独立 schema / 独立库。</text>
+  <text x="482" y="462" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">默认独立库会让集成层慢到没人愿意跑，</text>
+  <text x="482" y="484" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">而没人跑的测试等于没有测试。</text>
+</svg>

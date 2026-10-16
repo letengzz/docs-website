@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="权限矩阵验证的结构：上部的 18 格与三个角色的允许数，中部的两条贯穿全表的边界，下部的三层权限判定与漏洞，底部是元判据">
+  <title>在线协作任务看板 · 权限矩阵 18 格的验证结构</title>
+  <defs>
+    <marker id="tbpm-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="900" height="520" fill="#ffffff"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#1f2328">在线协作任务看板 · 权限矩阵 18 格的验证结构</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#57606a">验收页定义这 18 格，本页把每一格变成一个会失败的用例：跑不通就是没过。</text>
+
+  <rect x="30" y="80" width="840" height="58" rx="9" fill="#f1f5f9" stroke="#d0d7de"/>
+  <text x="44" y="102" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">18 格 = 6 个动作 × 3 个角色：每格一个确定值，逐格发一次真实请求</text>
+  <text x="44" y="124" font-family="system-ui, sans-serif" font-size="10" fill="#57606a">六个动作：读看板 / 建卡 / 拖动卡片 / 评论 / 改成员角色 / 下载附件</text>
+
+  <rect x="30" y="150" width="272" height="86" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="174" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">owner：6 格全部允许</text>
+  <text x="44" y="196" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">专属能力只有「改成员角色」</text>
+  <text x="44" y="216" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">拖动与其他写能力一样允许</text>
+
+  <rect x="314" y="150" width="272" height="86" rx="9" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="328" y="174" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1a7f37">editor：5 允许 1 拒绝</text>
+  <text x="328" y="196" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">唯一拒绝：改成员角色</text>
+  <text x="328" y="216" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">建卡、拖动、评论全部允许</text>
+
+  <rect x="598" y="150" width="272" height="86" rx="9" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="612" y="174" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#9a6700">viewer：2 允许 4 拒绝</text>
+  <text x="612" y="196" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">允许：读看板、下载附件</text>
+  <text x="612" y="216" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">拒绝：建卡、拖动、评论、改成员</text>
+
+  <rect x="30" y="248" width="415" height="92" rx="9" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="44" y="272" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#cf222e">边界一：跨工作区一律 404</text>
+  <text x="44" y="294" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">不是 403——403 会泄露「这个资源存在」</text>
+  <text x="44" y="314" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">「无权」与「不存在」必须长得一样</text>
+  <text x="44" y="332" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">用 A 的令牌读 B 的看板，返回 403 即为错</text>
+
+  <rect x="455" y="248" width="415" height="92" rx="9" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="469" y="272" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#cf222e">边界二：越权订阅返回 403</text>
+  <text x="469" y="294" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">不是静默不推——静默时客户端分不清</text>
+  <text x="469" y="314" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">这个漏洞没有异常日志，只能逐格测出来</text>
+  <text x="469" y="332" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">边界三：附件签名后仍要复审一次成员关系</text>
+
+  <rect x="30" y="352" width="272" height="94" rx="9" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="44" y="376" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">路由层</text>
+  <text x="44" y="398" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">只在这一层做：漏配一条路由</text>
+  <text x="44" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">整格被放行，且没有 403 记录</text>
+  <text x="44" y="437" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">漏洞形态：正向格被放行</text>
+
+  <line x1="303" y1="399" x2="312" y2="399" stroke="#334155" stroke-width="1.6" marker-end="url(#tbpm-ar)"/>
+
+  <rect x="314" y="352" width="272" height="94" rx="9" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="328" y="376" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">服务层</text>
+  <text x="328" y="398" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">加了新入口，忘了带权限判定</text>
+  <text x="328" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">典型：handler 里直接查成员表</text>
+  <text x="328" y="437" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">漏洞形态：反向格被放行</text>
+
+  <line x1="587" y1="399" x2="596" y2="399" stroke="#334155" stroke-width="1.6" marker-end="url(#tbpm-ar)"/>
+
+  <rect x="598" y="352" width="272" height="94" rx="9" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="612" y="376" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">数据层</text>
+  <text x="612" y="398" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">查询没加 board_id 收窄</text>
+  <text x="612" y="418" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">结果是越权读，还返回 200</text>
+  <text x="612" y="437" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">漏洞形态：跨工作区读到数据</text>
+
+  <rect x="30" y="458" width="840" height="46" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="44" y="480" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#9a6700">元判据：一条从来没有失败过的权限用例，与没有权限校验无法区分</text>
+  <text x="44" y="496" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">四条元判据：覆盖完备 / 期望唯一 / 每格都能被失败 / 用例之间不依赖执行顺序</text>
+</svg>

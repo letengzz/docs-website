@@ -135,6 +135,19 @@ pnpm coverage && cat coverage/coverage-summary.json | head -5
 
 把 `thresholds.lines` 临时调到 100 再跑一次，应看到非 0 退出码与 `does not meet threshold` 报错——证明门禁生效。
 
+## 与「覆盖率门禁」章节的分工（第 148 天补充）
+
+[覆盖率门禁](/project/Complete/TeamBoard/CoverageGate/index.md)（属[在线协作任务看板](/project/Complete/TeamBoard/index.md)）把本页讲的前端覆盖率**收进了一条会拦人的门禁**，两者分工：
+
+| 边界问题 | 归本页 | 归该章节 |
+| --- | --- | --- |
+| 前端覆盖率怎么统计、看哪几个数 | 给 provider 选型（v8 / istanbul）、报告格式与常见误配 | 给**分母纪律**（哪些目录必须 `exclude`，为什么生成代码不该计入） |
+| `coverage-final.json` 与 diff 工具不对味 | 作为工具链问题提到 | 给结论：**换 provider 而不是换工具**（一行配置优于自写解析器） |
+| 「前端多少覆盖率算够」 | 给前端侧的参考区间 | 给三档阈值的**统一口径**（关键路径 100% 不设缓冲区，前端与后端同档同值） |
+| 门禁该挂在 `test` 还是 `verify` | 给命令差异 | 写死挂在**提交 / CI 侧**，并给出原因（`test` 会被 IDE 频繁触发） |
+
+一句话：**本页讲「前端覆盖率怎么算出来」，该章节讲「算出来的数怎么变成一道门」。**
+
 ## 参考资料
 
 - [Vitest Coverage 配置](https://vitest.dev/guide/coverage.html)

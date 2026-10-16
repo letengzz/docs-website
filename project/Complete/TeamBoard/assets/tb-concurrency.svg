@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="并发与幂等专项的结构：上部是四类场景及其可证伪结论，中部是制造确定性并发的四种手段，下部是 seq 连续性断言、并发测与压测的分工，底部是 409 与幂等在途的判定读数">
+  <title>在线协作任务看板 · 并发与幂等专项的判据结构</title>
+  <defs>
+    <marker id="tbcc-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="900" height="520" fill="#ffffff"/>
+  <text x="30" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#1f2328">在线协作任务看板 · 并发与幂等专项的判据结构</text>
+  <text x="30" y="62" font-family="system-ui, sans-serif" font-size="11.5" fill="#57606a">并发结论是概率性的，所以先固定三件事，再把「偶发」变成可以复现的读数。</text>
+
+  <rect x="30" y="80" width="840" height="44" rx="9" fill="#f1f5f9" stroke="#d0d7de"/>
+  <text x="44" y="100" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">固定三件事：输入 / 时序 / 判据</text>
+  <text x="44" y="117" font-family="system-ui, sans-serif" font-size="10" fill="#57606a">缺任何一件，「跑过 10 次都过」什么也证明不了——它只说明这 10 次没有撞上那个时序。</text>
+
+  <rect x="30" y="136" width="201" height="104" rx="9" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="42" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#3730a3">① 同一张卡两次拖动</text>
+  <text x="42" y="180" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">期望：一成一败</text>
+  <text x="42" y="198" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">200 与 409</text>
+  <text x="42" y="216" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">version 只加 1</text>
+  <text x="42" y="232" font-family="system-ui, sans-serif" font-size="8.5" fill="#b45309">反例：两条都 200</text>
+
+  <line x1="232" y1="188" x2="241" y2="188" stroke="#334155" stroke-width="1.6" marker-end="url(#tbcc-ar)"/>
+
+  <rect x="243" y="136" width="201" height="104" rx="9" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="255" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1a7f37">② 同一键重复请求</text>
+  <text x="255" y="180" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">期望：返回上次结果</text>
+  <text x="255" y="198" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">seq 不再加 1</text>
+  <text x="255" y="216" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">副作用只发生一次</text>
+  <text x="255" y="232" font-family="system-ui, sans-serif" font-size="8.5" fill="#b45309">反例：seq 加 2</text>
+
+  <line x1="445" y1="188" x2="454" y2="188" stroke="#334155" stroke-width="1.6" marker-end="url(#tbcc-ar)"/>
+
+  <rect x="456" y="136" width="201" height="104" rx="9" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="468" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#9a6700">③ 乐观更新被打回</text>
+  <text x="468" y="180" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">期望：回弹到服务端值</text>
+  <text x="468" y="198" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">带最新 version 与位置</text>
+  <text x="468" y="216" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">自动重试恰好一次</text>
+  <text x="468" y="232" font-family="system-ui, sans-serif" font-size="8.5" fill="#b45309">反例：界面不回弹</text>
+
+  <line x1="658" y1="188" x2="667" y2="188" stroke="#334155" stroke-width="1.6" marker-end="url(#tbcc-ar)"/>
+
+  <rect x="669" y="136" width="201" height="104" rx="9" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="681" y="158" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#cf222e">④ 断线补拉与广播交错</text>
+  <text x="681" y="180" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">期望：since 第一条</text>
+  <text x="681" y="198" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">恰好是本地最大加 1</text>
+  <text x="681" y="216" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">重复事件被幂等吸收</text>
+  <text x="681" y="232" font-family="system-ui, sans-serif" font-size="8.5" fill="#b45309">反例：多一条或少一条</text>
+
+  <rect x="30" y="254" width="840" height="56" rx="9" fill="#f1f5f9" stroke="#d0d7de"/>
+  <text x="44" y="275" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">制造确定性并发的四种手段（任选一种，不能用 sleep 撞运气）</text>
+  <text x="44" y="293" font-family="system-ui, sans-serif" font-size="10" fill="#57606a">栅栏同步 / 显式事务边界 / 注入可控延迟 / 两阶段提交；固定 100 毫秒等待不是并发测试。</text>
+
+  <rect x="30" y="324" width="415" height="96" rx="9" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="44" y="348" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1a7f37">seq 连续性：单调递增 / 无空洞 / 无重复</text>
+  <text x="44" y="370" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">空洞的三个来源：事务回滚占用、订阅断点、</text>
+  <text x="44" y="388" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">事件与业务表不在同一个事务里写。</text>
+  <text x="44" y="408" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">断言口径：相邻两条恰好差 1，首条等于本地最大加 1。</text>
+
+  <rect x="455" y="324" width="415" height="96" rx="9" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="469" y="348" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">并发测正确性，压测测容量</text>
+  <text x="469" y="370" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">并发测：少量请求、确定性时序，判据是「一成一败」。</text>
+  <text x="469" y="388" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">压测：开环到达率、P99，判的是容量与退化点。</text>
+  <text x="469" y="408" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">两者互相不能替代：压测再高也不证明幂等。</text>
+
+  <rect x="30" y="434" width="840" height="66" rx="10" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="44" y="456" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#3730a3">判定「在途」：期望一成一败、version 只加 1、第二次返回上次结果且 seq 不再加 1</text>
+  <text x="44" y="476" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">反例一：两条都成功，说明没有拦住；反例二：两条都失败，说明判据过严或客户端重试逻辑在打架。</text>
+  <text x="44" y="492" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">读数只能来自数据库与统计视图：被改动的行数、事件条数、version 的实际值。</text>
+</svg>

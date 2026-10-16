@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="在线协作任务看板的容量与压测：上部是登录建卡、看板读取、拖动广播、WebSocket 长连接四个场景模型，中部是入口、应用、数据、广播四层瓶颈定位，下部是广播放大系数与长连接数不等于 RPS 两处口径，底部是容量结论的四个前提与验收 A8 的对应">
+  <title>在线协作任务看板 · 压测场景、瓶颈四层与容量结论</title>
+  <defs>
+    <marker id="tbca-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="900" height="520" fill="#ffffff"/>
+  <text x="30" y="38" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#1f2328">在线协作任务看板 · 压测场景、瓶颈四层与容量结论</text>
+  <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11.5" fill="#57606a">容量结论不是一个数字，是「在什么条件下」的边界；写 QPS 与出站消息量是两个量。</text>
+
+  <text x="30" y="84" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">四个场景模型（同一个系统，四套到达率与混合比例，不合并成一个脚本）</text>
+
+  <rect x="30" y="94" width="195" height="112" rx="9" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="42" y="118" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0969da">登录与建卡（写）</text>
+  <text x="42" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">到达率：40 RPS</text>
+  <text x="42" y="154" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">混合：登录 1 / 建卡 3</text>
+  <text x="42" y="170" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">判据：P99 不高于 300 ms</text>
+  <text x="42" y="192" font-family="system-ui, sans-serif" font-size="8.5" fill="#9a6700">幂等键必须每轮不同</text>
+
+  <rect x="245" y="94" width="195" height="112" rx="9" fill="#dafbe1" stroke="#1a7f37"/>
+  <text x="257" y="118" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1a7f37">看板列表与详情（读）</text>
+  <text x="257" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">到达率：120 RPS</text>
+  <text x="257" y="154" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">混合：列表 7 / 详情 3</text>
+  <text x="257" y="170" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">判据：P95 不高于 150 ms</text>
+  <text x="257" y="192" font-family="system-ui, sans-serif" font-size="8.5" fill="#9a6700">必须带游标，不许全表扫</text>
+
+  <rect x="460" y="94" width="195" height="112" rx="9" fill="#fff1e5" stroke="#cf222e"/>
+  <text x="472" y="118" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#cf222e">拖动（写 + 广播）</text>
+  <text x="472" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">到达率：30 RPS</text>
+  <text x="472" y="154" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">混合：拖动 8 / 重排 2</text>
+  <text x="472" y="170" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">判据：P99 不高于 300 ms</text>
+  <text x="472" y="192" font-family="system-ui, sans-serif" font-size="8.5" fill="#9a6700">一次拖动只更新 1 行</text>
+
+  <rect x="675" y="94" width="195" height="112" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="687" y="118" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">WebSocket 长连接</text>
+  <text x="687" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">目标：1 万在线连接</text>
+  <text x="687" y="154" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">每 30 s 一次心跳与对账</text>
+  <text x="687" y="170" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">判据：广播延迟不高于 1 s</text>
+  <text x="687" y="192" font-family="system-ui, sans-serif" font-size="8.5" fill="#9a6700">扩容先看连接数，不是 RPS</text>
+
+  <text x="30" y="232" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">瓶颈定位四层（从外往里，逐层排除；不要一上来就猜数据库）</text>
+
+  <rect x="30" y="244" width="195" height="80" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="42" y="268" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">① 入口层</text>
+  <text x="42" y="288" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">连接数 / 实际到达率</text>
+  <text x="42" y="306" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">先看「到达率有没有打满」</text>
+
+  <line x1="227" y1="284" x2="241" y2="284" stroke="#334155" stroke-width="1.6" marker-end="url(#tbca-ar)"/>
+
+  <rect x="245" y="244" width="195" height="80" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="257" y="268" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">② 应用层</text>
+  <text x="257" y="288" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">P99 / 错误率 / 线程池</text>
+  <text x="257" y="306" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">看到排队就先看这里</text>
+
+  <line x1="442" y1="284" x2="456" y2="284" stroke="#334155" stroke-width="1.6" marker-end="url(#tbca-ar)"/>
+
+  <rect x="460" y="244" width="195" height="80" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="472" y="268" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">③ 数据层</text>
+  <text x="472" y="288" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">行锁等待 / 长事务 / 连接池</text>
+  <text x="472" y="306" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">读 pg_stat_activity</text>
+
+  <line x1="657" y1="284" x2="671" y2="284" stroke="#334155" stroke-width="1.6" marker-end="url(#tbca-ar)"/>
+
+  <rect x="675" y="244" width="195" height="80" rx="9" fill="#fff1e5" stroke="#cf222e"/>
+  <text x="687" y="268" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#cf222e">④ 广播层</text>
+  <text x="687" y="288" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">扇出 / 出站消息量 / 队列</text>
+  <text x="687" y="306" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">本项目特有的一层</text>
+
+  <rect x="30" y="338" width="420" height="76" rx="9" fill="#fff8c5" stroke="#9a6700"/>
+  <text x="44" y="362" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">广播放大系数 = 该看板的在线连接数</text>
+  <text x="44" y="382" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">一次拖动：1 次写入 + N 次序列化与发送</text>
+  <text x="44" y="400" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">出站消息量 = 写 QPS × N，与写 QPS 不是同一个量</text>
+
+  <rect x="470" y="338" width="400" height="76" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="484" y="362" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">长连接数 不等于 RPS</text>
+  <text x="484" y="382" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">连接建立有成本：握手 + 票据 + 订阅鉴权</text>
+  <text x="484" y="400" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">心跳与对账是固定成本，与请求量无关</text>
+
+  <rect x="30" y="424" width="840" height="82" rx="10" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="44" y="446" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0969da">容量结论的四个前提（少写一个，这个数字就不成立）</text>
+  <text x="44" y="466" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">硬件：2 核 4 GB × 3 实例 · 数据量：500 工作区 / 5000 用户 / 50 万卡片</text>
+  <text x="44" y="483" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">混合比例：读 60% / 写 30% / 长连接 10% · SLO：P99 不高于 300 ms</text>
+  <text x="44" y="500" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">与验收 A8 对应：一次拖动只更新 1 行；200 RPS 到达率下 P99 不高于 300 ms</text>
+</svg>

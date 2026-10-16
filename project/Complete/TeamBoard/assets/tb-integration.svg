@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="前后端联调概览：四个联调对象、五条错误码实跑口径、四条序列化纪律与一次拖动的两条时序路径">
+  <title>前后端联调 · 四个对象、五条错误码、四条序列化纪律与两条时序路径</title>
+  <defs>
+    <marker id="tbig-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" fill="#ffffff"/>
+  <text x="30" y="34" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1f2328">前后端联调 · 四个对象、五条错误码、四条序列化纪律与两条时序路径</text>
+  <text x="30" y="56" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">联调不是「两端都编译过了」，而是同一份请求在两端产出的字段、状态码与顺序都一样。</text>
+
+  <text x="30" y="84" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0969da">一、联调的四个对象（失败形态互不相同，混在一起就只能靠猜）</text>
+
+  <rect x="30" y="92" width="200" height="60" rx="9" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="42" y="114" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0969da">契约</text>
+  <text x="42" y="133" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">路径、方法与字段名两端同一份</text>
+  <text x="42" y="147" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">错了 → 恒定 400</text>
+
+  <line x1="231" y1="122" x2="243" y2="122" stroke="#57606a" stroke-width="1.5" marker-end="url(#tbig-ar)"/>
+
+  <rect x="245" y="92" width="200" height="60" rx="9" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="257" y="114" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0969da">错误码</text>
+  <text x="257" y="133" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">同一种失败、同一个状态码</text>
+  <text x="257" y="147" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">错了 → 客户端分支永不触发</text>
+
+  <line x1="446" y1="122" x2="458" y2="122" stroke="#57606a" stroke-width="1.5" marker-end="url(#tbig-ar)"/>
+
+  <rect x="460" y="92" width="200" height="60" rx="9" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="472" y="114" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0969da">序列化</text>
+  <text x="472" y="133" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">时间、空值、枚举、布尔同形</text>
+  <text x="472" y="147" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">错了 → 静默丢事件或崩栈</text>
+
+  <line x1="661" y1="122" x2="673" y2="122" stroke="#57606a" stroke-width="1.5" marker-end="url(#tbig-ar)"/>
+
+  <rect x="675" y="92" width="200" height="60" rx="9" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="687" y="114" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#0969da">时序</text>
+  <text x="687" y="133" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">提交与广播、乐观与回滚的先后</text>
+  <text x="687" y="147" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">错了 → 刷新一下就好了</text>
+
+  <text x="30" y="178" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#cf222e">二、错误码口径实跑表（五条，每条都真的造一次）</text>
+
+  <rect x="30" y="186" width="160" height="54" rx="8" fill="#ffebe9" stroke="#ff8182"/>
+  <text x="42" y="206" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700" fill="#cf222e">400</text>
+  <text x="42" y="224" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">JSON 写坏 / 必填缺失</text>
+  <text x="42" y="236" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">修代码，运行期不该出现</text>
+
+  <rect x="200" y="186" width="160" height="54" rx="8" fill="#ffebe9" stroke="#ff8182"/>
+  <text x="212" y="206" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700" fill="#cf222e">401</text>
+  <text x="212" y="224" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">不带令牌 / 令牌过期</text>
+  <text x="212" y="236" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">刷新令牌后重试一次</text>
+
+  <rect x="370" y="186" width="160" height="54" rx="8" fill="#ffebe9" stroke="#ff8182"/>
+  <text x="382" y="206" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700" fill="#cf222e">403</text>
+  <text x="382" y="224" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">viewer 调写接口</text>
+  <text x="382" y="236" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">禁用按钮并提示，不重试</text>
+
+  <rect x="540" y="186" width="160" height="54" rx="8" fill="#ffebe9" stroke="#ff8182"/>
+  <text x="552" y="206" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700" fill="#cf222e">404</text>
+  <text x="552" y="224" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">跨工作区读 / 不存在的 id</text>
+  <text x="552" y="236" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">回列表页，不重试</text>
+
+  <rect x="710" y="186" width="160" height="54" rx="8" fill="#ffebe9" stroke="#ff8182"/>
+  <text x="722" y="206" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700" fill="#cf222e">409</text>
+  <text x="722" y="224" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">过期 version 拖动</text>
+  <text x="722" y="236" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">按 details 回滚乐观更新</text>
+
+  <text x="30" y="264" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#9a6700">三、序列化四条（同一个值，两端必须同形）</text>
+
+  <rect x="30" y="272" width="200" height="50" rx="8" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="42" y="292" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">时间格式</text>
+  <text x="42" y="307" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">ISO 8601 带偏移，UTC 用 Z</text>
+  <text x="42" y="318" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">前端不做本地时区假设</text>
+
+  <rect x="245" y="272" width="200" height="50" rx="8" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="257" y="292" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">null 与 空数组</text>
+  <text x="257" y="307" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">集合空回 []，单值空回 null</text>
+  <text x="257" y="318" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">两者不互换，前端不崩栈</text>
+
+  <rect x="460" y="272" width="200" height="50" rx="8" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="472" y="292" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">枚举大小写</text>
+  <text x="472" y="307" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">小写 + 点号，未知值走默认</text>
+  <text x="472" y="318" font-family="system-ui, sans-serif" font-size="8.5" fill="#cf222e">静默丢事件，只能靠对账查</text>
+
+  <rect x="675" y="272" width="200" height="50" rx="8" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="687" y="292" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">布尔值</text>
+  <text x="687" y="307" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">JSON true / false</text>
+  <text x="687" y="318" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">不用 0 与 1，免假值歧义</text>
+
+  <text x="30" y="344" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1a7f37">四、时序：一次拖动的两条路径（铁律只验，不复述）</text>
+
+  <rect x="30" y="352" width="420" height="88" rx="9" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="42" y="374" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1a7f37">成功路径：乐观更新 → 200 → 广播 → 各端收敛</text>
+  <text x="42" y="392" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">① 前端先改本地状态，拖动端立刻看到新位置</text>
+  <text x="42" y="408" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">② 200 回来后用响应体的 version / position 覆盖本地</text>
+  <text x="42" y="424" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">③ 事务提交之后才广播 card.moved（铁律，只验不复述）</text>
+  <text x="42" y="438" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">④ 各端按 seq 应用，两端 position 与 version 逐字段相同</text>
+
+  <rect x="470" y="352" width="400" height="88" rx="9" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="482" y="374" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1a7f37">409 路径：本地回滚 → 拉最新 version 与 position</text>
+  <text x="482" y="392" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">① 乐观更新已生效，此刻本地状态其实是错的</text>
+  <text x="482" y="408" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">② 409 的 details 带 currentVersion 与 currentPosition</text>
+  <text x="482" y="424" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">③ 按 details 精确回滚这一次，不重载整个看板</text>
+  <text x="482" y="438" font-family="system-ui, sans-serif" font-size="9.5" fill="#1f2328">④ 用户重试时用的是新 version，不会再冲突</text>
+
+  <rect x="30" y="448" width="840" height="60" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="44" y="470" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1f2328">两条口径写死：401 先于 403 判定；跨工作区一律 404 ——「无权」与「不存在」必须完全同形</text>
+  <text x="44" y="490" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">四对象、五错误码、四序列化纪律、两时序路径：逐条真的造一次、观察一次，才算联通过。</text>
+  <text x="44" y="504" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">造不出来的错误码等于没有被实现——它只存在于文档里。</text>
+</svg>

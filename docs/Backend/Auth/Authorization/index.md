@@ -121,6 +121,19 @@ WHERE o.status = 'PAID'
 - [OAuth 2.1 与 OIDC](../Oauth2/index.md)：scope 与权限的关系
 - [Spring Security 6 · 授权](../../Java/Frame/SpringSecurity/v6/SpringBoot/Authorization/index.md)：Java 侧实现
 
+## 与「权限矩阵验证」章节的分工（第 148 天补充）
+
+[权限矩阵验证](/project/Complete/TeamBoard/PermissionMatrix/index.md)（属[在线协作任务看板](/project/Complete/TeamBoard/index.md)）把本页的授权口径**变成了一张会失败的用例矩阵**，两者分工：
+
+| 边界问题 | 归本页 | 归该章节 |
+| --- | --- | --- |
+| 授权模型怎么建模（RBAC / ABAC / 数据范围） | 给模型、判据层次与「仅本人」这类数据范围的判法 | 不重新定义规则——它**原样引用**架构页定下的 18 格 |
+| 「跨工作区一律 `404`」还是 `403` | 给两条状态码的语义与取舍 | 把该口径作为**边界用例**逐格固定，并指出它是**防枚举**约定 |
+| `401` 与 `403` 的先后 | 给判定顺序与原因 | 给一条**顺序敏感**的联调口径（`401` 先于 `403`），并用用例固定 |
+| 权限判定的三个层次怎么落 | 给「入口 / 服务 / 数据」三层各自判什么 | 给出**只在一层做的三个漏洞**与对应用例 |
+
+一句话：**本页讲「授权怎么建模」；该章节讲「建好的模型怎么被逐格证明——每一格都要有一个『错的样子』」。**
+
 ## 参考资料
 
 - OWASP · Authorization Cheat Sheet：https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html

@@ -208,6 +208,19 @@ Running 6 tests using 4 workers
 HTML report: playwright-report/index.html (run `npx playwright show-report`)
 ```
 
+## 与「端到端测试」章节的分工（第 148 天补充）
+
+[端到端测试](/project/Complete/TeamBoard/E2ETest/index.md)（属[在线协作任务看板](/project/Complete/TeamBoard/index.md)）回答的是**用例该不该在这一层**，本页回答**这一层怎么写**：
+
+| 边界问题 | 归本页 | 归该章节 |
+| --- | --- | --- |
+| 工具怎么装、配置怎么写、怎么调试 | Playwright 安装、`playwright.config.ts`、UI Mode 与 Trace 查看 | 不涉及工具用法，只给**用例的准入与清单** |
+| 选择器与等待 | 给选择器体系与自动等待的机制说明 | 给三条**纪律**（语义定位 / web-first 断言 / 等条件不睡时长）与三条反例 |
+| 「这条场景要不要写成 E2E」 | 给「关键链路优先」的经验判据 | 给可操作的三条准入（跨进程 / 跨存储 / 链路完整性）与四类伪需求 |
+| 实时类断言怎么做 | 给 WebSocket 场景的常规写法 | 给**断言对象**的写死口径：读收到的帧（`type` / `seq`）而不是读 DOM |
+
+一句话：**本页是工具手册，该章节是用例的准入判据——「怎么写」与「该不该写在这一层」是两件事。**
+
 ## 参考资料
 
 - [Playwright 官方文档](https://playwright.dev/docs/intro)

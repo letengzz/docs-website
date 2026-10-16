@@ -154,6 +154,19 @@ jobs:
 2. 远程：推送一个不达覆盖率的 PR，Actions 的 `unit` job 应红，且 PR 无法合入（需开启分支保护规则要求检查通过）；
 3. E2E 失败时能在 Artifacts 下载 `playwright-report` 并打开 Trace。
 
+## 与「自动化测试分层」章节的分工（第 148 天补充）
+
+[自动化测试分层](/project/Complete/TeamBoard/TestStrategy/index.md)（属[在线协作任务看板](/project/Complete/TeamBoard/index.md)）与本页都讲分层，但**分层对象不同**：本页分的是**前端内部**的层，那一页分的是**整个系统**的层。
+
+| 边界问题 | 归本页 | 归该章节 |
+| --- | --- | --- |
+| 组件测试与浏览器模式怎么取舍 | 给两者的能力边界与推荐比例 | 把浏览器模式归到「组件测试的另一种运行方式」，并指出它**仍抓不到跨进程推送** |
+| 前端该写多少测试 | 给前端侧的配比建议 | 给**四层配比表**与三条定值理由（按缺陷归属 / 按单位成本 / 上层须可审计） |
+| 测试数据怎么隔离（前端） | 给前端侧的夹具与 mock 策略 | 给三类数据、三手段代价表，并写死「顺序无关是唯一硬判据」 |
+| 网络请求怎么替身 | 给 MSW 的用法 | 写死边界：**MSW 不能用来验 WebSocket**（推送断言留给端到端层） |
+
+一句话：**本页讲「前端仓库内部怎么分层」，该章节讲「四个层各自回答什么问题、比例从哪来」。**
+
 ## 参考资料
 
 - [Testing Strategies in a Microservices Architecture](https://martinfowler.com/articles/microservice-testing/)

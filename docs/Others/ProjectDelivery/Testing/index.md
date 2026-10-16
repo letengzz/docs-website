@@ -248,6 +248,19 @@ grep -rn "Thread.sleep" src/test | grep -v "// 已评估" || echo "无固定等�
 功能用例可以通过一次执行证明，并发与实时判据**必须能被证伪**：把乐观锁去掉、把广播改到提交之前，判据应当立刻变红。**跑一遍是绿的、改坏了还是绿的**，这条判据就没有价值。
 :::
 
+## 与「联调与测试」章节集的分工（第 148 天补充）
+
+第 148 天为[在线协作任务看板](/project/Complete/TeamBoard/index.md)交付了「联调与测试」章节集八页（[联调](/project/Complete/TeamBoard/Integration/index.md) / [自动化测试分层](/project/Complete/TeamBoard/TestStrategy/index.md) / [覆盖率门禁](/project/Complete/TeamBoard/CoverageGate/index.md) / [端到端测试](/project/Complete/TeamBoard/E2ETest/index.md) / [并发与幂等](/project/Complete/TeamBoard/Concurrency/index.md) / [权限矩阵](/project/Complete/TeamBoard/PermissionMatrix/index.md) / [压测与容量](/project/Complete/TeamBoard/CapacityTest/index.md) / [周验收收口](/project/Complete/TeamBoard/Week3Acceptance/index.md)）。两者是**方法论 vs 落地记录**的关系：
+
+| 边界问题 | 归本页 | 归章节集 |
+| --- | --- | --- |
+| 测试策略该怎么定、四层怎么划分 | 给通用口径（分层原则、配比区间、评审要点） | 给这一套系统的四层职责表与**逐条定值理由**（为什么端到端只占 5%） |
+| 覆盖率门禁该不该上、上到什么程度 | 给决策依据（成本与收益、组织前提） | 给三档阈值、门禁五步链与**棘轮 + 豁免**的具体机制 |
+| 「验收条件怎么写」 | 给四类验收条件与 Given/When/Then 的写法 | 给 `A1`~`A8` 与 `TB-A`~`TB-H`，以及**阻塞项台账**的真实形态 |
+| 测试数据与质量门禁的组织问题 | 给流程与角色（谁定阈值、谁批豁免） | 给可复算的读数与 `grep -c` 判据（期望值均为实跑回填） |
+
+一句话：**本页回答「这件事该不该做、组织上怎么定」；章节集回答「在协作看板这一个系统上，它具体长什么样、怎么验」。**
+
 ## 参考资料
 
 - [JUnit 5 用户指南](https://junit.org/junit5/docs/current/user-guide/)

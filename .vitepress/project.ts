@@ -285,6 +285,7 @@ export const CompleteProject = [
           { text: "└ 从零复现指南", link: "/project/Complete/MonitoringDashboard/DeliveryPackage/Reproduce/index.md" },
           { text: "└ 上线验收清单", link: "/project/Complete/MonitoringDashboard/DeliveryPackage/Acceptance/index.md" },
           { text: "└ 故障应对索引", link: "/project/Complete/MonitoringDashboard/DeliveryPackage/RunbookIndex/index.md" },
+          { text: "环境交付件落盘：9 份台账与 3 份脚本的内容入仓", link: "/project/Complete/MonitoringDashboard/EnvArtifacts/index.md" },
         ],
       },
       {
@@ -306,6 +307,14 @@ export const CompleteProject = [
           { text: "接口契约定稿：路径、错误码与幂等", link: "/project/Complete/TeamBoard/Contracts/index.md" },
           { text: "可运行验证：从零起一套能跑的环境", link: "/project/Complete/TeamBoard/Verification/index.md" },
           { text: "常见问题与最佳实践：编码期分诊与自查", link: "/project/Complete/TeamBoard/FAQ/index.md" },
+          { text: "前后端联调：跨进程链路的对齐口径（IG-A~IG-H）", link: "/project/Complete/TeamBoard/Integration/index.md" },
+          { text: "自动化测试策略：把用例放在正确的层（TS-A~TS-H）", link: "/project/Complete/TeamBoard/TestStrategy/index.md" },
+          { text: "覆盖率门禁：阈值、变更覆盖与豁免（CV-A~CV-H）", link: "/project/Complete/TeamBoard/CoverageGate/index.md" },
+          { text: "端到端测试：三条准入与七条用例（ET-A~ET-H）", link: "/project/Complete/TeamBoard/E2ETest/index.md" },
+          { text: "并发验证：同一张卡片的两次拖动（CC-A~CC-H）", link: "/project/Complete/TeamBoard/Concurrency/index.md" },
+          { text: "权限矩阵联调：18 格无漏判（PM-A~PM-H）", link: "/project/Complete/TeamBoard/PermissionMatrix/index.md" },
+          { text: "容量验证：写、读、拖动与长连接（CAP-A~CAP-H）", link: "/project/Complete/TeamBoard/CapacityTest/index.md" },
+          { text: "第 3 周验收结论：四类证据的收口与残余（W3-A~W3-H）", link: "/project/Complete/TeamBoard/Week3Acceptance/index.md" },
         ],
       },
       {

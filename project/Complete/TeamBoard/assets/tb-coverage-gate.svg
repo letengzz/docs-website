@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="在线协作任务看板的覆盖率口径与门禁：上部是行覆盖、分支覆盖、变更覆盖三条口径各自的盲区，中部是单元测试到门禁判定的五步链，下部是三档覆盖率阈值，底部是棘轮机制与豁免的到期约束">
+  <title>在线协作任务看板 · 覆盖率口径与门禁五步链</title>
+  <defs>
+    <marker id="tbcv-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="900" height="520" fill="#ffffff"/>
+  <text x="30" y="38" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#1f2328">在线协作任务看板 · 覆盖率口径与门禁五步链</text>
+  <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11.5" fill="#57606a">覆盖率只回答「有没有执行到」；门禁真正要卡的是「新写的那几行有没有被验到」。</text>
+
+  <rect x="30" y="76" width="270" height="106" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="44" y="98" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">行覆盖（line）</text>
+  <text x="44" y="118" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">分母：可执行的指令行</text>
+  <text x="44" y="136" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">盲区：一行里的多分支与短路</text>
+  <text x="44" y="154" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">盲区：执行到 不等于 断言过</text>
+  <text x="44" y="174" font-family="system-ui, sans-serif" font-size="9" fill="#9a6700">「刷覆盖」的重灾区</text>
+
+  <rect x="315" y="76" width="270" height="106" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="329" y="98" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">分支覆盖（branch）</text>
+  <text x="329" y="118" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">每个判断的真 / 假各走一次</text>
+  <text x="329" y="136" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">盲区：边界值（&gt; 与 ≥ 之差）</text>
+  <text x="329" y="154" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">盲区：编译器插入的合成分支</text>
+  <text x="329" y="174" font-family="system-ui, sans-serif" font-size="9" fill="#1a7f37">比行覆盖强一档，优先看它</text>
+
+  <rect x="600" y="76" width="270" height="106" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="614" y="98" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">变更覆盖（diff）</text>
+  <text x="614" y="118" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">只卡本次新增 / 改动的行</text>
+  <text x="614" y="136" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">盲区：历史欠账不在分母里</text>
+  <text x="614" y="154" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">盲区：空断言也能把它刷绿</text>
+  <text x="614" y="174" font-family="system-ui, sans-serif" font-size="9" fill="#1a7f37">欠账不许一次性还清</text>
+
+  <text x="30" y="208" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">门禁五步链（顺序不可换；前三步只产出数字，后两步才拦人）</text>
+
+  <rect x="30" y="222" width="156" height="92" rx="9" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="42" y="246" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0969da">① 单测 + 覆盖率</text>
+  <text x="42" y="266" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">JaCoCo 0.8.15</text>
+  <text x="42" y="282" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">Vitest 5.0.3</text>
+  <text x="42" y="302" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">产出 exec / json</text>
+
+  <line x1="188" y1="268" x2="199" y2="268" stroke="#334155" stroke-width="1.6" marker-end="url(#tbcv-ar)"/>
+
+  <rect x="201" y="222" width="156" height="92" rx="9" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="213" y="246" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0969da">② 覆盖率报告</text>
+  <text x="213" y="266" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">XML + HTML + CSV</text>
+  <text x="213" y="282" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">按模块聚合</text>
+  <text x="213" y="302" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">行号从 XML 里读</text>
+
+  <line x1="359" y1="268" x2="370" y2="268" stroke="#334155" stroke-width="1.6" marker-end="url(#tbcv-ar)"/>
+
+  <rect x="372" y="222" width="156" height="92" rx="9" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="384" y="246" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0969da">③ 阈值 check</text>
+  <text x="384" y="266" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">挂 mvn verify</text>
+  <text x="384" y="282" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">挂 pnpm test</text>
+  <text x="384" y="302" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">不达标即非零退出</text>
+
+  <line x1="530" y1="268" x2="541" y2="268" stroke="#334155" stroke-width="1.6" marker-end="url(#tbcv-ar)"/>
+
+  <rect x="543" y="222" width="156" height="92" rx="9" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="555" y="246" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0969da">④ 变更覆盖</text>
+  <text x="555" y="266" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">只取本次改动行</text>
+  <text x="555" y="282" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">与 JaCoCo XML 对账</text>
+  <text x="555" y="302" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">阈值：改动行 ≥ 80%</text>
+
+  <line x1="701" y1="268" x2="712" y2="268" stroke="#334155" stroke-width="1.6" marker-end="url(#tbcv-ar)"/>
+
+  <rect x="714" y="222" width="156" height="92" rx="9" fill="#fff1e5" stroke="#cf222e"/>
+  <text x="726" y="246" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#cf222e">⑤ 门禁判定</text>
+  <text x="726" y="266" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">红即阻断，不警告通过</text>
+  <text x="726" y="282" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">输出必须含文件</text>
+  <text x="726" y="302" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">未覆盖行号 + 阈值</text>
+
+  <text x="30" y="344" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">三档阈值（同一个数字管不了三类代码，定值理由逐档写清）</text>
+
+  <rect x="30" y="358" width="270" height="88" rx="9" fill="#fff1e5" stroke="#cf222e"/>
+  <text x="44" y="382" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#cf222e">关键路径：行 100% / 分支 100%</text>
+  <text x="44" y="402" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">拖动 / 权限判定 / 幂等 / 序号分配</text>
+  <text x="44" y="420" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">这几条错一次就是数据错</text>
+  <text x="44" y="438" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">不设缓冲区，也就没有豁免入口</text>
+
+  <rect x="315" y="358" width="270" height="88" rx="9" fill="#dafbe1" stroke="#1a7f37"/>
+  <text x="329" y="382" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1a7f37">核心域：行 ≥ 85 / 分支 ≥ 75</text>
+  <text x="329" y="402" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">领域服务、状态收敛、契约映射</text>
+  <text x="329" y="420" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">有分支有边界，值得卡住</text>
+  <text x="329" y="438" font-family="system-ui, sans-serif" font-size="9" fill="#1a7f37">按包设阈值，不用全局一个数</text>
+
+  <rect x="600" y="358" width="270" height="88" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="614" y="382" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">外围适配：行 ≥ 70 / 分支 ≥ 60</text>
+  <text x="614" y="402" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">接口层、适配器、视图组件</text>
+  <text x="614" y="420" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">装配与映射代码居多</text>
+  <text x="614" y="438" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">目标是不拖后腿，不是拔高</text>
+
+  <rect x="30" y="458" width="840" height="48" rx="10" fill="#fef3c7" stroke="#9a6700"/>
+  <text x="44" y="478" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">棘轮：阈值只升不降、基线只上调；豁免须双签并带到期日（默认 30 天），过期即红</text>
+  <text x="44" y="496" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">「把阈值调高」不是质量提升——不补测试只改数字，只是把失败推给下一个人。</text>
+</svg>

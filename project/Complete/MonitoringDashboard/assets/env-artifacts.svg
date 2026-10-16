@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img" aria-label="实时监控大盘环境交付件落盘台账：9 份交付件的库内覆盖率条形图，6 份配置类已落盘、3 份脚本内容未落盘，下方是四步复算路径">
+  <title>环境交付件落盘：9 份台账的库内覆盖率与三步复算路径</title>
+  <rect width="900" height="600" fill="#ffffff"/>
+  <text x="30" y="38" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#1f2328">环境交付件落盘 · 9 份台账的库内覆盖率与三步复算路径</text>
+  <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11.5" fill="#57606a">「记录不等于交付」——先量一次「库内覆盖率」，再只补真正空着的那几份，避免同内容两处维护。</text>
+
+  <text x="30" y="88" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">库内覆盖率实测（有效行 = 长度 &gt; 12 且非注释；对 project/ 与 docs/ 全部 Markdown 做精确子串匹配）</text>
+  <text x="870" y="88" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="end" fill="#57606a">✅ ≥85% 基本落盘 · ⏳ 部分落盘 · ❌ &lt;15% 内容未落盘</text>
+
+  <text x="30" y="112" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">1 compose.yaml</text>
+  <rect x="230" y="101" width="236" height="14" rx="3" fill="#bc4c00"/>
+  <text x="474" y="112" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">52.4%</text>
+  <text x="800" y="112" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">⏳</text>
+
+  <text x="30" y="138" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">2 compose.singlefile.yaml</text>
+  <rect x="230" y="127" width="236" height="14" rx="3" fill="none" stroke="#bc4c00" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="474" y="138" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">52.4%（cmp 与 ① 相同）</text>
+  <text x="800" y="138" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">⏳</text>
+
+  <text x="30" y="164" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">3 prometheus.yml</text>
+  <rect x="230" y="153" width="402" height="14" rx="3" fill="#1a7f37"/>
+  <text x="640" y="164" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">89.4%</text>
+  <text x="800" y="164" font-family="system-ui, sans-serif" font-size="9.5" fill="#1a7f37">✅</text>
+
+  <text x="30" y="190" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">4 alerting.yaml</text>
+  <rect x="230" y="179" width="293" height="14" rx="3" fill="#bc4c00"/>
+  <text x="531" y="190" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">65.0%</text>
+  <text x="800" y="190" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">⏳</text>
+
+  <text x="30" y="216" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">5 recording.yaml</text>
+  <rect x="230" y="205" width="400" height="14" rx="3" fill="#1a7f37"/>
+  <text x="638" y="216" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">88.9%</text>
+  <text x="800" y="216" font-family="system-ui, sans-serif" font-size="9.5" fill="#1a7f37">✅</text>
+
+  <text x="30" y="242" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">6 alertmanager.yaml</text>
+  <rect x="230" y="231" width="450" height="14" rx="3" fill="#1a7f37"/>
+  <text x="688" y="242" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">100.0%</text>
+  <text x="800" y="242" font-family="system-ui, sans-serif" font-size="9.5" fill="#1a7f37">✅</text>
+
+  <text x="30" y="268" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">7 one-click-up.sh</text>
+  <rect x="230" y="257" width="65" height="14" rx="3" fill="#cf222e"/>
+  <text x="303" y="268" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">14.5%</text>
+  <text x="800" y="268" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#cf222e">❌</text>
+
+  <text x="30" y="294" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">8 check-panels.sh</text>
+  <rect x="230" y="283" width="13" height="14" rx="3" fill="#cf222e"/>
+  <text x="251" y="294" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">2.8%</text>
+  <text x="800" y="294" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#cf222e">❌</text>
+
+  <text x="30" y="320" font-family="system-ui, sans-serif" font-size="10" fill="#1f2328">9 check-alerts.py</text>
+  <rect x="230" y="309" width="15" height="14" rx="3" fill="#cf222e"/>
+  <text x="253" y="320" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">3.4%</text>
+  <text x="800" y="320" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#cf222e">❌</text>
+
+  <rect x="30" y="340" width="840" height="34" rx="8" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="44" y="362" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328">结论：6 份配置类内容已在库里（3 份接近逐行完整）→ 不回贴；真正空着的只有 3 份脚本（3%~15%），今天只补这 3 份。</text>
+
+  <text x="30" y="396" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">从页面内容重建 9 份交付件：三步复算（全程不依赖任何仓库文件）</text>
+
+  <rect x="30" y="410" width="260" height="118" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="44" y="434" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">① 取 6 份配置类</text>
+  <text x="44" y="456" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">compose.yaml ← 架构设计 + 部署前置</text>
+  <text x="44" y="474" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">prometheus.yml ← 采集任务配置</text>
+  <text x="44" y="492" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">alerting / recording ← 查询与规则设计</text>
+  <text x="44" y="510" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">alertmanager.yaml ← 验收三（逐行完整）</text>
+
+  <rect x="320" y="410" width="260" height="118" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="334" y="434" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">② 取 3 份脚本</text>
+  <text x="334" y="456" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">one-click-up.sh ← 本页第九节 9.1</text>
+  <text x="334" y="474" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">check-panels.sh ← 本页第九节 9.2</text>
+  <text x="334" y="492" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">check-alerts.py ← 本页第九节 9.3</text>
+  <text x="334" y="510" font-family="system-ui, sans-serif" font-size="9.5" fill="#0969da">连 8 处踩坑注释一起落（注释是最有价值的部分）</text>
+
+  <rect x="610" y="410" width="260" height="118" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="624" y="434" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1f2328">③ 先静态校验，再跑三条自查</text>
+  <text x="624" y="456" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">docker compose config -q</text>
+  <text x="624" y="474" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">promtool check config</text>
+  <text x="624" y="492" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">amtool check-config</text>
+  <text x="624" y="510" font-family="system-ui, sans-serif" font-size="9.5" fill="#cf222e">跳过校验 → 错误推迟到「栈起了一半」</text>
+
+  <path d="M292 469 L316 469" stroke="#8c959f" stroke-width="1.5"/>
+  <path d="M312 465 L317 469 L312 473 Z" fill="#8c959f"/>
+  <path d="M582 469 L606 469" stroke="#8c959f" stroke-width="1.5"/>
+  <path d="M602 465 L607 469 L602 473 Z" fill="#8c959f"/>
+
+  <text x="30" y="556" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">形态纪律：project/ 只允许 *.md 与配图（AGENTS.md 第 9 节）——所以三份脚本落在「页面里的围栏代码块」，而不是仓库里的文件。</text>
+  <text x="30" y="574" font-family="system-ui, sans-serif" font-size="9.5" fill="#cf222e">判据 EA-C：必须「内容可 grep 到」，不是「文件名被提到过」；库里那 3 份的命中行大多只是脚本名的调用点。</text>
+</svg>
