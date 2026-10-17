@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+  <title>跨租户用例矩阵：三类主体、六类动作与三条必失点</title>
+  <rect width="900" height="540" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">18 格：每一格都要能红</text>
+
+  <!-- 表头 -->
+  <rect x="40" y="60" width="170" height="44" rx="6" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="125" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#334155">主体 ＼ 动作</text>
+  <rect x="215" y="60" width="105" height="44" rx="6" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="267" y="88" text-anchor="middle" font-size="12" fill="#334155">列表读</text>
+  <rect x="325" y="60" width="105" height="44" rx="6" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="377" y="88" text-anchor="middle" font-size="12" fill="#334155">单条读</text>
+  <rect x="435" y="60" width="105" height="44" rx="6" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="487" y="88" text-anchor="middle" font-size="12" fill="#334155">写 / 删</text>
+  <rect x="545" y="60" width="105" height="44" rx="6" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="597" y="88" text-anchor="middle" font-size="12" fill="#334155">附件签名</text>
+  <rect x="655" y="60" width="105" height="44" rx="6" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="707" y="88" text-anchor="middle" font-size="12" fill="#334155">导出</text>
+
+  <!-- 行 1 -->
+  <rect x="40" y="108" width="170" height="44" rx="6" fill="#EFF6FF" stroke="#93C5FD"/>
+  <text x="125" y="130" text-anchor="middle" font-size="12" fill="#1D4ED8">B 租户普通成员</text>
+  <text x="125" y="146" text-anchor="middle" font-size="10" fill="#64748B">（A 的 token）</text>
+  <rect x="215" y="108" width="105" height="44" rx="6" fill="#ECFDF5" stroke="#6EE7B7"/>
+  <text x="267" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">200 空数组</text>
+  <rect x="325" y="108" width="105" height="44" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="377" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">404</text>
+  <rect x="435" y="108" width="105" height="44" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="487" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">404</text>
+  <rect x="545" y="108" width="105" height="44" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="597" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">404</text>
+  <rect x="655" y="108" width="105" height="44" rx="6" fill="#ECFDF5" stroke="#6EE7B7"/>
+  <text x="707" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">表头 + 0 行</text>
+
+  <!-- 行 2 -->
+  <rect x="40" y="156" width="170" height="44" rx="6" fill="#EFF6FF" stroke="#93C5FD"/>
+  <text x="125" y="178" text-anchor="middle" font-size="12" fill="#1D4ED8">B 租户只读访客</text>
+  <text x="125" y="194" text-anchor="middle" font-size="10" fill="#64748B">（A 的 token）</text>
+  <rect x="215" y="156" width="105" height="44" rx="6" fill="#ECFDF5" stroke="#6EE7B7"/>
+  <text x="267" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">200 空数组</text>
+  <rect x="325" y="156" width="105" height="44" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="377" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">404</text>
+  <rect x="435" y="156" width="105" height="44" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="487" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">404 先于 403</text>
+  <rect x="545" y="156" width="105" height="44" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="597" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">404</text>
+  <rect x="655" y="156" width="105" height="44" rx="6" fill="#ECFDF5" stroke="#6EE7B7"/>
+  <text x="707" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">表头 + 0 行</text>
+
+  <!-- 行 3 -->
+  <rect x="40" y="204" width="170" height="44" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="125" y="226" text-anchor="middle" font-size="12" fill="#92400E">平台运维</text>
+  <text x="125" y="242" text-anchor="middle" font-size="10" fill="#B45309">（bypassrls + 审计）</text>
+  <rect x="215" y="204" width="105" height="44" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="267" y="232" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">200 + 审计</text>
+  <rect x="325" y="204" width="105" height="44" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="377" y="232" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">200 + 审计</text>
+  <rect x="435" y="204" width="105" height="44" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="487" y="232" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">200 + 审计</text>
+  <rect x="545" y="204" width="105" height="44" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="597" y="232" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">200 + 审计</text>
+  <rect x="655" y="204" width="105" height="44" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="707" y="232" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">200 + 审计</text>
+
+  <!-- 404 说明 -->
+  <rect x="40" y="268" width="720" height="62" rx="8" fill="#FFFFFF" stroke="#EF4444" stroke-dasharray="5 4"/>
+  <text x="56" y="290" font-size="12" font-weight="bold" fill="#B91C1C">为什么是 404 而不是 403</text>
+  <text x="56" y="310" font-size="11" fill="#334155">403 = 「存在但你不能动」，把存在性告诉了越权者；404 = 「在你的世界里不存在」。403 只留给同租户角色不足。</text>
+  <text x="56" y="324" font-size="11" fill="#334155">404 还必须断言 body 为空——返回 404 却带着实体字段，等于把数据泄漏给了越权者。</text>
+
+  <!-- 三条必失点 -->
+  <rect x="40" y="346" width="820" height="164" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="56" y="372" font-size="13" font-weight="bold" fill="#334155">矩阵之外必须单独测的三条（RLS 管不到）</text>
+
+  <rect x="56" y="384" width="252" height="110" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+  <text x="72" y="406" font-size="12" font-weight="bold" fill="#1D4ED8">① JOIN 漏租户</text>
+  <text x="72" y="426" font-size="11" fill="#334155">主表带租户，关联表靠 id</text>
+  <text x="72" y="444" font-size="11" fill="#334155">造「同 id 两租户都有」的数据</text>
+  <text x="72" y="462" font-size="10" fill="#B91C1C">仅测试库可临时去掉 UUID 默认值</text>
+  <text x="72" y="482" font-size="10" fill="#64748B">JoinLeakTest</text>
+
+  <rect x="324" y="384" width="252" height="110" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+  <text x="340" y="406" font-size="12" font-weight="bold" fill="#1D4ED8">② 缓存键漏租户</text>
+  <text x="340" y="426" font-size="11" fill="#334155">缓存不经过 SQL，RLS 管不到</text>
+  <text x="340" y="444" font-size="11" fill="#334155">两租户并发读同一 boardId</text>
+  <text x="340" y="462" font-size="10" fill="#B91C1C">先请求者决定后来者看到什么</text>
+  <text x="340" y="482" font-size="10" fill="#64748B">CacheLeakTest</text>
+
+  <rect x="592" y="384" width="252" height="110" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+  <text x="608" y="406" font-size="12" font-weight="bold" fill="#1D4ED8">③ 推送主题漏租户</text>
+  <text x="608" y="426" font-size="11" fill="#334155">知道 boardId 就能订</text>
+  <text x="608" y="444" font-size="11" fill="#334155">用 B 的会话订 A 的板</text>
+  <text x="608" y="462" font-size="10" fill="#B91C1C">期望订阅被拒，不是收到空消息</text>
+  <text x="608" y="482" font-size="10" fill="#64748B">PushLeakTest</text>
+</svg>

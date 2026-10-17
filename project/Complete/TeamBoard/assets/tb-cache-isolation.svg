@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <title>缓存隔离：三段式 key、三种串号路径与失效边界</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">缓存是唯一能合法绕开 RLS 的路径</text>
+
+  <!-- key 解剖 -->
+  <rect x="40" y="60" width="820" height="120" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="56" y="84" font-size="13" font-weight="bold" fill="#334155">key 三段式：租户在最前，版本号在最后</text>
+
+  <rect x="56" y="96" width="120" height="46" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="116" y="118" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">t:{tenantId}</text>
+  <text x="116" y="134" text-anchor="middle" font-size="10" fill="#7F1D1D">隔离锚点</text>
+
+  <rect x="184" y="96" width="230" height="46" rx="6" fill="#EFF6FF" stroke="#3B82F6"/>
+  <text x="299" y="118" text-anchor="middle" font-size="12" fill="#1D4ED8">&lt;类型&gt;:&lt;资源 id&gt;</text>
+  <text x="299" y="134" text-anchor="middle" font-size="10" fill="#1E40AF">board / user / perm</text>
+
+  <rect x="422" y="96" width="170" height="46" rx="6" fill="#ECFDF5" stroke="#10B981"/>
+  <text x="507" y="118" text-anchor="middle" font-size="12" fill="#047857">[:维度]</text>
+  <text x="507" y="134" text-anchor="middle" font-size="10" fill="#065F46">meta / cards:page1</text>
+
+  <rect x="600" y="96" width="120" height="46" rx="6" fill="#FFFBEB" stroke="#F59E0B"/>
+  <text x="660" y="118" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">:v&lt;版本&gt;</text>
+  <text x="660" y="134" text-anchor="middle" font-size="10" fill="#B45309">结构变更靠它</text>
+
+  <text x="736" y="118" font-size="11" fill="#334155">示例：</text>
+  <text x="736" y="134" font-size="10" fill="#475569">t:42:board:0192:c</text>
+
+  <!-- 三条串号路径 -->
+  <rect x="40" y="200" width="820" height="216" rx="12" fill="#FEF2F2" stroke="#EF4444" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="56" y="226" font-size="13" font-weight="bold" fill="#991B1B">三种串号路径</text>
+
+  <rect x="56" y="238" width="252" height="162" rx="8" fill="#FFFFFF" stroke="#FCA5A5"/>
+  <text x="72" y="260" font-size="12" font-weight="bold" fill="#B91C1C">① 同 id 不同租户</text>
+  <text x="72" y="282" font-size="11" fill="#334155">board:{id} 在历史导入时可能撞</text>
+  <text x="72" y="300" font-size="11" fill="#334155">user:{id} 在用户分表设计下必撞</text>
+  <text x="72" y="322" font-size="11" fill="#334155">后果：后请求者看到前者的数据</text>
+  <text x="72" y="344" font-size="10" fill="#7F1D1D">key 是否带租户取决于表设计，</text>
+  <text x="72" y="360" font-size="10" fill="#7F1D1D">而表设计会变</text>
+  <text x="72" y="386" font-size="10" fill="#64748B">确认：redis-cli --scan 'board:*'</text>
+
+  <rect x="324" y="238" width="252" height="162" rx="8" fill="#FFFFFF" stroke="#FCA5A5"/>
+  <text x="340" y="260" font-size="12" font-weight="bold" fill="#B91C1C">② 失效广播</text>
+  <text x="340" y="282" font-size="11" fill="#334155">pub/sub 不保证送达，掉线即丢</text>
+  <text x="340" y="300" font-size="11" fill="#334155">消息必须带租户，否则拼不出 key</text>
+  <text x="340" y="322" font-size="11" fill="#334155">失效是「删除」不是「更新」</text>
+  <text x="340" y="344" font-size="10" fill="#7F1D1D">删除后由下次读回填 → 收敛到库</text>
+  <text x="340" y="360" font-size="10" fill="#7F1D1D">更新会引入「谁的广播最后到」</text>
+  <text x="340" y="386" font-size="10" fill="#64748B">兜底：本地 TTL ≤ 60 秒</text>
+
+  <rect x="592" y="238" width="252" height="162" rx="8" fill="#FFFFFF" stroke="#FCA5A5"/>
+  <text x="608" y="260" font-size="12" font-weight="bold" fill="#B91C1C">③ 进程内缓存</text>
+  <text x="608" y="282" font-size="11" fill="#334155">每实例一份，不经过网络</text>
+  <text x="608" y="300" font-size="11" fill="#334155">用 record 复合键逼编译器填满</text>
+  <text x="608" y="322" font-size="11" fill="#334155">字符串拼接漏一段只是 key 变短</text>
+  <text x="608" y="344" font-size="10" fill="#7F1D1D">CacheKey(tenantId, type, id, ver)</text>
+  <text x="608" y="360" font-size="10" fill="#7F1D1D">第一个字段必须是 tenantId</text>
+  <text x="608" y="386" font-size="10" fill="#64748B">合并多端前先合并同一租户</text>
+
+  <!-- 失效与红线 -->
+  <rect x="40" y="436" width="400" height="66" rx="10" fill="#EFF6FF" stroke="#3B82F6"/>
+  <text x="56" y="458" font-size="12" font-weight="bold" fill="#1D4ED8">失效范围五档</text>
+  <text x="56" y="478" font-size="11" fill="#334155">单 key → 分页整版 → 权限 key → 整租户 → 改版本号</text>
+  <text x="56" y="494" font-size="10" fill="#1E40AF">结构变更用改版本号，不用「全量清缓存」（会雪崩）</text>
+
+  <rect x="460" y="436" width="400" height="66" rx="10" fill="#FFFBEB" stroke="#F59E0B"/>
+  <text x="476" y="458" font-size="12" font-weight="bold" fill="#92400E">两条红线</text>
+  <text x="476" y="478" font-size="11" fill="#334155">禁止 KEYS（阻塞单线程）；批量清理用 SCAN + UNLINK</text>
+  <text x="476" y="494" font-size="10" fill="#B45309">租户停用清理要限速，接受清理期间少量命中</text>
+</svg>

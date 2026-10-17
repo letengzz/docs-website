@@ -283,7 +283,7 @@ explain (analyze, buffers, costs off) select count(*) from events where kind = '
 
 **预期输出**：① `8192` / `128MB` / `16384`；② `buffers_alloc` 明显大于 16384；③ 第一次 `hit=10877 read=11346`（工作集大于池），第二次 `read` 应显著下降甚至为 `0`（第二次访问的页已在池里）。
 
-如果第二次仍然大量 `read`，说明这张表**根本放不进池**——此时问题不在缓存策略，而在「你不该全表扫它」，去看[B+ 树](BPlusTree/index.md)那一页怎么把它变成索引访问。
+如果第二次仍然大量 `read`，说明这张表**根本放不进池**——此时问题不在缓存策略，而在「你不该全表扫它」，去看[B+ 树](../BPlusTree/index.md)那一页怎么把它变成索引访问。
 
 ## 参考资料
 

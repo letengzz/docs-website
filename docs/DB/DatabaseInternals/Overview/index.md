@@ -158,7 +158,7 @@ select pg_current_wal_lsn();
 
 **预期输出**：① `8192`，`rows_per_page` 约 **45**（行宽 180 字节时）；② `Buffers: shared hit≈81`——约 80 个页，远小于表的 22223 页，说明走的是索引而不是全表；③ 记下 LSN，做一批插入后再取一次，差值除以行数应在 **200～250 字节/行**量级。
 
-如果 ② 的 `Buffers` 接近表的 `relpages`，说明计划走了全表扫描——先去看[优化器](Optimizer/index.md)那一页，而不是先去加内存。
+如果 ② 的 `Buffers` 接近表的 `relpages`，说明计划走了全表扫描——先去看[优化器](../Optimizer/index.md)那一页，而不是先去加内存。
 
 ## 参考资料
 

@@ -31,7 +31,7 @@
 
 ### 2. Tiptap / Lexical / Slate / Quill 怎么选？
 
-按三个问题筛：需要协同吗（有官方 Yjs 绑定优先）、需要自定义节点吗（ProseMirror 系最强）、团队愿意维护 schema 吗（不愿意就用 Quill/StarterKit）。版本与体积对比见[专题首页](index.md)。
+按三个问题筛：需要协同吗（有官方 Yjs 绑定优先）、需要自定义节点吗（ProseMirror 系最强）、团队愿意维护 schema 吗（不愿意就用 Quill/StarterKit）。版本与体积对比见[专题首页](../index.md)。
 
 ### 3. 为什么我的 `pos` 总是差 1？
 

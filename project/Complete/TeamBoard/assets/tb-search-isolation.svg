@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <title>读路径隔离：检索、游标、导出与附件的隔离锚点</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">四条读路径：客户端参与条件，服务端负责收口</text>
+
+  <!-- 四列 -->
+  <rect x="30" y="60" width="205" height="240" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="132" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">全文检索</text>
+  <text x="46" y="110" font-size="11" fill="#334155">客户端给：查询词</text>
+  <text x="46" y="130" font-size="11" fill="#334155">泄漏规模：一页 20 条</text>
+  <text x="46" y="158" font-size="11" font-weight="bold" fill="#1D4ED8">锚点</text>
+  <text x="46" y="178" font-size="11" fill="#334155">租户是等值条件，</text>
+  <text x="46" y="196" font-size="11" fill="#334155">与 @@ 同一条 SQL</text>
+  <text x="46" y="224" font-size="11" fill="#334155">生成列 + 复合 GIN</text>
+  <text x="46" y="242" font-size="10" fill="#1E40AF">(tenant_id, search_vector)</text>
+  <text x="46" y="270" font-size="10" fill="#B91C1C">current_setting 不带 true</text>
+  <text x="46" y="286" font-size="10" fill="#B91C1C">→ 上下文丢失当场报错</text>
+
+  <rect x="245" y="60" width="205" height="240" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="347" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">游标翻页</text>
+  <text x="261" y="110" font-size="11" fill="#334155">客户端给：游标串</text>
+  <text x="261" y="130" font-size="11" fill="#334155">泄漏规模：可无限取</text>
+  <text x="261" y="158" font-size="11" font-weight="bold" fill="#047857">锚点</text>
+  <text x="261" y="178" font-size="11" fill="#334155">base64(body) + . + hmac</text>
+  <text x="261" y="196" font-size="11" fill="#334155">解出后再校一次租户</text>
+  <text x="261" y="224" font-size="11" fill="#334155">常数时间比较签名</text>
+  <text x="261" y="242" font-size="10" fill="#065F46">有效期 30 分钟</text>
+  <text x="261" y="270" font-size="10" fill="#B91C1C">不放权限结论：</text>
+  <text x="261" y="286" font-size="10" fill="#B91C1C">权限会变，游标不会</text>
+
+  <rect x="460" y="60" width="205" height="240" rx="10" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/>
+  <text x="562" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400E">批量导出</text>
+  <text x="476" y="110" font-size="11" fill="#334155">客户端给：筛选条件</text>
+  <text x="476" y="130" font-size="11" fill="#334155">泄漏规模：整表</text>
+  <text x="476" y="158" font-size="11" font-weight="bold" fill="#92400E">锚点</text>
+  <text x="476" y="178" font-size="11" fill="#334155">与列表共用 whereClause</text>
+  <text x="476" y="196" font-size="11" fill="#334155">流式写出 + 行数上限</text>
+  <text x="476" y="224" font-size="11" fill="#334155">文件归属租户前缀</text>
+  <text x="476" y="242" font-size="10" fill="#B45309">导出留审计（条件 + 行数）</text>
+  <text x="476" y="270" font-size="10" fill="#B91C1C">异步导出会丢上下文：</text>
+  <text x="476" y="286" font-size="10" fill="#B91C1C">任务表存 tenant_id 再绑定</text>
+
+  <rect x="675" y="60" width="195" height="240" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="772" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">附件下载</text>
+  <text x="691" y="110" font-size="11" fill="#334155">客户端给：文件 id</text>
+  <text x="691" y="130" font-size="11" fill="#334155">泄漏规模：单个文件</text>
+  <text x="691" y="158" font-size="11" font-weight="bold" fill="#334155">锚点</text>
+  <text x="691" y="178" font-size="11" fill="#334155">签名之前判归属</text>
+  <text x="691" y="196" font-size="11" fill="#334155">key 前缀 tenant/{id}/</text>
+  <text x="691" y="224" font-size="11" fill="#334155">有效期 ≤ 5 分钟</text>
+  <text x="691" y="242" font-size="10" fill="#475569">越权与不存在同为 404</text>
+  <text x="691" y="270" font-size="10" fill="#B91C1C">直传不许客户端指定 key</text>
+  <text x="691" y="286" font-size="10" fill="#B91C1C">只保留扩展名 + 白名单</text>
+
+  <!-- 底部：三条纪律 -->
+  <rect x="30" y="324" width="840" height="76" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="46" y="348" font-size="13" font-weight="bold" fill="#991B1B">共同原则：查询条件只能有一个拼装点</text>
+  <text x="46" y="370" font-size="11" fill="#334155">租户条件写在公共构造器里，列表、检索、count、导出四处都调它——写一次漏不了，散写成四处必漏一处。</text>
+  <text x="46" y="390" font-size="11" fill="#334155">「列表 3 条、导出 3000 条」这类事故，根因永远是两份条件不一致，而不是某一处写错。</text>
+
+  <!-- 底部：聚合 -->
+  <rect x="30" y="414" width="840" height="86" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-dasharray="5 4"/>
+  <text x="46" y="438" font-size="12" font-weight="bold" fill="#334155">聚合与计数也会泄漏</text>
+  <text x="46" y="460" font-size="11" fill="#334155">列表的 total 用另一条 count 查询时，条件容易与列表不一致 → 数字不同就是漏租户的信号。</text>
+  <text x="46" y="480" font-size="11" fill="#334155">便宜验证：两租户各 3 条，A 的 total 必须恒为 3（B 再建 3 条后仍是 3）。</text>
+</svg>

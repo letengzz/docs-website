@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <title>第 1 周验收：四类证据、一条序列与三态结论</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">88 条判据压成有顺序的八步</text>
+
+  <!-- 左：证据来源 -->
+  <rect x="30" y="56" width="260" height="300" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="46" y="80" font-size="13" font-weight="bold" fill="#334155">四类证据来源</text>
+
+  <rect x="46" y="92" width="228" height="58" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="60" y="112" font-size="11" font-weight="bold" fill="#1D4ED8">设计期（第 139 天）</text>
+  <text x="60" y="132" font-size="10" fill="#334155">需求 / 选型 / 架构 / DDL / 契约</text>
+  <text x="60" y="146" font-size="10" fill="#64748B">TB 一族（文档级）</text>
+
+  <rect x="46" y="158" width="228" height="58" rx="8" fill="#FFFFFF" stroke="#6EE7B7"/>
+  <text x="60" y="178" font-size="11" font-weight="bold" fill="#047857">施工前四步（151~154）</text>
+  <text x="60" y="198" font-size="10" fill="#334155">TN / TI / ES / DWP 各 8 条</text>
+  <text x="60" y="212" font-size="10" fill="#64748B">数据库级隔离与写入路径</text>
+
+  <rect x="46" y="224" width="228" height="58" rx="8" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="60" y="244" font-size="11" font-weight="bold" fill="#92400E">本轮六页（第 155 天）</text>
+  <text x="60" y="264" font-size="10" fill="#334155">TCT / XTM / CAI / RPI / EVI / OPG</text>
+  <text x="60" y="278" font-size="10" fill="#64748B">上下文、矩阵、缓存、检索、推送、运维</text>
+
+  <rect x="46" y="290" width="228" height="52" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="60" y="310" font-size="11" font-weight="bold" fill="#1D4ED8">本页 WKA 8 条</text>
+  <text x="60" y="330" font-size="10" fill="#1E40AF">合计 10 族 80 条 + 8 = 88 条</text>
+
+  <!-- 右：八步序列 -->
+  <rect x="310" y="56" width="560" height="300" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="326" y="80" font-size="13" font-weight="bold" fill="#1D4ED8">S1 → S8：后一步依赖前一步</text>
+
+  <rect x="326" y="92" width="120" height="44" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="386" y="112" text-anchor="middle" font-size="11" font-weight="bold" fill="#1D4ED8">S1 角色与连接</text>
+  <text x="386" y="128" text-anchor="middle" font-size="10" fill="#64748B">无 Bypass RLS</text>
+
+  <rect x="456" y="92" width="120" height="44" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="516" y="112" text-anchor="middle" font-size="11" font-weight="bold" fill="#1D4ED8">S2 RLS 生效</text>
+  <text x="516" y="128" text-anchor="middle" font-size="10" fill="#64748B">四条 SQL 读数</text>
+
+  <rect x="586" y="92" width="120" height="44" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="646" y="112" text-anchor="middle" font-size="11" font-weight="bold" fill="#1D4ED8">S3 上下文落地</text>
+  <text x="646" y="128" text-anchor="middle" font-size="10" fill="#64748B">回显 tenantId</text>
+
+  <rect x="716" y="92" width="138" height="44" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="785" y="112" text-anchor="middle" font-size="11" font-weight="bold" fill="#1D4ED8">S4 六条链路</text>
+  <text x="785" y="128" text-anchor="middle" font-size="10" fill="#64748B">无 missing</text>
+
+  <rect x="326" y="152" width="150" height="44" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="401" y="172" text-anchor="middle" font-size="11" font-weight="bold" fill="#B91C1C">S5 越权 18 格</text>
+  <text x="401" y="188" text-anchor="middle" font-size="10" fill="#7F1D1D">12×404 + 6×审计</text>
+
+  <rect x="486" y="152" width="150" height="44" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="561" y="172" text-anchor="middle" font-size="11" font-weight="bold" fill="#1D4ED8">S6 缓存与检索</text>
+  <text x="561" y="188" text-anchor="middle" font-size="10" fill="#64748B">各自 3 条</text>
+
+  <rect x="646" y="152" width="208" height="44" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="750" y="172" text-anchor="middle" font-size="11" font-weight="bold" fill="#1D4ED8">S7 推送隔离</text>
+  <text x="750" y="188" text-anchor="middle" font-size="10" fill="#64748B">拒绝订阅 / 30 秒断流</text>
+
+  <rect x="326" y="212" width="528" height="44" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="342" y="232" font-size="11" font-weight="bold" fill="#92400E">S8 运维面</text>
+  <text x="342" y="248" font-size="10" fill="#334155">审计只读（ar）· 平台接口不带理由返回 400 · 迁移 grep 0 命中 · 恢复后跨租户查询 0 行</text>
+
+  <text x="326" y="284" font-size="11" fill="#334155">为什么 S5 必须在 S4 之后：上下文错了，越权也可能返回 404——那是「查不到」而不是「挡得住」，属于假通过。</text>
+  <text x="326" y="304" font-size="11" fill="#334155">为什么 S2 不能代替 S5：S2 直接调库，证明兜底有效；漏了 tenant_id 的应用查询在 S2 里根本不会被触发。</text>
+  <text x="326" y="324" font-size="10" fill="#B91C1C">S2 不通过时 S5 一定不可信：兜底都没了，应用写对了也只是碰巧。</text>
+  <text x="326" y="344" font-size="10" fill="#64748B">本轮九步全部 ⏳：仓库不含工程源码，一步都跑不了——写「通过」即不实。</text>
+
+  <!-- 三态 -->
+  <rect x="30" y="374" width="840" height="70" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-dasharray="5 4"/>
+  <text x="46" y="398" font-size="12" font-weight="bold" fill="#334155">三态结论（不允许「大概通过」）</text>
+  <rect x="46" y="408" width="256" height="26" rx="5" fill="#ECFDF5" stroke="#6EE7B7"/>
+  <text x="58" y="426" font-size="11" fill="#047857">✅ 通过：跑过且读数一致，写读数</text>
+  <rect x="314" y="408" width="276" height="26" rx="5" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="326" y="426" font-size="11" fill="#92400E">⏳ 阻塞：环境不具备，写原因与解除条件</text>
+  <rect x="602" y="408" width="252" height="26" rx="5" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="614" y="426" font-size="11" fill="#334155">➖ 不适用：写清何时能验</text>
+
+  <!-- 残余 -->
+  <rect x="30" y="458" width="840" height="46" rx="8" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="46" y="486" font-size="11" fill="#991B1B">三条残余：W1-1 全部未跑（环境）· W1-2 缺外部协作方主体（需求）· W1-3 审计与业务同库（设计取舍）——每条都带解除条件，不写「待确认」。</text>
+</svg>

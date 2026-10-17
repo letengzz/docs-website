@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+  <title>事件与推送隔离：三个广播入口与两道鉴权</title>
+  <rect width="900" height="540" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">推出去就收不回来：广播链路的租户边界</text>
+
+  <!-- 写入 -->
+  <rect x="30" y="60" width="180" height="70" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="120" y="86" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">写入事务</text>
+  <text x="120" y="106" text-anchor="middle" font-size="10" fill="#334155">cards + events + outbox</text>
+  <text x="120" y="122" text-anchor="middle" font-size="10" fill="#64748B">提交后才推</text>
+
+  <!-- 两个出口 -->
+  <rect x="250" y="46" width="200" height="72" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="350" y="70" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">WebSocket 主题</text>
+  <text x="350" y="90" text-anchor="middle" font-size="10" fill="#334155">/topic/t.42.board.&lt;id&gt;</text>
+  <text x="350" y="106" text-anchor="middle" font-size="10" fill="#065F46">主题名带租户 = 分发层分开</text>
+
+  <rect x="250" y="128" width="200" height="72" rx="10" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/>
+  <text x="350" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">outbox 投递器</text>
+  <text x="350" y="172" text-anchor="middle" font-size="10" fill="#334155">遍历租户 + 每租户一个作用域</text>
+  <text x="350" y="188" text-anchor="middle" font-size="10" fill="#B45309">投递前校验收件人租户</text>
+
+  <path d="M210 88 L250 82" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
+  <path d="M210 100 L250 160" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
+
+  <!-- 鉴权两道 -->
+  <rect x="490" y="46" width="200" height="154" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="590" y="70" text-anchor="middle" font-size="12" font-weight="bold" fill="#991B1B">SUBSCRIBE 两道鉴权</text>
+  <text x="506" y="92" font-size="11" fill="#334155">① 主题租户 = 会话租户</text>
+  <text x="506" y="112" font-size="10" fill="#7F1D1D">挡跨租户订阅</text>
+  <text x="506" y="134" font-size="11" fill="#334155">② 板级读权限</text>
+  <text x="506" y="154" font-size="10" fill="#7F1D1D">挡同租户无权限</text>
+  <text x="506" y="176" font-size="11" fill="#334155">缺一不可</text>
+  <text x="506" y="192" font-size="10" fill="#64748B">拒绝 = ERROR 帧，不是静默忽略</text>
+
+  <path d="M450 82 L490 100" stroke="#EF4444" stroke-width="1.5" fill="none"/>
+
+  <!-- 客户端 -->
+  <rect x="730" y="60" width="140" height="60" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="800" y="84" text-anchor="middle" font-size="12" font-weight="bold" fill="#334155">已建立的连接</text>
+  <text x="800" y="104" text-anchor="middle" font-size="10" fill="#475569">订阅后长期存活</text>
+  <path d="M690 120 L730 96" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
+
+  <!-- 时效性 -->
+  <rect x="490" y="212" width="380" height="86" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-dasharray="5 4"/>
+  <text x="506" y="236" font-size="12" font-weight="bold" fill="#991B1B">最容易漏的洞：权限变更后订阅还活着</text>
+  <text x="506" y="256" font-size="11" fill="#334155">便宜：广播前再判一次（命中权限缓存时是内存操作）</text>
+  <text x="506" y="274" font-size="11" fill="#334155">彻底：变更时踢连接（关闭码 4403）→ 重连重新鉴权</text>
+  <text x="506" y="292" font-size="10" fill="#64748B">只做「踢」时，跨实例要广播踢人消息，漏一条就漏一人</text>
+
+  <!-- 第三入口 -->
+  <rect x="30" y="212" width="440" height="86" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-dasharray="5 4"/>
+  <text x="46" y="236" font-size="12" font-weight="bold" fill="#334155">第三个入口：@提及解析</text>
+  <text x="46" y="256" font-size="11" fill="#334155">用户名查询必须限定租户（tenant_id + lower(username) 复合唯一）</text>
+  <text x="46" y="274" font-size="11" fill="#334155">「没匹配到」→ 当纯文本保留并提示；「匹配到但不该匹配」→ 隔离缺陷</text>
+  <text x="46" y="292" font-size="10" fill="#64748B">前者是体验问题，后者是正确性问题，不能混为一谈</text>
+
+  <!-- 两层 -->
+  <rect x="30" y="322" width="840" height="90" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="46" y="346" font-size="13" font-weight="bold" fill="#334155">Redis 频道与 STOMP 主题是两层</text>
+  <text x="46" y="370" font-size="11" fill="#334155">频道是服务器之间的（可以全局，如 ws:broadcast）；主题是服务器到客户端的（必须带租户）。</text>
+  <text x="46" y="390" font-size="11" fill="#334155">频道里的消息必须自带 tenantId——接收端要靠它重建 destination；缺了只能丢弃，不能猜。</text>
+  <text x="46" y="408" font-size="10" fill="#64748B">去重：消息带 originInstanceId，等于自己的直接丢，否则每实例多一轮放大。</text>
+
+  <!-- 判据摘要 -->
+  <rect x="30" y="428" width="840" height="86" rx="10" fill="#EFF6FF" stroke="#3B82F6"/>
+  <text x="46" y="452" font-size="12" font-weight="bold" fill="#1D4ED8">四条硬判据</text>
+  <text x="46" y="474" font-size="11" fill="#334155">EVI-A 主题名只由一个类拼 · EVI-C 订阅两道鉴权 · EVI-D 广播前再判权限 · EVI-F 投递器遍历租户</text>
+  <text x="46" y="494" font-size="10" fill="#1E40AF">验证方式：wscat 两个会话 + 一条 delete board_members，观察 30 秒内是否断流。</text>
+</svg>

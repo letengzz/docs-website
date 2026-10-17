@@ -26,12 +26,12 @@
 
 | 相邻专题 | 那边讲什么 | 本专题讲什么 | 为什么不互相替代 |
 | --- | --- | --- | --- |
-| [MySQL 索引深入](../../Relational/MySQL/IndexDeepDive/index.md) | InnoDB 的聚簇索引、回表、覆盖索引怎么用 | **B+ 树这个结构本身**怎么长、怎么分裂、树高由什么决定 | 那边是「在一个具体引擎里怎么用索引」，本专题是「索引这个结构凭什么 O(log n)」 |
-| [SQL 优化](../../Relational/SQLOptimization/index.md) | 执行计划怎么读、慢查询怎么改写 | 计划**怎么被生成**：选择率、代价模型、统计信息失真 | 那边教你看结果，本专题教你判断结果**可不可信** |
-| [MySQL 基础](../../Relational/MySQL/index.md) | 安装、库表、事务、隔离级别 | 事务的**持久性**一侧：WAL、检查点、崩溃恢复三阶段 | 隔离级别讲并发看得见什么，WAL 讲掉电以后还在不在 |
-| [ClickHouse · MergeTree](../../ClickHouse/MergeTree/index.md) | 列存引擎的分区、排序键、TTL | **LSM 一族**的通用模型：memtable、SSTable、compaction | ClickHouse 的 MergeTree 是列存变体，不是 LSM；两者常被混为一谈 |
-| [数据建模](../../DataModeling/index.md) | 范式、ER 图、表怎么拆 | 表拆完以后**物理上怎么存**：页、行指针、TOAST | 逻辑模型与物理存储是两层，混着讲会导致「范式正确但查询很慢」 |
-| [时间序列数据库](../../TimeSeries/index.md) | 时序场景的建模与压缩 | 通用存储结构（页 / 树 / WAL） | 时序库是「为特定访问模式特化的引擎」，本专题是它的地基 |
+| [MySQL 索引深入](../Relational/MySQL/IndexDeepDive/index.md) | InnoDB 的聚簇索引、回表、覆盖索引怎么用 | **B+ 树这个结构本身**怎么长、怎么分裂、树高由什么决定 | 那边是「在一个具体引擎里怎么用索引」，本专题是「索引这个结构凭什么 O(log n)」 |
+| [SQL 优化](../Relational/SQLOptimization/index.md) | 执行计划怎么读、慢查询怎么改写 | 计划**怎么被生成**：选择率、代价模型、统计信息失真 | 那边教你看结果，本专题教你判断结果**可不可信** |
+| [MySQL 基础](../Relational/MySQL/index.md) | 安装、库表、事务、隔离级别 | 事务的**持久性**一侧：WAL、检查点、崩溃恢复三阶段 | 隔离级别讲并发看得见什么，WAL 讲掉电以后还在不在 |
+| [ClickHouse · MergeTree](../ClickHouse/MergeTree/index.md) | 列存引擎的分区、排序键、TTL | **LSM 一族**的通用模型：memtable、SSTable、compaction | ClickHouse 的 MergeTree 是列存变体，不是 LSM；两者常被混为一谈 |
+| [数据建模](../DataModeling/index.md) | 范式、ER 图、表怎么拆 | 表拆完以后**物理上怎么存**：页、行指针、TOAST | 逻辑模型与物理存储是两层，混着讲会导致「范式正确但查询很慢」 |
+| [时间序列数据库](../TimeSeries/index.md) | 时序场景的建模与压缩 | 通用存储结构（页 / 树 / WAL） | 时序库是「为特定访问模式特化的引擎」，本专题是它的地基 |
 | [性能与容量工程](/docs/Ops/PerformanceEngineering/index.md) | 压测、水位线、SLO 怎么定 | 单条查询在引擎内部的成本构成 | 那边算「能扛多少」，本专题算「这一条为什么慢」 |
 
 ::: warning 防重复核查（2026-10-17 实测）

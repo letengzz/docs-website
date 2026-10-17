@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="530" viewBox="0 0 900 530">
+  <title>运维面守卫：四类角色与四条越过租户边界的路径</title>
+  <rect width="900" height="530" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">运维动作不在应用里：四个入口，一套角色</text>
+
+  <!-- 四条路径 -->
+  <rect x="30" y="56" width="840" height="150" rx="12" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+  <text x="46" y="80" font-size="13" font-weight="bold" fill="#334155">四条不经过 TenantFilter 的路径</text>
+
+  <rect x="46" y="92" width="192" height="100" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+  <text x="60" y="112" font-size="12" font-weight="bold" fill="#1D4ED8">① 迁移脚本</text>
+  <text x="60" y="132" font-size="10" fill="#334155">用 owner，天然绕过 RLS</text>
+  <text x="60" y="150" font-size="10" fill="#334155">只能改结构；改数据要审查</text>
+  <text x="60" y="170" font-size="10" fill="#B91C1C">禁止 set tenant_id（搬租户）</text>
+  <text x="60" y="186" font-size="10" fill="#B91C1C">禁止顺手修脏数据</text>
+
+  <rect x="250" y="92" width="192" height="100" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+  <text x="264" y="112" font-size="12" font-weight="bold" fill="#1D4ED8">② 后台批处理</text>
+  <text x="264" y="132" font-size="10" fill="#334155">遍历租户，每租户一个作用域</text>
+  <text x="264" y="150" font-size="10" fill="#334155">后台也用受限角色</text>
+  <text x="264" y="170" font-size="10" fill="#B91C1C">不用平台角色扫全表</text>
+  <text x="264" y="186" font-size="10" fill="#64748B">与 outbox 投递器同款形态</text>
+
+  <rect x="454" y="92" width="192" height="100" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+  <text x="468" y="112" font-size="12" font-weight="bold" fill="#1D4ED8">③ 备份与恢复</text>
+  <text x="468" y="132" font-size="10" fill="#334155">pg_dump 默认关 row_security</text>
+  <text x="468" y="150" font-size="10" fill="#334155">账号必须 owner 或 BYPASSRLS</text>
+  <text x="468" y="170" font-size="10" fill="#B91C1C">整库进、整库出</text>
+  <text x="468" y="186" font-size="10" fill="#64748B">恢复到共享库会混租户</text>
+
+  <rect x="658" y="92" width="192" height="100" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+  <text x="672" y="112" font-size="12" font-weight="bold" fill="#1D4ED8">④ BI 直连</text>
+  <text x="672" y="132" font-size="10" fill="#334155">只读角色 + 带租户维度的视图</text>
+  <text x="672" y="150" font-size="10" fill="#334155">查询也要能审计</text>
+  <text x="672" y="170" font-size="10" fill="#B91C1C">不要把 platform_ops 密码给出</text>
+  <text x="672" y="186" font-size="10" fill="#64748B">只读 ≠ 无害：泄露即全平台</text>
+
+  <!-- 四类角色 -->
+  <rect x="30" y="224" width="520" height="170" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="46" y="248" font-size="13" font-weight="bold" fill="#1D4ED8">四类角色：把「绕过 RLS」与「能写」拆开</text>
+
+  <rect x="46" y="260" width="240" height="36" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="60" y="283" font-size="11" fill="#334155">app_owner · 只给迁移 · 全库结构</text>
+  <rect x="46" y="302" width="240" height="36" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="60" y="325" font-size="11" fill="#334155">app_user · 受 RLS · 单租户</text>
+  <rect x="46" y="344" width="240" height="36" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="60" y="367" font-size="11" fill="#334155">ops_readonly · 绕过 RLS · 不可写</text>
+
+  <rect x="296" y="260" width="238" height="36" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="310" y="283" font-size="11" fill="#92400E">platform_ops · 绕过 + 可写 + 必须留痕</text>
+  <rect x="296" y="302" width="238" height="112" rx="6" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="310" y="324" font-size="11" font-weight="bold" fill="#92400E">平台运维三要素</text>
+  <text x="310" y="344" font-size="10" fill="#334155">显式：请求里写目标租户</text>
+  <text x="310" y="362" font-size="10" fill="#334155">限时：窗口 ≤ 30 分钟</text>
+  <text x="310" y="380" font-size="10" fill="#334155">留痕：开始/结束各一条</text>
+  <text x="310" y="400" font-size="10" fill="#B91C1C">审计要记变更前后值</text>
+
+  <!-- 审计 -->
+  <rect x="570" y="224" width="300" height="170" rx="12" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="586" y="248" font-size="13" font-weight="bold" fill="#047857">审计表回答三个问题</text>
+  <text x="586" y="274" font-size="11" fill="#334155">谁看过这个租户的数据</text>
+  <text x="586" y="296" font-size="11" fill="#334155">谁在平台身份下做了什么</text>
+  <text x="586" y="318" font-size="11" fill="#334155">导出了多少行</text>
+  <text x="586" y="348" font-size="10" fill="#065F46">业务角色只有 insert + select</text>
+  <text x="586" y="366" font-size="10" fill="#065F46">revoke update, delete</text>
+  <text x="586" y="384" font-size="10" fill="#B45309">残余：owner 仍能改 → 每日导出</text>
+
+  <!-- 恢复验证 -->
+  <rect x="30" y="412" width="840" height="98" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="46" y="436" font-size="13" font-weight="bold" fill="#991B1B">恢复演练里最容易被漏的一步：验证 RLS 还在</text>
+  <text x="46" y="458" font-size="11" fill="#334155">恢复可能改变表 owner（--no-owner 等），而 owner 与 FORCE 的关系决定策略是否生效。</text>
+  <text x="46" y="478" font-size="11" fill="#334155">只验「表存在、行数对」会漏掉「RLS 已失效」——那是最严重的后果，且所有应用测试都发现不了。</text>
+  <text x="46" y="498" font-size="10" fill="#7F1D1D">验收动作：以 app_user 查一次跨租户，期望 0 行（OPG-F）。</text>
+</svg>

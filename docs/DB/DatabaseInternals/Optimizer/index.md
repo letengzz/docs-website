@@ -144,7 +144,7 @@ select attname, n_distinct, correlation, null_frac from pg_stats where tablename
 | `correlation` | 物理顺序与逻辑顺序的相关性，`1` 完全一致、`0` 完全随机 | **决定「索引扫描要不要打折」**；接近 1 时优化器认为索引扫描很便宜 |
 | `null_frac` | NULL 占比 | `is null` 的选择率、以及 `not null` 的修正 |
 
-`tenant_id` 的 `correlation = 0.022` 是[上一页](BPlusTree/index.md)那个「72 行读 72 个页」的根因：**优化器知道它是随机分布的**，所以在估算索引扫描代价时会按「每行一个随机页」计——这也是它有时**主动选择全表扫描**的原因，不是它蠢。
+`tenant_id` 的 `correlation = 0.022` 是[上一页](../BPlusTree/index.md)那个「72 行读 72 个页」的根因：**优化器知道它是随机分布的**，所以在估算索引扫描代价时会按「每行一个随机页」计——这也是它有时**主动选择全表扫描**的原因，不是它蠢。
 
 ::: tip 统计信息什么时候会骗人
 - **大批量写入后没 `analyze`**：`reltuples` 还停在旧值，估算整体偏移；
