@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360">
+  <rect width="880" height="360" fill="#FFFFFF"/>
+  <text x="440" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#1E293B">示例的生命周期：从「看起来对」到「跑得出来」</text>
+
+  <rect x="20" y="80" width="152" height="80" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="96" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">① 写示例</text>
+  <text x="96" y="130" text-anchor="middle" font-size="12" fill="#334155">完整、可复制</text>
+  <text x="96" y="148" text-anchor="middle" font-size="12" fill="#334155">标语言与文件</text>
+
+  <rect x="192" y="80" width="152" height="80" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="268" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">② 自己跑一次</text>
+  <text x="268" y="130" text-anchor="middle" font-size="12" fill="#334155">干净环境</text>
+  <text x="268" y="148" text-anchor="middle" font-size="12" fill="#334155">记第一个报错</text>
+
+  <rect x="364" y="80" width="152" height="80" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="440" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">③ 记输出</text>
+  <text x="440" y="130" text-anchor="middle" font-size="12" fill="#334155">真实读数</text>
+  <text x="440" y="148" text-anchor="middle" font-size="12" fill="#334155">不抄期望值</text>
+
+  <rect x="536" y="80" width="152" height="80" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="612" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#6D28D9">④ 写成断言</text>
+  <text x="612" y="130" text-anchor="middle" font-size="12" fill="#334155">退出码即结论</text>
+  <text x="612" y="148" text-anchor="middle" font-size="12" fill="#334155">人眼比对取消</text>
+
+  <rect x="708" y="80" width="152" height="80" rx="10" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="784" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#0E7490">⑤ 复跑</text>
+  <text x="784" y="130" text-anchor="middle" font-size="12" fill="#334155">幂等性检查</text>
+  <text x="784" y="148" text-anchor="middle" font-size="12" fill="#334155">进回归集</text>
+
+  <line x1="172" y1="120" x2="187" y2="120" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <line x1="344" y1="120" x2="359" y2="120" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <line x1="516" y1="120" x2="531" y2="120" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <line x1="688" y1="120" x2="703" y2="120" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+
+  <path d="M784 164 L784 196 L96 196 L96 168" fill="none" stroke="#06B6D4" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#a5)"/>
+  <text x="440" y="216" text-anchor="middle" font-size="12" fill="#0E7490">示例腐化（版本漂移 / 环境假设）→ 回到 ② 重跑</text>
+
+  <rect x="20" y="240" width="840" height="96" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="44" y="268" font-size="14" font-weight="bold" fill="#1E293B">六条纪律</text>
+  <text x="44" y="292" font-size="13" fill="#334155">完整 · 环境显式 · 带预期输出 · 带失败样例 · 可重复执行 · 省略可辨认</text>
+  <text x="44" y="316" font-size="13" fill="#334155">验证场景一律用「断言 + 退出码」，不用「输出 + 人眼比对」</text>
+  <defs>
+    <marker id="a5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

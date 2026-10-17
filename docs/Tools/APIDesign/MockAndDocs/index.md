@@ -181,7 +181,22 @@ npx --yes openapi-typescript docs/api/openapi.yaml -o /tmp/schema.d.ts
 diff -q /tmp/schema.d.ts src/api/schema.d.ts && echo "OK: 生成物与契约一致"
 ```
 
-## 6. 参考资料
+## 6. 与「技术写作与分享」专题的分工（第 150 天补充）
+
+本页解决「**文档从契约生成**」这条管线：生成物一定与契约同步，漂移只可能发生在「生成器没跑」这一处。而[技术写作与分享](../../../Others/TechWriting/index.md)负责**生成不出来那部分**——接入顺序、前置条件、失败处置、迁移命令。两者的边界可以一句话说清：**能生成的都是「参考」，不能生成的都是「操作」。**
+
+| 内容 | 本页的做法 | 技术写作专题补什么 |
+| --- | --- | --- |
+| 字段、枚举、错误码 | 从 OpenAPI 生成，天然同步 | 首次出现给英文原文、全篇一种写法 |
+| 请求示例 | 由契约 `example` 派生 | 示例要能复跑：完整命令 + 预期输出 + 失败样例 |
+| 认证与鉴权 | 在 `security` 里声明 | 「先拿 token 再调用」的三条操作步骤与常见错误 |
+| 变更说明 | 由 `oasdiff` 检出破坏性变更 | 公告结构：结论先行 + 影响面 + 迁移命令 + 截止日期 |
+
+::: warning 自动生成的文档最容易缺的一节
+生成器不会写「**失败时怎么办**」。所以纯生成式文档在新人手里常常卡在第一条命令：他不知道 token 从哪来、401 是没带还是过期。**这一节必须人手补，且必须放在认证说明之后的第一屏。**
+:::
+
+## 7. 参考资料
 
 - [Prism 文档](https://github.com/stoplightio/prism)：契约驱动 Mock 与代理
 - [Redocly CLI · build-docs / preview-docs](https://redocly.com/docs/cli/commands/build-docs)

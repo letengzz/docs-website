@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect width="880" height="470" fill="#FFFFFF"/>
+  <text x="440" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#1E293B">分诊：先看症状，再决定改哪一层</text>
+
+  <rect x="40" y="64" width="250" height="40" rx="6" fill="#1E293B"/>
+  <text x="165" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">症状</text>
+  <rect x="310" y="64" width="250" height="40" rx="6" fill="#1E293B"/>
+  <text x="435" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">最可能的成因</text>
+  <rect x="580" y="64" width="260" height="40" rx="6" fill="#1E293B"/>
+  <text x="710" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">先改哪一层</text>
+
+  <rect x="40" y="112" width="250" height="58" rx="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="60" y="147" font-size="13" fill="#1E293B">写不出来 / 写得很长</text>
+  <rect x="310" y="112" width="250" height="58" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="330" y="147" font-size="13" fill="#334155">结论没定，读者没定</text>
+  <rect x="580" y="112" width="260" height="58" rx="6" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
+  <text x="600" y="147" font-size="13" fill="#C2410C">结构层：先写一句话主张</text>
+
+  <rect x="40" y="180" width="250" height="58" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="60" y="215" font-size="13" fill="#1E293B">读者第一步就报错</text>
+  <rect x="310" y="180" width="250" height="58" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="330" y="215" font-size="13" fill="#334155">缺前置 / 缺命令</text>
+  <rect x="580" y="180" width="260" height="58" rx="6" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
+  <text x="600" y="215" font-size="13" fill="#C2410C">示例层：干净机器跑一遍</text>
+
+  <rect x="40" y="248" width="250" height="58" rx="6" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="60" y="283" font-size="13" fill="#1E293B">跑完不知道对不对</text>
+  <rect x="310" y="248" width="250" height="58" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="330" y="283" font-size="13" fill="#334155">只有输出，没有断言</text>
+  <rect x="580" y="248" width="260" height="58" rx="6" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
+  <text x="600" y="283" font-size="13" fill="#C2410C">判据层：退出码即结论</text>
+
+  <rect x="40" y="316" width="250" height="58" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="60" y="351" font-size="13" fill="#1E293B">评审只给「整体不错」</text>
+  <rect x="310" y="316" width="250" height="58" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="330" y="351" font-size="13" fill="#334155">评审缺可判定对象</text>
+  <rect x="580" y="316" width="260" height="58" rx="6" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
+  <text x="600" y="351" font-size="13" fill="#C2410C">评审层：给任务不给问题</text>
+
+  <rect x="40" y="396" width="800" height="56" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="64" y="420" font-size="13" fill="#334155">跳过前两层直接改句子，是最常见的白工：结构与判据没对，句子改得再顺也没人用。</text>
+  <text x="64" y="442" font-size="13" fill="#334155">顺序固定：结构 → 示例与判据 → 句子 → 一致性。</text>
+</svg>

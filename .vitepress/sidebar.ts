@@ -59,6 +59,25 @@ const OthersProjectDelivery = [
   },
 ];
 
+const OthersTechWriting = [
+  {
+    text: "技术写作与分享",
+    link: "/docs/Others/TechWriting/index.md",
+    collapsed: true,
+    items: [
+      { text: "概述：读者、载体与验收标准", link: "/docs/Others/TechWriting/Overview/index.md" },
+      { text: "结构与逻辑", link: "/docs/Others/TechWriting/Structure/index.md" },
+      { text: "语言与表达", link: "/docs/Others/TechWriting/Prose/index.md" },
+      { text: "图表表达", link: "/docs/Others/TechWriting/Diagrams/index.md" },
+      { text: "示例与可验证性", link: "/docs/Others/TechWriting/Examples/index.md" },
+      { text: "评审与打磨", link: "/docs/Others/TechWriting/Review/index.md" },
+      { text: "演讲与分享", link: "/docs/Others/TechWriting/Speaking/index.md" },
+      { text: "实战：把一次故障写成可复用文档", link: "/docs/Others/TechWriting/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Others/TechWriting/FAQ/index.md" },
+    ],
+  },
+];
+
 export const sidebar = {
 
   // 与 nav.ts 的大类保持一致（key 不要带尾斜杠，避免与主题 key 同级匹配冲突）
@@ -121,12 +140,14 @@ export const sidebar = {
         ...OthersReview,
         ...OthersAnnualReview,
         ...OthersProjectDelivery,
+        ...OthersTechWriting,
       ],
     },
   ],
   "/docs/Others/Review": OthersReview,
   "/docs/Others/AnnualReview": OthersAnnualReview,
   "/docs/Others/ProjectDelivery": OthersProjectDelivery,
+  "/docs/Others/TechWriting": OthersTechWriting,
 
   // 主题级侧边栏：进入具体主题时才展示该主题的侧边栏（子内容默认折叠）
   "/docs/Frontend/Basic": FrontBasic,

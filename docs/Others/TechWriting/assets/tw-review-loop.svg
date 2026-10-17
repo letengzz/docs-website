@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450">
+  <rect width="880" height="450" fill="#FFFFFF"/>
+  <text x="440" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#1E293B">评审的六个动作：三种视角，三轮打磨</text>
+
+  <text x="40" y="76" font-size="14" font-weight="bold" fill="#1D4ED8">A. 三种视角（顺序不可颠倒）</text>
+  <rect x="40" y="88" width="230" height="88" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="155" y="116" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">① 领域正确性</text>
+  <text x="155" y="140" text-anchor="middle" font-size="12" fill="#334155">结论对不对、判据是否成立</text>
+  <text x="155" y="160" text-anchor="middle" font-size="12" fill="#64748B">同领域工程师</text>
+
+  <rect x="320" y="88" width="230" height="88" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="435" y="116" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">② 读者可用性</text>
+  <text x="435" y="140" text-anchor="middle" font-size="12" fill="#334155">能不能照着做完</text>
+  <text x="435" y="160" text-anchor="middle" font-size="12" fill="#64748B">没参与写作的人</text>
+
+  <rect x="600" y="88" width="230" height="88" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="715" y="116" text-anchor="middle" font-size="14" font-weight="bold" fill="#6D28D9">③ 编辑一致性</text>
+  <text x="715" y="140" text-anchor="middle" font-size="12" fill="#334155">术语、格式、链接</text>
+  <text x="715" y="160" text-anchor="middle" font-size="12" fill="#64748B">作者或文档负责人</text>
+
+  <line x1="270" y1="132" x2="315" y2="132" stroke="#94A3B8" stroke-width="2" marker-end="url(#a6)"/>
+  <line x1="550" y1="132" x2="595" y2="132" stroke="#94A3B8" stroke-width="2" marker-end="url(#a6)"/>
+
+  <text x="40" y="214" font-size="14" font-weight="bold" fill="#C2410C">B. 三轮打磨（每轮只改一类，不交叉）</text>
+  <rect x="40" y="226" width="230" height="88" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="155" y="254" text-anchor="middle" font-size="14" font-weight="bold" fill="#C2410C">第一轮：结构</text>
+  <text x="155" y="278" text-anchor="middle" font-size="12" fill="#334155">顺序、分节、结论位置</text>
+  <text x="155" y="298" text-anchor="middle" font-size="12" fill="#64748B">标志：标题能当目录</text>
+
+  <rect x="320" y="226" width="230" height="88" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="435" y="254" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">第二轮：句子</text>
+  <text x="435" y="278" text-anchor="middle" font-size="12" fill="#334155">长句、形容词、被动句</text>
+  <text x="435" y="298" text-anchor="middle" font-size="12" fill="#64748B">标志：形容词搜索为 0</text>
+
+  <rect x="600" y="226" width="230" height="88" rx="10" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="715" y="254" text-anchor="middle" font-size="14" font-weight="bold" fill="#0E7490">第三轮：一致性</text>
+  <text x="715" y="278" text-anchor="middle" font-size="12" fill="#334155">术语、格式、编号、链接</text>
+  <text x="715" y="298" text-anchor="middle" font-size="12" fill="#64748B">标志：一种写法到底</text>
+
+  <line x1="270" y1="270" x2="315" y2="270" stroke="#94A3B8" stroke-width="2" marker-end="url(#a6)"/>
+  <line x1="550" y1="270" x2="595" y2="270" stroke="#94A3B8" stroke-width="2" marker-end="url(#a6)"/>
+
+  <rect x="40" y="340" width="790" height="86" rx="10" fill="#FEF2F2" stroke="#F87171" stroke-width="2"/>
+  <text x="64" y="366" font-size="13" font-weight="bold" fill="#B91C1C">外部试读：给任务，不给问题</text>
+  <text x="64" y="390" font-size="13" fill="#334155">说「按这份文档把服务起起来」，不说「帮我看看有没有问题」；卡住时不提示，记下停在哪一步、停了多久</text>
+  <text x="64" y="412" font-size="13" fill="#334155">5 个人能发现约 80% 的严重问题；只改出现 2 次以上的卡点</text>
+  <defs>
+    <marker id="a6" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

@@ -211,6 +211,15 @@ python3 ~/.workbuddy/skills/docs-website-doc-ops/scripts/projectpuritycheck.py
 - [上线验收收口](../LaunchAcceptance/index.md)：六层 24 项的逐层读数
 - [环境前置](../EnvPrereq/index.md)：容器运行时与端口的前置条件
 
+## 当日做了什么
+
+1. 把第 146 天留下的两条待办**按性质拆开**：一条是形态问题（三份文档只是「一个页面在描述它们」），一条是边界问题（9 份环境交付件不允许入库）。
+2. 三份文档落盘成三个独立页面：[从零复现](./Reproduce/index.md) 79 行、[上线验收](./Acceptance/index.md) 75 行、[故障应对索引](./RunbookIndex/index.md) 62 行，**没有一份超过 120 行**。
+3. 把「环境交付件不入库」写成一个可判定的不变量，并留下「为什么不能提交」的理由，避免下一个人重问。
+4. 交付物台账 9 行，每行都必须回答「在哪」与「怎么核」。
+5. 登记 `PK-1`：三份越界落盘的文件（`preflight.sh` / `MANIFEST.txt` / `env-fingerprint.txt`）**当场判 `FAIL`**，留待次日按纪律处置。
+6. 产出本页与 `delivery-package.svg`，并写明「下一步的顺序不是随便排的」。
+
 ## 参考资料
 
 - Diátaxis 文档框架 · Tutorial / How-to / Reference / Explanation 四类文档的读者差异：<https://diataxis.fr/>

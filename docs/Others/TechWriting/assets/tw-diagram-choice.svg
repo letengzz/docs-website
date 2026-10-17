@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+  <rect width="880" height="520" fill="#FFFFFF"/>
+  <text x="440" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#1E293B">图型选择：先问「要表达什么关系」</text>
+
+  <rect x="290" y="60" width="300" height="58" rx="28" fill="#1D4ED8"/>
+  <text x="440" y="96" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">这段内容里有什么？</text>
+
+  <rect x="30" y="180" width="180" height="96" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="120" y="208" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">先后与并发</text>
+  <text x="120" y="232" text-anchor="middle" font-size="13" fill="#334155">谁先谁后、等不等</text>
+  <text x="120" y="258" text-anchor="middle" font-size="13" fill="#1D4ED8">→ 时序图</text>
+
+  <rect x="240" y="180" width="180" height="96" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="330" y="208" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">状态与条件</text>
+  <text x="330" y="232" text-anchor="middle" font-size="13" fill="#334155">何时从 A 到 B</text>
+  <text x="330" y="258" text-anchor="middle" font-size="13" fill="#15803D">→ 状态机图</text>
+
+  <rect x="450" y="180" width="180" height="96" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="540" y="208" text-anchor="middle" font-size="14" font-weight="bold" fill="#6D28D9">静态依赖</text>
+  <text x="540" y="232" text-anchor="middle" font-size="13" fill="#334155">谁依赖谁</text>
+  <text x="540" y="258" text-anchor="middle" font-size="13" fill="#6D28D9">→ 架构图</text>
+
+  <rect x="660" y="180" width="180" height="96" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="750" y="208" text-anchor="middle" font-size="14" font-weight="bold" fill="#C2410C">数值与分布</text>
+  <text x="750" y="232" text-anchor="middle" font-size="13" fill="#334155">趋势、对比</text>
+  <text x="750" y="258" text-anchor="middle" font-size="13" fill="#C2410C">→ 折线 / 柱状</text>
+
+  <line x1="380" y1="118" x2="140" y2="176" stroke="#94A3B8" stroke-width="2" marker-end="url(#a4)"/>
+  <line x1="420" y1="118" x2="330" y2="176" stroke="#94A3B8" stroke-width="2" marker-end="url(#a4)"/>
+  <line x1="460" y1="118" x2="530" y2="176" stroke="#94A3B8" stroke-width="2" marker-end="url(#a4)"/>
+  <line x1="500" y1="118" x2="720" y2="176" stroke="#94A3B8" stroke-width="2" marker-end="url(#a4)"/>
+
+  <rect x="30" y="308" width="810" height="86" rx="10" fill="#FEF2F2" stroke="#F87171" stroke-width="2"/>
+  <text x="54" y="336" font-size="14" font-weight="bold" fill="#B91C1C">这三种情况不要画图</text>
+  <text x="54" y="360" font-size="13" fill="#334155">线性三步 → 有序列表更快；纯清单 → 表格更好检索；图里只有文字 → 只是排版浪费</text>
+  <text x="54" y="382" font-size="13" fill="#334155">判据：删掉图之后正文还能读懂 → 这张图不承重，换成表格</text>
+
+  <rect x="30" y="410" width="810" height="86" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="54" y="438" font-size="14" font-weight="bold" fill="#1E293B">一张图只回答一个问题</text>
+  <text x="54" y="462" font-size="13" fill="#334155">标题写成结论句：「所有写请求都经过网关」而不是「系统架构图」</text>
+  <text x="54" y="484" font-size="13" fill="#334155">图上只放名词，数字留在正文表格 → 改数字不用重画图</text>
+  <defs>
+    <marker id="a4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>

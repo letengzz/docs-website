@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <rect width="880" height="420" fill="#FFFFFF"/>
+  <text x="440" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#1E293B">句长四档：40 字是可读性的分界线</text>
+  <text x="120" y="74" font-size="13" fill="#64748B">横轴：一句话的字数</text>
+
+  <rect x="120" y="92" width="150" height="44" rx="8" fill="#DCFCE7" stroke="#22C55E" stroke-width="2"/>
+  <text x="136" y="120" font-size="14" font-weight="bold" fill="#15803D">≤ 20 字</text>
+  <text x="290" y="120" font-size="13" fill="#475569">易扫读，适合结论与判据</text>
+
+  <rect x="120" y="152" width="290" height="44" rx="8" fill="#ECFCCB" stroke="#65A30D" stroke-width="2"/>
+  <text x="136" y="180" font-size="14" font-weight="bold" fill="#4D7C0F">21~40 字</text>
+  <text x="430" y="180" font-size="13" fill="#475569">推荐上限，一个句子一件事</text>
+
+  <rect x="120" y="212" width="430" height="44" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="136" y="240" font-size="14" font-weight="bold" fill="#B45309">41~60 字</text>
+  <text x="570" y="240" font-size="13" fill="#475569">开始需要回读，建议拆句</text>
+
+  <rect x="120" y="272" width="570" height="44" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+  <text x="136" y="300" font-size="14" font-weight="bold" fill="#B91C1C">超过 60 字</text>
+  <text x="706" y="300" font-size="13" fill="#475569">几乎必然被跳过</text>
+
+  <line x1="410" y1="88" x2="410" y2="326" stroke="#3B82F6" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="418" y="344" font-size="13" fill="#1D4ED8">40 字：单句的软上限</text>
+
+  <rect x="120" y="358" width="660" height="42" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="140" y="385" font-size="13" fill="#334155">判定方式：按句号切分 → 数字符。回读一次就是一次成本，成本会累积成「不读了」。</text>
+</svg>

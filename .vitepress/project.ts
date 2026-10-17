@@ -287,6 +287,7 @@ export const CompleteProject = [
           { text: "└ 故障应对索引", link: "/project/Complete/MonitoringDashboard/DeliveryPackage/RunbookIndex/index.md" },
           { text: "环境交付件落盘：9 份台账与 3 份脚本的内容入仓", link: "/project/Complete/MonitoringDashboard/EnvArtifacts/index.md" },
           { text: "隔离复现：把「干净」拆成四个可判定的维度（IR-A~IR-H）", link: "/project/Complete/MonitoringDashboard/IsolatedReproduce/index.md" },
+          { text: "结项与交接：把 29 章收成一份可接手的交付（HO-A~HO-H）", link: "/project/Complete/MonitoringDashboard/Handover/index.md" },
         ],
       },
       {

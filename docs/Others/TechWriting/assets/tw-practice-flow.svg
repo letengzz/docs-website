@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <rect width="880" height="500" fill="#FFFFFF"/>
+  <text x="440" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#1E293B">故障文档六步：每一步交出一个能被接手的产物</text>
+
+  <rect x="40" y="70" width="230" height="110" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="60" y="98" font-size="14" font-weight="bold" fill="#1D4ED8">① 定读者与用途</text>
+  <text x="60" y="124" font-size="12" fill="#334155">当班人 / 负责人 / 维护者</text>
+  <text x="60" y="146" font-size="12" fill="#64748B">产物：三张读者卡</text>
+  <text x="60" y="166" font-size="12" fill="#64748B">三个独立入口</text>
+
+  <rect x="325" y="70" width="230" height="110" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="345" y="98" font-size="14" font-weight="bold" fill="#15803D">② 收集证据</text>
+  <text x="345" y="124" font-size="12" fill="#334155">告警 / 日志 / 指标 / 变更</text>
+  <text x="345" y="146" font-size="12" fill="#64748B">产物：四条链 + 采集命令</text>
+  <text x="345" y="166" font-size="12" fill="#64748B">不贴整段日志</text>
+
+  <rect x="610" y="70" width="230" height="110" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="630" y="98" font-size="14" font-weight="bold" fill="#B45309">③ 写结论与影响</text>
+  <text x="630" y="124" font-size="12" fill="#334155">范围 / 时长 / 损失</text>
+  <text x="630" y="146" font-size="12" fill="#64748B">产物：第一屏三行</text>
+  <text x="630" y="166" font-size="12" fill="#64748B">读者 10 秒能判断大小</text>
+
+  <rect x="40" y="230" width="230" height="110" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="60" y="258" font-size="14" font-weight="bold" fill="#6D28D9">④ 写时间线</text>
+  <text x="60" y="284" font-size="12" fill="#334155">时间戳 / 来源 / 决策</text>
+  <text x="60" y="306" font-size="12" fill="#64748B">产物：事件表</text>
+  <text x="60" y="326" font-size="12" fill="#64748B">发生与发现分开记</text>
+
+  <rect x="325" y="230" width="230" height="110" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="345" y="258" font-size="14" font-weight="bold" fill="#BE185D">⑤ 写根因与判据</text>
+  <text x="345" y="284" font-size="12" fill="#334155">可被一条实验推翻</text>
+  <text x="345" y="306" font-size="12" fill="#64748B">产物：判据三列</text>
+  <text x="345" y="326" font-size="12" fill="#64748B">复现 / 确认 / 防复发</text>
+
+  <rect x="610" y="230" width="230" height="110" rx="10" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="630" y="258" font-size="14" font-weight="bold" fill="#0E7490">⑥ 写改进与发布</text>
+  <text x="630" y="284" font-size="12" fill="#334155">做什么 / 谁 / 何时 / 判据</text>
+  <text x="630" y="306" font-size="12" fill="#64748B">产物：改进项表 + 索引</text>
+  <text x="630" y="326" font-size="12" fill="#64748B">抽 Runbook 片段</text>
+
+  <line x1="270" y1="125" x2="320" y2="125" stroke="#94A3B8" stroke-width="2" marker-end="url(#a7)"/>
+  <line x1="555" y1="125" x2="605" y2="125" stroke="#94A3B8" stroke-width="2" marker-end="url(#a7)"/>
+  <line x1="725" y1="180" x2="725" y2="200" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="725" y1="200" x2="155" y2="200" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="155" y1="200" x2="155" y2="226" stroke="#94A3B8" stroke-width="2" marker-end="url(#a7)"/>
+  <line x1="270" y1="285" x2="320" y2="285" stroke="#94A3B8" stroke-width="2" marker-end="url(#a7)"/>
+  <line x1="555" y1="285" x2="605" y2="285" stroke="#94A3B8" stroke-width="2" marker-end="url(#a7)"/>
+
+  <rect x="40" y="368" width="800" height="50" rx="8" fill="#FEF2F2" stroke="#F87171" stroke-width="2"/>
+  <text x="64" y="398" font-size="13" fill="#B91C1C">三条最容易失真的地方：事后补的「应该时间」、把决策写成事实、改进项里出现形容词。</text>
+
+  <rect x="40" y="430" width="800" height="50" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="64" y="460" font-size="13" fill="#334155">交付判据：当班人能在 5 分钟内从报告里读出下一步动作，且每条时间线都能指回来源。</text>
+  <defs>
+    <marker id="a7" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>
