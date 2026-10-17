@@ -328,6 +328,7 @@ export const CompleteProject = [
           { text: "多租户隔离：把同表不同租户变成数据库级边界（TN-A~TN-H）", link: "/project/Complete/TeamBoard/MultiTenancy/index.md" },
           { text: "租户上下文与索引设计：把按租户过滤变成索引前缀（TI-A~TI-H）", link: "/project/Complete/TeamBoard/TenantIndexing/index.md" },
           { text: "事件表与顺序字段：把断线追平落到数据库（ES-A~ES-H）", link: "/project/Complete/TeamBoard/EventSequence/index.md" },
+          { text: "拖动写入路径：三张表要么都成、要么都不成（DWP-A~DWP-H）", link: "/project/Complete/TeamBoard/DragWritePath/index.md" },
         ],
       },
       {

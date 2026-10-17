@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <title>一次拖动的写入路径：三张表、一个事务、四个失败点</title>
+  <rect width="900" height="560" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">一次拖动：一个事务内的三次写入与一处提交后动作</text>
+
+  <!-- 事务外：请求 -->
+  <rect x="40" y="56" width="180" height="72" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="130" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">PATCH /cards/:id/move</text>
+  <text x="130" y="100" text-anchor="middle" font-size="11" fill="#334155">requestId + expectedVersion</text>
+  <text x="130" y="118" text-anchor="middle" font-size="11" fill="#64748B">租户上下文已注入</text>
+
+  <!-- 事务框 -->
+  <rect x="40" y="148" width="820" height="252" rx="12" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="60" y="172" font-size="13" font-weight="bold" fill="#92400E">BEGIN … COMMIT（一个事务，READ COMMITTED）</text>
+
+  <!-- ① cards -->
+  <rect x="64" y="188" width="230" height="96" rx="8" fill="#FFFFFF" stroke="#3B82F6"/>
+  <text x="82" y="210" font-size="12" font-weight="bold" fill="#1D4ED8">① update cards</text>
+  <text x="82" y="230" font-size="11" fill="#334155">set list_id, position_key,</text>
+  <text x="82" y="246" font-size="11" fill="#334155">    version = version + 1</text>
+  <text x="82" y="266" font-size="11" fill="#B91C1C">where id = ? and version = ?</text>
+  <text x="82" y="280" font-size="10" fill="#7F1D1D">0 行 → 409，整单放弃</text>
+
+  <!-- ② events -->
+  <rect x="330" y="188" width="230" height="96" rx="8" fill="#FFFFFF" stroke="#10B981"/>
+  <text x="348" y="210" font-size="12" font-weight="bold" fill="#047857">② nextval + insert events</text>
+  <text x="348" y="230" font-size="11" fill="#334155">seq 紧贴插入获取</text>
+  <text x="348" y="246" font-size="11" fill="#334155">payload 带 version + key</text>
+  <text x="348" y="266" font-size="11" fill="#B91C1C">pk (tenant, board, seq)</text>
+  <text x="348" y="280" font-size="10" fill="#065F46">回滚留空洞：合法</text>
+
+  <!-- ③ outbox -->
+  <rect x="596" y="188" width="240" height="96" rx="8" fill="#FFFFFF" stroke="#8B5CF6"/>
+  <text x="614" y="210" font-size="12" font-weight="bold" fill="#6D28D9">③ insert outbox</text>
+  <text x="614" y="230" font-size="11" fill="#334155">topic = card.moved</text>
+  <text x="614" y="246" font-size="11" fill="#334155">dedup_key = card:version</text>
+  <text x="614" y="266" font-size="11" fill="#B91C1C">unique (tenant, dedup_key)</text>
+  <text x="614" y="280" font-size="10" fill="#5B21B6">payload 带 seq 供去重</text>
+
+  <defs>
+    <marker id="d1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <path d="M294 236 L328 236" stroke="#94A3B8" stroke-width="2" marker-end="url(#d1)"/>
+  <path d="M560 236 L594 236" stroke="#94A3B8" stroke-width="2" marker-end="url(#d1)"/>
+
+  <!-- 幂等记录 -->
+  <rect x="64" y="300" width="380" height="76" rx="8" fill="#FFFFFF" stroke="#EC4899"/>
+  <text x="82" y="322" font-size="12" font-weight="bold" fill="#BE185D">④ 幂等记录（与业务同事务）</text>
+  <text x="82" y="342" font-size="11" fill="#334155">(tenant_id, request_id) → seq, status</text>
+  <text x="82" y="362" font-size="11" fill="#9D174D">放在事务外 = 两个并发重放各执行一次</text>
+
+  <rect x="470" y="300" width="366" height="76" rx="8" fill="#FFFFFF" stroke="#F97316"/>
+  <text x="488" y="322" font-size="12" font-weight="bold" fill="#C2410C">⑤ afterCommit → 只做一件事</text>
+  <text x="488" y="342" font-size="11" fill="#334155">gateway.publish(boardId, seq)</text>
+  <text x="488" y="362" font-size="11" fill="#7C2D12">写成"方法返回后调用"= 可能仍在事务内</text>
+
+  <!-- 提交 -->
+  <rect x="330" y="428" width="240" height="56" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="450" y="452" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">COMMIT</text>
+  <text x="450" y="472" text-anchor="middle" font-size="11" fill="#065F46">三张表同时可见，或同时不可见</text>
+  <path d="M450 400 L450 426" stroke="#94A3B8" stroke-width="2" marker-end="url(#d1)"/>
+
+  <!-- 失败点 -->
+  <rect x="40" y="428" width="270" height="56" rx="8" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="56" y="450" font-size="12" font-weight="bold" fill="#B91C1C">失败点：① 0 行 / ② 主键冲突</text>
+  <text x="56" y="470" font-size="11" fill="#7F1D1D">③ 唯一键冲突 → 全部 ROLLBACK</text>
+
+  <rect x="590" y="428" width="270" height="56" rx="8" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="606" y="450" font-size="12" font-weight="bold" fill="#B91C1C">回滚后必须为真</text>
+  <text x="606" y="470" font-size="11" fill="#7F1D1D">cards 未变、无新事件、无新 outbox</text>
+
+  <!-- 底部 -->
+  <rect x="40" y="502" width="820" height="42" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="450" y="528" text-anchor="middle" font-size="12" fill="#475569">判据 DWP-A ~ DWP-H：乐观锁、单行更新、允许键相等、幂等同事务、seq 允许空洞、提交后广播、outbox 唯一、三表同事务</text>
+</svg>
