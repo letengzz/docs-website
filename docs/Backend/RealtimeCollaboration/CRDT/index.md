@@ -187,6 +187,23 @@ console.log(a.getText('t').toString() === b.getText('t').toString(), a.getText('
 6. **把墓碑 GC 当成日常清理**：GC 时机错了会让离线客户端复活已删内容。GC 必须以「全网最小版本向量」为界。
 :::
 
+## 与「富文本编辑器工程」专题的分工（第 154 天补充）
+
+本页讲的是**合并算法与序列类型**：三律、八类 CRDT、墓碑与 GC。而"编辑器怎么把一棵文档树映射到这些类型上"是另一件事，归[富文本编辑器工程](../../../Frontend/RichTextEditor/index.md)。
+
+| 维度 | 本页（CRDT） | 富文本专题 |
+| --- | --- | --- |
+| 关注点 | 两份并发操作怎么收敛成同一结果 | 模型的形状、位置表示、输入事件 |
+| 典型类型 | `Y.Text`、`Y.Array`、`Y.Map`、`Y.XmlFragment` | schema、节点、标记、选区 |
+| 失败表现 | 内容分叉、交织、内存膨胀 | 拼音进正文、光标乱跳、结构非法 |
+| 谁负责 | 算法层 | 模型层 + 视图层 |
+
+一句话结论：**CRDT 保证"两人算出同一结果"，但它不保证这个结果是合法文档**——schema 校验必须在写入 CRDT 之前完成。
+
+::: danger 本页读者最容易踩的一个坑
+把整棵文档树映射到 `Y.Text`（"反正都是文本"），会**丢掉块结构**：标题与段落在合并后退化成一段连续文本，且无法再还原。块树必须映射到 `Y.XmlFragment`（或结构化 `Y.Array<Y.Map>`），行内文本才用 `Y.Text`。这条在富文本专题的[接协同](../../../Frontend/RichTextEditor/CollabIntegration/index.md)一页有完整对照。
+:::
+
 ## 参考资料
 
 - Shapiro, M. et al. *Conflict-free Replicated Data Types*（SSS 2011）

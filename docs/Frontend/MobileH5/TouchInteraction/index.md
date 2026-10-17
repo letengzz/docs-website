@@ -341,6 +341,23 @@ function currentDistance() {
 - 上游必读：[首屏与运行时性能](../PagePerformance/index.md)（`PF-G`：被动监听器）。
 - 相邻必读：[JavaScript 事件](../../Basic/JavaScript/Events/index.md)（事件模型与传播）、[IntlA11y · 键盘与焦点](../../IntlA11y/KeyboardFocus/index.md)（触屏之外的另一条访问路径）。
 
+## 与「富文本编辑器工程」专题的分工（第 154 天补充）
+
+本页讲**触摸手势与滚动**：被动监听、`touch-action`、手势冲突。而"软键盘弹出后光标被顶到哪里去了"归[富文本编辑器工程](../../RichTextEditor/SelectionIME/index.md)。
+
+| 维度 | 本页（触摸交互） | 富文本专题 |
+| --- | --- | --- |
+| 关注点 | 手势识别、滚动性能、点击延迟 | 输入法组合、选区映射、光标复位 |
+| 关键 API | `touchstart`/`touchmove`、`touch-action` | `composition*`、`selectionchange`、`visualViewport` |
+| 失败表现 | 滑动卡顿、误触发点击 | 光标被键盘挡住、拼音进正文 |
+| 共同点 | 都要求"不要在不该阻止的时候 `preventDefault`" | 同左 |
+
+一句话结论：**手势层管"手指怎么动"，输入层管"字符怎么进"**；两者在同一个容器上叠加时，事件边界必须显式设计。
+
+::: danger 本页读者最容易踩的一个坑
+为了"消除 300ms 延迟"在容器上全局 `preventDefault()`，结果**编辑区点不进去**——`preventDefault` 阻断了浏览器的聚焦与光标放置。正确做法是只在非编辑区域阻止，编辑容器上的触摸事件一律放行。
+:::
+
 ## 十、参考资料
 
 - [W3C · Pointer Events Level 3（2026-06-30 推荐标准）](https://www.w3.org/TR/pointerevents3/)

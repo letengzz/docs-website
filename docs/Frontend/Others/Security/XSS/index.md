@@ -144,6 +144,23 @@ Content-Security-Policy: default-src 'self'; script-src 'self'
 3. 在 DevTools 检查会话 Cookie 是否带 `HttpOnly`；
 4. 用 [DOMPurify](https://github.com/cure53/DOMPurify) 过滤富文本后插入，确认脚本被剥离。
 
+## 与「富文本编辑器工程」专题的分工（第 154 天补充）
+
+本页讲**通用防线**：输出编码、CSP、富文本白名单的一般原则。而"粘贴"这一条具体入口怎么堵，归[富文本编辑器工程](../../../RichTextEditor/PasteSanitize/index.md)。
+
+| 维度 | 本页（XSS 通用） | 富文本专题 |
+| --- | --- | --- |
+| 覆盖面 | 所有输出上下文（HTML/属性/JS/URL） | 剪贴板 → 文档模型这一条链路 |
+| 主要手段 | 编码 + CSP + 框架默认转义 | 白名单重建 + schema 校验 + 服务端二次校验 |
+| 攻击面 | 反射、存储、DOM 型 | 粘贴 / 拖拽 / 程序化插入 |
+| 兜底 | 输出时编码 | 落库前校验 + 展示前白名单 |
+
+一句话结论：**通用防线是底座，粘贴路径是它最常被绕过的那一段**——因为这段链路上的输入是"别人网页的完整 HTML"。
+
+::: danger 本页读者最容易踩的一个坑
+以为"用了 `DOMParser` 就安全了"。`DOMParser` 只保证**解析时不执行脚本**（惰性文档），不保证解析出来的节点是安全的：`<img src=x onerror=...>` 仍然是一个带事件属性的节点，一旦被 `innerHTML` 插进页面就会触发。**必须白名单重建，而不是"解析后直接用"**。2026-10 的 CVE-2026-104847（`prosemirror-view` < 1.42.3）就是这条链路上的真实案例。
+:::
+
 ## 参考资料
 
 - [OWASP：XSS 速查表](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
