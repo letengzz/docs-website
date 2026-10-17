@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <rect width="900" height="500" fill="#FFFFFF"/>
+  <text x="450" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">多租户隔离：一条请求要穿过四层「租户边界」</text>
+
+  <rect x="40" y="66" width="170" height="72" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="125" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">① 令牌</text>
+  <text x="125" y="114" text-anchor="middle" font-size="11" fill="#334155">JWT 里带 tenant 声明</text>
+  <text x="125" y="130" text-anchor="middle" font-size="11" fill="#64748B">不可由请求体覆盖</text>
+
+  <rect x="245" y="66" width="170" height="72" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="330" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803D">② 请求上下文</text>
+  <text x="330" y="114" text-anchor="middle" font-size="11" fill="#334155">TenantContext 线程内</text>
+  <text x="330" y="130" text-anchor="middle" font-size="11" fill="#64748B">拦截器统一注入与清理</text>
+
+  <rect x="450" y="66" width="170" height="72" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="535" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">③ SQL 会话</text>
+  <text x="535" y="114" text-anchor="middle" font-size="11" fill="#334155">SET LOCAL app.tenant_id</text>
+  <text x="535" y="130" text-anchor="middle" font-size="11" fill="#64748B">交给 RLS 兜底</text>
+
+  <rect x="655" y="66" width="205" height="72" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="757" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#6D28D9">④ 广播主题</text>
+  <text x="757" y="114" text-anchor="middle" font-size="11" fill="#334155">topic 前缀带 tenantId</text>
+  <text x="757" y="130" text-anchor="middle" font-size="11" fill="#64748B">订阅时二次校验</text>
+
+  <line x1="210" y1="102" x2="245" y2="102" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="415" y1="102" x2="450" y2="102" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="620" y1="102" x2="655" y2="102" stroke="#94A3B8" stroke-width="2"/>
+
+  <rect x="40" y="170" width="400" height="150" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="60" y="196" font-size="13" font-weight="bold" fill="#1E293B">三种隔离方案</text>
+  <text x="60" y="222" font-size="12" fill="#334155">库隔离：一租户一库 —— 最彻底，迁移与统计最难</text>
+  <text x="60" y="246" font-size="12" fill="#334155">schema 隔离：一租户一 schema —— 中等，连接池与 DDL 变复杂</text>
+  <text x="60" y="270" font-size="12" fill="#334155">行级隔离：共享表 + tenant_id —— 最省，靠 RLS 兜底</text>
+  <text x="60" y="298" font-size="12" fill="#15803D">本项目选行级：30 天周期内不引入第二套运维体系</text>
+
+  <rect x="460" y="170" width="400" height="150" rx="10" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="480" y="196" font-size="13" font-weight="bold" fill="#B91C1C">行级隔离的两个必失点</text>
+  <text x="480" y="222" font-size="12" fill="#334155">① 忘了带 tenant_id 的查询 → 跨租户读</text>
+  <text x="480" y="246" font-size="12" fill="#334155">② 唯一索引不含 tenant_id → 跨租户撞键</text>
+  <text x="480" y="270" font-size="12" fill="#334155">对策：RLS 兜读、复合唯一键兜写</text>
+  <text x="480" y="298" font-size="12" fill="#334155">两者都不依赖「开发者记得写 where」</text>
+
+  <rect x="40" y="344" width="820" height="128" rx="10" fill="#F0FDF4" stroke="#22C55E"/>
+  <text x="60" y="370" font-size="13" font-weight="bold" fill="#15803D">一条判据守住整层：用「不带 where 的查询」验收</text>
+  <text x="60" y="394" font-size="12" fill="#334155">把连接切到租户 A，执行 SELECT count(*) FROM card; —— 若返回了租户 B 的行，说明 RLS 没生效或没启用。</text>
+  <text x="60" y="418" font-size="12" fill="#334155">这条判据的价值在于：它故意省略了 where 子句，因此不依赖任何应用层代码正确，只考验数据库这一道闸。</text>
+  <text x="60" y="442" font-size="12" fill="#334155">同理，跨租户插入要能被唯一键挡住——先写 A 的 slug，再用 B 插入同名 slug，必须成功而不是冲突。</text>
+</svg>

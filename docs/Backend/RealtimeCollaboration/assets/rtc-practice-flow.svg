@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">实战闭环：卡片描述的协作编辑，S1 到 S10</text>
+
+  <rect x="40" y="66" width="190" height="88" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="135" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">S1 定口径</text>
+  <text x="135" y="116" text-anchor="middle" font-size="11" fill="#334155">编辑粒度：字符 / 块</text>
+  <text x="135" y="136" text-anchor="middle" font-size="11" fill="#334155">并发上限：同卡 8 人</text>
+
+  <rect x="255" y="66" width="190" height="88" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="350" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803D">S2 数据模型</text>
+  <text x="350" y="116" text-anchor="middle" font-size="11" fill="#334155">doc / update / snapshot</text>
+  <text x="350" y="136" text-anchor="middle" font-size="11" fill="#334155">三张表 + 一个 seq</text>
+
+  <rect x="470" y="66" width="190" height="88" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="565" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">S3 协议消息</text>
+  <text x="565" y="116" text-anchor="middle" font-size="11" fill="#334155">hello / sync / update / ack</text>
+  <text x="565" y="136" text-anchor="middle" font-size="11" fill="#334155">六种帧，全部带 seq</text>
+
+  <rect x="685" y="66" width="175" height="88" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="772" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#6D28D9">S4 服务端</text>
+  <text x="772" y="116" text-anchor="middle" font-size="11" fill="#334155">鉴权 → 定序 → 落库</text>
+  <text x="772" y="136" text-anchor="middle" font-size="11" fill="#334155">→ 广播（顺序不可换）</text>
+
+  <rect x="40" y="182" width="190" height="88" rx="8" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="135" y="208" text-anchor="middle" font-size="13" font-weight="bold" fill="#BE185D">S5 客户端</text>
+  <text x="135" y="232" text-anchor="middle" font-size="11" fill="#334155">乐观应用 + 待确认栈</text>
+  <text x="135" y="252" text-anchor="middle" font-size="11" fill="#334155">回滚只回自己那条</text>
+
+  <rect x="255" y="182" width="190" height="88" rx="8" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="350" y="208" text-anchor="middle" font-size="13" font-weight="bold" fill="#C2410C">S6 断线追平</text>
+  <text x="350" y="232" text-anchor="middle" font-size="11" fill="#334155">带状态向量重连</text>
+  <text x="350" y="252" text-anchor="middle" font-size="11" fill="#334155">补增量，不拉全量</text>
+
+  <rect x="470" y="182" width="190" height="88" rx="8" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="565" y="208" text-anchor="middle" font-size="13" font-weight="bold" fill="#0E7490">S7 Presence</text>
+  <text x="565" y="232" text-anchor="middle" font-size="11" fill="#334155">TTL 15s，不落库</text>
+  <text x="565" y="252" text-anchor="middle" font-size="11" fill="#334155">光标 50ms 合并</text>
+
+  <rect x="685" y="182" width="175" height="88" rx="8" fill="#F1F5F9" stroke="#475569" stroke-width="2"/>
+  <text x="772" y="208" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">S8 权限</text>
+  <text x="772" y="232" text-anchor="middle" font-size="11" fill="#334155">字段级 + 踢连接</text>
+  <text x="772" y="252" text-anchor="middle" font-size="11" fill="#334155">审计一行不缺</text>
+
+  <rect x="40" y="298" width="400" height="88" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="240" y="324" text-anchor="middle" font-size="13" font-weight="bold" fill="#B91C1C">S9 十条判据（必须可证伪）</text>
+  <text x="240" y="348" text-anchor="middle" font-size="11" fill="#334155">并发两次插入 → 两端逐字相同</text>
+  <text x="240" y="368" text-anchor="middle" font-size="11" fill="#334155">重放同一 update N 次 → 终态不变</text>
+
+  <rect x="460" y="298" width="400" height="88" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="660" y="324" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803D">S10 验收脚本</text>
+  <text x="660" y="348" text-anchor="middle" font-size="11" fill="#334155">两个 ws 客户端 + 断言，一条命令跑完</text>
+  <text x="660" y="368" text-anchor="middle" font-size="11" fill="#334155">失败要能指出「哪一条不成立」</text>
+
+  <rect x="40" y="412" width="820" height="80" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="60" y="438" font-size="13" font-weight="bold" fill="#1E293B">顺序为什么不能换</text>
+  <text x="60" y="462" font-size="12" fill="#334155">先广播后落库：客户端看到的内容刷新后消失；先落库后鉴权：越权写入已经写进去了，只能事后追责。</text>
+  <text x="60" y="482" font-size="12" fill="#334155">这就是为什么「鉴权 → 定序 → 落库 → 广播」是一条固定管线，而不是四段可以随意调用的代码。</text>
+</svg>

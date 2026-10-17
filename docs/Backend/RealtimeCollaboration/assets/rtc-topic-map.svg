@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="580" viewBox="0 0 880 580">
+  <rect width="880" height="580" fill="#FFFFFF"/>
+  <text x="440" y="42" text-anchor="middle" font-size="22" font-weight="bold" fill="#1E293B">实时协作与冲突解决：从「谁会赢」到「怎么收敛」</text>
+  <text x="440" y="68" text-anchor="middle" font-size="13" fill="#64748B">三层结构：冲突模型（为什么难） → 合并算法（怎么算） → 工程链路（怎么跑起来）</text>
+
+  <rect x="40" y="92" width="250" height="92" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="165" y="122" text-anchor="middle" font-size="16" font-weight="bold" fill="#1D4ED8">Overview</text>
+  <text x="165" y="146" text-anchor="middle" font-size="12" fill="#334155">三类冲突与五种一致性</text>
+  <text x="165" y="166" text-anchor="middle" font-size="12" fill="#334155">什么时候不该做实时协作</text>
+
+  <rect x="315" y="92" width="250" height="92" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="440" y="122" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">OT</text>
+  <text x="440" y="146" text-anchor="middle" font-size="12" fill="#334155">操作变换与 TP1 收敛</text>
+  <text x="440" y="166" text-anchor="middle" font-size="12" fill="#334155">服务端定序的工程代价</text>
+
+  <rect x="590" y="92" width="250" height="92" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="715" y="122" text-anchor="middle" font-size="16" font-weight="bold" fill="#B45309">CRDT</text>
+  <text x="715" y="146" text-anchor="middle" font-size="12" fill="#334155">半格、序列与墓碑</text>
+  <text x="715" y="166" text-anchor="middle" font-size="12" fill="#334155">收敛判据与内存代价</text>
+
+  <rect x="40" y="206" width="250" height="92" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="165" y="236" text-anchor="middle" font-size="16" font-weight="bold" fill="#6D28D9">SyncProtocol</text>
+  <text x="165" y="260" text-anchor="middle" font-size="12" fill="#334155">状态向量与增量同步</text>
+  <text x="165" y="280" text-anchor="middle" font-size="12" fill="#334155">重连追平与幂等</text>
+
+  <rect x="315" y="206" width="250" height="92" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="440" y="236" text-anchor="middle" font-size="16" font-weight="bold" fill="#BE185D">Presence</text>
+  <text x="440" y="260" text-anchor="middle" font-size="12" fill="#334155">在线状态、光标与输入中</text>
+  <text x="440" y="280" text-anchor="middle" font-size="12" fill="#334155">临时态不入库</text>
+
+  <rect x="590" y="206" width="250" height="92" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="715" y="236" text-anchor="middle" font-size="16" font-weight="bold" fill="#C2410C">Offline</text>
+  <text x="715" y="260" text-anchor="middle" font-size="12" fill="#334155">本地待发队列与重放</text>
+  <text x="715" y="280" text-anchor="middle" font-size="12" fill="#334155">离线下的 undo 语义</text>
+
+  <rect x="40" y="320" width="250" height="92" rx="10" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="165" y="350" text-anchor="middle" font-size="16" font-weight="bold" fill="#0E7490">Security</text>
+  <text x="165" y="374" text-anchor="middle" font-size="12" fill="#334155">订阅鉴权四道闸</text>
+  <text x="165" y="394" text-anchor="middle" font-size="12" fill="#334155">协作内容的安全边界</text>
+
+  <rect x="315" y="320" width="250" height="92" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="2"/>
+  <text x="440" y="350" text-anchor="middle" font-size="16" font-weight="bold" fill="#334155">Practice</text>
+  <text x="440" y="374" text-anchor="middle" font-size="12" fill="#334155">卡片描述协作编辑闭环</text>
+  <text x="440" y="394" text-anchor="middle" font-size="12" fill="#334155">十条可证伪判据</text>
+
+  <rect x="590" y="320" width="250" height="92" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="715" y="350" text-anchor="middle" font-size="16" font-weight="bold" fill="#B91C1C">FAQ</text>
+  <text x="715" y="374" text-anchor="middle" font-size="12" fill="#334155">六类症状分诊表</text>
+  <text x="715" y="394" text-anchor="middle" font-size="12" fill="#334155">十二条最佳实践</text>
+
+  <line x1="165" y1="440" x2="715" y2="440" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="165" y="430" text-anchor="middle" font-size="12" fill="#64748B">问题域</text>
+  <text x="440" y="430" text-anchor="middle" font-size="12" fill="#64748B">算法层</text>
+  <text x="715" y="430" text-anchor="middle" font-size="12" fill="#64748B">工程层</text>
+
+  <rect x="40" y="460" width="800" height="86" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="60" y="486" font-size="13" font-weight="bold" fill="#1E293B">一句话分工</text>
+  <text x="60" y="510" font-size="12" fill="#334155">算法只保证「同一批操作，人人算出同一个结果」；不保证「这个结果符合业务本意」。</text>
+  <text x="60" y="532" font-size="12" fill="#334155">所以真正的难点在算法之外——权限、审计、顺序的业务含义，以及「看不到对方在干什么」。</text>
+</svg>

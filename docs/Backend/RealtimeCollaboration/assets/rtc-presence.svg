@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+  <rect width="880" height="440" fill="#FFFFFF"/>
+  <text x="440" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">Presence：临时状态与持久状态必须走两条路</text>
+
+  <rect x="40" y="66" width="380" height="150" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="230" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#BE185D">临时状态（ephemeral）</text>
+  <text x="60" y="118" font-size="12" fill="#334155">谁在线、光标在哪、正在输入、当前选中了哪张卡片</text>
+  <text x="60" y="142" font-size="12" fill="#334155">特点：秒级过期，丢了不影响数据正确性</text>
+  <text x="60" y="166" font-size="12" fill="#BE185D">存内存 + TTL，不写库、不进操作日志</text>
+  <text x="60" y="190" font-size="11" fill="#64748B">典型错误：把它写进业务表，再也不敢删</text>
+
+  <rect x="460" y="66" width="380" height="150" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="650" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">持久状态（durable）</text>
+  <text x="480" y="118" font-size="12" fill="#334155">卡片内容、评论、成员角色</text>
+  <text x="480" y="142" font-size="12" fill="#334155">特点：必须可恢复、可审计、可回溯到某个版本</text>
+  <text x="480" y="166" font-size="12" fill="#1D4ED8">写库 + 操作日志 + 广播三步不可换序</text>
+  <text x="480" y="190" font-size="11" fill="#64748B">典型错误：先广播后入库，刷新页面就「回滚」</text>
+
+  <rect x="40" y="240" width="800" height="86" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="60" y="266" font-size="13" font-weight="bold" fill="#1E293B">心跳与超时：三个数字要一起定</text>
+  <text x="60" y="290" font-size="12" fill="#334155">广播间隔建议 5s、服务端 TTL 15s、前端「离开」提示 30s——TTL 必须是间隔的 3 倍，否则网络抖动就会闪出「离开/在线」。</text>
+  <text x="60" y="312" font-size="12" fill="#334155">判据：拔网线 15s 内其他人看到「离线」，插回 5s 内恢复「在线」，中间不出现两次以上跳变。</text>
+
+  <rect x="40" y="344" width="800" height="76" rx="10" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="60" y="370" font-size="13" font-weight="bold" fill="#B91C1C">广播放大：N 个人在同一块看板上</text>
+  <text x="60" y="394" font-size="12" fill="#334155">每次光标移动广播给 N-1 人 → 总流量按 N² 增长。做法：光标按 50ms 合并、只广播给「同屏可见」的订阅者、低频状态走拉取。</text>
+</svg>

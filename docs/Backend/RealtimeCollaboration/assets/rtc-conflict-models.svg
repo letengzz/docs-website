@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470">
+  <rect width="900" height="470" fill="#FFFFFF"/>
+  <text x="450" y="40" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">三类冲突：能被算法解决的只有第一类</text>
+
+  <rect x="30" y="70" width="270" height="170" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="165" y="100" text-anchor="middle" font-size="15" font-weight="bold" fill="#1D4ED8">① 写写冲突</text>
+  <text x="165" y="126" text-anchor="middle" font-size="12" fill="#334155">两个人同时改同一个字段</text>
+  <text x="165" y="150" text-anchor="middle" font-size="12" fill="#334155">A 把标题改成 X，B 改成 Y</text>
+  <text x="165" y="178" text-anchor="middle" font-size="12" fill="#1D4ED8">算法可判：定序或合并</text>
+  <text x="165" y="204" text-anchor="middle" font-size="12" fill="#475569">代价：总有一方的意图被丢掉</text>
+  <text x="165" y="226" text-anchor="middle" font-size="11" fill="#64748B">除非保留两条并让人选</text>
+
+  <rect x="315" y="70" width="270" height="170" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="450" y="100" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">② 读写冲突</text>
+  <text x="450" y="126" text-anchor="middle" font-size="12" fill="#334155">A 改字段，B 基于旧值改另一个字段</text>
+  <text x="450" y="150" text-anchor="middle" font-size="12" fill="#334155">列表在别人插入后位置整体后移</text>
+  <text x="450" y="178" text-anchor="middle" font-size="12" fill="#B45309">算法可判：位置要跟着元素走</text>
+  <text x="450" y="204" text-anchor="middle" font-size="12" fill="#475569">代价：必须给元素稳定标识</text>
+  <text x="450" y="226" text-anchor="middle" font-size="11" fill="#64748B">按下标寻址的方案一律踩这里</text>
+
+  <rect x="600" y="70" width="270" height="170" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="735" y="100" text-anchor="middle" font-size="15" font-weight="bold" fill="#B91C1C">③ 意图冲突</text>
+  <text x="735" y="126" text-anchor="middle" font-size="12" fill="#334155">合并结果合法但与谁的本意都不同</text>
+  <text x="735" y="150" text-anchor="middle" font-size="12" fill="#334155">「删掉这行」遇到「改这行」</text>
+  <text x="735" y="178" text-anchor="middle" font-size="12" fill="#B91C1C">算法不可判：只能靠产品规则</text>
+  <text x="735" y="204" text-anchor="middle" font-size="12" fill="#475569">代价：必须在设计期写死规则</text>
+  <text x="735" y="226" text-anchor="middle" font-size="11" fill="#64748B">「谁赢」是产品决定，不是技术决定</text>
+
+  <rect x="30" y="262" width="840" height="86" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="50" y="288" font-size="13" font-weight="bold" fill="#1E293B">为什么「最后写入者获胜」不够</text>
+  <text x="50" y="312" font-size="12" fill="#334155">LWW（Last-Write-Wins）只需要一个时间戳，代价是把「同时发生的两次写入」变成「一次静默丢失」——</text>
+  <text x="50" y="334" font-size="12" fill="#334155">用户看不到冲突，只看到自己的修改消失。判据：让冲突可见，或者让冲突不可能发生。</text>
+
+  <rect x="30" y="366" width="840" height="84" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="1"/>
+  <text x="50" y="392" font-size="13" font-weight="bold" fill="#15803D">三种可选的收敛承诺</text>
+  <text x="50" y="416" font-size="12" fill="#334155">强一致（服务端定序，排队写） · 最终一致（人人算出同一结果） · 意图保留（冲突显式呈现给人）</text>
+  <text x="50" y="438" font-size="12" fill="#334155">实时协作通常选第二种，并在「意图冲突」这一类上叠加第三种。</text>
+</svg>

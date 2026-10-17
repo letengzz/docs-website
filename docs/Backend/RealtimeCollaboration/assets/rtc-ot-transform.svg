@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="38" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">OT：同一个位置插入两次，谁在后面？</text>
+
+  <text x="40" y="78" font-size="13" font-weight="bold" fill="#1E293B">初始文档</text>
+  <rect x="40" y="88" width="360" height="40" rx="6" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <text x="220" y="114" text-anchor="middle" font-size="14" font-family="Menlo, monospace" fill="#334155">ABC</text>
+
+  <text x="40" y="170" font-size="13" font-weight="bold" fill="#1D4ED8">客户端 1（已同步到 rev=1）</text>
+  <rect x="40" y="180" width="360" height="40" rx="6" fill="#EFF6FF" stroke="#3B82F6"/>
+  <text x="220" y="206" text-anchor="middle" font-size="13" font-family="Menlo, monospace" fill="#1D4ED8">insert(1, "X") → AXBC</text>
+
+  <text x="40" y="262" font-size="13" font-weight="bold" fill="#B45309">客户端 2（同时，也基于 rev=1）</text>
+  <rect x="40" y="272" width="360" height="40" rx="6" fill="#FEF3C7" stroke="#F59E0B"/>
+  <text x="220" y="298" text-anchor="middle" font-size="13" font-family="Menlo, monospace" fill="#B45309">insert(1, "Y") → AYBC</text>
+
+  <line x1="410" y1="200" x2="470" y2="240" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="410" y1="292" x2="470" y2="252" stroke="#94A3B8" stroke-width="2"/>
+
+  <rect x="470" y="196" width="180" height="100" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="560" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#6D28D9">服务端定序</text>
+  <text x="560" y="246" text-anchor="middle" font-size="12" fill="#334155">先收 X（rev=2）</text>
+  <text x="560" y="268" text-anchor="middle" font-size="12" fill="#334155">再收 Y → 需变换</text>
+  <text x="560" y="288" text-anchor="middle" font-size="11" fill="#64748B">Y 的下标 1 已失效</text>
+
+  <rect x="676" y="170" width="190" height="152" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="771" y="196" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803D">transform(Y, X)</text>
+  <text x="771" y="220" text-anchor="middle" font-size="12" font-family="Menlo, monospace" fill="#334155">index: 1 → 2</text>
+  <text x="771" y="242" text-anchor="middle" font-size="12" font-family="Menlo, monospace" fill="#334155">insert(2, "Y")</text>
+  <text x="771" y="270" text-anchor="middle" font-size="12" fill="#15803D">结果：AXYBC</text>
+  <text x="771" y="296" text-anchor="middle" font-size="11" fill="#64748B">两个客户端最终一致</text>
+
+  <rect x="40" y="330" width="826" height="80" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="60" y="356" font-size="13" font-weight="bold" fill="#1E293B">变换函数必须满足的两条性质</text>
+  <text x="60" y="380" font-size="12" fill="#334155">TP1（收敛）：transform(a, b) 与 transform(b, a) 作用后，两条路径得到同一个文档状态。</text>
+  <text x="60" y="400" font-size="12" fill="#334155">TP2（上下文无关）：三次并发操作时，变换结果不能依赖「先应用了哪一条」——否则要保存全部历史。</text>
+
+  <rect x="40" y="424" width="826" height="72" rx="10" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="60" y="450" font-size="13" font-weight="bold" fill="#B91C1C">OT 的真正代价不在算法，而在「谁定序」</text>
+  <text x="60" y="474" font-size="12" fill="#334155">所有操作必须先到中心节点排队，再按序变换分发给其他人：中心节点是单点，也是权限与审计的唯一入口。</text>
+</svg>

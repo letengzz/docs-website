@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490">
+  <rect width="880" height="490" fill="#FFFFFF"/>
+  <text x="440" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">六类症状的分诊顺序：先判「是不是同一个状态」</text>
+
+  <rect x="300" y="60" width="280" height="52" rx="8" fill="#F1F5F9" stroke="#475569" stroke-width="2"/>
+  <text x="440" y="82" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">两个人看到的内容不一样</text>
+  <text x="440" y="102" text-anchor="middle" font-size="11" fill="#64748B">先确认是不是刷新后仍然不一样</text>
+
+  <line x1="440" y1="112" x2="440" y2="134" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="120" y1="134" x2="760" y2="134" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="120" y1="134" x2="120" y2="156" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="440" y1="134" x2="440" y2="156" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="760" y1="134" x2="760" y2="156" stroke="#94A3B8" stroke-width="2"/>
+
+  <rect x="30" y="156" width="180" height="86" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="120" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">刷新后一致</text>
+  <text x="120" y="202" text-anchor="middle" font-size="11" fill="#334155">广播丢帧或未订阅</text>
+  <text x="120" y="222" text-anchor="middle" font-size="11" fill="#64748B">查 seq 跳号与订阅回执</text>
+
+  <rect x="350" y="156" width="180" height="86" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="440" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">刷新后仍不一致</text>
+  <text x="440" y="202" text-anchor="middle" font-size="11" fill="#334155">合并算法或版本基线错</text>
+  <text x="440" y="222" text-anchor="middle" font-size="11" fill="#64748B">对比两端状态向量</text>
+
+  <rect x="670" y="156" width="180" height="86" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="760" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">只有一人不一致</text>
+  <text x="760" y="202" text-anchor="middle" font-size="11" fill="#334155">本地缓存腐化</text>
+  <text x="760" y="222" text-anchor="middle" font-size="11" fill="#64748B">清 IndexedDB 再全量拉</text>
+
+  <rect x="30" y="266" width="255" height="90" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="157" y="290" text-anchor="middle" font-size="12" font-weight="bold" fill="#6D28D9">改动「闪一下又回去」</text>
+  <text x="157" y="312" text-anchor="middle" font-size="11" fill="#334155">先广播后落库，或写库失败</text>
+  <text x="157" y="332" text-anchor="middle" font-size="11" fill="#64748B">查事务提交与广播的先后</text>
+
+  <rect x="300" y="266" width="255" height="90" rx="8" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="427" y="290" text-anchor="middle" font-size="12" font-weight="bold" fill="#C2410C">越写越卡</text>
+  <text x="427" y="312" text-anchor="middle" font-size="11" fill="#334155">墓碑与历史无限增长</text>
+  <text x="427" y="332" text-anchor="middle" font-size="11" fill="#64748B">量 doc 字节数与 update 条数</text>
+
+  <rect x="570" y="266" width="280" height="90" rx="8" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="710" y="290" text-anchor="middle" font-size="12" font-weight="bold" fill="#0E7490">断线回来少了改动</text>
+  <text x="710" y="312" text-anchor="middle" font-size="11" fill="#334155">待发队列没持久化，或 ack 前就出队</text>
+  <text x="710" y="332" text-anchor="middle" font-size="11" fill="#64748B">查队列与 ack 的落盘时机</text>
+
+  <rect x="30" y="378" width="820" height="88" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="50" y="404" font-size="13" font-weight="bold" fill="#1E293B">一条通用的取证顺序</text>
+  <text x="50" y="428" font-size="12" fill="#334155">① 两端各自导出「状态向量 + 内容哈希」→ ② 有哈希不一致就先判合并，一致再判传输 →</text>
+  <text x="50" y="450" font-size="12" fill="#334155">③ 传输侧看 seq 是否连续 → ④ 合并侧看两条 update 的应用顺序是否真的无关（重放幂等）。</text>
+</svg>

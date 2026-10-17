@@ -107,32 +107,33 @@ backend-template/
 **第 69 天（骨架与基础能力）**：
 
 1. [骨架与目录结构](./Skeleton/index.md)：Maven 多模块骨架、启动类、配置文件，可 `mvn spring-boot:run` 启动；并用 **Maven Profile** 管理同一大版本下的依赖小版本与 JDK 编译目标差异（含 BOM 导入取舍、toolchains、`.mvn/maven.config` 与 CI 矩阵）。
-2. [统一响应与全局异常](./CommonResponse/index.md)：`Result<T>` 统一返回结构、`ErrorCode` 错误码、`@RestControllerAdvice` 全局异常处理。
-3. [健康检查与配置](./HealthCheck/index.md)：Actuator 暴露健康与指标端点、多环境配置、启动验证。
+2. [需求与架构设计](./Architecture/index.md)：先定「这一版做什么」——需求清单与验收口径、技术选型理由、分层与依赖规则（严格单向）、统一契约；范围与取舍写在最前面，后面每一周都不再重开范围讨论。
+3. [统一响应与全局异常](./CommonResponse/index.md)：`Result<T>` 统一返回结构、`ErrorCode` 错误码、`@RestControllerAdvice` 全局异常处理。
+4. [健康检查与配置](./HealthCheck/index.md)：Actuator 暴露健康与指标端点、多环境配置、启动验证。
 
 **第 70 天（可观测性与校验）**：
 
-4. [请求追踪 ID 与日志切面](./TraceId/index.md)：`TraceIdFilter` 生成/透传 `X-Trace-Id` 并写入 MDC，Logback 日志串联，`WebLogAspect` 统一切面埋点。
-5. [参数校验增强](./Validation/index.md)：分组校验、自定义 `@Mobile` 注解、字段级错误明细。
-6. [MockMvc 集成测试](./IntegrationTest/index.md)：把 curl 验证固化为自动化用例，并接入 JaCoCo 覆盖率门禁。
+5. [请求追踪 ID 与日志切面](./TraceId/index.md)：`TraceIdFilter` 生成/透传 `X-Trace-Id` 并写入 MDC，Logback 日志串联，`WebLogAspect` 统一切面埋点。
+6. [参数校验增强](./Validation/index.md)：分组校验、自定义 `@Mobile` 注解、字段级错误明细。
+7. [MockMvc 集成测试](./IntegrationTest/index.md)：把 curl 验证固化为自动化用例，并接入 JaCoCo 覆盖率门禁。
 
 **第 71 天（数据访问）**：
 
-7. [数据访问：MyBatis-Plus 接入](./DataAccess/index.md)：`BaseEntity` + 拦截器链（分页/乐观锁/防全表更新）、`MetaObjectHandler` 审计字段自动填充、逻辑删除、`PageResult` 统一分页出参、Testcontainers 数据层集成测试。
+8. [数据访问：MyBatis-Plus 接入](./DataAccess/index.md)：`BaseEntity` + 拦截器链（分页/乐观锁/防全表更新）、`MetaObjectHandler` 审计字段自动填充、逻辑删除、`PageResult` 统一分页出参、Testcontainers 数据层集成测试。
 
 **第 72 天（认证与授权）**：
 
-8. [认证授权：Spring Security 7 + JWT](./Security/index.md)：无状态认证链路（`JwtAuthenticationFilter` 插在 `UsernamePasswordAuthenticationFilter` 之前）、jjwt 令牌签发与校验、`UserContext` 桥接审计字段、401/403 统一走 `Result<T>` 出口、`@PreAuthorize` 声明式权限与 12 条踩坑清单。
+9. [认证授权：Spring Security 7 + JWT](./Security/index.md)：无状态认证链路（`JwtAuthenticationFilter` 插在 `UsernamePasswordAuthenticationFilter` 之前）、jjwt 令牌签发与校验、`UserContext` 桥接审计字段、401/403 统一走 `Result<T>` 出口、`@PreAuthorize` 声明式权限与 12 条踩坑清单。
 
 **第 73 天（第 3 周：联调与测试）**：
 
-9. [登录业务闭环与令牌生命周期](./AuthLifecycle/index.md)：`AuthService` 账号锁定（连续 5 次失败锁 15 分钟）+ 密码强度校验 + 登录审计表 `t_login_log`、Redis 键设计、双令牌刷新（Refresh 一次性消费防重放）与登出 `jti` 黑名单，`SecurityIT` 从 4 个用例扩到 8 个。
+10. [登录业务闭环与令牌生命周期](./AuthLifecycle/index.md)：`AuthService` 账号锁定（连续 5 次失败锁 15 分钟）+ 密码强度校验 + 登录审计表 `t_login_log`、Redis 键设计、双令牌刷新（Refresh 一次性消费防重放）与登出 `jti` 黑名单，`SecurityIT` 从 4 个用例扩到 8 个。
 
 **第 74 天（第 3 周：性能与契约门禁）**：
 
-10. [压测与性能基线](./PerformanceTest/index.md)：k6 压测脚本（登录 + 受保护接口双场景）与 TPS / P95 基线三要素、JaCoCo 0.8.15 按模块设覆盖率阈值（`template-security` ≥ 75%）并绑定 `verify` 门禁、springdoc-openapi 3.1.x 导出 `openapi.json` 做契约回归与破坏性变更拦截。
+11. [压测与性能基线](./PerformanceTest/index.md)：k6 压测脚本（登录 + 受保护接口双场景）与 TPS / P95 基线三要素、JaCoCo 0.8.15 按模块设覆盖率阈值（`template-security` ≥ 75%）并绑定 `verify` 门禁、springdoc-openapi 3.1.x 导出 `openapi.json` 做契约回归与破坏性变更拦截。
 
-11. [测试数据隔离与边界用例](./TestIsolation/index.md)：**不再用 H2 假装 MySQL**——Testcontainers 2.x 起真实 MySQL 8.4 + Redis 8（singleton container 模式 + `@DynamicPropertySource`）；隔离三档（`@Transactional` 回滚 / `@Sql` 清库 / 独立库）各自的速度、隔离度与失效场景；`TRUNCATE` 的隐式提交与外键约束坑；清库与 Redis `flushDb` 必须成对；JUnit 并行执行配置与 `@ResourceLock`；边界用例四步法与矩阵（9 类输入 × 三值取法）、参数化测试、注入 `Clock` 替代 `Thread.sleep`、`CountDownLatch` 对齐起跑线的并发刷新用例。
+12. [测试数据隔离与边界用例](./TestIsolation/index.md)：**不再用 H2 假装 MySQL**——Testcontainers 2.x 起真实 MySQL 8.4 + Redis 8（singleton container 模式 + `@DynamicPropertySource`）；隔离三档（`@Transactional` 回滚 / `@Sql` 清库 / 独立库）各自的速度、隔离度与失效场景；`TRUNCATE` 的隐式提交与外键约束坑；清库与 Redis `flushDb` 必须成对；JUnit 并行执行配置与 `@ResourceLock`；边界用例四步法与矩阵（9 类输入 × 三值取法）、参数化测试、注入 `Clock` 替代 `Thread.sleep`、`CountDownLatch` 对齐起跑线的并发刷新用例。
 
 **第 76 天（模板产品化：从"一套焊死的基座"到"可参数化的基座"）**：
 

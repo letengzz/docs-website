@@ -41,7 +41,8 @@ export const nav = [
       { text: "分布式缓存深入", link: "/docs/Backend/DistributedCache" },
       { text: "响应式编程", link: "/docs/Backend/ReactiveProgramming" },
       { text: "高并发系统设计", link: "/docs/Backend/HighConcurrency" },
-      { text: "遗留系统改造", link: "/docs/Backend/LegacyModernization" },]
+      { text: "遗留系统改造", link: "/docs/Backend/LegacyModernization" },
+      { text: "实时协作与冲突解决", link: "/docs/Backend/RealtimeCollaboration" },]
   },
   {
     text: "数据库",

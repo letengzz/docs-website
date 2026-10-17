@@ -615,3 +615,21 @@ export const LegacyModernization = [
     ],
   },
 ];
+
+export const RealtimeCollaboration = [
+  {
+    text: "实时协作与冲突解决",
+    link: "/docs/Backend/RealtimeCollaboration/index.md",
+    items: [
+      { text: "概述：三类冲突与五种一致性", link: "/docs/Backend/RealtimeCollaboration/Overview/index.md" },
+      { text: "OT：操作变换与定序", link: "/docs/Backend/RealtimeCollaboration/OT/index.md" },
+      { text: "CRDT：收敛的代价", link: "/docs/Backend/RealtimeCollaboration/CRDT/index.md" },
+      { text: "同步协议与状态向量", link: "/docs/Backend/RealtimeCollaboration/SyncProtocol/index.md" },
+      { text: "Presence：在线状态与光标", link: "/docs/Backend/RealtimeCollaboration/Presence/index.md" },
+      { text: "离线优先与重放", link: "/docs/Backend/RealtimeCollaboration/Offline/index.md" },
+      { text: "权限、审计与内容安全", link: "/docs/Backend/RealtimeCollaboration/Security/index.md" },
+      { text: "实战：卡片描述的协作编辑", link: "/docs/Backend/RealtimeCollaboration/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/RealtimeCollaboration/FAQ/index.md" },
+    ],
+  },
+];

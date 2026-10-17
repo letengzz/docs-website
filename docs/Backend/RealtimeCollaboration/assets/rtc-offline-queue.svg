@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect width="880" height="470" fill="#FFFFFF"/>
+  <text x="440" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">离线优先：本地先落盘，联网后补账</text>
+
+  <rect x="40" y="64" width="230" height="120" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="155" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#C2410C">① 本地写</text>
+  <text x="60" y="116" font-size="12" fill="#334155">先改内存 → 落 IndexedDB</text>
+  <text x="60" y="138" font-size="12" fill="#334155">立刻更新 UI（0 等待）</text>
+  <text x="60" y="162" font-size="11" fill="#64748B">此时「成功」尚未被服务端确认</text>
+
+  <rect x="325" y="64" width="230" height="120" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="440" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">② 入待发队列</text>
+  <text x="345" y="116" font-size="12" fill="#334155">每条一个 clientSeq（单调）</text>
+  <text x="345" y="138" font-size="12" fill="#334155">+ 幂等键 + 期望版本号</text>
+  <text x="345" y="162" font-size="11" fill="#64748B">队列必须持久化，且要能压缩</text>
+
+  <rect x="610" y="64" width="230" height="120" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="725" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">③ 重连重放</text>
+  <text x="630" y="116" font-size="12" fill="#334155">按 clientSeq 顺序逐条发送</text>
+  <text x="630" y="138" font-size="12" fill="#334155">收到 ack 才出队</text>
+  <text x="630" y="162" font-size="11" fill="#64748B">失败要能区分「重试」与「放弃」</text>
+
+  <line x1="270" y1="124" x2="325" y2="124" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="555" y1="124" x2="610" y2="124" stroke="#94A3B8" stroke-width="2"/>
+
+  <rect x="40" y="212" width="800" height="108" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="60" y="238" font-size="13" font-weight="bold" fill="#1E293B">重放期最常见的三个错</text>
+  <text x="60" y="262" font-size="12" fill="#334155">① 顺序错：不同设备的 clientSeq 不能直接比大小，跨端顺序只在服务端有意义。</text>
+  <text x="60" y="284" font-size="12" fill="#334155">② 前提失效：离线时基于 version=7 改的字段，回来时已是 version=9 → 必须判 409，不能盲写。</text>
+  <text x="60" y="306" font-size="12" fill="#334155">③ 重复入队：同一个 intent 被两次提交，靠客户端生成的幂等键去重，不能靠内容比较。</text>
+
+  <rect x="40" y="342" width="800" height="106" rx="10" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="60" y="368" font-size="13" font-weight="bold" fill="#B91C1C">离线把 undo 的语义改了</text>
+  <text x="60" y="392" font-size="12" fill="#334155">在线时 Ctrl+Z 是「撤销我的上一步」；离线时别人的操作可能已经插进来，</text>
+  <text x="60" y="414" font-size="12" fill="#334155">「撤销我的上一步」在合并后可能撤销掉别人的改动。</text>
+  <text x="60" y="436" font-size="12" fill="#334155">做法：撤销栈按「本地操作」记录，重放时用逆操作，不重放历史快照。</text>
+</svg>

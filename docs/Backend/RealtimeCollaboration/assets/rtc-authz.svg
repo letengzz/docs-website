@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <rect width="880" height="480" fill="#FFFFFF"/>
+  <text x="440" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">协作链路上的四道闸：越权必须死在最前面</text>
+
+  <rect x="40" y="66" width="190" height="76" rx="8" fill="#ECFEFF" stroke="#06B6D4" stroke-width="2"/>
+  <text x="135" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#0E7490">① 连接鉴权</text>
+  <text x="135" y="118" text-anchor="middle" font-size="11" fill="#334155">握手时验令牌，拿 userId</text>
+
+  <rect x="255" y="66" width="190" height="76" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="350" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">② 订阅鉴权</text>
+  <text x="350" y="118" text-anchor="middle" font-size="11" fill="#334155">订阅 board:42 时验成员关系</text>
+
+  <rect x="470" y="66" width="190" height="76" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="565" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803D">③ 写入鉴权</text>
+  <text x="565" y="118" text-anchor="middle" font-size="11" fill="#334155">按字段判角色，不是按接口</text>
+
+  <rect x="685" y="66" width="155" height="76" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="762" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">④ 审计</text>
+  <text x="762" y="118" text-anchor="middle" font-size="11" fill="#334155">谁、何时、改了哪一列</text>
+
+  <line x1="230" y1="104" x2="255" y2="104" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="445" y1="104" x2="470" y2="104" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="660" y1="104" x2="685" y2="104" stroke="#94A3B8" stroke-width="2"/>
+
+  <rect x="40" y="166" width="800" height="96" rx="10" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="60" y="192" font-size="13" font-weight="bold" fill="#B91C1C">最容易被漏掉的一处：订阅之后再改权限</text>
+  <text x="60" y="216" font-size="12" fill="#334155">成员被移出看板时，如果只删数据库行、不踢连接，那条 WebSocket 会继续收到广播——</text>
+  <text x="60" y="238" font-size="12" fill="#334155">页面已经刷新不了，但长连接里每一张卡片的内容还在流进来。判据：移出成员后 1s 内该连接必须收不到新事件。</text>
+
+  <rect x="40" y="280" width="390" height="176" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="60" y="306" font-size="13" font-weight="bold" fill="#1E293B">按字段判权限（同一张卡片）</text>
+  <text x="60" y="330" font-size="12" fill="#334155">内容 body：可写</text>
+  <text x="60" y="352" font-size="12" fill="#334155">位置 position：可写</text>
+  <text x="60" y="374" font-size="12" fill="#334155">负责人 assignee：部分角色可写</text>
+  <text x="60" y="396" font-size="12" fill="#334155">归档状态 archived：仅管理员</text>
+  <text x="60" y="424" font-size="11" fill="#64748B">判据：把字段清单与角色矩阵做笛卡尔积，</text>
+  <text x="60" y="444" font-size="11" fill="#64748B">每一格都要有一个会失败的用例。</text>
+
+  <rect x="450" y="280" width="390" height="176" rx="10" fill="#F0FDF4" stroke="#22C55E"/>
+  <text x="470" y="306" font-size="13" font-weight="bold" fill="#15803D">协作内容本身也是攻击面</text>
+  <text x="470" y="330" font-size="12" fill="#334155">粘贴的 HTML：富文本必须走白名单清洗</text>
+  <text x="470" y="352" font-size="12" fill="#334155">图片外链：服务端代取会变成 SSRF 跳板</text>
+  <text x="470" y="374" font-size="12" fill="#334155">@ 提及：批量提及可用来打通知风暴</text>
+  <text x="470" y="396" font-size="12" fill="#334155">附件预签名：有效期越短越安全</text>
+  <text x="470" y="424" font-size="11" fill="#64748B">判据：任何用户输入都不得直接进入</text>
+  <text x="470" y="444" font-size="11" fill="#64748B">广播报文的其他客户端渲染路径。</text>
+</svg>

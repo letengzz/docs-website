@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+  <rect width="900" height="540" fill="#FFFFFF"/>
+  <text x="450" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">增量同步：用「状态向量」换掉「全量重传」</text>
+
+  <rect x="40" y="70" width="150" height="300" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="115" y="96" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">客户端 A</text>
+
+  <rect x="710" y="70" width="150" height="300" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="785" y="96" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">服务端</text>
+
+  <line x1="190" y1="130" x2="710" y2="130" stroke="#3B82F6" stroke-width="2"/>
+  <text x="450" y="122" text-anchor="middle" font-size="12" fill="#1D4ED8">① hello {A: 0, B: 0, C: 0}</text>
+  <line x1="710" y1="170" x2="190" y2="170" stroke="#22C55E" stroke-width="2"/>
+  <text x="450" y="162" text-anchor="middle" font-size="12" fill="#15803D">② 全量快照 + 向量 {A: 12, B: 4, C: 0}</text>
+
+  <line x1="190" y1="216" x2="710" y2="216" stroke="#3B82F6" stroke-width="2"/>
+  <text x="450" y="208" text-anchor="middle" font-size="12" fill="#1D4ED8">③ 本地编辑 → 推送增量（带 seq=13）</text>
+  <line x1="710" y1="256" x2="190" y2="256" stroke="#22C55E" stroke-width="2"/>
+  <text x="450" y="248" text-anchor="middle" font-size="12" fill="#15803D">④ ack {A: 13}</text>
+
+  <line x1="190" y1="302" x2="710" y2="302" stroke="#F97316" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="450" y="294" text-anchor="middle" font-size="12" fill="#C2410C">⑤ 断线重连：hello {A: 13, B: 9, C: 0}</text>
+  <line x1="710" y1="342" x2="190" y2="342" stroke="#F97316" stroke-width="2"/>
+  <text x="450" y="334" text-anchor="middle" font-size="12" fill="#C2410C">⑥ 只补 B 的 5 条增量（不是全量）</text>
+
+  <rect x="40" y="392" width="390" height="118" rx="10" fill="#EFF6FF" stroke="#3B82F6"/>
+  <text x="60" y="418" font-size="13" font-weight="bold" fill="#1D4ED8">状态向量（version vector）</text>
+  <text x="60" y="442" font-size="12" fill="#334155">每个副本一个计数器：{clientId: 已见的连续序号}。</text>
+  <text x="60" y="464" font-size="12" fill="#334155">它的大小只跟「参与者数量」有关，不随时间增长，</text>
+  <text x="60" y="486" font-size="12" fill="#334155">所以可以直接放进每次握手的报文里。</text>
+
+  <rect x="470" y="392" width="390" height="118" rx="10" fill="#F0FDF4" stroke="#22C55E"/>
+  <text x="490" y="418" font-size="13" font-weight="bold" fill="#15803D">三条工程纪律</text>
+  <text x="490" y="442" font-size="12" fill="#334155">① 序号必须按副本连续，跳号说明丢了，要重拉；</text>
+  <text x="490" y="464" font-size="12" fill="#334155">② 增量必须幂等，重放不改变终态；</text>
+  <text x="490" y="486" font-size="12" fill="#334155">③ 快照与增量要有同一个版本号，否则拼接会错位。</text>
+</svg>
