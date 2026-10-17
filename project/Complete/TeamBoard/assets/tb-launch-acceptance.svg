@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" aria-label="在线协作任务看板上线验收：上部是编码期验收与上线验收的维度对照，中部是 LX-A 至 LX-H 八条判据的兑现状态，下部是唯一判 FAIL 的 LX-1 与三档结论口径">
+  <title>上线验收 · 八条判据的兑现状态、LX-1 登记与三档结论口径</title>
+  <rect width="900" height="620" fill="#ffffff"/>
+  <text x="30" y="38" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#1f2328">上线验收 · 八条判据的兑现状态、LX-1 登记与三档结论口径</text>
+  <text x="30" y="60" font-family="system-ui, sans-serif" font-size="11.5" fill="#57606a">验收不是「再跑一遍冒烟」，而是把「这次能不能上线」这个判断本身变成可勾选、可判 FAIL 的项。</text>
+
+  <text x="30" y="90" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">两个维度不可互推（也是本页不回答什么）</text>
+
+  <rect x="30" y="100" width="410" height="96" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="44" y="122" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">编码期验收（TB-A ~ TB-H）</text>
+  <text x="44" y="143" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">问的是：权限矩阵 18 格、接口契约、拖动只写一行</text>
+  <text x="44" y="161" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">对象是运行中的服务，判的是「行为对不对」</text>
+  <text x="44" y="182" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">当前状态：依赖已起（BL-1 已解除），待 BL-2</text>
+
+  <rect x="460" y="100" width="410" height="96" rx="9" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="474" y="122" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">上线验收（LX-A ~ LX-H，本页）</text>
+  <text x="474" y="143" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">问的是：清单能不能勾、期望值有没有形容词、起栈顺序</text>
+  <text x="474" y="161" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">对象是交付件本身，判的是「这次能不能上线」</text>
+  <text x="474" y="182" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">两者之间没有推导关系，必须各自判</text>
+
+  <text x="30" y="226" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">八条判据的兑现状态（绿 = 本机已跑，蓝 = 文档级；判据按「项」计、不按命令计）</text>
+
+  <rect x="30" y="238" width="410" height="44" rx="7" fill="#ffffff" stroke="#1a7f37"/>
+  <text x="44" y="256" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1a7f37">LX-A　项数按判据计</text>
+  <text x="44" y="273" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">四条交付判据拆成 20 项；项数与命令条数不相等</text>
+
+  <rect x="460" y="238" width="410" height="44" rx="7" fill="#ffffff" stroke="#1a7f37"/>
+  <text x="474" y="256" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1a7f37">LX-B　期望值列零形容词</text>
+  <text x="474" y="273" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">扫「正常 / 稳定 / 良好 / 较快 / 适当 / 及时」→ 无命中</text>
+
+  <rect x="30" y="290" width="410" height="44" rx="7" fill="#ffffff" stroke="#1a7f37"/>
+  <text x="44" y="308" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1a7f37">LX-C　前置检查全在起栈之前</text>
+  <text x="44" y="325" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">静态校验出现在首次 up 之前；第 1 项就是校验 rc=0</text>
+
+  <rect x="460" y="290" width="410" height="44" rx="7" fill="#ffffff" stroke="#1a7f37"/>
+  <text x="474" y="308" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1a7f37">LX-D　起栈顺序受健康依赖约束</text>
+  <text x="474" y="325" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">依赖先 Healthy、应用后 Started，不是靠 sleep 排队</text>
+
+  <rect x="30" y="342" width="410" height="44" rx="7" fill="#ffffff" stroke="#1a7f37"/>
+  <text x="44" y="360" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1a7f37">LX-E　成本判据不恒假</text>
+  <text x="44" y="377" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">认命令标签 UPDATE 1；不带 RETURNING 的读数标注不可用</text>
+
+  <rect x="460" y="342" width="410" height="44" rx="7" fill="#ffffff" stroke="#1a7f37"/>
+  <text x="474" y="360" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1a7f37">LX-F　备份可恢复且逐项相等</text>
+  <text x="474" y="377" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">恢复后表 / 行 / 索引 / 外键 / 函数 / 扩展数与源库逐项相等</text>
+
+  <rect x="30" y="394" width="410" height="44" rx="7" fill="#ffffff" stroke="#cf222e"/>
+  <text x="44" y="412" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#cf222e">LX-G　交付件缺失判 FAIL</text>
+  <text x="44" y="429" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">分区数 = 0 → 判 FAIL 并登记 LX-1，不留「待确认」</text>
+
+  <rect x="460" y="394" width="410" height="44" rx="7" fill="#ffffff" stroke="#0969da"/>
+  <text x="474" y="412" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0969da">LX-H　阻塞项有挡住项与解除判据</text>
+  <text x="474" y="429" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">失效的阻塞项被更正而非留着；解除判据必须是读数</text>
+
+  <text x="30" y="468" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1f2328">结论三档口径（写死，避免「差不多能上」）</text>
+
+  <rect x="30" y="478" width="270" height="72" rx="9" fill="#dafbe1" stroke="#1a7f37"/>
+  <text x="44" y="500" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1a7f37">通过</text>
+  <text x="44" y="519" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">八条全绿 且 无 FAIL 项</text>
+  <text x="44" y="537" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">当前不成立：LX-G 判 FAIL</text>
+
+  <rect x="315" y="478" width="270" height="72" rx="9" fill="#fff8c5" stroke="#9a6700"/>
+  <text x="329" y="500" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">有条件通过</text>
+  <text x="329" y="519" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">FAIL 项有登记号、有归属人、有回填窗口</text>
+  <text x="329" y="537" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">归属人可以写集体，判 FAIL 的必须点名</text>
+
+  <rect x="600" y="478" width="270" height="72" rx="9" fill="#ffebe9" stroke="#cf222e"/>
+  <text x="614" y="500" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#cf222e">不通过</text>
+  <text x="614" y="519" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">FAIL 项落在主链路上且无回退动作</text>
+  <text x="614" y="537" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">分区缺失正落在主链路上（拖动整笔回滚）</text>
+
+  <rect x="30" y="566" width="840" height="1" fill="#d0d7de"/>
+  <text x="30" y="584" font-family="system-ui, sans-serif" font-size="9.5" fill="#cf222e">本轮唯一一条 FAIL（LX-G）：audit_log 建了 PARTITION BY RANGE，分区数实测 0，插入报 no partition of relation found for row；</text>
+  <text x="30" y="602" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">一次拖动要在同一事务里写审计，所以它不是「审计少了」而是「整笔回滚」。已登记 LX-1；交付期不改 DDL，改它会作废已跑过的读数。</text>
+</svg>

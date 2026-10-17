@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640" role="img" aria-label="发布六阶段流水线与回滚决策分岔：构建固定 digest、迁移先于应用、滚动更新、健康检查、冒烟就绪、观察窗口，以及可逆回滚与向前修的两条分岔">
+  <title>发布与回滚手册 · 六阶段流水线与回滚决策分岔</title>
+  <defs>
+    <filter id="soft" x="-5%" y="-8%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.6" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="640" fill="#ffffff"/>
+  <text x="30" y="34" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1f2328">发布与回滚手册 · 六阶段流水线与回滚决策分岔</text>
+  <text x="30" y="56" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">每一阶段都有命令、判据与失败时的动作；出错先分岔——能不能退回来，取决于本次做的是哪一类迁移。</text>
+
+  <text x="30" y="90" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0969da">一、发布六阶段（每一阶段的失败动作都指向「退」，而不是「再看看」）</text>
+
+  <rect x="33" y="100" width="264" height="92" rx="9" fill="#ddf4ff" stroke="#54aeff" filter="url(#soft)"/>
+  <text x="45" y="124" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0969da">① 构建 · 固定 digest</text>
+  <text x="45" y="146" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">命令：buildx build --push -t app:1.4.0</text>
+  <text x="45" y="163" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">判据：拿到 sha256 digest，不是 tag</text>
+  <text x="45" y="180" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">失败：终止发布，不动任何环境</text>
+
+  <rect x="318" y="100" width="264" height="92" rx="9" fill="#ddf4ff" stroke="#54aeff" filter="url(#soft)"/>
+  <text x="330" y="124" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0969da">② 迁移 · 先于应用</text>
+  <text x="330" y="146" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">命令：docker compose run --rm migrate</text>
+  <text x="330" y="163" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">判据：applied 数 = 已评审脚本数</text>
+  <text x="330" y="180" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">失败：不再往下，按迁移类别决定</text>
+
+  <rect x="603" y="100" width="264" height="92" rx="9" fill="#ddf4ff" stroke="#54aeff" filter="url(#soft)"/>
+  <text x="615" y="124" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0969da">③ 应用 · 滚动更新</text>
+  <text x="615" y="146" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">命令：APP_DIGEST 指定后 compose up -d</text>
+  <text x="615" y="163" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">判据：容器 running (healthy)</text>
+  <text x="615" y="180" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">失败：立刻切回上一 digest</text>
+
+  <line x1="297" y1="146" x2="316" y2="146" stroke="#57606a" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="582" y1="146" x2="601" y2="146" stroke="#57606a" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <path d="M 735 192 V 203 H 165 V 212" fill="none" stroke="#57606a" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <rect x="33" y="214" width="264" height="92" rx="9" fill="#ddf4ff" stroke="#54aeff" filter="url(#soft)"/>
+  <text x="45" y="238" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0969da">④ 健康检查</text>
+  <text x="45" y="260" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">命令：curl -sf /actuator/health</text>
+  <text x="45" y="277" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">判据：返回 {"status":"UP"}</text>
+  <text x="45" y="294" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">失败：这是回滚信号，不是「再等等」</text>
+
+  <rect x="318" y="214" width="264" height="92" rx="9" fill="#ddf4ff" stroke="#54aeff" filter="url(#soft)"/>
+  <text x="330" y="238" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0969da">⑤ 冒烟就绪 · 五条加越权一条</text>
+  <text x="330" y="260" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">命令：取令牌 建卡 拖动 评论 拉事件</text>
+  <text x="330" y="277" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">判据：seq 从 1 连续，越权请求被拒</text>
+  <text x="330" y="294" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">失败：回滚，不许带着就绪缺口观察</text>
+
+  <rect x="603" y="214" width="264" height="92" rx="9" fill="#ddf4ff" stroke="#54aeff" filter="url(#soft)"/>
+  <text x="615" y="238" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0969da">⑥ 观察窗口 · 15 分钟</text>
+  <text x="615" y="260" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">看：P99 / 409 率 / 出站队列 / resync</text>
+  <text x="615" y="277" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">判据：六个指标都落在期望带内</text>
+  <text x="615" y="294" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">失败：进下方决策分岔</text>
+
+  <line x1="297" y1="260" x2="316" y2="260" stroke="#57606a" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="582" y1="260" x2="601" y2="260" stroke="#57606a" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <text x="30" y="330" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#cf222e">二、回滚决策分岔（先判「能不能退」，再判「退了划不划算」）</text>
+
+  <rect x="360" y="344" width="180" height="40" rx="8" fill="#f6f8fa" stroke="#8c959f" filter="url(#soft)"/>
+  <text x="450" y="369" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328">出错：先停手，再分岔</text>
+
+  <path d="M 450 384 V 402 H 233 V 418" fill="none" stroke="#57606a" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <path d="M 450 402 H 667 V 418" fill="none" stroke="#57606a" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <text x="240" y="414" font-family="system-ui, sans-serif" font-size="8.5" fill="#1a7f37">① ② 类：可逆</text>
+  <text x="676" y="414" font-family="system-ui, sans-serif" font-size="8.5" fill="#9a6700">③ 类：不可逆</text>
+
+  <rect x="33" y="420" width="400" height="124" rx="9" fill="#dafbe1" stroke="#4ac26b" filter="url(#soft)"/>
+  <text x="45" y="444" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1a7f37">回滚：本次没有写入不可逆数据</text>
+  <text x="45" y="466" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">条件：只做了 ① 兼容加列，或 ② 双写过渡</text>
+  <text x="45" y="483" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">动作：APP_DIGEST 切回上一 digest，compose up -d app</text>
+  <text x="45" y="500" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">再跑一次冒烟五条，确认读写正常</text>
+  <text x="45" y="517" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">代价：分钟级中断；.env 也是发布产物，要一起回</text>
+  <text x="45" y="534" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">注意：回滚镜像不会回滚已写入的数据</text>
+
+  <rect x="467" y="420" width="400" height="124" rx="9" fill="#fff8c5" stroke="#d4a72c" filter="url(#soft)"/>
+  <text x="479" y="444" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9a6700">向前修：③ 类迁移已执行，退不回去了</text>
+  <text x="479" y="466" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">条件一：故障确定且定位到单点（改一行即可）</text>
+  <text x="479" y="483" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">条件二：修复不引入新的不可逆迁移</text>
+  <text x="479" y="500" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">条件三：修复加发布加验证，比回滚所需的数据处理更快</text>
+  <text x="479" y="517" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">三条缺任意一条：仍然回滚（旧版本 + 新结构）</text>
+  <text x="479" y="534" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">代价：故障暴露时间更长，且每次都在放大风险</text>
+
+  <text x="30" y="566" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1a7f37">三、最后一公里：观察窗口 15 分钟必看的六个量（发布完成 ≠ 用户可用）</text>
+
+  <rect x="33" y="576" width="264" height="54" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="45" y="594" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1a7f37">延迟与错误</text>
+  <text x="45" y="609" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">写接口 P99 ≤ 300 ms</text>
+  <text x="45" y="624" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">5xx 低于 0.1%，409 率与基线持平</text>
+
+  <rect x="318" y="576" width="264" height="54" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="330" y="594" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1a7f37">广播与连接</text>
+  <text x="330" y="609" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">出站消息量约等于写 QPS 乘在线连接数</text>
+  <text x="330" y="624" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">resync_required 约等于 0，连接数不掉</text>
+
+  <rect x="603" y="576" width="264" height="54" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="615" y="594" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1a7f37">积压与最后一公里</text>
+  <text x="615" y="609" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">outbox 未投递数不单调上升</text>
+  <text x="615" y="624" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">静态资源 404 为 0，预签名可下载</text>
+</svg>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 556" width="900" height="556" role="img" aria-label="四类读者与四份文档的单一职责，以及引用方向不成环">
+  <title>交付文档 · 四类读者的分野、四份文档的单一职责与引用方向不成环</title>
+  <rect x="0" y="0" width="900" height="556" fill="#ffffff"/>
+  <text x="30" y="34" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1f2328">交付文档 · 一人一份、各只回答一个问题、引用不成环</text>
+  <text x="30" y="56" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">四类读者来的时机不同，所以交付物是四份而不是一本手册；每份的第一屏都是「读者要做的动作」。</text>
+
+  <text x="30" y="86" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0969da">一、四类读者的分野与四份文档的单一职责</text>
+
+  <rect x="30" y="96" width="205" height="250" rx="9" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="42" y="118" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0969da">第一次接触的人</text>
+  <text x="42" y="138" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1f2328">他要的是：顺序</text>
+  <text x="42" y="156" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">文档：README.md</text>
+  <line x1="40" y1="166" x2="225" y2="166" stroke="#54aeff"/>
+  <text x="42" y="184" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#0969da">唯一问题</text>
+  <text x="42" y="200" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">在一台机器上从零到看见</text>
+  <text x="42" y="214" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">两块看板，按什么顺序敲</text>
+  <text x="42" y="228" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">哪几条命令</text>
+  <text x="42" y="252" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#9a6700">它不回答</text>
+  <text x="42" y="268" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">组件构成 / 配置项含义</text>
+  <text x="42" y="282" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">为什么这样设计</text>
+  <text x="42" y="308" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#cf222e">写了等于没写</text>
+  <text x="42" y="324" font-family="system-ui, sans-serif" font-size="8.5" fill="#cf222e">「请确保环境满足要求」</text>
+
+  <rect x="250" y="96" width="205" height="250" rx="9" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="262" y="118" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1a7f37">动手部署的人</text>
+  <text x="262" y="138" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1f2328">他要的是：命令</text>
+  <text x="262" y="156" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">文档：docs/deploy.md</text>
+  <line x1="260" y1="166" x2="445" y2="166" stroke="#4ac26b"/>
+  <text x="262" y="184" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#0969da">唯一问题</text>
+  <text x="262" y="200" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">照着哪几条命令把栈起</text>
+  <text x="262" y="214" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">起来、怎么判它真起来了</text>
+  <text x="262" y="228" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">失败时先看哪一条</text>
+  <text x="262" y="252" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#9a6700">它不回答</text>
+  <text x="262" y="268" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">怎么签字交付</text>
+  <text x="262" y="282" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">（那是验收清单）</text>
+  <text x="262" y="308" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#cf222e">写了等于没写</text>
+  <text x="262" y="324" font-family="system-ui, sans-serif" font-size="8.5" fill="#cf222e">「执行 compose up -d」</text>
+
+  <rect x="470" y="96" width="205" height="250" rx="9" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="482" y="118" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#9a6700">签字交付的人</text>
+  <text x="482" y="138" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1f2328">他要的是：判据</text>
+  <text x="482" y="156" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">文档：docs/acceptance.md</text>
+  <line x1="480" y1="166" x2="665" y2="166" stroke="#d4a72c"/>
+  <text x="482" y="184" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#0969da">唯一问题</text>
+  <text x="482" y="200" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">逐条勾哪十八项、每项</text>
+  <text x="482" y="214" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">的期望值是什么、证据</text>
+  <text x="482" y="228" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">留在哪个位置</text>
+  <text x="482" y="252" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#9a6700">它不回答</text>
+  <text x="482" y="268" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">坏了怎么修</text>
+  <text x="482" y="282" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">（那是故障索引）</text>
+  <text x="482" y="308" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#cf222e">写了等于没写</text>
+  <text x="482" y="324" font-family="system-ui, sans-serif" font-size="8.5" fill="#cf222e">「系统应能正常工作」</text>
+
+  <rect x="690" y="96" width="205" height="250" rx="9" fill="#ffebe9" stroke="#ff8182"/>
+  <text x="702" y="118" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#cf222e">凌晨被叫起来的人</text>
+  <text x="702" y="138" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1f2328">他要的是：检索</text>
+  <text x="702" y="156" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">文档：docs/runbook.md</text>
+  <line x1="700" y1="166" x2="885" y2="166" stroke="#ff8182"/>
+  <text x="702" y="184" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#0969da">唯一问题</text>
+  <text x="702" y="200" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">看到什么现象、先跑哪</text>
+  <text x="702" y="214" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">条命令、这件事找谁</text>
+  <text x="702" y="228" font-family="system-ui, sans-serif" font-size="8.5" fill="#1f2328">（必须可点名）</text>
+  <text x="702" y="252" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#9a6700">它不回答</text>
+  <text x="702" y="268" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">原理与配置项清单</text>
+  <text x="702" y="282" font-family="system-ui, sans-serif" font-size="8.5" fill="#57606a">按组件分章的目录</text>
+  <text x="702" y="308" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#cf222e">写了等于没写</text>
+  <text x="702" y="324" font-family="system-ui, sans-serif" font-size="8.5" fill="#cf222e">让读者先猜自己是第几类</text>
+
+  <text x="30" y="380" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1a7f37">二、引用方向固定：复现 → 验收 → 索引 → 回到复现第 0 步</text>
+
+  <rect x="120" y="390" width="180" height="42" rx="7" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="140" y="416" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#0969da">README.md 从零复现</text>
+  <line x1="302" y1="411" x2="350" y2="411" stroke="#54aeff" stroke-width="2"/>
+  <polygon points="350,406 360,411 350,416" fill="#54aeff"/>
+
+  <rect x="360" y="390" width="180" height="42" rx="7" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="372" y="416" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#9a6700">acceptance.md 验收</text>
+  <line x1="542" y1="411" x2="590" y2="411" stroke="#d4a72c" stroke-width="2"/>
+  <polygon points="590,406 600,411 590,416" fill="#d4a72c"/>
+
+  <rect x="600" y="390" width="180" height="42" rx="7" fill="#ffebe9" stroke="#ff8182"/>
+  <text x="618" y="416" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#cf222e">runbook.md 索引</text>
+
+  <polyline points="690,434 690,468 210,468 210,440" fill="none" stroke="#1a7f37" stroke-width="2"/>
+  <polygon points="205,440 210,430 215,440" fill="#1a7f37"/>
+  <text x="250" y="486" font-family="system-ui, sans-serif" font-size="9" fill="#1a7f37">环境被破坏了：回到复现第 0 步，重新判一次前置</text>
+
+  <text x="30" y="516" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">docs/deploy.md 只被 README 引用（它给的是命令细节），不参与这个环 —— 四份里只有三份在环上。</text>
+  <text x="30" y="536" font-family="system-ui, sans-serif" font-size="9" fill="#cf222e">禁止反向回指：验收引用复现正文（只许引用第 0 步）；索引引用验收的项编号（编号会漂移，现象描述不会）。</text>
+</svg>

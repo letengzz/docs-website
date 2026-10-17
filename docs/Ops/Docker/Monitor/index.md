@@ -214,6 +214,20 @@ groups:
 - [日志体系](../../LogSystem/index.md)：容器日志的采集器选型、落盘路径与集中存储
 - [监控告警实战](../../Monitoring/Practice/index.md)：用 Compose 一键搭建监控栈
 
+## 与「交付期监控」的分工（第 149 天补充）
+
+**本页回答什么**：容器这一层的可观测性——`docker stats` / `docker events` 这类内置命令能答什么、Docker Engine 自身指标怎么开、`Prometheus + cAdvisor + Grafana` 这条通用链路怎么搭。
+**本页不回答什么**：某个项目交付时要**暴露哪几个业务指标**、阈值定多少、告警按什么规则分组。这一层归项目侧的 [监控接入](/project/Complete/TeamBoard/Monitoring/index.md)（业务指标与探针）与实时监控大盘专题的 [规则与路由](/project/Complete/MonitoringDashboard/Rules/index.md)。
+
+**第 149 天实测里有一条正好落在本页边界内**：
+
+| 现象 | 口径与获取方式 | 结论 |
+| --- | --- | --- |
+| 「换了项目名就隔离了」不成立 | `docker compose -p othername up -d` → `Bind for 0.0.0.0:9093 failed: port is already allocated` | **宿主端口是全局资源**，不受 compose 项目名分区；要真正隔离得同时换**卷、网络、端口** |
+| 复制目录做实验会带上旧配置 | 复制后再起，`app-counter` 仍指向宿主 `8080`（旧实例端口） | `compose.yaml` 的 `ports` 与 `prometheus.yml` 的 `targets` 必须**成对改**，只改一侧得到的是**假绿** |
+
+这两条都不算「Docker 用错了」，而是**在多实例并存的同一台机器上做验证**时的结构性约束。本页第七节给的 `Prometheus + cAdvisor` 链路本身不变，但**部署它的时候**要按上表检查两件事：端口是否只剩一个占用者、抓取目标是否指向本次新建的实例。
+
 ## 参考资料
 
 - Docker 运行指标：https://docs.docker.com/engine/daemon/prometheus/

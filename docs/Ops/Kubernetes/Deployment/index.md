@@ -107,6 +107,19 @@ kubectl autoscale deployment/web --min=2 --max=10 --cpu-percent=70
 - [弹性伸缩](../../ContainerOrchestration/Autoscaling/index.md)：用 HPA/VPA/KEDA 自动增减副本，配套 Deployment 的滚动发布
 - [容器编排进阶](../../ContainerOrchestration/index.md)：Helm 与 GitOps 让 Deployment 交付与回滚可声明、可审计
 
+## 与「交付期部署脚本」的分工（第 149 天补充）
+
+**本页回答什么**：`Deployment` 这个对象本身——它声明什么、滚动更新怎么控、怎样算更新成功、扩缩容与工作负载怎么选。
+**本页不回答什么**：一个**没有编排系统**的项目（单机 + Compose + 反向代理）该怎么把「上线」写成可复跑的动作。后者归项目侧的 [部署脚本](/project/Complete/TeamBoard/DeployScripts/index.md) 与 [配置与密钥](/project/Complete/TeamBoard/ConfigSecrets/index.md)。
+
+**两者共有的一个坑，本页先点出来**。本页第八节「易错点」讲的是**声明与实际的偏差**（改了 `image` 标签却没触发滚动、`maxUnavailable` 设成 100% 导致全量中断）。单机脚本侧的同一条坑会**换形态出现**：脚本里的动作看起来都执行了、退出码也是 0，但**真正生效的那一份不是你以为的那一份**。第 149 天在两个项目上碰到了它的三个变体：
+
+* **配置被解析期吃掉**：Compose 里 `echo "== apply $f"` 的单个 `$` 在解析期就被替换掉，容器日志打印的文件名**恒为空**，而迁移**全部成功**、退出码仍 0；唯一信号是 stderr 一行 warning。修法是写 `$$f`。
+* **复制目录带进旧配置**：`copy -R` 把旧 `prometheus.yml` 一起带过来，抓取目标仍指向宿主旧端口 → 容器全起来、目标却是旧的。
+* **换名不构成隔离**：`docker compose -p othername` 只分开容器名、网络与卷，**宿主端口是全局资源**，撞上就是 `port is already allocated`。
+
+**共同形状**：声明层（YAML / 清单 / 脚本）与生效层（容器里真正执行的那一行、真正被读进去的那份配置）之间**隔着一次插值、一次复制、一次命名替换**，而这三处**都不会让命令失败**。所以「部署成功」必须由**读回来的值**证明，不能由退出码证明。
+
 ## 参考资料
 
 - Deployment 文档：https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/

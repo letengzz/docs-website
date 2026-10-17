@@ -286,6 +286,7 @@ export const CompleteProject = [
           { text: "└ 上线验收清单", link: "/project/Complete/MonitoringDashboard/DeliveryPackage/Acceptance/index.md" },
           { text: "└ 故障应对索引", link: "/project/Complete/MonitoringDashboard/DeliveryPackage/RunbookIndex/index.md" },
           { text: "环境交付件落盘：9 份台账与 3 份脚本的内容入仓", link: "/project/Complete/MonitoringDashboard/EnvArtifacts/index.md" },
+          { text: "隔离复现：把「干净」拆成四个可判定的维度（IR-A~IR-H）", link: "/project/Complete/MonitoringDashboard/IsolatedReproduce/index.md" },
         ],
       },
       {
@@ -315,6 +316,14 @@ export const CompleteProject = [
           { text: "权限矩阵联调：18 格无漏判（PM-A~PM-H）", link: "/project/Complete/TeamBoard/PermissionMatrix/index.md" },
           { text: "容量验证：写、读、拖动与长连接（CAP-A~CAP-H）", link: "/project/Complete/TeamBoard/CapacityTest/index.md" },
           { text: "第 3 周验收结论：四类证据的收口与残余（W3-A~W3-H）", link: "/project/Complete/TeamBoard/Week3Acceptance/index.md" },
+          { text: "部署脚本：一条命令起全栈与三级就绪（DY-A~DY-H）", link: "/project/Complete/TeamBoard/DeployScripts/index.md" },
+          { text: "配置与密钥：同一份镜像跑在三套环境上（CF-A~CF-H）", link: "/project/Complete/TeamBoard/ConfigSecrets/index.md" },
+          { text: "监控与告警接入：接进周期 5 那条链路（MO-A~MO-H）", link: "/project/Complete/TeamBoard/Monitoring/index.md" },
+          { text: "备份与恢复：验证过的备份才算备份（BR-A~BR-H）", link: "/project/Complete/TeamBoard/BackupRestore/index.md" },
+          { text: "发布与回滚手册：每一步都要能退回来（RU-A~RU-H）", link: "/project/Complete/TeamBoard/ReleaseRunbook/index.md" },
+          { text: "交付文档：四份文档各只回答一个问题（DL-A~DL-H）", link: "/project/Complete/TeamBoard/DeliveryDocs/index.md" },
+          { text: "上线验收：四条交付判据变成能勾的项（LX-A~LX-H）", link: "/project/Complete/TeamBoard/LaunchAcceptance/index.md" },
+          { text: "第 4 周验收结论：29 章的收口与三处口径修正（W4-A~W4-H）", link: "/project/Complete/TeamBoard/Week4Acceptance/index.md" },
         ],
       },
       {

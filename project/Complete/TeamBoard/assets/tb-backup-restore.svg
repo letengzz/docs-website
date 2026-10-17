@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640" role="img" aria-label="备份与恢复概览：备份的三个层次、一次备份的留痕读数、恢复后的六项对账、单表恢复的代价与四条纪律">
+  <title>备份与恢复 · 三个层次、六项对账、单表恢复的代价与四条纪律</title>
+  <defs>
+    <filter id="soft" x="-5%" y="-8%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.6" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="900" height="640" fill="#ffffff"/>
+  <text x="30" y="34" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1f2328">备份与恢复 · 三个层次、六项对账、单表恢复的代价与四条纪律</text>
+  <text x="30" y="56" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">日常语境里的「备份」只指数据层，而事故里丢得最多的是结构层与可恢复性——它们丢了之后，系统照样启动。</text>
+
+  <text x="30" y="90" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0969da">一、备份的三个层次（丢了后两层不报错）</text>
+
+  <rect x="33" y="100" width="264" height="92" rx="9" fill="#ddf4ff" stroke="#54aeff" filter="url(#soft)"/>
+  <text x="45" y="122" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#0969da">数据 · 表与行</text>
+  <text x="45" y="144" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">丢了用户看得见：卡片、评论不见了</text>
+  <text x="45" y="161" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">验法：逐表 count 与源库相等</text>
+  <text x="45" y="182" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">这一层最容易验，也最不常丢</text>
+
+  <rect x="318" y="100" width="264" height="92" rx="9" fill="#fff8c5" stroke="#d4a72c" filter="url(#soft)"/>
+  <text x="330" y="122" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#9a6700">结构 · 索引 约束 函数 扩展 分区</text>
+  <text x="330" y="144" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">丢了不报错：越用越慢、脏数据能写进去</text>
+  <text x="330" y="161" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">验法：按对象类型逐类数（六项对账）</text>
+  <text x="330" y="182" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">单表恢复丢的就是这一层</text>
+
+  <rect x="603" y="100" width="264" height="92" rx="9" fill="#ffebe9" stroke="#ff8182" filter="url(#soft)"/>
+  <text x="615" y="122" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#cf222e">可恢复性 · 别人能不能恢复出来</text>
+  <text x="615" y="144" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">丢了表现为：文件在手，恢复不出来</text>
+  <text x="615" y="161" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">验法：在别处真恢复一次，无法静态检查</text>
+  <text x="615" y="182" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">「有没有在别处成功恢复过」</text>
+
+  <rect x="33" y="204" width="834" height="40" rx="8" fill="#f6f8fa" stroke="#8c959f" filter="url(#soft)"/>
+  <text x="45" y="222" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328">一次备份的最小留痕（沙盒实测）：pg_dump -Fc 得到 33,088 字节，sha256 前 16 位 91c37944ada7d54b</text>
+  <text x="45" y="238" font-family="system-ui, sans-serif" font-size="9" fill="#57606a">只留文件名答不了「是不是当时那一份」；只留字节数也区分不了「同大小但内容变了」的两次导出。</text>
+
+  <text x="30" y="270" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1a7f37">二、恢复后的六项对账（源库与恢复库逐项相等，才算恢复成功）</text>
+  <text x="30" y="286" font-family="system-ui, sans-serif" font-size="9.5" fill="#57606a">注意：恢复只忠实复制现状，不会替你补上源库的结构缺口——源库缺的，恢复库一样缺。</text>
+
+  <rect x="33" y="294" width="264" height="56" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="45" y="316" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1a7f37">① 表数</text>
+  <text x="45" y="336" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">源库 14 与恢复库 14 相等</text>
+
+  <rect x="318" y="294" width="264" height="56" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="330" y="316" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1a7f37">② cards 行数</text>
+  <text x="330" y="336" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">源库 3 与恢复库 3 相等</text>
+
+  <rect x="603" y="294" width="264" height="56" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="615" y="316" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1a7f37">③ users 行数</text>
+  <text x="615" y="336" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">源库 2 与恢复库 2 相等</text>
+
+  <rect x="33" y="360" width="264" height="56" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="45" y="382" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1a7f37">④ citext 扩展</text>
+  <text x="45" y="402" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">两边都存在（大小写不敏感邮箱）</text>
+
+  <rect x="318" y="360" width="264" height="56" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="330" y="382" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1a7f37">⑤ 函数 next_board_seq</text>
+  <text x="330" y="402" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">两边各 1 个（seq 分配靠它）</text>
+
+  <rect x="603" y="360" width="264" height="56" rx="8" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="615" y="382" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#9a6700">⑥ audit_log 分区数</text>
+  <text x="615" y="402" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">两边都是 0：缺口被一致地继承</text>
+
+  <text x="30" y="444" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#cf222e">三、单表恢复的代价（-t cards：有数据，没有索引、没有外键）</text>
+
+  <rect x="33" y="454" width="400" height="96" rx="9" fill="#ffebe9" stroke="#ff8182" filter="url(#soft)"/>
+  <text x="45" y="476" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#cf222e">单表恢复出来的 cards，是一张裸表</text>
+  <text x="45" y="497" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">行数 3（数据拿回来了）</text>
+  <text x="45" y="514" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">索引 0（源库 6）；外键 0（源库 4）</text>
+  <text x="45" y="531" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">补齐：重建约束与索引、重建外键、校验数据不违反</text>
+  <text x="45" y="545" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">还要补全文索引与触发器（它们不跟着表回来）</text>
+
+  <rect x="467" y="454" width="400" height="96" rx="9" fill="#ffebe9" stroke="#ff8182" filter="url(#soft)"/>
+  <text x="479" y="476" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#cf222e">为什么这是危险状态</text>
+  <text x="479" y="497" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">不会报错：没有任何一句话告诉你少了什么</text>
+  <text x="479" y="514" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">UNIQUE (list_id, position) 是并发拖动的最后兜底</text>
+  <text x="479" y="531" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">对策：把索引 6、外键 4 对账到与源库相等，再切流量</text>
+  <text x="479" y="545" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">用途只有一条：找回一张被误删的表</text>
+
+  <text x="30" y="574" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#9a6700">四、备份的四条纪律</text>
+
+  <rect x="33" y="584" width="196" height="50" rx="8" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="45" y="603" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#9a6700">一 · 验证过才算备份</text>
+  <text x="45" y="621" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">演练频率与备份频率配套</text>
+
+  <rect x="246" y="584" width="196" height="50" rx="8" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="258" y="603" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#9a6700">二 · 备份与迁移同源</text>
+  <text x="258" y="621" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">迁移不幂等，演练难脚本化</text>
+
+  <rect x="459" y="584" width="196" height="50" rx="8" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="471" y="603" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#9a6700">三 · 保留策略靠分区</text>
+  <text x="471" y="621" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">分区数今天是 0，DROP 走不通</text>
+
+  <rect x="672" y="584" width="196" height="50" rx="8" fill="#fff8c5" stroke="#d4a72c"/>
+  <text x="684" y="603" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#9a6700">四 · 产物要离开同一块盘</text>
+  <text x="684" y="621" font-family="system-ui, sans-serif" font-size="9" fill="#1f2328">宿主导出，容器里看不见它</text>
+</svg>

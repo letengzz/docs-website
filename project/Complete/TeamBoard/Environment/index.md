@@ -318,6 +318,33 @@ docker compose exec db psql -U teamboard -d teamboard -c "\dt"
 1. **[验收](../Acceptance/index.md)**：把本页的四条验证展开成 A2 ~ A5 四步，并补上权限矩阵 18 格与实时同步两格。
 2. **第 140 天**：进入**核心链路编码**（拖动、契约、幂等与并发），编码在同一套骨架里进行，**不再新增目录层级**。
 
+## 第 149 天更正与实测（分区承诺、卷挂载点、Compose 插值）
+
+**本节只做两件事**：更正第 19 行一处**没有落地的承诺**、补上两处**只有真起栈才会暴露**的坑。功能边界仍以本页第 1~10 节为准。
+
+### 更正：`audit_log` 的按月分区没有落地
+
+第 19 行写的是「建 **14 张表**与 `audit_log` 的按月分区」。第 149 天实测：**14 张表成立，分区不成立**。
+
+| 判据 | 口径与获取方式 | 读数 | 判定 |
+| --- | --- | --- | --- |
+| 表数 | `SELECT count(*) FROM information_schema.tables WHERE table_schema = 'public';` | **14** | 与文档一致 |
+| 分区数 | `SELECT count(*) FROM pg_inherits WHERE inhparent = 'audit_log'::regclass;` | **0** | **与文档不一致** |
+| 写入行为 | `INSERT INTO audit_log ...` | `ERROR: no partition of relation "audit_log" found for row` | 分区表无分区 = **一行都写不进去** |
+
+**为什么这条比「少一张表」严重**：`audit_log` 的写入与拖动在**同一个事务**里（见 [领域核心](../DomainCore/index.md) 与 [拖动链路](../CardMove/index.md) 第三节的十二步链路）。分区缺失不是「审计没了」，而是**整笔拖动回滚**——用户看到的是「拖不动」，服务端日志里是一条分区错误，而 `pnpm docs:build` 与全部静态巡检都不会有任何反应。已登记为 `LX-1`，处置口径见 [上线验收](../LaunchAcceptance/index.md)。
+
+**口径名要跟着读数一起记**：「分区数 = 0」这个数出自 `pg_inherits`，不是「没看见 `CREATE TABLE ... PARTITION OF` 语句」。这两者在本页里**恰好**同向，但只有前者是判据。
+
+### 补记：两处只有真起栈才会暴露的坑
+
+| 坑 | 错误写法 | 症状 | 正确写法 |
+| --- | --- | --- | --- |
+| PG 18 的数据卷挂载点 | `- db-data:/var/lib/postgresql/data` | `db` 容器**启动即退出**，退出码 **1**，日志引用上游镜像的英文说明 | `- db-data:/var/lib/postgresql`（PG 18 官方镜像把 `PGDATA` 放在**卷根**之下） |
+| Compose 的 `$` 插值 | `echo "== apply $f"` | 容器日志打印五行 `== apply `（**文件名恒空**），而迁移**全部成功**、退出码仍 0 | `$$f`（Compose 在解析期就吃掉单个 `$`，`$$` 才转义成容器内可见的 `$`） |
+
+第二个坑值得单独记一句：它是本页第六节「四条验证」的**反例**——四条验证全过、退出码 0、表也建齐了，唯一信号是 stderr 上一行 `level=warning` 的 `The "f" variable is not set` 警告。**「验证通过」与「按设计执行」是两件事。**
+
 ## 参考资料
 
 - [技术选型与版本基线](../TechStack/index.md)（本页版本与镜像 tag 的出处） · [需求拆分](../Requirements/index.md) · [项目总览](../index.md)
