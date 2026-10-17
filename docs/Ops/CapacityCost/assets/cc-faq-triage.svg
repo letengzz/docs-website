@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" role="img" aria-label="成本问题的四步分诊：先判是不是数据问题，再判归因、浪费、承诺">
+  <title>常见问题分诊</title>
+  <defs>
+    <marker id="ar-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+    <marker id="ar-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ar-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+    <marker id="ar-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="480" fill="#f8fafc"/>
+  <text x="450" y="26" font-size="15" fill="#0f172a" font-weight="700" text-anchor="middle">四步分诊：先排除「数不对」，再谈「钱太多」</text>
+  <rect x="330" y="50" width="240" height="56" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="450.0" y="72" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">账单金额与上月差异</text>
+  <text x="450.0" y="89" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">先看差异金额与方向</text>
+  <rect x="330" y="140" width="240" height="56" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+  <text x="450.0" y="162" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">① 数据层：口径变了吗</text>
+  <text x="450.0" y="179" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">账单周期 / 汇率 / 折扣入账</text>
+  <rect x="330" y="230" width="240" height="56" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+  <text x="450.0" y="252" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">② 归因层：分得到人吗</text>
+  <text x="450.0" y="269" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">未分摊占比 / 标签覆盖</text>
+  <rect x="330" y="320" width="240" height="56" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="450.0" y="342" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">③ 用量层：谁在多用</text>
+  <text x="450.0" y="359" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">五类浪费 / request 虚高</text>
+  <rect x="330" y="410" width="240" height="52" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="450.0" y="432" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">④ 价格层：单价还能降吗</text>
+  <text x="450.0" y="449" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">承诺 / 阶梯 / 规格</text>
+  <line x1="450" y1="106" x2="450" y2="138" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar-slate)"/>
+  <line x1="450" y1="196" x2="450" y2="228" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar-slate)"/>
+  <line x1="450" y1="286" x2="450" y2="318" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar-slate)"/>
+  <line x1="450" y1="376" x2="450" y2="408" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar-slate)"/>
+  <text x="600" y="250" font-size="11" fill="#475569" font-weight="400" text-anchor="start">任一层的结论都要能</text>
+  <text x="600" y="268" font-size="11" fill="#475569" font-weight="400" text-anchor="start">回到一条账单行</text>
+  <text x="600" y="300" font-size="11" fill="#475569" font-weight="400" text-anchor="start">否则就是猜</text>
+</svg>

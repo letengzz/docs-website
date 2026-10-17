@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" role="img" aria-label="五类常见浪费及其回收难度与典型占比">
+  <title>五类浪费：从最容易回收排到最难回收</title>
+  <defs>
+    <marker id="ar-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+    <marker id="ar-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ar-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+    <marker id="ar-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="460" fill="#f8fafc"/>
+  <text x="450" y="26" font-size="15" fill="#0f172a" font-weight="700" text-anchor="middle">浪费不是「有闲置」，是「没人认领的容量」</text>
+  <rect x="30" y="54" width="150" height="66" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="105" y="82" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="middle">孤悬资源</text>
+  <text x="105" y="100" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">约 22% 可回收</text>
+  <rect x="196" y="54" width="390" height="66" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="391.0" y="91.0" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle">未挂载的卷、闲置 IP、孤儿快照</text>
+  <rect x="602" y="54" width="268" height="66" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="736.0" y="76" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">回收难度</text>
+  <text x="736.0" y="93" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">最容易：删了不影响任何人</text>
+  <rect x="30" y="132" width="150" height="66" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="105" y="160" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="middle">非生产作息</text>
+  <text x="105" y="178" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">约 28% 可回收</text>
+  <rect x="196" y="132" width="390" height="66" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="391.0" y="169.0" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle">开发/测试环境 7×24 常开</text>
+  <rect x="602" y="132" width="268" height="66" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="736.0" y="154" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">回收难度</text>
+  <text x="736.0" y="171" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">容易：按作息停，但要留应急通道</text>
+  <rect x="30" y="210" width="150" height="66" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+  <text x="105" y="238" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="middle">request 虚高</text>
+  <text x="105" y="256" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">约 30% 可回收</text>
+  <rect x="196" y="210" width="390" height="66" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.2"/>
+  <text x="391.0" y="247.0" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle">申请 2 核只用 200m，成本按 2 核算</text>
+  <rect x="602" y="210" width="268" height="66" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.2"/>
+  <text x="736.0" y="232" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">回收难度</text>
+  <text x="736.0" y="249" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">中等：要改配置，需回归</text>
+  <rect x="30" y="288" width="150" height="66" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="105" y="316" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="middle">保留期过长</text>
+  <text x="105" y="334" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">约 12% 可回收</text>
+  <rect x="196" y="288" width="390" height="66" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="391.0" y="325.0" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle">日志/备份留 3 年，只有 30 天被读过</text>
+  <rect x="602" y="288" width="268" height="66" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="736.0" y="310" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">回收难度</text>
+  <text x="736.0" y="327" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">中等：合规边界要先划清</text>
+  <rect x="30" y="366" width="150" height="66" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+  <text x="105" y="394" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="middle">架构性浪费</text>
+  <text x="105" y="412" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">约 8% 可回收</text>
+  <rect x="196" y="366" width="390" height="66" rx="8" fill="#ffffff" stroke="#be123c" stroke-width="1.2"/>
+  <text x="391.0" y="403.0" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle">重复的中间件、过度分片、跨区回传</text>
+  <rect x="602" y="366" width="268" height="66" rx="8" fill="#ffffff" stroke="#be123c" stroke-width="1.2"/>
+  <text x="736.0" y="388" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">回收难度</text>
+  <text x="736.0" y="405" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">最难：要改架构，但金额最大</text>
+  <text x="450" y="448" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">顺序纪律：先摘低垂果实（孤悬 + 作息），用省下的钱换「改架构」的预算与信任</text>
+</svg>

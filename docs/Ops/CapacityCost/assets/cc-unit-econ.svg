@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440" role="img" aria-label="单位成本公式与三种分母陷阱：免费流量、重试、缓存命中">
+  <title>单位成本：分子分母都要能被追问</title>
+  <defs>
+    <marker id="ar-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+    <marker id="ar-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ar-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+    <marker id="ar-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="440" fill="#f8fafc"/>
+  <text x="450" y="26" font-size="15" fill="#0f172a" font-weight="700" text-anchor="middle">单位成本 = 成本 / 业务量，两个词都能被追问</text>
+  <rect x="30" y="56" width="840" height="76" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="450" y="88" font-size="14" fill="#0f172a" font-weight="600" text-anchor="middle">每千次请求成本 =（直接成本 + idle 分摊 + 共享分摊）/ 成功请求数 × 1000</text>
+  <text x="450" y="112" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">分子用「可归因成本」，分母用「业务认可的量」；两者都不能用账单原值</text>
+  <text x="30" y="166" font-size="13" fill="#0f172a" font-weight="700" text-anchor="start">三种分母陷阱（都会让单位成本看起来变好）</text>
+  <rect x="30" y="182" width="250" height="60" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+  <text x="155" y="208" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">免费流量计入分母</text>
+  <text x="155" y="227" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">分母变大 → 单位成本变小</text>
+  <rect x="296" y="182" width="574" height="60" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.2"/>
+  <text x="583.0" y="204" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">正确口径</text>
+  <text x="583.0" y="221" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">只算计费请求</text>
+  <rect x="30" y="252" width="250" height="60" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+  <text x="155" y="278" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">重试与 4xx 计入分母</text>
+  <text x="155" y="297" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">分母虚高 → 成本被摊薄</text>
+  <rect x="296" y="252" width="574" height="60" rx="8" fill="#ffffff" stroke="#be123c" stroke-width="1.2"/>
+  <text x="583.0" y="274" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">正确口径</text>
+  <text x="583.0" y="291" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">只算 2xx 且首次成功</text>
+  <rect x="30" y="322" width="250" height="60" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="155" y="348" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">缓存命中不计成本</text>
+  <text x="155" y="367" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">分子漏算 → 看起来更便宜</text>
+  <rect x="296" y="322" width="574" height="60" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="583.0" y="344" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">正确口径</text>
+  <text x="583.0" y="361" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">缓存层成本也进分子</text>
+  <text x="450" y="404" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">单位成本的用途只有一个：在业务量变化时，判断「贵」是增长带来的还是效率退化带来的</text>
+  <text x="450" y="426" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">所以它必须与容量、与 SLO 一起看：把 SLO 从 99.9% 降到 99%，单位成本会降，但那不是成绩</text>
+</svg>

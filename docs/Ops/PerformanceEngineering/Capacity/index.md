@@ -320,6 +320,20 @@ kubectl get hpa order-api -o jsonpath='{.spec.behavior.scaleUp.stabilizationWind
 
 预期输出：`0 / 300`。**若两个方向的值相同，说明 `behavior` 没被正确应用**——缩容慢、扩容快是这个配置的核心，不能退化成一样。
 
+
+## 与「容量与成本治理」专题的分工（第 156 天补充）
+
+| 问题 | 本页 | [容量与成本治理](../../CapacityCost/index.md) |
+| --- | --- | --- |
+| 需要几个实例 | **本页回答**：三输入模型、单实例能力换算、水位线 50% | 只引用结论，不重算 |
+| 这个数字什么时候失效 | 不回答 | **那边回答**：台账的「到期日」与四个复核触发条件 |
+| 谁签字、变更前问什么 | 不回答 | **那边回答**：容量评审门禁的三个问题 |
+| 扩容的钱从谁的预算出 | 不回答 | **那边回答**：分摊、预算与承诺 |
+
+**一句话结论**：本页解决「算得对」，那边解决「有人管、有到期日、有钱的归属」。
+
+**这一页特有的坑**：容量报告最大的问题是**没有到期日**——它在写下的那天是对的，三个月后仍然被当作结论引用，而输入早就变了。写完报告时顺手填一行「下次重算的触发条件」，比报告本身更有价值。
+
 ## 参考资料
 
 - Kubernetes 官方文档 · Horizontal Pod Autoscaling（`autoscaling/v2`、`behavior`、`stabilizationWindowSeconds`、容忍带与多指标取最大值）：https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/

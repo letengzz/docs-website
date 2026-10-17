@@ -384,3 +384,20 @@ export const PerformanceEngineering = [
     ],
   },
 ];
+export const CapacityCost = [
+  {
+    text: "容量与成本治理",
+    link: "/docs/Ops/CapacityCost/index.md",
+    items: [
+      { text: "总览：三本账与四个决策点（CCO-A~CCO-H）", link: "/docs/Ops/CapacityCost/Overview/index.md" },
+      { text: "容量台账与预测（CCF-A~CCF-H）", link: "/docs/Ops/CapacityCost/CapacityPlan/index.md" },
+      { text: "归集与分摊（CCA-A~CCA-H）", link: "/docs/Ops/CapacityCost/Allocation/index.md" },
+      { text: "单位成本（CCU-A~CCU-H）", link: "/docs/Ops/CapacityCost/UnitEconomics/index.md" },
+      { text: "预算与告警（CCB-A~CCB-H）", link: "/docs/Ops/CapacityCost/BudgetAlert/index.md" },
+      { text: "闲置与浪费治理（CCW-A~CCW-H）", link: "/docs/Ops/CapacityCost/Waste/index.md" },
+      { text: "承诺折扣治理（CCK-A~CCK-H）", link: "/docs/Ops/CapacityCost/Commitment/index.md" },
+      { text: "实战：一个季度的治理循环（CCP-A~CCP-H）", link: "/docs/Ops/CapacityCost/Practice/index.md" },
+      { text: "常见问题与最佳实践（CCQ-A~CCQ-H）", link: "/docs/Ops/CapacityCost/FAQ/index.md" },
+    ],
+  },
+];

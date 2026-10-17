@@ -198,6 +198,19 @@ latest（最新，仅 dev 使用）
 - [完整项目交付](../../../Others/ProjectDelivery/index.md)：本页讲流水线**自身**怎么设计（分阶段、制品、通知），该专题讲**阶段顺序为什么按「失败代价」排**、以及五阶段如何把既有门禁一一挂上去
 - **runner 上不要依赖本机终端环境**：runner 是一个**干净、无 dotfiles、无 home 别名**的容器/机器。本机跑通的自动化脚本搬到 CI 上常因三点失败：① 依赖 `~/.zshrc` 里的别名或 `starship` 提示符（CI 用非交互 `sh`，这些根本不加载）；② 依赖只在本机装了的新 CLI（[eza/delta/ripgrep 等](../../Efficiency/ShellProductivity/index.md)），runner 上没有；③ 依赖交互式行为（分页器、确认提示），CI 里没有 TTY 会挂住。**对策一律是"显式化"**：脚本头部 `set -euo pipefail`、工具用绝对调用的基础命令或显式安装步骤、需要 TTY 的分页器一律 `--no-pager` / `| cat`。判据很简单——**把脚本丢进一个全新的 `debian:stable-slim` 容器里能不能跑**。
 
+
+## 与「容量与成本治理」专题的分工（第 156 天补充）
+
+| 问题 | 本页 | [容量与成本治理](../../../Ops/CapacityCost/index.md) |
+| --- | --- | --- |
+| 流水线阶段怎么切、门禁放哪一层 | **本页回答** | 只引用位置 |
+| 成本门禁检查什么、阈值从哪来 | 给机制 | **那边回答**：标签四键、规格与配额上限 |
+| 成本从什么时候开始算 | 不回答 | **那边回答**：PR 内成本 diff 与月度评审 |
+
+**一句话结论**：成本门禁只有放在**合并之前**才有意义——合并后再算成本，得到的是一份通知，不是一次拦截。
+
+**这一页特有的坑**：把成本检查做成「每日巡检」而不是「PR 门禁」，会让所有成本问题都变成事后追认。门禁的价值在于**让人在写代码时就知道要花多少钱**，而不是在账单出来时解释。
+
 ## 参考资料
 
 - GitHub Actions 最佳实践：https://docs.github.com/zh/actions/writing-workflows/choosing-what-your-workflow-does/optimizing-workflow-performance

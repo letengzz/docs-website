@@ -337,6 +337,7 @@ export const CompleteProject = [
           { text: "运维面守卫：四条绕开 RLS 的路（OPG-A~OPG-H）", link: "/project/Complete/TeamBoard/OpsGuard/index.md" },
           { text: "第 1 周验收：88 条判据串成一条序列（WKA-A~WKA-H）", link: "/project/Complete/TeamBoard/Week1Acceptance/index.md" },
           { text: "第 1 周施工 FAQ：分诊与自查（WFQ-A~WFQ-H）", link: "/project/Complete/TeamBoard/Week1FAQ/index.md" },
+          { text: "第 2 周起步 · 工程骨架与最小可跑集（BS-A~BS-H）", link: "/project/Complete/TeamBoard/Bootstrap/index.md" },
         ],
       },
       {

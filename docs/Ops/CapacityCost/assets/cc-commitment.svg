@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-label="覆盖率与利用率构成的四象限：健康区、买多了、买少了、双低">
+  <title>承诺折扣：覆盖率与利用率</title>
+  <defs>
+    <marker id="ar-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+    <marker id="ar-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ar-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+    <marker id="ar-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="470" fill="#f8fafc"/>
+  <text x="450" y="26" font-size="14" fill="#0f172a" font-weight="700" text-anchor="middle">覆盖率与利用率是两个独立指标，一个高不能抵消另一个低</text>
+  <rect x="120" y="66" width="620" height="320" rx="4" fill="#ffffff" stroke="#64748b" stroke-width="1.2"/>
+  <line x1="430.0" y1="66" x2="430.0" y2="386" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="120" y1="226.0" x2="740" y2="226.0" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="430.0" y="406" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">覆盖率（承诺覆盖了多少用量）→</text>
+  <text x="106" y="76" font-size="11" fill="#475569" font-weight="600" text-anchor="start">利用率 ↑</text>
+  <rect x="140" y="86" width="260" height="120" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="270.0" y="108" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle">健康区</text>
+  <text x="270.0" y="125" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">覆盖率 60~80%</text>
+  <text x="270.0" y="140" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">利用率 90% 以上</text>
+  <rect x="460" y="86" width="260" height="120" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+  <text x="590.0" y="108" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle">买多了</text>
+  <text x="590.0" y="125" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">覆盖率 ) 90%</text>
+  <text x="590.0" y="140" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">利用率掉到 70% 以下</text>
+  <rect x="140" y="244" width="260" height="120" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+  <text x="270.0" y="266" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle">买少了</text>
+  <text x="270.0" y="283" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">覆盖率 ( 40%</text>
+  <text x="270.0" y="298" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">利用率接近 100% 仍在按需买</text>
+  <rect x="460" y="244" width="260" height="120" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="590.0" y="266" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle">双低：先别买</text>
+  <text x="590.0" y="283" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">覆盖与利用都低</text>
+  <text x="590.0" y="298" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">先清浪费、先右调规格</text>
+  <text x="450" y="418" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">利用率 = 已用 / 已承诺；覆盖率 = 已承诺 / 总用量。分母不同，所以会同时「买多了」又「没盖住」</text>
+  <text x="450" y="440" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">第三方基准（700+ 环境，2026）：覆盖率中位数 58%、利用率中位数 74%；头部 71~78% 覆盖 + 91~95% 利用</text>
+  <text x="450" y="458" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">基准只是参照，不是目标：先把「稳定基线」量出来，再按 P10 买，别按峰值买</text>
+</svg>

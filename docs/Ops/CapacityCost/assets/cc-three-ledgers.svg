@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-label="三本账的分工与传导链：业务量到容量到规格到账单">
+  <title>三本账：账单账、资源账、业务账</title>
+  <defs>
+    <marker id="ar-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+    <marker id="ar-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ar-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+    <marker id="ar-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="470" fill="#f8fafc"/>
+  <text x="450" y="26" font-size="15" fill="#0f172a" font-weight="700" text-anchor="middle">同一个「贵」，三本账给出三种答案</text>
+  <rect x="30" y="56" width="120" height="84" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+  <text x="90" y="90" font-size="14" fill="#0f172a" font-weight="700" text-anchor="middle">账单账</text>
+  <text x="90" y="112" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">供应商给的</text>
+  <rect x="160" y="56" width="380" height="84" rx="8" fill="#ffffff" stroke="#be123c" stroke-width="1.2"/>
+  <text x="350.0" y="102.0" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">谁开的发票、按什么计量、什么时候出账</text>
+  <rect x="552" y="56" width="318" height="84" rx="8" fill="#ffffff" stroke="#be123c" stroke-width="1.2"/>
+  <text x="711.0" y="78" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">能回答 / 不能回答</text>
+  <text x="711.0" y="95" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">月末只能对账，不能决策</text>
+  <rect x="30" y="152" width="120" height="84" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="90" y="186" font-size="14" fill="#0f172a" font-weight="700" text-anchor="middle">资源账</text>
+  <text x="90" y="208" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">你自己算的</text>
+  <rect x="160" y="152" width="380" height="84" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="350.0" y="198.0" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">谁占了几个核、多少 GiB、利用率多少</text>
+  <rect x="552" y="152" width="318" height="84" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="711.0" y="174" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">能回答 / 不能回答</text>
+  <text x="711.0" y="191" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">能归因到人，但不知道值不值</text>
+  <rect x="30" y="248" width="120" height="84" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="90" y="282" font-size="14" fill="#0f172a" font-weight="700" text-anchor="middle">业务账</text>
+  <text x="90" y="304" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">业务方认的</text>
+  <rect x="160" y="248" width="380" height="84" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="350.0" y="294.0" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">每千次请求、每个租户、每笔订单花了多少</text>
+  <rect x="552" y="248" width="318" height="84" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="711.0" y="270" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">能回答 / 不能回答</text>
+  <text x="711.0" y="287" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">能判断该不该花，不能定位到资源</text>
+  <text x="30" y="356" font-size="13" fill="#0f172a" font-weight="700" text-anchor="start">传导链（每一段都可以单独被质疑）</text>
+  <rect x="30" y="372" width="140" height="58" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="100.0" y="394" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">SLO</text>
+  <text x="100.0" y="411" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">要多快</text>
+  <line x1="172" y1="401" x2="198" y2="401" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar-slate)"/>
+  <rect x="200" y="372" width="140" height="58" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="270.0" y="394" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">业务量</text>
+  <text x="270.0" y="411" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">多少请求</text>
+  <line x1="342" y1="401" x2="368" y2="401" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar-slate)"/>
+  <rect x="370" y="372" width="140" height="58" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="440.0" y="394" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">容量</text>
+  <text x="440.0" y="411" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">几个实例</text>
+  <line x1="512" y1="401" x2="538" y2="401" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar-slate)"/>
+  <rect x="540" y="372" width="140" height="58" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="610.0" y="394" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">规格</text>
+  <text x="610.0" y="411" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">多大机器</text>
+  <line x1="682" y1="401" x2="708" y2="401" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar-slate)"/>
+  <rect x="710" y="372" width="140" height="58" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="780.0" y="394" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">账单</text>
+  <text x="780.0" y="411" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">多少钱</text>
+  <text x="450" y="452" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">省钱的四种手法分别作用在不同段：改 SLO / 改规格 / 改容量 / 改单价（承诺）</text>
+</svg>

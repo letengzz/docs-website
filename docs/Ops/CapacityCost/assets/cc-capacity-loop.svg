@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" width="900" height="430" role="img" aria-label="容量台账四步闭环：预测、台账、评审、配额，四步各有责任人和触发条件">
+  <title>容量台账与复核闭环</title>
+  <defs>
+    <marker id="ar-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+    <marker id="ar-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ar-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+    <marker id="ar-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="430" fill="#f8fafc"/>
+  <text x="450" y="26" font-size="15" fill="#0f172a" font-weight="700" text-anchor="middle">容量台账不是一张表，是一个有触发条件的闭环</text>
+  <rect x="60" y="70" width="200" height="90" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+  <text x="160.0" y="92" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">① 预测</text>
+  <text x="160.0" y="109" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">业务日历 + 增长曲线</text>
+  <text x="160.0" y="124" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">输出 P50 / P90 两个数</text>
+  <rect x="350" y="70" width="200" height="90" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="450.0" y="92" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">② 台账</text>
+  <text x="450.0" y="109" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">每个服务一行</text>
+  <text x="450.0" y="124" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">能力、水位、到期日</text>
+  <rect x="640" y="70" width="200" height="90" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+  <text x="740.0" y="92" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">③ 评审</text>
+  <text x="740.0" y="109" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">变更前三个问题</text>
+  <text x="740.0" y="124" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">不通过就不上线</text>
+  <rect x="350" y="240" width="200" height="90" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="450.0" y="262" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">④ 配额</text>
+  <text x="450.0" y="279" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">namespace / 租户上限</text>
+  <text x="450.0" y="294" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">超限要申请</text>
+  <line x1="262" y1="115" x2="348" y2="115" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar-slate)"/>
+  <text x="305.0" y="109.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">每月 1 次</text>
+  <line x1="552" y1="115" x2="638" y2="115" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar-slate)"/>
+  <text x="595.0" y="109.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">按需触发</text>
+  <line x1="740" y1="162" x2="740" y2="285" stroke="#b45309" stroke-width="1.4" marker-end="url(#ar-amber)"/>
+  <line x1="740" y1="285" x2="552" y2="285" stroke="#b45309" stroke-width="1.4" marker-end="url(#ar-amber)"/>
+  <text x="646.0" y="279.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">下发上限</text>
+  <line x1="348" y1="285" x2="160" y2="285" stroke="#6d28d9" stroke-width="1.4" marker-end="url(#ar-violet)"/>
+  <line x1="160" y1="285" x2="160" y2="162" stroke="#6d28d9" stroke-width="1.4" marker-end="url(#ar-violet)"/>
+  <text x="160.0" y="217.5" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">反馈：反复触顶 → 重预测</text>
+  <text x="450" y="372" font-size="12" fill="#475569" font-weight="400" text-anchor="middle">四个动作各有触发条件：日历驱动、变更驱动、阈值驱动、到期驱动</text>
+  <text x="450" y="394" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">只做 ② 不做 ③ 是记账；只做 ③ 不做 ② 是拍脑袋</text>
+  <text x="450" y="416" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">台账里必须有「到期日」——没有到期日的数字会被当成永久结论</text>
+</svg>
