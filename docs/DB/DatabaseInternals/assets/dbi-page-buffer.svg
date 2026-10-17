@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <title>页布局与缓冲池：8 KB 页、16384 个槽位与 Clock-Sweep 淘汰</title>
+  <rect width="900" height="600" fill="#FFFFFF"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">一页 8 KB，池里 16384 个槽位</text>
+
+  <text x="60" y="66" font-size="14" font-weight="bold" fill="#1D4ED8">页布局（从两端向中间长）</text>
+  <rect x="60" y="78" width="360" height="40" rx="4" fill="#DBEAFE" stroke="#3B82F6"/>
+  <text x="240" y="103" text-anchor="middle" font-size="12" fill="#1E40AF">页头 24 B：pd_lsn · 校验和 · 空闲空间指针 · 标志</text>
+
+  <rect x="60" y="122" width="180" height="34" rx="4" fill="#FEF3C7" stroke="#F59E0B"/>
+  <text x="150" y="144" text-anchor="middle" font-size="12" fill="#B45309">行指针 ItemId（4 B/条）</text>
+  <rect x="248" y="122" width="172" height="34" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-dasharray="4 3"/>
+  <text x="334" y="144" text-anchor="middle" font-size="12" fill="#475569">空闲空间</text>
+
+  <rect x="60" y="160" width="360" height="46" rx="4" fill="#F0FDF4" stroke="#22C55E"/>
+  <text x="240" y="180" text-anchor="middle" font-size="12" fill="#15803D">元组 tuples（自页尾向前堆叠）</text>
+  <text x="240" y="198" text-anchor="middle" font-size="11" fill="#166534">实测：行宽 182 B ⇒ 45 行/页</text>
+
+  <rect x="60" y="212" width="360" height="30" rx="4" fill="#FCE7F3" stroke="#EC4899"/>
+  <text x="240" y="232" text-anchor="middle" font-size="12" fill="#9D174D">特殊空间（索引页存兄弟指针）</text>
+
+  <text x="60" y="274" font-size="12" fill="#64748B">页号 × 8192 = 文件偏移：固定页大小让「直接定位」成为可能</text>
+  <text x="60" y="296" font-size="12" fill="#64748B">索引存 (页号, 行号)：页内整理不会让索引失效</text>
+
+  <line x1="450" y1="60" x2="450" y2="520" stroke="#E2E8F0" stroke-width="2"/>
+
+  <text x="480" y="66" font-size="14" font-weight="bold" fill="#15803D">缓冲池：128 MB ÷ 8 KB = 16384 槽</text>
+  <text x="480" y="88" font-size="12" fill="#64748B">usagecount 实测分布：0→2842 · 1→10563 · 2→75 · 3→648 · 4→30 · 5→2226</text>
+
+  <g>
+    <rect x="480" y="102" width="76" height="42" rx="6" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="518" y="120" text-anchor="middle" font-size="11" fill="#475569">热页</text>
+    <text x="518" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#0F172A">uc=5</text>
+
+    <rect x="566" y="102" width="76" height="42" rx="6" fill="#EFF6FF" stroke="#3B82F6"/>
+    <text x="604" y="120" text-anchor="middle" font-size="11" fill="#1E40AF">一次访问</text>
+    <text x="604" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">uc=1</text>
+
+    <rect x="652" y="102" width="76" height="42" rx="6" fill="#FEF2F2" stroke="#EF4444"/>
+    <text x="690" y="120" text-anchor="middle" font-size="11" fill="#B91C1C">可淘汰</text>
+    <text x="690" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#991B1B">uc=0</text>
+
+    <rect x="738" y="102" width="76" height="42" rx="6" fill="#F5F3FF" stroke="#8B5CF6"/>
+    <text x="776" y="120" text-anchor="middle" font-size="11" fill="#5B21B6">脏页</text>
+    <text x="776" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#6D28D9">须刷盘</text>
+  </g>
+
+  <text x="480" y="176" font-size="13" font-weight="bold" fill="#1E293B">Clock-Sweep：指针转一圈，uc&gt;0 就减 1 跳过，uc=0 才淘汰</text>
+  <circle cx="640" cy="268" r="76" fill="none" stroke="#CBD5E1" stroke-width="3"/>
+  <circle cx="640" cy="192" r="7" fill="#3B82F6"/>
+  <path d="M640 200 A 68 68 0 0 1 708 268" fill="none" stroke="#3B82F6" stroke-width="3" marker-end="url(#a2)"/>
+  <defs>
+    <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#3B82F6"/>
+    </marker>
+  </defs>
+  <text x="640" y="258" text-anchor="middle" font-size="12" fill="#334155">扫描指针</text>
+  <text x="640" y="278" text-anchor="middle" font-size="12" fill="#334155">抗全表扫描</text>
+  <text x="640" y="298" text-anchor="middle" font-size="11" fill="#64748B">近似 LRU-2</text>
+
+  <text x="480" y="380" font-size="13" font-weight="bold" fill="#1E293B">三个写手，分工不同</text>
+  <rect x="480" y="392" width="392" height="34" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="492" y="414" font-size="12" fill="#991B1B">backend：找不到空槽自己刷 → 用户请求被 I/O 阻塞</text>
+  <rect x="480" y="432" width="392" height="34" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="492" y="454" font-size="12" fill="#92400E">background writer：提前刷，平滑毛刺（maxwritten_clean）</text>
+  <rect x="480" y="472" width="392" height="34" rx="6" fill="#ECFEFF" stroke="#67E8F9"/>
+  <text x="492" y="494" font-size="12" fill="#155E75">checkpointer：刷全部脏页，推进恢复起点（num_timed）</text>
+
+  <rect x="60" y="530" width="812" height="48" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="466" y="550" text-anchor="middle" font-size="12" fill="#334155">缓冲池按实例共享：实测 98.9% 的页属于一个库，其余四库各 33 页（系统目录）</text>
+  <text x="466" y="568" text-anchor="middle" font-size="12" fill="#64748B">⇒ 不能给某个库「预留」缓存；「我们的库很热」这句话没有意义，热的是页不是库</text>
+</svg>

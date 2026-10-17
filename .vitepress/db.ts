@@ -337,3 +337,21 @@ export const DataGovernance = [
     ],
   },
 ];
+
+export const DatabaseInternals = [
+  {
+    text: "数据库内核与存储引擎",
+    link: "/docs/DB/DatabaseInternals/index.md",
+    items: [
+      { text: "概述：一次查询的一生与三种放大", link: "/docs/DB/DatabaseInternals/Overview/index.md" },
+      { text: "页与缓冲池", link: "/docs/DB/DatabaseInternals/BufferPool/index.md" },
+      { text: "B+ 树：三层树怎么撑住一亿行", link: "/docs/DB/DatabaseInternals/BPlusTree/index.md" },
+      { text: "LSM 树：用写放大换写吞吐", link: "/docs/DB/DatabaseInternals/LsmTree/index.md" },
+      { text: "WAL 与崩溃恢复", link: "/docs/DB/DatabaseInternals/WalRecovery/index.md" },
+      { text: "执行器：算子是流水线还是批处理", link: "/docs/DB/DatabaseInternals/Executor/index.md" },
+      { text: "优化器：代价模型为什么会算错", link: "/docs/DB/DatabaseInternals/Optimizer/index.md" },
+      { text: "实战：给一条慢查询做内核级体检", link: "/docs/DB/DatabaseInternals/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/DB/DatabaseInternals/FAQ/index.md" },
+    ],
+  },
+];

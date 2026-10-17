@@ -235,6 +235,26 @@ psql -U postgres -c "SELECT * FROM pg_stat_archiver;"
 - [自动部署与回滚](../../../Tools/CICD/DeployRollback/index.md)：**分工是**——常规故障处置的第一选择是**回滚应用**（分钟级、几乎无代价），本页的数据恢复是**最后手段**（十几分钟起、会丢恢复点之后的写入）。铁律是「能只回应用就绝不回数据」，理由不只是慢：数据恢复的每一步都在赌备份的完整性（备份是不是恢复点之前的？是否可用？恢复点之后所有人的写入都会丢）。三类回滚的代价排序与「不可回滚点」的判定方法见该页。
 - [上线发布与结项验收](../../../../project/Complete/BlogPlatform/ReleaseAcceptance/index.md)：一个真实项目里，恢复判据（`R1~R6`）如何与发布、回滚、验收判据并列进同一张终表——那里也写清了「回滚走应用、恢复走备份」这条分界线在验收清单上怎么体现。
 
+
+## 与「数据库内核与存储引擎」章节集的分工（第 153 天补充）
+
+本页讲**恢复的流程与失败模式**，而「恢复要多久」这个数字由 WAL 与检查点决定，归 [数据库内核与存储引擎 · WAL 与崩溃恢复](/docs/DB/DatabaseInternals/WalRecovery/index.md)。
+
+第 153 天在那页给了一条可以直接代进恢复预案的公式：
+
+```text
+最坏恢复耗时 ≈ 需重放的 WAL 量 ÷ 重放速度
+需重放的 WAL 量 ≈ 距上次检查点的 WAL 生成量 ≤ max_wal_size
+```
+
+| 参数 | 对本页「恢复时长」的影响 | 注意 |
+| --- | --- | --- |
+| `max_wal_size` 调大 | 吞吐上升，**但最坏恢复时间变长** | 两个指标要一起定，不能只调一个 |
+| `checkpoint_timeout` 调大 | 检查点更稀、恢复更慢 | 与上一条叠加时最容易低估 |
+| `num_requested` 持续增长 | 检查点被追着跑，I/O 被打散 | 处置是调大 `max_wal_size`，不是调小 |
+
+**一句话结论**：恢复预案里不该写「预计几分钟」，而该写「按当前 `max_wal_size` 与实测 WAL 速率算出上界，并附一条 `pg_control_checkpoint()` 的读数」。**没有算过的恢复时长，等于没有恢复预案。**
+
 ## 参考资料
 
 - MySQL 官方 · Point-in-Time Recovery Using Binary Log：https://dev.mysql.com/doc/refman/8.4/en/point-in-time-recovery-binlog.html

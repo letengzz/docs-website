@@ -126,6 +126,20 @@ SHOW INDEX FROM users;                          -- 查看索引基数与列序
 
 预期：主键等值查询 type 为 `const`；覆盖查询 Extra 为 `Using index`。
 
+
+## 与「数据库内核与存储引擎」章节集的分工（第 153 天补充）
+
+本页讲的是**在 InnoDB 里怎么用 B+ 树索引**（聚簇索引、回表、覆盖索引、最左前缀的用法），而 B+ 树**这个结构本身**怎么长、树高由什么决定、页分裂怎么发生，归 [数据库内核与存储引擎 · B+ 树](/docs/DB/DatabaseInternals/BPlusTree/index.md)。
+
+| 问题 | 看本页 | 看内核专题 |
+| --- | --- | --- |
+| 这条 SQL 能不能用上索引 | ✅ 用 `EXPLAIN` 判断 `type` 与 `key` | — |
+| 索引为什么是「三层」 | — | ✅ 扇出与叶页容量的算式 |
+| 回表为什么慢 | ✅ 覆盖索引怎么设计 | ✅ 物理相关性 `correlation` 决定回表页数 |
+| 主键用 UUID 还是自增 | ✅ InnoDB 的聚簇索引影响 | ✅ 页利用率与分裂位置的一般规律 |
+
+**一句话结论**：本页回答「这条查询该建什么索引」，内核专题回答「这个索引在磁盘上是什么形状、为什么是这个形状」。两页的判据不重叠——一个是 `EXPLAIN` 级的，一个是 `bt_metap` 级的。
+
 ## 参考资料
 
 - [MySQL 官方：InnoDB 索引](https://dev.mysql.com/doc/refman/8.4/en/innodb-index-types.html)

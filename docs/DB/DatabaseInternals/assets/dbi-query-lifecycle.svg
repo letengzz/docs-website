@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <title>一次查询穿过四层：编译、执行与存储</title>
+  <rect width="900" height="600" fill="#FFFFFF"/>
+  <text x="450" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">一次查询的一生：四层与它们的成本</text>
+
+  <rect x="60" y="70" width="780" height="88" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="86" y="98" font-size="15" font-weight="bold" fill="#1D4ED8">① 连接层 Connection</text>
+  <text x="86" y="122" font-size="12" fill="#334155">认证 · 会话状态 · 连接池 · SSL</text>
+  <text x="86" y="144" font-size="12" fill="#64748B">微秒～毫秒｜出问题：连接打满、too many connections</text>
+  <rect x="700" y="88" width="120" height="52" rx="8" fill="#DBEAFE" stroke="#93C5FD"/>
+  <text x="760" y="112" text-anchor="middle" font-size="12" fill="#1E40AF">不碰数据页</text>
+  <text x="760" y="130" text-anchor="middle" font-size="11" fill="#1E40AF">加连接即可</text>
+
+  <rect x="60" y="176" width="780" height="88" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="86" y="204" font-size="15" font-weight="bold" fill="#6D28D9">② 编译层 Parser / Planner</text>
+  <text x="86" y="228" font-size="12" fill="#334155">解析 → 重写 → 逻辑优化（等价变换）→ 物理优化（选算法）</text>
+  <text x="86" y="250" font-size="12" fill="#64748B">百微秒～毫秒｜出问题：计划抖动、硬解析 CPU 高</text>
+  <rect x="700" y="194" width="120" height="52" rx="8" fill="#EDE9FE" stroke="#C4B5FD"/>
+  <text x="760" y="218" text-anchor="middle" font-size="12" fill="#5B21B6">不碰数据页</text>
+  <text x="760" y="236" text-anchor="middle" font-size="11" fill="#5B21B6">靠统计信息</text>
+
+  <rect x="60" y="282" width="780" height="88" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="86" y="310" font-size="15" font-weight="bold" fill="#C2410C">③ 执行层 Executor</text>
+  <text x="86" y="334" font-size="12" fill="#334155">算子流水线：Scan → Join → Aggregate → Sort → Limit</text>
+  <text x="86" y="356" font-size="12" fill="#64748B">毫秒～秒｜出问题：actual time 集中在一两个算子</text>
+  <rect x="700" y="300" width="120" height="52" rx="8" fill="#FFEDD5" stroke="#FDBA74"/>
+  <text x="760" y="318" text-anchor="middle" font-size="12" fill="#9A3412">决定碰几页</text>
+  <text x="760" y="336" text-anchor="middle" font-size="11" fill="#9A3412">算力可帮上忙</text>
+
+  <rect x="60" y="388" width="780" height="104" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="86" y="416" font-size="15" font-weight="bold" fill="#BE185D">④ 存储层 Storage</text>
+  <text x="86" y="440" font-size="12" fill="#334155">缓冲池找页（命中 0.1 µs / 读盘 0.1 ms）→ 页内定位元组 → 改页 → 写 WAL → 后台刷盘</text>
+  <text x="86" y="462" font-size="12" fill="#64748B">出问题：Buffers 暴涨、read 远大于 hit、WAL 写放大</text>
+  <rect x="700" y="406" width="120" height="70" rx="8" fill="#FCE7F3" stroke="#F9A8D4"/>
+  <text x="760" y="428" text-anchor="middle" font-size="12" fill="#9D174D">唯一不能靠</text>
+  <text x="760" y="446" text-anchor="middle" font-size="12" fill="#9D174D">加 CPU 解决</text>
+  <text x="760" y="464" text-anchor="middle" font-size="11" fill="#9D174D">要靠改访问路径</text>
+
+  <path d="M450 158 L450 176" stroke="#94A3B8" stroke-width="2" marker-end="url(#a1)"/>
+  <path d="M450 264 L450 282" stroke="#94A3B8" stroke-width="2" marker-end="url(#a1)"/>
+  <path d="M450 370 L450 388" stroke="#94A3B8" stroke-width="2" marker-end="url(#a1)"/>
+  <defs>
+    <marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <rect x="60" y="512" width="780" height="66" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="450" y="536" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E293B">三种放大：读（碰几个页）· 写（落几次盘）· 空间（占几倍盘）</text>
+  <text x="450" y="560" text-anchor="middle" font-size="12" fill="#64748B">B+ 树压读放大、抬写放大；LSM 反过来；WAL 用顺序写换随机写；缓冲池用内存换 I/O</text>
+</svg>

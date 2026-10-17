@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <title>B+ 树三层结构与一次查找的读放大</title>
+  <rect width="900" height="560" fill="#FFFFFF"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">100 万行 = 3 层树 = 一次查找碰 3 个索引页</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748B">PostgreSQL 18.6 实测：level=2 · 根页 19 条目 · 内部页均 202.6 · 叶页均 262</text>
+
+  <rect x="350" y="78" width="200" height="54" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="450" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">根页（1 页）</text>
+  <text x="450" y="120" text-anchor="middle" font-size="12" fill="#334155">19 个路标 · level 2</text>
+
+  <path d="M400 132 L300 168" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M450 132 L450 168" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M500 132 L600 168" stroke="#94A3B8" stroke-width="2"/>
+
+  <rect x="200" y="168" width="200" height="54" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="300" y="190" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">内部页</text>
+  <text x="300" y="210" text-anchor="middle" font-size="12" fill="#334155">均 202.6 条目</text>
+
+  <rect x="420" y="168" width="60" height="54" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="450" y="200" text-anchor="middle" font-size="16" font-weight="bold" fill="#B45309">…</text>
+
+  <rect x="500" y="168" width="200" height="54" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="600" y="190" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">内部页</text>
+  <text x="600" y="210" text-anchor="middle" font-size="12" fill="#334155">共 19 页</text>
+
+  <path d="M300 222 L240 268" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M300 222 L330 268" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M600 222 L570 268" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M600 222 L660 268" stroke="#94A3B8" stroke-width="2"/>
+
+  <rect x="180" y="268" width="90" height="50" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="225" y="289" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803D">叶页</text>
+  <text x="225" y="307" text-anchor="middle" font-size="11" fill="#166534">262 条目</text>
+
+  <rect x="282" y="268" width="90" height="50" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="327" y="289" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803D">叶页</text>
+  <text x="327" y="307" text-anchor="middle" font-size="11" fill="#166534">262 条目</text>
+
+  <rect x="420" y="268" width="60" height="50" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="450" y="298" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803D">…</text>
+
+  <rect x="525" y="268" width="90" height="50" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="570" y="289" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803D">叶页</text>
+  <text x="570" y="307" text-anchor="middle" font-size="11" fill="#166534">共 3832 页</text>
+
+  <rect x="630" y="268" width="90" height="50" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="675" y="289" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803D">叶页</text>
+  <text x="675" y="307" text-anchor="middle" font-size="11" fill="#166534">1,003,831 项</text>
+
+  <path d="M270 318 L282 318" stroke="#22C55E" stroke-width="2"/>
+  <path d="M372 318 L420 318" stroke="#22C55E" stroke-width="2"/>
+  <path d="M480 318 L525 318" stroke="#22C55E" stroke-width="2"/>
+  <path d="M615 318 L630 318" stroke="#22C55E" stroke-width="2"/>
+  <text x="450" y="340" text-anchor="middle" font-size="11" fill="#15803D">叶子双向链表：范围扫描不需要回根，从起点顺序读</text>
+
+  <rect x="60" y="362" width="380" height="150" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="76" y="384" font-size="13" font-weight="bold" fill="#1E293B">树高是行数的对数，不是比例</text>
+  <text x="76" y="406" font-size="12" fill="#334155">3 层：262 × 202 × 202 ≈ 1069 万</text>
+  <text x="76" y="426" font-size="12" fill="#334155">4 层：262 × 202³ ≈ 21.6 亿</text>
+  <text x="76" y="450" font-size="12" fill="#64748B">叶页「条目数」比行数多 3831 ≈ 叶页数：</text>
+  <text x="76" y="468" font-size="12" fill="#64748B">每页保留一份高位键副本，用于判断「还装得下吗」</text>
+  <text x="76" y="492" font-size="12" fill="#be123c">分裂：叶满 → 一分为二 → 父页加路标 → 满则继续向上</text>
+
+  <rect x="460" y="362" width="380" height="150" rx="10" fill="#FFF7ED" stroke="#FDBA74"/>
+  <text x="476" y="384" font-size="13" font-weight="bold" fill="#9A3412">读放大 = 索引层数 + 回表页数</text>
+  <text x="476" y="406" font-size="12" fill="#334155">覆盖索引：3 + 0 = 3 页（Heap Fetches 0）</text>
+  <text x="476" y="426" font-size="12" fill="#334155">回表散乱：3 + 72 = 75 页（相关性 0.022）</text>
+  <text x="476" y="446" font-size="12" fill="#334155">全表扫描：22,223 页</text>
+  <text x="476" y="470" font-size="12" fill="#64748B">相关性接近 1 → 回表几乎顺序，页数 ≈ 行数 ÷ 45</text>
+  <text x="476" y="492" font-size="12" fill="#be123c">最左前缀：跨页时后一列只在各自前导值内部有序</text>
+
+  <text x="450" y="538" text-anchor="middle" font-size="11" fill="#94A3B8">每个内部节点只存「键 + 子页号」，所以扇出大、树很矮——这就是 B+ 树能撑住一亿行的原因</text>
+</svg>

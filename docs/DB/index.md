@@ -10,6 +10,7 @@
 - [时序数据库](TimeSeries/index.md)
 - [数据同步与 CDC](CDC/index.md)
 - [向量数据库深入](VectorDatabase/index.md)
+- [数据库内核与存储引擎](DatabaseInternals/index.md)
 - [数据治理入门](DataGovernance/index.md)
 - [数仓建模](DataWarehouse/index.md)
 - [大数据生态](BigData/index.md)

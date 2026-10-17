@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+  <title>七步内核级体检：从固定环境到可复现记录</title>
+  <rect width="900" height="540" fill="#FFFFFF"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">七步体检：每一步一条命令、一个判读规则</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748B">示例读数来自 PostgreSQL 18.6：100 万行 · 17 万行/租户 · (tenant_id, created_at) 索引</text>
+
+  <rect x="40" y="78" width="380" height="62" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+  <text x="56" y="100" font-size="12" font-weight="bold" fill="#1E293B">第 0 步 · 固定三要素</text>
+  <text x="56" y="120" font-size="11" fill="#334155">语句 · 参数 · 环境（version / shared_buffers / 冷热）</text>
+
+  <rect x="480" y="78" width="380" height="62" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="496" y="100" font-size="12" font-weight="bold" fill="#1D4ED8">第 1 步 · 看计划</text>
+  <text x="496" y="120" font-size="11" fill="#334155">走索引还是全表 → Bitmap Heap Scan？</text>
+
+  <path d="M420 109 L480 109" stroke="#94A3B8" stroke-width="2" marker-end="url(#a8)"/>
+  <defs>
+    <marker id="a8" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <rect x="480" y="156" width="380" height="62" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="496" y="178" font-size="12" font-weight="bold" fill="#15803D">第 2 步 · 数页</text>
+  <text x="496" y="198" font-size="11" fill="#334155">Buffers hit=33 read=42 ⇒ 75 页 / 72 行 = 1.04 页/行</text>
+
+  <path d="M670 140 L670 156" stroke="#94A3B8" stroke-width="2" marker-end="url(#a8)"/>
+
+  <rect x="480" y="234" width="380" height="62" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="496" y="256" font-size="12" font-weight="bold" fill="#B45309">第 3 步 · 查相关性</text>
+  <text x="496" y="276" font-size="11" fill="#334155">correlation=0.022 ⇒ 回表必然散（每行一个页）</text>
+
+  <path d="M670 218 L670 234" stroke="#94A3B8" stroke-width="2" marker-end="url(#a8)"/>
+
+  <rect x="480" y="312" width="380" height="62" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="496" y="334" font-size="12" font-weight="bold" fill="#5B21B6">第 4 步 · 看树高</text>
+  <text x="496" y="354" font-size="11" fill="#334155">bt_metap.level=2 ⇒ 索引层只占 3 页（4%）</text>
+
+  <path d="M670 296 L670 312" stroke="#94A3B8" stroke-width="2" marker-end="url(#a8)"/>
+
+  <rect x="480" y="390" width="380" height="62" rx="8" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="496" y="412" font-size="12" font-weight="bold" fill="#BE185D">第 5 步 · 算写放大</text>
+  <text x="496" y="432" font-size="11" fill="#334155">LSN 差值 ÷ 行数 = 238 B/行（约 2.4 倍）</text>
+
+  <path d="M670 374 L670 390" stroke="#94A3B8" stroke-width="2" marker-end="url(#a8)"/>
+
+  <rect x="480" y="468" width="380" height="54" rx="8" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="496" y="490" font-size="12" font-weight="bold" fill="#C2410C">第 6-7 步 · 改一处 → 重测 → 写成六项记录</text>
+  <text x="496" y="510" font-size="11" fill="#334155">聚簇 vs 覆盖索引：动的是不同层，代价不同</text>
+
+  <path d="M670 452 L670 468" stroke="#94A3B8" stroke-width="2" marker-end="url(#a8)"/>
+
+  <rect x="40" y="156" width="380" height="118" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="56" y="178" font-size="12" font-weight="bold" fill="#1E293B">三种访问的页数对照（同一张表）</text>
+  <text x="56" y="202" font-size="11" fill="#334155">纯索引：81 页 / 2 万行 = 0.004 页/行</text>
+  <text x="56" y="222" font-size="11" fill="#334155">索引 + 回表：75 页 / 72 行 = 1.04 页/行</text>
+  <text x="56" y="242" font-size="11" fill="#334155">全表扫描：22,223 页 / 100 万行</text>
+  <text x="56" y="262" font-size="11" fill="#be123c">页/行 &gt; 0.5 就是「回表散乱」，不是「索引没生效」</text>
+
+  <rect x="40" y="290" width="380" height="118" rx="8" fill="#F0FDF4" stroke="#86EFAC"/>
+  <text x="56" y="312" font-size="12" font-weight="bold" fill="#15803D">两条修法，动的是不同层</text>
+  <text x="56" y="336" font-size="11" fill="#334155">聚簇（改物理布局）：correlation → 1</text>
+  <text x="56" y="356" font-size="11" fill="#334155">覆盖索引（改访问路径）：免回表</text>
+  <text x="56" y="380" font-size="11" fill="#be123c">代价：聚簇锁表；索引增体积 + 写放大</text>
+  <text x="56" y="400" font-size="11" fill="#64748B">两者都不做时：把租户做成表分区也能收窄散布</text>
+
+  <rect x="40" y="424" width="380" height="98" rx="8" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="56" y="446" font-size="12" font-weight="bold" fill="#92400E">合格记录必须六项齐全</text>
+  <text x="56" y="468" font-size="11" fill="#78350F">环境 · 语句 · 改前读数 · 改了什么</text>
+  <text x="56" y="488" font-size="11" fill="#78350F">改后读数 · 结论与代价</text>
+  <text x="56" y="510" font-size="11" fill="#be123c">缺一项 ⇒ 他人无法复现 ⇒ 结论作废</text>
+</svg>

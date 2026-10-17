@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="580" viewBox="0 0 900 580">
+  <title>LSM 树：memtable、SSTable 与分层 compaction 的三种放大</title>
+  <rect width="900" height="580" fill="#FFFFFF"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">写入只追加，代价是读要跨层</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748B">读放大 = 层数 + L0 文件数 ｜ 写放大 = compaction 重写量 ÷ 业务写入量</text>
+
+  <rect x="60" y="82" width="150" height="62" rx="8" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="135" y="106" text-anchor="middle" font-size="13" font-weight="bold" fill="#BE185D">WAL 文件</text>
+  <text x="135" y="128" text-anchor="middle" font-size="11" fill="#334155">顺序追加 · 崩溃重建</text>
+
+  <rect x="240" y="82" width="150" height="62" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="315" y="106" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">memtable</text>
+  <text x="315" y="128" text-anchor="middle" font-size="11" fill="#334155">跳表 · 可读写</text>
+
+  <rect x="420" y="82" width="150" height="62" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="495" y="104" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">immutable</text>
+  <text x="495" y="124" text-anchor="middle" font-size="11" fill="#334155">只读 · 正在刷盘</text>
+
+  <rect x="600" y="82" width="240" height="62" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="720" y="104" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803D">SSTable（不可变）</text>
+  <text x="720" y="126" text-anchor="middle" font-size="11" fill="#334155">块索引 + 布隆过滤器 + 数据块</text>
+
+  <path d="M210 113 L240 113" stroke="#94A3B8" stroke-width="2" marker-end="url(#a3)"/>
+  <path d="M390 113 L420 113" stroke="#94A3B8" stroke-width="2" marker-end="url(#a3)"/>
+  <path d="M570 113 L600 113" stroke="#94A3B8" stroke-width="2" marker-end="url(#a3)"/>
+  <text x="225" y="104" text-anchor="middle" font-size="10" fill="#64748B">同一事务</text>
+  <text x="405" y="104" text-anchor="middle" font-size="10" fill="#64748B">写满</text>
+  <text x="585" y="104" text-anchor="middle" font-size="10" fill="#64748B">flush</text>
+  <defs>
+    <marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <rect x="60" y="186" width="790" height="56" rx="8" fill="#FFF7ED" stroke="#FDBA74"/>
+  <text x="76" y="208" font-size="12" font-weight="bold" fill="#9A3412">Level 0：文件之间键范围重叠 ⇒ 一次点查必须全查（L0 文件数是读放大的放大器）</text>
+  <rect x="76" y="216" width="70" height="18" rx="3" fill="#FFEDD5" stroke="#FDBA74"/>
+  <rect x="154" y="216" width="70" height="18" rx="3" fill="#FFEDD5" stroke="#FDBA74"/>
+  <rect x="232" y="216" width="70" height="18" rx="3" fill="#FFEDD5" stroke="#FDBA74"/>
+  <rect x="310" y="216" width="70" height="18" rx="3" fill="#FFEDD5" stroke="#FDBA74"/>
+  <text x="398" y="230" font-size="11" fill="#9A3412">a…z 全都可能落在这 4 个文件里</text>
+
+  <rect x="60" y="266" width="790" height="56" rx="8" fill="#ECFEFF" stroke="#67E8F9"/>
+  <text x="76" y="288" font-size="12" font-weight="bold" fill="#155E75">Level 1：层内全局有序、文件间不重叠 ⇒ 二分定位到唯一文件，只需查 1 个</text>
+  <rect x="76" y="296" width="150" height="18" rx="3" fill="#CFFAFE" stroke="#67E8F9"/>
+  <rect x="236" y="296" width="150" height="18" rx="3" fill="#CFFAFE" stroke="#67E8F9"/>
+  <rect x="396" y="296" width="150" height="18" rx="3" fill="#CFFAFE" stroke="#67E8F9"/>
+  <rect x="556" y="296" width="150" height="18" rx="3" fill="#CFFAFE" stroke="#67E8F9"/>
+  <text x="220" y="310" text-anchor="middle" font-size="10" fill="#155E75">a…f</text>
+  <text x="380" y="310" text-anchor="middle" font-size="10" fill="#155E75">g…m</text>
+  <text x="540" y="310" text-anchor="middle" font-size="10" fill="#155E75">n…s</text>
+  <text x="700" y="310" text-anchor="middle" font-size="10" fill="#155E75">t…z</text>
+
+  <rect x="60" y="346" width="790" height="46" rx="8" fill="#F5F3FF" stroke="#C4B5FD"/>
+  <text x="76" y="368" font-size="12" font-weight="bold" fill="#5B21B6">Level 2 … Level n：容量按 size ratio 递增（如 ×10），每层最多查 1 个文件</text>
+  <text x="76" y="384" font-size="11" fill="#6D28D9">同一 key 在多层出现 ⇒ 取层号最小的那个（新覆盖旧）</text>
+
+  <path d="M455 356 L455 326" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#a4)"/>
+  <defs>
+    <marker id="a4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#8B5CF6"/>
+    </marker>
+  </defs>
+  <text x="600" y="344" font-size="11" fill="#6D28D9">compaction：读上层的重叠区间 + 下层对应区间，合并后写回下层</text>
+
+  <rect x="60" y="410" width="386" height="136" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="76" y="432" font-size="13" font-weight="bold" fill="#1E293B">三种放大（本机推演，非实测）</text>
+  <text x="76" y="456" font-size="12" fill="#334155">leveled  L=4：写 21.0× · 读 5.0 · 空间 1.10</text>
+  <text x="76" y="476" font-size="12" fill="#334155">leveled  L=6：写 31.0× · 读 7.0 · 空间 1.10</text>
+  <text x="76" y="496" font-size="12" fill="#334155">tiered   L=4：写  4.0× · 读 16  · 空间 2.50</text>
+  <text x="76" y="516" font-size="12" fill="#64748B">公式：写放大 = 层数 × (size ratio − 1) ÷ 2 + 1</text>
+  <text x="76" y="536" font-size="12" fill="#be123c">读多写少选 leveled；写多读少选 tiered；过期数据选 FIFO</text>
+
+  <rect x="464" y="410" width="386" height="136" rx="10" fill="#F0FDF4" stroke="#86EFAC"/>
+  <text x="480" y="432" font-size="13" font-weight="bold" fill="#15803D">写放大的真实价格</text>
+  <text x="480" y="456" font-size="12" fill="#334155">有效写吞吐 = 磁盘顺序写带宽 ÷ 写放大</text>
+  <text x="480" y="476" font-size="12" fill="#334155">500 MB/s ÷ 3.0 ≈ 166.7 MB/s</text>
+  <text x="480" y="496" font-size="12" fill="#334155">500 MB/s ÷ 21.0 ≈ 23.8 MB/s</text>
+  <text x="480" y="520" font-size="12" fill="#64748B">「磁盘还能跑 500 MB/s，为什么写入只有 20？」</text>
+  <text x="480" y="538" font-size="12" fill="#be123c">先算这一行，再谈扩容——多数时候该调 compaction 策略</text>
+</svg>

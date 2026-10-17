@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="580" viewBox="0 0 900 580">
+  <title>WAL 写入链、LSN、检查点与崩溃恢复三阶段</title>
+  <rect width="900" height="580" fill="#FFFFFF"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">先写日志，后写数据页</text>
+  <text x="450" y="56" text-anchor="middle" font-size="12" fill="#64748B">实测：10 万行 × 100 B 负载 → WAL 增长 23 MB ⇒ 238 字节/行（约 2.4 倍写放大）</text>
+
+  <text x="60" y="88" font-size="13" font-weight="bold" fill="#BE185D">写路径（提交点的位置）</text>
+  <rect x="60" y="100" width="128" height="56" rx="8" fill="#EFF6FF" stroke="#3B82F6"/>
+  <text x="124" y="122" text-anchor="middle" font-size="12" fill="#1E40AF">① 改页</text>
+  <text x="124" y="140" text-anchor="middle" font-size="10" fill="#334155">内存 · 标脏</text>
+
+  <rect x="204" y="100" width="128" height="56" rx="8" fill="#F5F3FF" stroke="#8B5CF6"/>
+  <text x="268" y="122" text-anchor="middle" font-size="12" fill="#5B21B6">② 生成 WAL 记录</text>
+  <text x="268" y="140" text-anchor="middle" font-size="10" fill="#334155">写入 wal_buffers</text>
+
+  <rect x="348" y="100" width="128" height="56" rx="8" fill="#FEF3C7" stroke="#F59E0B"/>
+  <text x="412" y="122" text-anchor="middle" font-size="12" fill="#B45309">③ write()</text>
+  <text x="412" y="140" text-anchor="middle" font-size="10" fill="#334155">到 WAL 文件</text>
+
+  <rect x="492" y="100" width="128" height="56" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+  <text x="556" y="118" text-anchor="middle" font-size="12" font-weight="bold" fill="#991B1B">④ fsync()</text>
+  <text x="556" y="136" text-anchor="middle" font-size="10" fill="#7F1D1D">持久化点</text>
+  <text x="556" y="150" text-anchor="middle" font-size="10" fill="#7F1D1D">延迟主要来源</text>
+
+  <rect x="636" y="100" width="204" height="56" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="738" y="122" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803D">⑤ 返回 COMMIT OK</text>
+  <text x="738" y="140" text-anchor="middle" font-size="10" fill="#166534">⑥ 数据页可延迟数分钟再落盘</text>
+
+  <path d="M188 128 L204 128" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <path d="M332 128 L348 128" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <path d="M476 128 L492 128" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <path d="M620 128 L636 128" stroke="#94A3B8" stroke-width="2" marker-end="url(#a5)"/>
+  <defs>
+    <marker id="a5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <rect x="60" y="176" width="780" height="52" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="76" y="198" font-size="12" fill="#334155">组提交：多个并发事务的 fsync 合并成一次 —— 吞吐上限从 1 / fsync延迟（机械盘 &lt; 200 TPS）抬到「一次 fsync 覆盖 N 个事务」</text>
+  <text x="76" y="218" font-size="11" fill="#64748B">synchronous_commit=off 只弱化持久性（可能丢最后几百毫秒），不会损坏、不会看到半个提交</text>
+
+  <text x="60" y="258" font-size="13" font-weight="bold" fill="#1D4ED8">LSN 是地址，也是全局时钟</text>
+  <rect x="60" y="270" width="240" height="46" rx="8" fill="#EFF6FF" stroke="#93C5FD"/>
+  <text x="180" y="292" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">LSN = 0/15159468</text>
+  <text x="180" y="308" text-anchor="middle" font-size="10" fill="#334155">高位 × 4 GB + 低位 = 字节偏移</text>
+
+  <rect x="316" y="270" width="256" height="46" rx="8" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <text x="444" y="290" text-anchor="middle" font-size="11" fill="#334155">pg_wal_lsn_diff(后, 前)</text>
+  <text x="444" y="306" text-anchor="middle" font-size="11" fill="#64748B">= 这段操作产生了多少字节 WAL</text>
+
+  <rect x="588" y="270" width="252" height="46" rx="8" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <text x="714" y="290" text-anchor="middle" font-size="11" fill="#334155">页头 pd_lsn 与重放位置比较</text>
+  <text x="714" y="306" text-anchor="middle" font-size="11" fill="#64748B">= 这页要不要重放</text>
+
+  <text x="60" y="352" font-size="13" font-weight="bold" fill="#9A3412">检查点：把「重放起点」往前推</text>
+  <line x1="80" y1="386" x2="820" y2="386" stroke="#CBD5E1" stroke-width="2"/>
+  <circle cx="180" cy="386" r="6" fill="#F59E0B"/>
+  <circle cx="420" cy="386" r="6" fill="#F59E0B"/>
+  <circle cx="700" cy="386" r="6" fill="#EF4444"/>
+  <text x="180" y="374" text-anchor="middle" font-size="11" fill="#B45309">检查点 N</text>
+  <text x="420" y="374" text-anchor="middle" font-size="11" fill="#B45309">检查点 N+1</text>
+  <text x="700" y="374" text-anchor="middle" font-size="11" fill="#991B1B">崩溃</text>
+  <path d="M420 396 L700 396" stroke="#EF4444" stroke-width="3"/>
+  <text x="560" y="416" text-anchor="middle" font-size="11" fill="#991B1B">恢复从这里开始重放（这段越短，恢复越快）</text>
+  <text x="80" y="416" font-size="11" fill="#64748B">已落盘页对应的 WAL 可回收</text>
+
+  <rect x="60" y="428" width="780" height="66" rx="8" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="76" y="450" font-size="12" fill="#92400E">实测：num_timed=168 · num_requested=2 · buffers_written=15189 · write_time≈228 s</text>
+  <text x="76" y="470" font-size="12" fill="#92400E">num_requested 持续增长 ⇒ 检查点被 WAL 量追着跑 ⇒ 吞吐下降；处置是调大 max_wal_size，不是调小</text>
+  <text x="76" y="486" font-size="11" fill="#78350F">本机：wal_buffers=5128 kB · full_page_writes=on · max_wal_size=1 GB · checkpoint_timeout=300 s</text>
+
+  <text x="60" y="522" font-size="13" font-weight="bold" fill="#6D28D9">崩溃恢复：ARIES 三阶段</text>
+  <rect x="60" y="532" width="248" height="36" rx="8" fill="#F5F3FF" stroke="#C4B5FD"/>
+  <text x="184" y="555" text-anchor="middle" font-size="11" fill="#5B21B6">① Analysis：重建活事务与脏页表</text>
+  <rect x="320" y="532" width="248" height="36" rx="8" fill="#EDE9FE" stroke="#C4B5FD"/>
+  <text x="444" y="555" text-anchor="middle" font-size="11" fill="#5B21B6">② Redo：无条件重放（靠页头 LSN 跳过）</text>
+  <rect x="580" y="532" width="260" height="36" rx="8" fill="#DDD6FE" stroke="#C4B5FD"/>
+  <text x="710" y="555" text-anchor="middle" font-size="11" fill="#5B21B6">③ Undo：逆序撤销 + 写 CLR</text>
+</svg>

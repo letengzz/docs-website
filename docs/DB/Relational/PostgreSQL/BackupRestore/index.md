@@ -165,6 +165,20 @@ psql -U app_user -d appdb -c "SELECT count(*) FROM users;"
 - [SQL 优化](../../SQLOptimization/index.md)：备份窗口不够时，先确认慢查询没有拖累整体负载。
 - [MySQL 常见问题](../../MySQL/FAQ/index.md)：跨引擎对比两种备份哲学（逻辑导出 vs 物理热备）。
 
+
+## 与「数据库内核与存储引擎」章节集的分工（第 153 天补充）
+
+本页讲**怎么备、怎么恢复**；WAL 为什么是「主数据流」而不是「可清理的日志」、检查点如何决定恢复时长，归 [数据库内核与存储引擎 · WAL 与崩溃恢复](/docs/DB/DatabaseInternals/WalRecovery/index.md)。
+
+第 153 天在那页实测到两处**会让本页脚本失效的版本变化**，这里同步记一笔：
+
+| 变化 | 影响 | 正确写法 |
+| --- | --- | --- |
+| PG 17 起检查点统计从 `pg_stat_bgwriter` 拆出 | `select checkpoints_timed from pg_stat_bgwriter` 直接报「列不存在」 | 改查 `pg_stat_checkpointer`，字段名是 `num_timed` / `num_requested` |
+| PG 18 起 `pg_stat_wal` 只剩 5 列 | 查 `wal_write_time` / `wal_sync_time` 报错 | 时间类改查 `pg_stat_io`（`object='wal'`） |
+
+**一句话结论**：备份脚本里的「健康检查」部分最容易在升级后静默失效——它不参与备份成败，只在你想确认「归档有没有跟上」时才报错。**升级演练必须把这几条查询一起跑一遍。**
+
 ## 参考资料
 
 - [PostgreSQL 备份文档](https://www.postgresql.org/docs/current/backup.html)

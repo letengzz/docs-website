@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <title>事件表与顺序字段：seq 的三种分配方式、空洞与游标分页</title>
+  <rect width="900" height="560" fill="#FFFFFF"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">seq 只保证单调，不保证连续</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748B">周期 6 · 第 1 周第 3 步：把「断线追平」需要的顺序号落到数据库层</text>
+
+  <text x="40" y="90" font-size="13" font-weight="bold" fill="#1E293B">三种分配方式（本机在同一张表上实测）</text>
+
+  <rect x="40" y="102" width="270" height="112" rx="8" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="2"/>
+  <text x="56" y="124" font-size="12" font-weight="bold" fill="#991B1B">① max(seq) + 1</text>
+  <text x="56" y="146" font-size="11" fill="#334155">读最大值再加一，看似朴素</text>
+  <text x="56" y="166" font-size="11" fill="#334155">两个会话同时读 ⇒ 拿到同一个值</text>
+  <text x="56" y="186" font-size="11" fill="#be123c">实测：duplicate key (seq)=(3)</text>
+  <text x="56" y="204" font-size="11" fill="#be123c">结论：并发下必然撞号，不可用</text>
+
+  <rect x="326" y="102" width="270" height="112" rx="8" fill="#FFFBEB" stroke="#FCD34D" stroke-width="2"/>
+  <text x="342" y="124" font-size="12" font-weight="bold" fill="#92400E">② 表内计数 + 行锁</text>
+  <text x="342" y="146" font-size="11" fill="#334155">update board_seq set v=v+1 returning v</text>
+  <text x="342" y="166" font-size="11" fill="#334155">每个看板一行，行锁串行化</text>
+  <text x="342" y="186" font-size="11" fill="#15803D">正确，但同一看板的写被排队</text>
+  <text x="342" y="204" font-size="11" fill="#64748B">用于「每板连续」的强需求场景</text>
+
+  <rect x="612" y="102" width="248" height="112" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
+  <text x="628" y="124" font-size="12" font-weight="bold" fill="#15803D">③ 序列 / identity</text>
+  <text x="628" y="146" font-size="11" fill="#334155">bigint generated always as identity</text>
+  <text x="628" y="166" font-size="11" fill="#334155">分配不参与事务，无锁、单调</text>
+  <text x="628" y="186" font-size="11" fill="#15803D">推荐：并发安全、吞吐最高</text>
+  <text x="628" y="204" font-size="11" fill="#be123c">代价：会有空洞（见下）</text>
+
+  <text x="40" y="248" font-size="13" font-weight="bold" fill="#BE185D">空洞不是 bug：回滚也消耗序号</text>
+  <rect x="40" y="260" width="410" height="86" rx="8" fill="#FDF2F8" stroke="#F9A8D4"/>
+  <text x="56" y="282" font-size="11" fill="#334155">begin; insert … returning id;  → 1　　rollback;</text>
+  <text x="56" y="302" font-size="11" fill="#334155">insert … returning id;        → 2</text>
+  <text x="56" y="322" font-size="11" fill="#9D174D">实测：表内 1 行，last_value = 2</text>
+  <text x="56" y="340" font-size="11" fill="#be123c">⇒ 任何「按 seq 数条数」的逻辑都是错的</text>
+
+  <rect x="466" y="260" width="394" height="86" rx="8" fill="#EFF6FF" stroke="#93C5FD"/>
+  <text x="482" y="282" font-size="11" font-weight="bold" fill="#1D4ED8">由此推出的三条使用纪律</text>
+  <text x="482" y="302" font-size="11" fill="#334155">① seq 只用于「大于某值」的比较，不用于「等于第 N 条」</text>
+  <text x="482" y="322" font-size="11" fill="#334155">② 客户端补拉用 seq &gt; cursor，不用 offset</text>
+  <text x="482" y="340" font-size="11" fill="#334155">③ 缺口必须允许，且要在文档里写明</text>
+
+  <text x="40" y="382" font-size="13" font-weight="bold" fill="#1E293B">游标分页 vs offset 分页（20 万行，同一张表）</text>
+  <rect x="40" y="394" width="410" height="70" rx="8" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="56" y="416" font-size="11" fill="#334155">order by id offset 150000 limit 20</text>
+  <text x="56" y="436" font-size="11" fill="#991B1B">29.83 ms · Buffers hit=1,224 · 扫描 150,020 行</text>
+  <text x="56" y="454" font-size="11" fill="#64748B">越往后翻越慢：成本与 offset 成正比</text>
+
+  <rect x="466" y="394" width="394" height="70" rx="8" fill="#F0FDF4" stroke="#86EFAC"/>
+  <text x="482" y="416" font-size="11" fill="#334155">where id &gt; 150000 order by id limit 20</text>
+  <text x="482" y="436" font-size="11" fill="#15803D">0.031 ms · Buffers hit=7 · 扫描 20 行</text>
+  <text x="482" y="454" font-size="11" fill="#64748B">962 倍时间差、175 倍页数差 —— 与翻到第几页无关</text>
+
+  <rect x="40" y="482" width="820" height="62" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="56" y="504" font-size="12" font-weight="bold" fill="#1E293B">本步交付物</text>
+  <text x="56" y="524" font-size="11" fill="#334155">board_events 完整 DDL（tenant_id + board_id + seq 复合唯一键）· 每板/全局两种 seq 口径取舍 · 游标分页写法 · 广播去重与 origin · 判据 ES-A~ES-H</text>
+  <text x="56" y="540" font-size="11" fill="#be123c">如实标注：迁移与 RLS 策略需在真实工程里验证，本页只给设计与本机 SQL 读数</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <title>症状分诊：六类现象到四层归属</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">先定位层，再谈优化</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748B">左边是现象，中间是第一条该跑的命令，右边是它指向的那一层</text>
+
+  <rect x="30" y="78" width="270" height="46" rx="8" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="44" y="106" font-size="11" fill="#991B1B">查询突然从 5 ms 变 500 ms</text>
+  <text x="380" y="106" font-size="11" fill="#334155">explain (analyze, buffers) 对比前后</text>
+  <text x="700" y="106" font-size="11" font-weight="bold" fill="#6D28D9">优化器 · 统计变了</text>
+
+  <rect x="30" y="134" width="270" height="46" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+  <text x="44" y="162" font-size="11" fill="#92400E">索引有，但计划是全表扫</text>
+  <text x="380" y="162" font-size="11" fill="#334155">看是 Filter 还是 Index Cond</text>
+  <text x="700" y="162" font-size="11" font-weight="bold" fill="#B45309">B+ 树 · 表达式不匹配</text>
+
+  <rect x="30" y="190" width="270" height="46" rx="8" fill="#FFF7ED" stroke="#FDBA74"/>
+  <text x="44" y="218" font-size="11" fill="#9A3412">命中少量行却扫很多堆页</text>
+  <text x="380" y="218" font-size="11" fill="#334155">看 Heap Blocks 有没有 lossy</text>
+  <text x="700" y="218" font-size="11" font-weight="bold" fill="#C2410C">执行器 · 位图退化</text>
+
+  <rect x="30" y="246" width="270" height="46" rx="8" fill="#F0FDF4" stroke="#86EFAC"/>
+  <text x="44" y="274" font-size="11" fill="#166534">内存吃满、延迟有毛刺</text>
+  <text x="380" y="274" font-size="11" fill="#334155">pg_buffercache + buffers_alloc</text>
+  <text x="700" y="274" font-size="11" font-weight="bold" fill="#15803D">缓冲池 · 池小于热集</text>
+
+  <rect x="30" y="302" width="270" height="46" rx="8" fill="#FDF2F8" stroke="#F9A8D4"/>
+  <text x="44" y="330" font-size="11" fill="#9D174D">WAL 涨得比数据快</text>
+  <text x="380" y="330" font-size="11" fill="#334155">两次 LSN 差值 ÷ 行数</text>
+  <text x="700" y="330" font-size="11" font-weight="bold" fill="#BE185D">WAL · 写放大 / 全页写</text>
+
+  <rect x="30" y="358" width="270" height="46" rx="8" fill="#F5F3FF" stroke="#C4B5FD"/>
+  <text x="44" y="386" font-size="11" fill="#5B21B6">写入上不去、磁盘却很闲</text>
+  <text x="380" y="386" font-size="11" fill="#334155">算「带宽 ÷ 写放大」</text>
+  <text x="700" y="386" font-size="11" font-weight="bold" fill="#6D28D9">LSM · compaction</text>
+
+  <text x="40" y="98" font-size="0" fill="#FFFFFF">占位</text>
+
+  <rect x="40" y="428" width="820" height="66" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="56" y="450" font-size="12" font-weight="bold" fill="#1E293B">三句话定位法</text>
+  <text x="56" y="470" font-size="11" fill="#334155">① 时间花在哪？看 actual time 最大的节点　② 页花在哪？看 hit 与 read 谁占多　③ 行花在哪？看「扫了多少」与「留下多少」的比</text>
+  <text x="56" y="488" font-size="11" fill="#64748B">三个答案分别对应 CPU / 内存 / 选择性 —— 处理手段完全不同，混着调只会越调越乱</text>
+</svg>

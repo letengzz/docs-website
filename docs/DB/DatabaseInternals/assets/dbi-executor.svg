@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <title>执行器：计划树、三种连接算法与实测代价对照</title>
+  <rect width="900" height="560" fill="#FFFFFF"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#1E293B">同一棵计划树，两种连接算法差 2.6 倍时间、80 倍页数</text>
+
+  <text x="60" y="66" font-size="13" font-weight="bold" fill="#1E293B">计划树（从下往上拉取，火山模型）</text>
+  <rect x="240" y="78" width="180" height="44" rx="8" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="330" y="105" text-anchor="middle" font-size="12" fill="#BE185D">Aggregate（聚合）</text>
+
+  <rect x="220" y="150" width="220" height="44" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="330" y="177" text-anchor="middle" font-size="12" fill="#B45309">Hash Join</text>
+
+  <rect x="90" y="222" width="180" height="52" rx="8" fill="#EFF6FF" stroke="#3B82F6"/>
+  <text x="180" y="244" text-anchor="middle" font-size="12" fill="#1D4ED8">Parallel Seq Scan</text>
+  <text x="180" y="262" text-anchor="middle" font-size="10" fill="#334155">fact · 2 worker</text>
+
+  <rect x="390" y="222" width="180" height="52" rx="8" fill="#F5F3FF" stroke="#8B5CF6"/>
+  <text x="480" y="244" text-anchor="middle" font-size="12" fill="#5B21B6">Hash（构建侧）</text>
+  <text x="480" y="262" text-anchor="middle" font-size="10" fill="#334155">dim · 44 kB · Batches 1</text>
+
+  <path d="M330 122 L330 150" stroke="#94A3B8" stroke-width="2" marker-end="url(#a6)"/>
+  <path d="M260 194 L200 222" stroke="#94A3B8" stroke-width="2" marker-end="url(#a6)"/>
+  <path d="M400 194 L460 222" stroke="#94A3B8" stroke-width="2" marker-end="url(#a6)"/>
+  <defs>
+    <marker id="a6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <text x="330" y="300" text-anchor="middle" font-size="11" fill="#64748B">⬆ 数据自下向上流动，一次一行（tuple-at-a-time）</text>
+
+  <text x="60" y="336" font-size="13" font-weight="bold" fill="#1E293B">三种连接算法</text>
+  <rect x="60" y="348" width="220" height="96" rx="8" fill="#FFF7ED" stroke="#FDBA74"/>
+  <text x="76" y="370" font-size="12" font-weight="bold" fill="#9A3412">Nested Loop</text>
+  <text x="76" y="392" font-size="11" fill="#334155">外表每行 × 内表查找</text>
+  <text x="76" y="410" font-size="11" fill="#334155">优：外表几十行 + 内表有索引</text>
+  <text x="76" y="428" font-size="11" fill="#be123c">劣：loops 上万 ⇒ 乘出百万次查找</text>
+
+  <rect x="300" y="348" width="220" height="96" rx="8" fill="#EFF6FF" stroke="#93C5FD"/>
+  <text x="316" y="370" font-size="12" font-weight="bold" fill="#1D4ED8">Hash Join</text>
+  <text x="316" y="392" font-size="11" fill="#334155">小表建哈希，大表探测</text>
+  <text x="316" y="410" font-size="11" fill="#334155">优：大表连大表、等值连接</text>
+  <text x="316" y="428" font-size="11" fill="#be123c">劣：Batches&gt;1 就落盘，掉一个数量级</text>
+
+  <rect x="540" y="348" width="250" height="96" rx="8" fill="#F0FDF4" stroke="#86EFAC"/>
+  <text x="556" y="370" font-size="12" font-weight="bold" fill="#15803D">Merge Join</text>
+  <text x="556" y="392" font-size="11" fill="#334155">两边有序则归并</text>
+  <text x="556" y="410" font-size="11" fill="#334155">优：已有索引有序 / 已排序</text>
+  <text x="556" y="428" font-size="11" fill="#be123c">劣：要额外排序 ⇒ 白排两遍</text>
+
+  <rect x="60" y="462" width="730" height="76" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="76" y="484" font-size="13" font-weight="bold" fill="#1E293B">本机实测（fact 20 万行 · dim 1000 行 · 热缓存）</text>
+  <text x="76" y="506" font-size="12" fill="#334155">Hash Join：39.0 ms · Buffers hit=2,512 · cost 2,136 · 内存 44 kB</text>
+  <text x="76" y="526" font-size="12" fill="#be123c">Nested Loop：102.6 ms · Buffers hit=202,009 · cost 16,973 · loops=1000 · Heap Fetches=200,000</text>
+
+  <text x="450" y="552" text-anchor="middle" font-size="11" fill="#94A3B8">「Index Only Scan」出现 Heap Fetches=200,000：可见性映射没覆盖，等于每行都回表</text>
+</svg>

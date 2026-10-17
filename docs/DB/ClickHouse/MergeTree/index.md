@@ -128,6 +128,21 @@ clickhouse-client --query "
 # 期望：输出中出现 primary key 条件 user_id IN (1,) 且 granules 数小于总 granules
 ```
 
+
+## 与「数据库内核与存储引擎」章节集的分工（第 153 天补充）
+
+MergeTree 常被误认为「LSM 的一种」，两者在**写入放大**这一层确实有相似目标，但结构完全不同。LSM 的通用模型见 [数据库内核与存储引擎 · LSM 树](/docs/DB/DatabaseInternals/LsmTree/index.md)。
+
+| 维度 | MergeTree（本页） | LSM（内核专题） |
+| --- | --- | --- |
+| 存储布局 | **列存**，按排序键物理有序 | **行级 KV**，按 key 有序 |
+| 写入路径 | 攒批写成一个 part（不做 memtable） | memtable → flush → SSTable |
+| 后台动作 | merge parts（按分区合并） | compaction（跨层合并、去重、消化墓碑） |
+| 点查 | 稀疏主键索引 + 跳数索引，**不保证 O(1)** | 逐层布隆过滤 + 块索引 |
+| 删除 | 以「删除标记 + merge 时丢弃」为主 | **墓碑**，且墓碑会随层下移 |
+
+**一句话结论**：两者都用「后台合并」换写入吞吐，但 MergeTree 合并的是**同一分区的 parts**（不跨层、不做 KV 去重），所以它的读放大不随「层数」增长，而是随「parts 数量」增长。**用 LSM 的放大公式去算 MergeTree 会算错。**
+
 ## 参考资料
 
 - [MergeTree 官方文档](https://clickhouse.com/docs/engines/table-engines/mergetree-family/mergetree)
