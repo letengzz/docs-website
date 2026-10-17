@@ -326,6 +326,7 @@ export const CompleteProject = [
           { text: "上线验收：四条交付判据变成能勾的项（LX-A~LX-H）", link: "/project/Complete/TeamBoard/LaunchAcceptance/index.md" },
           { text: "第 4 周验收结论：29 章的收口与三处口径修正（W4-A~W4-H）", link: "/project/Complete/TeamBoard/Week4Acceptance/index.md" },
           { text: "多租户隔离：把同表不同租户变成数据库级边界（TN-A~TN-H）", link: "/project/Complete/TeamBoard/MultiTenancy/index.md" },
+          { text: "租户上下文与索引设计：把按租户过滤变成索引前缀（TI-A~TI-H）", link: "/project/Complete/TeamBoard/TenantIndexing/index.md" },
         ],
       },
       {

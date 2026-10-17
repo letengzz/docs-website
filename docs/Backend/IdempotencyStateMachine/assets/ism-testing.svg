@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540">
+  <rect width="880" height="540" fill="#FFFFFF"/>
+  <text x="440" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">五类测试与它们能证伪的东西</text>
+  <text x="440" y="60" text-anchor="middle" font-size="12" fill="#64748B">越往下越难写，但越能发现真问题；阻断型测试必须 5 分钟内跑完</text>
+
+  <!-- 五层 -->
+  <rect x="60" y="86" width="760" height="62" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="80" y="112" font-size="13" font-weight="bold" fill="#1D4ED8">① 重复执行测试</text>
+  <text x="80" y="133" font-size="11" fill="#475569">同键调两次，断言响应逐字节相同、库里只有 1 行</text>
+  <text x="700" y="120" text-anchor="middle" font-size="11" fill="#1D4ED8">挡住：键没落库</text>
+
+  <rect x="90" y="156" width="700" height="62" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="110" y="182" font-size="13" font-weight="bold" fill="#15803D">② 并发同键测试</text>
+  <text x="110" y="203" font-size="11" fill="#475569">CyclicBarrier 放行 8 个线程，断言「成功数 + 409 数 = 8」且库里 1 行</text>
+  <text x="670" y="190" text-anchor="middle" font-size="11" fill="#15803D">挡住：先查后写的窗口</text>
+
+  <rect x="120" y="226" width="640" height="62" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="140" y="252" font-size="13" font-weight="bold" fill="#B45309">③ 模型测试（迁移矩阵）</text>
+  <text x="140" y="273" font-size="11" fill="#475569">6 状态 × 5 事件 = 30 格，绿色 6 格必须成功、其余 24 格必须 409 且状态不变</text>
+  <text x="640" y="260" text-anchor="middle" font-size="11" fill="#B45309">挡住：迁移表缺边</text>
+
+  <rect x="150" y="296" width="580" height="62" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="170" y="322" font-size="13" font-weight="bold" fill="#6D28D9">④ 属性测试（不变量）</text>
+  <text x="170" y="343" font-size="11" fill="#475569">随机事件序列 + 四条不变量：次数、合法、单调、守恒（固定种子可复现）</text>
+  <text x="610" y="330" text-anchor="middle" font-size="11" fill="#6D28D9">挡住：组合场景破坏</text>
+
+  <rect x="180" y="366" width="520" height="62" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="200" y="392" font-size="13" font-weight="bold" fill="#B91C1C">⑤ 故障注入</text>
+  <text x="200" y="413" font-size="11" fill="#475569">提交前 / 提交后响应前 / 副作用发出后：三个点各注入一次</text>
+  <text x="580" y="400" text-anchor="middle" font-size="11" fill="#B91C1C">挡住：半成功无补偿</text>
+
+  <!-- 底部 -->
+  <rect x="60" y="448" width="760" height="70" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="80" y="472" font-size="12" font-weight="bold" fill="#1E293B">三条硬要求</text>
+  <text x="80" y="494" font-size="11" fill="#475569">键必须是显式输入 · 随机测试必须固定种子 · 「阻断」型用例总时长 ≤ 5 分钟（否则会被 @Disabled 绕过）</text>
+  <text x="80" y="512" font-size="11" fill="#475569">最终判据永远在数据库里：select count(*) 的读数比测试报告更可信</text>
+</svg>

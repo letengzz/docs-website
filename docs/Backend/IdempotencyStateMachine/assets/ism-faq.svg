@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+  <rect width="880" height="520" fill="#FFFFFF"/>
+  <text x="440" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">六类症状的分诊路径</text>
+  <text x="440" y="58" text-anchor="middle" font-size="12" fill="#64748B">先查数据库，再看日志，最后才看代码</text>
+
+  <!-- 起点 -->
+  <rect x="330" y="80" width="220" height="44" rx="22" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="440" y="108" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">现象出现了</text>
+
+  <line x1="440" y1="124" x2="440" y2="146" stroke="#94A3B8" stroke-width="1.5"/>
+
+  <!-- 六类 -->
+  <rect x="30" y="150" width="255" height="96" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="157" y="174" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">重复扣款 / 重复下单</text>
+  <text x="157" y="196" text-anchor="middle" font-size="10" fill="#475569">查：同一键在键表里有几行</text>
+  <text x="157" y="216" text-anchor="middle" font-size="10" fill="#475569">行数 &gt; 1 → 键没进唯一索引</text>
+  <text x="157" y="234" text-anchor="middle" font-size="10" fill="#475569">行数 = 0 → 键根本没落库</text>
+
+  <rect x="312" y="150" width="255" height="96" rx="8" fill="#FFF7ED" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="440" y="174" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">状态跳格</text>
+  <text x="440" y="196" text-anchor="middle" font-size="10" fill="#475569">查：order_event 与 state 是否自洽</text>
+  <text x="440" y="216" text-anchor="middle" font-size="10" fill="#475569">事件少于迁移次数 → 绕过状态机改库</text>
+  <text x="440" y="234" text-anchor="middle" font-size="10" fill="#475569">补：迁移必须带前置状态条件</text>
+
+  <rect x="594" y="150" width="256" height="96" rx="8" fill="#FEFCE8" stroke="#FDE047" stroke-width="1.5"/>
+  <text x="722" y="174" text-anchor="middle" font-size="12" font-weight="bold" fill="#854D0E">偶发 500 / 死锁</text>
+  <text x="722" y="196" text-anchor="middle" font-size="10" fill="#475569">查：pg_stat_activity 等待事件</text>
+  <text x="722" y="216" text-anchor="middle" font-size="10" fill="#475569">transactionid 成对 → 交叉更新</text>
+  <text x="722" y="234" text-anchor="middle" font-size="10" fill="#475569">补：先查后写改单语句 CAS</text>
+
+  <rect x="30" y="262" width="255" height="96" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="157" y="286" text-anchor="middle" font-size="12" font-weight="bold" fill="#6D28D9">补偿没生效</text>
+  <text x="157" y="308" text-anchor="middle" font-size="10" fill="#475569">查：compensation_task 状态分布</text>
+  <text x="157" y="328" text-anchor="middle" font-size="10" fill="#475569">PENDING 不涨 → 调度器没跑</text>
+  <text x="157" y="346" text-anchor="middle" font-size="10" fill="#475569">DONE 但没变 → 读的是最新状态</text>
+
+  <rect x="312" y="262" width="255" height="96" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="440" y="286" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">重试拿到空响应</text>
+  <text x="440" y="308" text-anchor="middle" font-size="10" fill="#475569">查：response_body 长度</text>
+  <text x="440" y="328" text-anchor="middle" font-size="10" fill="#475569">有 completed 行但 body 空 → 漏存</text>
+  <text x="440" y="346" text-anchor="middle" font-size="10" fill="#475569">无行 → 窗口小于客户端重试周期</text>
+
+  <rect x="594" y="262" width="256" height="96" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.5"/>
+  <text x="722" y="286" text-anchor="middle" font-size="12" font-weight="bold" fill="#0E7490">重放后数据更乱</text>
+  <text x="722" y="308" text-anchor="middle" font-size="10" fill="#475569">查：event 是否有唯一 seq 且被使用</text>
+  <text x="722" y="328" text-anchor="middle" font-size="10" fill="#475569">同 seq 应用两次 → 幂等表缺失</text>
+  <text x="722" y="346" text-anchor="middle" font-size="10" fill="#475569">补：关掉副作用与事件发布</text>
+
+  <!-- 定论 -->
+  <rect x="30" y="386" width="820" height="108" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="50" y="412" font-size="13" font-weight="bold" fill="#1E293B">三条定论（无论哪类症状都成立）</text>
+  <text x="50" y="438" font-size="11" fill="#475569">① 幂等与状态机的缺陷一定在数据里留痕：重复行、跳格状态、缺口 seq——SQL 比日志更可信</text>
+  <text x="50" y="460" font-size="11" fill="#475569">② 「本地没复现」不是结论：单机窗口是微秒级，必须用栅栏或延迟注入把窗口拉到可见</text>
+  <text x="50" y="482" font-size="11" fill="#475569">③ 修完必须留一条可复跑的故障造法，否则同一个坑会在下一次发布窗口再出现</text>
+</svg>

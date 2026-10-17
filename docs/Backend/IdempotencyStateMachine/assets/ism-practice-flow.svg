@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <rect width="880" height="560" fill="#FFFFFF"/>
+  <text x="440" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">实战链路：一次支付回调穿过五道闸门</text>
+  <text x="440" y="60" text-anchor="middle" font-size="12" fill="#64748B">同一笔回调连发 3 次，五个读数必须仍然全部为 1</text>
+
+  <!-- 五道闸门 -->
+  <rect x="30" y="86" width="150" height="82" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="105" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">① 验签 + 落原文</text>
+  <text x="105" y="132" text-anchor="middle" font-size="10" fill="#475569">payment_notify</text>
+  <text x="105" y="150" text-anchor="middle" font-size="10" fill="#475569">(channel, txn_id) 唯一</text>
+
+  <rect x="196" y="86" width="150" height="82" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="271" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803D">② 幂等键</text>
+  <text x="271" y="132" text-anchor="middle" font-size="10" fill="#475569">pay:channel:txn_id</text>
+  <text x="271" y="150" text-anchor="middle" font-size="10" fill="#475569">指纹 + 响应回放</text>
+
+  <rect x="362" y="86" width="150" height="82" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="437" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">③ 状态迁移</text>
+  <text x="437" y="132" text-anchor="middle" font-size="10" fill="#475569">where state='CREATED'</text>
+  <text x="437" y="150" text-anchor="middle" font-size="10" fill="#475569">0 行 → 幂等吸收 200</text>
+
+  <rect x="528" y="86" width="150" height="82" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="603" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#6D28D9">④ 事件 + outbox</text>
+  <text x="603" y="132" text-anchor="middle" font-size="10" fill="#475569">同事务写入</text>
+  <text x="603" y="150" text-anchor="middle" font-size="10" fill="#475569">dedup_key 去重</text>
+
+  <rect x="694" y="86" width="156" height="82" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="2"/>
+  <text x="772" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#0E7490">⑤ 日终对账</text>
+  <text x="772" y="132" text-anchor="middle" font-size="10" fill="#475569">订单 vs 渠道账单</text>
+  <text x="772" y="150" text-anchor="middle" font-size="10" fill="#475569">差异只挂账</text>
+
+  <line x1="180" y1="127" x2="194" y2="127" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="346" y1="127" x2="360" y2="127" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="512" y1="127" x2="526" y2="127" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="678" y1="127" x2="692" y2="127" stroke="#94A3B8" stroke-width="2"/>
+
+  <!-- 六张表 -->
+  <rect x="30" y="192" width="820" height="150" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="50" y="218" font-size="13" font-weight="bold" fill="#1E293B">六张表各管一件事，没有一张同时承担两个职责</text>
+
+  <rect x="50" y="230" width="250" height="42" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="64" y="248" font-size="11" font-weight="bold" fill="#1E293B">payment_notify</text>
+  <text x="64" y="264" font-size="10" fill="#475569">回调原文：先落库再处理</text>
+
+  <rect x="316" y="230" width="250" height="42" rx="6" fill="#FFFFFF" stroke="#86EFAC"/>
+  <text x="330" y="248" font-size="11" font-weight="bold" fill="#1E293B">idempotency_key</text>
+  <text x="330" y="264" font-size="10" fill="#475569">请求级去重 + 响应回放</text>
+
+  <rect x="582" y="230" width="250" height="42" rx="6" fill="#FFFFFF" stroke="#FDE047"/>
+  <text x="596" y="248" font-size="11" font-weight="bold" fill="#1E293B">orders</text>
+  <text x="596" y="264" font-size="10" fill="#475569">当前状态 + version</text>
+
+  <rect x="50" y="284" width="250" height="42" rx="6" fill="#FFFFFF" stroke="#C4B5FD"/>
+  <text x="64" y="302" font-size="11" font-weight="bold" fill="#1E293B">order_event</text>
+  <text x="64" y="318" font-size="10" fill="#475569">事实来源：追溯与重放</text>
+
+  <rect x="316" y="284" width="250" height="42" rx="6" fill="#FFFFFF" stroke="#FDBA74"/>
+  <text x="330" y="302" font-size="11" font-weight="bold" fill="#1E293B">outbox</text>
+  <text x="330" y="318" font-size="10" fill="#475569">副作用：与迁移同事务</text>
+
+  <rect x="582" y="284" width="250" height="42" rx="6" fill="#FFFFFF" stroke="#FCA5A5"/>
+  <text x="596" y="302" font-size="11" font-weight="bold" fill="#1E293B">recon_diff</text>
+  <text x="596" y="318" font-size="10" fill="#475569">差异：只挂账不改账</text>
+
+  <!-- 读数 -->
+  <rect x="30" y="362" width="820" height="96" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="50" y="388" font-size="13" font-weight="bold" fill="#15803D">连发 3 次之后的期望读数（任何一个变大都是某条判据失守）</text>
+  <text x="50" y="414" font-size="11" fill="#334155">notify_rows = 1　｜　order_state = PAID　｜　order_version = 1</text>
+  <text x="50" y="436" font-size="11" fill="#334155">event_rows = 1　｜　outbox_rows = 1　｜　recon_diff = 0（当日无差异）</text>
+
+  <!-- 故障 -->
+  <rect x="30" y="474" width="820" height="66" rx="10" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="50" y="498" font-size="12" font-weight="bold" fill="#B91C1C">五类必须手工制造的故障</text>
+  <text x="50" y="520" font-size="11" fill="#475569">回调重复 · 回调乱序 · 提交后崩溃 · 下游失败 · 渠道多记一笔——每类一条固定造法与读数</text>
+</svg>

@@ -636,7 +636,7 @@ public class RabbitConfiguration {
 ```yml
 spring:
   rabbitmq:
-	...
+    # ... 其余连接配置省略
     publisher-confirm-type: correlated
     # publisher-confirms: true  # 已经被废弃
 ```
@@ -751,7 +751,7 @@ public class MyCallBack implements RabbitTemplate.ConfirmCallback,RabbitTemplate
 ```yml
 spring:
   rabbitmq:
-    ...
+    # ... 其余连接配置省略
     listener:
       simple:
         acknowledge-mode: manual

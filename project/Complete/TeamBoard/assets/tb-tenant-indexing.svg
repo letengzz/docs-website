@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="34" text-anchor="middle" font-size="19" font-weight="bold" fill="#1E293B">一条查询的两次判定：上下文对不对，索引走不走</text>
+  <text x="450" y="56" text-anchor="middle" font-size="12" fill="#64748B">左：SET LOCAL 必须在事务内　｜　右：tenant_id 必须是索引第一列</text>
+
+  <!-- 左：上下文四层 -->
+  <rect x="28" y="76" width="420" height="270" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="238" y="102" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">上下文传播：四层，断一层就串</text>
+
+  <rect x="48" y="116" width="180" height="40" rx="7" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="138" y="141" text-anchor="middle" font-size="11" font-weight="bold" fill="#1E293B">① JWT 的 tid 声明</text>
+  <rect x="248" y="116" width="180" height="40" rx="7" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="338" y="141" text-anchor="middle" font-size="11" font-weight="bold" fill="#1E293B">② TenantContext</text>
+
+  <rect x="48" y="172" width="180" height="40" rx="7" fill="#DCFCE7" stroke="#22C55E" stroke-width="2"/>
+  <text x="138" y="197" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">③ SET LOCAL（事务内）</text>
+  <rect x="248" y="172" width="180" height="40" rx="7" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="338" y="197" text-anchor="middle" font-size="11" font-weight="bold" fill="#1E293B">④ 广播主题前缀</text>
+
+  <text x="238" y="238" text-anchor="middle" font-size="11" fill="#B91C1C">autocommit 下 ③ 立刻失效：查询返回 0 行，而且不报错</text>
+
+  <rect x="48" y="252" width="380" height="76" rx="7" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="62" y="272" font-size="11" font-weight="bold" fill="#B91C1C">三种写法的结果</text>
+  <text x="62" y="292" font-size="10" fill="#475569">set_config(..., true) + 显式事务　→ 生效，回滚自动撤销</text>
+  <text x="62" y="308" font-size="10" fill="#475569">set_config(..., false) / SET 会话级　→ 连接复用后串租户</text>
+  <text x="62" y="324" font-size="10" fill="#475569">autocommit + is_local　　　　　→ 静默失效，0 行</text>
+
+  <!-- 右：索引前后 -->
+  <rect x="470" y="76" width="402" height="270" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="671" y="102" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">索引前后：只看三样读数</text>
+
+  <rect x="490" y="114" width="362" height="58" rx="7" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="504" y="134" font-size="11" font-weight="bold" fill="#B91C1C">之前：Seq Scan</text>
+  <text x="504" y="152" font-size="10" fill="#475569">Rows Removed by Filter: 973342</text>
+  <text x="504" y="167" font-size="10" fill="#475569">Buffers: read=1841　actual time=95.4 ms</text>
+
+  <rect x="490" y="180" width="362" height="58" rx="7" fill="#DCFCE7" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="504" y="200" font-size="11" font-weight="bold" fill="#166534">之后：Index Scan</text>
+  <text x="504" y="218" font-size="10" fill="#475569">Index Cond: tenant_id = 42 AND board_id = 7</text>
+  <text x="504" y="233" font-size="10" fill="#475569">Buffers: hit=41　actual time=0.41 ms</text>
+
+  <text x="671" y="258" text-anchor="middle" font-size="11" fill="#475569">判据：访问方式 + rows 偏差 + Buffers</text>
+  <text x="671" y="278" text-anchor="middle" font-size="11" fill="#B91C1C">不看 cost（高选择性列上必然估错）</text>
+  <text x="671" y="300" text-anchor="middle" font-size="10" fill="#64748B">索引：card(tenant_id, board_id, list_id, position)</text>
+  <text x="671" y="320" text-anchor="middle" font-size="10" fill="#64748B">等值列在前、排序列在后，否则多一次 Sort</text>
+
+  <!-- 底部：验收 -->
+  <rect x="28" y="362" width="844" height="130" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="46" y="386" font-size="13" font-weight="bold" fill="#1E293B">20 连接 / 200 并发不串租户：三条读数同时成立才算通过</text>
+
+  <rect x="46" y="398" width="262" height="76" rx="7" fill="#FFFFFF" stroke="#BFDBFE"/>
+  <text x="60" y="418" font-size="11" font-weight="bold" fill="#1D4ED8">① 每行都能自证归属</text>
+  <text x="60" y="438" font-size="10" fill="#475569">响应里每一行的 tenantId</text>
+  <text x="60" y="454" font-size="10" fill="#475569">必须等于请求者的租户</text>
+  <text x="60" y="468" font-size="10" fill="#64748B">k6 checks 通过率 100%</text>
+
+  <rect x="320" y="398" width="262" height="76" rx="7" fill="#FFFFFF" stroke="#BBF7D0"/>
+  <text x="334" y="418" font-size="11" font-weight="bold" fill="#15803D">② 连接数不超过池上限</text>
+  <text x="334" y="438" font-size="10" fill="#475569">pg_stat_activity 采样</text>
+  <text x="334" y="454" font-size="10" fill="#475569">active + idle ≤ 20</text>
+  <text x="334" y="468" font-size="10" fill="#64748B">超出说明有旁路直连</text>
+
+  <rect x="594" y="398" width="260" height="76" rx="7" fill="#FFFFFF" stroke="#FDE047"/>
+  <text x="608" y="418" font-size="11" font-weight="bold" fill="#854D0E">③ 日志零不匹配</text>
+  <text x="608" y="438" font-size="10" fill="#475569">响应前比对上下文租户</text>
+  <text x="608" y="454" font-size="10" fill="#475569">与首行租户，不一致即 ERROR</text>
+  <text x="608" y="468" font-size="10" fill="#64748B">这条是串租户的兜底网</text>
+</svg>

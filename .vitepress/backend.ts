@@ -633,3 +633,21 @@ export const RealtimeCollaboration = [
     ],
   },
 ];
+
+export const IdempotencyStateMachine = [
+  {
+    text: "幂等与状态机工程",
+    link: "/docs/Backend/IdempotencyStateMachine/index.md",
+    items: [
+      { text: "概述：两条铁律与五种失败模式", link: "/docs/Backend/IdempotencyStateMachine/Overview/index.md" },
+      { text: "幂等键设计：让同一个请求只发生一次", link: "/docs/Backend/IdempotencyStateMachine/IdempotencyKey/index.md" },
+      { text: "状态机建模：状态只能沿合法的边迁移", link: "/docs/Backend/IdempotencyStateMachine/StateMachine/index.md" },
+      { text: "并发护栏：乐观锁、条件更新与 fencing", link: "/docs/Backend/IdempotencyStateMachine/ConcurrencyGuard/index.md" },
+      { text: "补偿与对账：回不去的时候往前修", link: "/docs/Backend/IdempotencyStateMachine/Compensation/index.md" },
+      { text: "重放：把历史事件再跑一遍", link: "/docs/Backend/IdempotencyStateMachine/Replay/index.md" },
+      { text: "怎么测：属性测试与模型测试", link: "/docs/Backend/IdempotencyStateMachine/Testing/index.md" },
+      { text: "实战：支付回调到日终对账", link: "/docs/Backend/IdempotencyStateMachine/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/IdempotencyStateMachine/FAQ/index.md" },
+    ],
+  },
+];

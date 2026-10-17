@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540">
+  <rect width="880" height="540" fill="#FFFFFF"/>
+  <text x="440" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">重放：三种场景，四个安全前提</text>
+  <text x="440" y="60" text-anchor="middle" font-size="12" fill="#64748B">重放是「读侧重算」的工具，不是「写侧纠错」的工具</text>
+
+  <!-- 三种场景 -->
+  <rect x="30" y="80" width="255" height="150" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="157" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">消息重放</text>
+  <text x="157" y="132" text-anchor="middle" font-size="11" fill="#475569">重置 offset 或按时间回溯</text>
+  <text x="157" y="152" text-anchor="middle" font-size="11" fill="#475569">用于消费逻辑修复后补算</text>
+  <text x="157" y="180" text-anchor="middle" font-size="10" fill="#B91C1C">风险：副作用重复执行</text>
+  <text x="157" y="202" text-anchor="middle" font-size="10" fill="#64748B">典型）Kafka 消费组位移重置</text>
+
+  <rect x="312" y="80" width="255" height="150" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="440" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">事件重放</text>
+  <text x="440" y="132" text-anchor="middle" font-size="11" fill="#475569">按 seq 全量或区间重算</text>
+  <text x="440" y="152" text-anchor="middle" font-size="11" fill="#475569">用于重建读模型与聚合</text>
+  <text x="440" y="180" text-anchor="middle" font-size="10" fill="#B91C1C">风险：与线上写交叉，状态倒流</text>
+  <text x="440" y="202" text-anchor="middle" font-size="10" fill="#64748B">典型）投影表重算</text>
+
+  <rect x="594" y="80" width="256" height="150" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="722" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">数据修复重放</text>
+  <text x="722" y="132" text-anchor="middle" font-size="11" fill="#475569">导入离线记录或对账文件</text>
+  <text x="722" y="152" text-anchor="middle" font-size="11" fill="#475569">用于补录漏单、修正金额</text>
+  <text x="722" y="180" text-anchor="middle" font-size="10" fill="#B91C1C">风险：覆盖线上已更新的数据</text>
+  <text x="722" y="202" text-anchor="middle" font-size="10" fill="#64748B">典型）补单与差异修复</text>
+
+  <!-- 四个前提 -->
+  <rect x="30" y="252" width="820" height="180" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="50" y="278" font-size="13" font-weight="bold" fill="#1E293B">四个安全前提（缺一个就不要开工）</text>
+
+  <rect x="50" y="292" width="185" height="120" rx="8" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+  <text x="142" y="314" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">① 幂等</text>
+  <text x="142" y="336" text-anchor="middle" font-size="10" fill="#475569">事件级 event_id 唯一</text>
+  <text x="142" y="354" text-anchor="middle" font-size="10" fill="#475569">同一区间跑两次</text>
+  <text x="142" y="372" text-anchor="middle" font-size="10" fill="#475569">结果必须一致</text>
+  <text x="142" y="396" text-anchor="middle" font-size="10" fill="#B91C1C">缺：库存扣两次</text>
+
+  <rect x="253" y="292" width="185" height="120" rx="8" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.5"/>
+  <text x="345" y="314" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803D">② 顺序</text>
+  <text x="345" y="336" text-anchor="middle" font-size="10" fill="#475569">单调 seq，按 seq 排序</text>
+  <text x="345" y="354" text-anchor="middle" font-size="10" fill="#475569">不用时间戳裁决</text>
+  <text x="345" y="372" text-anchor="middle" font-size="10" fill="#475569">同一毫秒也不歧义</text>
+  <text x="345" y="396" text-anchor="middle" font-size="10" fill="#B91C1C">缺：状态倒流</text>
+
+  <rect x="456" y="292" width="185" height="120" rx="8" fill="#FFFFFF" stroke="#FDE047" stroke-width="1.5"/>
+  <text x="548" y="314" text-anchor="middle" font-size="12" font-weight="bold" fill="#854D0E">③ 隔离</text>
+  <text x="548" y="336" text-anchor="middle" font-size="10" fill="#475569">影子表 / 独立消费组</text>
+  <text x="548" y="354" text-anchor="middle" font-size="10" fill="#475569">或短暂停写窗口</text>
+  <text x="548" y="372" text-anchor="middle" font-size="10" fill="#475569">不碰线上正在被读的表</text>
+  <text x="548" y="396" text-anchor="middle" font-size="10" fill="#B91C1C">缺：覆盖用户刚改的数据</text>
+
+  <rect x="659" y="292" width="175" height="120" rx="8" fill="#FFFFFF" stroke="#C4B5FD" stroke-width="1.5"/>
+  <text x="746" y="314" text-anchor="middle" font-size="12" font-weight="bold" fill="#6D28D9">④ 可停止</text>
+  <text x="746" y="336" text-anchor="middle" font-size="10" fill="#475569">开工时快照结束水位</text>
+  <text x="746" y="354" text-anchor="middle" font-size="10" fill="#475569">分批提交 + 断点续跑</text>
+  <text x="746" y="372" text-anchor="middle" font-size="10" fill="#475569">进度打日志与指标</text>
+  <text x="746" y="396" text-anchor="middle" font-size="10" fill="#B91C1C">缺：边跑边追，永不结束</text>
+
+  <!-- 底部 -->
+  <rect x="30" y="450" width="820" height="66" rx="10" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="50" y="474" font-size="12" font-weight="bold" fill="#B91C1C">重放期间必须关掉的三件事</text>
+  <text x="50" y="496" font-size="11" fill="#475569">外部副作用（短信、webhook）· 领域事件发布（会形成回环）· 代码变更（前后两段规则不同，结果既不是旧也不是新）</text>
+</svg>

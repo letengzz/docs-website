@@ -234,9 +234,9 @@ package-manager-strict=false
 
 在 `eslint.config.ts`中关闭该规则：
 
-```json [eslint.config.ts]
+```typescript [eslint.config.ts]
 export default defineConfigWithVueTs(
-  ...
+  // ... 其余配置省略
 
   {
     rules: {

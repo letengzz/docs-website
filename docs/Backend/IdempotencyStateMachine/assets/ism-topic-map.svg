@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600">
+  <rect width="880" height="600" fill="#FFFFFF"/>
+  <text x="440" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#1E293B">幂等与状态机工程：两把锁，一条写路径</text>
+  <text x="440" y="66" text-anchor="middle" font-size="13" fill="#64748B">锁住次数（幂等） → 锁住方向（状态机） → 挡住并发 → 处理失败 → 运维重放</text>
+
+  <rect x="40" y="92" width="250" height="92" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="165" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#1D4ED8">概述</text>
+  <text x="165" y="144" text-anchor="middle" font-size="12" fill="#334155">两条铁律与五种失败模式</text>
+  <text x="165" y="164" text-anchor="middle" font-size="12" fill="#334155">什么场景不该做幂等</text>
+
+  <rect x="315" y="92" width="250" height="92" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="440" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803D">幂等键设计</text>
+  <text x="440" y="144" text-anchor="middle" font-size="12" fill="#334155">键的来源、指纹与响应回放</text>
+  <text x="440" y="164" text-anchor="middle" font-size="12" fill="#334155">in-flight 的 409 与接管</text>
+
+  <rect x="590" y="92" width="250" height="92" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="715" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">状态机建模</text>
+  <text x="715" y="144" text-anchor="middle" font-size="12" fill="#334155">五元组与迁移表落库</text>
+  <text x="715" y="164" text-anchor="middle" font-size="12" fill="#334155">非法迁移的响应契约</text>
+
+  <rect x="40" y="206" width="250" height="92" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="165" y="234" text-anchor="middle" font-size="15" font-weight="bold" fill="#6D28D9">并发护栏</text>
+  <text x="165" y="258" text-anchor="middle" font-size="12" fill="#334155">乐观锁、条件更新、fencing</text>
+  <text x="165" y="278" text-anchor="middle" font-size="12" fill="#334155">丢失更新与乱序</text>
+
+  <rect x="315" y="206" width="250" height="92" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="440" y="234" text-anchor="middle" font-size="15" font-weight="bold" fill="#BE185D">补偿与对账</text>
+  <text x="440" y="258" text-anchor="middle" font-size="12" fill="#334155">回不去就往前修</text>
+  <text x="440" y="278" text-anchor="middle" font-size="12" fill="#334155">差异只挂账不自动改</text>
+
+  <rect x="590" y="206" width="250" height="92" rx="10" fill="#ECFEFF" stroke="#0891B2" stroke-width="2"/>
+  <text x="715" y="234" text-anchor="middle" font-size="15" font-weight="bold" fill="#0E7490">重放</text>
+  <text x="715" y="258" text-anchor="middle" font-size="12" fill="#334155">消息、事件、数据修复</text>
+  <text x="715" y="278" text-anchor="middle" font-size="12" fill="#334155">水位线与可停止</text>
+
+  <rect x="40" y="320" width="250" height="92" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="2"/>
+  <text x="165" y="348" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">怎么测</text>
+  <text x="165" y="372" text-anchor="middle" font-size="12" fill="#334155">属性测试与模型测试</text>
+  <text x="165" y="392" text-anchor="middle" font-size="12" fill="#334155">栅栏、延迟注入、故障注入</text>
+
+  <rect x="315" y="320" width="250" height="92" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="440" y="348" text-anchor="middle" font-size="15" font-weight="bold" fill="#B91C1C">实战</text>
+  <text x="440" y="372" text-anchor="middle" font-size="12" fill="#334155">回调到日终对账十步</text>
+  <text x="440" y="392" text-anchor="middle" font-size="12" fill="#334155">五类必须造的故障</text>
+
+  <rect x="590" y="320" width="250" height="92" rx="10" fill="#F0FDFA" stroke="#14B8A6" stroke-width="2"/>
+  <text x="715" y="348" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F766E">常见问题</text>
+  <text x="715" y="372" text-anchor="middle" font-size="12" fill="#334155">六类症状分诊</text>
+  <text x="715" y="392" text-anchor="middle" font-size="12" fill="#334155">十二问与十二条实践</text>
+
+  <rect x="40" y="440" width="800" height="120" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="60" y="466" font-size="13" font-weight="bold" fill="#1E293B">读法建议</text>
+  <text x="60" y="492" font-size="12" fill="#334155">① 只想快速上手：概述 → 幂等键设计 → 状态机建模 → 实战</text>
+  <text x="60" y="514" font-size="12" fill="#334155">② 正在排障：常见问题（分诊表）→ 对应原理页 → 回到库里的读数</text>
+  <text x="60" y="536" font-size="12" fill="#334155">③ 要写规范：十二条最佳实践 + 每页的判据定义表（共 71 条）</text>
+
+  <text x="440" y="584" text-anchor="middle" font-size="11" fill="#94A3B8">判据族：ID / IK / STM / CGR / CMP / RPL / MDT / ISP / IFQ，共 71 条编号约定</text>
+</svg>

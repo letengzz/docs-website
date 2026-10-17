@@ -281,7 +281,7 @@ public class UserMapperTest {
    <mapper namescape="com.hjc.demo.mapper.WebsiteMapper">
        <!-- cache配置 -->
        <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true" />
-       ...
+       <!-- ... 其余映射语句省略 -->
    </mapper>
    ```
 

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540">
+  <rect width="880" height="540" fill="#FFFFFF"/>
+  <text x="440" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">两条铁律：一条管次数，一条管方向</text>
+  <text x="440" y="62" text-anchor="middle" font-size="12" fill="#64748B">五种失败里，重试与重放归「次数」，并发与乱序归「方向」，半成功归「补偿与对账」</text>
+
+  <!-- 左：次数 -->
+  <rect x="30" y="82" width="400" height="300" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="230" y="112" text-anchor="middle" font-size="16" font-weight="bold" fill="#1D4ED8">铁律一 · 次数（幂等）</text>
+  <text x="230" y="134" text-anchor="middle" font-size="12" fill="#475569">同一意图执行 N 次，效果等于 1 次</text>
+
+  <rect x="55" y="150" width="350" height="60" rx="8" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+  <text x="70" y="172" font-size="13" font-weight="bold" fill="#1E293B">请求级</text>
+  <text x="70" y="194" font-size="12" fill="#475569">靠 Idempotency-Key，挡住网络重试</text>
+
+  <rect x="55" y="222" width="350" height="60" rx="8" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+  <text x="70" y="244" font-size="13" font-weight="bold" fill="#1E293B">业务级</text>
+  <text x="70" y="266" font-size="12" fill="#475569">靠业务唯一键，挡住「用户点两次」</text>
+
+  <rect x="55" y="294" width="350" height="60" rx="8" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+  <text x="70" y="316" font-size="13" font-weight="bold" fill="#1E293B">效果级</text>
+  <text x="70" y="338" font-size="12" fill="#475569">靠状态判定，挡住「不同请求同一意图」</text>
+
+  <text x="230" y="372" text-anchor="middle" font-size="11" fill="#64748B">三道防线由外到内，缺一层就多一类重复</text>
+
+  <!-- 右：方向 -->
+  <rect x="450" y="82" width="400" height="300" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <text x="650" y="112" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803D">铁律二 · 方向（状态机）</text>
+  <text x="650" y="134" text-anchor="middle" font-size="12" fill="#475569">状态只能沿合法的边前进</text>
+
+  <rect x="480" y="152" width="100" height="42" rx="8" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.5"/>
+  <text x="530" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">CREATED</text>
+
+  <rect x="600" y="152" width="90" height="42" rx="8" fill="#DCFCE7" stroke="#22C55E" stroke-width="2"/>
+  <text x="645" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">PAID</text>
+
+  <rect x="710" y="152" width="110" height="42" rx="8" fill="#DCFCE7" stroke="#22C55E" stroke-width="2"/>
+  <text x="765" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">SHIPPED</text>
+
+  <line x1="580" y1="173" x2="598" y2="173" stroke="#22C55E" stroke-width="2"/>
+  <line x1="690" y1="173" x2="708" y2="173" stroke="#22C55E" stroke-width="2"/>
+  <text x="589" y="145" text-anchor="middle" font-size="10" fill="#15803D">pay</text>
+  <text x="699" y="145" text-anchor="middle" font-size="10" fill="#15803D">ship</text>
+
+  <rect x="480" y="228" width="120" height="42" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="540" y="254" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">CANCELLED</text>
+
+  <path d="M 690 200 C 690 232 640 238 606 240" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="664" y="228" text-anchor="middle" font-size="11" fill="#B91C1C">ship 被拒</text>
+  <text x="540" y="292" text-anchor="middle" font-size="11" fill="#64748B">非法边：条件更新影响 0 行 → 409</text>
+
+  <rect x="480" y="310" width="340" height="54" rx="8" fill="#FFFFFF" stroke="#BBF7D0" stroke-width="1.5"/>
+  <text x="496" y="332" font-size="12" font-weight="bold" fill="#1E293B">update ... where id=? and state=?</text>
+  <text x="496" y="352" font-size="11" fill="#475569">影响 0 行 = 非法迁移，不是「没找到」</text>
+
+  <!-- 底部：五种失败 -->
+  <rect x="30" y="400" width="820" height="112" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="50" y="426" font-size="13" font-weight="bold" fill="#1E293B">五种失败模式与归属</text>
+
+  <rect x="50" y="438" width="148" height="56" rx="8" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="124" y="460" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">重试</text>
+  <text x="124" y="480" text-anchor="middle" font-size="11" fill="#475569">幂等（请求级）</text>
+
+  <rect x="212" y="438" width="148" height="56" rx="8" fill="#FFF7ED" stroke="#FDBA74" stroke-width="1.5"/>
+  <text x="286" y="460" text-anchor="middle" font-size="12" font-weight="bold" fill="#9A3412">并发</text>
+  <text x="286" y="480" text-anchor="middle" font-size="11" fill="#475569">状态机 + 版本号</text>
+
+  <rect x="374" y="438" width="148" height="56" rx="8" fill="#FEFCE8" stroke="#FDE047" stroke-width="1.5"/>
+  <text x="448" y="460" text-anchor="middle" font-size="12" font-weight="bold" fill="#854D0E">乱序</text>
+  <text x="448" y="480" text-anchor="middle" font-size="11" fill="#475569">合法边 + 单调 seq</text>
+
+  <rect x="536" y="438" width="148" height="56" rx="8" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+  <text x="610" y="460" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">重放</text>
+  <text x="610" y="480" text-anchor="middle" font-size="11" fill="#475569">幂等（业务级）</text>
+
+  <rect x="698" y="438" width="132" height="56" rx="8" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1.5"/>
+  <text x="764" y="460" text-anchor="middle" font-size="12" font-weight="bold" fill="#6D28D9">半成功</text>
+  <text x="764" y="480" text-anchor="middle" font-size="11" fill="#475569">补偿 + 对账</text>
+</svg>
