@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <title>事务、步骤与撤销栈：可逆性从哪来</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">撤销的粒度是事务：合并规则决定手感</text>
+
+  <!-- 三层 -->
+  <rect x="40" y="58" width="250" height="150" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="62" y="84" font-size="14" font-weight="bold" fill="#1D4ED8">命令 Command</text>
+  <text x="62" y="108" font-size="11" fill="#334155">语义动作：加粗、插入图片</text>
+  <text x="62" y="128" font-size="11" fill="#334155">返回 boolean 驱动按钮状态</text>
+  <text x="62" y="152" font-size="11" fill="#64748B">来源：工具栏 / 快捷键 / 菜单</text>
+
+  <rect x="310" y="58" width="250" height="150" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="332" y="84" font-size="14" font-weight="bold" fill="#C2410C">事务 Transaction</text>
+  <text x="332" y="108" font-size="11" fill="#334155">steps + selectionBefore/After</text>
+  <text x="332" y="128" font-size="11" fill="#334155">原子单位，撤销的最小粒度</text>
+  <text x="332" y="152" font-size="11" fill="#7C2D12">meta: source / addToHistory</text>
+
+  <rect x="580" y="58" width="280" height="150" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="602" y="84" font-size="14" font-weight="bold" fill="#047857">步骤 Step</text>
+  <text x="602" y="108" font-size="11" fill="#334155">最小变更：插入 / 删除 / 改标记</text>
+  <text x="602" y="128" font-size="11" fill="#334155">自带 invert(doc)</text>
+  <text x="602" y="152" font-size="11" fill="#065F46">逆操作依赖「应用前」的文档</text>
+
+  <!-- 合并示意 -->
+  <text x="40" y="248" font-size="14" font-weight="bold" fill="#1E293B">合并：四个事务 → 一次撤销</text>
+
+  <line x1="60" y1="300" x2="860" y2="300" stroke="#CBD5E1" stroke-width="2"/>
+  <circle cx="120" cy="300" r="6" fill="#F97316"/>
+  <circle cx="220" cy="300" r="6" fill="#F97316"/>
+  <circle cx="300" cy="300" r="6" fill="#F97316"/>
+  <circle cx="560" cy="300" r="6" fill="#EF4444"/>
+  <text x="120" y="326" text-anchor="middle" font-size="11" fill="#7C2D12">t+0ms</text>
+  <text x="220" y="326" text-anchor="middle" font-size="11" fill="#7C2D12">t+180ms</text>
+  <text x="300" y="326" text-anchor="middle" font-size="11" fill="#7C2D12">t+420ms</text>
+  <text x="560" y="326" text-anchor="middle" font-size="11" fill="#7F1D1D">t+900ms（点别处后）</text>
+
+  <rect x="90" y="270" width="240" height="18" rx="9" fill="#FFEDD5" stroke="#FDBA74"/>
+  <text x="210" y="284" text-anchor="middle" font-size="11" fill="#9A3412">插入文本 · 位置相邻 · 间隔 &lt; 500ms ⇒ 合成一步</text>
+
+  <rect x="380" y="270" width="150" height="18" rx="9" fill="#FEE2E2" stroke="#FCA5A5"/>
+  <text x="455" y="284" text-anchor="middle" font-size="11" fill="#991B1B">光标跳走 ⇒ 断开</text>
+
+  <rect x="560" y="270" width="120" height="18" rx="9" fill="#DBEAFE" stroke="#93C5FD"/>
+  <text x="620" y="284" text-anchor="middle" font-size="11" fill="#1E40AF">新事务</text>
+
+  <!-- 规则表 -->
+  <rect x="40" y="352" width="400" height="146" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="62" y="378" font-size="13" font-weight="bold" fill="#1E293B">四条合并规则（按优先级）</text>
+  <text x="62" y="402" font-size="12" fill="#475569">① 时间窗 &lt; 500ms（输入法放宽到 1500ms）</text>
+  <text x="62" y="424" font-size="12" fill="#475569">② 类型一致：插入不与删除合并</text>
+  <text x="62" y="446" font-size="12" fill="#475569">③ 位置相邻：新起点 = 上一步终点</text>
+  <text x="62" y="468" font-size="12" fill="#475569">④ 选区未跳转：中间点了别处就断开</text>
+  <text x="62" y="488" font-size="11" fill="#64748B">任一条不满足 → 新开一个撤销单元</text>
+
+  <rect x="460" y="352" width="400" height="146" rx="10" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="482" y="378" font-size="13" font-weight="bold" fill="#B91C1C">三处必须拦住</text>
+  <text x="482" y="402" font-size="12" fill="#7F1D1D">historyUndo / historyRedo（浏览器原生）</text>
+  <text x="482" y="424" font-size="12" fill="#7F1D1D">insertFromDrop（拖拽绕过 paste）</text>
+  <text x="482" y="446" font-size="12" fill="#7F1D1D">程序化装载（进页面就能撤到空白）</text>
+  <text x="482" y="472" font-size="11" fill="#991B1B">不拦的后果：DOM 回退了但模型没退，视图与模型分叉</text>
+</svg>

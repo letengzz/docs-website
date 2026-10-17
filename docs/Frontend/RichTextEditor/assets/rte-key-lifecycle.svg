@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <title>一次按键穿过模型与视图：从 beforeinput 到选区恢复</title>
+  <rect width="900" height="560" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">一次按键的生命周期：浏览器在左，你在右</text>
+
+  <!-- 轴 -->
+  <line x1="70" y1="512" x2="850" y2="512" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="70" y="536" font-size="12" fill="#64748B">t = 0</text>
+  <text x="820" y="536" font-size="12" fill="#64748B">t + 1 帧</text>
+
+  <!-- 浏览器泳道 -->
+  <rect x="40" y="58" width="820" height="26" rx="6" fill="#EFF6FF" stroke="#93C5FD"/>
+  <text x="56" y="76" font-size="13" font-weight="bold" fill="#1D4ED8">浏览器</text>
+
+  <rect x="40" y="300" width="820" height="26" rx="6" fill="#FFF7ED" stroke="#FDBA74"/>
+  <text x="56" y="318" font-size="13" font-weight="bold" fill="#C2410C">你的代码</text>
+
+  <!-- 事件块：浏览器 -->
+  <rect x="120" y="98" width="120" height="60" rx="8" fill="#DBEAFE" stroke="#3B82F6"/>
+  <text x="180" y="122" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E40AF">keydown</text>
+  <text x="180" y="142" text-anchor="middle" font-size="11" fill="#1E3A8A">key = 'a'</text>
+
+  <rect x="270" y="98" width="150" height="60" rx="8" fill="#DBEAFE" stroke="#3B82F6"/>
+  <text x="345" y="122" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E40AF">beforeinput</text>
+  <text x="345" y="142" text-anchor="middle" font-size="11" fill="#1E3A8A">insertText / 可取消</text>
+
+  <rect x="450" y="98" width="130" height="60" rx="8" fill="#DBEAFE" stroke="#3B82F6"/>
+  <text x="515" y="122" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E40AF">改 DOM</text>
+  <text x="515" y="142" text-anchor="middle" font-size="11" fill="#1E3A8A">插入文本节点</text>
+
+  <rect x="610" y="98" width="120" height="60" rx="8" fill="#DBEAFE" stroke="#3B82F6"/>
+  <text x="670" y="122" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E40AF">input</text>
+  <text x="670" y="142" text-anchor="middle" font-size="11" fill="#1E3A8A">DOM 已变</text>
+
+  <rect x="740" y="98" width="110" height="60" rx="8" fill="#E0E7FF" stroke="#6366F1"/>
+  <text x="795" y="118" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338CA">selection</text>
+  <text x="795" y="134" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338CA">change</text>
+  <text x="795" y="150" text-anchor="middle" font-size="10" fill="#3730A3">异步触发</text>
+
+  <!-- 你的代码块 -->
+  <rect x="270" y="340" width="150" height="70" rx="8" fill="#FFEDD5" stroke="#F97316"/>
+  <text x="345" y="364" text-anchor="middle" font-size="13" font-weight="bold" fill="#9A3412">拦截 / 放行</text>
+  <text x="345" y="384" text-anchor="middle" font-size="11" fill="#7C2D12">preventDefault 决定</text>
+  <text x="345" y="400" text-anchor="middle" font-size="11" fill="#7C2D12">是否自己处理</text>
+
+  <rect x="440" y="340" width="150" height="70" rx="8" fill="#FFEDD5" stroke="#F97316"/>
+  <text x="515" y="364" text-anchor="middle" font-size="13" font-weight="bold" fill="#9A3412">生成事务</text>
+  <text x="515" y="384" text-anchor="middle" font-size="11" fill="#7C2D12">steps + selectionAfter</text>
+  <text x="515" y="400" text-anchor="middle" font-size="11" fill="#7C2D12">合并规则在此判断</text>
+
+  <rect x="610" y="340" width="120" height="70" rx="8" fill="#FFEDD5" stroke="#F97316"/>
+  <text x="670" y="364" text-anchor="middle" font-size="13" font-weight="bold" fill="#9A3412">应用</text>
+  <text x="670" y="384" text-anchor="middle" font-size="11" fill="#7C2D12">纯函数</text>
+  <text x="670" y="400" text-anchor="middle" font-size="11" fill="#7C2D12">可断言</text>
+
+  <rect x="750" y="340" width="100" height="70" rx="8" fill="#FFEDD5" stroke="#F97316"/>
+  <text x="800" y="364" text-anchor="middle" font-size="13" font-weight="bold" fill="#9A3412">重绘</text>
+  <text x="800" y="384" text-anchor="middle" font-size="11" fill="#7C2D12">DOM = f(model)</text>
+  <text x="800" y="400" text-anchor="middle" font-size="11" fill="#7C2D12">最小 patch</text>
+
+  <!-- 连线 -->
+  <defs>
+    <marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+    <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#F97316"/>
+    </marker>
+  </defs>
+  <path d="M240 128 L268 128" stroke="#94A3B8" stroke-width="2" marker-end="url(#a1)"/>
+  <path d="M420 128 L448 128" stroke="#94A3B8" stroke-width="2" marker-end="url(#a1)"/>
+  <path d="M580 128 L608 128" stroke="#94A3B8" stroke-width="2" marker-end="url(#a1)"/>
+  <path d="M730 128 L738 128" stroke="#94A3B8" stroke-width="2" marker-end="url(#a1)"/>
+
+  <path d="M345 158 L345 338" stroke="#F97316" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a2)"/>
+  <path d="M515 158 L515 338" stroke="#F97316" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a2)"/>
+  <path d="M660 158 L670 338" stroke="#F97316" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a2)"/>
+  <path d="M795 158 L800 338" stroke="#F97316" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a2)"/>
+
+  <path d="M490 375 L438 375" stroke="#F97316" stroke-width="2" marker-end="url(#a2)"/>
+  <path d="M660 375 L608 375" stroke="#F97316" stroke-width="2" marker-end="url(#a2)"/>
+
+  <!-- 关键提示 -->
+  <rect x="60" y="196" width="330" height="76" rx="8" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="76" y="220" font-size="12" font-weight="bold" fill="#B91C1C">组合期（isComposing）时禁止写模型</text>
+  <text x="76" y="242" font-size="11" fill="#7F1D1D">compositionupdate 高频触发，写进去的就是拼音字母</text>
+  <text x="76" y="262" font-size="11" fill="#7F1D1D">此时 beforeinput 也不能 preventDefault</text>
+
+  <rect x="410" y="196" width="420" height="76" rx="8" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="426" y="220" font-size="12" font-weight="bold" fill="#B91C1C">selectionchange 里不要同步模型</text>
+  <text x="426" y="242" font-size="11" fill="#7F1D1D">它异步触发且高频，在此写模型会形成 DOM→模型→DOM 回环</text>
+  <text x="426" y="262" font-size="11" fill="#7F1D1D">表现为字符重复、光标乱跳</text>
+
+  <rect x="60" y="446" width="770" height="48" rx="8" fill="#F0FDF4" stroke="#86EFAC"/>
+  <text x="76" y="468" font-size="12" font-weight="bold" fill="#166534">唯一正确的一步：请求动画帧里把选区复位到模型位置对应的 DOM 点</text>
+  <text x="76" y="486" font-size="11" fill="#14532D">同步复位拿到旧节点，微任务复位可能还没布局 —— requestAnimationFrame 才稳定</text>
+</svg>

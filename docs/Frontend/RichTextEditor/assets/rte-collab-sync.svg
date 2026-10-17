@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <title>本地事务与远端更新：来源标记如何防止回环</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">origin 标记：把「我写的」和「别人写的」分开</text>
+
+  <!-- 左侧：本地 -->
+  <rect x="40" y="58" width="360" height="200" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="62" y="84" font-size="14" font-weight="bold" fill="#1D4ED8">本地编辑（带 origin = LOCAL）</text>
+
+  <rect x="62" y="98" width="140" height="42" rx="8" fill="#DBEAFE" stroke="#93C5FD"/>
+  <text x="132" y="124" text-anchor="middle" font-size="12" fill="#1E40AF">用户输入 → 事务</text>
+  <rect x="222" y="98" width="156" height="42" rx="8" fill="#DBEAFE" stroke="#93C5FD"/>
+  <text x="300" y="118" text-anchor="middle" font-size="12" fill="#1E40AF">ydoc.transact(fn, LOCAL)</text>
+  <text x="300" y="134" text-anchor="middle" font-size="10" fill="#1E3A8A">写入共享文档</text>
+
+  <rect x="62" y="156" width="316" height="42" rx="8" fill="#ECFDF5" stroke="#6EE7B7"/>
+  <text x="220" y="176" text-anchor="middle" font-size="12" fill="#065F46">observer 收到 update，origin === LOCAL</text>
+  <text x="220" y="192" text-anchor="middle" font-size="11" fill="#047857">→ 直接 return（已经渲染过了）</text>
+
+  <text x="62" y="226" font-size="11" fill="#1E40AF">回环被切断在读模型之前</text>
+  <text x="62" y="246" font-size="11" fill="#64748B">比对内容哈希或时间窗都不行：并发下会漏判</text>
+
+  <!-- 右侧：远端 -->
+  <rect x="500" y="58" width="360" height="200" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="522" y="84" font-size="14" font-weight="bold" fill="#6D28D9">远端更新（origin = 空/连接实例）</text>
+
+  <rect x="522" y="98" width="150" height="42" rx="8" fill="#EDE9FE" stroke="#C4B5FD"/>
+  <text x="597" y="124" text-anchor="middle" font-size="12" fill="#5B21B6">WebSocket 收到帧</text>
+  <rect x="692" y="98" width="146" height="42" rx="8" fill="#EDE9FE" stroke="#C4B5FD"/>
+  <text x="765" y="118" text-anchor="middle" font-size="12" fill="#5B21B6">Y.applyUpdate</text>
+  <text x="765" y="134" text-anchor="middle" font-size="10" fill="#4C1D95">不写回共享文档</text>
+
+  <rect x="522" y="156" width="316" height="42" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+  <text x="680" y="176" text-anchor="middle" font-size="12" fill="#92400E">observer 收到 update，origin !== LOCAL</text>
+  <text x="680" y="192" text-anchor="middle" font-size="11" fill="#78350F">→ 回写模型（不产生新事务）</text>
+
+  <text x="522" y="226" font-size="11" fill="#5B21B6">回写必须标 addToHistory: false</text>
+  <text x="522" y="246" font-size="11" fill="#64748B">否则一次协同补拉就产生一堆撤销点</text>
+
+  <!-- 中间箭头 -->
+  <defs>
+    <marker id="c1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <path d="M400 158 L498 158" stroke="#94A3B8" stroke-width="2" marker-end="url(#c1)"/>
+  <text x="449" y="148" text-anchor="middle" font-size="11" fill="#64748B">广播</text>
+
+  <!-- 下方三处对齐 -->
+  <rect x="40" y="286" width="820" height="118" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="62" y="312" font-size="14" font-weight="bold" fill="#1E293B">三处对齐（本页的骨架）</text>
+
+  <rect x="62" y="324" width="250" height="66" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="80" y="346" font-size="12" font-weight="bold" fill="#334155">数据</text>
+  <text x="80" y="366" font-size="11" fill="#475569">模型 ↔ XmlFragment / XmlText</text>
+  <text x="80" y="384" font-size="11" fill="#64748B">用官方绑定，别自己算位置</text>
+
+  <rect x="328" y="324" width="250" height="66" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="346" y="346" font-size="12" font-weight="bold" fill="#334155">光标</text>
+  <text x="346" y="366" font-size="11" fill="#475569">相对位置（relative position）</text>
+  <text x="346" y="384" font-size="11" fill="#64748B">绝对下标在并发后必错</text>
+
+  <rect x="594" y="324" width="250" height="66" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="612" y="346" font-size="12" font-weight="bold" fill="#334155">来源</text>
+  <text x="612" y="366" font-size="11" fill="#475569">transact(fn, origin)</text>
+  <text x="612" y="384" font-size="11" fill="#64748B">唯一有确定性语义去重手段</text>
+
+  <!-- 底部 -->
+  <rect x="40" y="424" width="820" height="72" rx="10" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="62" y="450" font-size="13" font-weight="bold" fill="#B91C1C">两套 undo 同时存在 = 必然出错</text>
+  <text x="62" y="472" font-size="12" fill="#7F1D1D">接协同后关掉编辑器内置 history；用 Y.UndoManager + trackedOrigins 只记录本地来源</text>
+  <text x="62" y="490" font-size="11" fill="#991B1B">业务字段（状态、金额）不要塞进 CRDT：它们走乐观锁 + 409，语义更清楚</text>
+</svg>

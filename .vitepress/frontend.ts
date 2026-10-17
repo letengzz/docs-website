@@ -830,3 +830,21 @@ export const FrontMobileH5 = [
         ],
     },
 ];
+
+export const FrontRichTextEditor = [
+    {
+        text: "富文本编辑器工程",
+        link: "/docs/Frontend/RichTextEditor/index.md",
+        items: [
+            { text: "概述：三种做法与五步决策", link: "/docs/Frontend/RichTextEditor/Overview/index.md" },
+            { text: "文档模型：把 HTML 关进 schema", link: "/docs/Frontend/RichTextEditor/DocumentModel/index.md" },
+            { text: "选区、输入法与光标", link: "/docs/Frontend/RichTextEditor/SelectionIME/index.md" },
+            { text: "粘贴与内容清洗", link: "/docs/Frontend/RichTextEditor/PasteSanitize/index.md" },
+            { text: "命令栈与撤销", link: "/docs/Frontend/RichTextEditor/CommandStack/index.md" },
+            { text: "序列化与往返", link: "/docs/Frontend/RichTextEditor/Serialization/index.md" },
+            { text: "接协同：边界与三处对齐", link: "/docs/Frontend/RichTextEditor/CollabIntegration/index.md" },
+            { text: "实战：卡片描述字段", link: "/docs/Frontend/RichTextEditor/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/RichTextEditor/FAQ/index.md" },
+        ],
+    },
+];

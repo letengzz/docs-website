@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+  <title>文档模型的四层：schema、树、位置、稳定 ID</title>
+  <rect width="900" height="540" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">文档模型的四层：从文法到稳定引用</text>
+
+  <!-- 第 1 层 schema -->
+  <rect x="40" y="58" width="820" height="92" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="62" y="84" font-size="15" font-weight="bold" fill="#1D4ED8">① schema：文档的文法</text>
+  <text x="62" y="108" font-size="12" fill="#334155">content 表达式约束嵌套：doc = block+，paragraph = inline*，list_item = paragraph block*</text>
+  <text x="62" y="130" font-size="12" fill="#64748B">非法结构在进入模型的第一步就被拒绝，而不是等到渲染或导出时才炸</text>
+  <rect x="700" y="76" width="140" height="56" rx="8" fill="#DBEAFE" stroke="#93C5FD"/>
+  <text x="770" y="100" text-anchor="middle" font-size="12" fill="#1E40AF">谁定义：</text>
+  <text x="770" y="120" text-anchor="middle" font-size="12" fill="#1E40AF">前后端共用一份</text>
+
+  <!-- 第 2 层树 -->
+  <rect x="40" y="166" width="820" height="150" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="62" y="192" font-size="15" font-weight="bold" fill="#047857">② 树：唯一的可信数据源</text>
+
+  <rect x="62" y="206" width="120" height="34" rx="6" fill="#D1FAE5" stroke="#34D399"/>
+  <text x="122" y="228" text-anchor="middle" font-size="12" fill="#065F46">doc</text>
+
+  <rect x="212" y="206" width="130" height="34" rx="6" fill="#D1FAE5" stroke="#34D399"/>
+  <text x="277" y="228" text-anchor="middle" font-size="12" fill="#065F46">heading(2)</text>
+  <rect x="362" y="206" width="130" height="34" rx="6" fill="#D1FAE5" stroke="#34D399"/>
+  <text x="427" y="228" text-anchor="middle" font-size="12" fill="#065F46">paragraph</text>
+
+  <rect x="240" y="262" width="90" height="30" rx="6" fill="#F0FDF4" stroke="#6EE7B7"/>
+  <text x="285" y="282" text-anchor="middle" font-size="11" fill="#065F46">text</text>
+  <rect x="380" y="262" width="110" height="30" rx="6" fill="#F0FDF4" stroke="#6EE7B7"/>
+  <text x="435" y="282" text-anchor="middle" font-size="11" fill="#065F46">text(strong)</text>
+  <rect x="510" y="262" width="110" height="30" rx="6" fill="#F0FDF4" stroke="#6EE7B7"/>
+  <text x="565" y="282" text-anchor="middle" font-size="11" fill="#065F46">text(link)</text>
+
+  <text x="650" y="222" font-size="12" fill="#065F46">文本与标记分离：</text>
+  <text x="650" y="242" font-size="12" fill="#065F46">text 存纯文本</text>
+  <text x="650" y="262" font-size="12" fill="#065F46">marks 存样式</text>
+  <text x="650" y="286" font-size="11" fill="#047857">取纯文本不需要解析 HTML</text>
+
+  <!-- 第 3 层位置 -->
+  <rect x="40" y="334" width="400" height="146" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="62" y="360" font-size="15" font-weight="bold" fill="#C2410C">③ 位置：pos 不是字符下标</text>
+
+  <rect x="62" y="374" width="356" height="46" rx="6" fill="#FFFFFF" stroke="#FDBA74"/>
+  <text x="74" y="396" font-size="12" fill="#7C2D12">&lt;p&gt;ab&lt;/p&gt;&lt;p&gt;cd&lt;/p&gt;</text>
+  <text x="74" y="414" font-size="12" fill="#9A3412">pos: 0 | 1 a | 2 b | 3 界 | 4 界 | 5 c | 6 d | 7 界</text>
+
+  <text x="62" y="446" font-size="12" fill="#7C2D12">两段各 2 字 ⇒ doc.content.size = 8（不是 4）</text>
+  <text x="62" y="468" font-size="11" fill="#9A3412">段落边界各占 1 个位置，删掉边界就是删掉段落</text>
+
+  <!-- 第 4 层 ID -->
+  <rect x="460" y="334" width="400" height="146" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="482" y="360" font-size="15" font-weight="bold" fill="#BE185D">④ 稳定 ID：跨请求引用的锚点</text>
+
+  <rect x="482" y="374" width="356" height="30" rx="6" fill="#FCE7F3" stroke="#F9A8D4"/>
+  <text x="494" y="394" font-size="12" fill="#831843">attrs.id = uuidv7()　（块创建时写一次）</text>
+
+  <text x="482" y="428" font-size="12" fill="#831843">位置会随文档变化失效，ID 不会</text>
+  <text x="482" y="450" font-size="11" fill="#9D174D">评论锚点 / 待办 / 协同块锁 一律挂 ID + 块内偏移</text>
+  <text x="482" y="470" font-size="11" fill="#9D174D">粘贴时必须重写 ID，否则复制两次得到同一锚点</text>
+
+  <!-- 底部 -->
+  <rect x="40" y="496" width="820" height="30" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="450" y="516" text-anchor="middle" font-size="12" fill="#475569">四层各司其职：schema 管合法性，树管数据，位置管选区与事务，ID 管跨请求引用</text>
+</svg>

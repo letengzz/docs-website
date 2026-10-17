@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <title>卡片描述字段：从输入到落库的六段链路</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">卡片描述：一份 JSON 走完六段链路</text>
+
+  <!-- 上排四段 -->
+  <rect x="40" y="60" width="190" height="100" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="135" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">① 编辑</text>
+  <text x="135" y="108" text-anchor="middle" font-size="11" fill="#334155">ProseMirror + schema</text>
+  <text x="135" y="126" text-anchor="middle" font-size="11" fill="#334155">允许 6 类块 + 6 类行内</text>
+  <text x="135" y="146" text-anchor="middle" font-size="11" fill="#64748B">禁止表格与外链图</text>
+
+  <rect x="254" y="60" width="190" height="100" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="349" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#6D28D9">② 输入统一入口</text>
+  <text x="349" y="108" text-anchor="middle" font-size="11" fill="#334155">beforeinput / paste / drop</text>
+  <text x="349" y="126" text-anchor="middle" font-size="11" fill="#334155">组合期放行</text>
+  <text x="349" y="146" text-anchor="middle" font-size="11" fill="#5B21B6">historyUndo 必拦</text>
+
+  <rect x="468" y="60" width="190" height="100" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="563" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#C2410C">③ 事务 + 防抖</text>
+  <text x="563" y="108" text-anchor="middle" font-size="11" fill="#334155">800ms 防抖保存</text>
+  <text x="563" y="126" text-anchor="middle" font-size="11" fill="#334155">连续 20 字 = 1 次 PATCH</text>
+  <text x="563" y="146" text-anchor="middle" font-size="11" fill="#7C2D12">只提交变更</text>
+
+  <rect x="682" y="60" width="178" height="100" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="771" y="86" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">④ 服务端校验</text>
+  <text x="771" y="108" text-anchor="middle" font-size="11" fill="#334155">白名单节点 / 标记</text>
+  <text x="771" y="126" text-anchor="middle" font-size="11" fill="#334155">128 KB + 深度 ≤ 8</text>
+  <text x="771" y="146" text-anchor="middle" font-size="11" fill="#065F46">协议白名单</text>
+
+  <defs>
+    <marker id="q1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <path d="M230 110 L252 110" stroke="#94A3B8" stroke-width="2" marker-end="url(#q1)"/>
+  <path d="M444 110 L466 110" stroke="#94A3B8" stroke-width="2" marker-end="url(#q1)"/>
+  <path d="M658 110 L680 110" stroke="#94A3B8" stroke-width="2" marker-end="url(#q1)"/>
+
+  <!-- 下排两段 -->
+  <rect x="40" y="200" width="380" height="104" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="230" y="226" text-anchor="middle" font-size="13" font-weight="bold" fill="#BE185D">⑤ 落库（三列同源）</text>
+  <text x="230" y="248" text-anchor="middle" font-size="11" fill="#334155">description_json（可信） · description_text（检索）</text>
+  <text x="230" y="266" text-anchor="middle" font-size="11" fill="#334155">description_html（缓存） · schema_version（迁移）</text>
+  <text x="230" y="288" text-anchor="middle" font-size="11" fill="#9D174D">check: 结构必须含 type，大小 ≤ 128 KB</text>
+
+  <rect x="460" y="200" width="400" height="104" rx="10" fill="#E0E7FF" stroke="#6366F1" stroke-width="2"/>
+  <text x="660" y="226" text-anchor="middle" font-size="13" font-weight="bold" fill="#4338CA">⑥ 读取与展示</text>
+  <text x="660" y="248" text-anchor="middle" font-size="11" fill="#334155">列表页读 html 缓存；详情页渲染 JSON</text>
+  <text x="660" y="266" text-anchor="middle" font-size="11" fill="#334155">附件 URL 由服务端按权限签名</text>
+  <text x="660" y="288" text-anchor="middle" font-size="11" fill="#3730A3">展示端仍走白名单（历史脏数据兜底）</text>
+
+  <path d="M771 160 C771 190 700 182 660 198" stroke="#94A3B8" stroke-width="2" marker-end="url(#q1)"/>
+  <path d="M660 304 L420 304" stroke="#94A3B8" stroke-width="2" marker-end="url(#q1)"/>
+
+  <!-- 协同旁路 -->
+  <rect x="40" y="330" width="820" height="70" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="62" y="356" font-size="13" font-weight="bold" fill="#1E293B">旁路：协同（可选）</text>
+  <text x="62" y="378" font-size="12" fill="#475569">description_yjs（bytea）与 description_json 同事务写入；origin 过滤防回环；UndoManager 只撤自己的</text>
+  <text x="62" y="396" font-size="11" fill="#64748B">标题不做协同：短字段并发少，走乐观锁 + 409 更简单</text>
+
+  <!-- 验收 -->
+  <rect x="40" y="418" width="820" height="78" rx="10" fill="#FFFBEB" stroke="#F59E0B"/>
+  <text x="62" y="444" font-size="13" font-weight="bold" fill="#92400E">十条验收判据（RCH-A ~ RCH-H + 两条工程判据）</text>
+  <text x="62" y="466" font-size="12" fill="#78350F">schema 共用一份 · 只存 attachmentId · mention 是原子节点 · 提及解析走模型 · 保存防抖</text>
+  <text x="62" y="486" font-size="12" fill="#78350F">实例必须销毁 · 服务端大小与深度硬限 · 协同与乐观锁不叠加同字段</text>
+</svg>

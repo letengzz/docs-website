@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <title>八类症状的分诊路径</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">分诊：先问「现象出现在哪一层」</text>
+
+  <rect x="330" y="56" width="240" height="56" rx="10" fill="#1E293B" stroke="#0F172A"/>
+  <text x="450" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">症状</text>
+  <text x="450" y="100" text-anchor="middle" font-size="11" fill="#CBD5E1">视图上看到的异常</text>
+
+  <defs>
+    <marker id="t1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <path d="M450 112 L450 132" stroke="#94A3B8" stroke-width="2" marker-end="url(#t1)"/>
+  <path d="M450 132 L170 132" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M450 132 L450 132" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M450 132 L730 132" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M170 132 L170 152" stroke="#94A3B8" stroke-width="2" marker-end="url(#t1)"/>
+  <path d="M450 132 L450 152" stroke="#94A3B8" stroke-width="2" marker-end="url(#t1)"/>
+  <path d="M730 132 L730 152" stroke="#94A3B8" stroke-width="2" marker-end="url(#t1)"/>
+
+  <!-- 三列 -->
+  <rect x="40" y="154" width="260" height="46" rx="8" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="170" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#C2410C">输入层（IME / 事件）</text>
+  <text x="170" y="193" text-anchor="middle" font-size="10" fill="#7C2D12">字符重复、拼音进正文、回车误提交</text>
+
+  <rect x="320" y="154" width="260" height="46" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="450" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">模型层（结构 / 位置）</text>
+  <text x="450" y="193" text-anchor="middle" font-size="10" fill="#1E40AF">换浏览器结构变、pos 差 1、撤销错位</text>
+
+  <rect x="600" y="154" width="260" height="46" rx="8" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="730" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#BE185D">数据层（清洗 / 序列化 / 协同）</text>
+  <text x="730" y="193" text-anchor="middle" font-size="10" fill="#9D174D">样式全乱、图片裂、内容回滚</text>
+
+  <!-- 三列明细 -->
+  <rect x="40" y="216" width="260" height="188" rx="8" fill="#FFFFFF" stroke="#FDBA74"/>
+  <text x="56" y="240" font-size="12" font-weight="bold" fill="#9A3412">先查这三件事</text>
+  <text x="56" y="264" font-size="11" fill="#57534E">① isComposing 是否被忽略</text>
+  <text x="56" y="286" font-size="11" fill="#57534E">② compositionend 与 input 是否去重</text>
+  <text x="56" y="308" font-size="11" fill="#57534E">③ keyCode 229 是否兜底</text>
+  <text x="56" y="336" font-size="11" fill="#C2410C">→ 选区与输入法页</text>
+  <text x="56" y="360" font-size="10" fill="#78716C">日志要打印 isComposing / inputType / data</text>
+  <text x="56" y="384" font-size="10" fill="#78716C">没有这三列，问题无法复现</text>
+
+  <rect x="320" y="216" width="260" height="188" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="336" y="240" font-size="12" font-weight="bold" fill="#1E40AF">先查这三件事</text>
+  <text x="336" y="264" font-size="11" fill="#57534E">① 状态里是否存了 DOM Range</text>
+  <text x="336" y="286" font-size="11" fill="#57534E">② historyUndo 是否被拦截</text>
+  <text x="336" y="308" font-size="11" fill="#57534E">③ 合并规则是否三条齐全</text>
+  <text x="336" y="336" font-size="11" fill="#1D4ED8">→ 文档模型页 / 命令栈页</text>
+  <text x="336" y="360" font-size="10" fill="#64748B">撤销只删一个字 = 合并规则问题</text>
+  <text x="336" y="384" font-size="10" fill="#64748B">撤销撤掉别人的 = 来源标记问题</text>
+
+  <rect x="600" y="216" width="260" height="188" rx="8" fill="#FFFFFF" stroke="#F9A8D4"/>
+  <text x="616" y="240" font-size="12" font-weight="bold" fill="#9D174D">先查这三件事</text>
+  <text x="616" y="264" font-size="11" fill="#57534E">① 清洗是否白名单重建</text>
+  <text x="616" y="286" font-size="11" fill="#57534E">② 是否存了 blob: / 长期 URL</text>
+  <text x="616" y="308" font-size="11" fill="#57534E">③ 本地写入是否带 origin</text>
+  <text x="616" y="336" font-size="11" fill="#BE185D">→ 粘贴页 / 序列化页 / 协同页</text>
+  <text x="616" y="360" font-size="10" fill="#64748B">粘贴后样式乱 = 没走管线</text>
+  <text x="616" y="384" font-size="10" fill="#64748B">刷新后回滚 = origin 或提交顺序</text>
+
+  <!-- 底部 -->
+  <rect x="40" y="424" width="820" height="72" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="62" y="450" font-size="13" font-weight="bold" fill="#1E293B">一条通用规则</text>
+  <text x="62" y="472" font-size="12" fill="#475569">现象在视图，根因在「模型 / 选区 / 输入事件」三者之一 —— 不要从 CSS 开始查</text>
+  <text x="62" y="490" font-size="11" fill="#64748B">每次定位后把「根因分类」写进缺陷单，三个月后你会有一张自己的分诊表</text>
+</svg>

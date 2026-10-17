@@ -8,6 +8,7 @@ export const nav = [
       { text: "微前端", link: "/docs/Frontend/MicroFrontend" },
       { text: "数据可视化", link: "/docs/Frontend/DataVisualization" },
       { text: "低代码平台", link: "/docs/Frontend/LowCode" },
+      { text: "富文本编辑器工程", link: "/docs/Frontend/RichTextEditor" },
       { text: "WebAssembly", link: "/docs/Frontend/WebAssembly" },
       { text: "WebGL 与 Three.js", link: "/docs/Frontend/WebGL" },
       { text: "PWA 与离线应用", link: "/docs/Frontend/PWA" },

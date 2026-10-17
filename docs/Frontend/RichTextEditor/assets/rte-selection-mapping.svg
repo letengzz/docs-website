@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <title>三种选区表示与它们的失效时刻</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">同一个光标，三种表示，三种失效时刻</text>
+
+  <!-- 三列 -->
+  <rect x="40" y="58" width="260" height="200" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="170" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1D4ED8">DOM Range</text>
+  <text x="60" y="112" font-size="12" fill="#334155">window.getSelection()</text>
+  <text x="60" y="134" font-size="12" fill="#334155">→ { node, offset }</text>
+  <text x="60" y="162" font-size="12" fill="#1E40AF">优点：浏览器原生、读屏器可读</text>
+  <text x="60" y="190" font-size="12" fill="#B91C1C">失效：任何一次重绘</text>
+  <text x="60" y="212" font-size="11" fill="#7F1D1D">节点被替换后 Range 指向已脱离文档的节点</text>
+  <text x="60" y="236" font-size="11" fill="#7F1D1D">输入法组合期还指向拼音串</text>
+
+  <rect x="320" y="58" width="260" height="200" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#047857">模型位置（唯一可信）</text>
+  <text x="340" y="112" font-size="12" fill="#334155">selection = { from, to }</text>
+  <text x="340" y="134" font-size="12" fill="#334155">单位是「节点边界 + 字符」</text>
+  <text x="340" y="162" font-size="12" fill="#065F46">优点：可比较、可映射、可协同</text>
+  <text x="340" y="190" font-size="12" fill="#065F46">失效：内容变化后需 mapping 重算</text>
+  <text x="340" y="212" font-size="11" fill="#064E3B">事务里带 mapping，选区自动跟着走</text>
+  <text x="340" y="236" font-size="11" fill="#064E3B">跨节点时 from/to 必须落在文本位置</text>
+
+  <rect x="600" y="58" width="260" height="200" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  <text x="730" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#B91C1C">绝对偏移（禁止跨请求）</text>
+  <text x="620" y="112" font-size="12" fill="#334155">"全文第 120 个字符"</text>
+  <text x="620" y="134" font-size="12" fill="#334155">外部系统常见的偷懒做法</text>
+  <text x="620" y="162" font-size="12" fill="#7F1D1D">失效：文档一改就错</text>
+  <text x="620" y="190" font-size="11" fill="#7F1D1D">前面插入一个字，后面全部右移</text>
+  <text x="620" y="212" font-size="11" fill="#7F1D1D">评论锚点用它 = 一周后全挂错位置</text>
+
+  <!-- 流转 -->
+  <defs>
+    <marker id="m1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#10B981"/>
+    </marker>
+    <marker id="m2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#3B82F6"/>
+    </marker>
+  </defs>
+  <path d="M300 120 L318 120" stroke="#10B981" stroke-width="2" marker-end="url(#m1)"/>
+  <text x="309" y="110" text-anchor="middle" font-size="10" fill="#047857">解析</text>
+  <path d="M320 170 L302 170" stroke="#3B82F6" stroke-width="2" marker-end="url(#m2)"/>
+  <text x="311" y="192" text-anchor="middle" font-size="10" fill="#1D4ED8">渲染</text>
+
+  <!-- 下方：输入法期时序 -->
+  <rect x="40" y="282" width="820" height="118" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="62" y="308" font-size="14" font-weight="bold" fill="#6D28D9">输入法期：三种表示同时"说谎"</text>
+
+  <rect x="62" y="320" width="150" height="30" rx="6" fill="#EDE9FE" stroke="#C4B5FD"/>
+  <text x="137" y="340" text-anchor="middle" font-size="11" fill="#5B21B6">compositionstart</text>
+  <rect x="228" y="320" width="160" height="30" rx="6" fill="#EDE9FE" stroke="#C4B5FD"/>
+  <text x="308" y="340" text-anchor="middle" font-size="11" fill="#5B21B6">compositionupdate ×N</text>
+  <rect x="404" y="320" width="150" height="30" rx="6" fill="#EDE9FE" stroke="#C4B5FD"/>
+  <text x="479" y="340" text-anchor="middle" font-size="11" fill="#5B21B6">beforeinput（组合）</text>
+  <rect x="570" y="320" width="150" height="30" rx="6" fill="#DDD6FE" stroke="#A78BFA"/>
+  <text x="645" y="340" text-anchor="middle" font-size="11" fill="#4C1D95">compositionend</text>
+  <rect x="736" y="320" width="110" height="30" rx="6" fill="#DDD6FE" stroke="#A78BFA"/>
+  <text x="791" y="340" text-anchor="middle" font-size="11" fill="#4C1D95">input</text>
+
+  <text x="62" y="376" font-size="12" fill="#4C1D95">DOM 里是拼音 → 模型里什么都没有 → 选区指向拼音串</text>
+  <text x="62" y="396" font-size="11" fill="#5B21B6">此阶段唯一正确的动作：什么都不做，等 compositionend 一次写入（并消费掉随后的 input）</text>
+
+  <!-- 底部判据 -->
+  <rect x="40" y="416" width="820" height="80" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="62" y="442" font-size="13" font-weight="bold" fill="#1E293B">三条落地纪律</text>
+  <text x="62" y="464" font-size="12" fill="#475569">① 状态里只存模型位置，不存 Range 对象　② 组合期（isComposing / keyCode 229）一律不写模型</text>
+  <text x="62" y="484" font-size="12" fill="#475569">③ 复位选区只在 requestAnimationFrame 里做，且只对"整块重建"做</text>
+</svg>

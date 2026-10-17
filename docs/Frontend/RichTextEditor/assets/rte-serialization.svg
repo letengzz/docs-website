@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <title>三向往返：JSON、HTML、Markdown 之间的失真点</title>
+  <rect width="900" height="520" fill="#FFFFFF"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E293B">只有「同 schema 的 JSON → JSON」是无损的</text>
+
+  <!-- 中心 JSON -->
+  <rect x="340" y="208" width="220" height="104" rx="12" fill="#ECFDF5" stroke="#10B981" stroke-width="3"/>
+  <text x="450" y="240" text-anchor="middle" font-size="16" font-weight="bold" fill="#047857">JSON 文档树</text>
+  <text x="450" y="264" text-anchor="middle" font-size="12" fill="#065F46">唯一可信源 · 可校验 · 可迁移</text>
+  <text x="450" y="288" text-anchor="middle" font-size="11" fill="#047857">doc { type, attrs, marks, content }</text>
+
+  <!-- 上：HTML -->
+  <rect x="340" y="58" width="220" height="96" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="450" y="84" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D4ED8">HTML</text>
+  <text x="450" y="106" text-anchor="middle" font-size="11" fill="#334155">渲染 / 邮件 / 导出</text>
+  <text x="450" y="126" text-anchor="middle" font-size="11" fill="#1E40AF">文本与属性值必须转义</text>
+  <text x="450" y="144" text-anchor="middle" font-size="11" fill="#B91C1C">丢：块 ID（除非写 data-*）</text>
+
+  <defs>
+    <marker id="s1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#3B82F6"/>
+    </marker>
+    <marker id="s2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#EF4444"/>
+    </marker>
+    <marker id="s3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#8B5CF6"/>
+    </marker>
+  </defs>
+  <path d="M450 156 L450 204" stroke="#3B82F6" stroke-width="2" marker-end="url(#s1)"/>
+  <text x="458" y="186" font-size="11" fill="#1D4ED8">序列化（可控）</text>
+  <path d="M386 206 L386 158" stroke="#EF4444" stroke-width="2" marker-end="url(#s2)"/>
+  <text x="330" y="186" font-size="11" fill="#B91C1C">解析（会丢）</text>
+
+  <!-- 左：Markdown -->
+  <rect x="40" y="208" width="220" height="104" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="150" y="234" text-anchor="middle" font-size="14" font-weight="bold" fill="#6D28D9">Markdown</text>
+  <text x="150" y="256" text-anchor="middle" font-size="11" fill="#334155">文档站 / Git 仓库</text>
+  <text x="150" y="276" text-anchor="middle" font-size="11" fill="#5B21B6">表格无 colspan、无对齐</text>
+  <text x="150" y="296" text-anchor="middle" font-size="11" fill="#B91C1C">丢：颜色、合并单元格、自定义块</text>
+  <path d="M338 250 L264 250" stroke="#8B5CF6" stroke-width="2" marker-end="url(#s3)"/>
+  <text x="300" y="242" text-anchor="middle" font-size="11" fill="#6D28D9">导出</text>
+
+  <!-- 右：纯文本/检索 -->
+  <rect x="640" y="208" width="220" height="104" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="750" y="234" text-anchor="middle" font-size="14" font-weight="bold" fill="#C2410C">纯文本列</text>
+  <text x="750" y="256" text-anchor="middle" font-size="11" fill="#334155">全文检索 / 摘要</text>
+  <text x="750" y="276" text-anchor="middle" font-size="11" fill="#7C2D12">由 JSON 抽取，不用 html</text>
+  <text x="750" y="296" text-anchor="middle" font-size="11" fill="#B91C1C">丢：全部格式（这是它的职责）</text>
+  <path d="M562 250 L636 250" stroke="#F97316" stroke-width="2" marker-end="url(#s1)"/>
+  <text x="600" y="242" text-anchor="middle" font-size="11" fill="#C2410C">抽取</text>
+
+  <!-- 下：迁移 -->
+  <rect x="290" y="360" width="320" height="80" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+  <text x="450" y="386" text-anchor="middle" font-size="13" font-weight="bold" fill="#BE185D">JSON v1 → v2 → v3（迁移链）</text>
+  <text x="450" y="408" text-anchor="middle" font-size="11" fill="#334155">每个函数只做 n → n+1，必须幂等</text>
+  <text x="450" y="428" text-anchor="middle" font-size="11" fill="#9D174D">支持 dry-run，先统计影响行数</text>
+  <path d="M450 314 L450 358" stroke="#EC4899" stroke-width="2" marker-end="url(#s1)"/>
+
+  <!-- 底部表格 -->
+  <rect x="40" y="456" width="820" height="48" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="60" y="476" font-size="12" font-weight="bold" fill="#1E293B">存储口径</text>
+  <text x="60" y="496" font-size="11" fill="#475569">body_json（可信） · body_text（检索） · body_html（可重建缓存） · schema_version（迁移入口）</text>
+</svg>
