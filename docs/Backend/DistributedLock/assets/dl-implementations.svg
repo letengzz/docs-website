@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">三种实现：正确性最终由谁保证</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 DLI-A~DLI-H；选型先看「出事时谁负责」，再看快不快</text>
+  <rect x="24" y="84" width="228" height="150" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="138" y="104" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">数据库</text>
+  <text x="138" y="122" text-anchor="middle" font-size="7.5" fill="#047857">行锁 / 咨询锁 / 唯一键</text>
+  <text x="138" y="144" text-anchor="middle" font-size="7.5" fill="#047857">互斥由：锁管理器 + 隔离级别</text>
+  <text x="138" y="161" text-anchor="middle" font-size="7.5" fill="#047857">崩溃清理：连接断开即释放</text>
+  <text x="138" y="178" text-anchor="middle" font-size="7.5" fill="#047857">实测：FOR UPDATE 阻塞 1.34s</text>
+  <text x="138" y="195" text-anchor="middle" font-size="7.5" fill="#047857">实测：咨询锁同会话可重入 t|t|t</text>
+  <text x="138" y="216" text-anchor="middle" font-size="7.5" fill="#047857">风险：无限等待拖垮连接池</text>
+  <rect x="266" y="84" width="228" height="150" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="104" text-anchor="middle" font-size="10.5" fill="#991B1B" font-weight="bold">Redis 单实例</text>
+  <text x="380" y="122" text-anchor="middle" font-size="7.5" fill="#B91C1C">SET NX PX + Lua 释放</text>
+  <text x="380" y="144" text-anchor="middle" font-size="7.5" fill="#B91C1C">互斥由：单条命令的原子性</text>
+  <text x="380" y="161" text-anchor="middle" font-size="7.5" fill="#B91C1C">崩溃清理：TTL 到期</text>
+  <text x="380" y="178" text-anchor="middle" font-size="7.5" fill="#B91C1C">实测：p50 0.245ms / p99 0.491ms</text>
+  <text x="380" y="195" text-anchor="middle" font-size="7.5" fill="#B91C1C">实测：1000 次加锁 0 次并发违规</text>
+  <text x="380" y="216" text-anchor="middle" font-size="7.5" fill="#B91C1C">风险：主从切换丢锁（异步复制）</text>
+  <rect x="508" y="84" width="228" height="150" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="622" y="104" text-anchor="middle" font-size="10.5" fill="#3730A3" font-weight="bold">etcd / ZooKeeper</text>
+  <text x="622" y="122" text-anchor="middle" font-size="7.5" fill="#4338CA">租约 + revision / 临时顺序节点</text>
+  <text x="622" y="144" text-anchor="middle" font-size="7.5" fill="#4338CA">互斥由：多数派共识</text>
+  <text x="622" y="161" text-anchor="middle" font-size="7.5" fill="#4338CA">崩溃清理：租约到期 / 会话断开</text>
+  <text x="622" y="178" text-anchor="middle" font-size="7.5" fill="#4338CA">切换后锁仍在（过半写入）</text>
+  <text x="622" y="195" text-anchor="middle" font-size="7.5" fill="#4338CA">代价：多数派不可用即拒绝服务</text>
+  <text x="622" y="216" text-anchor="middle" font-size="7.5" fill="#4338CA">适合：选主、强一致互斥</text>
+  <rect x="24" y="258" width="712" height="70" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="278" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">一条被忽略的判断：临界区只是一次条件更新时，根本不需要分布式锁</text>
+  <text x="380" y="296" text-anchor="middle" font-size="7.5" fill="#334155">让数据库用 UPDATE ... WHERE version = ? 自己做掉：锁与写在同一事务里，不存在「锁和写之间隔着一次网络往返」的窗口</text>
+  <text x="380" y="314" text-anchor="middle" font-size="7.5" fill="#334155">分布式锁的正当场景：临界区里包含数据库管不到的副作用（调第三方、写对象存储、改配置中心）</text>
+  <rect x="24" y="344" width="344" height="66" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="196" y="364" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">选型红线一：丢锁会不会算错钱</text>
+  <text x="196" y="382" text-anchor="middle" font-size="7.5" fill="#B45309">会 → 不用 Redis 单实例，或必须叠加 fencing token</text>
+  <text x="196" y="399" text-anchor="middle" font-size="7.5" fill="#B45309">不会 → Redis 足够，成本最低</text>
+  <rect x="392" y="344" width="344" height="66" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.6"/>
+  <text x="564" y="364" text-anchor="middle" font-size="9" fill="#9D174D" font-weight="bold">选型红线二：排队长度是否已经超过 1</text>
+  <text x="564" y="382" text-anchor="middle" font-size="7.5" fill="#BE185D">排队 ≈ 到达率 × 临界区时长；大于 1 说明粒度太粗</text>
+  <text x="564" y="399" text-anchor="middle" font-size="7.5" fill="#BE185D">方向是拆锁（按业务 ID 分片），不是换更快的锁服务</text>
+</svg>

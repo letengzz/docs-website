@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">实战三条链路：同两套表，三种用法</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 DLP-A~DLP-H；task_lease 记「谁在执行」，inventory.last_token 记「这次写新不新」</text>
+  <rect x="24" y="84" width="712" height="58" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="380" y="104" text-anchor="middle" font-size="9" fill="#3730A3" font-weight="bold">共同底座：task_lease（task_name, owner, token, expires_at, attempt） + inventory（sku, qty, last_token） + inventory_log</text>
+  <text x="380" y="122" text-anchor="middle" font-size="7.5" fill="#4338CA">token 由序列或 INCR 签发，单调递增；序列键绝不能带过期时间（重置会让旧 token 变成「更大的」）</text>
+  <text x="380" y="136" text-anchor="middle" font-size="7.5" fill="#4338CA">一个事务内多资源共享同一 token；每个资源独立维护 last_token</text>
+  <rect x="24" y="160" width="228" height="150" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="138" y="180" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">链路一：定时任务单例</text>
+  <text x="138" y="199" text-anchor="middle" font-size="7.5" fill="#047857">SET NX PX 加锁 + INCR 取 token</text>
+  <text x="138" y="216" text-anchor="middle" font-size="7.5" fill="#047857">每批之前判定 remaining()</text>
+  <text x="138" y="233" text-anchor="middle" font-size="7.5" fill="#047857">写流水带 token 条件</text>
+  <text x="138" y="250" text-anchor="middle" font-size="7.5" fill="#047857">finally 里释放（Lua 校验 owner）</text>
+  <text x="138" y="267" text-anchor="middle" font-size="7.5" fill="#047857">失锁 → 停手 + lock_fence_rejected+1</text>
+  <text x="138" y="289" text-anchor="middle" font-size="7.5" fill="#065F46">验收：S1~S10 全绿</text>
+  <rect x="266" y="160" width="228" height="150" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="180" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">链路二：库存扣减</text>
+  <text x="380" y="199" text-anchor="middle" font-size="7.5" fill="#B91C1C">UPDATE ... WHERE :token &gt; last_token</text>
+  <text x="380" y="216" text-anchor="middle" font-size="7.5" fill="#B91C1C">AND qty &gt;= :delta（业务约束）</text>
+  <text x="380" y="233" text-anchor="middle" font-size="7.5" fill="#B91C1C">RETURNING qty, last_token</text>
+  <text x="380" y="250" text-anchor="middle" font-size="7.5" fill="#B91C1C">零行要分三种：已更新 / 库存不足 / 已失锁</text>
+  <text x="380" y="267" text-anchor="middle" font-size="7.5" fill="#B91C1C">实测：token 1→1、2→1、1→0</text>
+  <text x="380" y="289" text-anchor="middle" font-size="7.5" fill="#991B1B">第三种零行是唯一的安全保证</text>
+  <rect x="508" y="160" width="228" height="150" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="622" y="180" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">链路三：主备切换</text>
+  <text x="622" y="199" text-anchor="middle" font-size="7.5" fill="#B45309">Session(10s) + Election.Campaign</text>
+  <text x="622" y="216" text-anchor="middle" font-size="7.5" fill="#B45309">每轮 isStillLeader() 判定</text>
+  <text x="622" y="233" text-anchor="middle" font-size="7.5" fill="#B45309">单批 ≤ 2s（租约的 1/5）</text>
+  <text x="622" y="250" text-anchor="middle" font-size="7.5" fill="#B45309">退出路径 Resign + session.Close</text>
+  <text x="622" y="267" text-anchor="middle" font-size="7.5" fill="#B45309">切换时间 = 租约 + 当选 + 预热</text>
+  <text x="622" y="289" text-anchor="middle" font-size="7.5" fill="#92400E">K8s 工业取值 15 / 10 / 2</text>
+  <text x="24" y="338" font-size="9.5" fill="#0F172A" font-weight="bold">五类故障注入与预期读数</text>
+  <rect x="24" y="350" width="712" height="76" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.5"/>
+  <text x="380" y="368" text-anchor="middle" font-size="7.5" fill="#334155">① kill -STOP 16s → 旧写被拒 + 指标 +1　② DEL 掉锁键 → 下一轮停手　③ 阻断 16379 端口 → 加锁 ≤2s 内失败</text>
+  <text x="380" y="386" text-anchor="middle" font-size="7.5" fill="#334155">④ FAILOVER → 锁可能丢，闸门拦住旧写　⑤ 同一消息投两次 → 幂等键拦下</text>
+  <text x="380" y="404" text-anchor="middle" font-size="7.5" fill="#334155">最容易测出真问题的是 ③：没有超时参数的加锁会一直等到 TCP 超时（可能几分钟），而空载 p99 只有 0.491ms</text>
+  <text x="380" y="420" text-anchor="middle" font-size="7.5" fill="#991B1B">边界：锁不保证「业务只执行一次」——重试与重投递仍会重复，必须另配幂等键</text>
+</svg>

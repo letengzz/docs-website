@@ -112,8 +112,8 @@ Spring Cloud 当前稳定 Train 为 **2025.1.x（Oakwood，适配 Spring Boot 4.
 
 | 存档目录 | 内容 | 状态 |
 | --- | --- | --- |
-| [SpringCloud2020](SpringCloud2020/Overview/index.md) | Spring Cloud 2020.x（Ilford，对应 Spring Boot 2.4/2.5）简介与架构图、Alibaba 组件速览（Nacos/Sentinel/Seata 版本表） | 仅存量项目使用（2020.0.x 的 OSS 支持早已结束） |
-| [SpringCloud2022](SpringCloud2022/Overview/index.md) | Spring Cloud 2022.x（Kilburn，对应 Spring Boot 3.0）简介与架构图、Alibaba 组件速览 | 仅存量项目使用 |
+| [SpringCloud2020](SpringCloud2020/index.md) | Spring Cloud 2020.x（Ilford，对应 Spring Boot 2.4/2.5）版本入口：简介与架构图、Alibaba 组件速览（Nacos/Sentinel/Seata 版本表） | 仅存量项目使用（2020.0.x 的 OSS 支持早已结束） |
+| [SpringCloud2022](SpringCloud2022/index.md) | Spring Cloud 2022.x（Kilburn，对应 Spring Boot 3.0）版本入口：简介与架构图、Alibaba 组件速览 | 仅存量项目使用 |
 
 ::: warning 2026-10 整理说明
 本轮孤儿页面巡检时处置了四处重复残留，逐文件 `diff` 核对内容唯一性后才删除：

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">运行面：四个指标、四类演练、一份排查顺序</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 DLR-A~DLR-H；前两个是性能指标，后两个是正确性指标</text>
+  <rect x="24" y="84" width="172" height="76" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="110" y="104" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">持有时间 P99</text>
+  <text x="110" y="122" text-anchor="middle" font-size="7.5" fill="#1D4ED8">加锁到释放的耗时分布</text>
+  <text x="110" y="139" text-anchor="middle" font-size="7.5" fill="#1D4ED8">超过 TTL/3 就要查</text>
+  <text x="110" y="154" text-anchor="middle" font-size="7.5" fill="#1D4ED8">性能指标</text>
+  <rect x="210" y="84" width="172" height="76" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="296" y="104" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">等待时长 P99</text>
+  <text x="296" y="122" text-anchor="middle" font-size="7.5" fill="#1D4ED8">尝试加锁到成功的耗时</text>
+  <text x="296" y="139" text-anchor="middle" font-size="7.5" fill="#1D4ED8">≈ 到达率 × 临界区时长</text>
+  <text x="296" y="154" text-anchor="middle" font-size="7.5" fill="#1D4ED8">性能指标</text>
+  <rect x="396" y="84" width="172" height="76" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="482" y="104" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">续期失败次数</text>
+  <text x="482" y="122" text-anchor="middle" font-size="7.5" fill="#B91C1C">失锁的唯一前兆</text>
+  <text x="482" y="139" text-anchor="middle" font-size="7.5" fill="#B91C1C">健康值恒为 0</text>
+  <text x="482" y="154" text-anchor="middle" font-size="7.5" fill="#B91C1C">正确性指标</text>
+  <rect x="582" y="84" width="154" height="76" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="659" y="104" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">无 TTL 锁数量</text>
+  <text x="659" y="122" text-anchor="middle" font-size="7.5" fill="#B91C1C">TTL = -1 的键</text>
+  <text x="659" y="139" text-anchor="middle" font-size="7.5" fill="#B91C1C">每把都是定时炸弹</text>
+  <text x="659" y="154" text-anchor="middle" font-size="7.5" fill="#B91C1C">正确性指标</text>
+  <text x="24" y="196" font-size="9.5" fill="#0F172A" font-weight="bold">四类演练：目的是验证闸门会拦住坏的那一半</text>
+  <rect x="24" y="208" width="172" height="72" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="110" y="228" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">停顿</text>
+  <text x="110" y="246" text-anchor="middle" font-size="7.5" fill="#B45309">kill -STOP 16s → -CONT</text>
+  <text x="110" y="263" text-anchor="middle" font-size="7.5" fill="#B45309">旧写必须被拒</text>
+  <rect x="210" y="208" width="172" height="72" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="296" y="228" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">主从切换</text>
+  <text x="296" y="246" text-anchor="middle" font-size="7.5" fill="#B45309">FAILOVER / 杀 leader</text>
+  <text x="296" y="263" text-anchor="middle" font-size="7.5" fill="#B45309">锁可能丢，靠闸门兜</text>
+  <rect x="396" y="208" width="172" height="72" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="482" y="228" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">网络分区</text>
+  <text x="482" y="246" text-anchor="middle" font-size="7.5" fill="#B45309">iptables 阻断锁端口</text>
+  <text x="482" y="263" text-anchor="middle" font-size="7.5" fill="#B45309">加锁须快速失败</text>
+  <rect x="582" y="208" width="154" height="72" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="659" y="228" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">时钟跳变</text>
+  <text x="659" y="246" text-anchor="middle" font-size="7.5" fill="#B45309">date -s 前跳 60s</text>
+  <text x="659" y="263" text-anchor="middle" font-size="7.5" fill="#B45309">锁提前过期</text>
+  <rect x="24" y="304" width="712" height="104" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.5"/>
+  <text x="380" y="324" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">五段式排查：症状 → 5 分钟确认 → 处置 → 回滚 → 判据</text>
+  <text x="380" y="343" text-anchor="middle" font-size="7.5" fill="#334155">① 接口大面积超时：看等待 P99 是否随锁服务延迟一起涨，找持锁不放的 owner</text>
+  <text x="380" y="361" text-anchor="middle" font-size="7.5" fill="#334155">② 同一笔业务被处理两次：查两条记录的时间差是否 &lt; TTL，查有无 last_token 闸门</text>
+  <text x="380" y="379" text-anchor="middle" font-size="7.5" fill="#334155">③ 定时任务某天没跑：看锁是否 TTL=-1、holderIdentity 是否指向已死实例</text>
+  <text x="380" y="397" text-anchor="middle" font-size="7.5" fill="#334155">④ 发布后两个实例都在跑主逻辑：查 SIGTERM 有无 Resign、主循环是否每轮判定、单批是否过长</text>
+</svg>

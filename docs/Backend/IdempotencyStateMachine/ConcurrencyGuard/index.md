@@ -205,6 +205,20 @@ select qty from stock where id = 1;
 
 **预期输出**：每成功执行一次减 1，且 `qty` 不会小于 0。
 
+
+::: tip 与「分布式锁与选主」专题的分工（第 159 天补充）
+本页第四节讲的 fencing token 是**行级版本号**语义：它由数据库在每次更新时 +1，回答的是「我读到的这一行是不是最新的」。新增的 [分布式锁与选主](/docs/Backend/DistributedLock/Fencing/index.md) 讲的 token 是**锁服务签发的单调序号**，回答的是「我是不是仍然合法的写者」。两者不同源，不能互换。
+
+| 维度 | 本页（`version` 乐观锁） | 专题（fencing token） |
+| --- | --- | --- |
+| 拦的是什么 | 读到的版本已经旧了 | 我已经不是锁的持有者 |
+| 谁生成 | 数据库每次更新 +1 | 锁服务发锁时签发 |
+| 失效场景 | 两个写者都基于旧版本读改写 | 持有者停顿超过租约 |
+| 是否需要锁 | 不需要 | 需要（token 来自锁） |
+
+两者叠加时**顺序不能反**：先判 token（还是不是合法写者），再判 version（数据是否最新）。顺序反了会放行「版本对得上、但写者已过期」的写。项目侧 [看板与卡片读写接口](/project/Complete/TeamBoard/BoardCardApi/index.md) 用的是纯 `version` 路线——因为那条链路没有跨进程锁，两类护栏各自解决自己那一半。
+:::
+
 ## 参考资料
 
 - [PostgreSQL 文档：事务隔离](https://www.postgresql.org/docs/18/transaction-iso.html)——`read committed` 与 `repeatable read` 下的更新冲突语义

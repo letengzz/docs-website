@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">脑裂：三种成因，一条真正的收口</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 DLS-A~DLS-H；「保证只有一个」靠 quorum，「保证旧的写不进」只能靠资源</text>
+  <text x="24" y="88" font-size="9.5" fill="#0F172A" font-weight="bold">成因（按是否需要基础设施故障分类）</text>
+  <rect x="24" y="100" width="228" height="76" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="138" y="120" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">① 锁服务自身切换</text>
+  <text x="138" y="138" text-anchor="middle" font-size="7.5" fill="#B45309">锁写主库，异步复制未到达</text>
+  <text x="138" y="155" text-anchor="middle" font-size="7.5" fill="#B45309">故障转移后新主没有这把锁</text>
+  <text x="138" y="170" text-anchor="middle" font-size="7.5" fill="#B45309">需要：主库故障 / 运维切换</text>
+  <rect x="266" y="100" width="228" height="76" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="380" y="120" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">② 客户端停顿</text>
+  <text x="380" y="138" text-anchor="middle" font-size="7.5" fill="#B91C1C">停顿超过 TTL，锁被他人获得</text>
+  <text x="380" y="155" text-anchor="middle" font-size="7.5" fill="#B91C1C">醒来继续写（本机实测 450ms&gt;300ms）</text>
+  <text x="380" y="170" text-anchor="middle" font-size="7.5" fill="#B91C1C">不需要任何故障 —— 最难防</text>
+  <rect x="508" y="100" width="228" height="76" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="622" y="120" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">③ 网络分区</text>
+  <text x="622" y="138" text-anchor="middle" font-size="7.5" fill="#6D28D9">集群被切成两半，各自选出主</text>
+  <text x="622" y="155" text-anchor="middle" font-size="7.5" fill="#6D28D9">两边都认为对方已经死了</text>
+  <text x="622" y="170" text-anchor="middle" font-size="7.5" fill="#6D28D9">需要：网络故障</text>
+  <text x="24" y="208" font-size="9.5" fill="#0F172A" font-weight="bold">quorum 解决什么：把脑裂变成「不可用」</text>
+  <rect x="24" y="220" width="228" height="86" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="138" y="240" text-anchor="middle" font-size="8.5" fill="#3730A3" font-weight="bold">3 节点：容忍 1 台</text>
+  <text x="138" y="258" text-anchor="middle" font-size="7.5" fill="#4338CA">写需 2 票</text>
+  <text x="138" y="275" text-anchor="middle" font-size="7.5" fill="#4338CA">少数派一侧无法写入</text>
+  <text x="138" y="292" text-anchor="middle" font-size="7.5" fill="#4338CA">→ 不可能产生第二个主</text>
+  <rect x="266" y="220" width="228" height="86" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="380" y="240" text-anchor="middle" font-size="8.5" fill="#3730A3" font-weight="bold">5 节点：容忍 2 台</text>
+  <text x="380" y="258" text-anchor="middle" font-size="7.5" fill="#4338CA">写需 3 票</text>
+  <text x="380" y="275" text-anchor="middle" font-size="7.5" fill="#4338CA">跨地域时每次写多一次往返</text>
+  <text x="380" y="292" text-anchor="middle" font-size="7.5" fill="#4338CA">代价：延迟上升</text>
+  <rect x="508" y="220" width="228" height="86" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="622" y="240" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">quorum 不解决什么</text>
+  <text x="622" y="258" text-anchor="middle" font-size="7.5" fill="#B45309">旧主被剥夺身份后，在途的</text>
+  <text x="622" y="275" text-anchor="middle" font-size="7.5" fill="#B45309">数据库写仍然会落地</text>
+  <text x="622" y="292" text-anchor="middle" font-size="7.5" fill="#B45309">存储不分裂 ≠ 业务不双写</text>
+  <rect x="24" y="326" width="712" height="82" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="346" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">唯一的收口：资源侧拒绝过期 token</text>
+  <text x="380" y="365" text-anchor="middle" font-size="7.5" fill="#047857">「让所有人对同一时刻达成一致」需要通信，停顿的进程无法通信；「拒绝一个序号不够大的写」只需要资源记住一个数</text>
+  <text x="380" y="383" text-anchor="middle" font-size="7.5" fill="#047857">所以正确姿势是两层：尽力保证「只有一个」（锁 + quorum），同时假定「可能有两个」（fencing）</text>
+  <text x="380" y="400" text-anchor="middle" font-size="7.5" fill="#047857">演练：kill -STOP 16s → 等新主接管 → kill -CONT → 旧主第一笔写必须被拒（UPDATE 0 / 409 / 412）</text>
+</svg>

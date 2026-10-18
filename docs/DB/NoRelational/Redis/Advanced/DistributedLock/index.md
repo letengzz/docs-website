@@ -225,6 +225,24 @@ redis-cli SCRIPT EXISTS <sha1>                   # 1) (integer) 1
 
 应用侧验证：并发压测下单账户余额/库存不出现超卖，日志中无「重复扣减」记录。
 
+
+::: tip 与「分布式锁与选主」专题的分工（第 159 天补充）
+本页讲的是**在 Redis 上怎么写对一把锁**：`SET NX PX` 的原子性、Lua 校验释放、Redisson 的可重入与自动续期、Redlock 的争议，以及 Lua 语言本身。新增的 [分布式锁与选主](/docs/Backend/DistributedLock/Overview/index.md) 专题讲的是**锁写对之后仍然会失效的那一半**：租约三角（`T > P + R + S`）、停顿导致的失锁、fencing token、选主、脑裂与运行面。
+
+| 问题 | 看本页 | 看专题 |
+| --- | --- | --- |
+| `SET NX EX` 与 `SETNX` + `EXPIRE` 差在哪 | ✅ | —— |
+| 释放为什么要用 Lua 校验持有者 | ✅ | —— |
+| Redisson 看门狗窗口多长、怎么续 | ✅（写法） | ✅（窗口 30 s 的取舍与失效） |
+| TTL 该设多少、为什么必须大于最大停顿 | —— | ✅ [租约与续期](/docs/Backend/DistributedLock/Lease/index.md) |
+| 主从切换后锁丢了怎么办 | 只讲「异步复制会丢」 | ✅ [脑裂与分区](/docs/Backend/DistributedLock/SplitBrain/index.md) |
+| 失锁之后怎么拦住旧写者 | —— | ✅ [fencing token](/docs/Backend/DistributedLock/Fencing/index.md) |
+
+一句话判据：**「这把锁在 Redis 上怎么写」看本页；「它什么时候会悄悄失效、失效后谁兜底」看专题。**
+
+本页顺带补一条排障口径（第 159 天实测）：`PTTL` 返回 **-2** 与 **0** 的含义不同——`-2` 是键已不存在（锁已被他人获得或已过期清理），`0` 是键存在但已到期。事故现场把两者混为一谈，会把「锁被抢走」误判成「锁还在」。
+:::
+
 ## 参考资料
 
 - 官方文档 · 事务与 Lua：https://redis.io/docs/latest/develop/programmability/eval-intro/

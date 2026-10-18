@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">看板与卡片读写接口：三层、两类冲突、五条读数</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 BC-A~BC-H；无锁互斥的来源是 SQL 条件更新，不是 Redis</text>
+  <rect x="24" y="78" width="712" height="30" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.2"/>
+  <text x="380" y="98" text-anchor="middle" font-size="8" fill="#334155">请求 → 过滤器（认证 / 作用域 / MDC） → Controller（只校验 + 状态码） → Service（事务 + 条件更新 + outbox） → Repository（一条 SQL 一个意图）</text>
+  <rect x="24" y="126" width="228" height="104" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="138" y="146" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">读：列表与详情</text>
+  <text x="138" y="164" text-anchor="middle" font-size="7.5" fill="#1D4ED8">签名游标 + 行值比较</text>
+  <text x="138" y="181" text-anchor="middle" font-size="7.5" fill="#1D4ED8">(position_key, id) &gt; (?, ?)</text>
+  <text x="138" y="198" text-anchor="middle" font-size="7.5" fill="#1D4ED8">评论数用 LEFT JOIN 聚合</text>
+  <text x="138" y="215" text-anchor="middle" font-size="7.5" fill="#1D4ED8">SQL 条数与页大小无关</text>
+  <rect x="266" y="126" width="228" height="104" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="380" y="146" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">写：条件更新</text>
+  <text x="380" y="164" text-anchor="middle" font-size="7.5" fill="#B91C1C">WHERE id / board_id / version</text>
+  <text x="380" y="181" text-anchor="middle" font-size="7.5" fill="#B91C1C">租户边界写进 SQL，不靠上层判断</text>
+  <text x="380" y="198" text-anchor="middle" font-size="7.5" fill="#B91C1C">RETURNING version, updated_at</text>
+  <text x="380" y="215" text-anchor="middle" font-size="7.5" fill="#B91C1C">软删 + 部分唯一索引</text>
+  <rect x="508" y="126" width="228" height="104" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="622" y="146" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">批量：位置变更</text>
+  <text x="622" y="164" text-anchor="middle" font-size="7.5" fill="#B45309">整批一个事务，任一 0 行即回滚</text>
+  <text x="622" y="181" text-anchor="middle" font-size="7.5" fill="#B45309">按 cardId 排序再更新（防死锁）</text>
+  <text x="622" y="198" text-anchor="middle" font-size="7.5" fill="#B45309">批大小上限 200，超出 400</text>
+  <text x="622" y="215" text-anchor="middle" font-size="7.5" fill="#B45309">409 里要指出是哪一张冲突</text>
+  <text x="24" y="256" font-size="9.5" fill="#0F172A" font-weight="bold">五个读数（本机 PostgreSQL 18.6 实测，2026-10-18）</text>
+  <rect x="24" y="268" width="140" height="66" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="94" y="288" text-anchor="middle" font-size="8" fill="#065F46" font-weight="bold">UPDATE 1</text>
+  <text x="94" y="305" text-anchor="middle" font-size="7.5" fill="#047857">版本匹配</text>
+  <text x="94" y="322" text-anchor="middle" font-size="7.5" fill="#047857">正常写入</text>
+  <rect x="178" y="268" width="140" height="66" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="248" y="288" text-anchor="middle" font-size="8" fill="#991B1B" font-weight="bold">UPDATE 0</text>
+  <text x="248" y="305" text-anchor="middle" font-size="7.5" fill="#B91C1C">旧版本重放</text>
+  <text x="248" y="322" text-anchor="middle" font-size="7.5" fill="#B91C1C">409 的来源</text>
+  <rect x="332" y="268" width="160" height="66" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="412" y="288" text-anchor="middle" font-size="8" fill="#991B1B" font-weight="bold">20 并发 → 1 / 19</text>
+  <text x="412" y="305" text-anchor="middle" font-size="7.5" fill="#B91C1C">同版本并发写</text>
+  <text x="412" y="322" text-anchor="middle" font-size="7.5" fill="#B91C1C">1 成功 19 冲突</text>
+  <rect x="506" y="268" width="112" height="66" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.4"/>
+  <text x="562" y="288" text-anchor="middle" font-size="8" fill="#92400E" font-weight="bold">2.377 ms</text>
+  <text x="562" y="305" text-anchor="middle" font-size="7.5" fill="#B45309">第 200 页 OFFSET</text>
+  <text x="562" y="322" text-anchor="middle" font-size="7.5" fill="#B45309">随页码线性增长</text>
+  <rect x="632" y="268" width="104" height="66" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="684" y="288" text-anchor="middle" font-size="8" fill="#065F46" font-weight="bold">0.645 ms</text>
+  <text x="684" y="305" text-anchor="middle" font-size="7.5" fill="#047857">游标同页</text>
+  <text x="684" y="322" text-anchor="middle" font-size="7.5" fill="#047857">常量代价</text>
+  <rect x="24" y="350" width="344" height="70" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="196" y="370" text-anchor="middle" font-size="9" fill="#3730A3" font-weight="bold">409 的三件事</text>
+  <text x="196" y="388" text-anchor="middle" font-size="7.5" fill="#4338CA">生成：0 行 → 异常 → 409 + currentVersion</text>
+  <text x="196" y="405" text-anchor="middle" font-size="7.5" fill="#4338CA">消费：重读 → 用户确认 → 带新版本重试</text>
+  <rect x="392" y="350" width="344" height="70" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="564" y="370" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">三条不变量</text>
+  <text x="564" y="388" text-anchor="middle" font-size="7.5" fill="#6D28D9">version 只增不减；读写用同一个字段名</text>
+  <text x="564" y="405" text-anchor="middle" font-size="7.5" fill="#6D28D9">SQL 条数不随页大小增长（防 N+1 回归）</text>
+</svg>

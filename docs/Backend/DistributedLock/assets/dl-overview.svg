@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">三性质缺一不可，五种失效里四种与加锁代码无关</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 DLO-A~DLO-H；第三性质「失败可判定」是事故的主要来源</text>
+  <rect x="24" y="84" width="228" height="86" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="138" y="104" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">① 互斥（safety）</text>
+  <text x="138" y="122" text-anchor="middle" font-size="7.5" fill="#1D4ED8">任意时刻至多一个持有者</text>
+  <text x="138" y="139" text-anchor="middle" font-size="7.5" fill="#1D4ED8">由锁服务保证</text>
+  <text x="138" y="156" text-anchor="middle" font-size="7.5" fill="#1D4ED8">缺了它：两个写者同时进临界区</text>
+  <rect x="266" y="84" width="228" height="86" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="104" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">② 无死锁（liveness）</text>
+  <text x="380" y="122" text-anchor="middle" font-size="7.5" fill="#0F766E">持有者崩溃后锁最终可被获得</text>
+  <text x="380" y="139" text-anchor="middle" font-size="7.5" fill="#0F766E">由 TTL / 租约保证</text>
+  <text x="380" y="156" text-anchor="middle" font-size="7.5" fill="#0F766E">缺了它：一次崩溃永久停摆</text>
+  <rect x="508" y="84" width="228" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="622" y="104" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">③ 失败可判定</text>
+  <text x="622" y="122" text-anchor="middle" font-size="7.5" fill="#B91C1C">客户端能知道自己已不再持有</text>
+  <text x="622" y="139" text-anchor="middle" font-size="7.5" fill="#B91C1C">由使用方自己保证</text>
+  <text x="622" y="156" text-anchor="middle" font-size="7.5" fill="#B91C1C">缺了它：带着错觉继续写</text>
+  <rect x="24" y="196" width="712" height="72" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="216" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">锁是租约，不是所有权</text>
+  <text x="380" y="234" text-anchor="middle" font-size="7.5" fill="#334155">没有租约：崩溃后锁永不释放，可用性归零；有租约：崩溃能自动清理，但「活着但停住」会被误判为崩溃</text>
+  <text x="380" y="252" text-anchor="middle" font-size="7.5" fill="#334155">所以「我持有锁」的有效期 = 剩余 TTL − 做判断的时间 − 判断到写入的时间</text>
+  <text x="380" y="288" text-anchor="middle" font-size="10" fill="#0F172A" font-weight="bold">五种失效模式（第 1~3 种为本机实测，第 4~5 种需集群，未实测）</text>
+  <rect x="24" y="300" width="228" height="60" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.4"/>
+  <text x="138" y="318" text-anchor="middle" font-size="8" fill="#92400E" font-weight="bold">① 永久锁（无 TTL）</text>
+  <text x="138" y="334" text-anchor="middle" font-size="7.5" fill="#B45309">实测 TTL = -1，第二人永远 0</text>
+  <text x="138" y="350" text-anchor="middle" font-size="7.5" fill="#B45309">成因：SETNX 与 EXPIRE 分两步</text>
+  <rect x="266" y="300" width="228" height="60" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.4"/>
+  <text x="380" y="318" text-anchor="middle" font-size="8" fill="#92400E" font-weight="bold">② 误删他人锁</text>
+  <text x="380" y="334" text-anchor="middle" font-size="7.5" fill="#B45309">实测裸 DEL 返回 1，Lua 返回 0</text>
+  <text x="380" y="350" text-anchor="middle" font-size="7.5" fill="#B45309">成因：释放不校验持有者</text>
+  <rect x="508" y="300" width="228" height="60" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="622" y="318" text-anchor="middle" font-size="8" fill="#991B1B" font-weight="bold">③ 租约过期后双持有</text>
+  <text x="622" y="334" text-anchor="middle" font-size="7.5" fill="#B91C1C">实测 TTL 300ms + 停顿 450ms</text>
+  <text x="622" y="350" text-anchor="middle" font-size="7.5" fill="#B91C1C">成因：停顿超过 TTL（无故障也会发生）</text>
+  <rect x="24" y="372" width="344" height="52" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.4"/>
+  <text x="196" y="390" text-anchor="middle" font-size="8" fill="#5B21B6" font-weight="bold">④ 主从切换丢锁</text>
+  <text x="196" y="406" text-anchor="middle" font-size="7.5" fill="#6D28D9">异步复制：锁只在主库内存里，切换后新主没有</text>
+  <rect x="392" y="372" width="344" height="52" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.4"/>
+  <text x="564" y="390" text-anchor="middle" font-size="8" fill="#5B21B6" font-weight="bold">⑤ 脑裂双主</text>
+  <text x="564" y="406" text-anchor="middle" font-size="7.5" fill="#6D28D9">分区后两边各自产生一个主，各自发锁</text>
+  <defs>
+    <marker id="arw2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">分诊树：先分清「卡住」和「写错」</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 DLQ-A~DLQ-H；前者是可用性问题（可止血），后者是正确性问题（重启会毁证据）</text>
+  <rect x="300" y="78" width="180" height="42" rx="21" fill="#0F172A" stroke="#0F172A" stroke-width="1.5"/>
+  <text x="390" y="104" text-anchor="middle" font-size="10" fill="#FFFFFF" font-weight="bold">症状：卡住 / 变慢 / 写错</text>
+  <line x1="390" y1="120" x2="390" y2="140" stroke="#94A3B8" stroke-width="1.6"/>
+  <line x1="76" y1="140" x2="706" y2="140" stroke="#94A3B8" stroke-width="1.6"/>
+  <line x1="76" y1="140" x2="76" y2="158" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw5)"/>
+  <line x1="234" y1="140" x2="234" y2="158" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw5)"/>
+  <line x1="390" y1="140" x2="390" y2="158" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw5)"/>
+  <line x1="546" y1="140" x2="546" y2="158" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw5)"/>
+  <line x1="706" y1="140" x2="706" y2="158" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw5)"/>
+  <rect x="24" y="160" width="104" height="120" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="76" y="180" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">① 有锁没释放</text>
+  <text x="76" y="199" text-anchor="middle" font-size="7.5" fill="#1D4ED8">scan lock:*</text>
+  <text x="76" y="215" text-anchor="middle" font-size="7.5" fill="#1D4ED8">TTL = -1 或极大</text>
+  <text x="76" y="234" text-anchor="middle" font-size="7.5" fill="#1D4ED8">查 owner 是否存活</text>
+  <text x="76" y="253" text-anchor="middle" font-size="7.5" fill="#1D4ED8">确认后再生效删除</text>
+  <text x="76" y="271" text-anchor="middle" font-size="7.5" fill="#1D4ED8">禁止批量 DEL</text>
+  <rect x="146" y="160" width="176" height="120" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+  <text x="234" y="180" text-anchor="middle" font-size="8.5" fill="#115E59" font-weight="bold">② 有锁在排队</text>
+  <text x="234" y="199" text-anchor="middle" font-size="7.5" fill="#0F766E">等待 P99 涨、锁服务正常</text>
+  <text x="234" y="215" text-anchor="middle" font-size="7.5" fill="#0F766E">看持有时间 P99</text>
+  <text x="234" y="234" text-anchor="middle" font-size="7.5" fill="#0F766E">大概率：慢 SQL / 外部调用</text>
+  <text x="234" y="253" text-anchor="middle" font-size="7.5" fill="#0F766E">≈ 到达率 × 临界区时长</text>
+  <text x="234" y="271" text-anchor="middle" font-size="7.5" fill="#0F766E">大于 1 就该拆锁</text>
+  <rect x="338" y="160" width="104" height="120" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="390" y="180" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">③ 服务异常</text>
+  <text x="390" y="199" text-anchor="middle" font-size="7.5" fill="#B45309">--latency</text>
+  <text x="390" y="215" text-anchor="middle" font-size="7.5" fill="#B45309">INFO replication</text>
+  <text x="390" y="234" text-anchor="middle" font-size="7.5" fill="#B45309">是否刚切换</text>
+  <text x="390" y="253" text-anchor="middle" font-size="7.5" fill="#B45309">切换 = 丢锁前兆</text>
+  <rect x="458" y="160" width="176" height="120" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="546" y="180" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">④ 数据被写两次</text>
+  <text x="546" y="199" text-anchor="middle" font-size="7.5" fill="#B91C1C">两条记录时间差 &lt; TTL</text>
+  <text x="546" y="215" text-anchor="middle" font-size="7.5" fill="#B91C1C">查停顿（GC）与切换</text>
+  <text x="546" y="234" text-anchor="middle" font-size="7.5" fill="#B91C1C">查有无 last_token 闸门</text>
+  <text x="546" y="253" text-anchor="middle" font-size="7.5" fill="#B91C1C">无闸门 → 先止血再补</text>
+  <text x="546" y="271" text-anchor="middle" font-size="7.5" fill="#991B1B">有闸门被放行 → 查 token 单调性</text>
+  <rect x="650" y="160" width="86" height="120" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="693" y="180" text-anchor="middle" font-size="8.5" fill="#5B21B6" font-weight="bold">⑤ 任务没跑</text>
+  <text x="693" y="199" text-anchor="middle" font-size="7.5" fill="#6D28D9">无成功也无失败</text>
+  <text x="693" y="215" text-anchor="middle" font-size="7.5" fill="#6D28D9">看锁是否残留</text>
+  <text x="693" y="234" text-anchor="middle" font-size="7.5" fill="#6D28D9">holderIdentity</text>
+  <text x="693" y="253" text-anchor="middle" font-size="7.5" fill="#6D28D9">是否指向死实例</text>
+  <text x="693" y="271" text-anchor="middle" font-size="7.5" fill="#6D28D9">查 campaign 超时</text>
+  <rect x="24" y="300" width="712" height="54" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.5"/>
+  <text x="380" y="320" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">处置顺序：①②③ 是可用性问题 —— 可以先止血；④ 是正确性问题 —— 必须先抓现场再动</text>
+  <text x="380" y="338" text-anchor="middle" font-size="7.5" fill="#334155">主切换后最危险的动作是「赶紧重启旧主」：它会抹掉线程栈、日志与 last_token 状态，而那正是唯一的证据</text>
+  <rect x="24" y="364" width="712" height="52" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="380" y="384" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">十二项上线清单里最关键的一项：资源侧是否有 token 闸门</text>
+  <text x="380" y="402" text-anchor="middle" font-size="7.5" fill="#B91C1C">其余十一项都在降低失效概率，只有它在失效之后兜底——它决定故障时是「少执行一次」还是「多写错一次」</text>
+  <defs>
+    <marker id="arw5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

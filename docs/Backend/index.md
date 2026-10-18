@@ -24,3 +24,4 @@
 - [遗留系统改造](LegacyModernization/index.md)
 - [实时协作与冲突解决](RealtimeCollaboration/index.md)
 - [幂等与状态机工程](IdempotencyStateMachine/index.md)
+- [分布式锁与选主](DistributedLock/index.md)

@@ -1,5 +1,5 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
-import { Auth, DDD, DesignPatterns, DistributedCache, DotNet, Ecommerce, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, SpringCloud, WorkflowEngine } from "./backend";
+import { Auth, DDD, DesignPatterns, DistributedCache, DistributedLock, DotNet, Ecommerce, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, SpringCloud, WorkflowEngine } from "./backend";
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontOthers, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
@@ -92,7 +92,7 @@ export const sidebar = {
     {
       text: "后端",
       collapsed: true,
-      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...GatewayDeep, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...Ledger, ...DDD, ...WorkflowEngine, ...DistributedCache, ...ReactiveProgramming, ...HighConcurrency, ...LegacyModernization, ...RealtimeCollaboration, ...IdempotencyStateMachine],
+      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...GatewayDeep, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...Ledger, ...DDD, ...WorkflowEngine, ...DistributedCache, ...ReactiveProgramming, ...HighConcurrency, ...LegacyModernization, ...RealtimeCollaboration, ...IdempotencyStateMachine, ...DistributedLock],
     },
   ],
   "/docs/DB": [
@@ -190,6 +190,7 @@ export const sidebar = {
   "/docs/Backend/LegacyModernization": LegacyModernization,
   "/docs/Backend/RealtimeCollaboration": RealtimeCollaboration,
   "/docs/Backend/IdempotencyStateMachine": IdempotencyStateMachine,
+  "/docs/Backend/DistributedLock": DistributedLock,
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/Relational": Relational,
   "/docs/DB/Relational/SQLOptimization": SQLOptimization,

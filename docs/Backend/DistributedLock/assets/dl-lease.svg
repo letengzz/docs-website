@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">租约时间轴：一次 450ms 停顿如何造成双持有</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 DLL-A~DLL-H；本机 Redis 7.4.0 实测：TTL 300ms，停顿 450ms</text>
+  <line x1="60" y1="90" x2="720" y2="90" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="60" y="82" text-anchor="middle" font-size="7.5" fill="#64748B">0ms</text>
+  <text x="390" y="82" text-anchor="middle" font-size="7.5" fill="#64748B">300ms</text>
+  <text x="555" y="82" text-anchor="middle" font-size="7.5" fill="#64748B">450ms</text>
+  <text x="720" y="82" text-anchor="middle" font-size="7.5" fill="#64748B">600ms</text>
+  <line x1="60" y1="90" x2="60" y2="120" stroke="#CBD5E1" stroke-width="1.2"/>
+  <line x1="390" y1="90" x2="390" y2="120" stroke="#CBD5E1" stroke-width="1.2"/>
+  <line x1="555" y1="90" x2="555" y2="120" stroke="#CBD5E1" stroke-width="1.2"/>
+  <line x1="720" y1="90" x2="720" y2="120" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="24" y="150" font-size="9" fill="#0F172A" font-weight="bold">租约</text>
+  <rect x="60" y="136" width="330" height="28" rx="5" fill="#DCFCE7" stroke="#059669" stroke-width="1.4"/>
+  <text x="225" y="155" text-anchor="middle" font-size="8" fill="#065F46">A 的租约：TTL = 300ms（owner=A|1）</text>
+  <rect x="390" y="136" width="330" height="28" rx="5" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="555" y="155" text-anchor="middle" font-size="8" fill="#991B1B">租约已不存在（实测 PTTL = -2）</text>
+  <text x="24" y="205" font-size="9" fill="#0F172A" font-weight="bold">A</text>
+  <rect x="60" y="190" width="120" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="120" y="210" text-anchor="middle" font-size="8" fill="#1E3A8A">加锁成功</text>
+  <rect x="186" y="190" width="240" height="30" rx="5" fill="#FFFBEB" stroke="#D97706" stroke-width="1.4"/>
+  <text x="306" y="210" text-anchor="middle" font-size="8" fill="#92400E">停顿（GC / SIGSTOP / 挂起）450ms</text>
+  <rect x="432" y="190" width="290" height="30" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="577" y="210" text-anchor="middle" font-size="8" fill="#991B1B">醒来后释放 → 返回 0（已不是持有者）</text>
+  <text x="24" y="262" font-size="9" fill="#0F172A" font-weight="bold">B</text>
+  <rect x="60" y="247" width="486" height="30" rx="5" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="303" y="267" text-anchor="middle" font-size="8" fill="#475569">等待（锁被 A 持有）</text>
+  <rect x="552" y="247" width="170" height="30" rx="5" fill="#DCFCE7" stroke="#059669" stroke-width="1.4"/>
+  <text x="637" y="267" text-anchor="middle" font-size="8" fill="#065F46">抢到锁（token=2）</text>
+  <rect x="24" y="300" width="344" height="48" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="196" y="318" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">临界区重叠：A 与 B 同时认为自己在里面</text>
+  <text x="196" y="336" text-anchor="middle" font-size="7.5" fill="#B91C1C">A 唯一能发现的信号是「释放返回 0」——前提是它会去释放</text>
+  <rect x="392" y="300" width="344" height="48" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="564" y="318" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">T &gt; P + R + S</text>
+  <text x="564" y="336" text-anchor="middle" font-size="7.5" fill="#1D4ED8">T 租约 / P 最长停顿 / R 续期往返 / S 安全余量</text>
+  <rect x="24" y="360" width="712" height="44" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="380" y="378" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">Kubernetes 的一组工业取值：leaseDuration 15s &gt; renewDeadline 10s + 余量 5s，retryPeriod 2s（10 秒内可试 5 次）</text>
+  <text x="380" y="395" text-anchor="middle" font-size="7.5" fill="#334155">旧主在租约到期前 5 秒就主动停手——这 5 秒是「主动让位」，不是「等别人抢」</text>
+</svg>

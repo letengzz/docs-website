@@ -340,6 +340,7 @@ export const CompleteProject = [
           { text: "第 2 周起步 · 工程骨架与最小可跑集（BS-A~BS-H）", link: "/project/Complete/TeamBoard/Bootstrap/index.md" },
           { text: "第 2 周第 2 步 · 认证与租户成员关系（AT-A~AT-H）", link: "/project/Complete/TeamBoard/AuthTenantMember/index.md" },
           { text: "第 2 周第 3 步 · 请求作用域与观测信号（SG-A~SG-H）", link: "/project/Complete/TeamBoard/SignalScope/index.md" },
+          { text: "第 2 周第 4 步 · 看板与卡片读写接口（BC-A~BC-H）", link: "/project/Complete/TeamBoard/BoardCardApi/index.md" },
         ],
       },
       {

@@ -651,3 +651,21 @@ export const IdempotencyStateMachine = [
     ],
   },
 ];
+
+export const DistributedLock = [
+  {
+    text: "分布式锁与选主",
+    link: "/docs/Backend/DistributedLock/index.md",
+    items: [
+      { text: "概述：三性质与五种失效", link: "/docs/Backend/DistributedLock/Overview/index.md" },
+      { text: "三种实现与安全性来源", link: "/docs/Backend/DistributedLock/Implementations/index.md" },
+      { text: "租约与续期：TTL 三角", link: "/docs/Backend/DistributedLock/Lease/index.md" },
+      { text: "fencing token：失锁后的闸门", link: "/docs/Backend/DistributedLock/Fencing/index.md" },
+      { text: "选主与领导权", link: "/docs/Backend/DistributedLock/LeaderElection/index.md" },
+      { text: "脑裂与分区", link: "/docs/Backend/DistributedLock/SplitBrain/index.md" },
+      { text: "运行面：指标、演练与排查", link: "/docs/Backend/DistributedLock/Operations/index.md" },
+      { text: "实战：单例任务、库存扣减与主备切换", link: "/docs/Backend/DistributedLock/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/DistributedLock/FAQ/index.md" },
+    ],
+  },
+];
