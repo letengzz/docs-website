@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 446" width="760" height="446" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="446" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">告警设计：症状优于原因、三样必带与配额纪律</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 AD-A~AD-H；告警的目标不是「不漏」，是「每次都值得起来」</text>
+  <rect x="26" y="90" width="340" height="108" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="196" y="108.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">症状告警（留）</text>
+  <text x="196" y="125" text-anchor="middle" font-size="7.5" fill="#B91C1C">用户做不成事：下单失败率、同步延迟</text>
+  <text x="196" y="142.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">入口失败率、登录失败率</text>
+  <text x="196" y="159.5" text-anchor="middle" font-size="7.5" fill="#B91C1C"></text>
+  <text x="196" y="176.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">特点：与业务后果一一对应</text>
+  <rect x="394" y="90" width="340" height="108" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="564" y="108.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">原因告警（少留）</text>
+  <text x="564" y="125" text-anchor="middle" font-size="7.5" fill="#334155">CPU 高、GC 频繁、连接池满</text>
+  <text x="564" y="142.25" text-anchor="middle" font-size="7.5" fill="#334155"></text>
+  <text x="564" y="159.5" text-anchor="middle" font-size="7.5" fill="#334155">它们解释「为什么」，不回答「要不要起来」</text>
+  <text x="564" y="176.75" text-anchor="middle" font-size="7.5" fill="#334155">只作为症状告警的上下文，不单独叫人</text>
+  <rect x="26" y="226" width="226" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="139" y="244.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">每条告警必带三样</text>
+  <text x="139" y="261" text-anchor="middle" font-size="7.5" fill="#B45309">① 处置卡链接</text>
+  <text x="139" y="278.25" text-anchor="middle" font-size="7.5" fill="#B45309">② 影响面（谁受影响）</text>
+  <text x="139" y="295.5" text-anchor="middle" font-size="7.5" fill="#B45309">③ 是否可自动恢复</text>
+  <rect x="266" y="226" width="226" height="96" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="379" y="244.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">配额纪律</text>
+  <text x="379" y="261" text-anchor="middle" font-size="7.5" fill="#047857">每个服务 ≤ 7 条叫人告警</text>
+  <text x="379" y="278.25" text-anchor="middle" font-size="7.5" fill="#047857">新增一条必须删一条或给出理由</text>
+  <rect x="510" y="226" width="228" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="624" y="244.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">三个误配</text>
+  <text x="624" y="261" text-anchor="middle" font-size="7.5" fill="#6D28D9">阈值写死绝对值</text>
+  <text x="624" y="278.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">无 for 持续时间（抖动即叫）</text>
+  <text x="624" y="295.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">同一原因 5 条告警</text>
+  <rect x="26" y="348" width="712" height="86" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="382" y="366.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">告警疲劳的量化判据</text>
+  <text x="382" y="383" text-anchor="middle" font-size="7.5" fill="#1D4ED8">每周叫人次数与「实际需要人介入的比例」两个数一起看：</text>
+  <text x="382" y="400.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">介入比 &lt; 20% 说明噪声过大，&gt; 80% 且次数 &gt; 20 说明产品不稳——两种都要改，方向不同</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

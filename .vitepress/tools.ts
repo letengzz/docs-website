@@ -277,3 +277,21 @@ export const Toolchain = [
     ],
   },
 ];
+
+export const ObservabilityDriven = [
+  {
+    text: "观测驱动开发",
+    link: "/docs/Tools/ObservabilityDriven/index.md",
+    items: [
+      { text: "总览：三个反转与四类信号", link: "/docs/Tools/ObservabilityDriven/Overview/index.md" },
+      { text: "指标先行与口径", link: "/docs/Tools/ObservabilityDriven/MetricsFirst/index.md" },
+      { text: "埋点规范与基数控制", link: "/docs/Tools/ObservabilityDriven/Instrumentation/index.md" },
+      { text: "功能开关工程", link: "/docs/Tools/ObservabilityDriven/FeatureFlag/index.md" },
+      { text: "灰度度量与自动回滚", link: "/docs/Tools/ObservabilityDriven/GrayMetrics/index.md" },
+      { text: "实验设计与分桶", link: "/docs/Tools/ObservabilityDriven/Experiments/index.md" },
+      { text: "告警设计与配额", link: "/docs/Tools/ObservabilityDriven/AlertDesign/index.md" },
+      { text: "反馈闭环与指标腐化", link: "/docs/Tools/ObservabilityDriven/Loop/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Tools/ObservabilityDriven/FAQ/index.md" },
+    ],
+  },
+];

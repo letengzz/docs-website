@@ -177,6 +177,19 @@ docker kill -s HUP prometheus
 2. 停掉 node-exporter，30 秒后 `up{job="node"}` 变为 0。
 3. 在 Graph 页执行 `rate(node_cpu_seconds_total[5m])`，能看到 CPU 使用率曲线。
 
+## 与「观测驱动开发」专题的分工（第 158 天补充）
+
+本页是**查询与存储引擎**的说明（PromQL、序列模型、抓取、保留）；第 158 天交付的 [指标先行](/docs/Tools/ObservabilityDriven/MetricsFirst/index.md) 是**口径**的说明。两者最典型的交集是分位数——本页讲 `histogram_quantile` 怎么用，那边讲**为什么分位数不能跨实例取平均**。
+
+| 边界问题 | 归本页 | 归该专题 |
+| --- | --- | --- |
+| `histogram_quantile(0.99, ...)` 的写法与桶边界选择 | `le` 标签、桶设计、精度损失 | 判据是「多实例必须按桶聚合后再算」，不能对 P99 取平均 |
+| 序列数为什么这么大 | 抓取目标、`metric_relabel_configs`、`topk` 查法 | 原因分析：哪个标签是高基数、为什么它不该出现在标签里 |
+| 保留期与磁盘规划 | `retention.time` / `retention.size`、块压缩 | 不涉及 |
+| 「成功率」这个数怎么算 | 表达式层面怎么写 | 分母与排除项必须先定死，否则同一个表达式能算出 98.7% 与 99.9% |
+
+本页特有的一个坑：**PromQL 的时间窗口是左闭右开且对齐到步长**。查 `[5m]` 时实际覆盖的区间取决于 `step` 与求值时刻，两个「看起来一样」的查询在窗口边界上会差一两个样本。这解释了大部分「同一时刻两个面板数字不完全相等」的现象——它不是数据错误，是窗口没对齐。
+
 ## 参考资料
 
 - Prometheus 官方文档：https://prometheus.io/docs/

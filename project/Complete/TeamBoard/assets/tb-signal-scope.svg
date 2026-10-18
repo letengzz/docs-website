@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 472" width="760" height="472" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="472" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">请求作用域与观测信号：五步与五个自伤写法</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 SG-A~SG-H；没有作用域的快照，后面所有埋点都会缺维度</text>
+  <rect x="20" y="86" width="200" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="120" y="104.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">入站：一次请求</text>
+  <text x="120" y="121" text-anchor="middle" font-size="7.5" fill="#334155">X-Request-Id / traceparent</text>
+  <text x="120" y="138.25" text-anchor="middle" font-size="7.5" fill="#334155">Authorization: Bearer</text>
+  <text x="120" y="155.5" text-anchor="middle" font-size="7.5" fill="#334155">X-Tenant（仅本地）</text>
+  <rect x="244" y="86" width="240" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="364" y="104.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">① 解析与落域</text>
+  <text x="364" y="121" text-anchor="middle" font-size="7.5" fill="#1D4ED8">ScopeContext：tenant/user/board</text>
+  <text x="364" y="138.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">MDC：trace_id / tenant_id</text>
+  <text x="364" y="155.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">写入时机：过滤器最外层</text>
+  <rect x="508" y="86" width="232" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="624" y="104.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">② 开关快照</text>
+  <text x="624" y="121" text-anchor="middle" font-size="7.5" fill="#B45309">每请求读一次并缓存</text>
+  <text x="624" y="138.25" text-anchor="middle" font-size="7.5" fill="#B45309">随 Scope 一起传下去</text>
+  <text x="624" y="155.5" text-anchor="middle" font-size="7.5" fill="#B45309">不进缓存 key 就不失效</text>
+  <rect x="20" y="212" width="226" height="108" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="133" y="230.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">③ 四类信号（本项目）</text>
+  <text x="133" y="247" text-anchor="middle" font-size="7.5" fill="#4338CA">card_move_ms（拖动端到端）</text>
+  <text x="133" y="264.25" text-anchor="middle" font-size="7.5" fill="#4338CA">broadcast_lag_ms（广播滞后）</text>
+  <text x="133" y="281.5" text-anchor="middle" font-size="7.5" fill="#4338CA">board_event_dup（重复广播）</text>
+  <text x="133" y="298.75" text-anchor="middle" font-size="7.5" fill="#4338CA">tenant_qps（按租户切）</text>
+  <rect x="266" y="212" width="226" height="108" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="379" y="230.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">④ 出口：日志与头</text>
+  <text x="379" y="247" text-anchor="middle" font-size="7.5" fill="#0F766E">响应回写 X-Request-Id</text>
+  <text x="379" y="264.25" text-anchor="middle" font-size="7.5" fill="#0F766E">慢请求 &gt; 500 ms 打 warn</text>
+  <text x="379" y="281.5" text-anchor="middle" font-size="7.5" fill="#0F766E">日志必带 tenant_id</text>
+  <rect x="512" y="212" width="228" height="108" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="626" y="230.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">⑤ 五个自伤写法</text>
+  <text x="626" y="247" text-anchor="middle" font-size="7.5" fill="#B91C1C">在循环里读配置中心</text>
+  <text x="626" y="264.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">MDC 未清（线程池串味）</text>
+  <text x="626" y="281.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">把 board_id 当指标标签</text>
+  <text x="626" y="298.75" text-anchor="middle" font-size="7.5" fill="#B91C1C">开关值进缓存 key 未失效</text>
+  <text x="626" y="316" text-anchor="middle" font-size="7.5" fill="#B91C1C">异步线程丢 Scope</text>
+  <rect x="20" y="342" width="720" height="92" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="360.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">本步的判据落点</text>
+  <text x="380" y="377" text-anchor="middle" font-size="7.5" fill="#047857">SG-C：同一请求内所有日志的 trace_id 相同；SG-D：租户切换后 MDC 不残留上一条请求的值</text>
+  <text x="380" y="394.25" text-anchor="middle" font-size="7.5" fill="#047857">SG-G：board_id 不出现在任何指标标签里；SG-H：异步任务里的 Scope 由提交方显式传递</text>
+  <line x1="222" y1="134" x2="242" y2="134" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="486" y1="134" x2="506" y2="134" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="624" y1="184" x2="624" y2="210" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="248" y1="266" x2="264" y2="266" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="380" y="456" text-anchor="middle" font-size="9" fill="#334155">第 2 周第 3 步：先把「一次请求看得见」做出来，再做业务逻辑</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

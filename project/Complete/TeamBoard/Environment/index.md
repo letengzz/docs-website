@@ -158,7 +158,9 @@ volumes:
 
 ### 5.1 `.env` 内容
 
-```properties [.env.example]（复制为 .env 后填值；.env 本身不进版本控制）
+复制 `.env.example` 为 `.env` 后填值；`.env` 本身不进版本控制。
+
+```properties [.env.example]
 TZ=Asia/Shanghai
 SPRING_PROFILES_ACTIVE=local
 POSTGRES_DB=teamboard                       # 库名与用户都是 teamboard

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 450" width="760" height="450" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="450" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">灰度度量：分流口径、护栏与四条自动回滚条件</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据 GM-A~GM-H；所有阈值都写成「相对对照组」，绝对值阈值不可移植</text>
+  <rect x="24" y="88" width="220" height="90" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="134" y="106.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">分流口径</text>
+  <text x="134" y="123" text-anchor="middle" font-size="7.5" fill="#1D4ED8">按 tenant_id 取模（业务单元完整）</text>
+  <text x="134" y="140.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">不按 user_id（同租户被劈开）</text>
+  <rect x="268" y="88" width="224" height="90" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="380" y="106.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">两组必须同时看</text>
+  <text x="380" y="123" text-anchor="middle" font-size="7.5" fill="#4338CA">实验组与对照组的同一指标</text>
+  <text x="380" y="140.25" text-anchor="middle" font-size="7.5" fill="#4338CA">只看实验组 = 无法归因</text>
+  <rect x="512" y="88" width="222" height="90" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="623" y="106.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">护栏指标</text>
+  <text x="623" y="123" text-anchor="middle" font-size="7.5" fill="#B91C1C">错误率 / P99 / 关键业务失败数</text>
+  <text x="623" y="140.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">任一越线即停，不看主指标</text>
+  <rect x="24" y="210" width="340" height="132" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="194" y="228.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">自动回滚的四个数值条件</text>
+  <text x="194" y="245" text-anchor="middle" font-size="7.5" fill="#B45309">① 实验组错误率 &gt; 对照组 2 倍 且 样本 &gt; 1000</text>
+  <text x="194" y="262.25" text-anchor="middle" font-size="7.5" fill="#B45309">② 实验组 P99 &gt; 对照组 1.5 倍</text>
+  <text x="194" y="279.5" text-anchor="middle" font-size="7.5" fill="#B45309">③ 关键业务失败数 &gt; 0 且持续 5 分钟</text>
+  <text x="194" y="296.75" text-anchor="middle" font-size="7.5" fill="#B45309">④ 分流比例与预期偏差 &gt; 5%</text>
+  <text x="194" y="314" text-anchor="middle" font-size="7.5" fill="#B45309"></text>
+  <text x="194" y="331.25" text-anchor="middle" font-size="7.5" fill="#B45309">四条都用「与对照组比」，不用绝对值</text>
+  <rect x="392" y="210" width="342" height="132" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="563" y="228.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">为什么不用绝对值阈值</text>
+  <text x="563" y="245" text-anchor="middle" font-size="7.5" fill="#047857">绝对值阈值在低峰期永远不触发</text>
+  <text x="563" y="262.25" text-anchor="middle" font-size="7.5" fill="#047857">在高峰期永远在触发</text>
+  <text x="563" y="279.5" text-anchor="middle" font-size="7.5" fill="#047857"></text>
+  <text x="563" y="296.75" text-anchor="middle" font-size="7.5" fill="#047857">对照组是同一时刻、同一流量的自然对照</text>
+  <text x="563" y="314" text-anchor="middle" font-size="7.5" fill="#047857">它把「时段」这个变量消掉了</text>
+  <rect x="24" y="372" width="710" height="62" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="379" y="390.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">灰度的收量条件：主指标不劣 + 护栏不越 + 观察窗口覆盖一个业务高峰</text>
+  <text x="379" y="407" text-anchor="middle" font-size="7.5" fill="#0F766E">缺窗口这一条，最常见的结果是「白天全量、夜里出事」</text>
+  <line x1="246" y1="133" x2="266" y2="133" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="494" y1="133" x2="510" y2="133" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

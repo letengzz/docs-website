@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 444" width="760" height="444" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="444" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">三个反转：观测从「事后」挪到「事前」</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">判据是把这三句话变成评审时能问出口的问题，而不是口号</text>
+  <rect x="26" y="92" width="220" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="136" y="110.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">反转一：顺序</text>
+  <text x="136" y="127" text-anchor="middle" font-size="7.5" fill="#1D4ED8">功能上线后才想监控</text>
+  <text x="136" y="144.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">↓</text>
+  <text x="136" y="161.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">先写指标再写接口</text>
+  <rect x="268" y="92" width="224" height="96" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="380" y="110.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">反转二：问题</text>
+  <text x="380" y="127" text-anchor="middle" font-size="7.5" fill="#4338CA">「有没有报错」</text>
+  <text x="380" y="144.25" text-anchor="middle" font-size="7.5" fill="#4338CA">↓</text>
+  <text x="380" y="161.5" text-anchor="middle" font-size="7.5" fill="#4338CA">「用户有没有做成」</text>
+  <rect x="512" y="92" width="222" height="96" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="623" y="110.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">反转三：主人</text>
+  <text x="623" y="127" text-anchor="middle" font-size="7.5" fill="#0F766E">监控是运维的事</text>
+  <text x="623" y="144.25" text-anchor="middle" font-size="7.5" fill="#0F766E">↓</text>
+  <text x="623" y="161.5" text-anchor="middle" font-size="7.5" fill="#0F766E">指标是写代码的人的事</text>
+  <rect x="26" y="224" width="464" height="104" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="258" y="242.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">四类信号各自能回答什么（不能回答什么）</text>
+  <text x="258" y="259" text-anchor="middle" font-size="7.5" fill="#B45309">指标 metrics：多少、多久、涨了还是跌了 — 不告诉你「哪一次」</text>
+  <text x="258" y="276.25" text-anchor="middle" font-size="7.5" fill="#B45309">追踪 traces：这一次慢在哪一段 — 不告诉你「是不是普遍」</text>
+  <text x="258" y="293.5" text-anchor="middle" font-size="7.5" fill="#B45309">日志 logs：这一条为什么失败 — 不告诉你「有多少条」</text>
+  <text x="258" y="310.75" text-anchor="middle" font-size="7.5" fill="#B45309">事件 events（业务埋点）：用户做成了没有 — 不告诉你「服务健不健康」</text>
+  <rect x="512" y="224" width="222" height="104" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="623" y="242.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">选信号的顺序</text>
+  <text x="623" y="259" text-anchor="middle" font-size="7.5" fill="#047857">① 先问要回答什么问题</text>
+  <text x="623" y="276.25" text-anchor="middle" font-size="7.5" fill="#047857">② 再看哪类信号答得了</text>
+  <text x="623" y="293.5" text-anchor="middle" font-size="7.5" fill="#047857">③ 最后才选后端</text>
+  <text x="623" y="310.75" text-anchor="middle" font-size="7.5" fill="#047857"></text>
+  <text x="623" y="328" text-anchor="middle" font-size="7.5" fill="#047857">反例：先买 APM 再找用途</text>
+  <rect x="26" y="356" width="708" height="72" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="374.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">本专题的边界</text>
+  <text x="380" y="391" text-anchor="middle" font-size="7.5" fill="#334155">讲「决定看什么、怎么记、怎么用」；不讲 SDK 安装、后端选型、采样算法细节</text>
+  <text x="380" y="408.25" text-anchor="middle" font-size="7.5" fill="#334155">后三者分别在 Ops/Observability、Ops/Monitoring、Ops/Observability/Sampling</text>
+  <line x1="136" y1="190" x2="136" y2="222" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="190" x2="380" y2="222" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="622" y1="190" x2="622" y2="222" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

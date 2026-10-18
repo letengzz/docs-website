@@ -15,4 +15,5 @@
 - [依赖与安全治理](DependencyGovernance/index.md)
 - [代码质量平台](CodeQuality/index.md)
 - [自建工具链](Toolchain/index.md)
+- [观测驱动开发](ObservabilityDriven/index.md)
 - [其他](Others/index.md)

@@ -9,6 +9,6 @@
 - 容器桌面：Docker Desktop
 - 效率工具：Snipaste、Everything 等
 
-::: tip 待补充
-后续按计划补充接口调试、数据库客户端、效率工具等具体使用文档。
+::: info 本页的定位
+本页只做索引。上表这些工具的共同点是「**单点效率**」——单独看没有值得展开的工程化内容，所以不各自成页；真正需要展开的是它们的协作面：接口调试看 [接口调试工具](../APITools/index.md)，数据库访问看 [数据库客户端](../DatabaseClients/index.md)，批量与自动化看 [效率工具](../Efficiency/index.md)。
 :::
