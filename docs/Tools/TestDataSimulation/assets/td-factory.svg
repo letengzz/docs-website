@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="数据工厂四层生成器、引用图与体量估算">
+  <title>数据工厂：四层生成器与引用图</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="520" fill="#f8fafc"/>
+  <text x="450.0" y="32" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">数据工厂：四层生成器与引用图</text>
+  <rect x="30" y="76" width="120" height="50" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="90.0" y="105.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">字段层</text>
+  <rect x="164" y="76" width="336" height="50" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="332.0" y="105.5" font-size="10.4" font-weight="700" fill="#0f172a" text-anchor="middle">边界表 + 分布参数 + 派生种子 → 一个值</text>
+  <rect x="30" y="138" width="120" height="50" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="90.0" y="167.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">实体层</text>
+  <rect x="164" y="138" width="336" height="50" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="332.0" y="167.5" font-size="10.4" font-weight="700" fill="#0f172a" text-anchor="middle">字段组合 + 跨字段约束 → 一行</text>
+  <line x1="90" y1="126" x2="90" y2="136" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="30" y="200" width="120" height="50" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="90.0" y="229.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">图层</text>
+  <rect x="164" y="200" width="336" height="50" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="332.0" y="229.5" font-size="10.4" font-weight="700" fill="#0f172a" text-anchor="middle">引用图 + 基数 → 一批行（拓扑序）</text>
+  <line x1="90" y1="188" x2="90" y2="198" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="30" y="262" width="120" height="50" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="90.0" y="291.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">场景层</text>
+  <rect x="164" y="262" width="336" height="50" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="332.0" y="291.5" font-size="10.4" font-weight="700" fill="#0f172a" text-anchor="middle">业务路径 → 一套数据 + 断言</text>
+  <line x1="90" y1="250" x2="90" y2="260" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="530" y="72" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">引用图（按拓扑序生成）</text>
+  <rect x="530" y="88" width="74" height="34" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="567.0" y="109.5" font-size="10.4" font-weight="700" fill="#0f172a" text-anchor="middle">tenant</text>
+  <rect x="616" y="88" width="74" height="34" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="653.0" y="109.5" font-size="10.4" font-weight="700" fill="#0f172a" text-anchor="middle">user</text>
+  <rect x="702" y="88" width="74" height="34" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="739.0" y="109.5" font-size="10.4" font-weight="700" fill="#0f172a" text-anchor="middle">board</text>
+  <rect x="788" y="88" width="74" height="34" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="825.0" y="109.5" font-size="10.4" font-weight="700" fill="#0f172a" text-anchor="middle">card</text>
+  <line x1="604" y1="105" x2="616" y2="105" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <line x1="690" y1="105" x2="702" y2="105" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <line x1="776" y1="105" x2="788" y2="105" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="788" y="136" width="74" height="30" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="825.0" y="155.5" font-size="9.4" font-weight="700" fill="#0f172a" text-anchor="middle">comment</text>
+  <rect x="788" y="174" width="74" height="30" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="825.0" y="193.5" font-size="9.4" font-weight="700" fill="#0f172a" text-anchor="middle">attach</text>
+  <line x1="825" y1="122" x2="825" y2="136" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <line x1="840" y1="122" x2="840" y2="174" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="530" y="214" width="332" height="44" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="696.0" y="240.5" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">闭合率：每个外键悬空数必须为 0</text>
+  <text x="30" y="344" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">本机实测（PostgreSQL 18.6，100 万行 × 4 列）</text>
+  <rect x="30" y="356" width="405" height="76" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="232.5" y="385.0" font-size="11.8" font-weight="700" fill="#0f172a" text-anchor="middle">COPY 进无索引表：2,549 ms</text>
+  <text x="232.5" y="400.0" font-size="9.8" fill="#475569" text-anchor="middle">≈ 39.2 万行/秒，堆 66 MB</text>
+  <text x="232.5" y="413.0" font-size="9.8" fill="#475569" text-anchor="middle">造数阶段先不建索引</text>
+  <rect x="465" y="356" width="405" height="76" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="667.5" y="385.0" font-size="11.8" font-weight="700" fill="#0f172a" text-anchor="middle">INSERT 进带 3 索引表：10,507 ms</text>
+  <text x="667.5" y="400.0" font-size="9.8" fill="#475569" text-anchor="middle">≈ 9.5 万行/秒，慢 4.1 倍</text>
+  <text x="667.5" y="413.0" font-size="9.8" fill="#475569" text-anchor="middle">堆 65 MB + 索引 58 MB = 123 MB（1.88×）</text>
+  <rect x="30" y="448" width="840" height="56" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="450.0" y="473.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">体积 ≈ 行数 × 行宽 × 1.9（索引系数）× 1.25（膨胀余量）</text>
+  <text x="450.0" y="488.5" font-size="9.8" fill="#475569" text-anchor="middle">2,000 万订单 × 66 B × 1.9 × 1.25 ≈ 3.1 GB</text>
+</svg>

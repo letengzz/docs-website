@@ -31,3 +31,17 @@
 ## 相关专题与分工
 
 - [云原生 · 容器服务](../CloudNative/ContainerService/index.md)：本专题讲**交付工具链本身**——Helm 怎么打包与分发、Operator 怎么把运维经验写成控制器、服务网格怎么治理流量与安全、GitOps（Argo CD）怎么把 Git 当唯一事实来源；该页讲**云上的托管控制面怎么买**——控制面按什么计费、节点怎么弹、Spot 与承诺折扣怎么用。两者是「工具怎么用」与「资源从哪来、钱怎么花」的关系：本专题负责应用层交付，该页负责承载它的托管底座，比如本专题的 Helm/Argo CD 交付目标，往往就是该页讲的托管集群。
+
+## 与「测试数据与仿真环境」专题的分工（第 165 天补充）
+
+| 专题 | 负责什么 | 与本页的边界 |
+| --- | --- | --- |
+| 本页 | 镜像、调度、资源与网络、发布 | —— |
+| [测试数据与仿真环境](../../Tools/TestDataSimulation/index.md) | 什么时候该为**一次测试**拉起一套环境 | 本页讲「怎么把容器跑起来」；那边讲「测试需要哪几个容器、何时销毁」 |
+| [环境隔离](../../Tools/TestDataSimulation/EnvironmentIsolation/index.md) | 四层隔离、租约、配额、成本账 | 命名空间与配额的具体用法规避串扰，在那边 |
+| [Testcontainers](../../Tools/TestDataSimulation/EnvironmentIsolation/index.md) | 进程级按需环境与复用陷阱 | 集群里做按需环境成本更高，先看那边的成本表 |
+
+::: danger 本页特有的坑：并行 job 共用一个 namespace
+K8s 里两个并行 CI job 落在同一 namespace，Service 名相同（`db`、`cache`），后启动的会覆盖前一个的 Endpoints，于是 A 的测试连到了 B 的库。
+按 run 隔离命名空间（`ci-{pipelineId}`），并给 namespace 配 `ResourceQuota`——隔离与配额要同时设。
+

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-label="流量回放的四个要素、副作用隔离与四种比对">
+  <title>回放四要素：少一个就退化成「发一堆请求」</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="470" fill="#f8fafc"/>
+  <text x="450.0" y="32" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">回放四要素：少一个就退化成「发一堆请求」</text>
+  <rect x="30" y="74" width="190" height="66" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="125.0" y="98.0" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">流量</text>
+  <text x="125.0" y="113.0" font-size="9.8" fill="#475569" text-anchor="middle">录制时脱敏</text>
+  <text x="125.0" y="126.0" font-size="9.8" fill="#475569" text-anchor="middle">保留结构</text>
+  <line x1="220" y1="107" x2="240" y2="107" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="242" y="74" width="190" height="66" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="337.0" y="98.0" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">时间</text>
+  <text x="337.0" y="113.0" font-size="9.8" fill="#475569" text-anchor="middle">注入 Clock</text>
+  <text x="337.0" y="126.0" font-size="9.8" fill="#475569" text-anchor="middle">或归一化</text>
+  <line x1="432" y1="107" x2="452" y2="107" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="454" y="74" width="190" height="66" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="549.0" y="98.0" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">身份</text>
+  <text x="549.0" y="113.0" font-size="9.8" fill="#475569" text-anchor="middle">租户 / 用户映射</text>
+  <text x="549.0" y="126.0" font-size="9.8" fill="#475569" text-anchor="middle">确定性</text>
+  <line x1="644" y1="107" x2="664" y2="107" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="666" y="74" width="190" height="66" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="761.0" y="98.0" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">世界</text>
+  <text x="761.0" y="113.0" font-size="9.8" fill="#475569" text-anchor="middle">独立库 / 桩</text>
+  <text x="761.0" y="126.0" font-size="9.8" fill="#475569" text-anchor="middle">独立前缀</text>
+  <rect x="330" y="168" width="240" height="52" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="450.0" y="191.5" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">回放引擎</text>
+  <text x="450.0" y="206.5" font-size="9.8" fill="#475569" text-anchor="middle">按录制顺序重放</text>
+  <path d="M 125 140 L 450 168" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <path d="M 337 140 L 450 168" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <path d="M 549 140 L 450 168" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <path d="M 761 140 L 450 168" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="30" y="258" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">副作用隔离四策略（本例：1 万条中 1,580 条写请求 = 15.8%）</text>
+  <rect x="30" y="270" width="190" height="58" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="125.0" y="296.5" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">只读回放</text>
+  <text x="125.0" y="311.5" font-size="9.8" fill="#475569" text-anchor="middle">丢弃写请求 · 风险 0</text>
+  <rect x="242" y="270" width="190" height="58" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="337.0" y="296.5" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">重定向沙箱</text>
+  <text x="337.0" y="311.5" font-size="9.8" fill="#475569" text-anchor="middle">沙箱会被写脏</text>
+  <rect x="454" y="270" width="190" height="58" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="549.0" y="296.5" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">影子表</text>
+  <text x="549.0" y="311.5" font-size="9.8" fill="#475569" text-anchor="middle">保真度高 · 成本高</text>
+  <rect x="666" y="270" width="190" height="58" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="761.0" y="296.5" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">记录不执行</text>
+  <text x="761.0" y="311.5" font-size="9.8" fill="#475569" text-anchor="middle">只比对会不会被接受</text>
+  <text x="30" y="362" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">四种比对粒度（门禁只挂前两档）</text>
+  <rect x="30" y="374" width="190" height="46" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="125.0" y="401.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">状态码 · 阻断</text>
+  <rect x="242" y="374" width="190" height="46" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="337.0" y="401.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">结构 · 阻断</text>
+  <rect x="454" y="374" width="190" height="46" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="549.0" y="401.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">字段值 · 报告</text>
+  <rect x="666" y="374" width="190" height="46" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="761.0" y="401.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">不变量 · 强断言</text>
+</svg>

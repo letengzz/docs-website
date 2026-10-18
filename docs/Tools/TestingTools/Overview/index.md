@@ -185,6 +185,19 @@ jobs:
 - [项目交付 · 测试策略与门禁](../../../Others/ProjectDelivery/Testing/index.md)：该页给**职责边界与数据隔离取舍**；本页给**能照做的工具细节**。
 - [前端性能优化](../../../Frontend/Others/PerformanceOptimization/index.md)：该页负责**前端渲染与加载性能**；性能测试页负责**服务端容量与响应分位**，两者互补不重叠。
 
+## 与「测试数据与仿真环境」专题的分工（第 165 天补充）
+
+| 专题 | 负责什么 | 与本页的边界 |
+| --- | --- | --- |
+| 本页 | JMeter / Selenium / 接口自动化的选型与用法 | —— |
+| [测试数据与仿真环境](../../TestDataSimulation/index.md) | 测试数据的生成、脱敏、版本化与环境隔离 | 本页回答「**用什么跑**」；那边回答「**跑在什么数据上**」 |
+| [数据工厂](../../TestDataSimulation/DataFactory/index.md) | 四层生成器、分布、单射、引用图 | 工具的 CSV 数据集从哪来，去那边 |
+| [环境隔离](../../TestDataSimulation/EnvironmentIsolation/index.md) | 按需环境、配额、压测独占 | Selenium/JMeter 需要的浏览器与中间件怎么拉起，在那边 |
+
+::: danger 本页特有的坑：压测脚本里的随机函数
+JMeter 的 `__Random`、k6 的 `Math.random()` 每次运行都给不同值，压测结果因此不可比——上一轮 p99 是 80 ms、这一轮 120 ms，你无法判断是代码变慢还是数据变大。
+压测脚本里的「随机」必须来自**固定种子的数据集文件**，而不是运行时函数。
+
 ## 参考资料
 
 - 测试金字塔（Martin Fowler）：https://martinfowler.com/bliki/TestPyramid.html

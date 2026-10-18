@@ -295,3 +295,21 @@ export const ObservabilityDriven = [
     ],
   },
 ];
+
+export const TestDataSimulation = [
+  {
+    text: "测试数据与仿真环境",
+    link: "/docs/Tools/TestDataSimulation/index.md",
+    items: [
+      { text: "总览：三个约束与四层结构", link: "/docs/Tools/TestDataSimulation/Overview/index.md" },
+      { text: "数据脱敏：从打码到可评估的去标识", link: "/docs/Tools/TestDataSimulation/DataMasking/index.md" },
+      { text: "数据工厂：可复算的造数程序", link: "/docs/Tools/TestDataSimulation/DataFactory/index.md" },
+      { text: "数据集与夹具的版本化", link: "/docs/Tools/TestDataSimulation/DatasetVersioning/index.md" },
+      { text: "环境隔离：让失败不越界", link: "/docs/Tools/TestDataSimulation/EnvironmentIsolation/index.md" },
+      { text: "契约仿真：收口桩与实现的漂移", link: "/docs/Tools/TestDataSimulation/ContractSimulation/index.md" },
+      { text: "流量回放：重建一个能容纳请求的世界", link: "/docs/Tools/TestDataSimulation/TrafficReplay/index.md" },
+      { text: "实战：多租户看板的数据流水线", link: "/docs/Tools/TestDataSimulation/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/TestDataSimulation/FAQ/index.md" },
+    ],
+  },
+];

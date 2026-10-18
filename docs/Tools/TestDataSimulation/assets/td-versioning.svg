@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="数据集版本化：三类数据、两种指纹与四个隐藏变量">
+  <title>三类数据、两种指纹、四个隐藏变量</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="520" fill="#f8fafc"/>
+  <text x="450.0" y="32" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">三类数据、两种指纹、四个隐藏变量</text>
+  <rect x="30" y="76" width="264" height="62" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="162.0" y="98.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">基线种子</text>
+  <text x="162.0" y="113.0" font-size="9.8" fill="#475569" text-anchor="middle">SQL + 文件指纹</text>
+  <text x="162.0" y="126.0" font-size="9.8" fill="#475569" text-anchor="middle">进 Git</text>
+  <rect x="318" y="76" width="264" height="62" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="450.0" y="98.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">用例夹具</text>
+  <text x="450.0" y="113.0" font-size="9.8" fill="#475569" text-anchor="middle">builder 组装</text>
+  <text x="450.0" y="126.0" font-size="9.8" fill="#475569" text-anchor="middle">进 Git（代码）</text>
+  <rect x="606" y="76" width="264" height="62" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="738.0" y="98.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">生成产物</text>
+  <text x="738.0" y="113.0" font-size="9.8" fill="#475569" text-anchor="middle">配置 + 种子 + 指纹</text>
+  <text x="738.0" y="126.0" font-size="9.8" fill="#475569" text-anchor="middle">不进 Git</text>
+  <text x="30" y="168" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">两种指纹（本机实测：同一份 100 万行数据）</text>
+  <rect x="30" y="180" width="405" height="82" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="232.5" y="212.0" font-size="11.8" font-weight="700" fill="#0f172a" text-anchor="middle">pg_dump -Fc 文件哈希 ✗</text>
+  <text x="232.5" y="227.0" font-size="9.8" fill="#475569" text-anchor="middle">两次导出：b4143947… / cd32c571…（不同）</text>
+  <text x="232.5" y="240.0" font-size="9.8" fill="#475569" text-anchor="middle">耗时 2,707 / 2,750 ms，16.2 MB</text>
+  <rect x="465" y="180" width="405" height="82" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="667.5" y="212.0" font-size="11.8" font-weight="700" fill="#0f172a" text-anchor="middle">逻辑指纹 COPY … ORDER BY pk ✓</text>
+  <text x="667.5" y="227.0" font-size="9.8" fill="#475569" text-anchor="middle">两次：d8a8e8975fc4a0cf（相同），851 / 803 ms</text>
+  <text x="667.5" y="240.0" font-size="9.8" fill="#475569" text-anchor="middle">改一行 → 3f91ee3618415761（变了）</text>
+  <text x="30" y="292" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">四个隐藏变量（偶发红的真正来源）</text>
+  <rect x="30" y="304" width="190" height="54" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="125.0" y="328.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">时钟</text>
+  <text x="125.0" y="343.5" font-size="9.8" fill="#475569" text-anchor="middle">注入 Clock</text>
+  <rect x="242" y="304" width="190" height="54" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="337.0" y="328.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">随机</text>
+  <text x="337.0" y="343.5" font-size="9.8" fill="#475569" text-anchor="middle">派生种子</text>
+  <rect x="454" y="304" width="190" height="54" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="549.0" y="328.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">序列</text>
+  <text x="549.0" y="343.5" font-size="9.8" fill="#475569" text-anchor="middle">每轮重建</text>
+  <rect x="666" y="304" width="190" height="54" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="761.0" y="328.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">外部响应</text>
+  <text x="761.0" y="343.5" font-size="9.8" fill="#475569" text-anchor="middle">契约桩</text>
+  <rect x="30" y="382" width="840" height="56" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="450.0" y="407.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">快照 vs 重建：不是二选一，是两种职责</text>
+  <text x="450.0" y="422.5" font-size="9.8" fill="#475569" text-anchor="middle">快照：大规模基线、结构稳定；重建：用例夹具、需要随迁移脚本演进</text>
+  <rect x="30" y="452" width="840" height="52" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="450.0" y="475.5" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">三类数据都要有指纹，但只有前两类需要人读 diff</text>
+  <text x="450.0" y="490.5" font-size="9.8" fill="#475569" text-anchor="middle">生成产物由「配置 + 种子」复算，进 Git 只会让仓库膨胀且无法 review</text>
+</svg>

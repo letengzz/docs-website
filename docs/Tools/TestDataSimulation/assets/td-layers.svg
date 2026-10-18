@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="测试数据四层结构及各层失败症状">
+  <title>四层结构：每层解决不同的病因</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="500" fill="#f8fafc"/>
+  <text x="450.0" y="32" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">四层结构：每层解决不同的病因</text>
+  <text x="30" y="62" font-size="11" fill="#475569" text-anchor="start" font-weight="400">层</text>
+  <text x="150" y="62" font-size="11" fill="#475569" text-anchor="start" font-weight="400">回答的问题</text>
+  <text x="400" y="62" font-size="11" fill="#475569" text-anchor="start" font-weight="400">典型产出</text>
+  <text x="650" y="62" font-size="11" fill="#475569" text-anchor="start" font-weight="400">失败时的症状</text>
+  <rect x="30" y="78" width="96" height="66" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="78.0" y="115.5" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">数据层</text>
+  <text x="150" y="108" font-size="11.2" fill="#0f172a" text-anchor="start" font-weight="400">用什么数据</text>
+  <text x="400" y="108" font-size="10.6" fill="#475569" text-anchor="start" font-weight="400">脱敏映射 / 生成器 / 指纹</text>
+  <text x="650" y="108" font-size="10.6" fill="#be123c" text-anchor="start" font-weight="400">覆盖不到边界、库里有真 PII</text>
+  <rect x="30" y="166" width="96" height="66" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="78.0" y="203.5" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">环境层</text>
+  <text x="150" y="196" font-size="11.2" fill="#0f172a" text-anchor="start" font-weight="400">跑在哪套资源上</text>
+  <text x="400" y="196" font-size="10.6" fill="#475569" text-anchor="start" font-weight="400">按需环境 / 命名空间 / 租约</text>
+  <text x="650" y="196" font-size="10.6" fill="#be123c" text-anchor="start" font-weight="400">环境串扰、压测打挂别人</text>
+  <line x1="78" y1="144" x2="78" y2="162" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="30" y="254" width="96" height="66" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="78.0" y="291.5" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">依赖层</text>
+  <text x="150" y="284" font-size="11.2" fill="#0f172a" text-anchor="start" font-weight="400">外部系统怎么响应</text>
+  <text x="400" y="284" font-size="10.6" fill="#475569" text-anchor="start" font-weight="400">契约桩 / 状态机 / 故障注入</text>
+  <text x="650" y="284" font-size="10.6" fill="#be123c" text-anchor="start" font-weight="400">mock 通过、集成失败</text>
+  <line x1="78" y1="232" x2="78" y2="250" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="30" y="342" width="96" height="66" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="78.0" y="379.5" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">编排层</text>
+  <text x="150" y="372" font-size="11.2" fill="#0f172a" text-anchor="start" font-weight="400">谁准备、何时回收</text>
+  <text x="400" y="372" font-size="10.6" fill="#475569" text-anchor="start" font-weight="400">make seed / setup-teardown</text>
+  <text x="650" y="372" font-size="10.6" fill="#be123c" text-anchor="start" font-weight="400">数据越积越多、回收遗漏</text>
+  <line x1="78" y1="320" x2="78" y2="338" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="30" y="434" width="840" height="46" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="450.0" y="461.5" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">顺序不能颠倒：先把数据层做对，再谈环境</text>
+</svg>

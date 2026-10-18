@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="四场景压测与池层断言：carry 与 mismatch 两个计数器">  <title>压测四场景与池层断言</title>  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker></defs>  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>  <rect x="0" y="0" width="900" height="520" fill="#f8fafc"/>  <text x="450.0" y="32" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">压测四场景与池层断言：让隔离在并发下仍成立</text>  <rect x="30" y="66" width="236" height="50" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="148.0" y="88.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">S1 列表翻页</text>
+  <text x="148.0" y="103.5" font-size="9.6" fill="#475569" text-anchor="middle">120 RPS · p99 ≤ 120ms</text>
+  <rect x="30" y="128" width="236" height="50" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="148.0" y="150.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">S2 拖动写入</text>
+  <text x="148.0" y="165.5" font-size="9.6" fill="#475569" text-anchor="middle">30 RPS · p99 ≤ 80ms</text>
+  <rect x="30" y="190" width="236" height="50" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="148.0" y="212.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">S3 评论写入</text>
+  <text x="148.0" y="227.5" font-size="9.6" fill="#475569" text-anchor="middle">20 RPS · p99 ≤ 150ms</text>
+  <rect x="30" y="252" width="236" height="50" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="148.0" y="274.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">S4 附件直传</text>
+  <text x="148.0" y="289.5" font-size="9.6" fill="#475569" text-anchor="middle">10 RPS · p99 ≤ 300ms</text>
+  <rect x="300" y="128" width="150" height="86" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="375.0" y="162.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">k6 2.x</text>
+  <text x="375.0" y="177.0" font-size="9.6" fill="#475569" text-anchor="middle">四 scenario 并行</text>
+  <text x="375.0" y="190.0" font-size="9.6" fill="#475569" text-anchor="middle">constant-arrival-rate</text>
+  <line x1="266" y1="91" x2="300" y2="158" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <line x1="266" y1="153" x2="300" y2="158" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <line x1="266" y1="215" x2="300" y2="158" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <line x1="266" y1="277" x2="300" y2="158" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="490" y="110" width="170" height="72" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="575.0" y="137.0" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">应用（loadtest）</text>
+  <text x="575.0" y="152.0" font-size="9.6" fill="#475569" text-anchor="middle">20 连接 × 200 并发</text>
+  <text x="575.0" y="165.0" font-size="9.6" fill="#475569" text-anchor="middle">池故意调到 5</text>
+  <line x1="450" y1="170" x2="490" y2="150" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="490" y="208" width="170" height="64" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="575.0" y="237.5" font-size="10.4" font-weight="700" fill="#0f172a" text-anchor="middle">TenantAwareDataSource</text>
+  <text x="575.0" y="252.5" font-size="9.6" fill="#475569" text-anchor="middle">借出时读上一位租户</text>
+  <line x1="575" y1="182" x2="575" y2="208" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <rect x="700" y="66" width="170" height="60" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="785.0" y="93.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">carry_total</text>
+  <text x="785.0" y="108.5" font-size="9.6" fill="#475569" text-anchor="middle">上一位租户不同</text>
+  <rect x="700" y="138" width="170" height="60" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="785.0" y="165.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">corrected_total</text>
+  <text x="785.0" y="180.5" font-size="9.6" fill="#475569" text-anchor="middle">随后 SET LOCAL 纠正</text>
+  <rect x="700" y="210" width="170" height="60" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="785.0" y="237.5" font-size="10.6" font-weight="700" fill="#0f172a" text-anchor="middle">mismatch_total</text>
+  <text x="785.0" y="252.5" font-size="9.6" fill="#475569" text-anchor="middle">没纠正且读到错行 · 必须 = 0</text>
+  <line x1="660" y1="240" x2="700" y2="96" stroke="#be123c" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="660" y1="240" x2="700" y2="168" stroke="#be123c" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="660" y1="240" x2="700" y2="240" stroke="#be123c" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="30" y="320" font-size="11.5" fill="#be123c" text-anchor="start" font-weight="700">恒等式：carry = corrected + mismatch（carry 是正常交接，mismatch 才是事故）</text>
+  <rect x="30" y="336" width="840" height="64" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="450.0" y="359.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">跨租户矩阵：18 格（HTTP 层）+ 4 格（连接层）= 22 格</text>
+  <text x="450.0" y="374.0" font-size="9.6" fill="#475569" text-anchor="middle">C1 连接复用跨请求 · C2 池耗尽等待队列 · C3 异步线程池丢上下文 · C4 批量写入混批</text>
+  <text x="450.0" y="387.0" font-size="9.6" fill="#475569" text-anchor="middle">这四格 HTTP 用例永远测不出来——串租户发生在「鉴权通过、拿到连接之后」</text>
+  <rect x="30" y="412" width="405" height="58" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="232.5" y="438.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">四条断言进 CI</text>
+  <text x="232.5" y="453.5" font-size="9.6" fill="#475569" text-anchor="middle">mismatch = 0 · 恒等式 · dropped_iterations = 0 · k6 退出码</text>
+  <rect x="465" y="412" width="405" height="58" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="667.5" y="438.5" font-size="11.4" font-weight="700" fill="#0f172a" text-anchor="middle">压测必须独占</text>
+  <text x="667.5" y="453.5" font-size="9.6" fill="#475569" text-anchor="middle">独立实例 + 独立 Redis + env_lease 租约</text>
+  <text x="30" y="498" font-size="10.6" fill="#475569" text-anchor="start" font-weight="400">读法：压测跑完 → 查数据侧的 mismatch → 再看指标恒等式（计数器是累积的，中途读会读到半截）</text>
+</svg>

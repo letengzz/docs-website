@@ -152,3 +152,17 @@ python cleanup_shadow.py && python cleanup_shadow.py
 - [分布式事务专题](../../../Backend/Microservices/DistributedTransaction/index.md)（压测往往会把跨库一致性问题暴露出来）
 - [完整项目交付 · 测试策略与门禁](../../../Others/ProjectDelivery/Testing/index.md)
 - [中间件全景与选型](../Overview/index.md)｜[读写分离工程化](../ReadWriteSplit/index.md)｜[实战：为订单服务接入中间件](../Practice/index.md)
+
+## 与「测试数据与仿真环境」专题的分工（第 165 天补充）
+
+| 专题 | 负责什么 | 与本页的边界 |
+| --- | --- | --- |
+| 本页 | 影子库/影子表的透传、压测标、中间件侧配置、清理与容量 | —— |
+| [测试数据与仿真环境](../../../Tools/TestDataSimulation/index.md) | 造出来的、可提交进仓库的测试状态 | 本页是**生产流量的旁路复制**（真数据、真写入）；那边是**声明式重建**（假数据、可复算） |
+| [流量回放](../../../Tools/TestDataSimulation/TrafficReplay/index.md) | 录制、脱敏、时间注入、副作用隔离、四种比对 | 本页用影子库承接**压测流量**；那边用回放验证**行为差异**，目的不同 |
+| [数据脱敏](../../../Tools/TestDataSimulation/DataMasking/index.md) | 一致性映射、k-匿名、分级结论 | 影子库里的数据是生产数据，**必须先脱敏再落盘**，规则引用那边 |
+
+::: danger 本页特有的坑：只清主表，影子表越积越多
+影子表往往不在应用的清理逻辑里（应用根本不知道它存在）。压测跑十轮，影子表攒下十轮数据，某天 `count(*)` 突然翻十倍，被误判成「业务数据暴增」。
+清理任务必须**按影子表清单**逐表清，并在清完后断言归零——清单漏一张，这个坑就复现一次。
+

@@ -166,6 +166,19 @@
 
 本页特有的一个坑：治理体系里的「数据生命周期」经常被理解成「元数据打标签」，但标签不会删数据。**没有任何自动任务消费的标签等于注释**——判据是「这个标签能不能被一条 SQL 或一个定时任务读出来执行」。
 
+## 与「测试数据与仿真环境」专题的分工（第 165 天补充）
+
+| 专题 | 负责什么 | 与本页的边界 |
+| --- | --- | --- |
+| 本页 | 元数据、血缘、质量规则、分级分类标准 | —— |
+| [测试数据与仿真环境](../../Tools/TestDataSimulation/index.md) | 把分级**变成可执行的脱敏规则** | 本页定「这一列是几级」；那边定「几级用什么算法」 |
+| [数据脱敏](../../Tools/TestDataSimulation/DataMasking/index.md) | 六类算法、一致性映射、分级结论 | 分级是输入，脱敏是动作 |
+| [数据集版本化](../../Tools/TestDataSimulation/DatasetVersioning/index.md) | 指纹、changelog、清理责任 | 血缘回答「数据从哪来」；指纹回答「这份是不是那一份」 |
+
+::: danger 本页特有的坑：分级了但没有规则
+把某列标成 L3（敏感）却没有任何脱敏规则，等于给了一张「已分类」的合格证，风险一分没降。
+分级的验收不是「表里有这一列」，而是「这一级有对应的处理动作，且能查到执行记录」。
+
 ## 参考资料
 
 - DAMA International，*DAMA-DMBOK: Data Management Body of Knowledge*（2nd Edition, Revised）：<https://www.dama.org/cpages/body-of-knowledge>
