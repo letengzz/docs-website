@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img" aria-label="一次提交到另一个浏览器的五跳与两个可丢点">
+  <defs>
+    <marker id="r1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+    <marker id="r2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">五跳链路：第 ③④ 跳会丢，所以客户端必须能补</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11.5">
+    <rect x="30" y="70" width="150" height="58" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="105" y="94" text-anchor="middle" font-weight="600" fill="#1d4ed8">① 事务提交</text>
+    <text x="105" y="114" text-anchor="middle" font-size="10" fill="#475569">cards + events + outbox</text>
+
+    <rect x="210" y="70" width="150" height="58" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="285" y="94" text-anchor="middle" font-weight="600" fill="#1d4ed8">② afterCommit</text>
+    <text x="285" y="114" text-anchor="middle" font-size="10" fill="#475569">本实例订阅者</text>
+
+    <rect x="390" y="70" width="150" height="58" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="465" y="94" text-anchor="middle" font-weight="600" fill="#b91c1c">③ PUBLISH</text>
+    <text x="465" y="114" text-anchor="middle" font-size="10" fill="#475569">t.7.board.1（会丢）</text>
+
+    <rect x="570" y="70" width="150" height="58" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="645" y="94" text-anchor="middle" font-weight="600" fill="#b91c1c">④ 各实例转 STOMP</text>
+    <text x="645" y="114" text-anchor="middle" font-size="10" fill="#475569">订阅未就绪则丢</text>
+
+    <rect x="750" y="70" width="180" height="58" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="840" y="94" text-anchor="middle" font-weight="600" fill="#047857">⑤ 客户端应用事件</text>
+    <text x="840" y="114" text-anchor="middle" font-size="10" fill="#475569">按 seq 判断缺口</text>
+  </g>
+
+  <g stroke="#475569" stroke-width="1.6" fill="none" marker-end="url(#r1)">
+    <line x1="180" y1="99" x2="206" y2="99"/>
+    <line x1="360" y1="99" x2="386" y2="99"/>
+    <line x1="540" y1="99" x2="566" y2="99"/>
+    <line x1="720" y1="99" x2="746" y2="99"/>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11">
+    <rect x="30" y="164" width="440" height="150" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="50" y="188" font-weight="600">兜底：不靠「一般不会丢」</text>
+    <text x="50" y="212" font-size="10.5" fill="#475569">· seq 由数据库分配，单调递增（可留空洞，不倒序）</text>
+    <text x="50" y="234" font-size="10.5" fill="#475569">· 客户端记住 lastSeq，重连时带上</text>
+    <text x="50" y="256" font-size="10.5" fill="#475569">· 服务端发现缺口 → 下行 resync_required{fromSeq,toSeq}</text>
+    <text x="50" y="278" font-size="10.5" fill="#475569">· 客户端 GET /events?after=lastSeq 补齐后继续</text>
+    <text x="50" y="300" font-size="10.5" fill="#b91c1c">补拉失败要显式提示「可能缺少更新」，不能装作正常</text>
+
+    <rect x="490" y="164" width="440" height="150" rx="12" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="510" y="188" font-weight="600" fill="#92400e">实测：Redis 7.4.0 · 1,000 条 × 3 订阅者</text>
+    <text x="510" y="212" font-size="10.5" fill="#475569">发布循环 172 ms（≈5.8k 条/秒，单连接）</text>
+    <text x="510" y="234" font-size="10.5" fill="#475569">每个订阅者收到 1,000 / 1,000（0 丢失）</text>
+    <text x="510" y="256" font-size="10.5" fill="#475569">总投递 3,000 次；payload ≈ 70 B</text>
+    <text x="510" y="278" font-size="10.5" fill="#92400e">放大系数 = 事件数 × 实例数 × 每实例该主题连接数</text>
+    <text x="510" y="300" font-size="10.5" fill="#b91c1c">3 实例 × 50 人 = 150 次本地写／一次拖动</text>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11">
+    <rect x="30" y="332" width="440" height="118" rx="12" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="50" y="356" font-weight="600" fill="#b91c1c">背压：慢消费者只能被断开</text>
+    <text x="50" y="380" font-size="10.5" fill="#475569">队列上限 500 条 / 1 MB，超限关闭码 4408</text>
+    <text x="50" y="402" font-size="10.5" fill="#475569">心跳 25s（服务端）／10s（客户端）／TTL 30s</text>
+    <text x="50" y="424" font-size="10.5" fill="#475569">断开即断开：不在服务端重试，补齐责任在客户端</text>
+    <text x="50" y="442" font-size="10.5" fill="#b91c1c">无界队列 = 内存无上限（200 × 10 MB = 2 GB）</text>
+
+    <rect x="490" y="332" width="440" height="118" rx="12" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="510" y="356" font-weight="600" fill="#047857">在线状态只信 TTL</text>
+    <text x="510" y="380" font-size="10.5" fill="#475569">SET presence:… PX 30000 → PTTL 29994</text>
+    <text x="510" y="402" font-size="10.5" fill="#475569">String 72 B · Hash 96 B · Set 88 B（单条）</text>
+    <text x="510" y="424" font-size="10.5" fill="#475569">kill -9 不会有人来 -1，只有过期是可信的</text>
+    <text x="510" y="442" font-size="10.5" fill="#b91c1c">三种结构别都存，三份状态必然不同步</text>
+  </g>
+</svg>

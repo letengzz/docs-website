@@ -216,6 +216,24 @@ curl -s -o /dev/null -w '%{http_code}\n' -X POST http://localhost:8080/api/order
 
 **预期输出**：`422`。返回 201 说明指纹没算或没比。
 
+## 十、与「通知中心读接口」的分工
+
+本页讲**写侧幂等**：键的来源、去重表 DDL、指纹三坑、409/422 分支、锁超时接管。**读侧动作也有幂等需求**（点两次「已读」不该产生两条审计），这一半见[在线协作任务看板 · 通知中心读接口](/project/Complete/TeamBoard/NotificationCenter/index.md)。
+
+读侧幂等的写法与本页的「去重表」不同：它不需要额外的键表，**用一个条件更新就够**：
+
+```sql
+UPDATE notification SET read_at = now()
+ WHERE id = $1 AND recipient_id = $2 AND read_at IS NULL;
+-- 实测：第一次 UPDATE 1（0.984 ms），第二次 UPDATE 0（0.358 ms）
+```
+
+::: danger 读侧幂等最容易写成「先查后改」
+`if (n.getReadAt() == null) { n.setReadAt(now()); save(n); }` 在并发下会写两次 `read_at`。虽然结果看起来一样，但**审计里的「已读时间」会变**，且如果有「已读触发下游」的逻辑就会执行两次。
+判据只有一条：**一次请求的幂等性，必须由一条 SQL 的受影响行数决定**，而不是由应用层的 `if` 决定。
+批量动作（「全部已读」）还要额外加**水位**（`AND created_at <= max(created_at)`），否则刚到达的新通知会被一起标成已读。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

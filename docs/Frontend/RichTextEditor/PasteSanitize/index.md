@@ -257,6 +257,24 @@ console.log(host.innerHTML);
 
 如果输出里出现任何 `on*` 属性、`javascript:` 或 `<svg>`，说明白名单有漏，**不要上线**。
 
+## 九、与「分片上传」的分工
+
+本页讲**粘贴进来的图片怎么变成附件**：blob → 预签名 → 直传五步、服务端二次校验、六项自检。**「大于 25 MiB 的文件怎么传」属于传输协议层**，见[在线协作任务看板 · 分片上传](/project/Complete/TeamBoard/MultipartUpload/index.md)。
+
+分界线很清楚：编辑器只管「把选中的字节交出去」，**不管它被切成几片**。
+
+| 关注点 | 本页 | 分片上传那页 |
+| --- | --- | --- |
+| 触发时机 | 粘贴 / 拖放 / 选图 | 上传器拿到 `File` 之后 |
+| 大小上限 | 25 MiB 以内直接 `PUT` | > 25 MiB 走 multipart |
+| 校验 | MIME 白名单 + 服务端二次校验 | 分片 MD5（`InvalidPart`）+ 文件级 `sha256` |
+| 失败处理 | 提示「图片过大」 | 单分片重试、`uploadId` 续传 |
+
+::: danger 本页特有的一个坑：ETag 不能当图片哈希
+粘贴链路里常用「上传后比对 ETag 判断是不是同一张图」。**单次 `PUT` 时 ETag 是内容 MD5，但走分片后 ETag 变成 `MD5(分片 MD5 拼接) + "-N"`**，与整图 MD5 完全不同。
+一旦某天上传器从「单次 PUT」切到「分片」，这条比对会**静默失效**（永远不相等，于是每次都当作新图），而不是报错。要用就去用自己算的 `sha256`。
+:::
+
 ## 参考资料
 
 - [CVE-2026-104847](https://www.tenable.com/cve/CVE-2026-104847) · [GHSA-c8x8-7fp4-3x9w](https://github.com/ProseMirror/prosemirror-view/security/advisories/GHSA-c8x8-7fp4-3x9w)——粘贴路径 XSS，修复于 1.42.3

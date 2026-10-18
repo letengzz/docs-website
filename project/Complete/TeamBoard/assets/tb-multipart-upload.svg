@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img" aria-label="分片上传的分片大小取值与四个接口">
+  <defs>
+    <marker id="m1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">分片大小由两条边界夹出：≥ 5 MiB 且分片数 ≤ 10,000</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11">
+    <rect x="40" y="60" width="880" height="64" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="60" y="84" font-weight="600">文件 2 GiB · 分片 16 MiB</text>
+    <g>
+      <rect x="60" y="94" width="52" height="18" rx="3" fill="#dbeafe" stroke="#93b4f0"/>
+      <rect x="116" y="94" width="52" height="18" rx="3" fill="#dbeafe" stroke="#93b4f0"/>
+      <rect x="172" y="94" width="52" height="18" rx="3" fill="#dbeafe" stroke="#93b4f0"/>
+      <rect x="228" y="94" width="52" height="18" rx="3" fill="#dbeafe" stroke="#93b4f0"/>
+      <rect x="284" y="94" width="52" height="18" rx="3" fill="#ecfdf5" stroke="#6ee7b7"/>
+      <text x="310" y="107" text-anchor="middle" font-size="9" fill="#047857">4 路并发</text>
+      <rect x="340" y="94" width="52" height="18" rx="3" fill="#f8fafc" stroke="#cbd5e1"/>
+      <rect x="396" y="94" width="52" height="18" rx="3" fill="#f8fafc" stroke="#cbd5e1"/>
+      <text x="470" y="107" font-size="10" fill="#475569">… 共 128 片，最后一片为余数（可 &lt; 16 MiB）</text>
+    </g>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11.5">
+    <rect x="40" y="144" width="270" height="120" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="60" y="168" font-weight="600" fill="#1d4ed8">① initiate</text>
+    <text x="60" y="190" font-size="10.5" fill="#475569">登记 uploadId / partSize / partCount</text>
+    <text x="60" y="210" font-size="10.5" fill="#475569">压 attachment.status = pending</text>
+    <text x="60" y="230" font-size="10.5" fill="#475569">不创建对象，只登记意图</text>
+    <text x="60" y="252" font-size="10.5" fill="#b91c1c">超 5 TiB / 超配额在这里就拒</text>
+
+    <rect x="340" y="144" width="270" height="120" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="360" y="168" font-weight="600" fill="#1d4ed8">② parts（签 4 片）</text>
+    <text x="360" y="190" font-size="10.5" fill="#475569">每次只签一批，5 分钟有效</text>
+    <text x="360" y="210" font-size="10.5" fill="#475569">客户端 PUT 直传，回传 ETag</text>
+    <text x="360" y="230" font-size="10.5" fill="#475569">服务端把 ETag 落 attachment_part</text>
+    <text x="360" y="252" font-size="10.5" fill="#b91c1c">一次签 128 片 = 后 100 片已过期</text>
+
+    <rect x="640" y="144" width="280" height="120" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="660" y="168" font-weight="600" fill="#047857">③ complete</text>
+    <text x="660" y="190" font-size="10.5" fill="#475569">parts 升序、一一对应</text>
+    <text x="660" y="210" font-size="10.5" fill="#475569">成功后才置 committed</text>
+    <text x="660" y="230" font-size="10.5" fill="#475569">记录最终 size / etag / sha256</text>
+    <text x="660" y="252" font-size="10.5" fill="#b91c1c">ETag ≠ 文件 MD5（带 -N 后缀）</text>
+
+    <rect x="40" y="288" width="420" height="150" rx="10" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="60" y="312" font-weight="600" fill="#92400e">分片大小的三档取值与依据</text>
+    <text x="60" y="336" font-size="10.5" fill="#475569">≤100 MiB → 8 MiB（≤13 片，complete 快）</text>
+    <text x="60" y="358" font-size="10.5" fill="#475569">100 MiB~2 GiB → 16 MiB（弱网重传 ≤34 s）</text>
+    <text x="60" y="380" font-size="10.5" fill="#475569">&gt;2 GiB → 64 MiB（避免 10,000 上限）</text>
+    <line x1="60" y1="394" x2="440" y2="394" stroke="#f0d8a8"/>
+    <text x="60" y="414" font-size="10.5" fill="#92400e">单片重传时间 = partSize ÷ 上行带宽</text>
+    <text x="60" y="432" font-size="10.5" fill="#475569">4 Mbps 下 64 MiB 一片要 134 s</text>
+
+    <rect x="486" y="288" width="434" height="150" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="506" y="312" font-weight="600" fill="#b91c1c">④ abort 与三种「传到一半」</text>
+    <text x="506" y="336" font-size="10.5" fill="#475569">初始化未传 → 无对象无分片 → 24h 置 aborted</text>
+    <text x="506" y="358" font-size="10.5" fill="#475569">传了部分 → abort 释放分片空间</text>
+    <text x="506" y="380" font-size="10.5" fill="#475569">传完未 complete → 分片占空间、对象不存在</text>
+    <line x1="506" y1="394" x2="900" y2="394" stroke="#fca5a5"/>
+    <text x="506" y="414" font-size="10.5" fill="#b91c1c">兜底：桶生命周期 AbortIncompleteMultipartUpload</text>
+    <text x="506" y="432" font-size="10.5" fill="#475569">两套清理并存，因为分片是真实账单</text>
+  </g>
+
+  <g stroke="#475569" stroke-width="1.4" fill="none" marker-end="url(#m1)">
+    <line x1="310" y1="204" x2="336" y2="204"/>
+    <line x1="610" y1="204" x2="636" y2="204"/>
+  </g>
+</svg>

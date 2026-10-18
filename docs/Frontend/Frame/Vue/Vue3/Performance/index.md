@@ -144,6 +144,23 @@ const HeavyChart = defineAsyncComponent(() => import("./HeavyChart.vue"))
 - [前端工程化](../../../../Others/FrontendEngineering/index.md)：工程级构建优化与性能基线
 - [构建优化](../../../../Others/FrontendEngineering/BuildOptimization/index.md)：分包、压缩、CDN 与体积监控
 
+## 与「看板页面」的分工
+
+本页讲 **Vue 3 渲染性能的手段**（`v-memo`、`shallowRef`、`v-once`、虚拟列表、`content-visibility`）。**「这些手段在一个真实的拖动交互里怎么用」属于工程侧**，见[在线协作任务看板 · 看板页面](/project/Complete/TeamBoard/WebBoardUI/index.md)。
+
+那页给出的取舍可以直接搬到这里当结论：
+
+| 卡片数量 | 手段 | 理由 |
+| --- | --- | --- |
+| ≤ 200 | `v-memo="[card.id, card.version]"` | 只有变动那张重渲染，实现成本最低 |
+| > 200 | 虚拟列表（可视区 ±5 屏） | 首屏 DOM 从数百降到约 40 |
+| 任意 | `content-visibility: auto` + `contain-intrinsic-size` | 未在视口的列跳过布局；**不写 `contain-intrinsic-size` 会让滚动条长度跳动** |
+
+::: danger 本页最容易被误用的一条：`v-memo` 依赖依赖项真的变
+`v-memo` 只在依赖数组变化时重建。乐观更新里如果只改了本地数组、**没有把服务端返回的 `version` 写回**，第二次拖动时 `version` 没变 → `v-memo` 认为没变化 → 卡片不重渲染，界面停在旧位置。
+表现是「拖了一下没动」，但数据其实已经写进去了——**性能优化把正确性问题掩盖成了渲染问题**。
+:::
+
 ## 参考资料
 
 - Vue 渲染机制与性能：https://cn.vuejs.org/guide/extras/rendering-mechanism.html

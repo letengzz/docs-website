@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img" aria-label="降级矩阵与熔断三态">
+  <defs>
+    <marker id="d1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">降级矩阵与熔断：连接成功不等于依赖健康</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11">
+    <rect x="30" y="56" width="470" height="196" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="50" y="80" font-weight="600">降级矩阵（节选）</text>
+    <line x1="50" y1="90" x2="480" y2="90" stroke="#cbd5e1"/>
+    <text x="50" y="110" font-size="10.5" fill="#475569">读看板 / 写卡片　DB 挂 → 503（唯一允许硬失败的）</text>
+    <text x="50" y="132" font-size="10.5" fill="#047857">成员鉴权　　　Redis 挂 → 回源 + 单飞</text>
+    <text x="50" y="154" font-size="10.5" fill="#047857">实时推送　　　Redis 挂 → 30 s 轮询</text>
+    <text x="50" y="176" font-size="10.5" fill="#047857">在线状态　　　Redis 挂 → 隐藏（不显示假绿点）</text>
+    <text x="50" y="198" font-size="10.5" fill="#92400e">附件上传　　　存储挂 → 禁用按钮 + 503</text>
+    <text x="50" y="220" font-size="10.5" fill="#92400e">导出　　　　　存储挂 → 不排队，直接 503</text>
+    <text x="50" y="242" font-size="10.5" fill="#92400e">邀请　　　　　SMTP 挂 → 邀请成功、邮件可重发</text>
+
+    <rect x="520" y="56" width="410" height="196" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="540" y="80" font-weight="600" fill="#b91c1c">四个「假降级」</text>
+    <text x="540" y="104" font-size="10.5" fill="#475569">· catch 里 return null → 缓存雪崩打挂数据库</text>
+    <text x="540" y="126" font-size="10.5" fill="#475569">· 推送失败只 log.warn → 事件静默丢失</text>
+    <text x="540" y="148" font-size="10.5" fill="#475569">· 邮件失败回滚整个邀请事务</text>
+    <text x="540" y="170" font-size="10.5" fill="#475569">· 降级只在日志里，没有指标</text>
+    <line x1="540" y1="182" x2="910" y2="182" stroke="#fca5a5"/>
+    <text x="540" y="202" font-size="10.5" fill="#b91c1c">降级必须同时改变「功能行为」与「可观测信号」</text>
+    <text x="540" y="224" font-size="10.5" fill="#475569">只改行为 = 静默故障；只改信号 = 纸面降级</text>
+    <text x="540" y="244" font-size="10.5" fill="#475569">限流依赖挂掉 → 换粗限流器，不是关掉限流</text>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11.5">
+    <rect x="30" y="272" width="470" height="176" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="50" y="296" font-weight="600" fill="#1d4ed8">熔断三态（恢复不自动）</text>
+
+    <rect x="56" y="316" width="110" height="46" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="111" y="338" text-anchor="middle" font-weight="600" fill="#047857">CLOSED</text>
+    <text x="111" y="354" text-anchor="middle" font-size="9.5" fill="#475569">正常调用</text>
+
+    <rect x="206" y="316" width="110" height="46" rx="8" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="261" y="338" text-anchor="middle" font-weight="600" fill="#b91c1c">OPEN</text>
+    <text x="261" y="354" text-anchor="middle" font-size="9.5" fill="#475569">快速失败</text>
+
+    <rect x="356" y="316" width="118" height="46" rx="8" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="415" y="338" text-anchor="middle" font-weight="600" fill="#92400e">HALF_OPEN</text>
+    <text x="415" y="354" text-anchor="middle" font-size="9.5" fill="#475569">3 次探测</text>
+
+    <g stroke="#475569" stroke-width="1.4" fill="none" marker-end="url(#d1)">
+      <line x1="168" y1="332" x2="202" y2="332"/>
+      <line x1="318" y1="332" x2="352" y2="332"/>
+      <path d="M415,366 C380,406 200,410 111,366"/>
+    </g>
+    <text x="150" y="318" font-size="9" fill="#475569">失败率&gt;50%</text>
+    <text x="318" y="318" font-size="9" fill="#475569">30 s 冷却</text>
+    <text x="200" y="404" font-size="9" fill="#047857">3 次全成功 + 60 s 观察期</text>
+
+    <text x="50" y="436" font-size="10.5" fill="#475569">触发：10 s 内失败率 &gt; 50% 且样本 ≥ 5　｜　恢复：探测 + 观察期</text>
+
+    <rect x="520" y="272" width="410" height="176" rx="10" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="540" y="296" font-weight="600" fill="#92400e">实测：docker pause 期间客户端看到什么</text>
+    <text x="540" y="320" font-size="10.5" fill="#475569">正常　　connect 0 ms ／ read 2 ms ／ +PONG</text>
+    <text x="540" y="344" font-size="11" fill="#b91c1c">暂停中　after 2001 ms → TimeoutError</text>
+    <text x="540" y="368" font-size="10.5" fill="#475569">恢复后　connect 0 ms ／ read 1 ms ／ +PONG</text>
+    <line x1="540" y1="380" x2="910" y2="380" stroke="#f0d8a8"/>
+    <text x="540" y="400" font-size="10.5" fill="#b91c1c">TCP 连接立即成功 —— 用「连不上」判健康是错的</text>
+    <text x="540" y="422" font-size="10.5" fill="#475569">读超时必须设（本项目 200 ms），否则线程永久挂住</text>
+    <text x="540" y="440" font-size="10.5" fill="#475569">只测 docker stop 等于没测：假死走的是另一条分支</text>
+  </g>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img" aria-label="通知读侧的两条索引与三类查询">
+  <defs>
+    <marker id="n1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="n2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#047857"/>
+    </marker>
+    <marker id="n3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">两条索引各管一类查询：建错一条，另一条会被迫全表扫</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12">
+    <rect x="40" y="70" width="210" height="64" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="145" y="96" text-anchor="middle" font-weight="600" fill="#1d4ed8">GET /unread-count</text>
+    <text x="145" y="116" text-anchor="middle" font-size="10.5" fill="#475569">count(*) where read_at is null</text>
+
+    <rect x="40" y="160" width="210" height="64" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="145" y="186" text-anchor="middle" font-weight="600" fill="#1d4ed8">GET /notifications</text>
+    <text x="145" y="206" text-anchor="middle" font-size="10.5" fill="#475569">(created_at,id) 行值比较 · 21 条</text>
+
+    <rect x="40" y="250" width="210" height="64" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="145" y="276" text-anchor="middle" font-weight="600" fill="#1d4ed8">POST /read</text>
+    <text x="145" y="296" text-anchor="middle" font-size="10.5" fill="#475569">UPDATE … AND read_at IS NULL</text>
+
+    <rect x="330" y="96" width="240" height="150" rx="12" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="450" y="120" text-anchor="middle" font-weight="600" fill="#047857">notification_unread_idx</text>
+    <text x="450" y="142" text-anchor="middle" font-size="10.5" fill="#475569">(recipient_id, created_at DESC)</text>
+    <text x="450" y="160" text-anchor="middle" font-size="10.5" fill="#475569">WHERE read_at IS NULL</text>
+    <line x1="350" y1="172" x2="550" y2="172" stroke="#6ee7b7"/>
+    <text x="450" y="192" text-anchor="middle" font-size="10.5" fill="#047857">体积 2,400 kB（只含未读，约 30%）</text>
+    <text x="450" y="212" text-anchor="middle" font-size="10.5" fill="#047857">未读计数 0.660 ms</text>
+    <text x="450" y="232" text-anchor="middle" font-size="10.5" fill="#047857">100 次合计 4.71 ms</text>
+
+    <rect x="330" y="262" width="240" height="130" rx="12" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="450" y="286" text-anchor="middle" font-weight="600" fill="#92400e">notification_list_idx</text>
+    <text x="450" y="308" text-anchor="middle" font-size="10.5" fill="#475569">(recipient_id, created_at DESC, id DESC)</text>
+    <line x1="350" y1="320" x2="550" y2="320" stroke="#f0d8a8"/>
+    <text x="450" y="340" text-anchor="middle" font-size="10.5" fill="#92400e">体积 11 MB（含已读）</text>
+    <text x="450" y="360" text-anchor="middle" font-size="10.5" fill="#92400e">列表首页 0.093 ms / 23 buffers</text>
+    <text x="450" y="380" text-anchor="middle" font-size="10.5" fill="#92400e">keyset 第 3 页 145 buffers</text>
+
+    <rect x="640" y="96" width="280" height="150" rx="12" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="660" y="120" font-weight="600" fill="#b91c1c">只建部分索引会发生什么</text>
+    <text x="660" y="144" font-size="10.5" fill="#475569">列表查询不包含已读行 → 走不上</text>
+    <text x="660" y="164" font-size="10.5" fill="#475569">Parallel Seq Scan 10.143 ms</text>
+    <text x="660" y="184" font-size="10.5" fill="#475569">3,538 buffers</text>
+    <text x="660" y="204" font-size="10.5" fill="#475569">Rows Removed by Filter: 66633</text>
+    <text x="660" y="228" font-size="10.5" fill="#b91c1c">构建全绿、链接全对、只是慢 100 倍</text>
+
+    <rect x="640" y="262" width="280" height="130" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="660" y="286" font-weight="600" fill="#0f172a">写侧的两条纪律</text>
+    <text x="660" y="310" font-size="10.5" fill="#475569">· 投递靠 dedup_key 唯一键去重</text>
+    <text x="660" y="330" font-size="10.5" fill="#475569">· 计数表增减必须与已读同事务</text>
+    <text x="660" y="350" font-size="10.5" fill="#475569">· 全部已读带 created_at 水位</text>
+    <text x="660" y="372" font-size="10.5" fill="#b91c1c">计数表的错要靠日对账发现</text>
+  </g>
+
+  <g stroke="#1d4ed8" stroke-width="1.6" fill="none">
+    <path d="M250,102 C280,102 300,140 326,158" marker-end="url(#n1)"/>
+    <path d="M250,192 C280,192 300,180 326,172" marker-end="url(#n1)" stroke-dasharray="5 4"/>
+  </g>
+  <g stroke="#047857" stroke-width="1.6" fill="none">
+    <path d="M250,202 C280,230 300,300 326,318" marker-end="url(#n2)"/>
+  </g>
+  <g stroke="#b91c1c" stroke-width="1.5" fill="none">
+    <path d="M250,206 C290,250 300,140 330,150" marker-end="url(#n3)" stroke-dasharray="4 6"/>
+  </g>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="9.5" fill="#b91c1c">
+    <text x="262" y="238">走不上 → 全表扫</text>
+  </g>
+</svg>

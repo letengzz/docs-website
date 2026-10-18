@@ -217,6 +217,22 @@ SELECT * FROM monthly_stats ORDER BY month DESC LIMIT 5;
 
 本页特有的一个坑：示例里 `orders` 带 `GENERATED ALWAYS AS IDENTITY`，日后若用 `CREATE TABLE new_part (LIKE orders INCLUDING ALL)` 建表再 `ATTACH`，会直接报 `table ... being attached contains an identity column`——`INCLUDING ALL` 把 identity 一起复制了过去。回挂用的分区表要用 `LIKE orders`（默认不含 identity）。
 
+## 与「通知中心读接口」的分工
+
+本页讲 PostgreSQL 的**语法与能力**（部分索引、`INCLUDE`、行值比较、`EXPLAIN` 读法）。**「什么时候该建两条索引」这个判断属于应用侧**，见[在线协作任务看板 · 通知中心读接口](/project/Complete/TeamBoard/NotificationCenter/index.md)。
+
+那页给出的实测值得在这里补一句，因为它是本页「部分索引」一节最容易被忽略的边界：
+
+| 写法 | 未读计数 | 「全部通知」列表 |
+| --- | --- | --- |
+| 只有 `(recipient_id, created_at) WHERE read_at IS NULL` | **0.660 ms**（走部分索引） | **10.143 ms**（`Parallel Seq Scan`，3,538 buffers） |
+| 再补 `(recipient_id, created_at DESC, id DESC)` | 0.660 ms | **0.093 ms**（`Index Scan`，23 buffers） |
+
+::: danger 部分索引只能服务「部分」
+`WHERE read_at IS NULL` 的索引**不包含已读行**，所以任何「不带 `read_at` 条件」的查询都用不上它——优化器会安静地退化成全表扫描，`EXPLAIN` 里只留下一行 `Rows Removed by Filter: 66633`。
+判断方法：`EXPLAIN (ANALYZE, BUFFERS)` 里如果没有出现你预期的索引名，先看**该索引的谓词是否覆盖了这次查询的行集**，而不是先怀疑统计信息。
+:::
+
 ## 参考资料
 
 - [PostgreSQL JSON 类型](https://www.postgresql.org/docs/current/datatype-json.html)

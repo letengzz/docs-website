@@ -143,6 +143,19 @@ SELECT COUNT(*) FROM orders WHERE status = 'PAID';
 
 本页特有的一个坑：`OFFSET` 在分区表上仍然是**逐行丢弃**，只是省了排序。所以「分区让深分页变快」不等于「深分页可以接受」——键集分页依然是唯一正确的解法，分区只是把常数项降下来。
 
+## 与「通知中心读接口」的分工
+
+本页讲**分页的通用机制**（offset 与 keyset 的代价模型、深翻页为什么慢）。下面这三件事属于项目侧，本页不展开：
+
+- **签名游标**：游标里装什么、为什么签名、如何防篡改——见[在线协作任务看板 · 通知中心读接口](/project/Complete/TeamBoard/NotificationCenter/index.md)；
+- **「keyset 在小页码上更贵」的实测**：同一收件人第 3 页，offset 走 123 buffers、keyset 走 145 buffers——**keyset 的价值是代价不随页码增长，不是每一页都更快**；
+- **有插入的列表为什么必须 keyset**：`OFFSET 40` 在中间插入 3 条之后会**漏掉 3 条**，这是数据可见性问题，不是性能问题。
+
+::: warning 本页特有的一个坑：`fetchSize` 不等于游标
+PostgreSQL 的 JDBC 驱动只有在 `autoCommit=false` 且 `fetchSize>0` 时才走服务端游标；否则它把整个结果集读进内存，看起来「分批取了」，实际堆内存照样爆。
+同理，`LIMIT/OFFSET` 分页与「流式游标」是两件事：前者每次一条 SQL，后者一个连接上持续取——导出与批量任务的深翻页，应该用后者。
+:::
+
 ## 参考资料
 
 - 排序与分页索引优化：[MySQL 索引深入 · 排序与分组优化](../../MySQL/IndexDeepDive/SortGroup/index.md)

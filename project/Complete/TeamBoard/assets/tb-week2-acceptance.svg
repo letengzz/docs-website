@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img" aria-label="第 2 周 14 步与 12 项验收的对应关系">
+  <defs>
+    <marker id="w1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">第 2 周收口：14 步落成 12 项可勾，64 条判据分成两半</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="10.5">
+    <rect x="30" y="56" width="440" height="230" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="50" y="80" font-weight="600" font-size="11.5">14 步（第 1 周已交付 1~6 步）</text>
+    <g fill="#475569">
+      <text x="50" y="104">1 工程骨架　　　　2 认证与成员关系</text>
+      <text x="50" y="126">3 请求作用域信号　4 看板卡片接口</text>
+      <text x="50" y="148">5 评论与提及　　　6 附件直传</text>
+      <text x="50" y="170" fill="#1d4ed8">7 成员邀请　　　　8 看板页面</text>
+      <text x="50" y="192" fill="#1d4ed8">9 通知中心　　　　10 实时推送接线</text>
+      <text x="50" y="214" fill="#1d4ed8">11 分片上传　　　 12 导出与归档</text>
+      <text x="50" y="236" fill="#1d4ed8">13 依赖降级　　　 14 本页（收口）</text>
+    </g>
+    <line x1="50" y1="248" x2="450" y2="248" stroke="#cbd5e1"/>
+    <text x="50" y="270" font-size="10" fill="#1d4ed8">蓝色为本轮新增 8 章：判据族 MB / UI / NC / RW / MPU / BA / DGR / WK2</text>
+
+    <rect x="490" y="56" width="440" height="230" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="510" y="80" font-weight="600" font-size="11.5" fill="#1d4ed8">12 项验收（S1~S10 串起来）</text>
+    <g fill="#475569">
+      <text x="510" y="104">① compose 起 4 容器 healthy　② /healthz 查库</text>
+      <text x="510" y="126">③ 迁移幂等　　　　　　　　④ 三码分工</text>
+      <text x="510" y="148">⑤ 游标不重不漏　　　　　　⑥ 一次拖动一行</text>
+      <text x="510" y="170">⑦ 评论三表一事务　　　　　⑧ 直传 + 分片</text>
+      <text x="510" y="192">⑨ 未读数一致　　　　　　　⑩ 1 s 内收到推送</text>
+      <text x="510" y="214">⑪ 降级后 403　　　　　　　⑫ 刷新后顺序不变</text>
+    </g>
+    <line x1="510" y1="228" x2="910" y2="228" stroke="#93b4f0"/>
+    <text x="510" y="250" font-size="10" fill="#b91c1c">⑫ 最关键：乐观更新「看起来成功」不等于「落库」</text>
+    <text x="510" y="270" font-size="10" fill="#475569">只有刷新一次，才知道第 ④ 步（覆盖版本）有没有写对</text>
+
+    <rect x="30" y="300" width="270" height="148" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="50" y="324" font-weight="600" fill="#047857">36 条 文档级</text>
+    <text x="50" y="348" font-size="10.5" fill="#475569">只读代码 / 配置即可判定</text>
+    <text x="50" y="370" font-size="10.5" fill="#475569">例：表里不存 token 明文</text>
+    <text x="50" y="392" font-size="10.5" fill="#475569">例：CSV 以 = 开头前置单引号</text>
+    <text x="50" y="418" font-size="10" fill="#475569">在评审里看，不靠 CI</text>
+    <text x="50" y="438" font-size="10" fill="#047857">混在一起 → CI 永远绿，评审永远跳过</text>
+
+    <rect x="320" y="300" width="270" height="148" rx="10" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="340" y="324" font-weight="600" fill="#92400e">28 条 需运行期</text>
+    <text x="340" y="348" font-size="10.5" fill="#475569">起栈后发请求才能判定</text>
+    <text x="340" y="370" font-size="10.5" fill="#475569">UI 5 · RW 4 · MPU 5 · BA 4</text>
+    <text x="340" y="392" font-size="10.5" fill="#475569">DGR 5 · MB 2 · NC 1</text>
+    <text x="340" y="418" font-size="10" fill="#475569">全部标 ⏳，解除条件 = 读者跑 S1~S10</text>
+    <text x="340" y="438" font-size="10" fill="#92400e">「基本完成」不是一种结论</text>
+
+    <rect x="610" y="300" width="320" height="148" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="630" y="324" font-weight="600" fill="#b91c1c">四处口径更正</text>
+    <text x="630" y="346" font-size="10.5" fill="#475569">① 沙盒复数表名 vs 项目单数 DDL</text>
+    <text x="630" y="366" font-size="10.5" fill="#475569">② 沙盒 position 唯一 vs 允许相等</text>
+    <text x="630" y="386" font-size="10.5" fill="#475569">③ 20 万行合成数据（30% 未读是人设）</text>
+    <text x="630" y="406" font-size="10.5" fill="#475569">④ Redis standalone vs 生产集群</text>
+    <text x="630" y="430" font-size="10" fill="#b91c1c">写清「测的是什么、不是什么」比读数本身更重要</text>
+  </g>
+</svg>
