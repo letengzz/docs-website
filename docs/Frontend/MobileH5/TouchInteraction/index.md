@@ -366,3 +366,19 @@ function currentDistance() {
 - [MDN · `overscroll-behavior`](https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior)
 - [web.dev · 被动事件监听器](https://web.dev/articles/uses-passive-event-listeners)
 - [Apple HIG · 触控目标尺寸建议](https://developer.apple.com/design/human-interface-guidelines/)
+
+## 与「微交互与动效工程」专题的分工（第 161 天补充）
+
+本页讲**手指按下到抬起**这一段：事件模型、状态机、滚动仲裁、终态覆盖。它到 `pointerup` 就结束了。**松手之后那一段**——元素怎么落到新位置、速度怎么承接、落位动画能不能被下一次拖动打断——归[微交互与动效工程](../../Motion/index.md)。
+
+| 维度 | 本页（触摸与手势） | 动效专题 |
+| --- | --- | --- |
+| 时间范围 | `pointerdown` → `pointerup` / `pointercancel` | `pointerup` 之后到落位完成 |
+| 关键量 | 位移阈值、方向判定、被动监听 | 松手速度（px/ms）、时长、过冲幅度 |
+| 失败表现 | 拖不动、误触发点击、卡在按下态 | 松手「顿一下」再走、落位弹回去、两次拖动互相覆盖 |
+| 共同点 | 都要求覆盖 `pointercancel` | 同左：取消时也要 `cancel()` 未完成的落位动画 |
+
+::: danger 两个跨页才会暴露的缺陷
+1. **松手后从零速度重新起步**：手势层只把「结束位置」交给动画，没交速度，观感是「手指还在动，元素先停了一下」。
+2. **落位动画期间允许再次按下**：手势层认为「已经抬起，可以开始新拖动」，动画层还在飞——同一张卡片出现两个位移来源。正确做法是在 `pointerdown` 里先 `getAnimations().forEach(a => a.cancel())`。
+:::

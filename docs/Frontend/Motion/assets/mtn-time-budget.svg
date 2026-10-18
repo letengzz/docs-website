@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img" aria-label="感知时间预算与两档延迟的处理方式">
+  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">感知时间预算：越早的阈值越硬，越晚的阈值越要用「进度」兜住</text>
+
+  <line x1="80" y1="300" x2="900" y2="300" stroke="#94a3b8" stroke-width="2"/>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569" text-anchor="middle">
+    <line x1="80" y1="294" x2="80" y2="306" stroke="#94a3b8" stroke-width="2"/>
+    <text x="80" y="326">0</text>
+    <line x1="220" y1="294" x2="220" y2="306" stroke="#94a3b8" stroke-width="2"/>
+    <text x="220" y="326">100 ms</text>
+    <line x1="430" y1="294" x2="430" y2="306" stroke="#94a3b8" stroke-width="2"/>
+    <text x="430" y="326">400 ms</text>
+    <line x1="650" y1="294" x2="650" y2="306" stroke="#94a3b8" stroke-width="2"/>
+    <text x="650" y="326">1 s</text>
+    <line x1="880" y1="294" x2="880" y2="306" stroke="#94a3b8" stroke-width="2"/>
+    <text x="880" y="326">10 s</text>
+  </g>
+
+  <rect x="80" y="190" width="140" height="96" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="150" y="214" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#047857">瞬时</text>
+  <text x="150" y="236" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#065f46">≤100ms：像本地的一样</text>
+  <text x="150" y="254" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#065f46">按下态必须落在这里</text>
+  <text x="150" y="272" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#065f46">不等网络、不等下一帧之外</text>
+
+  <rect x="220" y="150" width="210" height="136" rx="8" fill="#eff6ff" stroke="#93b4f0"/>
+  <text x="325" y="174" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#1d4ed8">可感知但不打断</text>
+  <text x="325" y="196" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#1e40af">100–400ms：转场与列表动画</text>
+  <text x="325" y="214" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#1e40af">Doherty 阈值 400ms</text>
+  <text x="325" y="232" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#1e40af">超过 400ms 的转场要能被跳过</text>
+  <text x="325" y="250" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#1e40af">（用户连续操作时不再等待）</text>
+
+  <rect x="430" y="110" width="220" height="176" rx="8" fill="#fffbeb" stroke="#f0d8a8"/>
+  <text x="540" y="134" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#b45309">必须给进度</text>
+  <text x="540" y="156" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#92400e">400ms–1s：骨架屏或局部 loading</text>
+  <text x="540" y="174" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#92400e">此时「转圈」比「空白」好</text>
+  <text x="540" y="192" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#92400e">但不要两者都出现（闪屏）</text>
+  <text x="540" y="210" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#92400e">延迟出现：200ms 后才显示 loading</text>
+
+  <rect x="650" y="80" width="230" height="206" rx="8" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="765" y="104" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#b91c1c">必须给交代</text>
+  <text x="765" y="126" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#991b1b">1s–10s：确定进度 + 可取消</text>
+  <text x="765" y="144" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#991b1b">不要用「不确定进度条」骗人</text>
+  <text x="765" y="162" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#991b1b">超过 10s：改成异步任务</text>
+  <text x="765" y="180" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#991b1b">「完成后通知我」</text>
+  <text x="765" y="198" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#991b1b">此时动画不是重点，状态机才是</text>
+
+  <rect x="80" y="360" width="800" height="88" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="100" y="386" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0f172a">两条必须记住的推论</text>
+  <text x="100" y="410" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">① 动画的时长（duration）不是「感觉好不好」的问题，它直接加到任务完成时间上；慢的动画会让快的接口显得慢。</text>
+  <text x="100" y="432" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">② 连续触发时必须能被打断：第二次点击到来时，上一次动画应该「就地接管」，而不是排队播完。</text>
+</svg>

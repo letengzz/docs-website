@@ -259,3 +259,18 @@ W3C 的 [ARIA Authoring Practices Guide（APG）](https://www.w3.org/WAI/ARIA/ap
 - [MDN：`:focus-visible`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:focus-visible)
 - [MDN：`<dialog>` 元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dialog)
 - [MDN：CSS 逻辑属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_logical_properties_and_values)
+
+## 与「微交互与动效工程」专题的分工（第 161 天补充）
+
+本页讲**焦点规则**：顺序、陷阱、`:focus-visible`、跳转链接、`<dialog>` 的原生行为。它假设焦点是「被移动到某处就不动了」。**焦点在动画与转场中怎么活下来**——动画期间焦点环是否可见、抽屉关闭后回到哪个元素、转场结束后焦点落在哪——归[微交互与动效工程](../../Motion/index.md)的[无障碍与动效偏好](../../Motion/Accessibility/index.md)。
+
+| 维度 | 本页（键盘与焦点） | 动效专题 |
+| --- | --- | --- |
+| 关注点 | 焦点能否到达、顺序是否合理 | 焦点在过渡期间是否可见、结束后落在哪 |
+| 典型问题 | Tab 跳不到、焦点陷阱关不住 | 抽屉关闭后焦点回到 `body`、转场后焦点停在被卸载的节点 |
+| 涉及 API | `tabindex`、`inert`、`:focus-visible` | `focus()` 的调用时机、`focusin` 与动画的关系 |
+| 共同点 | 都要求「关闭后回到触发点」 | 同左，并给出动画时长内的等待策略 |
+
+::: danger 一个只有动画才会暴露的焦点缺陷
+抽屉用 `transform` 滑出后调用 `remove()`：如果 `focus()` 在元素还在动画中时调用，浏览器会先把焦点移过去、再因为元素被移除而丢到 `body`。正确做法是**等 `getAnimations()` 全部 `finished` 再把焦点交回触发按钮**；如果用户按了 Esc 提前关闭，则立即交回，不等动画。
+:::

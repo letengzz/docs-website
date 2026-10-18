@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img" aria-label="一次点击的反馈状态机与四个终态">
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">一次点击的反馈状态机：四个终态，缺一个就会「卡住」</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" text-anchor="middle">
+    <rect x="40" y="96" width="140" height="64" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="110" y="124" font-weight="600" fill="#0f172a">未触发</text>
+    <text x="110" y="144" font-size="11" fill="#64748b">idle</text>
+
+    <rect x="240" y="96" width="140" height="64" rx="10" fill="#eff6ff" stroke="#60a5fa"/>
+    <text x="310" y="124" font-weight="600" fill="#1e40af">按下</text>
+    <text x="310" y="144" font-size="11" fill="#1d4ed8">pressed · 0ms 起步</text>
+
+    <rect x="440" y="96" width="140" height="64" rx="10" fill="#fffbeb" stroke="#f0b429"/>
+    <text x="510" y="124" font-weight="600" fill="#92400e">提交中</text>
+    <text x="510" y="144" font-size="11" fill="#b45309">pending · 200ms 后出现</text>
+
+    <rect x="640" y="60" width="140" height="56" rx="10" fill="#ecfdf5" stroke="#34d399"/>
+    <text x="710" y="84" font-weight="600" fill="#047857">成功</text>
+    <text x="710" y="102" font-size="11" fill="#065f46">success · 立即收尾</text>
+
+    <rect x="640" y="140" width="140" height="56" rx="10" fill="#fef2f2" stroke="#f87171"/>
+    <text x="710" y="164" font-weight="600" fill="#b91c1c">失败</text>
+    <text x="710" y="182" font-size="11" fill="#991b1b">error · 可重试</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <line x1="180" y1="128" x2="236" y2="128"/>
+    <line x1="380" y1="128" x2="436" y2="128"/>
+    <line x1="580" y1="118" x2="636" y2="92"/>
+    <line x1="580" y1="138" x2="636" y2="164"/>
+  </g>
+  <text x="208" y="120" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="10" fill="#64748b">pointerdown</text>
+  <text x="408" y="120" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="10" fill="#64748b">pointerup</text>
+
+  <path d="M710,140 C710,240 400,250 340,168" stroke="#b91c1c" stroke-width="1.6" stroke-dasharray="6 4" fill="none" marker-end="url(#ar)"/>
+  <text x="560" y="240" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#b91c1c">点「重试」回到 pending，而不是回到 idle（否则要用户自己再点一次）</text>
+
+  <path d="M310,160 C310,215 200,225 140,164" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="6 4" fill="none" marker-end="url(#a)"/>
+  <text x="228" y="212" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#64748b">pointercancel / 移出目标</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">
+    <rect x="40" y="272" width="880" height="196" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="60" y="300" font-size="13" font-weight="600" fill="#0f172a">四条硬规则（每一条都对应一类线上投诉）</text>
+    <text x="60" y="326">① 按下态必须在 pointerdown 的同一帧内出现，<tspan font-weight="600" fill="#b45309">不能等接口返回</tspan>；否则用户会重复点击，产生重复提交。</text>
+    <text x="60" y="348">② pending 要<tspan font-weight="600" fill="#b45309">延迟出现</tspan>（200ms 后才显示转圈），否则快速请求会让界面闪一下，比不显示更烦人。</text>
+    <text x="60" y="370">③ pending 期间按钮必须<tspan font-weight="600" fill="#b45309">不可再次触发</tspan>，但也要在超时后自动解锁（否则网络挂起时按钮永久失效）。</text>
+    <text x="60" y="392">④ 失败必须给<tspan font-weight="600" fill="#b45309">可操作</tspan>的下一步：重试按钮、错误原因、数据是否已保存；只弹一个红色感叹号等于没交代。</text>
+    <text x="60" y="420" fill="#64748b">这四条与「动效」的关系是：每一条都要有一个视觉状态去承载它。状态机不清楚，动画就只能是装饰。</text>
+    <text x="60" y="446" fill="#64748b">检验方法：把网络限速到 3s，连续点同一个按钮 5 次，数一数发出了几个请求、界面上出现了几种状态。</text>
+  </g>
+</svg>

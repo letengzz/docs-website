@@ -16,6 +16,7 @@ export const nav = [
       { text: "桌面应用深入", link: "/docs/Frontend/DesktopApp" },
       { text: "国际化与无障碍", link: "/docs/Frontend/IntlA11y" },
       { text: "移动端 H5 深入", link: "/docs/Frontend/MobileH5" },
+      { text: "微交互与动效工程", link: "/docs/Frontend/Motion" },
       { text: "其他", link: "/docs/Frontend/Others" }
     ]
   },

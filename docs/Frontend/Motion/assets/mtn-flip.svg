@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" role="img" aria-label="FLIP 四步：先量首帧、再改布局、反向补偿、播放动画">
+  <defs>
+    <marker id="f" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">FLIP：让「布局变化」看起来像「元素自己移动」</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12">
+    <text x="60" y="66" font-size="13" font-weight="600" fill="#2563eb">F · First（改之前先量）</text>
+    <rect x="60" y="80" width="190" height="120" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <rect x="76" y="96" width="60" height="40" rx="6" fill="#bfdbfe" stroke="#60a5fa"/>
+    <rect x="76" y="146" width="60" height="40" rx="6" fill="#e2e8f0" stroke="#cbd5e1"/>
+    <rect x="152" y="96" width="60" height="40" rx="6" fill="#e2e8f0" stroke="#cbd5e1"/>
+    <text x="76" y="196" font-size="11" fill="#64748b">getBoundingClientRect()</text>
+
+    <line x1="262" y1="140" x2="296" y2="140" stroke="#2563eb" stroke-width="2" marker-end="url(#f)"/>
+
+    <text x="310" y="66" font-size="13" font-weight="600" fill="#2563eb">L · Last（改布局后再量）</text>
+    <rect x="310" y="80" width="190" height="120" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <rect x="326" y="96" width="60" height="40" rx="6" fill="#e2e8f0" stroke="#cbd5e1"/>
+    <rect x="402" y="96" width="60" height="40" rx="6" fill="#bfdbfe" stroke="#60a5fa"/>
+    <rect x="326" y="146" width="60" height="40" rx="6" fill="#e2e8f0" stroke="#cbd5e1"/>
+    <text x="326" y="196" font-size="11" fill="#64748b">同一元素，新位置 (dx, dy)</text>
+
+    <line x1="512" y1="140" x2="546" y2="140" stroke="#2563eb" stroke-width="2" marker-end="url(#f)"/>
+
+    <text x="560" y="66" font-size="13" font-weight="600" fill="#2563eb">I · Invert（用 transform 抵消）</text>
+    <rect x="560" y="80" width="170" height="120" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <rect x="636" y="96" width="60" height="40" rx="6" fill="#bfdbfe" stroke="#60a5fa"/>
+    <path d="M666,116 L600,116" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#f)"/>
+    <text x="572" y="156" font-size="11" fill="#64748b">transform: translate(-76px, 0)</text>
+    <text x="572" y="176" font-size="11" fill="#b45309">视觉上回到原位，但布局已是新的</text>
+
+    <line x1="742" y1="140" x2="776" y2="140" stroke="#2563eb" stroke-width="2" marker-end="url(#f)"/>
+
+    <text x="790" y="66" font-size="13" font-weight="600" fill="#2563eb">P · Play</text>
+    <rect x="790" y="80" width="130" height="120" rx="8" fill="#eff6ff" stroke="#93b4f0"/>
+    <rect x="802" y="96" width="60" height="40" rx="6" fill="#93c5fd" stroke="#60a5fa"/>
+    <text x="802" y="156" font-size="11" fill="#1d4ed8">transition / animate()</text>
+    <text x="802" y="176" font-size="11" fill="#1d4ed8">to transform: none</text>
+  </g>
+
+  <rect x="60" y="230" width="860" height="200" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">
+    <text x="80" y="258" font-size="13" font-weight="600" fill="#0f172a">为什么不能直接对 top / left 做过渡</text>
+    <text x="80" y="284">· top / left / width / height 属于<tspan font-weight="600" fill="#b45309">布局属性</tspan>：每一帧都要重新计算布局与绘制，长列表里几乎必然掉帧。</text>
+    <text x="80" y="306">· transform 属于<tspan font-weight="600" fill="#0f172a">合成属性</tspan>：动画期间只改变换矩阵，交给合成线程，不触发布局。</text>
+    <text x="80" y="328">· FLIP 的关键不在「用 transform」，而在「先改布局、再补偿视觉」这个顺序——顺序反了会看到元素「闪一下」。</text>
+    <text x="80" y="356" font-size="13" font-weight="600" fill="#0f172a">三个必踩的坑</text>
+    <text x="80" y="380">① 在 for 循环里边量边写：每次写入都触发一次强制同步布局（layout thrashing），n 个元素变成 n 次全量布局。</text>
+    <text x="80" y="402">② 忘记清理 inline transform：动画结束后元素仍带着 translate，后续 CSS 定位全部错位。</text>
+    <text x="80" y="424">③ 用 requestAnimationFrame 嵌套代替 animate().finished：既难取消，也难与「用户又拖了一下」协同。</text>
+  </g>
+</svg>

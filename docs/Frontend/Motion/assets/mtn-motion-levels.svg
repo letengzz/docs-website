@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" role="img" aria-label="三档动效强度与降级判断">
+  <defs>
+    <marker id="r" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="450" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">三档强度：减少动效不等于关掉动效</text>
+
+  <rect x="40" y="60" width="280" height="180" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="60" y="88" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#047857">满档（no-preference）</text>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#065f46">
+    <text x="60" y="116">· 位移 + 缩放 + 淡入</text>
+    <text x="60" y="138">· 列表错峰入场（stagger）</text>
+    <text x="60" y="160">· 共享元素形变</text>
+    <text x="60" y="182">· 弹簧与轻微过冲</text>
+    <text x="60" y="212" fill="#047857">位移距离 ≤ 24px 的「近场动效」最不容易引起不适</text>
+  </g>
+
+  <rect x="340" y="60" width="280" height="180" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+  <text x="360" y="88" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#1d4ed8">降档（reduce）</text>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#1e40af">
+    <text x="360" y="116">· 只保留透明度与颜色变化</text>
+    <text x="360" y="138">· 时长压到 80–120ms</text>
+    <text x="360" y="160">· 取消视差、旋转、缩放</text>
+    <text x="360" y="182">· 取消自动播放的循环动画</text>
+    <text x="360" y="212" fill="#1d4ed8">状态变化仍然「看得见」，只是不再「动起来」</text>
+  </g>
+
+  <rect x="640" y="60" width="280" height="180" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="660" y="88" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#334155">静态档（无障碍关键路径）</text>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">
+    <text x="660" y="116">· 直接切到终态，零动画</text>
+    <text x="660" y="138">· 用文案/图标承载状态</text>
+    <text x="660" y="160">· 适用：闪烁风险、</text>
+    <text x="660" y="182">　前庭触发型大幅位移、</text>
+    <text x="660" y="204">　系统「移除动画」开关</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="1.6" marker-end="url(#r)">
+    <line x1="322" y1="150" x2="336" y2="150"/>
+    <line x1="622" y1="150" x2="636" y2="150"/>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">
+    <rect x="40" y="264" width="880" height="156" rx="10" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="60" y="292" font-size="13" font-weight="600" fill="#92400e">判断顺序（先判「会不会伤人」，再判「好不好看」）</text>
+    <text x="60" y="318">① 有闪烁？——任何一秒钟闪 3 次以上都属于不符合 WCAG 2.3.1 的内容，直接移除，不是降档问题。</text>
+    <text x="60" y="340">② 有大幅位移 / 视差 / 缩放？——这是前庭障碍的主要触发源，reduce 时必须去掉，只留透明度。</text>
+    <text x="60" y="362">③ 是自动播放且超过 5 秒的动效？——必须提供暂停/隐藏（WCAG 2.2.2），与动效偏好无关。</text>
+    <text x="60" y="384">④ 以上都没有？——保留动效，只把时长缩短，让「状态变化」仍可被感知。</text>
+    <text x="60" y="408" fill="#64748b">实现上只有一个开关：CSS 用 @media (prefers-reduced-motion: reduce)，JS 用 matchMedia 同一个查询，两边必须读同一个值。</text>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img" aria-label="四种缓动曲线的形状与适用场景">
+  <rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">四种曲线的形状：横轴是时间，纵轴是完成度</text>
+
+  <rect x="60" y="60" width="320" height="250" fill="#fcfdff" stroke="#dbe3ee"/>
+  <line x1="60" y1="310" x2="380" y2="310" stroke="#94a3b8"/>
+  <line x1="60" y1="60" x2="60" y2="310" stroke="#94a3b8"/>
+  <line x1="60" y1="60" x2="380" y2="60" stroke="#e2e8f0" stroke-dasharray="4 4"/>
+  <text x="386" y="64" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="10" fill="#94a3b8">1.0</text>
+  <text x="386" y="314" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="10" fill="#94a3b8">0</text>
+  <text x="220" y="330" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#64748b">时间</text>
+
+  <path d="M60,310 L380,60" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+  <text x="280" y="200" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#64748b">linear</text>
+
+  <path d="M60,310 C170,90 250,68 380,60" stroke="#2563eb" stroke-width="3" fill="none"/>
+  <text x="250" y="96" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#2563eb">ease-out（减速）</text>
+
+  <path d="M60,310 C160,296 250,250 380,60" stroke="#0d9488" stroke-width="3" fill="none"/>
+  <text x="112" y="268" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#0d9488">ease-in（加速）</text>
+
+  <path d="M60,310 C150,50 200,30 250,40 C300,50 330,62 380,60" stroke="#7c3aed" stroke-width="3" fill="none"/>
+  <text x="200" y="24" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#7c3aed">spring（过冲后回落）</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">
+    <text x="440" y="86" font-weight="600" fill="#0f172a">怎么选（按「谁在动」判断）</text>
+    <text x="440" y="114">· 元素从无到有 / 从远处进来 → <tspan fill="#2563eb" font-weight="600">ease-out</tspan>：先快后慢，落点稳。</text>
+    <text x="440" y="136">· 元素离场 / 被收起 → <tspan fill="#0d9488" font-weight="600">ease-in</tspan>：先慢后快，走得干净。</text>
+    <text x="440" y="158">· 元素在屏幕内移动、由用户直接拖动 → <tspan fill="#7c3aed" font-weight="600">spring</tspan>：保留速度与惯性。</text>
+    <text x="440" y="180">· 进度条 / 骨架屏 → <tspan fill="#64748b" font-weight="600">linear</tspan>：匀速才代表「真实进度」。</text>
+    <text x="440" y="208" fill="#b45309">· 进场和出场用同一条曲线，是「对称缓动」这个最常见的错误：</text>
+    <text x="440" y="228" fill="#b45309">　真实世界的物体不会「加速飞出」，所以离场要用 ease-in。</text>
+    <text x="440" y="256" font-weight="600" fill="#0f172a">符号速记</text>
+    <text x="440" y="278" fill="#475569">M = 起点，C = 控制点，E = 终点。曲线「紧贴哪一端」就说明速度在哪一端更快。</text>
+  </g>
+
+  <rect x="60" y="360" width="840" height="112" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="80" y="386" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0f172a">四个能直接抄的值（尺寸无关，先抄再调）</text>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">
+    <text x="80" y="412">标准（绝大多数 UI 变化）：cubic-bezier(0.2, 0, 0, 1)　　强调（模态、抽屉）：cubic-bezier(0.2, 0, 0, 1) + 更长时长</text>
+    <text x="80" y="434">离场：cubic-bezier(0.4, 0, 1, 1)　　·　线性：linear（只给进度条与无限循环的加载指示）</text>
+    <text x="80" y="456">自定义弹簧：用 linear() 打点拟合，或直接交给 Web Animations API 的 spring 实现（见「时长与缓动」一页）</text>
+  </g>
+</svg>

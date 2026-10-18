@@ -848,3 +848,22 @@ export const FrontRichTextEditor = [
         ],
     },
 ];
+
+export const FrontMotion = [
+    {
+        text: "微交互与动效工程",
+        link: "/docs/Frontend/Motion/index.md",
+        items: [
+            { text: "总览：四类用途与四条边界", link: "/docs/Frontend/Motion/Overview/index.md" },
+            { text: "动效原则与感知预算", link: "/docs/Frontend/Motion/Principles/index.md" },
+            { text: "时长、缓动与弹簧", link: "/docs/Frontend/Motion/Timing/index.md" },
+            { text: "反馈与状态机", link: "/docs/Frontend/Motion/Feedback/index.md" },
+            { text: "列表与布局动画", link: "/docs/Frontend/Motion/ListAnimation/index.md" },
+            { text: "页面转场与共享元素", link: "/docs/Frontend/Motion/PageTransition/index.md" },
+            { text: "动效性能与掉帧诊断", link: "/docs/Frontend/Motion/Performance/index.md" },
+            { text: "无障碍与动效偏好", link: "/docs/Frontend/Motion/Accessibility/index.md" },
+            { text: "实战：看板的动效系统", link: "/docs/Frontend/Motion/Practice/index.md" },
+            { text: "常见问题与最佳实践", link: "/docs/Frontend/Motion/FAQ/index.md" },
+        ],
+    },
+];

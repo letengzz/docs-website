@@ -342,6 +342,7 @@ export const CompleteProject = [
           { text: "第 2 周第 3 步 · 请求作用域与观测信号（SG-A~SG-H）", link: "/project/Complete/TeamBoard/SignalScope/index.md" },
           { text: "第 2 周第 4 步 · 看板与卡片读写接口（BC-A~BC-H）", link: "/project/Complete/TeamBoard/BoardCardApi/index.md" },
           { text: "第 2 周第 5 步 · 评论与 @ 提及的写入接口（CM-A~CM-H）", link: "/project/Complete/TeamBoard/CommentMention/index.md" },
+          { text: "第 2 周第 6 步 · 附件直传与预签名（ATT-A~ATT-H）", link: "/project/Complete/TeamBoard/AttachmentDirectUpload/index.md" },
         ],
       },
       {

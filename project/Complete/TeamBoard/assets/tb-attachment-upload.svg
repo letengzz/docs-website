@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img" aria-label="附件直传的六步时序与三处鉴权点">
+  <defs>
+    <marker id="s" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">一次附件上传：文件不经过业务服务</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" font-weight="600" fill="#0f172a">
+    <rect x="40" y="52" width="140" height="36" rx="8" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="110" y="75" text-anchor="middle" fill="#1d4ed8">浏览器</text>
+    <rect x="400" y="52" width="160" height="36" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="480" y="75" text-anchor="middle" fill="#047857">业务 API</text>
+    <rect x="780" y="52" width="140" height="36" rx="8" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="850" y="75" text-anchor="middle" fill="#92400e">对象存储 S3</text>
+  </g>
+  <g stroke="#cbd5e1" stroke-dasharray="4 4">
+    <line x1="110" y1="90" x2="110" y2="440"/>
+    <line x1="480" y1="90" x2="480" y2="440"/>
+    <line x1="850" y1="90" x2="850" y2="440"/>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#475569">
+    <line x1="112" y1="118" x2="476" y2="118" stroke="#475569" stroke-width="1.5" marker-end="url(#s)"/>
+    <text x="180" y="112">① POST /attachments/presign {cardId, filename, size, contentType}</text>
+
+    <line x1="480" y1="152" x2="846" y2="152" stroke="#475569" stroke-width="1.5" marker-end="url(#s)"/>
+    <text x="520" y="146">② 校验权限 + 配额，插入 pending 行，签 PUT（5 分钟）</text>
+
+    <line x1="478" y1="186" x2="114" y2="186" stroke="#475569" stroke-width="1.5" marker-end="url(#s)"/>
+    <text x="190" y="180">③ { attachmentId, uploadUrl, headers, expiresAt }</text>
+
+    <line x1="112" y1="226" x2="846" y2="226" stroke="#2563eb" stroke-width="2" marker-end="url(#s)"/>
+    <text x="230" y="220" fill="#1d4ed8">④ PUT uploadUrl（文件直传，不经业务服务；带 Content-Type / Content-Length）</text>
+
+    <line x1="848" y1="260" x2="484" y2="260" stroke="#475569" stroke-width="1.5" marker-end="url(#s)"/>
+    <text x="540" y="254">⑤ 204 + ETag</text>
+
+    <line x1="112" y1="298" x2="476" y2="298" stroke="#475569" stroke-width="1.5" marker-end="url(#s)"/>
+    <text x="196" y="292">⑥ POST /attachments/{id}/commit（幂等）</text>
+
+    <line x1="480" y1="332" x2="846" y2="332" stroke="#475569" stroke-width="1.5" marker-end="url(#s)"/>
+    <text x="520" y="326">⑦ HEAD object：校验大小 / 类型 / 存在</text>
+
+    <line x1="478" y1="366" x2="114" y2="366" stroke="#047857" stroke-width="2" marker-end="url(#s)"/>
+    <text x="200" y="360" fill="#047857">⑧ 201 { attachmentId, status: "committed" }</text>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#b45309">
+    <rect x="40" y="392" width="418" height="72" rx="8" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="56" y="414" font-weight="600" fill="#92400e">三处鉴权，缺一不可</text>
+    <text x="56" y="434">① 签发时要判「这个人能不能往这张卡上传」</text>
+    <text x="56" y="452">② 签名本身限制了「能写哪个 key、多久、多大」</text>
+  </g>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#1d4ed8">
+    <rect x="482" y="392" width="438" height="72" rx="8" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="498" y="414" font-weight="600">③ 下载时再判一次（预签名 GET 短过期）</text>
+    <text x="498" y="434">对象 key 必须不可猜（uuidv7），不能用「租户/卡片/文件名」拼</text>
+    <text x="498" y="452">否则拿到 key 的人可以绕过业务服务直接读</text>
+  </g>
+</svg>

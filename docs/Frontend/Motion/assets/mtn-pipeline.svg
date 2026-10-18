@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img" aria-label="渲染管线：哪些属性可以只在合成阶段变化">
+  <defs>
+    <marker id="p" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">同一条管线，三种代价：改哪个属性决定动画能不能上合成线程</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12">
+    <rect x="40" y="150" width="150" height="60" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="115" y="176" text-anchor="middle" font-weight="600" fill="#0f172a">Style</text>
+    <text x="115" y="196" text-anchor="middle" fill="#64748b">算样式</text>
+
+    <rect x="220" y="150" width="150" height="60" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="295" y="176" text-anchor="middle" font-weight="600" fill="#0f172a">Layout</text>
+    <text x="295" y="196" text-anchor="middle" fill="#64748b">算几何</text>
+
+    <rect x="400" y="150" width="150" height="60" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="475" y="176" text-anchor="middle" font-weight="600" fill="#0f172a">Paint</text>
+    <text x="475" y="196" text-anchor="middle" fill="#64748b">画像素</text>
+
+    <rect x="580" y="150" width="150" height="60" rx="8" fill="#eff6ff" stroke="#93b4f0"/>
+    <text x="655" y="176" text-anchor="middle" font-weight="600" fill="#1d4ed8">Composite</text>
+    <text x="655" y="196" text-anchor="middle" fill="#1e40af">合成图层</text>
+
+    <g stroke="#64748b" stroke-width="1.6" marker-end="url(#p)">
+      <line x1="192" y1="180" x2="216" y2="180"/>
+      <line x1="372" y1="180" x2="396" y2="180"/>
+      <line x1="552" y1="180" x2="576" y2="180"/>
+    </g>
+
+    <text x="115" y="130" text-anchor="middle" fill="#b91c1c">主线程</text>
+    <text x="295" y="130" text-anchor="middle" fill="#b91c1c">主线程</text>
+    <text x="475" y="130" text-anchor="middle" fill="#b91c1c">主线程 / 栅格线程</text>
+    <text x="655" y="130" text-anchor="middle" fill="#047857">合成线程</text>
+
+    <rect x="40" y="60" width="690" height="44" rx="8" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="60" y="88" fill="#991b1b">top / left / width / height / margin / font-size：每帧走完前三步，长列表里必然掉帧</text>
+
+    <rect x="580" y="240" width="340" height="60" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="600" y="264" fill="#047857" font-weight="600">transform / opacity / filter（部分）</text>
+    <text x="600" y="286" fill="#065f46">只在合成阶段变化：不重排、不重绘</text>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">
+    <rect x="40" y="240" width="500" height="170" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="60" y="266" font-size="13" font-weight="600" fill="#0f172a">代价速查（同一份页面，不同属性）</text>
+    <text x="60" y="292">· width 动画：每帧 Layout + Paint → 20 张卡片的列表在 4 倍降速下掉到 30fps 以下。</text>
+    <text x="60" y="314">· box-shadow 动画：每帧 Paint → 阴影越大越慢，且是「软」掉帧（看起来只是不跟手）。</text>
+    <text x="60" y="336">· transform 动画：零布局、零重绘；除了第一次提层，其余帧只有矩阵乘法。</text>
+    <text x="60" y="358">· will-change 滥用：每个提层都占显存，几十个层之后合成本身开始变慢——越优化越卡。</text>
+    <text x="60" y="384" fill="#b45309">判据：动画「卡不卡」不要靠肉眼，用 Performance 面板看该帧有没有 Layout / Paint 条。</text>
+    <text x="60" y="404" fill="#64748b">补充：filter / backdrop-filter 虽然是合成属性，但模糊半径大时是 GPU 重活，移动端要实测。</text>
+  </g>
+</svg>

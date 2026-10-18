@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img" aria-label="动效问题分诊树：从现象到页面">
+  <defs>
+    <marker id="t" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">先按「现象」定位，而不是按「我猜是 CSS 写错了」定位</text>
+
+  <rect x="360" y="56" width="240" height="52" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+  <text x="480" y="78" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#1d4ed8">现象出现</text>
+  <text x="480" y="96" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#1e40af">先回答：是所有浏览器，还是只有某一台？</text>
+
+  <g stroke="#64748b" stroke-width="1.5" marker-end="url(#t)" fill="none">
+    <path d="M420,108 L180,150"/>
+    <path d="M460,108 L390,150"/>
+    <path d="M500,108 L580,150"/>
+    <path d="M540,108 L800,150"/>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12">
+    <rect x="60" y="152" width="240" height="96" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="78" y="178" font-weight="600" fill="#0f172a">「点了没反应」</text>
+    <text x="78" y="200" fill="#475569">先看有没有按下态、</text>
+    <text x="78" y="218" fill="#475569">pending 是否延迟出现、</text>
+    <text x="78" y="236" fill="#475569">请求是否被重复发送</text>
+    <text x="78" y="268" fill="#1d4ed8">→ 反馈与状态机</text>
+
+    <rect x="320" y="152" width="240" height="96" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="338" y="178" font-weight="600" fill="#0f172a">「卡顿 / 掉帧」</text>
+    <text x="338" y="200" fill="#475569">先看动了哪些属性、</text>
+    <text x="338" y="218" fill="#475569">该帧有没有 Layout 条、</text>
+    <text x="338" y="236" fill="#475569">列表是否在动画中重建</text>
+    <text x="338" y="268" fill="#1d4ed8">→ 性能与掉帧诊断</text>
+
+    <rect x="580" y="152" width="240" height="96" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="598" y="178" font-weight="600" fill="#0f172a">「位置跳变 / 闪一下」</text>
+    <text x="598" y="200" fill="#475569">先看是否先写后量、</text>
+    <text x="598" y="218" fill="#475569">是否 0 高度→auto、</text>
+    <text x="598" y="236" fill="#475569">是否动画结束后残留 transform</text>
+    <text x="598" y="268" fill="#1d4ed8">→ 列表与布局动画</text>
+
+    <rect x="830" y="152" width="100" height="96" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="846" y="178" font-weight="600" fill="#0f172a">「晕 / 恶心」</text>
+    <text x="846" y="200" fill="#475569">看位移幅度、</text>
+    <text x="846" y="218" fill="#475569">视差与自动播放</text>
+    <text x="846" y="244" fill="#1d4ed8">→ 无障碍</text>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">
+    <rect x="60" y="286" width="870" height="182" rx="10" fill="#fffbeb" stroke="#f0d8a8"/>
+    <text x="80" y="314" font-size="13" font-weight="600" fill="#92400e">三步定位法（顺序不能反）</text>
+    <text x="80" y="340">① <tspan font-weight="600" fill="#0f172a">先确认它有没有在动</tspan>：DevTools → Elements → Animations 面板，或在控制台跑 document.getAnimations()。</text>
+    <text x="80" y="362">　　返回数组为空说明动画根本没被创建（选择器没命中 / 被 !important 覆盖 / 元素被 display:none）。</text>
+    <text x="80" y="384">② <tspan font-weight="600" fill="#0f172a">再确认它在哪条线程上跑</tspan>：Performance 录制，看该帧是 Composite 还是 Layout+Paint。</text>
+    <text x="80" y="406">③ <tspan font-weight="600" fill="#0f172a">最后才怀疑参数</tspan>：时长、曲线、延迟——参数错了只会「不好看」，不会「不出现」或「卡死」。</text>
+    <text x="80" y="434" fill="#b45309">反过来说：所有「不出现」与「卡死」类问题，用调参数的方式去修，都会修成随机复现的偶发缺陷。</text>
+    <text x="80" y="456" fill="#64748b">两张必备截图：Animations 面板的时间轴（证明动画被创建）、Performance 面板的单帧（证明它跑在合成线程）。</text>
+  </g>
+</svg>

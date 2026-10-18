@@ -238,3 +238,18 @@ ARIA 的正确使用比很多人想象的严格。这五条是官方立场：
 - [W3C：ARIA 使用五条规则](https://www.w3.org/TR/using-aria/)
 - [W3C：可访问名称与描述计算（accname）](https://www.w3.org/TR/accname-1.2/)
 - [MDN：ARIA 参考](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA)
+
+## 与「微交互与动效工程」专题的分工（第 161 天补充）
+
+本页讲**静态可访问性**：语义化、可访问名称、对比度、键盘可达。它假设页面是「不动的」。**页面会动的时候**——动效偏好、闪烁阈值、动画期间的焦点与朗读——归[微交互与动效工程](../../Motion/index.md)的[无障碍与动效偏好](../../Motion/Accessibility/index.md)。
+
+| 维度 | 本页（无障碍基础） | 动效专题 |
+| --- | --- | --- |
+| 关注对象 | 静止的内容与控件 | 状态之间过渡的那几百毫秒 |
+| 关键规范 | WCAG 1.x / 2.1 / 4.1 | WCAG 2.3.1（闪烁）、2.3.3（交互动效）、2.2.2（暂停） |
+| 失败表现 | 读屏读不出、对比度不足、Tab 到不了 | 眩晕、恶心、焦点在动画中丢失 |
+| 共同点 | 都要求「不依赖单一通道表达」 | 动效只是第四重表达，不能替代文案与图标 |
+
+::: danger 最容易写错的「降级」
+`@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }` 看起来最彻底，实际把「保存中 → 已保存」的视觉线索也一起删了。正确做法是**去掉位移与缩放、保留透明度与颜色**，时长压到 100ms 以内——本页的「表达不能只靠一种通道」在这里同样成立。
+:::

@@ -474,3 +474,19 @@ window.addEventListener('beforeunload', () => stream.destroy());
 - [MDN · Page Visibility API](https://developer.mozilla.org/zh-CN/docs/Web/API/Page_Visibility_API)（休眠恢复处理）
 - [MDN · font-variant-numeric](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-numeric)（等宽数字）
 - [ECharts · 响应式与 resize](https://echarts.apache.org/handbook/zh/basics/import)（与实例生命周期相关）
+
+## 与「微交互与动效工程」专题的分工（第 161 天补充）
+
+本页讲**大盘本身**：布局、图表选型、刷新策略、断线重连。它关心「数据多久刷一次、刷完怎么不闪」。**一次数据变化该用哪种过渡语义**（增长 / 替换 / 重排），以及过渡的时长与降级，归[微交互与动效工程](../../Motion/index.md)。
+
+| 维度 | 本页（大屏看板） | 动效专题 |
+| --- | --- | --- |
+| 关注点 | 刷新频率、可见性暂停、实例复用 | 数据变化与图形变化之间的映射 |
+| 典型问题 | 刷新时整屏闪一下 | 折线「无意义地重画一遍」让读数延迟 |
+| 过渡语义 | 只区分「全量重载」与「增量更新」 | 区分增长 / 替换 / 重排三类，各配不同过渡 |
+| 共同点 | 都要求「不闪、不跳」 | 同左，并给出 `prefers-reduced-motion` 下的静态替代 |
+
+::: danger 图表过渡最常见的两个误导
+1. **给所有 series 加 300ms morph**：指标卡上的数字会「慢慢爬」，用户读到的是过渡中的中间值——监控场景下这是错误信息，不是美观问题。
+2. **用过渡掩盖慢查询**：图表先画空坐标系再等数据填充，看起来「一直在动」，实际首帧数据迟到 2s。正确做法是先给骨架与「加载中」文案，数据到达后一次性绘制。
+:::

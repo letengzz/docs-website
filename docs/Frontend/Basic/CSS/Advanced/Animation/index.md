@@ -201,3 +201,20 @@ document.querySelector('.icon').style.animationPlayState = 'paused';
 - [MDN：滚动驱动动画](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline)
 - [MDN：View Transitions API](https://developer.mozilla.org/zh-CN/docs/Web/API/View_Transitions_API)
 - 不走 CSS 的动画：[数据可视化 · 渲染路线：Canvas / SVG / WebGL](../../../../DataVisualization/Rendering/index.md)——`requestAnimationFrame` 循环的三条纪律、SVG 属性过渡为何每帧重算，以及图表/粒子动画为何不适用本页的 Composite 优化路径、各自的性能边界在哪。
+
+## 与「微交互与动效工程」专题的分工（第 161 天补充）
+
+本页讲**语法**：`@keyframes` 怎么写、`transition` 能过渡哪些属性、`animation-timeline` 与 View Transitions 的选择器长什么样——它回答「怎么写出来」。**什么时候不该写、写多久、谁来关掉**归[微交互与动效工程](../../../../Motion/index.md)。
+
+| 维度 | 本页（CSS 动画） | 动效专题 |
+| --- | --- | --- |
+| 关注点 | 属性是否生效、关键帧与时间线怎么写 | 该不该动、动多久、怎么降级 |
+| 关键产出 | 可运行的示例与语法对照表 | 时长/曲线令牌、判据与验收命令 |
+| 失败表现 | 动画不出现、属性不生效 | 出现了但「不对」：晕、卡、误导 |
+| 共同点 | 都要求只动 `transform` / `opacity` | 同左，并给出「动了别的属性怎么办」的替代方案 |
+
+一句话分工：**本页保证「能跑」，专题保证「该不该跑」。**
+
+::: danger 从本页示例直接抄到首屏的一个坑
+本页的「淡入」示例把 `opacity: 0` 写在基础样式里、靠动画变成 1——这在首屏标题上是**会推后 LCP** 的：LCP 记录的是元素「可见」的时间，而它在动画开始前是不可见的。首屏内容不要做透明度入场；如果一定要动，把起始值改成 `0.99` 或直接不做。
+:::

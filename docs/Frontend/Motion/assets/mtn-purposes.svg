@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img" aria-label="动效的四类用途与四条边界">
+  <rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">四类用途决定「动什么」，四条边界决定「什么时候不许动」</text>
+
+  <text x="40" y="76" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#2563eb">用途（动效能换来什么）</text>
+
+  <rect x="40" y="90" width="420" height="78" rx="10" fill="#f8fafc" stroke="#bfd3f5"/>
+  <text x="58" y="118" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#1f2937">① 反馈（feedback）</text>
+  <text x="58" y="140" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">回答「我这一下算不算数」：按下态、提交中、成功/失败</text>
+  <text x="58" y="158" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">判据：本地事件内起步，不等网络</text>
+
+  <rect x="40" y="180" width="420" height="78" rx="10" fill="#f8fafc" stroke="#bfd3f5"/>
+  <text x="58" y="208" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#1f2937">② 空间连续（continuity）</text>
+  <text x="58" y="230" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">回答「我从哪来、到哪去」：转场、共享元素、列表重排</text>
+  <text x="58" y="248" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">判据：新旧两态里同一个元素出现在同一位置</text>
+
+  <rect x="40" y="270" width="420" height="78" rx="10" fill="#f8fafc" stroke="#bfd3f5"/>
+  <text x="58" y="298" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#1f2937">③ 层级与因果（hierarchy）</text>
+  <text x="58" y="320" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">回答「谁盖住谁、谁导致谁」：抽屉、模态、展开折叠</text>
+  <text x="58" y="338" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">判据：遮罩与主体的入场顺序不可颠倒</text>
+
+  <rect x="40" y="360" width="420" height="78" rx="10" fill="#f8fafc" stroke="#bfd3f5"/>
+  <text x="58" y="388" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#1f2937">④ 注意力与叙事（focus）</text>
+  <text x="58" y="410" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">回答「先看哪里」：新内容入场、错误定位、引导</text>
+  <text x="58" y="428" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">判据：一次只引导一处，且能用静态方式替代</text>
+
+  <text x="500" y="76" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#b45309">边界（这些情况一律不加动效）</text>
+
+  <rect x="500" y="90" width="420" height="78" rx="10" fill="#fffbeb" stroke="#f0d8a8"/>
+  <text x="518" y="118" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#1f2937">① 高频操作</text>
+  <text x="518" y="140" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">一天点两百次的动作，200ms 的动画一天要等 40 秒</text>
+  <text x="518" y="158" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">典型：勾选、行内编辑、翻页、快捷键触发</text>
+
+  <rect x="500" y="180" width="420" height="78" rx="10" fill="#fffbeb" stroke="#f0d8a8"/>
+  <text x="518" y="208" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#1f2937">② 用户在等结果</text>
+  <text x="518" y="230" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">动画时长会直接加到任务完成时间上，而不是「感觉更快」</text>
+  <text x="518" y="248" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">正确做法：先出结果，再对结果做一次短促的强调</text>
+
+  <rect x="500" y="270" width="420" height="78" rx="10" fill="#fffbeb" stroke="#f0d8a8"/>
+  <text x="518" y="298" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#1f2937">③ 变化本身不可见</text>
+  <text x="518" y="320" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">元素在视口外、在折叠区、被 content-visibility 跳过时</text>
+  <text x="518" y="338" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">动画照跑，代价照付，用户一次也没看见</text>
+
+  <rect x="500" y="360" width="420" height="78" rx="10" fill="#fffbeb" stroke="#f0d8a8"/>
+  <text x="518" y="388" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#1f2937">④ 无障碍与低端设备</text>
+  <text x="518" y="410" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#475569">前庭障碍用户、`prefers-reduced-motion: reduce`、省电模式</text>
+  <text x="518" y="428" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">此时应「降低运动幅度」，而不是「全站静止」</text>
+
+  <rect x="40" y="456" width="880" height="44" rx="10" fill="#eff6ff" stroke="#93b4f0"/>
+  <text x="60" y="483" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#1d4ed8">一句话：动效是「状态变化的解释」，不是「页面的装饰」——解释不了任何状态变化的动画，删掉它不会损失信息。</text>
+</svg>

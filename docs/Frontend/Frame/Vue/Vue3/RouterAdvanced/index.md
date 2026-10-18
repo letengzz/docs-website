@@ -207,3 +207,20 @@ declare module "vue-router" {
 - 动态路由：https://router.vuejs.org/zh/guide/advanced/dynamic-routing.html
 - 导航守卫：https://router.vuejs.org/zh/guide/advanced/navigation-guards.html
 - 滚动行为：https://router.vuejs.org/zh/guide/advanced/scroll-behavior.html
+
+## 与「微交互与动效工程」专题的分工（第 161 天补充）
+
+本页讲**路由能力**：守卫、元信息、滚动行为、懒加载与错误处理。它决定「什么时候开始切」。**切换过程怎么被看见**——转场的四拍、共享元素、降级与可跳过——归[微交互与动效工程](../../../../Motion/index.md)的[页面转场与共享元素](../../../../Motion/PageTransition/index.md)。
+
+| 维度 | 本页（路由进阶） | 动效专题 |
+| --- | --- | --- |
+| 关注点 | 导航何时发生、数据何时就绪 | 导航发生时屏幕上的连续性 |
+| 关键钩子 | `beforeResolve` / `afterEach` / `scrollBehavior` | `document.startViewTransition` |
+| 失败表现 | 白屏、重复请求、滚动位置错乱 | 转场卡在第一帧、共享元素「飞错位置」 |
+| 共同点 | 都要求「数据先于渲染」 | 同左：数据必须在转场回调之外备好 |
+
+::: danger 三个顺序错误
+1. **在 `afterEach` 里 `await` 数据，再包 `startViewTransition`**：转场要等数据，页面在这段时间是冻结的——用户看到的是「点了没反应」。应当让路由守卫先取数（可显示 pending），转场只负责最后一跳。
+2. **在转场回调里 `router.push`**：回调必须同步改完 DOM，异步导航会让快照时机错位。
+3. **转场后忘记 `scrollBehavior` 与焦点**：旧滚动位置被带进新页面，键盘焦点还停在已卸载的元素上。
+:::
