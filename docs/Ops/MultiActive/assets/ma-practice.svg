@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .edge { fill: #f6f7f9; stroke: #9aa3af; stroke-width: 1.2; }
+    .c1 { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .c2 { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .tbl { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .line { stroke: #8a94a6; stroke-width: 1.4; fill: none; marker-end: url(#ar9); }
+    .dash { stroke: #b0b8c4; stroke-width: 1.2; fill: none; stroke-dasharray: 5 4; }
+  </style>
+  <defs>
+    <marker id="ar9" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">实战：协作看板的双单元，路由键是 tenant_id</text>
+  <text class="s" x="430" y="46">为什么不是 user_id：看板的每一个查询都带 tenant_id，用它可以少一次跨单元读</text>
+
+  <rect class="edge" x="30" y="62" width="800" height="50" rx="8"/>
+  <text class="h" x="430" y="82">网关：解析令牌 → 取 tenant_id → 查归属表 → 转发</text>
+  <text class="s" x="430" y="100">归属表点查 0.015 ms / 4 buffers；网关本地缓存 30 s</text>
+
+  <rect class="tbl" x="330" y="130" width="200" height="48" rx="8"/>
+  <text class="h" x="430" y="150">归属表 tenant_route</text>
+  <text class="s" x="430" y="168">tenant_id → cell</text>
+
+  <rect class="c1" x="100" y="206" width="280" height="150" rx="8"/>
+  <text class="h" x="240" y="228">单元 A（主，承载 70% 租户）</text>
+  <text class="s" x="240" y="252">应用 3 实例 · PG 主 + 1 备</text>
+  <text class="s" x="240" y="272">Redis 主从 · MinIO · 搜索索引</text>
+  <text class="s" x="240" y="296">写入：只写本地库</text>
+  <text class="s" x="240" y="316">跨单元：无同步写</text>
+  <text class="s" x="240" y="338">演练：L3 摘入口 → 归属 A 的租户</text>
+  <text class="s" x="240" y="352">返回 503 + 明确重试建议</text>
+
+  <rect class="c2" x="480" y="206" width="280" height="150" rx="8"/>
+  <text class="h" x="620" y="228">单元 B（备，承载 30% 租户）</text>
+  <text class="s" x="620" y="252">同规格，降配待命</text>
+  <text class="s" x="620" y="272">常驻但流量低</text>
+  <text class="s" x="620" y="296">接管方式：改归属表，不搬数据</text>
+  <text class="s" x="620" y="316">前提：A 的数据已同步到 B</text>
+  <text class="s" x="620" y="338">同步方向：A → B 单向，B 不写</text>
+  <text class="s" x="620" y="352">回切前先校验追平位点</text>
+
+  <path class="line" d="M430 178 L240 206 M430 178 L620 206"/>
+  <path class="dash" d="M380 280 L480 280"/>
+  <text class="s" x="430" y="272">单向复制</text>
+
+  <text class="s" x="430" y="398">验收口径：切到 B 之后，A 的租户仍能登录、看板可读可写、@ 通知能收到——三条都过，才算「切得动」。</text>
+  <text class="s" x="430" y="418">若只验证「首页能打开」，那验证的是健康检查，不是多活。</text>
+</svg>

@@ -234,6 +234,34 @@ UPDATE notification SET read_at = now()
 批量动作（「全部已读」）还要额外加**水位**（`AND created_at <= max(created_at)`），否则刚到达的新通知会被一起标成已读。
 :::
 
+## 与「多活与单元化」的分工（第 163 天补充）
+
+本页讲幂等键怎么选、怎么存、怎么过期。这些结论在单库环境里是完备的；**在多单元环境里，幂等键还多一个必须满足的条件：它要能区分「谁产生的」**。
+
+```sql
+-- 单库：一个序列就够
+CREATE TABLE idem_record (idem_key text PRIMARY KEY, ...);
+
+-- 多单元：两个单元的本地序列都会从 1 开始，必须把来源单元放进主键
+CREATE TABLE idem_record (
+  src_cell text   NOT NULL,
+  idem_key text   NOT NULL,
+  PRIMARY KEY (src_cell, idem_key)
+);
+```
+
+实测依据：两个单元各自 `bigserial`，各插两行，合并后 **4 行只有 2 个不同 ID**，而两侧主键都不报错——撞号在合并/迁移时才暴露。
+
+| 本页的结论 | 多活里的补充 | 去哪 |
+| --- | --- | --- |
+| 幂等键由客户端生成、服务端校验 | 键的作用域必须含单元/租户 | [数据同步](../../../Ops/MultiActive/DataSync/index.md) 第 4 节 |
+| 幂等记录有 TTL、可清理 | 跨单元重放要按 `(单元, 键)` 去重 | [冲突裁决](../../../Ops/MultiActive/Conflict/index.md) |
+| 重放要幂等 | 迁移期旧写被 `epoch` 拒绝后，重试要打到新单元 | [单元化模型](../../../Ops/MultiActive/CellModel/index.md) 第 4.1 节 |
+
+::: tip 一个便宜的判断
+**如果你的幂等键是自增 ID，它在多活里一定失效。** 换成「客户端生成的 UUID + 来源单元」几乎零成本，而它能挡住「同一笔操作在两个单元各执行一次」这类最贵的重复。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

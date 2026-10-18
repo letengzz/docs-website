@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .c { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; }
+    .bad { fill: #fdeeee; stroke: #c0504d; stroke-width: 1.5; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .line { stroke: #8a94a6; stroke-width: 1.4; fill: none; marker-end: url(#ar4); }
+    .loop { stroke: #c0504d; stroke-width: 1.4; fill: none; marker-end: url(#ar4r); }
+  </style>
+  <defs>
+    <marker id="ar4" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+    <marker id="ar4r" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#c0504d"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">三种同步形态：能不能多写，取决于有没有「唯一写点」</text>
+
+  <rect class="a" x="20" y="48" width="255" height="196" rx="10"/>
+  <text class="h" x="147" y="72">① 物理复制（单主）</text>
+  <text class="s" x="147" y="94">只有一个主库接受写</text>
+  <text class="s" x="147" y="112">备库重放 WAL / binlog</text>
+  <text class="s" x="147" y="140">切流 = 提升备库 + 改路由</text>
+  <text class="s" x="147" y="158">RPO 由复制方式决定</text>
+  <text class="s" x="147" y="186">适用：同城双活、两地三中心</text>
+  <text class="s" x="147" y="204">代价：一个 AZ 挂了要「升主」</text>
+  <text class="s" x="147" y="226">有损，且回切要重建复制</text>
+
+  <rect class="b" x="292" y="48" width="255" height="196" rx="10"/>
+  <text class="h" x="419" y="72">② 逻辑复制（双向）</text>
+  <text class="s" x="419" y="94">两侧都能写，按行同步</text>
+  <text class="s" x="419" y="112">必须做回环抑制</text>
+  <text class="s" x="419" y="140">适用：单元之间、迁移期双写</text>
+  <text class="s" x="419" y="158">前提：写冲突有裁决规则</text>
+  <text class="s" x="419" y="186">代价：自增 / 唯一键 / DDL</text>
+  <text class="s" x="419" y="204">全部要重做；延迟不可忽略</text>
+  <text class="s" x="419" y="226">最容易出「收敛但错」</text>
+
+  <rect class="c" x="564" y="48" width="276" height="196" rx="10"/>
+  <text class="h" x="702" y="72">③ 事件流（outbox / CDC）</text>
+  <text class="s" x="702" y="94">本地事务里写事件，异步投递</text>
+  <text class="s" x="702" y="112">下游按事件重建可合并状态</text>
+  <text class="s" x="702" y="140">适用：计数器、流水、搜索索引</text>
+  <text class="s" x="702" y="158">优点：天然可幂等重放</text>
+  <text class="s" x="702" y="186">代价：读模型最终一致</text>
+  <text class="s" x="702" y="204">要设计「读不到」时的兜底</text>
+  <text class="s" x="702" y="226">统计类必须走这条路</text>
+
+  <rect class="bad" x="60" y="272" width="360" height="120" rx="8"/>
+  <text class="h" x="240" y="296">回环：A 同步给 B，B 又同步回 A</text>
+  <text class="s" x="240" y="318">没有 origin 标记时，一条更新会被无限放大</text>
+  <text class="s" x="240" y="338">抑制手段：行级 origin 列 / GTID 集合</text>
+  <text class="s" x="240" y="356">/ 每单元独立复制通道且只订阅「别处」</text>
+  <text class="s" x="240" y="376">判据：随便写一行，观察 30 分钟内两侧</text>
+
+  <rect class="ok" x="440" y="272" width="360" height="120" rx="8"/>
+  <text class="h" x="620" y="296">唯一写点：唯一能同时满足「多活」与「简单」的约束</text>
+  <text class="s" x="620" y="318">一个用户的写只落在一个单元 → 该单元内是单主</text>
+  <text class="s" x="620" y="338">跨单元只同步「结果」或「事件」，不同步「意图」</text>
+  <text class="s" x="620" y="356">一旦允许两处写同一行，就必须引入冲突裁决</text>
+  <text class="s" x="620" y="376">而裁决本身，比多活更难维护</text>
+</svg>

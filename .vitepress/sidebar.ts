@@ -3,7 +3,7 @@ import { Auth, DDD, DesignPatterns, DistributedCache, DistributedLock, DotNet, E
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
-import { Ansible, BackupDR, CapacityCost, ChaosEngineering, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
+import { Ansible, BackupDR, CapacityCost, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
 import { BigData, CDC, ClickHouse, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
@@ -106,7 +106,7 @@ export const sidebar = {
     {
       text: "运维",
       collapsed: true,
-      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...CloudArchitecture, ...EdgeCDN, ...PerformanceEngineering, ...CapacityCost, ...Monitoring, ...LogSystem, ...Observability, ...BackupDR, ...ChaosEngineering, ...IncidentResponse, ...JumpServer, ...OpsOthers],
+      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...CloudArchitecture, ...EdgeCDN, ...PerformanceEngineering, ...CapacityCost, ...MultiActive, ...Monitoring, ...LogSystem, ...Observability, ...BackupDR, ...ChaosEngineering, ...IncidentResponse, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
@@ -224,6 +224,7 @@ export const sidebar = {
   "/docs/Ops/EdgeCDN": EdgeCDN,
   "/docs/Ops/PerformanceEngineering": PerformanceEngineering,
   "/docs/Ops/CapacityCost": CapacityCost,
+  "/docs/Ops/MultiActive": MultiActive,
   "/docs/Ops/Monitoring": Monitoring,
   "/docs/Ops/LogSystem": LogSystem,
   "/docs/Ops/Observability": Observability,

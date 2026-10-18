@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .c { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .db { fill: #ffffff; stroke: #6b7a90; stroke-width: 1.2; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.4; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">三种多活形态：差别在「一个用户的所有写，落不落在同一处」</text>
+
+  <rect class="a" x="20" y="50" width="260" height="300" rx="10"/>
+  <text class="h" x="150" y="76">同城双活（共享一份数据）</text>
+  <text class="s" x="150" y="100">两个机房、同一套库</text>
+  <rect class="db" x="50" y="116" width="90" height="54" rx="6"/>
+  <text class="s" x="95" y="140">应用 A</text>
+  <text class="s" x="95" y="158">AZ-1</text>
+  <rect class="db" x="170" y="116" width="90" height="54" rx="6"/>
+  <text class="s" x="215" y="140">应用 B</text>
+  <text class="s" x="215" y="158">AZ-2</text>
+  <rect class="db" x="80" y="200" width="150" height="48" rx="6"/>
+  <text class="s" x="155" y="220">主库（单写点）</text>
+  <text class="s" x="155" y="238">同步复制到备库</text>
+  <path class="arrow" d="M95 170 L120 200 M215 170 L190 200"/>
+  <text class="s" x="150" y="276">写：仍然只有一个主</text>
+  <text class="s" x="150" y="294">RPO ≈ 0（同城专线）</text>
+  <text class="s" x="150" y="312">难点：主库所在 AZ 挂了</text>
+  <text class="s" x="150" y="330">要提升备库，切换有损</text>
+
+  <rect class="b" x="295" y="50" width="260" height="300" rx="10"/>
+  <text class="h" x="425" y="76">两地三中心（双写但分主次）</text>
+  <text class="s" x="425" y="100">生产 + 同城灾备 + 异地灾备</text>
+  <rect class="db" x="315" y="116" width="100" height="54" rx="6"/>
+  <text class="s" x="365" y="140">中心 A</text>
+  <text class="s" x="365" y="158">可写</text>
+  <rect class="db" x="435" y="116" width="100" height="54" rx="6"/>
+  <text class="s" x="485" y="140">同城 B</text>
+  <text class="s" x="485" y="158">同步、只读</text>
+  <rect class="db" x="375" y="200" width="100" height="48" rx="6"/>
+  <text class="s" x="425" y="220">异地 C</text>
+  <text class="s" x="425" y="238">异步、只读</text>
+  <path class="arrow" d="M415 143 L435 143 M425 170 L425 200"/>
+  <text class="s" x="425" y="276">写：主中心一处</text>
+  <text class="s" x="425" y="294">RPO：同城 ≈ 0 / 异地秒级</text>
+  <text class="s" x="425" y="312">难点：异地只读的「读旧」</text>
+  <text class="s" x="425" y="330">要不要给灾备单独入口</text>
+
+  <rect class="c" x="570" y="50" width="270" height="300" rx="10"/>
+  <text class="h" x="705" y="76">单元化（每个单元都能写）</text>
+  <text class="s" x="705" y="100">按路由键把用户切成若干组</text>
+  <rect class="db" x="588" y="116" width="112" height="54" rx="6"/>
+  <text class="s" x="644" y="138">单元 1</text>
+  <text class="s" x="644" y="156">用户 1..N</text>
+  <rect class="db" x="712" y="116" width="112" height="54" rx="6"/>
+  <text class="s" x="768" y="138">单元 2</text>
+  <text class="s" x="768" y="156">用户 N+1..</text>
+  <rect class="db" x="650" y="200" width="112" height="48" rx="6"/>
+  <text class="s" x="706" y="220">归属表</text>
+  <text class="s" x="706" y="238">用户 → 单元</text>
+  <path class="arrow" d="M644 170 L690 200 M768 170 L722 200"/>
+  <text class="s" x="705" y="276">写：归属单元的本地库</text>
+  <text class="s" x="705" y="294">RTO：切路由即可，不搬数据</text>
+  <text class="s" x="705" y="312">难点：跨单元的东西都要重做</text>
+  <text class="s" x="705" y="330">唯一键、统计、全局查询</text>
+
+  <text class="s" x="430" y="378">选型的顺序是反的：先问「一个用户的写能不能只落一处」，再问「要几个机房」——能，才谈单元化。</text>
+</svg>

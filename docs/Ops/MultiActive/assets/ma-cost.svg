@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="410" viewBox="0 0 860 410" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .base { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .mult { fill: #fdeeee; stroke: #c0504d; stroke-width: 1.5; }
+    .cut { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .mono { font-family: Menlo, Consolas, monospace; font-size: 11px; fill: #333; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.4; fill: none; marker-end: url(#ar8); }
+  </style>
+  <defs>
+    <marker id="ar8" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">单元化的成本是乘法，不是加法</text>
+  <text class="s" x="430" y="46">N 个单元不是「N 台机器」，而是 N 份「必须同时在线」的全栈</text>
+
+  <rect class="base" x="24" y="66" width="196" height="86" rx="8"/>
+  <text class="h" x="122" y="90">单份全栈的月成本</text>
+  <text class="mono" x="122" y="114">C</text>
+  <text class="s" x="122" y="136">应用 + 库 + 缓存 + 存储</text>
+
+  <rect class="mult" x="252" y="66" width="240" height="86" rx="8"/>
+  <text class="h" x="372" y="90">N 个单元</text>
+  <text class="mono" x="372" y="114">N × C × (1 + 冗余率)</text>
+  <text class="s" x="372" y="136">冗余率 = 为「N-1 可用」留的空位</text>
+
+  <rect class="mult" x="524" y="66" width="312" height="86" rx="8"/>
+  <text class="h" x="680" y="90">再乘上这些固定项</text>
+  <text class="s" x="680" y="112">跨单元专线 / 复制带宽 / 演练环境</text>
+  <text class="s" x="680" y="132">归属表 / 全局唯一发号器 / 对账任务</text>
+
+  <path class="arrow" d="M220 109 L252 109 M492 109 L524 109"/>
+
+  <rect class="cut" x="24" y="184" width="392" height="196" rx="8"/>
+  <text class="h" x="220" y="208">四个能真正把倍数压下来的手段</text>
+  <text class="s" x="220" y="234">① 非对称单元：大单元承载 70%，小单元兜底</text>
+  <text class="s" x="220" y="256">② 共享只读副本：统计与运营查询不再复制一份</text>
+  <text class="s" x="220" y="278">③ 降配待命：非峰值单元的规格按 P95 而非峰值定</text>
+  <text class="s" x="220" y="300">④ 演练环境按时开关：不需要 7×24 常驻</text>
+  <text class="s" x="220" y="330">四条都做完，通常能把「3 倍」压到「1.6~1.9 倍」</text>
+  <text class="s" x="220" y="352">压不下去的那部分，是「多活」这件事本身的价格</text>
+  <text class="s" x="220" y="372">它必须能被「停机损失 × 年故障概率」解释</text>
+
+  <rect class="mult" x="440" y="184" width="396" height="196" rx="8"/>
+  <text class="h" x="638" y="208">算例（同一套业务，三种形态）</text>
+  <text class="s" x="638" y="234">单机房：1.0 C</text>
+  <text class="s" x="638" y="256">同城双活（共享存储、单主）：≈ 2.1 C</text>
+  <text class="s" x="638" y="278">两地三中心：≈ 3.2 C</text>
+  <text class="s" x="638" y="300">4 单元单元化 + 四条收敛：≈ 6.4 C</text>
+  <text class="s" x="638" y="326">年停机损失 600 万、单机房年故障概率 0.5 次、</text>
+  <text class="s" x="638" y="346">单次损失 4 小时营收 80 万 → 期望损失 320 万</text>
+  <text class="s" x="638" y="366">多活多付的钱，要小于这个数才成立</text>
+</svg>

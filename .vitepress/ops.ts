@@ -401,3 +401,21 @@ export const CapacityCost = [
     ],
   },
 ];
+export const MultiActive = [
+  {
+    text: "多活与单元化",
+    link: "/docs/Ops/MultiActive/index.md",
+    items: [
+      { text: "体系概述：多活、容灾与单元化的边界（MAO-A~MAO-H）", link: "/docs/Ops/MultiActive/Overview/index.md" },
+      { text: "单元化模型：把用户切成能独立承载的组（MAC-A~MAC-H）", link: "/docs/Ops/MultiActive/CellModel/index.md" },
+      { text: "路由：请求怎么找到自己的单元（MAR-A~MAR-H）", link: "/docs/Ops/MultiActive/Routing/index.md" },
+      { text: "跨单元数据同步：单向、双向与事件流（MAS-A~MAS-H）", link: "/docs/Ops/MultiActive/DataSync/index.md" },
+      { text: "冲突裁决：收敛不等于正确（MAX-A~MAX-H）", link: "/docs/Ops/MultiActive/Conflict/index.md" },
+      { text: "流量切换：三段时间与回切（MAT-A~MAT-H）", link: "/docs/Ops/MultiActive/TrafficSwitch/index.md" },
+      { text: "演练：五级金字塔与可证伪判据（MAD-A~MAD-H）", link: "/docs/Ops/MultiActive/Drill/index.md" },
+      { text: "成本：单元化是乘法（MAE-A~MAE-H）", link: "/docs/Ops/MultiActive/Cost/index.md" },
+      { text: "实战：给协作看板做双单元 + 切流（MAP-A~MAP-H）", link: "/docs/Ops/MultiActive/Practice/index.md" },
+      { text: "常见问题与最佳实践（MAF-A~MAF-H）", link: "/docs/Ops/MultiActive/FAQ/index.md" },
+    ],
+  },
+];

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .l1 { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .l2 { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .l3 { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; }
+    .l4 { fill: #f3eefc; stroke: #8b6fd0; stroke-width: 1.5; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .line { stroke: #8a94a6; stroke-width: 1.4; fill: none; marker-end: url(#ar3); }
+  </style>
+  <defs>
+    <marker id="ar3" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">路由四层：越靠上越「粗」，越靠下越「准」</text>
+  <text class="s" x="430" y="46">每一层都有缓存，每一层缓存的失效窗口都是切流时间的一部分</text>
+
+  <rect class="l1" x="40" y="70" width="780" height="66" rx="8"/>
+  <text class="h" x="430" y="92">① DNS / GSLB：把域名解析到某个入口 IP</text>
+  <text class="s" x="430" y="112">粒度最粗（整站 / 整地区），生效要等 TTL 过期；实测公共域名 TTL 50~247 s</text>
+
+  <rect class="l2" x="40" y="150" width="780" height="66" rx="8"/>
+  <text class="h" x="430" y="172">② Anycast / BGP：同一 IP 广播到多个站点，靠路由收敛就近落地</text>
+  <text class="s" x="430" y="192">切换以秒计，但你无法「按用户」控制落点——只适合做「整站就近接入」</text>
+
+  <rect class="l3" x="40" y="230" width="780" height="66" rx="8"/>
+  <text class="h" x="430" y="252">③ 入口网关：按路由键（用户 / 租户）查归属表，转发到对应单元</text>
+  <text class="s" x="430" y="272">最常用的一层；归属表点查 0.015 ms，但网关本地缓存会带来 30~60 s 的旧路由窗口</text>
+
+  <rect class="l4" x="40" y="310" width="780" height="66" rx="8"/>
+  <text class="h" x="430" y="332">④ SDK / 客户端：App 或服务网格 Sidecar 自己选单元</text>
+  <text class="s" x="430" y="352">最准（能拿到用户身份），但「发版才能改」——路由策略的变更从此受制于客户端版本分布</text>
+
+  <path class="line" d="M430 136 L430 150 M430 216 L430 230 M430 296 L430 310"/>
+  <text class="s" x="430" y="400">结论：在线写必须落在归属表的权威答案上，所以「准」的一层只在 ③④；① 只负责把人送到正确的城市。</text>
+</svg>

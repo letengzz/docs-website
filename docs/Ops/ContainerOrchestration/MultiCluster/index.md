@@ -247,6 +247,21 @@ curl -I https://app.example.com/
 - [Kubernetes 存储](../../Kubernetes/Storage/index.md)：跨集群的数据卷备份与 CSI 快照；
 - [服务网格 · 架构原理](../ServiceMesh/Architecture/index.md)：跨集群的流量治理与故障转移。
 
+## 与「多活与单元化」的分工（第 163 天补充）
+
+本页讲的是 **Kubernetes 层的多集群**：联邦、MCS、Argo CD 多集群下发、DNS/GSLB 与服务网格的流量切换。它解决「怎么把同一份清单发到 N 个集群、怎么让 Service 跨集群可达」；**它不解决「哪个用户该由哪个集群服务」**——那是业务层的路由问题，K8s 完全看不见用户身份。
+
+| 本页的能力 | 它的边界 | 去哪 |
+| --- | --- | --- |
+| 一套清单多集群交付（GitOps） | 交付一致 ≠ 数据一致：两集群的库各自独立 | [数据同步](../../MultiActive/DataSync/index.md) |
+| MCS 让 Service 跨集群可达 | 可达会诱导「跨集群写」，而跨单元写是双写的来源 | [体系概述](../../MultiActive/Overview/index.md) 第 4.2 节 |
+| DNS/GSLB 与服务网格切流 | 它们按「集群/地域」切，不按「租户」切 | [路由](../../MultiActive/Routing/index.md) 第 1.1 节 |
+| 「数据一致性是多集群最大挑战」（第 161 行） | 具体怎么裁：LWW 为什么错、增量为什么对 | [冲突裁决](../../MultiActive/Conflict/index.md) |
+
+::: danger 一个高频误配
+用 MCS 把 `teamboard-api` 暴露成「跨集群 Service」，让 A 集群的应用直接调 B 集群的库前置——**这一步就把「单元内闭环」破坏了**。K8s 层面它工作得很好（Service 可达、延迟也就多几毫秒），但它意味着一个请求可能跨两个集群写。多集群的连通性应该只用于**只读聚合与运维通道**，不用于在线写路径。
+:::
+
 ## 参考资料
 
 - Multi-Cluster Service API：<https://github.com/kubernetes-sigs/mcs-api>

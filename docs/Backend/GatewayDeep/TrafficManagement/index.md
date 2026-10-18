@@ -212,6 +212,24 @@ curl -s -o /dev/null -w '%{http_code}\n' -H 'X-Canary: 1' http://127.0.0.1:9080/
 - [工具 · CI/CD · 部署与回滚](../../../Tools/CICD/DeployRollback/index.md)：灰度发布的流程侧
 - [实战：从零配一个生产级网关](../Practice/index.md)
 
+## 与「多活与单元化」的分工（第 163 天补充）
+
+本页讲网关侧的流量管理：路由规则、权重、灰度、限流、熔断。这些都是**按流量特征**做决策；多活多出一层**按身份做决策**：同一个 `/api/boards`，A 租户必须去单元 A、B 租户必须去单元 B。
+
+| 本页的能力 | 多活里的用法 | 去哪 |
+| --- | --- | --- |
+| 权重与灰度（1% → 100%） | 切流的第 2~5 步直接复用 | [流量切换](../../../Ops/MultiActive/TrafficSwitch/index.md) 第 3 节 |
+| 按 Header/Path 路由 | 归属表查询结果作为上游选择的输入 | [路由](../../../Ops/MultiActive/Routing/index.md) |
+| 限流与熔断 | 单元级限流要按「该单元承载的租户」设阈值 | [单元化模型](../../../Ops/MultiActive/CellModel/index.md) 第 5 节 |
+| 错误码映射 | 非归属单元必须返回 `421` + `X-Cell-Correct` | [实战](../../../Ops/MultiActive/Practice/index.md) 第 3.1 节 |
+
+::: danger 网关里最容易写错的一行兜底
+```text
+route = routeTable.getOrDefault(tenantId, "cell-a")   // ← 错
+```
+归属表查不到时默认落到 A，等于让「路由故障」变成「A 被打爆」。正确写法是 `fail closed`：返回 `503` + `Retry-After`，并让归属表的读取结果进本地快照（只用于读降级，写仍然拒绝）。
+:::
+
 ## 参考资料
 
 - APISIX 限流插件（limit-count / limit-req / limit-conn）：https://apisix.apache.org/docs/apisix/plugins/limit-count/

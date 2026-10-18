@@ -1,6 +1,8 @@
 # 微交互与动效工程
 
-<p style="text-align:center;"><img src="./assets/mtn-topic-map.svg" style="zoom:75%;" /></p>
+<p style="text-align:center;"><img src="./assets/motion-logo.png" style="zoom:75%;" /></p>
+
+<p style="text-align:center;"><img src="./assets/mtn-topic-map.svg" alt="微交互与动效专题地图：十个问题的分工" style="zoom:75%;" /></p>
 
 界面上的每一次「动」，都在回答用户一个问题：**刚才发生了什么，接下来会发生什么。** 本专题不教怎么做得花哨，而是把动效当成**状态变化的解释器**来工程化——什么时候该动、动多久、跑在哪个线程、谁有权把它关掉，每一件都写成可执行、可验收的约束。
 

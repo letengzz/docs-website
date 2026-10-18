@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .band { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.2; }
+    .band2 { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.2; }
+    .band3 { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.2; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .axis { stroke: #6b7a90; stroke-width: 1.4; fill: none; marker-end: url(#ar6); }
+    .tick { stroke: #c3cad6; stroke-width: 1; stroke-dasharray: 4 4; }
+  </style>
+  <defs>
+    <marker id="ar6" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#6b7a90"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">切流不是「一个瞬间」，而是三段必须都走完的时间</text>
+  <text class="s" x="430" y="46">RTO 的真实含义 = 三段之和，不是「按下按钮那一刻」</text>
+
+  <path class="axis" d="M60 300 L800 300"/>
+  <text class="s" x="800" y="322">时间</text>
+
+  <rect class="band" x="70" y="120" width="220" height="150" rx="6"/>
+  <text class="h" x="180" y="146">① 解析生效</text>
+  <text class="s" x="180" y="170">DNS 记录改成新入口</text>
+  <text class="s" x="180" y="190">要等 TTL 过期 + 缓存清空</text>
+  <text class="s" x="180" y="212">实测公共域名 TTL：</text>
+  <text class="s" x="180" y="230">50 / 56 / 91 / 149 / 247 s</text>
+  <text class="s" x="180" y="252">最坏 ≈ 2 × TTL（负缓存）</text>
+
+  <rect class="band2" x="300" y="120" width="220" height="150" rx="6"/>
+  <text class="h" x="410" y="146">② 连接排空</text>
+  <text class="s" x="410" y="170">旧入口的在途请求</text>
+  <text class="s" x="410" y="190">长连接 / WebSocket 不会自己断</text>
+  <text class="s" x="410" y="212">要给「优雅停机」的时间窗</text>
+  <text class="s" x="410" y="230">默认 30 s 常不够</text>
+  <text class="s" x="410" y="252">取值：P99 请求时长 × 3</text>
+
+  <rect class="band3" x="530" y="120" width="220" height="150" rx="6"/>
+  <text class="h" x="640" y="146">③ 客户端重试</text>
+  <text class="s" x="640" y="170">客户端发现失败后才重连</text>
+  <text class="s" x="640" y="190">重试间隔、退避、熔断冷却</text>
+  <text class="s" x="640" y="212">都在这段里叠加</text>
+  <text class="s" x="640" y="230">指数退避到 30 s 时，</text>
+  <text class="s" x="640" y="252">用户已经等了半分钟</text>
+
+  <path class="tick" d="M70 100 L70 300 M290 100 L290 300 M520 100 L520 300 M750 100 L750 300"/>
+  <text class="s" x="180" y="92">t0</text>
+  <text class="s" x="410" y="92">t1</text>
+  <text class="s" x="640" y="92">t2</text>
+  <text class="s" x="780" y="92">t3 = RTO</text>
+
+  <text class="s" x="430" y="352">算例：TTL 60 s + 排空 30 s + 重试 20 s ≈ 110 s；若按「TTL 30 s」估算，就会把 3 分钟的故障说成 1 分钟。</text>
+  <text class="s" x="430" y="376">所以承诺 RTO 前，先把三段分别量出来；量不出来的那一段，按最坏值算。</text>
+</svg>

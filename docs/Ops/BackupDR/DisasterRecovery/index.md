@@ -184,6 +184,22 @@ dig +nocmd blog.example.com +noall +answer | awk '{print $2}'
 - **切完怎么发现「切得不对」**：见 [监控告警](../../Monitoring/index.md)。
 - **云上的容灾落位（子网跨 AZ、负载均衡跨 AZ、数据复制方式）**：见 [云上架构 · 可用性拓扑](../../CloudArchitecture/Availability/index.md)。本页回答「**要哪个档位**」（冷 / 温 / 热 / 多活与 RTO / RPO 怎么定），该页回答「档位落到云上**长什么样**」。一条最容易被打脸的判据：**「多可用区」是不是真的，取决于入口的跨可用区开关是否开启、后端是否真的分布在两个 AZ**——而不是文档里写了「已多活」。
 
+## 9. 与「多活与单元化」的分工（第 163 天补充）
+
+本页第 1 节的四个档位是**选档**，它回答「该做到哪一档、钱花在哪」；至于档位里最难的那一档——多活——本页只到「双向或单元化复制」一句。**「多活到底怎么落地」不在本页**：
+
+| 本页给了什么 | 还缺什么 | 去哪 |
+| --- | --- | --- |
+| 四个档位的 RTO/RPO 与成本对照 | 单元边界怎么切、哪些必须闭环 | [单元化模型](../../MultiActive/CellModel/index.md) |
+| 「不要直接跳到多活」的警告 | 什么时候**该**跳（五条判断线） | [体系概述](../../MultiActive/Overview/index.md) |
+| 切换与回切的决策树（第 3 节） | 切流的三段时间怎么量、灰度五步 | [流量切换](../../MultiActive/TrafficSwitch/index.md) |
+| 演练的四种类型与记录模板（第 4 节） | 五级金字塔与「旧单元 QPS=0」这类可证伪判据 | [演练](../../MultiActive/Drill/index.md) |
+| 成本「怎么在预算内提档」（第 5 节） | 单元化的乘法成本与四条收敛手段 | [成本](../../MultiActive/Cost/index.md) |
+
+::: warning 一句最容易混淆的话
+本页写「多活 RTO ≈ 0」，指的是**流量层面的切换时间**；用户可感知的 RTO 还要加上 DNS 生效、连接排空与客户端重试三段，实测常见 2~3 分钟——见[流量切换](../../MultiActive/TrafficSwitch/index.md)第 1 节。汇报时把这两个数混用，是容灾方案评审里最常见的口径事故。
+:::
+
 ## 参考资料
 
 - Google SRE Workbook · Disaster Recovery（RTO/RPO 与演练）：https://sre.google/workbook/disaster-recovery/

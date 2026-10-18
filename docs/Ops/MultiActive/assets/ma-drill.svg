@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .l5 { fill: #f3eefc; stroke: #8b6fd0; stroke-width: 1.5; }
+    .l4 { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .l3 { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .l2 { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; }
+    .l1 { fill: #fdeeee; stroke: #c0504d; stroke-width: 1.5; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .up { stroke: #8a94a6; stroke-width: 1.3; fill: none; marker-end: url(#ar7); }
+  </style>
+  <defs>
+    <marker id="ar7" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">五级演练：越往上越贵，也越接近「真的能不能用」</text>
+  <text class="s" x="430" y="46">只做下面三级就宣称「多活可用」，是本专题见过最多的假通过</text>
+
+  <rect class="l1" x="60" y="330" width="740" height="56" rx="8"/>
+  <text class="h" x="430" y="352">L1 桌面推演：念一遍步骤，找出「谁有权按下按钮」</text>
+  <text class="s" x="430" y="372">成本≈0 · 证明：流程存在 · 不证明：任何技术事实</text>
+
+  <rect class="l2" x="110" y="268" width="640" height="52" rx="8"/>
+  <text class="h" x="430" y="288">L2 单组件演练：提升备库、切缓存、切换对象存储</text>
+  <text class="s" x="430" y="307">成本：低 · 证明：组件能反向 · 不证明：流量能过去</text>
+
+  <rect class="l3" x="160" y="206" width="540" height="52" rx="8"/>
+  <text class="h" x="430" y="226">L3 单元级演练：摘掉一个单元的入口，验证归属该单元的用户「降级而不乱写」</text>
+  <text class="s" x="430" y="245">成本：中 · 证明：路由与降级正确 · 不证明：站点级灾难</text>
+
+  <rect class="l4" x="210" y="144" width="440" height="52" rx="8"/>
+  <text class="h" x="430" y="164">L4 站点级切换：整站切走并保持 N 小时，再回切</text>
+  <text class="s" x="430" y="183">成本：高 · 证明：RTO/RPO 是真数 · 不证明：数据没差</text>
+
+  <rect class="l5" x="260" y="82" width="340" height="52" rx="8"/>
+  <text class="h" x="430" y="102">L5 全链路 + 数据校验：切流后跑对账与不变量</text>
+  <text class="s" x="430" y="121">成本：最高 · 唯一能证明「切过去还能正确做生意」</text>
+
+  <path class="up" d="M430 330 L430 320 M430 268 L430 258 M430 206 L430 196 M430 144 L430 134"/>
+  <text class="s" x="430" y="404">判据：每一级都必须写「观测点 / 期望值 / 持续时间」，三者缺一，结论不成立。</text>
+</svg>

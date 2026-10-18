@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .box { fill: #f6f7f9; stroke: #9aa3af; stroke-width: 1.2; }
+    .bad { fill: #fdeeee; stroke: #c0504d; stroke-width: 1.5; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .mid { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .mono { font-family: Menlo, Consolas, monospace; font-size: 11px; fill: #333; }
+    .line { stroke: #8a94a6; stroke-width: 1.4; fill: none; marker-end: url(#ar5); }
+  </style>
+  <defs>
+    <marker id="ar5" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">同一个「卖了两笔」的场景，两种复制得到两个答案</text>
+  <text class="s" x="430" y="46">本图数字全部来自本机 PostgreSQL 18.6 实跑（2026-10-18）</text>
+
+  <rect class="box" x="24" y="64" width="240" height="72" rx="8"/>
+  <text class="h" x="144" y="88">初始：SKU-1 库存 1000</text>
+  <text class="s" x="144" y="110">两单元各持一份相同副本</text>
+
+  <rect class="bad" x="290" y="64" width="250" height="150" rx="8"/>
+  <text class="h" x="415" y="88">复制「行状态」+ LWW</text>
+  <text class="s" x="415" y="110">单元 A 减 100 → 900</text>
+  <text class="s" x="415" y="128">单元 B 减 200 → 800</text>
+  <text class="s" x="415" y="152">按 updated_at 后写覆盖</text>
+  <text class="mono" x="415" y="176">expect 700 → got 800</text>
+  <text class="s" x="415" y="198">丢了一整笔扣减</text>
+
+  <rect class="ok" x="566" y="64" width="270" height="150" rx="8"/>
+  <text class="h" x="701" y="88">复制「增量事件」</text>
+  <text class="s" x="701" y="110">A 产生 delta = -100</text>
+  <text class="s" x="701" y="128">B 产生 delta = -200</text>
+  <text class="s" x="701" y="152">落地端求和（幂等去重）</text>
+  <text class="mono" x="701" y="176">expect 700 → got 700</text>
+  <text class="s" x="701" y="198">收敛且正确</text>
+
+  <path class="line" d="M264 100 L290 100"/>
+  <path class="line" d="M540 100 L566 100"/>
+
+  <rect class="mid" x="24" y="240" width="392" height="150" rx="8"/>
+  <text class="h" x="220" y="264">为什么 LWW 在这里是错的</text>
+  <text class="s" x="220" y="288">LWW 的语义是「最后一次写入赢」</text>
+  <text class="s" x="220" y="308">而库存的语义是「每一次扣减都算数」</text>
+  <text class="s" x="220" y="332">两者不是同一个函数：一个保留末值，</text>
+  <text class="s" x="220" y="352">一个要求累加。选错 = 静默少卖 / 超卖</text>
+  <text class="s" x="220" y="376">LWW 只适合「整行被一个人独占编辑」</text>
+
+  <rect class="bad" x="444" y="240" width="392" height="150" rx="8"/>
+  <text class="h" x="640" y="264">更狠的一点：对账查不出来</text>
+  <text class="s" x="640" y="288">两侧内容完全一致，diff_rows = 0</text>
+  <text class="s" x="640" y="308">对账只验证「两边一样」，不验证「对不对」</text>
+  <text class="s" x="640" y="332">必须再加一层「不变量校验」：</text>
+  <text class="mono" x="640" y="354">qty = 期初 + sum(delta)</text>
+  <text class="s" x="640" y="376">不变量对不上，才是唯一能抓住它的判据</text>
+</svg>

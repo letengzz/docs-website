@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .edge { fill: #f6f7f9; stroke: #9aa3af; stroke-width: 1.2; }
+    .cell { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .inner { fill: #ffffff; stroke: #7c93b8; stroke-width: 1; }
+    .route { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.5; }
+    .shared { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .line { stroke: #8a94a6; stroke-width: 1.4; fill: none; marker-end: url(#ar2); }
+  </style>
+  <defs>
+    <marker id="ar2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">单元化：一个单元必须能独立承载「一部分用户的全部功能」</text>
+  <text class="s" x="430" y="46">闭环的部分越多，切流越轻；共享的东西越多，切流越像「搬机房」</text>
+
+  <rect class="edge" x="30" y="60" width="800" height="52" rx="8"/>
+  <text class="h" x="430" y="80">入口层（全局共享）：DNS / GSLB / 网关</text>
+  <text class="s" x="430" y="99">这一层只做「按路由键选单元」，不保存业务状态</text>
+
+  <rect class="route" x="300" y="128" width="260" height="52" rx="8"/>
+  <text class="h" x="430" y="148">归属表：用户 → 单元</text>
+  <text class="s" x="430" y="167">点查 0.015 ms / 4 buffers（实测）</text>
+
+  <rect class="shared" x="30" y="200" width="150" height="96" rx="8"/>
+  <text class="h" x="105" y="222">全局共享</text>
+  <text class="s" x="105" y="242">配置中心</text>
+  <text class="s" x="105" y="260">证书 / 密钥</text>
+  <text class="s" x="105" y="278">账号与登录</text>
+
+  <rect class="cell" x="200" y="200" width="140" height="150" rx="8"/>
+  <text class="h" x="270" y="222">单元 1</text>
+  <rect class="inner" x="214" y="234" width="112" height="22" rx="4"/>
+  <text class="s" x="270" y="249">应用实例</text>
+  <rect class="inner" x="214" y="262" width="112" height="22" rx="4"/>
+  <text class="s" x="270" y="277">本地库（唯一写点）</text>
+  <rect class="inner" x="214" y="290" width="112" height="22" rx="4"/>
+  <text class="s" x="270" y="305">缓存 / 队列</text>
+  <rect class="inner" x="214" y="318" width="112" height="22" rx="4"/>
+  <text class="s" x="270" y="333">附件桶 / 搜索索引</text>
+
+  <rect class="cell" x="360" y="200" width="140" height="150" rx="8"/>
+  <text class="h" x="430" y="222">单元 2</text>
+  <rect class="inner" x="374" y="234" width="112" height="22" rx="4"/>
+  <text class="s" x="430" y="249">应用实例</text>
+  <rect class="inner" x="374" y="262" width="112" height="22" rx="4"/>
+  <text class="s" x="430" y="277">本地库（唯一写点）</text>
+  <rect class="inner" x="374" y="290" width="112" height="22" rx="4"/>
+  <text class="s" x="430" y="305">缓存 / 队列</text>
+  <rect class="inner" x="374" y="318" width="112" height="22" rx="4"/>
+  <text class="s" x="430" y="333">附件桶 / 搜索索引</text>
+
+  <rect class="cell" x="520" y="200" width="140" height="150" rx="8"/>
+  <text class="h" x="590" y="222">单元 3</text>
+  <rect class="inner" x="534" y="234" width="112" height="22" rx="4"/>
+  <text class="s" x="590" y="249">应用实例</text>
+  <rect class="inner" x="534" y="262" width="112" height="22" rx="4"/>
+  <text class="s" x="590" y="277">本地库（唯一写点）</text>
+  <rect class="inner" x="534" y="290" width="112" height="22" rx="4"/>
+  <text class="s" x="590" y="305">缓存 / 队列</text>
+  <rect class="inner" x="534" y="318" width="112" height="22" rx="4"/>
+  <text class="s" x="590" y="333">附件桶 / 搜索索引</text>
+
+  <rect class="edge" x="690" y="200" width="140" height="150" rx="8"/>
+  <text class="h" x="760" y="222">跨单元只读</text>
+  <text class="s" x="760" y="246">数仓 / 全局统计</text>
+  <text class="s" x="760" y="266">运营后台查询</text>
+  <text class="s" x="760" y="288">异步汇总</text>
+  <text class="s" x="760" y="312">（不参与在线写）</text>
+
+  <path class="line" d="M430 112 L430 128"/>
+  <path class="line" d="M400 180 L270 200 M430 180 L430 200 M460 180 L590 200"/>
+  <text class="s" x="430" y="376">铁律：任何在线写只能落在「该用户所属单元」的本地库里；跨单元写一律拒绝或异步补偿。</text>
+</svg>

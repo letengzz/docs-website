@@ -19,6 +19,7 @@
 - [日志体系](LogSystem/index.md)
 - [可观测性深入](Observability/index.md)：四条边界（监控 ≠ 可观测）、OpenTelemetry 标准与接入、Collector 管道、采样决策（看到什么与不能宣称什么）、持续剖析与火焰图、后端选型、观测成本治理、端到端接入实战、常见问题
 - [备份与容灾](BackupDR/index.md)
+- [多活与单元化](MultiActive/index.md)：四条边界（多活 ≠ 容灾、收敛 ≠ 正确）、三种形态与四问决策树、单元化模型与闭环清单、四层路由与归属表、三种同步与回环抑制、冲突四策略与对账三层、切流三段时间与回切、五级演练与可证伪判据、成本乘法与四条收敛手段、双单元实战 `S1~S10`、常见问题
 - [混沌工程](ChaosEngineering/index.md)：稳态假设、故障注入、实验设计、平台工具、演练日、实战
 - [故障应急体系](IncidentResponse/index.md)：值班制度、故障定级、应急指挥、应急预案、定位与止损、演练、实战、常见问题
 - [JumpServer](JumpServer/index.md)
