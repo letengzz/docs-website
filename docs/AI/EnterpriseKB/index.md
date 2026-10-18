@@ -116,6 +116,12 @@
 两者的交点只有一句话：**审计留痕要留「标识」而不是「原文」**。那边给出的做法是留 `pii_types` 与 `pii_masked` 两个字段（命中了哪类、掩掉了几个），而不是把命中内容抄进日志。本专题的审计事件在写日志时同样适用这一条。
 :::
 
+## 与「多模态检索与重排」的分工（第 157 天补充）
+
+企业知识库的语料里，PDF、扫描件、幻灯片占比通常过半。本专题讲**知识库怎么建、权限怎么分、答案怎么引用**；「扫描件不 OCR 怎么检索」「表格页的 patch 预算怎么算」「跨模态召回怎么融合」属于检索层，见 [多模态检索与重排](../MultimodalRetrieval/index.md)。
+
+一条实用的分工判据：**答案需要「引用原页」时，先看那边的视觉文档检索；只需要「一段文字」时，本专题的文本链路更便宜。**
+
 ## 参考资料
 
 - Azure AI Search 官方文档 · Document-level access control（四种做法的 GA / 预览状态、令牌传递与生效时延）：https://learn.microsoft.com/azure/search/search-document-level-access-overview

@@ -209,6 +209,25 @@ export const AI_Multimodal = [
   },
 ];
 
+export const AI_MultimodalRetrieval = [
+  {
+    text: "多模态检索与重排",
+    link: "/docs/AI/MultimodalRetrieval/index.md",
+    collapsed: true,
+    items: [
+      { text: "总览：三种范式与五个必失点", link: "/docs/AI/MultimodalRetrieval/Overview/index.md" },
+      { text: "图文向量：相似度到底在比什么", link: "/docs/AI/MultimodalRetrieval/Embedding/index.md" },
+      { text: "视觉文档检索：不 OCR 也能查页面", link: "/docs/AI/MultimodalRetrieval/VisualDocument/index.md" },
+      { text: "混合召回：三路候选怎么合成", link: "/docs/AI/MultimodalRetrieval/HybridRecall/index.md" },
+      { text: "重排：从可能相关到确实相关", link: "/docs/AI/MultimodalRetrieval/Rerank/index.md" },
+      { text: "评估：先有能红的评估集", link: "/docs/AI/MultimodalRetrieval/Evaluation/index.md" },
+      { text: "服务化：索引分层与降级", link: "/docs/AI/MultimodalRetrieval/Serving/index.md" },
+      { text: "实战：商品图搜 + 说明书截图", link: "/docs/AI/MultimodalRetrieval/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/MultimodalRetrieval/FAQ/index.md" },
+    ],
+  },
+];
+
 export const AI_FineTuning = [
   {
     text: "大模型微调",

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" role="img" aria-label="三路召回融合：BM25、稠密文本、视觉多向量，经 RRF 融合与去重得到结果">
+  <title>三路召回与融合：谁负责字面、语义、外观</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="art" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="480" fill="#f8fafc"/>
+  <text x="450" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">三路召回与融合：谁负责字面、语义、外观</text>
+  <rect x="30" y="80" width="150" height="70" rx="7" fill="#f1f5f9" stroke="#64748b" stroke-width="1.4"/>
+  <text x="105.0" y="104" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">用户查询</text>
+  <text x="105.0" y="124" font-size="11" fill="#475569" text-anchor="middle">文本 / 图片</text>
+  <line x1="180" y1="115" x2="228" y2="115" stroke="#475569" stroke-width="1.6" marker-end="url(#ar)"/>
+  <rect x="230" y="66" width="190" height="44" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="325.0" y="93.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">BM25 / 稀疏</text>
+  <rect x="230" y="120" width="190" height="44" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="325.0" y="147.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">稠密文本</text>
+  <rect x="230" y="174" width="190" height="44" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="325.0" y="201.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">视觉多向量</text>
+  <text x="325" y="236" font-size="11" font-weight="400" fill="#475569" text-anchor="middle">深度一致：各取 top-50</text>
+  <line x1="420" y1="88" x2="508" y2="155" stroke="#475569" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="420" y1="142" x2="508" y2="155" stroke="#475569" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="420" y1="196" x2="508" y2="155" stroke="#475569" stroke-width="1.6" marker-end="url(#ar)"/>
+  <rect x="510" y="100" width="160" height="110" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="590.0" y="124" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">RRF 融合</text>
+  <text x="590.0" y="144" font-size="11" fill="#475569" text-anchor="middle">k=60</text>
+  <text x="590.0" y="161" font-size="11" fill="#475569" text-anchor="middle">只用名次</text>
+  <line x1="670" y1="155" x2="718" y2="155" stroke="#b45309" stroke-width="1.6" marker-end="url(#ar)"/>
+  <rect x="720" y="100" width="150" height="110" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="795.0" y="124" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">折叠去重</text>
+  <text x="795.0" y="144" font-size="11" fill="#475569" text-anchor="middle">按 doc_id</text>
+  <text x="795.0" y="161" font-size="11" fill="#475569" text-anchor="middle">保留最高分</text>
+  <line x1="795" y1="210" x2="795" y2="258" stroke="#be123c" stroke-width="1.6" marker-end="url(#arr)"/>
+  <rect x="660" y="260" width="210" height="60" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="765.0" y="284" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">重排（可选）</text>
+  <text x="765.0" y="304" font-size="11" fill="#475569" text-anchor="middle">top-50 → top-10</text>
+  <rect x="390" y="260" width="240" height="60" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.4"/>
+  <text x="510.0" y="284" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">稳定二级排序</text>
+  <text x="510.0" y="304" font-size="11" fill="#475569" text-anchor="middle">同分按 doc_id / 时间</text>
+  <line x1="660" y1="290" x2="632" y2="290" stroke="#6d28d9" stroke-width="1.6" marker-end="url(#ar)"/>
+  <rect x="30" y="350" width="840" height="100" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.4"/>
+  <text x="450.0" y="374" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">三条必须写进代码的纪律</text>
+  <text x="450.0" y="394" font-size="11" fill="#475569" text-anchor="middle">① 三路候选深度一致（否则深的那路等于加权重）</text>
+  <text x="450.0" y="411" font-size="11" fill="#475569" text-anchor="middle">② 路内先去重、再融合（否则名额被同一文档的切片占满）</text>
+  <text x="450.0" y="428" font-size="11" fill="#475569" text-anchor="middle">③ 融合后必须有稳定二级排序（同分项不能每次顺序都变）</text>
+</svg>

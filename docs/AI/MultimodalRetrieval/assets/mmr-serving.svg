@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="服务化结构：L0 元数据、L1 单向量、L2 多向量三层索引，查询链路与降级路径">
+  <title>服务化：三层索引、一次查询、两条降级线</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="art" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="520" fill="#f8fafc"/>
+  <text x="450" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">服务化：三层索引、一次查询、两条降级线</text>
+  <rect x="25" y="190" width="140" height="80" rx="7" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+  <text x="95.0" y="214" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">查询编码</text>
+  <text x="95.0" y="234" font-size="10" fill="#475569" text-anchor="middle">文本 / 图片</text>
+  <text x="95.0" y="251" font-size="10" fill="#475569" text-anchor="middle">含归一化</text>
+  <rect x="195" y="45" width="215" height="80" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="302.5" y="69" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">L0 元数据 / 倒排</text>
+  <text x="302.5" y="89" font-size="10" fill="#475569" text-anchor="middle">BM25 + 过滤下推</text>
+  <line x1="165" y1="230" x2="193" y2="85" stroke="#475569" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="410" y1="85" x2="440" y2="85" stroke="#475569" stroke-width="1.6"/>
+  <rect x="195" y="175" width="215" height="80" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="302.5" y="199" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">L1 单向量</text>
+  <text x="302.5" y="219" font-size="10" fill="#475569" text-anchor="middle">HNSW 召回 top-200</text>
+  <line x1="165" y1="230" x2="193" y2="215" stroke="#475569" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="410" y1="215" x2="440" y2="215" stroke="#475569" stroke-width="1.6"/>
+  <rect x="195" y="305" width="215" height="80" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="302.5" y="329" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">L2 多向量</text>
+  <text x="302.5" y="349" font-size="10" fill="#475569" text-anchor="middle">MaxSim 精排，不建 HNSW</text>
+  <line x1="165" y1="230" x2="193" y2="345" stroke="#475569" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="410" y1="345" x2="440" y2="345" stroke="#475569" stroke-width="1.6"/>
+  <line x1="440" y1="125" x2="440" y2="345" stroke="#475569" stroke-width="1.6"/>
+  <line x1="440" y1="100" x2="468" y2="100" stroke="#475569" stroke-width="1.6" marker-end="url(#ar)"/>
+  <rect x="470" y="60" width="400" height="80" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="670.0" y="84" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">并行召回（取最大耗时）</text>
+  <text x="670.0" y="104" font-size="10" fill="#475569" text-anchor="middle">三路并行 = max，不是 sum</text>
+  <rect x="470" y="170" width="400" height="80" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="670.0" y="194" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">融合 + 折叠 + 重排</text>
+  <text x="670.0" y="214" font-size="10" fill="#475569" text-anchor="middle">P95 预算 300 ms</text>
+  <rect x="470" y="280" width="400" height="80" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="670.0" y="304" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">降级 L1 / L2 / L3</text>
+  <text x="670.0" y="324" font-size="10" fill="#475569" text-anchor="middle">响应头带 x-retrieval-mode</text>
+  <line x1="670" y1="140" x2="670" y2="168" stroke="#b45309" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="670" y1="250" x2="670" y2="278" stroke="#6d28d9" stroke-width="1.6" marker-end="url(#arr)"/>
+  <rect x="25" y="410" width="400" height="80" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.4"/>
+  <text x="225.0" y="434" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">缓存三层（键必须含三个版本）</text>
+  <text x="225.0" y="454" font-size="10" fill="#475569" text-anchor="middle">模型版本 · 索引版本 · 租户与过滤条件摘要</text>
+</svg>

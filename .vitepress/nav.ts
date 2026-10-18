@@ -99,6 +99,7 @@ export const nav = [
       { text: "LangChain", link: "/docs/AI/LangChain" },
       { text: "RAG 检索增强", link: "/docs/AI/RAG" },
       { text: "多模态应用", link: "/docs/AI/Multimodal" },
+      { text: "多模态检索与重排", link: "/docs/AI/MultimodalRetrieval" },
       { text: "大模型微调", link: "/docs/AI/FineTuning" },
       { text: "本地模型部署", link: "/docs/AI/LocalModel" },
       { text: "OpenClaw", link: "/docs/AI/OpenClaw" },

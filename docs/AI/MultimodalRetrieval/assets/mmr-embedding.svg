@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-label="双塔对比学习结构：图像塔与文本塔、InfoNCE 损失、温度与批量负样本">
+  <title>双塔与对比学习：正样本拉近，批内负样本推远</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="art" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="470" fill="#f8fafc"/>
+  <text x="450" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">双塔与对比学习：正样本拉近，批内负样本推远</text>
+  <rect x="40" y="80" width="220" height="90" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="150.0" y="104" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">图像塔</text>
+  <text x="150.0" y="124" font-size="11" fill="#475569" text-anchor="middle">ViT / SigLIP 视觉编码</text>
+  <rect x="40" y="250" width="220" height="90" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="150.0" y="274" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">文本塔</text>
+  <text x="150.0" y="294" font-size="11" fill="#475569" text-anchor="middle">Transformer 文本编码</text>
+  <rect x="340" y="150" width="200" height="120" rx="7" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+  <text x="440.0" y="174" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">共享向量空间</text>
+  <text x="440.0" y="194" font-size="11" fill="#475569" text-anchor="middle">归一化到单位球面</text>
+  <text x="440.0" y="211" font-size="11" fill="#475569" text-anchor="middle">余弦相似度</text>
+  <line x1="260" y1="125" x2="338" y2="175" stroke="#1d4ed8" stroke-width="1.6" marker-end="url(#arb)"/>
+  <line x1="260" y1="295" x2="338" y2="245" stroke="#0f766e" stroke-width="1.6" marker-end="url(#art)"/>
+  <rect x="610" y="80" width="250" height="90" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+  <text x="735.0" y="104" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">正样本对</text>
+  <text x="735.0" y="124" font-size="11" fill="#475569" text-anchor="middle">同一图文对：拉近</text>
+  <rect x="610" y="190" width="250" height="90" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="735.0" y="214" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">批内负样本</text>
+  <text x="735.0" y="234" font-size="11" fill="#475569" text-anchor="middle">同 batch 其他图文：推远</text>
+  <rect x="610" y="300" width="250" height="70" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="735.0" y="324" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">温度 τ</text>
+  <text x="735.0" y="344" font-size="11" fill="#475569" text-anchor="middle">越小越尖锐，对噪声更敏感</text>
+  <line x1="540" y1="185" x2="608" y2="125" stroke="#15803d" stroke-width="1.6" marker-end="url(#art)"/>
+  <line x1="540" y1="215" x2="608" y2="235" stroke="#be123c" stroke-width="1.6" marker-end="url(#arr)"/>
+  <rect x="40" y="380" width="820" height="62" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.4"/>
+  <text x="450.0" y="404" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">InfoNCE：L = −(1/N) Σ log[ exp(sim(q,k)/τ) / Σ exp(sim(q,kⱼ)/τ) ]</text>
+  <text x="450.0" y="424" font-size="11" fill="#475569" text-anchor="middle">batch 越大，负样本越多——这就是小显存复现效果差的根本原因</text>
+</svg>

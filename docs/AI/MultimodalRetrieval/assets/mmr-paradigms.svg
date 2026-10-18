@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-label="三种多模态检索范式对照：文本代理、统一向量、视觉原生多向量">
+  <title>三种范式：索引里到底存什么</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="art" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="470" fill="#f8fafc"/>
+  <text x="450" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">三种范式：索引里到底存什么</text>
+  <rect x="30" y="70" width="260" height="120" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="160.0" y="94" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">文本代理</text>
+  <text x="160.0" y="114" font-size="11" fill="#475569" text-anchor="middle">OCR / 字幕 / 描述</text>
+  <text x="160.0" y="131" font-size="11" fill="#475569" text-anchor="middle">→ 文本</text>
+  <text x="160.0" y="148" font-size="11" fill="#475569" text-anchor="middle">一条向量/块</text>
+  <text x="160" y="212" font-size="12" font-weight="600" fill="#1d4ed8" text-anchor="middle">索引 1×</text>
+  <text x="160" y="234" font-size="11" font-weight="400" fill="#475569" text-anchor="middle">字面强、版面丢</text>
+  <rect x="320" y="70" width="260" height="120" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="450.0" y="94" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">统一向量</text>
+  <text x="450.0" y="114" font-size="11" fill="#475569" text-anchor="middle">页面/图片</text>
+  <text x="450.0" y="131" font-size="11" fill="#475569" text-anchor="middle">→ 单条定长向量</text>
+  <text x="450.0" y="148" font-size="11" fill="#475569" text-anchor="middle">余弦 / 点积</text>
+  <text x="450" y="212" font-size="12" font-weight="600" fill="#0f766e" text-anchor="middle">索引 1~2×</text>
+  <text x="450" y="234" font-size="11" font-weight="400" fill="#475569" text-anchor="middle">语义强、细节弱</text>
+  <rect x="610" y="70" width="260" height="120" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="740.0" y="94" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">视觉原生</text>
+  <text x="740.0" y="114" font-size="11" fill="#475569" text-anchor="middle">页面渲染成图</text>
+  <text x="740.0" y="131" font-size="11" fill="#475569" text-anchor="middle">→ 每页数百 patch 向量</text>
+  <text x="740.0" y="148" font-size="11" fill="#475569" text-anchor="middle">MaxSim 后期交互</text>
+  <text x="740" y="212" font-size="12" font-weight="600" fill="#be123c" text-anchor="middle">索引 100~400×</text>
+  <text x="740" y="234" font-size="11" font-weight="400" fill="#475569" text-anchor="middle">版面强、成本高</text>
+  <text x="450" y="275" font-size="12" font-weight="400" fill="#334155" text-anchor="middle">三者的关系是档位，不是替代：常见组合 = 文本兜底 + 单向量粗排 + 多向量精排</text>
+  <rect x="30" y="300" width="840" height="70" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="450.0" y="324" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">选型只看两个分支</text>
+  <text x="450.0" y="344" font-size="11" fill="#475569" text-anchor="middle">① 图里的文字能被高质量 OCR 抽出来吗？   ② 查询里有「以图搜图」的需求吗？</text>
+  <rect x="30" y="390" width="840" height="56" rx="7" fill="#f1f5f9" stroke="#64748b" stroke-width="1.4"/>
+  <text x="450.0" y="423.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">一条止损判据：纯文本语料不要上视觉原生——索引体积是单向量的百倍，换不来任何收益</text>
+</svg>

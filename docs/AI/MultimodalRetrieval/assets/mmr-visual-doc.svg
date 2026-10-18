@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-label="OCR 管线与视觉原生管线的对照：OCR 丢失版面，多向量保留 patch 空间关系">
+  <title>两条索引路线：信息在哪一步丢失</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="art" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="470" fill="#f8fafc"/>
+  <text x="450" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">两条索引路线：信息在哪一步丢失</text>
+  <text x="215" y="70" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">OCR 管线</text>
+  <text x="680" y="70" font-size="14" font-weight="700" fill="#be123c" text-anchor="middle">视觉原生管线</text>
+  <rect x="90" y="90" width="250" height="46" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="215.0" y="118.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">页面</text>
+  <rect x="90" y="150" width="250" height="46" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="215.0" y="178.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">文字检测</text>
+  <rect x="90" y="210" width="250" height="46" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="215.0" y="238.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">字符识别</text>
+  <rect x="90" y="270" width="250" height="46" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="215.0" y="298.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">文本块</text>
+  <rect x="90" y="330" width="250" height="46" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="215.0" y="358.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">一条向量/块</text>
+  <line x1="215" y1="136" x2="215" y2="146" stroke="#1d4ed8" stroke-width="1.6" marker-end="url(#arb)"/>
+  <line x1="215" y1="196" x2="215" y2="206" stroke="#1d4ed8" stroke-width="1.6" marker-end="url(#arb)"/>
+  <line x1="215" y1="256" x2="215" y2="266" stroke="#1d4ed8" stroke-width="1.6" marker-end="url(#arb)"/>
+  <line x1="215" y1="316" x2="215" y2="326" stroke="#1d4ed8" stroke-width="1.6" marker-end="url(#arb)"/>
+  <rect x="555" y="90" width="250" height="46" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="680.0" y="118.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">页面渲染 150 DPI</text>
+  <rect x="555" y="150" width="250" height="46" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="680.0" y="178.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">切 patch（数百块）</text>
+  <rect x="555" y="210" width="250" height="46" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="680.0" y="238.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">每块一条向量</text>
+  <rect x="555" y="270" width="250" height="46" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="680.0" y="298.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">MaxSim 后期交互</text>
+  <rect x="555" y="330" width="250" height="46" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="680.0" y="358.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">页面级排序</text>
+  <line x1="680" y1="136" x2="680" y2="146" stroke="#be123c" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="680" y1="196" x2="680" y2="206" stroke="#be123c" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="680" y1="256" x2="680" y2="266" stroke="#be123c" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="680" y1="316" x2="680" y2="326" stroke="#be123c" stroke-width="1.6" marker-end="url(#arr)"/>
+  <rect x="90" y="400" width="250" height="46" rx="7" fill="#fef2f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="215.0" y="428.0" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">丢失：行列关系、图注、印章</text>
+  <rect x="555" y="400" width="250" height="46" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="680.0" y="428.0" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">代价：每页数百向量，存储百倍</text>
+</svg>
