@@ -338,6 +338,24 @@ export const DataGovernance = [
   },
 ];
 
+export const PartitionArchival = [
+  {
+    text: "分区分表与冷热分离",
+    link: "/docs/DB/PartitionArchival/index.md",
+    items: [
+      { text: "总览：四层结构与五个必失点", link: "/docs/DB/PartitionArchival/Overview/index.md" },
+      { text: "分区策略：分区键与粒度", link: "/docs/DB/PartitionArchival/PartitionStrategy/index.md" },
+      { text: "分区维护：ATTACH、DETACH 与默认分区", link: "/docs/DB/PartitionArchival/PartitionOps/index.md" },
+      { text: "跨分区查询：裁剪为什么没生效", link: "/docs/DB/PartitionArchival/CrossPartition/index.md" },
+      { text: "冷热分层：四档存储与成本账", link: "/docs/DB/PartitionArchival/HotColdTiering/index.md" },
+      { text: "在线归档：不停机搬走一段历史", link: "/docs/DB/PartitionArchival/OnlineArchive/index.md" },
+      { text: "保留策略与合规删除", link: "/docs/DB/PartitionArchival/RetentionCompliance/index.md" },
+      { text: "实战：审计日志的 13 个月", link: "/docs/DB/PartitionArchival/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/DB/PartitionArchival/FAQ/index.md" },
+    ],
+  },
+];
+
 export const DatabaseInternals = [
   {
     text: "数据库内核与存储引擎",

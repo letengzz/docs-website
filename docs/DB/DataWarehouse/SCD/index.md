@@ -176,6 +176,17 @@ GROUP BY a.sku_id;
 SELECT COUNT(*) FROM dim_sku WHERE start_dt = '${bizdate}';
 ```
 
+## 与分区分表与冷热分离专题的分工
+
+本页用**表结构**保存历史（拉链表、快照、版本号），专题页用**分区 + 归档**保存历史。两者不冲突，且经常叠加：
+
+- 归档分区里放的就是拉链表（分区按 `created_at`，表内用 `valid_from` / `valid_to` 记版本）：[在线归档](/docs/DB/PartitionArchival/OnlineArchive/index.md)
+- 数仓侧的「历史保留」也可以靠分区 `DROP` 实现，而不必重跑全量：[保留策略与合规删除](/docs/DB/PartitionArchival/RetentionCompliance/index.md)
+
+选择判据：**要能查「某一行在任意时点的样子」→ 拉链表；只要「某段时间的数据整体还在」→ 分区归档**。前者是行级历史，后者是段级历史。
+
+本页特有的一个坑：拉链表的 `valid_to = '9999-12-31'` 这类开区间哨兵值，会让「按时间分区」失效——因为几乎所有当前行都落在同一个「未来」区间里。拉链表要分区，只能按 `valid_from` 分，且必须接受「更新一条历史行会跨分区」的代价。
+
 ## 参考资料
 
 - [Kimball：Slowly Changing Dimensions](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/dimension/)

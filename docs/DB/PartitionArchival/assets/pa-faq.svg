@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15.5" fill="#0F172A" font-weight="bold">八类症状的分诊路径</text>
+  <text x="380" y="48" text-anchor="middle" font-size="10.2" fill="#64748B">先看「插入失败 / 查询慢 / 空间不降」三组，80% 的问题落在这三组里</text>
+
+  <rect x="24" y="66" width="230" height="166" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="139" y="86" text-anchor="middle" font-size="9.8" fill="#991B1B" font-weight="bold">插入 / DDL 失败</text>
+  <text x="38" y="108" font-size="7.6" fill="#B91C1C">· no partition found for row</text>
+  <text x="38" y="124" font-size="7.6" fill="#64748B">→ 预建缺失 / 区间有空洞</text>
+  <text x="38" y="146" font-size="7.6" fill="#B91C1C">· must include all partitioning columns</text>
+  <text x="38" y="162" font-size="7.6" fill="#64748B">→ 唯一键缺分区键</text>
+  <text x="38" y="184" font-size="7.6" fill="#B91C1C">· may not contain an identity column</text>
+  <text x="38" y="200" font-size="7.6" fill="#64748B">→ LIKE ... INCLUDING ALL 带了 identity</text>
+  <text x="38" y="222" font-size="7.6" fill="#B91C1C">· would be violated by some row</text>
+  <text x="38" y="238" font-size="7.6" fill="#64748B">→ 默认分区有冲突行</text>
+
+  <rect x="266" y="66" width="230" height="166" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="381" y="86" text-anchor="middle" font-size="9.8" fill="#92400E" font-weight="bold">查询变慢</text>
+  <text x="280" y="108" font-size="7.6" fill="#B45309">先数计划里的 Scan 节点</text>
+  <text x="280" y="128" font-size="7.6" fill="#334155">12 个 → 裁剪失效</text>
+  <text x="280" y="146" font-size="7.6" fill="#64748B">  函数 / 类型转换 / 只给下界</text>
+  <text x="280" y="168" font-size="7.6" fill="#334155">1 个但慢 → 分区内扫描慢</text>
+  <text x="280" y="186" font-size="7.6" fill="#64748B">  索引缺失 / 统计信息过期</text>
+  <text x="280" y="208" font-size="7.6" fill="#334155">计划里几十个 Append</text>
+  <text x="280" y="226" font-size="7.6" fill="#64748B">  分区数超上界 / 分区级聚合未开</text>
+
+  <rect x="508" y="66" width="228" height="166" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="622" y="86" text-anchor="middle" font-size="9.8" fill="#1E3A8A" font-weight="bold">空间与删除</text>
+  <text x="522" y="108" font-size="7.6" fill="#1D4ED8">删了数据但磁盘不降</text>
+  <text x="522" y="124" font-size="7.6" fill="#64748B">→ 用的 DELETE，等 VACUUM</text>
+  <text x="522" y="146" font-size="7.6" fill="#1D4ED8">容量看板显示 0</text>
+  <text x="522" y="162" font-size="7.6" fill="#64748B">→ 只读了父表，要累加分区</text>
+  <text x="522" y="184" font-size="7.6" fill="#1D4ED8">表比预期大</text>
+  <text x="522" y="200" font-size="7.6" fill="#64748B">→ 分区开销 +58% 是正常的</text>
+  <text x="522" y="222" font-size="7.6" fill="#1D4ED8">归档后查不到</text>
+  <text x="522" y="238" font-size="7.6" fill="#64748B">→ 查错表 / 归档表未校验</text>
+
+  <rect x="24" y="248" width="712" height="106" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.4"/>
+  <text x="40" y="268" font-size="9.5" fill="#115E59" font-weight="bold">先分类，再修：三类错误的处置完全不同</text>
+  <text x="40" y="290" font-size="7.8" fill="#0F766E">① 内容错（谓词写法、唯一键设计、保留期缺失）→ 改文档 / 改 DDL / 改代码</text>
+  <text x="40" y="310" font-size="7.8" fill="#0F766E">② 运维错（预建漏跑、长事务挡锁、默认分区没删）→ 改定时任务与巡检</text>
+  <text x="40" y="330" font-size="7.8" fill="#B91C1C">③ 认知错（以为分区能加速全表扫描、以为 DELETE 会还空间）→ 改判据与看板口径</text>
+  <text x="40" y="348" font-size="7.8" fill="#B45309">混在一起修，就会为了迁就现象去改正确的设计。</text>
+
+  <text x="24" y="382" font-size="9" fill="#475569">十二项上线自查：分区键单调不可变 / 预建 ≥ 2 月 / 分区数 ≤ 400 / 唯一性定稿 / 无长期默认分区</text>
+  <text x="24" y="400" font-size="9" fill="#475569">/ 到期用 DROP / 容量累加分区 / 先校验后摘 / DETACH 并发 / 有 CHECK / 保留矩阵有 owner / 冷层单独压测</text>
+  <text x="24" y="420" font-size="9" fill="#059669" font-weight="bold">任一条为「否」就不要上生产 —— 这十二条本身就是验收清单。</text>
+</svg>

@@ -154,6 +154,18 @@
 本页的「版本」指数据快照版本（用于回溯与审计）；协作系统的「状态向量」是每个副本的计数器，不对外暴露、也不适合做审计依据。审计要落**操作日志**（谁、何时、改了哪一列），而不是状态向量。
 :::
 
+## 与分区分表与冷热分离专题的分工
+
+治理回答「这条数据归谁、能不能删、删了要不要留痕」；专题页回答「**具体怎么删、怎么搬、怎么证明**」。
+
+- 保留矩阵（保留期 / 到期动作 / owner 三列）与删除台账：[保留策略与合规删除](/docs/DB/PartitionArchival/RetentionCompliance/index.md)
+- 冷热分层与成本口径：[冷热分层](/docs/DB/PartitionArchival/HotColdTiering/index.md)
+- 归档流水线与双向校验：[在线归档](/docs/DB/PartitionArchival/OnlineArchive/index.md)
+
+两边的接口是**一张矩阵**：治理侧定义「哪类数据留多久」，专题侧把它落成「分区 + DROP + 台账」。矩阵缺 owner 时，治理侧的巡检会发现「没人负责的数据」；缺到期动作时，专题侧的定时任务跑不起来。
+
+本页特有的一个坑：治理体系里的「数据生命周期」经常被理解成「元数据打标签」，但标签不会删数据。**没有任何自动任务消费的标签等于注释**——判据是「这个标签能不能被一条 SQL 或一个定时任务读出来执行」。
+
 ## 参考资料
 
 - DAMA International，*DAMA-DMBOK: Data Management Body of Knowledge*（2nd Edition, Revised）：<https://www.dama.org/cpages/body-of-knowledge>

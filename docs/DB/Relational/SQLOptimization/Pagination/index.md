@@ -133,6 +133,16 @@ SELECT COUNT(*) FROM orders WHERE status = 'PAID';
 2. 用 EXPLAIN 确认延迟关联内层是 `Using index`（覆盖索引）。
 3. 压测第 1 页与第 5000 页，确认游标方案耗时基本恒定。
 
+## 与分区分表与冷热分离专题的分工
+
+本页讲深分页的通用解法（键集分页、延迟关联、覆盖索引）。分区表上的分页有一个反直觉的结论，值得单独看：
+
+- 按**分区键**排序的深分页，分区表可能比单表快一个数量级（本机实测 `LIMIT 10 OFFSET 500000`：分区 118.7 ms 对单表 1027.1 ms，因为分区边界不重叠、`Append` 天然有序，省掉了一次外部归并排序）：[跨分区查询](/docs/DB/PartitionArchival/CrossPartition/index.md)
+- 按**非分区键**排序时分区的红利消失（两者都要排序）：同上
+- 分区表上的全局唯一与跨分区聚合限制：[跨分区查询](/docs/DB/PartitionArchival/CrossPartition/index.md)
+
+本页特有的一个坑：`OFFSET` 在分区表上仍然是**逐行丢弃**，只是省了排序。所以「分区让深分页变快」不等于「深分页可以接受」——键集分页依然是唯一正确的解法，分区只是把常数项降下来。
+
 ## 参考资料
 
 - 排序与分页索引优化：[MySQL 索引深入 · 排序与分组优化](../../MySQL/IndexDeepDive/SortGroup/index.md)

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15.5" fill="#0F172A" font-weight="bold">裁剪的两次时机与四种写法</text>
+  <text x="380" y="48" text-anchor="middle" font-size="10.2" fill="#64748B">同样的结果，扫 1 个分区还是 12 个，只取决于「优化器能不能证明其他分区没有数据」</text>
+
+  <rect x="24" y="66" width="348" height="120" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="40" y="86" font-size="10" fill="#1E3A8A" font-weight="bold">计划期裁剪（planning）</text>
+  <text x="40" y="106" font-size="7.8" fill="#1D4ED8">谓词是常量：优化器把条件与分区区间做区间运算</text>
+  <text x="40" y="124" font-size="7.8" fill="#1D4ED8">结果：计划里只出现相关分区的 Append 子节点</text>
+  <text x="40" y="146" font-size="7.8" fill="#059669">ts &gt;= '2026-03-01' AND ts &lt; '2026-04-01'</text>
+  <text x="40" y="164" font-size="7.8" fill="#059669">→ 1 个分区 / 18.8 ms</text>
+  <text x="40" y="180" font-size="7.6" fill="#64748B">这是唯一能在 EXPLAIN 里「看见」的形态</text>
+
+  <rect x="388" y="66" width="348" height="120" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+  <text x="404" y="86" font-size="10" fill="#115E59" font-weight="bold">执行期裁剪（execution）</text>
+  <text x="404" y="106" font-size="7.8" fill="#0F766E">谓词是参数：计划里保留全部分区，执行时逐分区判定</text>
+  <text x="404" y="124" font-size="7.8" fill="#0F766E">EXPLAIN 里会看到 Subplans Removed</text>
+  <text x="404" y="146" font-size="7.8" fill="#0F766E">PREPARE p(ts,ts) ... EXECUTE p('2026-03-01','2026-04-01')</text>
+  <text x="404" y="164" font-size="7.8" fill="#0F766E">→ 执行时仍裁到 1 个分区</text>
+  <text x="404" y="180" font-size="7.6" fill="#64748B">参数化查询不必担心「计划里看到 12 个」</text>
+
+  <text x="24" y="210" font-size="10.5" fill="#0F172A" font-weight="bold">六种写法实测（12 个分区 / 120 万行，返回行数完全相同）</text>
+  <line x1="24" y1="218" x2="736" y2="218" stroke="#E2E8F0" stroke-width="1.2"/>
+
+  <g font-size="7.8">
+    <rect x="24" y="228" width="712" height="26" fill="#ECFDF5"/>
+    <text x="36" y="245" fill="#065F46">ts &gt;= '2026-03-01' AND ts &lt; '2026-04-01'</text>
+    <text x="480" y="245" fill="#065F46" font-weight="bold">1 个分区</text>
+    <text x="560" y="245" fill="#065F46">18.8 ms</text>
+    <text x="650" y="245" fill="#059669">基准</text>
+
+    <rect x="24" y="254" width="712" height="26" fill="#FEF2F2"/>
+    <text x="36" y="271" fill="#991B1B">(ts &gt;= '2026-05-01' AND ts &lt; '2026-06-01') OR (...)</text>
+    <text x="480" y="271" fill="#991B1B" font-weight="bold">2 个分区</text>
+    <text x="560" y="271" fill="#991B1B">23.9 ms</text>
+    <text x="650" y="271" fill="#B45309">OR 不影响裁剪</text>
+
+    <rect x="24" y="280" width="712" height="26" fill="#FEF2F2"/>
+    <text x="36" y="297" fill="#991B1B">ts::date = '2026-03-05'</text>
+    <text x="480" y="297" fill="#991B1B" font-weight="bold">12 个分区</text>
+    <text x="560" y="297" fill="#991B1B">54.2 ms</text>
+    <text x="650" y="297" fill="#DC2626">慢 2.9 倍</text>
+
+    <rect x="24" y="306" width="712" height="26" fill="#FEF2F2"/>
+    <text x="36" y="323" fill="#991B1B">ts &gt;= '2026-03-01'（只给下界）</text>
+    <text x="480" y="323" fill="#991B1B" font-weight="bold">10 个分区</text>
+    <text x="560" y="323" fill="#991B1B">97.5 ms</text>
+    <text x="650" y="323" fill="#DC2626">慢 5.2 倍</text>
+
+    <rect x="24" y="332" width="712" height="26" fill="#FEF2F2"/>
+    <text x="36" y="349" fill="#991B1B">date_trunc('month', ts) = '2026-03-01'</text>
+    <text x="480" y="349" fill="#991B1B" font-weight="bold">12 个分区</text>
+    <text x="560" y="349" fill="#991B1B">96.2 ms</text>
+    <text x="650" y="349" fill="#DC2626">慢 5.1 倍</text>
+
+    <rect x="24" y="358" width="712" height="26" fill="#FEF2F2"/>
+    <text x="36" y="375" fill="#991B1B">extract(month from ts) = 3</text>
+    <text x="480" y="375" fill="#991B1B" font-weight="bold">12 个分区</text>
+    <text x="560" y="375" fill="#991B1B">115.4 ms</text>
+    <text x="650" y="375" fill="#DC2626">慢 6.1 倍</text>
+  </g>
+
+  <text x="24" y="406" font-size="8.5" fill="#475569">改写规则只有一条：</text>
+  <text x="128" y="406" font-size="8.5" fill="#065F46" font-weight="bold">左边裸列，右边常量表达式，区间左闭右开 —— 函数与类型转换一律挪到右边。</text>
+</svg>

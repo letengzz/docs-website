@@ -206,6 +206,17 @@ SELECT * FROM monthly_stats ORDER BY month DESC LIMIT 5;
 
 预期：JSONB 查询返回品牌、分区查询走 `Seq Scan on orders_2026_08`（分区裁剪）、物化视图返回统计行。
 
+## 与分区分表与冷热分离专题的分工
+
+本页「分区表」一节只回答**语法怎么写**（`PARTITION BY RANGE`、建分区、`EXPLAIN` 里看到裁剪）。下面四件事归专题页：
+
+- 分区键怎么选、粒度与分区数上界（含每分区约 6 µs 规划开销的实测）：[分区策略](/docs/DB/PartitionArchival/PartitionStrategy/index.md)
+- `ATTACH` / `DETACH`、默认分区的三重代价、PG 18 的 `VACUUM` 继承行为：[分区维护](/docs/DB/PartitionArchival/PartitionOps/index.md)
+- 为什么 `date_trunc('month', ts) = ?` 会扫全部分区：[跨分区查询](/docs/DB/PartitionArchival/CrossPartition/index.md)
+- 到期分区怎么摘、怎么搬、怎么校验：[在线归档](/docs/DB/PartitionArchival/OnlineArchive/index.md)
+
+本页特有的一个坑：示例里 `orders` 带 `GENERATED ALWAYS AS IDENTITY`，日后若用 `CREATE TABLE new_part (LIKE orders INCLUDING ALL)` 建表再 `ATTACH`，会直接报 `table ... being attached contains an identity column`——`INCLUDING ALL` 把 identity 一起复制了过去。回挂用的分区表要用 `LIKE orders`（默认不含 identity）。
+
 ## 参考资料
 
 - [PostgreSQL JSON 类型](https://www.postgresql.org/docs/current/datatype-json.html)

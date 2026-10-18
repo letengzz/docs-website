@@ -129,6 +129,18 @@ docker exec -it tdengine taos -s "SELECT SUM(data_size)/(SELECT COUNT(*) FROM ho
 
 收尾确认：容量预算与实测磁盘增量差异在 30% 以内、`DURATION` 与保留天数匹配、过期数据能被自动释放。
 
+## 与分区分表与冷热分离专题的分工
+
+时序库把「保留期」做成了**引擎内建能力**（保留策略、TTL、降采样），本页讲的就是这套内建机制。关系库没有等价物，只能用分区 + 定时任务模拟：
+
+- 关系库怎么用分区实现 TTL：[保留策略与合规删除](/docs/DB/PartitionArchival/RetentionCompliance/index.md)
+- 到期分区「摘」而不是「删」：[在线归档](/docs/DB/PartitionArchival/OnlineArchive/index.md)
+- 冷数据搬到便宜存储：[冷热分层](/docs/DB/PartitionArchival/HotColdTiering/index.md)
+
+两者的选择判据是**写入形态**：按时间顺序追加、几乎不更新、查询总是范围聚合 → 用时序库；需要事务、需要按业务主键更新、需要外键 → 用关系库 + 分区。
+
+本页特有的一个坑：时序库的保留策略通常按**时间**丢弃，不区分「这条数据是否还在被引用」。关系库归档时则要处理「归档表被外键引用」的问题（本页的 `DROP` 没有这个负担），这也是专题页强调「归档表要去掉外键」的原因。
+
 ## 参考资料
 
 - TDengine 文档：[数据库管理（KEEP / DURATION / 多级存储）](https://docs.tdengine.com/tdengine-reference/sql-manual/manage-databases/)

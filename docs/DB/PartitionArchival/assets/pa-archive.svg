@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15.5" fill="#0F172A" font-weight="bold">在线归档：四个阶段，顺序不可换</text>
+  <text x="380" y="48" text-anchor="middle" font-size="10.2" fill="#64748B">「校验」必须在「摘除」之前 —— 这是唯一能把「数据丢失」降级成「多搬一次」的设计</text>
+
+  <rect x="24" y="70" width="168" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="108" y="90" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">① 冻结边界</text>
+  <text x="108" y="110" text-anchor="middle" font-size="7.6" fill="#1D4ED8">确认区间不再被写入</text>
+  <text x="108" y="126" text-anchor="middle" font-size="7.6" fill="#1D4ED8">禁止客户端回填时间戳</text>
+  <text x="108" y="142" text-anchor="middle" font-size="7.6" fill="#1D4ED8">连续 24 h 无新增</text>
+  <text x="108" y="158" text-anchor="middle" font-size="7.6" fill="#059669">无负载</text>
+
+  <rect x="208" y="70" width="168" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="292" y="90" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">② 搬运</text>
+  <text x="292" y="110" text-anchor="middle" font-size="7.6" fill="#B45309">目标区间先删再插（幂等）</text>
+  <text x="292" y="126" text-anchor="middle" font-size="7.6" fill="#B45309">INSERT ... SELECT 无 ORDER BY</text>
+  <text x="292" y="142" text-anchor="middle" font-size="7.6" fill="#B45309">10 万行 466.6 ms（本机）</text>
+  <text x="292" y="158" text-anchor="middle" font-size="7.6" fill="#B45309">唯一有真实负载的一步</text>
+
+  <rect x="392" y="70" width="168" height="96" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="476" y="90" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">③ 双向校验</text>
+  <text x="476" y="110" text-anchor="middle" font-size="7.6" fill="#0F766E">EXCEPT 两个方向都为 0</text>
+  <text x="476" y="126" text-anchor="middle" font-size="7.6" fill="#0F766E">行数 + 差集 + 聚合指纹</text>
+  <text x="476" y="142" text-anchor="middle" font-size="7.6" fill="#0F766E">校验 336.6 ms，比搬还快</text>
+  <text x="476" y="158" text-anchor="middle" font-size="7.6" fill="#059669">0|0 才允许继续</text>
+
+  <rect x="576" y="70" width="160" height="96" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="656" y="90" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">④ 摘除</text>
+  <text x="656" y="110" text-anchor="middle" font-size="7.6" fill="#B91C1C">DETACH CONCURRENTLY</text>
+  <text x="656" y="126" text-anchor="middle" font-size="7.6" fill="#B91C1C">2.685 ms，不阻塞</text>
+  <text x="656" y="142" text-anchor="middle" font-size="7.6" fill="#B91C1C">观察 7 天再 DROP</text>
+  <text x="656" y="158" text-anchor="middle" font-size="7.6" fill="#B91C1C">写台账 + evidence</text>
+
+  <path d="M192 118 L208 118" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M376 118 L392 118" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M560 118 L576 118" stroke="#94A3B8" stroke-width="2"/>
+
+  <text x="24" y="196" font-size="10.5" fill="#0F172A" font-weight="bold">四种中途失败与各自的可逆性</text>
+  <line x1="24" y1="204" x2="736" y2="204" stroke="#E2E8F0" stroke-width="1.2"/>
+
+  <g font-size="7.9">
+    <rect x="24" y="214" width="712" height="24" fill="#F8FAFC"/>
+    <text x="36" y="230" fill="#1E293B" font-weight="bold">搬运中断</text>
+    <text x="140" y="230" fill="#334155">目标表有部分行</text>
+    <text x="420" y="230" fill="#059669">可逆：重跑（先删同区间）即可，幂等</text>
+
+    <rect x="24" y="238" width="712" height="24" fill="#F8FAFC"/>
+    <text x="36" y="254" fill="#1E293B" font-weight="bold">校验不一致</text>
+    <text x="140" y="254" fill="#334155">only_src &gt; 0（漏搬）</text>
+    <text x="420" y="254" fill="#059669">可逆：不摘除，重搬重校验</text>
+
+    <rect x="24" y="262" width="712" height="24" fill="#F8FAFC"/>
+    <text x="36" y="278" fill="#1E293B" font-weight="bold">摘除失败</text>
+    <text x="140" y="278" fill="#334155">DETACH 拿不到锁</text>
+    <text x="420" y="278" fill="#B45309">可逆：查长事务后重试</text>
+
+    <rect x="24" y="286" width="712" height="24" fill="#FEF2F2"/>
+    <text x="36" y="302" fill="#991B1B" font-weight="bold">摘除后发现问题</text>
+    <text x="140" y="302" fill="#334155">源表少了一段</text>
+    <text x="420" y="302" fill="#059669">可逆：ATTACH 回去，1.78 ms（带 CHECK）</text>
+  </g>
+
+  <rect x="24" y="326" width="712" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="40" y="346" font-size="9.5" fill="#991B1B" font-weight="bold">三种会真的丢数据的写法</text>
+  <text x="40" y="366" font-size="7.8" fill="#B91C1C">① DELETE 先提交、再 INSERT 归档 → 插入失败即永久丢失　② ON CONFLICT DO NOTHING 且不校验 → 新数据被静默丢弃</text>
+  <text x="40" y="384" font-size="7.8" fill="#B91C1C">③ 归档表共用主序列 → 主表 ID 跳号，触发「ID 连续性」类告警误报</text>
+  <text x="40" y="402" font-size="7.8" fill="#059669">共同解法：把「删」换成「摘」，把「摘」放在「校验」之后。</text>
+</svg>

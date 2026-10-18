@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15.5" fill="#0F172A" font-weight="bold">保留矩阵与删除的传播面</text>
+  <text x="380" y="48" text-anchor="middle" font-size="10.2" fill="#64748B">「保留多久」「到期做什么」「谁负责」三列缺一列，策略就无法执行</text>
+
+  <rect x="24" y="66" width="712" height="118" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="40" y="86" font-size="9.8" fill="#0F172A" font-weight="bold">保留矩阵（每行一个数据类别）</text>
+  <g font-size="7.9">
+    <text x="40" y="108" fill="#64748B" font-weight="bold">数据类别</text>
+    <text x="220" y="108" fill="#64748B" font-weight="bold">保留期</text>
+    <text x="340" y="108" fill="#64748B" font-weight="bold">到期动作</text>
+    <text x="560" y="108" fill="#64748B" font-weight="bold">owner</text>
+    <line x1="36" y1="114" x2="724" y2="114" stroke="#E2E8F0"/>
+    <text x="40" y="130" fill="#1E293B">审计日志</text>
+    <text x="220" y="130" fill="#1E293B">13 个月</text>
+    <text x="340" y="130" fill="#059669">DROP 分区</text>
+    <text x="560" y="130" fill="#1E293B">平台组</text>
+    <text x="40" y="148" fill="#1E293B">业务事件</text>
+    <text x="220" y="148" fill="#1E293B">24 个月</text>
+    <text x="340" y="148" fill="#B45309">归档后 DETACH + DROP</text>
+    <text x="560" y="148" fill="#1E293B">协作组</text>
+    <text x="40" y="166" fill="#1E293B">用户会话</text>
+    <text x="220" y="166" fill="#1E293B">30 天</text>
+    <text x="340" y="166" fill="#1E293B">每日分批 DELETE</text>
+    <text x="560" y="166" fill="#1E293B">认证组</text>
+  </g>
+  <text x="640" y="176" text-anchor="middle" font-size="7.4" fill="#B45309">法规行须标「需法务确认」</text>
+
+  <text x="24" y="212" font-size="10.5" fill="#0F172A" font-weight="bold">删除的八个传播面：漏一处就等于没删</text>
+  <line x1="24" y1="220" x2="736" y2="220" stroke="#E2E8F0" stroke-width="1.2"/>
+
+  <g font-size="7.8">
+    <rect x="24" y="230" width="170" height="52" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.3"/>
+    <text x="109" y="248" text-anchor="middle" fill="#065F46" font-weight="bold">主表 / 归档表</text>
+    <text x="109" y="266" text-anchor="middle" fill="#047857">删除主体；归档表同期删</text>
+
+    <rect x="206" y="230" width="170" height="52" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.3"/>
+    <text x="291" y="248" text-anchor="middle" fill="#991B1B" font-weight="bold">备份</text>
+    <text x="291" y="266" text-anchor="middle" fill="#B91C1C">删不掉，只能等过期</text>
+
+    <rect x="388" y="230" width="170" height="52" rx="7" fill="#FFFBEB" stroke="#D97706" stroke-width="1.3"/>
+    <text x="473" y="248" text-anchor="middle" fill="#92400E" font-weight="bold">缓存 / 搜索索引</text>
+    <text x="473" y="266" text-anchor="middle" fill="#B45309">DEL + delete by query</text>
+
+    <rect x="570" y="230" width="166" height="52" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+    <text x="653" y="248" text-anchor="middle" fill="#1E293B" font-weight="bold">日志 / 数据湖</text>
+    <text x="653" y="266" text-anchor="middle" fill="#334155">脱敏 + 覆盖式抽取</text>
+  </g>
+
+  <rect x="24" y="296" width="712" height="108" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="40" y="316" font-size="9.5" fill="#1E3A8A" font-weight="bold">可证明性：retention_log 必须有 evidence，而不只是「已删除」</text>
+  <text x="40" y="338" font-size="7.8" fill="#1D4ED8">batch_id 串起一次动作的多条记录　｜　rows_affected 与「删前 - 删后」对得上　｜　operator 可追责</text>
+  <text x="40" y="358" font-size="7.8" fill="#B45309">evidence 存真实校验结果：{"only_src":0,"only_dst":0,"rows":103016} —— 手写的证据不算证据</text>
+  <text x="40" y="378" font-size="7.8" fill="#B91C1C">台账表本身只增不改（REVOKE UPDATE, DELETE），且保留期 ≥ 数据保留期 + 1 年</text>
+  <text x="40" y="396" font-size="7.8" fill="#059669">「软删」不算删除：文件还在、备份还在、任何有权限的人都能 SELECT 到。</text>
+</svg>

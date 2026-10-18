@@ -223,6 +223,18 @@ ORDER BY month;
 5. **忽略「小表」**。分片后跨库 JOIN 消失，字典表、配置表要有明确的处理方式（广播表或缓存）。
 :::
 
+## 与分区分表与冷热分离专题的分工
+
+本页讨论的是**跨库跨实例**的拆分（分片键、分布式 ID、ShardingSphere、跨分片查询）。单库内的原生分区是另一件事：
+
+- 单库内按时间分区、`DETACH` 代替 `DELETE`：[分区分表与冷热分离](/docs/DB/PartitionArchival/index.md)
+- 分区键与分片键的区别（前者决定裁剪，后者决定路由）：[分区策略](/docs/DB/PartitionArchival/PartitionStrategy/index.md)
+- 冷数据搬到便宜存储但不换库：[冷热分层](/docs/DB/PartitionArchival/HotColdTiering/index.md)
+
+顺序建议：**先分区，实在不行再分片**。本页第 108 行的对照表把「MySQL 分区表」列为「成本最低的分而治之」，但它的上限是**单机**——当单机容量或写入吞吐成为瓶颈时，分区帮不上忙，才轮到本页的拆分策略。
+
+本页特有的一个坑：分片键一旦选定，跨分片查询就要靠应用层归并；而分区键选错只是「裁剪失效」（慢，但不影响正确性）。**两者的容错代价完全不同**，不要把「分区键选错」当成「分片键选错」来评估风险。
+
 ## 参考资料
 
 - [Apache ShardingSphere 官方文档](https://shardingsphere.apache.org/document/current/cn/overview/)（含核心概念与路线图）

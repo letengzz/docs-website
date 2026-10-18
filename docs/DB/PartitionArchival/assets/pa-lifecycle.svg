@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="28" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四层结构：四种病因，四种手段</text>
+  <text x="380" y="50" text-anchor="middle" font-size="10.5" fill="#64748B">分区是后三层的前提；没有分区，分层只能靠 UPDATE 搬行，归档只能靠 DELETE + INSERT</text>
+
+  <rect x="24" y="72" width="170" height="110" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="109" y="94" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">① 表内分区</text>
+  <text x="109" y="116" text-anchor="middle" font-size="7.8" fill="#1D4ED8">病因：删不动 / 锁太久</text>
+  <text x="109" y="134" text-anchor="middle" font-size="7.8" fill="#1D4ED8">PARTITION BY RANGE</text>
+  <text x="109" y="152" text-anchor="middle" font-size="7.8" fill="#1D4ED8">DELETE → DETACH</text>
+  <text x="109" y="170" text-anchor="middle" font-size="7.8" fill="#DC2626">代价：+58% 空间</text>
+
+  <rect x="210" y="72" width="170" height="110" rx="10" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.8"/>
+  <text x="295" y="94" text-anchor="middle" font-size="11" fill="#115E59" font-weight="bold">② 冷热分层</text>
+  <text x="295" y="116" text-anchor="middle" font-size="7.8" fill="#0F766E">病因：贵的盘放冷数据</text>
+  <text x="295" y="134" text-anchor="middle" font-size="7.8" fill="#0F766E">SET TABLESPACE</text>
+  <text x="295" y="152" text-anchor="middle" font-size="7.8" fill="#0F766E">SQL 零改动</text>
+  <text x="295" y="170" text-anchor="middle" font-size="7.8" fill="#DC2626">代价：多一层运维</text>
+
+  <rect x="396" y="72" width="170" height="110" rx="10" fill="#FFFBEB" stroke="#D97706" stroke-width="1.8"/>
+  <text x="481" y="94" text-anchor="middle" font-size="11" fill="#92400E" font-weight="bold">③ 归档</text>
+  <text x="481" y="116" text-anchor="middle" font-size="7.8" fill="#B45309">病因：主库体积失控</text>
+  <text x="481" y="134" text-anchor="middle" font-size="7.8" fill="#B45309">冻结 → 搬运 → 校验 → 摘</text>
+  <text x="481" y="152" text-anchor="middle" font-size="7.8" fill="#B45309">双向差集为 0 才允许摘</text>
+  <text x="481" y="170" text-anchor="middle" font-size="7.8" fill="#DC2626">代价：换查询入口</text>
+
+  <rect x="582" y="72" width="154" height="110" rx="10" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="659" y="94" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="bold">④ 删除</text>
+  <text x="659" y="116" text-anchor="middle" font-size="7.8" fill="#B91C1C">病因：合规到期</text>
+  <text x="659" y="134" text-anchor="middle" font-size="7.8" fill="#B91C1C">DROP / TTL / 台账</text>
+  <text x="659" y="152" text-anchor="middle" font-size="7.8" fill="#B91C1C">删完要能证明</text>
+  <text x="659" y="170" text-anchor="middle" font-size="7.8" fill="#DC2626">代价：举证成本</text>
+
+  <path d="M194 127 L210 127" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M380 127 L396 127" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M566 127 L582 127" stroke="#94A3B8" stroke-width="2"/>
+
+  <text x="24" y="212" font-size="10.5" fill="#0F172A" font-weight="bold">同一次「表太大」的四种真实走向</text>
+  <line x1="24" y1="220" x2="736" y2="220" stroke="#E2E8F0" stroke-width="1.2"/>
+
+  <rect x="24" y="232" width="230" height="86" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="139" y="252" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">只做 ①</text>
+  <text x="139" y="270" text-anchor="middle" font-size="7.8" fill="#334155">删得掉，但贵盘还是满的</text>
+  <text x="139" y="288" text-anchor="middle" font-size="7.8" fill="#334155">备份仍然 38 GB</text>
+  <text x="139" y="306" text-anchor="middle" font-size="7.8" fill="#059669">适合：单机、成本不敏感</text>
+
+  <rect x="266" y="232" width="230" height="86" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="381" y="252" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">① + ②</text>
+  <text x="381" y="270" text-anchor="middle" font-size="7.8" fill="#334155">热层缩小，冷层便宜</text>
+  <text x="381" y="288" text-anchor="middle" font-size="7.8" fill="#334155">SQL 完全不变</text>
+  <text x="381" y="306" text-anchor="middle" font-size="7.8" fill="#059669">最常见的最优解</text>
+
+  <rect x="508" y="232" width="228" height="86" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="622" y="252" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">① + ② + ③ + ④</text>
+  <text x="622" y="270" text-anchor="middle" font-size="7.8" fill="#334155">主库体积真正下降</text>
+  <text x="622" y="288" text-anchor="middle" font-size="7.8" fill="#334155">合规可举证</text>
+  <text x="622" y="306" text-anchor="middle" font-size="7.8" fill="#B45309">适合：审计 / 金融 / 有留存义务</text>
+
+  <rect x="24" y="336" width="712" height="80" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.4"/>
+  <text x="40" y="358" font-size="9.5" fill="#92400E" font-weight="bold">四层是串联不是并列：分区的三个前提效果</text>
+  <text x="40" y="378" font-size="7.8" fill="#B45309">· 没有分区 → 分层只能 UPDATE 搬行（写放大、锁行），归档只能 DELETE + INSERT（丢数据风险）</text>
+  <text x="40" y="396" font-size="7.8" fill="#B45309">· 没有分区 → 「删一个月」= 扫全表 + 膨胀 + VACUUM；有分区 = DETACH 2.7 ms（本机实测）</text>
+</svg>

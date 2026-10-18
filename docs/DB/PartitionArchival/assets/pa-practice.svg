@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15.5" fill="#0F172A" font-weight="bold">审计日志的 13 个月：一条数据的完整旅程</text>
+  <text x="380" y="48" text-anchor="middle" font-size="10.2" fill="#64748B">写入只认父表；90 天热、10 个月温、13 个月后归档并 DROP —— 每一步都有可判定读数</text>
+
+  <g>
+    <rect x="24" y="70" width="136" height="70" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+    <text x="92" y="90" text-anchor="middle" font-size="8.6" fill="#1E3A8A" font-weight="bold">月 1（当前）</text>
+    <text x="92" y="108" text-anchor="middle" font-size="7.6" fill="#1D4ED8">写入 audit_log 父表</text>
+    <text x="92" y="124" text-anchor="middle" font-size="7.6" fill="#1D4ED8">自动路由到月分区</text>
+
+    <rect x="172" y="70" width="136" height="70" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+    <text x="240" y="90" text-anchor="middle" font-size="8.6" fill="#991B1B" font-weight="bold">第 1~3 月（热）</text>
+    <text x="240" y="108" text-anchor="middle" font-size="7.6" fill="#B91C1C">交互式排障</text>
+    <text x="240" y="124" text-anchor="middle" font-size="7.6" fill="#B91C1C">裁剪到 1 个分区 18.8 ms</text>
+
+    <rect x="320" y="70" width="136" height="70" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+    <text x="388" y="90" text-anchor="middle" font-size="8.6" fill="#92400E" font-weight="bold">第 4~13 月（温）</text>
+    <text x="388" y="108" text-anchor="middle" font-size="7.6" fill="#B45309">月报 / 季度审计</text>
+    <text x="388" y="124" text-anchor="middle" font-size="7.6" fill="#B45309">SET TABLESPACE 到冷层</text>
+
+    <rect x="468" y="70" width="136" height="70" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+    <text x="536" y="90" text-anchor="middle" font-size="8.6" fill="#115E59" font-weight="bold">第 13 月（归档）</text>
+    <text x="536" y="108" text-anchor="middle" font-size="7.6" fill="#0F766E">搬运 + 双向差集 0|0</text>
+    <text x="536" y="124" text-anchor="middle" font-size="7.6" fill="#0F766E">DETACH 2.685 ms</text>
+
+    <rect x="616" y="70" width="120" height="70" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.5"/>
+    <text x="676" y="90" text-anchor="middle" font-size="8.6" fill="#1E293B" font-weight="bold">+7 天（删除）</text>
+    <text x="676" y="108" text-anchor="middle" font-size="7.6" fill="#334155">DROP 归还空间</text>
+    <text x="676" y="124" text-anchor="middle" font-size="7.6" fill="#334155">写 retention_log</text>
+  </g>
+
+  <path d="M160 105 L172 105" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M308 105 L320 105" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M456 105 L468 105" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M604 105 L616 105" stroke="#94A3B8" stroke-width="2"/>
+
+  <text x="24" y="172" font-size="10.5" fill="#0F172A" font-weight="bold">S1~S10 验收序列的本机读数</text>
+  <line x1="24" y1="180" x2="736" y2="180" stroke="#E2E8F0" stroke-width="1.2"/>
+
+  <g font-size="7.9">
+    <rect x="24" y="190" width="230" height="76" rx="7" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.3"/>
+    <text x="38" y="208" fill="#0F172A" font-weight="bold">建表与灌数</text>
+    <text x="38" y="226" fill="#334155">S1 13 个分区</text>
+    <text x="38" y="242" fill="#334155">S2 120 万行 / 4.9 s</text>
+    <text x="38" y="258" fill="#059669">父表 0 bytes，分区 111 MB</text>
+
+    <rect x="266" y="190" width="230" height="76" rx="7" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.3"/>
+    <text x="280" y="208" fill="#0F172A" font-weight="bold">查询与约束</text>
+    <text x="280" y="226" fill="#334155">S3 裁剪 1 个分区 / 18.8 ms</text>
+    <text x="280" y="242" fill="#334155">S4 函数写法 12 个 / 96.2 ms</text>
+    <text x="280" y="258" fill="#B91C1C">S5 UNIQUE(id) 必须失败</text>
+
+    <rect x="508" y="190" width="228" height="76" rx="7" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.3"/>
+    <text x="522" y="208" fill="#0F172A" font-weight="bold">归档与回滚</text>
+    <text x="522" y="226" fill="#334155">S7 搬 466.6 ms / 校验 336.6 ms</text>
+    <text x="522" y="242" fill="#334155">S8 表空间 247.993 ms</text>
+    <text x="522" y="258" fill="#B45309">S9 回挂 1.78 / 11.58 ms</text>
+  </g>
+
+  <rect x="24" y="280" width="712" height="100" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.4"/>
+  <text x="40" y="300" font-size="9.5" fill="#92400E" font-weight="bold">两个「期望失败」的验收步骤，最容易被误判</text>
+  <text x="40" y="322" font-size="7.8" fill="#B45309">S5：CREATE UNIQUE INDEX ... ON audit_log (id) 必须报 must include all partitioning columns —— 建成功了反而说明前提不成立</text>
+  <text x="40" y="342" font-size="7.8" fill="#B45309">S4：函数包裹分区键必须退化成 12 个分区 —— 这是「判据形状」，不是 bug</text>
+  <text x="40" y="364" font-size="7.8" fill="#059669">纪律：验收序列里每条都要写清「期望成功」还是「期望失败」，否则执行者会把正确答案当故障处理。</text>
+</svg>

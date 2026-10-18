@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15.5" fill="#0F172A" font-weight="bold">分区键与粒度的选择路径</text>
+  <text x="380" y="48" text-anchor="middle" font-size="10.2" fill="#64748B">先定「为什么分区」，再定「用什么键」，最后用数据量算出粒度</text>
+
+  <rect x="24" y="66" width="712" height="52" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="40" y="86" font-size="9.8" fill="#1E3A8A" font-weight="bold">第一问：分区的首要目的是什么？</text>
+  <text x="40" y="106" font-size="7.8" fill="#1D4ED8">「删得掉」→ 只能用 RANGE（时间）；「单表太大」→ 可以用 HASH；「大客户隔离」→ LIST</text>
+
+  <rect x="24" y="130" width="230" height="92" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="139" y="150" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">RANGE（时间）</text>
+  <text x="139" y="168" text-anchor="middle" font-size="7.6" fill="#0F766E">单调、可裁剪、可整段删</text>
+  <text x="139" y="184" text-anchor="middle" font-size="7.6" fill="#0F766E">唯一键必须含时间列</text>
+  <text x="139" y="200" text-anchor="middle" font-size="7.6" fill="#0F766E">回填历史会破坏归档</text>
+  <text x="139" y="214" text-anchor="middle" font-size="7.6" fill="#059669">默认首选</text>
+
+  <rect x="266" y="130" width="230" height="92" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="381" y="150" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">LIST（枚举）</text>
+  <text x="381" y="168" text-anchor="middle" font-size="7.6" fill="#4338CA">取值有限且稳定时可用</text>
+  <text x="381" y="184" text-anchor="middle" font-size="7.6" fill="#4338CA">大客户单独一个分区</text>
+  <text x="381" y="200" text-anchor="middle" font-size="7.6" fill="#4338CA">取值增长 → 分区爆炸</text>
+  <text x="381" y="214" text-anchor="middle" font-size="7.6" fill="#DC2626">禁止按 tenant_id 分区</text>
+
+  <rect x="508" y="130" width="228" height="92" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="622" y="150" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">HASH（哈希）</text>
+  <text x="622" y="168" text-anchor="middle" font-size="7.6" fill="#B45309">只为「拆小」，不解决「删历史」</text>
+  <text x="622" y="184" text-anchor="middle" font-size="7.6" fill="#B45309">数据均匀，无倾斜</text>
+  <text x="622" y="200" text-anchor="middle" font-size="7.6" fill="#B45309">裁剪用不上</text>
+  <text x="622" y="214" text-anchor="middle" font-size="7.6" fill="#DC2626">清理仍要 DELETE</text>
+
+  <rect x="24" y="238" width="712" height="72" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="40" y="258" font-size="9.8" fill="#1E293B" font-weight="bold">第二问：这个键满足四条硬要求吗？</text>
+  <text x="40" y="278" font-size="7.8" fill="#334155">① 单调（新数据落在最新分区）　② 不可变（建行后不再改）　③ 出现在 80% 高频查询里　④ 基数足够（能切出大小可控的块）</text>
+  <text x="40" y="298" font-size="7.8" fill="#DC2626">最容易违反的是 ②：用 updated_at 分区 → 一次编辑变成跨分区「删除 + 插入」</text>
+
+  <rect x="24" y="322" width="712" height="88" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="40" y="342" font-size="9.8" fill="#065F46" font-weight="bold">第三问：粒度用数据量算，不用感觉</text>
+  <text x="40" y="362" font-size="7.8" fill="#047857">单分区目标 1~10 GB ｜ 每月 &lt; 5000 万行 → 月分区 ｜ 更多 → 周/日 ｜ 每天 &gt; 1 亿行 → 换列存/时序库</text>
+  <text x="40" y="380" font-size="7.8" fill="#047857">分区数上界 400：本机实测每分区约 6 µs 规划开销（11 个 0.44 ms / 120 个 1.09 ms / 365 个 2.55 ms）</text>
+  <text x="40" y="398" font-size="7.8" fill="#DC2626">真悬崖在「无法裁剪」：365 个分区 + 非分区键谓词 → 规划 13.7 ms，第二次 51.5 ms</text>
+</svg>

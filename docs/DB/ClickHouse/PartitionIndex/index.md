@@ -124,6 +124,21 @@ clickhouse-client --query "
 # 期望：Partitions picked 接近全部分区 —— 证明函数包列破坏了裁剪
 ```
 
+## 与分区分表与冷热分离专题的分工
+
+本页讲的是 **MergeTree 的分区目录**（`PARTITION BY toYYYYMM(ts)`）：它是数据文件的组织单位，配合 `PARTITION BY` 做「整月删除」与「分区级 TTL」。这与 OLTP 行存的原生分区**约束完全不同**：
+
+| 维度 | ClickHouse（本页） | 关系库原生分区（专题页） |
+| --- | --- | --- |
+| 分区单位 | 目录（part 集合） | 独立物理表 |
+| 分区数建议 | 几十个（过多影响 merge） | ≤ 400（过多影响规划） |
+| 唯一约束 | 不强制（表引擎决定） | 必须包含分区键 |
+| 删除方式 | `DROP PARTITION`（异步） | `DETACH` / `DROP`（事务内） |
+
+专题页：[分区分表与冷热分离](/docs/DB/PartitionArchival/index.md) · [分区维护](/docs/DB/PartitionArchival/PartitionOps/index.md)。
+
+本页特有的一个坑：ClickHouse 的 `DROP PARTITION` 默认是**异步**的（`mutations_sync` 控制），在删除后立刻 `count()` 可能仍看到旧数据；关系库的 `DETACH` 是事务内的同步操作，两者不能用同一套验收口径。
+
 ## 参考资料
 
 - [MergeTree · Table partitions](https://clickhouse.com/docs/engines/table-engines/mergetree-family/custom-partitioning-key)

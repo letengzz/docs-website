@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15.5" fill="#0F172A" font-weight="bold">五个必失点：都发生在「写对了但结果错了」的位置</text>
+  <text x="380" y="48" text-anchor="middle" font-size="10.2" fill="#64748B">共同特征：代码正确、构建通过、监控无告警，只有数字不对</text>
+
+  <!-- 1 -->
+  <rect x="24" y="66" width="712" height="56" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <circle cx="48" cy="94" r="13" fill="#DC2626"/>
+  <text x="48" y="99" text-anchor="middle" font-size="11" fill="#FFFFFF" font-weight="bold">1</text>
+  <text x="72" y="86" font-size="9.8" fill="#991B1B" font-weight="bold">裁剪没生效，但结果完全正确</text>
+  <text x="72" y="106" font-size="7.8" fill="#B91C1C">WHERE date_trunc('month', ts) = ?  → 扫 12 个分区 / 96.2 ms（正确写法扫 1 个 / 18.8 ms）</text>
+  <text x="640" y="98" text-anchor="middle" font-size="8" fill="#991B1B" font-weight="bold">慢 5.1 倍</text>
+
+  <!-- 2 -->
+  <rect x="24" y="130" width="712" height="56" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <circle cx="48" cy="158" r="13" fill="#DC2626"/>
+  <text x="48" y="163" text-anchor="middle" font-size="11" fill="#FFFFFF" font-weight="bold">2</text>
+  <text x="72" y="150" font-size="9.8" fill="#991B1B" font-weight="bold">只给下界，等于扫「未来所有分区」</text>
+  <text x="72" y="170" font-size="7.8" fill="#B91C1C">WHERE ts &gt;= '2026-03-01'  → 扫 10 个分区 / 97.5 ms；裁剪只认闭区间</text>
+  <text x="640" y="162" text-anchor="middle" font-size="8" fill="#991B1B" font-weight="bold">10 / 12</text>
+
+  <!-- 3 -->
+  <rect x="24" y="194" width="712" height="56" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <circle cx="48" cy="222" r="13" fill="#DC2626"/>
+  <text x="48" y="227" text-anchor="middle" font-size="11" fill="#FFFFFF" font-weight="bold">3</text>
+  <text x="72" y="214" font-size="9.8" fill="#991B1B" font-weight="bold">DELETE 之后空间不会自己回来</text>
+  <text x="72" y="234" font-size="7.8" fill="#B91C1C">删 93,046 行 306.7 ms，表仍 11 MB；VACUUM 103 ms 才降到 2080 kB；DETACH 只要 2.685 ms</text>
+  <text x="640" y="226" text-anchor="middle" font-size="8" fill="#991B1B" font-weight="bold">差 114 倍</text>
+
+  <!-- 4 -->
+  <rect x="24" y="258" width="712" height="56" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <circle cx="48" cy="286" r="13" fill="#DC2626"/>
+  <text x="48" y="291" text-anchor="middle" font-size="11" fill="#FFFFFF" font-weight="bold">4</text>
+  <text x="72" y="278" font-size="9.8" fill="#991B1B" font-weight="bold">唯一约束与分区键冲突，上线才发现</text>
+  <text x="72" y="298" font-size="7.8" fill="#B91C1C">unique constraint on partitioned table must include all partitioning columns（模型问题，不是配置问题）</text>
+
+  <!-- 5 -->
+  <rect x="24" y="322" width="712" height="56" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <circle cx="48" cy="350" r="13" fill="#DC2626"/>
+  <text x="48" y="355" text-anchor="middle" font-size="11" fill="#FFFFFF" font-weight="bold">5</text>
+  <text x="72" y="342" font-size="9.8" fill="#991B1B" font-weight="bold">归档搬了，但没人证明「两边一致」</text>
+  <text x="72" y="362" font-size="7.8" fill="#B91C1C">先删后搬 / 搬完不校验 → 数据静默丢失，三个月后审计才发现</text>
+
+  <text x="24" y="400" font-size="9" fill="#475569">共同解法：每条都要有一条「能在本机执行、结果可判定」的命令，而不是「应该没问题」。</text>
+  <text x="560" y="400" font-size="9" fill="#059669" font-weight="bold">验证 → 见各页「如何验证」</text>
+</svg>

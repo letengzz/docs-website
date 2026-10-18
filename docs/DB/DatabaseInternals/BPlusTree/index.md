@@ -277,6 +277,18 @@ select attname, round(correlation::numeric,3) from pg_stats where tablename = 'e
 
 三个读数连起来读，就是本页的核心结论：**树高管「索引层读几个页」，相关性管「回表读几个页」，两者相加才是这次查询的真实成本。**
 
+## 与分区分表与冷热分离专题的分工
+
+本页讲的是**一棵** B+ 树的页、树高与分裂。分区表在物理上是**多棵小树**：每个分区一张表、一套索引，各自的根页独立。
+
+- 多棵小树的代价（空间 +58%）与收益（树高降一级、`DETACH` 毫秒级）：[总览](/docs/DB/PartitionArchival/Overview/index.md)
+- 分区键与索引列序的关系（分区键应进索引首列）：[分区策略](/docs/DB/PartitionArchival/PartitionStrategy/index.md)
+- 为什么 `uuidv7()` 的写入局部性比 `uuid4()` 好：[分区维护](/docs/DB/PartitionArchival/PartitionOps/index.md) 的 DDL 示例
+
+一个可算的对照：1 亿行、每行 200 字节时单表约 250 万页，三层树可容纳（根页约 1000 条目 × 中间层 1000 × 叶层 250）；按月分 12 个分区后每个分区约 20 万页，树高仍是三层但叶层页数减少，**缓存命中率提升才是真实收益**，而不是「树变矮了」。
+
+本页特有的一个坑：分区表的索引是「父表一条定义 + 每个分区一份物理索引」，`pg_relation_size(父表索引)` 返回 0（与父表本身一样）。统计索引体积必须累加分区。
+
 ## 参考资料
 
 - [PostgreSQL 18 · B-Tree Indexes](https://www.postgresql.org/docs/18/btree.html)——官方对 B+ 树实现（含去重 posting list）的说明

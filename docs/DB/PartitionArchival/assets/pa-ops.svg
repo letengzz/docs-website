@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="26" text-anchor="middle" font-size="15.5" fill="#0F172A" font-weight="bold">月度维护节奏与三类 DDL 的代价</text>
+  <text x="380" y="48" text-anchor="middle" font-size="10.2" fill="#64748B">预建在月末、摘除在月初、校验在摘除之前 —— 顺序错了就要回滚</text>
+
+  <line x1="60" y1="96" x2="716" y2="96" stroke="#CBD5E1" stroke-width="2"/>
+  <g fill="#2563EB">
+    <circle cx="110" cy="96" r="7"/>
+    <circle cx="290" cy="96" r="7"/>
+    <circle cx="470" cy="96" r="7"/>
+    <circle cx="650" cy="96" r="7"/>
+  </g>
+  <text x="110" y="80" text-anchor="middle" font-size="8.5" fill="#1D4ED8">25 日 02:00</text>
+  <text x="290" y="80" text-anchor="middle" font-size="8.5" fill="#1D4ED8">1 日 03:00</text>
+  <text x="470" y="80" text-anchor="middle" font-size="8.5" fill="#1D4ED8">1 日 03:10</text>
+  <text x="650" y="80" text-anchor="middle" font-size="8.5" fill="#1D4ED8">1 日 04:00</text>
+
+  <text x="110" y="120" text-anchor="middle" font-size="8" fill="#334155">预建未来 2 个月</text>
+  <text x="110" y="134" text-anchor="middle" font-size="7.5" fill="#64748B">幂等 CREATE IF NOT EXISTS</text>
+  <text x="290" y="120" text-anchor="middle" font-size="8" fill="#334155">DETACH CONCURRENTLY</text>
+  <text x="290" y="134" text-anchor="middle" font-size="7.5" fill="#64748B">到期分区，不阻塞</text>
+  <text x="470" y="120" text-anchor="middle" font-size="8" fill="#334155">双向差集校验</text>
+  <text x="470" y="134" text-anchor="middle" font-size="7.5" fill="#64748B">两个 0 才写台账</text>
+  <text x="650" y="120" text-anchor="middle" font-size="8" fill="#334155">ANALYZE + 观察 7 天</text>
+  <text x="650" y="134" text-anchor="middle" font-size="7.5" fill="#64748B">确认后 DROP</text>
+
+  <text x="24" y="172" font-size="10.5" fill="#0F172A" font-weight="bold">三类 DDL 的实测代价（103,016 行 / 9.7 MB 分区）</text>
+  <line x1="24" y1="180" x2="736" y2="180" stroke="#E2E8F0" stroke-width="1.2"/>
+
+  <rect x="24" y="192" width="228" height="80" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+  <text x="138" y="212" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">DETACH</text>
+  <text x="138" y="232" text-anchor="middle" font-size="15" fill="#059669" font-weight="bold">2.685 ms</text>
+  <text x="138" y="250" text-anchor="middle" font-size="7.6" fill="#047857">数据完好，空间当场归还</text>
+  <text x="138" y="264" text-anchor="middle" font-size="7.6" fill="#B45309">代价：父表 ACCESS EXCLUSIVE</text>
+
+  <rect x="266" y="192" width="228" height="80" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="380" y="212" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">DELETE</text>
+  <text x="380" y="232" text-anchor="middle" font-size="15" fill="#DC2626" font-weight="bold">306.7 ms</text>
+  <text x="380" y="250" text-anchor="middle" font-size="7.6" fill="#B91C1C">表仍 11 MB，需再 VACUUM 103 ms</text>
+  <text x="380" y="264" text-anchor="middle" font-size="7.6" fill="#B91C1C">→ 2080 kB，且写满 WAL</text>
+
+  <rect x="508" y="192" width="228" height="80" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="622" y="212" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">ATTACH（回滚）</text>
+  <text x="622" y="232" text-anchor="middle" font-size="13" fill="#D97706" font-weight="bold">1.78 / 11.58 ms</text>
+  <text x="622" y="250" text-anchor="middle" font-size="7.6" fill="#B45309">有 CHECK 约束 / 无 CHECK 全表校验</text>
+  <text x="622" y="264" text-anchor="middle" font-size="7.6" fill="#059669">提前建 CHECK = 回滚变快 6.5 倍</text>
+
+  <rect x="24" y="288" width="712" height="112" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="40" y="308" font-size="9.8" fill="#991B1B" font-weight="bold">默认分区的三重代价（全部本机复现）</text>
+  <text x="40" y="330" font-size="7.8" fill="#B91C1C">① 脏数据静默落地：2027-01 的行落进 ev_default，插入成功、无告警（tableoid = ev_default）</text>
+  <text x="40" y="350" font-size="7.8" fill="#B91C1C">② ATTACH 被挡：updated partition constraint for default partition "ev_default" would be violated by some row</text>
+  <text x="40" y="370" font-size="7.8" fill="#B91C1C">③ 失去并发摘除：cannot detach partitions concurrently when a default partition exists</text>
+  <text x="40" y="390" font-size="7.8" fill="#059669">结论：默认分区只在灰度期存在 1~2 个月，且必须配「行数 &gt; 0 即告警」</text>
+</svg>

@@ -108,7 +108,7 @@ export const CompleteProject = [
         link: "/project/Complete/BlogPlatform/index.md",
         collapsed: true,
         items: [
-          { text: "项目总览", link: "/project/Complete/BlogPlatform/index.md" },
+          { text: "全栈博客平台 · 项目总览", link: "/project/Complete/BlogPlatform/index.md" },
           { text: "需求拆分与验收条件", link: "/project/Complete/BlogPlatform/Requirements/index.md" },
           { text: "架构设计与技术选型", link: "/project/Complete/BlogPlatform/Architecture/index.md" },
           { text: "数据库设计", link: "/project/Complete/BlogPlatform/DatabaseDesign/index.md" },
@@ -254,7 +254,7 @@ export const CompleteProject = [
         link: "/project/Complete/MonitoringDashboard/index.md",
         collapsed: true,
         items: [
-          { text: "项目总览", link: "/project/Complete/MonitoringDashboard/index.md" },
+          { text: "实时监控大盘 · 项目总览", link: "/project/Complete/MonitoringDashboard/index.md" },
           { text: "需求拆分与技术选型", link: "/project/Complete/MonitoringDashboard/Requirements/index.md" },
           { text: "架构细化：组件与接口边界", link: "/project/Complete/MonitoringDashboard/Architecture/index.md" },
           { text: "指标模型与保留策略", link: "/project/Complete/MonitoringDashboard/MetricModel/index.md" },
@@ -295,7 +295,7 @@ export const CompleteProject = [
         link: "/project/Complete/TeamBoard/index.md",
         collapsed: true,
         items: [
-          { text: "项目总览", link: "/project/Complete/TeamBoard/index.md" },
+          { text: "在线协作任务看板 · 项目总览", link: "/project/Complete/TeamBoard/index.md" },
           { text: "需求拆分：角色、故事与验收条件", link: "/project/Complete/TeamBoard/Requirements/index.md" },
           { text: "技术选型与版本基线", link: "/project/Complete/TeamBoard/TechStack/index.md" },
           { text: "架构设计：模块边界与实时链路", link: "/project/Complete/TeamBoard/Architecture/index.md" },
@@ -341,6 +341,7 @@ export const CompleteProject = [
           { text: "第 2 周第 2 步 · 认证与租户成员关系（AT-A~AT-H）", link: "/project/Complete/TeamBoard/AuthTenantMember/index.md" },
           { text: "第 2 周第 3 步 · 请求作用域与观测信号（SG-A~SG-H）", link: "/project/Complete/TeamBoard/SignalScope/index.md" },
           { text: "第 2 周第 4 步 · 看板与卡片读写接口（BC-A~BC-H）", link: "/project/Complete/TeamBoard/BoardCardApi/index.md" },
+          { text: "第 2 周第 5 步 · 评论与 @ 提及的写入接口（CM-A~CM-H）", link: "/project/Complete/TeamBoard/CommentMention/index.md" },
         ],
       },
       {
