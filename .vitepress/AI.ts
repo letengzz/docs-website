@@ -321,3 +321,23 @@ export const AI_AISecurityCompliance = [
     ],
   },
 ];
+
+export const AI_ModelRouting = [
+  {
+    text: "模型路由与降级",
+    link: "/docs/AI/ModelRouting/index.md",
+    collapsed: true,
+    items: [
+      { text: "总览：三个约束与四层结构", link: "/docs/AI/ModelRouting/Overview/index.md" },
+      { text: "策略谱系：从规则到学习型路由", link: "/docs/AI/ModelRouting/Strategy/index.md" },
+      { text: "成本与质量：把「划算」算成一个数", link: "/docs/AI/ModelRouting/CostQuality/index.md" },
+      { text: "超时、重试与对冲", link: "/docs/AI/ModelRouting/TimeoutBudget/index.md" },
+      { text: "降级链：从换区域到明确失败", link: "/docs/AI/ModelRouting/Fallback/index.md" },
+      { text: "网关：把路由做成一层基础设施", link: "/docs/AI/ModelRouting/Gateway/index.md" },
+      { text: "灰度：策略变更也要放量", link: "/docs/AI/ModelRouting/GrayRelease/index.md" },
+      { text: "可观测：一次决策留下的九个字段", link: "/docs/AI/ModelRouting/Observability/index.md" },
+      { text: "实战：给客服问答接一层路由网关", link: "/docs/AI/ModelRouting/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/ModelRouting/FAQ/index.md" },
+    ],
+  },
+];

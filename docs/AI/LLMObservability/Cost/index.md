@@ -129,6 +129,18 @@ python3 cost_report.py --day 2026-10-12 --model-mismatch
 python3 cost_report.py --day 2026-10-12 --include-eval
 ```
 
+## 与「模型路由与降级」专题的分工（第 164 天补充）
+
+本页做的是**事后归集**：账单口径、成本归到哪个团队/功能/租户、趋势怎么读。路由专题要的是**决策当下的成本差**——这一次选贵的多花了多少、省下来的钱是不是用质量换的，见 [模型路由与降级](../../ModelRouting/index.md)。
+
+| 问题 | 归本页 | 归路由专题 |
+| --- | --- | --- |
+| 本月账单为什么涨了 3 倍 | 归集维度、看板与对账 | 涨在「哪类请求被路由到了贵档」（[可观测](../../ModelRouting/Observability/index.md)） |
+| 成本能不能摊到每次请求 | 分摊规则与口径 | 决策字段里的 `model` / `route_reason` / `cost_estimate` |
+| 降级省下的钱算不算优化 | 归集时容易混在一起 | `degrade_total` 与 `downshift_total` 必须分开统计（`MRF-H`） |
+
+一句话边界：**归集回答「钱花在哪」，路由回答「这笔钱该不该花」**；只有归集没有决策字段，降级省下的钱会被误记成路由策略的功劳。
+
 ## 参考资料
 
 - LangSmith 定价与计量单位说明：https://www.langchain.com/pricing

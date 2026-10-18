@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="分诊图：成本、质量、可用性三列症状与对应页面">
+  <title>十类症状的分诊路径</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="500" fill="#f8fafc"/>
+  <text x="450.0" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">十类症状的分诊路径</text>
+  <rect x="30" y="66" width="270" height="56" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="165" y="100" font-size="13" fill="#1d4ed8" text-anchor="middle" font-weight="700">成本异常</text>
+  <rect x="30" y="140" width="270" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="165" y="162" font-size="10.4" fill="#0f172a" text-anchor="middle" font-weight="600">账单涨、量没涨</text>
+  <text x="165" y="180" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">→ 超时与重试</text>
+  <line x1="165" y1="132" x2="165" y2="138" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="30" y="232" width="270" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="165" y="254" font-size="10.4" fill="#0f172a" text-anchor="middle" font-weight="600">省了钱但投诉多</text>
+  <text x="165" y="272" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">→ 成本与质量</text>
+  <line x1="165" y1="224" x2="165" y2="230" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="30" y="324" width="270" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="165" y="346" font-size="10.4" fill="#0f172a" text-anchor="middle" font-weight="600">灰度 5% 看不出</text>
+  <text x="165" y="364" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">→ 灰度</text>
+  <line x1="165" y1="316" x2="165" y2="322" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="320" y="66" width="270" height="56" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+  <text x="455" y="100" font-size="13" fill="#b45309" text-anchor="middle" font-weight="700">质量异常</text>
+  <rect x="320" y="140" width="270" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="455" y="162" font-size="10.4" fill="#0f172a" text-anchor="middle" font-weight="600">两次答案差很多</text>
+  <text x="455" y="180" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">→ 灰度 · 分流键</text>
+  <line x1="455" y1="132" x2="455" y2="138" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="320" y="232" width="270" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="455" y="254" font-size="10.4" fill="#0f172a" text-anchor="middle" font-weight="600">新意图被吞</text>
+  <text x="455" y="272" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">→ 策略谱系</text>
+  <line x1="455" y1="224" x2="455" y2="230" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="320" y="324" width="270" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="455" y="346" font-size="10.4" fill="#0f172a" text-anchor="middle" font-weight="600">格式解析失败</text>
+  <text x="455" y="364" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">→ 网关</text>
+  <line x1="455" y1="316" x2="455" y2="322" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="610" y="66" width="270" height="56" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.5"/>
+  <text x="745" y="100" font-size="13" fill="#be123c" text-anchor="middle" font-weight="700">可用性异常</text>
+  <rect x="610" y="140" width="270" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="745" y="162" font-size="10.4" fill="#0f172a" text-anchor="middle" font-weight="600">高峰大面积超时</text>
+  <text x="745" y="180" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">→ 超时与重试</text>
+  <line x1="745" y1="132" x2="745" y2="138" stroke="#be123c" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="610" y="232" width="270" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="745" y="254" font-size="10.4" fill="#0f172a" text-anchor="middle" font-weight="600">切换过去也挂</text>
+  <text x="745" y="272" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">→ 降级链</text>
+  <line x1="745" y1="224" x2="745" y2="230" stroke="#be123c" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="610" y="324" width="270" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="745" y="346" font-size="10.4" fill="#0f172a" text-anchor="middle" font-weight="600">降级一跑就崩</text>
+  <text x="745" y="364" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">→ 降级链 · 演练</text>
+  <line x1="745" y1="316" x2="745" y2="322" stroke="#be123c" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="30" y="440" font-size="10.6" fill="#0f172a" text-anchor="start" font-weight="600">先分类再查页面：成本问题看「分母」，质量问题看「验证器」，可用性问题看「共因」。</text>
+  <text x="30" y="462" font-size="10.2" fill="#475569" text-anchor="start" font-weight="400">三条都正常但业务指标在跌时，去看「降级率」与「误接受率」——这两个数不在常规看板上。</text>
+</svg>

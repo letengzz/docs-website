@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="策略散点图：静态分档、规则、分类器、语义路由、学习型路由、级联">
+  <title>六种策略：决策延迟与可解释性</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="520" fill="#f8fafc"/>
+  <text x="450.0" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">六种策略：决策延迟与可解释性</text>
+  <line x1="120" y1="410" x2="820" y2="410" stroke="#cbd5e1" stroke-width="1.2"/>
+  <line x1="120" y1="410" x2="120" y2="100" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="820" y="444" font-size="10" fill="#475569" text-anchor="end" font-weight="400">决策延迟（ms，对数尺度）→</text>
+  <text x="86" y="88" font-size="10" fill="#475569" text-anchor="middle" font-weight="400">可解释性 ↑</text>
+  <line x1="120.0" y1="410" x2="120.0" y2="415" stroke="#cbd5e1"/>
+  <text x="120.0" y="428" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">0</text>
+  <line x1="260.0" y1="410" x2="260.0" y2="415" stroke="#cbd5e1"/>
+  <text x="260.0" y="428" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">1</text>
+  <line x1="400.0" y1="410" x2="400.0" y2="415" stroke="#cbd5e1"/>
+  <text x="400.0" y="428" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">10</text>
+  <line x1="540.0" y1="410" x2="540.0" y2="415" stroke="#cbd5e1"/>
+  <text x="540.0" y="428" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">45</text>
+  <line x1="680.0" y1="410" x2="680.0" y2="415" stroke="#cbd5e1"/>
+  <text x="680.0" y="428" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">300</text>
+  <line x1="820.0" y1="410" x2="820.0" y2="415" stroke="#cbd5e1"/>
+  <text x="820.0" y="428" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">2000</text>
+  <line x1="115" y1="363.5" x2="120" y2="363.5" stroke="#cbd5e1"/>
+  <text x="108" y="367.5" font-size="9" fill="#475569" text-anchor="end" font-weight="400">低</text>
+  <line x1="115" y1="255.0" x2="120" y2="255.0" stroke="#cbd5e1"/>
+  <text x="108" y="259.0" font-size="9" fill="#475569" text-anchor="end" font-weight="400">中</text>
+  <line x1="115" y1="146.5" x2="120" y2="146.5" stroke="#cbd5e1"/>
+  <text x="108" y="150.5" font-size="9" fill="#475569" text-anchor="end" font-weight="400">高</text>
+  <circle cx="141.0" cy="131.0" r="7" fill="#1d4ed8" opacity="0.9"/>
+  <text x="141.0" y="117.0" font-size="11.5" fill="#0f172a" text-anchor="middle" font-weight="700">静态分档</text>
+  <text x="141.0" y="155.0" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">0ms</text>
+  <circle cx="204.0" cy="186.8" r="7" fill="#1d4ed8" opacity="0.9"/>
+  <text x="204.0" y="172.8" font-size="11.5" fill="#0f172a" text-anchor="middle" font-weight="700">规则</text>
+  <text x="204.0" y="210.8" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">1ms</text>
+  <circle cx="470.0" cy="255.0" r="7" fill="#0f766e" opacity="0.9"/>
+  <text x="470.0" y="241.0" font-size="11.5" fill="#0f172a" text-anchor="middle" font-weight="700">分类器</text>
+  <text x="470.0" y="279.0" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">10ms</text>
+  <circle cx="596.0" cy="267.4" r="7" fill="#0f766e" opacity="0.9"/>
+  <text x="596.0" y="253.39999999999998" font-size="11.5" fill="#0f172a" text-anchor="middle" font-weight="700">语义路由</text>
+  <text x="596.0" y="291.4" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">45ms</text>
+  <circle cx="526.0" cy="348.0" r="7" fill="#6d28d9" opacity="0.9"/>
+  <text x="526.0" y="334.0" font-size="11.5" fill="#0f172a" text-anchor="middle" font-weight="700">学习型路由</text>
+  <text x="526.0" y="372.0" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">15ms</text>
+  <circle cx="750.0" cy="168.2" r="7" fill="#b45309" opacity="0.9"/>
+  <text x="750.0" y="154.2" font-size="11.5" fill="#0f172a" text-anchor="middle" font-weight="700">级联</text>
+  <text x="750.0" y="192.2" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">1900ms</text>
+  <rect x="40" y="460" width="820" height="46" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="56" y="478" font-size="10.2" fill="#475569" text-anchor="start" font-weight="400">越靠左上：便宜、好解释、信号弱；越靠右下：准、贵、慢。级联的延迟最差，但它按需付费。</text>
+  <text x="56" y="496" font-size="10.2" fill="#475569" text-anchor="start" font-weight="400">学习型路由延迟不高，可解释性最差——必须额外配一套解释与兜底，否则线上没人敢调阈值。</text>
+</svg>

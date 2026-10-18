@@ -13,6 +13,7 @@
 - [提示词安全与评估](PromptSecurity/index.md)
 - [AI 安全与合规](AISecurityCompliance/index.md)
 - [AI 应用观测与评估](LLMObservability/index.md)
+- [模型路由与降级](ModelRouting/index.md)
 - [语音与音视频 AI](SpeechAudioAI/index.md)
 - [企业知识库落地](EnterpriseKB/index.md)
 - [Agent 应用](Agent/index.md)

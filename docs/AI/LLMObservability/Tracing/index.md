@@ -163,6 +163,18 @@ grep -E 'gen_ai.usage.(input_tokens|prompt_tokens)' trace_dump.txt | wc -l   # �
 # 期望：input_tokens 与 output_tokens 都 > 0；把一天的总和乘单价，与账单同量级
 ```
 
+## 与「模型路由与降级」专题的分工（第 164 天补充）
+
+本页讲 **span 怎么建、trace 怎么串、采样怎么做**，是通用链路规范。一次 LLM 请求比普通 HTTP 多出一层「决策」：为什么选这个模型、为什么触发降级、这次是不是被降级过——这九个字段的定义归 [模型路由与降级 · 可观测](../../ModelRouting/Observability/index.md)。
+
+| 问题 | 归本页 | 归路由专题 |
+| --- | --- | --- |
+| 一次请求在哪些服务里花了多久 | span 结构与父子关系 | 路由决策作为独立 span 的**九个必填字段** |
+| 降级在链路里怎么看出来 | 通用错误与异常标记 | `x-degraded` / `x-degrade-reason` / `x-fallback-depth` 三个响应头（`MRF-C`） |
+| 采样率定多少 | 采样策略与成本 | 路由决策必须**全量保留**，不能进采样（否则归因不可复算） |
+
+一句话边界：**trace 记录「发生了什么」，路由可观测记录「为什么这样选」**；后者少一个字段，灰度门禁就无法按原因回滚。
+
 ## 参考资料
 
 - OpenTelemetry 语义约定（主仓库，含迁移公告）：https://github.com/open-telemetry/semantic-conventions

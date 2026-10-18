@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="网关结构图：鉴权配额、决策、执行、归一化，连接三家供应商">
+  <title>网关内部：五个必做的动作</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="520" fill="#f8fafc"/>
+  <text x="450.0" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">网关内部：五个必做的动作</text>
+<rect x="24" y="190" width="100" height="70" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="74.0" y="212" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">客户端</text>
+  <text x="74.0" y="230" font-size="9.6" fill="#475569" text-anchor="middle">deadline</text>
+  <rect x="150" y="70" width="470" height="360" rx="10" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.6"/>
+  <text x="385" y="94" font-size="13.5" fill="#1d4ed8" text-anchor="middle" font-weight="700">LLM 网关</text>
+  <rect x="170" y="112" width="430" height="46" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="186" y="131" font-size="10.6" fill="#0f172a" text-anchor="start" font-weight="700">① 鉴权 · 配额预检</text>
+  <text x="186" y="148" font-size="9.3" fill="#475569" text-anchor="start" font-weight="400">RPM / TPM / 并发，超限即拒</text>
+  <rect x="170" y="172" width="430" height="46" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="186" y="191" font-size="10.6" fill="#0f172a" text-anchor="start" font-weight="700">② 读 deadline</text>
+  <text x="186" y="208" font-size="9.3" fill="#475569" text-anchor="start" font-weight="400">过期直接 504</text>
+  <rect x="170" y="232" width="430" height="46" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="186" y="251" font-size="10.6" fill="#0f172a" text-anchor="start" font-weight="700">③ 路由决策（纯函数）</text>
+  <text x="186" y="268" font-size="9.3" fill="#475569" text-anchor="start" font-weight="400">候选集 · 降级顺序 · policy_version</text>
+  <rect x="170" y="292" width="430" height="46" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="186" y="311" font-size="10.6" fill="#0f172a" text-anchor="start" font-weight="700">④ 执行</text>
+  <text x="186" y="328" font-size="9.3" fill="#475569" text-anchor="start" font-weight="400">候选池轮转 · 冷却跳过 · 重试预算</text>
+  <rect x="170" y="352" width="430" height="46" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="186" y="371" font-size="10.6" fill="#0f172a" text-anchor="start" font-weight="700">⑤ 归一化与记账</text>
+  <text x="186" y="388" font-size="9.3" fill="#475569" text-anchor="start" font-weight="400">finish_reason · usage · 降级标记</text>
+  <line x1="385" y1="160" x2="385" y2="170" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#ab)"/>
+  <line x1="385" y1="220" x2="385" y2="230" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#ab)"/>
+  <line x1="385" y1="280" x2="385" y2="290" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#ab)"/>
+  <line x1="385" y1="340" x2="385" y2="350" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#ab)"/>
+<rect x="680" y="90" width="190" height="64" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="775.0" y="112" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">供应商 A</text>
+  <text x="775.0" y="130" font-size="9.6" fill="#475569" text-anchor="middle">主区域 · order=1</text>
+<rect x="680" y="190" width="190" height="64" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="775.0" y="212" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">供应商 B</text>
+  <text x="775.0" y="230" font-size="9.6" fill="#475569" text-anchor="middle">跨云 · order=2</text>
+<rect x="680" y="290" width="190" height="64" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+  <text x="775.0" y="312" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">本地模型</text>
+  <text x="775.0" y="330" font-size="9.6" fill="#475569" text-anchor="middle">最后一档</text>
+  <line x1="600" y1="255" x2="676" y2="122" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <line x1="600" y1="265" x2="676" y2="222" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <line x1="600" y1="275" x2="676" y2="322" stroke="#15803d" stroke-width="1.4" marker-end="url(#ag)"/>
+  <path d="M 676 322 L 622 322 L 622 372" fill="none" stroke="#475569" stroke-width="1.4" marker-end="url(#a)" stroke-dasharray="4 3"/>
+<rect x="150" y="444" width="300" height="52" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="300.0" y="466" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">配额存储（Redis）</text>
+  <text x="300.0" y="484" font-size="9.4" fill="#475569" text-anchor="middle">租户桶 · 滑动窗口</text>
+<rect x="490" y="444" width="380" height="52" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="680.0" y="466" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">决策日志（JSONL）</text>
+  <text x="680.0" y="484" font-size="9.4" fill="#475569" text-anchor="middle">9 字段 · 失败也记 · 按版本聚合</text>
+  <text x="30" y="512" font-size="10" fill="#475569" text-anchor="start" font-weight="400">网关的价值不是多一跳，而是把协议、候选集、配额、健康收敛到一处——四件事各写一遍，就一定会写出四种行为。</text>
+</svg>

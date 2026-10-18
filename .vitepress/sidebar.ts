@@ -1,7 +1,7 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 import { Auth, DDD, DesignPatterns, DistributedCache, DistributedLock, DotNet, Ecommerce, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, SpringCloud, WorkflowEngine } from "./backend";
 
-import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
+import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, CapacityCost, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
 import { BigData, CDC, ClickHouse, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, Sharding, TimeSeries, VectorDatabase } from "./db";
@@ -113,7 +113,7 @@ export const sidebar = {
     {
       text: "AI",
       collapsed: true,
-      items: [...AI_LLMApp, ...AI_AICodingAssistant, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_MultimodalRetrieval, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_PromptSecurity, ...AI_Agent, ...AI_LLMObservability, ...AI_SpeechAudioAI, ...AI_EnterpriseKB, ...AI_AISecurityCompliance],
+      items: [...AI_LLMApp, ...AI_AICodingAssistant, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_MultimodalRetrieval, ...AI_ModelRouting, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_PromptSecurity, ...AI_Agent, ...AI_LLMObservability, ...AI_SpeechAudioAI, ...AI_EnterpriseKB, ...AI_AISecurityCompliance],
     },
   ],
   "/docs/Tools": [
@@ -248,6 +248,7 @@ export const sidebar = {
   "/docs/AI/RAG": AI_RAG,
   "/docs/AI/Multimodal": AI_Multimodal,
   "/docs/AI/MultimodalRetrieval": AI_MultimodalRetrieval,
+  "/docs/AI/ModelRouting": AI_ModelRouting,
   "/docs/AI/FineTuning": AI_FineTuning,
   "/docs/AI/LocalModel": AI_LocalModel,
   "/docs/Tools/Build": Build,

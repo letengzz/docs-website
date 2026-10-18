@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="四层结构：入口、信号、决策、执行，外加反馈回路">
+  <title>路由的四层结构：职责与禁止事项</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="520" fill="#f8fafc"/>
+  <text x="450.0" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">路由的四层结构：职责与禁止事项</text>
+  <rect x="40" y="80" width="620" height="74" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="60" y="108" font-size="14" font-weight="700" fill="#0f172a">入口层</text>
+  <text x="60" y="128" font-size="10.2" fill="#475569" text-anchor="start" font-weight="400">认证 · 租户识别 · 配额预检 · deadline 注入</text>
+  <text x="60" y="144" font-size="9.8" fill="#be123c" text-anchor="start" font-weight="400">禁止：在这里判断用哪个模型</text>
+  <rect x="40" y="180" width="620" height="74" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="60" y="208" font-size="14" font-weight="700" fill="#0f172a">信号层</text>
+  <text x="60" y="228" font-size="10.2" fill="#475569" text-anchor="start" font-weight="400">难度打分 · 意图识别 · 长度/语言 · 历史失败次数</text>
+  <text x="60" y="244" font-size="9.8" fill="#be123c" text-anchor="start" font-weight="400">禁止：调用大模型；开销 ≤ 20ms</text>
+  <rect x="40" y="280" width="620" height="74" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.5"/>
+  <text x="60" y="308" font-size="14" font-weight="700" fill="#0f172a">决策层</text>
+  <text x="60" y="328" font-size="10.2" fill="#475569" text-anchor="start" font-weight="400">候选集 · 成本估算 · 选择 · 降级顺序</text>
+  <text x="60" y="344" font-size="9.8" fill="#be123c" text-anchor="start" font-weight="400">禁止：任何 IO；必须可复算</text>
+  <rect x="40" y="380" width="620" height="74" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+  <text x="60" y="408" font-size="14" font-weight="700" fill="#0f172a">执行层</text>
+  <text x="60" y="428" font-size="10.2" fill="#475569" text-anchor="start" font-weight="400">供应商调用 · 超时 · 重试 · 熔断 · 流式转发</text>
+  <text x="60" y="444" font-size="9.8" fill="#be123c" text-anchor="start" font-weight="400">禁止：修改路由规则</text>
+  <rect x="690" y="80" width="180" height="374" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="780" y="104" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="700">反馈回路</text>
+  <rect x="706" y="118" width="148" height="34" rx="5" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="780" y="139" font-size="10.2" fill="#475569" text-anchor="middle" font-weight="400">成本读数</text>
+  <rect x="706" y="174" width="148" height="34" rx="5" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="780" y="195" font-size="10.2" fill="#475569" text-anchor="middle" font-weight="400">质量抽样</text>
+  <rect x="706" y="230" width="148" height="34" rx="5" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="780" y="251" font-size="10.2" fill="#475569" text-anchor="middle" font-weight="400">降级率</text>
+  <rect x="706" y="286" width="148" height="34" rx="5" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="780" y="307" font-size="10.2" fill="#475569" text-anchor="middle" font-weight="400">未命中率</text>
+  <rect x="706" y="342" width="148" height="34" rx="5" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="780" y="363" font-size="10.2" fill="#475569" text-anchor="middle" font-weight="400">分数分布</text>
+  <path d="M 660 417 L 675 417 L 675 117 L 675 90" fill="none" stroke="#15803d" stroke-width="1.4" marker-end="url(#ag)" stroke-dasharray="5 4"/>
+  <path d="M 690 300 L 672 300" fill="none" stroke="#15803d" stroke-width="1.4" marker-end="url(#ag)"/>
+  <text x="450" y="478" font-size="11" fill="#0f172a" text-anchor="middle" font-weight="600">四层之上必须有一条闭环：没有它，阈值会永远停在上线那天拍的数。</text>
+  <text x="450" y="500" font-size="10" fill="#475569" text-anchor="middle" font-weight="400">判断层切得对不对：同一请求发两次，是否走到同一模型（是 → 决策层；否 → 执行层）</text>
+</svg>

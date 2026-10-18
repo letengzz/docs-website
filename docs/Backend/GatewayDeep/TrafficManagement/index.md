@@ -230,6 +230,19 @@ route = routeTable.getOrDefault(tenantId, "cell-a")   // ← 错
 归属表查不到时默认落到 A，等于让「路由故障」变成「A 被打爆」。正确写法是 `fail closed`：返回 `503` + `Retry-After`，并让归属表的读取结果进本地快照（只用于读降级，写仍然拒绝）。
 :::
 
+## 与「模型路由与降级」专题的分工（第 164 天补充）
+
+本页是**南北向 HTTP 流量的通用治理**：限流算法、熔断三态、灰度发布、负载均衡。LLM 网关在这套通用能力之上多了三件事——**按 token 计价、响应是流式的、质量事先不可知**，这三件事带来的路由与降级差异归 [模型路由与降级](../../../AI/ModelRouting/index.md)。
+
+| 问题 | 归本页 | 归路由专题 |
+| --- | --- | --- |
+| 上游 5xx 了怎么熔断 | 熔断器状态机与阈值算法 | 熔断打开后**换到哪一档**（五级降级阶梯，`MRF-A`~`MRF-H`） |
+| 灰度按什么比例放量 | 权重、Header、用户维度分流 | 门禁指标是**质量与成本**而不是错误率（[灰度](../../../AI/ModelRouting/GrayRelease/index.md)） |
+| 限流按 QPS 还是并发 | 令牌桶/漏桶与连接数 | 按 **token 预算**限流，且要区分输入与输出（[网关](../../../AI/ModelRouting/Gateway/index.md)） |
+| 重试几次算合理 | 通用重试与退避 | 跨供应商重试的**放大系数与雪崩阈值**（[超时与重试](../../../AI/ModelRouting/TimeoutBudget/index.md)） |
+
+一句话边界：**通用流量治理假设「每次请求代价相同」，LLM 网关不能这么假设**——一次 128K 上下文的请求和一次 200 token 的请求，占用完全不是一个量级。
+
 ## 参考资料
 
 - APISIX 限流插件（limit-count / limit-req / limit-conn）：https://apisix.apache.org/docs/apisix/plugins/limit-count/

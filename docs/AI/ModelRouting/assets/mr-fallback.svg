@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 530" width="900" height="530" role="img" aria-label="降级阶梯：L0 换区域到 L4 明确失败，左侧为错误分类">
+  <title>降级五级阶梯：每一级牺牲什么</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="530" fill="#f8fafc"/>
+  <text x="450.0" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">降级五级阶梯：每一级牺牲什么</text>
+  <rect x="30" y="84" width="250" height="56" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="146" y="108" font-size="10.6" fill="#0f172a" text-anchor="middle" font-weight="600">429 限流</text>
+  <text x="146" y="126" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">换部署 + 冷却</text>
+  <line x1="288" y1="112" x2="330" y2="112" stroke="#475569" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="30" y="158" width="250" height="56" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="146" y="182" font-size="10.6" fill="#0f172a" text-anchor="middle" font-weight="600">5xx / 超时</text>
+  <text x="146" y="200" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">换供应商</text>
+  <line x1="288" y1="186" x2="330" y2="186" stroke="#475569" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="30" y="232" width="250" height="56" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="146" y="256" font-size="10.6" fill="#0f172a" text-anchor="middle" font-weight="600">配额耗尽</text>
+  <text x="146" y="274" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">降档</text>
+  <line x1="288" y1="260" x2="330" y2="260" stroke="#475569" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="30" y="306" width="250" height="56" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="146" y="330" font-size="10.6" fill="#0f172a" text-anchor="middle" font-weight="600">上游全挂</text>
+  <text x="146" y="348" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">缓存</text>
+  <line x1="288" y1="334" x2="330" y2="334" stroke="#475569" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="30" y="380" width="250" height="56" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="146" y="404" font-size="10.6" fill="#0f172a" text-anchor="middle" font-weight="600">401 / 400</text>
+  <text x="146" y="422" font-size="9.4" fill="#475569" text-anchor="middle" font-weight="400">不降级，告警</text>
+  <line x1="288" y1="408" x2="330" y2="408" stroke="#475569" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="340" y="74" width="520" height="66" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="356" y="100" font-size="13" font-weight="700" fill="#1d4ed8">L0</text>
+  <text x="400" y="100" font-size="10.8" fill="#0f172a" text-anchor="start" font-weight="600">同模型换区域 / 换 key</text>
+  <text x="400" y="122" font-size="9.4" fill="#475569" text-anchor="start" font-weight="400">牺牲：无（用户不可感知）</text>
+  <rect x="349" y="156" width="502" height="66" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="365" y="182" font-size="13" font-weight="700" fill="#0f766e">L1</text>
+  <text x="409" y="182" font-size="10.8" fill="#0f172a" text-anchor="start" font-weight="600">同类模型换供应商</text>
+  <text x="409" y="204" font-size="9.4" fill="#475569" text-anchor="start" font-weight="400">牺牲：风格与格式略变</text>
+  <rect x="358" y="238" width="484" height="66" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+  <text x="374" y="264" font-size="13" font-weight="700" fill="#b45309">L2</text>
+  <text x="418" y="264" font-size="10.8" fill="#0f172a" text-anchor="start" font-weight="600">降档到小模型</text>
+  <text x="418" y="286" font-size="9.4" fill="#475569" text-anchor="start" font-weight="400">牺牲：复杂推理质量（需标记）</text>
+  <rect x="367" y="320" width="466" height="66" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.5"/>
+  <text x="383" y="346" font-size="13" font-weight="700" fill="#6d28d9">L3</text>
+  <text x="427" y="346" font-size="10.8" fill="#0f172a" text-anchor="start" font-weight="600">语义 / 精确缓存</text>
+  <text x="427" y="368" font-size="9.4" fill="#475569" text-anchor="start" font-weight="400">牺牲：时效性（需返回 cache_age）</text>
+  <rect x="376" y="402" width="448" height="66" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.5"/>
+  <text x="392" y="428" font-size="13" font-weight="700" fill="#be123c">L4</text>
+  <text x="436" y="428" font-size="10.8" fill="#0f172a" text-anchor="start" font-weight="600">模板 / 明确失败</text>
+  <text x="436" y="450" font-size="9.4" fill="#475569" text-anchor="start" font-weight="400">牺牲：个性化与完整性</text>
+  <text x="340" y="500" font-size="10.4" fill="#0f172a" text-anchor="start" font-weight="600">每级都要有退出条件：L2 停留 > 5 分钟告警；L3 必须带缓存年龄；L4 必须给可操作提示。</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" role="img" aria-label="成本质量前沿散点图：全用小中大模型、级联阈值扫描、随机路由">
+  <title>成本-质量前沿：级联在前沿上，随机路由在下方</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="540" fill="#f8fafc"/>
+  <text x="450.0" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">成本-质量前沿：级联在前沿上，随机路由在下方</text>
+  <line x1="100" y1="438.6153846153846" x2="840" y2="438.6153846153846" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="90" y="442.6153846153846" font-size="9" fill="#475569" text-anchor="end" font-weight="400">0.75</text>
+  <line x1="100" y1="371.6923076923076" x2="840" y2="371.6923076923076" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="90" y="375.6923076923076" font-size="9" fill="#475569" text-anchor="end" font-weight="400">0.80</text>
+  <line x1="100" y1="304.76923076923083" x2="840" y2="304.76923076923083" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="90" y="308.76923076923083" font-size="9" fill="#475569" text-anchor="end" font-weight="400">0.85</text>
+  <line x1="100" y1="237.84615384615378" x2="840" y2="237.84615384615378" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="90" y="241.84615384615378" font-size="9" fill="#475569" text-anchor="end" font-weight="400">0.90</text>
+  <line x1="100" y1="170.92307692307702" x2="840" y2="170.92307692307702" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="90" y="174.92307692307702" font-size="9" fill="#475569" text-anchor="end" font-weight="400">0.95</text>
+  <line x1="100" y1="104.0" x2="840" y2="104.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="90" y="108.0" font-size="9" fill="#475569" text-anchor="end" font-weight="400">1.00</text>
+  <line x1="100.0" y1="452" x2="100.0" y2="457" stroke="#cbd5e1"/>
+  <text x="100.0" y="470" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">0</text>
+  <line x1="254.16666666666669" y1="452" x2="254.16666666666669" y2="457" stroke="#cbd5e1"/>
+  <text x="254.16666666666669" y="470" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">5</text>
+  <line x1="408.33333333333337" y1="452" x2="408.33333333333337" y2="457" stroke="#cbd5e1"/>
+  <text x="408.33333333333337" y="470" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">10</text>
+  <line x1="562.5" y1="452" x2="562.5" y2="457" stroke="#cbd5e1"/>
+  <text x="562.5" y="470" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">15</text>
+  <line x1="716.6666666666667" y1="452" x2="716.6666666666667" y2="457" stroke="#cbd5e1"/>
+  <text x="716.6666666666667" y="470" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">20</text>
+  <line x1="840.0" y1="452" x2="840.0" y2="457" stroke="#cbd5e1"/>
+  <text x="840.0" y="470" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">24</text>
+  <line x1="100" y1="452" x2="840" y2="452" stroke="#cbd5e1" stroke-width="1.2"/>
+  <line x1="100" y1="452" x2="100" y2="104" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="840" y="492" font-size="10" fill="#475569" text-anchor="end" font-weight="400">每请求成本（相对单位）→</text>
+  <text x="54" y="96" font-size="10" fill="#475569" text-anchor="start" font-weight="400">准确率</text>
+  <path d="M 171.5 231.2 L 194.0 189.7 L 222.4 154.9 L 269.6 138.8 L 358.7 130.8 L 514.4 134.8 L 780.5 145.5" fill="none" stroke="#15803d" stroke-width="2.2" opacity="0.9"/>
+  <circle cx="171.5" cy="231.2" r="3.6" fill="#15803d" opacity="0.9"/>
+  <circle cx="194.0" cy="189.7" r="3.6" fill="#15803d" opacity="0.9"/>
+  <circle cx="222.4" cy="154.9" r="3.6" fill="#15803d" opacity="0.9"/>
+  <circle cx="269.6" cy="138.8" r="3.6" fill="#15803d" opacity="0.9"/>
+  <circle cx="358.7" cy="130.8" r="3.6" fill="#15803d" opacity="0.9"/>
+  <circle cx="514.4" cy="134.8" r="3.6" fill="#15803d" opacity="0.9"/>
+  <circle cx="780.5" cy="145.5" r="3.6" fill="#15803d" opacity="0.9"/>
+  <path d="M 130.8 399.8 L 195.6 377.0 L 260.3 351.6 L 325.1 335.6 L 454.6 267.3 L 778.3 156.2" fill="none" stroke="#be123c" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.9"/>
+  <circle cx="130.8" cy="399.8" r="3.6" fill="#be123c" opacity="0.9"/>
+  <circle cx="195.6" cy="377.0" r="3.6" fill="#be123c" opacity="0.9"/>
+  <circle cx="260.3" cy="351.6" r="3.6" fill="#be123c" opacity="0.9"/>
+  <circle cx="325.1" cy="335.6" r="3.6" fill="#be123c" opacity="0.9"/>
+  <circle cx="454.6" cy="267.3" r="3.6" fill="#be123c" opacity="0.9"/>
+  <circle cx="778.3" cy="156.2" r="3.6" fill="#be123c" opacity="0.9"/>
+  <line x1="130.83333333333334" y1="399.79999999999995" x2="778.3333333333333" y2="156.20000000000005" stroke="#1d4ed8" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.7"/>
+  <circle cx="130.8" cy="399.8" r="6" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="120.83333333333334" y="390.79999999999995" font-size="9.5" fill="#1d4ed8" text-anchor="end" font-weight="700">全用 S</text>
+  <circle cx="254.2" cy="253.9" r="6" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="266.1666666666667" y="244.9076923076923" font-size="9.5" fill="#1d4ed8" text-anchor="start" font-weight="700">全用 M</text>
+  <circle cx="778.3" cy="156.2" r="6" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="790.3333333333333" y="182.20000000000005" font-size="9.5" fill="#1d4ed8" text-anchor="end" font-weight="700">全用 L</text>
+  <line x1="260.33333333333337" y1="351.6153846153847" x2="269.5833333333333" y2="138.8" stroke="#b45309" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <rect x="150" y="392" width="288" height="36" rx="5" fill="#fffbeb" stroke="#b45309"/>
+  <text x="166" y="415" font-size="9.6" fill="#b45309" text-anchor="start" font-weight="400">同样约 5.2 的成本：0.815 vs 0.974（+15.9pp）</text>
+  <rect x="620" y="70" width="250" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="634" y="90" font-size="9.8" fill="#15803d" text-anchor="start" font-weight="400">实线：级联（7 个阈值点）</text>
+  <text x="634" y="106" font-size="9.8" fill="#be123c" text-anchor="start" font-weight="400">虚线：随机路由（按概率给大模型）</text>
+  <text x="100" y="500" font-size="10.5" fill="#0f172a" text-anchor="start" font-weight="600">读法：不要问「我在曲线哪一点」，先定「能接受的最低准确率」，再找满足它的最低成本点。</text>
+</svg>

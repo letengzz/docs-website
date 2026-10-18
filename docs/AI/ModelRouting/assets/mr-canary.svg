@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-label="灰度五步阶梯：影子、内部、1%、25%、全量，每步带门禁">
+  <title>灰度五步：每一步都有能红的门禁</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="470" fill="#f8fafc"/>
+  <text x="450.0" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">灰度五步：每一步都有能红的门禁</text>
+  <rect x="30" y="90" width="150" height="70" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.5"/>
+  <text x="105" y="116" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="700">影子</text>
+  <text x="105" y="136" font-size="9.8" fill="#475569" text-anchor="middle" font-weight="400">1~10% 采样</text>
+  <text x="105" y="152" font-size="8.8" fill="#475569" text-anchor="middle" font-weight="400">第 1 步</text>
+  <line x1="182" y1="125" x2="200" y2="125" stroke="#475569" stroke-width="1.4" marker-end="url(#a)"/>
+  <polygon points="105,196 125,218 105,240 85,218" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+  <text x="105" y="222" font-size="9" fill="#b45309" text-anchor="middle" font-weight="700">门禁</text>
+  <rect x="32" y="256" width="146" height="58" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="105" y="276" font-size="9.2" fill="#475569" text-anchor="middle" font-weight="400">结构化失败</text>
+  <text x="105" y="292" font-size="9.2" fill="#475569" text-anchor="middle" font-weight="400">&lt; 0.5%</text>
+  <line x1="105" y1="162" x2="105" y2="192" stroke="#475569" stroke-width="1.4" marker-end="url(#a)"/>
+  <line x1="105" y1="242" x2="105" y2="254" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="202" y="90" width="150" height="70" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="277" y="116" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="700">内部</text>
+  <text x="277" y="136" font-size="9.8" fill="#475569" text-anchor="middle" font-weight="400">白名单</text>
+  <text x="277" y="152" font-size="8.8" fill="#1d4ed8" text-anchor="middle" font-weight="400">第 2 步</text>
+  <line x1="354" y1="125" x2="372" y2="125" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#a)"/>
+  <polygon points="277,196 297,218 277,240 257,218" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+  <text x="277" y="222" font-size="9" fill="#b45309" text-anchor="middle" font-weight="700">门禁</text>
+  <rect x="204" y="256" width="146" height="58" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="277" y="276" font-size="9.2" fill="#475569" text-anchor="middle" font-weight="400">无</text>
+  <text x="277" y="292" font-size="9.2" fill="#475569" text-anchor="middle" font-weight="400">P1 + 抽检 50 条</text>
+  <line x1="277" y1="162" x2="277" y2="192" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#a)"/>
+  <line x1="277" y1="242" x2="277" y2="254" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="374" y="90" width="150" height="70" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="449" y="116" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="700">小流量</text>
+  <text x="449" y="136" font-size="9.8" fill="#475569" text-anchor="middle" font-weight="400">1%</text>
+  <text x="449" y="152" font-size="8.8" fill="#0f766e" text-anchor="middle" font-weight="400">第 3 步</text>
+  <line x1="526" y1="125" x2="544" y2="125" stroke="#0f766e" stroke-width="1.4" marker-end="url(#a)"/>
+  <polygon points="449,196 469,218 449,240 429,218" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+  <text x="449" y="222" font-size="9" fill="#b45309" text-anchor="middle" font-weight="700">门禁</text>
+  <rect x="376" y="256" width="146" height="58" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="449" y="276" font-size="9.2" fill="#475569" text-anchor="middle" font-weight="400">错误率</text>
+  <text x="449" y="292" font-size="9.2" fill="#475569" text-anchor="middle" font-weight="400">≤ 1.2× 基线</text>
+  <line x1="449" y1="162" x2="449" y2="192" stroke="#0f766e" stroke-width="1.4" marker-end="url(#a)"/>
+  <line x1="449" y1="242" x2="449" y2="254" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="546" y="90" width="150" height="70" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+  <text x="621" y="116" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="700">扩量</text>
+  <text x="621" y="136" font-size="9.8" fill="#475569" text-anchor="middle" font-weight="400">5% → 25%</text>
+  <text x="621" y="152" font-size="8.8" fill="#b45309" text-anchor="middle" font-weight="400">第 4 步</text>
+  <line x1="698" y1="125" x2="716" y2="125" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <polygon points="621,196 641,218 621,240 601,218" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+  <text x="621" y="222" font-size="9" fill="#b45309" text-anchor="middle" font-weight="700">门禁</text>
+  <rect x="548" y="256" width="146" height="58" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="621" y="276" font-size="9.2" fill="#475569" text-anchor="middle" font-weight="400">成本达标</text>
+  <text x="621" y="292" font-size="9.2" fill="#475569" text-anchor="middle" font-weight="400">+ 降级率 ≤ 5%</text>
+  <line x1="621" y1="162" x2="621" y2="192" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <line x1="621" y1="242" x2="621" y2="254" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="718" y="90" width="150" height="70" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5"/>
+  <text x="793" y="116" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="700">全量</text>
+  <text x="793" y="136" font-size="9.8" fill="#475569" text-anchor="middle" font-weight="400">100%</text>
+  <text x="793" y="152" font-size="8.8" fill="#15803d" text-anchor="middle" font-weight="400">第 5 步</text>
+  <polygon points="793,196 813,218 793,240 773,218" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+  <text x="793" y="222" font-size="9" fill="#b45309" text-anchor="middle" font-weight="700">门禁</text>
+  <rect x="720" y="256" width="146" height="58" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="793" y="276" font-size="9.2" fill="#475569" text-anchor="middle" font-weight="400">保留</text>
+  <text x="793" y="292" font-size="9.2" fill="#475569" text-anchor="middle" font-weight="400">7 天回滚窗口</text>
+  <line x1="793" y1="162" x2="793" y2="192" stroke="#15803d" stroke-width="1.4" marker-end="url(#a)"/>
+  <line x1="793" y1="242" x2="793" y2="254" stroke="#b45309" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="30" y="350" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">门禁三条纪律</text>
+  <text x="30" y="376" font-size="10.4" fill="#475569" text-anchor="start" font-weight="400">① 每一项都要有数字阈值，「看着正常」不算门禁。</text>
+  <text x="30" y="398" font-size="10.4" fill="#475569" text-anchor="start" font-weight="400">② 样本不足时必须拒绝结论（不是「暂时通过」）。</text>
+  <text x="30" y="420" font-size="10.4" fill="#475569" text-anchor="start" font-weight="400">③ 质量抽样必须每日做——三项指标全绿也可能答得更差。</text>
+  <rect x="560" y="336" width="310" height="110" rx="7" fill="#fff1f2" stroke="#be123c"/>
+  <text x="576" y="358" font-size="11.5" fill="#be123c" text-anchor="start" font-weight="700">回滚 ≠ 恢复</text>
+  <text x="576" y="378" font-size="9.4" fill="#475569" text-anchor="start" font-weight="400">在途请求 · 缓存 · 客户端粘性</text>
+  <text x="576" y="396" font-size="9.4" fill="#475569" text-anchor="start" font-weight="400">三样都不会因为切配置而消失。</text>
+  <text x="576" y="414" font-size="9.4" fill="#475569" text-anchor="start" font-weight="400">回滚四步：切配置 → 隔离缓存 →</text>
+  <text x="576" y="430" font-size="9.4" fill="#475569" text-anchor="start" font-weight="400">取消在途 → 观察 10 分钟。</text>
+</svg>
