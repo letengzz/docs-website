@@ -375,3 +375,16 @@ export const useSettingsStore = create<SettingsStore>()(
 )
 ```
 
+## 与「状态管理与数据流」专题的分工
+
+本页解决的是 **RSC 边界**：服务端组件拿不到 Context，所以要用 Zustand / Jotai 或把 Provider 下移。它不讲「同一份数据在客户端有几份副本」，那归 [状态管理与数据流](/docs/Frontend/StateDataFlow/index.md)。
+
+| 现象 | 本页的解释 | 专题的解释 |
+| --- | --- | --- |
+| Provider 在 RSC 里报错 | 边界问题 | —— |
+| 切页面数据不更新 | —— | [本地态与远端态](/docs/Frontend/StateDataFlow/LocalRemote/index.md) |
+| 两个标签页不同步 | —— | [缓存失效](/docs/Frontend/StateDataFlow/CacheInvalidation/index.md) |
+
+::: danger 模块级 `QueryClient` 的两种后果
+本页示例把 `QueryClient` 建在模块顶层，在纯客户端应用里没问题；在 App Router 下它会**跨请求复用**，导致 A 用户看到的缓存被 B 用户读到（数据泄漏，不是性能问题）。服务端要每次请求新建，客户端要用 `useState(() => new QueryClient())` 固定一份。另外 `staleTime: 0` 在「列表 → 详情 → 返回」的移动端式导航里会放大成成倍的请求，参考专题的实测表。
+:::

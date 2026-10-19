@@ -867,3 +867,21 @@ export const FrontMotion = [
         ],
     },
 ];
+
+export const FrontStateDataFlow = [
+    {
+        text: "状态管理与数据流",
+        link: "/docs/Frontend/StateDataFlow/index.md",
+        items: [
+            { text: "总览：四类状态与五个必失点", link: "/docs/Frontend/StateDataFlow/Overview/index.md" },
+            { text: "本地态与远端态", link: "/docs/Frontend/StateDataFlow/LocalRemote/index.md" },
+            { text: "缓存失效", link: "/docs/Frontend/StateDataFlow/CacheInvalidation/index.md" },
+            { text: "乐观更新", link: "/docs/Frontend/StateDataFlow/OptimisticUpdate/index.md" },
+            { text: "派生状态与归一化", link: "/docs/Frontend/StateDataFlow/DerivedState/index.md" },
+            { text: "多端同步与收敛", link: "/docs/Frontend/StateDataFlow/RealtimeSync/index.md" },
+            { text: "状态可观测", link: "/docs/Frontend/StateDataFlow/Observability/index.md" },
+            { text: "实战：一次拖动的状态流", link: "/docs/Frontend/StateDataFlow/Practice/index.md" },
+            { text: "常见问题与分诊", link: "/docs/Frontend/StateDataFlow/FAQ/index.md" },
+        ],
+    },
+];

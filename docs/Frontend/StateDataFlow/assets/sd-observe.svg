@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img" aria-label="状态可观测三件套：变更日志、状态快照、复现上下文，以及各自的体积与消费者">
+  <defs>
+    <marker id="ob" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="380" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">三件套拼出一个可回放的现场</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif">
+    <!-- 日志 -->
+    <rect x="40" y="60" width="270" height="130" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="58" y="86" font-size="13" font-weight="600" fill="#1e3a8a">① 变更日志（log）</text>
+    <text x="58" y="108" font-size="11" fill="#334155">t / src / key / op 四字段</text>
+    <text x="58" y="126" font-size="11" fill="#334155">只记「发生了什么操作」</text>
+    <text x="58" y="144" font-size="11" fill="#334155">不记业务数据（PII 与体积）</text>
+    <text x="58" y="164" font-size="11" fill="#1d4ed8">单条 &lt; 100 B ｜ 能排出因果链</text>
+    <text x="58" y="182" font-size="11" fill="#1d4ed8">关键行：「drop 重复事件」</text>
+
+    <!-- 快照 -->
+    <rect x="345" y="60" width="270" height="130" rx="10" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="363" y="86" font-size="13" font-weight="600" fill="#166534">② 状态快照（snapshot）</text>
+    <text x="363" y="108" font-size="11" fill="#14532d">全量 13,117 B（5 列 × 12 卡）</text>
+    <text x="363" y="126" font-size="11" fill="#14532d">差量 186 B（一次拖动）</text>
+    <text x="363" y="144" font-size="11" fill="#14532d">体积差 70.5 倍</text>
+    <text x="363" y="164" font-size="11" fill="#166534">策略：差量为主 + 关键节点全量</text>
+    <text x="363" y="182" font-size="11" fill="#166534">带 schema 版本与 buildId</text>
+
+    <!-- 上下文 -->
+    <rect x="650" y="60" width="270" height="130" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="668" y="86" font-size="13" font-weight="600" fill="#0f172a">③ 复现上下文</text>
+    <text x="668" y="108" font-size="11" fill="#475569">路由 + 视口 + 设备</text>
+    <text x="668" y="126" font-size="11" fill="#475569">最近 10 次请求（码 + 耗时）</text>
+    <text x="668" y="144" font-size="11" fill="#475569">交互序列（脱敏后）</text>
+    <text x="668" y="164" font-size="11" fill="#64748b">四项缺一，都会「复现不了」</text>
+    <text x="668" y="182" font-size="11" fill="#64748b">409/412 是最有价值的证据</text>
+
+    <!-- 汇合到诊断包 -->
+    <line x1="175" y1="192" x2="380" y2="232" stroke="#2563eb" stroke-width="2" marker-end="url(#ob)"/>
+    <line x1="480" y1="192" x2="480" y2="232" stroke="#2563eb" stroke-width="2" marker-end="url(#ob)"/>
+    <line x1="785" y1="192" x2="580" y2="232" stroke="#2563eb" stroke-width="2" marker-end="url(#ob)"/>
+
+    <rect x="330" y="236" width="300" height="52" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="480" y="258" text-anchor="middle" font-size="12" font-weight="600" fill="#9a3412">诊断包（≤ 2 MB）</text>
+    <text x="480" y="278" text-anchor="middle" font-size="11" fill="#7c2d12">白名单收集 · 采集时脱敏 · 排除令牌</text>
+
+    <!-- 终点 -->
+    <line x1="480" y1="290" x2="480" y2="318" stroke="#2563eb" stroke-width="2" marker-end="url(#ob)"/>
+    <rect x="300" y="322" width="360" height="46" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="480" y="344" text-anchor="middle" font-size="12" font-weight="600" fill="#1e3a8a">一条纯逻辑断言（输入状态 + 事件 → 新状态）</text>
+    <text x="480" y="362" text-anchor="middle" font-size="11" fill="#1d4ed8">比端到端快两个数量级，也比人工回归可靠</text>
+  </g>
+</svg>

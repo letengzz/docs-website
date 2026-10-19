@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img" aria-label="状态一致性联调的四个执行位、十二条用例与三类归因">
+  <defs>
+    <marker id="sc" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">四个执行位同时存在，才叫「一致性联调」</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif">
+    <!-- 服务端 -->
+    <rect x="380" y="56" width="200" height="56" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="480" y="80" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">服务端（唯一真相）</text>
+    <text x="480" y="99" text-anchor="middle" font-size="11" fill="#64748b">seq / version / outbox</text>
+
+    <!-- 两个窗口 -->
+    <line x1="420" y1="114" x2="230" y2="152" stroke="#2563eb" stroke-width="2" marker-end="url(#sc)"/>
+    <line x1="540" y1="114" x2="730" y2="152" stroke="#2563eb" stroke-width="2" marker-end="url(#sc)"/>
+
+    <rect x="70" y="156" width="230" height="92" rx="8" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="88" y="180" font-size="12" font-weight="600" fill="#1e3a8a">W1：窗口 A</text>
+    <text x="88" y="200" font-size="11" fill="#334155">操作发起点</text>
+    <text x="88" y="218" font-size="11" fill="#334155">乐观生效 · 失败回滚 · 离线入队</text>
+    <text x="88" y="236" font-size="11" fill="#1d4ed8">判据：SC-B / SC-E</text>
+
+    <rect x="660" y="156" width="230" height="92" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="678" y="180" font-size="12" font-weight="600" fill="#166534">W2：窗口 B（另一 profile）</text>
+    <text x="678" y="200" font-size="11" fill="#14532d">广播落地：同步 · 不闪 · 不重复</text>
+    <text x="678" y="218" font-size="11" fill="#14532d">跨标签页：BroadcastChannel 失效</text>
+    <text x="678" y="236" font-size="11" fill="#166534">判据：SC-C / SC-D</text>
+
+    <!-- 两个条件 -->
+    <rect x="70" y="266" width="230" height="80" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="88" y="290" font-size="12" font-weight="600" fill="#9a3412">OFF：断网 30 s</text>
+    <text x="88" y="310" font-size="11" fill="#7c2d12">回滚边界 ≤ 2 s</text>
+    <text x="88" y="328" font-size="11" fill="#7c2d12">恢复后补齐、无重复</text>
+
+    <rect x="660" y="266" width="230" height="80" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="678" y="290" font-size="12" font-weight="600" fill="#9a3412">THR：Fast 3G + 300 ms</text>
+    <text x="678" y="310" font-size="11" fill="#7c2d12">在途重取 vs 乐观补丁</text>
+    <text x="678" y="328" font-size="11" fill="#7c2d12">位置必须单调，无回跳</text>
+
+    <!-- 中间：十二条用例 -->
+    <rect x="330" y="168" width="300" height="180" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="350" y="192" font-size="12" font-weight="600" fill="#0f172a">十二条用例（C1~C12）</text>
+    <text x="350" y="214" font-size="11" fill="#475569">C1 同步 · C2 连拖 · C3 回滚 · C4 幂等</text>
+    <text x="350" y="234" font-size="11" fill="#475569">C5 冲突 · C6 刷新 · C7 断线 · C8 限速</text>
+    <text x="350" y="254" font-size="11" fill="#475569">C9 详情一致 · C10 不串看板</text>
+    <text x="350" y="274" font-size="11" fill="#475569">C11 重放 · C12 诊断包</text>
+    <text x="350" y="302" font-size="11" fill="#1d4ed8">每条都写「红了说明什么」——</text>
+    <text x="350" y="322" font-size="11" fill="#1d4ed8">联调报告的价值在归因，不在通过</text>
+
+    <!-- 底部：五类证据 -->
+    <rect x="40" y="366" width="880" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="60" y="384" font-size="11" font-weight="600" fill="#1e3a8a">第 3 周证据五类：</text>
+    <text x="60" y="400" font-size="11" fill="#1d4ed8">数据一致（PLP/CR） · 指标口径（LPG） · 容量（CAP） · 检索（BSR） · <tspan font-weight="600">状态一致（SC，本次新增，带「最近一次通过时间」）</tspan></text>
+  </g>
+</svg>

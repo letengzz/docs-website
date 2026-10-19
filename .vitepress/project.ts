@@ -357,6 +357,7 @@ export const CompleteProject = [
           { text: "第 3 周第 4 步 · 降级演练进 CI（DGD-A~DGD-H）", link: "/project/Complete/TeamBoard/DegradeDrill/index.md" },
           { text: "第 3 周第 5 步 · 检索相关性联调（BSR-A~BSR-H）", link: "/project/Complete/TeamBoard/BoardSearch/index.md" },
           { text: "第 3 周第 6 步 · 质量闸门接线与变异测试（QG-A~QG-H）", link: "/project/Complete/TeamBoard/CiQualityGate/index.md" },
+          { text: "第 3 周第 7 步 · 状态一致性联调（SC-A~SC-H）", link: "/project/Complete/TeamBoard/Week3StateConsistency/index.md" },
         ],
       },
       {

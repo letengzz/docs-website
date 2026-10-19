@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-label="乐观更新三阶段：应用补丁、等待结果、回滚或确认，并标出两个失败分支的时长">
+  <defs>
+    <marker id="op" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">乐观更新：先相信（apply）→ 对账（settle）→ 认错（rollback）</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif">
+    <!-- 阶段 1 -->
+    <rect x="50" y="100" width="220" height="120" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="70" y="126" font-size="13" font-weight="600" fill="#1e3a8a">① apply（同步）</text>
+    <text x="70" y="150" font-size="11" fill="#334155">读快照（改之前）</text>
+    <text x="70" y="170" font-size="11" fill="#334155">写补丁（改之后）</text>
+    <text x="70" y="190" font-size="11" fill="#334155">cancelQueries 防覆盖</text>
+    <text x="70" y="210" font-size="11" fill="#1d4ed8">耗时：约 0 ms</text>
+
+    <!-- 阶段 2 -->
+    <rect x="330" y="100" width="240" height="120" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="350" y="126" font-size="13" font-weight="600" fill="#0f172a">② settle（异步）</text>
+    <text x="350" y="150" font-size="11" fill="#334155">PATCH + 幂等键</text>
+    <text x="350" y="170" font-size="11" fill="#334155">If-Match 版本条件</text>
+    <text x="350" y="190" font-size="11" fill="#334155">超时 / 重试 / 取消</text>
+    <text x="350" y="210" font-size="11" fill="#64748b">耗时：80 ms ~ 8.2 s</text>
+
+    <!-- 分支 -->
+    <rect x="640" y="70" width="270" height="76" rx="10" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="660" y="94" font-size="13" font-weight="600" fill="#166534">③a confirm：以响应为准</text>
+    <text x="660" y="114" font-size="11" fill="#14532d">覆盖本地 position_key / version</text>
+    <text x="660" y="132" font-size="11" fill="#14532d">再失效聚合（计数、排序）</text>
+
+    <rect x="640" y="176" width="270" height="76" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="660" y="200" font-size="13" font-weight="600" fill="#991b1b">③b rollback：写回快照</text>
+    <text x="660" y="220" font-size="11" fill="#7f1d1d">≤ 2 s 内必须可见</text>
+    <text x="660" y="238" font-size="11" fill="#7f1d1d">409/412 不回滚，走冲突提示</text>
+
+    <!-- 箭头 -->
+    <line x1="272" y1="160" x2="326" y2="160" stroke="#2563eb" stroke-width="2" marker-end="url(#op)"/>
+    <line x1="572" y1="140" x2="636" y2="112" stroke="#16a34a" stroke-width="2" marker-end="url(#op)"/>
+    <line x1="572" y1="186" x2="636" y2="212" stroke="#dc2626" stroke-width="2" marker-end="url(#op)"/>
+
+    <!-- 错误窗口 -->
+    <rect x="50" y="252" width="860" height="52" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="70" y="274" font-size="12" font-weight="600" fill="#9a3412">错误窗口 = 单请求超时 + 重试退避（多个「假成功」的时长）</text>
+    <text x="70" y="294" font-size="11" fill="#7c2d12">不重试 0.30 s ｜ 默认重试 3 次 8.20 s ｜ 重试 + 5 s 超时 27.00 s —— 后两者已超过用户的下一步操作间隔</text>
+
+    <!-- 底部 -->
+    <rect x="50" y="318" width="860" height="52" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="70" y="340" font-size="12" font-weight="600" fill="#0f172a">三条纪律</text>
+    <text x="70" y="360" font-size="11" fill="#475569">① 快照必须在应用之前取 ② onSettled 必须失效（版本会变） ③ onError 回滚改缓存，不依赖组件是否还活着</text>
+  </g>
+</svg>

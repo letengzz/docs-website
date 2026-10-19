@@ -261,6 +261,18 @@ Pinia 只是「状态管理」这件事在 Vue 生态里的一种解。**不同�
 3. 刷新页面后，持久化的购物车数据还在。
 4. 未登录调用 `checkout()`，控制台抛出「请先登录」。
 
+
+## 与「状态管理与数据流」专题的分工
+
+本页讲 **Pinia 的进阶写法**：Setup Store、类型推导、插件、持久化。它默认了「这些数据本来就该进 store」，而「该不该进」这件事归 [状态管理与数据流](/docs/Frontend/StateDataFlow/index.md)。
+
+- 哪些值不该进 store（`fullName`、`visibleCards`）→ [派生状态与归一化](/docs/Frontend/StateDataFlow/DerivedState/index.md)
+- 远端数据要不要同步进 store → [本地态与远端态](/docs/Frontend/StateDataFlow/LocalRemote/index.md)
+- 持久化与「跨标签页不一致」的关系 → [缓存失效](/docs/Frontend/StateDataFlow/CacheInvalidation/index.md)
+
+::: danger 本页「持久化」一节最容易引出的坑
+`persist` 插件把 store 写进 `localStorage`，于是**两个标签页各有一份从 localStorage 读出来的旧值**，而 `storage` 事件**只在其他标签页触发、当前页不触发**。表现是「A 标签页改了设置，B 标签页还是旧的」。修法不是加轮询，而是订阅 `storage` 事件后重新 `$patch`，或者干脆把这类状态改成 URL 态。另：Pinia 4 起**仅 ESM**，且 `@vue/devtools-api` 成为必装 peer，从 3.x 升级时先看这一条。
+:::
 ## 参考资料
 
 - Pinia 官方文档：https://pinia.vuejs.org/zh/

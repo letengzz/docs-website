@@ -2,7 +2,7 @@
 import { Auth, ContractEvolution, DDD, DesignPatterns, DistributedCache, DistributedLock, DotNet, Ecommerce, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, NetworkProgramming, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, SpringCloud, WorkflowEngine } from "./backend";
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
-import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
+import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, CapacityCost, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
 import { BigData, CDC, ClickHouse, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation } from "./tools";
@@ -85,7 +85,7 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontLowCode, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontSSR, ...FrontDesktopApp, ...FrontIntlA11y, ...FrontMobileH5, ...FrontMotion, ...FrontTesting, ...FrontRichTextEditor, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontLowCode, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontSSR, ...FrontDesktopApp, ...FrontIntlA11y, ...FrontMobileH5, ...FrontMotion, ...FrontStateDataFlow, ...FrontTesting, ...FrontRichTextEditor, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
@@ -164,6 +164,7 @@ export const sidebar = {
   "/docs/Frontend/IntlA11y": FrontIntlA11y,
   "/docs/Frontend/MobileH5": FrontMobileH5,
   "/docs/Frontend/Motion": FrontMotion,
+  "/docs/Frontend/StateDataFlow": FrontStateDataFlow,
   "/docs/Frontend/Others": FrontOthers,
   "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,
   "/docs/Frontend/Testing": FrontTesting,

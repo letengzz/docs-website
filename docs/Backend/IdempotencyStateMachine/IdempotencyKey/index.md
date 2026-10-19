@@ -262,6 +262,14 @@ CREATE TABLE idem_record (
 **如果你的幂等键是自增 ID，它在多活里一定失效。** 换成「客户端生成的 UUID + 来源单元」几乎零成本，而它能挡住「同一笔操作在两个单元各执行一次」这类最贵的重复。
 :::
 
+
+## 与「状态管理与数据流」专题的分工
+
+本页是**幂等键的服务端语义**：键的作用域、存储、去重窗口、与状态机的关系。前端为什么要带、在什么粒度生成、重试时怎么复用，归 [状态管理与数据流](/docs/Frontend/StateDataFlow/index.md) 的 [乐观更新](/docs/Frontend/StateDataFlow/OptimisticUpdate/index.md)。
+
+::: danger 键在哪里生成，决定了它有没有用
+若幂等键在**请求封装内部**生成（每次 `fetch` 一个 `randomUUID()`），那么「超时重试」会拿到一个新键，服务端认为是两次不同的操作——重复创建照样发生。键必须在**用户操作**这一层生成（一次拖动 / 一次提交一个），并随重试一起传下去。判断方法很简单：把超时调到 1 秒、服务延迟调到 3 秒，制造一次「客户端以为失败、服务端其实成功」，看列表里是一条还是两条。
+:::
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

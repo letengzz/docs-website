@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-label="派生状态、归一化与状态机三层：分别解决重复计算、嵌套更新、非法组合">
+  <defs>
+    <marker id="dv" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">三层各管一件事：算得对、改得动、状态合法</text>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif">
+    <!-- 源数据 -->
+    <rect x="40" y="120" width="150" height="120" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="115" y="150" text-anchor="middle" font-size="13" font-weight="600" fill="#1e3a8a">源数据</text>
+    <text x="115" y="174" text-anchor="middle" font-size="11" fill="#334155">cards / columns</text>
+    <text x="115" y="194" text-anchor="middle" font-size="11" fill="#334155">筛选项 / 排序</text>
+    <text x="115" y="214" text-anchor="middle" font-size="11" fill="#64748b">唯一真相</text>
+
+    <line x1="192" y1="180" x2="236" y2="180" stroke="#2563eb" stroke-width="2" marker-end="url(#dv)"/>
+
+    <!-- 第一层 派生 -->
+    <rect x="240" y="80" width="200" height="90" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="258" y="106" font-size="13" font-weight="600" fill="#0f172a">① 派生（compute）</text>
+    <text x="258" y="128" font-size="11" fill="#475569">visibleCards / total</text>
+    <text x="258" y="146" font-size="11" fill="#475569">不存，按需算</text>
+    <text x="258" y="162" font-size="11" fill="#64748b">成本靠数据量与记忆化控制</text>
+
+    <!-- 第二层 归一化 -->
+    <rect x="240" y="190" width="200" height="90" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="258" y="216" font-size="13" font-weight="600" fill="#0f172a">② 归一化（normalize）</text>
+    <text x="258" y="238" font-size="11" fill="#475569">byId 实体表 + id 顺序</text>
+    <text x="258" y="256" font-size="11" fill="#475569">三处同改：列 id / 实体列 / 顺序</text>
+    <text x="258" y="272" font-size="11" fill="#64748b">超过两层嵌套才值得</text>
+
+    <!-- 第三层 状态机 -->
+    <rect x="240" y="300" width="200" height="80" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="258" y="326" font-size="13" font-weight="600" fill="#0f172a">③ 状态机（enum）</text>
+    <text x="258" y="348" font-size="11" fill="#475569">loading / empty / error / ready</text>
+    <text x="258" y="366" font-size="11" fill="#64748b">非法组合无法表示</text>
+
+    <!-- 结果 -->
+    <line x1="442" y1="125" x2="596" y2="150" stroke="#2563eb" stroke-width="2" marker-end="url(#dv)"/>
+    <line x1="442" y1="235" x2="596" y2="205" stroke="#2563eb" stroke-width="2" marker-end="url(#dv)"/>
+    <line x1="442" y1="340" x2="596" y2="262" stroke="#2563eb" stroke-width="2" marker-end="url(#dv)"/>
+
+    <rect x="600" y="120" width="320" height="180" rx="10" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="620" y="146" font-size="13" font-weight="600" fill="#166534">视图只看三样东西</text>
+    <text x="620" y="172" font-size="11" fill="#14532d">· 一个合法状态（kind + 数据）</text>
+    <text x="620" y="194" font-size="11" fill="#14532d">· 一份稳定引用的列表</text>
+    <text x="620" y="216" font-size="11" fill="#14532d">· 一个能回答「为什么这么显示」的选择器</text>
+    <text x="620" y="246" font-size="11" fill="#166534">代价：深比较两万条 ≈ 11.78 ms（本机实测）</text>
+    <text x="620" y="266" font-size="11" fill="#166534">一帧只有 16.7 ms，所以数据量要前置收敛</text>
+    <text x="620" y="288" font-size="11" fill="#166534">先分页 / 建索引，最后才考虑记忆化</text>
+  </g>
+</svg>

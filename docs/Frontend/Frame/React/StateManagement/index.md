@@ -491,3 +491,18 @@ graph TD
 - [路由管理](../Routing/index.md) - React Router 使用
 - [生态系统](../Ecosystem/index.md) - 常用工具和库
 - [最佳实践](../BestPractices/index.md) - 开发中的常见模式和优化技巧
+
+## 与「状态管理与数据流」专题的分工
+
+本页是**选型与用法**：Context、Zustand、Redux Toolkit、TanStack Query 各自怎么写。它不回答「这份数据该不该进 store」「保存之后谁该失效」，那两问归 [状态管理与数据流](/docs/Frontend/StateDataFlow/index.md)。
+
+| 问题 | 本页 | 专题 |
+| --- | --- | --- |
+| 用哪个库、怎么写 | ✅ | —— |
+| 数据该放哪一层 | —— | [总览](/docs/Frontend/StateDataFlow/Overview/index.md) |
+| `staleTime` 怎么定 | 只提及参数存在 | [本地态与远端态](/docs/Frontend/StateDataFlow/LocalRemote/index.md) |
+| 失败后怎么回滚 | 只给 `onError` 骨架 | [乐观更新](/docs/Frontend/StateDataFlow/OptimisticUpdate/index.md) |
+
+::: warning 本页示例的一个前提
+本页 TanStack Query 的示例沿用了默认 `staleTime: 0`（v5 默认值）。**照抄到列表页会每挂载一次打一次请求**——专题里那组「200 次挂载 → 200 / 32 / 1 次请求」的模拟，就是把这个默认值换成 30 秒之后的结果。示例是讲 API 用的，上线前必须补 `staleTime`。
+:::
