@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .box { fill: #ffffff; stroke: #6b7a90; stroke-width: 1.2; }
+    .n { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .e { fill: #fdeeee; stroke: #c95555; stroke-width: 1.4; }
+    .g { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    text { fill: #222; font-size: 11px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 12px; font-weight: bold; }
+    .s { font-size: 10px; fill: #555; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.4; fill: none; marker-end: url(#ar); }
+    .back { stroke: #c95555; stroke-width: 1.4; fill: none; marker-end: url(#ar2); stroke-dasharray: 5 4; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+    <marker id="ar2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#c95555"/>
+    </marker>
+  </defs>
+  <text class="t" x="440" y="24">紧急通道不是「跳过流程」，而是「先做事、后补证据」</text>
+
+  <text class="h" x="20" y="58">正常通道</text>
+  <rect class="n" x="20" y="70" width="150" height="44" rx="6"/>
+  <text class="s" x="95" y="90">提出变更单</text>
+  <text class="s" x="95" y="106">填影响面与回滚</text>
+
+  <rect class="n" x="190" y="70" width="150" height="44" rx="6"/>
+  <text class="s" x="265" y="90">分级 + 排窗口</text>
+  <text class="s" x="265" y="106">进日历，避冲突</text>
+
+  <rect class="n" x="360" y="70" width="150" height="44" rx="6"/>
+  <text class="s" x="435" y="90">审批（按分级）</text>
+  <text class="s" x="435" y="106">绑定产物摘要</text>
+
+  <rect class="n" x="530" y="70" width="150" height="44" rx="6"/>
+  <text class="s" x="605" y="90">窗口内执行</text>
+  <text class="s" x="605" y="106">观测 + 判定</text>
+
+  <rect class="g" x="700" y="70" width="160" height="44" rx="6"/>
+  <text class="s" x="780" y="90">关闭并留痕</text>
+  <text class="s" x="780" y="106">结果回写变更单</text>
+
+  <path class="arrow" d="M170 92 L186 92"/>
+  <path class="arrow" d="M340 92 L356 92"/>
+  <path class="arrow" d="M510 92 L526 92"/>
+  <path class="arrow" d="M680 92 L696 92"/>
+
+  <text class="h" x="20" y="168">紧急通道（破窗）</text>
+  <rect class="e" x="20" y="180" width="190" height="54" rx="6"/>
+  <text class="s" x="115" y="200">① 已在事故中</text>
+  <text class="s" x="115" y="216">S1/S2，或安全漏洞在被打</text>
+  <text class="s" x="115" y="230">（不是「快来不及了」）</text>
+
+  <rect class="e" x="235" y="180" width="190" height="54" rx="6"/>
+  <text class="s" x="330" y="200">② 一人授权 + 一人见证</text>
+  <text class="s" x="330" y="216">值班主管 + 事故指挥</text>
+  <text class="s" x="330" y="230">口头批准要立刻写进单里</text>
+
+  <rect class="e" x="450" y="180" width="190" height="54" rx="6"/>
+  <text class="s" x="545" y="200">③ 执行并记录时间线</text>
+  <text class="s" x="545" y="216">每条命令带时间戳</text>
+  <text class="s" x="545" y="230">产物摘要照旧要记</text>
+
+  <rect class="g" x="665" y="180" width="195" height="54" rx="6"/>
+  <text class="s" x="762" y="200">④ 24h 内补单</text>
+  <text class="s" x="762" y="216">补齐影响面、回滚、证据</text>
+  <text class="s" x="762" y="230">不补 → 自动进异常清单</text>
+
+  <path class="arrow" d="M210 207 L231 207"/>
+  <path class="arrow" d="M425 207 L446 207"/>
+  <path class="arrow" d="M640 207 L661 207"/>
+  <path class="back" d="M762 240 L762 262"/>
+
+  <rect class="box" x="20" y="266" width="840" height="46" rx="6"/>
+  <text class="s" x="440" y="286">补单不是「补一张表」，而是补三样：为什么不能等（证据）、当时改了什么（产物）、如果更坏怎么办（回滚）；缺任何一样，这次破窗就是无授权的变更。</text>
+  <text class="s" x="440" y="304">额度：每月破窗次数与占比上报；连续两个月超阈值 → 说明该修的是流程，不是催人补单。</text>
+
+  <rect class="box" x="20" y="324" width="840" height="44" rx="6"/>
+  <text class="s" x="440" y="344">三种滥用：把「计划内的连夜赶工」说成紧急、把「没想清楚」说成紧急、把「怕审批不通过」说成紧急。三者的共同点是——</text>
+  <text class="s" x="440" y="360">它们都能等，只是不想等。判定方法：问一句「如果明天早上八点做，会多损失什么」，答不出具体数字就不是紧急。</text>
+</svg>

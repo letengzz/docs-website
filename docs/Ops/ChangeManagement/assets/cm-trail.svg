@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .box { fill: #ffffff; stroke: #6b7a90; stroke-width: 1.2; }
+    .hl { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    .bad { fill: #fdeeee; stroke: #c95555; stroke-width: 1.4; }
+    text { fill: #222; font-size: 11px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 12px; font-weight: bold; }
+    .s { font-size: 10px; fill: #555; }
+    .m { font-size: 10px; fill: #2b4c8c; font-family: Menlo, monospace; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.4; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+  <text class="t" x="440" y="24">留痕要回答的不是「批过没有」，而是「批的是不是现在要上的这个」</text>
+
+  <rect class="hl" x="20" y="46" width="150" height="70" rx="6"/>
+  <text class="h" x="95" y="68">commit</text>
+  <text class="m" x="95" y="86">9f2c1ab</text>
+  <text class="s" x="95" y="104">代码态</text>
+
+  <rect class="hl" x="190" y="46" width="150" height="70" rx="6"/>
+  <text class="h" x="265" y="68">image digest</text>
+  <text class="m" x="265" y="86">sha256:379f…</text>
+  <text class="s" x="265" y="104">产物态</text>
+
+  <rect class="hl" x="360" y="46" width="160" height="70" rx="6"/>
+  <text class="h" x="440" y="68">迁移指纹</text>
+  <text class="m" x="440" y="86">V23+sha256</text>
+  <text class="s" x="440" y="104">数据态</text>
+
+  <rect class="hl" x="540" y="46" width="150" height="70" rx="6"/>
+  <text class="h" x="615" y="68">变更单</text>
+  <text class="m" x="615" y="86">CHG-2041</text>
+  <text class="s" x="615" y="104">意图态</text>
+
+  <rect class="ok" x="710" y="46" width="150" height="70" rx="6"/>
+  <text class="h" x="785" y="68">artifact_hash</text>
+  <text class="m" x="785" y="86">sha256:5b1e…</text>
+  <text class="s" x="785" y="104">四者绑定</text>
+
+  <path class="arrow" d="M170 81 L186 81"/>
+  <path class="arrow" d="M340 81 L356 81"/>
+  <path class="arrow" d="M520 81 L536 81"/>
+  <path class="arrow" d="M690 81 L706 81"/>
+
+  <text class="h" x="440" y="152">审批链：每一条都带前一条的哈希</text>
+
+  <rect class="box" x="60" y="166" width="180" height="78" rx="6"/>
+  <text class="s" x="150" y="186">#1 技术复核 · li</text>
+  <text class="m" x="150" y="206">prev=GENESIS</text>
+  <text class="m" x="150" y="224">this=68fa7949…</text>
+
+  <rect class="box" x="270" y="166" width="180" height="78" rx="6"/>
+  <text class="s" x="360" y="186">#2 业务确认 · wang</text>
+  <text class="m" x="360" y="206">prev=68fa7949…</text>
+  <text class="m" x="360" y="224">this=dd8182b4…</text>
+
+  <rect class="box" x="480" y="166" width="180" height="78" rx="6"/>
+  <text class="s" x="570" y="186">#3 发布批准 · zhao</text>
+  <text class="m" x="570" y="206">prev=dd8182b4…</text>
+  <text class="m" x="570" y="224">this=7c31e0aa…</text>
+
+  <path class="arrow" d="M240 205 L266 205"/>
+  <path class="arrow" d="M450 205 L476 205"/>
+
+  <rect class="bad" x="680" y="166" width="180" height="78" rx="6"/>
+  <text class="s" x="770" y="186">改一个字段 / 删一条</text>
+  <text class="s" x="770" y="206">→ 校验立刻指出位置</text>
+  <text class="m" x="770" y="226">TAMPERED / BROKEN</text>
+
+  <path class="arrow" d="M660 205 L676 205"/>
+
+  <rect class="box" x="60" y="274" width="800" height="76" rx="8"/>
+  <text class="s" x="460" y="296">为什么不是「审批表 + 时间戳」就够了：时间戳证明「有人点过按钮」，哈希链证明「点按钮时看到的内容与上线的产物是同一份」。</text>
+  <text class="s" x="460" y="316">前者防的是「没人批」，后者防的是「批了 A、上了 B」——后者才是线上事故最常见的形态。</text>
+  <text class="s" x="460" y="336">本页的实测：3 条审批链路校验全 OK；改 `decision` → 第 2 条 TAMPERED_FIELDS；删第 2 条 → 第 3 条 BROKEN_LINK。</text>
+</svg>

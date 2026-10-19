@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .grid { fill: #ffffff; stroke: #d5dde8; stroke-width: 1; }
+    .hdr { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.2; }
+    .ok { fill: #dff3e6; stroke: #3aa76d; stroke-width: 1.2; }
+    .warn { fill: #ffeccc; stroke: #d99a3a; stroke-width: 1.2; }
+    .bad { fill: #f9d9d9; stroke: #c95555; stroke-width: 1.2; }
+    text { fill: #222; font-size: 10px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 11px; font-weight: bold; }
+    .s { font-size: 10px; fill: #555; }
+    .ax { font-size: 10px; fill: #333; }
+  </style>
+  <text class="t" x="440" y="24">同一个服务、同一个依赖、同一个窗口——三种冲突要在入库时就被挡住</text>
+
+  <rect class="hdr" x="20" y="44" width="140" height="30" rx="4"/>
+  <text class="h" x="90" y="64">服务 / 时段</text>
+  <rect class="hdr" x="160" y="44" width="220" height="30" rx="4"/>
+  <text class="h" x="270" y="64">18:00 - 20:00</text>
+  <rect class="hdr" x="380" y="44" width="220" height="30" rx="4"/>
+  <text class="h" x="490" y="64">20:00 - 22:00</text>
+  <rect class="hdr" x="600" y="44" width="260" height="30" rx="4"/>
+  <text class="h" x="730" y="64">22:00 - 24:00</text>
+
+  <rect class="grid" x="20" y="74" width="140" height="44"/>
+  <text class="h" x="90" y="100">board-api</text>
+
+  <rect class="bad" x="160" y="74" width="180" height="44" rx="4"/>
+  <text class="s" x="250" y="92">CHG-101 加索引</text>
+  <text class="s" x="250" y="108">与 CHG-102 重叠</text>
+
+  <rect class="bad" x="330" y="74" width="180" height="44" rx="4"/>
+  <text class="s" x="420" y="92">CHG-102 改配置</text>
+  <text class="s" x="420" y="108">同一服务同一窗口</text>
+
+  <rect class="ok" x="510" y="74" width="350" height="44" rx="4"/>
+  <text class="s" x="685" y="92">空</text>
+  <text class="s" x="685" y="108">可以排，但要看依赖</text>
+
+  <rect class="grid" x="20" y="118" width="140" height="44"/>
+  <text class="h" x="90" y="144">search-api</text>
+
+  <rect class="ok" x="160" y="118" width="180" height="44" rx="4"/>
+  <text class="s" x="250" y="136">CHG-104 建索引</text>
+  <text class="s" x="250" y="152">不同服务，允许</text>
+
+  <rect class="ok" x="360" y="118" width="150" height="44" rx="4"/>
+  <text class="s" x="435" y="144">空</text>
+
+  <rect class="ok" x="520" y="118" width="340" height="44" rx="4"/>
+  <text class="s" x="690" y="144">空</text>
+
+  <rect class="grid" x="20" y="162" width="140" height="44"/>
+  <text class="h" x="90" y="188">shared-db</text>
+
+  <rect class="warn" x="160" y="162" width="180" height="44" rx="4"/>
+  <text class="s" x="250" y="180">CHG-101 的依赖</text>
+  <text class="s" x="250" y="196">主体是它，不是 board</text>
+
+  <rect class="warn" x="360" y="162" width="150" height="44" rx="4"/>
+  <text class="s" x="435" y="180">CHG-102 的依赖</text>
+  <text class="s" x="435" y="196">同一张表</text>
+
+  <rect class="ok" x="520" y="162" width="340" height="44" rx="4"/>
+  <text class="s" x="690" y="188">空</text>
+
+  <rect class="grid" x="20" y="206" width="840" height="70" rx="6"/>
+  <text class="h" x="440" y="228">应用层「先查后插」挡不住并发</text>
+  <text class="s" x="440" y="248">实测：两个会话同时查「有没有重叠」都返回 0，然后都插入成功 → 两条重叠变更同时处于已批准</text>
+  <text class="s" x="440" y="266">数据库级排他约束：同样两个会话，第二个拿到 23P01，只入库一条</text>
+
+  <rect class="grid" x="20" y="288" width="840" height="96" rx="6"/>
+  <text class="h" x="440" y="310">四类冲突，只有第一类能被一条约束挡住</text>
+  <text class="s" x="440" y="330">① 同服务窗口重叠 → EXCLUDE (service, window) 直接挡 ② 同依赖重叠（两张变更动同一张表）→ 需要依赖表参与</text>
+  <text class="s" x="440" y="350">③ 同一窗口内变更太多（人不够）→ 配额，不是互斥 ④ 上游变更未完成（A 要先于 B）→ 依赖边 + 拓扑序检查</text>
+  <text class="s" x="440" y="370">把四类混成一条约束，结局是约束太松（漏）或太紧（排不进去），所以日历要分开建模。</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .box { fill: #ffffff; stroke: #6b7a90; stroke-width: 1.2; }
+    .g { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    .y { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; }
+    .r { fill: #fdeeee; stroke: #c95555; stroke-width: 1.4; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .n { font-size: 12px; fill: #2b4c8c; font-weight: bold; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.5; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+  <text class="t" x="430" y="26">三维打分：分数只决定「审查强度」，不决定「能不能做」</text>
+
+  <rect class="box" x="30" y="52" width="200" height="86" rx="8"/>
+  <text class="h" x="130" y="76">影响面 I（0~40）</text>
+  <text class="s" x="130" y="98">受影响租户 / 请求占比</text>
+  <text class="s" x="130" y="116">全站 40 · 单租户 16 · 内部 6</text>
+
+  <rect class="box" x="250" y="52" width="200" height="86" rx="8"/>
+  <text class="h" x="350" y="76">可逆性 R（0~35）</text>
+  <text class="s" x="350" y="98">能不能在窗口内退回</text>
+  <text class="s" x="350" y="116">不可逆 35 · 需手工 20 · 一键 5</text>
+
+  <rect class="box" x="470" y="52" width="200" height="86" rx="8"/>
+  <text class="h" x="570" y="76">可观测性 O（0~25）</text>
+  <text class="s" x="570" y="98">多久能知道它坏了</text>
+  <text class="s" x="570" y="116">无指标 25 · 有告警 10 · 冒烟 5</text>
+
+  <path class="arrow" d="M680 95 L720 95"/>
+  <rect class="box" x="726" y="66" width="110" height="58" rx="8"/>
+  <text class="n" x="781" y="90">score = I+R+O</text>
+  <text class="s" x="781" y="110">0 ~ 100</text>
+
+  <path class="arrow" d="M430 140 L430 172"/>
+
+  <rect class="g" x="30" y="180" width="250" height="112" rx="8"/>
+  <text class="h" x="155" y="204">0 ~ 30 · 标准变更</text>
+  <text class="s" x="155" y="226">预授权，按 runbook 执行</text>
+  <text class="s" x="155" y="244">不逐次审批，只登记</text>
+  <text class="s" x="155" y="266">判据：清单外的一律不算</text>
+
+  <rect class="y" x="300" y="180" width="250" height="112" rx="8"/>
+  <text class="h" x="425" y="204">31 ~ 69 · 常规变更</text>
+  <text class="s" x="425" y="226">一名授权人 + 一名复核</text>
+  <text class="s" x="425" y="244">必须进窗口，必须有回滚</text>
+  <text class="s" x="425" y="266">判据：批准绑到产物摘要</text>
+
+  <rect class="r" x="570" y="180" width="260" height="112" rx="8"/>
+  <text class="h" x="700" y="204">70 ~ 100 · 高危变更</text>
+  <text class="s" x="700" y="226">双人复核 + 指定窗口 + 演练</text>
+  <text class="s" x="700" y="244">负责人到场，Go/No-Go</text>
+  <text class="s" x="700" y="266">判据：演练记录在 30 天内</text>
+
+  <rect class="box" x="30" y="318" width="800" height="62" rx="8"/>
+  <text class="s" x="430" y="340">注意：分数是「审查强度」的输入，不是「风险高低」的判决。同一分数在不同业务下可以是两种处理——</text>
+  <text class="s" x="430" y="362">分数只保证两件事：同类变更走同一条路（可预期）、高危变更不会因为「着急」而被降级（不可绕过）。</text>
+</svg>

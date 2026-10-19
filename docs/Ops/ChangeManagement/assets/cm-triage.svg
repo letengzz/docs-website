@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .q { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .a { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.3; }
+    .r { fill: #fdeeee; stroke: #c95555; stroke-width: 1.3; }
+    .g { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.3; }
+    text { fill: #222; font-size: 11px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 12px; font-weight: bold; }
+    .s { font-size: 10px; fill: #555; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.3; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+  <text class="t" x="430" y="24">变更出问题时，先分清是「流程没拦住」还是「流程本身错了」</text>
+
+  <rect class="q" x="300" y="42" width="260" height="46" rx="8"/>
+  <text class="h" x="430" y="62">现象：这次发布出了问题</text>
+  <text class="s" x="430" y="80">先看时间线，不要先看人</text>
+
+  <path class="arrow" d="M430 88 L430 108"/>
+
+  <rect class="a" x="60" y="112" width="220" height="66" rx="8"/>
+  <text class="h" x="170" y="132">发布前有没有变更单？</text>
+  <text class="s" x="170" y="152">没有 → 不是流程失效，</text>
+  <text class="s" x="170" y="168">是「授权缺失」，归 EMG</text>
+
+  <rect class="a" x="320" y="112" width="220" height="66" rx="8"/>
+  <text class="h" x="430" y="132">分级对不对？</text>
+  <text class="s" x="430" y="152">高危被评成常规 → 归 CLS</text>
+  <text class="s" x="430" y="168">补规则，不是补人</text>
+
+  <rect class="a" x="580" y="112" width="220" height="66" rx="8"/>
+  <text class="h" x="690" y="132">窗口对不对？</text>
+  <text class="s" x="690" y="152">落在高峰/冻结期 → 归 CWN</text>
+  <text class="s" x="690" y="168">查日历为什么不拦</text>
+
+  <path class="arrow" d="M330 135 L280 135"/>
+  <path class="arrow" d="M490 135 L540 135"/>
+
+  <path class="arrow" d="M430 178 L430 196"/>
+
+  <rect class="r" x="120" y="200" width="240" height="62" rx="8"/>
+  <text class="h" x="240" y="220">批的东西 ≠ 上的东西？</text>
+  <text class="s" x="240" y="240">归 ATR：留痕必须绑定产物摘要</text>
+  <text class="s" x="240" y="256">否则「谁批的」永远查不清</text>
+
+  <rect class="g" x="400" y="200" width="240" height="62" rx="8"/>
+  <text class="h" x="520" y="220">回滚没起作用？</text>
+  <text class="s" x="520" y="240">归第 169 天部署前置（RBD）</text>
+  <text class="s" x="520" y="256">本专题只管「批没批、退没退」</text>
+
+  <rect class="q" x="680" y="200" width="160" height="62" rx="8"/>
+  <text class="h" x="760" y="220">都不是？</text>
+  <text class="s" x="760" y="240">很可能是「变更之外」</text>
+  <text class="s" x="760" y="256">转事故响应</text>
+
+  <rect class="g" x="120" y="286" width="720" height="56" rx="8"/>
+  <text class="s" x="480" y="308">分诊的第一条纪律：**先确认「这次变更有没有被授权」**。没有授权的变更出问题，责任在流程外；有授权的变更出问题，才轮到讨论流程哪里不够。</text>
+  <text class="s" x="480" y="328">把这两类混在一起谈，最常见的结局是「加强审批」——而它对「没走流程的那一半」毫无作用。</text>
+</svg>

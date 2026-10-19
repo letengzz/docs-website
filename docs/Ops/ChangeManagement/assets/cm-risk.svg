@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="380" viewBox="0 0 860 380" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .box { fill: #ffffff; stroke: #6b7a90; stroke-width: 1.2; }
+    .r { fill: #fdeeee; stroke: #c95555; stroke-width: 1.4; }
+    .y { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; }
+    .g { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    text { fill: #222; font-size: 11px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 12px; font-weight: bold; }
+    .s { font-size: 10px; fill: #555; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.4; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+  <text class="t" x="430" y="24">高危变更不是「感觉危险」，而是「命中了一条能写进规则的形状」</text>
+
+  <rect class="r" x="20" y="44" width="400" height="120" rx="8"/>
+  <text class="h" x="220" y="68">DDL：改了库的形状</text>
+  <text class="s" x="220" y="90">DROP / RENAME / 改类型 / 加 NOT NULL 约束</text>
+  <text class="s" x="220" y="110">SET NOT NULL · ADD CONSTRAINT（不带 NOT VALID）</text>
+  <text class="s" x="220" y="130">CREATE INDEX（不带 CONCURRENTLY）</text>
+  <text class="s" x="220" y="150">判据：迁移文件里出现这些关键字即命中</text>
+
+  <rect class="y" x="440" y="44" width="400" height="120" rx="8"/>
+  <text class="h" x="640" y="68">权限：改了谁能看见什么</text>
+  <text class="s" x="640" y="90">GRANT / REVOKE / 角色成员 / RLS 策略</text>
+  <text class="s" x="640" y="110">BYPASSRLS · 超级用户 · 默认权限</text>
+  <text class="s" x="640" y="130">权限变更生效即不可「灰度」</text>
+  <text class="s" x="640" y="150">判据：签发权限的 SQL 必须双人复核</text>
+
+  <rect class="y" x="20" y="180" width="400" height="120" rx="8"/>
+  <text class="h" x="220" y="204">配置：改了运行时的默认值</text>
+  <text class="s" x="220" y="226">开关默认值 · 超时 · 池大小 · 路由权重</text>
+  <text class="s" x="220" y="246">配置变更往往「即时全量」，没有灰度</text>
+  <text class="s" x="220" y="266">判据：默认值变化必须能回滚到一个具体值</text>
+  <text class="s" x="220" y="286">而不是「回滚到上一版」（上一版是谁？）</text>
+
+  <rect class="r" x="440" y="180" width="400" height="120" rx="8"/>
+  <text class="h" x="640" y="204">流量：改了「谁能进来」</text>
+  <text class="s" x="640" y="226">网关路由 · 权重 · 限流阈值 · 地域切流</text>
+  <text class="s" x="640" y="246">影响面在秒级扩散，且难回滚（会话已落地）</text>
+  <text class="s" x="640" y="266">判据：切流必须带「回切时间」与「追平判据」</text>
+  <text class="s" x="640" y="286">没有回切时间的切流不是变更，是赌博</text>
+
+  <rect class="box" x="20" y="316" width="820" height="50" rx="8"/>
+  <text class="s" x="430" y="336">命中任意一条 → 分数下限抬到 70 → 必须双人复核 + 指定窗口 + 演练记录。规则的价值在于「不依赖当班人的判断」：</text>
+  <text class="s" x="430" y="354">凌晨三点没人愿意当「拦下这次发布」的人，而一条静态规则会替他拦。</text>
+</svg>

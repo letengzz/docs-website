@@ -366,6 +366,7 @@ export const CompleteProject = [
           { text: "第 4 周第 6 步 · 回滚矩阵：代码可退、数据不可退（RBD-A~RBD-H）", link: "/project/Complete/TeamBoard/RollbackMatrix/index.md" },
           { text: "第 4 周第 7 步 · 上线前容量复核（CRC-A~CRC-H）", link: "/project/Complete/TeamBoard/PoolCapacity/index.md" },
           { text: "第 4 周第 8 步 · 上线前置闸门与 Go/No-Go（PLG-A~PLG-H）", link: "/project/Complete/TeamBoard/PreLaunchGate/index.md" },
+          { text: "第 4 周第 3 步之二 · 分批回填：可中断 / 可续跑 / 可观测（BBF-A~BBF-H）", link: "/project/Complete/TeamBoard/BatchBackfill/index.md" },
         ],
       },
       {

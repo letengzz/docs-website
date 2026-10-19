@@ -419,3 +419,20 @@ export const MultiActive = [
     ],
   },
 ];
+export const ChangeManagement = [
+  {
+    text: "变更管理与发布工程",
+    link: "/docs/Ops/ChangeManagement/index.md",
+    items: [
+      { text: "体系概述：分级、授权、留痕（CHG-A~CHG-H）", link: "/docs/Ops/ChangeManagement/Overview/index.md" },
+      { text: "变更分级：把「多大的事」算出来（CLS-A~CLS-H）", link: "/docs/Ops/ChangeManagement/Classification/index.md" },
+      { text: "窗口与冻结期：什么时候能做（CWN-A~CWN-H）", link: "/docs/Ops/ChangeManagement/ChangeWindow/index.md" },
+      { text: "审批留痕：批的是哪一个产物（ATR-A~ATR-H）", link: "/docs/Ops/ChangeManagement/ApprovalTrail/index.md" },
+      { text: "变更日历：冲突要在入库时挡住（CCL-A~CCL-H）", link: "/docs/Ops/ChangeManagement/ChangeCalendar/index.md" },
+      { text: "高危变更：能写进规则的形状（HRS-A~HRS-H）", link: "/docs/Ops/ChangeManagement/HighRiskChange/index.md" },
+      { text: "紧急变更：破窗的边界与额度（EMG-A~EMG-H）", link: "/docs/Ops/ChangeManagement/EmergencyChange/index.md" },
+      { text: "实战：一次加列 + 回填 + 切读（CHP-A~CHP-H）", link: "/docs/Ops/ChangeManagement/Practice/index.md" },
+      { text: "常见问题与最佳实践（CHQ-A~CHQ-H）", link: "/docs/Ops/ChangeManagement/FAQ/index.md" },
+    ],
+  },
+];

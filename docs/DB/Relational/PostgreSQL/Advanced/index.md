@@ -86,7 +86,7 @@ SELECT ts_rank_cd('{0.1, 0.2, 0.4, 1.0}', search_vec_w, q) FROM articles, websea
 
 另外两点：`ts_rank` **不是 BM25**（没有词频饱和与长度归一），得分只能在**同一查询内**比较；`websearch_to_tsquery` 比手拼 `to_tsquery` 安全得多，用户输入 `&`、`|` 时不会抛语法错。
 
-工程层（选型、评估、重建、容量）见 [全文检索与搜索工程](/docs/DB/FullTextSearch/index.md)；本节只保留语法与两个高频坑。
+工程层（选型、评估、重建、容量）见 [全文检索与搜索工程](../../../FullTextSearch/index.md)；本节只保留语法与两个高频坑。
 
 ## 分区表
 
@@ -234,16 +234,16 @@ SELECT * FROM monthly_stats ORDER BY month DESC LIMIT 5;
 
 本页「分区表」一节只回答**语法怎么写**（`PARTITION BY RANGE`、建分区、`EXPLAIN` 里看到裁剪）。下面四件事归专题页：
 
-- 分区键怎么选、粒度与分区数上界（含每分区约 6 µs 规划开销的实测）：[分区策略](/docs/DB/PartitionArchival/PartitionStrategy/index.md)
-- `ATTACH` / `DETACH`、默认分区的三重代价、PG 18 的 `VACUUM` 继承行为：[分区维护](/docs/DB/PartitionArchival/PartitionOps/index.md)
-- 为什么 `date_trunc('month', ts) = ?` 会扫全部分区：[跨分区查询](/docs/DB/PartitionArchival/CrossPartition/index.md)
-- 到期分区怎么摘、怎么搬、怎么校验：[在线归档](/docs/DB/PartitionArchival/OnlineArchive/index.md)
+- 分区键怎么选、粒度与分区数上界（含每分区约 6 µs 规划开销的实测）：[分区策略](../../../PartitionArchival/PartitionStrategy/index.md)
+- `ATTACH` / `DETACH`、默认分区的三重代价、PG 18 的 `VACUUM` 继承行为：[分区维护](../../../PartitionArchival/PartitionOps/index.md)
+- 为什么 `date_trunc('month', ts) = ?` 会扫全部分区：[跨分区查询](../../../PartitionArchival/CrossPartition/index.md)
+- 到期分区怎么摘、怎么搬、怎么校验：[在线归档](../../../PartitionArchival/OnlineArchive/index.md)
 
 本页特有的一个坑：示例里 `orders` 带 `GENERATED ALWAYS AS IDENTITY`，日后若用 `CREATE TABLE new_part (LIKE orders INCLUDING ALL)` 建表再 `ATTACH`，会直接报 `table ... being attached contains an identity column`——`INCLUDING ALL` 把 identity 一起复制了过去。回挂用的分区表要用 `LIKE orders`（默认不含 identity）。
 
 ## 与「通知中心读接口」的分工
 
-本页讲 PostgreSQL 的**语法与能力**（部分索引、`INCLUDE`、行值比较、`EXPLAIN` 读法）。**「什么时候该建两条索引」这个判断属于应用侧**，见[在线协作任务看板 · 通知中心读接口](/project/Complete/TeamBoard/NotificationCenter/index.md)。
+本页讲 PostgreSQL 的**语法与能力**（部分索引、`INCLUDE`、行值比较、`EXPLAIN` 读法）。**「什么时候该建两条索引」这个判断属于应用侧**，见[在线协作任务看板 · 通知中心读接口](../../../../../project/Complete/TeamBoard/NotificationCenter/index.md)。
 
 那页给出的实测值得在这里补一句，因为它是本页「部分索引」一节最容易被忽略的边界：
 
@@ -259,7 +259,7 @@ SELECT * FROM monthly_stats ORDER BY month DESC LIMIT 5;
 
 ## 与「部署前置」章节集的分工（第 169 天补充）
 
-本页讲 PostgreSQL 的**事务、锁模式与并发控制机制**；[迁移前置闸门](/project/Complete/TeamBoard/MigrationPreflight/index.md) 讲的是「把这些机制用在上线那一刻」的工程闸门。分工：
+本页讲 PostgreSQL 的**事务、锁模式与并发控制机制**；[迁移前置闸门](../../../../../project/Complete/TeamBoard/MigrationPreflight/index.md) 讲的是「把这些机制用在上线那一刻」的工程闸门。分工：
 
 | 问题 | 归本页 | 归「部署前置」章节集 |
 | --- | --- | --- |
@@ -271,6 +271,19 @@ SELECT * FROM monthly_stats ORDER BY month DESC LIMIT 5;
 ::: danger 本页特有的一条坑：锁队列是「后来者堵后来者」
 `ACCESS EXCLUSIVE` 在队列里排队时，**后续到达的普通 `SELECT` 不能越过它去和持锁者共享锁**（否则排队的 DDL 会被饿死）。所以一条只读查询会被一条尚未执行的 `ALTER` 堵住——本机实测：会话 A 持锁 2 s、会话 B 的 `ALTER` 排队、会话 C 的 `select count(*)` 等了 **1.19 s** 才返回。这就是「迁移引发全站超时」的真实机制：不是 DDL 慢，是它在队列里当了一堵墙。结论：迁移必须设 `lock_timeout`（200~500 ms），失败后**不许自动重试**。
 :::
+
+## 与「变更管理」专题的分工（第 170 天补充）
+
+本页讲**这些高级特性本身**（CTE、窗口函数、锁、排他约束、扩展）；[变更管理与发布工程](../../../../Ops/ChangeManagement/index.md) 讲**它们在生产变更里的用法**——尤其是「一次数据搬迁怎么才能被随时打断」。
+
+| 特性 | 本页 | 变更管理专题里的用途 |
+| --- | --- | --- |
+| `WITH` + `UPDATE ... RETURNING` | 语法与执行计划 | 把「改数据」与「记进度」压进一条语句（原子性来源） |
+| `tstzrange` + `EXCLUDE USING gist` | 排他约束与 `btree_gist` | 变更日历在**入库时**挡住时间窗冲突，而不是靠人查 |
+| 窗口函数 `lag()` | 排名与相邻行计算 | 哈希链校验（每条记录的 `prev_hash` 必须等于上一条的 `hash`） |
+| 部分索引 | 索引选择性与维护成本 | 实测对「按主键顺序回填」没有帮助，别为它付 10 MB |
+
+**一条本页特有的坑：`WITH` 里的两条 `UPDATE` 不是「两次操作」。** 它们共享同一个快照、同一个事务，所以「数据改了但游标没记」在语句内部不可能发生；反过来，**一旦把它们拆成两条语句**，中间任意一刻崩溃都会留下「改了没记」或「记了没改」，而这两种状态从事务日志里长得一模一样。这条差别没法靠 `EXPLAIN` 看出来，只能靠写法本身保证。
 
 ## 参考资料
 

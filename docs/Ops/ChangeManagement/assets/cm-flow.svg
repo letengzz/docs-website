@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.3; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.3; }
+    .c { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.3; }
+    text { fill: #222; font-size: 11px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .n { font-size: 12px; font-weight: bold; fill: #2b4c8c; }
+    .s { font-size: 10px; fill: #555; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.3; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+  <text class="t" x="440" y="24">一次真实变更的十二步：每一步都留下「可以反驳自己」的东西</text>
+
+  <rect class="a" x="20" y="44" width="130" height="76" rx="6"/>
+  <text class="n" x="85" y="66">1 变更单</text>
+  <text class="s" x="85" y="86">意图、影响面、</text>
+  <text class="s" x="85" y="102">回滚方式</text>
+
+  <rect class="a" x="166" y="44" width="130" height="76" rx="6"/>
+  <text class="n" x="231" y="66">2 分级</text>
+  <text class="s" x="231" y="86">I + R + O 三项打分</text>
+  <text class="s" x="231" y="102">→ 审查强度</text>
+
+  <rect class="a" x="312" y="44" width="130" height="76" rx="6"/>
+  <text class="n" x="377" y="66">3 影响面</text>
+  <text class="s" x="377" y="86">哪些服务/租户</text>
+  <text class="s" x="377" y="102">哪些依赖要一起动</text>
+
+  <rect class="a" x="458" y="44" width="130" height="76" rx="6"/>
+  <text class="n" x="523" y="66">4 窗口</text>
+  <text class="s" x="523" y="86">避开冻结期</text>
+  <text class="s" x="523" y="102">避开同服务冲突</text>
+
+  <rect class="a" x="604" y="44" width="130" height="76" rx="6"/>
+  <text class="n" x="669" y="66">5 证据</text>
+  <text class="s" x="669" y="86">commit / digest /</text>
+  <text class="s" x="669" y="102">迁移指纹</text>
+
+  <rect class="a" x="750" y="44" width="110" height="76" rx="6"/>
+  <text class="n" x="805" y="66">6 审批</text>
+  <text class="s" x="805" y="86">按分级决定</text>
+  <text class="s" x="805" y="102">几层签字</text>
+
+  <path class="arrow" d="M150 82 L162 82"/>
+  <path class="arrow" d="M296 82 L308 82"/>
+  <path class="arrow" d="M442 82 L454 82"/>
+  <path class="arrow" d="M588 82 L600 82"/>
+  <path class="arrow" d="M734 82 L746 82"/>
+
+  <rect class="b" x="20" y="152" width="130" height="76" rx="6"/>
+  <text class="n" x="85" y="174">7 前置检查</text>
+  <text class="s" x="85" y="194">锁、连接、容量</text>
+  <text class="s" x="85" y="210">三条读数</text>
+
+  <rect class="b" x="166" y="152" width="130" height="76" rx="6"/>
+  <text class="n" x="231" y="174">8 执行</text>
+  <text class="s" x="231" y="194">按 runbook</text>
+  <text class="s" x="231" y="210">每步可停</text>
+
+  <rect class="b" x="312" y="152" width="130" height="76" rx="6"/>
+  <text class="n" x="377" y="174">9 观察</text>
+  <text class="s" x="377" y="194">10 分钟窗口</text>
+  <text class="s" x="377" y="210">四个信号</text>
+
+  <rect class="b" x="458" y="152" width="130" height="76" rx="6"/>
+  <text class="n" x="523" y="174">10 判定</text>
+  <text class="s" x="523" y="194">成功 / 部分 / 失败</text>
+  <text class="s" x="523" y="210">三态而不是两态</text>
+
+  <rect class="c" x="604" y="152" width="130" height="76" rx="6"/>
+  <text class="n" x="669" y="174">11 留痕</text>
+  <text class="s" x="669" y="194">结果回写</text>
+  <text class="s" x="669" y="210">审批链闭合</text>
+
+  <rect class="c" x="750" y="152" width="110" height="76" rx="6"/>
+  <text class="n" x="805" y="174">12 关闭</text>
+  <text class="s" x="805" y="194">或转紧急单</text>
+  <text class="s" x="805" y="210">或转回滚</text>
+
+  <path class="arrow" d="M150 190 L162 190"/>
+  <path class="arrow" d="M296 190 L308 190"/>
+  <path class="arrow" d="M442 190 L454 190"/>
+  <path class="arrow" d="M588 190 L600 190"/>
+  <path class="arrow" d="M734 190 L746 190"/>
+
+  <rect class="c" x="20" y="264" width="840" height="64" rx="6"/>
+  <text class="s" x="440" y="286">第 7 步最容易漏：前置检查不是「再看一眼」，而是三条必须打出来的读数——锁等待（`pg_blocking_pids`）、连接占用、容量余量。</text>
+  <text class="s" x="440" y="306">第 10 步最容易被简化成「没报警就是成功」；三态的价值在于「部分成功」必须有人做决定（继续、回滚、还是守着）。</text>
+
+  <rect class="c" x="20" y="344" width="840" height="58" rx="6"/>
+  <text class="s" x="440" y="366">十二步不是十二个会议：1~6 在变更单里完成，7~12 在执行窗口内完成，全程一个人可以在 40 分钟内走完。</text>
+  <text class="s" x="440" y="386">步骤越多越要自动化——但自动化的是「记录与校验」，不是「判断」。</text>
+</svg>

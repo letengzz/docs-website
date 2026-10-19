@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .bg { fill: #f7f9fc; stroke: #c9d3e0; stroke-width: 1; }
+    .ok { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.2; }
+    .no { fill: #fdeeee; stroke: #c95555; stroke-width: 1.2; }
+    .peak { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.2; }
+    text { fill: #222; font-size: 11px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 12px; font-weight: bold; }
+    .s { font-size: 10px; fill: #555; }
+    .lbl { font-size: 11px; text-anchor: end; fill: #333; }
+    .arrow { stroke: #c95555; stroke-width: 1.5; fill: none; marker-end: url(#ar); stroke-dasharray: 5 4; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#c95555"/>
+    </marker>
+  </defs>
+  <text class="t" x="440" y="24">窗口不是「有空的时间」，而是「出事有人兜得住的时间」</text>
+
+  <text class="lbl" x="130" y="64">工作日</text>
+  <text class="lbl" x="130" y="106">夜间</text>
+  <text class="lbl" x="130" y="148">周末</text>
+  <text class="lbl" x="130" y="190">冻结期</text>
+
+  <rect class="bg" x="140" y="48" width="700" height="36" rx="4"/>
+  <rect class="peak" x="140" y="48" width="210" height="36" rx="4"/>
+  <rect class="peak" x="560" y="48" width="150" height="36" rx="4"/>
+  <text class="s" x="245" y="70">09:00-12:00 高峰</text>
+  <text class="s" x="635" y="70">14:00-17:00 高峰</text>
+  <text class="s" x="470" y="70">12:00-14:00 午间窗口</text>
+
+  <rect class="bg" x="140" y="90" width="700" height="36" rx="4"/>
+  <rect class="ok" x="140" y="90" width="700" height="36" rx="4"/>
+  <text class="s" x="490" y="112">20:00-23:00 窗口（值班在岗、流量低、可观测）</text>
+
+  <rect class="bg" x="140" y="132" width="700" height="36" rx="4"/>
+  <rect class="ok" x="140" y="132" width="150" height="36" rx="4"/>
+  <rect class="no" x="380" y="132" width="220" height="36" rx="4"/>
+  <text class="s" x="215" y="154">周六 上午窗口</text>
+  <text class="s" x="490" y="154">大促 / 结算日：全周冻结</text>
+
+  <rect class="bg" x="140" y="174" width="700" height="36" rx="4"/>
+  <rect class="no" x="140" y="174" width="240" height="36" rx="4"/>
+  <text class="s" x="260" y="196">12-31 ~ 01-02 财务结账</text>
+  <text class="s" x="560" y="196">只允许「修复类」例外，且必须双签</text>
+
+  <path class="arrow" d="M380 174 L380 126"/>
+  <text class="s" x="470" y="232">例外通道：从冻结期指向窗口，前提是「已经在事故里」或「不修就会出事故」</text>
+
+  <rect class="bg" x="140" y="252" width="700" height="60" rx="6"/>
+  <text class="h" x="490" y="274">窗口的三条硬要求</text>
+  <text class="s" x="490" y="294">① 有值班（出事能立刻回滚） ② 有观测（10 分钟内知道坏没坏） ③ 有回滚点（窗口内能退回去）</text>
+
+  <rect class="bg" x="140" y="326" width="700" height="52" rx="6"/>
+  <text class="s" x="490" y="348">本页的判据只认一件事：窗口在日历里是「一条被约束的区间」，不是一句「今晚发」。</text>
+  <text class="s" x="490" y="366">所以窗口必须带时区、带时长上限、带依赖服务，且能被机器判定是否落在冻结期内。</text>
+</svg>
