@@ -270,6 +270,19 @@ grep -rhoE "layer[0-9]+|exp_[a-z0-9_]+" config/experiments.yaml | sort | uniq -c
 ① 为本页实跑的小脚本（纯公式估算，不依赖外部数据），输出即上文四行。②③④ 为仓库内静态检查，依赖实验配置与分桶函数落盘（项目侧本轮尚无 `experiments.yaml`，**未跑**）。⑤~⑧ 为读法，不产生命令输出。
 :::
 
+## 与『评测工程』专题的分工（第 171 天补充）
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| 在线 A/B 怎么分桶、怎么判显著性 | [实验驱动](index.md)（本页） |
+| 离线评测的配对检验怎么算 | [区间、检验与样本量](../../../AI/EvalEngineering/Statistics/index.md) |
+| 离线结论怎么进发布门禁 | [回归门禁](../../../AI/EvalEngineering/RegressionGate/index.md) |
+| 离线与在线结论不一致时信哪个 | [常见问题](../../../AI/EvalEngineering/FAQ/index.md) |
+
+::: danger 本页特有的一个坑：离线评测不能套用在线 A/B 的独立性假设
+在线 A/B 里两组用户相互独立，用两样本比例检验是对的。离线评测是**同一批样本跑两版**，样本之间高度相关（难题在两版上都难），此时用两样本检验会低估方差、把不显著的差异判成显著。正确做法是改用**配对检验**（McNemar 精确检验），并且只统计「一版过一版不过」的不一致对。本页第四节列的四个显著性陷阱，加上这一条就是五个。
+:::
+
 ## 参考资料
 
 - [Kohavi, Tang & Xu · Trustworthy Online Controlled Experiments](https://experimentguide.com/)——偷看、样本量、多重比较的系统论述，本章的主要依据

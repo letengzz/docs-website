@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="338" viewBox="0 0 860 338" font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .c { fill: #fdeeee; stroke: #c95555; stroke-width: 1.5; }
+    .d { fill: #fff8e6; stroke: #d9a441; stroke-width: 1.5; }
+    .g { fill: #f4f5f7; stroke: #9aa3b2; stroke-width: 1.2; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .m { font-size: 11px; fill: #2b2b2b; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.5; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">三层闸门与四种状态：拦住该拦的，放行该放的</text>
+
+  <rect class="a" x="30" y="52" width="230" height="96" rx="8"/>
+  <text class="h" x="145" y="78">L1 硬规则</text>
+  <text class="s" x="145" y="102">格式 / 必含字段 / 延迟</text>
+  <text class="s" x="145" y="122">秒级，几乎无误报</text>
+  <text class="s" x="145" y="140">红了就不跑 L2</text>
+
+  <path class="arrow" d="M264 100 L300 100"/>
+
+  <rect class="b" x="304" y="52" width="230" height="96" rx="8"/>
+  <text class="h" x="419" y="78">L2 统计判定</text>
+  <text class="s" x="419" y="102">配对检验 + 区间 + 切片</text>
+  <text class="s" x="419" y="122">分钟级，有误报</text>
+  <text class="s" x="419" y="140">容差 ≥ 2×抖动</text>
+
+  <path class="arrow" d="M538 100 L574 100"/>
+
+  <rect class="d" x="578" y="52" width="230" height="96" rx="8"/>
+  <text class="h" x="693" y="78">L3 抽样人工</text>
+  <text class="s" x="693" y="102">20~50 条，判官判不动的</text>
+  <text class="s" x="693" y="122">小时级，滞后</text>
+  <text class="s" x="693" y="140">用来校准 L2</text>
+
+  <rect class="g" x="30" y="172" width="180" height="66" rx="8"/>
+  <text class="h" x="120" y="196">pass → 0</text>
+  <text class="s" x="120" y="220">全部在容差内</text>
+
+  <rect class="g" x="222" y="172" width="180" height="66" rx="8"/>
+  <text class="h" x="312" y="196">warn → 2</text>
+  <text class="s" x="312" y="220">总分 OK，切片超线</text>
+
+  <rect class="c" x="414" y="172" width="180" height="66" rx="8"/>
+  <text class="h" x="504" y="196">fail → 1</text>
+  <text class="s" x="504" y="220">总分超线或 L1 失败</text>
+
+  <rect class="c" x="606" y="172" width="200" height="66" rx="8"/>
+  <text class="h" x="706" y="196">error → 3</text>
+  <text class="s" x="706" y="220">绝不可当作 pass</text>
+
+  <rect class="d" x="30" y="266" width="776" height="56" rx="8"/>
+  <text class="m" x="418" y="290">最隐蔽的假绿：判官超时 → 结果为空 → 空集被兜底成 0 或 100 → 门禁绿。</text>
+  <text class="m" x="418" y="310">验收标准只有一条：注入退步必须红（见门禁页第 ① 条验证）。</text>
+
+</svg>

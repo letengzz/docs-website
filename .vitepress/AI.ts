@@ -341,3 +341,22 @@ export const AI_ModelRouting = [
     ],
   },
 ];
+
+export const AI_EvalEngineering = [
+  {
+    text: "模型评测工程与判据校准",
+    link: "/docs/AI/EvalEngineering/index.md",
+    items: [
+      { text: "全景：三种有效性", link: "/docs/AI/EvalEngineering/Overview/index.md" },
+      { text: "评测集构建与冻结", link: "/docs/AI/EvalEngineering/DatasetDesign/index.md" },
+      { text: "判官校准", link: "/docs/AI/EvalEngineering/JudgeCalibration/index.md" },
+      { text: "指标口径的六种含义", link: "/docs/AI/EvalEngineering/MetricsDefinition/index.md" },
+      { text: "人工基线与一致性", link: "/docs/AI/EvalEngineering/HumanAlignment/index.md" },
+      { text: "区间、检验与样本量", link: "/docs/AI/EvalEngineering/Statistics/index.md" },
+      { text: "回归门禁", link: "/docs/AI/EvalEngineering/RegressionGate/index.md" },
+      { text: "变红归因", link: "/docs/AI/EvalEngineering/Attribution/index.md" },
+      { text: "实战：从零搭评测流水线", link: "/docs/AI/EvalEngineering/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/AI/EvalEngineering/FAQ/index.md" },
+    ],
+  },
+];

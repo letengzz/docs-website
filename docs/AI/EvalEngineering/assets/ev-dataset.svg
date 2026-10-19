@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="350" viewBox="0 0 860 350" font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .c { fill: #fdeeee; stroke: #c95555; stroke-width: 1.5; }
+    .d { fill: #fff8e6; stroke: #d9a441; stroke-width: 1.5; }
+    .g { fill: #f4f5f7; stroke: #9aa3b2; stroke-width: 1.2; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .m { font-size: 11px; fill: #2b2b2b; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.5; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">评测集的三道工序：来源配比 → 四维配额 → 指纹冻结</text>
+
+  <rect class="a" x="24" y="48" width="248" height="200" rx="8"/>
+  <text class="h" x="148" y="74">① 来源配比</text>
+  <text class="m" x="148" y="100">真实回流 120（保真）</text>
+  <text class="m" x="148" y="124">人工构造 100（保边界）</text>
+  <text class="m" x="148" y="148">合成变体 50（保稳定）</text>
+  <text class="m" x="148" y="172">公开留出 30（保外部参照）</text>
+  <text class="s" x="148" y="204">只用合成 = 自己出题自己答</text>
+  <text class="s" x="148" y="222">只用回流 = 测不到没暴露的边界</text>
+
+  <path class="arrow" d="M276 148 L292 148"/>
+
+  <rect class="b" x="296" y="48" width="248" height="200" rx="8"/>
+  <text class="h" x="420" y="74">② 四维配额</text>
+  <text class="m" x="420" y="100">任务：抽取/生成/判定/多步</text>
+  <text class="m" x="420" y="124">长度：≤500 / 2k / 8k</text>
+  <text class="m" x="420" y="148">写法：书面/口语/中英混</text>
+  <text class="m" x="420" y="172">难度：按当前正确率三档</text>
+  <text class="s" x="420" y="204">每格 ≥ 20 条，冻结时写死</text>
+  <text class="s" x="420" y="222">难度标签不随模型进步而改</text>
+
+  <path class="arrow" d="M548 148 L564 148"/>
+
+  <rect class="d" x="568" y="48" width="268" height="200" rx="8"/>
+  <text class="h" x="702" y="74">③ 指纹冻结</text>
+  <text class="m" x="702" y="100">按 id 排序后逐行 canonical JSON</text>
+  <text class="m" x="702" y="124">SHA-256 → dataset.lock</text>
+  <text class="m" x="702" y="148">只增不改：改就开 v2</text>
+  <text class="m" x="702" y="172">切片配额一起进锁文件</text>
+  <text class="s" x="702" y="204">不要直接哈希原文件</text>
+  <text class="s" x="702" y="222">行序/BOM 会变，内容没变</text>
+
+  <rect class="c" x="24" y="272" width="812" height="60" rx="8"/>
+  <text class="m" x="430" y="294">破坏配额最隐蔽的方式：「顺手补两条」。这一刻起，之前与之后的所有运行都不可比，</text>
+  <text class="m" x="430" y="314">而报告里不会写这一行。要补就走新版本 + 重算历史。</text>
+
+</svg>

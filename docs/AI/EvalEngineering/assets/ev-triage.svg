@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .c { fill: #fdeeee; stroke: #c95555; stroke-width: 1.5; }
+    .d { fill: #fff8e6; stroke: #d9a441; stroke-width: 1.5; }
+    .g { fill: #f4f5f7; stroke: #9aa3b2; stroke-width: 1.2; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .m { font-size: 11px; fill: #2b2b2b; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.5; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">分诊：先问「可不可比」，再问「为什么变差」</text>
+
+  <rect class="a" x="300" y="48" width="260" height="56" rx="8"/>
+  <text class="h" x="430" y="72">分数变了 / 门禁红了</text>
+  <text class="s" x="430" y="92">先做一次可比性核对</text>
+
+  <path class="arrow" d="M368 108 L200 138"/>
+  <path class="arrow" d="M430 108 L430 138"/>
+  <path class="arrow" d="M492 108 L660 138"/>
+
+  <rect class="c" x="60" y="142" width="280" height="96" rx="8"/>
+  <text class="h" x="200" y="166">不可比</text>
+  <text class="s" x="200" y="188">数据集/判官版本不一致</text>
+  <text class="s" x="200" y="206">样本被补过、顺序变了</text>
+  <text class="m" x="200" y="228">动作：对齐后再谈归因</text>
+
+  <rect class="d" x="300" y="142" width="260" height="96" rx="8"/>
+  <text class="h" x="430" y="166">噪声</text>
+  <text class="s" x="430" y="188">区间重叠、连跑不稳定</text>
+  <text class="s" x="430" y="206">判官翻转率 > 5%</text>
+  <text class="m" x="430" y="228">动作：扩样本 / 放宽容差</text>
+
+  <rect class="b" x="580" y="142" width="280" height="96" rx="8"/>
+  <text class="h" x="720" y="166">真退步</text>
+  <text class="s" x="720" y="188">切片差分定位到某一格</text>
+  <text class="s" x="720" y="206">样本聚类有主因形态</text>
+  <text class="m" x="720" y="228">动作：变更二分 + 修复</text>
+
+  <rect class="g" x="60" y="262" width="800" height="46" rx="8"/>
+  <text class="m" x="460" y="284">十条现象 → 对应页面：分数抖动（统计）· 门禁摇摆（门禁）· 贴天花板（评测集）</text>
+  <text class="s" x="460" y="302">· 切片掩盖（口径）· 98% 一致却不可信（人工）· 判官漂移（判官）</text>
+
+</svg>

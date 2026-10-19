@@ -152,6 +152,19 @@ python3 eval_push.py --scores scores.jsonl
 3. **采样规则不记录**：无法回答「这条为什么没被评」，也无法证明覆盖率。
 :::
 
+## 与『评测工程』专题的分工（第 171 天补充）
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| 在线采样怎么设、evaluator 怎么挂回 trace | [在线评估](../../LLMObservability/OnlineEval/index.md)（本页） |
+| 在线分数与离线分数对不上时怎么办 | [指标口径](../../EvalEngineering/MetricsDefinition/index.md) |
+| 低缺陷率下判官告警为什么不可信 | [评测工程全景](../../EvalEngineering/Overview/index.md) |
+| 抽样多少条才能说「线上没退化」 | [区间、检验与样本量](../../EvalEngineering/Statistics/index.md) |
+
+::: danger 本页特有的一个坑：在线样本不是随机样本
+在线评估的样本来自「被采样、被记录、被 evaluator 覆盖」的那一部分，**这三层筛选都不随机**：采样偏向长会话与异常会话，记录偏向有 trace 的请求，evaluator 往往只覆盖它认识的意图。所以在线「通过率」是**这一层的通过率**，不是总体估计，更**不能与离线分数直接相减**。要比较，必须先按同一组切片把两边重加权，或者干脆承认「两边回答的是不同问题」。
+:::
+
 ## 参考资料
 
 - OpenTelemetry `gen_ai.evaluation.result` 事件（v1.38.0 起）：https://github.com/open-telemetry/semantic-conventions-genai

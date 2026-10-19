@@ -196,17 +196,17 @@ groups:
 
 ## 本日可验证构建步骤
 
-### 判据表（SC-A ~ SC-G）
+### 判据表（SCR-A ~ SCR-G）
 
 | 编号 | 判据 | 通过标准 | 实测 |
 | --- | --- | --- | --- |
-| SC-A | 采集链路能起 | 启动采集器 + 一个暴露 `/metrics` 的目标，查询 `up{job="core-services"}` 返回 `1` | ⏳ 未跑 + 原因：本机无容器运行时 |
-| SC-B | 目标来自发现而非写死 | 向目标文件**追加**一个目标并保存，30 秒内 `up` 出现新实例，**未重启采集器** | ⏳ 未跑 + 原因：同上 |
-| SC-C | `scrape_timeout < scrape_interval` | 配置校验命令通过（见下） | ⏳ 未跑 + 原因：同上 |
-| SC-D | 元标签被清理 | `count by (__name__)({__name__=~"up"})` 查询结果中该序列**不含 `__meta_*` 标签** | ⏳ 未跑 + 原因：同上 |
-| SC-E | 抓取失败告警生效 | 停掉目标进程，`for` 时长后 `TargetDown` 进入 firing | ⏳ 未跑 + 原因：同上 |
-| SC-F | 「0 样本」告警独立于 down | 构造「端口通但无指标」的目标，只有 `TargetScrapedZeroSamples` 触发、`TargetDown` **不**触发 | ⏳ 未跑 + 原因：同上 |
-| SC-G | 丢弃指标已登记（MG7 衔接） | 校验器扫描全部 `metric_relabel_configs` 的 `drop`，未在 `metric_def` 登记的条目数为 0 | ⏳ 未跑 + 原因：同上 |
+| `SCR-A` | 采集链路能起 | 启动采集器 + 一个暴露 `/metrics` 的目标，查询 `up{job="core-services"}` 返回 `1` | ⏳ 未跑 + 原因：本机无容器运行时 |
+| `SCR-B` | 目标来自发现而非写死 | 向目标文件**追加**一个目标并保存，30 秒内 `up` 出现新实例，**未重启采集器** | ⏳ 未跑 + 原因：同上 |
+| `SCR-C` | `scrape_timeout < scrape_interval` | 配置校验命令通过（见下） | ⏳ 未跑 + 原因：同上 |
+| `SCR-D` | 元标签被清理 | `count by (__name__)({__name__=~"up"})` 查询结果中该序列**不含 `__meta_*` 标签** | ⏳ 未跑 + 原因：同上 |
+| `SCR-E` | 抓取失败告警生效 | 停掉目标进程，`for` 时长后 `TargetDown` 进入 firing | ⏳ 未跑 + 原因：同上 |
+| `SCR-F` | 「0 样本」告警独立于 down | 构造「端口通但无指标」的目标，只有 `TargetScrapedZeroSamples` 触发、`TargetDown` **不**触发 | ⏳ 未跑 + 原因：同上 |
+| `SCR-G` | 丢弃指标已登记（MG7 衔接） | 校验器扫描全部 `metric_relabel_configs` 的 `drop`，未在 `metric_def` 登记的条目数为 0 | ⏳ 未跑 + 原因：同上 |
 
 ### 配置期静态校验（不需要容器，本机即可跑）
 
@@ -214,7 +214,7 @@ groups:
 # ① 本地配置语法与语义校验（用采集器自带的检查模式，只读不启动服务）
 promtool check config scrape.yaml
 
-# ② 超时与间隔关系（SC-C）：所有 job 的 scrape_timeout 必须严格小于 scrape_interval
+# ② 超时与间隔关系（SCR-C）：所有 job 的 scrape_timeout 必须严格小于 scrape_interval
 python -c "
 import yaml,sys
 c=yaml.safe_load(open('scrape.yaml'))
@@ -227,7 +227,7 @@ for j in c['scrape_configs']:
 print('FAIL',bad) if bad else print('PASS 超时严格小于间隔')
 "
 
-# ③ 元标签清理（SC-D）：每个 job 都必须有 labeldrop __meta_.*
+# ③ 元标签清理（SCR-D）：每个 job 都必须有 labeldrop __meta_.*
 python -c "
 import yaml
 c=yaml.safe_load(open('scrape.yaml'))
@@ -236,7 +236,7 @@ miss=[j['job_name'] for j in c['scrape_configs']
 print('FAIL',miss) if miss else print('PASS 元标签已清理')
 "
 
-# ④ 丢弃项已登记（SC-G / MG7）：drop 的指标名必须出现在 metric_def
+# ④ 丢弃项已登记（SCR-G / MG7）：drop 的指标名必须出现在 metric_def
 python -c "
 import yaml,re,sys
 c=yaml.safe_load(open('scrape.yaml'))
@@ -253,7 +253,7 @@ print('FAIL 未登记: '+str(un)) if un else print('PASS 丢弃项全部已登�
 预期：① 无输出（`SUCCESS`）；②③④ 各输出一行 `PASS`。
 
 1. **先跑配置校验器，再起服务**：`promtool check config` 能在不启动服务的前提下拦掉大部分语法与语义错误（含 `scrape_timeout` 关系、规则表达式语法）。
-2. **目标文件手工追加一次**：这是 SC-B 的最小验证方式，比改配置重载快得多，也更能证明「发现」真的是发现。
+2. **目标文件手工追加一次**：这是 SCR-B 的最小验证方式，比改配置重载快得多，也更能证明「发现」真的是发现。
 3. **把「0 样本」这条告警单独构造一次**：最省事的做法是让目标返回空 body 但 HTTP 200——它验证的是「进程活着 ≠ 指标在被采集」，这是本项目最容易被忽略的一条。
 
 ## 当日做了什么
@@ -263,12 +263,12 @@ print('FAIL 未登记: '+str(un)) if un else print('PASS 丢弃项全部已登�
 3. 产出完整的 `scrape.yaml`：三个 job、`sample_limit` 对齐第 123 天容量公式、`honor_labels` 与 `labeldrop` 的取舍写死在注释里。
 4. 划清 **`relabel_configs`（目标）与 `metric_relabel_configs`（样本）** 的边界，并给出值班侧的一句话判别法（先看 `up` 在不在）。
 5. 定稿**抓取失败的四种处置**，把「目标不可达」与「可达但 0 样本」拆成两条独立告警（后者更危险、更易漏）。
-6. 产出 `scrape-config.svg` 与 SC-A~SC-G 判据表；其中 SC-G 直接复用第 124 天 MG7 的登记要求，**丢弃指标未登记即视为缺陷**。
+6. 产出 `scrape-config.svg` 与 SCR-A~SCR-G 判据表；其中 SCR-G 直接复用第 124 天 MG7 的登记要求，**丢弃指标未登记即视为缺陷**。
 
 ## 如何验证
 
 1. 跑上面四段静态校验，期望 `PASS` × 3 + `promtool` 无输出。**这四段不需要任何容器运行时，任何机器上都能跑**，因此它们是本页唯一的「已跑」部分。
-2. SC-A~SC-G 的**动态**部分（能起、能发现、告警真的响）需要容器运行时；本机没有，**全部如实标注为「未跑 + 原因」**，不把期望值抄进实测列。
+2. SCR-A~SCR-G 的**动态**部分（能起、能发现、告警真的响）需要容器运行时；本机没有，**全部如实标注为「未跑 + 原因」**，不把期望值抄进实测列。
 3. 两条自检的边界：静态校验**只覆盖配置文本**，它证明不了「目标真的被采到」。谁在什么环境跑过动态部分，就把结果回填到判据表——**没跑过的不许标 ✅**。
 
 ## 下一步（第 126 天）
@@ -283,4 +283,4 @@ print('FAIL 未登记: '+str(un)) if un else print('PASS 丢弃项全部已登�
 - [Prometheus 官方文档 · 警示「不要静态配置一切」的目标发现](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#file_sd_config)
 - [架构细化：组件与接口边界](../Architecture/index.md)：边界二与失败矩阵 C1/C2 的定义
 - [指标模型与保留策略](../MetricModel/index.md)：容量公式与「路径归一」的来由
-- [规范落地校验门禁](../MetricGate/index.md)：MG6 / MG7 与本页 SC-D / SC-G 的衔接
+- [规范落地校验门禁](../MetricGate/index.md)：MG6 / MG7 与本页 SCR-D / SCR-G 的衔接

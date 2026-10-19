@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="358" viewBox="0 0 860 358" font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .c { fill: #fdeeee; stroke: #c95555; stroke-width: 1.5; }
+    .d { fill: #fff8e6; stroke: #d9a441; stroke-width: 1.5; }
+    .g { fill: #f4f5f7; stroke: #9aa3b2; stroke-width: 1.2; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .m { font-size: 11px; fill: #2b2b2b; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.5; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">位置偏差：交换一次顺序，一半的胜负会翻转</text>
+
+  <rect class="a" x="40" y="52" width="220" height="120" rx="8"/>
+  <text class="h" x="150" y="78">第一次：A 在左</text>
+  <text class="m" x="150" y="104">判官：A 更好</text>
+  <text class="s" x="150" y="130">（第一位偏好 62%）</text>
+  <text class="s" x="150" y="152">这是「座位」给的胜</text>
+
+  <path class="arrow" d="M264 112 L330 112"/>
+
+  <rect class="a" x="334" y="52" width="220" height="120" rx="8"/>
+  <text class="h" x="444" y="78">第二次：B 在左</text>
+  <text class="m" x="444" y="104">判官：B 更好</text>
+  <text class="s" x="444" y="130">同一个偏好，反向结论</text>
+  <text class="s" x="444" y="152">语义上仍然「A 更好」</text>
+
+  <path class="arrow" d="M558 112 L624 112"/>
+
+  <rect class="c" x="628" y="52" width="208" height="120" rx="8"/>
+  <text class="h" x="732" y="78">规则：记 tie</text>
+  <text class="m" x="732" y="104">不取第一次</text>
+  <text class="m" x="732" y="124">不取平均</text>
+  <text class="s" x="732" y="150">那部分区分力本来是假的</text>
+
+  <rect class="g" x="40" y="196" width="796" height="72" rx="8"/>
+  <text class="m" x="438" y="220">本机模拟（种子 7，300 对，真实质量 A 略好 55%，判官对第一位偏好 62%）：</text>
+  <text class="m" x="438" y="242">交换后结论不一致 51.7% ｜ 汇总层面 A 胜率 52.7%（两次偏差互相抵消，看不出问题）</text>
+
+  <rect class="d" x="40" y="288" width="796" height="52" rx="8"/>
+  <text class="m" x="438" y="310">所以「交换一致性」必须逐样本算，不能只看汇总排名——</text>
+  <text class="m" x="438" y="330">汇总会告诉你「谁赢了」，但不会告诉你「这个结论是不是座位决定的」。</text>
+
+</svg>

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="344" viewBox="0 0 860 344" font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .c { fill: #fdeeee; stroke: #c95555; stroke-width: 1.5; }
+    .d { fill: #fff8e6; stroke: #d9a441; stroke-width: 1.5; }
+    .g { fill: #f4f5f7; stroke: #9aa3b2; stroke-width: 1.2; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .m { font-size: 11px; fill: #2b2b2b; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.5; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="430" y="26">一条最小可用的评测链路：六段，每段的失败都要能被看见</text>
+
+  <rect class="a" x="20" y="52" width="126" height="80" rx="8"/>
+  <text class="h" x="83" y="78">① 加载</text>
+  <text class="s" x="83" y="100">校验指纹</text>
+  <text class="s" x="83" y="118">不符即 error</text>
+
+  <path class="arrow" d="M150 92 L172 92"/>
+
+  <rect class="a" x="176" y="52" width="126" height="80" rx="8"/>
+  <text class="h" x="239" y="78">② 调用</text>
+  <text class="s" x="239" y="100">记录原始输出</text>
+  <text class="s" x="239" y="118">p50 / p95</text>
+
+  <path class="arrow" d="M306 92 L328 92"/>
+
+  <rect class="b" x="332" y="52" width="126" height="80" rx="8"/>
+  <text class="h" x="395" y="78">③ 判分</text>
+  <text class="s" x="395" y="100">解析失败记</text>
+  <text class="s" x="395" y="118">unknown</text>
+
+  <path class="arrow" d="M462 92 L484 92"/>
+
+  <rect class="b" x="488" y="52" width="126" height="80" rx="8"/>
+  <text class="h" x="551" y="78">④ 聚合</text>
+  <text class="s" x="551" y="100">口径 + 区间</text>
+  <text class="s" x="551" y="118">+ 切片</text>
+
+  <path class="arrow" d="M618 92 L640 92"/>
+
+  <rect class="d" x="644" y="52" width="126" height="80" rx="8"/>
+  <text class="h" x="707" y="78">⑤ 报告</text>
+  <text class="s" x="707" y="100">只增不改</text>
+  <text class="s" x="707" y="118">带时间戳</text>
+
+  <path class="arrow" d="M774 92 L790 92"/>
+
+  <rect class="c" x="794" y="52" width="46" height="80" rx="8"/>
+  <text class="s" x="817" y="88">⑥</text>
+  <text class="s" x="817" y="106">判定</text>
+
+  <rect class="g" x="20" y="158" width="240" height="96" rx="8"/>
+  <text class="h" x="140" y="182">目录五层</text>
+  <text class="s" x="140" y="204">datasets / judges / configs</text>
+  <text class="s" x="140" y="222">/ eval / reports</text>
+  <text class="s" x="140" y="242">样本只读，报告只增</text>
+
+  <rect class="g" x="276" y="158" width="240" height="96" rx="8"/>
+  <text class="h" x="396" y="182">三条省钱优化</text>
+  <text class="s" x="396" y="204">判分缓存（key 含判官版本）</text>
+  <text class="s" x="396" y="222">按需跑切片</text>
+  <text class="s" x="396" y="242">先 L1 后 L2</text>
+
+  <rect class="g" x="532" y="158" width="308" height="96" rx="8"/>
+  <text class="h" x="686" y="182">验收 S1~S10</text>
+  <text class="s" x="686" y="204">S5：删掉全部结果 → 必须 error</text>
+  <text class="s" x="686" y="222">S4：注入退步 → 必须 fail</text>
+  <text class="s" x="686" y="242">S7：连跑 5 次 → 抖动小于容差一半</text>
+
+  <rect class="c" x="20" y="270" width="820" height="56" rx="8"/>
+  <text class="m" x="430" y="294">最危险的兜底：空结果被 max(len,1) 兜成 0 或 100 分。要让它报错，不要让它「有值」。</text>
+  <text class="m" x="430" y="314">300 行脚本能跑通 S1~S10 再上平台——反过来往往连指纹校验都没落地。</text>
+
+</svg>

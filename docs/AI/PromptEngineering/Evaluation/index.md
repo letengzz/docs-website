@@ -93,6 +93,19 @@ python evaluate.py --dataset gold.json --prompt v1.2
 2. 修改提示词后对比指标，确认提升方向。
 3. 对 LLM-as-judge 结果抽样人工复核。
 
+## 与『评测工程』专题的分工（第 171 天补充）
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| 黄金集怎么建、judge 提示怎么写 | [提示词评估](index.md)（本页） |
+| 黄金集要多少条才够卡门禁 | [评测集构建与冻结](../../EvalEngineering/DatasetDesign/index.md) |
+| 20 条样本上的 A/B 为什么不可信 | [区间、检验与样本量](../../EvalEngineering/Statistics/index.md) |
+| 成对比较的位置偏差怎么处理 | [判官校准](../../EvalEngineering/JudgeCalibration/index.md) |
+
+::: danger 本页特有的一个坑：20 条黄金集上的「+2pt」是噪声
+提示词改版最常见的做法是拿 20 条黄金集跑一遍，看到 18/20 变 19/20 就认为「提升 5 个点」。**20 条样本的 95% 区间半宽约 ±17pt**——这个提升完全在噪声里。要么把黄金集扩到 300 条（半宽 ±4.5pt），要么改用**成对 + 交换顺序**的方式只回答「这一条比上一条好吗」，并把结论限定为「方向性参考，不作为发布依据」。
+:::
+
 ## 参考资料
 
 - 评估最佳实践：https://developers.openai.com/api/docs/guides/evaluation-best-practices

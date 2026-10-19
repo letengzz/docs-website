@@ -147,7 +147,7 @@ verifycheck: 判定分布 OK=30 E2=0 W1=3 W2=0    ← 30 页都有验证节；3 
 | 想改什么 | 先读这一章 | 再读（判据来源） |
 | --- | --- | --- |
 | 指标口径与标签 | [业务侧指标暴露](../MetricsEndpoint/index.md) | `EP-A~EP-H` |
-| 抓取目标与间隔 | [抓取配置](../ScrapeConfig/index.md) | `SC-A~SC-G` |
+| 抓取目标与间隔 | [抓取配置](../ScrapeConfig/index.md) | `SCR-A~SCR-G` |
 | 预聚合与告警规则 | [查询与规则](../Rules/index.md) / [规则热更新](../RuleReload/index.md) | `RL-A~RL-G` / `RR-A~RR-H` |
 | 大盘数据接口 | [看板数据服务](../DashboardAPI/index.md) | `DA-A~DA-H` |
 | 告警送达与抑制 | [告警路由联调](../AlertRouting/index.md) | `AR-A~AR-H` |

@@ -143,6 +143,19 @@ deepeval test run tests/test_smoke.py; echo "exit=$?"    # 期望：exit=0
 #    期望：两条命令的退出码不同
 ```
 
+## 与『评测工程』专题的分工（第 171 天补充）
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| 这条流水线怎么从观测平台取样本、怎么定时跑、怎么把结果写回 trace | [离线评估与回归门禁](../../LLMObservability/OfflineEval/index.md)（本页） |
+| 判官与人工到底差多远、κ 怎么算 | [人工基线与一致性](../../EvalEngineering/HumanAlignment/index.md) |
+| 差 2 个点算不算真的变好 | [区间、检验与样本量](../../EvalEngineering/Statistics/index.md) |
+| 门禁红了之后怎么定位到样本 | [变红归因](../../EvalEngineering/Attribution/index.md) |
+
+::: danger 本页特有的一个坑：负反馈不等于「答错」
+从观测平台回流样本时，最省事的做法是把「用户点了踩」直接当 `fail` 标签。这一步会把两个不同的东西混成一个：**负反馈衡量的是体验（语气、长度、速度），不是正确性**。用它当金标去校准判官，κ 会莫名其妙地低——因为判官按 rubric 判的是事实正确性，而标签记的是用户情绪。正确做法是：负反馈只用来**决定哪些样本值得进人工队列**，标签仍由标注者按手册判定；两者的一致率单独算一个数，作为「体验与正确性的偏离度」观测。
+:::
+
 ## 参考资料
 
 - DeepEval 文档（pytest 形态的指标与门禁）：https://docs.confident-ai.com/

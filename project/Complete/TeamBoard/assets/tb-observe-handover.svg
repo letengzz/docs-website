@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.5; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.5; }
+    .c { fill: #fdeeee; stroke: #c95555; stroke-width: 1.5; }
+    .d { fill: #fff8e6; stroke: #d9a441; stroke-width: 1.5; }
+    .g { fill: #f4f5f7; stroke: #9aa3b2; stroke-width: 1.2; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .m { font-size: 11px; fill: #2b2b2b; }
+    .arrow { stroke: #8a94a6; stroke-width: 1.5; fill: none; marker-end: url(#ar); }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+  <text class="t" x="430" y="26">观察窗与交接：两条线并行，出口都可验收</text>
+
+  <rect class="a" x="20" y="48" width="400" height="248" rx="8"/>
+  <text class="h" x="220" y="72">观察窗（长度 = f(流量, 目标检出率)）</text>
+
+  <rect class="g" x="36" y="86" width="176" height="42" rx="6"/>
+  <text class="m" x="124" y="104">错误率 5xx</text>
+  <text class="s" x="124" y="120">连续 3 窗口 &gt; p99 → 回滚</text>
+
+  <rect class="g" x="228" y="86" width="176" height="42" rx="6"/>
+  <text class="m" x="316" y="104">延迟 p95（含重试）</text>
+  <text class="s" x="316" y="120">1.5 倍基线 10 min → 查依赖</text>
+
+  <rect class="g" x="36" y="136" width="176" height="42" rx="6"/>
+  <text class="m" x="124" y="154">业务信号</text>
+  <text class="s" x="124" y="170">低于基线 70% → 回滚</text>
+
+  <rect class="c" x="228" y="136" width="176" height="42" rx="6"/>
+  <text class="m" x="316" y="154">租户异常（红线）</text>
+  <text class="s" x="316" y="170">跨租户 403 &gt; 0 → 无条件回滚</text>
+
+  <rect class="b" x="36" y="190" width="110" height="40" rx="6"/>
+  <text class="m" x="91" y="206">通过</text>
+  <text class="s" x="91" y="221">四类均未越线</text>
+
+  <rect class="c" x="156" y="190" width="110" height="40" rx="6"/>
+  <text class="m" x="211" y="206">回滚</text>
+  <text class="s" x="211" y="221">任一红线触发</text>
+
+  <rect class="d" x="276" y="190" width="128" height="40" rx="6"/>
+  <text class="m" x="340" y="206">延长（只许一次）</text>
+  <text class="s" x="340" y="221">须写理由与批复人</text>
+
+  <text class="s" x="220" y="256">观察窗最常见的失效：只看第一行</text>
+  <text class="s" x="220" y="274">跨租户泄漏的形态是 200 + 空结果，错误率完全不动</text>
+
+  <rect class="d" x="440" y="48" width="400" height="248" rx="8"/>
+  <text class="h" x="640" y="72">交接包六件 + 演练三步</text>
+  <text class="m" x="640" y="96">① 拓扑一页纸    ② 告警映射（动作/人/误报）</text>
+  <text class="m" x="640" y="118">③ 值班手册      ④ 已知风险清单</text>
+  <text class="m" x="640" y="140">⑤ 密钥位置（不写值）  ⑥ 回滚点 digest</text>
+  <text class="s" x="640" y="164">六件的哈希 → pack_sha256，写进发布单</text>
+
+  <rect class="b" x="458" y="180" width="118" height="46" rx="6"/>
+  <text class="m" x="517" y="198">抽问 3 条告警</text>
+  <text class="s" x="517" y="214">60 秒说出先看什么</text>
+
+  <rect class="b" x="586" y="180" width="118" height="46" rx="6"/>
+  <text class="m" x="645" y="198">非开发者处置故障</text>
+  <text class="s" x="645" y="214">全程不求助</text>
+
+  <rect class="b" x="714" y="180" width="110" height="46" rx="6"/>
+  <text class="m" x="769" y="198">独立判定回滚</text>
+  <text class="s" x="769" y="214">说出 digest 与标签</text>
+
+  <text class="s" x="640" y="252">交接的完成不是「我说完了」，而是「他能做」</text>
+  <text class="s" x="640" y="272">用没参与本期开发的人演练，否则等于没演练</text>
+
+  <rect class="c" x="20" y="318" width="820" height="56" rx="8"/>
+  <text class="m" x="430" y="342">静默期长度必须等于观察窗：窗口内出问题要能唯一归因到本次变更；</text>
+  <text class="m" x="430" y="362">观察窗通过只等于「没有超过阈值的退化」——没越线的小退化要写进已知风险，否则随交接丢失。</text>
+</svg>

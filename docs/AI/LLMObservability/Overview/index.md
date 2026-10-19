@@ -166,6 +166,19 @@ python3 tracing_min.py
 **先决定采样策略，再决定「要留哪些字段」。** LLM 的输入输出是天然的高成本大字段，一旦决定全量保留，之后想降成本就只能改历史数据的口径——而历史数据改不了。所以本页的[平台选型](../Platforms/index.md)与基础设施侧的[采样决策](../../../Ops/Observability/Sampling/index.md)必须**同时评审**：采样器决定「有多少条进来」，字段策略决定「每条有多重」，两者相乘才是账单。
 :::
 
+## 与『评测工程』专题的分工（第 171 天补充）
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| 观测三层信号怎么设计、trace 记什么 | [LLM 可观测性](index.md)（本页） |
+| 「指标算对了但口径不可比」怎么破 | [指标口径](../../EvalEngineering/MetricsDefinition/index.md) |
+| 判官作为 evaluator 时的偏差与校准 | [判官校准](../../EvalEngineering/JudgeCalibration/index.md) |
+| 评测结论怎么进发布门禁 | [回归门禁](../../EvalEngineering/RegressionGate/index.md) |
+
+::: danger 本页特有的一个坑：「四类正常但错」里有一类其实是口径问题
+本页的四类失败模式中，「指标对但结论错」这一类经常被误当成模型问题排查。它的典型形态是：两次运行的指标定义、样本组成或判官版本变了，**数字本身没算错，但不可比**。判断方法只有一条：把 `dataset_hash`、`judge_version`、指标契约三样摆在一起看，任何一项不同就先对齐，再谈「模型是不是退化了」。
+:::
+
 ## 参考资料
 
 - OpenTelemetry GenAI 语义约定（span、属性、指标与事件定义）：https://github.com/open-telemetry/semantic-conventions-genai

@@ -284,6 +284,19 @@ print('相对提升:', r['accuracy_delta_vs_base'])
 python gate_check.py && echo "门禁通过" || echo "已阻断"
 ```
 
+## 与『评测工程』专题的分工（第 171 天补充）
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| 微调前后怎么对比、双基准怎么跑 | [微调评估](index.md)（本页） |
+| 换判官后「提升」可能是尺子变了 | [判官校准](../../EvalEngineering/JudgeCalibration/index.md) |
+| 提升几个点才算真的提升 | [区间、检验与样本量](../../EvalEngineering/Statistics/index.md) |
+| 过拟合评测集怎么发现 | [评测集构建与冻结](../../EvalEngineering/DatasetDesign/index.md) |
+
+::: danger 本页特有的一个坑：双基准对照必须锁定判官版本
+「新模型 vs 旧模型」的对照里，最容易被忽略的变量是**判官换没换**。如果两次运行之间判官从 v2 升到 v3，那么「提升 3 个点」里可能有一半来自判官变松。做法很简单也很硬：对照实验的 `judge_version` 必须逐字相同（模型名 + rubric 哈希 + 温度），不同就重跑旧模型，**不要用历史报告里的旧分数当基线**。
+:::
+
 ## 参考资料
 
 - [Hugging Face Evaluate 库](https://huggingface.co/docs/evaluate/index)

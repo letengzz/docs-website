@@ -143,6 +143,19 @@ if __name__ == "__main__":
 另有一条无法用模型打分覆盖的第五维：**语料可信度**（内容是否最新、有无责任人、是否与权威源一致）。**忠实度 0.95 的系统可以非常忠实地复述一个作废口径**，本页的三层指标对这个缺陷完全无感。
 :::
 
+## 与『评测工程』专题的分工（第 171 天补充）
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| faithfulness / recall 怎么定义、badcase 怎么归因 | [RAG 评估](index.md)（本页） |
+| 判官给的 faithfulness 分数可信吗 | [判官校准](../../EvalEngineering/JudgeCalibration/index.md) |
+| badcase 差 3 条算不算回归 | [区间、检验与样本量](../../EvalEngineering/Statistics/index.md) |
+| 归因结论怎么写才可交接 | [变红归因](../../EvalEngineering/Attribution/index.md) |
+
+::: danger 本页特有的一个坑：用未校准的判官做 badcase 归因，方向会反
+badcase 归因的第一步通常是「判官说这条不忠实」→ 归到生成侧。但如果判官本身对「引用 context 之外的同义改写」过敏（这是 faithfulness 判官最常见的假阳性），归因会把**检索不足**误判成**生成幻觉**，于是去改提示词而真正该修的是召回。最低控制：抽 30 条被归因为「不忠实」的样本人工复核，**假阳性率超过 20% 就先修判官，再谈归因**。
+:::
+
 ## 参考资料
 
 - 评估最佳实践（官方文档）：https://developers.openai.com/api/docs/guides/evaluation-best-practices
