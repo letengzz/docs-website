@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="交付效能度量：三个来源、五张表、三条视图与四个读数">
+  <title>交付效能度量：三个来源、五张表、三条视图与四个读数</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="32" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">交付效能度量：三个来源、五张表、三条视图与四个读数</text>
+
+  <rect x="40" y="62" width="180" height="72" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="130" y="88" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">版本库</text>
+  <text x="130" y="103" font-size="9.6" fill="#475569" text-anchor="middle">merge_sha · first_commit_at</text>
+  <text x="130" y="118" font-size="9.6" fill="#475569" text-anchor="middle">author（含 [bot]）</text>
+
+  <rect x="250" y="62" width="180" height="72" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="340" y="88" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">发布系统</text>
+  <text x="340" y="103" font-size="9.6" fill="#475569" text-anchor="middle">deployed_at（健康检查通过）</text>
+  <text x="340" y="118" font-size="9.6" fill="#475569" text-anchor="middle">trigger · build_digest</text>
+
+  <rect x="460" y="62" width="180" height="72" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="550" y="88" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">事件记录</text>
+  <text x="550" y="103" font-size="9.6" fill="#475569" text-anchor="middle">detected_at · recovered_at</text>
+  <text x="550" y="118" font-size="9.6" fill="#475569" text-anchor="middle">severity</text>
+
+  <rect x="670" y="62" width="190" height="72" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="765" y="88" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">口径注册表</text>
+  <text x="765" y="103" font-size="9.6" fill="#475569" text-anchor="middle">metric · ver · scope</text>
+  <text x="765" y="118" font-size="9.6" fill="#475569" text-anchor="middle">effective_from · retired_at</text>
+
+  <path d="M 130 134 L 130 168" fill="none" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#ab)"/>
+  <path d="M 340 134 L 340 168" fill="none" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#ab)"/>
+  <path d="M 550 134 L 550 168" fill="none" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#ab)"/>
+  <path d="M 765 134 L 765 168" fill="none" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#ab)"/>
+
+  <rect x="40" y="170" width="820" height="66" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="450" y="196" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">platform schema（租户不可见）：eng_change · eng_deploy · eng_deploy_change · eng_incident · metric_def</text>
+  <text x="450" y="214" font-size="9.6" fill="#475569" text-anchor="middle">不复用 board_events：业务事件带 tenant_id 走 RLS，且 13 个月归档会删掉度量历史</text>
+
+  <path d="M 450 236 L 450 262" fill="none" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#ab)"/>
+
+  <rect x="70" y="264" width="240" height="62" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="190" y="288" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">v_lead_time</text>
+  <text x="190" y="304" font-size="9.6" fill="#475569" text-anchor="middle">ORDER BY deployed_at LIMIT 1</text>
+
+  <rect x="330" y="264" width="240" height="62" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="450" y="288" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">v_cfr_by_deploy</text>
+  <text x="450" y="304" font-size="9.6" fill="#475569" text-anchor="middle">LEFT JOIN 失败表（零失败要保留）</text>
+
+  <rect x="590" y="264" width="240" height="62" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="710" y="288" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">v_batch_size</text>
+  <text x="710" y="304" font-size="9.6" fill="#475569" text-anchor="middle">博弈指纹：一次部署带多少变更</text>
+
+  <rect x="40" y="346" width="190" height="62" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="135" y="370" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">P50 81.0h / P90 129.0h</text>
+  <text x="135" y="386" font-size="9.6" fill="#475569" text-anchor="middle">n=900（bot 60）</text>
+
+  <rect x="248" y="346" width="190" height="62" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="343" y="370" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">2.04 次/周</text>
+  <text x="343" y="386" font-size="9.6" fill="#475569" text-anchor="middle">51 次 / 25.00 周</text>
+
+  <rect x="456" y="346" width="190" height="62" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="551" y="370" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">CFR 7.8% / 返工 7.8%</text>
+  <text x="551" y="386" font-size="9.6" fill="#475569" text-anchor="middle">按变更算 8.7%（78/900）</text>
+
+  <rect x="664" y="346" width="190" height="62" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="759" y="370" font-size="11.6" font-weight="700" fill="#0f172a" text-anchor="middle">平均批次 20.5 / 最大 30</text>
+  <text x="759" y="386" font-size="9.6" fill="#475569" text-anchor="middle">唯一影响五个指标的变量</text>
+
+  <rect x="40" y="428" width="814" height="52" rx="7" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/>
+  <text x="447" y="450" font-size="11.2" fill="#0f172a" text-anchor="middle" font-weight="700">交付读数必须进值班交接包第一屏：值班不该只看到告警，还要看到「最近变快还是变慢」</text>
+  <text x="447" y="468" font-size="9.6" fill="#475569" text-anchor="middle">全量五指标查询：19 个共享块 / 1.124 ms（900 行规模，不需要物化视图）</text>
+</svg>

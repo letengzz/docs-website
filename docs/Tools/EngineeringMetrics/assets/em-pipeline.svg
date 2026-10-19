@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="度量管道：五张表、一条关联链、六条校验">
+  <title>度量管道：五张表、一条关联链、六条校验</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="500" fill="#f8fafc"/>
+  <text x="450.0" y="34" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">度量管道：五张表、一条关联链、六条校验</text>
+  <rect x="50" y="90" width="152" height="132" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="126.0" y="112" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">change</text>
+  <text x="126.0" y="127.0" font-size="9.8" fill="#475569" text-anchor="middle">change_id</text>
+  <text x="126.0" y="141.5" font-size="9.8" fill="#475569" text-anchor="middle">first_commit_at</text>
+  <text x="126.0" y="156.0" font-size="9.8" fill="#475569" text-anchor="middle">merged_at</text>
+  <text x="126.0" y="170.5" font-size="9.8" fill="#475569" text-anchor="middle">merge_sha ⭑</text>
+  <rect x="218" y="90" width="152" height="132" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="294.0" y="112" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">deploy</text>
+  <text x="294.0" y="127.0" font-size="9.8" fill="#475569" text-anchor="middle">deploy_id</text>
+  <text x="294.0" y="141.5" font-size="9.8" fill="#475569" text-anchor="middle">deployed_at</text>
+  <text x="294.0" y="156.0" font-size="9.8" fill="#475569" text-anchor="middle">trigger</text>
+  <rect x="386" y="90" width="152" height="132" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="462.0" y="112" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">deploy_change</text>
+  <text x="462.0" y="127.0" font-size="9.8" fill="#475569" text-anchor="middle">deploy_id</text>
+  <text x="462.0" y="141.5" font-size="9.8" fill="#475569" text-anchor="middle">change_id</text>
+  <rect x="554" y="90" width="152" height="132" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="630.0" y="112" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">incident</text>
+  <text x="630.0" y="127.0" font-size="9.8" fill="#475569" text-anchor="middle">incident_id</text>
+  <text x="630.0" y="141.5" font-size="9.8" fill="#475569" text-anchor="middle">deploy_id</text>
+  <text x="630.0" y="156.0" font-size="9.8" fill="#475569" text-anchor="middle">detected_at</text>
+  <rect x="722" y="90" width="152" height="132" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="798.0" y="112" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">metric_def</text>
+  <text x="798.0" y="127.0" font-size="9.8" fill="#475569" text-anchor="middle">metric / ver</text>
+  <text x="798.0" y="141.5" font-size="9.8" fill="#475569" text-anchor="middle">formula</text>
+  <text x="798.0" y="156.0" font-size="9.8" fill="#475569" text-anchor="middle">effective_from</text>
+  <path d="M 202 156 L 218 156" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="450" y="250" font-size="10.8" fill="#0f172a" text-anchor="middle" font-weight="700">关联链：merge_sha（变更↔提交） · (service, deployed_at)（部署↔发布） · deploy_id（部署↔故障）</text>
+  <rect x="50" y="275" width="390" height="96" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="245.0" y="297" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">去重三规则</text>
+  <text x="245.0" y="312.0" font-size="9.8" fill="#475569" text-anchor="middle">按 merge_sha 去重 · 机器人可过滤（6.7%）</text>
+  <text x="245.0" y="326.5" font-size="9.8" fill="#475569" text-anchor="middle">回滚 / 热修单独标 trigger</text>
+  <rect x="460" y="275" width="390" height="96" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="655.0" y="297" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">六条质量校验</text>
+  <text x="655.0" y="312.0" font-size="9.8" fill="#475569" text-anchor="middle">孤儿关联 / 时间倒挂 / 未来时间</text>
+  <text x="655.0" y="326.5" font-size="9.8" fill="#475569" text-anchor="middle">重复 sha / 未部署 / bot 占比突变</text>
+  <rect x="50" y="390" width="800" height="62" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="450.0" y="425.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">本机实测：900 条变更 + 51 次部署，全量五指标  19 个共享块 / 1.124 ms</text>
+</svg>

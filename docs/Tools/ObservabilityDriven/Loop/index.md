@@ -14,7 +14,7 @@
 
 - 不讲指标怎么定、埋点怎么写（归 [指标先行](../MetricsFirst/index.md) 与 [埋点规范](../Instrumentation/index.md)）。
 - 不讲看板工具的画法与查询语法，归 [监控系统](/docs/Ops/Monitoring/Overview/index.md) 与 [Grafana](/docs/Ops/Monitoring/Grafana/index.md)。
-- 不讲研发效能的度量体系（那是 [研发效能度量](/docs/Tools/Efficiency/Overview/index.md) 的范畴），本页只讲**观测数据本身**的闭环。
+- 不讲研发效能的度量体系（那是 [研发效能度量](/docs/Tools/EngineeringMetrics/Overview/index.md) 的范畴），本页只讲**观测数据本身**的闭环。
 
 ## 一、闭环的判据：读数必须改变过什么
 
@@ -190,5 +190,5 @@ done
 - [Brendan Gregg · The USE Method](https://www.brendangregg.com/usemethod.html)——按「资源 → 指标」组织观测的方法，与「按场景组织看板」互补
 - [OpenTelemetry · Observability primer](https://opentelemetry.io/docs/concepts/observability-primer/)——信号与语义约定，指标腐化常源于偏离约定
 - [Prometheus · Best practices for dashboards](https://prometheus.io/docs/practices/consoles/)——看板的使用者与场景优先于技术栈
-- 本站 [监控系统](/docs/Ops/Monitoring/Overview/index.md) · [Grafana](/docs/Ops/Monitoring/Grafana/index.md) · [事故响应](/docs/Ops/IncidentResponse/index.md) · [研发效能度量](/docs/Tools/Efficiency/Overview/index.md)
+- 本站 [监控系统](/docs/Ops/Monitoring/Overview/index.md) · [Grafana](/docs/Ops/Monitoring/Grafana/index.md) · [事故响应](/docs/Ops/IncidentResponse/index.md) · [研发效能度量](/docs/Tools/EngineeringMetrics/Overview/index.md)
 - 相邻：[总览](./../Overview/index.md) · [告警设计](./../AlertDesign/index.md) · [指标先行](./../MetricsFirst/index.md)

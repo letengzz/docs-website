@@ -178,6 +178,19 @@ grep -rn "computed_class\|override_reason" --include="*.sql" --include="*.md" . 
 | 紧急单怎么走 | [紧急变更](../EmergencyChange/index.md) |
 | 失败率怎么算、口径怎么定 | [常见问题](../FAQ/index.md) 第六节 |
 
+## 与「研发效能度量」专题的分工（第 172 天补充）
+
+本页的分级回答「这次变更该走几道门」；[研发效能度量](../../../Tools/EngineeringMetrics/index.md) 回答「这些门让交付变成多长」。两者在**返工率**上交汇：分级里的「紧急变更」包含回滚与热修，而 DORA 的返工率只数**非计划、由生产事件触发的部署**。
+
+| 问题 | 归本页 | 归研发效能度量 |
+| --- | --- | --- |
+| 三维打分、分级规则、哪个级别要几道审批 | ✅ | —— |
+| 分级规则少一个否定词导致 `CREATE INDEX` 拿 26 分 | ✅ 本页的实测 | —— |
+| 返工率的分母是变更单还是部署 | —— | ✅ [交付指标](../../../Tools/EngineeringMetrics/DeliveryMetrics/index.md) |
+| 分级带来的等待占交付周期多少 | —— | ✅ [流动指标](../../../Tools/EngineeringMetrics/FlowMetrics/index.md) 的流动效率 |
+
+**本页特有的坑**：变更单与部署不是一对一。一次部署可能带 20 个变更（本项目实测平均 20.5、最大 30），也可能一个变更被部署多次（回滚后重发）。因此**返工率不能按变更单算**——按变更单算会把一次回滚记成一次返工，而实际受影响的是一整批；分母必须落到部署上。
+
 ## 参考资料
 
 - ITIL 4：*Change Enablement*（Standard / Normal / Emergency 三型的定义与授权差异）

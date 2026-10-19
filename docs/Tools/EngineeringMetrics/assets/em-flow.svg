@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="流动效率：100 小时里只有 12 小时在加工">
+  <title>流动效率：100 小时里只有 12 小时在加工</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="500" fill="#f8fafc"/>
+  <text x="450.0" y="34" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">流动效率：100 小时里只有 12 小时在加工</text>
+  <rect x="60" y="120" width="202.8" height="58" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+  <text x="161.4" y="146" font-size="10.2" fill="#0f172a" text-anchor="middle" font-weight="700">等排期</text>
+  <text x="161.4" y="164" font-size="9.6" fill="#475569" text-anchor="middle" font-weight="400">26h</text>
+  <rect x="262.8" y="120" width="46.8" height="58" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="286.2" y="146" font-size="10.2" fill="#0f172a" text-anchor="middle" font-weight="700">开发</text>
+  <text x="286.2" y="164" font-size="9.6" fill="#475569" text-anchor="middle" font-weight="400">6h</text>
+  <rect x="309.6" y="120" width="140.4" height="58" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+  <text x="379.8" y="146" font-size="10.2" fill="#0f172a" text-anchor="middle" font-weight="700">等评审</text>
+  <text x="379.8" y="164" font-size="9.6" fill="#475569" text-anchor="middle" font-weight="400">18h</text>
+  <rect x="450.0" y="120" width="15.6" height="58" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.2"/>
+  <rect x="465.6" y="120" width="109.20000000000002" height="58" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+  <text x="520.2" y="146" font-size="10.2" fill="#0f172a" text-anchor="middle" font-weight="700">等测试</text>
+  <text x="520.2" y="164" font-size="9.6" fill="#475569" text-anchor="middle" font-weight="400">14h</text>
+  <rect x="574.8000000000001" y="120" width="31.2" height="58" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.2"/>
+  <rect x="606.0000000000001" y="120" width="234.0" height="58" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+  <text x="723.0000000000001" y="146" font-size="10.2" fill="#0f172a" text-anchor="middle" font-weight="700">等发布窗口</text>
+  <text x="723.0000000000001" y="164" font-size="9.6" fill="#475569" text-anchor="middle" font-weight="400">30h</text>
+  <text x="60" y="205" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">增值 12h  /  总计 100h  ⇒  流动效率 12.0%；等待 : 增值 = 7.3 : 1</text>
+  <rect x="60" y="240" width="370" height="96" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="245.0" y="262" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">把开发提速一倍（6h → 3h）</text>
+  <text x="245.0" y="277.0" font-size="9.8" fill="#475569" text-anchor="middle">总时长 100 → 97h，改善 3%</text>
+  <text x="245.0" y="291.5" font-size="9.8" fill="#475569" text-anchor="middle">瓶颈不在加工，在等待</text>
+  <rect x="470" y="240" width="370" height="96" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="655.0" y="262" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">把发布窗口从 30h 压到 12h</text>
+  <text x="655.0" y="277.0" font-size="9.8" fill="#475569" text-anchor="middle">总时长 100 → 82h，改善 18%</text>
+  <text x="655.0" y="291.5" font-size="9.8" fill="#475569" text-anchor="middle">同一个团队、同样的代码量</text>
+  <rect x="60" y="360" width="780" height="92" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="450.0" y="382" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">Little 定律：L = λ × W（在制品 = 吞吐 × 周期）</text>
+  <text x="450.0" y="397.0" font-size="9.8" fill="#475569" text-anchor="middle">WIP 12 / 24 / 36，吞吐 1.2 项/天  ⇒  周期 10 / 20 / 30 天</text>
+  <text x="450.0" y="411.5" font-size="9.8" fill="#475569" text-anchor="middle">WIP 上限 = 目标周期 × 吞吐（再留 10% 缓冲），写进看板配置</text>
+</svg>

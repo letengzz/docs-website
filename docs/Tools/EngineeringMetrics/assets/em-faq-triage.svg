@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="按现象分诊，而不是按指标名">
+  <title>按现象分诊，而不是按指标名</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="500" fill="#f8fafc"/>
+  <text x="450.0" y="34" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">按现象分诊，而不是按指标名</text>
+  <rect x="330" y="64" width="240" height="62" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="450.0" y="99.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">现象：周期时间没变但很慢</text>
+  <rect x="60" y="190" width="180" height="84" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="150.0" y="212" font-size="10.8" font-weight="700" fill="#0f172a" text-anchor="middle">两团队差 3 倍</text>
+  <text x="150.0" y="227.0" font-size="9.4" fill="#475569" text-anchor="middle">口径不同</text>
+  <text x="150.0" y="241.5" font-size="9.4" fill="#475569" text-anchor="middle">→ Overview</text>
+  <path d="M 450 126 L 150 186" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+  <rect x="260" y="190" width="180" height="84" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="350.0" y="212" font-size="10.8" font-weight="700" fill="#0f172a" text-anchor="middle">均值 3 天但一半超一周</text>
+  <text x="350.0" y="227.0" font-size="9.4" fill="#475569" text-anchor="middle">均值掩盖长尾</text>
+  <text x="350.0" y="241.5" font-size="9.4" fill="#475569" text-anchor="middle">→ Dashboard</text>
+  <path d="M 450 126 L 350 186" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+  <rect x="460" y="190" width="180" height="84" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="550.0" y="212" font-size="10.8" font-weight="700" fill="#0f172a" text-anchor="middle">CFR 低但总 hotfix</text>
+  <text x="550.0" y="227.0" font-size="9.4" fill="#475569" text-anchor="middle">静默不稳定</text>
+  <text x="550.0" y="241.5" font-size="9.4" fill="#475569" text-anchor="middle">→ QualityMetrics</text>
+  <path d="M 450 126 L 550 186" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+  <rect x="660" y="190" width="180" height="84" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="750.0" y="212" font-size="10.8" font-weight="700" fill="#0f172a" text-anchor="middle">承诺 6 周第 7 周没发</text>
+  <text x="750.0" y="227.0" font-size="9.4" fill="#475569" text-anchor="middle">单点=50% 承诺</text>
+  <text x="750.0" y="241.5" font-size="9.4" fill="#475569" text-anchor="middle">→ Estimation</text>
+  <path d="M 450 126 L 750 186" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+  <rect x="60" y="310" width="780" height="78" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="450.0" y="332" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">六成现象的根因是口径，不是流程</text>
+  <text x="450.0" y="347.0" font-size="9.8" fill="#475569" text-anchor="middle">先花五分钟对齐四要素：主体 / 起止事件 / 分子分母 / 聚合方式</text>
+  <rect x="60" y="404" width="780" height="58" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="450.0" y="436.8333333333333" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">对不上口径时，任何「为什么慢」的讨论都会变成两套协议的对撞</text>
+</svg>

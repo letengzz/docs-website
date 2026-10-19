@@ -250,6 +250,19 @@ WIP：status in ("In Progress","In Review","Ready to Test") 的实时计数
 - [完整项目交付 · 需求拆分与验收条件](../../../Others/ProjectDelivery/Requirements/index.md)：本页讲**流程怎么流转**，该页讲**一条需求怎样才算拆到可验收**——用户故事 INVEST 准则、Given/When/Then 四类验收条件、非功能需求的可验收写法，以及变更影响面 L1/L2/L3 分级
 - [完整项目交付 · 架构设计与技术选型](../../../Others/ProjectDelivery/Architecture/index.md)：ADR（架构决策记录）四段式与「可逆 / 不可逆」决策分类——把评审结论固化成文档而不是散在群聊里
 
+## 与「研发效能度量」专题的分工（第 172 天补充）
+
+本页第五节给的是「四个指标 + JQL 取数思路」的**速查表**，回答「流程定了之后大致看什么」。至于「这个数怎么算才不被质疑、样本够不够、会不会被博弈」，归[研发效能度量](../../EngineeringMetrics/index.md)。
+
+| 问题 | 归本页 | 归研发效能度量 |
+| --- | --- | --- |
+| 流程该有哪四道门禁、迭代多长、分支怎么走 | ✅ | —— |
+| 周期时间的起点取「创建」还是「进入进行中」 | 只能给建议 | ✅ [流动指标](../../EngineeringMetrics/FlowMetrics/index.md) |
+| 四个指标的分子分母、聚合方式、计数边界 | —— | ✅ [交付指标](../../EngineeringMetrics/DeliveryMetrics/index.md) |
+| 表里那句「健康趋势：下降」凭什么说是下降 | —— | ✅ [估算与预测](../../EngineeringMetrics/Estimation/index.md) 的样本量与区间 |
+
+**本页特有的坑**：第五节把「前置时间」与「周期时间」并列在同一张表里，读者很容易顺手拿两者互相比较。它们的起点差一整段排队——同一个变更按创建算是 10.6 天、按进入进行中算是 2.1 天（5.0 倍）。两者只能各自看趋势，**不能相减**，相减得到的「排队时间」只在这个口径下成立。
+
 ## 参考资料
 
 - Scrum Guide（2020）：https://scrumguides.org/

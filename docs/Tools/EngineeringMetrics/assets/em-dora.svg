@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="DORA 五个指标落在时间轴的哪一段">
+  <title>DORA 五个指标落在时间轴的哪一段</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="500" fill="#f8fafc"/>
+  <text x="450.0" y="34" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">DORA 五个指标落在时间轴的哪一段</text>
+  <path d="M 80 170 L 820 170" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="80" cy="170" r="7" fill="#be123c"/>
+  <text x="80" y="156" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="700">首个提交</text>
+  <circle cx="300" cy="170" r="7" fill="#be123c"/>
+  <text x="300" y="156" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="700">部署</text>
+  <circle cx="520" cy="170" r="7" fill="#be123c"/>
+  <text x="520" y="156" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="700">失败判定</text>
+  <circle cx="700" cy="170" r="7" fill="#be123c"/>
+  <text x="700" y="156" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="700">服务恢复</text>
+  <path d="M 80 205 L 300 205" stroke="#0f766e" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="190.0" y="197" font-size="10.2" fill="#0f766e" text-anchor="middle" font-weight="700">change lead time</text>
+  <path d="M 300 232 L 520 232" stroke="#be123c" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="410.0" y="224" font-size="10.2" fill="#be123c" text-anchor="middle" font-weight="700">failed deployment recovery time</text>
+  <rect x="80" y="270" width="350" height="86" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="255.0" y="292" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">吞吐（3 个）</text>
+  <text x="255.0" y="307.0" font-size="9.8" fill="#475569" text-anchor="middle">change lead time · deployment frequency</text>
+  <text x="255.0" y="321.5" font-size="9.8" fill="#475569" text-anchor="middle">failed deployment recovery time</text>
+  <rect x="450" y="270" width="380" height="86" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="640.0" y="292" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">不稳定（2 个）</text>
+  <text x="640.0" y="307.0" font-size="9.8" fill="#475569" text-anchor="middle">change fail rate · deployment rework rate</text>
+  <text x="640.0" y="321.5" font-size="9.8" fill="#475569" text-anchor="middle">2025 报告：新增返工率，抓「悄悄回退」</text>
+  <rect x="80" y="380" width="350" height="68" rx="7" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+  <text x="255.0" y="402" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">本机实测（1 个服务 / 25 周）</text>
+  <text x="255.0" y="417.0" font-size="9.8" fill="#475569" text-anchor="middle">P50 81.0h · 2.04 次/周 · CFR 7.8%</text>
+  <rect x="450" y="380" width="380" height="68" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="640.0" y="402" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">同一批数据的两种分母</text>
+  <text x="640.0" y="417.0" font-size="9.8" fill="#475569" text-anchor="middle">按部署 7.8%（4/51） vs 按变更 8.7%（78/900）</text>
+  <text x="80" y="476" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">官方原话：速度与稳定性不是取舍——高绩效团队五项都好。</text>
+</svg>

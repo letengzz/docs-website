@@ -236,6 +236,19 @@ latest（最新，仅 dev 使用）
 
 **一条本页特有的坑：变更单号不能是自由文本。** 很多流水线在触发参数里留一个 `change_id` 的字符串输入框，结果三分之一是空的、三分之一填的是聊天里的口头编号，事后**没法把「这次发布」和「那次授权」对上**。要么把它变成必填参数并在制品上打标（`build.change_id` 进镜像 label），要么承认它不存在——半吊子的留痕比没有留痕更危险，因为它看起来像有。
 
+## 与「研发效能度量」专题的分工（第 172 天补充）
+
+本页设计流水线的阶段、并行与门禁；对[研发效能度量](../../EngineeringMetrics/index.md) 来说，流水线是**事件源**——它产生的部署记录、构建摘要、失败原因，正是五个指标的原料。
+
+| 问题 | 归本页 | 归研发效能度量 |
+| --- | --- | --- |
+| 阶段怎么划、缓存怎么用、门禁挂在哪 | ✅ | —— |
+| 一次发布里有 migrate / smoke / switch 三个 stage，算几次部署 | 归本页定义 | ✅ [交付指标](../../EngineeringMetrics/DeliveryMetrics/index.md) 的计数边界 |
+| 流水线失败率能不能当「变更失败率」 | —— | ✅ 不能：前者含 lint/单测失败，后者只数生产影响 |
+| 部署记录要留哪些字段才能算指标 | 归本页落地 | ✅ [数据管道](../../EngineeringMetrics/DataPipeline/index.md) 的五张表 |
+
+**本页特有的坑**：如果按**流水线 stage** 统计「部署次数」，一次发布会被算成 3 次（migrate + smoke + switch），部署频率直接翻三倍。计数单位必须是**发布单**（一次让新版本对用户可用），stage 只是它的内部步骤。这个定义要写在流水线模板里，不能靠人记。
+
 ## 参考资料
 
 - GitHub Actions 最佳实践：https://docs.github.com/zh/actions/writing-workflows/choosing-what-your-workflow-does/optimizing-workflow-performance

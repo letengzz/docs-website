@@ -313,3 +313,22 @@ export const TestDataSimulation = [
     ],
   },
 ];
+
+export const EngineeringMetrics = [
+  {
+    text: "研发效能度量",
+    link: "/docs/Tools/EngineeringMetrics/index.md",
+    items: [
+      { text: "总览：三个必答问题与五种失败模式", link: "/docs/Tools/EngineeringMetrics/Overview/index.md" },
+      { text: "流动指标：周期时间、在制品与流动效率", link: "/docs/Tools/EngineeringMetrics/FlowMetrics/index.md" },
+      { text: "交付指标：DORA 五个指标的口径与分母", link: "/docs/Tools/EngineeringMetrics/DeliveryMetrics/index.md" },
+      { text: "估算与预测：速率、蒙特卡洛与承诺的概率", link: "/docs/Tools/EngineeringMetrics/Estimation/index.md" },
+      { text: "质量指标：逃逸、返工与变更失败", link: "/docs/Tools/EngineeringMetrics/QualityMetrics/index.md" },
+      { text: "反指标：古德哈特与度量博弈", link: "/docs/Tools/EngineeringMetrics/AntiMetrics/index.md" },
+      { text: "数据管道：事件、关联、去重与口径版本", link: "/docs/Tools/EngineeringMetrics/DataPipeline/index.md" },
+      { text: "看板表达：让图说真话", link: "/docs/Tools/EngineeringMetrics/Dashboard/index.md" },
+      { text: "实战：给一个团队做一季度度量", link: "/docs/Tools/EngineeringMetrics/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/EngineeringMetrics/FAQ/index.md" },
+    ],
+  },
+];

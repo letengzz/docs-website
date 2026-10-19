@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="变更失败率与返工率的四种组合">
+  <title>变更失败率与返工率的四种组合</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#be123c"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="500" fill="#f8fafc"/>
+  <text x="450.0" y="34" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">变更失败率与返工率的四种组合</text>
+  <rect x="80" y="120" width="350" height="150" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="255.0" y="142" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">CFR 低 + 返工高</text>
+  <text x="255.0" y="157.0" font-size="10" fill="#475569" text-anchor="middle">静默不稳定：没人报障，一直在 revert</text>
+  <text x="255.0" y="171.5" font-size="10" fill="#475569" text-anchor="middle"></text>
+  <rect x="470" y="120" width="350" height="150" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="645.0" y="142" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">CFR 高 + 返工低</text>
+  <text x="645.0" y="157.0" font-size="10" fill="#475569" text-anchor="middle">失败可见，修复走正式流程</text>
+  <text x="645.0" y="171.5" font-size="10" fill="#475569" text-anchor="middle"></text>
+  <rect x="80" y="300" width="350" height="150" rx="7" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="255.0" y="322" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">CFR 低 + 返工低</text>
+  <text x="255.0" y="337.0" font-size="10" fill="#475569" text-anchor="middle">真稳定：保持，别为指标去动它</text>
+  <text x="255.0" y="351.5" font-size="10" fill="#475569" text-anchor="middle"></text>
+  <rect x="470" y="300" width="350" height="150" rx="7" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="645.0" y="322" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">CFR 高 + 返工高</text>
+  <text x="645.0" y="337.0" font-size="10" fill="#475569" text-anchor="middle">又坏又返工：先修主干再发功能</text>
+  <text x="645.0" y="351.5" font-size="10" fill="#475569" text-anchor="middle"></text>
+  <text x="40" y="100" font-size="10.5" fill="#475569" text-anchor="start" font-weight="700">返工率 ↑</text>
+  <text x="40" y="470" font-size="11" fill="#475569" text-anchor="start" font-weight="400">两张表的分母不同：逃逸按工单 25.0%，按根因 14.3%（同一批 240 条缺陷）</text>
+</svg>
