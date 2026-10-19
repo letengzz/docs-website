@@ -688,3 +688,22 @@ export const ContractEvolution = [
     ],
   },
 ];
+
+export const ObjectStorage = [
+  {
+    text: "文件与对象存储工程",
+    link: "/docs/Backend/ObjectStorage/index.md",
+    items: [
+      { text: "总览：三条硬约束与四维成本", link: "/docs/Backend/ObjectStorage/Overview/index.md" },
+      { text: "键空间与命名", link: "/docs/Backend/ObjectStorage/KeysLayout/index.md" },
+      { text: "上传路径与预签名", link: "/docs/Backend/ObjectStorage/UploadPaths/index.md" },
+      { text: "完整性校验", link: "/docs/Backend/ObjectStorage/IntegrityChecksum/index.md" },
+      { text: "去重与内容寻址", link: "/docs/Backend/ObjectStorage/DedupCAS/index.md" },
+      { text: "一致性与并发写", link: "/docs/Backend/ObjectStorage/ConsistencyModel/index.md" },
+      { text: "生命周期与分层成本", link: "/docs/Backend/ObjectStorage/LifecycleCost/index.md" },
+      { text: "访问控制与合规", link: "/docs/Backend/ObjectStorage/SecurityAccess/index.md" },
+      { text: "实战：一个附件服务的端到端", link: "/docs/Backend/ObjectStorage/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ObjectStorage/FAQ/index.md" },
+    ],
+  },
+];

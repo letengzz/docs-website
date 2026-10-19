@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="1000" height="620" role="img" aria-label="稳态运营：错误预算摊月、容量趋势与归档节奏、季度演练日历">
+  <rect x="0" y="0" width="1000" height="620" fill="#f8fafc"/>
+  <text x="500" y="34" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="700" fill="#0f172a">稳态运营的三件周期动作</text>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="56" width="300" height="196" rx="10" fill="#ffffff" stroke="#0284c7"/>
+    <text x="60" y="82" font-size="13.5" font-weight="700" fill="#075985">① SLO 报表（每月 1 日）</text>
+    <text x="60" y="106" font-size="11.5" fill="#0c4a6e">99.9% × 窗口长度 = 预算分钟</text>
+    <text x="60" y="128" font-size="11.5" fill="#0c4a6e">28 天 40.32 · 30 天 43.20 · 31 天 44.64</text>
+    <text x="60" y="152" font-size="11.5" fill="#0369a1">报表用自然月，告警用滚动窗口</text>
+    <text x="60" y="174" font-size="11.5" fill="#b91c1c">分母排除 /healthz，401/403 不计失败</text>
+    <text x="60" y="198" font-size="11.5" fill="#b45309">剩余预算取「按分钟聚合」的不可用分钟</text>
+    <text x="60" y="222" font-size="11.5" fill="#475569">不用「失败请求占比 × 月分钟」换算</text>
+
+    <rect x="350" y="56" width="300" height="196" rx="10" fill="#ffffff" stroke="#16a34a"/>
+    <text x="370" y="82" font-size="13.5" font-weight="700" fill="#166534">② 容量趋势（每周）</text>
+    <text x="370" y="106" font-size="11.5" fill="#14532d">存量 GB 320 → 398.7（8 周）</text>
+    <text x="370" y="128" font-size="11.5" fill="#14532d">几何平均 3.19%/周</text>
+    <text x="370" y="152" font-size="11.5" fill="#15803d">到 500 GB：7.21 周；到 1 TB：30.03 周</text>
+    <text x="370" y="174" font-size="11.5" fill="#b91c1c">算术平均会算成 55.6 周（差 25.6 周）</text>
+    <text x="370" y="198" font-size="11.5" fill="#475569">存量（stock）与流量（flow）分两张图</text>
+    <text x="370" y="222" font-size="11.5" fill="#475569">外推必须扣掉 13 个月的归档断崖</text>
+
+    <rect x="660" y="56" width="300" height="196" rx="10" fill="#ffffff" stroke="#7c3aed"/>
+    <text x="680" y="82" font-size="13.5" font-weight="700" fill="#5b21b6">③ 演练日历（每季 3 场）</text>
+    <text x="680" y="106" font-size="11.5" fill="#4c1d95">S1 依赖降级 · S2 回滚 · S3 跨租户越权</text>
+    <text x="680" y="128" font-size="11.5" fill="#4c1d95">每场 90 分钟，通过标准写死</text>
+    <text x="680" y="152" font-size="11.5" fill="#6d28d9">避开月末 3 天冻结期与每月上线周</text>
+    <text x="680" y="174" font-size="11.5" fill="#b45309">冲突就顺延一周，并记 skipped(reason)</text>
+    <text x="680" y="198" font-size="11.5" fill="#b91c1c">顺延后必须在当季补齐</text>
+    <text x="680" y="222" font-size="11.5" fill="#475569">否则季度末「12 计划 9 完成」无人解释</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="288" font-size="13.5" font-weight="700" fill="#0f172a">Burn rate：单看「已用 60%」没有行动含义</text>
+    <line x1="200" y1="304" x2="200" y2="392" stroke="#cbd5e1"/>
+
+    <text x="190" y="324" text-anchor="end" font-size="12" fill="#334155">1 小时窗口</text>
+    <rect x="206" y="310" width="330" height="18" rx="3" fill="#dc2626"/>
+    <text x="546" y="324" font-size="11.5" fill="#991b1b">burn 14.4 → 烧掉月预算 6.67% → 立即告警</text>
+
+    <text x="190" y="354" text-anchor="end" font-size="12" fill="#334155">6 小时窗口</text>
+    <rect x="206" y="340" width="138" height="18" rx="3" fill="#d97706"/>
+    <text x="354" y="354" font-size="11.5" fill="#92400e">burn 6 → 16.67% → 升级拉群</text>
+
+    <text x="190" y="384" text-anchor="end" font-size="12" fill="#334155">3 天窗口</text>
+    <rect x="206" y="370" width="23" height="18" rx="3" fill="#0284c7"/>
+    <text x="239" y="384" font-size="11.5" fill="#075985">burn 1 → 33.33% → 开单排期</text>
+
+    <text x="620" y="324" font-size="11.5" fill="#475569">短窗口负责「快」，长窗口负责「准」</text>
+    <text x="620" y="346" font-size="11.5" fill="#b91c1c">burn_rate 是「倍速」，不是百分比</text>
+    <text x="620" y="368" font-size="11.5" fill="#b91c1c">SLO 改了，阈值必须重算</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="428" font-size="13.5" font-weight="700" fill="#0f172a">季度演练日历（避开冻结期与上线周）</text>
+    <line x1="60" y1="492" x2="940" y2="492" stroke="#cbd5e1" stroke-width="2"/>
+
+    <g font-size="10.5" fill="#475569" text-anchor="middle">
+      <text x="120" y="512">2026-Q4</text><text x="330" y="512">2027-Q1</text><text x="540" y="512">2027-Q2</text><text x="750" y="512">2027-Q3</text>
+    </g>
+
+    <circle cx="100" cy="492" r="6" fill="#0284c7"/><text x="100" y="476" text-anchor="middle" font-size="10.5" fill="#075985">11-12 S1</text>
+    <circle cx="150" cy="492" r="6" fill="#16a34a"/><text x="150" y="476" text-anchor="middle" font-size="10.5" fill="#166534">12-10 S2</text>
+    <circle cx="200" cy="492" r="6" fill="#7c3aed"/><text x="200" y="476" text-anchor="middle" font-size="10.5" fill="#5b21b6">01-14 S3</text>
+
+    <circle cx="300" cy="492" r="6" fill="#0284c7"/><text x="300" y="476" text-anchor="middle" font-size="10.5" fill="#075985">02-11 S1</text>
+    <circle cx="360" cy="492" r="6" fill="#16a34a"/><text x="360" y="476" text-anchor="middle" font-size="10.5" fill="#166534">03-11 S2</text>
+    <circle cx="420" cy="492" r="6" fill="#dc2626"/><text x="420" y="476" text-anchor="middle" font-size="10.5" fill="#991b1b">04-08 S3 顺延</text>
+
+    <circle cx="510" cy="492" r="6" fill="#0284c7"/><text x="510" y="476" text-anchor="middle" font-size="10.5" fill="#075985">05-13 S1</text>
+    <circle cx="565" cy="492" r="6" fill="#16a34a"/><text x="565" y="476" text-anchor="middle" font-size="10.5" fill="#166534">06-10 S2</text>
+    <circle cx="620" cy="492" r="6" fill="#7c3aed"/><text x="620" y="476" text-anchor="middle" font-size="10.5" fill="#5b21b6">07-08 S3</text>
+
+    <circle cx="720" cy="492" r="6" fill="#0284c7"/><text x="720" y="476" text-anchor="middle" font-size="10.5" fill="#075985">08-12 S1</text>
+    <circle cx="775" cy="492" r="6" fill="#16a34a"/><text x="775" y="476" text-anchor="middle" font-size="10.5" fill="#166534">09-09 S2</text>
+    <circle cx="830" cy="492" r="6" fill="#7c3aed"/><text x="830" y="476" text-anchor="middle" font-size="10.5" fill="#5b21b6">10-14 S3</text>
+
+    <text x="40" y="540" font-size="11.5" fill="#475569">三态：planned / done / skipped(reason)；skipped 当季补齐 → 否则「12 计划 9 完成」没有解释</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="556" width="920" height="48" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="60" y="576" font-size="12" font-weight="700" fill="#0f172a">月度运营页四块：SLO（稳不稳）· 容量（多久到配额）· 演练（下次什么时候）· 行动（上月 3 件事的状态）</text>
+    <text x="60" y="596" font-size="11.5" fill="#b91c1c">没有第四块，月报就只是三张图 —— 这也是它连续两月出现同一个问题的原因</text>
+  </g>
+</svg>

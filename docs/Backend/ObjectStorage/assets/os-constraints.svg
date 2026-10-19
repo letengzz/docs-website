@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700" role="img" aria-label="对象存储的三条硬约束、七处差异与四维成本">
+  <rect x="0" y="0" width="1000" height="700" fill="#f8fafc"/>
+  <text x="500" y="40" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="700" fill="#0f172a">三条硬约束 → 七处差异 → 四维成本</text>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="66" width="290" height="112" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="60" y="94" font-size="15" font-weight="700" fill="#991b1b">① 没有随机写</text>
+    <text x="60" y="120" font-size="12.5" fill="#7f1d1d">PUT 一个 key = 整份替换</text>
+    <text x="60" y="142" font-size="12.5" fill="#7f1d1d">不能「改第 1024 字节」</text>
+    <text x="60" y="164" font-size="12" fill="#b91c1c">→ 分片一文件，或换存储</text>
+
+    <rect x="355" y="66" width="290" height="112" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="375" y="94" font-size="15" font-weight="700" fill="#991b1b">② 没有 rename / 目录</text>
+    <text x="375" y="120" font-size="12.5" fill="#7f1d1d">「/」只是字符，不是层级</text>
+    <text x="375" y="142" font-size="12.5" fill="#7f1d1d">移动目录 = copy + delete</text>
+    <text x="375" y="164" font-size="12" fill="#b91c1c">→ 用前缀 + 生命周期表达</text>
+
+    <rect x="670" y="66" width="290" height="112" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="690" y="94" font-size="15" font-weight="700" fill="#991b1b">③ 没有部分读</text>
+    <text x="690" y="120" font-size="12.5" fill="#7f1d1d">GET 拿整对象</text>
+    <text x="690" y="142" font-size="12.5" fill="#7f1d1d">Range 可读区间，但按整对象寻址</text>
+    <text x="690" y="164" font-size="12" fill="#b91c1c">→ 头部读用 Range，别 seek</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="198" width="460" height="212" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="60" y="224" font-size="15" font-weight="700" fill="#0f172a">文件系统给你的是「位置」</text>
+    <text x="60" y="252" font-size="12.5" fill="#334155">· 寻址：路径 + 偏移量，可随机读写</text>
+    <text x="60" y="278" font-size="12.5" fill="#334155">· 命名：树形目录，有真实层级与空目录</text>
+    <text x="60" y="304" font-size="12.5" fill="#334155">· 元数据：inode + xattr，可随时修改</text>
+    <text x="60" y="330" font-size="12.5" fill="#334155">· 并发：flock / O_EXCL 给你互斥</text>
+    <text x="60" y="356" font-size="12.5" fill="#334155">· 生命周期：自己写 cron 删文件</text>
+    <text x="60" y="382" font-size="12.5" fill="#334155">· 容量：自己 raid、自己备份</text>
+
+    <rect x="500" y="198" width="460" height="212" rx="10" fill="#ffffff" stroke="#2563eb"/>
+    <text x="520" y="224" font-size="15" font-weight="700" fill="#1e3a8a">对象存储给你的是「地址」</text>
+    <text x="520" y="252" font-size="12.5" fill="#1e40af">· 寻址：bucket + key，只能整存整取</text>
+    <text x="520" y="278" font-size="12.5" fill="#1e40af">· 命名：扁平，「目录」是前缀的视觉效果</text>
+    <text x="520" y="304" font-size="12.5" fill="#1e40af">· 元数据：写入时给定，改要 copy 覆盖</text>
+    <text x="520" y="330" font-size="12.5" fill="#1e40af">· 并发：后写胜出，要靠条件写检测冲突</text>
+    <text x="520" y="356" font-size="12.5" fill="#1e40af">· 生命周期：桶级声明式规则（转层/过期）</text>
+    <text x="520" y="382" font-size="12.5" fill="#1e40af">· 容量：服务端多副本，你的责任变成「误删与误配」</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="446" font-size="15" font-weight="700" fill="#0f172a">四维成本：100 万对象 / 平均 200 KB / 每月 300 万 GET · 500 GB 出网</text>
+    <line x1="170" y1="462" x2="170" y2="640" stroke="#cbd5e1"/>
+
+    <text x="160" y="490" text-anchor="end" font-size="12.5" fill="#334155">存储</text>
+    <rect x="176" y="476" width="51" height="20" rx="4" fill="#0284c7"/>
+    <text x="236" y="491" font-size="12" fill="#0f172a">$4.39（190.7 GB × 0.023）</text>
+
+    <text x="160" y="524" text-anchor="end" font-size="12.5" fill="#334155">请求</text>
+    <rect x="176" y="510" width="32" height="20" rx="4" fill="#16a34a"/>
+    <text x="217" y="525" font-size="12" fill="#0f172a">$2.70（PUT 30 万 + GET 300 万）</text>
+
+    <text x="160" y="558" text-anchor="end" font-size="12.5" fill="#334155">取回</text>
+    <rect x="176" y="544" width="5" height="20" rx="2" fill="#d97706"/>
+    <text x="190" y="559" font-size="12" fill="#0f172a">$0.38（IA 取回 20%）</text>
+
+    <text x="160" y="592" text-anchor="end" font-size="12.5" fill="#334155">出网</text>
+    <rect x="176" y="578" width="420" height="20" rx="4" fill="#dc2626"/>
+    <text x="606" y="593" font-size="12" font-weight="700" fill="#991b1b">$36.00（500 GB − 100 免费）× 0.09</text>
+
+    <text x="176" y="628" font-size="12" fill="#b91c1c">出网占账单 83%：存储单价是最不重要的那一维，「存得便宜」不等于「用得起」</text>
+  </g>
+</svg>

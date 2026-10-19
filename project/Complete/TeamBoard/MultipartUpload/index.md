@@ -14,6 +14,8 @@
 | 清理 | 未完成上传的 24 h 过期与孤儿分片对账 |
 | 判据 | `MPU-A` ~ `MPU-H` 八条 |
 
+![分片上传：partSize 两侧夹出与续传](../assets/tb-multipart-upload.svg)
+
 ::: tip 本步的位置
 第 161 天解决了「小文件不穿业务服务」，本步解决「**大文件不能一次传**」。两者的共同点仍然是那条铁律：**业务服务只判断能不能传，不碰字节**。
 :::
@@ -287,3 +289,18 @@ aws s3api list-multipart-uploads --bucket "$BUCKET" --prefix "$KEY" | jq '.Uploa
 - [Amazon S3 · 生命周期规则 `AbortIncompleteMultipartUpload`](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html)
 - [MinIO · Multipart upload](https://min.io/docs/minio/linux/developers/minio-drivers.html)（本地联调用同一套协议）
 - [项目章节 · 附件直传：把大文件从业务链路里摘出去](../AttachmentDirectUpload/index.md)（本步的前置与共用的 `attachment` 表）
+
+## 与「对象存储工程」专题的分工（第 173 天补充）
+
+| 问题 | 归本页 | 归[文件与对象存储工程](../../../../docs/Backend/ObjectStorage/index.md) |
+| --- | --- | --- |
+| `partSize` 怎么由 5 MiB 下限与 10,000 片上限夹出来 | ✅ | — |
+| 分片 ETag 的计算方式与「它不是文件哈希」 | — | ✅ [完整性校验](../../../../docs/Backend/ObjectStorage/IntegrityChecksum/index.md) |
+| `uploadId` + ETag 的续传实现与两套清理 | ✅ | — |
+| 未完成分片的计费与生命周期中止规则 | — | ✅ [生命周期与分层成本](../../../../docs/Backend/ObjectStorage/LifecycleCost/index.md) |
+
+一句话边界：本页讲「这套参数为什么这么定」，专题讲「为什么所有分片实现都会在 ETag 上踩同一脚」。
+
+::: danger 本页特有的坑：`partSize` 一改，已传分片全部作废
+分片大小只能在 `CreateMultipartUpload` 时定一次（除最后一片）。把它做成配置项、又在发布时随手调大，会让**正在续传的客户端**拿旧 `partSize` 上传的分片与新尺寸混在一起 `complete`——对象能合出来，但内容是错位的。
+所以这个值属于「接口契约」，不属于「可调参数」：改它等于新开一个上传接口版本。

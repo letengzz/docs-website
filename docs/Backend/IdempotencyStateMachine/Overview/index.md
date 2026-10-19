@@ -137,6 +137,24 @@ update t_state set state = 'SHIPPED' where id = 1 and state = 'PAID';   -- UPDAT
 
 **预期输出**：第一条 `UPDATE 1`，第二条 `UPDATE 0`。如果第二条也是 `UPDATE 1`，说明条件没生效（例如把 `and state = 'PAID'` 漏掉了），状态机就只剩注释。
 
+## 与「对象存储工程」专题的分工（第 173 天补充）
+
+| 问题 | 归本页 | 归[文件与对象存储工程](../../ObjectStorage/index.md) |
+| --- | --- | --- |
+| 幂等键设计、状态机建模、补偿与对账 | ✅ | — |
+| 字节层的幂等：同 key 覆盖写、内容寻址、`commit` 条件更新 | — | ✅ [一致性与并发写](../../ObjectStorage/ConsistencyModel/index.md) |
+| 「同一个请求只变一次」的接口保证 | ✅ | — |
+| 「同一份字节传两次会怎样」 | — | ✅ [去重与内容寻址](../../ObjectStorage/DedupCAS/index.md) |
+
+一句话边界：本页的幂等发生在**请求层**（幂等键 + 状态机），专题的幂等发生在**字节层**（覆盖写 / 内容哈希 / 条件写）；两者不能互相替代。
+
+::: danger 本页特有的坑：接口幂等 ≠ 上传幂等
+`Idempotency-Key` 能保证「同一个 `commit` 只成功一次」，但它**保证不了字节那一步**：
+- 客户端重试上传时，`PUT` 会**覆盖**同一个 key（后写胜出），如果第一次传到一半断了，第二次从头发——中间那次的部分内容会被完整覆盖，看起来「没问题」；
+- 若两次上传的 key 不同（例如 key 里带时间戳），则得到**两份**对象，而接口层只记了一条记录 —— 另一份成为孤儿。
+
+所以上传链路的幂等要三道一起：**接口幂等键**（请求层）+ **固定 key**（字节层）+ **`commit` 条件更新**（状态层）。
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——请求级幂等的语义来源

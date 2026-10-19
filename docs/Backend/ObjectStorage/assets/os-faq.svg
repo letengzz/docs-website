@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="1000" height="580" role="img" aria-label="排障三层顺序、错误码分诊与误判表">
+  <rect x="0" y="0" width="1000" height="580" fill="#f8fafc"/>
+  <text x="500" y="34" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="700" fill="#0f172a">排障顺序：请求 → 桶 → 应用</text>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="60" width="290" height="120" rx="9" fill="#e0f2fe" stroke="#0284c7"/>
+    <text x="60" y="86" font-size="13.5" font-weight="700" fill="#075985">① 请求到桶了吗</text>
+    <text x="60" y="110" font-size="11.5" fill="#0c4a6e">看 x-amz-request-id（每个响应都有）</text>
+    <text x="60" y="132" font-size="11.5" fill="#0c4a6e">没有这个头 → 请求被代理/SDK 拦在前面</text>
+    <text x="60" y="154" font-size="11.5" fill="#0369a1">有 → 进入 ②</text>
+
+    <rect x="355" y="60" width="290" height="120" rx="9" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="375" y="86" font-size="13.5" font-weight="700" fill="#166534">② 桶里的东西对吗</text>
+    <text x="375" y="110" font-size="11.5" fill="#14532d">head-object：存在性 / 大小 / 校验和</text>
+    <text x="375" y="132" font-size="11.5" fill="#14532d">list-object-versions：被覆盖 / 删除标记</text>
+    <text x="375" y="154" font-size="11.5" fill="#15803d">对 → 说明问题在 ③</text>
+
+    <rect x="670" y="60" width="290" height="120" rx="9" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="690" y="86" font-size="13.5" font-weight="700" fill="#5b21b6">③ 应用怎么看它</text>
+    <text x="690" y="110" font-size="11.5" fill="#4c1d95">库里的状态 / key / 权限归属</text>
+    <text x="690" y="132" font-size="11.5" fill="#4c1d95">缓存层的 Cache-Control 与 Age</text>
+    <text x="690" y="154" font-size="11.5" fill="#6d28d9">顺序反了 → 在应用日志里绕圈</text>
+
+    <line x1="332" y1="120" x2="350" y2="120" stroke="#64748b" stroke-width="1.6"/>
+    <polygon points="350,116 360,120 350,124" fill="#64748b"/>
+    <line x1="647" y1="120" x2="665" y2="120" stroke="#64748b" stroke-width="1.6"/>
+    <polygon points="665,116 675,120 665,124" fill="#64748b"/>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="214" font-size="13.5" font-weight="700" fill="#0f172a">错误码分诊（同一个 403 有四种修法）</text>
+    <rect x="40" y="226" width="920" height="120" rx="9" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="60" y="250" font-size="11.5" fill="#0f172a" font-weight="700">SignatureDoesNotMatch</text>
+    <text x="250" y="250" font-size="11.5" fill="#334155">签名时带了 Content-Type 但客户端没原样发；或代理改了头 → 不签易变头</text>
+
+    <text x="60" y="274" font-size="11.5" fill="#0f172a" font-weight="700">AccessDenied</text>
+    <text x="250" y="274" font-size="11.5" fill="#334155">IAM 缺动作，或桶策略有 Deny → get-caller-identity + get-bucket-policy</text>
+
+    <text x="60" y="298" font-size="11.5" fill="#0f172a" font-weight="700">RequestTimeTooSkewed</text>
+    <text x="250" y="298" font-size="11.5" fill="#334155">时间偏差 &gt; 15 分钟 → 配 NTP（容器镜像常缺）</text>
+
+    <text x="60" y="322" font-size="11.5" fill="#0f172a" font-weight="700">PreconditionFailed</text>
+    <text x="250" y="322" font-size="11.5" fill="#334155">条件写未命中（If-None-Match / If-Match）→ 幂等场景视为成功，不重试</text>
+
+    <text x="60" y="340" font-size="11.5" fill="#0f172a" font-weight="700">InvalidPart / SlowDown / EntityTooLarge</text>
+    <text x="336" y="340" font-size="11.5" fill="#334155">ETag 引号错 → 用 SDK 拼；前缀集中 → 加哈希前缀；POST Policy 命中上限 → 正常拦截</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="386" font-size="13.5" font-weight="700" fill="#0f172a">五个「看起来是存储 bug」的误判</text>
+    <rect x="40" y="398" width="450" height="120" rx="9" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="60" y="420" font-size="11.5" fill="#7f1d1d">「对象被删了又出现」→ 删除标记 + 后台恢复旧版本</text>
+    <text x="60" y="442" font-size="11.5" fill="#7f1d1d">「下载只有 100 KB/s」→ 单连接 / 跨区 / 未用 CDN</text>
+    <text x="60" y="464" font-size="11.5" fill="#7f1d1d">「同一张图两次 ETag 不同」→ 一次分片、一次单段</text>
+    <text x="60" y="486" font-size="11.5" fill="#7f1d1d">「LIST 少了对象」→ 翻页没用 IsTruncated</text>
+    <text x="60" y="508" font-size="11.5" fill="#7f1d1d">「生命周期没生效」→ Filter 语法混用 / 对象锁保护</text>
+
+    <rect x="510" y="398" width="450" height="120" rx="9" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="530" y="420" font-size="11.5" font-weight="700" fill="#0f172a">自查十二项里最容易「假打勾」的三项</text>
+    <text x="530" y="442" font-size="11.5" fill="#334155">① 公开访问四项：打勾依据是「我们没动过」→ 要贴输出</text>
+    <text x="530" y="464" font-size="11.5" fill="#334155">② 生命周期：只配了过期、没配非当前版本 → 旧版本留到过期日</text>
+    <text x="530" y="486" font-size="11.5" fill="#334155">③ CDN 同区：跨区回源每月多 $0.02/GB，账单上看不出属于谁</text>
+    <text x="530" y="508" font-size="11.5" fill="#b91c1c">原则：每一项都要有「可执行命令」，不是「确认过了」</text>
+  </g>
+
+  <text x="40" y="552" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">任何对象存储问题，先问十二句：请求到桶了吗 → 状态码 → 错误码 → 桶里有吗 → 大小对吗 → 校验和对吗 → key 被覆盖了吗 → 谁改的配置 → 是不是缓存 → 是不是跨区 → 是不是限流 → 已知正确状态是什么</text>
+  <text x="40" y="572" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#64748b">最后一问最重要：没有「已知正确状态」，你只是在猜「看起来正常」。</text>
+</svg>

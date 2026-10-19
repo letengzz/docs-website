@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" role="img" aria-label="附件服务实战：容量估算、上传链路、去重决策、迁移三阶段与成本结构">
+  <rect x="0" y="0" width="1000" height="640" fill="#f8fafc"/>
+  <text x="500" y="34" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="700" fill="#0f172a">附件服务端到端：五个决定撑起一条链路</text>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="66" font-size="13.5" font-weight="700" fill="#0f172a">① 容量：先算三年后的两个数</text>
+    <rect x="40" y="76" width="440" height="92" rx="8" fill="#ffffff" stroke="#0284c7"/>
+    <text x="60" y="98" font-size="11.5" fill="#0c4a6e" font-family="Menlo, Consolas, monospace">5,000 用户 × 8 个/月 × 600 KB = 24 GB/月</text>
+    <text x="60" y="120" font-size="11.5" fill="#0c4a6e" font-family="Menlo, Consolas, monospace">288 GB/年 × 3 年 × 1.25 = 1,080 GB ≈ 1.05 TB</text>
+    <text x="60" y="142" font-size="11.5" fill="#b45309" font-family="Menlo, Consolas, monospace">对象数 = 40,000 × 36 = 144 万个</text>
+    <text x="60" y="162" font-size="11" fill="#64748b">1 TB 是存储问题；144 万对象是请求与运维问题</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="520" y="66" font-size="13.5" font-weight="700" fill="#0f172a">② 上传：两个入口，一个 commit</text>
+    <rect x="520" y="76" width="200" height="40" rx="7" fill="#e0f2fe" stroke="#0284c7"/>
+    <text x="620" y="101" text-anchor="middle" font-size="11.5" fill="#075985">≤25 MiB → POST Policy</text>
+    <rect x="520" y="124" width="200" height="40" rx="7" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="620" y="149" text-anchor="middle" font-size="11.5" fill="#166534">≤2 GiB → 分片直传</text>
+    <line x1="722" y1="120" x2="768" y2="120" stroke="#64748b" stroke-width="1.6"/>
+    <polygon points="768,116 778,120 768,124" fill="#64748b"/>
+    <rect x="778" y="96" width="182" height="48" rx="7" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="869" y="116" text-anchor="middle" font-size="11.5" fill="#854d0e">同一 commit</text>
+    <text x="869" y="134" text-anchor="middle" font-size="10.5" fill="#78350f">七步校验 + 条件更新</text>
+    <text x="520" y="182" font-size="11" fill="#475569">存在性 → 归属 → 大小 → 非空 → 校验和 → pending→active（幂等）</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="212" font-size="13.5" font-weight="700" fill="#0f172a">③ 去重：先测重复率，再决定做不做</text>
+    <line x1="120" y1="228" x2="120" y2="330" stroke="#cbd5e1"/>
+    <text x="110" y="248" text-anchor="end" font-size="11.5" fill="#334155">2%</text>
+    <rect x="126" y="234" width="30" height="18" rx="3" fill="#94a3b8"/>
+    <text x="166" y="248" font-size="11.5" fill="#475569">省 $0.48/月 → 不做</text>
+
+    <text x="110" y="278" text-anchor="end" font-size="11.5" fill="#334155">8%</text>
+    <rect x="126" y="264" width="120" height="18" rx="3" fill="#94a3b8"/>
+    <text x="256" y="278" font-size="11.5" fill="#475569">省 $1.93/月 → 仍不做（工程成本更高）</text>
+
+    <text x="110" y="308" text-anchor="end" font-size="11.5" fill="#334155">40%</text>
+    <rect x="126" y="294" width="420" height="18" rx="3" fill="#16a34a"/>
+    <text x="556" y="308" font-size="11.5" fill="#166534">省 $9.66/月 → 值得做，但仍不是「省大钱」</text>
+    <text x="40" y="330" font-size="11" fill="#b45309">去重的真实价值：秒传体验 + 省带宽；本项目结论 = 只做「同租户秒传」，不做全局内容寻址</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="364" font-size="13.5" font-weight="700" fill="#0f172a">④ 迁移：三阶段可回滚（NFS → 对象存储，800 GB / 60 万文件）</text>
+    <rect x="40" y="374" width="280" height="76" rx="8" fill="#e0f2fe" stroke="#0284c7"/>
+    <text x="60" y="396" font-size="12" font-weight="700" fill="#075985">P1 双写读旧（3 天）</text>
+    <text x="60" y="416" font-size="11" fill="#0c4a6e">新写 → NFS + 桶（异步补偿）</text>
+    <text x="60" y="436" font-size="11" fill="#0369a1">退出：双写失败率 &lt; 0.1%，差异对账 0</text>
+
+    <rect x="360" y="374" width="280" height="76" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="380" y="396" font-size="12" font-weight="700" fill="#166534">P2 双写读新（7 天）</text>
+    <text x="380" y="416" font-size="11" fill="#14532d">读走桶，NFS 兜底</text>
+    <text x="380" y="436" font-size="11" fill="#15803d">退出：读新失败率 &lt; 0.05%，P99 达标</text>
+
+    <rect x="680" y="374" width="280" height="76" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="700" y="396" font-size="12" font-weight="700" fill="#854d0e">P3 只写新（永久）</text>
+    <text x="700" y="416" font-size="11" fill="#78350f">NFS 只读保留 30 天后下线</text>
+    <text x="700" y="436" font-size="11" fill="#b45309">校验口径：size + sha256 双列（不用 ETag）</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="486" font-size="13.5" font-weight="700" fill="#0f172a">⑤ 成本：出网吃掉 94.5%</text>
+    <rect x="40" y="498" width="920" height="24" rx="4" fill="#e2e8f0"/>
+    <rect x="40" y="498" width="24" height="24" rx="4" fill="#0284c7"/>
+    <rect x="66" y="498" width="14" height="24" fill="#16a34a"/>
+    <rect x="82" y="498" width="6" height="24" fill="#d97706"/>
+    <rect x="90" y="498" width="870" height="24" rx="0" fill="#dc2626" opacity="0.85"/>
+    <text x="100" y="515" font-size="11.5" fill="#ffffff" font-weight="700">出网 $99.00（1,200 GB − 100 免费）</text>
+    <text x="40" y="540" font-size="11.5" fill="#334155">存储 $5.26（288 GB IA + 72 GB Standard） · 请求 $0.32 · 取回 $0.20 · 合计 $104.78/月</text>
+    <text x="40" y="562" font-size="11.5" fill="#b91c1c" font-weight="700">储优化只在小数点后两位挣扎 → 架构决定：附件下载必须走 CDN（同区回源免费）</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="580" width="920" height="44" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="60" y="600" font-size="11.5" fill="#0f172a" font-weight="700">S1~S10 验收序列：公开访问 → 策略 → 两入口 → 幂等 commit → 校验和 → 软删 → GC → 生命周期 → 迁移抽验 → CDN 命中率</text>
+    <text x="60" y="618" font-size="11" fill="#64748b">每条都有命令、期望输出与最近一次通过时间；任一步失败就停下修，不跳步</text>
+  </g>
+</svg>

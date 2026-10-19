@@ -272,6 +272,24 @@ sum by (service) (bytes_rate({env="prod"}[1h]))
 - [监控体系与可观测性](../../Monitoring/Overview/index.md)：容量规划与监控指标
 - [Redis 进阶 · 缓存设计](../../../DB/NoRelational/Redis/Advanced/CacheDesign/index.md)：缓存分层思路的同类实践
 
+## 与「对象存储工程」专题的分工（第 173 天补充）
+
+| 问题 | 归本页 | 归[文件与对象存储工程](../../../Backend/ObjectStorage/index.md) |
+| --- | --- | --- |
+| 日志保留期、索引滚动、合规留存 | ✅ | — |
+| 过期对象的删除语义（当前版本 / 所有版本 / 删除标记） | — | ✅ [生命周期与分层成本](../../../Backend/ObjectStorage/LifecycleCost/index.md) |
+| 「哪些日志必须留 180 天」 | ✅ | — |
+| 「留 180 天的那批日志放在哪一层、取回要多少钱」 | — | ✅ [生命周期与分层成本](../../../Backend/ObjectStorage/LifecycleCost/index.md) |
+
+一句话边界：本页定「留多久」，专题算「留这么久要花多少、删的时候删干净没有」。
+
+::: danger 本页特有的坑：保留 7 天的日志被转进了 90 天最小存储期
+日志量大、单价敏感，于是很容易把「7 天后删除」的桶顺手配成「3 天后转 Glacier IR」——但 GIR 的**最小存储期是 90 天**：
+- 第 7 天对象被删除，仍按 90 天计费；
+- 而且 GIR 的取回费是 $0.03/GB，比 Standard-IA 贵 3 倍。
+
+短期日志的正确做法是**只在 Standard 里设过期**（Standard 没有最小存储期）；要转冷的是「保留 180 天以上、且几乎不查」的那一档。
+
 ## 参考资料
 
 - Elastic ILM 与数据层：https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html

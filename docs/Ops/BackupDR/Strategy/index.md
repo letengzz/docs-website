@@ -200,6 +200,24 @@ find /backup/posts/prod/full -name 'posts_full_*.sql.zst' | wc -l
 8. 存在「最近成功时间」监控指标；
 9. 上述每一条都能在下一次恢复演练中被验证。
 
+## 与「对象存储工程」专题的分工（第 173 天补充）
+
+| 问题 | 归本页 | 归[文件与对象存储工程](../../../Backend/ObjectStorage/index.md) |
+| --- | --- | --- |
+| RPO/RTO、全量/增量、保留策略 | ✅ | — |
+| 备份文件在桶里怎么命名、怎么留历史版本 | — | ✅ [一致性](../../../Backend/ObjectStorage/ConsistencyModel/index.md) · [生命周期](../../../Backend/ObjectStorage/LifecycleCost/index.md) |
+| 恢复演练与校验 | ✅ | — |
+| 「备份对象被覆盖后还能不能回到上一份」 | — | ✅ [访问控制与合规](../../../Backend/ObjectStorage/SecurityAccess/index.md) |
+
+一句话边界：本页决定「备多久、备几份」，专题决定「这份备份在桶里是不是真的还能取回上一版」。
+
+::: danger 本页特有的坑：覆盖同名 key 的备份等于只有一份
+把每日全量写成 `backup/full/latest.dump`（同名覆盖）时：
+- 没开版本控制 → **永远只有一份**，且「昨天的备份」在今天的备份写坏的瞬间就没了；
+- 开了版本控制但没配 `NoncurrentVersionExpiration` → 每天都留一份，存储按天线性上涨。
+
+两种都不对。正确形状是「日期分段的 key（`backup/full/2026-10-20.dump`）+ 生命周期过期 30 天」，或「同名 key + 版本控制 + 非当前版本过期 7 天」——**选一种，并把它写进恢复演练的判据里**。
+
 ## 参考资料
 
 - MySQL 官方 · Backup and Recovery（`mysqldump --single-transaction` / `--source-data`）：https://dev.mysql.com/doc/refman/8.4/en/backup-and-recovery.html

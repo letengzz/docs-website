@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600" role="img" aria-label="完整性校验的三层、ETag 的三种含义与实测读数">
+  <rect x="0" y="0" width="1000" height="600" fill="#f8fafc"/>
+  <text x="500" y="34" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="700" fill="#0f172a">完整性校验：三层接力 + ETag 的三种含义</text>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="60" width="290" height="104" rx="9" fill="#e0f2fe" stroke="#0284c7"/>
+    <text x="60" y="86" font-size="14" font-weight="700" fill="#075985">① 链路层</text>
+    <text x="60" y="110" font-size="12.5" fill="#0c4a6e">TCP 校验和 / TLS record MAC</text>
+    <text x="60" y="132" font-size="12.5" fill="#0c4a6e">能发现：传输途中的比特翻转</text>
+    <text x="60" y="152" font-size="12" fill="#0369a1">发现不了：读盘错误、落盘错误</text>
+
+    <rect x="355" y="60" width="290" height="104" rx="9" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="375" y="86" font-size="14" font-weight="700" fill="#166534">② HTTP 层</text>
+    <text x="375" y="110" font-size="12.5" fill="#14532d">Content-MD5 / x-amz-checksum-*</text>
+    <text x="375" y="132" font-size="12.5" fill="#14532d">能发现：客户端 → 服务端这段的损坏</text>
+    <text x="375" y="152" font-size="12" fill="#15803d">前提：客户端真的算了，service 存了</text>
+
+    <rect x="670" y="60" width="290" height="104" rx="9" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="690" y="86" font-size="14" font-weight="700" fill="#5b21b6">③ 应用层（端到端）</text>
+    <text x="690" y="110" font-size="12.5" fill="#4c1d95">你自己的 sha256，落库</text>
+    <text x="690" y="132" font-size="12.5" fill="#4c1d95">能发现：全链路，含跨云 / 跨十年</text>
+    <text x="690" y="152" font-size="12" fill="#6d28d9">唯一能跨存储比对的指纹</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="200" font-size="14" font-weight="700" fill="#0f172a">ETag 随写入方式变化（同一份内容，三种取值）</text>
+    <rect x="40" y="212" width="450" height="150" rx="9" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="60" y="238" font-size="12.5" font-weight="700" fill="#0f172a">单段 PUT（未用 SSE-KMS）</text>
+    <text x="60" y="260" font-size="12" fill="#334155">ETag = 内容 MD5 —— 是巧合，不是契约</text>
+    <text x="60" y="286" font-size="12.5" font-weight="700" fill="#0f172a">分片上传</text>
+    <text x="60" y="308" font-size="12" fill="#334155">ETag = md5(concat(各片 md5 二进制)) + "-N"</text>
+    <text x="60" y="334" font-size="12.5" font-weight="700" fill="#0f172a">SSE-KMS / SSE-C</text>
+    <text x="60" y="352" font-size="12" fill="#334155">ETag 由加密实现决定，不是内容 MD5</text>
+
+    <rect x="510" y="212" width="450" height="150" rx="9" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="530" y="238" font-size="12.5" font-weight="700" fill="#991b1b">本机实测：15 MiB 分 3 片</text>
+    <text x="530" y="262" font-size="11.5" fill="#7f1d1d" font-family="Menlo, Consolas, monospace">分片 ETag  = 902dfe11e8e8a6d7b6a490e2d8031d26-3</text>
+    <text x="530" y="284" font-size="11.5" fill="#7f1d1d" font-family="Menlo, Consolas, monospace">整文件 MD5 = 3e10478c1abc02d67558a609d78fec3a</text>
+    <text x="530" y="308" font-size="12" font-weight="700" fill="#b91c1c">两者永不相等 → 「ETag == MD5」的校验永远红</text>
+    <text x="530" y="332" font-size="12" fill="#7f1d1d">于是这类校验通常被「临时跳过」——完整性从此无人管</text>
+    <text x="530" y="352" font-size="12" fill="#7f1d1d">正确做法：上传前算 sha256 落库，commit 只比它</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="398" font-size="14" font-weight="700" fill="#0f172a">检错能力 vs 计算成本（本机单线程，200 MiB 随机数据）</text>
+    <line x1="230" y1="414" x2="230" y2="540" stroke="#cbd5e1"/>
+
+    <text x="220" y="438" text-anchor="end" font-size="12.5" fill="#334155">CRC32C 检错</text>
+    <rect x="236" y="424" width="300" height="18" rx="3" fill="#16a34a"/>
+    <text x="546" y="438" font-size="12" fill="#166534">单比特 0/400 漏检 · ≤32bit 突发 0/200 漏检</text>
+
+    <text x="220" y="470" text-anchor="end" font-size="12.5" fill="#334155">crc32 吞吐</text>
+    <rect x="236" y="456" width="440" height="18" rx="3" fill="#0284c7"/>
+    <text x="686" y="470" font-size="12" fill="#075985">14,781.8 MiB/s（10 GiB 只需 0.69 s）</text>
+
+    <text x="220" y="502" text-anchor="end" font-size="12.5" fill="#334155">md5 吞吐</text>
+    <rect x="236" y="488" width="24" height="18" rx="3" fill="#7c3aed"/>
+    <text x="270" y="502" font-size="12" fill="#5b21b6">800.6 MiB/s</text>
+
+    <text x="220" y="534" text-anchor="end" font-size="12.5" fill="#334155">sha256 吞吐</text>
+    <rect x="236" y="520" width="15" height="18" rx="3" fill="#dc2626"/>
+    <text x="262" y="534" font-size="12" fill="#991b1b">484.7 MiB/s（10 GiB ≈ 21.1 s）</text>
+
+    <text x="40" y="572" font-size="12.5" font-weight="700" fill="#0f172a">结论：传输层用 CRC32C（几乎免费），去重与端到端用 SHA-256（贵，但只在写入路径算一次）</text>
+    <text x="40" y="592" font-size="12" fill="#475569">CRC 回答「有没有坏」，SHA 回答「是不是同一份」——两个问题不同，不能互相替代。</text>
+  </g>
+</svg>

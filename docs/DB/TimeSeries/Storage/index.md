@@ -141,6 +141,25 @@ docker exec -it tdengine taos -s "SELECT SUM(data_size)/(SELECT COUNT(*) FROM ho
 
 本页特有的一个坑：时序库的保留策略通常按**时间**丢弃，不区分「这条数据是否还在被引用」。关系库归档时则要处理「归档表被外键引用」的问题（本页的 `DROP` 没有这个负担），这也是专题页强调「归档表要去掉外键」的原因。
 
+## 与「对象存储工程」专题的分工（第 173 天补充）
+
+| 问题 | 归本页 | 归[文件与对象存储工程](../../../Backend/ObjectStorage/index.md) |
+| --- | --- | --- |
+| 时序压缩、降采样、冷热分层 | ✅ | — |
+| 冷段导出成 Parquet 后放哪一层、取回多少钱 | — | ✅ [生命周期与分层成本](../../../Backend/ObjectStorage/LifecycleCost/index.md) |
+| 查询引擎内部的段合并 | ✅ | — |
+| 「取回一次冷段」的真实代价 | — | ✅ [生命周期与分层成本](../../../Backend/ObjectStorage/LifecycleCost/index.md) |
+
+一句话边界：本页算「压缩比与查询代价」，专题算「这份压缩段放在冷层之后，取回来一次要付多少」。
+
+::: danger 本页特有的坑：冷段下沉省下的存储费，被一次全量回补吃掉
+把一年前的时序段导成 Parquet 传到 Glacier IR，存储从 $0.023 降到 $0.004/GB（省 82%）。但一次「年度同比分析」要把 300 GB 冷段全部取回：
+- 取回费 $0.03/GB × 300 = **$9.00**；
+- 加上解压与解码的 CPU 时间（Parquet 解压 + 列裁剪后仍需扫全列）；
+- 而 300 GB 在 GIR 上一年只省了 $19.46 × 0.3 ≈ $5.8。
+
+**一次回补就把两年的节省吃掉。** 所以冷段下沉必须同时配「预聚合层」：常用聚合结果留在热层，冷层只用于「极少发生的明细回溯」。
+
 ## 参考资料
 
 - TDengine 文档：[数据库管理（KEEP / DURATION / 多级存储）](https://docs.tdengine.com/tdengine-reference/sql-manual/manage-databases/)

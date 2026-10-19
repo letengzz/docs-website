@@ -8,6 +8,8 @@
 
 本页判据族 `ODF-A` ~ `ODF-H`，共 8 条。定义表在第十节。
 
+![观测驱动开发：现象分诊](../assets/obs-faq.svg)
+
 ## 本页不讲什么
 
 - 不讲 PromQL / Loki / Jaeger 的查询语法，归 [Prometheus](/docs/Ops/Monitoring/Prometheus/index.md) 与 [可观测性](/docs/Ops/Observability/Overview/index.md)。

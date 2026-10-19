@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" role="img" aria-label="对象存储工程：五层结构与十页分工">
+  <defs>
+    <linearGradient id="osBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2f7"/>
+    </linearGradient>
+    <marker id="osArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="640" fill="url(#osBg)"/>
+  <text x="500" y="42" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="700" fill="#0f172a">对象存储工程：五层结构</text>
+  <text x="500" y="70" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#475569">越往上越容易被当成「应用层的事」而没人管</text>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="96" width="600" height="92" rx="10" fill="#e0f2fe" stroke="#0284c7"/>
+    <text x="60" y="124" font-size="16" font-weight="700" fill="#075985">① 键空间</text>
+    <text x="60" y="150" font-size="13" fill="#0c4a6e">key 是地址不是路径：不可猜、前缀分散、列举可翻页</text>
+    <text x="60" y="172" font-size="13" fill="#0369a1">唯一一个「上线后改不动」的决定</text>
+
+    <rect x="40" y="200" width="600" height="92" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="60" y="228" font-size="16" font-weight="700" fill="#166534">② 写入路径</text>
+    <text x="60" y="254" font-size="13" fill="#14532d">字节从谁手里进桶：直传 / 中转 / 预签名；续传与 commit 幂等</text>
+    <text x="60" y="276" font-size="13" fill="#15803d">校验和必须独立于 ETag</text>
+
+    <rect x="40" y="304" width="600" height="92" rx="10" fill="#fef3c7" stroke="#d97706"/>
+    <text x="60" y="332" font-size="16" font-weight="700" fill="#92400e">③ 数据形态</text>
+    <text x="60" y="358" font-size="13" fill="#78350f">一份内容存几份：内容寻址、引用计数、两阶段 GC</text>
+    <text x="60" y="380" font-size="13" fill="#b45309">去重省的不是钱，是带宽与体验</text>
+
+    <rect x="40" y="408" width="600" height="92" rx="10" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="60" y="436" font-size="16" font-weight="700" fill="#5b21b6">④ 时间维度</text>
+    <text x="60" y="462" font-size="13" fill="#4c1d95">读到的是不是刚写的；什么时候变冷、什么时候删</text>
+    <text x="60" y="484" font-size="13" fill="#6d28d9">强一致到「单 key」为止，跨区与缓存都要自己补</text>
+
+    <rect x="40" y="512" width="600" height="92" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="60" y="540" font-size="16" font-weight="700" fill="#991b1b">⑤ 边界与账</text>
+    <text x="60" y="566" font-size="13" fill="#7f1d1d">谁能读、能不能公开、锁不锁；钱花在哪一维</text>
+    <text x="60" y="588" font-size="13" fill="#b91c1c">出网常常比存储贵一个数量级</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13">
+    <rect x="700" y="96" width="260" height="40" rx="8" fill="#ffffff" stroke="#0284c7"/>
+    <text x="830" y="121" text-anchor="middle" fill="#075985">键空间与命名</text>
+
+    <rect x="700" y="146" width="260" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="830" y="171" text-anchor="middle" fill="#166534">上传路径与预签名</text>
+    <rect x="700" y="194" width="260" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="830" y="219" text-anchor="middle" fill="#166534">完整性校验</text>
+
+    <rect x="700" y="252" width="260" height="40" rx="8" fill="#ffffff" stroke="#d97706"/>
+    <text x="830" y="277" text-anchor="middle" fill="#92400e">去重与内容寻址</text>
+
+    <rect x="700" y="310" width="260" height="40" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+    <text x="830" y="335" text-anchor="middle" fill="#5b21b6">一致性与并发写</text>
+    <rect x="700" y="358" width="260" height="40" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+    <text x="830" y="383" text-anchor="middle" fill="#5b21b6">生命周期与分层成本</text>
+
+    <rect x="700" y="416" width="260" height="40" rx="8" fill="#ffffff" stroke="#dc2626"/>
+    <text x="830" y="441" text-anchor="middle" fill="#991b1b">访问控制与合规</text>
+    <rect x="700" y="464" width="260" height="40" rx="8" fill="#ffffff" stroke="#dc2626"/>
+    <text x="830" y="489" text-anchor="middle" fill="#991b1b">实战：附件服务</text>
+    <rect x="700" y="512" width="260" height="40" rx="8" fill="#ffffff" stroke="#dc2626"/>
+    <text x="830" y="537" text-anchor="middle" fill="#991b1b">常见问题与分诊</text>
+  </g>
+
+  <line x1="650" y1="142" x2="694" y2="120" stroke="#64748b" stroke-width="1.5" marker-end="url(#osArrow)"/>
+  <line x1="650" y1="246" x2="694" y2="214" stroke="#64748b" stroke-width="1.5" marker-end="url(#osArrow)"/>
+  <line x1="650" y1="356" x2="694" y2="330" stroke="#64748b" stroke-width="1.5" marker-end="url(#osArrow)"/>
+  <line x1="650" y1="452" x2="694" y2="436" stroke="#64748b" stroke-width="1.5" marker-end="url(#osArrow)"/>
+  <line x1="650" y1="558" x2="694" y2="532" stroke="#64748b" stroke-width="1.5" marker-end="url(#osArrow)"/>
+
+  <text x="40" y="626" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748b">十页 / 十族 80 条判据；index 页不设判据族</text>
+</svg>

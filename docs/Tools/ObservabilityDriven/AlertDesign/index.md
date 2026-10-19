@@ -8,6 +8,8 @@
 
 本页判据族 `AD-A` ~ `AD-H`，共 8 条。定义表在第八节。
 
+![告警设计：信号、配额与抑制](../assets/obs-alert-design.svg)
+
 ## 本页不讲什么
 
 - 不讲 Prometheus 告警规则的 YAML 语法、`for` 与 `labels` 字段用法，归 [告警](/docs/Ops/Monitoring/Alerting/index.md)。

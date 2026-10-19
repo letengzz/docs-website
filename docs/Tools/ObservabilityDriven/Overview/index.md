@@ -6,6 +6,8 @@
 
 本页判据族 `OD-A` ~ `OD-H`，共 8 条。定义表在第八节。
 
+![观测驱动开发：三个反转与四类信号](../assets/obs-driven-overview.svg)
+
 ## 本页不讲什么
 
 - 不讲 Prometheus / Grafana / Jaeger 怎么装、怎么查（归 [可观测性](/docs/Ops/Observability/Overview/index.md) 与 [监控系统](/docs/Ops/Monitoring/Overview/index.md)）。

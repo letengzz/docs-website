@@ -113,6 +113,26 @@ parameters:
 - [监控与运维](../Monitoring/index.md)：容量与 PVC 异常需要告警，否则会静默写满。
 - [容器编排进阶](../../ContainerOrchestration/index.md)：有状态工作负载的跨集群迁移与多集群容灾。
 
+## 与「对象存储工程」专题的分工（第 173 天补充）
+
+| 问题 | 归本页 | 归[文件与对象存储工程](../../../Backend/ObjectStorage/index.md) |
+| --- | --- | --- |
+| PV/PVC、StorageClass、CSI 驱动 | ✅ | — |
+| 对象存储为什么不该被当 POSIX 文件系统挂载 | — | ✅ [总览](../../../Backend/ObjectStorage/Overview/index.md) |
+| 块/文件存储挂进 Pod 的访问模式 | ✅ | — |
+| 对象存储的 key 设计、预签名直传、生命周期 | — | ✅ [键空间](../../../Backend/ObjectStorage/KeysLayout/index.md) · [上传路径](../../../Backend/ObjectStorage/UploadPaths/index.md) |
+
+一句话边界：本页解决「Pod 怎么拿到一块可读写的盘」，专题解决「不让应用把对象存储当盘用之后，该怎么改」。
+
+::: danger 本页特有的坑：用 CSI 把对象存储挂成数据目录
+对象存储的 CSI 驱动（s3fs / mountpoint 类）能让 Pod 里出现一个「目录」，但语义完全不同：
+- `ls` 一次 = 一次 `LIST`（按请求计费，且 1000 条一页）；
+- 打开一个小文件可能触发整对象的 `GET`；
+- 编辑器/数据库的「truncate + write」会把对象整个重写；
+- 没有 `rename`、没有文件锁、没有 `fsync` 语义。
+
+正确形状是「应用直接用 SDK 读写对象」，把「目录」这件事留给真正的文件存储。要用 CSI，只用于**只读、顺序读、大文件**的场景（如模型权重、静态资源），并在 StorageClass 注释里写死这个约束。
+
 ## 参考资料
 
 - 卷：https://kubernetes.io/zh-cn/docs/concepts/storage/volumes/

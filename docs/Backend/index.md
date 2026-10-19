@@ -26,3 +26,4 @@
 - [幂等与状态机工程](IdempotencyStateMachine/index.md)
 - [分布式锁与选主](DistributedLock/index.md)
 - [契约演进与兼容](ContractEvolution/index.md)
+- [文件与对象存储工程](ObjectStorage/index.md)

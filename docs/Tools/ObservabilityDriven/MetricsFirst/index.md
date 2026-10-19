@@ -8,6 +8,8 @@
 
 本页判据族 `MF-A` ~ `MF-H`，共 8 条。定义表在第八节。
 
+![指标先行：从口径到可执行阈值](../assets/obs-metrics-first.svg)
+
 ## 本页不讲什么
 
 - 不讲指标类型（Counter / Gauge / Histogram）的 SDK 用法与后端查询语法，归 [监控系统](/docs/Ops/Monitoring/Overview/index.md) 与 [Prometheus](/docs/Ops/Monitoring/Prometheus/index.md)。

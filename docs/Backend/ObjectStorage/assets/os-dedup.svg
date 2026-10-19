@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600" role="img" aria-label="内容寻址布局、引用计数与两阶段 GC">
+  <rect x="0" y="0" width="1000" height="600" fill="#f8fafc"/>
+  <text x="500" y="34" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="700" fill="#0f172a">内容寻址：key = hash(content)</text>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="70" font-size="14" font-weight="700" fill="#0f172a">① 两级 fanout 布局（256 个一级前缀）</text>
+    <rect x="40" y="82" width="92" height="34" rx="5" fill="#e0f2fe" stroke="#0284c7"/>
+    <text x="86" y="104" text-anchor="middle" font-size="12" fill="#075985">blobs</text>
+    <rect x="132" y="82" width="92" height="34" rx="5" fill="#e0f2fe" stroke="#0284c7"/>
+    <text x="178" y="104" text-anchor="middle" font-size="12" fill="#075985">sha256</text>
+    <rect x="224" y="82" width="72" height="34" rx="5" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="260" y="104" text-anchor="middle" font-size="12" fill="#854d0e">3e</text>
+    <rect x="296" y="82" width="300" height="34" rx="5" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="304" y="104" font-size="11.5" fill="#166534" font-family="Menlo, Consolas, monospace">10478c1abc02d67558a609d78fec3a</text>
+    <text x="612" y="104" font-size="12" fill="#475569">一级取前 2 位 → 256 个前缀，规避「顺序 key 打热」</text>
+
+    <text x="40" y="146" font-size="12" fill="#64748b">实测（20 万个哈希前缀）：最大单段 0.43%、最小 0.35%、极差/均值 0.207 —— 天然均匀</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="188" font-size="14" font-weight="700" fill="#0f172a">② 引用计数：真相在 blob_ref，ref_count 只是缓存</text>
+
+    <rect x="40" y="200" width="210" height="70" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+    <text x="145" y="224" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5b21b6">blob</text>
+    <text x="145" y="244" text-anchor="middle" font-size="11" fill="#4c1d95">sha256 (PK) · size · ref_count</text>
+    <text x="145" y="262" text-anchor="middle" font-size="11" fill="#4c1d95">zero_since（归零时间）</text>
+
+    <rect x="330" y="200" width="230" height="70" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="445" y="224" text-anchor="middle" font-size="12.5" font-weight="700" fill="#166534">blob_ref</text>
+    <text x="445" y="244" text-anchor="middle" font-size="11" fill="#14532d">tenant_id · owner_type · owner_id</text>
+    <text x="445" y="262" text-anchor="middle" font-size="11" fill="#14532d">unique(tenant, type, owner)</text>
+
+    <line x1="252" y1="235" x2="326" y2="235" stroke="#7c3aed" stroke-width="1.6"/>
+    <polygon points="326,231 336,235 326,239" fill="#7c3aed"/>
+    <text x="292" y="226" text-anchor="middle" font-size="11" fill="#6d28d9">1 : N</text>
+
+    <rect x="600" y="200" width="360" height="70" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="620" y="224" font-size="12.5" font-weight="700" fill="#991b1b">三条纪律</text>
+    <text x="620" y="244" font-size="11.5" fill="#7f1d1d">① 引用插入与 ref_count+1 同事务</text>
+    <text x="620" y="262" font-size="11.5" fill="#7f1d1d">② 对不上时以 count(*) 重算，不「修计数」</text>
+
+    <text x="40" y="310" font-size="12" fill="#475569">删除顺序：删引用 → 归零打 zero_since → 异步删对象（反过来会出现「对象已删、引用还在」）</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="352" font-size="14" font-weight="700" fill="#0f172a">③ 两阶段 GC + 宽限期（防「秒传复用」竞态）</text>
+    <line x1="40" y1="404" x2="960" y2="404" stroke="#cbd5e1" stroke-width="2"/>
+
+    <rect x="60" y="378" width="240" height="52" rx="8" fill="#e0f2fe" stroke="#0284c7"/>
+    <text x="180" y="400" text-anchor="middle" font-size="12.5" font-weight="700" fill="#075985">mark：ref_count=0</text>
+    <text x="180" y="420" text-anchor="middle" font-size="11.5" fill="#0c4a6e">且 zero_since &lt; now() − 1h</text>
+
+    <rect x="360" y="378" width="300" height="52" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="510" y="400" text-anchor="middle" font-size="12.5" font-weight="700" fill="#854d0e">宽限期 1 小时</text>
+    <text x="510" y="420" text-anchor="middle" font-size="11.5" fill="#78350f">给「正在秒传」留出把 ref_count 加回来的窗口</text>
+
+    <rect x="720" y="378" width="240" height="52" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="840" y="400" text-anchor="middle" font-size="12.5" font-weight="700" fill="#166534">sweep：for update 复核</text>
+    <text x="840" y="420" text-anchor="middle" font-size="11.5" fill="#14532d">再删对象、删 blob 行</text>
+
+    <rect x="40" y="452" width="920" height="60" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="60" y="474" font-size="12.5" font-weight="700" fill="#991b1b">三个会让 GC 删掉「正在用」的对象的写法</text>
+    <text x="60" y="494" font-size="11.5" fill="#7f1d1d">① 用 created_at 判宽限（秒传复用老 blob 时无效，必须用归零时间）  ② GC 与秒传不同事务（要 for update 串起来）  ③ 只删对象不删行（幽灵 blob 永存）</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="546" font-size="13" font-weight="700" fill="#0f172a">要不要做去重：先测重复率</text>
+    <text x="40" y="568" font-size="12" fill="#334155">本库实测：2,778 个图片文件 / 2,706 唯一内容 / 64 个重复组 / 冗余 5.04 MiB（5.15%）</text>
+    <text x="40" y="588" font-size="12" fill="#b45309">附件场景重复率 &lt; 10% 时，去重省下的钱（约 $0.5/月）远小于引用计数 + GC 的工程成本 —— 先做「同租户秒传」这一层。</text>
+  </g>
+</svg>

@@ -231,6 +231,25 @@ grep -rn "tablespace\|cold_after_days\|hot_days" config/ deploy/ 2>/dev/null | h
 `SET TABLESPACE` 的 247.993 ms、路径变化与 16.280 ms 查询耗时均为本机 PostgreSQL 18.6 实测。**本机冷表空间与主数据目录在同一块物理盘**，因此这两条读数不能证明「冷层不慢」；第四节单价为示意比例（来自公开价目量级，非报价），第五节的分层后延迟差异除「同盘」一条外均为量级推断，需在真实介质上用命令 ⑥ 复测。
 :::
 
+## 与「对象存储工程」专题的分工（第 173 天补充）
+
+| 问题 | 归本页 | 归[文件与对象存储工程](../../../Backend/ObjectStorage/index.md) |
+| --- | --- | --- |
+| 库内分区、冷数据下沉、归档表 | ✅ | — |
+| 对象级分层（存储类、最小存储期、解冻） | — | ✅ [生命周期与分层成本](../../../Backend/ObjectStorage/LifecycleCost/index.md) |
+| 「哪些行该归档」的判定 | ✅ | — |
+| 「归档后的那份对象放哪一层、什么时候删」 | — | ✅ [生命周期与分层成本](../../../Backend/ObjectStorage/LifecycleCost/index.md) |
+
+一句话边界：本页的粒度是**分区/表**，专题的粒度是**对象**；两者的时间轴不同步就会同时付两份钱。
+
+::: danger 本页特有的坑：库内归档了，桶里还是热的
+典型组合是：`board_events` 按 13 个月 `DETACH` 分区并导出成 Parquet 传到对象存储，但**没有给这个前缀配生命周期**。结果：
+- 库里空间释放了（看起来归档成功）；
+- 对象存储里那份 Parquet 一直留在 Standard，按 13 个月 × 每月新增量线性增长；
+- 三个月后有人问「归档到底省了多少」，答案是「只省了库的，没省桶的」。
+
+归档动作必须成对：`DETACH` 与「给导出前缀配 Transition + Expiration」写在同一次变更里。
+
 ## 参考资料
 
 - [PostgreSQL · CREATE TABLESPACE](https://www.postgresql.org/docs/18/sql-createtablespace.html)——表空间的位置约束与权限

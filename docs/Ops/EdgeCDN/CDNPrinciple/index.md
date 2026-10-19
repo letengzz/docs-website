@@ -160,3 +160,21 @@ curl -s https://origin.example.com/static/app.9f2c1a.js | shasum
 - Amazon CloudFront 开发者指南 · Cache key 与 Origin Shield：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/understanding-the-cache-key.html
 - Cloudflare 文档 · Tiered Cache（分层缓存）：https://developers.cloudflare.com/cache/advanced-configuration/tiered-cache/
 - 本专题相邻页：[总览：边缘与 CDN 的四条边界](../Overview/index.md)、[缓存策略：键、时效与失效](../CacheStrategy/index.md)
+
+## 与「对象存储工程」专题的分工（第 173 天补充）
+
+| 问题 | 归本页 | 归[文件与对象存储工程](../../../Backend/ObjectStorage/index.md) |
+| --- | --- | --- |
+| 缓存层级、回源、`Cache-Control` 与刷新 | ✅ | — |
+| 覆盖写之后「读到的是不是最新的」 | — | ✅ [一致性与并发写](../../../Backend/ObjectStorage/ConsistencyModel/index.md) |
+| 边缘节点的存储与淘汰 | ✅ | — |
+| 对象 key 该不该可变、什么时候必须换 key | — | ✅ [键空间与命名](../../../Backend/ObjectStorage/KeysLayout/index.md) |
+
+一句话边界：本页讲「边缘怎么缓存一份字节」，专题讲「源站那份字节什么时候变、变了以后谁来通知」。
+
+::: danger 本页特有的坑：把 `302` 到预签名 URL 的跳转缓存下来
+下载接口常写成「`302` → 预签名 URL」。如果这个 `302` 被 CDN 缓存（默认按 URL 缓存、不看响应语义），会发生两件事：
+1. 窗口期内**所有用户共用同一个签名 URL** —— 签名本是 bearer token，缓存它等于把它公开；
+2. 该 URL 过期后，所有请求一起拿到 `403`，直到缓存 TTL 到期。
+
+正确写法：该响应必须 `Cache-Control: no-store`；或把签名放到边缘（边缘签名），不把签名结果交给共享缓存。

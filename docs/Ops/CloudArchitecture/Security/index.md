@@ -152,6 +152,21 @@ grep -rnE '(AKIA[0-9A-Z]{16}|LTAI[0-9A-Za-z]{12,}|-----BEGIN [A-Z ]*PRIVATE KEY-
 2. **[实战：把监控大盘搬上云](../Practice/index.md)**：在具体项目上把安全清单跑一遍。
 3. **[常见问题与最佳实践](../FAQ/index.md)**：分诊表与高频问题。
 
+## 与「对象存储工程」专题的分工（第 173 天补充）
+
+| 问题 | 归本页 | 归[文件与对象存储工程](../../../Backend/ObjectStorage/index.md) |
+| --- | --- | --- |
+| 云账号、IAM、网络边界、KMS 的账号级治理 | ✅ | — |
+| 桶策略、对象锁、公开桶的四种成因 | — | ✅ [访问控制与合规](../../../Backend/ObjectStorage/SecurityAccess/index.md) |
+| 「谁有权创建桶」 | ✅ | — |
+| 「这个桶现在谁能读」 | — | ✅ [访问控制与合规](../../../Backend/ObjectStorage/SecurityAccess/index.md) |
+
+一句话边界：本页管**身份**，专题管**资源策略**；两者是并集关系，任何一边写宽都会绕过另一边。
+
+::: danger 本页特有的坑：IAM 很严，桶还是公开的
+桶策略是唯一**跨账号生效**的授权机制：一条 `Principal: "*"` + `s3:GetObject` 的 `Allow`，让「本账号 IAM 再严」这件事变得无关——因为它允许的是「任何人」。
+所以账号级安全评审必须包含一条资源级检查：`get-bucket-policy` 里不存在 `Principal: "*"` 的 `Allow`（`Deny` 语句除外），且四个 Block Public Access 开关全为 `true`。漏掉这一条，账号级的所有努力都可以被一行 JSON 抹平。
+
 ## 参考资料
 
 - [安全加固](../../SecurityHardening/index.md)：主机与集群内部的加固基线与合规项

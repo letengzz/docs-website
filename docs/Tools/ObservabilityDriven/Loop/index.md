@@ -10,6 +10,8 @@
 
 本页判据族 `FL-A` ~ `FL-H`，共 8 条。定义表在第八节。
 
+![反馈闭环：指标腐化与复盘](../assets/obs-loop.svg)
+
 ## 本页不讲什么
 
 - 不讲指标怎么定、埋点怎么写（归 [指标先行](../MetricsFirst/index.md) 与 [埋点规范](../Instrumentation/index.md)）。

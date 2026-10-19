@@ -10,6 +10,8 @@
 
 本页判据族 `FF-A` ~ `FF-H`，共 8 条。定义表在第八节。
 
+![功能开关：从配置到可回滚的灰度](../assets/obs-feature-flag.svg)
+
 ## 本页不讲什么
 
 - 不讲具体供应商（Unleash / Flagsmith / LaunchDarkly / OpenFeature 实现）的部署与 SDK 用法，本页只约定语义与结构。

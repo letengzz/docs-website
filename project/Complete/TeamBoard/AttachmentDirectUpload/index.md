@@ -325,3 +325,18 @@ curl -s -o /dev/null -w '%{http_code}\n' "https://s3.example.com/bucket/$(jq -r 
 - [MinIO · 桶策略与匿名访问](https://min.io/docs/minio/linux/administration/identity-access-management/policy-based-access-control.html)
 - [项目章节 · 看板与卡片读写接口](../BoardCardApi/index.md)（`requireCardWrite` 的来源）
 - [项目章节 · 评论与 @ 提及的写入接口](../CommentMention/index.md)（同一套事务与幂等口径）
+
+## 与「对象存储工程」专题的分工（第 173 天补充）
+
+| 问题 | 归本页 | 归[文件与对象存储工程](../../../../docs/Backend/ObjectStorage/index.md) |
+| --- | --- | --- |
+| 这一次直传的六个步骤、`commit` 的七步校验 | ✅ | — |
+| 三条上传链路怎么选、预签名到底锁住了什么 | — | ✅ [上传路径与预签名](../../../../docs/Backend/ObjectStorage/UploadPaths/index.md) |
+| `attachment` 表的约束与 `pending` 回收 | ✅ | — |
+| 校验和为什么不能靠 ETag | — | ✅ [完整性校验](../../../../docs/Backend/ObjectStorage/IntegrityChecksum/index.md) |
+
+一句话边界：本页回答「这个业务怎么把文件从浏览器搬到桶里并落库」，专题回答「换一个业务、换一家云，这些结论还成不成立」。
+
+::: danger 本页特有的坑：`PUT` 预签名锁不住 body 大小
+本页的 25 MiB 上限**不是**靠预签名实现的——`PUT` 预签名里没有 `content-length-range` 这个能力（那是 POST Policy 的）。上限实际由 `commit` 阶段的 `HeadObject` 复核兜住。
+所以：**任何人把那一步「优化」掉，25 MiB 就只剩前端校验**，而前端校验对 `curl` 无效。改动这页代码时，`commit` 的校验顺序（存在性 → 大小 → 校验和 → 归属）不能调换、不能省略。

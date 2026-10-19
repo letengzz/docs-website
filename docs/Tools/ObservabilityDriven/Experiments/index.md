@@ -8,6 +8,8 @@
 
 本页判据族 `EX-A` ~ `EX-H`，共 8 条。定义表在第八节。
 
+![实验设计：分桶、指标与显著性](../assets/obs-experiments.svg)
+
 ## 本页不讲什么
 
 - 不讲分流网关与开关实现，归 [功能开关](../FeatureFlag/index.md) 与 [灰度度量](../GrayMetrics/index.md)。

@@ -8,6 +8,8 @@
 
 本页判据族 `IM-A` ~ `IM-H`，共 8 条。定义表在第八节。
 
+![埋点规范：字段、基数与命名](../assets/obs-instrumentation.svg)
+
 ## 本页不讲什么
 
 - 不讲 OpenTelemetry SDK 的初始化、导出器配置与跨进程传播实现，归 [OpenTelemetry](/docs/Ops/Observability/OpenTelemetry/index.md)。

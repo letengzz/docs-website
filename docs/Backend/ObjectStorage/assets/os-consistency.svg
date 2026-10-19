@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600" role="img" aria-label="一致性的四个圈、条件写与两套状态">
+  <rect x="0" y="0" width="1000" height="600" fill="#f8fafc"/>
+  <text x="500" y="34" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="700" fill="#0f172a">强一致到哪里为止：四个圈</text>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <circle cx="190" cy="180" r="118" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <circle cx="190" cy="180" r="88" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.5"/>
+    <circle cx="190" cy="180" r="58" fill="#86efac" stroke="#15803d" stroke-width="1.5"/>
+    <circle cx="190" cy="180" r="30" fill="#22c55e" stroke="#14532d" stroke-width="1.5"/>
+    <text x="190" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#052e16">单 key</text>
+    <text x="190" y="124" text-anchor="middle" font-size="11" fill="#14532d">跨对象</text>
+    <text x="190" y="96" text-anchor="middle" font-size="11" fill="#166534">跨区复制</text>
+    <text x="190" y="68" text-anchor="middle" font-size="11" fill="#15803d">跨缓存层</text>
+
+    <text x="330" y="88" font-size="13" font-weight="700" fill="#166534">① 单 key：强一致（2020-12-01 起）</text>
+    <text x="330" y="110" font-size="12" fill="#14532d">PUT / 覆盖 / DELETE 后紧跟 GET、LIST 都读到最新</text>
+    <text x="330" y="130" font-size="12" fill="#15803d">免费、无额外延迟 →「写完 sleep 1s 再读」可以删掉</text>
+
+    <text x="330" y="162" font-size="13" font-weight="700" fill="#0f766e">② 跨对象：没有事务</text>
+    <text x="330" y="184" font-size="12" fill="#115e59">一个成功一个失败是常态；多对象「一起成功」靠业务补偿</text>
+
+    <text x="330" y="216" font-size="13" font-weight="700" fill="#b45309">③ 跨区复制：异步</text>
+    <text x="330" y="238" font-size="12" fill="#92400e">通常秒级到分钟级；RTC 承诺 15 分钟内 99.99%；失败不自动告警</text>
+
+    <text x="330" y="270" font-size="13" font-weight="700" fill="#b91c1c">④ 跨缓存层：由 Cache-Control 决定</text>
+    <text x="330" y="292" font-size="12" fill="#991b1b">浏览器 / CDN / 应用缓存各有失效方式；缓存 302 会把签名变成公开</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="344" font-size="14" font-weight="700" fill="#0f172a">并发写同一 key：三种处理方式</text>
+    <rect x="40" y="356" width="290" height="96" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="60" y="380" font-size="12.5" font-weight="700" fill="#0f172a">不管（后写胜出）</text>
+    <text x="60" y="402" font-size="11.5" fill="#334155">最后一份内容活下来，另一份永久消失</text>
+    <text x="60" y="424" font-size="11.5" fill="#334155">只适合「不可能并发」的 key（UUID / 哈希）</text>
+    <text x="60" y="444" font-size="11.5" fill="#64748b">成本：0；风险：静默丢写</text>
+
+    <rect x="355" y="356" width="290" height="96" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="375" y="380" font-size="12.5" font-weight="700" fill="#166534">If-None-Match: *</text>
+    <text x="375" y="402" font-size="11.5" fill="#14532d">不存在才写；已存在返回 412</text>
+    <text x="375" y="424" font-size="11.5" fill="#14532d">适用：只创建一次（幂等提交 / 抢占）</text>
+    <text x="375" y="444" font-size="11.5" fill="#15803d">坑：只认 *，传具体 ETag 会被忽略</text>
+
+    <rect x="670" y="356" width="290" height="96" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+    <text x="690" y="380" font-size="12.5" font-weight="700" fill="#5b21b6">If-Match: &lt;etag&gt;</text>
+    <text x="690" y="402" font-size="11.5" fill="#4c1d95">当前 ETag 匹配才写，否则 412</text>
+    <text x="690" y="424" font-size="11.5" fill="#4c1d95">适用：读-改-写（元数据、状态文件）</text>
+    <text x="690" y="444" font-size="11.5" fill="#6d28d9">坑：仍需先 GET 取 ETag（窗口内被别人改过会 412，安全）</text>
+  </g>
+
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="490" font-size="14" font-weight="700" fill="#0f172a">库与桶：两套状态压成一条有方向的迁移</text>
+    <rect x="40" y="502" width="150" height="40" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="115" y="527" text-anchor="middle" font-size="12.5" fill="#854d0e">insert pending</text>
+    <line x1="192" y1="522" x2="248" y2="522" stroke="#64748b" stroke-width="1.6"/>
+    <polygon points="248,518 258,522 248,526" fill="#64748b"/>
+    <rect x="258" y="502" width="150" height="40" rx="8" fill="#e0f2fe" stroke="#0284c7"/>
+    <text x="333" y="527" text-anchor="middle" font-size="12.5" fill="#075985">写桶（PUT）</text>
+    <line x1="410" y1="522" x2="466" y2="522" stroke="#64748b" stroke-width="1.6"/>
+    <polygon points="466,518 476,522 466,526" fill="#64748b"/>
+    <rect x="476" y="502" width="210" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="581" y="527" text-anchor="middle" font-size="12.5" fill="#166534">update … where status='pending'</text>
+    <text x="700" y="518" font-size="12" fill="#334155">影响 0 行 = 已经 active → 幂等成功</text>
+    <text x="700" y="538" font-size="12" fill="#b91c1c">失败方向唯一：pending 超时 → 删除（不会「既 active 又不存在」）</text>
+  </g>
+</svg>

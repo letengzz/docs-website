@@ -8,6 +8,8 @@
 
 本页判据族 `GM-A` ~ `GM-H`，共 8 条。定义表在第八节。
 
+![灰度度量：判定与自动回滚](../assets/obs-gray-metrics.svg)
+
 ## 本页不讲什么
 
 - 不讲分流网关 / Service Mesh / Nginx 的配置语法，归 [CI/CD](/docs/Tools/CICD/index.md) 与 [Nginx](/docs/Ops/Nginx/index.md)。
