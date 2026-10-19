@@ -289,6 +289,19 @@ select attname, round(correlation::numeric,3) from pg_stats where tablename = 'e
 
 本页特有的一个坑：分区表的索引是「父表一条定义 + 每个分区一份物理索引」，`pg_relation_size(父表索引)` 返回 0（与父表本身一样）。统计索引体积必须累加分区。
 
+## 与全文检索专题的分工
+
+B+ 树回答「有序键的等值与范围查询」，[倒排索引](/docs/DB/FullTextSearch/IndexDesign/index.md) 回答「哪些文档含这个**词元**」。两者都是索引，但一个按**键的顺序**组织，一个按**词元的字典序 + postings** 组织。
+
+| 维度 | B+ 树（本页） | 倒排（全文检索专题） |
+| --- | --- | --- |
+| 查询形态 | 等值、范围、前缀（有序） | 词元集合运算（AND / OR / NOT） |
+| 代价来源 | 树高 × 页访问 | postings 长度（df） |
+| 更新代价 | 页分裂、随机写 | 段合并 / pending list |
+| 能否做子串 | 否（前导通配失效） | 否（按词元匹配） |
+
+**本页特有的一条坑**：倒排索引的「词典」本身常用 **FST / 有序数组 + 二分** 实现，而不是 B+ 树——因为词典是**只读、批量构建**的，不需要支持原地更新。把 B+ 树的「页分裂」直觉套到倒排上，会误判「加一个词很便宜」，实际代价在 postings 重写与段合并。
+
 ## 参考资料
 
 - [PostgreSQL 18 · B-Tree Indexes](https://www.postgresql.org/docs/18/btree.html)——官方对 B+ 树实现（含去重 posting list）的说明

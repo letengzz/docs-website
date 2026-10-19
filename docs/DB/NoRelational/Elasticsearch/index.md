@@ -30,3 +30,5 @@ Elasticsearch（简称 ES）是基于 Apache Lucene 的**分布式搜索与分�
 - [MySQL](../../Relational/MySQL/index.md)：ES 常作为 MySQL 的「搜索外挂」，同步方案见实战页
 - [SQL 优化](../../Relational/SQLOptimization/index.md)：数据库侧的检索优化，与 ES 侧互补
 - [向量数据库深入](../../VectorDatabase/index.md)：ES 自 8.x 起把 `dense_vector` 与 kNN 搜索纳入主线、9.1 起 **BBQ（二值量化）成为 ≥384 维的默认**，因此「ES 能不能当向量库」已成为选型必答题。分工是——**本专题讲 ES 自身怎么用**（映射、DSL、聚合、分词、集群、商品搜索实战），[向量数据库深入](../../VectorDatabase/index.md) 讲**向量检索的引擎侧机制**（HNSW / IVF-PQ / DiskANN、量化四档、过滤三流派、混合检索融合与容量预算）。判据一句话：**「这个引擎怎么装、怎么写查询」看本专题；「索引参数换到什么、召回与延迟怎么权衡」看那边。** 用 ES 做混合检索前，先读[混合检索 · RRF 与加权 RRF](../../VectorDatabase/HybridSearch/index.md)
+
+- [全文检索与搜索工程](/docs/DB/FullTextSearch/index.md)：**本专题讲「ES 这个产品怎么用」，那边讲「检索这件事为什么这么做」**——分析链为什么必须两侧一致、倒排的代价由 df 决定、`ts_rank` 与 BM25 的差别、以及怎么用标注集证明改好了。遇到「换了分词器之后一部分文档搜不到」「排序说不清为什么」这类问题，先读那边的[分词与词典](/docs/DB/FullTextSearch/TextAnalysis/index.md)与[相关性排序](/docs/DB/FullTextSearch/Relevance/index.md)，再回来查本专题的配置项。

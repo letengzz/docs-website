@@ -66,6 +66,7 @@ export const nav = [
       { text: "数据同步与 CDC", link: "/docs/DB/CDC" },
       { text: "向量数据库深入", link: "/docs/DB/VectorDatabase" },
       { text: "数据库内核与存储引擎", link: "/docs/DB/DatabaseInternals" },
+      { text: "全文检索与搜索工程", link: "/docs/DB/FullTextSearch" },
       { text: "数据治理入门", link: "/docs/DB/DataGovernance" },
     ]
   },

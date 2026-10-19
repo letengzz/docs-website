@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" width="680" height="360" role="img" aria-label="质量闸门接线：四条断言的执行顺序、基线比较与变异测试">
+  <rect x="0" y="0" width="680" height="360" fill="#f8fafc"/>
+  <text x="20" y="30" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#0f172a">闸门接线：先证数据对，再证性能够，最后证闸门本身会红</text>
+
+  <g font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11">
+    <rect x="20" y="52" width="150" height="58" rx="8" fill="#ffffff" stroke="#93b7f5" stroke-width="1.5"/>
+    <text x="95" y="72" text-anchor="middle" font-weight="700" fill="#0f172a">① 数据断言</text>
+    <text x="95" y="90" text-anchor="middle" fill="#475569">mismatch = 0</text>
+    <text x="95" y="105" text-anchor="middle" fill="#475569">且 rows &gt; 0</text>
+
+    <rect x="190" y="52" width="150" height="58" rx="8" fill="#ffffff" stroke="#93b7f5" stroke-width="1.5"/>
+    <text x="265" y="72" text-anchor="middle" font-weight="700" fill="#0f172a">② 指标断言</text>
+    <text x="265" y="90" text-anchor="middle" fill="#475569">carry = corrected</text>
+    <text x="265" y="105" text-anchor="middle" fill="#475569">+ mismatch</text>
+
+    <rect x="360" y="52" width="150" height="58" rx="8" fill="#ffffff" stroke="#93b7f5" stroke-width="1.5"/>
+    <text x="435" y="72" text-anchor="middle" font-weight="700" fill="#0f172a">③ 压测断言</text>
+    <text x="435" y="90" text-anchor="middle" fill="#475569">dropped = 0</text>
+    <text x="435" y="105" text-anchor="middle" fill="#475569">k6 退出码 = 0</text>
+
+    <rect x="530" y="52" width="130" height="58" rx="8" fill="#eef4ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="595" y="72" text-anchor="middle" font-weight="700" fill="#1e40af">④ 基线比较</text>
+    <text x="595" y="90" text-anchor="middle" fill="#475569">1.2 报警</text>
+    <text x="595" y="105" text-anchor="middle" fill="#475569">1.5 阻断</text>
+  </g>
+  <g stroke="#2563eb" stroke-width="1.5" fill="none">
+    <path d="M170 81 H188" marker-end="url(#g1)"/>
+    <path d="M340 81 H358" marker-end="url(#g1)"/>
+    <path d="M510 81 H528" marker-end="url(#g1)"/>
+  </g>
+
+  <rect x="20" y="132" width="310" height="118" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="34" y="154" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#0f172a">基线文件必须带三枚指纹</text>
+  <text x="34" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#334155">commit / env（1c2g vs 4c8g）/ 工具版本</text>
+  <text x="34" y="198" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">指纹不同 → 不比较，直接跳过（否则 p99 差 4 倍）</text>
+  <text x="34" y="220" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">基线取「过去 7 次通过的滚动中位数」，不取单次</text>
+  <text x="34" y="242" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">写入时机：压测通过之后、断言全绿之前</text>
+
+  <rect x="350" y="132" width="310" height="118" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="364" y="154" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#92400e">变异测试：闸门自己必须会红</text>
+  <text x="364" y="176" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">变异 A 策略改 true → 3000 行 / 2000 越权 → 越权断言红</text>
+  <text x="364" y="196" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">变异 B 超级用户 → 3000 行 / 2000 越权 → 越权断言红</text>
+  <text x="364" y="216" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">变异 C 事务外 SET LOCAL → 0 行 / 0 越权 → 只有活性断言红</text>
+  <text x="364" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">变异 D 自证式断言 → 0 越权（假绿）→ 必须用期望租户比对</text>
+
+  <rect x="20" y="266" width="640" height="76" rx="8" fill="#eef4ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="34" y="288" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" font-weight="700" fill="#1e40af">顺序不能换</text>
+  <text x="34" y="308" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">数据断言失败时不必看性能：一个越权的系统跑得再快也没有意义。</text>
+  <text x="34" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">基线比较放在最后：它只回答「有没有变慢」，不回答「对不对」。</text>
+  <defs>
+    <marker id="g1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+</svg>

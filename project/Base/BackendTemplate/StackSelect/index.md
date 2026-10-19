@@ -402,7 +402,7 @@ app:
 
 ![选择器脚本：四步流程与六类生成物](../assets/selector-flow.svg)
 
-脚本在 `project/Base/BackendTemplate/stack-select/stack-select.py`，只用 Python 标准库。
+脚本原路径 `project/Base/BackendTemplate/stack-select/stack-select.py` **已删除**：本项目遵守「`project/` 只存文档」的纯度纪律，仓库不提交任何可执行副本。脚本内容见第 7.2 节的完整清单，请在你自己的工程里按同样结构创建（只用 Python 标准库）。
 
 ### 7.1 用法
 
