@@ -266,6 +266,21 @@ curl -X POST http://localhost:9093/api/v2/silences -d '{
 
 本页特有的一个坑：**`for` 不是「延迟通知」，是「要求持续满足」**。写成 `for: 0m` 或省略时，任何一次瞬时尖峰都会触发；而写成 `for: 30m` 又会让真正的持续性故障晚半小时才叫人。中间这个量级由「业务能容忍多久」决定，不由「抖动多大」决定——这也是为什么它不该在 YAML 里靠试出来。
 
+## 与「部署前置」章节集的分工（第 169 天补充）
+
+本页讲告警规则的**语法、分组、抑制与路由**；[部署后冒烟](/project/Complete/TeamBoard/SmokeGate/index.md) 与 [上线前置闸门](/project/Complete/TeamBoard/PreLaunchGate/index.md) 讲的是「发布那一刻，指标链路本身是不是通的」。分工：
+
+| 问题 | 归本页 | 归「部署前置」章节集 |
+| --- | --- | --- |
+| `for` / `keep_firing_for` / 分组抑制怎么写 | ✅ 规则语法 | —— |
+| 发布后怎么证明指标真的在采（`card_move_ms_count ≥ 1`） | —— | ✅ `SMK` 的 `S9` |
+| 告警风暴怎么收敛 | ✅ | —— |
+| 「指标缺失」为什么不回滚本次发布，而是阻断下一次 | —— | ✅ `SMK` 第五节 |
+
+::: warning 本页特有的一条坑：指标断流时，规则不会自己变红
+`rate(http_requests_total[5m]) > 0.05` 这类规则在**指标完全消失**时算不出值，Prometheus 不产生样本，于是「没有告警」——而服务可能已经 100% 不可用。必须配一条 `absent(card_move_ms_count) == 1`（或 `up == 0`）的「断流告警」，并在发布验收里显式检查 `/actuator/prometheus` 能返回非零计数。这也是 `S9` 失败被定为「不回滚、阻断下次发布」的原因：它不影响用户，但会让**下一次**故障无法定位。
+:::
+
 ## 参考资料
 
 - Alertmanager 文档：https://prometheus.io/docs/alerting/latest/alertmanager/

@@ -156,3 +156,18 @@ docker build -t docker_boot:1.0 .
 ```shell
 docker run -d -p 5678:5678 docker_boot:1.0
 ```
+
+## 与「部署前置」章节集的分工（第 169 天补充）
+
+本页讲的是 Dockerfile 的**指令语法与构建流程**；[镜像供应链](/project/Complete/TeamBoard/ImageSupplyChain/index.md) 讲的是「构建出来的东西怎么被唯一指认、怎么保证三个环境跑的是同一份」。两者的边界：
+
+| 问题 | 归本页 | 归「部署前置」章节集 |
+| --- | --- | --- |
+| `FROM` / `COPY` / `RUN` 怎么写、层缓存怎么命中 | ✅ 语法与流程 | —— |
+| `FROM` 后面跟 tag 还是 `@sha256:` | —— | ✅ `ISC-C`（底座可被上游悄悄换掉） |
+| 多阶段构建怎么减小体积 | ✅ | —— |
+| 构建产物怎么变成发布指纹（manifest digest） | —— | ✅ `ISC-A` / `ISC-F` |
+
+::: danger 本页特有的一条坑：`FROM nginx:alpine` 让「不可变镜像」有了一个可变底座
+镜像本身不可变，但 `alpine` 是一个 tag，上游随时能把它指向新的 minor。上游换一次，你的镜像重建一次，底层库就换一次——而 `git log` 里看不到任何业务改动。正确写法是 `FROM nginx@sha256:…`，并把这行升级做成**独立提交**（`chore(image): bump base to <digest>`），否则「这次发布为什么变慢」永远归因不到。
+:::

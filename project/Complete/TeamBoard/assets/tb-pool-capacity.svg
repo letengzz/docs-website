@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img" aria-label="容量复核：实例池总量、预留与 max_connections 的不等式">
+  <rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">一条不等式：实例数 × 池上限 + 预留 ≤ max_connections</text>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif">
+    <!-- 实例 -->
+    <rect x="40" y="64" width="120" height="56" rx="8" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="100" y="88" text-anchor="middle" font-size="12" font-weight="600" fill="#1e3a8a">app-1</text>
+    <text x="100" y="106" text-anchor="middle" font-size="11" fill="#334155">pool 20</text>
+
+    <rect x="40" y="130" width="120" height="56" rx="8" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="100" y="154" text-anchor="middle" font-size="12" font-weight="600" fill="#1e3a8a">app-2</text>
+    <text x="100" y="172" text-anchor="middle" font-size="11" fill="#334155">pool 20</text>
+
+    <rect x="40" y="196" width="120" height="56" rx="8" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="100" y="220" text-anchor="middle" font-size="12" font-weight="600" fill="#1e3a8a">app-3</text>
+    <text x="100" y="238" text-anchor="middle" font-size="11" fill="#334155">pool 20</text>
+
+    <text x="100" y="276" text-anchor="middle" font-size="11" fill="#1d4ed8">3 × 20 = 60</text>
+
+    <line x1="170" y1="158" x2="230" y2="158" stroke="#2563eb" stroke-width="2"/>
+
+    <!-- 其他占用 -->
+    <rect x="240" y="64" width="200" height="188" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="258" y="88" font-size="12" font-weight="600" fill="#0f172a">其他人也在用连接</text>
+    <text x="258" y="112" font-size="11" fill="#334155">迁移任务（Flyway） 1</text>
+    <text x="258" y="134" font-size="11" fill="#334155">指标采集 exporter 2</text>
+    <text x="258" y="156" font-size="11" fill="#334155">运维 / 排查预留 3</text>
+    <text x="258" y="184" font-size="11" fill="#b91c1c">预留 3 个槽位只在</text>
+    <text x="258" y="202" font-size="11" fill="#b91c1c">「非超级用户」时有效</text>
+    <text x="258" y="230" font-size="11" fill="#334155">合计 66 / 上限 100 → 余量 34%</text>
+
+    <line x1="450" y1="158" x2="500" y2="158" stroke="#2563eb" stroke-width="2"/>
+
+    <!-- 两种池配置 -->
+    <rect x="510" y="64" width="410" height="88" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="528" y="88" font-size="12" font-weight="600" fill="#166534">pool = 20（实测需要 15，留 35% 余量）</text>
+    <text x="528" y="110" font-size="11" fill="#14532d">利特尔法则：120 RPS × 0.12 s ≈ 14.4 并发</text>
+    <text x="528" y="130" font-size="11" fill="#14532d">3 副本 → 60 + 6 = 66 ≤ 100 ✅</text>
+    <text x="528" y="146" font-size="11" fill="#14532d">Hikari 经验值：(4 核 × 2) + 1 ≈ 9</text>
+
+    <rect x="510" y="164" width="410" height="88" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="528" y="188" font-size="12" font-weight="600" fill="#991b1b">pool = 50（模板默认值）</text>
+    <text x="528" y="210" font-size="11" fill="#7f1d1d">3 × 50 = 150 &gt; 100 → 超卖 50 条</text>
+    <text x="528" y="230" font-size="11" fill="#7f1d1d">第三个实例启动即开始随机 53300</text>
+    <text x="528" y="246" font-size="11" fill="#7f1d1d">HPA 3 → 10 副本时：500 条请求砸向 100 个槽位</text>
+
+    <!-- 实测 -->
+    <rect x="40" y="286" width="880" height="106" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="58" y="310" font-size="12" font-weight="600" fill="#92400e">本机实测：max_connections=20 的库，30 个并发连接</text>
+    <text x="58" y="332" font-size="11" fill="#78350f">成功 20 · 失败 10 · 错误 FATAL: sorry, too many clients already（53300，握手即拒，不是超时）</text>
+    <text x="58" y="352" font-size="11" fill="#78350f">凑满 20 条后，连「查 pg_stat_activity 看谁占着」都连不进去 → 运维必须有一条独立通道</text>
+    <text x="58" y="374" font-size="11" fill="#b91c1c">超卖的表现很有欺骗性：服务能起、单请求能通、并发一上来随机失败</text>
+  </g>
+</svg>

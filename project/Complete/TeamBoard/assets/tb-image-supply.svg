@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img" aria-label="四个字符串：tag、镜像 ID、层摘要与 manifest digest 谁是发布指纹">
+  <defs>
+    <marker id="isc-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">四个字符串，只有一个能当发布指纹</text>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif">
+    <!-- 构建 -->
+    <rect x="40" y="60" width="210" height="70" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="145" y="86" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">docker build</text>
+    <text x="145" y="106" text-anchor="middle" font-size="11" fill="#64748b">同一份文件 · 重建 6 次</text>
+    <text x="145" y="122" text-anchor="middle" font-size="11" fill="#64748b">无 RUN、无时间戳指令</text>
+
+    <line x1="250" y1="95" x2="300" y2="95" stroke="#2563eb" stroke-width="2" marker-end="url(#isc-arrow)"/>
+
+    <!-- 四个字符串 -->
+    <rect x="310" y="60" width="610" height="58" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="328" y="82" font-size="12" font-weight="600" fill="#991b1b">tag  teamboard:1.4.2</text>
+    <text x="328" y="102" font-size="11" fill="#7f1d1d">可移动指针：可被 docker tag 改指向 → 不能当指纹</text>
+
+    <rect x="310" y="128" width="610" height="58" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="328" y="150" font-size="12" font-weight="600" fill="#991b1b">image ID  sha256:91f785…</text>
+    <text x="328" y="170" font-size="11" fill="#7f1d1d">config 摘要，含 created 时间 → 6 次构建出 5 个不同 ID</text>
+
+    <rect x="310" y="196" width="610" height="58" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="328" y="218" font-size="12" font-weight="600" fill="#92400e">layer diffID  sha256:379f51…</text>
+    <text x="328" y="238" font-size="11" fill="#78350f">层内容摘要：六次构建全部相同（连 touch 都没变）→ 只证明「文件没变」</text>
+
+    <rect x="310" y="264" width="610" height="58" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="328" y="286" font-size="12" font-weight="600" fill="#166534">manifest digest  repo@sha256:5c1e…</text>
+    <text x="328" y="306" font-size="11" fill="#14532d">registry 侧内容寻址，push 才有 → 唯一能写进部署清单的字符串</text>
+
+    <!-- 结论 -->
+    <line x1="615" y1="322" x2="615" y2="352" stroke="#16a34a" stroke-width="2" marker-end="url(#isc-arrow)"/>
+    <rect x="310" y="356" width="610" height="50" rx="8" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="328" y="378" font-size="12" font-weight="600" fill="#1e3a8a">纪律：清单写 digest（ISC-A）、全链路只构建一次（ISC-B）、基础镜像按 digest 固定（ISC-C）</text>
+    <text x="328" y="396" font-size="11" fill="#334155">本地构建没有 RepoDigests —— 不上推就没有可引用的指纹</text>
+  </g>
+</svg>

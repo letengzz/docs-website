@@ -369,3 +369,18 @@ Multi-architecture Image，即多架构镜像，是某`<repository>`中的某`<t
 悬虚镜像，即没有`<repository>`与`<tag>`的镜像。悬虚镜像一般都是由于某些失误操作或其它一些操作而生成的副产物，一般是要被清除掉的。如果非要使用悬虚镜像，那只能通过其 ImageID 来使用了。
 
 ![悬空镜像](assets/img202406151356764.png)
+
+## 与「部署前置」章节集的分工（第 169 天补充）
+
+第 169 天在 `project/Complete/TeamBoard` 交付了**部署前置**八章（[镜像供应链](/project/Complete/TeamBoard/ImageSupplyChain/index.md) · [环境等价](/project/Complete/TeamBoard/EnvParity/index.md) · [迁移前置](/project/Complete/TeamBoard/MigrationPreflight/index.md) · [优雅退出](/project/Complete/TeamBoard/GracefulDrain/index.md) · [冒烟](/project/Complete/TeamBoard/SmokeGate/index.md) · [回滚矩阵](/project/Complete/TeamBoard/RollbackMatrix/index.md) · [容量复核](/project/Complete/TeamBoard/PoolCapacity/index.md) · [上线闸门](/project/Complete/TeamBoard/PreLaunchGate/index.md)）。本页与它讲的是同一批对象的两面：
+
+| 问题 | 归本页 | 归「部署前置」章节集 |
+| --- | --- | --- |
+| 镜像是什么、层怎么叠、tag 与 digest 有什么区别 | ✅ 机制与命令 | —— |
+| 发布清单该写 tag 还是 digest、为什么 image ID 不能当版本号 | —— | ✅ `ISC-A` / `ISC-B` |
+| `docker images` 里看不到 digest 时怎么查 | ✅ `RepoDigests` / `inspect` | —— |
+| 一次构建多处部署、底座按 digest 固定 | —— | ✅ `ISC-C` / `ISC-B` |
+
+::: danger 本页特有的一条坑：`docker images` 的 IMAGE ID 会骗人
+同一个 tag 被重新构建覆盖后，`docker images` 里只有 IMAGE ID 变了，**没有任何提示**。本机实测同一份 Dockerfile 连建 6 次（含 2 次命中缓存、3 次 `--no-cache`），出了 **5 个不同 IMAGE ID**，而最后一层 diffID 六次都是 `379f51bf…`——说明「内容没变、ID 变了」。判断「线上跑的是不是这一份」只能看 <span v-pre>`docker inspect -f '{{index .RepoDigests 0}}'`</span>，且本地构建该字段为空（digest 由 registry 在 push 时算），必须上推后回读。
+:::

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img" aria-label="部署后冒烟：十步链路、断言与失败分流">
+  <rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">冒烟十步：一条依赖链、每步一个业务断言、全量 ≤ 60 s</text>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif">
+    <!-- S0 -->
+    <rect x="30" y="58" width="440" height="56" rx="8" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="48" y="80" font-size="12" font-weight="600" fill="#1e3a8a">S0 · GET /healthz</text>
+    <text x="48" y="100" font-size="11" fill="#334155">断言 build.digest = 期望 digest；db/redis/storage 全 UP · 3 s</text>
+
+    <!-- S1 -->
+    <rect x="490" y="58" width="440" height="56" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="508" y="80" font-size="12" font-weight="600" fill="#0f172a">S1 · 登录取令牌</text>
+    <text x="508" y="100" font-size="11" fill="#334155">200 + token 非空；exp − iat ≤ 900 s · 5 s</text>
+
+    <!-- S2 -->
+    <rect x="30" y="124" width="440" height="56" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="48" y="146" font-size="12" font-weight="600" fill="#0f172a">S2 · 建一次性看板 + 3 列</text>
+    <text x="48" y="166" font-size="11" fill="#334155">201；列顺序 = 提交顺序（position_key 生成） · 5 s</text>
+
+    <!-- S3 -->
+    <rect x="490" y="124" width="440" height="56" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="508" y="146" font-size="12" font-weight="600" fill="#166534">S3 · 建 3 卡 + 拖第 1 张到第 3 位</text>
+    <text x="508" y="166" font-size="11" fill="#14532d">200；version=2；列表顺序 = 拖后顺序 · 8 s</text>
+
+    <!-- S4 -->
+    <rect x="30" y="190" width="440" height="56" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="48" y="212" font-size="12" font-weight="600" fill="#166534">S4 · 用旧 version 再拖一次</text>
+    <text x="48" y="232" font-size="11" fill="#14532d">409，响应体含 currentVersion · 5 s</text>
+
+    <!-- S5 -->
+    <rect x="490" y="190" width="440" height="56" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="508" y="212" font-size="12" font-weight="600" fill="#0f172a">S5 · 带 @ 提及的评论</text>
+    <text x="508" y="232" font-size="11" fill="#334155">201；mention=1；通知未读 +1（outbox 扇出） · 8 s</text>
+
+    <!-- S6 -->
+    <rect x="30" y="256" width="440" height="56" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="48" y="278" font-size="12" font-weight="600" fill="#0f172a">S6 · 预签名 + commit</text>
+    <text x="48" y="298" font-size="11" fill="#334155">200；status=committed；直链 403（桶私有） · 10 s</text>
+
+    <!-- S7 -->
+    <rect x="490" y="256" width="440" height="56" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+    <text x="508" y="278" font-size="12" font-weight="600" fill="#0f172a">S7 · 检索关键字</text>
+    <text x="508" y="298" font-size="11" fill="#334155">200；命中 ≥ 1；响应含 matched_terms · 8 s</text>
+
+    <!-- S8 -->
+    <rect x="30" y="322" width="440" height="56" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="48" y="344" font-size="12" font-weight="600" fill="#991b1b">S8 · 越权负例（乙令牌读甲看板）</text>
+    <text x="48" y="364" font-size="11" fill="#7f1d1d">404（不是 403）；安全类失败 → 立即回滚 · 5 s</text>
+
+    <!-- S9 -->
+    <rect x="490" y="322" width="440" height="56" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="508" y="344" font-size="12" font-weight="600" fill="#92400e">S9 · /actuator/prometheus</text>
+    <text x="508" y="364" font-size="11" fill="#78350f">200；card_move_ms_count ≥ 1（指标链路通） · 5 s</text>
+
+    <text x="30" y="404" font-size="11" fill="#64748b">失败分流：S0/S1/S8 → 立即回滚；S3/S4 → 立即回滚；S5~S7 → 回滚或功能降级；S9 → 不回滚，阻断下次发布</text>
+  </g>
+</svg>

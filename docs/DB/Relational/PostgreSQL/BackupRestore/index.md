@@ -179,6 +179,21 @@ psql -U app_user -d appdb -c "SELECT count(*) FROM users;"
 
 **一句话结论**：备份脚本里的「健康检查」部分最容易在升级后静默失效——它不参与备份成败，只在你想确认「归档有没有跟上」时才报错。**升级演练必须把这几条查询一起跑一遍。**
 
+## 与「部署前置」章节集的分工（第 169 天补充）
+
+本页讲 `pg_dump` / `pg_basebackup` / PITR 的**操作与恢复流程**；[回滚矩阵](/project/Complete/TeamBoard/RollbackMatrix/index.md) 讲的是「什么时候必须动用备份」以及回滚点要记什么。分工：
+
+| 问题 | 归本页 | 归「部署前置」章节集 |
+| --- | --- | --- |
+| 逻辑备份与物理备份怎么选、命令怎么写 | ✅ 操作 | —— |
+| 发布前要记哪三个值（digest / LSN / 配置快照） | —— | ✅ `RBD-D` |
+| 恢复到某个时间点的步骤 | ✅ | —— |
+| 哪些回滚「只能靠备份」（`DROP COLUMN` / `RENAME`） | —— | ✅ `RBD-C` |
+
+::: danger 本页特有的一条坑：`pg_dump` 不能当「回滚点」
+`pg_dump` 是**逻辑快照**，它保证「恢复到执行那一刻」，但不给你一个可以精确回退的坐标；而发布回滚要的是「回到 T-30 那一刻之前」，这需要 `pg_current_wal_lsn()` + 基础备份走 PITR。本机实测的对照很直白：`DROP COLUMN` 之后 `select … where ver = 7` 直接报 `column "ver" does not exist`——值随列一起消失，**没有任何 SQL 能把它找回来**，只能恢复到备份点，而备份点意味着丢掉从备份到现在的全部写入。所以「删列」必须走「先停写 → 观察一个版本周期 → 再删」。
+:::
+
 ## 参考资料
 
 - [PostgreSQL 备份文档](https://www.postgresql.org/docs/current/backup.html)

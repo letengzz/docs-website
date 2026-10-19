@@ -151,6 +151,21 @@ kubectl autoscale deployment/web --min=2 --max=10 --cpu-percent=70
 `terminationGracePeriodSeconds` 默认 30 s，K8s 选主的 `LeaseDuration` 常用 15 s。看起来很宽裕，但真实链路是「preStop → 停止接新请求 → 等在途请求 → 撤销租约」，在途请求如果有长轮询或 WebSocket，30 秒根本不够，进程会被 SIGKILL——**租约来不及撤销**，新 leader 要等满 `LeaseDuration` 才能接管。读数是「发布一次，后台任务的接管延迟多出一个租约周期」，而日志里看不出任何异常。要么把 preStop 做成「先摘流量再等 10 秒」，要么把 grace 调到 ≥ 租约 + 在途上限。
 :::
 
+## 与「部署前置」章节集的分工（第 169 天补充）
+
+本页讲 Deployment 的**滚动更新参数**（`maxSurge` / `maxUnavailable`）、探针与副本管理；[优雅退出](/project/Complete/TeamBoard/GracefulDrain/index.md) 讲的是「替换的那 30 秒里，在途请求去哪了」。两者互补：
+
+| 问题 | 归本页 | 归「部署前置」章节集 |
+| --- | --- | --- |
+| `maxSurge` / `maxUnavailable` 怎么配、副本怎么滚 | ✅ 编排参数 | —— |
+| `preStop` 与「摘流」为什么要早于 `SIGTERM` | —— | ✅ `DRN-B` |
+| 三种探针的字段与默认值 | ✅ | —— |
+| 在途请求排空的实测读数（200 个请求全丢 vs 全成） | —— | ✅ `DRN-A` |
+
+::: danger 本页特有的一条坑：`terminationGracePeriodSeconds` 默认 30 s 不是「够用」
+默认宽限期 30 s 看似很宽，但它要装下三件事：`preStop` 停顿（≥ 网关刷新周期）、在途请求排空、容器内进程退出。本项目的取值是 `preStop` 6 s + drain 20 s = 26 s，只剩 4 s 余量；再叠加一个「关闭连接池要 5 s」的改动，就会踩到 `SIGKILL`——**那一刻所有未完成请求都没有响应**，客户端看到的是连接重置，而不是 5xx。宁可把宽限期设成 45 s，也不要让它刚好等于预算。
+:::
+
 ## 参考资料
 
 - Deployment 文档：https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/

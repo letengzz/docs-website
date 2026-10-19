@@ -257,6 +257,21 @@ SELECT * FROM monthly_stats ORDER BY month DESC LIMIT 5;
 判断方法：`EXPLAIN (ANALYZE, BUFFERS)` 里如果没有出现你预期的索引名，先看**该索引的谓词是否覆盖了这次查询的行集**，而不是先怀疑统计信息。
 :::
 
+## 与「部署前置」章节集的分工（第 169 天补充）
+
+本页讲 PostgreSQL 的**事务、锁模式与并发控制机制**；[迁移前置闸门](/project/Complete/TeamBoard/MigrationPreflight/index.md) 讲的是「把这些机制用在上线那一刻」的工程闸门。分工：
+
+| 问题 | 归本页 | 归「部署前置」章节集 |
+| --- | --- | --- |
+| 八种表锁的冲突矩阵、MVCC 与隔离级别 | ✅ 机制 | —— |
+| 迁移该设多大的 `lock_timeout`、超时后怎么办 | —— | ✅ `MGP-A` |
+| `ACCESS EXCLUSIVE` 为什么阻塞一切 | ✅ | —— |
+| 排队中的 DDL 为什么会把只读查询一起堵住（实测 1.19 s） | —— | ✅ `MGP-B` |
+
+::: danger 本页特有的一条坑：锁队列是「后来者堵后来者」
+`ACCESS EXCLUSIVE` 在队列里排队时，**后续到达的普通 `SELECT` 不能越过它去和持锁者共享锁**（否则排队的 DDL 会被饿死）。所以一条只读查询会被一条尚未执行的 `ALTER` 堵住——本机实测：会话 A 持锁 2 s、会话 B 的 `ALTER` 排队、会话 C 的 `select count(*)` 等了 **1.19 s** 才返回。这就是「迁移引发全站超时」的真实机制：不是 DDL 慢，是它在队列里当了一堵墙。结论：迁移必须设 `lock_timeout`（200~500 ms），失败后**不许自动重试**。
+:::
+
 ## 参考资料
 
 - [PostgreSQL JSON 类型](https://www.postgresql.org/docs/current/datatype-json.html)
