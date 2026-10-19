@@ -64,6 +64,30 @@ WHERE search_vec @@ to_tsquery('simple', '数据库 & 优化');
 内置分词器对中文支持有限；生产中文搜索需扩展（如 zhparser、pg_jieba）或接 Elasticsearch。
 :::
 
+### 权重与排序：`{D, C, B, A}` 的顺序坑（第 167 天补充）
+
+上面那条生成列把 `title` 与 `body` 拼成了一串，**两者同权重**。要区分，得用 `setweight` 分开写：
+
+```sql
+ALTER TABLE articles ADD COLUMN search_vec_w tsvector
+GENERATED ALWAYS AS (
+    setweight(to_tsvector('simple', coalesce(title, '')), 'A') ||
+    setweight(to_tsvector('simple', coalesce(body, '')),  'D')
+) STORED;
+```
+
+排序时 `ts_rank` / `ts_rank_cd` 的**权重数组顺序固定为 `{D, C, B, A}`**：
+
+```sql
+-- 标题最重：A 在最后一位，取 1.0
+SELECT ts_rank_cd('{0.1, 0.2, 0.4, 1.0}', search_vec_w, q) FROM articles, websearch_to_tsquery('simple','索引') q;
+-- 写成 {1.0, 0.4, 0.2, 0.1} 就变成「正文最重」，且不会报任何错
+```
+
+另外两点：`ts_rank` **不是 BM25**（没有词频饱和与长度归一），得分只能在**同一查询内**比较；`websearch_to_tsquery` 比手拼 `to_tsquery` 安全得多，用户输入 `&`、`|` 时不会抛语法错。
+
+工程层（选型、评估、重建、容量）见 [全文检索与搜索工程](/docs/DB/FullTextSearch/index.md)；本节只保留语法与两个高频坑。
+
 ## 分区表
 
 ```sql

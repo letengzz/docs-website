@@ -4,7 +4,7 @@ import { Auth, ContractEvolution, DDD, DesignPatterns, DistributedCache, Distrib
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, CapacityCost, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
-import { BigData, CDC, ClickHouse, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, Sharding, TimeSeries, VectorDatabase } from "./db";
+import { BigData, CDC, ClickHouse, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
@@ -99,7 +99,7 @@ export const sidebar = {
     {
       text: "数据库",
       collapsed: true,
-      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...DataWarehouse, ...BigData, ...ClickHouse, ...Neo4j, ...TimeSeries, ...CDC, ...VectorDatabase, ...DataGovernance, ...DatabaseInternals, ...PartitionArchival],
+      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...DataWarehouse, ...BigData, ...ClickHouse, ...Neo4j, ...TimeSeries, ...CDC, ...VectorDatabase, ...DataGovernance, ...DatabaseInternals, ...PartitionArchival, ...FullTextSearch],
     },
   ],
   "/docs/Ops": [
@@ -210,6 +210,7 @@ export const sidebar = {
   "/docs/DB/DataGovernance": DataGovernance,
   "/docs/DB/DatabaseInternals": DatabaseInternals,
   "/docs/DB/PartitionArchival": PartitionArchival,
+  "/docs/DB/FullTextSearch": FullTextSearch,
   "/docs/Ops/VM": VM,
   "/docs/Ops/Linux": Linux,
   "/docs/Ops/Ansible": Ansible,

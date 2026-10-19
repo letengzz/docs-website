@@ -196,6 +196,23 @@ connection = pika.BlockingConnection(params)
 4. 重启全部节点，确认元数据与消息都在（持久化验证）。
 5. Kafka 生产级部署、扩缩容、安全与监控指标清单见 [Kafka 集群部署、运维与监控](../Kafka/Cluster/index.md)。
 
+## 与「分布式锁与选主」专题的分工（第 159 天补充）
+
+本页讲**集群与消费组**：分区分配、rebalance、副本同步、故障转移。它里面确实有「谁是主」的概念（Kafka 的 controller、Raft 模式的 leader），但那是**消息系统内部的选主**，由 broker 自己完成，业务方不参与。
+
+[分布式锁与选主](/docs/Backend/DistributedLock/index.md) 讲的是**业务进程自己的单写者**：定时补偿任务、outbox 转发、缓存刷新。这两件事经常被混在一起，于是出现「用消费组代替选主」的错配。
+
+| 边界问题 | 归本页 | 归专题 |
+| --- | --- | --- |
+| 分区分配策略、rebalance 触发条件、消费位点提交 | ✅ | — |
+| 业务侧的「只让一个实例跑补偿任务」 | — | ✅ [定时任务只跑一次](/docs/Backend/DistributedLock/Practice/index.md) |
+| broker 的 controller 选举与 ISR | ✅ | — |
+| 消费端按 token 丢弃过期消息 | — | ✅ [fencing](/docs/Backend/DistributedLock/Fencing/index.md) |
+
+::: warning 不要用「多开消费者」去解决单实例任务
+一个 3 分区的 topic，起 5 个消费者，多出来的 2 个会**空转**（拿不到分区）。有人因此想「给空转的消费者加一把锁，让它去跑补偿任务」——这会把两套协调机制叠在一起：rebalance 一发生，那个消费者可能刚好拿到分区，于是它一边消费一边跑补偿，两边的位点与锁状态互相干扰。正确做法是**两个独立的部署单元**：消费者只消费，补偿任务用 [单实例任务](/docs/Backend/DistributedLock/Practice/index.md) 的锁表或 K8s CronJob，互不相干。
+:::
+
 ## 参考资料
 
 - Kafka KRaft 配置：https://kafka.apache.org/documentation/#kraft

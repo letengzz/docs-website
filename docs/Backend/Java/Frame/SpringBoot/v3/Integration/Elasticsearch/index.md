@@ -130,6 +130,23 @@ public SearchResponse<Map> nativeSearch(String keyword) throws IOException {
 2. 用脚本建好 `products` 索引并同步一条数据，调用 Repository 的 `findByBrand...` 返回结果；
 3. 原生 DSL 搜索返回带 `<em>` 高亮片段。
 
+## 与「全文检索与搜索工程」专题的分工（第 167 天补充）
+
+本页讲 **Spring Boot 侧怎么接 ES**：依赖选型、`ElasticsearchClient` 的注入、`RestClient` 与 `spring-data-elasticsearch` 的取舍、`@Document` 映射。搜索本身的工程问题（分析链契约、相关性、索引重建、召回评估）归 [全文检索与搜索工程](/docs/DB/FullTextSearch/index.md)。
+
+接入层最容易背锅的两件事，其实都不在本页：
+
+| 现象 | 真实原因 | 去哪看 |
+| --- | --- | --- |
+| 「保存成功但立刻搜不到」 | ES 默认 1 秒 refresh，不是写失败 | [索引更新](/docs/DB/FullTextSearch/IndexUpdate/index.md) |
+| 「搜出来的顺序很奇怪」 | 字段未设 boost / analyzer 不一致 | [相关性排序](/docs/DB/FullTextSearch/Relevance/index.md) |
+
+::: danger 客户端版本与集群版本不匹配
+ES 9 起基于 Lucene 10，**8.x 的客户端不保证与 9.x 集群兼容**（反之亦然）。`spring-data-elasticsearch` 的大版本跟随 Spring Boot 与 ES 客户端的对应关系，升级时三者的版本矩阵要一起查，不能只升一个。
+
+典型症状是「启动正常、简单查询正常，某些 API 返回 400 或字段反序列化失败」——这类问题在集成测试里最容易漏，因为它依赖的是集群真实版本，而不是编译期依赖。
+:::
+
 ## 参考资料
 
 - [Spring Data Elasticsearch 官方文档](https://docs.spring.io/spring-data/elasticsearch/reference/)

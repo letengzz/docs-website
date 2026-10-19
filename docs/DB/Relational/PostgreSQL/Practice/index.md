@@ -230,6 +230,21 @@ psql -U app_user -d blog -c "SELECT count(*) FROM posts;"
 4. `EXPLAIN` 显示走索引；
 5. 备份恢复后 `count(*)` 一致。
 
+## 与「全文检索与搜索工程」专题的分工（第 167 天补充）
+
+本页讲**一条 SQL 怎么写快**：`EXPLAIN` 怎么读、索引怎么选、分页怎么写。搜索是另一类问题——它的「快」由 posting 长度决定，它的「对」由排序与评估决定，归 [全文检索与搜索工程](/docs/DB/FullTextSearch/index.md)。
+
+一条与本页直接相关的坑（专题里是判据 `FID-A`）：
+
+```sql
+-- 错：对生成列再做一次函数运算，GIN 完全用不上
+WHERE to_tsvector('simple', title || ' ' || body) @@ q
+-- 对：直接引用生成列
+WHERE search_vec @@ q
+```
+
+两者的结果**完全一样**，区别只在执行计划：前者是 `Seq Scan` + 每行现算分词，后者是 `Bitmap Index Scan`。这类「索引建了但没用上」的错误在 `EXPLAIN` 里一眼可见，但在功能测试里永远发现不了——这也是本页强调「只看访问方式、不看 cost」的原因。
+
 ## 参考资料
 
 - [PostgreSQL 教程](https://www.postgresql.org/docs/current/tutorial.html)

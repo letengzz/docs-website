@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 416" width="760" height="416" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="416" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">八类症状的分诊入口</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">按「零结果 / 不准 / 慢」三分，再往下钻；不要一上来就换引擎</text>
+  <rect x="255" y="70" width="250" height="46" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="88.2" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="bold">搜不到 / 搜不准 / 太慢</text>
+  <rect x="30" y="148" width="216" height="62" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="138" y="166.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">结果是 0 条</text>
+  <text x="138" y="183" text-anchor="middle" font-size="7.5" fill="#C2410C">先看零结果率</text>
+  <text x="138" y="200.25" text-anchor="middle" font-size="7.5" fill="#C2410C">再单独跑一次查询</text>
+  <rect x="272" y="148" width="216" height="62" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="166.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">搜得到但不对</text>
+  <text x="380" y="183" text-anchor="middle" font-size="7.5" fill="#B45309">看排序还是看召回</text>
+  <text x="380" y="200.25" text-anchor="middle" font-size="7.5" fill="#B45309">拆开两段分别验</text>
+  <rect x="514" y="148" width="216" height="62" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="622" y="166.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">慢</text>
+  <text x="622" y="183" text-anchor="middle" font-size="7.5" fill="#0F766E">先看扇出与取回</text>
+  <text x="622" y="200.25" text-anchor="middle" font-size="7.5" fill="#0F766E">再看缓存命中</text>
+  <line x1="330" y1="116" x2="138" y2="148" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="116" x2="380" y2="148" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="430" y1="116" x2="622" y2="148" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="234" width="216" height="88" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="138" y="252.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">零结果的四种原因</text>
+  <text x="138" y="269" text-anchor="middle" font-size="7.5" fill="#B91C1C">切词不一致（最多）</text>
+  <text x="138" y="286.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">同义词单侧 / 过滤过严</text>
+  <text x="138" y="303.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">拼写错误无兜底</text>
+  <rect x="272" y="234" width="216" height="88" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="252.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">排序不对的三个检查</text>
+  <text x="380" y="269" text-anchor="middle" font-size="7.5" fill="#6D28D9">字段权重是否生效</text>
+  <text x="380" y="286.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">统计信息是否陈旧</text>
+  <text x="380" y="303.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">业务加权是否压过相关性</text>
+  <rect x="514" y="234" width="216" height="88" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.6"/>
+  <text x="622" y="252.2" text-anchor="middle" font-size="10" fill="#155E75" font-weight="bold">慢的三个位置</text>
+  <text x="622" y="269" text-anchor="middle" font-size="7.5" fill="#0E7490">分片扇出 / 深分页</text>
+  <text x="622" y="286.25" text-anchor="middle" font-size="7.5" fill="#0E7490">取回与高亮</text>
+  <text x="622" y="303.5" text-anchor="middle" font-size="7.5" fill="#0E7490">段合并与缓存未命中</text>
+  <line x1="138" y1="210" x2="138" y2="234" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="210" x2="380" y2="234" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="622" y1="210" x2="622" y2="234" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="255" y="344" width="250" height="52" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="362.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">先补一条判据，再改代码</text>
+  <text x="380" y="379" text-anchor="middle" font-size="7.5" fill="#334155">所有分诊结论都要能写成断言</text>
+  <line x1="138" y1="322" x2="300" y2="344" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)" stroke-dasharray="5 4"/>
+  <line x1="380" y1="322" x2="380" y2="344" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="622" y1="322" x2="460" y2="344" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)" stroke-dasharray="5 4"/>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -258,10 +258,17 @@ curl -s -H "Authorization: Bearer $TOKEN_A" \
 
 ## 十、下一步
 
+- **本页只管「不漏」，不管「排得对」**：`search_vector` 是把 `title` 与 `description` 拼在一起建的，两者同权重，长描述会压过标题命中；游标里的 `rank` 是 `float8`，序列化后可能丢精度。这两件事已在[检索相关性联调](../BoardSearch/index.md)里补齐（`BSR`）。
 - 三条读路径都通了之后，**写路径**的隔离靠事务里的 `set_config` 与 `WITH CHECK`：见[跨租户用例矩阵](../CrossTenantMatrix/index.md)第三节。
 - 检索结果要推送给人时，推送主题不能按 `boardId` 裸命名：见[事件与推送隔离](../EventIsolation/index.md)。
 - 导出文件落在对象存储里，它的访问控制与[跨租户用例矩阵](../CrossTenantMatrix/index.md)的附件签名格是同一套判据：**在签名之前判，签名之后服务端不再参与**。
 - 第 1 周全部收口：[第 1 周验收](../Week1Acceptance/index.md)。
+
+::: tip 本页与第 167 天那一章的边界
+本页的 `search_vector` 复合索引形态（`gin (tenant_id, search_vector)`）**保持不变**，后续章节新增的是**并行的第二列** `search_vector_w`，不是改写它。理由很实际：改生成列表达式要重写全表并持有强锁，而「加一列 + 并发建索引 + 双读」可以在线完成。
+
+这也是本页那三行警告的延伸——**索引结构一旦落地，演进方式是「加」，不是「改」**。
+:::
 
 ## 参考资料
 

@@ -246,7 +246,16 @@ grep -rn -B 2 "metrics\.\|counter\." src/main/java --include=*.java | grep -c "@
 
 ## 下一步
 
-第 2 周第 4 步（第 159 天）：**看板读链路与查询改写**——把作用域接到 RLS 上，让「一次读」变成可验证的（`EXPLAIN` 读数、跨租户 0 行、缓存命中率），并把 `tenant_qps` 与 `card_move_ms` 真正接到读路径上。
+**第 2 周第 4 步（第 159 天）实际交付的是** [看板与卡片读写接口](../BoardCardApi/index.md)，第 5 步（第 160 天）是 [评论与 @ 提及的写入接口](../CommentMention/index.md)。本页原先在这里写的「看板读链路与查询改写」**只兑现了一半**，按「文档即契约」的规矩记清楚：
+
+| 原承诺 | 实际状态 | 说明 |
+| --- | --- | --- |
+| 游标分页不错位、不分页错行 | ✅ 已交付 | 落在 [BoardCardApi §二 读路径](../BoardCardApi/index.md)：`(position_key, id)` 复合游标，实测 `0.645 ms` 与页码无关 |
+| 跨租户 0 行（RLS 落到读路径） | ⚠️ **未交付** | 全项目只在 `AuthTenantMember` 与 `BoardCardApi` 里**提到** RLS，没有任何一页给出策略定义、`SET LOCAL` 作用域与验证 SQL |
+| `EXPLAIN` 读数与索引命中证明 | ⚠️ **未交付** | 第 2 周的写路径与读路径都只给了耗时数字，没给执行计划 |
+| `tenant_qps` / `card_move_ms` 接到读路径 | ⚠️ 部分 | 指标口径在本页已定完，但读路径的埋点**只有伪码**，没有可跑的实现 |
+
+**为什么现在不补**：RLS 不是一条独立功能，它要求「连接池每次取连接后必须 `SET LOCAL app.tenant_id`」——这条约束会改写 `DataSource` 的用法，属于**横切改动**，应放在第 3 周联调期的[权限矩阵](../PermissionMatrix/index.md)与[跨租户矩阵](../CrossTenantMatrix/index.md)一起做，否则会出现「有的查询走 RLS、有的走 `where tenant_id = ?`」两种真相源并存。**条件写在这里，是为了下次接续时不必重新推断「这算不算欠账」。**
 
 ## 参考资料
 

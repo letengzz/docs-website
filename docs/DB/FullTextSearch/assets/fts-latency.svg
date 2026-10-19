@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 356" width="760" height="356" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="356" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">延迟分解与分片扇出：先量再优化</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">P99 不是平均值加一点，而是「最慢的那个分片」决定的</text>
+  <text x="60" y="84" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">一次 50 ms 搜索的典型时间分解（示意，非实测）</text>
+  <rect x="60" y="100" width="24" height="34" rx="4" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="72" y="122" text-anchor="middle" font-size="8.5" fill="#334155">3</text>
+  <text x="72" y="150" text-anchor="middle" font-size="7.5" fill="#475569">网关 + 鉴权</text>
+  <rect x="84" y="100" width="16" height="34" rx="4" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.4"/>
+  <text x="92" y="122" text-anchor="middle" font-size="8.5" fill="#334155">2</text>
+  <text x="92" y="150" text-anchor="middle" font-size="7.5" fill="#475569">查询解析</text>
+  <rect x="100" y="100" width="96" height="34" rx="4" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="148" y="122" text-anchor="middle" font-size="8.5" fill="#334155">12</text>
+  <text x="148" y="150" text-anchor="middle" font-size="7.5" fill="#475569">倒排求交</text>
+  <rect x="196" y="100" width="64" height="34" rx="4" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.4"/>
+  <text x="228" y="122" text-anchor="middle" font-size="8.5" fill="#334155">8</text>
+  <text x="228" y="150" text-anchor="middle" font-size="7.5" fill="#475569">打分排序</text>
+  <rect x="260" y="100" width="160" height="34" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1.4"/>
+  <text x="340" y="122" text-anchor="middle" font-size="8.5" fill="#334155">20</text>
+  <text x="340" y="150" text-anchor="middle" font-size="7.5" fill="#475569">取回文档 + 高亮</text>
+  <rect x="420" y="100" width="40" height="34" rx="4" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.4"/>
+  <text x="440" y="122" text-anchor="middle" font-size="8.5" fill="#334155">5</text>
+  <text x="440" y="150" text-anchor="middle" font-size="7.5" fill="#475569">序列化</text>
+  <text x="60" y="176" text-anchor="start" font-size="9" fill="#B91C1C">「取回文档 + 高亮」通常比「倒排求交」更贵——优化排序算法往往不是瓶颈</text>
+  <text x="60" y="208" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">分片放大的尾延迟（每个分片独立取 P99）</text>
+  <rect x="30" y="222" width="90" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="75" y="237" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">1 分片</text>
+  <text x="132" y="237" text-anchor="start" font-size="8.5" fill="#334155">P99 = 50.0 ms（本机单分片基线）</text>
+  <rect x="30" y="250" width="90" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="75" y="265" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">3 分片</text>
+  <text x="132" y="265" text-anchor="start" font-size="8.5" fill="#334155">取 3 个样本最大值 → 58.2 ms（×1.16）</text>
+  <rect x="30" y="278" width="90" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="75" y="293" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">10 分片</text>
+  <text x="132" y="293" text-anchor="start" font-size="8.5" fill="#334155">取 10 个样本最大值 → 67.5 ms（×1.35）</text>
+  <rect x="30" y="306" width="90" height="22" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="75" y="321" text-anchor="middle" font-size="8.5" fill="#1E293B" font-weight="bold">20 分片</text>
+  <text x="132" y="321" text-anchor="start" font-size="8.5" fill="#334155">73.1 ms（×1.46）；共享资源时更大</text>
+  <rect x="420" y="214" width="310" height="122" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="575" y="232.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">容量估算三个数</text>
+  <text x="575" y="249" text-anchor="middle" font-size="7.5" fill="#0F766E">① 峰值 QPS × 单查询分片数 = 扇出</text>
+  <text x="575" y="266.25" text-anchor="middle" font-size="7.5" fill="#0F766E">② 索引体积 = 原文 × 1.2~2.0（含 posting）</text>
+  <text x="575" y="283.5" text-anchor="middle" font-size="7.5" fill="#0F766E">③ 堆外内存 ≈ 热点 posting + 段元数据</text>
+  <text x="575" y="300.75" text-anchor="middle" font-size="7.5" fill="#0F766E">先把这三个数算出来，再谈买机器</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

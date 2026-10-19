@@ -373,3 +373,22 @@ export const DatabaseInternals = [
     ],
   },
 ];
+
+export const FullTextSearch = [
+  {
+    text: "全文检索与搜索工程",
+    link: "/docs/DB/FullTextSearch/index.md",
+    items: [
+      { text: "总览：四段结构与五个必失点", link: "/docs/DB/FullTextSearch/Overview/index.md" },
+      { text: "文本分析：分词是索引契约", link: "/docs/DB/FullTextSearch/TextAnalysis/index.md" },
+      { text: "索引设计：倒排、字段与体积", link: "/docs/DB/FullTextSearch/IndexDesign/index.md" },
+      { text: "相关性排序：BM25 与业务加权", link: "/docs/DB/FullTextSearch/Relevance/index.md" },
+      { text: "索引更新：写完多久能搜到", link: "/docs/DB/FullTextSearch/IndexUpdate/index.md" },
+      { text: "查询理解：纠错、扩展与兜底", link: "/docs/DB/FullTextSearch/QueryUnderstanding/index.md" },
+      { text: "召回评估：没有基线就没有改动", link: "/docs/DB/FullTextSearch/Evaluation/index.md" },
+      { text: "性能与容量：先量再优化", link: "/docs/DB/FullTextSearch/Performance/index.md" },
+      { text: "实战：10 万工单的搜索链路", link: "/docs/DB/FullTextSearch/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/DB/FullTextSearch/FAQ/index.md" },
+    ],
+  },
+];

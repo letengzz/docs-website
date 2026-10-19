@@ -134,6 +134,23 @@ kubectl autoscale deployment/web --min=2 --max=10 --cpu-percent=70
 
 **这一页特有的坑**：把 `requests` 从 2 核降到 400m 之后，副本密度上升了，但如果**节点池没有随之缩容**，账单一分不降。判断右调是否真的省钱，要去看节点数，而不是看 Deployment 的 YAML。
 
+## 与「分布式锁与选主」专题的分工（第 159 天补充）
+
+本页讲**部署形态**：Deployment / StatefulSet 的选择、滚动更新参数、探针、资源与调度。它关心「副本怎么被安全地换掉」。
+
+[分布式锁与选主](/docs/Backend/DistributedLock/index.md) 讲**副本之间怎么协调**：谁有资格写、失去资格时怎么退位。两者的接口是 `coordination.k8s.io/v1` 的 `Lease` 对象，以及 `terminationGracePeriodSeconds` 这个容易被忽略的参数。
+
+| 边界问题 | 归本页 | 归专题 |
+| --- | --- | --- |
+| `maxSurge` / `maxUnavailable` / 探针参数 | ✅ | — |
+| 三个副本里只允许一个跑后台任务 | — | ✅ [选主](/docs/Backend/DistributedLock/LeaderElection/index.md) |
+| `terminationGracePeriodSeconds` 与 preStop | ✅ | — |
+| 优雅退出时「先停写、再撤销租约」的顺序 | — | ✅ [租约](/docs/Backend/DistributedLock/Lease/index.md) |
+
+::: danger 默认 30 秒的 grace 与 15 秒的租约不匹配
+`terminationGracePeriodSeconds` 默认 30 s，K8s 选主的 `LeaseDuration` 常用 15 s。看起来很宽裕，但真实链路是「preStop → 停止接新请求 → 等在途请求 → 撤销租约」，在途请求如果有长轮询或 WebSocket，30 秒根本不够，进程会被 SIGKILL——**租约来不及撤销**，新 leader 要等满 `LeaseDuration` 才能接管。读数是「发布一次，后台任务的接管延迟多出一个租约周期」，而日志里看不出任何异常。要么把 preStop 做成「先摘流量再等 10 秒」，要么把 grace 调到 ≥ 租约 + 在途上限。
+:::
+
 ## 参考资料
 
 - Deployment 文档：https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/

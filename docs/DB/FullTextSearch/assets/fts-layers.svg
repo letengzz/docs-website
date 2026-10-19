@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四层结构与五个必失点的落点</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">每一层都「看起来在工作」，失效时却都不报错</text>
+  <rect x="30" y="74" width="700" height="58" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="92.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">一次搜索请求：四段，任何一段短路都会让结果看起来「能用」但不可信</text>
+  <text x="380" y="109" text-anchor="middle" font-size="7.5" fill="#334155">用户输入 → 查询理解 → 召回（候选集） → 排序（顺序） → 呈现（高亮 / 分页 / 聚合）</text>
+  <rect x="30" y="160" width="184" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="122" y="178.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">① 相关性</text>
+  <text x="122" y="195" text-anchor="middle" font-size="7.5" fill="#1D4ED8">BM25 / ts_rank / 向量</text>
+  <text x="122" y="212.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">决定「哪几篇排前面」</text>
+  <text x="122" y="229.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">最常见失效：字段权重未设</text>
+  <rect x="202" y="160" width="184" height="96" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="294" y="178.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">② 召回</text>
+  <text x="294" y="195" text-anchor="middle" font-size="7.5" fill="#047857">倒排 + 词项匹配</text>
+  <text x="294" y="212.25" text-anchor="middle" font-size="7.5" fill="#047857">决定「有没有出现在候选集」</text>
+  <text x="294" y="229.5" text-anchor="middle" font-size="7.5" fill="#047857">最常见失效：分词切错</text>
+  <rect x="374" y="160" width="184" height="96" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="466" y="178.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">③ 一致性</text>
+  <text x="466" y="195" text-anchor="middle" font-size="7.5" fill="#4338CA">refresh / 别名 / 双写</text>
+  <text x="466" y="212.25" text-anchor="middle" font-size="7.5" fill="#4338CA">决定「刚写进去的搜不搜得到」</text>
+  <text x="466" y="229.5" text-anchor="middle" font-size="7.5" fill="#4338CA">最常见失效：刷新延迟误判</text>
+  <rect x="546" y="160" width="184" height="96" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="638" y="178.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">④ 可运维</text>
+  <text x="638" y="195" text-anchor="middle" font-size="7.5" fill="#0F766E">评估集 / 延迟 / 容量</text>
+  <text x="638" y="212.25" text-anchor="middle" font-size="7.5" fill="#0F766E">决定「改完是变好还是变坏」</text>
+  <text x="638" y="229.5" text-anchor="middle" font-size="7.5" fill="#0F766E">最常见失效：没有基线</text>
+  <text x="60" y="286" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">五个必失点分别落在哪一层</text>
+  <rect x="30" y="306" width="128" height="24" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <text x="94" y="322" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">A 分词切错</text>
+  <text x="170" y="322" text-anchor="start" font-size="8.5" fill="#334155">「在线协作」切成一个字 → 召回层全空，而查询语句完全正确</text>
+  <rect x="30" y="336" width="128" height="24" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <text x="94" y="352" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">B 权重没设</text>
+  <text x="170" y="352" text-anchor="start" font-size="8.5" fill="#334155">标题与正文同权重 → 正文长的文档压过标题命中</text>
+  <rect x="30" y="366" width="128" height="24" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <text x="94" y="382" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">C 刷新误判</text>
+  <text x="170" y="382" text-anchor="start" font-size="8.5" fill="#334155">写完立刻搜不到 → 被当成「同步失败」，其实只是 refresh</text>
+  <rect x="30" y="396" width="128" height="24" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <text x="94" y="412" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">D 评估缺失</text>
+  <text x="170" y="412" text-anchor="start" font-size="8.5" fill="#334155">换分词器后「感觉变好了」→ 无基线，无法证伪</text>
+  <rect x="30" y="426" width="128" height="24" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <text x="94" y="442" text-anchor="middle" font-size="8.5" fill="#991B1B" font-weight="bold">E 分片扇出</text>
+  <text x="170" y="442" text-anchor="start" font-size="8.5" fill="#334155">单机 50 ms，10 分片 P99 变 380 ms → 尾延迟被放大</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

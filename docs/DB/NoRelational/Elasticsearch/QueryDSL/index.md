@@ -245,6 +245,20 @@ POST docs-vec/_search
 2. 把 `from` 设为 10000 制造深分页报错，再改用 `search_after` 复现同样的「第 10001 条」；
 3. 用 `profile: true` 查看查询在各分片上的执行细节。
 
+## 与「全文检索与搜索工程」专题的分工（第 167 天补充）
+
+本页讲 **DSL 怎么写**：`match` 与 `term` 的区别、`bool` 组合、分页与高亮。至于「`_score` 能不能拿来当业务阈值」「字段 boost 给多少」，归 [全文检索与搜索工程](/docs/DB/FullTextSearch/index.md) 的 [相关性排序](/docs/DB/FullTextSearch/Relevance/index.md)。
+
+::: danger `min_score` 是最容易被误用的一行
+```json
+{ "query": { "match": { "title": "看板" } }, "min_score": 8 }
+```
+
+`_score` 是**同一查询内**不同文档之间的相对量：它取决于 IDF（由整个索引的文档分布决定）与字段长度归一。加一批文档、换一个字段权重、升级一次 Lucene，这个数字就会整体漂移。
+
+后果是「测试环境刚好能过滤，上线后全部被过滤掉」——而且**没有任何报错**。要用阈值，只有两条路：用 `min_score` 时必须配合**固定的评估集**做回归（每次索引变更都重跑），或者干脆不用阈值，改在业务侧只取 `top N`。
+:::
+
 ## 参考资料
 
 - [Query DSL 官方文档](https://www.elastic.co/docs/reference/query-languages/query-dsl)

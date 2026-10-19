@@ -355,6 +355,7 @@ export const CompleteProject = [
           { text: "第 3 周第 2 步 · 连接池串租户复现（PLP-A~PLP-H）", link: "/project/Complete/TeamBoard/PoolTenantLeak/index.md" },
           { text: "第 3 周第 3 步 · 压测四场景与池层断言（LPG-A~LPG-H）", link: "/project/Complete/TeamBoard/LoadTestGate/index.md" },
           { text: "第 3 周第 4 步 · 降级演练进 CI（DGD-A~DGD-H）", link: "/project/Complete/TeamBoard/DegradeDrill/index.md" },
+          { text: "第 3 周第 5 步 · 检索相关性联调（BSR-A~BSR-H）", link: "/project/Complete/TeamBoard/BoardSearch/index.md" },
         ],
       },
       {

@@ -165,6 +165,25 @@ docker restart es9
 2. `_analyze` 分别用 `standard` 与 `ik_max_word` 分析同一句中文，对比 tokens 数量与内容；
 3. 写入含自定义词的文档并 `match` 搜索，验证扩展词典生效。
 
+## 与「全文检索与搜索工程」专题的分工（第 167 天补充）
+
+本页讲 **ES 侧中文分词的配置写法**：`ik` 与 `smartcn` 怎么装、词典怎么放、`_analyze` 怎么看切片。至于「中文该走分词还是二元组」「换了词典之后旧文档为什么还是搜不到」，归 [文本分析](/docs/DB/FullTextSearch/TextAnalysis/index.md)。
+
+一条与本页直接相关的工程事实（专题里展开成判据 `FAN-E`）：
+
+```text
+词典热加载 → 只影响「之后的查询怎么切」
+          → 不影响「已经落盘的文档词项」
+所以新增专有名词后，旧文档必须重跑 to_tsvector / 重建索引，
+否则表现为「新词只有新文档能搜到」。
+```
+
+::: danger 索引侧与查询侧用了不同的 `ik` 模式
+`ik_max_word` 切得细（`在线`、`协作`、`协作任务`），`ik_smart` 切得粗（`在线`、`协作任务`）。若索引用 `max_word`、查询用 `smart`，两边的词项集合**不相等**：查询词可能是一个索引里根本不存在的组合词。
+
+表现为「某些词永远搜不到，其他词正常」，而 `_analyze` 单独看两边都「没问题」。判据只有一条：**索引与查询用同一个 analyzer 名字**，并在 mapping 与查询 DSL 里都显式写这个名字，不依赖默认值。
+:::
+
 ## 参考资料
 
 - [Analysis 官方文档](https://www.elastic.co/docs/manage-data/data-store/text-analysis)

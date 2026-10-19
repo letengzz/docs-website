@@ -131,6 +131,22 @@ curl "http://localhost:9200/products/_search?q=耳机&refresh=true"
 5. **9.x 与 8.x 客户端混用**：8.x 起官方 Java 客户端为 `elasticsearch-java`（ElasticsearchClient），旧的 `RestHighLevelClient` 已在 8.0 移除——新项目直接用新客户端。
 :::
 
+## 与「全文检索与搜索工程」专题的分工（第 167 天补充）
+
+本页讲 **ES 是什么、由哪些部分组成、怎么起一个能用的集群**。至于「为什么这条查询把长文档排到了前面」「改完权重怎么证明更好」，归 [全文检索与搜索工程](/docs/DB/FullTextSearch/index.md)——那边讲的是**跨引擎的工程模型**（分析链契约、召回、排序、评估），ES 只是它的一种实现。
+
+| 问题 | 归本页 | 归专题 |
+| --- | --- | --- |
+| 节点角色、分片与副本怎么配 | ✅ | — |
+| `refresh_interval` 的默认值与修改方式 | ✅ 配置项 | ✅ 它与「写后可见」契约的关系 |
+| 为什么默认 1 秒才能搜到刚写入的文档 | — | ✅ [索引更新](/docs/DB/FullTextSearch/IndexUpdate/index.md) |
+| 集群健康为什么是 yellow | ✅ | — |
+| 排序不对、相关性差怎么定位 | — | ✅ [相关性排序](/docs/DB/FullTextSearch/Relevance/index.md) |
+
+::: warning 版本口径（2026-10 核对）
+当前稳定版是 **9.5.5**（2026-10-06），8.x 线仍在维护（8.19.22，2026-09-23）。ES 9 起基于 Lucene 10，**与 8.x 的客户端不保证互通**；OpenSearch 自 3.0 起基于 Lucene 10.1，最低 JDK 21，且自 2.0 起不再保证与 ES 客户端兼容——两套引擎的客户端不能混用。
+:::
+
 ## 参考资料
 
 - [Elasticsearch 官方安装文档](https://www.elastic.co/docs/deploy-manage/deploy/self-managed)
