@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" role="img" aria-label="实战八步：前置、扩展、双写回填、影子读、切读、契约 v2、门禁、下线；两个不可逆点与四个回滚窗口">
+  <title>实战八步：两个不可逆点，四个回滚窗口</title>
+  <defs>
+    <marker id="ce9a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ce9g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="480" fill="#f8fafc"/>
+  <text x="450" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">一次 v1 → v2 的完整路径：金额元改分 + 状态枚举扩容</text>
+
+  <rect x="26" y="58" width="196" height="96" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.4"/>
+  <text x="124" y="80" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">S0 前置（第 1 天）</text>
+  <text x="38" y="100" font-size="9.4" fill="#475569" text-anchor="start">消费者清单 · 契约基线</text>
+  <text x="38" y="116" font-size="9.4" fill="#475569" text-anchor="start">回滚预案</text>
+  <text x="38" y="136" font-size="9.4" fill="#15803d" text-anchor="start">判据：可归因率 ≥ 99.5%</text>
+
+  <rect x="240" y="58" width="196" height="96" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="338" y="80" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">S1 Expand（第 2 天）</text>
+  <text x="252" y="100" font-size="9.4" fill="#475569" text-anchor="start">加 amount_cents（可空）</text>
+  <text x="252" y="116" font-size="9.4" fill="#475569" text-anchor="start">CHECK 用 NOT VALID + VALIDATE</text>
+  <text x="252" y="136" font-size="9.4" fill="#15803d" text-anchor="start">实测 0.98 ms / 3.4 ms / 160.5 ms</text>
+
+  <rect x="454" y="58" width="196" height="96" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="552" y="80" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">S2 双写回填（3~5 天）</text>
+  <text x="466" y="100" font-size="9.4" fill="#475569" text-anchor="start">一条 SQL 写两列</text>
+  <text x="466" y="116" font-size="9.4" fill="#475569" text-anchor="start">分批 5000 + SKIP LOCKED</text>
+  <text x="466" y="136" font-size="9.4" fill="#15803d" text-anchor="start">判据：nulls=0 且 mismatch=0</text>
+
+  <rect x="668" y="58" width="206" height="96" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="771" y="80" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">S3 影子读（6~9 天）</text>
+  <text x="680" y="100" font-size="9.4" fill="#475569" text-anchor="start">读老值 + 比对新值，不改响应</text>
+  <text x="680" y="116" font-size="9.4" fill="#475569" text-anchor="start">≥ 3 天且覆盖一次高峰</text>
+  <text x="680" y="136" font-size="9.4" fill="#be123c" text-anchor="start">差异必须逐条归因</text>
+
+  <rect x="26" y="192" width="206" height="96" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="129" y="214" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">S4 切读（10~14 天）</text>
+  <text x="38" y="234" font-size="9.4" fill="#475569" text-anchor="start">按租户取模：1 → 10 → 50 → 100%</text>
+  <text x="38" y="250" font-size="9.4" fill="#475569" text-anchor="start">回滚开关必须秒级生效</text>
+  <text x="38" y="270" font-size="9.4" fill="#be123c" text-anchor="start">桶分布要先验证，比例≠覆盖</text>
+
+  <rect x="240" y="192" width="196" height="96" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+  <text x="338" y="214" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">S5 契约 v2（15~18 天）</text>
+  <text x="252" y="234" font-size="9.4" fill="#475569" text-anchor="start">v1 标 deprecated + x-sunset</text>
+  <text x="252" y="250" font-size="9.4" fill="#475569" text-anchor="start">适配层写死映射表</text>
+  <text x="252" y="270" font-size="9.4" fill="#be123c" text-anchor="start">v2 五状态 → v1 两状态是有损</text>
+
+  <rect x="454" y="192" width="196" height="96" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="552" y="214" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">S6 门禁（第 19 天）</text>
+  <text x="466" y="234" font-size="9.4" fill="#475569" text-anchor="start">静态 diff · CDC · 回放 · N-1</text>
+  <text x="466" y="250" font-size="9.4" fill="#475569" text-anchor="start">上线前做一次变异测试</text>
+  <text x="466" y="270" font-size="9.4" fill="#15803d" text-anchor="start">四条全绿才发</text>
+
+  <rect x="668" y="192" width="206" height="96" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="771" y="214" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">S7 v1 下线（19~24 天）</text>
+  <text x="680" y="234" font-size="9.4" fill="#475569" text-anchor="start">Mark → Constrain → 410</text>
+  <text x="680" y="250" font-size="9.4" fill="#475569" text-anchor="start">按迁移能力分三批</text>
+  <text x="680" y="270" font-size="9.4" fill="#be123c" text-anchor="start">amount 列不随接口一起删</text>
+
+  <line x1="222" y1="106" x2="236" y2="106" stroke="#475569" stroke-width="1.4" marker-end="url(#ce9a)"/>
+  <line x1="436" y1="106" x2="450" y2="106" stroke="#475569" stroke-width="1.4" marker-end="url(#ce9a)"/>
+  <line x1="650" y1="106" x2="664" y2="106" stroke="#475569" stroke-width="1.4" marker-end="url(#ce9a)"/>
+  <path d="M 771 154 L 771 172 L 129 172 L 129 188" fill="none" stroke="#475569" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#ce9a)"/>
+  <text x="450" y="186" font-size="9.4" fill="#94a3b8" text-anchor="middle">转入第二周：切读与契约</text>
+
+  <line x1="232" y1="240" x2="236" y2="240" stroke="#475569" stroke-width="1.4" marker-end="url(#ce9a)"/>
+  <line x1="436" y1="240" x2="450" y2="240" stroke="#475569" stroke-width="1.4" marker-end="url(#ce9a)"/>
+  <line x1="650" y1="240" x2="664" y2="240" stroke="#475569" stroke-width="1.4" marker-end="url(#ce9a)"/>
+
+  <rect x="26" y="316" width="404" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="42" y="338" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="start">四个回滚窗口（都能在 1 分钟内完成）</text>
+  <text x="42" y="358" font-size="9.6" fill="#475569" text-anchor="start">S1 DROP COLUMN · S2 停双写 · S3 关影子读</text>
+  <text x="42" y="376" font-size="9.6" fill="#475569" text-anchor="start">S4 关灰度开关（切回读老列）</text>
+
+  <rect x="470" y="316" width="404" height="70" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+  <text x="486" y="338" font-size="10.5" font-weight="700" fill="#be123c" text-anchor="start">两个不可逆点</text>
+  <text x="486" y="358" font-size="9.6" fill="#475569" text-anchor="start">① 老列停止写入之后的「反向同步」不再存在</text>
+  <text x="486" y="376" font-size="9.6" fill="#475569" text-anchor="start">② v1 路由删除后，回退需要重新发布</text>
+
+  <text x="26" y="412" font-size="10" font-weight="600" fill="#0f172a" text-anchor="start">整个方案的约束不是技术，而是「BI 直连只读库」：amount 列至少要保留一个季度。</text>
+  <text x="26" y="434" font-size="10" fill="#475569" text-anchor="start">派生方向必须单向：amount_cents → amount。反向派生会让 BI 在双写窗口里读到两套值。</text>
+  <text x="26" y="456" font-size="10" fill="#be123c" text-anchor="start">「接口下线」与「列删除」是两个独立决策，混在一起做必然导致报表出错。</text>
+</svg>

@@ -290,6 +290,22 @@ docker run --rm -v /tmp:/tmp tufin/oasdiff breaking \
 
 一句话：**契约让两端对齐，说明让第三个人接得上。** 一份只有 YAML 没有接入说明的契约，在跨团队场景里等于把成本转给了调用方。
 
+## 与「契约演进与兼容」专题的分工
+
+本页是**绿地**视角：新项目从零定契约——资源命名、错误码、分页、字段类型怎么选。
+
+[契约演进与兼容](../../../Backend/ContractEvolution/index.md) 是**棕地**视角：接口已经上线、有改不动的调用方时怎么继续长大。
+
+| 问题 | 本页 | 契约演进专题 |
+| --- | --- | --- |
+| 字段该用 `amount` 还是 `amount_cents` | 本页给命名与类型规范 | [兼容性判定](../../../Backend/ContractEvolution/Compatibility/index.md)：**一旦上线，改单位就是破坏性变更**，只能新增字段 |
+| 契约要不要版本号 | 建议「首个版本不带版本号」 | [服务端承载多版本](../../../Backend/ContractEvolution/ServerVersions/index.md)：真的要并存两版时，代码怎么组织 |
+| 错误码怎么设计 | 本页给统一错误体 | 专题补一条：**错误响应也必须版本化**，否则老客户端错误处理会崩 |
+
+::: warning 绿地阶段最值钱的一条建议
+**在第一次发布前，把所有「量纲」写进字段名**（`amount_cents`、`duration_ms`、`size_bytes`）。这一条能消灭棕地阶段最贵的一类破坏——单位变更，它的发现周期是月级，且没有任何错误信号。
+:::
+
 ## 参考资料
 
 - [OpenAPI Specification 3.2](https://spec.openapis.org/oas/v3.2.0.html)

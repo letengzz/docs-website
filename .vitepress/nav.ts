@@ -46,7 +46,8 @@ export const nav = [
       { text: "遗留系统改造", link: "/docs/Backend/LegacyModernization" },
       { text: "实时协作与冲突解决", link: "/docs/Backend/RealtimeCollaboration" },
       { text: "幂等与状态机工程", link: "/docs/Backend/IdempotencyStateMachine" },
-      { text: "分布式锁与选主", link: "/docs/Backend/DistributedLock" },]
+      { text: "分布式锁与选主", link: "/docs/Backend/DistributedLock" },
+      { text: "契约演进与兼容", link: "/docs/Backend/ContractEvolution" },]
   },
   {
     text: "数据库",

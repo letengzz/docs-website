@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-label="消息契约的四种兼容模式：BACKWARD 消费者先升级、FORWARD 生产者先升级、FULL 任意顺序、NONE 不检查">
+  <title>四种兼容模式：方向由「谁先升级」决定</title>
+  <defs>
+    <marker id="ce6a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="470" fill="#f8fafc"/>
+  <text x="450" y="32" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">兼容性是方向性的：先确定「谁先升级」，再选模式</text>
+
+  <rect x="30" y="66" width="400" height="150" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="230" y="92" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">BACKWARD（默认）</text>
+  <text x="46" y="116" font-size="10.5" fill="#1d4ed8" text-anchor="start">新 schema 能读「旧数据」</text>
+  <text x="46" y="138" font-size="10" fill="#0f172a" text-anchor="start">→ 消费者先升级，生产者后升级</text>
+  <text x="46" y="158" font-size="10" fill="#475569" text-anchor="start">适用：下游可独立发布、紧跟最新版</text>
+  <text x="46" y="178" font-size="10" fill="#be123c" text-anchor="start">陷阱：只比「上一版」，落后多版就不管</text>
+  <text x="46" y="200" font-size="10" fill="#15803d" text-anchor="start">加字段必须带 default</text>
+
+  <rect x="470" y="66" width="400" height="150" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="670" y="92" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">FORWARD</text>
+  <text x="486" y="116" font-size="10.5" fill="#0f766e" text-anchor="start">旧 schema 能读「新数据」</text>
+  <text x="486" y="138" font-size="10" fill="#0f172a" text-anchor="start">→ 生产者先升级，消费者后升级</text>
+  <text x="486" y="158" font-size="10" fill="#475569" text-anchor="start">适用：下游升级周期长（数仓、外部）</text>
+  <text x="486" y="178" font-size="10" fill="#be123c" text-anchor="start">陷阱：删字段要求该字段原本就有 default</text>
+  <text x="486" y="200" font-size="10" fill="#15803d" text-anchor="start">删除字段可安全落地</text>
+
+  <rect x="30" y="232" width="400" height="150" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+  <text x="230" y="258" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">FULL（要求最严）</text>
+  <text x="46" y="282" font-size="10.5" fill="#b45309" text-anchor="start">两个方向都兼容，升级顺序任意</text>
+  <text x="46" y="304" font-size="10" fill="#0f172a" text-anchor="start">→ 谁先都行，适合关键链路 / 跨团队</text>
+  <text x="46" y="324" font-size="10" fill="#475569" text-anchor="start">代价：单向兼容的变更全部被拒</text>
+  <text x="46" y="344" font-size="10" fill="#be123c" text-anchor="start">「配了 FULL 却抱怨加字段被拒」= 预期不符</text>
+  <text x="46" y="366" font-size="10" fill="#475569" text-anchor="start">改名必须 alias，加字段必须 default</text>
+
+  <rect x="470" y="232" width="400" height="150" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.5"/>
+  <text x="670" y="258" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">NONE（不检查）</text>
+  <text x="486" y="282" font-size="10.5" fill="#be123c" text-anchor="start">只允许「同仓库、同发布」的场景</text>
+  <text x="486" y="304" font-size="10" fill="#0f172a" text-anchor="start">→ 生产者与消费者同一版本号上线</text>
+  <text x="486" y="324" font-size="10" fill="#475569" text-anchor="start">一旦有独立发布的消费者，立刻失效</text>
+  <text x="486" y="344" font-size="10" fill="#be123c" text-anchor="start">本仓不建议：事故不可预测</text>
+  <text x="486" y="366" font-size="10" fill="#475569" text-anchor="start">作为「临时过渡」必须登记到期日</text>
+
+  <rect x="30" y="400" width="840" height="56" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="46" y="422" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="start">_TRANSITIVE：比的是「全部历史版本」，不是「更严格」</text>
+  <text x="46" y="444" font-size="9.8" fill="#475569" text-anchor="start">只要有一个消费者可能落后超过一个版本（几乎总是成立），就必须用 *_TRANSITIVE；普通模式只比上一版。</text>
+</svg>

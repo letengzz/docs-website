@@ -1,6 +1,6 @@
 # 流量回放：重建一个能容纳这些请求的世界
 
-<p style="text-align:center;"><img src="../assets/td-replay.svg" style="zoom:100%;" /></p>
+<p style="text-align:center;"><img src="../assets/td-replay.svg" alt="回放四要素：少一个就退化成「发一堆请求」" style="zoom:100%;" /></p>
 
 流量回放（Traffic Replay）把生产环境真实发生过的请求拿出来，在测试环境重放一遍，比较「改造前」与「改造后」的响应差异。
 

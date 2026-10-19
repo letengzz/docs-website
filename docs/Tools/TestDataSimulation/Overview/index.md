@@ -1,6 +1,6 @@
 # 总览：三个约束与四层结构
 
-<p style="text-align:center;"><img src="../assets/td-layers.svg" style="zoom:100%;" /></p>
+<p style="text-align:center;"><img src="../assets/td-layers.svg" alt="四层结构：每层解决不同的病因" style="zoom:100%;" /></p>
 
 测试数据与仿真环境（Test Data & Simulation Environment）是**为验证行为而构造状态**的工程：它要同时满足「像生产」「不含真个人信息」「明天还能一模一样地重建」三件互相拉扯的事，并把这件事做成可提交、可评审、可回收的流水线。
 

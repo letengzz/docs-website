@@ -1,6 +1,6 @@
 # 压测四场景与池层断言：让「租户隔离」在并发下仍然成立
 
-<p style="text-align:center;"><img src="../assets/tb-loadtest-gate.svg" style="zoom:100%;" /></p>
+<p style="text-align:center;"><img src="../assets/tb-loadtest-gate.svg" alt="压测四场景与池层断言" style="zoom:100%;" /></p>
 
 第 3 周第 3 步（第 165 天）。前两步把租户隔离从 HTTP 层推到了连接层——[连接池串租户](../PoolTenantLeak/index.md)用五种形态证明了「`SET LOCAL` 也会失效」。这一步要把那五种形态**变成 CI 里会自己变红的断言**：四个压测场景各带一条「20 连接 × 200 并发下 `pool_tenant_carry_total = 0`」，跨租户矩阵从 18 格补到 22 格。
 

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-label="四道契约门禁：静态 diff、消费者驱动契约、golden 回放、N-1 版本矩阵，各自拦住什么又漏掉什么">
+  <title>四道门禁：叠加使用，任一道单独都不够</title>
+  <defs>
+    <marker id="ce7a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="470" fill="#f8fafc"/>
+  <text x="450" y="32" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">四道门禁：横向叠加，纵向分层，先证明能红再相信绿</text>
+
+  <rect x="30" y="62" width="424" height="118" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="46" y="86" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">① 静态 diff</text>
+  <text x="326" y="86" font-size="9.6" fill="#1d4ed8" text-anchor="start">PR 级 · 3 秒</text>
+  <text x="46" y="108" font-size="10" fill="#15803d" text-anchor="start">拦：删字段 / 改类型 / 改路径 / 新增必填</text>
+  <text x="46" y="128" font-size="10" fill="#be123c" text-anchor="start">漏：语义漂移、时序变化、实现与契约不一致</text>
+  <text x="46" y="148" font-size="10" fill="#475569" text-anchor="start">工具：oasdiff · buf · graphql-inspector</text>
+  <text x="46" y="168" font-size="10" fill="#b45309" text-anchor="start">前提：基线来自 release tag，不是手工文件</text>
+
+  <rect x="470" y="62" width="400" height="118" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="486" y="86" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">② 消费者驱动契约（CDC）</text>
+  <text x="714" y="86" font-size="9.6" fill="#0f766e" text-anchor="start">合并级 · 90 秒</text>
+  <text x="486" y="108" font-size="10" fill="#15803d" text-anchor="start">拦：已登记消费者依赖的字段被删改</text>
+  <text x="486" y="128" font-size="10" fill="#be123c" text-anchor="start">漏：未接入 CDC 的消费者（通常 70%+）</text>
+  <text x="486" y="148" font-size="10" fill="#475569" text-anchor="start">工具：Pact Broker · can-i-deploy</text>
+  <text x="486" y="168" font-size="10" fill="#b45309" text-anchor="start">前提：消费者真的把期望登记上来了</text>
+
+  <rect x="30" y="196" width="424" height="118" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+  <text x="46" y="220" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">③ golden 回放</text>
+  <text x="326" y="220" font-size="9.6" fill="#b45309" text-anchor="start">发布级 · 120 秒</text>
+  <text x="46" y="242" font-size="10" fill="#15803d" text-anchor="start">拦：数值漂移、单位变化、空值语义变化</text>
+  <text x="46" y="262" font-size="10" fill="#be123c" text-anchor="start">漏：未覆盖的新场景、并发与时序问题</text>
+  <text x="46" y="282" font-size="10" fill="#475569" text-anchor="start">要求：断言值，不只断言状态码</text>
+  <text x="46" y="302" font-size="10" fill="#b45309" text-anchor="start">前提：fixture 已脱敏进仓库、含边界值</text>
+
+  <rect x="470" y="196" width="400" height="118" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.5"/>
+  <text x="486" y="220" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start">④ N-1 版本矩阵</text>
+  <text x="714" y="220" font-size="9.6" fill="#6d28d9" text-anchor="start">发布级 · 300 秒</text>
+  <text x="486" y="242" font-size="10" fill="#15803d" text-anchor="start">拦：新服务端打断老客户端（S1）</text>
+  <text x="486" y="262" font-size="10" fill="#be123c" text-anchor="start">漏：N-2 及更早；回滚目标之外的历史版本</text>
+  <text x="486" y="282" font-size="10" fill="#475569" text-anchor="start">行 = 版本，列 = 用例；「必测」两格是 S1/S2</text>
+  <text x="486" y="302" font-size="10" fill="#b45309" text-anchor="start">前提：回滚目标版本必须在矩阵里</text>
+
+  <line x1="454" y1="121" x2="466" y2="121" stroke="#475569" stroke-width="1.3" marker-end="url(#ce7a)"/>
+  <line x1="242" y1="180" x2="242" y2="192" stroke="#475569" stroke-width="1.3" marker-end="url(#ce7a)"/>
+  <line x1="670" y1="180" x2="670" y2="192" stroke="#475569" stroke-width="1.3" marker-end="url(#ce7a)"/>
+
+  <rect x="30" y="334" width="840" height="62" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.5"/>
+  <text x="46" y="356" font-size="11" font-weight="700" fill="#be123c" text-anchor="start">变异测试：先证明门禁能红，再相信它的绿</text>
+  <text x="46" y="376" font-size="9.8" fill="#475569" text-anchor="start">删掉一个响应字段 → 期望非零退出码。若仍为 0，检查：基线是否被同步更新、参数是否排除了该路径、CI 是否写了 || true。</text>
+
+  <text x="30" y="420" font-size="10.5" font-weight="600" fill="#0f172a" text-anchor="start">分层的意义：PR 级 &lt; 2 分钟，发布级 &lt; 20 分钟</text>
+  <text x="30" y="442" font-size="10" fill="#475569" text-anchor="start">门禁太慢的结局只有一个：被开发用 --no-verify 绕过去，然后所有人都学会绕。</text>
+  <text x="30" y="462" font-size="10" fill="#be123c" text-anchor="start">「从未红过的门禁」可信度为零——它的绿色不代表兼容，只代表它没在工作。</text>
+</svg>

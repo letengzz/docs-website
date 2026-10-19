@@ -669,3 +669,22 @@ export const DistributedLock = [
     ],
   },
 ];
+
+export const ContractEvolution = [
+  {
+    text: "契约演进与兼容",
+    link: "/docs/Backend/ContractEvolution/index.md",
+    items: [
+      { text: "总览：四类契约面与三种破坏", link: "/docs/Backend/ContractEvolution/Overview/index.md" },
+      { text: "兼容性判定：加法、语义与时序", link: "/docs/Backend/ContractEvolution/Compatibility/index.md" },
+      { text: "消费者清单：谁在调用我", link: "/docs/Backend/ContractEvolution/ConsumerInventory/index.md" },
+      { text: "服务端承载多版本", link: "/docs/Backend/ContractEvolution/ServerVersions/index.md" },
+      { text: "库表演进：expand-contract 四阶段", link: "/docs/Backend/ContractEvolution/SchemaEvolution/index.md" },
+      { text: "异步契约：消息与兼容模式", link: "/docs/Backend/ContractEvolution/AsyncContract/index.md" },
+      { text: "契约门禁：让 CI 拦住破坏", link: "/docs/Backend/ContractEvolution/ContractGate/index.md" },
+      { text: "下线：可执行的倒计时", link: "/docs/Backend/ContractEvolution/Sunset/index.md" },
+      { text: "实战：v1 演进成 v2", link: "/docs/Backend/ContractEvolution/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/ContractEvolution/FAQ/index.md" },
+    ],
+  },
+];

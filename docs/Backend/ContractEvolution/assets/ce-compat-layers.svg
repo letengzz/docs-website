@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" role="img" aria-label="兼容性三层：结构层可被 diff 检测，语义层只能靠对账，时序层只能靠回放">
+  <title>兼容性三层：能机器检查的只有最上面一层</title>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="460" fill="#f8fafc"/>
+  <text x="450" y="32" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">三层判据：判定顺序从「结构」往上走到「时序」</text>
+
+  <rect x="30" y="60" width="840" height="96" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="52" y="86" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">① 结构层</text>
+  <text x="52" y="108" font-size="10" fill="#475569" text-anchor="start">字段、类型、路径、必填性、枚举值</text>
+  <text x="52" y="126" font-size="10" fill="#be123c" text-anchor="start">删字段 / 改类型 / 收紧校验</text>
+  <text x="52" y="144" font-size="10" fill="#475569" text-anchor="start">例：maxLength 500 → 200</text>
+  <rect x="330" y="76" width="240" height="30" rx="15" fill="#1d4ed8"/>
+  <text x="450" y="96" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">oasdiff / buf / schema diff</text>
+  <text x="450" y="126" font-size="10" fill="#1d4ed8" text-anchor="middle">可 100% 机器检测，退出码可阻塞 CI</text>
+  <text x="450" y="144" font-size="10" fill="#475569" text-anchor="middle">但只能证明「结构没变」</text>
+  <text x="606" y="90" font-size="10" font-weight="700" fill="#0f172a" text-anchor="start">发现时机：分钟级</text>
+  <text x="606" y="112" font-size="10" fill="#475569" text-anchor="start">修复：回滚即恢复</text>
+  <text x="606" y="134" font-size="10" fill="#475569" text-anchor="start">风险：最低</text>
+
+  <rect x="30" y="172" width="840" height="96" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+  <text x="52" y="198" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">② 语义层</text>
+  <text x="52" y="220" font-size="10" fill="#475569" text-anchor="start">单位、值域、空值三态、时区、精度</text>
+  <text x="52" y="238" font-size="10" fill="#be123c" text-anchor="start">元 → 分 / 0~100 → 0~1</text>
+  <text x="52" y="256" font-size="10" fill="#475569" text-anchor="start">例：amount 19.90 变 1990</text>
+  <rect x="330" y="188" width="240" height="30" rx="15" fill="#b45309"/>
+  <text x="450" y="208" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">golden 回放 + 数值对账</text>
+  <text x="450" y="238" font-size="10" fill="#b45309" text-anchor="middle">状态码全是 200，只能比对「值」</text>
+  <text x="450" y="256" font-size="10" fill="#475569" text-anchor="middle">统一倍率是单位变更的指纹</text>
+  <text x="606" y="202" font-size="10" font-weight="700" fill="#0f172a" text-anchor="start">发现时机：周级</text>
+  <text x="606" y="224" font-size="10" fill="#475569" text-anchor="start">修复：数据回滚 + 对账</text>
+  <text x="606" y="246" font-size="10" fill="#be123c" text-anchor="start">风险：高（无错误信号）</text>
+
+  <rect x="30" y="284" width="840" height="96" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.5"/>
+  <text x="52" y="310" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start">③ 时序层</text>
+  <text x="52" y="332" font-size="10" fill="#475569" text-anchor="start">顺序、时机、次数、分页语义</text>
+  <text x="52" y="350" font-size="10" fill="#be123c" text-anchor="start">回调顺序 / 重试次数 / page 起点</text>
+  <text x="52" y="368" font-size="10" fill="#475569" text-anchor="start">例：先扣款后通知 → 反过来</text>
+  <rect x="330" y="300" width="240" height="30" rx="15" fill="#be123c"/>
+  <text x="450" y="320" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">竞态演练 + 并发回放</text>
+  <text x="450" y="350" font-size="10" fill="#be123c" text-anchor="middle">单次请求永远正常，只在并发下暴露</text>
+  <text x="450" y="368" font-size="10" fill="#475569" text-anchor="middle">排序缺 tiebreaker → 分页漏数据</text>
+  <text x="606" y="314" font-size="10" font-weight="700" fill="#0f172a" text-anchor="start">发现时机：月级</text>
+  <text x="606" y="336" font-size="10" fill="#475569" text-anchor="start">修复：财务级对账</text>
+  <text x="606" y="358" font-size="10" fill="#be123c" text-anchor="start">风险：最高</text>
+
+  <text x="30" y="410" font-size="11" font-weight="600" fill="#0f172a" text-anchor="start">判定顺序：任一层判为破坏即停止，不用再看上一层</text>
+  <text x="30" y="432" font-size="10" fill="#475569" text-anchor="start">只有结构层可以被「一条命令」证伪；语义与时序必须靠真实数据回放，不能靠推理。</text>
+  <text x="30" y="450" font-size="10" fill="#be123c" text-anchor="start">只跑结构 diff 就宣称「有契约门禁」，实际只覆盖了三分之一。</text>
+</svg>

@@ -312,6 +312,22 @@ aws lambda update-alias \
 
 本页特有的一个坑：**回滚成功 ≠ 恢复正常**。开关关掉后，缓存里仍是新格式、连接池里仍有新连接、已写入的新结构数据不会自己回退。所以回滚清单里必须包含「缓存清哪些前缀、连接池是否要重启、新格式数据谁来读」三行——缺这三行的回滚脚本，跑完只是「不再产生新问题」，不是「问题消失」。
 
+## 与「契约演进与兼容」专题的分工
+
+本页讲**发布与回滚的机制**：蓝绿/金丝雀、回滚触发条件、数据库变更与回滚的冲突。
+
+[契约演进与兼容](../../../Backend/ContractEvolution/index.md) 讲**回滚的前提**——只有当新数据能被老代码读时，回滚才成立。
+
+| 问题 | 本页 | 契约演进专题 |
+| --- | --- | --- |
+| 怎么在 1 分钟内回滚 | 本页（流量切换、镜像回退） | [服务端承载多版本](../../../Backend/ContractEvolution/ServerVersions/index.md)：S2（旧服务端兼容）不成立时，回滚即二次事故 |
+| 数据库变更能不能回滚 | 本页给「不可逆变更」清单 | [库表演进](../../../Backend/ContractEvolution/SchemaEvolution/index.md)：把不可逆点精确到「老列停写」这一步 |
+| 灰度比例怎么定 | 本页给流量比例与门禁指标 | [实战](../../../Backend/ContractEvolution/Practice/index.md)：按租户取模，且先验证桶分布 |
+
+::: danger 回滚预案里最容易被漏掉的一句
+「回滚到哪个版本」必须具体到**读哪一列、读哪个 schema**。只写「回滚镜像」是不够的——如果新版本已经把 `amount` 停写，回滚后的老代码读到的是过期值，页面会显示旧金额而不报错。
+:::
+
 ## 参考资料
 
 - Kubernetes Deployment 策略：https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/

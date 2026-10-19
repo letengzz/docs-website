@@ -110,6 +110,23 @@ Overview（四条边界：先分清是「改」还是「换」）
 如果你现在就要做决定，只看 [总览](Overview/index.md) 的「四条边界」与 [灰度切换](TrafficCutover/index.md) 的「回退预算」两节——**前者决定你该不该动手，后者决定你动手之后能不能收场**。
 :::
 
+## 与「契约演进与兼容」专题的分工
+
+本页讲**系统级**的渐进替换：绞杀者模式、双跑比对、流量切分、旧系统退场。
+
+[契约演进与兼容](../ContractEvolution/index.md) 把同一套思路下沉到**契约级**——一次字段、一张表、一个消息体的演进。
+
+| 层级 | 本页 | 契约演进专题 |
+| --- | --- | --- |
+| 单位 | 系统 / 模块 | 字段 / 表 / 事件 |
+| 核心手法 | 绞杀者、双跑、灰度切流 | expand-contract 四阶段、双写 + 影子读 |
+| 回滚边界 | 切回旧系统 | [删除三条件](../ContractEvolution/SchemaEvolution/index.md)：无读、无写、无回滚需求 |
+| 不可逆点 | 旧系统下线 | 老列停止写入 / 旧路由删除 |
+
+::: tip 两页共享的同一条纪律
+**「承认下不掉」比「假装下掉了」安全。** 本页对应的是「旧系统保留只读模式」；专题对应的是「长尾调用方保留最小实现 + `legacy-frozen` 标记」。
+:::
+
 ## 参考资料
 
 - [Martin Fowler · StranglerFigApplication](https://martinfowler.com/bliki/StranglerFigApplication.html)：绞杀者模式的原出处

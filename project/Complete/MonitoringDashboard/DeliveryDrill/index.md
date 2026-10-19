@@ -60,8 +60,8 @@ bash ../scripts/preflight.sh; echo "退出码=$?"
 
 | 判据 | 它的输入是什么 | 今天还在吗 |
 | --- | --- | --- |
-| `DD-A` `DD-B` `DD-C` `DD-D` `DD-E` `DD-F` `DD-H` | `reproduce.md` / `acceptance.md` / `runbook-index.md`（共 7 条依赖这三份文件） | **不在**（全盘无这三个文件名） |
-| `DD-G` | `scripts/preflight.sh` | **不在**（`/tmp/monitoring-run/scripts/` 下只剩 3 个 check 脚本） |
+| 判据 `DD-A` `DD-B` `DD-C` `DD-D` `DD-E` `DD-F` `DD-H` | `reproduce.md` / `acceptance.md` / `runbook-index.md`（共 7 条依赖这三份文件） | **不在**（全盘无这三个文件名） |
+| 判据 `DD-G` | `scripts/preflight.sh` | **不在**（`/tmp/monitoring-run/scripts/` 下只剩 3 个 check 脚本） |
 
 也就是说：昨天写下的「**八条全部本机已跑**」是完全成立的，而今天**一条也复跑不了**。判据本身没有问题——问题在于**它们的输入从来就不在交付位置**，昨天的「已跑」是在一个临时目录里跑完、然后随临时目录一起消失的一次性事件。
 

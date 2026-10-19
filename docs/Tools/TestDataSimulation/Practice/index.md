@@ -1,6 +1,6 @@
 # 实战：给多租户看板搭一条测试数据流水线
 
-<p style="text-align:center;"><img src="../assets/td-practice.svg" style="zoom:100%;" /></p>
+<p style="text-align:center;"><img src="../assets/td-practice.svg" alt="多租户看板的测试数据流水线：八步" style="zoom:100%;" /></p>
 
 前面七页讲的是方法，这一页把它落到一个具体的系统上：**多租户在线协作看板**（本仓库 `project/Complete/TeamBoard` 实现的那个项目）。它的测试数据有三个特殊要求——**每个用例一个租户**、**跨租户越权必须可复现**、**附件与搜索索引也要隔离**——这三点决定了流水线的形状。
 

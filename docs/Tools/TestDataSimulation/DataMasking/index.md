@@ -1,6 +1,6 @@
 # 数据脱敏：从「打码」到可评估的去标识
 
-<p style="text-align:center;"><img src="../assets/td-masking-pipeline.svg" style="zoom:100%;" /></p>
+<p style="text-align:center;"><img src="../assets/td-masking-pipeline.svg" alt="脱敏五步：从标识符清单到分级结论" style="zoom:100%;" /></p>
 
 数据脱敏（Data Masking）是把真实数据里的个人信息换成「不可直接指向某个人、但仍能支撑这份数据被用于测试」的值，并且**给出一个可被复核的风险结论**。
 

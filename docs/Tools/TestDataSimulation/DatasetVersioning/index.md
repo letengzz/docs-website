@@ -1,6 +1,6 @@
 # 数据集与夹具的版本化
 
-<p style="text-align:center;"><img src="../assets/td-versioning.svg" style="zoom:100%;" /></p>
+<p style="text-align:center;"><img src="../assets/td-versioning.svg" alt="三类数据、两种指纹、四个隐藏变量" style="zoom:100%;" /></p>
 
 数据集版本化（Dataset Versioning）解决的是「**同一份数据**」这四个字：让一次测试失败之后，任何人、在任何机器上，都能回到**当时那份一模一样的数据**上重跑。
 

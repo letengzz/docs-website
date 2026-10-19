@@ -1,6 +1,6 @@
 # 契约仿真：stub 与真实服务的漂移怎么收口
 
-<p style="text-align:center;"><img src="../assets/td-contract.svg" style="zoom:100%;" /></p>
+<p style="text-align:center;"><img src="../assets/td-contract.svg" alt="契约仿真：一份真相，三个消费者，三处对齐" style="zoom:100%;" /></p>
 
 契约仿真（Contract Simulation）用一个**假的下游服务**替代真实依赖，让测试能在没有对方环境、没有网络、没有配额的情况下跑完整条链路。
 
@@ -242,6 +242,23 @@ microcks-cli test "TeamBoard API:1.0.0" http://localhost:8080 OPEN_API_SCHEMA --
 ```
 
 第 5 条依赖 Microcks 实例（`microcks-cli` 与服务端版本独立发布，CI 里要分别 pin 版本）。跑不了时在报告里标 `⏳` 并写原因，不要把「没跑」写成「通过」。
+
+## 十点五、与「契约演进与兼容」专题的分工
+
+本页讲**测试替身**：用契约生成桩服务、让联调不依赖真实下游，以及消费者驱动契约在「仿真」语境下的适用边界。
+
+[契约演进与兼容](../../../Backend/ContractEvolution/index.md) 把 CDC 放在**门禁**的位置上，回答的是不同的问题：
+
+| 问题 | 本页 | 契约演进专题 |
+| --- | --- | --- |
+| 下游还没写好，我怎么联调 | 生成桩、录制回放 | 不涉及 |
+| 我改了契约，谁的构建会红 | 只讲「消费者声明期望」 | [契约门禁](../../../Backend/ContractEvolution/ContractGate/index.md)：`can-i-deploy` 的退出码怎么变成发布阻塞项 |
+| CDC 覆盖率只有 20% 怎么办 | 不在范围内 | [门禁分层](../../../Backend/ContractEvolution/ContractGate/index.md)：覆盖率低于 50% 时 CDC 只能当附加保险 |
+| 结构没变但数值变了 | 桩不校验数值 | [golden 回放](../../../Backend/ContractEvolution/ContractGate/index.md)：必须断言值，不只断言状态码 |
+
+::: tip 一个容易混淆的点
+「契约测试通过」不等于「兼容」。契约测试验的是**已声明的期望**，而兼容性验的是**所有真实消费者**——后者里有一大半从未声明过任何期望。
+:::
 
 ## 十一、参考资料
 

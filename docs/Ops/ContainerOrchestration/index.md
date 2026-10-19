@@ -45,3 +45,4 @@
 K8s 里两个并行 CI job 落在同一 namespace，Service 名相同（`db`、`cache`），后启动的会覆盖前一个的 Endpoints，于是 A 的测试连到了 B 的库。
 按 run 隔离命名空间（`ci-{pipelineId}`），并给 namespace 配 `ResourceQuota`——隔离与配额要同时设。
 
+:::

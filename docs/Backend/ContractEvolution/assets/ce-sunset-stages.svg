@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="900" height="450" role="img" aria-label="下线五阶段：标注、限流、拒绝新接入、410 Gone、删除，前四步可逆，最后一步不可逆">
+  <title>下线五阶段：用限流而不是关停，把「突然全断」变成「慢慢变慢」</title>
+  <defs>
+    <marker id="ce8a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="450" fill="#f8fafc"/>
+  <text x="450" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">五个阶段：前四步可逆，第五步不可逆</text>
+
+  <rect x="26" y="236" width="160" height="104" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+  <text x="106" y="260" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">① Mark 标注</text>
+  <text x="106" y="280" font-size="9.4" fill="#475569" text-anchor="middle">Deprecation / Sunset</text>
+  <text x="106" y="296" font-size="9.4" fill="#475569" text-anchor="middle">Link + 文档标灰</text>
+  <text x="106" y="316" font-size="9.4" fill="#15803d" text-anchor="middle">观测：头部出现率 100%</text>
+  <text x="106" y="332" font-size="9.4" fill="#15803d" text-anchor="middle">可逆 ✅</text>
+
+  <rect x="196" y="200" width="160" height="104" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="276" y="224" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">② Constrain 限流</text>
+  <text x="276" y="244" font-size="9.4" fill="#475569" text-anchor="middle">配额 100 → 50 → 10 rps</text>
+  <text x="276" y="260" font-size="9.4" fill="#475569" text-anchor="middle">不直接关停</text>
+  <text x="276" y="280" font-size="9.4" fill="#b45309" text-anchor="middle">观测：429 曲线即调用方清单</text>
+  <text x="276" y="296" font-size="9.4" fill="#15803d" text-anchor="middle">可逆 ✅</text>
+
+  <rect x="366" y="164" width="160" height="104" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+  <text x="446" y="188" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">③ Block new 拒新</text>
+  <text x="446" y="208" font-size="9.4" fill="#475569" text-anchor="middle">新 Key 不能选该版本</text>
+  <text x="446" y="224" font-size="9.4" fill="#475569" text-anchor="middle">老 Key 继续可用</text>
+  <text x="446" y="244" font-size="9.4" fill="#b45309" text-anchor="middle">观测：新接入数 = 0</text>
+  <text x="446" y="260" font-size="9.4" fill="#15803d" text-anchor="middle">可逆 ✅</text>
+
+  <rect x="536" y="128" width="160" height="104" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+  <text x="616" y="152" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">④ 410 Gone</text>
+  <text x="616" y="172" font-size="9.4" fill="#475569" text-anchor="middle">410 + Sunset + Link</text>
+  <text x="616" y="188" font-size="9.4" fill="#475569" text-anchor="middle">响应体含 successor</text>
+  <text x="616" y="208" font-size="9.4" fill="#b45309" text-anchor="middle">观测：剩余调用方数量</text>
+  <text x="616" y="224" font-size="9.4" fill="#b45309" text-anchor="middle">可短暂回退 ⚠️</text>
+
+  <rect x="706" y="92" width="168" height="104" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <text x="790" y="116" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">⑤ Delete 删除</text>
+  <text x="790" y="136" font-size="9.4" fill="#475569" text-anchor="middle">下线路由与适配层</text>
+  <text x="790" y="152" font-size="9.4" fill="#475569" text-anchor="middle">删文档、归档契约</text>
+  <text x="790" y="172" font-size="9.4" fill="#be123c" text-anchor="middle">不可逆 ❌</text>
+  <text x="790" y="188" font-size="9.4" fill="#475569" text-anchor="middle">前提：调用方 = 0 或仅长尾</text>
+
+  <line x1="186" y1="288" x2="192" y2="270" stroke="#475569" stroke-width="1.4" marker-end="url(#ce8a)"/>
+  <line x1="356" y1="252" x2="362" y2="234" stroke="#475569" stroke-width="1.4" marker-end="url(#ce8a)"/>
+  <line x1="526" y1="216" x2="532" y2="198" stroke="#475569" stroke-width="1.4" marker-end="url(#ce8a)"/>
+  <line x1="696" y1="180" x2="702" y2="162" stroke="#be123c" stroke-width="1.6" marker-end="url(#ce8a)"/>
+
+  <text x="26" y="382" font-size="11" font-weight="600" fill="#0f172a" text-anchor="start">公告的数学：每轮触达 60%，5 轮后仍有 1.02% 从未收到</text>
+  <text x="26" y="404" font-size="10" fill="#475569" text-anchor="start">1 轮 60% → 3 轮 93.6% → 5 轮 98.98%，剩下的正是最难迁移的。</text>
+  <text x="26" y="426" font-size="10" fill="#be123c" text-anchor="start">所以真正驱动迁移的是 429 曲线与 410，不是公告。</text>
+
+  <text x="470" y="382" font-size="10" fill="#475569" text-anchor="start">长尾批次不 410：限流 + 最小实现 + legacy-frozen</text>
+  <text x="470" y="404" font-size="10" fill="#475569" text-anchor="start">「承认下不掉」比「假装下掉了」安全得多。</text>
+</svg>

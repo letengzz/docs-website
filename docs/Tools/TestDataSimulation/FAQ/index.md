@@ -1,6 +1,6 @@
 # 常见问题与最佳实践
 
-<p style="text-align:center;"><img src="../assets/td-faq-triage.svg" style="zoom:100%;" /></p>
+<p style="text-align:center;"><img src="../assets/td-faq-triage.svg" alt="分诊第一步：这个红能不能复现" style="zoom:100%;" /></p>
 
 这一页不进新概念，只做三件事：**按症状分诊**（你现在遇到的现象大概属于哪一类）、**回答高频问题**（那些「好像都对但不知道选哪个」的地方）、**给一份可逐条打勾的上线自查表**。
 

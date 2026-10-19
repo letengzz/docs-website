@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" role="img" aria-label="expand-contract 四阶段：扩展、双写回填、切读、收口，只有第四阶段不可逆">
+  <title>expand-contract 四阶段：前三步都能单独回滚，第四步不可逆</title>
+  <defs>
+    <marker id="ce5a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="ce5b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/></marker>
+  </defs>
+  <style>text{font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',Arial,sans-serif}</style>
+  <rect x="0" y="0" width="900" height="460" fill="#f8fafc"/>
+  <text x="450" y="32" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">四阶段：每一步都是一次独立发布，都能单独回滚</text>
+
+  <rect x="26" y="70" width="196" height="128" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="124" y="94" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">① Expand 扩展</text>
+  <text x="40" y="116" font-size="9.8" fill="#475569" text-anchor="start">加 amount_cents（可空）</text>
+  <text x="40" y="134" font-size="9.8" fill="#475569" text-anchor="start">不动老列，不加约束</text>
+  <text x="40" y="156" font-size="9.8" fill="#15803d" text-anchor="start">实测 0.98 ms / 200 万行</text>
+  <text x="40" y="176" font-size="9.8" fill="#15803d" text-anchor="start">回滚：DROP COLUMN</text>
+  <text x="40" y="192" font-size="9.8" fill="#475569" text-anchor="start">窗口：分钟</text>
+
+  <rect x="240" y="70" width="196" height="128" rx="8" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="338" y="94" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">② Migrate 双写回填</text>
+  <text x="254" y="116" font-size="9.8" fill="#475569" text-anchor="start">新代码同时写两列</text>
+  <text x="254" y="134" font-size="9.8" fill="#475569" text-anchor="start">分批 UPDATE 历史数据</text>
+  <text x="254" y="156" font-size="9.8" fill="#b45309" text-anchor="start">严禁单条全表 UPDATE</text>
+  <text x="254" y="176" font-size="9.8" fill="#15803d" text-anchor="start">回滚：停双写</text>
+  <text x="254" y="192" font-size="9.8" fill="#475569" text-anchor="start">窗口：小时级</text>
+
+  <rect x="454" y="70" width="196" height="128" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+  <text x="552" y="94" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">③ Switch 切读</text>
+  <text x="468" y="116" font-size="9.8" fill="#475569" text-anchor="start">先影子读比对，再切</text>
+  <text x="468" y="134" font-size="9.8" fill="#475569" text-anchor="start">按租户取模灰度</text>
+  <text x="468" y="156" font-size="9.8" fill="#be123c" text-anchor="start">差异必须逐条归因</text>
+  <text x="468" y="176" font-size="9.8" fill="#15803d" text-anchor="start">回滚：切回读老列</text>
+  <text x="468" y="192" font-size="9.8" fill="#475569" text-anchor="start">窗口：≥ 3 天</text>
+
+  <rect x="668" y="70" width="206" height="128" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.8"/>
+  <text x="771" y="94" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">④ Contract 收口</text>
+  <text x="682" y="116" font-size="9.8" fill="#475569" text-anchor="start">停止写老列</text>
+  <text x="682" y="134" font-size="9.8" fill="#475569" text-anchor="start">DROP COLUMN</text>
+  <text x="682" y="156" font-size="9.8" fill="#be123c" text-anchor="start">无读 · 无写 · 无回滚需求</text>
+  <text x="682" y="176" font-size="9.8" fill="#be123c" text-anchor="start">回滚：不可逆</text>
+  <text x="682" y="192" font-size="9.8" fill="#475569" text-anchor="start">空间要 VACUUM FULL 才还</text>
+
+  <line x1="222" y1="134" x2="238" y2="134" stroke="#475569" stroke-width="1.5" marker-end="url(#ce5a)"/>
+  <line x1="436" y1="134" x2="452" y2="134" stroke="#475569" stroke-width="1.5" marker-end="url(#ce5a)"/>
+  <line x1="650" y1="134" x2="666" y2="134" stroke="#be123c" stroke-width="1.5" marker-end="url(#ce5a)"/>
+
+  <text x="606" y="216" font-size="10.5" font-weight="700" fill="#be123c" text-anchor="middle">▲ 不可逆点</text>
+  <line x1="660" y1="222" x2="660" y2="200" stroke="#be123c" stroke-width="2"/>
+
+  <path d="M 454 226 L 454 244 L 240 244 L 240 226" fill="none" stroke="#15803d" stroke-width="1.4" marker-end="url(#ce5b)" stroke-dasharray="5 4"/>
+  <text x="347" y="260" font-size="10" fill="#15803d" text-anchor="middle">可回退（数据仍在老列）</text>
+
+  <rect x="26" y="286" width="404" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="42" y="308" font-size="11" font-weight="700" fill="#0f172a" text-anchor="start">回填成本对照（本机实测，200 万行 / 130 MB）</text>
+  <text x="42" y="328" font-size="9.8" fill="#be123c" text-anchor="start">单条全表 UPDATE：13,315 ms，死元组 200 万</text>
+  <text x="42" y="346" font-size="9.8" fill="#b45309" text-anchor="start">ALTER 重写全表：2,793 ms，但全程 ACCESS EXCLUSIVE</text>
+  <text x="42" y="362" font-size="9.8" fill="#15803d" text-anchor="start">分批 5000 行 + SKIP LOCKED：几乎不阻塞（推荐）</text>
+
+  <rect x="446" y="286" width="428" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="462" y="308" font-size="11" font-weight="700" fill="#0f172a" text-anchor="start">为什么必须有 ③：让新列先「被读」一段时间</text>
+  <text x="462" y="328" font-size="9.8" fill="#475569" text-anchor="start">回填正确性无法靠推理证明，只能靠真实流量暴露</text>
+  <text x="462" y="346" font-size="9.8" fill="#475569" text-anchor="start">此时老列还在，一条 UPDATE … FROM 就能修回去</text>
+  <text x="462" y="362" font-size="9.8" fill="#be123c" text-anchor="start">跳过 ③ = 删掉了唯一的备份</text>
+
+  <text x="26" y="396" font-size="10" fill="#475569" text-anchor="start">删除的三个条件，缺一不可：没有任何代码读、没有任何代码写、没有回滚到「读老列版本」的需求。</text>
+  <text x="26" y="416" font-size="10" fill="#475569" text-anchor="start">第三个条件最易漏：问「如果现在必须回滚，上一版读哪一列」，答案是老列就不能删。</text>
+  <text x="26" y="438" font-size="10" fill="#be123c" text-anchor="start">「接口下线」与「列删除」是两个独立决策——BI 直连只读库，按列名写死了 SQL。</text>
+</svg>

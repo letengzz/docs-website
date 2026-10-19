@@ -1,6 +1,6 @@
 # 环境隔离：让失败不越界
 
-<p style="text-align:center;"><img src="../assets/td-isolation.svg" style="zoom:100%;" /></p>
+<p style="text-align:center;"><img src="../assets/td-isolation.svg" alt="环境隔离：三个面与四层" style="zoom:100%;" /></p>
 
 环境隔离（Environment Isolation）的目标不是「数据不串」，而是**一次失败不影响别人**：A 的压测不该打挂 B 的用例，A 改了 Redis 里的 key 不该让 B 的缓存断言失效，A 造的一条脏数据不该让 B 的分页断言多出一行。
 

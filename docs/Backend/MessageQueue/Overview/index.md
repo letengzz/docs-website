@@ -137,6 +137,23 @@ Kafka 更像“日志流水账”（追求吞吐和回溯），RabbitMQ 更像�
 - [Kafka 深入](../Kafka/index.md)：架构与存储、生产者、消费者、分区副本、Exactly-Once、集群运维与实战
 - [Kafka 版本演进与迁移](../Kafka/Version/index.md)：4.x KRaft 与 3.x ZooKeeper 的差异、迁移路径与行为变更清单
 
+## 与「契约演进与兼容」专题的分工
+
+本页讲**消息怎么可靠地送达**：投递语义、分区与顺序、消费位移、重试与死信。
+
+[契约演进与兼容](../../ContractEvolution/index.md) 讲**消息体里的字段怎么改**——这是两件正交的事：投递再可靠，schema 不兼容照样消费失败。
+
+| 问题 | 本页 | 契约演进专题 |
+| --- | --- | --- |
+| 消息会不会重复/丢失 | 本页（at-least-once / 幂等消费） | 不涉及 |
+| 加一个字段，老消费者会崩吗 | 不在范围内 | [异步契约](../../ContractEvolution/AsyncContract/index.md)：Avro 默认值与 Protobuf `reserved` |
+| 消费者落后三天怎么办 | 本页讲 lag 与位移提交 | 专题把 lag 变成**删除字段的时间判据**：`retention + 最长停机 + max_lag` |
+| 一条毒丸消息卡住分区 | 本页讲死信队列 | 专题补「宽容解析 + 落 DLQ + 监控深度」的组合 |
+
+::: danger 一条常被忽略的联动
+**retention 决定了你必须兼容多久之前的数据。** retention = 7 天，就意味着任何新消费者启动时都可能读到 7 天前按老 schema 写的消息——「新版本上线后老格式就没人写了」这句话对消息**不成立**。
+:::
+
 ## 参考资料
 
 - Apache Kafka 官方文档：https://kafka.apache.org/documentation/

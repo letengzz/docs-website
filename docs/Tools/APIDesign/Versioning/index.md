@@ -210,6 +210,23 @@ curl -sI http://127.0.0.1:18080/api/v1/posts | grep -iE '^(deprecation|sunset|li
 **契约自身也要有版本，且它的破坏性变更与接口的破坏性变更不是一回事。** 本页的 SemVer 口径与任务看板的「契约三步走」（先加法 → 再端点 → 最后才版本）是同一条纪律的两种表述。
 :::
 
+## 7.5 与「契约演进与兼容」专题的分工
+
+本页解决的是**对外怎么表达版本**：路径 / Header / 媒体类型三选一、三类变更清单、`Deprecation` 与 `Sunset` 头怎么写、`oasdiff` 基线比对。
+
+[契约演进与兼容](../../../Backend/ContractEvolution/index.md) 接着回答本页刻意不回答的四个工程问题：
+
+| 问题 | 本页 | 契约演进专题 |
+| --- | --- | --- |
+| 服务端怎么同时承载 v1 与 v2 | 只讲「加版本号」这一层 | [服务端承载多版本](../../../Backend/ContractEvolution/ServerVersions/index.md)：适配层、单一领域模型、废弃字段推导填充 |
+| 改一个列算不算改契约 | 不在范围内（本页只谈接口） | [库表演进](../../../Backend/ContractEvolution/SchemaEvolution/index.md)：expand-contract 四阶段与本机实测锁代价 |
+| 消息体的字段怎么改 | 不在范围内 | [异步契约](../../../Backend/ContractEvolution/AsyncContract/index.md)：四种兼容模式与 `_TRANSITIVE` |
+| 门禁除了 `oasdiff` 还要什么 | 提到「接进流水线」 | [契约门禁](../../../Backend/ContractEvolution/ContractGate/index.md)：四道门禁 + 变异测试 |
+
+::: tip 一条纪律两页共享
+**「废弃」是一个机器可读的信号，不是一份公告。** 本页给的是响应头写法（`Deprecation` 用 `@秒`、`Sunset` 用 HTTP-date，两者格式不同）；契约演进专题给的是「标注之后还有限流、拒绝新接入、410 三步」，以及为什么公告永远到不了 100% 的调用方。
+:::
+
 ## 7. 参考资料
 
 - [RFC 9745 · The Deprecation HTTP Response Header Field](https://www.rfc-editor.org/rfc/rfc9745.html)

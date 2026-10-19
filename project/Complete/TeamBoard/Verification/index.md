@@ -165,7 +165,7 @@ curl -s "http://localhost:8080/api/v1/boards/$BOARD_ID/events?since=0&limit=50" 
 
 ## 四、第 7 步：并发验证
 
-目标：**两个请求同时拖同一张卡片 → 一成一败、`version` 只前进 1。** 先读出当前版本，让两个请求用**同一个** `$V`：
+目标：**两个请求同时拖同一张卡片 → 一成一败、`version` 只前进 1。** 先读出卡片当时的 `version`，让两个请求用**同一个** `$V`：
 
 ```shell
 V=$(psql -h localhost -U teamboard -d teamboard -tAc "SELECT version FROM cards WHERE id='$CARD_ID'")

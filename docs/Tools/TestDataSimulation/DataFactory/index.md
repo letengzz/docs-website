@@ -1,6 +1,6 @@
 # 数据工厂：把「造数」写成可复算的程序
 
-<p style="text-align:center;"><img src="../assets/td-factory.svg" style="zoom:100%;" /></p>
+<p style="text-align:center;"><img src="../assets/td-factory.svg" alt="数据工厂：四层生成器与引用图" style="zoom:100%;" /></p>
 
 数据工厂（Data Factory）是把「需要什么样的数据」变成一段**给定种子就能复算出同一批结果**的程序。它的产物不是一次性的 SQL 文件，而是**一组可参数化的生成器 + 一张引用关系图 + 一份指纹**。
 
