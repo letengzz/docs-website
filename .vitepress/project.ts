@@ -370,6 +370,7 @@ export const CompleteProject = [
           { text: "第 4 周第 3 步之三 · 观察窗口与值班交接：算出来的窗口与可验收的交接（OH-A~OH-H）", link: "/project/Complete/TeamBoard/ObserveHandover/index.md" },
           { text: "第 4 周第 3 步之四 · 交付效能度量：五张表、三条视图与四个读数（DME-A~DME-H）", link: "/project/Complete/TeamBoard/DeliveryMetrics/index.md" },
           { text: "第 4 周第 3 步之五 · 稳态运营：SLO 报表、容量趋势与演练日历（SSO-A~SSO-H）", link: "/project/Complete/TeamBoard/SteadyStateOps/index.md" },
+          { text: "第 4 周第 3 步之六 · 租户退出：导出、冷静期与级联删除（TNO-A~TNO-H）", link: "/project/Complete/TeamBoard/TenantOffboarding/index.md" },
         ],
       },
       {

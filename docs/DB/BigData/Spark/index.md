@@ -181,6 +181,21 @@ spark-submit \
 | 任务数量上千但每个都很快 | 并行度过高（分区数远大于数据量） | 降低 `shuffle.partitions` |
 | UDF 拖慢整个作业 | Python UDF 逐行跨进程调用 | 优先用内置函数；必须用 UDF 时考虑 Pandas UDF（向量化） |
 
+## 与「数据湖与湖仓一体」专题的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 算子、shuffle、执行计划、内存与并行度调优 | **本页** |
+| 写表的提交语义（`INSERT OVERWRITE` 在湖表上到底做了什么）、幂等重跑 | [湖仓专题 · 提交协议](../../Lakehouse/WritePath/index.md) |
+| 小文件为什么越写越多、`distribution-mode` 与目标文件大小 | [湖仓专题 · 小文件治理](../../Lakehouse/SmallFiles/index.md) |
+| 读侧只扫了该扫的文件吗（裁剪四层） | [湖仓专题 · 引擎接入](../../Lakehouse/QueryEngine/index.md) |
+
+一句话：**Spark 是写湖的主力引擎，但它不负责表语义**。同一个 `INSERT OVERWRITE`，在裸 Parquet 上是「先删后写」（中途失败留下半个分区），在湖表上是一个快照切换。
+
+::: danger 本页特有的坑：`repartition(1)` 治小文件，治出新问题
+为了少写文件而 `coalesce(1)` / `repartition(1)`，会把并行度压到 1——单 task 写 100 GB，任何一个 executor 抖动都要重跑整批。正确做法是**按目标文件大小算出分区数**（`总字节 / 128 MB`）再用 `repartition(n, 分区列)`，或者在表属性里让引擎自己分配（`write.distribution-mode=hash`）。判据见湖仓专题的 `LHC-D`。
+:::
+
 ## 参考资料
 
 - Spark 官方文档：<https://spark.apache.org/docs/latest/>

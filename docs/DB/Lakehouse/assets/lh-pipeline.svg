@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">实战链路：一条写入到清理的完整流水线</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10" fill="#64748B">10 亿行事件表 · 128 MB 目标文件 · 7 天保留 · S1~S10 验收</text>
+
+  <rect x="30" y="72" width="128" height="62" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="94" y="92" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">① 建表</text>
+  <text x="94" y="108" text-anchor="middle" font-size="7.6" fill="#1D4ED8">隐藏分区</text>
+  <text x="94" y="122" text-anchor="middle" font-size="7.6" fill="#1D4ED8">四个必写属性</text>
+
+  <rect x="176" y="72" width="128" height="62" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="240" y="92" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">② 幂等写入</text>
+  <text x="240" y="108" text-anchor="middle" font-size="7.6" fill="#047857">业务唯一键</text>
+  <text x="240" y="122" text-anchor="middle" font-size="7.6" fill="#047857">batch_id 属性</text>
+
+  <rect x="322" y="72" width="128" height="62" rx="7" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.4"/>
+  <text x="386" y="92" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">③ 提交</text>
+  <text x="386" y="108" text-anchor="middle" font-size="7.6" fill="#0F766E">catalog CAS</text>
+  <text x="386" y="122" text-anchor="middle" font-size="7.6" fill="#0F766E">409 退避重试</text>
+
+  <rect x="468" y="72" width="128" height="62" rx="7" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+  <text x="532" y="92" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">④ compaction</text>
+  <text x="532" y="108" text-anchor="middle" font-size="7.6" fill="#C2410C">小文件 → 128 MB</text>
+  <text x="532" y="122" text-anchor="middle" font-size="7.6" fill="#C2410C">+ manifest 重写</text>
+
+  <rect x="614" y="72" width="116" height="62" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="672" y="92" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">⑤ 清理</text>
+  <text x="672" y="108" text-anchor="middle" font-size="7.6" fill="#B91C1C">过期 → 孤儿</text>
+  <text x="672" y="122" text-anchor="middle" font-size="7.6" fill="#B91C1C">不可换序</text>
+
+  <line x1="158" y1="103" x2="176" y2="103" stroke="#94A3B8" stroke-width="1.4"/>
+  <line x1="304" y1="103" x2="322" y2="103" stroke="#94A3B8" stroke-width="1.4"/>
+  <line x1="450" y1="103" x2="468" y2="103" stroke="#94A3B8" stroke-width="1.4"/>
+  <line x1="596" y1="103" x2="614" y2="103" stroke="#94A3B8" stroke-width="1.4"/>
+
+  <text x="30" y="168" font-size="10.5" fill="#0F172A" font-weight="bold">S1~S10 验收：六条不需要集群</text>
+
+  <rect x="30" y="178" width="345" height="150" rx="7" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="45" y="198" font-size="8.3" fill="#334155">S1 属性正确（format-version / target-size）</text>
+  <text x="45" y="216" font-size="8.3" fill="#334155">S2 三批行数 = 3000 万</text>
+  <text x="45" y="234" font-size="8.3" fill="#334155">S3 重跑同一批：行数不变（幂等）</text>
+  <text x="45" y="252" font-size="8.3" fill="#334155">S4 并发双写：一个成功一个 409</text>
+  <text x="45" y="270" font-size="8.3" fill="#334155">S5 平均文件大小落在 40~190 MB</text>
+  <text x="45" y="288" font-size="8.3" fill="#334155">S6 compaction 后文件数降、行数不变</text>
+  <text x="45" y="306" font-size="7.6" fill="#64748B">以上六条用一条 SQL 或一次重跑即可判定</text>
+
+  <rect x="390" y="178" width="340" height="150" rx="7" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="405" y="198" font-size="8.3" fill="#334155">S7 增量只碰一天（看 input size）</text>
+  <text x="405" y="216" font-size="8.3" fill="#334155">S8 时间旅行能回到上一版</text>
+  <text x="405" y="234" font-size="8.3" fill="#334155">S9 过期后旧版本不可回（正确行为）</text>
+  <text x="405" y="252" font-size="8.3" fill="#334155">S10 两引擎 snapshot_id 一致</text>
+  <text x="405" y="272" font-size="7.6" fill="#64748B">以上四条需真实集群与并发，</text>
+  <text x="405" y="286" font-size="7.6" fill="#64748B">本页按「命令 + 预期输出」给出，</text>
+  <text x="405" y="300" font-size="7.6" fill="#64748B">未在本机实跑，如实标注。</text>
+
+  <rect x="30" y="342" width="700" height="26" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+  <text x="380" y="359" text-anchor="middle" font-size="8.5" fill="#92400E">口径七项（数据量 / 分区 / 目标大小 / 写入频率 / 保留 / 增量 / SLA）必须在建表前定，换一项就要重算其余</text>
+
+  <text x="30" y="388" font-size="8" fill="#64748B">本图为施工路线，不是性能基准；各步的命令与预期读数见正文第六节。</text>
+</svg>

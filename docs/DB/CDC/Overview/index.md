@@ -88,6 +88,20 @@ mysql -uroot -p blog -e "UPDATE posts SET title = 'cdc-probe' WHERE id = 1;"
 
 **期望**：步骤 ③ 能看到一条包含表名、主键、操作类型的变更事件。这就是整个专题要建的东西的最小形态。
 
+## 与「数据湖与湖仓一体」专题的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| Binlog 解析、Debezium / Flink CDC、一致性快照、断点续传 | **本页**（采集侧） |
+| 落到湖表之后，下游怎么「只读变化的部分」 | [湖仓专题 · 增量读](../../Lakehouse/IncrementalRead/index.md)（消费侧） |
+| `MERGE INTO` 的幂等与冲突重试 | [湖仓专题 · 提交协议](../../Lakehouse/WritePath/index.md) |
+
+一句话：**CDC 是增量数据的来源，湖仓的增量读是增量数据的出口**。中间那段（`MERGE` 写入）是两者唯一必须对齐的地方：采集侧的重放语义与湖表的幂等键必须是同一套，否则「至少一次」会在湖里变成「至少两行」。
+
+::: danger 本页特有的坑：CDC 的「变更」和湖表的「变更」不是同一个概念
+CDC 给的是**行级** `+I/-U/+U/-D`；湖表的增量读给的是**文件级**变化（含 compaction 重写的文件）。把后者当前者用，会把「布局优化」当成「数据变更」重放一遍；反过来把前者当后者用，会漏掉「同一行改了两次只发一次」的合并。对齐方式见湖仓专题的 `LHI-B`。
+:::
+
 ## 参考资料
 
 - Debezium 官方文档 · 架构：https://debezium.io/documentation/reference/stable/architecture.html

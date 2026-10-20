@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">八类症状的分诊入口：先分层，再排查</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10" fill="#64748B">湖仓的报错很少，症状几乎都在「数据」上；先确认是存储 / 文件 / 表格式 / catalog 哪一层</text>
+
+  <rect x="30" y="70" width="700" height="30" rx="5" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.1"/>
+  <text x="45" y="90" font-size="8.5" fill="#334155">分层判断：能看到文件但读不到 → 表格式；能读到但内容错 → 文件/写入；两个引擎不一致 → catalog</text>
+
+  <rect x="30" y="110" width="345" height="42" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="45" y="128" font-size="8.5" fill="#991B1B" font-weight="bold">① 行数比源多</text>
+  <text x="45" y="144" font-size="7.8" fill="#B91C1C">重跑不幂等 / 按目录读了旧文件 / 增量重复投递</text>
+
+  <rect x="390" y="110" width="340" height="42" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="405" y="128" font-size="8.5" fill="#991B1B" font-weight="bold">② 行数比源少</text>
+  <text x="405" y="144" font-size="7.8" fill="#B91C1C">提交冲突被吞 / 水位推进过早 / 分区覆盖抹掉了当天</text>
+
+  <rect x="30" y="160" width="345" height="42" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="45" y="178" font-size="8.5" fill="#9A3412" font-weight="bold">③ 删了还能查到</text>
+  <text x="45" y="194" font-size="7.8" fill="#C2410C">旧快照 / 缓存或物化视图 / 删的是视图不是表</text>
+
+  <rect x="390" y="160" width="340" height="42" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="405" y="178" font-size="8.5" fill="#9A3412" font-weight="bold">④ 时间旅行 FileNotFound</text>
+  <text x="405" y="194" font-size="7.8" fill="#C2410C">孤儿清理 min-age 太小，或先清孤儿后过期</text>
+
+  <rect x="30" y="210" width="345" height="42" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="45" y="228" font-size="8.5" fill="#1E3A8A" font-weight="bold">⑤ 查询逐月变慢</text>
+  <text x="45" y="244" font-size="7.8" fill="#1D4ED8">小文件 / manifest 只增不并 / 统计缺失</text>
+
+  <rect x="390" y="210" width="340" height="42" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="405" y="228" font-size="8.5" fill="#1E3A8A" font-weight="bold">⑥ 两个引擎版本不一致</text>
+  <text x="405" y="244" font-size="7.8" fill="#1D4ED8">两套 catalog / 缓存 / 有人绕过 catalog 写</text>
+
+  <rect x="30" y="260" width="345" height="42" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="45" y="278" font-size="8.5" fill="#065F46" font-weight="bold">⑦ 写入频繁冲突</text>
+  <text x="45" y="294" font-size="7.8" fill="#047857">写者太多 / 提交间隔太短 / 有高频心跳写</text>
+
+  <rect x="390" y="260" width="340" height="42" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="405" y="278" font-size="8.5" fill="#065F46" font-weight="bold">⑧ 存储涨得比数据快</text>
+  <text x="405" y="294" font-size="7.8" fill="#047857">保留期太长 / compaction 过频 / 孤儿未清</text>
+
+  <text x="30" y="330" font-size="10.5" fill="#0F172A" font-weight="bold">三条分诊纪律</text>
+  <rect x="30" y="340" width="700" height="24" rx="4" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="45" y="356" font-size="8.3" fill="#334155">① 症状 1/2 用时间维度切开：重跑翻倍 = 幂等；不翻倍但差数 = 水位或过滤条件</text>
+  <rect x="30" y="368" width="700" height="24" rx="4" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="45" y="384" font-size="8.3" fill="#334155">② 症状 5 先量两个数（files / avg_mb）再动手，小文件与统计缺失的解法完全不同</text>
+  <rect x="30" y="396" width="700" height="24" rx="4" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="45" y="412" font-size="8.3" fill="#334155">③ 症状 4 永远先查清理任务参数与执行时序，不要先怀疑存储故障</text>
+</svg>

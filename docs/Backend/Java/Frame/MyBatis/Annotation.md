@@ -10,7 +10,7 @@
 
 ![img](assets/202303011122371.gif)
 
-## SQL 语句映射 {#1}
+## <span id="1">SQL 语句映射</span>
 
 ### @Insert:实现新增功能
 
@@ -119,7 +119,7 @@ Map<Integer,Object> getStuAllToMap();
 MyBatis 的注解本质是**元数据**：`@Select`/`@Results` 由框架在运行期通过反射读取并绑定 SQL。自定义注解的定义、生命周期与反射读取见 [注解：定义与使用](../../JavaSE/Reflection/Annotation/index.md)。
 :::
 
-## 结果集映射 {#2}
+## <span id="2">结果集映射</span>
 
 `@Result`、`@Results`、`@ResultMap` 是结果集映射的三大注解。
 
@@ -181,7 +181,7 @@ Employee selectById(Integer id);
    </resultMap>
    ```
 
-## 关系映射 {#3}
+## <span id="3">关系映射</span>
 
 :::tip 提示
 

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="360" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四代数据湖：每一代的驱动力都是上一代没解决的问题</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10" fill="#64748B">Hive 表 → 朴素 Parquet 湖 → 表格式 → catalog 中心化</text>
+
+  <rect x="28" y="76" width="164" height="120" rx="8" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+  <text x="110" y="98" text-anchor="middle" font-size="10.5" fill="#334155" font-weight="bold">第 1 代：Hive 表</text>
+  <text x="110" y="116" text-anchor="middle" font-size="8" fill="#475569">2010 前后</text>
+  <text x="110" y="136" text-anchor="middle" font-size="8" fill="#475569">目录即表 · 分区靠路径</text>
+  <text x="110" y="152" text-anchor="middle" font-size="8" fill="#475569">MSCK REPAIR 才看见</text>
+  <text x="110" y="172" text-anchor="middle" font-size="8" fill="#B91C1C">问题：并发靠锁</text>
+  <text x="110" y="188" text-anchor="middle" font-size="8" fill="#B91C1C">覆盖非原子</text>
+
+  <rect x="212" y="76" width="164" height="120" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="294" y="98" text-anchor="middle" font-size="10.5" fill="#334155" font-weight="bold">第 2 代：朴素湖</text>
+  <text x="294" y="116" text-anchor="middle" font-size="8" fill="#475569">2015 前后</text>
+  <text x="294" y="136" text-anchor="middle" font-size="8" fill="#475569">对象存储 + Parquet</text>
+  <text x="294" y="152" text-anchor="middle" font-size="8" fill="#475569">存储计算分离</text>
+  <text x="294" y="172" text-anchor="middle" font-size="8" fill="#B91C1C">问题：无事务、无快照</text>
+  <text x="294" y="188" text-anchor="middle" font-size="8" fill="#B91C1C">列目录极慢</text>
+
+  <rect x="396" y="76" width="164" height="120" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="478" y="98" text-anchor="middle" font-size="10.5" fill="#065F46" font-weight="bold">第 3 代：表格式</text>
+  <text x="478" y="116" text-anchor="middle" font-size="8" fill="#047857">2017-2019</text>
+  <text x="478" y="136" text-anchor="middle" font-size="8" fill="#047857">元数据文件记录成员</text>
+  <text x="478" y="152" text-anchor="middle" font-size="8" fill="#047857">ACID · 时间旅行 · 演进</text>
+  <text x="478" y="172" text-anchor="middle" font-size="8" fill="#B45309">问题：元数据膨胀</text>
+  <text x="478" y="188" text-anchor="middle" font-size="8" fill="#B45309">小文件复利</text>
+
+  <rect x="580" y="76" width="152" height="120" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="656" y="98" text-anchor="middle" font-size="10.5" fill="#1E3A8A" font-weight="bold">第 4 代：catalog</text>
+  <text x="656" y="116" text-anchor="middle" font-size="8" fill="#1D4ED8">2022 至今</text>
+  <text x="656" y="136" text-anchor="middle" font-size="8" fill="#1D4ED8">REST catalog · 协调提交</text>
+  <text x="656" y="152" text-anchor="middle" font-size="8" fill="#1D4ED8">原子性搬到服务层</text>
+  <text x="656" y="172" text-anchor="middle" font-size="8" fill="#B45309">问题：单点与迁移</text>
+  <text x="656" y="188" text-anchor="middle" font-size="8" fill="#B45309">跨 catalog 成本高</text>
+
+  <line x1="192" y1="136" x2="212" y2="136" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar1)"/>
+  <line x1="376" y1="136" x2="396" y2="136" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar1)"/>
+  <line x1="560" y1="136" x2="580" y2="136" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar1)"/>
+  <defs>
+    <marker id="ar1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <rect x="28" y="216" width="704" height="52" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.2"/>
+  <text x="380" y="237" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">看清两条不同的原子性</text>
+  <text x="380" y="256" text-anchor="middle" font-size="8.5" fill="#92400E">表格式保证「一次提交在清单层面全或无」；catalog 保证「同一时刻只有一个写者能换指针」。只做前者，两个写者仍会互相覆盖</text>
+
+  <rect x="28" y="284" width="704" height="56" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="380" y="305" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">一条不变的判断线</text>
+  <text x="380" y="324" text-anchor="middle" font-size="8.5" fill="#991B1B">「谁属于这张表」由元数据回答，而不是由目录路径回答。把路径当真相的所有设计，最终都会在「第二个写者」出现时失效</text>
+</svg>

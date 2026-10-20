@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="390" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四层裁剪与一次实测：随机布局 vs 按列聚簇</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10" fill="#64748B">100 万行 / 1,000 文件 / 查询 user_id = 777（值域 10 万）</text>
+
+  <rect x="30" y="70" width="180" height="52" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.4"/>
+  <text x="120" y="90" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">① 分区裁剪</text>
+  <text x="120" y="107" text-anchor="middle" font-size="7.8" fill="#047857">只看分区列，读 manifest 即可</text>
+
+  <rect x="228" y="70" width="180" height="52" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="318" y="90" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">② 文件统计裁剪</text>
+  <text x="318" y="107" text-anchor="middle" font-size="7.8" fill="#1D4ED8">列 min/max 不含目标值 → 跳过</text>
+
+  <rect x="426" y="70" width="150" height="52" rx="7" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.4"/>
+  <text x="501" y="90" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">③ row group</text>
+  <text x="501" y="107" text-anchor="middle" font-size="7.8" fill="#0F766E">文件内的分段裁剪</text>
+
+  <rect x="594" y="70" width="136" height="52" rx="7" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+  <text x="662" y="90" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">④ 谓词下推</text>
+  <text x="662" y="107" text-anchor="middle" font-size="7.8" fill="#C2410C">只解码需要的列</text>
+
+  <text x="30" y="150" font-size="9" fill="#64748B">四层收益是乘法：分区砍 95% × 统计砍 80% → 只读 2 个文件。任何一层失效，上层全部白干。</text>
+
+  <rect x="30" y="164" width="340" height="120" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="200" y="184" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">随机写入（按到达时间落文件）</text>
+  <text x="200" y="206" text-anchor="middle" font-size="8.5" fill="#991B1B">单文件 min/max 跨度均值：99,804</text>
+  <text x="200" y="224" text-anchor="middle" font-size="8.5" fill="#991B1B">（≈ 全域 100,000，等于没有边界）</text>
+  <text x="200" y="250" text-anchor="middle" font-size="14" fill="#DC2626" font-weight="bold">需打开 1,000 / 1,000 个文件</text>
+  <text x="200" y="270" text-anchor="middle" font-size="8" fill="#B91C1C">统计信息齐全，但一条都用不上</text>
+
+  <rect x="390" y="164" width="340" height="120" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+  <text x="560" y="184" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">按 user_id 聚簇写入</text>
+  <text x="560" y="206" text-anchor="middle" font-size="8.5" fill="#047857">单文件 min/max 跨度均值：99.8</text>
+  <text x="560" y="224" text-anchor="middle" font-size="8.5" fill="#047857">（只有全局的 0.1%）</text>
+  <text x="560" y="250" text-anchor="middle" font-size="14" fill="#059669" font-weight="bold">需打开 1 / 1,000 个文件</text>
+  <text x="560" y="270" text-anchor="middle" font-size="8" fill="#047857">同样的数据、同样的 SQL，扫描量差 1000 倍</text>
+
+  <rect x="30" y="300" width="700" height="30" rx="5" fill="#FFFBEB" stroke="#D97706" stroke-width="1.1"/>
+  <text x="45" y="320" font-size="8.5" fill="#92400E">分区只对分区列有效；业务维过滤（user_id / tenant_id / status）靠的是文件级 min/max，也就是「布局」</text>
+
+  <rect x="30" y="338" width="700" height="30" rx="5" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.1"/>
+  <text x="45" y="358" font-size="8.5" fill="#334155">统计信息「空」的四个原因：复杂类型不支持、写入时 metrics=none、全 null、NaN 干扰；一条 SQL 就能查出来</text>
+</svg>

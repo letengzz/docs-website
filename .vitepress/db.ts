@@ -392,3 +392,22 @@ export const FullTextSearch = [
     ],
   },
 ];
+
+export const Lakehouse = [
+  {
+    text: "数据湖与湖仓一体",
+    link: "/docs/DB/Lakehouse/index.md",
+    items: [
+      { text: "总览：四层结构与五个必失点", link: "/docs/DB/Lakehouse/Overview/index.md" },
+      { text: "表格式：三种元数据模型", link: "/docs/DB/Lakehouse/TableFormat/index.md" },
+      { text: "元数据层与 catalog", link: "/docs/DB/Lakehouse/Metadata/index.md" },
+      { text: "提交协议与并发写", link: "/docs/DB/Lakehouse/WritePath/index.md" },
+      { text: "增量读：边界与代价", link: "/docs/DB/Lakehouse/IncrementalRead/index.md" },
+      { text: "小文件治理", link: "/docs/DB/Lakehouse/SmallFiles/index.md" },
+      { text: "时间旅行、保留与孤儿清理", link: "/docs/DB/Lakehouse/Retention/index.md" },
+      { text: "引擎接入与 data skipping", link: "/docs/DB/Lakehouse/QueryEngine/index.md" },
+      { text: "实战：从 0 搭一个可验收的湖仓", link: "/docs/DB/Lakehouse/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/DB/Lakehouse/FAQ/index.md" },
+    ],
+  },
+];

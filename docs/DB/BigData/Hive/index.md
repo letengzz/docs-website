@@ -156,6 +156,20 @@ hdfs dfs -count /warehouse/dwd_orders/dt=2026-10-01
 | 动态分区写入报分区数超限 | `hive.exec.max.dynamic.partitions` 默认值偏小 | 评估真实分区数后再调，别一味放大 |
 | 中文列注释乱码 | 元数据库字符集与 Hive 配置不一致 | 检查 JDBC URL 的 `characterEncoding` 与库表字符集 |
 
+## 与「数据湖与湖仓一体」专题的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| Hive 的分区目录、元数据库、`MSCK REPAIR`、Hive SQL 语法 | **本页** |
+| 为什么「目录即表」在并发写与回滚上不成立、替代方案是什么 | [湖仓专题 · 表格式](../../Lakehouse/TableFormat/index.md) |
+| 从 Hive 表迁到湖表的落地步骤与验收 | [湖仓专题 · 实战](../../Lakehouse/Practice/index.md) |
+
+一句话：**Hive 表用路径推断成员，湖仓表用元数据声明成员**。前者的一整类运维动作（`MSCK REPAIR`、手工建分区目录、`INSERT OVERWRITE` 前先删目录）在后者里根本不存在，不是因为更聪明，而是因为成员清单不再靠目录猜。
+
+::: danger 本页特有的坑：手工建的 dt= 目录，湖表读者看不见
+在 Hive 里 `hdfs dfs -mkdir dt=2026-10-20` 再 `MSCK REPAIR` 就能让数据可见；在湖表里**手工造目录等于没造**——manifest 里没有这些文件，读者查不到，而且它们会被孤儿清理当成垃圾删掉。迁表时最容易被这套肌肉记忆坑到：ETL 脚本里那句 `mkdir` 必须删掉，改成正常的写入作业。
+:::
+
 ## 参考资料
 
 - Hive 官方文档：<https://hive.apache.org/docs/>

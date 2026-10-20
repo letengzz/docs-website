@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四种表格式：元数据模型与提交路径</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10" fill="#64748B">Iceberg 快照树 · Delta 事务日志 · Hudi 时间线 · Paimon LSM</text>
+
+  <text x="30" y="80" font-size="10.5" fill="#065F46" font-weight="bold">Iceberg：分层清单（读时按分区统计裁剪）</text>
+  <rect x="30" y="88" width="150" height="30" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="105" y="107" text-anchor="middle" font-size="8.5" fill="#065F46">metadata.json</text>
+  <rect x="200" y="88" width="150" height="30" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="275" y="107" text-anchor="middle" font-size="8.5" fill="#065F46">manifest list（snap-id）</text>
+  <rect x="370" y="88" width="150" height="30" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="445" y="107" text-anchor="middle" font-size="8.5" fill="#065F46">manifest × N</text>
+  <rect x="540" y="88" width="190" height="30" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="635" y="107" text-anchor="middle" font-size="8.5" fill="#065F46">data file（Parquet）</text>
+  <line x1="180" y1="103" x2="200" y2="103" stroke="#059669" stroke-width="1.3"/>
+  <line x1="350" y1="103" x2="370" y2="103" stroke="#059669" stroke-width="1.3"/>
+  <line x1="520" y1="103" x2="540" y2="103" stroke="#059669" stroke-width="1.3"/>
+  <text x="30" y="134" font-size="8" fill="#047857">提交 = 写新 manifest + 新 manifest list + 新 metadata，由 catalog 换指针</text>
+
+  <text x="30" y="164" font-size="10.5" fill="#1D4ED8" font-weight="bold">Delta：有序日志 + 检查点（读时重放）</text>
+  <rect x="30" y="172" width="110" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="85" y="191" text-anchor="middle" font-size="8.5" fill="#1E3A8A">0000000000.json</text>
+  <rect x="150" y="172" width="110" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="205" y="191" text-anchor="middle" font-size="8.5" fill="#1E3A8A">0000000001.json</text>
+  <rect x="270" y="172" width="110" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="325" y="191" text-anchor="middle" font-size="8.5" fill="#1E3A8A">…… 逐次追加</text>
+  <rect x="390" y="172" width="150" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="465" y="191" text-anchor="middle" font-size="8.5" fill="#1E3A8A">checkpoint.parquet</text>
+  <text x="560" y="191" font-size="8" fill="#1D4ED8">← 每 10 次提交压一次</text>
+  <text x="30" y="218" font-size="8" fill="#1D4ED8">提交 = 写下一个编号的 JSON；互斥靠「该文件不存在」或 catalog 协调提交</text>
+
+  <text x="30" y="248" font-size="10.5" fill="#9A3412" font-weight="bold">Hudi：时间线 instant + 文件组（upsert 有索引）</text>
+  <rect x="30" y="256" width="130" height="30" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="95" y="275" text-anchor="middle" font-size="8.5" fill="#9A3412">requested</text>
+  <rect x="170" y="256" width="130" height="30" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="235" y="275" text-anchor="middle" font-size="8.5" fill="#9A3412">inflight</text>
+  <rect x="310" y="256" width="130" height="30" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="375" y="275" text-anchor="middle" font-size="8.5" fill="#9A3412">completed（读者只认）</text>
+  <rect x="460" y="256" width="270" height="30" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="595" y="275" text-anchor="middle" font-size="8.5" fill="#9A3412">fileId 的 base + log 文件（同一文件组）</text>
+  <text x="30" y="302" font-size="8" fill="#C2410C">CoW 读快写慢；MoR 写快读慢（读时合并 log）；compaction 是独立 instant</text>
+
+  <text x="30" y="332" font-size="10.5" fill="#115E59" font-weight="bold">Paimon：LSM 树 + 异步 compaction（流式优先）</text>
+  <rect x="30" y="340" width="700" height="30" rx="5" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.2"/>
+  <text x="380" y="359" text-anchor="middle" font-size="8.5" fill="#115E59">memtable → L0 有序文件 → 逐层合并；主键表支持 upsert 与部分列更新，天然适配 Flink 高频小写</text>
+
+  <rect x="30" y="384" width="700" height="24" rx="4" fill="#FEF2F2"/>
+  <text x="380" y="400" text-anchor="middle" font-size="8.5" fill="#991B1B">四者的共同点：都不靠列目录决定成员；差异只在「清单怎么组织、互斥靠谁、删除怎么记」</text>
+</svg>

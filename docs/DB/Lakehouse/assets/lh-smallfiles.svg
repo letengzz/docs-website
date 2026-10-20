@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">小文件的四面成本（本机实测，同一份 5 MiB 数据）</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10" fill="#64748B">5,120 个 1 KiB 文件 vs 5 个 1 MiB 文件；压缩率一列用 18 MiB 语料的分块实验</text>
+
+  <rect x="30" y="72" width="168" height="112" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="114" y="92" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">① 文件系统</text>
+  <text x="114" y="112" text-anchor="middle" font-size="8.5" fill="#991B1B">写入 513.6 ms vs 2.0 ms</text>
+  <text x="114" y="130" text-anchor="middle" font-size="8.5" fill="#991B1B">遍历+stat 39.2 vs 0.1 ms</text>
+  <text x="114" y="152" text-anchor="middle" font-size="13" fill="#DC2626" font-weight="bold">257× / 392×</text>
+  <text x="114" y="172" text-anchor="middle" font-size="7.5" fill="#B91C1C">每文件固定开销 7.7 µs（本地）</text>
+
+  <rect x="214" y="72" width="168" height="112" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+  <text x="298" y="92" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">② 压缩率</text>
+  <text x="298" y="112" text-anchor="middle" font-size="8.5" fill="#C2410C">1 KiB 块 67.11%</text>
+  <text x="298" y="130" text-anchor="middle" font-size="8.5" fill="#C2410C">1 MiB 块 37.01%</text>
+  <text x="298" y="152" text-anchor="middle" font-size="13" fill="#EA580C" font-weight="bold">多占 81%</text>
+  <text x="298" y="172" text-anchor="middle" font-size="7.5" fill="#C2410C">窗口内没东西可重复</text>
+
+  <rect x="398" y="72" width="168" height="112" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="482" y="92" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">③ 表元数据</text>
+  <text x="482" y="112" text-anchor="middle" font-size="8.5" fill="#1D4ED8">5,000 条 → 2,812 KiB</text>
+  <text x="482" y="130" text-anchor="middle" font-size="8.5" fill="#1D4ED8">200 条 → 112 KiB</text>
+  <text x="482" y="152" text-anchor="middle" font-size="13" fill="#2563EB" font-weight="bold">25×</text>
+  <text x="482" y="172" text-anchor="middle" font-size="7.5" fill="#1D4ED8">每条 entry 约 576 B</text>
+
+  <rect x="582" y="72" width="148" height="112" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.4"/>
+  <text x="656" y="92" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">④ 对象请求</text>
+  <text x="656" y="112" text-anchor="middle" font-size="8.5" fill="#0F766E">5,000 次 GET</text>
+  <text x="656" y="130" text-anchor="middle" font-size="8.5" fill="#0F766E">p50 20 ms / 64 并发</text>
+  <text x="656" y="152" text-anchor="middle" font-size="13" fill="#0D9488" font-weight="bold">≈ 1.6 s</text>
+  <text x="656" y="172" text-anchor="middle" font-size="7.5" fill="#0F766E">200 个文件 ≈ 0.06 s</text>
+
+  <text x="30" y="212" font-size="10.5" fill="#0F172A" font-weight="bold">写放大：compaction 不是免费的</text>
+
+  <rect x="30" y="222" width="700" height="26" rx="4" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="45" y="240" font-size="8.3" fill="#334155">分区日增 1% 且每次重写整个分区 → 写放大 100×　　日增 5% → 20×　　日增 20% → 5×</text>
+
+  <rect x="30" y="258" width="700" height="26" rx="4" fill="#FFFBEB" stroke="#D97706" stroke-width="1"/>
+  <text x="45" y="276" font-size="8.3" fill="#92400E">所以：只合并「低于阈值的小文件集合」，并按分区拆分事务；不要按日历整表重写</text>
+
+  <text x="30" y="308" font-size="10.5" fill="#0F172A" font-weight="bold">三条触发条件（满足其一即跑）</text>
+  <rect x="30" y="318" width="226" height="48" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="143" y="338" text-anchor="middle" font-size="8.5" fill="#065F46">分区文件数 &gt; 100</text>
+  <text x="143" y="355" text-anchor="middle" font-size="7.5" fill="#047857">最直接，从元数据表算，不列目录</text>
+
+  <rect x="267" y="318" width="226" height="48" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="380" y="338" text-anchor="middle" font-size="8.5" fill="#065F46">平均大小 &lt; 目标 × 0.3</text>
+  <text x="380" y="355" text-anchor="middle" font-size="7.5" fill="#047857">比文件数更能反映碎片化</text>
+
+  <rect x="504" y="318" width="226" height="48" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="617" y="338" text-anchor="middle" font-size="8.5" fill="#065F46">距上次 &gt; 24 h</text>
+  <text x="617" y="355" text-anchor="middle" font-size="7.5" fill="#047857">兜底，防止一直没触发</text>
+
+  <text x="30" y="388" font-size="8" fill="#64748B">读数来源：本机 Python 3.13 标准库实验（文件写入/stat 计时、gzip 分块、manifest entry 序列化）；对象请求一行为「20 ms × 5000 / 64」的算式，非实测。</text>
+</svg>

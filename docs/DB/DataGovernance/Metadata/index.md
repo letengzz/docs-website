@@ -180,6 +180,20 @@ psql -h $SRC_HOST -U $SRC_USER -d $SRC_DB -c "drop table if exists gov_probe;"
 - [数仓建模的分层设计](/docs/DB/DataWarehouse/Layering/index.md)：分层是数仓内部结构，本页讲的是它怎么出现在跨系统的账本里
 - [数据同步与 CDC](/docs/DB/CDC/index.md)：同步链路本身也要产出元数据（同步了哪些表、延迟多少）
 
+## 与「数据湖与湖仓一体」专题的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 技术 / 业务元数据的分类、血缘、指标口径登记 | **本页**（治理侧） |
+| 湖表原生提供了哪些元数据（schema / 快照 / 文件级统计） | [湖仓专题 · 元数据与 catalog](../../Lakehouse/Metadata/index.md) |
+| 元数据层自身的规模与清理（manifest、快照历史） | 同上，以及 [保留与清理](../../Lakehouse/Retention/index.md) |
+
+一句话：**湖表的 `metadata.json` 是技术元数据的原生来源，治理侧应该采集它，而不是让人再登记一遍**。重复登记的结果是两套口径，而冲突时没人知道以哪套为准。
+
+::: danger 本页特有的坑：把「表的当前 schema」当成「表的所有 schema」
+治理页面上显示一列「字段清单」，看起来对，但它只是**当前快照**的 schema。湖表的历史快照可能有不同的列（加列 / 删列 / 改名），血缘与影响分析如果只读当前 schema，会把「三个月前的报表读过那个已删列」这件事漏掉。要回答这类问题必须读**快照历史**里的 schema，而这正是湖表元数据比 Hive 元数据库多出来的那部分信息。
+:::
+
 ## 参考资料
 
 - DataHub 元数据模型（实体 / 方面模型的权威说明）：<https://docs.datahub.com/docs/metadata-model>

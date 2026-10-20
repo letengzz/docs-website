@@ -169,6 +169,20 @@ schematool -dbType mysql -upgradeSchema -dryRun      # 预演，不改库
 
 一条可用的判据：**当一个指标在湖与仓里各有一份实现时，两份实现必须能回答「谁是权威、差异是多少」**；答不出来，说明治理这一档还没做，此时的选型再先进也只是把不一致复制到了第二套系统里。
 
+## 与「数据湖与湖仓一体」专题的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 组件级选型：Hive / Spark / Flink / ClickHouse / ES 之间的取舍 | **本页** |
+| 表格式级选型：Iceberg / Delta / Hudi / Paimon 的判别条件 | [湖仓专题 · 表格式](../../Lakehouse/TableFormat/index.md) |
+| 存储与查询两层怎么分工（湖仓 vs 服务层） | [湖仓专题 · 引擎接入](../../Lakehouse/QueryEngine/index.md) |
+
+一句话：**本页选「算」，湖仓专题选「存」**。两者的选型不能互相替代：选了 Spark 不代表表格式只能是某个；选了 Iceberg 也不代表查询引擎只能用 Trino。
+
+::: danger 本页特有的坑：把「支持 Iceberg」当成「能读写 Iceberg」
+「支持」有三种强度，选型表里必须写清是哪一种：**只能读 v2**、**能读能写 v2**、**支持 v3**。最常见的翻车是「A 引擎写、B 引擎读」上线后才发现 B 只认 v2，而 A 已经把表升到 v3——v3 表对 v2-only 读者是**不可见**，不是「降级读」。对齐方法见湖仓专题的 `LHT-C`。
+:::
+
 ## 参考资料
 
 - Apache Spark 下载与版本页：<https://spark.apache.org/downloads.html>
