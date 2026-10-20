@@ -195,6 +195,17 @@ APISIX 按 `3.x` 小版本滚动（3.16 / 3.17 / 3.18 / 3.19 …）,**本专题�
 - [网关可观测](../Observability/index.md)｜[网关安全](../Security/index.md)
 - [实战：从零配一个生产级网关](../Practice/index.md)
 
+## 与「证书与信任链生命周期」专题的分工
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| 网关到上游的 TLS 校验怎么开 | 本页（`upstream.tls.verify`） |
+| 上游证书链为什么校验失败 | → 证书专题的信任链（缺中间证书） |
+| 网关自身对外证书怎么配 | → 证书专题的部署页 |
+| 双向 TLS（网关作为客户端出示证书） | → 证书专题的 mTLS 页 |
+
+**本页特有的坑（与证书专题的分工）**：网关开 `upstream.tls.verify` 后，经常出现「升级后上游全红」——因为上游发的是只有叶子的链，而网关的信任库只有公共根。**这类故障的现象是 502，不是证书错误**，日志里才有一行 `unable to get local issuer certificate`。本页讲开关与配置，**「链断在哪一层」用证书专题的错误码表对照**。
+
 ## 参考资料
 
 - APISIX 快速开始：https://apisix.apache.org/docs/apisix/getting-started/

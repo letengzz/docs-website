@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    .c { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 16px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+  </style>
+  <text class="t" x="440" y="28">九个问题：从「链是什么」到「怎么演练」</text>
+
+  <rect class="a" x="20" y="48" width="270" height="118" rx="8"/>
+  <text class="h" x="155" y="72">1 体系概述</text>
+  <text class="s" x="155" y="94">四层结构：私钥 / 证书 / 链 / 信任库</text>
+  <text class="s" x="155" y="112">三条轴：身份 / 时间 / 用途</text>
+  <text class="s" x="155" y="134">判据 CLO-A ~ CLO-H</text>
+
+  <rect class="a" x="305" y="48" width="270" height="118" rx="8"/>
+  <text class="h" x="440" y="72">2 信任链与 X.509</text>
+  <text class="s" x="440" y="94">验证六步 · 七个错误码</text>
+  <text class="s" x="440" y="112">pathlen 与 partial_chain</text>
+  <text class="s" x="440" y="134">判据 CLT-A ~ CLT-H</text>
+
+  <rect class="a" x="590" y="48" width="270" height="118" rx="8"/>
+  <text class="h" x="725" y="72">3 签发</text>
+  <text class="s" x="725" y="94">CSR 里有什么 · 通配符边界</text>
+  <text class="s" x="725" y="112">ACME 三挑战 · 200 天上限</text>
+  <text class="s" x="725" y="134">判据 CLI-A ~ CLI-H</text>
+
+  <rect class="b" x="20" y="184" width="270" height="118" rx="8"/>
+  <text class="h" x="155" y="208">4 部署与链路完整性</text>
+  <text class="s" x="155" y="230">fullchain 顺序 · 张数</text>
+  <text class="s" x="155" y="248">双证书 · 协议版本怎么测</text>
+  <text class="s" x="155" y="270">判据 CLC-A ~ CLC-H</text>
+
+  <rect class="b" x="305" y="184" width="270" height="118" rx="8"/>
+  <text class="h" x="440" y="208">5 轮换</text>
+  <text class="s" x="440" y="230">三种粒度 · 重叠窗口</text>
+  <text class="s" x="440" y="248">pinning 为什么是硬切换</text>
+  <text class="s" x="440" y="270">判据 CLR-A ~ CLR-H</text>
+
+  <rect class="b" x="590" y="184" width="270" height="118" rx="8"/>
+  <text class="h" x="725" y="208">6 过期治理</text>
+  <text class="s" x="725" y="230">checkend 的两个盲区</text>
+  <text class="s" x="725" y="248">链上最短寿命 · 三级阈值</text>
+  <text class="s" x="725" y="270">判据 CLE-A ~ CLE-H</text>
+
+  <rect class="c" x="20" y="320" width="270" height="118" rx="8"/>
+  <text class="h" x="155" y="344">7 mTLS</text>
+  <text class="s" x="155" y="366">身份放 SAN · 信任锚要给全链</text>
+  <text class="s" x="155" y="384">四种拒绝 · 吊销为什么靠不住</text>
+  <text class="s" x="155" y="406">判据 CLM-A ~ CLM-H</text>
+
+  <rect class="c" x="305" y="320" width="270" height="118" rx="8"/>
+  <text class="h" x="440" y="344">8 自动化</text>
+  <text class="s" x="440" y="366">renewBefore 的漂移 · 三种竞态</text>
+  <text class="s" x="440" y="384">告续期失败，不告快过期</text>
+  <text class="s" x="440" y="406">判据 CLA-A ~ CLA-H</text>
+
+  <rect class="c" x="590" y="320" width="270" height="118" rx="8"/>
+  <text class="h" x="725" y="344">9 实战</text>
+  <text class="s" x="725" y="366">八步建链 · 十二条验收</text>
+  <text class="s" x="725" y="384">一次可回滚的轮换</text>
+  <text class="s" x="725" y="406">判据 CLP-A ~ CLP-H</text>
+</svg>

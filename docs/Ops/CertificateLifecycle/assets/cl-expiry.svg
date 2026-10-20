@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    .c { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; }
+    .d { fill: #fdeef0; stroke: #c0505f; stroke-width: 1.4; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 16px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .ar { stroke: #94a3b8; stroke-width: 1.4; fill: none; marker-end: url(#arw); }
+  </style>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <text class="t" x="440" y="28">过期治理：链上最短寿命，与三级阈值</text>
+
+  <rect class="a" x="24" y="48" width="250" height="86" rx="8"/>
+  <text class="h" x="149" y="72">叶子证书</text>
+  <text class="s" x="149" y="94">notAfter = 2027-06-01</text>
+  <text class="s" x="149" y="114">剩余 224 天</text>
+
+  <rect class="d" x="300" y="48" width="250" height="86" rx="8"/>
+  <text class="h" x="425" y="72">中间 CA</text>
+  <text class="s" x="425" y="94">notAfter = 2026-11-15</text>
+  <text class="s" x="425" y="114">剩余 26 天 ← 短板</text>
+
+  <rect class="b" x="576" y="48" width="280" height="86" rx="8"/>
+  <text class="h" x="716" y="72">根 CA</text>
+  <text class="s" x="716" y="94">notAfter = 2036-10-17</text>
+  <text class="s" x="716" y="114">剩余 3,650 天</text>
+
+  <path class="ar" d="M149 134 L149 160"/>
+  <path class="ar" d="M425 134 L425 160"/>
+  <path class="ar" d="M716 134 L716 160"/>
+
+  <rect class="c" x="24" y="164" width="832" height="60" rx="8"/>
+  <text class="h" x="440" y="188">巡检取 min(剩余天数) = 26 天，而不是叶子的 224 天</text>
+  <text class="s" x="440" y="210">只监控叶子的面板，在第 27 天之后仍全绿，而所有客户端已经拒绝</text>
+
+  <text class="h" x="150" y="256">三级阈值</text>
+  <rect class="c" x="24" y="268" width="196" height="72" rx="8"/>
+  <text class="h" x="122" y="292">30 天</text>
+  <text class="s" x="122" y="312">开单，确认续期任务存在</text>
+  <text class="s" x="122" y="330">接收人：owner</text>
+
+  <rect class="c" x="236" y="268" width="196" height="72" rx="8"/>
+  <text class="h" x="334" y="292">14 天</text>
+  <text class="s" x="334" y="312">人工介入，查为什么没续</text>
+  <text class="s" x="334" y="330">接收人：owner + 值班</text>
+
+  <rect class="d" x="448" y="268" width="196" height="72" rx="8"/>
+  <text class="h" x="546" y="292">7 天</text>
+  <text class="s" x="546" y="312">准备手工替换 + 回滚包</text>
+  <text class="s" x="546" y="330">接收人：全员</text>
+
+  <rect class="d" x="660" y="268" width="196" height="72" rx="8"/>
+  <text class="h" x="758" y="292">24 小时</text>
+  <text class="s" x="758" y="312">按事故处理</text>
+  <text class="s" x="758" y="330">接收人：事故通道</text>
+
+  <rect class="a" x="24" y="358" width="832" height="72" rx="8"/>
+  <text class="h" x="440" y="382">盘点间隔 &lt; 寿命 / 10</text>
+  <text class="s" x="440" y="404">200 天 → 每周；90 天 → 每周；47 天 → 每天；6 天 → 每小时</text>
+  <text class="s" x="440" y="422">这条不等式在任何寿命下都成立，比记「47 天要每天查」更好用</text>
+</svg>

@@ -436,3 +436,20 @@ export const ChangeManagement = [
     ],
   },
 ];
+export const CertificateLifecycle = [
+  {
+    text: "证书与信任链生命周期",
+    link: "/docs/Ops/CertificateLifecycle/index.md",
+    items: [
+      { text: "体系概述：链、时间、用途（CLO-A~CLO-H）", link: "/docs/Ops/CertificateLifecycle/Overview/index.md" },
+      { text: "信任链与 X.509：谁签了谁（CLT-A~CLT-H）", link: "/docs/Ops/CertificateLifecycle/TrustChain/index.md" },
+      { text: "签发：CSR、SAN 与 ACME（CLI-A~CLI-H）", link: "/docs/Ops/CertificateLifecycle/Issuance/index.md" },
+      { text: "部署与链路完整性（CLC-A~CLC-H）", link: "/docs/Ops/CertificateLifecycle/Serving/index.md" },
+      { text: "轮换：重叠窗口与密钥不重用（CLR-A~CLR-H）", link: "/docs/Ops/CertificateLifecycle/Rotation/index.md" },
+      { text: "过期治理：谁先过期（CLE-A~CLE-H）", link: "/docs/Ops/CertificateLifecycle/Expiry/index.md" },
+      { text: "mTLS：证书即身份（CLM-A~CLM-H）", link: "/docs/Ops/CertificateLifecycle/MutualTLS/index.md" },
+      { text: "自动化：cert-manager 与 ARI（CLA-A~CLA-H）", link: "/docs/Ops/CertificateLifecycle/Automation/index.md" },
+      { text: "实战：一条可轮换的私有链（CLP-A~CLP-H）", link: "/docs/Ops/CertificateLifecycle/Practice/index.md" },
+    ],
+  },
+];

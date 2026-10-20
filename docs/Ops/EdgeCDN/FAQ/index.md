@@ -249,3 +249,14 @@ echo | openssl s_client -connect cdn.example.com:443 -servername cdn.example.com
 - 阿里云边缘安全加速 ESA · 产品文档：https://help.aliyun.com/zh/edge-security-acceleration/
 - OWASP · 跨站请求伪造与来源校验（面向决策层的要点）：https://owasp.org/www-community/attacks/csrf
 - MDN · `X-Forwarded-For`（为什么不可直接信任）：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Forwarded-For
+
+## 与「证书与信任链生命周期」专题的分工
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| 边缘证书自动续期失败的四种原因 | 本页的分诊表 |
+| `checkend` 只判 `notAfter` 的盲区 | → 证书专题的过期治理 |
+| 通配符证书覆盖不到二级子域 | → 证书专题的签发页（通配符只覆盖一级） |
+| CAA 记录阻断签发时的表现 | → 证书专题的签发页 |
+
+**本页特有的坑（与证书专题的分工）**：边缘节点的证书往往由平台代管，于是「续期」这件事在团队内部**没有 owner**——出问题时既不在应用侧、也不在运维侧。本页的分诊表负责「定位到哪一层」，**「续期为什么失败、失败后还能撑几天」要看证书专题的阈值与缓冲计算**：47 天证书的缓冲只有 16 天，比多数团队的故障响应周期还短。

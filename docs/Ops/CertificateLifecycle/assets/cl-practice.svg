@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    .c { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; }
+    .d { fill: #fdeef0; stroke: #c0505f; stroke-width: 1.4; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 16px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .ar { stroke: #94a3b8; stroke-width: 1.5; fill: none; marker-end: url(#arw); }
+  </style>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <text class="t" x="440" y="28">实战拓扑：三级链、四个实例、一次轮换</text>
+
+  <rect class="a" x="30" y="50" width="220" height="70" rx="8"/>
+  <text class="h" x="140" y="74">根 CA（10 年）</text>
+  <text class="s" x="140" y="96">自签 · 私钥离线 · 600</text>
+  <text class="s" x="140" y="112">不参与日常签发</text>
+
+  <rect class="a" x="330" y="50" width="220" height="70" rx="8"/>
+  <text class="h" x="440" y="74">中间 CA（5 年）</text>
+  <text class="s" x="440" y="96">pathlen:0</text>
+  <text class="s" x="440" y="112">只能签叶子</text>
+
+  <rect class="b" x="630" y="50" width="220" height="70" rx="8"/>
+  <text class="h" x="740" y="74">CA 数据库 index.txt</text>
+  <text class="s" x="740" y="96">openssl ca 维护</text>
+  <text class="s" x="740" y="112">吊销与 OCSP 的前提</text>
+
+  <path class="ar" d="M250 85 L330 85"/>
+  <path class="ar" d="M550 85 L630 85"/>
+
+  <rect class="b" x="30" y="150" width="220" height="70" rx="8"/>
+  <text class="h" x="140" y="174">服务端证书</text>
+  <text class="s" x="140" y="196">SAN: board + 通配符</text>
+  <text class="s" x="140" y="212">90 天 · serverAuth</text>
+
+  <rect class="b" x="330" y="150" width="220" height="70" rx="8"/>
+  <text class="h" x="440" y="174">客户端证书</text>
+  <text class="s" x="440" y="196">SAN: svc-team-board</text>
+  <text class="s" x="440" y="212">30 天 · clientAuth</text>
+
+  <rect class="c" x="630" y="150" width="220" height="70" rx="8"/>
+  <text class="h" x="740" y="174">四个 nginx 实例</text>
+  <text class="s" x="740" y="196">fullchain / leaf-only</text>
+  <text class="s" x="740" y="212">mTLS / 轮换</text>
+
+  <path class="ar" d="M140 120 L140 150"/>
+  <path class="ar" d="M440 120 L440 150"/>
+  <path class="ar" d="M740 120 L740 150"/>
+
+  <text class="h" x="200" y="262">十二条验收：四条故意失败</text>
+
+  <rect class="a" x="30" y="274" width="380" height="76" rx="8"/>
+  <text class="s" x="220" y="298">S1 验链 OK / S3 发出 2 张 / S5 curl 200</text>
+  <text class="s" x="220" y="320">S7 mTLS verify=SUCCESS / S11 私钥配对无输出</text>
+  <text class="s" x="220" y="340">S12 轮换后指纹变化</text>
+
+  <rect class="d" x="430" y="274" width="420" height="76" rx="8"/>
+  <text class="s" x="640" y="298">S2 缺中间证书 → error 20</text>
+  <text class="s" x="640" y="320">S4 只发叶子 → 1 张 / S6 curl → (60)</text>
+  <text class="s" x="640" y="340">S9 用途不符 → 400 The SSL certificate error</text>
+
+  <rect class="c" x="30" y="372" width="820" height="76" rx="8"/>
+  <text class="h" x="440" y="396">只测「能过」的路径，等于没测</text>
+  <text class="s" x="440" y="418">线上真正发生的都是失败路径：缺链、用途不符、中间证书先过期</text>
+  <text class="s" x="440" y="438">十二条里必须有至少四条以「期望失败」的形式固定下来</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    .c { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; }
+    .d { fill: #fdeef0; stroke: #c0505f; stroke-width: 1.4; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 16px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .ar { stroke: #94a3b8; stroke-width: 1.6; fill: none; marker-end: url(#arw); }
+  </style>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <text class="t" x="440" y="28">信任链验证的六步：任何一步失败，客户端只说「不安全」</text>
+
+  <rect class="a" x="30" y="52" width="250" height="96" rx="8"/>
+  <text class="h" x="155" y="76">1 构链</text>
+  <text class="s" x="155" y="98">用 issuer 逐级向上找签发者</text>
+  <text class="s" x="155" y="118">失败 error 20（depth 0）</text>
+  <text class="s" x="155" y="136">失败 error 2（depth ≥ 1）</text>
+
+  <rect class="a" x="300" y="52" width="250" height="96" rx="8"/>
+  <text class="h" x="425" y="76">2 验签</text>
+  <text class="s" x="425" y="98">用上级公钥验下一层签名</text>
+  <text class="s" x="425" y="118">这就是中间证书必须发的原因</text>
+
+  <rect class="c" x="570" y="52" width="280" height="96" rx="8"/>
+  <text class="h" x="710" y="76">3 看时间</text>
+  <text class="s" x="710" y="98">链上每一张都要在窗口内</text>
+  <text class="s" x="710" y="118">error 9 未生效 / error 10 已过期</text>
+
+  <rect class="c" x="570" y="168" width="280" height="96" rx="8"/>
+  <text class="h" x="710" y="192">4 看用途</text>
+  <text class="s" x="710" y="214">serverAuth vs clientAuth</text>
+  <text class="s" x="710" y="234">不匹配时链再好也拒</text>
+
+  <rect class="b" x="300" y="168" width="250" height="96" rx="8"/>
+  <text class="h" x="425" y="192">5 看名字</text>
+  <text class="s" x="425" y="214">SAN 是否覆盖请求的主机名</text>
+  <text class="s" x="425" y="234">error 62 hostname mismatch</text>
+
+  <rect class="b" x="30" y="168" width="250" height="96" rx="8"/>
+  <text class="h" x="155" y="192">6 看约束</text>
+  <text class="s" x="155" y="214">basicConstraints / pathlen</text>
+  <text class="s" x="155" y="234">error 25 路径长度超限</text>
+
+  <path class="ar" d="M155 148 L155 168"/>
+  <path class="ar" d="M280 100 L300 100"/>
+  <path class="ar" d="M550 100 L570 100"/>
+  <path class="ar" d="M710 148 L710 168"/>
+  <path class="ar" d="M570 216 L550 216"/>
+  <path class="ar" d="M300 216 L280 216"/>
+
+  <rect class="d" x="30" y="300" width="820" height="70" rx="8"/>
+  <text class="h" x="440" y="324">七个错误码就是七个断点</text>
+  <text class="s" x="440" y="348">2 缺上一级 · 9 未生效 · 10 已过期 · 20 缺中间证书 · 23 已吊销（需显式开 CRL）· 25 越级签发 · 62 名字不符</text>
+
+  <text class="s" x="440" y="400">排障顺序：从第 1 步往后，而不是从「是不是过期了」开始猜</text>
+  <text class="s" x="440" y="424">depth 0 = 叶子，depth 1 = 中间，depth 2 = 更上一层</text>
+</svg>

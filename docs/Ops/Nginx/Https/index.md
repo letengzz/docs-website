@@ -96,6 +96,17 @@ server {
 3. `curl -I https://example.com`，确认返回 `HTTP/2 200`。
 4. `curl -I http://example.com`，确认返回 301 且 Location 为 https。
 
+## 与「证书与信任链生命周期」专题的分工
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| `ssl_certificate` 指 `fullchain` 还是叶子 | → 证书专题的部署页（顺序与张数） |
+| 为什么顺序写反时 nginx 起不来 | → 证书专题的 `key values mismatch` 一节 |
+| 协议版本怎么测才算「服务端拒绝」 | → 证书专题的 `alert protocol version` 一节 |
+| 双证书（RSA + ECDSA）的代价 | → 证书专题的签发页 |
+
+**本页特有的坑（与证书专题的分工）**：nginx 的 `ssl_certificate` **只认文件里的第一张证书**，所以「链顺序写反」的表现是启动失败（`key values mismatch`），而不是「发错链」。而 `openssl verify` 对同样的文件返回 `OK`——本页讲配置项的语义，**「这个配置到底有没有生效」必须用证书专题里的三条命令验证（张数 / 指纹 / 验链）**，不能靠读配置。
+
 ## 参考资料
 
 - ssl 模块：https://nginx.org/en/docs/http/ngx_http_ssl_module.html

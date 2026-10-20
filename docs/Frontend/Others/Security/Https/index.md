@@ -132,6 +132,17 @@ openssl s_client -connect example.com:443 -servername example.com \
 
 用浏览器打开站点，确认地址栏锁标识；用 [SSL Labs](https://www.ssllabs.com/ssltest/) 评分应达到 A 以上。
 
+## 与「证书与信任链生命周期」专题的分工
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| 浏览器为什么显示「不安全」 | 本页（客户端视角） |
+| 链不全 / 中间证书缺失的完整解释 | → 证书专题的信任链 |
+| 只有 CN 没有 SAN 为什么不再被接受 | → 证书专题的签发页 |
+| HSTS、混合内容、CSP | 本页（前端侧的传输安全） |
+
+**本页特有的坑（与证书专题的分工）**：前端看到的现象（「不安全」红三角）与真实原因之间隔着三层（链 / 时间 / 用途），而浏览器**故意不告诉你具体是哪一层**（避免信息泄露）。所以前端侧只能确认「是不是全站如此」，**定位必须回到服务端跑 `s_client -showcerts` 与逐张 `-enddate`**——这一步在前端做不了。
+
 ## 参考资料
 
 - [MDN：HTTPS](https://developer.mozilla.org/zh-CN/docs/Glossary/HTTPS)

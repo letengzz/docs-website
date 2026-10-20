@@ -166,6 +166,17 @@ kubectl autoscale deployment/web --min=2 --max=10 --cpu-percent=70
 默认宽限期 30 s 看似很宽，但它要装下三件事：`preStop` 停顿（≥ 网关刷新周期）、在途请求排空、容器内进程退出。本项目的取值是 `preStop` 6 s + drain 20 s = 26 s，只剩 4 s 余量；再叠加一个「关闭连接池要 5 s」的改动，就会踩到 `SIGKILL`——**那一刻所有未完成请求都没有响应**，客户端看到的是连接重置，而不是 5xx。宁可把宽限期设成 45 s，也不要让它刚好等于预算。
 :::
 
+## 与「证书与信任链生命周期」专题的分工
+
+| 你想知道 | 去哪 |
+| --- | --- |
+| `Certificate` / `Issuer` 资源怎么用 | → 证书专题的自动化页 |
+| `duration` 与 `renewBefore` 的语义 | → 证书专题的自动化页（含短寿命下的漂移） |
+| Secret 更新了但进程没重载 | → 证书专题的三种竞态 |
+| Ingress 的 TLS 段怎么和 Secret 关联 | 本页的部署对象一节 |
+
+**本页特有的坑（与证书专题的分工）**：`Certificate` 对象 `Ready=True` 只表示「Secret 里有一张能用的证书」，**不表示「它符合你的 `spec.duration`」**——CA 可以把 2160h 截短成 1128h，而 `renewBefore` 不会跟着变。本页讲「怎么把对象部署起来」，**「实际签出来的寿命是多少」必须用 `openssl x509 -dates` 从 Secret 里反查**。
+
 ## 参考资料
 
 - Deployment 文档：https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/

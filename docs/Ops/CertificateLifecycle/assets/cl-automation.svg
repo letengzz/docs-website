@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    .c { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; }
+    .d { fill: #fdeef0; stroke: #c0505f; stroke-width: 1.4; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 16px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .ar { stroke: #94a3b8; stroke-width: 1.6; fill: none; marker-end: url(#arw); }
+  </style>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <text class="t" x="440" y="28">自动化：从声明到生效，中间有四个对象</text>
+
+  <rect class="a" x="24" y="52" width="190" height="86" rx="8"/>
+  <text class="h" x="119" y="76">Issuer</text>
+  <text class="s" x="119" y="98">谁来签</text>
+  <text class="s" x="119" y="118">ACME / CA / Vault</text>
+
+  <rect class="a" x="238" y="52" width="190" height="86" rx="8"/>
+  <text class="h" x="333" y="76">Certificate</text>
+  <text class="s" x="333" y="98">域名、duration、renewBefore</text>
+  <text class="s" x="333" y="118">rotationPolicy</text>
+
+  <rect class="b" x="452" y="52" width="190" height="86" rx="8"/>
+  <text class="h" x="547" y="76">CertificateRequest</text>
+  <text class="s" x="547" y="98">一次具体签发</text>
+  <text class="s" x="547" y="118">失败原因在这里</text>
+
+  <rect class="b" x="666" y="52" width="190" height="86" rx="8"/>
+  <text class="h" x="761" y="76">Secret → 进程</text>
+  <text class="s" x="761" y="98">证书写进 Secret</text>
+  <text class="s" x="761" y="118">读不读，看进程</text>
+
+  <path class="ar" d="M214 95 L238 95"/>
+  <path class="ar" d="M428 95 L452 95"/>
+  <path class="ar" d="M642 95 L666 95"/>
+
+  <text class="h" x="180" y="188">renewBefore 在短寿命下会漂移</text>
+
+  <rect class="c" x="24" y="200" width="404" height="120" rx="8"/>
+  <text class="s" x="226" y="224">90 天 + 30 天 → 第 60 天续期，缓冲 30 天（合理）</text>
+  <text class="s" x="226" y="248">47 天 + 30 天 → 第 17 天就续期（过频，可能撞速率限制）</text>
+  <text class="s" x="226" y="272">6 天 + 30 天 → renewBefore &gt; duration，直接报错</text>
+  <text class="s" x="226" y="296">结论：renewBefore 按「实际寿命 / 3」显式写死</text>
+
+  <rect class="d" x="452" y="200" width="404" height="120" rx="8"/>
+  <text class="h" x="654" y="224">三种竞态</text>
+  <text class="s" x="654" y="248">Secret 更新了，进程没重载</text>
+  <text class="s" x="654" y="272">通配符与具体域名共用 Order，TXT 不同步</text>
+  <text class="s" x="654" y="296">手工触发两次 renew，产生失败噪声</text>
+
+  <rect class="b" x="24" y="340" width="832" height="56" rx="8"/>
+  <text class="h" x="440" y="364">告警要告「续期失败」，不是「快过期」</text>
+  <text class="s" x="440" y="386">renewal_errors &gt; 0 持续 1h → 还有缓冲可修；距到期 &lt; 7 天 → 已经来不及自动修</text>
+
+  <rect class="c" x="24" y="408" width="832" height="40" rx="8"/>
+  <text class="s" x="440" y="433">ARI（RFC 9773）：CA 给 suggestedWindow，客户端在窗口内随机取点续期，并打散尖峰</text>
+</svg>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    .c { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; }
+    .d { fill: #fdeef0; stroke: #c0505f; stroke-width: 1.4; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 16px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .ar { stroke: #94a3b8; stroke-width: 1.6; fill: none; marker-end: url(#arw); }
+  </style>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <text class="t" x="440" y="28">迁移后置校验：清单驱动的三面残留检查</text>
+
+  <rect class="a" x="24" y="50" width="180" height="72" rx="8"/>
+  <text class="h" x="114" y="74">Flyway migrate</text>
+  <text class="s" x="114" y="96">有迁移才触发</text>
+  <text class="s" x="114" y="112">无迁移 → 回调不跑</text>
+
+  <rect class="a" x="232" y="50" width="180" height="72" rx="8"/>
+  <text class="h" x="322" y="74">afterMigrate</text>
+  <text class="s" x="322" y="96">Java Callback</text>
+  <text class="s" x="322" y="112">不在迁移事务内</text>
+
+  <rect class="b" x="440" y="50" width="180" height="72" rx="8"/>
+  <text class="h" x="530" y="74">生成清单</text>
+  <text class="s" x="530" y="96">pg_class + pg_inherits</text>
+  <text class="s" x="530" y="112">0.567 ms / 14 张表</text>
+
+  <rect class="c" x="648" y="50" width="208" height="72" rx="8"/>
+  <text class="h" x="752" y="74">清单为空 → 退出码 2</text>
+  <text class="s" x="752" y="96">空清单 ≠ 干净</text>
+  <text class="s" x="752" y="112">权限不足时 catalog 仍返回 17 张</text>
+
+  <path class="ar" d="M204 86 L232 86"/>
+  <path class="ar" d="M412 86 L440 86"/>
+  <path class="ar" d="M620 86 L648 86"/>
+
+  <text class="h" x="180" y="172">三面，缺一面就写 skipped</text>
+
+  <rect class="a" x="24" y="186" width="264" height="104" rx="8"/>
+  <text class="h" x="156" y="210">① 数据库</text>
+  <text class="s" x="156" y="232">逐表 count(*) WHERE tenant_id</text>
+  <text class="s" x="156" y="252">14 表 × 5,000 行 = 8.867 ms</text>
+  <text class="s" x="156" y="272">大租户时索引反而更慢（0.891 vs 0.716）</text>
+
+  <rect class="b" x="308" y="186" width="264" height="104" rx="8"/>
+  <text class="h" x="440" y="210">② 对象存储</text>
+  <text class="s" x="440" y="232">tenants/{id}/ 前缀分页枚举</text>
+  <text class="s" x="440" y="252">尾斜杠不能省（t1 ≠ t10）</text>
+  <text class="s" x="440" y="272">max-keys 1000，必须翻页</text>
+
+  <rect class="c" x="592" y="186" width="264" height="104" rx="8"/>
+  <text class="h" x="724" y="210">③ 缓存</text>
+  <text class="s" x="724" y="232">SCAN MATCH tb:{id}:*</text>
+  <text class="s" x="724" y="252">50k 键：KEYS 50.9 ms / SCAN 95.5 ms</text>
+  <text class="s" x="724" y="272">SCAN 换的是延迟上限，不是速度</text>
+
+  <path class="ar" d="M156 122 L156 186"/>
+  <path class="ar" d="M440 122 L440 186"/>
+  <path class="ar" d="M724 122 L724 186"/>
+
+  <rect class="b" x="24" y="316" width="404" height="96" rx="8"/>
+  <text class="h" x="226" y="340">退出码语义</text>
+  <text class="s" x="226" y="362">0 三面干净 / 1 有残留 / 2 检查没跑成</text>
+  <text class="s" x="226" y="382">CI 里 1 与 2 的处置完全不同</text>
+  <text class="s" x="226" y="400">报告必须带 checked_at 与清单指纹</text>
+
+  <rect class="d" x="452" y="316" width="404" height="96" rx="8"/>
+  <text class="h" x="654" y="340">为什么不能只挂 afterMigrate</text>
+  <text class="s" x="654" y="362">结构没变时不触发，稳态漂移查不到</text>
+  <text class="s" x="654" y="382">必须有启动自检兜底（/readyz 查清单非空）</text>
+  <text class="s" x="654" y="400">SQL 回调不在迁移事务内，中间态会静默</text>
+</svg>

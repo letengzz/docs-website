@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="Microsoft YaHei, Arial, sans-serif">
+  <style>
+    .a { fill: #eef4ff; stroke: #4a7bd8; stroke-width: 1.4; }
+    .b { fill: #eefaf0; stroke: #3aa76d; stroke-width: 1.4; }
+    .c { fill: #fff6e8; stroke: #d99a3a; stroke-width: 1.4; }
+    .d { fill: #fdeef0; stroke: #c0505f; stroke-width: 1.4; }
+    text { fill: #222; font-size: 12px; text-anchor: middle; }
+    .t { font-size: 16px; font-weight: bold; }
+    .h { font-size: 13px; font-weight: bold; }
+    .s { font-size: 11px; fill: #555; }
+    .lbl { font-size: 12px; fill: #333; }
+    .line { stroke: #94a3b8; stroke-width: 1.4; fill: none; }
+  </style>
+  <text class="t" x="440" y="28">证书的四层结构，与三条会失效的轴</text>
+
+  <rect class="a" x="30" y="52" width="300" height="76" rx="8"/>
+  <text class="h" x="180" y="76">① 私钥 *.key</text>
+  <text class="s" x="180" y="98">你生成，永不出机器</text>
+  <text class="s" x="180" y="116">错了：服务起不来（mismatch）</text>
+
+  <rect class="a" x="30" y="140" width="300" height="76" rx="8"/>
+  <text class="h" x="180" y="164">② 证书 *.crt</text>
+  <text class="s" x="180" y="186">身份 + 公钥 + 时间窗 + 用途</text>
+  <text class="s" x="180" y="204">由 CA 签名，共 7 组字段被校验</text>
+
+  <rect class="b" x="30" y="228" width="300" height="76" rx="8"/>
+  <text class="h" x="180" y="252">③ 链 intermediate</text>
+  <text class="s" x="180" y="274">CA 给你，必须随证书一起发</text>
+  <text class="s" x="180" y="292">错了：unable to get issuer</text>
+
+  <rect class="b" x="30" y="316" width="300" height="76" rx="8"/>
+  <text class="h" x="180" y="340">④ 信任库 trust store</text>
+  <text class="s" x="180" y="362">客户端维护，你改不了</text>
+  <text class="s" x="180" y="380">错了：self-signed in chain</text>
+
+  <text class="lbl" x="180" y="420">只有 ① 和 ③ 需要你部署</text>
+
+  <rect class="c" x="380" y="52" width="470" height="100" rx="8"/>
+  <text class="h" x="615" y="76">轴一：身份（SAN）</text>
+  <text class="s" x="615" y="98">通配符只覆盖一级；无 SAN 的证书 openssl 过、浏览器拒</text>
+  <text class="s" x="615" y="118">失败：hostname mismatch（error 62）</text>
+
+  <rect class="c" x="380" y="166" width="470" height="100" rx="8"/>
+  <text class="h" x="615" y="190">轴二：时间（notBefore / notAfter）</text>
+  <text class="s" x="615" y="212">链上每一张都要在窗口内，取最小剩余寿命</text>
+  <text class="s" x="615" y="232">失败：error 9（未生效）/ error 10（已过期）</text>
+
+  <rect class="d" x="380" y="280" width="470" height="100" rx="8"/>
+  <text class="h" x="615" y="304">轴三：用途（extendedKeyUsage）</text>
+  <text class="s" x="615" y="326">serverAuth / clientAuth 不能混用</text>
+  <text class="s" x="615" y="346">失败：服务端 400，与过期同一个页面标题</text>
+
+  <text class="s" x="615" y="408">三条轴同时成立，证书才「有效」</text>
+</svg>

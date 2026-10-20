@@ -258,7 +258,7 @@ public class GeneratorSqlmap {
 
 使用Maven创建的项目，只需将插件双击运行即可构建项目。
 
-![1](assets/202303011331426.gif)
+![IDEA Maven 面板中双击 mybatis-generator 插件运行](assets/202303011331426.gif)
 
 ### 4. 测试代码
 
