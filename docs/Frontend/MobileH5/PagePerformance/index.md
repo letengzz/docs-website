@@ -372,6 +372,18 @@ if (saved) restoreState(JSON.parse(saved));
 - 上游必读：[视口与适配体系](../ViewportAdapter/index.md)（`VA-G`：首屏图的加载优先级）。
 - 相邻必读：[浏览器性能优化](../../Others/PerformanceOptimization/index.md)（通用手段清单）、[浏览器 · 渲染管线](../../Basic/Browser/Performance/index.md)（管线内部怎么走）。
 
+## 与「端侧推理与模型量化」专题的分工（第 175 天补充）
+
+| 那边回答什么 | 本页回答什么 |
+| --- | --- |
+| 端侧推理与页面**抢同一份内存**：峰值 RSS 上升会让 App 更容易被系统杀掉 | 页面自身的加载、渲染、长任务与内存优化 |
+| 推理必须在 Worker；token 流式输出按 30~50 ms 批量回传 | 主线程长任务与掉帧的通用治理 |
+| 端侧模型的加载时序（骨架 → 运行时 → 词表 → 首批权重） | 首屏渲染与资源优先级 |
+
+**结论**：页面性能优化的是「**用户看到得快**」；端侧推理优化的是「**用户等到可用**」。后者会把前者的预算吃掉一大块——一个 250 MB 的模型常驻，等于给页面永久加了一个大对象。
+
+**一条本页特有的坑**：移动端 WebView 的内存上限比浏览器更低，而且**同一个 App 里的多个 WebView 共享进程**。页面里再跑一个推理 Worker，很容易触发整体重载（白屏回到首页），而日志里只有一条 `didReceiveMemoryWarning`。
+
 ## 十一、参考资料
 
 - [web.dev · Web Vitals（LCP / INP / CLS 阈值与定义）](https://web.dev/articles/vitals)

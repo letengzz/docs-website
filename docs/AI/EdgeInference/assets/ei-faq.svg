@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" width="760" height="460" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="760" height="460" fill="#FFFFFF"/>
+  <text x="380.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">分诊顺序：后端 → 内存 → 模型</text>
+  <text x="380.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">反过来做，你会花一天调提示词；按这个顺序，十分钟能定性</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <rect x="280" y="74" width="200" height="50" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="380.0" y="94" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="bold">① 跑在哪个后端？</text>
+  <text x="380.0" y="112" text-anchor="middle" font-size="8.2" fill="#64748B">节点分配日志 / providers</text>
+  <line x1="380" y1="124" x2="380" y2="146" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="280" y="150" width="200" height="50" rx="7" fill="#FFFBEB" stroke="#CA8A04" stroke-width="1.4"/>
+  <text x="380.0" y="170" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">② 内存够不够？</text>
+  <text x="380.0" y="188" text-anchor="middle" font-size="8.2" fill="#64748B">peak_rss / 档位上限</text>
+  <line x1="380" y1="200" x2="380" y2="222" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="280" y="226" width="200" height="50" rx="7" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.4"/>
+  <text x="380.0" y="246" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">③ 才轮到模型</text>
+  <text x="380.0" y="264" text-anchor="middle" font-size="8.2" fill="#64748B">FP16 对照 / 回归集</text>
+  <text x="380" y="298" text-anchor="middle" font-size="9" fill="#64748B">三步之后必须能给出三选一的结论：回退 / 容量 / 精度</text>
+  <rect x="34" y="314" width="170" height="42" rx="6" fill="#FFFFFF" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="44" y="331" font-size="8.8" fill="#DC2626" font-weight="bold">起不来</text>
+  <text x="44" y="345" font-size="7.6" fill="#475569">不支持的算子 / 版本不匹配</text>
+  <rect x="216" y="314" width="170" height="42" rx="6" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="226" y="331" font-size="8.8" fill="#EA580C" font-weight="bold">太慢</text>
+  <text x="226" y="345" font-size="7.6" fill="#475569">回退到 CPU / 每请求新建会话</text>
+  <rect x="398" y="314" width="170" height="42" rx="6" fill="#FFFFFF" stroke="#A21CAF" stroke-width="1.2"/>
+  <text x="408" y="331" font-size="8.8" fill="#A21CAF" font-weight="bold">答错</text>
+  <text x="408" y="345" font-size="7.6" fill="#475569">量化太粗 / 上下文被截断</text>
+  <rect x="580" y="314" width="170" height="42" rx="6" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.2"/>
+  <text x="590" y="331" font-size="8.8" fill="#0891B2" font-weight="bold">内存涨</text>
+  <text x="590" y="345" font-size="7.6" fill="#475569">KV 未释放 / 取消未中断</text>
+  <rect x="34" y="366" width="170" height="42" rx="6" fill="#FFFFFF" stroke="#CA8A04" stroke-width="1.2"/>
+  <text x="44" y="383" font-size="8.8" fill="#CA8A04" font-weight="bold">发烫</text>
+  <text x="44" y="397" font-size="7.6" fill="#475569">跑在 CPU / 无降级</text>
+  <rect x="216" y="366" width="170" height="42" rx="6" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="226" y="383" font-size="8.8" fill="#7C3AED" font-weight="bold">断网废</text>
+  <text x="226" y="397" font-size="7.6" fill="#475569">只做了「失败→报错」</text>
+  <rect x="398" y="366" width="170" height="42" rx="6" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.2"/>
+  <text x="408" y="383" font-size="8.8" fill="#16A34A" font-weight="bold">包太大</text>
+  <text x="408" y="397" font-size="7.6" fill="#475569">未量化 / 带全部变体</text>
+  <rect x="580" y="366" width="170" height="42" rx="6" fill="#FFFFFF" stroke="#475569" stroke-width="1.2"/>
+  <text x="590" y="383" font-size="8.8" fill="#475569" font-weight="bold">不稳定</text>
+  <text x="590" y="397" font-size="7.6" fill="#475569">采样未固定 / 共享会话</text>
+  <text x="380" y="440" text-anchor="middle" font-size="8.8" fill="#DC2626" font-weight="bold">有些设备不该支持：承认它比优化它便宜 —— 把这条写进产品文案，而不是继续调参</text>
+</svg>

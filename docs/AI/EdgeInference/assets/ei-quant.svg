@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="380.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">粒度是离群值的解药：同一份权重，四种切法</text>
+  <text x="380.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">per-tensor 用一个 scale 覆盖全张量 → 一个离群值就能把其余权重压进很窄的区间</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <text x="40" y="80" font-size="10" fill="#0F172A" font-weight="bold">per-tensor：1 个 scale</text>
+  <rect x="40" y="90" width="680" height="26" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.3"/>
+  <rect x="600" y="90" width="26" height="26" fill="#DC2626"/>
+  <text x="613" y="108" text-anchor="middle" font-size="7.6" fill="#FFFFFF" font-weight="bold">x20</text>
+  <text x="40" y="132" font-size="8.6" fill="#B91C1C">离群值把 scale 拉大到 20 倍 → 其余 99.9% 的权重只剩 1/20 的量化区间（0.1% 的权重毁掉 99.9% 的精度）</text>
+  <text x="40" y="162" font-size="10" fill="#0F172A" font-weight="bold">group-wise g=128：每 128 个权重 1 个 scale</text>
+  <rect x="40" y="172" width="108" height="26" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2"/>
+  <text x="94" y="189" text-anchor="middle" font-size="7.6" fill="#16A34A">scale 1</text>
+  <rect x="154" y="172" width="108" height="26" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2"/>
+  <text x="208" y="189" text-anchor="middle" font-size="7.6" fill="#16A34A">scale 2</text>
+  <rect x="268" y="172" width="108" height="26" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2"/>
+  <text x="322" y="189" text-anchor="middle" font-size="7.6" fill="#16A34A">scale 3</text>
+  <rect x="382" y="172" width="108" height="26" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2"/>
+  <text x="436" y="189" text-anchor="middle" font-size="7.6" fill="#16A34A">scale 4</text>
+  <rect x="496" y="172" width="108" height="26" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2"/>
+  <text x="550" y="189" text-anchor="middle" font-size="7.6" fill="#16A34A">scale 5</text>
+  <rect x="610" y="172" width="108" height="26" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="664" y="189" text-anchor="middle" font-size="7.6" fill="#DC2626">scale 6</text>
+  <text x="40" y="214" font-size="8.6" fill="#15803D">离群值只污染它自己那 128 个权重 → 其余 5 组完全不受影响（误差从 84.8% 降到 12.4%）</text>
+  <rect x="40" y="232" width="680" height="120" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+  <text x="52" y="252" font-size="9.4" fill="#0F172A" font-weight="bold">本机实测（0.1% ×20 离群值，输出余弦）：</text>
+  <rect x="52" y="262" width="156" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="60" y="279" font-size="8" fill="#334155">per-tensor INT8</text>
+  <text x="200" y="279" text-anchor="end" font-size="8.4" fill="#DC2626" font-weight="bold">0.9885</text>
+  <rect x="220" y="262" width="156" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="228" y="279" font-size="8" fill="#334155">per-channel INT8</text>
+  <text x="368" y="279" text-anchor="end" font-size="8.4" fill="#EA580C" font-weight="bold">0.9982</text>
+  <rect x="388" y="262" width="156" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="396" y="279" font-size="8" fill="#334155">g=128 INT8</text>
+  <text x="536" y="279" text-anchor="end" font-size="8.4" fill="#16A34A" font-weight="bold">0.9999</text>
+  <rect x="556" y="262" width="156" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="564" y="279" font-size="8" fill="#334155">per-tensor INT4</text>
+  <text x="704" y="279" text-anchor="end" font-size="8.4" fill="#DC2626" font-weight="bold">0.5243</text>
+  <rect x="52" y="296" width="156" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="60" y="313" font-size="8" fill="#334155">g=128 INT4</text>
+  <text x="200" y="313" text-anchor="end" font-size="8.4" fill="#CA8A04" font-weight="bold">0.9787</text>
+  <rect x="220" y="296" width="156" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="228" y="313" font-size="8" fill="#334155">g=64 INT4</text>
+  <text x="368" y="313" text-anchor="end" font-size="8.4" fill="#16A34A" font-weight="bold">0.9874</text>
+  <rect x="388" y="296" width="156" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="396" y="313" font-size="8" fill="#334155">g=32 INT4</text>
+  <text x="536" y="313" text-anchor="end" font-size="8.4" fill="#16A34A" font-weight="bold">0.9926</text>
+  <text x="52" y="342" font-size="8.2" fill="#64748B">余弦 0.52 = 这一层的输出与原模型几乎不相关（「模型还在说话，但说的不是那件事」），不是「精度差一点」</text>
+  <rect x="40" y="366" width="330" height="72" rx="7" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.4"/>
+  <text x="205" y="386" text-anchor="middle" font-size="9.4" fill="#166534" font-weight="bold">收益递减，体积线性</text>
+  <text x="205" y="404" text-anchor="middle" font-size="8.2" fill="#15803D">g=128→64→32：误差 20.93 → 15.97 → 12.37</text>
+  <text x="205" y="420" text-anchor="middle" font-size="8.2" fill="#15803D">体积 0.531 → 0.563 → 0.625 B/参数</text>
+  <rect x="390" y="366" width="330" height="72" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="555" y="386" text-anchor="middle" font-size="9.4" fill="#B91C1C" font-weight="bold">粒度还要看 kernel</text>
+  <text x="555" y="404" text-anchor="middle" font-size="8.2" fill="#B91C1C">NPU 常只支持 per-channel</text>
+  <text x="555" y="420" text-anchor="middle" font-size="8.2" fill="#B91C1C">省下的 3% 体积可能换来 3 倍时延</text>
+  <text x="380" y="458" text-anchor="middle" font-size="8.6" fill="#64748B">正确顺序：先定粒度（看离群值与 kernel）→ 再定位宽（看预算）→ 最后才看体积够不够</text>
+</svg>

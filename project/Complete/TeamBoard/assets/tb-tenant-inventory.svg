@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="500" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">租户数据清单：三条腿才能不漏</text>
+  <text x="380" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">外键闭包找间接归属 · 列名启发式找断链的表 · pg_matviews 找物化视图</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+
+  <rect x="30" y="72" width="220" height="64" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="140" y="92" text-anchor="middle" font-size="9.6" fill="#1E40AF" font-weight="bold">① 外键闭包</text>
+  <text x="140" y="108" text-anchor="middle" font-size="8.2" fill="#334155">pg_constraint 递归到不动点</text>
+  <text x="140" y="124" text-anchor="middle" font-size="8.2" fill="#334155">找到 depth=2 的间接表</text>
+
+  <rect x="270" y="72" width="220" height="64" rx="7" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.4"/>
+  <text x="380" y="92" text-anchor="middle" font-size="9.6" fill="#166534" font-weight="bold">② 列名启发式</text>
+  <text x="380" y="108" text-anchor="middle" font-size="8.2" fill="#334155">pg_attribute 里找 tenant_id</text>
+  <text x="380" y="124" text-anchor="middle" font-size="8.2" fill="#334155">补「有列但没建外键」的表</text>
+
+  <rect x="510" y="72" width="220" height="64" rx="7" fill="#FDF4FF" stroke="#A21CAF" stroke-width="1.4"/>
+  <text x="620" y="92" text-anchor="middle" font-size="9.6" fill="#86198F" font-weight="bold">③ pg_matviews</text>
+  <text x="620" y="108" text-anchor="middle" font-size="8.2" fill="#334155">物化视图里也有租户数据</text>
+  <text x="620" y="124" text-anchor="middle" font-size="8.2" fill="#334155">它既不是表也不是分区</text>
+
+  <line x1="140" y1="136" x2="140" y2="160" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <line x1="380" y1="136" x2="380" y2="160" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <line x1="620" y1="136" x2="620" y2="160" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <rect x="30" y="164" width="700" height="62" rx="7" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="380" y="184" text-anchor="middle" font-size="9.4" fill="#0F172A" font-weight="bold">取并集，再按 FK 拓扑序倒排成删除顺序（同一张表只出现一次）</text>
+  <text x="380" y="202" text-anchor="middle" font-size="8.4" fill="#64748B">实测：闭包 13 张 + 列名补 4 张（含分区父子）+ 物化视图 1 个 = 18 项资产</text>
+  <text x="380" y="218" text-anchor="middle" font-size="8.4" fill="#B45309">只做闭包会漏掉 5 项（分区父 + 2 个分区子 + 无外键表 + 物化视图）</text>
+
+  <text x="30" y="252" font-size="10" fill="#0F172A" font-weight="bold">三类失效（都不报错）</text>
+
+  <rect x="30" y="262" width="700" height="34" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.1"/>
+  <text x="42" y="283" font-size="8.6" fill="#B91C1C" font-weight="bold">information_schema 按权限过滤</text>
+  <text x="330" y="283" font-size="8.6" fill="#334155">无权限账号下 tables 表 0 行，pg_class 仍 17 行 —— 清单静默漏表</text>
+
+  <rect x="30" y="302" width="700" height="34" rx="5" fill="#FFFBEB" stroke="#CA8A04" stroke-width="1.1"/>
+  <text x="42" y="323" font-size="8.6" fill="#92400E" font-weight="bold">分区父子都统计</text>
+  <text x="330" y="323" font-size="8.6" fill="#334155">event_log 10,000 = 5,005 + 4,995，全表相加 22,803 对去重 12,803，虚增 78%</text>
+
+  <rect x="30" y="342" width="700" height="34" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.1"/>
+  <text x="42" y="363" font-size="8.6" fill="#5B21B6" font-weight="bold">循环外键</text>
+  <text x="330" y="363" font-size="8.6" fill="#334155">cycle_a ↔ cycle_b 无法拓扑排序；先 UPDATE 断边再删，或声明 DEFERRABLE</text>
+
+  <rect x="30" y="390" width="700" height="60" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="380" y="410" text-anchor="middle" font-size="9.4" fill="#1E3A8A" font-weight="bold">进 CI：每次迁移后重跑清单，与基线比对</text>
+  <text x="380" y="428" text-anchor="middle" font-size="8.4" fill="#334155">新增表未登记 → 闸门红；清单项消失 → 闸门红；总数变化 → 必须人工确认</text>
+  <text x="380" y="444" text-anchor="middle" font-size="8.4" fill="#B45309">生成耗时：闭包 6.6 ms / 合并后 9.6 ms（20 表规模），进 CI 不构成负担</text>
+
+  <text x="380" y="474" text-anchor="middle" font-size="8.6" fill="#64748B">手写六行 SQL 的问题不是「写得慢」，而是「新加的表没人记得补一行」</text>
+  <text x="380" y="492" text-anchor="middle" font-size="8.6" fill="#64748B">自动生成的清单会随迁移一起变 —— 这才是「可验收」的前提</text>
+</svg>

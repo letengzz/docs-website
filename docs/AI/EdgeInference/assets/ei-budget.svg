@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="760" height="500" fill="#FFFFFF"/>
+  <text x="380.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四段账：权重是常数，KV 是变量</text>
+  <text x="380.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">同一份 3B INT4 模型，4k 与 32k 上下文的峰值差 3,136 MiB —— 差的全在 KV</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <text x="40" y="82" font-size="10" fill="#0F172A" font-weight="bold">4k 上下文（3B / INT4 g=128 / f16 KV）</text>
+  <rect x="40.0" y="92" width="177.2" height="34" fill="#7C3AED" stroke="#FFFFFF" stroke-width="1"/>
+  <text x="128.6" y="113" text-anchor="middle" font-size="8.4" fill="#FFFFFF" font-weight="bold">权重 1,519</text>
+  <rect x="217.2" y="92" width="52.3" height="34" fill="#0891B2" stroke="#FFFFFF" stroke-width="1"/>
+  <rect x="269.5" y="92" width="35.0" height="34" fill="#F59E0B" stroke="#FFFFFF" stroke-width="1"/>
+  <rect x="304.5" y="92" width="29.2" height="34" fill="#94A3B8" stroke="#FFFFFF" stroke-width="1"/>
+  <text x="470" y="114" font-size="9.5" fill="#0F172A" font-weight="bold">合计 2,517 MiB</text>
+  <text x="40" y="164" font-size="10" fill="#0F172A" font-weight="bold">32k 上下文（其余不变）</text>
+  <rect x="40.0" y="174" width="177.2" height="34" fill="#7C3AED" stroke="#FFFFFF" stroke-width="1"/>
+  <text x="128.6" y="195" text-anchor="middle" font-size="8.4" fill="#FFFFFF" font-weight="bold">权重 1,519</text>
+  <rect x="217.2" y="174" width="418.1" height="34" fill="#0891B2" stroke="#FFFFFF" stroke-width="1"/>
+  <text x="426.3" y="195" text-anchor="middle" font-size="8.4" fill="#FFFFFF" font-weight="bold">KV 3,584</text>
+  <rect x="635.4" y="174" width="35.0" height="34" fill="#F59E0B" stroke="#FFFFFF" stroke-width="1"/>
+  <rect x="670.4" y="174" width="29.2" height="34" fill="#94A3B8" stroke="#FFFFFF" stroke-width="1"/>
+  <text x="470" y="196" font-size="9.5" fill="#0F172A" font-weight="bold">合计 5,653 MiB</text>
+  <line x1="40" y1="234" x2="720" y2="234" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="40" y="256" font-size="9.4" fill="#64748B">KV 每 token 的增长量（本机实测，f16）：L=24 kvh=8 d=64 → 48 KiB；L=28 kvh=8 d=128 → 112 KiB；L=40 kvh=8 d=128 → 160 KiB</text>
+  <rect x="40" y="272" width="210" height="62" rx="7" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.4"/>
+  <text x="145.0" y="292" text-anchor="middle" font-size="10.5" fill="#7C3AED" font-weight="bold">权重：常数</text>
+  <text x="145.0" y="310" text-anchor="middle" font-size="8.5" fill="#64748B">参数 × 0.531 B（g=128）</text>
+  <text x="145.0" y="324" text-anchor="middle" font-size="8.5" fill="#64748B">只能靠量化/换模型压</text>
+  <rect x="266" y="272" width="210" height="62" rx="7" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.4"/>
+  <text x="371.0" y="292" text-anchor="middle" font-size="10.5" fill="#0891B2" font-weight="bold">KV：变量</text>
+  <text x="371.0" y="310" text-anchor="middle" font-size="8.5" fill="#64748B">层 × KV头 × dim × 2</text>
+  <text x="371.0" y="324" text-anchor="middle" font-size="8.5" fill="#64748B">随上下文线性增长</text>
+  <rect x="492" y="272" width="228" height="62" rx="7" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.4"/>
+  <text x="606.0" y="292" text-anchor="middle" font-size="10.5" fill="#F59E0B" font-weight="bold">激活：峰值</text>
+  <text x="606.0" y="310" text-anchor="middle" font-size="8.5" fill="#64748B">prefill 时最高</text>
+  <text x="606.0" y="324" text-anchor="middle" font-size="8.5" fill="#64748B">分块 prefill 削峰</text>
+  <rect x="40" y="352" width="680" height="54" rx="7" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="380" y="373" text-anchor="middle" font-size="9.6" fill="#0F172A" font-weight="bold">KV 追上权重的上下文长度：0.5B 约 21k · 1.5B 约 54k · 3B 约 13.6k · 7B 约 22.7k</text>
+  <text x="380" y="391" text-anchor="middle" font-size="8.6" fill="#64748B">反超点由「KV 头数」决定，不由参数量决定 —— GQA 比例比模型大小更能决定端侧能不能长上下文</text>
+  <text x="380" y="432" text-anchor="middle" font-size="9" fill="#DC2626" font-weight="bold">余量按「设备标称 × 0.6」算：系统、图形栈、碎片三笔开销算不进你的模型体积，但会把你挤出去</text>
+  <text x="380" y="454" text-anchor="middle" font-size="8.6" fill="#64748B">6 GB 手机的实际预算约 3.6 GB；上表 32k 的 5,653 MiB 在任何手机上都装不下 —— 这就是预算表的价值：动手前就否掉</text>
+  <text x="380" y="476" text-anchor="middle" font-size="8.6" fill="#64748B">端侧不启用 batch &gt; 1：batch=8 × 4k 会把 3B 的 KV 从 448 MiB 推到 3,584 MiB</text>
+</svg>

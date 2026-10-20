@@ -8,6 +8,7 @@
 - [多模态检索与重排](MultimodalRetrieval/index.md)
 - [大模型微调](FineTuning/index.md)
 - [本地模型部署](LocalModel/index.md)
+- [端侧推理与模型量化](EdgeInference/index.md)
 - [OpenClaw](OpenClaw/index.md)
 - [提示词工程](PromptEngineering/index.md)
 - [提示词安全与评估](PromptSecurity/index.md)

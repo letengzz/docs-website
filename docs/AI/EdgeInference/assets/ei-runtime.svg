@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" width="760" height="480" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="760" height="480" fill="#FFFFFF"/>
+  <text x="380.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">运行时的核心机制：把图切成若干段，每段交给一个后端</text>
+  <text x="380.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">EP 按节点认领（切得细、灵活）；delegate 按子图委派（切得少、一个不支持就整块回退）</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <rect x="50" y="86" width="62" height="40" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="81.0" y="106" text-anchor="middle" font-size="8.6" fill="#2563EB" font-weight="bold">Emb</text>
+  <rect x="122" y="86" width="62" height="40" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="153.0" y="106" text-anchor="middle" font-size="8.6" fill="#2563EB" font-weight="bold">MatMul</text>
+  <rect x="194" y="86" width="62" height="40" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="225.0" y="106" text-anchor="middle" font-size="8.6" fill="#2563EB" font-weight="bold">LN</text>
+  <rect x="266" y="86" width="62" height="40" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="297.0" y="106" text-anchor="middle" font-size="8.6" fill="#DC2626" font-weight="bold">Attn</text>
+  <rect x="338" y="86" width="62" height="40" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="369.0" y="106" text-anchor="middle" font-size="8.6" fill="#2563EB" font-weight="bold">FFN</text>
+  <rect x="410" y="86" width="62" height="40" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="441.0" y="106" text-anchor="middle" font-size="8.6" fill="#DC2626" font-weight="bold">Cast</text>
+  <rect x="482" y="86" width="62" height="40" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="513.0" y="106" text-anchor="middle" font-size="8.6" fill="#DC2626" font-weight="bold">MatMul</text>
+  <rect x="554" y="86" width="62" height="40" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="585.0" y="106" text-anchor="middle" font-size="8.6" fill="#DC2626" font-weight="bold">LN</text>
+  <rect x="626" y="86" width="62" height="40" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="657.0" y="106" text-anchor="middle" font-size="8.6" fill="#DC2626" font-weight="bold">Head</text>
+  <text x="380" y="76" text-anchor="middle" font-size="9" fill="#64748B">一张 9 节点的图（示意）</text>
+  <rect x="50" y="140" width="212" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.3"/>
+  <text x="156" y="159" text-anchor="middle" font-size="8.6" fill="#1E40AF">分区 1 → NPU（Emb/MatMul/LN）</text>
+  <rect x="266" y="140" width="136" height="30" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.3"/>
+  <text x="334" y="159" text-anchor="middle" font-size="8.6" fill="#B91C1C">分区 2 → CPU（Attn）</text>
+  <rect x="406" y="140" width="136" height="30" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.3"/>
+  <text x="474" y="159" text-anchor="middle" font-size="8.6" fill="#1E40AF">分区 3 → NPU（FFN）</text>
+  <rect x="546" y="140" width="164" height="30" rx="5" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.3"/>
+  <text x="628" y="159" text-anchor="middle" font-size="8.6" fill="#B91C1C">分区 4 → CPU（Cast/LN/Head）</text>
+  <text x="380" y="190" text-anchor="middle" font-size="8.6" fill="#B45309">每次跨分区都要搬一次中间张量：一次 4 MB ≈ 0.1 ms，decode 时每 token 都付一次 → 20 层就是 2 ms/token</text>
+  <text x="380" y="212" text-anchor="middle" font-size="8.6" fill="#64748B">22 tok/s 会被拉到 15 tok/s —— 这就是「加了 GPU EP 只快 8%」的真实原因</text>
+  <line x1="40" y1="228" x2="720" y2="228" stroke="#E2E8F0" stroke-width="1"/>
+  <rect x="40" y="242" width="330" height="96" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="205.0" y="262" text-anchor="middle" font-size="9.4" fill="#334155" font-weight="bold">EP：按节点认领（ONNX Runtime）</text>
+  <text x="205.0" y="280" text-anchor="middle" font-size="8.2" fill="#64748B">图先切分 → 每个 EP 认领自己支持的连续节点</text>
+  <text x="205.0" y="294" text-anchor="middle" font-size="8.2" fill="#64748B">不支持时只影响那一小段（灵活）</text>
+  <text x="205.0" y="308" text-anchor="middle" font-size="8.2" fill="#64748B">代价：切碎后搬运成本高</text>
+  <rect x="390" y="242" width="330" height="96" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="555.0" y="262" text-anchor="middle" font-size="9.4" fill="#334155" font-weight="bold">Delegate：按子图委派（LiteRT）</text>
+  <text x="555.0" y="280" text-anchor="middle" font-size="8.2" fill="#64748B">整块子图交给 delegate，内部自己调度</text>
+  <text x="555.0" y="294" text-anchor="middle" font-size="8.2" fill="#64748B">切分少、搬运少（快）</text>
+  <text x="555.0" y="308" text-anchor="middle" font-size="8.2" fill="#64748B">代价：一个算子不支持 → 整块退回 CPU</text>
+  <rect x="40" y="352" width="680" height="58" rx="7" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.4"/>
+  <text x="380" y="372" text-anchor="middle" font-size="9.4" fill="#92400E" font-weight="bold">初始化 1~8 秒的时间都花在哪：读模型 0.1~0.8 s · 图优化 0.2~1.5 s · EP 初始化 0.2~2 s · kernel 编译 0.5~5 s</text>
+  <text x="380" y="391" text-anchor="middle" font-size="8.4" fill="#B45309">只有 kernel 编译能缓存（EPContext / 编译缓存）；图优化依赖 shape，固定 shape 才省得下来</text>
+  <text x="380" y="432" text-anchor="middle" font-size="9" fill="#DC2626" font-weight="bold">版本三角必须同批升级：运行时 ↔ 转换工具 ↔ 模型格式；插件包还要与核心版本配对</text>
+  <text x="380" y="452" text-anchor="middle" font-size="8.4" fill="#64748B">ORT 1.31.0 对应 CUDA Plugin EP 0.3.0 / WebGPU Plugin EP 0.5.0；schema 不匹配可能「注册不报错、结果直接错」</text>
+  <text x="380" y="470" text-anchor="middle" font-size="8.4" fill="#64748B">所以每次升级都要重跑一次「节点分配日志 + 输出比对」，这是唯一能抓住静默退化的手段</text>
+</svg>

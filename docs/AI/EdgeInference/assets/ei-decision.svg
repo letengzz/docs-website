@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 540" width="700" height="540" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="700" height="540" fill="#FFFFFF"/>
+  <text x="350.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">要不要端侧：五问决策树</text>
+  <text x="350.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">只有第 1 问是「必须」，其余四问都是权衡；权衡要算账</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <rect x="60" y="74" width="400" height="46" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="260.0" y="94" text-anchor="middle" font-size="10.5" fill="#DC2626" font-weight="bold">1. 数据能不能出设备？</text>
+  <text x="475" y="101" font-size="8.8" fill="#64748B">否 → 结束：用云端 API 即可</text>
+  <line x1="260" y1="120" x2="260" y2="144" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <text x="268" y="136" font-size="8.4" fill="#16A34A">是 ↓</text>
+  <rect x="60" y="144" width="400" height="46" rx="7" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+  <text x="260.0" y="164" text-anchor="middle" font-size="10.5" fill="#EA580C" font-weight="bold">2. 有没有必须离线的场景？</text>
+  <text x="475" y="171" font-size="8.8" fill="#64748B">否 → 继续权衡</text>
+  <line x1="260" y1="190" x2="260" y2="214" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <text x="268" y="206" font-size="8.4" fill="#16A34A">是 ↓</text>
+  <rect x="60" y="214" width="400" height="46" rx="7" fill="#FEFCE8" stroke="#CA8A04" stroke-width="1.4"/>
+  <text x="260.0" y="234" text-anchor="middle" font-size="10.5" fill="#CA8A04" font-weight="bold">3. 推理成本是否已影响毛利？</text>
+  <text x="475" y="241" font-size="8.8" fill="#64748B">否 → 继续权衡</text>
+  <line x1="260" y1="260" x2="260" y2="284" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <text x="268" y="276" font-size="8.4" fill="#16A34A">是 ↓</text>
+  <rect x="60" y="284" width="400" height="46" rx="7" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.4"/>
+  <text x="260.0" y="304" text-anchor="middle" font-size="10.5" fill="#0891B2" font-weight="bold">4. 时延敏感且网络不可控？</text>
+  <text x="475" y="311" font-size="8.8" fill="#64748B">否 → 继续权衡</text>
+  <line x1="260" y1="330" x2="260" y2="354" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <text x="268" y="346" font-size="8.4" fill="#16A34A">是 ↓</text>
+  <rect x="60" y="354" width="400" height="46" rx="7" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.4"/>
+  <text x="260.0" y="374" text-anchor="middle" font-size="10.5" fill="#7C3AED" font-weight="bold">5. 只是「听起来很酷」？</text>
+  <text x="475" y="381" font-size="8.8" fill="#64748B">是 → 不要做端侧</text>
+  <rect x="60" y="424" width="580" height="46" rx="7" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.6"/>
+  <text x="350" y="444" text-anchor="middle" font-size="10" fill="#166534" font-weight="bold">五问里有「是」且能通过预算表 → 端侧成立；否则先用云端跑通产品</text>
+  <text x="350" y="461" text-anchor="middle" font-size="8.8" fill="#15803D">常见结论：先用云端验证需求，再用端侧替换其中的高频小模型（而不是一开始 all-in）</text>
+  <text x="350" y="494" text-anchor="middle" font-size="9" fill="#DC2626" font-weight="bold">四种不该做端侧的形态：MoE 稀疏（内存要全装）· 超长上下文（KV 反超）· 知识频繁更新 · 质量要求接近前沿</text>
+  <text x="350" y="514" text-anchor="middle" font-size="8.6" fill="#64748B">判断标准不是「能不能跑起来」，而是「跑起来之后，用户的那台设备还剩下多少可用内存」</text>
+</svg>

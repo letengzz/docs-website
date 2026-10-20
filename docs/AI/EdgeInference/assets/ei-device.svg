@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="380.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">浏览器端加载时序：每一段都要有可用状态，每一步都要有失败分支</text>
+  <text x="380.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">端侧产品的核心指标是「首屏可用时间」，不是 tok/s</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <rect x="40" y="76" width="96" height="42" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.1"/>
+  <text x="88" y="102" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">0 ms</text>
+  <line x1="140" y1="97" x2="168" y2="97" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="172" y="76" width="300" height="42" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="322.0" y="96" text-anchor="middle" font-size="9.4" fill="#475569" font-weight="bold">首屏骨架</text>
+  <text x="488" y="102" font-size="8.6" fill="#64748B">按钮可点，提示「准备中」</text>
+  <rect x="40" y="132" width="96" height="42" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.1"/>
+  <text x="88" y="158" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">0~300 ms</text>
+  <line x1="140" y1="153" x2="168" y2="153" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="172" y="132" width="300" height="42" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="322.0" y="152" text-anchor="middle" font-size="9.4" fill="#2563EB" font-weight="bold">运行时下载</text>
+  <text x="488" y="158" font-size="8.6" fill="#64748B">按能力选 WASM / WebGPU 变体</text>
+  <rect x="40" y="188" width="96" height="42" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.1"/>
+  <text x="88" y="214" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">300 ms</text>
+  <line x1="140" y1="209" x2="168" y2="209" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="172" y="188" width="300" height="42" rx="7" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.4"/>
+  <text x="322.0" y="208" text-anchor="middle" font-size="9.4" fill="#0891B2" font-weight="bold">创建会话</text>
+  <text x="488" y="214" font-size="8.6" fill="#64748B">不阻塞 UI（Worker 内）</text>
+  <rect x="40" y="244" width="96" height="42" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.1"/>
+  <text x="88" y="270" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">800 ms</text>
+  <line x1="140" y1="265" x2="168" y2="265" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="172" y="244" width="300" height="42" rx="7" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.4"/>
+  <text x="322.0" y="264" text-anchor="middle" font-size="9.4" fill="#16A34A" font-weight="bold">词表 + 配置</text>
+  <text x="488" y="270" font-size="8.6" fill="#64748B">分词可用（输入预览）</text>
+  <rect x="40" y="300" width="96" height="42" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.1"/>
+  <text x="88" y="326" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">1.5 s</text>
+  <line x1="140" y1="321" x2="168" y2="321" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="172" y="300" width="300" height="42" rx="7" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.4"/>
+  <text x="322.0" y="320" text-anchor="middle" font-size="9.4" fill="#7C3AED" font-weight="bold">首批权重</text>
+  <text x="488" y="326" font-size="8.6" fill="#64748B">预热一次，短问短答可用</text>
+  <rect x="40" y="356" width="96" height="42" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.1"/>
+  <text x="88" y="382" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">后台</text>
+  <line x1="140" y1="377" x2="168" y2="377" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="172" y="356" width="300" height="42" rx="7" fill="#FFFBEB" stroke="#CA8A04" stroke-width="1.4"/>
+  <text x="322.0" y="376" text-anchor="middle" font-size="9.4" fill="#CA8A04" font-weight="bold">剩余权重</text>
+  <text x="488" y="382" font-size="8.6" fill="#64748B">下完切「完整」</text>
+  <rect x="600" y="76" width="120" height="42" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="660" y="93" text-anchor="middle" font-size="8.6" fill="#B91C1C" font-weight="bold">任一步失败</text>
+  <text x="660" y="108" text-anchor="middle" font-size="8" fill="#B91C1C">→ 切云端 / 明确提示</text>
+  <line x1="40" y1="416" x2="720" y2="416" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="380" y="436" text-anchor="middle" font-size="9" fill="#DC2626" font-weight="bold">4G 下 300 MB 模型要下 2 分钟：要么把首批压到 10 MB 以内，要么接受「先云端、后本地」</text>
+  <text x="380" y="456" text-anchor="middle" font-size="8.6" fill="#64748B">WebGPU 会失败（驱动/显存/device.lost），WASM 兜底不是「兼容性」而是「必备路径」；WASM 多线程还要 COOP/COEP 跨域隔离</text>
+</svg>

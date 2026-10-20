@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="380.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">端侧评测：P50 会藏起最差的那 15%</text>
+  <text x="380.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">同一份 3B INT4 模型在四个档位上的实测关系（带宽推算 + 现实折损）</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <rect x="70" y="114" width="110" height="216" rx="4" fill="#16A34A" opacity="0.85"/>
+  <text x="125" y="106" text-anchor="middle" font-size="10" fill="#16A34A" font-weight="bold">18 tok/s</text>
+  <text x="125" y="348" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">旗舰 15%</text>
+  <text x="125" y="362" text-anchor="middle" font-size="8" fill="#64748B">68 GB/s</text>
+  <rect x="235" y="174" width="110" height="156" rx="4" fill="#0891B2" opacity="0.85"/>
+  <text x="290" y="166" text-anchor="middle" font-size="10" fill="#0891B2" font-weight="bold">13 tok/s</text>
+  <text x="290" y="348" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">上代旗舰 25%</text>
+  <text x="290" y="362" text-anchor="middle" font-size="8" fill="#64748B">51 GB/s</text>
+  <rect x="400" y="258" width="110" height="72" rx="4" fill="#CA8A04" opacity="0.85"/>
+  <text x="455" y="250" text-anchor="middle" font-size="10" fill="#CA8A04" font-weight="bold">6 tok/s</text>
+  <text x="455" y="348" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">中端 45%</text>
+  <text x="455" y="362" text-anchor="middle" font-size="8" fill="#64748B">25 GB/s</text>
+  <rect x="565" y="282" width="110" height="48" rx="4" fill="#DC2626" opacity="0.85"/>
+  <text x="620" y="274" text-anchor="middle" font-size="10" fill="#DC2626" font-weight="bold">4 tok/s</text>
+  <text x="620" y="348" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">老旧 15%</text>
+  <text x="620" y="362" text-anchor="middle" font-size="8" fill="#64748B">17 GB/s</text>
+  <line x1="50" y1="330" x2="720" y2="330" stroke="#CBD5E1" stroke-width="1.2"/>
+  <line x1="50" y1="258" x2="720" y2="258" stroke="#16A34A" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="726" y="261" font-size="8" fill="#16A34A">P50 ≈ 6</text>
+  <line x1="50" y1="282" x2="720" y2="282" stroke="#DC2626" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="726" y="285" font-size="8" fill="#DC2626">P95 ≈ 4</text>
+  <text x="40" y="84" font-size="9.6" fill="#0F172A" font-weight="bold">四个数不能混：</text>
+  <rect x="40" y="94" width="160" height="52" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="120" y="112" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">冷启动</text>
+  <text x="120" y="126" text-anchor="middle" font-size="8.2" fill="#2563EB">1~8 s</text>
+  <text x="120" y="139" text-anchor="middle" font-size="7.6" fill="#64748B">首次安装愿不愿意等</text>
+  <rect x="212" y="94" width="160" height="52" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="292" y="112" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">热启动</text>
+  <text x="292" y="126" text-anchor="middle" font-size="8.2" fill="#2563EB">100~500 ms</text>
+  <text x="292" y="139" text-anchor="middle" font-size="7.6" fill="#64748B">每次切页面</text>
+  <rect x="384" y="94" width="160" height="52" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="464" y="112" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">TTFT</text>
+  <text x="464" y="126" text-anchor="middle" font-size="8.2" fill="#2563EB">200 ms~2 s</text>
+  <text x="464" y="139" text-anchor="middle" font-size="7.6" fill="#64748B">「反应快不快」</text>
+  <rect x="556" y="94" width="160" height="52" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="636" y="112" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">持续 tok/s</text>
+  <text x="636" y="126" text-anchor="middle" font-size="8.2" fill="#2563EB">随时间下降</text>
+  <text x="636" y="139" text-anchor="middle" font-size="7.6" fill="#64748B">「要不要一直用」</text>
+  <rect x="40" y="160" width="680" height="42" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="380" y="178" text-anchor="middle" font-size="9" fill="#B91C1C" font-weight="bold">P50 把最差的那 15% 藏起来了：老旧机 4 tok/s 已经不可用，但全局 P50 看起来「还行」</text>
+  <text x="380" y="194" text-anchor="middle" font-size="8.2" fill="#B91C1C">正确做法：按档位分别报 P50/P95，每档给「可用/不可用」结论 —— 要么放弃老旧机，要么给它单独的小模型</text>
+  <text x="380" y="386" text-anchor="middle" font-size="9" fill="#64748B">真机矩阵最小 6 台：Android 旗舰/中端/老旧（仅 CPU）+ iOS 旗舰/中端 + 一台「最低系统版本」</text>
+  <text x="380" y="406" text-anchor="middle" font-size="9" fill="#64748B">每次模型或运行时变更都要重跑全矩阵 —— 端侧的「小改动」经常在某个后端上退化成 CPU 路径</text>
+  <text x="380" y="432" text-anchor="middle" font-size="9" fill="#DC2626" font-weight="bold">判定表七项全通过才算通过：「大部分通过」在端侧等于不通过（会精确筛掉某一批用户）</text>
+  <text x="380" y="452" text-anchor="middle" font-size="8.4" fill="#64748B">功耗协议：电量 80% · 关自动亮度 · 200 token 输入 · 10 轮 —— 两次测量误差应 &lt; 0.5 个百分点</text>
+</svg>

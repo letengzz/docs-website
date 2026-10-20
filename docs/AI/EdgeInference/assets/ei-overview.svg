@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="380.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">端侧与服务端：换的不是规模，是约束</text>
+  <text x="380.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">六项差异里，带宽这一项解释了「40 TOPS 为什么只有 12 tok/s」</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <rect x="40" y="70" width="300" height="30" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="190.0" y="90" text-anchor="middle" font-size="11" fill="#2563EB" font-weight="bold">服务端：优化吞吐与成本</text>
+  <rect x="420" y="70" width="300" height="30" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="570.0" y="90" text-anchor="middle" font-size="11" fill="#DC2626" font-weight="bold">端侧：优化装得下、来得及、不发烫</text>
+  <rect x="40" y="116" width="300" height="38" rx="5" fill="#F8FAFC" stroke="#DBEAFE" stroke-width="1"/>
+  <text x="52" y="132" font-size="9" fill="#1E40AF" font-weight="bold">内存归属</text>
+  <text x="52" y="147" font-size="8.6" fill="#334155">独占、可申请</text>
+  <rect x="420" y="116" width="300" height="38" rx="5" fill="#FFFFFF" stroke="#FECACA" stroke-width="1"/>
+  <text x="432" y="132" font-size="9" fill="#B91C1C" font-weight="bold">内存归属</text>
+  <text x="432" y="147" font-size="8.6" fill="#334155">系统共享、随时回收</text>
+  <line x1="345" y1="135" x2="415" y2="135" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="40" y="162" width="300" height="38" rx="5" fill="#F8FAFC" stroke="#DBEAFE" stroke-width="1"/>
+  <text x="52" y="178" font-size="9" fill="#1E40AF" font-weight="bold">带宽</text>
+  <text x="52" y="193" font-size="8.6" fill="#334155">HBM 3~8 TB/s</text>
+  <rect x="420" y="162" width="300" height="38" rx="5" fill="#FFFFFF" stroke="#FECACA" stroke-width="1"/>
+  <text x="432" y="178" font-size="9" fill="#B91C1C" font-weight="bold">带宽</text>
+  <text x="432" y="193" font-size="8.6" fill="#334155">LPDDR5 25~68 GB/s</text>
+  <line x1="345" y1="181" x2="415" y2="181" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="40" y="208" width="300" height="38" rx="5" fill="#F8FAFC" stroke="#DBEAFE" stroke-width="1"/>
+  <text x="52" y="224" font-size="9" fill="#1E40AF" font-weight="bold">散热</text>
+  <text x="52" y="239" font-size="8.6" fill="#334155">风扇 + 机房 22℃</text>
+  <rect x="420" y="208" width="300" height="38" rx="5" fill="#FFFFFF" stroke="#FECACA" stroke-width="1"/>
+  <text x="432" y="224" font-size="9" fill="#B91C1C" font-weight="bold">散热</text>
+  <text x="432" y="239" font-size="8.6" fill="#334155">被动散热，10~30 s 降频</text>
+  <line x1="345" y1="227" x2="415" y2="227" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="40" y="254" width="300" height="38" rx="5" fill="#F8FAFC" stroke="#DBEAFE" stroke-width="1"/>
+  <text x="52" y="270" font-size="9" fill="#1E40AF" font-weight="bold">电量</text>
+  <text x="52" y="285" font-size="8.6" fill="#334155">电费可忽略</text>
+  <rect x="420" y="254" width="300" height="38" rx="5" fill="#FFFFFF" stroke="#FECACA" stroke-width="1"/>
+  <text x="432" y="270" font-size="9" fill="#B91C1C" font-weight="bold">电量</text>
+  <text x="432" y="285" font-size="8.6" fill="#334155">用户的电池，看得见掉电</text>
+  <line x1="345" y1="273" x2="415" y2="273" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="40" y="300" width="300" height="38" rx="5" fill="#F8FAFC" stroke="#DBEAFE" stroke-width="1"/>
+  <text x="52" y="316" font-size="9" fill="#1E40AF" font-weight="bold">并发</text>
+  <text x="52" y="331" font-size="8.6" fill="#334155">几百路 + 连续批处理</text>
+  <rect x="420" y="300" width="300" height="38" rx="5" fill="#FFFFFF" stroke="#FECACA" stroke-width="1"/>
+  <text x="432" y="316" font-size="9" fill="#B91C1C" font-weight="bold">并发</text>
+  <text x="432" y="331" font-size="8.6" fill="#334155">通常 1 路，要快冷启动</text>
+  <line x1="345" y1="319" x2="415" y2="319" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="40" y="346" width="300" height="38" rx="5" fill="#F8FAFC" stroke="#DBEAFE" stroke-width="1"/>
+  <text x="52" y="362" font-size="9" fill="#1E40AF" font-weight="bold">可观测</text>
+  <text x="52" y="377" font-size="8.6" fill="#334155">想采什么采什么</text>
+  <rect x="420" y="346" width="300" height="38" rx="5" fill="#FFFFFF" stroke="#FECACA" stroke-width="1"/>
+  <text x="432" y="362" font-size="9" fill="#B91C1C" font-weight="bold">可观测</text>
+  <text x="432" y="377" font-size="8.6" fill="#334155">崩溃日志可能拿不到</text>
+  <line x1="345" y1="365" x2="415" y2="365" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="40" y="400" width="680" height="52" rx="7" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.6"/>
+  <text x="380" y="421" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">带宽决定解码上界：tok/s ≈ 有效带宽 ÷ 权重字节（batch=1 时是 GEMV，算力大半在等数据）</text>
+  <text x="380" y="440" text-anchor="middle" font-size="8.8" fill="#B45309">3B INT4 = 1,519 MiB ≈ 1,593 MB；25 GB/s × 0.7 → 11 tok/s 上界，68 GB/s × 0.7 → 30 tok/s 上界</text>
+</svg>

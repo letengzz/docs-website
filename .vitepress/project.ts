@@ -371,6 +371,7 @@ export const CompleteProject = [
           { text: "第 4 周第 3 步之四 · 交付效能度量：五张表、三条视图与四个读数（DME-A~DME-H）", link: "/project/Complete/TeamBoard/DeliveryMetrics/index.md" },
           { text: "第 4 周第 3 步之五 · 稳态运营：SLO 报表、容量趋势与演练日历（SSO-A~SSO-H）", link: "/project/Complete/TeamBoard/SteadyStateOps/index.md" },
           { text: "第 4 周第 3 步之六 · 租户退出：导出、冷静期与级联删除（TNO-A~TNO-H）", link: "/project/Complete/TeamBoard/TenantOffboarding/index.md" },
+          { text: "第 4 周第 3 步之七 · 租户数据清单：元数据自动生成与残留检查进 CI（TDI-A~TDI-H）", link: "/project/Complete/TeamBoard/TenantDataInventory/index.md" },
         ],
       },
       {

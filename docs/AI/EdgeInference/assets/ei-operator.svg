@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="380.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">算子不支持的三种结局：报错最好，静默算错最坏</text>
+  <text x="380.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">跑通 ≠ 正确；工程上 90% 的时间花在「静默回退」，事故出在「静默算错」</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <rect x="40" y="76" width="680" height="44" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="380.0" y="96" text-anchor="middle" font-size="9.6" fill="#334155" font-weight="bold">转换后跑一次节点分配：某个算子不在目标后端的支持表里</text>
+  <line x1="380" y1="120" x2="380" y2="144" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="40" y="148" width="210" height="92" rx="7" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.4"/>
+  <text x="145.0" y="168" text-anchor="middle" font-size="10" fill="#166534" font-weight="bold">① 报错</text>
+  <text x="145.0" y="186" text-anchor="middle" font-size="8.2" fill="#15803D">NOT_IMPLEMENTED</text>
+  <text x="145.0" y="200" text-anchor="middle" font-size="8.2" fill="#15803D">启动即失败</text>
+  <text x="145.0" y="214" text-anchor="middle" font-size="8.2" fill="#15803D">危害：低（立刻知道）</text>
+  <rect x="275" y="148" width="210" height="92" rx="7" fill="#FFFBEB" stroke="#CA8A04" stroke-width="1.4"/>
+  <text x="380.0" y="168" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">② 静默回退</text>
+  <text x="380.0" y="186" text-anchor="middle" font-size="8.2" fill="#B45309">能跑，但慢、耗电</text>
+  <text x="380.0" y="200" text-anchor="middle" font-size="8.2" fill="#B45309">只有日志/profile 能发现</text>
+  <text x="380.0" y="214" text-anchor="middle" font-size="8.2" fill="#B45309">危害：中（原因找不到）</text>
+  <rect x="510" y="148" width="210" height="92" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="615.0" y="168" text-anchor="middle" font-size="10" fill="#B91C1C" font-weight="bold">③ 静默算错</text>
+  <text x="615.0" y="186" text-anchor="middle" font-size="8.2" fill="#B91C1C">结果偏、偶发错乱</text>
+  <text x="615.0" y="200" text-anchor="middle" font-size="8.2" fill="#B91C1C">只能靠输出比对</text>
+  <text x="615.0" y="214" text-anchor="middle" font-size="8.2" fill="#B91C1C">危害：高（线上事故）</text>
+  <line x1="40" y1="256" x2="720" y2="256" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="40" y="276" font-size="9.6" fill="#0F172A" font-weight="bold">「静默算错」的四个真实来源（都是「支持但语义有细微差别」）：</text>
+  <rect x="40" y="288" width="680" height="30" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="52" y="307" font-size="8.6" fill="#DC2626" font-weight="bold">溢出与累加精度</text>
+  <text x="180" y="307" font-size="8.6" fill="#334155">FP16 累加在长序列上丢精度；有的后端默认 FP32 累加</text>
+  <rect x="40" y="326" width="680" height="30" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="52" y="345" font-size="8.6" fill="#EA580C" font-weight="bold">索引类型</text>
+  <text x="180" y="345" font-size="8.6" fill="#334155">INT64 索引被截成 INT32，超长输入时错位</text>
+  <rect x="40" y="364" width="680" height="30" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="52" y="383" font-size="8.6" fill="#CA8A04" font-weight="bold">布局假设</text>
+  <text x="180" y="383" font-size="8.6" fill="#334155">NHWC/NCHW 隐式转换漏掉 → Reshape 后「形状对、内容错」</text>
+  <rect x="40" y="402" width="680" height="30" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="52" y="421" font-size="8.6" fill="#7C3AED" font-weight="bold">边界处理</text>
+  <text x="180" y="421" font-size="8.6" fill="#334155">Pad / Resize 边界模式不一致 → 图像边缘伪影</text>
+  <rect x="40" y="448" width="680" height="16" rx="4" fill="none"/>
+  <text x="380" y="456" text-anchor="middle" font-size="9" fill="#DC2626" font-weight="bold">所以「算子支持」必须理解为「语义等价」，而不是「有个同名实现」</text>
+</svg>

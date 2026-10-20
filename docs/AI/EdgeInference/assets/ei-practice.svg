@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="380.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">实战：0.5B 模型进浏览器，十步可验收</text>
+  <text x="380.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">顺序不能反：先算预算 → 再定量化 → 再查算子 → 最后才写加载代码</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <rect x="40" y="76" width="220" height="62" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="150.0" y="96" text-anchor="middle" font-size="9.6" fill="#2563EB" font-weight="bold">S1 预算</text>
+  <text x="150.0" y="114" text-anchor="middle" font-size="8" fill="#64748B">253 + 48 + 460 ≈ 761 MiB</text>
+  <rect x="276" y="76" width="220" height="62" rx="7" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.4"/>
+  <text x="386.0" y="96" text-anchor="middle" font-size="9.6" fill="#7C3AED" font-weight="bold">S2 量化</text>
+  <text x="386.0" y="114" text-anchor="middle" font-size="8" fill="#64748B">INT4 g=128，LN/head 保 FP16</text>
+  <rect x="512" y="76" width="220" height="62" rx="7" fill="#FDF4FF" stroke="#A21CAF" stroke-width="1.4"/>
+  <text x="622.0" y="96" text-anchor="middle" font-size="9.6" fill="#A21CAF" font-weight="bold">S3 导出</text>
+  <text x="622.0" y="114" text-anchor="middle" font-size="8" fill="#64748B">固定 shape，无动态轴</text>
+  <rect x="40" y="154" width="220" height="62" rx="7" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.4"/>
+  <text x="150.0" y="174" text-anchor="middle" font-size="9.6" fill="#16A34A" font-weight="bold">S4 算子</text>
+  <text x="150.0" y="192" text-anchor="middle" font-size="8" fill="#64748B">dynamic=none, risky=none</text>
+  <rect x="276" y="154" width="220" height="62" rx="7" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.4"/>
+  <text x="386.0" y="174" text-anchor="middle" font-size="9.6" fill="#0891B2" font-weight="bold">S5 后端</text>
+  <text x="386.0" y="192" text-anchor="middle" font-size="8" fill="#64748B">WebGPU 优先 + WASM 兜底</text>
+  <rect x="512" y="154" width="220" height="62" rx="7" fill="#FEFCE8" stroke="#CA8A04" stroke-width="1.4"/>
+  <text x="622.0" y="174" text-anchor="middle" font-size="9.6" fill="#CA8A04" font-weight="bold">S6 预热</text>
+  <text x="622.0" y="192" text-anchor="middle" font-size="8" fill="#64748B">warmMs &lt; 800</text>
+  <line x1="150" y1="216" x2="150" y2="236" stroke="#CBD5E1" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="40" y="240" width="220" height="62" rx="7" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.4"/>
+  <text x="150.0" y="260" text-anchor="middle" font-size="9.6" fill="#E11D48" font-weight="bold">S7 首 token</text>
+  <text x="150.0" y="278" text-anchor="middle" font-size="8" fill="#64748B">分块 prefill / 批量回传</text>
+  <rect x="276" y="240" width="220" height="62" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="386.0" y="260" text-anchor="middle" font-size="9.6" fill="#475569" font-weight="bold">S8 验收</text>
+  <text x="386.0" y="278" text-anchor="middle" font-size="8" fill="#64748B">S1~S10 十条全过</text>
+  <rect x="512" y="240" width="208" height="62" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="616.0" y="260" text-anchor="middle" font-size="9.6" fill="#DC2626" font-weight="bold">S10 兜底</text>
+  <text x="616.0" y="278" text-anchor="middle" font-size="8" fill="#64748B">强制 wasm 重跑一遍</text>
+  <line x1="40" y1="320" x2="720" y2="320" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="40" y="342" font-size="9.6" fill="#0F172A" font-weight="bold">关键读数（桌面浏览器，4k 上下文）</text>
+  <rect x="40" y="352" width="220" height="34" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="50" y="373" font-size="8.6" fill="#64748B">权重</text>
+  <text x="132" y="373" font-size="9" fill="#0F172A" font-weight="bold">253 MiB</text>
+  <text x="254" y="373" text-anchor="end" font-size="7.8" fill="#94A3B8">0.531 B/参数</text>
+  <rect x="276" y="352" width="220" height="34" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="286" y="373" font-size="8.6" fill="#64748B">KV(4k)</text>
+  <text x="368" y="373" font-size="9" fill="#0F172A" font-weight="bold">48 MiB</text>
+  <text x="490" y="373" text-anchor="end" font-size="7.8" fill="#94A3B8">12 KiB/token</text>
+  <rect x="512" y="352" width="220" height="34" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="522" y="373" font-size="8.6" fill="#64748B">峰值</text>
+  <text x="604" y="373" font-size="9" fill="#0F172A" font-weight="bold">≈761 MiB</text>
+  <text x="726" y="373" text-anchor="end" font-size="7.8" fill="#94A3B8">&lt; 可用 × 0.6</text>
+  <rect x="40" y="392" width="220" height="34" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="50" y="413" font-size="8.6" fill="#64748B">init</text>
+  <text x="132" y="413" font-size="9" fill="#0F172A" font-weight="bold">&lt; 3 s</text>
+  <text x="254" y="413" text-anchor="end" font-size="7.8" fill="#94A3B8">未就绪态必备</text>
+  <rect x="276" y="392" width="220" height="34" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="286" y="413" font-size="8.6" fill="#64748B">warm</text>
+  <text x="368" y="413" font-size="9" fill="#0F172A" font-weight="bold">&lt; 800 ms</text>
+  <text x="490" y="413" text-anchor="end" font-size="7.8" fill="#94A3B8">否则首句特别慢</text>
+  <rect x="512" y="392" width="220" height="34" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="522" y="413" font-size="8.6" fill="#64748B">tok/s</text>
+  <text x="604" y="413" font-size="9" fill="#0F172A" font-weight="bold">≥ 15</text>
+  <text x="726" y="413" text-anchor="end" font-size="7.8" fill="#94A3B8">WASM 兜底 ≥ 6</text>
+  <text x="380" y="444" text-anchor="middle" font-size="9" fill="#DC2626" font-weight="bold">S10 最容易被跳过，但它是唯一能证明「WebGPU 挂了还能用」的一条</text>
+  <text x="380" y="462" text-anchor="middle" font-size="8.4" fill="#64748B">不做 S10，等于把「设备丢失 / 驱动异常」留给用户去发现</text>
+</svg>

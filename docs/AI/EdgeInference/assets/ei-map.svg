@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 560" width="760" height="560" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, sans-serif">
+  <rect width="760" height="560" fill="#FFFFFF"/>
+  <text x="380.0" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">端侧推理与模型量化：三个硬约束与十个落点</text>
+  <text x="380.0" y="52" text-anchor="middle" font-size="10.5" fill="#64748B">容量 / 带宽 / 热 —— 三堵墙决定了后面所有取舍；十页分别处理其中一段</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+  <rect x="30" y="72" width="220" height="58" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="140.0" y="92" text-anchor="middle" font-size="10.5" fill="#DC2626" font-weight="bold">约束一：容量</text>
+  <text x="140.0" y="110" text-anchor="middle" font-size="8.5" fill="#64748B">峰值 = 权重+KV+激活+运行时</text>
+  <text x="140.0" y="124" text-anchor="middle" font-size="8.5" fill="#64748B">算峰值，不算常驻</text>
+  <rect x="270" y="72" width="220" height="58" rx="7" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.4"/>
+  <text x="380.0" y="92" text-anchor="middle" font-size="10.5" fill="#EA580C" font-weight="bold">约束二：带宽</text>
+  <text x="380.0" y="110" text-anchor="middle" font-size="8.5" fill="#64748B">tok/s ≈ 带宽 ÷ 权重字节</text>
+  <text x="380.0" y="124" text-anchor="middle" font-size="8.5" fill="#64748B">解码是搬运，不是计算</text>
+  <rect x="510" y="72" width="220" height="58" rx="7" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.4"/>
+  <text x="620.0" y="92" text-anchor="middle" font-size="10.5" fill="#0D9488" font-weight="bold">约束三：热</text>
+  <text x="620.0" y="110" text-anchor="middle" font-size="8.5" fill="#64748B">10~30 s 后降频</text>
+  <text x="620.0" y="124" text-anchor="middle" font-size="8.5" fill="#64748B">持续速度按降频后算</text>
+  <line x1="140" y1="132" x2="140" y2="156" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <line x1="380" y1="132" x2="380" y2="156" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <line x1="620" y1="132" x2="620" y2="156" stroke="#94A3B8" stroke-width="1.4" marker-end="url(#ar)"/>
+  <text x="380" y="152" text-anchor="middle" font-size="9" fill="#94A3B8">↓ 全部落到「预算表 → 方案 → 验收」这一条链上</text>
+  <rect x="30" y="172" width="132" height="80" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
+  <text x="96.0" y="192" text-anchor="middle" font-size="10" fill="#2563EB" font-weight="bold">① 总览</text>
+  <text x="96.0" y="210" text-anchor="middle" font-size="8" fill="#64748B">三个硬约束</text>
+  <text x="96.0" y="224" text-anchor="middle" font-size="8" fill="#64748B">五个必失点</text>
+  <text x="96.0" y="238" text-anchor="middle" font-size="8" fill="#64748B">EIO</text>
+  <rect x="172" y="172" width="132" height="80" rx="7" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.4"/>
+  <text x="238.0" y="192" text-anchor="middle" font-size="10" fill="#7C3AED" font-weight="bold">② 预算</text>
+  <text x="238.0" y="210" text-anchor="middle" font-size="8" fill="#64748B">四段账</text>
+  <text x="238.0" y="224" text-anchor="middle" font-size="8" fill="#64748B">上界公式</text>
+  <text x="238.0" y="238" text-anchor="middle" font-size="8" fill="#64748B">EIB</text>
+  <rect x="314" y="172" width="132" height="80" rx="7" fill="#FDF4FF" stroke="#A21CAF" stroke-width="1.4"/>
+  <text x="380.0" y="192" text-anchor="middle" font-size="10" fill="#A21CAF" font-weight="bold">③ 量化</text>
+  <text x="380.0" y="210" text-anchor="middle" font-size="8" fill="#64748B">粒度 × 位宽</text>
+  <text x="380.0" y="224" text-anchor="middle" font-size="8" fill="#64748B">离群值</text>
+  <text x="380.0" y="238" text-anchor="middle" font-size="8" fill="#64748B">EIQ</text>
+  <rect x="456" y="172" width="132" height="80" rx="7" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.4"/>
+  <text x="522.0" y="192" text-anchor="middle" font-size="10" fill="#0891B2" font-weight="bold">④ 运行时</text>
+  <text x="522.0" y="210" text-anchor="middle" font-size="8" fill="#64748B">EP / delegate</text>
+  <text x="522.0" y="224" text-anchor="middle" font-size="8" fill="#64748B">初始化</text>
+  <text x="522.0" y="238" text-anchor="middle" font-size="8" fill="#64748B">EIR</text>
+  <rect x="598" y="172" width="132" height="80" rx="7" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.4"/>
+  <text x="664.0" y="192" text-anchor="middle" font-size="10" fill="#16A34A" font-weight="bold">⑤ 算子</text>
+  <text x="664.0" y="210" text-anchor="middle" font-size="8" fill="#64748B">分配与回退</text>
+  <text x="664.0" y="224" text-anchor="middle" font-size="8" fill="#64748B">自证三法</text>
+  <text x="664.0" y="238" text-anchor="middle" font-size="8" fill="#64748B">EIS</text>
+  <rect x="30" y="268" width="132" height="80" rx="7" fill="#FEFCE8" stroke="#CA8A04" stroke-width="1.4"/>
+  <text x="96.0" y="288" text-anchor="middle" font-size="10" fill="#CA8A04" font-weight="bold">⑥ 端上</text>
+  <text x="96.0" y="306" text-anchor="middle" font-size="8" fill="#64748B">首包与缓存</text>
+  <text x="96.0" y="320" text-anchor="middle" font-size="8" fill="#64748B">双后端</text>
+  <text x="96.0" y="334" text-anchor="middle" font-size="8" fill="#64748B">EIW</text>
+  <rect x="172" y="268" width="132" height="80" rx="7" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.4"/>
+  <text x="238.0" y="288" text-anchor="middle" font-size="10" fill="#E11D48" font-weight="bold">⑦ 端云</text>
+  <text x="238.0" y="306" text-anchor="middle" font-size="8" fill="#64748B">双阈值路由</text>
+  <text x="238.0" y="320" text-anchor="middle" font-size="8" fill="#64748B">离线队列</text>
+  <text x="238.0" y="334" text-anchor="middle" font-size="8" fill="#64748B">EIC</text>
+  <rect x="314" y="268" width="132" height="80" rx="7" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.4"/>
+  <text x="380.0" y="288" text-anchor="middle" font-size="10" fill="#4F46E5" font-weight="bold">⑧ 评测</text>
+  <text x="380.0" y="306" text-anchor="middle" font-size="8" fill="#64748B">真机矩阵</text>
+  <text x="380.0" y="320" text-anchor="middle" font-size="8" fill="#64748B">P95 与功耗</text>
+  <text x="380.0" y="334" text-anchor="middle" font-size="8" fill="#64748B">EIE</text>
+  <rect x="456" y="268" width="132" height="80" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="522.0" y="288" text-anchor="middle" font-size="10" fill="#475569" font-weight="bold">⑨ 实战</text>
+  <text x="522.0" y="306" text-anchor="middle" font-size="8" fill="#64748B">0.5B 进浏览器</text>
+  <text x="522.0" y="320" text-anchor="middle" font-size="8" fill="#64748B">S1~S10</text>
+  <text x="522.0" y="334" text-anchor="middle" font-size="8" fill="#64748B">EIP</text>
+  <rect x="598" y="268" width="132" height="80" rx="7" fill="#FAF5FF" stroke="#9333EA" stroke-width="1.4"/>
+  <text x="664.0" y="288" text-anchor="middle" font-size="10" fill="#9333EA" font-weight="bold">⑩ 分诊</text>
+  <text x="664.0" y="306" text-anchor="middle" font-size="8" fill="#64748B">八类症状</text>
+  <text x="664.0" y="320" text-anchor="middle" font-size="8" fill="#64748B">十二项自查</text>
+  <text x="664.0" y="334" text-anchor="middle" font-size="8" fill="#64748B">EIF</text>
+  <text x="380" y="372" text-anchor="middle" font-size="10" fill="#0F172A" font-weight="bold">四段账的读数（本机实算 / 实测）</text>
+  <rect x="40" y="384" width="222" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="151" y="401" text-anchor="middle" font-size="8.6" fill="#334155">INT4 g=128 = 0.531 B/参数</text>
+  <rect x="276" y="384" width="222" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="387" y="401" text-anchor="middle" font-size="8.6" fill="#334155">0.5B → 253 MiB</text>
+  <rect x="512" y="384" width="222" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="623" y="401" text-anchor="middle" font-size="8.6" fill="#334155">3B → 1,519 MiB</text>
+  <rect x="40" y="418" width="222" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="151" y="435" text-anchor="middle" font-size="8.6" fill="#334155">7B → 3,544 MiB</text>
+  <rect x="276" y="418" width="222" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="387" y="435" text-anchor="middle" font-size="8.6" fill="#334155">KV 12~160 KiB/token</text>
+  <rect x="512" y="418" width="222" height="26" rx="5" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="623" y="435" text-anchor="middle" font-size="8.6" fill="#334155">4k~32k 之间 KV 反超权重</text>
+  <text x="380" y="478" text-anchor="middle" font-size="9" fill="#DC2626" font-weight="bold">三个「本地跑通了但产品不能上」：只在自己机器验收 · 量化只测「像不像」· 初始化放首屏</text>
+  <text x="380" y="500" text-anchor="middle" font-size="9" fill="#64748B">端侧不是把服务端缩小一号，而是换了一个约束系统：内存被系统管、带宽被共享、散热是被动的</text>
+  <text x="380" y="522" text-anchor="middle" font-size="9" fill="#64748B">所以顺序是：先算预算 → 再定量化 → 再查算子 → 最后才写加载代码</text>
+</svg>

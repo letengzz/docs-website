@@ -360,3 +360,22 @@ export const AI_EvalEngineering = [
     ],
   },
 ];
+
+export const AI_EdgeInference = [
+  {
+    text: "端侧推理与模型量化",
+    link: "/docs/AI/EdgeInference/index.md",
+    items: [
+      { text: "总览：三个硬约束与五个必失点", link: "/docs/AI/EdgeInference/Overview/index.md" },
+      { text: "内存与延迟预算", link: "/docs/AI/EdgeInference/Budget/index.md" },
+      { text: "量化方案与端侧可行性", link: "/docs/AI/EdgeInference/Quantization/index.md" },
+      { text: "运行时与算子委派", link: "/docs/AI/EdgeInference/Runtime/index.md" },
+      { text: "算子覆盖与回退", link: "/docs/AI/EdgeInference/OperatorSupport/index.md" },
+      { text: "浏览器与移动端落地", link: "/docs/AI/EdgeInference/DeviceWeb/index.md" },
+      { text: "端云协同与降级", link: "/docs/AI/EdgeInference/HybridRouting/index.md" },
+      { text: "端侧评测", link: "/docs/AI/EdgeInference/Evaluation/index.md" },
+      { text: "实战：把 0.5B 模型装进浏览器", link: "/docs/AI/EdgeInference/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/AI/EdgeInference/FAQ/index.md" },
+    ],
+  },
+];
