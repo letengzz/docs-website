@@ -332,3 +332,22 @@ export const EngineeringMetrics = [
     ],
   },
 ];
+
+export const BrowserExtension = [
+  {
+    text: "浏览器扩展工程",
+    link: "/docs/Tools/BrowserExtension/index.md",
+    items: [
+      { text: "概述：三个执行上下文与六条硬约束", link: "/docs/Tools/BrowserExtension/Overview/index.md" },
+      { text: "manifest 与生命周期", link: "/docs/Tools/BrowserExtension/ManifestLifecycle/index.md" },
+      { text: "权限模型与最小授权", link: "/docs/Tools/BrowserExtension/Permissions/index.md" },
+      { text: "内容脚本与隔离世界", link: "/docs/Tools/BrowserExtension/ContentScript/index.md" },
+      { text: "跨上下文消息", link: "/docs/Tools/BrowserExtension/Messaging/index.md" },
+      { text: "声明式网络规则", link: "/docs/Tools/BrowserExtension/NetworkRules/index.md" },
+      { text: "存储与配额", link: "/docs/Tools/BrowserExtension/StorageState/index.md" },
+      { text: "打包、签名与分发", link: "/docs/Tools/BrowserExtension/Distribution/index.md" },
+      { text: "安全边界与审核红线", link: "/docs/Tools/BrowserExtension/Security/index.md" },
+      { text: "实战：网页摘录扩展", link: "/docs/Tools/BrowserExtension/Practice/index.md" },
+    ],
+  },
+];

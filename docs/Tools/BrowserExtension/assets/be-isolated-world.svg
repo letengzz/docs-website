@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img">
+<title>隔离世界：共享 DOM，不共享 JS</title>
+<rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+</defs>
+<text x="32.0" y="42.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">隔离世界：共享 DOM，不共享 JS</text>
+<rect x="32.0" y="86.0" width="420.0" height="190.0" rx="12" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="52.0" y="114.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#b45309" font-weight="700" text-anchor="start">主世界（页面自己的 JS）</text>
+<text x="52.0" y="146.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 页面的 window 与全局变量</text>
+<text x="52.0" y="174.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· Vue / React 组件实例</text>
+<text x="52.0" y="202.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 可被页面改写的原型链</text>
+<text x="52.0" y="230.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 页面的 fetch / XHR</text>
+<text x="52.0" y="262.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">页面脚本访问不到你的 chrome.*</text>
+<rect x="508.0" y="86.0" width="420.0" height="190.0" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="528.0" y="114.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#047857" font-weight="700" text-anchor="start">隔离世界（你的内容脚本）</text>
+<text x="528.0" y="146.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 自己的 window，读不到页面变量</text>
+<text x="528.0" y="174.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 不受页面改原型的影响</text>
+<text x="528.0" y="202.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 能调 runtime / storage / i18n</text>
+<text x="528.0" y="230.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 拿不到 tabs / cookies / scripting</text>
+<text x="528.0" y="262.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">能力小，因为和不可信页面同进程</text>
+<rect x="32.0" y="292.0" width="896.0" height="56.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="52.0" y="316.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#2563eb" font-weight="700" text-anchor="start">共享的一层：同一棵 DOM</text>
+<text x="52.0" y="338.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">你加的元素页面立刻看得见；页面重渲染也会把你的元素一起换掉 → 通信只能借 DOM / postMessage</text>
+<rect x="32.0" y="362.0" width="896.0" height="46.0" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="52.0" y="390.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b91c1c" font-weight="600" text-anchor="start">所以：页面来的字只能当文本（textContent），永远不能当 HTML 或代码——本专题唯一的安全线</text>
+<text x="32.0" y="428.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">判据 CSC-A / SEC-A / SEC-B</text>
+</svg>

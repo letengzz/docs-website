@@ -275,6 +275,24 @@ console.log(host.innerHTML);
 一旦某天上传器从「单次 PUT」切到「分片」，这条比对会**静默失效**（永远不相等，于是每次都当作新图），而不是报错。要用就去用自己算的 `sha256`。
 :::
 
+## 与「浏览器扩展工程」的分工（第 177 天补充）
+
+本页处理的是「**用户粘进来的 HTML 不可信**」。[浏览器扩展工程](../../../Tools/BrowserExtension/index.md)的[实战一页](../../../Tools/BrowserExtension/Practice/index.md)里有一个 `readSelection()`，它拿到的选区 HTML **属于同一类不可信输入**，而且来源更杂：任意站点、任意编辑器、任意 `contenteditable`。
+
+| 环节 | 本页（富文本编辑器内） | 扩展（读选区 → 写自有存储） |
+|---|---|---|
+| 输入来源 | 剪贴板里的 `text/html` | 页面 DOM 的实际序列化结果（`Range.cloneContents()`） |
+| 信任级别 | 不可信，走白名单 | **同样不可信**，且没有 schema 兜底 |
+| 落点 | 编辑器 schema，解析失败即丢弃 | 你自己的存储或服务端，**没有第二道闸** |
+| 脚本风险 | 在解析器层面被 schema 挡住 | 若用 `innerHTML` 写回预览 → 直接执行 |
+
+**两条容易忽略的**：
+
+1. **`cloneContents()` 会把内联事件属性一起带出来**（`onclick`、`onerror`），它不做任何清洗。保存前必须过白名单；只取纯文本时更安全的路径是走 `DOMParser` 的惰性文档再取 `textContent`，而不是先拼字符串再解析。
+2. **`Shadow DOM + all: initial` 只能挡样式，挡不住脚本**。它能解决「页面 CSS 让你的按钮变形/消失」，不能解决「页面脚本读你 DOM 里的内容」——后者要靠不把敏感数据放进 DOM。
+
+一句话分诊：**「粘进来的这段 HTML 能不能进我的 schema」看本页；「从别人页面摘出来的这段 HTML 能不能存」看那一页。**
+
 ## 参考资料
 
 - [CVE-2026-104847](https://www.tenable.com/cve/CVE-2026-104847) · [GHSA-c8x8-7fp4-3x9w](https://github.com/ProseMirror/prosemirror-view/security/advisories/GHSA-c8x8-7fp4-3x9w)——粘贴路径 XSS，修复于 1.42.3

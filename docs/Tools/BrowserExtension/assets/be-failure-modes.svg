@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img">
+<title>五种失败模式：症状 → 根因 → 判据</title>
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+</defs>
+<text x="32.0" y="42.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">五种失败模式：症状 → 根因 → 判据</text>
+<text x="32.0" y="68.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">四种在开发机上不会复现：worker 是热的、页面只加载一次、权限刚点过允许</text>
+<text x="48.0" y="96.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#334155" font-weight="700" text-anchor="start">症状</text>
+<text x="300.0" y="96.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#334155" font-weight="700" text-anchor="start">真正的根因</text>
+<text x="680.0" y="96.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#334155" font-weight="700" text-anchor="start">判据</text>
+<rect x="32.0" y="108.0" width="896.0" height="48.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<rect x="32.0" y="108.0" width="5.0" height="48.0" rx="2" fill="#b91c1c" stroke="#b91c1c" stroke-width="0"/>
+<text x="52.0" y="138.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#0f172a" font-weight="600" text-anchor="start">后台任务跑一次就停</text>
+<text x="300.0" y="138.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">setInterval 排程，或进度存内存</text>
+<rect x="676.0" y="118.0" width="210.0" height="28.0" rx="14.0" fill="#f1f5f9" stroke="#334155" stroke-width="1.2"/>
+<text x="781.0" y="136.3" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#334155" font-weight="600" text-anchor="middle">MFL-A / MFL-C</text>
+<rect x="32.0" y="162.0" width="896.0" height="48.0" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+<rect x="32.0" y="162.0" width="5.0" height="48.0" rx="2" fill="#b45309" stroke="#b45309" stroke-width="0"/>
+<text x="52.0" y="192.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#0f172a" font-weight="600" text-anchor="start">消息偶尔回 undefined</text>
+<text x="300.0" y="192.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">异步监听器没 return true</text>
+<rect x="676.0" y="172.0" width="210.0" height="28.0" rx="14.0" fill="#f1f5f9" stroke="#334155" stroke-width="1.2"/>
+<text x="781.0" y="190.3" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#334155" font-weight="600" text-anchor="middle">MSG-C / MSG-E</text>
+<rect x="32.0" y="216.0" width="896.0" height="48.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<rect x="32.0" y="216.0" width="5.0" height="48.0" rx="2" fill="#b45309" stroke="#b45309" stroke-width="0"/>
+<text x="52.0" y="246.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#0f172a" font-weight="600" text-anchor="start">页面处理跑了两次</text>
+<text x="300.0" y="246.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">重复注入，没有单例标记</text>
+<rect x="676.0" y="226.0" width="210.0" height="28.0" rx="14.0" fill="#f1f5f9" stroke="#334155" stroke-width="1.2"/>
+<text x="781.0" y="244.3" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#334155" font-weight="600" text-anchor="middle">CSC-D / CSC-F</text>
+<rect x="32.0" y="270.0" width="896.0" height="48.0" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+<rect x="32.0" y="270.0" width="5.0" height="48.0" rx="2" fill="#2563eb" stroke="#2563eb" stroke-width="0"/>
+<text x="52.0" y="300.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#0f172a" font-weight="600" text-anchor="start">安装量高、留存低</text>
+<text x="300.0" y="300.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">权限过剩 + 首用无可见收益</text>
+<rect x="676.0" y="280.0" width="210.0" height="28.0" rx="14.0" fill="#f1f5f9" stroke="#334155" stroke-width="1.2"/>
+<text x="781.0" y="298.3" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#334155" font-weight="600" text-anchor="middle">PMI-A / PRP-B</text>
+<rect x="32.0" y="324.0" width="896.0" height="48.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<rect x="32.0" y="324.0" width="5.0" height="48.0" rx="2" fill="#b91c1c" stroke="#b91c1c" stroke-width="0"/>
+<text x="52.0" y="354.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#0f172a" font-weight="600" text-anchor="start">发版后用户数据丢失</text>
+<text x="300.0" y="354.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">换密钥 / ID 变了 / 无迁移</text>
+<rect x="676.0" y="334.0" width="210.0" height="28.0" rx="14.0" fill="#f1f5f9" stroke="#334155" stroke-width="1.2"/>
+<text x="781.0" y="352.3" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#334155" font-weight="600" text-anchor="middle">DST-A / STG-H</text>
+<text x="32.0" y="400.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b91c1c" font-weight="600" text-anchor="start">验收的固定前置：关掉 DevTools 再测一次——「DevTools attached」本身就是保活条件。</text>
+</svg>

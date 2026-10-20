@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img">
+<title>实战流程：一次点击的七步，与三条失败分支</title>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+</defs>
+<text x="32.0" y="42.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">实战流程：一次点击的七步，与三条失败分支</text>
+<rect x="32.0" y="86.0" width="110.0" height="76.0" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="44.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#2563eb" font-weight="700" text-anchor="start">① 手势</text>
+<text x="44.0" y="136.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">点按钮</text>
+<line x1="144.0" y1="124.0" x2="160.0" y2="124.0" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="162.0" y="86.0" width="110.0" height="76.0" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="174.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#2563eb" font-weight="700" text-anchor="start">② 注入</text>
+<text x="174.0" y="136.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">读选区</text>
+<line x1="274.0" y1="124.0" x2="290.0" y2="124.0" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="292.0" y="86.0" width="110.0" height="76.0" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+<text x="304.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b45309" font-weight="700" text-anchor="start">③ 校验</text>
+<text x="304.0" y="136.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">截断 8k</text>
+<line x1="404.0" y1="124.0" x2="420.0" y2="124.0" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="422.0" y="86.0" width="110.0" height="76.0" rx="10" fill="#ffffff" stroke="#047857" stroke-width="1.4"/>
+<text x="434.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#047857" font-weight="700" text-anchor="start">④ 落盘</text>
+<text x="434.0" y="136.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">q:uuid</text>
+<line x1="534.0" y1="124.0" x2="550.0" y2="124.0" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="552.0" y="86.0" width="110.0" height="76.0" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+<text x="564.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b45309" font-weight="700" text-anchor="start">⑤ 授权</text>
+<text x="564.0" y="136.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">contains</text>
+<line x1="664.0" y1="124.0" x2="680.0" y2="124.0" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="682.0" y="86.0" width="110.0" height="76.0" rx="10" fill="#ffffff" stroke="#047857" stroke-width="1.4"/>
+<text x="694.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#047857" font-weight="700" text-anchor="start">⑥ 上传</text>
+<text x="694.0" y="136.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">POST</text>
+<line x1="794.0" y1="124.0" x2="810.0" y2="124.0" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="812.0" y="86.0" width="110.0" height="76.0" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="824.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#2563eb" font-weight="700" text-anchor="start">⑦ 反馈</text>
+<text x="824.0" y="136.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">删或留</text>
+<rect x="32.0" y="186.0" width="288.0" height="116.0" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="48.0" y="212.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b91c1c" font-weight="700" text-anchor="start">分支 A：没有 host 权限</text>
+<text x="48.0" y="238.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">不上传，记录留在队列</text>
+<text x="48.0" y="260.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">界面提示「需要授权」</text>
+<text x="48.0" y="282.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">→ 不静默失败（PRP-E）</text>
+<rect x="336.0" y="186.0" width="288.0" height="116.0" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="352.0" y="212.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b45309" font-weight="700" text-anchor="start">分支 B：上传失败</text>
+<text x="352.0" y="238.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">tries+1，退避 1→16 s</text>
+<text x="352.0" y="260.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">5 次后标 dead，不删除</text>
+<text x="352.0" y="282.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">→ 死信可查（MSG-F）</text>
+<rect x="640.0" y="186.0" width="288.0" height="116.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="656.0" y="212.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#2563eb" font-weight="700" text-anchor="start">分支 C：worker 被回收</text>
+<text x="656.0" y="238.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">队列在 storage 里不丢</text>
+<text x="656.0" y="260.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">闹钟跳一次继续 flush</text>
+<text x="656.0" y="282.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">→ 冷启动无损（MFL-A）</text>
+<rect x="32.0" y="318.0" width="896.0" height="118.0" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<text x="52.0" y="344.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#334155" font-weight="700" text-anchor="start">十条验收里的三个关键条件</text>
+<rect x="52.0" y="360.0" width="84.0" height="26.0" rx="13.0" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="94.0" y="377.1" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle">冷启动</text>
+<text x="52.0" y="410.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">点 Stop 后再点按钮仍成功</text>
+<rect x="344.0" y="360.0" width="84.0" height="26.0" rx="13.0" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="386.0" y="377.1" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle">二次导航</text>
+<text x="344.0" y="410.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">activeTab 失效后能重新授权</text>
+<rect x="636.0" y="360.0" width="84.0" height="26.0" rx="13.0" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="678.0" y="377.1" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle">断网</text>
+<text x="636.0" y="410.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">连点 5 次，联网后全部上传</text>
+<text x="32.0" y="466.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">判据 PRP-A（一记录一结果）、PRP-C（断网补发）、PRP-D（重复点击不丢）、PRP-E（未授权不静默）</text>
+</svg>

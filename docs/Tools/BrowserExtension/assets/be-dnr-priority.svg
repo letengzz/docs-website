@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" role="img">
+<title>DNR：三类规则集、两道上限、一条裁决顺序</title>
+<rect x="0" y="0" width="960" height="490" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+</defs>
+<text x="32.0" y="42.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">DNR：三类规则集、两道上限、一条裁决顺序</text>
+<rect x="32.0" y="84.0" width="288.0" height="136.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="48.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#2563eb" font-weight="700" text-anchor="start">静态 static</text>
+<text x="48.0" y="138.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">manifest 声明</text>
+<text x="48.0" y="168.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">100 可声明 / 50 启用</text>
+<text x="48.0" y="194.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start">保证 30,000 条</text>
+<rect x="336.0" y="84.0" width="288.0" height="136.0" rx="12" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="352.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#b45309" font-weight="700" text-anchor="start">动态 dynamic</text>
+<text x="352.0" y="138.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">updateDynamicRules</text>
+<text x="352.0" y="168.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">跨重启保留</text>
+<text x="352.0" y="194.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start">安全 30,000 / 不安全 5,000</text>
+<rect x="640.0" y="84.0" width="288.0" height="136.0" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="656.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#047857" font-weight="700" text-anchor="start">会话 session</text>
+<text x="656.0" y="138.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">updateSessionRules</text>
+<text x="656.0" y="168.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">重启即清空</text>
+<text x="656.0" y="194.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start">5,000 条</text>
+<rect x="32.0" y="240.0" width="490.0" height="150.0" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<text x="52.0" y="268.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#334155" font-weight="700" text-anchor="start">裁决顺序（从高到低）</text>
+<text x="52.0" y="296.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">① priority 数值大的胜（默认 1）</text>
+<text x="52.0" y="322.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">② 同 priority：allow 胜 block</text>
+<text x="52.0" y="348.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">③ 同 priority：后加载的规则集胜</text>
+<text x="52.0" y="374.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">④ 都没命中 → 放行</text>
+<rect x="546.0" y="240.0" width="382.0" height="150.0" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="566.0" y="268.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#b91c1c" font-weight="700" text-anchor="start">两个容易记错的上限</text>
+<text x="566.0" y="296.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">redirect / modifyHeaders 是「不安全」</text>
+<text x="566.0" y="316.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="700" text-anchor="start">→ 撞 5,000，不是 30,000</text>
+<text x="566.0" y="344.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">正则规则每类 1,000 条</text>
+<text x="566.0" y="364.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">单条编译后 &lt; 2 KB</text>
+<text x="566.0" y="384.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">30,000 条 urlFilter ≈ 4.67 MiB</text>
+<rect x="32.0" y="408.0" width="896.0" height="60.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="52.0" y="432.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="start">为什么不能在页面里自己拦：JS 线性扫描单条规则约 0.088 µs → 30,000 条 = 2.64 ms/请求</text>
+<text x="52.0" y="454.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">一个页面 100~300 个请求，仅匹配就要 260~790 ms；DNR 由浏览器原生编译执行，不进 JS 事件循环</text>
+</svg>

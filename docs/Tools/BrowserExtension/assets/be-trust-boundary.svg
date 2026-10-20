@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img">
+<title>信任边界：页面是不可信输入，消息是唯一关口</title>
+<rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+</defs>
+<text x="32.0" y="42.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">信任边界：页面是不可信输入，消息是唯一关口</text>
+<rect x="32.0" y="84.0" width="560.0" height="66.0" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="52.0" y="110.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">页面 DOM / 页面脚本</text>
+<text x="52.0" y="132.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">文本、属性、postMessage 全部攻击者可控</text>
+<rect x="444.0" y="102.0" width="134.0" height="28.0" rx="14.0" fill="#ffffff" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="511.0" y="120.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="middle">完全不可信</text>
+<rect x="32.0" y="158.0" width="560.0" height="66.0" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="52.0" y="184.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">内容脚本</text>
+<text x="52.0" y="206.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">和页面同进程，能力被刻意收窄</text>
+<rect x="444.0" y="176.0" width="134.0" height="28.0" rx="14.0" fill="#ffffff" stroke="#b45309" stroke-width="1.2"/>
+<text x="511.0" y="194.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#b45309" font-weight="600" text-anchor="middle">代码可信，输入不可信</text>
+<rect x="32.0" y="232.0" width="560.0" height="66.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="52.0" y="258.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">service worker</text>
+<text x="52.0" y="280.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">全部 chrome.*，只做校验与编排</text>
+<rect x="444.0" y="250.0" width="134.0" height="28.0" rx="14.0" fill="#ffffff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="511.0" y="268.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#2563eb" font-weight="600" text-anchor="middle">可信</text>
+<rect x="32.0" y="306.0" width="560.0" height="66.0" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="52.0" y="332.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">扩展页</text>
+<text x="52.0" y="354.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">有 DOM，别拿页面文本拼 HTML</text>
+<rect x="444.0" y="324.0" width="134.0" height="28.0" rx="14.0" fill="#ffffff" stroke="#047857" stroke-width="1.2"/>
+<text x="511.0" y="342.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#047857" font-weight="600" text-anchor="middle">可信（可能被 XSS）</text>
+<rect x="612.0" y="84.0" width="316.0" height="296.0" rx="12" fill="#f8fafc" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="632.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#b91c1c" font-weight="700" text-anchor="start">三个攻击面</text>
+<text x="632.0" y="148.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">① 把页面的字当 HTML</text>
+<text x="632.0" y="170.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">innerHTML 拼接 → 扩展 XSS</text>
+<text x="632.0" y="190.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="start">→ 见安全边界页</text>
+<text x="632.0" y="224.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">② 伪造消息</text>
+<text x="632.0" y="246.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">postMessage 谁都能发</text>
+<text x="632.0" y="266.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="start">→ 见安全边界页</text>
+<text x="632.0" y="300.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">③ 远程代码 / 供应链</text>
+<text x="632.0" y="322.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">RHC 禁令、SVG 内嵌脚本、更新通道</text>
+<text x="632.0" y="342.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="start">→ 见安全边界页</text>
+<rect x="32.0" y="394.0" width="896.0" height="48.0" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="52.0" y="423.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b91c1c" font-weight="700" text-anchor="start">唯一的安全线：页面来的字只能当文本；跨过这条线的每一次，都是把用户的登录态交出去</text>
+<text x="32.0" y="468.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">判据 SEC-A（无 innerHTML 拼接）、SEC-E（消息来源校验）、SEC-F（消息体积上限）</text>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img">
+<title>四问决策树：该不该做成扩展</title>
+<rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+</defs>
+<text x="32.0" y="42.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">四问决策树：该不该做成扩展</text>
+<rect x="32.0" y="90.0" width="460.0" height="62.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="48.0" y="116.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start">Q1  只服务你自己的一个站点？</text>
+<text x="48.0" y="138.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">是 → 站点内功能 / PWA，别做扩展</text>
+<line x1="262.0" y1="152.0" x2="262.0" y2="168.0" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="32.0" y="168.0" width="460.0" height="62.0" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<text x="48.0" y="194.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start">Q2  需要跨站点读改页面？</text>
+<text x="48.0" y="216.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">否 → 继续问 Q3</text>
+<line x1="262.0" y1="230.0" x2="262.0" y2="246.0" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="32.0" y="246.0" width="460.0" height="62.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="48.0" y="272.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start">Q3  需要碰系统（路径 / 串口 / 常驻）？</text>
+<text x="48.0" y="294.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">是 → 桌面应用</text>
+<line x1="262.0" y1="308.0" x2="262.0" y2="324.0" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="32.0" y="324.0" width="460.0" height="62.0" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<text x="48.0" y="350.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start">Q4  只想改自己的浏览体验、不发布？</text>
+<text x="48.0" y="372.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">是 → 先用用户脚本验证</text>
+<rect x="32.0" y="402.0" width="460.0" height="52.0" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="48.0" y="424.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#047857" font-weight="700" text-anchor="start">四问都过 → 做扩展</text>
+<text x="48.0" y="444.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">唯一能「在别人页面上动手」又被平台管住的形态</text>
+<rect x="520.0" y="90.0" width="408.0" height="368.0" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="540.0" y="118.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14" fill="#b91c1c" font-weight="700" text-anchor="start">先确认这些硬边界</text>
+<text x="540.0" y="150.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">✕ 注入不了 chrome:// 与商店页面</text>
+<text x="540.0" y="190.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">✕ 读不到响应体，不能按内容拦</text>
+<text x="540.0" y="230.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">✕ 秒级后台轮询不存在（最小 30 秒）</text>
+<text x="540.0" y="270.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">✕ 商店外分发要企业策略</text>
+<text x="540.0" y="310.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">✕ 拿不到用户真实身份（要自建）</text>
+<text x="540.0" y="360.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b91c1c" font-weight="600" text-anchor="start">任何一条命中，先换形态，别硬扛。</text>
+<text x="540.0" y="390.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">三个月后才发现此路不通，</text>
+<text x="540.0" y="410.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">是这一行最常见的浪费。</text>
+<text x="540.0" y="440.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">判据 EXO-H：全新配置 + 未登录走通首用</text>
+</svg>

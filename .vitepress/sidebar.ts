@@ -5,7 +5,7 @@ import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityComplia
 import { FrontBasic, FrontDataVisualization, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, CapacityCost, CertificateLifecycle, ChangeManagement, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
 import { BigData, CDC, ClickHouse, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, Lakehouse, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, Sharding, TimeSeries, VectorDatabase } from "./db";
-import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation, EngineeringMetrics } from "./tools";
+import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation, EngineeringMetrics, BrowserExtension } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 const OthersReview = [
@@ -120,7 +120,7 @@ export const sidebar = {
     {
       text: "工具",
       collapsed: true,
-      items: [...Build, ...CICD, ...DatabaseClients, ...APIDesign, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...DocsInfra, ...DependencyGovernance, ...CodeQuality, ...Toolchain, ...ObservabilityDriven, ...TestDataSimulation, ...EngineeringMetrics, ...Others],
+      items: [...Build, ...CICD, ...DatabaseClients, ...APIDesign, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...DocsInfra, ...DependencyGovernance, ...CodeQuality, ...Toolchain, ...BrowserExtension, ...ObservabilityDriven, ...TestDataSimulation, ...EngineeringMetrics, ...Others],
     },
   ],
   "/project": [
@@ -277,6 +277,7 @@ export const sidebar = {
   "/docs/Tools/TestingTools": TestingTools,
   "/docs/Tools/TestDataSimulation": TestDataSimulation,
   "/docs/Tools/EngineeringMetrics": EngineeringMetrics,
+  "/docs/Tools/BrowserExtension": BrowserExtension,
   "/docs/Tools/VersionControl": VC,
   "/docs/Tools/Others": Others,
   "/project/Base": BaseProject,

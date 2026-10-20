@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img">
+<title>四个存储区：配额、生存期、可见性</title>
+<rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+</defs>
+<text x="32.0" y="42.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">四个存储区：配额、生存期、可见性</text>
+<rect x="32.0" y="84.0" width="212.0" height="176.0" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="46.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#047857" font-weight="700" text-anchor="start">storage.session</text>
+<text x="46.0" y="142.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start">10 MB（内存）</text>
+<text x="46.0" y="174.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">浏览器退出即清</text>
+<text x="46.0" y="206.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">token / 临时态</text>
+<rect x="254.0" y="84.0" width="212.0" height="176.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="268.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#2563eb" font-weight="700" text-anchor="start">storage.local</text>
+<text x="268.0" y="142.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start">10 MB（可加大）</text>
+<text x="268.0" y="174.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">卸载扩展才清</text>
+<text x="268.0" y="206.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">缓存 / 队列</text>
+<rect x="476.0" y="84.0" width="212.0" height="176.0" rx="12" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="490.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b45309" font-weight="700" text-anchor="start">storage.sync</text>
+<text x="490.0" y="142.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start">100 KB / 8 KB 单项</text>
+<text x="490.0" y="174.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">跟随账号同步</text>
+<text x="490.0" y="206.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">小的用户设置</text>
+<rect x="698.0" y="84.0" width="212.0" height="176.0" rx="12" fill="#f1f5f9" stroke="#334155" stroke-width="1.4"/>
+<text x="712.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#334155" font-weight="700" text-anchor="start">storage.managed</text>
+<text x="712.0" y="142.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start">由策略决定</text>
+<text x="712.0" y="174.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">管理员下发（只读）</text>
+<text x="712.0" y="206.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">企业策略</text>
+<rect x="32.0" y="282.0" width="438.0" height="152.0" rx="12" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="52.0" y="310.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#b45309" font-weight="700" text-anchor="start">配额按字节算，不按字符</text>
+<text x="52.0" y="340.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">纯 ASCII：1 B/字符 → 8,192 字符</text>
+<text x="52.0" y="366.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">纯中文：3 B/字符 → 约 2,730 字</text>
+<text x="52.0" y="392.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">Emoji：4 B/字符 → 约 2,048 个</text>
+<text x="52.0" y="420.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">实测混合 JSON：106 字符 / 202 B（1.906 B/字符）</text>
+<rect x="490.0" y="282.0" width="438.0" height="152.0" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="510.0" y="310.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#b91c1c" font-weight="700" text-anchor="start">512 项与 100 KB 在哪里交汇</text>
+<text x="510.0" y="340.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b91c1c" font-weight="700" text-anchor="start">512 × 200 B = 102,400 B = 100 KB</text>
+<text x="510.0" y="368.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">平均 100 B/项 → 先撞 512 项</text>
+<text x="510.0" y="390.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">平均 400 B/项 → 先撞 100 KB</text>
+<text x="510.0" y="418.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">写入配额：120 次/分、1,800 次/时（按 key 计）</text>
+<text x="32.0" y="462.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">判据 STG-B（sync 单项 &lt; 8 KB）、STG-C（写有错误分支）、STG-E（高频写防抖）</text>
+</svg>

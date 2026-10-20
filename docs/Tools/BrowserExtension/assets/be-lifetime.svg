@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img">
+<title>worker 的一生：谁叫醒它、什么算活着、什么时候被杀</title>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+</defs>
+<text x="32.0" y="42.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">worker 的一生：谁叫醒它、什么算活着、什么时候被杀</text>
+<rect x="32.0" y="84.0" width="250.0" height="240.0" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<text x="52.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#2563eb" font-weight="700" text-anchor="start">五种唤醒源</text>
+<text x="52.0" y="144.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 安装 / 更新 / 启动</text>
+<text x="52.0" y="174.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 已注册事件被派发</text>
+<text x="52.0" y="204.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 端口连上来</text>
+<text x="52.0" y="234.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 打开 popup / options</text>
+<text x="52.0" y="264.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 闹钟到点</text>
+<text x="52.0" y="306.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">只有这五种</text>
+<line x1="286.0" y1="200.0" x2="326.0" y2="200.0" stroke="#2563eb" stroke-width="1.6" marker-end="url(#arrowb)"/>
+<rect x="330.0" y="84.0" width="280.0" height="240.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="470.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14.5" fill="#2563eb" font-weight="700" text-anchor="middle">service worker</text>
+<text x="470.0" y="142.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">空闲 30 秒 → 终止</text>
+<text x="470.0" y="166.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">单事件 &gt; 5 分钟 → 终止</text>
+<text x="470.0" y="198.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="middle">活动：派发事件 / 调 API</text>
+<text x="470.0" y="218.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="middle">端口消息 / WS 收发</text>
+<text x="470.0" y="250.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="600" text-anchor="middle">定时器不算活动</text>
+<text x="470.0" y="270.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="600" text-anchor="middle">DevTools 挂着算活动</text>
+<text x="470.0" y="300.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="600" text-anchor="middle">内存里的东西全消失</text>
+<line x1="614.0" y1="200.0" x2="654.0" y2="200.0" stroke="#b91c1c" stroke-width="1.6" marker-end="url(#arrowr)"/>
+<rect x="658.0" y="84.0" width="270.0" height="240.0" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="678.0" y="112.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#b91c1c" font-weight="700" text-anchor="start">三种终止</text>
+<text x="678.0" y="144.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 空闲 30 秒</text>
+<text x="678.0" y="172.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 单事件超 5 分钟</text>
+<text x="678.0" y="200.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 浏览器退出</text>
+<text x="678.0" y="234.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start">Chrome 没有 onSuspend</text>
+<text x="678.0" y="254.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">Firefox 有，Chrome 无</text>
+<text x="678.0" y="284.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="600" text-anchor="start">所以每步都要写检查点</text>
+<rect x="32.0" y="340.0" width="896.0" height="108.0" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+<text x="52.0" y="366.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#334155" font-weight="700" text-anchor="start">一次唤醒的时间轴</text>
+<line x1="70" y1="404" x2="890" y2="404" stroke="#94a3b8" stroke-width="1.6"/>
+<circle cx="110" cy="404" r="5" fill="#2563eb"/>
+<text x="110.0" y="428.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle">事件到达</text>
+<circle cx="300" cy="404" r="5" fill="#2563eb"/>
+<text x="300.0" y="428.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle">监听器已注册</text>
+<text x="300.0" y="444.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">顶层同步代码跑完</text>
+<circle cx="500" cy="404" r="5" fill="#2563eb"/>
+<text x="500.0" y="428.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle">读存储 + 解析</text>
+<text x="500.0" y="444.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle">66 KiB / 0.65 ms</text>
+<circle cx="700" cy="404" r="5" fill="#2563eb"/>
+<text x="700.0" y="428.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle">处理完成</text>
+<circle cx="860" cy="404" r="5" fill="#2563eb"/>
+<text x="860.0" y="428.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle">空闲 30 s 后终止</text>
+<text x="32.0" y="478.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">冷启动成本实测：66 KiB → 0.65 ms｜690 KiB → 6.53 ms｜3.58 MiB → 35.07 ms｜14.7 MiB → 163.57 ms</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" role="img">
+<title>三个执行上下文：能力、DOM、寿命三者不可兼得</title>
+<rect x="0" y="0" width="960" height="470" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+</defs>
+<text x="32.0" y="42.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">三个执行上下文：能力、DOM、寿命三者不可兼得</text>
+<rect x="32.0" y="88.0" width="288.0" height="186.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="50.0" y="116.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15.5" fill="#2563eb" font-weight="700" text-anchor="start">service worker</text>
+<text x="50.0" y="138.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">后台 · 无界面</text>
+<text x="50.0" y="168.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 空闲 30 秒即终止</text>
+<text x="50.0" y="194.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 无 DOM / 无 window</text>
+<text x="50.0" y="220.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 几乎全部 chrome.* API</text>
+<text x="50.0" y="246.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 单事件上限 5 分钟</text>
+<rect x="336.0" y="88.0" width="288.0" height="186.0" rx="12" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="354.0" y="116.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15.5" fill="#b45309" font-weight="700" text-anchor="start">扩展页</text>
+<text x="354.0" y="138.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">popup / options</text>
+<text x="354.0" y="168.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 随窗口生死</text>
+<text x="354.0" y="194.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 有自己的 DOM</text>
+<text x="354.0" y="220.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 几乎全部 API</text>
+<text x="354.0" y="246.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 只能做视图，不做写</text>
+<rect x="640.0" y="88.0" width="288.0" height="186.0" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="658.0" y="116.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15.5" fill="#047857" font-weight="700" text-anchor="start">内容脚本</text>
+<text x="658.0" y="138.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">页面里 · 隔离世界</text>
+<text x="658.0" y="168.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 随页面生死</text>
+<text x="658.0" y="194.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 共享页面 DOM</text>
+<text x="658.0" y="220.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 只有 runtime / storage</text>
+<text x="658.0" y="246.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">· 输入完全不可信</text>
+<rect x="32.0" y="292.0" width="896.0" height="62.0" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<text x="52.0" y="318.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="400" text-anchor="start">共享：同一棵 DOM（内容脚本与页面）· chrome.storage（按扩展 ID 隔离）· 消息通道</text>
+<text x="52.0" y="340.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">不共享：JS 全局对象——你读不到页面的变量，页面也读不到你</text>
+<rect x="32.0" y="370.0" width="438.0" height="74.0" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="52.0" y="396.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#b91c1c" font-weight="700" text-anchor="start">推论 1：业务逻辑不能住在 popup 里</text>
+<text x="52.0" y="418.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">popup 一关，正在跑的请求被取消——「正在保存」会真的没保存。</text>
+<text x="52.0" y="436.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">写操作交给 service worker，popup 只做视图。</text>
+<rect x="490.0" y="370.0" width="438.0" height="74.0" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="510.0" y="396.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#b91c1c" font-weight="700" text-anchor="start">推论 2：worker 不能当数据库</text>
+<text x="510.0" y="418.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">模块级变量在两次事件之间一定会消失——不是「可能」。</text>
+<text x="510.0" y="436.0" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">状态落 storage.session / local，见生命周期页。</text>
+</svg>
