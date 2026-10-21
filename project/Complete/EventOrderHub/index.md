@@ -38,7 +38,7 @@
 | # | 章节 | 判据族（已交付才填） | 状态 |
 | --- | --- | --- | --- |
 | 1 | [需求拆分：五个上下文、十个故事与订单状态机](Requirements/index.md) | `EOH-A` ~ `EOH-H` | ✅ 第 181 天 |
-| 2 | 技术选型与版本基线 | — | ⏳ 第 182 天 |
+| 2 | [技术选型与版本基线](TechBaseline/index.md) | `ETS-A` ~ `ETS-H` | ✅ 第 182 天 |
 | 3 | 架构设计：事件流与一致性边界 | — | ⏳ |
 | 4 | 数据库设计：九张表与六条不变量 | — | ⏳ |
 | 5 | 环境与工程骨架 | — | ⏳ |
@@ -60,16 +60,19 @@
 
 > 章节按天推进，**每章都自带「如何验证」**：读者按页面里的命令跑一遍，应得到页面写明的读数。项目目录只放 Markdown 与配图，不放任何工程文件。
 
-## 四、技术基线（待第 182 天定稿）
+## 四、技术基线（第 182 天定稿）
 
-| 层 | 选型 | 理由（一句话） |
+| 层 | 定稿版本 | 理由（一句话） |
 | --- | --- | --- |
-| 语言/运行时 | Java 25（LTS） | 与周期 6 保持同一基线，虚拟线程适合大量短事务 |
-| 框架 | Spring Boot 4.1 | 事务、调度、可观测开箱即用 |
-| 数据库 | PostgreSQL 18 | 需要 `FOR UPDATE SKIP LOCKED`（扫描 outbox）与 `jsonb`（事件载荷） |
-| 消息 | Kafka 4.1（KRaft，单节点即可） | 事件总线；本地用单节点容器验证语义，不追求集群 |
-| 缓存 | Redis 8 | 幂等键与热点商品快照，按「可丢」设计 |
-| 可观测 | OpenTelemetry + Prometheus | 事件延迟与积压必须能看见 |
+| 语言/运行时 | **Java 25（LTS）** | 与周期 6 保持同一基线，虚拟线程适合大量短事务 |
+| 框架 | **Spring Boot 4.1.1**（Spring Framework 7.0.9） | 4.1.x 在 OSS 支持窗口内（至 2027-07），事务、调度、可观测开箱即用 |
+| 数据库 | **PostgreSQL 18.6** | 需要 `FOR UPDATE SKIP LOCKED`（扫描 outbox）与 `jsonb`（事件载荷） |
+| 消息 | **Kafka 4.2.1（KRaft，单节点）** | 4.x 起 ZooKeeper 已移除；本地单节点只验语义，不追集群 |
+| 缓存 | **Redis 8.2** | 幂等键与热点商品快照，按「可丢」设计 |
+| 迁移 | **Flyway 11.x** | 迁移以手写 SQL 为主，`afterMigrate` 回调挂清单校验 |
+| 可观测 | **OpenTelemetry 1.62 + Prometheus** | 事件延迟与积压必须能看见 |
+
+三条能力边界（详见 [技术选型与版本基线](TechBaseline/index.md)）：**事务内一致性归 PostgreSQL**（订单 + 订单项 + outbox 同事务）、**跨上下文一致性归 outbox + Kafka**（至少一次 + 消费端幂等）、**缓存只做加速不做判定**。
 
 ## 五、第 181 天交付
 
@@ -100,8 +103,33 @@ PY
 # 期望输出：states=10 trans=16 reachable=10
 ```
 
-**下一步**（第 182 天）：技术选型与版本基线——把上表的「理由」扩成可核对的版本清单（Java 25 / Spring Boot 4.1 / PG 18 / Kafka 4.1 的具体小版本与已知坑），并定下「哪些能力用库实现、哪些用中间件实现」的边界。
+**下一步**（第 183 天）：架构设计：事件流与一致性边界——五条事件的完整流向、outbox 投递器三个参数、消费端幂等键与去重窗口、三类故障的检测手段。
 
-## 六、判据纪律
+## 六、第 182 天交付
+
+- 新建 [技术选型与版本基线](TechBaseline/index.md)（判据 `ETS-A` ~ `ETS-H`）。
+- 一张自绘示意图：`eoh-tech-baseline.svg`（三条能力边界与本地最小可跑集）。
+- 七条组件的版本表，每条都带「为什么不是相邻版本」与「已知坑」；三条能力边界写成可检查的判据。
+- 本地最小可跑集：3 个容器（PG 18.6 / Kafka 4.2.1 / Redis 8.2）+ `deploy/compose.yaml` 骨架 + 四段验收命令。
+
+**如何验证**（读者可执行，四步全过才算基线可跑）：
+
+```shell
+# 1) 编排文件语法
+docker compose -f deploy/compose.yaml config >/dev/null && echo COMPOSE_OK
+
+# 2) 三个容器健康
+docker compose -f deploy/compose.yaml up -d
+docker compose -f deploy/compose.yaml ps --format 'table {{.Name}}\t{{.Status}}'
+# 期望：三行均为 (healthy)
+
+# 3) 关键版本与参数
+docker exec eoh-pg psql -U eoh -d eoh -Atc "select version();"
+docker exec eoh-pg psql -U eoh -d eoh -Atc "show lock_timeout; show statement_timeout;"
+docker exec eoh-redis redis-cli INFO server | grep redis_version
+# 期望：PostgreSQL 18.6 / 3s / 30s / redis_version:8.2.x
+```
+
+## 七、判据纪律
 
 每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EAT` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMO` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。

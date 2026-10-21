@@ -622,17 +622,6 @@ go run -race fetchall.go
 
 **验证方式**：`-race` 模式下无数据竞争报告；输出显示 `c` 失败后 `d`、`e` 被取消（未出现在成功列表）；`e` 即使不失败也会因 3 秒延迟超过 2 秒超时而被中断。把 `concurrency` 改为 1，可以看到任务串行执行时超时更早触发。
 
-## 9. 参考资料
-
-- [Go 官方博客：Share Memory By Communicating](https://go.dev/blog/codelab-share)
-- [Go 官方博客：Go Concurrency Patterns](https://go.dev/blog/concurrency-patterns)
-- [Go 并发模式：Pipeline（官方博客）](https://go.dev/blog/pipelines)
-- [Go 语言规范：Channel 类型](https://go.dev/ref/spec#Channel_types)
-- [pkg.go.dev：context](https://pkg.go.dev/context)
-- [pkg.go.dev：sync](https://pkg.go.dev/sync)
-- [pkg.go.dev：golang.org/x/sync/errgroup](https://pkg.go.dev/golang.org/x/sync/errgroup)
-- [The Go Memory Model](https://go.dev/ref/mem)
-
 ## GMP 调度：goroutine 到底跑在哪儿
 
 前面几节讲的都是「怎么用」goroutine，这一节补上「它被谁调度」。理解 GMP 不是为了背概念，而是为了回答三个真实问题：**为什么 `GOMAXPROCS` 默认等于 CPU 核数、为什么阻塞系统调用不会卡住整个程序、为什么 goroutine 数不等于并发度**。
@@ -704,3 +693,13 @@ func consumer2(ch <-chan string) { fmt.Println(<-ch) }   // 一定能读到 "x"
 `-race` 是基于实际执行的动态检测。没跑到那条分支、没并发到那一刻，就不会报。所以「`-race` 通过」不等于「没有竞争」，只等于「没测出竞争」。**高并发路径要有针对性的并发测试**（多 goroutine 同时读写同一份数据，跑 `-count=100`）。
 :::
 
+## 9. 参考资料
+
+- [Go 官方博客：Share Memory By Communicating](https://go.dev/blog/codelab-share)
+- [Go 官方博客：Go Concurrency Patterns](https://go.dev/blog/concurrency-patterns)
+- [Go 并发模式：Pipeline（官方博客）](https://go.dev/blog/pipelines)
+- [Go 语言规范：Channel 类型](https://go.dev/ref/spec#Channel_types)
+- [pkg.go.dev：context](https://pkg.go.dev/context)
+- [pkg.go.dev：sync](https://pkg.go.dev/sync)
+- [pkg.go.dev：golang.org/x/sync/errgroup](https://pkg.go.dev/golang.org/x/sync/errgroup)
+- [The Go Memory Model](https://go.dev/ref/mem)

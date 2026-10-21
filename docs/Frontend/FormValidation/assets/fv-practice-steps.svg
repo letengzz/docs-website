@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 540" width="940" height="540" role="img" aria-label="三步企业认证表单的分步流程与每步的校验边界">
+  <defs>
+    <marker id="fvArrow4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="940" height="540" fill="#ffffff"/>
+  <text x="470" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">实战：三步企业认证，每一步只判自己这一步</text>
+  <text x="470" y="54" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#64748b">跨步约束在「进入下一步」时判，而不是在第一步就判</text>
+
+  <rect x="30" y="76" width="280" height="180" rx="12" fill="#eff6ff" stroke="#bfd3f5"/>
+  <text x="48" y="102" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#1d4ed8">第 1 步 · 企业信息</text>
+  <text x="48" y="128" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">企业全称 / 统一社会信用代码</text>
+  <text x="48" y="150" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">所属行业 / 员工规模</text>
+  <text x="48" y="172" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">营业执照（文件）</text>
+  <text x="48" y="200" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">校验：格式 + 校验位（本地）</text>
+  <text x="48" y="222" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">唯一性：进下一步时异步查</text>
+  <text x="48" y="244" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">文件：类型/大小/数量三道闸</text>
+
+  <rect x="330" y="76" width="280" height="180" rx="12" fill="#ecfdf5" stroke="#b6e3dd"/>
+  <text x="348" y="102" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#0f766e">第 2 步 · 管理员</text>
+  <text x="348" y="128" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">姓名 / 手机号 / 邮箱</text>
+  <text x="348" y="150" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">短信验证码 / 登录密码</text>
+  <text x="348" y="172" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">确认密码 / 协议勾选</text>
+  <text x="348" y="200" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">校验：两密码一致（跨字段）</text>
+  <text x="348" y="222" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">验证码：60 s 倒计时 + 服务端判</text>
+  <text x="348" y="244" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">协议：未勾选时按钮不可点</text>
+
+  <rect x="630" y="76" width="280" height="180" rx="12" fill="#f5f3ff" stroke="#ddd0f5"/>
+  <text x="648" y="102" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#6d28d9">第 3 步 · 确认提交</text>
+  <text x="648" y="128" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">回显前两步的摘要</text>
+  <text x="648" y="150" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">可点「返回修改」跳回任意步</text>
+  <text x="648" y="172" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">提交按钮（唯一入口）</text>
+  <text x="648" y="200" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">校验：全量 + 悬挂异步等完</text>
+  <text x="648" y="222" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">提交：幂等键 + 同步闸门</text>
+  <text x="648" y="244" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">失败：字段错误落回对应步</text>
+
+  <line x1="310" y1="166" x2="330" y2="166" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#fvArrow4)"/>
+  <line x1="610" y1="166" x2="630" y2="166" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#fvArrow4)"/>
+
+  <rect x="30" y="280" width="880" height="112" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="48" y="306" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0f172a">一份状态，三处切片</text>
+  <text x="48" y="330" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">values 是一整份对象（不分步存）；errors 按字段名映射；step 只是「显示哪一个切片」</text>
+  <text x="48" y="352" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">这样「返回上一步」不需要搬运数据，也不会出现「第 1 步的数据在第 3 步丢了」</text>
+  <text x="48" y="374" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">反例：每步一个独立 useState 对象 → 跨步约束要手动合并，合并漏一个字段就静默丢失</text>
+
+  <rect x="30" y="408" width="880" height="106" rx="10" fill="#fff7ed" stroke="#f5d0b0"/>
+  <text x="48" y="434" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#c2410c">每步的「可离开」判据</text>
+  <text x="48" y="458" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">① 本步字段全部通过同步校验；② 本步的异步校验无「进行中」，或有结论且结论为通过；</text>
+  <text x="48" y="480" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">③ 跨步约束（如「管理员邮箱不能等于企业邮箱」）在离开时判一次，失败则停在本步并聚焦；</text>
+  <text x="48" y="502" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">④ 允许「先存草稿再离开」，但草稿必须带 schemaVersion 与 step</text>
+</svg>

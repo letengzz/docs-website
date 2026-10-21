@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" width="920" height="520" role="img" aria-label="校验触发时机矩阵：五个触发点与三档模式的组合">
+  <rect x="0" y="0" width="920" height="520" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">校验时机不是「一个开关」，而是一张 5 × 3 的表</text>
+  <text x="460" y="56" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#64748b">列是「什么时候判」，行是「判完给谁看」；错配的组合就是「一进页面满屏红」</text>
+
+  <rect x="30" y="76" width="150" height="40" rx="8" fill="#0f172a"/>
+  <text x="105" y="101" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#ffffff">触发点</text>
+  <rect x="190" y="76" width="230" height="40" rx="8" fill="#eff6ff" stroke="#bfd3f5"/>
+  <text x="305" y="101" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#1d4ed8">onSubmit（最保守）</text>
+  <rect x="430" y="76" width="230" height="40" rx="8" fill="#ecfdf5" stroke="#b6e3dd"/>
+  <text x="545" y="101" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#0f766e">onBlur（推荐默认）</text>
+  <rect x="670" y="76" width="220" height="40" rx="8" fill="#fff7ed" stroke="#f5d0b0"/>
+  <text x="780" y="101" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#c2410c">onChange（最激进）</text>
+
+  <rect x="30" y="126" width="150" height="72" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="105" y="158" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#0f172a">T1 挂载</text>
+  <text x="105" y="178" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">跑一遍但不显示</text>
+  <rect x="190" y="126" width="230" height="72" rx="8" fill="#ffffff" stroke="#dbe3ee"/>
+  <text x="305" y="158" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">只为「提交时一次说清」</text>
+  <text x="305" y="180" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">准备错误集合</text>
+  <rect x="430" y="126" width="230" height="72" rx="8" fill="#ffffff" stroke="#dbe3ee"/>
+  <text x="545" y="158" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">同左，但不显示</text>
+  <text x="545" y="180" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">为空表单预置默认值</text>
+  <rect x="670" y="126" width="220" height="72" rx="8" fill="#ffffff" stroke="#dbe3ee"/>
+  <text x="780" y="158" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">不推荐</text>
+  <text x="780" y="180" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">首次渲染就全红</text>
+
+  <rect x="30" y="208" width="150" height="72" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="105" y="240" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#0f172a">T2 失焦</text>
+  <text x="105" y="260" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">blur</text>
+  <rect x="190" y="208" width="230" height="72" rx="8" fill="#ffffff" stroke="#dbe3ee"/>
+  <text x="305" y="240" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">失焦只记 touched</text>
+  <text x="305" y="262" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">错误留到提交时显示</text>
+  <rect x="430" y="208" width="230" height="72" rx="8" fill="#ecfdf5" stroke="#b6e3dd"/>
+  <text x="545" y="240" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#0f766e">✅ 默认组合</text>
+  <text x="545" y="262" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">离开即判，边填边修</text>
+  <rect x="670" y="208" width="220" height="72" rx="8" fill="#fff7ed" stroke="#f5d0b0"/>
+  <text x="780" y="240" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#c2410c">提前报错的来源</text>
+  <text x="780" y="262" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">用户还没输完就红</text>
+
+  <rect x="30" y="290" width="150" height="72" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="105" y="322" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#0f172a">T3 输入</text>
+  <text x="105" y="342" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">change / input</text>
+  <rect x="190" y="290" width="230" height="72" rx="8" fill="#ffffff" stroke="#dbe3ee"/>
+  <text x="305" y="322" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">只清错误，不判</text>
+  <text x="305" y="344" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">改写时不新增红字</text>
+  <rect x="430" y="290" width="230" height="72" rx="8" fill="#ecfdf5" stroke="#b6e3dd"/>
+  <text x="545" y="322" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#0f766e">✅ 已报错的字段才复判</text>
+  <text x="545" y="344" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">reValidateMode</text>
+  <rect x="670" y="290" width="220" height="72" rx="8" fill="#ffffff" stroke="#dbe3ee"/>
+  <text x="780" y="322" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">全字段复判</text>
+  <text x="780" y="344" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">50 字段 × 每键 = 2500 次</text>
+
+  <rect x="30" y="372" width="150" height="72" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="105" y="404" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#0f172a">T4 依赖变化</text>
+  <text x="105" y="424" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">revalidate 字段</text>
+  <rect x="190" y="372" width="230" height="72" rx="8" fill="#ffffff" stroke="#dbe3ee"/>
+  <text x="305" y="404" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">同一节内联动</text>
+  <text x="305" y="426" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">确定时才对</text>
+  <rect x="430" y="372" width="230" height="72" rx="8" fill="#ffffff" stroke="#dbe3ee"/>
+  <text x="545" y="404" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">多步表单的关键</text>
+  <text x="545" y="426" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">改 A 影响 B</text>
+  <rect x="670" y="372" width="220" height="72" rx="8" fill="#fff7ed" stroke="#f5d0b0"/>
+  <text x="780" y="404" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#c2410c">依赖图漏一条</text>
+  <text x="780" y="426" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">旧结论留在屏幕上</text>
+
+  <rect x="30" y="454" width="150" height="50" rx="8" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="105" y="484" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#0f172a">T5 提交</text>
+  <rect x="190" y="454" width="700" height="50" rx="8" fill="#eff6ff" stroke="#bfd3f5"/>
+  <text x="540" y="484" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#1d4ed8">三档都必须过：全量校验 → 悬挂中的异步校验等完 → 服务端返回的字段错误落回本地</text>
+</svg>

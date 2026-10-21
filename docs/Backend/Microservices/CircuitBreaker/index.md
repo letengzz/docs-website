@@ -204,18 +204,6 @@ public class FallbackController {
 3. 用压测工具打满限流阈值，确认超额请求返回 429/降级，后端 QPS 被钳制在阈值附近。
 4. 在监控面板查看熔断打开次数、降级次数与恢复时间。
 
-## 参考资料
-
-- Resilience4j 文档：https://resilience4j.readme.io/
-- Resilience4j GitHub：https://github.com/resilience4j/resilience4j
-- Sentinel 文档：https://sentinelguard.io/zh-cn/
-- Spring Cloud Gateway 熔断过滤器：https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway-server-mvc/filter-factories/circuitbreaker.html
-- 雪崩与容错设计（阿里云）：https://help.aliyun.com/document_detail/62242.html
-
-::: tip 相关文档
-Resilience4j 注解组合顺序、与 OpenFeign fallback 的配合、Sentinel 对比等落地细节见 [Spring Cloud 专题：熔断限流与降级](../../SpringCloud/CircuitBreaker/index.md)。
-:::
-
 ## 与缓存层韧性的分工
 
 本页讲的是**通用的容错手段**：超时、重试、退避、熔断器状态机、限流算法、降级策略。它不关心被保护的是什么资源。
@@ -295,4 +283,16 @@ Resilience4j 注解组合顺序、与 OpenFeign fallback 的配合、Sentinel �
 
 ::: danger 一条不能互换的结论
 **「熔断配对了」不等于「过载被处理了」**：熔断是**下游已经坏了**之后的止损，它不减少打进来的请求量。到达率高于系统容量时，即使每个依赖都正确熔断，上游仍会被自己的线程池与队列撑满——那一步只能由限流与隔离解决。反过来，只做限流不做熔断，会在某个依赖变慢时把上游的所有线程都耗在等它上面，表现为「没有错误、只是全都变慢」。
+:::
+
+## 参考资料
+
+- Resilience4j 文档：https://resilience4j.readme.io/
+- Resilience4j GitHub：https://github.com/resilience4j/resilience4j
+- Sentinel 文档：https://sentinelguard.io/zh-cn/
+- Spring Cloud Gateway 熔断过滤器：https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway-server-mvc/filter-factories/circuitbreaker.html
+- 雪崩与容错设计（阿里云）：https://help.aliyun.com/document_detail/62242.html
+
+::: tip 相关文档
+Resilience4j 注解组合顺序、与 OpenFeign fallback 的配合、Sentinel 对比等落地细节见 [Spring Cloud 专题：熔断限流与降级](../../SpringCloud/CircuitBreaker/index.md)。
 :::

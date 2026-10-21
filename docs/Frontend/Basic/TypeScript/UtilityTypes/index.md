@@ -412,3 +412,17 @@ const obj = createObject({
 - Parameters 和 ReturnType 用于函数类型提取
 
 :::
+
+## 与「表单与校验工程」专题的分工（第 182 天补充）
+本页讲 **工具类型的语法**：`Partial` / `Pick` / `Omit` / 条件类型 / 映射类型。**用这些类型把 schema 推导成表单类型**的具体做法（`z.infer`、`Path<T>` 约束字段名）由专题回答。
+
+| 问题 | 本页回答 | 专题回答 |
+| --- | --- | --- |
+| 类型怎么写 | 映射类型、条件类型、`infer` 的语法 | 从运行时 schema 推导表单值类型，做到「改字段名就编译报错」 |
+| 字段名怎么约束 | `keyof T` 与模板字面量类型 | `Path<T>` 用于 `setField("a.b.c")` 的嵌套路径 |
+| 错误结构怎么建模 | 联合类型与可辨识字段 | `errors` 为什么是 `Partial<Record<keyof T, string>>` |
+
+::: warning 本页特有的一个坑
+递归的 `Path<T>`（`${K}.${Path<T[K]>}`）在字段层级深、字段数多时会撞上 TypeScript 的实例化深度上限，报 `Type instantiation is excessively deep and possibly infinite`。三种处置按代价从低到高：把表单结构**压平**（嵌套不超过 2 层）、给递归加深度计数参数（`Path<T, Depth>`，超过 4 层返回 `never`）、或只对「需要路径访问的字段」生成 `Path`（白名单）。不要靠 `// @ts-expect-error` 压掉——那会把真正的字段名错误一起吞掉。
+:::
+

@@ -253,6 +253,19 @@ W3C 的 [ARIA Authoring Practices Guide（APG）](https://www.w3.org/WAI/ARIA/ap
 把编辑器当成普通 `div`，指望浏览器给 Tab 一个合理行为。实际上富文本容器是一个**复合控件**：Tab 通常被用来"缩进/跳到下一个可编辑块"，Esc 用来"退出编辑回到工具栏"。这些必须显式实现，并且要与页面的焦点陷阱协调——否则用户会被困在编辑器里出不去（键盘用户完全无法离开）。
 :::
 
+## 与「表单与校验工程」专题的分工（第 182 天补充）
+本页讲 **焦点管理的规则**：Tab 顺序、焦点陷阱、跳转链接、可见焦点环。**表单在运行时如何改变焦点**（提交失败、首错定位、多步切换）由专题回答。
+
+| 问题 | 本页回答 | 专题回答 |
+| --- | --- | --- |
+| 焦点顺序 | DOM 顺序、`tabindex` 的正负值语义 | 提交失败后应落到哪个字段 |
+| 焦点可见 | `:focus-visible` 与 `outline` 的取舍 | 聚焦后如何避免被固定头部遮挡 |
+| 焦点陷阱 | 模态框内的循环与 `Esc` 归还 | 多步表单切步后焦点归位 |
+
+::: warning 本页特有的一个坑
+用 `el.focus()` 定位到错误字段时，浏览器会**先滚到该元素**，再执行你的 `scrollIntoView()`，于是出现两段位移；如果页面有固定头部，第一段滚动还会把字段停在头部下面。正确写法是 `el.focus({ preventScroll: true })` 之后再 `scrollIntoView({ block: "center" })`。另外，被 `focus()` 的元素必须在 Tab 序列里可见（`display:none` 或 `visibility:hidden` 时聚焦会静默失败）。
+:::
+
 ## 参考资料
 
 - [W3C ARIA Authoring Practices Guide（APG）](https://www.w3.org/WAI/ARIA/apg/)

@@ -362,3 +362,19 @@ label 标签可与表单控件相关联，关联之后点击文字，与之对�
 :::
 
 完整的可访问名称计算顺序、ARIA 五条规则与对比度判据，见 [国际化与无障碍 · 无障碍基础](../../../IntlA11y/A11yFoundation/index.md)。
+
+## 与「表单与校验工程」专题的分工（第 182 天补充）
+本页讲 **HTML 表单标签本身**：控件类型、属性、分组、原生约束校验。**约束校验够不够用、什么时候必须接管、错误怎么呈现**由专题回答。
+
+| 问题 | 本页回答 | 专题回答 |
+| --- | --- | --- |
+| 用哪个控件 | `input` 的 `type` 清单、`select` / `textarea` / `fieldset` | 原生能力到哪里为止、何时必须自己接管 |
+| 原生校验 | `required` / `pattern` / `min` / `maxlength` 的语义 | 三档校验时机、跨字段规则、异步校验 |
+| 错误提示 | 浏览器气泡与 `setCustomValidity` | 错误文案三段式、`aria-describedby`、首错聚焦 |
+
+::: danger 本页特有的三个坑
+1. **`form.submit()` 会绕过一切**：它不触发 `submit` 事件，也不执行约束校验。要「像用户点提交那样」提交，必须用 `form.requestSubmit()`。
+2. **`novalidate` 与 `required` 混用**：加了 `novalidate` 就关掉了整套原生校验，`required` 只剩语义；此时必须自己实现全部规则与错误呈现。
+3. **`setCustomValidity()` 设了不清就永远无效**：字段一旦被设过非空字符串，`validity.customError` 恒为 `true`，即使后来值改对了。每次校验都要先 `setCustomValidity("")` 再按需设置。
+:::
+

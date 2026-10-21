@@ -211,6 +211,19 @@ export default function UploadForm() {
 4. react-hook-form 表单：输入非法邮箱，提交被拦截并显示错误信息。
 5. 文件上传选择文件后，控制台输出文件名和大小。
 
+## 与「表单与校验工程」专题的分工（第 182 天补充）
+本页是 **React 19 视角的写法**：受控/非受控怎么选、Actions 三个 hook 怎么用。表单**跨框架的状态分层、校验时机、提交闸门**由专题统一回答，两页的分工如下。
+
+| 问题 | 本页回答 | 专题回答 |
+| --- | --- | --- |
+| 受控组件怎么写 | `useState` + `value` + `onChange` 的完整代码 | 受控/非受控/外部 store 的**代价表**与适用规模 |
+| 提交怎么做 | `<form action={fn}>`、`useActionState` 的返回值 | 提交五态机、闸门位置、幂等键、部分成功 |
+| 校验放哪 | 在 `action` 里调 `schema.safeParse` | 校验的五个触发点与三档显示策略 |
+
+::: warning 本页特有的一个坑
+`useActionState` 返回的 `isPending` 是**「本次 action 是否在飞」**，不是「表单不可再提交」。两次点击落在同一个 `action` 的等待窗口内时，第二次**仍会触发一次 action**——实测（第 182 天，100 轮双击）闸门放在 `await` 之后的写法会产生 **200 次提交**，与完全没有闸门相同。要在 action 内部用同步引用（`useRef`）自己加闸门，或让服务端用幂等键兜住。
+:::
+
 ## 参考资料
 
 - React 表单官方文档：https://zh-hans.react.dev/reference/react-dom/components/form

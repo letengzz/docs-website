@@ -862,15 +862,6 @@ docker images shortlink:local
 内存实现只适合单实例。一旦水平扩容为多个副本，`MemStore` 的「冲突检测」会失效（不同实例互相看不到），必须换成共享存储。这也解释了为什么 repo 层必须是**接口**——换存储不该动业务代码。
 :::
 
-## 12. 参考资料
-
-- [net/http 包文档](https://pkg.go.dev/net/http)
-- [crypto/rand 密码学安全随机数](https://pkg.go.dev/crypto/rand)
-- [log/slog 结构化日志](https://pkg.go.dev/log/slog)
-- [golang.org/x/time/rate](https://pkg.go.dev/golang.org/x/time/rate)
-- [OWASP：Unvalidated Redirects and Forwards](https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html)
-- [Go 官方：Docker 多阶段构建最佳实践](https://docs.docker.com/build/building/multi-stage/)
-
 ## 性能分析：pprof 三件套与调优实战
 
 服务上线后，「慢」和「高」都是现象，不是原因。这一节补上**怎么在 10 分钟内把现象收敛到具体代码行**。做法只有三步：采集 → `top` 找大户 → `list` 看代码。
@@ -948,3 +939,11 @@ flat  flat%   sum%        cum   cum%
 3. **「加机器」不能解决单点慢**。一个 3 秒的慢查询，加 10 倍机器后它还是 3 秒，只是错误率下降了——而它仍在占着连接。
 :::
 
+## 12. 参考资料
+
+- [net/http 包文档](https://pkg.go.dev/net/http)
+- [crypto/rand 密码学安全随机数](https://pkg.go.dev/crypto/rand)
+- [log/slog 结构化日志](https://pkg.go.dev/log/slog)
+- [golang.org/x/time/rate](https://pkg.go.dev/golang.org/x/time/rate)
+- [OWASP：Unvalidated Redirects and Forwards](https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html)
+- [Go 官方：Docker 多阶段构建最佳实践](https://docs.docker.com/build/building/multi-stage/)

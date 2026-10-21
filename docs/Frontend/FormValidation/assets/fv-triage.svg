@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="表单问题的分诊树：从现象定位到该翻哪一页">
+  <defs>
+    <marker id="fvArrow5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">先分诊，再修：六类现象对应六页</text>
+
+  <rect x="330" y="56" width="240" height="46" rx="23" fill="#0f172a"/>
+  <text x="450" y="84" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#ffffff">现象是哪一类？</text>
+
+  <rect x="30" y="140" width="260" height="78" rx="10" fill="#eff6ff" stroke="#bfd3f5"/>
+  <text x="46" y="164" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" font-weight="600" fill="#1d4ed8">满屏红 / 刚打开就报错</text>
+  <text x="46" y="186" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">→ ValidationTiming</text>
+  <text x="46" y="206" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#64748b">touched 与 errors 混在一起了</text>
+
+  <rect x="320" y="140" width="260" height="78" rx="10" fill="#ecfdf5" stroke="#b6e3dd"/>
+  <text x="336" y="164" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" font-weight="600" fill="#0f766e">输完了却提示「已被占用」</text>
+  <text x="336" y="186" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">→ AsyncValidation</text>
+  <text x="336" y="206" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#64748b">旧响应覆盖了新结论</text>
+
+  <rect x="610" y="140" width="260" height="78" rx="10" fill="#f5f3ff" stroke="#ddd0f5"/>
+  <text x="626" y="164" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" font-weight="600" fill="#6d28d9">前后端规则不一致</text>
+  <text x="626" y="186" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">→ SchemaSource</text>
+  <text x="626" y="206" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#64748b">两份规则各写一遍</text>
+
+  <rect x="30" y="238" width="260" height="78" rx="10" fill="#fff7ed" stroke="#f5d0b0"/>
+  <text x="46" y="262" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" font-weight="600" fill="#c2410c">提交了两次 / 按钮点不动</text>
+  <text x="46" y="284" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">→ SubmitFlow</text>
+  <text x="46" y="304" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#64748b">闸门在 await 之后</text>
+
+  <rect x="320" y="238" width="260" height="78" rx="10" fill="#fef2f2" stroke="#f5c2c2"/>
+  <text x="336" y="262" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" font-weight="600" fill="#b91c1c">读屏读不出来 / 键盘找不到</text>
+  <text x="336" y="284" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">→ ErrorPresentation</text>
+  <text x="336" y="304" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#64748b">只有颜色，没有文字与关联</text>
+
+  <rect x="610" y="238" width="260" height="78" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="626" y="262" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" font-weight="600" fill="#0f172a">输入卡 / 大表单掉帧</text>
+  <text x="626" y="284" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">→ LargeForm · StateModel</text>
+  <text x="626" y="304" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#64748b">全表单重判 + 全表单订阅</text>
+
+  <rect x="30" y="336" width="840" height="70" rx="10" fill="#eff6ff" stroke="#bfd3f5"/>
+  <text x="48" y="362" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#1d4ed8">两类「不像表单问题」的表单问题</text>
+  <text x="48" y="386" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">「改了另一个字段，这个字段的错误没消失」→ T4 依赖变化（ValidationTiming）；「返回上一步数据丢了」→ 分步切片（Practice）</text>
+
+  <rect x="30" y="424" width="840" height="70" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="48" y="450" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0f172a">一条通用起点</text>
+  <text x="48" y="474" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">先问「这个值现在存在哪里」，再看「谁有权改它」，最后才看「怎么显示」——90% 的表单 bug 在前两问就已定位</text>
+</svg>

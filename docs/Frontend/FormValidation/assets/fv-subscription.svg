@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" role="img" aria-label="订阅粒度对比：整表单订阅让每个字段都重渲染，字段级订阅只通知受影响的那一个">
+  <rect x="0" y="0" width="900" height="480" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">改一个字段，应该只重渲染一个字段</text>
+
+  <rect x="30" y="60" width="400" height="250" rx="10" fill="#fef2f2" stroke="#f5c2c2"/>
+  <text x="48" y="86" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#b91c1c">✗ 整表单订阅（50 个字段分别订阅 values）</text>
+  <rect x="48" y="100" width="360" height="26" rx="5" fill="#ffffff" stroke="#f5c2c2"/>
+  <text x="58" y="118" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#b91c1c">f0 ← 重渲染（其实只有它变了）</text>
+  <rect x="48" y="132" width="360" height="26" rx="5" fill="#fef2f2" stroke="#f5c2c2"/>
+  <text x="58" y="150" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#b91c1c">f1 ← 重渲染（无变化）</text>
+  <rect x="48" y="164" width="360" height="26" rx="5" fill="#fef2f2" stroke="#f5c2c2"/>
+  <text x="58" y="182" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#b91c1c">f2 ← 重渲染（无变化）</text>
+  <text x="200" y="212" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">…… 共 50 个</text>
+  <rect x="48" y="224" width="360" height="26" rx="5" fill="#fef2f2" stroke="#f5c2c2"/>
+  <text x="58" y="242" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#b91c1c">f49 ← 重渲染（无变化）</text>
+  <text x="48" y="274" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#b91c1c">实测：1 次输入触发 50 次通知；敲 50 键 = 2,500 次</text>
+  <text x="48" y="296" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">通知 50 个订阅者本身只要 0.19 µs，贵的是各自的重渲染</text>
+
+  <rect x="470" y="60" width="400" height="250" rx="10" fill="#ecfdf5" stroke="#b6e3dd"/>
+  <text x="488" y="86" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0f766e">✓ 字段级订阅（每个字段只订阅自己）</text>
+  <rect x="488" y="100" width="360" height="26" rx="5" fill="#ffffff" stroke="#b6e3dd"/>
+  <text x="498" y="118" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#0f766e">f0 ← 重渲染（唯一需要的一次）</text>
+  <rect x="488" y="132" width="360" height="26" rx="5" fill="#f0fdfa" stroke="#d7f2ec"/>
+  <text x="498" y="150" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#94a3b8">f1 ← 不动</text>
+  <rect x="488" y="164" width="360" height="26" rx="5" fill="#f0fdfa" stroke="#d7f2ec"/>
+  <text x="498" y="182" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#94a3b8">f2 ← 不动</text>
+  <text x="640" y="212" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">…… 共 50 个</text>
+  <rect x="488" y="224" width="360" height="26" rx="5" fill="#f0fdfa" stroke="#d7f2ec"/>
+  <text x="498" y="242" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#94a3b8">f49 ← 不动</text>
+  <text x="488" y="274" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#0f766e">实测：1 次输入触发 1 次通知；敲 50 键 = 50 次</text>
+  <text x="488" y="296" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">代价：多一张订阅表（字段名 → 回调），要处理注销</text>
+
+  <rect x="30" y="330" width="840" height="60" rx="10" fill="#eff6ff" stroke="#bfd3f5"/>
+  <text x="48" y="354" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#1d4ed8">同一件事的第二种解法：不订阅，直接读 DOM</text>
+  <text x="48" y="376" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">非受控输入把值留在 DOM 里，React 之外就能读；代价是「值不再是状态」，联动与派生要另找入口</text>
+
+  <rect x="30" y="402" width="840" height="60" rx="10" fill="#fff7ed" stroke="#f5d0b0"/>
+  <text x="48" y="426" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#c2410c">性能判断的阈值</text>
+  <text x="48" y="448" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">字段 ≤ 15 且无重计算：整表单订阅够用；字段 &gt; 40 或含富文本/大列表：字段级订阅 + 校验分区</text>
+</svg>

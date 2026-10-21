@@ -885,3 +885,22 @@ export const FrontStateDataFlow = [
         ],
     },
 ];
+
+export const FrontFormValidation = [
+    {
+        text: "表单与校验工程",
+        link: "/docs/Frontend/FormValidation/index.md",
+        items: [
+            { text: "状态模型：六层与三种存放", link: "/docs/Frontend/FormValidation/StateModel/index.md" },
+            { text: "校验时机：五个触发点与三档模式", link: "/docs/Frontend/FormValidation/ValidationTiming/index.md" },
+            { text: "schema 单一来源", link: "/docs/Frontend/FormValidation/SchemaSource/index.md" },
+            { text: "异步校验：乱序、取消与防抖", link: "/docs/Frontend/FormValidation/AsyncValidation/index.md" },
+            { text: "错误呈现与可访问性", link: "/docs/Frontend/FormValidation/ErrorPresentation/index.md" },
+            { text: "提交状态机与防重复", link: "/docs/Frontend/FormValidation/SubmitFlow/index.md" },
+            { text: "脏检查、草稿与离开保护", link: "/docs/Frontend/FormValidation/DirtyGuard/index.md" },
+            { text: "大表单：订阅粒度与校验预算", link: "/docs/Frontend/FormValidation/LargeForm/index.md" },
+            { text: "实战：三步企业认证表单", link: "/docs/Frontend/FormValidation/Practice/index.md" },
+            { text: "常见问题与分诊", link: "/docs/Frontend/FormValidation/FAQ/index.md" },
+        ],
+    },
+];

@@ -303,6 +303,10 @@ grep -rn "Thread.sleep" src/test | grep -v "// 已评估" || echo "无固定等�
 
 **本页特有的坑**：覆盖率的分母如果包含生成代码（protobuf 生成物、前端构建产物、AI 生成的样板），覆盖率会被**稀释**；反过来只统计手写代码会**虚高**。两种口径都能到 80%，含义完全不同——所以覆盖率进 CI 门禁时必须写明分母范围，否则「达标」只是换了个分母。
 
+## 相关实战
+
+- [博客平台 · 一条龙回归](/project/Complete/BlogPlatform/CoreFlow/Regression/index.md)（第 110 天）：端到端回归报告的固定五节结构与 CF1~CF14 步骤表——本页「分层职责」中「端到端测试越少越接近用户」一条的完整落档示例，含「实测列只填真跑出来的输出」的报告纪律。
+
 ## 参考资料
 
 - [JUnit 5 用户指南](https://junit.org/junit5/docs/current/user-guide/)
@@ -310,7 +314,3 @@ grep -rn "Thread.sleep" src/test | grep -v "// 已评估" || echo "无固定等�
 - [JaCoCo：覆盖率与 check 规则](https://www.jacoco.org/jacoco/trunk/doc/check-mojo.html)
 - [Awaitility：异步断言](https://github.com/awaitility/awaitility)
 - [Martin Fowler：测试金字塔与实用主义](https://martinfowler.com/articles/practical-test-pyramid.html)
-
-## 相关实战
-
-- [博客平台 · 一条龙回归](/project/Complete/BlogPlatform/CoreFlow/Regression/index.md)（第 110 天）：端到端回归报告的固定五节结构与 CF1~CF14 步骤表——本页「分层职责」中「端到端测试越少越接近用户」一条的完整落档示例，含「实测列只填真跑出来的输出」的报告纪律。

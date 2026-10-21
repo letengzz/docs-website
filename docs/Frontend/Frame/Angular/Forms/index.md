@@ -344,3 +344,16 @@ this.form = this.fb.group({
 | 动态表单 | 困难 | 容易 |
 | 验证器 | 模板指令 | 组件代码 |
 
+## 与「表单与校验工程」专题的分工（第 182 天补充）
+本页是 **Angular 视角的机制**：模板驱动与响应式表单、`ValidatorFn`、`FormArray`、`updateOn`。表单的**跨框架状态分层、错误呈现规范、提交闸门**由专题回答。
+
+| 问题 | 本页回答 | 专题回答 |
+| --- | --- | --- |
+| 校验器怎么写 | `ValidatorFn` 的签名与返回结构 | 规则该不该共享给后端（schema 单一来源） |
+| 校验何时跑 | `updateOn: 'change' / 'blur' / 'submit'` 的配置 | 五个触发点与「只复判已错字段」的策略 |
+| 错误怎么显示 | `control.errors` 与 `touched` 的模板写法 | 五个部件（label / aria-invalid / describedby / 播报 / 焦点） |
+
+::: warning 本页特有的一个坑
+`updateOn: 'submit'` 会让 `statusChanges` 在提交前**一直不变成 `VALID`**。若用 `statusChanges` 驱动「提交按钮是否可点」，按钮会永远灰——用户永远等不到 `VALID` 那一刻，因为触发 `VALID` 的动作正是被灰按钮挡住的那次提交。正确做法是用 `valueChanges` 驱动按钮可用性，把「全量校验」留给 `ngSubmit`。
+:::
+

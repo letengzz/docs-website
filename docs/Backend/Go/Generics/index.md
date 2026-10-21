@@ -434,14 +434,6 @@ go run lru.go
 
 **验证方式**：输出显示 `a` 命中后被移到最近使用位置，因此淘汰的是 `b`；缓存大小始终不超过容量 3。把 `Get("a")` 换成 `Get("b")` 后，被淘汰的会变成 `a`。
 
-## 8. 参考资料
-
-- [Go 语言规范：类型参数](https://go.dev/ref/spec#Type_parameter_declarations)
-- [Go 1.18 发布说明：泛型](https://go.dev/doc/go1.18#generics)
-- [官方泛型教程](https://go.dev/doc/tutorial/generics)
-- [When To Use Generics（官方博客）](https://go.dev/blog/when-generics)
-- [pkg.go.dev：cmp 包](https://pkg.go.dev/cmp)
-
 ## 约束设计：近似类型集与类型推断的边界
 
 前面讲了类型参数与基本约束，这一节补上**真正写出可用泛型库所需的三个概念**：近似类型集 `~T`、`comparable`、以及类型推断在什么情况下会失败。
@@ -530,3 +522,10 @@ Go 泛型不做「按需实例化 + 隐式转换」，因此：
 
 **经验法则：如果你需要写一长串约束才能让它编译通过，多半是接口更合适。**
 
+## 8. 参考资料
+
+- [Go 语言规范：类型参数](https://go.dev/ref/spec#Type_parameter_declarations)
+- [Go 1.18 发布说明：泛型](https://go.dev/doc/go1.18#generics)
+- [官方泛型教程](https://go.dev/doc/tutorial/generics)
+- [When To Use Generics（官方博客）](https://go.dev/blog/when-generics)
+- [pkg.go.dev：cmp 包](https://pkg.go.dev/cmp)

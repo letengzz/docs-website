@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 500" width="940" height="500" role="img" aria-label="异步校验的乱序时序：短查询慢返回、长查询快返回，导致过期结果覆盖最新结果">
+  <rect x="0" y="0" width="940" height="500" fill="#ffffff"/>
+  <text x="470" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">乱序是怎么发生的：短串查得慢，长串查得快</text>
+  <text x="470" y="54" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#64748b">用户输 6 个前缀，服务端按前缀长度返回；最后一个到达的响应不是最后一个请求</text>
+
+  <line x1="150" y1="90" x2="150" y2="400" stroke="#cbd5e1"/>
+  <text x="150" y="420" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">输入框</text>
+  <line x1="150" y1="90" x2="900" y2="90" stroke="#cbd5e1"/>
+  <text x="900" y="82" text-anchor="end" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#64748b">时间 →</text>
+
+  <text x="40" y="130" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">"a"</text>
+  <line x1="150" y1="126" x2="880" y2="126" stroke="#f5c2c2" stroke-width="6" stroke-linecap="round"/>
+  <text x="890" y="130" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#b91c1c">140 ms</text>
+  <text x="40" y="176" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">"ab"</text>
+  <line x1="150" y1="172" x2="760" y2="172" stroke="#f5c2c2" stroke-width="6" stroke-linecap="round"/>
+  <text x="770" y="176" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#b91c1c">120 ms</text>
+  <text x="40" y="222" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">"abc"</text>
+  <line x1="150" y1="218" x2="640" y2="218" stroke="#fde68a" stroke-width="6" stroke-linecap="round"/>
+  <text x="650" y="222" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#b45309">100 ms</text>
+  <text x="40" y="268" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">"abcd"</text>
+  <line x1="150" y1="264" x2="520" y2="264" stroke="#a7f3d0" stroke-width="6" stroke-linecap="round"/>
+  <text x="530" y="268" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#047857">80 ms</text>
+  <text x="40" y="314" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">"abcde"</text>
+  <line x1="150" y1="310" x2="400" y2="310" stroke="#a7f3d0" stroke-width="6" stroke-linecap="round"/>
+  <text x="410" y="314" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#047857">60 ms</text>
+  <text x="40" y="360" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">"abcdef"</text>
+  <line x1="150" y1="356" x2="300" y2="356" stroke="#93c5fd" stroke-width="6" stroke-linecap="round"/>
+  <text x="310" y="360" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#1d4ed8">40 ms（最新）</text>
+
+  <rect x="150" y="380" width="760" height="60" rx="8" fill="#fef2f2" stroke="#f5c2c2"/>
+  <text x="168" y="404" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#b91c1c">无护栏：最后写入的是 "a" 的响应（140 ms 最晚到）→ 屏幕告诉用户「可用」，而 "abcdef" 早已被判为占用</text>
+  <text x="168" y="428" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">有护栏：给每次请求编号，只采纳「编号 === 当前最后一次」的响应；或新请求发出时 abort 旧请求</text>
+  <text x="470" y="470" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#0f172a">判据不是「响应快不快」，而是「晚到的旧响应有没有权力改状态」</text>
+</svg>

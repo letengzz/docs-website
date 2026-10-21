@@ -187,6 +187,19 @@ pnpm vitest run src/components
 Test Files  2 passed (2)
 ```
 
+## 与「表单与校验工程」专题的分工（第 182 天补充）
+本页讲 **组件测试的工具与写法**：查询方式、断言、mock、快照。**表单最值得测的四类不变量**（幂等、乱序、闸门、可访问性）由专题回答。
+
+| 问题 | 本页回答 | 专题回答 |
+| --- | --- | --- |
+| 怎么查询元素 | `getByRole` / `getByLabelText` / `getByTestId` 的优先级 | 表单该用哪种查询才能顺带测出 a11y 回归 |
+| 怎么 mock | 模块 mock、网络 mock（MSW） | 异步校验的乱序怎么造（延迟与串长反相关） |
+| 断言什么 | 渲染结果、交互结果 | 四类不变量：值只有一份、闸门只放一次、旧响应不改状态、错误可读出 |
+
+::: warning 本页特有的一个坑
+用 `getByTestId` 测表单最省事，也最容易放过回归：它绕过了 label 与控件的关联，于是「`label[for]` 写错」「`aria-describedby` 指向不存在的 id」这类缺陷**测试全绿、用户全废**。表单测试应优先 `getByLabelText`——它同时断言了可访问名存在且唯一。只在确实没有语义可依时（如纯装饰容器）才退回 `testid`。
+:::
+
 ## 参考资料
 
 - [Testing Library 官方文档](https://testing-library.com/docs/)

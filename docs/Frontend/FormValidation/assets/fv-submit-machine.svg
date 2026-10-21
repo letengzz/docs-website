@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 540" width="940" height="540" role="img" aria-label="提交状态机与闸门位置：闸门放在第一个 await 之前才拦得住重复提交">
+  <defs>
+    <marker id="fvArrow3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="940" height="540" fill="#ffffff"/>
+  <text x="470" y="30" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="19" font-weight="600" fill="#0f172a">提交：一个五态机，和一个只有一行代码的闸门</text>
+
+  <rect x="40" y="60" width="120" height="46" rx="23" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="100" y="88" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#0f172a">idle</text>
+  <rect x="230" y="60" width="130" height="46" rx="23" fill="#eff6ff" stroke="#bfd3f5"/>
+  <text x="295" y="88" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#1d4ed8">validating</text>
+  <rect x="430" y="60" width="130" height="46" rx="23" fill="#fff7ed" stroke="#f5d0b0"/>
+  <text x="495" y="88" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#c2410c">submitting</text>
+  <rect x="630" y="60" width="120" height="46" rx="23" fill="#ecfdf5" stroke="#b6e3dd"/>
+  <text x="690" y="88" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#0f766e">succeeded</text>
+  <rect x="810" y="60" width="100" height="46" rx="23" fill="#fef2f2" stroke="#f5c2c2"/>
+  <text x="860" y="88" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#b91c1c">failed</text>
+
+  <line x1="160" y1="83" x2="230" y2="83" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#fvArrow3)"/>
+  <line x1="360" y1="83" x2="430" y2="83" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#fvArrow3)"/>
+  <line x1="560" y1="83" x2="630" y2="83" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#fvArrow3)"/>
+  <line x1="750" y1="83" x2="810" y2="83" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#fvArrow3)"/>
+  <path d="M430,106 L430,130 L300,130 L300,106" fill="none" stroke="#dc2626" stroke-width="1.5" marker-end="url(#fvArrow3)"/>
+  <text x="330" y="124" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#b91c1c">校验失败回 idle</text>
+  <path d="M810,106 L810,150 L100,150 L100,106" fill="none" stroke="#0f766e" stroke-width="1.5" marker-end="url(#fvArrow3)"/>
+  <text x="380" y="144" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" fill="#0f766e">允许重试 / 重新编辑</text>
+
+  <rect x="40" y="180" width="420" height="150" rx="10" fill="#fef2f2" stroke="#f5c2c2"/>
+  <text x="58" y="206" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#b91c1c">✗ 闸门放在第一个 await 之后</text>
+  <text x="58" y="232" font-family="ui-monospace, monospace" font-size="12" fill="#334155">if (pending) return;</text>
+  <text x="58" y="252" font-family="ui-monospace, monospace" font-size="12" fill="#dc2626">await validate();   // 80 ms 窗口</text>
+  <text x="58" y="272" font-family="ui-monospace, monospace" font-size="12" fill="#334155">pending = true;</text>
+  <text x="58" y="300" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#b91c1c">实测：100 轮双击 → 200 次提交（与没有闸门完全相同）</text>
+
+  <rect x="480" y="180" width="420" height="150" rx="10" fill="#ecfdf5" stroke="#b6e3dd"/>
+  <text x="498" y="206" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0f766e">✓ 闸门同步置位</text>
+  <text x="498" y="232" font-family="ui-monospace, monospace" font-size="12" fill="#334155">if (pending) return;</text>
+  <text x="498" y="252" font-family="ui-monospace, monospace" font-size="12" fill="#0f766e">pending = true;      // 第一个 await 之前</text>
+  <text x="498" y="272" font-family="ui-monospace, monospace" font-size="12" fill="#334155">try { await validate(); await send(); }</text>
+  <text x="498" y="292" font-family="ui-monospace, monospace" font-size="12" fill="#334155">finally { pending = false; }</text>
+  <text x="498" y="318" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#0f766e">实测：100 轮双击 → 100 次提交</text>
+
+  <rect x="40" y="352" width="860" height="80" rx="10" fill="#f8fafc" stroke="#dbe3ee"/>
+  <text x="58" y="378" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0f172a">三道防线，各有各的失效方式</text>
+  <text x="58" y="402" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">前端闸门：拦住手抖，拦不住刷新与多标签 —— 它是体验，不是一致性</text>
+  <text x="58" y="424" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">幂等键 / 业务唯一号：拦重复请求；服务端唯一约束：拦「键不同但业务上重复」</text>
+
+  <rect x="40" y="448" width="860" height="72" rx="10" fill="#fff7ed" stroke="#f5d0b0"/>
+  <text x="58" y="474" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#c2410c">部分成功怎么办</text>
+  <text x="58" y="498" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#334155">服务端返回「哪几个字段失败」时，进入 failed 但仍可编辑；不要整体回滚表单，也不要静默丢弃已成功的部分</text>
+</svg>
