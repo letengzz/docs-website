@@ -170,6 +170,17 @@ update t_state set state = 'SHIPPED' where id = 1 and state = 'PAID';   -- UPDAT
 正确做法：幂等键由业务生成并落库（`UNIQUE` 约束），`Message-ID` 只用于日志关联与退信匹配。
 :::
 
+## 与「分布式调度与任务编排」的分工（第 180 天补充）
+
+| 问题 | 归哪一页 |
+| --- | --- |
+| 幂等键怎么设计、状态机怎么建、补偿与对账 | **本页** |
+| 定时任务的重复触发、补跑、人工重跑 | [分布式调度与任务编排](../../DistributedScheduling/index.md) |
+| 补跑必须带 `fire_time` | 该页的「misfire 与补跑」；本页提供「带进来之后怎么保证只生效一次」 |
+| 执行语义 exactly-once | 该页讲「只有效果层能 exactly-once」，本页给状态机实现 |
+
+> 该页特有的一个坑：补偿动作（退款、回滚库存）常常**自己不是幂等的**。状态机里写「失败则补偿」很容易变成「失败则再补偿一次」，正确做法是把补偿也建成一条带业务键的流水，而不是一个可以任意重放的函数。
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——请求级幂等的语义来源

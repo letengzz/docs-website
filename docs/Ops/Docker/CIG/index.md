@@ -46,9 +46,60 @@ mkdir cig
 
 在cig 目录中创建 compose.yml ：
 
-```yaml
+```yaml [compose.yml]
+services:
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.52.1
+    container_name: cig-cadvisor
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    command:
+      - --storage_driver=influxdb
+      - --storage_driver_host=influxdb:8086
+      - --storage_driver_db=cadvisor
+      - --storage_driver_user=root
+      - --storage_driver_password=root
+    depends_on:
+      - influxdb
 
+  influxdb:
+    image: influxdb:1.8
+    container_name: cig-influxdb
+    restart: unless-stopped
+    ports:
+      - "8086:8086"
+    environment:
+      INFLUXDB_DB: cadvisor
+      INFLUXDB_ADMIN_USER: root
+      INFLUXDB_ADMIN_PASSWORD: root
+    volumes:
+      - ./influxdb:/var/lib/influxdb
+
+  grafana:
+    image: grafana/grafana:11.3.0
+    container_name: cig-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - ./grafana:/var/lib/grafana
+    depends_on:
+      - influxdb
 ```
+
+::: warning InfluxDB 版本必须与采集端匹配
+cAdvisor 的 `influxdb` 存储驱动说的是 **InfluxDB 1.x 的行协议**（用户名 / 密码 / database）。
+换成 `influxdb:2.x` 后容器能起来、Grafana 也能连上，但 cAdvisor 侧会持续写失败——**表现为「Grafana 里没有数据」，而不是某个容器报错退出**。
+用 2.x 就必须先在 InfluxDB 里建 DBRP 映射（`influx v1 dbrp create`）或改用 Prometheus 体系，别在两者之间反复试。
+:::
 
 ### 启动容器
 

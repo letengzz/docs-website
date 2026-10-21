@@ -72,6 +72,17 @@ systemd + 定时任务    → 让脚本变成「服务」和「计划任务」�
 - 机器建好之后交给声明式工具收敛配置：[Ansible 自动化运维](../../Ansible/index.md)、[Terraform](../../Terraform/index.md)（Terraform 负责"机器存在"，Ansible 负责"机器变对"）
 - 定时任务跑备份脚本的落地示例：[数据库客户端实战](../../../Tools/DatabaseClients/DataOps/index.md)
 
+## 与「分布式调度与任务编排」的分工（第 180 天补充）
+
+| 问题 | 归哪一页 |
+| --- | --- |
+| `crontab` / `systemd timer` 怎么写、日志去哪 | **本页** |
+| 多副本下怎么保证只跑一次 | [分布式调度与任务编排](../../../Backend/DistributedScheduling/index.md) |
+| `OnCalendar=` 的时区与 DST | 本页写语法，语义与坑在该页的「Cron 语义」 |
+| 补跑（`Persistent=true`）会不会打挂下游 | 该页的「misfire 与补跑」：先算规模再决定 |
+
+> 该页特有的一个坑：`crontab` 的 `%` 是**换行符**，命令里出现 `date +%F` 必须转义成 `date +\%F`，否则整条任务被截断且不报错——它和调度器的 misfire 一样，属于「静默什么都没做」。
+
 ## 参考资料
 
 - systemd 官方文档：https://systemd.io/

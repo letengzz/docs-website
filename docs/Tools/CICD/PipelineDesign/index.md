@@ -249,6 +249,17 @@ latest（最新，仅 dev 使用）
 
 **本页特有的坑**：如果按**流水线 stage** 统计「部署次数」，一次发布会被算成 3 次（migrate + smoke + switch），部署频率直接翻三倍。计数单位必须是**发布单**（一次让新版本对用户可用），stage 只是它的内部步骤。这个定义要写在流水线模板里，不能靠人记。
 
+## 与「分布式调度与任务编排」的分工（第 180 天补充）
+
+| 问题 | 归哪一页 |
+| --- | --- |
+| 流水线阶段划分、缓存、并行与门禁 | **本页** |
+| 定时触发的流水线（ nightly build ） | [分布式调度与任务编排](../../../Backend/DistributedScheduling/index.md) |
+| 平台 cron 的时区与「错过是否补」 | 该页的「Cron 语义」与「misfire」 |
+| 定时流水线撞上发布冻结期 | 本页的冻结期约定 + 该页的「业务日历」闸门 |
+
+> 该页特有的一个坑：多数 CI 平台的定时触发用的是 **UTC**，且「仓库 60 天无提交自动停用定时」这类规则会静默生效。每夜构建突然不跑了，先查平台侧的停用状态，再查 cron 表达式。
+
 ## 参考资料
 
 - GitHub Actions 最佳实践：https://docs.github.com/zh/actions/writing-workflows/choosing-what-your-workflow-does/optimizing-workflow-performance

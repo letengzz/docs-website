@@ -216,6 +216,17 @@ for k in $(redis-cli -p 16379 --scan --pattern 'lock:*'); do \
 上面八条中，①②③⑥⑦ 是**代码检索类**判据，可在本页直接执行；④⑤⑧ 需要具体工程与运行中的实例，本页给出的是判据形态。第三节的五种失效里，**第 1、2、3 种为本机实测**（Redis 7.4.0，容器 `teamboard-sandbox-cache-1`），第 4、5 种本机无法构造集群与分区，明确标为未实测。
 :::
 
+## 与「分布式调度与任务编排」的分工（第 180 天补充）
+
+| 问题 | 归哪一页 |
+| --- | --- |
+| 锁的正确性来源、租约续期、Redis 主从丢锁 | **本页** |
+| 调度器怎么用锁选出唯一调度者 | [分布式调度与任务编排](../../DistributedScheduling/index.md) 的「高可用」页 |
+| 旧主恢复后仍写数据 | 该页的 **fencing token**；本页只讲锁，不讲写入守卫 |
+| 一次任务只执行一次 | 该页的「认领必须带 `state` 条件更新」——**锁不能替代它** |
+
+> 该页特有的一个坑：锁的 TTL 到期后，持锁者若还在执行，锁本身**不会阻止**它继续写。分布式锁保证的是「同一时刻只有一个人拿到锁」，不保证「拿到锁的人一定还活着」——后者只能靠 fencing token 在写入时校验。
+
 ## 参考资料
 
 - [Martin Kleppmann · How to do distributed locking](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)——「锁的两种用途」（效率 vs 正确性）与 fencing 的原始论述

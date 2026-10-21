@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/></marker></defs>
+<rect width="960" height="520" fill="#ffffff"/>
+<text x="28" y="42" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#1f2328">四种触发语义与五个必失点</text>
+<text x="28" y="70" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">同一个「到点执行」，在分布式里要穿过五道关</text>
+<rect x="28" y="100" width="216" height="96" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="42" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">时间点</text>
+<text x="42" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">cron 表达式</text>
+<text x="42" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">看日历，不看间隔</text>
+<rect x="258" y="100" width="216" height="96" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="272" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">固定间隔</text>
+<text x="272" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">fixedRate/Delay</text>
+<text x="272" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">看基准，会漂移</text>
+<rect x="488" y="100" width="216" height="96" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="502" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">事件</text>
+<text x="502" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">消息 / webhook</text>
+<text x="502" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">至少一次</text>
+<rect x="718" y="100" width="216" height="96" rx="10" fill="#fbefff" stroke="#c297ff" stroke-width="1.5"/>
+<text x="732" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">依赖</text>
+<text x="732" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">上游完成触发</text>
+<text x="732" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">要问「哪一次」</text>
+<text x="28" y="240" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">执行链路的五个必失点</text>
+<rect x="28" y="262" width="170" height="88" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="42" y="290" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">1 时间算错</text>
+<text x="42" y="314" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">时区 / DST / 31 日</text>
+<line x1="198" y1="306" x2="218" y2="306" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="218" y="262" width="170" height="88" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="232" y="290" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">2 无人或多人认领</text>
+<text x="232" y="314" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">缺 AND state</text>
+<line x1="388" y1="306" x2="408" y2="306" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="408" y="262" width="170" height="88" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="422" y="290" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">3 主切换</text>
+<text x="422" y="314" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">双主 · 无 fencing</text>
+<line x1="578" y1="306" x2="598" y2="306" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="598" y="262" width="170" height="88" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="612" y="290" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">4 补跑风暴</text>
+<text x="612" y="314" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">无上限 · 窗口错</text>
+<line x1="768" y1="306" x2="788" y2="306" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="788" y="262" width="170" height="88" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="802" y="290" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">5 不幂等</text>
+<text x="802" y="314" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">重试即重复</text>
+<rect x="28" y="386" width="904" height="100" rx="10" fill="#f6f8fa" stroke="#afb8c1" stroke-width="1.5"/>
+<text x="42" y="414" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">结论</text>
+<text x="42" y="438" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">前一道没解决，后一道的正确性都是假的：认领没做对时，把任务写成幂等只是让重复不报错，重复本身还在发生。</text>
+<text x="28" y="506" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">读法：先定位自己在第几关出错，再去看对应章节——不要从业务代码开始查。</text>
+</svg>

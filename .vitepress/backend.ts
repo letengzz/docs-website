@@ -726,3 +726,22 @@ export const EmailDeliverability = [
     ],
   },
 ];
+
+export const DistributedScheduling = [
+  {
+    text: "分布式调度与任务编排",
+    link: "/docs/Backend/DistributedScheduling/index.md",
+    items: [
+      { text: "总览：四种触发语义与五个必失点", link: "/docs/Backend/DistributedScheduling/Overview/index.md" },
+      { text: "Cron 语义：时区、DST 与下一次触发时间", link: "/docs/Backend/DistributedScheduling/CronSemantics/index.md" },
+      { text: "调度内核：扫描、认领与执行三段式", link: "/docs/Backend/DistributedScheduling/SchedulerCore/index.md" },
+      { text: "高可用：选主、分片、脑裂与 fencing", link: "/docs/Backend/DistributedScheduling/LeaderSharding/index.md" },
+      { text: "misfire 与补跑：停机之后补几次", link: "/docs/Backend/DistributedScheduling/MisfireCatchup/index.md" },
+      { text: "幂等与重试：一次到底算几次", link: "/docs/Backend/DistributedScheduling/IdempotentRetry/index.md" },
+      { text: "依赖编排：DAG、扇出与背压", link: "/docs/Backend/DistributedScheduling/DagDependency/index.md" },
+      { text: "可观测：五个口径与静默停摆", link: "/docs/Backend/DistributedScheduling/Observability/index.md" },
+      { text: "实战：TeamBoard 的六类定时任务验收", link: "/docs/Backend/DistributedScheduling/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/DistributedScheduling/FAQ/index.md" },
+    ],
+  },
+];

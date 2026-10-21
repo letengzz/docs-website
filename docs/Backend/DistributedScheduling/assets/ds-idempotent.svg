@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/></marker></defs>
+<rect width="960" height="520" fill="#ffffff"/>
+<text x="28" y="42" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#1f2328">三种重复来源与幂等键的位置</text>
+<text x="28" y="70" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">调度层防重复触发，业务层防重复副作用</text>
+<rect x="28" y="100" width="280" height="96" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="42" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">重复触发</text>
+<text x="42" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">认领无条件更新</text>
+<text x="42" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">双主</text>
+<rect x="340" y="100" width="280" height="96" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="354" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">重复补跑</text>
+<text x="354" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">misfire 策略</text>
+<text x="354" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">人工重跑</text>
+<rect x="652" y="100" width="280" height="96" rx="10" fill="#fbefff" stroke="#c297ff" stroke-width="1.5"/>
+<text x="666" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">重复副作用</text>
+<text x="666" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">重试 · 补跑叠加</text>
+<text x="666" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">非幂等写入</text>
+<rect x="28" y="230" width="440" height="120" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="42" y="258" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">调度层键：(job_id, fire_time)</text>
+<text x="42" y="282" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">同一 fire_time 只允许一行</text>
+<text x="42" y="303" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">重复插入返回 0 行（实测：1 / 0 / 1）</text>
+<rect x="492" y="230" width="440" height="120" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="506" y="258" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">业务层键：业务主键</text>
+<text x="506" y="282" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">(tenant, biz_date) / order_id + action</text>
+<text x="506" y="303" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">防两次不同触发产生同一效果</text>
+<rect x="28" y="372" width="904" height="108" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="42" y="400" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">重试阶梯（8 次）</text>
+<text x="42" y="424" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">指数 + 抖动：1.06 / 2.03 / 4.41 / 8.09 / 16.25 / 30.37 / 56.61 / 132.78 s，累计 251.6 s</text>
+<text x="42" y="445" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">固定 5 s：累计 40 s —— 覆盖不了「依赖 2 分钟才恢复」的窗口，8 次重试全部浪费</text>
+<text x="28" y="506" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">exactly-once 只存在于效果层：标记与执行之间必然有窗口，要么先标记（可能不跑），要么先执行（可能重跑）。</text>
+</svg>

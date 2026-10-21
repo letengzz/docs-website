@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/></marker></defs>
+<rect width="960" height="520" fill="#ffffff"/>
+<text x="28" y="42" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#1f2328">用量事件、滚动聚合与配额预扣</text>
+<text x="28" y="70" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">TeamBoard 第 180 天：四张表与两条链路</text>
+<rect x="28" y="100" width="236" height="104" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="42" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">业务写入</text>
+<text x="42" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">创建卡片 / 上传附件</text>
+<text x="42" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">dedup_key 防重</text>
+<rect x="292" y="100" width="236" height="104" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="306" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">usage_event</text>
+<text x="306" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">追加式 · 不更新</text>
+<text x="306" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">UNIQUE(tenant,dedup)</text>
+<rect x="556" y="100" width="236" height="104" rx="10" fill="#fbefff" stroke="#c297ff" stroke-width="1.5"/>
+<text x="570" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">滚动聚合 T4</text>
+<text x="570" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">每 5 分钟 · 窗口对齐</text>
+<text x="570" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">ON CONFLICT 幂等</text>
+<rect x="820" y="100" width="112" height="104" rx="10" fill="#fbefff" stroke="#c297ff" stroke-width="1.5"/>
+<text x="834" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#1f2328">usage_rollup</text>
+<text x="834" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">主键即</text>
+<text x="834" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">幂等键</text>
+<line x1="264" y1="152" x2="292" y2="152" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="528" y1="152" x2="556" y2="152" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="792" y1="152" x2="820" y2="152" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="28" y="250" width="300" height="120" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="42" y="278" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">配额预扣</text>
+<text x="42" y="302" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">INSERT ... SELECT 单语句</text>
+<text x="42" y="323" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">已用 + 已占 + 本次 &lt;= 上限</text>
+<text x="42" y="344" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">held 60 s 过期自愈</text>
+<rect x="356" y="250" width="236" height="120" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="370" y="278" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">执行</text>
+<text x="370" y="302" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">业务真正写入</text>
+<text x="370" y="323" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">失败则 released</text>
+<rect x="620" y="250" width="312" height="120" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="634" y="278" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">提交</text>
+<text x="634" y="302" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">state=committed</text>
+<text x="634" y="323" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">同时写 usage_event</text>
+<line x1="328" y1="310" x2="356" y2="310" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="592" y1="310" x2="620" y2="310" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="28" y="396" width="440" height="92" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="42" y="424" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">实测（100 万行 usage_rollup）</text>
+<text x="42" y="448" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">配额查询 0.009 ms；无前缀全表聚合 33.158 ms</text>
+<rect x="492" y="396" width="440" height="92" rx="10" fill="#f6f8fa" stroke="#afb8c1" stroke-width="1.5"/>
+<text x="506" y="424" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">日终对账</text>
+<text x="506" y="448" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">FULL JOIN 事件与汇总，返回 0 行才算通过</text>
+<text x="28" y="506" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">429 = 频率超限（可退避重试）；402 = 额度耗尽（重试无用）。</text>
+</svg>

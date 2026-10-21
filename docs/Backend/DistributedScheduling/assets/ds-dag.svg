@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/></marker></defs>
+<rect width="960" height="520" fill="#ffffff"/>
+<text x="28" y="42" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#1f2328">DAG 的依赖判定、扇出与背压</text>
+<text x="28" y="70" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">每一条边都要带「哪一次运行」</text>
+<rect x="28" y="100" width="200" height="90" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="42" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">上游 A</text>
+<text x="42" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">03:00 抽数</text>
+<text x="42" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">fire_time=T1</text>
+<rect x="28" y="230" width="200" height="90" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="42" y="258" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">上游 B</text>
+<text x="42" y="282" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">03:05 退款</text>
+<text x="42" y="303" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">fire_time=T1</text>
+<rect x="320" y="165" width="240" height="90" rx="10" fill="#fbefff" stroke="#c297ff" stroke-width="1.5"/>
+<text x="334" y="193" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">屏障表</text>
+<text x="334" y="217" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">(run, upstream, state)</text>
+<text x="334" y="238" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">可查询 · 可重启</text>
+<rect x="660" y="165" width="272" height="90" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="674" y="193" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">下游 C</text>
+<text x="674" y="217" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">等 A、B 都 success</text>
+<text x="674" y="238" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">缺一即 blocked</text>
+<line x1="228" y1="145" x2="320" y2="190" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="228" y1="275" x2="320" y2="230" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="560" y1="210" x2="660" y2="210" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="28" y="360" width="440" height="120" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="42" y="388" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">扇出成本</text>
+<text x="42" y="412" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">500 个子任务：逐条 0.76 ms / 批量 0.50 ms</text>
+<text x="42" y="433" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">瓶颈不在插入，在「同一秒到期」</text>
+<text x="42" y="454" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">打散 next_run_at + 队列深度背压</text>
+<rect x="492" y="360" width="440" height="120" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="506" y="388" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">拓扑与环</text>
+<text x="506" y="412" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">1,000 节点 / 2,499 边：拓扑排序 0.60 ms</text>
+<text x="506" y="433" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">环必须在建边时拒绝，不在运行时发现</text>
+<text x="506" y="454" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">拓扑序数量 &lt; 节点数 = 有环</text>
+<text x="28" y="506" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">依赖判定的四种写法：计数法 / 成功计数法 / 屏障表 / 事件驱动——只有屏障表在重启后仍成立。</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/></marker></defs>
+<rect width="960" height="520" fill="#ffffff"/>
+<text x="28" y="42" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#1f2328">misfire 的判定与三种处置</text>
+<text x="28" y="70" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">补跑不是「多跑几次」，而是把时间窗压缩后重放</text>
+<rect x="28" y="96" width="280" height="96" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="42" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">停机 / 卡住</text>
+<text x="42" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">调度器未运行</text>
+<text x="42" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">线程池满 · 扫描太慢</text>
+<rect x="340" y="96" width="280" height="96" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="354" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">判定 misfire</text>
+<text x="354" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">Quartz：超过 60 s</text>
+<text x="354" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">K8s：无阈值，错过即错过</text>
+<rect x="652" y="96" width="280" height="96" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="666" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">三种处置</text>
+<text x="666" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">丢弃 / 补一次 / 全量补</text>
+<line x1="308" y1="144" x2="340" y2="144" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="620" y1="144" x2="652" y2="144" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="28" y="224" width="290" height="96" rx="10" fill="#f6f8fa" stroke="#afb8c1" stroke-width="1.5"/>
+<text x="42" y="252" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">丢弃</text>
+<text x="42" y="276" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">推进 next_run_at</text>
+<text x="42" y="297" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">缺口需另补</text>
+<rect x="340" y="224" width="290" height="96" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="354" y="252" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">补一次</text>
+<text x="354" y="276" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">立刻补跑一次</text>
+<text x="354" y="297" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">必须带 fire_time</text>
+<rect x="652" y="224" width="290" height="96" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="666" y="252" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">全量补</text>
+<text x="666" y="276" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">每次错过都补</text>
+<text x="666" y="297" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">必须设上限</text>
+<rect x="28" y="348" width="440" height="130" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="42" y="376" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">补跑规模（单次 200 ms、并发 4）</text>
+<text x="42" y="400" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">1 分钟任务停机 1 h：错过 60 次，追赶 3.0 s</text>
+<text x="42" y="421" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">1 分钟任务停机 6 h：错过 360 次，追赶 18.0 s</text>
+<text x="42" y="442" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">10 秒任务停机 24 h：错过 8,640 次</text>
+<rect x="492" y="348" width="440" height="130" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="506" y="376" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">换成真实任务（单次 30 s、并发 4）</text>
+<text x="506" y="400" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">60 秒任务停机 1 h：追赶 450 s</text>
+<text x="506" y="421" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">60 秒任务停机 6 h：追赶 2,700 s</text>
+<text x="506" y="442" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">10 秒任务停机 24 h：追赶 64,800 s（18 h）</text>
+<text x="28" y="500" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">四个闸门：补跑上限 · 时间窗截断 · 追赶降速 · 业务日历。</text>
+
+</svg>

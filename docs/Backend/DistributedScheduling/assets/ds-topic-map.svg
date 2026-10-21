@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/></marker></defs>
+<rect width="960" height="520" fill="#ffffff"/>
+<text x="28" y="42" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#1f2328">分布式调度与任务编排 · 专题地图</text>
+<text x="28" y="70" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">从时间语义到执行语义，再落到可观测与实战</text>
+<rect x="28" y="96" width="200" height="96" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="42" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">① 时间</text>
+<text x="42" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">cron / 间隔</text>
+<text x="42" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">时区 · DST</text>
+<rect x="268" y="96" width="200" height="96" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="282" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">② 认领</text>
+<text x="282" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">扫描 · 条件更新</text>
+<text x="282" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">租约 · 回收</text>
+<rect x="508" y="96" width="200" height="96" rx="10" fill="#fbefff" stroke="#c297ff" stroke-width="1.5"/>
+<text x="522" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">③ 主权</text>
+<text x="522" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">选主 · 分片</text>
+<text x="522" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">fencing</text>
+<rect x="748" y="96" width="184" height="96" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="762" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">④ 补偿</text>
+<text x="762" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">misfire · 补跑</text>
+<text x="762" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">上限 · 窗口</text>
+<rect x="268" y="240" width="200" height="96" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="282" y="268" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">⑤ 执行语义</text>
+<text x="282" y="292" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">幂等键</text>
+<text x="282" y="313" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">重试 · 死信</text>
+<rect x="508" y="240" width="200" height="96" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="522" y="268" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">⑥ 依赖</text>
+<text x="522" y="292" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">DAG · 屏障</text>
+<text x="522" y="313" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">扇出 · 背压</text>
+<rect x="28" y="384" width="440" height="96" rx="10" fill="#f6f8fa" stroke="#afb8c1" stroke-width="1.5"/>
+<text x="42" y="412" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">⑦ 可观测</text>
+<text x="42" y="436" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">五个口径 / 三道探测</text>
+<text x="42" y="457" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">静默停摆 · 分诊</text>
+<rect x="500" y="384" width="432" height="96" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="514" y="412" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">⑧ 实战</text>
+<text x="514" y="436" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">TeamBoard 六类任务</text>
+<text x="514" y="457" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">验收 S1~S10</text>
+<line x1="228" y1="144" x2="268" y2="144" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="468" y1="144" x2="508" y2="144" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="708" y1="144" x2="748" y2="144" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="368" y1="192" x2="368" y2="240" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<text x="368.0" y="207.0" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">先认领再谈语义</text>
+<line x1="468" y1="288" x2="508" y2="288" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<text x="488.0" y="279.0" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">上游完成</text>
+<line x1="248" y1="336" x2="248" y2="384" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<text x="248.0" y="351.0" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">全部落到指标</text>
+<line x1="716" y1="336" x2="716" y2="384" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<text x="716.0" y="351.0" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">同一套判据</text>
+<text x="28" y="506" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">虚线不存在：每一层都依赖上一层成立；上层没做对，下层的正确性是假的。</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/></marker></defs>
+<rect width="960" height="520" fill="#ffffff"/>
+<text x="28" y="42" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#1f2328">选主、分片与 fencing</text>
+<text x="28" y="70" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">选主减少争抢，fencing 才保证旧主写不进去</text>
+<rect x="28" y="100" width="260" height="110" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="42" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">A：token = 7</text>
+<text x="42" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">租约到期前</text>
+<text x="42" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">认领任务并执行</text>
+<rect x="28" y="240" width="260" height="110" rx="10" fill="#f6f8fa" stroke="#afb8c1" stroke-width="1.5"/>
+<text x="42" y="268" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">A 恢复（GC 后）</text>
+<text x="42" y="292" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">以为自己是主</text>
+<text x="42" y="313" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">写结果带 epoch=7</text>
+<rect x="660" y="100" width="272" height="110" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="674" y="128" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">B：token = 8</text>
+<text x="674" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">抢到租约</text>
+<text x="674" y="173" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">回收并重新认领</text>
+<rect x="660" y="240" width="272" height="110" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="674" y="268" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">写结果带 epoch=8</text>
+<text x="674" y="292" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">UPDATE 1 行</text>
+<text x="674" y="313" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">正常完成</text>
+<rect x="340" y="240" width="260" height="110" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="354" y="268" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">A 的写入</text>
+<text x="354" y="292" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">WHERE epoch=7</text>
+<text x="354" y="313" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" fill="#57606a">影响 0 行 → 主动退出</text>
+<line x1="288" y1="155" x2="660" y2="155" stroke="#57606a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ah)"/>
+<text x="474.0" y="146.0" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">租约到期</text>
+<line x1="288" y1="295" x2="340" y2="295" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="600" y1="295" x2="660" y2="295" stroke="#57606a" stroke-width="2" marker-end="url(#ah)"/>
+<text x="630.0" y="286.0" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">接手</text>
+<rect x="28" y="380" width="420" height="110" rx="10" fill="#fbefff" stroke="#c297ff" stroke-width="1.5"/>
+<text x="42" y="408" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">分片均衡（1,000 任务）</text>
+<text x="42" y="432" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">sha256%8：最大 139 / 最小 112，比值 1.112</text>
+<text x="42" y="453" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">sha256%16：最大 80 / 最小 54，比值 1.28</text>
+<text x="42" y="474" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">rendezvous 8：134 / 114，比值 1.072</text>
+<rect x="472" y="380" width="460" height="110" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="486" y="408" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">8 → 9 节点扩容迁移量</text>
+<text x="486" y="432" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">取模：885 / 1,000 迁移（88.5%）</text>
+<text x="486" y="453" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">rendezvous：123 / 1,000（12.3%）</text>
+<text x="486" y="474" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">迁移窗口 = 可能漏跑或重跑的窗口</text>
+<text x="28" y="506" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">分片数越多不一定越均衡：%16 的相对波动比 %8 更大，这是小样本 + 哈希的统计性质。</text>
+</svg>

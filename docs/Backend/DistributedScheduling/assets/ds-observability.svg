@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/></marker></defs>
+<rect width="960" height="520" fill="#ffffff"/>
+<text x="28" y="42" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#1f2328">五个口径与静默停摆的三道探测</text>
+<text x="28" y="70" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">「没有坏消息」本身就是坏消息</text>
+<rect x="28" y="96" width="172" height="104" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="42" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">覆盖率</text>
+<text x="42" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">实际 / 应触发</text>
+<text x="42" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">98.00%</text>
+<rect x="216" y="96" width="172" height="104" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="230" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">成功率</text>
+<text x="230" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">成功 / 实际</text>
+<text x="230" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">96.94%</text>
+<rect x="404" y="96" width="172" height="104" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+<text x="418" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">有效成功率</text>
+<text x="418" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">成功 / 应触发</text>
+<text x="418" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">95.00%</text>
+<rect x="592" y="96" width="172" height="104" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="606" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">调度延迟</text>
+<text x="606" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">p50 / p99</text>
+<text x="606" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">20 s / 40 s</text>
+<rect x="780" y="96" width="172" height="104" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+<text x="794" y="124" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1f2328">积压</text>
+<text x="794" y="148" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">待执行 / 到期未认领</text>
+<text x="794" y="169" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#57606a">队列深度</text>
+<rect x="28" y="226" width="290" height="130" rx="10" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+<text x="42" y="254" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">探测 1：最后成功时间</text>
+<text x="42" y="278" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">now - last_success &gt; 周期 × 1.5</text>
+<text x="42" y="299" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">日任务建议 26 小时</text>
+<text x="42" y="320" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">发现「这个任务坏了」</text>
+<rect x="335" y="226" width="290" height="130" rx="10" fill="#fbefff" stroke="#c297ff" stroke-width="1.5"/>
+<text x="349" y="254" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">探测 2：下次触发时间</text>
+<text x="349" y="278" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">next_run_at &lt; now - 宽限</text>
+<text x="349" y="299" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">发现「调度器卡住了」</text>
+<text x="349" y="320" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">任务级 overdue</text>
+<rect x="642" y="226" width="290" height="130" rx="10" fill="#ffebe9" stroke="#ff8182" stroke-width="1.5"/>
+<text x="656" y="254" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">探测 3：调度器心跳</text>
+<text x="656" y="278" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">now - heartbeat &gt; 3 × 间隔</text>
+<text x="656" y="299" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">发现「调度器死了」</text>
+<text x="656" y="320" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">全局 P1</text>
+<rect x="28" y="378" width="904" height="104" rx="10" fill="#f6f8fa" stroke="#afb8c1" stroke-width="1.5"/>
+<text x="42" y="406" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="17" font-weight="600" fill="#1f2328">告警优先级的两条硬规则</text>
+<text x="42" y="430" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#57606a">fenced_writes_total &gt; 0 → P1（没有「少量脑裂」这种状态） · 心跳超时 → P1 · 任务未成功 → P2</text>
+<text x="28" y="506" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#57606a">只监控「失败数」时，漏跑不产生失败，曲线为 0——看起来最健康。</text>
+</svg>
