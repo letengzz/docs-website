@@ -150,6 +150,7 @@ export const nav = [
       { text: "其他", link: "/docs/Others" },
       { text: "完整项目交付", link: "/docs/Others/ProjectDelivery" },
       { text: "技术写作与分享", link: "/docs/Others/TechWriting" },
+      { text: "技术决策与评审", link: "/docs/Others/TechDecision" },
       { text: "年度复盘", link: "/docs/Others/AnnualReview" },
     ]
   },

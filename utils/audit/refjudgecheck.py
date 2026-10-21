@@ -29,6 +29,10 @@ ID_RE = re.compile(r"`([A-Z]{2,4}-[A-H])`")
 ID_PLAIN = re.compile(r"([A-Z]{2,4}-[A-H])")
 FENCE_RE = re.compile(r"^(\s{0,3})(`{3,}|~{3,})")
 LINK_RE = re.compile(r"\]\(([^)\s]+)\)")
+# 占位示例前缀：台账/规范文档里用 `XX-A` ~ `XX-H` 演示「声明句该怎么写」，
+# 那不是真引用（`judgeprefixcheck` 里早有同名豁免）。**只豁免占位前缀，
+# 不整篇跳过 DOCS_PLAN.md**——台账里的真引用照样要查，否则等于为一条假红开一个洞。
+PLACEHOLDER = {"XX", "YY", "ZZ"}
 
 
 def iter_md(root):
@@ -143,6 +147,8 @@ def run(roots):
             warns.append("W2 DUPLICATE_DEF %s -> %s" % (i, ", ".join(sorted(ps))))
     for p, d in info.items():
         for i in sorted(d["ref"]):
+            if i.split("-")[0] in PLACEHOLDER:
+                continue
             if i not in owners:
                 errs.append("E2 UNDEFINED_REF %s in %s" % (i, p))
                 continue
@@ -178,6 +184,7 @@ SAMPLE = {
     "c/index.md": """# C
 
 见 `CCC-A`（未定义）与 `BBB-B`（有定义但本页无链接）。
+台账里用 `XX-A` ~ `XX-H` 演示声明句写法，那是占位不是引用。
 
 ```markdown
 | 判据 | 内容 |
@@ -224,6 +231,7 @@ def selftest():
         check("W1 no path", any("W1 NO_PATH BBB-B in " in w for w in warns))
         check("a links b ok", not any("W1 NO_PATH BBB-A in " in w for w in warns))
         check("no false E2 for AAA", not any("AAA-" in e for e in errs))
+        check("placeholder XX skipped", not any("XX-" in e for e in errs))
         check("ids counted", nids >= 7)
         # 空目录 → E1
         with tempfile.TemporaryDirectory() as empty:

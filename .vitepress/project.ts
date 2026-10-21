@@ -374,6 +374,7 @@ export const CompleteProject = [
           { text: "第 4 周第 3 步之七 · 租户数据清单：元数据自动生成与残留检查进 CI（TDI-A~TDI-H）", link: "/project/Complete/TeamBoard/TenantDataInventory/index.md" },
           { text: "第 4 周第 3 步之八 · 迁移后置校验：清单挂进 afterMigrate 与三面残留检查（MIG-A~MIG-H）", link: "/project/Complete/TeamBoard/MigrationInventoryGate/index.md" },
           { text: "第 4 周第 3 步之九 · 删除流水线：三面删除的顺序与残留（DPP-A~DPP-H）", link: "/project/Complete/TeamBoard/DeletionPipeline/index.md" },
+          { text: "第 4 周第 3 步之十 · 退出编排器：dry-run、断点续跑与偏序约束（OFB-A~OFB-H）", link: "/project/Complete/TeamBoard/OffboardingOrchestrator/index.md" },
         ],
       },
       {

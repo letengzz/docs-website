@@ -18,4 +18,5 @@
 - [观测驱动开发](ObservabilityDriven/index.md)
 - [测试数据与仿真环境](TestDataSimulation/index.md)
 - [研发效能度量](EngineeringMetrics/index.md)
+- [浏览器扩展工程](BrowserExtension/index.md)
 - [其他](Others/index.md)

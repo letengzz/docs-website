@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="390" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">决策的三种成本：决策 / 错误 / 延迟</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">三笔钱不可能同时最小，差别只在这次值不值得多花</text>
+  <text x="60" y="82" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">三笔成本互相拉扯，不可能同时最小</text>
+  <rect x="30" y="96" width="220" height="74" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="140" y="114.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">决策成本</text>
+  <text x="140" y="131" text-anchor="middle" font-size="7.5" fill="#C2410C">参与人多、材料不齐</text>
+  <text x="140" y="148.25" text-anchor="middle" font-size="7.5" fill="#C2410C">迹象：同一议题反复开会</text>
+  <rect x="270" y="96" width="220" height="74" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="114.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">错误成本</text>
+  <text x="380" y="131" text-anchor="middle" font-size="7.5" fill="#B91C1C">不可逆、影响面广</text>
+  <text x="380" y="148.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">迹象：修复要靠新项目</text>
+  <rect x="510" y="96" width="220" height="74" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="620" y="114.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">延迟成本</text>
+  <text x="620" y="131" text-anchor="middle" font-size="7.5" fill="#B45309">决策卡住、下游空转</text>
+  <text x="620" y="148.25" text-anchor="middle" font-size="7.5" fill="#B45309">迹象：分支长期不合入</text>
+  <line x1="250" y1="133" x2="270" y2="133" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)" stroke-dasharray="5 4"/>
+  <line x1="490" y1="133" x2="510" y2="133" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)" stroke-dasharray="5 4"/>
+  <text x="380" y="190" text-anchor="middle" font-size="9" fill="#475569">多花两周论证 → 降低错误成本、抬高延迟成本；先上线再迭代 → 反过来</text>
+  <rect x="30" y="208" width="700" height="58" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="380" y="226.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">判定式（三个参数都是估算，用来停止争论，不用来求精确值）</text>
+  <text x="380" y="243" text-anchor="middle" font-size="7.5" fill="#4338CA">值得投入的论证成本 ≈ 错误成本 × 出错概率 ÷ 决策有效期（月） × 月均影响人次</text>
+  <rect x="30" y="286" width="330" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="195" y="302" text-anchor="middle" font-size="8" fill="#1E293B">影响 30 人 / 24 个月 / 出错 40 人日</text>
+  <rect x="370" y="286" width="360" height="24" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="550" y="302" text-anchor="middle" font-size="8" fill="#065F46" font-weight="bold">≈ 15 人日 → 值得写 ADR 并开会</text>
+  <rect x="30" y="316" width="330" height="24" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="195" y="332" text-anchor="middle" font-size="8" fill="#1E293B">影响 3 人 / 2 个月 / 出错 0.5 人日</text>
+  <rect x="370" y="316" width="360" height="24" rx="5" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="550" y="332" text-anchor="middle" font-size="8" fill="#065F46" font-weight="bold">≈ 0.2 人日 → 一行记录即可，不该开会</text>
+  <text x="380" y="366" text-anchor="middle" font-size="9" fill="#1E3A8A">结论：把「该不该多论证」变成一个可以摆上桌面的数，而不是两派立场</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

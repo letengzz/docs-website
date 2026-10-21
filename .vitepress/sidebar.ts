@@ -77,6 +77,26 @@ const OthersTechWriting = [
     ],
   },
 ];
+const OthersTechDecision = [
+  {
+    text: "技术决策与评审",
+    link: "/docs/Others/TechDecision/index.md",
+    collapsed: true,
+    items: [
+      { text: "总览：三种成本与四道关口", link: "/docs/Others/TechDecision/Overview/index.md" },
+      { text: "决策权与分级", link: "/docs/Others/TechDecision/DecisionRights/index.md" },
+      { text: "记录结构", link: "/docs/Others/TechDecision/RecordStructure/index.md" },
+      { text: "选项与判据", link: "/docs/Others/TechDecision/OptionsAndCriteria/index.md" },
+      { text: "取舍表达", link: "/docs/Others/TechDecision/TradeoffExpression/index.md" },
+      { text: "评审会", link: "/docs/Others/TechDecision/ReviewMeeting/index.md" },
+      { text: "反对意见", link: "/docs/Others/TechDecision/Dissent/index.md" },
+      { text: "决策的修改与推翻", link: "/docs/Others/TechDecision/DecisionChange/index.md" },
+      { text: "实战：一次缓存选型评审", link: "/docs/Others/TechDecision/Practice/index.md" },
+      { text: "常见问题与排错", link: "/docs/Others/TechDecision/FAQ/index.md" },
+    ],
+  },
+];
+
 
 export const sidebar = {
 
@@ -141,6 +161,7 @@ export const sidebar = {
         ...OthersAnnualReview,
         ...OthersProjectDelivery,
         ...OthersTechWriting,
+        ...OthersTechDecision,
       ],
     },
   ],
@@ -148,6 +169,7 @@ export const sidebar = {
   "/docs/Others/AnnualReview": OthersAnnualReview,
   "/docs/Others/ProjectDelivery": OthersProjectDelivery,
   "/docs/Others/TechWriting": OthersTechWriting,
+  "/docs/Others/TechDecision": OthersTechDecision,
 
   // 主题级侧边栏：进入具体主题时才展示该主题的侧边栏（子内容默认折叠）
   "/docs/Frontend/RichTextEditor": FrontRichTextEditor,
