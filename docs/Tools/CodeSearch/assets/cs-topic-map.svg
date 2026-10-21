@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" width="960" height="660" role="img">
+<title>代码搜索与索引工程 · 专题地图</title>
+<rect x="0" y="0" width="960" height="660" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+<marker id="arrowp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+</defs>
+<text x="32" y="44" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">代码搜索与索引工程 · 专题地图</text>
+<text x="32" y="70" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">一条查询的生命周期：解析 → 取候选 → 验真 → 排序 → 过滤 → 截断</text>
+<rect x="32" y="96" width="896" height="62" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="52" y="133" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14.5" fill="#2563eb" font-weight="700" text-anchor="start">查询层</text>
+<text x="150" y="133" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="400" text-anchor="start">概述（三种查询形态与延迟预算）· 查询规划（候选集与正则）</text>
+<rect x="32" y="168" width="896" height="62" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="52" y="205" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14.5" fill="#047857" font-weight="700" text-anchor="start">索引层</text>
+<text x="150" y="205" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="400" text-anchor="start">索引结构（倒排 / n-gram / 后缀）· 排序（BM25 与长度归一）</text>
+<rect x="32" y="240" width="896" height="62" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="52" y="277" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14.5" fill="#b45309" font-weight="700" text-anchor="start">写入层</text>
+<text x="150" y="277" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="400" text-anchor="start">入库与解析（枚举 / 分块 / 指纹）· 增量更新（陈旧与孤儿）</text>
+<rect x="32" y="312" width="896" height="62" rx="10" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="52" y="349" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14.5" fill="#6d28d9" font-weight="700" text-anchor="start">治理层</text>
+<text x="150" y="349" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="400" text-anchor="start">权限与多租户过滤 · 语义与混合检索 · 容量与重建</text>
+<rect x="32" y="384" width="896" height="62" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="52" y="421" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14.5" fill="#b91c1c" font-weight="700" text-anchor="start">落地</text>
+<text x="150" y="421" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0f172a" font-weight="400" text-anchor="start">实战：在本仓 2,406 篇文档上建一个可跑检索（S1~S10）</text>
+<rect x="32" y="456" width="288" height="96" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="48" y="482" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#334155" font-weight="700" text-anchor="start">第一次读</text>
+<text x="48" y="506" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">概述 → 索引结构 → 查询规划</text>
+<text x="48" y="526" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">先建立「延迟预算 → 结构选择」的顺序</text>
+<rect x="336" y="456" width="288" height="96" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="352" y="482" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#334155" font-weight="700" text-anchor="start">要给仓库做检索</text>
+<text x="352" y="506" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">入库 → 增量 → 权限 → 容量</text>
+<text x="352" y="526" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">四页连读，缺一页就会在生产上翻车</text>
+<rect x="640" y="456" width="288" height="96" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="656" y="482" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#334155" font-weight="700" text-anchor="start">已有词法搜索要加语义</text>
+<text x="656" y="506" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">排序 → 语义 → 混合检索（RRF）</text>
+<text x="656" y="526" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">先看「语义单独用会错在哪」再决定加不加</text>
+<text x="32" y="588" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">10 族 80 条判据，逐页前缀唯一：CSO / CSX / CSG / CSI / CSQ / CSR / CSP / CSM / CSN / CSB</text>
+<text x="32" y="612" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">全部读数来自对本仓 2,406 篇 Markdown（15.0 MiB）的本机实测；脚本不入库，命令写在每页「如何验证」里</text>
+<text x="32" y="636" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b91c1c" font-weight="400" text-anchor="start">一条纪律：凡「索引更快」的说法，都必须给出语料规模与查询形态——15 MiB 上线性扫描只要 5.7 ms</text>
+</svg>

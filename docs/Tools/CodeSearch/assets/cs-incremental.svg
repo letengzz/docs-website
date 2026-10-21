@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<title>增量的三种状态：全量、增量、以及漏检</title>
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+<marker id="arrowp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+</defs>
+<text x="32" y="44" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">增量更新：真正难的不是「快」，是「不漏」</text>
+<text x="32" y="70" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">同样的改动，三种检测口径给出三种结果</text>
+<rect x="32" y="96" width="288" height="200" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="48" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#2563eb" font-weight="700" text-anchor="start">全量重建</text>
+<text x="48" y="150" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">每次都重扫全部文件</text>
+<text x="48" y="176" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">7.41 ~ 8.64 s / 2,406 文件</text>
+<text x="48" y="206" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">· 一定正确</text>
+<text x="48" y="228" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">· 代价随语料线性增长</text>
+<text x="48" y="250" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">· 大仓（百万文件）不可用</text>
+<text x="48" y="280" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">适合：CI 里每晚一次的对账</text>
+<rect x="336" y="96" width="288" height="200" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="352" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#047857" font-weight="700" text-anchor="start">增量：内容哈希</text>
+<text x="352" y="150" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">只重算 sha1 变了的文件</text>
+<text x="352" y="176" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">136.49 ms / 单文件（87 KB）</text>
+<text x="352" y="206" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">· 每文件平均 3.08 ms</text>
+<text x="352" y="228" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">· 1000 文件变更 ≈ 3.1 s</text>
+<text x="352" y="250" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">· 仍要读一遍字节（I/O 是下界）</text>
+<text x="352" y="280" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">适合：保存即刷新的开发期索引</text>
+<rect x="640" y="96" width="288" height="200" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="656" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#b91c1c" font-weight="700" text-anchor="start">伪增量：mtime + size</text>
+<text x="656" y="150" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">认为「没变」就不重读</text>
+<text x="656" y="176" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#b91c1c" font-weight="700" text-anchor="start">漏检：size 不变 + mtime 被保留</text>
+<text x="656" y="206" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">· git checkout 回旧版本</text>
+<text x="656" y="228" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">· cp -p / rsync -t / 解包</text>
+<text x="656" y="250" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">· 同长度改写（'的'→'与'）</text>
+<text x="656" y="280" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#b91c1c" font-weight="400" text-anchor="start">症状：搜不到昨天刚改的那句</text>
+<rect x="32" y="316" width="896" height="116" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="48" y="342" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#334155" font-weight="700" text-anchor="start">另一类陈旧：文件没了，posting 还在</text>
+<text x="48" y="368" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">实测：删掉一篇文档后，它在索引里仍占 4,614 组 posting —— 查询照旧返回这个不存在的路径</text>
+<text x="48" y="392" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">处置：写入侧维护 doc_id → path 映射，删除走「墓碑 + 定期 compaction」，并在查询出口按 doc_id 反查存活表</text>
+<text x="48" y="416" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="400" text-anchor="start">判据：CSI-C（删除可见性）/ CSI-F（墓碑与压缩）</text>
+<text x="32" y="462" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">数字口径：8.64 s 为 3-gram 全量构建；136.49 ms 为单文件（87,340 B）删旧写新；两者比 54×</text>
+<text x="32" y="486" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">判据：CSI-A ~ CSI-H</text>
+</svg>

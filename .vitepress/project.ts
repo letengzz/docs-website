@@ -389,6 +389,7 @@ export const CompleteProject = [
           { text: "第 1 周第 2 步 · 技术选型与版本基线（ETS-A~ETS-H）", link: "/project/Complete/EventOrderHub/TechBaseline/index.md" },
           { text: "第 1 周第 3 步 · 架构设计：事件流与一致性边界（EOA-A~EOA-H）", link: "/project/Complete/EventOrderHub/Architecture/index.md" },
           { text: "第 1 周第 4 步 · 数据库设计：九张表与六条不变量（EDB-A~EDB-H）", link: "/project/Complete/EventOrderHub/DatabaseDesign/index.md" },
+          { text: "第 1 周第 5 步 · 接口契约与第 1 周验收（EW1-A~EW1-H）", link: "/project/Complete/EventOrderHub/Week1Gate/index.md" },
         ],
       },
       {

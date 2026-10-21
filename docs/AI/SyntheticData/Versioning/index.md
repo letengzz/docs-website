@@ -177,4 +177,4 @@ PY
 - MLCommons **Croissant**：数据集元数据交换格式
 - EU AI Act 通用模型条款（训练数据摘要义务，2025-08-02 起适用）
 - *Reproducibility Checklist*（NeurIPS）：可复现性的检查项
-- 本仓库相邻专题：[质检与抽检](../QC/index.md)、[实战](../Practice/index.md)、[EventOrderHub 数据库设计](../../../project/Complete/EventOrderHub/DatabaseDesign/index.md)
+- 本仓库相邻专题：[质检与抽检](../QC/index.md)、[实战](../Practice/index.md)、[EventOrderHub 数据库设计](../../../../project/Complete/EventOrderHub/DatabaseDesign/index.md)

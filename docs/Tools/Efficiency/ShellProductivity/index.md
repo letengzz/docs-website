@@ -639,3 +639,13 @@ echo '{"b":1,"a":2}' | jq -S .
 - GNU Parallel 手册：[GNU Parallel 教程](https://www.gnu.org/software/parallel/parallel_tutorial.html)
 - xargs 手册（`-0` / `-P` / `-n` / `-r` 的权威说明）：[xargs(1) man page](https://man7.org/linux/man-pages/man1/xargs.1.html)
 - 相关页面：[终端、Shell 与会话复用](../Terminal/index.md) / [自动化：桌面、调度与脚本](../Automation/index.md) / [实战：搭一套个人效率工具链](../Practice/index.md)
+
+## 与「代码搜索与索引工程」的分工
+
+| 场景 | 归谁 | 关键差别 |
+| --- | --- | --- |
+| 一次性找一段文本、管道拼接 | 本页（`rg` / `fd` / `awk`） | 无索引、无状态、随用随丢 |
+| 每天几百次、要排序与权限 | [代码搜索与索引工程](../../CodeSearch/index.md) | 索引 + 排序 + 权限 + 陈旧度 |
+| 要「谁在什么时候改的」 | [Git 与版本控制](../../VersionControl/Git/Overview/index.md) | 历史语义 |
+
+**这一页特有的一个坑**：`rg` 默认**尊重 `.gitignore`、跳过隐藏文件与二进制文件**。于是 `rg foo` 搜不到 `node_modules` 或 `.env` 里的内容时，很容易被误判成「没有」。三级开关要分清：`--no-ignore`（不管忽略文件）、`-uu`（含隐藏）、`-uuu`（含二进制）。反过来，这也解释了为什么用 `rg` 做的「全库统计」往往比真实语料少一截——**它数的不是全部文件，是它愿意看的文件**。

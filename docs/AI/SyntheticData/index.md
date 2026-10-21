@@ -17,7 +17,7 @@
 - **统计显著性与置信区间** → [评测统计](../EvalEngineering/Statistics/index.md)：本专题只讲「一致性指标的区间怎么来」，其余统计推断去那页。
 - **LLM-as-judge 的校准** → [判据校准](../EvalEngineering/JudgeCalibration/index.md)：模型当裁判的偏差校准在那页，本专题管「人当裁判时人自己一致不一致」。
 - **线上效果的离线复现** → [离线评估](../LLMObservability/OfflineEval/index.md)：那里复现线上分布，本专题负责把那份分布造成可标注的样本。
-- **测试数据脱敏、数据工厂** → [测试数据与仿真](../Tools/TestDataSimulation/index.md)：那是**测试**用途的造数（要真值、要可重复），本专题是**训练/评测**用途的造数（要分布、要多样），两者都会用模板与脱敏，但验收标准完全不同。
+- **测试数据脱敏、数据工厂** → [测试数据与仿真](../../Tools/TestDataSimulation/index.md)：那是**测试**用途的造数（要真值、要可重复），本专题是**训练/评测**用途的造数（要分布、要多样），两者都会用模板与脱敏，但验收标准完全不同。
 - **训练数据里的个人信息与版权** → [AI 安全与合规](../AISecurityCompliance/index.md)：那里管合规边界，本专题在[标注规范](Guideline/index.md)里给出「哪些字段一开始就不该采」的落地清单。
 - **合成数据把模型训崩（model collapse）** → [微调常见问题](../FineTuning/FAQ/index.md)：现象与缓解在那页，本专题负责给出「怎么在造数阶段就把塌缩按住」的判据。
 - **周期 7 项目的九张表与不变量** → [EventOrderHub 数据库设计](../../../project/Complete/EventOrderHub/DatabaseDesign/index.md)：项目侧的造数脚本必须满足业务不变量，与本专题的「数据验收」是同一套思路的两种用法。

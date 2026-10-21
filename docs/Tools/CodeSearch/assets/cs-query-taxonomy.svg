@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<title>三种查询形态与延迟预算</title>
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+<marker id="arrowp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+</defs>
+<text x="32" y="44" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">三种查询形态：同一个索引，三种预算</text>
+<text x="32" y="70" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">形态决定结构——先问「谁在什么节奏下按键盘」，再问「用什么索引」</text>
+<rect x="32" y="96" width="288" height="250" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="48" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#2563eb" font-weight="700" text-anchor="start">① 交互式补全</text>
+<text x="48" y="148" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">每敲一个字符触发一次</text>
+<rect x="48" y="160" width="256" height="30" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.0"/>
+<text x="60" y="180" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="700" text-anchor="start">预算 ≤ 50 ms（一帧 16.7 ms × 3）</text>
+<text x="48" y="216" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#2563eb" font-weight="700" text-anchor="start">·</text>
+<text x="60" y="216" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">候选集必须靠前缀 / n-gram 裁剪</text>
+<text x="48" y="246" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#2563eb" font-weight="700" text-anchor="start">·</text>
+<text x="60" y="246" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">只排前 20 条，不做全量打分</text>
+<text x="48" y="276" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#2563eb" font-weight="700" text-anchor="start">·</text>
+<text x="60" y="276" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">必须可取消（旧查询让位新查询）</text>
+<rect x="336" y="96" width="288" height="250" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="352" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#047857" font-weight="700" text-anchor="start">② 全库检索</text>
+<text x="352" y="148" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">回车之后跑一次</text>
+<rect x="352" y="160" width="256" height="30" rx="6" fill="#ffffff" stroke="#047857" stroke-width="1.0"/>
+<text x="364" y="180" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="700" text-anchor="start">预算 ≤ 300 ms（人的耐心线）</text>
+<text x="352" y="216" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#047857" font-weight="700" text-anchor="start">·</text>
+<text x="364" y="216" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">允许全量打分 + 截断</text>
+<text x="352" y="246" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#047857" font-weight="700" text-anchor="start">·</text>
+<text x="364" y="246" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">要稳定排序（同分不能抖动）</text>
+<text x="352" y="276" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#047857" font-weight="700" text-anchor="start">·</text>
+<text x="364" y="276" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">要能翻页（游标而非 offset）</text>
+<rect x="640" y="96" width="288" height="250" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="656" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#b45309" font-weight="700" text-anchor="start">③ 批量巡检</text>
+<text x="656" y="148" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">CI / 脚本一次性扫全库</text>
+<rect x="656" y="160" width="256" height="30" rx="6" fill="#ffffff" stroke="#b45309" stroke-width="1.0"/>
+<text x="668" y="180" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="700" text-anchor="start">预算 = 分钟级，但必须可复跑</text>
+<text x="656" y="216" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#b45309" font-weight="700" text-anchor="start">·</text>
+<text x="668" y="216" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">不接受采样，必须全量</text>
+<text x="656" y="246" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#b45309" font-weight="700" text-anchor="start">·</text>
+<text x="668" y="246" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">输出要机器可读（JSON / 退出码）</text>
+<text x="656" y="276" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#b45309" font-weight="700" text-anchor="start">·</text>
+<text x="668" y="276" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">必须能定位到文件:行:列</text>
+<rect x="32" y="366" width="896" height="104" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="48" y="392" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#334155" font-weight="700" text-anchor="start">同一份语料（本仓 2,406 篇 / 15.0 MiB）上的实测对照</text>
+<text x="48" y="418" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">线性扫描全库找「幂等」：5.7 ms（2406 文件全部读入内存后）—— 交互式形态根本不需要索引</text>
+<text x="48" y="440" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">3-gram 索引查询「幂等键」：候选 129 → 验真后 129，总耗时 0.42 ms；但建索引 8.6 s、占 706 MiB</text>
+<text x="48" y="462" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="400" text-anchor="start">结论：索引买的是「不用读全部字节」，不是「一定更快」——语料小于几十 MiB 时，它买的是排序与增量能力</text>
+<text x="32" y="500" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">判据：CSO-C / CSO-D / CSO-E</text>
+</svg>

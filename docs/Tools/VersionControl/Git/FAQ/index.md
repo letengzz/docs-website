@@ -123,6 +123,16 @@ git sparse-checkout set docs
 - [IDE 配置 · 配置同步与团队统一](../../../IDE/ConfigSync/index.md)：`.gitattributes` 与 `.editorconfig` 的换行策略为何必须一致（否则每次打开文件都显示整文件被改）。
 - [IDE 配置 · 实战：搭一套统一的 IDE 环境](../../../IDE/Practice/index.md)：批量格式化提交应单独成一次提交，出问题可直接 revert。
 
+## 与「代码搜索与索引工程」的分工：`git grep` 的边界在哪
+
+| 问题 | 归谁 | 关键差别 |
+| --- | --- | --- |
+| 「这个符号在这个分支的哪一行」 | 本页（`git grep`） | 线性扫描、无索引、单工作树 |
+| 「跨 20 个仓 / 20 个分支 / 要按相关性排序」 | [代码搜索与索引工程](../../../CodeSearch/index.md) | 需要索引、需要排序、需要权限 |
+| 「这段代码是哪次提交引入的」 | 本页 + [`git log -S`](../Overview/index.md) | 历史检索与工作树检索是两套语义 |
+
+**这一页特有的一个坑**：`git grep` **默认只搜「已跟踪且在本次检出中」的文件**——未跟踪的新文件（还没 `git add`）不在结果里，`--untracked` 才会包含；想看历史版本要显式给一个 revision（`git grep x HEAD~3`），否则它永远只看当前工作树。这与「索引漏入库」（判据 `CSG-A`）是同一类失效：**范围没说清，结果就不可信**。
+
 ## 参考资料
 
 - Git 官方文档：https://git-scm.com/doc

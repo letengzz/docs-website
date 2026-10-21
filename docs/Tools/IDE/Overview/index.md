@@ -166,6 +166,16 @@ ls -l .editorconfig
 - 你能说出团队里「必须一致」的配置项有哪几项，以及它们现在写在哪里；
 - 如果答案是「不知道」，先读 [配置同步与团队统一](../ConfigSync/index.md)。
 
+## 与「代码搜索与索引工程」的分工
+
+| 场景 | 归谁 | 关键差别 |
+| --- | --- | --- |
+| 你在编辑器里按 `Cmd+Shift+F` | 本页（IDE 搜索面板） | 单仓、单用户、内存索引；结果不需权限与排序 |
+| 你要给别人一个搜索框（多人、多仓、要排序） | [代码搜索与索引工程](../../CodeSearch/index.md) | 多用户、有权限、要 BM25、要「文件:行:列」 |
+| 你要在 CI 里扫全仓找违规写法 | [静态分析与质量门禁](../../CodeQuality/Overview/index.md) | 规则预先定义，产物是告警而不是坐标 |
+
+**这一页特有的一个坑**：IDE 的搜索结果默认被**三重排除规则**过滤——`.gitignore`、编辑器自己的 `search.exclude`（VS Code）/「项目范围与排除目录」（IntelliJ）、以及索引尚未完成时的「部分结果」。三者的表现完全一样：**搜不到，但不报错**。所以「IDE 里搜不到」时的第一嫌疑不是索引坏了，而是某个排除规则把目录吃掉了；用 `rg --no-ignore` 对照一次就能分辨（见 [命令行效率](../../Efficiency/ShellProductivity/index.md)）。
+
 ## 参考资料
 
 - IntelliJ IDEA 官方下载与统一产品说明：[jetbrains.com/idea/download](https://www.jetbrains.com/idea/download/)

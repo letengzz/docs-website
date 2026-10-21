@@ -191,6 +191,16 @@ SELECT count(*) FROM kb_doc WHERE deleted_at IS NULL AND id = 't1';
 
 ES 侧的对应验证是一条命令：`GET kb_doc/_count` 与 `GET kb_doc/_search` 的 `hits.total` 必须一致；重建后用 `GET _cat/aliases/kb_doc?v` 确认别名指向新索引。
 
+## 与「代码搜索与索引工程」的分工
+
+| 问题 | 归谁 | 关键差别 |
+| --- | --- | --- |
+| 段合并、refresh、副本同步 | 本页（检索引擎的索引更新） | 引擎内部机制，调参为主 |
+| 「删掉的文档还能搜到」的应用侧兜底 | [代码搜索与索引工程](../../../Tools/CodeSearch/IncrementalUpdate/index.md) | 墓碑 + 存活表反查 + 压缩 |
+| 「改一个文件要多久能被搜到」 | 两页都要看 | 引擎侧是 refresh 间隔，应用侧是增量队列 |
+
+**这一页特有的一个坑**：删除在多数检索引擎里是**软删除**——文档被标记进 `.del` 文件（或等价结构），直到段合并才真正释放磁盘与倒排项。于是「删了 100 GB 文档，磁盘没变小」是正常现象，而「删了还能被搜到」要看 `refresh` 是否已经发生（默认 1 s 量级）。两个现象都容易被误判成 bug，判据分别是「段合并进度」与「refresh 间隔」，而不是「删除请求有没有发出去」。
+
 ## 参考资料
 
 - [Elasticsearch 9 · Refresh](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-refresh.html)——`refresh` 参数与 `wait_for` 的语义

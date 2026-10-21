@@ -202,4 +202,4 @@ PY
 - Self-Instruct（arXiv 2212.10560）：种子 → 生成 → 过滤的三段式
 - WizardLM / Evol-Instruct：深度演化与广度演化的原始定义
 - *Text Generation from Templates*（模板生成的多样性上限讨论）
-- 本仓库相邻专题：[覆盖与多样性](../Diversity/index.md)、[去重与泄漏](../Dedup/index.md)、[大模型微调](../FineTuning/index.md)
+- 本仓库相邻专题：[覆盖与多样性](../Diversity/index.md)、[去重与泄漏](../Dedup/index.md)、[大模型微调](../../FineTuning/index.md)

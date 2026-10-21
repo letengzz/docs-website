@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img">
+<title>先过滤还是后过滤：同一份索引，两种结果</title>
+<rect x="0" y="0" width="960" height="540" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+<marker id="arrowp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+</defs>
+<text x="32" y="44" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">权限：先过滤还是后过滤，决定了「搜得到」还是「搜不到」</text>
+<text x="32" y="70" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">实测：候选 394 篇，按可见率随机划分，取 top10</text>
+<rect x="32" y="96" width="440" height="250" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="48" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14.5" fill="#b91c1c" font-weight="700" text-anchor="start">后过滤（先取 top-k，再剔除不可见）</text>
+<rect x="48" y="140" width="90" height="34" rx="6" fill="#ffffff" stroke="#b91c1c" stroke-width="1.0"/>
+<text x="60" y="162" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">top10</text>
+<line x1="142" y1="157" x2="186" y2="157" stroke="#b91c1c" stroke-width="1.6" marker-end="url(#arrowr)"/>
+<rect x="190" y="140" width="110" height="34" rx="6" fill="#ffffff" stroke="#b91c1c" stroke-width="1.0"/>
+<text x="202" y="162" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">ACL 检查</text>
+<line x1="304" y1="157" x2="348" y2="157" stroke="#b91c1c" stroke-width="1.6" marker-end="url(#arrowr)"/>
+<rect x="352" y="140" width="100" height="34" rx="6" fill="#ffffff" stroke="#b91c1c" stroke-width="1.0"/>
+<text x="364" y="162" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="700" text-anchor="start">剩 0~8 条</text>
+<text x="48" y="206" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">可见率 60% → 平均丢 4.0/10，全空 0.0%</text>
+<text x="48" y="228" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">可见率 30% → 平均丢 7.0/10，全空 3.2%</text>
+<text x="48" y="250" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">可见率 10% → 平均丢 9.1/10，全空 40.4%</text>
+<text x="48" y="272" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="700" text-anchor="start">可见率 2%  → 平均丢 9.8/10，全空 81.8%</text>
+<text x="48" y="302" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="400" text-anchor="start">症状：新租户第一次搜索「什么都搜不到」</text>
+<text x="48" y="324" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">而索引本身完全健康——监控上看不出任何异常</text>
+<rect x="488" y="96" width="440" height="250" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="504" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14.5" fill="#047857" font-weight="700" text-anchor="start">预过滤（把 ACL 编进查询）</text>
+<rect x="504" y="140" width="110" height="34" rx="6" fill="#ffffff" stroke="#047857" stroke-width="1.0"/>
+<text x="516" y="162" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">ACL → 范围</text>
+<line x1="616" y1="157" x2="660" y2="157" stroke="#047857" stroke-width="1.6" marker-end="url(#arrowg)"/>
+<rect x="664" y="140" width="110" height="34" rx="6" fill="#ffffff" stroke="#047857" stroke-width="1.0"/>
+<text x="676" y="162" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">带约束的检索</text>
+<line x1="776" y1="157" x2="820" y2="157" stroke="#047857" stroke-width="1.6" marker-end="url(#arrowg)"/>
+<rect x="824" y="140" width="88" height="34" rx="6" fill="#ffffff" stroke="#047857" stroke-width="1.0"/>
+<text x="836" y="162" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#047857" font-weight="700" text-anchor="start">top10 满</text>
+<text x="504" y="206" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">两种实现：① 索引里存 acl_tags，查询时 AND</text>
+<text x="504" y="228" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">② 按租户分片（每租户一个索引段）</text>
+<text x="504" y="250" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">代价：① 标签变更要重建 posting</text>
+<text x="504" y="272" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">② 段数量随租户数增长（小租户浪费）</text>
+<text x="504" y="302" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#047857" font-weight="700" text-anchor="start">取舍：租户数 &lt; 1000 用 ①，&gt; 1000 用 ②</text>
+<text x="504" y="324" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">判据 CSP-C / CSP-D 给出可检查的分界线</text>
+<rect x="32" y="366" width="896" height="88" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="48" y="392" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#334155" font-weight="700" text-anchor="start">第三种选择：先按可见集合裁剪候选，再打分</text>
+<text x="48" y="416" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">它等价于预过滤，但它要求「可见集合」本身是廉价的——本仓 192 篇 Tools 文档的前缀扫描只要 0.5 ms</text>
+<text x="48" y="440" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">前提是可见集合能被表达成「路径前缀 / 标签集合」，而不是逐文档 ACL 列表</text>
+<text x="32" y="486" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">判据：CSP-A ~ CSP-H</text>
+<text x="32" y="510" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">（可见率是构造出来的，不涉及任何真实权限数据；目的是量出「后过滤丢结果」的量级）</text>
+</svg>

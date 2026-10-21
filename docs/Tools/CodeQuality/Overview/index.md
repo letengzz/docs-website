@@ -184,6 +184,16 @@ curl -s -u "$SONAR_TOKEN:" "$SONAR_HOST_URL/api/qualityprofiles/search?project=m
 
 三条命令都不需要流水线，只需要一个能访问的实例与一个 token。**它们的共同点是：验证的不是「工具装没装」，而是第三节那四条边界有没有真的落地。**
 
+## 与「代码搜索与索引工程」的分工
+
+| 需求 | 归谁 | 关键差别 |
+| --- | --- | --- |
+| 「代码里有没有这种写法」（模式已知） | 本页（静态分析 / 规则集） | AST 级匹配，能区分注释与字符串 |
+| 「这个符号/这段文本在哪」（模式临时给） | [代码搜索与索引工程](../../CodeSearch/index.md) | 子串匹配，要毫秒级响应 |
+| 「这个规则在历史上有没有违反过」 | 本页 + [CI 流水线](../../CICD/PipelineDesign/index.md) | 门禁语义 |
+
+**这一页特有的一个坑**：拿 `grep` 当规则引擎用，会**同时产生误报与漏报**——`grep -n "eval("` 会命中注释里的示例与文档字符串（误报），而 `eval (` 这样带空格的写法又搜不到（漏报）。规则必须落在 AST 上，这也是静态分析与文本搜索最本质的分界：**前者知道自己在看代码的哪一部分，后者只知道字节**。
+
 ## 参考资料
 
 - Sonar 官方文档 · Clean as You Code（新代码口径的官方定义与动机）：https://docs.sonarsource.com/sonarqube-server/latest/user-guide/clean-as-you-code/

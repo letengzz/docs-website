@@ -119,6 +119,16 @@ def traced_ask(question: str, user: dict) -> dict:
 4. 关闭向量库模拟故障，确认服务降级而不是整体 500。
 5. 按 `question_id` 回放一次完整链路，确认中间状态齐全且令牌统计准确。
 
+## 与「代码搜索与索引工程」的分工
+
+| 目标 | 归谁 | 关键差别 |
+| --- | --- | --- |
+| 给大模型找「能回答问题的证据」 | 本页（RAG 流水线） | chunk 按语义/字数切，允许模糊 |
+| 给人找「这一行代码在哪」 | [代码搜索与索引工程](../../../Tools/CodeSearch/index.md) | 块按结构边界切，要精确坐标 |
+| 两路候选怎么合并 | [向量库的混合检索](../../../DB/VectorDatabase/HybridSearch/index.md) | RRF、名次而非分数 |
+
+**这一页特有的一个坑**：RAG 的 chunk 通常是「固定字数 + 重叠」，它**故意**让边界落在任意位置（为了保证每块语义完整）；但同一套切法用到代码上，会把 `OutboxPublisher` 切成两半，于是「按前缀查符号」永远查不到。**同一个语料，两套切法**：给人看的块按结构切（标题/空行/围栏），给模型看的 chunk 按语义切，两者用 `(doc_id, offset)` 关联，不要共用一份。
+
 ## 参考资料
 
 - 检索指南（官方文档）：https://developers.openai.com/api/docs/guides/retrieval

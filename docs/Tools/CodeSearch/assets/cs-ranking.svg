@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<title>BM25 的三个因子与长度归一</title>
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+<marker id="arrowp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+</defs>
+<text x="32" y="44" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">排序：TF 会把「最长的页面」排第一，BM25 不会</text>
+<text x="32" y="70" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">同一查询「索引」，同一批候选（490 篇）</text>
+<rect x="32" y="96" width="288" height="220" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="48" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#b91c1c" font-weight="700" text-anchor="start">纯 TF 排序</text>
+<text x="48" y="150" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">score = 命中次数</text>
+<text x="48" y="182" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">top1：IndexPrinciple（57 次）</text>
+<text x="48" y="204" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">top2：BPlusTree（39 次）</text>
+<text x="48" y="226" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">top3：Index（39 次）</text>
+<text x="48" y="258" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="400" text-anchor="start">问题：长页面天然命中多</text>
+<text x="48" y="280" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">「索引」在本库 df=581，几乎每页都有</text>
+<text x="48" y="300" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#b91c1c" font-weight="400" text-anchor="start">→ TF 排的是「页长」不是「相关」</text>
+<rect x="336" y="96" width="288" height="220" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="352" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#047857" font-weight="700" text-anchor="start">BM25（k1=1.2, b=0.75）</text>
+<text x="352" y="150" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">idf × 饱和 TF × 长度归一</text>
+<text x="352" y="182" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">top1：Pipeline（7.92）</text>
+<text x="352" y="204" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">top2：Ingestion（7.58）</text>
+<text x="352" y="226" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">top3：DatabaseDesign（7.41）</text>
+<text x="352" y="258" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">idf('索引') = 1.59（df=581/2406）</text>
+<text x="352" y="280" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#047857" font-weight="400" text-anchor="start">与 TF 的 top10 只重合 6/10</text>
+<text x="352" y="300" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#047857" font-weight="400" text-anchor="start">→ 换排序 = 换产品，不只是换参数</text>
+<rect x="640" y="96" width="288" height="220" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="656" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#2563eb" font-weight="700" text-anchor="start">长度归一的实测效果</text>
+<text x="656" y="150" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">同为「索引」命中 ≥3 次</text>
+<rect x="656" y="166" width="256" height="52" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="668" y="186" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#2563eb" font-weight="700" text-anchor="start">短页 611 B → 3.37</text>
+<text x="668" y="208" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="700" text-anchor="start">长页 80,593 B → 1.89</text>
+<text x="656" y="246" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start">同样 3 次命中，短页分数是长页的 1.78 倍</text>
+<text x="656" y="272" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">b=0 关掉归一 → 长页反超</text>
+<text x="656" y="294" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">b=1 完全归一 → 短页霸榜</text>
+<rect x="32" y="336" width="896" height="96" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="48" y="362" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#334155" font-weight="700" text-anchor="start">排序还必须「稳定」：同分时按 (路径, 行号) 兜底</text>
+<text x="48" y="388" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">否则同一查询两次返回不同顺序，用户会以为「搜索结果在乱跳」；分页时还会出现重复与漏项</text>
+<text x="48" y="412" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">实测：候选集用 set 存放时，Python 的遍历顺序在两次进程间不同 → 必须显式排序，不能依赖插入顺序</text>
+<text x="32" y="470" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">idf 的意义：df 越接近语料总量，这个词越没有区分度；「索引」在本库 df=581（24%），idf 只有 1.59</text>
+<text x="32" y="494" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">判据：CSR-A ~ CSR-H</text>
+</svg>

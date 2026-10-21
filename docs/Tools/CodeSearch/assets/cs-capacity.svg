@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<title>容量、重建与监控</title>
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+<marker id="arrowp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+</defs>
+<text x="32" y="44" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">容量：真正要盯的四个数</text>
+<text x="32" y="70" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">索引不是「建好就不管」的产物，它有自己的体积、重建时间与陈旧度</text>
+<rect x="32" y="96" width="212" height="190" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="48" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#2563eb" font-weight="700" text-anchor="start">索引体积</text>
+<text x="48" y="160" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" fill="#0f172a" font-weight="700" text-anchor="start">706 MiB</text>
+<text x="48" y="190" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">15.0 MiB 语料的 3-gram</text>
+<text x="48" y="210" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">Python set 口径（上界）</text>
+<rect x="260" y="96" width="212" height="190" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="276" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#047857" font-weight="700" text-anchor="start">构建时间</text>
+<text x="276" y="160" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" fill="#0f172a" font-weight="700" text-anchor="start">8.64 s</text>
+<text x="276" y="190" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">2,406 文件，≈3.6 ms/文件</text>
+<text x="276" y="210" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">百万文件 ≈ 1 小时</text>
+<rect x="488" y="96" width="212" height="190" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="504" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#b45309" font-weight="700" text-anchor="start">增量延迟</text>
+<text x="504" y="160" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" fill="#0f172a" font-weight="700" text-anchor="start">3.08 ms</text>
+<text x="504" y="190" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">每文件平均（哈希命中后重写）</text>
+<text x="504" y="210" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">1000 文件批 ≈ 3.1 s</text>
+<rect x="716" y="96" width="212" height="190" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="732" y="124" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#b91c1c" font-weight="700" text-anchor="start">陈旧度</text>
+<text x="732" y="160" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" fill="#0f172a" font-weight="700" text-anchor="start">0 容忍</text>
+<text x="732" y="190" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">删除后残留 4,614 组</text>
+<text x="732" y="210" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">必须反查存活表兜底</text>
+<rect x="32" y="306" width="896" height="128" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="48" y="332" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13.5" fill="#334155" font-weight="700" text-anchor="start">四个必须采集的指标（缺一个就会「用户说搜不到，而你无从判断」）</text>
+<text x="48" y="358" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">① 索引文件数 / 仓库文件数（差值 = 漏入库）；② 查询 p50 / p95 延迟（按形态分桶）</text>
+<text x="48" y="380" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">③ 零结果率（按查询长度、按用户分桶）——权限 bug 最先在这里显形；④ 增量队列积压（秒）</text>
+<text x="48" y="404" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#b91c1c" font-weight="400" text-anchor="start">外加一条纪律：把「索引构建的那次 commit / mtime」暴露给用户，让「搜不到」可自证是陈旧而不是没写</text>
+<text x="32" y="462" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">重建策略：小语料全量（8.6 s 不值得做增量）；大语料分段重建 + 双写切换（新旧段并存，切换指针）</text>
+<text x="32" y="486" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">判据：CSN-A ~ CSN-H</text>
+</svg>

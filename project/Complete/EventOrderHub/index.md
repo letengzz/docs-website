@@ -41,11 +41,11 @@
 | [技术选型与版本基线](TechBaseline/index.md) | `ETS` | 版本选择理由、三条能力边界、本地最小可跑集 | 8 |
 | [架构设计：事件流与一致性边界](Architecture/index.md) | `EOA` | 同步/异步定性、事件信封、topic 分区、三处事务 | 8 |
 | [数据库设计：九张表与六条不变量](DatabaseDesign/index.md) | `EDB` | DDL 约束、部分索引、不变量 SQL、并发实测 | 8 |
+| [第 1 周收口 · 接口契约与第 1 周验收](Week1Gate/index.md) | `EW1` | 9 端点幂等与迁移覆盖、错误码表、契约⇄DDL 对齐、七道门 | 8 |
 
-后续 16 章（判据族已预留，交付时补条数）：
+后续 15 章（判据族已预留，交付时补条数）：
 
 - 环境与工程骨架（判据族 `EEN`：目录结构、配置分层、启动顺序）
-- 第 1 周验收：设计可照着实现（判据族 `EW1`：第 1 周七项验收）
 - 下单链路与本地事务表（判据族 `EOR`：事务边界、outbox、幂等键）
 - 支付回调：验签、幂等与乱序（判据族 `EPY`：回调验签、重复与乱序、对账）
 - 库存预占与超时释放（判据族 `EIV`：预占语义、超时释放、超卖兜底）
@@ -205,6 +205,53 @@ docker exec -i eoh-pg psql -U postgres -d eoh -f 910_slot_hold_demo.sql
 
 **下一步**（第 185 天）：环境与工程骨架——四层目录与依赖方向、三套 profile 与密钥来源、启动顺序（Flyway → 连接池 → consumer 就绪探针）、`docker compose up` 一条命令起全栈；验收是四个服务 healthy、`/actuator/health` 为 `UP`、下单接口能写出 outbox。
 
-## 九、判据纪律
+## 九、第 185 天交付
+
+- 新建 [第 1 周收口 · 接口契约与第 1 周验收](Week1Gate/index.md)（判据 `EW1-A` ~ `EW1-H`）。
+- 一张自绘示意图：`eoh-week1-gate.svg`（七道门 + 契约面三类断言）。
+- **9 个端点的契约总表**：每个写接口都标出幂等键来源、能触发的状态迁移、声明的错误码；`GET` 接口明确不参与状态机。
+- **8 个错误码**的口径表，其中 `DUPLICATE_CALLBACK` 用 **200 + code**（渠道把非 2xx 当失败会持续重推 24 小时）。
+- **契约字段 ⇄ DDL 列**的对照表 + 三条硬约定（金额只用 `numeric` 列、时间只用 `timestamptz`、契约不发明列）。
+- **收口当天真的抓到了 5 条 FAIL**：需求页里的 5 条迁移没有任何接口能触发（退款路径完全缺失）→ 补 `cancel_order` 的三条迁移 + 新增 `POST /api/orders/{id}/refunds`，端点 8 → 9，重跑 `fails=0`。
+
+**如何验证**（读者可执行，四步全过才算第 1 周收口）：
+
+```shell
+# 1) 契约自检（G5/G6/G7）
+python3 week1_gate.py
+# 期望：states=10 transitions=16 endpoints=9 errors=8 fields=24 / G5=PASS G6=PASS G7=PASS fails=0
+
+# 2) DDL 与六条不变量回归
+docker exec -i eoh-pg psql -U postgres -d eoh -f 900_invariants.sql
+# 期望：六条不变量各返回 0；表数 10
+
+# 3) 状态机：十状态全可达、唯一终态 CLOSED
+python3 - <<'PY'
+states = ["CREATED","AWAITING_PAYMENT","PAID","ALLOCATED","SHIPPED","COMPLETED",
+          "CANCELLED","REFUNDING","REFUNDED","CLOSED"]
+trans = [("CREATED","AWAITING_PAYMENT"),("CREATED","CANCELLED"),("AWAITING_PAYMENT","PAID"),
+         ("AWAITING_PAYMENT","CANCELLED"),("AWAITING_PAYMENT","CLOSED"),("PAID","ALLOCATED"),
+         ("PAID","REFUNDING"),("PAID","CANCELLED"),("ALLOCATED","SHIPPED"),("ALLOCATED","REFUNDING"),
+         ("SHIPPED","COMPLETED"),("SHIPPED","REFUNDING"),("COMPLETED","REFUNDING"),
+         ("REFUNDING","REFUNDED"),("CANCELLED","CLOSED"),("REFUNDED","CLOSED")]
+adj = {s: [] for s in states}
+for a, b in trans: adj[a].append(b)
+seen, stack = {"CREATED"}, ["CREATED"]
+while stack:
+    for n in adj[stack.pop()]:
+        if n not in seen: seen.add(n); stack.append(n)
+print("reachable=%d terminal=%s" % (len(seen), sorted(s for s in states if not adj[s])))
+PY
+# 期望：reachable=10 terminal=['CLOSED']
+
+# 4) 三容器 + 四个 topic
+docker compose -f deploy/compose.yaml ps
+docker exec -it eoh-kafka /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
+# 期望：三行 healthy；topic 恰好 4 个
+```
+
+**下一步**（第 186 天）：环境与工程骨架（`EEN`）——四层目录与依赖方向、三套 profile 与密钥来源、启动顺序（Flyway → 连接池 → consumer 就绪探针）；验收是四个服务 `healthy`、`/actuator/health` 为 `UP`、下单接口能写出 outbox。
+
+## 十、判据纪律
 
 每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMO` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。

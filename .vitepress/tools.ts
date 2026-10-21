@@ -351,3 +351,23 @@ export const BrowserExtension = [
     ],
   },
 ];
+
+export const CodeSearch = [
+  {
+    text: "代码搜索与索引工程",
+    link: "/docs/Tools/CodeSearch/index.md",
+    items: [
+      { text: "概述：代码搜索到底在解决什么问题", link: "/docs/Tools/CodeSearch/Overview/index.md" },
+      { text: "索引结构：倒排、n-gram 与后缀", link: "/docs/Tools/CodeSearch/IndexStructure/index.md" },
+      { text: "入库与解析：从文件到可检索的块", link: "/docs/Tools/CodeSearch/IngestPipeline/index.md" },
+      { text: "增量更新与索引一致性", link: "/docs/Tools/CodeSearch/IncrementalUpdate/index.md" },
+      { text: "查询规划：解析、候选集与正则", link: "/docs/Tools/CodeSearch/QueryPlanning/index.md" },
+      { text: "结果排序：BM25 与稳定性", link: "/docs/Tools/CodeSearch/Ranking/index.md" },
+      { text: "权限过滤与多租户", link: "/docs/Tools/CodeSearch/PermissionFilter/index.md" },
+      { text: "语义检索与混合排序", link: "/docs/Tools/CodeSearch/SemanticSearch/index.md" },
+      { text: "容量、重建与监控", link: "/docs/Tools/CodeSearch/Operations/index.md" },
+      { text: "实战：给本仓建一个可跑检索", link: "/docs/Tools/CodeSearch/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Tools/CodeSearch/FAQ/index.md" },
+    ],
+  },
+];

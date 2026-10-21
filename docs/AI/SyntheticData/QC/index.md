@@ -144,4 +144,4 @@ jq -r 'select(.supersedes != null) | .item_id' data/*.jsonl | wc -l
 - *Datasheets for Datasets*：数据质量与抽检的披露项
 - *Quality Assurance in Crowdsourced Annotation*（黄金题与陷阱题的实践）
 - Krippendorff's α：返工后一致性重算的口径，见[一致性度量](../Agreement/index.md)
-- 本仓库相邻专题：[标注规范](../Guideline/index.md)、[一致性度量](../Agreement/index.md)、[测试数据与仿真](../../Tools/TestDataSimulation/index.md)
+- 本仓库相邻专题：[标注规范](../Guideline/index.md)、[一致性度量](../Agreement/index.md)、[测试数据与仿真](../../../Tools/TestDataSimulation/index.md)

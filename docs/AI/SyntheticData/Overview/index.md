@@ -161,4 +161,4 @@ jq -r '.source' data/*.jsonl | sort | uniq -c
 - *Datasheets for Datasets*（Gebru et al., CACM 2021）
 - MLCommons **Croissant** 数据集元数据规范
 - *AI dataset collapse*（Shumailov et al., Nature 2024）
-- 本仓库相邻专题：[大模型微调](../FineTuning/index.md)、[评测集设计](../EvalEngineering/DatasetDesign/index.md)、[测试数据与仿真](../Tools/TestDataSimulation/index.md)
+- 本仓库相邻专题：[大模型微调](../../FineTuning/index.md)、[评测集设计](../../EvalEngineering/DatasetDesign/index.md)、[测试数据与仿真](../../../Tools/TestDataSimulation/index.md)

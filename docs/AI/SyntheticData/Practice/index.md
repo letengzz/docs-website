@@ -213,4 +213,4 @@ python3 verify_manifest.py manifest.json
 
 - 本专题：[总览](../Overview/index.md)、[合成策略](../Generation/index.md)、[去重与泄漏](../Dedup/index.md)、[一致性度量](../Agreement/index.md)
 - *Datasheets for Datasets*：数据卡七问
-- 本仓库相邻专题：[评测集设计](../../EvalEngineering/DatasetDesign/index.md)、[大模型微调](../../FineTuning/index.md)、[EventOrderHub 数据库设计](../../../project/Complete/EventOrderHub/DatabaseDesign/index.md)
+- 本仓库相邻专题：[评测集设计](../../EvalEngineering/DatasetDesign/index.md)、[大模型微调](../../FineTuning/index.md)、[EventOrderHub 数据库设计](../../../../project/Complete/EventOrderHub/DatabaseDesign/index.md)

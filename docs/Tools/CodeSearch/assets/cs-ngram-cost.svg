@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img">
+<title>三种 n-gram 索引的构建成本与体积</title>
+<rect x="0" y="0" width="960" height="540" fill="#ffffff"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+<marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+<marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+<marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+<marker id="arrowp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker>
+</defs>
+<text x="32" y="44" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start">n-gram 的粒度是一道硬取舍：小 n 省体积但候选集大</text>
+<text x="32" y="70" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">同一份 15.0 MiB 语料，Python set 口径（含每元素对象开销，是上界而非实现体积）</text>
+<rect x="90" y="247" width="150" height="97" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+<text x="165" y="235" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#2563eb" font-weight="700" text-anchor="middle">431 MiB</text>
+<text x="165" y="296" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="middle">259,641</text>
+<text x="165" y="316" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">个 gram</text>
+<text x="165" y="370" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14" fill="#0f172a" font-weight="700" text-anchor="middle">2-gram</text>
+<text x="165" y="390" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle">构建 4.74 s</text>
+<rect x="370" y="184" width="150" height="160" rx="10" fill="#a7f3d0" stroke="#047857" stroke-width="1.4"/>
+<text x="445" y="172" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#047857" font-weight="700" text-anchor="middle">706 MiB</text>
+<text x="445" y="264" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="middle">1,507,085</text>
+<text x="445" y="284" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">个 gram</text>
+<text x="445" y="370" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14" fill="#0f172a" font-weight="700" text-anchor="middle">3-gram</text>
+<text x="445" y="390" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle">构建 8.64 s</text>
+<rect x="650" y="147" width="150" height="197" rx="10" fill="#fde68a" stroke="#b45309" stroke-width="1.4"/>
+<text x="725" y="135" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#b45309" font-weight="700" text-anchor="middle">871 MiB</text>
+<text x="725" y="246" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="middle">3,420,076</text>
+<text x="725" y="266" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="middle">个 gram</text>
+<text x="725" y="370" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14" fill="#0f172a" font-weight="700" text-anchor="middle">4-gram</text>
+<text x="725" y="390" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle">构建 12.83 s</text>
+<line x1="60" y1="344" x2="900" y2="344" stroke="#cbd5e1" stroke-width="1.2"/>
+<rect x="32" y="410" width="896" height="96" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="48" y="436" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#b91c1c" font-weight="700" text-anchor="start">选择率才是真正的成本：94.5% 的「最大的 200 个 trigram」覆盖了超过一半语料</text>
+<text x="48" y="460" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">实测覆盖率最高的 trigram：' ##' 命中 2309/2406（96.0%）、'## ' 96.0%、' - ' 95.2%、'ion' 90.3%</text>
+<text x="48" y="484" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start">→ 查询里只要含这类 gram，候选集就退化成全库；工程上的处置是「丢弃高频 gram，只留选择率高的」</text>
+<text x="32" y="528" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">判据：CSX-A ~ CSX-H</text>
+</svg>
