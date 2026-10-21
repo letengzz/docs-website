@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="360" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">三个多样性指标与它们各自的盲区</text>
+<text x="36" y="70" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">distinct-n 看不见重复、压缩率看不见跨文件、只有聚类占比能看见语义重复</text>
+<rect x="36" y="104" width="288" height="150" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+<text x="48" y="130" font-size="14" font-weight="700" fill="#be123c" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">distinct-n</text>
+<text x="48" y="150" font-size="11" font-weight="400" fill="#be123c" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">对重复完全无感</text>
+<text x="48" y="178" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">base 2,158 / 175,076 / 716,975</text>
+<text x="48" y="198" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">exact×3 完全相同（+0.0%）</text>
+<text x="48" y="218" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">perturbed×3 仅 +0.1%</text>
+<rect x="342" y="104" width="288" height="150" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="354" y="130" font-size="14" font-weight="700" fill="#b45309" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">gzip 压缩率</text>
+<text x="354" y="150" font-size="11" font-weight="400" fill="#b45309" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">只在 32 KiB 窗口内有效</text>
+<text x="354" y="178" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">base 0.3975 → exact×3 0.3973</text>
+<text x="354" y="198" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">体积 2.2 MB → 6.6 MB（+200%）</text>
+<text x="354" y="218" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">单篇 ×3：体积只 +4.0%</text>
+<rect x="648" y="104" width="288" height="150" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="660" y="130" font-size="14" font-weight="700" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">聚类占比</text>
+<text x="660" y="150" font-size="11" font-weight="400" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一能看见语义重复</text>
+<text x="660" y="178" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">真实语料 2,219 篇：99.73%</text>
+<text x="660" y="198" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">exact×3：理论 33%</text>
+<text x="660" y="218" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">模板 + 随机 ID：0 对 → 41,396 对</text>
+<text x="36" y="288" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">同一份语料、三种复制方式的实测（800 篇 / 553 万字符）</text>
+<text x="36" y="312" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">条数翻倍，三个指标里任何一个纹丝不动 —— 这一轮就白干了。三个一起看，盲区才互补。</text>
+<text x="36" y="336" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一可靠的做法：归一化后做相似度聚类，用「簇数 / 条数」当主指标，另外两个只做旁证。</text>
+</svg>

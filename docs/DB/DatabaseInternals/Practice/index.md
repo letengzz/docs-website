@@ -174,7 +174,7 @@ select pg_size_pretty(pg_wal_lsn_diff(:'after', :'before')) as wal;
 | 改后读数 | 预期 `Index Only Scan`、页数 ≤ 5、`Heap Fetches=0` |
 | 结论与代价 | 读放大从 75 → ~5（降 15 倍）；索引体积 +X MB、写放大 +Y% |
 
-## 八、七步速查表
+## 七步速查表
 
 | 步 | 命令 | 回答什么问题 | 判读规则 |
 | --- | --- | --- | --- |
@@ -187,7 +187,7 @@ select pg_size_pretty(pg_wal_lsn_diff(:'after', :'before')) as wal;
 | 6 | 改一个变量重测 | 改动是否生效 | 前后读数同口径对比 |
 | 7 | 写成记录 | 别人能不能复现 | 六项齐全 |
 
-## 九、判据表
+## 判据表
 
 | 编号 | 约定 | 定错了会怎样 | 怎么验证没被破坏 |
 | --- | --- | --- | --- |

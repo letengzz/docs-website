@@ -184,7 +184,7 @@ dig +nocmd blog.example.com +noall +answer | awk '{print $2}'
 - **切完怎么发现「切得不对」**：见 [监控告警](../../Monitoring/index.md)。
 - **云上的容灾落位（子网跨 AZ、负载均衡跨 AZ、数据复制方式）**：见 [云上架构 · 可用性拓扑](../../CloudArchitecture/Availability/index.md)。本页回答「**要哪个档位**」（冷 / 温 / 热 / 多活与 RTO / RPO 怎么定），该页回答「档位落到云上**长什么样**」。一条最容易被打脸的判据：**「多可用区」是不是真的，取决于入口的跨可用区开关是否开启、后端是否真的分布在两个 AZ**——而不是文档里写了「已多活」。
 
-## 9. 与「多活与单元化」的分工（第 163 天补充）
+## 8. 与「多活与单元化」的分工（第 163 天补充）
 
 本页第 1 节的四个档位是**选档**，它回答「该做到哪一档、钱花在哪」；至于档位里最难的那一档——多活——本页只到「双向或单元化复制」一句。**「多活到底怎么落地」不在本页**：
 
@@ -200,17 +200,7 @@ dig +nocmd blog.example.com +noall +answer | awk '{print $2}'
 本页写「多活 RTO ≈ 0」，指的是**流量层面的切换时间**；用户可感知的 RTO 还要加上 DNS 生效、连接排空与客户端重试三段，实测常见 2~3 分钟——见[流量切换](../../MultiActive/TrafficSwitch/index.md)第 1 节。汇报时把这两个数混用，是容灾方案评审里最常见的口径事故。
 :::
 
-## 参考资料
-
-- Google SRE Workbook · Disaster Recovery（RTO/RPO 与演练）：https://sre.google/workbook/disaster-recovery/
-- AWS Well-Architected · Reliability Pillar（DR 四种策略与选型）：https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html
-- PostgreSQL 官方 · Log-Shipping Standby Servers（`synchronous_commit` 与同步复制语义）：https://www.postgresql.org/docs/current/warm-standby.html
-- MySQL 官方 · Semisynchronous Replication（含超时降级）：https://dev.mysql.com/doc/refman/8.4/en/replication-semisync.html
-- MongoDB 手册 · Replica Set Read/Write Semantics 与 Write Concern `majority`：https://www.mongodb.com/docs/manual/replication/
-- CNCF · Disaster Recovery 指引（Kubernetes 场景）：https://www.cncf.io/
-- 本专题其余章节：[体系概述](../Overview/index.md) ｜ [恢复与演练](../Recovery/index.md) ｜ [实战](../Practice/index.md)
-
-## 8. 与故障应急体系的分工（第 129 天补充）
+## 9. 与故障应急体系的分工（第 129 天补充）
 
 本页与 [故障应急体系](../../IncidentResponse/index.md) 的交界在**「切换」这个动作上**，两边各管一半：
 
@@ -222,3 +212,13 @@ dig +nocmd blog.example.com +noall +answer | awk '{print $2}'
 | 演练谁组织 | **两边都有** | 本页写**切换演练的技术步骤**，该专题写**让值班人真正按下切换键的流程** |
 
 **最需要对齐的一条**：容灾档位写在架构文档里、切换命令写在手册里、而**「谁在凌晨三点有权决定切换」常常没人写过**。这一条属于故障应急体系，且必须在事故之前写死——因为切换决策一旦需要「先请示」，多出来的每一分钟都在 RTO 的账上。
+
+## 参考资料
+
+- Google SRE Workbook · Disaster Recovery（RTO/RPO 与演练）：https://sre.google/workbook/disaster-recovery/
+- AWS Well-Architected · Reliability Pillar（DR 四种策略与选型）：https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html
+- PostgreSQL 官方 · Log-Shipping Standby Servers（`synchronous_commit` 与同步复制语义）：https://www.postgresql.org/docs/current/warm-standby.html
+- MySQL 官方 · Semisynchronous Replication（含超时降级）：https://dev.mysql.com/doc/refman/8.4/en/replication-semisync.html
+- MongoDB 手册 · Replica Set Read/Write Semantics 与 Write Concern `majority`：https://www.mongodb.com/docs/manual/replication/
+- CNCF · Disaster Recovery 指引（Kubernetes 场景）：https://www.cncf.io/
+- 本专题其余章节：[体系概述](../Overview/index.md) ｜ [恢复与演练](../Recovery/index.md) ｜ [实战](../Practice/index.md)

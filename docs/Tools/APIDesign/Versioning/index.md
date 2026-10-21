@@ -194,7 +194,7 @@ curl -sI http://127.0.0.1:18080/api/v1/posts | grep -iE '^(deprecation|sunset|li
 删掉契约里的一个响应字段，`oasdiff breaking` **必须**退出码非 0。如果仍然返回 0，说明你比较的两个文件是同一个（常见于基线没被真正更新）——**「零破坏性变更」这个绿色结论必须先被证伪一次才可信**。
 :::
 
-## 8. 与在线协作任务看板的分工
+## 7. 与在线协作任务看板的分工
 
 本页讲**版本策略**：什么时候该加法、什么时候该新端点、什么时候才轮到 URL 版本，以及废弃通知（`Deprecation` / `Sunset`）怎么写。
 
@@ -210,7 +210,7 @@ curl -sI http://127.0.0.1:18080/api/v1/posts | grep -iE '^(deprecation|sunset|li
 **契约自身也要有版本，且它的破坏性变更与接口的破坏性变更不是一回事。** 本页的 SemVer 口径与任务看板的「契约三步走」（先加法 → 再端点 → 最后才版本）是同一条纪律的两种表述。
 :::
 
-## 7.5 与「契约演进与兼容」专题的分工
+## 8. 与「契约演进与兼容」专题的分工
 
 本页解决的是**对外怎么表达版本**：路径 / Header / 媒体类型三选一、三类变更清单、`Deprecation` 与 `Sunset` 头怎么写、`oasdiff` 基线比对。
 
@@ -227,7 +227,7 @@ curl -sI http://127.0.0.1:18080/api/v1/posts | grep -iE '^(deprecation|sunset|li
 **「废弃」是一个机器可读的信号，不是一份公告。** 本页给的是响应头写法（`Deprecation` 用 `@秒`、`Sunset` 用 HTTP-date，两者格式不同）；契约演进专题给的是「标注之后还有限流、拒绝新接入、410 三步」，以及为什么公告永远到不了 100% 的调用方。
 :::
 
-## 7. 参考资料
+## 9. 参考资料
 
 - [RFC 9745 · The Deprecation HTTP Response Header Field](https://www.rfc-editor.org/rfc/rfc9745.html)
 - [RFC 8594 · The Sunset HTTP Header Field](https://www.rfc-editor.org/rfc/rfc8594.html)

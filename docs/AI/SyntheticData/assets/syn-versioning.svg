@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 384" width="960" height="384" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="384" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">三层版本与三种回滚粒度</text>
+<text x="36" y="70" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">manifest 能证明「曾经是什么」，只有存了字节才能保证「还能拿到」</text>
+<rect x="36" y="104" width="288" height="104" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="48" y="124" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">文件级</text>
+<text x="48" y="154" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">逐分片 SHA-256</text>
+<text x="48" y="170" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">2,402 文件 / 0.426 s</text>
+<text x="48" y="186" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">单文件 0.04 ms</text>
+<rect x="342" y="104" width="288" height="104" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="354" y="124" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">数据集级</text>
+<text x="354" y="154" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">manifest 358 KiB</text>
+<text x="354" y="170" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">gz 后 122 KiB</text>
+<text x="354" y="186" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">0.18 ms/文件</text>
+<rect x="648" y="104" width="288" height="104" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="660" y="124" font-size="12.5" font-weight="700" fill="#6d28d9" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">血缘</text>
+<text x="660" y="154" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">model / revision</text>
+<text x="660" y="170" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">prompt_sha256</text>
+<text x="660" y="186" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">guideline_version</text>
+<text x="36" y="242" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">回滚的三种粒度（必须分开记录）</text>
+<rect x="36" y="262" width="288" height="76" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="48" y="284" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">数据回滚</text>
+<text x="48" y="304" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">切回上一版 manifest</text>
+<text x="48" y="324" font-size="11" font-weight="400" fill="#b45309" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">代价：分钟 ~ 小时</text>
+<rect x="342" y="262" width="288" height="76" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="354" y="284" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">规范回滚</text>
+<text x="354" y="304" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">规范回旧版 + 受影响样本回旧记录</text>
+<text x="354" y="324" font-size="11" font-weight="400" fill="#b45309" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">代价：小时 ~ 天</text>
+<rect x="648" y="262" width="288" height="76" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="660" y="284" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">模型回滚</text>
+<text x="660" y="304" font-size="11" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">旧数据版本重训</text>
+<text x="660" y="324" font-size="11" font-weight="400" fill="#b45309" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">代价：天</text>
+<text x="36" y="362" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">禁忌：只存 manifest 不存字节 —— 缓存一清空就无法重建，那不叫版本化。</text>
+</svg>

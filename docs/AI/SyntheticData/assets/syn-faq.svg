@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 386" width="960" height="386" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="386" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">症状分诊：四个方向与处置成本</text>
+<text x="36" y="70" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">同一个指标异常可能来自五个根因，按成本从低到高排查</text>
+<rect x="396.0" y="99.0" width="168" height="58" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="480" y="121.0" font-size="12" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">症状：指标不对</text>
+<text x="480" y="139.0" font-size="11" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">先看最便宜的一项</text>
+<rect x="55.0" y="214.0" width="190" height="96" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="150" y="236.0" font-size="11.5" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">量涨了指标不动</text>
+<text x="150" y="254.0" font-size="10.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">归一化重算重复率</text>
+<text x="150" y="269.0" font-size="10.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">查簇数 / 条数</text>
+<line x1="387.6" y1="158" x2="150" y2="214" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)" stroke-dasharray="5 4"/>
+<rect x="285.0" y="214.0" width="190" height="96" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+<text x="380" y="236.0" font-size="11.5" font-weight="700" fill="#be123c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">离线高上线低</text>
+<text x="380" y="254.0" font-size="10.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">max-J 分位</text>
+<text x="380" y="269.0" font-size="10.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">cluster_id 交集</text>
+<line x1="452.0" y1="158" x2="380" y2="214" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)" stroke-dasharray="5 4"/>
+<rect x="515.0" y="214.0" width="190" height="96" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="610" y="236.0" font-size="11.5" font-weight="700" fill="#6d28d9" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">α 只有 0.4~0.5</text>
+<text x="610" y="254.0" font-size="10.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">规则是否有序</text>
+<text x="610" y="269.0" font-size="10.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">反例够不够</text>
+<line x1="516.4" y1="158" x2="610" y2="214" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)" stroke-dasharray="5 4"/>
+<rect x="715.0" y="214.0" width="190" height="96" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="810" y="236.0" font-size="11.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">κ 高但线上错</text>
+<text x="810" y="254.0" font-size="10.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">反向抽检高置信档</text>
+<text x="810" y="269.0" font-size="10.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">黄金题按人看</text>
+<line x1="572.4" y1="158" x2="810" y2="214" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)" stroke-dasharray="5 4"/>
+<text x="36" y="340" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">排查顺序 = 处置成本从低到高：重算重复率 10 分钟 → 查泄漏 5 分钟 → 重训一轮 5 小时。从上往下查。</text>
+<text x="36" y="364" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">最贵的两个漏项：归一化（第 6 天）与生成时元数据（第 3 天）—— 都是「当时 10 分钟、事后两周」的事。</text>
+</svg>

@@ -40,10 +40,10 @@
 | [需求拆分：五个上下文与订单状态机](Requirements/index.md) | `EOH` | 上下文边界、十状态十六迁移、六条不变量 | 8 |
 | [技术选型与版本基线](TechBaseline/index.md) | `ETS` | 版本选择理由、三条能力边界、本地最小可跑集 | 8 |
 | [架构设计：事件流与一致性边界](Architecture/index.md) | `EOA` | 同步/异步定性、事件信封、topic 分区、三处事务 | 8 |
+| [数据库设计：九张表与六条不变量](DatabaseDesign/index.md) | `EDB` | DDL 约束、部分索引、不变量 SQL、并发实测 | 8 |
 
-后续 17 章（判据族已预留，交付时补条数）：
+后续 16 章（判据族已预留，交付时补条数）：
 
-- 数据库设计：九张表与六条不变量（判据族 `EDB`：DDL 约束、索引、不变量 SQL）
 - 环境与工程骨架（判据族 `EEN`：目录结构、配置分层、启动顺序）
 - 第 1 周验收：设计可照着实现（判据族 `EW1`：第 1 周七项验收）
 - 下单链路与本地事务表（判据族 `EOR`：事务边界、outbox、幂等键）
@@ -60,8 +60,6 @@
 - 监控与告警（判据族 `EMO`：指标、告警、大盘）
 - 上线验收与对账日报（判据族 `ELA`：上线清单与日报）
 - 第 4 周验收与交接（判据族 `EW4`：四周收口与交接）
-
-> 章节按天推进，**每章都自带「如何验证」**：读者按页面里的命令跑一遍，应得到页面写明的读数。项目目录只放 Markdown 与配图，不放任何工程文件。
 
 > 章节按天推进，**每章都自带「如何验证」**：读者按页面里的命令跑一遍，应得到页面写明的读数。项目目录只放 Markdown 与配图，不放任何工程文件。
 
@@ -172,6 +170,41 @@ docker exec eoh-pg psql -U eoh -d eoh -Atc "show lock_timeout;"
 
 **下一步**（第 184 天）：数据库设计——九张表的完整 DDL + 六条不变量的可执行 SQL，把今天的 outbox 扩成完整表族。
 
-## 八、判据纪律
+## 八、第 184 天交付
 
-每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EAT` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMO` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。
+- 新建 [数据库设计：九张表与六条不变量](DatabaseDesign/index.md)（判据 `EDB-A` ~ `EDB-H`）。
+- 一张自绘示意图：`eoh-db-design.svg`（五个上下文、十张表、六条不变量）。
+- **九张业务表 + outbox 的完整 DDL**（含生成列、部分唯一索引、成对 CHECK），并回答了第 183 天留下的一个缺口：`order_events` 不单独建表，事件已在 `outbox` 里。
+- **六条不变量各配一条可执行 SQL**，在 10 万单 / 30 万明细上实测：I1 199 ms、I2 95 ms、I3 21 ms、I4 22 ms、I5 21 ms、I6 52 ms，基线全部为 0；逐条埋违反后全部抓得到。
+- 三组必须两个会话才能测出来的行为：① 幂等键冲突**阻塞 2.30 s 后**才报 23505（不是立刻失败）；② 条件 UPDATE 后到者**阻塞 1.41 s 后 `UPDATE 0`**，最终 `reserved=1/1` 零超卖；③ 在数量型库存上误用 `EXCLUDE` 约束 → `23P01`，第二笔订单下不进去。
+- 两条反例读数：`uuidv7()` 主键索引 **6,184 KB vs 8,752 KB（−29.3%）**、按 id 取 1 万行 **64 页 vs 1,274 页**；`stored` 生成列让 10 万行插入 **288.6 ms → 522.6 ms（+81%）**。
+- 造数翻车记录：脚本给两个租户建了预留却只给一个租户建库存行 → I3 一次报 **2,994 条**违反；修一行 SQL 后归零。
+
+**如何验证**（读者可执行，六步全过才算设计落地）：
+
+```shell
+# 1) 建库 + 十张表（期望：约 1 秒，无报错）
+docker run -d --name eoh-pg -e POSTGRES_PASSWORD=eoh -p 55432:5432 postgres:18
+docker exec -i eoh-pg psql -U postgres -c "create database eoh"
+docker exec -i eoh-pg psql -U postgres -d eoh -f 001_schema.sql
+
+# 2) 表数（期望：10）
+docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
+  "select count(*) from pg_class where relkind='r' and relnamespace='public'::regnamespace;"
+
+# 3) 六条不变量（期望：全部 0）
+docker exec -i eoh-pg psql -U postgres -d eoh -f 900_invariants.sql
+
+# 4) 幂等插入：两个会话同键（期望：后到者约 2s 后 23505；改 on conflict 则 0 行不报错）
+
+# 5) 防超卖：两个会话条件 UPDATE（期望：UPDATE 1 / UPDATE 0，最终 reserved=total）
+
+# 6) 排他约束误用演示（期望：ERROR 23P01）
+docker exec -i eoh-pg psql -U postgres -d eoh -f 910_slot_hold_demo.sql
+```
+
+**下一步**（第 185 天）：环境与工程骨架——四层目录与依赖方向、三套 profile 与密钥来源、启动顺序（Flyway → 连接池 → consumer 就绪探针）、`docker compose up` 一条命令起全栈；验收是四个服务 healthy、`/actuator/health` 为 `UP`、下单接口能写出 outbox。
+
+## 九、判据纪律
+
+每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMO` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。

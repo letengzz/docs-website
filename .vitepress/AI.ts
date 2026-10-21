@@ -379,3 +379,22 @@ export const AI_EdgeInference = [
     ],
   },
 ];
+
+export const AI_SyntheticData = [
+  {
+    text: "数据合成与标注工程",
+    link: "/docs/AI/SyntheticData/index.md",
+    items: [
+      { text: "总览：三种来源、四类失败与三条红线", link: "/docs/AI/SyntheticData/Overview/index.md" },
+      { text: "合成策略：五种造法与一个验证器", link: "/docs/AI/SyntheticData/Generation/index.md" },
+      { text: "覆盖与多样性：三个指标的三个盲区", link: "/docs/AI/SyntheticData/Diversity/index.md" },
+      { text: "去重与泄漏：候选率 1.87% 的那条流水线", link: "/docs/AI/SyntheticData/Dedup/index.md" },
+      { text: "标注规范：把「我觉得」写成可裁决的条文", link: "/docs/AI/SyntheticData/Guideline/index.md" },
+      { text: "一致性度量：κ 会骗人，区间不会", link: "/docs/AI/SyntheticData/Agreement/index.md" },
+      { text: "质检与抽检：黄金题、陷阱题与返工", link: "/docs/AI/SyntheticData/QC/index.md" },
+      { text: "版本化与血缘：一万条数据的可回滚快照", link: "/docs/AI/SyntheticData/Versioning/index.md" },
+      { text: "实战：从 0 到 1 造一万条可验收数据", link: "/docs/AI/SyntheticData/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/AI/SyntheticData/FAQ/index.md" },
+    ],
+  },
+];

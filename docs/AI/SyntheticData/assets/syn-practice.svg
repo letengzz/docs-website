@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 358" width="960" height="358" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="358" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">从 0 到 1 的十二天流水线</text>
+<text x="36" y="70" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">十万条数据不是一次造出来的：每一段都有可执行读数，每一段都能独立验收</text>
+<rect x="36" y="104" width="100" height="78" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="48" y="124" font-size="10.5" font-weight="700" fill="#94a3b8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">第 0 天</text>
+<text x="48" y="154" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">任务卡 + 48 层</text>
+<line x1="136" y1="143" x2="148" y2="143" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="150" y="104" width="100" height="78" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="162" y="124" font-size="10.5" font-weight="700" fill="#1d4ed8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">第 1~2 天</text>
+<text x="162" y="154" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">300 条种子</text>
+<line x1="250" y1="143" x2="262" y2="143" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="264" y="104" width="100" height="78" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="276" y="124" font-size="10.5" font-weight="700" fill="#0f766e" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">第 3~5 天</text>
+<text x="276" y="154" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">6,000 条合成</text>
+<line x1="364" y1="143" x2="376" y2="143" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="378" y="104" width="100" height="78" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="390" y="124" font-size="10.5" font-weight="700" fill="#b45309" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">第 6 天</text>
+<text x="390" y="154" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">归一化去重</text>
+<line x1="478" y1="143" x2="490" y2="143" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="492" y="104" width="100" height="78" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="504" y="124" font-size="10.5" font-weight="700" fill="#6d28d9" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">第 7~9 天</text>
+<text x="504" y="154" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">双标 4,000</text>
+<line x1="592" y1="143" x2="604" y2="143" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="606" y="104" width="100" height="78" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+<text x="618" y="124" font-size="10.5" font-weight="700" fill="#be123c" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">第 10 天</text>
+<text x="618" y="154" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">泄漏 + 切分</text>
+<line x1="706" y1="143" x2="718" y2="143" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="720" y="104" width="100" height="78" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="732" y="124" font-size="10.5" font-weight="700" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">第 11 天</text>
+<text x="732" y="154" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">抽检 + 黄金题</text>
+<line x1="820" y1="143" x2="832" y2="143" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="834" y="104" width="100" height="78" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="846" y="124" font-size="10.5" font-weight="700" fill="#94a3b8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">第 12 天</text>
+<text x="846" y="154" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">manifest</text>
+<text x="36" y="214" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">四个必过的闸门</text>
+<rect x="36" y="234" width="216" height="76" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="48" y="258" font-size="12.5" font-weight="700" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">α ≥ 0.65</text>
+<text x="48" y="280" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">区间下限，且分组无 &lt; 0.5 的类</text>
+<text x="48" y="298" font-size="10.5" font-weight="400" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✔ 打勾才交付</text>
+<rect x="268" y="234" width="216" height="76" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="280" y="258" font-size="12.5" font-weight="700" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">簇数/条数 ≥ 0.7</text>
+<text x="280" y="280" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">否则是「同义句堆叠」</text>
+<text x="280" y="298" font-size="10.5" font-weight="400" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✔ 打勾才交付</text>
+<rect x="500" y="234" width="216" height="76" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="512" y="258" font-size="12.5" font-weight="700" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">max-J p95 ≤ 0.35</text>
+<text x="512" y="280" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">训练/测试 cluster_id 无交集</text>
+<text x="512" y="298" font-size="10.5" font-weight="400" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✔ 打勾才交付</text>
+<rect x="732" y="234" width="216" height="76" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="744" y="258" font-size="12.5" font-weight="700" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">抽检错误率 &lt; 3%</text>
+<text x="744" y="280" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">黄金题按人 ≥ 85%</text>
+<text x="744" y="298" font-size="10.5" font-weight="400" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✔ 打勾才交付</text>
+<text x="36" y="338" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">12 天里最贵的返工来自第 6 天之前：种子没覆盖分层、规范缺反例 —— 这两件事 2 小时能补，返工要 2 天。</text>
+</svg>

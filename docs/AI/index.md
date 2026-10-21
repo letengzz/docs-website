@@ -17,6 +17,7 @@
 - [模型评测工程与判据校准](EvalEngineering/index.md)
 - [模型路由与降级](ModelRouting/index.md)
 - [语音与音视频 AI](SpeechAudioAI/index.md)
+- [数据合成与标注工程](SyntheticData/index.md)
 - [企业知识库落地](EnterpriseKB/index.md)
 - [Agent 应用](Agent/index.md)
 - [Agent 框架深入](AgentFramework/index.md)

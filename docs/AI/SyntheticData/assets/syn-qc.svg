@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 408" width="960" height="408" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="408" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">三种质检手段与返工边界</text>
+<text x="36" y="70" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">黄金题抓走神、抽检估错误率、反向抽检抓共谋错误；只抽低置信等于没抽</text>
+<rect x="36" y="104" width="288" height="110" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="48" y="124" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">黄金题（2%~5%）</text>
+<text x="48" y="154" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">已知答案的样本混入</text>
+<text x="48" y="170" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">按人统计，不按批</text>
+<text x="48" y="186" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">陷阱题占 20%</text>
+<rect x="342" y="104" width="288" height="110" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="354" y="124" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">分层抽检（5%~30%）</text>
+<text x="354" y="154" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">按层配额，层内随机</text>
+<text x="354" y="170" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">合成批次 20% 起</text>
+<text x="354" y="186" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">100 条 ≈ ±4.3%（p=5%）</text>
+<rect x="648" y="104" width="288" height="110" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+<text x="660" y="124" font-size="12.5" font-weight="700" fill="#be123c" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">反向抽检（15%）</text>
+<text x="660" y="154" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">专抽高置信 + 高分</text>
+<text x="660" y="170" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一能发现共谋错误</text>
+<text x="660" y="186" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">漏检率 &lt; 1%</text>
+<text x="36" y="248" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">返工的四条边界</text>
+<text x="36" y="268" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">· 单人不达标</text>
+<text x="232" y="268" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">按 annotator 过滤该人全部产出</text>
+<text x="36" y="292" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">· 某条规则写错</text>
+<text x="232" y="292" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">用条文反查命中样本，只重标受影响部分</text>
+<text x="36" y="316" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">· 整批系统性偏差</text>
+<text x="232" y="316" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">整批标 deprecated，不参与一致性统计</text>
+<text x="36" y="340" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">· 抽检错误率 &gt; 10%</text>
+<text x="232" y="340" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">整批 100% 复核，产出为新版本号</text>
+<text x="36" y="376" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">重标 = 追加新记录 + supersedes 标记，绝不原地覆盖（否则一致性无法复算）</text>
+</svg>

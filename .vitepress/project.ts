@@ -388,6 +388,7 @@ export const CompleteProject = [
           { text: "第 1 周第 1 步 · 需求拆分：五个上下文与订单状态机（EOH-A~EOH-H）", link: "/project/Complete/EventOrderHub/Requirements/index.md" },
           { text: "第 1 周第 2 步 · 技术选型与版本基线（ETS-A~ETS-H）", link: "/project/Complete/EventOrderHub/TechBaseline/index.md" },
           { text: "第 1 周第 3 步 · 架构设计：事件流与一致性边界（EOA-A~EOA-H）", link: "/project/Complete/EventOrderHub/Architecture/index.md" },
+          { text: "第 1 周第 4 步 · 数据库设计：九张表与六条不变量（EDB-A~EDB-H）", link: "/project/Complete/EventOrderHub/DatabaseDesign/index.md" },
         ],
       },
       {

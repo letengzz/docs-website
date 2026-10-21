@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 372" width="960" height="372" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="372" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">去重流水线与泄漏检测的两套阈值</text>
+<text x="36" y="70" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">去重宁可错杀、查泄漏不能误杀：同一个相似度，两条不同的判定规则</text>
+<rect x="36" y="104" width="138" height="86" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.4"/>
+<text x="48" y="124" font-size="11.5" font-weight="700" fill="#be123c" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">归一化</text>
+<text x="48" y="154" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">ID / 数字 / 时间</text>
+<text x="48" y="170" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">→ 占位符</text>
+<line x1="174" y1="147" x2="188" y2="147" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="188" y="104" width="138" height="86" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="200" y="124" font-size="11.5" font-weight="700" fill="#94a3b8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">5-gram 指纹</text>
+<text x="200" y="154" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">2,219 篇</text>
+<text x="200" y="170" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">5.67 s</text>
+<line x1="326" y1="147" x2="340" y2="147" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="340" y="104" width="138" height="86" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="352" y="124" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">候选生成</text>
+<text x="352" y="154" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">46,039 对</text>
+<text x="352" y="170" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">= 全量的 1.87%</text>
+<line x1="478" y1="147" x2="492" y2="147" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="492" y="104" width="138" height="86" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="504" y="124" font-size="11.5" font-weight="700" fill="#0f766e" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">精确 Jaccard</text>
+<text x="504" y="154" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">3.66 s</text>
+<text x="504" y="170" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">J ≥ 0.8 命中</text>
+<line x1="630" y1="147" x2="644" y2="147" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="644" y="104" width="138" height="86" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="656" y="124" font-size="11.5" font-weight="700" fill="#6d28d9" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">聚类</text>
+<text x="656" y="154" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">簇数 / 条数</text>
+<text x="656" y="170" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">代表元校验</text>
+<line x1="782" y1="147" x2="796" y2="147" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="796" y="104" width="138" height="86" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="808" y="124" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">代表元</text>
+<text x="808" y="154" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">来源 → 完整度</text>
+<text x="808" y="170" font-size="10.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">→ 长度</text>
+<text x="36" y="226" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">泄漏检测：同一套技术，相反的目标</text>
+<text x="36" y="250" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">13-gram 覆盖率（484 篇测试文档，训练集 1,735 篇）：p50 = 12.33%，p90 = 22.32%，max = 99.63%</text>
+<rect x="36" y="266" width="212" height="58" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+<text x="48" y="288" font-size="11.5" font-weight="700" fill="#be123c" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">阈值 ≥ 0.1%</text>
+<text x="48" y="310" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">482 / 484（99.6%）</text>
+<rect x="264" y="266" width="212" height="58" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+<text x="276" y="288" font-size="11.5" font-weight="700" fill="#be123c" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">阈值 ≥ 1%</text>
+<text x="276" y="310" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">473 / 484（97.7%）</text>
+<rect x="492" y="266" width="212" height="58" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+<text x="504" y="288" font-size="11.5" font-weight="700" fill="#be123c" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">阈值 ≥ 5%</text>
+<text x="504" y="310" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">446 / 484（92.1%）</text>
+<rect x="720" y="266" width="212" height="58" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1.2"/>
+<text x="732" y="288" font-size="11.5" font-weight="700" fill="#be123c" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">阈值 ≥ 10%</text>
+<text x="732" y="310" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">333 / 484（68.8%）</text>
+<text x="36" y="348" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">任何绝对阈值都会把 99% 的测试集标红 —— 泄漏必须按「分布谷底」或「簇级切分」判。</text>
+</svg>
