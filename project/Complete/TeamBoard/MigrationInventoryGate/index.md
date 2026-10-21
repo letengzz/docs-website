@@ -247,6 +247,20 @@ aws s3api list-objects-v2 --bucket board-prod --prefix "tenants/t1/" --max-keys 
 3. **缓存面补「按租户批删」的原子性**：目前 `SCAN` + `DEL` 不是一个事务，中途失败会留下部分键；需要一份「待删键清单」落盘，重试时接着删。
 4. **把检查耗时打进监控**：清单生成 < 10 ms、DB 面 < 1 s、缓存面 < 2 s、对象存储面 < 30 s，超阈值告警——否则租户数据涨到几千万行时，这个闸门会自己变成发布瓶颈。
 
+## 与「数据库变更与在线 Schema 演进」专题的分工
+
+| 关注点 | 本页负责 | 由专题负责 |
+| --- | --- | --- |
+| 迁移清单是否齐全 | afterMigrate 回调 + 三面残留检查 | 不管 |
+| 迁移要持锁多久 | 不管 | 锁与队列、重写边界 |
+| 迁移失败的中间态 | 不管 | 原子 DDL 与备份 RTO |
+
+完整方法见 [数据库变更与在线 Schema 演进](../../../../docs/DB/SchemaEvolution/index.md)。
+
+::: warning 本页特有的坑
+清单闸门回答的是「该建的东西建了没有」，**不回答**「这条 DDL 会不会锁表十分钟」。两者要分开设门禁：清单挂在 `afterMigrate`，持锁时长必须在上线前用「行数 × 单行成本」算出来并写进变更单——本机实测同一句加列，INSTANT 是 0.09 s，退化成 COPY 就是 3.31 s（50 万行），差 36 倍。
+:::
+
 ## 参考资料
 
 - Flyway：[*Callbacks*](https://documentation.red-gate.com/flyway/flyway-concepts/callbacks)（`afterMigrate` / `afterEachMigrate` 的触发条件与事务边界）

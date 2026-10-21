@@ -168,6 +168,20 @@ grep -rn "freeze\|冻结" --include="*.yml" --include="*.yaml" --include="*.sql"
 | 业务审批流怎么实现 | [审批流引擎](../../../Backend/WorkflowEngine/ApprovalFlow/index.md) |
 | 开关与灰度度量 | [功能开关](../../../Tools/ObservabilityDriven/FeatureFlag/index.md) |
 
+## 与「数据库变更与在线 Schema 演进」专题的分工
+
+| 关注点 | 本页负责 | 由专题负责 |
+| --- | --- | --- |
+| 变更怎么分级、怎么审批 | 变更单、灰度、冻结期 | 不管 |
+| 表结构变更怎么排批次 | 只写「需 DBA 评审」 | 扩展-收缩的三段式与退出条件 |
+| 回滚怎么写才不是空话 | 代码回滚 | 不可回滚操作清单与备份 RTO |
+
+完整方法见 [数据库变更与在线 Schema 演进](../../../DB/SchemaEvolution/index.md)。
+
+::: warning 本页特有的坑
+变更单里「回滚：执行 rollback.sql」这句话多数没被验证过：`DROP COLUMN` 的反向操作**不是** `ADD COLUMN`——加回来的是空列，数据只在备份里。判据是「回滚脚本在影子库跑通过一次，并记录耗时与数据丢失范围」，跑不通就直接写「恢复备份，RTO = X 分钟」。
+:::
+
 ## 参考资料
 
 - ITIL 4：*Change Enablement* 实践指南（三型变更、Change Authority、CAB 的建议角色）

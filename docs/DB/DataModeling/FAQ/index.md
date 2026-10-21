@@ -160,6 +160,20 @@ GROUP BY a.id, a.like_count HAVING a.like_count <> actual;
 
 收尾确认：三条查询均返回 0 行，说明结构规范、无 1NF 违规、冗余一致。
 
+## 与「数据库变更与在线 Schema 演进」专题的分工
+
+| 关注点 | 本页负责 | 由专题负责 |
+| --- | --- | --- |
+| 设计阶段该长什么样 | 范式 / 函数依赖 / 反范式权衡 | 不管 |
+| 已经上线的表怎么改 | 不管 | 扩展-收缩、重写边界、锁与队列 |
+| 改字段的代价怎么算 | 不管 | 行数 × 单行成本（实测 2.2~6.6 µs/行） |
+
+完整方法见 [数据库变更与在线 Schema 演进](../../SchemaEvolution/index.md)。
+
+::: warning 本页特有的坑
+「加字段很便宜」这个印象只对**加可空列**成立。PostgreSQL 11+ 上 `ADD COLUMN ... DEFAULT 常量` 不重写（实测 100 万行 1.19 ms），但同一张表上 `ALTER COLUMN ... TYPE bigint` 必然重写（2.17 s）——设计评审时把两者混为一谈，就会在排期上少算两个数量级。
+:::
+
 ## 参考资料
 
 - MySQL 官方文档：[ALTER TABLE 与在线 DDL](https://dev.mysql.com/doc/refman/8.4/en/alter-table.html)

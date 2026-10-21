@@ -260,6 +260,20 @@ latest（最新，仅 dev 使用）
 
 > 该页特有的一个坑：多数 CI 平台的定时触发用的是 **UTC**，且「仓库 60 天无提交自动停用定时」这类规则会静默生效。每夜构建突然不跑了，先查平台侧的停用状态，再查 cron 表达式。
 
+## 与「数据库变更与在线 Schema 演进」专题的分工
+
+| 关注点 | 本页负责 | 由专题负责 |
+| --- | --- | --- |
+| 流水线怎么分层、门禁怎么排 | 构建 / 测试 / 部署阶段 | 不管 |
+| 数据库迁移放在哪一步 | 一句「部署前执行」 | 迁移的锁与时长、expand/contract 批次 |
+| 迁移失败怎么处理 | 不管 | 原子 DDL 的边界与恢复路径 |
+
+完整方法见 [数据库变更与在线 Schema 演进](../../../DB/SchemaEvolution/index.md)。
+
+::: warning 本页特有的坑
+CI 里的迁移跑在**空库**上，往往几十毫秒就过；同一份脚本在生产的亿行表上可能是几十分钟的重写。「CI 绿了」只能证明语法与依赖没问题，**不能**证明生产可执行——所以变更时长必须单独用「行数 × 单行成本」算，不能拿 CI 耗时当基线。
+:::
+
 ## 参考资料
 
 - GitHub Actions 最佳实践：https://docs.github.com/zh/actions/writing-workflows/choosing-what-your-workflow-does/optimizing-workflow-performance

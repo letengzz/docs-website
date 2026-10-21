@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<text x="40" y="52" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">重写边界：三档算法与判定顺序</text>
+<text x="40" y="80" font-size="14" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">MySQL 8.4.11 / PostgreSQL 18.6 本机实测</text>
+<rect x="40" y="110" width="880" height="96" rx="10" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.5"/>
+<text x="60" y="144" font-size="17" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">INSTANT</text>
+<text x="60" y="174" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">只改数据字典</text>
+<text x="400" y="148" font-size="15" font-weight="600" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">0.085 ~ 0.097 s</text>
+<text x="400" y="178" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">加列 / 中间位置 / 删未被索引列</text>
+<rect x="40" y="226" width="880" height="96" rx="10" fill="#eef2ff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="60" y="260" font-size="17" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">INPLACE</text>
+<text x="60" y="290" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">可能重建，允许 DML</text>
+<text x="400" y="264" font-size="15" font-weight="600" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">0.67 s（加索引）</text>
+<text x="400" y="294" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">加索引 / 删索引 / 改行格式</text>
+<rect x="40" y="342" width="880" height="96" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="60" y="376" font-size="17" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">COPY</text>
+<text x="60" y="406" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">建影子表逐行拷</text>
+<text x="400" y="380" font-size="15" font-weight="600" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">3.31 s / 50 万行</text>
+<text x="400" y="410" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">改列类型 / 改字符集 / 加非空</text>
+<text x="40" y="470" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">判断顺序：版本能力 → 默认值是否常量 → 是否被索引/外键牵连。三者任一不满足就降档。</text>
+</svg>

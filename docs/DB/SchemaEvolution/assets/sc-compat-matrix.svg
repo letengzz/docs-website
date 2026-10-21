@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<text x="40" y="52" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">N/N-1 × 旧/新结构：四格都要成立</text>
+<text x="40" y="80" font-size="14" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">任一格不成立，就必须拆成多次发布</text>
+<text x="400.0" y="132" font-size="14" font-weight="700" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">旧结构 S</text>
+<text x="720.0" y="132" font-size="14" font-weight="700" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">新结构 S′</text>
+<text x="234" y="225.0" font-size="14" font-weight="700" fill="#475569" text-anchor="end" font-family="PingFang SC, Helvetica, Arial, sans-serif">旧代码 N-1</text>
+<text x="234" y="395.0" font-size="14" font-weight="700" fill="#475569" text-anchor="end" font-family="PingFang SC, Helvetica, Arial, sans-serif">新代码 N</text>
+<rect x="250" y="150" width="300" height="150" rx="10" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.6"/>
+<text x="270" y="202" font-size="16" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">正常基线</text>
+<rect x="570" y="150" width="300" height="150" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.6"/>
+<text x="590" y="202" font-size="16" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">必须容忍多列</text>
+<text x="590" y="242" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">INSERT 写列名 / 不用 SELECT *</text>
+<rect x="250" y="320" width="300" height="150" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.6"/>
+<text x="270" y="372" font-size="16" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">必须能降级</text>
+<text x="270" y="412" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">未知列回退到旧列</text>
+<rect x="570" y="320" width="300" height="150" rx="10" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.6"/>
+<text x="590" y="372" font-size="16" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">变更完成态</text>
+<text x="590" y="412" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">双写两列一致</text>
+<text x="40" y="490" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">加动作「库先」→ 只考验下面一行；删动作「码先」→ 只考验右边一格。两侧都按此排，就不用写降级代码。</text>
+</svg>

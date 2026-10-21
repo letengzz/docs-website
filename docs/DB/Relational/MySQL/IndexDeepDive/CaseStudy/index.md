@@ -168,6 +168,20 @@ CREATE INDEX idx_created ON orders (created_at DESC, id);
 
 在本机建 `orders`/`users` 表并灌入 100 万行数据，依次执行案例中的前后 SQL，用 `EXPLAIN ANALYZE` 记录 actual time 与 rows，确认三个案例的收益量级与文中一致。
 
+## 与「数据库变更与在线 Schema 演进」专题的分工
+
+| 关注点 | 本页负责 | 由专题负责 |
+| --- | --- | --- |
+| 某个慢查询怎么优化 | 执行计划、索引改造 | 不管 |
+| 改索引期间业务会不会卡 | 不管 | 锁与队列、MDL 排队效应 |
+| 在线加索引怎么写 | 不管 | `ALGORITHM=INPLACE, LOCK=NONE` |
+
+完整方法见 [数据库变更与在线 Schema 演进](../../../../SchemaEvolution/index.md)。
+
+::: warning 本页特有的坑
+`LOCK=NONE` 只保证「不阻塞 DML」，**不保证不拿元数据锁**：本机实测一条 0.09 s 的 INSTANT 加列，被一个 8 秒未提交事务挡住后等了 7.14 s，并把后面一条普通 `SELECT` 一起堵了 6.79 s。索引构建的起止两段同样要拿 MDL。
+:::
+
 ## 参考资料
 
 - [MySQL 官方：EXPLAIN ANALYZE](https://dev.mysql.com/doc/refman/8.4/en/explain.html)

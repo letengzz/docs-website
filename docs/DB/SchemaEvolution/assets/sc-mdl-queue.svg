@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<text x="40" y="52" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">元数据锁排队：一条 0.09 s 的 DDL 堵住 6.79 s 的读</text>
+<text x="40" y="80" font-size="14" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">MySQL 8.4.11 实测，50 万行表</text>
+<line x1="120" y1="110" x2="120" y2="470" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="40" y="134" font-size="14" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">会话 A</text>
+<rect x="150" y="110" width="360" height="64" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="166" y="148" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">BEGIN; SELECT ...; 不提交</text>
+<line x1="510" y1="142" x2="560" y2="142" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="566" y="110" width="354" height="64" rx="8" fill="#f8fafc" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="582" y="148" font-size="13" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">持 MDL_SHARED_READ 8.14 s</text>
+<text x="40" y="254" font-size="14" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">会话 B</text>
+<rect x="150" y="230" width="360" height="64" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+<text x="166" y="268" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">ALTER TABLE ... ADD COLUMN</text>
+<line x1="510" y1="262" x2="560" y2="262" stroke="#b45309" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="566" y="230" width="354" height="64" rx="8" fill="#f8fafc" stroke="#b45309" stroke-width="1.2"/>
+<text x="582" y="268" font-size="13" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">等锁 7.14 s（正常 0.09 s）</text>
+<text x="40" y="374" font-size="14" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">会话 C</text>
+<rect x="150" y="350" width="360" height="64" rx="8" fill="#ffffff" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="166" y="388" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">SELECT count(*) FROM big</text>
+<line x1="510" y1="382" x2="560" y2="382" stroke="#b91c1c" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="566" y="350" width="354" height="64" rx="8" fill="#f8fafc" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="582" y="388" font-size="13" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">排队 6.79 s（与 A 完全兼容）</text>
+<text x="40" y="480" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">队列是公平的：B 一旦在等，后来的 C 不会插队——这就是「改表把整站拖垮」的唯一机制。</text>
+</svg>

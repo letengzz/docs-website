@@ -120,7 +120,7 @@ export type CardId = string;
 | **`401`** | 不带 `Authorization` 头，或用一条过期令牌调用任一接口 | `{"error":{"code":"UNAUTHENTICATED",…}}` | 刷新令牌后重试一次；仍失败则回登录页 |
 | **`403`** | 用 `viewer` 令牌调用 `POST …/cards/{cardId}/comments` | `{"error":{"code":"FORBIDDEN",…}}` | 禁用按钮并提示，**不重试** |
 | **`404`** | 用工作区 A 的令牌读工作区 B 的看板；再试一个语法合法但不存在的工作区 id | `{"error":{"code":"NOT_FOUND",…}}` | 回列表页，不重试 |
-| **`409`** | 用一条过期的 `version` 调 `POST …/move` | `{"error":{"code":"VERSION_CONFLICT","details":{"currentVersion":9,"currentPosition":"0\\|c/001"}}}` | 按 `details` 里的最新 `version` 与 `position` 回滚本地乐观更新 |
+| **`409`** | 用一条过期的 `version` 调 `POST …/move` | `{"error":{"code":"VERSION_CONFLICT","details":{"currentVersion":9,"currentPosition":"0\|c/001"}}}` | 按 `details` 里的最新 `version` 与 `position` 回滚本地乐观更新 |
 
 两条口径**写死在表里、来自 [接口契约定稿](../Contracts/index.md) 第四节**，联调时必须按它们验，而不是按「直觉上更合理」的那个：
 

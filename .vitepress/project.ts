@@ -380,6 +380,15 @@ export const CompleteProject = [
         ],
       },
       {
+        text: "事件驱动订单与履约中心",
+        link: "/project/Complete/EventOrderHub/index.md",
+        collapsed: true,
+        items: [
+          { text: "订单中心 · 项目总览（周期 7）", link: "/project/Complete/EventOrderHub/index.md" },
+          { text: "第 1 周第 1 步 · 需求拆分：五个上下文与订单状态机（EOH-A~EOH-H）", link: "/project/Complete/EventOrderHub/Requirements/index.md" },
+        ],
+      },
+      {
         text: "全栈项目实战",
         link: "/project/Complete/FullStackProject/index.md",
         collapsed: true,

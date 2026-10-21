@@ -179,6 +179,20 @@ MySQL 8.0+ 的不可见索引让「删索引」变成可回退操作：先隐藏
 
 按流程对一张真实业务表走一遍：收集 TOP SQL → 设计联合索引 → `EXPLAIN` 前后对比（rows/耗时）→ 用 `schema_unused_indexes` 找出可清理索引 → 用 INVISIBLE 安全下线。产出「该表的索引设计说明」文档。
 
+## 与「数据库变更与在线 Schema 演进」专题的分工
+
+| 关注点 | 本页负责 | 由专题负责 |
+| --- | --- | --- |
+| 索引该怎么设计 | 选择性、最左前缀、覆盖索引 | 不管 |
+| 加/删索引这个动作的代价 | 一句带过 | INPLACE 与 MDL、`LOCK=NONE` 的三条前提 |
+| 删列时索引怎么办 | 不管 | MySQL 8.4 的 `ERROR 1845` 边界 |
+
+完整方法见 [数据库变更与在线 Schema 演进](../../../../SchemaEvolution/index.md)。
+
+::: warning 本页特有的坑
+索引与列的耦合在删列时才暴露：MySQL 8.4 上，**列被索引引用时 `DROP COLUMN` 不能 INSTANT**（本机实测 `ERROR 1845`），必须先单独 `DROP INDEX`，再删列（0.093 s）。把两条合成一条 `ALTER` 仍然失败——多操作组合本身不支持 INSTANT。
+:::
+
 ## 参考资料
 
 - [MySQL 官方：索引优化](https://dev.mysql.com/doc/refman/8.4/en/optimization-indexes.html)

@@ -141,6 +141,20 @@ ALTER TABLE orders ADD INDEX idx_x (col),
 10. 优化案例是否沉淀到团队文档？
 :::
 
+## 与「数据库变更与在线 Schema 演进」专题的分工
+
+| 关注点 | 本页负责 | 由专题负责 |
+| --- | --- | --- |
+| 索引为什么没被用上 | 统计信息、隐式转换、最左前缀 | 不管 |
+| 建索引失败留下什么 | 不管 | PG 的 `indisvalid=false` 与清理方式 |
+| 什么变更必须停机 | 不管 | 重写边界与不可回滚清单 |
+
+完整方法见 [数据库变更与在线 Schema 演进](../../../../SchemaEvolution/index.md)。
+
+::: warning 本页特有的坑
+PostgreSQL 上 `CREATE INDEX CONCURRENTLY` 失败（例如唯一索引撞重复值）**不会自动清场**：索引对象留在系统里且 `indisvalid = false`，既不加速查询又要维护写入，必须手工 `DROP INDEX CONCURRENTLY`。凡是并发建索引，执行后都要查一次 `pg_index.indisvalid`。
+:::
+
 ## 参考资料
 
 - [MySQL 官方：优化与索引](https://dev.mysql.com/doc/refman/8.4/en/optimization-indexes.html)

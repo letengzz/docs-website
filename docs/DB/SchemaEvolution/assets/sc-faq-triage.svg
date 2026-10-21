@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<text x="40" y="52" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">故障分诊：先看现象，再看原因</text>
+<text x="40" y="80" font-size="14" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">十个高频现象的红线处置</text>
+<rect x="360" y="105" width="240" height="54" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.6"/>
+<text x="480" y="139" font-size="15" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">变更出问题</text>
+<line x1="480" y1="159" x2="170" y2="215" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="40" y="215" width="260" height="96" rx="10" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="170" y="247" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">卡住不返回</text>
+<text x="170" y="277" font-size="12" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">查长事务 / 待等锁</text>
+<line x1="480" y1="159" x2="470" y2="215" stroke="#b45309" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="340" y="215" width="260" height="96" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+<text x="470" y="247" font-size="14" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">数据对不上</text>
+<text x="470" y="277" font-size="12" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">停写 + 保留现场</text>
+<line x1="480" y1="159" x2="770" y2="215" stroke="#0f766e" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="640" y="215" width="260" height="96" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="770" y="247" font-size="14" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">结构不兼容</text>
+<text x="770" y="277" font-size="12" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">回滚代码 / 恢复列</text>
+<rect x="40" y="345" width="880" height="120" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+<text x="64" y="382" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">1. 先停：不推进下一步，不在现场改参数</text>
+<text x="64" y="414" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">2. 再判：锁问题杀锁，数据问题停写</text>
+<text x="64" y="446" font-size="13" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">3. 后回滚：只有「代码回滚能恢复」时才回滚代码</text>
+</svg>

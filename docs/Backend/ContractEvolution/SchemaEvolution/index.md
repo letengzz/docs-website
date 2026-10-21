@@ -222,6 +222,21 @@ SQL
 
 **预期输出**：`UPDATE 2000000` 然后 `UPDATE 0`。判读：**第二次为 0 是回填脚本正确的必要条件**——如果不为 0，说明条件写错了（比如用 `updated_at` 做边界而时间戳在变），重跑会反复改写同一批行。
 
+## 与「数据库变更与在线 Schema 演进」专题的分工
+
+| 关注点 | 本页负责 | 由专题负责 |
+| --- | --- | --- |
+| 四阶段是什么、每步能不能回滚 | 本页（含 PG 200 万行读数、`CES-A~CES-H`） | 不重复叙述 |
+| 一条 DDL 拿走什么锁、为什么把读也堵死 | 不提 | 锁与队列（MDL / `ACCESS EXCLUSIVE` 与队列效应） |
+| 哪些 DDL 会重写、MySQL 5.7 与 8.4 的路径差 | 只有 PG 读数 | 重写边界、MySQL57 / MySQL84 两个版本页 |
+| 回填的批次大小与水位怎么定 | 只给「UPDATE 比重写贵」的结论 | 数据回填（批次曲线、水位、膨胀） |
+
+完整方法见 [数据库变更与在线 Schema 演进](../../../DB/SchemaEvolution/index.md)。
+
+::: warning 本页特有的坑
+本页的四阶段示例是 `numeric → bigint` 的**类型收窄/换算**，它在 PostgreSQL 上必然重写（2M 行、130 MB heap 的读数是重写态的成本）。如果换成「加一个可空列」，同样的四阶段第一步只需毫秒——**不要把本页的重写读数套到加列上**，两者的锁与时长差三个数量级。
+:::
+
 ## 参考资料
 
 - [PostgreSQL 文档 · `ALTER TABLE`](https://www.postgresql.org/docs/current/sql-altertable.html)：`NOT VALID`、`VALIDATE CONSTRAINT`、`SET DEFAULT` 语义

@@ -411,3 +411,22 @@ export const Lakehouse = [
     ],
   },
 ];
+
+export const SchemaEvolution = [
+  {
+    text: "数据库变更与在线 Schema 演进",
+    link: "/docs/DB/SchemaEvolution/index.md",
+    items: [
+      { text: "总览：四类风险与五步流程", link: "/docs/DB/SchemaEvolution/Overview/index.md" },
+      { text: "扩展-收缩：拆成三次发布", link: "/docs/DB/SchemaEvolution/ExpandContract/index.md" },
+      { text: "重写边界：哪些 DDL 真的重建表", link: "/docs/DB/SchemaEvolution/RewriteBoundary/index.md" },
+      { text: "锁与队列：DDL 怎么把读堵死", link: "/docs/DB/SchemaEvolution/LockQueue/index.md" },
+      { text: "MySQL 5.7：已停止维护的存量路径", link: "/docs/DB/SchemaEvolution/MySQL57/index.md" },
+      { text: "MySQL 8.4：INSTANT 与原子 DDL", link: "/docs/DB/SchemaEvolution/MySQL84/index.md" },
+      { text: "数据回填：批次、水位与速率", link: "/docs/DB/SchemaEvolution/Backfill/index.md" },
+      { text: "应用兼容：N/N-1 矩阵与回滚边界", link: "/docs/DB/SchemaEvolution/AppSchemaCompat/index.md" },
+      { text: "实战：给订单表加一列并回填", link: "/docs/DB/SchemaEvolution/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/DB/SchemaEvolution/FAQ/index.md" },
+    ],
+  },
+];
