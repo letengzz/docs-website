@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker></defs>
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<text x="40" y="50" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">专题地图：一次大版本升级要过的 10 道关</text>
+<text x="40" y="76" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">从左到右是时间顺序，从上到下是「谁负责」</text>
+<rect x="40" y="100" width="150" height="56" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="115.0" y="123.2" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 总览</text>
+<text x="115.0" y="142.2" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">四类风险</text>
+<rect x="40" y="186" width="150" height="56" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="115.0" y="209.2" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 支持矩阵</text>
+<text x="115.0" y="228.2" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">能不能升</text>
+<rect x="40" y="272" width="150" height="56" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="115.0" y="295.2" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 升级前检查</text>
+<text x="115.0" y="314.2" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">会不会炸</text>
+<rect x="40" y="358" width="150" height="56" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="115.0" y="381.2" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 演练</text>
+<text x="115.0" y="400.2" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">要停多久</text>
+<rect x="230" y="272" width="130" height="56" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="295.0" y="295.2" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑤ 逻辑复制</text>
+<text x="295.0" y="314.2" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">迁移</text>
+<rect x="230" y="358" width="130" height="56" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="295.0" y="381.2" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑥ MySQL</text>
+<text x="295.0" y="400.2" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">8.0→8.4</text>
+<rect x="230" y="444" width="130" height="56" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="295.0" y="467.2" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑦ PostgreSQL</text>
+<text x="295.0" y="486.2" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">17→18</text>
+<rect x="400" y="358" width="150" height="56" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+<text x="475.0" y="381.2" font-size="13" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑧ 切换与回滚</text>
+<text x="475.0" y="400.2" font-size="13" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">窗口多长</text>
+<rect x="590" y="358" width="150" height="56" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+<text x="665.0" y="381.2" font-size="13" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑨ 验证</text>
+<text x="665.0" y="400.2" font-size="13" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">怎么算通过</text>
+<rect x="780" y="358" width="140" height="56" rx="8" fill="#ffffff" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="850.0" y="381.2" font-size="13" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑩ 常见问题</text>
+<text x="850.0" y="400.2" font-size="13" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">分诊</text>
+<line x1="190" y1="128" x2="228" y2="128" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<text x="200" y="120" font-size="11" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<line x1="115" y1="156" x2="115" y2="184" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="115" y1="242" x2="115" y2="270" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="115" y1="328" x2="115" y2="356" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="190" y1="386" x2="228" y2="386" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="295" y1="328" x2="295" y2="356" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="295" y1="414" x2="295" y2="442" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="360" y1="386" x2="398" y2="386" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="550" y1="386" x2="588" y2="386" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="740" y1="386" x2="778" y2="386" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<text x="40" y="168" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">先判「该不该升、能不能升」</text>
+<text x="340" y="250" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">两条迁移通道：持续同步 or 原地升级</text>
+<text x="560" y="340" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">只有切换窗口这一段要停写</text>
+<text x="40" y="500" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">实测前提：本页所有读数来自 PG 18.6 双实例（同一主版本，跨大版本语义一致），20 万订单 / 40 万明细 / 87 MB 库。</text>
+</svg>

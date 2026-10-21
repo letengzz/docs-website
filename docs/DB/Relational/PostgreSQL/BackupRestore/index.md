@@ -165,7 +165,6 @@ psql -U app_user -d appdb -c "SELECT count(*) FROM users;"
 - [SQL 优化](../../SQLOptimization/index.md)：备份窗口不够时，先确认慢查询没有拖累整体负载。
 - [MySQL 常见问题](../../MySQL/FAQ/index.md)：跨引擎对比两种备份哲学（逻辑导出 vs 物理热备）。
 
-
 ## 与「数据库内核与存储引擎」章节集的分工（第 153 天补充）
 
 本页讲**怎么备、怎么恢复**；WAL 为什么是「主数据流」而不是「可清理的日志」、检查点如何决定恢复时长，归 [数据库内核与存储引擎 · WAL 与崩溃恢复](/docs/DB/DatabaseInternals/WalRecovery/index.md)。
@@ -193,6 +192,16 @@ psql -U app_user -d appdb -c "SELECT count(*) FROM users;"
 ::: danger 本页特有的一条坑：`pg_dump` 不能当「回滚点」
 `pg_dump` 是**逻辑快照**，它保证「恢复到执行那一刻」，但不给你一个可以精确回退的坐标；而发布回滚要的是「回到 T-30 那一刻之前」，这需要 `pg_current_wal_lsn()` + 基础备份走 PITR。本机实测的对照很直白：`DROP COLUMN` 之后 `select … where ver = 7` 直接报 `column "ver" does not exist`——值随列一起消失，**没有任何 SQL 能把它找回来**，只能恢复到备份点，而备份点意味着丢掉从备份到现在的全部写入。所以「删列」必须走「先停写 → 观察一个版本周期 → 再删」。
 :::
+
+## 与「数据库大版本升级」专题的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| `pg_dump` / `pg_restore` / PITR 的单机操作 | 本页 |
+| 跨大版本时该选 dump / 逻辑复制 / pg_upgrade | [支持矩阵](../../../../Ops/DatabaseUpgrade/SupportMatrix/index.md)、[PostgreSQL 17 → 18](../../../../Ops/DatabaseUpgrade/PostgreSQL17To18/index.md) |
+| 迁移后怎么验证数据对得上 | [切换后验证](../../../../Ops/DatabaseUpgrade/Verify/index.md) |
+
+**这一页特有的坑：跨版本恢复要用「目标版本」的客户端工具。** 用 17 的 `pg_dump` 导出的文件，在 19 上可能因为 `standard_conforming_strings` 强制开启而无法导入（PG 19 起该参数不再可关）。规则很简单：**dump 用目标版本或更新的 `pg_dump` 生成**，这在跨两个以上大版本时尤其重要。
 
 ## 参考资料
 

@@ -217,4 +217,4 @@ SELECT i.id AS invite, i.status AS invite_status,
 - [退信与投诉](../BounceComplaint/index.md) · [观测与分诊](../Observability/index.md)
 - [RFC 2606：保留域名（`.invalid` 用于演练）](https://www.rfc-editor.org/rfc/rfc2606)
 - [RFC 8058：一键退订](https://www.rfc-editor.org/rfc/rfc8058)
-- 项目侧同名落地：[TeamBoard · 成员邀请与角色变更](../../../project/Complete/TeamBoard/MemberInvite/index.md)
+- 项目侧同名落地：[TeamBoard · 成员邀请与角色变更](../../../../project/Complete/TeamBoard/MemberInvite/index.md)

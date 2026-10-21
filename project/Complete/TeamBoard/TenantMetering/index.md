@@ -1,6 +1,6 @@
 # 用量计量与配额执行
 
-周期 6 走到第 180 天，TeamBoard 已经能上线、能退租、能回填。但它还缺一件**「产品能不能收费」**的事：**谁用了多少、超了怎么办**。这一章补的是从「用量事件」到「配额闸门」的完整链路——它同时是两个新专题的落地：[分布式调度](../../../docs/Backend/DistributedScheduling/index.md)（滚动聚合与补跑）与 [幂等与状态机](../../../docs/Backend/IdempotencyStateMachine/index.md)（预扣与回滚）。
+周期 6 走到第 180 天，TeamBoard 已经能上线、能退租、能回填。但它还缺一件**「产品能不能收费」**的事：**谁用了多少、超了怎么办**。这一章补的是从「用量事件」到「配额闸门」的完整链路——它同时是两个新专题的落地：[分布式调度](../../../../docs/Backend/DistributedScheduling/index.md)（滚动聚合与补跑）与 [幂等与状态机](../../../../docs/Backend/IdempotencyStateMachine/index.md)（预扣与回滚）。
 
 ::: tip 一句话理解
 配额不是「查一下有没有超」，而是**「先占位、再执行、失败退回」**——只查不占的实现在并发下必然超卖，而超卖的账在下个月才看得见。
@@ -125,7 +125,7 @@ RETURNING id;
 
 ## 四、滚动聚合任务
 
-聚合任务就是 [分布式调度 · 实战](../../../docs/Backend/DistributedScheduling/Practice/index.md) 里的 **T4**：
+聚合任务就是 [分布式调度 · 实战](../../../../docs/Backend/DistributedScheduling/Practice/index.md) 里的 **T4**：
 
 | 属性 | 值 |
 | --- | --- |
@@ -279,7 +279,7 @@ grep -rn "state='held'" --include=*.sql sql/ | grep -v "expires_at" || echo "OK:
 
 ## 十、参考资料
 
-- [分布式调度 · 实战：六类定时任务验收](../../../docs/Backend/DistributedScheduling/Practice/index.md)：T4 的调度配置
-- [幂等与状态机工程](../../../docs/Backend/IdempotencyStateMachine/index.md)：预扣/提交/释放的状态机
+- [分布式调度 · 实战：六类定时任务验收](../../../../docs/Backend/DistributedScheduling/Practice/index.md)：T4 的调度配置
+- [幂等与状态机工程](../../../../docs/Backend/IdempotencyStateMachine/index.md)：预扣/提交/释放的状态机
 - [PostgreSQL 文档：`INSERT ... SELECT` 与 `ON CONFLICT`](https://www.postgresql.org/docs/current/sql-insert.html)
 - [PostgreSQL 文档：`date_trunc` 与窗口对齐](https://www.postgresql.org/docs/current/functions-datetime.html)

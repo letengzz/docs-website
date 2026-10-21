@@ -158,6 +158,16 @@ select count(*) from orders where amount <> amount_cents;   -- 期望 0
 | `SCA-G` | 不可兼容清单里的操作有专门方案 | 有「新表 + 切换」等设计 | 补设计；不许硬上 |
 | `SCA-H` | 四条断言进了 CI 或发布检查单 | 测试名/检查项 | 接 CI；人工点检会漏 |
 
+## 与「数据库大版本升级」专题的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| N/N-1 兼容矩阵、代码与表结构谁先动 | 本页 |
+| 换版本本身的阶段、窗口与回退 | [数据库大版本升级与切换](../../../Ops/DatabaseUpgrade/index.md) |
+| 升级后验证（行数、校验和、序列、计划） | [切换后验证](../../../Ops/DatabaseUpgrade/Verify/index.md) |
+
+**这一页特有的坑：升级窗口必须让 expand-contract 停在「安全中间态」。** 如果升级时正好处在 expand 之后、contract 之前（新旧两套字段并存），逻辑复制只会复制**目标端也存在的列**——源端新增的列不会被复制，`apply worker` 会直接报 `missing replicated column` 并退出。所以升级窗口的选择要避开任何「正在扩缩容表结构」的发布，把 DDL 冻结提前到升级前 24 小时。
+
 ## 参考资料
 
 - Martin Fowler: *ParallelChange*、*BlueGreenDeployment*

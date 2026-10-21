@@ -165,3 +165,4 @@ select name, total_row_versions from information_schema.innodb_tables where name
 - PostgreSQL 18 Documentation: *ALTER TABLE* — `ADD COLUMN` 与 `atthasmissing`
 - PostgreSQL 11 Release Notes: *Fast default values for columns added with ALTER TABLE*
 - PostgreSQL 18 Documentation: *System Catalogs* — `pg_class.relfilenode`、`pg_attribute.atthasmissing`
+- 本仓库相邻专题：[数据库大版本升级与切换](../../../Ops/DatabaseUpgrade/index.md)（换版本时的 DDL 冻结、锁与回填边界）

@@ -204,4 +204,4 @@ dig +short TXT board.example.com | tr -d '"' | tr '\n' ' ' | grep -o "v=spf1.*" 
 - [RFC 8461：MTA-STS](https://www.rfc-editor.org/rfc/rfc8461) 与 [RFC 8460：TLS-RPT](https://www.rfc-editor.org/rfc/rfc8460)
 - [RFC 9989：DMARC](https://www.rfc-editor.org/rfc/rfc9989)
 - [身份三件套](../Authentication/index.md)：三件套的判定链与对齐
-- [证书与信任链生命周期](../../Ops/CertificateLifecycle/index.md)：MX 证书的签发与轮换
+- [证书与信任链生命周期](../../../Ops/CertificateLifecycle/index.md)：MX 证书的签发与轮换

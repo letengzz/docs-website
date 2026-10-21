@@ -234,7 +234,8 @@ func (e *HTTPError) Is(target error) bool {
 }
 ```
 
-::: tip 关键点：实现 `Unwrap() error` 后，`errors.Is` / `errors.As` 才能穿过你的错误类型继续向下查找。
+::: tip 关键点
+实现 `Unwrap() error` 后，`errors.Is` / `errors.As` 才能穿过你的错误类型继续向下查找。
 :::
 
 ## 4. panic 与 recover

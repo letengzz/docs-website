@@ -10,7 +10,6 @@
 
 本节涉及的版本与时效性结论按 2026-10 口径整理；使用前请以官方发布页为准。
 
-
 按「官方名 + 大版本号」建目录，版本差异在**目录结构**里显式表达：
 
 ```text
@@ -60,7 +59,7 @@ npx docusaurus docs:version 2.0.0
 ```markdown
 :::info 版本与维护状态
 本页面向 Spring Framework 5.3。5.3 的开源支持已于 2024-08-31 结束（企业支持至 2029-06），
-仅建议存量项目查阅。新项目请阅读 [Spring6](../Spring6/index.md)。
+仅建议存量项目查阅。新项目请阅读 [Spring6](../../../Backend/Java/Frame/Spring/Spring6/index.md)。
 :::
 ```
 

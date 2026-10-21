@@ -161,7 +161,7 @@ grep -qE '反对意见|无人反对已逐个确认' minutes.md && echo OK
 | --- | --- |
 | 谁有权拍板、这件事该走哪一档 | [决策权与分级](../DecisionRights/index.md) |
 | 反对意见怎么记、什么时候必须回炉 | [反对意见](../Dissent/index.md) |
-| 变更上线前的审批流程（不是决策评审） | [变更管理与发布工程](../../Ops/ChangeManagement/ApprovalTrail/index.md) |
+| 变更上线前的审批流程（不是决策评审） | [变更管理与发布工程](../../../Ops/ChangeManagement/ApprovalTrail/index.md) |
 | 一次真实的评审全过程 | [实战](../Practice/index.md) |
 
 ## 参考资料

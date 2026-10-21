@@ -102,3 +102,4 @@
 - Oracle Lifetime Support Policy: MySQL Releases（5.7 / 8.0 / 8.4 / 9.7 的支持窗口）
 - Percona Toolkit `pt-online-schema-change`、GitHub `gh-ost` 官方文档
 - Martin Kleppmann《Designing Data-Intensive Applications》第 4 章（编码与 schema 演进）
+- 本仓库相邻专题：[数据库大版本升级与切换](../../Ops/DatabaseUpgrade/index.md)（换版本时的 DDL 冻结、锁与回填边界）

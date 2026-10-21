@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="620" fill="#ffffff"/>
+<text x="36" y="46" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">EventOrderHub 架构：一个写者、两条通道、三处事务</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">同步通道只用于「必须立刻知道结果」的调用；其余全部走 outbox + Kafka</text>
+<rect x="36" y="92" width="120" height="52" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="96.0" y="113.2" font-size="12.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">客户端</text>
+<text x="96.0" y="131.8" font-size="12.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">App / H5</text>
+<rect x="196" y="92" width="300" height="190" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="346.0" y="191.7" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="210" y="116" font-size="13" fill="#0f766e" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">订单上下文（唯一写者）</text>
+<rect x="210" y="128" width="272" height="60" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="346.0" y="153.3" font-size="12" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">OrderService</text>
+<text x="346.0" y="171.3" font-size="12" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">建单 / 状态机守卫</text>
+<rect x="210" y="198" width="130" height="68" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="275.0" y="227.4" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">orders</text>
+<text x="275.0" y="244.9" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">order_items</text>
+<rect x="352" y="198" width="130" height="68" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="417.0" y="227.4" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">outbox</text>
+<text x="417.0" y="244.9" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">(同事务写入)</text>
+<line x1="156" y1="118" x2="194" y2="118" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="158" y="110" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">同步</text>
+<rect x="540" y="198" width="118" height="68" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="599.0" y="219.0" font-size="11" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">Relay</text>
+<text x="599.0" y="236.0" font-size="11" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">SKIP LOCKED</text>
+<text x="599.0" y="253.0" font-size="11" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">轮询</text>
+<line x1="482" y1="232" x2="538" y2="232" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="486" y="224" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">读未发布</text>
+<rect x="700" y="92" width="224" height="174" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="812.0" y="183.7" font-size="13" font-weight="400" fill="#6d28d9" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="714" y="116" font-size="12.5" fill="#6d28d9" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">Kafka（按 aggregate_id 分区）</text>
+<rect x="714" y="126" width="196" height="26" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="812.0" y="143.0" font-size="11" font-weight="400" fill="#6d28d9" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">order.events</text>
+<rect x="714" y="160" width="196" height="26" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="812.0" y="177.0" font-size="11" font-weight="400" fill="#6d28d9" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">stock.events</text>
+<rect x="714" y="194" width="196" height="26" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="812.0" y="211.0" font-size="11" font-weight="400" fill="#6d28d9" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">payment.events</text>
+<rect x="714" y="228" width="196" height="26" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="812.0" y="245.0" font-size="11" font-weight="400" fill="#6d28d9" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">fulfillment.events</text>
+<line x1="658" y1="232" x2="698" y2="200" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="660" y="224" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">发布</text>
+<rect x="540" y="320" width="170" height="90" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="625.0" y="351.6" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">库存上下文</text>
+<text x="625.0" y="369.1" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">预占 / 释放</text>
+<text x="625.0" y="386.6" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">stock.reserved</text>
+<rect x="730" y="320" width="194" height="90" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="827.0" y="351.6" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">支付上下文</text>
+<text x="827.0" y="369.1" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">发起 / 回调</text>
+<text x="827.0" y="386.6" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">payment.succeeded</text>
+<rect x="540" y="434" width="170" height="90" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="625.0" y="465.6" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">履约上下文</text>
+<text x="625.0" y="483.1" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">发货 / 签收</text>
+<text x="625.0" y="500.6" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">shipment.delivered</text>
+<rect x="730" y="434" width="194" height="90" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="827.0" y="465.6" font-size="11.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">通知上下文</text>
+<text x="827.0" y="483.1" font-size="11.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">只消费、不写业务</text>
+<text x="827.0" y="500.6" font-size="11.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">notify_task</text>
+<line x1="810" y1="266" x2="810" y2="318" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="700" y1="266" x2="640" y2="318" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="625" y1="412" x2="625" y2="432" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="716" y="300" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">订阅</text>
+<line x1="538" y1="366" x2="400" y2="284" stroke="#0f766e" stroke-width="1.8" marker-end="url(#ah)" stroke-dasharray="5 4"/>
+<text x="60" y="372" font-size="12" fill="#0f766e" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">虚线 = 下游事件回流到订单上下文</text>
+<text x="60" y="394" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">库存/支付/履约只发事件；只有订单上下文能改订单状态</text>
+<text x="60" y="416" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">（这是「一个写者」的全部含义）</text>
+<line x1="536" y1="478" x2="392" y2="268" stroke="#0f766e" stroke-width="1.8" marker-end="url(#ah)" stroke-dasharray="5 4"/>
+<rect x="36" y="544" width="288" height="58" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="180.0" y="568.4" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">事务①：orders + items + outbox</text>
+<text x="180.0" y="585.9" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">同一 PostgreSQL 事务</text>
+<rect x="336" y="544" width="288" height="58" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="480.0" y="568.4" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">事务②：库存预占 + 发事件</text>
+<text x="480.0" y="585.9" font-size="11.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一约束兜底不超卖</text>
+<rect x="636" y="544" width="288" height="58" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="780.0" y="568.4" font-size="11.5" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">事务③：消费位点 + 幂等表</text>
+<text x="780.0" y="585.9" font-size="11.5" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">同事务提交，重复投递无副作用</text>
+<text x="36" y="528" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">三处事务之外，任何「跨上下文一致性」都只能靠重试 + 对账，不能靠分布式事务。</text>
+</svg>

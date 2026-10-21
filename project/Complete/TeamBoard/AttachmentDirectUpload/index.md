@@ -340,3 +340,6 @@ curl -s -o /dev/null -w '%{http_code}\n' "https://s3.example.com/bucket/$(jq -r 
 ::: danger 本页特有的坑：`PUT` 预签名锁不住 body 大小
 本页的 25 MiB 上限**不是**靠预签名实现的——`PUT` 预签名里没有 `content-length-range` 这个能力（那是 POST Policy 的）。上限实际由 `commit` 阶段的 `HeadObject` 复核兜住。
 所以：**任何人把那一步「优化」掉，25 MiB 就只剩前端校验**，而前端校验对 `curl` 无效。改动这页代码时，`commit` 的校验顺序（存在性 → 大小 → 校验和 → 归属）不能调换、不能省略。
+
+:::
+

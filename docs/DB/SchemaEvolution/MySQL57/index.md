@@ -123,3 +123,4 @@ where table_schema = 'shop' and table_collation not like 'utf8mb4%';
 - MySQL 8.0 Reference Manual: *Atomic Data Definition Statement Support*（5.7 无此能力）
 - MySQL 8.0 Reference Manual: *Keywords and Reserved Words*（8.0 新增保留字）
 - Percona Toolkit: `pt-online-schema-change`；GitHub `gh-ost`
+- 本仓库相邻专题：[数据库大版本升级与切换](../../../Ops/DatabaseUpgrade/index.md)（换版本时的 DDL 冻结、锁与回填边界）

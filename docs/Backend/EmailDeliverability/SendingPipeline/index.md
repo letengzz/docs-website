@@ -272,5 +272,5 @@ EOF
 - [RFC 2045~2049：MIME](https://www.rfc-editor.org/rfc/rfc2045)
 - [RFC 8058：一键退订](https://www.rfc-editor.org/rfc/rfc8058)
 - [RFC 3834：自动回复与 Auto-Submitted](https://www.rfc-editor.org/rfc/rfc3834)
-- [消息队列工程](../MessageQueue/index.md)：投递语义与 outbox 的通用做法
+- [消息队列工程](../../MessageQueue/index.md)：投递语义与 outbox 的通用做法
 - [退信与投诉](../BounceComplaint/index.md)：投递结果怎么分类与处置

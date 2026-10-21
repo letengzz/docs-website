@@ -138,3 +138,12 @@ mysql -e "SHOW VARIABLES LIKE 'wait_timeout';"
 - [ProxySQL · Connection Pooling 与多路复用](https://proxysql.com/documentation/)
 - [PgBouncer 官方文档](https://www.pgbouncer.org/usage.html)
 - [中间件全景与选型](../Overview/index.md)｜[代理形态与运维](../ProxyMode/index.md)｜[SQL 优化专题](../../Relational/SQLOptimization/index.md)
+## 与「数据库大版本升级」专题的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 池子多大、泄漏怎么查、事务边界 | 本页 |
+| 升级切换瞬间的连接行为、连接串怎么切 | [切换窗口与回滚](../../../Ops/DatabaseUpgrade/Cutover/index.md) |
+| 旧库上还有没有残留应用连接 | [数据库大版本升级与切换](../../../Ops/DatabaseUpgrade/FAQ/index.md) |
+
+**这一页特有的坑：切换瞬间的「连接风暴」会让池子把新库判成不可用。** 所有实例在同一秒重连，加上部分驱动会在建立连接时执行 `SET` / `SELECT 1` 校验；如果新库的 `pg_hba.conf` 少了某个网段、或认证方式从 md5 变成 SCRAM 而驱动太旧，**整池会在几秒内被标记为 down**，表现为「切完了但业务全 500」。切换前把池子的最小连接数调低、分批重启、并先用一个真实业务连接串手工连一次。

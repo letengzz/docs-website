@@ -166,6 +166,7 @@ grep -rnE '(AKIA[0-9A-Z]{16}|LTAI[0-9A-Za-z]{12,}|-----BEGIN [A-Z ]*PRIVATE KEY-
 ::: danger 本页特有的坑：IAM 很严，桶还是公开的
 桶策略是唯一**跨账号生效**的授权机制：一条 `Principal: "*"` + `s3:GetObject` 的 `Allow`，让「本账号 IAM 再严」这件事变得无关——因为它允许的是「任何人」。
 所以账号级安全评审必须包含一条资源级检查：`get-bucket-policy` 里不存在 `Principal: "*"` 的 `Allow`（`Deny` 语句除外），且四个 Block Public Access 开关全为 `true`。漏掉这一条，账号级的所有努力都可以被一行 JSON 抹平。
+:::
 
 ## 与「证书与信任链生命周期」专题的分工
 

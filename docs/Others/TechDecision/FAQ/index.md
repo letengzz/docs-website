@@ -137,14 +137,14 @@
 
 | 你的问题 | 去哪 |
 | --- | --- |
-| 架构文档要产出什么（ADR 四段式、最小文档集合） | [项目交付 · 架构设计](../../Others/ProjectDelivery/Architecture/index.md) |
-| 变更上线前的审批、冻结期、灰度与回滚 | [变更管理与发布工程](../../Ops/ChangeManagement/index.md) |
-| 决策周期的度量口径 | [研发效能度量](../../Tools/EngineeringMetrics/index.md) |
-| 事故之后的责任界定与改进项跟踪 | [事故响应与演练](../../Ops/IncidentResponse/index.md) |
+| 架构文档要产出什么（ADR 四段式、最小文档集合） | [项目交付 · 架构设计](../../ProjectDelivery/Architecture/index.md) |
+| 变更上线前的审批、冻结期、灰度与回滚 | [变更管理与发布工程](../../../Ops/ChangeManagement/index.md) |
+| 决策周期的度量口径 | [研发效能度量](../../../Tools/EngineeringMetrics/index.md) |
+| 事故之后的责任界定与改进项跟踪 | [事故响应与演练](../../../Ops/IncidentResponse/index.md) |
 
 ## 参考资料
 
 - [Architecture Decision Records 官网](https://adr.github.io/)
 - [Documenting Architecture Decisions（Michael Nygard, 2011）](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)
 - [RFC 2026：The Internet Standards Process](https://www.rfc-editor.org/rfc/rfc2026)
-- [项目交付 · 架构设计](../../Others/ProjectDelivery/Architecture/index.md)
+- [项目交付 · 架构设计](../../ProjectDelivery/Architecture/index.md)

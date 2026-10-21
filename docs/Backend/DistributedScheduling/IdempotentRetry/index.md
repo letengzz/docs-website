@@ -86,7 +86,7 @@ CREATE TABLE job_exec_log (
 | 抖动（jitter） | 所有实例在同一毫秒重试（惊群） |
 
 ::: danger 重试的四个反模式
-1. **对不可重试的错误重试**：`400` 参数错、`401` 认证错、唯一键冲突，重试一万次也一样。要按错误类型分流（见 [幂等与状态机工程](../IdempotencyStateMachine/index.md)）。
+1. **对不可重试的错误重试**：`400` 参数错、`401` 认证错、唯一键冲突，重试一万次也一样。要按错误类型分流（见 [幂等与状态机工程](../../IdempotencyStateMachine/index.md)）。
 2. **重试不带幂等键**：重试本身就是重复执行。
 3. **重试与下一周期重叠**：03:00 的任务重试到 03:40，04:00 又触发一次，两个实例同时写。
 4. **重试耗尽后静默失败**：必须进死信表 + 告警，否则「失败 8 次」和「成功」在看板上长得一样。
@@ -188,5 +188,5 @@ print("固定 5 s :", [5.0] * 8, "累计", 40.0, "s")
 - [PostgreSQL 文档：`INSERT ... ON CONFLICT`](https://www.postgresql.org/docs/current/sql-insert.html)
 - [Stripe 文档：Idempotent requests](https://docs.stripe.com/api/idempotent_requests)
 - [AWS 构建块：Timeouts, retries and backoff with jitter](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/)
-- [幂等与状态机工程](../IdempotencyStateMachine/index.md)：状态机与补偿
+- [幂等与状态机工程](../../IdempotencyStateMachine/index.md)：状态机与补偿
 - [misfire 与补跑](../MisfireCatchup/index.md)：补跑为什么必须带 `fire_time`

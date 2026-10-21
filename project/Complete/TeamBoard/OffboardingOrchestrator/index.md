@@ -279,8 +279,8 @@ WHERE status = 'running' AND updated_at < now() - interval '30 minutes';
 
 ## 参考资料
 
-- [第 4 周第 3 步之六 · 租户退出](./TenantOffboarding/index.md)：六阶段状态机与导出三份产物
-- [第 4 周第 3 步之七 · 租户数据清单](./TenantDataInventory/index.md)：清单从 `pg_catalog` 自动生成
-- [第 4 周第 3 步之八 · 迁移后置校验](./MigrationInventoryGate/index.md)：把清单挂进 `afterMigrate`
-- [第 4 周第 3 步之九 · 删除流水线](./DeletionPipeline/index.md)：三面复用与四步编排
+- [第 4 周第 3 步之六 · 租户退出](../TenantOffboarding/index.md)：六阶段状态机与导出三份产物
+- [第 4 周第 3 步之七 · 租户数据清单](../TenantDataInventory/index.md)：清单从 `pg_catalog` 自动生成
+- [第 4 周第 3 步之八 · 迁移后置校验](../MigrationInventoryGate/index.md)：把清单挂进 `afterMigrate`
+- [第 4 周第 3 步之九 · 删除流水线](../DeletionPipeline/index.md)：三面复用与四步编排
 - [幂等与状态机工程](/docs/Backend/IdempotencyStateMachine/index.md)：幂等键设计与状态机建模的通用原理

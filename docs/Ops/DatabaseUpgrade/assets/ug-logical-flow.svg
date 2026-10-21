@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker></defs>
+<rect x="0" y="0" width="960" height="540" fill="#ffffff"/>
+<text x="40" y="50" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">逻辑复制的三段与两个缺口：行过去了，序列和 DDL 没过去</text>
+<text x="40" y="76" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">PG 16+ 原生逻辑复制；MySQL 侧对应 binlog 复制</text>
+<rect x="40" y="106" width="400" height="130" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="240.0" y="147.8" font-size="12.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 全量：CREATE SUBSCRIPTION</text>
+<text x="240.0" y="166.2" font-size="12.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">(copy_data = true)</text>
+<text x="240.0" y="184.8" font-size="12.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="240.0" y="203.2" font-size="12.5" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">20 万 + 40 万行 → 3 s</text>
+<rect x="40" y="250" width="400" height="130" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="240.0" y="291.8" font-size="12.5" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 增量：apply worker 持续回放</text>
+<text x="240.0" y="310.2" font-size="12.5" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="240.0" y="328.8" font-size="12.5" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">2 万行 → 2.04 s 追平</text>
+<text x="240.0" y="347.2" font-size="12.5" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">槽积压归零才算追平</text>
+<rect x="40" y="394" width="400" height="110" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="240.0" y="435.0" font-size="12.5" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 切换：DISABLE → 删槽 → 修序列</text>
+<text x="240.0" y="453.5" font-size="12.5" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="240.0" y="472.0" font-size="12.5" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">实测 0.78 s</text>
+<line x1="240" y1="236" x2="240" y2="248" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="240" y1="380" x2="240" y2="392" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="490" y="106" width="430" height="110" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="705.0" y="147.0" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">缺口一：序列不复制</text>
+<text x="705.0" y="165.5" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">目标端 nextval 仍为 1</text>
+<text x="705.0" y="184.0" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">→ 首插直接 duplicate key</text>
+<rect x="490" y="232" width="430" height="110" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="705.0" y="273.0" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">缺口二：DDL 不复制</text>
+<text x="705.0" y="291.5" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">missing replicated column</text>
+<text x="705.0" y="310.0" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">→ apply worker 退出并每 5 s 重试</text>
+<rect x="490" y="358" width="430" height="146" rx="8" fill="#fff1f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="705.0" y="389.2" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">两个缺口的共同形态</text>
+<text x="705.0" y="407.8" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="705.0" y="426.2" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">没有报错弹到业务，只有：</text>
+<text x="705.0" y="444.8" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">· 行数看起来对得上</text>
+<text x="705.0" y="463.2" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">· 延迟指标缓慢上涨</text>
+<text x="705.0" y="481.8" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">· 主键指向了不同的行</text>
+<line x1="442" y1="171" x2="488" y2="161" stroke="#b91c1c" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="442" y1="315" x2="488" y2="287" stroke="#b91c1c" stroke-width="2" marker-end="url(#ah)"/>
+<text x="40" y="528" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">PG 19（RC，2026-10-15）新增 sequence 值的逻辑复制，第一个缺口会在下一代消失；第二个缺口不会 —— DDL 永远要单独同步。</text>
+</svg>

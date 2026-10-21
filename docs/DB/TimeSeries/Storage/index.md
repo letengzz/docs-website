@@ -159,6 +159,7 @@ docker exec -it tdengine taos -s "SELECT SUM(data_size)/(SELECT COUNT(*) FROM ho
 - 而 300 GB 在 GIR 上一年只省了 $19.46 × 0.3 ≈ $5.8。
 
 **一次回补就把两年的节省吃掉。** 所以冷段下沉必须同时配「预聚合层」：常用聚合结果留在热层，冷层只用于「极少发生的明细回溯」。
+:::
 
 ## 参考资料
 

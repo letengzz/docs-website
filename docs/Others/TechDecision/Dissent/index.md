@@ -152,7 +152,7 @@ print(f"共 {len(bad)} 篇待补")
 | --- | --- |
 | 会上怎么安排发言顺序、怎么定时间盒 | [评审会](../ReviewMeeting/index.md) |
 | 未采纳意见之后，决策怎么被正式替换 | [决策的修改与推翻](../DecisionChange/index.md) |
-| 变更事故之后的复盘与责任界定 | [事故响应与演练](../../Ops/IncidentResponse/index.md) |
+| 变更事故之后的复盘与责任界定 | [事故响应与演练](../../../Ops/IncidentResponse/index.md) |
 
 ## 参考资料
 

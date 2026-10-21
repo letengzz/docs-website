@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="40" y="50" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">切换后验证：四道闸门，成本递增、覆盖递增</text>
+<text x="40" y="76" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">220k 行 orders 上的实测耗时（PG 18.6 单实例）</text>
+<rect x="40" y="100" width="206" height="90" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="143.0" y="150.0" font-size="14" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 行数</text>
+<rect x="40" y="200" width="206" height="70" rx="8" fill="#f8fafc" stroke="#0f766e" stroke-width="1.4"/>
+<text x="143.0" y="230.3" font-size="12" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">count(*)</text>
+<text x="143.0" y="248.3" font-size="12" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">161 ms</text>
+<rect x="40" y="280" width="206" height="110" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="143.0" y="330.4" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">只能证明「大概对」</text>
+<text x="143.0" y="347.9" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">分叉的库也可能相等</text>
+<line x1="246" y1="145" x2="264" y2="145" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="266" y="100" width="206" height="90" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="369.0" y="150.0" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 聚合校验和</text>
+<rect x="266" y="200" width="206" height="70" rx="8" fill="#f8fafc" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="369.0" y="230.3" font-size="12" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">sum(hashtext)</text>
+<text x="369.0" y="248.3" font-size="12" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">185 ms</text>
+<rect x="266" y="280" width="206" height="110" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="369.0" y="330.4" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">能发现内容不同</text>
+<text x="369.0" y="347.9" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">定位不到哪一行</text>
+<line x1="472" y1="145" x2="490" y2="145" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="492" y="100" width="206" height="90" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+<text x="595.0" y="150.0" font-size="14" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 逐行比对</text>
+<rect x="492" y="200" width="206" height="70" rx="8" fill="#f8fafc" stroke="#b45309" stroke-width="1.4"/>
+<text x="595.0" y="230.3" font-size="12" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">md5(t::text)</text>
+<text x="595.0" y="248.3" font-size="12" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">405 ms</text>
+<rect x="492" y="280" width="206" height="110" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="595.0" y="330.4" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">能定位到行</text>
+<text x="595.0" y="347.9" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">成本 ×2.5</text>
+<line x1="698" y1="145" x2="716" y2="145" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="718" y="100" width="206" height="90" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="821.0" y="150.0" font-size="14" font-weight="700" fill="#6d28d9" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 业务不变量</text>
+<rect x="718" y="200" width="206" height="70" rx="8" fill="#f8fafc" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="821.0" y="230.3" font-size="12" font-weight="400" fill="#6d28d9" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">六条 SQL</text>
+<text x="821.0" y="248.3" font-size="12" font-weight="400" fill="#6d28d9" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">&lt; 100 ms</text>
+<rect x="718" y="280" width="206" height="110" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="821.0" y="330.4" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一能证明「业务对」</text>
+<text x="821.0" y="347.9" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">的一类</text>
+<rect x="40" y="410" width="880" height="56" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="480.0" y="442.5" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">纪律：行数相等不等于数据正确 —— 实测中两个库都是 220001 行，而 id=220001 在源库是 NO777777777、在目标库是 NO900000002。</text>
+</svg>

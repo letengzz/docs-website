@@ -249,6 +249,7 @@ grep -rn "tablespace\|cold_after_days\|hot_days" config/ deploy/ 2>/dev/null | h
 - 三个月后有人问「归档到底省了多少」，答案是「只省了库的，没省桶的」。
 
 归档动作必须成对：`DETACH` 与「给导出前缀配 Transition + Expiration」写在同一次变更里。
+:::
 
 ## 参考资料
 

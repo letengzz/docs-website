@@ -453,3 +453,21 @@ export const CertificateLifecycle = [
     ],
   },
 ];
+export const DatabaseUpgrade = [
+  {
+    text: "数据库大版本升级与切换",
+    link: "/docs/Ops/DatabaseUpgrade/index.md",
+    items: [
+      { text: "总览：四类风险与五个阶段（UGO-A~UGO-H）", link: "/docs/Ops/DatabaseUpgrade/Overview/index.md" },
+      { text: "支持矩阵：哪些能升、哪些必须先过一站（UGV-A~UGV-H）", link: "/docs/Ops/DatabaseUpgrade/SupportMatrix/index.md" },
+      { text: "升级前检查：六道闸门（UGC-A~UGC-H）", link: "/docs/Ops/DatabaseUpgrade/Precheck/index.md" },
+      { text: "演练与时间估算：把「停多久」算出来（UGD-A~UGD-H）", link: "/docs/Ops/DatabaseUpgrade/Rehearsal/index.md" },
+      { text: "逻辑复制迁移：行过去了，序列没过去（UGL-A~UGL-H）", link: "/docs/Ops/DatabaseUpgrade/LogicalMigration/index.md" },
+      { text: "MySQL 8.0 → 8.4：三条路与三个断点（UGM-A~UGM-H）", link: "/docs/Ops/DatabaseUpgrade/MySQL80To84/index.md" },
+      { text: "PostgreSQL 17 → 18：pg_upgrade 在搬什么（UGP-A~UGP-H）", link: "/docs/Ops/DatabaseUpgrade/PostgreSQL17To18/index.md" },
+      { text: "切换窗口与回滚：0.78 秒里做了什么（UGT-A~UGT-H）", link: "/docs/Ops/DatabaseUpgrade/Cutover/index.md" },
+      { text: "切换后验证：四道闸门（UGX-A~UGX-H）", link: "/docs/Ops/DatabaseUpgrade/Verify/index.md" },
+      { text: "常见问题与分诊（UGQ-A~UGQ-H）", link: "/docs/Ops/DatabaseUpgrade/FAQ/index.md" },
+    ],
+  },
+];

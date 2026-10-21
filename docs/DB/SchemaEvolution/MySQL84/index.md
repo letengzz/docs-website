@@ -144,3 +144,4 @@ alter table orders modify channel varchar(16) not null default 'web', algorithm=
 - MySQL 8.4 Reference Manual: *InnoDB Row Formats* — instant 列与行版本
 - MySQL 8.4 Reference Manual: *Authentication Plugins* — `mysql_native_password` 默认禁用
 - Oracle Lifetime Support Policy: MySQL Releases（8.4：GA 2024-04、EOL 2032-04）
+- 本仓库相邻专题：[数据库大版本升级与切换](../../../Ops/DatabaseUpgrade/index.md)（换版本时的 DDL 冻结、锁与回填边界）

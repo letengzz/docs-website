@@ -144,12 +144,12 @@ done
 
 | 你的问题 | 去哪 |
 | --- | --- |
-| 可逆 / 不可逆怎么分、ADR 四段式怎么写 | [项目交付 · 架构设计](../../Others/ProjectDelivery/Architecture/index.md) |
-| 变更上线前的审批与留痕（不是决策本身） | [变更管理与发布工程](../../Ops/ChangeManagement/index.md) |
+| 可逆 / 不可逆怎么分、ADR 四段式怎么写 | [项目交付 · 架构设计](../../ProjectDelivery/Architecture/index.md) |
+| 变更上线前的审批与留痕（不是决策本身） | [变更管理与发布工程](../../../Ops/ChangeManagement/index.md) |
 | 决策记录写完之后的评审会怎么开 | [评审会](../ReviewMeeting/index.md) |
 
 ## 参考资料
 
 - [Architecture Decision Records 官网](https://adr.github.io/)
 - [RFC 2026：The Internet Standards Process](https://www.rfc-editor.org/rfc/rfc2026)（「谁有权定标准」的原始范式）
-- [项目交付 · 架构设计](../../Others/ProjectDelivery/Architecture/index.md)
+- [项目交付 · 架构设计](../../ProjectDelivery/Architecture/index.md)

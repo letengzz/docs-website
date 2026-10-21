@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="40" y="50" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">支持矩阵：哪些能直接升，哪些必须先过一站</text>
+<text x="40" y="76" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">2026-10 核对；✗ 不是「不推荐」，是「做不到」</text>
+<text x="40" y="116" font-size="12" fill="#475569" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">源</text>
+<text x="150" y="116" font-size="12" fill="#475569" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">目标</text>
+<text x="300" y="116" font-size="12" fill="#475569" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">原地升级</text>
+<text x="470" y="116" font-size="12" fill="#475569" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">逻辑复制</text>
+<text x="640" y="116" font-size="12" fill="#475569" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">dump/restore</text>
+<text x="810" y="116" font-size="12" fill="#475569" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">回退</text>
+<rect x="40" y="128" width="880" height="48" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="52" y="158" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">MySQL 8.0.37+</text>
+<text x="162" y="158" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">8.4 LTS</text>
+<text x="300" y="158" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓ 支持</text>
+<text x="470" y="158" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="640" y="158" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="810" y="158" font-size="12.5" fill="#0f766e" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✗ 只能恢复备份</text>
+<rect x="40" y="184" width="880" height="48" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="52" y="214" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">MySQL 8.0 &lt;37</text>
+<text x="162" y="214" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">8.4 LTS</text>
+<text x="300" y="214" font-size="12.5" fill="#b45309" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✗ 先升到 8.0.46</text>
+<text x="470" y="214" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="640" y="214" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="810" y="214" font-size="12.5" fill="#b45309" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✗</text>
+<rect x="40" y="240" width="880" height="48" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="52" y="270" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">MySQL 5.7</text>
+<text x="162" y="270" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">8.4 LTS</text>
+<text x="300" y="270" font-size="12.5" fill="#b91c1c" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✗ 必过 8.0</text>
+<text x="470" y="270" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓ 跨两版</text>
+<text x="640" y="270" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="810" y="270" font-size="12.5" fill="#b91c1c" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✗</text>
+<rect x="40" y="296" width="880" height="48" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="52" y="326" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">MySQL 8.0</text>
+<text x="162" y="326" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">9.7 LTS</text>
+<text x="300" y="326" font-size="12.5" fill="#b91c1c" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✗ LTS 不可跳</text>
+<text x="470" y="326" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✗</text>
+<text x="640" y="326" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="810" y="326" font-size="12.5" fill="#b91c1c" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✗</text>
+<rect x="40" y="352" width="880" height="48" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="52" y="382" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">PostgreSQL 17</text>
+<text x="162" y="382" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">18</text>
+<text x="300" y="382" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓ pg_upgrade</text>
+<text x="470" y="382" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓ 推荐</text>
+<text x="640" y="382" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="810" y="382" font-size="12.5" fill="#b45309" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">⚠ 未写前可回退</text>
+<rect x="40" y="408" width="880" height="48" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="52" y="438" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">PostgreSQL ≤13</text>
+<text x="162" y="438" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">18</text>
+<text x="300" y="438" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">⚠ 只能 --copy 或逻辑</text>
+<text x="470" y="438" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="640" y="438" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="810" y="438" font-size="12.5" fill="#b45309" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">⚠</text>
+<text x="40" y="484" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">「原地升级」一列只有 PostgreSQL 与 MySQL 8.0.37+ 是 ✓：MySQL 的 LTS 序列不允许跳版，PostgreSQL 没有 LTS 概念但要求新旧二进制同时在场。</text>
+</svg>

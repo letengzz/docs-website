@@ -187,10 +187,10 @@ P2 迁移窗口：大促前（风险高、早解决）还是后（风险低、�
 | 方法论：档位、判据、记录结构 | [总览](../Overview/index.md) |
 | 评审会的议程与角色 | [评审会](../ReviewMeeting/index.md) |
 | 项目侧的架构决策实例（TeamBoard 的模块边界） | [TeamBoard 架构设计](/project/Complete/TeamBoard/Architecture/index.md) |
-| 变更上线后的灰度和回滚 | [变更管理与发布工程](../../Ops/ChangeManagement/index.md) |
+| 变更上线后的灰度和回滚 | [变更管理与发布工程](../../../Ops/ChangeManagement/index.md) |
 
 ## 参考资料
 
 - [Documenting Architecture Decisions（Michael Nygard, 2011）](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)
 - [MADR：Markdown Architectural Decision Records](https://adr.github.io/madr/)
-- [变更管理与发布工程](../../Ops/ChangeManagement/index.md)：决策落地后的灰度与回滚
+- [变更管理与发布工程](../../../Ops/ChangeManagement/index.md)：决策落地后的灰度与回滚

@@ -178,3 +178,6 @@ curl -s https://origin.example.com/static/app.9f2c1a.js | shasum
 2. 该 URL 过期后，所有请求一起拿到 `403`，直到缓存 TTL 到期。
 
 正确写法：该响应必须 `Cache-Control: no-store`；或把签名放到边缘（边缘签名），不把签名结果交给共享缓存。
+
+:::
+

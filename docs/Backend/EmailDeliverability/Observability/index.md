@@ -189,6 +189,6 @@ WHERE occurred_at::date = DATE '2026-10-20';
 
 - [RFC 3463：增强状态码（分诊表的依据）](https://www.rfc-editor.org/rfc/rfc3463)
 - [Gmail Postmaster Tools：官方指标口径](https://postmaster.google.com/)
-- [观测驱动开发 · 指标先行](../../Tools/ObservabilityDriven/MetricsFirst/index.md)：指标定义的通用方法
-- [观测驱动开发 · 告警设计](../../Tools/ObservabilityDriven/AlertDesign/index.md)：配额与介入比
+- [观测驱动开发 · 指标先行](../../../Tools/ObservabilityDriven/MetricsFirst/index.md)：指标定义的通用方法
+- [观测驱动开发 · 告警设计](../../../Tools/ObservabilityDriven/AlertDesign/index.md)：配额与介入比
 - [声誉与预热](../ReputationWarmup/index.md)：投诉率的阈值与分母

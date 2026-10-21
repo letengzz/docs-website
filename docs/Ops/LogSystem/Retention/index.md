@@ -289,6 +289,7 @@ sum by (service) (bytes_rate({env="prod"}[1h]))
 - 而且 GIR 的取回费是 $0.03/GB，比 Standard-IA 贵 3 倍。
 
 短期日志的正确做法是**只在 Standard 里设过期**（Standard 没有最小存储期）；要转冷的是「保留 180 天以上、且几乎不查」的那一档。
+:::
 
 ## 参考资料
 

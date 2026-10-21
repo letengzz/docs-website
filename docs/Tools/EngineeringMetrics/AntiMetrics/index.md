@@ -16,7 +16,6 @@
 
 ![反指标：三种博弈机制与三个可检测的指纹](../assets/em-gamification.svg)
 
-
 ## 一、五类典型反指标
 
 | 反指标 | 看起来在度量 | 一行代码不改的「优化」方法 | 真实后果 |
@@ -210,3 +209,4 @@ SELECT (SELECT count(*) FROM em.bug WHERE found_stage='prod') AS prod_bugs,
 - Forsgren, N. 等，《The SPACE of Developer Productivity》，ACM Queue，2021（五维框架与「不要用单维指标」的论证）。
 - DORA，《DORA's software delivery performance metrics》常见陷阱一节（把指标设为目标、单指标统治、跨主体比较）。
 - Strathern, M.，《Improving Ratings: Audit in the British University System》，1997（「当指标成为目标，它就不再是好指标」的社会学版本）。
+- 本仓库相邻专题：[研发效能度量总览](../index.md)（四类指标的分工）与[交付效能度量](../Estimation/index.md)（估算口径）

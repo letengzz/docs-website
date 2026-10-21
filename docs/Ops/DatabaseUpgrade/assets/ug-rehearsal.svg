@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="40" y="50" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">演练把「停多久」从感觉变成算式</text>
+<text x="40" y="76" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">三段耗时里只有第三段要停写；前两段可以在业务运行时跑</text>
+<rect x="40" y="110" width="270" height="200" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="175.0" y="176.7" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 全量搬运</text>
+<text x="175.0" y="195.7" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="175.0" y="214.7" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">与业务并行</text>
+<text x="175.0" y="233.7" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">耗时 ∝ 数据量</text>
+<text x="175.0" y="252.7" font-size="13" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">实测 60 万行 = 3 s</text>
+<rect x="345" y="110" width="270" height="200" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="480.0" y="176.7" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 增量追平</text>
+<text x="480.0" y="195.7" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="480.0" y="214.7" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">与业务并行</text>
+<text x="480.0" y="233.7" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">耗时 ∝ 写入速率</text>
+<text x="480.0" y="252.7" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">实测 2 万行 = 2.04 s</text>
+<rect x="650" y="110" width="270" height="200" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="785.0" y="176.7" font-size="13" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 切换窗口</text>
+<text x="785.0" y="195.7" font-size="13" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="785.0" y="214.7" font-size="13" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">必须停写</text>
+<text x="785.0" y="233.7" font-size="13" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">耗时 ≈ 常数</text>
+<text x="785.0" y="252.7" font-size="13" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">实测 0.78 s</text>
+<line x1="310" y1="210" x2="343" y2="210" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="615" y1="210" x2="648" y2="210" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<text x="40" y="350" font-size="13" fill="#0f172a" font-weight="700" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">按 87 MB / 60 万行实测插值：</text>
+<text x="40" y="376" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">· 逻辑复制：全量 3 s + 追平 2 s + 切换 0.78 s ≈ 6 s，其中停写 0.78 s</text>
+<text x="40" y="400" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">· dump/restore：1.35 + 2.23 = 3.6 s，但三段全部要停写，且随数据量线性增长（≈ 24 MB/s）</text>
+<text x="40" y="424" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">· 换算到 870 GB：dump/restore ≈ 10 小时；逻辑复制的切换窗口仍是秒级 —— 差别不在工具，在「哪一段需要停写」</text>
+<rect x="40" y="440" width="880" height="42" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="480.0" y="465.5" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">演练的唯一验收：主库停写计时器与业务侧 5xx 计数同时归零，且回退步骤在演练里真的执行过一次</text>
+</svg>

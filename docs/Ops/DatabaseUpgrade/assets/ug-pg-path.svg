@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker></defs>
+<rect x="0" y="0" width="960" height="540" fill="#ffffff"/>
+<text x="40" y="50" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">PostgreSQL 17 → 18：pg_upgrade 内部在做什么</text>
+<text x="40" y="76" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">二进制不兼容，数据页格式不同；三种迁移的差别是「搬的是页还是行」</text>
+<rect x="40" y="100" width="250" height="120" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="165.0" y="136.8" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">pg_upgrade</text>
+<text x="165.0" y="155.2" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="165.0" y="173.8" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">搬物理文件</text>
+<text x="165.0" y="192.2" font-size="12.5" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">不搬数据页内容</text>
+<rect x="40" y="240" width="250" height="120" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="165.0" y="276.8" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">逻辑复制</text>
+<text x="165.0" y="295.2" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="165.0" y="313.8" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">搬行</text>
+<text x="165.0" y="332.2" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">跨版本最稳</text>
+<rect x="40" y="380" width="250" height="110" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="165.0" y="411.8" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">pg_dump / restore</text>
+<text x="165.0" y="430.2" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="165.0" y="448.8" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">搬 SQL</text>
+<text x="165.0" y="467.2" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">最慢但最干净</text>
+<rect x="340" y="100" width="300" height="64" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="490.0" y="136.7" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">① --check</text>
+<rect x="660" y="100" width="260" height="64" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="790.0" y="136.1" font-size="11.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">只读检查，不写任何文件</text>
+<line x1="640" y1="132" x2="658" y2="132" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="490" y1="166" x2="490" y2="182" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="340" y="184" width="300" height="64" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="490.0" y="220.7" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 建新集群 initdb</text>
+<rect x="660" y="184" width="260" height="64" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="790.0" y="220.1" font-size="11.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">新版本初始化，空库</text>
+<line x1="640" y1="216" x2="658" y2="216" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="490" y1="250" x2="490" y2="266" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="340" y="268" width="300" height="64" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="490.0" y="304.7" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 搬目录/文件</text>
+<rect x="660" y="268" width="260" height="64" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="790.0" y="304.1" font-size="11.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">--link 硬链接（秒级）/ --copy 全拷</text>
+<line x1="640" y1="300" x2="658" y2="300" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="490" y1="334" x2="490" y2="350" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="340" y="352" width="300" height="64" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="490.0" y="388.7" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 重建统计信息</text>
+<rect x="660" y="352" width="260" height="64" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="790.0" y="388.1" font-size="11.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">vacuumdb --all --analyze-in-stages</text>
+<line x1="640" y1="384" x2="658" y2="384" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="490" y1="418" x2="490" y2="434" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="340" y="436" width="300" height="64" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+<text x="490.0" y="472.7" font-size="13" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑤ 换端口切换</text>
+<rect x="660" y="436" width="260" height="64" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="790.0" y="472.1" font-size="11.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">旧集群停，新集群起</text>
+<line x1="640" y1="468" x2="658" y2="468" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="340" y="502" width="580" height="1" rx="8" fill="#ffffff" stroke="#ffffff" stroke-width="1.4"/>
+<text x="630.0" y="507.2" font-size="13" font-weight="400" fill="#ffffff" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="40" y="512" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">回退边界：pg_upgrade --link 之后新集群一旦写入，旧集群的页已被新版本改写（或直接指向同一批页），「再切回去」不再是原路返回。</text>
+</svg>

@@ -161,8 +161,8 @@ grep -h '^topic:' adr/*.md | sort | uniq -d
 | --- | --- |
 | 记录该长什么样（七段结构、状态词表） | [记录结构](../RecordStructure/index.md) |
 | 反对意见如何成为重开的合法入口 | [反对意见](../Dissent/index.md) |
-| 定下来的变更怎么安全上线（灰度、回滚、冻结期） | [变更管理与发布工程](../../Ops/ChangeManagement/index.md) |
-| 架构文档里的 ADR 目录怎么维护 | [项目交付 · 架构设计](../../Others/ProjectDelivery/Architecture/index.md) |
+| 定下来的变更怎么安全上线（灰度、回滚、冻结期） | [变更管理与发布工程](../../../Ops/ChangeManagement/index.md) |
+| 架构文档里的 ADR 目录怎么维护 | [项目交付 · 架构设计](../../ProjectDelivery/Architecture/index.md) |
 
 ## 参考资料
 

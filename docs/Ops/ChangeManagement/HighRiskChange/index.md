@@ -156,6 +156,16 @@ psql -c "SELECT change_code, rule_id, file_path, line_no, snippet FROM chg.risk_
 | 发布与回滚的策略 | [发布与回滚](../../../Tools/CICD/DeployRollback/index.md) |
 | 权限模型怎么设计 | [授权模型](../../../Backend/Auth/Authorization/index.md) |
 
+## 与「数据库大版本升级」专题的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 变更分级、审批留痕、冻结期、破窗 | 本页 |
+| 升级为什么天然属于高危、技术判据是什么 | [数据库大版本升级与切换](../../DatabaseUpgrade/index.md) |
+| 升级的停写窗口、回退边界、验证闸门 | [演练与时间估算](../../DatabaseUpgrade/Rehearsal/index.md)、[切换窗口与回滚](../../DatabaseUpgrade/Cutover/index.md) |
+
+**这一页特有的坑：数据库大版本升级是本库定义的「高危变更」里唯一同时满足三条的。** ① **不可回滚点明确**（MySQL 8.4 首次启动、`pg_upgrade --link` 完成、新库被写入）；② **影响面是全站**（不是某个接口）；③ **执行与验证必须由不同的人在同一窗口内完成**。按本页的规则，它应当走「双人复核 + 冻结期 + 现场指挥」的最高一档，而不是按「一次配置变更」处理。
+
 ## 参考资料
 
 - PostgreSQL 18 文档：[Explicit Locking](https://www.postgresql.org/docs/current/explicit-locking.html)（各 DDL 的锁级别）、[`CREATE INDEX`](https://www.postgresql.org/docs/current/sql-createindex.html)（`CONCURRENTLY` 的限制）

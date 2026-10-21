@@ -114,7 +114,7 @@ CREATE INDEX job_run_state_idx ON job_run (state, fire_time);
 | `job_reaped_total` | counter | `job_key` | 租约回收次数 |
 | `job_fenced_writes_total` | counter | `job_key` | 脑裂证据 |
 
-**标签基数警告**：`job_key` 如果有上万个，指标基数会爆炸。做法是「重点任务逐个建标签，长尾任务聚合到 `job_group`」——详见 [指标先行与口径](../../Tools/ObservabilityDriven/MetricsFirst/index.md)。
+**标签基数警告**：`job_key` 如果有上万个，指标基数会爆炸。做法是「重点任务逐个建标签，长尾任务聚合到 `job_group`」——详见 [指标先行与口径](../../../Tools/ObservabilityDriven/MetricsFirst/index.md)。
 
 ## 四、四条告警规则
 
@@ -160,7 +160,6 @@ CREATE INDEX job_run_state_idx ON job_run (state, fire_time);
 | `DSV-G` | `job_reaped_total` 持续增长（> 10/小时）有告警 | 查告警规则 | 加规则并标注租约问题 |
 | `DSV-H` | `job_fenced_writes_total > 0` 触发 P1 | 查告警规则 | 加规则 |
 
-
 ## 七、验证：把五个口径算出来
 
 ```python
@@ -201,5 +200,5 @@ print(f"延迟 p50 {q(0.50)}s  p95 {q(0.95)}s  p99 {q(0.99)}s  max {delays[-1]}s
 - [Google SRE Workbook：Monitoring Distributed Systems](https://sre.google/workbook/monitoring-distributed-systems/)
 - [Prometheus 文档：Histogram 与 Summary](https://prometheus.io/docs/practices/histograms/)
 - [Kubernetes 文档：CronJob 状态字段（`lastScheduleTime` / `lastSuccessfulTime`）](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/cron-job-v1/)
-- [指标先行与口径](../../Tools/ObservabilityDriven/MetricsFirst/index.md)：标签基数与口径定义
-- [监控告警](../../Ops/Monitoring/index.md)：告警通道与分级
+- [指标先行与口径](../../../Tools/ObservabilityDriven/MetricsFirst/index.md)：标签基数与口径定义
+- [监控告警](../../../Ops/Monitoring/index.md)：告警通道与分级

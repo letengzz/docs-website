@@ -13,7 +13,6 @@
 
 ![蒙特卡洛：均值法的承诺只有一半概率兑现](../assets/em-estimation.svg)
 
-
 ## 一、故事点：能用于排序，不能用于比较
 
 故事点（story point）是一种**相对复杂度**的刻度，它的价值在于让团队对「这一项比那一项大多少」形成共识。一旦离开这个团队、这个时间窗，它就失去意义：
@@ -276,3 +275,4 @@ grep -rL "n *= *[0-9]" docs/**/forecast-*.md 2>/dev/null | head
 - DORA，《DORA's software delivery performance metrics》中关于预测与改进循环的步骤（Set a baseline → commit → check progress）。
 - Little, J. D. C.，1961（吞吐与周期的关系，是蒙特卡洛预测为什么成立的理论基础）。
 - McKinney, W.，《Python for Data Analysis》中关于 bootstrap 与分位数估计的章节（本页区间算法的来源）。
+- 本仓库相邻专题：[研发效能度量总览](../index.md)（四类指标的分工）与[反指标](../AntiMetrics/index.md)（防止指标被反向优化）

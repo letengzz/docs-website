@@ -185,3 +185,4 @@ select pg_terminate_backend(12345);
 - PostgreSQL 18 Documentation: *Explicit Locking*、`lock_timeout`、`pg_blocking_pids()`
 - PostgreSQL 18 Documentation: *Building Indexes Concurrently* — 失败后留下无效索引的说明
 - Percona Toolkit: `pt-online-schema-change` 文档；GitHub `gh-ost` 文档
+- 本仓库相邻专题：[数据库大版本升级与切换](../../../Ops/DatabaseUpgrade/index.md)（换版本时的 DDL 冻结、锁与回填边界）

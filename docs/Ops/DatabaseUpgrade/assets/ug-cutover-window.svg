@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker></defs>
+<rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+<text x="40" y="50" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">切换窗口实测分解：总停写 0.78 s</text>
+<text x="40" y="76" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">停写从「主库置只读」开始，到「新主第一次写入成功」结束</text>
+<line x1="80" y1="200" x2="900" y2="200" stroke="#94a3b8" stroke-width="2"/>
+<circle cx="80" cy="200" r="7" fill="#0f766e"/>
+<text x="80" y="178" font-size="11.5" fill="#0f766e" font-weight="700" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">停写生效</text>
+<line x1="80" y1="207" x2="80" y2="216" stroke="#0f766e" stroke-width="1.2"/>
+<text x="80" y="238" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">223 ms</text>
+<circle cx="300" cy="200" r="7" fill="#1d4ed8"/>
+<text x="300" y="178" font-size="11.5" fill="#1d4ed8" font-weight="700" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">追平余量</text>
+<line x1="300" y1="207" x2="300" y2="216" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="300" y="238" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">232 ms</text>
+<circle cx="470" cy="200" r="7" fill="#b45309"/>
+<text x="470" y="178" font-size="11.5" fill="#b45309" font-weight="700" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">解除订阅/删槽</text>
+<line x1="470" y1="207" x2="470" y2="216" stroke="#b45309" stroke-width="1.2"/>
+<text x="470" y="238" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">105 ms</text>
+<circle cx="650" cy="200" r="7" fill="#6d28d9"/>
+<text x="650" y="178" font-size="11.5" fill="#6d28d9" font-weight="700" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">修序列</text>
+<line x1="650" y1="207" x2="650" y2="216" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="650" y="238" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">111 ms</text>
+<circle cx="810" cy="200" r="7" fill="#b91c1c"/>
+<text x="810" y="178" font-size="11.5" fill="#b91c1c" font-weight="700" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">首写成功</text>
+<line x1="810" y1="207" x2="810" y2="216" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="810" y="238" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">112 ms</text>
+<rect x="80" y="100" width="820" height="60" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="490.0" y="134.7" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">T0 = 主库置只读（或摘掉全部写流量）；T1 = 新主首写返回 OK</text>
+<rect x="80" y="280" width="380" height="120" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="270.0" y="307.5" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">为什么删槽要单独一步</text>
+<text x="270.0" y="326.0" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="270.0" y="344.5" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">不删槽 = 旧库 WAL 还要保留</text>
+<text x="270.0" y="363.0" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">槽主人已换，旧库永远删不掉日志</text>
+<text x="270.0" y="381.5" font-size="12.5" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">→ 磁盘慢慢写满</text>
+<rect x="500" y="280" width="400" height="120" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="700.0" y="307.5" font-size="12.5" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">为什么修序列不能省</text>
+<text x="700.0" y="326.0" font-size="12.5" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="700.0" y="344.5" font-size="12.5" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">序列是独立对象，不走复制</text>
+<text x="700.0" y="363.0" font-size="12.5" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">目标端 nextval 还是 1</text>
+<text x="700.0" y="381.5" font-size="12.5" font-weight="400" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">→ 第一次写入就撞主键</text>
+<text x="80" y="436" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">点位按时间顺序排布、不按耗时比例；同样 60 万行的库：dump/restore 全程停写 3.6 s，逻辑复制停写 0.78 s。窗口不是一个数，是「哪几段必须停」的选择。</text>
+</svg>

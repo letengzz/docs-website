@@ -227,6 +227,16 @@ docker exec eoh-kafka /opt/kafka/bin/kafka-console-consumer.sh \
 - 下一篇：架构设计：事件流与一致性边界（第 183 天）。
 - 相邻必读：[数据库变更与在线 Schema 演进](../../../../docs/DB/SchemaEvolution/index.md)（第 4 周加字段时的流程）、[分布式事务](../../../../docs/Backend/Microservices/DistributedTransaction/index.md)（为什么不选 Seata）、[Kafka](../../../../docs/Backend/MessageQueue/Kafka/index.md)（KRaft 与分区语义）。
 
+## 与本专题（数据库大版本升级）的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 为什么定 PG 18.6、Kafka 4.2.1、Redis 8.2 | 本页 |
+| 以后从 18 升到 19 要走什么路径 | [数据库大版本升级与切换](../../../../docs/Ops/DatabaseUpgrade/index.md)、[PostgreSQL 17 → 18](../../../../docs/Ops/DatabaseUpgrade/PostgreSQL17To18/index.md) |
+| 升级时 outbox 与序列要怎么处理 | [逻辑复制迁移](../../../../docs/Ops/DatabaseUpgrade/LogicalMigration/index.md) |
+
+**这一页特有的坑：把「PG 18.6」写进基线，就要同时写下它的升级出口。** 本项目的 outbox 依赖「序列不随逻辑复制同步」这一事实来设计修序列步骤；而 PG 19 起 sequence 值会被复制，届时这一步会从「必须手工修」变成「仍要核对但一般自动同步」。**基线文档里不写升级出口，两年后接手的人会以为那套手工步骤永远成立。**
+
 ## 参考资料
 
 - [Spring Boot 4.1.0 发布公告](https://spring.io/blog/2026/06/10/spring-boot-4-1-0-available-now)

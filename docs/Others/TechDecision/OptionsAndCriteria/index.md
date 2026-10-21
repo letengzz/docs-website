@@ -171,7 +171,7 @@ for c in crit:
 | --- | --- |
 | 判据写完之后，论证怎么写才能被反驳 | [取舍表达](../TradeoffExpression/index.md) |
 | 谁来定判据、谁有权改判据 | [决策权与分级](../DecisionRights/index.md) |
-| 选项调研本身要跑多少实验、怎么记 | [研发效能度量](../../Tools/EngineeringMetrics/index.md)（度量口径）与[测试数据与仿真环境](../../Tools/TestDataSimulation/index.md)（造数） |
+| 选项调研本身要跑多少实验、怎么记 | [研发效能度量](../../../Tools/EngineeringMetrics/index.md)（度量口径）与[测试数据与仿真环境](../../../Tools/TestDataSimulation/index.md)（造数） |
 
 ## 参考资料
 

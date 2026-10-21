@@ -109,3 +109,4 @@ update orders set channel = 'web' where id > ? and id <= ? and channel is null;
 - PostgreSQL 18 Documentation: *Routine Vacuuming*、*Explicit Locking*、*Building Indexes Concurrently*
 - Oracle Lifetime Support Policy: MySQL Releases
 - 本专题其余页面：每一行分诊都指向具体的方法页
+- 本仓库相邻专题：[数据库大版本升级与切换](../../../Ops/DatabaseUpgrade/index.md)（换版本时的 DDL 冻结、锁与回填边界）

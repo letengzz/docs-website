@@ -108,6 +108,16 @@ SELECT COUNT(*) FROM orders;   -- 500 万行全扫
 2. 对照十诫逐项检查生产数据库，列出前三项待办。
 3. 建立慢查询台账，两周后对比响应时间与扫描行数。
 
+## 与「数据库大版本升级」专题的分工
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 某条 SQL 为什么慢、索引怎么选、计划怎么读 | 本页 |
+| 升级后「普遍变慢」怎么分诊 | [数据库大版本升级与切换](../../../../Ops/DatabaseUpgrade/index.md) 与[切换后验证](../../../../Ops/DatabaseUpgrade/Verify/index.md) |
+| 统计信息与 `ANALYZE` 的时机 | [PostgreSQL 17 → 18](../../../../Ops/DatabaseUpgrade/PostgreSQL17To18/index.md) |
+
+**这一页特有的坑：升级后的「变慢」先查 `last_analyze`，不要先改 SQL。** 迁移或恢复之后统计信息是空的，优化器只能按默认选择率估算，此时任何「加索引」「改写法」都是在错误的前提上优化。判据：`select relname, last_analyze, last_autoanalyze from pg_stat_user_tables` 为空，就先 `vacuumdb --analyze-in-stages` 再复测。
+
 ## 参考资料
 
 - MySQL 优化官方文档：https://dev.mysql.com/doc/refman/8.4/en/optimization.html

@@ -304,3 +304,6 @@ aws s3api list-multipart-uploads --bucket "$BUCKET" --prefix "$KEY" | jq '.Uploa
 ::: danger 本页特有的坑：`partSize` 一改，已传分片全部作废
 分片大小只能在 `CreateMultipartUpload` 时定一次（除最后一片）。把它做成配置项、又在发布时随手调大，会让**正在续传的客户端**拿旧 `partSize` 上传的分片与新尺寸混在一起 `complete`——对象能合出来，但内容是错位的。
 所以这个值属于「接口契约」，不属于「可调参数」：改它等于新开一个上传接口版本。
+
+:::
+

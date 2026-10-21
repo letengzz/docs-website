@@ -175,15 +175,15 @@ grep -q '^# DC-00' DC-0012.md && grep -q '复审日' DC-0012.md && grep -q '## �
 
 | 你真正的问题 | 该看哪里 |
 | --- | --- |
-| 一份架构文档要包含哪几张图、ADR 四段式怎么写 | [项目交付 · 架构设计](../../Others/ProjectDelivery/Architecture/index.md) |
+| 一份架构文档要包含哪几张图、ADR 四段式怎么写 | [项目交付 · 架构设计](../../ProjectDelivery/Architecture/index.md) |
 | 一个决策该谁定、怎么开会、怎么被推翻 | 本专题（从[决策权](../DecisionRights/index.md)开始） |
-| 定下来之后怎么安全地改到线上 | [变更管理与发布工程](../../Ops/ChangeManagement/index.md) |
-| 契约改动算不算破坏性变更 | [API 版本演进与兼容](../../Backend/ContractEvolution/index.md) |
-| 决策周期、重开率这些指标怎么算 | [研发效能度量](../../Tools/EngineeringMetrics/index.md) |
+| 定下来之后怎么安全地改到线上 | [变更管理与发布工程](../../../Ops/ChangeManagement/index.md) |
+| 契约改动算不算破坏性变更 | [API 版本演进与兼容](../../../Backend/ContractEvolution/index.md) |
+| 决策周期、重开率这些指标怎么算 | [研发效能度量](../../../Tools/EngineeringMetrics/index.md) |
 
 ## 参考资料
 
 - [Documenting Architecture Decisions（Michael Nygard, 2011）](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)
 - [Architecture Decision Records 官网](https://adr.github.io/)
 - [RFC 2026：The Internet Standards Process](https://www.rfc-editor.org/rfc/rfc2026)
-- [项目交付 · 架构设计](../../Others/ProjectDelivery/Architecture/index.md)
+- [项目交付 · 架构设计](../../ProjectDelivery/Architecture/index.md)

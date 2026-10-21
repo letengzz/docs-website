@@ -3,7 +3,7 @@ import { Auth, ContractEvolution, DDD, DistributedScheduling, EmailDeliverabilit
 
 import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_EdgeInference, AI_EvalEngineering, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
-import { Ansible, BackupDR, CapacityCost, CertificateLifecycle, ChangeManagement, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
+import { Ansible, BackupDR, DatabaseUpgrade, CapacityCost, CertificateLifecycle, ChangeManagement, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
 import { BigData, CDC, ClickHouse, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, Lakehouse, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, SchemaEvolution, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation, EngineeringMetrics, BrowserExtension } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
@@ -126,7 +126,7 @@ export const sidebar = {
     {
       text: "运维",
       collapsed: true,
-      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...CloudArchitecture, ...EdgeCDN, ...PerformanceEngineering, ...CapacityCost, ...MultiActive, ...Monitoring, ...LogSystem, ...Observability, ...BackupDR, ...ChaosEngineering, ...ChangeManagement, ...CertificateLifecycle, ...IncidentResponse, ...JumpServer, ...OpsOthers],
+      items: [...VM, ...Linux, ...Ansible, ...Terraform, ...SecurityHardening, ...Nginx, ...Network, ...Docker, ...Kubernetes, ...ContainerOrchestration, ...CloudNative, ...CloudArchitecture, ...EdgeCDN, ...PerformanceEngineering, ...CapacityCost, ...MultiActive, ...Monitoring, ...LogSystem, ...Observability, ...BackupDR, ...ChaosEngineering, ...ChangeManagement, ...CertificateLifecycle, ...DatabaseUpgrade, ...IncidentResponse, ...JumpServer, ...OpsOthers],
     },
   ],
   "/docs/AI": [
@@ -261,6 +261,7 @@ export const sidebar = {
   "/docs/Ops/Observability": Observability,
   "/docs/Ops/BackupDR": BackupDR,
   "/docs/Ops/ChaosEngineering": ChaosEngineering,
+  "/docs/Ops/DatabaseUpgrade": DatabaseUpgrade,
   "/docs/Ops/ChangeManagement": ChangeManagement,
   "/docs/Ops/CertificateLifecycle": CertificateLifecycle,
   "/docs/Ops/IncidentResponse": IncidentResponse,

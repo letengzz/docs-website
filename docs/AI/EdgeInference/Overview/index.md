@@ -177,5 +177,5 @@ EIO-B：同一台设备，记录
 - [WebGPU 规范](https://www.w3.org/TR/webgpu/)——浏览器 GPU 的能力边界与限制
 - [Apple · Core ML](https://developer.apple.com/documentation/coreml)——计算单元（CPU/GPU/Neural Engine）选择
 - [llama.cpp · quantize](https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md)——GGUF 量化类型的实际构成
-- 本站 [本地模型部署](/docs/AI/LocalModel/Overview/index.md) · [量化与模型格式](/docs/AI/LocalModel/Quantization/index.md) · [移动 H5](/docs/Frontend/MobileH5/Overview/index.md)
+- 本站 [本地模型部署](/docs/AI/LocalModel/index.md) · [量化与模型格式](/docs/AI/LocalModel/Quantization/index.md) · [移动 H5](/docs/Frontend/MobileH5/Overview/index.md)
 - 相邻：[内存与延迟预算](../Budget/index.md) · [运行时与算子委派](../Runtime/index.md) · [常见问题](../FAQ/index.md)

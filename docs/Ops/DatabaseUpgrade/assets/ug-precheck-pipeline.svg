@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker></defs>
+<rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+<text x="40" y="50" font-size="24" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">升级前检查：六道闸门，任何一道红就不能进窗口</text>
+<text x="40" y="76" font-size="13" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">每道闸门都给一条可执行的命令，不给「请评估」</text>
+<rect x="40" y="106" width="250" height="46" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="165.0" y="133.7" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 版本可达性</text>
+<rect x="310" y="106" width="330" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="475.0" y="133.3" font-size="12" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">源 → 目标的路径存不存在</text>
+<line x1="290" y1="129" x2="308" y2="129" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="40" y="164" width="250" height="46" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="165.0" y="191.7" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 对象清点</text>
+<rect x="310" y="164" width="330" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="475.0" y="191.3" font-size="12" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">表/索引/序列/大对象/扩展</text>
+<line x1="290" y1="187" x2="308" y2="187" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="40" y="222" width="250" height="46" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="165.0" y="249.7" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 兼容性扫描</text>
+<rect x="310" y="222" width="330" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="475.0" y="249.3" font-size="12" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">checker / pg_upgrade --check</text>
+<line x1="290" y1="245" x2="308" y2="245" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="40" y="280" width="250" height="46" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="165.0" y="307.7" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 参数与认证</text>
+<rect x="310" y="280" width="330" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="475.0" y="307.3" font-size="12" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">被移除的变量、认证插件</text>
+<line x1="290" y1="303" x2="308" y2="303" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="40" y="338" width="250" height="46" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="165.0" y="365.7" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑤ 容量与时间</text>
+<rect x="310" y="338" width="330" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="475.0" y="365.3" font-size="12" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">磁盘 ×2、窗口估算</text>
+<line x1="290" y1="361" x2="308" y2="361" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="40" y="396" width="250" height="46" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="165.0" y="423.7" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑥ 回退可行性</text>
+<rect x="310" y="396" width="330" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="475.0" y="423.3" font-size="12" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">备份 + 恢复演练过一次</text>
+<line x1="290" y1="419" x2="308" y2="419" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="690" y="106" width="230" height="240" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="805.0" y="165.8" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">红灯处置</text>
+<text x="805.0" y="184.2" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="805.0" y="202.8" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">不改目标版本</text>
+<text x="805.0" y="221.2" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">不加白名单</text>
+<text x="805.0" y="239.8" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="805.0" y="258.2" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">先把红项变成</text>
+<text x="805.0" y="276.8" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">一条可复现的失败</text>
+<text x="805.0" y="295.2" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">再动手</text>
+<line x1="640" y1="180" x2="688" y2="180" stroke="#b91c1c" stroke-width="2" marker-end="url(#ah)"/>
+<text x="40" y="464" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">实测：20 万订单的库 dump 1.35 s + restore 2.23 s，磁盘峰值 ≈ 库体积 ×2 —— 容量这一道最容易被跳过，也最容易在窗口里炸。</text>
+</svg>
