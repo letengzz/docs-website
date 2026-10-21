@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">送达的三个层次：交出、送达、放置</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">三层各有各的失败方式，混在一起看就会得出「邮箱坏了」这种结论</text>
+
+  <rect x="40" y="80" width="680" height="86" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="58" y="104" font-size="10.5" fill="#0F172A" font-weight="bold">① 交出（handoff）</text>
+  <text x="58" y="126" font-size="8.8" fill="#334155">我方 MTA 把信交给对方 MTA，收到 250 才算交出。失败表现为 4xx/5xx、连接超时、TLS 握手失败。</text>
+  <text x="58" y="146" font-size="8.8" fill="#334155">可见性最高：SMTP 应答码原文就写在日志里。但「交出成功」只说明对方收下了责任，不说明它放了行。</text>
+  <text x="690" y="126" text-anchor="end" font-size="8.5" fill="#1E3A8A">判据：250 计数 / 总投递尝试</text>
+
+  <rect x="40" y="178" width="680" height="86" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="58" y="202" font-size="10.5" fill="#0F172A" font-weight="bold">② 送达（delivery）</text>
+  <text x="58" y="224" font-size="8.8" fill="#334155">对方 MDA 把信写进该用户的邮箱（收件箱或垃圾箱都算送达）。失败表现为「静默丢弃」——没有退信，也没有回执。</text>
+  <text x="58" y="244" font-size="8.8" fill="#334155">这是最容易被误判的一层：交出 100% 时，送达率可能只有 80%，差额被过滤掉了，而你收不到任何通知。</text>
+  <text x="690" y="224" text-anchor="end" font-size="8.5" fill="#B91C1C">判据：无法直接测，只能靠种子与投诉反推</text>
+
+  <rect x="40" y="276" width="680" height="86" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="58" y="300" font-size="10.5" fill="#0F172A" font-weight="bold">③ 放置（placement）</text>
+  <text x="58" y="322" font-size="8.8" fill="#334155">写进收件箱、还是垃圾箱、还是「推广/促销」标签页。失败表现为打开率骤降而送达率不变。</text>
+  <text x="58" y="342" font-size="8.8" fill="#334155">放置由声誉与互动共同决定，不是由认证决定：认证只决定「能不能进这个人的门」，放置决定「进了门坐哪」。</text>
+  <text x="690" y="322" text-anchor="end" font-size="8.5" fill="#B91C1C">判据：种子收件箱占比 / 打开率基线比值</text>
+
+  <text x="380" y="392" text-anchor="middle" font-size="9" fill="#64748B">一句话：<tspan fill="#B91C1C" font-weight="bold">交出看日志、送达靠反推、放置看比值</tspan>——三层的观测手段完全不同，所以口径必须分开建</text>
+</svg>

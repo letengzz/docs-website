@@ -169,6 +169,21 @@ kubectl version --short 2>/dev/null | head -2
 #    验收：每条边界都写明「认证/授权/审计」三件事怎么做
 ```
 
+## 与「邮件送达工程」专题的分工（第 179 天补充）
+
+| 问题 | 本页回答 | [邮件送达工程](/docs/Backend/EmailDeliverability/index.md) 回答 |
+| --- | --- | --- |
+| 身份伪造怎么防 | 认证、授权、会话、密钥的通用纪律 | 域名的身份伪造怎么防：SPF / DKIM / DMARC 三件套与**对齐** |
+| 出口流量要不要管控 | 主机与集群基线、网络策略 | 25 端口的出站策略：谁能连、连哪里、被劫持后怎么发现 |
+| 密钥怎么管 | 托管、轮换、最小权限 | DKIM 私钥的**六步轮换顺序**（先发新选择器，再切签名，最后删旧 DNS） |
+| 日志留什么 | 审计日志的字段与保留期 | 发信日志留什么才能算清「进收件箱率」与投诉率 |
+
+::: danger 本页特有的坑：给域名配上 SPF 就以为「不能伪造了」
+SPF 只约束 ** envelope 发件人**（`MAIL FROM`），而收件人看到的 `From` 头是另一回事。一个域配了 `v=spf1 -all`，攻击者仍然可以把 `From: ceo@yourdomain.com` 写进信体、从自己的 IP 发出去 —— 因为 SPF 校验的是信封域，不是头部域。真正把两者绑在一起的是 **DMARC 的对齐**（`adkim`/`aspf`），而且必须到 `p=reject` 才有效果；`p=none` 只是「收集报告」，不阻止任何东西。
+
+第二个坑更隐蔽：**子域默认不受保护**。`p=reject` 写在 `_dmarc.example.com` 上，只覆盖 `example.com` 本身，`a.example.com`、`b.example.com` 依然是 `p=none`。要覆盖子域必须显式写 `sp=reject`（子域策略），否则攻击者只要挑一个没人用的子域就能继续伪造。上线前用 `dig TXT _dmarc.<子域>` 逐个确认，不要假设继承。
+:::
+
 ## 八、参考资料
 
 - NIST Cybersecurity Framework（CSF）2.0：<https://www.nist.gov/cyberframework>

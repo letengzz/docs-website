@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" width="780" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="440" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">五个口径的漏斗：分母不同，结论可以完全相反</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">同一批请求 100,000 封：交出 99.2%、送达 97.9%、进箱 95.4%、打开 43.0%、投诉 0.302%（每级分母是上一级）</text>
+
+  <rect x="60" y="76" width="660" height="34" rx="5" fill="#EEF2FF" stroke="#6366F1"/>
+  <text x="76" y="98" font-size="9" fill="#0F172A" font-weight="bold">① 请求 100,000</text>
+  <text x="704" y="98" text-anchor="end" font-size="8.5" fill="#334155">进入发信服务的调用次数（含被业务拦掉的）</text>
+
+  <rect x="60" y="118" width="640" height="34" rx="5" fill="#F5F3FF" stroke="#8B5CF6"/>
+  <text x="76" y="140" font-size="9" fill="#0F172A" font-weight="bold">② 交出 99,200（99.2%）</text>
+  <text x="688" y="140" text-anchor="end" font-size="8.5" fill="#334155">收到 250 的次数</text>
+
+  <rect x="60" y="160" width="600" height="34" rx="5" fill="#ECFEFF" stroke="#0891B2"/>
+  <text x="76" y="182" font-size="9" fill="#0F172A" font-weight="bold">③ 送达 97,100（97.9%）</text>
+  <text x="648" y="182" text-anchor="end" font-size="8.5" fill="#334155">扣掉硬退与静默丢弃（靠种子与投诉反推）</text>
+
+  <rect x="60" y="202" width="540" height="34" rx="5" fill="#F0FDF4" stroke="#15803D"/>
+  <text x="76" y="224" font-size="9" fill="#0F172A" font-weight="bold">④ 进收件箱 92,600（95.4%）</text>
+  <text x="588" y="224" text-anchor="end" font-size="8.5" fill="#334155">放置：种子收件箱占比 × 送达量</text>
+
+  <rect x="60" y="244" width="420" height="34" rx="5" fill="#FFFBEB" stroke="#CA8A04"/>
+  <text x="76" y="266" font-size="9" fill="#0F172A" font-weight="bold">⑤ 打开 39,800（43.0%，分母是进箱）</text>
+  <text x="468" y="266" text-anchor="end" font-size="8.5" fill="#334155">用「请求」当分母只有 39.8%</text>
+
+  <rect x="60" y="286" width="120" height="34" rx="5" fill="#FEF2F2" stroke="#DC2626"/>
+  <text x="120" y="308" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">投诉 280（0.302%）</text>
+  <text x="192" y="308" font-size="8.5" fill="#B91C1C">分母取「进收件箱」已越过 0.3%；取「请求」只有 0.280%——同一批数据两个结论</text>
+
+  <rect x="60" y="336" width="330" height="80" rx="7" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="76" y="358" font-size="9.5" fill="#0F172A" font-weight="bold">四张表</text>
+  <text x="76" y="378" font-size="8.3" fill="#334155">message（一封一行，含幂等键与模板版本）</text>
+  <text x="76" y="394" font-size="8.3" fill="#334155">attempt（每次投递一行，含 SMTP 码与耗时）</text>
+  <text x="76" y="410" font-size="8.3" fill="#334155">event（退信/投诉/退订/打开，含来源）</text>
+
+  <rect x="400" y="336" width="320" height="80" rx="7" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="416" y="358" font-size="9.5" fill="#0F172A" font-weight="bold">三个连接键</text>
+  <text x="416" y="378" font-size="8.3" fill="#334155">message_id（自建，不用 Message-ID 头）</text>
+  <text x="416" y="394" font-size="8.3" fill="#334155">attempt_id（退信回执里回填的 ID）</text>
+  <text x="416" y="410" font-size="8.3" fill="#334155">(recipient, message_type)（退订粒度）</text>
+</svg>

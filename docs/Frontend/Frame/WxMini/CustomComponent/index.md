@@ -924,7 +924,7 @@ Page({
 
 **复选框组件案例**：
 
-> components/custom-checkbox/custom-checkbox.js`
+> `components/custom-checkbox/custom-checkbox.js`
 >
 
 ```js

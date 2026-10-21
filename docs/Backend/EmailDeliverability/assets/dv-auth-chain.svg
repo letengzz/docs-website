@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" width="780" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="440" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">三件套各管一段，DMARC 管的是「对齐」</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">SPF 验发信 IP、DKIM 验内容完整性、DMARC 把结果绑到用户看得见的 From 域上</text>
+
+  <rect x="30" y="78" width="220" height="120" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="140" y="102" text-anchor="middle" font-size="11" fill="#0F172A" font-weight="bold">SPF（RFC 7208）</text>
+  <text x="140" y="124" text-anchor="middle" font-size="8.5" fill="#334155">查 v=spf1 记录，比对发信 IP</text>
+  <text x="140" y="142" text-anchor="middle" font-size="8.5" fill="#334155">护的是「信封域」（Return-Path）</text>
+  <text x="140" y="160" text-anchor="middle" font-size="8.5" fill="#334155">10 次 DNS 查询、2 次 void 限额</text>
+  <text x="140" y="180" text-anchor="middle" font-size="8.5" fill="#B91C1C">转发即失效（IP 变了）</text>
+
+  <rect x="280" y="78" width="220" height="120" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="390" y="102" text-anchor="middle" font-size="11" fill="#0F172A" font-weight="bold">DKIM（RFC 6376）</text>
+  <text x="390" y="124" text-anchor="middle" font-size="8.5" fill="#334155">对头部 + 正文做规范化后签名</text>
+  <text x="390" y="142" text-anchor="middle" font-size="8.5" fill="#334155">护的是「内容未被改」与「签名域」</text>
+  <text x="390" y="160" text-anchor="middle" font-size="8.5" fill="#334155">可跨转发存活（relaxed 容错）</text>
+  <text x="390" y="180" text-anchor="middle" font-size="8.5" fill="#B91C1C">改一个空格就验不过</text>
+
+  <rect x="530" y="78" width="220" height="120" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.4"/>
+  <text x="640" y="102" text-anchor="middle" font-size="11" fill="#0F172A" font-weight="bold">DMARC（RFC 9989）</text>
+  <text x="640" y="124" text-anchor="middle" font-size="8.5" fill="#334155">读 _dmarc 记录，要求「对齐」</text>
+  <text x="640" y="142" text-anchor="middle" font-size="8.5" fill="#334155">护的是用户看得见的 From 域</text>
+  <text x="640" y="160" text-anchor="middle" font-size="8.5" fill="#334155">p=none/quarantine/reject + rua</text>
+  <text x="640" y="180" text-anchor="middle" font-size="8.5" fill="#B91C1C">SPF 过但域不对齐 = 失败</text>
+
+  <rect x="30" y="222" width="720" height="96" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="46" y="246" font-size="10" fill="#0F172A" font-weight="bold">对齐（alignment）是唯一一件三件套必须一起做的事</text>
+  <text x="46" y="268" font-size="8.8" fill="#334155">relaxed（默认）：From 域与认证域只要「组织域」相同即可 —— mail.board.example.com 与 board.example.com 视为对齐。</text>
+  <text x="46" y="286" font-size="8.8" fill="#334155">strict：必须逐字相同，子域与父域互不认账。adkim=s / aspf=s 只在「子域被外包」这类场景才值得开。</text>
+  <text x="46" y="306" font-size="8.8" fill="#B91C1C">最常见的坑：用 ESP 的域签 DKIM、却把 From 留成自己的域 —— 签名通过、对齐失败，DMARC 仍判失败。</text>
+
+  <text x="390" y="352" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">验证顺序不是并列的三件事：先看 SPF 与 DKIM 的「结果」，再看这两个结果是否落在 From 域上</text>
+  <rect x="30" y="368" width="720" height="50" rx="7" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="390" y="390" text-anchor="middle" font-size="8.8" fill="#334155">pass + aligned → DMARC pass　|　pass + 不对齐 → DMARC fail（但认证本身是好的）　|　两者都 fail → 直接按 p= 处置</text>
+  <text x="390" y="408" text-anchor="middle" font-size="8.8" fill="#64748B">所以排障第一步不是「加点什么」，而是问「哪一段的结果是 pass、对齐是不是 pass」</text>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">六类症状的分诊路径：先分层，再看码，最后看身份</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">顺序错了会绕很远：先查 DKIM 的人，往往问题在 DNS 预算上</text>
+
+  <rect x="300" y="74" width="160" height="34" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="380" y="96" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">信没到 / 进了垃圾箱</text>
+
+  <line x1="380" y1="108" x2="380" y2="124" stroke="#94A3B8"/>
+  <line x1="100" y1="124" x2="660" y2="124" stroke="#94A3B8"/>
+  <line x1="100" y1="124" x2="100" y2="140" stroke="#94A3B8"/>
+  <line x1="240" y1="124" x2="240" y2="140" stroke="#94A3B8"/>
+  <line x1="380" y1="124" x2="380" y2="140" stroke="#94A3B8"/>
+  <line x1="520" y1="124" x2="520" y2="140" stroke="#94A3B8"/>
+  <line x1="660" y1="124" x2="660" y2="140" stroke="#94A3B8"/>
+
+  <rect x="26" y="140" width="148" height="96" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="100" y="160" text-anchor="middle" font-size="8.8" fill="#0F172A" font-weight="bold">① 连接层</text>
+  <text x="100" y="180" text-anchor="middle" font-size="7.8" fill="#334155">超时 / 拒连 / TLS 失败</text>
+  <text x="100" y="196" text-anchor="middle" font-size="7.8" fill="#334155">查 DNS、PTR、防火墙</text>
+  <text x="100" y="212" text-anchor="middle" font-size="7.8" fill="#B91C1C">无回执，只有我方日志</text>
+
+  <rect x="166" y="140" width="148" height="96" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="240" y="160" text-anchor="middle" font-size="8.8" fill="#0F172A" font-weight="bold">② 命令层</text>
+  <text x="240" y="180" text-anchor="middle" font-size="7.8" fill="#334155">55x / 42x 应答码</text>
+  <text x="240" y="196" text-anchor="middle" font-size="7.8" fill="#334155">读原文，别只看数字</text>
+  <text x="240" y="212" text-anchor="middle" font-size="7.8" fill="#B91C1C">5.7.x 多为身份问题</text>
+
+  <rect x="306" y="140" width="148" height="96" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="380" y="160" text-anchor="middle" font-size="8.8" fill="#0F172A" font-weight="bold">③ 身份层</text>
+  <text x="380" y="180" text-anchor="middle" font-size="7.8" fill="#334155">SPF/DKIM/DMARC 结果</text>
+  <text x="380" y="196" text-anchor="middle" font-size="7.8" fill="#334155">看 Authentication-Results</text>
+  <text x="380" y="212" text-anchor="middle" font-size="7.8" fill="#B91C1C">pass 也要看对齐</text>
+
+  <rect x="446" y="140" width="148" height="96" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="520" y="160" text-anchor="middle" font-size="8.8" fill="#0F172A" font-weight="bold">④ 内容层</text>
+  <text x="520" y="180" text-anchor="middle" font-size="7.8" fill="#334155">哈希黑名单 / 短链</text>
+  <text x="520" y="196" text-anchor="middle" font-size="7.8" fill="#334155">图片过大、纯图无文字</text>
+  <text x="520" y="212" text-anchor="middle" font-size="7.8" fill="#B91C1C">换模板能自证</text>
+
+  <rect x="586" y="140" width="148" height="96" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="660" y="160" text-anchor="middle" font-size="8.8" fill="#0F172A" font-weight="bold">⑤ 声誉层</text>
+  <text x="660" y="180" text-anchor="middle" font-size="7.8" fill="#334155">投诉率、黑名单、预热</text>
+  <text x="660" y="196" text-anchor="middle" font-size="7.8" fill="#334155">同 IP 其他租户的行为</text>
+  <text x="660" y="212" text-anchor="middle" font-size="7.8" fill="#B91C1C">最难改，要按周看</text>
+
+  <rect x="26" y="252" width="708" height="62" rx="7" fill="#FEF2F2" stroke="#DC2626"/>
+  <text x="42" y="274" font-size="9.5" fill="#0F172A" font-weight="bold">三条最常被误判的症状</text>
+  <text x="42" y="294" font-size="8.3" fill="#334155">「昨天还好，今天全进了垃圾箱」→ 先看投诉率与黑名单，再看内容；内容没变过的东西不会自己变坏。</text>
+  <text x="42" y="310" font-size="8.3" fill="#334155">「只有某个客户收不到」→ 先看该域的 MX 与网关策略（很多企业网关只认白名单域），不是你的 DKIM。</text>
+
+  <rect x="26" y="326" width="708" height="52" rx="7" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="42" y="348" font-size="8.5" fill="#334155">「同一封信，Gmail 进了收件箱、Outlook 进了垃圾箱」→ 这不是矛盾，是两家阈值不同（DKIM 密钥长度、投诉分母、内容规则都不一样）。</text>
+  <text x="42" y="366" font-size="8.5" fill="#B91C1C">任何「换个发信通道就好了」的结论，都要先证明原通道的身份层是失败的——否则只是把问题藏起来。</text>
+
+  <text x="380" y="404" text-anchor="middle" font-size="9" fill="#64748B">分诊的产出不是「原因」，而是<tspan fill="#1E3A8A" font-weight="bold">「下一步要观测哪个数」</tspan>——没有数的结论，明天还会再问一遍</text>
+  <text x="380" y="426" text-anchor="middle" font-size="9" fill="#64748B">十二问与上线自查清单见 <tspan font-weight="bold">FAQ</tspan> 页；判据 DVQ-A~DVQ-H</text>
+</svg>

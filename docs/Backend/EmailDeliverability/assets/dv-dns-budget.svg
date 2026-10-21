@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">SPF 的 10 次查询是共享预算，不是每行 10 次</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">每接一家 SaaS 就吃掉一格，吃到第 11 格时整条记录 permerror——所有信一起坏</text>
+
+  <text x="40" y="86" font-size="9" fill="#334155">预算格（RFC 7208 §4.6.4，上限 10 次 DNS 查询；§4.6.4 另有 void lookup 上限 2 次）</text>
+  <g>
+    <rect x="40" y="96" width="64" height="34" rx="5" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="72" y="118" text-anchor="middle" font-size="8.5" fill="#334155">a</text>
+    <rect x="108" y="96" width="64" height="34" rx="5" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="140" y="118" text-anchor="middle" font-size="8.5" fill="#334155">mx</text>
+    <rect x="176" y="96" width="64" height="34" rx="5" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="208" y="118" text-anchor="middle" font-size="8.5" fill="#334155">include 1</text>
+    <rect x="244" y="96" width="64" height="34" rx="5" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="276" y="118" text-anchor="middle" font-size="8.5" fill="#334155">include 2</text>
+    <rect x="312" y="96" width="64" height="34" rx="5" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="344" y="118" text-anchor="middle" font-size="8.5" fill="#334155">include 3</text>
+    <rect x="380" y="96" width="64" height="34" rx="5" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="412" y="118" text-anchor="middle" font-size="8.5" fill="#334155">4</text>
+    <rect x="448" y="96" width="64" height="34" rx="5" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="480" y="118" text-anchor="middle" font-size="8.5" fill="#334155">5</text>
+    <rect x="516" y="96" width="64" height="34" rx="5" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="548" y="118" text-anchor="middle" font-size="8.5" fill="#334155">6</text>
+    <rect x="584" y="96" width="64" height="34" rx="5" fill="#FEF2F2" stroke="#DC2626"/>
+    <text x="616" y="118" text-anchor="middle" font-size="8.5" fill="#B91C1C">第 11 格</text>
+    <rect x="652" y="96" width="68" height="34" rx="5" fill="#FEF2F2" stroke="#DC2626"/>
+    <text x="686" y="118" text-anchor="middle" font-size="8.5" fill="#B91C1C">permerror</text>
+  </g>
+  <text x="40" y="152" font-size="8.5" fill="#B91C1C">↑ 第 11 次查询触发 permerror：即使最终命中的那条 ip4 完全正确，SPF 也判失败</text>
+
+  <rect x="40" y="170" width="680" height="80" rx="7" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="56" y="192" font-size="9.5" fill="#0F172A" font-weight="bold">本机实测（合成区文件、逐条计数）</text>
+  <text x="56" y="212" font-size="8.6" fill="#334155">include 链 3 段 → 4 次查询 pass；8 段 → 9 次 pass；9 段 → 10 次 pass（刚好用满）；10 段 → 11 次 <tspan fill="#B91C1C">permerror</tspan></text>
+  <text x="56" y="232" font-size="8.6" fill="#334155">「主域 + 三家 SaaS」的常见形态（3 家各再套 2~3 层）实测正好 10 次查询 → <tspan fill="#B91C1C">余量为 0，再接第四家必坏</tspan></text>
+
+  <rect x="40" y="264" width="330" height="96" rx="7" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="56" y="286" font-size="9.5" fill="#0F172A" font-weight="bold">记录形状的四条硬规矩</text>
+  <text x="56" y="306" font-size="8.4" fill="#334155">① 一个域只能有一条 v=spf1 记录（两条 = permerror）</text>
+  <text x="56" y="324" font-size="8.4" fill="#334155">② 总长超 255 字符要拆成多段字符串，不能拆成多条记录</text>
+  <text x="56" y="342" font-size="8.4" fill="#334155">③ all 之前不要留 unreachable 的机制（浪费预算）</text>
+
+  <rect x="390" y="264" width="330" height="96" rx="7" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="406" y="286" font-size="9.5" fill="#0F172A" font-weight="bold">DKIM 的选择器与密钥</text>
+  <text x="406" y="306" font-size="8.4" fill="#334155">公钥放 &lt;selector&gt;._domainkey.&lt;domain&gt;，选择器要能轮换</text>
+  <text x="406" y="324" font-size="8.4" fill="#334155">RSA 2048 已足够；1024 是多数收件方的下限</text>
+  <text x="406" y="342" font-size="8.4" fill="#334155">Ed25519 签名只有 64 B，是 RSA 的 1/4（本机实测）</text>
+
+  <text x="380" y="388" text-anchor="middle" font-size="9" fill="#64748B">排障顺序：<tspan fill="#1E3A8A" font-weight="bold">先数查询次数，再看内容对不对</tspan>——预算用尽时，内容再正确也没用</text>
+  <text x="380" y="412" text-anchor="middle" font-size="9" fill="#B91C1C">最容易静默失效的一处：SPF 只在「转发」时失效，而转发没有任何日志</text>
+</svg>

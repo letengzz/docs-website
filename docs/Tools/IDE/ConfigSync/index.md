@@ -16,8 +16,8 @@
 
 | 工具 | Windows | macOS | Linux |
 | --- | --- | --- | --- |
-| IntelliJ IDEA | `%APPDATA%\JetBrains\IntelliJIdea2026.2\` | `~/Library/Application Support/JetBrains/IntelliJIdea2026.2/` | `~/.config/JetBrains/IntelliJIdea2026.2/` |
-| VS Code | `%APPDATA%\Code\User\` | `~/Library/Application Support/Code/User/` | `~/.config/Code/User/` |
+| IntelliJ IDEA | `` %APPDATA%\JetBrains\IntelliJIdea2026.2\ `` | `~/Library/Application Support/JetBrains/IntelliJIdea2026.2/` | `~/.config/JetBrains/IntelliJIdea2026.2/` |
+| VS Code | `` %APPDATA%\Code\User\ `` | `~/Library/Application Support/Code/User/` | `~/.config/Code/User/` |
 
 ::: warning 路径里的版本号是关键
 IDEA 配置目录名带大版本号，**升级大版本等于换了目录**，旧配置不会被自动继承（首次启动会提示导入）。VS Code 的 `Code` 目录不带版本号，升级无此问题。

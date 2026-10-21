@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="400" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">收信侧：四段链路，三段都可能改写你看到的东西</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">MX 决定谁收、网关决定放不放行、MDA 决定投到哪个文件夹、客户端决定怎么串成会话</text>
+
+  <rect x="24" y="80" width="168" height="78" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="108" y="102" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">① MX 解析</text>
+  <text x="108" y="122" text-anchor="middle" font-size="8.2" fill="#334155">MX 优先级小的先试</text>
+  <text x="108" y="138" text-anchor="middle" font-size="8.2" fill="#334155">无 MX 时回落 A 记录（隐式）</text>
+  <text x="108" y="152" text-anchor="middle" font-size="8.2" fill="#B91C1C">NULL MX（0 .）表示不收信</text>
+
+  <rect x="204" y="80" width="168" height="78" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="288" y="102" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">② 网关过滤</text>
+  <text x="288" y="122" text-anchor="middle" font-size="8.2" fill="#334155">SPF/DKIM/DMARC 判定</text>
+  <text x="288" y="138" text-anchor="middle" font-size="8.2" fill="#334155">写入 Authentication-Results</text>
+  <text x="288" y="152" text-anchor="middle" font-size="8.2" fill="#B91C1C">在 Received 之上加一跳</text>
+
+  <rect x="384" y="80" width="168" height="78" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="468" y="102" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">③ MDA 投递</text>
+  <text x="468" y="122" text-anchor="middle" font-size="8.2" fill="#334155">写 mailbox / 打标签</text>
+  <text x="468" y="138" text-anchor="middle" font-size="8.2" fill="#334155">配额超限 → 4xx 或丢弃</text>
+  <text x="468" y="152" text-anchor="middle" font-size="8.2" fill="#B91C1C">收件箱 ≠ 已送达</text>
+
+  <rect x="564" y="80" width="192" height="78" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="660" y="102" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">④ 客户端会话</text>
+  <text x="660" y="122" text-anchor="middle" font-size="8.2" fill="#334155">按 References / In-Reply-To 串</text>
+  <text x="660" y="138" text-anchor="middle" font-size="8.2" fill="#334155">缺失时退化为按主题串</text>
+  <text x="660" y="152" text-anchor="middle" font-size="8.2" fill="#B91C1C">主题加了 [Board] 就断线</text>
+
+  <defs><marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/></marker></defs>
+  <line x1="192" y1="119" x2="202" y2="119" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#a2)"/>
+  <line x1="372" y1="119" x2="382" y2="119" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#a2)"/>
+  <line x1="552" y1="119" x2="562" y2="119" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#a2)"/>
+
+  <rect x="24" y="180" width="360" height="92" rx="7" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="40" y="202" font-size="9.5" fill="#0F172A" font-weight="bold">本机实测：Received 链的逐跳延迟</text>
+  <text x="40" y="222" font-size="8.3" fill="#334155">app-7 09:59:58 → mx3 10:00:04（+6 s）→ mx.google 10:00:06（+2 s）</text>
+  <text x="40" y="240" font-size="8.3" fill="#334155">最上面那条 Received 是最后一跳，倒序读才是投递方向。</text>
+  <text x="40" y="258" font-size="8.3" fill="#B91C1C">时钟不同步时会出现负延迟——别把它当成「重放」，先对时。</text>
+
+  <rect x="396" y="180" width="360" height="92" rx="7" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="412" y="202" font-size="9.5" fill="#0F172A" font-weight="bold">两个域收信时必须都验</text>
+  <text x="412" y="222" font-size="8.3" fill="#334155">HELO 名与 MAIL FROM 域：SPF 验的是后者，但伪造常发生在前者。</text>
+  <text x="412" y="240" font-size="8.3" fill="#334155">From 头完全不受 SPF 保护——这正是 DMARC 存在的理由。</text>
+  <text x="412" y="258" font-size="8.3" fill="#B91C1C">只信 Authentication-Results 里「自己网关写的那一条」。</text>
+
+  <text x="390" y="300" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">收信侧最重要的一条判据：网关必须把判定结果写进头部，应用层不得自己重新解释</text>
+  <rect x="24" y="316" width="732" height="62" rx="7" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="390" y="338" text-anchor="middle" font-size="8.4" fill="#334155">Authentication-Results: mx.board.example.com; spf=pass smtp.mailfrom=bounce.example.net; dkim=pass header.d=board.example.com; dmarc=pass header.from=board.example.com</text>
+  <text x="390" y="360" text-anchor="middle" font-size="8.4" fill="#64748B">应用只读这一行：spf / dkim / dmarc 三个结果 + 两个域，缺一项就当作「未认证」而不是「通过」</text>
+</svg>

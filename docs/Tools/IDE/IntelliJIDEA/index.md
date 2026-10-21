@@ -58,7 +58,7 @@ IDEA 的配置分散在三个目录，排查与迁移时经常要用到。
 
 | 平台 | 配置（Config） | 缓存与日志（System / Cache） | 插件 |
 | --- | --- | --- | --- |
-| Windows | `%APPDATA%\JetBrains\IntelliJIdea2026.2\` | `%LOCALAPPDATA%\JetBrains\IntelliJIdea2026.2\` | 配置目录下的 `plugins\` |
+| Windows | `` %APPDATA%\JetBrains\IntelliJIdea2026.2\ `` | `` %LOCALAPPDATA%\JetBrains\IntelliJIdea2026.2\ `` | 配置目录下的 `` plugins\ `` |
 | macOS | `~/Library/Application Support/JetBrains/IntelliJIdea2026.2/` | `~/Library/Caches/JetBrains/IntelliJIdea2026.2/` | 同上 |
 | Linux | `~/.config/JetBrains/IntelliJIdea2026.2/` | `~/.cache/JetBrains/IntelliJIdea2026.2/` | 同上 |
 

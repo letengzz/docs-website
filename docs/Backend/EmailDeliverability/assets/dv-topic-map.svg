@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="470" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">邮件送达工程：十个落点与一条主线</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">主线：一封信用什么身份出去 → 收件方凭什么信 → 没进收件箱时你怎么知道</text>
+
+  <rect x="24" y="76" width="228" height="104" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="138" y="98" text-anchor="middle" font-size="10.5" fill="#0F172A" font-weight="bold">① 身份与凭据</text>
+  <text x="138" y="118" text-anchor="middle" font-size="8.5" fill="#334155">SPF / DKIM / DMARC 三件套</text>
+  <text x="138" y="134" text-anchor="middle" font-size="8.5" fill="#334155">对齐：信封域 vs 头域</text>
+  <text x="138" y="150" text-anchor="middle" font-size="8.5" fill="#334155">DNS 记录形状与 10 次预算</text>
+  <text x="138" y="168" text-anchor="middle" font-size="8.5" fill="#B91C1C">先查「谁在替我的域签字」</text>
+
+  <rect x="276" y="76" width="228" height="104" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="390" y="98" text-anchor="middle" font-size="10.5" fill="#0F172A" font-weight="bold">② 出厂与投递</text>
+  <text x="390" y="118" text-anchor="middle" font-size="8.5" fill="#334155">MIME 组装、体积与折行</text>
+  <text x="390" y="134" text-anchor="middle" font-size="8.5" fill="#334155">队列、批次与租户公平</text>
+  <text x="390" y="150" text-anchor="middle" font-size="8.5" fill="#334155">软退重试阶梯与硬退终止</text>
+  <text x="390" y="168" text-anchor="middle" font-size="8.5" fill="#B91C1C">重试是把双刃剑</text>
+
+  <rect x="528" y="76" width="228" height="104" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="642" y="98" text-anchor="middle" font-size="10.5" fill="#0F172A" font-weight="bold">③ 声誉与位置</text>
+  <text x="642" y="118" text-anchor="middle" font-size="8.5" fill="#334155">投诉率阈值与预热曲线</text>
+  <text x="642" y="134" text-anchor="middle" font-size="8.5" fill="#334155">共享 IP / 专用 IP 的账</text>
+  <text x="642" y="150" text-anchor="middle" font-size="8.5" fill="#334155">种子测试与放置观测</text>
+  <text x="642" y="168" text-anchor="middle" font-size="8.5" fill="#B91C1C">通过认证 ≠ 进收件箱</text>
+
+  <rect x="24" y="212" width="228" height="104" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="138" y="234" text-anchor="middle" font-size="10.5" fill="#0F172A" font-weight="bold">④ 收信与线程</text>
+  <text x="138" y="254" text-anchor="middle" font-size="8.5" fill="#334155">MX / 网关 / MDA 三段</text>
+  <text x="138" y="270" text-anchor="middle" font-size="8.5" fill="#334155">Message-ID 与 References</text>
+  <text x="138" y="286" text-anchor="middle" font-size="8.5" fill="#334155">入站防伪造：认证结果头</text>
+  <text x="138" y="304" text-anchor="middle" font-size="8.5" fill="#B91C1C">收信侧也要验身份</text>
+
+  <rect x="276" y="212" width="228" height="104" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="390" y="234" text-anchor="middle" font-size="10.5" fill="#0F172A" font-weight="bold">⑤ 观测与分诊</text>
+  <text x="390" y="254" text-anchor="middle" font-size="8.5" fill="#334155">五个口径：交出/送达/放置/打开/投诉</text>
+  <text x="390" y="270" text-anchor="middle" font-size="8.5" fill="#334155">四张表与三个连接键</text>
+  <text x="390" y="286" text-anchor="middle" font-size="8.5" fill="#334155">从 5xx 文本定位根因</text>
+  <text x="390" y="304" text-anchor="middle" font-size="8.5" fill="#B91C1C">「送达率 99%」可能毫无意义</text>
+
+  <rect x="528" y="212" width="228" height="104" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.3"/>
+  <text x="642" y="234" text-anchor="middle" font-size="10.5" fill="#0F172A" font-weight="bold">⑥ 落到一个真实系统</text>
+  <text x="642" y="254" text-anchor="middle" font-size="8.5" fill="#334155">TeamBoard 邀请邮件</text>
+  <text x="642" y="270" text-anchor="middle" font-size="8.5" fill="#334155">S1~S10 验收序列</text>
+  <text x="642" y="286" text-anchor="middle" font-size="8.5" fill="#334155">四条故意失败的演练</text>
+  <text x="642" y="304" text-anchor="middle" font-size="8.5" fill="#334155">可回滚的域名切换</text>
+
+  <rect x="24" y="344" width="732" height="42" rx="7" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="390" y="370" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">读的顺序：Overview → Authentication → DnsAndKeys → SendingPipeline → BounceComplaint → ReputationWarmup → InboundMail → Observability → Practice → FAQ</text>
+  <text x="390" y="412" text-anchor="middle" font-size="9" fill="#64748B">十个落点、十族 80 条判据；每个落点都回答「看什么现象、判成什么、不满足改哪里」</text>
+  <text x="390" y="438" text-anchor="middle" font-size="9" fill="#B91C1C">最容易亏的三处：DNS 预算耗尽、投诉率分母算错、重试把软退放大成封禁</text>
+</svg>

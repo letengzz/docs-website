@@ -2006,7 +2006,7 @@ curl -i -s http://localhost:8080/actuator/health
 </toolchains>
 ```
 
-Windows 下 `jdkHome` 写成 `D:/Java/jdk-25` 这样的正斜杠路径即可（反斜杠需转义为 `\\`）。
+Windows 下 `jdkHome` 写成 `D:/Java/jdk-25` 这样的正斜杠路径即可（反斜杠需转义为 `` \\ ``）。
 
 ### 一次完整的落地流程
 

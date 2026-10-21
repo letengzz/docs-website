@@ -139,7 +139,7 @@ Firefox 的 MV3 用 event page 而不是 service worker，**没有 5 分钟硬�
 | `EXO-A` | 业务逻辑不在 popup / options 页里，页面关闭不中断任何写操作 | 打开 popup 触发一次写 → 立刻点空白处关闭 → 查结果是否落库 |
 | `EXO-B` | 内容脚本里没有直接调用需要扩展权限的 API（`tabs` / `cookies` / `scripting`） | 全文搜索 `chrome.tabs` / `chrome.cookies` / `chrome.scripting`，只在 sw 与扩展页出现 |
 | `EXO-C` | service worker 里没有跨事件依赖的模块级可变状态 | `grep -n "^let \|^var " sw.js` 结果全部是常量或每次重建的缓存 |
-| `EXO-D` | 打包产物中不存在远程脚本引用（编译后 grep `https://` 只出现在数据/配置字段） | 对 `dist/` 做 `grep -nE "import\(['\"]https|new Function|eval\("`，输出为空 |
+| `EXO-D` | 打包产物中不存在远程脚本引用（编译后 grep `https://` 只出现在数据/配置字段） | 对 `dist/` 做 `grep -nE "import\(['\"]https\|new Function\|eval\("`，输出为空 |
 | `EXO-E` | 所有「拦截 / 改头 / 重定向」都通过 DNR 实现，`webRequest` 只用于观察 | `manifest.json` 里有 `declarativeNetRequest`，没有 `webRequestBlocking` |
 | `EXO-F` | 声明的 host 权限是功能所需的最小子集，且每一权限在权限说明里有对应句子 | 权限清单 × 说明段落一一对照，缺一条即不通过 |
 | `EXO-G` | 签名密钥已离线备份，且 CI 用的是同一把（ID 不变） | 打包两次，两次派生出的 32 字符 ID 完全相同 |

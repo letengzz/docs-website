@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 450" width="760" height="450" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="450" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">退信不是「失败」一种，而是六种处置路径</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">分类错一次，代价是两倍：该重试的丢了，不该重试的把自己打成垃圾发送者</text>
+
+  <rect x="290" y="72" width="180" height="36" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="380" y="95" text-anchor="middle" font-size="10" fill="#0F172A" font-weight="bold">投递结果</text>
+
+  <line x1="380" y1="108" x2="380" y2="126" stroke="#94A3B8" stroke-width="1.2"/>
+  <line x1="120" y1="126" x2="640" y2="126" stroke="#94A3B8" stroke-width="1.2"/>
+  <line x1="120" y1="126" x2="120" y2="142" stroke="#94A3B8" stroke-width="1.2"/>
+  <line x1="250" y1="126" x2="250" y2="142" stroke="#94A3B8" stroke-width="1.2"/>
+  <line x1="380" y1="126" x2="380" y2="142" stroke="#94A3B8" stroke-width="1.2"/>
+  <line x1="510" y1="126" x2="510" y2="142" stroke="#94A3B8" stroke-width="1.2"/>
+  <line x1="640" y1="126" x2="640" y2="142" stroke="#94A3B8" stroke-width="1.2"/>
+
+  <rect x="40" y="142" width="160" height="84" rx="6" fill="#F0FDF4" stroke="#15803D" stroke-width="1.2"/>
+  <text x="120" y="162" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">2xx 接受</text>
+  <text x="120" y="182" text-anchor="middle" font-size="8" fill="#334155">250 queued</text>
+  <text x="120" y="198" text-anchor="middle" font-size="8" fill="#334155">标记 delivered_to_mta</text>
+  <text x="120" y="216" text-anchor="middle" font-size="8" fill="#15803D">不代表进收件箱</text>
+
+  <rect x="170" y="142" width="160" height="84" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="250" y="162" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">5xx 永久</text>
+  <text x="250" y="182" text-anchor="middle" font-size="8" fill="#334155">550 用户不存在 / 551</text>
+  <text x="250" y="198" text-anchor="middle" font-size="8" fill="#334155">552 超限 / 553 非法地址</text>
+  <text x="250" y="216" text-anchor="middle" font-size="8" fill="#B91C1C">立即抑制，不再重试</text>
+
+  <rect x="300" y="142" width="160" height="84" rx="6" fill="#FEFCE8" stroke="#CA8A04" stroke-width="1.2"/>
+  <text x="380" y="162" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">4xx 暂时</text>
+  <text x="380" y="182" text-anchor="middle" font-size="8" fill="#334155">450 邮箱忙 / 451 限流</text>
+  <text x="380" y="198" text-anchor="middle" font-size="8" fill="#334155">452 空间不足 / 421 断开</text>
+  <text x="380" y="216" text-anchor="middle" font-size="8" fill="#B45309">按阶梯重试</text>
+
+  <rect x="430" y="142" width="160" height="84" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="510" y="162" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">投诉（ARF）</text>
+  <text x="510" y="182" text-anchor="middle" font-size="8" fill="#334155">用户点了「标记垃圾」</text>
+  <text x="510" y="198" text-anchor="middle" font-size="8" fill="#334155">feedback-type: abuse</text>
+  <text x="510" y="216" text-anchor="middle" font-size="8" fill="#B91C1C">永久退订该类邮件</text>
+
+  <rect x="560" y="142" width="160" height="84" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.2"/>
+  <text x="640" y="162" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">退订 / 静默</text>
+  <text x="640" y="182" text-anchor="middle" font-size="8" fill="#334155">List-Unsubscribe 命中</text>
+  <text x="640" y="198" text-anchor="middle" font-size="8" fill="#334155">网关丢弃（无任何回执）</text>
+  <text x="640" y="216" text-anchor="middle" font-size="8" fill="#1E3A8A">只能靠种子与放置发现</text>
+
+  <rect x="40" y="248" width="680" height="76" rx="7" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="56" y="270" font-size="9.5" fill="#0F172A" font-weight="bold">状态机（一封信最多经过这五态）</text>
+  <text x="56" y="290" font-size="8.4" fill="#334155">queued → sending → accepted（2xx）→ delivered / bounced_hard / bounced_soft → suppressed</text>
+  <text x="56" y="310" font-size="8.4" fill="#B91C1C">硬退与投诉是终态：任何「自动复活」逻辑都会把一份脏名单永久留在库里，并持续给收件方投毒</text>
+
+  <rect x="40" y="336" width="330" height="80" rx="7" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="56" y="358" font-size="9.5" fill="#0F172A" font-weight="bold">软退重试阶梯（本机算例）</text>
+  <text x="56" y="378" font-size="8.3" fill="#334155">300 / 600 / 1200 / 2400 / 4800 / 9600 / 19200 / 38400 秒</text>
+  <text x="56" y="396" font-size="8.3" fill="#334155">累计到第 8 次 21.2 h ≈ 0.89 天；上限 24 h 封顶</text>
+
+  <rect x="390" y="336" width="330" height="80" rx="7" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="406" y="358" font-size="9.5" fill="#0F172A" font-weight="bold">抑制名单归一化（本机）</text>
+  <text x="406" y="378" font-size="8.3" fill="#334155">25,000 条原始 → 归一化后 10,000 条（折叠 15,000）</text>
+  <text x="406" y="396" font-size="8.3" fill="#334155">不归一化时 user7@gmail.com 查不到 User7+tag@Gmail.com</text>
+</svg>

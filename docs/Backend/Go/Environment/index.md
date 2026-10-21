@@ -17,7 +17,7 @@ Go 每半年发布一个大版本，同时维护最近两个大版本的补丁�
 ### 1.2 Windows 安装
 
 1. 打开 [Go 官方下载页](https://go.dev/dl/)，下载对应架构的 `go1.26.6.windows-amd64.msi`。
-2. 双击安装，默认路径 `C:\Program Files\Go\`。
+2. 双击安装，默认路径 `` C:\Program Files\Go\ ``。
 3. 安装程序会自动把 `C:\Program Files\Go\bin` 加入系统 `PATH`。
 
 ```shell

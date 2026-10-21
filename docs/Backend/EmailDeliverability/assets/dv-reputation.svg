@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="430" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">预热不是「慢慢加量」，而是「让投诉数始终小于阈值」</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">同样 0.3% 的投诉率，分母变小时绝对投诉数也变小——预热期的安全量由分母决定</text>
+
+  <line x1="70" y1="300" x2="700" y2="300" stroke="#94A3B8" stroke-width="1.2"/>
+  <line x1="70" y1="90" x2="70" y2="300" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="70" y="318" text-anchor="middle" font-size="8.5" fill="#64748B">第 1 天</text>
+  <text x="228" y="318" text-anchor="middle" font-size="8.5" fill="#64748B">第 7 天</text>
+  <text x="386" y="318" text-anchor="middle" font-size="8.5" fill="#64748B">第 14 天</text>
+  <text x="544" y="318" text-anchor="middle" font-size="8.5" fill="#64748B">第 21 天</text>
+  <text x="700" y="318" text-anchor="middle" font-size="8.5" fill="#64748B">第 28 天</text>
+  <text x="34" y="96" font-size="8.5" fill="#64748B">封数/天</text>
+
+  <polyline points="70,286 122,272 174,246 228,222 280,190 334,164 386,140 440,124 492,110 544,102 596,96 648,92 700,90"
+            fill="none" stroke="#7C3AED" stroke-width="2.2"/>
+  <polyline points="70,290 122,284 174,278 228,272 280,266 334,260 386,256 440,252 492,250 544,248 596,246 648,244 700,242"
+            fill="none" stroke="#0F766E" stroke-width="2.2" stroke-dasharray="5 4"/>
+  <text x="706" y="94" font-size="8.5" fill="#7C3AED">日发信量</text>
+  <text x="706" y="246" font-size="8.5" fill="#0F766E">可承受投诉数</text>
+
+  <rect x="70" y="330" width="630" height="76" rx="7" fill="#F8F3FF" stroke="#A78BFA"/>
+  <text x="86" y="352" font-size="9.5" fill="#0F172A" font-weight="bold">阈值算术（本机算式，非行业统计）</text>
+  <text x="86" y="372" font-size="8.4" fill="#334155">投诉率上限 0.3%：日发 1,000 封时「最多 3 封」——一封投诉就占掉 33% 的预算；日发 10 万封时同样的 0.3% 允许 300 封。</text>
+  <text x="86" y="390" font-size="8.4" fill="#B91C1C">所以预热期真正的约束是「绝对投诉数」：100 封里有 1 封投诉就是 1.0%，远超阈值，且没有统计噪声可辩解。</text>
+
+  <text x="380" y="422" text-anchor="middle" font-size="8.8" fill="#64748B">预热曲线的形状不重要，重要的两条性质：<tspan fill="#1E3A8A" font-weight="bold">单调递增</tspan>、<tspan fill="#1E3A8A" font-weight="bold">每天都能停</tspan>——不能停的曲线不叫预热，叫赌</text>
+</svg>

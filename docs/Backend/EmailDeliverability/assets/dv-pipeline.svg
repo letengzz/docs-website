@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="400" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">一封业务邮件的出厂链路：五段，每段都有可判读的产物</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">模板 → 组装（MIME）→ 入队 → 投递（SMTP）→ 回执（DSN/ARF）</text>
+
+  <rect x="24" y="80" width="136" height="86" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="92" y="104" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">① 模板与变量</text>
+  <text x="92" y="124" text-anchor="middle" font-size="8.2" fill="#334155">渲染后的纯文本 + HTML</text>
+  <text x="92" y="140" text-anchor="middle" font-size="8.2" fill="#334155">主题与预头（preheader）</text>
+  <text x="92" y="156" text-anchor="middle" font-size="8.2" fill="#B91C1C">变量注入 = 内容风险</text>
+
+  <rect x="172" y="80" width="136" height="86" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="240" y="104" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">② MIME 组装</text>
+  <text x="240" y="124" text-anchor="middle" font-size="8.2" fill="#334155">multipart/alternative</text>
+  <text x="240" y="140" text-anchor="middle" font-size="8.2" fill="#334155">编码：QP / base64</text>
+  <text x="240" y="156" text-anchor="middle" font-size="8.2" fill="#B91C1C">折行与 998 字节上限</text>
+
+  <rect x="320" y="80" width="136" height="86" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="388" y="104" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">③ 入队</text>
+  <text x="388" y="124" text-anchor="middle" font-size="8.2" fill="#334155">幂等键 = (biz, biz_id)</text>
+  <text x="388" y="140" text-anchor="middle" font-size="8.2" fill="#334155">批次与租户公平</text>
+  <text x="388" y="156" text-anchor="middle" font-size="8.2" fill="#B91C1C">FIFO 会被大租户堵死</text>
+
+  <rect x="468" y="80" width="136" height="86" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="536" y="104" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">④ SMTP 投递</text>
+  <text x="536" y="124" text-anchor="middle" font-size="8.2" fill="#334155">EHLO / STARTTLS / AUTH</text>
+  <text x="536" y="140" text-anchor="middle" font-size="8.2" fill="#334155">MAIL FROM 是信封域</text>
+  <text x="536" y="156" text-anchor="middle" font-size="8.2" fill="#B91C1C">250 ≠ 进收件箱</text>
+
+  <rect x="616" y="80" width="140" height="86" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.3"/>
+  <text x="686" y="104" text-anchor="middle" font-size="9.5" fill="#0F172A" font-weight="bold">⑤ 回执</text>
+  <text x="686" y="124" text-anchor="middle" font-size="8.2" fill="#334155">DSN（退信）/ ARF（投诉）</text>
+  <text x="686" y="140" text-anchor="middle" font-size="8.2" fill="#334155">FBL 反馈环</text>
+  <text x="686" y="156" text-anchor="middle" font-size="8.2" fill="#B91C1C">异步、可能丢失</text>
+
+  <defs><marker id="a1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/></marker></defs>
+  <line x1="160" y1="123" x2="170" y2="123" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#a1)"/>
+  <line x1="308" y1="123" x2="318" y2="123" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#a1)"/>
+  <line x1="456" y1="123" x2="466" y2="123" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#a1)"/>
+  <line x1="604" y1="123" x2="614" y2="123" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#a1)"/>
+
+  <rect x="24" y="186" width="360" height="88" rx="7" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="40" y="208" font-size="9.5" fill="#0F172A" font-weight="bold">两个域，别混为一谈</text>
+  <text x="40" y="228" font-size="8.3" fill="#334155">信封域（MAIL FROM / Return-Path）：SPF 检查的对象，退信回到这里。</text>
+  <text x="40" y="246" font-size="8.3" fill="#334155">头域（From:）：用户看到的地址，DMARC 对齐的对象。</text>
+  <text x="40" y="264" font-size="8.3" fill="#B91C1C">两者不一致是合法的，但必须「对齐」——否则退信收得到、DMARC 过不了。</text>
+
+  <rect x="396" y="186" width="360" height="88" rx="7" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="412" y="208" font-size="9.5" fill="#0F172A" font-weight="bold">三个不变量</text>
+  <text x="412" y="228" font-size="8.3" fill="#334155">① 同一业务事件只发一封（幂等键，不是去重查询）</text>
+  <text x="412" y="246" font-size="8.3" fill="#334155">② 入队即落库，投递可重放（队列是事实，内存不是）</text>
+  <text x="412" y="264" font-size="8.3" fill="#334155">③ 任何一封信都能回答「谁、什么时候、用哪个身份发的」</text>
+
+  <text x="390" y="304" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">本机实测：1 MiB 附件的一封信 = 1,436,079 B（+37%），头部 8 行 409 B，最长行 78 B</text>
+  <text x="390" y="326" text-anchor="middle" font-size="8.8" fill="#64748B">base64 让附件膨胀 33.3%，再按 76 字符折行加 CRLF 后 36.8%——所以「25 MB 上限」对应的真实附件约 18 MiB</text>
+  <text x="390" y="352" text-anchor="middle" font-size="8.8" fill="#B91C1C">超过上限时多数收件方回 552 或直接 5xx：这是唯一一类「重试永远无用」的失败，必须当作硬退处理</text>
+</svg>

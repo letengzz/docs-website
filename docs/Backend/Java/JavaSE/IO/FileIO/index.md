@@ -244,7 +244,7 @@ public class FileAttributesDemo {
 ## 易错点与最佳实践
 
 ::: danger 常见坑
-1. **路径分隔符硬编码**：Windows 用 `\`、Linux 用 `/`，不要拼字符串，用 `Path.of("a", "b")` 或 `File.separator`。
+1. **路径分隔符硬编码**：Windows 用 `` \ ``、Linux 用 `/`，不要拼字符串，用 `Path.of("a", "b")` 或 `File.separator`。
 2. **默认编码陷阱**：`Files.readString` 不传 charset 时用 UTF-8（Java 18+ 已是默认），老 API `FileReader` 用平台默认编码，跨平台会乱码。
 3. **忘记关闭流**：`Files.list` / `Files.walk` 返回的流必须关闭（try-with-resources），否则句柄泄漏。
 4. **`Files.move` 跨文件系统**：可能抛 `AtomicMoveNotSupportedException` 或退化为复制+删除，跨盘移动要处理异常。

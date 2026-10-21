@@ -123,7 +123,7 @@ export const apiFetch = <T>(event: H3Event, path: string, init: RequestInit = {}
 | --- | --- | --- |
 | ① 必须是站内相对路径 | 以**单个** `/` 开头 | `//evil.com`、`https://evil.com` |
 | ② 不得含协议分隔 | 不含 `:` | `javascript:`、`data:` |
-| ③ 反斜杠一律拒绝 | 不含 `\` | 浏览器把 `/\evil.com` 当 `//evil.com` 处理，这一步专治它 |
+| ③ 反斜杠一律拒绝 | 不含 `` \ `` | 浏览器把 `/\evil.com` 当 `//evil.com` 处理，这一步专治它 |
 | ④ 解析后同源 | `new URL(redirect, location.origin).origin === location.origin` | 兜底 |
 | ⑤ 默认值 | 不合法时回落到 `/` | 失败要**安全失败**，不是报错 |
 

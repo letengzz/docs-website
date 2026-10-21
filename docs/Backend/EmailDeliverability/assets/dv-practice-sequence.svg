@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" width="780" height="430" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="430" fill="#FFFFFF"/>
+  <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">TeamBoard 邀请邮件的 S1~S10 验收序列</text>
+  <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">前七步是「应该通过」，后三步是「故意让它失败」——只有失败也被验证过，链路才算真的通了</text>
+
+  <g font-size="8.6">
+    <rect x="30" y="76" width="352" height="30" rx="5" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="44" y="96" fill="#0F172A"><tspan font-weight="bold">S1 记录齐全</tspan>　dig 查 SPF / DKIM / DMARC / MX 四条</text>
+    <rect x="30" y="112" width="352" height="30" rx="5" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="44" y="132" fill="#0F172A"><tspan font-weight="bold">S2 SPF 预算</tspan>　逐条数查询次数 ≤ 10 且含全部发信方</text>
+    <rect x="30" y="148" width="352" height="30" rx="5" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="44" y="168" fill="#0F172A"><tspan font-weight="bold">S3 DKIM 真验</tspan>　发出后从原始邮件取 h= / b= 本地验签</text>
+    <rect x="30" y="184" width="352" height="30" rx="5" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="44" y="204" fill="#0F172A"><tspan font-weight="bold">S4 对齐</tspan>　From 域 = 签名域 = 信封域（或组织域相同）</text>
+    <rect x="30" y="220" width="352" height="30" rx="5" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="44" y="240" fill="#0F172A"><tspan font-weight="bold">S5 体积</tspan>　带 1 MiB 附件时整封 &lt; 目标上限的 80%</text>
+    <rect x="30" y="256" width="352" height="30" rx="5" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="44" y="276" fill="#0F172A"><tspan font-weight="bold">S6 幂等</tspan>　同一邀请重放 3 次，只产生 1 封</text>
+    <rect x="30" y="292" width="352" height="30" rx="5" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="44" y="312" fill="#0F172A"><tspan font-weight="bold">S7 退订</tspan>　List-Unsubscribe 一键退订后不再收同类信</text>
+  </g>
+
+  <g font-size="8.6">
+    <rect x="398" y="76" width="352" height="30" rx="5" fill="#FEF2F2" stroke="#DC2626"/>
+    <text x="412" y="96" fill="#0F172A"><tspan font-weight="bold">S8 改正文</tspan>　加一个空格 → DKIM 必须验签失败</text>
+    <rect x="398" y="112" width="352" height="30" rx="5" fill="#FEF2F2" stroke="#DC2626"/>
+    <text x="412" y="132" fill="#0F172A"><tspan font-weight="bold">S9 硬退</tspan>　投给不存在的地址 → 立即抑制、不重试</text>
+    <rect x="398" y="148" width="352" height="30" rx="5" fill="#FEF2F2" stroke="#DC2626"/>
+    <text x="412" y="168" fill="#0F172A"><tspan font-weight="bold">S10 软退</tspan>　模拟 451 → 进入阶梯、第 8 次后放弃</text>
+  </g>
+
+  <rect x="398" y="184" width="352" height="138" rx="7" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="414" y="206" font-size="9.5" fill="#0F172A" font-weight="bold">四条「故意失败」的判据形状</text>
+  <text x="414" y="226" font-size="8.3" fill="#334155">S8：验签命令返回非 0，且日志里能定位到「正文被改」</text>
+  <text x="414" y="244" font-size="8.3" fill="#334155">S9：状态直接进 suppressed，attempts = 1（不是 8）</text>
+  <text x="414" y="262" font-size="8.3" fill="#334155">S10：attempts 递增到 8，next_at 间隔按倍数扩大</text>
+  <text x="414" y="280" font-size="8.3" fill="#334155">S7：退订后 24 h 内所有同类模板均不再发送</text>
+  <text x="414" y="304" font-size="8.3" fill="#B91C1C">这四条任意一条「通过得太顺利」，通常意味着根本没生效</text>
+
+  <rect x="30" y="336" width="720" height="52" rx="7" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="390" y="358" text-anchor="middle" font-size="8.8" fill="#334155">每一步都要留下「可粘贴进工单」的证据：命令 + 原始输出片段 + 时间戳，而不是「已验证」三个字</text>
+  <text x="390" y="378" text-anchor="middle" font-size="8.8" fill="#64748B">没有证据的验收，在下一次故障里会被重新怀疑一遍——而且这次没人记得当时怎么验的</text>
+  <text x="390" y="412" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">判据 DVX-A~DVX-H 覆盖：序列完整性、证据可粘贴、失败可复现、回滚可执行</text>
+</svg>

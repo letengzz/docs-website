@@ -707,3 +707,22 @@ export const ObjectStorage = [
     ],
   },
 ];
+
+export const EmailDeliverability = [
+  {
+    text: "邮件送达工程",
+    link: "/docs/Backend/EmailDeliverability/index.md",
+    items: [
+      { text: "总览：三层送达与五个必失点", link: "/docs/Backend/EmailDeliverability/Overview/index.md" },
+      { text: "身份三件套：SPF/DKIM/DMARC 与对齐", link: "/docs/Backend/EmailDeliverability/Authentication/index.md" },
+      { text: "DNS 与密钥：记录形状与轮换", link: "/docs/Backend/EmailDeliverability/DnsAndKeys/index.md" },
+      { text: "发信链路：组装、队列与投递", link: "/docs/Backend/EmailDeliverability/SendingPipeline/index.md" },
+      { text: "退信与投诉：分类与重试阶梯", link: "/docs/Backend/EmailDeliverability/BounceComplaint/index.md" },
+      { text: "声誉与预热：投诉率算术", link: "/docs/Backend/EmailDeliverability/ReputationWarmup/index.md" },
+      { text: "收信侧：MX、网关与会话", link: "/docs/Backend/EmailDeliverability/InboundMail/index.md" },
+      { text: "观测与分诊：五个口径与四张表", link: "/docs/Backend/EmailDeliverability/Observability/index.md" },
+      { text: "实战：邀请邮件的端到端验收", link: "/docs/Backend/EmailDeliverability/Practice/index.md" },
+      { text: "常见问题与排错", link: "/docs/Backend/EmailDeliverability/FAQ/index.md" },
+    ],
+  },
+];
