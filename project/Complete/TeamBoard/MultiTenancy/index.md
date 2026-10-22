@@ -229,6 +229,16 @@ docker compose exec -T postgres psql -U app -d teamboard -c \
 | 要落的产物 | 索引清单（每个高频查询的索引都必须以 `tenant_id` 开头）、`EXPLAIN` 前后对照、连接池参数与 `SET LOCAL` 的时序图 |
 | 验收判据 | 同一查询在「带租户过滤」下走索引而不是全表；连接池 20 个连接、200 并发下无串租户 |
 
+## 与「数据库访问控制与审计」专题的分工（第 190 天补充）
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 租户模型、隔离三档、`tenant_id` 进主键的完整 DDL | 本页 |
+| 策略为什么会被视图绕过、`FORCE` 与 `security_invoker` 怎么选 | [行级安全](../../../../docs/DB/AccessControl/RowLevelSecurity/index.md) |
+| 权限盘点、复核与回收 | [权限生命周期](../../../../docs/DB/AccessControl/Lifecycle/index.md) |
+
+**这一页特有的坑：项目里只写了 `ENABLE ROW LEVEL SECURITY`，没有写 `FORCE`。** 本机按同样写法复现：租户 A 的账号直查表得到 1 行（策略生效），查同名视图得到 2 行（视图以所有者身份执行）。项目侧只要存在任何「以所有者身份执行」的视图或安全定义函数，这一格就会漏。补法是 `FORCE` 与 `security_invoker = true` 二者至少落一个，并把它写进建表 checklist。
+
 ## 参考资料
 
 - [PostgreSQL 文档：Row Security Policies](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)

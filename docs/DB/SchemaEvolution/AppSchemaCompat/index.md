@@ -168,6 +168,16 @@ select count(*) from orders where amount <> amount_cents;   -- 期望 0
 
 **这一页特有的坑：升级窗口必须让 expand-contract 停在「安全中间态」。** 如果升级时正好处在 expand 之后、contract 之前（新旧两套字段并存），逻辑复制只会复制**目标端也存在的列**——源端新增的列不会被复制，`apply worker` 会直接报 `missing replicated column` 并退出。所以升级窗口的选择要避开任何「正在扩缩容表结构」的发布，把 DDL 冻结提前到升级前 24 小时。
 
+## 与「数据库访问控制与审计」专题的分工（第 190 天补充）
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 加列、回填、双写、旧代码兼容 | 本页 |
+| 新表建出来谁有权限、默认权限写给谁 | [最小权限：从 GRANT 到默认权限](../../AccessControl/LeastPrivilege/index.md) |
+| 迁移账号与运行账号怎么分 | [权限生命周期](../../AccessControl/Lifecycle/index.md) |
+
+**这一页特有的坑：新表的权限不会「自动继承」，它跟着建表者的角色走。** 本机实测：`ALTER DEFAULT PRIVILEGES FOR ROLE app_owner` 之后再建表，读角色能查；换成 `postgres`（或迁移账号）建同一张表，读角色直接 `permission denied`。所以每次新增表结构，除了「expand-contract 四步」，还要多问一句：**这张表是谁建的，默认权限里有没有它**。
+
 ## 参考资料
 
 - Martin Fowler: *ParallelChange*、*BlueGreenDeployment*

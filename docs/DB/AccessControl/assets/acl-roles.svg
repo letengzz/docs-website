@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-label="角色继承与 SET ROLE 的两条路径">
+  <defs>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="440" fill="#ffffff"/>
+  <text x="24" y="34" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">同一个「被授予」，两种完全不同的结果</text>
+  <text x="24" y="56" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b">决定特权是否立刻生效的，不是 GRANT，而是角色的 rolinherit 属性</text>
+
+  <!-- left: NOINHERIT -->
+  <rect x="24" y="74" width="344" height="250" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.3"/>
+  <text x="40" y="98" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#b91c1c">NOINHERIT（推荐给人类账号）</text>
+
+  <rect x="120" y="112" width="152" height="34" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="196" y="134" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#0f172a">r_analyst</text>
+  <text x="196" y="160" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b">NOINHERIT</text>
+
+  <line x1="196" y1="166" x2="196" y2="190" stroke="#475569" stroke-width="1.4" marker-end="url(#a3)"/>
+  <text x="208" y="184" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#475569">GRANT r_reader</text>
+
+  <rect x="120" y="192" width="152" height="34" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="196" y="214" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#0f172a">r_reader</text>
+
+  <text x="40" y="252" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">以 r_analyst 身份登录后直接查表</text>
+  <text x="40" y="272" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#b91c1c">ERROR: permission denied（0 行）</text>
+  <text x="40" y="292" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">必须再执行 SET ROLE r_reader 才拿到 SELECT</text>
+  <text x="40" y="314" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#475569">pg_has_role MEMBER=true，USAGE=false</text>
+  <text x="40" y="332" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#475569">「是不是成员」与「能不能用」是两个问题</text>
+
+  <!-- right: INHERIT -->
+  <rect x="392" y="74" width="344" height="250" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.3"/>
+  <text x="408" y="98" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#047857">INHERIT（默认，适合服务账号）</text>
+
+  <rect x="488" y="112" width="152" height="34" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="564" y="134" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#0f172a">r_analyst2</text>
+  <text x="564" y="160" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b">INHERIT</text>
+
+  <line x1="564" y1="166" x2="564" y2="190" stroke="#475569" stroke-width="1.4" marker-end="url(#a3)"/>
+  <text x="576" y="184" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#475569">GRANT r_reader</text>
+
+  <rect x="488" y="192" width="152" height="34" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="564" y="214" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#0f172a">r_reader</text>
+
+  <text x="408" y="252" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">以 r_analyst2 身份登录后直接查表</text>
+  <text x="408" y="272" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#047857">SELECT 立刻可用（2 行）</text>
+  <text x="408" y="292" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">REVOKE 之后同一秒失效，不用重连</text>
+  <text x="408" y="312" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#475569">新建角色默认 INHERIT（PG 16+ 文档口径）</text>
+
+  <rect x="24" y="344" width="712" height="72" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="40" y="368" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0f172a">选型口诀</text>
+  <text x="40" y="390" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#334155">人会提权、会误操作 → 用 NOINHERIT，每次提权都是一条可审计的 SET ROLE；服务只做一件事 → 用 INHERIT，少一步操作就少一次忘掉。</text>
+  <text x="40" y="408" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#475569">共同底线：登录角色不要直接持有对象特权，特权只挂在组角色上——否则回收时永远收不干净。</text>
+</svg>

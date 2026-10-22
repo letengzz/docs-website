@@ -394,6 +394,7 @@ export const CompleteProject = [
           { text: "第 2 周第 2 步 · 下单链路与 outbox 首次写入（EOR-A~EOR-H）", link: "/project/Complete/EventOrderHub/OrderFlow/index.md" },
           { text: "第 2 周第 3 步 · 支付回调：验签、幂等与对账（EPY-A~EPY-H）", link: "/project/Complete/EventOrderHub/PaymentCallback/index.md" },
           { text: "第 2 周第 4 步 · 库存预占的释放与超时回滚（EIV-A~EIV-H）", link: "/project/Complete/EventOrderHub/StockRelease/index.md" },
+          { text: "第 3 周第 1 步 · 一致性用例矩阵：18 条用例与 11/16 覆盖（ECM-A~ECM-H）", link: "/project/Complete/EventOrderHub/ConsistencyMatrix/index.md" },
         ],
       },
       {

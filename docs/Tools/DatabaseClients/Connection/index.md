@@ -199,6 +199,16 @@ SELECT current_user, current_database();
 3. 认证层：错误提示不再是 Access denied。
 4. 权限层：执行受限语句返回权限错误（符合预期）。
 
+## 与「数据库访问控制与审计」专题的分工（第 190 天补充）
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 客户端连接参数、SSL、连接串管理 | 本页 |
+| 这个账号该有哪些权限、怎么复核 | [数据库访问控制与审计](../../../DB/AccessControl/index.md) |
+| 审计里为什么全是 `(unset)` | [审计：三种位置与各自的成本](../../../DB/AccessControl/AuditTrail/index.md) |
+
+**这一页特有的坑：客户端里保存的「生产只读连接」经常不是只读的。** 排查时先跑一句 `select rolsuper, rolbypassrls, rolcreaterole from pg_roles where rolname = current_user;`——三个都是 `f` 才算真的受限。另一个常见疏漏是连接串里没设 `application_name`：库侧的 `pg_stat_activity` 与审计都只能记到 `(unset)`，事后无法区分「这是 DBA 在排查」还是「这是应用在跑批」。
+
 ## 参考资料
 
 - MySQL 连接文档：<https://dev.mysql.com/doc/refman/8.4/en/connecting.html>

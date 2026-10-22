@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" width="760" height="460" role="img" aria-label="十条验收序列，四条故意失败">
+  <rect x="0" y="0" width="760" height="460" fill="#ffffff"/>
+  <text x="24" y="34" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">十条验收：六条「应该成功」，四条「必须失败」</text>
+  <text x="24" y="56" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b">只跑前六条等于没验收——权限体系的价值全在「拒绝」那一半</text>
+
+  <g font-family="Helvetica, Arial, sans-serif" font-size="11.5">
+    <rect x="24" y="76" width="352" height="252" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.2"/>
+    <text x="40" y="100" font-size="12.5" font-weight="700" fill="#047857">应该成功（S1–S6）</text>
+    <text x="40" y="126" fill="#1e293b">S1 迁移账号建表，默认权限自动授予读角色</text>
+    <text x="40" y="150" fill="#1e293b">S2 应用账号在租户上下文内读写自己的行</text>
+    <text x="40" y="174" fill="#1e293b">S3 只读角色 SELECT 成功、DML 全被拒</text>
+    <text x="40" y="198" fill="#1e293b">S4 审计触发器在业务写入后留下 1 条记录</text>
+    <text x="40" y="222" fill="#1e293b">S5 outbox 扫描补发后 pending 归零</text>
+    <text x="40" y="246" fill="#1e293b">S6 对账查询跑出 481 条授权且与基线一致</text>
+    <text x="40" y="278" fill="#475569">读数基线：0.91 ms、481 条、1 条审计记录</text>
+    <text x="40" y="300" fill="#475569">任何一条的 actual 与 expect 不等即整批失败</text>
+  </g>
+
+  <g font-family="Helvetica, Arial, sans-serif" font-size="11.5">
+    <rect x="392" y="76" width="344" height="252" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="408" y="100" font-size="12.5" font-weight="700" fill="#b91c1c">必须失败（S7–S10）</text>
+    <text x="408" y="126" fill="#1e293b">S7 跨租户 SELECT → 0 行（不是报错）</text>
+    <text x="408" y="150" fill="#1e293b">S8 跨租户 INSERT → 42501 / RLS 违反</text>
+    <text x="408" y="174" fill="#1e293b">S9 应用账号改审计表 → permission denied</text>
+    <text x="408" y="198" fill="#1e293b">S10 应用账号 TRUNCATE 业务表 → 拒绝</text>
+    <text x="408" y="230" fill="#b91c1c">S7 的「0 行」是最容易被误判为通过的一条</text>
+    <text x="408" y="250" fill="#475569">脚本必须断言「行数 = 0 且无异常」，而不是「无异常」</text>
+    <text x="408" y="278" fill="#b91c1c">S10 若通过，说明 TRUNCATE 权限还挂在应用角色上</text>
+    <text x="408" y="300" fill="#475569">RLS 管不到表级动作，只能靠不授予</text>
+  </g>
+
+  <rect x="24" y="344" width="712" height="100" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="40" y="368" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">怎么跑：一个事务里造数据、断言、回滚</text>
+  <text x="40" y="390" font-family="monospace" font-size="11.5" fill="#334155">BEGIN; SET LOCAL ROLE app_rw; SET LOCAL app.tenant_id = 'acme';</text>
+  <text x="40" y="408" font-family="monospace" font-size="11.5" fill="#334155">SELECT count(*) FROM orders;  -- 期望 0，脚本比对后 ROLLBACK;</text>
+  <text x="40" y="430" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#475569">SET LOCAL 让每条用例都用完即丢，不会把上下文漏给下一条——这和连接池复位是同一个道理。</text>
+</svg>

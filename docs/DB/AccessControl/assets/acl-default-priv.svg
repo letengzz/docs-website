@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-label="默认权限的两个变量：谁执行 ALTER DEFAULT PRIVILEGES、谁建表">
+  <rect x="0" y="0" width="760" height="430" fill="#ffffff"/>
+  <text x="24" y="34" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">默认权限的两个变量：改的人、建的人</text>
+  <text x="24" y="56" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b">ALTER DEFAULT PRIVILEGES 只对「指定的那个角色以后创建的对象」生效，两个变量差一个就静默失效</text>
+
+  <rect x="24" y="76" width="712" height="52" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="38" y="98" font-family="monospace" font-size="12" fill="#1e293b">ALTER DEFAULT PRIVILEGES FOR ROLE app_owner IN SCHEMA public</text>
+  <text x="38" y="118" font-family="monospace" font-size="12" fill="#1e293b">  GRANT SELECT ON TABLES TO app_reader;</text>
+
+  <text x="24" y="158" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">三种建表人，三种结果（本机实测）</text>
+
+  <rect x="24" y="172" width="226" height="118" rx="7" fill="#f0fdf4" stroke="#059669" stroke-width="1.3"/>
+  <text x="40" y="196" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#047857">app_owner 建表</text>
+  <text x="40" y="218" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">t_by_owner</text>
+  <text x="40" y="240" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">app_reader 直接 SELECT</text>
+  <text x="40" y="262" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#047857">可用（0 行，不报错）</text>
+
+  <rect x="266" y="172" width="226" height="118" rx="7" fill="#fef2f2" stroke="#dc2626" stroke-width="1.3"/>
+  <text x="282" y="196" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c">postgres / 迁移账号建表</text>
+  <text x="282" y="218" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">t_by_pg</text>
+  <text x="282" y="240" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">app_reader 直接 SELECT</text>
+  <text x="282" y="262" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#b91c1c">permission denied</text>
+
+  <rect x="508" y="172" width="228" height="118" rx="7" fill="#fef2f2" stroke="#dc2626" stroke-width="1.3"/>
+  <text x="524" y="196" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c">新表在别的 schema</text>
+  <text x="524" y="218" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">ALTER 里写的是 IN SCHEMA public</text>
+  <text x="524" y="240" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">迁移脚本建到 archive schema</text>
+  <text x="524" y="262" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#b91c1c">默认权限不覆盖</text>
+
+  <rect x="24" y="306" width="712" height="104" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="40" y="330" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">三条落地纪律</text>
+  <text x="40" y="352" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#334155">① 默认权限写在迁移脚本里，与建表同一个仓库、同一次评审；不要靠 DBA 手敲。</text>
+  <text x="40" y="372" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#334155">② FOR ROLE 要写全：迁移账号与人工 DBA 是不同角色，两个都要各写一条。</text>
+  <text x="40" y="392" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#334155">③ 每次新增 schema 时，把这张「谁建表」的表重新对一遍——这是最容易漏的一格。</text>
+</svg>

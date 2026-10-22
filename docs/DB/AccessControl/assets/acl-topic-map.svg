@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" width="760" height="520" role="img" aria-label="数据库访问控制与审计的四个层次与判据族">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="520" fill="#ffffff"/>
+  <text x="24" y="34" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">数据库访问控制：四个层次，九族判据</text>
+  <text x="24" y="56" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b">每一层都能单独失效，且失效时下一层通常「看起来还在工作」</text>
+
+  <!-- L1 -->
+  <rect x="24" y="76" width="712" height="86" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+  <text x="40" y="100" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1d4ed8">第 1 层 · 连接身份（谁连进来的）</text>
+  <text x="40" y="122" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1e293b">pg_hba.conf 认证方式 · 登录角色 vs 服务账号 · 连接池里的 SET ROLE · application_name</text>
+  <text x="40" y="144" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#b91c1c">失效表象：所有请求都是同一个账号，审计里分不出是人还是批处理</text>
+  <text x="612" y="104" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#1d4ed8">ACL · ROL</text>
+
+  <!-- L2 -->
+  <rect x="24" y="172" width="712" height="86" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.4"/>
+  <text x="40" y="196" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#047857">第 2 层 · 角色与继承（他算哪一组）</text>
+  <text x="40" y="218" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1e293b">NOINHERIT 与 SET ROLE · 组角色 vs 登录角色 · pg_has_role 的 MEMBER / USAGE 两种问法</text>
+  <text x="40" y="240" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#b91c1c">失效表象：以为「授予了」就等于「生效了」，实际要 SET ROLE 才拿得到</text>
+  <text x="612" y="200" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#047857">ROL · LPA</text>
+
+  <!-- L3 -->
+  <rect x="24" y="268" width="712" height="86" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.4"/>
+  <text x="40" y="292" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#b45309">第 3 层 · 对象特权与行级策略（能碰哪些行）</text>
+  <text x="40" y="314" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1e293b">GRANT 表 / 列 / 序列 · 默认权限 · ENABLE 与 FORCE RLS · USING 与 WITH CHECK · 视图的 security_invoker</text>
+  <text x="40" y="336" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#b91c1c">失效表象：直查表只有 1 行，走视图拿到 2 行；TRUNCATE 一行不留</text>
+  <text x="612" y="296" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#b45309">RLS · ESCP</text>
+
+  <!-- L4 -->
+  <rect x="24" y="364" width="712" height="86" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4"/>
+  <text x="40" y="388" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#b91c1c">第 4 层 · 审计与检测（事后能不能证明）</text>
+  <text x="40" y="410" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1e293b">语句日志 / 行级触发器 / 扩展审计 · 追加式与权限分离 · 留存与容量 · 异常检测规则</text>
+  <text x="40" y="432" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#b91c1c">失效表象：日志里只有「谁」，没有「改了哪一行」；审计表可被应用账号 DELETE</text>
+  <text x="612" y="392" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#b91c1c">AUD · DET</text>
+
+  <!-- bottom band -->
+  <rect x="24" y="462" width="712" height="36" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="40" y="485" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#334155">贯穿四层：权限的生命周期（LIF：申请 → 生效 → 复核 → 回收）与一条可复跑的对账查询（PRC）</text>
+  <line x1="380" y1="444" x2="380" y2="462" stroke="#475569" stroke-width="1.2" marker-end="url(#arr)"/>
+</svg>

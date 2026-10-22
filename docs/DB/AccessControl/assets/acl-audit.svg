@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-label="三种审计位置与它们的成本">
+  <rect x="0" y="0" width="760" height="440" fill="#ffffff"/>
+  <text x="24" y="34" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">三种审计位置：回答的问题不同，成本差一个数量级</text>
+  <text x="24" y="56" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b">本机实测（PostgreSQL 18.6，20,000 行插入）：无触发器 55 ms，行级触发器 543 ms</text>
+
+  <rect x="24" y="76" width="712" height="86" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.3"/>
+  <text x="40" y="100" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">① 语句日志（log_statement = all）</text>
+  <text x="40" y="122" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">回答「谁在什么时候发了什么 SQL」；不回答「改了哪一行」。每条约 218 字节（csvlog 实测）</text>
+  <text x="40" y="144" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#475569">1000 语句/秒 → 约 18.8 GB/天；适合短期开启与事后追查，不适合当长期证据</text>
+
+  <rect x="24" y="174" width="712" height="86" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.3"/>
+  <text x="40" y="198" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#b45309">② 行级触发器审计表</text>
+  <text x="40" y="220" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">回答「这一行被谁从什么改成什么」；代价是写入慢约 9.8 倍、审计表体积是业务表的 2.6 倍</text>
+  <text x="40" y="242" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#475569">10,000 行 → 审计表 2,224 kB（业务表 856 kB）；必须配合「追加式 + 权限分离」才可信</text>
+
+  <rect x="24" y="272" width="712" height="86" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.3"/>
+  <text x="40" y="296" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#047857">③ 扩展 / 外部审计（pgaudit、数据库审计网关、WAL 解析）</text>
+  <text x="40" y="318" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">回答「按对象与角色分类的合规证据」；成本在部署与运维，不在单条 SQL</text>
+  <text x="40" y="340" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#b91c1c">前提：先能装（`pg_available_extensions` 里未必有），再谈开哪些类目——本机镜像就没有 pgaudit</text>
+
+  <rect x="24" y="372" width="712" height="50" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="40" y="394" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#334155">选型的起点不是「哪种最全」，而是「审计要回答的那个问题，出事时谁来看、看多久」。</text>
+  <text x="40" y="412" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#475569">先用①把范围缩小到会话，再用②把关键表的行级变更留成证据——两层配合比单开①全量便宜得多。</text>
+</svg>

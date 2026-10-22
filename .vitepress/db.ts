@@ -449,3 +449,22 @@ export const ConnectionPool = [
     ],
   },
 ];
+
+export const AccessControl = [
+  {
+    text: "数据库访问控制与审计",
+    link: "/docs/DB/AccessControl/index.md",
+    items: [
+      { text: "四层结构与五个必失点", link: "/docs/DB/AccessControl/Overview/index.md" },
+      { text: "角色、继承与 SET ROLE", link: "/docs/DB/AccessControl/RoleModel/index.md" },
+      { text: "最小权限：从 GRANT 到默认权限", link: "/docs/DB/AccessControl/LeastPrivilege/index.md" },
+      { text: "行级安全：策略的写法与边界", link: "/docs/DB/AccessControl/RowLevelSecurity/index.md" },
+      { text: "越权路径：视图、函数与 search_path", link: "/docs/DB/AccessControl/PrivilegeEscalation/index.md" },
+      { text: "审计：三种位置与各自的成本", link: "/docs/DB/AccessControl/AuditTrail/index.md" },
+      { text: "权限生命周期：申请、复核与回收", link: "/docs/DB/AccessControl/Lifecycle/index.md" },
+      { text: "异常访问检测与处置", link: "/docs/DB/AccessControl/Detection/index.md" },
+      { text: "实战：一套可验收的权限基线", link: "/docs/DB/AccessControl/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/DB/AccessControl/FAQ/index.md" },
+    ],
+  },
+];

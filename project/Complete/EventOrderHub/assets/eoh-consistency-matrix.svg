@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-label="一致性用例矩阵：四类场景与十八个用例的覆盖情况">
+  <rect x="0" y="0" width="760" height="440" fill="#ffffff"/>
+  <text x="24" y="34" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">一致性用例矩阵：四类场景 × 十八条用例</text>
+  <text x="24" y="56" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b">18/18 通过，覆盖 16 条状态迁移中的 11 条（68.8%）</text>
+
+  <!-- 四类场景 -->
+  <g font-family="Helvetica, Arial, sans-serif">
+    <rect x="24" y="76" width="170" height="86" rx="7" fill="#eff6ff" stroke="#2563eb" stroke-width="1.3"/>
+    <text x="40" y="100" font-size="12.5" font-weight="700" fill="#1d4ed8">重复</text>
+    <text x="40" y="122" font-size="11" fill="#334155">C01 同幂等键下单</text>
+    <text x="40" y="140" font-size="11" fill="#334155">C04 同回调 id</text>
+    <text x="40" y="158" font-size="11" fill="#334155">C18 同一迁移重放</text>
+
+    <rect x="208" y="76" width="170" height="86" rx="7" fill="#f0fdf4" stroke="#059669" stroke-width="1.3"/>
+    <text x="224" y="100" font-size="12.5" font-weight="700" fill="#047857">乱序</text>
+    <text x="224" y="122" font-size="11" fill="#334155">C06 已释放收支付成功</text>
+    <text x="224" y="140" font-size="11" fill="#334155">C05 第二条成功支付</text>
+    <text x="224" y="158" font-size="11" fill="#334155">（发货早于支付）</text>
+
+    <rect x="392" y="76" width="170" height="86" rx="7" fill="#fffbeb" stroke="#d97706" stroke-width="1.3"/>
+    <text x="408" y="100" font-size="12.5" font-weight="700" fill="#b45309">丢失</text>
+    <text x="408" y="122" font-size="11" fill="#334155">C16 outbox 补发</text>
+    <text x="408" y="140" font-size="11" fill="#334155">C17 重复投递幂等</text>
+    <text x="408" y="158" font-size="11" fill="#334155">（未发布 → 扫描）</text>
+
+    <rect x="576" y="76" width="160" height="86" rx="7" fill="#fef2f2" stroke="#dc2626" stroke-width="1.3"/>
+    <text x="592" y="100" font-size="12.5" font-weight="700" fill="#b91c1c">并发</text>
+    <text x="592" y="122" font-size="11" fill="#334155">CAS：0 行</text>
+    <text x="592" y="140" font-size="11" fill="#334155">无守卫：覆盖</text>
+    <text x="592" y="158" font-size="11" fill="#334155">（ECC 继续）</text>
+  </g>
+
+  <!-- 主干迁移条 -->
+  <text x="24" y="192" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">状态机主干：10 状态 / 16 条迁移，矩阵覆盖 11 条</text>
+
+  <g font-family="Helvetica, Arial, sans-serif" font-size="10.5">
+    <rect x="24" y="204" width="86" height="30" rx="5" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="67" y="223" text-anchor="middle" fill="#1e3a8a">CREATED</text>
+    <rect x="126" y="204" width="122" height="30" rx="5" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="187" y="223" text-anchor="middle" fill="#1e3a8a">AWAIT_PAY</text>
+    <rect x="264" y="204" width="80" height="30" rx="5" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="304" y="223" text-anchor="middle" fill="#1e3a8a">PAID</text>
+    <rect x="360" y="204" width="86" height="30" rx="5" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="403" y="223" text-anchor="middle" fill="#1e3a8a">ALLOCATED</text>
+    <rect x="462" y="204" width="76" height="30" rx="5" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="500" y="223" text-anchor="middle" fill="#1e3a8a">SHIPPED</text>
+    <rect x="554" y="204" width="90" height="30" rx="5" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="599" y="223" text-anchor="middle" fill="#1e3a8a">COMPLETED</text>
+  </g>
+
+  <g stroke="#2563eb" stroke-width="1.4" fill="none">
+    <path d="M 110 219 L 126 219"/><path d="M 248 219 L 264 219"/><path d="M 344 219 L 360 219"/>
+    <path d="M 446 219 L 462 219"/><path d="M 538 219 L 554 219"/>
+  </g>
+
+  <text x="644" y="223" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#475569">…→ CLOSED</text>
+
+  <!-- 未覆盖 -->
+  <rect x="24" y="252" width="712" height="76" rx="7" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="40" y="276" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0f172a">未覆盖的 5 条（都在售后与归档侧）</text>
+  <text x="40" y="298" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">PAID→CANCELLED · ALLOCATED→REFUNDING · SHIPPED→REFUNDING · COMPLETED→REFUNDING · REFUNDED→CLOSED</text>
+  <text x="40" y="318" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#b91c1c">这 5 条都需要退款链路（第 2 周登记的缺口），不是靠补用例能覆盖的，必须先补功能。</text>
+
+  <!-- 并发读数 -->
+  <rect x="24" y="342" width="712" height="80" rx="7" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="40" y="366" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#b45309">并发两条读数（两个会话，事务内 sleep 2 秒）</text>
+  <text x="40" y="388" font-family="monospace" font-size="11.5" fill="#334155">CAS（状态进 WHERE）：等锁 1210 ms → 影响 0 行，version 仍为 1</text>
+  <text x="40" y="406" font-family="monospace" font-size="11.5" fill="#b91c1c">无守卫（只按 id）：等锁 1188 ms → 影响 1 行，version 变 2，PAID 被 CANCELLED 覆盖</text>
+</svg>

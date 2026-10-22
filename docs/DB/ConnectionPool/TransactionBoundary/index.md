@@ -189,6 +189,16 @@ docker exec pglab psql -U postgres -d bench -c "set application_name='probe'; se
 | `CPT-G` | 批处理分批提交 | 单事务行数有上限 | 按批提交，避免长事务 |
 | `CPT-H` | 有状态污染实验记录 | 能复现「设置 → 归还 → 再借」的结果 | 补实验；这是唯一能证明复位有效的动作 |
 
+## 与「数据库访问控制与审计」专题的分工（第 190 天补充）
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 事务边界、借还时机、会话状态怎么脏 | 本页 |
+| 行级策略需要什么上下文、为什么必须事务级 | [行级安全：策略的写法与边界](../../AccessControl/RowLevelSecurity/index.md) |
+| 身份切换（`SET ROLE`）残留造成越权 | [越权路径](../../AccessControl/PrivilegeEscalation/index.md) |
+
+**这一页特有的坑：`RESET ROLE` 不会复位 `search_path`。** 本机实测：攻击场景里 `SET search_path = evil, public` 之后，即使 `RESET ROLE`，同会话后续未限定名的 `select ... from audit_log` 仍然命中 `evil.audit_log`。归还连接前要做的是 `DISCARD ALL`（或至少 `RESET ALL` + `RESET ROLE` 两条），只做 `RESET ROLE` 会把上下文带给下一个请求。
+
 ## 参考资料
 
 - HikariCP README：`connectionTimeout`（30,000 ms）、`autoCommit`、`transactionIsolation` 的复位语义

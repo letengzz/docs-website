@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-label="从信号到告警的检测链路">
+  <rect x="0" y="0" width="760" height="430" fill="#ffffff"/>
+  <text x="24" y="34" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">异常访问检测：三个信号源，四类规则，一条处置路径</text>
+  <text x="24" y="56" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b">检测的目标不是「发现坏人」，而是「在数据被拖走之前发现行为偏离基线」</text>
+
+  <rect x="24" y="76" width="212" height="104" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.3"/>
+  <text x="40" y="100" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1d4ed8">信号源 A · 会话</text>
+  <text x="40" y="122" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#334155">pg_stat_activity</text>
+  <text x="40" y="142" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#334155">连接数 · 状态 · 应用名 · 起止时间</text>
+  <text x="40" y="164" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#475569">发现的不是「谁坏了」，是「谁不正常」</text>
+
+  <rect x="252" y="76" width="236" height="104" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.3"/>
+  <text x="268" y="100" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#047857">信号源 B · 日志</text>
+  <text x="268" y="122" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#334155">csvlog：语句 · 时长 · 错误码</text>
+  <text x="268" y="142" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#334155">ERROR 42501 = 权限不足</text>
+  <text x="268" y="164" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#475569">连续 42501 是最便宜的入侵信号</text>
+
+  <rect x="504" y="76" width="232" height="104" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.3"/>
+  <text x="520" y="100" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#b45309">信号源 C · 审计表</text>
+  <text x="520" y="122" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#334155">行级变更 · 操作者 · 前后镜像</text>
+  <text x="520" y="142" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#334155">按 role 聚合的「读取行数」</text>
+  <text x="520" y="164" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#475569">回答「他到底看了多少行」</text>
+
+  <rect x="24" y="196" width="712" height="98" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="40" y="220" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">四类规则（按「误报成本」从低到高排）</text>
+  <text x="40" y="242" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">① 权限错误激增：单账号 5 分钟内 42501 ≥ 5 次 —— 几乎零误报，最先上</text>
+  <text x="40" y="262" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">② 非工作时间大批量读取：单会话扫描行数 &gt; 基线 P99 且发生在窗口之外</text>
+  <text x="40" y="282" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">③ 结构变更：非迁移角色的 DDL（EVENT TRIGGER 或日志正则）——变更要走流程</text>
+
+  <rect x="24" y="308" width="712" height="98" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="40" y="332" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#b91c1c">处置路径：先收窄，再阻断，最后才追溯</text>
+  <text x="40" y="354" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">① 查 pg_stat_activity 定位会话 → ② 看该账号最近 30 分钟的语句 → ③ 决定 pg_terminate_backend 还是只封角色</text>
+  <text x="40" y="374" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">直接封角色会连正常业务一起停；先终止单个会话、观察 5 分钟，是最省的处置</text>
+  <text x="40" y="394" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#b91c1c">不要在没有审计的情况下「凭日志猜」——日志只到语句级，行级证据只能靠审计表。</text>
+</svg>

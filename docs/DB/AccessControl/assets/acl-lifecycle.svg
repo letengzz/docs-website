@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" role="img" aria-label="权限生命周期的四段闭环">
+  <defs>
+    <marker id="a7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="420" fill="#ffffff"/>
+  <text x="24" y="34" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">权限不是一次 GRANT，而是一段有出口的生命周期</text>
+  <text x="24" y="56" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b">四个阶段里，最常缺席的是最后两个：复核与回收</text>
+
+  <rect x="24" y="80" width="156" height="76" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.3"/>
+  <text x="102" y="106" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">申请</text>
+  <text x="102" y="128" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#334155">角色 + 期限 + 理由</text>
+  <text x="102" y="146" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#475569">必须写成工单</text>
+
+  <rect x="212" y="80" width="156" height="76" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.3"/>
+  <text x="290" y="106" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#047857">生效</text>
+  <text x="290" y="128" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#334155">按组角色授予</text>
+  <text x="290" y="146" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#475569">不直接授予表</text>
+
+  <rect x="400" y="80" width="156" height="76" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.3"/>
+  <text x="478" y="106" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#b45309">复核</text>
+  <text x="478" y="128" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#334155">季度对账 + 上次使用</text>
+  <text x="478" y="146" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#475569">「还在用吗」要能回答</text>
+
+  <rect x="588" y="80" width="148" height="76" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.3"/>
+  <text x="662" y="106" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">回收</text>
+  <text x="662" y="128" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#334155">离职 / 转岗 / 到期</text>
+  <text x="662" y="146" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#475569">与 HR 事件挂钩</text>
+
+  <path d="M 180 118 L 212 118" stroke="#475569" stroke-width="1.6" marker-end="url(#a7)"/>
+  <path d="M 368 118 L 400 118" stroke="#475569" stroke-width="1.6" marker-end="url(#a7)"/>
+  <path d="M 556 118 L 588 118" stroke="#475569" stroke-width="1.6" marker-end="url(#a7)"/>
+
+  <rect x="24" y="180" width="712" height="106" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="40" y="204" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">复核的抓手：把「权限授予」与「实际使用」放在同一张表里比</text>
+  <text x="40" y="226" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">授予侧：pg_class.relacl 展开（200 张表 481 条授权，0.91 ms）——比 information_schema 快 8.2 倍，适合每周跑</text>
+  <text x="40" y="246" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">使用侧：审计表按 role 聚合最近 90 天；对不上的一律列进「待确认」，不自动回收</text>
+  <text x="40" y="268" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#b91c1c">别自动回收：审计只覆盖开了审计的表与时段，「没记录」不等于「没用过」。</text>
+
+  <rect x="24" y="302" width="712" height="98" rx="8" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="40" y="326" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#b45309">两个真实漏洞（都来自「事后才补」）</text>
+  <text x="40" y="348" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#334155">① 共享账号：离职时注销了个人账号，服务账号永远没人注销，权限在里面躺了三年。</text>
+  <text x="40" y="368" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#334155">② 默认权限缺口：新表由迁移账号建，忘了 FOR ROLE 那一条，结果「谁都能读」，直到复核才发现。</text>
+  <text x="40" y="388" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#475569">两者都不会报错，只能靠定期对账发现——这就是复核阶段存在的理由。</text>
+</svg>

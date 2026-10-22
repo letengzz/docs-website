@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" width="760" height="460" role="img" aria-label="RLS 的 USING 与 WITH CHECK 覆盖哪些命令">
+  <rect x="0" y="0" width="760" height="460" fill="#ffffff"/>
+  <text x="24" y="34" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">USING 管「看得见」，WITH CHECK 管「写得进」</text>
+  <text x="24" y="56" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b">同一条 SQL 可能同时被两个子句拦：UPDATE 先按 USING 找行，再按 WITH CHECK 验新行</text>
+
+  <line x1="380" y1="80" x2="380" y2="392" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="150" y="100" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">USING</text>
+  <text x="150" y="120" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#475569">旧行是否可见</text>
+  <text x="590" y="100" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#b45309">WITH CHECK</text>
+  <text x="590" y="120" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#475569">新行是否合法</text>
+
+  <g font-family="Helvetica, Arial, sans-serif" font-size="12">
+    <rect x="24" y="136" width="248" height="44" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="40" y="163" fill="#1e293b">SELECT</text>
+    <rect x="508" y="136" width="228" height="44" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+    <text x="524" y="163" fill="#94a3b8">不适用</text>
+
+    <rect x="24" y="190" width="248" height="44" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="40" y="217" fill="#1e293b">DELETE</text>
+    <rect x="508" y="190" width="228" height="44" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+    <text x="524" y="217" fill="#94a3b8">不适用</text>
+
+    <rect x="24" y="244" width="248" height="44" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="40" y="271" fill="#1e293b">UPDATE（找旧行）</text>
+    <rect x="508" y="244" width="228" height="44" rx="6" fill="#fffbeb" stroke="#d97706"/>
+    <text x="524" y="271" fill="#1e293b">UPDATE（验新行）</text>
+
+    <rect x="24" y="298" width="248" height="44" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+    <text x="40" y="325" fill="#94a3b8">INSERT 无旧行</text>
+    <rect x="508" y="298" width="228" height="44" rx="6" fill="#fffbeb" stroke="#d97706"/>
+    <text x="524" y="325" fill="#1e293b">INSERT</text>
+  </g>
+
+  <text x="24" y="372" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#b91c1c">越权 UPDATE 的两级表现：改别人租户的行 → 0 行（USING 没让它看见）；把自己租户的行改成别人 → ERROR（WITH CHECK）</text>
+  <text x="24" y="392" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#475569">「0 行」不报错，所以应用必须把影响行数当返回值判，不能假定「没抛异常就是成功」。</text>
+
+  <rect x="24" y="408" width="712" height="36" rx="6" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="40" y="431" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#b91c1c">RLS 管不到的三个动作：TRUNCATE（表级） · COPY FROM（直接拒绝） · 视图与 SECURITY DEFINER（换执行身份）</text>
+</svg>
