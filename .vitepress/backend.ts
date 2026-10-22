@@ -819,3 +819,22 @@ export const EventSourcing = [
     ],
   },
 ];
+
+export const ServiceMesh = [
+  {
+    text: "服务网格与东西向流量",
+    link: "/docs/Backend/ServiceMesh/index.md",
+    items: [
+      { text: "概述：四个问题、三段链路与五档成熟度", link: "/docs/Backend/ServiceMesh/Overview/index.md" },
+      { text: "架构形态：Sidecar、Ambient 与 xDS 下发", link: "/docs/Backend/ServiceMesh/Architecture/index.md" },
+      { text: "身份与 mTLS：SPIFFE、证书轮换与授权策略", link: "/docs/Backend/ServiceMesh/Identity/index.md" },
+      { text: "东西向流量治理：路由、灰度、超时与重试预算", link: "/docs/Backend/ServiceMesh/Traffic/index.md" },
+      { text: "可观测性：指标基数、访问日志与链路", link: "/docs/Backend/ServiceMesh/Observability/index.md" },
+      { text: "性能账本：每跳延迟、每 Pod 资源与节点密度", link: "/docs/Backend/ServiceMesh/Performance/index.md" },
+      { text: "网格自身故障：控制面宕机、证书过期与升级事故", link: "/docs/Backend/ServiceMesh/Failure/index.md" },
+      { text: "从 SDK 治理到网格：双栈迁移与回退", link: "/docs/Backend/ServiceMesh/Migration/index.md" },
+      { text: "实战：本地集群跑通 mTLS、灰度与故障注入", link: "/docs/Backend/ServiceMesh/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ServiceMesh/FAQ/index.md" },
+    ],
+  },
+];

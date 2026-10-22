@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 356" width="760" height="356" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="356" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四类症状的分诊路径</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">症状在业务侧，原因在基础设施侧——先把请求归到四类里</text>
+  <rect x="24" y="80" width="168" height="96" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="108" y="98.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">A 没进网格</text>
+  <text x="108" y="115" text-anchor="middle" font-size="7.5" fill="#B91C1C">策略不生效</text>
+  <text x="108" y="132.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">抓包仍明文</text>
+  <text x="108" y="149.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">查 ztunnel-config</text>
+  <rect x="206" y="80" width="168" height="96" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="290" y="98.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">B 被拒 403</text>
+  <text x="290" y="115" text-anchor="middle" font-size="7.5" fill="#C2410C">有 ALLOW 即默认拒绝</text>
+  <text x="290" y="132.25" text-anchor="middle" font-size="7.5" fill="#C2410C">paths 写太窄</text>
+  <text x="290" y="149.5" text-anchor="middle" font-size="7.5" fill="#C2410C">看 RESPONSE_FLAGS</text>
+  <rect x="388" y="80" width="168" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="472" y="98.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">C 走错路</text>
+  <text x="472" y="115" text-anchor="middle" font-size="7.5" fill="#1D4ED8">没有 waypoint</text>
+  <text x="472" y="132.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">规则顺序被兜底</text>
+  <text x="472" y="149.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">读 proxy-config route</text>
+  <rect x="570" y="80" width="168" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="654" y="98.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">D 慢/断</text>
+  <text x="654" y="115" text-anchor="middle" font-size="7.5" fill="#6D28D9">代理排队/限流</text>
+  <text x="654" y="132.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">实例被摘除</text>
+  <text x="654" y="149.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">看 P99 与 pending</text>
+  <text x="380" y="196" text-anchor="middle" font-size="9.5" fill="#1E293B">分诊第一问永远是：这个请求到底进没进网格？</text>
+  <rect x="24" y="212" width="350" height="100" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="199" y="230.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">八条误诊（节选）</text>
+  <text x="199" y="247" text-anchor="middle" font-size="7.5" fill="#334155">「网格坏了」→ 多半是没进网格</text>
+  <text x="199" y="264.25" text-anchor="middle" font-size="7.5" fill="#334155">「mTLS 很慢」→ 差在连接不复用</text>
+  <text x="199" y="281.5" text-anchor="middle" font-size="7.5" fill="#334155">「重试提高可用性」→ 非幂等会翻倍</text>
+  <rect x="390" y="212" width="346" height="100" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="563" y="230.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">上线自查（节选）</text>
+  <text x="563" y="247" text-anchor="middle" font-size="7.5" fill="#047857">控制面多副本 + 证书告警</text>
+  <text x="563" y="264.25" text-anchor="middle" font-size="7.5" fill="#047857">每个工作负载专属 SA</text>
+  <text x="563" y="281.5" text-anchor="middle" font-size="7.5" fill="#047857">回退路径演练过</text>
+  <text x="380" y="340" text-anchor="middle" font-size="9" fill="#334155">判据：403 一定有响应体；只有连接错误那是 D 类，不是授权</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

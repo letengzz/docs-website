@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 404" width="760" height="404" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="404" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">从数据面到指标、日志、链路的三个出口</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">指标答「现在还行不行」，日志答「这一次为什么失败」，链路答「慢在哪一段」</text>
+  <rect x="24" y="78" width="150" height="56" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="99" y="96.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">数据面代理</text>
+  <text x="99" y="113" text-anchor="middle" font-size="7.5" fill="#334155">Envoy / ztunnel</text>
+  <rect x="250" y="82" width="200" height="58" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="350" y="100.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">指标 Metrics</text>
+  <text x="350" y="117" text-anchor="middle" font-size="7.5" fill="#6D28D9">告警 / SLO / 容量</text>
+  <text x="350" y="134.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">成本看序列数</text>
+  <line x1="174" y1="106" x2="246" y2="111" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="250" y="156" width="200" height="58" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="350" y="174.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">访问日志</text>
+  <text x="350" y="191" text-anchor="middle" font-size="7.5" fill="#B45309">单请求排障 / 审计</text>
+  <text x="350" y="208.25" text-anchor="middle" font-size="7.5" fill="#B45309">默认关闭</text>
+  <line x1="174" y1="106" x2="246" y2="185" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="250" y="230" width="200" height="58" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="350" y="248.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">链路 Tracing</text>
+  <text x="350" y="265" text-anchor="middle" font-size="7.5" fill="#0F766E">慢在哪一段</text>
+  <text x="350" y="282.25" text-anchor="middle" font-size="7.5" fill="#0F766E">默认 1% 采样</text>
+  <line x1="174" y1="106" x2="246" y2="259" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="500" y="78" width="236" height="62" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="618" y="96.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">序列数 = 乘出来的</text>
+  <text x="618" y="113" text-anchor="middle" font-size="7.5" fill="#B91C1C">服务 × 服务 × 状态码</text>
+  <text x="618" y="130.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">40 服务 ≈ 上万条序列</text>
+  <rect x="500" y="156" width="236" height="62" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="618" y="174.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">降基数的三招</text>
+  <text x="618" y="191" text-anchor="middle" font-size="7.5" fill="#1D4ED8">只留一侧 reporter</text>
+  <text x="618" y="208.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">采集侧 drop / 生成侧 REMOVE</text>
+  <rect x="500" y="234" width="236" height="62" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="618" y="252.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">日志按需开启</text>
+  <text x="618" y="269" text-anchor="middle" font-size="7.5" fill="#B45309">全网格开 = 全网格 QPS</text>
+  <text x="618" y="286.25" text-anchor="middle" font-size="7.5" fill="#B45309">建议按命名空间开</text>
+  <text x="380" y="322" text-anchor="middle" font-size="8.5" fill="#334155">三个口径陷阱：reporter 双写 · gRPC 状态在 grpc_response_status · destination_service 含端口</text>
+  <rect x="24" y="338" width="712" height="52" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="356" text-anchor="middle" font-size="7.5" fill="#334155">RESPONSE_FLAGS 是排障入口：RBAC=策略拒绝 · UF=上游连接失败 · NR=没匹配路由 · UO=上游过载</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">六阶段迁移路线与每一步的验收门</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">迁移不是替换：逐项对账、双栈并行、保留回退路径</text>
+  <rect x="22" y="80" width="110" height="72" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="77" y="98.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">0 盘点</text>
+  <text x="77" y="115" text-anchor="middle" font-size="7.5" fill="#334155">谁调谁</text>
+  <text x="77" y="132.25" text-anchor="middle" font-size="7.5" fill="#334155">现有配置</text>
+  <rect x="146" y="80" width="110" height="72" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="201" y="98.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">1 只装控制面</text>
+  <text x="201" y="115" text-anchor="middle" font-size="7.5" fill="#6D28D9">不注入</text>
+  <text x="201" y="132.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">稳定 7 天</text>
+  <line x1="132" y1="116" x2="144" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="270" y="80" width="110" height="72" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="325" y="98.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">2 L4 单命名空间</text>
+  <text x="325" y="115" text-anchor="middle" font-size="7.5" fill="#1D4ED8">PERMISSIVE</text>
+  <text x="325" y="132.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">指标无变化</text>
+  <line x1="256" y1="116" x2="268" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="394" y="80" width="110" height="72" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="449" y="98.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">3 切 STRICT</text>
+  <text x="449" y="115" text-anchor="middle" font-size="7.5" fill="#0F766E">无明文来源</text>
+  <text x="449" y="132.25" text-anchor="middle" font-size="7.5" fill="#0F766E">策略已下发</text>
+  <line x1="380" y1="116" x2="392" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="518" y="80" width="110" height="72" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="573" y="98.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">4 L7 治理</text>
+  <text x="573" y="115" text-anchor="middle" font-size="7.5" fill="#B45309">灰度/超时/重试</text>
+  <text x="573" y="132.25" text-anchor="middle" font-size="7.5" fill="#B45309">只有一层重试</text>
+  <line x1="504" y1="116" x2="516" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="642" y="80" width="110" height="72" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="697" y="98.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">5 收尾</text>
+  <text x="697" y="115" text-anchor="middle" font-size="7.5" fill="#047857">删重复 SDK</text>
+  <text x="697" y="132.25" text-anchor="middle" font-size="7.5" fill="#047857">交接所有权</text>
+  <line x1="628" y1="116" x2="640" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="380" y="172" text-anchor="middle" font-size="8.5" fill="#475569">每阶段都有验收门：不过门不许进下一阶段（门的定义见 Migration 第三节）</text>
+  <text x="40" y="202" text-anchor="start" font-size="9.5" fill="#0F172A">能力对账的三种归宿</text>
+  <rect x="24" y="214" width="230" height="78" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="139" y="232.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">下沉网格</text>
+  <text x="139" y="249" text-anchor="middle" font-size="7.5" fill="#6D28D9">服务发现 / LB</text>
+  <text x="139" y="266.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">mTLS / 服务级授权</text>
+  <text x="139" y="283.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">超时 / 重试 / 摘除</text>
+  <rect x="270" y="214" width="230" height="78" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="385" y="232.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">留在业务</text>
+  <text x="385" y="249" text-anchor="middle" font-size="7.5" fill="#B91C1C">限流与配额</text>
+  <text x="385" y="266.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">业务角色授权</text>
+  <text x="385" y="283.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">幂等与状态机</text>
+  <rect x="516" y="214" width="230" height="78" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="631" y="232.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">两边都要</text>
+  <text x="631" y="249" text-anchor="middle" font-size="7.5" fill="#B45309">客户端超时</text>
+  <text x="631" y="266.25" text-anchor="middle" font-size="7.5" fill="#B45309">业务开关（回滚用）</text>
+  <text x="631" y="283.5" text-anchor="middle" font-size="7.5" fill="#B45309">业务 span</text>
+  <rect x="24" y="310" width="708" height="76" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="378" y="328.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">回退三步（顺序不能变）</text>
+  <text x="378" y="345" text-anchor="middle" font-size="7.5" fill="#334155">① 摘标签 + 滚动重启（分钟级）→ ② 保持 PERMISSIVE 观察（立即）→ ③ 恢复 SDK 能力（小时级）</text>
+  <text x="378" y="362.25" text-anchor="middle" font-size="7.5" fill="#334155">这正是「阶段 5 才删 SDK」的原因：删早了，回退就没有退路</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

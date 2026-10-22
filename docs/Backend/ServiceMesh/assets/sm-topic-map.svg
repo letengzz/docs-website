@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 482" width="760" height="482" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="482" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">服务网格专题地图：四个问题、五档成熟度与十页分工</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">先定位自己缺什么，再决定买 mTLS、买 L7 治理，还是什么都不买</text>
+  <rect x="32" y="76" width="168" height="54" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="116" y="94.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">① 凭什么互信</text>
+  <text x="116" y="111" text-anchor="middle" font-size="7.5" fill="#B91C1C">内网 / IP 白名单</text>
+  <rect x="212" y="76" width="168" height="54" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="296" y="94.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">② 多久失败</text>
+  <text x="296" y="111" text-anchor="middle" font-size="7.5" fill="#C2410C">超时靠框架默认</text>
+  <rect x="392" y="76" width="168" height="54" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="476" y="94.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">③ 谁调了谁</text>
+  <text x="476" y="111" text-anchor="middle" font-size="7.5" fill="#B45309">只有入口日志</text>
+  <rect x="572" y="76" width="168" height="54" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="656" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">④ 不改代码切流</text>
+  <text x="656" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">灰度要发版</text>
+  <line x1="116" y1="148" x2="644" y2="148" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="180" y="168" width="400" height="52" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="186.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">五档成熟度  L0 → L4</text>
+  <text x="380" y="203" text-anchor="middle" font-size="7.5" fill="#6D28D9">L0 无治理 · L1 框架内 · L2 仅 L4 · L3 含 L7 · L4 有成本账</text>
+  <line x1="116" y1="132" x2="116" y2="146" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="296" y1="132" x2="296" y2="146" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="476" y1="132" x2="476" y2="146" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="656" y1="132" x2="656" y2="146" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="380" y1="148" x2="380" y2="166" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="28" y="254" width="224" height="68" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="140" y="272.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">选型与形态</text>
+  <text x="140" y="289" text-anchor="middle" font-size="7.5" fill="#6D28D9">Overview：四个问题</text>
+  <text x="140" y="306.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">Architecture：Sidecar/Ambient</text>
+  <rect x="268" y="254" width="224" height="68" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="272.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">身份与授权</text>
+  <text x="380" y="289" text-anchor="middle" font-size="7.5" fill="#B91C1C">Identity：SPIFFE + mTLS</text>
+  <text x="380" y="306.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">PeerAuthentication / Policy</text>
+  <rect x="508" y="254" width="224" height="68" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="620" y="272.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">流量治理</text>
+  <text x="620" y="289" text-anchor="middle" font-size="7.5" fill="#C2410C">Traffic：路由优先级</text>
+  <text x="620" y="306.25" text-anchor="middle" font-size="7.5" fill="#C2410C">超时预算 / 重试放大</text>
+  <rect x="28" y="338" width="224" height="68" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="140" y="356.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">观测与性能</text>
+  <text x="140" y="373" text-anchor="middle" font-size="7.5" fill="#0F766E">Observability：基数</text>
+  <text x="140" y="390.25" text-anchor="middle" font-size="7.5" fill="#0F766E">Performance：每跳与每 Pod</text>
+  <rect x="268" y="338" width="224" height="68" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="380" y="356.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">故障与迁移</text>
+  <text x="380" y="373" text-anchor="middle" font-size="7.5" fill="#B45309">Failure：四类爆炸半径</text>
+  <text x="380" y="390.25" text-anchor="middle" font-size="7.5" fill="#B45309">Migration：双栈与回退</text>
+  <rect x="508" y="338" width="224" height="68" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="620" y="356.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">实战与 FAQ</text>
+  <text x="620" y="373" text-anchor="middle" font-size="7.5" fill="#1D4ED8">Practice：kind 全链路</text>
+  <text x="620" y="390.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">FAQ：四类分诊</text>
+  <line x1="380" y1="222" x2="380" y2="250" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="404" y="240" text-anchor="start" font-size="7.5" fill="#64748B">按需取章</text>
+  <rect x="28" y="426" width="704" height="40" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="444" text-anchor="middle" font-size="7.5" fill="#334155">三条底线：先答「凭什么互信」 · 只做与业务无关的治理 · 网格自身可用性单独设计</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -330,3 +330,22 @@ kubectl -n web get events --sort-by=.lastTimestamp | tail -20
 - [密钥与凭据治理](../../SecurityHardening/SecretGovernance/index.md)：K8s Secret 的集中托管、轮换与 External Secrets
 - [审计与检测](../../SecurityHardening/AuditDetection/index.md)：K8s 审计日志、auditd 与 Falco 告警闭环
 - [工具 · 代码质量平台](../../../Tools/CodeQuality/index.md)：**分工是**——本页管的是**集群与运行时侧**（Pod 安全标准、准入控制、运行时检测），对象是「已经跑起来的负载」；那一专题管的是**编码与合并阶段**（静态分析、质量门禁、PR 卡点），对象是「还没构建的代码」。同一个 CVE 会在两处露面：**镜像层扫描在本页，源码层可达性在那一专题**，谁先发现谁先记录。
+
+## 四层防护里网格补的是第三层（第 187 天补充）
+
+本页讲的是集群与运行时侧的防护（Pod 安全标准、准入控制、NetworkPolicy、运行时检测）。服务网格补的是**其中一层**，不是全部：
+
+| 层 | 解决的问题 | 归属 |
+| --- | --- | --- |
+| ① 主机与容器边界 | 容器逃逸、特权容器、挂载 | 本页（Pod Security、seccomp、AppArmor） |
+| ② 网络可达性 | 谁能连到谁（IP/端口） | 本页（NetworkPolicy） |
+| ③ 工作负载身份 | 「你是哪个服务」+ 传输加密 | 网格（SPIFFE + mTLS，见 [身份与 mTLS](../../Backend/ServiceMesh/Identity/index.md)） |
+| ④ 服务级授权 | 哪个服务能调哪个路径 | 网格（`AuthorizationPolicy`） |
+
+**NetworkPolicy 与 mTLS 是互补的**：前者限制「能不能到达」，后者证明「到达的是谁」。只做前者，同命名空间内任意 Pod 都能冒充调用方；只做后者，攻击面仍是全网可达。两层都要有。
+
+另外一条容易过期的信息：**Cilium 1.20 起弃用了原有的 mutual authentication，改推基于 ztunnel 的 mTLS（beta）**。如果你的集群用 Cilium 且计划靠它做服务间加密，选型时要按新方案评估，别照抄两年前的「eBPF 天然 mTLS」说法。
+
+::: danger 本页特有的坑：以为开了 mTLS 就等于「内网零信任」
+mTLS 只保证「连接双方各自持有对应身份的证书」。它不阻止**持有合法身份的服务**做越权操作——被攻陷的 `order` Pod 仍然拥有 `order` 的证书，能调所有允许 `order` 调的接口。真正的零信任要在此之上叠加最小权限的 `AuthorizationPolicy`，以及「这个服务本来就不该有这么多权限」的持续收敛。
+:::

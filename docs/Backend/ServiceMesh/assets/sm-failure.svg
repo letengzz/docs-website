@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 404" width="760" height="404" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="404" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四类故障的爆炸半径与处置顺序</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">网格出故障时，症状总是长得像业务故障——先分清是「没进网格」还是「网格坏了」</text>
+  <rect x="26" y="78" width="344" height="100" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="198" y="96.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">控制面不可用</text>
+  <text x="198" y="113" text-anchor="middle" font-size="7.5" fill="#C2410C">现有流量仍可跑</text>
+  <text x="198" y="130.25" text-anchor="middle" font-size="7.5" fill="#C2410C">24h 后证书过期</text>
+  <text x="198" y="147.5" text-anchor="middle" font-size="7.5" fill="#C2410C">新建 Pod 会卡住</text>
+  <text x="326" y="100" text-anchor="middle" font-size="8" fill="#94A3B8">控制面</text>
+  <rect x="390" y="78" width="344" height="100" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="562" y="96.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">证书过期</text>
+  <text x="562" y="113" text-anchor="middle" font-size="7.5" fill="#B91C1C">全网格 mTLS 失败</text>
+  <text x="562" y="130.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">明文旅仍可能通</text>
+  <text x="562" y="147.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">恢复后证书风暴</text>
+  <text x="690" y="100" text-anchor="middle" font-size="8" fill="#94A3B8">证书</text>
+  <rect x="26" y="206" width="344" height="100" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="198" y="224.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">ztunnel 崩溃</text>
+  <text x="198" y="241" text-anchor="middle" font-size="7.5" fill="#6D28D9">整节点网络中断</text>
+  <text x="198" y="258.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">共享组件的代价</text>
+  <text x="198" y="275.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">先 cordon 节点</text>
+  <text x="326" y="228" text-anchor="middle" font-size="8" fill="#94A3B8">数据面</text>
+  <rect x="390" y="206" width="344" height="100" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="562" y="224.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">升级顺序错</text>
+  <text x="562" y="241" text-anchor="middle" font-size="7.5" fill="#1D4ED8">代理比控制面新</text>
+  <text x="562" y="258.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">配置字段不识别</text>
+  <text x="562" y="275.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">按 revision 金丝雀</text>
+  <text x="690" y="228" text-anchor="middle" font-size="8" fill="#94A3B8">变更</text>
+  <rect x="26" y="322" width="708" height="66" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="340" text-anchor="middle" font-size="7.5" fill="#334155">值班五分钟：控制面活着吗 → 数据面同步吗 → 证书还好吗 → 是拒绝还是不通 → 谁改了什么</text>
+  <text x="380" y="357.25" text-anchor="middle" font-size="7.5" fill="#334155">判据只有一条：proxy-status 全 SYNCED + 证书剩余时间充足，才算「网格本身健康」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -346,3 +346,22 @@ curl -s http://127.0.0.1:9999/metrics | grep -E '^rpc_server_(requests|errors|re
 - [微服务](../../Microservices/index.md) —— 注册发现与配置中心的通用原理
 - [监控告警](../../../Ops/Monitoring/index.md) —— RED 指标如何变成告警规则
 - [日志体系](../../../Ops/LogSystem/index.md) —— 结构化日志与 trace_id 关联的落地方案
+
+## 六个环节各自归谁（第 187 天补充）
+
+本页把治理拆成注册发现、负载均衡、超时、重试、熔断限流、可观测六个环节。如果团队后来引入了服务网格，这六个环节会**一半下沉、一半留下**，逐项对账如下：
+
+| 环节 | 下沉到网格 | 留在框架/业务 | 关键理由 |
+| --- | --- | --- | --- |
+| 注册发现 | ✅（直接读 `EndpointSlice`） | ❌ 必须删掉 | 两套发现并存会让部分流量绕过网格 |
+| 负载均衡 | ✅（`DestinationRule.loadBalancer`） | ❌ | 客户端 LB 与网格 LB 会互相打断会话亲和 |
+| 超时 | ✅ 兜底 | ✅ 保留 | 网格只管它那一跳，业务内部等待不受控 |
+| 重试 | ✅ | ⚠️ 只留一层 | 语义不同：网格默认不重试 5xx，SDK 常重试 |
+| 熔断限流 | 熔断 ✅ / 限流 ❌ | 限流必须留 | 网格无内置配额模型 |
+| 可观测 | ✅ 网络层 | ✅ 业务 span | 业务语义只有业务知道 |
+
+完整的迁移顺序与回退方案在 [从 SDK 治理到网格](../../ServiceMesh/Migration/index.md)。
+
+::: warning 本页特有的坑：`grpc.Dial` 的目标地址与网格接管冲突
+Go 微服务常把注册中心地址写进 `grpc.Dial`（如 `consul:///order`），由 resolver 自己做服务发现。进网格后这条路径**不会经过代理**（代理只接管发往 Pod IP / Service 名的流量），表现是「mTLS 开了但这条调用还是明文、指标里也没有它」。改法是：把 dial 目标改回 Kubernetes Service 名（`order.shop.svc.cluster.local:50051`），让解析交给集群 DNS、由网格接管连接。
+:::

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 404" width="760" height="404" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="404" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">每跳延迟的构成与资源开销的三个来源</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">延迟看连接形态，资源看拓扑规模——同一套网格能差一个数量级</text>
+  <text x="40" y="82" text-anchor="start" font-size="9.5" fill="#0F172A">一跳延迟的四个组成部分（量级示意，不是实测值）</text>
+  <rect x="40" y="96" width="120" height="34" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="100" y="118" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">内核转发</text>
+  <text x="100" y="146" text-anchor="middle" font-size="7.5" fill="#334155">数十微秒</text>
+  <rect x="168" y="96" width="200" height="34" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="268" y="118" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">代理处理</text>
+  <text x="268" y="146" text-anchor="middle" font-size="7.5" fill="#6D28D9">0.1~0.5 ms</text>
+  <rect x="376" y="96" width="230" height="34" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="491" y="118" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">TLS 握手</text>
+  <text x="491" y="146" text-anchor="middle" font-size="7.5" fill="#C2410C">1~3 ms（首次）</text>
+  <rect x="614" y="96" width="130" height="34" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="679" y="118" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">队列调度</text>
+  <text x="679" y="146" text-anchor="middle" font-size="7.5" fill="#B91C1C">看 CPU 限流</text>
+  <text x="380" y="172" text-anchor="middle" font-size="8.5" fill="#475569">长连接 + h2 复用能省掉绝大部分握手成本——所以「加了几毫秒」必须先说连接形态</text>
+  <rect x="24" y="190" width="232" height="108" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="140" y="208.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">资源来源 ① 常驻</text>
+  <text x="140" y="225" text-anchor="middle" font-size="7.5" fill="#6D28D9">每 Pod 代理</text>
+  <text x="140" y="242.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">requests 100m / 128Mi</text>
+  <text x="140" y="259.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">limits 2 核 / 1Gi</text>
+  <rect x="268" y="190" width="232" height="108" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="384" y="208.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">资源来源 ② 配置快照</text>
+  <text x="384" y="225" text-anchor="middle" font-size="7.5" fill="#1D4ED8">上游服务数 × 端点</text>
+  <text x="384" y="242.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">大集群主要增长项</text>
+  <text x="384" y="259.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">用 Sidecar 收窄可见范围</text>
+  <rect x="512" y="190" width="224" height="108" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="624" y="208.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">资源来源 ③ 连接缓冲</text>
+  <text x="624" y="225" text-anchor="middle" font-size="7.5" fill="#0F766E">并发连接 × 缓冲</text>
+  <text x="624" y="242.25" text-anchor="middle" font-size="7.5" fill="#0F766E">长连接场景显著</text>
+  <text x="624" y="259.5" text-anchor="middle" font-size="7.5" fill="#0F766E">高 QPS 节点先看这里</text>
+  <rect x="24" y="316" width="340" height="78" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="194" y="334.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">算例：420 Pod × 默认 requests</text>
+  <text x="194" y="351" text-anchor="middle" font-size="7.5" fill="#B91C1C">CPU 42 vCPU / 内存 52.5 GiB</text>
+  <text x="194" y="368.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">预留即等于少装 42 核业务容量</text>
+  <rect x="384" y="316" width="352" height="78" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="560" y="334.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">ztunnel 的两个「不要」</text>
+  <text x="560" y="351" text-anchor="middle" font-size="7.5" fill="#B45309">不要设 CPU limit（线程档被压）</text>
+  <text x="560" y="368.25" text-anchor="middle" font-size="7.5" fill="#B45309">不要设内存 limit（全节点断网）</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

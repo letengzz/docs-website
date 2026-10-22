@@ -374,10 +374,23 @@ curl -s -o /dev/null -w "%{http_code} %{time_total}\n" http://localhost:8080/api
 
 本节涉及的版本与时效性结论按 2026-10 口径整理；使用前请以官方发布页为准。
 
-
 - [nginx `ngx_http_limit_req_module`（漏桶、`burst`、`dry_run`、`$limit_req_status`）](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html)
 - [redis-cell（`CL.THROTTLE` / GCRA，注意其维护模式声明）](https://github.com/t-ho/redis-cell)
 - [Bucket4j 官方文档（令牌桶的 Java 实现与集群支持）](https://bucket4j.com/)
 - [RFC 6585 · `429 Too Many Requests`](https://www.rfc-editor.org/rfc/rfc6585)
 - [RFC 9110 · `Retry-After` 语义](https://www.rfc-editor.org/rfc/rfc9110)
 - [Sentinel 官方仓库与 Releases（1.8.10 为当前稳定版）](https://github.com/alibaba/Sentinel/releases)
+
+## 网格不提供限流，但它决定限流有没有用（第 187 天补充）
+
+一个常见误解是「上了服务网格就有全局限流」。事实是：**Istio 本身没有内建配额/限流模型**，限流仍在网关（入口）或业务（按用户/租户配额）里做。网格能做的是另一件事——**控制单个上游实例收到多少并发、以及坏实例要不要被摘掉**。
+
+两者配合的关系：
+
+- **限流决定「放进来多少」**，网格的 `connectionPool` 决定「同时在飞多少」，`outlierDetection` 决定「坏实例多久被踢出」。
+- **重试会直接抵消限流**：入口限流 1000 QPS，若每个请求在最坏情况下重试 3 次，实际打到下游的是 3000 QPS。限流阈值必须按「含重试的放大倍数」折算，放大算式见 [服务网格 · 东西向流量治理](../../ServiceMesh/Traffic/index.md)。
+- **`429` 与 `503` 的语义不要混**：限流拒绝应该是 `429`（带 `Retry-After`），网格摘除与过载是 `503`/`UO`。混用会让调用方的退避策略失效。
+
+::: warning 本页特有的坑：把「连接数上限」当限流
+`connectionPool.tcp.maxConnections` 打满后的表现是**请求排队**而不是拒绝——调用方看到的是延迟上升，不是 `429`。用它替代限流，会把「明确的拒绝」换成「缓慢的超时」，在上游看来更难判断是否需要退避。队列只能当缓冲，不能当闸门。
+:::
