@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 476" width="960" height="476" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="476" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">灰度下发：从「一条配置」到「所有人」之间的三道闸门</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">每道闸门都要能回答「不通过怎么办」，否则它只是流程装饰</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+<rect x="30" y="100" width="210" height="92" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="42" y="121" font-size="13" font-weight="700" fill="#1f2d3d">闸门一 · 命中谁</text>
+<text x="42" y="141.0" font-size="11.5" fill="#5a6b7b">beta IP / 标签 / 百分比</text>
+<text x="42" y="157.5" font-size="11.5" fill="#5a6b7b">命中集合必须可枚举</text>
+<rect x="280" y="100" width="210" height="92" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="292" y="121" font-size="13" font-weight="700" fill="#1f2d3d">闸门二 · 观察什么</text>
+<text x="292" y="141.0" font-size="11.5" fill="#5a6b7b">错误率、延迟、业务指标</text>
+<text x="292" y="157.5" font-size="11.5" fill="#5a6b7b">预置阈值 + 观察窗时长</text>
+<rect x="530" y="100" width="210" height="92" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="542" y="121" font-size="13" font-weight="700" fill="#1f2d3d">闸门三 · 怎么退</text>
+<text x="542" y="141.0" font-size="11.5" fill="#5a6b7b">回滚到上一个 nid</text>
+<text x="542" y="157.5" font-size="11.5" fill="#5a6b7b">回滚也要走同一条通道</text>
+<rect x="780" y="100" width="150" height="92" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="792" y="121" font-size="13" font-weight="700" fill="#1f2d3d">全量</text>
+<text x="792" y="141.0" font-size="11.5" fill="#5a6b7b">逐步扩大</text>
+<text x="792" y="157.5" font-size="11.5" fill="#5a6b7b">留最终回滚点</text>
+<line x1="240" y1="146" x2="280" y2="146" stroke="#2b5c8a" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="490" y1="146" x2="530" y2="146" stroke="#c2703a" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="740" y1="146" x2="780" y2="146" stroke="#b5432f" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="605" y1="192" x2="605" y2="212" stroke="#b5432f" stroke-width="1.6" stroke-dasharray="6 4"/>
+<line x1="605" y1="212" x2="135" y2="212" stroke="#b5432f" stroke-width="1.6" stroke-dasharray="6 4"/>
+<line x1="135" y1="212" x2="135" y2="192" stroke="#b5432f" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="30" y="240" font-size="12" fill="#5a6b7b" text-anchor="start" font-weight="normal">虚线 = 回滚：任何一道闸门不通过都回到「上一个 nid」，而不是「改回旧值再发一次」——后者会再多一版历史。</text>
+<rect x="30" y="268" width="430" height="128" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="42" y="289" font-size="13" font-weight="700" fill="#1f2d3d">灰度的三种维度，选错就白做</text>
+<text x="42" y="309.0" font-size="11.5" fill="#5a6b7b">按 IP：只适合「找几台机器试」，IP 一变就失效，不能进正式流程。</text>
+<text x="42" y="325.5" font-size="11.5" fill="#5a6b7b">按标签（如 canary / region）：需要服务注册与路由配合，最稳。</text>
+<text x="42" y="342.0" font-size="11.5" fill="#5a6b7b">按百分比：配置中心通常不提供，要靠「业务侧读比例 + 稳定散列」自建。</text>
+<rect x="490" y="268" width="440" height="128" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="502" y="289" font-size="13" font-weight="700" fill="#1f2d3d">灰度与功能开关不是一回事</text>
+<text x="502" y="309.0" font-size="11.5" fill="#5a6b7b">开关：同一份配置下，按用户/租户决定「走不走新逻辑」，可以长期存在。</text>
+<text x="502" y="325.5" font-size="11.5" fill="#5a6b7b">灰度：把「一份配置」只发给一部分实例，通常几小时内收回。</text>
+<text x="502" y="342.0" font-size="11.5" fill="#5a6b7b">把灰度当开沿用 → 没人敢删；把开关当灰度用 → 配置中心里堆满分支。</text>
+<text x="30" y="426" font-size="12" fill="#5a6b7b" text-anchor="start" font-weight="normal">实测提醒：Nacos 2.5.1 的 v1 读接口不带来源 IP 概念，带 betaIps 与否读到同一份内容——</text>
+<text x="30" y="448" font-size="12" fill="#5a6b7b" text-anchor="start" font-weight="normal">用 curl 验收灰度是无效的，必须用真实客户端在目标实例上读。</text>
+</svg>

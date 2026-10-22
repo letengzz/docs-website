@@ -177,6 +177,17 @@ app:
 4. 把 `app.version` 写错为 `app.versionx`，`@ConfigurationProperties` 启动时能发现未知字段（开启 `ignoreUnknownFields=false` 时）。
 5. 生产环境用环境变量 `APP_TOKEN` 注入，未设置时使用默认值。
 
+## 配置的加载顺序与刷新边界（第 188 天补充）
+
+本页讲的是"单进程内怎么读到配置"。当配置来自**配置中心**时，多出两个问题：优先级怎么排、改了什么时候生效。完整机制见 [配置管理与动态配置](../../../../../../Ops/ConfigManagement/index.md)，这里只留四条能直接用的结论：
+
+1. **优先级**：配置中心的 `PropertySource` 默认排在本地 `application.yml` 之后（更高），所以"本地写了但没生效"通常是正常的；反过来，**环境变量仍然能盖掉配置中心**（`PropertySource` 顺序在 Spring Boot 里是 `systemEnvironment` 高于大多数 `bootstrap`/`config` 源），这就是"中心里改了半天不生效"的最常见原因。
+2. **三种写法的刷新行为不同**：`@Value` 依赖所在 bean 是否重建（普通 bean 不会重建，值不变）；`@ConfigurationProperties` 会重新绑定；`@RefreshScope` 会销毁重建该 bean（代价最大）。
+3. **有一类配置改了没用**：连接池大小、线程池核心数、服务端口这类"构造期决定"的参数，热更新不生效，只能重启——验收要读运行时的真实值，不要读配置文件。
+4. **生效延迟**：服务端缓存窗口（实测 ≤100 ms）+ 客户端轮询周期（默认 30 s，实测挂 29.51 s）之和，不是"立刻"。
+
+对应的验证方式：给应用加一个只读端点，返回**进程里真实生效的值**（读的是注入后的字段，不是文件），再配合配置中心的历史版本号做对照。
+
 ## 参考资料
 
 - Spring Boot 外部化配置：https://docs.spring.io/spring-boot/how-to/properties-and-configuration.html

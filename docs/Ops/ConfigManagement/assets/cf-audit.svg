@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">配置的历史是一条链，不是一个计数器</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">Nacos 2.5.1 实测：nid 全局自增，lastId 指向同一条配置的上一个版本</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+<rect x="60" y="104" width="130" height="70" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="72" y="125" font-size="13" font-weight="700" fill="#1f2d3d">nid=9</text>
+<text x="72" y="145.0" font-size="11.5" fill="#5a6b7b">v=0</text>
+<text x="72" y="161.5" font-size="11.5" fill="#5a6b7b">srcIp / opType 可查</text>
+<rect x="230" y="104" width="130" height="70" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="242" y="125" font-size="13" font-weight="700" fill="#1f2d3d">nid=10</text>
+<text x="242" y="145.0" font-size="11.5" fill="#5a6b7b">v=1</text>
+<text x="242" y="161.5" font-size="11.5" fill="#5a6b7b">srcIp / opType 可查</text>
+<rect x="400" y="104" width="130" height="70" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="412" y="125" font-size="13" font-weight="700" fill="#1f2d3d">nid=11</text>
+<text x="412" y="145.0" font-size="11.5" fill="#5a6b7b">v=2</text>
+<text x="412" y="161.5" font-size="11.5" fill="#5a6b7b">srcIp / opType 可查</text>
+<rect x="570" y="104" width="130" height="70" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="582" y="125" font-size="13" font-weight="700" fill="#1f2d3d">nid=12</text>
+<text x="582" y="145.0" font-size="11.5" fill="#5a6b7b">v=3</text>
+<text x="582" y="161.5" font-size="11.5" fill="#5a6b7b">srcIp / opType 可查</text>
+<rect x="740" y="104" width="130" height="70" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="752" y="125" font-size="13" font-weight="700" fill="#1f2d3d">nid=16</text>
+<text x="752" y="145.0" font-size="11.5" fill="#5a6b7b">删除</text>
+<text x="752" y="161.5" font-size="11.5" fill="#5a6b7b">srcIp / opType 可查</text>
+<line x1="190" y1="139" x2="230" y2="139" stroke="#2b5c8a" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="360" y1="139" x2="400" y2="139" stroke="#2b5c8a" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="530" y1="139" x2="570" y2="139" stroke="#2b5c8a" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="700" y1="139" x2="740" y2="139" stroke="#b5432f" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="30" y="196" font-size="12" fill="#5a6b7b" text-anchor="start" font-weight="normal">实测四条读数：totalCount=4（连续发 4 次）· id 为 12/11/10/9（全局自增，不按配置从 1 开始）· lastId 串成链 · 删除也记一条但 content=null。</text>
+<rect x="30" y="222" width="430" height="110" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="42" y="243" font-size="13" font-weight="700" fill="#1f2d3d">回滚 = 用旧内容再发一版</text>
+<text x="42" y="263.0" font-size="11.5" fill="#5a6b7b">不要改数据库、不要直接删历史：用「读某 nid 的内容 → 重新发布」实现回滚。</text>
+<text x="42" y="279.5" font-size="11.5" fill="#5a6b7b">好处：回滚本身留痕、可再回滚；坏处：版本号继续增长，别指望「回到 12」。</text>
+<text x="42" y="296.0" font-size="11.5" fill="#5a6b7b">判据 CFA-D：回滚动作必须能对应到某个 nid，否则无法审计。</text>
+<rect x="490" y="222" width="440" height="110" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="502" y="243" font-size="13" font-weight="700" fill="#1f2d3d">审计字段：没有 srcIp 的审计等于没有审计</text>
+<text x="502" y="263.0" font-size="11.5" fill="#5a6b7b">必留：谁（srcUser）、从哪（srcIp）、什么时候、</text>
+<text x="502" y="279.5" font-size="11.5" fill="#5a6b7b">改了什么（md5 + diff）、为什么（发布单号）。</text>
+<text x="502" y="296.0" font-size="11.5" fill="#5a6b7b">「为什么」配置中心不记，要靠发布单号回溯到工单系统。</text>
+<text x="502" y="312.5" font-size="11.5" fill="#5a6b7b">判据 CFA-E：历史条目里 srcUser 为空的比例 = 无法归因的比例。</text>
+<rect x="30" y="346" width="900" height="74" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="42" y="367" font-size="13" font-weight="700" fill="#1f2d3d">删除是最危险的一步：删完再读是 404，不是「回默认值」</text>
+<text x="42" y="387.0" font-size="11.5" fill="#5a6b7b">实测：DELETE 之后 GET 返回 404 config data not exist；客户端的处理取决于它自己（有的报错退出、有的保留内存旧值）。</text>
+<text x="42" y="403.5" font-size="11.5" fill="#5a6b7b">所以「下线一个配置」要按「先让所有消费方不再读 → 再删」推进，删之前先确认没有长轮询还在监听它。</text>
+</svg>

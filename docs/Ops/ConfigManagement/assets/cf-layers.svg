@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="470" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">配置的四种来源与覆盖顺序</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">离进程越近优先级越高；箭头方向 = 覆盖方向（后面的盖掉前面的）</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+<rect x="30" y="96" width="420" height="66" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="42" y="117" font-size="13" font-weight="700" fill="#1f2d3d">① 代码内默认值</text>
+<text x="42" y="137.0" font-size="11.5" fill="#5a6b7b">写在 application.yml / 常量里，随镜像发布</text>
+<text x="42" y="153.5" font-size="11.5" fill="#5a6b7b">优点：永远有值；缺点：改一次要发一次版</text>
+<rect x="30" y="176" width="420" height="66" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="42" y="197" font-size="13" font-weight="700" fill="#1f2d3d">② 镜像内配置文件</text>
+<text x="42" y="217.0" font-size="11.5" fill="#5a6b7b">打进镜像的 profile 文件（dev/staging 各一份）</text>
+<text x="42" y="233.5" font-size="11.5" fill="#5a6b7b">风险：镜像一换环境就换语义</text>
+<line x1="240" y1="162" x2="240" y2="176" stroke="#2b5c8a" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="30" y="256" width="420" height="66" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="42" y="277" font-size="13" font-weight="700" fill="#1f2d3d">③ 环境变量 / 启动参数</text>
+<text x="42" y="297.0" font-size="11.5" fill="#5a6b7b">K8s env、-D 参数、compose 的 environment</text>
+<text x="42" y="313.5" font-size="11.5" fill="#5a6b7b">优点：同一镜像跑多环境；缺点：多了没人清</text>
+<line x1="240" y1="242" x2="240" y2="256" stroke="#2f8f7d" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="30" y="336" width="420" height="66" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="42" y="357" font-size="13" font-weight="700" fill="#1f2d3d">④ 配置中心（动态）</text>
+<text x="42" y="377.0" font-size="11.5" fill="#5a6b7b">运行时可变，支持灰度与审计</text>
+<text x="42" y="393.5" font-size="11.5" fill="#5a6b7b">风险：中心挂了要能退回 ③</text>
+<line x1="240" y1="322" x2="240" y2="336" stroke="#c2703a" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="30" y="424" font-size="12" fill="#1f2d3d" text-anchor="start" font-weight="normal">优先级：④ &gt; ③ &gt; ② &gt; ①（Spring 的 PropertySource 顺序即此，越后加的越优先）</text>
+<rect x="500" y="96" width="430" height="118" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="512" y="117" font-size="13" font-weight="700" fill="#1f2d3d">判定「单一来源」的三问</text>
+<text x="512" y="137.0" font-size="11.5" fill="#5a6b7b">这个键的权威值存在哪里？只允许一处。</text>
+<text x="512" y="153.5" font-size="11.5" fill="#5a6b7b">其余来源是「默认」还是「覆盖」？必须写明。</text>
+<text x="512" y="170.0" font-size="11.5" fill="#5a6b7b">改这个键，需要谁批准、怎么回滚？</text>
+<rect x="500" y="230" width="430" height="132" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="512" y="251" font-size="13" font-weight="700" fill="#1f2d3d">冲突只有两种，处置方式相反</text>
+<text x="512" y="271.0" font-size="11.5" fill="#5a6b7b">① 有意的覆盖（dev 用本地库）：白名单登记，评审可查。</text>
+<text x="512" y="287.5" font-size="11.5" fill="#5a6b7b">② 无意的覆盖（旧 env 没删）：线上读到的不是你想的值。</text>
+<text x="512" y="304.0" font-size="11.5" fill="#5a6b7b">判据 CFL-E：同名键出现在 ≥2 个来源且无登记 → 阻断发布。</text>
+<rect x="500" y="378" width="430" height="96" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="512" y="399" font-size="13" font-weight="700" fill="#1f2d3d">分层不是越多越好</text>
+<text x="512" y="419.0" font-size="11.5" fill="#5a6b7b">每多一层，多一次「值从哪来」的排查成本。</text>
+<text x="512" y="435.5" font-size="11.5" fill="#5a6b7b">四层是上限：再加就该合并或删。</text>
+</svg>

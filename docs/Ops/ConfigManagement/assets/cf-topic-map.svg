@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 516" width="960" height="516" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="516" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">配置管理与动态配置 · 专题地图</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">三块机制面（分层 / 生效边界 / 灰度）、两块治理面（审计回滚 / 配置即代码）、两块版本面、一块故障面与实战</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+<rect x="30" y="92" width="292" height="104" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="42" y="113" font-size="13" font-weight="700" fill="#1f2d3d">一 · 配置分层与单一来源</text>
+<text x="42" y="133.0" font-size="11.5" fill="#5a6b7b">四层覆盖链，谁赢由「离进程远近」定</text>
+<text x="42" y="149.5" font-size="11.5" fill="#5a6b7b">同名键 / 环境差异 / 单一来源判定</text>
+<rect x="30" y="210" width="292" height="104" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="42" y="231" font-size="13" font-weight="700" fill="#1f2d3d">二 · 读取路径与生效边界</text>
+<text x="42" y="251.0" font-size="11.5" fill="#5a6b7b">长轮询挂 29.51 s；服务端刷缓存 ≤100 ms</text>
+<text x="42" y="267.5" font-size="11.5" fill="#5a6b7b">哪些项可热更、哪些必须重启</text>
+<rect x="352" y="92" width="292" height="104" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="364" y="113" font-size="13" font-weight="700" fill="#1f2d3d">三 · 灰度下发与批次</text>
+<text x="364" y="133.0" font-size="11.5" fill="#5a6b7b">beta IP / 标签 / 百分比，三道闸门</text>
+<text x="364" y="149.5" font-size="11.5" fill="#5a6b7b">HTTP 读接口证明不了灰度（实测）</text>
+<rect x="352" y="210" width="292" height="104" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="364" y="231" font-size="13" font-weight="700" fill="#1f2d3d">四 · 变更审计与回滚</text>
+<text x="364" y="251.0" font-size="11.5" fill="#5a6b7b">全局自增 id + lastId 链，可沿链回溯</text>
+<text x="364" y="267.5" font-size="11.5" fill="#5a6b7b">删配置 ≠ 回默认值（404）</text>
+<rect x="674" y="92" width="256" height="104" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="686" y="113" font-size="13" font-weight="700" fill="#1f2d3d">六 · 故障面</text>
+<text x="686" y="133.0" font-size="11.5" fill="#5a6b7b">中心不可用 / 半截配置</text>
+<text x="686" y="149.5" font-size="11.5" fill="#5a6b7b">批量不原子 / 误删</text>
+<rect x="674" y="210" width="256" height="104" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="686" y="231" font-size="13" font-weight="700" fill="#1f2d3d">五 · 配置即代码</text>
+<text x="686" y="251.0" font-size="11.5" fill="#5a6b7b">Git 与中心三种主从关系</text>
+<text x="686" y="267.5" font-size="11.5" fill="#5a6b7b">双向漂移对账</text>
+<rect x="30" y="328" width="480" height="92" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="42" y="349" font-size="13" font-weight="700" fill="#1f2d3d">七 · Nacos 2.x（存量维护 · 仅存量项目）</text>
+<text x="42" y="369.0" font-size="11.5" fill="#5a6b7b">v1 API · 8848/9848 · 默认不鉴权 · 有默认账号 nacos/nacos</text>
+<rect x="530" y="328" width="400" height="92" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="542" y="349" font-size="13" font-weight="700" fill="#1f2d3d">八 · Nacos 3.x（当前基线）</text>
+<text x="542" y="369.0" font-size="11.5" fill="#5a6b7b">v3 API · 8848+8080+9848/9849+7848 · 强制 token · 无默认账号</text>
+<rect x="30" y="434" width="900" height="56" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="42" y="455" font-size="13" font-weight="700" fill="#1f2d3d">九 · 实战：一条配置从提交到全量的 7 步</text>
+<text x="42" y="475.0" font-size="11.5" fill="#5a6b7b">校验 → 灰度 → 观察窗 → 全量 → 审计留痕 → 回滚点 → 对账；每步一条可执行判据，判据族 CFL~CFP 共 72 条</text>
+</svg>

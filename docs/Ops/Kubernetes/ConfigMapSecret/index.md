@@ -119,6 +119,30 @@ Secret 只是**不是明文**，base64 不是加密，任何有权限读取 API 
 2. `kubectl exec -it <pod> -- env | grep APP_ENV` 确认环境变量注入。
 3. `kubectl exec -it <pod> -- cat /etc/app/config/config.properties` 确认文件挂载。
 
+## 与「配置管理与动态配置」专题的分工（第 188 天补充）
+
+ConfigMap 是「K8s 原生的配置载体」，配置中心是「跨集群、跨运行时的配置服务」。两者最常见的错误用法是**双写**：CI 既推配置中心、又 `kubectl apply` 一份 ConfigMap，于是同一份配置有两个权威。
+
+三条边界：
+
+| 场景 | 用哪个 | 理由 |
+| --- | --- | --- |
+| 应用跑在 K8s 里，配置与镜像同生命周期 | ConfigMap | 声明式、随 Deployment 一起回滚 |
+| 多集群 / 混合运行时（VM + 容器）共用一份配置 | 配置中心 | ConfigMap 跨不了集群边界 |
+| 需要灰度到部分实例、需要变更审计 | 配置中心 | ConfigMap 没有"发给谁"的维度 |
+
+一个必须知道的事实：**ConfigMap 的更新不是实时的**。kubelet 按 `--sync-frequency`（默认 1 分钟）与 ConfigMap 缓存 TTL 决定何时重新拉取，再叠加写入挂载卷的延迟，整体是**分钟级**；而用 `subPath` 挂载的单文件**永远不会更新**——这是"改了没生效"的第一大原因。验证方式：
+
+```shell
+# 看挂载方式：出现 subPath 就说明这个文件不会热更
+kubectl get deploy <name> -o jsonpath='{range .spec.template.spec.containers[*].volumeMounts[*]}{.name}{"\t"}{.subPath}{"\n"}{end}'
+
+# 看容器内文件的实际修改时间（与环境变量注入对比：env 注入的值永不更新）
+kubectl exec <pod> -- stat -c '%y %n' /etc/app/application.yaml
+```
+
+判据沿用新专题的 `CFF-D`（启动期与运行期兜底分开）与 `CFL-G`（环境隔离方式唯一）：**ConfigMap 与配置中心只能有一个权威**，另一个必须是渲染产物或不存在。
+
 ## 参考资料
 
 - ConfigMap：https://kubernetes.io/zh-cn/docs/concepts/configuration/configmap/

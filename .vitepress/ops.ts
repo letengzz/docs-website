@@ -471,3 +471,20 @@ export const DatabaseUpgrade = [
     ],
   },
 ];
+export const ConfigManagement = [
+  {
+    text: "配置管理与动态配置",
+    link: "/docs/Ops/ConfigManagement/index.md",
+    items: [
+      { text: "配置分层与单一来源", link: "/docs/Ops/ConfigManagement/Layering/index.md" },
+      { text: "读取路径与热更新生效边界", link: "/docs/Ops/ConfigManagement/RefreshPath/index.md" },
+      { text: "灰度下发与批次", link: "/docs/Ops/ConfigManagement/GrayRollout/index.md" },
+      { text: "变更审计与回滚", link: "/docs/Ops/ConfigManagement/AuditRollback/index.md" },
+      { text: "配置即代码与漂移对账", link: "/docs/Ops/ConfigManagement/ConfigAsCode/index.md" },
+      { text: "故障面：中心不可用、半截配置、批量不原子", link: "/docs/Ops/ConfigManagement/FailureModes/index.md" },
+      { text: "Nacos 2.x（存量维护 · 仅存量项目）", link: "/docs/Ops/ConfigManagement/Nacos2/index.md" },
+      { text: "Nacos 3.x（当前基线）", link: "/docs/Ops/ConfigManagement/Nacos3/index.md" },
+      { text: "实战：一条配置从提交到全量", link: "/docs/Ops/ConfigManagement/Practice/index.md" },
+    ],
+  },
+];

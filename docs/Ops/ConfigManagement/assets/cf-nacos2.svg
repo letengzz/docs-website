@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">Nacos 2.x 的对外契约（2.5.1 实测）</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">存量项目维护期基线：v1 API + 8848/9848 + 默认不鉴权 + 默认账号可用</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+<rect x="30" y="100" width="280" height="120" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="42" y="121" font-size="13" font-weight="700" fill="#1f2d3d">端口与协议</text>
+<text x="42" y="141.0" font-size="11.5" fill="#5a6b7b">8848 HTTP（v1 API 与控制台）</text>
+<text x="42" y="157.5" font-size="11.5" fill="#5a6b7b">9848 gRPC（客户端长连接）</text>
+<text x="42" y="174.0" font-size="11.5" fill="#5a6b7b">9849 gRPC（集群间）</text>
+<rect x="330" y="100" width="300" height="120" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="342" y="121" font-size="13" font-weight="700" fill="#1f2d3d">v1 配置接口（实测可用）</text>
+<text x="342" y="141.0" font-size="11.5" fill="#5a6b7b">POST /nacos/v1/cs/configs</text>
+<text x="342" y="157.5" font-size="11.5" fill="#5a6b7b">GET  /nacos/v1/cs/configs?dataId&amp;group</text>
+<text x="342" y="174.0" font-size="11.5" fill="#5a6b7b">参数名：group / tenant</text>
+<rect x="650" y="100" width="280" height="120" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="662" y="121" font-size="13" font-weight="700" fill="#1f2d3d">鉴权默认关</text>
+<text x="662" y="141.0" font-size="11.5" fill="#5a6b7b">NACOS_AUTH_ENABLE=false 即可启动</text>
+<text x="662" y="157.5" font-size="11.5" fill="#5a6b7b">默认账号 nacos/nacos 存在</text>
+<text x="662" y="174.0" font-size="11.5" fill="#5a6b7b">→ 内网也可能被任意改写</text>
+<rect x="30" y="248" width="430" height="128" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="42" y="269" font-size="13" font-weight="700" fill="#1f2d3d">2.5.1 上跑出来的六个读数</text>
+<text x="42" y="289.0" font-size="11.5" fill="#5a6b7b">① 就绪 ~20 s；② 发布→可读 ≤100 ms；③ 读 p50 6.89 / p95 12.47 ms；</text>
+<text x="42" y="305.5" font-size="11.5" fill="#5a6b7b">④ 长轮询挂 29.51 s；⑤ 同内容重发不推送；</text>
+<text x="42" y="322.0" font-size="11.5" fill="#5a6b7b">⑥ 单配置正文上限 ≈1 MiB（撞 2 MiB 表单上限）。</text>
+<rect x="490" y="248" width="440" height="128" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="502" y="269" font-size="13" font-weight="700" fill="#1f2d3d">维护建议（不新增功能，只保命）</text>
+<text x="502" y="289.0" font-size="11.5" fill="#5a6b7b">升级到 3.x 前先把 v1 调用点全部找出来（grep 路径，不 grep 类名）。</text>
+<text x="502" y="305.5" font-size="11.5" fill="#5a6b7b">把默认口令改掉、把控制台收到内网、把 namespace 按环境分开。</text>
+<text x="502" y="322.0" font-size="11.5" fill="#5a6b7b">不要在这条线上做新的灰度方案——能力已经不是最全的了。</text>
+</svg>

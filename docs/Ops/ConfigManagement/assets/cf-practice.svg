@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">一条配置从提交到全量的 7 步</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">每一步都给出一条可执行判据；缺任何一步，这条流水线就退化成「直接改线上」</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+<rect x="24" y="96" width="118" height="88" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="36" y="117" font-size="12.5" font-weight="700" fill="#1f2d3d">① 提交</text>
+<text x="36" y="137" font-size="10.8" fill="#5a6b7b">Git MR</text>
+<text x="36" y="152" font-size="10.8" fill="#5a6b7b">含 diff 与影响面</text>
+<rect x="157" y="96" width="118" height="88" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="169" y="117" font-size="12.5" font-weight="700" fill="#1f2d3d">② 校验</text>
+<text x="169" y="137" font-size="10.8" fill="#5a6b7b">语法 + 跨键规则</text>
+<text x="169" y="152" font-size="10.8" fill="#5a6b7b">CI 不绿不合并</text>
+<line x1="142" y1="140" x2="157" y2="140" stroke="#2b5c8a" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="290" y="96" width="118" height="88" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="302" y="117" font-size="12.5" font-weight="700" fill="#1f2d3d">③ 灰度</text>
+<text x="302" y="137" font-size="10.8" fill="#5a6b7b">命中集合可枚举</text>
+<text x="302" y="152" font-size="10.8" fill="#5a6b7b">beta/标签/百分比</text>
+<line x1="275" y1="140" x2="290" y2="140" stroke="#c2703a" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="423" y="96" width="118" height="88" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="435" y="117" font-size="12.5" font-weight="700" fill="#1f2d3d">④ 观察</text>
+<text x="435" y="137" font-size="10.8" fill="#5a6b7b">指标 + 时长</text>
+<text x="435" y="152" font-size="10.8" fill="#5a6b7b">阈值预置</text>
+<line x1="408" y1="140" x2="423" y2="140" stroke="#c2703a" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="556" y="96" width="118" height="88" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="568" y="117" font-size="12.5" font-weight="700" fill="#1f2d3d">⑤ 全量</text>
+<text x="568" y="137" font-size="10.8" fill="#5a6b7b">分批扩量</text>
+<text x="568" y="152" font-size="10.8" fill="#5a6b7b">每批再看一次</text>
+<line x1="541" y1="140" x2="556" y2="140" stroke="#2f8f7d" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="689" y="96" width="118" height="88" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="701" y="117" font-size="12.5" font-weight="700" fill="#1f2d3d">⑥ 留痕</text>
+<text x="701" y="137" font-size="10.8" fill="#5a6b7b">nid + 发布单号</text>
+<text x="701" y="152" font-size="10.8" fill="#5a6b7b">srcIp 非空</text>
+<line x1="674" y1="140" x2="689" y2="140" stroke="#2f8f7d" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="822" y="96" width="118" height="88" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="834" y="117" font-size="12.5" font-weight="700" fill="#1f2d3d">⑦ 对账</text>
+<text x="834" y="137" font-size="10.8" fill="#5a6b7b">Git ⇄ 中心</text>
+<text x="834" y="152" font-size="10.8" fill="#5a6b7b">差异进看板</text>
+<line x1="807" y1="140" x2="822" y2="140" stroke="#4a7d3a" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="24" y="204" width="430" height="118" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="36" y="225" font-size="13" font-weight="700" fill="#1f2d3d">回滚点设在③之前和⑤之后</text>
+<text x="36" y="245.0" font-size="11.5" fill="#5a6b7b">③ 之前：还没影响任何人，回滚成本 = 0（删掉 beta）。</text>
+<text x="36" y="261.5" font-size="11.5" fill="#5a6b7b">⑤ 之后：已经全量，回滚要重新走一遍③→⑤，别抄近路。</text>
+<text x="36" y="278.0" font-size="11.5" fill="#5a6b7b">判据 CFP-D：每步都有「怎么退」的一句话，写不出来的步骤不许上线。</text>
+<rect x="474" y="204" width="456" height="118" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="486" y="225" font-size="13" font-weight="700" fill="#1f2d3d">验收只看四样东西</text>
+<text x="486" y="245.0" font-size="11.5" fill="#5a6b7b">① 读到的值（不是配置中心里的值，是进程里生效的值）；</text>
+<text x="486" y="261.5" font-size="11.5" fill="#5a6b7b">② 生效的时刻（与服务端缓存窗口、客户端轮询周期对得上）；</text>
+<text x="486" y="278.0" font-size="11.5" fill="#5a6b7b">③ 影响面（哪些实例、哪些请求路径）；④ 退路（回滚到哪个 nid）。</text>
+</svg>

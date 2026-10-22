@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">支付回调：验签 → 幂等 → 落账 → 对账</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">回调是唯一一个「外部系统决定什么时候来、来几次」的入口</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+<rect x="24" y="98" width="168" height="86" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="36" y="119" font-size="13" font-weight="700" fill="#1f2d3d">① 收单</text>
+<text x="36" y="139.0" font-size="11.5" fill="#5a6b7b">原始报文先落 raw</text>
+<text x="36" y="155.5" font-size="11.5" fill="#5a6b7b">不解析就落库</text>
+<rect x="216" y="98" width="168" height="86" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="228" y="119" font-size="13" font-weight="700" fill="#1f2d3d">② 验签</text>
+<text x="228" y="139.0" font-size="11.5" fill="#5a6b7b">用渠道公钥验</text>
+<text x="228" y="155.5" font-size="11.5" fill="#5a6b7b">失败 → 401 且不落账</text>
+<rect x="408" y="98" width="168" height="86" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="420" y="119" font-size="13" font-weight="700" fill="#1f2d3d">③ 幂等</text>
+<text x="420" y="139.0" font-size="11.5" fill="#5a6b7b">唯一键 = 渠道流水号</text>
+<text x="420" y="155.5" font-size="11.5" fill="#5a6b7b">重复回调返回成功</text>
+<rect x="600" y="98" width="168" height="86" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="612" y="119" font-size="13" font-weight="700" fill="#1f2d3d">④ 状态机守卫</text>
+<text x="612" y="139.0" font-size="11.5" fill="#5a6b7b">CAS 更新订单</text>
+<text x="612" y="155.5" font-size="11.5" fill="#5a6b7b">不允许回退</text>
+<rect x="792" y="98" width="144" height="86" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="804" y="119" font-size="13" font-weight="700" fill="#1f2d3d">⑤ 出站事件</text>
+<text x="804" y="139.0" font-size="11.5" fill="#5a6b7b">同事务写 outbox</text>
+<line x1="192" y1="141" x2="216" y2="141" stroke="#2b5c8a" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="384" y1="141" x2="408" y2="141" stroke="#2b5c8a" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="576" y1="141" x2="600" y2="141" stroke="#2b5c8a" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="768" y1="141" x2="792" y2="141" stroke="#2b5c8a" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="24" y="210" width="440" height="108" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="36" y="231" font-size="13" font-weight="700" fill="#1f2d3d">三条不变量（可用 SQL 断言）</text>
+<text x="36" y="251.0" font-size="11.5" fill="#5a6b7b">I1 每个渠道流水号最多一条成功支付；I2 支付金额 = 订单金额；</text>
+<text x="36" y="267.5" font-size="11.5" fill="#5a6b7b">I3 不存在「已支付但库存预占已释放」的订单。</text>
+<text x="36" y="284.0" font-size="11.5" fill="#5a6b7b">任一为假 → 对账任务必须能在 5 分钟内报出来。</text>
+<rect x="484" y="210" width="452" height="108" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="496" y="231" font-size="13" font-weight="700" fill="#1f2d3d">对账：找「已支付但订单仍待支付」</text>
+<text x="496" y="251.0" font-size="11.5" fill="#5a6b7b">按渠道流水号全量比对：渠道有、我方无 → 丢单；我方有、渠道无 → 假支付。</text>
+<text x="496" y="267.5" font-size="11.5" fill="#5a6b7b">跑批窗口要避开回调高峰；差异必须落表并带上发现时间。</text>
+<text x="496" y="284.0" font-size="11.5" fill="#5a6b7b">判据 EPY-F：对账 SQL 可复跑、结果幂等。</text>
+<rect x="24" y="334" width="912" height="62" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="36" y="355" font-size="13" font-weight="700" fill="#1f2d3d">回调的三个必失点</text>
+<text x="36" y="375.0" font-size="11.5" fill="#5a6b7b">① 先改单后验签 → 伪造回调能改单；② 幂等键用订单号 → 同一单第二次支付被吞；③ 回调里直接发 MQ → 消息发了单没落。</text>
+</svg>

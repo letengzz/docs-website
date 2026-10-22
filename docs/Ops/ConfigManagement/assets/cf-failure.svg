@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">四类故障，各有各的失效形态</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">前两类是「配置本身有问题」，后两类是「通道有问题」</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+<rect x="30" y="100" width="210" height="118" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="42" y="121" font-size="13" font-weight="700" fill="#1f2d3d">① 半截配置</text>
+<text x="42" y="141.0" font-size="11.5" fill="#5a6b7b">发布了 YAML 的前一半</text>
+<text x="42" y="157.5" font-size="11.5" fill="#5a6b7b">解析报错 → 应用起不来或读默认值</text>
+<text x="42" y="174.0" font-size="11.5" fill="#5a6b7b">防：发布前强校验 + 内容 md5 对比</text>
+<rect x="255" y="100" width="210" height="118" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="267" y="121" font-size="13" font-weight="700" fill="#1f2d3d">② 语义冲突</text>
+<text x="267" y="141.0" font-size="11.5" fill="#5a6b7b">两个键互相矛盾（超时 &lt; 重试间隔）</text>
+<text x="267" y="157.5" font-size="11.5" fill="#5a6b7b">单看都对，一起用就错</text>
+<text x="267" y="174.0" font-size="11.5" fill="#5a6b7b">防：跨键校验规则，进 CI</text>
+<rect x="480" y="100" width="210" height="118" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="492" y="121" font-size="13" font-weight="700" fill="#1f2d3d">③ 中心不可用</text>
+<text x="492" y="141.0" font-size="11.5" fill="#5a6b7b">启动时拉不到 → 起不来</text>
+<text x="492" y="157.5" font-size="11.5" fill="#5a6b7b">运行时拉不到 → 用本地快照</text>
+<text x="492" y="174.0" font-size="11.5" fill="#5a6b7b">防：本地快照 + 启动兜底 + 超时</text>
+<rect x="705" y="100" width="225" height="118" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="717" y="121" font-size="13" font-weight="700" fill="#1f2d3d">④ 批量不原子</text>
+<text x="717" y="141.0" font-size="11.5" fill="#5a6b7b">10 个键发布到第 6 个失败</text>
+<text x="717" y="157.5" font-size="11.5" fill="#5a6b7b">前 5 个已生效，无人知道</text>
+<text x="717" y="174.0" font-size="11.5" fill="#5a6b7b">防：一次发布一个 dataId，失败显式回滚</text>
+<rect x="30" y="248" width="430" height="132" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="42" y="269" font-size="13" font-weight="700" fill="#1f2d3d">启动顺序：先连中心还是先起服务</text>
+<text x="42" y="289.0" font-size="11.5" fill="#5a6b7b">拉配置失败要 fail-fast（配置错就起不来，比带错配置跑起来好）。</text>
+<text x="42" y="305.5" font-size="11.5" fill="#5a6b7b">但「中心暂时不可用」不该等于「服务起不来」：本地快照 + 有限重试是标配。</text>
+<text x="42" y="322.0" font-size="11.5" fill="#5a6b7b">判据 CFF-D：断网重启必须分成「有快照」与「无快照」两种结果来验收。</text>
+<rect x="490" y="248" width="440" height="132" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="502" y="269" font-size="13" font-weight="700" fill="#1f2d3d">广播风暴：一次全量发布 = 所有实例同时重建</text>
+<text x="502" y="289.0" font-size="11.5" fill="#5a6b7b">10 个实例 × 50 个 dataId = 500 次拉取，集中在 1 秒内。</text>
+<text x="502" y="305.5" font-size="11.5" fill="#5a6b7b">缓解：分批发布、加大轮询抖动、把「必须同时生效」的键合成一个 dataId。</text>
+<text x="502" y="322.0" font-size="11.5" fill="#5a6b7b">判据 CFF-F：单次发布的拉取峰值有预算，且低于中心容量。</text>
+</svg>

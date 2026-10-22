@@ -209,6 +209,24 @@ terraform destroy -auto-approve
 | `terraform state list` | 列出 1 个资源 | 待填写 | ⏳ |
 | `terraform destroy` | 1 destroyed | 待填写 | ⏳ |
 
+## 与「应用配置即代码」的边界（第 188 天补充）
+
+Terraform 管的是**基础设施**（VPC、集群、数据库实例、IAM），[配置管理与动态配置](../../ConfigManagement/index.md) 管的是**应用运行时的值**（阈值、超时、开关）。两者都叫"配置即代码"，但生命周期完全不同：
+
+| 维度 | Terraform（IaC） | 应用配置 |
+| --- | --- | --- |
+| 变更频率 | 周 / 月 | 小时 / 天 |
+| 责任人 | 平台组 | 服务 owner |
+| 变更方式 | `plan` → `apply`，看到 diff 才动手 | 发布 → 灰度 → 观察 |
+| 回滚 | `state` 回滚或反向 `apply` | 按版本号重新发布 |
+| 失败代价 | 资源被重建或删除 | 全站行为改变 |
+
+三条纪律：
+
+1. **不要把应用配置塞进 Terraform**：`null_resource` + `local-exec` 调配置中心 API 的写法，会让 `terraform plan` 变成"看不见的配置发布"，diff 里只有一段脚本。
+2. **不要把基础设施参数放进配置中心**：连接串、实例规格属于 IaC 的产物，应该由 IaC 输出并以 Secret 注入。
+3. **`state` 不是配置的版本库**：它能回滚资源，不能告诉你"上周三那个超时值是多少"。
+
 ## 参考资料
 
 - Terraform 官方文档：https://developer.hashicorp.com/terraform/docs

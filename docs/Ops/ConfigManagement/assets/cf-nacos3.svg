@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">Nacos 3.x 的对外契约（3.0.3 实测）</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">当前基线：v3 API、强制 token、无默认账号、控制台独立端口</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+<rect x="30" y="100" width="200" height="96" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="42" y="121" font-size="13" font-weight="700" fill="#1f2d3d">启动前置</text>
+<text x="42" y="141.0" font-size="11.5" fill="#5a6b7b">NACOS_AUTH_TOKEN 必填</text>
+<text x="42" y="157.5" font-size="11.5" fill="#5a6b7b">缺失 → exit 255 直接退出</text>
+<text x="42" y="174.0" font-size="11.5" fill="#5a6b7b">实测就绪 25 s</text>
+<rect x="250" y="100" width="200" height="96" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="262" y="121" font-size="13" font-weight="700" fill="#1f2d3d">端口四件套</text>
+<text x="262" y="141.0" font-size="11.5" fill="#5a6b7b">8848 API · 8080 控制台</text>
+<text x="262" y="157.5" font-size="11.5" fill="#5a6b7b">9848/9849 gRPC · 7848 raft</text>
+<text x="262" y="174.0" font-size="11.5" fill="#5a6b7b">同一 JVM（PID 1）</text>
+<rect x="470" y="100" width="220" height="96" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="482" y="121" font-size="13" font-weight="700" fill="#1f2d3d">v1 接口已下线</text>
+<text x="482" y="141.0" font-size="11.5" fill="#5a6b7b">/nacos/v1/cs/configs → 404</text>
+<text x="482" y="157.5" font-size="11.5" fill="#5a6b7b">健康检查也是 404</text>
+<text x="482" y="174.0" font-size="11.5" fill="#5a6b7b">兼容层只剩 500 报错</text>
+<rect x="710" y="100" width="220" height="96" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="722" y="121" font-size="13" font-weight="700" fill="#1f2d3d">无默认账号</text>
+<text x="722" y="141.0" font-size="11.5" fill="#5a6b7b">nacos/nacos 登录 → 500</text>
+<text x="722" y="157.5" font-size="11.5" fill="#5a6b7b">User nacos not found</text>
+<text x="722" y="174.0" font-size="11.5" fill="#5a6b7b">必须先初始化管理员</text>
+<rect x="30" y="220" width="440" height="122" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="42" y="241" font-size="13" font-weight="700" fill="#1f2d3d">一条能跑通的命令序列（实测顺序不能换）</text>
+<text x="42" y="261.0" font-size="11.5" fill="#5a6b7b">① POST /nacos/v3/auth/user/admin → 返回随机密码（不是你传的那个）</text>
+<text x="42" y="277.5" font-size="11.5" fill="#5a6b7b">② POST /nacos/v3/auth/user/login → accessToken（Ttl 18000 s）</text>
+<text x="42" y="294.0" font-size="11.5" fill="#5a6b7b">③ POST /nacos/v3/admin/cs/config（带 accessToken 头）→ 发布</text>
+<rect x="490" y="220" width="440" height="122" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="502" y="241" font-size="13" font-weight="700" fill="#1f2d3d">参数改名，最容易踩的一处</text>
+<text x="502" y="261.0" font-size="11.5" fill="#5a6b7b">group → groupName；tenant → namespaceId（public 必填）。</text>
+<text x="502" y="277.5" font-size="11.5" fill="#5a6b7b">改错的报错是「Required parameter groupName is not present」——</text>
+<text x="502" y="294.0" font-size="11.5" fill="#5a6b7b">而它真正的成因可能是体积超限，与参数名无关。</text>
+<rect x="30" y="358" width="900" height="68" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="42" y="379" font-size="13" font-weight="700" fill="#1f2d3d">鉴权的两个坑：403 里写着 401、token 只有 5 小时</text>
+<text x="42" y="399.0" font-size="11.5" fill="#5a6b7b">无 token 访问 v3 admin 返回 403，消息却是「Code: 401, Message: User not found!」——按 401 去查会查错方向；</text>
+<text x="42" y="415.5" font-size="11.5" fill="#5a6b7b">accessToken 默认 5 小时过期（tokenTtl 18000），长期脚本必须做续期，否则第 6 小时开始全线 403。</text>
+</svg>

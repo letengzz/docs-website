@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">Git 与配置中心的三种主从关系</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">选错一种，就会出现「Git 里是 A、线上是 B、没人知道哪个对」</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+<rect x="30" y="100" width="280" height="140" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="42" y="121" font-size="13" font-weight="700" fill="#1f2d3d">① Git 为源（推荐）</text>
+<text x="42" y="141.0" font-size="11.5" fill="#5a6b7b">CI 校验 → 调用中心 API 发布</text>
+<text x="42" y="157.5" font-size="11.5" fill="#5a6b7b">中心只读，控制台改不了（权限收口）</text>
+<text x="42" y="174.0" font-size="11.5" fill="#5a6b7b">漂移 = 有人绕过 CI，可被对账抓出</text>
+<rect x="330" y="100" width="280" height="140" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="342" y="121" font-size="13" font-weight="700" fill="#1f2d3d">② 中心为源</text>
+<text x="342" y="141.0" font-size="11.5" fill="#5a6b7b">控制台是唯一入口，Git 只存档</text>
+<text x="342" y="157.5" font-size="11.5" fill="#5a6b7b">快，但改了什么要靠中心自己的审计</text>
+<text x="342" y="174.0" font-size="11.5" fill="#5a6b7b">适合应急改、不适合批量编排</text>
+<rect x="630" y="100" width="280" height="140" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="642" y="121" font-size="13" font-weight="700" fill="#1f2d3d">③ 双源（最常见也最危险）</text>
+<text x="642" y="141.0" font-size="11.5" fill="#5a6b7b">两边都能改，靠人对齐</text>
+<text x="642" y="157.5" font-size="11.5" fill="#5a6b7b">漂移必然发生，且只在事故时暴露</text>
+<text x="642" y="174.0" font-size="11.5" fill="#5a6b7b">要么补对账，要么别这么干</text>
+<rect x="30" y="260" width="470" height="130" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="42" y="281" font-size="13" font-weight="700" fill="#1f2d3d">对账怎么做才不是摆设</text>
+<text x="42" y="301.0" font-size="11.5" fill="#5a6b7b">比对 Git 渲染结果与中心全量键值，输出三类差异：</text>
+<text x="42" y="317.5" font-size="11.5" fill="#5a6b7b">只在 Git（未发布）/ 只在中心（野生）/ 值不同（漂移）。</text>
+<text x="42" y="334.0" font-size="11.5" fill="#5a6b7b">对账要能定时跑、结果进看板；只在发版时人肉看一眼等于没有。</text>
+<text x="42" y="350.5" font-size="11.5" fill="#5a6b7b">判据 CFC-C：三类差异的数量与清单必须可导出。</text>
+<rect x="530" y="260" width="400" height="130" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="542" y="281" font-size="13" font-weight="700" fill="#1f2d3d">密钥不进配置仓库</text>
+<text x="542" y="301.0" font-size="11.5" fill="#5a6b7b">配置仓库里出现 secret 一律视为泄露（历史提交也算）。</text>
+<text x="542" y="317.5" font-size="11.5" fill="#5a6b7b">密钥走 SecretGovernance 那一套：外部注入、可轮换、有审计。</text>
+<text x="542" y="334.0" font-size="11.5" fill="#5a6b7b">判据 CFC-F：提交内容扫描为 0 命中才允许合并。</text>
+</svg>
