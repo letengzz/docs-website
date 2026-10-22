@@ -49,7 +49,8 @@ export const nav = [
       { text: "分布式锁与选主", link: "/docs/Backend/DistributedLock" },
       { text: "契约演进与兼容", link: "/docs/Backend/ContractEvolution" },
       { text: "邮件送达工程", link: "/docs/Backend/EmailDeliverability" },
-      { text: "事件溯源与 CQRS", link: "/docs/Backend/EventSourcing" },]
+      { text: "事件溯源与 CQRS", link: "/docs/Backend/EventSourcing" },
+      { text: "服务网格与东西向流量", link: "/docs/Backend/ServiceMesh" },]
   },
   {
     text: "数据库",
@@ -69,6 +70,7 @@ export const nav = [
       { text: "向量数据库深入", link: "/docs/DB/VectorDatabase" },
       { text: "数据库内核与存储引擎", link: "/docs/DB/DatabaseInternals" },
       { text: "全文检索与搜索工程", link: "/docs/DB/FullTextSearch" },
+      { text: "地理信息与地图工程", link: "/docs/DB/GeoMap" },
       { text: "数据治理入门", link: "/docs/DB/DataGovernance" },
     ]
   },

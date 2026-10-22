@@ -4,7 +4,7 @@ import { Auth, ContractEvolution, DDD, DistributedScheduling, EmailDeliverabilit
 import { AI_Java, AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_EdgeInference, AI_EvalEngineering, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI, AI_SyntheticData } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontErrorTelemetry, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, DatabaseUpgrade, CapacityCost, CertificateLifecycle, ChangeManagement, ConfigManagement, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
-import { AccessControl, BigData, CDC, ClickHouse, ConnectionPool, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, Lakehouse, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, SchemaEvolution, Sharding, TimeSeries, VectorDatabase } from "./db";
+import { AccessControl, BigData, CDC, ClickHouse, ConnectionPool, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, GeoMap, Lakehouse, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, SchemaEvolution, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation, EngineeringMetrics, BrowserExtension, CodeSearch } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
@@ -130,14 +130,14 @@ export const sidebar = {
     {
       text: "后端",
       collapsed: true,
-      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...GatewayDeep, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...Ledger, ...DDD, ...WorkflowEngine, ...DistributedCache, ...ReactiveProgramming, ...HighConcurrency, ...LegacyModernization, ...RealtimeCollaboration, ...IdempotencyStateMachine, ...DistributedLock, ...ContractEvolution, ...ObjectStorage, ...EmailDeliverability, ...EventSourcing],
+      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...GatewayDeep, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...Ledger, ...DDD, ...WorkflowEngine, ...DistributedCache, ...ReactiveProgramming, ...HighConcurrency, ...LegacyModernization, ...RealtimeCollaboration, ...IdempotencyStateMachine, ...DistributedLock, ...ContractEvolution, ...ObjectStorage, ...EmailDeliverability, ...EventSourcing, ...ServiceMesh],
     },
   ],
   "/docs/DB": [
     {
       text: "数据库",
       collapsed: true,
-      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...DataWarehouse, ...BigData, ...ClickHouse, ...Neo4j, ...TimeSeries, ...CDC, ...VectorDatabase, ...DataGovernance, ...DatabaseInternals, ...PartitionArchival, ...FullTextSearch, ...Lakehouse, ...SchemaEvolution, ...ConnectionPool, ...AccessControl],
+      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...DataWarehouse, ...BigData, ...ClickHouse, ...Neo4j, ...TimeSeries, ...CDC, ...VectorDatabase, ...DataGovernance, ...DatabaseInternals, ...PartitionArchival, ...FullTextSearch, ...Lakehouse, ...SchemaEvolution, ...ConnectionPool, ...AccessControl, ...GeoMap],
     },
   ],
   "/docs/Ops": [
@@ -242,10 +242,12 @@ export const sidebar = {
   "/docs/Backend/EmailDeliverability": EmailDeliverability,
   "/docs/Backend/DistributedScheduling": DistributedScheduling,
   "/docs/Backend/EventSourcing": EventSourcing,
+  "/docs/Backend/ServiceMesh": ServiceMesh,
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/SchemaEvolution": SchemaEvolution,
   "/docs/DB/ConnectionPool": ConnectionPool,
   "/docs/DB/AccessControl": AccessControl,
+  "/docs/DB/GeoMap": GeoMap,
   "/docs/DB/Relational": Relational,
   "/docs/DB/Relational/SQLOptimization": SQLOptimization,
   "/docs/DB/Relational/Sharding": Sharding,

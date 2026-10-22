@@ -468,3 +468,22 @@ export const AccessControl = [
     ],
   },
 ];
+
+export const GeoMap = [
+  {
+    text: "地理信息与地图工程",
+    link: "/docs/DB/GeoMap/index.md",
+    items: [
+      { text: "总览：四个问题、三段链路与五档成熟度", link: "/docs/DB/GeoMap/Overview/index.md" },
+      { text: "坐标系与投影：位置到底怎么记", link: "/docs/DB/GeoMap/CRS/index.md" },
+      { text: "空间建模与索引：几何类型与 GiST", link: "/docs/DB/GeoMap/Modeling/index.md" },
+      { text: "空间查询与距离：从「圈一个范围」到「排序取最近」", link: "/docs/DB/GeoMap/Query/index.md" },
+      { text: "瓦片服务与切片：把地图切成可缓存的方块", link: "/docs/DB/GeoMap/Tiles/index.md" },
+      { text: "前端渲染与交互：矢量瓦片、图层与命中", link: "/docs/DB/GeoMap/Render/index.md" },
+      { text: "地理围栏与轨迹：判定、去抖与抽稀", link: "/docs/DB/GeoMap/GeoFence/index.md" },
+      { text: "地图数据合规与离线交付", link: "/docs/DB/GeoMap/Compliance/index.md" },
+      { text: "实战：门店选址与配送范围", link: "/docs/DB/GeoMap/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/DB/GeoMap/FAQ/index.md" },
+    ],
+  },
+];

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="380" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">选址与配送：七步与每步的产物</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">交付物不是「一张能看的地图」，而是三条能复跑的查询</text>
+  <rect x="14" y="78" width="96" height="100" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="62" y="96.2" text-anchor="middle" font-size="8.5" fill="#3730A3" font-weight="bold">1 摸底</text>
+  <text x="62" y="113" text-anchor="middle" font-size="6.8" fill="#4338CA">坐标系登记</text>
+  <text x="62" y="128.64" text-anchor="middle" font-size="6.8" fill="#4338CA">精度与来源</text>
+  <line x1="112" y1="128" x2="118" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="120" y="78" width="96" height="100" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="168" y="96.2" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">2 建模</text>
+  <text x="168" y="113" text-anchor="middle" font-size="6.8" fill="#1D4ED8">geometry + 分区</text>
+  <text x="168" y="128.64" text-anchor="middle" font-size="6.8" fill="#1D4ED8">GiST 索引</text>
+  <line x1="218" y1="128" x2="224" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="226" y="78" width="96" height="100" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="274" y="96.2" text-anchor="middle" font-size="8.5" fill="#115E59" font-weight="bold">3 选址</text>
+  <text x="274" y="113" text-anchor="middle" font-size="6.8" fill="#0F766E">KNN 最近自店</text>
+  <text x="274" y="128.64" text-anchor="middle" font-size="6.8" fill="#0F766E">1 km 竞品数</text>
+  <line x1="324" y1="128" x2="330" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="332" y="78" width="96" height="100" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="96.2" text-anchor="middle" font-size="8.5" fill="#065F46" font-weight="bold">4 配送</text>
+  <text x="380" y="113" text-anchor="middle" font-size="6.8" fill="#047857">缓冲区优先</text>
+  <text x="380" y="128.64" text-anchor="middle" font-size="6.8" fill="#047857">等时圈二期</text>
+  <line x1="430" y1="128" x2="436" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="438" y="78" width="96" height="100" rx="8" fill="#F7FEE7" stroke="#65A30D" stroke-width="1.6"/>
+  <text x="486" y="96.2" text-anchor="middle" font-size="8.5" fill="#3F6212" font-weight="bold">5 出图</text>
+  <text x="486" y="113" text-anchor="middle" font-size="6.8" fill="#4D7C0F">z≤14 预生成</text>
+  <text x="486" y="128.64" text-anchor="middle" font-size="6.8" fill="#4D7C0F">业务层按需</text>
+  <line x1="536" y1="128" x2="542" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="544" y="78" width="96" height="100" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="592" y="96.2" text-anchor="middle" font-size="8.5" fill="#92400E" font-weight="bold">6 服务</text>
+  <text x="592" y="113" text-anchor="middle" font-size="6.8" fill="#B45309">缓存键带 CRS</text>
+  <text x="592" y="128.64" text-anchor="middle" font-size="6.8" fill="#B45309">版本化 URL</text>
+  <line x1="642" y1="128" x2="648" y2="128" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="650" y="78" width="96" height="100" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="698" y="96.2" text-anchor="middle" font-size="8.5" fill="#9A3412" font-weight="bold">7 验收</text>
+  <text x="698" y="113" text-anchor="middle" font-size="6.8" fill="#C2410C">8 条判据</text>
+  <text x="698" y="128.64" text-anchor="middle" font-size="6.8" fill="#C2410C">延迟基线</text>
+  <rect x="14" y="200" width="350" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="189" y="218.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">容量口径（本机推算）</text>
+  <text x="189" y="235" text-anchor="middle" font-size="7.5" fill="#6D28D9">城市级 z=14：437 块 × 12 KB ≈ 5.1 MB</text>
+  <text x="189" y="252.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">z=18：104 390 块 ≈ 1.2 GB（差 200 倍）</text>
+  <rect x="380" y="200" width="366" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="563" y="218.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">三条必须能跑的查询</text>
+  <text x="563" y="235" text-anchor="middle" font-size="7.5" fill="#334155">候选门店排序 / 配送范围判定 / 网格热力聚合</text>
+  <rect x="14" y="312" width="732" height="52" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="330" text-anchor="middle" font-size="8.5" fill="#B91C1C">本页 SQL 未在本机实跑（无 PostGIS 实例）：期望值是目标值，不是观测值</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

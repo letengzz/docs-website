@@ -17,6 +17,7 @@
 - [数据库变更与在线 Schema 演进](SchemaEvolution/index.md)
 - [连接池与连接生命周期](ConnectionPool/index.md)
 - [数据库访问控制与审计](AccessControl/index.md)
+- [地理信息与地图工程](GeoMap/index.md)
 - [数据治理入门](DataGovernance/index.md)
 - [数仓建模](DataWarehouse/index.md)
 - [大数据生态](BigData/index.md)

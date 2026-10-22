@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 410" width="760" height="410" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="410" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">三类参照系与两条转换路径</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">可逆性决定「能不能反算回来」，精度声明决定「能用它做什么」</text>
+  <rect x="24" y="76" width="226" height="96" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="137" y="94.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">地理坐标（度）</text>
+  <text x="137" y="111" text-anchor="middle" font-size="7.5" fill="#4338CA">EPSG:4326 / 4490</text>
+  <text x="137" y="128.25" text-anchor="middle" font-size="7.5" fill="#4338CA">GPS、GeoJSON 原样</text>
+  <text x="137" y="145.5" text-anchor="middle" font-size="7.5" fill="#4338CA">算距离要换算</text>
+  <rect x="266" y="76" width="226" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="379" y="94.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">投影坐标（米）</text>
+  <text x="379" y="111" text-anchor="middle" font-size="7.5" fill="#1D4ED8">EPSG:3857 / 4547</text>
+  <text x="379" y="128.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">出图、瓦片、平面量算</text>
+  <text x="379" y="145.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">3857 的米被放大</text>
+  <rect x="508" y="76" width="226" height="96" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="621" y="94.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">加密坐标（度）</text>
+  <text x="621" y="111" text-anchor="middle" font-size="7.5" fill="#B91C1C">GCJ-02 / BD-09</text>
+  <text x="621" y="128.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">国内地图服务回调</text>
+  <text x="621" y="145.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">PROJ 无官方定义</text>
+  <line x1="250" y1="124" x2="262" y2="124" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="262" y1="140" x2="250" y2="140" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="492" y1="124" x2="504" y2="124" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="504" y1="140" x2="492" y2="140" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="380" y="196" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">4326 → 3857 可逆（纯数学）；WGS84 → GCJ-02 不可逆（只能近似反解）</text>
+  <rect x="24" y="216" width="340" height="104" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="194" y="234.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">3857 的放大倍数 k = 1/cos φ</text>
+  <text x="194" y="251" text-anchor="middle" font-size="7.5" fill="#C2410C">0° → 1.0000（面积 1.0000）</text>
+  <text x="194" y="268.25" text-anchor="middle" font-size="7.5" fill="#C2410C">39.9°（北京）→ 1.3036（面积 1.6993）</text>
+  <text x="194" y="285.5" text-anchor="middle" font-size="7.5" fill="#C2410C">60° → 2.0000（面积 4.0000）</text>
+  <rect x="396" y="216" width="340" height="104" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="566" y="234.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">小数位与精度（北纬 39.9°）</text>
+  <text x="566" y="251" text-anchor="middle" font-size="7.5" fill="#0F766E">4 位 ≈ 11.1 m / 8.6 m，5 位 ≈ 1.11 m / 0.86 m</text>
+  <text x="566" y="268.25" text-anchor="middle" font-size="7.5" fill="#0F766E">6 位 ≈ 0.11 m，7 位 ≈ 1 cm（已超 GPS）</text>
+  <text x="566" y="285.5" text-anchor="middle" font-size="7.5" fill="#0F766E">业务取 6 位即够，7 位只是增大体积</text>
+  <rect x="24" y="336" width="712" height="56" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="354" text-anchor="middle" font-size="8.5" fill="#334155">判据：每条记录都要能回答「这个数字是哪个参照系、多少位小数、谁给的」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

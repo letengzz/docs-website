@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 418" width="760" height="418" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="418" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四象限分诊：从现象到真因</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">偏 / 不偏、查不到 / 很慢，四个组合各自指向不同的层</text>
+  <rect x="30" y="76" width="340" height="108" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="200" y="94.2" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="bold">整体偏 / 方向一致</text>
+  <text x="200" y="111" text-anchor="middle" font-size="7.5" fill="#B91C1C">坐标系统一问题</text>
+  <text x="200" y="128.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">查 src_crs 与底图来源</text>
+  <rect x="390" y="76" width="340" height="108" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="560" y="94.2" text-anchor="middle" font-size="11" fill="#9A3412" font-weight="bold">个别偏 / 随机</text>
+  <text x="560" y="111" text-anchor="middle" font-size="7.5" fill="#C2410C">数据质量或精度问题</text>
+  <text x="560" y="128.25" text-anchor="middle" font-size="7.5" fill="#C2410C">看 accuracy 与批次</text>
+  <rect x="30" y="206" width="340" height="108" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="200" y="224.2" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">查不到 / 结果空</text>
+  <text x="200" y="241" text-anchor="middle" font-size="7.5" fill="#1D4ED8">谓词或边界语义问题</text>
+  <text x="200" y="258.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">查 ST_Covers 与半径单位</text>
+  <rect x="390" y="206" width="340" height="108" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="560" y="224.2" text-anchor="middle" font-size="11" fill="#115E59" font-weight="bold">查得到 / 很慢</text>
+  <text x="560" y="241" text-anchor="middle" font-size="7.5" fill="#0F766E">索引或外包框问题</text>
+  <text x="560" y="258.25" text-anchor="middle" font-size="7.5" fill="#0F766E">看 EXPLAIN 的 recheck 行数</text>
+  <text x="380" y="336" text-anchor="middle" font-size="9" fill="#334155">四象限之外还有一类：点得中但选不中 —— 那是交互问题，不是数据问题</text>
+  <rect x="30" y="350" width="700" height="50" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="368" text-anchor="middle" font-size="8.5" fill="#334155">60 秒判据：拿天安门 116.3975, 39.9087 打点；它也偏 → 坐标系；它准而业务偏 → 数据分批</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
