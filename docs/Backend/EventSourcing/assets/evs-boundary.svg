@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img">
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<text x="40" y="50" font-size="23" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">三种「事件」不是一回事：混用是这类系统最常见的根因</text>
+<text x="40" y="76" font-size="13" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">行是事件类型，列是它回答的问题；最后一列决定它该不该进事件存储</text>
+<text x="300" y="116" font-size="12.5" font-weight="700" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">载体与生命周期</text>
+<text x="500" y="116" font-size="12.5" font-weight="700" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">谁消费</text>
+<text x="665" y="116" font-size="12.5" font-weight="700" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">能不能改</text>
+<text x="830" y="116" font-size="12.5" font-weight="700" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">进事件表吗</text>
+<rect x="40" y="136" width="880" height="86" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="56" y="170" font-size="14.5" font-weight="700" fill="#0f766e" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">领域事件</text>
+<text x="56" y="192" font-size="11" font-weight="400" fill="#94a3b8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">事件是事实，不是消息</text>
+<text x="300" y="176" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">进程内对象 / 内存总线</text>
+<text x="500" y="176" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">同进程的领域逻辑</text>
+<text x="665" y="176" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">随代码重构（不必兼容历史）</text>
+<text x="830" y="174" font-size="13.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">不进</text>
+<text x="830" y="194" font-size="10" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">进</text>
+<rect x="40" y="232" width="880" height="86" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="56" y="266" font-size="14.5" font-weight="700" fill="#1d4ed8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">集成事件</text>
+<text x="56" y="288" font-size="11" font-weight="400" fill="#94a3b8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">跨进程通知「我变了」</text>
+<text x="300" y="272" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">outbox 表 + MQ</text>
+<text x="500" y="272" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">其它服务、外部系统</text>
+<text x="665" y="272" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">只能加字段，语义不能改</text>
+<text x="830" y="270" font-size="13.5" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">派生后进</text>
+<text x="830" y="290" font-size="10" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">进</text>
+<rect x="40" y="328" width="880" height="86" rx="8" fill="#ffffff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="56" y="362" font-size="14.5" font-weight="700" fill="#6d28d9" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">溯源事件</text>
+<text x="56" y="384" font-size="11" font-weight="400" fill="#94a3b8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">状态变化的唯一记录</text>
+<text x="300" y="368" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">append-only 事件存储</text>
+<text x="500" y="368" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">折叠器、投影器、审计</text>
+<text x="665" y="368" font-size="11.5" font-weight="400" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">永不修改、永不删除</text>
+<text x="830" y="366" font-size="13.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">就是它</text>
+<text x="830" y="386" font-size="10" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">本表即真相</text>
+<rect x="40" y="424" width="880" height="62" rx="8" fill="#f8fafc" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="60" y="452" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">判定口诀：能被折叠出状态、且十年后还要能读出「当时为什么」的，才进事件表</text>
+<text x="60" y="472" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">只在服务之间传一次的消息，用 outbox + MQ 就够，不必做事件溯源</text>
+</svg>

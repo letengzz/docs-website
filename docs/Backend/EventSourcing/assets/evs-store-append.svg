@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="40" y="50" font-size="23" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">追加是唯一写操作：唯一约束替你挡住并发写</text>
+<text x="40" y="76" font-size="13" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">两路并发写同一个 (stream_id, stream_version)，后到者在唯一索引上排队，然后失败</text>
+<text x="48" y="116" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">events</text>
+<rect x="40" y="128" width="560" height="92" rx="8" fill="#f8fafc" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="48" y="152" font-size="11" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">global_seq</text>
+<text x="48" y="172" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">bigint identity</text>
+<text x="158" y="152" font-size="11" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">stream_id</text>
+<text x="158" y="172" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">uuid</text>
+<text x="278" y="152" font-size="11" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">stream_version</text>
+<text x="278" y="172" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">int</text>
+<text x="388" y="152" font-size="11" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">event_type</text>
+<text x="388" y="172" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">text</text>
+<text x="498" y="152" font-size="11" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">payload</text>
+<text x="498" y="172" font-size="10" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">jsonb</text>
+<text x="48" y="210" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">唯一约束 (stream_id, stream_version) ⇒ 同一个流里版本号不可能重复</text>
+<rect x="40" y="246" width="180" height="76" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="130.0" y="281.5" font-size="12" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">Appender A</text>
+<text x="130.0" y="296.5" font-size="12" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">expected_version=41</text>
+<rect x="40" y="352" width="180" height="76" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="130.0" y="387.5" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">Appender B</text>
+<text x="130.0" y="402.5" font-size="12" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">expected_version=41</text>
+<rect x="300" y="292" width="300" height="92" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="450.0" y="335.5" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">INSERT … version=42</text>
+<text x="450.0" y="350.5" font-size="12" font-weight="400" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">先到者 COMMIT，后到者阻塞</text>
+<rect x="680" y="246" width="240" height="76" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="800.0" y="281.5" font-size="12" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">A：成功</text>
+<text x="800.0" y="296.5" font-size="12" font-weight="400" fill="#0f766e" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">INSERT 0 1</text>
+<rect x="680" y="352" width="240" height="76" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="800.0" y="387.5" font-size="12" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">B：23505 冲突</text>
+<text x="800.0" y="402.5" font-size="12" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">实测阻塞 1,123 ms</text>
+<line x1="220" y1="284" x2="298" y2="300" stroke="#0f766e" stroke-width="1.4" marker-end="url(#ahb)"/>
+<line x1="220" y1="390" x2="298" y2="366" stroke="#1d4ed8" stroke-width="1.4" marker-end="url(#ahb)"/>
+<line x1="600" y1="320" x2="678" y2="288" stroke="#0f766e" stroke-width="1.4" marker-end="url(#ahb)"/>
+<line x1="600" y1="350" x2="678" y2="380" stroke="#b91c1c" stroke-width="1.4" marker-end="url(#ahr)"/>
+<text x="40" y="470" font-size="12" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">冲突不是错误：它是「有人比我更早写了这一版」，应用层该重读聚合并重试，而不是把事件硬塞进去</text>
+</svg>

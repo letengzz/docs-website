@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker></defs>
+<rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+<text x="40" y="50" font-size="23" font-weight="700" fill="#0f172a" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">分诊：先问「读错了还是写错了」，再问「是新事件还是旧事件」</text>
+<text x="40" y="76" font-size="13" font-weight="400" fill="#475569" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">四类症状对应四条不同的排查路径，别一上来就重建读模型</text>
+<rect x="340" y="108" width="280" height="52" rx="8" fill="#f8fafc" stroke="#0f172a" stroke-width="1.4"/>
+<text x="480.0" y="139.0" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">症状出现</text>
+<line x1="480" y1="160" x2="480" y2="186" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="40" y="190" width="190" height="56" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="135.0" y="222.8" font-size="11.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">读到的值是旧的</text>
+<line x1="480" y1="160" x2="135" y2="188" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="270" y="190" width="190" height="56" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="365.0" y="222.8" font-size="11.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">同一订单两次读不一样</text>
+<line x1="480" y1="160" x2="365" y2="188" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="500" y="190" width="190" height="56" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="595.0" y="222.8" font-size="11.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">重建后仍不对</text>
+<line x1="480" y1="160" x2="595" y2="188" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="730" y="190" width="190" height="56" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="825.0" y="222.8" font-size="11.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">写入报 23505</text>
+<line x1="480" y1="160" x2="825" y2="188" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="40" y="290" width="190" height="76" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="135.0" y="325.8" font-size="10.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">→</text>
+<text x="135.0" y="339.2" font-size="10.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">先看 processed_seq 与水位；再看投影是否停摆</text>
+<line x1="135" y1="246" x2="135" y2="288" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="270" y="290" width="190" height="76" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="365.0" y="325.8" font-size="10.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">→</text>
+<text x="365.0" y="339.2" font-size="10.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">查是否双写、投影是否非幂等</text>
+<line x1="365" y1="246" x2="365" y2="288" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="500" y="290" width="190" height="76" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="595.0" y="325.8" font-size="10.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">→</text>
+<text x="595.0" y="339.2" font-size="10.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">事件本身错了：查写入路径的校验，不是投影</text>
+<line x1="595" y1="246" x2="595" y2="288" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="730" y="290" width="190" height="76" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="825.0" y="325.8" font-size="10.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">→</text>
+<text x="825.0" y="339.2" font-size="10.5" font-weight="400" fill="#94a3b8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">正常：并发写冲突，重读聚合并重试</text>
+<line x1="825" y1="246" x2="825" y2="288" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="40" y="396" width="880" height="62" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="480.0" y="432.0" font-size="12" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif" xml:space="preserve">共同的一条：先确认「事件表里到底有没有这条事实」——有而读不到是投影问题，没有是写入问题</text>
+</svg>

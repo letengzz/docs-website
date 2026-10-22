@@ -1,7 +1,7 @@
 // .Net
 export const DotNet = [
   {
-    text: ".Net",
+    text: ".NET",
     link: "/docs/Backend/DotNet/index.md",
     items: [
       {
@@ -742,6 +742,24 @@ export const DistributedScheduling = [
       { text: "可观测：五个口径与静默停摆", link: "/docs/Backend/DistributedScheduling/Observability/index.md" },
       { text: "实战：TeamBoard 的六类定时任务验收", link: "/docs/Backend/DistributedScheduling/Practice/index.md" },
       { text: "常见问题与分诊", link: "/docs/Backend/DistributedScheduling/FAQ/index.md" },
+    ],
+  },
+];
+
+export const EventSourcing = [
+  {
+    text: "事件溯源与 CQRS",
+    link: "/docs/Backend/EventSourcing/index.md",
+    items: [
+      { text: "总览：三种事件、两条路径与五个必失点", link: "/docs/Backend/EventSourcing/Overview/index.md" },
+      { text: "事件存储：追加、顺序与并发", link: "/docs/Backend/EventSourcing/EventStore/index.md" },
+      { text: "聚合重建与快照：把「从头」往后挪", link: "/docs/Backend/EventSourcing/Replay/index.md" },
+      { text: "投影与读模型：位点、幂等与重建", link: "/docs/Backend/EventSourcing/Projection/index.md" },
+      { text: "读写一致性：水位、滞后与读己之写", link: "/docs/Backend/EventSourcing/Consistency/index.md" },
+      { text: "事件版本与兼容：只增不改的翻译链", link: "/docs/Backend/EventSourcing/Versioning/index.md" },
+      { text: "实战：订单中心的事件时间线与三个读模型", link: "/docs/Backend/EventSourcing/Practice/index.md" },
+      { text: "运维：分区、归档与重放演练", link: "/docs/Backend/EventSourcing/Ops/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/EventSourcing/FAQ/index.md" },
     ],
   },
 ];

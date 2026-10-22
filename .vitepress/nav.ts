@@ -48,7 +48,8 @@ export const nav = [
       { text: "幂等与状态机工程", link: "/docs/Backend/IdempotencyStateMachine" },
       { text: "分布式锁与选主", link: "/docs/Backend/DistributedLock" },
       { text: "契约演进与兼容", link: "/docs/Backend/ContractEvolution" },
-      { text: "邮件送达工程", link: "/docs/Backend/EmailDeliverability" },]
+      { text: "邮件送达工程", link: "/docs/Backend/EmailDeliverability" },
+      { text: "事件溯源与 CQRS", link: "/docs/Backend/EventSourcing" },]
   },
   {
     text: "数据库",

@@ -43,10 +43,10 @@
 | [数据库设计：九张表与六条不变量](DatabaseDesign/index.md) | `EDB` | DDL 约束、部分索引、不变量 SQL、并发实测 | 8 |
 | [第 1 周收口 · 接口契约与第 1 周验收](Week1Gate/index.md) | `EW1` | 9 端点幂等与迁移覆盖、错误码表、契约⇄DDL 对齐、七道门 | 8 |
 | [第 2 周第 1 步 · 环境与工程骨架](Bootstrap/index.md) | `EEN` | 四层依赖方向、三套 profile、启动六步、池预算、五条验收 | 8 |
+| [第 2 周第 2 步 · 下单链路与 outbox 首次写入](OrderFlow/index.md) | `EOR` | 五步顺序与回滚点、条件扣减、outbox 同事务、SKIP LOCKED 投递 | 8 |
 
-后续 14 章（判据族已预留，交付时补条数）：
+后续 13 章（判据族已预留，交付时补条数）：
 
-- 下单链路与本地事务表（判据族 `EOR`：事务边界、outbox、幂等键）
 - 支付回调：验签、幂等与乱序（判据族 `EPY`：回调验签、重复与乱序、对账）
 - 库存预占与超时释放（判据族 `EIV`：预占语义、超时释放、超卖兜底）
 - 发货与签收（判据族 `ESF`：发货单、签收、异常件）
@@ -284,6 +284,39 @@ docker exec eoh-postgres psql -U postgres -d eoh -tAc \
 # 期望：CREATED / OrderCreated|PENDING
 ```
 
-## 十一、判据纪律
+## 十一、第 187 天交付（第 2 周第 2 步 · 下单链路与 outbox 首次写入）
+
+- 新建 [下单链路与 outbox 首次写入](OrderFlow/index.md)（判据 `EOR-A` ~ `EOR-H`），配图 `eoh-orderflow.svg`（事务边界 + 投递器 + 两条红线）。
+- **五步顺序与回滚点定死**：幂等键 → 商品快照 → 订单头/行 → 库存条件扣减 → outbox；幂等键必须最前（否则重复请求会先占库存），outbox 必须同事务最后（否则「订单成功事件丢了」）。
+- **库存预占写成条件 `UPDATE` + `RETURNING`**：`WHERE available - reserved >= :qty`，影响 0 行即库存不足。写 `available >= :qty` 会漏掉已预占量，只在并发预占时暴露——这类 bug 测试环境几乎复现不出来。
+- **outbox 表结构定稿**：`event_id` 唯一、`aggregate_id` 作 Kafka 分区键、`published_at IS NULL` 部分索引。投递器取件用 `FOR UPDATE SKIP LOCKED`，沿用第 183 天的实测结论（去掉后两路各 500 条、重复 500 条）。
+- **六条验收断言**：四处计数同增、库存不足四处全零、幂等重投不增、**停掉 Kafka 下单仍成功**、恢复后 30 秒内 `published_at` 全部非空、同事件投两次读模型只 +1。
+
+**如何验证**（读者可执行）：
+
+```shell
+# 1) Kafka 停掉，下单仍应成功（业务不被中间件绑架）
+docker compose -f deploy/compose.yaml stop kafka
+curl -s -o /dev/null -w '%{http_code}\n' -X POST localhost:8080/api/v1/orders \
+  -H 'Content-Type: application/json' -H 'Idempotency-Key: eor-0001' \
+  -d '{"customerId":"c-1","items":[{"skuId":"sku-1","qty":2,"unitPrice":"19.90"}]}'
+# 期望：201
+
+# 2) 四处计数：正常下单应为 1 / n / 1 / 1
+docker exec eoh-postgres psql -U postgres -d eoh -U postgres -c \
+  "select (select count(*) from orders where order_no='$NO') o,
+          (select count(*) from order_items where order_no='$NO') i,
+          (select count(*) from stock_reservation where order_no='$NO') r,
+          (select count(*) from outbox where aggregate_id=(select id from orders where order_no='$NO')) ob;"
+
+# 3) 恢复 Kafka 与投递器，30 秒内 outbox 应清空
+docker compose -f deploy/compose.yaml start kafka && docker compose -f deploy/compose.yaml up -d worker
+sleep 10
+docker exec eoh-postgres psql -U postgres -d eoh -tAc \
+  "select count(*) from outbox where published_at is null;"
+# 期望：0
+```
+
+## 十二、判据纪律
 
 每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMO` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。
