@@ -245,6 +245,53 @@ ARIA 的正确使用比很多人想象的严格。这五条是官方立场：
 `role="alert"` 对**页面上已经存在、只是内容变了**的元素才会播报；如果带 `role="alert"` 的容器在首屏渲染时就已经包含文字，屏幕阅读器**不会**读出它。正确做法是容器常驻但初始为空，错误出现时才写入文本（或动态插入节点）。把错误区域一上来就渲染成 `role="alert"` + 文案，看着没错，实际一句都不会被念出来。
 :::
 
+## 对比度进 CI（第 189 天补充）
+
+对比度是最容易在「改主题」时被破坏的无障碍要求：文案与背景各自都是合规的语义 token，配在一起却只有 3.9:1。这类问题在人工评审里几乎发现不了，但在构建里可以**逐对断言**。
+
+判据只有两条（WCAG 2.2）：正文与背景 ≥ **4.5:1**（1.4.3 AA），大字号（≥ 24 px 或 ≥ 18.66 px 加粗）与 UI 边界/图标 ≥ **3:1**（1.4.11）。
+
+```javascript [scripts/contrast-check.mjs]
+// 相对亮度按 WCAG 2.2 定义：先线性化，再按 0.2126/0.7152/0.0722 加权
+const lin = (c) => {
+  const s = c / 255
+  return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4
+}
+const lum = ([r, g, b]) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+const ratio = (a, b) => {
+  const [l1, l2] = [lum(a), lum(b)].sort((x, y) => y - x)
+  return (l1 + 0.05) / (l2 + 0.05)
+}
+
+// 只检语义层成对出现的组合：文字/背景、边框/背景、强调/其上文字
+const PAIRS = [
+  { fg: "fg-default", bg: "bg-canvas", min: 4.5, note: "正文" },
+  { fg: "fg-muted", bg: "bg-canvas", min: 4.5, note: "次要文字" },
+  { fg: "border-subtle", bg: "bg-canvas", min: 3.0, note: "分隔线/边框" },
+  { fg: "fg-on-accent", bg: "accent-solid", min: 4.5, note: "主按钮文字" },
+]
+
+const fails = []
+for (const p of PAIRS) {
+  const r = ratio(tokens[p.fg], tokens[p.bg])
+  if (r < p.min) fails.push(`${p.note}: ${p.fg}/${p.bg} = ${r.toFixed(2)}:1 < ${p.min}`)
+}
+console.log(fails.length ? fails : "contrast OK")
+process.exit(fails.length ? 1 : 0)
+```
+
+三处必须写清楚的口径：
+
+| 口径 | 为什么 | 不这么做的后果 |
+| --- | --- | --- |
+| **逐对断言，不做全组合** | 语义层 91 条两两组合是 4,095 对，绝大多数不会同时出现 | 报告里 90% 是无效组合，人开始忽略 |
+| **每个主题都跑一遍** | 深色主题的「浅色文字 + 深底」是另一组比值 | 只测浅色，深色上线才发现灰字看不清 |
+| **半透明色先合成再算** | `rgba` 的对比度取决于叠在什么底色上 | 直接按 RGB 算会得到偏高的读数 |
+
+与配图基线的关系：对比度断言管「算出来合规」，[视觉回归](../../DesignSystem/VisualRegression/index.md) 管「看起来没变」，两者不能互相替代——一个色值改动可以同时通过对比度（4.6:1）和视觉回归（阈值内），但用户仍然觉得「变灰了」。
+
+token 三层里，对比度问题几乎总是**语义层的映射错了**，而不是原始层的色阶不够用；定位方法见 [设计系统与组件库工程 · 常见问题与分诊](../../DesignSystem/FAQ/index.md)。
+
 ## 参考资料
 
 - [WCAG 2.2 规范全文（W3C）](https://www.w3.org/TR/WCAG22/)

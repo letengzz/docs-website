@@ -135,7 +135,7 @@ spring.data.redis.jedis.pool.max-active=8
 
 生产环境必须显式配置连接池与超时，否则 Redis 抖动会直接拖垮应用线程池。
 
-```properties [src/main/resources/application.yml]
+```yaml [src/main/resources/application.yml]
 spring:
   data:
     redis:
@@ -162,7 +162,7 @@ spring:
 
 ### 哨兵模式
 
-```properties [src/main/resources/application.yml]
+```yaml [src/main/resources/application.yml]
 spring:
   data:
     redis:
@@ -187,7 +187,7 @@ spring:
 
 ### 集群模式
 
-```properties [src/main/resources/application.yml]
+```yaml [src/main/resources/application.yml]
 spring:
   data:
     redis:

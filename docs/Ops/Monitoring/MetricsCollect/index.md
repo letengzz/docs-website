@@ -15,7 +15,7 @@ Prometheus 自身不产生指标，它靠 **Exporter（导出器）** 把各种�
 
 ## node_exporter：主机指标
 
-```shell [docker-compose-node.yml]
+```yaml [docker-compose-node.yml]
 services:
   node-exporter:
     image: prom/node-exporter:v1.12.1

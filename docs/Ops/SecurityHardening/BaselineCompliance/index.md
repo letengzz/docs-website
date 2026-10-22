@@ -92,7 +92,7 @@ kube-bench 由 Aqua Security 维护，直接对照 CIS Kubernetes Benchmark 检�
 
 ### 4.1 以 Job 方式运行
 
-```shell [kube-bench-job.yaml]
+```yaml [kube-bench-job.yaml]
 apiVersion: batch/v1
 kind: Job
 metadata:

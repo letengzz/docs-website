@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 416" width="960" height="416" role="img" aria-label="两种主题实现方式对比">
+<title>两种主题实现方式对比</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="416" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#0f172a">两种主题实现：覆盖式与编译式</text>
+<text x="24" y="58" font-size="13" fill="#475569">差别不在写法优雅，而在「多一个品牌」时的增量成本</text>
+<rect x="30" y="96" width="250" height="100" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="155.0" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">基础产物（两主题共用）</text>
+<text x="155.0" y="142" text-anchor="middle" font-size="12" fill="#475569">raw 164 + semantic 91</text>
+<text x="155.0" y="160" text-anchor="middle" font-size="12" fill="#475569">7,644 B / gzip 1,556 B</text>
+<rect x="330" y="96" width="260" height="100" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="460.0" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">覆盖式：只写差异</text>
+<text x="460.0" y="142" text-anchor="middle" font-size="12" fill="#475569">8 条语义 token 覆盖</text>
+<text x="460.0" y="160" text-anchor="middle" font-size="12" fill="#475569">293 B / gzip 130 B</text>
+<text x="460.0" y="178" text-anchor="middle" font-size="12" fill="#475569">= 基础的 3.8%</text>
+<rect x="630" y="96" width="280" height="100" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+<text x="770.0" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">编译式：整份重写</text>
+<text x="770.0" y="142" text-anchor="middle" font-size="12" fill="#475569">90 条语义 token 全量重写</text>
+<text x="770.0" y="160" text-anchor="middle" font-size="12" fill="#475569">2,821 B / gzip 653 B</text>
+<text x="770.0" y="178" text-anchor="middle" font-size="12" fill="#475569">= 基础的 36.9%</text>
+<line x1="280" y1="146" x2="326" y2="146" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="590" y1="146" x2="626" y2="146" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="30" y="236" width="400" height="96" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="230.0" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">10 个品牌 / 主题的订阅体积</text>
+<text x="230.0" y="282" text-anchor="middle" font-size="12" fill="#475569">覆盖式：2,930 B（线性叠加）</text>
+<text x="230.0" y="300" text-anchor="middle" font-size="12" fill="#475569">编译式：28,210 B（约 28 KB）</text>
+<rect x="470" y="236" width="440" height="96" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+<text x="690.0" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">什么时候必须用编译式</text>
+<text x="690.0" y="282" text-anchor="middle" font-size="12" fill="#475569">主题差异不是「值」而是「结构」：布局、字体族、组件尺寸体系</text>
+<text x="690.0" y="300" text-anchor="middle" font-size="12" fill="#475569">或需要把主题编译进原生端 / 小程序（拿不到 CSS 变量作用域）</text>
+<text x="30" y="372" font-size="13" fill="#475569">覆盖式的隐含前提：所有差异都能表达成「同一个 token 名换一个值」。做不到这一点时，覆盖式会变成一堆补丁选择器。</text>
+<text x="30" y="396" font-size="13" fill="#475569">判据：主题增量 &lt; 基础产物的 10% → 覆盖式；否则把「主题」升级为「构建目标」。</text>
+</svg>

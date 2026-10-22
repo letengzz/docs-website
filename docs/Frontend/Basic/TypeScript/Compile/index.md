@@ -142,9 +142,11 @@ tsconfig.json是一个JSON文件，添加配置文件后，只需只需 tsc 命�
 
     可选值：CommonJS、UMD、AMD、System、ES2020、ESNext、None
 
-    ```typescript [tsconfig.json]
-    "compilerOptions": {
-        "module": "CommonJS"
+    ```json [tsconfig.json]
+    {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
     }
     ```
 
@@ -155,8 +157,10 @@ tsconfig.json是一个JSON文件，添加配置文件后，只需只需 tsc 命�
     设置后编译后的js文件将会生成到dist目录：
 
     ```json [tsconfig.json]
-    "compilerOptions": {
-        "outDir": "dist"
+    {
+        "compilerOptions": {
+            "outDir": "dist"
+        }
     }
     ```
 

@@ -262,6 +262,62 @@ console.log("采样点数 =", (ease.match(/,/g) || []).length, "（含首尾共 
 - 上游：[动效原则与感知预算](../Principles/index.md)（为什么要分档）。
 - 相邻必读：[CSS 进阶 · 动画](../../Basic/CSS/Advanced/Animation/index.md)（语法）、[动效性能](../Performance/index.md)（合成属性）。
 
+## 九、时长与缓动进 token 层（第 189 天补充）
+
+本页前八节解决「选多少毫秒」，这一节解决「这些数字写在哪」。写死在组件里（`transition: 160ms`）的代价不是难改，而是**改不齐**：同一个「标准」在 12 个组件里有 3 个写成 `0.16s`、2 个写成 `150ms`，用户感知到的是「有的地方快有的地方慢」。
+
+DTCG 2025.10 已经把动效纳入 token 类型，两条要点与旧的自定义 JSON 不同：
+
+| 类型 | 稳定版取值形态 | 旧写法（会被 v5 判类型不符） |
+| --- | --- | --- |
+| `duration` | `{ "$value": { "value": 160, "unit": "ms" } }` | `"160ms"` 字符串 |
+| `cubicBezier` | `{ "$value": [0.2, 0, 0, 1] }`（4 元数组） | `"cubic-bezier(0.2,0,0,1)"` 字符串 |
+| `transition`（复合） | `{ "duration": "{motion.quick}", "delay": {...}, "timingFunction": "{easing.standard}" }` | 各段分别硬写 |
+
+```json [tokens/src/motion.tokens.json]
+{
+  "motion": {
+    "quick":  { "$type": "duration", "$value": { "value": 120, "unit": "ms" } },
+    "base":   { "$type": "duration", "$value": { "value": 160, "unit": "ms" } },
+    "slow":   { "$type": "duration", "$value": { "value": 240, "unit": "ms" } }
+  },
+  "easing": {
+    "standard": { "$type": "cubicBezier", "$value": [0.2, 0, 0, 1] },
+    "enter":    { "$type": "cubicBezier", "$value": [0, 0, 0.2, 1] }
+  },
+  "transition": {
+    "control": {
+      "$type": "transition",
+      "$value": {
+        "duration": "{motion.base}",
+        "delay": { "value": 0, "unit": "ms" },
+        "timingFunction": "{easing.standard}"
+      }
+    }
+  }
+}
+```
+
+三条落地纪律：
+
+1. **只把「时长」和「缓动」token 化，不要试图 token 化编排**（哪个元素先动、错开多少）——规范自己就说了编排不在格式范围内，硬塞进去会得到一个没人敢改的巨型复合 token；
+2. **原生端 / 小程序要编译式产物**：这些环境拿不到 CSS 变量继承，`duration` 必须编译成常量（见 [主题与多品牌](../../DesignSystem/Theming/index.md) 的「什么时候必须用编译式」）；
+3. **`prefers-reduced-motion` 不走 token**：它是「把时长归零」的运行时分支，写在 CSS 媒体查询里，不要为它造一套 `motion.reduced.*` 变量——那会让每个组件都要判断两遍。
+
+```css [src/styles/motion.css]
+:root {
+  --motion-quick: 120ms;
+  --motion-base: 160ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-quick: 0ms; --motion-base: 0ms; }
+}
+```
+
+token 侧的解析（环检测、深度分布）与产物体积见 [设计系统与组件库工程 · Token](../../DesignSystem/Tokens/index.md)。
+
 ## 参考资料
 
 - [Material Design 3 · Easing and duration tokens](https://m3.material.io/styles/motion/easing-and-duration/tokens-specs)

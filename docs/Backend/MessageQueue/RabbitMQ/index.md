@@ -26,7 +26,7 @@ RabbitMQ 是一个基于 **AMQP（Advanced Message Queuing Protocol，高级消�
 
 ## 安装与快速启动
 
-```shell [docker-compose.yml]
+```yaml [docker-compose.yml]
 services:
   rabbitmq:
     image: rabbitmq:4.3.5-management

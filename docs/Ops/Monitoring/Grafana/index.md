@@ -16,7 +16,7 @@ Grafana 是开源的可观测性可视化平台：连接 Prometheus、Loki、MyS
 
 ## 安装与启动
 
-```shell [docker-compose.yml]
+```yaml [docker-compose.yml]
 services:
   grafana:
     image: grafana/grafana:13.0.0

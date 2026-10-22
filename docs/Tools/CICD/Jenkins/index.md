@@ -8,7 +8,7 @@ Jenkins 是历史最悠久、插件生态最庞大的 CI/CD 服务器：它本�
 
 ### Docker 方式
 
-```shell [docker-compose.yml]
+```yaml [docker-compose.yml]
 services:
   jenkins:
     image: jenkins/jenkins:lts-jdk21

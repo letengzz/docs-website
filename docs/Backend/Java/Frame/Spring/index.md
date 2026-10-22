@@ -16,7 +16,7 @@
 3. **小版本（6.1.x、6.2.x）不单独建目录**，差异写在页内表格里；只有**大版本**（5 → 6 → 7）才分目录。
 :::
 
-同一套约定在库内其它技术栈上的落地：[Vue 2 / Vue 3](../../../../Frontend/Frame/Vue/index.md)、[Spring Security 5/6/7](../../SpringSecurity/index.md)、[Spring Cloud 2020/2022](../../../SpringCloud/index.md)、[MySQL 5.7 / 8.4](../../../../DB/SchemaEvolution/index.md)。
+同一套约定在库内其它技术栈上的落地：[Vue 2 / Vue 3](../../../../Frontend/Frame/Vue/index.md)、[Spring Security 5/6/7](../../../Auth/Version/index.md)、[Spring Cloud 2020/2022](../../../SpringCloud/index.md)、[MySQL 5.7 / 8.4](../../../../DB/SchemaEvolution/index.md)。
 
 ## 相关专题
 

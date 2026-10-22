@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img" aria-label="设计系统专题地图">
+<title>设计系统专题地图</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#0f172a">设计系统：一条从 token 到线上的链</text>
+<text x="24" y="58" font-size="13" fill="#475569">每一环都有各自的失败模式；本专题按环拆章</text>
+<rect x="30" y="96" width="200" height="96" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="130.0" y="122" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Token 层</text>
+<text x="130.0" y="142.5" text-anchor="middle" font-size="12.5" fill="#475569">原始 164 · 语义 91</text>
+<text x="130.0" y="161.0" text-anchor="middle" font-size="12.5" fill="#475569">组件 168（实测）</text>
+<rect x="270" y="96" width="200" height="96" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="370.0" y="122" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">组件 API 层</text>
+<text x="370.0" y="142.5" text-anchor="middle" font-size="12.5" fill="#475569">受控/非受控</text>
+<text x="370.0" y="161.0" text-anchor="middle" font-size="12.5" fill="#475569">8 个布尔 = 256 组合</text>
+<rect x="510" y="96" width="200" height="96" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+<text x="610.0" y="122" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">文档与版本</text>
+<text x="610.0" y="142.5" text-anchor="middle" font-size="12.5" fill="#475569">同源表 · semver</text>
+<text x="610.0" y="161.0" text-anchor="middle" font-size="12.5" fill="#475569">24 条变更 13 条破坏</text>
+<rect x="750" y="96" width="180" height="96" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="840.0" y="122" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">消费侧</text>
+<text x="840.0" y="142.5" text-anchor="middle" font-size="12.5" fill="#475569">摇树 · 样式</text>
+<text x="840.0" y="161.0" text-anchor="middle" font-size="12.5" fill="#475569">barrel 5× 体积</text>
+<line x1="230" y1="144" x2="266" y2="144" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="470" y1="144" x2="506" y2="144" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="710" y1="144" x2="746" y2="144" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="30" y="236" width="200" height="88" rx="10" fill="#f8fafc" stroke="#1d4ed8" stroke-width="2"/>
+<text x="130.0" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">主题与多品牌</text>
+<text x="130.0" y="282" text-anchor="middle" font-size="12" fill="#475569">覆盖式 293 B</text>
+<text x="130.0" y="300" text-anchor="middle" font-size="12" fill="#475569">编译式 2,821 B</text>
+<rect x="270" y="236" width="200" height="88" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+<text x="370.0" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">视觉回归</text>
+<text x="370.0" y="282" text-anchor="middle" font-size="12" fill="#475569">8 个变体 · 6 种口径</text>
+<text x="370.0" y="300" text-anchor="middle" font-size="12" fill="#475569">最优 6/8 准确</text>
+<rect x="510" y="236" width="200" height="88" rx="10" fill="#f8fafc" stroke="#b45309" stroke-width="2"/>
+<text x="610.0" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">治理与废弃</text>
+<text x="610.0" y="282" text-anchor="middle" font-size="12" fill="#475569">1 个 token 改动</text>
+<text x="610.0" y="300" text-anchor="middle" font-size="12" fill="#475569">波及 24 个组件</text>
+<rect x="750" y="236" width="180" height="88" rx="10" fill="#f8fafc" stroke="#7c3aed" stroke-width="2"/>
+<text x="840.0" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">实战与分诊</text>
+<text x="840.0" y="282" text-anchor="middle" font-size="12" fill="#475569">12 组件 0→1</text>
+<text x="840.0" y="300" text-anchor="middle" font-size="12" fill="#475569">5 类症状</text>
+<text x="480" y="372" text-anchor="middle" font-size="13" fill="#475569">链路上任何一环没有闸门，问题都会顺流而下放大：token 改错 → 组件全变 → 文档没同步 → 视觉回归基线漂移</text>
+<text x="480" y="398" text-anchor="middle" font-size="13" fill="#475569">判据纪律：每页 8 条，编号 DSOV / DSTN / DSTH / DSA / DSDC / DSDT / DSRG / DSVR / DSPR / DSFQ 各成族</text>
+</svg>

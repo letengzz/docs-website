@@ -322,7 +322,7 @@ rpx 是 Uniapp 提供的响应式单位，可以根据屏幕宽度自动适配�
 
 ### 全局样式
 
-```css [App.vue]
+```vue [App.vue]
 <style>
 /* 全局样式 */
 page {

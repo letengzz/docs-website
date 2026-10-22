@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 404" width="960" height="404" role="img" aria-label="token 变更的影响面与四道闸门">
+<title>token 变更的影响面与四道闸门</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="404" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#0f172a">治理：一次 token 改动的影响面</text>
+<text x="24" y="58" font-size="13" fill="#475569">反向索引把「谁会变」算出来，评审才有依据</text>
+<rect x="30" y="100" width="200" height="92" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+<text x="130.0" y="126" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">改 space-12</text>
+<text x="130.0" y="146" text-anchor="middle" font-size="12" fill="#475569">下游 26 条 token</text>
+<text x="130.0" y="164" text-anchor="middle" font-size="12" fill="#475569">24 个组件</text>
+<text x="130.0" y="182" text-anchor="middle" font-size="12" fill="#475569">间距整体位移</text>
+<rect x="270" y="100" width="200" height="92" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+<text x="370.0" y="126" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">改 color-gray-300</text>
+<text x="370.0" y="146" text-anchor="middle" font-size="12" fill="#475569">下游 26 条 token</text>
+<text x="370.0" y="164" text-anchor="middle" font-size="12" fill="#475569">24 个组件（边框/分隔线）</text>
+<text x="370.0" y="182" text-anchor="middle" font-size="12" fill="#475569">全局对比度变化</text>
+<rect x="510" y="100" width="200" height="92" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="610.0" y="126" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">改 color-blue-600</text>
+<text x="610.0" y="146" text-anchor="middle" font-size="12" fill="#475569">下游 3 条 token</text>
+<text x="610.0" y="164" text-anchor="middle" font-size="12" fill="#475569">1 个组件</text>
+<text x="610.0" y="182" text-anchor="middle" font-size="12" fill="#475569">可灰度验证</text>
+<rect x="750" y="100" width="180" height="92" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+<text x="840.0" y="126" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">改 radius-6</text>
+<text x="840.0" y="146" text-anchor="middle" font-size="12" fill="#475569">下游 24 条 token</text>
+<text x="840.0" y="164" text-anchor="middle" font-size="12" fill="#475569">23 个组件</text>
+<text x="840.0" y="182" text-anchor="middle" font-size="12" fill="#475569">圆角体系整体变</text>
+<text x="30" y="248" font-size="14" font-weight="700" fill="#0f172a">四道闸门</text>
+<rect x="30" y="268" width="212" height="76" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="136.0" y="294" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">1 变更提案</text>
+<text x="136.0" y="314" text-anchor="middle" font-size="12" fill="#475569">影响面 + 视觉回归</text>
+<line x1="242" y1="306" x2="258" y2="306" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="262" y="268" width="212" height="76" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="368.0" y="294" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">2 废弃标注</text>
+<text x="368.0" y="314" text-anchor="middle" font-size="12" fill="#475569">两个 minor 过渡</text>
+<line x1="474" y1="306" x2="490" y2="306" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="494" y="268" width="212" height="76" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="600.0" y="294" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">3 破坏性变更</text>
+<text x="600.0" y="314" text-anchor="middle" font-size="12" fill="#475569">major + codemod</text>
+<line x1="706" y1="306" x2="722" y2="306" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="726" y="268" width="212" height="76" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="832.0" y="294" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">4 下线</text>
+<text x="832.0" y="314" text-anchor="middle" font-size="12" fill="#475569">基线同步删除</text>
+<text x="30" y="384" font-size="13" fill="#475569">影响面小的改动可以灰度验证；影响面 = 24 个组件的改动，只能整包发版 + 全量视觉回归，成本差一个数量级。</text>
+</svg>

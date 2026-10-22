@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" width="960" height="390" role="img" aria-label="变更到版本号的判定">
+<title>变更到版本号的判定</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="390" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#0f172a">从变更到版本号：两个分类器的准确率</text>
+<text x="24" y="58" font-size="13" fill="#475569">24 条真实形态的组件库变更，人工标注 13 条 major</text>
+<rect x="30" y="96" width="200" height="88" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="130.0" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">24 条变更</text>
+<text x="130.0" y="142" text-anchor="middle" font-size="12" fill="#475569">新增 / 删除 / 重命名</text>
+<text x="130.0" y="160" text-anchor="middle" font-size="12" fill="#475569">类型 / DOM / token</text>
+<text x="130.0" y="178" text-anchor="middle" font-size="12" fill="#475569">peer / 载荷 / 默认值</text>
+<rect x="270" y="92" width="300" height="96" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+<text x="420.0" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">朴素分类器（只看删除/重命名）</text>
+<text x="420.0" y="138" text-anchor="middle" font-size="12" fill="#475569">判错 11 / 24</text>
+<text x="420.0" y="156" text-anchor="middle" font-size="12" fill="#475569">漏判 7 条 major</text>
+<text x="420.0" y="174" text-anchor="middle" font-size="12" fill="#475569">准确率 54%</text>
+<rect x="270" y="206" width="300" height="96" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="420.0" y="232" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">判据表分类器（六类规则）</text>
+<text x="420.0" y="252" text-anchor="middle" font-size="12" fill="#475569">判错 2 / 24</text>
+<text x="420.0" y="270" text-anchor="middle" font-size="12" fill="#475569">漏判 0 条 major</text>
+<text x="420.0" y="288" text-anchor="middle" font-size="12" fill="#475569">1 条 minor↔patch 互错</text>
+<rect x="610" y="92" width="320" height="96" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="770.0" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">语义化版本能表达的</text>
+<text x="770.0" y="138" text-anchor="middle" font-size="12" fill="#475569">接口契约：签名、必填性、类型宽度</text>
+<text x="770.0" y="156" text-anchor="middle" font-size="12" fill="#475569">peer 依赖范围、导出形态</text>
+<rect x="610" y="206" width="320" height="96" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+<text x="770.0" y="232" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">它表达不了的（5 条）</text>
+<text x="770.0" y="252" text-anchor="middle" font-size="12" fill="#475569">默认值变化、token 取值、z-index</text>
+<text x="770.0" y="270" text-anchor="middle" font-size="12" fill="#475569">locale 默认、视觉密度</text>
+<line x1="230" y1="140" x2="266" y2="140" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="230" y1="200" x2="266" y2="240" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<text x="30" y="344" font-size="13" fill="#475569">结论：版本号管「编译期会不会报错」，视觉回归基线管「运行期看起来变没变」。两套东西不能互相替代。</text>
+<text x="30" y="368" font-size="13" fill="#475569">发布通道：patch 直发、minor 灰度、major 双版本并存 + codemod。</text>
+</svg>

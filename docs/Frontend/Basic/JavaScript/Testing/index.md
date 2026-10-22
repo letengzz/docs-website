@@ -21,7 +21,7 @@ graph TD
 npm install --save-dev jest
 ```
 
-```json [jest.config.js]
+```javascript [jest.config.js]
 module.exports = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],

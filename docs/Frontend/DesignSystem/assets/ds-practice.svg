@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-label="十二个组件的最小设计系统路线">
+<title>十二个组件的最小设计系统路线</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#0f172a">实战：12 个组件的最小设计系统</text>
+<text x="24" y="58" font-size="13" fill="#475569">五天可跑完；每天有可验证的收尾</text>
+<rect x="30" y="96" width="172" height="108" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="116.0" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">D1 Token 与产物</text>
+<text x="116.0" y="141.5" text-anchor="middle" font-size="11.5" fill="#475569">三层图 + CSS/JSON 双产物</text>
+<text x="116.0" y="159.0" text-anchor="middle" font-size="11.5" fill="#475569">验收：解析 423 条 0 缺陷</text>
+<line x1="202" y1="150" x2="212" y2="150" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="216" y="96" width="172" height="108" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="302.0" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">D2 组件与 API</text>
+<text x="302.0" y="141.5" text-anchor="middle" font-size="11.5" fill="#475569">8 个基础组件 + 4 个组合</text>
+<text x="302.0" y="159.0" text-anchor="middle" font-size="11.5" fill="#475569">验收：256 组合剪到 90</text>
+<line x1="388" y1="150" x2="398" y2="150" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="402" y="96" width="172" height="108" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="488.0" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">D3 文档站</text>
+<text x="488.0" y="141.5" text-anchor="middle" font-size="11.5" fill="#475569">类型生成 props 表</text>
+<text x="488.0" y="159.0" text-anchor="middle" font-size="11.5" fill="#475569">验收：漂移 0 条</text>
+<line x1="574" y1="150" x2="584" y2="150" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="588" y="96" width="172" height="108" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="674.0" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">D4 视觉回归</text>
+<text x="674.0" y="141.5" text-anchor="middle" font-size="11.5" fill="#475569">基线 6 张 + 三口径</text>
+<text x="674.0" y="159.0" text-anchor="middle" font-size="11.5" fill="#475569">验收：假阳性 0</text>
+<line x1="760" y1="150" x2="770" y2="150" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="774" y="96" width="172" height="108" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="860.0" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">D5 发布与消费</text>
+<text x="860.0" y="141.5" text-anchor="middle" font-size="11.5" fill="#475569">双格式 + exports</text>
+<text x="860.0" y="159.0" text-anchor="middle" font-size="11.5" fill="#475569">验收：单组件 162 B</text>
+<rect x="30" y="236" width="440" height="110" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="250.0" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">目录结构（读者自己要建的工程）</text>
+<text x="250.0" y="282" text-anchor="middle" font-size="12" fill="#475569">packages/tokens · packages/react</text>
+<text x="250.0" y="300" text-anchor="middle" font-size="12" fill="#475569">packages/docs（VitePress / Storybook）</text>
+<text x="250.0" y="318" text-anchor="middle" font-size="12" fill="#475569">packages/visual（基线图 + 比对脚本）</text>
+<rect x="500" y="236" width="430" height="110" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+<text x="715.0" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">每天的可验证收尾</text>
+<text x="715.0" y="282" text-anchor="middle" font-size="12" fill="#475569">命令 + 预期输出，不写「应该没问题」</text>
+<text x="715.0" y="300" text-anchor="middle" font-size="12" fill="#475569">失败即停，不带着红灯往下走</text>
+<text x="715.0" y="318" text-anchor="middle" font-size="12" fill="#475569">第 5 天能 install 到一个空工程里跑起来</text>
+<text x="30" y="380" font-size="13" fill="#475569">12 个组件不是目标，目标是把「一条链」跑通：token → 组件 → 文档 → 基线 → 产物。</text>
+</svg>

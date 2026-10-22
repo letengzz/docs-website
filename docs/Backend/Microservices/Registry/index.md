@@ -65,7 +65,7 @@ Nacos 3.x 于 2025 年发布，重新设计了内核（Java 17+，gRPC 长连接
 
 ### 启动 Nacos
 
-```shell [docker-compose.yml]
+```yaml [docker-compose.yml]
 services:
   nacos:
     image: nacos/nacos-server:v3.2.4

@@ -30,7 +30,7 @@ Prometheus 是云原生监控的事实标准：它通过 **Pull 模型**定期�
 
 ## 安装与启动
 
-```shell [docker-compose.yml]
+```yaml [docker-compose.yml]
 services:
   prometheus:
     image: prom/prometheus:v3.14.0

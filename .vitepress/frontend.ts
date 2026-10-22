@@ -904,3 +904,22 @@ export const FrontFormValidation = [
         ],
     },
 ];
+
+export const FrontDesignSystem = [
+    {
+        text: "设计系统与组件库工程",
+        link: "/docs/Frontend/DesignSystem/index.md",
+        items: [
+            { text: "总览：一条链、七环与三张账", link: "/docs/Frontend/DesignSystem/Overview/index.md" },
+            { text: "Token：三层、双产物与解析", link: "/docs/Frontend/DesignSystem/Tokens/index.md" },
+            { text: "主题与多品牌：覆盖式与编译式", link: "/docs/Frontend/DesignSystem/Theming/index.md" },
+            { text: "组件 API：表面积与状态所有权", link: "/docs/Frontend/DesignSystem/ComponentAPI/index.md" },
+            { text: "文档与代码同源", link: "/docs/Frontend/DesignSystem/DocsSync/index.md" },
+            { text: "产物体积：摇树、样式与 exports", link: "/docs/Frontend/DesignSystem/Distribution/index.md" },
+            { text: "视觉回归：8 个变体与 6 种口径", link: "/docs/Frontend/DesignSystem/VisualRegression/index.md" },
+            { text: "版本、废弃与发布治理", link: "/docs/Frontend/DesignSystem/ReleaseGovernance/index.md" },
+            { text: "实战：12 个组件的最小设计系统", link: "/docs/Frontend/DesignSystem/Practice/index.md" },
+            { text: "常见问题与分诊", link: "/docs/Frontend/DesignSystem/FAQ/index.md" },
+        ],
+    },
+];

@@ -175,6 +175,38 @@ import UnoCSS from 'unocss/vite'
 <div class="bg-blue-500 text-white p-4 rounded">Hello UnoCSS!</div>
 ```
 
+## 原子类与设计 token 的分工（第 189 天补充）
+
+原子化 CSS 与设计 token 不是替代关系，而是**上下游**：token 决定「有哪些值」，原子类决定「这些值怎么被写成类名」。
+
+| 问题 | 原子类回答 | 设计 token 回答 |
+| --- | --- | --- |
+| 这个间距是多少 | `p-3` 对应哪一个刻度 | `--space-12` 的取值与它属于哪一层 |
+| 换主题时改什么 | 改配置里的主题映射 | 改语义层的引用关系 |
+| 谁能改 | 任何写页面的人 | 设计系统维护者（受版本与影响面约束） |
+| 跨端怎么复用 | 不能（原子类只在 CSS 里） | 能（同一份 token 编译到 CSS / 原生 / 小程序） |
+
+Tailwind v4 把两者接在同一处：`@theme` 里声明的变量**既是 CSS 变量、又会生成工具类**。
+
+```css [src/styles/theme.css]
+@import "tailwindcss";
+
+@theme {
+  /* 语义 token 直接作为 @theme 变量：既生成 bg-surface，也可 var(--color-surface) */
+  --color-surface: var(--bg-canvas);
+  --color-accent: var(--accent-solid);
+  --spacing-card: var(--space-12);
+}
+```
+
+::: danger 不要把 token 直接写成原子类名
+1. 写 `--color-surface: #f7f7f5` 是把**值**搬进 `@theme`，换主题时仍然要改这里，等于又多了一份源；
+2. 正确写法是让 `@theme` 变量**引用**语义 token（如上例），主题切换只改语义层；
+3. 反过来，页面里不要用 `bg-blue-500` 这种原始色阶类——它绕过了语义层，深色模式下不会跟着变。
+
+token 的三层分工、双产物与影响面计算见 [设计系统与组件库工程 · Token](../../../DesignSystem/Tokens/index.md)；主题的两种实现（覆盖式 293 B vs 编译式 2,821 B）见 [主题与多品牌](../../../DesignSystem/Theming/index.md)。
+:::
+
 ## 相关资源
 
 - [Tailwind CSS 官方文档](https://tailwindcss.com/docs)

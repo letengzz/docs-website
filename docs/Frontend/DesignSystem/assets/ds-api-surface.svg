@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 396" width="960" height="396" role="img" aria-label="组件 API 表面积与状态所有权">
+<title>组件 API 表面积与状态所有权</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="396" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#0f172a">组件 API：表面积与状态所有权</text>
+<text x="24" y="58" font-size="13" fill="#475569">左：组合爆炸；右：受控组件的状态回传闭环</text>
+<rect x="30" y="96" width="210" height="96" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+<text x="135.0" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">8 个布尔 prop</text>
+<text x="135.0" y="142" text-anchor="middle" font-size="12" fill="#475569">全组合 256 种</text>
+<text x="135.0" y="160" text-anchor="middle" font-size="12" fill="#475569">声明互斥后合法 90 种</text>
+<text x="135.0" y="178" text-anchor="middle" font-size="12" fill="#475569">非法 166 种（65%）</text>
+<rect x="260" y="96" width="210" height="96" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="365.0" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">收敛为 4 个枚举</text>
+<text x="365.0" y="142" text-anchor="middle" font-size="12" fill="#475569">variant/size/tone/state</text>
+<text x="365.0" y="160" text-anchor="middle" font-size="12" fill="#475569">3×3×3×3 = 81 种</text>
+<text x="365.0" y="178" text-anchor="middle" font-size="12" fill="#475569">每种都能写文档</text>
+<line x1="240" y1="144" x2="256" y2="144" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="500" y="96" width="190" height="96" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="595.0" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">受控 · 父回传</text>
+<text x="595.0" y="142" text-anchor="middle" font-size="12" fill="#475569">value 每键更新</text>
+<text x="595.0" y="160" text-anchor="middle" font-size="12" fill="#475569">最终 "abcdef"</text>
+<text x="595.0" y="178" text-anchor="middle" font-size="12" fill="#475569">每键快照 a→ab→…</text>
+<rect x="720" y="96" width="210" height="96" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+<text x="825.0" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">受控 · 父不回传</text>
+<text x="825.0" y="142" text-anchor="middle" font-size="12" fill="#475569">value 恒为 ""</text>
+<text x="825.0" y="160" text-anchor="middle" font-size="12" fill="#475569">最终 ""（输入全丢）</text>
+<text x="825.0" y="178" text-anchor="middle" font-size="12" fill="#475569">不报错、不告警</text>
+<text x="30" y="240" font-size="14" font-weight="700" fill="#0f172a">切换受控/非受控的代价</text>
+<text x="30" y="264" font-size="13" fill="#475569">输入 "abc" 后把 value 从 undefined 改成 ""：切换 1 次，值从 "abc" 直接变 "" —— 组件没有义务保留旧状态，也不该保留。</text>
+<text x="30" y="296" font-size="14" font-weight="700" fill="#0f172a">每渲染的固定成本（实测）</text>
+<text x="30" y="320" font-size="13" fill="#475569">浅比较 8 / 16 / 40 / 80 个 props：0.193 / 0.386 / 2.259 / 4.334 µs；默认值 spread 合并 28 键 5.395 µs，预合并后引用 0.0061 µs（884×）</text>
+<text x="30" y="352" font-size="14" font-weight="700" fill="#0f172a">元素创建成本</text>
+<text x="30" y="376" font-size="13" fill="#475569">组合式 0.147 µs / 配置式 0.028 µs / render prop 0.0594 µs —— 组合式贵 5.2×，换来的是「用户自己决定内部结构」</text>
+</svg>
