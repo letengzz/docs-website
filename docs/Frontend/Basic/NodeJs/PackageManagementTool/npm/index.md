@@ -54,7 +54,7 @@ package.json 例：
 
 属性翻译：
 
-```json
+```jsonc
 {
 	"name": "pro-test", #包的名字
 	"version": "1.0.0", #包的版本

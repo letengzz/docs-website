@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="-apple-system,Segoe UI,Noto Sans CJK SC,sans-serif">
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#1f2937">事务边界与池：连接什么时候还、状态什么时候脏</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="30" y="80" width="430" height="150" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="245.0" y="104" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="middle">正确：借—事务—还 三件事同作用域</text>
+<text x="245.0" y="124" font-size="11.5" fill="#4b5563" text-anchor="middle">try (conn = ds.getConnection()) {</text>
+<text x="245.0" y="141" font-size="11.5" fill="#4b5563" text-anchor="middle">  conn.setAutoCommit(false);</text>
+<text x="245.0" y="158" font-size="11.5" fill="#4b5563" text-anchor="middle">  ... 业务 SQL ...</text>
+<text x="245.0" y="175" font-size="11.5" fill="#4b5563" text-anchor="middle">  conn.commit();</text>
+<text x="245.0" y="192" font-size="11.5" fill="#4b5563" text-anchor="middle">}  // 归还时才回到池</text>
+<text x="245.0" y="209" font-size="11.5" fill="#4b5563" text-anchor="middle">事务范围 = 借出范围</text>
+<rect x="500" y="80" width="430" height="150" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="715.0" y="104" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="middle">错误：事务跨了归还点</text>
+<text x="715.0" y="124" font-size="11.5" fill="#4b5563" text-anchor="middle">conn = ds.getConnection();</text>
+<text x="715.0" y="141" font-size="11.5" fill="#4b5563" text-anchor="middle">tx.begin();</text>
+<text x="715.0" y="158" font-size="11.5" fill="#4b5563" text-anchor="middle">// 中间 return / 异步 / 嵌套服务再借一次</text>
+<text x="715.0" y="175" font-size="11.5" fill="#4b5563" text-anchor="middle">tx.commit();   // 此时 conn 可能已归还</text>
+<text x="715.0" y="192" font-size="11.5" fill="#4b5563" text-anchor="middle">→ 另一线程拿到同一物理连接，读到未提交状态</text>
+<rect x="30" y="260" width="280" height="120" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="170.0" y="284" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">状态污染三件套</text>
+<text x="170.0" y="304" font-size="12" fill="#4b5563" text-anchor="middle">SET search_path / time_zone</text>
+<text x="170.0" y="321" font-size="12" fill="#4b5563" text-anchor="middle">临时表、游标、序列</text>
+<text x="170.0" y="338" font-size="12" fill="#4b5563" text-anchor="middle">用户变量、锁（FOR UPDATE）</text>
+<rect x="340" y="260" width="280" height="120" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="480.0" y="284" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">两种清法</text>
+<text x="480.0" y="304" font-size="11.5" fill="#4b5563" text-anchor="middle">reset 语句（MySQL: COM_RESET_CONNECTION）</text>
+<text x="480.0" y="321" font-size="11.5" fill="#4b5563" text-anchor="middle">或 DISCARD ALL（PG，代价见下）</text>
+<rect x="650" y="260" width="280" height="120" rx="8" fill="#f3f4f6" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="790.0" y="284" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">代价读数（本机）</text>
+<text x="790.0" y="304" font-size="11.5" fill="#4b5563" text-anchor="middle">SET LOCAL 5,291.75 TPS</text>
+<text x="790.0" y="321" font-size="11.5" fill="#4b5563" text-anchor="middle">SET + RESET 4,285.56（−19.0%）</text>
+<text x="790.0" y="338" font-size="11.5" fill="#4b5563" text-anchor="middle">SET + DISCARD ALL 3,578.64（−32.4%）</text>
+<rect x="30" y="400" width="900" height="66" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="480.0" y="424" font-size="12.5" font-weight="700" fill="#047857" text-anchor="middle">判据：连接归还前必须有「事务已结束 + 会话状态已复位」两道确认；缺一道，池就成了跨请求的共享可变状态</text>
+<text x="30" y="488" font-size="11.5" fill="#4b5563" text-anchor="start" font-weight="400">注：MySQL 的 COM_RESET_CONNECTION 是协议级重置（服务端做），JDBC 的 Connection.isValid() 只探活不复位——两者不能互相替代。</text>
+</svg>

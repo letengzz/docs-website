@@ -264,3 +264,11 @@ done
 - [RFC 6585 · `429 Too Many Requests`](https://www.rfc-editor.org/rfc/rfc6585)
 - [Little's law（并发、吞吐与延迟的关系）· Wikipedia](https://en.wikipedia.org/wiki/Little%27s_law)
 - [USL（Universal Scalability Law）与「加机器为何无效」](https://en.wikipedia.org/wiki/Universal_scalability_law)
+
+## 与「连接池与连接生命周期」专题的分工
+
+| 这一页管什么 | 专题那一页管什么 |
+| --- | --- |
+| 过载的**整体视角**：限流、隔离、降级、排队与拒绝的取舍，以及它们在请求链路上的位置 | 把排队**收缩到「借连接」这一个点**：池的膝点实测、`L ≈ λ × W` 的算式、库侧预算、等待 P99 的口径 |
+
+**本页特有的一处坑**：本机实测（PostgreSQL 18.6，`pgbench -T 10`）显示并发从 16 加到 32 时，吞吐 **−3.2%**、延迟 **+106%**；加到 64 时吞吐 **−15.2%**、延迟 **+371%**。也就是说「加并发 = 加吞吐」在数据库这一层只在膝点之前成立，过载保护如果只做「加大线程池/加大连接池」，会把排队从应用层搬进数据库，延迟反而更糟。

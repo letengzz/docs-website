@@ -430,3 +430,22 @@ export const SchemaEvolution = [
     ],
   },
 ];
+
+export const ConnectionPool = [
+  {
+    text: "连接池与连接生命周期",
+    link: "/docs/DB/ConnectionPool/index.md",
+    items: [
+      { text: "池的内部：一次借用的路径", link: "/docs/DB/ConnectionPool/PoolInternals/index.md" },
+      { text: "池大小：从公式到实测膝点", link: "/docs/DB/ConnectionPool/Sizing/index.md" },
+      { text: "连接生命周期：五个阀门谁先关", link: "/docs/DB/ConnectionPool/Lifetime/index.md" },
+      { text: "事务边界与池：什么时候还、什么时候脏", link: "/docs/DB/ConnectionPool/TransactionBoundary/index.md" },
+      { text: "泄漏定位：倒推到那一行没 close", link: "/docs/DB/ConnectionPool/LeakDetection/index.md" },
+      { text: "双层池与代理：两层上限一起算", link: "/docs/DB/ConnectionPool/DoubleLayer/index.md" },
+      { text: "多数据源与多租户：池的维度", link: "/docs/DB/ConnectionPool/MultiDatasource/index.md" },
+      { text: "故障与自愈：重启、切换、连接风暴", link: "/docs/DB/ConnectionPool/FailureRecovery/index.md" },
+      { text: "观测与告警：四指标三陷阱", link: "/docs/DB/ConnectionPool/Observability/index.md" },
+      { text: "常见问题与分诊", link: "/docs/DB/ConnectionPool/FAQ/index.md" },
+    ],
+  },
+];

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="-apple-system,Segoe UI,Noto Sans CJK SC,sans-serif">
+<rect x="0" y="0" width="960" height="460" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#1f2937">症状分诊：五个最常见的「池有问题」</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="30" y="76" width="900" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="46" y="102" font-size="12.5" fill="#b91c1c" text-anchor="start" font-weight="700">空闲一段时间后首个请求失败</text>
+<text x="46" y="122" font-size="10.5" fill="#4b5563" text-anchor="start" font-weight="400">现象</text>
+<text x="360" y="112" font-size="12" fill="#b45309" text-anchor="start" font-weight="400">服务端先关（wait_timeout）</text>
+<text x="660" y="112" font-size="11.5" fill="#047857" text-anchor="start" font-weight="400">maxLifetime &lt; wait_timeout，开 keepalive</text>
+<rect x="30" y="148" width="900" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="46" y="174" font-size="12.5" fill="#b91c1c" text-anchor="start" font-weight="700">偶发「连接已关闭」但池显示有空闲</text>
+<text x="46" y="194" font-size="10.5" fill="#4b5563" text-anchor="start" font-weight="400">现象</text>
+<text x="360" y="184" font-size="12" fill="#b45309" text-anchor="start" font-weight="400">空闲连接是死的，借出前没校验</text>
+<text x="660" y="184" font-size="11.5" fill="#047857" text-anchor="start" font-weight="400">开借出前校验 + 最大 1 s 超时</text>
+<rect x="30" y="220" width="900" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="46" y="246" font-size="12.5" fill="#b91c1c" text-anchor="start" font-weight="700">高峰期全部超时，重启就好</text>
+<text x="46" y="266" font-size="10.5" fill="#4b5563" text-anchor="start" font-weight="400">现象</text>
+<text x="360" y="256" font-size="12" fill="#b45309" text-anchor="start" font-weight="400">连接被长事务/外部调用占住</text>
+<text x="660" y="256" font-size="11.5" fill="#047857" text-anchor="start" font-weight="400">查持有时长 P99，给外部调用加超时</text>
+<rect x="30" y="292" width="900" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="46" y="318" font-size="12.5" fill="#b91c1c" text-anchor="start" font-weight="700">库侧连接数远大于应用池上限之和</text>
+<text x="46" y="338" font-size="10.5" fill="#4b5563" text-anchor="start" font-weight="400">现象</text>
+<text x="360" y="328" font-size="12" fill="#b45309" text-anchor="start" font-weight="400">有非池连接（脚本、监控、代理）</text>
+<text x="660" y="328" font-size="11.5" fill="#047857" text-anchor="start" font-weight="400">按 usename/application_name 分组对账</text>
+<rect x="30" y="364" width="900" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="46" y="390" font-size="12.5" fill="#b91c1c" text-anchor="start" font-weight="700">切主后备库写入报错</text>
+<text x="46" y="410" font-size="10.5" fill="#4b5563" text-anchor="start" font-weight="400">现象</text>
+<text x="360" y="400" font-size="12" fill="#b45309" text-anchor="start" font-weight="400">旧连接指向旧主，未按连接级重建</text>
+<text x="660" y="400" font-size="11.5" fill="#047857" text-anchor="start" font-weight="400">切换后整池标记失效并重建</text>
+<text x="360" y="68" font-size="10.5" fill="#4b5563" text-anchor="start" font-weight="400">根因</text>
+<text x="660" y="68" font-size="10.5" fill="#4b5563" text-anchor="start" font-weight="400">处置</text>
+<text x="30" y="446" font-size="12" fill="#1f2937" text-anchor="start" font-weight="400">分诊顺序固定：先看库侧连接分布（有没有非池连接）→ 再看池等待 P99 → 最后才调参数。顺序反了会把「长事务」误判成「池太小」。</text>
+</svg>

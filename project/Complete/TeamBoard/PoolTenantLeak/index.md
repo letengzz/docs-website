@@ -394,6 +394,14 @@ docker exec teamboard-sandbox-db-1 pgbench -U teamboard -d teamboard \
 2. **跨租户矩阵补到 22 格**：第 1 周的 18 格是 HTTP 层，这一页补出的 4 格是**连接层**（形态 1/2/3/5），它们在任何 HTTP 用例里都不会红。
 3. **降级链复查**：Redis 降级（第 54 章）之后如果回落到「直连数据库不走事务」，`PLP-B` 就会当场失效——降级路径必须复用同一个 `inTenant` 入口。
 
+## 与「连接池与连接生命周期」专题的分工
+
+| 本页管什么 | 专题那一页管什么 |
+| --- | --- |
+| **本项目**的五种串租户形态与实测读数：会话级 `SET` 被继承、`SET LOCAL` 提交后回到外层值、自动提交下只发 WARNING、超级用户绕过 RLS、`DISCARD ALL` 打掉预编译 | **通用的复位契约与代价**：三种复位写法的 TPS 对比（5,291.75 / 4,285.56 / 3,578.64）、复位为什么必须优先用「作用域自带恢复」、以及复位与事务边界的对齐 |
+
+**本页特有的一处坑**：`DISCARD ALL` 最安全也最贵——它会清掉服务端预编译语句，`-M prepared` 下直接报 `prepared statement "P_0" does not exist`；上了 PgBouncer 的 `transaction` 模式后，这个错误会提前到**每次事务切换**时出现，而且只在有预编译的路径上出现，压测时若连接恰好固定反而测不出来。
+
 ## 参考资料
 
 - [PostgreSQL 18 · Row Security Policies](https://www.postgresql.org/docs/18/ddl-rowsecurity.html)——`FORCE ROW LEVEL SECURITY` 的适用范围与超级用户例外

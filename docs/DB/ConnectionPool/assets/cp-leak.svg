@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="-apple-system,Segoe UI,Noto Sans CJK SC,sans-serif">
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#1f2937">泄漏定位：从「池满了」倒推到那一行没 close</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="30" y="90" width="210" height="130" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="135.0" y="114" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">① 现象</text>
+<text x="135.0" y="134" font-size="11.5" fill="#4b5563" text-anchor="middle">池等待超时</text>
+<text x="135.0" y="151" font-size="11.5" fill="#4b5563" text-anchor="middle">SQLTransientConnection</text>
+<text x="135.0" y="168" font-size="11.5" fill="#4b5563" text-anchor="middle">活跃=上限、空闲=0</text>
+<line x1="240" y1="155" x2="265" y2="155" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="265" y="90" width="210" height="130" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="370.0" y="114" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">② 量化</text>
+<text x="370.0" y="134" font-size="11.5" fill="#4b5563" text-anchor="middle">借出时长分布</text>
+<text x="370.0" y="151" font-size="11.5" fill="#4b5563" text-anchor="middle">P99 / 最大值</text>
+<text x="370.0" y="168" font-size="11.5" fill="#4b5563" text-anchor="middle">谁持有超过 5 s</text>
+<line x1="475" y1="155" x2="500" y2="155" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="500" y="90" width="210" height="130" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="605.0" y="114" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">③ 定位</text>
+<text x="605.0" y="134" font-size="11.5" fill="#4b5563" text-anchor="middle">leakDetectionThreshold</text>
+<text x="605.0" y="151" font-size="11.5" fill="#4b5563" text-anchor="middle">打印借用点堆栈</text>
+<text x="605.0" y="168" font-size="11.5" fill="#4b5563" text-anchor="middle">抓到「借出没归还」</text>
+<line x1="710" y1="155" x2="735" y2="155" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="735" y="90" width="210" height="130" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="840.0" y="114" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">④ 服务端对账</text>
+<text x="840.0" y="134" font-size="11.5" fill="#4b5563" text-anchor="middle">pg_stat_activity</text>
+<text x="840.0" y="151" font-size="11.5" fill="#4b5563" text-anchor="middle">state=idle in transaction</text>
+<text x="840.0" y="168" font-size="11.5" fill="#4b5563" text-anchor="middle">只读不提交也是泄漏</text>
+<rect x="30" y="250" width="900" height="96" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="274" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">四种高频泄漏形态（本库案例）</text>
+<text x="480.0" y="294" font-size="11.5" fill="#4b5563" text-anchor="middle">① 异常路径没进 finally（catch 里 return）    ② 流/游标没关，连接被 ResultSet 引用</text>
+<text x="480.0" y="311" font-size="11.5" fill="#4b5563" text-anchor="middle">③ 异步回调里借了连接，线程池丢任务          ④ 事务里调外部 HTTP，超时后连接被线程池吞掉</text>
+<rect x="30" y="362" width="440" height="96" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="250.0" y="386" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">服务端看得见的泄漏</text>
+<text x="250.0" y="406" font-size="11.5" fill="#4b5563" text-anchor="middle">idle in transaction 长期不结束</text>
+<text x="250.0" y="423" font-size="11.5" fill="#4b5563" text-anchor="middle">xact_start 停在几分钟前</text>
+<text x="250.0" y="440" font-size="11.5" fill="#4b5563" text-anchor="middle">持锁 → 拖住 DDL 与 VACUUM</text>
+<rect x="490" y="362" width="440" height="96" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="710.0" y="386" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">服务端看不见的泄漏</text>
+<text x="710.0" y="406" font-size="11.5" fill="#4b5563" text-anchor="middle">连接还在跑合法 SQL</text>
+<text x="710.0" y="423" font-size="11.5" fill="#4b5563" text-anchor="middle">只是「业务早就不要结果了」</text>
+<text x="710.0" y="440" font-size="11.5" fill="#4b5563" text-anchor="middle">只能靠客户端计时抓</text>
+<text x="30" y="490" font-size="12" fill="#1f2937" text-anchor="start" font-weight="400">判据：leakDetectionThreshold 必须小于 connectionTimeout（否则永远抓不到——池先超时抛错了）；生产建议 5~10 s，且只在灰度实例开。</text>
+</svg>

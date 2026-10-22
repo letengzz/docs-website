@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="-apple-system,Segoe UI,Noto Sans CJK SC,sans-serif">
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#1f2937">工程骨架与启动顺序：四层依赖、六步就绪</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="30" y="70" width="420" height="46" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="46" y="98" font-size="13" fill="#1d4ed8" text-anchor="start" font-weight="700">api</text>
+<text x="150" y="98" font-size="11.5" fill="#4b5563" text-anchor="start" font-weight="400">HTTP / 契约层</text>
+<rect x="30" y="128" width="420" height="46" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="46" y="156" font-size="13" fill="#047857" text-anchor="start" font-weight="700">application</text>
+<text x="150" y="156" font-size="11.5" fill="#4b5563" text-anchor="start" font-weight="400">用例编排 / 事务边界</text>
+<rect x="30" y="186" width="420" height="46" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="46" y="214" font-size="13" fill="#b45309" text-anchor="start" font-weight="700">domain</text>
+<text x="150" y="214" font-size="11.5" fill="#4b5563" text-anchor="start" font-weight="400">聚合 · 状态机 · 领域事件（不依赖任何外层）</text>
+<rect x="30" y="244" width="420" height="46" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="46" y="272" font-size="13" fill="#b91c1c" text-anchor="start" font-weight="700">infra</text>
+<text x="150" y="272" font-size="11.5" fill="#4b5563" text-anchor="start" font-weight="400">持久化 / 消息 / 外部适配（实现 domain 端口）</text>
+<line x1="240" y1="116" x2="240" y2="128" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="240" y1="174" x2="240" y2="186" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="240" y1="232" x2="240" y2="244" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="30" y="320" font-size="11.5" fill="#4b5563" text-anchor="start" font-weight="400">箭头 = 依赖方向；domain 不 import 任何外层，infra 实现 domain 定义的端口</text>
+<rect x="500" y="90" width="136" height="92" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="568.0" y="114" font-size="12.5" font-weight="700" fill="#1f2937" text-anchor="middle">1 网络就绪</text>
+<text x="568.0" y="134" font-size="11" fill="#4b5563" text-anchor="middle">TCP 可查询</text>
+<rect x="648" y="90" width="136" height="92" rx="8" fill="#ffffff" stroke="#047857" stroke-width="1.5"/>
+<text x="716.0" y="114" font-size="12.5" font-weight="700" fill="#1f2937" text-anchor="middle">2 Flyway</text>
+<text x="716.0" y="134" font-size="11" fill="#4b5563" text-anchor="middle">迁移到最新版</text>
+<rect x="796" y="90" width="136" height="92" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="864.0" y="114" font-size="12.5" font-weight="700" fill="#1f2937" text-anchor="middle">3 连接池</text>
+<text x="864.0" y="134" font-size="11" fill="#4b5563" text-anchor="middle">建满空闲连接</text>
+<rect x="796" y="232" width="136" height="92" rx="8" fill="#ffffff" stroke="#047857" stroke-width="1.5"/>
+<text x="864.0" y="256" font-size="12.5" font-weight="700" fill="#1f2937" text-anchor="middle">4 缓存/消息</text>
+<text x="864.0" y="276" font-size="11" fill="#4b5563" text-anchor="middle">Redis PING / topic</text>
+<rect x="648" y="232" width="136" height="92" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="716.0" y="256" font-size="12.5" font-weight="700" fill="#1f2937" text-anchor="middle">5 消费组</text>
+<text x="716.0" y="276" font-size="11" fill="#4b5563" text-anchor="middle">分区分配完成</text>
+<rect x="500" y="232" width="136" height="92" rx="8" fill="#ffffff" stroke="#047857" stroke-width="1.5"/>
+<text x="568.0" y="256" font-size="12.5" font-weight="700" fill="#1f2937" text-anchor="middle">6 就绪探针</text>
+<text x="568.0" y="276" font-size="11" fill="#4b5563" text-anchor="middle">health = UP</text>
+<line x1="636" y1="136" x2="648" y2="136" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="784" y1="136" x2="796" y2="136" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="864" y1="182" x2="864" y2="232" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="796" y1="278" x2="784" y2="278" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="648" y1="278" x2="636" y2="278" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="870" y="212" font-size="11" fill="#1d4ed8" text-anchor="start" font-weight="400">换行</text>
+<rect x="30" y="360" width="900" height="66" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="480.0" y="384" font-size="12.5" font-weight="700" fill="#047857" text-anchor="middle">一条命令起全栈：docker compose up -d --wait  →  四个服务 healthy + /actuator/health = UP + 下单能写出 outbox</text>
+<text x="30" y="470" font-size="11.5" fill="#4b5563" text-anchor="start" font-weight="400">注：实测 PostgreSQL 18 容器从启动到 TCP 可查询 1.57~2.01 s，期间连接被拒（Connection refused）——第 1 步必须用「TCP 可查询」判定，不能用端口存活。</text>
+</svg>

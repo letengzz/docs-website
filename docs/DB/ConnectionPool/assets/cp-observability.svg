@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="-apple-system,Segoe UI,Noto Sans CJK SC,sans-serif">
+<rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#1f2937">观测：四个必看指标与三个口径陷阱</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="30" y="80" width="210" height="118" rx="8" fill="#ffffff" stroke="#047857" stroke-width="1.5"/>
+<text x="135.0" y="104" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">借出等待 P99</text>
+<text x="135.0" y="124" font-size="11" fill="#4b5563" text-anchor="middle">pendingThreads / acquire P99</text>
+<text x="135.0" y="141" font-size="11" fill="#4b5563" text-anchor="middle">&gt; 5 ms 视为排队开始</text>
+<rect x="265" y="80" width="210" height="118" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.5"/>
+<text x="370.0" y="104" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">池饱和度</text>
+<text x="370.0" y="124" font-size="11" fill="#4b5563" text-anchor="middle">active / maxPoolSize</text>
+<text x="370.0" y="141" font-size="11" fill="#4b5563" text-anchor="middle">&gt; 0.8 持续 5 min 告警</text>
+<rect x="500" y="80" width="210" height="118" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="605.0" y="104" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">建连速率</text>
+<text x="605.0" y="124" font-size="11" fill="#4b5563" text-anchor="middle">connections created / min</text>
+<text x="605.0" y="141" font-size="11" fill="#4b5563" text-anchor="middle">突增 = 换命或泄漏</text>
+<rect x="735" y="80" width="210" height="118" rx="8" fill="#ffffff" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="840.0" y="104" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">持有时长 P99</text>
+<text x="840.0" y="124" font-size="11" fill="#4b5563" text-anchor="middle">connection usage time</text>
+<text x="840.0" y="141" font-size="11" fill="#4b5563" text-anchor="middle">&gt; 语句超时 = 有长事务</text>
+<rect x="30" y="226" width="900" height="118" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="480.0" y="250" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">三个口径陷阱</text>
+<text x="480.0" y="270" font-size="12" fill="#4b5563" text-anchor="middle">① 平均等待时间永远好看：排队是长尾现象，必须看 P99 / max ② 「活跃连接数」有两个来源（池自报 vs 库侧 pg_stat_activity），两者不等时要先查是否有非池连接</text>
+<text x="480.0" y="287" font-size="12" fill="#4b5563" text-anchor="middle">③ 建连次数要按「每分钟」看趋势，不要看累计值——累计值只增不减，永远看不出今天多了 3 万次</text>
+<rect x="30" y="366" width="900" height="70" rx="8" fill="#f3f4f6" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="390" font-size="12" font-weight="700" fill="#1f2937" text-anchor="middle">一条可直接抄的核对 SQL：select state, count(*) from pg_stat_activity where backend_type='client backend' group by 1 order by 2 desc;</text>
+</svg>

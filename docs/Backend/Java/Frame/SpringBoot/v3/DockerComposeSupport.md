@@ -137,7 +137,7 @@ services:
 
 如果compose 文件与应用程序不在同一目录中，或者名称不同，则可以在`application.properties`或`application.yaml`中使用`spring.docker.compose.file`指向不同的文件。可以将属性定义为确切的路径或相对于应用程序的路径。
 
-```yaml
+```properties
 spring.docker.compose.file=../my-compose.yml
 ```
 
@@ -161,7 +161,7 @@ services:
 
 还可以在`application.properties`或`application.yaml`文件中更改超时值：
 
-```yaml
+```properties
 spring.docker.compose.readiness.tcp.connect-timeout=10s
 spring.docker.compose.readiness.tcp.read-timeout=5s
 ```
@@ -182,7 +182,7 @@ spring.docker.compose.readiness.tcp.read-timeout=5s
 
 以下示例显示了如何配置生命周期管理：
 
-```yaml
+```properties
 spring.docker.compose.lifecycle-management=start-and-stop
 spring.docker.compose.start.command=start
 spring.docker.compose.stop.command=down
@@ -193,6 +193,6 @@ spring.docker.compose.stop.timeout=1m
 
 Docker Compose profile类似于Spring profile，它允许你为特定环境调整Docker Compose配置。如果要激活特定的Docker Compose profile，可以在`application.properties`或`application.yaml`文件中使用`spring.docker.compose.profiles.active`属性：
 
-```yaml
+```properties
 spring.docker.compose.profiles.active=myprofile
 ```

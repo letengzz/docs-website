@@ -10,7 +10,7 @@ MongoDB 当前稳定线为 **8.x，最新版本 8.3**（2026-05 发布，最新�
 
 一条记录就是一个文档（Document），对应 JSON 对象：
 
-```json [示例文档]
+```javascript [示例文档]
 {
   "_id": ObjectId("66f1c2a0b3e2c9f6e1d2a001"),
   "name": "张三",

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" font-family="-apple-system,Segoe UI,Noto Sans CJK SC,sans-serif">
+<rect x="0" y="0" width="960" height="490" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#1f2937">故障与自愈：库重启、主备切换、连接风暴</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="30" y="90" width="210" height="120" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="135.0" y="114" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="middle">① 库重启</text>
+<text x="135.0" y="134" font-size="12" fill="#4b5563" text-anchor="middle">所有连接失效</text>
+<text x="135.0" y="151" font-size="12" fill="#4b5563" text-anchor="middle">首个请求 57P01 / 08S01</text>
+<text x="135.0" y="168" font-size="12" fill="#4b5563" text-anchor="middle">池需整体检测并重建</text>
+<rect x="270" y="90" width="210" height="120" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="375.0" y="114" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="middle">② 主备切换</text>
+<text x="375.0" y="134" font-size="12" fill="#4b5563" text-anchor="middle">VIP/DNS 指向新主</text>
+<text x="375.0" y="151" font-size="12" fill="#4b5563" text-anchor="middle">旧连接指向旧主（只读或挂）</text>
+<text x="375.0" y="168" font-size="12" fill="#4b5563" text-anchor="middle">必须按「连接级」判定</text>
+<rect x="510" y="90" width="210" height="120" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="615.0" y="114" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="middle">③ 连接风暴</text>
+<text x="615.0" y="134" font-size="12" fill="#4b5563" text-anchor="middle">实例同时重启</text>
+<text x="615.0" y="151" font-size="12" fill="#4b5563" text-anchor="middle">N × max 同时建连</text>
+<text x="615.0" y="168" font-size="12" fill="#4b5563" text-anchor="middle">认证与 fork 打满 CPU</text>
+<rect x="750" y="90" width="180" height="120" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="840.0" y="114" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="middle">④ 池内互相拖死</text>
+<text x="840.0" y="134" font-size="12" fill="#4b5563" text-anchor="middle">长事务占满池</text>
+<text x="840.0" y="151" font-size="12" fill="#4b5563" text-anchor="middle">健康检查也拿不到连接</text>
+<rect x="30" y="250" width="900" height="96" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="480.0" y="274" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">四道防线</text>
+<text x="480.0" y="294" font-size="12" fill="#4b5563" text-anchor="middle">① 借出前校验（isValid + 最大 1~2 s 超时）② 建连退避 + 抖动（避免同时重连）③ 池内熔断：连续 N 次建连失败后快速失败 ④ 为健康检查预留 1~2 个连接（或独立小池）</text>
+<rect x="30" y="372" width="440" height="84" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="250.0" y="396" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">演练要验的三件事</text>
+<text x="250.0" y="416" font-size="11.5" fill="#4b5563" text-anchor="middle">杀掉所有 backend 后服务能否自愈</text>
+<text x="250.0" y="433" font-size="11.5" fill="#4b5563" text-anchor="middle">自愈期间错误率与耗时曲线</text>
+<text x="250.0" y="450" font-size="11.5" fill="#4b5563" text-anchor="middle">重连是否形成尖峰</text>
+<rect x="490" y="372" width="440" height="84" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="710.0" y="396" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">不算自愈的三种</text>
+<text x="710.0" y="416" font-size="11.5" fill="#4b5563" text-anchor="middle">要重启应用才恢复</text>
+<text x="710.0" y="433" font-size="11.5" fill="#4b5563" text-anchor="middle">恢复后池永远只有 1 个连接</text>
+<text x="710.0" y="450" font-size="11.5" fill="#4b5563" text-anchor="middle">报错后必须人工清池</text>
+</svg>

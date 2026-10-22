@@ -50,7 +50,7 @@ curl -X POST http://localhost:9200/products/_search -H 'Content-Type: applicatio
 
 ## bool：组合查询
 
-```json
+```jsonc
 {
   "query": {
     "bool": {
@@ -110,7 +110,7 @@ curl -X POST http://localhost:9200/products/_search -H 'Content-Type: applicatio
 
 ## 高亮与结果控制
 
-```json
+```jsonc
 {
   "query": { "match": { "title": "耳机" } },
   "_source": ["title", "price"],                       // 只返回需要的字段

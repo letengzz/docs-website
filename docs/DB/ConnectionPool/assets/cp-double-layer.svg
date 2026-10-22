@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="-apple-system,Segoe UI,Noto Sans CJK SC,sans-serif">
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#1f2937">双层池：客户端池 × 代理池，账要一起算</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="30" y="90" width="200" height="110" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="130.0" y="114" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">应用实例 × N</text>
+<text x="130.0" y="134" font-size="12" fill="#4b5563" text-anchor="middle">每实例池上限 maxPoolSize</text>
+<text x="130.0" y="151" font-size="12" fill="#4b5563" text-anchor="middle">总客户端连接 = N × max</text>
+<rect x="300" y="90" width="230" height="110" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="415.0" y="114" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">PgBouncer / ProxySQL</text>
+<text x="415.0" y="134" font-size="10.5" fill="#4b5563" text-anchor="middle">pool_mode：session /</text>
+<text x="415.0" y="151" font-size="10.5" fill="#4b5563" text-anchor="middle">transaction / statement</text>
+<text x="415.0" y="168" font-size="10.5" fill="#4b5563" text-anchor="middle">default_pool_size 每 (user,db)</text>
+<rect x="600" y="90" width="330" height="110" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="765.0" y="114" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">数据库实例</text>
+<text x="765.0" y="134" font-size="11.5" fill="#4b5563" text-anchor="middle">max_connections 是硬上限</text>
+<text x="765.0" y="151" font-size="11.5" fill="#4b5563" text-anchor="middle">代理到库的连接 = 代理池 × (user,db) 组合数</text>
+<line x1="230" y1="145" x2="300" y2="145" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="530" y1="145" x2="600" y2="145" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="265" y="226" font-size="11" fill="#1d4ed8" text-anchor="middle" font-weight="400">客户端连接</text>
+<text x="565" y="226" font-size="11" fill="#1d4ed8" text-anchor="middle" font-weight="400">服务端连接</text>
+<rect x="30" y="240" width="900" height="52" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="48" y="272" font-size="13" fill="#b91c1c" text-anchor="start" font-weight="700">session 模式</text>
+<text x="220" y="272" font-size="12" fill="#4b5563" text-anchor="start" font-weight="400">一个客户端连接绑一个服务端连接直到断开</text>
+<text x="700" y="272" font-size="12" fill="#b91c1c" text-anchor="start" font-weight="400">复用比 ≈ 1，等于没上代理</text>
+<rect x="30" y="302" width="900" height="52" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="48" y="334" font-size="13" fill="#047857" text-anchor="start" font-weight="700">transaction 模式</text>
+<text x="220" y="334" font-size="12" fill="#4b5563" text-anchor="start" font-weight="400">事务结束即把连接还回代理池</text>
+<text x="700" y="334" font-size="12" fill="#047857" text-anchor="start" font-weight="400">复用比 10~100×，但不支持会话级状态</text>
+<rect x="30" y="364" width="900" height="52" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="48" y="396" font-size="13" fill="#b45309" text-anchor="start" font-weight="700">statement 模式</text>
+<text x="220" y="396" font-size="12" fill="#4b5563" text-anchor="start" font-weight="400">每条语句都换连接</text>
+<text x="700" y="396" font-size="12" fill="#b45309" text-anchor="start" font-weight="400">不支持多语句事务</text>
+<rect x="30" y="432" width="900" height="62" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="480.0" y="456" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="middle">transaction 模式的两条硬约束</text>
+<text x="480.0" y="476" font-size="11.5" fill="#4b5563" text-anchor="middle">① prepared statement 需 PgBouncer 1.21+ 的 protocol-level 支持（max_prepared_statements 默认 200）或客户端关闭服务端预处理</text>
+<text x="480.0" y="493" font-size="11.5" fill="#4b5563" text-anchor="middle">② SET / 临时表 / 会话级 advisory lock / LISTEN 会跨事务丢失</text>
+</svg>

@@ -42,10 +42,10 @@
 | [架构设计：事件流与一致性边界](Architecture/index.md) | `EOA` | 同步/异步定性、事件信封、topic 分区、三处事务 | 8 |
 | [数据库设计：九张表与六条不变量](DatabaseDesign/index.md) | `EDB` | DDL 约束、部分索引、不变量 SQL、并发实测 | 8 |
 | [第 1 周收口 · 接口契约与第 1 周验收](Week1Gate/index.md) | `EW1` | 9 端点幂等与迁移覆盖、错误码表、契约⇄DDL 对齐、七道门 | 8 |
+| [第 2 周第 1 步 · 环境与工程骨架](Bootstrap/index.md) | `EEN` | 四层依赖方向、三套 profile、启动六步、池预算、五条验收 | 8 |
 
-后续 15 章（判据族已预留，交付时补条数）：
+后续 14 章（判据族已预留，交付时补条数）：
 
-- 环境与工程骨架（判据族 `EEN`：目录结构、配置分层、启动顺序）
 - 下单链路与本地事务表（判据族 `EOR`：事务边界、outbox、幂等键）
 - 支付回调：验签、幂等与乱序（判据族 `EPY`：回调验签、重复与乱序、对账）
 - 库存预占与超时释放（判据族 `EIV`：预占语义、超时释放、超卖兜底）
@@ -203,7 +203,7 @@ docker exec -i eoh-pg psql -U postgres -d eoh -f 900_invariants.sql
 docker exec -i eoh-pg psql -U postgres -d eoh -f 910_slot_hold_demo.sql
 ```
 
-**下一步**（第 185 天）：环境与工程骨架——四层目录与依赖方向、三套 profile 与密钥来源、启动顺序（Flyway → 连接池 → consumer 就绪探针）、`docker compose up` 一条命令起全栈；验收是四个服务 healthy、`/actuator/health` 为 `UP`、下单接口能写出 outbox。
+**下一步**（第 186 天）：第 2 周第 1 步「环境与工程骨架」已交付（见下节）；接着做第 2 周第 2 步——下单链路与 outbox 的第一次真实写入（`POST /api/orders` 的幂等键校验 → 状态机守卫 → 订单/明细/outbox 三表同事务，判据族建议 `EOC`）。
 
 ## 九、第 185 天交付
 
@@ -250,8 +250,40 @@ docker exec -it eoh-kafka /opt/kafka/bin/kafka-topics.sh --bootstrap-server loca
 # 期望：三行 healthy；topic 恰好 4 个
 ```
 
-**下一步**（第 186 天）：环境与工程骨架（`EEN`）——四层目录与依赖方向、三套 profile 与密钥来源、启动顺序（Flyway → 连接池 → consumer 就绪探针）；验收是四个服务 `healthy`、`/actuator/health` 为 `UP`、下单接口能写出 outbox。
+**下一步**（第 187 天）：第 2 周第 2 步 · 下单链路与 outbox 的第一次真实写入（`EOC`）——幂等键校验、状态机守卫、订单/明细/outbox 三表同事务、投递器用 `FOR UPDATE SKIP LOCKED`。
 
-## 十、判据纪律
+## 十、第 186 天交付（第 2 周第 1 步 · 环境与工程骨架）
+
+- 新建 [环境与工程骨架](Bootstrap/index.md)（判据 `EEN-A` ~ `EEN-H`），配图 `eoh-bootstrap.svg`（四层依赖 + 六步就绪）。
+- **四层目录与依赖方向落成 3 条 ArchUnit 断言**：`domain` 不依赖 `org.springframework`/`jakarta.persistence`/`java.sql`；`api` 不碰 `infra`；`infra.persistence` 与 `infra.messaging` 互不依赖。写不进 CI 的架构规则等于没有。
+- **启动六步定序**：TCP 可查询 → Flyway → 连接池 → 缓存/消息 → 消费组分区分配 → 就绪探针。每一步都写了「提前了会怎样」，其中 `5 → 6` 的提前是**假就绪**：订阅没完成就 UP，灰度期看起来正常但不消费。
+- **实测把 `healthcheck` 的写法钉死**：PostgreSQL 18 容器从 `docker run` 到 **TCP 可查询 1.57~2.01 s**，期间连接是 `Connection refused`；`pg_isready` 返回 0 比 TCP 可查询**早约 312 ms**（1,697 ms 对 2,009 ms）——所以健康检查必须是「真的查一次」，不能用端口存活或 `pg_isready`。
+- **池预算落进配置并故意留了一处错**：`maximumPoolSize=20`、2 实例 → 40 ≤ 80 ✅；但示例里 `leak-detection-threshold: 10000` 大于 `connection-timeout: 3000`，池会先抛「借不到」，泄漏检测永远抓不到（本周专题判据 `CPK-B`）。页内明确写出「这段是故意的，别照抄」，并给了两种正确组合。
+- **五条验收断言**：四服务 `healthy`、`/actuator/health` 组件齐全、Flyway 最新一条 `success=t`、库侧连接数 20±2、下单后 outbox 有 1 行且 order/stock 都已写。
+
+**如何验证**（读者可执行）：
+
+```shell
+# 1) 一条命令起全栈，退出码即「是否真的就绪」
+docker compose -f deploy/compose.yaml up -d --build --wait
+docker compose -f deploy/compose.yaml ps --format '{{.Name}} {{.Health}}'
+# 期望：四个服务全部 healthy
+
+# 2) 健康聚合与池
+curl -s localhost:8080/actuator/health | jq '.status, (.components|keys)'
+docker exec eoh-postgres psql -U postgres -d eoh -tAc \
+  "select count(*) from pg_stat_activity where application_name='eoh-app';"
+# 期望：UP / ["db","kafka","redis"]；连接数 20 ± 2
+
+# 3) 下单写出 outbox
+curl -s -X POST localhost:8080/api/v1/orders -H 'Content-Type: application/json' \
+  -H 'Idempotency-Key: boot-0001' \
+  -d '{"customerId":"c-1","items":[{"skuId":"sku-1","qty":2,"unitPrice":"19.90"}]}' | jq '.status'
+docker exec eoh-postgres psql -U postgres -d eoh -tAc \
+  "select event_type,status from outbox order by id desc limit 1;"
+# 期望：CREATED / OrderCreated|PENDING
+```
+
+## 十一、判据纪律
 
 每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMO` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。

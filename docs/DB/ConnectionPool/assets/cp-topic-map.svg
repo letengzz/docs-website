@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="-apple-system,Segoe UI,Noto Sans CJK SC,sans-serif">
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#1f2937">连接池专题地图：从「为什么要有池」到「池坏了怎么查」</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="40" y="70" width="880" height="58" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="480.0" y="94" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">第 0 层｜事实基线：连接建立 2.1~4.2 ms、复用后 2,557 TPS 对每次新建 566 TPS（4.5×）</text>
+<rect x="40" y="160" width="280" height="34" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="180.0" y="184" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">第 1 层｜机制</text>
+<rect x="40" y="204" width="280" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="180.0" y="228" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">内部结构与借还路径</text>
+<rect x="40" y="264" width="280" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="180.0" y="288" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">池大小怎么算</text>
+<rect x="40" y="324" width="280" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="180.0" y="348" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">连接生命周期与超时</text>
+<rect x="340" y="160" width="280" height="34" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="480.0" y="184" font-size="14" font-weight="700" fill="#047857" text-anchor="middle">第 2 层｜边界</text>
+<rect x="340" y="204" width="280" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="228" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">事务边界与池</text>
+<rect x="340" y="264" width="280" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="288" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">泄漏定位</text>
+<rect x="340" y="324" width="280" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="348" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">双层池与代理</text>
+<rect x="640" y="160" width="280" height="34" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="780.0" y="184" font-size="14" font-weight="700" fill="#b45309" text-anchor="middle">第 3 层｜规模与故障</text>
+<rect x="640" y="204" width="280" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="780.0" y="228" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">多数据源与多租户</text>
+<rect x="640" y="264" width="280" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="780.0" y="288" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">故障与自愈</text>
+<rect x="640" y="324" width="280" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="780.0" y="348" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">观测与告警</text>
+<line x1="480" y1="128" x2="480" y2="158" stroke="#1d4ed8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="492" y="148" font-size="11.5" fill="#1d4ed8" text-anchor="start" font-weight="400">现象 → 机制</text>
+<text x="60" y="400" font-size="12" fill="#4b5563" text-anchor="start" font-weight="400">第 1 层算「够不够」；第 2 层定「谁在用、有没有还」；第 3 层管「多库多租户与故障」。三层都过不了，才轮到调参数。</text>
+<rect x="40" y="420" width="880" height="64" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="480.0" y="444" font-size="13" font-weight="700" fill="#047857" text-anchor="middle">收敛判据：借出时长 P99 有读数 / 池等待时间为 0 / 泄漏检测开启且无告警 / 双层池总连接数 ≤ 库预算 × 0.8</text>
+</svg>

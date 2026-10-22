@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="-apple-system,Segoe UI,Noto Sans CJK SC,sans-serif">
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="24" y="34" font-size="20" font-weight="700" fill="#1f2937">多数据源与多租户：池的维度选错，连接数会按乘法爆掉</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="30" y="90" width="420" height="120" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+<text x="240.0" y="114" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="middle">反例：每租户一个池</text>
+<text x="240.0" y="134" font-size="12" fill="#4b5563" text-anchor="middle">100 租户 × 每池 10 = 1,000 连接</text>
+<text x="240.0" y="151" font-size="12" fill="#4b5563" text-anchor="middle">空闲租户也占着最小空闲连接</text>
+<text x="240.0" y="168" font-size="12" fill="#4b5563" text-anchor="middle">max_connections 直接爆</text>
+<rect x="510" y="90" width="420" height="120" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="720.0" y="114" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="middle">正解：池按「库 / 角色」分，租户靠路由</text>
+<text x="720.0" y="134" font-size="12" fill="#4b5563" text-anchor="middle">5 个物理库 → 5 个池</text>
+<text x="720.0" y="151" font-size="12" fill="#4b5563" text-anchor="middle">租户 → 库的映射在路由层</text>
+<text x="720.0" y="168" font-size="12" fill="#4b5563" text-anchor="middle">租户隔离靠 tenant_id 条件 + RLS</text>
+<rect x="30" y="240" width="280" height="120" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="170.0" y="264" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">三条路由维度</text>
+<text x="170.0" y="284" font-size="12" fill="#4b5563" text-anchor="middle">按库（分片键）</text>
+<text x="170.0" y="301" font-size="12" fill="#4b5563" text-anchor="middle">按角色（读写分离、只读副本）</text>
+<text x="170.0" y="318" font-size="12" fill="#4b5563" text-anchor="middle">按优先级（在线 vs 离线任务）</text>
+<rect x="340" y="240" width="280" height="120" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+<text x="480.0" y="264" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">必须隔离的两类</text>
+<text x="480.0" y="284" font-size="12" fill="#4b5563" text-anchor="middle">离线报表任务（长事务）</text>
+<text x="480.0" y="301" font-size="12" fill="#4b5563" text-anchor="middle">批处理 / 回填（大扫描）</text>
+<rect x="650" y="240" width="280" height="120" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="790.0" y="264" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">隔离的三种手段</text>
+<text x="790.0" y="284" font-size="12" fill="#4b5563" text-anchor="middle">独立池 + 独立上限</text>
+<text x="790.0" y="301" font-size="12" fill="#4b5563" text-anchor="middle">独立账号 + statement_timeout</text>
+<text x="790.0" y="318" font-size="12" fill="#4b5563" text-anchor="middle">读写分离副本</text>
+<rect x="30" y="390" width="900" height="72" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="480.0" y="414" font-size="12.5" font-weight="700" fill="#047857" text-anchor="middle">算式：总连接 = Σ(每个池上限) × 实例数；租户数只能出现在「数据行」里，不能出现在「连接数」里——出现一次，扩容就是乘法</text>
+</svg>

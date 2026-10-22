@@ -15,6 +15,7 @@
 - [全文检索与搜索工程](FullTextSearch/index.md)
 - [数据湖与湖仓一体](Lakehouse/index.md)
 - [数据库变更与在线 Schema 演进](SchemaEvolution/index.md)
+- [连接池与连接生命周期](ConnectionPool/index.md)
 - [数据治理入门](DataGovernance/index.md)
 - [数仓建模](DataWarehouse/index.md)
 - [大数据生态](BigData/index.md)

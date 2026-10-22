@@ -131,6 +131,16 @@ mysql -e "SHOW VARIABLES LIKE 'wait_timeout';"
 #   期望：远小于客户端连接数
 ```
 
+## 与「连接池与连接生命周期」专题的分工
+
+| 这一页管什么 | 专题那一页管什么 |
+| --- | --- |
+| **值班手册**：连接数是乘出来的、六个关键参数、代理多路复用、连接风暴、打满时的处置顺序 | **机制与工程化**：借还路径与并发结构、池大小的膝点实测、五个生命周期阀门、泄漏定位四步、双层池的账、多租户的池维度 |
+
+两页的关系是「动作」与「原理」：出事时按本页的处置顺序动手，判断依据看专题；反过来，调参数之前应当先在专题里确认「这个池的上限和库的预算算平了没有」。
+
+**本页特有的一处坑**：`53300` 的报错文案是 `remaining connection slots are reserved for roles with the SUPERUSER attribute`——它字面上在说「保留槽位」，很容易把值班的人引向「调大 `max_connections`」。本机实测（`max_connections=20`，17 条普通连接占满后）第 18 条普通连接被拒、而超级用户仍能连进来，说明这是**预算算错**（实例数 × 池上限已超 80%），不是参数太小。照着报错文案改参数，只会把事故推迟到下一次发布。
+
 ## 7. 参考资料
 
 - [MySQL 官方 · Server Status Variables（Threads_connected 等）](https://dev.mysql.com/doc/refman/8.4/en/server-status-variables.html)

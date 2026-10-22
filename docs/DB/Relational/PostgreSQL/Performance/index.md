@@ -174,6 +174,14 @@ SELECT * FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 5;
 
 预期：优化后查询耗时下降、执行计划从 `Seq Scan` 变为 `Index Scan`、缓存命中率 > 99%。
 
+## 与「连接池与连接生命周期」专题的分工
+
+| 这一页管什么 | 专题那一页管什么 |
+| --- | --- |
+| 单条查询的**执行性能**：执行计划、索引、统计信息、缓冲区命中、`EXPLAIN (ANALYZE, BUFFERS)` | **连接层**的性能与容量：连接建立成本、池大小膝点、每连接内存口径、连接数上限与预算 |
+
+**本页特有的一处坑**：算连接的内存成本时不要用 `ps` 的 RSS 汇总。本机 51 条连接时 postgres 进程 RSS 合计 967,324 kB、1 条时 209,568 kB，差值折合 **14.8 MiB/连接**——但 RSS 把 `shared_buffers`（128 MiB）的共享映射**重复计入每个 backend**，这是**上限**而不是真实开销。真实私有部分用 `select pg_size_pretty(sum(total_bytes)) from pg_backend_memory_contexts;` 读，本机是 **1,447 kB**。用 14.8 MiB 乘 1,000 条会高估十倍。
+
 ## 参考资料
 
 - [PostgreSQL 性能 FAQ](https://wiki.postgresql.org/wiki/Performance_FAQ)
