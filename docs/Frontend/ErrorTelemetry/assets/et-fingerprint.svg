@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">四级归一化：1000 条事件如何收敛到 11 组</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">本机实测：7 个模板 × 1000 条随机参数，逐级加规则看组数</text>
+
+<rect x="28" y="78" width="150" height="64" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="40" y="100" font-size="12" font-weight="700" fill="#1f2d3d">L0 原始</text>
+<text x="40" y="122" font-size="18" font-weight="700" fill="#b5432f">999 组</text>
+
+<rect x="206" y="78" width="150" height="64" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="218" y="100" font-size="12" font-weight="700" fill="#1f2d3d">L1 数字→N</text>
+<text x="218" y="122" font-size="18" font-weight="700" fill="#c2703a">670 组</text>
+
+<rect x="384" y="78" width="170" height="64" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="396" y="100" font-size="12" font-weight="700" fill="#1f2d3d">L2 +十六进制/引号</text>
+<text x="396" y="122" font-size="18" font-weight="700" fill="#c2703a">547 组</text>
+
+<rect x="582" y="78" width="160" height="64" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="594" y="100" font-size="12" font-weight="700" fill="#1f2d3d">L3 +查询串</text>
+<text x="594" y="122" font-size="18" font-weight="700" fill="#c2703a">547 组</text>
+
+<rect x="770" y="78" width="162" height="64" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.6"/>
+<text x="782" y="100" font-size="12" font-weight="700" fill="#1f2d3d">L4 +栈帧（互斥）</text>
+<text x="782" y="122" font-size="18" font-weight="700" fill="#2f8f7d">11 组</text>
+
+<g stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#a2)">
+  <line x1="178" y1="110" x2="200" y2="110"/>
+  <line x1="356" y1="110" x2="378" y2="110"/>
+  <line x1="554" y1="110" x2="576" y2="110"/>
+  <line x1="742" y1="110" x2="764" y2="110"/>
+</g>
+
+<rect x="28" y="162" width="300" height="110" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="40" y="184" font-size="12.5" font-weight="700" fill="#1f2d3d">L1 只降了 33%</text>
+<text x="40" y="205" font-size="11.5" fill="#5a6b7b">真实 message 里漂移的是 UUID、</text>
+<text x="40" y="222" font-size="11.5" fill="#5a6b7b">构建哈希、base64，它们含字母，</text>
+<text x="40" y="239" font-size="11.5" fill="#5a6b7b">不被「数字→N」命中。</text>
+<text x="40" y="259" font-size="11.5" fill="#b5432f">结论：加规则前先测命中率</text>
+
+<rect x="346" y="162" width="290" height="110" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="358" y="184" font-size="12.5" font-weight="700" fill="#1f2d3d">L3 与 L2 完全相同</text>
+<text x="358" y="205" font-size="11.5" fill="#5a6b7b">547 → 547：新增那条规则</text>
+<text x="358" y="222" font-size="11.5" fill="#5a6b7b">在这批数据上命中 0 次。</text>
+<text x="358" y="239" font-size="11.5" fill="#5a6b7b">规则表旁必须写「上周命中次数」</text>
+<text x="358" y="259" font-size="11.5" fill="#c2703a">命中 0 的规则应删除</text>
+
+<rect x="654" y="162" width="278" height="110" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="666" y="184" font-size="12.5" font-weight="700" fill="#1f2d3d">11 ≠ 7：规则重叠造成假分裂</text>
+<text x="666" y="205" font-size="11.5" fill="#5a6b7b">chunk-3f2a9b1c.js 的哈希若纯数字，</text>
+<text x="666" y="222" font-size="11.5" fill="#5a6b7b">先被「数字→N」吃掉；若混排则被</text>
+<text x="666" y="239" font-size="11.5" fill="#5a6b7b">「字母数字→ID」吃掉 → 同一问题裂两组。</text>
+<text x="666" y="259" font-size="11.5" fill="#5b4a8a">规则必须互斥且有序</text>
+
+<rect x="28" y="292" width="904" height="112" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="40" y="314" font-size="12.5" font-weight="700" fill="#1f2d3d">指纹 = hash( kind | normalized_message | top_in_app_frames | culprit )</text>
+<text x="40" y="336" font-size="11.5" fill="#5a6b7b">① kind：runtime / rejection / resource / csp / framework / blank —— 同一个 URL 的 404 与 JS 错误必须分开</text>
+<text x="40" y="355" font-size="11.5" fill="#5a6b7b">② message：有序规则表归一化；③ 栈帧：前 3 个 in_app 帧，剥掉 :行:列；④ culprit：路由 / 组件 / 接口</text>
+<text x="40" y="374" font-size="11.5" fill="#b5432f">行列号绝对不能进指纹：加一行注释就会让整批错误换指纹，看板上出现「旧问题消失、新问题爆发」的假象</text>
+<text x="40" y="393" font-size="11.5" fill="#5a6b7b">质量指标：事件/issue 比 20~200 为健康；&lt;5 说明分太细，&gt;1000 说明合太粗</text>
+</svg>

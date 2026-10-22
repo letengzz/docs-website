@@ -214,6 +214,17 @@ select inet_client_addr(), inet_client_port();   -- 本机 socket 连接时为 n
 | `AUD-G` | 审计表按时间分区且有保留策略 | `pg_partition_tree` 可见月分区 | 建分区；用 `DETACH` 归档 |
 | `AUD-H` | 审计回滚语义已明确 | 文档写明「业务失败时审计是否保留」 | 明确取舍；必要时走独立连接 |
 
+
+## 与「隐私工程与合规落地」的分工（第 192 天补充）
+
+| 问题 | 本页回答 | [隐私工程与合规落地](../../../Others/PrivacyEngineering/Deletion/index.md) 回答 |
+| --- | --- | --- |
+| 目标 | 谁、何时、改了哪一行、改成什么 | 这些痕迹**本身也是个人信息**，怎么处置 |
+| 成本 | 语句日志 218 字节/条、行级审计 9.8 倍写入 | 审计表进不进删除传播清单 |
+| 保留 | 按时间分区 + `DETACH` 归档 | 与「删除请求」冲突时怎么取舍 |
+
+**本页特有的一个坑**：行级审计的 `before` / `after` 存的是 `jsonb` 全字段副本。用户要求删除后，主库那行没了，但审计表里还留着删除前的完整明文（含手机号、地址）——这等于删除只做了一半。可选的三种处置：① 审计表进删除清单，`before/after` 里的个人信息字段替换为哈希；② 审计表按更短周期保留（如 90 天）；③ 只存变更字段名与哈希值，不存原值。选哪一种要在设计时定，事后无法补救。
+
 ## 参考资料
 
 - PostgreSQL 18 Documentation：*Error Reporting and Logging*（`log_statement`、`log_min_duration_statement`、`log_destination` / csvlog）

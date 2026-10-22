@@ -29,7 +29,8 @@ export const BaseProject = [
           { text: "配置 UnoCSS", link: "/project/Base/Vue3Template/UnoCSS/index.md" },
           { text: "发布模块", link: "/project/Base/Vue3Template/Release/index.md" },
           { text: "常见问题与最佳实践", link: "/project/Base/Vue3Template/FAQ/index.md" },
-        ],
+        { text: "配置服务", link: "/project/Base/Vue3Template/Service/index.md" },
+      ],
       },
       {
         text: "后端通用模板",
@@ -395,6 +396,8 @@ export const CompleteProject = [
           { text: "第 2 周第 3 步 · 支付回调：验签、幂等与对账（EPY-A~EPY-H）", link: "/project/Complete/EventOrderHub/PaymentCallback/index.md" },
           { text: "第 2 周第 4 步 · 库存预占的释放与超时回滚（EIV-A~EIV-H）", link: "/project/Complete/EventOrderHub/StockRelease/index.md" },
           { text: "第 3 周第 1 步 · 一致性用例矩阵：18 条用例与 11/16 覆盖（ECM-A~ECM-H）", link: "/project/Complete/EventOrderHub/ConsistencyMatrix/index.md" },
+          { text: "第 3 周第 2 步 · 并发与幂等专项：三组竞态与两层守卫（ECC-A~ECC-H）", link: "/project/Complete/EventOrderHub/ConcurrencyIdempotency/index.md" },
+          { text: "第 3 周第 3 步 · 压测与容量：三个数取代一个 TPS（ECP-A~ECP-H）", link: "/project/Complete/EventOrderHub/CapacityTest/index.md" },
         ],
       },
       {

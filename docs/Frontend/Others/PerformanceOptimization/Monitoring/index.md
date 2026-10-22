@@ -193,7 +193,20 @@ jobs:
 2. 用 Grafana（或自建查询）确认 p75 LCP/INP/CLS 曲线出现；
 3. 故意把一张大图设为 LCP，跑 Lighthouse CI，确认 LCP 断言失败（预算拦截）。
 
-## 参考资料
+## 与「前端异常监控与体验度量」专题的分工（第 191 天补充）
+
+本页讲的是「性能数据怎么采、怎么设预算」，它默认了一件事：**上报通道是通的**。但那一步本身有一堆坑，且与性能指标无关：
+
+| 问题 | 本页的处理 | 该去哪一页 |
+| --- | --- | --- |
+| `sendBeacon` 返回 `false`（超 64 KiB） | 未涉及 | [上报通道与配额](../../../ErrorTelemetry/Transport/index.md)：实测 60,000 B 成功、70,000 B 直接 `false` |
+| `fetch(keepalive)` 并发两条就挂一条 | 未涉及 | 同上：额度按「源内在途总量」计 |
+| 采样率一变，p75 就「变好」 | 只在第十节提了一句「注意采样」 | [真实用户度量与软导航](../../../ErrorTelemetry/WebVitals/index.md)：按会话一致采样 |
+| 错误与性能的采样策略不同 | 未涉及 | 同上：错误全采、性能按会话采 |
+
+一句话：**本页负责「指标怎么定义」，异常监控专题负责「数据怎么活着到达」**。两边都读完，RUM 才算闭环。
+
+## 参考资料## 参考资料
 
 - [web.dev：性能预算](https://web.dev/articles/performance-budgets-101)
 - [Lighthouse CI 文档](https://github.com/GoogleChrome/lighthouse-ci)

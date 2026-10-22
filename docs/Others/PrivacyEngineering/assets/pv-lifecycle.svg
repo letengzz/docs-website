@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="lc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">一条数据从「被采」到「被删」，中间有六个决策点</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">每个决策点都有一个「不写就会默认发生」的选项——默认值几乎总是「多留、多传、多存」</text>
+
+<g font-size="11.5">
+<rect x="28" y="82" width="140" height="74" rx="7" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.3"/>
+<text x="40" y="104" font-size="12.5" font-weight="700" fill="#1f2d3d">采集</text>
+<text x="40" y="126" fill="#5a6b7b">表单 / 埋点 / SDK</text>
+<text x="40" y="145" fill="#b5432f">默认：能填就填</text>
+
+<rect x="196" y="82" width="140" height="74" rx="7" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.3"/>
+<text x="208" y="104" font-size="12.5" font-weight="700" fill="#1f2d3d">落库</text>
+<text x="208" y="126" fill="#5a6b7b">主库 + 索引</text>
+<text x="208" y="145" fill="#b5432f">默认：全字段持久化</text>
+
+<rect x="364" y="82" width="140" height="74" rx="7" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.3"/>
+<text x="376" y="104" font-size="12.5" font-weight="700" fill="#1f2d3d">外溢</text>
+<text x="376" y="126" fill="#5a6b7b">缓存 / 索引 / 数仓</text>
+<text x="376" y="145" fill="#b5432f">默认：越多越好查</text>
+
+<rect x="532" y="82" width="140" height="74" rx="7" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.3"/>
+<text x="544" y="104" font-size="12.5" font-weight="700" fill="#1f2d3d">使用</text>
+<text x="544" y="126" fill="#5a6b7b">画像 / 推送 / 训练</text>
+<text x="544" y="145" fill="#b5432f">默认：一次采集永久可用</text>
+
+<rect x="700" y="82" width="108" height="74" rx="7" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.3"/>
+<text x="712" y="104" font-size="12.5" font-weight="700" fill="#1f2d3d">到期</text>
+<text x="712" y="126" fill="#5a6b7b">TTL / 归档</text>
+<text x="712" y="145" fill="#b5432f">默认：永不到期</text>
+
+<rect x="828" y="82" width="104" height="74" rx="7" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.3"/>
+<text x="840" y="104" font-size="12.5" font-weight="700" fill="#1f2d3d">删除</text>
+<text x="840" y="126" fill="#5a6b7b">请求 / 撤回</text>
+<text x="840" y="145" fill="#b5432f">默认：只删主库</text>
+</g>
+<line x1="168" y1="119" x2="190" y2="119" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#lc)"/>
+<line x1="336" y1="119" x2="358" y2="119" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#lc)"/>
+<line x1="504" y1="119" x2="526" y2="119" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#lc)"/>
+<line x1="672" y1="119" x2="694" y2="119" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#lc)"/>
+<line x1="808" y1="119" x2="822" y2="119" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#lc)"/>
+
+<rect x="28" y="182" width="904" height="100" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="40" y="204" font-size="12.5" font-weight="700" fill="#1f2d3d">五个必失点（每一个都在本机复现过，不是假设）</text>
+<text x="40" y="228" font-size="11.5" fill="#5a6b7b">① 按列名找 PII：14 个含个人信息的列里只认出 9 个——`login_name` 里存手机号、`remark` 里写「客户电话 138…」</text>
+<text x="40" y="248" font-size="11.5" fill="#5a6b7b">② 按内容找 PII：只认出 10 个——中文地址没有固定形态，正则认不出</text>
+<text x="40" y="268" font-size="11.5" fill="#b5432f">③ 删除只删主库：九个位置里八个仍有残留，合计 10 行；其中日志要扫 20 万行才找到 3 行（769 ms）</text>
+
+<rect x="28" y="300" width="440" height="94" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="40" y="322" font-size="12.5" font-weight="700" fill="#1f2d3d">两个「看起来安全」的假动作</text>
+<text x="40" y="346" font-size="11.5" fill="#5a6b7b">哈希假名化：无盐 SHA-256，2000 个手机号 3.9 ms 全还原</text>
+<text x="40" y="366" font-size="11.5" fill="#5a6b7b">掩码脱敏：`138****8888` 仍是准标识符，与生日组合可重识别</text>
+
+<rect x="492" y="300" width="440" height="94" rx="8" fill="#fdf3f0" stroke="#b5432f" stroke-width="1.4"/>
+<text x="504" y="322" font-size="12.5" font-weight="700" fill="#1f2d3d">一个「看起来做不到」的真动作</text>
+<text x="504" y="346" font-size="11.5" fill="#5a6b7b">把删除做成事件：墓碑表 + 九个订阅者 + 残留对账</text>
+<text x="504" y="366" font-size="11.5" fill="#5a6b7b">代价是一次删除从 1 条 SQL 变成 9 个幂等任务，收益是可证明</text>
+</svg>

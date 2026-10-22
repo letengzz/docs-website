@@ -47,14 +47,14 @@
 | [第 2 周第 3 步 · 支付回调：验签、幂等与对账](PaymentCallback/index.md) | `EPY` | 五步顺序、回调唯一键、CAS 守卫、双向对账、乱序应用 | 8 |
 | [第 2 周第 4 步 · 库存预占的释放与超时回滚](StockRelease/index.md) | `EIV` | 三态迁移、宽限期扫描、双向 CAS、回补同事务 | 8 |
 | [第 3 周第 1 步 · 一致性用例矩阵](ConsistencyMatrix/index.md) | `ECM` | 四类场景、18 条用例、迁移覆盖率、并发对照 | 8 |
+| [第 3 周第 2 步 · 并发与幂等专项](ConcurrencyIdempotency/index.md) | `ECC` | 三组竞态实测、CAS 与唯一键两层守卫、退款第二次回补 | 8 |
+| [第 3 周第 3 步 · 压测与容量](CapacityTest/index.md) | `ECP` | 四档并发读数、尾延迟、outbox 排空、容量算式 | 8 |
 
-后续 11 章（判据族已预留，交付时补条数）：
+后续 9 章（判据族已预留，交付时补条数）：
 
 - 发货与签收（判据族 `ESF`：发货单、签收、异常件）
 - 补偿与对账（判据族 `ERC`：补偿动作、对账日报）
 - 第 2 周验收（判据族 `EW2`：第 2 周六项验收）
-- 并发与幂等专项（判据族 `ECC`：并发场景与幂等验证）
-- 压测与容量（判据族 `ECP`：压测模型与容量结论）
 - 第 3 周验收（判据族 `EW3`：第 3 周验收结论）
 - 一键部署与配置（判据族 `EDP`：编排、配置、密钥）
 - 监控与告警（判据族 `EMO`：指标、告警、大盘）
@@ -337,6 +337,86 @@ docker exec eoh-postgres psql -U postgres -d eoh -tAc \
 - **容量不写未跑的读数**：1 万笔同时释放的压测留到第 3 周（`ECP`），本页只给三个读数口径（锁等待会话数、`deadlocks` 增量、剩余 `HELD`）与期望值。
 - **下一步**：第 3 周进入「联调与一致性用例矩阵」（判据族 `ECM`）；已登记三个缺口——退款（`CONSUMED → REFUNDED` 与第二次回补）、积压自愈（I2 只报不修）、跨上下文乱序（已释放却收到支付成功）。
 
-## 十四、判据纪律
+## 十四、第 190 天交付（第 3 周第 1 步 · 一致性用例矩阵）
+
+- 新建 [一致性用例矩阵](ConsistencyMatrix/index.md)（判据 `ECM-A` ~ `ECM-H`），配图 `eoh-consistency-matrix.svg`（四维组织 + 覆盖率 + 并发对照）。
+- **18 条用例、18/18 PASS，迁移覆盖 11/16 = 68.8%**：覆盖率的算法是「16 条状态迁移左连接 covered 表」，不是人工数——这样新增迁移时缺口会自动浮现。
+- **矩阵的四维是「场景 × 动作 × 断言 × 观测点」**：只断言「接口返回 200」等于没断言，因为 200 的语义可能是幂等命中，也可能是重复插入被忽略。每条用例的 `expect` 必须是 `n=1`、`0 行`、`payment=1` 这类可判定值。
+- **并发两条对照（本机实测）**：CAS 版本后到者等锁 **1,210 ms** 后 `UPDATE 0`；无守卫版本等锁 **1,188 ms** 后 `UPDATE 1`，终态被后来的取消覆盖，**两边都不报错**。
+- **未覆盖的 5 条边全是售后**（退款链路缺失），矩阵里显式标注「原因 + 归属步骤」，不用 `skip` 藏——写一条必然失败的用例只会让矩阵红灯常亮，然后被所有人忽略。
+
+**如何验证**（读者可执行）：
+
+```shell
+# 1) 18 条用例逐条跑（每条一个事务，末尾 truncate）
+docker exec -i eoh-pg psql -U postgres -d eoh -f 930_matrix.sql
+# 期望：18 行，result 全 PASS
+
+# 2) 覆盖率
+docker exec -i eoh-pg psql -U postgres -d eoh -c \
+  "select count(*) filter (where covered) as covered, count(*) as total from covered;"
+# 期望：covered=11 total=16
+
+# 3) 并发对照（两个终端）
+#    A: begin; update o set status='PAID' where id=10 and status='AWAITING_PAYMENT'; select pg_sleep(2); commit;
+#    B: 0.5 秒后执行同一句
+#    期望：B 等锁约 1.2 秒，UPDATE 0
+```
+
+**下一步**（第 191 天）：第 3 周第 2 步「并发与幂等专项」（`ECC`）——补退款链路（矩阵 5 条未覆盖边的前置），并把「支付 vs 释放」「4 消费者 outbox」「重复退款」三组竞态跑出读数。
+
+## 十五、第 191 天交付（第 3 周第 2 步 · 并发与幂等专项）
+
+- 新建 [并发与幂等专项](ConcurrencyIdempotency/index.md)（判据 `ECC-A` ~ `ECC-H`），配图 `eoh-concurrency.svg`（三组竞态 + 两道守卫）。
+- **补上退款链路**：`CONSUMED → REFUNDED`（迁移 16 → 17）与第二次库存回补；幂等键落在库层 `refund(order_no unique)`，不靠应用约定。
+- **三组竞态实测**（PostgreSQL 18 容器、真实多会话）：
+  - ① 支付 vs 超时释放：S1 `UPDATE 1` 持锁 2 s，S2 **阻塞 1.85 s** 后 `UPDATE 0`；终态 `CONSUMED`、`reserved=10`、`available=90`。若释放分支不看影响行数，`available` 会变成 **92**——超卖 2。
+  - ② outbox 四消费者：`SKIP LOCKED` 下 500×4 = **2,000 条、重复 0、0.20 s**；去掉 skip 用固定区间，同样 2,000 条但 distinct 只有 **500，重复 1,500（75%）**。
+  - ③ 重复退款：唯一键 + CAS 下后者等 **0.12 s** 后 `UPDATE 0`，`reserved` 10 → **8**（只回补一次），`refund` 仅 1 行；拆掉守卫的读后写反例里 `reserved` 变成 **6**——同一份货补了两次。
+- **孤儿支付必须入队**：已 `RELEASED` 再收到支付成功时 CAS 必然 `UPDATE 0`，此时只 `log.warn` 就返回 200 会导致「钱收了、货没发、监控无感」，必须写 `orphan_payment`。
+- **幂等三层模型**：请求层（`Idempotency-Key`）、事件层（`event_id` 唯一）、状态层（CAS）。第三层只保证「只有一个赢家」，**不保证赢的那个是对的**——「谁该赢」是业务规则（支付优先于超时释放）。
+
+**如何验证**（读者可执行）：
+
+```shell
+# 1) 三张表 + 退款表
+docker exec -i eoh-pg psql -U postgres -d eoh -f 020_reservation_refund.sql
+
+# 2) 支付 vs 释放：两个会话按第二节时序执行
+docker exec -i eoh-pg psql -U postgres -d eoh -c \
+  "select status from stock_reservation where order_no='o-1';"
+# 期望：CONSUMED；且 stock.reserved 未变
+
+# 3) 四路 SKIP LOCKED：4 个终端同时执行 sql/claim-batch.sql
+docker exec -i eoh-pg psql -U postgres -d eoh -c \
+  "select count(*) filter (where published_at is not null) pub, count(*) total from outbox;"
+# 期望：2000 / 2000，且四个终端的 id 集合两两无交集
+
+# 4) 重复退款：两个终端同时执行同一退款 CTE
+docker exec -i eoh-pg psql -U postgres -d eoh -c \
+  "select reserved from stock where sku='sku-1'; select count(*) from refund;"
+# 期望：reserved 只减一次；refund=1
+
+# 5) 不变量 A1~A10
+docker exec -i eoh-pg psql -U postgres -d eoh -f 900_invariants.sql
+# 期望：全部 0 行
+```
+
+**下一步**（第 192 天）：第 3 周第 3 步「压测与容量」（`ECP`）——本节量到的「释放扫描 1.85 s 锁等待」「4 路取件 0.20 s」正好是压测模型的输入；要给出 1 万笔同时释放的 `pg_locks` 等待会话数、`deadlocks` 增量与 outbox 积压拐点。
+
+## 十六、第 192 天交付（第 3 周第 3 步 · 压测与容量）
+
+- 新建 [压测与容量](CapacityTest/index.md)（判据 `ECP-A` ~ `ECP-H`），配图 `eoh-capacity.svg`（吞吐随并发下降 + 尾延迟 + outbox 排空三块）。
+- **三个数取代一个 TPS**：吞吐 / 尾延迟 / 积压排空。四档并发（4/8/16/32）读数 `7,734 → 7,123 → 6,550 → 5,921`，并发翻 8 倍吞吐 **-23.4%**。
+- **p99 骗人**：p50 = 0.10 ms、p99 = 0.38 ms 全程不动，但 max 到 **5,097 ms**——p99 统计的是没排队的那些请求（p99 与 max 相差 13,000 倍）。
+- **零错误是配置假象**：`timeout=10s` 大于 5 秒压测窗口，所以永远等不到 `database is locked`；把超时调到 0.5 s 才是过载的真实形态（`ECP-E`）。
+- **outbox 加消费者不变快**：1 个 24.0 ms / 2 个 27.0 ms（-12.5%），原因是单写者抢同一把锁；解法是按 id 取模分片而不是加消费者。
+- **不许半成功**：压测后 `orders = 136,639`、`outbox = 136,639`、`order_items = 273,278`（正好 2 倍），三个数自洽（`ECP-F`）。
+- **容量算式带安全系数**：5,921 × 0.3 ≈ 1,776 TPS/实例，50 TPS 目标只需 1 个实例；三处「以为的瓶颈」与算式结论不一致，下一步应查尾延迟而不是加资源（`ECP-G`）。
+- **口径边界写在页首**：压测台跑在 SQLite 单写者上（读者零依赖可复跑），**形态可迁移、绝对值不可迁移**，7,734 TPS 不能当生产容量。
+
+**下一步**（第 193 天）：第 3 周第 4 步「第 3 周验收」（`EW3`）——把一致性矩阵 18 条、并发专项 3 组、压测 8 条合成一张验收表，并补「批量化实验」（1 事务 10 单）作为 `ECP-H` 第 4 步的读数。
+
+## 十七、判据纪律
 
 每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMO` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。

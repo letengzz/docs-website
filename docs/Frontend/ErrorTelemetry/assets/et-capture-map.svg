@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<rect x="0" y="0" width="960" height="470" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">七类异常 × 五个采集点：谁真正看得到</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">✓ 有事件且有可用字段　△ 有事件但字段不足　— 完全没有</text>
+
+<g font-size="11.5" font-weight="700" fill="#2b5c8a">
+  <text x="300" y="86">window.onerror</text>
+  <text x="404" y="86">error(捕获)</text>
+  <text x="496" y="86">unhandledrejection</text>
+  <text x="616" y="86">ReportingObserver</text>
+  <text x="748" y="86">自研探测</text>
+</g>
+<line x1="292" y1="94" x2="928" y2="94" stroke="#c3ccd6"/>
+
+<g font-size="12" fill="#1f2d3d">
+  <text x="30" y="120">① JS 运行时错误</text>
+  <text x="30" y="156">② Promise 未处理拒绝</text>
+  <text x="30" y="192">③ 资源加载失败</text>
+  <text x="30" y="228">④ 语法错误（chunk 损坏）</text>
+  <text x="30" y="264">⑤ 框架层可捕获错误</text>
+  <text x="30" y="300">⑥ CSP / 弃用 API</text>
+  <text x="30" y="336">⑦ 白屏 / 渲染异常</text>
+</g>
+<g font-size="15" font-weight="700" text-anchor="middle">
+  <text x="320" y="120" fill="#2f8f7d">✓</text>
+  <text x="427" y="120" fill="#2f8f7d">✓</text>
+  <text x="540" y="120" fill="#b9c3cd">—</text>
+  <text x="666" y="120" fill="#b9c3cd">—</text>
+  <text x="790" y="120" fill="#b9c3cd">—</text>
+
+  <text x="320" y="156" fill="#b9c3cd">—</text>
+  <text x="427" y="156" fill="#b9c3cd">—</text>
+  <text x="540" y="156" fill="#2f8f7d">✓</text>
+  <text x="666" y="156" fill="#b9c3cd">—</text>
+  <text x="790" y="156" fill="#b9c3cd">—</text>
+
+  <text x="320" y="192" fill="#b9c3cd">—</text>
+  <text x="427" y="192" fill="#2f8f7d">✓</text>
+  <text x="540" y="192" fill="#b9c3cd">—</text>
+  <text x="666" y="192" fill="#b9c3cd">—</text>
+  <text x="790" y="192" fill="#b9c3cd">—</text>
+
+  <text x="320" y="228" fill="#c2703a">△</text>
+  <text x="427" y="228" fill="#c2703a">△</text>
+  <text x="540" y="228" fill="#b9c3cd">—</text>
+  <text x="666" y="228" fill="#b9c3cd">—</text>
+  <text x="790" y="228" fill="#b9c3cd">—</text>
+
+  <text x="320" y="264" fill="#b9c3cd">—</text>
+  <text x="427" y="264" fill="#b9c3cd">—</text>
+  <text x="540" y="264" fill="#b9c3cd">—</text>
+  <text x="666" y="264" fill="#b9c3cd">—</text>
+  <text x="790" y="264" fill="#2f8f7d">✓</text>
+
+  <text x="320" y="300" fill="#b9c3cd">—</text>
+  <text x="427" y="300" fill="#b9c3cd">—</text>
+  <text x="540" y="300" fill="#b9c3cd">—</text>
+  <text x="666" y="300" fill="#2f8f7d">✓</text>
+  <text x="790" y="300" fill="#b9c3cd">—</text>
+
+  <text x="320" y="336" fill="#b9c3cd">—</text>
+  <text x="427" y="336" fill="#b9c3cd">—</text>
+  <text x="540" y="336" fill="#b9c3cd">—</text>
+  <text x="666" y="336" fill="#b9c3cd">—</text>
+  <text x="790" y="336" fill="#2f8f7d">✓</text>
+</g>
+
+<rect x="30" y="360" width="446" height="86" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="42" y="381" font-size="12.5" font-weight="700" fill="#1f2d3d">两个「零覆盖」的格子</text>
+<text x="42" y="401" font-size="11.5" fill="#5a6b7b">⑤ 框架吃掉的错误：只有接 errorHandler 才有</text>
+<text x="42" y="420" font-size="11.5" fill="#5a6b7b">⑦ 白屏：没有任何原生事件，只能自研探测</text>
+<text x="42" y="439" font-size="11.5" fill="#5a6b7b">这两格就是「错误数 0」最常见的来源</text>
+
+<rect x="492" y="360" width="436" height="86" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="504" y="381" font-size="12.5" font-weight="700" fill="#1f2d3d">实测：字段够不够</text>
+<text x="504" y="401" font-size="11.5" fill="#5a6b7b">跨域无 crossorigin → Script error.：src="" line=0 error=null</text>
+<text x="504" y="420" font-size="11.5" fill="#5a6b7b">资源 404 → 只有 event.target，无 message</text>
+<text x="504" y="439" font-size="11.5" fill="#5a6b7b">Promise → reason 可能是字符串，无栈</text>
+</svg>

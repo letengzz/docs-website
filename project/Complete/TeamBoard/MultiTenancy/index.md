@@ -239,6 +239,17 @@ docker compose exec -T postgres psql -U app -d teamboard -c \
 
 **这一页特有的坑：项目里只写了 `ENABLE ROW LEVEL SECURITY`，没有写 `FORCE`。** 本机按同样写法复现：租户 A 的账号直查表得到 1 行（策略生效），查同名视图得到 2 行（视图以所有者身份执行）。项目侧只要存在任何「以所有者身份执行」的视图或安全定义函数，这一格就会漏。补法是 `FORCE` 与 `security_invoker = true` 二者至少落一个，并把它写进建表 checklist。
 
+
+## 与「隐私工程与合规落地」的分工（第 192 天补充）
+
+| 问题 | 本页回答 | [隐私工程与合规落地](../../../../docs/Others/PrivacyEngineering/Practice/index.md) 回答 |
+| --- | --- | --- |
+| 隔离对象 | 租户之间的**数据边界** | 同一个租户内**个人**的数据边界 |
+| 越权 | 跨租户读（`tenant_id` 进主键 + RLS） | 跨用户读、自己数据的导出与删除 |
+| 删除 | 租户退出时清理整个租户 | 单个成员要求删除时的九位置传播 |
+
+**本页特有的一个坑**：把「租户隔离」当成「隐私隔离」。同租户内的 200 个成员彼此之间没有隔离——`member` 表对同租户的查询是全可见的。如果某个成员要求删除自己的数据，租户级 RLS 完全帮不上忙：它只保证「A 租户看不到 B 租户」，不保证「同租户里别人看不到我」。两套边界要分别实现，判据也不同（前者查 `tenant_id`，后者查 `subject_id` 与目的）。
+
 ## 参考资料
 
 - [PostgreSQL 文档：Row Security Policies](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)

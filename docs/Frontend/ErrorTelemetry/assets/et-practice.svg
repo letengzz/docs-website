@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="a8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">最小闭环：四个组件、四张表、五个验收点</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">判据只有一条：页面上 throw 一个 Error，10 秒内能在看板查到，并能看到源码行</text>
+
+<rect x="28" y="80" width="196" height="104" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="40" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">① 浏览器 SDK</text>
+<text x="40" y="123" font-size="11" fill="#5a6b7b">capture：5 类异常</text>
+<text x="40" y="140" font-size="11" fill="#5a6b7b">normalize：有序规则表</text>
+<text x="40" y="157" font-size="11" fill="#5a6b7b">queue：攒 10 条 / 5 秒</text>
+<text x="40" y="174" font-size="11" fill="#5a6b7b">transport：keepalive + beacon</text>
+
+<rect x="252" y="80" width="196" height="104" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="264" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">② collector</text>
+<text x="264" y="123" font-size="11" fill="#5a6b7b">收 text/plain（免预检）</text>
+<text x="264" y="140" font-size="11" fill="#5a6b7b">单条坏数据跳过，不整批 400</text>
+<text x="264" y="157" font-size="11" fill="#5a6b7b">服务端复算指纹</text>
+<text x="264" y="174" font-size="11" fill="#5a6b7b">503 = 可重试（落离线队列）</text>
+
+<rect x="476" y="80" width="196" height="104" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="488" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">③ PostgreSQL</text>
+<text x="488" y="123" font-size="11" fill="#5a6b7b">events：明细 + 幂等键</text>
+<text x="488" y="140" font-size="11" fill="#5a6b7b">issues：指纹聚合与状态</text>
+<text x="488" y="157" font-size="11" fill="#5a6b7b">releases：版本 + map</text>
+<text x="488" y="174" font-size="11" fill="#5a6b7b">vitals：指标与分桶</text>
+
+<rect x="700" y="80" width="232" height="104" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="712" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">④ 看板与告警</text>
+<text x="712" y="123" font-size="11" fill="#5a6b7b">今日新增与回归（按 UV 排序）</text>
+<text x="712" y="140" font-size="11" fill="#5a6b7b">版本对比（本周 vs 上周）</text>
+<text x="712" y="157" font-size="11" fill="#5a6b7b">路由 × 设备 p75（样本门槛 100）</text>
+<text x="712" y="174" font-size="11" fill="#5a6b7b">一条 5 分钟影响面告警</text>
+
+<g stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#a8)">
+  <line x1="224" y1="132" x2="246" y2="132"/>
+  <line x1="448" y1="132" x2="470" y2="132"/>
+  <line x1="672" y1="132" x2="694" y2="132"/>
+</g>
+<path d="M 816 184 L 816 206 L 126 206 L 126 184" fill="none" stroke="#b5432f" stroke-width="1.2" stroke-dasharray="5 3" marker-end="url(#a8)"/>
+<text x="380" y="222" font-size="11" fill="#b5432f">上报失败（503 / beacon false）→ 落 IndexedDB → 下次启动补传（带 client_event_id 幂等）</text>
+
+<rect x="28" y="240" width="904" height="72" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="40" y="262" font-size="12.5" font-weight="700" fill="#1f2d3d">五个验收点（全部是 SQL 可查的读数，不是「看起来正常」）</text>
+<text x="40" y="283" font-size="11.5" fill="#5a6b7b">① 3 条手动事件落地　② 重复 client_event_id 行数不变　③ resolved 形如 n/n　④ 三条看板 SQL 2 秒内返回　⑤ 告警 5 分钟内只响一次</text>
+<text x="40" y="302" font-size="11.5" fill="#b5432f">最常见的失败：resolved 长期是 0/n —— 说明 map 没上传或版本对不上，此时看板上的行号全部不可信</text>
+
+<rect x="28" y="324" width="904" height="72" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="40" y="346" font-size="12.5" font-weight="700" fill="#1f2d3d">一次演练的标准路径（1,200 条 Script error. 的处理）</text>
+<text x="40" y="367" font-size="11.5" fill="#5a6b7b">判「跨域配置」而非「代码 bug」→ 查 CDN 的 ACAO → 加 crossorigin + 回 CORS → 同一指纹变成可还原 → 栈顶 5:11 → 修空值判断</text>
+<text x="40" y="386" font-size="11.5" fill="#5a6b7b">不要在这时回滚：Script error. 是信息缺失，不是崩溃面扩大；回滚会丢掉定位线索</text>
+</svg>

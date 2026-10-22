@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">保留期是一条时间轴，不是一句「存三年」</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">同一条数据在五个地方有五个到期时刻；对外承诺的「最长保留」取的是最慢的那个，而不是最快的那个</text>
+
+<line x1="60" y1="120" x2="900" y2="120" stroke="#6b7785" stroke-width="1.6"/>
+<g font-size="11" fill="#5a6b7b">
+<text x="60" y="146">第 0 天</text><text x="250" y="146">第 30 天</text><text x="440" y="146">第 90 天</text><text x="630" y="146">第 180 天</text><text x="820" y="146">第 400 天</text>
+</g>
+<g stroke="#6b7785" stroke-width="1"><line x1="60" y1="112" x2="60" y2="128"/><line x1="250" y1="112" x2="250" y2="128"/><line x1="440" y1="112" x2="440" y2="128"/><line x1="630" y1="112" x2="630" y2="128"/><line x1="820" y1="112" x2="820" y2="128"/></g>
+
+<rect x="60" y="166" width="180" height="30" rx="5" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.2"/>
+<text x="70" y="186" font-size="11" fill="#1f2d3d">业务库：在线期 90 天</text>
+<rect x="60" y="204" width="380" height="30" rx="5" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.2"/>
+<text x="70" y="224" font-size="11" fill="#1f2d3d">数仓：明细 180 天 → 聚合表长期</text>
+<rect x="60" y="242" width="560" height="30" rx="5" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.2"/>
+<text x="70" y="262" font-size="11" fill="#1f2d3d">日志：热 7 天 + 冷 30 天（含手机号的那部分）</text>
+<rect x="60" y="280" width="760" height="30" rx="5" fill="#fdf3f0" stroke="#b5432f" stroke-width="1.2"/>
+<text x="70" y="300" font-size="11" fill="#1f2d3d">备份：全量保留 35 天 + 月度归档 12 个月（删除不会进入历史备份）</text>
+
+<rect x="28" y="330" width="904" height="56" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="40" y="352" font-size="11.5" fill="#1f2d3d">对外可承诺的最长残留 = max(各位置) ≈ 12 个月（若月度归档纳入删除请求，则收敛到 35 天）</text>
+<text x="40" y="372" font-size="11.5" fill="#b5432f">本机批删实测（30 万行）：批 500 → 总 268.6 ms / 单批 3.3 ms；批 5 万 → 总 150.9 ms / 单批 31.8 ms。总时长几乎不变，单事务时长涨 9.6 倍</text>
+</svg>

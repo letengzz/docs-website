@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="dl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">删除是九个位置的事，一次 DELETE 只解决第一个</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">本机实测：删掉主库那 1 行之后，其余八个位置合计仍有 10 行残留——「删了」和「删完了」是两件事</text>
+
+<rect x="28" y="78" width="150" height="60" rx="7" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="40" y="102" font-size="12" font-weight="700" fill="#1f2d3d">墓碑表</text>
+<text x="40" y="122" font-size="10.5" fill="#5b4a8a">uid + 时间 + 状态</text>
+<text x="40" y="152" font-size="10.5" fill="#5a6b7b">删除的唯一事实源</text>
+
+<g font-size="10.5" fill="#1f2d3d">
+<rect x="210" y="78" width="164" height="40" rx="6" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.1"/>
+<text x="220" y="94">① 主库（真删）</text><text x="220" y="110" fill="#4a7d3a">残留 0 行</text>
+
+<rect x="390" y="78" width="164" height="40" rx="6" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.1"/>
+<text x="400" y="94">② 只读副本</text><text x="400" y="110" fill="#b5432f">残留 1 行（滞后）</text>
+
+<rect x="570" y="78" width="164" height="40" rx="6" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.1"/>
+<text x="580" y="94">③ 缓存 key</text><text x="580" y="110" fill="#b5432f">残留 1 行</text>
+
+<rect x="750" y="78" width="182" height="40" rx="6" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.1"/>
+<text x="760" y="94">④ 搜索索引</text><text x="760" y="110" fill="#b5432f">残留 1 行（待重建）</text>
+
+<rect x="210" y="130" width="164" height="40" rx="6" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.1"/>
+<text x="220" y="146">⑤ 数仓维表</text><text x="220" y="162" fill="#b5432f">残留 1 行（T+1 快照）</text>
+
+<rect x="390" y="130" width="164" height="40" rx="6" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.1"/>
+<text x="400" y="146">⑥ 特征库</text><text x="400" y="162" fill="#b5432f">残留 1 行</text>
+
+<rect x="570" y="130" width="164" height="40" rx="6" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.1"/>
+<text x="580" y="146">⑦ 对象存储</text><text x="580" y="162" fill="#b5432f">残留 1 个对象</text>
+
+<rect x="750" y="130" width="182" height="40" rx="6" fill="#fdf3f0" stroke="#b5432f" stroke-width="1.1"/>
+<text x="760" y="146">⑧ 日志</text><text x="760" y="162" fill="#b5432f">残留 3 行（扫 20 万行）</text>
+
+<rect x="210" y="182" width="164" height="40" rx="6" fill="#fdf3f0" stroke="#b5432f" stroke-width="1.1"/>
+<text x="220" y="198">⑨ 备份</text><text x="220" y="214" fill="#b5432f">残留 1 行（35 天窗口）</text>
+</g>
+<line x1="178" y1="108" x2="204" y2="108" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#dl)"/>
+
+<rect x="28" y="240" width="440" height="86" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="40" y="262" font-size="12.5" font-weight="700" fill="#1f2d3d">两段式：先「不可见」，再「不可恢复」</text>
+<text x="40" y="286" font-size="11.5" fill="#5a6b7b">软删（`deleted_at`）立刻让业务读不到；硬删按批在低峰跑</text>
+<text x="40" y="308" font-size="11.5" fill="#4a7d3a">好处：可回滚误删；代价：所有查询必须带 `where deleted_at is null`</text>
+
+<rect x="492" y="240" width="440" height="86" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="504" y="262" font-size="12.5" font-weight="700" fill="#1f2d3d">残留对账是这一步的验收</text>
+<text x="504" y="286" font-size="11.5" fill="#5a6b7b">对每个位置跑一条 `select count(*) where uid=?`，写进 `dsar_propagation`</text>
+<text x="504" y="308" font-size="11.5" fill="#b5432f">只有九个都是 0 才允许把请求标成完成；否则停在 `pending` 并告警</text>
+
+<rect x="28" y="344" width="904" height="72" rx="8" fill="#fdf3f0" stroke="#b5432f" stroke-width="1.4"/>
+<text x="40" y="366" font-size="12.5" font-weight="700" fill="#1f2d3d">三个不能承诺成「已删除」的情形（要在文案里说清楚，而不是假装做到）</text>
+<text x="40" y="388" font-size="11.5" fill="#5a6b7b">① 不可变备份：只能等备份过期，或在恢复流程里强制「恢复后再执行删除」　② 已发出的第三方推送：只能通知对方删除并留存回执</text>
+<text x="40" y="408" font-size="11.5" fill="#5a6b7b">③ 聚合与统计：个人行删掉后，聚合值保留，但必须确保聚合表不含可回溯到个人的维度组合</text>
+</svg>

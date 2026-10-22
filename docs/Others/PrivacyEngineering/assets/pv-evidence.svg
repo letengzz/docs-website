@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">证据链：从「控制项」到「一个能点开的文件」</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">本机 42 条控制项里，31 条能自动采集（73.8%），11 条必须人写；自动采集的那 31 条里，过期机制比采集本身更重要</text>
+
+<rect x="28" y="80" width="220" height="86" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="40" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">① 控制项</text>
+<text x="40" y="124" font-size="11" fill="#5a6b7b">一句可判真假的话</text>
+<text x="40" y="144" font-size="11" fill="#2b5c8a">「所有 L3 字段都有分级记录」</text>
+
+<rect x="268" y="80" width="220" height="86" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="280" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">② 证据形式</text>
+<text x="280" y="124" font-size="11" fill="#5a6b7b">命令输出 / 配置片段 / 截图</text>
+<text x="280" y="144" font-size="11" fill="#2f8f7d">优先「可重跑的命令」</text>
+
+<rect x="508" y="80" width="220" height="86" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="520" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">③ 采集方式</text>
+<text x="520" y="124" font-size="11" fill="#5a6b7b">CI 定时跑 → 产物入对象存储</text>
+<text x="520" y="144" font-size="11" fill="#c2703a">文件带时间戳与前缀哈希</text>
+
+<rect x="748" y="80" width="184" height="86" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="760" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">④ 过期与缺口</text>
+<text x="760" y="124" font-size="11" fill="#5a6b7b">> 90 天即失效</text>
+<text x="760" y="144" font-size="11" fill="#5b4a8a">7 条已过期 → 待办</text>
+
+<rect x="28" y="190" width="904" height="88" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="40" y="212" font-size="12.5" font-weight="700" fill="#1f2d3d">三个「看起来像证据、实际不算」的东西</text>
+<text x="40" y="236" font-size="11.5" fill="#5a6b7b">① 一张去年的截图——无法证明「今天仍然成立」　② 一句「已按要求配置」——无法验证</text>
+<text x="40" y="258" font-size="11.5" fill="#b5432f">③ 一个通过的控制台界面——没有时间戳、没有版本号，换个人复现不出来</text>
+
+<rect x="28" y="300" width="440" height="84" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="40" y="322" font-size="12.5" font-weight="700" fill="#1f2d3d">能自动采集的典型三条</text>
+<text x="40" y="346" font-size="11.5" fill="#5a6b7b">分级覆盖率（SQL）、索引覆盖率（SQL）、删除残留（脚本）</text>
+<text x="40" y="366" font-size="11.5" fill="#4a7d3a">共同点：答案是一个数，且能被别人重跑出来</text>
+
+<rect x="492" y="300" width="440" height="84" rx="8" fill="#fdf3f0" stroke="#b5432f" stroke-width="1.4"/>
+<text x="504" y="322" font-size="12.5" font-weight="700" fill="#1f2d3d">必须人写的典型两条</text>
+<text x="504" y="346" font-size="11.5" fill="#5a6b7b">「告知文案与实际采集一致」「第三方处理者的合同条款」</text>
+<text x="504" y="366" font-size="11.5" fill="#b5432f">共同点：判据是「文本与另一份文本是否一致」，脚本只能做粗筛</text>
+</svg>

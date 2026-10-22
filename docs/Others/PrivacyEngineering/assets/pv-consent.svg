@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="cs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">同意不是一个布尔字段，是「目的 × 状态 × 时间」的三维记录</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">一个用户对「广告」撤回了，对「履约」的授权不能跟着断——所以状态必须挂在目的上，不是挂在用户上</text>
+
+<rect x="40" y="86" width="150" height="64" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="66" y="112" font-size="12.5" font-weight="700" fill="#1f2d3d">未询问</text>
+<text x="66" y="133" font-size="11" fill="#5a6b7b">无记录 ≠ 拒绝</text>
+
+<rect x="240" y="86" width="150" height="64" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="266" y="112" font-size="12.5" font-weight="700" fill="#1f2d3d">已同意</text>
+<text x="266" y="133" font-size="11" fill="#5a6b7b">带 granted_at</text>
+
+<rect x="440" y="86" width="150" height="64" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="466" y="112" font-size="12.5" font-weight="700" fill="#1f2d3d">已撤回</text>
+<text x="466" y="133" font-size="11" fill="#2b5c8a">带 revoked_at</text>
+
+<rect x="640" y="86" width="150" height="64" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="666" y="112" font-size="12.5" font-weight="700" fill="#1f2d3d">已过期</text>
+<text x="666" y="133" font-size="11" fill="#c2703a">有效期到点</text>
+
+<rect x="840" y="86" width="92" height="64" rx="8" fill="#fdf3f0" stroke="#b5432f" stroke-width="1.4"/>
+<text x="852" y="112" font-size="12.5" font-weight="700" fill="#1f2d3d">已拒绝</text>
+<text x="852" y="133" font-size="11" fill="#b5432f">不要再问</text>
+
+<line x1="190" y1="118" x2="234" y2="118" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#cs)"/>
+<line x1="390" y1="118" x2="434" y2="118" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#cs)"/>
+<line x1="590" y1="118" x2="634" y2="118" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#cs)"/>
+<line x1="790" y1="118" x2="834" y2="118" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#cs)"/>
+<path d="M 515 86 C 515 56 300 52 300 80" fill="none" stroke="#5a6b7b" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#cs)"/>
+<text x="330" y="52" font-size="11" fill="#5a6b7b">撤回后可重新同意（记新的一行，不覆盖旧行）</text>
+
+<rect x="28" y="176" width="904" height="108" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="40" y="198" font-size="12.5" font-weight="700" fill="#1f2d3d">撤回之后，传播链有四段，每段都会「慢一拍」</text>
+<text x="40" y="222" font-size="11.5" fill="#5a6b7b">① 写同意表（同一事务，毫秒级）　② 发 `consent.revoked` 事件（outbox，秒级）</text>
+<text x="40" y="242" font-size="11.5" fill="#5a6b7b">③ 下游把该用户从名单里摘掉（20 万行下游表：无索引 7.5 ms / 有索引 0.257 ms）　④ 已发出的推送无法召回，只能截止</text>
+<text x="40" y="262" font-size="11.5" fill="#b5432f">因此「撤回即时生效」只能承诺到「下一批下发之前」——这条边界必须写进产品文案，而不是藏在实现里</text>
+
+<rect x="28" y="300" width="440" height="92" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="40" y="322" font-size="12.5" font-weight="700" fill="#1f2d3d">目的要落到代码里，不能只落在文案里</text>
+<text x="40" y="346" font-size="11.5" fill="#5a6b7b">每个读个人信息的查询带 `purpose` 参数，缺省即拒</text>
+<text x="40" y="368" font-size="11.5" fill="#4a7d3a">`check_purpose(uid, 'ads')` 返回 false 时抛错，而不是返回空</text>
+
+<rect x="492" y="300" width="440" height="92" rx="8" fill="#fdf3f0" stroke="#b5432f" stroke-width="1.4"/>
+<text x="504" y="322" font-size="12.5" font-weight="700" fill="#1f2d3d">两个最容易做错的细节</text>
+<text x="504" y="346" font-size="11.5" fill="#5a6b7b">① 撤回要留旧行：`update ... set revoked_at` 会丢掉「曾经同意过」的证据</text>
+<text x="504" y="368" font-size="11.5" fill="#b5432f">② 匿名用户的同意也要存：登录后才合并，否则匿名期的数据无授权依据</text>
+</svg>

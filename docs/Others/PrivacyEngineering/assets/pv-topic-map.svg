@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="tm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="470" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">隐私工程的四个动作，九个可验证的落点</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">横向是「数据的一生」，纵向是「你要交出的四样东西」：发现、收敛、履行、证明</text>
+
+<rect x="28" y="78" width="220" height="86" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="40" y="100" font-size="13" font-weight="700" fill="#1f2d3d">① 发现</text>
+<text x="40" y="122" font-size="11" fill="#5a6b7b">数据地图 · 分级 · 驻留标记</text>
+<text x="40" y="142" font-size="11" fill="#2b5c8a">PVD-A ~ PVD-H</text>
+
+<rect x="268" y="78" width="220" height="86" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="280" y="100" font-size="13" font-weight="700" fill="#1f2d3d">② 收敛</text>
+<text x="280" y="122" font-size="11" fill="#5a6b7b">最小化 · 目的绑定 · 保留期</text>
+<text x="280" y="142" font-size="11" fill="#2f8f7d">PVM / PVP / PVR</text>
+
+<rect x="508" y="78" width="220" height="86" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="520" y="100" font-size="13" font-weight="700" fill="#1f2d3d">③ 履行</text>
+<text x="520" y="122" font-size="11" fill="#5a6b7b">删除传播 · 访问导出</text>
+<text x="520" y="142" font-size="11" fill="#c2703a">PVL / PVS</text>
+
+<rect x="748" y="78" width="184" height="86" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="760" y="100" font-size="13" font-weight="700" fill="#1f2d3d">④ 证明</text>
+<text x="760" y="122" font-size="11" fill="#5a6b7b">证据链 · 季度自查</text>
+<text x="760" y="142" font-size="11" fill="#5b4a8a">PVE / PVF</text>
+
+<line x1="248" y1="121" x2="262" y2="121" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#tm)"/>
+<line x1="488" y1="121" x2="502" y2="121" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#tm)"/>
+<line x1="728" y1="121" x2="742" y2="121" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#tm)"/>
+
+<rect x="28" y="190" width="904" height="96" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="40" y="212" font-size="12.5" font-weight="700" fill="#1f2d3d">一条用户数据的七个停留点（每个停留点都要有「谁负责、留多久、怎么删」）</text>
+<text x="40" y="236" font-size="11.5" fill="#5a6b7b">采集表单 → 主库 → 只读副本 → 缓存 → 搜索索引 / 数仓维表 → 特征与模型输入 → 备份与日志</text>
+<text x="40" y="258" font-size="11.5" fill="#b5432f">本机实测：删掉主库那 1 行之后，其余 8 个位置仍有 10 行残留（含 3 行日志）——「删了」和「删完了」是两件事</text>
+<text x="40" y="277" font-size="11.5" fill="#5a6b7b">复制滞后、T+1 快照、缓存 TTL、索引重建周期、备份保留期，五个时间常数决定了「最长残留多久」</text>
+
+<rect x="28" y="304" width="440" height="146" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="40" y="326" font-size="12.5" font-weight="700" fill="#1f2d3d">能自动化的四件事（本专题的全部脚本都在这四类里）</text>
+<text x="40" y="349" font-size="11.5" fill="#5a6b7b">① 扫：按列名 + 按内容 + 按血缘，三路合并出列清单</text>
+<text x="40" y="369" font-size="11.5" fill="#5a6b7b">② 删：墓碑表 + 九位置传播 + 残留对账</text>
+<text x="40" y="389" font-size="11.5" fill="#5a6b7b">③ 查：TTL 批删、分区 DETACH、下游撤回</text>
+<text x="40" y="409" font-size="11.5" fill="#5a6b7b">④ 证：控制项 → 证据文件 → 过期检测</text>
+<text x="40" y="433" font-size="11" fill="#4a7d3a">四类都能写成「命令 + 预期输出」，这是本专题坚持的验收形态</text>
+
+<rect x="492" y="304" width="440" height="146" rx="8" fill="#fdf3f0" stroke="#b5432f" stroke-width="1.4"/>
+<text x="504" y="326" font-size="12.5" font-weight="700" fill="#1f2d3d">不能自动化的三件事（别用脚本假装做到了）</text>
+<text x="504" y="349" font-size="11.5" fill="#5a6b7b">① 「这个字段该不该采」——是业务判断，不是正则</text>
+<text x="504" y="369" font-size="11.5" fill="#5a6b7b">② 「这个目的是否已告知」——是文本与流程，不是字段</text>
+<text x="504" y="389" font-size="11.5" fill="#5a6b7b">③ 「这条数据算不算个人信息」——是法律判断，留给人</text>
+<text x="504" y="413" font-size="11" fill="#b5432f">脚本只能保证「你说过的，代码真的这么做」；不能替你决定「该说什么」</text>
+</svg>

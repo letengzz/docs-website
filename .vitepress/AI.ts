@@ -398,3 +398,10 @@ export const AI_SyntheticData = [
     ],
   },
 ];
+
+export const AI_Java = [
+  {
+    text: "Java 侧接入（入口说明）",
+    link: "/docs/AI/Java/index.md",
+  },
+];

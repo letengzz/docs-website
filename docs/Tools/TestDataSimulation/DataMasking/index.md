@@ -270,3 +270,14 @@ select min(c) from (select count(*) c from demo_user group by gender, age_band) 
 - 中国互联网协会《匿名化技术应用指南》（2024-07）：`匿名化程度 = k × 场景系数 × 环境系数`。
 - ISO/IEC 20889:2018 *Privacy enhancing data de-identification terminology and classification of techniques*。
 - 相关页：[数据治理](../../../DB/DataGovernance/index.md)（分级分类标准）、[AI 安全与合规 · 数据最小化](../../../AI/AISecurityCompliance/DataMinimization/index.md)（真实数据生命周期）、[数据工厂](../DataFactory/index.md)（造数而不是改数）。
+
+## 与「隐私工程与合规落地」的分工（第 192 天补充）
+
+| 问题 | 本页回答 | [隐私工程与合规落地](../../../Others/PrivacyEngineering/Minimization/index.md) 回答 |
+| --- | --- | --- |
+| 场景 | **测试环境**怎么造出像真的假数据 | **生产环境**里哪些字段该采、该以什么形态存 |
+| 手段 | 造数、替换、扰动、子集化 | 掩码 / 假名 / 聚合三种形态与可还原性 |
+| 验收 | 测试库不出现真实个人信息 | 生产库删除后九个位置残留为 0 |
+
+**本页特有的一个坑**：从生产拉一份快照再掩码。掩码发生在**落盘之后**，那份明文快照在测试库的磁盘上已经存在过一次——备份、临时文件、`pg_dump` 的中间产物都可能留下它。本库实测的替代路径是：生产侧先做假名化投影（`sha256(salt||phone)`，盐在 KMS），再把投影结果同步到测试环境，**明文不出生产域**。
+

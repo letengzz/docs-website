@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">压测要回答三个数，不是一个 TPS</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">吞吐（能扛多少）、尾延迟（最慢的那批有多慢）、积压（下游追不上时多久能追平）</text>
+
+<g font-size="11">
+<line x1="80" y1="330" x2="440" y2="330" stroke="#6b7785" stroke-width="1.4"/>
+<line x1="80" y1="330" x2="80" y2="110" stroke="#6b7785" stroke-width="1.4"/>
+<text x="250" y="352" fill="#5a6b7b">并发（4 → 32）</text>
+<text x="52" y="120" fill="#5a6b7b" transform="rotate(-90 52 120)">TPS</text>
+
+<rect x="110" y="150" width="60" height="180" fill="#2b5c8a" opacity="0.85"/>
+<text x="118" y="142" fill="#1f2d3d" font-weight="700">7,734</text>
+<text x="128" y="348" fill="#5a6b7b">4</text>
+
+<rect x="196" y="164" width="60" height="166" fill="#2b5c8a" opacity="0.75"/>
+<text x="204" y="156" fill="#1f2d3d" font-weight="700">7,123</text>
+<text x="214" y="348" fill="#5a6b7b">8</text>
+
+<rect x="282" y="177" width="60" height="153" fill="#c2703a" opacity="0.8"/>
+<text x="290" y="169" fill="#1f2d3d" font-weight="700">6,550</text>
+<text x="300" y="348" fill="#5a6b7b">16</text>
+
+<rect x="368" y="192" width="60" height="138" fill="#b5432f" opacity="0.85"/>
+<text x="376" y="184" fill="#1f2d3d" font-weight="700">5,921</text>
+<text x="386" y="348" fill="#5a6b7b">32</text>
+</g>
+
+<rect x="470" y="110" width="462" height="96" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="482" y="132" font-size="12.5" font-weight="700" fill="#1f2d3d">尾延迟才是用户感受到的那个数</text>
+<text x="482" y="155" font-size="11.5" fill="#5a6b7b">p50 = 0.10 ms、p99 = 0.38 ms，看起来完美</text>
+<text x="482" y="175" font-size="11.5" fill="#b5432f">但 max = 5,097 ms——同一秒里有请求等了 5 秒</text>
+<text x="482" y="195" font-size="11.5" fill="#5a6b7b">p99 好看是因为 99% 的请求根本不排队，不是因为没有排队</text>
+
+<rect x="470" y="218" width="462" height="88" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="482" y="240" font-size="12.5" font-weight="700" fill="#1f2d3d">并发上去吞吐反而降（-23.4%）</text>
+<text x="482" y="263" font-size="11.5" fill="#5a6b7b">写路径只有一个写者：加并发只是加排队，不增加并行度</text>
+<text x="482" y="283" font-size="11.5" fill="#4a7d3a">结论：这类系统的容量靠「缩短单事务」而不是「加线程」</text>
+
+<rect x="470" y="318" width="462" height="76" rx="8" fill="#fdf3f0" stroke="#b5432f" stroke-width="1.4"/>
+<text x="482" y="340" font-size="12.5" font-weight="700" fill="#1f2d3d">outbox 排空：2,000 条 / 24 ms，加消费者没变快（27 ms）</text>
+<text x="482" y="363" font-size="11.5" fill="#5a6b7b">积压 136,639 条时，排空速度才是「下游追不上」的真实答案</text>
+</svg>

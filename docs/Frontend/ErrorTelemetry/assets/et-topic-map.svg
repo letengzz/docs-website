@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="560" fill="#ffffff"/>
+<text x="28" y="36" font-size="19" font-weight="700" fill="#1f2d3d">前端异常监控与体验度量 · 专题地图</text>
+<text x="28" y="60" font-size="12.5" fill="#5a6b7b">上半段是「一条错误怎么变成一条可修的事件」，下半段是「一个体验数怎么变成一条可信的结论」</text>
+<line x1="28" y1="74" x2="932" y2="74" stroke="#c3ccd6" stroke-width="1"/>
+
+<text x="30" y="98" font-size="12" font-weight="700" fill="#2b5c8a">A · 采集与还原（错误侧）</text>
+<rect x="30" y="108" width="212" height="92" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="42" y="128" font-size="12.5" font-weight="700" fill="#1f2d3d">一 · 异常面全景</text>
+<text x="42" y="147" font-size="11" fill="#5a6b7b">七类异常 / 五个采集点</text>
+<text x="42" y="164" font-size="11" fill="#5a6b7b">「错误 0」的三个假象</text>
+<text x="42" y="181" font-size="11" fill="#5a6b7b">分母与版本口径</text>
+
+<rect x="256" y="108" width="212" height="92" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="268" y="128" font-size="12.5" font-weight="700" fill="#1f2d3d">二 · 采集点与跨域盲区</text>
+<text x="268" y="147" font-size="11" fill="#5a6b7b">onerror vs error 事件</text>
+<text x="268" y="164" font-size="11" fill="#5a6b7b">Script error. 的三个条件</text>
+<text x="268" y="181" font-size="11" fill="#5a6b7b">资源错误只在捕获阶段</text>
+
+<rect x="482" y="108" width="212" height="92" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="494" y="128" font-size="12.5" font-weight="700" fill="#1f2d3d">三 · 指纹与噪音</text>
+<text x="494" y="147" font-size="11" fill="#5a6b7b">归一化四级 999→11 组</text>
+<text x="494" y="164" font-size="11" fill="#5a6b7b">栈帧参与 / 规则互斥</text>
+<text x="494" y="181" font-size="11" fill="#5a6b7b">插件与第三方噪音</text>
+
+<rect x="708" y="108" width="222" height="92" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="720" y="128" font-size="12.5" font-weight="700" fill="#1f2d3d">四 · 上报通道与配额</text>
+<text x="720" y="147" font-size="11" fill="#5a6b7b">beacon 60,000 true / 70,000 false</text>
+<text x="720" y="164" font-size="11" fill="#5a6b7b">keepalive 65,536 边界与并发之和</text>
+<text x="720" y="181" font-size="11" fill="#5a6b7b">批量 gzip 摊薄 8.8 倍</text>
+
+<rect x="30" y="216" width="332" height="88" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="42" y="236" font-size="12.5" font-weight="700" fill="#1f2d3d">五 · 符号化与版本对齐</text>
+<text x="42" y="255" font-size="11" fill="#5a6b7b">1:147 → cart.js:5:11（栈顶才对）</text>
+<text x="42" y="272" font-size="11" fill="#5a6b7b">1:269 指向 main.js 的 rethrow</text>
+<text x="42" y="289" font-size="11" fill="#5a6b7b">hidden / external / 泄漏防护</text>
+
+<rect x="376" y="216" width="332" height="88" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="388" y="236" font-size="12.5" font-weight="700" fill="#1f2d3d">六 · 会话重放与隐私</text>
+<text x="388" y="255" font-size="11" fill="#5a6b7b">rrweb 快照 + 增量，不是录像</text>
+<text x="388" y="272" font-size="11" fill="#5a6b7b">mask / block / 采样三档</text>
+<text x="388" y="289" font-size="11" fill="#5a6b7b">体积按「节点数 × 变更频率」算</text>
+
+<rect x="722" y="216" width="208" height="88" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="734" y="236" font-size="12.5" font-weight="700" fill="#1f2d3d">七 · 体验度量</text>
+<text x="734" y="255" font-size="11" fill="#5a6b7b">web-vitals v5 五个指标</text>
+<text x="734" y="272" font-size="11" fill="#5a6b7b">p75 与分桶，均值不用</text>
+<text x="734" y="289" font-size="11" fill="#5a6b7b">软导航切片（OT 阶段）</text>
+
+<rect x="30" y="316" width="440" height="88" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="42" y="336" font-size="12.5" font-weight="700" fill="#1f2d3d">八 · 告警、预算与闭环</text>
+<text x="42" y="355" font-size="11" fill="#5a6b7b">从「错误数」到「影响用户数」；错误预算与燃烧率</text>
+<text x="42" y="372" font-size="11" fill="#5a6b7b">抑制与静默：一次发布只该响一次</text>
+<text x="42" y="389" font-size="11" fill="#5a6b7b">噪音预算：把「已忽略」当成一个受管的数</text>
+
+<rect x="484" y="316" width="446" height="88" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="496" y="336" font-size="12.5" font-weight="700" fill="#1f2d3d">九 · 实战：从 0 到 1 搭一条链路</text>
+<text x="496" y="355" font-size="11" fill="#5a6b7b">SDK（采集/队列/上报）→ collector（校验/指纹/符号化）→ 存储 → 看板</text>
+<text x="496" y="372" font-size="11" fill="#5a6b7b">四个可执行验收：事件落地、栈还原、配额不越界、告警只响一次</text>
+<text x="496" y="389" font-size="11" fill="#5a6b7b">判据族 ETV~ETX 共 72 条，全部可复跑</text>
+
+<line x1="30" y1="424" x2="930" y2="424" stroke="#c3ccd6" stroke-width="1"/>
+<text x="30" y="446" font-size="12" font-weight="700" fill="#2b5c8a">B · 贯穿三段的一条主轴：每个数都必须带「分母 + 版本 + 样本量」</text>
+<rect x="30" y="458" width="288" height="76" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="42" y="478" font-size="12" font-weight="700" fill="#1f2d3d">分母</text>
+<text x="42" y="497" font-size="11" fill="#5a6b7b">页面访问 / 会话 / 订单，三选一</text>
+<text x="42" y="514" font-size="11" fill="#5a6b7b">混算就是「错误率 0.3%」的来源</text>
+<rect x="336" y="458" width="288" height="76" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="348" y="478" font-size="12" font-weight="700" fill="#1f2d3d">版本</text>
+<text x="348" y="497" font-size="11" fill="#5a6b7b">release + 构建号 + sourcemap 一致</text>
+<text x="348" y="514" font-size="11" fill="#5a6b7b">版本对不上 = 栈还原到错的代码</text>
+<rect x="642" y="458" width="288" height="76" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="654" y="478" font-size="12" font-weight="700" fill="#1f2d3d">样本量</text>
+<text x="654" y="497" font-size="11" fill="#5a6b7b">p75 在 n&lt;100 时没有比较意义</text>
+<text x="654" y="514" font-size="11" fill="#5a6b7b">采样率变了，「变好」可能只是抽样变了</text>
+</svg>

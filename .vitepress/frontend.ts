@@ -83,7 +83,8 @@ export const FrontBasic = [
                             { text: "常见问题与最佳实践", link: "/docs/Frontend/Basic/CSS/Advanced/FAQ/index.md" },
                         ]
                     },
-                ]
+              { text: "优化CSS代码技巧", link: "/docs/Frontend/Basic/CSS/Optimize/index.md" },
+            ]
             },
             {
                 text: "JavaScript", link: "/docs/Frontend/Basic/JavaScript/index.md", collapsed: true, items: [
@@ -233,7 +234,8 @@ export const FrontBasic = [
                             { text: "yarn 包管理工具", link: "/docs/Frontend/Basic/NodeJs/PackageManagementTool/yarn/index.md" },
                             { text: "pnpm 包管理工具", link: "/docs/Frontend/Basic/NodeJs/PackageManagementTool/pnpm/index.md" },
                             { text: "管理发布包", link: "/docs/Frontend/Basic/NodeJs/PackageManagementTool/ManageReleasePackages/index.md" },
-                        ]
+                      { text: "npm和yarn选择", link: "/docs/Frontend/Basic/NodeJs/PackageManagementTool/NpmYarn/index.md" },
+                    ]
                     },
                     {
                         text: "Express 框架", link: "/docs/Frontend/Basic/NodeJs/Frame/express/index.md", collapsed: true, items: [
@@ -920,6 +922,24 @@ export const FrontDesignSystem = [
             { text: "版本、废弃与发布治理", link: "/docs/Frontend/DesignSystem/ReleaseGovernance/index.md" },
             { text: "实战：12 个组件的最小设计系统", link: "/docs/Frontend/DesignSystem/Practice/index.md" },
             { text: "常见问题与分诊", link: "/docs/Frontend/DesignSystem/FAQ/index.md" },
+        ],
+    },
+];
+
+export const FrontErrorTelemetry = [
+    {
+        text: "前端异常监控与体验度量",
+        link: "/docs/Frontend/ErrorTelemetry/index.md",
+        items: [
+            { text: "异常面全景与采集点地图", link: "/docs/Frontend/ErrorTelemetry/Overview/index.md" },
+            { text: "采集点与跨域盲区", link: "/docs/Frontend/ErrorTelemetry/Capture/index.md" },
+            { text: "指纹、合并与噪音治理", link: "/docs/Frontend/ErrorTelemetry/Grouping/index.md" },
+            { text: "上报通道与配额", link: "/docs/Frontend/ErrorTelemetry/Transport/index.md" },
+            { text: "符号化与版本对齐", link: "/docs/Frontend/ErrorTelemetry/SourceMap/index.md" },
+            { text: "会话重放与隐私脱敏", link: "/docs/Frontend/ErrorTelemetry/SessionReplay/index.md" },
+            { text: "真实用户度量与软导航", link: "/docs/Frontend/ErrorTelemetry/WebVitals/index.md" },
+            { text: "告警、预算与闭环", link: "/docs/Frontend/ErrorTelemetry/Alerting/index.md" },
+            { text: "实战：从 0 到 1 搭一条链路", link: "/docs/Frontend/ErrorTelemetry/Practice/index.md" },
         ],
     },
 ];

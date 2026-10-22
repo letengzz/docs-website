@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">同一次错误，三种入口，三份不同的信息</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">入口决定字段：onerror 给 5 个位置参数，error 事件给 1 个对象，资源错误只给 target</text>
+
+<rect x="28" y="80" width="250" height="120" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="40" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">window.onerror = fn</text>
+<text x="40" y="123" font-size="11" fill="#5a6b7b">(message, source, lineno,</text>
+<text x="40" y="139" font-size="11" fill="#5a6b7b"> colno, error)</text>
+<text x="40" y="160" font-size="11" fill="#b5432f">return true 会吞掉控制台输出</text>
+<text x="40" y="178" font-size="11" fill="#b5432f">只能挂一个，后被覆盖</text>
+<text x="40" y="196" font-size="11" fill="#5a6b7b">收不到资源错误</text>
+
+<rect x="356" y="80" width="250" height="120" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="368" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">addEventListener('error', h, true)</text>
+<text x="368" y="123" font-size="11" fill="#5a6b7b">1 个 ErrorEvent：message / filename</text>
+<text x="368" y="139" font-size="11" fill="#5a6b7b">/ lineno / colno / error</text>
+<text x="368" y="160" font-size="11" fill="#2f8f7d">可挂多个，不抢属性槽</text>
+<text x="368" y="178" font-size="11" fill="#2f8f7d">捕获阶段能拿到资源错误</text>
+<text x="368" y="196" font-size="11" fill="#c2703a">必须传第三个参数 true</text>
+
+<rect x="684" y="80" width="248" height="120" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="696" y="102" font-size="12.5" font-weight="700" fill="#1f2d3d">event.target ≠ window</text>
+<text x="696" y="123" font-size="11" fill="#5a6b7b">tagName：IMG / SCRIPT / LINK</text>
+<text x="696" y="139" font-size="11" fill="#5a6b7b">只有 URL，没有 message</text>
+<text x="696" y="160" font-size="11" fill="#b5432f">不冒泡，只在捕获阶段</text>
+<text x="696" y="178" font-size="11" fill="#5a6b7b">字体 / 背景图：连事件都没有</text>
+
+<line x1="278" y1="140" x2="350" y2="140" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#a1)"/>
+<line x1="606" y1="140" x2="678" y2="140" stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#a1)"/>
+
+<rect x="28" y="222" width="904" height="80" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="40" y="244" font-size="12.5" font-weight="700" fill="#1f2d3d">跨域三条件：缺一就退化成 Script error.</text>
+<text x="40" y="266" font-size="11.5" fill="#5a6b7b">① &lt;script crossorigin="anonymous"&gt;　② 响应头 Access-Control-Allow-Origin　③ 同一 CDN 域名（不要中途跳转到另一域）</text>
+<text x="40" y="287" font-size="11.5" fill="#b5432f">实测：不带 crossorigin → msg="Script error." src="" line=0 col=0 error=null；带上 + CORS → 完整 message 与栈</text>
+
+<rect x="28" y="318" width="440" height="88" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="40" y="340" font-size="12.5" font-weight="700" fill="#1f2d3d">Promise 拒绝：reason 不是 Error 也常见</text>
+<text x="40" y="361" font-size="11.5" fill="#5a6b7b">Promise.reject("401") / {code:500} → 无 stack</text>
+<text x="40" y="380" font-size="11.5" fill="#5a6b7b">上报前归一化：instanceof Error ? message : String(r)</text>
+<text x="40" y="399" font-size="11.5" fill="#5a6b7b">不要 preventDefault：会吞掉控制台提示</text>
+
+<rect x="492" y="318" width="440" height="88" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="504" y="340" font-size="12.5" font-weight="700" fill="#1f2d3d">ReportingObserver（2026-03 起 Baseline）</text>
+<text x="504" y="361" font-size="11.5" fill="#5a6b7b">csp-violation / deprecation / intervention</text>
+<text x="504" y="380" font-size="11.5" fill="#5a6b7b">buffered: true → 能拿到初始化之前的报告</text>
+<text x="504" y="399" font-size="11.5" fill="#5a6b7b">仍需 report-to 兜底老浏览器（Safari &lt; 18.4）</text>
+</svg>

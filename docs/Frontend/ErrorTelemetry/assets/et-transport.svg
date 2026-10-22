@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">四种通道、一道额度闸门、一次批量摊薄</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">本机实测（Chrome 155 headless）：边界不是「64 KB 大概」，而是精确到字节</text>
+
+<rect x="28" y="76" width="212" height="96" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="40" y="97" font-size="12.5" font-weight="700" fill="#1f2d3d">sendBeacon</text>
+<text x="40" y="117" font-size="11" fill="#5a6b7b">60,000 B → true</text>
+<text x="40" y="134" font-size="11" fill="#b5432f">70,000 B → false（不抛错）</text>
+<text x="40" y="151" font-size="11" fill="#5a6b7b">读不到响应，但不阻塞</text>
+<text x="40" y="167" font-size="11" fill="#5a6b7b">卸载时唯一可靠的通道</text>
+
+<rect x="258" y="76" width="212" height="96" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="270" y="97" font-size="12.5" font-weight="700" fill="#1f2d3d">fetch keepalive</text>
+<text x="270" y="117" font-size="11" fill="#5a6b7b">65,536 B → 发出</text>
+<text x="270" y="134" font-size="11" fill="#b5432f">65,537 B → TypeError</text>
+<text x="270" y="151" font-size="11" fill="#5a6b7b">能读状态码，可做重试判断</text>
+<text x="270" y="167" font-size="11" fill="#c2703a">额度按「源内在途总量」计</text>
+
+<rect x="488" y="76" width="212" height="96" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="500" y="97" font-size="12.5" font-weight="700" fill="#1f2d3d">Image().src</text>
+<text x="500" y="117" font-size="11" fill="#5a6b7b">受 URL 长度限制</text>
+<text x="500" y="134" font-size="11" fill="#5a6b7b">只能带几十字节参数</text>
+<text x="500" y="151" font-size="11" fill="#5a6b7b">无响应、无错误详情</text>
+<text x="500" y="167" font-size="11" fill="#5a6b7b">只适合极小的计数器</text>
+
+<rect x="718" y="76" width="214" height="96" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="730" y="97" font-size="12.5" font-weight="700" fill="#1f2d3d">同步 XHR</text>
+<text x="730" y="117" font-size="11" fill="#5a6b7b">能发、能读、能保证送达</text>
+<text x="730" y="134" font-size="11" fill="#b5432f">冻结主线程直到返回</text>
+<text x="730" y="151" font-size="11" fill="#b5432f">用户看到「关不掉」</text>
+<text x="730" y="167" font-size="11" fill="#5a6b7b">已淘汰，不要用</text>
+
+<rect x="28" y="192" width="440" height="96" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="40" y="214" font-size="12.5" font-weight="700" fill="#1f2d3d">并发额度实测（最容易踩的一格）</text>
+<text x="40" y="235" font-size="11.5" fill="#5a6b7b">两条 40,000 B 并发 → 一条成功、一条 TypeError</text>
+<text x="40" y="254" font-size="11.5" fill="#5a6b7b">串行但不等响应体读完 → 第一条同样失败</text>
+<text x="40" y="275" font-size="11.5" fill="#b5432f">40,000 + 40,000 &gt; 65,536：额度是在途之和</text>
+
+<rect x="488" y="192" width="444" height="96" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="500" y="214" font-size="12.5" font-weight="700" fill="#1f2d3d">批量 + gzip 的摊薄（实测）</text>
+<text x="500" y="235" font-size="11.5" fill="#5a6b7b">单条 810 B → gzip 476 B；20 条一批 16,252 B → gzip 1,082 B</text>
+<text x="500" y="254" font-size="11.5" fill="#5a6b7b">20 条各自单发：gzip 9,520 B；一批：1,082 B → 差 8.8 倍</text>
+<text x="500" y="275" font-size="11.5" fill="#4a7d3a">批量不是省一点：重复字段被滑动窗口压掉了</text>
+
+<line x1="28" y1="306" x2="932" y2="306" stroke="#c3ccd6"/>
+
+<g font-size="11.5" fill="#5a6b7b">
+  <text x="28" y="330" font-weight="700" fill="#1f2d3d">队列四件事</text>
+  <text x="28" y="352">① 攒 10 条或 5 秒发一次</text>
+  <text x="28" y="372">② 单批 ≤ 48 KB（自留 25% 余量）</text>
+  <text x="28" y="392">③ visibilitychange 时 flush</text>
+  <text x="28" y="412">④ 失败落 IndexedDB，下次补传</text>
+</g>
+<g font-size="11.5" fill="#5a6b7b">
+  <text x="352" y="330" font-weight="700" fill="#1f2d3d">三个「以为成功了」的失败</text>
+  <text x="352" y="352">① 不看 sendBeacon 返回值（false 就是丢了）</text>
+  <text x="352" y="372">② .catch(() =&gt; {}) 吞掉 keepalive 的 TypeError</text>
+  <text x="352" y="392">③ beforeunload 里循环发 3 条 × 30 KB</text>
+  <text x="352" y="412">　 正确做法：合并成一条再发</text>
+</g>
+<g font-size="11.5" fill="#5a6b7b">
+  <text x="700" y="330" font-weight="700" fill="#1f2d3d">采样口径不同</text>
+  <text x="700" y="352">错误：全采或按会话采</text>
+  <text x="700" y="372">性能：按会话采 5%~20%</text>
+  <text x="700" y="392">重放：有错才录，独立通道</text>
+  <text x="700" y="412">同一会话的指标要一起采/一起不采</text>
+</g>
+</svg>

@@ -372,3 +372,36 @@ class DevErrorOverlay extends Component<DevErrorOverlayProps, DevErrorOverlaySta
 
 export default DevErrorOverlay
 ```
+
+## 边界捕获之后：把它变成一条可修的事件（第 191 天补充）
+
+边界只解决「不白屏」，不解决「让人知道出过事」。`componentDidCatch` 里拿到的 `error` 与 `info.componentStack` 必须送到采集端，且要带三个字段才可分组：
+
+| 字段 | 来源 | 作用 |
+| --- | --- | --- |
+| `error.stack` | JS 栈 | 符号化的输入（**不是** `componentStack`） |
+| `info.componentStack` | React 组件栈 | 说明「哪个组件在渲染」，与 JS 栈是两套坐标 |
+| 路由与版本 | 业务注入 | 判断影响面与是否回归 |
+
+```tsx [src/components/ErrorBoundary.tsx]
+componentDidCatch(error: Error, info: ErrorInfo) {
+  // 只上报，不在这里做任何可能抛错的事
+  report({
+    kind: "framework",
+    message: error.message,
+    stack: error.stack ?? null,
+    context: { componentStack: info.componentStack, route: location.pathname, release: __APP_RELEASE__ },
+  });
+}
+```
+
+React 19 起，根节点的 `onCaughtError` 与 `onUncaughtError` 会把「被边界接住」与「冒到根」分开回调，正好对应「已降级」与「白屏」两种后果——**两者都要接**，只接前者会漏掉最严重的一类。
+
+::: danger `componentStack` 不能当指纹
+它随组件层级变化（加一层包装就变），拿它算指纹会让同一个 bug 每次重构都变成新 issue。指纹要用 JS 栈的 `in_app` 帧，`componentStack` 只作为上下文。详见[指纹、合并与噪音治理](../../../ErrorTelemetry/Grouping/index.md)。
+:::
+
+## 参考资料
+
+- React 官方文档：*Error Boundaries*（`componentDidCatch` / `getDerivedStateFromError` 的捕获范围）、*createRoot options*（`onCaughtError` / `onUncaughtError` / `onRecoverableError`）
+- 本仓库：[前端异常监控与体验度量](../../../ErrorTelemetry/index.md)（框架层错误的采集与上报）、[采集点与跨域盲区](../../../ErrorTelemetry/Capture/index.md)（React 19 三个回调的差异）

@@ -129,7 +129,23 @@ Lab 定位问题（Lighthouse / Performance 面板）
 
 运行 Lighthouse 记录性能分数与 CWV 值；在页面接入 web-vitals 埋点后，用 DevTools 的 Network 面板确认 `/api/rum` 请求正常发出（keepalive）；在 PageSpeed Insights 输入线上 URL 对比真实用户数据。
 
-## 参考资料
+## 软导航：SPA 的口径问题（2026-10 补充）
+
+本页的指标口径默认「一次文档导航 = 一次测量」。SPA 里这个前提不成立：从列表页点到详情页不产生新文档，**后续所有指标仍被算在首次进入的 URL 上**，于是详情页的慢 LCP 被记到列表页头上。
+
+三种处理方式的现状（详见[真实用户度量与软导航](../../../ErrorTelemetry/WebVitals/index.md)）：
+
+| 方式 | 现状 | 能否与 CrUX 对比 |
+| --- | --- | --- |
+| 不做切片 | 默认行为 | ✅（因为 CrUX 也是这个口径） |
+| 自建软导航切片 | 路由变化时重置观察器 | ❌ 不可直接相减 |
+| Soft Navigations API | 仍是 origin trial（Chrome 147，2026-04），CrUX 未采纳 | ❌ |
+
+::: warning 不要拿自建切片去「对上」CrUX
+两者的分母不同：CrUX 按文档 URL 归属，自建切片按路由归属。看板上必须标注用的是哪一种，否则「我们详情页 LCP 只有 1.9 s，CrUX 显示 2.8 s」这种争论会反复出现。
+:::
+
+## 参考资料## 参考资料
 
 - [web.dev：Core Web Vitals](https://web.dev/articles/vitals)
 - 相邻专题：[服务端渲染深入 · 性能与成本](../../../SSR/Performance/index.md)——本页给的指标口径是通用的；那一页讲 **SSR 场景下这些口径会怎么变形**：流式让 TTFB 失去可比性（它只表示「响应开始了」），必须与 FCP/LCP/INP 一起看，并给出串行瀑布的识别方法与服务端容量估算。

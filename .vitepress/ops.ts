@@ -54,7 +54,14 @@ export const Docker = [
     link: "/docs/Ops/Docker/index.md",
     items: [
       { text: "Docker 概述", link: "/docs/Ops/Docker/Overview/index.md" },
-      { text: "Docker 安装与卸载", link: "/docs/Ops/Docker/InstallUninstall/index.md" },
+      { text: "Docker 安装与卸载", link: "/docs/Ops/Docker/InstallUninstall/index.md", collapsed: true, items: [
+        { text: "Linux 安装 Docker", link: "/docs/Ops/Docker/InstallUninstall/LinuxInstall/index.md" },
+        { text: "Linux 卸载 Docker", link: "/docs/Ops/Docker/InstallUninstall/LinuxUninstall/index.md" },
+        { text: "MacOS 安装 Docker", link: "/docs/Ops/Docker/InstallUninstall/MacOSInstall/index.md" },
+        { text: "MacOS 卸载 Docker", link: "/docs/Ops/Docker/InstallUninstall/MacOSUninstall/index.md" },
+        { text: "Windows 安装", link: "/docs/Ops/Docker/InstallUninstall/WindowsInstall/index.md" },
+        { text: "Windows 卸载 Docker", link: "/docs/Ops/Docker/InstallUninstall/WindowsUninstall/index.md" },
+      ] },
       { text: "Docker 容器与沙盒", link: "/docs/Ops/Docker/ContainersSandboxes/index.md" },
       { text: "Docker 进程命令", link: "/docs/Ops/Docker/ProcessCommand/index.md" },
       { text: "Docker 镜像", link: "/docs/Ops/Docker/Images/index.md" },

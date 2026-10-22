@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">从一次访问到一个结论：p75 与它的三个前提</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">采集 → 分桶 → 分位数 → 对照；每一步都会引入一个必须写明的口径</text>
+
+<rect x="28" y="78" width="170" height="86" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="40" y="100" font-size="12.5" font-weight="700" fill="#1f2d3d">采集</text>
+<text x="40" y="121" font-size="11" fill="#5a6b7b">web-vitals v5</text>
+<text x="40" y="138" font-size="11" fill="#5a6b7b">CLS / INP / LCP / TTFB / FCP</text>
+<text x="40" y="155" font-size="11" fill="#b5432f">FID 已移除</text>
+
+<rect x="222" y="78" width="180" height="86" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="234" y="100" font-size="12.5" font-weight="700" fill="#1f2d3d">分桶</text>
+<text x="234" y="121" font-size="11" fill="#5a6b7b">设备 / 网络 / 路由模板 / 版本</text>
+<text x="234" y="138" font-size="11" fill="#5a6b7b">不分桶的 p75 没有决策价值</text>
+<text x="234" y="155" font-size="11" fill="#c2703a">小心辛普森悖论</text>
+
+<rect x="426" y="78" width="180" height="86" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="438" y="100" font-size="12.5" font-weight="700" fill="#1f2d3d">分位数</text>
+<text x="438" y="121" font-size="11" fill="#5a6b7b">p50 看典型，p75 看达标</text>
+<text x="438" y="138" font-size="11" fill="#5a6b7b">p95 看最差的那 5%</text>
+<text x="438" y="155" font-size="11" fill="#2f8f7d">均值只用于「总耗时」</text>
+
+<rect x="630" y="78" width="302" height="86" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="642" y="100" font-size="12.5" font-weight="700" fill="#1f2d3d">对照与置信</text>
+<text x="642" y="121" font-size="11" fill="#5a6b7b">n ≥ 1,000 才能判断「优化了 10%」</text>
+<text x="642" y="138" font-size="11" fill="#5a6b7b">采样率变更要在看板打竖线</text>
+<text x="642" y="155" font-size="11" fill="#b5432f">采样一降，「变好」可能只是抽样变了</text>
+
+<g stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#a6)">
+  <line x1="198" y1="121" x2="216" y2="121"/>
+  <line x1="402" y1="121" x2="420" y2="121"/>
+  <line x1="606" y1="121" x2="624" y2="121"/>
+</g>
+
+<rect x="28" y="186" width="446" height="104" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="40" y="208" font-size="12.5" font-weight="700" fill="#1f2d3d">均值为什么一定骗人</text>
+<text x="40" y="229" font-size="11.5" fill="#5a6b7b">长尾分布：一条 60 s 的样本抵 100 条 2 s</text>
+<text x="40" y="248" font-size="11.5" fill="#5a6b7b">移动端常双峰：4G 1.8 s / 弱网 12 s，均值 3.2 s</text>
+<text x="40" y="267" font-size="11.5" fill="#5a6b7b">慢用户流失会让均值「变好」——不是优化生效</text>
+<text x="40" y="284" font-size="11.5" fill="#b5432f">检测：按 500 ms 分桶画直方图，双峰一眼可见</text>
+
+<rect x="492" y="186" width="440" height="104" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="504" y="208" font-size="12.5" font-weight="700" fill="#1f2d3d">软导航：SPA 的指标失真</text>
+<text x="504" y="229" font-size="11.5" fill="#5a6b7b">标准管道把后续指标都算在首次进入的 URL 上</text>
+<text x="504" y="248" font-size="11.5" fill="#5a6b7b">详情页的慢 LCP 被记到列表页；CLS 跨路由累积</text>
+<text x="504" y="267" font-size="11.5" fill="#5b4a8a">Soft Nav API 仍是 origin trial（Chrome 147），CrUX 未采纳</text>
+<text x="504" y="284" font-size="11.5" fill="#b5432f">自建切片的数据不能与 CrUX 直接相减</text>
+
+<rect x="28" y="306" width="904" height="88" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="40" y="328" font-size="12.5" font-weight="700" fill="#1f2d3d">归因：知道「慢」之后要知道「慢在哪」</text>
+<text x="40" y="349" font-size="11.5" fill="#5a6b7b">LCP 四段：TTFB / resourceLoadDelay / resourceLoadDuration / elementRenderDelay</text>
+<text x="40" y="368" font-size="11.5" fill="#5a6b7b">INP 三阶段：inputDelay / processingDuration / presentationDelay；脚本级靠 LoAF（Chrome 123 起稳定）</text>
+<text x="40" y="387" font-size="11.5" fill="#b5432f">跨域脚本要同时有 crossorigin 与 Timing-Allow-Origin，否则归因字段为空——与错误采集是同一套配置</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif">
+<defs><marker id="a7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="28" y="34" font-size="18" font-weight="700" fill="#1f2d3d">告警漏斗：从 1,200 条事件到 1 次呼叫</text>
+<text x="28" y="56" font-size="12" fill="#5a6b7b">四级收敛，每一级都要有明确判据；中间任何一级缺失，都会变成「响了没人管」或「该响没响」</text>
+
+<rect x="28" y="78" width="200" height="72" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="40" y="100" font-size="12.5" font-weight="700" fill="#1f2d3d">① 事件</text>
+<text x="40" y="120" font-size="11" fill="#5a6b7b">1,200 条原始事件</text>
+<text x="40" y="138" font-size="11" fill="#5a6b7b">含噪音与重复</text>
+
+<rect x="256" y="78" width="200" height="72" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="268" y="100" font-size="12.5" font-weight="700" fill="#1f2d3d">② 指纹</text>
+<text x="268" y="120" font-size="11" fill="#5a6b7b">收敛到 3 个 issue</text>
+<text x="268" y="138" font-size="11" fill="#5a6b7b">噪音已进影子表</text>
+
+<rect x="484" y="78" width="200" height="72" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="496" y="100" font-size="12.5" font-weight="700" fill="#1f2d3d">③ 影响面</text>
+<text x="496" y="120" font-size="11" fill="#5a6b7b">1 个 issue 影响 240 UV</text>
+<text x="496" y="138" font-size="11" fill="#5a6b7b">另两个各影响 3 UV</text>
+
+<rect x="712" y="78" width="220" height="72" rx="8" fill="#fbeae6" stroke="#b5432f" stroke-width="1.4"/>
+<text x="724" y="100" font-size="12.5" font-weight="700" fill="#1f2d3d">④ 告警</text>
+<text x="724" y="120" font-size="11" fill="#5a6b7b">只有 1 条触发（240 &gt; 20 且 &gt; 3×基线）</text>
+<text x="724" y="138" font-size="11" fill="#5a6b7b">for: 5m 之后才发</text>
+
+<g stroke="#5a6b7b" stroke-width="1.2" marker-end="url(#a7)">
+  <line x1="228" y1="114" x2="250" y2="114"/>
+  <line x1="456" y1="114" x2="478" y2="114"/>
+  <line x1="684" y1="114" x2="706" y2="114"/>
+</g>
+
+<rect x="28" y="176" width="290" height="112" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="40" y="198" font-size="12.5" font-weight="700" fill="#1f2d3d">主告警：影响面</text>
+<text x="40" y="219" font-size="11.5" fill="#5a6b7b">无崩溃会话率 &lt; 99%</text>
+<text x="40" y="238" font-size="11.5" fill="#5a6b7b">5 分钟受影响 UV &gt; 20 且 &gt; 3× 基线</text>
+<text x="40" y="257" font-size="11.5" fill="#5a6b7b">分母：会话（不是 PV）</text>
+<text x="40" y="278" font-size="11.5" fill="#b5432f">绝对值只用于「不该发生」</text>
+
+<rect x="336" y="176" width="290" height="112" rx="8" fill="#eaf4e6" stroke="#4a7d3a" stroke-width="1.4"/>
+<text x="348" y="198" font-size="12.5" font-weight="700" fill="#1f2d3d">预算与燃烧率</text>
+<text x="348" y="219" font-size="11.5" fill="#5a6b7b">30 天 99.9% → 预算 43.2 分钟</text>
+<text x="348" y="238" font-size="11.5" fill="#5a6b7b">快烧 14.4（1h / 5min）→ 立即呼叫</text>
+<text x="348" y="257" font-size="11.5" fill="#5a6b7b">中烧 6（6h / 30min）→ 工作时间内处理</text>
+<text x="348" y="278" font-size="11.5" fill="#5a6b7b">慢烧 1（3d / 6h）→ 建工单</text>
+
+<rect x="644" y="176" width="288" height="112" rx="8" fill="#efecf7" stroke="#5b4a8a" stroke-width="1.4"/>
+<text x="656" y="198" font-size="12.5" font-weight="700" fill="#1f2d3d">抑制：一次发布只响一次</text>
+<text x="656" y="219" font-size="11.5" fill="#5a6b7b">指纹级静默 1 h；group_by [fingerprint, release]</text>
+<text x="656" y="238" font-size="11.5" fill="#5a6b7b">发布窗口 10 min 内 new_issue 降级</text>
+<text x="656" y="257" font-size="11.5" fill="#5a6b7b">依赖抑制：DB 故障期间屏蔽上层</text>
+<text x="656" y="278" font-size="11.5" fill="#5b4a8a">人工静默必须带 endsAt（≤ 7 天）</text>
+
+<rect x="28" y="308" width="446" height="96" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="40" y="330" font-size="12.5" font-weight="700" fill="#1f2d3d">噪音预算：四个可量的数</text>
+<text x="40" y="351" font-size="11.5" fill="#5a6b7b">周告警数 ≤ 团队人数 × 2　|　可执行率 &gt; 70%</text>
+<text x="40" y="370" font-size="11.5" fill="#5a6b7b">误报率 &lt; 20%　|　ignored 存量持续下降</text>
+<text x="40" y="389" font-size="11.5" fill="#c2703a">连续两周「看了没做事」的告警：降级 / 删除 / 找人负责</text>
+
+<rect x="492" y="308" width="440" height="96" rx="8" fill="#f2f4f7" stroke="#6b7785" stroke-width="1.4"/>
+<text x="504" y="330" font-size="12.5" font-weight="700" fill="#1f2d3d">闭环的验收判据</text>
+<text x="504" y="351" font-size="11.5" fill="#5a6b7b">新版本 24 h 内该指纹事件为 0，且不是被过滤掉的</text>
+<text x="504" y="370" font-size="11.5" fill="#5a6b7b">该版本会话量达到基线的 10% 以上（否则是「未验证」）</text>
+<text x="504" y="389" font-size="11.5" fill="#b5432f">无流量 ≠ 已修复：这是最常见的假闭环</text>
+</svg>

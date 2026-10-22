@@ -1,8 +1,8 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 import { Auth, ContractEvolution, DDD, DistributedScheduling, EmailDeliverability, DesignPatterns, DistributedCache, DistributedLock, DotNet, Ecommerce, EventSourcing, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, NetworkProgramming, ObjectStorage, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, SpringCloud, WorkflowEngine } from "./backend";
 
-import { AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_EdgeInference, AI_EvalEngineering, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI, AI_SyntheticData } from "./AI";
-import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
+import { AI_Java, AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_EdgeInference, AI_EvalEngineering, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI, AI_SyntheticData } from "./AI";
+import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontErrorTelemetry, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, DatabaseUpgrade, CapacityCost, CertificateLifecycle, ChangeManagement, ConfigManagement, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
 import { AccessControl, BigData, CDC, ClickHouse, ConnectionPool, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, Lakehouse, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, SchemaEvolution, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation, EngineeringMetrics, BrowserExtension, CodeSearch } from "./tools";
@@ -97,6 +97,24 @@ const OthersTechDecision = [
   },
 ];
 
+const OthersPrivacy = [
+  {
+    text: "隐私工程与合规落地",
+    link: "/docs/Others/PrivacyEngineering/index.md",
+    items: [
+      { text: "四个动作与五个必失点", link: "/docs/Others/PrivacyEngineering/Overview/index.md" },
+      { text: "数据地图、分级与驻留标记", link: "/docs/Others/PrivacyEngineering/DataMap/index.md" },
+      { text: "采集最小化与三种形态", link: "/docs/Others/PrivacyEngineering/Minimization/index.md" },
+      { text: "目的绑定与同意状态机", link: "/docs/Others/PrivacyEngineering/ConsentPurpose/index.md" },
+      { text: "保留期与到期动作", link: "/docs/Others/PrivacyEngineering/Retention/index.md" },
+      { text: "删除与派生数据传播", link: "/docs/Others/PrivacyEngineering/Deletion/index.md" },
+      { text: "访问、导出与请求履行", link: "/docs/Others/PrivacyEngineering/SubjectRequest/index.md" },
+      { text: "证据链与季度自查", link: "/docs/Others/PrivacyEngineering/Evidence/index.md" },
+      { text: "实战：给 TeamBoard 做一次隐私改造", link: "/docs/Others/PrivacyEngineering/Practice/index.md" },
+    ],
+  },
+];
+
 
 export const sidebar = {
 
@@ -105,7 +123,7 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontLowCode, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontSSR, ...FrontDesktopApp, ...FrontIntlA11y, ...FrontMobileH5, ...FrontMotion, ...FrontStateDataFlow, ...FrontFormValidation, ...FrontDesignSystem, ...FrontTesting, ...FrontRichTextEditor, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontLowCode, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontSSR, ...FrontDesktopApp, ...FrontIntlA11y, ...FrontMobileH5, ...FrontMotion, ...FrontStateDataFlow, ...FrontFormValidation, ...FrontDesignSystem, ...FrontErrorTelemetry, ...FrontTesting, ...FrontRichTextEditor, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
@@ -133,7 +151,7 @@ export const sidebar = {
     {
       text: "AI",
       collapsed: true,
-      items: [...AI_LLMApp, ...AI_AICodingAssistant, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_MultimodalRetrieval, ...AI_ModelRouting, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_PromptSecurity, ...AI_Agent, ...AI_LLMObservability, ...AI_EvalEngineering, ...AI_SpeechAudioAI, ...AI_EnterpriseKB, ...AI_AISecurityCompliance, ...AI_EdgeInference, ...AI_SyntheticData],
+      items: [...AI_LLMApp, ...AI_AICodingAssistant, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_MultimodalRetrieval, ...AI_ModelRouting, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_PromptSecurity, ...AI_Agent, ...AI_LLMObservability, ...AI_Java, ...AI_EvalEngineering, ...AI_SpeechAudioAI, ...AI_EnterpriseKB, ...AI_AISecurityCompliance, ...AI_EdgeInference, ...AI_SyntheticData],
     },
   ],
   "/docs/Tools": [
@@ -170,6 +188,7 @@ export const sidebar = {
   "/docs/Others/ProjectDelivery": OthersProjectDelivery,
   "/docs/Others/TechWriting": OthersTechWriting,
   "/docs/Others/TechDecision": OthersTechDecision,
+  "/docs/Others/PrivacyEngineering": OthersPrivacy,
 
   // 主题级侧边栏：进入具体主题时才展示该主题的侧边栏（子内容默认折叠）
   "/docs/Frontend/RichTextEditor": FrontRichTextEditor,
@@ -189,6 +208,7 @@ export const sidebar = {
   "/docs/Frontend/StateDataFlow": FrontStateDataFlow,
   "/docs/Frontend/FormValidation": FrontFormValidation,
   "/docs/Frontend/DesignSystem": FrontDesignSystem,
+  "/docs/Frontend/ErrorTelemetry": FrontErrorTelemetry,
   "/docs/Frontend/Others": FrontOthers,
   "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,
   "/docs/Frontend/Testing": FrontTesting,
