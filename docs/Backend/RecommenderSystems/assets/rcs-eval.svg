@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img">
+<defs><marker id="ae" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="960" height="380" fill="#ffffff"/>
+<text x="36" y="42" font-size="22" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">实验的三道门：样本量、分流健康、停止规则</text>
+<text x="36" y="66" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">三道门顺序不能换；第一道不过就没有第二道的意义，第二道不过后面全都白算</text>
+
+<rect x="36" y="94" width="264" height="118" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.3"/>
+<text x="168" y="120" font-size="12.5" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">门 1：样本量</text>
+<text x="52" y="144" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">CTR 2.0% → 2.1%：31.5 万/组</text>
+<text x="52" y="162" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">CTR 2.0% → 2.2%：8.1 万/组</text>
+<text x="52" y="180" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">CTR 2.0% → 2.5%：1.4 万/组</text>
+<text x="52" y="202" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">α=0.05 双侧，power=0.8</text>
+
+<line x1="300" y1="153" x2="330" y2="153" stroke="#64748b" stroke-width="1.4" marker-end="url(#ae)"/>
+
+<rect x="334" y="94" width="264" height="118" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+<text x="466" y="120" font-size="12.5" font-weight="700" fill="#78350f" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">门 2：SRM</text>
+<text x="350" y="144" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">50.3% / 49.7%：p≈0.058，放行</text>
+<text x="350" y="162" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">50.6% / 49.4%：p≈1.5e-4，挂起</text>
+<text x="350" y="180" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">阈值取 0.001，不取 0.05</text>
+<text x="350" y="202" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">天天跑 0.05 会天天误报</text>
+
+<line x1="598" y1="153" x2="628" y2="153" stroke="#64748b" stroke-width="1.4" marker-end="url(#ae)"/>
+
+<rect x="632" y="94" width="292" height="118" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.3"/>
+<text x="778" y="120" font-size="12.5" font-weight="700" fill="#14532d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">门 3：停止规则</text>
+<text x="648" y="144" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">A/A 只看一次：误报 4.85%</text>
+<text x="648" y="162" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">A/A 看 10 次：误报 18.1%</text>
+<text x="648" y="180" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">固定期限 / 序贯检验 / 分组序贯</text>
+<text x="648" y="202" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">「显著就停」≈ 把 α 抬到 0.2</text>
+
+<rect x="36" y="230" width="562" height="58" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="52" y="252" font-size="11" font-weight="700" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">护栏三件套：与主指标同屏，判定阈值事先写死</text>
+<text x="52" y="274" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">延迟 p99 涨 &gt;10% ／ 覆盖率跌 &gt;15% ／ 负反馈涨 &gt;20% —— 后者一票否决</text>
+
+<rect x="614" y="230" width="310" height="58" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
+<text x="630" y="252" font-size="11" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">离线涨、线上不涨的五个原因</text>
+<text x="630" y="274" font-size="9.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">服务偏差／特征不一致／指标错配／位置偏差／反馈延迟</text>
+
+<rect x="36" y="304" width="888" height="56" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="52" y="326" font-size="11" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">最根本的一条：验证集也是旧策略产生的</text>
+<text x="52" y="346" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">所以离线只能筛掉明显的坏模型，证明不了好模型；回放层（IPS/DR）是省流量的关键一步</text>
+</svg>

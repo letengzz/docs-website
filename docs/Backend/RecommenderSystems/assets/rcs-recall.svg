@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img">
+<defs><marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
+<text x="36" y="42" font-size="22" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">多路召回：并行取候选、按配额截断、归一化后融合</text>
+<text x="36" y="66" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">四路通道并行，任何一路超时只丢它自己；融合不归一化，等于只用了一路</text>
+
+<rect x="36" y="94" width="200" height="46" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="136" y="112" font-size="11" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">语义（向量近邻）</text>
+<text x="136" y="130" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">topk 300 ／ 40 ms</text>
+
+<rect x="36" y="150" width="200" height="46" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="136" y="168" font-size="11" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">协同（共现/双塔）</text>
+<text x="136" y="186" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">topk 300 ／ 40 ms</text>
+
+<rect x="36" y="206" width="200" height="46" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="136" y="224" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">热度（时间窗排行）</text>
+<text x="136" y="242" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">topk 100 ／ 10 ms</text>
+
+<rect x="36" y="262" width="200" height="46" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="136" y="280" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">规则（运营/地理/已购）</text>
+<text x="136" y="298" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">topk 50 ／ 5 ms</text>
+
+<line x1="236" y1="117" x2="286" y2="160" stroke="#64748b" stroke-width="1.2" marker-end="url(#ac)"/>
+<line x1="236" y1="173" x2="286" y2="180" stroke="#64748b" stroke-width="1.2" marker-end="url(#ac)"/>
+<line x1="236" y1="229" x2="286" y2="200" stroke="#64748b" stroke-width="1.2" marker-end="url(#ac)"/>
+<line x1="236" y1="285" x2="286" y2="220" stroke="#64748b" stroke-width="1.2" marker-end="url(#ac)"/>
+
+<rect x="290" y="140" width="150" height="100" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+<text x="365" y="164" font-size="11.5" font-weight="700" fill="#78350f" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">合并 + 配额</text>
+<text x="365" y="186" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">去重</text>
+<text x="365" y="204" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">每路 min_quota 保底</text>
+<text x="365" y="224" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">截到 total=500</text>
+
+<line x1="440" y1="190" x2="486" y2="190" stroke="#64748b" stroke-width="1.4" marker-end="url(#ac)"/>
+
+<rect x="490" y="140" width="150" height="100" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.3"/>
+<text x="565" y="164" font-size="11.5" font-weight="700" fill="#14532d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">融合</text>
+<text x="565" y="186" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">z-score 或 RRF</text>
+<text x="565" y="204" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">尺度不同必须先归一</text>
+<text x="565" y="224" font-size="10" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">否则只有一路说话</text>
+
+<line x1="640" y1="190" x2="686" y2="190" stroke="#64748b" stroke-width="1.4" marker-end="url(#ac)"/>
+
+<rect x="690" y="140" width="120" height="100" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
+<text x="750" y="176" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">排序</text>
+<text x="750" y="200" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">500 → 10</text>
+
+<rect x="826" y="140" width="98" height="100" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="875" y="166" font-size="11" font-weight="700" fill="#7f1d1d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">四路失效</text>
+<text x="875" y="188" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">不相关</text>
+<text x="875" y="206" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">才值得组合</text>
+<text x="875" y="226" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">选一个不够</text>
+
+<text x="36" y="344" font-size="11.5" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">三种融合的 Top20 通道构成（语义 a／协同 b／热度 c）</text>
+<rect x="36" y="356" width="220" height="18" rx="3" fill="#c7d2fe"/>
+<rect x="256" y="356" width="0" height="18" rx="3" fill="#bbf7d0"/>
+<rect x="256" y="356" width="0" height="18" rx="3" fill="#fecaca"/>
+<text x="470" y="370" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">不归一化直接加权：20 / 0 / 0（权重写了三路，实际只用了一路）</text>
+<rect x="36" y="382" width="121" height="18" rx="3" fill="#c7d2fe"/>
+<rect x="157" y="382" width="77" height="18" rx="3" fill="#fecaca"/>
+<rect x="234" y="382" width="22" height="18" rx="3" fill="#bbf7d0"/>
+<text x="470" y="396" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">z-score 归一化后加权：11 / 2 / 7（保留分数间距，对极值敏感）</text>
+<rect x="36" y="408" width="77" height="18" rx="3" fill="#c7d2fe"/>
+<rect x="113" y="408" width="66" height="18" rx="3" fill="#fecaca"/>
+<rect x="179" y="408" width="77" height="18" rx="3" fill="#bbf7d0"/>
+<text x="470" y="422" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">RRF（k=60）：7 / 7 / 6（只用名次，跨通道天然可比）</text>
+</svg>

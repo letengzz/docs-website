@@ -857,3 +857,22 @@ export const MultiTenantSaaS = [
     ],
   },
 ];
+
+export const RecommenderSystems = [
+  {
+    text: "推荐系统工程",
+    link: "/docs/Backend/RecommenderSystems/index.md",
+    items: [
+      { text: "总览：一条推荐请求穿过的四段", link: "/docs/Backend/RecommenderSystems/Overview/index.md" },
+      { text: "数据与样本：曝光日志怎么变成训练集", link: "/docs/Backend/RecommenderSystems/DataSamples/index.md" },
+      { text: "召回：多路候选、ANN 损失与融合", link: "/docs/Backend/RecommenderSystems/Recall/index.md" },
+      { text: "特征：训练与服务必须是同一个数", link: "/docs/Backend/RecommenderSystems/Features/index.md" },
+      { text: "排序：AUC、校准与位置偏差", link: "/docs/Backend/RecommenderSystems/Ranking/index.md" },
+      { text: "冷启动与探索：不探索就永远不知道", link: "/docs/Backend/RecommenderSystems/ColdStart/index.md" },
+      { text: "在线服务：延迟预算、降级与兜底", link: "/docs/Backend/RecommenderSystems/Serving/index.md" },
+      { text: "评估与实验：什么时候可以停", link: "/docs/Backend/RecommenderSystems/Evaluation/index.md" },
+      { text: "实战：一个能跑起来的最小推荐服务", link: "/docs/Backend/RecommenderSystems/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/RecommenderSystems/FAQ/index.md" },
+    ],
+  },
+];

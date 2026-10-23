@@ -56,10 +56,10 @@
 | [第 4 周第 4 步 · 对账日报与交接](ReconciliationHandover/index.md) | `ELA` | 三向差集、六类差异归口、增量+周全量、runbook 与交接验收 | 8 |
 | [第 4 周第 5 步 · 上线验收](LaunchAcceptance/index.md) | `EW4` | 三层判定、21 条验收项、六道闸门、红线与黄线、回滚预算占比 | 8 |
 | [第 3 周第 5 步 · 发货与签收](ShipmentFulfillment/index.md) | `ESF` | 发货单五态、运单号唯一、回调幂等/乱序/不来、订单完成聚合判定 | 8 |
+| [第 4 周补充 · 退款与部分退款](Refund/index.md) | `ERC` | 额度条件更新、幂等键、回执三通道、库存回补、退满判定成本 | 8 |
 
-后续 2 章（判据族已预留，交付时补条数）：
+后续 1 章（判据族已预留，交付时补条数）：
 
-- 补偿与对账（判据族 `ERC`：补偿动作、退款与部分退款）
 - 第 2 周验收（判据族 `EW2`：第 2 周六项验收）
 
 > 章节按天推进，**每章都自带「如何验证」**：读者按页面里的命令跑一遍，应得到页面写明的读数。项目目录只放 Markdown 与配图，不放任何工程文件。
@@ -582,6 +582,45 @@ psql -U postgres -d eoh -Atc "select count(*) from (select tracking_no from ship
 
 **下一步**（第 202 天）：补 `ERC` 补偿动作（退款与部分退款、退货入库），并收拢 `EW2` 第 2 周验收；G2、G3 两条黄线的补偿动作仍在 7 天窗口内。
 
-## 二十四、判据纪律
+## 二十四、第 202 天交付（第 4 周补充 · 退款与部分退款）
+
+- 新建 [第 4 周补充 · 退款与部分退款](Refund/index.md)（判据 `ERC-A` ~ `ERC-H`），配图 `eoh-refund.svg`（额度 → 幂等键 → 回执三通道 → 三条不变量）。
+- **退款不是「把订单改成已退款」**，而是**在已付金额这个额度上做受控扣减**：额度是并发资源，退款单是幂等单元。这一句是本步的全部内容。
+- **四张表**：`refund`（业务键 `SO{order}-R{batch}`）、`refund_item`（按明细分）、`refund_callback`（三元组唯一键）、`refund_ledger`（只追加，失败回滚记 `IN` 不删 `OUT`）。
+- **七态状态机**，`MANUAL` 是终态；`FAILED` 重试必须换新批次号，`SUCCESS` 之后只能追加流水。
+- **不超退靠一条带条件的 UPDATE**：实测无守卫的增量更新两次各退 60% 得到 **120.0%**（paid 188.13 / refunded 225.76）；带 `WHERE paid_amount - refunded_amount >= :amount` 时停在 **60.0%**，第二条 **UPDATE 0**。双会话并发同样只有一个成功（等锁后重判：40% < 60%）。
+- **幂等键冲突的代价是「等」**：会话 A 持键 2 s，会话 B 同号插入阻塞 **2341 ms** 后报 `23505 duplicate key`。所以上游重试超时必须大于「对手事务最长持锁时间」——渠道 HTTP 调用绝不能在事务里。
+- **回执三通道缺一不可**：同步受理（`PROCESSING`，不是成功）、异步回调（三态，唯一键去重）、30 分钟主动查询（只等回调 = 用户一直看到「退款中」）。
+- **部分退款不改订单状态**：只有 I3（`refunded_amount = paid_amount`）成立才置 `REFUNDED`，否则订单保持 `COMPLETED`。否则客服与对账都会看到「退了一件却显示全额退款」。
+- **库存回补带条件**：连续四次「回补 30」实测 `UPDATE 1/1/1/0`，`reserved` 从 100 到 10，**没有变负**；缺条件会写成 −20，凭空多出 20 件可售库存。
+- **退满判定分冷热路径**（20 万单 / 1 万条成功退款）：聚合子查询缺索引 **144,281 ms** → 建部分索引 **923 ms** → 读维护列 **112 ms**。热路径读维护列，对账用聚合校验维护列，不一致即 D1 类差异。
+
+**如何验证**（读者可执行）：
+
+```shell
+# 1) I1 不超退
+docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
+"select count(*) from orders o join (select order_no,sum(amount) s from refund where status in ('SUCCESS','PROCESSING') group by 1) r on r.order_no=o.order_no where r.s > o.paid_amount;"
+# 期望：0
+
+# 2) I3 状态与金额一致
+docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
+"select count(*) from orders where (status='REFUNDED') <> (refunded_amount >= paid_amount);"
+# 期望：0
+
+# 3) 幂等：同一 refund_no 提交两次，只有一行
+docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
+"select count(*), sum(amount) from refund where refund_no='SO0000123-R2';"
+# 期望：1 | 59.90
+
+# 4) 退满判定耗时（应 < 200 ms）
+docker exec -i eoh-pg psql -U postgres -d eoh -c "\timing on" -c \
+"select count(*) from orders where status='COMPLETED' and refunded_amount >= paid_amount;"
+# 期望：Time 约 110 ms
+```
+
+**下一步**（第 203 天）：三项遗留缺口还剩两项，下一轮取 **outbox 死信重投**（判据族 `EDL`）——死信产生条件、退避曲线、重投上限与人工接管、以及「重投会不会破坏顺序」；退款侧留一条待办：渠道 T+1 对账单与 `refund` 表的自动核对，等 `EDL` 落地后接进对账日报。
+
+## 二十五、判据纪律
 
 每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMT` / `ERB` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img">
+<rect x="0" y="0" width="960" height="360" fill="#ffffff"/>
+<text x="36" y="42" font-size="22" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">探索的代价：纯贪心的遗憾比 Thompson 高一个量级</text>
+<text x="36" y="66" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">20 个候选、真实最优 CTR 22.75%、2 万次曝光；遗憾 = 每轮「最优臂收益 − 实际选择收益」之和</text>
+
+<line x1="180" y1="100" x2="180" y2="270" stroke="#94a3b8" stroke-width="1.2"/>
+<line x1="180" y1="270" x2="800" y2="270" stroke="#94a3b8" stroke-width="1.2"/>
+<text x="180" y="288" font-size="10" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">0</text>
+<line x1="367" y1="266" x2="367" y2="274" stroke="#94a3b8" stroke-width="1"/>
+<text x="367" y="288" font-size="10" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">1000</text>
+<line x1="553" y1="266" x2="553" y2="274" stroke="#94a3b8" stroke-width="1"/>
+<text x="553" y="288" font-size="10" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">2000</text>
+<line x1="740" y1="266" x2="740" y2="274" stroke="#94a3b8" stroke-width="1"/>
+<text x="740" y="288" font-size="10" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">3000</text>
+
+<text x="170" y="124" font-size="11.5" font-weight="700" fill="#334155" text-anchor="end" font-family="PingFang SC, Helvetica, Arial, sans-serif">greedy</text>
+<rect x="180" y="108" width="560" height="26" rx="4" fill="#fecaca" stroke="#b91c1c" stroke-width="1"/>
+<text x="752" y="126" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">3322.82 ／ 最优臂 0.0%</text>
+
+<text x="170" y="160" font-size="11.5" font-weight="700" fill="#334155" text-anchor="end" font-family="PingFang SC, Helvetica, Arial, sans-serif">eps-greedy</text>
+<rect x="180" y="144" width="61" height="26" rx="4" fill="#bbf7d0" stroke="#15803d" stroke-width="1"/>
+<text x="253" y="162" font-size="10.5" fill="#14532d" font-family="PingFang SC, Helvetica, Arial, sans-serif">357.93 ／ 最优臂 84.0%</text>
+
+<text x="170" y="196" font-size="11.5" font-weight="700" fill="#334155" text-anchor="end" font-family="PingFang SC, Helvetica, Arial, sans-serif">UCB1</text>
+<rect x="180" y="180" width="224" height="26" rx="4" fill="#fde68a" stroke="#b45309" stroke-width="1"/>
+<text x="416" y="198" font-size="10.5" fill="#78350f" font-family="PingFang SC, Helvetica, Arial, sans-serif">1327.02 ／ 最优臂 37.9%</text>
+
+<text x="170" y="232" font-size="11.5" font-weight="700" fill="#334155" text-anchor="end" font-family="PingFang SC, Helvetica, Arial, sans-serif">Thompson</text>
+<rect x="180" y="216" width="45" height="26" rx="4" fill="#c7d2fe" stroke="#1d4ed8" stroke-width="1"/>
+<text x="237" y="234" font-size="10.5" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">265.17 ／ 最优臂 85.9%</text>
+
+<rect x="36" y="300" width="432" height="46" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="52" y="320" font-size="10.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">读法一：贪心被运气骗住</text>
+<text x="52" y="338" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">最优臂曝光 0.0%：前几十轮后再也没看过它</text>
+
+<rect x="492" y="300" width="432" height="46" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="508" y="320" font-size="10.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">读法二：UCB 默认参数会过度探索</text>
+<text x="508" y="338" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">sqrt(2 ln t / n) 在臂差异小时给太多流量，需调 c</text>
+</svg>

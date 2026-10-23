@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img">
+<defs><marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+<text x="36" y="42" font-size="22" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">最小推荐服务：十步建起来，六项验收收口</text>
+<text x="36" y="66" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">顺序不可换：先兜底、再召回、再特征、再排序；每一步都能单独跑出读数</text>
+
+<rect x="36" y="92" width="126" height="52" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="99" y="112" font-size="10.5" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S1 建表</text>
+<text x="99" y="130" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">五张表 + 主键</text>
+
+<line x1="162" y1="118" x2="186" y2="118" stroke="#64748b" stroke-width="1.3" marker-end="url(#ap)"/>
+
+<rect x="190" y="92" width="126" height="52" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="253" y="112" font-size="10.5" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S2 样本训练</text>
+<text x="253" y="130" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">切分 + 校准</text>
+
+<line x1="316" y1="118" x2="340" y2="118" stroke="#64748b" stroke-width="1.3" marker-end="url(#ap)"/>
+
+<rect x="344" y="92" width="126" height="52" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.2"/>
+<text x="407" y="112" font-size="10.5" font-weight="700" fill="#14532d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S3 服务骨架</text>
+<text x="407" y="130" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">先只返回兜底</text>
+
+<line x1="470" y1="118" x2="494" y2="118" stroke="#64748b" stroke-width="1.3" marker-end="url(#ap)"/>
+
+<rect x="498" y="92" width="126" height="52" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.2"/>
+<text x="561" y="112" font-size="10.5" font-weight="700" fill="#14532d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S4 两路召回</text>
+<text x="561" y="130" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">RRF 融合</text>
+
+<line x1="624" y1="118" x2="648" y2="118" stroke="#64748b" stroke-width="1.3" marker-end="url(#ap)"/>
+
+<rect x="652" y="92" width="126" height="52" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="715" y="112" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S5 20 维特征</text>
+<text x="715" y="130" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">缺失有默认值</text>
+
+<line x1="778" y1="118" x2="802" y2="118" stroke="#64748b" stroke-width="1.3" marker-end="url(#ap)"/>
+
+<rect x="806" y="92" width="118" height="52" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="865" y="112" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S6 排序</text>
+<text x="865" y="130" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">模型 + 校准</text>
+
+<rect x="36" y="164" width="186" height="52" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="129" y="184" font-size="10.5" font-weight="700" fill="#78350f" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S7 后处理</text>
+<text x="129" y="202" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">去重 打散 补位</text>
+
+<line x1="222" y1="190" x2="246" y2="190" stroke="#64748b" stroke-width="1.3" marker-end="url(#ap)"/>
+
+<rect x="250" y="164" width="186" height="52" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="343" y="184" font-size="10.5" font-weight="700" fill="#78350f" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S8 端到端验收</text>
+<text x="343" y="202" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">六项断言一次跑完</text>
+
+<line x1="436" y1="190" x2="460" y2="190" stroke="#64748b" stroke-width="1.3" marker-end="url(#ap)"/>
+
+<rect x="464" y="164" width="186" height="52" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="557" y="184" font-size="10.5" font-weight="700" fill="#7f1d1d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S9 四个监控指标</text>
+<text x="557" y="202" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">分段/候选/缺失/兜底</text>
+
+<line x1="650" y1="190" x2="674" y2="190" stroke="#64748b" stroke-width="1.3" marker-end="url(#ap)"/>
+
+<rect x="678" y="164" width="246" height="52" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
+<text x="801" y="184" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S10 交付清单 + runbook</text>
+<text x="801" y="202" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">四种症状各一条命令</text>
+
+<text x="36" y="250" font-size="11.5" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">六项验收（缺一项就不算跑通）</text>
+
+<rect x="36" y="262" width="288" height="72" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="50" y="282" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">① /healthz 返回 ok</text>
+<text x="50" y="302" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">② /rec 返回 10 条且无重复</text>
+<text x="50" y="322" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 停 Redis 后 fallback=true</text>
+
+<rect x="336" y="262" width="288" height="72" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="350" y="282" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ feature_missing 比例 &lt; 5%</text>
+<text x="350" y="302" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑤ 校准 ratio 在 0.90~1.10</text>
+<text x="350" y="322" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑥ p99 &lt; 120 ms（实测 70~110）</text>
+
+<rect x="636" y="262" width="288" height="72" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="650" y="282" font-size="10" font-weight="700" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">最容易造假的三个数</text>
+<text x="650" y="302" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">在空库上跑一致性检查（必然全 0）</text>
+<text x="650" y="322" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">验证集也做负采样（口径不一致）</text>
+
+<rect x="36" y="348" width="888" height="40" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1"/>
+<text x="52" y="366" font-size="10.5" fill="#14532d" font-family="PingFang SC, Helvetica, Arial, sans-serif">规模小到每个数都能手算：候选 500、特征 20 维、排序 3 ms，总 p99 应落在 90 ms 附近</text>
+<text x="52" y="382" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">对不上就说明某一段的实现有问题——这比「效果不好」有用得多</text>
+</svg>
