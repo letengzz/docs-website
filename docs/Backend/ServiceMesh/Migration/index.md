@@ -130,4 +130,4 @@ kubectl get ns shop -o jsonpath='{.metadata.labels}'
 
 - Istio 官方：*Traffic Management*（重试默认条件）、*Security*（`PERMISSIVE` 与迁移）
 - Istio 官方：*Sidecar Injection*（按命名空间启停注入）
-- 本仓库：[微服务](../Microservices/Overview/index.md)（框架内治理的能力清单）、[东西向流量治理](../Traffic/index.md)（重试放大）、[网格自身故障](../Failure/index.md)（回退与升级顺序）
+- 本仓库：[微服务](../../Microservices/Overview/index.md)（框架内治理的能力清单）、[东西向流量治理](../Traffic/index.md)（重试放大）、[网格自身故障](../Failure/index.md)（回退与升级顺序）

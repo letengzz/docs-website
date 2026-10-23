@@ -132,14 +132,6 @@
 - [容器编排进阶](../../../Ops/ContainerOrchestration/index.md)：微服务在 K8s 上的打包、交付与多集群容灾
 - [分布式事务](../DistributedTransaction/index.md)：拆分之后跨服务/跨库的数据一致性方案（2PC、TCC、SAGA、Seata、消息表）
 
-## 参考资料
-
-- Martin Fowler 微服务原文：https://martinfowler.com/articles/microservices.html
-- 微服务架构设计模式（Chris Richardson）：https://microservices.io/
-- DDD 与限界上下文：https://martinfowler.com/bliki/BoundedContext.html
-- 绞杀者模式：https://martinfowler.com/bliki/StranglerFigApplication.html
-- 《微服务设计》（Sam Newman，书籍）
-
 ## 治理放在框架里还是放到网格里（第 187 天补充）
 
 本页讲的「微服务引入的新复杂度」，落到工程上其实分成了两半：**与业务语义有关的**（幂等、状态机、配额）和**与业务语义无关的**（加密、超时、重试、路由、埋点）。前者只能留在代码里，后者可以下沉到基础设施——后者正是 [服务网格与东西向流量](../../ServiceMesh/Overview/index.md) 的范围。
@@ -153,3 +145,11 @@
 ::: warning 本页特有的坑：拆服务拆到「每个服务一个 SDK 版本」
 多语言微服务最常见的隐性成本不是运维，而是**治理 SDK 的版本矩阵**：Java 一套、Go 一套、Python 一套，每套的重试条件、熔断窗口、埋点标签含义都略有不同。于是「统一的重试策略」在文档里成立，在线上不成立。要么承认差异并写进规范，要么把这部分下沉——**最糟的是假装它们一致**。
 :::
+
+## 参考资料
+
+- Martin Fowler 微服务原文：https://martinfowler.com/articles/microservices.html
+- 微服务架构设计模式（Chris Richardson）：https://microservices.io/
+- DDD 与限界上下文：https://martinfowler.com/bliki/BoundedContext.html
+- 绞杀者模式：https://martinfowler.com/bliki/StranglerFigApplication.html
+- 《微服务设计》（Sam Newman，书籍）

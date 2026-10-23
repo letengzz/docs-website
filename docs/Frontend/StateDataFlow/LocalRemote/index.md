@@ -199,6 +199,16 @@ grep -rn "queryFn:" src/ | wc -l
 `staleTime` 的具体数字没有普适答案，本页表格给的是**起点**。真正的定法是从日志里取「同一 key 两次读取的间隔中位数」，取它的 2 倍作为 `staleTime`——这样命中率与新鲜度最平衡。
 :::
 
+## 与本专题的分工
+
+| 本页 | [本地数据存储与容量治理](../../LocalDataStore/index.md) |
+| --- | --- |
+| 内存缓存：`staleTime` / `gcTime`、重取时机 | 落到磁盘的持久层怎么建、怎么升版本 |
+| 内存态与远端态的「新鲜度」定义 | 页面刷新后内存态全丢，靠本地库重建 |
+| query key 设计 | 本地库的主键与索引设计 |
+
+**本页特有的一个坑**：把 `gcTime` 设成 `Infinity` 之后，内存里的旧数据**不会**被回收，而页面关闭后又全部丢失——于是「持久化」这件事被误以为已经由缓存解决了。真正的持久化仍要写 IndexedDB，并且要接受它的两个约束：**按源隔离**与**随时可被回收**（见[配额](../../LocalDataStore/Quota/index.md)）。
+
 ## 参考资料
 
 - [TanStack Query v5 · Important Defaults](https://tanstack.com/query/v5/docs/react/guides/important-defaults)——`staleTime` 0 / `gcTime` 5 分钟 / `staleTime: 'static'`

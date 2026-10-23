@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="嵌套数组与独立仓库的查询成本对比：105.2 ms 对 0.9 ms">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="540" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">嵌套数组 vs 独立仓库：34 行命中，117 倍差距</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">200 个看板 × 100 张卡片，查「7 号看板里 status=open 的卡片」</text>
+<rect x="28" y="86" width="440" height="300" rx="8" fill="#fbeceb" stroke="#b4453c" stroke-width="1.4"/>
+<text x="44" y="112" font-size="13" fill="#b4453c" font-weight="700" text-anchor="start">A · 卡片嵌在看板文档里</text>
+<rect x="56" y="140" width="384" height="54" rx="6" fill="#ffffff" stroke="#b4453c" stroke-width="1.2"/>
+<text x="248.0" y="171.0" font-size="11" fill="#1f2d3d" font-weight="400" text-anchor="middle">{ id:7, cards:[ {status:"open"}, … ] }</text>
+<text x="44" y="224" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">① 打开 Cursor 遍历 200 个看板</text>
+<text x="44" y="250" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">② 反序列化每个看板的 cards 数组</text>
+<text x="44" y="276" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">③ 在内存里过滤 status</text>
+<text x="44" y="302" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">④ 命中 34 行，丢掉其余 19,966 行</text>
+<text x="44" y="340" font-size="12.5" fill="#b4453c" font-weight="700" text-anchor="start">= 105.2 ms（20,000 行全量读 + 反序列化）</text>
+<rect x="492" y="86" width="440" height="300" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="508" y="112" font-size="13" fill="#2f8f7d" font-weight="700" text-anchor="start">B · 卡片独立仓库 + 复合索引</text>
+<rect x="520" y="140" width="384" height="54" rx="6" fill="#ffffff" stroke="#2f8f7d" stroke-width="1.2"/>
+<text x="712.0" y="171.0" font-size="11" fill="#1f2d3d" font-weight="400" text-anchor="middle">index("byBS").getAll([7,"open"])</text>
+<text x="508" y="224" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">① 索引 B 树定位 [7,"open"] 的区间</text>
+<text x="508" y="250" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">② 直接读出 34 行，其余 19,966 行不碰</text>
+<text x="508" y="276" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">③ 不需要反序列化父文档</text>
+<text x="508" y="302" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">④ 结果一样是 34 行</text>
+<text x="508" y="340" font-size="12.5" fill="#2f8f7d" font-weight="700" text-anchor="start">= 0.9 ms（只在索引上走一遍）</text>
+<rect x="28" y="402" width="904" height="120" rx="8" fill="#fdf6e7" stroke="#b07d1c" stroke-width="1.4"/>
+<text x="44" y="428" font-size="13" fill="#b07d1c" font-weight="700" text-anchor="start">那什么时候该嵌套</text>
+<text x="44" y="444" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">嵌套适合「一起读、一起写、不单独查」的整体（草稿、配置快照、导入批次的原始报文）。</text>
+<text x="44" y="468" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">一旦某个子项要单独排序、分页、按状态筛，它就必须有自己的仓库和索引——这不是规范，是索引只在顶层键上建。</text>
+<text x="44" y="492" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">代价是写入要跨仓库保持原子（同一个 transaction 里写两个 store），以及删除父项时要自己级联。</text>
+</svg>

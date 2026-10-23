@@ -121,15 +121,6 @@ select count(*) from demo_key;
 3. **状态迁移不带前置条件**：`update ... set state = 'DONE'` 不写 `where state = 'RUNNING'`，等于允许任何状态直接跳到 `DONE`，状态机只剩下注释。
 :::
 
-## 参考资料
-
-- [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——状态码语义的原始出处（已过期归档）
-- [Stripe：Idempotent requests](https://docs.stripe.com/api/idempotent_requests)——窗口、并发 409、结果缓存的工业实践
-- [Stripe：Advanced error handling](https://docs.stripe.com/error-low-level)——「500 也应视为结果不确定」的官方口径
-- [PostgreSQL 18 发布说明](https://www.postgresql.org/docs/18/release-18.html)——`uuidv7()`、`RETURNING OLD/NEW`
-- Kleppmann, M. *Designing Data-Intensive Applications*（2017）第 7、11 章——幂等与恰好一次的边界
-- Fowler, M. *Sagas*（2014）——补偿式失败的经典表述；*State Machine* 模式条目——状态迁移建模的起点
-
 ## 谁来发起重试，决定幂等键怎么设计（第 187 天补充）
 
 本页讲的是「同一次操作被执行多次，结果要一样」。重试的来源有两个，设计时必须分开对待：
@@ -139,8 +130,17 @@ select count(*) from demo_key;
 | 业务代码显式重试 | 你写的 `for` 循环或框架 `@Retryable` | 幂等键由**业务**生成并在重试间保持不变 |
 | 基础设施重试（网格/网关） | 连接失败、`unavailable` 等「大概率未到达」的失败 | 幂等键必须来自**请求本身**（Header 或业务主键），不能由每次尝试新生成 |
 
-第二条是引入服务网格后新增的：Istio 默认对 `connect-failure`、`refused-stream`、`unavailable`、`cancelled` 重试两次，而**默认不重试 5xx**——这个默认值的设计意图就是「只重试能确认没到应用的失败」。但只要你把 `5xx` 加进 `retryOn`，就必须确保接口幂等，否则一次扣款可能变成两次。判据与配置见 [服务网格 · 东西向流量治理](../../ServiceMesh/Traffic/index.md)。
+第二条是引入服务网格后新增的：Istio 默认对 `connect-failure`、`refused-stream`、`unavailable`、`cancelled` 重试两次，而**默认不重试 5xx**——这个默认值的设计意图就是「只重试能确认没到应用的失败」。但只要你把 `5xx` 加进 `retryOn`，就必须确保接口幂等，否则一次扣款可能变成两次。判据与配置见 [服务网格 · 东西向流量治理](../ServiceMesh/Traffic/index.md)。
 
 ::: danger 本页特有的坑：幂等键放在请求体里，被代理重试时重复生成
 把幂等键写成「请求体里的一个字段，由调用方服务在构造请求时生成」是安全的；但如果它是在**每次发送尝试**时生成（例如放在拦截器里 new 一个 UUID），基础设施层重试就会带着新键到达，幂等表完全失效，而且日志里看不出异常——因为每次请求的键都不一样，看上去「都是第一次」。正确做法是：幂等键在**进入发送逻辑之前**确定，并随请求一起重放。
 :::
+
+## 参考资料
+
+- [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——状态码语义的原始出处（已过期归档）
+- [Stripe：Idempotent requests](https://docs.stripe.com/api/idempotent_requests)——窗口、并发 409、结果缓存的工业实践
+- [Stripe：Advanced error handling](https://docs.stripe.com/error-low-level)——「500 也应视为结果不确定」的官方口径
+- [PostgreSQL 18 发布说明](https://www.postgresql.org/docs/18/release-18.html)——`uuidv7()`、`RETURNING OLD/NEW`
+- Kleppmann, M. *Designing Data-Intensive Applications*（2017）第 7、11 章——幂等与恰好一次的边界
+- Fowler, M. *Sagas*（2014）——补偿式失败的经典表述；*State Machine* 模式条目——状态迁移建模的起点

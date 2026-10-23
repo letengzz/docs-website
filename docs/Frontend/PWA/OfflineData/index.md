@@ -242,6 +242,16 @@ self.addEventListener('sync', (event) => {
 4. **重复投递测试**：手动再调一次 `flushOutbox()`，服务端应只保留一条业务记录（如果产生了第二条，说明服务端幂等没做）。
 5. **不可重试判定测试**：把队列项指向一个必然返回 400 的 URL，恢复网络 → 记录应被删除并标记 `failed`，而不是无限重试。
 
+## 与本专题的分工
+
+| 本页 | [本地数据存储与容量治理](../../LocalDataStore/index.md) |
+| --- | --- |
+| 离线写路径：先落盘再发送、Background Sync、队列三段式 | 落盘那张表本身怎么建模、索引怎么建、事务怎么提交 |
+| 队列项的「发不发」与幂等键 | 队列存满时怎么清、`usage` 怎么读、删了为什么没释放 |
+| UI 三态与对账 | 版本升级时队列要给新字段让路（双写窗口） |
+
+**本页特有的一个坑**：队列表如果是**嵌套结构**（一条队列项里塞整个表单快照），补发时要反序列化全部内容才能取 `id` 与 `createdAt`；把 `id / createdAt / state / payload` **平铺成四个字段**并给 `(state, createdAt)` 建复合索引，扫队列的成本才会与「待发条数」成正比。详细判据见[建模](../../LocalDataStore/SchemaModeling/index.md)。
+
 ## 参考资料
 
 - [MDN：Background Synchronization API](https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API)

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="本地数据存储专题地图：建模、查询、事务、升级、配额、清理、观测七关">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="490" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">本地数据存储：一条数据在浏览器里的四道关</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">配额 10.2 GB、usage 11.2 MB 的真实浏览器读数（Chrome 155 / http://127.0.0.1）</text>
+<rect x="28" y="120" width="120" height="64" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="88.0" y="156.0" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="middle">建模</text>
+<text x="88" y="202" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="middle">仓库 / 主键 / 索引</text>
+<rect x="160" y="120" width="120" height="64" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="220.0" y="156.0" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="middle">查询</text>
+<text x="220" y="202" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="middle">索引换命中，代价在写</text>
+<rect x="292" y="120" width="120" height="64" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="352.0" y="156.0" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="middle">事务</text>
+<text x="352" y="202" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="middle">单事务 6.6 倍</text>
+<rect x="424" y="120" width="120" height="64" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="484.0" y="156.0" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="middle">升级</text>
+<text x="484" y="202" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="middle">版本只进不退</text>
+<rect x="556" y="120" width="120" height="64" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="616.0" y="156.0" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="middle">配额</text>
+<text x="616" y="202" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="middle">配额是 per-origin</text>
+<rect x="688" y="120" width="120" height="64" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="748.0" y="156.0" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="middle">清理</text>
+<text x="748" y="202" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="middle">删除不等于释放</text>
+<rect x="820" y="120" width="120" height="64" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="880.0" y="156.0" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="middle">观测</text>
+<text x="880" y="202" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="middle">usage 采样与告警</text>
+<rect x="28" y="250" width="904" height="110" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="44" y="276" font-size="13" fill="#94a3b8" font-weight="700" text-anchor="start">四道关的依赖顺序</text>
+<text x="44" y="296" font-size="11.5" fill="#334155" font-weight="400" text-anchor="start">建模错 → 查询只能全表扫（34 行命中，105.2 ms vs 0.9 ms，117 倍）</text>
+<text x="44" y="320" font-size="11.5" fill="#334155" font-weight="400" text-anchor="start">升级错 → 老标签页把新版本挡住（blocked，versionchange 0.3 ms 内通知，但 open 一直挂着）</text>
+<text x="44" y="344" font-size="11.5" fill="#334155" font-weight="400" text-anchor="start">清理错 → 删了 2 万行，usage 从 5,729 KB 涨到 8,225 KB（压实先涨后落）</text>
+<rect x="28" y="382" width="904" height="86" rx="8" fill="#fdf6e7" stroke="#b07d1c" stroke-width="1.4"/>
+<text x="44" y="408" font-size="13" fill="#b07d1c" font-weight="700" text-anchor="start">一句话定位</text>
+<text x="44" y="428" font-size="12.5" fill="#7c5310" font-weight="700" text-anchor="start">本地库不是「缓存」，它是一份会被浏览器随时回收、按源隔离、版本只能往上走的持久化数据。</text>
+</svg>

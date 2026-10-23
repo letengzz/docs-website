@@ -170,13 +170,6 @@ openssl verify -CAfile ca/root.crt -untrusted ca/inter.crt -attime $((NOW+60*864
 
 **本页特有的坑**：`openssl x509 -checkend` **用退出码表达结果**，在 `set -e` 的脚本里会**直接杀掉脚本**。本机第一次跑巡检时脚本在第一个「快过期」的证书处静默退出，看起来像「跑完了、没输出、一切正常」——**最危险的假绿**。所有 `checkend` 调用都必须显式接住退出码（`if openssl x509 ... -checkend N; then ...`）。
 
-## 参考资料
-
-- OpenSSL：[`openssl-x509`](https://docs.openssl.org/master/man1/openssl-x509/)（`-checkend`、`-startdate`、`-enddate` 的语义）
-- OpenSSL：[`openssl-verify`](https://docs.openssl.org/master/man1/openssl-verify/)（`-attime` 的时间旅行验证）
-- CA/Browser Forum：Ballot SC-081v3（寿命阶梯与由此决定的盘点频率）
-- 本站：[轮换](../Rotation/index.md)、[自动化](../Automation/index.md)
-
 ## 网格内的证书不归到期表管（第 187 天补充）
 
 本页的到期治理针对的是**人工签发的证书**（入口 TLS、内部 CA、客户端证书）。服务网格引入的是另一类：**由控制面自动签发、寿命以小时计、自动轮换的工作负载证书**（Istio 默认 24 小时）。
@@ -195,3 +188,10 @@ openssl verify -CAfile ca/root.crt -untrusted ca/inter.crt -attime $((NOW+60*864
 ::: warning 本页特有的坑：演练「证书过期」时把控制面也停了
 做网格侧的过期演练（把工作负载证书 TTL 调到 10 分钟）时，如果同时停掉控制面，你测到的是「控制面不可用 + 证书过期」的叠加故障，无法区分两者的边界。正确的实验设计是**一次只动一个变量**：先停控制面观察流量是否仍在跑，再单独让证书过期观察失败形态。
 :::
+
+## 参考资料
+
+- OpenSSL：[`openssl-x509`](https://docs.openssl.org/master/man1/openssl-x509/)（`-checkend`、`-startdate`、`-enddate` 的语义）
+- OpenSSL：[`openssl-verify`](https://docs.openssl.org/master/man1/openssl-verify/)（`-attime` 的时间旅行验证）
+- CA/Browser Forum：Ballot SC-081v3（寿命阶梯与由此决定的盘点频率）
+- 本站：[轮换](../Rotation/index.md)、[自动化](../Automation/index.md)

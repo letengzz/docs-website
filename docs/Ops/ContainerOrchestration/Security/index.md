@@ -316,14 +316,6 @@ kubectl -n web get events --sort-by=.lastTimestamp | tail -20
 
 预期：违规 Pod 无法创建，`auth can-i` 未授权返回 no，Trivy 报告无 CRITICAL，Falco 能捕获异常写入。
 
-## 参考资料
-
-- Kubernetes 安全文档：<https://kubernetes.io/docs/concepts/security/>
-- Pod Security Standards：<https://kubernetes.io/docs/concepts/security/pod-security-standards/>
-- Trivy：<https://aquasecurity.github.io/trivy/>
-- Kyverno：<https://kyverno.io/docs/>
-- Falco：<https://falco.org/docs/>
-
 ## 相关专题
 
 - [安全加固](../../SecurityHardening/index.md)：跨层的安全治理视角（基线合规、漏洞管理、供应链、密钥治理、审计检测）
@@ -339,7 +331,7 @@ kubectl -n web get events --sort-by=.lastTimestamp | tail -20
 | --- | --- | --- |
 | ① 主机与容器边界 | 容器逃逸、特权容器、挂载 | 本页（Pod Security、seccomp、AppArmor） |
 | ② 网络可达性 | 谁能连到谁（IP/端口） | 本页（NetworkPolicy） |
-| ③ 工作负载身份 | 「你是哪个服务」+ 传输加密 | 网格（SPIFFE + mTLS，见 [身份与 mTLS](../../Backend/ServiceMesh/Identity/index.md)） |
+| ③ 工作负载身份 | 「你是哪个服务」+ 传输加密 | 网格（SPIFFE + mTLS，见 [身份与 mTLS](../../../Backend/ServiceMesh/Identity/index.md)） |
 | ④ 服务级授权 | 哪个服务能调哪个路径 | 网格（`AuthorizationPolicy`） |
 
 **NetworkPolicy 与 mTLS 是互补的**：前者限制「能不能到达」，后者证明「到达的是谁」。只做前者，同命名空间内任意 Pod 都能冒充调用方；只做后者，攻击面仍是全网可达。两层都要有。
@@ -349,3 +341,11 @@ kubectl -n web get events --sort-by=.lastTimestamp | tail -20
 ::: danger 本页特有的坑：以为开了 mTLS 就等于「内网零信任」
 mTLS 只保证「连接双方各自持有对应身份的证书」。它不阻止**持有合法身份的服务**做越权操作——被攻陷的 `order` Pod 仍然拥有 `order` 的证书，能调所有允许 `order` 调的接口。真正的零信任要在此之上叠加最小权限的 `AuthorizationPolicy`，以及「这个服务本来就不该有这么多权限」的持续收敛。
 :::
+
+## 参考资料
+
+- Kubernetes 安全文档：<https://kubernetes.io/docs/concepts/security/>
+- Pod Security Standards：<https://kubernetes.io/docs/concepts/security/pod-security-standards/>
+- Trivy：<https://aquasecurity.github.io/trivy/>
+- Kyverno：<https://kyverno.io/docs/>
+- Falco：<https://falco.org/docs/>

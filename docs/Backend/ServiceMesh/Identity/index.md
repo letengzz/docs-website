@@ -151,7 +151,7 @@ kubectl exec -n other deploy/sleeper -- \
 | NetworkPolicy | 哪些 IP/端口可达 | 七层语义、身份 |
 | 网关鉴权 | 终端用户身份（JWT/OAuth） | 服务间身份 |
 
-正确姿势是**四层叠加**：NetworkPolicy 缩小可达面 → mTLS 加密并证明身份 → `AuthorizationPolicy` 做服务级最小权限 → 网关做用户级鉴权。四者缺一层都能被绕过，见 [容器编排安全](../../Ops/ContainerOrchestration/Security/index.md)。
+正确姿势是**四层叠加**：NetworkPolicy 缩小可达面 → mTLS 加密并证明身份 → `AuthorizationPolicy` 做服务级最小权限 → 网关做用户级鉴权。四者缺一层都能被绕过，见 [容器编排安全](../../../Ops/ContainerOrchestration/Security/index.md)。
 
 ## 七、本页判据
 
@@ -171,4 +171,4 @@ kubectl exec -n other deploy/sleeper -- \
 - Istio 官方：*Security*（身份模型、`PeerAuthentication` 三种模式、`AuthorizationPolicy` 优先级）、*Mutual TLS*（迁移顺序）
 - Istio 官方：*SPIFFE*（`spiffe://<trust domain>/ns/<ns>/sa/<sa>` 格式）、*Certificate Management*（工作负载证书寿命与轮换）
 - SPIFFE/SPIRE 规范：SPIFFE ID 与 SVID 定义
-- 本仓库：[架构形态](../Architecture/index.md)（ztunnel 与 waypoint 的分工）、[容器编排安全](../../Ops/ContainerOrchestration/Security/index.md)（四层策略叠加）、[证书生命周期](../../Ops/CertificateLifecycle/index.md)（非网格场景的证书治理）
+- 本仓库：[架构形态](../Architecture/index.md)（ztunnel 与 waypoint 的分工）、[容器编排安全](../../../Ops/ContainerOrchestration/Security/index.md)（四层策略叠加）、[证书生命周期](../../../Ops/CertificateLifecycle/index.md)（非网格场景的证书治理）

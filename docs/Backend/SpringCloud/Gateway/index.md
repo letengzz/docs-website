@@ -270,12 +270,6 @@ public class RateLimitConfig {
 
 原理与排障方式（线程模型、`BlockHound` 门禁、超时预算）见 [响应式编程 · WebFlux 落地](../../ReactiveProgramming/WebFlux/index.md)。
 
-## 参考资料
-
-- Spring Cloud Gateway 官方文档：https://docs.spring.io/spring-cloud-gateway/reference/
-- Gateway 内置断言与过滤器清单：https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/
-- Spring WebFlux：https://docs.spring.io/spring-framework/reference/web/webflux.html
-
 ## 与网关深入专题的分工（第 133 天补充）
 
 本页讲的是 **Spring Cloud Gateway 这个框架**（断言、过滤器、与注册中心联动）；[网关深入](../../GatewayDeep/index.md) 讲的是**独立部署的网关进程**（Kong / APISIX）。两者的**判据可以互相借用，配置写法不能互相搬运**。
@@ -309,3 +303,9 @@ Spring Cloud Gateway 是**南北向**组件：它终结外部请求、做用户�
 ::: danger 本页特有的坑：`lb://` 与服务网格的负载均衡叠加
 Spring Cloud LoadBalancer 的 `lb://order-service` 会先在客户端选一个实例，再把请求发到该实例的 Pod IP。如果这个命名空间同时进了网格，请求会**先被客户端 LB 选一次、再被网格 LB 分流一次**——两套算法、两套健康判定，会话亲和的假设会失效（灰度期表现为「权重明明配了 10%，实际打到 v2 的比例忽高忽低」）。进网格的命名空间里，把 `lb://` 改成直连 Service 名。
 :::
+
+## 参考资料
+
+- Spring Cloud Gateway 官方文档：https://docs.spring.io/spring-cloud-gateway/reference/
+- Gateway 内置断言与过滤器清单：https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/
+- Spring WebFlux：https://docs.spring.io/spring-framework/reference/web/webflux.html

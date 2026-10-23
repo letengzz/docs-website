@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 510" width="960" height="510" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="索引把 4,000 行筛 40 行从 152.4 ms 降到 1.3 ms，但写入从 360 ms 涨到 578 ms">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="510" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">索引省的是读，付的是写</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">同一份 5,000 行数据，索引从 0 加到 3 个</text>
+<rect x="28" y="86" width="440" height="230" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="44" y="112" font-size="13" fill="#94a3b8" font-weight="700" text-anchor="start">读：4,000 行里筛 40 行</text>
+<text x="44" y="132" font-size="11.5" fill="#334155" font-weight="400" text-anchor="start">游标全表扫 + 内存过滤</text>
+<rect x="44" y="142" width="400" height="14" rx="7.0" fill="#e2e8f0"/>
+<rect x="44" y="142" width="400.0" height="14" rx="7.0" fill="#b4453c"/>
+<text x="44" y="178" font-size="12" fill="#b4453c" font-weight="700" text-anchor="start">152.4 ms</text>
+<text x="44" y="214" font-size="11.5" fill="#334155" font-weight="400" text-anchor="start">索引 getAll("u7")</text>
+<rect x="44" y="224" width="400" height="14" rx="7.0" fill="#e2e8f0"/>
+<rect x="44" y="224" width="3.4" height="14" rx="7.0" fill="#2f8f7d"/>
+<text x="44" y="260" font-size="12" fill="#2f8f7d" font-weight="700" text-anchor="start">1.3 ms · 命中 40 行（117 倍）</text>
+<text x="44" y="296" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">索引不会让结果变少，只让「不相关的行」不被读出来。</text>
+<rect x="492" y="86" width="440" height="230" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="508" y="112" font-size="13" fill="#94a3b8" font-weight="700" text-anchor="start">写：5,000 行批量写，索引数量递增</text>
+<text x="508" y="132" font-size="11" fill="#334155" font-weight="400" text-anchor="start">0 个索引</text>
+<rect x="660" y="128" width="180" height="14" rx="7.0" fill="#e2e8f0"/>
+<rect x="660" y="128" width="108.0" height="14" rx="7.0" fill="#2f8f7d"/>
+<text x="856" y="132" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="start">360 ms</text>
+<text x="508" y="176" font-size="11" fill="#334155" font-weight="400" text-anchor="start">1 个单列</text>
+<rect x="660" y="172" width="180" height="14" rx="7.0" fill="#e2e8f0"/>
+<rect x="660" y="172" width="114.9" height="14" rx="7.0" fill="#3f5f9e"/>
+<text x="856" y="176" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="start">383 ms</text>
+<text x="508" y="220" font-size="11" fill="#334155" font-weight="400" text-anchor="start">2 个单列</text>
+<rect x="660" y="216" width="180" height="14" rx="7.0" fill="#e2e8f0"/>
+<rect x="660" y="216" width="138.0" height="14" rx="7.0" fill="#b07d1c"/>
+<text x="856" y="220" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="start">460 ms</text>
+<text x="508" y="264" font-size="11" fill="#334155" font-weight="400" text-anchor="start">2 单列 + 1 复合</text>
+<rect x="660" y="260" width="180" height="14" rx="7.0" fill="#e2e8f0"/>
+<rect x="660" y="260" width="173.4" height="14" rx="7.0" fill="#b4453c"/>
+<text x="856" y="264" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="start">578 ms</text>
+<text x="508" y="306" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">每多一个索引，每次 put 都要多维护一棵 B 树。</text>
+<rect x="28" y="336" width="904" height="150" rx="8" fill="#fdf6e7" stroke="#b07d1c" stroke-width="1.4"/>
+<text x="44" y="362" font-size="13" fill="#b07d1c" font-weight="700" text-anchor="start">判据：索引的取舍不看「查得快不快」，看「读了多少行才命中」</text>
+<text x="44" y="378" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">每个索引必须能回答：它服务的查询是哪一条？这条查询多久跑一次？</text>
+<text x="44" y="404" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">如果没有一条查询能在 ranges 里写出它的形状（比如 select 只按 status 单列过滤），这个索引大概率只会拖慢写。</text>
+<text x="44" y="430" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">复合索引的列序 ⇒ 只有前缀能被单独使用：[userId, createdAt] 能服务按 userId 的查询，反过来的复合索引不能。</text>
+<text x="44" y="456" font-size="12" fill="#b07d1c" font-weight="700" text-anchor="start">实测代价：0 → 3 个索引，5,000 行写入 360 → 578 ms（+60.4%），不是「可忽略」的量级。</text>
+</svg>

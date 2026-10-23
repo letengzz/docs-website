@@ -399,6 +399,7 @@ export const CompleteProject = [
           { text: "第 3 周第 2 步 · 并发与幂等专项：三组竞态与两层守卫（ECC-A~ECC-H）", link: "/project/Complete/EventOrderHub/ConcurrencyIdempotency/index.md" },
           { text: "第 3 周第 3 步 · 压测与容量：三个数取代一个 TPS（ECP-A~ECP-H）", link: "/project/Complete/EventOrderHub/CapacityTest/index.md" },
           { text: "第 3 周第 4 步 · 第 3 周验收：29 条结论合成七道门（EW3-A~EW3-H）", link: "/project/Complete/EventOrderHub/Week3Gate/index.md" },
+          { text: "第 4 周第 1 步 · 一键部署与配置：三处差异与九条验收（EDP-A~EDP-H）", link: "/project/Complete/EventOrderHub/DeployCompose/index.md" },
         ],
       },
       {

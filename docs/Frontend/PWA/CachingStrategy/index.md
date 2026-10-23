@@ -164,6 +164,16 @@ pnpm build && pnpm preview
 4. 修改某个接口返回内容，再次刷新：**公开接口应看到新数据**（Network First 生效）；这一步是「缓存没有吃掉业务数据」的关键证明。
 5. DevTools → Application → **Storage**，查看 `Cache Storage` 占据的体积，确认没有出现「一个缓存占几百 MB」的失控情况。
 
+## 与本专题的分工
+
+| 本页 | [本地数据存储与容量治理](../../LocalDataStore/index.md) |
+| --- | --- |
+| 请求级缓存：预缓存、运行时缓存、失效策略 | 缓存与 IndexedDB **共用同一个配额桶** |
+| 缓存命中率与网络成本 | 缓存把桶吃满后 IDB 写入为什么开始随机失败 |
+| 版本化与清理旧缓存 | 清理顺序：先清可重建的缓存档，再动业务数据 |
+
+**本页特有的一个坑**：预缓存清单很容易在「升级 SW」时留下旧版本缓存（`cacheName` 带版本号但没删旧的）。这类残留**不会出现在任何性能指标里**，只会让 `estimate().usage` 慢慢涨，直到 IDB 的 `put` 开始抛 `QuotaExceededError`——而报错的地方离缓存策略隔着几千行代码。排查入口：[配额](../../LocalDataStore/Quota/index.md)。
+
 ## 参考资料
 
 - [Workbox：Caching strategies](https://developer.chrome.com/docs/workbox/caching-strategies-overview)

@@ -50,13 +50,13 @@
 | [第 3 周第 2 步 · 并发与幂等专项](ConcurrencyIdempotency/index.md) | `ECC` | 三组竞态实测、CAS 与唯一键两层守卫、退款第二次回补 | 8 |
 | [第 3 周第 3 步 · 压测与容量](CapacityTest/index.md) | `ECP` | 四档并发读数、尾延迟、outbox 排空、容量算式 | 8 |
 | [第 3 周第 4 步 · 第 3 周验收](Week3Gate/index.md) | `EW3` | 29 条结论合成、七道门、批量化四档读数与误伤、四条负向复验 | 8 |
+| [第 4 周第 1 步 · 一键部署与配置](DeployCompose/index.md) | `EDP` | 三处 dev/deploy 差异、健康驱动顺序、探针分层、密钥注入、九条验收 | 8 |
 
 后续 7 章（判据族已预留，交付时补条数）：
 
 - 发货与签收（判据族 `ESF`：发货单、签收、异常件）
 - 补偿与对账（判据族 `ERC`：补偿动作、对账日报）
 - 第 2 周验收（判据族 `EW2`：第 2 周六项验收）
-- 一键部署与配置（判据族 `EDP`：编排、配置、密钥）
 - 监控与告警（判据族 `EMO`：指标、告警、大盘）
 - 上线验收与对账日报（判据族 `ELA`：上线清单与日报）
 - 第 4 周验收与交接（判据族 `EW4`：四周收口与交接）
@@ -430,6 +430,19 @@ docker exec -i eoh-pg psql -U postgres -d eoh -f 900_invariants.sql
 
 **下一步**（第 194 天）：第 4 周第 1 步「一键部署与配置」（`EDP`）——先用 `docker compose` 起三容器（PG 18 / Kafka 4.2 / Redis 8），把第 2 周 `Bootstrap` 定的四个服务串起来；验收是四个服务 `healthy` + `/actuator/health` UP + 一条下单能写出 outbox。同时把本节登记的三条缺口写进第 4 周施工顺序。
 
-## 十八、判据纪律
+## 十八、第 196 天交付（第 4 周第 1 步 · 一键部署与配置）
+
+- 新建 [第 4 周第 1 步 · 一键部署与配置](DeployCompose/index.md)（判据 `EDP-A` ~ `EDP-H`），配图 `eoh-deploy-compose.svg`（三容器 → `--wait` → 四服务 → 一条下单 → 三条负向）。
+- **本步不改业务代码，只把「怎么跑起来」从开发态推到可交付态**：dev 与 deploy 只差三处（profile / 卷 / 密钥来源），其余一行不动——差异越小，越不容易「本地好、线上不行」。
+- **三个刻意的部署选择**：`ADVERTISED_LISTENERS` 用容器名（写 `localhost` 会「连上了但拉不到分区」）；`AUTO_CREATE_TOPICS_ENABLE=false`（开着会把 topic 拼错变成「静默空 topic」，而 `health` 还是 UP）；`POSTGRES_PASSWORD_FILE` + `secrets`（环境变量会出现在 `docker inspect` 与 `/proc/<pid>/environ`）。
+- **探针分三层**：`liveness` 只看进程、`readiness` 含 `db,kafka,redis,flyway`、`startup` 给首次启动宽限。`--wait` 只等容器健康，**不等应用 readiness**，所以部署脚本第 4 步必须自己 `curl` 轮询。
+- **最值钱的一条负向验收**：停掉 Kafka 再下单**仍然 201**，`outbox` 留 1 行 `PENDING`，恢复后 30 s 内清空——一次同时证明「业务不被中间件绑架」与「outbox 真的在同一个事务里」。
+- **`deploy.resources` 在非 Swarm 下会被静默忽略**：本项目改为在 README 写内存预算表（PG 512 MB + Kafka 1 GB + Redis 128 MB + 4×JVM 512 MB ≈ 3.7 GB），预算表比一个不起作用的 `limits` 有用。
+- **备份必须演练**：`pg_dump -Fc` 成功不等于能 `pg_restore`；恢复目标固定为临时库 `eoh_restore`，不动生产库。
+- 九项自检收敛成 `doctor.sh`（`compose config` / 三容器健康 / 版本一致 / liveness / readiness / env 无口令 / outbox 可读 / 具名卷存在 / **内存上限已落地**），任何一行 FAIL 都指向「失败模式速查」表的一行；最后一项查的是「写的东西算不算数」，前八项只查「服务在不在」。
+
+**下一步**（第 197 天）：第 4 周第 2 步「监控与告警」（`EMO`）——把九项自检变成持续采集的指标（容器健康、readiness 翻转次数、outbox 积压深度、下单 p99、清空耗时），各配阈值；三条遗留缺口按「能被监控证明」的顺序排。
+
+## 十九、判据纪律
 
 每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMO` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。

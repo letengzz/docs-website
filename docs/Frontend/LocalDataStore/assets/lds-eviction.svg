@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 510" width="960" height="510" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="逐条删除 1660.7 ms 与 clear 0.4 ms 的对比，以及 usage 先涨后落的压实现象">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="510" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">删除不等于释放：删 2 万行后 usage 反而涨了 43%</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">同一份数据，逐条 delete vs clear()</text>
+<rect x="28" y="86" width="440" height="240" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="44" y="112" font-size="13" fill="#94a3b8" font-weight="700" text-anchor="start">逐条 delete 2 万次</text>
+<text x="44" y="132" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">await tx(i,'readwrite', … for 20,000 { s.delete(i) })</text>
+<rect x="44" y="146" width="400" height="16" rx="8.0" fill="#e2e8f0"/>
+<rect x="44" y="146" width="400.0" height="16" rx="8.0" fill="#b4453c"/>
+<text x="44" y="186" font-size="13" fill="#b4453c" font-weight="700" text-anchor="start">1,660.7 ms</text>
+<text x="44" y="214" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">每次 delete 都要删主键记录 + 维护每个索引项</text>
+<text x="44" y="250" font-size="11" fill="#334155" font-weight="700" text-anchor="start">usage 变化（KB）：</text>
+<text x="44" y="276" font-size="11.5" fill="#b4453c" font-weight="700" text-anchor="start">删前 5,729 → 删后 8,225 → 800 ms 后 3,990</text>
+<text x="44" y="306" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">先涨 43%，后落 30%——中间那 800 ms 是压实。</text>
+<rect x="492" y="86" width="440" height="240" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="508" y="112" font-size="13" fill="#2f8f7d" font-weight="700" text-anchor="start">clear() 一次清空</text>
+<text x="508" y="132" font-size="10.5" fill="#334145" font-weight="400" text-anchor="start">await tx(i,'readwrite', t =&gt; t.objectStore('i').clear())</text>
+<rect x="508" y="146" width="400" height="16" rx="8.0" fill="#e2e8f0"/>
+<rect x="508" y="146" width="0.2" height="16" rx="8.0" fill="#2f8f7d"/>
+<text x="508" y="186" font-size="13" fill="#2f8f7d" font-weight="700" text-anchor="start">0.4 ms</text>
+<text x="508" y="214" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">整仓库标记作废，不逐个删索引项</text>
+<text x="508" y="250" font-size="11.5" fill="#2f8f7d" font-weight="700" text-anchor="start">差距：4,152 倍</text>
+<text x="508" y="276" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">适用：整表过期（缓存区、离线包、某租户退出）</text>
+<text x="508" y="306" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">不适用：按条件只删一部分（那就得走 cursor + delete）</text>
+<rect x="28" y="342" width="904" height="150" rx="8" fill="#fdf6e7" stroke="#b07d1c" stroke-width="1.4"/>
+<text x="44" y="368" font-size="13" fill="#b07d1c" font-weight="700" text-anchor="start">三条从读数里长出来的纪律</text>
+<text x="44" y="384" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">① 不要用「删完看 usage」来验证清理成功：usage 是块级近似值，会先涨后落，也可能滞后很久。</text>
+<text x="44" y="410" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">② 清理要按档走：先按时间分档（7 天 / 30 天），整档过期用 clear 语义，只有必要时才逐条。</text>
+<text x="44" y="436" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">③ 删除必须可续：清理写检查点（最后清理到的 key），被杀掉后从检查点继续，而不是从头再删一遍。</text>
+<text x="44" y="468" font-size="12" fill="#b07d1c" font-weight="700" text-anchor="start">覆盖率判据：清理后「应删条数 − 实际残留」= 0，且残留必须用一次 count() 值回读，不能靠日志推断。</text>
+</svg>

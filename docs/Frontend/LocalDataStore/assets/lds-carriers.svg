@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="四种浏览器存储载体的容量与写成本对照表">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">四种载体：容量、写成本、能否在 Worker 里用</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">同样是写 1 KB，四个载体的行为完全不同（本机实测）</text>
+<text x="44" y="88" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">载体</text>
+<text x="300" y="88" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">写入形态</text>
+<text x="560" y="88" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">本机上限/容量</text>
+<text x="790" y="88" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">Worker 可用</text>
+<rect x="28" y="104" width="904" height="40" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="44" y="129" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">localStorage</text>
+<text x="300" y="129" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">同步阻塞主线程</text>
+<text x="560" y="129" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">2.25 MB 即 QuotaExceededError</text>
+<text x="790" y="129" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">Worker 里不可用</text>
+<rect x="28" y="150" width="904" height="40" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="44" y="175" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">IndexedDB</text>
+<text x="300" y="175" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">异步事务</text>
+<text x="560" y="175" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">配额随磁盘（本机 10,251 MB）</text>
+<text x="790" y="175" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">Worker 里可用</text>
+<rect x="28" y="196" width="904" height="40" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="44" y="221" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">Cache Storage</text>
+<text x="300" y="221" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">Request→Response</text>
+<text x="560" y="221" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">与 IDB 共享配额</text>
+<text x="790" y="221" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">SW 里可用</text>
+<rect x="28" y="242" width="904" height="40" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="44" y="267" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">OPFS</text>
+<text x="300" y="267" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">文件句柄</text>
+<text x="560" y="267" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">与 IDB 共享配额</text>
+<text x="790" y="267" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">Worker 里可用</text>
+<rect x="28" y="306" width="440" height="150" rx="8" fill="#fbeceb" stroke="#b4453c" stroke-width="1.4"/>
+<text x="44" y="332" font-size="13" fill="#b4453c" font-weight="700" text-anchor="start">localStorage 的两个硬数字</text>
+<text x="44" y="352" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">2,000 × 1 KB 连续写：18.6 ms（同步，全程占主线程）</text>
+<text x="44" y="378" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">单条 800 KB：3.5 ms —— 一次写就吃掉 3.5 ms 的帧预算</text>
+<text x="44" y="404" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">写满在 2,000 个键后报 QuotaExceededError：</text>
+<text x="44" y="430" font-size="12" fill="#b4453c" font-weight="700" text-anchor="start">2.25 MB × 2（UTF-16）= 名义上的 5 MB 口径</text>
+<rect x="492" y="306" width="440" height="150" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="508" y="332" font-size="13" fill="#2f8f7d" font-weight="700" text-anchor="start">IndexedDB 的对位读数</text>
+<text x="508" y="352" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">同 2,000 条，批量单事务：167.2 ms（异步，不挡渲染）</text>
+<text x="508" y="378" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">逐条事务：1,098.2 ms —— 慢 6.6 倍</text>
+<text x="508" y="404" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">单条 50 KB 的 get：0.4 ms（走索引，不扫表）</text>
+<text x="508" y="430" font-size="12" fill="#2f8f7d" font-weight="700" text-anchor="start">estimate 返回 quota 10,251 MB / usage 11.2 MB</text>
+</svg>

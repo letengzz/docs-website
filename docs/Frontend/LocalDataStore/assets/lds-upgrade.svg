@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="版本升级的两条路径、三条打开语义与 blocked 阻塞点">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="540" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">版本只进不退：v1 → v2 的两条路径与一个阻塞点</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">2 万行数据上做一次真实升级（Chrome 155）</text>
+<text x="44" y="92" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">v1</text>
+<rect x="80" y="74" width="150" height="36" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="155.0" y="96.0" font-size="11.5" fill="#1f2d3d" font-weight="400" text-anchor="middle">items + byUser</text>
+<line x1="240" y1="92" x2="290" y2="92" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="300" y="74" width="190" height="36" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="395.0" y="96.0" font-size="11.5" fill="#1f2d3d" font-weight="400" text-anchor="middle">createIndex(byUserTime)</text>
+<text x="300" y="132" font-size="11.5" fill="#3f5f9e" font-weight="700" text-anchor="start">1,095.4 ms（2 万行建索引）</text>
+<line x1="240" y1="92" x2="290" y2="92" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="560" y="74" width="200" height="36" rx="6" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.2"/>
+<text x="660.0" y="96.0" font-size="11.5" fill="#1f2d3d" font-weight="400" text-anchor="middle">createObjectStore(tags)</text>
+<text x="560" y="132" font-size="11.5" fill="#2f8f7d" font-weight="700" text-anchor="start">结构变更本身近似 0 成本</text>
+<line x1="770" y1="92" x2="810" y2="92" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="820" y="74" width="112" height="36" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+<text x="876.0" y="96.0" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="middle">v2</text>
+<rect x="300" y="168" width="460" height="36" rx="6" fill="#fdf6e7" stroke="#b07d1c" stroke-width="1.2"/>
+<text x="530.0" y="190.0" font-size="11.5" fill="#1f2d3d" font-weight="400" text-anchor="middle">回填 5,000 行到新仓库（同一 versionchange 事务里）</text>
+<text x="300" y="226" font-size="11.5" fill="#b07d1c" font-weight="700" text-anchor="start">1,239.2 ms —— 回填越重，升级窗口越长；窗口内所有 tab 都在等</text>
+<rect x="28" y="258" width="440" height="190" rx="8" fill="#fbeceb" stroke="#b4453c" stroke-width="1.4"/>
+<text x="44" y="284" font-size="13" fill="#b4453c" font-weight="700" text-anchor="start">三条打开语义（实测）</text>
+<text x="44" y="300" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">open(name, 1) 而库是 v2 → VersionError</text>
+<text x="44" y="328" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">open(name, 2) → onupgradeneeded 不触发</text>
+<text x="44" y="356" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">open(name) 不传版本 → 直接开在 v2，也不触发</text>
+<text x="44" y="392" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">第三条最危险：代码以为会建表，实际什么也没发生，</text>
+<text x="44" y="416" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">随后每个请求都 NotFoundError。</text>
+<rect x="492" y="258" width="440" height="190" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="508" y="284" font-size="13" fill="#2f8f7d" font-weight="700" text-anchor="start">一个阻塞点：blocked</text>
+<text x="508" y="300" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">老标签页还没关 → 新版本 open 被 blocked</text>
+<text x="508" y="328" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">老连接收到 versionchange：0.3 ms 内</text>
+<text x="508" y="356" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">但它不 close，新 open 就一直挂着（不是报错）</text>
+<text x="508" y="392" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">正确做法：versionchange 里立刻 db.close() 并提示刷新，</text>
+<text x="508" y="416" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">否则用户会看到「页面一直在转圈」。</text>
+<rect x="28" y="464" width="904" height="60" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="44" y="500" font-size="11.5" fill="#334155" font-weight="400" text-anchor="start">升级事务是一个整体：里面任何一行抛错，整个 versionchange 回滚，库里仍是旧版本——所以迁移逻辑必须可重入、可重跑。</text>
+</svg>

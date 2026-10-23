@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 545" width="960" height="545" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="七类本地库症状与对应的最近出口">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="545" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">症状分诊：先看错误名，再看版本号，最后看配额</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">七类症状与它们唯一的最近出口</text>
+<rect x="28" y="86" width="904" height="44" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="44" y="113" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">写入没报错但读不到</text>
+<text x="330" y="113" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">事务里 await 了外部 Promise</text>
+<text x="790" y="113" font-size="11.5" fill="#3f5f9e" font-weight="700" text-anchor="start">→ 事务页</text>
+<rect x="28" y="138" width="904" height="44" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="44" y="165" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">每个请求都 NotFoundError</text>
+<text x="330" y="165" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">open 时没传版本，升级没跑</text>
+<text x="790" y="165" font-size="11.5" fill="#3f5f9e" font-weight="700" text-anchor="start">→ 升级页</text>
+<rect x="28" y="190" width="904" height="44" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="44" y="217" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">页面卡住、open 一直不返回</text>
+<text x="330" y="217" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">另一个标签页没关，blocked</text>
+<text x="790" y="217" font-size="11.5" fill="#3f5f9e" font-weight="700" text-anchor="start">→ 升级页</text>
+<rect x="28" y="242" width="904" height="44" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="44" y="269" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">偶尔 QuotaExceededError</text>
+<text x="330" y="269" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">配额按源算，缓存和 IDB 抢池子</text>
+<text x="790" y="269" font-size="11.5" fill="#3f5f9e" font-weight="700" text-anchor="start">→ 配额页</text>
+<rect x="28" y="294" width="904" height="44" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="44" y="321" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">列表页越用越慢</text>
+<text x="330" y="321" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">子项嵌在父文档里，只能全表扫</text>
+<text x="790" y="321" font-size="11.5" fill="#3f5f9e" font-weight="700" text-anchor="start">→ 建模页</text>
+<rect x="28" y="346" width="904" height="44" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="44" y="373" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">拖动排序后卡顿</text>
+<text x="330" y="373" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">索引太多，每次 put 维护多棵 B 树</text>
+<text x="790" y="373" font-size="11.5" fill="#3f5f9e" font-weight="700" text-anchor="start">→ 索引页</text>
+<rect x="28" y="398" width="904" height="44" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="44" y="425" font-size="11.5" fill="#1f2d3d" font-weight="700" text-anchor="start">清理后空间没降</text>
+<text x="330" y="425" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">usage 是块级近似，先涨后落</text>
+<text x="790" y="425" font-size="11.5" fill="#3f5f9e" font-weight="700" text-anchor="start">→ 清理页</text>
+<rect x="28" y="458" width="904" height="70" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="44" y="496" font-size="11.5" fill="#14532d" font-weight="700" text-anchor="start">分诊纪律：先拿到错误名（四个 DOMException 名各指一条路），再看 db.version 与代码里的版本常量是否一致，最后才怀疑配额。</text>
+</svg>

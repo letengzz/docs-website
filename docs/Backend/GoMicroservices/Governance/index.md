@@ -329,16 +329,6 @@ time curl -s http://127.0.0.1:8888/slow
 curl -s http://127.0.0.1:9999/metrics | grep -E '^rpc_server_(requests|errors|request_duration)' | head
 ```
 
-## 参考资料
-
-- [gRPC 官方：负载均衡与重试策略](https://grpc.io/docs/guides/retry/)
-- [gRPC-Go：服务配置（Service Config）参考](https://github.com/grpc/grpc/blob/master/doc/service_config.md)
-- [Envoy：熔断与限流配置](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking)
-- [OpenTelemetry：Go 语言 SDK](https://opentelemetry.io/docs/languages/go/)
-- [Prometheus：Histogram 与 Summary 的选择](https://prometheus.io/docs/practices/histograms/)
-- [go-zero：自适应降载（Load Shedding）](https://go-zero.dev/docs/tutorials/service/governance/load-shedding)
-- [Kubernetes：Pod 生命周期与优雅终止](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination)
-
 ## 相关页面
 
 - [gRPC 与 Protobuf 工程化](../GRPC/index.md) —— 拦截器是治理能力的落点
@@ -365,3 +355,13 @@ curl -s http://127.0.0.1:9999/metrics | grep -E '^rpc_server_(requests|errors|re
 ::: warning 本页特有的坑：`grpc.Dial` 的目标地址与网格接管冲突
 Go 微服务常把注册中心地址写进 `grpc.Dial`（如 `consul:///order`），由 resolver 自己做服务发现。进网格后这条路径**不会经过代理**（代理只接管发往 Pod IP / Service 名的流量），表现是「mTLS 开了但这条调用还是明文、指标里也没有它」。改法是：把 dial 目标改回 Kubernetes Service 名（`order.shop.svc.cluster.local:50051`），让解析交给集群 DNS、由网格接管连接。
 :::
+
+## 参考资料
+
+- [gRPC 官方：负载均衡与重试策略](https://grpc.io/docs/guides/retry/)
+- [gRPC-Go：服务配置（Service Config）参考](https://github.com/grpc/grpc/blob/master/doc/service_config.md)
+- [Envoy：熔断与限流配置](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking)
+- [OpenTelemetry：Go 语言 SDK](https://opentelemetry.io/docs/languages/go/)
+- [Prometheus：Histogram 与 Summary 的选择](https://prometheus.io/docs/practices/histograms/)
+- [go-zero：自适应降载（Load Shedding）](https://go-zero.dev/docs/tutorials/service/governance/load-shedding)
+- [Kubernetes：Pod 生命周期与优雅终止](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination)

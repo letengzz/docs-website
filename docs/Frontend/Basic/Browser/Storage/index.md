@@ -90,6 +90,16 @@ const res = await cache.match("/index.html");
 2. 设置 Cookie 后刷新页面，观察请求头里的 Cookie。
 3. 写一个 IndexedDB 增删改查 demo，确认异步读写。
 
+## 与本专题的分工
+
+| 本页 | [本地数据存储与容量治理](../../../LocalDataStore/index.md) |
+| --- | --- |
+| 四种存储的 API 面与基本用法 | 四种载体的**成本、边界与失效方式** |
+| 各自的同步/异步属性 | 同一份数据的实测读数（18.6 ms vs 167.2 ms） |
+| 容量上限的经验值 | 上限为什么不是固定值：按源、按 UTF-16、随磁盘变 |
+
+**本页特有的一个坑**：`localStorage` 的「5 MB」是**码元**口径。本机实测在第 2,000 个 1 KB 的 ASCII 键之后抛 `QuotaExceededError`，即实际只放下 **2.25 MB 字符串**。所以「我把 4 MB 的 JSON 存进 localStorage」这类设计，在中文内容下会更早失败（一个汉字占 1 个码元但占 3 字节 UTF-8，换算方向相反）。读数与处置见[四种载体](../../../LocalDataStore/Overview/index.md)。
+
 ## 参考资料
 
 - Web Storage（MDN）：https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API

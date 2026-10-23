@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 550" width="960" height="550" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="配额 10,251 MB 与用量 11.2 MB 的对比，以及 best-effort 回收与 QuotaExceededError 的处置">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="550" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">配额是「按源」的：10,251 MB 的天花板与 11.2 MB 的实际占用</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">navigator.storage.estimate() 在 Chrome 155 上的返回值</text>
+<text x="44" y="92" font-size="11.5" fill="#334155" font-weight="400" text-anchor="start">quota（浏览器给的额度）</text>
+<rect x="44" y="102" width="860" height="18" rx="9.0" fill="#e2e8f0"/>
+<rect x="44" y="102" width="860.0" height="18" rx="9.0" fill="#3f5f9e"/>
+<text x="44" y="146" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">10,251 MB ≈ 磁盘可用空间的一个比例，不是固定 5 MB，也不承诺不被回收</text>
+<text x="44" y="192" font-size="11.5" fill="#334155" font-weight="400" text-anchor="start">usage（已用）</text>
+<rect x="44" y="202" width="860" height="18" rx="9.0" fill="#e2e8f0"/>
+<rect x="44" y="202" width="0.9" height="18" rx="9.0" fill="#b4453c"/>
+<text x="210" y="214" font-size="10.5" fill="#b4453c" font-weight="700" text-anchor="start">11.2 MB（5 万级记录）</text>
+<text x="44" y="246" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">estimate 的调用成本：200 次 96 ms（≈0.48 ms/次）——可以随手调，但不能每帧调。</text>
+<rect x="28" y="270" width="440" height="190" rx="8" fill="#fbeceb" stroke="#b4453c" stroke-width="1.4"/>
+<text x="44" y="296" font-size="13" fill="#b4453c" font-weight="700" text-anchor="start">三个必须记住的事实</text>
+<text x="44" y="312" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">① 配额按源（scheme+host+port），同一个站点的 IDB、Cache、OPFS 共用一个池子</text>
+<text x="44" y="340" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">② 默认是 best-effort：磁盘告急时浏览器可以整库清掉，不通知你</text>
+<text x="44" y="368" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">③ persisted() 在本机返回 false；声明式 PWA 安装 / 站点交互度高才可能转 true</text>
+<text x="44" y="404" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">写入前必须能回答：这份数据丢了会不会导致不可恢复？</text>
+<text x="44" y="430" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">会 → requestPersist + 服务端留底；不会 → 按 best-effort 设计并用 LRU 清理。</text>
+<rect x="492" y="270" width="440" height="190" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="508" y="296" font-size="13" fill="#2f8f7d" font-weight="700" text-anchor="start">写满时会发生什么</text>
+<text x="508" y="312" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">配额接近上限 → 写入抛 QuotaExceededError（DOMException）</text>
+<text x="508" y="340" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">这个错误来自 request，不是来自 transaction 的 abort</text>
+<text x="508" y="368" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">→ 单条 put 的 onerror 里能看到，整批事务会一起失败</text>
+<text x="508" y="404" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">正确反应：先腾空间（清最旧的一档），再重试一次；</text>
+<text x="508" y="430" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">第二次还失败就降级到「内存态 + 提示用户」。</text>
+<rect x="28" y="470" width="904" height="60" rx="8" fill="#fdf6e7" stroke="#b07d1c" stroke-width="1.4"/>
+<text x="44" y="506" font-size="11.5" fill="#7c5310" font-weight="700" text-anchor="start">本机同源对比：localStorage 在 2.25 MB 就写不进去了（UTF-16 计费），而 IDB 在同一源上还有 10 GB 额度——「存储不够」九成是选错了载体。</text>
+</svg>

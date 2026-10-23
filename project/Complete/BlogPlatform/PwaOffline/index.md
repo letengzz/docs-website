@@ -364,6 +364,16 @@ curl -s http://127.0.0.1:3000/posts/hello | grep -c '<title>'
 **在 DevTools 里勾上 Application → Service Workers → Bypass for network**。本章新增的 Service Worker 会显著降低服务端实际压力（缓存命中根本不回源），不排除这个旁路变量，压测得到的 QPS 与服务端负载**没有可比性**。这一条已登记进第 119 天的压测前置清单。
 :::
 
+## 与本专题的分工
+
+| 本页 | [本地数据存储与容量治理](../../../../docs/Frontend/LocalDataStore/index.md) |
+| --- | --- |
+| 项目侧：博客前台的离线可读（预缓存清单、降级页面） | 本地库这一层的建模、索引、事务与配额 |
+| SW 的注册、更新与版本化 | 升级窗口里老标签页的 `blocked` 与 `versionchange` |
+| 离线读的验收 | 本地写入的验收（`count()` 回读、残留为 0） |
+
+**本页特有的一个坑**：博客的「草稿自动保存」如果写进 IndexedDB 的**同一个仓库**，会和离线文章缓存抢空间；而文章缓存可重建、草稿不可重建。清理策略必须按「可重建优先」排序——否则某天空间不足时，被清掉的会是用户写了半小时的草稿。分档方法见[清理](../../../../docs/Frontend/LocalDataStore/Eviction/index.md)。
+
 ## 相关章节
 
 - [前台 SSR](../../../../project/Complete/BlogPlatform/FrontendSSR/index.md)：本章的**前置口径**——HTML 不预缓存、首访不触发接口请求，两条都源自它

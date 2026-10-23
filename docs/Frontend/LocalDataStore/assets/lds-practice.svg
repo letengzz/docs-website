@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 545" width="960" height="545" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="本地库六步落地流程与每步验收，以及四条必须失败的负向断言">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="545" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">一条本地数据从建模到清理：六步与每步的验收</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">照这套顺序做，每一步都能在本机用一段脚本验出来</text>
+<rect x="28" y="86" width="288" height="130" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.3"/>
+<text x="44" y="116" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="start">① 定仓库</text>
+<text x="44" y="144" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">谁拥有这行数据</text>
+<text x="44" y="172" font-size="10.5" fill="#64748b" font-weight="700" text-anchor="start">验收：</text>
+<text x="86" y="172" font-size="10.5" fill="#2f8f7d" font-weight="700" text-anchor="start">count() = 预期条数</text>
+<line x1="44" y1="186" x2="300" y2="186" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="334" y="86" width="288" height="130" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.3"/>
+<text x="350" y="116" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="start">② 定主键</text>
+<text x="350" y="144" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">业务键还是自增</text>
+<text x="350" y="172" font-size="10.5" fill="#64748b" font-weight="700" text-anchor="start">验收：</text>
+<text x="392" y="172" font-size="10.5" fill="#2f8f7d" font-weight="700" text-anchor="start">两点写入不产生两行</text>
+<line x1="350" y1="186" x2="606" y2="186" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="640" y="86" width="288" height="130" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.3"/>
+<text x="656" y="116" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="start">③ 定索引</text>
+<text x="656" y="144" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">每条索引对应一条查询</text>
+<text x="656" y="172" font-size="10.5" fill="#64748b" font-weight="700" text-anchor="start">验收：</text>
+<text x="698" y="172" font-size="10.5" fill="#2f8f7d" font-weight="700" text-anchor="start">ranges 写出查询形状</text>
+<line x1="656" y1="186" x2="912" y2="186" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="28" y="236" width="288" height="130" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.3"/>
+<text x="44" y="266" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="start">④ 定事务</text>
+<text x="44" y="294" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">一次提交几个写</text>
+<text x="44" y="322" font-size="10.5" fill="#64748b" font-weight="700" text-anchor="start">验收：</text>
+<text x="86" y="322" font-size="10.5" fill="#2f8f7d" font-weight="700" text-anchor="start">批 2,000 ≥ 6 倍</text>
+<line x1="44" y1="336" x2="300" y2="336" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="334" y="236" width="288" height="130" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.3"/>
+<text x="350" y="266" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="start">⑤ 定版本</text>
+<text x="350" y="294" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">版本号进常量</text>
+<text x="350" y="322" font-size="10.5" fill="#64748b" font-weight="700" text-anchor="start">验收：</text>
+<text x="392" y="322" font-size="10.5" fill="#2f8f7d" font-weight="700" text-anchor="start">旧版本 open 报 VersionError</text>
+<line x1="350" y1="336" x2="606" y2="336" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="640" y="236" width="288" height="130" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.3"/>
+<text x="656" y="266" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="start">⑥ 定清理</text>
+<text x="656" y="294" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">按档过期 + 检查点</text>
+<text x="656" y="322" font-size="10.5" fill="#64748b" font-weight="700" text-anchor="start">验收：</text>
+<text x="698" y="322" font-size="10.5" fill="#2f8f7d" font-weight="700" text-anchor="start">残留 = 0</text>
+<line x1="656" y1="336" x2="912" y2="336" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="28" y="398" width="904" height="130" rx="8" fill="#fdf6e7" stroke="#b07d1c" stroke-width="1.4"/>
+<text x="44" y="424" font-size="13" fill="#b07d1c" font-weight="700" text-anchor="start">十条验收里的四条必须「失败」——负向断言比正向断言更能说明守卫在</text>
+<text x="44" y="440" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">删除不存在的 key：不抛错，但 count() 不变（不是「删了 1 行」）</text>
+<text x="44" y="464" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">用旧版本号 open：必须 VersionError，而不是静默开在旧库上</text>
+<text x="44" y="488" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">事务里 await fetch：必须 TransactionInactiveError（没抛说明守卫没写对）</text>
+<text x="44" y="512" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">超配额写入：必须 QuotaExceededError，且清理一次后重试成功</text>
+</svg>

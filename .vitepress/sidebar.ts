@@ -2,7 +2,7 @@
 import { Auth, ContractEvolution, DDD, DesignPatterns, DistributedCache, DistributedLock, DistributedScheduling, DotNet, Ecommerce, EmailDeliverability, EventSourcing, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, MultiTenantSaaS, NetworkProgramming, ObjectStorage, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, ServiceMesh, SpringCloud, WorkflowEngine } from "./backend";
 
 import { AI_Java, AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_EdgeInference, AI_EvalEngineering, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI, AI_SyntheticData } from "./AI";
-import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontErrorTelemetry, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
+import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontErrorTelemetry, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLocalDataStore, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, DatabaseUpgrade, CapacityCost, CertificateLifecycle, ChangeManagement, ConfigManagement, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
 import { AccessControl, BigData, CDC, ClickHouse, ConnectionPool, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, GeoMap, Lakehouse, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, SchemaEvolution, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation, EngineeringMetrics, BrowserExtension, CodeSearch } from "./tools";
@@ -123,7 +123,7 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontLowCode, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontSSR, ...FrontDesktopApp, ...FrontIntlA11y, ...FrontMobileH5, ...FrontMotion, ...FrontStateDataFlow, ...FrontFormValidation, ...FrontDesignSystem, ...FrontErrorTelemetry, ...FrontTesting, ...FrontRichTextEditor, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontLowCode, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontSSR, ...FrontDesktopApp, ...FrontIntlA11y, ...FrontMobileH5, ...FrontMotion, ...FrontStateDataFlow, ...FrontFormValidation, ...FrontDesignSystem, ...FrontErrorTelemetry, ...FrontLocalDataStore, ...FrontTesting, ...FrontRichTextEditor, ...FrontOthers],
     },
   ],
   "/docs/Backend": [
@@ -209,6 +209,7 @@ export const sidebar = {
   "/docs/Frontend/FormValidation": FrontFormValidation,
   "/docs/Frontend/DesignSystem": FrontDesignSystem,
   "/docs/Frontend/ErrorTelemetry": FrontErrorTelemetry,
+  "/docs/Frontend/LocalDataStore": FrontLocalDataStore,
   "/docs/Frontend/Others": FrontOthers,
   "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,
   "/docs/Frontend/Testing": FrontTesting,

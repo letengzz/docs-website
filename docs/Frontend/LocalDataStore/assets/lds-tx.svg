@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 510" width="960" height="510" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="逐条事务与单事务批量的耗时对比，以及事务内 await 导致自动提交">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="510" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">事务：批量省 6.6 倍，但 await 会让它悄悄关掉</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">2,000 条记录，同一份数据、两种提交粒度</text>
+<rect x="28" y="86" width="440" height="200" rx="8" fill="#fbeceb" stroke="#b4453c" stroke-width="1.4"/>
+<text x="44" y="112" font-size="13" fill="#b4453c" font-weight="700" text-anchor="start">逐条事务：2,000 次提交</text>
+<rect x="44" y="140" width="52" height="30" rx="4" fill="#ffffff" stroke="#b4453c"/>
+<text x="70" y="160" font-size="10" fill="#7f1d1d" font-weight="400" text-anchor="middle">tx</text>
+<rect x="110" y="140" width="52" height="30" rx="4" fill="#ffffff" stroke="#b4453c"/>
+<text x="136" y="160" font-size="10" fill="#7f1d1d" font-weight="400" text-anchor="middle">tx</text>
+<rect x="176" y="140" width="52" height="30" rx="4" fill="#ffffff" stroke="#b4453c"/>
+<text x="202" y="160" font-size="10" fill="#7f1d1d" font-weight="400" text-anchor="middle">tx</text>
+<rect x="242" y="140" width="52" height="30" rx="4" fill="#ffffff" stroke="#b4453c"/>
+<text x="268" y="160" font-size="10" fill="#7f1d1d" font-weight="400" text-anchor="middle">tx</text>
+<rect x="308" y="140" width="52" height="30" rx="4" fill="#ffffff" stroke="#b4453c"/>
+<text x="334" y="160" font-size="10" fill="#7f1d1d" font-weight="400" text-anchor="middle">tx</text>
+<rect x="374" y="140" width="52" height="30" rx="4" fill="#ffffff" stroke="#b4453c"/>
+<text x="400" y="160" font-size="10" fill="#7f1d1d" font-weight="400" text-anchor="middle">tx</text>
+<text x="44" y="206" font-size="11.5" fill="#7f1d1d" font-weight="400" text-anchor="start">2,000 次「开始 → 写 1 条 → 提交」</text>
+<text x="44" y="232" font-size="12.5" fill="#b4453c" font-weight="700" text-anchor="start">= 1,098.2 ms（0.549 ms/条）</text>
+<text x="44" y="262" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">每次提交都要落一次日志 + 刷一次盘。</text>
+<rect x="492" y="86" width="440" height="200" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="508" y="112" font-size="13" fill="#2f8f7d" font-weight="700" text-anchor="start">单事务批量：1 次提交</text>
+<rect x="508" y="140" width="36" height="30" rx="4" fill="#ffffff" stroke="#2f8f7d"/>
+<rect x="552" y="140" width="36" height="30" rx="4" fill="#ffffff" stroke="#2f8f7d"/>
+<rect x="596" y="140" width="36" height="30" rx="4" fill="#ffffff" stroke="#2f8f7d"/>
+<rect x="640" y="140" width="36" height="30" rx="4" fill="#ffffff" stroke="#2f8f7d"/>
+<rect x="684" y="140" width="36" height="30" rx="4" fill="#ffffff" stroke="#2f8f7d"/>
+<rect x="728" y="140" width="36" height="30" rx="4" fill="#ffffff" stroke="#2f8f7d"/>
+<text x="508" y="206" font-size="11.5" fill="#14532d" font-weight="400" text-anchor="start">1 次「开始 → 写 2,000 条 → 提交」</text>
+<text x="508" y="232" font-size="12.5" fill="#2f8f7d" font-weight="700" text-anchor="start">= 167.2 ms（0.084 ms/条）</text>
+<text x="508" y="262" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">日志只写一次，中间不刷盘。</text>
+<rect x="28" y="306" width="904" height="190" rx="8" fill="#fdf6e7" stroke="#b07d1c" stroke-width="1.4"/>
+<text x="44" y="332" font-size="13" fill="#b07d1c" font-weight="700" text-anchor="start">最贵的坑：在事务里 await 一个非 IDB 的 Promise</text>
+<text x="44" y="348" font-size="11" fill="#7c5310" font-weight="400" text-anchor="start">const tx = db.transaction('items','readwrite');</text>
+<text x="44" y="370" font-size="11" fill="#7c5310" font-weight="400" text-anchor="start">tx.objectStore('items').put(a);</text>
+<text x="44" y="392" font-size="11" fill="#b4453c" font-weight="700" text-anchor="start">await fetch('/api/lock');        // ← 事件循环回到浏览器</text>
+<text x="44" y="414" font-size="11" fill="#b4453c" font-weight="700" text-anchor="start">tx.objectStore('items').put(b);  // ← TransactionInactiveError</text>
+<text x="44" y="444" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">实测：第二次 put 抛 TransactionInactiveError，且 b 根本没落盘（读回 missing）——事务在 await 处已自动提交，</text>
+<text x="44" y="468" font-size="11.5" fill="#7c5310" font-weight="400" text-anchor="start">而 a 已经写进去了。要跨异步边界，就得把「先算好」和「再写入」分开：先 await 拿结果，再开事务一次性写完。</text>
+</svg>

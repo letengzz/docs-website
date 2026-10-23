@@ -206,6 +206,16 @@ export function allow(): boolean {
 | `ETR-G` | SDK 自身异常不外溢 | 所有入口有 `try/catch` 且不递归上报 | 补包裹与自计数 |
 | `ETR-H` | 有限流与丢弃计数 | 有 `dropped_by_limit` 指标 | 加令牌桶与汇总上报 |
 
+## 与本专题的分工
+
+| 本页 | [本地数据存储与容量治理](../../LocalDataStore/index.md) |
+| --- | --- |
+| 上报通道：`sendBeacon` / `keepalive` / 批量与额度 | 失败日志要落的**本地队列**怎么建 |
+| 采样、限流、队列上限 | 队列真的会写满：配额按源，和业务数据抢桶 |
+| 通道失败时的降级 | 「失败路径里再写本地库」的自锁问题 |
+
+**本页特有的一个坑**：把离线日志写进 `localStorage`（为了「简单」）会让后台补发彻底失效——Service Worker 里没有 `window`，读不到那个队列；而且日志写满 2.25 MB 后每次 `setItem` 都抛错，异常处理本身变成新的异常源。正确做法是 IndexedDB + 一个独立的「日志仓」过期档，见[清理](../../LocalDataStore/Eviction/index.md)。
+
 ## 参考资料
 
 - WHATWG：*Beacon* 规范（65,536 B 上限、返回值语义）、*Fetch* 规范（`keepalive` 与 in-flight 配额）

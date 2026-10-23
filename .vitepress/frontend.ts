@@ -943,3 +943,22 @@ export const FrontErrorTelemetry = [
         ],
     },
 ];
+
+export const FrontLocalDataStore = [
+    {
+        text: "本地数据存储与容量治理",
+        link: "/docs/Frontend/LocalDataStore/index.md",
+        items: [
+            { text: "四种载体与三条边界", link: "/docs/Frontend/LocalDataStore/Overview/index.md" },
+            { text: "建模：仓库、主键与嵌套的取舍", link: "/docs/Frontend/LocalDataStore/SchemaModeling/index.md" },
+            { text: "索引：读省下来的，写要还", link: "/docs/Frontend/LocalDataStore/IndexDesign/index.md" },
+            { text: "事务：一次提交写几条", link: "/docs/Frontend/LocalDataStore/Transaction/index.md" },
+            { text: "版本升级：只进不退的阶梯", link: "/docs/Frontend/LocalDataStore/Upgrade/index.md" },
+            { text: "配额：按源分配的那只桶", link: "/docs/Frontend/LocalDataStore/Quota/index.md" },
+            { text: "清理：删除不等于释放", link: "/docs/Frontend/LocalDataStore/Eviction/index.md" },
+            { text: "观测：三个信号与三种分母", link: "/docs/Frontend/LocalDataStore/Observability/index.md" },
+            { text: "实战：一套可验收的本地库", link: "/docs/Frontend/LocalDataStore/Practice/index.md" },
+            { text: "常见问题与分诊", link: "/docs/Frontend/LocalDataStore/FAQ/index.md" },
+        ],
+    },
+];

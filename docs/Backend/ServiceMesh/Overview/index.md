@@ -117,11 +117,11 @@ istioctl ztunnel-config workloads
 | `SMO-E` | 代价清单已认账 | 资源、跳数、升级、YAML 所有权四项有人负责 | 补责任人与预算 |
 | `SMO-F` | 生效范围可验证 | `ztunnel-config workloads` / `proxy-status` 能列出目标 | 补齐标签与注入配置 |
 | `SMO-G` | 重试不覆盖有副作用的 5xx | 重试策略里没有默认重试 5xx | 保持「只在能确认未到达时重试」 |
-| `SMO-H` | mTLS 与 NetworkPolicy 并列 | 文档里两者都有，不是二选一 | 补四层策略，见 [容器编排安全](../../Ops/ContainerOrchestration/Security/index.md) |
+| `SMO-H` | mTLS 与 NetworkPolicy 并列 | 文档里两者都有，不是二选一 | 补四层策略，见 [容器编排安全](../../../Ops/ContainerOrchestration/Security/index.md) |
 
 ## 参考资料
 
 - Istio 官方：*Service Mesh 概念*、*Ambient Mode Overview*（L4/L7 能力边界）、*Prepare for production deployments*（ztunnel 默认值与限额建议）
 - Istio 官方：*Traffic Management*（默认重试 2 次、默认超时行为）、*Security*（mTLS 与授权模型）
 - CNCF 博客与项目页：Istio / Linkerd / Cilium 的毕业与版本节奏（2026-10 核对）
-- 本仓库：[网关深入](../../GatewayDeep/Overview/index.md)（南北向边界）、[微服务](../Microservices/Overview/index.md)（框架内治理）、[容器编排安全](../../Ops/ContainerOrchestration/Security/index.md)（四层策略）
+- 本仓库：[网关深入](../../GatewayDeep/Overview/index.md)（南北向边界）、[微服务](../../Microservices/Overview/index.md)（框架内治理）、[容器编排安全](../../../Ops/ContainerOrchestration/Security/index.md)（四层策略）

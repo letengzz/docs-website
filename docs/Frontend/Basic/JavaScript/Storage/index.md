@@ -310,6 +310,16 @@ self.addEventListener('fetch', (event) => {
 })
 ```
 
+## 与本专题的分工
+
+| 本页 | [本地数据存储与容量治理](../../../LocalDataStore/index.md) |
+| --- | --- |
+| `localStorage` / `sessionStorage` / IndexedDB / Cache API 的用法与序列化写法 | 四者的**成本、边界与失效方式** |
+| `storage` 事件与跨标签页同步 | 跨标签页的强一致协调（Web Locks / `BroadcastChannel`） |
+| 常见封装（带前缀、带过期时间） | 真正的持久层：建模、索引、版本升级、清理 |
+
+**本页特有的一个坑**：给 `localStorage` 封装「带 TTL 的 JSON」时，过期判断只发生在**读**的时候，键本身仍占着配额——于是一个「每天写 1,000 条、保留 7 天」的埋点缓存，会在第三天写满 **2.25 MB** 并开始抛 `QuotaExceededError`（本机实测值，按 UTF-16 码元计）。带 TTL 的键必须配一个写入侧清理，或者干脆换 IndexedDB 让索引按时间删。
+
 ## 存储策略
 
 ```javascript [storage-strategy.js]

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="一键部署拓扑：三容器健康检查驱动、四服务探针分层、一条下单贯通三表与 outbox">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="640" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700" text-anchor="start">一键部署：三容器 + 四服务 + 一道闸</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">部署形态与本地开发骨架的区别只在三处：profile、卷、密钥来源</text>
+<rect x="28" y="86" width="180" height="56" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="118.0" y="118.0" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="middle">PG 18.6</text>
+<rect x="232" y="86" width="180" height="56" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="322.0" y="118.0" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="middle">Kafka 4.2.1</text>
+<rect x="436" y="86" width="180" height="56" rx="6" fill="#eef2fb" stroke="#3f5f9e" stroke-width="1.2"/>
+<text x="526.0" y="118.0" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="middle">Redis 8.2</text>
+<rect x="640" y="86" width="140" height="56" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+<text x="710.0" y="118.0" font-size="12" fill="#1f2d3d" font-weight="400" text-anchor="middle">卷 / 备份</text>
+<text x="44" y="166" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">healthcheck 用「真查一次」：psql -c 'select 1' / kafka-broker-api-versions / redis-cli ping</text>
+<line x1="118" y1="180" x2="118" y2="214" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)"/>
+<line x1="322" y1="180" x2="322" y2="214" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)"/>
+<line x1="526" y1="180" x2="526" y2="214" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="28" y="220" width="904" height="54" rx="6" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.2"/>
+<text x="480.0" y="251.0" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="middle">--wait 等待三个 healthcheck 全绿（命令退出码 = 依赖就绪）</text>
+<line x1="480" y1="274" x2="480" y2="308" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="28" y="314" width="440" height="56" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="248.0" y="346.0" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="middle">order（唯一改订单状态）</text>
+<rect x="492" y="314" width="440" height="56" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="712.0" y="346.0" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="middle">inventory / payment / fulfillment（只发事件）</text>
+<text x="44" y="394" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">/actuator/health/liveness → 进程活着（不建议接流量判断）</text>
+<text x="508" y="394" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">/actuator/health/readiness → 池 + Kafka 订阅 + Flyway 全就绪</text>
+<line x1="480" y1="406" x2="480" y2="440" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="28" y="446" width="904" height="54" rx="6" fill="#fdf6e7" stroke="#b07d1c" stroke-width="1.2"/>
+<text x="480.0" y="477.0" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="middle">一条下单：HTTP 201 → orders / order_items / outbox 三表同事务 → 停 Kafka 仍 201</text>
+<rect x="28" y="514" width="440" height="110" rx="8" fill="#fbeceb" stroke="#b4453c" stroke-width="1.4"/>
+<text x="44" y="540" font-size="13" fill="#b4453c" font-weight="700" text-anchor="start">三条负向验收（必须失败）</text>
+<text x="44" y="552" font-size="11" fill="#7f1d1d" font-weight="400" text-anchor="start">停掉 Kafka 再下单：仍 201，outbox 留 1 行 PENDING</text>
+<text x="44" y="576" font-size="11" fill="#7f1d1d" font-weight="400" text-anchor="start">用旧 .env 的库口令：readiness DOWN，不是 UP</text>
+<text x="44" y="600" font-size="11" fill="#7f1d1d" font-weight="400" text-anchor="start">重复 Idempotency-Key：返回同一 orderId，不新建行</text>
+<rect x="492" y="514" width="440" height="110" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="508" y="540" font-size="13" fill="#2f8f7d" font-weight="700" text-anchor="start">EDP 八条判据的主线</text>
+<text x="508" y="552" font-size="11" fill="#14532d" font-weight="400" text-anchor="start">A 一条命令 · B 版本一致 · C 健康驱动顺序</text>
+<text x="508" y="576" font-size="11" fill="#14532d" font-weight="400" text-anchor="start">D 探针分层 · E 密钥不落盘 · F 停 Kafka 仍 201</text>
+<text x="508" y="600" font-size="11" fill="#14532d" font-weight="400" text-anchor="start">G down/up 数据不丢 · H doctor 一条命令定位</text>
+</svg>

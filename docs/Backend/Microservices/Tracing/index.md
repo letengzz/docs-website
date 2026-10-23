@@ -168,18 +168,6 @@ services:
 - [监控告警专题](../../../Ops/Monitoring/index.md)：指标、日志、链路三大支柱的完整可观测性体系
 - [日志监控](../../../Ops/Monitoring/LogMonitoring/index.md)：日志与链路通过 traceId 关联的实践
 
-## 参考资料
-
-- Micrometer Tracing 文档：https://micrometer.io/docs/tracing
-- Zipkin 文档：https://zipkin.io/
-- Apache SkyWalking 文档：https://skywalking.apache.org/docs/
-- OpenTelemetry 文档：https://opentelemetry.io/docs/
-- 可观测性三大支柱（Metrics/Logs/Traces）：https://opentelemetry.io/docs/concepts/observability-primer/
-
-::: tip 相关文档
-Micrometer Tracing 的 Spring Cloud 接入（依赖、采样率、日志 traceId、跨线程上下文丢失坑位）见 [Spring Cloud 专题：链路追踪与可观测性](../../SpringCloud/Tracing/index.md)。
-:::
-
 ## 与可观测性深入的分工
 
 本页是**业务视角**：微服务拓扑下为什么要追踪、traceId 怎么把跨服务调用串成时间线、拿到链路后怎么看瓶颈与慢 SQL。它不回答「这套东西在生产上怎么长期跑下去」。
@@ -209,4 +197,16 @@ Micrometer Tracing 的 Spring Cloud 接入（依赖、采样率、日志 traceId
 
 ::: danger 本页特有的坑：把「网格 span 齐了」当成「链路通了」
 网格能让任意两个服务之间的网络段都有 span，于是链路图看起来很完整。但只要业务侧的上下文没透传（自定义线程池、异步回调、消息消费），跨进程那一段依然是断的——**网格补的是「服务之间」，补不了「服务内部」**。本页「本页最容易被误读的一条」给出的断链原因，在装了网格之后一条都没减少。
+:::
+
+## 参考资料
+
+- Micrometer Tracing 文档：https://micrometer.io/docs/tracing
+- Zipkin 文档：https://zipkin.io/
+- Apache SkyWalking 文档：https://skywalking.apache.org/docs/
+- OpenTelemetry 文档：https://opentelemetry.io/docs/
+- 可观测性三大支柱（Metrics/Logs/Traces）：https://opentelemetry.io/docs/concepts/observability-primer/
+
+::: tip 相关文档
+Micrometer Tracing 的 Spring Cloud 接入（依赖、采样率、日志 traceId、跨线程上下文丢失坑位）见 [Spring Cloud 专题：链路追踪与可观测性](../../SpringCloud/Tracing/index.md)。
 :::
