@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img">
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">autovacuum：比例阈值在大表上失效</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">触发阈值 = 50 + 0.2 × 行数 → 一亿行的表要攒两千万死元组，实际上等于不清理</text>
+<rect x="36" y="94" width="888" height="60" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="48" y="118" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">阈值随行数线性上涨，而膨胀的痛苦也线性上涨——两条线一起走，永远追不上</text>
+<text x="48" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">10 万行 → 20,050｜100 万 → 200,050｜1,000 万 → 2,000,050｜1 亿 → 20,000,050</text>
+<rect x="36" y="170" width="286" height="110" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="48" y="194" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">全局保持默认</text>
+<text x="48" y="216" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">scale_factor = 0.2</text>
+<text x="48" y="234" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">naptime = 60 s</text>
+<text x="48" y="252" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">小表受益于宽松阈值</text>
+<text x="48" y="270" font-size="10" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">全局改 0.02 会让小表被反复扫</text>
+<rect x="338" y="170" width="286" height="110" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="350" y="194" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">大表逐表覆盖</text>
+<text x="350" y="216" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">100 万~1,000 万行：0.02~0.05</text>
+<text x="350" y="234" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">&gt; 1,000 万行：0.01 + 绝对阈值</text>
+<text x="350" y="252" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">高频更新表：0 + threshold=1000</text>
+<text x="350" y="270" font-size="10" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">ALTER TABLE ... SET (autovacuum_vacuum_scale_factor)</text>
+<rect x="640" y="170" width="284" height="110" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="652" y="194" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">维护内存：建索引快 1.94 倍</text>
+<text x="652" y="216" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">64 MB → 4,956 ms（默认）</text>
+<text x="652" y="234" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">256 MB → 2,959 ms（1.68×）</text>
+<text x="652" y="252" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">1 GB → 2,560 ms（1.94×）</text>
+<text x="652" y="270" font-size="10" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">× autovacuum_max_workers 计入预算</text>
+<rect x="36" y="296" width="888" height="108" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="48" y="320" font-size="12" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">本机膨胀与回收（10 万行 / 14 MB 表，一次全表 UPDATE）</text>
+<text x="48" y="342" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">初始 14 MB → 更新后 27 MB（1.93×，死元组 100,000）→ 3 s 后仍 27 MB/100,000（naptime 60 s）</text>
+<text x="48" y="360" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">63 s 后：死元组 0，但表仍是 27 MB（空间只标记可复用）→ VACUUM FULL 后 13 MB</text>
+<text x="48" y="380" font-size="10" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">VACUUM 不缩文件；缩文件要 ACCESS EXCLUSIVE 锁（VACUUM FULL）或 pg_repack</text>
+<text x="48" y="398" font-size="10" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">排除项：长事务（idle in transaction 8 小时）会让这 8 小时的死元组全部无法回收</text>
+</svg>

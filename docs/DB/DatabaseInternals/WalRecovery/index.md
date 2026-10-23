@@ -276,6 +276,17 @@ select checkpoint_time, redo_lsn from pg_control_checkpoint();
 ::: warning 本页实测的边界
 以上读数全部来自**本机实际运行的 PostgreSQL 18.6**（容器内），可直接复现。但**崩溃恢复时长没有实测**——那需要真的 `kill -9` 一个库并重启，会破坏当前实验环境，故本页只给公式与判据，不给「恢复用了 N 秒」这类没有跑过的数字。
 :::
+## 与「数据库参数与内核调优」专题的分工（第 199 天补充）
+
+本页讲 WAL 的记录格式、redo 点、崩溃恢复的重放过程；「WAL 一天产生多少、要不要压缩、检查点多久一次」归 [数据库参数与内核调优](../../ParameterTuning/index.md) 的[写放大](../../ParameterTuning/WriteAmplification/index.md)与[检查点节奏](../../ParameterTuning/Checkpoint/index.md)。
+
+| 问题 | 本页（机制） | 参数专题（决策） |
+| --- | --- | --- |
+| 为什么需要整页写（FPI）、redo 怎么重放 | ✅ 讲清 | 只引用结论 |
+| FPI 占 WAL 多少、要不要开 `wal_compression` | 给机制解释 | ✅ 给读数与算式 |
+| 检查点多频繁、`max_wal_size` 设多大 | — | ✅ 给间隔公式与日志读数 |
+
+**这一页特有的一个坑**：以为「WAL 记录 ≈ 改了哪一行」。本机实测（`pgbench -N -c 8`，15 秒）`full_page_writes=on` 时 WAL **263.0 MB** 里 **30,973 张整页副本 ≈ 254 MB（96%）**，真正描述修改的记录只占 4%；重启后的第一段 FPI 最多，因为缓冲池是空的、每页第一次修改都要带整页副本。这解释了「重启后复制延迟飙高」——不是数据变了，是 FPI 变多了。开 `wal_compression=zstd` 后 27,143 张整页副本（原始 222 MB）被压进 **32.5 MB** 总 WAL（约 9:1）。
 
 ## 参考资料
 

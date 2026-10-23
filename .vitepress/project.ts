@@ -402,6 +402,7 @@ export const CompleteProject = [
           { text: "第 4 周第 1 步 · 一键部署与配置：三处差异与九条验收（EDP-A~EDP-H）", link: "/project/Complete/EventOrderHub/DeployCompose/index.md" },
           { text: "第 4 周第 2 步 · 监控与告警：五个指标与三条告警（EMT-A~EMT-H）", link: "/project/Complete/EventOrderHub/Monitoring/index.md" },
           { text: "第 4 周第 3 步 · 发布与回滚：五阶段状态机与相对基线判据（ERB-A~ERB-H）", link: "/project/Complete/EventOrderHub/ReleaseRollback/index.md" },
+          { text: "第 4 周第 4 步 · 对账日报与交接：三向差集与六类归口（ELA-A~ELA-H）", link: "/project/Complete/EventOrderHub/ReconciliationHandover/index.md" },
         ],
       },
       {

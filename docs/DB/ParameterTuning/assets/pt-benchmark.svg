@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">压测驱动调参：单次读数不可信</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">同一配置连跑五次，TPS 从 20,685 到 25,573（极差 23.6%）——比大多数「优化」的收益都大</text>
+<rect x="36" y="96" width="440" height="150" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="48" y="120" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">五次同配置读数（pgbench -S -c 8 -T 10）</text>
+<rect x="52" y="136" width="150" height="16" rx="3" fill="#bfdbfe"/><text x="210" y="149" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">25,573（+9.2%）</text>
+<rect x="52" y="156" width="146" height="16" rx="3" fill="#bfdbfe"/><text x="206" y="169" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">24,985（+6.7%）</text>
+<rect x="52" y="176" width="137" height="16" rx="3" fill="#93c5fd"/><text x="197" y="189" font-size="10" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">23,423（中位数）</text>
+<rect x="52" y="196" width="126" height="16" rx="3" fill="#bfdbfe"/><text x="186" y="209" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">21,598（−7.8%）</text>
+<rect x="52" y="216" width="121" height="16" rx="3" fill="#bfdbfe"/><text x="181" y="229" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">20,685（−11.7%）</text>
+<rect x="492" y="96" width="432" height="150" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="504" y="120" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">噪声带否掉的三类结论</text>
+<text x="504" y="144" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 「A 比 B 快 2.35%」→ 本库缓冲池 128MB vs 512MB 的差值就在噪声内</text>
+<text x="504" y="166" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 「调完快一倍」→ 基线刚好落在 20,685 那一端时，任何改动都显得有效</text>
+<text x="504" y="188" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 「耗时 3,338→3,143，提升 6.2%」→ 落在噪声内，只能用落盘量证明</text>
+<text x="504" y="214" font-size="10" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">CV ≈ 7.8%：小于 8% 的差异需要更多次测量才能分辨</text>
+<text x="504" y="234" font-size="10" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">噪声来自：宿主机负载、页缓存冷热、检查点周期、autovacuum、客户端瓶颈</text>
+<rect x="36" y="266" width="212" height="136" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="48" y="290" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 先写判据</text>
+<text x="48" y="312" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">主指标 / 护栏 / 正确性</text>
+<text x="48" y="330" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">/ 回滚条件</text>
+<text x="48" y="356" font-size="10" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">顺序反了就会「看出」</text>
+<text x="48" y="374" font-size="10" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">想要的结论</text>
+<rect x="264" y="266" width="212" height="136" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.2"/>
+<text x="276" y="290" font-size="12" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 固定负载</text>
+<text x="276" y="312" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">同数据 / 同并发 / 同时长</text>
+<text x="276" y="330" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">/ 同时段 + 预热一轮</text>
+<text x="276" y="356" font-size="10" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">窗口 ≥ 3 个检查点周期</text>
+<rect x="492" y="266" width="212" height="136" rx="6" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="504" y="290" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 单变量 A/B/A</text>
+<text x="504" y="312" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">A1 → 改一个 → B → 改回 → A2</text>
+<text x="504" y="330" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">A2 用来校准环境漂移</text>
+<text x="504" y="356" font-size="10" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">A1≈A2 时 B 才有意义</text>
+<rect x="720" y="266" width="204" height="136" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.2"/>
+<text x="732" y="290" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 中位数 + 区间</text>
+<text x="732" y="312" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">三次取中位数</text>
+<text x="732" y="330" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">写出区间，不只写点</text>
+<text x="732" y="356" font-size="10" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">确定性指标优先</text>
+</svg>

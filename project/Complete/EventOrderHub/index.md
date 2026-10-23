@@ -53,13 +53,13 @@
 | [第 4 周第 1 步 · 一键部署与配置](DeployCompose/index.md) | `EDP` | 三处 dev/deploy 差异、健康驱动顺序、探针分层、密钥注入、九条验收 | 8 |
 | [第 4 周第 2 步 · 监控与告警](Monitoring/index.md) | `EMT` | 五个指标、p99 口径、双序列阈值校准、燃烧率双档、积压差分 | 8 |
 | [第 4 周第 3 步 · 发布与回滚](ReleaseRollback/index.md) | `ERB` | 五阶段状态机、可回滚边界、相对基线判据、回滚验证 | 8 |
+| [第 4 周第 4 步 · 对账日报与交接](ReconciliationHandover/index.md) | `ELA` | 三向差集、六类差异归口、增量+周全量、runbook 与交接验收 | 8 |
 
-后续 5 章（判据族已预留，交付时补条数）：
+后续 4 章（判据族已预留，交付时补条数）：
 
 - 发货与签收（判据族 `ESF`：发货单、签收、异常件）
 - 补偿与对账（判据族 `ERC`：补偿动作、对账日报）
 - 第 2 周验收（判据族 `EW2`：第 2 周六项验收）
-- 上线验收与对账日报（判据族 `ELA`：上线清单与日报）
 - 第 4 周验收与交接（判据族 `EW4`：四周收口与交接）
 
 > 章节按天推进，**每章都自带「如何验证」**：读者按页面里的命令跑一遍，应得到页面写明的读数。项目目录只放 Markdown 与配图，不放任何工程文件。
@@ -470,6 +470,45 @@ docker exec -i eoh-pg psql -U postgres -d eoh -f 900_invariants.sql
 
 **下一步**（第 199 天）：第 4 周第 4 步「对账日报与交接」（`ELA`）——把发布记录升级成对账日报的数据源（订单状态 / 支付流水 / 库存预占三向差集）；三条遗留缺口按「能被监控证明」排序，死信重投优先；runbook 要能让凌晨三点被叫起来的人照着做完。
 
-## 二十一、判据纪律
+## 二十一、第 199 天交付（第 4 周第 4 步 · 对账日报与交接）
+
+- 新建 [第 4 周第 4 步 · 对账日报与交接](ReconciliationHandover/index.md)（判据 `ELA-A` ~ `ELA-H`），配图 `eoh-reconcile.svg`（三向 → 六类 → 增量/全量 → 两次收敛）。
+- **本步不改业务代码，只把「系统现在对不对」变成每天早上七点自动生成的一页纸**：三向差集（订单状态 × 支付流水 × 库存预占）、六类归口、每类一个人名。
+- **六类差异与判据 SQL 定死**：D1 漏单 / D2 假支付 / D3 金额不符 / D4 预占缺失 / D5 预占悬挂 / D6 数量不符，每条一个 `CTE`，可单独跑。
+- **三条「不算差异」的口径写在 `::: danger` 里**：未付订单无流水不是漏单（否则日报第一天 13 万条，第二天就没人看）、取消订单无预占是正常路径、渠道 T+1 迟到要留宽限窗。
+- **本机实测（PG 18.6，20 万单 / 66,663 流水 / 199,993 预占，注入 36 条已知差异）**：六类逐条对上注入值（12 / 9 / 5 / 7 / 0 / 3，合计 36），说明判据本身是准的。
+- **增量 vs 全量的真实差别不在总耗时而在单行成本**：昨日窗口 **17.0 ms / 6,666 单（2.56 µs/行）**，全量 30 天 **42.5 ms / 200,000 单（0.21 µs/行）**——差 **12 倍**。结论：增量只发现新差异，全量才能抓出陈年悬挂，两者都要跑。
+- **日报落库幂等**：`reconcile_diff` 唯一键 `(biz_date, kind, order_no)`，重跑不翻倍；`state` 四态，`IGNORED` 必须填 `detail.reason`，关闭必须带 `evidence`。
+- **runbook 写成「症状 → 一条命令 → 判定阈值 → 下一步」**：五条症状各自给阈值（`D1 > 50` 持续 10 分钟、积压 > 1,000 等），不写「如果异常请联系相关同事」。
+- **交接验收是「对方做、你看」**：五个动作由接手人独立执行，其中「自己造一条差异让日报抓到」最关键——能造出差异，说明他理解了六类的口径。
+
+**如何验证**（读者可执行）：
+
+```shell
+# 1) 三向源表 + 差异表就位
+docker exec -i eoh-pg psql -U postgres -d eoh -f sql/050_reconcile_diff.sql
+# 期望：CREATE TABLE / CREATE INDEX
+
+# 2) 六类差异逐类对账（注入 36 条，应报出 36 条）
+docker exec -i eoh-pg psql -U postgres -d eoh -f sql/reconcile-daily.sql
+# 期望：D1=12 D2=9 D3=5 D4=7 D5=0 D6=3
+
+# 3) 增量耗时（单日 6,666 单）
+docker exec -i eoh-pg psql -U postgres -d eoh -c \
+  "explain (analyze, costs off) select count(*) from orders o
+     where o.status in ('PAID','ALLOCATED','SHIPPED','COMPLETED')
+       and o.created_at >= now() - interval '1 day'
+       and not exists (select 1 from payment x where x.order_no = o.order_no);"
+# 期望：Execution Time 约 17 ms
+
+# 4) 重跑幂等（差异表不翻倍）
+docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
+  "select count(*) from reconcile_diff where biz_date = current_date;"
+# 期望：36（跑两次仍是 36）
+```
+
+**下一步**（第 200 天）：第 4 周第 5 步「四周验收与交接」（`EW4`）——把第 1~4 周的 12 份交付合成一张四周验收表（L1 正确性 / L2 并发性 / L3 承载性 / L4 可运维性），并补齐 `ESF` 发货签收与 `EW2` 第 2 周验收两处缺口。
+
+## 二十二、判据纪律
 
 每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMT` / `ERB` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。

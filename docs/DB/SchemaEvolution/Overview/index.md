@@ -120,6 +120,17 @@ from pg_stat_activity where wait_event_type = 'Lock';
 | `SCO-F` | 演练读数与估算偏差有记录 | 影子库读数、偏差百分比 | 偏差 > 50% 重算后再上 |
 | `SCO-G` | 变更前扫过长事务并处理 | `innodb_trx` / `pg_stat_activity` 截图或输出 | 杀掉或等待；不许「先上再说」 |
 | `SCO-H` | 有终止条件与观测面板 | 面板链接 + 三条阈值（延迟/错误率/锁等待） | 补阈值；无终止条件不上线 |
+## 与「数据库参数与内核调优」专题的分工（第 199 天补充）
+
+本页讲**怎么安全地改表**（扩展-收缩、锁、回填），[数据库参数与内核调优](../../ParameterTuning/index.md) 只提供其中一个参数：`maintenance_work_mem`，它决定建索引与 `VACUUM` 在维护窗口里要跑多久。
+
+| 问题 | 本页（改表流程） | 参数专题（维护窗口） |
+| --- | --- | --- |
+| 哪些 DDL 会重写表、怎么分三次发布 | ✅ 讲清 | 不重复 |
+| 建索引要多久、窗口开多长 | 给流程 | ✅ 给 `maintenance_work_mem` 读数 |
+| autovacuum 会不会拖慢回填 | — | ✅ 见[维护参数](../../ParameterTuning/Maintenance/index.md) |
+
+**这一页特有的一个坑**：按默认 `maintenance_work_mem`（64 MB）估维护窗口。本机实测（97 MB、100 万行表上 `CREATE INDEX`）**64 MB → 4,956 ms**、256 MB → 2,959 ms（1.68×）、**1 GB → 2,560 ms（1.94×）**。它同时影响 `CREATE INDEX`、`VACUUM`、外键验证，而且**不是每连接**的——但 `autovacuum_max_workers=3` 时会各拿一份，所以预算要按 3 倍算。
 
 ## 参考资料
 

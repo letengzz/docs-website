@@ -487,3 +487,22 @@ export const GeoMap = [
     ],
   },
 ];
+
+export const ParameterTuning = [
+  {
+    text: "数据库参数与内核调优",
+    link: "/docs/DB/ParameterTuning/index.md",
+    items: [
+      { text: "总览：四类参数与决策顺序", link: "/docs/DB/ParameterTuning/Overview/index.md" },
+      { text: "内存预算：命中率是最会骗人的指标", link: "/docs/DB/ParameterTuning/MemoryBudget/index.md" },
+      { text: "work_mem：排序落盘与内存放大", link: "/docs/DB/ParameterTuning/WorkMem/index.md" },
+      { text: "检查点节奏：把刷盘摊平到时间线", link: "/docs/DB/ParameterTuning/Checkpoint/index.md" },
+      { text: "写放大：WAL 里 96% 是整页副本", link: "/docs/DB/ParameterTuning/WriteAmplification/index.md" },
+      { text: "并发参数：连接、并行与内存的三角", link: "/docs/DB/ParameterTuning/Concurrency/index.md" },
+      { text: "维护参数：autovacuum 阈值失效", link: "/docs/DB/ParameterTuning/Maintenance/index.md" },
+      { text: "压测驱动的调参：单次读数不可信", link: "/docs/DB/ParameterTuning/BenchmarkLoop/index.md" },
+      { text: "实战：8 核 16 GB 的一份调参单", link: "/docs/DB/ParameterTuning/Practice/index.md" },
+      { text: "常见问题与症状分诊", link: "/docs/DB/ParameterTuning/FAQ/index.md" },
+    ],
+  },
+];

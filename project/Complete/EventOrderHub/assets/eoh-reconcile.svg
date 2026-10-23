@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="450" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">对账日报：三向差集、六类归口、两次收敛</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">双向对账回答「钱和单对不对得上」，三向对账才回答「钱、单、货是不是同一个故事」</text>
+<rect x="36" y="94" width="270" height="76" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="48" y="118" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">orders（业务意图）</text>
+<text x="48" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">20 万行｜状态停在中途</text>
+<text x="48" y="158" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一有权改订单状态</text>
+<rect x="336" y="94" width="270" height="76" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="348" y="118" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">payment（钱的到账）</text>
+<text x="348" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">66,663 行｜漏单/假支付/金额</text>
+<text x="348" y="158" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">渠道流水是唯一事实源</text>
+<rect x="636" y="94" width="288" height="76" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="648" y="118" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">stock_reservation（货的占用）</text>
+<text x="648" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">199,993 行｜悬挂/缺失/数量</text>
+<text x="648" y="158" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">少了它就查不出「账平货少」</text>
+<line x1="306" y1="132" x2="336" y2="132" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="606" y1="132" x2="636" y2="132" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="36" y="190" width="888" height="94" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="48" y="214" font-size="12" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">六类差异（本机注入 36 条，查询报出 36 条，逐类一致）</text>
+<text x="48" y="238" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">D1 漏单 12（已付无流水）｜D2 假支付 9（有流水无有效订单）｜D3 金额不符 5</text>
+<text x="48" y="258" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">D4 预占缺失 7（在途无预占）｜D5 预占悬挂 0（已发货仍 HELD）｜D6 数量不符 3</text>
+<text x="48" y="276" font-size="10" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">「不算差异」的三条口径：未付无流水 / 取消无预占 / 渠道 T+1 迟到 —— 写错就天天误报</text>
+<rect x="36" y="300" width="432" height="76" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="48" y="324" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">增量：昨日窗口 17.0 ms / 6,666 单</text>
+<text x="48" y="346" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">单行成本 2.56 µs（索引扫描 + 回表）</text>
+<text x="48" y="364" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">只能发现「新产生的差异」</text>
+<rect x="488" y="300" width="436" height="76" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.2"/>
+<text x="500" y="324" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">全量：30 天 42.5 ms / 200,000 单</text>
+<text x="500" y="346" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">单行成本 0.21 µs（顺序扫，便宜 12 倍）</text>
+<text x="500" y="364" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">能抓出「增量窗口永远看不到」的陈年差异</text>
+<rect x="36" y="392" width="888" height="44" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="48" y="420" font-size="11.5" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">07:00 首跑（渠道文件可能不全）→ 10:00 全量重跑必须「只减不增」；第二次比第一次多，就是我方写出了新差异</text>
+</svg>

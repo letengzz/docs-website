@@ -11,6 +11,7 @@
 - [数据同步与 CDC](CDC/index.md)
 - [向量数据库深入](VectorDatabase/index.md)
 - [数据库内核与存储引擎](DatabaseInternals/index.md)
+- [数据库参数与内核调优](ParameterTuning/index.md)
 - [分区分表与冷热分离](PartitionArchival/index.md)
 - [全文检索与搜索工程](FullTextSearch/index.md)
 - [数据湖与湖仓一体](Lakehouse/index.md)

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">8 核 16 GB 的调参单：从预算到反向验收</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">每个值都有算式，每条验收都有命令，四条反向用例必须「按预期失败」</text>
+<rect x="36" y="94" width="170" height="88" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="48" y="118" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 前提</text>
+<text x="48" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">8C16G 专用 NVMe</text>
+<text x="48" y="158" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">写入 9.4 MB/s WAL</text>
+<text x="48" y="176" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">恢复 ≤ 2 min</text>
+<rect x="222" y="94" width="170" height="88" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="234" y="118" font-size="12" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 预算</text>
+<text x="234" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">SB 4GB / WM 16MB</text>
+<text x="234" y="158" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">MWM 512MB / ECS 8GB</text>
+<text x="234" y="176" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">预留 3GB</text>
+<rect x="408" y="94" width="170" height="88" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="420" y="118" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 配置</text>
+<text x="420" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">max_wal_size 8GB</text>
+<text x="420" y="158" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">ckpt 15min / zstd</text>
+<text x="420" y="176" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">io_workers 4</text>
+<rect x="594" y="94" width="170" height="88" rx="6" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="606" y="118" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 验收 S1~S10</text>
+<text x="606" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">生效性 / 内存 / 落盘</text>
+<text x="606" y="158" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">检查点 / WAL / 并行</text>
+<text x="606" y="176" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">膨胀 / 噪声 / 反向</text>
+<rect x="780" y="94" width="144" height="88" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="792" y="118" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑤ 回滚</text>
+<text x="792" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">每个参数写清</text>
+<text x="792" y="158" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">「什么现象</text>
+<text x="792" y="176" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">改回去」</text>
+<line x1="206" y1="138" x2="222" y2="138" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="392" y1="138" x2="408" y2="138" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="578" y1="138" x2="594" y2="138" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="764" y1="138" x2="780" y2="138" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="36" y="200" width="888" height="112" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="48" y="224" font-size="12" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">四条反向验收（必须「按预期失败」，证明判据不空转）</text>
+<text x="48" y="248" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">① SET work_mem='4MB' → 报表 temp_bytes 立刻上涨（证明 S4 在量落盘）</text>
+<text x="48" y="268" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">② wal_compression=off → wal_bytes 涨 5 倍以上（证明 S6 在量压缩）</text>
+<text x="48" y="288" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ checkpoint_timeout=30s → num_requested 开始增长（证明 S5 区分按时/按量）</text>
+<text x="48" y="306" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 大表 RESET autovacuum 覆盖后造 15% 死元组 → dead_pct 不下降（证明 per-table 生效）</text>
+<rect x="36" y="328" width="432" height="90" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<text x="48" y="352" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">五个交付物</text>
+<text x="48" y="374" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">前提说明 / 预算表 / 配置文件 / 验收记录 / 回滚方案</text>
+<text x="48" y="394" font-size="10" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">缺一个就无法复核，也无法交接</text>
+<rect x="488" y="328" width="436" height="90" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="500" y="352" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">换机器按比例缩放（不是等比放大）</text>
+<text x="500" y="374" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">SB 25%｜work_mem 按「可用÷并发÷并行」反推</text>
+<text x="500" y="394" font-size="10" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">max_wal_size 按「期望间隔 × 实测速率」反推</text>
+</svg>

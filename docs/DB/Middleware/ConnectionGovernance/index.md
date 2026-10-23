@@ -167,3 +167,14 @@ mysql -e "SHOW VARIABLES LIKE 'wait_timeout';"
 | 共享账号导致审计无法归因 | [权限生命周期](../../AccessControl/Lifecycle/index.md) |
 
 **这一页特有的坑：连接数算得再准，账号合并成一个就等于放弃了归因能力。** 本机用 `select usename, count(distinct application_name) from pg_stat_activity group by 1` 检查：共享账号会在一行里出现多个应用名。这类账号在审计里只留下一个名字，出事后无法区分「是订单服务还是夜间批处理」。**一个服务一个登录角色 + 连接串里设 `application_name`**，是审计能用的前提。
+## 与「数据库参数与内核调优」专题的分工（第 199 天补充）
+
+本页是**值班手册**：连接打满怎么处置、连接风暴怎么止血、参数默认值以谁为准。至于「每个连接到底吃多少内存、并行的乘数怎么算」，归 [数据库参数与内核调优](../../ParameterTuning/index.md) 的[并发参数](../../ParameterTuning/Concurrency/index.md)。
+
+| 问题 | 本页（处置） | 参数专题（账） |
+| --- | --- | --- |
+| 连接数打满的处置顺序 | ✅ 给步骤 | 不重复 |
+| 一个空闲连接占多少内存 | 给经验值 | ✅ 给实测（2.65 MB） |
+| `max_connections` 与并行度、`work_mem` 的关系 | — | ✅ 给上界算式 |
+
+**这一页特有的一个坑**：按「空闲连接 2.65 MB」估算总内存。本机实测（PostgreSQL 18.6，基线 153.5 MiB，开 50 个连接各 `pg_sleep(25)` 后 286.1 MiB）每个空闲连接约 **2.65 MB**，但连接一旦开始跑排序，还要额外拿 `work_mem`，走并行时**每个 worker 再拿一份**。上界是 `连接数 × 2.7 MB + 活跃并发 × work_mem × (1 + 并行度)`，第二项才是大头。

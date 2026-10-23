@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">检查点：三个触发条件取最早，写入摊到 90% 窗口</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">间隔 = min(checkpoint_timeout, max_wal_size ÷ WAL 速率)——容量往往比时间先到</text>
+<rect x="36" y="94" width="280" height="70" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="48" y="118" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">时间触发</text>
+<text x="48" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">checkpoint_timeout 默认 5 min</text>
+<text x="48" y="156" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">写入慢时它先到（num_timed）</text>
+<rect x="340" y="94" width="300" height="70" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="352" y="118" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">容量触发（最容易忽略）</text>
+<text x="352" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">max_wal_size 默认 1 GB</text>
+<text x="352" y="156" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">9.4 MB/s 下只够 109 秒（num_requested）</text>
+<rect x="664" y="94" width="260" height="70" rx="6" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="676" y="118" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">手动触发</text>
+<text x="676" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">CHECKPOINT / 备份 / 关闭</text>
+<text x="676" y="156" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">能用在线备份就别手动刷</text>
+<rect x="36" y="184" width="888" height="22" rx="4" fill="#e2e8f0"/>
+<rect x="36" y="184" width="799" height="22" rx="4" fill="#bfdbfe"/>
+<text x="46" y="200" font-size="10.5" font-weight="700" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">write 摊平区：30 s × 0.9 = 27 s（实测 26.873 s / 26.356 s，占窗口 88%~90%）</text>
+<text x="842" y="200" font-size="10.5" font-weight="700" fill="#7c2d12" font-family="PingFang SC, Helvetica, Arial, sans-serif">sync</text>
+<rect x="36" y="216" width="888" height="86" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="48" y="240" font-size="12" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">本机两次检查点的日志读数</text>
+<text x="48" y="262" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">#1：wrote 1,020 buffers (6.2%)｜distance 294,117 kB｜write 26.873 s｜sync 0.294 s（14 文件）｜回收 18 段</text>
+<text x="48" y="280" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">#2：wrote 2,417 buffers (14.8%)｜distance 272,175 kB｜write 26.356 s｜sync 0.393 s（15 文件）｜回收 17 段</text>
+<text x="48" y="296" font-size="10" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">脏页量差 2.4 倍：看检查点要看一小时分布，不看单次</text>
+<rect x="36" y="316" width="432" height="90" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="48" y="340" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">默认参数的真实间隔</text>
+<text x="48" y="362" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">5 min 超时 + 1 GB 容量 → 实际每 109 秒一次</text>
+<text x="48" y="380" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">检查点越密 → FPI 越多 → WAL 涨得更快（自加速）</text>
+<text x="48" y="398" font-size="10" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">调 timeout 不调 max_wal_size 等于没调</text>
+<rect x="488" y="316" width="436" height="90" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.2"/>
+<text x="500" y="340" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一代价：恢复时间</text>
+<text x="500" y="362" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">恢复 ≈ distance ÷ 重放速率（50~200 MB/s）</text>
+<text x="500" y="380" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">294 MB → 1.5~6 s；12 GB → 1~4 min</text>
+<text x="500" y="398" font-size="10" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">调参单必须同时写「间隔」与「最坏恢复时间」</text>
+</svg>

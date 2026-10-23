@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">数据库参数与内核调优：专题地图</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">十个页面沿着「预算 → 节奏 → 并发 → 维护 → 验证」排布，每一页都有实测读数与 8 条判据</text>
+<rect x="36" y="92" width="200" height="60" rx="6" fill="#1d4ed8"/>
+<text x="48" y="118" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">总览（TPO）</text>
+<text x="48" y="138" font-size="10" fill="#dbeafe" font-family="PingFang SC, Helvetica, Arial, sans-serif">四类参数 · 五个必失点</text>
+<rect x="256" y="92" width="200" height="60" rx="6" fill="#0f766e"/>
+<text x="268" y="118" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">内存预算（TPB）</text>
+<text x="268" y="138" font-size="10" fill="#ccfbf1" font-family="PingFang SC, Helvetica, Arial, sans-serif">命中率 82.57% → 98.04%</text>
+<rect x="476" y="92" width="200" height="60" rx="6" fill="#0f766e"/>
+<text x="488" y="118" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">work_mem（TPW）</text>
+<text x="488" y="138" font-size="10" fill="#ccfbf1" font-family="PingFang SC, Helvetica, Arial, sans-serif">切换点 96~128 MB</text>
+<rect x="696" y="92" width="228" height="60" rx="6" fill="#b45309"/>
+<text x="708" y="118" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">检查点节奏（TPC）</text>
+<text x="708" y="138" font-size="10" fill="#fef3c7" font-family="PingFang SC, Helvetica, Arial, sans-serif">write 占窗口 88%~90%</text>
+<rect x="36" y="180" width="288" height="60" rx="6" fill="#b91c1c"/>
+<text x="48" y="206" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">写放大（TPA）</text>
+<text x="48" y="226" font-size="10" fill="#fee2e2" font-family="PingFang SC, Helvetica, Arial, sans-serif">WAL 里 96% 是整页副本 · zstd 约 9:1</text>
+<rect x="340" y="180" width="288" height="60" rx="6" fill="#6d28d9"/>
+<text x="352" y="206" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">并发参数（TPN）</text>
+<text x="352" y="226" font-size="10" fill="#ede9fe" font-family="PingFang SC, Helvetica, Arial, sans-serif">空闲连接 2.65 MB · 并行 2.74×</text>
+<rect x="644" y="180" width="280" height="60" rx="6" fill="#15803d"/>
+<text x="656" y="206" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">维护参数（TPM）</text>
+<text x="656" y="226" font-size="10" fill="#dcfce7" font-family="PingFang SC, Helvetica, Arial, sans-serif">膨胀 1.93× · 建索引快 1.94×</text>
+<rect x="36" y="268" width="424" height="60" rx="6" fill="#334155"/>
+<text x="48" y="294" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">压测驱动的调参（TPL）</text>
+<text x="48" y="314" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">同配置五次极差 23.6% → 单次读数不可信</text>
+<rect x="476" y="268" width="212" height="60" rx="6" fill="#334155"/>
+<text x="488" y="294" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">实战（TPX）</text>
+<text x="488" y="314" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">S1~S10 + 四条反向</text>
+<rect x="704" y="268" width="220" height="60" rx="6" fill="#334155"/>
+<text x="716" y="294" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">FAQs（TPQ）</text>
+<text x="716" y="314" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">十类症状分诊</text>
+<rect x="36" y="356" width="888" height="112" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="48" y="380" font-size="12" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">相邻专题（本专题只补「参数决策」，不重复机制）</text>
+<text x="48" y="402" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">内核机制 → DB/DatabaseInternals（BufferPool / WalRecovery）｜慢查询 → DB/Relational/SQLOptimization</text>
+<text x="48" y="422" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">压测方案 → Ops/PerformanceEngineering｜连接池 → DB/ConnectionPool、DB/Middleware/ConnectionGovernance</text>
+<text x="48" y="442" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">改表 → DB/SchemaEvolution｜升级 → Ops/DatabaseUpgrade｜成本 → Ops/CapacityCost｜项目落地 → EventOrderHub</text>
+<text x="48" y="460" font-size="10" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">定位：不回答「参数是什么意思」，回答「这台机器、这个负载下，动哪个、动多少、怎么证明有效」</text>
+</svg>

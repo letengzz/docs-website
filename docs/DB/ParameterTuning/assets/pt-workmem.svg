@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">work_mem：三层乘数与一个切换点</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">它是「每个排序节点」的上限，不是「每条查询」的上限；装不下就整批写盘，不会用一半</text>
+<rect x="36" y="94" width="888" height="64" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="48" y="118" font-size="12" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">总内存上界 ≈ work_mem × 节点数 × 并发连接数 × (1 + 并行 worker 数)</text>
+<text x="48" y="140" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">默认值代入 (1+2)×4MB×100 + 128MB ≈ 1.3 GB；work_mem 提到 64MB 而其余不动 → 19.3 GB</text>
+<rect x="36" y="172" width="426" height="120" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="48" y="196" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">落盘区（工作集 108 MB）</text>
+<text x="48" y="218" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">1MB / 4MB / 16MB / 32MB / 64MB / 96MB</text>
+<text x="48" y="236" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">全部 external merge，落盘 77,304~77,344 kB</text>
+<text x="48" y="254" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">耗时 3,226~3,914 ms（差异落在噪声带）</text>
+<text x="48" y="276" font-size="10" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">96 倍参数变化，一次都没切进内存</text>
+<rect x="480" y="172" width="444" height="120" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="492" y="196" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">内存区（需要 108 MB，落盘只需 75 MB）</text>
+<text x="492" y="218" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">128MB / 192MB / 256MB → quicksort</text>
+<text x="492" y="236" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">Memory: 110,514 kB（比落盘量大 1.43 倍）</text>
+<text x="492" y="254" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">耗时 3,143~3,549 ms，只比外排快 6.2%</text>
+<text x="492" y="276" font-size="10" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">切换点在 96MB 与 128MB 之间</text>
+<rect x="36" y="306" width="888" height="96" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="48" y="330" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">8 并发排序的真实内存（基线 457.3 MiB）</text>
+<text x="48" y="352" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">work_mem 4MB → 峰值 587.4 MiB（+130 MB）｜64MB → 1.036 GiB（+604 MB）｜256MB → 1.372 GiB（+948 MB）</text>
+<text x="48" y="373" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">参数 ×16 → 内存增量 ×4.6，而耗时 −6%（噪声内）：「买不到速度，只买到不写盘」</text>
+<text x="48" y="392" font-size="10.5" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">并行 worker 各拿一份：work_mem=4MB 时 3 个节点各落盘 25~27 MB</text>
+</svg>

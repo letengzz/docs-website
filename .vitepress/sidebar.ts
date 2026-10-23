@@ -4,7 +4,7 @@ import { Auth, ContractEvolution, DDD, DesignPatterns, DistributedCache, Distrib
 import { AI_Java, AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_EdgeInference, AI_EvalEngineering, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI, AI_SyntheticData, AI_InferenceScheduling } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontErrorTelemetry, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLocalDataStore, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, DatabaseUpgrade, CapacityCost, CertificateLifecycle, ChangeManagement, ConfigManagement, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
-import { AccessControl, BigData, CDC, ClickHouse, ConnectionPool, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, GeoMap, Lakehouse, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, SchemaEvolution, Sharding, TimeSeries, VectorDatabase } from "./db";
+import { AccessControl, BigData, CDC, ClickHouse, ConnectionPool, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, GeoMap, Lakehouse, Middleware, Neo4j, NoRelational, ParameterTuning, PartitionArchival, Relational, SQLOptimization, SchemaEvolution, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation, EngineeringMetrics, BrowserExtension, CodeSearch, DevEnvironment } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
@@ -137,7 +137,7 @@ export const sidebar = {
     {
       text: "数据库",
       collapsed: true,
-      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...DataWarehouse, ...BigData, ...ClickHouse, ...Neo4j, ...TimeSeries, ...CDC, ...VectorDatabase, ...DataGovernance, ...DatabaseInternals, ...PartitionArchival, ...FullTextSearch, ...Lakehouse, ...SchemaEvolution, ...ConnectionPool, ...AccessControl, ...GeoMap],
+      items: [...DBOverview, ...Relational, ...Middleware, ...NoRelational, ...DataModeling, ...DataWarehouse, ...BigData, ...ClickHouse, ...Neo4j, ...TimeSeries, ...CDC, ...VectorDatabase, ...DataGovernance, ...DatabaseInternals, ...ParameterTuning, ...PartitionArchival, ...FullTextSearch, ...Lakehouse, ...SchemaEvolution, ...ConnectionPool, ...AccessControl, ...GeoMap],
     },
   ],
   "/docs/Ops": [
@@ -246,6 +246,7 @@ export const sidebar = {
   "/docs/Backend/ServiceMesh": ServiceMesh,
   "/docs/Backend/MultiTenantSaaS": MultiTenantSaaS,
   "/docs/DB/Overview": DBOverview,
+  "/docs/DB/ParameterTuning": ParameterTuning,
   "/docs/DB/SchemaEvolution": SchemaEvolution,
   "/docs/DB/ConnectionPool": ConnectionPool,
   "/docs/DB/AccessControl": AccessControl,
