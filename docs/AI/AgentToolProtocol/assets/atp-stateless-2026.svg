@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">无状态协议：每个请求自带身份与能力</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">没有握手、没有会话、没有粘性路由；状态从连接里赶出去，塞回数据里</text>
+
+<rect x="36" y="150" width="150" height="120" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="111" y="186" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">Host</text>
+<text x="111" y="208" font-size="10.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">不保存会话</text>
+<text x="111" y="228" font-size="10.5" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">只持有 token</text>
+
+<rect x="240" y="96" width="300" height="76" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/>
+<text x="252" y="118" font-size="11" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 请求 #1</text>
+<text x="252" y="139" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">_meta: protocolVersion / capabilities / clientInfo</text>
+<text x="252" y="158" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">+ traceparent（OpenTelemetry 传播）</text>
+
+<rect x="240" y="184" width="300" height="76" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/>
+<text x="252" y="206" font-size="11" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 请求 #2</text>
+<text x="252" y="227" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">同一份 _meta 再带一遍（不能靠缓存）</text>
+<text x="252" y="246" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">341 B，单请求体积 +72.7%</text>
+
+<rect x="240" y="272" width="300" height="76" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/>
+<text x="252" y="294" font-size="11" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 请求 #3</text>
+<text x="252" y="315" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">版本不对 → -32022 + supported 列表</text>
+<text x="252" y="334" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">不猜、不降级、不静默</text>
+
+<line x1="186" y1="134" x2="240" y2="134" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="186" y1="222" x2="240" y2="222" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="186" y1="310" x2="240" y2="310" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+
+<rect x="600" y="104" width="150" height="60" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="675" y="130" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">实例 A</text>
+<text x="675" y="150" font-size="9.5" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">无会话内存</text>
+
+<rect x="600" y="192" width="150" height="60" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="675" y="218" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">实例 B</text>
+<text x="675" y="238" font-size="9.5" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">无会话内存</text>
+
+<rect x="600" y="280" width="150" height="60" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="675" y="306" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">实例 C</text>
+<text x="675" y="326" font-size="9.5" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">无会话内存</text>
+
+<line x1="540" y1="134" x2="600" y2="134" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="540" y1="222" x2="600" y2="222" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="540" y1="310" x2="600" y2="310" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+
+<rect x="770" y="104" width="154" height="236" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="782" y="128" font-size="11" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">server/discover</text>
+<text x="782" y="150" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">必实现：版本 / 能力 / 身份</text>
+<text x="782" y="192" font-size="9.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">返回 -32601</text>
+<text x="782" y="208" font-size="9.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">= 对面是老实现，</text>
+<text x="782" y="224" font-size="9.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">回退握手流程</text>
+<text x="782" y="252" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">这是两代协议能</text>
+<text x="782" y="268" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">共存的唯一探测点</text>
+
+<rect x="36" y="368" width="888" height="44" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="50" y="396" font-size="11" fill="#4c1d95" font-family="PingFang SC, Helvetica, Arial, sans-serif">代价换来什么：可被任意网关重试、可水平扩容、可缓存（ttlMs / cacheScope）、可被审计 —— 状态以「显式句柄」的形式回到参数里</text>
+</svg>

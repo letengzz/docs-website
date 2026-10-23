@@ -123,6 +123,7 @@ export const nav = [
       { text: "AI 安全与合规", link: "/docs/AI/AISecurityCompliance" },
       { text: "Agent 应用", link: "/docs/AI/Agent" },
       { text: "Agent 框架深入", link: "/docs/AI/AgentFramework" },
+      { text: "工具调用协议与契约", link: "/docs/AI/AgentToolProtocol" },
       { text: "AI 应用观测与评估", link: "/docs/AI/LLMObservability" },
       { text: "语音与音视频 AI", link: "/docs/AI/SpeechAudioAI" },
       { text: "企业知识库落地", link: "/docs/AI/EnterpriseKB" },

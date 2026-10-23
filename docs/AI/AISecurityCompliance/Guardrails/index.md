@@ -189,6 +189,18 @@ GUARDRAIL=off python3 -m agent.run --action close_ticket --id 42
 
 一句话边界：**护栏负责「不出事」，路由负责「出事时怎么体面地交付」**；把两者混在一起，最典型的后果是限流被当成降级、降级被当成故障。
 
+## 与「工具调用协议与契约工程」专题的分工（第 201 天补充）
+
+本页的护栏是**应用层策略**：这个工具准不准用、预算够不够、要不要审批。协议层还有一问是「这一帧以谁的名义发出」，归[委托与身份](../../AgentToolProtocol/Delegation/index.md)。
+
+| 问题 | 归本页 | 归协议专题 |
+| --- | --- | --- |
+| 该不该让这次调用发生 | 五层闸门、白名单、预算、审批 | —— |
+| 放行之后，工具拿的是谁的权限 | 通常不涉及 | [委托与身份](../../AgentToolProtocol/Delegation/index.md)：`aud` 精确匹配、拒绝 token 透传、`iss` 隔离凭据 |
+| 拒绝码怎么设计 | `GR-E` 的拒绝码集合稳定 | [同一页](../../AgentToolProtocol/Delegation/index.md)：拒绝要带 `missing_scope` / `required_scope`，否则用户只会看到「工具坏了」 |
+
+**本页特有的一个坑**：五层闸门全绿，仍然可能整片越权——如果闸门判定用的是「用户角色」，而执行时用的是「网关的宽权限 token」。实测 60 条用例（本应拒绝 31 条）：服务身份模型越权 31 条，受限期票模型 0 条。**护栏决定「让不让过」，令牌决定「过了之后能碰什么」，两者缺一不可。**
+
 ## 参考资料
 
 - [OWASP Top 10 for LLM Applications · LLM05 Improper Output Handling / LLM06 Excessive Agency](https://genai.owasp.org/llm-top-10/)：输出处理与过度自主权的定义与缓解建议

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">会话式协议的生命周期（2025-11-25 及以前）</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">先握手、再建会话，之后所有请求都活在这个会话里；2026-07-28 起整套机制已移除</text>
+
+<rect x="110" y="92" width="180" height="40" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="200" y="117" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">Client（宿主）</text>
+<rect x="630" y="92" width="180" height="40" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="720" y="117" font-size="12" font-weight="700" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">Server（工具方）</text>
+<line x1="200" y1="132" x2="200" y2="392" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 5"/>
+<line x1="720" y1="132" x2="720" y2="392" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 5"/>
+
+<line x1="200" y1="164" x2="712" y2="164" stroke="#475569" stroke-width="1.5" marker-end="url(#ah)"/>
+<text x="212" y="158" font-size="11" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">initialize（protocolVersion + capabilities + clientInfo）</text>
+
+<line x1="720" y1="204" x2="208" y2="204" stroke="#475569" stroke-width="1.5" marker-end="url(#ah)"/>
+<text x="300" y="198" font-size="11" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">result（协商后的版本 + 服务端能力 + serverInfo）</text>
+
+<line x1="200" y1="244" x2="712" y2="244" stroke="#6d28d9" stroke-width="1.5" marker-end="url(#ah)"/>
+<text x="212" y="238" font-size="11" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">notifications/initialized（无 id、无响应；漏发会在严格实现上全盘失败）</text>
+
+<line x1="200" y1="290" x2="712" y2="290" stroke="#475569" stroke-width="1.5" marker-end="url(#ah)"/>
+<text x="212" y="284" font-size="11" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">tools/call（此后所有请求共享会话状态）</text>
+
+<line x1="720" y1="330" x2="208" y2="330" stroke="#475569" stroke-width="1.5" marker-end="url(#ah)"/>
+<text x="330" y="324" font-size="11" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">result（content + structuredContent）</text>
+
+<rect x="252" y="350" width="416" height="46" rx="6" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="266" y="370" font-size="10.5" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">会话：stdio 靠进程本身 / HTTP 靠 Mcp-Session-Id 头</text>
+<text x="266" y="388" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">会话内可存能力、订阅与句柄 → 服务端变成有状态服务</text>
+
+<text x="832" y="168" font-size="10.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">版本不一致时</text>
+<text x="832" y="184" font-size="10.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">由客户端决定</text>
+<text x="832" y="200" font-size="10.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">降级还是断开</text>
+<text x="832" y="248" font-size="10.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">漏发 → 严格</text>
+<text x="832" y="264" font-size="10.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">实现回 -32600</text>
+</svg>

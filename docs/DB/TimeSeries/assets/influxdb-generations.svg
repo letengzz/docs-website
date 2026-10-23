@@ -37,9 +37,10 @@
     <line x1="494" y1="146" x2="512" y2="146"/>
   </g>
   <g>
-    <rect x="24" y="256" width="712" height="88" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <rect x="24" y="252" width="712" height="100" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
     <text x="44" y="282" font-size="13" fill="#0F172A" font-weight="bold">选型结论：</text>
-    <text x="44" y="306" font-size="12" fill="#334155">新项目直接用 InfluxDB 3（Core 开源版做近端高速写入，Enterprise 做长历史与集群）；存量 1.x/2.x 可按兼容写入端点迁移，迁移前先确认 Flux 任务与 Kapacitor 告警的替代方案。</text>
-    <text x="44" y="330" font-size="12" fill="#64748B">注意：InfluxDB 3 Core 不是 1.x/2.x 的"升级版直替"，是新的产品形态（无内置 Flux、无集群）。</text>
+    <text x="44" y="304" font-size="12" fill="#334155">新项目直接用 InfluxDB 3（Core 做近端高速写入，Enterprise 做长历史与集群）；</text>
+    <text x="44" y="321" font-size="12" fill="#334155">存量 1.x/2.x 可按兼容写入端点迁移，迁移前先确认 Flux 任务与 Kapacitor 告警的替代方案。</text>
+    <text x="44" y="344" font-size="12" fill="#64748B">注意：InfluxDB 3 Core 不是 1.x/2.x 的"升级版直替"，是新的产品形态（无内置 Flux、无集群）。</text>
   </g>
 </svg>

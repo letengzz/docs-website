@@ -130,6 +130,18 @@ else:
 4. 构造一个需要两次连续调用的任务（先查订单再查物流），确认循环能正确跑完且未超过步数上限。
 5. 打印每轮 `response.usage`，观察工具定义对输入令牌的影响。
 
+## 与「工具调用协议与契约工程」专题的分工（第 201 天补充）
+
+本页是**平铺式**做法：一家供应商的 API、一套 schema、五步循环。当工具变成多个 server 提供、需要跨进程调用时，就进入协议层，见[工具调用协议与契约工程](../../AgentToolProtocol/index.md)。
+
+| 问题 | 归本页 | 归协议专题 |
+| --- | --- | --- |
+| `strict` 模式怎么开 | 本页 | [工具面](../../AgentToolProtocol/Surface/index.md)：JSON Schema 2020-12 的 `integer` 语义与 `additionalProperties` |
+| 五步循环怎么写 | 本页 | [帧与传输](../../AgentToolProtocol/Transport/index.md)：帧怎么切、日志为什么不能进 stdout |
+| 工具多了怎么办 | 一句话「用工具检索」 | [同一页](../../AgentToolProtocol/Surface/index.md)：60 个工具 12.4 KB、分组/检索两档策略与「只装载部分」的兜底出口 |
+
+**本页特有的一个坑**：`strict: true` 保证的是**服务端生成的参数**符合 schema，不保证**你的服务端**在收到参数后还校验一次。模型侧的严格模式与执行侧的契约校验是两道独立闸门——实测里「只校验类型」会漏掉 6 类缺陷中的 4 类（缺必填、多字段、枚举、范围），而很多人以为 `strict` 已经兜住了。
+
 ## 参考资料
 
 - 函数调用指南：https://developers.openai.com/api/docs/guides/function-calling

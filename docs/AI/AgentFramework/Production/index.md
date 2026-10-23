@@ -111,6 +111,18 @@ CrewAI：`verbose=True` 仅用于开发；生产用回调 / 事件监听接 Lang
 - [Ops · 监控告警](../../../Ops/Monitoring/index.md)：基础设施层的监控体系
 - [AI 应用观测与评估](../../LLMObservability/index.md)：**本页的「可观测」是框架视角的操作清单（装什么、开什么开关），该专题把同一件事展开到可实施颗粒度**——六种 span kind 的划分、OTel GenAI 语义约定「全部 Development 级、不可当表结构」的现状与 `coalesce` 双字段查询、[线上采样打分](../../LLMObservability/OnlineEval/index.md)与[成本归因](../../LLMObservability/Cost/index.md)。框架回调能给你 Trace，但**评估闭环与成本语义要按那边的做法补**
 
+## 与「工具调用协议与契约工程」专题的分工（第 201 天补充）
+
+本页是**框架视角**：部署形态、装什么 SDK、开什么开关。框架之下那一层（协议帧、版本、身份）归[工具调用协议与契约工程](../../AgentToolProtocol/index.md)——换框架时那一层不变，所以更值得先读懂。
+
+| 问题 | 归本页 | 归协议专题 |
+| --- | --- | --- |
+| 工具从哪来、怎么注册 | 框架的 tool 装饰器 / 注册表 | [工具面](../../AgentToolProtocol/Surface/index.md)：命名空间与冲突、负载体积 |
+| 接一个外部 server | 框架的 MCP adapter | [两代协议](../../AgentToolProtocol/MCP2026/index.md)：`initialize` 已移除、`server/discover` 怎么探测 |
+| 为什么生产日志里「服务器返回非法响应」 | 通常查不到根因 | [帧与传输](../../AgentToolProtocol/Transport/index.md)：stdout 被日志污染是最常见的一条 |
+
+**本页特有的一个坑**：框架的 MCP adapter 大多按 `2025-11-25` 的会话式协议实现，而你新接的 server 可能是无状态的 `2026-07-28`。表现是「连上了但每个请求都报版本错」或「`tools/list` 正常、`tools/call` 全失败」。判别方法只需一条命令：发 `server/discover`，返回 `-32601` 说明对面是老实现，返回版本列表说明是新实现，两代不能混。
+
 ## 参考资料
 
 - LangGraph 部署（官方）：https://docs.langchain.com/oss/python/langgraph/deploy

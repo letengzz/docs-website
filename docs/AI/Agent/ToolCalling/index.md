@@ -87,6 +87,19 @@
 2. 输入一个“该用 A 工具”但描述含糊的问题，观察选错概率。
 3. 模拟工具失败，验证模型能否换策略或如实告知。
 
+## 与「工具调用协议与契约工程」专题的分工（第 201 天补充）
+
+本页回答「第一次怎么跑通」：schema 长什么样、描述怎么写、循环怎么转。**跑通之后要上生产**，问题会从语义层掉到协议层，那部分归[工具调用协议与契约工程](../../AgentToolProtocol/index.md)。
+
+| 问题 | 归本页 | 归协议专题 |
+| --- | --- | --- |
+| 模型选错工具 | 描述与命名建议 | [工具面](../../AgentToolProtocol/Surface/index.md)：命名空间、描述相似度实测、按需装载 |
+| 参数不对 | schema 怎么写 | [同一页](../../AgentToolProtocol/Surface/index.md)：`integer` 按值判、`additionalProperties`、全量校验成本 1.61 µs |
+| 「设超时与重试」 | 一句话建议 | [调用生命周期](../../AgentToolProtocol/Invocation/index.md)：超时 800 ms + 重试 2 次 = 执行放大 3.00×，副作用取决于幂等键 |
+| 结果怎么回填 | 用统一消息结构 | [结果回填](../../AgentToolProtocol/Result/index.md)：193 KB 结果 / 8 KB 预算下，头截断与头尾各半都会丢目标 |
+
+**本页特有的一个坑**：本页易错点第 5 条写「设超时与重试，避免 Agent 卡住」——这句话只对**读类工具**成立。写类工具在超时后重试，等于把「不知道结果」变成「再来一次副作用」；正确做法是超时后先查状态，或让工具带幂等键（业务键，不是请求 id）。
+
 ## 参考资料
 
 - OpenAI Function Calling：https://developers.openai.com/api/docs/guides/function-calling

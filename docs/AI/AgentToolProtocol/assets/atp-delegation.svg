@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">一次委托里身份的三种走向</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">同样 60 条用例（本应拒绝 31 条），三种身份模型下越权放行 31 / 10 / 0</text>
+
+<rect x="36" y="96" width="150" height="52" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="111" y="118" font-size="11.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">用户（支持）</text>
+<text x="111" y="137" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">scope: read, write</text>
+
+<rect x="36" y="176" width="150" height="52" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="111" y="198" font-size="11.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">模型（Agent）</text>
+<text x="111" y="217" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">只能请求，不能授予</text>
+
+<rect x="36" y="256" width="150" height="52" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="111" y="278" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">工具服务</text>
+<text x="111" y="297" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">校验 aud / iss / scope</text>
+
+<line x1="190" y1="122" x2="236" y2="122" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="190" y1="202" x2="236" y2="202" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+
+<rect x="240" y="96" width="330" height="76" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="252" y="118" font-size="11.5" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 服务身份（网关的大权限 token）</text>
+<text x="252" y="139" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">没有 subject：工具拿到的权限是网关的</text>
+<text x="252" y="157" font-size="10" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">越权放行 31 / 31（含 delete、vacuum）</text>
+
+<rect x="240" y="182" width="330" height="80" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="252" y="204" font-size="11.5" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 透传用户 token，不校验 aud</text>
+<text x="252" y="225" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">本域内正确拒绝 23 条，但「发给 A 的 token」</text>
+<text x="252" y="242" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">B 服务也收了 → 跨资源服务器 10 条全放</text>
+<text x="252" y="258" font-size="10" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">这正是规范点名的 token passthrough 反模式</text>
+
+<rect x="240" y="276" width="330" height="80" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="252" y="298" font-size="11.5" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 受限期票 + aud + scope 交集</text>
+<text x="252" y="319" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">sub 决定「这个人能不能用」，aud 决定</text>
+<text x="252" y="336" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">「这个服务该不该收」，scope 取最小</text>
+<text x="252" y="352" font-size="10" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">越权 0 条；代价是多一次 token 交换</text>
+
+<line x1="570" y1="134" x2="624" y2="134" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="570" y1="222" x2="624" y2="222" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="570" y1="316" x2="624" y2="316" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+
+<rect x="628" y="150" width="296" height="120" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="642" y="174" font-size="11" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">JWT 里四个字段各管一件事</text>
+<text x="642" y="196" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">sub：谁 → 映射业务角色</text>
+<text x="642" y="216" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">aud：发给谁 → 精确匹配，不做前缀</text>
+<text x="642" y="236" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">scope：能做什么 → 与工具最小 scope 取交集</text>
+<text x="642" y="256" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">iss：谁签的 → 选公钥，并隔离 client 凭据</text>
+
+<rect x="628" y="288" width="296" height="68" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="642" y="312" font-size="11" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">红线：模型不能给自己提权</text>
+<text x="642" y="333" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">任何「调一个工具来改 scope」的设计，</text>
+<text x="642" y="349" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">都等于把权限系统交给被约束者</text>
+
+<rect x="36" y="376" width="888" height="36" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="50" y="399" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">实测口径：5 个角色 × 12 个工具 = 60 条组合，本应拒绝 31 条（51.7%）；越权条数 31 / 10 / 0</text>
+</svg>

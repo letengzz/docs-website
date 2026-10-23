@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">端到端验收的十个检查点</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">112 行 server + 46 行 client，一条命令跑完；每个检查点都能单独失败、单独定位</text>
+
+<rect x="36" y="96" width="280" height="72" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="50" y="120" font-size="11.5" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">S1 · S2 协议面</text>
+<text x="50" y="141" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">server/discover 返回版本列表</text>
+<text x="50" y="158" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">tools/list 带 ttlMs 与 cacheScope</text>
+
+<rect x="340" y="96" width="280" height="72" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="354" y="120" font-size="11.5" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">S3 · S4 幂等面</text>
+<text x="354" y="141" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">正常调用返回 structuredContent</text>
+<text x="354" y="158" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">重复调用返回 deduped: true</text>
+
+<rect x="644" y="96" width="280" height="72" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="658" y="120" font-size="11.5" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">S5 · S6 拒绝面</text>
+<text x="658" y="141" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">非法参数 -32602 ARG_TYPE</text>
+<text x="658" y="158" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">未知方法 -32601 MethodNotFound</text>
+
+<rect x="36" y="188" width="280" height="72" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="50" y="212" font-size="11.5" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">S7 版本面</text>
+<text x="50" y="233" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">旧版本号进 → -32022，</text>
+<text x="50" y="250" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">并回 supported 列表</text>
+
+<rect x="340" y="188" width="280" height="72" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="354" y="212" font-size="11.5" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">S8 生命周期</text>
+<text x="354" y="233" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">关 stdin → 退出码 0，</text>
+<text x="354" y="250" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">没有僵尸进程</text>
+
+<rect x="644" y="188" width="280" height="72" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="658" y="212" font-size="11.5" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">S9 · S10 可观测</text>
+<text x="658" y="233" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">结果同时有 content 与</text>
+<text x="658" y="250" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">structuredContent；traceparent 可达</text>
+
+<line x1="316" y1="132" x2="340" y2="132" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="620" y1="132" x2="644" y2="132" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="176" y1="168" x2="176" y2="188" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="480" y1="168" x2="480" y2="188" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="784" y1="168" x2="784" y2="188" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+
+<rect x="36" y="286" width="888" height="52" rx="6" fill="#0f172a"/>
+<text x="52" y="308" font-size="10" fill="#e2e8f0" font-family="Menlo, Consolas, monospace">S1 版本发现: ['2026-07-28', '2025-11-25']</text>
+<text x="52" y="326" font-size="10" fill="#e2e8f0" font-family="Menlo, Consolas, monospace">S3 正常调用: {'count': 3, 'total': 6}    S4 重复调用: {'deduped': True}    S7 版本不匹配: -32022</text>
+
+<rect x="36" y="354" width="288" height="58" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="50" y="376" font-size="11" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">不接模型</text>
+<text x="50" y="396" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">排除语义问题，剩下都是工程问题</text>
+
+<rect x="336" y="354" width="288" height="58" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="350" y="376" font-size="11" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">不装 SDK</text>
+<text x="350" y="396" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">协议行为不依赖任何第三方实现</text>
+
+<rect x="636" y="354" width="288" height="58" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="650" y="376" font-size="11" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">不做鉴权 / 分页 / 取消</text>
+<text x="650" y="396" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">这三条是「例子到生产」的差距清单</text>
+</svg>

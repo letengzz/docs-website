@@ -185,6 +185,19 @@ grep -E 'gen_ai.usage.(input_tokens|prompt_tokens)' trace_dump.txt | wc -l   # �
 
 **本页特有的一个坑**：把「网关耗时」与「排队时间」打成一个 span，会让调度问题看起来像网络问题。本库的约定是分两个属性记：`queue_wait`（网关到准入）与 `admit_wait`（准入到进批）——前者含鉴权与网络，后者才是调度让你等的。混在一起时，调度优化做完指标不动，因为大头在网络。详见[总览](../../InferenceScheduling/Overview/index.md)。
 
+## 与「工具调用协议与契约工程」专题的分工（第 201 天补充）
+
+本页定的是 span 的形状、语义约定与采样。**跨进程那一段**——`traceparent` 怎么跟着一次工具调用走进另一个进程——归[调用生命周期](../../AgentToolProtocol/Invocation/index.md)。
+
+| 问题 | 归本页 | 归协议专题 |
+| --- | --- | --- |
+| span 怎么分层、什么 kind | 六种 span kind、GenAI 语义约定 | —— |
+| 采样怎么做、尾部采样配多少 | 本页 | —— |
+| 工具调用后 trace 为什么断成两棵 | 通常只看到「两条根」 | [调用生命周期](../../AgentToolProtocol/Invocation/index.md)：`_meta` 里的 `traceparent` / `tracestate` / `baggage` |
+| 怎么把一次业务操作的所有工具调用串起来 | 靠 `session.id` | [同一页](../../AgentToolProtocol/Invocation/index.md)：`gen_ai.tool.call.id` 与业务幂等键分开记 |
+
+**本页特有的一个坑**：`2026-07-28` 起 MCP 把 OpenTelemetry 传播字段写进了 `_meta`，但**很多客户端只在自己的进程里注入、不往子进程透传**。表现是「工具服务有 trace、宿主也有 trace，但它们是两棵树」。检查方法：工具 span 的 `parent_span_id` 是否指向宿主那次调用的 span；如果为空，说明 `traceparent` 没传过去。
+
 ## 参考资料
 
 - OpenTelemetry 语义约定（主仓库，含迁移公告）：https://github.com/open-telemetry/semantic-conventions

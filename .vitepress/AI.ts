@@ -423,3 +423,21 @@ export const AI_InferenceScheduling = [
     ],
   },
 ];
+
+export const AI_AgentToolProtocol = [
+  {
+    text: "工具调用协议与契约工程",
+    link: "/docs/AI/AgentToolProtocol/index.md",
+    items: [
+      { text: "总览：一次工具调用穿过的六段", link: "/docs/AI/AgentToolProtocol/Overview/index.md" },
+      { text: "帧与传输：JSON-RPC 在线上是什么形状", link: "/docs/AI/AgentToolProtocol/Transport/index.md" },
+      { text: "会话式协议（2025-11-25 及以前，存量）", link: "/docs/AI/AgentToolProtocol/MCP2025/index.md" },
+      { text: "无状态协议（2026-07-28 起，当前）", link: "/docs/AI/AgentToolProtocol/MCP2026/index.md" },
+      { text: "工具面：命名、契约与装配", link: "/docs/AI/AgentToolProtocol/Surface/index.md" },
+      { text: "调用生命周期：超时、取消、重试与幂等", link: "/docs/AI/AgentToolProtocol/Invocation/index.md" },
+      { text: "结果回填：截断、分页与「还差一个输入」", link: "/docs/AI/AgentToolProtocol/Result/index.md" },
+      { text: "委托与身份：token 该以谁的名义发", link: "/docs/AI/AgentToolProtocol/Delegation/index.md" },
+      { text: "实战：112 行 server + 46 行 client", link: "/docs/AI/AgentToolProtocol/Practice/index.md" },
+    ],
+  },
+];

@@ -22,4 +22,5 @@
 - [企业知识库落地](EnterpriseKB/index.md)
 - [Agent 应用](Agent/index.md)
 - [Agent 框架深入](AgentFramework/index.md)
+- [工具调用协议与契约工程](AgentToolProtocol/index.md)
 - [Java（AI 专题）](Java/index.md)

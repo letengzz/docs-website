@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img">
+<rect x="0" y="0" width="960" height="420" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">工具面的四层与两个消费者</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">模型靠前两层决定「调不调」，程序靠后两层决定「收不收」；四层都由服务端维护</text>
+
+<text x="48" y="106" font-size="11" font-weight="700" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">层</text>
+<text x="196" y="106" font-size="11" font-weight="700" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">内容</text>
+<text x="728" y="106" font-size="11" font-weight="700" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">模型可见</text>
+<text x="856" y="106" font-size="11" font-weight="700" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">程序可见</text>
+<line x1="36" y1="116" x2="924" y2="116" stroke="#cbd5e1" stroke-width="1.2"/>
+
+<rect x="36" y="126" width="660" height="52" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="48" y="150" font-size="11.5" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 标识</text>
+<text x="196" y="150" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">name（程序用，稳定）+ title（人看，可改）</text>
+<text x="196" y="168" font-size="9.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">name 一旦发布不改：审计日志、权限策略、缓存键都挂在它上面</text>
+<text x="728" y="158" font-size="13" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="856" y="158" font-size="13" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+
+<rect x="36" y="186" width="660" height="52" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="48" y="210" font-size="11.5" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 描述</text>
+<text x="196" y="210" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">用途 + 何时用 + 何时别用</text>
+<text x="196" y="228" font-size="9.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">同名工具描述相似度实测均值 0.79：只靠描述分不开，必须加前缀</text>
+<text x="728" y="218" font-size="13" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="856" y="218" font-size="13" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">✗</text>
+
+<rect x="36" y="246" width="660" height="52" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.2"/>
+<text x="48" y="270" font-size="11.5" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 输入契约</text>
+<text x="196" y="270" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">inputSchema（JSON Schema 2020-12）</text>
+<text x="196" y="288" font-size="9.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">只校验类型会漏掉 6 类缺陷里的 4 类；全量校验成本 1.61 µs</text>
+<text x="728" y="278" font-size="13" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+<text x="856" y="278" font-size="13" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+
+<rect x="36" y="306" width="660" height="52" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.2"/>
+<text x="48" y="330" font-size="11.5" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 输出契约</text>
+<text x="196" y="330" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">outputSchema + structuredContent</text>
+<text x="196" y="348" font-size="9.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">多 6% 体积，换下游不用再解析一次自然语言</text>
+<text x="728" y="338" font-size="13" fill="#f59e0b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">△</text>
+<text x="856" y="338" font-size="13" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">✓</text>
+
+<text x="712" y="396" font-size="9.5" fill="#64748b" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">读摘要、选工具</text>
+<text x="812" y="396" font-size="9.5" fill="#64748b" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">校验、消费、缓存</text>
+
+<rect x="36" y="372" width="640" height="36" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="50" y="395" font-size="10.5" fill="#92400e" font-family="PingFang SC, Helvetica, Arial, sans-serif">实测：10 个 server / 60 个工具 → 裸名冲突 3 个名字（涉及 8 个工具）；定义体积 12.4 KB（212 B/工具）</text>
+</svg>

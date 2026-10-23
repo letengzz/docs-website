@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">发货与签收：五态、一个聚合判定、三类回调异常</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">只有 SHIPPED 之前能取消；DELIVERED 只能由外部回调推进；订单完成要等全部明细签收</text>
+
+<rect x="36" y="122" width="146" height="56" rx="8" fill="#f8fafc" stroke="#334155" stroke-width="1.4"/>
+<text x="109" y="146" font-size="11.5" font-weight="700" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">CREATED</text>
+<text x="109" y="164" font-size="9.5" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">支付成功即生成</text>
+
+<rect x="216" y="122" width="146" height="56" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="289" y="146" font-size="11.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">PICKING</text>
+<text x="289" y="164" font-size="9.5" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">仓库接单拣货</text>
+
+<rect x="396" y="122" width="146" height="56" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="469" y="146" font-size="11.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">SHIPPED</text>
+<text x="469" y="164" font-size="9.5" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">有运单号才可进入</text>
+
+<rect x="576" y="122" width="146" height="56" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="649" y="146" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">DELIVERED</text>
+<text x="649" y="164" font-size="9.5" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">只由回调推进</text>
+
+<rect x="756" y="122" width="168" height="56" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="840" y="146" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">订单 COMPLETED</text>
+<text x="840" y="164" font-size="9.5" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">订单侧状态，不是发货单状态</text>
+
+<line x1="182" y1="150" x2="216" y2="150" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="362" y1="150" x2="396" y2="150" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="542" y1="150" x2="576" y2="150" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="722" y1="150" x2="756" y2="150" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+
+<text x="199" y="112" font-size="9.5" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">接单</text>
+<text x="379" y="112" font-size="9.5" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">出库+运单号</text>
+<text x="559" y="112" font-size="9.5" fill="#475569" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">签收回调</text>
+<text x="739" y="100" font-size="9.5" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">EXISTS + NOT EXISTS</text>
+<text x="739" y="112" font-size="9.5" fill="#b45309" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">全部明细签收</text>
+
+<rect x="216" y="238" width="146" height="56" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="289" y="262" font-size="11.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">CANCELED</text>
+<text x="289" y="280" font-size="9.5" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">仅 SHIPPED 之前</text>
+
+<rect x="396" y="238" width="146" height="56" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="469" y="262" font-size="11.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">EXCEPTION</text>
+<text x="469" y="280" font-size="9.5" fill="#64748b" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">拒收 / 破损 / 丢件</text>
+
+<line x1="270" y1="178" x2="278" y2="238" stroke="#b91c1c" stroke-width="1.4" marker-end="url(#ah)"/>
+<line x1="452" y1="178" x2="460" y2="238" stroke="#b91c1c" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="330" y="212" font-size="9.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">缺货 / 用户取消</text>
+<text x="486" y="212" font-size="9.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">不自动退款，进人工</text>
+
+<rect x="576" y="238" width="348" height="56" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="588" y="260" font-size="10.5" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">补发：新建 seq+1 的发货单</text>
+<text x="588" y="280" font-size="9.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">不改原单——原单是历史事实，改它就等于篡改签收记录</text>
+
+<rect x="36" y="316" width="288" height="86" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="50" y="340" font-size="11" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">重复回调</text>
+<text x="50" y="362" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一键（运单号+事件+时间）</text>
+<text x="50" y="380" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">第二次影响 0 行 = 正常返回</text>
+
+<rect x="336" y="316" width="288" height="86" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="350" y="340" font-size="11" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">乱序回调</text>
+<text x="350" y="362" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">先落日志，再补 SHIPPED，再迁</text>
+<text x="350" y="380" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">丢弃 = 这条签收永远补不回来</text>
+
+<rect x="636" y="316" width="288" height="86" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="650" y="340" font-size="11" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">回调不来</text>
+<text x="650" y="362" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">N 天无回调 → EXCEPTION + 人工</text>
+<text x="650" y="380" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">绝不自动 COMPLETED（那是资损）</text>
+</svg>

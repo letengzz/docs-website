@@ -55,11 +55,11 @@
 | [第 4 周第 3 步 · 发布与回滚](ReleaseRollback/index.md) | `ERB` | 五阶段状态机、可回滚边界、相对基线判据、回滚验证 | 8 |
 | [第 4 周第 4 步 · 对账日报与交接](ReconciliationHandover/index.md) | `ELA` | 三向差集、六类差异归口、增量+周全量、runbook 与交接验收 | 8 |
 | [第 4 周第 5 步 · 上线验收](LaunchAcceptance/index.md) | `EW4` | 三层判定、21 条验收项、六道闸门、红线与黄线、回滚预算占比 | 8 |
+| [第 3 周第 5 步 · 发货与签收](ShipmentFulfillment/index.md) | `ESF` | 发货单五态、运单号唯一、回调幂等/乱序/不来、订单完成聚合判定 | 8 |
 
-后续 3 章（判据族已预留，交付时补条数）：
+后续 2 章（判据族已预留，交付时补条数）：
 
-- 发货与签收（判据族 `ESF`：发货单、签收、异常件）
-- 补偿与对账（判据族 `ERC`：补偿动作、对账日报）
+- 补偿与对账（判据族 `ERC`：补偿动作、退款与部分退款）
 - 第 2 周验收（判据族 `EW2`：第 2 周六项验收）
 
 > 章节按天推进，**每章都自带「如何验证」**：读者按页面里的命令跑一遍，应得到页面写明的读数。项目目录只放 Markdown 与配图，不放任何工程文件。
@@ -545,6 +545,43 @@ grep -c "⏳" project/Complete/EventOrderHub/LaunchAcceptance/index.md
 
 **下一步**（第 201 天）：补 `ESF` 发货与签收（发货单 / 签收 / 异常件）与 `ERC` 补偿动作两处缺口，并把 G2、G3 两条黄线的补偿动作在 7 天内结清；退款与部分退款需新增一条状态迁移，属下一个迭代的第一项。
 
-## 二十三、判据纪律
+## 二十三、第 201 天交付（第 3 周第 5 步 · 发货与签收）
+
+- 新建 [第 3 周第 5 步 · 发货与签收](ShipmentFulfillment/index.md)（判据 `ESF-A` ~ `ESF-H`），配图 `eoh-shipment.svg`（五态状态机 + 三类回调异常）。
+- **补的是主线的最后一截**：`payment.succeeded` 之后订单并不会自己完成，必须有「发货 → 签收」这一段。这一步之前，`SHIPPED` 与 `COMPLETED` 之间的迁移在文档里是悬空的。
+- **两张表、一条拆单规则**：`shipment` 按**仓**拆（不按商品），唯一键 `(order_id, warehouse_id, seq)`；`tracking_no` 用**部分唯一索引**（`WHERE tracking_no IS NOT NULL`），否则「多个 NULL」的语义在库与库之间不一致。
+- **回调日志的唯一键是三元组** `(tracking_no, event, occurred_at)`。只用运单号去重会把「先发车、后签收」的第二个事件吃掉——这是本步最容易写错的一行 DDL。
+- **`SHIPPED` 只能内部触发**，回调只能推 `SHIPPED → DELIVERED/EXCEPTION`。否则伪造一条「已发货」回调就能跳过出库环节。
+- **订单完成的聚合判定用 `EXISTS` + `NOT EXISTS` 两条**：少了前者，零发货单的订单（虚拟商品）会被判成「全部签收」；少了后者，任意一张签收就完成。**不要用「签收计数 = 明细总数」**——那是两个计数器必须严格同步，任何一处漏更新就永久偏。
+- **三类回调异常各有写法**：重复（唯一键 + `ON CONFLICT DO NOTHING`，第二次影响 0 行是正常返回）、乱序（先落日志，再补 `SHIPPED`，再迁 `DELIVERED`；丢弃等于永久丢失）、不来（N 天无回调 → `EXCEPTION` + 人工，**绝不自动 `COMPLETED`**，那是资损）。
+- **与超时关单互斥**：关单 SQL 补 `NOT EXISTS (shipment)`，防的是人工改单 / 数据修复造出的「未支付但有发货单」脏数据。
+- **补偿方式是不改原单**：少件补发新建 `seq+1` 的发货单；原单是历史事实，改它等于篡改签收记录。
+
+**如何验证**（读者可执行）：
+
+```shell
+# 1) 支付事件幂等：投两次只生成一张发货单
+curl -s -X POST localhost:8080/internal/events/replay -d '{"topic":"payment.succeeded","order_id":3001}'
+curl -s -X POST localhost:8080/internal/events/replay -d '{"topic":"payment.succeeded","order_id":3001}'
+psql -U postgres -d eoh -Atc "select count(*) from shipment where order_id=3001;"
+# 期望：1
+
+# 2) 重复签收回调：发三次，日志只有一行
+for i in 1 2 3; do curl -s -X POST localhost:8080/api/callback/carrier \
+  -H 'Content-Type: application/json' \
+  -d '{"tracking_no":"SF1000003001","event":"DELIVERED","occurred_at":"2026-10-24T10:00:00Z","signed_by":"本人"}' >/dev/null; done
+psql -U postgres -d eoh -Atc "select count(*) from shipment_callback_log where tracking_no='SF1000003001';"
+# 期望：1
+
+# 3) 三条不变量（I1/I2/I3）一次跑完
+psql -U postgres -d eoh -Atc "select count(*) from shipment where status='DELIVERED' and (tracking_no is null or delivered_at is null);"
+psql -U postgres -d eoh -Atc "select count(*) from orders o where o.status='COMPLETED' and exists (select 1 from shipment s join shipment_item si on si.shipment_id=s.id where s.order_id=o.id and s.status not in ('CANCELED') and s.status<>'DELIVERED');"
+psql -U postgres -d eoh -Atc "select count(*) from (select tracking_no from shipment where tracking_no is not null and status<>'CANCELED' group by 1 having count(*)>1) t;"
+# 期望：0 / 0 / 0
+```
+
+**下一步**（第 202 天）：补 `ERC` 补偿动作（退款与部分退款、退货入库），并收拢 `EW2` 第 2 周验收；G2、G3 两条黄线的补偿动作仍在 7 天窗口内。
+
+## 二十四、判据纪律
 
 每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMT` / `ERB` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。

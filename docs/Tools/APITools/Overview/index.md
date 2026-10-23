@@ -117,6 +117,18 @@
 - [IDE 配置 · 配置同步与团队统一](../../IDE/ConfigSync/index.md)：接口调试用的 token、临时地址不要写进提交的配置文件，改用环境变量。
 - [IDE 配置 · 远程开发与容器化环境](../../IDE/RemoteDev/index.md)：调容器里的服务时，端口转发与 `portsAttributes` 能省掉大量手改地址的时间。
 
+## 与「工具调用协议与契约工程」专题的分工（第 201 天补充）
+
+本页是**人工调试**的工具链：Postman / Apifox / curl 怎么配环境、怎么存集合、怎么做 Mock。当这些接口被「模型」调用时，多出一层协议，见[工具调用协议与契约工程](../../../AI/AgentToolProtocol/index.md)。
+
+| 问题 | 归本页 | 归协议专题 |
+| --- | --- | --- |
+| 集合怎么组织、环境变量怎么切 | 本页 | —— |
+| 为什么同一个接口在 Apifox 里通、被模型调就失败 | 常见但难查 | [帧与传输](../../../AI/AgentToolProtocol/Transport/index.md)：参数是「文本里的 JSON」，可能带代码块或未转义引号 |
+| Mock 与契约仿真 | 本页 | [工具面](../../../AI/AgentToolProtocol/Surface/index.md)：`additionalProperties` 与 `integer` 边界（`100.0` 该不该收） |
+
+**本页特有的一个坑**：Apifox / Postman 的「参数校验」通常只校验**必填**，不校验 `additionalProperties` 与范围。用它跑通的用例，直接拿去当工具契约的验收会漏掉一半缺陷——实测六类缺陷里，只校验类型只能拦住 2 类。
+
 ## 参考资料
 
 - Postman 官方文档：<https://learning.postman.com/>

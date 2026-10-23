@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">工具调用协议与契约工程 · 专题地图</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">九页分三圈：链路怎么走、协议怎么说、身份算谁的</text>
+
+<rect x="36" y="96" width="270" height="86" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="50" y="122" font-size="12.5" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">总览 · ATO</text>
+<text x="50" y="146" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">六段链路 + 三个交界</text>
+<text x="50" y="166" font-size="10.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">先定位「这段该谁修」</text>
+
+<rect x="336" y="96" width="270" height="86" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="350" y="122" font-size="12.5" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">帧与传输 · ATT</text>
+<text x="350" y="146" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">JSON-RPC 形状、换行分界</text>
+<text x="350" y="166" font-size="10.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">98.3% 的切点会炸</text>
+
+<rect x="636" y="96" width="270" height="86" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="650" y="122" font-size="12.5" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">两代协议 · AT5 / AT6</text>
+<text x="650" y="146" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">会话式（存量）vs 无状态</text>
+<text x="650" y="166" font-size="10.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">按版本目录分开存留</text>
+
+<line x1="306" y1="139" x2="336" y2="139" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="606" y1="139" x2="636" y2="139" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+
+<rect x="36" y="212" width="270" height="86" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="50" y="238" font-size="12.5" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">工具面 · ATS</text>
+<text x="50" y="262" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">命名空间、schema 严格度</text>
+<text x="50" y="282" font-size="10.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">60 个工具 12.4 KB</text>
+
+<rect x="336" y="212" width="270" height="86" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="350" y="238" font-size="12.5" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">调用生命周期 · ATV</text>
+<text x="350" y="262" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">超时、取消、重试、幂等</text>
+<text x="350" y="282" font-size="10.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">执行放大 2.04× 与 3.00×</text>
+
+<rect x="636" y="212" width="270" height="86" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="650" y="238" font-size="12.5" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">结果回填 · ATR</text>
+<text x="650" y="262" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">截断、分页、MRTR</text>
+<text x="650" y="282" font-size="10.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">193 KB 结果 / 8 KB 预算</text>
+
+<rect x="36" y="328" width="420" height="70" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="50" y="354" font-size="12.5" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">委托与身份 · ATZ</text>
+<text x="50" y="378" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">audience / iss / 最小 scope：越权条数 31 → 10 → 0</text>
+
+<rect x="486" y="328" width="420" height="70" rx="8" fill="#f8fafc" stroke="#334155" stroke-width="1.4"/>
+<text x="500" y="354" font-size="12.5" font-weight="700" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">实战 · ATX</text>
+<text x="500" y="378" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">112 行 server + 46 行 client，十条验收一次跑完</text>
+</svg>

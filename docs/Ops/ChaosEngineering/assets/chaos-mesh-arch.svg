@@ -20,10 +20,11 @@
   <text x="700" y="174" text-anchor="middle" font-size="13" fill="#334155">可选组件（2.7.3 起 ctrl server</text>
   <text x="700" y="196" text-anchor="middle" font-size="13" fill="#64748B">默认关闭）</text>
 
-  <rect x="60" y="270" width="760" height="90" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <rect x="60" y="270" width="760" height="112" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
   <text x="90" y="300" font-size="15" font-weight="bold" fill="#1E293B">用户侧入口（声明式 CRD）</text>
-  <text x="90" y="328" font-size="13.5" fill="#334155">PodChaos / NetworkChaos / StressChaos / IOChaos / TimeChaos / KernelChaos / DNSChaos / HTTPChaos / JVMChaos / PhysicalMachineChaos + Schedule + Workflow + StatusCheck</text>
-  <text x="90" y="350" font-size="13" fill="#64748B">实验即资源：可用 kubectl / GitOps 管理，天然幂等、可审计、可回滚</text>
+  <text x="90" y="324" font-size="13" fill="#334155">PodChaos / NetworkChaos / StressChaos / IOChaos / TimeChaos / KernelChaos</text>
+  <text x="90" y="344" font-size="13" fill="#334155">DNSChaos / HTTPChaos / JVMChaos / PhysicalMachineChaos + Schedule + Workflow</text>
+  <text x="90" y="366" font-size="13" fill="#64748B">实验即资源：可用 kubectl / GitOps 管理，天然幂等、可审计、可回滚</text>
 
   <line x1="180" y1="210" x2="180" y2="265" stroke="#94A3B8" stroke-width="3" marker-end="url(#a3)"/>
   <line x1="440" y1="210" x2="440" y2="265" stroke="#94A3B8" stroke-width="3" marker-end="url(#a3)"/>
