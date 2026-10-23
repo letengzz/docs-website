@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">准入与排队：三个口径与两道闸</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">队列不是缓冲，是延迟的蓄水池——上限决定 p99，负载只决定它有多快撞上上限</text>
+<rect x="36" y="100" width="250" height="96" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="48" y="124" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 按请求数</text>
+<text x="48" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">in_flight &lt; max_concurrency</text>
+<text x="48" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">实现最简单</text>
+<rect x="300" y="100" width="250" height="96" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="312" y="124" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 按 token 数</text>
+<text x="312" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">Σ(prompt + max_tokens) &lt; 预算</text>
+<text x="312" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">挡住大 prompt 洪水</text>
+<rect x="564" y="100" width="250" height="96" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="576" y="124" font-size="12" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 按 KV 块数</text>
+<text x="576" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">free_blocks ≥ ceil(len/16)</text>
+<text x="576" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一不会 OOM 的口径</text>
+<line x1="286" y1="148" x2="300" y2="148" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="550" y1="148" x2="564" y2="148" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="36" y="216" width="778" height="70" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="48" y="240" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">三闸取最严的那个 → 拒绝</text>
+<text x="48" y="262" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">429 + Retry-After（队列满）／ 503 + Retry-After（未就绪）／ 400（请求本身错，不重试）</text>
+<rect x="36" y="306" width="380" height="96" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="48" y="330" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">队列上限 8</text>
+<text x="48" y="352" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">拒绝 14.80% / p99 1,095 ms</text>
+<text x="48" y="369" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">接了少数、拒了多数，但延迟可控</text>
+<rect x="434" y="306" width="380" height="96" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="446" y="330" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">队列上限 1024</text>
+<text x="446" y="352" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">拒绝 4.07% / p99 108,113 ms</text>
+<text x="446" y="369" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">多接 10 个百分点，p99 涨 90 倍</text>
+</svg>

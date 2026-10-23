@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="450" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">KV 缓存：块分配、碎片与抢占</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">能同时服务多少人，几乎完全由 KV 缓存怎么管决定——而不是由算力决定</text>
+<rect x="36" y="100" width="424" height="96" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="48" y="124" font-size="12" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">一个 token 的 KV = 2 × 层 × KV头 × head_dim × 字节</text>
+<text x="48" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">32 层 / 8 头 / 128 维 / FP16 = 128 KiB</text>
+<text x="48" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">8k 上下文 = 1 GiB / 请求</text>
+<rect x="476" y="100" width="448" height="96" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="488" y="124" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">分页：块可以不连续，用块表映射</text>
+<text x="488" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">块 16：浪费 1.19%、块表 131 万项</text>
+<text x="488" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">块 128：浪费 10.1%、块表 17 万项</text>
+<rect x="36" y="216" width="288" height="100" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="48" y="240" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 拒绝新请求</text>
+<text x="48" y="262" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">代价：新请求失败</text>
+<text x="48" y="279" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">适用于有准入层</text>
+<rect x="336" y="216" width="288" height="100" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="348" y="240" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 换出 swap</text>
+<text x="348" y="262" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">代价：两次 PCIe 拷贝</text>
+<text x="348" y="279" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">适合 host 内存富余</text>
+<rect x="636" y="216" width="288" height="100" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="648" y="240" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 重算 recompute</text>
+<text x="648" y="262" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">代价：重 prefill 整段上下文</text>
+<text x="648" y="279" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">默认选择，最简单</text>
+<rect x="36" y="336" width="888" height="84" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="48" y="360" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">重算成本随前缀命中率剧烈变化（1024 token 上下文）</text>
+<text x="48" y="382" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">命中 0% → 重算 1,024 tok / 67.8 ms　　命中 50% → 512 tok / 37.1 ms　　命中 90% → 102 tok / 12.5 ms</text>
+</svg>

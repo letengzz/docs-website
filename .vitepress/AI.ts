@@ -405,3 +405,21 @@ export const AI_Java = [
     link: "/docs/AI/Java/index.md",
   },
 ];
+
+export const AI_InferenceScheduling = [
+  {
+    text: "推理请求调度与批处理",
+    link: "/docs/AI/InferenceScheduling/index.md",
+    items: [
+      { text: "总览：一次推理请求穿过的七段", link: "/docs/AI/InferenceScheduling/Overview/index.md" },
+      { text: "准入与排队：把「无限等待」换成「明确失败」", link: "/docs/AI/InferenceScheduling/Admission/index.md" },
+      { text: "批处理成形：批大小是等出来的", link: "/docs/AI/InferenceScheduling/Batching/index.md" },
+      { text: "KV 缓存调度：块、抢占与前缀复用", link: "/docs/AI/InferenceScheduling/KVCache/index.md" },
+      { text: "服务分级：TTFT 与 TPOT 是两种合同", link: "/docs/AI/InferenceScheduling/SLO/index.md" },
+      { text: "冷启动与弹性：加载时间不属于推理", link: "/docs/AI/InferenceScheduling/ColdStart/index.md" },
+      { text: "过载保护：超时越紧，放大越狠", link: "/docs/AI/InferenceScheduling/Overload/index.md" },
+      { text: "容量换算：从 tok/s 到卡数", link: "/docs/AI/InferenceScheduling/Capacity/index.md" },
+      { text: "实战：单机到集群的可验收路径", link: "/docs/AI/InferenceScheduling/Practice/index.md" },
+    ],
+  },
+];

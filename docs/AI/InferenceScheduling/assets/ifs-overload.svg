@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">过载的三种形态与降级阶梯</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">推理服务不会立刻失败，只会变慢——所以过载时最危险的动作是「重试」</text>
+<rect x="36" y="100" width="288" height="96" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="48" y="124" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">到达率过载</text>
+<text x="48" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">队列深度线性涨</text>
+<text x="48" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">处置：收紧准入 → 降级 → 扩容</text>
+<rect x="336" y="100" width="288" height="96" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="348" y="124" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">容量过载</text>
+<text x="348" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">5xx / 健康检查失败</text>
+<text x="348" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">处置：熔断摘除 → 切备用</text>
+<rect x="636" y="100" width="288" height="96" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="648" y="124" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">慢查询过载</text>
+<text x="648" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">均值正常、p99 爆</text>
+<text x="648" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">处置：限 max_tokens、独立队列</text>
+<rect x="36" y="214" width="888" height="76" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="48" y="238" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">重试放大：超时越紧，服务端越忙</text>
+<text x="48" y="260" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">20 s → 1.00×　　3 s → 3.58×　　1.2 s → 3.79×　　0.8 s → 3.90×</text>
+<rect x="36" y="310" width="888" height="108" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="48" y="334" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">降级阶梯 L0 → L4（每级都要写「恢复条件」）</text>
+<text x="48" y="356" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">L0 收紧准入　　L1 缩 max_tokens　　L2 关可选能力　　L3 切小模型　　L4 只保高优先级</text>
+</svg>

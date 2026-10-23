@@ -115,6 +115,7 @@ export const nav = [
       { text: "多模态检索与重排", link: "/docs/AI/MultimodalRetrieval" },
       { text: "大模型微调", link: "/docs/AI/FineTuning" },
       { text: "本地模型部署", link: "/docs/AI/LocalModel" },
+      { text: "推理调度与批处理", link: "/docs/AI/InferenceScheduling" },
       { text: "OpenClaw", link: "/docs/AI/OpenClaw" },
       { text: "提示词工程", link: "/docs/AI/PromptEngineering" },
       { text: "提示词安全与评估", link: "/docs/AI/PromptSecurity" },

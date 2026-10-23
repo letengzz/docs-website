@@ -175,6 +175,16 @@ grep -E 'gen_ai.usage.(input_tokens|prompt_tokens)' trace_dump.txt | wc -l   # �
 
 一句话边界：**trace 记录「发生了什么」，路由可观测记录「为什么这样选」**；后者少一个字段，灰度门禁就无法按原因回滚。
 
+## 与「推理请求调度与批处理」专题的分工
+
+| 问题 | 本页回答 | 调度专题回答 |
+| --- | --- | --- |
+| 一次请求经过哪些 span | ✅ 链路追踪与父子关系 | ✅ 四个读数的打点位置与口径 |
+| 排队时间算谁的 | 只作为 span 属性 | ✅ 明确 `queue_wait` 与 `admit_wait` 的区别 |
+| 怎么从 trace 看出瓶颈 | ✅ 按 span 耗时排序 | ✅ 用批大小与 KV 指标判根因 |
+
+**本页特有的一个坑**：把「网关耗时」与「排队时间」打成一个 span，会让调度问题看起来像网络问题。本库的约定是分两个属性记：`queue_wait`（网关到准入）与 `admit_wait`（准入到进批）——前者含鉴权与网络，后者才是调度让你等的。混在一起时，调度优化做完指标不动，因为大头在网络。详见[总览](../../InferenceScheduling/Overview/index.md)。
+
 ## 参考资料
 
 - OpenTelemetry 语义约定（主仓库，含迁移公告）：https://github.com/open-telemetry/semantic-conventions

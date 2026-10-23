@@ -163,6 +163,16 @@
 专题详见 [多租户 SaaS 架构](../MultiTenantSaaS/index.md) 的 [噪声邻居](../MultiTenantSaaS/NoisyNeighbor/index.md)。
 
 
+## 与「推理请求调度与批处理」专题的分工
+
+| 问题 | 本页回答 | 调度专题回答 |
+| --- | --- | --- |
+| 通用的限流、熔断、隔离 | ✅ 手段全家桶 | 只补推理特有的两条 |
+| 过载时为什么越重试越慢 | 提到重试要退避 | ✅ 放大倍数的实测与算式 |
+| 超时怎么设 | 一般原则 | ✅ 逐跳递减 + 截止时间传播 |
+
+**本页特有的一个坑**：通用服务过载会「拒绝连接」，推理服务过载只会「变慢」——这个差别让重试的破坏力完全不同。实测（200 客户端、最多 3 次重试）：客户端超时从 20 s 收到 3 s，打到服务端的请求量放大 **3.58 倍**；收到 0.8 s 放大 **3.90 倍**。所以推理服务的重试上限应当比其他服务更严（≤2 次），且必须带 full jitter。详见[过载保护](../../AI/InferenceScheduling/Overload/index.md)。
+
 ## 参考资料
 
 - [nginx `ngx_http_limit_req_module` 官方文档](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html)

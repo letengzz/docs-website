@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">一次推理请求穿过的七段</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">前两段决定「接不接」，中间三段决定「快不快」，最后一段决定「用户什么时候看到第一个字」</text>
+<rect x="36" y="100" width="118" height="84" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="48" y="124" font-size="12" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 接入</text>
+<text x="48" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">鉴权/限流</text>
+<line x1="154" y1="142" x2="164" y2="142" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="164" y="100" width="118" height="84" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="176" y="124" font-size="12" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 准入</text>
+<text x="176" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">三闸取严</text>
+<line x1="282" y1="142" x2="292" y2="142" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="292" y="100" width="118" height="84" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="304" y="124" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 排队</text>
+<text x="304" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">选谁进批</text>
+<line x1="410" y1="142" x2="420" y2="142" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="420" y="100" width="118" height="84" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="432" y="124" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 批成形</text>
+<text x="432" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">连续/静态</text>
+<line x1="538" y1="142" x2="548" y2="142" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="548" y="100" width="118" height="84" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="560" y="124" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑤ prefill</text>
+<text x="560" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">算力受限</text>
+<line x1="666" y1="142" x2="676" y2="142" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="676" y="100" width="118" height="84" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="688" y="124" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑥ decode</text>
+<text x="688" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">带宽受限</text>
+<line x1="794" y1="142" x2="804" y2="142" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="804" y="100" width="118" height="84" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="816" y="124" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑦ 回传</text>
+<text x="816" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">流式分块</text>
+<rect x="36" y="212" width="420" height="92" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="48" y="236" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑤ prefill：矩阵乘，算力受限</text>
+<text x="48" y="258" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">长 prompt 直接决定 TTFT</text>
+<text x="48" y="275" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">8k 上下文 ≈ 480 ms（0.06 ms/token）</text>
+<rect x="476" y="212" width="448" height="92" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="488" y="236" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑥ decode：每步读权重 + 整份 KV，带宽受限</text>
+<text x="488" y="258" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">加大算力几乎无效，只有「每步更多 token」才降单位成本</text>
+<text x="488" y="275" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">batch=1 → 157 tok/s；batch=8 → 909 tok/s</text>
+<rect x="36" y="322" width="888" height="74" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="48" y="346" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一能「立刻失败」的两段是 ② 与 ⑦</text>
+<text x="48" y="368" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">其余五段只能等——所以过载时的可控性全押在准入与回传上</text>
+</svg>

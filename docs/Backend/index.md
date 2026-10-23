@@ -31,3 +31,4 @@
 - [分布式调度与任务编排](DistributedScheduling/index.md)
 - [事件溯源与 CQRS](EventSourcing/index.md)
 - [多租户 SaaS 架构](MultiTenantSaaS/index.md)
+- [服务网格与东西向流量](ServiceMesh/index.md)

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">从单机到集群的五步路径</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">先加副本再谈调度，等于在没量过容量之前先付钱</text>
+<rect x="36" y="100" width="168" height="84" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="48" y="124" font-size="12" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 起服务</text>
+<text x="48" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">流式先通</text>
+<line x1="204" y1="142" x2="214" y2="142" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="214" y="100" width="168" height="84" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="226" y="124" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 打点</text>
+<text x="226" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">四个读数</text>
+<line x1="382" y1="142" x2="392" y2="142" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="392" y="100" width="168" height="84" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="404" y="124" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 扫拐点</text>
+<text x="404" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">λ 扫描</text>
+<line x1="560" y1="142" x2="570" y2="142" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="570" y="100" width="168" height="84" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="582" y="124" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 定阈值</text>
+<text x="582" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">三个算式</text>
+<line x1="738" y1="142" x2="748" y2="142" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="748" y="100" width="168" height="84" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="760" y="124" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑤ 加副本</text>
+<text x="760" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">容量表</text>
+<rect x="36" y="212" width="424" height="104" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="48" y="236" font-size="12" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">先做的三件事</text>
+<text x="48" y="258" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">起服务→流式验证→客户端采 TPOT</text>
+<text x="48" y="275" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">顺序反了，后面全是假数</text>
+<rect x="476" y="212" width="448" height="104" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="488" y="236" font-size="12" font-weight="700" fill="#6d28d9" font-family="PingFang SC, Helvetica, Arial, sans-serif">后做的两件事</text>
+<text x="488" y="258" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">扫拐点定可用容量</text>
+<text x="488" y="275" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">再按容量表算副本数与余量</text>
+<rect x="36" y="332" width="888" height="92" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="48" y="356" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">S1~S10 验收：每条都要「命令 + 预期输出」</text>
+<text x="48" y="378" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">流式生效 / 四读数 / 拐点表 / 准入三闸 / 拒绝分层 / 超时递减 / 重试≤2 / 就绪闸门 / 抢占可控 / 容量可复算</text>
+</svg>

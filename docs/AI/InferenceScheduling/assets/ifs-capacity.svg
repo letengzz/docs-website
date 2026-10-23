@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">容量换算三步与三个不同的吞吐口径</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">压测报告里最大的那个数字，通常是最不能用的数字</text>
+<rect x="36" y="100" width="288" height="104" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="48" y="124" font-size="12" font-weight="700" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">峰值吞吐 949 tok/s</text>
+<text x="48" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">p99 73,800 ms</text>
+<text x="48" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">❌ 不能用来算副本数</text>
+<rect x="336" y="100" width="288" height="104" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.4"/>
+<text x="348" y="124" font-size="12" font-weight="700" fill="#15803d" font-family="PingFang SC, Helvetica, Arial, sans-serif">可用容量 345 tok/s</text>
+<text x="348" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">p99 139 ms（λ=2）</text>
+<text x="348" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">✅ 推荐口径</text>
+<rect x="636" y="100" width="288" height="104" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4"/>
+<text x="648" y="124" font-size="12" font-weight="700" fill="#0f766e" font-family="PingFang SC, Helvetica, Arial, sans-serif">规划容量 250 tok/s</text>
+<text x="648" y="146" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">可用 × 0.7</text>
+<text x="648" y="163" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">✅ 做预算用</text>
+<rect x="36" y="228" width="888" height="96" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="48" y="252" font-size="12" font-weight="700" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif">三步换算</text>
+<text x="48" y="274" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">① QPS → token/s：200 × (800 输入 + 400 输出) = 240,000 token/s</text>
+<text x="48" y="291" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">② token/s → 单副本：decode 345 tok/s、prefill 16,700 tok/s　　③ 取较大者 × 1.5 余量</text>
+<rect x="36" y="336" width="888" height="88" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="48" y="360" font-size="12" font-weight="700" fill="#b45309" font-family="PingFang SC, Helvetica, Arial, sans-serif">拐点：λ=2 → λ=3，吞吐 +47% 而 p99 涨 19 倍</text>
+<text x="48" y="382" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">139 ms → 2,666 ms：过了膝点，多给的每一分负载都换成排队</text>
+</svg>
