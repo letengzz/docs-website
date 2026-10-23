@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 496" width="960" height="496" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="496" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">实战：12 台实例的一次参数下发</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">从对账到收口六个时点，每一步都有可停、可查、可续的落点</text>
+<rect x="36" y="96" width="888" height="46" rx="6" fill="#334155"/>
+<text x="48" y="117" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">场景：12 台 PostgreSQL 18.6（1 主 3 从 × 3 套集群），把 work_mem 从 4MB 下发到 16MB</text>
+<rect x="36" y="158" width="288" height="62" rx="6" fill="#0f766e"/>
+<text x="48" y="179" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">T0 清单对账</text>
+<text x="48" y="198" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">12 台全部与清单一致</text>
+<rect x="336" y="158" width="288" height="62" rx="6" fill="#0369a1"/>
+<text x="348" y="179" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">T1 渲染作业</text>
+<text x="348" y="198" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">4 处差异：3 台是 8MB、1 台是 2MB</text>
+<rect x="636" y="158" width="288" height="62" rx="6" fill="#1d4ed8"/>
+<text x="648" y="179" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">T2 首波 1 台</text>
+<text x="648" y="198" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">只读副本 1 台，观察 30 min</text>
+<rect x="36" y="234" width="288" height="62" rx="6" fill="#b45309"/>
+<text x="48" y="255" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">T3 波次 3 × 3</text>
+<text x="48" y="274" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">每波后跑一次复核</text>
+<rect x="336" y="234" width="288" height="62" rx="6" fill="#be123c"/>
+<text x="348" y="255" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">T4 主库最后</text>
+<text x="348" y="274" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">切主演练窗口内做</text>
+<rect x="636" y="234" width="288" height="62" rx="6" fill="#15803d"/>
+<text x="648" y="255" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">T5 台账收口</text>
+<text x="648" y="274" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">指纹 + 变更单 + 余量</text>
+<rect x="36" y="320" width="424" height="128" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="48" y="340" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">四个读数（本机 + 仿真）</text>
+<text x="48" y="358" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">作业重跑：第 2 次起改动 0 行（直写版 36 行）</text>
+<text x="48" y="373" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">部分失败重跑：已改的 15 字段不再动</text>
+<text x="48" y="388" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">波次 3 最坏受损 3 台（全量并行 24 台）</text>
+<text x="48" y="403" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">复核成本：12 台全量重读 1 次 ≈ 2.4 ms</text>
+<rect x="492" y="320" width="432" height="128" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="504" y="340" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">四条验收</text>
+<text x="504" y="358" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">S1 重跑幂等：第二次执行 0 行变更</text>
+<text x="504" y="373" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">S2 半截可停：中止后每台状态可读、可续</text>
+<text x="504" y="388" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">S3 复核独立：不信执行返回值</text>
+<text x="504" y="403" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">S4 台账可追：谁、何时、改了什么、依据哪条判据</text>
+<text x="36" y="476" font-size="11" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">本页不给「照着敲就能跑」的私有脚本，给的是「每一段用什么判据验收」——脚本随环境变，验收口径不变。</text>
+</svg>

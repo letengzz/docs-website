@@ -96,6 +96,16 @@
 专题详见 [多租户 SaaS 架构](../../Backend/MultiTenantSaaS/index.md) 的 [租户上下文](../../Backend/MultiTenantSaaS/TenantContext/index.md)。
 
 
+## 与「数据库运维自动化」专题的分工（第 200 天补充）
+
+| 那边讲什么 | 这边讲什么 | 交界处 |
+| --- | --- | --- |
+| 池的机制：借还路径、膝点、探活、双层池 | 池相关指标的**巡检判据**与自愈边界 | 机制决定「看什么」，判据决定「什么时候动手」 |
+| `max_connections` 与槽位耗尽 | 「连接数占比」判据要分时段设阈值 | 备份窗口 95%、业务时段 85% |
+| 泄漏检测与定位 | `idle in transaction` 的自动终止属**第一档**自愈 | 有明确反向操作才允许自动 |
+
+**这一页特有的一个坑**：自愈里「终止空闲事务」会触发池立刻重连，形成一个「杀 → 重连 → 又空闲 → 再杀」的循环。所以这条自愈必须配熔断（同一对象 1 小时最多 1 次），否则它会把一个「应用忘了提交」的 bug 变成持续的连接抖动，反而更难定位。
+
 ## 参考资料
 
 - HikariCP 官方仓库 README：*Configuration (knobs, baby!)* 默认值表、*About Pool Sizing* wiki、*You're [probably] doing it wrong*

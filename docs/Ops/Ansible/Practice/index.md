@@ -449,6 +449,16 @@ git grep -n -E 'S3cr3t|BEGIN (RSA|OPENSSH|PRIVATE)' -- . && echo "发现明文�
 - [ ] `git grep` 未发现明文机密；`.vault_pass` 未被跟踪。
 - [ ] `ansible-vault view` 能正常读出加密变量。
 
+## 与「数据库运维自动化」专题的分工（第 200 天补充）
+
+| 那边讲什么 | 这边讲什么 | 交界处 |
+| --- | --- | --- |
+| 一个完整 playbook 怎么分步、怎么串灰度 | 每步的**幂等键**、回执表、失败五分类 | playbook 是执行体，作业模型是契约 |
+| `serial` 怎么切批次、`max_fail_percentage` 怎么设 | 波次大小 = 爆炸半径的算式与仿真读数 | `serial` 是参数，波次是策略 |
+| `--check` / `--diff` 怎么做预演 | 预检与执行必须走同一段检查逻辑 | 预演的结果要能当作「会改什么」的凭据 |
+
+**这一页特有的一个坑**：`max_fail_percentage` 的分母是**当前批**，不是全体。`serial: 1` 时写 `max_fail_percentage: 25` 等于「这一台失败了 25% 就停」——而 1 台的 25% 是 0.25 台，实际效果是「一台都不许失败」，与直觉相反。批大小为 4 时它才等于「允许 1 台」。
+
 ## 参考资料
 
 - Vault 指南：[Encrypting content with Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html)

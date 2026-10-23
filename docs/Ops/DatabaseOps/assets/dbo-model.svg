@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">三层机群模型与两条时间尺度</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">清单定期望、作业做落地、判定兜底——三层的产物必须能互相对账</text>
+<rect x="36" y="96" width="888" height="58" rx="6" fill="#1d4ed8"/>
+<text x="48" y="117" font-size="13.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">第一层 · 机群清单（Inventory）</text>
+<text x="48" y="136" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">N 台实例的「应该是什么样」：版本、参数、扩展、账号、备份策略——清单是唯一的期望值来源</text>
+<rect x="36" y="172" width="888" height="58" rx="6" fill="#0f766e"/>
+<text x="48" y="193" font-size="13.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">第二层 · 作业编排（Job / Wave）</text>
+<text x="48" y="212" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">把「期望值」变成 N 次执行：检查 → 执行 → 复核，按波次推进，任一失败即中止后续波</text>
+<rect x="36" y="248" width="888" height="58" rx="6" fill="#b45309"/>
+<text x="48" y="269" font-size="13.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">第三层 · 判定与止损（Inspect / Heal）</text>
+<text x="48" y="288" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">持续采集与判据：哪些偏离要报警、哪些能自动处置、哪些只能等人——三档处置各有闸门</text>
+<line x1="480" y1="154" x2="480" y2="172" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="480" y1="230" x2="480" y2="248" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="480" y1="306" x2="480" y2="330" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="36" y="330" width="424" height="126" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="48" y="350" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">时间尺度一：一次下发（分钟级）</text>
+<text x="48" y="368" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">清单 → 渲染 → 分波执行 → 复核 → 台账</text>
+<text x="48" y="383" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">失败处理：中止、回滚、留痕</text>
+<text x="48" y="398" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">判据看的是「窗口内有没有跑到终点」</text>
+<text x="48" y="413" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">对应页面：作业模型 / 分波次 / 实战</text>
+<rect x="492" y="330" width="432" height="126" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="504" y="350" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">时间尺度二：长期运行（天级）</text>
+<text x="504" y="368" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">采集 → 判据 → 归口 → 处置 / 升级</text>
+<text x="504" y="383" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">容量：余量、到阈值天数、采购前置期</text>
+<text x="504" y="398" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">自愈：只在「确定且可逆」时自动动手</text>
+<text x="504" y="413" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">对应页面：巡检口径 / 容量预测 / 自愈止损</text>
+<text x="36" y="484" font-size="11.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">三层的关系是单向的：清单错，作业会把错误精确地复制到 N 台；作业不幂等，复跑会把偏差叠成事故。</text>
+</svg>

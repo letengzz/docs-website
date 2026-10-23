@@ -292,16 +292,15 @@ curl -X POST http://localhost:9093/api/v2/silences -d '{
 
 > 该页特有的一个坑：给定时任务配「失败数 > 0」的告警，会在**任务压根没被调度**时保持沉默——没有执行就没有失败。必须另配一条「最后成功时间过旧」的规则，两条一起才算覆盖。
 
-## 参考资料
+## 与「数据库运维自动化」专题的分工（第 200 天补充）
 
-- Alertmanager 文档：https://prometheus.io/docs/alerting/latest/alertmanager/
-- 告警规则最佳实践：https://prometheus.io/docs/practices/alerting/
-- 告警路由配置：https://prometheus.io/docs/alerting/latest/configuration/
-- Grafana Alerting：https://grafana.com/docs/grafana/latest/alerting/
-- 日志类告警（数量突增、关键字命中、缺失告警与降噪）：[日志告警与联动](../../LogSystem/Alerting/index.md)
-- 时序侧告警取数与抑制策略：[时序数据库 · 常见问题与最佳实践](../../../DB/TimeSeries/FAQ/index.md)
-- 安全事件的审计与运行时检测告警：[安全加固 · 审计与检测](../../SecurityHardening/AuditDetection/index.md)
-- 告警链路的端到端实测（规则 → 路由 → 通知）：[混沌工程 · 演练中的可观测](../../ChaosEngineering/Observability/index.md)
+| 那边讲什么 | 这边讲什么 | 交界处 |
+| --- | --- | --- |
+| 告警规则怎么写、怎么路由、怎么抑制 | 判据的**四型**（阈值/差分/关系/存在）与采集时点 | 规则是形态，口径是内容 |
+| `for:` 与 `keep_firing_for:` 的语义 | 「观察窗」的 min/max 与用分位不用均值 | 两者都是「持续多久才算数」 |
+| 通知渠道与值班表 | 按「谁能修」归口合并，控制周告警量 | 路由是投递，归口是聚合 |
+
+**这一页特有的一个坑**：`for: 5m` 的计时从「表达式首次为真」开始，而表达式里若含 `rate(...[5m])`，真实延迟 ≈ `for` + 窗口填充时间，最坏接近 10 分钟。判断「多久能发现」时要把两段相加，否则会以为 5 分钟就能报警。
 
 ## 与「变更管理」专题的分工（第 170 天补充）
 
@@ -325,3 +324,14 @@ curl -X POST http://localhost:9093/api/v2/silences -d '{
 | 保证告警「能响、有人管、不轰炸」 | 保证告警阈值「与业务承诺一致、不拍脑袋」 | 「这个 5% 是拍脑袋还是算出来的」→ [SLO](../../PerformanceEngineering/SLO/index.md) |
 
 一句话：**规则是工程问题（本页），阈值是业务与容量问题（那边）。** 阈值拿不稳时，先去 [SLO 与错误预算](../../PerformanceEngineering/SLO/index.md) 把口径定下来，再回到本页把它写成一条规则。
+
+## 参考资料
+
+- Alertmanager 文档：https://prometheus.io/docs/alerting/latest/alertmanager/
+- 告警规则最佳实践：https://prometheus.io/docs/practices/alerting/
+- 告警路由配置：https://prometheus.io/docs/alerting/latest/configuration/
+- Grafana Alerting：https://grafana.com/docs/grafana/latest/alerting/
+- 日志类告警（数量突增、关键字命中、缺失告警与降噪）：[日志告警与联动](../../LogSystem/Alerting/index.md)
+- 时序侧告警取数与抑制策略：[时序数据库 · 常见问题与最佳实践](../../../DB/TimeSeries/FAQ/index.md)
+- 安全事件的审计与运行时检测告警：[安全加固 · 审计与检测](../../SecurityHardening/AuditDetection/index.md)
+- 告警链路的端到端实测（规则 → 路由 → 通知）：[混沌工程 · 演练中的可观测](../../ChaosEngineering/Observability/index.md)

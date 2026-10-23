@@ -230,6 +230,16 @@ ansible -i inventory.ini web --list-hosts
 - [ ] 动态清单至少能 `--list` 出正确 JSON。
 - [ ] `--limit` 的交集/排除语法验证通过。
 
+## 与「数据库运维自动化」专题的分工（第 200 天补充）
+
+| 那边讲什么 | 这边讲什么 | 交界处 |
+| --- | --- | --- |
+| inventory 文件的格式、分组、动态清单插件 | 清单里**该记什么**（版本/参数/扩展/例外/有效期）、怎么算出漂移 | 清单文件是载体，对账口径是内容 |
+| `ansible-inventory --graph` 怎么查主机归属 | 三路来源（声明 / 探测 / 台账）如何取交集 | 「这台属于哪个组」vs「这台现在是什么样」 |
+| `group_vars` / `host_vars` 的覆盖顺序 | 四类漂移（值/缺项/多项/版本）的判定与处置 | 覆盖顺序是「为什么会不一致」的一种解释 |
+
+**这一页特有的一个坑**：`group_vars/all` → `group_vars/<group>` → `host_vars/<host>` 的覆盖是**静默**的，`ansible-inventory --host` 只显示最终值，不显示它是从哪一层来的。所以「清单写着 16MB，某台实际是 8MB」经常不是漂移，而是 `host_vars` 里有一行没人记得的覆盖。排查时先看 `host_vars`，再怀疑数据库。
+
 ## 参考资料
 
 - Ansible 清单指南：[How to build your inventory](https://docs.ansible.com/ansible/latest/inventory_guide/index.html)

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 484" width="940" height="484" role="img">
+<rect x="0" y="0" width="940" height="484" fill="#ffffff"/>
+<text x="32" y="42" font-size="22" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">上线验收：六道闸门与三层判定</text>
+<text x="32" y="66" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">验收不是「能不能开」，而是「开上去之后能不能扛、能不能退、能不能查」</text>
+<rect x="32" y="88" width="140" height="26" rx="4" fill="#15803d"/>
+<text x="102.0" y="106" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">L1 正确性</text>
+<rect x="180" y="88" width="288" height="26" rx="4" fill="#0369a1"/>
+<text x="324.0" y="106" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">L2 承载性</text>
+<rect x="476" y="88" width="436" height="26" rx="4" fill="#b45309"/>
+<text x="694.0" y="106" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">L3 可运维性</text>
+<rect x="32" y="124" width="140" height="118" rx="6" fill="#15803d"/>
+<text x="44" y="148" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">G1 一致</text>
+<text x="44" y="172" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">三向差集 = 0</text>
+<text x="44" y="189" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">负向用例仍失败</text>
+<path d="M 172 183 l 8 0" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="180" y="124" width="140" height="118" rx="6" fill="#0ea5e9"/>
+<text x="192" y="148" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">G2 容量</text>
+<text x="192" y="172" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">p99 ≤ 500 ms</text>
+<text x="192" y="189" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">积压能清空</text>
+<path d="M 320 183 l 8 0" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="328" y="124" width="140" height="118" rx="6" fill="#0369a1"/>
+<text x="340" y="148" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">G3 监控</text>
+<text x="340" y="172" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">五个指标有数</text>
+<text x="340" y="189" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">双档告警在位</text>
+<path d="M 468 183 l 8 0" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="476" y="124" width="140" height="118" rx="6" fill="#b45309"/>
+<text x="488" y="148" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">G4 回滚</text>
+<text x="488" y="172" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">回滚 ≤ 21 min</text>
+<text x="488" y="189" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">不可回滚语句 0</text>
+<path d="M 616 183 l 8 0" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="624" y="124" width="140" height="118" rx="6" fill="#92400e"/>
+<text x="636" y="148" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">G5 权限</text>
+<text x="636" y="172" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">最小权限到位</text>
+<text x="636" y="189" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">审计可追溯</text>
+<path d="M 764 183 l 8 0" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="772" y="124" width="140" height="118" rx="6" fill="#78350f"/>
+<text x="784" y="148" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">G6 交接</text>
+<text x="784" y="172" font-size="10" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">五动作对方独立做</text>
+<rect x="32" y="266" width="880" height="60" rx="6" fill="#0f172a"/>
+<text x="48" y="290" font-size="13" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">上线决策：六道全绿才排窗口</text>
+<text x="48" y="312" font-size="10.5" fill="#cbd5e1" font-family="PingFang SC, Helvetica, Arial, sans-serif">G1 / G2 是红线（不过不上）；G3~G6 可有条件通过，但须在 7 天内补齐并复核。</text>
+<rect x="32" y="346" width="880" height="44" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+<rect x="32" y="346" width="5" height="44" fill="#15803d"/>
+<text x="50" y="365" font-size="11.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">已跑（静态可验，9 条）</text>
+<text x="50" y="382" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">compose config / 版本与参数 / 差集 SQL / 告警规则 / 回滚清单 / 权限矩阵 / 交接文档</text>
+<rect x="32" y="404" width="880" height="44" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+<rect x="32" y="398" width="5" height="44" fill="#b45309"/>
+<text x="50" y="417" font-size="11.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">未跑 · 需 eoh-app（8 条）</text>
+<text x="50" y="434" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">下单 p99 / outbox 积压 / 清空耗时 / 重复回调 / 超卖写入 / 灰度比例</text>
+<text x="32" y="470" font-size="10.5" fill="#64748b" font-family="PingFang SC, Helvetica, Arial, sans-serif">两列不混：能验证的写实测，不能验证的写期望值并标 ⏳，不把期望值抄进实测列。</text>
+</svg>

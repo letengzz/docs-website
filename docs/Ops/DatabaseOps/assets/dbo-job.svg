@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="490" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">作业三段式：检查、执行、复核</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">作业的产物不是「跑过了」，而是「现在处于期望状态」——三段都能单独执行</text>
+<rect x="36" y="96" width="264" height="70" rx="6" fill="#7c2d12"/>
+<text x="48" y="117" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 检查（check）</text>
+<text x="48" y="136" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">读当前值，与目标值比对</text>
+<text x="48" y="152" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">产出：差异清单 + 幂等键</text>
+<rect x="348" y="96" width="264" height="70" rx="6" fill="#b45309"/>
+<text x="360" y="117" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 执行（apply）</text>
+<text x="360" y="136" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">只对差异项动手</text>
+<text x="360" y="152" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">每步可重入，失败可续跑</text>
+<rect x="660" y="96" width="264" height="70" rx="6" fill="#0f766e"/>
+<text x="672" y="117" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 复核（verify）</text>
+<text x="672" y="136" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">重新读一遍，不信执行返回值</text>
+<text x="672" y="152" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">产出：状态 + 指纹</text>
+<line x1="300" y1="131" x2="348" y2="131" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="612" y1="131" x2="660" y2="131" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="36" y="196" width="288" height="128" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="48" y="216" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">失败分类（决定谁来处理）</text>
+<text x="48" y="234" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">F1 连不上：网络/实例挂 → 退出码可重试</text>
+<text x="48" y="249" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">F2 权限不足：缺 role → 人工补授权</text>
+<text x="48" y="264" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">F3 前置不满足：扩展未装 → 调整顺序</text>
+<text x="48" y="279" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">F4 语义冲突：参数互斥 → 改清单</text>
+<text x="48" y="294" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">F5 已验证但未生效 → 重启类参数</text>
+<rect x="348" y="196" width="288" height="128" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="360" y="216" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">幂等键（决定能否重跑）</text>
+<text x="360" y="234" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">键 = (实例, 对象, 目标值) 的哈希</text>
+<text x="360" y="249" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">同一键执行两次，状态相同</text>
+<text x="360" y="264" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">审计表按键唯一，重跑不追加</text>
+<text x="360" y="279" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">回滚 = 用旧值生成同形作业</text>
+<rect x="660" y="196" width="264" height="128" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="672" y="216" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">三段式的好处</text>
+<text x="672" y="234" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">检查可单独跑 = 巡检</text>
+<text x="672" y="249" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">执行可单台跑 = 排障</text>
+<text x="672" y="264" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">复核可单独跑 = 对账</text>
+<text x="672" y="279" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">三段都能进台账</text>
+<rect x="36" y="350" width="888" height="58" rx="6" fill="#1d4ed8"/>
+<text x="48" y="371" font-size="13" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">作业不是脚本：脚本的产物是「执行过了」，作业的产物是「现在处于期望状态」</text>
+<text x="48" y="390" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">判据看的是「重跑第二次有没有再动一次」，不是「退出码是不是 0」</text>
+<text x="36" y="442" font-size="11.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">本机实测：12 台 × 3 参数的同一作业重跑 5 次——直写版每次都改 36 行，检查版第 2 次起 0 行；代价只是多 6% 耗时。</text>
+<text x="36" y="466" font-size="11.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">部分失败后重跑：前 5 台已改的 15 个字段没有第二次 revision，重跑只补后 7 台的 21 个。</text>
+</svg>

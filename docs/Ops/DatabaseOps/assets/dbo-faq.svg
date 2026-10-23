@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="490" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">症状分诊：七条最常见的主线</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">每条症状都对应一个「先查什么」的落点，而不是一句「再排查一下」</text>
+<text x="36" y="100" font-size="11.5" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">症状</text>
+<text x="210" y="100" font-size="11.5" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">最常见的原因</text>
+<text x="700" y="100" font-size="11.5" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">主线</text>
+<rect x="36" y="114" width="888" height="34" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="52" y="136" font-size="12" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">参数改了没生效</text>
+<text x="210" y="136" font-size="11" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">重启类参数 / 会话级覆盖 / 连接池缓存</text>
+<text x="700" y="136" font-size="11" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">作业模型 §5</text>
+<rect x="36" y="156" width="888" height="34" rx="4" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="52" y="178" font-size="12" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">巡检天天误报</text>
+<text x="210" y="178" font-size="11" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">阈值拍脑袋 / 采集时点在日切</text>
+<text x="700" y="178" font-size="11" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">巡检口径 §3</text>
+<rect x="36" y="198" width="888" height="34" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="52" y="220" font-size="12" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">作业重跑就翻倍</text>
+<text x="210" y="220" font-size="11" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">审计表无唯一键 / 无幂等键</text>
+<text x="700" y="220" font-size="11" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">作业模型 §3</text>
+<rect x="36" y="240" width="888" height="34" rx="4" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="52" y="262" font-size="12" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">一次发布全站挂</text>
+<text x="210" y="262" font-size="11" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">没有波次 / 中止条件事后才判</text>
+<text x="700" y="262" font-size="11" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">分波次 §2</text>
+<rect x="36" y="282" width="888" height="34" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="52" y="304" font-size="12" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">预测总是不准</text>
+<text x="210" y="304" font-size="11" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">用 MAPE 选方法 / 没建模周周期</text>
+<text x="700" y="304" font-size="11" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">容量预测 §4</text>
+<rect x="36" y="324" width="888" height="34" rx="4" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="52" y="346" font-size="12" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">自愈越救越糟</text>
+<text x="210" y="346" font-size="11" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">单条件触发 / 无可逆操作</text>
+<text x="700" y="346" font-size="11" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">自愈止损 §2</text>
+<rect x="36" y="366" width="888" height="34" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="52" y="388" font-size="12" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">清单和实际对不上</text>
+<text x="210" y="388" font-size="11" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">三来源没对齐 / 豁免没登记</text>
+<text x="700" y="388" font-size="11" fill="#1d4ed8" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">机群清单 §4</text>
+<rect x="36" y="424" width="888" height="48" rx="6" fill="#e0f2fe"/>
+<text x="48" y="445" font-size="12" font-weight="700" fill="#075985" font-family="PingFang SC, Helvetica, Arial, sans-serif">分诊的顺序：先确认「读的是不是同一个时点的同一个实例」，再看判据，最后才怀疑产品。九成的「工具坏了」都发生在第一层。</text>
+</svg>

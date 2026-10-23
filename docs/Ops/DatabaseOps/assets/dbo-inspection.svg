@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="460" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">巡检流水线：采集贵，判据便宜</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">四段流水线的成本与误报都集中在「采集口径」这一端</text>
+<rect x="36" y="96" width="200" height="74" rx="6" fill="#6d28d9"/>
+<text x="48" y="117" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 采集</text>
+<text x="48" y="136" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">每台一次连接</text>
+<text x="48" y="152" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">固定时点、固定 SQL</text>
+<rect x="256" y="96" width="200" height="74" rx="6" fill="#1d4ed8"/>
+<text x="268" y="117" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 归一</text>
+<text x="268" y="136" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">单位、精度、时间窗</text>
+<text x="268" y="152" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">缺失值与 0 分开</text>
+<rect x="476" y="96" width="200" height="74" rx="6" fill="#0f766e"/>
+<text x="488" y="117" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 判据</text>
+<text x="488" y="136" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">四型：阈值/差分/关系/存在</text>
+<text x="488" y="152" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">每条带采集时点</text>
+<rect x="696" y="96" width="228" height="74" rx="6" fill="#b45309"/>
+<text x="708" y="117" font-size="12.5" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 归口</text>
+<text x="708" y="136" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">按「谁能修」分组</text>
+<text x="708" y="152" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">同类合并，避免刷屏</text>
+<line x1="236" y1="133" x2="256" y2="133" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="456" y1="133" x2="476" y2="133" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="676" y1="133" x2="696" y2="133" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="36" y="196" width="288" height="130" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="48" y="216" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">成本结构（本机实测）</text>
+<text x="48" y="234" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">30 台 × 3 指标采集：5.84 ms/轮</text>
+<text x="48" y="249" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">360 个点的判据计算：0.0048 ms/轮</text>
+<text x="48" y="264" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">采集占 99.92%，判据几乎免费</text>
+<text x="48" y="279" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">结论：省钱要省在「采什么」，不是「怎么判」</text>
+<rect x="348" y="196" width="288" height="130" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="360" y="216" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">误报结构（30 天合成序列）</text>
+<text x="360" y="234" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">固定阈值 78：16 次告警</text>
+<text x="360" y="249" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">首周 p95×1.05：87 次告警</text>
+<text x="360" y="264" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">增长型指标用历史分位必炸</text>
+<text x="360" y="279" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">相对阈值要先去掉趋势再算</text>
+<rect x="660" y="196" width="264" height="130" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="672" y="216" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">四种判据型</text>
+<text x="672" y="234" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">阈值型：>90% 且持续 3 点</text>
+<text x="672" y="249" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">差分型：相邻两点差 >20</text>
+<text x="672" y="264" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">关系型：主从延迟 > 阈值</text>
+<text x="672" y="279" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">存在型：复制槽/扩展在不在</text>
+<rect x="36" y="350" width="888" height="52" rx="6" fill="#e0f2fe"/>
+<text x="48" y="371" font-size="12" font-weight="700" fill="#075985" font-family="PingFang SC, Helvetica, Arial, sans-serif">巡检的第一原则：每条判据都要写「在什么时点采的」——日切前后、备份窗口内、大促期间，同一指标的「正常值」是三个不同的数。</text>
+<text x="36" y="432" font-size="11.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">第二原则：判据只报「现象」，归口才说「责任」——把两者写在一起，半月后没人敢关任何一条告警。</text>
+</svg>

@@ -495,3 +495,22 @@ export const ConfigManagement = [
     ],
   },
 ];
+
+export const DatabaseOps = [
+  {
+    text: "数据库运维自动化",
+    link: "/docs/Ops/DatabaseOps/index.md",
+    items: [
+      { text: "总览：四类作业、三层机群与五个必失点（DBO-A~DBO-H）", link: "/docs/Ops/DatabaseOps/Overview/index.md" },
+      { text: "机群清单：三来源、四类漂移与对账（FLT-A~FLT-H）", link: "/docs/Ops/DatabaseOps/Inventory/index.md" },
+      { text: "作业模型：检查、执行、复核三段式（JOB-A~JOB-H）", link: "/docs/Ops/DatabaseOps/JobModel/index.md" },
+      { text: "分波次：波次大小就是爆炸半径（WAV-A~WAV-H）", link: "/docs/Ops/DatabaseOps/Waves/index.md" },
+      { text: "巡检口径：采集贵、判据便宜（INS-A~INS-H）", link: "/docs/Ops/DatabaseOps/Inspection/index.md" },
+      { text: "容量预测：MAPE 会骗人（CPF-A~CPF-H）", link: "/docs/Ops/DatabaseOps/CapacityForecast/index.md" },
+      { text: "自愈止损：双条件闸门与三档处置（SLF-A~SLF-H）", link: "/docs/Ops/DatabaseOps/SelfHealing/index.md" },
+      { text: "作业彩排：把中止条件演练出来（DRL-A~DRL-H）", link: "/docs/Ops/DatabaseOps/Drills/index.md" },
+      { text: "实战：12 台实例的一次参数下发（DBP-A~DBP-H）", link: "/docs/Ops/DatabaseOps/Practice/index.md" },
+      { text: "常见问题与症状分诊（DBQ-A~DBQ-H）", link: "/docs/Ops/DatabaseOps/FAQ/index.md" },
+    ],
+  },
+];

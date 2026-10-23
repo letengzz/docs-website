@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" role="img">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="490" fill="#ffffff"/>
+<text x="36" y="44" font-size="23" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">作业彩排：四步与四问</text>
+<text x="36" y="70" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">演练的产物不是「报告」，而是「一条能拦住下次发布的闸门」</text>
+<rect x="36" y="96" width="420" height="66" rx="6" fill="#1d4ed8"/>
+<text x="48" y="117" font-size="13" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">① 定义失败模式</text>
+<text x="48" y="136" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">列举「这次作业可能怎么坏」：锁等待、磁盘满、主从切换、部分成功</text>
+<line x1="246" y1="162" x2="246" y2="180" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="36" y="180" width="420" height="66" rx="6" fill="#0f766e"/>
+<text x="48" y="201" font-size="13" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 在影子环境跑</text>
+<text x="48" y="220" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">同版本、同参数、同数据量级的替身；不允许「小库上跑通了」</text>
+<line x1="246" y1="246" x2="246" y2="264" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="36" y="264" width="420" height="66" rx="6" fill="#b45309"/>
+<text x="48" y="285" font-size="13" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 注入与观测</text>
+<text x="48" y="304" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">注入点与观测点成对出现，注入前先记基线</text>
+<line x1="246" y1="330" x2="246" y2="348" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="36" y="348" width="420" height="66" rx="6" fill="#be123c"/>
+<text x="48" y="369" font-size="13" font-weight="700" fill="#ffffff" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ 写进闸门</text>
+<text x="48" y="388" font-size="10.5" fill="#e2e8f0" font-family="PingFang SC, Helvetica, Arial, sans-serif">把「演练通过」变成发布前置条件，不通过不许排窗口</text>
+<rect x="492" y="96" width="432" height="300" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="504" y="116" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">演练要回答的四个问题</text>
+<text x="504" y="134" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">1. 中止条件由谁判、多久能判出来？（本轮：波内失败 1 次即中止）</text>
+<text x="504" y="149" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">2. 中止之后能不能停在半路？（半截状态是否可接受）</text>
+<text x="504" y="164" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">3. 回到旧状态要多久？（回滚也是被演练的对象）</text>
+<text x="504" y="179" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">4. 演练本身的成本是多少？（影子环境多大、跑多久）</text>
+<text x="504" y="194" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif"></text>
+<text x="504" y="209" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">四条都答不上来，这次演练只是「跑了一遍脚本」。</text>
+<text x="504" y="224" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">答上来了但不写进闸门，下次发布照样全量并行。</text>
+<rect x="36" y="412" width="888" height="54" rx="6" fill="#f1f5f9"/>
+<text x="48" y="433" font-size="12.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">演练不是「证明系统能扛住」，而是「证明中止条件真的会在该响的时候响」</text>
+<text x="48" y="452" font-size="10.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">所以演练必须包含一次「故意让它失败」——只跑成功路径的演练，验证的是脚本，不是闸门。</text>
+</svg>
