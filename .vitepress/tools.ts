@@ -371,3 +371,22 @@ export const CodeSearch = [
     ],
   },
 ];
+
+export const DevEnvironment = [
+  {
+    text: "开发环境与终端工程",
+    link: "/docs/Tools/DevEnvironment/index.md",
+    items: [
+      { text: "四层边界与五个必失点", link: "/docs/Tools/DevEnvironment/Overview/index.md" },
+      { text: "shell 启动链路：746 ms 花在哪", link: "/docs/Tools/DevEnvironment/ShellStartup/index.md" },
+      { text: "PATH 与运行时版本：谁先被找到", link: "/docs/Tools/DevEnvironment/PathAndRuntime/index.md" },
+      { text: "dotfiles：符号链接与写穿", link: "/docs/Tools/DevEnvironment/Dotfiles/index.md" },
+      { text: "环境可复现：锁住三件东西", link: "/docs/Tools/DevEnvironment/Reproducibility/index.md" },
+      { text: "密钥卫生：别让它进环境变量", link: "/docs/Tools/DevEnvironment/Secrets/index.md" },
+      { text: "远程开发：文件、端口、进程", link: "/docs/Tools/DevEnvironment/RemoteDev/index.md" },
+      { text: "启动预算与优化顺序", link: "/docs/Tools/DevEnvironment/StartupBudget/index.md" },
+      { text: "实战：一套可验收的开发环境", link: "/docs/Tools/DevEnvironment/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Tools/DevEnvironment/FAQ/index.md" },
+    ],
+  },
+];

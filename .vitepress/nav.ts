@@ -137,6 +137,7 @@ export const nav = [
       { text: "协作与项目管理", link: "/docs/Tools/Collaboration" },
       { text: "IDE 配置", link: "/docs/Tools/IDE" },
       { text: "效率工具", link: "/docs/Tools/Efficiency" },
+      { text: "开发环境与终端工程", link: "/docs/Tools/DevEnvironment" },
       { text: "测试工具", link: "/docs/Tools/TestingTools" },
       { text: "版本控制工具", link: "/docs/Tools/VersionControl" },
       { text: "文档体系建设", link: "/docs/Tools/DocsInfra" },

@@ -5,7 +5,7 @@ import { AI_Java, AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecuri
 import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontErrorTelemetry, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLocalDataStore, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
 import { Ansible, BackupDR, DatabaseUpgrade, CapacityCost, CertificateLifecycle, ChangeManagement, ConfigManagement, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM } from "./ops";
 import { AccessControl, BigData, CDC, ClickHouse, ConnectionPool, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, GeoMap, Lakehouse, Middleware, Neo4j, NoRelational, PartitionArchival, Relational, SQLOptimization, SchemaEvolution, Sharding, TimeSeries, VectorDatabase } from "./db";
-import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation, EngineeringMetrics, BrowserExtension, CodeSearch } from "./tools";
+import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation, EngineeringMetrics, BrowserExtension, CodeSearch, DevEnvironment } from "./tools";
 import { BaseProject, CompleteProject } from "./project";
 
 const OthersReview = [
@@ -158,7 +158,7 @@ export const sidebar = {
     {
       text: "工具",
       collapsed: true,
-      items: [...Build, ...CICD, ...DatabaseClients, ...APIDesign, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...DocsInfra, ...DependencyGovernance, ...CodeQuality, ...Toolchain, ...BrowserExtension, ...CodeSearch, ...ObservabilityDriven, ...TestDataSimulation, ...EngineeringMetrics, ...Others],
+      items: [...Build, ...CICD, ...DatabaseClients, ...APIDesign, ...APITools, ...PackageManager, ...IDE, ...Efficiency, ...VC, ...Collaboration, ...TestingTools, ...DocsInfra, ...DependencyGovernance, ...CodeQuality, ...Toolchain, ...BrowserExtension, ...CodeSearch, ...ObservabilityDriven, ...TestDataSimulation, ...EngineeringMetrics, ...DevEnvironment, ...Others],
     },
   ],
   "/project": [
@@ -318,6 +318,7 @@ export const sidebar = {
   "/docs/AI/FineTuning": AI_FineTuning,
   "/docs/AI/LocalModel": AI_LocalModel,
   "/docs/Tools/Build": Build,
+  "/docs/Tools/DevEnvironment": DevEnvironment,
   "/docs/Tools/CICD": CICD,
   "/docs/Tools/DatabaseClients": DatabaseClients,
   "/docs/Tools/APITools": APITools,

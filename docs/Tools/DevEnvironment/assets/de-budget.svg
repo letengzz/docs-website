@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="启动预算：把 746 ms 拆成四段，每段单独定上限">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b4453c"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d4f"/></marker></defs>
+<rect x="0" y="0" width="960" height="460" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700">启动预算：把 746 ms 拆成四段，每段单独定上限</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">预算的意义不是「更快」，而是「变慢时能定位到哪一段」</text>
+<text x="28" y="96" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">目标（交互 shell，p50）</text>
+<text x="28" y="126" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">框架自身（空 .zshrc）</text>
+<rect x="280" y="112" width="380" height="18" rx="3" fill="#eef2f6"/>
+<rect x="280" y="112" width="7.233243967828417" height="18" rx="3" fill="#2a5d9f"/>
+<text x="668" y="128" font-size="11" fill="#1f2d3d" font-weight="400" text-anchor="start">14.2 ms</text>
+<text x="700" y="126" font-size="11" fill="#2a5d9f" font-weight="400" text-anchor="start">预算 ≤ 20 ms</text>
+<text x="28" y="166" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">补全 compinit</text>
+<rect x="280" y="152" width="380" height="18" rx="3" fill="#eef2f6"/>
+<rect x="280" y="152" width="22.26005361930295" height="18" rx="3" fill="#2a5d9f"/>
+<text x="668" y="168" font-size="11" fill="#1f2d3d" font-weight="400" text-anchor="start">43.7 ms</text>
+<text x="700" y="166" font-size="11" fill="#2a5d9f" font-weight="400" text-anchor="start">预算 ≤ 30 ms（-C）</text>
+<text x="28" y="206" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">版本管理器 nvm</text>
+<rect x="280" y="192" width="380" height="18" rx="3" fill="#eef2f6"/>
+<rect x="280" y="192" width="336.19302949061665" height="18" rx="3" fill="#b4453c"/>
+<text x="668" y="208" font-size="11" fill="#1f2d3d" font-weight="400" text-anchor="start">660.0 ms</text>
+<text x="700" y="206" font-size="11" fill="#2a5d9f" font-weight="400" text-anchor="start">预算 ≤ 100 ms（--no-use）</text>
+<text x="28" y="246" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">其余插件与别名</text>
+<rect x="280" y="232" width="380" height="18" rx="3" fill="#eef2f6"/>
+<rect x="280" y="232" width="14.31367292225201" height="18" rx="3" fill="#2a5d9f"/>
+<text x="668" y="248" font-size="11" fill="#1f2d3d" font-weight="400" text-anchor="start">28.1 ms</text>
+<text x="700" y="246" font-size="11" fill="#2a5d9f" font-weight="400" text-anchor="start">预算 ≤ 50 ms</text>
+<rect x="28" y="290" width="900" height="62" rx="8" fill="#f4f7fa" stroke="#a9b7c5" stroke-width="1.4"/>
+<text x="42" y="314" font-size="13" fill="#1f2d3d" font-weight="700">计时方法（可复跑）</text>
+<text x="42" y="334" font-size="11" fill="#1f2d3d">for i in {1..15}; do /usr/bin/time -p zsh -i -c exit; done 2>&1 | grep real  ← 取中位数，不看单次</text>
+<text x="28" y="384" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">优化顺序（按收益/代价排序）：① nvm 加 --no-use（−576 ms，零风险）；② compinit 改 -C 并按天刷新（−23 ms）；</text>
+<text x="28" y="406" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">③ 补全与高亮改惰性加载（首次 Tab 再载入）；④ 别名与函数体量收敛（几十毫秒量级，最后做）。</text>
+<text x="28" y="436" font-size="12" fill="#b4453c" font-weight="400" text-anchor="start">不要做的事：为了省启动时间把 export 挪进 .zshenv——那会让每个非交互子进程都背上它，包括 CI。</text>
+</svg>

@@ -59,9 +59,22 @@ SKIP_DIRS = {
     ".venv", "__pycache__", ".idea", ".vscode", "site", "public", ".trae",
 }
 
-# 根目录下这几篇是「规划 / 约定」而不是站点页面，不参与构建，也就不该被这条判据约束。
-# 但根目录的 `index.md` **是首页**，必须扫——一刀切跳过根目录会漏掉首页。
-SKIP_ROOT_FILES = {"DOCS_PLAN.md", "AGENTS.md", "README.md", "CLAUDE.md"}
+# 第 197 天的第四个口径：**根目录的 `.md` 也是页面**。
+#
+# 这里原本有一份 `SKIP_ROOT_FILES = {"DOCS_PLAN.md", "AGENTS.md", ...}`，理由是
+# 「规划文件不参与构建」。这个理由**站不住**：本仓 `.vitepress/config.mts` 没有配
+# `srcDir`，VitePress 默认就取仓库根目录，于是 `DOCS_PLAN.md` / `AGENTS.md` / `index.md`
+# 全都会被编译成页面。这份白名单因此变成了一个**结构性盲区**——最该被这条判据看守的
+# 那份文件（记录着「行内代码里的 `{{` 会让构建崩掉」这件事的文件），恰恰被整份跳过了。
+#
+# 代价：第 197 天 `pnpm docs:build` 在 1m52s 处失败于
+# `DOCS_PLAN.md (1938:321): Error parsing JavaScript expression`，而 `bracecheck`
+# 当时的输出是 `E=0`——**巡检全绿、构建红着**。回退到上一版文件同样失败，说明这处
+# 泄漏不是当天引入的，而是一直在，只是没人扫。
+#
+# 现在改成一份空集合，语义是「根目录不豁免任何文件」。真要豁免，必须先证明它不会
+# 被构建（例如明确配了 `srcDir: 'docs'`），而不是凭文件名猜。
+SKIP_ROOT_FILES = set()
 
 FENCE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
 # `<span v-pre>...</span>`：非贪婪，允许内部再有 span（实际没有，但不要假设）
@@ -257,24 +270,27 @@ def selftest():
     w("fixme.md", "# 待修\n\n看 `inspect -f '{{.HostConfig.Memory}}' app` 即可。\n")
     # 8 一行两处，--fix 应交给人工
     w("two.md", "# 两处\n\n`{{a}}` 与 `{{b}}` 都在代码里。\n")
-    # 9 根目录的规划文件不该被扫
-    open(os.path.join(tmp, "DOCS_PLAN.md"), "w", encoding="utf-8").write("{{不参与构建}}\n")
+    # 9 根目录的 .md 也是页面（srcDir 默认取仓库根），必须扫——第 197 天被真打回过
+    open(os.path.join(tmp, "DOCS_PLAN.md"), "w", encoding="utf-8").write("只写一处 `{{` 就够崩了\n")
 
     pages, errs, warns = check_pages(tmp)
     names = {os.path.basename(p) for _, p, _ in errs}
-    case("pages 计数为 8（根目录规划文件不扫）", pages == 8)
+    case("pages 计数为 9（根目录文件也算页面）", pages == 9)
+    case("根目录规划文件里的裸花括号报 E2", "DOCS_PLAN.md" in names)
     case("行内代码未转义报 E2", "inline.md" in names)
     case("裸文本插值报 E2", "bare.md" in names)
     case("围栏内插值不报错", "fence.md" not in names)
     case("四反引号围栏内不报错", "four.md" not in names)
     case("v-pre 转义不报错", "vpre.md" not in names)
     case("未闭合 v-pre 记 W2", any(c.startswith("W2") and p.endswith("open.md") for c, p, _ in warns))
-    case("E 级总数 = 4", len(errs) == 4)
+    case("E 级总数 = 5", len(errs) == 5)
 
     fixed, manual = fix_pages(tmp)
     _, errs2, warns2 = check_pages(tmp)
     names2 = {os.path.basename(p) for _, p, _ in errs2}
-    case("两处「一行一 span」被自动修复", fixed == 2 and "fixme.md" not in names2 and "inline.md" not in names2)
+    case("三处「一行一 span」被自动修复（含根目录那篇）",
+         fixed == 3 and "fixme.md" not in names2 and "inline.md" not in names2
+         and "DOCS_PLAN.md" not in names2)
     case("一行多处/裸文本交人工、未闭合仍记 W2",
          manual == 2 and {"two.md", "bare.md"} <= names2
          and any(c.startswith("W2") and p.endswith("open.md") for c, p, _ in warns2))

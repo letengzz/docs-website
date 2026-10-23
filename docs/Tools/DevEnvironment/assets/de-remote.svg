@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="远程开发的三条链路：文件、端口、进程">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b4453c"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d4f"/></marker></defs>
+<rect x="0" y="0" width="960" height="470" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700">远程开发的三条链路：文件、端口、进程</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">三者只要有一条走错，症状都是「本地好好的，远端就不对」</text>
+<rect x="28" y="96" width="250" height="250" rx="8" fill="#eaf1fa" stroke="#8fb0d6" stroke-width="1.4"/>
+<text x="42" y="120" font-size="13" fill="#2a5d9f" font-weight="700">本地编辑器</text>
+<text x="42" y="140" font-size="11" fill="#1f2d3d">VS Code / JetBrains</text>
+<text x="42" y="160" font-size="11" fill="#1f2d3d">语法服务、终端前端</text>
+<text x="42" y="180" font-size="11" fill="#1f2d3d">（不做真实构建）</text>
+<rect x="356" y="96" width="250" height="250" rx="8" fill="#fbf3e2" stroke="#dcc08a" stroke-width="1.4"/>
+<text x="370" y="120" font-size="13" fill="#8a5a12" font-weight="700">传输层</text>
+<text x="370" y="140" font-size="11" fill="#1f2d3d">SSH（推荐，一条通道全包）</text>
+<text x="370" y="160" font-size="11" fill="#1f2d3d">rsync / mutagen（文件同步）</text>
+<text x="370" y="180" font-size="11" fill="#1f2d3d">端口转发 -L / -R</text>
+<rect x="684" y="96" width="248" height="250" rx="8" fill="#e9f5ee" stroke="#9ecfb1" stroke-width="1.4"/>
+<text x="698" y="120" font-size="13" fill="#2f7d4f" font-weight="700">远端 / 容器</text>
+<text x="698" y="140" font-size="11" fill="#1f2d3d">解释器与依赖都在这边</text>
+<text x="698" y="160" font-size="11" fill="#1f2d3d">构建产物不落本地</text>
+<text x="698" y="180" font-size="11" fill="#1f2d3d">时钟、locale、UID 一致</text>
+<line x1="278" y1="160" x2="354" y2="160" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="606" y1="160" x2="682" y2="160" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="290" y="148" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">文件</text>
+<text x="614" y="148" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">进程</text>
+<line x1="278" y1="250" x2="354" y2="250" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="354" y1="250" x2="278" y2="250" stroke="#2f7d4f" stroke-width="1.6" marker-end="url(#arg)"/>
+<text x="292" y="240" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">端口 8080</text>
+<text x="28" y="380" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">四个必查项：① 远端 node -v 与本地是否一致；② 端口转发后 curl 127.0.0.1:8080/health 是否通；</text>
+<text x="28" y="402" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">③ 文件属主（容器内 root 建的目录，宿主改不动）；④ 时钟偏差（JWT 过期、OTP 失效的隐形原因）。</text>
+<text x="28" y="434" font-size="12" fill="#b4453c" font-weight="400" text-anchor="start">反模式：本地跑构建、只把源码同步到远端——依赖解析结果取决于本地架构，等于把「我机器上能跑」搬到了远端。</text>
+</svg>

@@ -274,6 +274,17 @@ latest（最新，仅 dev 使用）
 CI 里的迁移跑在**空库**上，往往几十毫秒就过；同一份脚本在生产的亿行表上可能是几十分钟的重写。「CI 绿了」只能证明语法与依赖没问题，**不能**证明生产可执行——所以变更时长必须单独用「行数 × 单行成本」算，不能拿 CI 耗时当基线。
 :::
 
+## 与「开发环境与终端工程」的分工（第 197 天补充）
+
+| 那边回答什么 | 本页回答什么 | 新专题回答什么 |
+| --- | --- | --- |
+| 阶段怎么划分、缓存怎么用、门禁怎么设 | 流水线的结构与执行策略 | 本地与 CI 的差异从哪来、如何对齐（版本、PATH、锁文件） |
+| 失败怎么重试、怎么并行 | 具体配置 | 为什么「本地通过、CI 报语法错误」通常不是代码问题 |
+
+::: warning 这一页特有的一个坑
+CI 的 `run:` 步骤执行的是**非交互 shell**，不读 `~/.zshrc`——本地靠 nvm 切到的版本、靠别名调起的命令，在 CI 里全部失效。判据是让 CI 打印 `node -v` 与 `command -v node` 并与 `.nvmrc` 比对；修法是显式 `setup-node` 或改用固定版本镜像，而不是在 CI 里 `export PATH`。
+:::
+
 ## 参考资料
 
 - GitHub Actions 最佳实践：https://docs.github.com/zh/actions/writing-workflows/choosing-what-your-workflow-does/optimizing-workflow-performance

@@ -176,6 +176,17 @@ ls -l .editorconfig
 
 **这一页特有的一个坑**：IDE 的搜索结果默认被**三重排除规则**过滤——`.gitignore`、编辑器自己的 `search.exclude`（VS Code）/「项目范围与排除目录」（IntelliJ）、以及索引尚未完成时的「部分结果」。三者的表现完全一样：**搜不到，但不报错**。所以「IDE 里搜不到」时的第一嫌疑不是索引坏了，而是某个排除规则把目录吃掉了；用 `rg --no-ignore` 对照一次就能分辨（见 [命令行效率](../../Efficiency/ShellProductivity/index.md)）。
 
+## 与「开发环境与终端工程」的分工（第 197 天补充）
+
+| 那边回答什么 | 本页回答什么 | 新专题回答什么 |
+| --- | --- | --- |
+| 编辑器能做什么：插件、快捷键、调试器、重构 | 怎么把编辑器配到顺手 | 编辑器**之外**那层：命令解析、运行时版本、启动耗时 |
+| 插件装哪些、怎么组合 | 具体插件的配置项 | 为什么「编辑器里的终端」和系统终端版本不同 |
+
+::: warning 这一页特有的一个坑
+从 GUI 启动的编辑器（Dock、Spotlight）继承的是**启动那一刻**的环境，通常读的是 `/etc/zprofile` 而不读 `~/.zshrc`。于是编辑器内置终端里 `node -v` 是一个版本、系统终端里是另一个——判据是 `ps eww -p <编辑器 pid>` 看它的 `PATH`，而不是重装插件。
+:::
+
 ## 参考资料
 
 - IntelliJ IDEA 官方下载与统一产品说明：[jetbrains.com/idea/download](https://www.jetbrains.com/idea/download/)

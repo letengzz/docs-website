@@ -324,6 +324,17 @@ bash scripts/check-ide-config.sh
 - [远程开发与容器化环境](../RemoteDev/index.md)：第 3 层「环境可复现」的容器方案。
 - [实战：搭一套统一的 IDE 环境](../Practice/index.md)：把本页的方法论走完一遍。
 
+## 与「开发环境与终端工程」的分工（第 197 天补充）
+
+| 那边回答什么 | 本页回答什么 | 新专题回答什么 |
+| --- | --- | --- |
+| 插件与设置怎么在多台设备间同步 | 同步的开关、账号、冲突处理 | shell 与运行时这层怎么保持一致（dotfiles、`.nvmrc`） |
+| 同步了哪些扩展与键位 | 同步的粒度与排除项 | 同步过来的插件在新机器上**跑不起来**时差在哪 |
+
+::: warning 这一页特有的一个坑
+设置同步能带来插件与配置，但带不来**运行时**。同步完成后编辑器会提示某些扩展「无法激活」，报错往往指向某个 node API——因为新机器上的 node 版本由本机 `.nvmrc` / nvm 决定，与旧机器无关。先跑 `zsh -c 'command -v node'` 与 `zsh -i -c 'command -v node'`，两条不一致就不要怀疑插件。
+:::
+
 ## 参考资料
 
 - EditorConfig 规范与属性列表：[editorconfig.org](https://editorconfig.org/)

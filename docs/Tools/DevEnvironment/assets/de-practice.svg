@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="实战：TeamBoard 开发环境的 S1~S10 验收">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b4453c"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d4f"/></marker></defs>
+<rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700">实战：TeamBoard 开发环境的 S1~S10 验收</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">每条都能用一条命令判定；前四条查「有没有」，后六条查「对不对」</text>
+<rect x="28" y="92" width="62" height="30" rx="8" fill="#eaf1fa" stroke="#8fb0d6" stroke-width="1.4"/>
+<text x="59.0" y="111.0" font-size="12" fill="#2a5d9f" font-weight="600" text-anchor="middle">S1</text>
+<text x="104" y="108" font-size="12" fill="#1f2d3d" font-weight="600" text-anchor="start">四个版本号与文档一致</text>
+<text x="400" y="108" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">node -v / pnpm -v / psql --version / docker -v</text>
+<rect x="28" y="132" width="62" height="30" rx="8" fill="#eaf1fa" stroke="#8fb0d6" stroke-width="1.4"/>
+<text x="59.0" y="151.0" font-size="12" fill="#2a5d9f" font-weight="600" text-anchor="middle">S2</text>
+<text x="104" y="148" font-size="12" fill="#1f2d3d" font-weight="600" text-anchor="start">PATH 无重复</text>
+<text x="400" y="148" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">echo $PATH | tr ':' '\n' | sort | uniq -d</text>
+<rect x="28" y="172" width="62" height="30" rx="8" fill="#eaf1fa" stroke="#8fb0d6" stroke-width="1.4"/>
+<text x="59.0" y="191.0" font-size="12" fill="#2a5d9f" font-weight="600" text-anchor="middle">S3</text>
+<text x="104" y="188" font-size="12" fill="#1f2d3d" font-weight="600" text-anchor="start">两种 shell 同一个 node</text>
+<text x="400" y="188" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">zsh -c 'command -v node'; zsh -i -c 'command -v node'</text>
+<rect x="28" y="212" width="62" height="30" rx="8" fill="#eaf1fa" stroke="#8fb0d6" stroke-width="1.4"/>
+<text x="59.0" y="231.0" font-size="12" fill="#2a5d9f" font-weight="600" text-anchor="middle">S4</text>
+<text x="104" y="228" font-size="12" fill="#1f2d3d" font-weight="600" text-anchor="start">启动耗时达标</text>
+<text x="400" y="228" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">15 次 zsh -i -c exit 的 p50 ≤ 200 ms</text>
+<rect x="28" y="252" width="62" height="30" rx="8" fill="#e9f5ee" stroke="#9ecfb1" stroke-width="1.4"/>
+<text x="59.0" y="271.0" font-size="12" fill="#2f7d4f" font-weight="600" text-anchor="middle">S5</text>
+<text x="104" y="268" font-size="12" fill="#1f2d3d" font-weight="600" text-anchor="start">密钥不在启动文件</text>
+<text x="400" y="268" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">grep -nE 'sk-|AKIA|BEGIN .*PRIVATE' ~/.zshrc</text>
+<rect x="28" y="292" width="62" height="30" rx="8" fill="#e9f5ee" stroke="#9ecfb1" stroke-width="1.4"/>
+<text x="59.0" y="311.0" font-size="12" fill="#2f7d4f" font-weight="600" text-anchor="middle">S6</text>
+<text x="104" y="308" font-size="12" fill="#1f2d3d" font-weight="600" text-anchor="start">bootstrap 幂等</text>
+<text x="400" y="308" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">make bootstrap 连跑两遍，第二遍不改文件</text>
+<rect x="28" y="332" width="62" height="30" rx="8" fill="#e9f5ee" stroke="#9ecfb1" stroke-width="1.4"/>
+<text x="59.0" y="351.0" font-size="12" fill="#2f7d4f" font-weight="600" text-anchor="middle">S7</text>
+<text x="104" y="348" font-size="12" fill="#1f2d3d" font-weight="600" text-anchor="start">锁文件未被改写</text>
+<text x="400" y="348" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">git status --porcelain pnpm-lock.yaml 为空</text>
+<rect x="28" y="372" width="62" height="30" rx="8" fill="#e9f5ee" stroke="#9ecfb1" stroke-width="1.4"/>
+<text x="59.0" y="391.0" font-size="12" fill="#2f7d4f" font-weight="600" text-anchor="middle">S8</text>
+<text x="104" y="388" font-size="12" fill="#1f2d3d" font-weight="600" text-anchor="start">容器内版本一致</text>
+<text x="400" y="388" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">docker compose run --rm app node -v 与宿主相同</text>
+<rect x="28" y="412" width="62" height="30" rx="8" fill="#e9f5ee" stroke="#9ecfb1" stroke-width="1.4"/>
+<text x="59.0" y="431.0" font-size="12" fill="#2f7d4f" font-weight="600" text-anchor="middle">S9</text>
+<text x="104" y="428" font-size="12" fill="#1f2d3d" font-weight="600" text-anchor="start">端口转发可达</text>
+<text x="400" y="428" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">curl -fsS 127.0.0.1:8080/health 返回 ok</text>
+<rect x="28" y="452" width="62" height="30" rx="8" fill="#e9f5ee" stroke="#9ecfb1" stroke-width="1.4"/>
+<text x="59.0" y="471.0" font-size="12" fill="#2f7d4f" font-weight="600" text-anchor="middle">S10</text>
+<text x="104" y="468" font-size="12" fill="#1f2d3d" font-weight="600" text-anchor="start">清理后可重建</text>
+<text x="400" y="468" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">删 node_modules 与容器卷后 make bootstrap 再跑 S1</text>
+<text x="28" y="500" font-size="12" fill="#b4453c" font-weight="400" text-anchor="start">四条负向断言必须「仍然失败」：改回默认 nvm 启动 → S4 失败；把密钥写回 .zshrc → S5 失败。</text>
+</svg>

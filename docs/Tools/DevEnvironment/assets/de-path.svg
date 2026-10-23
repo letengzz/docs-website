@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="PATH 是线性扫描：35 项 164 µs，100 项 491 µs">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b4453c"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d4f"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700">PATH 是线性扫描：35 项 164 µs，100 项 491 µs</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">同一台机器上，`node` 在两个 shell 里是两个版本——因为 PATH 顺序不同</text>
+<text x="28" y="92" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">未命中一次命令的解析成本（逐目录 stat，200 次取中位数）</text>
+<text x="28" y="122" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">1 项</text>
+<rect x="110" y="108" width="420" height="18" rx="3" fill="#eef2f6"/>
+<rect x="110" y="108" width="5.422334446526024" height="18" rx="3" fill="#2a5d9f"/>
+<text x="538" y="124" font-size="11" fill="#1f2d3d" font-weight="400" text-anchor="start">6.34 µs</text>
+<text x="28" y="162" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">10 项</text>
+<rect x="110" y="148" width="420" height="18" rx="3" fill="#eef2f6"/>
+<rect x="110" y="148" width="40.74448155086748" height="18" rx="3" fill="#2a5d9f"/>
+<text x="538" y="164" font-size="11" fill="#1f2d3d" font-weight="400" text-anchor="start">47.64 µs</text>
+<text x="28" y="202" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">35 项</text>
+<rect x="110" y="188" width="420" height="18" rx="3" fill="#eef2f6"/>
+<rect x="110" y="188" width="140.70701311395294" height="18" rx="3" fill="#2a5d9f"/>
+<text x="538" y="204" font-size="11" fill="#1f2d3d" font-weight="400" text-anchor="start">164.52 µs</text>
+<text x="28" y="242" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">100 项</text>
+<rect x="110" y="228" width="420" height="18" rx="3" fill="#eef2f6"/>
+<rect x="110" y="228" width="420.0" height="18" rx="3" fill="#2a5d9f"/>
+<text x="538" y="244" font-size="11" fill="#1f2d3d" font-weight="400" text-anchor="start">491.08 µs</text>
+<rect x="600" y="100" width="332" height="150" rx="8" fill="#fbf3e2" stroke="#dcc08a" stroke-width="1.4"/>
+<text x="614" y="124" font-size="13" fill="#8a5a12" font-weight="700">本机真实 PATH</text>
+<text x="614" y="144" font-size="11" fill="#1f2d3d">35 项 / 唯一 23 项 → 12 项重复（34%）</text>
+<text x="614" y="164" font-size="11" fill="#1f2d3d">字符长度 1,608</text>
+<text x="614" y="184" font-size="11" fill="#1f2d3d">重复来自 4 次 `PATH=…:$PATH` 叠加</text>
+<text x="28" y="300" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">谁在决定 `node` 是谁</text>
+<rect x="28" y="316" width="440" height="92" rx="8" fill="#fbeceb" stroke="#dda49e" stroke-width="1.4"/>
+<text x="42" y="340" font-size="13" fill="#b4453c" font-weight="700">非交互：zsh -c 'node -v'</text>
+<text x="42" y="360" font-size="11" fill="#1f2d3d">→ v22.22.2</text>
+<text x="42" y="380" font-size="11" fill="#1f2d3d">→ …/.workbuddy/binaries/node/versions/22.22.2-6/bin/node</text>
+<rect x="492" y="316" width="440" height="92" rx="8" fill="#e9f5ee" stroke="#9ecfb1" stroke-width="1.4"/>
+<text x="506" y="340" font-size="13" fill="#2f7d4f" font-weight="700">交互：zsh -i -c 'node -v'</text>
+<text x="506" y="360" font-size="11" fill="#1f2d3d">→ v24.21.0</text>
+<text x="506" y="380" font-size="11" fill="#1f2d3d">→ ~/.nvm/versions/node/v24.21.0/bin/node（nvm 改了 PATH）</text>
+<text x="28" y="440" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">这不是两个 node，是一个 PATH 被两套启动文件改写了两遍。CI 里跑的是左边那个，你终端里跑的是右边那个。</text>
+<text x="28" y="462" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">判断方法：`zsh -c 'command -v node'` 与 `zsh -i -c 'command -v node'` 对比，两条路径不一致即为「版本漂移」。</text>
+</svg>

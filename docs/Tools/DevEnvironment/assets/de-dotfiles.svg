@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="符号链接把「两份文件」变成一个 inode：改动双向写穿">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b4453c"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d4f"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700">符号链接把「两份文件」变成一个 inode：改动双向写穿</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">本机实测：20 个文件、改 2 处，symlink 检出 0 处漂移（因为写穿了），copy 检出 2 处</text>
+<rect x="28" y="96" width="300" height="76" rx="8" fill="#eaf1fa" stroke="#8fb0d6" stroke-width="1.4"/>
+<text x="42" y="120" font-size="13" fill="#2a5d9f" font-weight="700">dotfiles 仓库（git）</text>
+<text x="42" y="140" font-size="11" fill="#1f2d3d">~/.dotfiles/zsh/.zshrc</text>
+<text x="42" y="160" font-size="11" fill="#1f2d3d">受版本控制，可 diff / 回滚</text>
+<rect x="28" y="200" width="300" height="76" rx="8" fill="#e9f5ee" stroke="#9ecfb1" stroke-width="1.4"/>
+<text x="42" y="224" font-size="13" fill="#2f7d4f" font-weight="700">HOME</text>
+<text x="42" y="244" font-size="11" fill="#1f2d3d">~/.zshrc（符号链接）</text>
+<text x="42" y="264" font-size="11" fill="#1f2d3d">→ 指向仓库文件本体</text>
+<line x1="178" y1="172" x2="178" y2="196" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="178" y1="200" x2="178" y2="176" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="188" y="192" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">同一 inode，两次写都是写同一份</text>
+<rect x="360" y="96" width="270" height="180" rx="8" fill="#fbf3e2" stroke="#dcc08a" stroke-width="1.4"/>
+<text x="374" y="120" font-size="13" fill="#8a5a12" font-weight="700">symlink 安装</text>
+<text x="374" y="140" font-size="11" fill="#1f2d3d">仓库改 .rc3 → HOME 立刻看到</text>
+<text x="374" y="160" font-size="11" fill="#1f2d3d">HOME 改 .rc7 → 直接改进仓库</text>
+<text x="374" y="180" font-size="11" fill="#1f2d3d"></text>
+<text x="374" y="200" font-size="11" fill="#1f2d3d">优点：永远一份、无漂移</text>
+<text x="374" y="220" font-size="11" fill="#1f2d3d">风险：手改被误提交（写穿）</text>
+<text x="374" y="240" font-size="11" fill="#1f2d3d">检测：0 处漂移 / 3.56 ms</text>
+<rect x="660" y="96" width="272" height="180" rx="8" fill="#fbeceb" stroke="#dda49e" stroke-width="1.4"/>
+<text x="674" y="120" font-size="13" fill="#b4453c" font-weight="700">copy 安装</text>
+<text x="674" y="140" font-size="11" fill="#1f2d3d">仓库改 .rc3 → HOME 仍是旧值</text>
+<text x="674" y="160" font-size="11" fill="#1f2d3d">HOME 改 .rc11 → 仓库不知道</text>
+<text x="674" y="180" font-size="11" fill="#1f2d3d"></text>
+<text x="674" y="200" font-size="11" fill="#1f2d3d">优点：本机可自由改</text>
+<text x="674" y="220" font-size="11" fill="#1f2d3d">风险：双向漂移、无意覆盖</text>
+<text x="674" y="240" font-size="11" fill="#1f2d3d">检测：检出 2 处 / 1.88 ms</text>
+<text x="28" y="306" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">安装脚本必须二选一并写明：</text>
+<text x="28" y="330" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">① symlink 模式：仓库是唯一真源，本机改完必须 git add，否则下次 checkout 丢失；stow -n 先 dry-run 再落盘。</text>
+<text x="28" y="352" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">② copy 模式：仓库是模板，本机是真源，需要 diff -r 定期对账，且要明确「哪边赢」。</text>
+<text x="28" y="386" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">本机 macOS 上的一个坑（写脚本时踩到）：/var/folders/... 与 /private/var/folders/... 是同一路径的两个名字，</text>
+<text x="28" y="408" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">os.path.realpath() 只归一化其中一侧时，20 个链接会全部被判成「指向别处」——检测脚本必须两边都归一化。</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="把九项自检变成五个持续指标与三条告警">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b4453c"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d4f"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700">把九项自检变成五个持续指标与三条告警</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">自检回答「现在对不对」，指标回答「什么时候开始不对」</text>
+<rect x="28" y="92" width="260" height="250" rx="8" fill="#f4f7fa" stroke="#a9b7c5" stroke-width="1.4"/>
+<text x="42" y="116" font-size="13" fill="#1f2d3d" font-weight="700">九项自检（第 196 天）</text>
+<text x="42" y="136" font-size="11" fill="#1f2d3d">compose config -q</text>
+<text x="42" y="156" font-size="11" fill="#1f2d3d">三容器 healthy</text>
+<text x="42" y="176" font-size="11" fill="#1f2d3d">up --wait 序列</text>
+<text x="42" y="196" font-size="11" fill="#1f2d3d">内存上限已落地</text>
+<text x="42" y="216" font-size="11" fill="#1f2d3d">…共九项</text>
+<rect x="340" y="92" width="260" height="250" rx="8" fill="#eaf1fa" stroke="#8fb0d6" stroke-width="1.4"/>
+<text x="354" y="116" font-size="13" fill="#2a5d9f" font-weight="700">五个指标</text>
+<text x="354" y="136" font-size="11" fill="#1f2d3d">容器健康（0/1）</text>
+<text x="354" y="156" font-size="11" fill="#1f2d3d">readiness 翻转次数</text>
+<text x="354" y="176" font-size="11" fill="#1f2d3d">outbox 积压深度</text>
+<text x="354" y="196" font-size="11" fill="#1f2d3d">下单 p99</text>
+<text x="354" y="216" font-size="11" fill="#1f2d3d">outbox 清空耗时</text>
+<rect x="652" y="92" width="280" height="250" rx="8" fill="#fbeceb" stroke="#dda49e" stroke-width="1.4"/>
+<text x="666" y="116" font-size="13" fill="#b4453c" font-weight="700">三条告警</text>
+<text x="666" y="136" font-size="11" fill="#1f2d3d">积压只增不减（差分 > 0 持续 10 min）</text>
+<text x="666" y="156" font-size="11" fill="#1f2d3d">p99 > 500 ms 连续 5 min</text>
+<text x="666" y="176" font-size="11" fill="#1f2d3d">错误预算燃烧率 > 14.4</text>
+<line x1="288" y1="216" x2="338" y2="216" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="600" y1="216" x2="650" y2="216" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="28" y="372" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">本机读数（固定种子 20261023 的合成序列，86.4 万单）</text>
+<text x="28" y="396" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">· 延迟：均值 45.0 ms / p50 42.1 / p95 60.3 / p99 128.9 / p99.9 443.9 —— 均值离 p99 差 2.9 倍，离 p99.9 差 9.9 倍</text>
+<text x="28" y="418" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">· 阈值校准（7 天 × 1440 分钟）：400 ms + 连续 1 min → 23 次误报；400 ms + 连续 5 min → 0 次；劣化 1.6 倍时 500 ms + 5 min 报 3 次、600 ms 报 0 次（漏报）</text>
+<text x="28" y="440" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">· 积压：生产 100/s、消费 95/s → 1 小时积压 18,000 条；停产后需 189.5 s 清空 —— 5/s 的差额在单条延迟里看不出来</text>
+<text x="28" y="470" font-size="12" fill="#b4453c" font-weight="400" text-anchor="start">错误预算：SLO 99.9% → 每月 43.2 分钟；1 小时窗口燃烧率 14.4 表示「按这个速度 2 天烧完一个月」。</text>
+</svg>

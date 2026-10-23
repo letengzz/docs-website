@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="五个必失点都落在层与层的接缝上">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b4453c"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d4f"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700">五个必失点都落在层与层的接缝上</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">层内坏了自己会发现；接缝坏了要等换一台机器才暴露</text>
+<rect x="28" y="92" width="210" height="300" rx="8" fill="#f4f7fa" stroke="#a9b7c5" stroke-width="1.4"/>
+<text x="42" y="116" font-size="13" fill="#1f2d3d" font-weight="700">机器层</text>
+<text x="42" y="136" font-size="11" fill="#1f2d3d">OS 与架构</text>
+<text x="42" y="156" font-size="11" fill="#1f2d3d">系统包与编译链</text>
+<text x="42" y="176" font-size="11" fill="#1f2d3d">文件系统大小写</text>
+<text x="42" y="196" font-size="11" fill="#1f2d3d"></text>
+<text x="42" y="216" font-size="11" fill="#1f2d3d">必失点①：</text>
+<text x="42" y="236" font-size="11" fill="#1f2d3d">「我机器上能跑」</text>
+<text x="42" y="256" font-size="11" fill="#1f2d3d">（架构 / 库版本）</text>
+<rect x="258" y="92" width="210" height="300" rx="8" fill="#eaf1fa" stroke="#8fb0d6" stroke-width="1.4"/>
+<text x="272" y="116" font-size="13" fill="#2a5d9f" font-weight="700">Shell 层</text>
+<text x="272" y="136" font-size="11" fill="#1f2d3d">启动文件顺序</text>
+<text x="272" y="156" font-size="11" fill="#1f2d3d">PATH 组装</text>
+<text x="272" y="176" font-size="11" fill="#1f2d3d">补全与别名</text>
+<text x="272" y="196" font-size="11" fill="#1f2d3d"></text>
+<text x="272" y="216" font-size="11" fill="#1f2d3d">必失点②：</text>
+<text x="272" y="236" font-size="11" fill="#1f2d3d">交互 shell 900 ms</text>
+<text x="272" y="256" font-size="11" fill="#1f2d3d"></text>
+<text x="272" y="276" font-size="11" fill="#1f2d3d">必失点③：</text>
+<text x="272" y="296" font-size="11" fill="#1f2d3d">PATH 34% 是重复项</text>
+<rect x="488" y="92" width="210" height="300" rx="8" fill="#fbf3e2" stroke="#dcc08a" stroke-width="1.4"/>
+<text x="502" y="116" font-size="13" fill="#8a5a12" font-weight="700">运行时层</text>
+<text x="502" y="136" font-size="11" fill="#1f2d3d">版本管理器 shim</text>
+<text x="502" y="156" font-size="11" fill="#1f2d3d">全局包位置</text>
+<text x="502" y="176" font-size="11" fill="#1f2d3d">环境变量注入</text>
+<text x="502" y="196" font-size="11" fill="#1f2d3d"></text>
+<text x="502" y="216" font-size="11" fill="#1f2d3d">必失点④：</text>
+<text x="502" y="236" font-size="11" fill="#1f2d3d">node 22 与 24</text>
+<text x="502" y="256" font-size="11" fill="#1f2d3d">在同一台机器上并存</text>
+<rect x="718" y="92" width="214" height="300" rx="8" fill="#e9f5ee" stroke="#9ecfb1" stroke-width="1.4"/>
+<text x="732" y="116" font-size="13" fill="#2f7d4f" font-weight="700">项目层</text>
+<text x="732" y="136" font-size="11" fill="#1f2d3d">锁文件与 engines</text>
+<text x="732" y="156" font-size="11" fill="#1f2d3d">任务脚本入口</text>
+<text x="732" y="176" font-size="11" fill="#1f2d3d">容器与 devcontainer</text>
+<text x="732" y="196" font-size="11" fill="#1f2d3d"></text>
+<text x="732" y="216" font-size="11" fill="#1f2d3d">必失点⑤：</text>
+<text x="732" y="236" font-size="11" fill="#1f2d3d">密钥进了 .zshrc，</text>
+<text x="732" y="256" font-size="11" fill="#1f2d3d">每个子进程都带着它</text>
+<line x1="238" y1="240" x2="256" y2="240" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="468" y1="240" x2="486" y2="240" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="698" y1="240" x2="716" y2="240" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="28" y="424" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">接缝一：架构与二进制——arm 机器上 import 到 x86 的 wheel，报错在运行期而不是安装期</text>
+<text x="28" y="446" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">接缝二：环境变量——`zsh -c`（非交互）与 `zsh -i -c`（交互）看到的是两套 PATH</text>
+<text x="28" y="468" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">接缝三：写盘位置——全局包装进 A 目录、命令解析到 B 目录，`which` 与 `import` 各说各话</text>
+</svg>

@@ -284,6 +284,17 @@ ls -d ~/.m2/repository >/dev/null && echo "m2 cache mounted"
 - [Kubernetes](../../../Ops/Kubernetes/index.md)：部署侧的编排。
 - **容器内环境与本机终端环境的边界**：远程开发把"环境"搬到了远端，但**终端配置不会跟着搬**。容器里通常是一个干净的 `sh`/`bash`，没有你本机的别名、`starship` 提示符和[会话复用器](../../Efficiency/Terminal/index.md)；而 tmux 默认不会装在 devcontainer 镜像里，容器重建时里面的会话也一起消失。两条实用结论：① **本机侧的终端体验归本机管**（Windows Terminal 字体、starship、tmux 配置），**容器侧要用就写进 `devcontainer.json` 的 `postCreateCommand`**，别指望从宿主机继承；② **容器里的长任务要么走 `docker exec` 挂到外层会话，要么在 `tmux` 里手动 `apt-get install` 后 `tmux new -d`**——直接开一个交互式 shell 跑长任务，断线即被杀（对应上面常见坑第 10 条）。
 
+## 与「开发环境与终端工程」的分工（第 197 天补充）
+
+| 那边回答什么 | 本页回答什么 | 新专题回答什么 |
+| --- | --- | --- |
+| 远程模式怎么开：SSH 配置、容器附加、扩展安装 | 编辑器侧的连接与转发开关 | 文件、端口、进程三条链路各自的一致性判据 |
+| 端口转发在 UI 里怎么点 | 转发规则怎么写 | 转发通了但页面不热更新时先查哪一条 |
+
+::: warning 这一页特有的一个坑
+编辑器的「自动转发端口」只转发它**观察到**的监听端口，而热更新用的 WebSocket 端口常常是动态分配的，于是页面能开、保存不刷新。判定方法：浏览器控制台看 `ws://` 的目标端口，回到 Remote 面板确认它也在转发列表里——这一步不能靠「重连一次试试」。
+:::
+
 ## 参考资料
 
 - Dev Container 规范与特性索引：[containers.dev](https://containers.dev/)

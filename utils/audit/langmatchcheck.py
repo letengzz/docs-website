@@ -56,7 +56,7 @@ YAML_LANGS = {"yaml", "yml"}
 JSON_LANGS = {"json"}          # jsonc/json5 允许注释与尾逗号，不参与解析
 DIAGRAM_LANGS = {"text", "plaintext", "txt", "markdown", "md"}
 
-FENCE_RE = re.compile(r"^(?:[-*+]\s+|\d+\.\s+)?(```+|~~~+)\s*([^\s`]*)")
+FENCE_RE = re.compile(r"^\s*(?:[-*+]\s+|\d+\.\s+)?(```+|~~~+)\s*([^\s`]*)")
 # 只收「不可能出现在 SQL 里」的命令词。`cat`/`source`/`cd`/`ls` 一律不收——
 # 首轮实测里 `cat VARCHAR(16) NOT NULL`（列名叫 cat）、`source text NOT NULL`
 # 会被它们误判成 shell 命令（见「口径被真实语料打回来」那段）。

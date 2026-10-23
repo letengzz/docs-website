@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="六个症状，六条最短路径">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b4453c"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d4f"/></marker></defs>
+<rect x="0" y="0" width="960" height="470" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" fill="#1f2d3d" font-weight="700">六个症状，六条最短路径</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">先量再改：每个症状都有一条能立刻跑出来的判定命令</text>
+<text x="28" y="96" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">症状</text>
+<text x="200" y="96" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">一条判定命令</text>
+<text x="660" y="96" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">先改哪里</text>
+<rect x="28" y="112" width="150" height="36" rx="8" fill="#fbeceb" stroke="#dda49e" stroke-width="1.4"/>
+<text x="103.0" y="134.0" font-size="12" fill="#b4453c" font-weight="600" text-anchor="middle">命令找不到</text>
+<text x="196" y="134" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">command -v X；PATH 是否含它所在目录</text>
+<text x="656" y="134" font-size="11" fill="#2f7d4f" font-weight="400" text-anchor="start">补 PATH 或修安装</text>
+<rect x="28" y="162" width="150" height="36" rx="8" fill="#fbf3e2" stroke="#dcc08a" stroke-width="1.4"/>
+<text x="103.0" y="184.0" font-size="12" fill="#8a5a12" font-weight="600" text-anchor="middle">版本不对</text>
+<text x="196" y="184" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">zsh -c 与 zsh -i -c 的 command -v</text>
+<text x="656" y="184" font-size="11" fill="#2f7d4f" font-weight="400" text-anchor="start">统一启动文件，去掉重复叠加</text>
+<rect x="28" y="212" width="150" height="36" rx="8" fill="#fbf3e2" stroke="#dcc08a" stroke-width="1.4"/>
+<text x="103.0" y="234.0" font-size="12" fill="#8a5a12" font-weight="600" text-anchor="middle">终端很慢</text>
+<text x="196" y="234" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">15 次 zsh -i -c exit 取 p50</text>
+<text x="656" y="234" font-size="11" fill="#2f7d4f" font-weight="400" text-anchor="start">nvm --no-use / compinit -C</text>
+<rect x="28" y="262" width="150" height="36" rx="8" fill="#fbeceb" stroke="#dda49e" stroke-width="1.4"/>
+<text x="103.0" y="284.0" font-size="12" fill="#b4453c" font-weight="600" text-anchor="middle">换机器就崩</text>
+<text x="196" y="284" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">env -i PATH=/usr/bin:/bin 下重跑</text>
+<text x="656" y="284" font-size="11" fill="#2f7d4f" font-weight="400" text-anchor="start">锁版本 + bootstrap 自检</text>
+<rect x="28" y="312" width="150" height="36" rx="8" fill="#fbeceb" stroke="#dda49e" stroke-width="1.4"/>
+<text x="103.0" y="334.0" font-size="12" fill="#b4453c" font-weight="600" text-anchor="middle">密钥泄漏</text>
+<text x="196" y="334" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">ps eww -p <pid> 搜明文</text>
+<text x="656" y="334" font-size="11" fill="#2f7d4f" font-weight="400" text-anchor="start">改密钥管理器按需注入</text>
+<rect x="28" y="362" width="150" height="36" rx="8" fill="#fbf3e2" stroke="#dcc08a" stroke-width="1.4"/>
+<text x="103.0" y="384.0" font-size="12" fill="#8a5a12" font-weight="600" text-anchor="middle">远端不一致</text>
+<text x="196" y="384" font-size="11" fill="#5a6b7b" font-weight="400" text-anchor="start">远端 node -v / docker exec 对比</text>
+<text x="656" y="384" font-size="11" fill="#2f7d4f" font-weight="400" text-anchor="start">构建放进远端，只同步源码</text>
+<text x="28" y="436" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">最常被误判的一条：「终端慢」的原因通常不是插件多，而是版本管理器在启动时解析默认版本（本机 660 ms）。</text>
+</svg>
