@@ -30,3 +30,4 @@
 - [邮件送达工程](EmailDeliverability/index.md)
 - [分布式调度与任务编排](DistributedScheduling/index.md)
 - [事件溯源与 CQRS](EventSourcing/index.md)
+- [多租户 SaaS 架构](MultiTenantSaaS/index.md)

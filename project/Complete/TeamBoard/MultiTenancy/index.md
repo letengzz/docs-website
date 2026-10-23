@@ -250,6 +250,19 @@ docker compose exec -T postgres psql -U app -d teamboard -c \
 
 **本页特有的一个坑**：把「租户隔离」当成「隐私隔离」。同租户内的 200 个成员彼此之间没有隔离——`member` 表对同租户的查询是全可见的。如果某个成员要求删除自己的数据，租户级 RLS 完全帮不上忙：它只保证「A 租户看不到 B 租户」，不保证「同租户里别人看不到我」。两套边界要分别实现，判据也不同（前者查 `tenant_id`，后者查 `subject_id` 与目的）。
 
+## 与「多租户 SaaS 架构」的分工（第 195 天补充）
+
+| 那边（专题）回答 | 本页回答 |
+| --- | --- |
+| 三档隔离的成本算式与迁移路径：建租户 4.2 ms / 200 ms、体积 2.86 倍、备份 26,560 行 | 选行级隔离的三条依据，以及 `tenant_id` 进主键后的完整 DDL |
+| 为什么「schema 模式 DDL 慢」这个理由不成立（300 张表加一列只要 21.7 ms） | 项目侧实际用的复合唯一键与 `FORCE` 策略写法 |
+| 分档混用的路由层要求（一张租户路由表、代码里不出现 `if tier == 'big'`） | 本项目的单档实现，以及未来拆分的预留点 |
+
+**本页独有的一个坑**：复合唯一键的**列序**。写成 `unique (order_no, tenant_id)` 时，`order_no` 在前，按租户的等值查询用不上这棵索引；必须写成 `unique (tenant_id, order_no)`，让租户列成为索引前缀。本项目的九张表里有两张在最初版本写反了，直到 `EXPLAIN` 显示 `Seq Scan` 才发现——而那时数据量还小，性能上完全看不出来。
+
+专题详见 [多租户 SaaS 架构](../../../../docs/Backend/MultiTenantSaaS/index.md) 的 [隔离三档](../../../../docs/Backend/MultiTenantSaaS/IsolationModel/index.md)。
+
+
 ## 参考资料
 
 - [PostgreSQL 文档：Row Security Policies](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)

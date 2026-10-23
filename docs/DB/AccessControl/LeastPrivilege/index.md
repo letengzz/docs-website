@@ -134,7 +134,7 @@ grant usage on all sequences in schema public to app_ro;
 再加两条边界：
 
 - **只读账号不要给 `pg_read_all_data`**：那是跨 schema 全库，一旦以后建了 `audit` schema，它也能读审计。
-- **只读账号走独立连接池**：与业务池共用时，一个慢报表能把在线池拖空（见 [连接池](../ConnectionPool/index.md)）。
+- **只读账号走独立连接池**：与业务池共用时，一个慢报表能把在线池拖空（见 [连接池](../../ConnectionPool/index.md)）。
 
 ## 七、本页判据
 

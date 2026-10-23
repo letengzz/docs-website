@@ -51,6 +51,7 @@ export const nav = [
       { text: "邮件送达工程", link: "/docs/Backend/EmailDeliverability" },
       { text: "事件溯源与 CQRS", link: "/docs/Backend/EventSourcing" },
       { text: "服务网格与东西向流量", link: "/docs/Backend/ServiceMesh" },
+      { text: "多租户 SaaS 架构", link: "/docs/Backend/MultiTenantSaaS" },
     ]
   },
   {

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="16 个分片的租户数与行数对比，展示数据倾斜">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" font-weight="700" fill="#1f2d3d">按租户数均衡 ≠ 按数据量均衡</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">300 个租户哈希到 16 个分片；多出来的 20 万行全部落在同一个租户上</text>
+<text x="28" y="92" font-size="11.5" fill="#2f8f7d" font-weight="700" text-anchor="start">租户数：最多 26 / 最少 13 = 2.00 倍（哈希涨落，不是 bug）</text>
+<text x="28" y="114" font-size="11.5" fill="#b4453c" font-weight="700" text-anchor="start">行数：最多 220,000 / 最少 19,000 = 11.6 倍（大租户把分片压弯了）</text>
+<rect x="60" y="350.45454545454544" width="34" height="29.545454545454543" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="77" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">0</text>
+<rect x="115" y="351.5909090909091" width="34" height="28.409090909090907" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="132" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">1</text>
+<rect x="170" y="352.72727272727275" width="34" height="27.27272727272727" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="187" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">2</text>
+<rect x="225" y="356.1363636363636" width="34" height="23.863636363636363" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="242" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">3</text>
+<rect x="280" y="357.27272727272725" width="34" height="22.727272727272727" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="297" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">4</text>
+<rect x="335" y="358.40909090909093" width="34" height="21.59090909090909" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="352" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">5</text>
+<rect x="390" y="359.54545454545456" width="34" height="20.454545454545453" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="407" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">6</text>
+<rect x="445" y="358.40909090909093" width="34" height="21.59090909090909" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="462" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">7</text>
+<rect x="500" y="130.0" width="34" height="250.0" rx="2" fill="#b4453c" stroke="#b4453c" stroke-width="0"/>
+<text x="517" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">8</text>
+<text x="517" y="122.0" font-size="10" fill="#b4453c" font-weight="700" text-anchor="middle">220k</text>
+<rect x="555" y="350.45454545454544" width="34" height="29.545454545454543" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="572" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">9</text>
+<rect x="610" y="351.5909090909091" width="34" height="28.409090909090907" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="627" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">10</text>
+<rect x="665" y="352.72727272727275" width="34" height="27.27272727272727" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="682" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">11</text>
+<rect x="720" y="353.8636363636364" width="34" height="26.136363636363633" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="737" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">12</text>
+<rect x="775" y="355.0" width="34" height="25.0" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="792" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">13</text>
+<rect x="830" y="356.1363636363636" width="34" height="23.863636363636363" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="847" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">14</text>
+<rect x="885" y="357.27272727272725" width="34" height="22.727272727272727" rx="2" fill="#2b5c8a" stroke="#2b5c8a" stroke-width="0"/>
+<text x="902" y="396" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">15</text>
+<path d="M 50 380 L 930 380" stroke="#94a3b8" stroke-width="1.2" fill="none"/>
+<text x="50" y="412" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">分片编号（hash(tenant_id) &amp; 15）</text>
+<rect x="28" y="428" width="452" height="58" rx="7" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+<text x="44" y="450" font-size="11" fill="#475569" font-weight="400" text-anchor="start">扩容搬迁：取模 4→5 = 79.9%，8→9 = 88.3%</text>
+<text x="44" y="470" font-size="11" fill="#475569" font-weight="400" text-anchor="start">一致性哈希 4→5 = 18.3%，8→9 = 8.8%（4~10 倍差距）</text>
+<rect x="500" y="428" width="432" height="58" rx="7" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.2"/>
+<text x="516" y="450" font-size="11" fill="#c2703a" font-weight="700" text-anchor="start">但翻倍扩容时两者一样差</text>
+<text x="516" y="470" font-size="11" fill="#475569" font-weight="400" text-anchor="start">4→8 与 8→16 都约 51% —— 一半的键本来就必须搬</text>
+</svg>

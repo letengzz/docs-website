@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="三种隔离模式的成本对照">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" font-weight="700" fill="#1f2d3d">隔离三档：同一份 30 万行数据，三种放法</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">300 个租户 × 1,000 行；读数为本机 PostgreSQL 18.6 实测，不是估算</text>
+<rect x="28" y="82" width="292" height="300" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="42" y="106" font-size="12.5" fill="#2b5c8a" font-weight="700" text-anchor="start">独立库 database-per-tenant</text>
+<text x="42" y="140" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">建第 N 个租户</text>
+<text x="42" y="160" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">136~216 ms</text>
+<text x="42" y="198" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">每租户固定开销</text>
+<text x="42" y="218" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">整库（含系统目录）</text>
+<text x="42" y="256" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">备份粒度</text>
+<text x="42" y="276" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">整库一份</text>
+<text x="42" y="314" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">跨租户查询</text>
+<text x="42" y="334" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">不可能，也不用防</text>
+<rect x="330" y="82" width="292" height="300" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="344" y="106" font-size="12.5" fill="#2f8f7d" font-weight="700" text-anchor="start">独立 schema schema-per-tenant</text>
+<text x="344" y="140" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">建第 N 个租户</text>
+<text x="344" y="160" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">4.18 → 4.28 ms</text>
+<text x="344" y="198" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">300 租户业务表</text>
+<text x="344" y="218" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">94 MB</text>
+<text x="344" y="256" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">点查（460 行）</text>
+<text x="344" y="276" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">0.117 ms</text>
+<text x="344" y="314" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">加一列 × 300 表</text>
+<text x="344" y="334" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">21.7 ms</text>
+<rect x="632" y="82" width="292" height="300" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="646" y="106" font-size="12.5" fill="#c2703a" font-weight="700" text-anchor="start">共享表 + 行级策略</text>
+<text x="646" y="140" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">建第 N 个租户</text>
+<text x="646" y="160" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">0 次 DDL</text>
+<text x="646" y="198" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">同数据共享表</text>
+<text x="646" y="218" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">33 MB</text>
+<text x="646" y="256" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">点查（463 行）</text>
+<text x="646" y="276" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">0.049 ms</text>
+<text x="646" y="314" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">加一列 × 1 表</text>
+<text x="646" y="334" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">0.183 ms</text>
+<text x="28" y="410" font-size="13" fill="#1f2d3d" font-weight="700" text-anchor="start">三条由实测得出的反直觉结论</text>
+<text x="28" y="432" font-size="11.5" fill="#2b5c8a" font-weight="700" text-anchor="start">① 「schema 模式 DDL 慢」不成立</text>
+<text x="300" y="432" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">300 张表加一列只要 21.7 ms；真正的代价是半途失败无法回滚、版本漂移难检测</text>
+<text x="28" y="454" font-size="11.5" fill="#2b5c8a" font-weight="700" text-anchor="start">② 目录膨胀在 300 租户量级读不出来</text>
+<text x="300" y="454" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">第 1 批 4.18 ms/租户、第 6 批 4.28 ms/租户，只涨 2.4%</text>
+<text x="28" y="476" font-size="11.5" fill="#2b5c8a" font-weight="700" text-anchor="start">③ 小租户的固定开销才是主项</text>
+<text x="300" y="476" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">94 MB / 33 MB = 2.86 倍，几乎全来自「每张表至少一个空页」</text>
+</svg>

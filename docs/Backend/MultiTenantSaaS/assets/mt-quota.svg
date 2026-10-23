@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="check-then-act 与原子扣减的并发结果对比">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" font-weight="700" fill="#1f2d3d">配额扣在哪一步：读后写 vs 原子扣减</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">配额 50，10 个并发连接各提交 10 次，共 100 次请求（pgbench -c 10 -j 5 -t 10）</text>
+<rect x="28" y="82" width="452" height="250" rx="8" fill="#fbeceb" stroke="#b4453c" stroke-width="1.4"/>
+<text x="44" y="108" font-size="13" fill="#b4453c" font-weight="700" text-anchor="start">读后写（check-then-act）</text>
+<text x="44" y="140" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">① SELECT used  → 读到 0</text>
+<text x="44" y="170" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">② 判断 0 &lt; 50，记账一行</text>
+<text x="44" y="200" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">③ UPDATE used = used + 1</text>
+<text x="44" y="230" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">④ 提交（此时才拿行锁）</text>
+<text x="44" y="268" font-size="11" fill="#7f1d1d" font-weight="700" text-anchor="start">十个连接都读到 0，于是都判断「还有额度」</text>
+<text x="44" y="292" font-size="12.5" fill="#b4453c" font-weight="700" text-anchor="start">记账 57 行 / used=100</text>
+<text x="44" y="314" font-size="11" fill="#7f1d1d" font-weight="400" text-anchor="start">超卖 7 笔，账实差 43 笔</text>
+<rect x="500" y="82" width="432" height="250" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="516" y="108" font-size="13" fill="#2f8f7d" font-weight="700" text-anchor="start">原子扣减（UPDATE … WHERE used &lt; cap）</text>
+<text x="516" y="140" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">① UPDATE … WHERE used &lt; 50 RETURNING</text>
+<text x="516" y="170" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">② 行锁串行化，后到者看到新值</text>
+<text x="516" y="200" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">③ 只有返回行的请求才记账</text>
+<text x="516" y="230" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">④ 提交</text>
+<text x="516" y="268" font-size="11" fill="#14532d" font-weight="700" text-anchor="start">判断与写入是同一条语句，中间没有窗口</text>
+<text x="516" y="292" font-size="12.5" fill="#2f8f7d" font-weight="700" text-anchor="start">记账 50 行 / used=50</text>
+<text x="516" y="314" font-size="11" fill="#14532d" font-weight="400" text-anchor="start">超卖 0 笔，账实一致</text>
+<rect x="28" y="348" width="904" height="128" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+<text x="44" y="374" font-size="12.5" fill="#334155" font-weight="700" text-anchor="start">三个读数一起看</text>
+<text x="44" y="402" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">吞吐</text>
+<text x="44" y="424" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">1,380 → 1,610 TPS</text>
+<text x="44" y="446" font-size="10.5" fill="#5a6b7b" font-weight="400" text-anchor="start">正确写法反而更快：少了那一次多余的读</text>
+<text x="344" y="402" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">行锁</text>
+<text x="344" y="424" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">读后写把锁推到提交前</text>
+<text x="344" y="446" font-size="10.5" fill="#5a6b7b" font-weight="400" text-anchor="start">冲突窗口越短，等待越少</text>
+<text x="644" y="402" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start">语义</text>
+<text x="644" y="424" font-size="12" fill="#1f2d3d" font-weight="700" text-anchor="start">「先查后改」必须有唯一约束兜底</text>
+<text x="644" y="446" font-size="10.5" fill="#5a6b7b" font-weight="400" text-anchor="start">没有约束时，任何检查都只是建议</text>
+</svg>

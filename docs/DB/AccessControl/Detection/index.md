@@ -166,4 +166,4 @@ order by 1 desc, 3 desc;
 - PostgreSQL 18 Documentation：*Error Codes*（`42501 insufficient_privilege`）
 - PostgreSQL 18 Documentation：*Event Triggers*（DDL 变更捕获）
 - PostgreSQL 18 Documentation：*Log File Maintenance*（csvlog 字段顺序）
-- 本仓库：[审计](../AuditTrail/index.md)、[权限生命周期](../Lifecycle/index.md)、[安全加固与审计检测](../../Ops/SecurityHardening/AuditDetection/index.md)
+- 本仓库：[审计](../AuditTrail/index.md)、[权限生命周期](../Lifecycle/index.md)、[安全加固与审计检测](../../../Ops/SecurityHardening/AuditDetection/index.md)

@@ -213,10 +213,23 @@ commit;
 | `RLS-G` | 视图全部 `security_invoker` 或表已 `FORCE` | `pg_views` 里 `security_invoker` 为 on | 重建视图或加 `FORCE` |
 | `RLS-H` | 应用账号无 `TRUNCATE` | `has_table_privilege(...,'TRUNCATE') = false` | `REVOKE TRUNCATE` |
 
+## 与「多租户 SaaS 架构」的分工（第 195 天补充）
+
+| 那边（专题）回答 | 本页回答 |
+| --- | --- |
+| 同一套策略在「租户」这个维度上的**工程用法**：上下文取值、缓存键、异步链路 | 策略本身的语法、`USING` 与 `WITH CHECK` 的边界、`FORCE` 的必要性 |
+| 大租户（占 40% 数据）的点查 4.723 ms 对小租户 0.049 ms（96 倍） | 策略对**同规模数据**的执行计划影响（本页实测 0.049 对 0.054 ms） |
+| 三档隔离各自的成本与迁移路径 | 行级策略这一档在库层怎么落地 |
+
+**本页独有的一个坑**：策略里包函数会让条件**下推不进 `Index Cond`**。本页示例里的写法 `tenant_id = current_setting(...)` 之所以能走索引，是因为它是内联表达式；一旦包成 `tenant_id = current_tenant()` 且函数没标 `STABLE`，计划里就只剩 `Filter`，扫描量从 471 行变成 50 万行。判断方法只有一条：看 `EXPLAIN` 的 `Index Cond` 里有没有那段表达式。
+
+专题详见 [多租户 SaaS 架构](../../../Backend/MultiTenantSaaS/index.md) 的 [租户上下文](../../../Backend/MultiTenantSaaS/TenantContext/index.md)。
+
+
 ## 参考资料
 
 - PostgreSQL 18 Documentation：*Row Security Policies*（`USING` / `WITH CHECK`、`PERMISSIVE` / `RESTRICTIVE`、所有者与 `FORCE`、`BYPASSRLS`）
 - PostgreSQL 18 Documentation：*CREATE POLICY*、*ALTER TABLE ... ENABLE ROW LEVEL SECURITY*、*CREATE VIEW*（`security_invoker`）
 - PostgreSQL 18 Documentation：*COPY*（`COPY FROM` 与 RLS 的限制）
-- 本仓库：[四层结构与五个必失点](../Overview/index.md)、[越权路径](../PrivilegeEscalation/index.md)、[连接池的会话复位](../ConnectionPool/TransactionBoundary/index.md)
-- 本仓库项目侧：[TeamBoard 连接池串租户复现](../../../project/Complete/TeamBoard/PoolTenantLeak/index.md)（同一机制的故障复现）
+- 本仓库：[四层结构与五个必失点](../Overview/index.md)、[越权路径](../PrivilegeEscalation/index.md)、[连接池的会话复位](../../ConnectionPool/TransactionBoundary/index.md)
+- 本仓库项目侧：[TeamBoard 连接池串租户复现](../../../../project/Complete/TeamBoard/PoolTenantLeak/index.md)（同一机制的故障复现）

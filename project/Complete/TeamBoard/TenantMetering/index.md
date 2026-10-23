@@ -283,3 +283,16 @@ grep -rn "state='held'" --include=*.sql sql/ | grep -v "expires_at" || echo "OK:
 - [幂等与状态机工程](../../../../docs/Backend/IdempotencyStateMachine/index.md)：预扣/提交/释放的状态机
 - [PostgreSQL 文档：`INSERT ... SELECT` 与 `ON CONFLICT`](https://www.postgresql.org/docs/current/sql-insert.html)
 - [PostgreSQL 文档：`date_trunc` 与窗口对齐](https://www.postgresql.org/docs/current/functions-datetime.html)
+
+## 与「多租户 SaaS 架构」的分工（第 195 天补充）
+
+| 那边（专题）回答 | 本页回答 |
+| --- | --- |
+| 计量口径的三条误差：采样 1% 单租户最大偏 2.16%、重复 0.5% 超收 0.50%、迟到 0.3% 少计 0.31% | 本项目的计量表结构、聚合任务与配额执行落地 |
+| 成本分摊三种口径的毛利差（均摊让最小客户毛利 -5,600） | 本项目只做「用量计量」，不做成本分摊 |
+| 配额与账单必须同源，以及那条每日对账 SQL | 本项目 `quota_daily` 与 `usage_event` 的对账任务 |
+
+**本页独有的一个坑**：账期切分用了 `ingested_at` 而不是 `occurred_at`。上线第一个月没出问题，因为入库延迟都在秒级；第二个月接入一个离线补传的客户后，它的一批历史事件全部被算进了「入库当月」，账单直接翻倍。改成 `occurred_at` 之后，还要补一个「迟到窗口」的概念，否则跨月的事件会在两个账期之间反复横跳。
+
+专题详见 [计量与账单](../../../../docs/Backend/MultiTenantSaaS/MeteringBilling/index.md) 与 [配额执行](../../../../docs/Backend/MultiTenantSaaS/QuotaEnforcement/index.md)。
+

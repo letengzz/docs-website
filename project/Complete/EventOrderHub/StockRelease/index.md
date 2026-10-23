@@ -125,7 +125,7 @@ RETURNING d.id;
 这两支的**失败处理不对称**，是最容易被写成对称的地方：释放输了可以静默（它本来就不该赢），支付输了不能静默（钱已经收了）。
 
 ::: warning 为什么「先发事件再改状态」在这里一定是错的
-释放如果先发 `stock.released` 再改状态，下游可能已经按「库存回来了」把商品卖给了别人，而数据库里这行还是 `HELD`——一旦事务回滚，就出现「卖了但没货」。正确顺序与下单链路的 outbox 完全同构：**状态与事件在同一个事务里落库**，事件由投递器搬运（见 [下单链路与 outbox](OrderFlow/index.md)）。
+释放如果先发 `stock.released` 再改状态，下游可能已经按「库存回来了」把商品卖给了别人，而数据库里这行还是 `HELD`——一旦事务回滚，就出现「卖了但没货」。正确顺序与下单链路的 outbox 完全同构：**状态与事件在同一个事务里落库**，事件由投递器搬运（见 [下单链路与 outbox](../OrderFlow/index.md)）。
 :::
 
 ## 五、回补：只在 CAS 成功的那一支执行
@@ -254,7 +254,7 @@ psql -U postgres -d eoh -c "select available from stock where sku_id = 42;"
 
 ## 参考资料
 
-- 本仓库项目：[EventOrderHub 项目总览](../index.md)、[第 2 周第 2 步·下单链路与 outbox](OrderFlow/index.md)、[第 2 周第 3 步·支付回调](PaymentCallback/index.md)、[数据库设计·九张表与六条不变量](../DatabaseDesign/index.md)
+- 本仓库项目：[EventOrderHub 项目总览](../index.md)、[第 2 周第 2 步·下单链路与 outbox](../OrderFlow/index.md)、[第 2 周第 3 步·支付回调](../PaymentCallback/index.md)、[数据库设计·九张表与六条不变量](../DatabaseDesign/index.md)
 - 本仓库专题：[幂等与状态机工程](../../../../docs/Backend/IdempotencyStateMachine/index.md)、[分布式事务与 Saga](../../../../docs/Backend/Microservices/DistributedTransaction/Saga/index.md)、[PostgreSQL 与连接池](../../../../docs/DB/ConnectionPool/index.md)
 - PostgreSQL 18 Documentation：*SELECT … FOR UPDATE*（含 `SKIP LOCKED` 语义）、*Partial Indexes*、*Explicit Locking*、*Deadlock Detection*
 - Martin Fowler：*Optimistic Offline Lock*（版本号与 CAS 的通用形态）

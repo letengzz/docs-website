@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="租户生命周期的状态机，其中 DORMANT 状态没有入边">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" font-weight="700" fill="#1f2d3d">八个状态、十四条迁移，和一个没有入边的状态</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">把生命周期画成图之后，第一个被抓出来的不是「少了一条迁移」，而是「多了一个状态」</text>
+<rect x="60" y="130" width="180" height="46" rx="8" fill="#e9f0f7" stroke="#2b5c8a" stroke-width="1.4"/>
+<text x="150" y="158" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="middle">PROVISIONING</text>
+<rect x="300" y="130" width="180" height="46" rx="8" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.4"/>
+<text x="390" y="158" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="middle">ACTIVE</text>
+<rect x="620" y="62" width="180" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="710" y="90" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="middle">SUSPENDED_DUNNING</text>
+<rect x="620" y="200" width="180" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="710" y="228" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="middle">SUSPENDED_QUOTA</text>
+<rect x="620" y="280" width="180" height="46" rx="8" fill="#fbeceb" stroke="#b4453c" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="710" y="308" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="middle">DORMANT</text>
+<rect x="60" y="212" width="180" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="150" y="240" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="middle">FAILED</text>
+<rect x="300" y="288" width="180" height="46" rx="8" fill="#fbf0e6" stroke="#c2703a" stroke-width="1.4"/>
+<text x="390" y="316" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="middle">OFFBOARDING</text>
+<rect x="300" y="366" width="180" height="46" rx="8" fill="#f3eef7" stroke="#6b4a8a" stroke-width="1.4"/>
+<text x="390" y="394" font-size="11" fill="#1f2d3d" font-weight="700" text-anchor="middle">PURGED</text>
+<text x="710" y="338" font-size="10" fill="#b4453c" font-weight="400" text-anchor="start">无入边：没有任何迁移指向它</text>
+<path d="M 240 153 L 298 153" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)" fill="none"/>
+<text x="269" y="143" font-size="10" fill="#2f8f7d" font-weight="400" text-anchor="middle">开通成功</text>
+<path d="M 132 176 L 132 210" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)" fill="none"/>
+<text x="124" y="198" font-size="10" fill="#64748b" font-weight="400" text-anchor="end">建库失败</text>
+<path d="M 180 210 L 180 178" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#ar)" fill="none" stroke-dasharray="5 4"/>
+<text x="188" y="198" font-size="10" fill="#94a3b8" font-weight="400" text-anchor="start">重试</text>
+<path d="M 480 143 L 618 90" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)" fill="none"/>
+<text x="552" y="104" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">欠费</text>
+<path d="M 618 108 L 482 156" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#ar)" fill="none" stroke-dasharray="5 4"/>
+<path d="M 480 166 L 618 214" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)" fill="none"/>
+<text x="552" y="208" font-size="10" fill="#64748b" font-weight="400" text-anchor="middle">超额</text>
+<path d="M 618 232 L 482 178" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#ar)" fill="none" stroke-dasharray="5 4"/>
+<path d="M 390 176 L 390 286" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)" fill="none"/>
+<text x="398" y="240" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">申请退出</text>
+<path d="M 620 108 L 575 108 L 575 311 L 482 311" stroke="#64748b" stroke-width="1.4" fill="none" marker-end="url(#ar)"/>
+<text x="600" y="352" font-size="9.5" fill="#64748b" font-weight="" text-anchor="end">两种挂起态也可直接退出（两条迁移）</text>
+<path d="M 390 334 L 390 364" stroke="#5a6b7b" stroke-width="1.5" marker-end="url(#ar)" fill="none"/>
+<text x="382" y="352" font-size="10" fill="#64748b" font-weight="" text-anchor="end">冷静期结束</text>
+<path d="M 302 292 L 316 178" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#ar)" fill="none" stroke-dasharray="5 4"/>
+<text x="288" y="262" font-size="10" fill="#94a3b8" font-weight="" text-anchor="end">撤回退出</text>
+<text x="28" y="412" font-size="12.5" fill="#1f2d3d" font-weight="700" text-anchor="start">自检结论（脚本 BFS）</text>
+<text x="28" y="436" font-size="11" fill="#475569" font-weight="400" text-anchor="start">· 状态 8 / 迁移 14 / 从 PROVISIONING 可达 7 / 终态只有 PURGED</text>
+<text x="28" y="456" font-size="11" fill="#475569" font-weight="400" text-anchor="start">· 不可达状态：DORMANT —— 要么补一条 ACTIVE → DORMANT（闲置 N 天），要么删掉它</text>
+<text x="28" y="476" font-size="11" fill="#475569" font-weight="400" text-anchor="start">· 从 PURGED 无法回到 ACTIVE：终态没有被意外打通，这一条是好的</text>
+</svg>

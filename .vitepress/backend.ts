@@ -838,3 +838,22 @@ export const ServiceMesh = [
     ],
   },
 ];
+
+export const MultiTenantSaaS = [
+  {
+    text: "多租户 SaaS 架构",
+    link: "/docs/Backend/MultiTenantSaaS/index.md",
+    items: [
+      { text: "四个维度与五个必失点", link: "/docs/Backend/MultiTenantSaaS/Overview/index.md" },
+      { text: "隔离三档：成本、体积与迁移路径", link: "/docs/Backend/MultiTenantSaaS/IsolationModel/index.md" },
+      { text: "租户上下文：六段链与三个断点", link: "/docs/Backend/MultiTenantSaaS/TenantContext/index.md" },
+      { text: "噪声邻居：公平排队的代价与收益", link: "/docs/Backend/MultiTenantSaaS/NoisyNeighbor/index.md" },
+      { text: "配额执行：扣在哪一步决定超不超卖", link: "/docs/Backend/MultiTenantSaaS/QuotaEnforcement/index.md" },
+      { text: "大租户与热点：倾斜、分片与单元化", link: "/docs/Backend/MultiTenantSaaS/HotTenant/index.md" },
+      { text: "计量与账单：从事件到一行可解释的账", link: "/docs/Backend/MultiTenantSaaS/MeteringBilling/index.md" },
+      { text: "生命周期：八个状态与一条没有入边的迁移", link: "/docs/Backend/MultiTenantSaaS/Lifecycle/index.md" },
+      { text: "实战：一套可验收的多租户基线", link: "/docs/Backend/MultiTenantSaaS/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/MultiTenantSaaS/FAQ/index.md" },
+    ],
+  },
+];

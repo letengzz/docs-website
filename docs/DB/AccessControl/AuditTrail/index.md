@@ -231,4 +231,4 @@ select inet_client_addr(), inet_client_port();   -- 本机 socket 连接时为 n
 - PostgreSQL 18 Documentation：*CREATE TRIGGER*（`FOR EACH ROW` 与 `FOR EACH STATEMENT`、`TRUNCATE` 触发器）
 - PostgreSQL 18 Documentation：*Date/Time Functions*（`now()` 与 `clock_timestamp()` 的区别）、*Partitioning*（`DETACH PARTITION`）
 - pgaudit 官方仓库：审计类目与 `pgaudit.log_catalog`
-- 本仓库：[四层结构与五个必失点](../Overview/index.md)、[异常访问检测](../Detection/index.md)、[安全加固与审计检测](../../Ops/SecurityHardening/AuditDetection/index.md)
+- 本仓库：[四层结构与五个必失点](../Overview/index.md)、[异常访问检测](../Detection/index.md)、[安全加固与审计检测](../../../Ops/SecurityHardening/AuditDetection/index.md)

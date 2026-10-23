@@ -51,7 +51,7 @@ ERROR:  duplicate key value violates unique constraint "orders_pkey"
 DETAIL:  Key (id)=(1) already exists.
 ```
 
-`DETAIL` 里的 `(1)` 就是信号——说明序列还在起点。修法见 [逻辑复制迁移](LogicalMigration/index.md) 第四节，注意**每个序列都要修**，包括那些「业务上很少用」的。
+`DETAIL` 里的 `(1)` 就是信号——说明序列还在起点。修法见 [逻辑复制迁移](../LogicalMigration/index.md) 第四节，注意**每个序列都要修**，包括那些「业务上很少用」的。
 
 约束类问题次之：`NOT NULL` 在新版本上更严格、`CHECK` 在 MySQL 8.0.16 之前不生效而在之后生效（老库里的脏数据会在升级后暴露）。这类问题**只能在预检阶段用数据扫描提前发现**：
 
@@ -154,4 +154,4 @@ PostgreSQL --link：文件被接管 → 旧集群起不来
 - PostgreSQL 18 Documentation: `pg_stat_subscription`、`pg_stat_user_tables`、`pg_dumpall`
 - PostgreSQL 18 Documentation: *Authentication Methods*（SCRAM / md5 废弃）
 - MySQL 8.4 Reference Manual: *Access Control*、`CHECK` 约束的生效版本
-- 本仓库：[变更管理的高危变更判据](../../ChangeManagement/HighRiskChange/index.md)、[逻辑复制迁移](LogicalMigration/index.md)
+- 本仓库：[变更管理的高危变更判据](../../ChangeManagement/HighRiskChange/index.md)、[逻辑复制迁移](../LogicalMigration/index.md)

@@ -83,6 +83,19 @@
 2. **借出的连接必须能在「有时限」内还回来**：`connectionTimeout`、语句超时、外部调用超时三者缺一，池就会被一个慢下游整池拖死。
 3. **连接的「死」必须由池判定，不能由第一次 SQL 判定**：借出前校验、`maxLifetime`、失效重建三者至少有两项，否则服务端重启后的第一批请求必然报错。
 
+## 与「多租户 SaaS 架构」的分工（第 195 天补充）
+
+| 那边（专题）回答 | 本页回答 |
+| --- | --- |
+| 池化复用后**租户上下文**的残留：会话级 `set_config` 让下一个请求读到上一租户的 1,000 行 | 池的借还路径、池大小算式、泄漏定位、双层池的账 |
+| 每租户独立池（舱壁）的代价与收益 | 池本身的容量与探活 |
+| 上下文复位应该用事务级写法（`set_config(..., true)`，开销 1.6 µs） | 连接的生命周期与 `keepalive`、`maxLifetime` |
+
+**本页独有的一个坑**：池的 `borrow` 回调里「补设上下文」只能治「忘了设」，治不了「设成别人的」。而且补设本身会掩盖问题——它让串租户变成「静默正确」，于是没人去修拦截器的排除名单。正确做法是在 `borrow` 里做**校验**（Token 租户 == Header 租户），不一致直接抛异常。
+
+专题详见 [多租户 SaaS 架构](../../Backend/MultiTenantSaaS/index.md) 的 [租户上下文](../../Backend/MultiTenantSaaS/TenantContext/index.md)。
+
+
 ## 参考资料
 
 - HikariCP 官方仓库 README：*Configuration (knobs, baby!)* 默认值表、*About Pool Sizing* wiki、*You're [probably] doing it wrong*

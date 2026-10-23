@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif" role="img" aria-label="多租户基线验收的十条判据，其中四条要求必须失败">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="0" y="0" width="960" height="500" fill="#ffffff"/>
+<text x="28" y="36" font-size="18" font-weight="700" fill="#1f2d3d">十条验收，四条必须失败</text>
+<text x="28" y="58" font-size="12" fill="#5a6b7b">只验证「正常能用」的验收单，测不出隔离；负向验收才是这一层的真门槛</text>
+<text x="28" y="90" font-size="12" fill="#2f8f7d" font-weight="700" text-anchor="start">正向：做到了才算完成（6 条）</text>
+<rect x="28" y="106" width="292" height="50" rx="6" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.2"/>
+<text x="40" y="126" font-size="11.5" fill="#2f8f7d" font-weight="700" text-anchor="start">S1</text>
+<text x="66" y="126" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">同一租户能读到自己全部数据</text>
+<text x="40" y="144" font-size="10" fill="#5a6b7b" font-weight="400" text-anchor="start">期望：通过</text>
+<rect x="334" y="106" width="292" height="50" rx="6" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.2"/>
+<text x="346" y="126" font-size="11.5" fill="#2f8f7d" font-weight="700" text-anchor="start">S2</text>
+<text x="372" y="126" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">两个租户数据量互不影响</text>
+<text x="346" y="144" font-size="10" fill="#5a6b7b" font-weight="400" text-anchor="start">期望：通过</text>
+<rect x="640" y="106" width="292" height="50" rx="6" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.2"/>
+<text x="652" y="126" font-size="11.5" fill="#2f8f7d" font-weight="700" text-anchor="start">S5</text>
+<text x="678" y="126" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">配额用完返回 429 而不是 500</text>
+<text x="652" y="144" font-size="10" fill="#5a6b7b" font-weight="400" text-anchor="start">期望：通过</text>
+<rect x="28" y="168" width="292" height="50" rx="6" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.2"/>
+<text x="40" y="188" font-size="11.5" fill="#2f8f7d" font-weight="700" text-anchor="start">S7</text>
+<text x="66" y="188" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">账单行可追到事件 ID</text>
+<text x="40" y="206" font-size="10" fill="#5a6b7b" font-weight="400" text-anchor="start">期望：通过</text>
+<rect x="334" y="168" width="292" height="50" rx="6" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.2"/>
+<text x="346" y="188" font-size="11.5" fill="#2f8f7d" font-weight="700" text-anchor="start">S9</text>
+<text x="372" y="188" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">退出后数据在冷静期内可导出</text>
+<text x="346" y="206" font-size="10" fill="#5a6b7b" font-weight="400" text-anchor="start">期望：通过</text>
+<rect x="640" y="168" width="292" height="50" rx="6" fill="#e8f4f1" stroke="#2f8f7d" stroke-width="1.2"/>
+<text x="652" y="188" font-size="11.5" fill="#2f8f7d" font-weight="700" text-anchor="start">S10</text>
+<text x="678" y="188" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">备份能按租户还原</text>
+<text x="652" y="206" font-size="10" fill="#5a6b7b" font-weight="400" text-anchor="start">期望：通过</text>
+<text x="28" y="254" font-size="12" fill="#b4453c" font-weight="700" text-anchor="start">负向：必须失败，失败才算通过（4 条）</text>
+<rect x="28" y="270" width="216" height="66" rx="6" fill="#fbeceb" stroke="#b4453c" stroke-width="1.2"/>
+<text x="40" y="292" font-size="11.5" fill="#b4453c" font-weight="700" text-anchor="start">S3</text>
+<text x="40" y="312" font-size="10" fill="#334155" font-weight="400" text-anchor="start">跨租户 id 直接访问必须 403</text>
+<text x="40" y="328" font-size="10" fill="#7f1d1d" font-weight="400" text-anchor="start">期望：被拒绝</text>
+<rect x="258" y="270" width="216" height="66" rx="6" fill="#fbeceb" stroke="#b4453c" stroke-width="1.2"/>
+<text x="270" y="292" font-size="11.5" fill="#b4453c" font-weight="700" text-anchor="start">S4</text>
+<text x="270" y="312" font-size="10" fill="#334155" font-weight="400" text-anchor="start">不设上下文必须 0 行</text>
+<text x="270" y="328" font-size="10" fill="#7f1d1d" font-weight="400" text-anchor="start">期望：被拒绝</text>
+<rect x="488" y="270" width="216" height="66" rx="6" fill="#fbeceb" stroke="#b4453c" stroke-width="1.2"/>
+<text x="500" y="292" font-size="11.5" fill="#b4453c" font-weight="700" text-anchor="start">S6</text>
+<text x="500" y="312" font-size="10" fill="#334155" font-weight="400" text-anchor="start">超额写入必须被唯一约束拦住</text>
+<text x="500" y="328" font-size="10" fill="#7f1d1d" font-weight="400" text-anchor="start">期望：被拒绝</text>
+<rect x="718" y="270" width="216" height="66" rx="6" fill="#fbeceb" stroke="#b4453c" stroke-width="1.2"/>
+<text x="730" y="292" font-size="11.5" fill="#b4453c" font-weight="700" text-anchor="start">S8</text>
+<text x="730" y="312" font-size="10" fill="#334155" font-weight="400" text-anchor="start">重复开通必须幂等不报错</text>
+<text x="730" y="328" font-size="10" fill="#7f1d1d" font-weight="400" text-anchor="start">期望：被拒绝</text>
+<rect x="28" y="356" width="904" height="116" rx="8" fill="#ffffff" stroke="#2b5c8a" stroke-width="1.2"/>
+<text x="44" y="382" font-size="12.5" fill="#2b5c8a" font-weight="700" text-anchor="start">跑这套验收需要的最小环境</text>
+<text x="44" y="404" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">数据库</text>
+<text x="114" y="404" font-size="11" fill="#334155" font-weight="700" text-anchor="start">PostgreSQL 18.6，两个租户各 1,000 行</text>
+<text x="496" y="404" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">角色</text>
+<text x="566" y="404" font-size="11" fill="#334155" font-weight="700" text-anchor="start">app 账号 + FORCE RLS</text>
+<text x="44" y="434" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">入口</text>
+<text x="114" y="434" font-size="11" fill="#334155" font-weight="700" text-anchor="start">一个能设/不设上下文的调用方式</text>
+<text x="496" y="434" font-size="11" fill="#64748b" font-weight="400" text-anchor="start">工具</text>
+<text x="566" y="434" font-size="11" fill="#334155" font-weight="700" text-anchor="start">psql + 一个并发脚本</text>
+<text x="44" y="462" font-size="10.5" fill="#5a6b7b" font-weight="400" text-anchor="start">全部可在单机跑完，不需要集群 —— 隔离的正确性不依赖规模</text>
+</svg>

@@ -8,7 +8,7 @@
 
 ## 一、闸门一：版本可达性
 
-先把 [支持矩阵](SupportMatrix/index.md) 的结论落成一行字，写进升级单：
+先把 [支持矩阵](../SupportMatrix/index.md) 的结论落成一行字，写进升级单：
 
 ```text
 MySQL 8.0.46 → 8.4.11：原地升级可用（≥ 8.0.37），有备份可回退，无原地降级。
@@ -131,7 +131,7 @@ select user, host, plugin from mysql.user where plugin <> 'caching_sha2_password
 | dump 文件 | 压缩后约为库体积的 **5%~15%** | 87 MB 库 → `-Fc` 6.4 MiB（7.4%） |
 | 旧库保留期 | 切换后旧库至少留一个发布周期 | 旧库仍占全部磁盘 |
 
-时间估算留到 [演练与时间估算](Rehearsal/index.md)，这里只做一件事：**确认目标实例的磁盘 ≥ 源库体积 × 2（走 `--copy` 或 dump/restore）**。
+时间估算留到 [演练与时间估算](../Rehearsal/index.md)，这里只做一件事：**确认目标实例的磁盘 ≥ 源库体积 × 2（走 `--copy` 或 dump/restore）**。
 
 ## 六、闸门六：回退可行性
 

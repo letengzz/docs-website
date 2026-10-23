@@ -177,4 +177,4 @@ RLS 很好用，但它不是万能钥匙。以下三种情况用别的办法更�
 - PostgreSQL 18 Documentation：*Row Security Policies*（`ENABLE` / `FORCE`、所有者绕过）、*CREATE VIEW*（`security_invoker`）、*COPY*（`COPY FROM` 与 RLS 的限制）
 - PostgreSQL 18 Documentation：*GRANT*（`WITH INHERIT` / `SET` 选项）、*Predefined Roles*
 - 本仓库：[角色与继承](../RoleModel/index.md)、[行级安全](../RowLevelSecurity/index.md)、[越权路径](../PrivilegeEscalation/index.md)、[审计](../AuditTrail/index.md)
-- 本仓库项目侧：[TeamBoard 多租户](../../../project/Complete/TeamBoard/MultiTenancy/index.md)（同一组结论的项目落地形态）
+- 本仓库项目侧：[TeamBoard 多租户](../../../../project/Complete/TeamBoard/MultiTenancy/index.md)（同一组结论的项目落地形态）

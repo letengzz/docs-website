@@ -398,6 +398,7 @@ export const CompleteProject = [
           { text: "第 3 周第 1 步 · 一致性用例矩阵：18 条用例与 11/16 覆盖（ECM-A~ECM-H）", link: "/project/Complete/EventOrderHub/ConsistencyMatrix/index.md" },
           { text: "第 3 周第 2 步 · 并发与幂等专项：三组竞态与两层守卫（ECC-A~ECC-H）", link: "/project/Complete/EventOrderHub/ConcurrencyIdempotency/index.md" },
           { text: "第 3 周第 3 步 · 压测与容量：三个数取代一个 TPS（ECP-A~ECP-H）", link: "/project/Complete/EventOrderHub/CapacityTest/index.md" },
+          { text: "第 3 周第 4 步 · 第 3 周验收：29 条结论合成七道门（EW3-A~EW3-H）", link: "/project/Complete/EventOrderHub/Week3Gate/index.md" },
         ],
       },
       {

@@ -87,7 +87,7 @@ select extname, extversion from pg_extension order by 1;
 | 版本 | `select version();` | `PostgreSQL 18.6` |
 | 数据库列表与属主 | `\l` | 与旧库一致 |
 | 扩展 | `select extname, extversion from pg_extension;` | 全部存在且版本匹配 |
-| 表数 / 行数抽样 | 对象清点 SQL（见 [升级前检查](Precheck/index.md)） | 与升级前一致 |
+| 表数 / 行数抽样 | 对象清点 SQL（见 [升级前检查](../Precheck/index.md)） | 与升级前一致 |
 | 统计信息 | `select relname, last_analyze from pg_stat_user_tables limit 10;` | 非空 |
 
 ```sql

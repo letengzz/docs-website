@@ -186,7 +186,7 @@ grant select, insert, update on orders to r_order_write;
 | `ROL-E` | 成员选项被显式设定 | `pg_auth_members` 的 `inherit_option` / `set_option` 有明确取值 | 用 `GRANT ... WITH INHERIT/SET` 明确表达 |
 | `ROL-F` | 权限检查用 `USAGE` 而非 `MEMBER` | 检查脚本里出现 `pg_has_role(...,'USAGE')` | 改写检查逻辑 |
 | `ROL-G` | 收权后能给出「已失效」的证据 | `has_table_privilege` 从 t 变 f | 补一条收权后的验证查询 |
-| `ROL-H` | 归还连接前复位身份 | 池化场景有 `RESET ROLE` + `DISCARD ALL` | 见 [连接池](../ConnectionPool/index.md) 的复位契约 |
+| `ROL-H` | 归还连接前复位身份 | 池化场景有 `RESET ROLE` + `DISCARD ALL` | 见 [连接池](../../ConnectionPool/index.md) 的复位契约 |
 
 ## 参考资料
 

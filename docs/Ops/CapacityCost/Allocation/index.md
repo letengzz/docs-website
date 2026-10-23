@@ -183,6 +183,19 @@ printf 'owner: team-payments\nservice: order-api\nenv: prod\ncost-center: null\n
 
 **预期输出**：`1`。大于 0 即门禁应当失败——**注意 `null` 与空字符串都要算缺失**，只判 `null` 会放过 `owner: ""`。
 
+## 与「多租户 SaaS 架构」的分工（第 195 天补充）
+
+| 那边（专题）回答 | 本页回答 |
+| --- | --- |
+| 分摊口径**改变结论**的实测：均摊 9,600 让最小客户毛利 -5,600、最大客户少付 9,368 | 成本分摊的通用方法与账务口径（标签、共享成本、预留与弹性） |
+| 分摊必须与**计量口径同源**，否则配额与账单会错位 | 容量与成本的规划流程 |
+| 单位经济学：每 vCPU·小时 / 每 GB·月 / 每千次调用的成本 | 预算、告警与承诺折扣 |
+
+**本页独有的一个坑**：把「无法归属的公共成本」摊进租户，会让每个租户的毛利都被系统性低估，而且低估的幅度随平台规模变化——规模越大，公共成本占比越高，看起来所有客户都越来越不赚钱。正确做法是把平台成本单列，只在「整体是否盈利」这一层使用，不参与租户级决策。
+
+专题详见 [多租户 SaaS 架构](../../../Backend/MultiTenantSaaS/index.md) 的 [计量与账单](../../../Backend/MultiTenantSaaS/MeteringBilling/index.md)。
+
+
 ## 参考资料
 
 - [FOCUS 1.3 · Split Cost Allocation](https://www.finops.org/insights/introducing-focus-1-3/)——分摊方法成为账单字段的规范依据
