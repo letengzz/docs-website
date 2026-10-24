@@ -54,6 +54,7 @@ export const nav = [
       { text: "服务网格与东西向流量", link: "/docs/Backend/ServiceMesh" },
       { text: "多租户 SaaS 架构", link: "/docs/Backend/MultiTenantSaaS" },
       { text: "实时风控决策", link: "/docs/Backend/RiskDecision" },
+      { text: "营销计价与优惠分摊", link: "/docs/Backend/PricingPromotion" },
     ]
   },
   {

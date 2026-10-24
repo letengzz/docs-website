@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 430" width="920" height="430" role="img" aria-label="券的三层库存与核销路径">
+  <rect x="0" y="0" width="920" height="430" fill="#f8fafc"/>
+  <text x="36" y="38" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">券的三层库存与核销路径</text>
+  <text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">L1 模板 → L2 实例 → L3 核销；三层各管一种查询</text>
+  <rect x="36" y="104" width="270" height="72" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="171.0" y="136.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">L1 模板</text>
+  <text x="171.0" y="154.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">总共发多少张</text>
+  <defs><marker id="a6" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="310" y1="140.0" x2="328" y2="140.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a6)"/>
+  <rect x="332" y="104" width="270" height="72" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="467.0" y="136.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">L2 实例</text>
+  <text x="467.0" y="154.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">某个用户有几张</text>
+  <defs><marker id="a11" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="606" y1="140.0" x2="624" y2="140.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a11)"/>
+  <rect x="628" y="104" width="270" height="72" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="763.0" y="136.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">L3 核销</text>
+  <text x="763.0" y="154.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">用在哪一单</text>
+  <defs><marker id="a16" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="576" y1="140" x2="610" y2="140" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a16)"/>
+  <text x="36" y="220" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">核销：先查再改 vs 条件更新（20 并发 · 库存 100）</text>
+  <rect x="36" y="232" width="400" height="84" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+  <text x="236.0" y="270.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#9f1239">先查再改</text>
+  <text x="236.0" y="288.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">成功 200 次 · used 只到 28</text>
+  <rect x="460" y="232" width="400" height="84" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="660.0" y="270.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">条件更新</text>
+  <text x="660.0" y="288.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">成功 100 次 · used = 100</text>
+  <text x="36" y="350" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#9f1239">先查再改的两个后果：① 超发 100 张；② 计数器丢更新 → 基于 used 的超发告警永远不会触发</text>
+  <text x="36" y="378" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f766e">核销三步顺序：幂等记录 → 扣模板库存（WHERE used&lt;total）→ 实例状态迁移（AND status='UNUSED'）</text>
+</svg>

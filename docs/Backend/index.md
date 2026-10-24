@@ -35,3 +35,4 @@
 - [推荐系统工程](RecommenderSystems/index.md)
 - [音视频交付工程](MediaDelivery/index.md)
 - [实时风控决策](RiskDecision/index.md)
+- [营销计价与优惠分摊](PricingPromotion/index.md)

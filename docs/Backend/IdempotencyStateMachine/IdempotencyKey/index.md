@@ -270,6 +270,20 @@ CREATE TABLE idem_record (
 ::: danger 键在哪里生成，决定了它有没有用
 若幂等键在**请求封装内部**生成（每次 `fetch` 一个 `randomUUID()`），那么「超时重试」会拿到一个新键，服务端认为是两次不同的操作——重复创建照样发生。键必须在**用户操作**这一层生成（一次拖动 / 一次提交一个），并随重试一起传下去。判断方法很简单：把超时调到 1 秒、服务延迟调到 3 秒，制造一次「客户端以为失败、服务端其实成功」，看列表里是一条还是两条。
 :::
+## 与「营销计价与优惠分摊」的分工（第 205 天补充）
+
+本页管**幂等键的形状与去重窗口**；「券核销为什么必须有它」在计价专题：
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 幂等键怎么设计、存多久、怎么判重 | **本页** |
+| 券核销的三步顺序（幂等记录 → 扣库存 → 状态迁移） | [券库存与核销](../../PricingPromotion/CouponStock/index.md) |
+| 重复提交对金额的影响 | [试算与结算同源](../../PricingPromotion/Consistency/index.md) |
+
+::: warning 本页视角特有的一个坑
+券核销的幂等键**不要用请求体哈希**：计价请求体里常带时间戳或 `quote_id`，哈希每次都不同，等于没有幂等。正确形状是**业务复合键**——`UNIQUE (instance_id, order_id)`。但这条唯一键只挡「同一张券用在同一单两次」，挡不住「同一张券用在两个不同订单」，后者必须靠 `coupon_instance.status` 的条件迁移（`AND status='UNUSED'`）兜底。**两层守卫，缺一不可。**
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

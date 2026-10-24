@@ -236,6 +236,20 @@ WHERE l1.biz_type = 'ORDER_LOCK'
 - 峰值场景的排错：[秒杀与流量治理](../FlashSale/index.md)
 - 通用排错方法：[完整项目交付 · 常见问题与排错](../../../Others/ProjectDelivery/FAQ/index.md)
 
+## 与「营销计价与优惠分摊」的分工（第 205 天补充）
+
+本页的「优惠券核销数与用量不符」只给了一句排查方向（查券的核销记录与订单状态），机制层在计价专题：
+
+| 现象 | 本页 | 计价专题 |
+| --- | --- | --- |
+| 券核销数与用量不符 | 给排查方向 | [券的三层库存](../../PricingPromotion/CouponStock/index.md)（模板 / 实例 / 核销记录各管一种查询） |
+| 取消订单没退券 | 列为易错点 | [退券三种策略](../../PricingPromotion/CouponStock/index.md)（原券退回 / 延期 / 等额补偿） |
+| 优惠后金额加不回订单额 | 未展开 | [优惠分摊](../../PricingPromotion/Allocation/index.md)（29.43% 的订单会差 1~2 分） |
+
+::: warning 本页视角特有的一个坑
+本页把「券核销数与用量不符」归因为「核销与订单未成对」，但漏了更常见的一种：**计数器自己丢了更新**。20 并发抢 100 张库存，先 `SELECT` 再 `UPDATE` 的写法能让 200 次核销全部返回成功、而 `used` 只记到 28——此时「核销数」和「用量」都不对，查哪一边都得不出真相。判据是「`used` ⇔ `count(coupon_redeem)` 日对账」，不是「两张表数字相等」。
+:::
+
 ## 参考资料
 
 - [Google SRE Book · Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)

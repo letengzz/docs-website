@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="分诊：从症状到第一现场">
+  <rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+  <text x="36" y="38" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">分诊：从症状到第一现场</text>
+  <text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">先确认「这个数是被算错的，还是被改错的」</text>
+  <text x="36" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">四个最常见症状 → 第一现场 → 一条查询</text>
+  <rect x="36" y="104" width="268" height="66" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="170.0" y="133.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#92400e">「优惠少减了几块」</text>
+  <text x="170.0" y="151.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">查 quote.candidates</text>
+  <rect x="326" y="104" width="268" height="66" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="460.0" y="133.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#92400e">「结算价比详情页贵」</text>
+  <text x="460.0" y="151.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">比 quote 与 order 金额</text>
+  <rect x="616" y="104" width="268" height="66" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="750.0" y="133.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#92400e">「退款退多了」</text>
+  <text x="750.0" y="151.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">比 refund 与 alloc</text>
+  <rect x="36" y="190" width="268" height="66" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="170.0" y="219.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#92400e">「券用了两次」</text>
+  <text x="170.0" y="237.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">count(redeem) by instance</text>
+  <rect x="326" y="190" width="268" height="66" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="460.0" y="219.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#92400e">「分账少了一百多」</text>
+  <text x="460.0" y="237.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">Σ 承担 vs 优惠额</text>
+  <rect x="616" y="190" width="268" height="66" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="750.0" y="219.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#92400e">「活动到点没生效」</text>
+  <text x="750.0" y="237.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">查窗口与时区</text>
+  <text x="36" y="298" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">两条排查主线</text>
+  <rect x="36" y="310" width="400" height="62" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="236.0" y="337.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">算错 → 查链路</text>
+  <text x="236.0" y="355.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">规则版本 · 券选择 · 分摊</text>
+  <rect x="460" y="310" width="400" height="62" rx="8" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1.2"/>
+  <text x="660.0" y="337.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#5b21b6">改错 → 查调整</text>
+  <text x="660.0" y="355.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#4c1d95">price_adjustment + 操作日志</text>
+  <text x="36" y="392" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">90% 的「算错了」最后发现是某次手工改价没登记</text>
+</svg>

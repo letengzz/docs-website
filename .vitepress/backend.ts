@@ -920,3 +920,21 @@ export const RiskDecision = [
     ],
   },
 ];
+
+export const PricingPromotion = [
+  {
+    text: "营销计价与优惠分摊",
+    link: "/docs/Backend/PricingPromotion/index.md",
+    items: [
+      { text: "总览：从标价到应付的七段链", link: "/docs/Backend/PricingPromotion/Overview/index.md" },
+      { text: "计价链路与三条不变式", link: "/docs/Backend/PricingPromotion/PriceChain/index.md" },
+      { text: "优惠规则模型：作用域、互斥与优先级", link: "/docs/Backend/PricingPromotion/RuleModel/index.md" },
+      { text: "最优券选择：组合空间、剪枝与贪心的误差", link: "/docs/Backend/PricingPromotion/BestCombination/index.md" },
+      { text: "优惠分摊：最大余数法与逆向退款", link: "/docs/Backend/PricingPromotion/Allocation/index.md" },
+      { text: "券库存与核销：超发、幂等与退券", link: "/docs/Backend/PricingPromotion/CouponStock/index.md" },
+      { text: "试算与结算同源：快照、锁价与漂移", link: "/docs/Backend/PricingPromotion/Consistency/index.md" },
+      { text: "实战：一个能跑起来的最小计价服务", link: "/docs/Backend/PricingPromotion/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/PricingPromotion/FAQ/index.md" },
+    ],
+  },
+];

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" width="920" height="460" role="img" aria-label="优惠分摊：守恒切分与逆向退款">
+  <rect x="0" y="0" width="920" height="460" fill="#f8fafc"/>
+  <text x="36" y="38" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">优惠分摊：守恒切分与逆向退款</text>
+  <text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">一笔 50 元优惠切成行级金额，切完必须加得回原数</text>
+  <text x="36" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">正向：三个算法</text>
+  <rect x="36" y="104" width="270" height="78" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+  <text x="171.0" y="139.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#9f1239">各自四舍五入</text>
+  <text x="171.0" y="157.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">合计≠总额 29.43%</text>
+  <rect x="326" y="104" width="270" height="78" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="461.0" y="139.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">最大余数法</text>
+  <text x="461.0" y="157.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">合计≠总额 0 单</text>
+  <rect x="616" y="104" width="268" height="78" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="750.0" y="139.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#92400e">小行优先</text>
+  <text x="750.0" y="157.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">守恒但行优惠率畸高</text>
+  <text x="36" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">逆向：退款必须读原分摊</text>
+  <rect x="36" y="226" width="400" height="78" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+  <text x="236.0" y="261.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#9f1239">三次各退 1/3</text>
+  <text x="236.0" y="279.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">累计≠总额 66.49%（±1 分）</text>
+  <rect x="460" y="226" width="400" height="78" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+  <text x="660.0" y="261.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#9f1239">重算 vs 原分摊</text>
+  <text x="660.0" y="279.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">合计不同 28.59% · 最大 2 分</text>
+  <text x="36" y="344" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#9f1239">分账承担用同一实现：按比例各自取整则 28.77% 的订单合计≠优惠额，5 万单累计差 146 元</text>
+  <text x="36" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f766e">d_i 不得超过 p_i：先夹再递归再分配，仍溢出则记 absorbed_amount</text>
+  <text x="36" y="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">同余数时按索引升序，否则同一输入两次调用可能给出不同分配（破坏 I3）</text>
+</svg>

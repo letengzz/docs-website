@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 440" width="920" height="440" role="img" aria-label="七段计价链：从标价到应付">
+  <rect x="0" y="0" width="920" height="440" fill="#f8fafc"/>
+  <text x="36" y="38" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">七段计价链：从标价到应付</text>
+  <text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">每段只做一件事，第 ⑦ 段没有主人——它是计算结果</text>
+  <text x="36" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">① ~ ⑦ 依次作用（左闭右开的时间窗口内有效）</text>
+  <rect x="36" y="104" width="196" height="70" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="134.0" y="135.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">① 标价</text>
+  <text x="134.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">list × qty</text>
+  <defs><marker id="a7" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="236" y1="139.0" x2="248" y2="139.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a7)"/>
+  <rect x="252" y="104" width="196" height="70" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="350.0" y="135.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">② 单品级</text>
+  <text x="350.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">折扣 · 会员价</text>
+  <defs><marker id="a12" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="452" y1="139.0" x2="464" y2="139.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a12)"/>
+  <rect x="468" y="104" width="196" height="70" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="566.0" y="135.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">③ 订单级</text>
+  <text x="566.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">满减 · 打包</text>
+  <defs><marker id="a17" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="668" y1="139.0" x2="680" y2="139.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a17)"/>
+  <rect x="684" y="104" width="196" height="70" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="782.0" y="135.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">④ 券</text>
+  <text x="782.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">平台券 · 店铺券</text>
+  <rect x="36" y="200" width="268" height="70" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="170.0" y="231.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">⑤ 运费</text>
+  <text x="170.0" y="249.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">模板 · 包邮门槛</text>
+  <defs><marker id="a25" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="308" y1="235.0" x2="326" y2="235.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a25)"/>
+  <rect x="330" y="200" width="268" height="70" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="464.0" y="231.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">⑥ 税费</text>
+  <text x="464.0" y="249.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">价内 / 价外</text>
+  <defs><marker id="a30" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="602" y1="235.0" x2="620" y2="235.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a30)"/>
+  <rect x="624" y="200" width="268" height="70" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+  <text x="758.0" y="231.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#9f1239">⑦ 应付</text>
+  <text x="758.0" y="249.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">没有人能直接改</text>
+  <defs><marker id="a35" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="880" y1="176" x2="884" y2="176" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a35)"/>
+  <text x="36" y="300" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">三个金额口径：list_amount（标价）→ trade_amount（成交）→ settle_amount（结算）</text>
+  <text x="36" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">trade_amount = list_amount - 单品优惠 - 订单优惠 - 券优惠</text>
+  <text x="36" y="344" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">settle_amount = trade_amount + 运费 + 税</text>
+  <text x="36" y="378" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#9f1239">任何其他调整必须落成独立字段 adjust_amount + adjust_reason，不允许折叠进优惠字段</text>
+</svg>

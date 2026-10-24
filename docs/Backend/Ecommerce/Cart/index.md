@@ -240,6 +240,21 @@ HAVING diff <> 0;
 - 下一页：[订单状态机](../OrderStateMachine/index.md)
 - 金额落地：[支付、幂等与对账](../Payment/index.md)
 
+## 与「营销计价与优惠分摊」的分工（第 205 天补充）
+
+本页给的是**行金额与优惠分摊的骨架**，并明确「省略了促销引擎的细节」；那部分细节现在有了归属：
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 行金额怎么算、试算结果怎么用 | **本页** |
+| 优惠怎么叠加、互斥组怎么配、门槛按哪个金额判 | [营销计价与优惠分摊 · 优惠规则模型](../../PricingPromotion/RuleModel/index.md) |
+| 优惠额怎么摊到每一行、退款怎么按分摊退 | [营销计价与优惠分摊 · 优惠分摊](../../PricingPromotion/Allocation/index.md) |
+| 券库存在哪扣、怎么防超发 | [营销计价与优惠分摊 · 券库存与核销](../../PricingPromotion/CouponStock/index.md) |
+
+::: warning 本页视角特有的一个坑
+本页写「购物车价格显示：实时查售价 + 实时试算促销，**不落库**」——这在**购物车**是对的，但**结算页必须落库**：一旦试算结果只存在于响应里，提交时再算一遍就会分叉（实测改价 5% 后 100% 的订单结算价 ≠ 试算价，平均差 10.75 元）。分界线是「购物车不落库、结算落 `price_quote`」，见[试算与结算同源](../../PricingPromotion/Consistency/index.md)。
+:::
+
 ## 参考资料
 
 - [Oracle Java 文档 · BigDecimal](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html)：金额计算必须使用的类型

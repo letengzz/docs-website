@@ -297,6 +297,20 @@ docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
 | `ERC-G` | 库存回补带条件 | `WHERE reserved >= qty`，影响 0 行不报错 | 加条件，防止 `reserved` 变负 |
 | `ERC-H` | 退满判定分冷热路径 | 热路径读维护列，冷路径聚合校验 | 两者并存，不一致即告警 |
 
+## 与「营销计价与优惠分摊」专题的分工（第 205 天补充）
+
+本页是**项目侧落地**：退款额度、幂等键、回执三通道、库存回补。算法层在计价专题：
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 退款单怎么建、额度怎么卡、回执怎么处理 | **本页** |
+| 部分退款时优惠按什么退、为什么不能重算 | [优惠分摊 · 逆向退款](../../../../docs/Backend/PricingPromotion/Allocation/index.md) |
+| 退款后券要不要退回 | [券库存与核销 · 退券](../../../../docs/Backend/PricingPromotion/CouponStock/index.md) |
+
+::: warning 本页视角特有的一个坑
+本页的退款额度用「已退 ≤ 订单实付」卡住，这条守卫是对的，但**只到订单粒度**。当订单分三次各退 1/3 时，按 `round(T/3)` 每次重算会在 **66.49%** 的订单上累计差 1 分（多退或少退各约一半）。判据要下沉到行：「每次退该行**剩余未退分摊**」，而不是「订单额的三分之一」——分摊表里本来就有精确答案。
+:::
+
 ## 参考资料
 
 - PostgreSQL 文档：`UPDATE ... WHERE` 与 `READ COMMITTED` 下的行锁与重判：<https://www.postgresql.org/docs/18/transaction-iso.html>

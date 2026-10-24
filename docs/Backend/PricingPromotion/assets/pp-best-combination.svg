@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 430" width="920" height="430" role="img" aria-label="最优券选择：解空间、剪枝与两种贪心的误差">
+  <rect x="0" y="0" width="920" height="430" fill="#f8fafc"/>
+  <text x="36" y="38" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">最优券选择：解空间、剪枝与两种贪心的误差</text>
+  <text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">12 张券 4,095 个子集；16 张券 65,535 个</text>
+  <text x="36" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">解空间随券数指数增长（本机 Python 单线程实测）</text>
+  <rect x="36" y="104" width="150" height="66" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="111.0" y="133.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f172a">10 张</text>
+  <text x="111.0" y="151.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">1,023 子集 · 1.1 ms</text>
+  <rect x="202" y="104" width="150" height="66" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="277.0" y="133.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">12 张</text>
+  <text x="277.0" y="151.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">4,095 · 4.5 ms</text>
+  <rect x="368" y="104" width="150" height="66" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="443.0" y="133.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#92400e">14 张</text>
+  <text x="443.0" y="151.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">16,383 · 20.0 ms</text>
+  <rect x="534" y="104" width="170" height="66" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+  <text x="619.0" y="133.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#9f1239">16 张</text>
+  <text x="619.0" y="151.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">65,535 · 91.4 ms</text>
+  <text x="724" y="142" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">→ 必须剪枝或降级</text>
+  <text x="36" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">两种贪心的实测误差（各 300 单，与穷举最优对比）</text>
+  <rect x="36" y="226" width="400" height="84" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="236.0" y="264.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">面额降序贪心</text>
+  <text x="236.0" y="282.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">未达最优 2.3% · 平均少减 8.00 元</text>
+  <rect x="460" y="226" width="400" height="84" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+  <text x="660.0" y="264.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#9f1239">性价比降序贪心</text>
+  <text x="660.0" y="282.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">未达最优 78.3% · 平均少减 11.79 元</text>
+  <text x="36" y="344" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">面额降序的失效模式：大额券门槛也高，先选它会让两张中额券装不下——错误集中在大额多券单</text>
+  <text x="36" y="368" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f766e">剪枝顺序：按组去重 → 门槛前缀 → 面额上界（分支限界）→ 封顶</text>
+  <text x="36" y="396" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">券数 &gt; 20 时降级为「系统建议 + 展示全部候选 + 用户改选」，把算不准变成可选</text>
+</svg>

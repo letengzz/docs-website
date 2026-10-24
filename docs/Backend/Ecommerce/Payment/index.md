@@ -316,6 +316,20 @@ GROUP BY p.pay_no;
 - 状态推进：[订单状态机](../OrderStateMachine/index.md)
 - 协议层面：[分布式事务 · 一致性](../../Microservices/DistributedTransaction/Consistency/index.md)
 
+## 与「营销计价与优惠分摊」的分工（第 205 天补充）
+
+本页管「怎么把钱收回来」，计价专题管「该收多少钱」：
+
+| 问题 | 看哪里 |
+| --- | --- |
+| 下单、回调、验签、幂等、对账 | **本页** |
+| 应付金额怎么算出来、怎么保证可复现 | [试算与结算同源](../../PricingPromotion/Consistency/index.md)（快照 + 锁价） |
+| 退款金额怎么定、优惠怎么冲回 | [优惠分摊](../../PricingPromotion/Allocation/index.md) |
+
+::: warning 本页视角特有的一个坑
+本页强调「金额以分为单位传通道」，但**通道之间的单位并不统一**：微信支付 APIv3 的 `amount.total` 是**分**，支付宝的 `total_amount` 是**元 + 两位小数**。换算只允许在**通道适配层做一次**，且方向必须写死（内部整数分 → 通道格式）；一旦某一处反向换算（元 → 分用 `*100` 再取整），就会在 `.xx5` 这类金额上差 1 分。判据是适配层有且只有一个 `toChannelAmount()`。
+:::
+
 ## 参考资料
 
 - [Stripe · Idempotent requests](https://docs.stripe.com/api/idempotent_requests)

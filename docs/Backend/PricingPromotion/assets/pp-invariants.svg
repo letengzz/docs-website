@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="三条不变式与违反后的下游影响">
+  <rect x="0" y="0" width="920" height="420" fill="#f8fafc"/>
+  <text x="36" y="38" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">三条不变式与违反后的下游影响</text>
+  <text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">不依赖任何玩法；违反必在某个下游位置炸开</text>
+  <rect x="36" y="92" width="270" height="78" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="171.0" y="127.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">I1 单调不增</text>
+  <text x="171.0" y="145.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">每段之后 0 ≤ amount ≤ 前一段</text>
+  <rect x="36" y="196" width="270" height="78" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="171.0" y="231.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">I2 可分账</text>
+  <text x="171.0" y="249.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">Σ 行实付 + 运费 + 税 = 结算额</text>
+  <rect x="36" y="300" width="270" height="78" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="171.0" y="335.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#92400e">I3 可重算</text>
+  <text x="171.0" y="353.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">同一输入 ⇒ 同一输出</text>
+  <defs><marker id="a12" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="310" y1="131" x2="356" y2="131" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a12)"/>
+  <defs><marker id="a14" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="310" y1="235" x2="356" y2="235" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a14)"/>
+  <defs><marker id="a16" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="310" y1="339" x2="356" y2="339" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a16)"/>
+  <rect x="360" y="92" width="250" height="78" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+  <text x="485.0" y="127.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#9f1239">违反 I1</text>
+  <text x="485.0" y="145.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">负应付 / 券减穿 / 通道拒单</text>
+  <rect x="360" y="196" width="250" height="78" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+  <text x="485.0" y="231.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#9f1239">违反 I2</text>
+  <text x="485.0" y="249.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">分摊加不回 → 退款与分账必错</text>
+  <rect x="360" y="300" width="250" height="78" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+  <text x="485.0" y="335.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#9f1239">违反 I3</text>
+  <text x="485.0" y="353.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">客服复核算不出当时的数</text>
+  <defs><marker id="a27" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="614" y1="131" x2="660" y2="131" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a27)"/>
+  <defs><marker id="a29" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="614" y1="235" x2="660" y2="235" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a29)"/>
+  <defs><marker id="a31" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="614" y1="339" x2="660" y2="339" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a31)"/>
+  <rect x="664" y="92" width="220" height="78" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="774.0" y="127.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">夹 max(0,·)</text>
+  <text x="774.0" y="145.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">并登记 absorbed_amount</text>
+  <rect x="664" y="196" width="220" height="78" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="774.0" y="231.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">换守恒算法</text>
+  <text x="774.0" y="249.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">最大余数法，见 PPA</text>
+  <rect x="664" y="300" width="220" height="78" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="774.0" y="335.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">注入 now / 版本</text>
+  <text x="774.0" y="353.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">禁止链路内部取时间</text>
+</svg>

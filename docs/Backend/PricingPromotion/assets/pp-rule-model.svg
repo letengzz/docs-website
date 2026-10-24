@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 440" width="920" height="440" role="img" aria-label="规则模型：五维坐标与互斥组">
+  <rect x="0" y="0" width="920" height="440" fill="#f8fafc"/>
+  <text x="36" y="38" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">规则模型：五维坐标与互斥组</text>
+  <text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">一条规则由五个维度唯一确定；叠加关系统一用 group_code 表达</text>
+  <text x="36" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">五维坐标</text>
+  <rect x="36" y="104" width="162" height="70" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="117.0" y="135.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">作用域</text>
+  <text x="117.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">SKU / 类目 / 订单</text>
+  <defs><marker id="a7" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="202" y1="139.0" x2="212" y2="139.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a7)"/>
+  <rect x="216" y="104" width="162" height="70" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="297.0" y="135.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">触发条件</text>
+  <text x="297.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">金额 · 件数 · 人群</text>
+  <defs><marker id="a12" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="382" y1="139.0" x2="392" y2="139.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a12)"/>
+  <rect x="396" y="104" width="162" height="70" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="477.0" y="135.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">优惠算法</text>
+  <text x="477.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">立减 · 折扣 · 固定价</text>
+  <defs><marker id="a17" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="562" y1="139.0" x2="572" y2="139.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a17)"/>
+  <rect x="576" y="104" width="162" height="70" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="657.0" y="135.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">生效窗口</text>
+  <text x="657.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">左闭右开 + tz</text>
+  <defs><marker id="a22" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="742" y1="139.0" x2="752" y2="139.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a22)"/>
+  <rect x="756" y="104" width="162" height="70" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="837.0" y="135.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#1e40af">叠加约束</text>
+  <text x="837.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">组 · 优先级</text>
+  <text x="36" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">互斥组：同组取一，跨组叠加</text>
+  <rect x="36" y="226" width="202" height="70" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="137.0" y="257.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">ITEM_BASE</text>
+  <text x="137.0" y="275.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">会员价 · 限时折扣</text>
+  <defs><marker id="a31" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="242" y1="261.0" x2="252" y2="261.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a31)"/>
+  <rect x="256" y="226" width="202" height="70" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="357.0" y="257.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">ITEM_PROMO</text>
+  <text x="357.0" y="275.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">第二件半价</text>
+  <defs><marker id="a36" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="462" y1="261.0" x2="472" y2="261.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a36)"/>
+  <rect x="476" y="226" width="202" height="70" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="577.0" y="257.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#0f766e">ORDER_THRESHOLD</text>
+  <text x="577.0" y="275.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">满减 · 跨店</text>
+  <defs><marker id="a41" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+  <line x1="682" y1="261.0" x2="692" y2="261.0" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a41)"/>
+  <rect x="696" y="226" width="202" height="70" rx="8" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1.2"/>
+  <text x="797.0" y="257.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="600" fill="#5b21b6">COUPON_PLATFORM</text>
+  <text x="797.0" y="275.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#4c1d95">平台券</text>
+  <text x="36" y="336" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">组内命中多条：按 priority 取一，并记录被淘汰候选（否则运营无法预测哪条生效）</text>
+  <text x="36" y="360" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">冲突检测在配置期与发布前跑：4,000 条规则 O(n²) 1,228 ms / 扫描线 50 ms（24×）</text>
+  <text x="36" y="388" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#9f1239">改规则 = 插入新版本（rule_version+1），旧版本置 RETIRED，不 UPDATE 覆盖</text>
+</svg>
