@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import { nav } from './nav'
 import { sidebar } from './sidebar'
+import { missingAssetPlaceholder } from './plugins/missingAssetPlaceholder'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Hjc的个人文档",
@@ -97,6 +98,9 @@ export default defineConfig({
   },
   vite: {
     plugins: [
+      // 缺失配图兜底：把「文件不存在的图片 import」解析成内联占位图，
+      // 避免历史欠账（E3 BROKEN_ASSET）阻断整站构建。详见该文件头部说明。
+      missingAssetPlaceholder(),
       groupIconVitePlugin()
     ],
   }
