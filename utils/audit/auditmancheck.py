@@ -6,7 +6,7 @@
 这类缺陷最恶劣的地方在于它是**反向**的：读者看到「已结清」会以为那道门禁已经关上，
 于是不再人工检查；而它其实从来没跑过。历史上第 49/50 项就是这么消失的。
 
-既有的 `plancheck.py` 的 `E2 REGISTERED_NOT_EXISTS` 只查「台账里写了路径的**文件**是否存在」，
+既有的 `plancheck.py`（历史名，已不在本仓）的 `E2 REGISTERED_NOT_EXISTS` 只查「台账里写了路径的**文件**是否存在」，
 判据是路径字符串；本脚本查的是**结构化对账**：
   ① 项号 ⇄ 脚本名 的映射是否一对一；
   ② 每个被声称「已结清」的脚本是否真的能在某个脚本家里找到；
@@ -28,7 +28,7 @@
   ③ 外部技能脚本家 `~/.workbuddy/skills/docs-website-doc-ops/scripts/`（**本仓 37 个巡检
      的真身长期在这里**，台账里反复写的就是 `~/.workbuddy/skills/.../scripts/xxx.py`）；
      可用环境变量 `DOCS_SKILL_SCRIPTS` 或 `--extra-scripts` 覆盖/追加。
-  ④ 只扫 ①② 会造出一批**误报**：`judgerefcheck.py`（第 39 项）、`judgecountcheck.py`
+  ④ 只扫 ①② 会造出一批**误报**：`judgerefcheck.py`（第 39 项，历史名）、`judgecountcheck.py`（第 45 项，历史名）
      （第 45 项）明明在技能家里，却被判「找不到」——第一版就是这样把 2 处误报混进 E 里的。
 
 判据间的正确读法（覆盖率的教训）：
@@ -40,7 +40,7 @@
 豁免（登记式，不是静默放过）：
   - 段落里含「未落盘 / 不存在 / 已丢失 / 待补 / 已归档」的**不是声明**，是如实披露，
     不计入 E2 / E3 / W1（披露本身即处置；本脚本抓的是**未被披露**的漂移）。
-  - `_` 开头的脚本与 `svgkit_template.py`（模板，不是巡检）不计入 W3。
+  - `_` 开头的脚本与 `svgkit_template.py`（历史名；模板，不是巡检，已不在本仓）不计入 W3。
   - 侧边栏生成器（`auto_sidebar.mjs` / `auto-gen-sidebar.mjs` / `gen_sidebar.mjs`）不是门禁，
     不计入 W3——**W3 问的是「有门禁没账」，不是「有脚本没账」**。
 
@@ -57,7 +57,7 @@ CLAIM_RE = re.compile(r"第\s*(\d{1,3})\s*项")
 SCRIPT_RE = re.compile(r"([A-Za-z0-9_\-]+\.(?:py|mjs))")
 DISCLOSE = ("未落盘", "不存在", "已丢失", "待补", "已归档")
 CLAIM_WORDS = ("结清", "落盘", "新立")
-IGNORE_SCRIPTS = {"svgkit_template.py", "auto_sidebar.mjs",
+IGNORE_SCRIPTS = {"svgkit_template.py", "auto_sidebar.mjs",   # 前者为历史名，仅为忽略名单保留
                   "auto-gen-sidebar.mjs", "gen_sidebar.mjs"}
 DEFAULT_DIRS = ("utils/audit", "utils")
 SKILL_ENV = "DOCS_SKILL_SCRIPTS"
@@ -247,7 +247,7 @@ def case_external(base):
     """外部脚本家用例：脚本只在仓库外时必须**不算缺失**，且去掉该目录后必须**立刻报 E2**。
 
     这一条锁定的是第一版最大的失真：只扫 `utils/audit` + `utils` 时，
-    `judgerefcheck.py`（第 39 项）、`judgecountcheck.py`（第 45 项）明明在技能家里
+    `judgerefcheck.py`（第 39 项，历史名）、`judgecountcheck.py`（第 45 项，历史名）明明在技能家里
     却被判「找不到」——**误报会把真缺陷淹掉**，所以必须双向断言。
     """
     name = "case-13-external"

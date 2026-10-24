@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" width="920" height="470" role="img" aria-label="最小触达链路的组件与十条验收">
+  <rect x="0" y="0" width="920" height="470" fill="#f8fafc"/>
+  <text x="32" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">最小触达链路：5 张表、6 个接口、2 个 worker</text>
+  <text x="32" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">没有消息队列：outbox 表就是队列；验收可以在一台机器、一个数据库、一次会话里跑完</text>
+
+  <defs><marker id="nx1" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+
+  <rect x="32" y="76" width="160" height="64" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="112" y="102" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">POST /api/events</text>
+  <text x="112" y="122" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">落 outbox（同事务）</text>
+  <line x1="194" y1="108" x2="208" y2="108" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#nx1)"/>
+
+  <rect x="210" y="76" width="160" height="64" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.4"/>
+  <text x="290" y="102" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#0f766e">决策 decide()</text>
+  <text x="290" y="122" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#115e59">纯函数 · 四种拒绝原因</text>
+  <line x1="372" y1="108" x2="386" y2="108" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#nx1)"/>
+
+  <rect x="388" y="76" width="160" height="64" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="468" y="102" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">投递 worker</text>
+  <text x="468" y="122" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">SKIP LOCKED · 退避</text>
+  <line x1="550" y1="108" x2="564" y2="108" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#nx1)"/>
+
+  <rect x="566" y="76" width="146" height="64" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="639" y="102" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">通道（短信）</text>
+  <text x="639" y="122" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">受理 → 状态报告</text>
+  <line x1="714" y1="108" x2="728" y2="108" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#nx1)"/>
+
+  <rect x="730" y="76" width="158" height="64" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="809" y="102" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#92400e">回执 worker</text>
+  <text x="809" y="122" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">state_rank 单调</text>
+
+  <text x="32" y="176" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">五张表与它们承担的那一条判据</text>
+  <rect x="32" y="188" width="856" height="112" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="46" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">tpl      模板 + var_schema + state        → 缺变量在发布时就能拦住（NDM-C）</text>
+  <text x="46" y="230" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">pref     类别 × 通道 × 作用域 + state     → 退订是终止而不是降级（NDP-A / NDC-H）</text>
+  <text x="46" y="250" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">outbox   unique(event_id,user,dedup)     → 上游重复投递不产生第二条（NDD-B / NDX-A）</text>
+  <text x="46" y="270" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">delivery send_group_id + state_rank      → 降级不双发、乱序不回退（NDC-E / NDD-F）</text>
+  <text x="46" y="290" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">inbox    read_at timestamptz             → 未读数可对账、已读有游标（NDI-B / NDI-C）</text>
+
+  <text x="32" y="330" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">S1~S10 验收阶梯（每一步都能用一条 SQL 或一次 curl 判定）</text>
+
+  <rect x="32" y="342" width="856" height="34" rx="6" fill="#f0fdfa" stroke="#5eead4" stroke-width="1"/>
+  <text x="46" y="364" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#115e59">S1 建表与种子 ｜ S2 发一条事件 ｜ S3 重复同一 event_id（幂等） ｜ S4 投递产生 accepted ｜ S5 回执 delivered</text>
+  <rect x="32" y="380" width="856" height="34" rx="6" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="46" y="402" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#1e40af">S6 迟到 accepted（影响 0 行） ｜ S7 退订后不发 ｜ S8 缺变量 400 ｜ S9 连发 12 条只过 2 条 ｜ S10 未读数与列表对账</text>
+
+  <text x="32" y="438" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b91c1c">S3 与 S6 最值钱：它们对应的 bug 只在消费重平衡与回执乱序时出现，正常路径永远测不到</text>
+  <text x="32" y="458" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">五条负向断言必须失败：category 缺失落营销 · 退订不降级 · 重投同组 · 静默只拦推送 · 拒绝原因是 throttled</text>
+</svg>

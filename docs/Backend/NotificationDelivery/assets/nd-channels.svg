@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" width="920" height="470" role="img" aria-label="五条通道的能力边界与降级序列">
+  <rect x="0" y="0" width="920" height="470" fill="#f8fafc"/>
+  <text x="32" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">五条通道：按「能证明什么」排，不按价格排</text>
+  <text x="32" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">只有站内信能证明「人看到了」；只有短信与推送能及时叫醒人；三者的失败形态互补</text>
+
+  <text x="40" y="84" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#64748b">通道</text>
+  <text x="140" y="84" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#64748b">可达前提</text>
+  <text x="296" y="84" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#64748b">回执粒度</text>
+  <text x="440" y="84" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#64748b">成本</text>
+
+  <rect x="32" y="92" width="516" height="46" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="40" y="121" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">站内信</text>
+  <text x="140" y="121" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">用户登录产品</text>
+  <text x="296" y="121" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f766e">已读（精确到条）</text>
+  <text x="440" y="121" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">存储 + 索引</text>
+
+  <rect x="32" y="146" width="516" height="46" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="40" y="175" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">App 推送</text>
+  <text x="140" y="175" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">装 App + 已授权</text>
+  <text x="296" y="175" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b45309">受理 + 送达，无已读</text>
+  <text x="440" y="175" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">免费，有 QPS 限</text>
+
+  <rect x="32" y="200" width="516" height="46" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="40" y="229" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">短信</text>
+  <text x="140" y="229" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">号码有效 + 模板报备</text>
+  <text x="296" y="229" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b45309">受理 + 状态报告</text>
+  <text x="440" y="229" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b91c1c">按条计费，最贵</text>
+
+  <rect x="32" y="254" width="516" height="46" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="40" y="283" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">邮件</text>
+  <text x="140" y="283" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">邮箱存在 + 不进垃圾箱</text>
+  <text x="296" y="283" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b45309">受理 + 退信 + 投诉</text>
+  <text x="440" y="283" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">极低，代价是声誉</text>
+
+  <rect x="32" y="308" width="516" height="46" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="40" y="337" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">IM Webhook</text>
+  <text x="140" y="337" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">用户已在第三方 IM</text>
+  <text x="296" y="337" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">受理，部分可撤回</text>
+  <text x="440" y="337" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">免费或按调用</text>
+
+  <text x="32" y="382" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">橙字 = 「有回执但不能证明已读」；红字 = 唯一按条计费的通道，重试要克制</text>
+
+  <rect x="572" y="92" width="316" height="262" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.2"/>
+  <text x="588" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#5b21b6">降级序列：最多两条</text>
+  <text x="588" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">同一 send_group_id，组内 delivered 唯一</text>
+
+  <rect x="588" y="150" width="284" height="42" rx="6" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="730" y="176" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1e40af">主通道：最便宜且能证明送达</text>
+
+  <defs><marker id="nc1" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+  <line x1="730" y1="194" x2="730" y2="208" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#nc1)"/>
+
+  <rect x="588" y="210" width="284" height="42" rx="6" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="730" y="228" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#92400e">等回执窗口：推送 30s / 短信 60s</text>
+  <text x="730" y="244" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#92400e">超时 = 不确定，先查回执再降级</text>
+
+  <line x1="730" y1="254" x2="730" y2="268" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#nc1)"/>
+
+  <rect x="588" y="270" width="284" height="42" rx="6" fill="#f0fdfa" stroke="#5eead4" stroke-width="1"/>
+  <text x="730" y="296" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f766e">降级通道：失败形态互补的那条</text>
+
+  <text x="588" y="336" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">退订 ≠ 降级：退订是终止，不是换条路</text>
+
+  <text x="32" y="414" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">串联送达率 1-(1-p)^k（本机按独立失败计算）</text>
+  <text x="32" y="438" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">p=0.85 → 1 条 85.00% ｜ 2 条 97.75% ｜ 3 条 99.66%（第三条只多 1.91 个百分点）</text>
+  <text x="32" y="458" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">p=0.92 → 1 条 92.00% ｜ 2 条 99.36% ｜ 3 条 99.95%（边际收益掉得比预想快）</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440" role="img" aria-label="模板的三层结构、渲染时机与版本化">
+  <rect x="0" y="0" width="900" height="440" fill="#f8fafc"/>
+  <text x="32" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">模板是一个有契约的函数：入参、缺参行为、版本</text>
+  <text x="32" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">三层分开，改动半径才可控；缺变量必须失败，不能静默输出空串</text>
+
+  <rect x="32" y="80" width="270" height="66" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="48" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">布局 layout</text>
+  <text x="48" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">邮件外壳、品牌头尾、退订入口</text>
+  <text x="48" y="139" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">改：季度级 · 换品牌只动这里</text>
+
+  <rect x="316" y="80" width="270" height="66" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="332" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#0f766e">区块 block</text>
+  <text x="332" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#115e59">标题 + 摘要 + 字段表 + 按钮</text>
+  <text x="332" y="139" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">改：月级 · 结构变了版本 +1</text>
+
+  <rect x="600" y="80" width="268" height="66" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="616" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#92400e">变量 vars</text>
+  <text x="616" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">订单号、金额、收件人、时间</text>
+  <text x="616" y="139" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">改：每次 · 由业务事件提供</text>
+
+  <text x="32" y="172" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">缺变量的行为 —— 本机实测（单次渲染，100 次中位数）</text>
+
+  <rect x="32" y="184" width="206" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="46" y="208" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#0f172a">字符串拼接</text>
+  <text x="46" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#0f766e">0.30 µs</text>
+  <text x="46" y="248" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">KeyError，编译期已知</text>
+
+  <rect x="252" y="184" width="206" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="266" y="208" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#0f172a">正则替换</text>
+  <text x="266" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#334155">2.26 µs</text>
+  <text x="266" y="248" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">可自定义为抛错</text>
+
+  <rect x="472" y="184" width="206" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="486" y="208" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#0f172a">Template.substitute</text>
+  <text x="486" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#334155">2.22 µs</text>
+  <text x="486" y="248" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">抛 KeyError（严格）</text>
+
+  <rect x="692" y="184" width="176" height="76" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.4"/>
+  <text x="706" y="208" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#991b1b">safe_substitute</text>
+  <text x="706" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#b91c1c">禁用</text>
+  <text x="706" y="248" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7f1d1d">原样发出 ${nope}</text>
+
+  <text x="32" y="288" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">渲染时机：写时 vs 读时</text>
+
+  <rect x="32" y="300" width="410" height="60" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="46" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#1e40af">写时渲染（站内信 / 短信 / 推送）</text>
+  <text x="46" y="342" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">入队前渲染并存结果：内容稳定、可重放；模板改动不影响历史</text>
+
+  <rect x="458" y="300" width="410" height="60" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="472" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#92400e">混合（邮件 / 留档）</text>
+  <text x="472" y="342" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">存渲染结果 + 存 vars：既能留档，也能排查「为什么写成 12900」</text>
+
+  <text x="32" y="388" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">版本策略：三类改动，三种处理</text>
+  <text x="32" y="410" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">文案（patch）原地改 · 结构（minor）版本 +1 并灰度 · 契约（major）换 template_key，旧模板保留至排空</text>
+  <text x="32" y="430" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b91c1c">契约级改动只改 version 是错的：调用方按 key 找模板，改 version 会让新旧事件同时渲染失败</text>
+</svg>

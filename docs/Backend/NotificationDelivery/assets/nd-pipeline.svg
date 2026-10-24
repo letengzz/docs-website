@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="一条通知的七段链与三个交界">
+  <rect x="0" y="0" width="920" height="420" fill="#f8fafc"/>
+  <text x="32" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">一条通知的七段链</text>
+  <text x="32" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">只有第 5 段能靠扩容解决；前四段与后两段都是判定型工作</text>
+
+  <defs><marker id="np1" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+
+  <rect x="32" y="86" width="112" height="96" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="88" y="112" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#1e40af">1 事件</text>
+  <text x="88" y="134" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">语义事件</text>
+  <text x="88" y="150" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">模板键 + 变量</text>
+  <text x="88" y="170" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">缺对象 ID</text>
+  <line x1="146" y1="134" x2="156" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#np1)"/>
+
+  <rect x="158" y="86" width="112" height="96" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="214" y="112" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#1e40af">2 决策</text>
+  <text x="214" y="134" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">偏好 · 静默</text>
+  <text x="214" y="150" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">频控 · 折叠</text>
+  <text x="214" y="170" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">规则写进代码</text>
+  <line x1="272" y1="134" x2="282" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#np1)"/>
+
+  <rect x="284" y="86" width="112" height="96" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="340" y="112" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#1e40af">3 渲染</text>
+  <text x="340" y="134" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">模板 + 变量</text>
+  <text x="340" y="150" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">严格模式</text>
+  <text x="340" y="170" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">缺失静默为空</text>
+  <line x1="398" y1="134" x2="408" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#np1)"/>
+
+  <rect x="410" y="86" width="112" height="96" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="466" y="112" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#1e40af">4 路由</text>
+  <text x="466" y="134" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">通道能力</text>
+  <text x="466" y="150" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">降级序列</text>
+  <text x="466" y="170" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">降级双发</text>
+  <line x1="524" y1="134" x2="534" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#np1)"/>
+
+  <rect x="536" y="86" width="112" height="96" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.4"/>
+  <text x="592" y="112" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#0f766e">5 投递</text>
+  <text x="592" y="134" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#115e59">outbox</text>
+  <text x="592" y="150" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#115e59">幂等键 + 退避</text>
+  <text x="592" y="170" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">受理当送达</text>
+  <line x1="650" y1="134" x2="660" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#np1)"/>
+
+  <rect x="662" y="86" width="112" height="96" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="718" y="112" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#1e40af">6 回执</text>
+  <text x="718" y="134" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">状态机</text>
+  <text x="718" y="150" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">单调推进</text>
+  <text x="718" y="170" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">乱序回退</text>
+  <line x1="776" y1="134" x2="786" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#np1)"/>
+
+  <rect x="788" y="86" width="100" height="96" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="838" y="112" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#1e40af">7 读数</text>
+  <text x="838" y="134" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">未读 · 打开</text>
+  <text x="838" y="150" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">投诉 · 死信</text>
+  <text x="838" y="170" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">分母换口径</text>
+
+  <text x="32" y="222" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">三个交界：出问题时先判断哪一边变了</text>
+  <rect x="32" y="234" width="272" height="86" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="168" y="258" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#92400e">业务事件</text>
+  <text x="168" y="280" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">依赖：事件语义与对象 ID</text>
+  <text x="168" y="298" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">自证：保存事件原文与版本</text>
+  <rect x="324" y="234" width="272" height="86" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="460" y="258" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#92400e">身份与联系方式</text>
+  <text x="460" y="280" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">依赖：号码/token 当前有效</text>
+  <text x="460" y="298" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">自证：发送时地址快照</text>
+  <rect x="616" y="234" width="272" height="86" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="752" y="258" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#92400e">通道供应商</text>
+  <text x="752" y="280" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">依赖：契约、限额、回执格式</text>
+  <text x="752" y="298" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">自证：保留原始响应体 2 KB</text>
+
+  <text x="32" y="352" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">判定顺序：先看「受理率」正常与否（我方 or 通道方），再看「回执到达率」（通道是否真投），最后看「放行率」（规则是否过严）</text>
+  <text x="32" y="376" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">三个数按这个顺序看，能在一分钟内把「收不到」归到七段中的某一段</text>
+  <text x="32" y="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">红字 = 这一段最独有的失败形态，也是排查时最容易漏判的一层</text>
+</svg>

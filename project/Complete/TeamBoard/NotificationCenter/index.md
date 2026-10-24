@@ -290,6 +290,18 @@ psql "$DB" -c "EXPLAIN (ANALYZE, BUFFERS) SELECT id FROM notification WHERE reci
 3. **已读回执的批量接口**：移动端一次标记 20 条会发 20 个请求，需要一个 `POST /notifications/read`（body 带 id 数组）。
 4. **通知保留期**：90 天前的已读通知归档（[分区分表与冷热分离](/docs/DB/PartitionArchival/index.md)的保留矩阵）。
 
+## 与本专题的分工（第 206 天补充）
+
+**分工一句话**：本章是**一个租户系统的收件箱实现**（鉴权、签名游标、未读数、已读回执的具体代码与 DDL）；[消息通知与触达工程](../../../../docs/Backend/NotificationDelivery/index.md)提供它背后的**读模型取舍算式**与跨通道的投递链路。
+
+| 本章的选择 | 专题里的对应判据 | 差异 |
+| --- | --- | --- |
+| 签名游标分页 | `NDI-D` / `NDI-F` | 本章解决「防篡改 + 跨端一致」，专题补「ID 乱序导致永久漏读」这个边界 |
+| 未读数字段 | `NDI-B` | 本章用字段，专题给出 `count(*)` 0.402 ms vs 计数器 0.014 ms 的实测与对账要求 |
+| outbox 写通知 | `NDD-A` / `NDD-B` | 本章只到站内信，专题补降级通道与 `send_group_id` 去重 |
+
+**本章特有的一个坑**：`bigserial` 的 ID 顺序**不等于**提交顺序。并发写入时事务 A 拿到 100、事务 B 拿到 101，B 先提交——用户此时打开收件箱看到 101，把游标推到 101，随后 A 提交的 100 **永远不会显示为未读**。这个 bug 只在并发写入时出现，单机测试几乎撞不到。三种解法（复合游标 / 每用户逻辑 seq / 延迟 5 秒推进）见专题的[收件箱读模型](../../../../docs/Backend/NotificationDelivery/Inbox/index.md)第三节。
+
 ## 十、参考资料
 
 - [PostgreSQL 18 · 部分索引](https://www.postgresql.org/docs/18/indexes-partial.html)（`WHERE read_at IS NULL` 的适用条件与局限）

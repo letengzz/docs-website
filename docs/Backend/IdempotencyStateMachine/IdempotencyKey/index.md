@@ -284,6 +284,12 @@ CREATE TABLE idem_record (
 券核销的幂等键**不要用请求体哈希**：计价请求体里常带时间戳或 `quote_id`，哈希每次都不同，等于没有幂等。正确形状是**业务复合键**——`UNIQUE (instance_id, order_id)`。但这条唯一键只挡「同一张券用在同一单两次」，挡不住「同一张券用在两个不同订单」，后者必须靠 `coupon_instance.status` 的条件迁移（`AND status='UNUSED'`）兜底。**两层守卫，缺一不可。**
 :::
 
+## 与「消息通知与触达工程」的分工（第 206 天补充）
+
+**分工一句话**：本页讲**写侧幂等**（一次请求只生效一次）；[消息通知与触达工程 · 投递与回执](../../NotificationDelivery/Delivery/index.md)讲**通知侧的两次尝试**（同一条消息发多次只算一条）。
+
+**本页特有的一个坑**：通知的去重键是 `(event_id, user_id, dedup_key)` **三元组**，不能沿用写侧的 `Idempotency-Key` 单键。原因很直接：**一个事件要通知多个收件人**（「订单已支付」既要通知买家也要通知卖家），单键去重会把第二个收件人当成重复请求直接丢掉——用户侧表现为「卖家永远收不到新订单提醒」，而日志里一切正常（幂等命中，返回 200）。反方向也错：把 `user_id` 加进写侧幂等键，会让「同一用户重复提交」变成两次合法请求。
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

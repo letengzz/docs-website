@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 450" width="920" height="450" role="img" aria-label="触达侧的五个指标与五步止血顺序">
+  <rect x="0" y="0" width="920" height="450" fill="#f8fafc"/>
+  <text x="32" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">三段漏斗 + 两个比率：每个指标只有一个分母</text>
+  <text x="32" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">放行率看规则、受理率看我方与通道之间、送达率看通道质量、投诉率看是否在打扰</text>
+
+  <rect x="32" y="80" width="180" height="70" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="122" y="106" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">事件 → 放行</text>
+  <text x="122" y="126" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">放行率 = 放行 / 事件</text>
+  <text x="122" y="142" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">规则是否过严</text>
+
+  <text x="220" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#64748b">→</text>
+
+  <rect x="236" y="80" width="180" height="70" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="326" y="106" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#1e40af">放行 → 受理</text>
+  <text x="326" y="126" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">受理率 = 受理 / 放行</text>
+  <text x="326" y="142" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">我方与通道之间是否通</text>
+
+  <text x="424" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#64748b">→</text>
+
+  <rect x="440" y="80" width="200" height="70" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.4"/>
+  <text x="540" y="106" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#0f766e">受理 → 送达</text>
+  <text x="540" y="126" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#115e59">送达率 = 送达 / 受理</text>
+  <text x="540" y="142" text-anchor="middle" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">分母不是放行（否则把自己限流算成通道问题）</text>
+
+  <rect x="660" y="80" width="228" height="70" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.2"/>
+  <text x="774" y="106" text-anchor="middle" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#991b1b">投诉率 = 投诉 / 收到过的人</text>
+  <text x="774" y="126" text-anchor="middle" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7f1d1d">红线 0.3%，建议 &lt; 0.1%</text>
+  <text x="774" y="142" text-anchor="middle" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7f1d1d">用全站用户当分母会稀释 10 倍</text>
+
+  <text x="32" y="184" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">通道侧故障的四种形态：后两种不会触发任何接口告警</text>
+
+  <rect x="32" y="196" width="206" height="66" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="46" y="218" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#0f172a">接口报错</text>
+  <text x="46" y="238" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">4xx/5xx 上升</text>
+  <text x="46" y="254" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">错误码分布最容易发现</text>
+
+  <rect x="250" y="196" width="206" height="66" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="264" y="218" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#0f172a">限额打满</text>
+  <text x="264" y="238" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">429 集中在特定时段</text>
+  <text x="264" y="254" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">看配额余量而不是 QPS</text>
+
+  <rect x="468" y="196" width="206" height="66" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.2"/>
+  <text x="482" y="218" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#991b1b">受理成功但不投递</text>
+  <text x="482" y="238" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7f1d1d">受理率正常、送达率暴跌</text>
+  <text x="482" y="254" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7f1d1d">只能靠回执到达率发现</text>
+
+  <rect x="686" y="196" width="202" height="66" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.2"/>
+  <text x="700" y="218" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#991b1b">回执丢失</text>
+  <text x="700" y="238" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7f1d1d">unknown 占比上升</text>
+  <text x="700" y="254" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7f1d1d">回执到达率 &lt; 80% 即异常</text>
+
+  <text x="32" y="296" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">五步止血：顺序错了会放大事故</text>
+
+  <rect x="32" y="308" width="164" height="76" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="46" y="330" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#92400e">1 停自动重试</text>
+  <text x="46" y="350" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">把 next_at 推远</text>
+  <text x="46" y="368" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">先停放大源</text>
+
+  <rect x="212" y="308" width="164" height="76" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="226" y="330" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#92400e">2 关营销</text>
+  <text x="226" y="350" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">再关协同推送</text>
+  <text x="226" y="368" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">保护事务通道</text>
+
+  <rect x="392" y="308" width="164" height="76" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="406" y="330" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#1e40af">3 定责</text>
+  <text x="406" y="350" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">受理率正常 = 通道方</text>
+  <text x="406" y="368" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">受理率低 = 我方</text>
+
+  <rect x="572" y="308" width="164" height="76" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="586" y="330" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#0f766e">4 切通道</text>
+  <text x="586" y="350" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#115e59">一次只切一条</text>
+  <text x="586" y="368" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#115e59">别同时切两条</text>
+
+  <rect x="752" y="308" width="136" height="76" rx="8" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1.2"/>
+  <text x="766" y="330" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#5b21b6">5 反序恢复</text>
+  <text x="766" y="350" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#4c1d95">事务 → 协同</text>
+  <text x="766" y="368" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#4c1d95">→ 营销</text>
+
+  <text x="32" y="414" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b91c1c">降级顺序按「打扰成本」排，不按「业务重要性」排：营销可关、发货可延、验证码不可停</text>
+  <text x="32" y="436" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">告警只留三条能行动的：验证码送达率、回执断流、死信增速（其余都会变成噪音）</text>
+</svg>

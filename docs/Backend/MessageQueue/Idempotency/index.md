@@ -196,6 +196,12 @@ def handle(ch, method, properties, body):
 
 这套组合在[事件溯源](../../EventSourcing/Projection/index.md)里被推到极致——位点与读模型必须在同一个事务里提交，否则会出现「位点动了但数据没写」的静默丢失。
 
+## 与「消息通知与触达工程」的分工（第 206 天补充）
+
+**分工一句话**：本页保证「同一事件只被**处理**一次」；[消息通知与触达工程 · 投递与回执](../../NotificationDelivery/Delivery/index.md)保证「同一事件只**打扰**一次」。
+
+**本页特有的一个坑**：消费侧幂等通过，**不等于**用户只收到一条。中间还隔着两件事：① 折叠窗口会把多条事件压成一条摘要（同一个 `dedup_key` 的多条 outbox 行会被合并）；② 降级通道会给同一条消息产生第二次 `attempt`。所以通知侧必须有独立的 `send_group_id`，并在组内做「`delivered` 唯一」校验（一条 SQL 可验）。只靠消费侧的 `event_id` 去重，会漏掉「降级双发」这一类重复——它的 `event_id` 本来就只有一个。
+
 ## 参考资料
 
 - RabbitMQ 消费确认与幂等设计：https://www.rabbitmq.com/consumers.html

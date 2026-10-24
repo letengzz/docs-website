@@ -938,3 +938,21 @@ export const PricingPromotion = [
     ],
   },
 ];
+
+export const NotificationDelivery = [
+  {
+    text: "消息通知与触达工程",
+    link: "/docs/Backend/NotificationDelivery/index.md",
+    items: [
+      { text: "总览：一条通知的七道闸", link: "/docs/Backend/NotificationDelivery/Overview/index.md" },
+      { text: "通道矩阵：每组通道能保证什么、不能保证什么", link: "/docs/Backend/NotificationDelivery/Channels/index.md" },
+      { text: "偏好中心：订阅、静默与退订的传播", link: "/docs/Backend/NotificationDelivery/Preferences/index.md" },
+      { text: "模板与渲染：变量契约、缺失与版本", link: "/docs/Backend/NotificationDelivery/Templates/index.md" },
+      { text: "频控与折叠：三种窗口算法与优先级", link: "/docs/Backend/NotificationDelivery/Throttling/index.md" },
+      { text: "投递与回执：至少一次、去重与退信", link: "/docs/Backend/NotificationDelivery/Delivery/index.md" },
+      { text: "收件箱读模型：未读数、游标与扩散方式", link: "/docs/Backend/NotificationDelivery/Inbox/index.md" },
+      { text: "度量与止血：送达率的分母、告警与降级", link: "/docs/Backend/NotificationDelivery/Operations/index.md" },
+      { text: "实战：一条能验收的最小触达链路", link: "/docs/Backend/NotificationDelivery/Practice/index.md" },
+    ],
+  },
+];

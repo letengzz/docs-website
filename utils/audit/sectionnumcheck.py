@@ -3,7 +3,7 @@ r"""sectionnumcheck.py — 同页小节编号与标题唯一性巡检（第 76 �
 
 存在的理由
 ----------
-`headingcheck.py` 管「有没有且只有一个 H1」、`sidebartitlecheck.py` 管「菜单名与 H1
+`headingcheck.py` 管「有没有且只有一个 H1」、`sidebartitlecheck.py`（历史名）管「菜单名与 H1
 是否一致」、`anchorcheck.py` 管「链接里的 `#fragment` 能否对上」——**没有一项看
 「同一页里的小节标题本身」**。
 

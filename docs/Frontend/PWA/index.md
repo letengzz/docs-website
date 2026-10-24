@@ -65,6 +65,12 @@
 | [React / Vue 框架页](../Frame/index.md) | 框架本身的使用 | 框架无关：本专题的判据在任何框架下都成立（SW 跑在页面之外，框架管不到它） |
 | [桌面应用深入](../DesktopApp/index.md) | Tauri / Electron 桌面应用的工程判据 | 边界是**安装来源与能力范围**：PWA 装的是「浏览器里的站点」，系统能力受浏览器沙箱限制；桌面应用装的是**带原生后端的可执行程序**，能力上限高但要求你自己回答「签名、公证、更新、崩溃」。「先做 PWA，以后不行再套壳」这条路径的代价，见该专题的[什么时候不该做桌面应用](../DesktopApp/Overview/index.md) |
 
+## 与「消息通知与触达工程」的分工（第 206 天补充）
+
+**分工一句话**：本页讲**浏览器侧的推送能力**（权限申请时机、Service Worker、`push` 事件）；[消息通知与触达工程 · 通道矩阵](../../Backend/NotificationDelivery/Channels/index.md)讲**服务端怎么选通道、怎么降级、怎么处理失效订阅**。
+
+**本页特有的一个坑**：Web Push 的 `endpoint` 会**主动失效**，此时推送服务返回 **410 或 404**（RFC 8030 §5）。这两个状态码的唯一正确处理是**立刻删除该订阅**——重试一万次也不会变有效，反而会被推送服务当作异常客户端限流。反过来，短信的「空号/停机」不能立刻删号码（可能只是临时停机），要先标记可疑、连续 N 次后停发。**token 与号码用同一套清理策略，一定有一边是错的**——这也是本专题把「失效地址三种形态」单独列一节的原因。
+
 ## 参考资料
 
 - [MDN：Making PWAs installable](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable)

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="900" height="450" role="img" aria-label="收件箱的三种读模型与扩散方式">
+  <rect x="0" y="0" width="900" height="450" fill="#f8fafc"/>
+  <text x="32" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#0f172a">收件箱：唯一需要强一致读数的地方</text>
+  <text x="32" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">红点数字必须等于点进去看到的条数；已读状态必须跨端一致；广播不能写一百万行</text>
+
+  <rect x="32" y="76" width="272" height="118" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="48" y="100" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#1e40af">收件箱表（写扩散）</text>
+  <text x="48" y="122" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">每人一行 inbox(user_id, notif_id, read_at)</text>
+  <text x="48" y="142" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">读极快，可任意排序与过滤</text>
+  <text x="48" y="162" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f766e">适合：定向消息（收件人 ≤ 100）</text>
+  <text x="48" y="180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">广播要写 N 行：1 万行 11.5 ms</text>
+
+  <rect x="316" y="76" width="272" height="118" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="332" y="100" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#92400e">事件流（读扩散）</text>
+  <text x="332" y="122" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">只存一份消息 + user_scope + 游标</text>
+  <text x="332" y="142" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#78350f">存储省，广播零成本</text>
+  <text x="332" y="162" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f766e">适合：广播（收件人 &gt; 1 万）</text>
+  <text x="332" y="180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">未读数要算差集，无法任意排序</text>
+
+  <rect x="600" y="76" width="268" height="118" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="616" y="100" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#0f766e">混合（生产常用）</text>
+  <text x="616" y="122" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#115e59">定向写扩散 + 广播读扩散，读时 UNION</text>
+  <text x="616" y="142" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#115e59">100~1 万：异步扇出（允许 1 分钟延迟）</text>
+  <text x="616" y="162" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b45309">两套代码，一致性要单独设计</text>
+  <text x="616" y="180" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">判据：看收件人数量分布，不看喜好</text>
+
+  <text x="32" y="226" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">未读数三种实现（20 万行，其中 user 7 独占 5 万行，有 user_id+read_at 索引）</text>
+
+  <rect x="32" y="238" width="270" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="46" y="260" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#0f172a">count(*) where read_at is null</text>
+  <text x="46" y="284" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#1e40af">0.402 ms</text>
+  <text x="46" y="304" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">强一致，5 万行以内够用（默认选它）</text>
+
+  <rect x="316" y="238" width="270" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="330" y="260" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#0f172a">count(*)（全量，仅对照）</text>
+  <text x="330" y="284" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#334155">1.279 ms</text>
+  <text x="330" y="304" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#334155">不加条件，成本随该用户行数线性增长</text>
+
+  <rect x="600" y="238" width="268" height="76" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+  <text x="614" y="260" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="600" fill="#0f766e">计数器表 unread 列</text>
+  <text x="614" y="284" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#0f766e">0.014 ms</text>
+  <text x="614" y="304" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b45309">快 29 倍，但必须有每日对账</text>
+
+  <text x="32" y="348" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#64748b">已读：游标 vs 逐条，以及一个必须处理的边界</text>
+  <text x="32" y="372" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155">列表式界面（点进去全算已读）→ 游标 last_read_notif_id；卡片式（可只点开一条）→ 逐条 read_at</text>
+  <text x="32" y="394" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b91c1c">bigserial 的 ID 顺序 ≠ 提交顺序：用户看到 101 并把游标推到 101，随后提交的 100 会永久漏读</text>
+  <text x="32" y="416" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">三种解法：复合游标（时间+ID）· 每用户逻辑 seq（写时锁用户行）· 延迟 5 秒推进（最简单）</text>
+  <text x="32" y="438" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">批量已读必须一条 SQL：5,000 条逐条 7.9 ms vs 批量 4.3 ms；换成网络往返，逐条会变成秒级</text>
+</svg>

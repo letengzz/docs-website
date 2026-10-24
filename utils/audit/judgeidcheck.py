@@ -10,10 +10,10 @@
 
 已有的三项判据巡检各有分工，**没有一项问「编号本身唯不唯一」**：
 
-  * `judgecheck.py`         —— 单页内「声明条数 = 定义表行数」；
-  * `judgecountcheck.py`    —— 声明了判据的页数与占比；
+  * `judgecheck.py`（历史名）    —— 单页内「声明条数 = 定义表行数」；
+  * `judgecountcheck.py`（历史名）—— 声明了判据的页数与占比；
   * `judgesumcheck.py`      —— 专题目录页那张总览表与实际声明是否一致；
-  * `judgerefcheck.py`      —— 正文引用的判据编号是否真的被定义过。
+  * `judgerefcheck.py`（历史名）—— 正文引用的判据编号是否真的被定义过。
 
 于是两类**静默缺陷**长期无人发现：
 
@@ -30,7 +30,7 @@
   E2 DUP_ID_CROSS_PAGE   不同页面定义了同一判据 ID（引用坐标冲突）
   W3 UNDEFINED_RANGE     正文声明了 `XXX-A~XXX-H`，但该族在库内一条定义都没有
 
-## 与 judgecheck.py 的边界（刻意不重复）
+## 与 judgecheck.py（历史名）的边界（刻意不重复）
 
 `judgecheck` 的 `E2 DUP_NUMBER` 查的是**同一张表内**的重号，`W1 PREFIX_COLLISION`
 查的是**同一前缀被两个以上专题复用**。本脚本**不再重复这两条**，只补它够不到的

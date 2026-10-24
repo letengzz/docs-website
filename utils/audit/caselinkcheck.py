@@ -4,7 +4,7 @@
 
 立这一项的直接原因：本库日常在 Windows 上写文档、在 Linux（GitHub Actions）上构建。
 Windows 的文件系统大小写不敏感，于是 `![x](../assets/Foo.svg)` 在本地**能渲染**、
-`linkcheck.py` 也**判它存在**（`os.path.exists` 走的是不敏感比较），但推上去之后
+`linkcheck.py`（历史名）也**判它存在**（`os.path.exists` 走的是不敏感比较），但推上去之后
 Linux 上找不到 `assets/Foo.svg`，页面里的图静默变成破图。
 
 既有的六个链接类巡检都不覆盖这个方向：

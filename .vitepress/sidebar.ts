@@ -1,5 +1,5 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
-import { Auth, ContractEvolution, DDD, DesignPatterns, DistributedCache, DistributedLock, DistributedScheduling, DotNet, Ecommerce, EmailDeliverability, EventSourcing, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, MultiTenantSaaS, NetworkProgramming, ObjectStorage, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, ServiceMesh, SpringCloud, WorkflowEngine, RecommenderSystems, MediaDelivery, RiskDecision, PricingPromotion } from "./backend";
+import { Auth, ContractEvolution, DDD, DesignPatterns, DistributedCache, DistributedLock, DistributedScheduling, DotNet, Ecommerce, EmailDeliverability, EventSourcing, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, MultiTenantSaaS, NetworkProgramming, ObjectStorage, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, ServiceMesh, SpringCloud, WorkflowEngine, RecommenderSystems, MediaDelivery, RiskDecision, PricingPromotion, NotificationDelivery } from "./backend";
 
 import { AI_Java, AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_EdgeInference, AI_EvalEngineering, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI, AI_SyntheticData, AI_InferenceScheduling, AI_AgentToolProtocol } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontErrorTelemetry, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLocalDataStore, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
@@ -130,7 +130,7 @@ export const sidebar = {
     {
       text: "后端",
       collapsed: true,
-      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...GatewayDeep, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...Ledger, ...DDD, ...WorkflowEngine, ...DistributedCache, ...ReactiveProgramming, ...HighConcurrency, ...LegacyModernization, ...RealtimeCollaboration, ...IdempotencyStateMachine, ...DistributedLock, ...ContractEvolution, ...ObjectStorage, ...EmailDeliverability, ...EventSourcing, ...ServiceMesh, ...MultiTenantSaaS, ...RecommenderSystems, ...MediaDelivery, ...RiskDecision, ...PricingPromotion],
+      items: [...DotNet, ...Go, ...GoMicroservices, ...Java, ...HighPerformanceJava, ...Auth, ...MessageQueue, ...Microservices, ...GatewayDeep, ...SpringCloud, ...DesignPatterns, ...NetworkProgramming, ...Python, ...PythonWeb, ...Ecommerce, ...Ledger, ...DDD, ...WorkflowEngine, ...DistributedCache, ...ReactiveProgramming, ...HighConcurrency, ...LegacyModernization, ...RealtimeCollaboration, ...IdempotencyStateMachine, ...DistributedLock, ...ContractEvolution, ...ObjectStorage, ...EmailDeliverability, ...EventSourcing, ...ServiceMesh, ...MultiTenantSaaS, ...RecommenderSystems, ...MediaDelivery, ...RiskDecision, ...PricingPromotion, ...NotificationDelivery],
     },
   ],
   "/docs/DB": [
@@ -249,6 +249,7 @@ export const sidebar = {
   "/docs/Backend/MediaDelivery": MediaDelivery,
   "/docs/Backend/RiskDecision": RiskDecision,
   "/docs/Backend/PricingPromotion": PricingPromotion,
+  "/docs/Backend/NotificationDelivery": NotificationDelivery,
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/ParameterTuning": ParameterTuning,
   "/docs/DB/SchemaEvolution": SchemaEvolution,
