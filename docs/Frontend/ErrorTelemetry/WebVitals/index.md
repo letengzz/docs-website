@@ -188,6 +188,20 @@ INP 的脚本级归因依赖 **Long Animation Frames（LoAF，Chrome 123 起稳�
 | `ETWV-G` | 用 attribution 构建做归因 | LCP/INP 有分段字段 | 换构建；跨域脚本配 TAO |
 | `ETWV-H` | 指标连到业务动作 | 有「达标/未达标」的转化率对照 | 接业务埋点 |
 
+## 与「音视频交付工程」的分工（第 203 天补充）
+
+本页讲 Core Web Vitals 的采集与分位口径。视频播放的 QoE 可以借用它的**方法论**（分位 + 受影响会话占比），但**分母不能照搬**——Web Vitals 的分母是「页面浏览」，视频的分母是「播放会话」，两者在单页应用里数量完全不同。
+
+| 概念 | Web Vitals（本页） | 视频 QoE（[体验与成本](../../../Backend/MediaDelivery/QoE/index.md)） |
+| --- | --- | --- |
+| 分母 | 页面浏览（page view） | 会话 / 播放 / 请求，三者分开 |
+| 长尾指标 | INP 的 p75 | 卡顿的「有卡顿会话占比 + 时长占比 + 次数 p95」 |
+| 归因字段 | 元素选择器、路由 | `play_id`、`bitrate`、`buffer_level` |
+
+::: danger 一个会算错的细节
+同一个播放页里，用户暂停 10 分钟再继续，是**一个会话、两次播放**。用页面浏览做分母算「起播时间」，会把续播也算成起播，p75 直接被拉低——看起来变好了，实际是分母错了。
+:::
+
 ## 参考资料
 
 - web-vitals 官方 README 与 v5 迁移说明（`onFID` 移除、`durationThreshold`、attribution 字段、重复回调与 bfcache）

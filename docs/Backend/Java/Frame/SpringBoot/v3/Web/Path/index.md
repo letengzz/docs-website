@@ -11,7 +11,7 @@
 
 底层选择路径匹配规则的源码是：
 
-![路径匹配相关源码](assets/img202411222312359.png)
+![路径匹配相关源码](../assets/img202411222312359.png)
 
 ## Ant风格路径用法
 
@@ -88,13 +88,13 @@ public String hello(HttpServletRequest request,
 }
 ```
 
-![image-20230804215103710](assets/202308042151831.png)
+![image-20230804215103710](../assets/202308042151831.png)
 
 :::danger 注意
 
 - 当使用`**`不在末尾时，使用PathPatternParser模式会提示使用AntPathMatcher，所以如果路径中间需要有 `**`，替换成ant风格路径
 
-  ![image-20230804215403804](assets/202308042154951.png)
+  ![image-20230804215403804](../assets/202308042154951.png)
 
   ```properties
   spring.mvc.pathmatch.matching-strategy=ant_path_matcher
@@ -108,12 +108,12 @@ public String hello(HttpServletRequest request,
         matching-strategy: ant_path_matcher
   ```
 
-  ![image-20230804220011048](assets/202308042200968.png)
+  ![image-20230804220011048](../assets/202308042200968.png)
 
 - 使用默认的路径匹配规则，是由 PathPatternParser 提供的
 
-  ![image-20230804222136420](assets/202308042221159.png)
+  ![image-20230804222136420](../assets/202308042221159.png)
 
-  ![image-20230804222217814](assets/202308042222032.png)
+  ![image-20230804222217814](../assets/202308042222032.png)
 
 :::

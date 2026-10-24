@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+<text x="36" y="40" font-size="21" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">死信在 outbox 链路中的位置与三条处置路径</text>
+<text x="36" y="62" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">毒消息是 seq=2；它留下的不是「一条没投出去」，而是「一个永远不会被应用的序号」</text>
+
+<rect x="36" y="88" width="120" height="150" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.3"/>
+<text x="96" y="112" font-size="11.5" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">outbox</text>
+<text x="96" y="136" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">seq1 已投</text>
+<text x="96" y="156" font-size="9.5" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">seq2 毒</text>
+<text x="96" y="176" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">seq3 待投</text>
+<text x="96" y="196" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">seq4 待投</text>
+<text x="96" y="216" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">seq5 待投</text>
+
+<rect x="196" y="120" width="130" height="86" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/>
+<text x="261" y="146" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">投递器</text>
+<text x="261" y="168" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">退避 5→10→20→40→80 s</text>
+<text x="261" y="186" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">5 次判死（瞬时）</text>
+<text x="261" y="202" font-size="9.5" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">永久类第 1 次即判死</text>
+
+<line x1="156" y1="150" x2="196" y2="150" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="366" y="88" width="150" height="66" rx="7" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="441" y="112" font-size="11" font-weight="700" fill="#7f1d1d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">dead_letter</text>
+<text x="441" y="132" font-size="9.5" fill="#7f1d1d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">reason / attempts / state</text>
+<text x="441" y="148" font-size="9.5" fill="#7f1d1d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">open → replayed / abandoned</text>
+
+<rect x="366" y="172" width="150" height="66" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="441" y="196" font-size="11" font-weight="700" fill="#78350f" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">applied_hole</text>
+<text x="441" y="216" font-size="9.5" fill="#78350f" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">agg_id + seq</text>
+<text x="441" y="232" font-size="9.5" fill="#78350f" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">承认「这个序号不来了」</text>
+
+<line x1="326" y1="140" x2="366" y2="122" stroke="#b91c1c" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="326" y1="170" x2="366" y2="198" stroke="#b45309" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="540" y="88" width="390" height="150" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="556" y="110" font-size="11" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">三种处置的实测（5 条事件，seq2 是毒消息）</text>
+<text x="556" y="132" font-size="10" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">A 死信照旧阻塞：635 s 判死，seq3/4/5 永久 pending</text>
+<text x="556" y="152" font-size="10" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">B 死信跳过但守卫不认洞：seq3 重试 73 次仍被拒</text>
+<text x="556" y="172" font-size="10" fill="#166534" font-family="PingFang SC, Helvetica, Arial, sans-serif">C 死信登记为洞并允许跳洞：635 s 时 3/4/5 全部交付</text>
+<line x1="556" y1="184" x2="914" y2="184" stroke="#cbd5e1" stroke-width="1"/>
+<text x="556" y="204" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">三条路的差别不在「死信挪到哪」，在「下游怎么知道少了哪个」</text>
+<text x="556" y="224" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">C 是唯一一个让 last_seq 能从 1 前进到 5 的方案</text>
+
+<rect x="36" y="264" width="288" height="86" rx="7" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.1"/>
+<text x="52" y="286" font-size="11" font-weight="700" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">重投必须有版本守卫</text>
+<text x="52" y="306" font-size="10" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">已推进到 seq5 时重放 seq2：</text>
+<text x="52" y="324" font-size="10" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">带守卫 UPDATE 0 行，无守卫 1 行</text>
+<text x="52" y="342" font-size="10" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">无守卫 = 库存确认多扣一次</text>
+
+<rect x="336" y="264" width="288" height="86" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.1"/>
+<text x="352" y="286" font-size="11" font-weight="700" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">去重是第二层</text>
+<text x="352" y="306" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">同一 event_id 投 3 次：</text>
+<text x="352" y="324" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">接受 / 跳过 / 跳过</text>
+<text x="352" y="342" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">守卫管顺序，幂等键管重复</text>
+
+<rect x="636" y="264" width="288" height="86" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.1"/>
+<text x="652" y="286" font-size="11" font-weight="700" fill="#14532d" font-family="PingFang SC, Helvetica, Arial, sans-serif">重投的窗口与上限</text>
+<text x="652" y="306" font-size="10" fill="#166534" font-family="PingFang SC, Helvetica, Arial, sans-serif">最早 10 分钟，最晚 24 小时</text>
+<text x="652" y="324" font-size="10" fill="#166534" font-family="PingFang SC, Helvetica, Arial, sans-serif">单条最多 3 次，超限转 abandoned</text>
+<text x="652" y="342" font-size="10" fill="#166534" font-family="PingFang SC, Helvetica, Arial, sans-serif">放弃也要留 operator 与原因</text>
+
+<rect x="36" y="362" width="888" height="28" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1"/>
+<text x="52" y="381" font-size="10.5" fill="#78350f" font-family="PingFang SC, Helvetica, Arial, sans-serif">监控四数：dead_letter_open ｜ dead_letter_age_max ｜ outbox_pending_age_max ｜ replay_rejected_total</text>
+</svg>

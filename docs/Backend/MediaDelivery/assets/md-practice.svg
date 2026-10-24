@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="960" height="380" fill="#ffffff"/>
+<text x="36" y="40" font-size="21" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">最小点播链路的五个组件与数据流</text>
+<text x="36" y="62" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">规模压到最小，目的是让四条契约（C1~C4）各有一个可执行的断言</text>
+
+<rect x="36" y="90" width="160" height="88" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.3"/>
+<text x="116" y="114" font-size="12" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">① API</text>
+<text x="116" y="136" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">签发上传签名</text>
+<text x="116" y="154" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">创建 asset / 查状态</text>
+<text x="116" y="170" font-size="10" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">C1 幂等键</text>
+
+<rect x="228" y="90" width="160" height="88" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/>
+<text x="308" y="114" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 对象存储</text>
+<text x="308" y="136" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">源文件 / 分片 / 清单</text>
+<text x="308" y="154" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">不可变 + 版本段</text>
+<text x="308" y="170" font-size="10" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">C4 路径带版本</text>
+
+<rect x="420" y="90" width="160" height="88" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/>
+<text x="500" y="114" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 转码 worker</text>
+<text x="500" y="136" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">五档 + 切片 + 清单</text>
+<text x="500" y="154" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">GOP 2 s / 分片 4 s</text>
+<text x="500" y="170" font-size="10" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">C2 对齐契约</text>
+
+<rect x="612" y="90" width="140" height="88" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/>
+<text x="682" y="114" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ CDN</text>
+<text x="682" y="136" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">缓存分片</text>
+<text x="682" y="154" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">边缘验签</text>
+<text x="682" y="170" font-size="10" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">C3 键只取 URI</text>
+
+<rect x="784" y="90" width="140" height="88" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.3"/>
+<text x="854" y="114" font-size="12" font-weight="700" fill="#14532d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">⑤ 播放页</text>
+<text x="854" y="136" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">hls.js + video</text>
+<text x="854" y="154" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">四类埋点</text>
+<text x="854" y="170" font-size="10" fill="#166534" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">分母从这里来</text>
+
+<line x1="196" y1="134" x2="228" y2="134" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="388" y1="134" x2="420" y2="134" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="580" y1="134" x2="612" y2="134" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="752" y1="134" x2="784" y2="134" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<text x="36" y="212" font-size="11.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">十条正向验收 + 四条负向验收</text>
+
+<rect x="36" y="224" width="430" height="84" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.1"/>
+<text x="52" y="246" font-size="10.5" fill="#14532d" font-family="PingFang SC, Helvetica, Arial, sans-serif">S1 建表与唯一约束　S2 上传幂等　S3 五档齐备</text>
+<text x="52" y="264" font-size="10.5" fill="#14532d" font-family="PingFang SC, Helvetica, Arial, sans-serif">S4 GOP 恒定　S5 分片时长一致　S6 清单合法</text>
+<text x="52" y="282" font-size="10.5" fill="#14532d" font-family="PingFang SC, Helvetica, Arial, sans-serif">S7 缓存键不带签名　S8 起播达标</text>
+<text x="52" y="300" font-size="10.5" fill="#14532d" font-family="PingFang SC, Helvetica, Arial, sans-serif">S9 QoE 可算　S10 成本可核对</text>
+
+<rect x="494" y="224" width="430" height="84" rx="7" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.1"/>
+<text x="510" y="246" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">N1 篡改 1 字节 → 必须校验失败</text>
+<text x="510" y="264" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">N2 用 A 的签名取 B → 必须 403</text>
+<text x="510" y="282" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">N3 分片 5 s + GOP 2 s → 间隔必须抖动</text>
+<text x="510" y="300" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">N4 删掉 $uri 缓存键 → 两次必须都 MISS</text>
+
+<rect x="36" y="324" width="888" height="36" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1"/>
+<text x="52" y="347" font-size="10.5" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">正向验收只证明「能跑」；负向验收才证明「守卫在」——四条负向里任何一条「没有失败」，就说明那条契约只是写在文档里</text>
+</svg>

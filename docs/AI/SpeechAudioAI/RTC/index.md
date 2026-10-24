@@ -133,6 +133,20 @@ nc -zvu turn.example.com 3478 && echo "TURN/UDP OK" || echo "TURN/UDP 不可达"
 Chrome 的 `chrome://webrtc-internals` 能直接看到 jitter、packet loss、`googEchoCancellation` 等内部状态，是排查 RTC 问题最直接的入口。**它给出的数据是实测值，可以直接抄进你的记录**；而本页表格里的容差数字是规范与经验值，用于判断「有没有超标」。
 :::
 
+## 与「音视频交付工程」的分工（第 203 天补充）
+
+本页讲**实时**音视频（WebRTC、SFU、jitter buffer），缓冲模型是「越小越好」；[音视频交付工程](../../../Backend/MediaDelivery/index.md)讲**点播**，缓冲模型是「越大越稳」。两者的参数直觉正好相反，混用会得到完全错误的结论。
+
+| 维度 | RTC（本页） | 点播交付 |
+| --- | --- | --- |
+| 缓冲目标 | 几十毫秒，宁可丢帧也不延迟 | 20~30 秒，宁可等也不卡 |
+| 传输 | UDP + FEC/NACK，丢包重传代价高 | HTTP 分片 + CDN 缓存，丢包靠 TCP 重传 |
+| 延迟预算 | < 400 ms | 2~5 s（起播） |
+
+::: danger 把 jitter buffer 的思路搬到点播上
+RTC 里「缓冲越小越好」是对的，因为要保实时；点播里把缓冲压到 1~2 秒，等于让每一次带宽抖动都直接变成卡顿。实测对比：4 s 分片、30 s 缓冲上限下，缓冲型 ABR 卡顿 **0.03%**，吞吐型 **0.36%**；缓冲一旦压到 5 s，两者都会显著恶化——**抗抖动能力就是缓冲本身**。
+:::
+
 ## 参考资料
 
 - WebRTC 规范（W3C）：https://www.w3.org/TR/webrtc/

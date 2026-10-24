@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img">
+<rect x="0" y="0" width="960" height="380" fill="#ffffff"/>
+<text x="36" y="40" font-size="21" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">阶梯自检与按片定码率的收益</text>
+<text x="36" y="62" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">同一份阶梯，bpp 从最低档到最高档掉了 34%——最高档被饿着</text>
+
+<text x="36" y="94" font-size="11.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">bpp = 码率 / (宽 × 高 × 帧率)</text>
+
+<rect x="36" y="104" width="470" height="188" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<line x1="76" y1="270" x2="486" y2="270" stroke="#94a3b8" stroke-width="1"/>
+<line x1="76" y1="130" x2="76" y2="270" stroke="#94a3b8" stroke-width="1"/>
+
+<rect x="96" y="150" width="52" height="120" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="1"/>
+<text x="122" y="144" font-size="9.5" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">0.0978</text>
+<text x="122" y="286" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">240p</text>
+
+<rect x="168" y="163" width="52" height="107" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="1"/>
+<text x="194" y="157" font-size="9.5" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">0.0868</text>
+<text x="194" y="286" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">360p</text>
+
+<rect x="240" y="170" width="52" height="100" fill="#93c5fd" stroke="#1d4ed8" stroke-width="1"/>
+<text x="266" y="164" font-size="9.5" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">0.0813</text>
+<text x="266" y="286" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">480p</text>
+
+<rect x="312" y="181" width="52" height="89" fill="#93c5fd" stroke="#1d4ed8" stroke-width="1"/>
+<text x="338" y="175" font-size="9.5" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">0.0723</text>
+<text x="338" y="286" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">720p</text>
+
+<rect x="384" y="192" width="52" height="78" fill="#fca5a5" stroke="#b91c1c" stroke-width="1"/>
+<text x="410" y="186" font-size="9.5" fill="#7f1d1d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">0.0643</text>
+<text x="410" y="286" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">1080p</text>
+
+<line x1="76" y1="196" x2="486" y2="196" stroke="#15803d" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="452" y="212" font-size="9.5" fill="#15803d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">均值 0.0805</text>
+
+<rect x="530" y="104" width="394" height="188" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="548" y="128" font-size="11.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">按均值 0.0805 反推应为</text>
+<text x="548" y="152" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">240p 0.25　360p 0.56　480p 0.99</text>
+<text x="548" y="174" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">720p 2.23　1080p 5.01（原 4.0）</text>
+<line x1="548" y1="188" x2="906" y2="188" stroke="#cbd5e1" stroke-width="1"/>
+<text x="548" y="210" font-size="11.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">固定阶梯 vs 按片定码率</text>
+<text x="548" y="232" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">按片定码率均值 1.40 Mbps</text>
+<text x="548" y="252" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">固定阶梯取整均值 1.90 Mbps</text>
+<text x="548" y="274" font-size="10.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">多花 35.7%，最坏单段 1.82 倍</text>
+
+<rect x="36" y="310" width="888" height="52" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.1"/>
+<text x="52" y="332" font-size="11" font-weight="700" fill="#7c2d12" font-family="PingFang SC, Helvetica, Arial, sans-serif">三个必须一起做的决定</text>
+<text x="52" y="352" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">VOD 阶梯用 ABR 不用 CRF（CRF 会让带宽估计被骗）｜切片并行必须关 sc_threshold 并锁 GOP｜档数直接等于成本，少一档省 20%</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="960" height="360" fill="#ffffff"/>
+<text x="36" y="40" font-size="21" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">三级缓存与缓存键的作用点</text>
+<text x="36" y="62" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">缓存键定错，回源率从 5% 变成 100%；这是唯一一个「配置看着正常但必错」的地方</text>
+
+<rect x="36" y="92" width="150" height="96" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/>
+<text x="111" y="118" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">源站 / 对象存储</text>
+<text x="111" y="140" font-size="10.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">唯一真实来源</text>
+<text x="111" y="158" font-size="10.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">按版本段不可变</text>
+<text x="111" y="176" font-size="10" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">最怕并发回源</text>
+
+<rect x="222" y="92" width="150" height="96" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.3"/>
+<text x="297" y="118" font-size="12.5" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">中层缓存</text>
+<text x="297" y="140" font-size="10.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">回源收敛、合并回源</text>
+<text x="297" y="158" font-size="10.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">TTL 长、容量大</text>
+<text x="297" y="176" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">限速在这里生效</text>
+
+<rect x="408" y="92" width="150" height="96" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.3"/>
+<text x="483" y="118" font-size="12.5" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">边缘节点</text>
+<text x="483" y="140" font-size="10.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">命中率在这层算</text>
+<text x="483" y="158" font-size="10.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">签名校验也在这层</text>
+<text x="483" y="176" font-size="10" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">缓存键在这里比对</text>
+
+<rect x="594" y="92" width="120" height="96" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/>
+<text x="654" y="118" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">播放器</text>
+<text x="654" y="140" font-size="10.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">每 4 s 一个分片</text>
+<text x="654" y="158" font-size="10.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">90 分钟 1350 片</text>
+<text x="654" y="176" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">清单另计 1350 次</text>
+
+<line x1="186" y1="140" x2="222" y2="140" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="372" y1="140" x2="408" y2="140" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="558" y1="140" x2="594" y2="140" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="740" y="92" width="184" height="96" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.2"/>
+<text x="832" y="114" font-size="11" font-weight="700" fill="#14532d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">命中率（Zipf α=1.0）</text>
+<text x="832" y="136" font-size="10.5" fill="#166534" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">容量 1% → 56.08%</text>
+<text x="832" y="154" font-size="10.5" fill="#166534" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">容量 2% → 62.69%</text>
+<text x="832" y="172" font-size="10.5" fill="#166534" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">容量 5% → 71.42%</text>
+
+<rect x="36" y="210" width="430" height="126" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="52" y="232" font-size="11.5" font-weight="700" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">对：缓存键 = 路径</text>
+<text x="52" y="254" font-size="10.5" fill="#334155" font-family="Courier New, monospace">/v/a1b2/v7/1080p/seg-00012.m4s</text>
+<text x="52" y="276" font-size="10.5" fill="#166534" font-family="PingFang SC, Helvetica, Arial, sans-serif">对象数 1350，换签名仍命中同一对象</text>
+<text x="52" y="296" font-size="10.5" fill="#166534" font-family="PingFang SC, Helvetica, Arial, sans-serif">回源 = 总流量 ×（1 − 命中率）</text>
+<text x="52" y="318" font-size="10.5" fill="#166534" font-family="PingFang SC, Helvetica, Arial, sans-serif">10 万次播放、2.2 Mbps、90 s → 回源 120.8 GB</text>
+
+<rect x="494" y="210" width="430" height="126" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="510" y="232" font-size="11.5" font-weight="700" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">错：缓存键 = 整个 URL（含签名）</text>
+<text x="510" y="254" font-size="10.5" fill="#334155" font-family="Courier New, monospace">...seg-00012.m4s?e=..&amp;sig=9f8e..</text>
+<text x="510" y="276" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">对象数 10000 × 1350 = 1350 万</text>
+<text x="510" y="296" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">命中率 0%，回源 100%</text>
+<text x="510" y="318" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">安全性没有变高：签名本来就可重放</text>
+</svg>

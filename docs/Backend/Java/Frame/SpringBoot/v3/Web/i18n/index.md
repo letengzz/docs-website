@@ -49,7 +49,7 @@
 
 做国际化的自动配置类是：MessageSourceAutoConfiguration
 
-![image.png](assets/springboot-i18n-01.webp)
+![image.png](../assets/springboot-i18n-01.webp)
 
 通过以上源码得知，国际化对应的配置前缀是：spring.message
 

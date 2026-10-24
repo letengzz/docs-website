@@ -33,11 +33,11 @@ spring:
 
 不管是webjars的静态资源还是普通静态资源，统一都会执行以下这个方法，这个方法最后几行代码就是关于静态资源的缓存处理方式。
 
-![image.png](assets/img202411252228524.png)
+![image.png](../assets/img202411252228524.png)
 
 静态资源缓存指的是浏览器的缓存行为，浏览器可以将静态资源（js、css、图片、声音、视频）缓存到浏览器中，只要下一次用户访问同样的静态资源直接从缓存中取，不再从服务器中获取，可以降低服务器的压力，提高用户的体验。而这个缓存策略可以在服务器端程序中进行设置，SpringBoot对静态资源缓存的默认策略就是以下这三行代码：
 
-![image.png](assets/img202411252228553.png)
+![image.png](../assets/img202411252228553.png)
 
 - `registration.setCachePeriod(getSeconds(this.resourceProperties.getCache().getPeriod()));`
 
@@ -52,7 +52,7 @@ spring:
 
   - Cache-Control HTTP 响应头 是HTTP响应协议的一部分内容。如下图响应协议的响应头信息中即可看到Cache-Control的字样：
 
-    ![image.png](assets/img202411252220077.png)
+    ![image.png](../assets/img202411252220077.png)
 
   - 常见的 Cache-Control 指令包括：
 
@@ -80,13 +80,13 @@ spring:
 
 根据之前源码分析，得知静态资源缓存相关的配置应该使用`spring.web.resources.cache`：
 
-![image.png](assets/img202411252222971.png)
+![image.png](../assets/img202411252222971.png)
 
-![image.png](assets/img202411252222857.png)
+![image.png](../assets/img202411252222857.png)
 
-![image.png](assets/img202411252222258.png)
+![image.png](../assets/img202411252222258.png)
 
-![image.png](assets/img202411252222357.png)
+![image.png](../assets/img202411252222357.png)
 
 在application.properties文件中对缓存进行如下的配置：
 
@@ -114,7 +114,7 @@ server.port=9000
 
 cachecontrol.max-age配置的话，period会被覆盖。
 
-![image.png](assets/img202411252228805.png)
+![image.png](../assets/img202411252228805.png)
 
 :::
 
@@ -122,15 +122,15 @@ cachecontrol.max-age配置的话，period会被覆盖。
 
 第一次访问：请求服务器
 
-![image.png](assets/img202411252228265.png)
+![image.png](../assets/img202411252228265.png)
 
 第二次访问：20秒内开启一个新的浏览器窗口，再次访问，发现走了缓存
 
-![image.png](assets/img202411252228750.png)
+![image.png](../assets/img202411252228750.png)
 
 第三次访问：20秒后开启一个新的浏览器窗口，再次访问，发现重新请求服务器
 
-![image.png](assets/img202411252228929.png)
+![image.png](../assets/img202411252228929.png)
 
 提示，为什么显示304，这是因为这个配置：`spring.web.resources.cache.use-last-modified=true`
 
@@ -160,27 +160,27 @@ SpringBoot 支持静态和模板的欢迎页静态资源路径`classpath:/static
 
 :::
 
-![image-20230804205109114](assets/202308042052242.png)
+![image-20230804205109114](../assets/202308042052242.png)
 
 源码分析：在WebMvcAutoConfiguration类中有一个内部类EnableWebMvcConfiguration，这个类中有这样一段代码：
 
-![image.png](assets/img202411252228418.png)
+![image.png](../assets/img202411252228418.png)
 
-![image.png](assets/img202411252228070.png)
+![image.png](../assets/img202411252228070.png)
 
-![image.png](assets/img202411252228433.png)
+![image.png](../assets/img202411252228433.png)
 
-![image.png](assets/img202411252229899.png)
+![image.png](../assets/img202411252229899.png)
 
 通过以上源码追踪，得出结论：只要请求路径是/\*\*的，会依次去{ "classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/" }这四个位置找index.html页面作为欢迎页。
 
 WebMvcAutoConfiguration的生效条件：
 
-![image.png](assets/img202411252228874.png)
+![image.png](../assets/img202411252228874.png)
 
 上图红框内表示，要求Spring容器中缺失WebMvcConfigurationSupport这个Bean，WebMvcAutoConfiguration才会生效。EnableWebMvcConfiguration的继承结构：
 
-![image.png](assets/img202411252228515.png)
+![image.png](../assets/img202411252228515.png)
 
 很明显，EnableWebMvcConfiguration就是一个WebMvcConfigurationSupport这样的Bean。
 
@@ -205,7 +205,7 @@ favicon.ico 放在静态资源目录下即可。
 
 自定义资源路径后，Favicon 功能失效。
 
-![image-20230804205715095](assets/202308042057630.png)
+![image-20230804205715095](../assets/202308042057630.png)
 
 :::
 
@@ -225,7 +225,7 @@ favicon.ico 放在静态资源目录下即可。
 
 访问地址：http://localhost:8080/webjars/jquery/3.5.1/jquery.js 后面地址要按照依赖里面的包路径
 
-![image-20230804210209928](assets/202308042102577.png)
+![image-20230804210209928](../assets/202308042102577.png)
 
 ## 自定义静态资源规则
 
@@ -319,4 +319,4 @@ public class MyConfig {
 }
 ```
 
-![image-20230804213433129](assets/202308042134269.png)
+![image-20230804213433129](../assets/202308042134269.png)

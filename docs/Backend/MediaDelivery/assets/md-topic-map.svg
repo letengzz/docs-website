@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img">
+<rect x="0" y="0" width="960" height="430" fill="#ffffff"/>
+<text x="36" y="42" font-size="22" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">音视频交付工程 · 专题地图</text>
+<text x="36" y="66" font-size="12.5" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">十页按「管道顺序」排：前五页是链路，后四页是横切面，最后一页是排障入口</text>
+
+<rect x="36" y="94" width="888" height="44" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="52" y="121" font-size="12" font-weight="700" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">主线（按顺序读）：入库 → 转码 → 封装 → 分发 → 播放</text>
+
+<rect x="36" y="152" width="168" height="96" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="120" y="176" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">总览 MD O</text>
+<text x="120" y="198" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">五段 + 四契约</text>
+<text x="120" y="216" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">四个必失点</text>
+<text x="120" y="234" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">五问决策</text>
+
+<rect x="216" y="152" width="168" height="96" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="300" y="176" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">入库 MD I</text>
+<text x="300" y="198" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">直传 / 分片 / 校验</text>
+<text x="300" y="216" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">内容寻址</text>
+<text x="300" y="234" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">秒传不越权</text>
+
+<rect x="396" y="152" width="168" height="96" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="480" y="176" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">转码 MD T</text>
+<text x="480" y="198" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">阶梯 / bpp 自检</text>
+<text x="480" y="216" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">切片并行</text>
+<text x="480" y="234" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">成本算式</text>
+
+<rect x="576" y="152" width="168" height="96" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="660" y="176" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">封装 MD G</text>
+<text x="660" y="198" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">分片 / GOP 对齐</text>
+<text x="660" y="216" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">HLS / DASH 清单</text>
+<text x="660" y="234" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">CMAF 一份切片</text>
+
+<rect x="756" y="152" width="168" height="96" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="840" y="176" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">分发 MD L</text>
+<text x="840" y="198" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">缓存键 / 回源率</text>
+<text x="840" y="216" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">预热 / 回源保护</text>
+<text x="840" y="234" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">HTTP/2 与 /3</text>
+
+<rect x="36" y="268" width="216" height="96" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="144" y="292" font-size="12" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">播放 MD P</text>
+<text x="144" y="314" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">MSE / 缓冲模型</text>
+<text x="144" y="332" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">吞吐型 ⇄ 缓冲型</text>
+<text x="144" y="350" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">起播与 seek</text>
+
+<rect x="264" y="268" width="216" height="96" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.2"/>
+<text x="372" y="292" font-size="12" font-weight="700" fill="#7c2d12" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">体验与成本 MD Q</text>
+<text x="372" y="314" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">五个指标五个分母</text>
+<text x="372" y="332" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">分位与受影响占比</text>
+<text x="372" y="350" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">码率 → 流量 → 钱</text>
+
+<rect x="492" y="268" width="216" height="96" rx="7" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="600" y="292" font-size="12" font-weight="700" fill="#7f1d1d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">保护 MD S</text>
+<text x="600" y="314" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">签名 URL 四要素</text>
+<text x="600" y="332" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">密钥轮换 / DRM</text>
+<text x="600" y="350" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">水印与盗链处置</text>
+
+<rect x="720" y="268" width="204" height="96" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.2"/>
+<text x="822" y="292" font-size="12" font-weight="700" fill="#14532d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">实战 MD X</text>
+<text x="822" y="314" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">五张表 + 五组件</text>
+<text x="822" y="332" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">S1~S10 + N1~N4</text>
+<text x="822" y="350" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">七项交付物</text>
+
+<rect x="36" y="382" width="888" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+<text x="52" y="402" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">排障入口：常见问题 MD F（症状 → 段位的分诊树，14 项上线自查，五条「听起来对」的错误建议）</text>
+</svg>

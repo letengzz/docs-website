@@ -60,6 +60,6 @@
     <rect x="476" y="502" width="210" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
     <text x="581" y="527" text-anchor="middle" font-size="12.5" fill="#166534">update … where status='pending'</text>
     <text x="700" y="518" font-size="12" fill="#334155">影响 0 行 = 已经 active → 幂等成功</text>
-    <text x="700" y="538" font-size="12" fill="#b91c1c">失败方向唯一：pending 超时 → 删除（不会「既 active 又不存在」）</text>
+    <text x="40" y="568" font-size="12" fill="#b91c1c">失败方向唯一：pending 超时 → 删除（不会「既 active 又不存在」）</text>
   </g>
 </svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="960" height="360" fill="#ffffff"/>
+<text x="36" y="40" font-size="21" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">症状 → 先量哪个数 → 段位</text>
+<text x="36" y="62" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">同一个现象可能来自五段中的任何一段：先量三个数，再决定改哪里</text>
+
+<text x="36" y="92" font-size="10.5" font-weight="700" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">症状</text>
+<text x="300" y="92" font-size="10.5" font-weight="700" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">先量这个数</text>
+<text x="620" y="92" font-size="10.5" font-weight="700" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">落到的段</text>
+
+<rect x="36" y="102" width="240" height="40" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1"/>
+<text x="52" y="127" font-size="10.5" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">黑屏但有声音</text>
+<rect x="300" y="102" width="280" height="40" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1"/>
+<text x="316" y="127" font-size="10.5" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">清单 CODECS ⇄ 实际编码</text>
+<rect x="620" y="102" width="300" height="40" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="636" y="127" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">播放 / 封装</text>
+<line x1="276" y1="122" x2="300" y2="122" stroke="#64748b" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="580" y1="122" x2="620" y2="122" stroke="#64748b" stroke-width="1.3" marker-end="url(#ar)"/>
+
+<rect x="36" y="152" width="240" height="40" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1"/>
+<text x="52" y="177" font-size="10.5" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">起播 &gt; 8 s</text>
+<rect x="300" y="152" width="280" height="40" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1"/>
+<text x="316" y="177" font-size="10.5" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">起播档位 + 分片时长</text>
+<rect x="620" y="152" width="300" height="40" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="636" y="177" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">播放 / 封装</text>
+<line x1="276" y1="172" x2="300" y2="172" stroke="#64748b" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="580" y1="172" x2="620" y2="172" stroke="#64748b" stroke-width="1.3" marker-end="url(#ar)"/>
+
+<rect x="36" y="202" width="240" height="40" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1"/>
+<text x="52" y="227" font-size="10.5" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">切清晰度花屏 0.5 s</text>
+<rect x="300" y="202" width="280" height="40" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1"/>
+<text x="316" y="227" font-size="10.5" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">各档 init 是否 append 过</text>
+<rect x="620" y="202" width="300" height="40" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="636" y="227" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">播放（缓冲未清理）</text>
+<line x1="276" y1="222" x2="300" y2="222" stroke="#64748b" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="580" y1="222" x2="620" y2="222" stroke="#64748b" stroke-width="1.3" marker-end="url(#ar)"/>
+
+<rect x="36" y="252" width="240" height="40" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1"/>
+<text x="52" y="277" font-size="10.5" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">403 间歇出现</text>
+<rect x="300" y="252" width="280" height="40" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1"/>
+<text x="316" y="277" font-size="10.5" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">签名过期 ⇄ 时钟偏差</text>
+<rect x="620" y="252" width="300" height="40" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="636" y="277" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">保护（边缘与签发端 NTP）</text>
+<line x1="276" y1="272" x2="300" y2="272" stroke="#64748b" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="580" y1="272" x2="620" y2="272" stroke="#64748b" stroke-width="1.3" marker-end="url(#ar)"/>
+
+<rect x="36" y="302" width="240" height="40" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1"/>
+<text x="52" y="327" font-size="10.5" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">流量是预算 3 倍</text>
+<rect x="300" y="302" width="280" height="40" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1"/>
+<text x="316" y="327" font-size="10.5" fill="#1e3a8a" font-family="PingFang SC, Helvetica, Arial, sans-serif">平均码率 + 缓存命中率</text>
+<rect x="620" y="302" width="300" height="40" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="636" y="327" font-size="10.5" fill="#7f1d1d" font-family="PingFang SC, Helvetica, Arial, sans-serif">转码（阶梯）/ 分发（回源）</text>
+<line x1="276" y1="322" x2="300" y2="322" stroke="#64748b" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="580" y1="322" x2="620" y2="322" stroke="#64748b" stroke-width="1.3" marker-end="url(#ar)"/>
+</svg>

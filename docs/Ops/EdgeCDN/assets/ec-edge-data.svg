@@ -47,5 +47,5 @@
   <!-- 选型三问 -->
   <rect x="30" y="418" width="840" height="62" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
   <text x="52" y="444" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">三问定档</text>
-  <text x="52" y="468" font-family="system-ui, sans-serif" font-size="12" fill="#334155">① 读到 500 毫秒前的旧值，业务能不能接受？② 这条数据被复制到每个节点之后，语义还成立吗？③ 写入失败时，能不能重试或丢弃？三问都答完，档位自己就出来了。</text>
+  <text x="52" y="468" font-family="system-ui, sans-serif" font-size="12" fill="#334155">① 读到 500 毫秒前的旧值，业务能不能接受？② 复制到每个节点后，语义还成立吗？③ 写入失败时，能重试还是能丢弃？</text>
 </svg>

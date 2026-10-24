@@ -57,6 +57,7 @@
 | [第 4 周第 5 步 · 上线验收](LaunchAcceptance/index.md) | `EW4` | 三层判定、21 条验收项、六道闸门、红线与黄线、回滚预算占比 | 8 |
 | [第 3 周第 5 步 · 发货与签收](ShipmentFulfillment/index.md) | `ESF` | 发货单五态、运单号唯一、回调幂等/乱序/不来、订单完成聚合判定 | 8 |
 | [第 4 周补充 · 退款与部分退款](Refund/index.md) | `ERC` | 额度条件更新、幂等键、回执三通道、库存回补、退满判定成本 | 8 |
+| [第 2 周第 5 步 · outbox 死信与重投](OutboxDeadLetter/index.md) | `EDL` | 错误分流、退避与判死、洞的显式登记、守卫与幂等、重投窗口 | 8 |
 
 后续 1 章（判据族已预留，交付时补条数）：
 
@@ -621,6 +622,49 @@ docker exec -i eoh-pg psql -U postgres -d eoh -c "\timing on" -c \
 
 **下一步**（第 203 天）：三项遗留缺口还剩两项，下一轮取 **outbox 死信重投**（判据族 `EDL`）——死信产生条件、退避曲线、重投上限与人工接管、以及「重投会不会破坏顺序」；退款侧留一条待办：渠道 T+1 对账单与 `refund` 表的自动核对，等 `EDL` 落地后接进对账日报。
 
-## 二十五、判据纪律
+## 二十五、第 203 天交付（第 2 周第 5 步 · outbox 死信与重投）
 
-每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMT` / `ERB` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。
+- 新建 [第 2 周第 5 步 · outbox 死信与重投](OutboxDeadLetter/index.md)（判据 `EDL-A` ~ `EDL-H`），配图 `eoh-dlq.svg`（outbox → 投递器 → 死信/洞 → 三条处置路径）。
+- **一句话结论**：死信的本质不是「一条消息没投出去」，而是**一个永远不会被应用的序号**；系统不能表达「这里有个已知的洞」，就会一直等一个不来的号。
+- **四类原因、两种性质**：下游不可用 / 本端资源不足属**瞬时**（退避重试），消息非法 / 业务前置不满足属**永久**（第 1 次即判死）。判死靠**异常类型**，不靠「重试了几次」。
+- **退避代价有数**：`base 5 s / factor 2`，重试 3/5/8 次分别白等 **35 s / 155 s / 1275 s（21.2 分钟）**。本项目取 **5 次 / 155 s**，并把抖动设为 `±20%` 防重试风暴。
+- **三种处置实测（5 条事件、`seq=2` 是毒消息）**：A 死信照旧阻塞 → eA2 在 **635 s** 判死后 eA3/4/5 **永久 pending**（卡死在投递层）；B 死信跳过但守卫要求 `last_seq = seq-1` → eA3 重试 **73 次**仍被拒、到 1000 s 未交付（卡死在应用层）；C 判死同事务写 `applied_hole` 并让守卫认洞 → 635 s 时 eA3/4/5 **全部交付、每条 attempts=1**。
+- **重投不重复副作用靠版本守卫**：`applied.last_seq` 已到 5 时重放 `seq=2`，带守卫 `UPDATE 0` 行、不带守卫 `UPDATE 1` 行（本项目 seq=2 是库存预占确认，多执行一次就是 `reserved` 多扣一次）。
+- **去重是第二层**：同一 `event_id` 投 3 次 → **接受 / 跳过 / 跳过**（`consume_log` 主键兜底）。守卫管顺序，幂等键管重复。
+- **重投窗口三条**：最早判死后 10 分钟、最晚事件产生后 24 小时、单条最多 3 次；超限转 `abandoned` 并留 `operator` 与原因。
+- **监控四数**：`dead_letter_open` / `dead_letter_age_max` / `outbox_pending_age_max` / `replay_rejected_total`。方案 A 的死锁在监控上**只表现为 `outbox_pending_age_max` 持续上涨**——只看死信条数看不出来。
+
+**如何验证**（读者可执行）：
+
+```shell
+# 1) 永久错误立即判死（attempts=1，不进退避）
+docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
+"select state, dead_reason from outbox where event_id='evt_bad_1';"
+# 期望：dead | invalid_payload
+
+# 2) 瞬时错误 5 次后判死（累计约 2 分 35 秒）
+docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
+"select attempts, state, dead_at - created_at from outbox where event_id='evt_flaky_1';"
+# 期望：5 | dead | 约 00:02:35
+
+# 3) 洞被登记且后续事件继续（核心）
+docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
+"select (select seq from applied_hole where agg_id='SO0000123'), (select last_seq from applied where agg_id='SO0000123');"
+# 期望：2 | 5（不是 2 | 1）
+
+# 4) 重投已应用序号不产生重复副作用
+docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
+"select count(*) from stock_reservation where agg_id='SO0000123' and seq=2;"
+# 期望：1
+
+# 5) 积压年龄（方案 A 的死锁只能靠这个数发现）
+docker exec -i eoh-pg psql -U postgres -d eoh -Atc \
+"select coalesce(max(extract(epoch from now()-created_at))::int,0) from outbox where state='pending';"
+# 期望：稳态 < 60
+```
+
+**下一步**（第 204 天）：周期 7 只剩 **`EW2` 第 2 周验收**一章——把第 2 周五步（骨架 / 下单 / 支付回调 / 库存释放 / 死信）收成六项验收与三道门；退款侧的渠道 T+1 对账接进 `ELA` 对账日报。
+
+## 二十六、判据纪律
+
+每章 8 条，编号形如 `EOH-A`，逐章前缀唯一（`EOH` / `ETS` / `EOA` / `EDB` / `EEN` / `EW1` / `EOR` / `EPY` / `EIV` / `ESF` / `ERC` / `EDL` / `EW2` / `ECM` / `ECC` / `ECP` / `EW3` / `EDP` / `EMT` / `ERB` / `ELA` / `EW4`），全库不撞号。判据只有三种形态：**可复跑的读数**、**可勾选的检查项**、**可对照的结构**（表/图/契约）。

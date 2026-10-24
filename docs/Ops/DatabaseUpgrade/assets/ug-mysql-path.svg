@@ -28,6 +28,7 @@
 <text x="785.0" y="288.8" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">逻辑导出 → 新实例</text>
 <text x="785.0" y="307.2" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">最慢 · 跨两版可用</text>
 <rect x="40" y="380" width="880" height="110" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
-<text x="480.0" y="439.5" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">三个必须先改的断点：mysql_native_password 默认关闭（老账号登不上）· slave_* 变量与 START SLAVE 语法移除（复制脚本全废）· innodb_log_file_size 等参数被删（起不来）</text>
+<text x="480.0" y="424" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">三个必须先改的断点：mysql_native_password 默认关闭（老账号登不上）·</text>
+  <text x="480.0" y="452" font-size="12.5" font-weight="700" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">slave_* 变量与 START SLAVE 语法移除（复制脚本全废）· innodb_log_file_size 等参数被删（起不来）</text>
 <text x="40" y="512" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="PingFang SC, Helvetica, Arial, sans-serif">8.4 没有原地降级：唯一回退是「升级前的备份」或「逻辑导回 8.0」——所以升级前那次备份是整个方案的一部分，不是流程礼仪。</text>
 </svg>

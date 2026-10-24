@@ -34,7 +34,7 @@
   <rect x="30" y="288" width="440" height="28" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
   <text x="44" y="306" text-anchor="start" font-size="8.5" fill="#065F46">✔ 10 万行攒批写入成功，parts 数没有持续增长（合并跟上）</text>
   <rect x="478" y="288" width="252" height="28" rx="5" fill="#ECFEFF" stroke="#0891B2" stroke-width="1"/>
-  <text x="604" y="306" text-anchor="start" font-size="8" fill="#155E75">SELECT count() FROM system.parts WHERE active</text>
+  <text x="604" y="306" text-anchor="start" font-size="8" fill="#155E75">SELECT count() FROM system.parts</text>
   <rect x="30" y="322" width="440" height="28" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
   <text x="44" y="340" text-anchor="start" font-size="8.5" fill="#065F46">✔ 按 user_id + 时间范围查询命中分区裁剪</text>
   <rect x="478" y="322" width="252" height="28" rx="5" fill="#ECFEFF" stroke="#0891B2" stroke-width="1"/>

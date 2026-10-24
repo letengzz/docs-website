@@ -42,7 +42,16 @@ W1 先修，W2 抽查，W4 顺手拆行。真缺陷（`<text>` 画出画布）�
   放进自己的坐标系，静态读 `x` 得到的是变换前的值，判了就是误报。
 * **`text-anchor` 要认**：`middle` 与 `end` 的边界算法不同，只按 `start` 算会把
   右对齐的标题全判成溢出。
-* **只看 `font-size` 显式写在 `<text>` 上的**：继承链不追——漏报好过误报。
+* **`text-anchor` / `font-size` / `font-family` 要沿 `<g>` 往上继承**（第 203 天修正）：
+  本仓大量图把 `font-size` 与 `text-anchor="middle"` 写在 `<g>` 上、只在 `<text>` 里写
+  `x`/`y`，这是 SVG 规范允许的继承。旧版一律按 `start` + 无字号处理，于是把
+  「居中一段 60 字的说明」算成「从中心点向右排 60 个字」——第 203 天首轮 33 条 W1 里
+  有 21 条是这么来的假溢出。**只认 `<text>` 自己声明的属性不是保守，是错判**：
+  漏报与误报在这里不对称，误报会把真缺陷淹掉。
+* **`rotate(θ cx cy)` 的文字要按旋转后的包围盒算**：竖排标签（如纵轴上的「信息增多 ·
+  成本升高」）旋转 90° 后，横向只占一个字号高，不占字宽。旧版按未旋转的宽度算，
+  把竖排标签全判成右溢出。
+* **`font-size` 全链都没声明的不测**：没有字号就无从估宽，跳过（漏报好过误报）。
 
 用法
 ----
@@ -66,6 +75,12 @@ TEXT = re.compile(r"<text\b([^>]*)>(.*?)</text>", re.I | re.S)
 ATTR = re.compile(r'([a-zA-Z-]+)\s*=\s*"([^"]*)"')
 TAG = re.compile(r"<[^>]+>")
 MATRIX = re.compile(r'transform\s*=\s*"\s*matrix\(', re.I)
+ROTATE = re.compile(r"rotate\s*\(\s*(-?[\d.]+)(?:[\s,]+(-?[\d.]+)[\s,]+(-?[\d.]+))?\s*\)", re.I)
+GTAG_OPEN = re.compile(r"^<g\b", re.I)
+TEXT_OPEN = re.compile(r"^<text\b", re.I)
+
+# 可沿 <g> 继承的呈现属性 → 栈帧里的槽位名
+_INHERIT_SLOT = {"text-anchor": "anchor", "font-size": "fs", "font-family": "ff"}
 
 TOLERANCE = 8.0     # 估宽误差容差（px）：8px 以内当作估偏，不下判断
 SEVERE = 60.0       # 严重溢出阈值（px）：约正文 6 个字
@@ -98,8 +113,59 @@ def text_width(s: str, font_size: float, mono: bool = False) -> float:
     return total * font_size
 
 
+def tokens(src: str):
+    """按文档顺序吐出 ("open_g", attrs) / ("close_g", "") / ("text", attrs, inner)。
+
+    为什么要做这一层：`text-anchor` / `font-size` / `font-family` 可以写在 `<g>` 上让
+    子节点继承。只按 `<text>` 自己的属性判，等于把「组内居中」当成「从坐标点向右排」，
+    一整个类别的图会被判成溢出（第 203 天首轮 33 条 W1 里 21 条如此）。
+    """
+    i, n = 0, len(src)
+    low = src.lower()
+    while i < n:
+        j = src.find("<", i)
+        if j < 0:
+            return
+        k = src.find(">", j)
+        if k < 0:
+            return
+        raw = src[j:k + 1]
+        head = raw[:6].lower()
+        if head.startswith("<g") and (len(raw) > 2 and raw[2] in " \t\r\n>/"):
+            yield ("open_g", raw[2:-1])
+            i = k + 1
+        elif head.startswith("</g"):
+            yield ("close_g", "")
+            i = k + 1
+        elif head.startswith("<text") and (len(raw) > 5 and raw[5] in " \t\r\n/>"):
+            if raw.endswith("/>"):
+                yield ("text", raw[5:-2], "")
+                i = k + 1
+            else:
+                end = low.find("</text>", k)
+                if end < 0:
+                    return
+                yield ("text", raw[5:-1], src[k + 1:end])
+                i = end + 7
+        else:
+            i = k + 1
+
+
+def _rot_bbox(left: float, right: float, top: float, bottom: float, deg: float, cx: float, cy: float):
+    """把矩形绕 (cx, cy) 旋转 deg 度后的轴对齐包围盒。SVG 里 θ>0 为顺时针（y 向下）。"""
+    import math
+    t = math.radians(deg)
+    c, s = math.cos(t), math.sin(t)
+    xs, ys = [], []
+    for px, py in ((left, top), (right, top), (right, bottom), (left, bottom)):
+        dx, dy = px - cx, py - cy
+        xs.append(cx + dx * c - dy * s)
+        ys.append(cy + dx * s + dy * c)
+    return min(xs), max(xs)
+
+
 def measure(src: str):
-    """返回 [(code, kind, msg)]。"""
+    """返回 ([(code, kind, msg)], 测到的 text 数)。"""
     out = []
     m = SVG_OPEN.search(src)
     if not m:
@@ -120,13 +186,44 @@ def measure(src: str):
         return [], 0
 
     measured = 0
-    for attrs, raw in TEXT.findall(src):
+    stack = []      # 每层 <g> 的继承属性；被 transform 过的组整段不测（见 docstring）
+    for tok in tokens(src):
+        if tok[0] == "open_g":
+            a = {k.lower(): v for k, v in ATTR.findall(tok[1])}
+            stack.append({
+                "anchor": a.get("text-anchor"),
+                "fs": a.get("font-size"),
+                "ff": a.get("font-family"),
+                "xf": bool(a.get("transform")),
+            })
+            continue
+        if tok[0] == "close_g":
+            if stack:
+                stack.pop()
+            continue
+
+        attrs, raw = tok[1], tok[2]
         a = {k.lower(): v for k, v in ATTR.findall(attrs)}
         if "x" not in a:
             continue
+        if "%" in a["x"]:
+            continue                 # 百分比坐标相对视口，取值不是用户坐标
+        if any(g["xf"] for g in stack):
+            continue                 # 父组带 transform：坐标系不可静态推算
+
+        def inherit(key: str):
+            """优先级：`<text>` 自己声明 > 最近的 `<g>` 祖先声明 > 无（返回 None）。"""
+            if a.get(key):
+                return a[key]
+            slot = _INHERIT_SLOT[key]
+            for g in reversed(stack):
+                if g[slot]:
+                    return g[slot]
+            return None
+
         try:
             x = float(re.sub(r"[^\d.\-]", "", a["x"].split()[0]) or "nan")
-            fs = float(re.sub(r"[^\d.]", "", a.get("font-size", "").split()[0] or "nan"))
+            fs = float(re.sub(r"[^\d.]", "", (inherit("font-size") or "").split()[0] or "nan"))
         except (ValueError, IndexError):
             continue
         if fs <= 0 or x != x or fs != fs:
@@ -135,16 +232,33 @@ def measure(src: str):
         content = re.sub(r"\s+", " ", content).strip()
         if not content:
             continue
-        mono = "monospace" in a.get("font-family", "").lower() or "menlo" in a.get("font-family", "").lower() \
-            or "consola" in a.get("font-family", "").lower()
+        fam = (inherit("font-family") or "").lower()
+        mono = "monospace" in fam or "menlo" in fam or "consola" in fam
         w = text_width(content, fs, mono)
-        anchor = a.get("text-anchor", "start").strip()
+        # 文字基线在 y，下缘留 0.22em、上缘 0.78em（大写高 + 上伸部）
+        try:
+            y = float(re.sub(r"[^\d.\-]", "", a["y"].split()[0]) or "nan")
+        except (ValueError, KeyError, IndexError):
+            y = 0.0
+        if y != y:
+            y = 0.0
+        top, bottom = y - fs * 0.78, y + fs * 0.22
+
+        anchor = (inherit("text-anchor") or "start").strip()
         if anchor == "middle":
             left, right = x - w / 2, x + w / 2
         elif anchor == "end":
             left, right = x - w, x
         else:
             left, right = x, x + w
+
+        rot = ROTATE.search(a.get("transform", ""))
+        if rot:
+            deg = float(rot.group(1))
+            cx = float(rot.group(2)) if rot.group(2) is not None else 0.0
+            cy = float(rot.group(3)) if rot.group(3) is not None else 0.0
+            left, right = _rot_bbox(left, right, top, bottom, deg, cx, cy)
+
         measured += 1
         over = max(right - vb_w, -left, 0.0)
         where = f"右边界 {right:.0f} / 画布 {vb_w:.0f}"
@@ -263,9 +377,36 @@ def selftest() -> int:
         cases.append(("no-viewbox-defer", measure(open(novb, encoding="utf-8").read()) == ([], 0),
                       str(measure(open(novb, encoding="utf-8").read()))))
 
-        # 9) 扫描计数与目录聚合
+        # 9) 扫描计数与目录聚合（此时目录里只有上面 8 个文件；后 4 个用例在其后创建）
         findings, n, measured = run(tmp)
         cases.append(("activity-count", n == 8 and measured > 0, f"scanned={n} measured={measured}"))
+
+        # 9b) `<g text-anchor="middle">` 组内居中：不得按 start 算成右溢出
+        inh = _mk(tmp, "docs/a/inherit.svg",
+                  _svg(960, '<g text-anchor="middle" font-size="12">'
+                            f'<text x="480" y="40">{"居中一长段说明文字" * 7}</text></g>'))
+        cases.append(("anchor-inherited-middle", measure(open(inh, encoding="utf-8").read()) == ([], 1),
+                      str(measure(open(inh, encoding="utf-8").read()))))
+
+        # 9c) `font-size` 写在 `<g>` 上：要能测（旧版跳过 → 漏报）
+        gfs = _mk(tmp, "docs/a/gfont.svg",
+                  _svg(960, '<g font-size="12"><text x="36" y="40">短标题</text></g>'))
+        cases.append(("font-size-inherited", measure(open(gfs, encoding="utf-8").read()) == ([], 1),
+                      str(measure(open(gfs, encoding="utf-8").read()))))
+
+        # 9d) 竖排标签（rotate 90°）：横向只占字号高，不得按未旋转宽度判溢出
+        rot = _mk(tmp, "docs/a/rot.svg",
+                  _svg(900, '<text x="846" y="260" font-size="11" transform="rotate(90 846 260)">'
+                            + "信息增多成本升高误报率上升" + "</text>"))
+        cases.append(("rotated-label-ok", measure(open(rot, encoding="utf-8").read()) == ([], 1),
+                      str(measure(open(rot, encoding="utf-8").read()))))
+
+        # 9e) 父组带 transform：坐标系不可静态推算，整段不测
+        gtr = _mk(tmp, "docs/a/gtrans.svg",
+                  _svg(960, '<g transform="rotate(90)"><text x="36" y="40" font-size="12">'
+                            + "很长" * 200 + "</text></g>"))
+        cases.append(("group-transform-skip", measure(open(gtr, encoding="utf-8").read()) == ([], 0),
+                      str(measure(open(gtr, encoding="utf-8").read()))))
 
         # 10) 内容溢出**不产生 E**：E 只留给出不来结论的情形（活性）
         errs = [c for c, _, _ in findings if c.startswith("E")]

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 350" width="960" height="350" role="img">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="960" height="350" fill="#ffffff"/>
+<text x="36" y="40" font-size="21" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">四层保护与签名在链路中的作用点</text>
+<text x="36" y="62" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">强度递增、成本递增；每一层挡的东西不同，不能互相替代</text>
+
+<rect x="36" y="88" width="200" height="196" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.2"/>
+<text x="136" y="112" font-size="11.5" font-weight="700" fill="#14532d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">① HTTPS</text>
+<text x="136" y="136" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">挡：链路窃听</text>
+<text x="136" y="156" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">挡不住：URL 转发</text>
+<text x="136" y="176" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">成本：极低</text>
+<text x="136" y="200" font-size="10" fill="#166534" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">必选项，不是可选项</text>
+
+<rect x="252" y="88" width="200" height="196" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="352" y="112" font-size="11.5" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">② 签名 URL</text>
+<text x="352" y="136" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">挡：拼接 URL 爬取</text>
+<text x="352" y="156" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">挡不住：播放器被逆向</text>
+<text x="352" y="176" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">成本：单次 HMAC 3.79 µs</text>
+<text x="352" y="200" font-size="10" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">签名绝不能进缓存键</text>
+
+<rect x="468" y="88" width="200" height="196" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="568" y="112" font-size="11.5" font-weight="700" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">③ 内容加密</text>
+<text x="568" y="136" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">挡：下载分片离线播</text>
+<text x="568" y="156" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">挡不住：已授权端录屏</text>
+<text x="568" y="176" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">成本：中（密钥管理）</text>
+<text x="568" y="200" font-size="10" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">key URI 本身必须鉴权</text>
+
+<rect x="684" y="88" width="240" height="196" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="804" y="112" font-size="11.5" font-weight="700" fill="#7f1d1d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">④ DRM + 水印</text>
+<text x="804" y="136" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">挡：上述全部 + 多数录屏</text>
+<text x="804" y="156" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">挡不住：摄像机翻拍</text>
+<text x="804" y="176" font-size="10" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">成本：高（许可证服务）</text>
+<text x="804" y="200" font-size="10" fill="#7f1d1d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">许可证服务是单点</text>
+
+<line x1="236" y1="186" x2="252" y2="186" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="452" y1="186" x2="468" y2="186" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="668" y1="186" x2="684" y2="186" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="36" y="300" width="888" height="34" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+<text x="52" y="322" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">签名四要素：过期时间 e ｜ 路径参与签名 ｜ 允许档位 p ｜ 观众标识 u —— 少一个就多一条白拿路径</text>
+</svg>

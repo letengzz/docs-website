@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="960" height="360" fill="#ffffff"/>
+<text x="36" y="40" font-size="21" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">缓冲模型与两种 ABR 策略</text>
+<text x="36" y="62" font-size="12" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">ABR 每 4 秒只做一个决定：下一片取哪一档；决定依据是「还能撑多久」，不是「刚才多快」</text>
+
+<text x="36" y="94" font-size="11.5" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">buffer_level = buffered_end − playhead</text>
+
+<rect x="36" y="106" width="470" height="28" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+<rect x="36" y="106" width="190" height="28" fill="#cbd5e1" stroke="none"/>
+<rect x="226" y="106" width="200" height="28" fill="#bfdbfe" stroke="none"/>
+<rect x="36" y="106" width="470" height="28" rx="4" fill="none" stroke="#94a3b8" stroke-width="1"/>
+<line x1="226" y1="100" x2="226" y2="140" stroke="#b91c1c" stroke-width="2"/>
+<text x="226" y="156" font-size="9.5" fill="#b91c1c" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">playhead</text>
+<line x1="426" y1="100" x2="426" y2="140" stroke="#1d4ed8" stroke-width="2"/>
+<text x="426" y="156" font-size="9.5" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">buffered_end</text>
+<text x="131" y="124" font-size="9.5" fill="#334155" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">已播</text>
+<text x="326" y="124" font-size="9.5" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">缓冲 20 s</text>
+<text x="470" y="156" font-size="9.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">上限 30 s</text>
+
+<text x="36" y="186" font-size="10.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">只要「分片码率 &gt; 有效带宽」，buffer_level 一定持续下降；ABR 只能在它归零前换档</text>
+
+<rect x="36" y="200" width="470" height="132" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="52" y="222" font-size="11" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">起播那一秒是唯一没有缓冲的时刻</text>
+<rect x="52" y="234" width="200" height="20" rx="4" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1"/>
+<text x="152" y="248" font-size="9.5" fill="#1e3a8a" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">盲选 1080p：先卡后降</text>
+<rect x="272" y="234" width="200" height="20" rx="4" fill="#dcfce7" stroke="#15803d" stroke-width="1"/>
+<text x="372" y="248" font-size="9.5" fill="#14532d" text-anchor="middle" font-family="PingFang SC, Helvetica, Arial, sans-serif">记忆 + 首片探测：稳</text>
+<text x="52" y="276" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">推荐组合：记忆上次档位（播放 &gt; 30 s 才记）</text>
+<text x="52" y="296" font-size="10.5" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">+ 第 1 片取 480p + 用实测吞吐修正第 2 片起</text>
+<text x="52" y="320" font-size="10.5" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">降档后必须 remove 未播缓冲，否则切档处花屏</text>
+
+<rect x="530" y="106" width="394" height="226" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="548" y="128" font-size="11" font-weight="700" fill="#0f172a" font-family="PingFang SC, Helvetica, Arial, sans-serif">仿真读数（4 s 分片 / 30 s 缓冲 / 五档）</text>
+<line x1="548" y1="138" x2="906" y2="138" stroke="#cbd5e1" stroke-width="1"/>
+<text x="548" y="158" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">稳态（均值 3.5 Mbps）</text>
+<text x="548" y="178" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">吞吐型：卡顿 0.36%　切换 23　码率 2.76</text>
+<text x="548" y="196" font-size="10" fill="#166534" font-family="PingFang SC, Helvetica, Arial, sans-serif">缓冲型：卡顿 0.03%　切换 39　码率 3.05</text>
+<line x1="548" y1="208" x2="906" y2="208" stroke="#cbd5e1" stroke-width="1"/>
+<text x="548" y="228" font-size="10" fill="#475569" font-family="PingFang SC, Helvetica, Arial, sans-serif">第 100 片后带宽跌到 1/3</text>
+<text x="548" y="248" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">吞吐型：卡顿 0.36%　切换 27　码率 2.00</text>
+<text x="548" y="266" font-size="10" fill="#166534" font-family="PingFang SC, Helvetica, Arial, sans-serif">缓冲型：卡顿 0.09%　切换 58　码率 2.42</text>
+<line x1="548" y1="278" x2="906" y2="278" stroke="#cbd5e1" stroke-width="1"/>
+<text x="548" y="298" font-size="10" fill="#b91c1c" font-family="PingFang SC, Helvetica, Arial, sans-serif">仿真未计切换代价 → 不能直接说缓冲型更好</text>
+<text x="548" y="318" font-size="10" fill="#334155" font-family="PingFang SC, Helvetica, Arial, sans-serif">落地方案：缓冲型 + 最小切换间隔 + 距离惩罚</text>
+
+<rect x="36" y="344" width="888" height="1" fill="none"/>
+</svg>

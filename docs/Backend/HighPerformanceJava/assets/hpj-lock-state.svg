@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
-  <rect width="780" height="400" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" width="780" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="780" height="440" fill="#FFFFFF"/>
   <text x="390" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">synchronized 的锁状态：现行 JDK 只有三级，不是四级</text>
   <text x="390" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">网上「无锁 → 偏向锁 → 轻量级锁 → 重量级锁」的锁升级口诀停留在 JDK 8 之前</text>
 
@@ -34,10 +34,11 @@
   <text x="150" y="292" text-anchor="middle" font-size="9" fill="#64748B">竞争加剧 ↓</text>
 
   <!-- notes -->
-  <rect x="40" y="306" width="700" height="80" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <rect x="40" y="306" width="700" height="112" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
   <text x="58" y="328" font-size="11" fill="#334155" font-weight="bold">两个必须要澄清的实现细节</text>
-  <text x="58" y="350" font-size="10" fill="#475569">① JDK 23 起 HotSpot 用新的轻量级锁实现（Lightweight Locking）替代旧的 legacy stack locking；JDK 25 仍可用 -XX:LockingMode=1 切回旧实现，JDK 26 起该开关已不可用</text>
-  <text x="58" y="370" font-size="10" fill="#475569">② 想知道你手上 JDK 的真实默认值，用 -XX:+PrintFlagsFinal -version ｜ findstr /i locking（Linux 用 grep）看，不要照抄文章里的结论</text>
+  <text x="58" y="350" font-size="10" fill="#475569">① JDK 23 起 HotSpot 用新的轻量级锁实现（Lightweight Locking）替代旧的 legacy stack locking；</text>
+  <text x="70" y="368" font-size="10" fill="#475569">JDK 25 仍可用 -XX:LockingMode=1 切回旧实现，JDK 26 起该开关已不可用</text>
+  <text x="58" y="390" font-size="10" fill="#475569">② 想知道你手上 JDK 的真实默认值，用 -XX:+PrintFlagsFinal -version ｜ findstr /i locking（Linux 用 grep）看，不要照抄文章里的结论</text>
 
   <defs>
     <marker id="arrL" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">

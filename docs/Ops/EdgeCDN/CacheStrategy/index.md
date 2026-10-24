@@ -165,3 +165,17 @@ curl -sI 'https://www.example.com/a.js?utm_source=y' | grep -i -E 'x-cache|age'
 - Amazon CloudFront 开发者指南 · 缓存策略与 TTL 设置：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html
 - MDN · `Cache-Control`：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Reference/Headers/Cache-Control
 - 本专题相邻页：[CDN 原理：从调度到回源](../CDNPrinciple/index.md)、[边缘计算与边缘函数](../EdgeCompute/index.md)
+
+## 与「音视频交付工程」的分工（第 203 天补充）
+
+本页讲通用的缓存策略：TTL、`Vary`、刷新与预热的适用场景。音视频把其中两件事放大到极致——**对象数量**与**缓存键里的签名参数**，这两点在[分发](../../../Backend/MediaDelivery/Delivery/index.md)里有专门一节。
+
+| 问题 | 本页（通用缓存） | 音视频侧的特殊性 |
+| --- | --- | --- |
+| 对象粒度 | 页面、接口响应、图片 | 一个 90 分钟视频 = **1350 个分片** + 1350 次清单刷新 |
+| 缓存键 | `query` 通常参与或不参与都要权衡 | **签名参数必须剔除**，否则命中率 0 |
+| 回源保护 | 合并回源、限速 | 头部新片上线瞬间的并发回源更极端 |
+
+::: danger 视频对象数被低估是常态
+按「视频个数」估算缓存容量，会算出「1 万部片 × 平均 50 MB」，而真实对象数是「1 万部 × 1350 个分片 ≈ 1350 万」。容量一旦按前者规划，命中率会低到让回源打满——这是视频业务里最常见的容量误判。
+:::

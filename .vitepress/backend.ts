@@ -202,7 +202,14 @@ export const Java = [
                 { text: "SpringBoot 整合框架", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Integration/index.md" },
                 { text: "SpringBoot 整合 screw", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Integration/screw/index.md" },
                 { text: "SpringBoot 远程调用", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Remote/index.md" },
-                { text: "SpringBoot Web开发", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/index.md" },
+                { text: "SpringBoot Web开发", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/index.md", collapsed: true, items: [
+                  { text: "单体项目跨域问题", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/CORS/index.md" },
+                  { text: "拦截器", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/Interceptor/index.md" },
+                  { text: "路径匹配", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/Path/index.md" },
+                  { text: "静态资源访问", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/StaticResource/index.md" },
+                  { text: "参数校验", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/Validation/index.md" },
+                  { text: "国际化", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/i18n/index.md" },
+                ] },
               ] },
               { text: "Spring Boot 4.x（当前稳定版）", link: "/docs/Backend/Java/Frame/SpringBoot/v4/index.md" },
             ],
@@ -873,6 +880,25 @@ export const RecommenderSystems = [
       { text: "评估与实验：什么时候可以停", link: "/docs/Backend/RecommenderSystems/Evaluation/index.md" },
       { text: "实战：一个能跑起来的最小推荐服务", link: "/docs/Backend/RecommenderSystems/Practice/index.md" },
       { text: "常见问题与分诊", link: "/docs/Backend/RecommenderSystems/FAQ/index.md" },
+    ],
+  },
+];
+
+export const MediaDelivery = [
+  {
+    text: "音视频交付工程",
+    link: "/docs/Backend/MediaDelivery/index.md",
+    items: [
+      { text: "总览：五段链路与四条交接契约", link: "/docs/Backend/MediaDelivery/Overview/index.md" },
+      { text: "入库：上传、校验与内容寻址", link: "/docs/Backend/MediaDelivery/Ingest/index.md" },
+      { text: "转码：码率阶梯与按片定码率", link: "/docs/Backend/MediaDelivery/Transcoding/index.md" },
+      { text: "封装：分片、GOP 对齐与清单", link: "/docs/Backend/MediaDelivery/Packaging/index.md" },
+      { text: "分发：缓存键、回源率与预热", link: "/docs/Backend/MediaDelivery/Delivery/index.md" },
+      { text: "播放：缓冲模型与 ABR 策略", link: "/docs/Backend/MediaDelivery/Playback/index.md" },
+      { text: "体验与成本：指标分母与换算", link: "/docs/Backend/MediaDelivery/QoE/index.md" },
+      { text: "保护：签名 URL、密钥与 DRM", link: "/docs/Backend/MediaDelivery/Protection/index.md" },
+      { text: "实战：一条能跑起来的最小点播链路", link: "/docs/Backend/MediaDelivery/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/MediaDelivery/FAQ/index.md" },
     ],
   },
 ];

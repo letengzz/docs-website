@@ -42,7 +42,7 @@ public class TestController {
 
 效果：
 
-![image-20240417230841348](assets/img202404172308444.png)
+![image-20240417230841348](../assets/img202404172308444.png)
 
 ## 对象类型校验
 
@@ -75,17 +75,17 @@ public class Account {
 
 ## 常用注解
 
-![常用注解](assets/img202404172339378.png)
+![常用注解](../assets/img202404172339378.png)
 
 相关注解参考源码：
 
 - jakarta.validation-api：jakarta.validation.constraints
 
-  ![image-20240801215813741](assets/img202408012158952.png)
+  ![image-20240801215813741](../assets/img202408012158952.png)
 
 - hibernate-validator：org.hibernate.validator.constraints
 
-  ![image-20240801215959810](assets/img202408012200438.png)
+  ![image-20240801215959810](../assets/img202408012200438.png)
 
 ## 获取校验结果
 
@@ -265,7 +265,7 @@ spring:
 
 消息文件中配置提示代码：
 
-![image-20240801223611175](assets/img202408012236078.png)
+![image-20240801223611175](../assets/img202408012236078.png)
 
 ```properties [i18n/message.properties]
 username.not3=用户名不能低于3

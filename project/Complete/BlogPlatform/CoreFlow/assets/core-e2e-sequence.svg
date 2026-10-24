@@ -1,5 +1,5 @@
-<svg viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
-  <rect width="680" height="460" fill="#f8fafc"/>
+<svg viewBox="0 0 680 484" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', sans-serif">
+  <rect width="680" height="484" fill="#f8fafc"/>
   <text x="340" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#0b162a">端到端五段时序：每一段都有身份、动作与守它的门禁</text>
 
   <!-- lanes header -->
@@ -53,7 +53,8 @@
   <text x="526" y="378" font-size="9" fill="#047857">「已注销用户」</text>
 
   <!-- gates band -->
-  <rect x="22" y="398" width="636" height="48" rx="10" fill="#eff6ff" stroke="#3b82f6"/>
-  <text x="38" y="418" font-size="10" font-weight="700" fill="#1e40af">守门禁分布：admin_smoke(37) / lifecycle_smoke(24) / visibility_smoke(22) / search_smoke(9) / account_smoke(22) / comment_smoke(28) / ssr_smoke(10)</text>
-  <text x="38" y="436" font-size="9.5" fill="#1e40af">单段正确 ≠ 链路正确：段与段的接缝（缓存回填窗口、同事务半边、SSR 身份片段）由一条龙回归专门守（Regression 页）</text>
+  <rect x="22" y="396" width="636" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="38" y="416" font-size="10" font-weight="700" fill="#1e40af">守门禁分布：admin_smoke(37) / lifecycle_smoke(24) / visibility_smoke(22) / search_smoke(9)</text>
+  <text x="38" y="432" font-size="10" font-weight="700" fill="#1e40af">account_smoke(22) / comment_smoke(28) / ssr_smoke(10)</text>
+  <text x="38" y="450" font-size="9.5" fill="#1e40af">单段正确 ≠ 链路正确：段与段的接缝（缓存回填窗口、同事务半边、SSR 身份片段）由一条龙回归专门守（Regression 页）</text>
 </svg>

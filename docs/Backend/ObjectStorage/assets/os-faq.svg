@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="1000" height="580" role="img" aria-label="排障三层顺序、错误码分诊与误判表">
-  <rect x="0" y="0" width="1000" height="580" fill="#f8fafc"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 604" width="1000" height="604" role="img" aria-label="排障三层顺序、错误码分诊与误判表">
+  <rect x="0" y="0" width="1000" height="604" fill="#f8fafc"/>
   <text x="500" y="34" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="700" fill="#0f172a">排障顺序：请求 → 桶 → 应用</text>
 
   <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
@@ -63,6 +63,7 @@
     <text x="530" y="508" font-size="11.5" fill="#b91c1c">原则：每一项都要有「可执行命令」，不是「确认过了」</text>
   </g>
 
-  <text x="40" y="552" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">任何对象存储问题，先问十二句：请求到桶了吗 → 状态码 → 错误码 → 桶里有吗 → 大小对吗 → 校验和对吗 → key 被覆盖了吗 → 谁改的配置 → 是不是缓存 → 是不是跨区 → 是不是限流 → 已知正确状态是什么</text>
-  <text x="40" y="572" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#64748b">最后一问最重要：没有「已知正确状态」，你只是在猜「看起来正常」。</text>
+  <text x="40" y="540" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">任何对象存储问题，先问十二句：请求到桶了吗 → 状态码 → 错误码 → 桶里有吗 → 大小对吗 → 校验和对吗</text>
+  <text x="40" y="560" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">→ key 被覆盖了吗 → 谁改的配置 → 是不是缓存 → 是不是跨区 → 是不是限流 → 已知正确状态是什么</text>
+  <text x="40" y="582" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#64748b">最后一问最重要：没有「已知正确状态」，你只是在猜「看起来正常」。</text>
 </svg>

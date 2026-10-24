@@ -14,7 +14,7 @@
 6. 前面的步骤有任何异常都会直接倒序触发 afterCompletion
 7. 页面成功渲染完成以后，也会倒序触发 afterCompletion
 
-![image-20230222192104145](assets/img202312241543815.png)
+![image-20230222192104145](../assets/img202312241543815.png)
 
 ## HandlerInterceptor 接口
 

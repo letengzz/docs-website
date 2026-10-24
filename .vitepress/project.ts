@@ -406,6 +406,7 @@ export const CompleteProject = [
           { text: "第 4 周第 5 步 · 上线验收：21 条验收项与六道闸门（EW4-A~EW4-H）", link: "/project/Complete/EventOrderHub/LaunchAcceptance/index.md" },
           { text: "第 3 周第 5 步 · 发货与签收：五态与三类回调异常（ESF-A~ESF-H）", link: "/project/Complete/EventOrderHub/ShipmentFulfillment/index.md" },
           { text: "第 4 周补充 · 退款与部分退款：额度、幂等与三条不变量（ERC-A~ERC-H）", link: "/project/Complete/EventOrderHub/Refund/index.md" },
+          { text: "第 2 周第 5 步 · outbox 死信与重投：洞的显式登记（EDL-A~EDL-H）", link: "/project/Complete/EventOrderHub/OutboxDeadLetter/index.md" },
         ],
       },
       {
