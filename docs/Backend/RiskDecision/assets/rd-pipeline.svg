@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img" aria-label="一条决策请求穿过的四段">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#475569"/>
+    </marker>
+    <marker id="ar2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="520" fill="#f8fafc"/>
+  <text x="40" y="42" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#0f172a">一条决策请求穿过的四段</text>
+  <text x="40" y="68" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">事件进来，动作出去；中间三段各自会「合理地」失效</text>
+
+  <!-- box 1 -->
+  <rect x="40" y="110" width="200" height="120" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <rect x="40" y="110" width="200" height="6" rx="3" fill="#2563eb"/>
+  <text x="140" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#1e293b">① 信号</text>
+  <text x="140" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#475569">窗口 · 去重 · 名单</text>
+  <text x="140" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#475569">特征向量 120 维</text>
+  <text x="140" y="222" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">3~10 ms</text>
+
+  <!-- box 2 -->
+  <rect x="270" y="110" width="200" height="120" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <rect x="270" y="110" width="200" height="6" rx="3" fill="#7c3aed"/>
+  <text x="370" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#1e293b">② 规则</text>
+  <text x="370" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#475569">优先级 · 互斥组</text>
+  <text x="370" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#475569">first-hit 短路</text>
+  <text x="370" y="222" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">1~5 ms</text>
+
+  <!-- box 3 -->
+  <rect x="500" y="110" width="200" height="120" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <rect x="500" y="110" width="200" height="6" rx="3" fill="#0d9488"/>
+  <text x="600" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#1e293b">③ 评分</text>
+  <text x="600" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#475569">分箱 · 刻度 · 校准</text>
+  <text x="600" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#475569">分数 → 坏率</text>
+  <text x="600" y="222" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">1~20 ms</text>
+
+  <!-- box 4 -->
+  <rect x="730" y="110" width="190" height="120" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <rect x="730" y="110" width="190" height="6" rx="3" fill="#dc2626"/>
+  <text x="825" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#1e293b">④ 动作</text>
+  <text x="825" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#475569">通过 / 挑战</text>
+  <text x="825" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#475569">复核 / 拒绝</text>
+  <text x="825" y="222" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">&lt; 1 ms</text>
+
+  <!-- arrows -->
+  <line x1="242" y1="170" x2="266" y2="170" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="472" y1="170" x2="496" y2="170" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="702" y1="170" x2="726" y2="170" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- junction labels -->
+  <text x="254" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#b91c1c">哨兵值</text>
+  <text x="484" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#b91c1c">评分照算</text>
+  <text x="714" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#b91c1c">先校准</text>
+
+  <!-- inputs -->
+  <rect x="40" y="286" width="200" height="70" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="140" y="314" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1e40af">原始事件</text>
+  <text x="140" y="336" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#3b82f6">支付 · 登录 · 改绑</text>
+
+  <rect x="270" y="286" width="200" height="70" rx="10" fill="#f5f3ff" stroke="#ddd6fe"/>
+  <text x="370" y="314" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#5b21b6">规则集</text>
+  <text x="370" y="336" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#7c3aed">YAML / DMN（带版本）</text>
+
+  <rect x="500" y="286" width="200" height="70" rx="10" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="600" y="314" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#115e59">评分卡</text>
+  <text x="600" y="336" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#0d9488">分箱表 + 刻度参数</text>
+
+  <rect x="730" y="286" width="190" height="70" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="825" y="314" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#991b1b">处置矩阵</text>
+  <text x="825" y="336" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#dc2626">动作 + 理由码</text>
+
+  <!-- feed lines -->
+  <line x1="140" y1="286" x2="140" y2="234" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar2)"/>
+  <line x1="370" y1="286" x2="370" y2="234" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar2)"/>
+  <line x1="600" y1="286" x2="600" y2="234" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar2)"/>
+  <line x1="825" y1="286" x2="825" y2="234" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar2)"/>
+
+  <!-- decision log -->
+  <rect x="40" y="400" width="880" height="80" rx="10" fill="#1e293b"/>
+  <text x="60" y="428" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">决策日志（无论结论都写全）</text>
+  <text x="60" y="452" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">decision_id · action · hits[] · score · rule_version · list_version · degraded · latency · feature_missing[]</text>
+  <text x="60" y="470" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">九列缺一不可：少了 degraded 就分不清「正常判定」与「兜底判定」</text>
+
+  <line x1="480" y1="356" x2="480" y2="396" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+</svg>

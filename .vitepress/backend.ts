@@ -902,3 +902,21 @@ export const MediaDelivery = [
     ],
   },
 ];
+
+export const RiskDecision = [
+  {
+    text: "实时风控决策",
+    link: "/docs/Backend/RiskDecision/index.md",
+    items: [
+      { text: "总览：一条决策请求穿过的四段", link: "/docs/Backend/RiskDecision/Overview/index.md" },
+      { text: "信号与特征：窗口、去重与时间旅行", link: "/docs/Backend/RiskDecision/Signals/index.md" },
+      { text: "规则与决策表：优先级、互斥与灰度", link: "/docs/Backend/RiskDecision/Rules/index.md" },
+      { text: "评分卡：WOE、刻度与校准", link: "/docs/Backend/RiskDecision/Scorecard/index.md" },
+      { text: "案件与人工审核：队列、SLA 与回流", link: "/docs/Backend/RiskDecision/CaseReview/index.md" },
+      { text: "度量与误杀治理：四个率与一条成本线", link: "/docs/Backend/RiskDecision/Metrics/index.md" },
+      { text: "在线服务：预算、热更新与降级", link: "/docs/Backend/RiskDecision/Serving/index.md" },
+      { text: "实战：一个能跑起来的最小决策服务", link: "/docs/Backend/RiskDecision/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/RiskDecision/FAQ/index.md" },
+    ],
+  },
+];

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" role="img" aria-label="规则求值顺序与变更路径">
+  <defs>
+    <marker id="r1" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="470" fill="#f8fafc"/>
+  <text x="40" y="40" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#0f172a">规则求值顺序与变更路径</text>
+
+  <!-- left column: evaluation -->
+  <text x="40" y="76" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1e293b">A. 一次求值</text>
+
+  <rect x="40" y="92" width="380" height="52" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="56" y="114" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1e293b">1. 取当前 RuleSet（不可变）</text>
+  <text x="56" y="134" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">单指针读取，天然原子；带 version</text>
+
+  <rect x="40" y="156" width="380" height="52" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="56" y="178" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1e293b">2. 按 priority 升序（全局唯一）</text>
+  <text x="56" y="198" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">重复 priority 视为配置错误</text>
+
+  <rect x="40" y="220" width="380" height="52" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="56" y="242" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1e293b">3. 逐条求值，条件短路</text>
+  <text x="56" y="262" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">缺失字段 → 不命中，但记入 feature_missing</text>
+
+  <rect x="40" y="284" width="380" height="52" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="56" y="306" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#991b1b">4. 命中 → 记 hits，first-hit 则停</text>
+  <text x="56" y="326" font-family="system-ui, sans-serif" font-size="11" fill="#b91c1c">all-match 时继续，最后按最严动作合并</text>
+
+  <rect x="40" y="348" width="380" height="52" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="56" y="370" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1e293b">5. 与评分合并 → 动作</text>
+  <text x="56" y="390" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">REJECT &gt; REVIEW &gt; CHALLENGE &gt; PASS</text>
+
+  <line x1="230" y1="144" x2="230" y2="154" stroke="#475569" stroke-width="2" marker-end="url(#r1)"/>
+  <line x1="230" y1="208" x2="230" y2="218" stroke="#475569" stroke-width="2" marker-end="url(#r1)"/>
+  <line x1="230" y1="272" x2="230" y2="282" stroke="#475569" stroke-width="2" marker-end="url(#r1)"/>
+  <line x1="230" y1="336" x2="230" y2="346" stroke="#475569" stroke-width="2" marker-end="url(#r1)"/>
+
+  <!-- right column: change path -->
+  <text x="500" y="76" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1e293b">B. 一次变更</text>
+
+  <rect x="500" y="92" width="420" height="62" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="516" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1e40af">1. 编译 + 金样本自检</text>
+  <text x="516" y="138" font-family="system-ui, sans-serif" font-size="11" fill="#1e3a8a">语法错 / 自检不过 → 保留旧版本，告警</text>
+
+  <rect x="500" y="168" width="420" height="62" rx="8" fill="#f5f3ff" stroke="#ddd6fe"/>
+  <text x="516" y="192" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#5b21b6">2. 影子（只记录不生效）</text>
+  <text x="516" y="214" font-family="system-ui, sans-serif" font-size="11" fill="#5b21b6">差异率写进 rule_shadow，按 reason 聚类</text>
+
+  <rect x="500" y="244" width="420" height="62" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+  <text x="516" y="268" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#92400e">3. 灰度：hash(decision_id) % 100</text>
+  <text x="516" y="290" font-family="system-ui, sans-serif" font-size="11" fill="#78350f">不能用随机数——同一请求会得到两个结论</text>
+
+  <rect x="500" y="320" width="420" height="62" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="516" y="344" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#166534">4. 全量 + 保留回滚指针</text>
+  <text x="516" y="366" font-family="system-ui, sans-serif" font-size="11" fill="#14532d">回滚 = 指针切回旧版本，不是「改回去」</text>
+
+  <line x1="710" y1="154" x2="710" y2="166" stroke="#475569" stroke-width="2" marker-end="url(#r1)"/>
+  <line x1="710" y1="230" x2="710" y2="242" stroke="#475569" stroke-width="2" marker-end="url(#r1)"/>
+  <line x1="710" y1="306" x2="710" y2="318" stroke="#475569" stroke-width="2" marker-end="url(#r1)"/>
+
+  <text x="40" y="440" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">A 段决定「一次请求怎么判」，B 段决定「新规则怎么安全地替换旧规则」——两者必须分开实现、分开测试。</text>
+</svg>

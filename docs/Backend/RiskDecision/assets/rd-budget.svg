@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" role="img" aria-label="决策服务的时延预算分解">
+  <rect x="0" y="0" width="900" height="400" fill="#f8fafc"/>
+  <text x="40" y="38" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#0f172a">一次决策的预算分解（纯计算部分，合计 19.723 µs）</text>
+  <text x="40" y="60" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">120 维特征 · 20,000 条名单 · 80 条规则 · 线性评分卡；外部 IO 全部替换为内存访问</text>
+
+  <!-- stacked bar -->
+  <rect x="60" y="90" width="177" height="56" fill="#2563eb"/>
+  <rect x="237" y="90" width="7" height="56" fill="#64748b"/>
+  <rect x="244" y="90" width="327" height="56" fill="#7c3aed"/>
+  <rect x="571" y="90" width="169" height="56" fill="#0d9488"/>
+  <rect x="740" y="90" width="101" height="56" fill="#b45309"/>
+
+  <text x="148" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">fetch 22.7%</text>
+  <text x="407" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">rules 41.9%</text>
+  <text x="655" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">score 21.6%</text>
+  <text x="790" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">ser 13.0%</text>
+
+  <!-- list segment leader -->
+  <line x1="240" y1="146" x2="240" y2="176" stroke="#64748b" stroke-width="1"/>
+  <line x1="240" y1="176" x2="330" y2="176" stroke="#64748b" stroke-width="1"/>
+  <text x="336" y="180" font-family="system-ui, sans-serif" font-size="11" fill="#475569">list 0.9%（0.169 µs）—— 但真实链路里它是唯一需要网络的一段</text>
+
+  <!-- table -->
+  <rect x="60" y="204" width="781" height="128" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="80" y="228" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e293b">阶段　　　　　　耗时　　　占比　　　优化手段</text>
+  <text x="80" y="250" font-family="system-ui, sans-serif" font-size="12" fill="#475569">fetch 特征　　　4.478 µs　22.7%　　批量取（pipeline / multi-get），不要 30 次往返</text>
+  <text x="80" y="272" font-family="system-ui, sans-serif" font-size="12" fill="#475569">rules 规则　　　8.268 µs　41.9%　　短路即可；名单预加载进本地，别在条件里查 Redis</text>
+  <text x="80" y="294" font-family="system-ui, sans-serif" font-size="12" fill="#475569">score 评分　　　4.251 µs　21.6%　　维度线性增长；换 GBDT 要重新算预算</text>
+  <text x="80" y="316" font-family="system-ui, sans-serif" font-size="12" fill="#475569">serialize 序列化　2.557 µs　13.0%　　响应体要瘦，明细走异步查询</text>
+
+  <text x="60" y="360" font-family="system-ui, sans-serif" font-size="12" fill="#b91c1c">真实链路里一次 Redis 往返 200~500 µs，是 list 段的 1000 倍以上——优化的方向是「不出网络」，不是「让规则更快」。</text>
+  <text x="60" y="382" font-family="system-ui, sans-serif" font-size="12" fill="#475569">p99 才是 SLA：同一次测量的 p99/p50 = 2.15，长尾来自 GC 与调度。</text>
+</svg>

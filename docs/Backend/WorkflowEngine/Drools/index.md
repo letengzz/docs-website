@@ -222,6 +222,36 @@ mvn test -Dtest=BatchJudgeTest
 # 期望：完成 1000 次判定；jmap 观察 KieSession 实例数不随次数线性增长
 ```
 
+## 部署模型：10.x 之后「热部署」不再免费（第 204 天补充）
+
+这是从 Drools 7 升级到 Apache KIE 10 时最容易低估的一处，也是风控类系统（见[实时风控决策](../../RiskDecision/Rules/index.md)）必须先想清楚的一件事：
+
+| 能力 | Drools 7（kiegroup 时代） | Apache KIE 10（社区版） |
+| --- | --- | --- |
+| 规则编辑台 | Business Central（Web 工作台，业务方直接改） | **不在社区版内**（KIE Sandbox 只覆盖 BPMN/DMN 建模） |
+| 规则执行服务 | KIE Server（独立进程，可挂多个 KJAR） | **不在社区版内**，规则跑在你自己的 Spring Boot / Quarkus 服务里 |
+| 规则包部署 | KJAR 工件 | KJAR 仍可作构建产物，但不再有独立的部署容器 |
+| 运行时热更新 | **KieScanner** 定时扫描 Maven 仓库并热替换 | **已移除**——规则变更意味着**重建镜像、重新发布** |
+| Java 基线 | Java 8 / 11 | **Java 17 起**，推荐 21 |
+| 决策表文件名 | `rules.xls` / `rules.xlsx` | 必须是 **`rules.drl.xls` / `rules.drl.xlsx` / `rules.drl.csv`** |
+
+由此得到三条工程结论：
+
+1. **「业务方在网页上改规则、5 分钟后生效」这条路，社区版已经没有了**。要么接受「改规则 = 发一次版」（配合灰度发布），要么自己做「规则即数据」：规则存数据库/对象存储，服务内编译成不可变 `KieBase` 后原子切换引用。后者是风控场景的常态做法。
+2. **升级不是换个依赖版本**。Spring Boot 2.x 必须升到 3.x，`kie-maven-plugin` 的隐式依赖管理变成了显式 BOM 对齐，构建脚本要重写一遍。
+3. **决策表文件改名是个静默陷阱**：`.xls` 文件升级后不再被识别为决策表，构建**不报错**，只是规则数为 0。上线前必须用「规则条数断言」兜住——这也是本库坚持「每条判据都要能被机械核对」的原因。
+
+## 与「实时风控决策」专题的分工（第 204 天补充）
+
+| 问题 | 归本专题 | 归[实时风控决策](../../RiskDecision/index.md) |
+| --- | --- | --- |
+| 规则怎么表达（DRL / DMN / 决策表） | **主战场** | 只讲选型边界（见[规则与决策表](../../RiskDecision/Rules/index.md)） |
+| 规则怎么在几十毫秒内判完 | 讲 Rete/Phreak 的匹配成本 | 讲优先级、互斥与短路（业务语义） |
+| 规则怎么安全上线 | 讲部署模型 | 讲影子、灰度与回滚指针 |
+| 谁对规则内容负责 | 不涉及 | 讲双人复核、工单与 `rule_change` 审计表 |
+
+**可以共用的**：DRL/DMN 的语法、DMN TCK 的通过率结论、`activation-group` 与「互斥组」的映射关系。**不能共用的**：Rete 的增量匹配结论不能直接搬到风控的「几百条扁平规则」上——那种规模下逐条短路更快（本库在[规则与决策表](../../RiskDecision/Rules/index.md)第五节给了实测对照）。
+
 ## 参考资料
 
 - Apache KIE 官网（Drools / jBPM / Kogito 统一入口）：https://kie.apache.org/

@@ -251,6 +251,22 @@ grep -rn "tablespace\|cold_after_days\|hot_days" config/ deploy/ 2>/dev/null | h
 归档动作必须成对：`DETACH` 与「给导出前缀配 Transition + Expiration」写在同一次变更里。
 :::
 
+## 与「实时风控决策」的分工（第 204 天补充）
+
+第 38 行提到「审计/风控的冷数据会被反复调取」，风控侧的完整口径在这里补齐——决策日志的分层不能只按时间，要按**三种访问模式**分别定：
+
+| 访问模式 | 典型时效 | 谁在查 | 该放哪一层 |
+| --- | --- | --- | --- |
+| 幂等重放 | 24 小时内 | 决策服务自己（`decision_id` 查结果） | **热**：主库 / KV，带 TTL，见[在线服务](../../../Backend/RiskDecision/Serving/index.md) |
+| 客诉与申诉 | 90 天~1 年 | 人工审核、客服 | **温**：按 `created_at` 月分区，索引 `(subject_id, created_at)` |
+| 抽样复核与模型回溯 | 1~3 年 | 数据团队 | **冷**：列存/对象存储，按 `scene + 月` 分区 |
+| 监管调取 | 按行业要求（常见 5 年） | 合规 | **冷 + 只读副本**，不可删 |
+
+两条只有风控才有的约束：
+
+1. **「热」层的 TTL 是正确性的一部分，不只是性能优化**。幂等记录过期后重算，正是我们要的行为（见[幂等与状态机](../../../Backend/IdempotencyStateMachine/index.md)）；如果为了「省查询」把 TTL 设成 30 天，风控会拿 30 天前的名单继续判今天的人。
+2. **`hits[]` 与 `score` 不能归档时丢**。归档表如果只留 `decision_id + action`，一年后的客诉就再也解释不了「当时为什么拦」，而这恰恰是[案件与审核](../../../Backend/RiskDecision/CaseReview/index.md)唯一需要的东西。
+
 ## 参考资料
 
 - [PostgreSQL · CREATE TABLESPACE](https://www.postgresql.org/docs/18/sql-createtablespace.html)——表空间的位置约束与权限

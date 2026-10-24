@@ -260,7 +260,22 @@ java -Djdk.tracePinnedThreads=short -jar app.jar
 - 下一篇：[实战：写接口的过载治理](../Practice/index.md)——把前七页的判据在一套完整设计里落地。
 - 相邻必读：[熔断限流与降级](../../Microservices/CircuitBreaker/index.md)（隔离库的用法）、[响应式编程](../../ReactiveProgramming/index.md)（非阻塞链路下的并发控制）、[容器编排进阶](../../../Ops/ContainerOrchestration/index.md)（资源限额与实例级隔离）。
 
-## 十、参考资料
+## 十、与「实时风控决策」专题的分工（第 204 天补充）
+
+秒杀页与风控页都在讲「别让同一个人买太多」，但**两边的守卫性质完全不同**，混用会同时丢掉正确性与可解释性：
+
+| 问题 | 本专题（隔离与并发控制） | [实时风控决策](../../RiskDecision/index.md) |
+| --- | --- | --- |
+| 「库存不能超卖」 | **唯一约束 + 隔离级别 + 预占**，物理上不可能超 | 不解决——概率判断给不出「一定不」 |
+| 「这个人是不是在刷」 | 不解决——只认并发与库存，不认人 | **规则 + 评分 + 名单**，给出概率与依据 |
+| 「拦截要不要可申诉」 | 不需要（库存不足就是不足） | **必须**（误杀要能撤销，见[案件与审核](../../RiskDecision/CaseReview/index.md)） |
+| 出错的代价 | 超卖或锁等待，可回滚 | 资损或客诉，**部分不可回滚**（已发出去的券） |
+
+**可以共用的两条**：① 主体的限购计数可以复用本专题的原子扣减（`INCR` + 过期），但**计数口径要由风控定义**（窗口是 1 小时还是 30 天）；② 过载时的有损策略可以复用——风控侧对应「降级到规则档」，见[在线服务](../../RiskDecision/Serving/index.md)。
+
+**绝不能共用的两条**：① 不要用「加锁」实现「同一用户 24 小时只能领一次」——锁的作用域是进程/库，不是业务日；② 不要用「风控评分」去决定库存扣减——评分是概率，扣减必须确定。
+
+## 十一、参考资料
 
 - [JEP 444：Virtual Threads](https://openjdk.org/jeps/444)
 - [Java `ThreadPoolExecutor` 官方文档（队列与拒绝策略语义）](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/ThreadPoolExecutor.html)

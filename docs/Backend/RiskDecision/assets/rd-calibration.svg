@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 460" width="700" height="460" role="img" aria-label="分数校准曲线">
+  <rect x="0" y="0" width="700" height="460" fill="#f8fafc"/>
+  <text x="40" y="36" font-family="system-ui, sans-serif" font-size="17" font-weight="700" fill="#0f172a">校准曲线：预测坏率 vs 实际坏率</text>
+  <text x="40" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">每个点是一档分数（按预测值分 10 档聚合后取 6 档）</text>
+
+  <!-- axes -->
+  <line x1="90" y1="80" x2="90" y2="380" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="90" y1="380" x2="620" y2="380" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="60" y="84" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">0.6</text>
+  <text x="60" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">0.4</text>
+  <text x="60" y="296" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">0.2</text>
+  <text x="70" y="384" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">0</text>
+  <text x="176" y="400" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">0.1</text>
+  <text x="336" y="400" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">0.3</text>
+  <text x="496" y="400" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">0.5</text>
+  <text x="270" y="424" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#334155">预测坏率（模型输出）</text>
+  <text x="30" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#334155" transform="rotate(-90 30 230)">实际坏率</text>
+
+  <!-- grid -->
+  <line x1="90" y1="272" x2="620" y2="272" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="90" y1="166" x2="620" y2="166" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="90" y1="60" x2="620" y2="60" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- ideal -->
+  <line x1="90" y1="380" x2="620" y2="60" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5"/>
+
+  <!-- uncalibrated -->
+  <polyline points="176.7,356 263.3,321.3 350,278.7 436.7,230.7 523.3,177.3 610,113.3"
+            fill="none" stroke="#dc2626" stroke-width="3"/>
+  <circle cx="176.7" cy="356" r="4" fill="#dc2626"/>
+  <circle cx="263.3" cy="321.3" r="4" fill="#dc2626"/>
+  <circle cx="350" cy="278.7" r="4" fill="#dc2626"/>
+  <circle cx="436.7" cy="230.7" r="4" fill="#dc2626"/>
+  <circle cx="523.3" cy="177.3" r="4" fill="#dc2626"/>
+  <circle cx="610" cy="113.3" r="4" fill="#dc2626"/>
+
+  <!-- labels -->
+  <text x="128" y="120" font-family="system-ui, sans-serif" font-size="12" fill="#475569">理想：预测 = 实际</text>
+  <line x1="150" y1="128" x2="330" y2="200" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <text x="430" y="300" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#b91c1c">未校准：整体低估</text>
+  <text x="430" y="318" font-family="system-ui, sans-serif" font-size="11" fill="#b91c1c">同一档分数，实际坏率更低</text>
+
+  <rect x="40" y="436" width="620" height="1" fill="#e2e8f0"/>
+  <text x="40" y="452" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">阈值必须按校准后的坏率定：模型说 0.5，实际可能只有 0.4。</text>
+</svg>
