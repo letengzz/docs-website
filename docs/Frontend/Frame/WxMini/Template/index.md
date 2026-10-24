@@ -135,7 +135,7 @@ Page({
 
 1. 定义一个对象：
 
-   ```json
+   ```js
    Page({
      // 定义页面中使用的数据
      data: {
@@ -150,7 +150,7 @@ Page({
 
 2. 修改对象中的单个属性：
 
-   ```json
+   ```js
    this.setData({
      'userInfo.name': 'Jerry'
    })
@@ -158,7 +158,7 @@ Page({
 
 3. 修改对象中的多个属性：
 
-   ```json
+   ```js
    // 修改对象中的多个属性
    this.setData({
      'userInfo.name': 'Jerry',

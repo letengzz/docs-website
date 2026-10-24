@@ -410,6 +410,7 @@ export const CompleteProject = [
           { text: "第 4 周补充 · 主写路径的受限批量化：预检、分组与兜底（EWB-A~EWB-H）", link: "/project/Complete/EventOrderHub/BatchWrite/index.md" },
           { text: "第 2 周第 6 步 · 第 2 周验收：六项与三道门（EW2-A~EW2-H）", link: "/project/Complete/EventOrderHub/Week2Gate/index.md" },
           { text: "第 4 周补充 · 交易通知的触达闭环：三表与八条验收（ENT-A~ENT-H）", link: "/project/Complete/EventOrderHub/NotifyFulfillment/index.md" },
+          { text: "第 4 周补充 · 订单完成后的开票闭环（EIN-A~EIN-H）", link: "/project/Complete/EventOrderHub/Invoicing/index.md" },
         ],
       },
       {

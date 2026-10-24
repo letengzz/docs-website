@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="升级折算的顺序：先退未用，再收新增">
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="36" y="38" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">升级折算的顺序：先退未用，再收新增</text>
+<text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">顺序反了金额一样，账单行却无法解释；顺序与符号必须写进契约</text>
+<text x="36" y="96" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">客户 10-10 从 Pro（300 元/月）升级到 Max（600 元/月），10 月 31 天，变更时刻 10-10 00:00</text>
+<rect x="36" y="116" width="240" height="78" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+<text x="156.0" y="143.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f766e">① 退未用（credit）</text>
+<text x="156.0" y="159.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">Pro 剩余 22 天</text>
+<text x="156.0" y="175.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">−300 × 22/31 = −212.90</text>
+<rect x="316" y="116" width="240" height="78" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="436.0" y="143.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">② 收新增（charge）</text>
+<text x="436.0" y="159.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">Max 剩余 22 天</text>
+<text x="436.0" y="175.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">+600 × 22/31 = +425.81</text>
+<rect x="596" y="116" width="288" height="78" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+<text x="740.0" y="143.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#92400e">本期净增（净额）</text>
+<text x="740.0" y="159.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">+212.91，落在「变更当期」账单</text>
+<text x="740.0" y="175.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">不产生第二张账单</text>
+<defs><marker id="ar1" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="276" y1="155" x2="312" y2="155" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar1)"/>
+<defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="556" y1="155" x2="592" y2="155" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar2)"/>
+<text x="36" y="232" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">四种口径的合计差异（1,000 张变更单，月费 300 元；本机读数）</text>
+<text x="36" y="256" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">口径</text>
+<text x="276" y="256" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">合计</text>
+<text x="476" y="256" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">与基准差</text>
+<text x="676" y="256" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">单笔最大差</text>
+<text x="36" y="280" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">按剩余自然日（基准）</text>
+<text x="276" y="280" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">147,613.39</text>
+<text x="476" y="280" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">—</text>
+<text x="676" y="280" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">—</text>
+<text x="36" y="304" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">按 30 天基数</text>
+<text x="276" y="304" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">149,610.00</text>
+<text x="476" y="304" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">+1,996.61（+1.35%）</text>
+<text x="676" y="304" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">19.29</text>
+<text x="36" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">按整月不折算</text>
+<text x="276" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">300,000.00</text>
+<text x="476" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">+152,386.61（+103.2%）</text>
+<text x="676" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">290.32</text>
+<text x="36" y="366" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">按天 vs 按秒：同一笔变更在 16 日 23:00 发生，按天比按秒多收 9.27 元 —— 精度不是「越细越好」，是要与合同一致</text>
+</svg>

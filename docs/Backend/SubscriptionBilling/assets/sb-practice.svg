@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" width="920" height="470" role="img" aria-label="最小可跑的订阅计费：12 张表与出账五步">
+<rect x="0" y="0" width="920" height="470" fill="#f8fafc"/>
+<text x="36" y="38" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">最小可跑的订阅计费：12 张表与出账五步</text>
+<text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">从 plan 到 journal，每一步都有唯一键、都有可复跑的验收 SQL</text>
+<rect x="36" y="96" width="204" height="52" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="138.0" y="118.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">plan</text>
+<text x="138.0" y="134.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">价格表版本</text>
+<rect x="252" y="96" width="204" height="52" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="354.0" y="118.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">price_tier</text>
+<text x="354.0" y="134.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">阶梯</text>
+<rect x="468" y="96" width="204" height="52" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="570.0" y="118.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">subscription</text>
+<text x="570.0" y="134.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">订阅</text>
+<rect x="684" y="96" width="204" height="52" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="786.0" y="118.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">sub_change</text>
+<text x="786.0" y="134.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">变更流水</text>
+<rect x="36" y="158" width="204" height="52" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="138.0" y="180.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">usage_agg</text>
+<text x="138.0" y="196.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">用量聚合</text>
+<rect x="252" y="158" width="204" height="52" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="354.0" y="180.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">bill_run</text>
+<text x="354.0" y="196.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">出账批</text>
+<rect x="468" y="158" width="204" height="52" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+<text x="570.0" y="180.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f766e">invoice</text>
+<text x="570.0" y="196.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">账单</text>
+<rect x="684" y="158" width="204" height="52" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+<text x="786.0" y="180.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f766e">invoice_line</text>
+<text x="786.0" y="196.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">行项</text>
+<rect x="36" y="220" width="204" height="52" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="138.0" y="242.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">credit_note</text>
+<text x="138.0" y="258.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">信用票据</text>
+<rect x="252" y="220" width="204" height="52" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="354.0" y="242.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">payment</text>
+<text x="354.0" y="258.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">收款</text>
+<rect x="468" y="220" width="204" height="52" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="570.0" y="242.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">dunning_task</text>
+<text x="570.0" y="258.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">催收任务</text>
+<rect x="684" y="220" width="204" height="52" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="786.0" y="242.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">recon_diff</text>
+<text x="786.0" y="258.32" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">差异</text>
+<rect x="36" y="300" width="44" height="22" rx="11.0" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
+<text x="58.0" y="315.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#92400e">S1</text>
+<text x="92" y="316" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">锁定口径</text>
+<text x="200" y="316" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">币种/精度/周期/折算规则写成一页</text>
+<rect x="36" y="326" width="44" height="22" rx="11.0" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
+<text x="58.0" y="341.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#92400e">S2</text>
+<text x="92" y="342" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">价格表</text>
+<text x="200" y="342" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">版本 + 阶梯 + 生效时间</text>
+<rect x="36" y="352" width="44" height="22" rx="11.0" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
+<text x="58.0" y="367.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#92400e">S3</text>
+<text x="92" y="368" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">出账作业</text>
+<text x="200" y="368" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">唯一键 + 可重跑 + 出 bill_run</text>
+<rect x="36" y="378" width="44" height="22" rx="11.0" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
+<text x="58.0" y="393.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#92400e">S4</text>
+<text x="92" y="394" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">折算与红冲</text>
+<text x="200" y="394" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">credit/charge 两行都要有</text>
+<rect x="36" y="404" width="44" height="22" rx="11.0" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
+<text x="58.0" y="419.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#92400e">S5</text>
+<text x="92" y="420" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">三向对账</text>
+<text x="200" y="420" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">差集 + 归口 + 四态幂等</text>
+<line x1="590" y1="292" x2="590" y2="452" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="608" y="314" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">六条负向验收（必须失败）</text>
+<text x="608" y="338" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 同一 (tenant, period) 出两次账 → 第二次 0 行</text>
+<text x="608" y="358" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 缺幂等键重跑出账 → 账单翻倍</text>
+<text x="608" y="378" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 折算只收新增不退未用 → 净额对不上</text>
+<text x="608" y="398" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 按行税额 ≠ 发票税额 → 发票校验失败</text>
+<text x="608" y="418" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 支付缺失仍把账单置 paid → 对账差集非空</text>
+<text x="608" y="438" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 降级后仍可写 → 服务闸门失效</text>
+</svg>

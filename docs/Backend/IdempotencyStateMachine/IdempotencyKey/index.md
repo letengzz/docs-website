@@ -290,6 +290,20 @@ CREATE TABLE idem_record (
 
 **本页特有的一个坑**：通知的去重键是 `(event_id, user_id, dedup_key)` **三元组**，不能沿用写侧的 `Idempotency-Key` 单键。原因很直接：**一个事件要通知多个收件人**（「订单已支付」既要通知买家也要通知卖家），单键去重会把第二个收件人当成重复请求直接丢掉——用户侧表现为「卖家永远收不到新订单提醒」，而日志里一切正常（幂等命中，返回 200）。反方向也错：把 `user_id` 加进写侧幂等键，会让「同一用户重复提交」变成两次合法请求。
 
+## 与本专题的分工（订阅计费）
+
+本页的幂等键是**请求级**的（一次调用一个键）。出账作业需要的是**资源级唯一键**，两者不能互换。
+
+| 形态 | 例子 | 防什么 | 用错会怎样 |
+| --- | --- | --- | --- |
+| 请求级幂等键 | `Idempotency-Key: uuid` | 同一请求重放 | 补跑是**不同请求**，键不同，防不住重复出账 |
+| 资源级唯一键 | `unique (tenant_id, period) where status <> 'void'` | 同一业务资源只建一次 | 缺它：1,000 租户跑两遍得 **2,000 张账单** |
+| 批级唯一键 | `unique (period, scope) where status = 'running'` | 两批同时跑 | 缺它：并发补跑互相覆盖游标 |
+
+::: danger 出账作业不是「一个请求」
+把出账写成「一次 HTTP 调用 + 一个幂等键」的模型，会在补跑时失效：补跑是一个新请求，拿到新键，于是「幂等」完全不起作用。出账的幂等在**数据层**：`insert ... on conflict do nothing returning id`，返回空即跳过。见[实战 · 出账作业（可重跑）](../../SubscriptionBilling/Practice/index.md)。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

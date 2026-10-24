@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" width="920" height="470" role="img" aria-label="催收阶梯与账单状态机">
+<rect x="0" y="0" width="920" height="470" fill="#f8fafc"/>
+<text x="36" y="38" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">催收阶梯与账单状态机</text>
+<text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">催收不是「发几封邮件」，而是一条有时限、有状态、会改变服务可用性的流水线</text>
+<text x="36" y="92" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">① 状态迁移：paid 与 uncollectible 都是终态，二者之间没有边</text>
+<rect x="36" y="106" width="140" height="46" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="106.0" y="133.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">draft</text>
+<rect x="196" y="106" width="140" height="46" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="266.0" y="133.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">open</text>
+<rect x="356" y="106" width="140" height="46" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+<text x="426.0" y="133.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f766e">paid（终态）</text>
+<defs><marker id="ar1" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="176" y1="129" x2="192" y2="129" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar1)"/>
+<defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="336" y1="129" x2="352" y2="129" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar2)"/>
+<rect x="196" y="186" width="140" height="46" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+<text x="266.0" y="213.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#92400e">past_due</text>
+<rect x="356" y="186" width="140" height="46" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="426.0" y="213.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">uncollectible（终态）</text>
+<defs><marker id="ar3" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="266" y1="152" x2="266" y2="182" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar3)"/>
+<defs><marker id="ar4" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="336" y1="209" x2="352" y2="209" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar4)"/>
+<text x="274" y="172" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#92400e">D+1 首次失败</text>
+<text x="508" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">扣款成功 → paid</text>
+<text x="508" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#9f1239">21 天仍未收 → uncollectible</text>
+<text x="36" y="258" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">② 阶梯与重试节奏（回收率是马尔可夫模型读数，非生产数据）</text>
+<text x="36" y="282" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">尝试</text>
+<text x="156" y="282" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">时点</text>
+<text x="336" y="282" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">动作</text>
+<text x="736" y="282" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">服务状态</text>
+<text x="36" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">T1</text>
+<text x="156" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">D+1</text>
+<text x="336" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">扣款重试 + 站内信 + 邮件</text>
+<text x="736" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">正常</text>
+<text x="36" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">T2</text>
+<text x="156" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">D+3</text>
+<text x="336" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">扣款重试 + 短信（带支付短链）</text>
+<text x="736" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">正常</text>
+<text x="36" y="350" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">T3</text>
+<text x="156" y="350" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">D+7</text>
+<text x="336" y="350" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">扣款重试 + 人工外呼队列</text>
+<text x="736" y="350" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">仅只读</text>
+<text x="36" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">T4</text>
+<text x="156" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">D+14</text>
+<text x="336" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">最后通牒，进入不可收前的对账</text>
+<text x="736" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">停写</text>
+<text x="36" y="394" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">T5</text>
+<text x="156" y="394" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">D+21</text>
+<text x="336" y="394" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">转 uncollectible，核销并出信用票据</text>
+<text x="736" y="394" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">暂停</text>
+<text x="36" y="432" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">3 次 vs 5 次重试的回收率增益：单次成功率 0.55 → +7.6 个百分点；0.70 → +3.8；0.85 → +1.2</text>
+<text x="36" y="454" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">结论：客户质量越好，多催两次越不值钱；阶梯长度应按「最差那一档客户」设计，不是按平均值</text>
+</svg>

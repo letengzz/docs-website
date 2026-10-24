@@ -321,15 +321,15 @@ tsconfig.json是一个JSON文件，添加配置文件后，只需只需 tsc 命�
 
 5. 修改package.json添加如下配置
 
-   ```json [package.json]
+   ```jsonc [package.json]
     {
-      ...略...
+      // ... 略 ...
       "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack",
         "start": "webpack serve --open chrome.exe"
       },
-      ...略...
+      // ... 略 ...
     }
    ```
 

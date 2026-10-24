@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 430" width="920" height="430" role="img" aria-label="周期锚点：锚定与递推只差一步，一年后差 29 天">
+<rect x="0" y="0" width="920" height="430" fill="#f8fafc"/>
+<text x="36" y="38" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">周期锚点：锚定与递推只差一步，一年后差 29 天</text>
+<text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">起订日 2026-01-30；同一份「每月续期」的需求，两种实现的边界完全不同</text>
+<text x="36" y="96" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">① 锚定（anchored）：每期都由「起订日的日号」重算，2 月缺 30 号就取当月最后一天</text>
+<rect x="36" y="108" width="104" height="44" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="88.0" y="134.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">01-30</text>
+<rect x="156" y="108" width="104" height="44" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="208.0" y="134.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">02-28</text>
+<rect x="276" y="108" width="104" height="44" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="328.0" y="134.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">03-30</text>
+<rect x="396" y="108" width="104" height="44" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="448.0" y="134.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">04-30</text>
+<rect x="516" y="108" width="104" height="44" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="568.0" y="134.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">05-30</text>
+<rect x="636" y="108" width="104" height="44" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="688.0" y="134.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">…</text>
+<rect x="736" y="108" width="104" height="44" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="788.0" y="134.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">2026-12-30</text>
+<defs><marker id="ar1" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="140" y1="130" x2="148" y2="130" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar1)"/>
+<defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="260" y1="130" x2="268" y2="130" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar2)"/>
+<defs><marker id="ar3" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="380" y1="130" x2="388" y2="130" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar3)"/>
+<defs><marker id="ar4" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="500" y1="130" x2="508" y2="130" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar4)"/>
+<defs><marker id="ar5" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="620" y1="130" x2="628" y2="130" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar5)"/>
+<defs><marker id="ar6" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="740" y1="130" x2="748" y2="130" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar6)"/>
+<text x="36" y="190" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">② 递推（recursive）：每期都由「上一期的实际结束日」加一个月 —— 一旦撞上 2 月就被永久拉短</text>
+<rect x="36" y="202" width="104" height="44" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="88.0" y="228.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">01-30</text>
+<rect x="156" y="202" width="104" height="44" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="208.0" y="228.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">02-28</text>
+<rect x="276" y="202" width="104" height="44" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="328.0" y="228.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">03-28</text>
+<rect x="396" y="202" width="104" height="44" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="448.0" y="228.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">04-28</text>
+<rect x="516" y="202" width="104" height="44" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="568.0" y="228.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">05-28</text>
+<rect x="636" y="202" width="104" height="44" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="688.0" y="228.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">…</text>
+<rect x="736" y="202" width="104" height="44" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="788.0" y="228.32" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">2027-01-28</text>
+<defs><marker id="ar7" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="140" y1="224" x2="148" y2="224" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar7)"/>
+<defs><marker id="ar8" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="260" y1="224" x2="268" y2="224" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar8)"/>
+<defs><marker id="ar9" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="380" y1="224" x2="388" y2="224" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar9)"/>
+<defs><marker id="ar10" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="500" y1="224" x2="508" y2="224" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar10)"/>
+<defs><marker id="ar11" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="620" y1="224" x2="628" y2="224" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar11)"/>
+<defs><marker id="ar12" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="740" y1="224" x2="748" y2="224" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar12)"/>
+<text x="36" y="282" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">两种实现 12 期后的差距：−29 天（少收一整期的 27 天 + 2 月那 2 天）</text>
+<line x1="36" y1="296" x2="884" y2="296" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="36" y="322" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">周期边界必须落在「客户能预期」的位置上：</text>
+<text x="48" y="348" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 自然月（calendar）：所有人同一天出账，财务最省事，但月中注册的客户第一期必须折算</text>
+<text x="48" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 周年日（anniversary）：每个客户自己的 30/31 天，不折算；但出账是天天都在跑，不能只排一次批</text>
+<text x="48" y="396" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 混合：首期折算到自然月末，之后走周年日 —— 这是多数商用系统的默认，也要在合同里写清</text>
+</svg>

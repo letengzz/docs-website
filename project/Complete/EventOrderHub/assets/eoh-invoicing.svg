@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 430" width="920" height="430" role="img" aria-label="订单中心的开票闭环：五个动作与三条不变量">
+<rect width="920" height="430" fill="#f8fafc"/>
+<text x="36" y="38" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">订单中心的开票闭环：五个动作与三条不变量</text>
+<text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">开票不是「把订单金额抄一张票」——它要按行拆、按行算税、可红冲、可对账</text>
+<text x="36" y="94" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">① 五个动作（每一步都有判据，都能单独重跑）</text>
+<rect x="36" y="106" width="160" height="74" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="116.0" y="131.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e40af">完成待开票</text>
+<text x="116.0" y="147.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">status=COMPLETED</text>
+<text x="116.0" y="163.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">且无有效发票</text>
+<rect x="216" y="106" width="160" height="74" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="296.0" y="131.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e40af">开票申请</text>
+<text x="296.0" y="147.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">order_id 唯一键</text>
+<text x="296.0" y="163.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">req_type=blue/red</text>
+<rect x="396" y="106" width="160" height="74" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+<text x="476.0" y="131.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f766e">按行拆票</text>
+<text x="476.0" y="147.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">行 = 订单行</text>
+<text x="476.0" y="163.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">税按行算</text>
+<rect x="576" y="106" width="160" height="74" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+<text x="656.0" y="131.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f766e">开票</text>
+<text x="656.0" y="147.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">no 唯一</text>
+<text x="656.0" y="163.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">amount=Σ行</text>
+<rect x="756" y="106" width="160" height="74" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+<text x="836.0" y="131.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#92400e">红冲 / 对账</text>
+<text x="836.0" y="147.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">credit_note</text>
+<text x="836.0" y="163.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">逐行逐分比</text>
+<defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="196" y1="143" x2="216" y2="143" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a1)"/>
+<defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="376" y1="143" x2="396" y2="143" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a2)"/>
+<defs><marker id="a3" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="556" y1="143" x2="576" y2="143" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a3)"/>
+<defs><marker id="a4" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="736" y1="143" x2="756" y2="143" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a4)"/>
+<text x="36" y="214" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">② 三条不变量（任一条不成立，这张票就是错的）</text>
+<rect x="36" y="226" width="270" height="74" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+<text x="171.0" y="251.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f766e">I1 金额守恒</text>
+<text x="171.0" y="267.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">发票总额 = Σ 发票行</text>
+<text x="171.0" y="283.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">发票行 = 订单行</text>
+<rect x="320" y="226" width="270" height="74" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="455.0" y="251.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#9f1239">I2 税额按行</text>
+<text x="455.0" y="267.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">Σ round(line×6%)</text>
+<text x="455.0" y="283.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">≠ round(Σline×6%) 的情况 23.64%</text>
+<rect x="604" y="226" width="312" height="74" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="760.0" y="251.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e40af">I3 一单一票</text>
+<text x="760.0" y="267.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">unique(order_id) where status&lt;&gt;'void'</text>
+<text x="760.0" y="283.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">重复申请 3 次仍 1 张</text>
+<text x="36" y="336" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">③ 两个方向的差异都要能被解释</text>
+<text x="48" y="360" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 发票有、订单无 → 伪造或历史脏数据，禁止自动作废，转人工</text>
+<text x="48" y="380" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 订单有、发票无 → 未申请 / 申请失败，按 SLA 重试；跨月开票占 31.9%，不是异常</text>
+<text x="48" y="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">· 红冲后：发票 + 红冲 = 净额，逐行必须仍等于订单行净额（最大余数法，差 0 分）</text>
+<text x="36" y="422" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">「本月开票金额」与「本月收入」不是一回事：跨月开票的那 31.9% 会同时出现在两个月的报表里</text>
+</svg>

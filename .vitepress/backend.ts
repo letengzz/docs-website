@@ -956,3 +956,21 @@ export const NotificationDelivery = [
     ],
   },
 ];
+
+export const SubscriptionBilling = [
+  {
+    text: "订阅计费与周期账单工程",
+    link: "/docs/Backend/SubscriptionBilling/index.md",
+    items: [
+      { text: "总览：五段计费链与三个金额口径", link: "/docs/Backend/SubscriptionBilling/Overview/index.md" },
+      { text: "定价模型与价格表：阶梯、席位与封顶", link: "/docs/Backend/SubscriptionBilling/Pricing/index.md" },
+      { text: "周期与闭账：锚点、时区与迟到账", link: "/docs/Backend/SubscriptionBilling/Cycle/index.md" },
+      { text: "升降配与折算：四种口径差多少", link: "/docs/Backend/SubscriptionBilling/Proration/index.md" },
+      { text: "账单结构、税额口径与信用票据", link: "/docs/Backend/SubscriptionBilling/Invoice/index.md" },
+      { text: "催收阶梯、账龄与服务降级", link: "/docs/Backend/SubscriptionBilling/Dunning/index.md" },
+      { text: "三向对账与收入确认边界", link: "/docs/Backend/SubscriptionBilling/Reconciliation/index.md" },
+      { text: "实战：一个能跑起来的最小订阅计费", link: "/docs/Backend/SubscriptionBilling/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/SubscriptionBilling/FAQ/index.md" },
+    ],
+  },
+];

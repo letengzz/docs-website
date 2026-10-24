@@ -178,20 +178,24 @@ asar extract app.asar ./app #解压asar文件
 
 在package.json里面添加这个配置项
 
-```json
-"afterPack": "scripts/afterPack.js",
+```jsonc [package.json]
+{
+  "afterPack": "scripts/afterPack.js"
+}
 ```
 
 files也要包含这个路径
 
-```json
+```jsonc [package.json]
+{
   "files": [
-      "dist/**/*",
-      "main.js",
-      "preload/**/*",
-      "package.json",
-      "scripts/**/*"
- ],
+    "dist/**/*",
+    "main.js",
+    "preload/**/*",
+    "package.json",
+    "scripts/**/*"
+  ]
+}
 ```
 
 脚本文件

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 430" width="920" height="430" role="img" aria-label="五段计费链与三个金额口径">
+<rect x="0" y="0" width="920" height="430" fill="#f8fafc"/>
+<text x="36" y="38" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">五段计费链与三个金额口径</text>
+<text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">计量段归 MTR 族；本专题从「聚合结果」接手，到「收到的钱」为止</text>
+<rect x="36" y="92" width="148" height="96" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="110.0" y="128.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#334155">计量（上游）</text>
+<text x="110.0" y="144.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">事件 → 聚合</text>
+<text x="110.0" y="160.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">MTR 族负责</text>
+<rect x="228" y="92" width="148" height="96" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="302.0" y="128.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e40af">定价</text>
+<text x="302.0" y="144.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">价格表 + 用量</text>
+<text x="302.0" y="160.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">→ usage_amount</text>
+<rect x="420" y="92" width="148" height="96" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+<text x="494.0" y="128.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f766e">出账</text>
+<text x="494.0" y="144.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">行项 + 税</text>
+<text x="494.0" y="160.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#115e59">→ invoice_amount</text>
+<rect x="612" y="92" width="148" height="96" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="686.0" y="128.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#9f1239">收款</text>
+<text x="686.0" y="144.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">催收 + 降级</text>
+<text x="686.0" y="160.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#881337">→ collected_amount</text>
+<rect x="804" y="92" width="148" height="96" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+<text x="878.0" y="128.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#92400e">对账</text>
+<text x="878.0" y="144.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">三向差集</text>
+<text x="878.0" y="160.68" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#78350f">→ 归口</text>
+<defs><marker id="ar1" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="184" y1="140" x2="226" y2="140" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar1)"/>
+<defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="376" y1="140" x2="418" y2="140" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar2)"/>
+<defs><marker id="ar3" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="568" y1="140" x2="610" y2="140" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar3)"/>
+<defs><marker id="ar4" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="760" y1="140" x2="802" y2="140" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar4)"/>
+<text x="36" y="224" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">三个金额口径必须各有独立字段，任何一个「用同一个字段承担两种含义」都会让对账失去基准</text>
+<line x1="36" y1="240" x2="884" y2="240" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="36" y="247" width="148" height="22" rx="11.0" fill="#ffffff" stroke="#93c5fd" stroke-width="1"/>
+<text x="110.0" y="262.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1e40af">usage_amount</text>
+<text x="196" y="262" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">Σ(quantity × unit_price) 按价格表版本分段</text>
+<text x="660" y="262" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">定价页与客户后台</text>
+<rect x="36" y="281" width="148" height="22" rx="11.0" fill="#ffffff" stroke="#93c5fd" stroke-width="1"/>
+<text x="110.0" y="296.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1e40af">invoice_amount</text>
+<text x="196" y="296" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">usage_amount − 抵扣 + 税额 ± 上期调整</text>
+<text x="660" y="296" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">财务、发票、催收</text>
+<rect x="36" y="315" width="148" height="22" rx="11.0" fill="#ffffff" stroke="#93c5fd" stroke-width="1"/>
+<text x="110.0" y="330.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1e40af">collected_amount</text>
+<text x="196" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">实收 = 成功支付 − 退款 − 手续费</text>
+<text x="660" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">资金、账务、对账</text>
+<text x="36" y="386" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">对账要对的不是「有没有少收钱」，而是这三行在同一个 bill_id 上能不能同时成立</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 430" width="920" height="430" role="img" aria-label="三向对账：把「三方都在」和「三方都对」分开">
+<rect x="0" y="0" width="920" height="430" fill="#f8fafc"/>
+<text x="36" y="38" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">三向对账：把「三方都在」和「三方都对」分开</text>
+<text x="36" y="60" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">行数对得上不等于金额对得上；金额对得上不等于净额对得上</text>
+<rect x="36" y="96" width="208" height="56" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="140.0" y="128.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e40af">账单 bill</text>
+<rect x="356" y="96" width="208" height="56" rx="8" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.2"/>
+<text x="460.0" y="128.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f766e">支付 pay</text>
+<rect x="676" y="96" width="208" height="56" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+<text x="780.0" y="128.68" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#92400e">账务 ledger</text>
+<defs><marker id="ar1" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="244" y1="124" x2="352" y2="124" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar1)"/>
+<defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<line x1="564" y1="124" x2="672" y2="124" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar2)"/>
+<text x="36" y="190" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a">本机读数（20,000 张账单，注入 0.4% 缺行与 0.8% 金额漂移）</text>
+<text x="36" y="216" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">项</text>
+<text x="196" y="216" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">读数</text>
+<text x="476" y="216" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">典型来源</text>
+<text x="36" y="240" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">账单总数</text>
+<text x="196" y="240" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">20,000</text>
+<text x="476" y="240" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">基准</text>
+<text x="36" y="264" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">支付缺失</text>
+<text x="196" y="264" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">82（0.41%）</text>
+<text x="476" y="264" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">未收款 / 回调丢失</text>
+<text x="36" y="288" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">账务缺失</text>
+<text x="196" y="288" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">63</text>
+<text x="476" y="288" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">记账失败 / 分录漏记</text>
+<text x="36" y="312" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">金额不等</text>
+<text x="196" y="312" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">174（0.87%）</text>
+<text x="476" y="312" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">通道舍入、退款净额、手工调账</text>
+<text x="36" y="336" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">差额合计</text>
+<text x="196" y="336" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">−452.41 元</text>
+<text x="476" y="336" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">正负抵消后仍然存在的净差</text>
+<text x="36" y="360" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">三向一致</text>
+<text x="196" y="360" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">19,681</text>
+<text x="476" y="360" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">只占 98.4%</text>
+<line x1="36" y1="392" x2="884" y2="392" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="36" y="416" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">只看「三方行数都在」会漏掉 174 条 / −452.41 元的金额差 —— 所以对账要按「三个方向分别差集 + 金额逐分比」</text>
+</svg>

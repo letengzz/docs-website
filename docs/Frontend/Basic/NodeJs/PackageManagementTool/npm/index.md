@@ -56,15 +56,15 @@ package.json 例：
 
 ```jsonc
 {
-	"name": "pro-test", #包的名字
-	"version": "1.0.0", #包的版本
-	"description": "描述", #包的描述
-	"main": "index.js", #包的入口文件
-	"scripts": { #脚本配置
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"author": "hjc", #作者
-	"license": "ISC" #开源证书
+  "name": "pro-test",          // 包的名字
+  "version": "1.0.0",          // 包的版本
+  "description": "描述",        // 包的描述
+  "main": "index.js",          // 包的入口文件
+  "scripts": {                 // 脚本配置
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hjc",             // 作者
+  "license": "ISC"             // 开源证书
 }
 ```
 
@@ -323,17 +323,14 @@ npm update -g 包名
 
 配置 package.json 中的 scripts 属性：
 
-```json
+```jsonc
 {
-	.
-	.
-	.
+	// ...
 	"scripts": {
 		"server": "node server.js",
 		"start": "node index.js"
-	},
-	.
-	.
+	}
+	// ...
 }
 
 ```
