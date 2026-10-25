@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="920" height="380" role="img" aria-label="批量导入实战">
+<rect x="0" y="0" width="920" height="380" fill="#f8fafc"/>
+<text x="32" y="36" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">最小交换链路：三张表、五步流水、四条负向验收</text>
+<text x="32" y="58" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">实战章节的骨架——每一条都能用一条 SQL 或一次重跑验证</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<rect x="32" y="96" width="268" height="160" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="166.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">三张表</text>
+<text x="166.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">import_batch（批次）</text>
+<text x="166.0" y="156" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">import_error（错误行）</text>
+<text x="166.0" y="172" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">import_row（落库映射）</text>
+<rect x="324" y="96" width="268" height="160" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.2"/>
+<text x="458.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">五步流水</text>
+<text x="458.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">① 建批次（指纹幂等）</text>
+<text x="458.0" y="156" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">② 流式解析 + 逐行校验</text>
+<text x="458.0" y="172" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">③ 批量 upsert（业务键）</text>
+<text x="458.0" y="188" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">④ 写回执 + 汇总</text>
+<text x="458.0" y="204" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">⑤ 对账 SQL 收尾</text>
+<rect x="616" y="96" width="268" height="160" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="750.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">四条负向验收</text>
+<text x="750.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">同一文件导两次 → 行数不变</text>
+<text x="750.0" y="156" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">第 5,000 行坏 → 前 4,999 行仍在</text>
+<text x="750.0" y="172" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">回执行号可控回原文</text>
+<text x="750.0" y="188" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">并发导入同一文件 → 只有一个批</text>
+<text x="32" y="288" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">本机读数：批大小 100 / 1,000 / 10,000 → 289 / 89 / 62 ms（5 万行，SQLite）；再往上加没有收益。</text>
+<text x="32" y="312" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">整批一个事务时，第 5,000 行坏 → 入账 0 行；批 500 → 入账 9,500 行；批 100 → 9,900 行。</text>
+<text x="32" y="336" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">也就是说：事务粒度直接决定「一个坏行毁掉多少好数据」。</text>
+</svg>

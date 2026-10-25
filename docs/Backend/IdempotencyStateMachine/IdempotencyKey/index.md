@@ -304,6 +304,20 @@ CREATE TABLE idem_record (
 把出账写成「一次 HTTP 调用 + 一个幂等键」的模型，会在补跑时失效：补跑是一个新请求，拿到新键，于是「幂等」完全不起作用。出账的幂等在**数据层**：`insert ... on conflict do nothing returning id`，返回空即跳过。见[实战 · 出账作业（可重跑）](../../SubscriptionBilling/Practice/index.md)。
 :::
 
+## 与「批量数据交换工程」的分工（第 208 天补充）
+
+本页讲**一次请求**的幂等键：形状、存储、TTL、与状态机的配合。[批量数据交换工程](../../BulkDataExchange/IdempotentRerun/index.md) 把同一套思路放大到**文件级**，于是多出两层键：
+
+| 层 | 键 | 防的是 | 落在哪 |
+| --- | --- | --- | --- |
+| 请求层（本页） | `Idempotency-Key` 头 / 业务单号 | 同一次提交重复到达 | 幂等表 + TTL |
+| 批次层（专题） | `batch_no = hash(namespace + 文件哈希 + 契约版本)` | 同一份文件被跑两遍 | 批次表主键 |
+| 行层（专题） | 业务唯一键（如 `(sku, effective_date)`） | 同一行被写两次 | 目标表唯一索引 + upsert |
+
+::: danger 文件级幂等特有的一个坑
+**只用文件哈希做幂等键，会把「换了模板的同名文件」判成同一批**。内容没变、契约版本从 v2 升到 v3 时，同一份字节应当按新规则**重新解释一遍**；如果 `batch_no` 只由哈希算出，第二次上传会直接命中旧批次并返回「已导入」，而实际上新规则下的校验根本没跑。所以哈希里必须带上契约版本号——本机实测的对照是：无唯一键时同一份 10,000 行文件导两次得 **20,000 行**，带上业务键后恒为 **10,000 行**。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

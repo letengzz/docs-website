@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="七段交换链">
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="32" y="36" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">七段交换链与三个必失接缝</text>
+<text x="32" y="58" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">批量的失败很少「报错」，多数是「安静地少了一行」</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<rect x="32" y="96" width="116" height="84" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="90.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">① 生成</text>
+<text x="90.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">人填 / 系统导</text>
+<line x1="148" y1="138" x2="162" y2="138" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="162" y="96" width="116" height="84" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="220.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">② 准入</text>
+<text x="220.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">大小 / 类型</text>
+<line x1="278" y1="138" x2="292" y2="138" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="292" y="96" width="116" height="84" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="350.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">③ 解析</text>
+<text x="350.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">编码 / 引号</text>
+<line x1="408" y1="138" x2="422" y2="138" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="422" y="96" width="116" height="84" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="480.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">④ 校验</text>
+<text x="480.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">行级 / 跨行</text>
+<line x1="538" y1="138" x2="552" y2="138" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="552" y="96" width="116" height="84" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="610.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">⑤ 入账</text>
+<text x="610.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">幂等 / 事务</text>
+<line x1="668" y1="138" x2="682" y2="138" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="682" y="96" width="116" height="84" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="740.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">⑥ 回执</text>
+<text x="740.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">错误行 + 摘要</text>
+<line x1="798" y1="138" x2="812" y2="138" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="812" y="96" width="116" height="84" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="870.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">⑦ 对账</text>
+<text x="870.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">行数 / 清理</text>
+<text x="32" y="216" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">三个「成功」分别落在 ②/⑤/⑦ 之后：</text>
+<text x="32" y="238" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">上传方认为「传上去就成功」；处理方认为「作业 exit 0 就成功」；下游认为「行数对得上才算成功」。</text>
+<text x="32" y="260" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">实测：一条坏行让整文件回滚（5,000 行全丢），而作业仍然 exit 0。</text>
+<rect x="32" y="286" width="856" height="96" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="52" y="314" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#9f1239">三个必失接缝</text>
+<text x="52" y="338" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#881337">① ②→③：编码猜错，第一行就崩；③→④：错列被静默按位置塞进字段，金额进了备注。</text>
+<text x="52" y="360" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#881337">② ④→⑤：部分成功却回执「成功」；⑤→⑥：失败行没人知道是哪一行。</text>
+<text x="52" y="378" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#881337">③ ⑥→⑦：回执说 9,999 行，库里 10,000 行——重跑了一次，没人发现。</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 396" width="920" height="396" role="img" aria-label="批次状态机">
+<rect x="0" y="0" width="920" height="396" fill="#f8fafc"/>
+<text x="32" y="36" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">批次状态机：五个主态与三条旁路</text>
+<text x="32" y="58" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">重跑不是「再导一次」，而是「同一个 batch_no 再试一次」</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<rect x="32" y="96" width="148" height="76" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="106.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">RECEIVED</text>
+<text x="106.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">已接收</text>
+<line x1="180" y1="134" x2="196" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="196" y="96" width="148" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="270.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">PARSED</text>
+<text x="270.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">已解析</text>
+<line x1="344" y1="134" x2="360" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="360" y="96" width="148" height="76" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="434.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">VALIDATED</text>
+<text x="434.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">已校验</text>
+<line x1="508" y1="134" x2="524" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="524" y="96" width="148" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="598.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">COMMITTED</text>
+<text x="598.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">已入账</text>
+<line x1="672" y1="134" x2="688" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="688" y="96" width="148" height="76" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="762.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">CLOSED</text>
+<text x="762.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">已关闭</text>
+<text x="32" y="206" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">三条旁路，每一条都要落到一个终态：</text>
+<rect x="32" y="222" width="264" height="96" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="164.0" y="248" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">FAILED</text>
+<text x="164.0" y="266" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">解析失败 / 校验失败</text>
+<text x="164.0" y="282" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">可携带断点，允许重跑</text>
+<rect x="320" y="222" width="264" height="96" rx="8" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+<text x="452.0" y="248" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">CANCELLED</text>
+<text x="452.0" y="266" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">用户取消</text>
+<text x="452.0" y="282" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">已入账的行不回滚</text>
+<rect x="608" y="222" width="280" height="96" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="748.0" y="248" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">SUPERSEDED</text>
+<text x="748.0" y="266" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">被同一业务键的新文件取代</text>
+<text x="748.0" y="282" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">旧批次只读保留</text>
+<text x="32" y="348" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">唯一键：batch_no = hash(业务键命名空间 + 文件指纹)，重跑拿到同一个 batch_no 就一定是同一批。</text>
+</svg>

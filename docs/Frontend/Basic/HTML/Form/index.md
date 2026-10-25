@@ -378,3 +378,16 @@ label 标签可与表单控件相关联，关联之后点击文字，与之对�
 3. **`setCustomValidity()` 设了不清就永远无效**：字段一旦被设过非空字符串，`validity.customError` 恒为 `true`，即使后来值改对了。每次校验都要先 `setCustomValidity("")` 再按需设置。
 :::
 
+## 与「批量数据交换工程」的分工（第 208 天补充）
+
+文件上传是一个特殊的表单：`<form method="post" enctype="multipart/form-data">` + `<input type="file">`。本页讲**标签怎么写**（`accept`、`multiple`、`capture`），[批量数据交换工程](../../../../Backend/BulkDataExchange/Overview/index.md) 讲**传上来之后怎么保证数据不丢**。
+
+| 问题 | 本页回答 | 专题回答 |
+| --- | --- | --- |
+| 怎么选文件 | `input type="file"`、`accept`、`multiple` | 服务端按魔数判类型（扩展名不可信） |
+| 怎么限制大小 | 无原生属性（`accept` 只管类型） | 请求体上限 + 解压后上限 + 行数上限 |
+| 传完给什么反馈 | 表单提交与进度事件 | 回执（成功/失败行 + 行号）与幂等标志 |
+
+::: danger `accept` 不是校验
+`accept=".csv"` 只是**打开文件对话框时的筛选提示**：用户可以选「所有文件」，也可以把 `.xlsx` 改名成 `.csv`；浏览器不会校验，服务端若不校验就一路读下去。本机实测的后果很具体——把 xlsx 当 CSV 读，`csv.reader` 读出来的是二进制垃圾且**不报错**（`.xlsx` 是 ZIP，魔数 `PK\x03\x04`）。正确做法：前端 `accept` 只当体验优化，服务端读前 8 个字节判魔数。
+:::

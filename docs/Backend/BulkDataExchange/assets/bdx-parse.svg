@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="解析与编码">
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="32" y="36" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">解析五段与四个安静的错误</text>
+<text x="32" y="58" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">解析段的问题不会让作业失败，只会让数据变形</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<rect x="32" y="96" width="160" height="76" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="112.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">字节流</text>
+<text x="112.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">嗅探 BOM / GBK</text>
+<line x1="192" y1="134" x2="208" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="208" y="96" width="160" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="288.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">解码</text>
+<text x="288.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">utf-8-sig / gb18030</text>
+<line x1="368" y1="134" x2="384" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="384" y="96" width="160" height="76" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="464.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">切分</text>
+<text x="464.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">csv.reader</text>
+<line x1="544" y1="134" x2="560" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="560" y="96" width="160" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="640.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">归一</text>
+<text x="640.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">去空格 / 转全角</text>
+<line x1="720" y1="134" x2="736" y2="134" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="736" y="96" width="160" height="76" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="816.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">映射</text>
+<text x="816.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">表头 → 列定义</text>
+<text x="32" y="208" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">每一段都有一个「安静的错误」：</text>
+<text x="52" y="232" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">· BOM 未剥离</text>
+<text x="240" y="232" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">表头变成 \ufeffid，按列名取值 KeyError</text>
+<text x="52" y="256" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">· 编码按 UTF-8 硬读</text>
+<text x="240" y="256" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">GBK 文件在首个中文处抛错（本机第 25 字节）</text>
+<text x="52" y="280" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">· 用 split(',') 切分</text>
+<text x="240" y="280" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">5,000 行里 3,724 行错列（74.5%）</text>
+<text x="52" y="304" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">· 反引号内换行不识别</text>
+<text x="240" y="304" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">物理行 6,233 vs 逻辑行 5,001</text>
+<rect x="32" y="332" width="856" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="48" y="354" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">注入面：20,000 个字段里 522 个（2.61%）以 = + - @ 开头——其中包含「+86 手机号」和「-5% 折扣」。</text>
+<text x="48" y="372" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">单引号前缀能挡住公式，但会把这两个正常值改坏；这是「安全」与「数据保真」的正面冲突。</text>
+</svg>

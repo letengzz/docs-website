@@ -62,6 +62,21 @@
 - **数据不可信 / 排障难**：[数据质量、血缘与调度](Quality/index.md)。
 - **照着做一遍**：[实战：电商订单域数仓](Practice/index.md)，含完整 DDL 与判据清单。
 
+## 与「批量数据交换工程」的分工（第 208 天补充）
+
+数仓的装载有两条完全不同的路：**持续同步**（CDC / 流式）与**批量落地文件**（每日一个 CSV、每月一个全量）。本专题讲分层与建模，[批量数据交换工程](../../Backend/BulkDataExchange/index.md) 讲批量落地那一条路上的四个判据。
+
+| 判据 | 数仓侧关心 | 专题侧关心 |
+| --- | --- | --- |
+| 行数守恒 | 分区行数是否符合预期 | `文件行数 = 成功 + 失败`，失败行有回执 |
+| 重复 | 分区是否可重跑（`insert overwrite`） | 批次号 + 业务唯一键，重跑不翻倍 |
+| 编码 | 装载工具的字符集参数 | 编码嗅探与 BOM 剥离（否则首列名带 `\ufeff`） |
+| 口径 | 分区日期 = 业务日期 | 导出文件的 `snapshot_ts` 与过滤条件 |
+
+::: danger 装载前不去重，指标会翻倍
+**同一份文件被装载两次，数仓不会报错**——分区里就是多了一倍的行，而所有 `sum()` 类指标跟着翻倍。更麻烦的是它看起来「合理」：环比增长 100%，业务可能会解释成「活动效果好」。所以批量装载必须把「文件指纹」写进分区元数据（`ods.xxx` 的 `src_file_sha256`），装载前先查这个分区是否已装载过同一份文件。
+:::
+
 ## 参考资料
 
 - [Kimball Group：Dimensional Modeling Techniques](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/)

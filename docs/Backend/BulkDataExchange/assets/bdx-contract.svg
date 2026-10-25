@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="文件契约与模板版本">
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="32" y="36" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">文件契约的三个版本与四条列定义</text>
+<text x="32" y="58" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">模板是接口，不是格式——版本要能被机器判定</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<rect x="32" y="96" width="268" height="150" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="166.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">模板 v3（当前）</text>
+<text x="166.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">列顺序固定 8 列</text>
+<text x="166.0" y="156" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">表头带 version=3</text>
+<text x="166.0" y="172" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">单位：元，2 位小数</text>
+<text x="166.0" y="188" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">日期：YYYY-MM-DD</text>
+<rect x="324" y="96" width="268" height="150" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="458.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">模板 v2（存量）</text>
+<text x="458.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">多一列「备注2」</text>
+<text x="458.0" y="156" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">日期用 / 分隔</text>
+<text x="458.0" y="172" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">仍然接受，但登记为旧版</text>
+<rect x="616" y="96" width="268" height="150" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="750.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">模板 v1（停用）</text>
+<text x="750.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">金额单位是分</text>
+<text x="750.0" y="156" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">拒绝导入并给出迁移指引</text>
+<text x="32" y="282" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">版本判定不靠文件名，靠表头第一行的 version 标记；没有标记的文件按 v1 处理并拒绝。</text>
+<text x="32" y="306" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">列定义四件事：名称、类型、是否必填、归一化规则（去空格 / 全角转半角 / 单位换算）。</text>
+<text x="32" y="330" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">行号语义：指「文件里的第几行」，从表头下一行算 1；与数据库自增 ID 无关。</text>
+<rect x="32" y="352" width="856" height="30" rx="6" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+<text x="48" y="372" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#92400e">契约里必须写死「拒绝」的三种情况：版本未知、列数不符、必填列缺失。</text>
+</svg>

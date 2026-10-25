@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="库存盘点的导入与导出">
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="32" y="36" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">库存盘点：一次导入、一条流水、一份快照</text>
+<text x="32" y="58" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">盘点不是「把值改成 X」，而是「记一次从 A 到 B 的调整」</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<rect x="32" y="88" width="190" height="120" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="127.0" y="114" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">CSV 盘点文件</text>
+<text x="127.0" y="132" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">sku, on_hand</text>
+<text x="127.0" y="148" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">12,000 行</text>
+<text x="127.0" y="164" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">一次一份</text>
+<rect x="248" y="88" width="190" height="120" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.2"/>
+<text x="343.0" y="114" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">批次与校验</text>
+<text x="343.0" y="132" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">hash → batch_no</text>
+<text x="343.0" y="148" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">on_hand >= reserved</text>
+<text x="343.0" y="164" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">坏行进回执</text>
+<rect x="464" y="88" width="190" height="120" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1.2"/>
+<text x="559.0" y="114" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">流水 + 更新</text>
+<text x="559.0" y="132" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">stock_adjust_log</text>
+<text x="559.0" y="148" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">before/after/delta</text>
+<text x="559.0" y="164" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">同事务，批 500</text>
+<rect x="680" y="88" width="208" height="120" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="784.0" y="114" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">快照导出</text>
+<text x="784.0" y="132" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">snapshot_ts</text>
+<text x="784.0" y="148" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">keyset(sku)</text>
+<text x="784.0" y="164" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">口径页首两行</text>
+<line x1="222" y1="148" x2="246" y2="148" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="438" y1="148" x2="462" y2="148" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="654" y1="148" x2="678" y2="148" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="32" y="232" width="856" height="66" rx="8" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="52" y="258" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#9f1239">禁止写法：update stock set on_hand = 100 where sku = &apos;SKU-1&apos;</text>
+<text x="52" y="280" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#881337">它没有 before 值，也没有校验 reserved：available 变负，全站该 SKU 不可下单。</text>
+<rect x="32" y="312" width="856" height="66" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.2"/>
+<text x="52" y="338" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f766e">四条读数（本机，非生产压测）</text>
+<text x="52" y="360" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#115e59">整批事务遇 1 坏行 → 入账 0 行；批 500 → 11,500 行；重跑无幂等 → 流水 24,000 行；offset 导出漏 0.1%。</text>
+</svg>

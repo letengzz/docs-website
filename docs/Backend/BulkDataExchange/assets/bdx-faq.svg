@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="批量数据交换分诊表">
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="32" y="36" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">五行分诊：先定位在哪一段，再谈改什么</text>
+<text x="32" y="58" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">同一句「少了几行」可能是五个完全不同的原因</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<text x="32" y="88" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">用户说「我传了 10,000 行，只进来 9,987 行」，先分诊再动手：</text>
+<rect x="32" y="96" width="856" height="42" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+<text x="48" y="120" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">差 13 行</text>
+<text x="160" y="120" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">看回执错误行数</text>
+<text x="360" y="120" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">回执 13 条 → 是校验拒收，去 RowValidation</text>
+<rect x="32" y="148" width="856" height="42" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+<text x="48" y="172" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">一行没进</text>
+<text x="160" y="172" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">看批次状态</text>
+<text x="360" y="172" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">FAILED → 解析就崩了，去 ParsingAndEncoding</text>
+<rect x="32" y="200" width="856" height="42" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+<text x="48" y="224" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">进来两倍</text>
+<text x="160" y="224" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">看 batch_no</text>
+<text x="360" y="224" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">两个批次同指纹 → 缺唯一键，去 IdempotentRerun</text>
+<rect x="32" y="252" width="856" height="42" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+<text x="48" y="276" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">金额不对</text>
+<text x="160" y="276" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">看列映射</text>
+<text x="360" y="276" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">错列被按位置塞入 → 去 FileContract</text>
+<rect x="32" y="304" width="856" height="42" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+<text x="48" y="328" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">导出的对不上</text>
+<text x="160" y="328" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">看快照时点</text>
+<text x="360" y="328" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">导出期间有写入 → 去 ExportSnapshot</text>
+</svg>

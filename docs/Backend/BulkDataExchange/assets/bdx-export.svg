@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="导出快照一致性">
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="32" y="36" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">导出三段：快照、keyset 分页、流式写出</text>
+<text x="32" y="58" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">导出的难点不是「写出去」，而是「写出去的是一份可解释的静止画面」</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#94a3b8"/></marker></defs>
+<rect x="32" y="96" width="268" height="120" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="166.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">① 定快照</text>
+<text x="166.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">记录 snapshot_ts</text>
+<text x="166.0" y="156" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">与 max(id) 水位</text>
+<text x="166.0" y="172" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">写进导出任务</text>
+<rect x="324" y="96" width="268" height="120" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.2"/>
+<text x="458.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">② keyset 分页</text>
+<text x="458.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">where id > :last</text>
+<text x="458.0" y="156" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">order by id</text>
+<text x="458.0" y="172" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">不跳页、不重复</text>
+<rect x="616" y="96" width="268" height="120" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1.2"/>
+<text x="750.0" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">③ 流式写出</text>
+<text x="750.0" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">边读边写，不攒全量</text>
+<text x="750.0" y="156" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">峰值 62 KB vs 27,556 KB</text>
+<text x="32" y="254" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">对照实测（20,000 行、并发删除 20 条 / 更新 20 条）：</text>
+<text x="52" y="278" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">· offset 分页 + 并发删除</text>
+<text x="300" y="278" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">漏 20 行（0.1%），且多读 20 条新行</text>
+<text x="52" y="302" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">· 按可变键排序分页 + 更新</text>
+<text x="300" y="302" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">重复 20 行（0.1%），unique 19,980</text>
+<text x="52" y="326" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e40af">· keyset + 稳定排序</text>
+<text x="300" y="326" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">20,000 / 20,000，零重复零遗漏</text>
+<rect x="32" y="352" width="856" height="32" rx="6" fill="#fff1f2" stroke="#fda4af" stroke-width="1.2"/>
+<text x="48" y="373" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#9f1239">导出文件必须自带「口径页」：快照时点、过滤条件、行数、生成人——否则对账时没人能解释差额。</text>
+</svg>

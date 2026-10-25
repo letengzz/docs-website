@@ -974,3 +974,21 @@ export const SubscriptionBilling = [
     ],
   },
 ];
+
+export const BulkDataExchange = [
+  {
+    text: "批量数据交换工程",
+    link: "/docs/Backend/BulkDataExchange/index.md",
+    items: [
+      { text: "总览：七段交换链与三个成功定义", link: "/docs/Backend/BulkDataExchange/Overview/index.md" },
+      { text: "文件契约：模板、列定义与版本", link: "/docs/Backend/BulkDataExchange/FileContract/index.md" },
+      { text: "解析与编码：编码嗅探、引号与注入面", link: "/docs/Backend/BulkDataExchange/ParsingAndEncoding/index.md" },
+      { text: "行级校验与错误回执", link: "/docs/Backend/BulkDataExchange/RowValidation/index.md" },
+      { text: "幂等重跑、批次状态机与断点", link: "/docs/Backend/BulkDataExchange/IdempotentRerun/index.md" },
+      { text: "导出：快照一致性、分页与流式下载", link: "/docs/Backend/BulkDataExchange/ExportSnapshot/index.md" },
+      { text: "异步作业：进度、取消与并发", link: "/docs/Backend/BulkDataExchange/AsyncJob/index.md" },
+      { text: "实战：一个能跑起来的最小交换链路", link: "/docs/Backend/BulkDataExchange/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/BulkDataExchange/FAQ/index.md" },
+    ],
+  },
+];
