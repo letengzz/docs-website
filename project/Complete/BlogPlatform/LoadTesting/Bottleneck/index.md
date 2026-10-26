@@ -161,6 +161,14 @@ docker compose exec -T mysql mysql -uroot -p"$DB_ROOT_PASSWORD" "$DB_NAME" -e "
 3. **根因可复现**：修复前再跑一次 `EXPLAIN`，形态与记录一致；
 4. **判据含原因**：写进报告的判据里包含 `EXPLAIN` 形态这类**结构性**断言，而不只是 P95。
 
+```shell
+# 优化前后对照：同一脚本、同一并发、同一机器
+k6 run --vus 50 --duration 3m scripts/loadtest.js | tee /tmp/k6-after.log
+grep -E "http_req_duration|http_req_failed" /tmp/k6-after.log
+```
+
+预期输出：`http_req_duration` 的 `p(95)` 相比优化前记录下降 **≥ 30%**，且 `http_req_failed` < `1%`。若 p95 没降，说明改的不是瓶颈——回到火焰图确认热点是否被移动。
+
 ## 深入阅读
 
 - [监控接入：六项指标的口径与告警阈值](../../Monitoring/index.md)

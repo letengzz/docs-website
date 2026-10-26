@@ -117,6 +117,19 @@ export const useThemeStore = defineStore('theme', {
 3. 在项目内搜索硬编码颜色（`#fff`、`#000`、`rgb(`）确认无业务残留。
 4. 逐个页面在暗色下走查，重点看：表格斑马纹、弹窗遮罩、图表配色、图片背景。
 
+第 2、3 条可以脱离浏览器判，把它们落成两条命令：
+
+```shell
+# 第 2 条：持久化 key 与取值（切到暗色后，在浏览器控制台执行）
+localStorage.getItem("theme")
+# 期望："dark"；刷新后仍为 "dark"，且 <html> 上带着 data-theme="dark"
+
+# 第 3 条：业务样式里的硬编码颜色（变量定义处除外）
+grep -rnE "#(fff|000|ffffff|000000)\b|rgba?\(" src --include=*.vue --include=*.scss; echo "EXIT=$?"
+```
+
+预期：第一条输出 `"dark"`；第二条**无输出且 `EXIT=1`**（`grep` 没命中时的退出码就是 1，所以这里的 `1` 是「通过」而不是「失败」——把这句写进注释，否则下一个人会把 1 当成挂了）。若命中，逐条替换为 `var(--color-*)`，唯一允许保留硬编码的地方是变量定义文件本身（如 `src/styles/var.scss`），排除它即可：`--exclude=var.scss`。
+
 ## 参考资料
 
 - Element Plus 暗色模式：https://element-plus.org/zh-CN/guide/dark-mode.html

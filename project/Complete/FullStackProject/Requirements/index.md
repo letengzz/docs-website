@@ -70,6 +70,14 @@ Then：
 2. 抽查 3 条验收标准，确认可以直接写成测试用例（含异常路径）。
 3. 用任务表核对总工时与迭代周期是否匹配；超出则砍 P1。
 
+```shell
+# 每条验收标准都要能直接落成用例：统计「验收标准」小节下的编号条目
+grep -c "^- \[ \] " docs/requirements.md
+grep -c "^### " docs/requirements.md
+```
+
+预期输出：第一条 ≥ 第二条（每条需求至少一条验收标准）。若某条需求下面的验收标准只有一句「功能正常」，它就是不可测的——退回重写。
+
 ## 参考资料
 
 - 用户故事与验收标准：https://www.agilealliance.org/glossary/user-story-template/

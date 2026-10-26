@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="920" height="340" role="img" aria-label="售后工单与订单的双向关联">
+<rect x="0" y="0" width="920" height="340" fill="#f8fafc"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">售后工单与订单的双向关联</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">工单只负责「有人管、有承诺、有结论」；订单动作仍由订单侧执行</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+<rect x="40" y="96" width="200" height="72" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="140" y="128" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">客户请求</text>
+<text x="140" y="148" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">退货 / 未达 / 开票</text>
+<line x1="240" y1="132" x2="292" y2="132" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="292" y="88" width="220" height="88" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="402" y="118" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">工单 + 时钟</text>
+<text x="402" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">首响 / 解决两个目标</text>
+<text x="402" y="160" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">到期时间落库为快照</text>
+<line x1="402" y1="176" x2="402" y2="212" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="292" y="212" width="220" height="72" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="402" y="244" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">订单动作</text>
+<text x="402" y="264" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">refunds / shipments</text>
+<line x1="512" y1="248" x2="564" y2="248" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="564" y="212" width="316" height="72" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="722" y="240" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">对账：ESA-G</text>
+<text x="722" y="262" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">已退款工单金额 = refunds 之和</text>
+<line x1="564" y1="228" x2="512" y2="140" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="600" y="196" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#b91c1c">结论回写工单</text>
+<rect x="564" y="88" width="316" height="88" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="722" y="118" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">8 个营业小时承诺</text>
+<text x="722" y="140" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">自然时钟 72.52% 的到期点在非工作时段</text>
+<text x="722" y="160" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#b91c1c">换工作时钟后达标率 8.03% → 49.87%</text>
+</svg>

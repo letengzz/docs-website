@@ -110,6 +110,13 @@ export const USE_MOCK = import.meta.env.DEV && import.meta.env.VITE_USE_MOCK ===
 3. 让前端在 `USE_MOCK=false` 下跑通主流程，确认无需改动页面代码。
 4. 用 OpenAPI 文件生成文档，确认与实际返回一致（字段名、枚举、必填）。
 
+```shell
+# 接口契约与实现一致：OpenAPI 校验必须 0 error
+npx @redocly/cli lint openapi.yaml
+```
+
+预期输出：`Woohoo! Your API description is valid.` 或 `0 errors`。若报 `operation-4xx-response` 一类 warning，至少确认每个写接口都声明了错误响应结构。
+
 ## 参考资料
 
 - OpenAPI 规范：https://spec.openapis.org/oas/latest.html

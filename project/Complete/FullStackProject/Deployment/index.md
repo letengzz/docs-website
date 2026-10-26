@@ -108,6 +108,15 @@ echo "发布完成：${VERSION}"
 4. 部署后走查核心链路：登录 → 建项目 → 建任务 → 改状态 → 退出。
 5. 检查数据库慢查询日志与磁盘占用，确认无异常增长。
 
+```shell
+docker compose up -d
+sleep 20
+curl -s http://localhost:8080/actuator/health
+docker compose ps
+```
+
+预期输出：`{"status":"UP"}`，且 `docker compose ps` 里四个服务都是 `running (healthy)`。任一为 `unhealthy` 时先看该服务的日志，不要直接重试。
+
 ## 参考资料
 
 - Docker Compose 官方文档：https://docs.docker.com/compose/

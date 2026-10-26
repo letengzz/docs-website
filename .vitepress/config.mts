@@ -12,7 +12,7 @@ export default defineConfig({
   lang: 'zh-CN',
   ignoreDeadLinks: true,
   metaChunk: true,
-  lastUpdated: true,
+  lastUpdated: false,
   themeConfig: {
     lastUpdated: {
       text: '更新时间',

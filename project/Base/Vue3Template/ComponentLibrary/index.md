@@ -151,6 +151,16 @@ export const toast = {
 3. 打开开发者工具的 Network，确认只加载了用到的组件样式与 JS。
 4. 切换暗色主题，确认组件库与自研组件配色一致（见 [主题模块](../Theme/index.md)）。
 
+```shell
+# ① 确认没有全量引入（应为 0 行）
+grep -rn "import ElementPlus from 'element-plus'" src/ | wc -l
+
+# ② 按需引入生效：产物里只剩下用到的组件
+pnpm build && ls dist/assets | grep -c "element-plus"
+```
+
+预期输出：① 为 `0`；② 为一个较小的整数（只有用到的那几个组件），若出现单个体积巨大的 `element-plus` 样式文件，说明仍走了全量引入。
+
 ## 参考资料
 
 - Element Plus 快速开始：https://element-plus.org/zh-CN/guide/quickstart.html

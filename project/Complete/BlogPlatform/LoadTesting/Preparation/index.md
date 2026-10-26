@@ -170,6 +170,16 @@ docker compose exec -T mysql mysql -uroot -p"$DB_ROOT_PASSWORD" "$DB_NAME" -e "
 
 八条齐全后进入[压测脚本](../Scripting/index.md)。
 
+```shell
+# 口径表里不允许出现「待定」
+grep -c "待定" docs/loadtest/plan.md
+
+# 每条旁路变量（C1~C8）都必须有结论
+grep -c "^| C[1-8] " docs/loadtest/plan.md
+```
+
+预期输出：第一条为 `0`；第二条为 `8`。任一为 0 说明还有「不知道算不算」的变量被带进了压测。
+
 ## 深入阅读
 
 - [测试分层收口：为什么性能不进功能门禁](../../TestLayers/index.md)

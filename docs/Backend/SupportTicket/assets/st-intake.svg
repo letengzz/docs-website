@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" width="920" height="360" role="img" aria-label="入口归并与合并三条件">
+<rect x="0" y="0" width="920" height="360" fill="#f8fafc"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">入口归并与合并三条件</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">请求数 ≠ 工单数是对的；相等说明去重没生效</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+<rect x="60" y="92" width="104" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="112.0" y="122.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">邮件</text>
+<rect x="180" y="92" width="104" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="232.0" y="122.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">IM</text>
+<rect x="300" y="92" width="104" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="352.0" y="122.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">电话</text>
+<rect x="420" y="92" width="104" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="472.0" y="122.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">门户</text>
+<rect x="560" y="86" width="300" height="62" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="710.0" y="115.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">归并判定</text>
+<text x="710.0" y="133.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">人 + 事 + 时间窗</text>
+<line x1="112" y1="142" x2="560" y2="117" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="232" y1="142" x2="560" y2="117" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="352" y1="142" x2="560" y2="117" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="472" y1="142" x2="560" y2="117" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="710" y1="148" x2="710" y2="190" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="560" y="190" width="300" height="58" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="710.0" y="217.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">主单</text>
+<text x="710.0" y="235.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">一个诉求一张单</text>
+<rect x="560" y="272" width="300" height="58" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="710.0" y="299.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">被合并单</text>
+<text x="710.0" y="317.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">merged_into 单向指针</text>
+<line x1="710" y1="248" x2="710" y2="272" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="60" y="190" width="440" height="140" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="280.0" y="265.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b"></text>
+<text x="80" y="216" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">三个条件同时成立才能自动合并</text>
+<text x="80" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">① 同一请求人：归一化邮箱 / 账号 / E.164 电话</text>
+<text x="80" y="270" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">② 同一诉求：业务主键命中（订单号）优先</text>
+<text x="80" y="296" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#334155">③ 时间窗 72 小时且主单未关闭</text>
+<text x="80" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#b91c1c">文本相似度只产出候选，不自动合并</text>
+</svg>

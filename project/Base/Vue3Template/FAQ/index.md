@@ -81,6 +81,16 @@ server: {
 3. 用浏览器无痕模式访问部署好的站点，确认无缓存导致的旧版本问题。
 4. 把本次踩到的新问题补充到本页对应分类，保持速查表更新。
 
+第 2 条是唯一能自动判的一条，把它落成一条命令：
+
+```shell
+# 干净克隆 → 只靠仓库内声明的依赖能否构建成功
+git clone <repo-url> /tmp/vue3-faq-check && cd /tmp/vue3-faq-check \
+  && pnpm install --frozen-lockfile && pnpm build:prod; echo "EXIT=$?"
+```
+
+预期：末行 `EXIT=0`，且 `dist/index.html` 与 `dist/assets/` 同时存在（`ls dist` 输出非空）。若 `EXIT≠0`，说明有本地隐式依赖（全局安装的包、未写进 `package.json` 的插件、本机 `~/.npmrc` 里的私有源），按报错里的包名回填 `dependencies` 后重跑，直到 `EXIT=0`。
+
 ## 相关专题
 
 - [初始化项目](../InitProject/index.md)、[配置环境变量](../Env/index.md)、[配置打包构建优化](../Build/index.md)

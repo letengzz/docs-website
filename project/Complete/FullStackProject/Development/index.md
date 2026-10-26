@@ -152,6 +152,15 @@ public class GlobalExceptionHandler {
 4. 变更任务状态后查询操作日志，确认有完整记录（人、时间、前后状态）。
 5. 触发一次未处理异常，确认响应是统一错误结构且日志中有堆栈。
 
+```shell
+# 越权：非项目成员改任务状态必须 403（不是 200）
+curl -s -o /dev/null -w "%{http_code}\n" -X PATCH \
+  -H "Authorization: Bearer $OUTSIDER_TOKEN" -H "Content-Type: application/json" \
+  -d '{"status":"DONE"}' http://localhost:8080/api/projects/1/tasks/1
+```
+
+预期输出：`403`。若返回 `200`，说明鉴权只校验了「已登录」，没有校验「是否该项目成员」。
+
 ## 参考资料
 
 - Spring Boot 官方文档：https://docs.spring.io/spring-boot/index.html

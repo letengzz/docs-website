@@ -97,6 +97,14 @@ const request = ({ page, size }: { page: number; size: number }) =>
 3. 手动把接口改成 500，确认页面显示错误提示而不是白屏。
 4. 在搜索框快速输入 5 个字符，确认只发出 1 次请求（防抖生效）。
 
+```shell
+# 防抖：在搜索框里连续输入 5 个字符，只应发出 1 次请求
+pnpm dev
+# 另开一个终端，看请求数（DevTools → Network 过滤 /api/ 亦可）
+```
+
+预期输出：`/api/list` 只有 **1 条**记录，且 query 是最后一次输入的完整关键字。若出现 5 条，说明防抖没有接在输入事件上，而是接在了请求函数上。
+
 ## 参考资料
 
 - VueRequest 官方文档：https://www.attojs.com/

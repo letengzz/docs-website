@@ -213,6 +213,14 @@ SELECT trigger, count(*) FROM em.deploy GROUP BY trigger ORDER BY trigger;
 grep -rn "avg_severity\|average_severity" config/ 2>/dev/null
 ```
 
+## 与「客服工单与 SLA 履约工程」的分工（第 209 天补充）
+
+本页讲的是「缺陷可以关掉、可以合并、可以降级」——**分母可以被搬走**。客服指标有完全同构的四个搬法，而且都不需要改代码：把分母换成「已关闭的单」、把满意度换成「回复者的满意度」、把时长换成「营业小时」、把重开算成「新问题」。
+
+具体分工：本页管**研发效能**的度量口径（逃逸、返工、变更失败）与它们的操纵手法；[客服工单与 SLA 履约工程 · 度量口径](../../../Backend/SupportTicket/Metrics/index.md)管**服务履约**的四个分母陷阱与容量曲线，并给出同一批数据的两种口径差：按单 **88.31%**、按等待分钟 **46.98%**。
+
+一个针对本页的坑：**只报一个口径就宣布「达标」**。本页的「缺陷数下降 40%、投诉上升 30%」与客服的「达标率 96%、续约率下降」是同一个病：**指标被优化，问题被迁移**。可执行的修法是「成对上报」——缺陷数配逃逸率，达标率配「未命中政策的单数」与 CSAT 配回复率。单个数字永远可以被搬动，成对的数字很难同时搬动。
+
 ## 参考资料
 
 - DORA，《DORA's software delivery performance metrics》：<https://dora.dev/guides/dora-metrics-four-keys/>（change fail rate 与 deployment rework rate 的分工、速度与稳定性不构成取舍）

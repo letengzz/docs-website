@@ -992,3 +992,21 @@ export const BulkDataExchange = [
     ],
   },
 ];
+
+export const SupportTicket = [
+  {
+    text: "客服工单与 SLA 履约工程",
+    link: "/docs/Backend/SupportTicket/index.md",
+    items: [
+      { text: "总览：七段服务链与三个时间", link: "/docs/Backend/SupportTicket/Overview/index.md" },
+      { text: "工单模型：六态、一会话与审计", link: "/docs/Backend/SupportTicket/TicketModel/index.md" },
+      { text: "入口归并与重复合并", link: "/docs/Backend/SupportTicket/IntakeDedup/index.md" },
+      { text: "分派与认领：技能、负载与抢占", link: "/docs/Backend/SupportTicket/Dispatch/index.md" },
+      { text: "SLA 时钟：工作日历、暂停与夏令时", link: "/docs/Backend/SupportTicket/SLAClock/index.md" },
+      { text: "升级与值班：阶梯、阈值与误升级", link: "/docs/Backend/SupportTicket/Escalation/index.md" },
+      { text: "度量口径：四个分母陷阱", link: "/docs/Backend/SupportTicket/Metrics/index.md" },
+      { text: "实战：一个能跑起来的最小履约链路", link: "/docs/Backend/SupportTicket/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/SupportTicket/FAQ/index.md" },
+    ],
+  },
+];

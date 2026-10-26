@@ -164,6 +164,15 @@ createApp(App).directive('permission', permission).mount('#app')
 4. 退出后用高权限账号登录：菜单正确切换，无上一个账号残留。
 5. 用低权限账号的 token 直接调后端受限接口：返回 403（验证服务端校验）。
 
+```shell
+# 用低权限账号的 token 直连后端受限接口（前端隐藏不等于后端拦截）
+LOW_TOKEN="<低权限账号登录后的 access_token>"
+curl -s -o /dev/null -w "%{http_code}\n" \
+  -H "Authorization: Bearer $LOW_TOKEN" http://localhost:8080/api/admin/users
+```
+
+预期输出：`403`。若返回 `200`，说明权限只做在前端——菜单隐藏只是「看不见」，不是「进不去」。
+
 ## 参考资料
 
 - Vue Router 导航守卫：https://router.vuejs.org/zh/guide/advanced/navigation-guards.html
