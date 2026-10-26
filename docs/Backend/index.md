@@ -40,3 +40,7 @@
 - [订阅计费与周期账单工程](SubscriptionBilling/index.md)
 - [批量数据交换工程](BulkDataExchange/index.md)
 - [客服工单与 SLA 履约工程](SupportTicket/index.md)
+- [履约交付与承运商集成工程](ShippingCarrier/index.md)
+- [电子签署与合同存证工程](ESignature/index.md)
+- [广告投放与实时竞价工程](AdDelivery/index.md)
+- [GraphQL 服务端工程](GraphQL/index.md)

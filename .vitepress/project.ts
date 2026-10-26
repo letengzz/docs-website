@@ -413,6 +413,9 @@ export const CompleteProject = [
           { text: "第 4 周补充 · 订单完成后的开票闭环（EIN-A~EIN-H）", link: "/project/Complete/EventOrderHub/Invoicing/index.md" },
           { text: "第 4 周补充 · 库存盘点的批量导入与对账导出（EBD-A~EBD-H）", link: "/project/Complete/EventOrderHub/BulkHandover/index.md" },
           { text: "第 4 周补充 · 售后工单受理与 SLA 时钟（ESA-A~ESA-H）", link: "/project/Complete/EventOrderHub/SupportSLA/index.md" },
+          { text: "第 4 周补充 · 订单检索与导出：游标、索引与快照（EOQ-A~EOQ-H）", link: "/project/Complete/EventOrderHub/OrderQuery/index.md" },
+          { text: "第 4 周补充 · 退款协议签署与存证举证（ERA-A~ERA-H）", link: "/project/Complete/EventOrderHub/RefundAgreement/index.md" },
+          { text: "第 4 周补充 · 运营后台的权限与 PII 边界（EAC-A~EAC-H）", link: "/project/Complete/EventOrderHub/OperationAccess/index.md" },
         ],
       },
       {

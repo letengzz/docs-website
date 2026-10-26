@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="920" height="380" role="img" aria-label="归因四要素与延迟回传曲线">
+<rect x="0" y="0" width="920" height="380" fill="#F8FAFC"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">归因四要素与延迟回传曲线</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">同样是「1,000 个转化」，四个要素不同就能算出 600 到 1,400</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748B"/></marker></defs>
+<rect x="28" y="84" width="200" height="72" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="128.0" y="116.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1E293B">模型</text>
+<text x="128.0" y="136.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">last-click / 线性 / 位置</text>
+<rect x="250" y="84" width="200" height="72" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="350.0" y="116.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1E293B">窗口</text>
+<text x="350.0" y="136.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">1 / 7 / 30 天</text>
+<rect x="472" y="84" width="200" height="72" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="572.0" y="116.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1E293B">去重</text>
+<text x="572.0" y="136.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">conversion_id</text>
+<rect x="694" y="84" width="200" height="72" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="794.0" y="116.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1E293B">回补</text>
+<text x="794.0" y="136.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">不补 / 滚动 / 定版</text>
+<text x="28" y="194" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">回传累计比例（横轴为 T+N 天）</text>
+<circle cx="60" cy="288" r="4" fill="#0F766E"/>
+<text x="56.0" y="278.0" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0F766E">42%</text>
+<circle cx="138" cy="247" r="4" fill="#0F766E"/>
+<text x="134.0" y="237.0" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0F766E">83%</text>
+<line x1="60" y1="288" x2="138" y2="247" stroke="#0F766E" stroke-width="1.8"/>
+<circle cx="294" cy="233" r="4" fill="#0F766E"/>
+<text x="290.0" y="223.0" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0F766E">97%</text>
+<line x1="138" y1="247" x2="294" y2="233" stroke="#0F766E" stroke-width="1.8"/>
+<circle cx="606" cy="230" r="4" fill="#0F766E"/>
+<text x="602.0" y="220.5" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0F766E">100%</text>
+<line x1="294" y1="233" x2="606" y2="230" stroke="#0F766E" stroke-width="1.8"/>
+<circle cx="840" cy="230" r="4" fill="#0F766E"/>
+<text x="836" y="220.0" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0F766E">100%</text>
+<line x1="606" y1="230" x2="840" y2="230" stroke="#0F766E" stroke-width="1.8"/>
+<text x="28" y="356" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">T+0 只有 42%，T+1 83%，T+3 97%——当天出的转化报表，只有真实值的四成</text>
+</svg>

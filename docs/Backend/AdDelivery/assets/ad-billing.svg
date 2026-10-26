@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="四种计费口径与计费事件的归属">
+<rect x="0" y="0" width="920" height="400" fill="#F8FAFC"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">四种计费口径与计费事件的归属</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">billing_event 决定账单，optimization_goal 决定出价——两者可以不同，但不能混</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748B"/></marker></defs>
+<rect x="28" y="84" width="130" height="50" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="93.0" y="114.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">CPM</text>
+<text x="176" y="106" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">按千次展示收</text>
+<text x="176" y="124" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748B">bid_cpm</text>
+<text x="640" y="114" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">广告主承担无点击风险</text>
+<rect x="28" y="146" width="130" height="50" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="93.0" y="176.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">CPC</text>
+<text x="176" y="168" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">按点击收</text>
+<text x="176" y="186" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748B">bid_cpc × pCTR × 1000</text>
+<text x="640" y="176" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">媒体承担展示风险</text>
+<rect x="28" y="208" width="130" height="50" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="93.0" y="238.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">CPA</text>
+<text x="176" y="230" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">按转化收</text>
+<text x="176" y="248" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748B">bid_cpa × pCTR × pCVR × 1000</text>
+<text x="640" y="238" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">双方共担</text>
+<rect x="28" y="270" width="130" height="50" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="93.0" y="300.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">oCPM</text>
+<text x="176" y="292" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">按展示收、按转化调价</text>
+<text x="176" y="310" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748B">target_cpa × pCTR × pCVR × 1000</text>
+<text x="640" y="300" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">DSP 承担模型风险</text>
+<text x="28" y="348" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">oCPM 实际 CPA = target_cpa × (pCVR / 真实 CVR)：高估一倍，CPA 从 50 元变 100 元</text>
+</svg>

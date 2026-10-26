@@ -1010,3 +1010,74 @@ export const SupportTicket = [
     ],
   },
 ];
+
+export const ESignature = [
+  {
+    text: "电子签署与合同存证工程",
+    link: "/docs/Backend/ESignature/index.md",
+    items: [
+      { text: "总览：七段签署链与三个「签了」", link: "/docs/Backend/ESignature/Overview/index.md" },
+      { text: "合同模型：模板、变量、参与方与版本", link: "/docs/Backend/ESignature/ContractModel/index.md" },
+      { text: "签署流程：顺序、并行、会签与撤回", link: "/docs/Backend/ESignature/SigningFlow/index.md" },
+      { text: "文档与签章：字节范围、印章与骑缝章", link: "/docs/Backend/ESignature/SealDocument/index.md" },
+      { text: "实名与意愿：怎么证明是他本人想签", link: "/docs/Backend/ESignature/IdentityWillingness/index.md" },
+      { text: "存证链：哈希链、时间戳与取证包", link: "/docs/Backend/ESignature/EvidenceChain/index.md" },
+      { text: "合规与留存：可靠签名的四要件怎么落地", link: "/docs/Backend/ESignature/ComplianceRetention/index.md" },
+      { text: "度量与运营：签署时长、失败归因与验签巡检", link: "/docs/Backend/ESignature/MetricsOps/index.md" },
+      { text: "实战：一套能跑起来的最小签署链路", link: "/docs/Backend/ESignature/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ESignature/FAQ/index.md" },
+    ],
+  },
+];
+
+export const ShippingCarrier = [
+  {
+    text: "履约交付与承运商集成工程",
+    link: "/docs/Backend/ShippingCarrier/index.md",
+    items: [
+      { text: "总览：七段交付链与三个「已发货」", link: "/docs/Backend/ShippingCarrier/Overview/index.md" },
+      { text: "取号契约：运单号、子母件与幂等", link: "/docs/Backend/ShippingCarrier/LabelContract/index.md" },
+      { text: "面单渲染与打印：ZPL、DPI 与贴纸", link: "/docs/Backend/ShippingCarrier/LabelRender/index.md" },
+      { text: "选渠道：地址、可达与运价", link: "/docs/Backend/ShippingCarrier/Sourcing/index.md" },
+      { text: "轨迹归一：词汇、乱序与重复", link: "/docs/Backend/ShippingCarrier/TrackingNormalize/index.md" },
+      { text: "异常件与时效承诺", link: "/docs/Backend/ShippingCarrier/ExceptionPromise/index.md" },
+      { text: "承运商账单核对", link: "/docs/Backend/ShippingCarrier/InvoiceAudit/index.md" },
+      { text: "实战：一票包裹的最小可跑链路", link: "/docs/Backend/ShippingCarrier/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ShippingCarrier/FAQ/index.md" },
+    ],
+  },
+];
+
+export const AdDelivery = [
+  {
+    text: "广告投放与实时竞价工程",
+    link: "/docs/Backend/AdDelivery/index.md",
+    items: [
+      { text: "总览：七段投放链与三个口径", link: "/docs/Backend/AdDelivery/Overview/index.md" },
+      { text: "供应链：SSP、DSP 与 ads.txt 三角", link: "/docs/Backend/AdDelivery/SupplyChain/index.md" },
+      { text: "定向与频控：交集、四层窗口与隐私", link: "/docs/Backend/AdDelivery/Targeting/index.md" },
+      { text: "竞价与排序：eCPM、一价二价与压价", link: "/docs/Backend/AdDelivery/Auction/index.md" },
+      { text: "出价与计费：CPM、CPC 与 oCPM", link: "/docs/Backend/AdDelivery/Bidding/index.md" },
+      { text: "预算与平滑：烧完、均匀与反馈", link: "/docs/Backend/AdDelivery/Pacing/index.md" },
+      { text: "归因与回传：窗口、延迟与丢失", link: "/docs/Backend/AdDelivery/Attribution/index.md" },
+      { text: "报表与对账：三套口径的差", link: "/docs/Backend/AdDelivery/Reporting/index.md" },
+      { text: "实战：一条能跑起来的竞价链路", link: "/docs/Backend/AdDelivery/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/AdDelivery/FAQ/index.md" },
+    ],
+  },
+];
+
+export const GraphQL = [
+  {
+    text: "GraphQL 服务端工程",
+    link: "/docs/Backend/GraphQL/index.md",
+    items: [
+      { text: "总览：一种语言、三种操作与选型边界", link: "/docs/Backend/GraphQL/Overview/index.md" },
+      { text: "Schema：类型系统与 SDL", link: "/docs/Backend/GraphQL/Schema/index.md" },
+      { text: "Query：查询语法、变量与片段", link: "/docs/Backend/GraphQL/Queries/index.md" },
+      { text: "Mutation：变更、Payload 模式与幂等", link: "/docs/Backend/GraphQL/Mutations/index.md" },
+      { text: "性能：N+1、DataLoader 与复杂度控制", link: "/docs/Backend/GraphQL/Performance/index.md" },
+      { text: "安全：鉴权、深度限制与内省", link: "/docs/Backend/GraphQL/Security/index.md" },
+    ],
+  },
+];

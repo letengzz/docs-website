@@ -57,6 +57,7 @@ export const nav = [
       { text: "营销计价与优惠分摊", link: "/docs/Backend/PricingPromotion" },
       { text: "消息通知与触达工程", link: "/docs/Backend/NotificationDelivery" },
       { text: "订阅计费与周期账单工程", link: "/docs/Backend/SubscriptionBilling" },
+      { text: "广告投放与实时竞价", link: "/docs/Backend/AdDelivery" },
     ]
   },
   {

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="920" height="380" role="img" aria-label="订单检索：游标分页、索引顺序与快照导出">
+<rect x="0" y="0" width="920" height="380" fill="#F8FAFC"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">订单检索：游标分页、索引顺序与快照导出</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">读侧不报错，只表现为「少一行、多一行、总不对」</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748B"/></marker></defs>
+<text x="28" y="88" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">① 三条索引：排序键在前</text>
+<rect x="28" y="100" width="276" height="74" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="166.0" y="133.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1E293B">ix_order_read_created</text>
+<text x="166.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">(created_at desc, order_id desc)</text>
+<rect x="322" y="100" width="276" height="74" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="460.0" y="133.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1E293B">ix_order_read_merchant</text>
+<text x="460.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">(merchant_id, created_at desc)</text>
+<rect x="616" y="100" width="276" height="74" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="754.0" y="133.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1E293B">ix_order_read_buyer</text>
+<text x="754.0" y="153.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">(buyer_id, created_at desc, order_id)</text>
+<text x="28" y="208" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">② 两种翻页：成本与漂移</text>
+<rect x="28" y="220" width="276" height="72" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="166.0" y="252.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1E293B">offset=150000</text>
+<text x="166.0" y="272.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">扫 150,020 行 / 10.82 ms</text>
+<rect x="322" y="220" width="276" height="72" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="460.0" y="252.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1E293B">游标（keyset）</text>
+<text x="460.0" y="272.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">每页恒定 / 7,500 页 662 ms</text>
+<rect x="616" y="220" width="276" height="72" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="754.0" y="252.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1E293B">漂移</text>
+<text x="754.0" y="272.0" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">offset 7 行重复 / 游标 0</text>
+<text x="28" y="322" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">③ 导出：快照 → 分片 → 自校验（行数 + 金额）→ 通知</text>
+<rect x="28" y="334" width="158" height="34" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="107.0" y="356.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1E293B">建快照</text>
+<line x1="186" y1="351" x2="202" y2="351" stroke="#64748B" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="204" y="334" width="158" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="283.0" y="356.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1E293B">固化结果集</text>
+<line x1="362" y1="351" x2="378" y2="351" stroke="#64748B" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="380" y="334" width="158" height="34" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="459.0" y="356.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1E293B">分片写文件</text>
+<line x1="538" y1="351" x2="554" y2="351" stroke="#64748B" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="556" y="334" width="158" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="635.0" y="356.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1E293B">自校验</text>
+<line x1="714" y1="351" x2="730" y2="351" stroke="#64748B" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="732" y="334" width="158" height="34" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="811.0" y="356.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1E293B">下发链接</text>
+</svg>
