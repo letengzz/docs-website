@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img" aria-label="实战十步流水">
+<title>实战十步流水</title>
+<rect x="0" y="0" width="940" height="400" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" text-anchor="start" font-weight="700">实战十步：从建表到月结，每一步都有可验证的收尾</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">九张表、十条命令；其中三条是「必须失败」的反向用例</text>
+<rect x="30" y="86" width="160" height="72" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="110" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" text-anchor="middle" font-weight="700">01</text>
+<text x="110" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">建币种表</text>
+<line x1="190" y1="122" x2="208" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="210" y="86" width="160" height="72" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="290" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" text-anchor="middle" font-weight="700">02</text>
+<text x="290" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">建汇率快照</text>
+<line x1="370" y1="122" x2="388" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="390" y="86" width="160" height="72" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="470" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" text-anchor="middle" font-weight="700">03</text>
+<text x="470" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">建订单与分录</text>
+<line x1="550" y1="122" x2="568" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="570" y="86" width="160" height="72" rx="8" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="650" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" text-anchor="middle" font-weight="700">04</text>
+<text x="650" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">写金额类型</text>
+<line x1="730" y1="122" x2="748" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="750" y="86" width="160" height="72" rx="8" fill="#ccfbf1" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="830" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" text-anchor="middle" font-weight="700">05</text>
+<text x="830" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">算换算</text>
+<rect x="30" y="216" width="160" height="72" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="110" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" text-anchor="middle" font-weight="700">06</text>
+<text x="110" y="270" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">跑分摊</text>
+<line x1="190" y1="252" x2="208" y2="252" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="210" y="216" width="160" height="72" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="290" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" text-anchor="middle" font-weight="700">07</text>
+<text x="290" y="270" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">做重估</text>
+<line x1="370" y1="252" x2="388" y2="252" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="390" y="216" width="160" height="72" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="470" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" text-anchor="middle" font-weight="700">08</text>
+<text x="470" y="270" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">核销结算</text>
+<line x1="550" y1="252" x2="568" y2="252" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="570" y="216" width="160" height="72" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="650" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" text-anchor="middle" font-weight="700">09</text>
+<text x="650" y="270" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">出三套口径</text>
+<line x1="730" y1="252" x2="748" y2="252" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="750" y="216" width="160" height="72" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="830" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" text-anchor="middle" font-weight="700">10</text>
+<text x="830" y="270" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">跑负向用例</text>
+<text x="30" y="358" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">负向三例：单位写死 ×100 必须报错 · 汇率方向取反必须对不上账 · 重估重跑必须 0 行</text>
+</svg>

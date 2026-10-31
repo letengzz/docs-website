@@ -58,6 +58,7 @@ export const nav = [
       { text: "消息通知与触达工程", link: "/docs/Backend/NotificationDelivery" },
       { text: "订阅计费与周期账单工程", link: "/docs/Backend/SubscriptionBilling" },
       { text: "广告投放与实时竞价", link: "/docs/Backend/AdDelivery" },
+      { text: "多币种与汇率折算", link: "/docs/Backend/MultiCurrency" },
     ]
   },
   {

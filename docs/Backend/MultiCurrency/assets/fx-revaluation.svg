@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img" aria-label="期末重估流程与期间闸门">
+<title>期末重估流程与期间闸门</title>
+<rect x="0" y="0" width="940" height="400" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" text-anchor="start" font-weight="700">期末重估：只调余额，不动明细</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">重估是「同一笔余额在新汇率下的投影」，重复跑一次就是双倍损益</text>
+<rect x="30" y="86" width="200" height="84" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="130.0" y="123.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="600">取期末原币余额</text>
+<text x="130.0" y="141.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle" font-weight="400">按 account + currency</text>
+<line x1="230" y1="128" x2="258" y2="128" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="260" y="86" width="200" height="84" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="360.0" y="123.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="600">取期末汇率</text>
+<text x="360.0" y="141.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle" font-weight="400">快照表 closing</text>
+<line x1="460" y1="128" x2="488" y2="128" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="490" y="86" width="200" height="84" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="590.0" y="123.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="600">算新本位币值</text>
+<text x="590.0" y="141.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle" font-weight="400">round(余额×汇率)</text>
+<line x1="690" y1="128" x2="718" y2="128" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="720" y="86" width="200" height="84" rx="8" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="820.0" y="123.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="600">差额入损益</text>
+<text x="820.0" y="141.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle" font-weight="400">未实现汇兑损益</text>
+<rect x="30" y="200" width="430" height="84" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="245.0" y="228.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">没有闸门：重跑两次</text>
+<text x="245.0" y="246.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">损益翻倍：47,718.39 → 95,436.78</text>
+<text x="245.0" y="261.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">报表看起来只是「这个月波动大」</text>
+<rect x="480" y="200" width="430" height="84" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="695.0" y="228.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">有闸门：UNIQUE(period, account)</text>
+<text x="695.0" y="246.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">第二次写入 0 行</text>
+<text x="695.0" y="261.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">重跑三次仍是 47,718.39</text>
+<line x1="30" y1="302" x2="910" y2="302" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="5 3"/>
+<text x="30" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">读数：100 笔外币应收合计 447,639.58 USD，汇率 7.1234→7.2300（+1.50%），未实现损益 47,718.39 元</text>
+<text x="30" y="352" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">重估只写「余额的差」；审计要的是「哪一期、哪个科目、按哪个汇率」，三样缺一不可</text>
+</svg>

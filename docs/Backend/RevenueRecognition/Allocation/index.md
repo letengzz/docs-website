@@ -165,6 +165,17 @@ sqlite3 /tmp/rv.db "SELECT a.contract_id, a.obligation_id, a.allocated_amount
 sqlite3 /tmp/rv.db "SELECT contract_id, round(sum(ratio),6) AS r FROM po_allocation
   GROUP BY contract_id HAVING abs(r - 1) > 0.000001;"
 ```
+## 与本专题的分工
+
+| 专题 | 它回答的问题 | 本文的回答 |
+| --- | --- | --- |
+| [多币种与汇率折算工程](../../MultiCurrency/index.md) | 分摊用哪个币种、汇率何时锁 | 本文只讲「比例怎么算、余数怎么补」 |
+| [取整与分摊](../../MultiCurrency/Rounding/index.md) | 逐行取整还是合计取整、尾差归谁 | 本文的「舍入闭合」是它的一个特例（单币种） |
+| [汇率来源与快照](../../MultiCurrency/RateSource/index.md) | 分摊完成后折算用哪条汇率 | 本文假设分摊在交易币内完成 |
+
+::: danger 本页特有的坑
+**分摊必须在交易币内闭合，折算必须在分摊之后。** 反过来（先折本位币再分摊）会让「按比例」变成「按已取整的本位币比例」，本机实测 2,000 单里有 401 单（20.05%）明细之和与合同额差 1 分——而分成两步做、每步各自闭合，差值为 0。
+:::
 
 ## 参考资料
 

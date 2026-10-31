@@ -1190,3 +1190,22 @@ export const RevenueRecognition = [
     ],
   },
 ];
+
+export const MultiCurrency = [
+  {
+    text: "多币种与汇率折算工程",
+    link: "/docs/Backend/MultiCurrency/index.md",
+    items: [
+      { text: "总览：七段折算链与四种币种", link: "/docs/Backend/MultiCurrency/Overview/index.md" },
+      { text: "金额与最小单位", link: "/docs/Backend/MultiCurrency/MoneyModel/index.md" },
+      { text: "汇率来源与快照", link: "/docs/Backend/MultiCurrency/RateSource/index.md" },
+      { text: "换算路径", link: "/docs/Backend/MultiCurrency/Conversion/index.md" },
+      { text: "取整与分摊", link: "/docs/Backend/MultiCurrency/Rounding/index.md" },
+      { text: "期末重估", link: "/docs/Backend/MultiCurrency/Valuation/index.md" },
+      { text: "结算与已实现损益", link: "/docs/Backend/MultiCurrency/Settlement/index.md" },
+      { text: "多币种对账与报表折算", link: "/docs/Backend/MultiCurrency/Reconciliation/index.md" },
+      { text: "实战：本机跑通一条折算闭环", link: "/docs/Backend/MultiCurrency/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/MultiCurrency/FAQ/index.md" },
+    ],
+  },
+];

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img" aria-label="四种币种口径">
+<title>四种币种口径</title>
+<rect x="0" y="0" width="940" height="400" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" text-anchor="start" font-weight="700">四种币种口径：一张单据上最多能同时出现四个币种</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">它们各自解决一个问题，混成一个字段，后面每一段都会拿错数</text>
+<rect x="20" y="86" width="210" height="120" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="125" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="700">交易币</text>
+<text x="125" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">Transaction</text>
+<text x="125" y="159" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">客户签的那一个</text>
+<text x="125" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">由客户与合同决定</text>
+<rect x="243" y="86" width="210" height="120" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="348" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="700">记账币</text>
+<text x="348" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">Functional</text>
+<text x="348" y="159" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">账簿与报表的基准</text>
+<text x="348" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">由集团与准则决定</text>
+<rect x="466" y="86" width="210" height="120" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="571" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="700">结算币</text>
+<text x="571" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">Settlement</text>
+<text x="571" y="159" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">银行实际收付的那一个</text>
+<text x="571" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">由渠道与银行决定</text>
+<rect x="689" y="86" width="210" height="120" rx="8" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="794" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="700">展示币</text>
+<text x="794" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">Presentment</text>
+<text x="794" y="159" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">用户屏幕上的那一个</text>
+<text x="794" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">由请求头决定</text>
+<text x="470" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">交易币 ──× 汇率──▶ 记账币 ──收款/付款──▶ 结算币</text>
+<text x="470" y="258" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="middle" font-weight="400">展示币只在下游渲染时出现，永远不参与记账</text>
+<rect x="20" y="284" width="440" height="84" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="312.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">同一笔单，四个数都能自洽</text>
+<text x="240.0" y="330.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">合同 1,000 USD / 本位币 7,123.40 CNY</text>
+<text x="240.0" y="345.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">到账 7,250.00 CNY / 页面显示 $1,000.00</text>
+<rect x="480" y="284" width="440" height="84" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="700.0" y="312.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">只存一个 amount 的后果</text>
+<text x="700.0" y="330.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">没人说得清它是哪个数</text>
+<text x="700.0" y="345.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">对账时四方各拿一本书</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img" aria-label="多币种问题分诊">
+<title>多币种问题分诊</title>
+<rect x="0" y="0" width="940" height="400" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" text-anchor="start" font-weight="700">分诊：先问「差多少」，再问「差在哪」</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">四个入口对应四类根因；顺序错了会在错误的表上查一整天</text>
+<rect x="350" y="80" width="240" height="60" rx="8" fill="#0f172a"/>
+<text x="470" y="106" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="700">金额不对</text>
+<text x="470" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1" text-anchor="middle" font-weight="400">先量级，再定位</text>
+<line x1="470" y1="142" x2="120" y2="182" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="20" y="184" width="200" height="86" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="120" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="600">差 99 倍</text>
+<text x="120" y="232" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">单位与 exponent</text>
+<text x="120" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">查币种表 minor_unit</text>
+<line x1="470" y1="142" x2="348" y2="182" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="248" y="184" width="200" height="86" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="348" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="600">差几分钱</text>
+<text x="348" y="232" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">取整与顺序</text>
+<text x="348" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">查是否逐行取整</text>
+<line x1="470" y1="142" x2="576" y2="182" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="476" y="184" width="200" height="86" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="576" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="600">只差某些单</text>
+<text x="576" y="232" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">币种或时点</text>
+<text x="576" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">查快照是不是同一条</text>
+<line x1="470" y1="142" x2="804" y2="182" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="704" y="184" width="200" height="86" rx="8" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="804" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="middle" font-weight="600">差在损益行</text>
+<text x="804" y="232" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">重估或成本法</text>
+<text x="804" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">查期间闸门与 FIFO</text>
+<line x1="20" y1="296" x2="920" y2="296" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="5 3"/>
+<text x="20" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">三分钟判据：先看合计差的比例（99 倍 / 万分之一 / 整体 2%）——比例本身就是根因的指纹</text>
+<text x="20" y="346" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#64748b" text-anchor="start" font-weight="400">读数对照：99 倍 → 单位；26.9% 单差 1 分 → 三角换算；整体 2.03% → 记账与结算汇率不同</text>
+</svg>

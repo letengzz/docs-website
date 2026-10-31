@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img" aria-label="结算核销与已实现汇兑损益">
+<title>结算核销与已实现汇兑损益</title>
+<rect x="0" y="0" width="940" height="400" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" text-anchor="start" font-weight="700">结算：已实现损益在核销那一刻才落地</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">记账汇率与结算汇率不同，差额不是误差，是损益</text>
+<rect x="30" y="86" width="260" height="96" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="160.0" y="120.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">应收 1,000 USD</text>
+<text x="160.0" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">记账汇率 7.1234</text>
+<text x="160.0" y="153.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">本位币 7,123.40</text>
+<rect x="340" y="86" width="260" height="96" rx="8" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="470.0" y="120.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">收款 1,000 USD</text>
+<text x="470.0" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">结算汇率 7.2680</text>
+<text x="470.0" y="153.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">本位币 7,268.00</text>
+<rect x="650" y="86" width="260" height="96" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="780.0" y="120.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">已实现损益</text>
+<text x="780.0" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">7,268.00 − 7,123.40</text>
+<text x="780.0" y="153.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">= +144.60（收益）</text>
+<line x1="290" y1="134" x2="338" y2="134" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="600" y1="134" x2="648" y2="134" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="30" y1="204" x2="910" y2="204" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="5 3"/>
+<text x="30" y="230" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">成本法决定「已实现多少」：同一笔卖出，两种成本法给出两个损益</text>
+<rect x="30" y="248" width="430" height="92" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="245.0" y="280.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">FIFO：先买先出</text>
+<text x="245.0" y="298.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">卖出 300 USD @7.40</text>
+<text x="245.0" y="313.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">成本 2,160.00 → 收益 60.00</text>
+<rect x="480" y="248" width="430" height="92" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="695.0" y="280.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">加权平均</text>
+<text x="695.0" y="298.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">成本 2,172.00 → 收益 48.00</text>
+<text x="695.0" y="313.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">与 FIFO 差 12.00（25%）</text>
+</svg>

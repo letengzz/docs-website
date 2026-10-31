@@ -41,8 +41,11 @@
 
 ## 4. 回滚动作
 
-回滚命令由 `python Release/tagplan.py --version <版本> --sha <本次 sha> --previous-sha <上一个 sha>
---channel prod` 生成，**引用的是不可变身份标签**，不是环境指针：
+回滚命令由下面这一条生成（**引用的是不可变身份标签**，不是环境指针）：
+
+```shell
+python Release/tagplan.py --version <版本> --sha <本次 sha> --previous-sha <上一个 sha> --channel prod
+```
 
 ```text
 IMAGE_REF=reg.example.com/team/backend-template:sha-<上一个 sha 的前 12 位> \
