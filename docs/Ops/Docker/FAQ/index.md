@@ -86,11 +86,16 @@ docker ps -a | grep 8080
 
 ### 7. 镜像构建缓存总是不生效
 
-检查三点：
+先理解层键：**某一层的键 = 该条指令的文本 + 父层摘要**。父层一变，后面所有层全部失效。所以失效通常不是「缓存坏了」，而是「键里进了不该进的东西」：
 
-1. `.dockerignore` 是否排除了 `node_modules`、`dist` 等大目录；
-2. 依赖安装指令是否放在 `COPY . .` 之前；
-3. 是否用了 `--no-cache` 或 BuildKit 缓存配置不正确。
+1. **`.dockerignore` 没排除** `node_modules`、`dist`、`.git`：`COPY . .` 的内容变了，层键就变（改一次日志文件也会废掉后面的层）。
+2. **顺序不当**：依赖安装指令必须放在 `COPY . .` 之前，否则「改一行业务代码 → 重新装依赖 → 再装一次编译」。
+3. **`RUN apt-get update` 没和 `install` 写在同一条 `RUN`**：`update` 那层被缓存后，后面的 `install` 会拿着**几天前的索引**去装包，表现是「装不上最新版」或「404」。正确写法是 `RUN apt-get update && apt-get install -y --no-install-recommends pkg`。
+4. **基础镜像用了 tag 而不是 digest**：`FROM node:22` 指向会移动的 tag，父层摘要变了就全废；要稳定请 pin `@sha256:`，并**同时固定 `--platform`**（多架构 manifest 会按平台选不同 digest）。
+5. **误用 `--no-cache` 或 CI 每轮都是新 runner**：后者不是缓存问题，是没有持久层存储；此时要么用 registry 作为层缓存后端（`--cache-to`/`--cache-from`），要么接受冷启。
+6. 想「层缓存失效但下载不重复」：用 BuildKit 的 `RUN --mount=type=cache,target=/root/.cache/pnpm`（或对应包管理器的 store 目录），它与层缓存是两套机制。
+
+完整的键与治理口径见[构建缓存与可复现构建](../../../Tools/BuildCache/index.md)。
 
 ### 8. 磁盘被容器日志和镜像占满
 

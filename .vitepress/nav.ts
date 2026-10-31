@@ -137,6 +137,7 @@ export const nav = [
     text: "工具", items: [
       { text: "工具总览", link: "/docs/Tools/index.md" },
       { text: "构建和依赖管理工具", link: "/docs/Tools/Build" },
+      { text: "构建缓存与可复现构建", link: "/docs/Tools/BuildCache" },
       { text: "CI/CD", link: "/docs/Tools/CICD" },
       { text: "数据库客户端", link: "/docs/Tools/DatabaseClients" },
       { text: "API 设计与治理", link: "/docs/Tools/APIDesign" },

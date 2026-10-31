@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 408" width="760" height="408" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="408" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">六种实现映射到同一套抽象</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">键 / 值 / 作用域 / 失效——名字不同，问题相同</text>
+  <rect x="30" y="70" width="168" height="78" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="114" y="88.2" text-anchor="middle" font-size="9.5" fill="#3730A3" font-weight="bold">键（key）</text>
+  <text x="114" y="105" text-anchor="middle" font-size="7.5" fill="#4338CA">谁算的？靠注解还是靠沙箱</text>
+  <text x="114" y="122.25" text-anchor="middle" font-size="7.5" fill="#4338CA">稳定性来自约定还是结构</text>
+  <rect x="212" y="70" width="168" height="78" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="296" y="88.2" text-anchor="middle" font-size="9.5" fill="#1E3A8A" font-weight="bold">值（value）</text>
+  <text x="296" y="105" text-anchor="middle" font-size="7.5" fill="#1D4ED8">任务输出还是每文件</text>
+  <text x="296" y="122.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">决定能否跨任务去重</text>
+  <rect x="394" y="70" width="168" height="78" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="478" y="88.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">作用域</text>
+  <text x="478" y="105" text-anchor="middle" font-size="7.5" fill="#6D28D9">机器 / 仓库 / 团队</text>
+  <text x="478" y="122.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">决定污染半径</text>
+  <rect x="576" y="70" width="154" height="78" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="653" y="88.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">失效</text>
+  <text x="653" y="105" text-anchor="middle" font-size="7.5" fill="#B45309">换前缀 / 删条目</text>
+  <text x="653" y="122.25" text-anchor="middle" font-size="7.5" fill="#B45309">决定止血速度</text>
+  <rect x="37" y="176" width="108" height="118" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="91" y="194.2" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">Gradle</text>
+  <text x="91" y="211" text-anchor="middle" font-size="6.4" fill="#047857">任务输出</text>
+  <text x="91" y="225.72" text-anchor="middle" font-size="6.4" fill="#047857">键靠注解（约定）</text>
+  <text x="91" y="240.44" text-anchor="middle" font-size="6.4" fill="#047857">默认关闭</text>
+  <text x="91" y="255.16" text-anchor="middle" font-size="6.4" fill="#047857">路径默认绝对</text>
+  <rect x="155" y="176" width="108" height="118" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="209" y="194.2" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">Bazel</text>
+  <text x="209" y="211" text-anchor="middle" font-size="6.4" fill="#0F766E">action + CAS</text>
+  <text x="209" y="225.72" text-anchor="middle" font-size="6.4" fill="#0F766E">沙箱强制声明（结构）</text>
+  <text x="209" y="240.44" text-anchor="middle" font-size="6.4" fill="#0F766E">默认不持久</text>
+  <text x="209" y="255.16" text-anchor="middle" font-size="6.4" fill="#0F766E">AC/CAS 分离</text>
+  <rect x="273" y="176" width="108" height="118" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.6"/>
+  <text x="327" y="194.2" text-anchor="middle" font-size="9" fill="#155E75" font-weight="bold">Turborepo</text>
+  <text x="327" y="211" text-anchor="middle" font-size="6.4" fill="#0E7490">package#task</text>
+  <text x="327" y="225.72" text-anchor="middle" font-size="6.4" fill="#0E7490">global + task 两段</text>
+  <text x="327" y="240.44" text-anchor="middle" font-size="6.4" fill="#0E7490">本地默认开</text>
+  <text x="327" y="255.16" text-anchor="middle" font-size="6.4" fill="#0E7490">根内部包进 global</text>
+  <rect x="391" y="176" width="108" height="118" rx="8" fill="#F7FEE7" stroke="#65A30D" stroke-width="1.6"/>
+  <text x="445" y="194.2" text-anchor="middle" font-size="9" fill="#3F6212" font-weight="bold">ccache</text>
+  <text x="445" y="211" text-anchor="middle" font-size="6.4" fill="#4D7C0F">一个 .o</text>
+  <text x="445" y="225.72" text-anchor="middle" font-size="6.4" fill="#4D7C0F">预处理后源 + 参数</text>
+  <text x="445" y="240.44" text-anchor="middle" font-size="6.4" fill="#4D7C0F">装了就生效</text>
+  <text x="445" y="255.16" text-anchor="middle" font-size="6.4" fill="#4D7C0F">basedir/hash_dir</text>
+  <rect x="509" y="176" width="108" height="118" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="563" y="194.2" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">Docker 层</text>
+  <text x="563" y="211" text-anchor="middle" font-size="6.4" fill="#C2410C">一条指令的层</text>
+  <text x="563" y="225.72" text-anchor="middle" font-size="6.4" fill="#C2410C">指令 + 父层摘要</text>
+  <text x="563" y="240.44" text-anchor="middle" font-size="6.4" fill="#C2410C">默认开</text>
+  <text x="563" y="255.16" text-anchor="middle" font-size="6.4" fill="#C2410C">COPY 顺序决定</text>
+  <rect x="627" y="176" width="108" height="118" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.6"/>
+  <text x="681" y="194.2" text-anchor="middle" font-size="9" fill="#9D174D" font-weight="bold">npm store</text>
+  <text x="681" y="211" text-anchor="middle" font-size="6.4" fill="#BE185D">一个依赖包</text>
+  <text x="681" y="225.72" text-anchor="middle" font-size="6.4" fill="#BE185D">坐标 + integrity</text>
+  <text x="681" y="240.44" text-anchor="middle" font-size="6.4" fill="#BE185D">默认开</text>
+  <text x="681" y="255.16" text-anchor="middle" font-size="6.4" fill="#BE185D">换 registry 会失配</text>
+  <text x="380" y="312" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">同一套抽象，六种实现：把差异放进这四格里，选型就变成可讨论的问题</text>
+  <rect x="30" y="328" width="700" height="62" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="346.2" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">选型判据不是「哪个先进」，而是「你在解决哪个问题」</text>
+  <text x="380" y="363" text-anchor="middle" font-size="7.5" fill="#334155">装依赖慢 → 依赖缓存 / cache mount；改一行重编全仓 → 任务级缓存；二进制不一致 → 可复现构建</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

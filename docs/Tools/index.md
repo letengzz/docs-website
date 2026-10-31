@@ -1,6 +1,7 @@
 # 工具
 
 - [构建和依赖管理工具](Build/index.md)
+- [构建缓存与可复现构建](BuildCache/index.md)
 - [CI/CD](CICD/index.md)
 - [数据库客户端](DatabaseClients/index.md)
 - [API 设计与治理](APIDesign/index.md)

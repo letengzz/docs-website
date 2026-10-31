@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 396" width="760" height="396" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="396" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">六类假命中与三层验证</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">假命中是唯一无提示的错误：构建绿、测试过，只是编译的不是你刚改的代码</text>
+  <rect x="30" y="70" width="222" height="84" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="141" y="88.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">① 漏输入</text>
+  <text x="141" y="105" text-anchor="middle" font-size="7.5" fill="#B91C1C">新增文件/目录未被覆盖</text>
+  <text x="141" y="122.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">改它不重建</text>
+  <rect x="268" y="70" width="222" height="84" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="379" y="88.2" text-anchor="middle" font-size="9.5" fill="#9A3412" font-weight="bold">② 环境泄漏</text>
+  <text x="379" y="105" text-anchor="middle" font-size="7.5" fill="#C2410C">NODE_ENV / TZ / locale</text>
+  <text x="379" y="122.25" text-anchor="middle" font-size="7.5" fill="#C2410C">生产命中开发产物</text>
+  <rect x="506" y="70" width="222" height="84" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="617" y="88.2" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">③ 时间与随机</text>
+  <text x="617" y="105" text-anchor="middle" font-size="7.5" fill="#B45309">Date / 随机端口 / UUID</text>
+  <text x="617" y="122.25" text-anchor="middle" font-size="7.5" fill="#B45309">每次都不同</text>
+  <rect x="30" y="166" width="222" height="84" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.6"/>
+  <text x="141" y="184.2" text-anchor="middle" font-size="9.5" fill="#9D174D" font-weight="bold">④ 绝对路径</text>
+  <text x="141" y="201" text-anchor="middle" font-size="7.5" fill="#BE185D">sourcemap / debug 信息</text>
+  <text x="141" y="218.25" text-anchor="middle" font-size="7.5" fill="#BE185D">还原到别处不可用</text>
+  <rect x="268" y="166" width="222" height="84" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="379" y="184.2" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">⑤ 副作用任务</text>
+  <text x="379" y="201" text-anchor="middle" font-size="7.5" fill="#B91C1C">测试 / 迁移 / --fix</text>
+  <text x="379" y="218.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">回放日志当成跑过</text>
+  <rect x="506" y="166" width="222" height="84" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="617" y="184.2" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">⑥ 版本漂移</text>
+  <text x="617" y="201" text-anchor="middle" font-size="7.5" fill="#6D28D9">工具链未进键 / SNAPSHOT</text>
+  <text x="617" y="218.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">升级后行为变了产物没变</text>
+  <text x="380" y="274" text-anchor="middle" font-size="9" fill="#334155" font-weight="bold">验证三档：同机双跑（时间/随机） → 跨目录双跑（路径） → 跨机器（工具链/locale）</text>
+  <rect x="30" y="292" width="340" height="88" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="200" y="310.2" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">识别：三个动作</text>
+  <text x="200" y="327" text-anchor="middle" font-size="7.5" fill="#047857">① 改一个必影响输出的文件 → 产物必须变</text>
+  <text x="200" y="344.25" text-anchor="middle" font-size="7.5" fill="#047857">② 有缓存 vs 无缓存 → 产物必须一致</text>
+  <text x="200" y="361.5" text-anchor="middle" font-size="7.5" fill="#047857">③ 抽检：随机强制重跑 + 比对（进 CI）</text>
+  <rect x="390" y="292" width="340" height="88" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="560" y="310.2" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">止血：五步，顺序不能换</text>
+  <text x="560" y="327" text-anchor="middle" font-size="7.5" fill="#334155">留现场 → 关远程读 → 定位键</text>
+  <text x="560" y="344.25" text-anchor="middle" font-size="7.5" fill="#334155">→ 换指纹前缀 → 补断言</text>
+  <text x="560" y="361.5" text-anchor="middle" font-size="7.5" fill="#334155">（先清缓存会丢掉现场，且远程会再拉回来）</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

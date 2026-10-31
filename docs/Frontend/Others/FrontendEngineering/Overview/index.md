@@ -103,6 +103,12 @@
 ## 相关专题
 
 - [包管理器深入](../../../../Tools/PackageManager/index.md)：npm/pnpm/Yarn 选型、lockfile 与 monorepo，是工程化基线的前置依赖
+- [构建缓存与可复现构建](../../../../Tools/BuildCache/index.md)：前端侧最值钱的一层——**打包器的缓存键**（模块 ID、sourcemap 路径、环境变量）决定了「改一行要不要重新打包整个应用」
+
+::: warning 前端工程化里两个「以为在优化构建」的做法
+1. **只缓存 `node_modules`**：省的是安装时间，打包仍然是全量。真正省时间的是**打包器的持久缓存**（`cache: { type: 'filesystem' }` 之类）与**任务级缓存**（Turborepo 在 monorepo 里对 `build` 任务做哈希）。
+2. **缓存了但产物不可复现**：sourcemap 里带绝对路径、产物里带构建时间，于是命中率看起来在掉、跨目录构建的产物又对不上。判据很简单：`grep -rl "$(pwd)" dist` 必须无输出。
+:::
 
 ## 参考资料
 
