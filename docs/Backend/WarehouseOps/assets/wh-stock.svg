@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="920" height="380" role="img" aria-label="库存的三层：流水、余量、快照，各答一个不同的问题">
+<title>库存的三层：流水、余量、快照，各答一个不同的问题</title>
+<rect x="0" y="0" width="920" height="380" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" text-anchor="start" font-weight="700">库存的三层：流水、余量、快照，各答一个不同的问题</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">流水回答「怎么变成现在这样」、余量回答「现在有多少」、快照回答「当时有多少」</text>
+<rect x="24" y="90" width="268" height="96" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="38" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="start" font-weight="600">stock_txn 库存流水</text>
+<text x="38" y="134" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">只追加，永不更新</text>
+<text x="38" y="152" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">bin + sku + delta + reason</text>
+<text x="38" y="170" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">对上：sum(delta)</text>
+<rect x="324" y="90" width="268" height="96" rx="8" fill="#ccfbf1" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="338" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="start" font-weight="600">stock_qty 库位余量</text>
+<text x="338" y="134" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">可更新，带版本号</text>
+<text x="338" y="152" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">(bin, sku) 主键 + version</text>
+<text x="338" y="170" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">对上：条件更新 qty>0</text>
+<rect x="624" y="90" width="268" height="96" rx="8" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="638" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="start" font-weight="600">stock_snapshot 日快照</text>
+<text x="638" y="134" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">只追加，按日切片</text>
+<text x="638" y="152" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">snapshot_date + bin + qty</text>
+<text x="638" y="170" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">对上：与当日流水闭合</text>
+<line x1="292" y1="138" x2="320" y2="138" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="592" y1="138" x2="620" y2="138" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="24" y="224" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="start" font-weight="600">三条闭合关系（任一不成立就是账实不符，而不是「数据有小误差」）</text>
+<rect x="24" y="240" width="420" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="38" y="261" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">余量 = 期初 + Σ流水（按库位）</text>
+<rect x="24" y="280" width="420" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="38" y="301" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">当日快照 = 当日流水累计 + 前一日快照</text>
+<rect x="24" y="320" width="420" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="38" y="341" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">短拣率 = 短拣行 / 拣货行（分子分母同一时间窗）</text>
+<text x="470" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="start" font-weight="600">本机读数</text>
+<text x="470" y="268" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">40 个请求读到同一快照后各自写回：</text>
+<text x="470" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">40 次「成功」，余量只少 1 件（超卖 39）</text>
+<text x="470" y="312" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">500 次操作后余量与流水累计差：A 4 件 / B 7 件</text>
+<text x="470" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">两边都不报错，只有对账日才发现</text>
+</svg>

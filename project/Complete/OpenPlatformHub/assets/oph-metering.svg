@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img" aria-label="计量的唯一写入点与三处重复来源">
+<title>计量的唯一写入点与三处重复来源</title>
+<rect x="0" y="0" width="960" height="430" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">计量只允许一个写入点，重复必须在这里被吃掉</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" font-weight="400">请求可以被重试、回放、重投，但 usage 表只认一次</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="24" y="88" width="190" height="86" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="38" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">① 请求进来</text>
+<text x="38" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">带 request_id</text>
+<text x="38" y="154" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">（客户端生成，重试不变）</text>
+<line x1="214" y1="131" x2="244" y2="131" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="246" y="80" width="220" height="102" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="260" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">② 计量中间件</text>
+<text x="260" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">唯一写入点</text>
+<text x="260" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">UNIQUE(app_id,request_id)</text>
+<text x="260" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">重复 → 拒绝并返回首次结果</text>
+<line x1="466" y1="131" x2="496" y2="131" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="498" y="80" width="200" height="102" rx="8" fill="#ccfbf1" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="512" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">③ usage 明细</text>
+<text x="512" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">只追加，不改不删</text>
+<text x="512" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">210,000 → 200,000</text>
+<text x="512" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">（拒掉 10,000 条重试）</text>
+<line x1="698" y1="131" x2="728" y2="131" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="730" y="80" width="206" height="102" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="744" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">④ 小时预聚合</text>
+<text x="744" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">3,600 行替换 210,000 行</text>
+<text x="744" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">账单查询 106.1 → 1.4 ms</text>
+<text x="744" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="None" font-weight="400">（74.1×）</text>
+<text x="28" y="222" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">三处会让「一次调用被记两次」的地方</text>
+<rect x="24" y="240" width="900" height="44" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="38" y="259" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">网关重试</text>
+<text x="150" y="259" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="None" font-weight="400">5xx 后客户端重发，request_id 若重新生成 ⇒ 记两次</text>
+<text x="660" y="259" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="None" font-weight="400">必须由客户端生成并复用</text>
+<rect x="24" y="292" width="900" height="44" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="38" y="311" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">回调重放</text>
+<text x="150" y="311" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="None" font-weight="400">/webhooks/replay 补推历史事件 ⇒ 若按事件计数则翻倍</text>
+<text x="660" y="311" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="None" font-weight="400">按 request_id 去重，不按事件</text>
+<rect x="24" y="344" width="900" height="44" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="38" y="363" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">批处理重跑</text>
+<text x="150" y="363" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="None" font-weight="400">日结任务失败重跑 ⇒ 若先删后插则中间态被计费</text>
+<text x="660" y="363" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="None" font-weight="400">用 (app_id, request_id) 幂等，不删</text>
+<text x="28" y="404" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">写入成本：无唯一键 196.4 ms / 有键 558.2 ms（210,000 行，SQLite 内存库）——贵 2.84 倍，但比一张算错的账单便宜。</text>
+</svg>

@@ -387,6 +387,20 @@ CREATE TABLE idem_record (
 把去重窗放在 RAM 里。设备重启（OTA、掉电、看门狗）后窗口清空，Broker 重投的那条指令被当成新指令执行——「门开了两次」往往就是这么来的。去重窗的最近 16 个 `command_id` 必须随「已执行序号」一起写 flash。
 :::
 
+## 与「仓储作业与波次拣选工程」的分工（第 228 天补充）
+
+| 维度 | 本页（幂等键通用设计） | [波次与拣选路径](../../WarehouseOps/WavePicking/index.md) |
+| --- | --- | --- |
+| 管什么 | 同一个请求重试只生效一次 | 一次拣货该扣多少、扣哪个库位 |
+| 键的形态 | `(scope, key)` + 结果快照 | `(wave_id, order_no, sku, bin_id, batch_no)` |
+| 失败处置 | 返回首次结果 | 短拣按实拣量落库 |
+
+::: danger 这一页特有的一个坑
+短拣之后用**同一个幂等键**重试：第一次请求按计划量 5 件扣减失败（实际只有 4 件），
+客户端带同一个键重试，幂等层直接返回「首次结果 = 失败」，于是这 4 件永远扣不掉。
+短拣必须走**新的业务动作**（`pick_short`，带实拣量），而不是原请求的重试。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

@@ -408,6 +408,20 @@ LIMIT 200;
 判据：`control_transfer_at` 不能直接等于 `shipped_at`，两者必须分列，并允许不等。抽 10 单，凡是不等的都要能在证据里说清「取的是签收还是验收」。详见[收入确认 · 时段与时点](../../RevenueRecognition/Timing/index.md)。
 :::
 
+## 与「仓储作业与波次拣选工程」的分工（第 228 天补充）
+
+| 维度 | 本页（订单状态机） | [复核、打包与交接](../../WarehouseOps/Packing/index.md) |
+| --- | --- | --- |
+| 管什么 | 订单能迁移到哪个状态 | 包裹装了什么、交给谁、签收几件 |
+| 粒度 | 订单（1 单 1 状态） | 包裹（1 单 N 包，N 包 M 单） |
+| 推进依据 | 领域事件 | 交接单签收数 |
+
+::: danger 这一页特有的一个坑
+「包裹发出」就推 `SHIPPED`：一单多包时，第一个包发出就推状态，剩下两个包还在仓里，
+客户看到「已发货」却只收到一箱。正确做法是**按最慢的包裹推进**——全部包裹
+`HANDED_OVER` 才允许迁移，部分交接最多推到「部分发货」。
+:::
+
 ## 参考资料
 
 - [Martin Fowler · State Machine](https://martinfowler.com/bliki/StateMachine.html)

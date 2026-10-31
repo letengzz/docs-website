@@ -51,3 +51,4 @@
 - [供应商协同与价格主数据工程](SupplierCollaboration/index.md)
 - [收入确认与递延收入工程](RevenueRecognition/index.md)
 - [多币种与汇率折算工程](MultiCurrency/index.md)
+- [仓储作业与波次拣选工程](WarehouseOps/index.md)

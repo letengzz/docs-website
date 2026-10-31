@@ -26,15 +26,15 @@
 
 - 引导： 利用 BootstrapContext 引导整个项目启动
 
-* starting：应用开始，SpringApplication的run方法一调用，只要有了 BootstrapContext 就执行
-* environmentPrepared：环境准备好（把启动参数等绑定到环境变量中），但是ioc还没有创建 (调一次)
-* 启动：
-* contextPrepared：ioc容器创建并准备好，但是sources（主配置类）没加载。并关闭引导上下文；组件都没创建 【调一次】
-* contextLoaded：ioc容器加载。主配置类加载进去了。但是ioc容器还没刷新（我们的bean没创建）。
-* =======截止以前，ioc容器里面还没造bean呢=======
-* started：ioc容器刷新了（所有bean造好了），但是 runner 没调用。
-* ready：ioc容器刷新了（所有bean造好了），所有 runner 调用完了。
-* 运行：以前步骤都正确执行，代表容器running。
+- starting：应用开始，SpringApplication的run方法一调用，只要有了 BootstrapContext 就执行
+- environmentPrepared：环境准备好（把启动参数等绑定到环境变量中），但是ioc还没有创建 (调一次)
+- 启动：
+- contextPrepared：ioc容器创建并准备好，但是sources（主配置类）没加载。并关闭引导上下文；组件都没创建 【调一次】
+- contextLoaded：ioc容器加载。主配置类加载进去了。但是ioc容器还没刷新（我们的bean没创建）。
+- =======截止以前，ioc容器里面还没造bean呢=======
+- started：ioc容器刷新了（所有bean造好了），但是 runner 没调用。
+- ready：ioc容器刷新了（所有bean造好了），所有 runner 调用完了。
+- 运行：以前步骤都正确执行，代表容器running。
 
 #### 生命周期全流程
 

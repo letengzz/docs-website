@@ -1,3 +1,22 @@
+// 仓储作业与波次拣选
+export const WarehouseOps = [
+  {
+    text: "仓储作业与波次拣选工程",
+    link: "/docs/Backend/WarehouseOps/index.md",
+    items: [
+      { text: "总览：七段库内作业链", link: "/docs/Backend/WarehouseOps/Overview/index.md" },
+      { text: "库位模型与容量", link: "/docs/Backend/WarehouseOps/LocationModel/index.md" },
+      { text: "收货与上架策略", link: "/docs/Backend/WarehouseOps/InboundPutaway/index.md" },
+      { text: "库存快照与批次", link: "/docs/Backend/WarehouseOps/StockSnapshot/index.md" },
+      { text: "波次与拣选路径", link: "/docs/Backend/WarehouseOps/WavePicking/index.md" },
+      { text: "复核、打包与交接", link: "/docs/Backend/WarehouseOps/Packing/index.md" },
+      { text: "循环盘点与差异处理", link: "/docs/Backend/WarehouseOps/CycleCount/index.md" },
+      { text: "作业度量与产能", link: "/docs/Backend/WarehouseOps/Metrics/index.md" },
+      { text: "实战：从库位到交接的可运行闭环", link: "/docs/Backend/WarehouseOps/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/WarehouseOps/FAQ/index.md" },
+    ],
+  },
+];
 // .Net
 export const DotNet = [
   {

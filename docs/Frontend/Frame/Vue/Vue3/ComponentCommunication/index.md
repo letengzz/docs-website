@@ -8,10 +8,10 @@
 
 - 移出事件总线，使用`mitt`代替。
 
-* `vuex`换成了`pinia`。
-* 把`.sync`优化到了`v-model`里面了。
-* 把`$listeners`所有的东西，合并到`$attrs`中了。
-* `$children`被砍掉了。
+- `vuex`换成了`pinia`。
+- 把`.sync`优化到了`v-model`里面了。
+- 把`$listeners`所有的东西，合并到`$attrs`中了。
+- `$children`被砍掉了。
 
 **常见搭配形式：**
 
