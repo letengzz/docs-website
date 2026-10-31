@@ -1117,3 +1117,21 @@ export const OpenPlatform = [
     ],
   },
 ];
+
+export const IoTDevice = [
+  {
+    text: "物联网设备接入与指令下发工程",
+    link: "/docs/Backend/IoTDevice/index.md",
+    items: [
+      { text: "总览：七段链与三个「在线」", link: "/docs/Backend/IoTDevice/Overview/index.md" },
+      { text: "设备身份与凭证：三元组、烧录与轮换", link: "/docs/Backend/IoTDevice/DeviceIdentity/index.md" },
+      { text: "连接与会话：KeepAlive、遗嘱与抢占", link: "/docs/Backend/IoTDevice/ConnectionSession/index.md" },
+      { text: "设备影子：期望态、报告态与版本号", link: "/docs/Backend/IoTDevice/DeviceShadow/index.md" },
+      { text: "指令下发：幂等键、超时与离线队列", link: "/docs/Backend/IoTDevice/CommandDispatch/index.md" },
+      { text: "固件升级：签名、灰度与 A/B 回滚", link: "/docs/Backend/IoTDevice/FirmwareOTA/index.md" },
+      { text: "遥测接入：设备时钟、去重与降采样", link: "/docs/Backend/IoTDevice/TelemetryIngest/index.md" },
+      { text: "实战：本机跑通一条闭环", link: "/docs/Backend/IoTDevice/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/IoTDevice/FAQ/index.md" },
+    ],
+  },
+];

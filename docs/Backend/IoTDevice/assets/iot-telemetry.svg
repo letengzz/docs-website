@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 470" width="940" height="470" role="img" aria-label="遥测四层：三个时间各管一件事">
+<rect x="0" y="0" width="940" height="470" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">遥测四层：三个时间各管一件事</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">设备时钟不可信——排序用平台时间，展示用设备时间并标注</text>
+<rect x="30" y="90" width="880" height="56" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="80" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">设备</text>
+<text x="300" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">event_time（ts）</text>
+<text x="640" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">自报时间，可能漂 90 s 或归零</text>
+<rect x="30" y="160" width="880" height="56" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="80" y="194" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">传输</text>
+<text x="300" y="194" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">received_at</text>
+<text x="640" y="194" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">平台收到时刻，用于延迟与幂等</text>
+<rect x="30" y="230" width="880" height="56" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="80" y="264" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">入库</text>
+<text x="300" y="264" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">ingest_time</text>
+<text x="640" y="264" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">分区裁剪与保留策略</text>
+<rect x="30" y="300" width="880" height="56" rx="8" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="80" y="334" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">聚合</text>
+<text x="300" y="334" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">1min / 1h 桶</text>
+<text x="640" y="334" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">保留 count，否则上层无法再聚合</text>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#64748b"/></marker></defs>
+<rect x="30" y="380" width="430" height="34" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="245.0" y="402.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="600">按 event_time 排序：14.9% 的相邻点往回折</text>
+<rect x="480" y="380" width="430" height="34" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="695.0" y="402.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="600">无 seq：分不清没采、没发、没收到</text>
+<text x="470" y="440" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b" text-anchor="middle" font-weight="400">10,000 台 × 10 s = 86.40 M 行/天；60 s 降到 14.40 M；300 s 降到 2.88 M</text>
+</svg>

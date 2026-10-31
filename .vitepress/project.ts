@@ -425,6 +425,7 @@ export const CompleteProject = [
         items: [
           { text: "开放平台 · 项目总览（周期 8）", link: "/project/Complete/OpenPlatformHub/index.md" },
           { text: "第 1 周第 1 步 · 需求拆分：八条用户故事与十二张表（EOP-A~EOP-H）", link: "/project/Complete/OpenPlatformHub/Requirements/index.md" },
+          { text: "第 1 周第 2 步 · 技术选型与版本基线（EOT-A~EOT-H）", link: "/project/Complete/OpenPlatformHub/TechBaseline/index.md" },
         ],
       },
       {

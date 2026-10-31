@@ -200,3 +200,18 @@ curl -sI https://example.com/ | grep -i 'x-edge-'
 - 容灾档位（为什么 CDN 不算容灾）：[备份与容灾](../../BackupDR/index.md)
 - RFC 9111 · HTTP Caching：https://www.rfc-editor.org/rfc/rfc9111
 - MDN · HTTP 缓存（`Cache-Control` 语义速查）：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/Caching
+
+## 与「物联网设备接入」专题的分工（第 223 天补充）
+
+| 问题 | 归本页 | 归[物联网设备接入](../../../Backend/IoTDevice/index.md) |
+| --- | --- | --- |
+| 分发什么 | 静态资源、图片、点播 | 固件包（大、一次给很多设备、要能回滚） |
+| 缓存键 | URL + 常用头 | 必须含 `version + hw_rev`，否则装错硬件 |
+| 失效策略 | 主动刷新、版本化 URL | 版本化 URL + 灰度批次控制命中比例 |
+| 成本 | 回源率、带宽 | 单台重下一次整包 = 512 倍流量（断点续传是成本项） |
+
+> 一句话边界：**CDN 让「同一个包」便宜地到达很多人；OTA 决定「这个包」只到达该到的那部分人。**
+
+::: danger 本页特有的坑（设备侧视角）
+缓存键只用 URL。同一固件版本对应 A2/A3 两种硬件时，URL 相同、包不同（或包相同但兼容性不同），CDN 会把 A2 的包发给 A3 的设备。正确做法是 `/<version>/<hw_rev>/<file>` 三段式，并在清单里再声明一次兼容矩阵。
+:::

@@ -141,6 +141,22 @@ nginx 直接起不来，而不是「起得来但报错」：
 
 **本页特有的坑**：`openssl verify` 对「只有 CN 没有 SAN」的证书会**放过**（退回比对 CN），而浏览器从 Chrome 58 起不再回退。本机实测 `-verify_hostname board.example.com` 对 CN-only 证书返回 `OK`——**这是 openssl 与浏览器的第一处系统性分歧**，第二处是 `-untrusted` 文件里的顺序（openssl 不在乎，服务器在乎）。
 
+
+## 与「物联网设备接入」专题的分工（第 223 天补充）
+
+| 问题 | 归本页 | 归[物联网设备接入](../../../Backend/IoTDevice/index.md) |
+| --- | --- | --- |
+| 证书有效期 | 站点证书 90 天，ACME 自动续期 | 设备证书 5~10 年（覆盖设备寿命） |
+| 谁来续期 | 服务器上的 agent，随时可重启 | 现场设备，**可能三年没人碰过** |
+| 私钥放哪 | 磁盘 / HSM | 安全区（Secure Element / eFuse），不可导出 |
+| 吊销怎么生效 | OCSP / CRL，浏览器配合 | 设备侧不查 OCSP，只能靠平台侧拒绝名单 |
+
+> 一句话边界：**站点证书假设「你能登上那台机器」，设备证书假设「你上不去」。**
+
+::: danger 本页特有的坑（设备侧视角）
+把 ACME 那套自动化搬到设备上。ACME 的 HTTP-01 验证需要设备对外提供 80 端口服务，而设备通常在 NAT 后面、只出站不出站。设备侧的替代路线只有两条：EST/SCEP（需要 PKI 支持）或「长期证书 + 短期平台令牌」。
+:::
+
 ## 参考资料
 
 - RFC 5280：*Internet X.509 Public Key Infrastructure Certificate and CRL Profile*（`basicConstraints` / `keyUsage` / `extendedKeyUsage` 的定义）

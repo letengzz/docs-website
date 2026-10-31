@@ -60,9 +60,10 @@
 
 ## 五、章节索引
 
-| 天 | 步骤 | 章节 | 判据族 |
-| --- | --- | --- | --- |
-| 222 | 第 1 周第 1 步 | [需求拆分：八条用户故事与验收条件](Requirements/index.md) | `EOP-A` ~ `EOP-H` |
+| 天 | 步骤 | 章节 | 判据族 | 条数 |
+| --- | --- | --- | --- | --- |
+| 222 | 第 1 周第 1 步 | [需求拆分：八条用户故事与验收条件](Requirements/index.md) | `EOP-A` ~ `EOP-H` | 8 |
+| 223 | 第 1 周第 2 步 | [技术选型与版本基线](TechBaseline/index.md) | `EOT-A` ~ `EOT-H` | 8 |
 
 > 后续章节按周追加，每章都包含「当日做了什么 / 如何验证 / 下一步是什么」。
 
@@ -87,14 +88,18 @@ sqlite3 /tmp/oph.db < /tmp/ddl.sql
 sqlite3 /tmp/oph.db ".tables"
 # 期望：app app_key delivery event invoice invoice_line nonce oauth_code oauth_token quota_policy subscription usage
 
-# 2. 六条不变量能被 SQL 直接查出违反行（应为 0）
+# 2. 技术基线的三个版本必须都能读出来
+python3 -V && python3 -c "import sqlite3;print(sqlite3.sqlite_version)" && sqlite3 --version
+# 期望：Python 3.13.x / 内置 3.50.x / 命令行可能更低（本机 3.39.5），三者不必相同
+
+# 3. 六条不变量能被 SQL 直接查出违反行（应为 0）
 sqlite3 /tmp/oph.db "SELECT count(*) FROM usage u LEFT JOIN app a ON a.app_id=u.app_id WHERE a.app_id IS NULL;"
 # 期望：0
 ```
 
 ## 九、下一步
 
-第 1 周第 2 步（第 223 天）：**技术选型与版本基线**，产出 `TechBaseline/index.md` —— 把上表里的每一条选型写成「候选 → 判据 → 结论」，并给出本机实测的版本号与启动耗时。
+第 1 周第 3 步（第 224 天）：**架构设计与四条边界**——把十二张表按「接入层 / 业务层 / 计量层 / 投递层」切成四个进程边界，给出每层的失败模式与降级方向，配一张部署图与一份「谁都不许跨层直连」的依赖表。判据族占位 `EOA`。
 
 ## 参考资料
 

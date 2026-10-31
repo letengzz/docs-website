@@ -371,6 +371,22 @@ CREATE TABLE idem_record (
 
 **这一页特有的一个坑**：把 `nonce` 当幂等键用。两者语义相反：幂等键要求「重试复用」，`nonce` 要求「每次唯一」。所以一个请求要带**两个**标识——`X-Nonce`（每次尝试都换，防重放）和 `X-Request-Id`（多次尝试不变，防重复计费）。只带一个，要么被 409 挡住重试，要么重试多算钱。本机实测：`UNIQUE(app_id, request_id)` 之下 3 次重试只留 1 行用量。见[应用与凭证](../../OpenPlatform/AppCredential/index.md)。
 
+
+## 与「物联网设备接入」专题的分工（第 223 天补充）
+
+| 问题 | 归本页 | 归[物联网设备接入](../../IoTDevice/index.md) |
+| --- | --- | --- |
+| 幂等键由谁生成 | 客户端生成、服务端存 | 平台生成 `command_id`，设备侧另存 16 槽去重窗 |
+| 幂等记录存哪 | Redis / 库表，按 TTL 过期 | **设备 flash**（断电后去重窗必须还在） |
+| 去重窗口多大 | 通常 24 小时 | 16 条即可（重投发生在秒级），但必须跨重启 |
+| 幂等失败的返回 | 返回首次结果（`200` + 原响应） | 设备侧静默忽略重复报文，不回报错 |
+
+> 一句话边界：**服务端的幂等键活在天级 TTL 里，设备的幂等键活在「下一次断电」之前。**
+
+::: danger 本页特有的坑（设备侧视角）
+把去重窗放在 RAM 里。设备重启（OTA、掉电、看门狗）后窗口清空，Broker 重投的那条指令被当成新指令执行——「门开了两次」往往就是这么来的。去重窗的最近 16 个 `command_id` 必须随「已执行序号」一起写 flash。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码
