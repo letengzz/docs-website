@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 452" width="920" height="452" role="img" aria-label="上线产物的可复现打包：五个漂移来源、两条打包路径与两次摘要对比">
+<rect x="0" y="0" width="920" height="452" fill="#F8FAFC"/>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748B"/></marker></defs>
+<text x="28" y="34" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">上线产物的可复现打包：五个漂移来源、两条路径、两次摘要</text>
+<text x="28" y="56" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">同一个 commit、同一份锁文件，两次打出来的 tarball 摘要不同——回滚到底回滚到了什么</text>
+<text x="28" y="88" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">① 五个漂移来源（前三个改配置能消掉，后两个只能靠规范）</text>
+<rect x="28" y="100" width="160" height="56" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="108" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a">文件 mtime</text>
+<text x="108" y="141" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">tar 头里逐条记录</text>
+<rect x="204" y="100" width="160" height="56" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="284" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a">属主 uid/gid</text>
+<text x="284" y="141" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">构建机账号不同</text>
+<rect x="380" y="100" width="160" height="56" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="460" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a">成员顺序</text>
+<text x="460" y="141" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">os.walk 不保证</text>
+<rect x="556" y="100" width="160" height="56" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="636" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a">gzip 头 mtime</text>
+<text x="636" y="141" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">头里 4 字节</text>
+<rect x="732" y="100" width="160" height="56" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="812" y="122" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a">绝对路径</text>
+<text x="812" y="141" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">arcname 带前缀</text>
+<text x="28" y="190" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">② 两条打包路径（内容完全相同，40 个文件）</text>
+<rect x="28" y="202" width="400" height="92" rx="8" fill="#FEF2F2" stroke="#B91C1C" stroke-width="1.3"/>
+<text x="48" y="226" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#B91C1C">默认写法</text>
+<text x="48" y="246" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">tar 保留 mtime / uid / uname，成员按 os.walk 顺序</text>
+<text x="48" y="266" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">再加 gzip 头里写当前时间</text>
+<text x="48" y="284" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#B91C1C">→ touch 一个文件即换摘要</text>
+<rect x="492" y="202" width="400" height="92" rx="8" fill="#F0FDF4" stroke="#15803D" stroke-width="1.3"/>
+<text x="512" y="226" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#15803D">规范化写法</text>
+<text x="512" y="246" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">成员排序 + mtime=SOURCE_DATE_EPOCH + uid/gid=0</text>
+<text x="512" y="264" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">uname/gname 置空，GNU_FORMAT 固定头部格式</text>
+<text x="512" y="282" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803D">gzip -n → touch / 换目录 / 换机器 同一个摘要</text>
+<text x="28" y="330" text-anchor="start" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">③ 本机读数（Python 3.13 tarfile/gzip，种子 20261031）</text>
+<text x="300" y="352" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#B91C1C">默认写法</text>
+<text x="620" y="352" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803D">规范化写法</text>
+<text x="36" y="370" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">同树连打两次</text>
+<text x="300" y="370" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#B91C1C">e8eda40a = e8eda40a</text>
+<text x="620" y="370" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803D">1093449f = 1093449f</text>
+<text x="36" y="390" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">touch 一个文件后</text>
+<text x="300" y="390" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#B91C1C">e8eda40a → f0bfc7a5</text>
+<text x="620" y="390" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803D">1093449f = 1093449f</text>
+<text x="36" y="410" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">换一个 clone 目录</text>
+<text x="300" y="410" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#B91C1C">e8eda40a → eb7a972b</text>
+<text x="620" y="410" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803D">1093449f = 1093449f</text>
+<text x="28" y="436" text-anchor="start" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#1D4ED8">「体积一样」不等于「内容一样」：成员反排后体积仍是 122,880 B，摘要却是 6ce6447c</text>
+</svg>

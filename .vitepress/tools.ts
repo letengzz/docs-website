@@ -390,3 +390,21 @@ export const DevEnvironment = [
     ],
   },
 ];
+
+export const BuildCache = [
+  {
+    text: "构建缓存与可复现构建",
+    link: "/docs/Tools/BuildCache/index.md",
+    items: [
+      { text: "概述：三层缓存、四个指标与五档成熟度", link: "/docs/Tools/BuildCache/Overview/index.md" },
+      { text: "指纹：缓存键由哪些字段组成", link: "/docs/Tools/BuildCache/CacheKey/index.md" },
+      { text: "本地缓存：布局、淘汰与并发写", link: "/docs/Tools/BuildCache/LocalCache/index.md" },
+      { text: "远程缓存：内容寻址、上传策略与投毒面", link: "/docs/Tools/BuildCache/RemoteCache/index.md" },
+      { text: "正确性：六类假命中与验证模式", link: "/docs/Tools/BuildCache/Correctness/index.md" },
+      { text: "可复现构建：字节级可证", link: "/docs/Tools/BuildCache/Reproducible/index.md" },
+      { text: "生态对照：六种实现与同一套抽象", link: "/docs/Tools/BuildCache/Platforms/index.md" },
+      { text: "实战：四周落地与一次假命中的定位", link: "/docs/Tools/BuildCache/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Tools/BuildCache/FAQ/index.md" },
+    ],
+  },
+];

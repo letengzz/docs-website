@@ -94,6 +94,20 @@ package.json 声明依赖
 2. 检查生成的 lockfile 类型与是否已提交 Git。
 3. 在 CI 用 `--frozen-lockfile`/`npm ci` 验证构建一致。
 
+## 与「构建缓存」的分工：两套缓存别混为一谈（第 199 天补充）
+
+本页讲的 store / `node_modules` / registry 镜像，解决的是「**包下载得慢**」；[构建缓存与可复现构建](../../BuildCache/index.md)解决的是「**编译结果重复计算**」。两者的键、位置、失效半径都不同：
+
+| 维度 | 依赖缓存（本页） | 任务级缓存（专题） |
+| --- | --- | --- |
+| 缓存单元 | 一个包（tarball） | 一个任务的输出集合 |
+| 键 | 包坐标 + `integrity` 哈希 | 任务指纹（源码 + 依赖锁 + 工具链 + 命令 + 环境） |
+| 位置 | pnpm store / `~/.npm/_cacache` / registry 代理 | `.turbo/cache`、Gradle 的 build-cache 目录 |
+| 命中与否的判据 | lockfile 是否变 | 指纹是否变 |
+| 典型误判 | 「我配了镜像，为什么构建还慢」 | 「我有 `node_modules`，为什么改一行还要重编」 |
+
+一条容易踩的细节：`pnpm` 的 store 是**内容寻址**的（按 tarball 哈希分目录），所以它在语义上更像一级 CAS，而不是「包名 → 目录」的简单映射；这也解释了为什么换 registry 地址后，只要 tarball 字节相同，store 仍然能复用。而 **lockfile 的 `integrity` 字段正是「依赖这一项进指纹」时最该取的值**（取整个 `node_modules` 逐文件哈希会让指纹计算慢到没有收益）。
+
 ## 参考资料
 
 - npm 文档：<https://docs.npmjs.com/>

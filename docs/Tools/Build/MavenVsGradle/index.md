@@ -10,7 +10,7 @@ Maven 和 Gradle 都是 JVM 生态的主流构建工具，没有绝对的“谁�
 | 配置文件 | `pom.xml`（XML） | `build.gradle.kts`（Kotlin DSL） |
 | 学习曲线 | 低，约定固定 | 中，灵活但概念多 |
 | 增量构建 | 较弱 | 原生强项 |
-| 构建缓存 | 依赖插件支持 | 内置 |
+| 构建缓存 | 需 build-cache-extension 插件 | 内置，但**默认关闭**（`org.gradle.caching=true`） |
 | 守护进程 | 无（每次新 JVM） | 有（默认开启） |
 | 多项目 | 聚合 + 继承 | 多项目 + 项目依赖 |
 | 版本管理 | dependencyManagement | Version Catalog / Constraints |

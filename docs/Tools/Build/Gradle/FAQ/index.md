@@ -107,7 +107,7 @@ org.gradle.configuration-cache=false
 2. 使用 Kotlin DSL，新项目不再创建 Groovy 脚本。
 3. 用 Version Catalog（`gradle/libs.versions.toml`）管理所有依赖与插件版本。
 4. `implementation` 优先，`api` 只在对外暴露类型时使用。
-5. 开启构建缓存和并行构建，CI 与本地共享缓存。
+5. 开启构建缓存与并行构建；要**跨机器共享**还需要远程缓存，并把输入标成 `@PathSensitive(PathSensitivity.RELATIVE)`——否则绝对路径进键，换台机器就全不命中。
 6. 敏感凭据走环境变量，`gradle.properties` 中不要写密码。
 7. 定期升级 Gradle 小版本，升级前跑完整 `clean build`。
 8. 使用 Java Toolchain 统一编译版本，避免“本地能过、CI 报错”。
