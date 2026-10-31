@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 420" width="940" height="420" role="img" aria-label="分摊：从交易价格切到每一项履约义务">
+<rect x="0" y="0" width="940" height="420" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">分摊：从交易价格切到每一项履约义务</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">切法只有一个（相对单独售价），难点全在「切完之后加起来要对」</text>
+<rect x="20" y="84" width="150" height="60" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="95.0" y="110.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">交易价格</text>
+<text x="95.0" y="128.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle">900,000.00</text>
+<line x1="172" y1="114" x2="210" y2="204" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="212" y="176" width="200" height="56" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="312.0" y="200.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="600">主机（SSP 800,000）</text>
+<text x="312.0" y="218.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">分摊 720,000.00</text>
+<line x1="172" y1="114" x2="210" y2="270" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="212" y="242" width="200" height="56" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="312.0" y="266.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="600">安装（SSP 150,000）</text>
+<text x="312.0" y="284.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">分摊 135,000.00</text>
+<line x1="172" y1="114" x2="210" y2="336" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="212" y="308" width="200" height="56" rx="8" fill="#ccfbf1" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="312.0" y="332.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="600">维保（SSP 50,000）</text>
+<text x="312.0" y="350.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">分摊 45,000.00</text>
+<text x="430" y="176" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">比例 = 各项单独售价 ÷ 单独售价合计（100 万）</text>
+<text x="430" y="198" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">900,000 × 0.8 = 720,000 ／ × 0.15 = 135,000 ／ × 0.05 = 45,000</text>
+<text x="430" y="226" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">三项合计必须严格等于 900,000.00</text>
+<line x1="20" y1="330" x2="920" y2="330" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="5 3"/>
+<text x="20" y="352" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">本机读数：2,000 单、2~4 项义务，各行独立四舍五入后合计 ≠ 总额的有 401 单（20.05%）</text>
+<text x="20" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">最大差 0.01 元 —— 金额很小，但每张凭证都会差一分，月结时对不平</text>
+<text x="20" y="392" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">最大余数法同一批 0 单不等；折扣只与某一项相关时，折扣只摊给那一项（主机 −200、维保 +50）</text>
+</svg>

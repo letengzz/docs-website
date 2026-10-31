@@ -66,6 +66,7 @@
 | 223 | 第 1 周第 2 步 | [技术选型与版本基线](TechBaseline/index.md) | `EOT-A` ~ `EOT-H` | 8 |
 | 224 | 第 1 周第 3 步 | [架构设计与四条边界](Architecture/index.md) | `EOB-A` ~ `EOB-H` | 8 |
 | 225 | 第 1 周第 4 步 | [接口契约与错误码](Contracts/index.md) | `EOI-A` ~ `EOI-H` | 8 |
+| 226 | 第 1 周第 5 步 | [数据库设计：十二张表与四条重复防线](DatabaseDesign/index.md) | `EOD-A` ~ `EOD-H` | 8 |
 
 > 后续章节按周追加，每章都包含「当日做了什么 / 如何验证 / 下一步是什么」。
 
@@ -85,8 +86,8 @@
 ## 八、如何验证今天这一步
 
 ```shell
-# 1. DDL 能执行（十二张表）：把 Requirements 页里的 sql 代码块整段存成 /tmp/ddl.sql
-sqlite3 /tmp/oph.db < /tmp/ddl.sql
+# 1. DDL 能执行（十二张表）：建表来源已收敛到 db/schema.sql（见 DatabaseDesign 页）
+sqlite3 /tmp/oph.db < db/schema.sql
 sqlite3 /tmp/oph.db ".tables"
 # 期望：app app_key delivery event invoice invoice_line nonce oauth_code oauth_token quota_policy subscription usage
 
@@ -101,7 +102,7 @@ sqlite3 /tmp/oph.db "SELECT count(*) FROM usage u LEFT JOIN app a ON a.app_id=u.
 
 ## 九、下一步
 
-第 1 周第 4 步（第 225 天）：**接口契约与错误码**——把八条用户故事翻译成 12 个接口的请求/响应契约，重点解决错误码分层（网关 / 业务 / 计量各自前缀）、分页与游标、同一个错误在四层里的不同表达。判据族占位 `EOI`。
+第 1 周第 6 步（第 227 天）：**第 1 周验收**——把需求、选型、架构、契约、数据库五份产物收成一张验收单：八条用户故事各自对应到「表 + 路径 + 判据」，并把「12 条路径 × 12 张表」的覆盖缺口补完。判据族占位 `EOW`。
 
 ## 参考资料
 

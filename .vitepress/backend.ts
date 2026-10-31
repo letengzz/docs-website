@@ -1171,3 +1171,22 @@ export const SupplierCollaboration = [
     ],
   },
 ];
+
+export const RevenueRecognition = [
+  {
+    text: "收入确认与递延收入工程",
+    link: "/docs/Backend/RevenueRecognition/index.md",
+    items: [
+      { text: "总览：五段确认链与五个「收入」", link: "/docs/Backend/RevenueRecognition/Overview/index.md" },
+      { text: "五步法的工程落点", link: "/docs/Backend/RevenueRecognition/FiveStep/index.md" },
+      { text: "时段与时点：走哪条路", link: "/docs/Backend/RevenueRecognition/Timing/index.md" },
+      { text: "合同资产、合同负债与应收", link: "/docs/Backend/RevenueRecognition/ContractBalance/index.md" },
+      { text: "可变对价与退款负债", link: "/docs/Backend/RevenueRecognition/VariableConsideration/index.md" },
+      { text: "合同变更与退款", link: "/docs/Backend/RevenueRecognition/Modification/index.md" },
+      { text: "交易价格的分摊", link: "/docs/Backend/RevenueRecognition/Allocation/index.md" },
+      { text: "披露口径与月结", link: "/docs/Backend/RevenueRecognition/Disclosure/index.md" },
+      { text: "实战：本机跑通一条确认闭环", link: "/docs/Backend/RevenueRecognition/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/RevenueRecognition/FAQ/index.md" },
+    ],
+  },
+];

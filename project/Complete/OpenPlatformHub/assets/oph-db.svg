@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 470" width="940" height="470" role="img" aria-label="十二张表与四组唯一键">
+<rect x="0" y="0" width="940" height="470" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">十二张表：四组唯一键守住四种重复</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">每个方框是一张表，第三行是它守的那条唯一键</text>
+<text x="24" y="84" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">① 身份与凭证</text>
+<rect x="20" y="92" width="210" height="64" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="32" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">app</text>
+<text x="32" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">谁在调（主语）</text>
+<text x="32" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">UNIQUE(app_id)</text>
+<rect x="244" y="92" width="210" height="64" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="256" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">app_key</text>
+<text x="256" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">两把密钥轮换</text>
+<text x="256" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">UNIQUE(key_id)</text>
+<rect x="468" y="92" width="210" height="64" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">nonce</text>
+<text x="480" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">这一次不许重放</text>
+<text x="480" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">PK(app_id, nonce)</text>
+<rect x="692" y="92" width="210" height="64" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="704" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">oauth_code</text>
+<text x="704" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">一次性授权码</text>
+<text x="704" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">UNIQUE(code)</text>
+<text x="24" y="176" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">② 令牌与配额</text>
+<rect x="20" y="184" width="288" height="64" rx="8" fill="#ccfbf1" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="32" y="206" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">oauth_token</text>
+<text x="32" y="222" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">能调什么、多久</text>
+<text x="32" y="238" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">UNIQUE(token_hash)</text>
+<rect x="322" y="184" width="288" height="64" rx="8" fill="#ccfbf1" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="334" y="206" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">quota_policy</text>
+<text x="334" y="222" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">允许多少</text>
+<text x="334" y="238" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">UNIQUE(app_id, scope)</text>
+<rect x="624" y="184" width="288" height="64" rx="8" fill="#ccfbf1" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="636" y="206" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">usage</text>
+<text x="636" y="222" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">实际记了多少</text>
+<text x="636" y="238" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">UNIQUE(app_id, request_id)</text>
+<text x="24" y="268" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">③ 事件推送</text>
+<rect x="20" y="276" width="288" height="64" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="32" y="298" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">event</text>
+<text x="32" y="314" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">发生了什么</text>
+<text x="32" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">UNIQUE(event_id)</text>
+<rect x="322" y="276" width="288" height="64" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="334" y="298" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">subscription</text>
+<text x="334" y="314" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">谁要收</text>
+<text x="334" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">UNIQUE(app_id, 类型, 地址)</text>
+<rect x="624" y="276" width="288" height="64" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="636" y="298" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">delivery</text>
+<text x="636" y="314" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">推了几次</text>
+<text x="636" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">UNIQUE(event, sub, attempt)</text>
+<text x="24" y="360" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">④ 账单</text>
+<rect x="20" y="368" width="210" height="64" rx="8" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="32" y="390" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">invoice</text>
+<text x="32" y="406" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">该付多少</text>
+<text x="32" y="422" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">UNIQUE(app_id, period)</text>
+<rect x="244" y="368" width="210" height="64" rx="8" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="256" y="390" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">invoice_line</text>
+<text x="256" y="406" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">下钻到 usage</text>
+<text x="256" y="422" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f766e">外键 invoice_id</text>
+</svg>

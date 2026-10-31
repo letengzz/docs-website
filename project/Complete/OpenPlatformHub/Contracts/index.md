@@ -235,9 +235,9 @@ cp ~/oph-draft/routes.txt ~/oph-draft/errors.md ~/oph-draft/signature.md ~/oph-d
 
 ## 参考资料
 
-- [需求拆分：八条用户故事与验收条件](./Requirements/index.md)：`US-03` 的 403 与 `US-06` 的四个响应头即出自此
-- [技术选型与版本基线](./TechBaseline/index.md)：HMAC-SHA256 与 SQLite/PostgreSQL 方言分支的选型依据
-- [架构设计与四条边界](./Architecture/index.md)：四个进程各自校验什么，本页是它的接口投影
-- [开放平台与 API 产品化工程](../../../docs/Backend/OpenPlatform/index.md)：签名字段、配额口径与错误语义的专题版
+- [需求拆分：八条用户故事与验收条件](../Requirements/index.md)：`US-03` 的 403 与 `US-06` 的四个响应头即出自此
+- [技术选型与版本基线](../TechBaseline/index.md)：HMAC-SHA256 与 SQLite/PostgreSQL 方言分支的选型依据
+- [架构设计与四条边界](../Architecture/index.md)：四个进程各自校验什么，本页是它的接口投影
+- [开放平台与 API 产品化工程](../../../../docs/Backend/OpenPlatform/index.md)：签名字段、配额口径与错误语义的专题版
 - RFC 9110（HTTP Semantics）：`401` / `403` / `409` / `429` 的规范语义
 - RFC 6750（Bearer Token）：`WWW-Authenticate` 与 `error="insufficient_scope"` 的用法

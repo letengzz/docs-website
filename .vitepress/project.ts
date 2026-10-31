@@ -427,6 +427,7 @@ export const CompleteProject = [
           { text: "第 1 周第 2 步 · 技术选型与版本基线（EOT-A~EOT-H）", link: "/project/Complete/OpenPlatformHub/TechBaseline/index.md" },
           { text: "第 1 周第 3 步 · 架构设计与四条边界（EOB-A~EOB-H）", link: "/project/Complete/OpenPlatformHub/Architecture/index.md" },
           { text: "第 1 周第 4 步 · 接口契约与错误码（EOI-A~EOI-H）", link: "/project/Complete/OpenPlatformHub/Contracts/index.md" },
+          { text: "第 1 周第 5 步 · 数据库设计：十二张表与四条重复防线（EOD-A~EOD-H）", link: "/project/Complete/OpenPlatformHub/DatabaseDesign/index.md" },
         ],
       },
       {
