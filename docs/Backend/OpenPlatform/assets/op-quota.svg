@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 440" width="940" height="440" role="img" aria-label="固定窗口、滑动窗口、令牌桶对同一配额的放行差异">
+<rect x="0" y="0" width="940" height="440" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">同一个「100 次/分钟」，三种算法给出三个不同的答案</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">本机模拟：稳态 20 rps，末尾 120 次突发，共 720 次请求</text>
+<text x="30" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">放行数</text>
+<rect x="90" y="200" width="150" height="100" rx="6" fill="#f59e0b" opacity="0.18" stroke="#f59e0b"/>
+<text x="165" y="190" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#f59e0b" text-anchor="middle">100 次</text>
+<text x="165" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle">固定窗口</text>
+<text x="165" y="342" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" text-anchor="middle">窗口临界处可再放 100 次</text>
+<rect x="370" y="200" width="150" height="100" rx="6" fill="#2563eb" opacity="0.18" stroke="#2563eb"/>
+<text x="445" y="190" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#2563eb" text-anchor="middle">100 次</text>
+<text x="445" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle">滑动窗口</text>
+<text x="445" y="342" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" text-anchor="middle">严格 100，实现贵</text>
+<rect x="650" y="101" width="150" height="199" rx="6" fill="#0f766e" opacity="0.18" stroke="#0f766e"/>
+<text x="725" y="91" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f766e" text-anchor="middle">199 次</text>
+<text x="725" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle">令牌桶</text>
+<text x="725" y="342" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" text-anchor="middle">容量 100 + 60s 回填 100</text>
+<line x1="60" y1="300" x2="880" y2="300" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="60" y1="200" x2="880" y2="200" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="872" y="194" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#ef4444" text-anchor="end">标称配额 100</text>
+<text x="470" y="366" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">「配额」是产品承诺，「限流」是执行手段——两者不一致时，客户看到的是账单与 429 对不上</text>
+<text x="470" y="390" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b" text-anchor="middle">要么把配额写成「速率 + 突发」两个数，要么把令牌桶容量设成 1（退化成滑动窗口）</text>
+</svg>

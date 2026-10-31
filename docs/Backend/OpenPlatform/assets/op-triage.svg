@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 420" width="940" height="420" role="img" aria-label="五个错误码的分诊路径">
+<rect x="0" y="0" width="940" height="420" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">分诊：五个错误码，五种完全不同的下一步</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">401 先看时钟，403 先看 scope，429 先看配额口径——顺序错了会白查一天</text>
+<rect x="30" y="92" width="880" height="52" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+<text x="48" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#b91c1c">401 invalid_signature</text>
+<text x="340" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">先跑一遍官方签名样例；再核 ts 与本机时钟偏差</text>
+<rect x="30" y="154" width="880" height="52" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+<text x="48" y="186" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#b45309">403 insufficient_scope</text>
+<text x="340" y="186" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">看 token 里的 scope 快照，不是看应用配置</text>
+<rect x="30" y="216" width="880" height="52" rx="8" fill="#fefce8" stroke="#fde68a"/>
+<text x="48" y="248" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#a16207">429 quota_exceeded</text>
+<text x="340" y="248" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">区分「速率」与「总量」两种配额；读 Retry-After</text>
+<rect x="30" y="278" width="880" height="52" rx="8" fill="#f5f3ff" stroke="#ddd6fe"/>
+<text x="48" y="310" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#6d28d9">410 version_sunset</text>
+<text x="340" y="310" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">版本已下线；查弃用公告里的迁移路径</text>
+<rect x="30" y="340" width="880" height="52" rx="8" fill="#f0fdfa" stroke="#99f6e4"/>
+<text x="48" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f766e">5xx 平台侧</text>
+<text x="340" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">带 trace_id 提工单；不要重试非幂等请求</text>
+<text x="470" y="402" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b" text-anchor="middle">先定位「是谁拒绝的」：网关、鉴权、配额、业务——四层的错误码长得很像，trace_id 只有一个</text>
+</svg>

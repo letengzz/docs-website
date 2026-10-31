@@ -362,6 +362,15 @@ CREATE TABLE idem_record (
 
 **这一页特有的一个坑**：在批次表加唯一键，却忘了流水表也要唯一键。结果是「批次没重复、流水多一条」，而余额按流水重放时多算一笔——这类差异只能靠三方对账发现。两处都要有约束，且键必须同源（`earn:{uid}:{order_id}`）。见[获取与冲正](../../LoyaltyProgram/EarnRules/index.md)。
 
+## 与「开放平台 · 签名与事件」的分工（第 222 天补充）
+| 这一页讲的 | 开放平台专题讲的 |
+| --- | --- |
+| 幂等键怎么生成、存多久、冲突怎么返回 | `nonce` 防重放（**不是**幂等，是「同样字节不许来第二次」） |
+| 一个请求只生效一次 | 一次签名只被接受一次 |
+| 失败重试要复用同一个键 | 失败重试**必须换 nonce**，但可以复用 `request_id` |
+
+**这一页特有的一个坑**：把 `nonce` 当幂等键用。两者语义相反：幂等键要求「重试复用」，`nonce` 要求「每次唯一」。所以一个请求要带**两个**标识——`X-Nonce`（每次尝试都换，防重放）和 `X-Request-Id`（多次尝试不变，防重复计费）。只带一个，要么被 409 挡住重试，要么重试多算钱。本机实测：`UNIQUE(app_id, request_id)` 之下 3 次重试只留 1 行用量。见[应用与凭证](../../OpenPlatform/AppCredential/index.md)。
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

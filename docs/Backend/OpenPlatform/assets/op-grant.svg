@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 430" width="940" height="430" role="img" aria-label="四种 OAuth 授权模式的选择路径">
+<rect x="0" y="0" width="940" height="430" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">四种授权模式：先问「有没有人」，再问「有没有后端」</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">选错模式的代价不是不安全，而是「上线后才发现拿不到 refresh_token」</text>
+<rect x="30" y="96" width="200" height="62" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="130.0" y="131.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">这次调用代表谁？</text>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#64748b"/></marker></defs>
+<line x1="130" y1="158" x2="130" y2="186" stroke="#64748b" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="30" y="186" width="200" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="130.0" y="221.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">代表一个用户</text>
+<rect x="30" y="292" width="200" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="130.0" y="327.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">只代表应用自己</text>
+<line x1="230" y1="217" x2="300" y2="217" stroke="#64748b" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="230" y1="323" x2="300" y2="323" stroke="#64748b" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="300" y="96" width="250" height="62" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="425.0" y="131.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">有没有可信后端？</text>
+<line x1="425" y1="158" x2="425" y2="186" stroke="#64748b" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="300" y="186" width="250" height="78" rx="8" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="425.0" y="223.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">授权码 + PKCE</text>
+<text x="425.0" y="243.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle">用户登录、拿 code、换 token</text>
+<rect x="300" y="292" width="250" height="78" rx="8" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="425.0" y="329.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">设备码</text>
+<text x="425.0" y="349.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle">电视 / CLI：用户去另一台设备确认</text>
+<line x1="550" y1="225" x2="610" y2="225" stroke="#64748b" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="610" y="186" width="250" height="78" rx="8" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="735.0" y="223.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">客户端凭证</text>
+<text x="735.0" y="243.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle">机器对机器，没有用户</text>
+<rect x="610" y="292" width="250" height="78" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="735.0" y="329.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#b91c1c" text-anchor="middle" font-weight="600">隐式（已废弃）</text>
+<text x="735.0" y="349.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle">OAuth 2.1 删除，别再用</text>
+<text x="470" y="396" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">PKCE 不是「可选加强」：公共客户端没有 secret，code 被截获就等于令牌被截获</text>
+</svg>

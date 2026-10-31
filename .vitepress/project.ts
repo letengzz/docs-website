@@ -419,6 +419,15 @@ export const CompleteProject = [
         ],
       },
       {
+        text: "开放平台（应用接入与配额计费）",
+        link: "/project/Complete/OpenPlatformHub/index.md",
+        collapsed: true,
+        items: [
+          { text: "开放平台 · 项目总览（周期 8）", link: "/project/Complete/OpenPlatformHub/index.md" },
+          { text: "第 1 周第 1 步 · 需求拆分：八条用户故事与十二张表（EOP-A~EOP-H）", link: "/project/Complete/OpenPlatformHub/Requirements/index.md" },
+        ],
+      },
+      {
         text: "全栈项目实战",
         link: "/project/Complete/FullStackProject/index.md",
         collapsed: true,

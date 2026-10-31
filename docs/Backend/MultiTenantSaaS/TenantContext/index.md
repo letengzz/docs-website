@@ -212,6 +212,15 @@ jdbcTemplate.execute("select set_config('app.tenant_id', ?, true)", TenantContex
 | `CTX-G` | 日志含 `tenant` 字段 | MDC 里能按租户过滤 | 拦截器里 `MDC.put` |
 | `CTX-H` | 指标不按租户做全量标签 | 时间序列数量与租户数不成正比 | 改成 TOP N + 日志下钻 |
 
+## 与「开放平台」的分工（第 222 天补充）
+| 这一页讲的 | 开放平台专题讲的 |
+| --- | --- |
+| 一次请求怎么带上 `tenant_id`、怎么防止串租户 | 租户之上还有一层**应用**：一个租户可以有很多 `app_id` |
+| 隔离的是**数据** | 隔离的是**凭证、配额与账单** |
+| `tenant_id` 来自登录态 | `app_id` 来自签名头，`tenant_id` 由 `app_id` 反查 |
+
+**这一页特有的一个坑**：把 `app_id` 当成 `tenant_id` 用（一个租户只允许建一个应用）。后果是客户没法区分生产与测试——测试应用的调用量进了生产账单，测试用的 webhook 指向了生产地址。正确做法是三张表：`tenant` ⇄ `app` ⇄ `credential`，配额挂在 `app`、合同挂在 `tenant`。
+
 ## 参考资料
 
 - PostgreSQL 18 Documentation：*SET*（`LOCAL` 的作用域与事务边界）、*System Administration Functions*（`set_config` 的第三个参数）、*Row Security Policies*（策略表达式的求值身份）

@@ -1100,3 +1100,20 @@ export const LoyaltyProgram = [
     ],
   },
 ];
+
+export const OpenPlatform = [
+  {
+    text: "开放平台与 API 产品化工程",
+    link: "/docs/Backend/OpenPlatform/index.md",
+    items: [
+      { text: "总览：七段链与四条边界", link: "/docs/Backend/OpenPlatform/Overview/index.md" },
+      { text: "应用与凭证签名：密钥、签名串与防重放", link: "/docs/Backend/OpenPlatform/AppCredential/index.md" },
+      { text: "授权与令牌：四种模式、scope 与撤销", link: "/docs/Backend/OpenPlatform/GrantToken/index.md" },
+      { text: "配额、限流与用量：三个数怎么一致", link: "/docs/Backend/OpenPlatform/QuotaUsage/index.md" },
+      { text: "事件订阅与重投：outbox、退避与死信", link: "/docs/Backend/OpenPlatform/EventWebhook/index.md" },
+      { text: "版本与弃用：公告、Sunset 与下线判据", link: "/docs/Backend/OpenPlatform/VersionLifecycle/index.md" },
+      { text: "实战：一套能跑起来的最小开放平台", link: "/docs/Backend/OpenPlatform/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/OpenPlatform/FAQ/index.md" },
+    ],
+  },
+];
