@@ -1135,3 +1135,21 @@ export const IoTDevice = [
     ],
   },
 ];
+
+export const ProcureToPay = [
+  {
+    text: "采购到付款（P2P）与三单匹配工程",
+    link: "/docs/Backend/ProcureToPay/index.md",
+    items: [
+      { text: "总览：七段链与四个时点", link: "/docs/Backend/ProcureToPay/Overview/index.md" },
+      { text: "需求申请与预算占用", link: "/docs/Backend/ProcureToPay/Requisition/index.md" },
+      { text: "寻源、密封报价与供应商准入", link: "/docs/Backend/ProcureToPay/Sourcing/index.md" },
+      { text: "采购订单与变更", link: "/docs/Backend/ProcureToPay/PurchaseOrder/index.md" },
+      { text: "收货、质检与暂估", link: "/docs/Backend/ProcureToPay/GoodsReceipt/index.md" },
+      { text: "三单匹配与容差", link: "/docs/Backend/ProcureToPay/InvoiceMatch/index.md" },
+      { text: "付款排程与折扣", link: "/docs/Backend/ProcureToPay/PaymentRun/index.md" },
+      { text: "实战：本机跑通一条闭环", link: "/docs/Backend/ProcureToPay/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ProcureToPay/FAQ/index.md" },
+    ],
+  },
+];

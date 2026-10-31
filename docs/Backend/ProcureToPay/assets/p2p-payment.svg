@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 440" width="940" height="440" role="img" aria-label="付款排程：账期是条款，折扣是现金流">
+<rect x="0" y="0" width="940" height="440" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">付款排程：账期是条款，折扣是现金流</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">付款不是「到期打钱」，是「在一组互相冲突的约束里挑一个批次」</text>
+<line x1="60" y1="170" x2="890" y2="170" stroke="#94a3b8" stroke-width="2"/>
+<circle cx="120" cy="170" r="7" fill="#0f766e"/>
+<text x="120" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="700">收货过账</text>
+<text x="120" y="196" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">T0 起算</text>
+<circle cx="330" cy="170" r="7" fill="#0f766e"/>
+<text x="330" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="700">折扣截止</text>
+<text x="330" y="196" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">T+10</text>
+<circle cx="560" cy="170" r="7" fill="#0f766e"/>
+<text x="560" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="700">账期到期</text>
+<text x="560" y="196" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">T+30</text>
+<circle cx="790" cy="170" r="7" fill="#0f766e"/>
+<text x="790" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="700">付款批次</text>
+<text x="790" y="196" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">每周二/四</text>
+<line x1="330" y1="178" x2="560" y2="178" stroke="#0f766e" stroke-width="3"/>
+<text x="445" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f766e" text-anchor="middle" font-weight="400">折扣窗口（这一段的钱最贵）</text>
+<rect x="30" y="232" width="430" height="44" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="245.0" y="258.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="middle" font-weight="600">2/10 net 30：放弃折扣 = 年化 37.2% 的资金成本</text>
+<rect x="480" y="232" width="430" height="44" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="695.0" y="258.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="middle" font-weight="600">1/30 net 60：年化 12.3%——条款不同，结论相反</text>
+<text x="30" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="400">排程的三条硬约束：① 同一供应商同期只出一个批次 ② 有争议发票不进批次 ③ 预付款必须先冲抵</text>
+<text x="30" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">付款批次是幂等的单位：批次内每笔都有 payment_no，银行回单按 payment_no 回写，重跑不会重付</text>
+<text x="470" y="376" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#b91c1c" text-anchor="middle" font-weight="400">四个状态必须分开：已排程 / 已发送 / 银行已受理 / 已到账——「已发送」不等于「已付款」</text>
+<text x="470" y="402" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b" text-anchor="middle" font-weight="400">退票要能从回单反查到发票，否则这笔钱会在「已付」和「未付」之间永久悬空</text>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#64748b"/></marker></defs>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 520" width="940" height="520" role="img" aria-label="四条边界：每一层只相信下一层交给它的东西">
+<rect x="0" y="0" width="940" height="520" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">四条边界：每一层只相信下一层交给它的东西</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">切开的依据不是「职责听起来不同」，而是「失败模式不同、降级方向不同、扩容单位不同」</text>
+<rect x="30" y="92" width="420" height="84" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="130.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">接入层 gateway</text>
+<text x="240.0" y="148.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">验签 / 令牌 / 限流 / 幂等键</text>
+<rect x="30" y="196" width="420" height="84" rx="8" fill="#ccfbf1" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="240.0" y="234.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">业务层 api</text>
+<text x="240.0" y="252.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">路由 / 参数 / 事务边界</text>
+<rect x="30" y="300" width="420" height="84" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="240.0" y="338.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">计量层 metering</text>
+<text x="240.0" y="356.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">用量累加 / 配额校验</text>
+<rect x="30" y="404" width="420" height="84" rx="8" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="240.0" y="442.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">投递层 dispatcher</text>
+<text x="240.0" y="460.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">outbox / 重投 / 死信</text>
+<text x="30" y="510" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="start" font-weight="400">四个进程共用一个 PostgreSQL；跨层只见 HTTP 与 outbox 两张表，不见对方的业务表</text>
+<text x="470" y="122" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">只做四件事</text>
+<text x="470" y="142" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">验签失败即 401，不解释业务</text>
+<text x="470" y="226" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">只认 claim</text>
+<text x="470" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">不查配额表，只信 metering 的返回</text>
+<text x="470" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">只累加不判断</text>
+<text x="470" y="350" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">配额不足返回 429，由业务层决定话术</text>
+<text x="470" y="434" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">只投递不重算</text>
+<text x="470" y="454" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">事件内容在事务内已定稿</text>
+<line x1="240" y1="176" x2="240" y2="196" stroke="#64748b" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="240" y1="280" x2="240" y2="300" stroke="#64748b" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="240" y1="384" x2="240" y2="404" stroke="#64748b" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="160" y="192" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400">HTTP + 令牌</text>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#64748b"/></marker></defs>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img" aria-label="一笔采购的四个时点：承诺、实物、账、钱">
+<rect x="0" y="0" width="940" height="400" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">一笔采购的四个时点：承诺、实物、账、钱</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">「到货了」在不同部门嘴里是四个不同的日子；把四个日子分开记，才能解释账上为什么对不上</text>
+<line x1="60" y1="180" x2="890" y2="180" stroke="#94a3b8" stroke-width="2"/>
+<circle cx="150" cy="180" r="7" fill="#0f766e"/>
+<text x="150" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="700">承诺</text>
+<text x="150" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">订单生效 PO v1</text>
+<text x="150" y="206" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">采购系统</text>
+<text x="150" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">commitment</text>
+<circle cx="370" cy="180" r="7" fill="#0f766e"/>
+<text x="370" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="700">实物</text>
+<text x="370" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">收货过账 GR</text>
+<text x="370" y="206" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">仓库 WMS</text>
+<text x="370" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">received</text>
+<circle cx="590" cy="180" r="7" fill="#0f766e"/>
+<text x="590" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="700">账</text>
+<text x="590" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">发票记账 AP</text>
+<text x="590" y="206" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">财务</text>
+<text x="590" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">accrual</text>
+<circle cx="810" cy="180" r="7" fill="#0f766e"/>
+<text x="810" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="700">钱</text>
+<text x="810" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">银行回单</text>
+<text x="810" y="206" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">出纳</text>
+<text x="810" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400">settled</text>
+<rect x="30" y="258" width="880" height="44" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="470.0" y="284.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="600">四个数永远不相等：期末在途 = 已承诺 − 已收；GR/IR = 已收 − 已开票；应付 = 已开票 − 已付</text>
+<text x="470" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">「账是平的」不等于「钱是对的」：暂估科目把差额吸收掉，报表看不出来，只有对账能看出来</text>
+<text x="470" y="356" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#b91c1c" text-anchor="middle" font-weight="400">所以每一段都要留下可对账的键：po_no + po_version / gr_no / invoice_no / payment_batch_id</text>
+<text x="470" y="382" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b" text-anchor="middle" font-weight="400">这四个键任何一个是「靠供应商填的」，这一段就已经在对账里失联了</text>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#64748b"/></marker></defs>
+</svg>
