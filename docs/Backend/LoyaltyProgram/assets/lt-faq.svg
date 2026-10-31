@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 430" width="940" height="430" role="img" aria-label="积分与储值问题分诊">
+<rect x="0" y="0" width="940" height="430" fill="#f8fafc"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">分诊：先看「谁的数字不对」</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">客户说的、账上记的、报表算的，三条线各有各的修法</text>
+<rect x="40" y="84" width="280" height="40" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="180.0" y="108.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">客户说积分没了</text>
+<rect x="340" y="84" width="380" height="40" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="530.0" y="108.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">先查过期批次与消耗顺序</text>
+<rect x="740" y="84" width="160" height="40" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="820.0" y="108.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">ExpiryBatch</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+<line x1="320" y1="104" x2="340" y2="104" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="720" y1="104" x2="740" y2="104" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="40" y="134" width="280" height="40" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="180.0" y="158.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">客户说抵扣不了</text>
+<rect x="340" y="134" width="380" height="40" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="530.0" y="158.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">查封顶、冻结期、可用余额</text>
+<rect x="740" y="134" width="160" height="40" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="820.0" y="158.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">RedeemSettle</text>
+<line x1="320" y1="154" x2="340" y2="154" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="720" y1="154" x2="740" y2="154" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="40" y="184" width="280" height="40" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="180.0" y="208.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">财务说负债对不上</text>
+<rect x="340" y="184" width="380" height="40" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="530.0" y="208.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">查 breakage 口径与过期流水</text>
+<rect x="740" y="184" width="160" height="40" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="820.0" y="208.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">LiabilityRecon</text>
+<line x1="320" y1="204" x2="340" y2="204" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="720" y1="204" x2="740" y2="204" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="40" y="234" width="280" height="40" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="180.0" y="258.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">运营说券/积分重复发</text>
+<rect x="340" y="234" width="380" height="40" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="530.0" y="258.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">查幂等键与等级权益发放</text>
+<rect x="740" y="234" width="160" height="40" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="820.0" y="258.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">EarnRules</text>
+<line x1="320" y1="254" x2="340" y2="254" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="720" y1="254" x2="740" y2="254" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="40" y="284" width="280" height="40" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="180.0" y="308.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">客服说退款少退了</text>
+<rect x="340" y="284" width="380" height="40" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="530.0" y="308.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">查退卡口径与逐笔 round</text>
+<rect x="740" y="284" width="160" height="40" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="820.0" y="308.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">StoredValue</text>
+<line x1="320" y1="304" x2="340" y2="304" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="720" y1="304" x2="740" y2="304" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="40" y="366" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">止血顺序：先停发放（关规则）→ 再冻消耗（保余额）→ 最后补账（按流水重建批次）</text>
+<rect x="40" y="380" width="860" height="36" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="470.0" y="402.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">永远不要直接改余额：改余额等于让流水失去证据力，下一次对账必然再炸</text>
+</svg>

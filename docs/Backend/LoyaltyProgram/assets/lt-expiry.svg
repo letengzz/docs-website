@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 420" width="940" height="420" role="img" aria-label="批次先到期先扣与过期窗口">
+<rect x="0" y="0" width="940" height="420" fill="#f8fafc"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">过期只发生在批次上，不发生在余额上</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">余额是一个数，没有到期日；批次才有</text>
+<rect x="40" y="84" width="830" height="60" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="455.0" y="118.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">时间轴：批次 A（1 月发，7 月到期）  B（3 月发，9 月到期）  C（5 月发，11 月到期）</text>
+<rect x="70" y="168" width="220" height="56" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="180.0" y="191.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">A 100 分</text>
+<text x="180.0" y="209.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">7 月到期</text>
+<rect x="330" y="168" width="220" height="56" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="440.0" y="191.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">B 100 分</text>
+<text x="440.0" y="209.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">9 月到期</text>
+<rect x="590" y="168" width="220" height="56" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="700.0" y="191.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">C 100 分</text>
+<text x="700.0" y="209.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">11 月到期</text>
+<text x="70" y="250" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">消耗 150 分时：先到期先扣 → A 清零、B 扣 50；后发放先扣 → C 清零、B 扣 50 → A 整批过期</text>
+<rect x="40" y="272" width="400" height="100" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="240.0" y="299.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">先到期先扣（FIFO）</text>
+<text x="240.0" y="317.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">过期 84,048 分 / 2,000 用户</text>
+<text x="240.0" y="335.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">客户损失最小</text>
+<text x="240.0" y="353.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">推荐：默认策略</text>
+<rect x="480" y="272" width="400" height="100" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="680.0" y="299.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">后发放先扣（LIFO）</text>
+<text x="680.0" y="317.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">过期 382,349 分（+354.9%）</text>
+<text x="680.0" y="335.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">95.6% 的用户结果不同</text>
+<text x="680.0" y="353.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">只在「限时活动积分」用</text>
+<text x="40" y="400" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">扫描成本：20 万批次、单日窗口——普通索引 2,200 行 / 18.1 ms，部分索引（remain&gt;0）1,442 行 / 16.1 ms</text>
+</svg>

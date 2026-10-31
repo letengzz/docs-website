@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 420" width="940" height="420" role="img" aria-label="等级升降级与权益快照时点">
+<rect x="0" y="0" width="940" height="420" fill="#f8fafc"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">等级：成长值算得对，时点用错也白算</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">等级变更的瞬间，权益、折扣、运费险全都要跟着变</text>
+<rect x="40" y="84" width="200" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="140.0" y="114.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">V1 普通</text>
+<text x="140.0" y="132.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">0 ~ 1,999</text>
+<rect x="270" y="84" width="200" height="70" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="370.0" y="114.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">V2 银卡</text>
+<text x="370.0" y="132.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">2,000 ~ 5,999</text>
+<rect x="500" y="84" width="200" height="70" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="600.0" y="114.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">V3 金卡</text>
+<text x="600.0" y="132.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">6,000 ~ 11,999</text>
+<rect x="730" y="84" width="170" height="70" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="815.0" y="114.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">V4 黑卡</text>
+<text x="815.0" y="132.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">≥ 12,000</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+<line x1="240" y1="119" x2="270" y2="119" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="470" y1="119" x2="500" y2="119" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="700" y1="119" x2="730" y2="119" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="40" y="190" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">两道闸门</text>
+<rect x="40" y="206" width="400" height="100" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="240.0" y="242.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">升级：即时生效 + 权益补发</text>
+<text x="240.0" y="260.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">降级：月底结算 + 缓冲 30 天</text>
+<text x="240.0" y="278.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">成长值滚动 12 个月，过期不追补</text>
+<rect x="480" y="206" width="420" height="100" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="690.0" y="242.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">权益发放幂等：benefit:{tier}:{period}</text>
+<text x="690.0" y="260.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">同一周期同一权益只发一次</text>
+<text x="690.0" y="278.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">降级后未用权益：作废 or 保留到期末</text>
+<rect x="40" y="322" width="860" height="36" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="470.0" y="344.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">时点错用：下单按 V3、结算时已降 V2 —— 11.46% 的订单折扣不同，累计多收 52,277.96 元</text>
+<text x="40" y="396" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">原则：折扣按「下单时快照」算，权益按「当前等级」发；两者不能混用同一份缓存</text>
+</svg>

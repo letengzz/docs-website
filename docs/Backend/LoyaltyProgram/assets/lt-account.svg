@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 450" width="940" height="450" role="img" aria-label="账户批次与流水三层结构">
+<rect x="0" y="0" width="940" height="450" fill="#f8fafc"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">一个账户、一堆批次、一本流水</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">余额是缓存，批次是事实，流水是证据——三者必须能互相推导</text>
+<rect x="40" y="84" width="250" height="78" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="165.0" y="109.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">member_account</text>
+<text x="165.0" y="127.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">user_id 主键</text>
+<text x="165.0" y="145.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">points_avail / points_frozen</text>
+<rect x="345" y="84" width="250" height="78" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="470.0" y="109.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">point_batch</text>
+<text x="470.0" y="127.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">每次发放一行</text>
+<text x="470.0" y="145.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">remain / expire_at / source</text>
+<rect x="650" y="84" width="250" height="78" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="775.0" y="109.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">point_ledger</text>
+<text x="775.0" y="127.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">只追加</text>
+<text x="775.0" y="145.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">delta / biz_key / batch_id</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+<line x1="290" y1="123" x2="345" y2="123" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="595" y1="123" x2="650" y2="123" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="40" y="190" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">不变式（每次都校验，不靠人记）：</text>
+<text x="52" y="214" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">A. Σ point_batch.remain（未过期）= member_account.points_avail</text>
+<text x="52" y="238" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">B. Σ point_ledger.delta（按 user）= points_avail + points_frozen + points_expired</text>
+<text x="52" y="262" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">C. 每条 ledger 必须能指到 batch（发放/过期）或指到消费单（消耗/退还）</text>
+<text x="52" y="286" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">D. 任何时刻 points_avail ≥ 0 且 points_frozen ≥ 0，由条件更新保证</text>
+<rect x="40" y="330" width="860" height="92" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="470.0" y="362.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">三种「看起来对」的错账</text>
+<text x="470.0" y="380.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">只存余额：过期算不出（本机 2000 用户，先到期先扣 84,048 分 / 后发放先扣 382,349 分，+354.9%）</text>
+<text x="470.0" y="398.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">只存流水：每次查余额都要聚合，10 万行后列表页 p99 崩；只存批次：无法回答「这 500 分是谁给的」</text>
+</svg>

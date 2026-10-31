@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 440" width="940" height="440" role="img" aria-label="积分负债与三向对账">
+<rect x="0" y="0" width="940" height="440" fill="#f8fafc"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">积分是负债，不是营销费用</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">发出即负债，兑付才转收入；breakage 靠历史兑付率估，不靠感觉</text>
+<rect x="40" y="84" width="270" height="86" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="175.0" y="113.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">发放：借 销售费用/合同负债</text>
+<text x="175.0" y="131.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">贷 合同负债（按单独售价分摊）</text>
+<text x="175.0" y="149.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">此时不是收入</text>
+<rect x="335" y="84" width="270" height="86" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="470.0" y="113.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">兑付：借 合同负债</text>
+<text x="470.0" y="131.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">贷 收入</text>
+<text x="470.0" y="149.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">按实际兑付比例释放</text>
+<rect x="630" y="84" width="270" height="86" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="765.0" y="113.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">失效：借 合同负债</text>
+<text x="765.0" y="131.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">贷 收入（breakage）</text>
+<text x="765.0" y="149.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">按行使模式比例确认</text>
+<text x="40" y="196" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">三个负债口径（同一批 1,200 万分发放）</text>
+<rect x="40" y="212" width="400" height="96" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="240.0" y="246.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">「迄今未兑」当「永不兑」</text>
+<text x="240.0" y="264.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">59.31% → 负债 71,172 元</text>
+<text x="240.0" y="282.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">错在把「还没兑」当「不会兑」</text>
+<rect x="480" y="212" width="420" height="96" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="690.0" y="246.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">成熟批次外推（IFRS 15 B46）</text>
+<text x="690.0" y="264.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">38.00% → 负债 45,600 元</text>
+<text x="690.0" y="282.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">与真实一致；差 21.31 个百分点</text>
+<text x="40" y="340" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">三向对账：账户余额 ⇄ 流水汇总 ⇄ 批次剩余，三方必须相等（含过期与冲正）</text>
+<rect x="40" y="356" width="860" height="36" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="470.0" y="378.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">先查后改的扣减会让三方分家：16 线程下报成功 128 次（上限 100），余额差 1,190 分</text>
+</svg>

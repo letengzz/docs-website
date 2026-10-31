@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 430" width="940" height="430" role="img" aria-label="发放、冻结与冲正链路">
+<rect x="0" y="0" width="940" height="430" fill="#f8fafc"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">获取不是「加一笔」，是「记账 + 可冲正」</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">发放与冲正必须共用同一把业务键，否则退款退不掉积分</text>
+<rect x="40" y="84" width="260" height="78" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="170.0" y="118.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">支付成功事件</text>
+<text x="170.0" y="136.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">order_id + user_id</text>
+<rect x="330" y="84" width="260" height="78" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="460.0" y="118.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">规则求值</text>
+<text x="460.0" y="136.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">比例 × 金额 → 上限 → 取整</text>
+<rect x="620" y="84" width="260" height="78" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="750.0" y="118.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">幂等键</text>
+<text x="750.0" y="136.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">earn:{order_id}:{rule_ver}</text>
+<rect x="40" y="202" width="260" height="78" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="170.0" y="236.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">写批次 + 流水</text>
+<text x="170.0" y="254.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">batch.remain += n</text>
+<rect x="330" y="202" width="260" height="78" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="460.0" y="236.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">冻结期 T+N</text>
+<text x="460.0" y="254.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">frozen += n（可用延后）</text>
+<rect x="620" y="202" width="260" height="78" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="750.0" y="236.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">解冻</text>
+<text x="750.0" y="254.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">frozen → avail</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+<line x1="300" y1="123" x2="330" y2="123" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="590" y1="123" x2="620" y2="123" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="750" y1="162" x2="750" y2="202" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="620" y1="241" x2="590" y2="241" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="330" y1="241" x2="300" y2="241" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="40" y="300" width="400" height="108" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="240.0" y="331.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">冲正：refund:{order_id}</text>
+<text x="240.0" y="349.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">按退货金额比例回退</text>
+<text x="240.0" y="367.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">批次 remain 回填同一条批次</text>
+<text x="240.0" y="385.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">已过期则记「过期后冲正」例外流水</text>
+<rect x="500" y="300" width="400" height="108" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="700.0" y="331.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">三条硬约束</text>
+<text x="700.0" y="349.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">同一 biz_key 只允许一条发放流水</text>
+<text x="700.0" y="367.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">回退不得超过该批次已发数</text>
+<text x="700.0" y="385.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">回退后 points_avail 不得为负</text>
+</svg>

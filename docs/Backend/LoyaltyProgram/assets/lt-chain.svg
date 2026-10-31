@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 430" width="940" height="430" role="img" aria-label="七段权益链与三段接缝">
+<rect x="0" y="0" width="940" height="430" fill="#f8fafc"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">七段权益链：每段的「成功」定义都不同</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">业务以为发出去了、账务以为记上了、客户以为能用了——三件事</text>
+<rect x="40" y="84" width="200" height="96" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="140.0" y="109.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">① 触发</text>
+<text x="140.0" y="127.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">订单支付成功</text>
+<text x="140.0" y="145.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">退货/取消</text>
+<text x="140.0" y="163.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">签到/评价</text>
+<text x="40" y="196" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b45309">失败：无事件，永不发放</text>
+<rect x="265" y="84" width="200" height="96" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="365.0" y="118.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">② 规则</text>
+<text x="365.0" y="136.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">比例 / 阶梯 / 上限</text>
+<text x="365.0" y="154.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">黑名单 / 频次</text>
+<text x="265" y="196" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b45309">失败：发了不该发的</text>
+<rect x="490" y="84" width="200" height="96" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="590.0" y="118.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">③ 落批</text>
+<text x="590.0" y="136.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">批次 + 流水</text>
+<text x="590.0" y="154.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">唯一键幂等</text>
+<text x="490" y="196" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b45309">失败：重投即双发</text>
+<rect x="715" y="84" width="200" height="96" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="815.0" y="118.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">④ 生效</text>
+<text x="815.0" y="136.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">T+N 冻结</text>
+<text x="815.0" y="154.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">退单期内不可用</text>
+<text x="715" y="196" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b45309">失败：刚发就能退，退完变负</text>
+<rect x="40" y="234" width="200" height="96" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="140.0" y="268.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">⑤ 消耗</text>
+<text x="140.0" y="286.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">先到期先扣</text>
+<text x="140.0" y="304.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">条件更新</text>
+<text x="40" y="346" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b45309">失败：扣了但余额没减</text>
+<rect x="265" y="234" width="200" height="96" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="365.0" y="268.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">⑥ 退还</text>
+<text x="365.0" y="286.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">按比例回退</text>
+<text x="365.0" y="304.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">批次回填</text>
+<text x="265" y="346" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b45309">失败：合计对不上原值</text>
+<rect x="490" y="234" width="200" height="96" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="590.0" y="268.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">⑦ 过期</text>
+<text x="590.0" y="286.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">扫描 + 宽限</text>
+<text x="590.0" y="304.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">失效流水</text>
+<text x="490" y="346" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b45309">失败：过期量凭空多出</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+<line x1="240" y1="132" x2="265" y2="132" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="465" y1="132" x2="490" y2="132" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="690" y1="132" x2="715" y2="132" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="815" y1="180" x2="815" y2="232" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="715" y1="282" x2="690" y2="282" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="490" y1="282" x2="465" y2="282" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="265" y1="282" x2="240" y2="282" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="60" y="380" width="820" height="36" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="470.0" y="402.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">三个接缝：事件→规则（该不该给）、规则→账（给了多少）、账→展示（能不能用）</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 440" width="940" height="440" role="img" aria-label="积分抵扣与部分退款回退">
+<rect x="0" y="0" width="940" height="440" fill="#f8fafc"/>
+<text x="28" y="34" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a">抵扣：换算、封顶、分摊、回退四步</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">每一步都能单独算错，而且错法互不相同</text>
+<rect x="40" y="84" width="200" height="70" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="140.0" y="114.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">① 换算</text>
+<text x="140.0" y="132.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">积分 → 金额（分）</text>
+<rect x="280" y="84" width="200" height="70" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="380.0" y="114.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">② 封顶</text>
+<text x="380.0" y="132.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">min(抵扣额, 应付)</text>
+<rect x="520" y="84" width="200" height="70" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="620.0" y="114.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">③ 分摊</text>
+<text x="620.0" y="132.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">最大余数法到行</text>
+<rect x="760" y="84" width="160" height="70" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="840.0" y="114.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">④ 回退</text>
+<text x="840.0" y="132.0" text-anchor="middle" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#475569">按行比例</text>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 z" fill="#64748b"/></marker></defs>
+<line x1="240" y1="119" x2="280" y2="119" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="480" y1="119" x2="520" y2="119" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="720" y1="119" x2="760" y2="119" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="40" y="186" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a">四步各自的坑（本机读数）</text>
+<text x="52" y="210" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">① 换算比例非 1:1 时向下取整，残值留在账户里：不封顶则 32.77% 的单会抵出负数（超抵 64.1 万元）</text>
+<text x="52" y="236" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">② 封顶后仍有 0.33% 的单留下 1~99 分尾差，客户「差一分钱付不掉」；封顶命中 32.77%，平均 65.21 元积分用不掉</text>
+<text x="52" y="262" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">③ 行级分摊四舍五入：29% 的单合计 ≠ 优惠额（最大余数法为 0），分摊错误会让商家承担额对不上</text>
+<text x="52" y="288" font-weight="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">④ 部分退款逐笔 round：20,000 单里 66.62% 累计回退 ≠ 一次回退（最大差 1 分）</text>
+<rect x="40" y="330" width="860" height="40" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="470.0" y="354.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#1e293b">退款顺序：先退现金/储值、后回退积分；已过期批次回退要记例外，不能静默丢弃</text>
+<rect x="40" y="386" width="860" height="40" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="470.0" y="410.0" text-anchor="middle" font-weight="700" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#1e293b">验收：同一单退三次，Σ回退 ≤ 原发放，且 Σ回退 + 剩余 = 原发放（差 0 分）</text>
+</svg>

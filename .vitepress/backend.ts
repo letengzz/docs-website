@@ -1081,3 +1081,22 @@ export const GraphQL = [
     ],
   },
 ];
+
+export const LoyaltyProgram = [
+  {
+    text: "会员积分与储值账户工程",
+    link: "/docs/Backend/LoyaltyProgram/index.md",
+    items: [
+      { text: "总览：七段权益链与三本账", link: "/docs/Backend/LoyaltyProgram/Overview/index.md" },
+      { text: "账户与流水：批次、余额与不变式", link: "/docs/Backend/LoyaltyProgram/AccountModel/index.md" },
+      { text: "获取与冲正：规则、上限与幂等入账", link: "/docs/Backend/LoyaltyProgram/EarnRules/index.md" },
+      { text: "抵扣与结算：换算、封顶与部分退款", link: "/docs/Backend/LoyaltyProgram/RedeemSettle/index.md" },
+      { text: "过期与失效：批次、顺序与宽限", link: "/docs/Backend/LoyaltyProgram/ExpiryBatch/index.md" },
+      { text: "储值账户：本金、赠送金与退卡", link: "/docs/Backend/LoyaltyProgram/StoredValue/index.md" },
+      { text: "等级与权益：成长值、升降级与发放幂等", link: "/docs/Backend/LoyaltyProgram/TierBenefit/index.md" },
+      { text: "负债与对账：breakage、合同负债与三方核对", link: "/docs/Backend/LoyaltyProgram/LiabilityRecon/index.md" },
+      { text: "实战：一套能跑起来的最小账户链路", link: "/docs/Backend/LoyaltyProgram/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/LoyaltyProgram/FAQ/index.md" },
+    ],
+  },
+];
