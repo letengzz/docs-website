@@ -1153,3 +1153,21 @@ export const ProcureToPay = [
     ],
   },
 ];
+
+export const SupplierCollaboration = [
+  {
+    text: "供应商协同与价格主数据工程",
+    link: "/docs/Backend/SupplierCollaboration/index.md",
+    items: [
+      { text: "总览：六段协同链与三个「价格」", link: "/docs/Backend/SupplierCollaboration/Overview/index.md" },
+      { text: "供应商门户与可见范围", link: "/docs/Backend/SupplierCollaboration/SupplierPortal/index.md" },
+      { text: "价格协议与阶梯价", link: "/docs/Backend/SupplierCollaboration/PriceAgreement/index.md" },
+      { text: "料号、单位与价格主数据", link: "/docs/Backend/SupplierCollaboration/PriceMaster/index.md" },
+      { text: "VMI 与寄售", link: "/docs/Backend/SupplierCollaboration/VmiConsignment/index.md" },
+      { text: "三单匹配的批量复核", link: "/docs/Backend/SupplierCollaboration/BatchReview/index.md" },
+      { text: "供应商对账日报", link: "/docs/Backend/SupplierCollaboration/ReconciliationDaily/index.md" },
+      { text: "实战：本机跑通一条协同闭环", link: "/docs/Backend/SupplierCollaboration/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/SupplierCollaboration/FAQ/index.md" },
+    ],
+  },
+];

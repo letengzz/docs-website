@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 420" width="940" height="420" role="img" aria-label="寄售三本账与货权转移时点">
+<rect x="0" y="0" width="940" height="420" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">寄售三本账与货权转移时点</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">到仓不确认负债，消耗才转移货权，结算只是钱的时点</text>
+<rect x="40" y="86" width="270" height="76" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="175.0" y="120.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">到仓 receipt</text>
+<text x="175.0" y="139.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">货在我仓，货权仍属供应商</text>
+<text x="175" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">不确认负债</text>
+<rect x="340" y="86" width="270" height="76" rx="8" fill="#ccfbf1" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="475.0" y="120.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">消耗 consumption</text>
+<text x="475.0" y="139.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">货权转移，产生应付</text>
+<text x="475" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">本期成本</text>
+<rect x="640" y="86" width="270" height="76" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="775.0" y="120.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">结算 settlement</text>
+<text x="775.0" y="139.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">对账后开票付款</text>
+<text x="775" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="middle" font-weight="400">只是钱的时点</text>
+<line x1="310" y1="124" x2="340" y2="124" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="610" y1="124" x2="640" y2="124" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="40" y="220" width="290" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="185.0" y="242.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">供应商寄售库存</text>
+<text x="185.0" y="261.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">qty_on_hand</text>
+<text x="350" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">对方资产，我方保管</text>
+<rect x="40" y="282" width="290" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="185.0" y="304.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">在途 / 待检</text>
+<text x="185.0" y="323.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">in_transit</text>
+<text x="350" y="314" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">两边账上都没有</text>
+<rect x="40" y="344" width="290" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="185.0" y="366.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="600">已领用未结算</text>
+<text x="185.0" y="385.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">consumed_at 有值、settled_at 空</text>
+<text x="350" y="376" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">我方成本，未进应付</text>
+<rect x="640" y="220" width="270" height="114" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="775.0" y="273.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="600">本机读数</text>
+<text x="775.0" y="292.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle">25 日截止、按结算时点记账：20.2% 的消耗落到次月</text>
+<text x="640" y="360" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">补货：min=提前期用量 → 缺货 20 天；</text>
+<text x="640" y="378" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">服务水平 95% → 缺货 0 天，只多压 27% 库存</text>
+</svg>

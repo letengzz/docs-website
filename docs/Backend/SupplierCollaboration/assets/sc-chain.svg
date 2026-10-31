@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img" aria-label="六段协同链：哪一段失败是安静的">
+<rect x="0" y="0" width="940" height="400" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">六段协同链：哪一段失败是安静的</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">红色 = 当场报错；灰色 = 什么都不发生，直到月结</text>
+<text x="30" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">① 协议定价</text>
+<rect x="200" y="84" width="470" height="40" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="435.0" y="109.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">协议生效但订单用不上</text>
+<text x="700" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="600">安静</text>
+<line x1="96" y1="124" x2="96" y2="146" stroke="#cbd5e1" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="30" y="160" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">② 订单发布</text>
+<rect x="200" y="134" width="470" height="40" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="435.0" y="159.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">对方没接单，我方以为已生效</text>
+<text x="700" y="160" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="600">安静</text>
+<line x1="96" y1="174" x2="96" y2="196" stroke="#cbd5e1" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="30" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">③ 发货通知</text>
+<rect x="200" y="184" width="470" height="40" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="435.0" y="209.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">货到了但系统里没有 ASN</text>
+<text x="700" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#b91c1c" text-anchor="start" font-weight="600">吵闹</text>
+<line x1="96" y1="224" x2="96" y2="246" stroke="#cbd5e1" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="30" y="260" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">④ 寄售消耗</text>
+<rect x="200" y="234" width="470" height="40" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="435.0" y="259.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">消耗记在错误期间</text>
+<text x="700" y="260" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="600">安静</text>
+<line x1="96" y1="274" x2="96" y2="296" stroke="#cbd5e1" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="30" y="310" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">⑤ 发票复核</text>
+<rect x="200" y="284" width="470" height="40" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="435.0" y="309.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">挂起但没人认领</text>
+<text x="700" y="310" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="600">安静</text>
+<line x1="96" y1="324" x2="96" y2="346" stroke="#cbd5e1" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="30" y="360" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">⑥ 对账付款</text>
+<rect x="200" y="334" width="470" height="40" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="435.0" y="359.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="400">差额滚到下月</text>
+<text x="700" y="360" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="600">安静</text>
+<text x="30" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">工程含义：安静的失败必须有「对账键 + 对方可见的证据」，否则永远不会被发现</text>
+</svg>

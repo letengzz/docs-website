@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 430" width="940" height="430" role="img" aria-label="请求信封与错误体契约">
+<rect x="0" y="0" width="940" height="430" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" text-anchor="start" font-weight="700">请求信封的五段与错误体的四个字段</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">左边回答「你是谁、内容有没有被改」，右边回答「哪一层错了、具体哪一条」，两者字段都必须有限且稳定</text>
+<rect x="30" y="82" width="400" height="250" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="50" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">请求信封（每个受保护请求必备）</text>
+<rect x="44" y="124" width="372" height="34" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="56" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">X-App-Id</text>
+<text x="196" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">是谁 → app_ 前缀</text>
+<rect x="44" y="164" width="372" height="34" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="56" y="186" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">X-Timestamp</text>
+<text x="196" y="186" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">什么时候发的 → Unix 秒</text>
+<rect x="44" y="204" width="372" height="34" rx="6" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="56" y="226" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">X-Nonce</text>
+<text x="196" y="226" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">不许再来一遍 → 10 分钟去重</text>
+<rect x="44" y="244" width="372" height="34" rx="6" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="56" y="266" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">X-Signature</text>
+<text x="196" y="266" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">内容有没有被改 → HMAC-SHA256</text>
+<rect x="44" y="284" width="372" height="34" rx="6" fill="#ccfbf1" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="56" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">X-Request-Id</text>
+<text x="196" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">怎么串起来 → 全链路不变</text>
+<text x="460" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">签名串：五段 \n 连接</text>
+<rect x="460" y="124" width="200" height="30" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="470" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="600">1</text>
+<text x="486" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">POST</text>
+<text x="566" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">\n</text>
+<rect x="460" y="158" width="200" height="30" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="470" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="600">2</text>
+<text x="486" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">/v1/inventory:read</text>
+<text x="566" y="198" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">\n</text>
+<rect x="460" y="192" width="200" height="30" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="470" y="212" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="600">3</text>
+<text x="486" y="212" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">1735689600</text>
+<text x="566" y="232" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">\n</text>
+<rect x="460" y="226" width="200" height="30" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="470" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="600">4</text>
+<text x="486" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">b7f3c1d9a2e84f60</text>
+<text x="566" y="266" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="middle" font-weight="400">\n</text>
+<rect x="460" y="260" width="200" height="30" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="470" y="280" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="600">5</text>
+<text x="486" y="280" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">sha256(body)</text>
+<rect x="700" y="82" width="210" height="132" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="716" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">错误体：四字段</text>
+<text x="716" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="600">code</text>
+<text x="796" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">稳定不变</text>
+<text x="716" y="150" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="600">message</text>
+<text x="796" y="150" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">人读可改</text>
+<text x="716" y="170" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="600">request_id</text>
+<text x="796" y="170" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">报障唯一键</text>
+<text x="716" y="190" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="600">details</text>
+<text x="796" y="190" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">结构化补充</text>
+<rect x="700" y="230" width="210" height="102" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="716" y="256" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#0f172a" text-anchor="start" font-weight="600">三层判定不许混</text>
+<text x="716" y="278" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">scope 不足 → 403</text>
+<text x="716" y="298" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">重放 → 409</text>
+<text x="716" y="318" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="400">超配额 → 429 + 四头</text>
+<text x="30" y="366" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">状态码回答「哪一层」，错误码回答「哪一条」：401 auth.* / 403 scope.* / 409 conflict.* / 429 quota.* / 410 version.*</text>
+<text x="30" y="392" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569" text-anchor="start" font-weight="400">校验不是读文档，是四条命令：路径 12 条、孤儿错误码 0 条、签名 64 位可复算、429 四头齐全</text>
+</svg>

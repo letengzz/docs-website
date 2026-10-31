@@ -48,3 +48,4 @@
 - [开放平台与 API 产品化工程](OpenPlatform/index.md)
 - [物联网设备接入与指令下发工程](IoTDevice/index.md)
 - [采购到付款（P2P）与三单匹配工程](ProcureToPay/index.md)
+- [供应商协同与价格主数据工程](SupplierCollaboration/index.md)

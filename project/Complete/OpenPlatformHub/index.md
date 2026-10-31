@@ -65,6 +65,7 @@
 | 222 | 第 1 周第 1 步 | [需求拆分：八条用户故事与验收条件](Requirements/index.md) | `EOP-A` ~ `EOP-H` | 8 |
 | 223 | 第 1 周第 2 步 | [技术选型与版本基线](TechBaseline/index.md) | `EOT-A` ~ `EOT-H` | 8 |
 | 224 | 第 1 周第 3 步 | [架构设计与四条边界](Architecture/index.md) | `EOB-A` ~ `EOB-H` | 8 |
+| 225 | 第 1 周第 4 步 | [接口契约与错误码](Contracts/index.md) | `EOI-A` ~ `EOI-H` | 8 |
 
 > 后续章节按周追加，每章都包含「当日做了什么 / 如何验证 / 下一步是什么」。
 
