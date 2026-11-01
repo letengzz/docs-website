@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="功能位置 → 设备 → 部件：三层各有各的号">
+<title>功能位置 → 设备 → 部件：三层各有各的号</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="24" y="88" width="250" height="118" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="37" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">功能位置（Functional Location）</text>
+<text x="37" y="132" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">PLANT1/LINE2/INJ</text>
+<text x="37" y="148.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">按「装在哪」编号，不随设备更换</text>
+<rect x="35" y="181" width="84.6" height="17" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1"/>
+<text x="43" y="193.5" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#075985">稳定，十年不变</text>
+<rect x="300" y="88" width="250" height="118" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="313" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">设备（Equipment）</text>
+<text x="313" y="132" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">EQ-001 注塑机 A</text>
+<text x="313" y="148.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">按「这台机器」编号，换位置不改号</text>
+<rect x="311" y="181" width="65.0" height="17" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+<text x="319" y="193.5" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#92400e">跟着资产走</text>
+<rect x="576" y="88" width="320" height="118" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="589" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">部件（Component / BOM）</text>
+<text x="589" y="132" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">液压泵、油封、伺服阀</text>
+<text x="589" y="148.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">可更换件，挂在设备下，有独立寿命</text>
+<rect x="587" y="181" width="113.99999999999999" height="17" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1"/>
+<text x="595" y="193.5" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#86198f">可拆可换，单独记寿命</text>
+<line x1="274" y1="147" x2="298" y2="147" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="550" y1="147" x2="574" y2="147" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="24" y="226" width="420" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="40" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">关键性分级：按「停了会怎样」而不是「多少钱」</text>
+<text x="40" y="278" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">A 类：停机即断线，有安全或交付后果 → 冗余 + 状态监测</text>
+<text x="40" y="300" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">B 类：可切换或可缓冲 4 小时 → 定期维护 + 关键备件</text>
+<text x="40" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">C 类：坏了再修，旁边有替代 → 事后维修即最优策略</text>
+<text x="40" y="350" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#991b1b">分错级的代价：C 类按 A 类养，维护费翻倍；A 类按 C 类养，停线。</text>
+<rect x="460" y="226" width="436" height="150" rx="8" fill="#fff1f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="476" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">本机读数（200 台 / 一年）</text>
+<text x="476" y="278" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#7f1d1d">停机事件 5,012 条，求和 285,172 min</text>
+<text x="476" y="300" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#7f1d1d">区间并集 259,102 min</text>
+<text x="476" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c">被重复计入 26,070 min = 9.1%</text>
+<text x="476" y="350" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#7f1d1d">→ 同一台设备「机械故障」与「等备件」两条区间重叠</text>
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">功能位置 → 设备 → 部件：三层各有各的号</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">停机记在哪一层，决定了你能不能回答「这条产线一年停了多少」</text>
+</svg>

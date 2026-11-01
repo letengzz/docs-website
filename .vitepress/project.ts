@@ -434,6 +434,7 @@ export const CompleteProject = [
           { text: "第 2 周第 3 步 · 令牌签发与 /v1/ping（EOV-A~EOV-H）", link: "/project/Complete/OpenPlatformHub/AuthToken/index.md" },
           { text: "第 2 周第 4 步 · /v1/inventory 与 /webhooks/replay（EOY-A~EOY-H）", link: "/project/Complete/OpenPlatformHub/InventoryReplay/index.md" },
           { text: "第 2 周第 5 步 · /admin/usage 查询面（EOZ-A~EOZ-H）", link: "/project/Complete/OpenPlatformHub/AdminUsage/index.md" },
+          { text: "第 3 周第 1 步 · 验签后 / 配额前的断点矩阵（EPB-A~EPB-H）", link: "/project/Complete/OpenPlatformHub/BreakpointMatrix/index.md" },
         ],
       },
       {

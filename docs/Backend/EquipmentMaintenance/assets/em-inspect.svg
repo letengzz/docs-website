@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="点检的三态与「补录指纹」">
+<title>点检的三态与「补录指纹」</title>
+<rect x="24" y="88" width="440" height="180" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="40" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">阈值三带：OK / WARN / NG</text>
+<rect x="60" y="132" width="360" height="30" fill="#dcfce7"/>
+<rect x="60" y="162" width="360" height="26" fill="#fef3c7"/>
+<rect x="60" y="188" width="360" height="26" fill="#fee2e2"/>
+<text x="70" y="152" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#166534">OK：正常，按原间隔</text>
+<text x="70" y="180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#92400e">WARN：缩短间隔 / 加密测点</text>
+<text x="70" y="206" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#991b1b">NG：立即停机或降载</text>
+<text x="60" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#475569">阈值必须来自失效历史或厂家额定值，不能「拍一个」</text>
+<text x="60" y="256" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#475569">连续 3 点上升 ≈ 单点越限的信号强度（趋势优于阈值）</text>
+<rect x="484" y="88" width="412" height="180" rx="8" fill="#fff1f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="500" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">补录指纹：完成率与有效性是两件事</text>
+<text x="500" y="150" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#334155">现场录入</text>
+<rect x="620" y="136" width="240" height="20" rx="4" fill="#f1f5f9"/>
+<rect x="620" y="136" width="87.8" height="20" rx="4" fill="#16a34a" opacity="0.72"/>
+<text x="713.84" y="150" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#0f172a" font-weight="700">36.6%</text>
+<text x="500" y="184" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#334155">交班前 10 分钟</text>
+<rect x="620" y="170" width="240" height="20" rx="4" fill="#f1f5f9"/>
+<rect x="620" y="170" width="152.2" height="20" rx="4" fill="#dc2626" opacity="0.72"/>
+<text x="778.16" y="184" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#0f172a" font-weight="700">63.4%</text>
+<text x="500" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#7f1d1d">本机读数：1,635 / 1,800 = 90.8% 完成率</text>
+<text x="500" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#7f1d1d">6 处连续空档，最长 12 天（a%17 的 8 台没人管）</text>
+<text x="500" y="258" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#7f1d1d">时间戳完全重复 2 条（批量提交的指纹）</text>
+<rect x="24" y="288" width="872" height="84" rx="8" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="40" y="314" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.6" fill="#075985">三条纪律：① 记录带设备号 + 测点 + 值 + 判定，不只一个「已检查」勾；② 采集端离线缓存，联网补传时保留「测量时刻」而非「上传时刻」</text>
+<text x="40" y="336" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.6" fill="#075985">③ 空档要能被查询：连续 N 天无记录的设备必须出现在看板上，而不是等出事后才发现没人去过</text>
+<text x="40" y="358" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.6" fill="#075985">判据 EQC-A ~ EQC-H 的关键一条：完成率与「交班前集中度」必须同时报，否则数字越好越可疑</text>
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">点检的三态与「补录指纹」</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">完成率 90.8% 不等于做了 90.8% 的检查——63.4% 的记录落在交班前 10 分钟</text>
+</svg>

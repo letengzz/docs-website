@@ -1289,3 +1289,22 @@ export const Manufacturing = [
     ],
   },
 ];
+
+export const EquipmentMaintenance = [
+  {
+    text: "设备维护与可靠性",
+    link: "/docs/Backend/EquipmentMaintenance/index.md",
+    items: [
+      { text: "总览：七段链与三个「好了」", link: "/docs/Backend/EquipmentMaintenance/Overview/index.md" },
+      { text: "设备台账、功能位置与关键性分级", link: "/docs/Backend/EquipmentMaintenance/AssetRegister/index.md" },
+      { text: "维护策略与间隔：BM / PM / CBM / PdM", link: "/docs/Backend/EquipmentMaintenance/Strategy/index.md" },
+      { text: "点检、状态监测与阈值", link: "/docs/Backend/EquipmentMaintenance/Inspection/index.md" },
+      { text: "报修、工单状态机与停机登记", link: "/docs/Backend/EquipmentMaintenance/WorkOrder/index.md" },
+      { text: "备件、可修复件与安全库存", link: "/docs/Backend/EquipmentMaintenance/SpareParts/index.md" },
+      { text: "停机口径、可用率与 OEE 分解", link: "/docs/Backend/EquipmentMaintenance/Downtime/index.md" },
+      { text: "可靠性：MTBF、Weibull 与冗余", link: "/docs/Backend/EquipmentMaintenance/Reliability/index.md" },
+      { text: "实战：从台账到可复算可用率的闭环", link: "/docs/Backend/EquipmentMaintenance/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/EquipmentMaintenance/FAQ/index.md" },
+    ],
+  },
+];

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="可靠性：β 决定策略，冗余买不到共因">
+<title>可靠性：β 决定策略，冗余买不到共因</title>
+<rect x="24" y="84" width="440" height="200" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="40" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">β 估计的样本量要求（真值 2.2）</text>
+<text x="44" y="145" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#334155">10 件</text>
+<text x="120" y="145" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#0f172a" font-weight="700">β̂ = 2.04</text>
+<text x="210" y="145" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">90% 区间 [1.23, 3.25]</text>
+<text x="44" y="177" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#334155">30 件</text>
+<text x="120" y="177" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#0f172a" font-weight="700">β̂ = 2.09</text>
+<text x="210" y="177" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">90% 区间 [1.56, 2.82]</text>
+<text x="44" y="209" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#334155">100 件</text>
+<text x="120" y="209" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#0f172a" font-weight="700">β̂ = 2.16</text>
+<text x="210" y="209" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">90% 区间 [1.82, 2.54]</text>
+<text x="44" y="241" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#334155">400 件</text>
+<text x="120" y="241" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#0f172a" font-weight="700">β̂ = 2.18</text>
+<text x="210" y="241" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">90% 区间 [1.99, 2.37]</text>
+<text x="44" y="268" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#991b1b">10 件样本下 β 的 90% 区间跨过 1 → 无法判断该不该做 PM</text>
+<rect x="484" y="84" width="412" height="200" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+<text x="500" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">并联冗余：独立假设 vs 共因</text>
+<text x="500" y="134" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#92400e">单台可用度</text>
+<text x="596" y="134" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#92400e">独立并联</text>
+<text x="686" y="134" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#92400e">计共因(2%)</text>
+<text x="500" y="156" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#334155">单台 0.90</text>
+<text x="596" y="156" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#166534">99.0000%</text>
+<text x="686" y="156" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#991b1b">98.8200%</text>
+<text x="500" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#334155">单台 0.95</text>
+<text x="596" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#166534">99.7500%</text>
+<text x="686" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#991b1b">99.6550%</text>
+<text x="500" y="208" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#334155">单台 0.99</text>
+<text x="596" y="208" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#166534">99.9900%</text>
+<text x="686" y="208" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#991b1b">99.9702%</text>
+<text x="500" y="262" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#92400e">差 0.02~0.18 点看着小，但共因那部分是「永远修不好」的</text>
+<rect x="24" y="304" width="872" height="76" rx="8" fill="#fff1f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="40" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.4" fill="#7f1d1d">三条纪律：① β&lt;1 的件不做定期更换（越换越坏）；② β 的估计必须带样本量与区间，10 件下不给结论；③ 冗余只对「独立失效」有效，共用的电源 / 冷却 / 控制器要单列</text>
+<text x="40" y="352" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.4" fill="#7f1d1d">本机：5,012 条停机事件，MTBF 285.8 h、MTTR 56.9 min；剔除 &lt;5 min 事件后 MTBF 涨到 350.3 h（+22.6%），可用率一点没变</text>
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">可靠性：β 决定策略，冗余买不到共因</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">Weibull 形状参数 β 是「该不该做定期维护」的唯一开关</text>
+</svg>

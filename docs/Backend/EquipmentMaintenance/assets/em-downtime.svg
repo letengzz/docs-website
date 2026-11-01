@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="停机的三种分母与「重叠区间」">
+<title>停机的三种分母与「重叠区间」</title>
+<rect x="24" y="84" width="420" height="200" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="40" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">三层时间</text>
+<rect x="44" y="126" width="340.0" height="30" rx="4" fill="#94a3b8" opacity="0.35"/>
+<text x="52" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#0f172a">日历时间 8,760 h</text>
+<text x="376.0" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="end">8,760 h</text>
+<rect x="44" y="164" width="278.8" height="30" rx="4" fill="#60a5fa" opacity="0.35"/>
+<text x="52" y="184" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#0f172a">负荷时间（扣计划停机 18%）</text>
+<text x="314.7922374429224" y="184" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="end">7,183 h</text>
+<rect x="44" y="202" width="277.9" height="30" rx="4" fill="#16a34a" opacity="0.35"/>
+<text x="52" y="222" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#0f172a">运行时间（扣非计划停机）</text>
+<text x="313.8995433789954" y="222" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="end">7,160 h</text>
+<text x="44" y="258" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#7f1d1d">A(日历)=81.75%  A(负荷)=99.70%  A(MTBF口径)=99.67%</text>
+<text x="44" y="278" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#475569">极差 17.92 个百分点，全部来自分母</text>
+<rect x="464" y="84" width="432" height="200" rx="8" fill="#fff1f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">同一台设备的两条区间</text>
+<rect x="500" y="130" width="300" height="26" rx="3" fill="#fca5a5" opacity="0.8"/>
+<text x="510" y="148" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#7f1d1d">MECH 08:10 → 10:40（150 min）</text>
+<rect x="590" y="168" width="140" height="26" rx="3" fill="#fdba74" opacity="0.9"/>
+<text x="600" y="186" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#7c2d12">WAIT 09:00 → 10:20</text>
+<line x1="590" y1="124" x2="590" y2="200" stroke="#b91c1c" stroke-width="1.4" stroke-dasharray="4 3"/>
+<line x1="730" y1="124" x2="730" y2="200" stroke="#b91c1c" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="480" y="216" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#991b1b">求和 230 min，并集 150 min → 多算 80 min（34.8%）</text>
+<text x="480" y="238" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#991b1b">全库口径：求和 285,172 / 并集 259,102</text>
+<text x="480" y="260" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#991b1b">重复计入 26,070 min = 9.1%（28% 的事件带并发归因）</text>
+<rect x="24" y="300" width="872" height="96" rx="8" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="40" y="326" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.6" fill="#075985">OEE = 可用率 × 性能 × 质量。本机：99.70% × 88% × 96.5% = 84.66%（负荷基准）；同一组数字按日历基准只有 69.43%</text>
+<text x="40" y="348" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.6" fill="#075985">换型 420 h 算停机 → 可用率 99.67%；算计划停机 → 99.73%；差看似很小，但它同时改变 OEE 的分子与分母</text>
+<text x="40" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.6" fill="#075985">纪律：报表页脚必须写明三个口径（分母 / 是否并集 / 换型归哪类），否则两个部门永远对不上账</text>
+<rect x="0" y="0" width="920" height="420" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">停机的三种分母与「重叠区间」</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">同一批数据，可用率可以是 81.75%、99.70% 或 99.67% —— 差别全在分母与并集</text>
+</svg>

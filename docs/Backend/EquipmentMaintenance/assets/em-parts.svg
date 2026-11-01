@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 410" width="920" height="410" role="img" aria-label="备件的两条曲线：ABC 集中度与服务水平成本">
+<title>备件的两条曲线：ABC 集中度与服务水平成本</title>
+<rect x="24" y="88" width="440" height="190" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="40" y="112" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">ABC：31 / 40 / 229 个 SKU</text>
+<line x1="68" y1="248" x2="446" y2="248" stroke="#94a3b8" stroke-width="1.2"/>
+<line x1="68" y1="136" x2="68" y2="248" stroke="#94a3b8" stroke-width="1.2"/>
+<path d="M 68 240 C 134 158, 194 142, 274 140 C 344 138, 404 138, 444 137" fill="none" stroke="#2563eb" stroke-width="2.4"/>
+<line x1="68" y1="164" x2="446" y2="164" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="74" y="160" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b">80% 金额</text>
+<text x="68" y="264" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#475569">31 个 A 类吃掉 80% 金额，229 个 C 类只占 5%</text>
+<text x="68" y="150" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b">累计金额</text>
+<rect x="484" y="88" width="412" height="190" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+<text x="500" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.2" fill="#0f172a" font-weight="700">服务水平 80% → 99%：库存持有 vs 缺件损失</text>
+<text x="500" y="150" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#92400e">80%</text>
+<rect x="536" y="136" width="300.0" height="20" rx="4" fill="#f59e0b" opacity="0.35"/>
+<text x="542" y="150" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a">310,413 元</text>
+<text x="540" y="168" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.2" fill="#92400e">持有 / 缺件：16,077 / 294,336</text>
+<text x="500" y="188" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#92400e">90%</text>
+<rect x="536" y="174" width="160.9" height="20" rx="4" fill="#f59e0b" opacity="0.35"/>
+<text x="542" y="188" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a">166,438 元</text>
+<text x="540" y="206" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.2" fill="#92400e">持有 / 缺件：19,270 / 147,168</text>
+<text x="500" y="226" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#92400e">95%</text>
+<rect x="536" y="212" width="92.3" height="20" rx="4" fill="#f59e0b" opacity="0.35"/>
+<text x="542" y="226" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a">95,540 元</text>
+<text x="540" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.2" fill="#92400e">持有 / 缺件：21,956 / 73,584</text>
+<text x="500" y="264" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.2" fill="#92400e">99%</text>
+<rect x="536" y="250" width="40.2" height="20" rx="4" fill="#f59e0b" opacity="0.35"/>
+<text x="542" y="264" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a">41,609 元</text>
+<text x="540" y="282" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.2" fill="#92400e">持有 / 缺件：26,892 / 14,717</text>
+<text x="500" y="268" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#92400e">缺件损失按 4,200 元/h × 8h，持有率 22%</text>
+<rect x="24" y="300" width="872" height="66" rx="8" fill="#fff1f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="40" y="326" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#7f1d1d">两个反直觉：① 服务水平从 95% 提到 99%，总成本再降 56%（缺件损失主导）；② 关键件按「均价」算安全库存会算错 3 倍</text>
+<text x="40" y="348" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#7f1d1d">本机读数：满足率 71.9%（2,400 次需求缺 674 次）；13 个 SKU 全年零动支，占压 117,239 元</text>
+<rect x="0" y="0" width="920" height="410" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">备件的两条曲线：ABC 集中度与服务水平成本</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">备件的钱不是花在「买了多少」，而是花在「缺的那一次停多久」</text>
+</svg>

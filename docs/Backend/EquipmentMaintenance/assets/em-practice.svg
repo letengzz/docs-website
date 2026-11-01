@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="七步闭环：从台账到可复算的可用率">
+<title>七步闭环：从台账到可复算的可用率</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="30" y="96" width="106" height="74" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="83" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">建表</text>
+<text x="83" y="148" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#475569" text-anchor="middle">7 张</text>
+<line x1="136" y1="133" x2="142" y2="133" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="142" y="96" width="106" height="74" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="195" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">灌种子</text>
+<text x="195" y="148" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#475569" text-anchor="middle">1 台设备</text>
+<line x1="248" y1="133" x2="254" y2="133" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="254" y="96" width="106" height="74" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="307" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">开停机</text>
+<text x="307" y="148" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#475569" text-anchor="middle">记区间</text>
+<line x1="360" y1="133" x2="366" y2="133" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="366" y="96" width="106" height="74" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="419" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">自检</text>
+<text x="419" y="148" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#475569" text-anchor="middle">C1~C5</text>
+<line x1="472" y1="133" x2="478" y2="133" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="478" y="96" width="106" height="74" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="531" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">负向</text>
+<text x="531" y="148" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#475569" text-anchor="middle">N1~N4</text>
+<line x1="584" y1="133" x2="590" y2="133" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="590" y="96" width="106" height="74" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="643" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">算口径</text>
+<text x="643" y="148" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#475569" text-anchor="middle">并集</text>
+<line x1="696" y1="133" x2="702" y2="133" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="702" y="96" width="106" height="74" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="755" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">出报表</text>
+<text x="755" y="148" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.8" fill="#475569" text-anchor="middle">三口径</text>
+<rect x="24" y="196" width="872" height="168" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="40" y="222" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">本机实跑输出（SQLite 3.50.4，脚本不入库）</text>
+<text x="44" y="250" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#334155">表 7 张：eq_asset, eq_downtime, eq_inspect, eq_part, eq_plan, eq_wo, eq_wo_part</text>
+<text x="44" y="272" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#334155">部分唯一索引：['ux_dt_open']    -- 同一设备同时只允许一条未闭合停机</text>
+<text x="44" y="294" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#334155">C1~C5 全部 0：工单挂空设备 0 / 计划到期早于完成 0 / 关单无停机 0 / 双开停机 0 / 备件负数 0</text>
+<text x="44" y="316" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#334155">N1~N4 全部被拒：关单回退 / 第二条未闭合停机 / 发料冲负 / 间隔为 0</text>
+<text x="44" y="338" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.3" fill="#334155">读数：已闭合停机 1 条 2.5 h，未闭合 1 条；MTTR 150.0 min；A(负荷) 99.971%</text>
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">七步闭环：从台账到可复算的可用率</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">每一步都有可执行命令与期望值——判据不是「做了」，是「算出来的数对得上」</text>
+</svg>
