@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 408" width="820" height="408" role="img" aria-label="持股层级与有效持股穿透">
+<title>持股层级与有效持股穿透</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="24" y="36" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" font-weight="700">有效持股不是连乘，是「按层级穿透后再乘」——少数股东比例由穿透结果决定</text>
+<rect x="360" y="64" width="160" height="44" rx="8" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1.5"/>
+<text x="440" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="middle">母公司 P</text>
+<rect x="120" y="168" width="160" height="44" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="200" y="196" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="middle">子公司 A</text>
+<rect x="600" y="168" width="160" height="44" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="680" y="196" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="middle">子公司 B（USD）</text>
+<rect x="120" y="272" width="160" height="44" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="200" y="300" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="middle">孙公司 C</text>
+<line x1="400" y1="108" x2="220" y2="168" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="268" y="132" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0369a1" font-weight="700">80%</text>
+<line x1="480" y1="108" x2="660" y2="168" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="556" y="132" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0369a1" font-weight="700">60%</text>
+<line x1="200" y1="212" x2="200" y2="272" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="212" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0369a1" font-weight="700">70%</text>
+<line x1="24" y1="216" x2="360" y2="216" stroke="#e2e8f0" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="24" y="340" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="400">有效持股：A 80.00% / B 60.00% / C 56.00%（80% × 70%）</text>
+<text x="24" y="364" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#b91c1c" font-weight="400">C 的少数股东是 44.00%，不是 30.00%——把 70% 当单层持股会让少数股东损益少计 140,000（31.8%）</text>
+<text x="24" y="388" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" font-weight="400">三层链（再挂 90%）后有效持股 50.40%：净利 500,000 归属母公司 252,000，误按 90% 是 450,000</text>
+</svg>

@@ -55,3 +55,4 @@
 - [资金管理与现金流预测工程](Treasury/index.md)
 - [生产执行与工单报工工程](Manufacturing/index.md)
 - [设备维护与可靠性工程](EquipmentMaintenance/index.md)
+- [合并报表与内部抵销工程](Consolidation/index.md)

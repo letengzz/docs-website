@@ -1308,3 +1308,22 @@ export const EquipmentMaintenance = [
     ],
   },
 ];
+
+export const Consolidation = [
+  {
+    text: "合并报表与内部抵销",
+    link: "/docs/Backend/Consolidation/index.md",
+    items: [
+      { text: "总览：七段链与三个「合并数」", link: "/docs/Backend/Consolidation/Overview/index.md" },
+      { text: "合并范围、控制与有效持股", link: "/docs/Backend/Consolidation/GroupStructure/index.md" },
+      { text: "报表包、科目映射与关账", link: "/docs/Backend/Consolidation/ReportingPackage/index.md" },
+      { text: "内部交易识别与往来对账", link: "/docs/Backend/Consolidation/Intercompany/index.md" },
+      { text: "抵销分录引擎与抵销台账", link: "/docs/Backend/Consolidation/Elimination/index.md" },
+      { text: "外币报表折算与 CTA", link: "/docs/Backend/Consolidation/Translation/index.md" },
+      { text: "少数股东权益与超额亏损", link: "/docs/Backend/Consolidation/Minority/index.md" },
+      { text: "合并试算、三道勾稽与出表", link: "/docs/Backend/Consolidation/ConsolidatedTrial/index.md" },
+      { text: "实战：10 张表跑通一个月的合并", link: "/docs/Backend/Consolidation/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/Consolidation/FAQ/index.md" },
+    ],
+  },
+];

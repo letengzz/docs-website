@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="900" height="360" role="img" aria-label="合并最小闭环的七步与九条用例">
+<title>合并最小闭环的七步与九条用例</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="24" y="36" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#0f172a" font-weight="700">最小闭环：10 张表 + 3 个触发器 + 5 条自检 + 5 条负向用例</text>
+<rect x="24" y="66" width="132" height="56" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="90" y="88" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" font-weight="700" text-anchor="middle">1</text>
+<text x="90" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">10 表 DDL</text>
+<line x1="156" y1="94" x2="170" y2="94" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="170" y="66" width="132" height="56" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="236" y="88" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" font-weight="700" text-anchor="middle">2</text>
+<text x="236" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">灌报表包</text>
+<line x1="302" y1="94" x2="316" y2="94" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="316" y="66" width="132" height="56" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="382" y="88" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" font-weight="700" text-anchor="middle">3</text>
+<text x="382" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">折算+映射</text>
+<line x1="448" y1="94" x2="462" y2="94" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="462" y="66" width="132" height="56" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="528" y="88" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" font-weight="700" text-anchor="middle">4</text>
+<text x="528" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">抵销五类</text>
+<line x1="594" y1="94" x2="608" y2="94" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="608" y="66" width="132" height="56" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="674" y="88" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" font-weight="700" text-anchor="middle">5</text>
+<text x="674" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">少数股东</text>
+<line x1="740" y1="94" x2="754" y2="94" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="754" y="66" width="132" height="56" rx="8" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1.5"/>
+<text x="820" y="88" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" font-weight="700" text-anchor="middle">6</text>
+<text x="820" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">勾稽出表</text>
+<text x="24" y="160" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" font-weight="400">自检 C1~C5：借贷不平家数 / 往来不对称配对 / 内部应收=应付 / 未实现利润 / 少数股东权益</text>
+<text x="24" y="184" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0369a1" font-weight="400">实测：C1=0  C2=0  C3 2,500,000=2,500,000  C4=187,500  C5=440,000（有效持股 56%）</text>
+<text x="24" y="216" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">负向 N1~N5 全部被拒（5/5）：</text>
+<text x="40" y="240" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">✓ N1 借贷不等 100 / 99.9 → CHECK 拦</text>
+<text x="40" y="262" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">✓ N2 重复抵销 → 五列唯一键拦</text>
+<text x="40" y="284" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">✓ N3 同科目自抵 → 触发器拦</text>
+<text x="40" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">✓ N4 未关账的包参与合并 → 触发器拦</text>
+<text x="40" y="328" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">✓ N5 负金额抵销 → CHECK 拦</text>
+<text x="500" y="216" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">两次踩到的坑</text>
+<text x="500" y="242" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">① 幂等键先写 (period, rule, src_id)</text>
+<text x="500" y="264" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="400">   → 权益抵销第二行被误判重复</text>
+<text x="500" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">   改成五列 (…, dr_line, cr_line)</text>
+<text x="500" y="312" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">② 未存在的实体直接插报表包</text>
+<text x="500" y="334" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="400">   → 外键先拦，说明顺序也有语义</text>
+</svg>
