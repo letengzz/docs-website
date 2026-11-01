@@ -172,6 +172,18 @@ WHERE o.status = 'PAID'
 专题详见 [多租户 SaaS 架构](../../MultiTenantSaaS/index.md) 的 [租户上下文](../../MultiTenantSaaS/TenantContext/index.md)。
 
 
+## 与「薪酬核算与个税社保工程」的分工（第 230 天补充）
+
+| 你关心的问题 | 该读哪一册 | 为什么不是本册 |
+| --- | --- | --- |
+| 工资条的字段级权限怎么建模 | [银行代发与工资条](../../Payroll/Payout/index.md) | 那册给可见范围矩阵与权限 SQL，本册讲通用授权模型 |
+| 为什么「工号前缀」不能当部门判据 | [薪酬常见问题](../../Payroll/FAQ/index.md) | 那册给分诊与术语，本册讲角色与资源 |
+| 财务能看全员明细吗 | [成本归集与总账勾稽](../../Payroll/Ledger/index.md) | 那册讲成本口径，本册讲权限边界 |
+
+::: danger 本页特有的一个坑：用工号或姓名推断组织归属
+把「工号前缀相同」当成「同部门」，在 120 人的样例里放行了 120 人，**越权 119 人**。字符串推断看起来省了一张关系表，实际上任何一次工号规则调整都会让权限整体失效，而且失效时没有任何报错。正确做法是权限只引用关系表（`org_relation`、`role_scope`），并在 SQL 层就限定可见行，而不是在应用层过滤结果集。
+:::
+
 ## 参考资料
 
 - OWASP · Authorization Cheat Sheet：https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html

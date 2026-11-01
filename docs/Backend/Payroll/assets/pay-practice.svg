@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 410" width="920" height="410" role="img" aria-label="实战：七张表与一条计算管线">
+<title>实战：七张表与一条计算管线</title>
+<rect x="0" y="0" width="920" height="410" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">实战：七张表与一条计算管线</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">建库 → 灌考勤 → 算应发 → 算社保 → 算个税 → 出工资单 → 出凭证，每一步都能单独重跑</text>
+<rect x="24" y="96" width="132" height="46" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="90" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">attendance_day</text>
+<line x1="156" y1="119" x2="168" y2="119" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="172" y="96" width="132" height="46" rx="6" fill="#f0fdfa" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="238" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">pay_gross_item</text>
+<line x1="304" y1="119" x2="316" y2="119" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="320" y="96" width="132" height="46" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="386" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">pay_si_item</text>
+<line x1="452" y1="119" x2="464" y2="119" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="468" y="96" width="132" height="46" rx="6" fill="#f0fdfa" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="534" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">pay_iit</text>
+<line x1="600" y1="119" x2="612" y2="119" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="616" y="96" width="132" height="46" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="682" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">pay_slip</text>
+<line x1="748" y1="119" x2="760" y2="119" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="764" y="96" width="132" height="46" rx="6" fill="#f0fdfa" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="830" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">gl_voucher</text>
+<rect x="24" y="168" width="872" height="62" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="40" y="192" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="600">每一步的输入只来自上一步的产物，且每步都有「差额必须为 0」的自检</text>
+<text x="40" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">重跑某一步不会影响前面已封账的结果：所有汇总都是查询出来的，不是累加存下来的</text>
+<text x="28" y="260" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="start" font-weight="600">四个负向用例（必须失败）</text>
+<text x="40" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="start" font-weight="400">① 同一人同一期插两张工资单 → UNIQUE 冲突</text>
+<text x="40" y="316" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="start" font-weight="400">② 应发合计 ≠ 明细之和 → 自检报错并退出码 1</text>
+<text x="40" y="342" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="start" font-weight="400">③ 社保基数超上限 → 自检报错</text>
+<text x="40" y="368" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="start" font-weight="400">④ 个税本期为负却直接入账 → 自检报错</text>
+<rect x="24" y="380" width="872" height="22" rx="4" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="36" y="396" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#065f46" text-anchor="start" font-weight="400">验收：全部自检通过 + 四个负向用例全部 exit 1</text>
+</svg>

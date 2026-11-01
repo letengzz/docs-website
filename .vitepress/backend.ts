@@ -1232,3 +1232,22 @@ export const CostAccounting = [
     ],
   },
 ];
+
+export const Payroll = [
+  {
+    text: "薪酬核算与个税社保工程",
+    link: "/docs/Backend/Payroll/index.md",
+    items: [
+      { text: "总览：七段薪酬链与三个「发多少」", link: "/docs/Backend/Payroll/Overview/index.md" },
+      { text: "应发、扣款与计薪天数", link: "/docs/Backend/Payroll/GrossToNet/index.md" },
+      { text: "个税累计预扣与年度重置", link: "/docs/Backend/Payroll/IIT/index.md" },
+      { text: "社保公积金基数与比例", link: "/docs/Backend/Payroll/SocialInsurance/index.md" },
+      { text: "补发、追溯与跨期归属", link: "/docs/Backend/Payroll/RetroPay/index.md" },
+      { text: "离职结算与年终奖", link: "/docs/Backend/Payroll/Settlement/index.md" },
+      { text: "银行代发、工资条与可见范围", link: "/docs/Backend/Payroll/Payout/index.md" },
+      { text: "成本归集与总账勾稽", link: "/docs/Backend/Payroll/Ledger/index.md" },
+      { text: "实战：从考勤到入账的可运行闭环", link: "/docs/Backend/Payroll/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/Payroll/FAQ/index.md" },
+    ],
+  },
+];

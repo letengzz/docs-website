@@ -101,11 +101,17 @@
 find docs/Backend/FixedAsset -name "index.md" | wc -l
 # 期望：11
 
-# 2) 每页判据族 8 条、目录页 80 条：应全是 8（目录页那行是 80）
+# 2) 每页判据族 8 条：应输出 10 行，每行前面都是 8
 for f in docs/Backend/FixedAsset/*/index.md; do
   echo "$(grep -oE '`FA[A-Z]-[A-H]`' "$f" | sort -u | wc -l | tr -d ' ') $f"; done
 # 期望：10 行，每行前面都是 8
+
+# 3) 目录页的判据表按「区间」写，10 族 × 起止两端 = 20 个编号（不是 80）
 grep -oE '`FA[A-Z]-[A-H]`' docs/Backend/FixedAsset/index.md | sort -u | wc -l
+# 期望：20
+
+# 4) 全专题编号总数：10 章 × 8 条 = 80
+grep -rhoE '`FA[A-Z]-[A-H]`' docs/Backend/FixedAsset/*/index.md | sort -u | wc -l
 # 期望：80
 
 # 3) 配图齐全：应为 8 张 SVG + 1 张 Logo

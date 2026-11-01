@@ -51,3 +51,4 @@
 - [仓储作业与波次拣选工程](WarehouseOps/index.md)
 - [资产台账与折旧摊销工程](FixedAsset/index.md)
 - [成本核算与月末结账工程](CostAccounting/index.md)
+- [薪酬核算与个税社保工程](Payroll/index.md)

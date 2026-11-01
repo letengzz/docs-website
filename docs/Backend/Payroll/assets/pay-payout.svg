@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 392" width="920" height="392" role="img" aria-label="代发闭环：一张金额恒等的文件与一份能对上的回执">
+<title>代发闭环：一张金额恒等的文件与一份能对上的回执</title>
+<rect x="0" y="0" width="920" height="392" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">代发闭环：一张金额恒等的文件与一份能对上的回执</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">五个环节，只有「回执对账」这一步会让错误暴露出来</text>
+<rect x="24" y="92" width="156" height="92" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="36" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">① 应付清单</text>
+<text x="36" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">按批次锁人</text>
+<text x="36" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">净额已定稿</text>
+<line x1="180" y1="138" x2="200" y2="138" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="204" y="92" width="156" height="92" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="216" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">② 文件生成</text>
+<text x="216" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">银行模板</text>
+<text x="216" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">合计行必填</text>
+<line x1="360" y1="138" x2="380" y2="138" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="384" y="92" width="156" height="92" rx="8" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="396" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">③ 上传</text>
+<text x="396" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">签名/加密</text>
+<text x="396" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">批次号幂等</text>
+<line x1="540" y1="138" x2="560" y2="138" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="564" y="92" width="156" height="92" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="576" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">④ 回执</text>
+<text x="576" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">成功 / 失败 / 未知</text>
+<text x="576" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">逐笔状态</text>
+<line x1="720" y1="138" x2="740" y2="138" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="744" y="92" width="156" height="92" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="756" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">⑤ 差异处理</text>
+<text x="756" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">只重发失败笔</text>
+<text x="756" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">不重发成功笔</text>
+<text x="28" y="226" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" text-anchor="start" font-weight="600">回执三态与处理</text>
+<rect x="24" y="242" width="872" height="28" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="36" y="261" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" text-anchor="start" font-weight="600">成功</text>
+<text x="120" y="261" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">金额、户名、账号三者匹配</text>
+<text x="520" y="261" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">从待发清单移除，写入 pay_batch_item.status</text>
+<rect x="24" y="276" width="872" height="28" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="36" y="295" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" text-anchor="start" font-weight="600">失败</text>
+<text x="120" y="295" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">户名不符、账户冻结、账号失效</text>
+<text x="520" y="295" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">人工核实后单独重发，不得整批重跑</text>
+<rect x="24" y="310" width="872" height="28" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="36" y="329" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" text-anchor="start" font-weight="600">未知</text>
+<text x="120" y="329" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">超时、回执文件缺失</text>
+<text x="520" y="329" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400">必须查余额再决定，直接重发可能双付</text>
+<text x="24" y="372" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="start" font-weight="400">本机读数：500 人 11,662,511.00 元，账户去重后只有 380 个（120 人同卡），首轮失败 14 笔</text>
+</svg>
