@@ -45,7 +45,7 @@ jobs:
         uses: actions/configure-pages@v6
       - name: Add swap space
         run: |
-          sudo fallocate -l 8G /swapfile-ci
+          sudo fallocate -l 16G /swapfile-ci
           sudo chmod 600 /swapfile-ci
           sudo mkswap /swapfile-ci
           sudo swapon /swapfile-ci
