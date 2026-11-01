@@ -412,6 +412,19 @@ CREATE TABLE idem_record (
 
 **这一页特有的一个坑**：用「一次动作」当幂等键。付款批次号、消息 ID、请求 ID 都属于「动作」，而幂等要防的是「同一个业务事实被执行两次」。人工重发会换批次号，网关重投可能丢掉消息 ID——两种情况下键都变了，闸门失效。本机读数：2,000 笔付款重投 3 次，键取批次号会得到 **6,000 笔**；键取 `(invoice_no, ben_acct)` 则始终 **2,000 笔**。**键必须落在业务事实上，不能落在动作上。**
 
+## 与本专题的分工（生产执行）
+
+| 你关心的问题 | 该读哪一册 | 为什么不是本册 |
+| --- | --- | --- |
+| 「工单下达被点两次会怎样」 | [工单模型、状态机与变更](../../Manufacturing/OrderModel/index.md) | 那册给的是**业务天然键** `(prod_order_no, split_seq)`，本册给的是通用键设计 |
+| 「入库单重复提交怎么办」 | [完工入库、批次与追溯](../../Manufacturing/Completion/index.md) | 那册用 `UNIQUE(order_no, lot)` 做幂等，不引入额外键表 |
+| 「报工重复上报能不能靠幂等键挡住」 | [报工、在制品与工序交接](../../Manufacturing/Reporting/index.md) | 那册靠**守恒闸门**（触发器）挡，比幂等键更贴近语义 |
+
+::: warning 一页一坑：能用业务天然键的地方，不要另造幂等键
+本册的 `Idempotency-Key` 适合「请求里没有天然唯一标识」的场景（如第三方回调）。而生产侧的三处写入**天生有键**：工单是 `(prod_order_no, split_seq)`、入库是 `(order_no, lot)`、报工是 `(order_no, seq, 时间窗)`。另造一个 UUID 键表意味着多一张表、多一次清理、多一处可能失效的 TTL——而且**它挡不住语义重复**：两个不同的键报了同一批数量，闸门拦得住，幂等键拦不住。
+:::
+
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

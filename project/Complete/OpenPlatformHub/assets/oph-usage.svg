@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 404" width="920" height="404" role="img" aria-label="/admin/usage：客户自助对账的读路径">
+<title>/admin/usage：客户自助对账的读路径</title>
+<rect x="0" y="0" width="920" height="404" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28.0" y="34.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18.0" fill="#0f172a" font-weight="700">/admin/usage：客户自助对账的读路径</text>
+<text x="28.0" y="56.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#475569">读路径有五段，其中两段（过滤、分页）最容易被写成越权与深分页；口径必须与计量、配额同源</text>
+<rect x="24.0" y="92.0" width="164.0" height="84.0" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="38.0" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">① 鉴权</text>
+<text x="38.0" y="140.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">token → app_id</text>
+<text x="38.0" y="160.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b45309">失败：显性</text>
+<line x1="188.0" y1="134.0" x2="200.0" y2="134.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="200.0" y="92.0" width="164.0" height="84.0" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="214.0" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">② 过滤</text>
+<text x="214.0" y="140.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">强制 app_id</text>
+<text x="214.0" y="160.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b91c1c">失败：安静</text>
+<line x1="364.0" y1="134.0" x2="376.0" y2="134.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="376.0" y="92.0" width="164.0" height="84.0" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="390.0" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">③ 时间窗</text>
+<text x="390.0" y="140.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">window_start</text>
+<text x="390.0" y="160.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b91c1c">失败：安静</text>
+<line x1="540.0" y1="134.0" x2="552.0" y2="134.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="552.0" y="92.0" width="164.0" height="84.0" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="566.0" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">④ 分页</text>
+<text x="566.0" y="140.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">keyset</text>
+<text x="566.0" y="160.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b91c1c">失败：安静</text>
+<line x1="716.0" y1="134.0" x2="728.0" y2="134.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="728.0" y="92.0" width="164.0" height="84.0" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="742.0" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">⑤ 聚合</text>
+<text x="742.0" y="140.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">按小时×指标</text>
+<text x="742.0" y="160.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b45309">失败：显性</text>
+<rect x="24.0" y="196.0" width="424.0" height="84.0" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="40.0" y="220.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#b91c1c" font-weight="700">深分页：OFFSET 在第 13 万行要 109.93 ms</text>
+<text x="40.0" y="242.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">keyset（usage_id &gt; 上页末值）只要 7.63 ms，14.4 倍</text>
+<text x="40.0" y="262.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">第 1,000 行时两者都是 9~10 ms —— 差异只在深处显形</text>
+<rect x="472.0" y="196.0" width="424.0" height="84.0" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="488.0" y="220.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#b45309" font-weight="700">口径：日窗按 UTC 还是客户本地日</text>
+<text x="488.0" y="242.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">200,000 行里 32.8% 落桶不同，本地日少算 33%</text>
+<text x="488.0" y="262.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">同一天在两种口径下差 6,400 次调用（19,200 → 12,800）</text>
+<rect x="24.0" y="296.0" width="872.0" height="90.0" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="40.0" y="320.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">同源三件事：同一个 window_start 生成函数、同一张 usage 表、同一个聚合 SQL 片段</text>
+<text x="40.0" y="342.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">配额 used 与 usage count 对齐差 0（133,333 / 66,667）；一旦各写一遍，页面就会「还有额度但接口 429」</text>
+<text x="40.0" y="364.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">越权防线：过滤条件写死在 DAO 层，路由层禁止传 app_id；不带过滤会多返回 33.3% 的行</text>
+</svg>

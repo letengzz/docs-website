@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="三层单据与四个状态：工单不是一张表">
+<title>三层单据与四个状态：工单不是一张表</title>
+<rect x="0" y="0" width="920" height="420" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28.0" y="34.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18.0" fill="#0f172a" font-weight="700">三层单据与四个状态：工单不是一张表</text>
+<text x="28.0" y="56.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#475569">生产订单说「要多少」，工单说「这批做多少」，工序单说「谁在哪台设备上做」</text>
+<rect x="24.0" y="88.0" width="268.0" height="104.0" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="40.0" y="112.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">① 生产订单（计划层）</text>
+<text x="40.0" y="134.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">需求来源：销售订单 / 预测</text>
+<text x="40.0" y="152.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">一个 SKU 一个数量与交期</text>
+<text x="40.0" y="170.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">可以被拆成多张工单</text>
+<rect x="326.0" y="88.0" width="268.0" height="104.0" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="342.0" y="112.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">② 工单（执行层）</text>
+<text x="342.0" y="134.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">带工艺路线快照与版本号</text>
+<text x="342.0" y="152.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">工序、投料、批次在这里落</text>
+<text x="342.0" y="170.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">状态机管的是这张单</text>
+<rect x="628.0" y="88.0" width="268.0" height="104.0" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="644.0" y="112.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">③ 工序单（作业层）</text>
+<text x="644.0" y="134.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">工单 × 工序序号 = 一行</text>
+<text x="644.0" y="152.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">报工、工时、良品挂在这里</text>
+<text x="644.0" y="170.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">前后道靠 seq 定顺序</text>
+<line x1="292.0" y1="140.0" x2="326.0" y2="140.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="594.0" y1="140.0" x2="628.0" y2="140.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="24.0" y="236.0" width="196.0" height="62.0" rx="8" fill="#e0f2fe" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="36.0" y="258.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">已下达</text>
+<text x="36.0" y="280.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">RELEASED</text>
+<line x1="220.0" y1="267.0" x2="234.0" y2="267.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="234.0" y="236.0" width="196.0" height="62.0" rx="8" fill="#fef3c7" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="246.0" y="258.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">在制</text>
+<text x="246.0" y="280.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">IN_PROGRESS</text>
+<line x1="430.0" y1="267.0" x2="444.0" y2="267.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="444.0" y="236.0" width="196.0" height="62.0" rx="8" fill="#dcfce7" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="456.0" y="258.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">已完工</text>
+<text x="456.0" y="280.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">FINISHED</text>
+<line x1="640.0" y1="267.0" x2="654.0" y2="267.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="654.0" y="236.0" width="196.0" height="62.0" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="666.0" y="258.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">已关闭</text>
+<text x="666.0" y="280.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">CLOSED</text>
+<polyline points="122.0,298.0 122.0,330.0 830.0,330.0 830.0,298.0" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#ah)"/>
+<text x="300.0" y="348.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">关闭之后还能退回 FINISHED（返工 / 补入库），但必须留一张「重开记录」</text>
+<rect x="24.0" y="366.0" width="872.0" height="40.0" rx="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="40.0" y="391.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.0" fill="#b91c1c">最常见的错：工单只有「已下达 / 已完工」两态 —— 于是在制的料与工时分不清是漏报还是没做</text>
+</svg>

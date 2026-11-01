@@ -53,3 +53,4 @@
 - [成本核算与月末结账工程](CostAccounting/index.md)
 - [薪酬核算与个税社保工程](Payroll/index.md)
 - [资金管理与现金流预测工程](Treasury/index.md)
+- [生产执行与工单报工工程](Manufacturing/index.md)

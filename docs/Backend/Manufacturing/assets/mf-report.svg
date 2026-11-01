@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="报工与前道良品：工序之间必须守恒">
+<title>报工与前道良品：工序之间必须守恒</title>
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28.0" y="34.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18.0" fill="#0f172a" font-weight="700">报工与前道良品：工序之间必须守恒</text>
+<text x="28.0" y="56.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#475569">后道报工不得超过前道良品；否则在制品会凭空多出来，工单永远关不平</text>
+<rect x="24.0" y="88.0" width="200.0" height="74.0" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="40.0" y="114.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">工单数量 100</text>
+<text x="40.0" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">下达时冻结</text>
+<rect x="252.0" y="88.0" width="200.0" height="74.0" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="268.0" y="114.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">OP10 良品 97</text>
+<text x="268.0" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">报废 2 / 返工 1</text>
+<rect x="480.0" y="88.0" width="200.0" height="74.0" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="496.0" y="114.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">OP20 良品 95</text>
+<text x="496.0" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">投入 97，报废 1 / 返工 1</text>
+<rect x="708.0" y="88.0" width="188.0" height="74.0" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="724.0" y="114.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">OP30 良品 95</text>
+<text x="724.0" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">入库 93，在制 2</text>
+<line x1="224.0" y1="125.0" x2="250.0" y2="125.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="452.0" y1="125.0" x2="478.0" y2="125.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="680.0" y1="125.0" x2="706.0" y2="125.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="24.0" y="182.0" width="872.0" height="66.0" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="40.0" y="206.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">守恒式：投入 = 良品 + 返工 + 报废（每道工序各算一次）</text>
+<text x="40.0" y="230.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">OP10：100 = 97 + 1 + 2 ｜ OP20：97 = 95 + 1 + 1 ｜ OP30：95 = 95 + 0 + 0</text>
+<rect x="24.0" y="266.0" width="424.0" height="74.0" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="40.0" y="290.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#b91c1c" font-weight="700">300 张工单里 158 张不守恒（52.7%）</text>
+<text x="40.0" y="312.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">缺口绝对值合计 415 件 × 单件 62 元 = 25,730 元</text>
+<text x="40.0" y="332.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">账面在制高于实际，没人对账就一直挂着</text>
+<rect x="472.0" y="266.0" width="424.0" height="74.0" rx="8" fill="#ecfdf5" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="488.0" y="290.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#047857" font-weight="700">报工写入时就要挡</text>
+<text x="488.0" y="312.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">BEFORE INSERT 触发器：new.qty &gt; 前道 MAX(good) 直接 ABORT</text>
+<text x="488.0" y="332.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">首道工序的上限是工单数量，不是「随便报」</text>
+<rect x="24.0" y="352.0" width="872.0" height="40.0" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="40.0" y="377.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.0" fill="#0f172a">报工不是「报多少算多少」：它是唯一能把工时、良品、料耗三件事同时钉住的写入口</text>
+</svg>

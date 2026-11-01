@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="实战闭环的 8 张表：谁引用谁">
+<title>实战闭环的 8 张表：谁引用谁</title>
+<rect x="0" y="0" width="920" height="420" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28.0" y="34.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18.0" fill="#0f172a" font-weight="700">实战闭环的 8 张表：谁引用谁</text>
+<text x="28.0" y="56.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#475569">八张表 + 两个触发器，一条 (工单, 工序) 与一条 (工单, 成品批) 是全部勾稽的锚点</text>
+<rect x="24.0" y="88.0" width="236.0" height="78.0" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="40.0" y="112.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">mf_item 物料</text>
+<text x="40.0" y="134.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">item / unit / kind</text>
+<text x="40.0" y="152.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">成品与原料同一张表</text>
+<rect x="24.0" y="182.0" width="236.0" height="78.0" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="40.0" y="206.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">mf_bom 用量</text>
+<text x="40.0" y="228.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">parent / child / qty_per</text>
+<text x="40.0" y="246.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">倒冲的唯一依据</text>
+<rect x="300.0" y="88.0" width="236.0" height="78.0" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="316.0" y="112.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">mf_order 工单</text>
+<text x="316.0" y="134.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">qty / produced / received / wip</text>
+<text x="316.0" y="152.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">status 四态 + 触发闸门</text>
+<rect x="300.0" y="182.0" width="236.0" height="78.0" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="316.0" y="206.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">mf_op 工序</text>
+<text x="316.0" y="228.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">(order_no, seq) 主键</text>
+<text x="316.0" y="246.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">reported / good 累计</text>
+<rect x="576.0" y="88.0" width="236.0" height="78.0" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="592.0" y="112.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">mf_report 报工</text>
+<text x="592.0" y="134.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">qty = good+scrap+rework</text>
+<text x="592.0" y="152.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">唯一能钉住工时的地方</text>
+<rect x="576.0" y="182.0" width="236.0" height="78.0" rx="8" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1.5"/>
+<text x="592.0" y="206.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">mf_issue 领退料</text>
+<text x="592.0" y="228.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">kind ∈ ISSUE / RETURN</text>
+<text x="592.0" y="246.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">lot 是追溯的起点</text>
+<rect x="300.0" y="288.0" width="236.0" height="78.0" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="316.0" y="312.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">mf_receipt 入库</text>
+<text x="316.0" y="334.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">UNIQUE(order_no, lot)</text>
+<text x="316.0" y="352.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">同一批不能入两次</text>
+<rect x="576.0" y="288.0" width="236.0" height="78.0" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="592.0" y="312.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">mf_lot_link 批次链</text>
+<text x="592.0" y="334.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">fg_lot / rm_lot</text>
+<text x="592.0" y="352.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">正向与反向都靠它</text>
+<line x1="260.0" y1="127.0" x2="300.0" y2="127.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="260.0" y1="221.0" x2="300.0" y2="221.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="536.0" y1="127.0" x2="576.0" y2="127.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="536.0" y1="221.0" x2="576.0" y2="221.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="418.0" y1="260.0" x2="418.0" y2="288.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="694.0" y1="260.0" x2="694.0" y2="288.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="28.0" y="396.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">两个触发器：trg_over_produce（产出 &gt; 计划即 ABORT）、trg_flow_guard（后道报工 &gt; 前道良品即 ABORT）</text>
+</svg>

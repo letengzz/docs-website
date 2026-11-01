@@ -1270,3 +1270,22 @@ export const Treasury = [
     ],
   },
 ];
+
+export const Manufacturing = [
+  {
+    text: "生产执行与工单报工",
+    link: "/docs/Backend/Manufacturing/index.md",
+    items: [
+      { text: "总览：七段链与三个「做完了」", link: "/docs/Backend/Manufacturing/Overview/index.md" },
+      { text: "排产、有限产能与交期承诺", link: "/docs/Backend/Manufacturing/Planning/index.md" },
+      { text: "工单模型、状态机与变更", link: "/docs/Backend/Manufacturing/OrderModel/index.md" },
+      { text: "工艺路线、工作中心与标准工时", link: "/docs/Backend/Manufacturing/Routing/index.md" },
+      { text: "备料、领退料与倒冲", link: "/docs/Backend/Manufacturing/MaterialIssue/index.md" },
+      { text: "报工、在制品与工序交接", link: "/docs/Backend/Manufacturing/Reporting/index.md" },
+      { text: "过程质检、返工与让步接收", link: "/docs/Backend/Manufacturing/Quality/index.md" },
+      { text: "完工入库、批次与追溯", link: "/docs/Backend/Manufacturing/Completion/index.md" },
+      { text: "实战：从排产到入库的可运行闭环", link: "/docs/Backend/Manufacturing/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/Manufacturing/FAQ/index.md" },
+    ],
+  },
+];

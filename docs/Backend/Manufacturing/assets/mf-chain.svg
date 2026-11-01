@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="七段生产执行链：从「排产」到「结算」">
+<title>七段生产执行链：从「排产」到「结算」</title>
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28.0" y="34.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18.0" fill="#0f172a" font-weight="700">七段生产执行链：从「排产」到「结算」</text>
+<text x="28.0" y="56.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#475569">越靠前的段错一天，越靠后的段错一个月；只有报工这一段会当场报错</text>
+<rect x="24.0" y="92.0" width="118.0" height="122.0" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="38.0" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">① 排产</text>
+<text x="38.0" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">产能与交期</text>
+<text x="38.0" y="156.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">负荷 ρ</text>
+<text x="38.0" y="202.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b91c1c">失败：安静</text>
+<line x1="143.0" y1="153.0" x2="149.2" y2="153.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="148.2" y="92.0" width="118.0" height="122.0" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="162.2" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">② 下达</text>
+<text x="162.2" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">工单与工艺</text>
+<text x="162.2" y="156.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">版本快照</text>
+<text x="162.2" y="202.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b45309">失败：半显性</text>
+<line x1="267.2" y1="153.0" x2="273.4" y2="153.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="272.4" y="92.0" width="118.0" height="122.0" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="286.4" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">③ 备料</text>
+<text x="286.4" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">领料与倒冲</text>
+<text x="286.4" y="156.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">批次号</text>
+<text x="286.4" y="202.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b91c1c">失败：安静</text>
+<line x1="391.4" y1="153.0" x2="397.6" y2="153.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="396.6" y="92.0" width="118.0" height="122.0" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="410.6" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">④ 报工</text>
+<text x="410.6" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">工序与在制</text>
+<text x="410.6" y="156.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">工时</text>
+<text x="410.6" y="202.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b45309">失败：显性</text>
+<line x1="515.6" y1="153.0" x2="521.8" y2="153.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="520.8" y="92.0" width="118.0" height="122.0" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="534.8" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">⑤ 质检</text>
+<text x="534.8" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">抽检与返工</text>
+<text x="534.8" y="156.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">让步</text>
+<text x="534.8" y="202.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b45309">失败：半显性</text>
+<line x1="639.8" y1="153.0" x2="646.0" y2="153.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="645.0" y="92.0" width="118.0" height="122.0" rx="8" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1.5"/>
+<text x="659.0" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">⑥ 入库</text>
+<text x="659.0" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">完工与追溯</text>
+<text x="659.0" y="156.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">成品批</text>
+<text x="659.0" y="202.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b91c1c">失败：安静</text>
+<line x1="764.0" y1="153.0" x2="770.2" y2="153.0" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="769.2" y="92.0" width="118.0" height="122.0" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="783.2" y="116.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">⑦ 结算</text>
+<text x="783.2" y="138.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">差异与关闭</text>
+<text x="783.2" y="156.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">工时归集</text>
+<text x="783.2" y="202.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#b91c1c">失败：安静</text>
+<rect x="24.0" y="244.0" width="872.0" height="62.0" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="40.0" y="268.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">三个「做完了」：计划 1,000 / 报工 1,052 / 入库 976 —— 两两都不相等</text>
+<text x="40.0" y="290.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">报工累计含返工二次报工（+52 次，5.2%）；入库比良品少 12 件在制 —— 差 7.8%</text>
+<rect x="24.0" y="320.0" width="424.0" height="56.0" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="40.0" y="344.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.0" fill="#b91c1c" font-weight="700">只读「报工数」当产量</text>
+<text x="40.0" y="364.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">产量虚增 5.2%，12 件报废被算成良品</text>
+<rect x="472.0" y="320.0" width="424.0" height="56.0" rx="8" fill="#ecfdf5" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="488.0" y="344.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.0" fill="#047857" font-weight="700">只读「入库数」当产出</text>
+<text x="488.0" y="364.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">在制 12 件凭空消失，工单永远关不平</text>
+</svg>

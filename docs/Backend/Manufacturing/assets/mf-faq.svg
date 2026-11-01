@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="分诊树：先说「哪里不对」，再决定看哪张表">
+<title>分诊树：先说「哪里不对」，再决定看哪张表</title>
+<rect x="0" y="0" width="920" height="400" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28.0" y="34.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18.0" fill="#0f172a" font-weight="700">分诊树：先说「哪里不对」，再决定看哪张表</text>
+<text x="28.0" y="56.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#475569">四类症状对应四条查询链；先定位到一张表，再谈改代码</text>
+<rect x="320.0" y="84.0" width="280.0" height="52.0" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="336.0" y="106.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.0" fill="#0f172a" font-weight="700">症状：数字对不上</text>
+<text x="336.0" y="124.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.0" fill="#475569">从下面四类里选一个</text>
+<rect x="24.0" y="200.0" width="208.0" height="112.0" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="38.0" y="224.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">产出比计划多</text>
+<text x="38.0" y="248.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">查 mf_order.produced</text>
+<text x="38.0" y="268.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">vs qty</text>
+<text x="38.0" y="288.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">→ 报工未挡超报</text>
+<polyline points="128.0,136.0 128.0,172.0 128.0,200.0" fill="none" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="248.0" y="200.0" width="208.0" height="112.0" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="262.0" y="224.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">在制品一直挂着</text>
+<text x="262.0" y="248.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">查 produced − received</text>
+<text x="262.0" y="268.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">− wip ≠ 0</text>
+<text x="262.0" y="288.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">→ 入库漏记 / 报废未报</text>
+<polyline points="352.0,136.0 352.0,172.0 352.0,200.0" fill="none" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="472.0" y="200.0" width="208.0" height="112.0" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="486.0" y="224.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">库存比实物多</text>
+<text x="486.0" y="248.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">查 Σ ISSUE − RETURN</text>
+<text x="486.0" y="268.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">vs 盘点</text>
+<text x="486.0" y="288.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">→ 倒冲漏扣报废件</text>
+<polyline points="576.0,136.0 576.0,172.0 576.0,200.0" fill="none" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="696.0" y="200.0" width="208.0" height="112.0" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="710.0" y="224.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">召回想不起批号</text>
+<text x="710.0" y="248.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">查 mf_lot_link</text>
+<text x="710.0" y="268.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">fg_lot 无记录</text>
+<text x="710.0" y="288.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">→ 入库没写批次链</text>
+<polyline points="800.0,136.0 800.0,172.0 800.0,200.0" fill="none" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="24.0" y="328.0" width="872.0" height="56.0" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="40.0" y="352.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">顺序纪律：先证明「账不平」，再证明「哪一段不平」，最后才改代码。跳过第一步的排查，90% 会改错地方</text>
+<text x="40.0" y="372.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">四类症状的验法都在各自页面的「验证方式」里，一条 SQL 能判死</text>
+</svg>
