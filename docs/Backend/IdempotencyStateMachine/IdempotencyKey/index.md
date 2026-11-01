@@ -401,6 +401,17 @@ CREATE TABLE idem_record (
 短拣必须走**新的业务动作**（`pick_short`，带实拣量），而不是原请求的重试。
 :::
 
+## 与「资金管理与现金流预测工程」的分工（第 231 天补充）
+
+| 你关心的问题 | 该读哪一册 | 为什么不是本册 |
+| --- | --- | --- |
+| 「幂等键该怎么设计」 | 本册 | 本册管**通用语义**：键、窗口、冲突处理 |
+| 「付款的键该取哪几个字段」 | [付款工厂与账号白名单](../../Treasury/Outflow/index.md) | 那册管**业务键**：`(发票号, 收款账号)`，不是批次号 |
+| 「重放请求算不算重复」 | [第 2 周第 4 步：`/webhooks/replay`](../../../../project/Complete/OpenPlatformHub/InventoryReplay/index.md) | 那章管**写接口的重投语义**：同键同请求逐字节相同 |
+| 「重投后余额为什么多了一笔」 | [收款认领与未认领池](../../Treasury/Inflow/index.md) | 那册管**到账流水的去重** |
+
+**这一页特有的一个坑**：用「一次动作」当幂等键。付款批次号、消息 ID、请求 ID 都属于「动作」，而幂等要防的是「同一个业务事实被执行两次」。人工重发会换批次号，网关重投可能丢掉消息 ID——两种情况下键都变了，闸门失效。本机读数：2,000 笔付款重投 3 次，键取批次号会得到 **6,000 笔**；键取 `(invoice_no, ben_acct)` 则始终 **2,000 笔**。**键必须落在业务事实上，不能落在动作上。**
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

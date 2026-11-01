@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 396" width="920" height="396" role="img" aria-label="资金管理专题地图">
+<title>资金管理专题地图</title>
+<rect x="0" y="0" width="920" height="396" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">资金管理专题地图</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">四块：账户、进出、看得见的数、钱的价格</text>
+<rect x="24" y="92" width="276" height="118" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5"/>
+<text x="38" y="118" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">账户与余额</text>
+<text x="38" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">账户主数据 / 三个余额 / 价值日期</text>
+<rect x="322" y="92" width="276" height="118" rx="8" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+<text x="336" y="118" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">钱的进出</text>
+<text x="336" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">收款认领 / 付款工厂 / 未认领池</text>
+<rect x="620" y="92" width="276" height="118" rx="8" fill="#fef3c7" stroke="#fcd34d" stroke-width="1.5"/>
+<text x="634" y="118" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">看得见的数</text>
+<text x="634" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">头寸与归集 / 13 周预测 / 对账</text>
+<line x1="162" y1="210" x2="162" y2="240" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="460" y1="210" x2="460" y2="240" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="758" y1="210" x2="758" y2="240" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="24" y="246" width="872" height="60" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="40" y="270" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a">钱的价格：额度与透支 / 票据贴现 / 计息基准 —— 决定「缺钱的时候多贵」</text>
+<text x="40" y="292" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">度量：DSO / DPO / CCC —— 决定「多久能自己造出钱来」</text>
+<rect x="24" y="322" width="872" height="56" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="40" y="346" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700">实战：7 张表 → 5 个函数 → 5 条自检 → 4 个负向用例</text>
+<text x="40" y="366" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c">全部可在本机用 SQLite 跑通；自检全 0、负向 4/4 才算这一步做完</text>
+
+</svg>

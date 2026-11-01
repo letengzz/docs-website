@@ -1251,3 +1251,22 @@ export const Payroll = [
     ],
   },
 ];
+
+export const Treasury = [
+  {
+    text: "资金管理与现金流预测",
+    link: "/docs/Backend/Treasury/index.md",
+    items: [
+      { text: "总览：七段资金链与三个「有多少钱」", link: "/docs/Backend/Treasury/Overview/index.md" },
+      { text: "账户、余额与价值日期", link: "/docs/Backend/Treasury/AccountModel/index.md" },
+      { text: "收款认领与未认领池", link: "/docs/Backend/Treasury/Inflow/index.md" },
+      { text: "付款工厂与账号白名单", link: "/docs/Backend/Treasury/Outflow/index.md" },
+      { text: "头寸、多银行与资金归集", link: "/docs/Backend/Treasury/Positioning/index.md" },
+      { text: "13 周滚动预测与现金缺口", link: "/docs/Backend/Treasury/Forecast/index.md" },
+      { text: "银行对账与对账单解析", link: "/docs/Backend/Treasury/Statement/index.md" },
+      { text: "短期融资、额度与计息基准", link: "/docs/Backend/Treasury/Funding/index.md" },
+      { text: "实战：从到账到调节表的闭环", link: "/docs/Backend/Treasury/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/Treasury/FAQ/index.md" },
+    ],
+  },
+];

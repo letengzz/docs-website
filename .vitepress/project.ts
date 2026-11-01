@@ -432,6 +432,7 @@ export const CompleteProject = [
           { text: "第 2 周第 1 步 · 计量中间件的唯一写入点（EOM-A~EOM-H）", link: "/project/Complete/OpenPlatformHub/Metering/index.md" },
           { text: "第 2 周第 2 步 · 配额与限流的判定点（EOU-A~EOU-H）", link: "/project/Complete/OpenPlatformHub/QuotaLimit/index.md" },
           { text: "第 2 周第 3 步 · 令牌签发与 /v1/ping（EOV-A~EOV-H）", link: "/project/Complete/OpenPlatformHub/AuthToken/index.md" },
+          { text: "第 2 周第 4 步 · /v1/inventory 与 /webhooks/replay（EOY-A~EOY-H）", link: "/project/Complete/OpenPlatformHub/InventoryReplay/index.md" },
         ],
       },
       {

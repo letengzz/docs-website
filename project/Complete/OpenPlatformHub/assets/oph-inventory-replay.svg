@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 372" width="920" height="372" role="img" aria-label="一条请求穿过五段：验签、配额、计量、业务、响应">
+<title>一条请求穿过五段：验签、配额、计量、业务、响应</title>
+<rect x="0" y="0" width="920" height="372" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">一条请求穿过五段：验签、配额、计量、业务、响应</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">两段的失败是安静的；两个新接口各解决其中一段的可验证性</text>
+<rect x="24" y="96" width="164" height="96" rx="8" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.5"/>
+<text x="36" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">① 验签</text>
+<text x="36" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">token → app_id</text>
+<text x="36" y="174" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">不通过 401</text>
+<line x1="188" y1="144" x2="200" y2="144" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="204" y="96" width="164" height="96" rx="8" fill="#fef3c7" stroke="#fcd34d" stroke-width="1.5"/>
+<text x="216" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">② 配额</text>
+<text x="216" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">判定点扣减</text>
+<text x="216" y="174" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">超限 429</text>
+<line x1="368" y1="144" x2="380" y2="144" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="384" y="96" width="164" height="96" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="396" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">③ 计量</text>
+<text x="396" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">唯一写入点</text>
+<text x="396" y="174" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">安静：漏记</text>
+<line x1="548" y1="144" x2="560" y2="144" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="564" y="96" width="164" height="96" rx="8" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+<text x="576" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">④ 业务</text>
+<text x="576" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">读库存 / 建重放</text>
+<text x="576" y="174" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">失败回滚</text>
+<line x1="728" y1="144" x2="740" y2="144" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="744" y="96" width="164" height="96" rx="8" fill="#ede9fe" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="756" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">⑤ 响应</text>
+<text x="756" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">计费口径</text>
+<text x="756" y="174" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">安静：计错归属</text>
+<rect x="24" y="224" width="540" height="92" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="40" y="248" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">读：/v1/inventory 为什么必须是 POST</text>
+<text x="40" y="272" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">1,000 个「SKU-2026-0000」拼成 query = 14,017 字符</text>
+<text x="40" y="292" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c">常见网关上限 8,192 字节 → 只能放 583 个 SKU</text>
+<text x="40" y="308" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">→ 批量查询走 POST body，列表页仍用 GET 分页</text>
+<rect x="584" y="224" width="312" height="92" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="600" y="248" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">写：/webhooks/replay 的键</text>
+<text x="600" y="272" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#1d4ed8">键 = (app_id, Idempotency-Key)</text>
+<text x="600" y="292" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">同一事件可重放多次 → 不建 event 行</text>
+<text x="600" y="308" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">只追加 delivery 行，replay_seq 递增</text>
+<text x="28" y="350" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">第 230 天的 ping 豁免计量，所以「验签 + 配额 + 计量 + 业务」四段同时成立，今天才第一次被验证。</text>
+
+</svg>

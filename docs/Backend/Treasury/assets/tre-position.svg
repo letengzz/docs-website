@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 408" width="920" height="408" role="img" aria-label="多银行头寸与资金归集">
+<title>多银行头寸与资金归集</title>
+<rect x="0" y="0" width="920" height="408" fill="#f8fafc"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">多银行头寸与资金归集</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">净头寸为正，不等于没有利息损失</text>
+<text x="28" y="96" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">五个账户各自的余额</text>
+<rect x="24" y="112" width="360" height="32" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+<text x="38" y="133" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a">A001 工商银行</text>
+<text x="370" y="133" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803d" text-anchor="end" font-weight="700">3,000,000</text>
+<rect x="24" y="152" width="360" height="32" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+<text x="38" y="173" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a">A002 建设银行</text>
+<text x="370" y="173" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803d" text-anchor="end" font-weight="700">1,200,000</text>
+<rect x="24" y="192" width="360" height="32" rx="6" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.5"/>
+<text x="38" y="213" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a">A003 中国银行</text>
+<text x="370" y="213" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="end" font-weight="700">-800,000</text>
+<rect x="24" y="232" width="360" height="32" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+<text x="38" y="253" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a">A004 招商银行</text>
+<text x="370" y="253" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803d" text-anchor="end" font-weight="700">450,000</text>
+<rect x="24" y="272" width="360" height="32" rx="6" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.5"/>
+<text x="38" y="293" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a">A005 汇丰 USD</text>
+<text x="370" y="293" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="end" font-weight="700">-150,000</text>
+<text x="24" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">净头寸 3,700,000.00（正数，看起来不缺钱）</text>
+<rect x="416" y="92" width="480" height="116" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="432" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">但利息按账户各算各的</text>
+<text x="432" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">活期 3.5%（存） / 透支 8.0%（贷） / 30 天</text>
+<text x="432" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#1d4ed8" font-weight="700">分散计息 7,130.14   →   名义归集 10,643.84</text>
+<text x="432" y="188" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">差 3,513.70 / 30 天，年化 42,750.00；透支利息占净利息 87.6%</text>
+<text x="416" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">归集不是「把钱转到一个账户」</text>
+<text x="420" y="260" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">1. 名义归集：所有权不动，只把利息按净额算（推荐默认）</text>
+<text x="420" y="282" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">2. 实体归集：真划转，产生内部往来与零余额账户</text>
+<text x="420" y="304" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">3. 跨境归集：受外汇与资金池备案限制，不能「技术上一划了之」</text>
+<text x="28" y="386" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">头寸是「集团视角的一个数」，但它下面的每个账户都有自己的规则、自己的日终、自己的利息。</text>
+
+</svg>

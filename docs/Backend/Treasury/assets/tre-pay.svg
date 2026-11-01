@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 408" width="920" height="408" role="img" aria-label="付款工厂的四道闸">
+<title>付款工厂的四道闸</title>
+<rect x="0" y="0" width="920" height="408" fill="#f8fafc"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#0f172a" font-weight="700">付款工厂的四道闸</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">四道闸各拦一种「看起来成功」的失败</text>
+<rect x="24" y="92" width="208" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="38" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">闸一：批次校验</text>
+<text x="38" y="142" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">合计 = 明细之和</text>
+<text x="38" y="160" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">单笔上限 / 日累计上限</text>
+<line x1="38" y1="176" x2="218" y2="176" stroke="#e2e8f0"/>
+<text x="38" y="198" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">漏校验 → 一次付出 2,000 笔</text>
+<text x="38" y="216" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8">本机读数</text>
+<line x1="232" y1="167" x2="244" y2="167" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="248" y="92" width="208" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="262" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">闸二：账号白名单</text>
+<text x="262" y="142" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">变更须独立审批</text>
+<text x="262" y="160" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">生效时间前不生效</text>
+<line x1="262" y1="176" x2="442" y2="176" stroke="#e2e8f0"/>
+<text x="262" y="198" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">改账号 = 改收款人</text>
+<text x="262" y="216" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8">本机读数</text>
+<line x1="456" y1="167" x2="468" y2="167" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="472" y="92" width="208" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="486" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">闸三：幂等键</text>
+<text x="486" y="142" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">(发票号, 收款账号)</text>
+<text x="486" y="160" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">重投不新增</text>
+<line x1="486" y1="176" x2="666" y2="176" stroke="#e2e8f0"/>
+<text x="486" y="198" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">重投 3 次 → 6,000 笔</text>
+<text x="486" y="216" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8">本机读数</text>
+<line x1="680" y1="167" x2="692" y2="167" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="696" y="92" width="208" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="710" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">闸四：回执与退回</text>
+<text x="710" y="142" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">ACK / RETURNED</text>
+<text x="710" y="160" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">退回必进异常池</text>
+<line x1="710" y1="176" x2="890" y2="176" stroke="#e2e8f0"/>
+<text x="710" y="198" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">退回无人认领 → 钱悬空</text>
+<text x="710" y="216" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8">本机读数</text>
+<rect x="24" y="262" width="880" height="96" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="40" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">没有闸三的后果（本机实测，2,000 笔付款批次重投 3 次）</text>
+<text x="40" y="310" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">无幂等键：6,000 笔 / 275,112,235.98      有 UNIQUE(发票号, 收款账号)：2,000 笔 / 91,704,078.66</text>
+<text x="40" y="334" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b91c1c" font-weight="700">多付 183,408,157.32 元——而每一笔在系统里都是「成功」。</text>
+<text x="28" y="386" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">付款是唯一一段「失败会当场报错」的环节；也正因如此，它的错误最容易被误当成「偶发」。</text>
+
+</svg>
