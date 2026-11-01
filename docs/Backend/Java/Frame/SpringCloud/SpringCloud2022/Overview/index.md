@@ -34,7 +34,7 @@ Spring Cloud实现微服务的治理功能产品很多，Spring Cloud各个产�
 - Zuul：api网关，路由，负载均衡等多种作用，就像路由器，可能有很多个设备都连接了路由器，但是数据包要转发给谁则是由路由器在进行（已经被SpringCloudGateway取代）
 - Config：配置管理，可以实现配置文件集中管理
 
-****
+---
 
 Spring Boot 为 Spring Cloud 提供了代码实现环境，使用 Spring Boot 将其它组件有机融合 到了 Spring Cloud 的体系架构中了。所以说，Spring Cloud 是基于 Spring Boot 的、微服务系统架构的一站式解决方案。
 

@@ -1228,3 +1228,22 @@ export const MultiCurrency = [
     ],
   },
 ];
+
+export const FixedAsset = [
+  {
+    text: "资产台账与折旧摊销工程",
+    link: "/docs/Backend/FixedAsset/index.md",
+    items: [
+      { text: "总览：七段资产链与三个「在账上」", link: "/docs/Backend/FixedAsset/Overview/index.md" },
+      { text: "资产卡片与组件拆分", link: "/docs/Backend/FixedAsset/AssetCard/index.md" },
+      { text: "取得成本与资本化边界", link: "/docs/Backend/FixedAsset/Capitalization/index.md" },
+      { text: "折旧方法与月度引擎", link: "/docs/Backend/FixedAsset/Depreciation/index.md" },
+      { text: "变更：转移、改良、减值", link: "/docs/Backend/FixedAsset/Movement/index.md" },
+      { text: "处置与清理", link: "/docs/Backend/FixedAsset/Disposal/index.md" },
+      { text: "资产盘点与账实核对", link: "/docs/Backend/FixedAsset/Inventory/index.md" },
+      { text: "与总账的勾稽与月结", link: "/docs/Backend/FixedAsset/Ledger/index.md" },
+      { text: "实战：从建卡到处置的可运行闭环", link: "/docs/Backend/FixedAsset/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/FixedAsset/FAQ/index.md" },
+    ],
+  },
+];

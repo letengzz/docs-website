@@ -52,3 +52,4 @@
 - [收入确认与递延收入工程](RevenueRecognition/index.md)
 - [多币种与汇率折算工程](MultiCurrency/index.md)
 - [仓储作业与波次拣选工程](WarehouseOps/index.md)
+- [资产台账与折旧摊销工程](FixedAsset/index.md)

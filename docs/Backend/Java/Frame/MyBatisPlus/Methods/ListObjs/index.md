@@ -45,7 +45,7 @@ default <V> List<V> listObjs(Wrapper<T> queryWrapper, Function<? super Object, V
 
 - 查询多个字段，默认查询传入的第一个字段，并将第一个字段的查询结果放入list中。
 
-****
+---
 
 在实际开发中使用Springboot整合Mybatis-Plus时，调用底层baseMapper封装好的`selectObjs()`方法或者service层封装的`listObjs()`方法时返回的是`List<Object>`集合，需要将Object对象转换为指定的对象类型，例如String等。
 
