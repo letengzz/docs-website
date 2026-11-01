@@ -148,6 +148,20 @@ create unique index uniq_bill_run_active
 | `SBC-G` | `bill_run` 是否有断点（`cursor_tenant`）与失败隔离 | 整批一事务即失败：跑到一半失败全废 | 按租户提交、失败写错误表 |
 | `SBC-H` | 同一 `(period, scope)` 是否只允许一个 `running` 批 | 允许并发即失败：重复出账 | 加部分唯一索引 |
 
+## 与「成本核算」的分工
+
+订阅计费按**时间**分摊收入，成本核算按**产量**分摊成本，两者的分摊基数完全不同，这是最容易混的一处：
+
+| 维度 | 本页（收入侧） | 成本核算（成本侧） |
+| --- | --- | --- |
+| 分摊基数 | 服务天数 / 计费周期 | 机时 / 工时 / 产量 |
+| 分摊对象 | 合同履约义务 | 工单 / 产品 / 项目 |
+| 差一天的影响 | 收入跨期 | 单位成本轻微变化 |
+
+::: warning 别把「按天摊」的直觉带到成本侧
+「这个月 30 天，成本也按 30 天摊」在有在制品时不成立：在制的完工程度与日历天数无关。判据见[在制品与约当产量](../../CostAccounting/WipYield/index.md)——分母是约当产量，不是天数。
+:::
+
 ## 参考资料
 
 - PostgreSQL 18 文档《Date/Time Functions》（`interval` 运算、`date_trunc`、`generate_series`）：<https://www.postgresql.org/docs/18/functions-datetime.html>

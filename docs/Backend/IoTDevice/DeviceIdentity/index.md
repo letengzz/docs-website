@@ -87,7 +87,7 @@ CREATE TABLE device (
 
 用 X.509 时，**身份来自证书的 CN（或 SAN）**，而不是 `client_id`。Broker 必须配置成「要求客户端证书 + 拒绝匿名」，并把 CN 映射为 `username`，再用 ACL 按 `username` 授权主题。
 
-```conf
+```ini
 # mosquitto.conf 片段（2.1.x）
 listener 8883
 allow_anonymous false

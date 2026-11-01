@@ -431,6 +431,7 @@ export const CompleteProject = [
           { text: "第 1 周第 6 步 · 第 1 周验收：五份产物收成一张单（EOW-A~EOW-H）", link: "/project/Complete/OpenPlatformHub/Week1Gate/index.md" },
           { text: "第 2 周第 1 步 · 计量中间件的唯一写入点（EOM-A~EOM-H）", link: "/project/Complete/OpenPlatformHub/Metering/index.md" },
           { text: "第 2 周第 2 步 · 配额与限流的判定点（EOU-A~EOU-H）", link: "/project/Complete/OpenPlatformHub/QuotaLimit/index.md" },
+          { text: "第 2 周第 3 步 · 令牌签发与 /v1/ping（EOV-A~EOV-H）", link: "/project/Complete/OpenPlatformHub/AuthToken/index.md" },
         ],
       },
       {

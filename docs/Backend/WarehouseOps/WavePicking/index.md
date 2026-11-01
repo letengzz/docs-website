@@ -199,4 +199,4 @@ sqlite3 /tmp/wh.db "SELECT round(100.0*sum(CASE WHEN short_qty>0 THEN 1 ELSE 0 E
 - [库存快照与批次](../StockSnapshot/index.md)：FEFO 的批次口径
 - [复核、打包与交接](../Packing/index.md)：拣完之后的三道闸门
 - [作业度量与产能](../Metrics/index.md)：短拣率的分母怎么写
-- [履约交付与承运商集成](../../ShippingCarrier/Overview/index.md)：截单时间从哪来
+- 履约交付与承运商集成（页面待补）：截单时间从哪来

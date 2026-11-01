@@ -139,4 +139,4 @@ sqlite3 /tmp/wh.db "SELECT count(*) FROM pick_task WHERE short_qty > 0 AND short
 - [波次与拣选路径](../WavePicking/index.md)：第 ④ 段，89% 的行走差异从哪来
 - [作业度量与产能](../Metrics/index.md)：四个指标与四个分母
 - [库存与预占](../../Ecommerce/Inventory/index.md)：对外的「可售」口径
-- [履约交付与承运商集成](../../ShippingCarrier/Overview/index.md)：交接之后的路
+- 履约交付与承运商集成（页面待补）：交接之后的路

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 456" width="760" height="456" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="456" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">标准成本差异分解：一笔总差，四条来路</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">差异分析的价值不在算得多细，而在每条差异都能指派到一个责任中心</text>
+  <rect x="280" y="74" width="200" height="60" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380" y="92.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">实际成本 − 标准成本</text>
+  <text x="380" y="109" text-anchor="middle" font-size="7.5" fill="#334155">总差异</text>
+  <rect x="30" y="168" width="160" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="110" y="186.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">价差 Price</text>
+  <text x="110" y="203" text-anchor="middle" font-size="7.5" fill="#B45309">(实际价 − 标准价)</text>
+  <text x="110" y="220.25" text-anchor="middle" font-size="7.5" fill="#B45309">× 实际用量</text>
+  <rect x="206" y="168" width="160" height="96" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+  <text x="286" y="186.2" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">量差 Quantity</text>
+  <text x="286" y="203" text-anchor="middle" font-size="7.5" fill="#C2410C">(实际量 − 标准量)</text>
+  <text x="286" y="220.25" text-anchor="middle" font-size="7.5" fill="#C2410C">× 标准价</text>
+  <rect x="382" y="168" width="160" height="96" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="462" y="186.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">产量差 Volume</text>
+  <text x="462" y="203" text-anchor="middle" font-size="7.5" fill="#B91C1C">(实际产量 − 预算产量)</text>
+  <text x="462" y="220.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">× 标准单位固定成本</text>
+  <rect x="558" y="168" width="176" height="96" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.6"/>
+  <text x="646" y="186.2" text-anchor="middle" font-size="10" fill="#9D174D" font-weight="bold">结构差 Mix</text>
+  <text x="646" y="203" text-anchor="middle" font-size="7.5" fill="#BE185D">产品组合变了</text>
+  <text x="646" y="220.25" text-anchor="middle" font-size="7.5" fill="#BE185D">只出现在多品种</text>
+  <line x1="340" y1="134" x2="110" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="360" y1="134" x2="286" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="400" y1="134" x2="462" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="440" y1="134" x2="646" y2="168" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="290" width="336" height="80" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="198" y="308.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">二因素法（只拆价与量）</text>
+  <text x="198" y="325" text-anchor="middle" font-size="7.5" fill="#0F766E">够用、好解释</text>
+  <text x="198" y="342.25" text-anchor="middle" font-size="7.5" fill="#0F766E">适合单一材料 / 单一工时</text>
+  <rect x="394" y="290" width="340" height="80" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="564" y="308.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">三因素法（+ 产量 / 结构）</text>
+  <text x="564" y="325" text-anchor="middle" font-size="7.5" fill="#6D28D9">固定制造费用才有产量差</text>
+  <text x="564" y="342.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">多品种才有结构差</text>
+  <rect x="30" y="388" width="704" height="50" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="382" y="406.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">差异的方向必须写死：正数是超支还是节约</text>
+  <text x="382" y="423" text-anchor="middle" font-size="7.5" fill="#B91C1C">两种口径在业界都存在，同一份报表里混用会让审阅者读反</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

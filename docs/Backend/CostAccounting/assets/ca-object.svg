@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 442" width="760" height="442" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="442" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">成本对象的三个维度与一条红线</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">要素、中心、对象三者缺一，成本就既算不准也追不到人</text>
+  <rect x="20" y="80" width="210" height="120" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="125" y="98.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">成本要素</text>
+  <text x="125" y="115" text-anchor="middle" font-size="7.5" fill="#1D4ED8">材料 / 人工 / 折旧 / 动力</text>
+  <text x="125" y="132.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">「花的是什么钱」</text>
+  <text x="125" y="149.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">回答：钱的性质</text>
+  <rect x="275" y="80" width="210" height="120" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="380" y="98.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">成本中心</text>
+  <text x="380" y="115" text-anchor="middle" font-size="7.5" fill="#4338CA">车间 / 产线 / 部门</text>
+  <text x="380" y="132.25" text-anchor="middle" font-size="7.5" fill="#4338CA">「谁花的钱」</text>
+  <text x="380" y="149.5" text-anchor="middle" font-size="7.5" fill="#4338CA">回答：责任归属</text>
+  <rect x="530" y="80" width="210" height="120" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="635" y="98.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">成本对象</text>
+  <text x="635" y="115" text-anchor="middle" font-size="7.5" fill="#0F766E">工单 / 批次 / 产品 / 项目</text>
+  <text x="635" y="132.25" text-anchor="middle" font-size="7.5" fill="#0F766E">「花在哪件东西上」</text>
+  <text x="635" y="149.5" text-anchor="middle" font-size="7.5" fill="#0F766E">回答：最终承担者</text>
+  <line x1="230" y1="140" x2="275" y2="140" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="485" y1="140" x2="530" y2="140" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="380" y="224" text-anchor="middle" font-size="9" fill="#0F172A" font-weight="bold">三者的组合才是一条成本记录：要素 × 中心 × 对象 × 期间 × 金额</text>
+  <rect x="20" y="244" width="220" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="130" y="262.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">动因（Driver）</text>
+  <text x="130" y="279" text-anchor="middle" font-size="7.5" fill="#B45309">机器工时 / 人工工时</text>
+  <text x="130" y="296.25" text-anchor="middle" font-size="7.5" fill="#B45309">产量 / 订单数 / 面积</text>
+  <rect x="270" y="244" width="220" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="262.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">直接 vs 间接</text>
+  <text x="380" y="279" text-anchor="middle" font-size="7.5" fill="#6D28D9">能一对一 → 直接归集</text>
+  <text x="380" y="296.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">不能一对一 → 分摊</text>
+  <rect x="520" y="244" width="220" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="630" y="262.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">期间属性</text>
+  <text x="630" y="279" text-anchor="middle" font-size="7.5" fill="#334155">本期发生 / 跨期摊</text>
+  <text x="630" y="296.25" text-anchor="middle" font-size="7.5" fill="#334155">预提 / 待摊</text>
+  <line x1="240" y1="292" x2="270" y2="292" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="490" y1="292" x2="520" y2="292" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="20" y="366" width="720" height="56" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="384.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">口径红线：一条成本记录必须同时带「期间」与「版本」</text>
+  <text x="380" y="401" text-anchor="middle" font-size="7.5" fill="#B91C1C">同一期间重算必须覆盖旧版本（不是追加），否则月结跑两遍就翻倍</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

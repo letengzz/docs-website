@@ -196,7 +196,7 @@ sqlite3 /tmp/wh.db "SELECT handover_no, package_count, signed_count, diff_count
 
 - [波次与拣选路径](../WavePicking/index.md)：这三道闸门的前一段
 - [总览：七段库内作业链](../Overview/index.md)：交接之后归谁管
-- [承运商账单核对](../../ShippingCarrier/InvoiceAudit/index.md)：重量与体积重怎么影响运费
-- [面单渲染](../../ShippingCarrier/LabelRender/index.md)：包裹与面单的一一对应
+- 承运商账单核对（页面待补）：重量与体积重怎么影响运费
+- 面单渲染（页面待补）：包裹与面单的一一对应
 - GS1 物流标签指南（SSCC 结构与 AI `(00)`）：<https://www.gs1.org/standards/gs1-logistic-label-guideline/current-standard>
 - ISO/IEC 15417（Code 128 符号规范）：<https://www.iso.org/standard/38230.html>

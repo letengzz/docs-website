@@ -26,7 +26,7 @@
 <text x="700" y="246" font-size="11" fill="#2a5d9f" font-weight="400" text-anchor="start">预算 ≤ 50 ms</text>
 <rect x="28" y="290" width="900" height="62" rx="8" fill="#f4f7fa" stroke="#a9b7c5" stroke-width="1.4"/>
 <text x="42" y="314" font-size="13" fill="#1f2d3d" font-weight="700">计时方法（可复跑）</text>
-<text x="42" y="334" font-size="11" fill="#1f2d3d">for i in {1..15}; do /usr/bin/time -p zsh -i -c exit; done 2>&1 | grep real  ← 取中位数，不看单次</text>
+<text x="42" y="334" font-size="11" fill="#1f2d3d">for i in {1..15}; do /usr/bin/time -p zsh -i -c exit; done 2&gt;&amp;1 | grep real  ← 取中位数，不看单次</text>
 <text x="28" y="384" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">优化顺序（按收益/代价排序）：① nvm 加 --no-use（−576 ms，零风险）；② compinit 改 -C 并按天刷新（−23 ms）；</text>
 <text x="28" y="406" font-size="12" fill="#5a6b7b" font-weight="400" text-anchor="start">③ 补全与高亮改惰性加载（首次 Tab 再载入）；④ 别名与函数体量收敛（几十毫秒量级，最后做）。</text>
 <text x="28" y="436" font-size="12" fill="#b4453c" font-weight="400" text-anchor="start">不要做的事：为了省启动时间把 export 挪进 .zshenv——那会让每个非交互子进程都背上它，包括 CI。</text>

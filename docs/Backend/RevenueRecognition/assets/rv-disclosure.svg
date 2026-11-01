@@ -36,7 +36,7 @@
 <text x="20" y="310" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">本机读数：按标签表 join 后合计虚增 50.37%（22,539,179.36 → 33,891,186.10）</text>
 <text x="20" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">   —— 一条收入被打上两个标签，就在分解表里被数了两次；先去重再加总，差 0.00</text>
 <text x="20" y="352" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">RPO 两口径：按合同总额 420,000 vs 按已分摊未确认 345,000，差 75,000（约束与未开始部分）</text>
-<text x="20" y="374" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">月结切点：<'2026-02-01' 与 <='2026-01-31' 相差 164,521.32 —— 1 月 31 日当天 654 条整天丢失</text>
+<text x="20" y="374" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">月结切点：&lt;'2026-02-01' 与 &lt;='2026-01-31' 相差 164,521.32 —— 1 月 31 日当天 654 条整天丢失</text>
 <text x="20" y="400" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="600">所以账期字段一律存「期间」而不是「时间戳边界」；边界比较只在报表层出现一次</text>
 <text x="20" y="428" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400">每一步都要留下可重跑的证据：期间号、批次号、行数、金额合计、执行人</text>
 </svg>

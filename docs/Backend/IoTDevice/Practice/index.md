@@ -27,7 +27,7 @@ mosquitto -h | head -1
 
 ## 二、Broker 配置（最小可跑集）
 
-```conf
+```ini
 # ~/iot-lab/broker.conf
 listener 1883
 allow_anonymous false
