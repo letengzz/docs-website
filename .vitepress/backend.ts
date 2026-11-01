@@ -1327,3 +1327,22 @@ export const Consolidation = [
     ],
   },
 ];
+
+export const CustomerIdentity = [
+  {
+    text: "客户身份归并与主数据",
+    link: "/docs/Backend/CustomerIdentity/index.md",
+    items: [
+      { text: "总览：七段链与三个「同一个人」", link: "/docs/Backend/CustomerIdentity/Overview/index.md" },
+      { text: "记录模型：三层结构与四类归一化", link: "/docs/Backend/CustomerIdentity/RecordModel/index.md" },
+      { text: "分块与候选对：把平方级压成线性级", link: "/docs/Backend/CustomerIdentity/Blocking/index.md" },
+      { text: "匹配规则与打分：阈值是钱的选择", link: "/docs/Backend/CustomerIdentity/Matching/index.md" },
+      { text: "成簇与传递闭包：三对都对，簇可能全错", link: "/docs/Backend/CustomerIdentity/Clustering/index.md" },
+      { text: "金记录：每个字段各自存活", link: "/docs/Backend/CustomerIdentity/GoldenRecord/index.md" },
+      { text: "合并与别名：一扇门和一串门牌", link: "/docs/Backend/CustomerIdentity/MergeAlias/index.md" },
+      { text: "同意、可见范围与删除", link: "/docs/Backend/CustomerIdentity/Privacy/index.md" },
+      { text: "度量与验收：四个率与一条成本线", link: "/docs/Backend/CustomerIdentity/Metrics/index.md" },
+      { text: "实战：七张表跑通一次归并", link: "/docs/Backend/CustomerIdentity/Practice/index.md" },
+    ],
+  },
+];

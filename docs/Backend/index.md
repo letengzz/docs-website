@@ -56,3 +56,4 @@
 - [生产执行与工单报工工程](Manufacturing/index.md)
 - [设备维护与可靠性工程](EquipmentMaintenance/index.md)
 - [合并报表与内部抵销工程](Consolidation/index.md)
+- [客户身份归并与主数据工程](CustomerIdentity/index.md)

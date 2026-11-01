@@ -422,6 +422,22 @@ LIMIT 200;
 `HANDED_OVER` 才允许迁移，部分交接最多推到「部分发货」。
 :::
 
+## 与「客户身份归并与主数据」的分工（第 235 天补充）
+
+订单状态机管「这一单走到哪了」，归并管「这一单是谁的」：
+
+| 你关心的问题 | 该读哪一册 | 为什么不是本册 |
+| --- | --- | --- |
+| 待支付能不能直接跳到已发货 | 本页 | 判**状态迁移合法性** |
+| 下单的人和历史订单能不能对上 | [客户身份归并与主数据](../../CustomerIdentity/Overview/index.md) | 判**订单归属** |
+| 合并后旧订单查不到怎么办 | [合并与别名](../../CustomerIdentity/MergeAlias/index.md) | 判**引用改挂与别名转发** |
+
+::: danger 一页一坑：退款按旧 `customer_id` 找不到订单
+客户合并后，`order_head.customer_id` 还是旧值，而退款流程从会话里拿到的是新 ID。查询 `WHERE customer_id = 新ID` 查不到历史订单，于是「这笔订单不存在」——但钱确实收过。
+
+两条修法都要有：合并时改挂 `order_head.customer_id`（写 `merge_ref_move` 以便拆分），以及查询侧用别名兜底。只做前者，漏掉的表会继续出问题；只做后者，索引会退化成两次查询。
+:::
+
 ## 参考资料
 
 - [Martin Fowler · State Machine](https://martinfowler.com/bliki/StateMachine.html)

@@ -135,6 +135,22 @@ where user_id = 42 and created_at <= '2026-03-31 23:59:59+08';"
 
 预期输出：一个确定的整数，且与当时对账单一致。若流水里没有 `EXPIRED` 类型的记录，这个数一定会偏大——过期也是流水。
 
+## 与「客户身份归并与主数据」的分工（第 235 天补充）
+
+权益账本与「账本的主人是谁」是两件事，混起来最容易在合并那天出事：
+
+| 你关心的问题 | 该读哪一册 | 为什么不是本册 |
+| --- | --- | --- |
+| 积分怎么算、怎么过期、怎么冲正 | 本页 | 判**余额守恒与批次**，不管这个余额挂在谁名下 |
+| 两条档案是不是同一个人 | [客户身份归并与主数据](../../CustomerIdentity/Overview/index.md) | 判**判定与合并** |
+| 合并后两本积分账怎么并 | [合并与别名](../../CustomerIdentity/MergeAlias/index.md) | 判**引用改挂与可逆性** |
+
+::: danger 一页一坑：合并了客户，没合并账户
+客户 2 并进 1 之后，`point_account` 里仍然有两行（`customer_id=1` 与 `customer_id=2`）。新人券按 `customer_id` 发，于是同一个人拿到两份；而合并后的余额只显示其中一本，另一本成了「看不见但还在」的负债。
+
+合并必须同时做三件事：账户行合并（余额相加，且**总额守恒**）、流水改挂（保留原 `account_id` 便于追溯）、旧账户置为 `merged` 而不是删除。
+:::
+
 ## 九、参考资料
 
 - IFRS 15 应用指南 B40~B47（重大权利、单独售价、breakage 的确认模式）：<https://www.ifrs.org/issued-standards/list-of-standards/ifrs-15-revenue-from-contracts-with-customers/>

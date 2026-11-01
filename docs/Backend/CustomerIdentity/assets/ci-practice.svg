@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 380" width="940" height="380" role="img" aria-label="实战七表与外键方向">
+<title>实战七表与外键方向</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+
+<rect x="40" y="60" width="210" height="96" rx="8" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1.5"/>
+<text x="53" y="84" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">customer</text>
+<text x="53" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">id PK</text>
+<text x="53" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">status / merged_into</text>
+<rect x="40" y="190" width="210" height="96" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="53" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">customer_record</text>
+<text x="53" y="238" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">customer_id → customer</text>
+<text x="53" y="256" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">UNIQUE(src, src_ref)</text>
+<rect x="40" y="310" width="210" height="60" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="53" y="334" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">customer_alias</text>
+<text x="53" y="358" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">old_id PK → canonical</text>
+<rect x="360" y="60" width="210" height="96" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="373" y="84" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">merge_log</text>
+<text x="373" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">from_id UNIQUE</text>
+<text x="373" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">→ 拆分的依据</text>
+<rect x="360" y="190" width="210" height="96" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="373" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">candidate_pair</text>
+<text x="373" y="238" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">a_id < b_id</text>
+<text x="373" y="256" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">score 0~1</text>
+<rect x="360" y="310" width="210" height="60" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="373" y="334" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">consent</text>
+<text x="373" y="358" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">(customer, purpose)</text>
+<rect x="680" y="130" width="210" height="96" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="693" y="154" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">deletion_request</text>
+<text x="693" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">done_at 触发清洗</text>
+<line x1="250" y1="108" x2="356" y2="108" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="250" y1="236" x2="356" y2="236" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="250" y1="340" x2="676" y2="200" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="40" y="40" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="start">七张表、三个触发器、五条自检：结构对了，合并才可能可逆</text>
+<text x="680" y="250" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">触发器守三件事：别名不指中间</text>
+<text x="680" y="268" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">节点、合并必留日志、删除必清洗</text>
+</svg>

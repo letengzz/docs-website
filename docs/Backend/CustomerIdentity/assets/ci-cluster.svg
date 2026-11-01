@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 340" width="940" height="340" role="img" aria-label="成对判定与成簇判定不是一回事">
+<title>成对判定与成簇判定不是一回事</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+
+<text x="40" y="44" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="start">三对判定各自都对，合起来的簇可能全错</text>
+<rect x="120" y="80" width="150" height="90" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="133" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">记录 A</text>
+<text x="133" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">手机 138..1111</text>
+<rect x="400" y="80" width="150" height="90" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="413" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">记录 B</text>
+<text x="413" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">手机 138..1111</text>
+<text x="413" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">邮箱 zw@x.com</text>
+<rect x="680" y="80" width="150" height="90" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="693" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">记录 C</text>
+<text x="693" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">邮箱 zw@x.com</text>
+<line x1="270" y1="125" x2="396" y2="125" stroke="#15803d" stroke-width="2"/>
+<text x="333" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803d" font-weight="700" text-anchor="middle">同号 0.75</text>
+<line x1="550" y1="125" x2="676" y2="125" stroke="#15803d" stroke-width="2"/>
+<text x="613" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803d" font-weight="700" text-anchor="middle">同邮箱 0.59</text>
+<path d="M 195 170 Q 475 250 755 170" fill="none" stroke="#f87171" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<text x="475" y="258" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="700" text-anchor="middle">A 与 C 的直接分值只有 0.30（既不同号也不同名）</text>
+<rect x="120" y="285" width="710" height="40" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="133" y="309" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">并查集结果：A、B、C 同簇</text>
+<text x="133" y="333" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">合并后 C 的订单挂到了 A 名下</text>
+</svg>

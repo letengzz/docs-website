@@ -49,7 +49,7 @@ npm i express
 **使用格式**：
 
 ```js [route-format.js]
-app.<method>(path，callback)
+app.<method>(path, callback)
 ```
 
 **例**：

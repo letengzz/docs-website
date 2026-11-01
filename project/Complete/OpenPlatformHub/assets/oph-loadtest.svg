@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" width="920" height="360" role="img" aria-label="并发梯度下的吞吐与 P99">
+<title>并发梯度：吞吐在 64 并发到顶，P99 从 11.8 ms 涨到 95 ms</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<line x1="70" y1="270" x2="880" y2="270" stroke="#cbd5e1" stroke-width="1.4"/>
+<line x1="70" y1="60" x2="70" y2="270" stroke="#cbd5e1" stroke-width="1.4"/>
+<text x="70" y="46" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="middle">rps</text>
+<text x="886" y="288" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" text-anchor="end">并发客户端</text>
+<text x="30" y="52" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">吞吐</text>
+<text x="30" y="70" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b45309">P99</text>
+<circle cx="130" cy="238.1" r="5" fill="#2563eb"/>
+<text x="130" y="226.1" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#1d4ed8" text-anchor="middle">1278</text>
+<circle cx="290" cy="167.5" r="5" fill="#2563eb"/>
+<text x="290" y="155.5" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#1d4ed8" text-anchor="middle">4100</text>
+<circle cx="440" cy="80.2" r="5" fill="#2563eb"/>
+<text x="440" y="68.2" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#1d4ed8" text-anchor="middle">7592</text>
+<circle cx="600" cy="90.2" r="5" fill="#2563eb"/>
+<text x="600" y="78.2" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#1d4ed8" text-anchor="middle">7193</text>
+<circle cx="770" cy="109.2" r="5" fill="#2563eb"/>
+<text x="770" y="97.2" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#1d4ed8" text-anchor="middle">6430</text>
+<polyline points="130,238.1 290,167.5 440,80.2 600,90.2 770,109.2" fill="none" stroke="#2563eb" stroke-width="2.2" opacity="0.75"/>
+<circle cx="130" cy="253.1" r="4.5" fill="#f59e0b"/>
+<text x="130" y="271.1" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#b45309" text-anchor="middle">8.44</text>
+<circle cx="290" cy="247.2" r="4.5" fill="#f59e0b"/>
+<text x="290" y="265.2" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#b45309" text-anchor="middle">11.4</text>
+<circle cx="440" cy="246.3" r="4.5" fill="#f59e0b"/>
+<text x="440" y="264.3" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#b45309" text-anchor="middle">11.84</text>
+<circle cx="600" cy="208.9" r="4.5" fill="#f59e0b"/>
+<text x="600" y="226.9" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#b45309" text-anchor="middle">30.55</text>
+<circle cx="770" cy="80.0" r="4.5" fill="#f59e0b"/>
+<text x="770" y="98.0" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#b45309" text-anchor="middle">94.99</text>
+<polyline points="130,253.1 290,247.2 440,246.3 600,208.9 770,80.0" fill="none" stroke="#f59e0b" stroke-width="2.2" opacity="0.8"/>
+<text x="130" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle">8</text>
+<text x="290" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle">32</text>
+<text x="440" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle">64</text>
+<text x="600" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle">128</text>
+<text x="770" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle">256</text>
+<line x1="440" y1="60" x2="440" y2="270" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="452" y="76" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155">拐点：64 并发 / 7,592 rps</text>
+<text x="70" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b91c1c">拐点之后再加并发，吞吐反而下降（GIL + 线程切换），P99 从 11.8 ms 涨到 95 ms</text>
+<text x="70" y="344" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#64748b">单请求预算 4 ms，其中计量写入与业务处理占 87.5%——只有这两段能并行</text>
+</svg>

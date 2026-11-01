@@ -6,7 +6,7 @@
 
    ```javascript
    module.exports = {
-     publicPath：process.env.NODE_ENV === "production" ? "/app/" ："/",
+     publicPath:process.env.NODE_ENV === "production" ? "/app/" :"/",
    };
    ```
 
@@ -14,7 +14,7 @@
 
    ```javascript
    module.exports = {
-     outputDir："dist",
+     outputDir:"dist",
    };
    ```
 
@@ -22,7 +22,7 @@
 
    ```javascript
    module.exports = {
-     assetsDir："static",
+     assetsDir:"static",
    };
    ```
 
@@ -30,7 +30,7 @@
 
    ```javascript
    module.exports = {
-     runtimeCompiler：true,
+     runtimeCompiler:true,
    };
    ```
 
@@ -38,7 +38,7 @@
 
    ```javascript
    module.exports = {
-     transpileDependencies：[
+     transpileDependencies:[
        // 包含所有依赖的路径
        path.resolve(__dirname, "node_modules/some-package"),
      ],
@@ -48,23 +48,23 @@
 6. **devServer**：配置开发服务器。
 
    ```javascript
-    productionSourceMap：fasle, //生产环境是否要生成 sourceMap
-    devServer：{
-        open：true, // 自动打开浏览器
-        host：'localhost',
-        port：8080,
-        https：false,
+    productionSourceMap:fasle, //生产环境是否要生成 sourceMap
+    devServer:{
+        open:true, // 自动打开浏览器
+        host:'localhost',
+        port:8080,
+        https:false,
         // 配置跨域请求头，解决开发环境的跨域问题
-        headers：{
-            'Access-Control-Allow-Origin'：'*',
+        headers:{
+            'Access-Control-Allow-Origin':'*',
         },
         // 代理设置
-        proxy：{
-            '/api'：{
-                target：'http://backend.server.com',
-                changeOrigin：true,
-                pathRewrite：{
-                    "^/api"：""
+        proxy:{
+            '/api':{
+                target:'http://backend.server.com',
+                changeOrigin:true,
+                pathRewrite:{
+                    "^/api":""
                 }
             }
         }
@@ -75,13 +75,13 @@
 
    ```javascript
    module.exports = {
-     css：{
+     css:{
        // 启用 CSS modules
-       modules：{
-         localIdentName："[name]-[hash]",
+       modules:{
+         localIdentName:"[name]-[hash]",
        },
        // 扩展名
-       requireModuleExtension：false,
+       requireModuleExtension:false,
      },
    };
    ```
@@ -90,7 +90,7 @@
 
    ```javascript
    module.exports = {
-     lintOnSave：true,
+     lintOnSave:true,
    };
    ```
 
@@ -98,7 +98,7 @@
 
    ```javascript
    module.exports = {
-     chainWebpack：(config) => {
+     chainWebpack:(config) => {
        // 修改 webpack 配置
        // 例如，通过判断运行环境，设置mode
        config.mode = 'production'
@@ -111,23 +111,23 @@
 
     ```javascript
     module.exports = {
-      configureWebpack：{
+      configureWebpack:{
         // webpack 配置
         rules:[],
-        plugins：[],
+        plugins:[],
         // 设置别名路径
-        resolve：{
-          alias：{
-            "@"：path.resolve(__dirname, "src"),
+        resolve:{
+          alias:{
+            "@":path.resolve(__dirname, "src"),
           },
         },
-        output：{
+        output:{
           // 应用的包名
-          library："sub-wechat",
+          library:"sub-wechat",
           // 将你的 library 暴露为所有的模块定义下都可运行的方式
-          libraryTarget："umd",
+          libraryTarget:"umd",
           // 按需加载相关，设置为 webpackJsonp_VueApp 即可
-          jsonpFunction：`webpackJsonp_sub-wechat`,
+          jsonpFunction:`webpackJsonp_sub-wechat`,
         },
       },
     };
@@ -137,7 +137,7 @@
 
     ```javascript
     module.exports = {
-      parallel：require("os").cpus().length > 1,
+      parallel:require("os").cpus().length > 1,
     };
     ```
 
@@ -145,9 +145,9 @@
 
     ```javascript
     module.exports = {
-      pwa：{
-        workboxPluginMode："GenerateSW",
-        workboxOptions：{
+      pwa:{
+        workboxPluginMode:"GenerateSW",
+        workboxOptions:{
           // Workbox 配置
         },
       },
@@ -158,7 +158,7 @@
 
     ```javascript
     module.exports = {
-      pluginOptions：{
+      pluginOptions:{
         // 插件配置
       },
     };

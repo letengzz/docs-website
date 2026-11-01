@@ -221,6 +221,22 @@ jdbcTemplate.execute("select set_config('app.tenant_id', ?, true)", TenantContex
 
 **这一页特有的一个坑**：把 `app_id` 当成 `tenant_id` 用（一个租户只允许建一个应用）。后果是客户没法区分生产与测试——测试应用的调用量进了生产账单，测试用的 webhook 指向了生产地址。正确做法是三张表：`tenant` ⇄ `app` ⇄ `credential`，配额挂在 `app`、合同挂在 `tenant`。
 
+## 与「客户身份归并与主数据」的分工（第 235 天补充）
+
+租户隔离管「A 的数据不能给 B 看」，归并管「同一个租户里两条档案是不是一个人」：
+
+| 你关心的问题 | 该读哪一册 | 为什么不是本册 |
+| --- | --- | --- |
+| 请求有没有带对租户、SQL 有没有漏 `tenant_id` | 本页 | 判**隔离边界** |
+| 同一个租户内两条记录要不要并 | [客户身份归并与主数据](../../CustomerIdentity/Overview/index.md) | 判**租户内归并** |
+| 跨租户的手机号相同算不算同一个人 | [记录模型](../../CustomerIdentity/RecordModel/index.md) | 判**主键与来源域** |
+
+::: danger 一页一坑：按手机号全局归并，直接击穿租户隔离
+两个租户各有一个客户用同一个手机号（同一个人既买了 A 家的服务，也买了 B 家的）。若归并任务不带 `tenant_id`，它会把两个租户的客户并成一个——B 租户的客服能看到 A 租户的订单。
+
+归并的主键必须是 `(tenant_id, customer_id)` 复合，块键也必须带租户前缀。跨越租户的「同一个人」只能由用户自己授权关联，不能由算法推断。
+:::
+
 ## 参考资料
 
 - PostgreSQL 18 Documentation：*SET*（`LOCAL` 的作用域与事务边界）、*System Administration Functions*（`set_config` 的第三个参数）、*Row Security Policies*（策略表达式的求值身份）

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 360" width="940" height="360" role="img" aria-label="客户身份的三层模型：客户、记录、别名">
+<title>客户身份的三层模型：客户、记录、别名</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+
+<rect x="40" y="70" width="250" height="150" rx="8" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1.5"/>
+<text x="53" y="94" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">customer（客户）</text>
+<text x="53" y="118" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">id 代理键，永不复用</text>
+<text x="53" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">golden_* 金记录字段</text>
+<text x="53" y="154" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">status: active/merged</text>
+<text x="53" y="172" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">       /deleted</text>
+<text x="53" y="208" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#4338ca">一个「人」</text>
+<rect x="360" y="70" width="250" height="150" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="373" y="94" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">customer_record（记录）</text>
+<text x="373" y="118" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">customer_id → customer</text>
+<text x="373" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">src + src_ref 唯一</text>
+<text x="373" y="154" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">name/phone/email/id_no</text>
+<text x="373" y="172" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">updated_at 原样保留</text>
+<text x="373" y="208" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0369a1">一条「来源里的那条」</text>
+<rect x="680" y="70" width="230" height="150" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="693" y="94" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">customer_alias（别名）</text>
+<text x="693" y="118" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">old_id → canonical_id</text>
+<text x="693" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">只能指向 active</text>
+<text x="693" y="154" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">合并批次 merge_batch</text>
+<text x="693" y="208" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803d">一扇「旧门牌」</text>
+<line x1="290" y1="145" x2="356" y2="145" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="610" y1="145" x2="676" y2="145" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="40" y="250" width="250" height="80" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="53" y="274" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">merge_log（合并日志）</text>
+<text x="53" y="298" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">from_id 唯一：只能被并一次</text>
+<text x="53" y="318" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b91c1c">拆分的唯一依据</text>
+<rect x="360" y="250" width="250" height="80" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="373" y="274" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">consent（同意）</text>
+<text x="373" y="298" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">purpose 维度，可撤回</text>
+<text x="373" y="318" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#a21caf">可见性的来源</text>
+<rect x="680" y="250" width="230" height="80" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="693" y="274" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">deletion_request</text>
+<text x="693" y="298" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">done_at 触发清洗</text>
+<text x="693" y="318" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">留存的闸门</text>
+<text x="40" y="40" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="start">记录是事实，客户是判断，别名是承诺——三者不能合成一张表</text>
+<text x="40" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="600" text-anchor="start">合并只改 customer_id，不改记录本身；改掉的记录再也拼不回原样</text>
+</svg>
