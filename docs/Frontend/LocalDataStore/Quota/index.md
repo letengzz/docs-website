@@ -6,7 +6,7 @@
 
 ![配额 10,251 MB 与用量 11.2 MB 的对比，以及 best-effort 回收与 QuotaExceededError 的处置](../assets/lds-quota.svg)
 
-本页判据族 `STQ-A` ~ `STQ-H`，共 8 条。定义表在第六节。
+本页判据族 `STQ-A` ~ `STQ-H`，共 8 条。定义表在第五节。
 
 ## 一、`estimate()` 给你的两个数
 

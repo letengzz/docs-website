@@ -77,7 +77,7 @@ CREATE INDEX idx_comments_ai_verdict ON comments (ai_verdict, created_at);
 | ① 应用层 | 无工具调用 + 白名单字段 + 人审闸门 | 唯一不依赖模型「听话」的硬边界 |
 | ② 提示词层 | 结构化分隔【审核规则】/【待审评论】+ 严格 JSON 输出契约 | 数据里的指令不可信，评论原文永远是「数据」 |
 | ③ 编排层 | 输出 schema 强校验 + 解析失败按 `review` 兜底 | Guardrails AI 一类的 schema 校验器可替代手写 |
-| ④ 分类器层 | 输入侧可加 Prompt Guard 2（22M 版）做注入筛查 | 本期**不做**，登记为待办（见第八节） |
+| ④ 分类器层 | 输入侧可加 Prompt Guard 2（22M 版）做注入筛查 | 本期**不做**，登记为待办（见第七节） |
 | ⑤ 模型层 | 用temperature=0 + 固定模型版本 | 模型版本写入评估记录，便于漂移归因 |
 
 :::warning 为什么评论原文必须当「数据」而不是「上下文」

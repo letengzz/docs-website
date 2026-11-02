@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 350" width="940" height="350" role="img" aria-label="两个版本维度：因子版本与 GWP 版本">
+<title>两个版本维度：因子版本与 GWP 版本</title>
+<text x="24" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">两个版本维度：因子版本与 GWP 版本</text>
+<text x="24" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b" font-weight="400">换 GWP 的方向不单调：先看气体结构，再看版本</text>
+<rect x="24" y="78" width="288" height="120" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="36" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">因子版本</text>
+<text x="36" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">v2022 0.5703 → 570.3 t</text>
+<text x="36" y="143" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">v2024 0.5568 → 556.8 t</text>
+<text x="36" y="186" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b45309" font-weight="400">跨年误用 +2.42%</text>
+<rect x="326" y="78" width="288" height="120" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="338" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">GWP 版本</text>
+<text x="338" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">AR4 CH4 25 / N2O 298</text>
+<text x="338" y="143" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">AR6 CH4 29.8 / N2O 273</text>
+<text x="338" y="186" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0369a1" font-weight="400">AR4→AR6 +3.95%</text>
+<rect x="628" y="78" width="288" height="120" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="640" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700">单位与热值</text>
+<text x="640" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">NCV 35.6 / HHV 39.5 MJ/m³</text>
+<text x="640" y="143" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">柴油须乘密度 0.84 kg/L</text>
+<text x="640" y="186" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803d" font-weight="400">误用 HHV +10.96%</text>
+<text x="24" y="232" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700">同一份清单三种 GWP 口径：AR4 179,800 t　AR5 186,500 t　AR6 186,900 t</text>
+<text x="24" y="258" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">AR4→AR5 +3.73%，AR5→AR6 仅 +0.21%——因为非化石甲烷从 28 降到 27、化石甲烷从 30 降到 29.8，两股方向相反。</text>
+<text x="24" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="400">逃逸甲烷错用燃烧值 27.0：181,300 t，比 29.8 低 3.00%（同一股气，两个来源类型两个值）。</text>
+<text x="24" y="314" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">判据：因子表必须有 (fuel, unit, ef, gwp_set, version) 五元组；缺一列就只能「记得当时用的是哪个」。</text>
+</svg>

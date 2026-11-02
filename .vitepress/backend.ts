@@ -1366,3 +1366,23 @@ export const Budgeting = [
     ],
   },
 ];
+
+// 碳排放核算与 ESG 披露工程
+export const CarbonAccounting = [
+  {
+    text: "碳排放核算与 ESG 披露",
+    link: "/docs/Backend/CarbonAccounting/index.md",
+    items: [
+      { text: "总览：七段链与三个「碳」", link: "/docs/Backend/CarbonAccounting/Overview/index.md" },
+      { text: "组织边界与合并方法", link: "/docs/Backend/CarbonAccounting/BoundaryOrg/index.md" },
+      { text: "活动数据：来源、期间与缺失", link: "/docs/Backend/CarbonAccounting/ActivityData/index.md" },
+      { text: "排放因子与 GWP：两个版本维度", link: "/docs/Backend/CarbonAccounting/EmissionFactor/index.md" },
+      { text: "范围二双报：位置法与市场法", link: "/docs/Backend/CarbonAccounting/Scope2Dual/index.md" },
+      { text: "范围三：十五类与两种算法", link: "/docs/Backend/CarbonAccounting/Scope3/index.md" },
+      { text: "分配与产品碳足迹", link: "/docs/Backend/CarbonAccounting/Allocation/index.md" },
+      { text: "数据质量、不确定性与重大性", link: "/docs/Backend/CarbonAccounting/Uncertainty/index.md" },
+      { text: "披露、重述与履约", link: "/docs/Backend/CarbonAccounting/Disclosure/index.md" },
+      { text: "实战：八张表跑通一次核算", link: "/docs/Backend/CarbonAccounting/Practice/index.md" },
+    ],
+  },
+];

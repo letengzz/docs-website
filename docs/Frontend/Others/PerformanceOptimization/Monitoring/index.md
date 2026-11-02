@@ -206,7 +206,7 @@ jobs:
 
 一句话：**本页负责「指标怎么定义」，异常监控专题负责「数据怎么活着到达」**。两边都读完，RUM 才算闭环。
 
-## 参考资料## 参考资料
+## 参考资料
 
 - [web.dev：性能预算](https://web.dev/articles/performance-budgets-101)
 - [Lighthouse CI 文档](https://github.com/GoogleChrome/lighthouse-ci)

@@ -123,7 +123,7 @@ FROM pg_stat_activity WHERE xact_start IS NOT NULL ORDER BY xact_start LIMIT 5;
 | `TPQ-E` | 检查点区分按时/按量 | 有 `num_requested` 读数 | 补 `pg_stat_checkpointer` 采集 |
 | `TPQ-F` | 膨胀问题先查长事务 | 有 `xact_start` 最老的会话 | 先处理长事务，再谈 `VACUUM FULL` |
 | `TPQ-G` | 结论带噪声带 | 报告里有噪声幅度与区间 | 补同配置多次读数 |
-| `TPQ-H` | 能识别「参数救不了」的场景 | 有第六节这类清单 | 补清单，避免无效调参 |
+| `TPQ-H` | 能识别「参数救不了」的场景 | 有第五节这类清单 | 补清单，避免无效调参 |
 
 ## 参考资料
 
