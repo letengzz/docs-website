@@ -12,11 +12,6 @@ export default defineConfig({
   lang: 'zh-CN',
   ignoreDeadLinks: true,
   metaChunk: true,
-  // 渲染并发（默认 64）。全站 2,632 页时 64 路并发会在「本地搜索索引」与「页面渲染」
-  // 两个阶段把堆推到 8 GB 以上，本机 16 GB 内存直接撞穿提交上限而崩（两次实测：
-  // 8 GB 上限 → "Ineffective mark-compacts near heap limit"；15 GB 上限 → OS 分配失败）。
-  // 压到 8 路后峰值约 1~2 GB，代价是构建变慢，产物不变。
-  buildConcurrency: 8,
   lastUpdated: false,
   themeConfig: {
     lastUpdated: {
