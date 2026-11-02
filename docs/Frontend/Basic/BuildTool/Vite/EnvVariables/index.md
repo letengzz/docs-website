@@ -315,6 +315,7 @@ export const appConfig = {
 | --- | --- | --- |
 | `import.meta.env.X` | 简单、类型自动推断为 string | 需要自己 `Number()` / 比较 `'true'` |
 | `__RUNTIME_CONFIG__` | 类型已转换、可集中处理 | 需要额外声明与 `define` 配置 |
+
 小项目用前者，需要大量数值/布尔开关的中大型项目用后者。
 :::
 

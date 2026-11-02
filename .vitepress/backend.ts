@@ -1459,3 +1459,24 @@ export const TrainingQualification = [
     ],
   },
 ];
+
+// 费用报销与差旅费控工程
+export const ExpenseReimbursement = [
+  {
+    text: "费用报销与差旅费控工程",
+    link: "/docs/Backend/ExpenseReimbursement/index.md",
+    items: [
+      { text: "总览：七段链与三个「报了多少钱」", link: "/docs/Backend/ExpenseReimbursement/Overview/index.md" },
+      { text: "制度与差标：一张表背后的四层", link: "/docs/Backend/ExpenseReimbursement/Policy/index.md" },
+      { text: "单据模型：八态、三层与九条迁移", link: "/docs/Backend/ExpenseReimbursement/ClaimModel/index.md" },
+      { text: "票据与查验：一张票的五个属性", link: "/docs/Backend/ExpenseReimbursement/Receipt/index.md" },
+      { text: "审批路由：阈值、矩阵与自审", link: "/docs/Backend/ExpenseReimbursement/Approval/index.md" },
+      { text: "借款与核销：余额对了账龄可能全错", link: "/docs/Backend/ExpenseReimbursement/Advance/index.md" },
+      { text: "支付与代付：五个必须对上的东西", link: "/docs/Backend/ExpenseReimbursement/Payment/index.md" },
+      { text: "成本归属与期间：三个日期，三种归属", link: "/docs/Backend/ExpenseReimbursement/Allocation/index.md" },
+      { text: "稽查与合规：抽样、异常与税前扣除", link: "/docs/Backend/ExpenseReimbursement/Audit/index.md" },
+      { text: "实战：七张表、三个触发器、九条断言", link: "/docs/Backend/ExpenseReimbursement/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ExpenseReimbursement/FAQ/index.md" },
+    ],
+  },
+];

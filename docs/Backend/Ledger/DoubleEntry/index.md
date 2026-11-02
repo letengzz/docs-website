@@ -333,6 +333,17 @@ mysql -u app -p -e "UPDATE t_entry SET amount=1.00 WHERE entry_id=1;" || echo "�
 **追偿回收冲减「赔款支出」还是「营业费用」，在分录上都平**：两种写法借贷都相等，本页全绿；但前者让赔付率下降 1.6 个点，后者不变。分录平衡只能证明「账没记漏」，证明不了「口径对」——口径要对，得回到那册看 `offset_target`。
 :::
 
+## 与「费用报销与差旅费控」专题的分工（第 241 天补充）
+
+| 你关心的问题 | 该读哪一册 | 边界 |
+| --- | --- | --- |
+| 「这笔报销该拆成哪几条分录」 | 本册 | 判**借贷横平** |
+| 「为什么报销单有三个金额」 | [总览](../../ExpenseReimbursement/Overview/index.md) | 判**申报 / 核准 / 实付**三口径 |
+| 「借款核销进哪个科目」 | [借款与核销](../../ExpenseReimbursement/Advance/index.md) | 判**其他应收款减少**，不是费用 |
+| 「12 月发生 1 月报怎么入账」 | [成本归属与期间](../../ExpenseReimbursement/Allocation/index.md) | 判**权责发生制与预提** |
+
+一页一坑：**把借款核销做成负号费用明细**。分录上「借：管理费用 −900」看起来平了，但费用科目变成净额，部门费用分析、预算执行率、成本分摊全部失真；正确写法是「借：其他应收款（红字）」，费用的发生额保持不变。
+
 ## 参考资料
 
 - [Martin Fowler · Accounting Transaction（两组/多组分录与三种调整方式）](https://www.martinfowler.com/eaaDev/AccountingTransaction.html)

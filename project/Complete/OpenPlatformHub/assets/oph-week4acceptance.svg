@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-label="上线验收单的六个区与三条拒签规则">
+<title>上线验收单：六个区与三条拒签规则</title>
+<rect x="0" y="0" width="960" height="400" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">上线验收单：六个区与三条拒签规则</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">验收单不是清单，是「谁在什么时候用什么命令验出了什么」的可追溯记录</text>
+<rect x="30" y="86" width="140" height="140" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="44" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">A 功能</text>
+<text x="44" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">11 条断言</text>
+<text x="44" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">命令</text>
+<text x="44" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0369a1" font-weight="600" text-anchor="start">make verify</text>
+<text x="44" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">缺期望值即拒签</text>
+<rect x="182" y="86" width="140" height="140" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="196" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">B 告警</text>
+<text x="196" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">4 条规则</text>
+<text x="196" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">命令</text>
+<text x="196" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#b45309" font-weight="600" text-anchor="start">make alert-drill</text>
+<text x="196" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">缺期望值即拒签</text>
+<rect x="334" y="86" width="140" height="140" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="348" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">C 成本</text>
+<text x="348" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">3 个阈值</text>
+<text x="348" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">命令</text>
+<text x="348" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#15803d" font-weight="600" text-anchor="start">make cost-check</text>
+<text x="348" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">缺期望值即拒签</text>
+<rect x="486" y="86" width="140" height="140" rx="8" fill="#ede9fe" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="500" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">D 回滚</text>
+<text x="500" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">1 次演练</text>
+<text x="500" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">命令</text>
+<text x="500" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#6d28d9" font-weight="600" text-anchor="start">make rollback</text>
+<text x="500" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">缺期望值即拒签</text>
+<rect x="638" y="86" width="140" height="140" rx="8" fill="#ffedd5" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="652" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">E 配置</text>
+<text x="652" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">3 个数字</text>
+<text x="652" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">命令</text>
+<text x="652" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#c2410c" font-weight="600" text-anchor="start">make env-verify</text>
+<text x="652" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">缺期望值即拒签</text>
+<rect x="790" y="86" width="140" height="140" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="804" y="114" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">F 交接</text>
+<text x="804" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">6 份物料</text>
+<text x="804" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">命令</text>
+<text x="804" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#334155" font-weight="600" text-anchor="start">make handover</text>
+<text x="804" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#64748b" font-weight="400" text-anchor="start">缺期望值即拒签</text>
+<rect x="30" y="258" width="560" height="110" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="46" y="284" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">三条拒签规则</text>
+<text x="46" y="310" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">① 任一行的 expect 为空 → 不许签字（验收变成背书）</text>
+<text x="46" y="334" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">② 任一行的 checked_at 早于本次构建 → 过期，重跑</text>
+<text x="46" y="358" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">③ 任一行的 owner 是服务提供方自己 → 缺复核，换人</text>
+<rect x="620" y="258" width="310" height="110" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="636" y="284" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">签字的产物</text>
+<text x="636" y="310" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#9f1239" font-weight="400" text-anchor="start">signoff.yaml 11+4+3+1+3+6 = 28 行</text>
+<text x="636" y="334" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#9f1239" font-weight="400" text-anchor="start">每行四要素齐全 → 可交付</text>
+<text x="636" y="358" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#9f1239" font-weight="600" text-anchor="start">CI 里 `make signoff` 为唯一门</text>
+<text x="30" y="388" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">六个区共 28 行；缺任何一行都不算通过，但只有 A 区会「自己报错」，其余五个区的失败都要靠人看。</text>
+</svg>

@@ -455,6 +455,17 @@ CREATE TABLE idem_record (
 **用请求 ID 当支付幂等键，等于没有幂等**：客户端每次重试都会生成新的请求 ID，唯一键永不冲突，于是本机读数里 2,000 笔赔案重投三次变成 6,000 行、1.85 亿元。正确做法是 `UNIQUE(claim_id, pay_seq)`——键要来自**业务**，不能来自**传输**。
 :::
 
+## 与「费用报销与差旅费控」专题的分工（第 241 天补充）
+
+| 你关心的问题 | 该读哪一册 | 边界 |
+| --- | --- | --- |
+| 「同一请求重复提交怎么只落一单」 | 本册 | 判**请求级幂等**（`request_id`） |
+| 「双击产生两张不同单怎么办」 | [单据模型](../../ExpenseReimbursement/ClaimModel/index.md) | 判**业务级唯一键**与状态机 |
+| 「同一张发票被报两次」 | [票据与查验](../../ExpenseReimbursement/Receipt/index.md) | 判**票号唯一**，不是请求幂等 |
+| 「同一张单被付两次」 | [支付与代付](../../ExpenseReimbursement/Payment/index.md) | 判**支付记录唯一** |
+
+一页一坑：**请求级幂等挡不住「两次不同的请求」**。用户双击时前端若各自生成 UUID，服务端看到的是两个合法请求，落两张单——请求幂等全绿，单子却重复了。报销场景需要两层：`request_id` 防网络重试，`(emp_no, occur_from, occur_to, claim_type)` 或票号唯一键防业务重复。
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

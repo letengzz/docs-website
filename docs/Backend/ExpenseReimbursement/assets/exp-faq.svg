@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img" aria-label="报销异常的分诊路径">
+<title>报销异常的分诊路径</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="360" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">报销异常的分诊路径</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">先判「钱有没有出去」，再判「钱对不对」，最后判「账对不对」——顺序错了会白查一天</text>
+<rect x="40" y="96" width="220" height="56" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="54" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">钱出去了吗？</text>
+<rect x="300" y="96" width="220" height="56" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="314" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">金额对不对？</text>
+<rect x="560" y="96" width="220" height="56" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="574" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">归属对不对？</text>
+<line x1="262" y1="124" x2="298" y2="124" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="522" y1="124" x2="558" y2="124" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="40" y="200" width="220" height="96" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="54" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700" text-anchor="start">没出去</text>
+<text x="54" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">查 payment.state</text>
+<text x="54" y="272" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">UNKNOWN / FAILED 分列处理</text>
+<rect x="300" y="200" width="220" height="96" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="314" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700" text-anchor="start">出去了但金额错</text>
+<text x="314" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">查 claim_line.approved_amount</text>
+<text x="314" y="272" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">政策口径 vs 借款核销</text>
+<rect x="560" y="200" width="220" height="96" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="574" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700" text-anchor="start">金额对但账错</text>
+<text x="574" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">查 fiscal_year / 科目</text>
+<text x="574" y="272" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">跨期或科目映射</text>
+<line x1="150" y1="154" x2="150" y2="198" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+<line x1="410" y1="154" x2="410" y2="198" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+<line x1="670" y1="154" x2="670" y2="198" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+<rect x="40" y="314" width="880" height="34" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="56" y="336" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">三条判据各自独立：钱没出去不等于单子错，金额错不等于账错——混在一起查，是最常见的加班原因。</text>
+<text x="40" y="308" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start"></text>
+</svg>
