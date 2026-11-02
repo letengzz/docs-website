@@ -107,7 +107,7 @@ sqlite3 /tmp/pay.db "INSERT INTO pay_slip(emp_id,period,gross) VALUES('E0001','2
 # 期望：UNIQUE constraint failed: pay_slip.emp_id, pay_slip.period
 ```
 
-## 与本专题的分工
+## 与「合并报表」专题的分工
 
 薪酬册判**三本账各自闭合**（应发 / 实发 / 公司成本），合并册判**这笔人工成本在集团内部有没有被记两遍**。
 
@@ -125,7 +125,7 @@ sqlite3 /tmp/pay.db "INSERT INTO pay_slip(emp_id,period,gross) VALUES('E0001','2
 正确做法是把「人力服务费」按内部服务抵销，并把母公司为该员工承担的成本保留在集团口径里——**抵的是结算，不是成本**。这两件事在分录上只差一个科目，但在管理报表上会得出完全相反的结论。
 :::
 
-## 与本专题的分工
+## 与「全面预算」专题的分工
 
 | 你关心的问题 | 该读哪一册 | 为什么不是本页 |
 | --- | --- | --- |

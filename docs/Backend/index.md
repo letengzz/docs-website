@@ -60,3 +60,4 @@
 - [客户身份归并与主数据工程](CustomerIdentity/index.md)
 - [全面预算与经营分析工程](Budgeting/index.md)
 - [碳排放核算与 ESG 披露工程](CarbonAccounting/index.md)
+- [组织与任职异动工程](OrgPeople/index.md)

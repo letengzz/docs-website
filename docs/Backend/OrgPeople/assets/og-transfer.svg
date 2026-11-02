@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330" role="img" aria-label="五类异动与一条时间轴">
+<title>五类异动与一条时间轴</title>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700" text-anchor="start">五类异动：一次原子替换，不是两次更新</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">调动看起来是「旧部门结束 + 新部门开始」，落库必须是一个事务里的三条语句</text>
+<line x1="70" y1="150" x2="900" y2="150" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="140" cy="150" r="7" fill="#0369a1"/>
+<text x="140" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">入职</text>
+<circle cx="330" cy="150" r="7" fill="#0369a1"/>
+<text x="330" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">调动</text>
+<circle cx="520" cy="150" r="7" fill="#0369a1"/>
+<text x="520" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">晋升</text>
+<circle cx="710" cy="150" r="7" fill="#0369a1"/>
+<text x="710" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">兼岗</text>
+<circle cx="860" cy="150" r="7" fill="#0369a1"/>
+<text x="860" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="middle">离职</text>
+<rect x="40" y="190" width="168" height="108" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="52" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">① 关闭旧区间</text>
+<text x="52" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">valid_to = 生效日</text>
+<text x="52" y="253" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">半开区间，不含当天</text>
+<text x="52" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0369a1" font-weight="600" text-anchor="start">UPDATE 1 行</text>
+<rect x="216" y="190" width="168" height="108" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="228" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">② 打开新区间</text>
+<text x="228" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">valid_from = 生效日</text>
+<text x="228" y="253" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">org 换成新部门</text>
+<text x="228" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803d" font-weight="600" text-anchor="start">INSERT 1 行</text>
+<rect x="392" y="190" width="168" height="108" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="404" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">③ 记账与通知</text>
+<text x="404" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">异动单号 + 审批号</text>
+<text x="404" y="253" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">成本中心跟着动</text>
+<text x="404" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#a21caf" font-weight="600" text-anchor="start">INSERT 1 行</text>
+<rect x="568" y="190" width="168" height="108" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="580" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">同一事务</text>
+<text x="580" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">三条缺一即回滚</text>
+<text x="580" y="253" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">区间不许有缝/重叠</text>
+<text x="580" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#be123c" font-weight="600" text-anchor="start">BEGIN…COMMIT</text>
+<rect x="744" y="190" width="190" height="108" rx="8" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1.5"/>
+<text x="756" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">反例：两次更新</text>
+<text x="756" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">先开后关 → 当天两条</text>
+<text x="756" y="253" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">先关后开 → 中间丢一天</text>
+<text x="756" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#4338ca" font-weight="600" text-anchor="start">闭区间多算 17,322 人日</text>
+<text x="28" y="318" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">五类异动共用一条规则：生效日归属新组织，失效日归属旧组织 —— 半开区间 [from, to) 只说一次。</text>
+</svg>

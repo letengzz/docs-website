@@ -439,6 +439,7 @@ export const CompleteProject = [
           { text: "第 3 周第 3 步 · 限额与服务端压测（EPD-A~EPD-H）", link: "/project/Complete/OpenPlatformHub/LoadTest/index.md" },
           { text: "第 3 周第 4 步 · 用量与账单对账（EPU-A~EPU-H）", link: "/project/Complete/OpenPlatformHub/UsageRecon/index.md" },
           { text: "第 3 周第 5 步 · 第 3 周验收单：四张表收成六道门（EPV-A~EPV-H）", link: "/project/Complete/OpenPlatformHub/Week3Gate/index.md" },
+          { text: "第 4 周第 1 步 · 一键部署与配置：11 条断言封成 make verify（EPW-A~EPW-H）", link: "/project/Complete/OpenPlatformHub/Week4Deploy/index.md" },
         ],
       },
       {

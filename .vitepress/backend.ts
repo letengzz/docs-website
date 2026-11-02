@@ -1399,3 +1399,23 @@ export const CarbonAccounting = [
     ],
   },
 ];
+
+// 组织与任职异动工程
+export const OrgPeople = [
+  {
+    text: "组织与任职异动工程",
+    link: "/docs/Backend/OrgPeople/index.md",
+    items: [
+      { text: "总览：七段链与三个「在哪个部门」", link: "/docs/Backend/OrgPeople/Overview/index.md" },
+      { text: "组织单元：三种存法与搬迁代价", link: "/docs/Backend/OrgPeople/OrgModel/index.md" },
+      { text: "岗位与编制：占编的四种口径", link: "/docs/Backend/OrgPeople/Position/index.md" },
+      { text: "任职与生效日期：双时态怎么写", link: "/docs/Backend/OrgPeople/Employment/index.md" },
+      { text: "异动：一次原子替换，不是两次更新", link: "/docs/Backend/OrgPeople/Transfer/index.md" },
+      { text: "汇报线：实线、虚线与环", link: "/docs/Backend/OrgPeople/ReportingLine/index.md" },
+      { text: "成本归属：按天分摊与整月归属", link: "/docs/Backend/OrgPeople/CostAllocation/index.md" },
+      { text: "时点查询与快照：索引、快照与重建", link: "/docs/Backend/OrgPeople/TimeTravel/index.md" },
+      { text: "度量与数据质量：四个指标四个分母", link: "/docs/Backend/OrgPeople/Metrics/index.md" },
+      { text: "实战：七张表、三个触发器、九条断言", link: "/docs/Backend/OrgPeople/Practice/index.md" },
+    ],
+  },
+];

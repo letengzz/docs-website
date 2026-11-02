@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img" aria-label="实战：七张表、三个触发器、九条断言">
+<title>实战：七张表、三个触发器、九条断言</title>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700" text-anchor="start">实战：把不变式写成数据库拦得住的东西</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">七张表不是重点，重点是三条触发器 —— 它们让「写错」在事务里就失败，而不是在月报里被发现</text>
+<rect x="26" y="84" width="214" height="28" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="38" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">org 组织</text>
+<rect x="26" y="118" width="214" height="28" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="38" y="142" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">position 岗位</text>
+<rect x="26" y="152" width="214" height="28" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="38" y="176" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">employee 员工</text>
+<rect x="26" y="186" width="214" height="28" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="38" y="210" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">assignment 任职</text>
+<rect x="26" y="220" width="214" height="28" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="38" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">report_line 汇报</text>
+<rect x="26" y="254" width="214" height="28" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="38" y="278" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">cost_center 成本中心</text>
+<rect x="26" y="288" width="214" height="28" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="38" y="312" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">payroll_cost 工资</text>
+<rect x="262" y="84" width="330" height="52" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="274" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">T1 主岗不许重叠</text>
+<text x="274" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">同 emp 两条 primary 区间相交 → ABORT</text>
+<rect x="262" y="146" width="330" height="52" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="274" y="170" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">T2 汇报线不许成环</text>
+<text x="274" y="192" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">上溯 30 层遇到自己 → ABORT</text>
+<rect x="262" y="208" width="330" height="52" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="274" y="232" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">T3 占编不许超计划</text>
+<text x="274" y="254" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">primary 数 ≥ plan → ABORT（兼岗不算）</text>
+<rect x="614" y="84" width="320" height="74" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="626" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">五条正向自检</text>
+<text x="626" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">C1 主岗不重叠 · C2 无环 · C3 组织有效期覆盖</text>
+<text x="626" y="147" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">C4 占编 ≤ plan · C5 成本合计守恒</text>
+<text x="626" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803d" font-weight="600" text-anchor="start">全 0 → PASS</text>
+<rect x="614" y="172" width="320" height="96" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="626" y="196" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">四条负向用例</text>
+<text x="626" y="218" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">N1 重叠任职 → E_OVERLAP</text>
+<text x="626" y="235" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">N2 成环 → E_CYCLE</text>
+<text x="626" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">N3 区间倒置 → CHECK failed</text>
+<text x="626" y="269" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">N4 删有任职的组织 → FK failed</text>
+<text x="626" y="256" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#be123c" font-weight="600" text-anchor="start">4/4 被拒</text>
+<rect x="262" y="268" width="672" height="60" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="274" y="292" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">一条命令给结论</text>
+<text x="274" y="314" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">python3 practice.py → C1~C5 全 PASS、N1~N4 全被拒、EXIT=0</text>
+<text x="274" y="316" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#a21caf" font-weight="600" text-anchor="start">退出码即结论</text>
+</svg>

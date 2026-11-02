@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img" aria-label="一键部署：四个容器、六条命令、一个退出码">
+<title>一键部署：四个容器、六条命令、一个退出码</title>
+<text x="20" y="30" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700" text-anchor="start">一键部署：四个容器、六条命令、一个退出码</text>
+<text x="20" y="52" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">第 3 周量出来的三个数字钉进配置，11 条断言封成 make verify，换一台机器得到同一组结论</text>
+<rect x="20" y="76" width="146" height="96" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="32" y="100" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">api</text>
+<text x="32" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">健康检查：</text>
+<text x="32" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">/readyz</text>
+<text x="32" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f172a" font-weight="600" text-anchor="start">MAX_CONCURRENCY=44</text>
+<rect x="180" y="76" width="146" height="96" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="192" y="100" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">worker</text>
+<text x="192" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">健康检查：</text>
+<text x="192" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">领任务心跳</text>
+<text x="192" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f172a" font-weight="600" text-anchor="start">REDIS_URL</text>
+<rect x="340" y="76" width="146" height="96" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="352" y="100" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">postgres</text>
+<text x="352" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">健康检查：</text>
+<text x="352" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">pg_isready</text>
+<text x="352" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f172a" font-weight="600" text-anchor="start">0012 迁移</text>
+<rect x="500" y="76" width="146" height="96" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="512" y="100" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">redis</text>
+<text x="512" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">健康检查：</text>
+<text x="512" y="136" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">PING</text>
+<text x="512" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#0f172a" font-weight="600" text-anchor="start">appendonly</text>
+<rect x="20" y="200" width="180" height="62" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.4"/>
+<text x="32" y="224" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">make up</text>
+<text x="32" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">四容器 healthy</text>
+<rect x="220" y="200" width="180" height="62" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.4"/>
+<text x="232" y="224" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">make migrate</text>
+<text x="232" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">12 个迁移</text>
+<rect x="420" y="200" width="180" height="62" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.4"/>
+<text x="432" y="224" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">make seed</text>
+<text x="432" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">10,800 桶</text>
+<rect x="20" y="278" width="180" height="62" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.4"/>
+<text x="32" y="302" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">make smoke</text>
+<text x="32" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">5/5 通过</text>
+<rect x="220" y="278" width="180" height="62" rx="8" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1.4"/>
+<text x="232" y="302" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">make verify</text>
+<text x="232" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">11/11 PASS</text>
+<rect x="420" y="278" width="180" height="62" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.4"/>
+<text x="432" y="302" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">make rollback</text>
+<text x="432" y="322" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">RTO 9 min</text>
+<rect x="630" y="200" width="290" height="140" rx="10" fill="#0f172a"/>
+<text x="648" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#4ade80" font-weight="700" text-anchor="start">VERIFY PASS 11/11</text>
+<text x="648" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#4ade80" font-weight="700" text-anchor="start">EXIT=0</text>
+<text x="648" y="278" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#cbd5e1" font-weight="400" text-anchor="start">失败不早停：</text>
+<text x="648" y="296" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#cbd5e1" font-weight="400" text-anchor="start">首行 FAIL 仍打印后续行</text>
+<text x="648" y="320" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#cbd5e1" font-weight="400" text-anchor="start">干净目录复现：</text>
+<text x="648" y="338" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#fbbf24" font-weight="600" text-anchor="start">clone → up → verify</text>
+<text x="20" y="382" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">不新增业务代码：这一步只做「钉值、封装、复现」三件事。</text>
+</svg>

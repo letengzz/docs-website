@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330" role="img" aria-label="时点查询的三种实现">
+<title>时点查询的三种实现</title>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700" text-anchor="start">时点查询：索引、快照、以及「重建」的取舍</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">同一个问题「2026-06-30 这天他在哪个部门」，三种实现的代价差 200 倍</text>
+<text x="28" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="start">全表扫描（无合适索引）</text>
+<rect x="28" y="112" width="520.0" height="16" rx="3" fill="#be123c" opacity="0.75"/>
+<text x="558.0" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#be123c" font-weight="600" text-anchor="start">0.555 ms</text>
+<text x="28" y="166" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="start">索引区间（emp_id, valid_from）</text>
+<rect x="28" y="174" width="6" height="16" rx="3" fill="#0369a1" opacity="0.75"/>
+<text x="44" y="188" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0369a1" font-weight="600" text-anchor="start">0.0059 ms</text>
+<text x="28" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="start">月度快照表</text>
+<rect x="28" y="236" width="6" height="16" rx="3" fill="#15803d" opacity="0.75"/>
+<text x="44" y="250" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803d" font-weight="600" text-anchor="start">0.0026 ms</text>
+<rect x="700" y="100" width="234" height="108" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="712" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">为什么快照仍然要留</text>
+<text x="712" y="146" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">补录会改历史：0.86% 的行</text>
+<text x="712" y="163" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">快照是「当时算出来的」，不可重放</text>
+<text x="712" y="196" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b45309" font-weight="600" text-anchor="start">两者都要有</text>
+<rect x="700" y="220" width="234" height="88" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="712" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">快照的代价</text>
+<text x="712" y="266" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">每月 6,852 行 × 12</text>
+<text x="712" y="283" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">只回答月初，不回答任意日</text>
+<text x="712" y="296" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#be123c" font-weight="600" text-anchor="start">按月 + 按需重建</text>
+<text x="28" y="312" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">单人查询 0.0059 vs 0.555 ms 是 94 倍；批量报表的差距会被放大到「跑不完」。</text>
+</svg>

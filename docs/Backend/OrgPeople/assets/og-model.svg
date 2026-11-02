@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="960" height="340" role="img" aria-label="组织树的三种存法与搬迁代价">
+<title>组织树的三种存法与搬迁代价</title>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700" text-anchor="start">组织树：三种存法，三种搬迁代价</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">同一棵 600 个单元的树，用邻接表、路径枚举、闭包表分别存一遍，代价完全不同</text>
+<rect x="26" y="80" width="200" height="96" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="38" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">邻接表 parent_id</text>
+<text x="38" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">一次改 1 行</text>
+<text x="38" y="143" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">子树查询要递归</text>
+<text x="38" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0369a1" font-weight="600" text-anchor="start">搬迁：1 行</text>
+<rect x="26" y="190" width="200" height="96" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="38" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">路径枚举 path</text>
+<text x="38" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">前缀 LIKE 可查</text>
+<text x="38" y="253" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">搬迁要重写整棵子树</text>
+<text x="38" y="274" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b45309" font-weight="600" text-anchor="start">搬迁：179 行</text>
+<rect x="250" y="80" width="200" height="96" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="262" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">闭包表 closure</text>
+<text x="262" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">anc/desc/depth</text>
+<text x="262" y="143" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">查询最快，行数最多</text>
+<text x="262" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#a21caf" font-weight="600" text-anchor="start">搬迁：992 行</text>
+<rect x="250" y="190" width="200" height="110" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="262" y="214" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" fill="#0f172a" font-weight="700" text-anchor="start">实测（600 单元）</text>
+<text x="262" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">闭包表 3,399 行 = 5.67×</text>
+<text x="262" y="253" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">子树 126 单元计数：</text>
+<text x="262" y="288" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#be123c" font-weight="600" text-anchor="start">0.005 ms</text>
+<line x1="600" y1="112" x2="520" y2="152" stroke="#cbd5e1" stroke-width="1.6"/>
+<line x1="600" y1="112" x2="680" y2="152" stroke="#cbd5e1" stroke-width="1.6"/>
+<line x1="520" y1="184" x2="470" y2="224" stroke="#cbd5e1" stroke-width="1.6"/>
+<line x1="520" y1="184" x2="570" y2="224" stroke="#cbd5e1" stroke-width="1.6"/>
+<line x1="680" y1="184" x2="640" y2="224" stroke="#cbd5e1" stroke-width="1.6"/>
+<line x1="680" y1="184" x2="720" y2="224" stroke="#cbd5e1" stroke-width="1.6"/>
+<rect x="566" y="80" width="68" height="32" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.4"/>
+<text x="600" y="101" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="600" text-anchor="middle">集团</text>
+<rect x="486" y="152" width="68" height="32" rx="6" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.4"/>
+<text x="520" y="173" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="600" text-anchor="middle">研发</text>
+<rect x="646" y="152" width="68" height="32" rx="6" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.4"/>
+<text x="680" y="173" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="600" text-anchor="middle">运营</text>
+<rect x="436" y="224" width="68" height="32" rx="6" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.4"/>
+<text x="470" y="245" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="600" text-anchor="middle">平台</text>
+<rect x="536" y="224" width="68" height="32" rx="6" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.4"/>
+<text x="570" y="245" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="600" text-anchor="middle">应用</text>
+<rect x="606" y="224" width="68" height="32" rx="6" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.4"/>
+<text x="640" y="245" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="600" text-anchor="middle">增长</text>
+<rect x="686" y="224" width="68" height="32" rx="6" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.4"/>
+<text x="720" y="245" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="600" text-anchor="middle">客服</text>
+<text x="600" y="292" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="middle">递归 CTE 0.051 ms · 闭包表 0.005 ms · 路径前缀 0.034 ms</text>
+<text x="600" y="312" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#be123c" font-weight="600" text-anchor="middle">查询快 10 倍，代价是搬迁要多写 992 行</text>
+</svg>
