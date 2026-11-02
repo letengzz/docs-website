@@ -1419,3 +1419,23 @@ export const OrgPeople = [
     ],
   },
 ];
+
+// 理赔作业与赔付计算工程
+export const ClaimsProcessing = [
+  {
+    text: "理赔作业与赔付计算工程",
+    link: "/docs/Backend/ClaimsProcessing/index.md",
+    items: [
+      { text: "总览：七段链与三个「赔多少」", link: "/docs/Backend/ClaimsProcessing/Overview/index.md" },
+      { text: "案件模型与状态机：八态九迁移", link: "/docs/Backend/ClaimsProcessing/ClaimModel/index.md" },
+      { text: "报案受理与归并：事故指纹怎么写", link: "/docs/Backend/ClaimsProcessing/Intake/index.md" },
+      { text: "条款与责任判定：四问与四口径", link: "/docs/Backend/ClaimsProcessing/Coverage/index.md" },
+      { text: "查勘定损与明细核定", link: "/docs/Backend/ClaimsProcessing/Assessment/index.md" },
+      { text: "赔付、支付与追偿", link: "/docs/Backend/ClaimsProcessing/Payment/index.md" },
+      { text: "准备金与 IBNR：三角怎么读", link: "/docs/Backend/ClaimsProcessing/Reserve/index.md" },
+      { text: "度量与反欺诈：四个分母", link: "/docs/Backend/ClaimsProcessing/Metrics/index.md" },
+      { text: "实战：九张表、三个触发器、十一条断言", link: "/docs/Backend/ClaimsProcessing/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ClaimsProcessing/FAQ/index.md" },
+    ],
+  },
+];

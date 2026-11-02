@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="960" height="300" role="img" aria-label="赔案状态机">
+<title>赔案状态机：八态九迁移</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="300" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">赔案状态机：八态九迁移</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">每次迁移都写一条只追加事件；结案要看定损、看支付、看准备金三件事</text>
+<rect x="30" y="96" width="104" height="52" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="82" y="127" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">REPORTED</text>
+<line x1="134" y1="122" x2="146" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="146" y="96" width="104" height="52" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="198" y="127" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">FILED</text>
+<line x1="250" y1="122" x2="262" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="262" y="96" width="104" height="52" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="314" y="127" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">SURVEY</text>
+<line x1="366" y1="122" x2="378" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="378" y="96" width="104" height="52" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="430" y="127" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">ASSESSED</text>
+<line x1="482" y1="122" x2="494" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="494" y="96" width="104" height="52" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="546" y="127" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">REVIEWED</text>
+<line x1="598" y1="122" x2="610" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="610" y="96" width="104" height="52" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="662" y="127" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">APPROVED</text>
+<line x1="714" y1="122" x2="726" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="726" y="96" width="104" height="52" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="778" y="127" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">PAID</text>
+<line x1="830" y1="122" x2="842" y2="122" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="842" y="96" width="104" height="52" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="894" y="127" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">CLOSED</text>
+<rect x="30" y="190" width="250" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="42" y="212" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="600" text-anchor="start">重开：CLOSED → REOPENED → SURVEY</text>
+<text x="42" y="234" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">重开必须带原因码，且不覆盖原结案金额</text>
+<line x1="155" y1="190" x2="155" y2="152" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="320" y="190" width="300" height="62" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="332" y="212" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#9a3412" font-weight="600" text-anchor="start">三个守卫（触发器）</text>
+<text x="332" y="234" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#9a3412" font-weight="400" text-anchor="start">无定损不结案 / 支付不超核定额 / 核减必须有理由码</text>
+<rect x="660" y="190" width="270" height="62" rx="8" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="672" y="212" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0369a1" font-weight="600" text-anchor="start">八态里只有 FILED 之前可作废</text>
+<text x="672" y="234" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0369a1" font-weight="400" text-anchor="start">已支付后只能冲正，不能删行</text>
+</svg>

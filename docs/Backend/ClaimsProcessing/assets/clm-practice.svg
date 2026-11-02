@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 350" width="960" height="350" role="img" aria-label="实战结构">
+<title>实战：九张表、三个触发器、十一条断言</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="350" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">实战：九张表、三个触发器、十一条断言</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">C1~C5 全为 0，N1~N6 全部被拦住，退出码 0</text>
+<rect x="28" y="84" width="288" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="40" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">policy</text>
+<text x="40" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">保单与限额免赔</text>
+<rect x="328" y="84" width="288" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="340" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">subject</text>
+<text x="340" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">标的与重置价值</text>
+<rect x="628" y="84" width="288" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="640" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">incident</text>
+<text x="640" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">事故与指纹 UNIQUE</text>
+<rect x="28" y="158" width="288" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="40" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">claim</text>
+<text x="40" y="204" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">赔案与状态</text>
+<rect x="328" y="158" width="288" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="340" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">claim_event</text>
+<text x="340" y="204" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">只追加事件链</text>
+<rect x="628" y="158" width="288" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="640" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">assessment</text>
+<text x="640" y="204" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">定损结论</text>
+<rect x="28" y="232" width="288" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="40" y="256" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">assessment_item</text>
+<text x="40" y="278" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">明细与核减理由</text>
+<rect x="328" y="232" width="288" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="340" y="256" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">payment</text>
+<text x="340" y="278" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">支付流水与序号</text>
+<rect x="628" y="232" width="288" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="640" y="256" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700" text-anchor="start">reserve</text>
+<text x="640" y="278" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">逐案准备金</text>
+<rect x="28" y="306" width="900" height="32" rx="6" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="40" y="327" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803d" font-weight="400" text-anchor="start">C1 未定损先付 / C2 超核定额 / C3 事件链断裂 / C4 同事故双立案 / C5 结案留准备金 —— 五条查询全部返回 0</text>
+</svg>

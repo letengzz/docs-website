@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="960" height="320" role="img" aria-label="报案归并">
+<title>报案归并：指纹越严，召回越低</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="320" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">报案归并：指纹越严，召回越低</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">4,244 条报案 / 3,256 起真实事故 / 988 条重复，四种指纹的精度与召回</text>
+<text x="30" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">指纹</text>
+<text x="300" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">组数</text>
+<text x="430" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">召回</text>
+<text x="560" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">精度</text>
+<line x1="30" y1="122" x2="700" y2="122" stroke="#f1f5f9" stroke-width="1"/>
+<text x="30" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">标的+日期</text>
+<text x="300" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">2,989</text>
+<text x="430" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803d" font-weight="600" text-anchor="start">100.0%</text>
+<text x="560" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#be123c" font-weight="600" text-anchor="start">68.4%</text>
+<line x1="30" y1="156" x2="700" y2="156" stroke="#f1f5f9" stroke-width="1"/>
+<text x="30" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">标的+日期+驾驶员</text>
+<text x="300" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">2,999</text>
+<text x="430" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803d" font-weight="600" text-anchor="start">100.0%</text>
+<text x="560" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#be123c" font-weight="600" text-anchor="start">69.6%</text>
+<line x1="30" y1="190" x2="700" y2="190" stroke="#f1f5f9" stroke-width="1"/>
+<text x="30" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">标的+日期+地址+驾驶员</text>
+<text x="300" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">3,348</text>
+<text x="430" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b45309" font-weight="600" text-anchor="start">64.7%</text>
+<text x="560" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="600" text-anchor="start">63.3%</text>
+<line x1="30" y1="224" x2="700" y2="224" stroke="#f1f5f9" stroke-width="1"/>
+<text x="30" y="212" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">标的+日期+金额千元桶</text>
+<text x="300" y="212" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">4,244</text>
+<text x="430" y="212" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b45309" font-weight="600" text-anchor="start">0.0%</text>
+<text x="560" y="212" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="600" text-anchor="start">0.0%</text>
+<rect x="720" y="88" width="210" height="150" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="732" y="110" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">两条都错得不一样</text>
+<text x="732" y="132" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">松：把同日两起事故并成一起</text>
+<text x="732" y="152" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">严：地址少写一半就漏掉重复</text>
+<text x="732" y="178" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#9a3412" font-weight="600" text-anchor="start">结论：指纹要松，合并要人复核</text>
+<text x="732" y="200" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">并错了会少赔，漏并了会多赔</text>
+<text x="28" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#334155" font-weight="400" text-anchor="start">唯一键不是「一条报案一行」，而是「一起事故一行」——`incident_key` 落 UNIQUE，才轮不到第二个人再立一次案。</text>
+</svg>

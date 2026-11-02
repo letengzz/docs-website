@@ -203,9 +203,11 @@ create table slot_hold (
     (tenant_id with =, sku_id with =, slot with &&) where (status = 'HELD')
 );
 -- 第一条（占用 0~30 分钟）成功
-insert into slot_hold values ('t1','skuX',gen_random_uuid(),2,tstzrange(now(), now()+interval '30 min'));
+insert into slot_hold (tenant_id, sku_id, order_id, qty, slot)
+  values ('t1','skuX',gen_random_uuid(),2,tstzrange(now(), now()+interval '30 min'));
 -- 第二条（占用 5~35 分钟，同一个 SKU，另一个订单）
-insert into slot_hold values ('t1','skuX',gen_random_uuid(),1,tstzrange(now()+interval '5 min', now()+interval '35 min'));
+insert into slot_hold (tenant_id, sku_id, order_id, qty, slot)
+  values ('t1','skuX',gen_random_uuid(),1,tstzrange(now()+interval '5 min', now()+interval '35 min'));
 -- ERROR: conflicting key value violates exclusion constraint "slot_no_overlap"
 ```
 
