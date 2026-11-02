@@ -1032,7 +1032,20 @@ export const SupportTicket = [
 
 export const ESignature = [
   {
-    text: "⚠️ 电子签署与合同存证（页面待补）",
+    text: "电子签署与合同存证",
+    link: "/docs/Backend/ESignature/index.md",
+    items: [
+      { text: "总览：七段链与四道闸门", link: "/docs/Backend/ESignature/Overview/index.md" },
+      { text: "合同模型：模板、实例与版本快照", link: "/docs/Backend/ESignature/ContractModel/index.md" },
+      { text: "会签流程：顺序、并行与状态机", link: "/docs/Backend/ESignature/SigningFlow/index.md" },
+      { text: "字节范围与印章：签名到底签了什么", link: "/docs/Backend/ESignature/SealSignature/index.md" },
+      { text: "实名与意愿：证明他是他且他同意", link: "/docs/Backend/ESignature/IdentityIntent/index.md" },
+      { text: "证据链：哈希链、时间戳与外部锚定", link: "/docs/Backend/ESignature/EvidenceChain/index.md" },
+      { text: "合规与留存：四要件与十五年", link: "/docs/Backend/ESignature/Compliance/index.md" },
+      { text: "度量与验收：漏斗、时效与拒签", link: "/docs/Backend/ESignature/Metrics/index.md" },
+      { text: "实战：一份合同走完签署与取证", link: "/docs/Backend/ESignature/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ESignature/FAQ/index.md" },
+    ],
   },
 ];
 

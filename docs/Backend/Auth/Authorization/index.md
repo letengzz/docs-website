@@ -200,6 +200,19 @@ WHERE o.status = 'PAID'
 正确写法是在**解析令牌的那一层**就把别名解开：`sub = resolve(customer_alias, sub)`，且解析只允许 1 跳（别名必须指簇根）。把这件事推给每个业务接口，等于让 40 个接口各写一遍同样的 bug。
 :::
 
+## 与电子签署专题的分工（第 217 天补）
+
+两册都会出现「他能不能做这件事」，但判断依据完全不同：
+
+| 问题 | 该读哪册 | 判据 |
+| --- | --- | --- |
+| 这个令牌有没有 `contract:sign` 权限 | 本页 | `scope` / RBAC，服务端可随时回收 |
+| 这个签名是不是他本人做的 | [电子签署](../../ESignature/index.md) | 私钥是否只由本人控制 |
+| 后台运维能不能替他签 | 本页 | **能力上能，合规上不能** |
+| 离职员工的令牌怎么处理 | 本页 | 吊销即可 |
+
+关键结论：**授权不等于不可否认**。一个拥有 `contract:sign` 的运维账号可以「合法地」调用签署接口，但那份签名在举证时不成立——因为《电子签名法》要求「签署时签名制作数据仅由签名人控制」。所以签署服务里不该有「代签」接口，需要代签时必须走**授权链**（授权书快照 + 经办人核身 + 企业证书），细节在[实名与意愿](../../ESignature/IdentityIntent/index.md)。
+
 ## 参考资料
 
 - OWASP · Authorization Cheat Sheet：https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html

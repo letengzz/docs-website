@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 402" width="760" height="402" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="402" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">字节范围：签名到底签了哪些字节</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">红段是「挖掉」的签名容器本身；不理解这个洞，就会写出「一加签就失效」的验签器</text>
+  <rect x="50" y="96" width="640" height="56" rx="4" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <rect x="50" y="96" width="130" height="56" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="115" y="130" text-anchor="middle" font-size="8.4" fill="#1E3A8A" font-weight="bold">第 1 段  0..313</text>
+  <rect x="180" y="96" width="380" height="56" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="370" y="130" text-anchor="middle" font-size="8.4" fill="#991B1B" font-weight="bold">被挖掉：/Contents 里的 CMS</text>
+  <rect x="560" y="96" width="130" height="56" fill="#DCFCE7" stroke="#059669" stroke-width="1.2"/>
+  <text x="625" y="130" text-anchor="middle" font-size="8.4" fill="#065F46" font-weight="bold">尾部  92 B</text>
+  <text x="380" y="172" text-anchor="middle" font-size="9" fill="#334155">ByteRange = [0, 313, 313+8192, 92] —— 摘要只算蓝 + 绿两段，红段留给签名值</text>
+  <text x="380" y="190" text-anchor="middle" font-size="7.8" fill="#94A3B8">（示意，非等比：真实比例下第 1 段只有 25 px 宽，红段占 95%）</text>
+  <text x="30" y="208" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">本机实测（构造 8,597 字节的 PDF 片段）</text>
+  <rect x="30" y="222" width="120" height="23" rx="4" fill="#F1F5F9" stroke="#475569" stroke-width="1"/>
+  <text x="90" y="238" text-anchor="middle" font-size="8" fill="#1E293B" font-weight="bold">rev1 digest</text>
+  <rect x="156" y="222" width="112" height="23" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="212" y="238" text-anchor="middle" font-size="8" fill="#1D4ED8">fe8d15c2af7a668a…</text>
+  <rect x="274" y="222" width="462" height="23" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="280" y="238" text-anchor="start" font-size="7.6" fill="#475569">对 [0,313) + [8505,8597) 求 sha256</text>
+  <rect x="30" y="250" width="120" height="23" rx="4" fill="#F1F5F9" stroke="#475569" stroke-width="1"/>
+  <text x="90" y="266" text-anchor="middle" font-size="8" fill="#1E293B" font-weight="bold">追加 rev2 后</text>
+  <rect x="156" y="250" width="112" height="23" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="212" y="266" text-anchor="middle" font-size="8" fill="#1D4ED8">digest 不变</text>
+  <rect x="274" y="250" width="462" height="23" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="280" y="266" text-anchor="start" font-size="7.6" fill="#475569">第二份增量更新写在 8,597 字节之后，不进入 rev1 的范围</text>
+  <rect x="30" y="278" width="120" height="23" rx="4" fill="#F1F5F9" stroke="#475569" stroke-width="1"/>
+  <text x="90" y="294" text-anchor="middle" font-size="8" fill="#1E293B" font-weight="bold">若签整份文件</text>
+  <rect x="156" y="278" width="112" height="23" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="212" y="294" text-anchor="middle" font-size="8" fill="#1D4ED8">digest 必变</text>
+  <rect x="274" y="278" width="462" height="23" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="280" y="294" text-anchor="start" font-size="7.6" fill="#475569">a418db83… -&gt; 6d61ec92…；这就是「不能对整个文件签一次」的原因</text>
+  <rect x="30" y="306" width="120" height="23" rx="4" fill="#F1F5F9" stroke="#475569" stroke-width="1"/>
+  <text x="90" y="322" text-anchor="middle" font-size="8" fill="#1E293B" font-weight="bold">篡改偏移 202</text>
+  <rect x="156" y="306" width="112" height="23" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="212" y="322" text-anchor="middle" font-size="8" fill="#1D4ED8">digest 变</text>
+  <rect x="274" y="306" width="462" height="23" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="280" y="322" text-anchor="start" font-size="7.6" fill="#475569">'2026' 的 2 改成 3，落在第 1 段内，立刻验不过</text>
+  <rect x="30" y="334" width="120" height="23" rx="4" fill="#F1F5F9" stroke="#475569" stroke-width="1"/>
+  <text x="90" y="350" text-anchor="middle" font-size="8" fill="#1E293B" font-weight="bold">篡改偏移 8637</text>
+  <rect x="156" y="334" width="112" height="23" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="212" y="350" text-anchor="middle" font-size="8" fill="#1D4ED8">rev1 不变</text>
+  <rect x="274" y="334" width="462" height="23" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="280" y="350" text-anchor="start" font-size="7.6" fill="#475569">改动落在 rev2 区，只有 rev2 的签名能发现 -&gt; 必须逐版本验</text>
+  <text x="380" y="388" text-anchor="middle" font-size="9" fill="#64748B">占位容量 4,096 B（十六进制 8,192 字符）；降到 1,024 B 时文件只剩 2,453 B，CMS 装不下就要重排全部偏移</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
