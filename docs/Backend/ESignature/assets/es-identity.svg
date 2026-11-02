@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 384" width="760" height="384" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="384" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">实名与意愿：四条证据</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">核身解决「人是谁」，意愿解决「他要不要签」；少一条，签名在技术上有效、在举证上站不住</text>
+  <text x="380" y="78" text-anchor="middle" font-size="9.5" fill="#1E3A8A">「是不是他」与「他同不同意」是两个问题，四条证据各管一半</text>
+  <rect x="24" y="92" width="344" height="96" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="196" y="110.2" text-anchor="middle" font-size="11" fill="#115E59" font-weight="bold">知道是谁</text>
+  <text x="196" y="127" text-anchor="middle" font-size="8" fill="#0F766E">手机号 / 邮箱</text>
+  <text x="196" y="145.4" text-anchor="middle" font-size="8" fill="#0F766E">姓名 + 证件号</text>
+  <text x="196" y="163.8" text-anchor="middle" font-size="8" fill="#0F766E">企业统一社会信用代码</text>
+  <rect x="392" y="92" width="344" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="564" y="110.2" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">证明是他</text>
+  <text x="564" y="127" text-anchor="middle" font-size="8" fill="#1D4ED8">短信/邮件验证码</text>
+  <text x="564" y="145.4" text-anchor="middle" font-size="8" fill="#1D4ED8">人脸活体</text>
+  <text x="564" y="163.8" text-anchor="middle" font-size="8" fill="#1D4ED8">CA 证书 + 私钥持有</text>
+  <rect x="24" y="236" width="344" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="196" y="254.2" text-anchor="middle" font-size="11" fill="#5B21B6" font-weight="bold">表达意愿</text>
+  <text x="196" y="271" text-anchor="middle" font-size="8" fill="#6D28D9">点「同意并签署」</text>
+  <text x="196" y="289.4" text-anchor="middle" font-size="8" fill="#6D28D9">手写签名轨迹</text>
+  <text x="196" y="307.8" text-anchor="middle" font-size="8" fill="#6D28D9">首次点击的坐标与时刻</text>
+  <rect x="392" y="236" width="344" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="564" y="254.2" text-anchor="middle" font-size="11" fill="#92400E" font-weight="bold">可追溯</text>
+  <text x="564" y="271" text-anchor="middle" font-size="8" fill="#B45309">核身结果 hash 入证</text>
+  <text x="564" y="289.4" text-anchor="middle" font-size="8" fill="#B45309">IP / UA / 设备指纹</text>
+  <text x="564" y="307.8" text-anchor="middle" font-size="8" fill="#B45309">每次改动作废重签</text>
+  <line x1="190" y1="188" x2="190" y2="234" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <line x1="560" y1="188" x2="560" y2="234" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="190" y="214" text-anchor="middle" font-size="7.5" fill="#64748B">同一份核身结果，签前与签后都要能查</text>
+  <text x="560" y="214" text-anchor="middle" font-size="7.5" fill="#64748B">只记录「已同意」而不记录怎么同意，等于没记</text>
+  <rect x="24" y="348" width="712" height="26" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="380" y="366" text-anchor="middle" font-size="8.4" fill="#991B1B">六位验证码：不限次数穷举 1,000,000 个码，1 次/秒需 11.6 天；限 5 次后单会话命中率 5e-6</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">合同模型：模板 / 实例 / 快照三层</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">签名必须绑在「字节」上而不是「业务记录」上，否则改一次金额就没人说得清谁签的是哪版</text>
+  <rect x="24" y="74" width="200" height="84" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="124" y="92.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">模板 template</text>
+  <text x="124" y="109" text-anchor="middle" font-size="7.5" fill="#334155">条款 + 变量占位</text>
+  <text x="124" y="126.25" text-anchor="middle" font-size="7.5" fill="#334155">版本与生效区间</text>
+  <text x="124" y="143.5" text-anchor="middle" font-size="7.5" fill="#334155">改模板不影响已生成的件</text>
+  <rect x="280" y="74" width="200" height="84" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="92.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">实例 contract</text>
+  <text x="380" y="109" text-anchor="middle" font-size="7.5" fill="#1D4ED8">选定模板版本</text>
+  <text x="380" y="126.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">填写变量值</text>
+  <text x="380" y="143.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">状态与签署人清单</text>
+  <rect x="536" y="74" width="200" height="84" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="636" y="92.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">快照 snapshot</text>
+  <text x="636" y="109" text-anchor="middle" font-size="7.5" fill="#047857">定稿字节 + sha256</text>
+  <text x="636" y="126.25" text-anchor="middle" font-size="7.5" fill="#047857">不可变，只追加</text>
+  <text x="636" y="143.5" text-anchor="middle" font-size="7.5" fill="#047857">每次变更生成新版本</text>
+  <line x1="224" y1="116" x2="279" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="480" y1="116" x2="535" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="252" y="104" text-anchor="middle" font-size="7.5" fill="#64748B">渲染</text>
+  <text x="508" y="104" text-anchor="middle" font-size="7.5" fill="#64748B">定稿</text>
+  <rect x="24" y="180" width="712" height="86" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="40" y="200" text-anchor="start" font-size="9.5" fill="#1E293B" font-weight="bold">版本快照表：每一次「发出去」都对应一行，行内自带前后指针</text>
+  <rect x="40" y="212" width="200" height="40" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="140" y="228" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">v1 (定稿)</text>
+  <text x="140" y="244" text-anchor="middle" font-size="7.2" fill="#475569">sha256=a41f…  parent=—</text>
+  <rect x="272" y="212" width="200" height="40" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="372" y="228" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">v2 (改一条金额)</text>
+  <text x="372" y="244" text-anchor="middle" font-size="7.2" fill="#475569">sha256=7be0…  parent=a41f</text>
+  <rect x="504" y="212" width="200" height="40" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="604" y="228" text-anchor="middle" font-size="8.5" fill="#1E3A8A" font-weight="bold">v3 (加签人)</text>
+  <text x="604" y="244" text-anchor="middle" font-size="7.2" fill="#475569">sha256=c92d…  parent=7be0</text>
+  <line x1="240" y1="232" x2="271" y2="232" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="472" y1="232" x2="503" y2="232" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="30" y="296" text-anchor="start" font-size="11" fill="#0F172A" font-weight="bold">三条不变式（每条都能被一条 SQL 证伪）</text>
+  <rect x="30" y="310" width="42" height="21" rx="4" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="51" y="324.5" text-anchor="middle" font-size="8.5" fill="#065F46" font-weight="bold">I1</text>
+  <rect x="78" y="310" width="316" height="21" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="84" y="324.5" text-anchor="start" font-size="8.2" fill="#334155">已发出的版本不可改字节</text>
+  <rect x="400" y="310" width="336" height="21" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="406" y="324.5" text-anchor="start" font-size="8" fill="#475569">UPDATE snapshot SET bytes 应为 0 行</text>
+  <rect x="30" y="336" width="42" height="21" rx="4" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="51" y="350.5" text-anchor="middle" font-size="8.5" fill="#065F46" font-weight="bold">I2</text>
+  <rect x="78" y="336" width="316" height="21" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="84" y="350.5" text-anchor="start" font-size="8.2" fill="#334155">签名只能指向快照，不能指向 contract</text>
+  <rect x="400" y="336" width="336" height="21" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="406" y="350.5" text-anchor="start" font-size="8" fill="#475569">sig.snapshot_id NOT NULL</text>
+  <rect x="30" y="362" width="42" height="21" rx="4" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+  <text x="51" y="376.5" text-anchor="middle" font-size="8.5" fill="#065F46" font-weight="bold">I3</text>
+  <rect x="78" y="362" width="316" height="21" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="84" y="376.5" text-anchor="start" font-size="8.2" fill="#334155">新版本必须自旧版本派生</text>
+  <rect x="400" y="362" width="336" height="21" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="406" y="376.5" text-anchor="start" font-size="8" fill="#475569">v2.parent_sha = v1.sha256</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

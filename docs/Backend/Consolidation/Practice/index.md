@@ -339,6 +339,7 @@ print("lines =", body.count("\n"))
 PY
 python3 /tmp/consolidate.py | tail -8
 # 期望：SCHEMA_OK tables=10 … NEGATIVE 5/5 … EXIT=0
+```
 
 预期输出：第一条打印 `SCHEMA_OK tables=10`；第二条依次为 `C1 报表包借贷不平的家数 = 0`、`C2 ... = 0`、`C3 内部应收 2500000.0 / 内部应付 2500000.0`、`C4 未实现利润 = 187500.0`、`C5 C 有效持股 0.56 少数股东权益 = 440000.0`、`NEGATIVE 5/5`、`EXIT=0`；第三条 `E=0`；第四条 `0`（本专题无断链）。
 
