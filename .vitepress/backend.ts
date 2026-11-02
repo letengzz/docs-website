@@ -1346,3 +1346,23 @@ export const CustomerIdentity = [
     ],
   },
 ];
+
+// 全面预算与经营分析
+export const Budgeting = [
+  {
+    text: "全面预算与经营分析",
+    link: "/docs/Backend/Budgeting/index.md",
+    items: [
+      { text: "总览：七段链与三个「预算」", link: "/docs/Backend/Budgeting/Overview/index.md" },
+      { text: "编制与基线：三轮收敛怎么收", link: "/docs/Backend/Budgeting/PlanningCycle/index.md" },
+      { text: "责任中心与矩阵归属", link: "/docs/Backend/Budgeting/ResponsibilityModel/index.md" },
+      { text: "审批与版本：版本是单向的", link: "/docs/Backend/Budgeting/ApprovalVersion/index.md" },
+      { text: "期间化、承诺与预算控制", link: "/docs/Backend/Budgeting/PeriodCommitment/index.md" },
+      { text: "差异归因与口径桥", link: "/docs/Backend/Budgeting/Variance/index.md" },
+      { text: "滚动预测：三轨并行与偏差方向", link: "/docs/Backend/Budgeting/Forecast/index.md" },
+      { text: "分摊与内部转移定价", link: "/docs/Backend/Budgeting/Allocation/index.md" },
+      { text: "度量与验收：执行率的分母", link: "/docs/Backend/Budgeting/Metrics/index.md" },
+      { text: "实战：九张表跑通一次额度控制", link: "/docs/Backend/Budgeting/Practice/index.md" },
+    ],
+  },
+];

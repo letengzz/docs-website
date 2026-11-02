@@ -57,3 +57,4 @@
 - [设备维护与可靠性工程](EquipmentMaintenance/index.md)
 - [合并报表与内部抵销工程](Consolidation/index.md)
 - [客户身份归并与主数据工程](CustomerIdentity/index.md)
+- [全面预算与经营分析工程](Budgeting/index.md)

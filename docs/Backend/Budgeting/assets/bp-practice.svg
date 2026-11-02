@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 320" width="940" height="320" role="img" aria-label="实战的九张表与三道触发器">
+<title>实战的九张表与三道触发器</title>
+<text x="24" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">九张表、三个触发器、五条自检、四条负向</text>
+<rect x="24" y="58" width="290" height="24" rx="5" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="34" y="74" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8" font-weight="700">1</text>
+<text x="52" y="74" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700">budget_version</text>
+<text x="190" y="74" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#475569" font-weight="400">冻结只读</text>
+<rect x="24" y="85" width="290" height="24" rx="5" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="34" y="101" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8" font-weight="700">2</text>
+<text x="52" y="101" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700">budget_line</text>
+<text x="190" y="101" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#475569" font-weight="400">四维主键</text>
+<rect x="24" y="112" width="290" height="24" rx="5" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="34" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8" font-weight="700">3</text>
+<text x="52" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700">target_line</text>
+<text x="190" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#475569" font-weight="400">目标分列</text>
+<rect x="24" y="139" width="290" height="24" rx="5" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="34" y="155" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8" font-weight="700">4</text>
+<text x="52" y="155" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700">forecast_line</text>
+<text x="190" y="155" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#475569" font-weight="400">锁后只读</text>
+<rect x="24" y="166" width="290" height="24" rx="5" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="34" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8" font-weight="700">5</text>
+<text x="52" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700">commitment</text>
+<text x="190" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#475569" font-weight="400">承诺唯一键</text>
+<rect x="24" y="193" width="290" height="24" rx="5" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="34" y="209" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8" font-weight="700">6</text>
+<text x="52" y="209" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700">actual</text>
+<text x="190" y="209" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#475569" font-weight="400">实际入账</text>
+<rect x="24" y="220" width="290" height="24" rx="5" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="34" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8" font-weight="700">7</text>
+<text x="52" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700">allocation_rule</text>
+<text x="190" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#475569" font-weight="400">比例和=1</text>
+<rect x="24" y="247" width="290" height="24" rx="5" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="34" y="263" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8" font-weight="700">8</text>
+<text x="52" y="263" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700">allocation_run</text>
+<text x="190" y="263" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#475569" font-weight="400">池被分完</text>
+<rect x="24" y="274" width="290" height="24" rx="5" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="34" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#94a3b8" font-weight="700">9</text>
+<text x="52" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700">approval</text>
+<text x="190" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#475569" font-weight="400">含税判级</text>
+<rect x="336" y="58" width="250" height="132" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="352" y="82" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">三个触发器（DB 层）</text>
+<text x="352" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400">T1 冻结版拒写</text>
+<text x="352" y="124" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400">T2 承诺必须有预算行</text>
+<text x="352" y="144" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400">T3 分摊比例 ≤ 1</text>
+<text x="352" y="172" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#b91c1c" font-weight="400">绕过应用也拦得住</text>
+<rect x="606" y="58" width="310" height="132" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="622" y="82" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">五条自检（期望 0）</text>
+<text x="622" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400">C1 冻结版无行</text>
+<text x="622" y="122" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400">C2 承诺都有预算</text>
+<text x="622" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400">C3 分摊池分完</text>
+<text x="622" y="158" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400">C4 四本账不为负</text>
+<text x="622" y="176" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400">C5 阈值有审批</text>
+<rect x="336" y="200" width="580" height="76" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="352" y="224" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#0f172a" font-weight="700">四条负向（期望全被拒）</text>
+<text x="352" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400">N1 往冻结版插行 · N2 承诺无预算维度 · N3 分摊比例超 1 · N4 同一 PO 行号重复</text>
+<text x="352" y="266" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803d" font-weight="400">本机实测：C1~C5 全 0，N1~N4 4/4 PASS，EXIT=0</text>
+<text x="24" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">四本账 CC01/6001/2026-07：预算 260,000 / 承诺 90,000 / 实际 150,000 / 可用 20,000</text>
+</svg>

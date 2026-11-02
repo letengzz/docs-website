@@ -436,6 +436,8 @@ export const CompleteProject = [
           { text: "第 2 周第 5 步 · /admin/usage 查询面（EOZ-A~EOZ-H）", link: "/project/Complete/OpenPlatformHub/AdminUsage/index.md" },
           { text: "第 3 周第 1 步 · 验签后 / 配额前的断点矩阵（EPB-A~EPB-H）", link: "/project/Complete/OpenPlatformHub/BreakpointMatrix/index.md" },
           { text: "第 3 周第 2 步 · 同事务与首次响应缓存（EPC-A~EPC-H）", link: "/project/Complete/OpenPlatformHub/TransactionCache/index.md" },
+          { text: "第 3 周第 3 步 · 限额与服务端压测（EPD-A~EPD-H）", link: "/project/Complete/OpenPlatformHub/LoadTest/index.md" },
+          { text: "第 3 周第 4 步 · 用量与账单对账（EPU-A~EPU-H）", link: "/project/Complete/OpenPlatformHub/UsageRecon/index.md" },
         ],
       },
       {

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 300" width="940" height="300" role="img" aria-label="编制的三轮收敛">
+<title>编制的三轮收敛</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="24" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">自上而下与自下而上之间，需要一个「差值」往返三轮</text>
+<rect x="24" y="58" width="120" height="56" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="38" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">第 1 轮</text>
+<rect x="156" y="58" width="280" height="56" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="170" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155" font-weight="400">下发目标 12,000 万</text>
+<line x1="444" y1="86" x2="486" y2="86" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="494" y="58" width="280" height="56" rx="8" fill="#fee2e2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="508" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155" font-weight="400">汇总提交 14,160 万</text>
+<rect x="786" y="58" width="130" height="56" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="851" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="middle">差 +18.0%</text>
+<rect x="24" y="130" width="120" height="56" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="38" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">第 2 轮</text>
+<rect x="156" y="130" width="280" height="56" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="170" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155" font-weight="400">下发 12,000 万</text>
+<line x1="444" y1="158" x2="486" y2="158" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="494" y="130" width="280" height="56" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="508" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155" font-weight="400">汇总提交 13,140 万</text>
+<rect x="786" y="130" width="130" height="56" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="851" y="164" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="middle">差 +9.5%</text>
+<rect x="24" y="202" width="120" height="56" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="38" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">第 3 轮</text>
+<rect x="156" y="202" width="280" height="56" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="170" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155" font-weight="400">下发 12,000 万</text>
+<line x1="444" y1="230" x2="486" y2="230" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="494" y="202" width="280" height="56" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="508" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#334155" font-weight="400">汇总提交 12,190 万</text>
+<rect x="786" y="202" width="130" height="56" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="851" y="236" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="middle">差 +1.6%</text>
+<text x="24" y="288" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400">收敛阈值要事先写死（例如 1% 或 50 万），否则「再谈一轮」会一直谈下去。</text>
+</svg>
