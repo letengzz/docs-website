@@ -62,3 +62,4 @@
 - [碳排放核算与 ESG 披露工程](CarbonAccounting/index.md)
 - [组织与任职异动工程](OrgPeople/index.md)
 - [理赔作业与赔付计算工程](ClaimsProcessing/index.md)
+- [培训与资质认证工程](TrainingQualification/index.md)

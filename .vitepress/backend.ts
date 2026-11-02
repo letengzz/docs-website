@@ -1439,3 +1439,23 @@ export const ClaimsProcessing = [
     ],
   },
 ];
+
+// 培训与资质认证工程
+export const TrainingQualification = [
+  {
+    text: "培训与资质认证工程",
+    link: "/docs/Backend/TrainingQualification/index.md",
+    items: [
+      { text: "总览：七段链与三个「会了」", link: "/docs/Backend/TrainingQualification/Overview/index.md" },
+      { text: "岗位资质矩阵：谁该会什么", link: "/docs/Backend/TrainingQualification/Matrix/index.md" },
+      { text: "排期、报名与学时：三个口径", link: "/docs/Backend/TrainingQualification/Delivery/index.md" },
+      { text: "考核与题库：及格线是一道测量题", link: "/docs/Backend/TrainingQualification/Assessment/index.md" },
+      { text: "证书与有效期：四种结局", link: "/docs/Backend/TrainingQualification/Certificate/index.md" },
+      { text: "上岗准入：判定点在哪里", link: "/docs/Backend/TrainingQualification/AccessGate/index.md" },
+      { text: "到期与复训：波峰与提前期", link: "/docs/Backend/TrainingQualification/Recert/index.md" },
+      { text: "度量与合规报表：四个分母", link: "/docs/Backend/TrainingQualification/Metrics/index.md" },
+      { text: "实战：八张表、三个触发器、九条断言", link: "/docs/Backend/TrainingQualification/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/TrainingQualification/FAQ/index.md" },
+    ],
+  },
+];

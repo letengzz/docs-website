@@ -230,6 +230,23 @@ WHERE o.status = 'PAID'
 正确做法是授权时存**授权那一刻的组织范围快照 + 生效区间**（授权表带 `valid_from/valid_to`，路径也带版本），判定时按「数据发生日 + 授权有效期」双条件取交集。这一步不做，每次组织调整都会变成一次权限事故，而事故的表象是「系统坏了」。
 :::
 
+## 与「培训与资质认证」专题的分工（第 240 天补充）
+
+「能访问什么」与「能上岗干什么」是两套独立判定，最危险的错法是用前者代替后者：
+
+| 问题 | 本册（授权） | 培训与资质册 |
+| --- | --- | --- |
+| 能不能调这个接口 | **判**：RBAC/ABAC + 令牌 | 不判 |
+| 能不能上这个岗 | 不判 | **判**：矩阵 + 证书 + 判定点 |
+| 权限回收够不够 | **判**：最小权限与即时回收 | 提供「资质失效」这一路输入 |
+| 离职当天怎么处理 | **判**：账号停用 | 资质记录保留（审计要） |
+
+延伸阅读：[岗位资质矩阵](../../TrainingQualification/Matrix/index.md)、[上岗准入：判定点在哪里](../../TrainingQualification/AccessGate/index.md)、[证书与有效期](../../TrainingQualification/Certificate/index.md)。
+
+::: danger 一个只在本页成立的坑
+**给「无证但需要作业」的人临时提权**。临时提权解决的是「系统不让点」，不是「他没有资质」。一旦用权限绕过准入，后续所有报表都会显示「已准入」——因为拦截根本没发生。资质侧应当提供的是**带责任人的宽限**，不是权限。
+:::
+
 ## 参考资料
 
 - OWASP · Authorization Cheat Sheet：https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html

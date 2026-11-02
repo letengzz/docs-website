@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img" aria-label="岗位资质矩阵：谁该会什么">
+<title>岗位资质矩阵：谁该会什么</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="380" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">岗位资质矩阵：谁该会什么</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">三张表构成一个判定，「按人」与「按人次」两种缺口算法差 13.68 个百分点</text>
+<rect x="28" y="84" width="200" height="92" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="44" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">position_req</text>
+<text x="44" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">position_id, qual_id</text>
+<text x="44" y="148" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">min_level, is_mandatory</text>
+<text x="44" y="166" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0369a1" font-weight="400" text-anchor="start">矩阵的一行 = 一条要求</text>
+<rect x="28" y="192" width="200" height="84" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="44" y="216" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">position</text>
+<text x="44" y="238" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">120 个岗位，16 个无强制要求</text>
+<text x="44" y="256" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">关键岗位标记决定覆盖口径</text>
+<rect x="300" y="84" width="220" height="92" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="316" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">qual_type</text>
+<text x="316" y="130" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">months: 12 / 24 / 36</text>
+<text x="316" y="148" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">ce_hours: 复训继续教育学时</text>
+<text x="316" y="166" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b45309" font-weight="400" text-anchor="start">有效期是资质自己的属性</text>
+<rect x="300" y="192" width="220" height="84" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="316" y="216" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">cert</text>
+<text x="316" y="238" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">issue_date / expire_date 半开区间</text>
+<text x="316" y="256" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803d" font-weight="400" text-anchor="start">同一人同一资质不得重叠</text>
+<line x1="228" y1="130" x2="296" y2="130" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<line x1="520" y1="130" x2="560" y2="130" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="560" y="84" width="372" height="192" rx="8" fill="#fae8ff" stroke="#f5d0fe" stroke-width="1.5"/>
+<text x="578" y="108" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">两种缺口算法（同一份数据）</text>
+<text x="578" y="134" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">按人：每个人「要求的证全有」才算满足</text>
+<text x="578" y="152" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">按人次：要求条数与已有证条数相除</text>
+<text x="578" y="180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#a21caf" font-weight="600" text-anchor="start">按人 64.87%（1503 / 2317）</text>
+<text x="578" y="200" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#a21caf" font-weight="600" text-anchor="start">按人次 78.55%（3705 / 4717）</text>
+<text x="578" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="600" text-anchor="start">管理层看到的是 78.55%，一线缺的是 814 个人。</text>
+<text x="578" y="248" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">同一份数据、同一时刻，两个数都不算错。</text>
+<text x="28" y="316" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">「替代资质」与「更高级别」要写进同一条判定：高一级的证可以顶上，低一级的不行；替代关系必须双向登记，否则只在一侧生效。</text>
+<text x="28" y="340" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">矩阵本身要带版本与生效日：3 月改了一次矩阵，2 月的合规结论不能按新矩阵重算——那是改写历史。</text>
+</svg>

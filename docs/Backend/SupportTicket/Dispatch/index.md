@@ -206,6 +206,23 @@ psql "$DSN" -c "select count(*) from ticket t where t.assignee_id is null \
 
 预期输出：`0`（或与你的「可接受等待」阈值一致）。持续大于 0 说明池子里的单没有被取走的路径。
 
+## 与「培训与资质认证」专题的分工（第 240 天补充）
+
+排班派工要用到「谁会什么」，但「技能匹配」是优先级，「资质有效」是准入门槛：
+
+| 问题 | 本册（分派） | 培训与资质册 |
+| --- | --- | --- |
+| 这单派给谁 | **判**：技能、负载、公平性 | 不判，只给出「谁有资格」 |
+| 谁有资格接这单 | 不判 | **判**：矩阵 + 有效证书 + 级别 |
+| 没人有资格怎么办 | 本册的溢出池 | 本册的拦截会生成复训待办 |
+| 派错了谁负责 | **判**：认领租约与审计 | 提供「当时是否有证」的证据 |
+
+延伸阅读：[岗位资质矩阵](../../TrainingQualification/Matrix/index.md)、[上岗准入：判定点在哪里](../../TrainingQualification/AccessGate/index.md)、[证书与有效期](../../TrainingQualification/Certificate/index.md)。
+
+::: danger 一个只在本页成立的坑
+**把「没有可派的人」当成负载问题**。本机的拦截率读数说明：很多「派不出去」其实是「没人有证」，而不是「人都忙」。两种情况的处置完全相反——加人 vs 加培训。分派看板必须把这两个原因分开统计，否则永远在加人。
+:::
+
 ## 八、参考资料
 
 - Atlassian《Queues in Jira Service Management》（队列即视图、按 SLA 剩余时间排序的做法）：<https://support.atlassian.com/jira-service-management-cloud/docs/use-queues/>

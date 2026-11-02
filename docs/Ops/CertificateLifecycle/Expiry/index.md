@@ -189,6 +189,23 @@ openssl verify -CAfile ca/root.crt -untrusted ca/inter.crt -attime $((NOW+60*864
 做网格侧的过期演练（把工作负载证书 TTL 调到 10 分钟）时，如果同时停掉控制面，你测到的是「控制面不可用 + 证书过期」的叠加故障，无法区分两者的边界。正确的实验设计是**一次只动一个变量**：先停控制面观察流量是否仍在跑，再单独让证书过期观察失败形态。
 :::
 
+## 与「培训与资质认证」专题的分工（第 240 天补充）
+
+两册都叫「证书到期」，主语完全不同：
+
+| 问题 | 本册（TLS 证书） | 培训与资质册 |
+| --- | --- | --- |
+| 到期的主体 | **服务端证书** | 员工的作业资质 |
+| 过期的后果 | 握手失败、页面告警 | 门禁放行、无人报错 |
+| 到期前怎么发现 | 监控指标 + 探测 | 提前期任务 + 待办 |
+| 「过期」的定义 | `notAfter` 之后即不可用 | `[issue, expire)` 半开区间 |
+
+延伸阅读：[岗位资质矩阵](../../../Backend/TrainingQualification/Matrix/index.md)、[上岗准入：判定点在哪里](../../../Backend/TrainingQualification/AccessGate/index.md)、[证书与有效期](../../../Backend/TrainingQualification/Certificate/index.md)。
+
+::: danger 一个只在本页成立的坑
+**把「有告警」当成「已处置」**。TLS 证书过期会让连接直接失败（显性），所以团队习惯「看到告警就修」；员工资质过期不会失败（隐性），同一套告警习惯搬过去就会漏。资质侧必须把「到期」接成待办而不是告警。
+:::
+
 ## 参考资料
 
 - OpenSSL：[`openssl-x509`](https://docs.openssl.org/master/man1/openssl-x509/)（`-checkend`、`-startdate`、`-enddate` 的语义）

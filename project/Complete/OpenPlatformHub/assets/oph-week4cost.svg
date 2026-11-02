@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img" aria-label="容量账与单位成本">
+<title>容量账：固定成本 1,236 元/月，单位成本随调用量走双曲线</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="960" height="380" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">容量账：固定成本 1,236 元/月，单位成本随调用量走双曲线</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">同一个平台，「每百万次调用成本」可以从 206 元降到 12.36 元——差别只在分母（月调用量）</text>
+
+<rect x="26" y="80" width="300" height="212" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="42" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">成本构成（元/月）</text>
+<text x="42" y="132" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">api 2×260</text>
+<rect x="150" y="122" width="120" height="12" rx="3" fill="#bae6fd" stroke="#7dd3fc" stroke-width="0.8"/>
+<text x="278" y="132" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0369a1" font-weight="600">520</text>
+<text x="42" y="156" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">postgres</text>
+<rect x="150" y="146" width="78" height="12" rx="3" fill="#bbf7d0" stroke="#86efac" stroke-width="0.8"/>
+<text x="236" y="156" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803d" font-weight="600">340</text>
+<text x="42" y="180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">worker</text>
+<rect x="150" y="170" width="30" height="12" rx="3" fill="#fde68a" stroke="#fcd34d" stroke-width="0.8"/>
+<text x="188" y="180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b45309" font-weight="600">130</text>
+<text x="42" y="204" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">redis</text>
+<rect x="150" y="194" width="28" height="12" rx="3" fill="#f5d0fe" stroke="#e879f9" stroke-width="0.8"/>
+<text x="186" y="204" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#a21caf" font-weight="600">120</text>
+<text x="42" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">出口流量</text>
+<rect x="150" y="218" width="22" height="12" rx="3" fill="#fecdd3" stroke="#fda4af" stroke-width="0.8"/>
+<text x="180" y="228" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#be123c" font-weight="600">96</text>
+<text x="42" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569">备份存储</text>
+<rect x="150" y="242" width="14" height="12" rx="3" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="0.8"/>
+<text x="172" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#475569" font-weight="600">30</text>
+<line x1="42" y1="266" x2="310" y2="266" stroke="#e2e8f0" stroke-width="1"/>
+<text x="42" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700">合计 1,236 元/月</text>
+
+<rect x="344" y="80" width="592" height="212" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="360" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700">单位成本（元/百万次）随月调用量变化</text>
+<line x1="392" y1="300" x2="912" y2="300" stroke="#cbd5e1" stroke-width="1.4" marker-end="url(#ah)"/>
+<line x1="392" y1="300" x2="392" y2="132" stroke="#cbd5e1" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="864" y="316" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">月调用量（百万次）</text>
+<text x="360" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">元</text>
+<line x1="392" y1="232" x2="912" y2="232" stroke="#be123c" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="700" y="226" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#be123c" font-weight="600">单价 50 元/百万次</text>
+<polyline points="452,160 528,232 756,272 912,284" fill="none" stroke="#0369a1" stroke-width="2.2"/>
+<circle cx="452" cy="160" r="4" fill="#0369a1"/>
+<text x="440" y="152" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0369a1" font-weight="600">12M → 103.00</text>
+<circle cx="528" cy="232" r="4" fill="#be123c"/>
+<text x="500" y="252" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#be123c" font-weight="600">24.72M → 50.00（平衡）</text>
+<circle cx="756" cy="272" r="4" fill="#15803d"/>
+<text x="700" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803d" font-weight="600">60M → 20.60</text>
+<circle cx="912" cy="284" r="4" fill="#15803d"/>
+<text x="838" y="278" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#15803d" font-weight="600">100M → 12.36</text>
+<text x="452" y="182" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569">6M 时是 206.00 元/百万次，已在图外</text>
+
+<rect x="26" y="308" width="910" height="52" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+<text x="44" y="330" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0f172a" font-weight="700">峰均比 328×：容量按峰值买（7,592 rps），成本按均值摊（23.15 rps）</text>
+<text x="44" y="350" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#b45309">结论不是「扩容降成本」，而是「低于 24.72M/月 的租户必须共享实例」——单独部署不经济</text>
+</svg>
