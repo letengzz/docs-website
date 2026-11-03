@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-label="降级的四类形态与三个约束：哪些接口能返回旧值，由「错了赔多少钱」决定">
+<rect x="0" y="0" width="960" height="430" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">降级的四类形态与三个约束：哪些接口能返回旧值，由「错了赔多少钱」决定</text>
+<text x="24" y="56" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#6b7280">同一个「缓存旧值」，在配额上是敞口问题（每秒超发），在价目上是口径问题（两个单价）</text>
+<text x="28" y="96" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="start">四类降级形态：只有 STALE_READ 需要「数据多旧了」这个元数据</text>
+<rect x="28" y="116" width="214" height="88" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.4"/>
+<text x="40" y="144" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#9f1239" text-anchor="start">FAIL_FAST</text>
+<text x="40" y="168" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">直接 503 + Retry-After</text>
+<text x="40" y="188" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">写操作 / 计费 / 鉴权</text>
+<rect x="258" y="116" width="214" height="88" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.4"/>
+<text x="270" y="144" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#b45309" text-anchor="start">STALE_READ</text>
+<text x="270" y="168" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">旧数据 + X-Data-Age</text>
+<text x="270" y="188" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">目录 / 价目 / 库存快照</text>
+<rect x="488" y="116" width="214" height="88" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="500" y="144" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="start">DEFAULT_VALUE</text>
+<text x="500" y="168" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">保守默认值</text>
+<text x="500" y="188" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">配置类 / 推荐类</text>
+<rect x="718" y="116" width="214" height="88" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.4"/>
+<text x="730" y="144" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#0f766e" text-anchor="start">PARTIAL</text>
+<text x="730" y="168" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">省略降级字段</text>
+<text x="730" y="188" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">聚合接口</text>
+<text x="28" y="244" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="start">三个约束，优先级由业务定，写死在配置里</text>
+<rect x="28" y="262" width="290" height="74" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="42" y="288" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#9f1239" text-anchor="start">不超卖</text>
+<text x="42" y="308" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">配额类不许旧值</text>
+<text x="42" y="326" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#9f1239" text-anchor="start">max_stale = 0</text>
+<rect x="334" y="262" width="290" height="74" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="348" y="288" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#b45309" text-anchor="start">不超计费</text>
+<text x="348" y="308" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">价目可旧，但账单要能解释</text>
+<text x="348" y="326" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#b45309" text-anchor="start">price_version 落明细</text>
+<rect x="640" y="262" width="290" height="74" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="654" y="288" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="start">不误导</text>
+<text x="654" y="308" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">旧数据必须带年龄</text>
+<text x="654" y="326" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#1d4ed8" text-anchor="start">X-Data-Age + Stale</text>
+<rect x="28" y="356" width="904" height="54" rx="6" fill="#e5e7eb" stroke="#6b7280" stroke-width="1.0"/>
+<text x="44" y="378" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#1f2937" text-anchor="start">配额快照 TTL 5s → 超发 1,000 次（10% 分钟配额）；30s → 6,000 次（60%）。旧价目 30 min 只差 0.08 元。</text>
+<text x="44" y="398" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">超时 200 ms 误降级 10.22%、500 ms 0.17%；无抖动恢复峰值 50.0×、±10 s 抖动 2.5×。</text>
+</svg>

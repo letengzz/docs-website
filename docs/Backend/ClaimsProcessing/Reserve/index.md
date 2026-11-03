@@ -168,6 +168,21 @@ sqlite3 /tmp/clm.db "UPDATE claim SET status='CLOSED' WHERE claim_id=1;"
 # 期望：E_RESERVE_LEFT
 ```
 
+## 与「承保与保单管理」专题的分工（第 247 天补充）
+
+准备金的三块输入里，有两块在承保侧：**已赚保费**（分母）与**未到期责任准备金**（UPR）。边界如下：
+
+| 问题 | 读哪一册 | 本页不重复讲 |
+| --- | --- | --- |
+| 已赚保费怎么按日摊、分母用哪个天数 | [出单与保单要素](../../UnderwritingPolicy/PolicyIssue/index.md) | 半开区间与 `MIN/MAX` 夹逼 |
+| 未满期保费为什么必须算出来而不是估出来 | [总览](../../UnderwritingPolicy/Overview/index.md) | 三口径恒等式 |
+| 退保后已赚怎么冲回 | [续保与退保](../../UnderwritingPolicy/RenewalCancel/index.md) | 短期费率表与冷静期 |
+| IBNR、链梯法、充足性测试 | 本页 | 承保侧不给假设，只给分母 |
+
+::: danger 本页特有的一个坑：UPR 与 IBNR 不能共用「已赚」这一个数
+未到期责任准备金（UPR）是「还没赚到的部分」，IBNR 是「已经发生但还没报的赔案」。两者都以已赚保费为参照，但**参照的方向相反**：UPR = 承保 − 已赚（越大说明赚得越少），IBNR 的赔付率分母用已赚（越大说明分母越大、IBNR 越小）。把两个公式里的「已赚」当成同一个数直接复用，会在「当期承保量大增」的月份同时低估 UPR、高估 IBNR 的分母，两个错误方向相反、部分抵消，报表看起来「还行」。
+:::
+
 ## 参考资料
 
 - [赔付、支付与追偿](../Payment/index.md)

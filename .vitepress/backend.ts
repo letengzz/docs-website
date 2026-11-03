@@ -1581,3 +1581,23 @@ export const AppointmentBooking = [
     ],
   },
 ];
+
+// 承保与保单管理工程
+export const UnderwritingPolicy = [
+  {
+    text: "承保与保单管理工程",
+    link: "/docs/Backend/UnderwritingPolicy/index.md",
+    items: [
+      { text: "总览：七段链与四个「多少」", link: "/docs/Backend/UnderwritingPolicy/Overview/index.md" },
+      { text: "产品与条款建模：版本、险种与保额档位", link: "/docs/Backend/UnderwritingPolicy/ProductModel/index.md" },
+      { text: "投保与告知：三角色、可保利益与不可改", link: "/docs/Backend/UnderwritingPolicy/Application/index.md" },
+      { text: "核保：五结局、规则顺序与转人工", link: "/docs/Backend/UnderwritingPolicy/Underwriting/index.md" },
+      { text: "费率与计价：因子相乘与五步取整", link: "/docs/Backend/UnderwritingPolicy/Rating/index.md" },
+      { text: "出单：四个日期、保单号与已赚", link: "/docs/Backend/UnderwritingPolicy/PolicyIssue/index.md" },
+      { text: "批改：八类批单、加退费与序号连续", link: "/docs/Backend/UnderwritingPolicy/Endorsement/index.md" },
+      { text: "续保与退保：NCD、宽限期与短期费率", link: "/docs/Backend/UnderwritingPolicy/RenewalCancel/index.md" },
+      { text: "再保分出：成数、溢额与摊回", link: "/docs/Backend/UnderwritingPolicy/Reinsurance/index.md" },
+      { text: "实战：九张表、五个触发器、十八条断言", link: "/docs/Backend/UnderwritingPolicy/Practice/index.md" },
+    ],
+  },
+];

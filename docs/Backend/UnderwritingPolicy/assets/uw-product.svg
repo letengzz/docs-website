@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" viewBox="0 0 960 400" role="img" aria-label="险种、条款与责任：三层，且每一层都有自己的版本">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker>
+</defs>
+<rect x="0" y="0" width="960" height="400" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">险种、条款与责任：三层，且每一层都有自己的版本</text>
+<text x="24" y="56" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#6b7280">条款是「文本＋日期」，责任是「结构化参数」，险种是「可售的打包」</text>
+<rect x="28" y="92" width="260" height="110" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="158" y="120" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#1d4ed8" text-anchor="middle">险种 product</text>
+<text x="158" y="146" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">可售单元：一个代码、一个费率表</text>
+<text x="158" y="166" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">停售 ≠ 删除（存量保单要能查）</text>
+<text x="158" y="186" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">状态：ON_SALE / STOPPED</text>
+<rect x="360" y="92" width="260" height="110" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="490" y="120" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#b45309" text-anchor="middle">条款 clause</text>
+<text x="490" y="146" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">文本 + 生效期 + 版本号</text>
+<text x="490" y="166" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">已生效保单永远指向旧版本</text>
+<text x="490" y="186" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">版本不可改，只能新增</text>
+<rect x="692" y="92" width="240" height="110" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="812" y="120" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#0f766e" text-anchor="middle">责任 coverage</text>
+<text x="812" y="146" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">保额 / 免赔 / 等待期 / 赔付比例</text>
+<text x="812" y="166" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">结构化字段，不是条款正文</text>
+<text x="812" y="186" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">一条条款对应 N 条责任</text>
+<line x1="288" y1="147" x2="356" y2="147" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="620" y1="147" x2="688" y2="147" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="28" y="236" width="904" height="132" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="44" y="262" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="start">版本生效期是半开区间 [effective_from, effective_to)：同一险种在同一天只能有一个当前版本</text>
+<text x="44" y="288" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="400" fill="#1d4ed8" text-anchor="start">2024A  [2024-01-01, 2026-01-01)          2026A  [2026-01-01, ∞)</text>
+<line x1="44" y1="306" x2="916" y2="306" stroke="#d1d5db" stroke-width="1.0"/>
+<text x="44" y="330" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start">同一张保单在 2026-01-01 之后仍然按 2024A 赔付——「按现行条款」是理赔纠纷最常见的错误表述。</text>
+<text x="44" y="352" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start">改条款 = 新增版本 + 关掉旧版本的 effective_to；改字段 = 改新版本的参数。两者都不是 UPDATE 旧行。</text>
+</svg>

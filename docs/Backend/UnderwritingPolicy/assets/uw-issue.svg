@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="380" viewBox="0 0 960 380" role="img" aria-label="一张保单的四个日期：申请、承保、起保、终止">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker>
+</defs>
+<rect x="0" y="0" width="960" height="380" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">一张保单的四个日期：申请、承保、起保、终止</text>
+<text x="24" y="56" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#6b7280">把「承保日」当成「起保日」，已赚保费就差 0.30%；把「终止日」当闭区间，就多算一天</text>
+<line x1="60" y1="180" x2="900" y2="180" stroke="#6b7280" stroke-width="1.6"/>
+<circle cx="120" cy="180" r="6" fill="#b45309"/>
+<text x="120" y="148" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">申请日</text>
+<text x="120" y="132" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="middle">APP_DATE</text>
+<text x="120" y="208" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">投保单提交</text>
+<circle cx="330" cy="180" r="6" fill="#b45309"/>
+<text x="330" y="148" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">承保日</text>
+<text x="330" y="132" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="middle">ISSUE_DATE</text>
+<text x="330" y="208" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">核保通过、出单</text>
+<circle cx="600" cy="180" r="6" fill="#b45309"/>
+<text x="600" y="148" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">起保日</text>
+<text x="600" y="132" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="middle">START_DATE</text>
+<text x="600" y="208" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">保障开始（半开）</text>
+<circle cx="830" cy="180" r="6" fill="#b45309"/>
+<text x="830" y="148" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">终止日</text>
+<text x="830" y="132" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="middle">END_DATE</text>
+<text x="830" y="208" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">保障结束（不含）</text>
+<rect x="330" y="236" width="270" height="44" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="465" y="263" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#b45309" text-anchor="middle">承保早于起保：正常（预出单）</text>
+<rect x="600" y="236" width="230" height="44" rx="6" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="715" y="263" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#0f766e" text-anchor="middle">保障期 = [600, 830)</text>
+<text x="60" y="306" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#1f2937" text-anchor="start">追溯生效（起保日早于承保日）在本机 3.23%——它合法但要留痕：审批人、原因、是否补收保费。</text>
+<text x="60" y="330" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#1f2937" text-anchor="start">已赚保费按起保日摊：按承保日算 61,109,443.20 vs 按起保日 60,929,670.58，差 179,772.62（0.30%）。</text>
+<text x="60" y="356" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start">保单号 = 前缀 + 起保日期 + 4 位序号 + 校验位；并发下按 COUNT+1 发号重号率 13.89%。</text>
+</svg>

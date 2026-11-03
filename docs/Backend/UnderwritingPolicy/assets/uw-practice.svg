@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-label="实战库：9 张表、5 个触发器、13 条正向断言 + 5 条负向用例">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker>
+</defs>
+<rect x="0" y="0" width="960" height="420" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">实战库：9 张表、5 个触发器、13 条正向断言 + 5 条负向用例</text>
+<text x="24" y="56" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#6b7280">能被脚本判定的才叫设计——每一条断言都对应正文里的一条「不变量」</text>
+<rect x="28" y="92" width="300" height="250" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="44" y="116" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="start">表（9）</text>
+<text x="44" y="142" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">product 险种</text>
+<text x="44" y="163" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">clause 条款版本</text>
+<text x="44" y="184" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">policy 保单</text>
+<text x="44" y="205" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">endorsement 批单</text>
+<text x="44" y="226" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">premium_txn 保费流水</text>
+<text x="44" y="247" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">uw_decision 核保记录</text>
+<text x="44" y="268" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">treaty 再保合约</text>
+<text x="44" y="289" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">cession 分出明细</text>
+<text x="44" y="310" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">claim_notice 赔案</text>
+<rect x="352" y="92" width="270" height="250" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="368" y="116" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="start">触发器（5）</text>
+<text x="368" y="142" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="start">trg_policy_no_immutable</text>
+<text x="368" y="164" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="start">trg_endorse_seq_contiguous</text>
+<text x="368" y="186" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="start">trg_endorse_after_termination</text>
+<text x="368" y="208" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="start">trg_cession_within_limit</text>
+<text x="368" y="230" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="start">trg_cession_pct_check</text>
+<text x="368" y="272" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="start">刻意不做：退保金上限</text>
+<text x="368" y="290" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="start">（SQLite 里跨表求和约束</text>
+<text x="368" y="308" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="start"> 只能用触发器 + 分步，</text>
+<text x="368" y="326" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="start"> 交给应用层事务）</text>
+<rect x="646" y="92" width="286" height="250" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="662" y="116" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#0f766e" text-anchor="start">断言（13 + 5）</text>
+<text x="662" y="142" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C1 承保 − 未满期 = 已赚</text>
+<text x="662" y="156" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C2 批单序号连续无重</text>
+<text x="662" y="170" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C3 退保金 ≤ 已收</text>
+<text x="662" y="184" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C4 分出比例 ≤ 95%</text>
+<text x="662" y="198" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C5 短期表 ≥ 按日（1-10 月）</text>
+<text x="662" y="212" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C6 分出保额 ≤ 保额</text>
+<text x="662" y="226" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C7 核保结局枚举</text>
+<text x="662" y="240" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C8 已终止不给批改</text>
+<text x="662" y="254" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C9 实收 = 承保</text>
+<text x="662" y="268" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C10 摊回 ≤ 赔款</text>
+<text x="662" y="282" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C11 NCD ∈ 0..6</text>
+<text x="662" y="296" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C12 起止有序</text>
+<text x="662" y="310" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9.5" font-weight="400" fill="#1f2937" text-anchor="start">C13 视图 = 明细</text>
+<text x="28" y="372" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#1f2937" text-anchor="start">运行结果：PASS 18 / FAIL 0 / EXIT 0；承保保费 162,614.10，实收 162,614.10，成数分出 48,784.23，溢额分出 97,778.34。</text>
+<text x="28" y="396" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">负向用例 N1~N5 全部被拒：已终止保单批改、改保单号、分出超保额、分出比例 98%、批单跳号。</text>
+</svg>
