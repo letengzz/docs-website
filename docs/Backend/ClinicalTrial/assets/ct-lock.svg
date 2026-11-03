@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="400" viewBox="0 0 940 400" role="img" aria-label="锁库不是「按下按钮」，是一串有时限的冻结">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker>
+</defs>
+<rect x="0" y="0" width="940" height="400" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">锁库不是「按下按钮」，是一串有时限的冻结</text>
+<rect x="40" y="84" width="130" height="76" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="105.0" y="118.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">软冻结</text>
+<text x="105.0" y="135.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">停止入组</text>
+<line x1="171" y1="122" x2="189" y2="122" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="190" y="84" width="130" height="76" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="255.0" y="118.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">质疑清零</text>
+<text x="255.0" y="135.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">118 条待关</text>
+<line x1="321" y1="122" x2="339" y2="122" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="340" y="84" width="130" height="76" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="405.0" y="118.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">偏离判定</text>
+<text x="405.0" y="135.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">187 条重要</text>
+<line x1="471" y1="122" x2="489" y2="122" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="490" y="84" width="130" height="76" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="555.0" y="118.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">分析集定稿</text>
+<text x="555.0" y="135.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">FAS/PPS/SS</text>
+<line x1="621" y1="122" x2="639" y2="122" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="640" y="84" width="130" height="76" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="705.0" y="118.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#9f1239">硬冻结</text>
+<text x="705.0" y="135.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">只读</text>
+<line x1="771" y1="122" x2="789" y2="122" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="790" y="84" width="130" height="76" rx="8" fill="#dcfce7" stroke="#166534" stroke-width="1.5"/>
+<text x="855.0" y="118.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#166534">揭盲</text>
+<text x="855.0" y="135.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">开盲底</text>
+<line x1="40" y1="196" x2="900" y2="196" stroke="#6b7280" stroke-width="2"/>
+<text x="40" y="224" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#9f1239">锁库后 3 天内仍变更 146 条记录（38 个受试者）——这不是「谁不守规矩」，是软冻结没有拦截点</text>
+<text x="40" y="252" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#6b7280">audit trail 369,600 行，其中 11,457 行（3.1%）缺「变更理由」→ 按 21 CFR Part 11 不可作为稽查证据</text>
+<text x="40" y="292" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937">时间戳乱序 10.9%</text>
+<text x="40" y="316" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#6b7280">各中心本地时间 + 服务器时钟漂移 → 用字符串排序会出现「后发生的先记录」。</text>
+<text x="40" y="338" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#0f766e">解法：UTC 单调时间戳 + 单调递增序号，展示层再做时区换算。</text>
+<rect x="600" y="268" width="300" height="96" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="750.0" y="312.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#9f1239">冻结要能拦住写入</text>
+<text x="750.0" y="329.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">不是提醒，是拒绝</text>
+<text x="750.0" y="343.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">并用 409 说明原因</text>
+</svg>

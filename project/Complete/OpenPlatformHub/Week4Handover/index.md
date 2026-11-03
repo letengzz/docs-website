@@ -64,7 +64,7 @@ files:
 
 本机实测（六个文件的最小骨架）：tar 包 **311 B**，`shasum -a 256 -c` 校验 **24 ms**，把其中一个文件改 **1 个字节**后重新打包，校验立刻 `FAILED`、退出码 **1**。
 
-```
+```shell
 oph-handover-20261103.tar.gz: OK
 oph-handover-20261103.tar.gz: FAILED
 shasum: WARNING: 1 computed checksum did NOT match

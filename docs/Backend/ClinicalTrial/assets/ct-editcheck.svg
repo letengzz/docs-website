@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="420" viewBox="0 0 940 420" role="img" aria-label="逻辑核查的四层：只做范围检查，会漏掉四成问题">
+<defs>
+</defs>
+<rect x="0" y="0" width="940" height="420" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">逻辑核查的四层：只做范围检查，会漏掉四成问题</text>
+<rect x="60.0" y="76" width="400" height="50" rx="8" fill="#e2e8f0" stroke="#334155" stroke-width="1.5"/>
+<text x="260.0" y="97.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#334155">必填 / 编码表</text>
+<text x="260.0" y="114.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">漏填 42 条 → 抓到 98%</text>
+<rect x="90.0" y="138" width="340" height="50" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="260.0" y="159.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">范围</text>
+<text x="260.0" y="176.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">超范围 240 条 → 抓到 100%</text>
+<rect x="120.0" y="200" width="280" height="50" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="260.0" y="221.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">日期先后</text>
+<text x="260.0" y="238.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">倒置 96 条 → 抓到 94%</text>
+<rect x="155.0" y="262" width="210" height="50" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="260.0" y="283.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">跨字段</text>
+<text x="260.0" y="300.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">矛盾 180 条 → 抓到 88%</text>
+<rect x="185.0" y="324" width="150" height="50" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="260.0" y="345.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#9f1239">单位换算</text>
+<text x="260.0" y="362.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">单位错 62 条 → 抓到 81%</text>
+<text x="72" y="400" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" fill="#1f2937">只做「范围 + 日期 + 必填」→ 检出 59.9%；加上「跨字段 + 单位」→ 93.6%</text>
+<rect x="540" y="76" width="360" height="120" rx="8" fill="#e2e8f0" stroke="#334155" stroke-width="1.5"/>
+<text x="720.0" y="132.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#334155">620 个人造问题的构成</text>
+<text x="720.0" y="149.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">超范围 240 / 跨字段 180 / 日期 96</text>
+<text x="720.0" y="163.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">单位 62 / 漏填 42</text>
+<rect x="540" y="212" width="360" height="120" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="720.0" y="268.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#9f1239">假阳性的代价</text>
+<text x="720.0" y="285.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">规则过严 → 3.1% 噪音</text>
+<text x="720.0" y="299.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">4,120 条 query 里 127 条是白问的</text>
+<rect x="540" y="348" width="360" height="52" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="720.0" y="379.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="600" fill="#b45309">噪音会训练出「都点关闭」的习惯</text>
+</svg>

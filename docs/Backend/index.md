@@ -66,3 +66,5 @@
 - [费用报销与差旅费控工程](ExpenseReimbursement/index.md)
 - [指标平台与语义层工程](MetricPlatform/index.md)
 - [门店零售与 POS 收银工程](RetailPOS/index.md)
+- [临床试验数据管理与盲态工程](ClinicalTrial/index.md)
+- [考勤排班与工时核算工程](TimeAttendance/index.md)

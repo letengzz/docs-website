@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="400" viewBox="0 0 940 400" role="img" aria-label="安全性事件的三条时限：0 小时、24 小时、15 天">
+<defs>
+</defs>
+<rect x="0" y="0" width="940" height="400" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">安全性事件的三条时限：0 小时、24 小时、15 天</text>
+<line x1="70" y1="120" x2="870" y2="120" stroke="#6b7280" stroke-width="2"/>
+<circle cx="70" cy="120" r="6" fill="#9f1239"/>
+<text x="70" y="102" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#9f1239">0 h</text>
+<text x="70" y="146" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280">获知 SAE</text>
+<circle cx="270" cy="120" r="6" fill="#9f1239"/>
+<text x="270" y="102" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#9f1239">24 h</text>
+<text x="270" y="146" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280">首次报告</text>
+<circle cx="590" cy="120" r="6" fill="#9f1239"/>
+<text x="590" y="102" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#9f1239">15 d</text>
+<text x="590" y="146" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280">随访报告</text>
+<circle cx="830" cy="120" r="6" fill="#9f1239"/>
+<text x="830" y="102" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#9f1239">持续</text>
+<text x="830" y="146" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280">年度报告</text>
+<rect x="70" y="176" width="300" height="70" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="220.0" y="207.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#9f1239">24 小时内报告 83.1%</text>
+<text x="220.0" y="224.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">142 例 SAE 里 24 例迟报</text>
+<rect x="400" y="176" width="300" height="70" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="550.0" y="207.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">迟报的天数中位 4 天</text>
+<text x="550.0" y="224.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">迟 1 天也算违反「立即报告」</text>
+<rect x="730" y="176" width="170" height="70" rx="8" fill="#e2e8f0" stroke="#334155" stroke-width="1.5"/>
+<text x="815.0" y="207.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#334155">每例补偏离</text>
+<text x="815.0" y="224.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">24 条</text>
+<text x="70" y="288" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" fill="#1f2937">编码一致性：两名编码员 PT 一致 78.3%（kappa 0.69）</text>
+<text x="70" y="312" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#6b7280">词典自动编码 top-1 命中 91.2%，其中 4.2% 归错 SOC——它们看起来最像对的</text>
+<text x="70" y="336" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#0f766e">→ 只复核「未命中」会漏掉归错 SOC 的那 4.2%；须复核 38 条 / 300 条，省 87.7% 工时</text>
+<text x="70" y="366" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#6b7280">因果判定一致率 74%（kappa 0.58）——「可能有关」与「很可能有关」之间没有客观边界，</text>
+<text x="70" y="386" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#6b7280">所以必须在方案里写死判定口径，而不是让每个研究者自由心证。</text>
+</svg>

@@ -1482,6 +1482,26 @@ export const ExpenseReimbursement = [
 ];
 
 
+// 考勤排班与工时核算工程
+export const TimeAttendance = [
+  {
+    text: "考勤排班与工时核算工程",
+    link: "/docs/Backend/TimeAttendance/index.md",
+    items: [
+      { text: "总览：七段链与三个「出勤」", link: "/docs/Backend/TimeAttendance/Overview/index.md" },
+      { text: "班次模型：一天从几点开始", link: "/docs/Backend/TimeAttendance/ShiftModel/index.md" },
+      { text: "排班计划：三条合规线与一个空洞", link: "/docs/Backend/TimeAttendance/Scheduling/index.md" },
+      { text: "打卡采集：四个证据维度", link: "/docs/Backend/TimeAttendance/PunchCapture/index.md" },
+      { text: "请假与销班：两条时间线", link: "/docs/Backend/TimeAttendance/LeaveSync/index.md" },
+      { text: "加班与调休：三个数、五道闸", link: "/docs/Backend/TimeAttendance/Overtime/index.md" },
+      { text: "补卡与更正：能回溯的改写", link: "/docs/Backend/TimeAttendance/Correction/index.md" },
+      { text: "日结、汇总与出账", link: "/docs/Backend/TimeAttendance/WorkHourLedger/index.md" },
+      { text: "实战：七张表、三个触发器、九条断言", link: "/docs/Backend/TimeAttendance/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/TimeAttendance/FAQ/index.md" },
+    ],
+  },
+];
+
 // 指标平台与语义层工程
 export const MetricPlatform = [
   {
@@ -1518,6 +1538,26 @@ export const RetailPOS = [
       { text: "离线补传：本地队列、票号与幂等", link: "/docs/Backend/RetailPOS/OfflineSync/index.md" },
       { text: "班结与日结：三口径对账与差异归因", link: "/docs/Backend/RetailPOS/DayClose/index.md" },
       { text: "实战：八张表、三个触发器、十三条断言", link: "/docs/Backend/RetailPOS/Practice/index.md" },
+    ],
+  },
+];
+
+// 临床试验数据管理与盲态工程
+export const ClinicalTrial = [
+  {
+    text: "临床试验数据管理与盲态工程",
+    link: "/docs/Backend/ClinicalTrial/index.md",
+    items: [
+      { text: "总览：七段链与三个「这份数据可不可信」", link: "/docs/Backend/ClinicalTrial/Overview/index.md" },
+      { text: "方案到建库：字段、编码表与核查规则", link: "/docs/Backend/ClinicalTrial/ProtocolBuild/index.md" },
+      { text: "入排与筛选：窗期、编号与筛败记录", link: "/docs/Backend/ClinicalTrial/Eligibility/index.md" },
+      { text: "随机化与发药：区组、分层与分配隐藏", link: "/docs/Backend/ClinicalTrial/Randomization/index.md" },
+      { text: "双人录入与质疑：DDE、SDV 与闭环", link: "/docs/Backend/ClinicalTrial/DataEntry/index.md" },
+      { text: "逻辑核查与单位：规则设计与噪音比", link: "/docs/Backend/ClinicalTrial/EditCheck/index.md" },
+      { text: "安全性事件与编码：AE、SAE 与 MedDRA", link: "/docs/Backend/ClinicalTrial/Safety/index.md" },
+      { text: "盲态与揭盲：四道闸与破盲处置", link: "/docs/Backend/ClinicalTrial/BlindMaintenance/index.md" },
+      { text: "偏离、锁库与留痕：三个分析集与 Part 11", link: "/docs/Backend/ClinicalTrial/LockAudit/index.md" },
+      { text: "实战：八张表、四个触发器、十三条断言", link: "/docs/Backend/ClinicalTrial/Practice/index.md" },
     ],
   },
 ];

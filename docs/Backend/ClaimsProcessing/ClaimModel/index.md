@@ -38,7 +38,7 @@ CREATE TABLE claim (
 
 ## 二、八态九迁移
 
-```
+```text
 REPORTED → FILED → SURVEY → ASSESSED → REVIEWED → APPROVED → PAID → CLOSED
                  ↘ REOPENED ↗
 ```

@@ -445,6 +445,7 @@ export const CompleteProject = [
           { text: "第 4 周第 4 步 · 上线验收单：六区 28 行与三条拒签规则（EPG-A~EPG-H）", link: "/project/Complete/OpenPlatformHub/Week4Acceptance/index.md" },
           { text: "第 4 周第 5 步 · 交付包与交接手册：六件物料与 46 条判据（EPH-A~EPH-H）", link: "/project/Complete/OpenPlatformHub/Week4Handover/index.md" },
           { text: "第 4 周第 6 步 · 备份与恢复演练：六项一致性与 RPO 换算（EPJ-A~EPJ-H）", link: "/project/Complete/OpenPlatformHub/Week4Backup/index.md" },
+          { text: "第 4 周第 7 步 · 灰度发布与版本回退闸门：四道判据与 schema 硬约束（EPK-A~EPK-H）", link: "/project/Complete/OpenPlatformHub/Week4RolloutGate/index.md" },
         ],
       },
       {

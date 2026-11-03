@@ -222,7 +222,7 @@ const goHome = () => clearError({ redirect: '/dashboard' })
 </template>
 ```
 
-两个易踩的点：
+两个易踩的点（另有一个容易忽略的坑）：
 
 ::: danger error.vue 在布局之外
 Nuxt 的 `error.vue` 是**顶层错误页，不走任何 layout**——`default` 布局里的侧边栏不会出现在 404 页上，这是设计而不是缺陷。所以 `error.vue` 里的「回到工作台」按钮必须自己处理登录态：未登录时 `/dashboard` 会被[守卫](../Login/index.md)带回 `/login`，闭环仍然成立，不需要在这里重复判断。
