@@ -1501,3 +1501,23 @@ export const MetricPlatform = [
     ],
   },
 ];
+
+// 门店零售与 POS 收银工程
+export const RetailPOS = [
+  {
+    text: "门店零售与 POS 收银工程",
+    link: "/docs/Backend/RetailPOS/index.md",
+    items: [
+      { text: "总览：七段链与三个「收了多少钱」", link: "/docs/Backend/RetailPOS/Overview/index.md" },
+      { text: "班次与钱箱：备用金、缴款与长短款", link: "/docs/Backend/RetailPOS/ShiftDrawer/index.md" },
+      { text: "价目下发：版本、生效时点与离线缓存", link: "/docs/Backend/RetailPOS/PriceSync/index.md" },
+      { text: "点单与挂单：票、行、锁", link: "/docs/Backend/RetailPOS/Basket/index.md" },
+      { text: "优惠与凑整：顺序、分摊与余数", link: "/docs/Backend/RetailPOS/PromotionStack/index.md" },
+      { text: "支付与找零：组合支付、冲正与结算", link: "/docs/Backend/RetailPOS/PaymentTender/index.md" },
+      { text: "退货与冲红：原单匹配与部分退额度", link: "/docs/Backend/RetailPOS/ReturnRefund/index.md" },
+      { text: "离线补传：本地队列、票号与幂等", link: "/docs/Backend/RetailPOS/OfflineSync/index.md" },
+      { text: "班结与日结：三口径对账与差异归因", link: "/docs/Backend/RetailPOS/DayClose/index.md" },
+      { text: "实战：八张表、三个触发器、十三条断言", link: "/docs/Backend/RetailPOS/Practice/index.md" },
+    ],
+  },
+];

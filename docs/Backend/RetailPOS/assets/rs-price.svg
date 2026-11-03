@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="450" viewBox="0 0 920 450" role="img" aria-label="价目下发：版本、生效时点、离线缓存">
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+  </marker>
+  <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+  </marker>
+  <marker id="ah-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="920" height="450" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">价目下发：版本、生效时点、离线缓存</text>
+
+<rect x="40" y="70" width="230" height="70" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="155.0" y="101.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">总部价目库</text>
+<text x="155.0" y="121.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">变价单 + 生效时点</text>
+<rect x="345" y="70" width="230" height="70" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="460.0" y="101.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">门店价目快照</text>
+<text x="460.0" y="121.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">按门店 + 版本号</text>
+<rect x="650" y="70" width="230" height="70" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="765.0" y="101.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">终端本地缓存</text>
+<text x="765.0" y="121.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">离线也能算价</text>
+<line x1="272" y1="105" x2="341" y2="105" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="577" y1="105" x2="646" y2="105" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="307" y="96" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">1 发布</text>
+<text x="611" y="96" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">2 同步</text>
+<rect x="40" y="180" width="230" height="64" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="155.0" y="208.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#1f2937">变价单审批</text>
+<text x="155.0" y="228.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">谁改、何时生效</text>
+<rect x="345" y="180" width="230" height="64" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="460.0" y="208.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#1f2937">版本号单调递增</text>
+<text x="460.0" y="228.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">旧版本可回滚</text>
+<rect x="650" y="180" width="230" height="64" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="765.0" y="208.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#9f1239">同步失败要告警</text>
+<text x="765.0" y="228.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">不告警就静默收错价</text>
+<line x1="155" y1="142" x2="155" y2="176" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="460" y1="142" x2="460" y2="176" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="765" y1="142" x2="765" y2="176" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="292" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#1f2937" font-weight="600">滞后一个版本的代价：净额 −440.68，双向 4,732.59</text>
+<rect x="40" y="306" width="400" height="74" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="240.0" y="339.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="600" fill="#b45309">少收 2,145.95</text>
+<text x="240.0" y="359.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">顾客占了便宜，账上少钱</text>
+<rect x="480" y="306" width="400" height="74" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="680.0" y="339.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="600" fill="#9f1239">多收 2,586.63</text>
+<text x="680.0" y="359.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">顾客投诉与退款，账上多钱</text>
+<text x="460" y="412" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#6b7280">「净额接近 0」是最危险的信号：正负相抵，问题被平均数吃掉</text>
+<text x="460.0" y="436" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">实测：价目滞后单 1,837 笔（6.12%），受影响明细行 383 行</text>
+</svg>

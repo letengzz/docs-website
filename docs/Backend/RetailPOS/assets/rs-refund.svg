@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="450" viewBox="0 0 920 450" role="img" aria-label="退货：先找原单，再扣额度，最后才是钱">
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+  </marker>
+  <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+  </marker>
+  <marker id="ah-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="920" height="450" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">退货：先找原单，再扣额度，最后才是钱</text>
+
+<rect x="40" y="70" width="200" height="70" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="140.0" y="101.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">原单 ticket</text>
+<text x="140.0" y="121.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">7 天内可查</text>
+<rect x="280" y="70" width="200" height="70" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="380.0" y="101.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">原行 line</text>
+<text x="380.0" y="121.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">退量 ≤ 原量 − 已退</text>
+<rect x="520" y="70" width="200" height="70" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="620.0" y="101.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">退款金额</text>
+<text x="620.0" y="121.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">按行比例还原</text>
+<rect x="760" y="70" width="120" height="70" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="820.0" y="110.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="600" fill="#9f1239">红冲凭证</text>
+<line x1="242" y1="105" x2="276" y2="105" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="482" y1="105" x2="516" y2="105" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="722" y1="105" x2="756" y2="105" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="190" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#1f2937" font-weight="600">三条容易漏的边界</text>
+<rect x="40" y="206" width="380" height="64" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="56" y="232" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#9f1239" font-weight="600">跨店退</text>
+<text x="56" y="252" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">991 笔里 916 笔发生了</text>
+<text x="444" y="244" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#1f2937">原单归属店与退款店要分开记，钱从谁的额度里出</text>
+<rect x="40" y="284" width="380" height="64" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="56" y="310" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#b45309" font-weight="600">部分退累计</text>
+<text x="56" y="330" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">没有「已退数量」字段就一定退超</text>
+<text x="444" y="322" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#1f2937">用触发器在写入前拦住，不靠应用层自觉</text>
+<rect x="40" y="362" width="380" height="64" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="56" y="388" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#0f766e" font-weight="600">优惠还原</text>
+<text x="56" y="408" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">整单满减 20 元，退 1 件该退多少</text>
+<text x="444" y="400" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#1f2937">按行分摊额倒推，不能用原价</text>
+<text x="460.0" y="436" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">实测：退货 991 笔 / 36,899.14 元（占销售 1.35%）</text>
+</svg>

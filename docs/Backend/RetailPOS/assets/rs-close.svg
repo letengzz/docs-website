@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="440" viewBox="0 0 920 440" role="img" aria-label="日结：三张表对不平时，先看差额的形状">
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+  </marker>
+  <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+  </marker>
+  <marker id="ah-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="920" height="440" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">日结：三张表对不平时，先看差额的形状</text>
+
+<rect x="40" y="70" width="260" height="76" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="170.0" y="104.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">小票侧</text>
+<text x="170.0" y="124.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">Σ payable（按营业日）</text>
+<rect x="340" y="70" width="260" height="76" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="470.0" y="104.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">钱箱侧</text>
+<text x="470.0" y="124.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">Σ 现金收 − 现金退</text>
+<rect x="640" y="70" width="240" height="76" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="760.0" y="104.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">渠道侧</text>
+<text x="760.0" y="124.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">Σ 到账（T+1）</text>
+<line x1="302" y1="108" x2="336" y2="108" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="602" y1="108" x2="636" y2="108" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="460" y="178" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#6b7280">差额不是差错，是四类结构：时点差、笔数差、金额差、归属差</text>
+<rect x="40" y="200" width="110" height="40" rx="6" fill="#ffffff" stroke="#b45309" stroke-width="1.5"/>
+<text x="95" y="225" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#b45309" font-weight="600">时点差</text>
+<text x="168" y="225" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#1f2937">当日 23:59 之后到账的挂账</text>
+<text x="560" y="225" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">查 T+1 结算单的交易日字段</text>
+<rect x="40" y="254" width="110" height="40" rx="6" fill="#ffffff" stroke="#9f1239" stroke-width="1.5"/>
+<text x="95" y="279" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#9f1239" font-weight="600">笔数差</text>
+<text x="168" y="279" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#1f2937">渠道有、POS 无 → 掉单</text>
+<text x="560" y="279" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">按 channel_ref 双向比对</text>
+<rect x="40" y="308" width="110" height="40" rx="6" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+<text x="95" y="333" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#0f766e" font-weight="600">金额差</text>
+<text x="168" y="333" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#1f2937">手续费、凑整、汇率</text>
+<text x="560" y="333" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">拆出 fee / rounding 两个字段</text>
+<rect x="40" y="362" width="110" height="40" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="95" y="387" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#3730a3" font-weight="600">归属差</text>
+<text x="168" y="387" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#1f2937">跨零点单算哪一天</text>
+<text x="560" y="387" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#6b7280">以 biz_date 为准，不看 created_at</text>
+<text x="460.0" y="426" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">实测：360 个班结里 12% 有长短款；净额 +13.30 掩盖 74.72 元绝对差</text>
+</svg>

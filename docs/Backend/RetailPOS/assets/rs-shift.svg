@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-label="钱箱等式：三种算法，三个答案">
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+  </marker>
+  <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+  </marker>
+  <marker id="ah-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="920" height="430" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">钱箱等式：三种算法，三个答案</text>
+
+<rect x="40" y="70" width="840" height="60" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="460.0" y="105.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="600" fill="#3730a3">应有现金 = 期初备用金 + 现金收款 − 现金退款 − 已缴款</text>
+<rect x="40" y="165" width="255" height="96" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="167.5" y="209.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="600" fill="#b45309">只算收</text>
+<text x="167.5" y="229.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">期初 + 现金收</text>
+<text x="167" y="285" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#b45309" font-weight="600">941,018.50</text>
+<rect x="325" y="165" width="255" height="96" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="452.5" y="209.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="600" fill="#9f1239">期初+收−退</text>
+<text x="452.5" y="229.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">少了缴款与跨班结转</text>
+<text x="452" y="285" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#9f1239" font-weight="600">904,119.36</text>
+<rect x="610" y="165" width="255" height="96" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="737.5" y="209.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="600" fill="#0f766e">只算净</text>
+<text x="737.5" y="229.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">净额口径，看不出结构</text>
+<text x="737" y="285" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#0f766e" font-weight="600">724,119.36</text>
+<text x="460" y="320" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#6b7280">口径不同造成的 217,000 差额，与「收银员少钱」是两件事</text>
+<rect x="40" y="340" width="400" height="66" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="240.0" y="369.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#1f2937">长短款 = 点钞实数 − 应有现金</text>
+<text x="240.0" y="389.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">净 +13.30 掩盖 44.01 长款 + 30.71 短款</text>
+<rect x="480" y="340" width="400" height="66" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="680.0" y="369.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#1f2937">分毫不差只占 88.06%</text>
+<text x="680.0" y="389.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">12% 的班次要有人签字解释</text>
+<text x="460.0" y="416" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">360 个班结实测 · 12 店 × 30 天</text>
+</svg>

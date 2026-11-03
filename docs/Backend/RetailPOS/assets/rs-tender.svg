@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="440" viewBox="0 0 920 440" role="img" aria-label="组合支付：应收、实收、找零三者只能有一个自由项">
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+  </marker>
+  <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+  </marker>
+  <marker id="ah-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="920" height="440" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">组合支付：应收、实收、找零三者只能有一个自由项</text>
+
+<rect x="40" y="70" width="260" height="80" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="170.0" y="106.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">应收 payable</text>
+<text x="170.0" y="126.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">票价 − 优惠 + 凑整</text>
+<rect x="340" y="70" width="260" height="80" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="470.0" y="106.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">实收 tender 合计</text>
+<text x="470.0" y="126.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">现金 + 电子，一票多笔</text>
+<rect x="640" y="70" width="240" height="80" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="760.0" y="106.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">找零 change</text>
+<text x="760.0" y="126.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">只能由现金产生</text>
+<line x1="302" y1="110" x2="336" y2="110" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="602" y1="110" x2="636" y2="110" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="460" y="185" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#6b7280">实收 &lt; 应收 → 欠款；实收 &gt; 应收 → 找零；两者都不许直接落库</text>
+<rect x="40" y="205" width="280" height="86" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="180.0" y="244.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#1f2937">现金单</text>
+<text x="180.0" y="264.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">凑整到角，差额进 rounding</text>
+<rect x="340" y="205" width="280" height="86" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="480.0" y="244.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#1f2937">电子单</text>
+<text x="480.0" y="264.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">不凑整，按分收</text>
+<rect x="640" y="205" width="240" height="86" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="760.0" y="244.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#1f2937">混合单 3.94%</text>
+<text x="760.0" y="264.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">现金部分才凑整</text>
+<text x="40" y="330" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#1f2937" font-weight="600">渠道侧的三个动作：冲正、退款、结算——每一个都要带原单号</text>
+<rect x="40" y="344" width="260" height="58" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="170.0" y="369.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">冲正 void</text>
+<text x="170.0" y="389.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">当日同终端</text>
+<rect x="340" y="344" width="260" height="58" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="470.0" y="369.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#9f1239">退款 refund</text>
+<text x="470.0" y="389.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">可跨日不可跨额</text>
+<rect x="640" y="344" width="240" height="58" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="760.0" y="369.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">结算 settle</text>
+<text x="760.0" y="389.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">T+1 扣手续费</text>
+<text x="460.0" y="426" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">实测：手续费 38 bp / 7,462.63 元；逐笔取整与按总额计费差 +5.28 元</text>
+</svg>

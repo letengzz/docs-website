@@ -444,6 +444,7 @@ export const CompleteProject = [
           { text: "第 4 周第 3 步 · 容量账与单位成本：1,236 元/月与 24.72M 平衡点（EPN-A~EPN-H）", link: "/project/Complete/OpenPlatformHub/Week4Cost/index.md" },
           { text: "第 4 周第 4 步 · 上线验收单：六区 28 行与三条拒签规则（EPG-A~EPG-H）", link: "/project/Complete/OpenPlatformHub/Week4Acceptance/index.md" },
           { text: "第 4 周第 5 步 · 交付包与交接手册：六件物料与 46 条判据（EPH-A~EPH-H）", link: "/project/Complete/OpenPlatformHub/Week4Handover/index.md" },
+          { text: "第 4 周第 6 步 · 备份与恢复演练：六项一致性与 RPO 换算（EPJ-A~EPJ-H）", link: "/project/Complete/OpenPlatformHub/Week4Backup/index.md" },
         ],
       },
       {

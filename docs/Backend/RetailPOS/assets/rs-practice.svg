@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="470" viewBox="0 0 920 470" role="img" aria-label="实战八表：三个触发器守三条不变式">
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+  </marker>
+  <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+  </marker>
+  <marker id="ah-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="920" height="470" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">实战八表：三个触发器守三条不变式</text>
+
+<rect x="40" y="70" width="180" height="62" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="130.0" y="97.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">store</text>
+<text x="130.0" y="117.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">营业日切点</text>
+<rect x="260" y="70" width="180" height="62" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="350.0" y="97.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">terminal</text>
+<text x="350.0" y="117.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">本地序号</text>
+<rect x="480" y="70" width="180" height="62" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="570.0" y="97.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">ticket</text>
+<text x="570.0" y="117.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">票号唯一</text>
+<rect x="700" y="70" width="180" height="62" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="790.0" y="97.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">ticket_line</text>
+<text x="790.0" y="117.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">数量 &gt; 0</text>
+<rect x="40" y="190" width="180" height="62" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="130.0" y="217.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">sync_batch</text>
+<text x="130.0" y="237.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">(store,seq)</text>
+<rect x="260" y="190" width="180" height="62" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="350.0" y="217.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">shift</text>
+<text x="350.0" y="237.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">长短款</text>
+<rect x="480" y="190" width="180" height="62" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="570.0" y="217.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">tender</text>
+<text x="570.0" y="237.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">累计 ≤ 应收</text>
+<rect x="700" y="190" width="180" height="62" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="790.0" y="217.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#9f1239">refund</text>
+<text x="790.0" y="237.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">累计 ≤ 原量</text>
+<line x1="222" y1="101" x2="256" y2="101" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="442" y1="101" x2="476" y2="101" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="662" y1="101" x2="696" y2="101" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="570" y1="134" x2="570" y2="186" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="790" y1="134" x2="790" y2="186" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="142" y1="134" x2="142" y2="186" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="442" y1="101" x2="350" y2="186" stroke="#b45309" stroke-width="1.6" marker-end="url(#ah-a)"/>
+<text x="40" y="290" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#1f2937" font-weight="600">三条触发器（不是应用层校验，是数据库层兜底）</text>
+<rect x="40" y="308" width="44" height="30" rx="6" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="62" y="329" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#9f1239" font-weight="600">T1</text>
+<text x="100" y="329" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#1f2937" font-weight="600">同店同日票号唯一</text>
+<text x="330" y="329" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">两台终端各自从 1 发号 → 11.62% 重号</text>
+<rect x="40" y="350" width="44" height="30" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="62" y="371" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#b45309" font-weight="600">T2</text>
+<text x="100" y="371" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#1f2937" font-weight="600">支付累计不超过应收</text>
+<text x="330" y="371" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">超收记成第二笔收款 → 账上多钱</text>
+<rect x="40" y="392" width="44" height="30" rx="6" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="62" y="413" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#0f766e" font-weight="600">T3</text>
+<text x="100" y="413" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#1f2937" font-weight="600">退货累计不超过原行</text>
+<text x="330" y="413" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">没有额度字段 → 退到负数</text>
+<text x="460.0" y="456" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">13 条断言全过（C1~C7 / N1~N5 / P1），退出码 0</text>
+</svg>

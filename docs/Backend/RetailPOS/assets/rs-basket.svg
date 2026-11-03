@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="440" viewBox="0 0 920 440" role="img" aria-label="票 / 行 / 支付三层模型与挂单">
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+  </marker>
+  <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+  </marker>
+  <marker id="ah-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="920" height="440" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">票 / 行 / 支付三层模型与挂单</text>
+
+<rect x="40" y="70" width="240" height="74" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="160.0" y="103.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">ticket 小票</text>
+<text x="160.0" y="123.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">一张票 = 一次结账</text>
+<rect x="340" y="70" width="240" height="74" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="460.0" y="103.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">ticket_line 行</text>
+<text x="460.0" y="123.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">SKU × 数量 × 单价</text>
+<rect x="640" y="70" width="240" height="74" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="760.0" y="103.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">tender 支付</text>
+<text x="760.0" y="123.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">一票多笔、多方式</text>
+<line x1="282" y1="107" x2="336" y2="107" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="582" y1="107" x2="636" y2="107" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="309" y="98" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">1:N</text>
+<text x="609" y="98" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">1:N</text>
+<text x="40" y="190" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#1f2937" font-weight="600">挂单不是「暂存」，它是一条待结账的小票 + 一把锁</text>
+<rect x="40" y="205" width="190" height="70" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="135.0" y="236.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">HELD 挂单</text>
+<text x="135.0" y="256.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">占住终端与票号</text>
+<line x1="231" y1="240" x2="256" y2="240" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="260" y="205" width="190" height="70" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="355.0" y="236.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#0f766e">PICKED 取单</text>
+<text x="355.0" y="256.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">同一终端继续</text>
+<line x1="451" y1="240" x2="476" y2="240" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="480" y="205" width="190" height="70" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="575.0" y="236.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">PAID 已结</text>
+<text x="575.0" y="256.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">才写支付与库存</text>
+<line x1="671" y1="240" x2="696" y2="240" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="700" y="205" width="190" height="70" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="795.0" y="236.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#9f1239">VOID 作废</text>
+<text x="795.0" y="256.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">票号不复用</text>
+<rect x="40" y="305" width="400" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="240.0" y="336.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#1f2937">跨零点结账 152 笔</text>
+<text x="240.0" y="356.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">按开单日还是按结账日？</text>
+<rect x="480" y="305" width="400" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="680.0" y="336.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#1f2937">开单到结账 &gt; 30 分钟 596 笔</text>
+<text x="680.0" y="356.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">挂单、并单、跑单都在这类里</text>
+<text x="460.0" y="426" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">营业日切点 04:00：23 点后开单 1,293 笔，跨日归属必须写死</text>
+</svg>

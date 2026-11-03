@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="440" viewBox="0 0 920 440" role="img" aria-label="优惠分摊：先定顺序，再定余数">
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+  </marker>
+  <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+  </marker>
+  <marker id="ah-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="920" height="440" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">优惠分摊：先定顺序，再定余数</text>
+
+<text x="40" y="68" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#1f2937" font-weight="600">四类优惠的固定顺序（越靠前越先生效）</text>
+<rect x="40" y="82" width="196" height="66" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="138.0" y="111.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">1 单品特价</text>
+<text x="138.0" y="131.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">替换单价</text>
+<line x1="237" y1="115" x2="256" y2="115" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="260" y="82" width="196" height="66" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="358.0" y="111.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">2 整单满减</text>
+<text x="358.0" y="131.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">按金额门槛</text>
+<line x1="457" y1="115" x2="476" y2="115" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="480" y="82" width="196" height="66" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="578.0" y="111.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">3 会员折扣</text>
+<text x="578.0" y="131.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">按折率</text>
+<line x1="677" y1="115" x2="696" y2="115" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="700" y="82" width="196" height="66" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="798.0" y="111.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#3730a3">4 支付立减</text>
+<text x="798.0" y="131.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">渠道承担</text>
+<text x="40" y="190" text-anchor="start" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#1f2937" font-weight="600">整单优惠必须落到行上，否则退货算不出该退多少</text>
+<rect x="40" y="205" width="400" height="96" rx="8" fill="#ffe4e6" stroke="#9f1239" stroke-width="1.5"/>
+<text x="240.0" y="249.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="600" fill="#9f1239">独立四舍五入</text>
+<text x="240.0" y="269.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">每行 round(行额/总额×优惠, 2)</text>
+<rect x="480" y="205" width="400" height="96" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+<text x="680.0" y="249.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="600" fill="#0f766e">最大余数法</text>
+<text x="680.0" y="269.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#6b7280">先取整到分，余数按小数部分从大到小补</text>
+<text x="240" y="322" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#9f1239" font-weight="600">不闭合 13.75%（1,059 / 7,700 笔）</text>
+<text x="680" y="322" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12.5" fill="#0f766e" font-weight="600">不闭合 0 笔</text>
+<rect x="40" y="340" width="840" height="56" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="460.0" y="373.0" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" fill="#b45309">凑整（抹零）是第五类优惠：它只作用于现金部分，且必须单独一个字段</text>
+<text x="460.0" y="426" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11.5" fill="#6b7280">实测：2,064 笔发生凑整（6.88%），合计 −1.63 元，单笔均值 0.030</text>
+</svg>
