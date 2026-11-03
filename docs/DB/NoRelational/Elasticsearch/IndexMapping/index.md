@@ -64,7 +64,7 @@ curl -X POST http://localhost:9200/products/_bulk -H 'Content-Type: application/
 | 文本（会分词） | `text` | 全文检索用，配合分析器；默认不聚合排序 |
 | 精确值（不分词） | `keyword` | 状态、品牌、标签等；支持 term 查询、聚合、排序 |
 | 数值 | `long` / `integer` / `double` / `scaled_float` | 金额常用 `scaled_float`（放大存整数） |
-| 日期 | `date` | 支持 ISO8601 字符串、毫秒时间戳与自定义 `format` |
+| 日期 | `date` | 支持 ISO 8601 字符串、毫秒时间戳与自定义 `format` |
 | 布尔 | `boolean` | `true` / `false` |
 | 对象 | `object` | JSON 嵌套对象，字段扁平化存储 |
 | 嵌套 | `nested` | 对象数组保持内部独立性，避免跨对象匹配错误 |

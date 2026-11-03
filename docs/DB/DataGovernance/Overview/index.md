@@ -223,7 +223,7 @@ psql -c "select count(*) from dws_trade_daily where stat_dt = current_date - 1"
 ## 参考资料
 
 - DAMA International，*DAMA-DMBOK: Data Management Body of Knowledge*（2nd Edition, Revised），「数据治理」与「数据管理」两章：<https://www.dama.org/cpages/body-of-knowledge>
-- 国家标准 GB/T 36073-2025《数据管理能力成熟度评估模型》（DCMM 2.0）发布公告：<https://www.stdaily.com/web/gdxw/2026-01/15/content_462215.html>
+- 国家标准 GB/T 36073—2025《数据管理能力成熟度评估模型》（DCMM 2.0）发布公告：<https://www.stdaily.com/web/gdxw/2026-01/15/content_462215.html>
 - 国家标准全文公开系统（检索 GB/T 36073）：<https://openstd.samr.gov.cn/bzgk/gb/>
 - DataHub 官方文档「Metadata Platform 概念模型」：<https://docs.datahub.com/docs/metadata-model>
 - OpenLineage 开放标准（血缘事件的传输格式）：<https://openlineage.io/docs/>

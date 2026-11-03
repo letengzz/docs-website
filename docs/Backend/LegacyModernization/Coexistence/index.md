@@ -184,4 +184,4 @@ grep -oE '零调用|零写入|验证可读' docs/Backend/LegacyModernization/Coe
 - [AWS Prescriptive Guidance · Decomposing monoliths into microservices](https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-decomposing-monoliths/)：Coexist 阶段的成本与运维提示
 - [Pete Hodgson · Feature Toggles (aka Feature Flags)](https://martinfowler.com/articles/feature-toggles.html)：Ops 类开关的寿命与「开关台账」
 - [Martin Fowler · bliki 条目索引](https://martinfowler.com/bliki/)：模式词汇与后续修订的统一入口
-- [中国 · GB/T 22239-2019（等保 2.0）](https://openstd.samr.gov.cn/)：共存期安全域变化需重新测评的依据（第三级系统每年至少一次）
+- [中国 · GB/T 22239—2019（等保 2.0）](https://openstd.samr.gov.cn/)：共存期安全域变化需重新测评的依据（第三级系统每年至少一次）

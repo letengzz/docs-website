@@ -238,6 +238,6 @@ kubectl version --short 2>/dev/null || echo "无集群环境：请核对 Chaos M
 ## 参考资料
 
 - Chaos Mesh 官方文档：故障类型、Workflow 编排、安全使用与「务必设置 duration」的官方提示
-- GB/T 28827.3-2012《信息技术服务 运行维护 第3部分：应急响应规范》（演练要求部分）
+- GB/T 28827.3—2012《信息技术服务 运行维护 第3部分：应急响应规范》（演练要求部分）
 - [混沌工程](../../ChaosEngineering/index.md)（主动故障注入的技术细节）、[备份与容灾 · 容灾演练](../../BackupDR/DisasterRecovery/index.md)（切换类演练）
 - [值班制度](../OnCall/index.md)（MTTA 承诺的来源）、[应急指挥与协同](../Command/index.md)（协同环节的验证项）

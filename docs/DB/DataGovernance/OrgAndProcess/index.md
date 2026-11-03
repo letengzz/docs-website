@@ -123,7 +123,7 @@
 
 ### DCMM 2.0 的能力域（评估标准）
 
-国家标准 GB/T 36073-2025（DCMM 2.0）自 **2026-07-01** 起实施，取代 GB/T 36073-2018。关键变化：
+国家标准 GB/T 36073—2025（DCMM 2.0）自 **2026-07-01** 起实施，取代 GB/T 36073—2018。关键变化：
 
 | 项 | 2018 版 | 2025 版（DCMM 2.0） |
 | --- | --- | --- |
@@ -182,7 +182,7 @@ DCMM 是**评估尺子**，不是**施工图**。它的 486 项指标用于衡�
 
 ## 参考资料
 
-- 国家标准 GB/T 36073-2025（DCMM 2.0）发布公告：<https://www.stdaily.com/web/gdxw/2026-01/15/content_462215.html>
+- 国家标准 GB/T 36073—2025（DCMM 2.0）发布公告：<https://www.stdaily.com/web/gdxw/2026-01/15/content_462215.html>
 - 国家标准全文公开系统（检索 GB/T 36073 系列）：<https://openstd.samr.gov.cn/bzgk/gb/>
 - DAMA-DMBOK（2nd Edition, Revised）「数据治理」知识领域：<https://www.dama.org/cpages/body-of-knowledge>
 - Google SRE Book「Being On-Call」与「Postmortem Culture」（值班与升级链的通用实践）：<https://sre.google/sre-book/being-on-call/>

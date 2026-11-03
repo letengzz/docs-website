@@ -495,6 +495,21 @@ CREATE TABLE idem_record (
 
 → 临床侧的完整链路见[随机化与发药：保护在「猜不到」里](../../ClinicalTrial/Randomization/index.md)。
 
+## 与「预约与资源档期工程」专题的分工（第 245 天补充）
+
+| 隔壁那一册 | 它回答什么 | 本页不重复讲 |
+| --- | --- | --- |
+| [预约与资源档期工程](../../AppointmentBooking/index.md) | 预约链路的**双幂等键**（点击 + 渠道回调） | 键的通用设计与存储 |
+| 本页 | 请求级幂等的通用机制：键、去重表、状态机 | 预约六态与占位到期 |
+| [电商支付](../../Ecommerce/Payment/index.md) | 渠道回调验签与重试 | 回调乱序对占位的影响 |
+| [多租户 SaaS](../../MultiTenantSaaS/TenantContext/index.md) | 租户上下文传播 | 幂等键是否要带租户维度 |
+
+一句话结论：**一条预约链路上有两个独立的重复来源，必须用两个键**——用户连点是「点击维度」，渠道重发是「回调维度」，合成一个键会把「改了支付方式重新发起」判成重复。
+
+::: danger 本页没讲的一个坑
+`UNIQUE(channel, channel_txn)` 在 SQL 里对 `NULL` 不生效（多行 `NULL` 不算重复），这恰好是「未支付的单没有回单号」的正确语义。但如果你把 `channel_txn` 写成空串 `''` 而不是 `NULL`，第二笔未支付单就会撞键——**「NULL 帮上忙」这件事只在 `NULL` 上成立**。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

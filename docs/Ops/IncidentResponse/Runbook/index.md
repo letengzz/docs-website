@@ -246,6 +246,6 @@ grep -n "最后更新" docs/Ops/IncidentResponse/Runbook/index.md
 
 ## 参考资料
 
-- GB/T 28827.3-2012《信息技术服务 运行维护 第3部分：应急响应规范》（预案要素部分）
+- GB/T 28827.3—2012《信息技术服务 运行维护 第3部分：应急响应规范》（预案要素部分）
 - [混沌工程](../../ChaosEngineering/index.md) 与 [演练与预案校验](../Drill/index.md)（验证手册是否仍然有效的两种手段）
 - [CI/CD](../../../Tools/CICD/index.md)（回滚能力的建设归属）、[容器编排进阶](../../ContainerOrchestration/index.md)（滚动更新与健康检查的配置依据）

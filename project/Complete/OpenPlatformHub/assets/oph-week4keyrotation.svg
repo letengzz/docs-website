@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="470" viewBox="0 0 940 470" role="img" aria-label="密钥轮转的四个状态与两个窗口">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker>
+<marker id="ah-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/></marker>
+<marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/></marker>
+</defs>
+<rect x="0" y="0" width="940" height="470" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937" text-anchor="start">密钥轮转的四个状态与两个窗口</text>
+<text x="24" y="56" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start">重叠窗按客户端切换速度算：1,000 个客户端每小时切 8%，24 小时后仍有 13.5% 未切换</text>
+<rect x="60" y="94" width="180" height="52" rx="26" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.6"/>
+<text x="150" y="125" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">ACTIVE 主用</text>
+<rect x="340" y="94" width="180" height="52" rx="26" fill="#fef3c7" stroke="#b45309" stroke-width="1.6"/>
+<text x="430" y="125" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">GRACE 重叠窗</text>
+<rect x="610" y="94" width="180" height="52" rx="26" fill="#e5e7eb" stroke="#6b7280" stroke-width="1.6"/>
+<text x="700" y="125" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">RETIRED 已过期</text>
+<rect x="340" y="274" width="180" height="52" rx="26" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.6"/>
+<text x="430" y="305" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">REVOKED 紧急吊销</text>
+<line x1="242" y1="116" x2="338" y2="116" stroke="#0f766e" stroke-width="1.6" marker-end="url(#ah-t)"/>
+<text x="290" y="106" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#0f766e" text-anchor="middle">新键稳定后降级</text>
+<line x1="522" y1="116" x2="608" y2="116" stroke="#6b7280" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="565" y="106" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">窗结束</text>
+<line x1="430" y1="148" x2="430" y2="272" stroke="#b91c1c" stroke-width="1.6" marker-end="url(#ah-r)"/>
+<text x="444" y="214" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#b91c1c" text-anchor="start">泄露即吊销（可从任意状态）</text>
+<rect x="24" y="360" width="880" height="34" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.2"/>
+<text x="38" y="382" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#0f766e" text-anchor="start">观察窗：新键 ACTIVE → 旧键进 GRACE，至少跑完一个业务周期（对账日 / 结算日）</text>
+<rect x="24" y="404" width="880" height="34" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.2"/>
+<text x="38" y="426" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#b45309" text-anchor="start">重叠窗：grace_until − activated_at，本例 72 小时（未切换 &lt; 0.2%），24 小时会打断 13.5% 的调用方</text>
+<rect x="660" y="190" width="244" height="120" rx="8" fill="#ffffff" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="676" y="212" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#b91c1c" text-anchor="start">吊销延迟 = 缓存 TTL</text>
+<text x="676" y="232" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">60 s @ 200 rps</text>
+<text x="676" y="250" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">→ 12,000 次未授权请求</text>
+<text x="676" y="272" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">300 s → 60,000 次</text>
+<text x="676" y="292" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#b91c1c" text-anchor="start">吊销必须主动失效</text>
+</svg>

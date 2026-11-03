@@ -177,7 +177,7 @@ grep -c "^clean-" Makefile                        # 清理目标条数（应 ≥
 
 ## 十一、参考资料
 
-- GB/T 42460-2023《信息安全技术 个人信息去标识化效果评估指南》。
+- GB/T 42460—2023《信息安全技术 个人信息去标识化效果评估指南》。
 - Martin Fowler, *Test Data Builders* 与 *Object Mother* 两种模式的对比（测试数据构造的经典起点）。
 - Testcontainers for Java：<https://java.testcontainers.org/>
 - k6 文档中 `thresholds` 与 `scenarios` 的语义：<https://grafana.com/docs/k6/latest/>

@@ -1561,3 +1561,23 @@ export const ClinicalTrial = [
     ],
   },
 ];
+
+// 预约与资源档期工程
+export const AppointmentBooking = [
+  {
+    text: "预约与资源档期工程",
+    link: "/docs/Backend/AppointmentBooking/index.md",
+    items: [
+      { text: "总览：七段链与三个「还有没有位置」", link: "/docs/Backend/AppointmentBooking/Overview/index.md" },
+      { text: "档期与时段建模：容量五减项与半开区间", link: "/docs/Backend/AppointmentBooking/SlotModel/index.md" },
+      { text: "开档与放号：配额、节奏与预放撤回", link: "/docs/Backend/AppointmentBooking/Release/index.md" },
+      { text: "占量与并发：先查后改、条件更新与唯一键", link: "/docs/Backend/AppointmentBooking/Concurrency/index.md" },
+      { text: "占位与支付：六态五边、到期释放与回调乱序", link: "/docs/Backend/AppointmentBooking/Hold/index.md" },
+      { text: "改期与取消：两动作守恒与违约金阶梯", link: "/docs/Backend/AppointmentBooking/Reschedule/index.md" },
+      { text: "履约与核销：幂等写、爽约判定与超售临界", link: "/docs/Backend/AppointmentBooking/Checkin/index.md" },
+      { text: "候补与递补：通知几人、窗口多长、顺延几次", link: "/docs/Backend/AppointmentBooking/Waitlist/index.md" },
+      { text: "渠道同步与对账：四种差异形状与三口径", link: "/docs/Backend/AppointmentBooking/Reconcile/index.md" },
+      { text: "实战：九张表、四个触发器、十三条断言", link: "/docs/Backend/AppointmentBooking/Practice/index.md" },
+    ],
+  },
+];

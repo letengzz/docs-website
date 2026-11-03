@@ -184,7 +184,7 @@ echo "selfcheck_failures=$fail"
 
 ## 八、参考资料
 
-- GB/T 42460-2023《信息安全技术 个人信息去标识化效果评估指南》。
+- GB/T 42460—2023《信息安全技术 个人信息去标识化效果评估指南》。
 - Testcontainers 官方文档：<https://java.testcontainers.org/>
 - Microcks / WireMock / k6 官方文档（分别对应契约、桩、压测）。
 - 本专题其余页面：[总览](../Overview/index.md)、[数据脱敏](../DataMasking/index.md)、[数据工厂](../DataFactory/index.md)、[数据集版本化](../DatasetVersioning/index.md)、[环境隔离](../EnvironmentIsolation/index.md)、[契约仿真](../ContractSimulation/index.md)、[流量回放](../TrafficReplay/index.md)、[实战](../Practice/index.md)

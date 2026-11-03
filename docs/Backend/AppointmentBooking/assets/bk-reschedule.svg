@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-label="改期是两个动作，只做一个就是双占或丢位">
+<defs>
+<marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b45309"/></marker>
+<marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/></marker>
+</defs>
+<rect x="0" y="0" width="960" height="440" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">改期是两个动作，只做一个就是双占或丢位</text>
+<text x="24" y="56" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#6b7280">1,500 次改期实测：双占 563、丢位 637，净偏差只有 −74——账是平的，两端都错</text>
+<rect x="28" y="96" width="300" height="120" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+<text x="178" y="122" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#1f2937" text-anchor="middle">旧位</text>
+<rect x="52" y="140" width="110" height="56" rx="6" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="107" y="172" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#0f766e" text-anchor="middle">释放</text>
+<rect x="194" y="140" width="110" height="56" rx="6" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="249" y="172" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#0f766e" text-anchor="middle">占用</text>
+<text x="178" y="212" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">两个动作必须同事务</text>
+<line x1="336" y1="156" x2="420" y2="130" stroke="#b91c1c" stroke-width="1.6" marker-end="url(#ah-r)"/>
+<line x1="336" y1="176" x2="420" y2="216" stroke="#b45309" stroke-width="1.6" marker-end="url(#ah-a)"/>
+<rect x="428" y="96" width="260" height="68" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="444" y="118" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#b91c1c" text-anchor="start">只占新、没放旧 → 双占</text>
+<text x="444" y="138" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">563 条：容量少卖，但不会报错</text>
+<text x="444" y="155" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">可检测：同用户同档期两个有效单</text>
+<rect x="428" y="186" width="260" height="68" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.4"/>
+<text x="444" y="208" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#b45309" text-anchor="start">只放旧、没占新 → 丢位</text>
+<text x="444" y="228" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">637 条：顾客没位，且不可检测</text>
+<text x="444" y="245" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">那条预约看起来就是被取消了</text>
+<rect x="28" y="292" width="904" height="60" rx="8" fill="#ffffff" stroke="#6b7280" stroke-width="1.2"/>
+<text x="44" y="314" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#1f2937" text-anchor="start">净偏差 = 双占 − 丢位 = −74 ｜ 只比对总数的容量账看不出问题，两端各有几百个顾客体验是错的</text>
+<text x="44" y="336" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">默认选「双占」而不是「丢位」：双占是容量损失且可事后补偿，丢位是服务事故且无法补偿。</text>
+<rect x="28" y="366" width="904" height="56" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="44" y="388" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#1f2937" text-anchor="start">改期生成新单 + moved_from 自引用：改期链可倒查、次数可限流、违约金基准可固定</text>
+<text x="44" y="408" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">原地改 slot_id 会永久丢失原档期，且第 4 次改期与第 1 次在数据上一模一样。</text>
+</svg>

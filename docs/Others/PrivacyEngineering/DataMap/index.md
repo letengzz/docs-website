@@ -214,7 +214,7 @@ select p.tbl, p.col
 ## 参考资料
 
 - PostgreSQL 18 Documentation：*Information Schema*（`columns`、`table_constraints`）、*Pattern Matching*（POSIX 正则与 `~*`）
-- GB 11643-1999《公民身份号码》：18 位结构与 mod 11-2 校验
+- GB 11643—1999《公民身份号码》：18 位结构与 mod 11-2 校验
 - ISO/IEC 7812：银行卡号（PAN）结构与 Luhn 校验
 - NIST Privacy Framework 1.0：*Identify-P*（数据清单与映射）
 - 本仓库：[四个动作与五个必失点](../Overview/index.md)、[采集最小化与三种形态](../Minimization/index.md)

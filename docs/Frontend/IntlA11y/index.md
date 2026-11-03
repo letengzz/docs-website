@@ -19,7 +19,7 @@
 | WAI-ARIA 1.2 | W3C **正式推荐标准**（2023-06-06） | 角色、状态与属性的权威定义；ARIA 1.3 仍在推进中 |
 | ECMA-402（`Intl`） | 随 ECMAScript 年度版本发布 | `Intl.Segmenter` 自 **ES2022** 起为标准成员，`Intl.DurationFormat` 已进入 **ES2025** |
 | Unicode CLDR | 按固定节奏滚动发布 | 日期/数字/货币/复数规则的**事实来源**；浏览器与 Node 各自打包一份快照，因此同代码在不同环境可能给出不同结果 |
-| GB/T 37668-2019 | 现行国家标准 | 《信息技术 互联网内容无障碍可访问性技术要求与测试方法》，国内项目的常见引用口径 |
+| GB/T 37668—2019 | 现行国家标准 | 《信息技术 互联网内容无障碍可访问性技术要求与测试方法》，国内项目的常见引用口径 |
 | 法规面 | 欧盟《欧洲无障碍法案》自 **2025-06-28** 起适用；美国 DOJ 的 ADA 第二章网站规则分设 **2026 与 2027** 两个合规节点 | 具体适用范围与时间节点**以法规原文为准**，本文只作提示 |
 
 :::warning 版本口径提示
@@ -72,4 +72,4 @@
 - [W3C ARIA Authoring Practices Guide（APG）](https://www.w3.org/WAI/ARIA/apg/)
 - [MDN：`Intl` 命名空间](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl)
 - [Unicode CLDR 项目主页](https://cldr.unicode.org/)
-- [国家标准全文公开系统：GB/T 37668-2019](https://openstd.samr.gov.cn/)
+- [国家标准全文公开系统：GB/T 37668—2019](https://openstd.samr.gov.cn/)

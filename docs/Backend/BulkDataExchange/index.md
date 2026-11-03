@@ -64,7 +64,7 @@
 | CSV 标准 | RFC 4180（2005）：逗号分隔、双引号包裹、引号内 `""` 转义、字段内可含换行 | 这是「为什么不能用 `split(',')`」的规范依据。本机实测：含引号与换行的 5,000 行数据，按逗号切分错 **3,724 行（74.5%）**，`csv.reader` 错 0 行 |
 | 公式注入 | CWE-1236 `Improper Neutralization of Formula Elements in a CSV File`；OWASP 列出的危险首字符是 `=` `+` `-` `@` **以及 Tab(0x09)、CR(0x0D)、LF(0x0A)**，还包括部分**全角变体** | 导出的每一格都要过一遍前缀检查；但见下面的「两个都不能全信」 |
 | 公式注入的两种修法 | ① 单引号前缀 `'`（OWASP 传统建议）；② 引号包裹 + 制表符前缀（**Excel-resistant**，但制表符会成为数据的一部分） | 两者都有代价：单引号在 Excel「另存再打开」后**可能被去掉**；制表符会污染下程序解析。本机实测：20,000 个字段里 **522 个（2.61%）** 以危险字符开头，其中包含「+86 手机号」与「-5% 折扣」——**逃逸会改坏正常数据** |
-| 中文编码 | GB 18030-2022 为强制性国家标准，向下兼容 GBK/GB2312；UTF-8 无 BOM 是跨系统交换的事实默认 | 上传来的中文 CSV 有很大比例是 GBK。本机实测：GBK 字节流按 UTF-8 硬读，在**第 25 个字节**就抛 `UnicodeDecodeError`；带 BOM 的文件按 UTF-8 读，表头会变成 `'\ufeffid'`，按列名取值直接 `KeyError` |
+| 中文编码 | GB 18030—2022 为强制性国家标准，向下兼容 GBK/GB 2312；UTF-8 无 BOM 是跨系统交换的事实默认 | 上传来的中文 CSV 有很大比例是 GBK。本机实测：GBK 字节流按 UTF-8 硬读，在**第 25 个字节**就抛 `UnicodeDecodeError`；带 BOM 的文件按 UTF-8 读，表头会变成 `'\ufeffid'`，按列名取值直接 `KeyError` |
 | 数据库批量写 | PostgreSQL 的 `COPY`、MySQL 的 `LOAD DATA`、SQLite 的 `executemany` 都是「批越大越快、但事务越大回滚越贵」 | 实测 5 万行：批 100 / 1,000 / 10,000 → **289 / 89 / 62 ms**。批从 1,000 加到 10,000 只再快 1.4 倍，但一个坏行毁掉的行数从 1,000 变成 10,000 |
 | 时间与日期 | ISO 8601 的 `YYYY-MM-DD` 无歧义；`MM/DD/YYYY` 与 `DD/MM/YYYY` 有歧义 | 本机枚举 1..12 月 × 1..12 日共 144 种写法，其中 **132 种（91.7%）** 两种解释都合法——同一个 `03/04/2026` 在不同地区差一个月 |
 
@@ -123,7 +123,7 @@
 - CWE-1236《Improper Neutralization of Formula Elements in a CSV File》：<https://cwe.mitre.org/data/definitions/1236.html>
 - OWASP《CSV Injection》（危险首字符清单、两种缓解的取舍、Excel 另存后失效的行为）：<https://owasp.org/www-community/attacks/CSV_Injection>
 - OWASP WSTG《Testing for CSV Injection》：<https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Injection/21-CSV_Injection>
-- GB 18030-2022《信息技术 中文编码字符集》（强制性国家标准，向下兼容 GBK）：<https://openstd.samr.gov.cn/>
+- GB 18030—2022《信息技术 中文编码字符集》（强制性国家标准，向下兼容 GBK）：<https://openstd.samr.gov.cn/>
 - PostgreSQL 18 文档《COPY》（服务端批量导入与服务端文件权限）：<https://www.postgresql.org/docs/18/sql-copy.html>
 - MySQL 8.4 文档《LOAD DATA Statement》（`LOCAL`、`secure_file_priv`、字符集参数）：<https://dev.mysql.com/doc/refman/8.4/en/load-data.html>
 - Python 文档《csv — CSV File Reading and Writing》（`field_size_limit`、`QUOTE_*`、`newline=''` 的作用）：<https://docs.python.org/3/library/csv.html>

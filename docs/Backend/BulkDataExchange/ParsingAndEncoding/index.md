@@ -13,7 +13,7 @@
 | # | 段 | 输入 | 判据 | 猜错的后果 |
 | --- | --- | --- | --- | --- |
 | ① | 魔数识别 | 前 8 个字节 | `PK\x03\x04` → ZIP（xlsx/docx）、`\xd0\xcf\x11\xe0` → OLE2（xls）、`\xef\xbb\xbf` → UTF-8 BOM | 把 xlsx 当 CSV 读 → 一堆乱码但**不报错** |
-| ② | 编码判定 | 全文采样 | BOM 优先；无 BOM 则「显式声明 > 严格 UTF-8 试探 > GB18030 兜底」 | GBK 按 UTF-8 读 → 首个中文处抛错；BOM 未剥离 → 表头带 `\ufeff` |
+| ② | 编码判定 | 全文采样 | BOM 优先；无 BOM 则「显式声明 > 严格 UTF-8 试探 > GB 18030 兜底」 | GBK 按 UTF-8 读 → 首个中文处抛错；BOM 未剥离 → 表头带 `\ufeff` |
 | ③ | 方言判定 | 前 10 行 | 分隔符（`,` `;` `\t` 竖线）、引号符、是否含表头 | 用 `,` 切 `;` 分隔的文件 → 每行只有 1 个字段 |
 | ④ | 逐行切分 | 整个流 | RFC 4180 的引号与字段内换行 | `split(',')` → 含逗号的字段直接裂开 |
 | ⑤ | 归一化 | 每条记录 | 去空格、全角转半角、去千分位、单位换算 | `1,299` 与 `1299` 变成两个值 |
@@ -30,7 +30,7 @@
 | --- | --- | --- | --- |
 | **全靠猜** | 用 `chardet`/`charset-normalizer` 猜 | 用户零负担 | 短文件猜错率高；猜错时**不报错**，直接乱码入库 |
 | **强制声明** | 上传时必须选编码 / 文件内声明 | 判定明确 | 用户不知道自己的文件是什么编码（尤其 Windows 导出的 Excel CSV 默认是 GBK） |
-| **声明 + 严格试探 + 兜底** | 有声明用声明；无声明先严格 UTF-8，失败再 GB18030 | 两者兼得 | 实现复杂一点，但**错误可解释** |
+| **声明 + 严格试探 + 兜底** | 有声明用声明；无声明先严格 UTF-8，失败再 GB 18030 | 两者兼得 | 实现复杂一点，但**错误可解释** |
 
 推荐第三种，并把它写成一个函数：
 
@@ -240,7 +240,7 @@ def open_table(path: str, declared_enc: str | None = None,
 | 编号 | 看什么现象 | 判成什么 | 不满足时改哪里 |
 | --- | --- | --- | --- |
 | `BDP-A` | 类型判定是否基于魔数而非扩展名 | 靠后缀判断即失败 | 读前 8 字节，识别 ZIP/OLE2/BOM |
-| `BDP-B` | 编码判定顺序是否为「BOM > 声明 > 严格 UTF-8 > GB18030」 | 直接用 `utf-8` 打开即失败 | 按第二节实现 `detect_encoding` |
+| `BDP-B` | 编码判定顺序是否为「BOM > 声明 > 严格 UTF-8 > GB 18030」 | 直接用 `utf-8` 打开即失败 | 按第二节实现 `detect_encoding` |
 | `BDP-C` | BOM 是否被剥离（表头首字符无 `\ufeff`） | 表头含 `\ufeff` 即失败 | 用 `utf-8-sig` 或 `lstrip("\ufeff")` |
 | `BDP-D` | 是否使用符合 RFC 4180 的解析器，而非字符串切分 | 用 `split` 即失败 | 换 `csv.reader` / `OpenCSV` / `encoding/csv` |
 | `BDP-E` | 打开文件是否带 `newline=''`，且用 `reader.line_num` 计行号 | 用 `readlines()` 逐行即失败 | 改流式迭代，保留物理行号 |
@@ -253,7 +253,7 @@ def open_table(path: str, declared_enc: str | None = None,
 - RFC 4180《Common Format and MIME Type for Comma-Separated Values (CSV) Files》：<https://www.rfc-editor.org/rfc/rfc4180>
 - CWE-1236《Improper Neutralization of Formula Elements in a CSV File》：<https://cwe.mitre.org/data/definitions/1236.html>
 - OWASP《CSV Injection》（危险首字符含 Tab/CR/LF 与全角变体、两种缓解的取舍、Excel 另存后失效）：<https://owasp.org/www-community/attacks/CSV_Injection>
-- GB 18030-2022《信息技术 中文编码字符集》：<https://openstd.samr.gov.cn/>
+- GB 18030—2022《信息技术 中文编码字符集》：<https://openstd.samr.gov.cn/>
 - Python 文档《csv — CSV File Reading and Writing》（`field_size_limit`、`line_num`、`newline=''`）：<https://docs.python.org/3/library/csv.html>
 - Python 文档《zipfile — Work with ZIP archives》（`infolist()`、`compress_size`/`file_size`）：<https://docs.python.org/3/library/zipfile.html>
 - [文件契约：模板、列定义与版本](../FileContract/index.md)（编码声明写在契约里）

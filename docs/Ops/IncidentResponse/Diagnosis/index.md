@@ -215,7 +215,7 @@ grep -n "最近 2 小时\|变更清单\|发布记录" docs/Ops/IncidentResponse/
 
 ## 参考资料
 
-- GB/T 28827.3-2012《信息技术服务 运行维护 第3部分：应急响应规范》（应急处置流程部分）
+- GB/T 28827.3—2012《信息技术服务 运行维护 第3部分：应急响应规范》（应急处置流程部分）
 - [监控告警 · 告警设计](../../Monitoring/Alerting/index.md)（分层指标与告警的配合）、[日志体系](../../LogSystem/index.md)（现场证据的来源）
 - [网络基础](../../Network/index.md)（协议分层定位法）、[微服务 · 熔断与限流](../../../Backend/Microservices/CircuitBreaker/index.md)（自动止损与人工止损的接管关系）
 - [应急预案与运行手册](../Runbook/index.md)（本页判断动作的落地清单）

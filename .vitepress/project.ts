@@ -446,6 +446,7 @@ export const CompleteProject = [
           { text: "第 4 周第 5 步 · 交付包与交接手册：六件物料与 46 条判据（EPH-A~EPH-H）", link: "/project/Complete/OpenPlatformHub/Week4Handover/index.md" },
           { text: "第 4 周第 6 步 · 备份与恢复演练：六项一致性与 RPO 换算（EPJ-A~EPJ-H）", link: "/project/Complete/OpenPlatformHub/Week4Backup/index.md" },
           { text: "第 4 周第 7 步 · 灰度发布与版本回退闸门：四道判据与 schema 硬约束（EPK-A~EPK-H）", link: "/project/Complete/OpenPlatformHub/Week4RolloutGate/index.md" },
+          { text: "第 4 周第 8 步 · 密钥轮转与凭证吊销：四态两窗与可诊断的 401（EPZ-A~EPZ-H）", link: "/project/Complete/OpenPlatformHub/Week4KeyRotation/index.md" },
         ],
       },
       {

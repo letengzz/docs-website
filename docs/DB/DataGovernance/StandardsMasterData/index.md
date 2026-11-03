@@ -294,7 +294,7 @@ CREATE INDEX ON master_entity_xref (ent_id);
 ## 参考资料
 
 - DAMA-DMBOK（2nd Edition, Revised）「参考数据与主数据」知识领域：<https://www.dama.org/cpages/body-of-knowledge>
-- 国家标准 GB/T 36073-2025（DCMM 2.0）「数据标准」能力域：<https://openstd.samr.gov.cn/bzgk/gb/>
+- 国家标准 GB/T 36073—2025（DCMM 2.0）「数据标准」能力域：<https://openstd.samr.gov.cn/bzgk/gb/>
 - DataHub 词汇表（Glossary）与术语（Term）模型：<https://docs.datahub.com/docs/glossary/business-glossary>
 - OpenMetadata 术语表与指标定义：<https://docs.open-metadata.org/latest/how-to-guides/data-governance/glossary>
 - PostgreSQL 唯一约束与 `NOT NULL`（把标准写进 DDL 的机制）：<https://www.postgresql.org/docs/current/ddl-constraints.html>

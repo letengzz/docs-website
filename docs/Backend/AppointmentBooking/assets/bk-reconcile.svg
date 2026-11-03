@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" viewBox="0 0 960 400" role="img" aria-label="四种差异形状：先分类，再查人">
+<defs>
+</defs>
+<rect x="0" y="0" width="960" height="400" fill="#f8fafc"/>
+<text x="24" y="34" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" fill="#1f2937">四种差异形状：先分类，再查人</text>
+<text x="24" y="56" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#6b7280">81 条差异 / 23,534 条本地预约 = 0.344%，其中 77% 落在「漏传 + 重复」</text>
+<rect x="28" y="84" width="216" height="150" rx="8" fill="#ffffff" stroke="#b45309" stroke-width="1.4"/>
+<rect x="28" y="84" width="216" height="34" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.4"/>
+<text x="136" y="107" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">漏传 MISSING</text>
+<text x="136" y="152" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="700" fill="#b45309" text-anchor="middle">37</text>
+<text x="136" y="176" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">条</text>
+<text x="136" y="200" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#1f2937" text-anchor="middle">渠道有、本地无</text>
+<text x="136" y="220" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="middle">回调丢失 / 消费失败</text>
+<rect x="256" y="84" width="216" height="150" rx="8" fill="#ffffff" stroke="#6b7280" stroke-width="1.4"/>
+<rect x="256" y="84" width="216" height="34" rx="8" fill="#e5e7eb" stroke="#6b7280" stroke-width="1.4"/>
+<text x="364" y="107" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">多出 EXTRA</text>
+<text x="364" y="152" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="700" fill="#6b7280" text-anchor="middle">21</text>
+<text x="364" y="176" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">条</text>
+<text x="364" y="200" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#1f2937" text-anchor="middle">本地有、渠道无</text>
+<text x="364" y="220" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="middle">本地重复创建 / 渠道撤单</text>
+<rect x="484" y="84" width="216" height="150" rx="8" fill="#ffffff" stroke="#b91c1c" stroke-width="1.4"/>
+<rect x="484" y="84" width="216" height="34" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="592" y="107" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">重复 DUP</text>
+<text x="592" y="152" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="700" fill="#b91c1c" text-anchor="middle">14</text>
+<text x="592" y="176" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">条</text>
+<text x="592" y="200" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#1f2937" text-anchor="middle">渠道同一单推多次</text>
+<text x="592" y="220" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="middle">回调未去重</text>
+<rect x="712" y="84" width="216" height="150" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4"/>
+<rect x="712" y="84" width="216" height="34" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="820" y="107" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#1f2937" text-anchor="middle">时区 TZ</text>
+<text x="820" y="152" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="700" fill="#1d4ed8" text-anchor="middle">9</text>
+<text x="820" y="176" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="middle">条</text>
+<text x="820" y="200" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#1f2937" text-anchor="middle">同一单归到不同日</text>
+<text x="820" y="220" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" font-weight="400" fill="#6b7280" text-anchor="middle">切日口径不一致</text>
+<rect x="28" y="254" width="904" height="56" rx="8" fill="#ffffff" stroke="#6b7280" stroke-width="1.2"/>
+<text x="44" y="276" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#1f2937" text-anchor="start">对账键必须「主键 + 兜底」：先按 ext_id 匹配，匹配不上再按 (手机号, 档期) 兜底</text>
+<text x="44" y="296" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">只按 ext_id 匹配的系统，会把所有「渠道没回传单号」的单判成差异——而这类单占差异的绝大部分。</text>
+<rect x="28" y="322" width="904" height="60" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.2"/>
+<text x="44" y="344" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#1f2937" text-anchor="start">差异台账必须有 handled 字段（OPEN / FIXED / IGNORED）</text>
+<text x="44" y="364" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" font-weight="400" fill="#6b7280" text-anchor="start">对账的目的不是每天生成清单，是让每一条差异有归宿；没有归宿的清单，第三周就没人看了。</text>
+</svg>

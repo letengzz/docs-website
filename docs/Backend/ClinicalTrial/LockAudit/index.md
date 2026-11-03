@@ -162,7 +162,7 @@ BEGIN SELECT RAISE(ABORT, 'audit_log is append-only'); END;
 
 | 字段 | 类型 | 作用 |
 | --- | --- | --- |
-| `changed_at` | UTC ISO8601，精确到毫秒 | 人类可读的时刻 |
+| `changed_at` | UTC ISO 8601，精确到毫秒 | 人类可读的时刻 |
 | `mono_seq` | 单调递增整数（可由数据库序列生成） | 保证严格顺序，不受时钟影响 |
 | `tz_offset` | 原时区偏移 | 需要还原本地时间时用 |
 

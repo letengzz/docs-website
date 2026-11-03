@@ -79,7 +79,7 @@
 
 ### Q12：要不要照着 DCMM 2.0 建体系？
 
-**不要照着条款建平台，要用它反向核对空白。** 三份尺子的分工可以记成一句：**DAMA-DMBOK 回答「应该做什么」，DCMM 回答「做到了什么程度」，本专题回答「先做哪一步」**。DCMM 2.0（GB/T 36073-2025）自 2026-07-01 起实施，能力域 8 → 9、能力项 28 → 33、评估指标 441 → 486。
+**不要照着条款建平台，要用它反向核对空白。** 三份尺子的分工可以记成一句：**DAMA-DMBOK 回答「应该做什么」，DCMM 回答「做到了什么程度」，本专题回答「先做哪一步」**。DCMM 2.0（GB/T 36073—2025）自 2026-07-01 起实施，能力域 8 → 9、能力项 28 → 33、评估指标 441 → 486。
 
 ## 三、上线自查二十项
 
@@ -193,7 +193,7 @@
 ## 参考资料
 
 - DAMA International，*DAMA-DMBOK: Data Management Body of Knowledge*（2nd Edition, Revised）：<https://www.dama.org/cpages/body-of-knowledge>
-- 国家标准 GB/T 36073-2025（DCMM 2.0）发布公告：<https://www.stdaily.com/web/gdxw/2026-01/15/content_462215.html>
+- 国家标准 GB/T 36073—2025（DCMM 2.0）发布公告：<https://www.stdaily.com/web/gdxw/2026-01/15/content_462215.html>
 - DataHub 词汇表（Glossary）与术语模型：<https://docs.datahub.com/docs/glossary/business-glossary>
 - OpenLineage 规范（血缘事件与命名）：<https://openlineage.io/docs/spec>
 - Great Expectations（GX Core）文档与变更日志：<https://docs.greatexpectations.io/docs/changelog>

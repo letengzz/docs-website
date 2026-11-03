@@ -153,5 +153,5 @@ grep -c "不猜根因\|不甩锅\|不承诺时间" docs/Ops/IncidentResponse/Com
 
 - Google SRE 关于事件指挥体系（Incident Command System，IC / Ops Lead / Communications Lead / Scribe）的公开章节
 - PagerDuty 等值守平台公开的事件角色定义与「指挥不参与修复」的官方说明
-- GB/T 28827.3-2012《信息技术服务 运行维护 第3部分：应急响应规范》（组织与职责部分）
+- GB/T 28827.3—2012《信息技术服务 运行维护 第3部分：应急响应规范》（组织与职责部分）
 - [故障定级](../Severity/index.md)（指挥的定级权来源）、[应急预案与运行手册](../Runbook/index.md)（指挥执行的依据）

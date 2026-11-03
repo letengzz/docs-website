@@ -61,7 +61,7 @@
 | dbt Core | **1.11.12**（2026-07 口径） | Rust 版 `2.0.0-alpha` 在开发中（dbt Fusion 的基础）；YAML 键已改为 `data_tests:`（`tests:` 仍兼容）；`dbt test --resource-type test` 只跑数据测试 |
 | Soda Core | **4.25.0**（2026-09-23） | **v4 把数据契约作为默认写法**（从 SodaCL checks 转向 contract 语法，破坏性变更）；需 Python 3.10+；CLI 退出码 0 = 通过 / 2 = 失败，warn-only 不失败 |
 | Pandera | 0.32.0 起 Narwhals 后端 | 跨 Polars / Ibis / PySpark SQL 的惰性校验，适合在**数据帧这一层**做契约 |
-| DCMM 国家标准 | **GB/T 36073-2025（DCMM 2.0）**，2026-07-01 实施 | 取代 GB/T 36073-2018；能力域 **8 → 9**（新增「数据资产」）、能力项 28 → 33、评估指标 441 → 486；五级成熟度不变 |
+| DCMM 国家标准 | **GB/T 36073—2025（DCMM 2.0）**，2026-07-01 实施 | 取代 GB/T 36073—2018；能力域 **8 → 9**（新增「数据资产」）、能力项 28 → 33、评估指标 441 → 486；五级成熟度不变 |
 | DAMA-DMBOK | **2.0（2nd Edition, Revised）** | 11 个知识领域；与 DCMM 的关系是「**该做什么**」对「**做到了什么程度**」 |
 
 ::: warning 说明
@@ -73,7 +73,7 @@
 按仓库约定「涉及大版本时按版本目录组织、旧版本保留并标注状态，不覆盖旧内容」，本专题的处理方式是**不建版本目录**，理由有三条：
 
 1. **主题不是某一个产品**。本专题讲的是「跨系统的资产与口径怎么被管住」这一层方法，Apache Atlas、DataHub、OpenMetadata、GX Core、dbt 都是它的实例。为其中任何一个产品建版本目录，都会让另外几个失去位置。
-2. **标准的新旧版本不是并行维护的第二条内容线**。DCMM 确实存在 GB/T 36073-2018 与 2025 两个版本，但旧版是**被替代**而不是**被并存支持**（不像 Spring 5 与 Spring 6 需要两条工程做法长期同在）；把 2018 版单独立一套目录，只会让读者读到一份没人再评估的尺子。差异一律在正文用 `::: info` 标注「该口径适用于哪个版本区间」。
+2. **标准的新旧版本不是并行维护的第二条内容线**。DCMM 确实存在 GB/T 36073—2018 与 2025 两个版本，但旧版是**被替代**而不是**被并存支持**（不像 Spring 5 与 Spring 6 需要两条工程做法长期同在）；把 2018 版单独立一套目录，只会让读者读到一份没人再评估的尺子。差异一律在正文用 `::: info` 标注「该口径适用于哪个版本区间」。
 3. **拆目录会产生大量重复**。元数据、血缘、质量、标准四根支柱在标准的新旧版本里是同一套东西，拆开等于把同一套内容写两遍，与「不做重复章节」的约定直接冲突。
 
 因此：**旧版本口径一律保留、不删除**。需要按版本目录组织的主题，是那些**工程做法必须分开写**的破坏性变化（`javax` → `jakarta` 这类），本仓库内已有范例可参照：[Spring 5 / Spring 6](/docs/Backend/Java/Frame/Spring/Spring6/index.md)、[Vue 2 / Vue 3](/docs/Frontend/Frame/Vue/Vue3/index.md)、Spring Boot [v2](/docs/Backend/Java/Frame/SpringBoot/v2/index.md) / [v3](/docs/Backend/Java/Frame/SpringBoot/v3/index.md) / [v4](/docs/Backend/Java/Frame/SpringBoot/v4/index.md)。
@@ -184,7 +184,7 @@
 
 - DAMA International，*DAMA-DMBOK: Data Management Body of Knowledge*（2nd Edition, Revised）：<https://www.dama.org/cpages/body-of-knowledge>
 - 国家标准全文公开系统（GB/T 36073 系列）：<https://openstd.samr.gov.cn/bzgk/gb/>
-- DCMM 2.0（GB/T 36073-2025）发布公告：<https://www.stdaily.com/web/gdxw/2026-01/15/content_462215.html>
+- DCMM 2.0（GB/T 36073—2025）发布公告：<https://www.stdaily.com/web/gdxw/2026-01/15/content_462215.html>
 - Apache Atlas 官方下载页（版本与发布日期权威出处）：<https://atlas.apache.org/#/Downloads>
 - ASF 理事会纪要（Atlas 项目季度报告）：<https://www.apache.org/foundation/board/minutes/>
 - DataHub 官方文档与发布说明：<https://docs.datahub.com/docs/releases>

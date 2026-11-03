@@ -462,7 +462,7 @@ done < urls.txt
 ## 参考资料
 
 - DAMA International，*DAMA-DMBOK: Data Management Body of Knowledge*（2nd Edition, Revised）：<https://www.dama.org/cpages/body-of-knowledge>
-- 国家标准 GB/T 36073-2025（DCMM 2.0）发布公告：<https://www.stdaily.com/web/gdxw/2026-01/15/content_462215.html>
+- 国家标准 GB/T 36073—2025（DCMM 2.0）发布公告：<https://www.stdaily.com/web/gdxw/2026-01/15/content_462215.html>
 - SQLite 官方文档（本页 V1~V3 的验证环境；窗口函数与 `FILTER` 自 3.30 起可用）：<https://www.sqlite.org/docs.html>
 - curl 官方手册（`--write-out` 变量 `%{http_code}` / `%{num_redirects}` / `%{url_effective}`）：<https://curl.se/docs/manpage.html>
 - DataHub 词汇表与所有权模型：<https://docs.datahub.com/docs/glossary/business-glossary>

@@ -267,6 +267,21 @@ jdbcTemplate.execute("select set_config('app.tenant_id', ?, true)", TenantContex
 
 **一页一坑**：租户过滤放在应用层、区域过滤放在 SQL 里，看起来都做了，实际缓存键通常只含 `tenant_id` 不含 `scope`——同一租户下 A 区域的结果会被 B 区域命中。本机读数：应见 6,811 行，实见 33,858 行。见[权限与行级过滤](../../MetricPlatform/Access/index.md)。
 
+## 与「预约与资源档期工程」专题的分工（第 245 天补充）
+
+| 隔壁那一册 | 它回答什么 | 本页不重复讲 |
+| --- | --- | --- |
+| [预约与资源档期工程](../../AppointmentBooking/Release/index.md) | 连锁品牌的门店组**配额切分** | 租户上下文与行级隔离 |
+| 本页 | 租户身份怎么进作用域、怎么防串租户 | 资源与配额的分配算法 |
+| [组织与任职](../../OrgPeople/Overview/index.md) | 组织层级与归属变更 | 门店组与资源组 |
+| [指标平台](../../MetricPlatform/Overview/index.md) | 口径契约与跨租户汇总 | 可售量的指标定义 |
+
+一句话结论：**租户隔离保证「看不到别人的数据」，保证不了「配额之和等于容量」**。后者是分配算法的问题：配额必须存绝对值，由一次分配保证各渠道之和等于容量。
+
+::: danger 本页没讲的一个坑
+按百分比存配额（`quota_pct = 0.4`）在容量变化时会因四舍五入产生尾差，实测四个渠道加起来可能多出或少 1~3 个位。**跨租户汇总可售量时，这个尾差会被放大成「平台侧显示有、门店侧卖不出」**。
+:::
+
 ## 参考资料
 
 - PostgreSQL 18 Documentation：*SET*（`LOCAL` 的作用域与事务边界）、*System Administration Functions*（`set_config` 的第三个参数）、*Row Security Policies*（策略表达式的求值身份）
