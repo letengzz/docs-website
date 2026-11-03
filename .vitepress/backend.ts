@@ -1480,3 +1480,24 @@ export const ExpenseReimbursement = [
     ],
   },
 ];
+
+
+// 指标平台与语义层工程
+export const MetricPlatform = [
+  {
+    text: "指标平台与语义层工程",
+    link: "/docs/Backend/MetricPlatform/index.md",
+    items: [
+      { text: "总览：七段链与三个「同一个数」", link: "/docs/Backend/MetricPlatform/Overview/index.md" },
+      { text: "指标定义与口径契约", link: "/docs/Backend/MetricPlatform/Definition/index.md" },
+      { text: "版本、生效期与回溯", link: "/docs/Backend/MetricPlatform/Version/index.md" },
+      { text: "语义层与查询编译", link: "/docs/Backend/MetricPlatform/Compile/index.md" },
+      { text: "预聚合、物化与可加性", link: "/docs/Backend/MetricPlatform/Aggregate/index.md" },
+      { text: "血缘与影响面", link: "/docs/Backend/MetricPlatform/Lineage/index.md" },
+      { text: "权限、行级过滤与脱敏", link: "/docs/Backend/MetricPlatform/Access/index.md" },
+      { text: "双口径对账与差异归因", link: "/docs/Backend/MetricPlatform/Reconcile/index.md" },
+      { text: "实战：七张表、四个触发器、九条断言", link: "/docs/Backend/MetricPlatform/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/MetricPlatform/FAQ/index.md" },
+    ],
+  },
+];

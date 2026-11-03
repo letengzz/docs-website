@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330" role="img" aria-label="对账：78 单差在哪一类">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<title>对账：78 单差在哪一类</title>
+<rect x="0" y="0" width="960" height="330" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">对账：78 单差在哪一类</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">UTC 预聚合 16,325 vs 东八区明细 16,247，差 0.478%——先归因，再决定改哪边</text>
+<rect x="40" y="92" width="260" height="74" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="56" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">平台（UTC 切日）</text>
+<text x="56" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#0369a1" font-weight="700" text-anchor="start">16,325 单 / 4~6 月</text>
+<rect x="660" y="92" width="260" height="74" rx="8" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="676" y="116" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">手工 SQL（东八区）</text>
+<text x="676" y="140" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#15803d" font-weight="700" text-anchor="start">16,247 单 / 4~6 月</text>
+<line x1="312" y1="129" x2="648" y2="129" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="480" y="120" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#be123c" font-weight="700" text-anchor="middle">差 78 单（0.478%）</text>
+<rect x="60" y="196" width="200" height="62" rx="8" fill="#fecdd3" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="72" y="220" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="start">时区切日</text>
+<text x="72" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">62 单</text>
+<rect x="276" y="196" width="200" height="62" rx="8" fill="#fde68a" stroke="#fde68a" stroke-width="1.5"/>
+<text x="288" y="220" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="start">迟到数据</text>
+<text x="288" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">9 单</text>
+<rect x="492" y="196" width="200" height="62" rx="8" fill="#bae6fd" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="504" y="220" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="start">取消单口径</text>
+<text x="504" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">5 单</text>
+<rect x="708" y="196" width="200" height="62" rx="8" fill="#ddd6fe" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="720" y="220" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="start">重复计量</text>
+<text x="720" y="244" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#0f172a" font-weight="700" text-anchor="start">2 单</text>
+<text x="40" y="286" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">四类差异的处理方式不同：时区改口径（一次改完）、迟到重算（每天跑）、取消单改业务规则（要签字）、重复修主键（要补唯一键）。</text>
+<text x="40" y="308" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="600" text-anchor="start">对账的价值不在「差多少」，而在「差的是哪一类」——分类之后每一类都指向一个可执行的动作。</text>
+</svg>

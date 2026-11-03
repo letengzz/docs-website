@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img" aria-label="实战：七张表与三个触发器">
+<title>实战：七张表与三个触发器</title>
+<rect x="0" y="0" width="960" height="380" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">实战：七张表与三个触发器</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">metric / metric_version / agg_cache / metric_lineage / metric_grant / query_log / recon_result</text>
+<rect x="40" y="88" width="420" height="48" rx="6" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="54" y="109" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">metric</text>
+<text x="54" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">指标主档：单位、可加性、归属</text>
+<rect x="40" y="148" width="420" height="48" rx="6" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="54" y="169" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">metric_version</text>
+<text x="54" y="186" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">口径与生效期（区间不重叠）</text>
+<rect x="40" y="208" width="420" height="48" rx="6" fill="#fef9c3" stroke="#fde047" stroke-width="1.5"/>
+<text x="54" y="229" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">agg_cache</text>
+<text x="54" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">预聚合结果（键 = 指标+版本+粒度+期间）</text>
+<rect x="40" y="268" width="420" height="48" rx="6" fill="#ede9fe" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="54" y="289" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">metric_lineage</text>
+<text x="54" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">字段 → 指标的血缘边</text>
+<rect x="512" y="88" width="420" height="48" rx="6" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="526" y="109" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">metric_grant</text>
+<text x="526" y="126" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">角色 × 指标 × 行过滤</text>
+<rect x="512" y="148" width="420" height="48" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="526" y="169" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">query_log</text>
+<text x="526" y="186" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">谁在什么时候查了哪个版本</text>
+<rect x="512" y="208" width="420" height="48" rx="6" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="526" y="229" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">recon_result</text>
+<text x="526" y="246" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">双口径对账与差异归因</text>
+<rect x="512" y="268" width="420" height="48" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="526" y="289" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="start">三个触发器</text>
+<text x="526" y="306" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">版本不重叠 / 不可加不上卷 / 授权必有过滤</text>
+<text x="40" y="348" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">五条一致性断言 C1~C5 全 0，四个负向用例 4/4 被拦住，退出码 0——本机实测（种子 20261103）。</text>
+</svg>

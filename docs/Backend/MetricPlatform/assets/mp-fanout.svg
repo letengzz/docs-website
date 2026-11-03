@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330" role="img" aria-label="fan-out：一行变三行，金额放大 1.663 倍">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<title>fan-out：一行变三行，金额放大 1.663 倍</title>
+<rect x="0" y="0" width="960" height="330" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">fan-out：一行变三行，金额放大 1.663 倍</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">join 明细是为了取商品维度，但 sum 的是订单金额——重复计数就此发生</text>
+<text x="40" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#64748b" font-weight="600" text-anchor="start">订单表（1 行）</text>
+<rect x="40" y="104" width="200" height="60" rx="8" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="54" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="start">order_id = 9001</text>
+<text x="54" y="150" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">amount = 1,200.00</text>
+<text x="320" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#64748b" font-weight="600" text-anchor="start">明细表（3 行）</text>
+<rect x="320" y="104" width="230" height="38" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="334" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">A-01   ×1   400.00</text>
+<rect x="320" y="150" width="230" height="38" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="334" y="174" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">B-07   ×2   500.00</text>
+<rect x="320" y="196" width="230" height="38" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="334" y="220" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">C-12   ×1   300.00</text>
+<line x1="244" y1="134" x2="312" y2="134" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="620" y="92" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#64748b" font-weight="600" text-anchor="start">join 之后</text>
+<rect x="620" y="104" width="300" height="60" rx="8" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="636" y="128" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#be123c" font-weight="700" text-anchor="start">3 行 × amount 1,200.00</text>
+<text x="636" y="150" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#be123c" font-weight="400" text-anchor="start">sum = 3,600.00（放大 3 倍）</text>
+<line x1="556" y1="134" x2="612" y2="134" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="40" y="226" width="880" height="76" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="58" y="250" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="600" text-anchor="start">六种正确解法：① 先聚合明细再 join ② 用 distinct 子查询取维度 ③ 明细侧只取维度键不去重金额</text>
+<text x="58" y="270" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">④ 语义层声明「金额属于订单粒度」，禁止跨粒度直接 sum ⑤ 编译期做粒度校验 ⑥ 让 fan-out 变成可见的告警而不是静默</text>
+<text x="58" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#9a3412" font-weight="600" text-anchor="start">本机实测：33,858 单 join 56,167 行后，毛额从 73,428,377.31 涨到 122,145,154.05，比率 1.663。</text>
+</svg>

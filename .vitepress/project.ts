@@ -443,6 +443,7 @@ export const CompleteProject = [
           { text: "第 4 周第 2 步 · 监控与告警接线：会响、会停、不重复（EPM-A~EPM-H）", link: "/project/Complete/OpenPlatformHub/Week4Monitoring/index.md" },
           { text: "第 4 周第 3 步 · 容量账与单位成本：1,236 元/月与 24.72M 平衡点（EPN-A~EPN-H）", link: "/project/Complete/OpenPlatformHub/Week4Cost/index.md" },
           { text: "第 4 周第 4 步 · 上线验收单：六区 28 行与三条拒签规则（EPG-A~EPG-H）", link: "/project/Complete/OpenPlatformHub/Week4Acceptance/index.md" },
+          { text: "第 4 周第 5 步 · 交付包与交接手册：六件物料与 46 条判据（EPH-A~EPH-H）", link: "/project/Complete/OpenPlatformHub/Week4Handover/index.md" },
         ],
       },
       {

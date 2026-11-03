@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="960" height="340" role="img" aria-label="口径四写法：同一份数据，四个结果">
+<title>口径四写法：同一份数据，四个结果</title>
+<rect x="0" y="0" width="960" height="340" fill="#ffffff"/>
+<text x="28" y="34" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#0f172a" font-weight="700">口径四写法：同一份数据，四个结果</text>
+<text x="28" y="56" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#475569">毛额 / 净额 / 含取消 / 明细求和——差 0.20 元的那一对才是真问题</text>
+<rect x="90" y="117" width="120" height="153" rx="4" fill="#bbf7d0" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="150" y="107" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="middle">72,252,589.64</text>
+<text x="150" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="middle">净额 sum(amount-refund)</text>
+<text x="150" y="308" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#15803d" font-weight="600" text-anchor="middle">相对净额 +0.00%</text>
+<rect x="300" y="114" width="120" height="156" rx="4" fill="#bae6fd" stroke="#bae6fd" stroke-width="1.5"/>
+<text x="360" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="middle">73,428,377.31</text>
+<text x="360" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="middle">毛额 sum(amount)</text>
+<text x="360" y="308" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0369a1" font-weight="600" text-anchor="middle">相对净额 +1.63%</text>
+<rect x="510" y="110" width="120" height="160" rx="4" fill="#fde68a" stroke="#fde68a" stroke-width="1.5"/>
+<text x="570" y="100" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="middle">75,314,530.48</text>
+<text x="570" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="middle">含取消单</text>
+<text x="570" y="308" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#b45309" font-weight="600" text-anchor="middle">相对净额 +4.24%</text>
+<rect x="720" y="114" width="120" height="156" rx="4" fill="#fecdd3" stroke="#fecdd3" stroke-width="1.5"/>
+<text x="780" y="104" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#0f172a" font-weight="700" text-anchor="middle">73,428,377.11</text>
+<text x="780" y="290" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="middle">明细表求和</text>
+<text x="780" y="308" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#be123c" font-weight="600" text-anchor="middle">相对净额 +1.63%</text>
+<line x1="70" y1="272" x2="900" y2="272" stroke="#cbd5e1" stroke-width="1"/>
+<rect x="70" y="292" width="830" height="38" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="86" y="316" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#9a3412" font-weight="600" text-anchor="start">「毛额」与「明细求和」只差 0.20 元：逐行按权重拆分订单金额时的舍入残差。金额对得上、明细对不上，是最难查的一类。</text>
+</svg>

@@ -64,3 +64,4 @@
 - [理赔作业与赔付计算工程](ClaimsProcessing/index.md)
 - [培训与资质认证工程](TrainingQualification/index.md)
 - [费用报销与差旅费控工程](ExpenseReimbursement/index.md)
+- [指标平台与语义层工程](MetricPlatform/index.md)
