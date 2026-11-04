@@ -71,6 +71,8 @@
 - [考勤排班与工时核算工程](TimeAttendance/index.md)
 - [承保与保单管理工程](UnderwritingPolicy/index.md)
 - [质量管理工程](QualityManagement/index.md)
+- [反洗钱与可疑交易监测工程](AMLCompliance/index.md)
 - [学籍、选课与排课工程](AcademicAffairs/index.md)
 - [配置、定价与报价工程](CPQ/index.md)
 - [招投标与电子采购交易工程](BiddingTender/index.md)
+- [招聘与人才获取工程](Recruiting/index.md)

@@ -163,6 +163,28 @@ python3 utils/audit/judgeidcheck.py --root . | tail -1
 
 → 教务侧的完整链路见[学籍、选课与排课工程](../../AcademicAffairs/index.md)。
 
+## 与「招聘与人才获取工程」专题的分工（第 253 天补充）
+
+两册共同管一个人，但管的是**两个不同身份的两段人生**。招聘册的尽头是一条 `offer.status = 'accepted'`，本册的开头是一条 `employment.start_date`；中间那道门是「入职当天」，跨过去才换 ID。
+
+| 问题 | 本册（组织与任职） | 招聘与人才获取册 |
+| --- | --- | --- |
+| 这个人是谁 | **判**：`employee_no`（164 个，按人去重后） | **判**：`candidate_id`（2,400 个），未入职前只存在于此 |
+| 他在哪个部门 | **判**：`org_unit` + 任职区间 `as_of` | 不判，只带 `position_id` 做需求归属 |
+| 编制够不够 | **判**：编制四口径（在编/占用/冻结/缺口） | **判**：`hc_total` / `hc_filled` / `hc_inflight` 三水位 |
+| 岗位从哪来 | **判**：岗位主数据是唯一权威 | 只读 `position_id`，**不建岗位** |
+| 任职从哪天起算 | **判**：`employment.start_date`，由入职手续敲定 | 只给 `offer.start_date`（**期望**报到日），不写任职 |
+
+两个册子都存「人」，但**没有一行数据是共享写入的**。招聘册全程只读岗位主数据；本册从不读 `candidate_id`，入职时由 `Handoff` 环节把 `candidate_id` 转成 `employee_no` 并落一条来源渠道字段（内推 / 平台 / 猎头…），此后两边只靠 `employee_no` 对齐。
+
+::: danger 一个只在本页成立的坑
+**把 `offer.status = 'accepted'` 当成「已在编」。** 本机读数是 171 人接受、159 人实际到岗——中间 12 人（7.02%）里 9 人爽约、3 人背调不通过。若用「已接受」初始化 `employment`，本册会凭空多出 12 条任职记录，且它们的 `start_date` 全都落在过去，编制立刻被虚占；更糟的是这 12 条幽灵任职会进入花名册、进入算薪范围、进入组织人数统计，而反向修正时已经分不清「哪 12 条是真的迟到了」还是「哪 12 条根本没来」。
+
+正确做法是**只以入职手续的完成为写入触发点**（`Handoff` 的 T+0 五条验收），`hc_inflight`（在途）留在招聘册，永远不跨册成本册的在编。
+:::
+
+延伸阅读：[需求与编制三水位](../../Recruiting/Requisition/index.md)、[Offer 与超发](../../Recruiting/Offer/index.md)、[入职交接：四断点](../../Recruiting/Handoff/index.md)。
+
 ## 参考资料
 
 - [组织单元：三种存法与搬迁代价](../OrgModel/index.md)

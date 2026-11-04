@@ -1622,6 +1622,26 @@ export const QualityManagement = [
   },
 ];
 
+// 反洗钱与可疑交易监测工程
+export const AMLCompliance = [
+  {
+    text: "反洗钱与可疑交易监测工程",
+    link: "/docs/Backend/AMLCompliance/index.md",
+    items: [
+      { text: "总览：七段链与三个「可疑」", link: "/docs/Backend/AMLCompliance/Overview/index.md" },
+      { text: "客户尽职调查与受益所有人", link: "/docs/Backend/AMLCompliance/DueDiligence/index.md" },
+      { text: "名单与制裁筛查", link: "/docs/Backend/AMLCompliance/Screening/index.md" },
+      { text: "交易监测规则与窗口", link: "/docs/Backend/AMLCompliance/Monitoring/index.md" },
+      { text: "预警分诊与案件", link: "/docs/Backend/AMLCompliance/AlertTriage/index.md" },
+      { text: "调查取证与资金网络", link: "/docs/Backend/AMLCompliance/CaseInvestigation/index.md" },
+      { text: "大额与可疑报送", link: "/docs/Backend/AMLCompliance/Reporting/index.md" },
+      { text: "治理、指标与回溯", link: "/docs/Backend/AMLCompliance/Governance/index.md" },
+      { text: "实战：九张表、五个触发器、十八条断言", link: "/docs/Backend/AMLCompliance/Practice/index.md" },
+      { text: "常见问题与自查清单", link: "/docs/Backend/AMLCompliance/FAQ/index.md" },
+    ],
+  },
+];
+
 // 学籍、选课与排课工程
 export const AcademicAffairs = [
   {
@@ -1678,6 +1698,26 @@ export const BiddingTender = [
       { text: "定标、公示与合同：三个 3 日、一个 30 日", link: "/docs/Backend/BiddingTender/Award/index.md" },
       { text: "围标串标识别：召回 65% 的规则看起来最准", link: "/docs/Backend/BiddingTender/Collusion/index.md" },
       { text: "实战：11 表 + 8 触发器 + 19 条断言", link: "/docs/Backend/BiddingTender/Practice/index.md" },
+    ],
+  },
+];
+
+// 招聘与人才获取工程
+export const Recruiting = [
+  {
+    text: "招聘与人才获取工程",
+    link: "/docs/Backend/Recruiting/index.md",
+    items: [
+      { text: "总览：七段链与三个「同一个人」", link: "/docs/Backend/Recruiting/Overview/index.md" },
+      { text: "招聘需求与编制：编制是一条会被消耗的水位线", link: "/docs/Backend/Recruiting/Requisition/index.md" },
+      { text: "渠道、人才库与归因：量的冠军不是质的冠军", link: "/docs/Backend/Recruiting/Sourcing/index.md" },
+      { text: "简历解析与筛选：筛掉的 2,081 条里有 333 条误杀", link: "/docs/Backend/Recruiting/Screening/index.md" },
+      { text: "面试排期与日历：排一场要 23 次尝试", link: "/docs/Backend/Recruiting/Interview/index.md" },
+      { text: "评估、评分卡与校准：3 分宽严换掉半个及格名单", link: "/docs/Backend/Recruiting/Evaluation/index.md" },
+      { text: "Offer 与录用审批：超发倍数只由接受率决定", link: "/docs/Backend/Recruiting/Offer/index.md" },
+      { text: "背调与入职交接：账面 100% 与实际 92.98%", link: "/docs/Backend/Recruiting/Handoff/index.md" },
+      { text: "常见问题与自查清单：十二问 + 十二条", link: "/docs/Backend/Recruiting/FAQ/index.md" },
+      { text: "实战：10 表 + 4 触发器 + 22 条断言", link: "/docs/Backend/Recruiting/Practice/index.md" },
     ],
   },
 ];
