@@ -73,3 +73,4 @@
 - [质量管理工程](QualityManagement/index.md)
 - [学籍、选课与排课工程](AcademicAffairs/index.md)
 - [配置、定价与报价工程](CPQ/index.md)
+- [招投标与电子采购交易工程](BiddingTender/index.md)

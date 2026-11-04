@@ -55,7 +55,7 @@
 
 | 周 | 目标 | 验收（必须能跑） |
 | --- | --- | --- |
-| 第 1 周（251-257） | 需求拆分、技术选型、架构边界、接口契约、库表设计 | 十二张表 DDL 可执行；六条不变量各有一次「被拦住」的实测；四条契约能被 mock 跑通（第 251 天已交付需求与领域边界，六条不变量 6/6 PASS） |
+| 第 1 周（251-257） | 需求拆分、技术选型、架构边界、接口契约、库表设计 | 十二张表 DDL 可执行；六条不变量各有一次「被拦住」的实测；四条契约各有一次「被拒」的实测（第 251 天交付需求与领域边界 6/6 PASS；第 252 天交付架构边界与四条契约 4/4 PASS） |
 | 第 2 周（258-264） | 核心编码 | 报名、进度上报、组卷三个接口可调通，能跑通一次「报名 → 学完必修 → 开考」 |
 | 第 3 周（265-271） | 联调与测试 | 判分口径与并发交卷的用例矩阵全绿；重复交卷、成绩篡改两类攻击被拦住 |
 | 第 4 周（272-280） | 部署与验收 | 一键起（`make up`）；上线验收清单逐条实测；干净目录能从零复现 |
@@ -65,8 +65,9 @@
 | 天 | 步骤 | 章节 | 判据族 | 条数 |
 | --- | --- | --- | --- | --- |
 | 251 | 第 1 周第 1 步 | [需求与领域边界：八条故事、十二张表、六条不变量](Requirements/index.md) | `LNH-A` ~ `LNH-H` | 8 |
+| 252 | 第 1 周第 2 步 | [架构边界与四条契约：把「模块划分」写成能拦住人的东西](Architecture/index.md) | `LNA-A` ~ `LNA-H` | 8 |
 
-> 第 1 周第 1 步已交付：八条用户故事（每条带一条可判定验收）、十二张表 DDL（本机建库 1.27 ms）、六条不变量（4 个触发器 + 1 个部分唯一索引 + 1 个 `CHECK`，实测 6/6 全部拦住）、四条接口契约草案。每章都包含「当日做了什么 / 如何验证 / 下一步是什么」。
+> **第 1 周进度 2/5**：第 1 步交付八条用户故事（每条带一条可判定验收）、十二张表 DDL（本机建库 1.27 ms）、六条不变量（4 个触发器 + 1 个部分唯一索引 + 1 个 `CHECK`，实测 6/6 全部拦住）、四条契约草案；第 2 步把四条契约写成可执行的约束（`UNIQUE` / 触发器），四个负向用例 4/4 被拒、`EXIT=0`，并定下四个模块的单向依赖与同步判分链。每章都包含「当日做了什么 / 如何验证 / 下一步是什么」。
 
 ## 六、判据纪律
 
@@ -85,14 +86,17 @@
 
 ```shell
 # 1. 目录与配图齐全
-ls project/Complete/LearningHub            # 期望：index.md Requirements assets
-ls project/Complete/LearningHub/assets     # 期望：lh-roadmap.svg lh-domain.svg
+ls project/Complete/LearningHub            # 期望：index.md Requirements Architecture assets
+ls project/Complete/LearningHub/assets     # 期望：lh-roadmap.svg lh-domain.svg lh-arch.svg
 
 # 2. 十二张表能建出来、六条不变量全部拦得住
 python3 lh_req.py; echo "EXIT=$?"
 # 期望：INVARIANT 6/6 PASS / EXIT=0
 
-# 3. project/ 下不允许出现代码文件
+# 3. 架构章的四条契约（期望 4 个 PASS / EXIT=0）
+python3 lh_arch.py | grep -c "^PASS"; echo "EXIT=$?"
+
+# 4. project/ 下不允许出现代码文件
 find project -type f ! -name "*.md" ! -name "*.png" ! -name "*.svg" ! -name "*.jpg"
 # 期望：输出为空
 ```

@@ -262,6 +262,21 @@ WHERE o.status = 'PAID'
 
 → 临床侧的完整链路见[盲态与揭盲：四道闸与破盲处置](../../ClinicalTrial/BlindMaintenance/index.md)。
 
+## 与「招投标与电子采购交易工程」专题的分工（第 252 天补充）
+
+| 关注点 | 本册（权限模型） | 招投标专题 |
+| --- | --- | --- |
+| 回答的问题 | 「这个人能不能做这类事」 | 「这个人能不能评**这一标**」 |
+| 载体 | 角色 → 权限点 → 数据范围 | 回避关系（人 × 投标人 × 项目） |
+| 变更频率 | 季度级 | 每标一次 |
+| 失效后果 | 越权访问 | 评标结果可被推翻 |
+
+本册的 RBAC 能回答「有没有 `bid.evaluate` 权限」，但回答不了「他和这家投标人有没有关系」。回避是**关系数据**，不是角色。
+
+::: warning 回避关系不能塞进角色
+把「需回避」做成一个角色，就得为每一标新建角色（组合爆炸），而且关系一变更历史角色不会自动失效。本机模拟：500 名专家中 15% 与投标人有关联（同单位、近亲属、项目前期参与），**随机抽 5 人时抽到至少 1 名该回避者的概率是 55.79%**——超过一半的评审组会带人，而系统里毫无痕迹，因为「随机抽 5 人」这个动作本身是合规的。口径是 `expert_relation(expert_id, supplier_id, rel_type, valid_from, valid_to)` 一张关系表 + 抽取时 `NOT EXISTS` 过滤，并把过滤结果落 `expert_assign.avoid_checked=1`；只写日志不过滤，等于没做。
+:::
+
 ## 参考资料
 
 - OWASP · Authorization Cheat Sheet：https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html

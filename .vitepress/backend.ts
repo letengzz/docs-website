@@ -1661,3 +1661,23 @@ export const CPQ = [
     ],
   },
 ];
+
+// 招投标与电子采购交易工程
+export const BiddingTender = [
+  {
+    text: "招投标与电子采购交易工程",
+    link: "/docs/Backend/BiddingTender/index.md",
+    items: [
+      { text: "总览：七段链与三个「公平」", link: "/docs/Backend/BiddingTender/Overview/index.md" },
+      { text: "采购方式与限额：规避招标的四种形状", link: "/docs/Backend/BiddingTender/Method/index.md" },
+      { text: "招标文件与资格条件：条件写下的那一刻，竞争范围就定了", link: "/docs/Backend/BiddingTender/Document/index.md" },
+      { text: "公告、发售与澄清：五个期限落在两种「日」上", link: "/docs/Backend/BiddingTender/Timeline/index.md" },
+      { text: "投标与保证金：钱没到账，标书就不算到", link: "/docs/Backend/BiddingTender/Bid/index.md" },
+      { text: "开标与解密：同一秒钟，两台机器两个答案", link: "/docs/Backend/BiddingTender/Opening/index.md" },
+      { text: "评标、专家与评分：去不去极值，冠军会换人", link: "/docs/Backend/BiddingTender/Evaluation/index.md" },
+      { text: "定标、公示与合同：三个 3 日、一个 30 日", link: "/docs/Backend/BiddingTender/Award/index.md" },
+      { text: "围标串标识别：召回 65% 的规则看起来最准", link: "/docs/Backend/BiddingTender/Collusion/index.md" },
+      { text: "实战：11 表 + 8 触发器 + 19 条断言", link: "/docs/Backend/BiddingTender/Practice/index.md" },
+    ],
+  },
+];
