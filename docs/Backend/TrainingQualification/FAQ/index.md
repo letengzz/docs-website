@@ -118,7 +118,7 @@
 ## 六、验证方式
 
 ```shell
-cd /Users/cuifendemac/WorkBuddy/docs-website
+cd ~/docs-website
 
 # 1) 分诊表 12 行（表头 2 行 + 12 行数据）
 sed -n '/## 一、十二行分诊表/,/## 二、止血五步/p' docs/Backend/TrainingQualification/FAQ/index.md | grep -c "^| [0-9]"

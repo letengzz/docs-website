@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380">
+<rect width="960" height="380" fill="#ffffff"/>
+<text x="30" y="40" font-size="17" fill="#1f2937" font-weight="bold" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">事故分级与升级链：每一级都有「多长时间内必须动手」</text>
+<rect x="40" y="70" width="200" height="86" rx="8" fill="#fdeaea" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="140" y="98" font-size="15" fill="#b91c1c" text-anchor="middle" font-weight="bold" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">P1 全站不可用</text>
+<text x="140" y="120" font-size="11" fill="#6b7280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">3.3%（40/1200）</text>
+<text x="140" y="140" font-size="11" fill="#b91c1c" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">5 分钟内响应 / 15 分钟止损</text>
+<rect x="40" y="176" width="200" height="86" rx="8" fill="#fdf3e3" stroke="#b45309" stroke-width="1.2"/>
+<text x="140" y="204" font-size="15" fill="#b45309" text-anchor="middle" font-weight="bold" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">P2 部分租户受损</text>
+<text x="140" y="226" font-size="11" fill="#6b7280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">13.2%（158/1200）</text>
+<text x="140" y="246" font-size="11" fill="#b45309" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">30 分钟内响应 / 2 小时内止损</text>
+<rect x="40" y="282" width="200" height="66" rx="8" fill="#e6f4f1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="140" y="310" font-size="15" fill="#0f766e" text-anchor="middle" font-weight="bold" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">P3 单点劣化</text>
+<text x="140" y="332" font-size="11" fill="#6b7280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">83.5%（1002/1200）· 下一工作日</text>
+<path d="M 250 113 L 330 113" stroke="#d1d5db" stroke-width="1.6"/>
+<path d="M 322 107 L 332 113 L 322 119 Z" fill="#d1d5db"/>
+<path d="M 250 219 L 330 219" stroke="#d1d5db" stroke-width="1.6"/>
+<path d="M 322 213 L 332 219 L 322 225 Z" fill="#d1d5db"/>
+<path d="M 250 315 L 330 315" stroke="#d1d5db" stroke-width="1.6"/>
+<path d="M 322 309 L 332 315 L 322 321 Z" fill="#d1d5db"/>
+<rect x="340" y="70" width="270" height="252" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="356" y="98" font-size="14" fill="#1f2937" font-weight="bold" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">三级值班（5 人轮）</text>
+<text x="356" y="124" font-size="12" fill="#1f2937" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">L1 值班工程师：确认 + 止损清单</text>
+<text x="356" y="146" font-size="11" fill="#6b7280" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">只有「执行权」，没有「改配置权」</text>
+<text x="356" y="176" font-size="12" fill="#1f2937" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">L2 模块 owner：定位 + 回滚</text>
+<text x="356" y="198" font-size="11" fill="#6b7280" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">P1 必须 5 分钟内被叫醒</text>
+<text x="356" y="228" font-size="12" fill="#1f2937" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">L3 技术负责人：跨模块决策</text>
+<text x="356" y="250" font-size="11" fill="#6b7280" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">有权切流 / 降级 / 熔断 / 关闸</text>
+<text x="356" y="280" font-size="12" fill="#1f2937" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">L4 管理层：对外通告与商务决策</text>
+<text x="356" y="302" font-size="11" fill="#6b7280" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">30 分钟未止血即升级</text>
+<rect x="630" y="70" width="290" height="120" rx="8" fill="#e8eefc" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="646" y="96" font-size="13" fill="#1d4ed8" font-weight="bold" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">四个时钟（本机读数）</text>
+<text x="646" y="120" font-size="11" fill="#1f2937" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">MTTD 2.0 min（P90 5.1）</text>
+<text x="646" y="140" font-size="11" fill="#1f2937" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">MTTA 4.1 min（P90 15.6）</text>
+<text x="646" y="160" font-size="11" fill="#1f2937" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">止损 12 min · MTTR 34 min</text>
+<text x="646" y="180" font-size="11" fill="#6b7280" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">P1 的 SLO：15 分钟内止血</text>
+<rect x="630" y="202" width="290" height="120" rx="8" fill="#fdf3e3" stroke="#b45309" stroke-width="1.2"/>
+<text x="646" y="228" font-size="13" fill="#b45309" font-weight="bold" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">告警不是越多越好</text>
+<text x="646" y="252" font-size="11" fill="#1f2937" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">6,000 条/天 → 归并后 20 条事件</text>
+<text x="646" y="272" font-size="11" fill="#6b7280" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">不归并 = 每 14 秒看一条</text>
+<text x="646" y="294" font-size="11" fill="#1f2937" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">IM 单通道 30 分钟响应 62.3%</text>
+<text x="646" y="312" font-size="11" fill="#1f2937" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">IM + 电话双通道 94.1%</text>
+<text x="30" y="372" font-size="11" fill="#6b7280" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans SC,PingFang SC,sans-serif">止损清单的可执行率只有 62%：38% 的步骤依赖那个正在故障的组件——写在纸上的和能跑的不是一回事。</text>
+</svg>

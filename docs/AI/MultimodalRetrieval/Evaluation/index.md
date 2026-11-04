@@ -112,7 +112,7 @@ nDCG@k = DCG@k / IDCG@k
 一个具体例子：系统给的相关性序列是 `[3, 1, 0, 2, 0]`。
 
 ```shell
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import math
 rel = [3, 1, 0, 2, 0]
 def dcg(rs):
@@ -189,7 +189,7 @@ PY
 
 ```shell
 # ① 复算 nDCG：确保你的实现与标注口径一致
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import math
 def ndcg(rel, k=10):
     dcg = sum((2**r-1)/math.log2(i+2) for i, r in enumerate(rel[:k]))
@@ -204,7 +204,7 @@ PY
 
 ```shell
 # ② 置信区间：判断这次提升是不是噪声
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import math
 def wilson(k, n, z=1.96):
     p = k/n; d = 1 + z*z/n

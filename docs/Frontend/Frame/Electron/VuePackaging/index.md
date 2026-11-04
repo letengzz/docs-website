@@ -139,9 +139,9 @@ base: "./", // 设置为相对路径
 
    ```text
    标准格式：
-   file:///C:/Users/Albert%20han/Desktop/easyToDo/dist_electron/win-unpacked/resources/assets/timeBGI.jpg
+   file:///C:/Users/<用户名>/Desktop/easyToDo/dist_electron/win-unpacked/resources/assets/timeBGI.jpg
    拼接格式（appPath+extraFiles）
-   C:\\Users\\Albert han\\Desktop\\easyToDo\\dist_electron\\win-unpacked\\resources/assets/timeBGI.jpg
+   C:\\Users\\<用户名>\\Desktop\\easyToDo\\dist_electron\\win-unpacked\\resources/assets/timeBGI.jpg
    ```
 
 ℹ️：对于播放音频这种，简单拼接即可，Windows可以兼容\和/同时存在的路径

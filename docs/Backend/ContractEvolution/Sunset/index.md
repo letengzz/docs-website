@@ -163,7 +163,7 @@ rollback: 恢复 v1 路由与适配层（代码在 tag v1-final）
 
 ```shell
 # ① 公告触达率：算清楚「发 N 轮还剩多少」
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 reach = 0.60
 for n in range(1, 6):
     covered = 1 - (1 - reach) ** n

@@ -186,7 +186,7 @@ async def stream_with_budget(resp, first_token_timeout, idle_timeout):
 
 ```shell
 # ① 重试放大与可承载稳态：把你自己链路的 p 代进去
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 cap = 1200
 for p in (0.95, 0.9, 0.8, 0.7):
     for N in (2, 3, 4):

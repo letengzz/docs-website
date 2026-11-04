@@ -291,7 +291,7 @@ v1 下线 ≠ `amount` 列可删。BI 直连只读库，`amount` 是它唯一认
 
 ```shell
 # ① 回填正确性：null 与 mismatch 必须同时为 0
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import random
 random.seed(7)
 rows = [(i, round(random.uniform(1, 999), 2)) for i in range(1, 200001)]

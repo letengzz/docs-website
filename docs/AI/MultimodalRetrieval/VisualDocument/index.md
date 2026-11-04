@@ -45,7 +45,7 @@ MaxSim(q, d) = Σᵢ maxⱼ ( qᵢ · dⱼ )
 查询 4 个 token、文档 6 个 patch、维度 4（真实场景是 128 维、几百 patch，结构完全一样）：
 
 ```shell
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import numpy as np
 np.set_printoptions(precision=3, suppress=True)
 Q = np.array([[1,0,0,0],[0,1,0,0],[0.7,0.7,0,0],[0,0,1,0]], float)
@@ -141,7 +141,7 @@ Qdrant 把这两步压成一次 `query_points` 调用：`prefetch` 走单向量�
 
 ```shell
 # ① patch 预算核对：给定页数与 patch 数，算总存储与编码量
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 pages, dim = 300_000, 128
 for patches in (256, 512, 768):
     gb = pages * patches * dim * 1 / 1e9          # int8
@@ -153,7 +153,7 @@ PY
 
 ```shell
 # ② 去重逻辑：相邻页折叠成一条，验证前 10 条里没有同文档刷屏
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 hits = [("合同A", 12), ("合同A", 13), ("合同B", 3), ("合同A", 14), ("合同C", 9)]
 seen, folded = {}, []
 for doc, page in hits:

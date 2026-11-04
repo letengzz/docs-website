@@ -177,7 +177,7 @@ public Post get(@PathVariable Long id) {     // Post 是 @Entity
 
 ```shell
 # ① 映射表覆盖率：每个对外字段是否都有映射规则
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 fields = {                      # v2 对外字段 -> v1 对应的映射规则（None 表示未定义）
     "id":        "同名直传",
     "title":     "同名直传",

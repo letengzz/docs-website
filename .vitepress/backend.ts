@@ -1601,3 +1601,23 @@ export const UnderwritingPolicy = [
     ],
   },
 ];
+
+// 质量管理工程
+export const QualityManagement = [
+  {
+    text: "质量管理工程",
+    link: "/docs/Backend/QualityManagement/index.md",
+    items: [
+      { text: "总览：七段链与三个「合格」", link: "/docs/Backend/QualityManagement/Overview/index.md" },
+      { text: "规格、公差与能力指数：Cp、Cpk 与 Ppk", link: "/docs/Backend/QualityManagement/Specs/index.md" },
+      { text: "抽样与检验计划：AQL、Ac/Re 与 OC 曲线", link: "/docs/Backend/QualityManagement/Sampling/index.md" },
+      { text: "测量系统分析：GR&R、ndc 与误判", link: "/docs/Backend/QualityManagement/Measurement/index.md" },
+      { text: "控制图与判异规则：控制限不是规格限", link: "/docs/Backend/QualityManagement/ControlChart/index.md" },
+      { text: "不合格品与 MRB：四类处置与隔离三条件", link: "/docs/Backend/QualityManagement/Nonconformance/index.md" },
+      { text: "纠正预防与 8D：围堵不是根因", link: "/docs/Backend/QualityManagement/CAPA/index.md" },
+      { text: "批次谱系与召回：粒度的钱", link: "/docs/Backend/QualityManagement/Traceability/index.md" },
+      { text: "质量成本：1-10-100 与四类账", link: "/docs/Backend/QualityManagement/CostOfQuality/index.md" },
+      { text: "实战：九张表、四个触发器、十三条断言", link: "/docs/Backend/QualityManagement/Practice/index.md" },
+    ],
+  },
+];

@@ -184,7 +184,7 @@ service.name = order-service  →  POST /api/v1/posts   （来自 trace 的父�
 
 ```shell
 # ① 从访问日志聚合「消费者 × 版本 × 路由」的调用量与占比
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import collections
 # 模拟 5 行日志：client_id, app_version, route
 log = [

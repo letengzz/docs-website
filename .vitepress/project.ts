@@ -448,6 +448,7 @@ export const CompleteProject = [
           { text: "第 4 周第 7 步 · 灰度发布与版本回退闸门：四道判据与 schema 硬约束（EPK-A~EPK-H）", link: "/project/Complete/OpenPlatformHub/Week4RolloutGate/index.md" },
           { text: "第 4 周第 8 步 · 密钥轮转与凭证吊销：四态两窗与可诊断的 401（EPZ-A~EPZ-H）", link: "/project/Complete/OpenPlatformHub/Week4KeyRotation/index.md" },
           { text: "第 5 周第 2 步 · 降级与兜底数据的口径：四类形态与三个约束（EPF-A~EPF-H）", link: "/project/Complete/OpenPlatformHub/Week5Fallback/index.md" },
+          { text: "第 5 周第 3 步 · 事故分级与升级链：四个时钟与止损清单（EPT-A~EPT-H）", link: "/project/Complete/OpenPlatformHub/Week5Incident/index.md" },
         ],
       },
       {

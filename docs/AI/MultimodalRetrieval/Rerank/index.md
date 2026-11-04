@@ -88,7 +88,7 @@ final = α · norm(rerank) + (1 − α) · norm(first_stage)
 **α 必须用评估集定，而且常常出现「纯重排更好」的结果。** 下面这组 10 个候选的例子就很典型：
 
 ```shell
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import math
 cands = [("c1",0.82,0.11,3),("c2",0.80,0.72,3),("c3",0.78,0.05,0),
          ("c4",0.74,0.65,2),("c5",0.70,0.09,0),("c6",0.66,0.44,1),
@@ -149,7 +149,7 @@ PY
 
 ```shell
 # ① 延迟预算：候选数 × 每条 token 数，换算成单查询成本
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 def cost(n, tokens, price_per_m=0.05):
     total = n * tokens
     return total, total / 1e6 * price_per_m
@@ -163,7 +163,7 @@ PY
 
 ```shell
 # ② 聚合去重：同一文档多切片只保留最高分，验证名额不被占满
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 rows = [("docA", 0.92, "p3"), ("docA", 0.90, "p5"), ("docB", 0.88, "p1"), ("docA", 0.85, "p9")]
 best = {}
 for doc, s, chunk in rows:

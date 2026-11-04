@@ -110,14 +110,14 @@ SLO（要多快） → 业务量（多少请求） → 容量（几个实例） 
 
 ```shell
 # ① 分摊合计与账单合计的比值（示例数据：账单 100000，分摊 99750）
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 -c "print(round(99750/100000, 4))"
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 -c "print(round(99750/100000, 4))"
 ```
 
 **预期输出**：`0.9975`。落在 `0.99~1.01` 之外时，先查未分摊池是否被漏掉，再查时间窗口。
 
 ```shell
 # ② 未分摊占比（目标 < 5%）
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 -c "print(f'{2500/100000:.2%}')"
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 -c "print(f'{2500/100000:.2%}')"
 ```
 
 **预期输出**：`2.50%`。

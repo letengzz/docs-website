@@ -84,7 +84,7 @@ Matryoshka Representation Learning（MRL）让向量的前 `d` 维本身就是�
 但**截断的代价与信息分布强相关**。做一个诚实的实验：随机生成 400 条 1024 维单位向量（各向同性，也就是每个维度承载同等信息），给查询加噪，看正确项在截断后还能不能排进前 10：
 
 ```shell
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import numpy as np
 rng = np.random.default_rng(11)
 n, d = 400, 1024
@@ -167,7 +167,7 @@ PY
 
 ```shell
 # ① 归一化对排序的影响：同一组向量，余弦与点积给出不同名次
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import numpy as np
 q = np.array([1.0, 0.0])
 docs = {"短文本": np.array([1.0, 0.05]), "长文本": np.array([4.0, 0.2])}
@@ -181,7 +181,7 @@ PY
 
 ```shell
 # ② 维度一致性校验：把索引维度写进元数据，启动时比对
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 index_dim, query_dim = 1024, 256
 assert index_dim == query_dim, f"维度不一致：索引 {index_dim}，查询 {query_dim}"
 PY

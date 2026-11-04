@@ -205,7 +205,7 @@ def compare(old, new, path=""):
 
 ```shell
 # ① 变异测试：删掉一个字段，确认 diff 工具真的会红
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 baseline = {"paths": {"/posts": {"get": {"schema": {"properties": {
     "id": {"type": "integer"}, "title": {"type": "string"}}}}}}}
 current = {"paths": {"/posts": {"get": {"schema": {"properties": {

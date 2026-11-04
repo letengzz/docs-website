@@ -148,7 +148,7 @@
 
 ```shell
 # ① 你的级联在评估集上的前沿：扫描阈值，输出成本/准确率/CPT/APGR
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import random
 random.seed(20261018)
 N = 2000
@@ -178,7 +178,7 @@ PY
 
 ```shell
 # ② 误接受率：只统计「验证器放过但答案错」的比例
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 accepted = 1000
 wrong_accepted = 18      # 从标注结果里数出来
 print(f"误接受率 {wrong_accepted/accepted:.2%}")

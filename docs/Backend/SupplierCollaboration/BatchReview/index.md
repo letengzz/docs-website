@@ -168,6 +168,21 @@ sqlite3 /tmp/sc.db "INSERT INTO invoice (supplier_id, invoice_no, amount) VALUES
 
 预期：`Error: UNIQUE constraint failed: invoice.supplier_id, invoice.invoice_no`。
 
+## 与「质量管理工程」专题的分工（第 248 天补充）
+
+本页与 [质量管理工程](../../QualityManagement/index.md) 的分工写在下面这张表里，两册**不重复定义**同一件事：
+
+| 维度 | 本页 | 另一侧 |
+| --- | --- | --- |
+| 本页判什么 | 来料批的抽样接收、供应商申诉与让步 | 批的结论 |
+| 质量工程判什么 | 判定所依赖的测量系统与过程能力是否成立 | 结论的前提 |
+| AQL | 本页给出方案与判定 | [抽样页](../../QualityManagement/Sampling/index.md) 给 OC 曲线与 α/β |
+| 量具 | 本页要求「检验合格」 | [测量系统](../../QualityManagement/Measurement/index.md) 证明「量得准」 |
+
+::: warning 只在本页成立的一个坑
+来料检验用分辨力不足的量具。公差 0.10 的尺寸用 0.02 的卡尺（1/5），抽样方案再严谨也判不出 0.01 的偏差——先做 GR&R，再谈 Ac/Re。
+:::
+
 ## 参考资料
 
 - [三单匹配与容差](../../ProcureToPay/InvoiceMatch/index.md)：单张匹配的判据与差异分类

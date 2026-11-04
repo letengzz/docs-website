@@ -148,7 +148,7 @@
 
 ```shell
 # ① 盈亏平衡利用率：折扣 d 之下，利用率低于多少就不划算
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 for d in (0.18, 0.30, 0.38, 0.55):
     print(f"折扣 {d:.0%} → 盈亏平衡利用率 {1-d:.1%}")
 PY
@@ -169,7 +169,7 @@ PY
 
 ```shell
 # ② 一次购买的净收益（元/月）：X=10 台等价、u=0.75、d=0.38、单价 1240
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 X, u, d, price = 10, 0.75, 0.38, 1240
 gain = X*price*(u + d - 1)
 low  = X*price*(0.60 + d - 1)
@@ -181,7 +181,7 @@ PY
 
 ```shell
 # ③ 覆盖率与利用率（用两个独立的分母，不要合成一个数）
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 committed, used_commit, total_usage = 700, 520, 1000
 print(f"覆盖率 {committed/total_usage:.0%}  利用率 {used_commit/committed:.0%}")
 PY

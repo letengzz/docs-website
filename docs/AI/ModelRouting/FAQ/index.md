@@ -145,7 +145,7 @@
 
 ```shell
 # ① 自查表能不能机器判：把 14 项里可自动化的先跑掉
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 checks = {
     "3 评估集 ≥ 200 条": 240 >= 200,
     "6 决策字段非空率 100%": 1.0 == 1.0,

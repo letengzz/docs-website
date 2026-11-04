@@ -129,7 +129,7 @@
 
 ```shell
 # ① 延迟预算：串行 vs 并行的差距
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 stages = {"query_embed": 35, "bm25": 40, "dense": 55, "visual": 60, "fuse": 10, "rerank": 60}
 serial = sum(stages.values())
 parallel = stages["query_embed"] + max(stages["bm25"], stages["dense"], stages["visual"]) \
@@ -142,7 +142,7 @@ PY
 
 ```shell
 # ② 缓存命中对 P95 的影响：命中率 35%、命中耗时 8 ms、未命中 290 ms
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 hit, hit_ms, miss_ms = 0.35, 8, 290
 avg = hit*hit_ms + (1-hit)*miss_ms
 print(f"平均 {avg:.1f} ms；未命中占请求 {1-hit:.0%}")

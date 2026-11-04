@@ -203,7 +203,7 @@ Q4 语义是否发生了不兼容的重构？
 
 ```shell
 # ① 决策树自检：把最近 20 次契约变更过一遍，统计落在哪一档
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 changes = [
     # (描述, 是否需要改契约, 是否纯加法, 是否局限少数资源)
     ("新增可选字段 coupon_id",      True,  True,  True),

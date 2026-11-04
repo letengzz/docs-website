@@ -91,7 +91,7 @@
 ## 六、验证方式
 
 ```shell
-cd /Users/cuifendemac/WorkBuddy/docs-website
+cd ~/docs-website
 
 # 1) 三个「会了」是三张表，不是一个布尔字段
 grep -rn "completed\|passed_all" docs/Backend/TrainingQualification/ | grep -v "判定\|判据\|不能" | wc -l

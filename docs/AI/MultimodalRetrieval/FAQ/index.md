@@ -132,7 +132,7 @@
 
 ```shell
 # 自查：六个最常漏的字段是否齐全（可直接改成 pytest 断言）
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 required = {"doc_id", "page_no", "tenant", "text", "patch_count", "index_version"}
 meta = {"doc_id":"ms-2841","page_no":3,"tenant":"t-01","text":"...","patch_count":612,"index_version":"2026-10-18-a"}
 missing = required - meta.keys()
@@ -145,7 +145,7 @@ PY
 
 ```shell
 # 自查：缓存键是否含三个必需维度
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 def cache_key(model, index, tenant, filters, q):
     return "|".join([model, index, tenant, filters, q.strip().lower()])
 k1 = cache_key("siglip2", "v3", "t-01", "kind=page", "MS-2841 重置")

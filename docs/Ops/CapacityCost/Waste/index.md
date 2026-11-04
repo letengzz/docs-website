@@ -158,7 +158,7 @@ spec:
 
 ```shell
 # ① 虚高倍数与月度节省（单副本）
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 req, p95, headroom, price = 2000, 320, 0.25, 0.28   # mCPU, mCPU, 比例, 元/核时
 new = p95 * (1 + headroom)
 save = (req - new) / 1000 * price * 730
@@ -171,7 +171,7 @@ PY
 
 ```shell
 # ② 非生产作息的节省比例：10×5 相对 7×24
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 -c "print(f'{(1-50/168):.0%}')"
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 -c "print(f'{(1-50/168):.0%}')"
 ```
 
 **预期输出**：`70%`（每周 50 小时在线 / 168 小时）。注意这是**理论上限**：实际节省要扣掉启动开销与夜间批处理，通常落在 50%~65%。

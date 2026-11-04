@@ -69,9 +69,9 @@ export PATH
 
 ```shell
 $ zsh -c   'command -v node'
-/Users/cuifendemac/.workbuddy/binaries/node/versions/22.22.2-6/bin/node
+/Users/<用户名>/.workbuddy/binaries/node/versions/22.22.2-6/bin/node
 $ zsh -i -c 'command -v node'
-/Users/cuifendemac/.nvm/versions/node/v24.21.0/bin/node
+/Users/<用户名>/.nvm/versions/node/v24.21.0/bin/node
 ```
 
 对应版本分别是 **v22.22.2** 与 **v24.21.0**。原因：nvm 在交互 shell 的初始化里把 `~/.nvm/versions/node/v24.21.0/bin` 插到了 `PATH` 最前面；非交互 shell 不读 `.zshrc`，于是走的是系统/宿主注入的那一项。

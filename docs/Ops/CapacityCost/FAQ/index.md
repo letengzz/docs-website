@@ -120,7 +120,7 @@
 
 ```shell
 # ① 分诊第一步：先把「汇率/折扣」这类口径变化排除掉
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 base, fx, discount = 120_000, 1.03, -8_000
 print(f"口径影响 {base*fx - base - 8000:+,.0f} 元，占涨幅 {(base*fx-base-8000)/base:+.2%}")
 print(f"剔除口径后 {base*fx-8000:,.0f} 元（若账单为 156,000，则剩余待解释 {156000-(base*fx-8000):,.0f}）")
@@ -131,7 +131,7 @@ PY
 
 ```shell
 # ② 自查清单可机器判定的那几条：标签、分摊误差、告警动作
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 bill, alloc = 120_000, 120_000
 checks = {
     "分摊误差<1%": abs(alloc-bill)/bill < 0.01,

@@ -198,7 +198,7 @@ RouteLLM（arXiv 2406.18665）的做法：用人类偏好数据训练一个二�
 
 ```shell
 # 阈值标定：用评估集扫描「升级阈值 → 升级比例 / 准确率」
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import random
 random.seed(1)
 n = 2000

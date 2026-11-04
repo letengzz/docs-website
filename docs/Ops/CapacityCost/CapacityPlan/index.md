@@ -179,7 +179,7 @@ spec:
 ```shell
 # 已知：单实例能力 180 QPS @ P99 300ms；水位线 50% → 每实例有效 90 QPS
 # 当前峰值 620 QPS；大促预测 P90 = 1050 QPS；单实例月成本 1240 元
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 cap, level, peak, p90, price = 180, 0.5, 620, 1050, 1240
 eff = cap * level
 import math
@@ -202,7 +202,7 @@ PY
 
 ```shell
 # 周系数自检：七个系数（含三天高峰重复计入）之和必须等于 7，否则均值算错了
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 days = [412, 445, 445, 445, 398, 232, 214]
 mean = sum(days) / len(days)
 coef = [round(d / mean, 2) for d in days]

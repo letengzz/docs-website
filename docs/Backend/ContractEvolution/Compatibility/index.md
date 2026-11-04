@@ -238,7 +238,7 @@ PY
 
 ```shell
 # ① 排序稳定性：同一秒多条数据，翻页是否漏/重
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 rows = [  # (id, created_at) 三条同秒
     (1, "2026-10-19 10:00:00"), (2, "2026-10-19 10:00:00"),
     (3, "2026-10-19 10:00:00"), (4, "2026-10-19 09:59:00"),

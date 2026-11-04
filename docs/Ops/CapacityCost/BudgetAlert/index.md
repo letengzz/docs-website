@@ -152,7 +152,7 @@
 
 ```shell
 # ① 进度比：本月 30 天，今天 10 号，已花 52,000，预算 100,000
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 spent, budget, day, days = 52_000, 100_000, 10, 30
 burn, elapsed = spent/budget, day/days
 print(f"消耗进度 {burn:.0%} 时间进度 {elapsed:.0%} 比值 {burn/elapsed:.2f}")

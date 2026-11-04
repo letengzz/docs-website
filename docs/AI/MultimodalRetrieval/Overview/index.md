@@ -153,7 +153,7 @@ int8   : ≈ 98 GB
 
 ```shell
 # ① 存储量级核对：把你的真实页数代进去，看落在哪个档位
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 pages, patches, dim = 1_000_000, 768, 128
 for name, size in [("float32", 4), ("float16", 2), ("int8", 1)]:
     multi = pages * patches * dim * size / 1e9
@@ -166,7 +166,7 @@ PY
 
 ```shell
 # ② 止损判据的量化版：日查询量 × 单次成本 是否小于人工检索成本
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 qpd, cost_per_q, human_minutes, hourly = 40, 0.004, 3, 120
 machine = qpd * 30 * cost_per_q
 human = qpd * 30 * human_minutes / 60 * hourly

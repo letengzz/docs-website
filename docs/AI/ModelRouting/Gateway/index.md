@@ -210,7 +210,7 @@ PY
 
 ```shell
 # ① 租户隔离自检：单租户突发时，其他租户的拒绝率
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 class B:
     def __init__(s, cap, rate): s.cap, s.rate, s.t, s.last = cap, rate, float(cap), 0.0
     def take(s, now):

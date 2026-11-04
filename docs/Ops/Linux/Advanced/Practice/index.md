@@ -118,12 +118,12 @@ ss -lntup
 # ① 创建运维账号（一人一号，禁止共享）
 sudo useradd -m -s /bin/bash -G sudo deploy
 sudo passwd -l deploy                       # 先锁定密码，只允许密钥登录
-sudo mkdir -p /home/deploy/.ssh && sudo chmod 700 /home/deploy/.ssh
+sudo mkdir -p /home/<用户>/.ssh && sudo chmod 700 /home/<用户>/.ssh
 
 # ② 安装公钥（把 <你的公钥> 替换为实际内容）
-echo '<你的公钥>' | sudo tee /home/deploy/.ssh/authorized_keys >/dev/null
-sudo chmod 600 /home/deploy/.ssh/authorized_keys
-sudo chown -R deploy:deploy /home/deploy/.ssh
+echo '<你的公钥>' | sudo tee /home/<用户>/.ssh/authorized_keys >/dev/null
+sudo chmod 600 /home/<用户>/.ssh/authorized_keys
+sudo chown -R <用户>:<用户> /home/<用户>/.ssh
 
 # ③ 应用专用账号（不允许登录 shell）
 sudo useradd --system --home /data/app/order-service --shell /usr/sbin/nologin appuser

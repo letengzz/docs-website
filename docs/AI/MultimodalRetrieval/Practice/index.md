@@ -137,7 +137,7 @@ work/
 
 ```shell
 # 元数据行数 + 跳过页数 必须等于 PDF 总页数
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 meta_lines, skipped, pdf_pages = 612, 8, 620
 print("对账：", "OK" if meta_lines + skipped == pdf_pages else f"MISMATCH {meta_lines+skipped} != {pdf_pages}")
 print("patch 预算：", "OK" if 0 < 612 <= 768 else "OVER BUDGET")
@@ -149,7 +149,7 @@ PY
 ### 命令 2：契约校验
 
 ```shell
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 resp = {"query":"MS-2841 怎么重置","mode":"hybrid","took_ms":187,"degraded":None,
         "results":[{"doc_id":"ms-2841","page_no":3,"score":0.0323,"bbox":[120,340,880,520]}]}
 need_top = {"query","mode","took_ms","results"}
@@ -166,7 +166,7 @@ PY
 ### 命令 3：折叠与多样性
 
 ```shell
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 hits = [("ms-2841",3),("ms-2841",4),("ms-2841",5),("sku-1001",1),("ms-2842",2)]
 seen, out = set(), []
 for doc, page in hits:

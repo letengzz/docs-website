@@ -144,7 +144,7 @@
 
 ```shell
 # ① 你这批请求的难度分布，够不够支撑路由
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 # 三档模型的相对单位成本与分难度准确率（替换成你自己的评估集读数）
 tiers = {"S": (1.0, {"easy": .94, "medium": .72, "hard": .35}),
          "M": (5.0, {"easy": .97, "medium": .90, "hard": .62}),
@@ -162,7 +162,7 @@ PY
 
 ```shell
 # ② 路由自身的开销占比：拿真实链路耗时算一遍
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 model_ms, route_ms = 1400, 18
 print(f"路由开销占端到端 {route_ms/(model_ms+route_ms)*100:.2f}%")
 print("判读：超过 3% 时先优化信号抽取，而不是继续加规则")

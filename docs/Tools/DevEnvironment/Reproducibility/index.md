@@ -16,7 +16,7 @@
 $ env -i PATH=/usr/bin:/bin zsh -c 'command -v node || echo NOT_FOUND'
 NOT_FOUND
 $ zsh -c 'command -v node'
-/Users/cuifendemac/.workbuddy/binaries/node/versions/22.22.2-6/bin/node
+/Users/<用户名>/.workbuddy/binaries/node/versions/22.22.2-6/bin/node
 ```
 
 第一条命令只保留了 `PATH=/usr/bin:/bin`，`node` 就不存在了。这说明：**「这台机器能跑」依赖的不是安装，而是环境变量**——具体是哪几个，取决于你的 155 个变量里哪些被用到了。

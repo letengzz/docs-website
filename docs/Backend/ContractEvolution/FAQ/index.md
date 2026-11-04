@@ -164,7 +164,7 @@
 
 ```shell
 # 自查清单的可执行化：把 14 项变成一次检查
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 checks = {
     "契约与代码同 PR": True,
     "静态 diff 通过": True,

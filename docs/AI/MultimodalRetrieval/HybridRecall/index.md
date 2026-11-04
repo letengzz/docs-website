@@ -50,7 +50,7 @@ RRF(d) = Σ_r  w_r / (k + rank_r(d))
 手算一遍（k=60，两路各 5 条）：
 
 ```shell
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 k = 60
 dense  = ["p7", "p3", "p11", "p2", "p9"]
 sparse = ["p3", "p2", "p7", "p15", "p1"]
@@ -158,7 +158,7 @@ Qdrant 的实践口径值得借用：**默认 RRF，只有当分数分布本身�
 
 ```shell
 # ① 三路融合：验证「单路高分不被埋没」与「并列有稳定次序」
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 k = 60
 lists = {
     "bm25":   ["a", "b", "c", "d"],
@@ -181,7 +181,7 @@ PY
 
 ```shell
 # ② 路内去重：同一文档的多个切片只保留最高分
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 hits = [("docA", 0.91, "p3"), ("docB", 0.88, "p1"), ("docA", 0.87, "p7"), ("docC", 0.85, "p2")]
 best = {}
 for doc, score, chunk in hits:

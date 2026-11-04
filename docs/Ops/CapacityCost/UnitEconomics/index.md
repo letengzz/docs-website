@@ -137,7 +137,7 @@ GPU 负载打破了「按核时摊」的模型：**成本随流量而非在线�
 
 ```shell
 # ① 量价分解：结果必须与账单差额相等
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 q0, q1 = 240.0, 258.0          # 百万请求
 c0, c1 = 100_000, 132_000      # 元
 p0, p1 = c0/q0, c1/q1
@@ -152,7 +152,7 @@ PY
 
 ```shell
 # ② 分母污染的影响：把 6% 的重试剔除后，单位成本会变高还是变低
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 cost, q_raw, retry_ratio = 132_000, 258.0, 0.06
 q_clean = q_raw * (1 - retry_ratio)
 print(f"含重试 {cost/q_raw:.2f} 元/百万，剔除后 {cost/q_clean:.2f} 元/百万")

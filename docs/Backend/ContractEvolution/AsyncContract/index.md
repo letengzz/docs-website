@@ -212,7 +212,7 @@ public Status parseStatus(String raw) {
 
 ```shell
 # ① 兼容性方向判定：给定一次变更，输出它在三种模式下的结论
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 # 变更 -> (BACKWARD 是否兼容, FORWARD 是否兼容)
 rules = {
     "add_field_with_default":    (True,  False),

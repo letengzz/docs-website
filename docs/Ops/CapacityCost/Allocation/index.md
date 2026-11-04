@@ -156,7 +156,7 @@ order by total_cost desc;
 
 ```shell
 # ① 守恒：分摊合计 99,750，账单 100,000
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 alloc, bill = 99750, 100000
 print(f"守恒比 {alloc/bill:.4f}，未分摊 {bill-alloc} 元（{(bill-alloc)/bill:.2%}）")
 print("判定:", "通过" if 0.99 <= alloc/bill <= 1.01 else "不通过")
@@ -167,7 +167,7 @@ PY
 
 ```shell
 # ② max(request, usage) 的效果：虚报 requests 会被算成真实成本
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 req, use, price = 2.0, 0.2, 0.28
 print(f"按 usage 计 {use*price:.2f} 元/时，按 max 计 {max(req,use)*price:.2f} 元/时")
 print(f"虚报放大倍数 {max(req,use)/use:.0f} 倍")

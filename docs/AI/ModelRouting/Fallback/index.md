@@ -200,7 +200,7 @@ degrade_drill:
 
 ```shell
 # ① 用固定时间线验证你的熔断器阈值（Python 直接跑）
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 # 极简熔断器：窗口 10s 内 5 次失败则打开 30s，半开 3 探测、2 成功闭合
 state, fails, opened, probes, ok = "closed", [], 0, 0, 0
 transitions, rejected, attempted = [], 0, 0

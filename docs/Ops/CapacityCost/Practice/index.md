@@ -210,7 +210,7 @@ terraform show -json /tmp/tfplan \
 
 ```shell
 # ① 季度降幅与单位成本（业务量不变假设下）
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 base, saved = 120_000, 24_100
 after, requests_m = base - saved, 258.0
 print(f"季度末账单 {after:,} 元，降幅 {saved/base:.1%}")
@@ -223,7 +223,7 @@ PY
 
 ```shell
 # ② 分摊守恒：五个团队的合计必须等于账单
-/Users/cuifendemac/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
+/Users/<用户名>/.workbuddy/binaries/python/versions/3.13.12/bin/python3 - <<'PY'
 rows = [35100, 28000, 21000, 23000, 12900]
 print("合计", sum(rows), "与账单 120000 的差", sum(rows) - 120_000)
 PY

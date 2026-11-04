@@ -172,7 +172,7 @@ def gate(current, baseline):
 
 ```shell
 # ① 分流稳定性：同一 user 连续 100 次必须落在同一组
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 - <<'PY'
+python3 - <<'PY'
 import hashlib
 def bucket(uid, salt="routing-v3"):
     h = hashlib.sha256(f"{salt}:{uid}".encode()).hexdigest()

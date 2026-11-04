@@ -218,7 +218,7 @@ if __name__ == "__main__":
 ## 六、实测输出与本机读数
 
 ```shell
-/Users/cuifendemac/.workbuddy/binaries/python/envs/default/bin/python3 gateway_demo.py
+python3 gateway_demo.py
 ```
 
 **预期输出**（固定种子；按上一节的脚本原样运行即可得到同一组读数，无需任何 API 密钥）：
