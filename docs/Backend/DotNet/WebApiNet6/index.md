@@ -19,7 +19,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 
 自定义过滤器
 
-```sql
+```csharp
 //示例对象
 public class QueryVO
 {
@@ -64,7 +64,7 @@ public class DefaultValueSchemaFilter : ISchemaFilter
 
 在Program.cs中添加过滤器
 
-```sql
+```csharp
 builder.Services.AddSwaggerGen(options =>
 {
     options.SchemaFilter<DefaultValueSchemaFilter>();
@@ -75,7 +75,7 @@ builder.Services.AddSwaggerGen(options =>
 
 配置swagger属性
 
-```sql
+```csharp
 builder.Services.AddSwaggerGen(options =>
 {
     //xml文档绝对路径 -- 读取根据控制api生成的xml的文件
@@ -171,7 +171,7 @@ List<TestModel> jsonList = JsonSerializer.Deserialize<List<TestModel>>(jsonStr);
 
 ### 跨域处理
 
-```sql
+```csharp
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", opt => opt.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());

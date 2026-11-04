@@ -1641,3 +1641,23 @@ export const AcademicAffairs = [
     ],
   },
 ];
+
+// 配置、定价与报价工程
+export const CPQ = [
+  {
+    text: "配置、定价与报价工程",
+    link: "/docs/Backend/CPQ/index.md",
+    items: [
+      { text: "总览：七段链与三个「同一个数」", link: "/docs/Backend/CPQ/Overview/index.md" },
+      { text: "产品模型与配置规则：648 个组合里只有 277 个是真的", link: "/docs/Backend/CPQ/Configuration/index.md" },
+      { text: "价格册与定价模型：命中 11 条时谁赢", link: "/docs/Backend/CPQ/Pricing/index.md" },
+      { text: "折扣瀑布与审批阈值：百分比之间不能相加", link: "/docs/Backend/CPQ/Discount/index.md" },
+      { text: "报价单：版本与有效期是三个时钟", link: "/docs/Backend/CPQ/Quote/index.md" },
+      { text: "审批与例外：四眼要用不同人计数", link: "/docs/Backend/CPQ/Approval/index.md" },
+      { text: "条款、锁价与合同：冻的是四项承诺", link: "/docs/Backend/CPQ/Contract/index.md" },
+      { text: "转单与履约衔接：一行报价能变三行订单", link: "/docs/Backend/CPQ/Ordering/index.md" },
+      { text: "度量与验收：同一个赢单率四个分母", link: "/docs/Backend/CPQ/Metrics/index.md" },
+      { text: "实战：十张表、四个触发器、十三条断言", link: "/docs/Backend/CPQ/Practice/index.md" },
+    ],
+  },
+];

@@ -466,6 +466,15 @@ export const CompleteProject = [
           { text: "复盘", link: "/project/Complete/FullStackProject/Retrospective/index.md" },
         ],
       },
+      {
+        text: "在线学习与考核平台（周期 9）",
+        link: "/project/Complete/LearningHub/index.md",
+        collapsed: true,
+        items: [
+          { text: "学习平台 · 项目总览（周期 9）", link: "/project/Complete/LearningHub/index.md" },
+          { text: "第 1 周第 1 步 · 需求与领域边界：八条故事、十二张表、六条不变量（LNH-A~LNH-H）", link: "/project/Complete/LearningHub/Requirements/index.md" },
+        ],
+      },
     ],
   },
 ];
