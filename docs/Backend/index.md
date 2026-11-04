@@ -71,3 +71,4 @@
 - [考勤排班与工时核算工程](TimeAttendance/index.md)
 - [承保与保单管理工程](UnderwritingPolicy/index.md)
 - [质量管理工程](QualityManagement/index.md)
+- [学籍、选课与排课工程](AcademicAffairs/index.md)

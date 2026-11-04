@@ -1621,3 +1621,23 @@ export const QualityManagement = [
     ],
   },
 ];
+
+// 学籍、选课与排课工程
+export const AcademicAffairs = [
+  {
+    text: "学籍、选课与排课工程",
+    link: "/docs/Backend/AcademicAffairs/index.md",
+    items: [
+      { text: "总览：八段链与三个「过了没有」", link: "/docs/Backend/AcademicAffairs/Overview/index.md" },
+      { text: "培养方案与课程库：方案不是一个文档，是一组带生效期的约束", link: "/docs/Backend/AcademicAffairs/Program/index.md" },
+      { text: "排课与三资源冲突：课表不是 30 个格子，是 15 个两连格", link: "/docs/Backend/AcademicAffairs/Scheduling/index.md" },
+      { text: "选课、容量与抽签：抢课的失败不只在「超选」", link: "/docs/Backend/AcademicAffairs/Enrollment/index.md" },
+      { text: "考试安排与考场容量：同时段两门考试，只有学生自己知道", link: "/docs/Backend/AcademicAffairs/Exam/index.md" },
+      { text: "成绩、重修与绩点换算：四个绩点口径，四个排名", link: "/docs/Backend/AcademicAffairs/Grade/index.md" },
+      { text: "学分构成与毕业审核：总学分够、模块不够，是最贵的一种「够」", link: "/docs/Backend/AcademicAffairs/CreditAudit/index.md" },
+      { text: "学籍异动与状态机：休学一年，学籍停在原地，成绩还在往里写", link: "/docs/Backend/AcademicAffairs/StatusChange/index.md" },
+      { text: "成绩单、证明与快照：打印出去的那张纸必须能和系统对得上", link: "/docs/Backend/AcademicAffairs/Transcript/index.md" },
+      { text: "实战：9 表 + 4 触发器 + 13 条断言", link: "/docs/Backend/AcademicAffairs/Practice/index.md" },
+    ],
+  },
+];
