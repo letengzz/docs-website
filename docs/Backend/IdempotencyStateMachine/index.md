@@ -163,6 +163,21 @@ select count(*) from demo_key;
 1. **`decision_id` 必须在业务侧生成并持久化**。让风控服务自己生成 UUID，等于把幂等交给了网络——超时重试一定会产生第二个决策。
 2. **风控的幂等表要有 TTL（24 小时量级）**。永久幂等会把「昨天的名单」固化到今天，风控实际上停止更新；而 TTL 到期后重算，正是我们要的行为。
 
+## 与「GraphQL 服务端工程」的分工（第 257 天补充）
+
+幂等的**语义**（去重键、状态机、回放返回值）都归本页；GraphQL 那一侧只回答一个很具体的问题：**这个键放在协议层的哪里**。
+
+| 这件事 | 本页负责 | [GraphQL 的 Mutation 一页](../GraphQL/Mutation/index.md)负责 |
+| --- | --- | --- |
+| 幂等键的生成规则（谁生成、多长、能否复用） | 是 | 只规定它必须是 `input` 字段 |
+| 去重表的形状与 TTL | 是 | 只规定必须落唯一索引 |
+| 重放时返回什么 | 是 | 规定「返回与首次一致的 payload」而非 409 |
+| 键放在请求头还是 body | — | 是：body（头在 schema 里不可见） |
+
+::: danger 注意
+**REST 里把幂等键放 `Idempotency-Key` 头是标准做法，搬到 GraphQL 就变成缺陷。** 原因是 GraphQL 一个请求体里可以有**多个**根字段（`a: createX` + `b: createY`），而头只能带一个值——两个写操作共用一个键，第二次必然被误判成重放。这是同一个概念在两套协议里的位置差异，不是实现差异。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——状态码语义的原始出处（已过期归档）

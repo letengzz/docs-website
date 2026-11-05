@@ -126,6 +126,21 @@
 4. 交互密集的项目读 [乐观更新](./OptimisticUpdate/index.md)，先补快照与临时 ID，再谈动画。
 5. 要排偶现问题的人直接读 [状态可观测](./Observability/index.md) 的「复现三件套」。
 
+## 与「GraphQL 服务端工程」的分工（第 257 天补充）
+
+本页讲客户端的状态归属与归一化缓存；GraphQL 那一侧只负责**让响应形状可缓存**——即「同一个对象在不同查询里用同一个类型名 + 同一个 id 表达」。这条约定不写进 schema，客户端的归一化缓存就无从下手。
+
+| 这件事 | 本页负责 | [GraphQL 服务端](../../Backend/GraphQL/index.md)负责 |
+| --- | --- | --- |
+| 缓存怎么归一化、失效策略 | 是 | 只保证 `id` 字段稳定且全局唯一 |
+| 乐观更新与回滚 | 是 | 只保证 mutation 返回完整实体（[Payload 形状](../../Backend/GraphQL/Mutation/index.md)） |
+| 列表的分页缓存 | 是 | 提供 `edges/cursor` 这一层可缓存的形状（[分页四法](../../Backend/GraphQL/Query/index.md)） |
+| 「这个对象属于哪一类」 | 依赖 `__typename` | 必须保证 `__typename` 稳定，不随查询变化 |
+
+::: danger 注意
+**「所有对象都返回 `id` 但类型名不固定」是最坏的一种组合。** 归一化缓存的键通常是 `__typename + id`；如果同一个课程在列表里叫 `Course`、在搜索里叫 `SearchResult`（因为走了 `union`），客户端会存两份，改一处另一处不更新。用 `union` 时必须让成员类型各自有稳定的 `__typename`，不要给「搜索结果」单独造一个包装对象。
+:::
+
 ## 参考资料
 
 - [TanStack Query v5 · Important Defaults](https://tanstack.com/query/v5/docs/react/guides/important-defaults)——`staleTime` / `gcTime` / `retry` / `structuralSharing` 的默认值

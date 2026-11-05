@@ -58,7 +58,7 @@
 | 周 | 目标 | 验收（必须能跑） |
 | --- | --- | --- |
 | 第 1 周（251-257） | 需求拆分、技术选型、架构边界、接口契约、库表设计 | 十二张表 DDL 可执行；六条不变量各有一次「被拦住」的实测；四条契约各有一次「被拒」的实测（第 251 天需求与领域边界 6/6 PASS；第 252 天架构边界与四条契约 4/4 PASS；第 253 天版本基线与三个静默坑可见证） |
-| 第 2 周（258-264） | 核心编码 | 报名、进度上报、组卷三个接口可调通，能跑通一次「报名 → 学完必修 → 开考」（第 256 天报名接口 12/12 用例 PASS，含 200 次并发只落 1 行） |
+| 第 2 周（258-264） | 核心编码 | 报名、进度上报、组卷三个接口可调通，能跑通一次「报名 → 学完必修 → 开考」（第 256 天报名接口 12/12 用例 PASS，含 200 次并发只落 1 行；第 257 天进度上报 5/5 用例 PASS，含「删掉触发器后回退必须成功」这一条反向探针） |
 | 第 3 周（265-271） | 联调与测试 | 判分口径与并发交卷的用例矩阵全绿；重复交卷、成绩篡改两类攻击被拦住 |
 | 第 4 周（272-280） | 部署与验收 | 一键起（`make up`）；上线验收清单逐条实测；干净目录能从零复现 |
 
@@ -72,12 +72,13 @@
 | 254 | 第 1 周第 4 步 | [数据库设计：五条查询、九个索引、一次迁移](DatabaseDesign/index.md) | `LNS-A` ~ `LNS-H` | 8 |
 | 255 | 第 1 周第 5 步 | [第 1 周验收单：设计交付物的可判定清单](Week1Acceptance/index.md) | `LNV-A` ~ `LNV-H` | 8 |
 | 256 | 第 2 周第 1 步 | [报名接口：三层守卫、栅栏实测与十二个用例](EnrollmentAPI/index.md) | `LNE-A` ~ `LNE-H` | 8 |
+| 257 | 第 2 周第 2 步 | [进度上报：pct 只增不减、三层守卫与五个用例](ProgressReport/index.md) | `LNP-A` ~ `LNP-H` | 8 |
 
 > **第 1 周进度 5/5（本周收口）**：第 1 步交付八条用户故事（每条带一条可判定验收）、十二张表 DDL（本机建库 1.27 ms）、六条不变量（4 个触发器 + 1 个部分唯一索引 + 1 个 `CHECK`，实测 6/6 全部拦住）、四条契约草案；第 2 步把四条契约写成可执行的约束（`UNIQUE` / 触发器），四个负向用例 4/4 被拒、`EXIT=0`，并定下四个模块的单向依赖与同步判分链；第 3 步定下五条版本基线（Python 3.13.12 / SQLite 3.50.4 / PG 18 / UTF-8 / UTC）、六个 PRAGMA 的取值、三个会让约束**静默失效**的坑（`foreign_keys` 在事务内设置无效、`UNIQUE` 大小写敏感、`julianday()` 无时区），以及换 PostgreSQL 必改的三处（实测 `wal/normal` 比 `delete/full` 快 **18.5×**）；第 4 步把五条高频查询的路径钉死——九个索引里 4 个带来 266×~33,929× 的加速，1 个（`(state, submitted_at)`）走了 `SEARCH` 却**一点没快**（选择性只有 10%，回表比全扫还贵），代价是建库 +41.1%、体积 +43.4%、写入 +102%。每章都包含「当日做了什么 / 如何验证 / 下一步是什么」。第 5 步把前四步的交付物压成**八项门禁**：12 张表 / 9 个索引 / 4 个触发器建库 **1.31 ms**、七条不变量（含一条要求「必须成功」的反向判据：取消后可重报）**7/7** 通过、`EXPLAIN QUERY PLAN` 实测命中 `uq_cert_no` 与 `uq_enroll_active`，并显式列出「本周不做」的四件事与第 2 周的三条入口条件。
 
 ## 六、判据纪律
 
-- 每个章节 8 条判据，编号 `LNH-A` ~ `LNH-H` 起，**逐章独立**（下一章换新前缀，不复用）。已用前缀：`LNH`（需求）/ `LNA`（架构）/ `LNT`（技术基线）/ `LNS`（数据库设计）/ `LNV`（第 1 周验收）/ `LNE`（报名接口）。
+- 每个章节 8 条判据，编号 `LNH-A` ~ `LNH-H` 起，**逐章独立**（下一章换新前缀，不复用）。已用前缀：`LNH`（需求）/ `LNA`（架构）/ `LNT`（技术基线）/ `LNS`（数据库设计）/ `LNV`（第 1 周验收）/ `LNE`（报名接口）/ `LNP`（进度上报）。
 - 每条判据必须能被一条命令、一条 SQL 或一次人工核对判定，**不写「应当合理」这种话**。
 - 判据的「不满足时改哪里」必须指向**具体表或文件**，不能写「优化设计」。
 
@@ -92,8 +93,8 @@
 
 ```shell
 # 1. 目录与配图齐全
-ls project/Complete/LearningHub            # 期望：index.md Requirements Architecture TechBaseline DatabaseDesign Week1Acceptance EnrollmentAPI assets
-ls project/Complete/LearningHub/assets     # 期望：lh-roadmap.svg lh-model.svg lh-domain.svg lh-arch.svg lh-tech.svg lh-db.svg lh-accept.svg lh-enroll.svg
+ls project/Complete/LearningHub            # 期望：index.md Requirements Architecture TechBaseline DatabaseDesign Week1Acceptance EnrollmentAPI ProgressReport assets
+ls project/Complete/LearningHub/assets     # 期望：lh-roadmap.svg lh-model.svg lh-domain.svg lh-arch.svg lh-tech.svg lh-db.svg lh-accept.svg lh-enroll.svg lh-progress.svg
 
 # 2. 十二张表能建出来、六条不变量全部拦得住
 python3 lh_req.py; echo "EXIT=$?"

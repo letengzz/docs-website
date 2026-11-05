@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">进度上报：pct 只增不减的三层守卫</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">「先查当前值、再比大小、最后更新」在并发下必错——判断必须留在库里</text>
+  <text x="30" y="74" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">① 三层守卫，只有第一层能拦住并发</text>
+  <rect x="30" y="86" width="166" height="70" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="113.0" y="108.0" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">① CHECK 约束</text>
+  <text x="113.0" y="124.7" text-anchor="middle" font-size="7.5" fill="#B45309">0 ≤ pct ≤ 100</text>
+  <text x="113.0" y="141.4" text-anchor="middle" font-size="7.5" fill="#B45309">拦的是量纲，不是方向</text>
+  <rect x="208" y="86" width="166" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="291.0" y="108.0" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">② 触发器 C2</text>
+  <text x="291.0" y="124.7" text-anchor="middle" font-size="7.5" fill="#047857">new.pct ≥ old.pct</text>
+  <text x="291.0" y="141.4" text-anchor="middle" font-size="7.5" fill="#047857">唯一能拦住并发的地方</text>
+  <rect x="386" y="86" width="166" height="70" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="469.0" y="108.0" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">③ 应用层只送新值</text>
+  <text x="469.0" y="124.7" text-anchor="middle" font-size="7.5" fill="#B91C1C">读当前值做判断 = 必错</text>
+  <text x="469.0" y="141.4" text-anchor="middle" font-size="7.5" fill="#B91C1C">只把新值交给库</text>
+  <text x="30" y="190" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">② 三种「只增不减」的失败形态</text>
+  <rect x="30" y="202" width="700" height="38" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="44" y="226" font-size="9" fill="#0F172A" font-weight="bold">回退被吞</text>
+  <text x="190" y="226" font-size="8.5" fill="#B91C1C">85 → 60 静默变成 85</text>
+  <text x="480" y="226" font-size="8.5" fill="#334155">用户看到进度倒退无感知</text>
+  <rect x="30" y="246" width="700" height="38" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="44" y="270" font-size="9" fill="#0F172A" font-weight="bold">乱序覆盖</text>
+  <text x="190" y="270" font-size="8.5" fill="#B91C1C">两个并发请求，晚到的旧值覆盖新值</text>
+  <text x="480" y="270" font-size="8.5" fill="#334155">最终值取决于谁最后写</text>
+  <rect x="30" y="290" width="700" height="38" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="44" y="314" font-size="9" fill="#0F172A" font-weight="bold">重复上报被当新值</text>
+  <text x="190" y="314" font-size="8.5" fill="#B91C1C">同一秒两次 90，第二次也写成功</text>
+  <text x="480" y="314" font-size="8.5" fill="#334155">更新次数无法当活跃度用</text>
+  <rect x="30" y="340" width="700" height="40" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380.0" y="363.7" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">正确形态：update enrollment_progress set pct = :new where id = :id</text>
+  <text x="380" y="404" text-anchor="middle" font-size="9" fill="#B91C1C">回退要能被「说出来」：不是让库静默吞掉，而是让库抛出可判定的错误，接口转成 userErrors</text>
+  <defs>
+  </defs>
+</svg>

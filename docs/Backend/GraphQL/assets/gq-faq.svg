@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">分诊：先看现象，再决定查哪一层</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">六个高频症状各对应一个「第一眼该看的地方」，顺序反了会白查一天</text>
+  <text x="30" y="74" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">症状 → 第一眼 → 常见真因</text>
+  <rect x="30" y="86" width="700" height="36" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="42" y="108" font-size="8.5" fill="#0F172A" font-weight="bold">返回 200 但 data 是 null</text>
+  <text x="300" y="108" font-size="8.5" fill="#1D4ED8">看 errors[].path</text>
+  <text x="470" y="108" font-size="8.5" fill="#334155">根字段是 NonNull，子字段违约把根打穿</text>
+  <rect x="30" y="128" width="700" height="36" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="42" y="150" font-size="8.5" fill="#0F172A" font-weight="bold">某个字段永远是 null</text>
+  <text x="300" y="150" font-size="8.5" fill="#1D4ED8">看 resolver 是否返回 undefined</text>
+  <text x="470" y="150" font-size="8.5" fill="#334155">default resolver 只认同名属性</text>
+  <rect x="30" y="170" width="700" height="36" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="42" y="192" font-size="8.5" fill="#0F172A" font-weight="bold">列表条数比库里少</text>
+  <text x="300" y="192" font-size="8.5" fill="#1D4ED8">看 first 的缺省值</text>
+  <text x="470" y="192" font-size="8.5" fill="#334155">客户端没传 first，服务端缺省 10</text>
+  <rect x="30" y="212" width="700" height="36" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="42" y="234" font-size="8.5" fill="#0F172A" font-weight="bold">count(*) 很慢</text>
+  <text x="300" y="234" font-size="8.5" fill="#1D4ED8">看是否每页都算 totalCount</text>
+  <text x="470" y="234" font-size="8.5" fill="#334155">去掉 totalCount 或改成估算值</text>
+  <rect x="30" y="254" width="700" height="36" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="42" y="276" font-size="8.5" fill="#0F172A" font-weight="bold">并发下出现两条相同记录</text>
+  <text x="300" y="276" font-size="8.5" fill="#1D4ED8">看唯一索引</text>
+  <text x="470" y="276" font-size="8.5" fill="#334155">只在应用层预检，没落唯一索引</text>
+  <rect x="30" y="296" width="700" height="36" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="42" y="318" font-size="8.5" fill="#0F172A" font-weight="bold">生产被扫库</text>
+  <text x="300" y="318" font-size="8.5" fill="#1D4ED8">看内省与复杂度闸门</text>
+  <text x="470" y="318" font-size="8.5" fill="#334155">匿名可内省 + 只限 depth 不限 first</text>
+  <text x="380" y="386" text-anchor="middle" font-size="9.5" fill="#B91C1C">止血顺序固定：先关内省与限流 → 再降 first 缺省 → 最后才改 resolver</text>
+  <defs>
+  </defs>
+</svg>

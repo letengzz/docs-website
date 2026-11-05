@@ -215,6 +215,21 @@
 
 延伸阅读：[Offer：九状态与四次不可逆](../Recruiting/Offer/index.md)、[需求变更留痕 `req_change`](../Recruiting/Requisition/index.md)。
 
+## 与「GraphQL 服务端工程」的分工（第 257 天补充）
+
+本页讲的是 REST 的契约演进：`/v1` → `/v2`、字段兼容窗口、废弃公告期。GraphQL 走的是另一条路——**不开版本，用 schema 自己演进**。两者的判据不同，不要互相套。
+
+| 这件事 | 本页（REST） | [GraphQL 服务端](../GraphQL/index.md) |
+| --- | --- | --- |
+| 破坏性变更的隔离手段 | 新路径前缀 `/v2` | `@deprecated` + 新字段名，旧字段留着 |
+| 「谁还在用旧字段」的判据 | 网关访问日志按路径统计 | 内省 + 字段级调用计数（[总览](../GraphQL/Overview/index.md) 的版本表） |
+| 契约的机器可读形式 | OpenAPI 文档 | SDL 本身，且**可被客户端拉取** |
+| 兼容性检查 | 两个 spec 文件做 diff | 两个 SDL 做 diff（`graphql-inspector` 一类工具） |
+
+::: danger 注意
+**把 REST 的「开 v2」搬到 GraphQL 上，会得到一个最坏的结果。** 两个端点意味着两份 schema、两套 resolver、两条监控线，而客户端的查询是按字段走的——它不会因为你换了端点就不再用旧字段。GraphQL 里唯一需要「版本目录」的情形是**实现代际**（如 [graphql-js 16 线 / 17 线](../GraphQL/Graphql16/index.md)），不是契约代际。
+:::
+
 ## 参考资料
 
 - [RFC 9745 · The Deprecation HTTP Response Header Field](https://www.rfc-editor.org/rfc/rfc9745.html)

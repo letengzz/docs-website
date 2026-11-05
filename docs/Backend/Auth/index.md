@@ -134,6 +134,21 @@ curl -i -H "Authorization: Bearer $TOKEN_A" http://localhost:8080/api/orders/100
 本专题讲协议与模型的通用原理（语言无关），那里讲这一套在 SSR + MySQL 环境里怎么落地、以及落地时的取舍。
 :::
 
+## 与「GraphQL 服务端工程」的分工（第 257 天补充）
+
+本页讲的是认证与授权的基础设施：令牌签发、校验、会话、角色模型。GraphQL 那一侧要回答的是一个**路由级鉴权回答不了**的问题：同一个端点上，不同查询要不同权限。
+
+| 这件事 | 本页负责 | [GraphQL 安全一页](../GraphQL/Security/index.md)负责 |
+| --- | --- | --- |
+| token 的结构、签名、过期、吊销 | 是 | 只消费 `viewer`，不重新验签 |
+| 角色与权限点（RBAC/ABAC） | 是 | 把权限点挂到字段与 resolver |
+| 「这个请求是谁」 | 是（中间件解析） | 在 `context` 里拿到结果 |
+| 「这一行数据是不是他的」 | 提供归属字段定义 | **每个 resolver 自己写 `where`** |
+
+::: danger 注意
+**路由级鉴权在 GraphQL 上会退化成「登录即可读一切」。** 因为所有操作都在 `POST /graphql` 上，中间件只知道「这个 token 有效」，不知道这一次查的是 `viewer.email` 还是别人的 `order`。字段级与对象级必须各写一层，而对象级**没有任何通用中间件能代劳**——它只能落在每个 resolver 的查询条件里。
+:::
+
 ## 参考资料
 
 - RFC 6749（OAuth 2.0 授权框架）：https://www.rfc-editor.org/rfc/rfc6749

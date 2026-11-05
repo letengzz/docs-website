@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">四种分页方式与「深翻页」的真实成本</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">offset 的成本随页码线性上涨；cursor 是一条平线——差别在 4 个数量级上</text>
+  <rect x="30" y="78" width="166" height="66" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="113.0" y="98.0" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">offset / limit</text>
+  <text x="113.0" y="114.7" text-anchor="middle" font-size="7.5" fill="#B91C1C">skip=100000 时</text>
+  <text x="113.0" y="131.4" text-anchor="middle" font-size="7.5" fill="#B91C1C">扫过 10 万行</text>
+  <rect x="208" y="78" width="166" height="66" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="291.0" y="98.0" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">page / pageSize</text>
+  <text x="291.0" y="114.7" text-anchor="middle" font-size="7.5" fill="#B45309">同上，且总数会变</text>
+  <text x="291.0" y="131.4" text-anchor="middle" font-size="7.5" fill="#B45309">翻页期间插入即错位</text>
+  <rect x="386" y="78" width="166" height="66" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="469.0" y="98.0" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">Relay cursor</text>
+  <text x="469.0" y="114.7" text-anchor="middle" font-size="7.5" fill="#047857">first/after</text>
+  <text x="469.0" y="131.4" text-anchor="middle" font-size="7.5" fill="#047857">cursor 不透明</text>
+  <rect x="564" y="78" width="166" height="66" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="647.0" y="98.0" text-anchor="middle" font-size="9.5" fill="#5B21B6" font-weight="bold">全量返回</text>
+  <text x="647.0" y="114.7" text-anchor="middle" font-size="7.5" fill="#6D28D9">无分页</text>
+  <text x="647.0" y="131.4" text-anchor="middle" font-size="7.5" fill="#6D28D9">2,000 条 = 0.47 MiB</text>
+  <text x="30" y="176" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">取 20 条、页码越深越慢（本机建模读数，每行 0.8 µs）</text>
+  <text x="30" y="203" text-anchor="start" font-size="8.5" fill="#334155">skip = 0</text>
+  <rect x="150" y="190" width="2.0" height="18" rx="3" fill="#FCA5A5" stroke="#DC2626" stroke-width="1"/>
+  <text x="158.0" y="203" text-anchor="start" font-size="8.5" fill="#991B1B">0.02 ms</text>
+  <text x="30" y="233" text-anchor="start" font-size="8.5" fill="#334155">skip = 1,000</text>
+  <rect x="150" y="220" width="4.7" height="18" rx="3" fill="#FCA5A5" stroke="#DC2626" stroke-width="1"/>
+  <text x="160.71382154461384" y="233" text-anchor="start" font-size="8.5" fill="#991B1B">0.82 ms</text>
+  <text x="30" y="263" text-anchor="start" font-size="8.5" fill="#334155">skip = 10,000</text>
+  <rect x="150" y="250" width="46.1" height="18" rx="3" fill="#FCA5A5" stroke="#DC2626" stroke-width="1"/>
+  <text x="202.10347413146712" y="263" text-anchor="start" font-size="8.5" fill="#991B1B">8.02 ms</text>
+  <text x="30" y="293" text-anchor="start" font-size="8.5" fill="#334155">skip = 100,000</text>
+  <rect x="150" y="280" width="460.0" height="18" rx="3" fill="#FCA5A5" stroke="#DC2626" stroke-width="1"/>
+  <text x="616.0" y="293" text-anchor="start" font-size="8.5" fill="#991B1B">80.02 ms</text>
+  <line x1="152" y1="186" x2="152" y2="316" stroke="#059669" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="160" y="330" text-anchor="start" font-size="8.5" fill="#047857">cursor 分页恒为 0.036 ms（一次索引定位 + 20 行），与页码无关</text>
+  <text x="30" y="356" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">Connection 规范要回答的四件事</text>
+  <rect x="30" y="366" width="170" height="30" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="115" y="385" text-anchor="middle" font-size="7.5" fill="#334155">edges.node + cursor</text>
+  <rect x="208" y="366" width="170" height="30" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="293" y="385" text-anchor="middle" font-size="7.5" fill="#334155">pageInfo.hasNextPage</text>
+  <rect x="386" y="366" width="170" height="30" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="471" y="385" text-anchor="middle" font-size="7.5" fill="#334155">pageInfo.endCursor</text>
+  <rect x="564" y="366" width="170" height="30" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="649" y="385" text-anchor="middle" font-size="7.5" fill="#334155">totalCount（非规范必需）</text>
+  <text x="380" y="414" text-anchor="middle" font-size="9.5" fill="#B45309">totalCount 每页一次 count(*)：200 万行的表上，它比取 20 行贵两个数量级</text>
+  <defs>
+  </defs>
+</svg>

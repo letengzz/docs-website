@@ -1088,7 +1088,26 @@ export const AdDelivery = [
 
 export const GraphQL = [
   {
-    text: "⚠️ GraphQL 服务端（页面待补）",
+    text: "GraphQL 服务端工程",
+    link: "/docs/Backend/GraphQL/index.md",
+    items: [
+      { text: "总览：一个端点、三个阶段与三个「打了几次库」", link: "/docs/Backend/GraphQL/Overview/index.md" },
+      { text: "Schema 与 SDL：六类类型、四种修饰符与 null 冒泡", link: "/docs/Backend/GraphQL/Schema/index.md" },
+      { text: "Query：字段解析、分页四法与 Connection 契约", link: "/docs/Backend/GraphQL/Query/index.md" },
+      { text: "Mutation：串行、两通道与幂等键", link: "/docs/Backend/GraphQL/Mutation/index.md" },
+      { text: "性能：N+1、DataLoader 与复杂度闸门", link: "/docs/Backend/GraphQL/Performance/index.md" },
+      { text: "安全：三处鉴权、四个滥用面与内省开关", link: "/docs/Backend/GraphQL/Security/index.md" },
+      { text: "实战：一套能跑起来的服务端骨架", link: "/docs/Backend/GraphQL/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/GraphQL/FAQ/index.md" },
+      {
+        text: "版本线（graphql-js 16 / 17）",
+        collapsed: true,
+        items: [
+          { text: "16 线（维护中）：Apollo Server 5 的唯一可行基线", link: "/docs/Backend/GraphQL/Graphql16/index.md" },
+          { text: "17 线（当前主线）：Node 22+ 与六个被删的导出", link: "/docs/Backend/GraphQL/Graphql17/index.md" },
+        ],
+      },
+    ],
   },
 ];
 

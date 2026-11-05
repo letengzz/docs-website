@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="390" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">graphql-js 17 线（当前主线）：Node 22+ 与六个被删的导出</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">17.0.2 起 engine 只认 Node 22/24/25+；六个导出被移除，升级不是改版本号那么简单</text>
+  <text x="30" y="74" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">① 三类破坏性变更</text>
+  <rect x="30" y="86" width="166" height="70" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="113.0" y="108.0" text-anchor="middle" font-size="9" fill="#991B1B" font-weight="bold">运行底盘</text>
+  <text x="113.0" y="124.7" text-anchor="middle" font-size="7.5" fill="#B91C1C">engine 下限 Node 22</text>
+  <text x="113.0" y="141.4" text-anchor="middle" font-size="7.5" fill="#B91C1C">16 线还能跑 Node 18</text>
+  <rect x="208" y="86" width="166" height="70" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="291.0" y="108.0" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">被移除的六个导出</text>
+  <text x="291.0" y="124.7" text-anchor="middle" font-size="7.5" fill="#B45309">assertValidName / formatError</text>
+  <text x="291.0" y="141.4" text-anchor="middle" font-size="7.5" fill="#B45309">getOperationRootType 等</text>
+  <rect x="386" y="86" width="166" height="70" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="469.0" y="108.0" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">增量交付进入实现</text>
+  <text x="469.0" y="124.7" text-anchor="middle" font-size="7.5" fill="#1D4ED8">GraphQLDeferDirective</text>
+  <text x="469.0" y="141.4" text-anchor="middle" font-size="7.5" fill="#1D4ED8">不在 specifiedDirectives</text>
+  <text x="30" y="190" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">② 与 Apollo Server 5 的硬冲突</text>
+  <rect x="30" y="202" width="700" height="56" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380.0" y="225.3" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">pnpm add graphql@17 @apollo/server → ERESOLVE</text>
+  <text x="380.0" y="242.1" text-anchor="middle" font-size="7.5" fill="#B91C1C">AS5 只声明 graphql ^16.11.0；不锁版本时包管理器会静默把 graphql 降回 16.14.2</text>
+  <text x="30" y="288" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">③ 17 线上能装在一起的组合</text>
+  <rect x="30" y="300" width="166" height="54" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="113.0" y="322.3" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">graphql-yoga 5.22.x</text>
+  <text x="113.0" y="339.1" text-anchor="middle" font-size="7.5" fill="#047857">接受 15 / 16 / 17</text>
+  <rect x="208" y="300" width="166" height="54" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="291.0" y="322.3" text-anchor="middle" font-size="9" fill="#115E59" font-weight="bold">@apollo/client 4</text>
+  <text x="291.0" y="339.1" text-anchor="middle" font-size="7.5" fill="#0F766E">peer 接受 16 / 17</text>
+  <rect x="386" y="300" width="166" height="54" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="469.0" y="322.3" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">graphql-ws 6.1+</text>
+  <text x="469.0" y="339.1" text-anchor="middle" font-size="7.5" fill="#6D28D9">订阅传输</text>
+  <rect x="564" y="300" width="166" height="54" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="647.0" y="322.3" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">降级即回 16 线</text>
+  <text x="647.0" y="339.1" text-anchor="middle" font-size="7.5" fill="#334155">Apollo Server 项目</text>
+  <text x="380" y="376" text-anchor="middle" font-size="9.5" fill="#B91C1C">用 @defer 必须自己把指令加进 schema：specifiedDirectives 里没有它</text>
+  <defs>
+  </defs>
+</svg>

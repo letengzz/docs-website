@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">一个能跑起来的最小服务端：六层、一次校验、十二个用例</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">校验发生在执行之前——复杂度算不出来就直接拒，不要先跑再后悔</text>
+  <rect x="30" y="76" width="470" height="36" rx="7" fill="#F8FAFC" stroke="#475569" stroke-width="1.5"/>
+  <text x="44" y="99" font-size="9.5" fill="#1E293B" font-weight="bold">① HTTP 层</text>
+  <text x="170" y="99" font-size="8" fill="#334155">只做：方法 / Content-Type / 请求体上限</text>
+  <line x1="60" y1="112" x2="60" y2="118" stroke="#7C3AED" stroke-width="1.4" marker-end="url(#arw7C3AED)"/>
+  <rect x="30" y="120" width="470" height="36" rx="7" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="44" y="143" font-size="9.5" fill="#1E3A8A" font-weight="bold">② 上下文 context</text>
+  <text x="170" y="143" font-size="8" fill="#1D4ED8">一处解析 token，产出 viewer 与 loaders</text>
+  <line x1="60" y1="156" x2="60" y2="162" stroke="#7C3AED" stroke-width="1.4" marker-end="url(#arw7C3AED)"/>
+  <rect x="30" y="164" width="470" height="36" rx="7" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="44" y="187" font-size="9.5" fill="#991B1B" font-weight="bold">③ 校验层</text>
+  <text x="170" y="187" font-size="8" fill="#B91C1C">语法 → schema → 深度 → 复杂度 → 鉴权指令</text>
+  <line x1="60" y1="200" x2="60" y2="206" stroke="#7C3AED" stroke-width="1.4" marker-end="url(#arw7C3AED)"/>
+  <rect x="30" y="208" width="470" height="36" rx="7" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="44" y="231" font-size="9.5" fill="#92400E" font-weight="bold">④ 执行器</text>
+  <text x="170" y="231" font-size="8" fill="#B45309">resolver 树；mutation 顶层串行</text>
+  <line x1="60" y1="244" x2="60" y2="250" stroke="#7C3AED" stroke-width="1.4" marker-end="url(#arw7C3AED)"/>
+  <rect x="30" y="252" width="470" height="36" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+  <text x="44" y="275" font-size="9.5" fill="#065F46" font-weight="bold">⑤ DataLoader</text>
+  <text x="170" y="275" font-size="8" fill="#047857">每请求一份缓存，批 key 去重后一次查</text>
+  <line x1="60" y1="288" x2="60" y2="294" stroke="#7C3AED" stroke-width="1.4" marker-end="url(#arw7C3AED)"/>
+  <rect x="30" y="296" width="470" height="36" rx="7" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+  <text x="44" y="319" font-size="9.5" fill="#065F46" font-weight="bold">⑥ 数据层</text>
+  <text x="170" y="319" font-size="8" fill="#047857">SQLite / PG；唯一索引是最后一道守卫</text>
+  <text x="530" y="74" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">十二个用例分四组</text>
+  <rect x="530" y="86" width="200" height="54" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="630.0" y="100.0" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">契约组 T01~T03</text>
+  <text x="630.0" y="116.7" text-anchor="middle" font-size="7.5" fill="#6D28D9">分页边界</text>
+  <text x="630.0" y="133.4" text-anchor="middle" font-size="7.5" fill="#6D28D9">变量缺省语义</text>
+  <rect x="530" y="148" width="200" height="54" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="630.0" y="161.9" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">守卫组 T04~T06</text>
+  <text x="630.0" y="178.7" text-anchor="middle" font-size="7.5" fill="#6D28D9">深度 / 复杂度</text>
+  <text x="630.0" y="195.4" text-anchor="middle" font-size="7.5" fill="#6D28D9">对象级鉴权</text>
+  <rect x="530" y="210" width="200" height="54" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="630.0" y="223.9" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">并发组 T07~T09</text>
+  <text x="630.0" y="240.7" text-anchor="middle" font-size="7.5" fill="#6D28D9">幂等键并发</text>
+  <text x="630.0" y="257.4" text-anchor="middle" font-size="7.5" fill="#6D28D9">乐观版本冲突</text>
+  <rect x="530" y="272" width="200" height="54" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="630.0" y="285.9" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">反向组 T10~T12</text>
+  <text x="630.0" y="302.7" text-anchor="middle" font-size="7.5" fill="#6D28D9">去掉闸门必须变红</text>
+  <text x="630.0" y="319.4" text-anchor="middle" font-size="7.5" fill="#6D28D9">索引缺失必须重复</text>
+  <text x="380" y="356" text-anchor="middle" font-size="9" fill="#64748B">反向组是这套用例的价值所在：只有正向全绿时，一个「永远拒绝」的实现也能拿满分</text>
+  <rect x="30" y="366" width="700" height="34" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380.0" y="386.7" text-anchor="middle" font-size="9.5" fill="#115E59" font-weight="bold">验收判据：十二条全绿 + 三条反向在去掉闸门后必须变红</text>
+  <defs>
+    <marker id="arw7C3AED" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

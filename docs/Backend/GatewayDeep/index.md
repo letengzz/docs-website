@@ -134,6 +134,22 @@
 「先限流还是先鉴权」这类顺序问题，两层的判断逻辑是相通的；但插件语法、配置格式、生效方式完全不同。把网关插件直接搬到边缘函数上，最常见的后果是**超 CPU 预算**（见 [边缘计算](../../Ops/EdgeCDN/EdgeCompute/index.md) 的三类失败代码）。
 :::
 
+## 与「GraphQL 服务端工程」的分工（第 257 天补充）
+
+GraphQL 只有一个端点，这让网关这一层的能力边界发生变化：**路由、版本、灰度这些「按路径分流」的手段全部失效**，因为路径永远是 `/graphql`。
+
+| 这件事 | 网关负责 | [GraphQL 服务端](../GraphQL/index.md)负责 |
+| --- | --- | --- |
+| 请求级限流（IP / token / 租户） | 是，按端点计 | 只提供 `request_id` 与成本读数 |
+| 「这条查询要花多少钱」 | **不是**——网关看到的只有一条 POST body | 是，[成本闸门](../GraphQL/Performance/index.md)在校验期算 |
+| 认证（token 校验、会话） | 是，解析后透传身份 | 只消费 `viewer`，不重新验签 |
+| 灰度与 A/B | 只能按 header / 权重分 | 按 schema 字段的 `@deprecated` 逐步下线 |
+| 审计与脱敏 | 记录元数据 | 记录字段级访问（`path` 维度） |
+
+::: danger 注意
+**「在网关上做 GraphQL 成本限制」是一个常见的错位。** 网关只能读到请求体大小与 QPS，读不到「这句查询会展开多少个对象」——而那才是真正的成本。用请求体大小限流，一条 800 字节的 `first:1000` 嵌套炸弹完全能穿过；反过来，一条 20 KB 的合法批量查询会被误杀。**成本必须由懂 schema 的那一层算。**
+:::
+
 ## 参考资料
 
 - Apache APISIX 官网与文档：https://apisix.apache.org/ ｜ https://apisix.apache.org/docs/apisix/getting-started/

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="390" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">graphql-js 16 线（维护中）：Apollo Server 5 的唯一可行基线</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">16.14.2 是 latest-16 标签；17 线删掉的六个导出，在这里全都还在</text>
+  <text x="30" y="74" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">① 16 线上能装在一起的组合</text>
+  <rect x="30" y="86" width="166" height="66" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="113.0" y="106.0" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">@apollo/server 5.5.x</text>
+  <text x="113.0" y="122.7" text-anchor="middle" font-size="7.5" fill="#047857">peerDep 只声明 ^16.11.0</text>
+  <text x="113.0" y="139.4" text-anchor="middle" font-size="7.5" fill="#047857">与 17 线装不到一起</text>
+  <rect x="208" y="86" width="166" height="66" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="291.0" y="106.0" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">graphql-yoga 5.22.x</text>
+  <text x="291.0" y="122.7" text-anchor="middle" font-size="7.5" fill="#1D4ED8">peer 接受 15 / 16 / 17</text>
+  <text x="291.0" y="139.4" text-anchor="middle" font-size="7.5" fill="#1D4ED8">跨运行时，能力更全</text>
+  <rect x="386" y="86" width="166" height="66" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="469.0" y="106.0" text-anchor="middle" font-size="9" fill="#92400E" font-weight="bold">graphql-http</text>
+  <text x="469.0" y="122.7" text-anchor="middle" font-size="7.5" fill="#B45309">取代已废弃的</text>
+  <text x="469.0" y="139.4" text-anchor="middle" font-size="7.5" fill="#B45309">express-graphql</text>
+  <rect x="564" y="86" width="166" height="66" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="647.0" y="106.0" text-anchor="middle" font-size="9" fill="#5B21B6" font-weight="bold">graphql-ws 6.x</text>
+  <text x="647.0" y="122.7" text-anchor="middle" font-size="7.5" fill="#6D28D9">订阅传输</text>
+  <text x="647.0" y="139.4" text-anchor="middle" font-size="7.5" fill="#6D28D9">与 16 线兼容</text>
+  <text x="30" y="186" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">② 为什么这条线不删</text>
+  <rect x="30" y="198" width="700" height="56" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="380.0" y="221.3" text-anchor="middle" font-size="9.5" fill="#1E293B" font-weight="bold">「旧版本保留 + 标注状态」不是情怀，是依赖图的硬事实</text>
+  <text x="380.0" y="238.1" text-anchor="middle" font-size="7.5" fill="#334155">@apollo/server@5 的 peerDependencies 写着 graphql ^16.11.0；装 17 会 ERESOLVE，装 16 才是它声明支持的形态</text>
+  <rect x="30" y="266" width="343" height="56" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="201.5" y="289.3" text-anchor="middle" font-size="9.5" fill="#92400E" font-weight="bold">状态：维护中</text>
+  <text x="201.5" y="306.1" text-anchor="middle" font-size="7.5" fill="#B45309">只修安全与兼容问题，不新增写法</text>
+  <rect x="387" y="266" width="343" height="56" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="558.5" y="289.3" text-anchor="middle" font-size="9.5" fill="#065F46" font-weight="bold">什么时候该迁到 17 线</text>
+  <text x="558.5" y="306.1" text-anchor="middle" font-size="7.5" fill="#047857">弃用 Apollo Server 5，或需要 @defer</text>
+  <text x="380" y="352" text-anchor="middle" font-size="9.5" fill="#B91C1C">装 16 线的命令固定写死小版本，别让「顺手升一下」把整条链路带崩</text>
+  <text x="380" y="376" text-anchor="middle" font-size="8.5" fill="#334155" font-family="Consolas, monospace">pnpm add graphql@16.14.2 @apollo/server@5.5.1</text>
+  <defs>
+  </defs>
+</svg>

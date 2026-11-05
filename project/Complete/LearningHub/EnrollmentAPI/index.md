@@ -262,7 +262,7 @@ from enrollment where learner_id='L00001' and course_id='C001';"
 | 第 4 步 | 交卷判分 `POST /attempts/{id}/submit` | 一次交卷（C3）；判分与落分同事务 |
 | 第 5 步 | 发证 `POST /certificates` | 没通过不发证（C4）；撤销留痕 |
 
-第 2 步会立刻用到今天的方法：**它也有一个「读一下再决定」的诱惑**——先查当前进度、比大小、再更新。正确做法是把这条判断写进触发器（C2 已经写了），代码只负责把新值送进去，让数据库决定要不要拒。
+第 2 步会立刻用到今天的方法：**它也有一个「读一下再决定」的诱惑**——先查当前进度、比大小、再更新。正确做法是把这条判断写进触发器（C2 已经写了），代码只负责把新值送进去，让数据库决定要不要拒。那一步已经交付，见 [进度上报：pct 只增不减](../ProgressReport/index.md)——实测「85 → 60」在无触发器时**回退成功**（终值 60），有触发器时抛 `PCT_REGRESS` 且终值保持 85。
 
 ## 九、本页判据
 
@@ -276,6 +276,19 @@ from enrollment where learner_id='L00001' and course_id='C001';"
 | `LNE-F` | 并发报名只落 1 行且零 500 | `T10` PASS，错误码集合 ⊆ `{ENROLL_DUPLICATE}` |
 | `LNE-G` | 反例探针存在（去掉索引必须出现多行） | `T11` PASS |
 | `LNE-H` | 每个错误码都有 `retryable`，且 `503` 为 `true` | 错误码表五列齐全 |
+
+## 与「GraphQL 服务端工程」的一处对照（第 257 天补记）
+
+本项目的命令接口用 `Idempotency-Key` **请求头**传幂等键，这是 REST 的标准做法。同一件事在 GraphQL 里必须换成 `input.idempotencyKey`——不是因为风格，而是因为**一个 GraphQL 请求体里可以有多个根字段**，头只能带一个值，两个写操作共用一个键时第二次会被误判成重放。
+
+| 这件事 | 本项目（REST） | GraphQL 形态 |
+| --- | --- | --- |
+| 幂等键位置 | 请求头 `Idempotency-Key` | `input.idempotencyKey` |
+| 服务端能校验它吗 | 不能——schema 里没有它 | 能，它在 schema 里，可被内省与代码生成 |
+| 一个请求多个写 | 不存在（一个 handler 一个动作） | 常见（`a: createX` + `b: createY`） |
+| 并发守卫 | 部分唯一索引 | 唯一索引（同一条判据） |
+
+详细判据见 [GraphQL 的 Mutation 一页](../../../../docs/Backend/GraphQL/Mutation/index.md)。**两页的结论一致**：并发下去重只能靠唯一索引，协议层放在哪里只影响可校验性，不影响正确性。
 
 ## 参考资料
 
