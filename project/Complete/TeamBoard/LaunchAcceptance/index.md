@@ -179,7 +179,7 @@ docker compose logs migrate | grep -v '^time='            # 迁移服务的输�
 | --- | --- | --- | --- | --- |
 | 1 | `docker compose config -q` | `rc=0` | **`rc=0`** | ✅ |
 | 2 | `docker compose up -d --wait` | 依赖先 Healthy、应用后启动 | db / cache 先 `Healthy`，migrate 与 app 其后才 `Started` | ✅ |
-| 2 | 起栈总耗时 | —— | **11.8 s**（含 5 份迁移） | 记录 |
+| 2b | 起栈总耗时 | —— | **11.8 s**（含 5 份迁移） | 记录 |
 | 3 | `docker compose ps` | 长驻服务全 `running`；一次性服务 `exited (0)` | 3 个 `running`、`migrate` **`exited (0)`** | ✅ |
 | 4 | `psql -c 'select 1'` | `1` | `1` | ✅ |
 | 5 | 服务自带就绪判定 | 健康检查 `healthy` | `app` / `db` / `cache` 均 `healthy` | ✅ |

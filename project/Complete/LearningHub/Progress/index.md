@@ -175,6 +175,8 @@ BEGIN SELECT RAISE(ABORT, 'INCOMPLETE_REQUIRED'); END;
 
 ## 九、判据清单（`LNU-A` ~ `LNU-H`）
 
+本页判据族 `LNU-A` ~ `LNU-H`，共 8 条。它们描述「他学到哪了这件事，服务端能不能自己算出来」。
+
 | 编号 | 判据 | 怎么验 |
 | --- | --- | --- |
 | `LNU-A` | 节进度以 (`enroll_id`,`lesson_id`) 为唯一键，重复上报不新增行 | 200 次上报后行数 = 节数 |

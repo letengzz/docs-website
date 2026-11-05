@@ -1799,3 +1799,22 @@ export const LodgingOps = [
     ],
   },
 ];
+
+export const CustomsTrade = [
+  {
+    text: "报关与进出口合规工程",
+    link: "/docs/Backend/CustomsTrade/index.md",
+    items: [
+      { text: "总览：六个口径与一套单据", link: "/docs/Backend/CustomsTrade/Overview/index.md" },
+      { text: "商品归类：一个商品为什么会有三个税号", link: "/docs/Backend/CustomsTrade/Classification/index.md" },
+      { text: "完税价格：四个加项与一次乘法", link: "/docs/Backend/CustomsTrade/Valuation/index.md" },
+      { text: "申报与四单一致", link: "/docs/Backend/CustomsTrade/Declaration/index.md" },
+      { text: "三税计征：关税、消费税、增值税", link: "/docs/Backend/CustomsTrade/Duty/index.md" },
+      { text: "原产地规则：RVC、CTC 与累积", link: "/docs/Backend/CustomsTrade/Origin/index.md" },
+      { text: "加工贸易：手册、单耗与核销", link: "/docs/Backend/CustomsTrade/ProcessingTrade/index.md" },
+      { text: "查验、放行与结关", link: "/docs/Backend/CustomsTrade/Release/index.md" },
+      { text: "实战：十张表、五个触发器、十六条断言", link: "/docs/Backend/CustomsTrade/Practice/index.md" },
+      { text: "常见问题：差额先查哪一句", link: "/docs/Backend/CustomsTrade/FAQ/index.md" },
+    ],
+  },
+];

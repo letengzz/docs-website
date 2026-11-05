@@ -106,6 +106,8 @@ CREATE TABLE schema_version (
 
 ## 六、本页判据 `LNS-A ~ LNS-H`
 
+本页判据族 `LNS-A` ~ `LNS-H`，共 8 条。它们描述「五条高频查询有没有各走一条索引、索引的代价有没有算过」。
+
 | 编号 | 判据 | 怎么验 |
 | --- | --- | --- |
 | `LNS-A` | 五条高频查询各有 `EXPLAIN QUERY PLAN` 记录，且计划为 `SEARCH` 或明确的 `SCAN` | 五条计划都留档 |

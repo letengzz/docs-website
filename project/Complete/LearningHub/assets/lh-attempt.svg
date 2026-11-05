@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="396" viewBox="0 0 860 396" role="img">
+<title>交卷与判分：组卷冻结、一次提交、现算分数</title>
+<rect x="0" y="0" width="860" height="396" fill="#ffffff"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker></defs>
+<text x="28" y="34" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#0f172a" font-weight="600" text-anchor="start">交卷只写一次，但「这一卷考了什么」必须提前冻进库里</text>
+<text x="28" y="54" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">五步的顺序不能换：先把卷冻住，才谈得上「同一份答卷永远是同一个分数」</text>
+<rect x="28" y="80" width="150" height="80" rx="8" ry="8" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+<text x="103" y="105" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">① 组卷冻结</text>
+<text x="103" y="126" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#334155" font-weight="400" text-anchor="middle">paper_item</text>
+<text x="103" y="146" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#0369a1" font-weight="600" text-anchor="middle">题目 · 分值 · 答案版本</text>
+<line x1="179" y1="120" x2="189" y2="120" stroke="#475569" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="190" y="80" width="150" height="80" rx="8" ry="8" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.2"/>
+<text x="265" y="105" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">② 明细落库</text>
+<text x="265" y="126" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#334155" font-weight="400" text-anchor="middle">answer(主键)</text>
+<text x="265" y="146" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#0369a1" font-weight="600" text-anchor="middle">一题一行，重复提交覆盖</text>
+<line x1="341" y1="120" x2="351" y2="120" stroke="#475569" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="352" y="80" width="150" height="80" rx="8" ry="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="427" y="105" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">③ 一次提交</text>
+<text x="427" y="126" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#334155" font-weight="400" text-anchor="middle">submitted_at IS NULL</text>
+<text x="427" y="146" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#0f766e" font-weight="600" text-anchor="middle">200 并发只 1 个赢家</text>
+<line x1="503" y1="120" x2="513" y2="120" stroke="#475569" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="514" y="80" width="150" height="80" rx="8" ry="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="589" y="105" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">④ 现算分数</text>
+<text x="589" y="126" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#334155" font-weight="400" text-anchor="middle">SUM(answer)</text>
+<text x="589" y="146" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#0f766e" font-weight="600" text-anchor="middle">不认客户端报的 score</text>
+<line x1="665" y1="120" x2="675" y2="120" stroke="#475569" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="676" y="80" width="150" height="80" rx="8" ry="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="751" y="105" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">⑤ 发证闸门</text>
+<text x="751" y="126" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#334155" font-weight="400" text-anchor="middle">passed = 1</text>
+<text x="751" y="146" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#0f766e" font-weight="600" text-anchor="middle">未交卷的卷挡在外面</text>
+<text x="28" y="192" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start">五处「看起来对」的数字，本机各实测了一次</text>
+<rect x="28" y="199" width="3" height="26" fill="#b91c1c"/>
+<text x="40" y="212" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="start">用题库当前答案重判</text>
+<text x="250" y="212" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="start">429 / 500 份分数变了</text>
+<text x="486" y="212" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">32 份跨及格线：3 份由不过变过、29 份由过变不过</text>
+<rect x="28" y="233" width="3" height="26" fill="#b91c1c"/>
+<text x="40" y="246" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="start">只算 LIVE 的题</text>
+<text x="250" y="246" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="start">446 张卷的 771 个位置不计分</text>
+<text x="486" y="246" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">均少 4.69 分 / 卷，93 份由过变不过</text>
+<rect x="28" y="267" width="3" height="26" fill="#a16207"/>
+<text x="40" y="280" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="start">REAL 累加 vs 整数厘分</text>
+<text x="250" y="280" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#a16207" font-weight="600" text-anchor="start">71.2% 的卷两种算法不等</text>
+<text x="486" y="280" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">最大差 1.42e−14 分；厘分整数 0 份</text>
+<rect x="28" y="301" width="3" height="26" fill="#b91c1c"/>
+<text x="40" y="314" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="start">明细表没有主键</text>
+<text x="250" y="314" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="start">行数 +31.38%，分数 +30.21%</text>
+<text x="486" y="314" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">200 份卷里及格人数 88 → 121（虚增 33 人）</text>
+<rect x="28" y="335" width="3" height="26" fill="#b91c1c"/>
+<text x="40" y="348" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="start">200 并发同时交卷</text>
+<text x="250" y="348" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="start">无条件 UPDATE 200 个赢家</text>
+<text x="486" y="348" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start">条件 UPDATE 1 个；证书 200 张 → 1 张</text>
+<line x1="28" y1="378" x2="832" y2="378" stroke="#e2e8f0" stroke-width="1"/>
+<text x="28" y="392" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#64748b" font-weight="400" text-anchor="start">口径：题库 24 题 · 单卷 12 题 · 卷面 44.00 分 · 及格 26.40 分 · 500 份答卷 / 6,000 行明细（种子 20261105）</text>
+</svg>

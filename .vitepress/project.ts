@@ -481,6 +481,7 @@ export const CompleteProject = [
           { text: "第 1 周第 5 步 · 第 1 周验收单：八项门禁（LNV-A~LNV-H）", link: "/project/Complete/LearningHub/Week1Acceptance/index.md" },
           { text: "第 2 周第 1 步 · 报名接口：四步写入与三种写法的并发实测（LNE-A~LNE-H）", link: "/project/Complete/LearningHub/Enrollment/index.md" },
           { text: "第 2 周第 2 步 · 进度上报：三张表、三种百分比、四步写入（LNU-A~LNU-H）", link: "/project/Complete/LearningHub/Progress/index.md" },
+          { text: "第 2 周第 3 步 · 交卷与判分：组卷冻结、一次交卷、整数厘分（LNM-A~LNM-H）", link: "/project/Complete/LearningHub/AttemptScoring/index.md" },
         ],
       },
     ],
