@@ -1818,3 +1818,22 @@ export const CustomsTrade = [
     ],
   },
 ];
+
+export const GameMatchmaking = [
+  {
+    text: "游戏匹配与赛季竞技工程",
+    link: "/docs/Backend/GameMatchmaking/index.md",
+    items: [
+      { text: "总览：三个「他有多强」与七个写入点", link: "/docs/Backend/GameMatchmaking/Overview/index.md" },
+      { text: "匹配池与分层", link: "/docs/Backend/GameMatchmaking/Pool/index.md" },
+      { text: "评分与 MMR：K 值的取舍", link: "/docs/Backend/GameMatchmaking/Rating/index.md" },
+      { text: "配对与匹配质量：窗口曲线", link: "/docs/Backend/GameMatchmaking/Match/index.md" },
+      { text: "对局结算与幂等", link: "/docs/Backend/GameMatchmaking/Settlement/index.md" },
+      { text: "赛季与软重置", link: "/docs/Backend/GameMatchmaking/Season/index.md" },
+      { text: "排行榜与名次", link: "/docs/Backend/GameMatchmaking/Leaderboard/index.md" },
+      { text: "公平性与反作弊", link: "/docs/Backend/GameMatchmaking/Integrity/index.md" },
+      { text: "实战：九张表、三个触发器、十三条断言", link: "/docs/Backend/GameMatchmaking/Practice/index.md" },
+      { text: "常见问题：先问哪一段的数不对", link: "/docs/Backend/GameMatchmaking/FAQ/index.md" },
+    ],
+  },
+];

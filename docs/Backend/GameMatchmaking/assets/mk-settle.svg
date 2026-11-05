@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 348" width="680" height="348" role="img" aria-label="结算的写入顺序与幂等闸门">
+<rect width="680" height="348" fill="#ffffff"/>
+<text x="24" y="30" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">一局结算要写七个地方，只有一处是「分数」</text>
+<text x="24" y="50" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">顺序错了不会报错，只会让「分」和「记录」对不上</text>
+<rect x="24" y="74" width="632" height="26" rx="6" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="24" y="74" width="3" height="26" rx="4" fill="#0d9488" opacity="1.0"/>
+<text x="38" y="91" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">① 冻结对局</text>
+<text x="150" y="91" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">match.state = SETTLED</text>
+<text x="470" y="91" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#94a3b8" text-anchor="start" font-weight="400" opacity="1.0">以结束时刻为准</text>
+<rect x="24" y="106" width="632" height="26" rx="6" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="24" y="106" width="3" height="26" rx="4" fill="#dc2626" opacity="1.0"/>
+<text x="38" y="123" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">② 写结算单</text>
+<text x="150" y="123" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">settle_log (match_id, player_id) UNIQUE</text>
+<text x="470" y="123" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#94a3b8" text-anchor="start" font-weight="400" opacity="1.0">幂等闸门在这一步</text>
+<rect x="24" y="138" width="632" height="26" rx="6" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="24" y="138" width="3" height="26" rx="4" fill="#2563eb" opacity="1.0"/>
+<text x="38" y="155" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">③ 改 MMR</text>
+<text x="150" y="155" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">mmr = mmr + delta</text>
+<text x="470" y="155" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#94a3b8" text-anchor="start" font-weight="400" opacity="1.0">原子自增，不先查后改</text>
+<rect x="24" y="170" width="632" height="26" rx="6" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="24" y="170" width="3" height="26" rx="4" fill="#2563eb" opacity="1.0"/>
+<text x="38" y="187" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">④ 记流水</text>
+<text x="150" y="187" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">mmr_history (before, after, reason)</text>
+<text x="470" y="187" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#94a3b8" text-anchor="start" font-weight="400" opacity="1.0">可回滚的唯一依据</text>
+<rect x="24" y="202" width="632" height="26" rx="6" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="24" y="202" width="3" height="26" rx="4" fill="#7c3aed" opacity="1.0"/>
+<text x="38" y="219" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">⑤ 算赛季分</text>
+<text x="150" y="219" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">season_point += delta</text>
+<text x="470" y="219" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#94a3b8" text-anchor="start" font-weight="400" opacity="1.0">与 MMR 分开记</text>
+<rect x="24" y="234" width="632" height="26" rx="6" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="24" y="234" width="3" height="26" rx="4" fill="#d97706" opacity="1.0"/>
+<text x="38" y="251" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">⑥ 刷榜单</text>
+<text x="150" y="251" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">ZADD leaderboard</text>
+<text x="470" y="251" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#94a3b8" text-anchor="start" font-weight="400" opacity="1.0">允许延迟，可重放</text>
+<rect x="24" y="266" width="632" height="26" rx="6" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="24" y="266" width="3" height="26" rx="4" fill="#16a34a" opacity="1.0"/>
+<text x="38" y="283" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">⑦ 发奖励</text>
+<text x="150" y="283" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">reward_grant (idem_key)</text>
+<text x="470" y="283" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#94a3b8" text-anchor="start" font-weight="400" opacity="1.0">钱只能发一次</text>
+<rect x="24" y="302" width="632" height="34" rx="8" fill="#f8fafc" stroke="#dbe3ef" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="38" y="323" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">无幂等键重试 3 次：1518 → 1554；并发 16 线程先查后改：应 4,700 实得 1,700（丢 63.8%）</text>
+</svg>

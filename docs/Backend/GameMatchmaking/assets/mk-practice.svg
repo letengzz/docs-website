@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 350" width="680" height="350" role="img" aria-label="实战的九张表">
+<rect width="680" height="350" fill="#ffffff"/>
+<text x="24" y="30" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">九张表：三个人群、三个时间尺度</text>
+<text x="24" y="50" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">player 是主语，match 是事件，season 是窗口</text>
+<rect x="24" y="78" width="150" height="52" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="34" y="100" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">player</text>
+<text x="34" y="118" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">mmr / rd / season_point</text>
+<rect x="24" y="150" width="150" height="52" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="34" y="172" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">player_rank</text>
+<text x="34" y="190" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">tier / division / lp</text>
+<rect x="200" y="78" width="160" height="52" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="210" y="100" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">queue_ticket</text>
+<text x="210" y="118" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">enqueue_at / mmr_snapshot</text>
+<rect x="200" y="150" width="160" height="52" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="210" y="172" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">match</text>
+<text x="210" y="190" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">state / season_id / started_at</text>
+<rect x="200" y="222" width="160" height="52" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="210" y="244" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">match_player</text>
+<text x="210" y="262" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">side / result / mmr_before</text>
+<rect x="396" y="222" width="150" height="52" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="406" y="244" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">settle_log</text>
+<text x="406" y="262" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">UNIQUE(match_id, player_id)</text>
+<rect x="396" y="150" width="150" height="52" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="406" y="172" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">mmr_history</text>
+<text x="406" y="190" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">before / after / reason</text>
+<rect x="396" y="78" width="150" height="52" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="406" y="100" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">season</text>
+<text x="406" y="118" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">starts_at / reset_ratio</text>
+<rect x="566" y="150" width="90" height="52" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="576" y="172" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">reward_grant</text>
+<text x="576" y="190" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">idem_key</text>
+<line x1="174" y1="104" x2="191.0" y2="104.0" stroke="#2563eb" stroke-width="1.6"/>
+<polygon points="198.0,104.0 191.0,100.6 191.0,107.4" fill="#2563eb"/>
+<line x1="174" y1="176" x2="191.0" y2="176.0" stroke="#2563eb" stroke-width="1.6"/>
+<polygon points="198.0,176.0 191.0,172.6 191.0,179.4" fill="#2563eb"/>
+<line x1="280" y1="130" x2="280.0" y2="141.0" stroke="#2563eb" stroke-width="1.6"/>
+<polygon points="280.0,148.0 283.4,141.0 276.6,141.0" fill="#2563eb"/>
+<line x1="360" y1="202" x2="387.0" y2="202.0" stroke="#0d9488" stroke-width="1.6"/>
+<polygon points="394.0,202.0 387.0,198.6 387.0,205.4" fill="#0d9488"/>
+<line x1="360" y1="176" x2="387.0" y2="176.0" stroke="#0d9488" stroke-width="1.6"/>
+<polygon points="394.0,176.0 387.0,172.6 387.0,179.4" fill="#0d9488"/>
+<line x1="471" y1="130" x2="471.0" y2="141.0" stroke="#d97706" stroke-width="1.6"/>
+<polygon points="471.0,148.0 474.4,141.0 467.6,141.0" fill="#d97706"/>
+<line x1="546" y1="176" x2="557.0" y2="176.0" stroke="#d97706" stroke-width="1.6"/>
+<polygon points="564.0,176.0 557.0,172.6 557.0,179.4" fill="#d97706"/>
+<text x="24" y="300" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">三条硬约束：match_player 主键 (match_id, player_id)、settle_log 唯一、reward_grant 的 idem_key 唯一</text>
+<text x="24" y="318" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">触发器两条：结算后 mmr 必须等于 before+delta；一局两侧人数必须相等</text>
+<text x="24" y="340" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#94a3b8" text-anchor="start" font-weight="400" opacity="1.0">本机 9 表 + 3 触发器 + 2 函数，13 条断言全 PASS、退出码 0</text>
+</svg>

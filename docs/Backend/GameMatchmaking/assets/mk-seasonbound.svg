@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250" width="680" height="250" role="img" aria-label="赛季边界：一局跨过零点算哪一季">
+<rect width="680" height="250" fill="#ffffff"/>
+<text x="24" y="30" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">一场 42 分钟的对局跨过零点，算哪个赛季？</text>
+<text x="24" y="50" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">按开始时刻与按结束时刻，五个开赛时间给出两种答案</text>
+<line x1="40" y1="110" x2="640" y2="110" stroke="#dbe3ef" stroke-width="2"/>
+<line x1="340" y1="70" x2="340" y2="150" stroke="#dc2626" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="340" y="62" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#dc2626" text-anchor="middle" font-weight="700" opacity="1.0">S1 结束 / S2 开始（00:00 UTC）</text>
+<text x="120" y="168" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#475569" text-anchor="middle" font-weight="700" opacity="1.0">S1</text>
+<text x="560" y="168" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#475569" text-anchor="middle" font-weight="700" opacity="1.0">S2</text>
+<circle cx="196.0" cy="110" r="4.5" fill="#2563eb" stroke="none" stroke-width="1"/>
+<text x="196.0" y="96" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#475569" text-anchor="middle" font-weight="400" opacity="1.0">−90 s</text>
+<text x="196.0" y="130" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#dc2626" text-anchor="middle" font-weight="700" opacity="1.0">S2</text>
+<text x="196.0" y="144" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#d97706" text-anchor="middle" font-weight="700" opacity="1.0">S1</text>
+<circle cx="292.0" cy="110" r="4.5" fill="#2563eb" stroke="none" stroke-width="1"/>
+<text x="292.0" y="96" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#475569" text-anchor="middle" font-weight="400" opacity="1.0">−30 s</text>
+<text x="292.0" y="130" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#dc2626" text-anchor="middle" font-weight="700" opacity="1.0">S2</text>
+<text x="292.0" y="144" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#d97706" text-anchor="middle" font-weight="700" opacity="1.0">S1</text>
+<circle cx="340.0" cy="110" r="4.5" fill="#2563eb" stroke="none" stroke-width="1"/>
+<text x="340.0" y="96" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#475569" text-anchor="middle" font-weight="400" opacity="1.0">0 s</text>
+<text x="340.0" y="130" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#dc2626" text-anchor="middle" font-weight="700" opacity="1.0">S2</text>
+<text x="340.0" y="144" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#d97706" text-anchor="middle" font-weight="700" opacity="1.0">S1</text>
+<circle cx="388.0" cy="110" r="4.5" fill="#16a34a" stroke="none" stroke-width="1"/>
+<text x="388.0" y="96" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#475569" text-anchor="middle" font-weight="400" opacity="1.0">+30 s</text>
+<text x="388.0" y="130" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#16a34a" text-anchor="middle" font-weight="700" opacity="1.0">S2</text>
+<text x="388.0" y="144" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#16a34a" text-anchor="middle" font-weight="700" opacity="1.0">S2</text>
+<text x="24" y="196" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400" opacity="1.0">上排＝按结束时刻归属，下排＝按开始时刻归属；红色/橙色标出两者不一致的三场</text>
+<text x="24" y="216" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#0f172a" text-anchor="start" font-weight="700" opacity="1.0">本册取「按开始时刻」，并把 season_id 写进 match 行——结算晚到也不会跨季</text>
+<text x="24" y="240" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400" opacity="1.0">反过来做，赛季末最后一分钟的胜场会被记进新赛季，玩家看到的是「重置后又多打了一场」</text>
+</svg>
