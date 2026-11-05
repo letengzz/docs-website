@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" width="680" height="300" role="img" aria-label="离线充电与联网补传的分叉">
+<rect width="680" height="300" fill="#ffffff"/>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,1 L7,4 L0,7 z" fill="#64748b"/></marker></defs>
+<text x="24" y="30" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#0f172a" text-anchor="start" font-weight="700">离线充电与联网补传：两条分叉，只有一条会重复计费</text>
+<text x="24" y="50" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">离线只影响 0.32% 的单，但它引出「补传时刻定价」与「幂等键」两个更贵的问题</text>
+<rect x="24" y="72" width="132" height="54" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="1"/>
+<text x="90" y="94" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="middle" font-weight="700">桩离线</text>
+<text x="90" y="112" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">本地缓存交易</text>
+<rect x="190" y="72" width="132" height="54" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+<text x="256" y="94" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="middle" font-weight="700">充电照常</text>
+<text x="256" y="112" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">电表照常走字</text>
+<rect x="356" y="72" width="132" height="54" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="1"/>
+<text x="422" y="94" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="middle" font-weight="700">联网补传</text>
+<text x="422" y="112" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#475569" text-anchor="middle" font-weight="400">带 idem_key</text>
+<path d="M156 99 L190 99" fill="none" stroke="#64748b" stroke-width="1.2" marker-end="url(#ar)"/>
+<path d="M322 99 L356 99" fill="none" stroke="#64748b" stroke-width="1.2" marker-end="url(#ar)"/>
+<rect x="522" y="58" width="134" height="40" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+<text x="589" y="82" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#15803d" text-anchor="middle" font-weight="700">幂等键命中 → 跳过</text>
+<rect x="522" y="106" width="134" height="56" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
+<text x="589" y="126" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#b91c1c" text-anchor="middle" font-weight="700">幂等键缺失</text>
+<text x="589" y="142" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#b91c1c" text-anchor="middle" font-weight="400">→ 一单变两单</text>
+<text x="589" y="156" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#64748b" text-anchor="middle" font-weight="400">重复计费 147 kWh</text>
+<path d="M488 92 L522 78" fill="none" stroke="#64748b" stroke-width="1.2" marker-end="url(#ar)"/>
+<path d="M488 108 L522 130" fill="none" stroke="#64748b" stroke-width="1.2" marker-end="url(#ar)"/>
+<rect x="24" y="178" width="632" height="44" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="40" y="198" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700">第二个分叉：按「充电时刻」定价，还是按「补传时刻」定价？</text>
+<text x="40" y="214" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#475569" text-anchor="start" font-weight="400">本机 65 单离线单，两种口径差 73.00 元（单均 1.12 元）——金额不大，但它是「谁承担电价波动」的合同问题。</text>
+<rect x="24" y="234" width="632" height="44" rx="8" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<text x="40" y="254" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700">第三个分叉：补传时电价版本已切换（V2026Q4 → V2027Q1）</text>
+<text x="40" y="270" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#475569" text-anchor="start" font-weight="400">按版本号 + 生效区间判定，不能按「最新版本」判定：23 单因此金额不符。</text>
+</svg>

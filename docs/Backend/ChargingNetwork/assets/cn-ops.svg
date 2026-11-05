@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" width="680" height="320" role="img" aria-label="在线率、可用率、计费正确率三层漏斗">
+<rect width="680" height="320" fill="#ffffff"/>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,1 L7,4 L0,7 z" fill="#64748b"/></marker></defs>
+<text x="24" y="30" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#0f172a" text-anchor="start" font-weight="700">三个率：每往下一层，就有一批「看着好好的」被剔掉</text>
+<text x="24" y="50" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">同一批 120 把枪、60 天：99.71% → 97.70% → 95.68%</text>
+<rect x="42.0" y="72" width="596" height="58" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="1"/>
+<rect x="42.0" y="72" width="4" height="58" rx="2" fill="#2563eb" stroke="none" stroke-width="1"/>
+<text x="62.0" y="96" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">在线率</text>
+<text x="62.0" y="116" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400">有心跳就算在线</text>
+<text x="618.0" y="102" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" fill="#0f172a" text-anchor="end" font-weight="700">99.71%</text>
+<text x="618.0" y="120" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#64748b" text-anchor="end" font-weight="400">离线 30,290 分钟</text>
+<rect x="105.0" y="146" width="470" height="58" rx="8" fill="#ffffff" stroke="#0d9488" stroke-width="1"/>
+<rect x="105.0" y="146" width="4" height="58" rx="2" fill="#0d9488" stroke="none" stroke-width="1"/>
+<text x="125.0" y="170" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">可用率</text>
+<text x="125.0" y="190" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400">在线且能启充</text>
+<text x="555.0" y="176" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" fill="#0f172a" text-anchor="end" font-weight="700">97.70%</text>
+<text x="555.0" y="194" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#64748b" text-anchor="end" font-weight="400">+故障 150,461 +维护 57,600 分钟</text>
+<rect x="168.0" y="220" width="344" height="58" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+<rect x="168.0" y="220" width="4" height="58" rx="2" fill="#d97706" stroke="none" stroke-width="1"/>
+<text x="188.0" y="244" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">计费正确率</text>
+<text x="188.0" y="264" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400">金额与重算一致</text>
+<text x="492.0" y="250" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" fill="#0f172a" text-anchor="end" font-weight="700">95.68%</text>
+<text x="492.0" y="268" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="8" fill="#64748b" text-anchor="end" font-weight="400">+占位漏计 849 + 补传重复 2 + 版本 23</text>
+<path d="M340 130 L340 146" fill="none" stroke="#64748b" stroke-width="1.2" marker-end="url(#ar)"/>
+<path d="M340 204 L340 220" fill="none" stroke="#64748b" stroke-width="1.2" marker-end="url(#ar)"/>
+<text x="24" y="292" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#0f172a" text-anchor="start" font-weight="700">在线率是「设备视角」，可用率是「用户视角」，计费正确率是「财务视角」。</text>
+<text x="24" y="311" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#475569" text-anchor="start" font-weight="400">只报在线率的运维看板，会把 2.0 个点的不可用和 2.0 个点的算错一起藏在 99.7% 里。</text>
+</svg>

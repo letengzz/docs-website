@@ -31,9 +31,11 @@
 | 学与考 | `enrollment` / `progress` / `attempt` / `answer` | 谁报了名、学到哪、考了几次、每题选了什么 |
 | 凭证 | `learner` / `certificate` | 这个人是谁、拿到过什么证书 |
 
-![十二张表分成四组](assets/lh-domain.svg)
+![四个模块的单向依赖：下游只能读上游](assets/lh-model.svg)
 
 十二张表共用两个主语：`learner_id` 与 `course_id`。任何一张表里出现「用 `user_id` 代替 `learner_id`」的地方，都是后面「同一个人两个身份」的坑（与[客户身份归并](../../../docs/Backend/CustomerIdentity/index.md)是同一类问题，本项目刻意不引入归并，只保留一个身份源）。
+
+图上那条「只读」的箭头是本项目最容易破的一条边界：**下游读上游的表，永远不写**。`progress` 涨了不等于 `enrollment` 该改状态，`attempt` 交了卷不等于 `certificate` 该发——每一步都只由自己那个模块的写入者推进。领域模型本身（十二张表怎么分组、六条不变量长什么样）放在[第 1 步 · 需求与验收](Requirements/index.md)那一页讲。
 
 ## 三、技术选型与理由
 
@@ -68,12 +70,13 @@
 | 252 | 第 1 周第 2 步 | [架构边界与四条契约：把「模块划分」写成能拦住人的东西](Architecture/index.md) | `LNA-A` ~ `LNA-H` | 8 |
 | 253 | 第 1 周第 3 步 | [技术选型与版本基线：把「能跑」变成「可复现」](TechBaseline/index.md) | `LNT-A` ~ `LNT-H` | 8 |
 | 254 | 第 1 周第 4 步 | [数据库设计：五条查询、九个索引、一次迁移](DatabaseDesign/index.md) | `LNS-A` ~ `LNS-H` | 8 |
+| 255 | 第 1 周第 5 步 | [第 1 周验收单：设计交付物的可判定清单](Week1Acceptance/index.md) | `LNV-A` ~ `LNV-H` | 8 |
 
-> **第 1 周进度 4/5**：第 1 步交付八条用户故事（每条带一条可判定验收）、十二张表 DDL（本机建库 1.27 ms）、六条不变量（4 个触发器 + 1 个部分唯一索引 + 1 个 `CHECK`，实测 6/6 全部拦住）、四条契约草案；第 2 步把四条契约写成可执行的约束（`UNIQUE` / 触发器），四个负向用例 4/4 被拒、`EXIT=0`，并定下四个模块的单向依赖与同步判分链；第 3 步定下五条版本基线（Python 3.13.12 / SQLite 3.50.4 / PG 18 / UTF-8 / UTC）、六个 PRAGMA 的取值、三个会让约束**静默失效**的坑（`foreign_keys` 在事务内设置无效、`UNIQUE` 大小写敏感、`julianday()` 无时区），以及换 PostgreSQL 必改的三处（实测 `wal/normal` 比 `delete/full` 快 **18.5×**）；第 4 步把五条高频查询的路径钉死——九个索引里 4 个带来 266×~33,929× 的加速，1 个（`(state, submitted_at)`）走了 `SEARCH` 却**一点没快**（选择性只有 10%，回表比全扫还贵），代价是建库 +41.1%、体积 +43.4%、写入 +102%。每章都包含「当日做了什么 / 如何验证 / 下一步是什么」。
+> **第 1 周进度 5/5（本周收口）**：第 1 步交付八条用户故事（每条带一条可判定验收）、十二张表 DDL（本机建库 1.27 ms）、六条不变量（4 个触发器 + 1 个部分唯一索引 + 1 个 `CHECK`，实测 6/6 全部拦住）、四条契约草案；第 2 步把四条契约写成可执行的约束（`UNIQUE` / 触发器），四个负向用例 4/4 被拒、`EXIT=0`，并定下四个模块的单向依赖与同步判分链；第 3 步定下五条版本基线（Python 3.13.12 / SQLite 3.50.4 / PG 18 / UTF-8 / UTC）、六个 PRAGMA 的取值、三个会让约束**静默失效**的坑（`foreign_keys` 在事务内设置无效、`UNIQUE` 大小写敏感、`julianday()` 无时区），以及换 PostgreSQL 必改的三处（实测 `wal/normal` 比 `delete/full` 快 **18.5×**）；第 4 步把五条高频查询的路径钉死——九个索引里 4 个带来 266×~33,929× 的加速，1 个（`(state, submitted_at)`）走了 `SEARCH` 却**一点没快**（选择性只有 10%，回表比全扫还贵），代价是建库 +41.1%、体积 +43.4%、写入 +102%。每章都包含「当日做了什么 / 如何验证 / 下一步是什么」。第 5 步把前四步的交付物压成**八项门禁**：12 张表 / 9 个索引 / 4 个触发器建库 **1.31 ms**、七条不变量（含一条要求「必须成功」的反向判据：取消后可重报）**7/7** 通过、`EXPLAIN QUERY PLAN` 实测命中 `uq_cert_no` 与 `uq_enroll_active`，并显式列出「本周不做」的四件事与第 2 周的三条入口条件。
 
 ## 六、判据纪律
 
-- 每个章节 8 条判据，编号 `LNH-A` ~ `LNH-H` 起，**逐章独立**（下一章换新前缀，不复用）。已用前缀：`LNH`（需求）/ `LNA`（架构）/ `LNT`（技术基线）/ `LNS`（数据库设计）。
+- 每个章节 8 条判据，编号 `LNH-A` ~ `LNH-H` 起，**逐章独立**（下一章换新前缀，不复用）。已用前缀：`LNH`（需求）/ `LNA`（架构）/ `LNT`（技术基线）/ `LNS`（数据库设计）/ `LNV`（第 1 周验收）。
 - 每条判据必须能被一条命令、一条 SQL 或一次人工核对判定，**不写「应当合理」这种话**。
 - 判据的「不满足时改哪里」必须指向**具体表或文件**，不能写「优化设计」。
 
@@ -88,8 +91,8 @@
 
 ```shell
 # 1. 目录与配图齐全
-ls project/Complete/LearningHub            # 期望：index.md Requirements Architecture assets
-ls project/Complete/LearningHub/assets     # 期望：lh-roadmap.svg lh-domain.svg lh-arch.svg
+ls project/Complete/LearningHub            # 期望：index.md Requirements Architecture TechBaseline DatabaseDesign Week1Acceptance assets
+ls project/Complete/LearningHub/assets     # 期望：lh-roadmap.svg lh-model.svg lh-domain.svg lh-arch.svg lh-tech.svg lh-db.svg lh-accept.svg
 
 # 2. 十二张表能建出来、六条不变量全部拦得住
 python3 lh_req.py; echo "EXIT=$?"

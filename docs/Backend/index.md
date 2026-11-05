@@ -77,3 +77,4 @@
 - [招投标与电子采购交易工程](BiddingTender/index.md)
 - [招聘与人才获取工程](Recruiting/index.md)
 - [车队运输与调度工程](FleetTransport/index.md)
+- [充电桩运营与计费工程](ChargingNetwork/index.md)

@@ -1741,3 +1741,23 @@ export const FleetTransport = [
     ],
   },
 ];
+
+// 充电桩运营与计费
+export const ChargingNetwork = [
+  {
+    text: "充电桩运营与计费工程",
+    link: "/docs/Backend/ChargingNetwork/index.md",
+    items: [
+      { text: "总览：三个「充了多少度」与三个「该收多少」", link: "/docs/Backend/ChargingNetwork/Overview/index.md" },
+      { text: "站址与桩资产：一把枪的边界在哪", link: "/docs/Backend/ChargingNetwork/SiteAsset/index.md" },
+      { text: "接入与协议：桩不在线时谁记账", link: "/docs/Backend/ChargingNetwork/ProtocolAccess/index.md" },
+      { text: "启充与鉴权：谁证明这枪该给他用", link: "/docs/Backend/ChargingNetwork/SessionAuth/index.md" },
+      { text: "充电与计量：电表、积分、抄见三个数", link: "/docs/Backend/ChargingNetwork/Metering/index.md" },
+      { text: "分时与账单：一单跨两个时段怎么拆", link: "/docs/Backend/ChargingNetwork/TariffBilling/index.md" },
+      { text: "结算与分成：车主付的一笔钱分给谁", link: "/docs/Backend/ChargingNetwork/SettlementSplit/index.md" },
+      { text: "运维与可用率：在线率骗人的地方", link: "/docs/Backend/ChargingNetwork/Operations/index.md" },
+      { text: "实战：十张表、四个触发器、十五条断言", link: "/docs/Backend/ChargingNetwork/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ChargingNetwork/FAQ/index.md" },
+    ],
+  },
+];
