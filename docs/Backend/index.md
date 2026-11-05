@@ -80,3 +80,4 @@
 - [车队运输与调度工程](FleetTransport/index.md)
 - [充电桩运营与计费工程](ChargingNetwork/index.md)
 - [GraphQL 服务端工程](GraphQL/index.md)
+- [酒店房态与预订管理工程](HotelPMS/index.md)

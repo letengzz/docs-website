@@ -1792,3 +1792,22 @@ export const ChargingNetwork = [
     ],
   },
 ];
+
+// 酒店房态与预订管理
+export const HotelPMS = [
+  {
+    text: "酒店房态与预订管理工程",
+    link: "/docs/Backend/HotelPMS/index.md",
+    items: [
+      { text: "总览：七段链、三个「还剩几间房」与五个安静的失败", link: "/docs/Backend/HotelPMS/Overview/index.md" },
+      { text: "房量与房态：为什么房态不能是一个字段", link: "/docs/Backend/HotelPMS/RoomInventory/index.md" },
+      { text: "价格日历：四维价格、派生顺序与锁价", link: "/docs/Backend/HotelPMS/RateCalendar/index.md" },
+      { text: "预订：保留时限、担保与渠道单号", link: "/docs/Backend/HotelPMS/Booking/index.md" },
+      { text: "入住与在住：从房型到房号", link: "/docs/Backend/HotelPMS/CheckIn/index.md" },
+      { text: "夜审与间夜：营业日不等于自然日", link: "/docs/Backend/HotelPMS/NightAudit/index.md" },
+      { text: "渠道与对账：三个金额与四种差额", link: "/docs/Backend/HotelPMS/ChannelRecon/index.md" },
+      { text: "实战：九张表、四个约束与十六条断言", link: "/docs/Backend/HotelPMS/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/HotelPMS/FAQ/index.md" },
+    ],
+  },
+];

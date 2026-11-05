@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="430" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">完成判定：三口径、一次写入、不可回改</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">左三条判据各自成立；右两条守卫把「完成」变成事实记录</text>
+<rect x="24" y="72" width="210" height="82" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="34" y="91" font-size="11.5" font-weight="700" fill="#115e59">① 必修全 done</text>
+<text x="34" y="106" font-size="9.8" fill="#334155">521 人 / 43.42%</text>
+<text x="34" y="120" font-size="9.8" fill="#334155">答：课上完了没有</text>
+<rect x="250" y="72" width="210" height="82" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="260" y="91" font-size="11.5" font-weight="700" fill="#1e3a8a">② 考试通过</text>
+<text x="260" y="106" font-size="9.8" fill="#334155">751 人 / 62.58%</text>
+<text x="260" y="120" font-size="9.8" fill="#334155">答：考过了没有</text>
+<rect x="476" y="72" width="260" height="82" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="486" y="91" font-size="11.5" font-weight="700" fill="#881337">③ 平均进度 = 100%</text>
+<text x="486" y="106" font-size="9.8" fill="#334155">150 人 / 12.50%</text>
+<text x="486" y="120" font-size="9.8" fill="#334155">答：平均看了多少（估算）</text>
+<rect x="24" y="172" width="300" height="74" rx="8" fill="#f5f3ff" stroke="#9d8fd0" stroke-width="1.1"/>
+<text x="34" y="191" font-size="11.5" font-weight="700" fill="#4c1d95">完成 = ① ∧ ②</text>
+<text x="34" y="206" font-size="9.8" fill="#334155">两个都是可验证的事实</text>
+<text x="34" y="220" font-size="9.8" fill="#334155">③ 不进判定：87.5% 的人永远到不了 100%</text>
+<line x1="129" y1="154" x2="160" y2="170" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<line x1="355" y1="154" x2="300" y2="170" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<rect x="348" y="172" width="388" height="74" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="358" y="191" font-size="11.5" font-weight="700" fill="#78350f">迁移 007：completion + 两条触发器</text>
+<text x="358" y="206" font-size="9.8" fill="#334155">trg_completion_guard：必修缺一 → REQ_NOT_MET</text>
+<text x="358" y="220" font-size="9.8" fill="#334155">trg_completion_immutable：改时点 → COMPLETION_IMMUTABLE</text>
+<line x1="324" y1="209" x2="346" y2="209" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<rect x="24" y="268" width="348" height="96" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="287" font-size="11.5" font-weight="700" fill="#1e3a8a">一次写入：completed_at = MAX(进度, 考试)</text>
+<text x="34" y="302" font-size="9.8" fill="#334155">33.56% 的人考试早于最后补课</text>
+<text x="34" y="316" font-size="9.8" fill="#334155">滞后 P50 0 天 / P90 4 天</text>
+<text x="34" y="330" font-size="9.8" fill="#334155">取 MAX 才不会把完成时点提前</text>
+<rect x="392" y="268" width="344" height="96" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="402" y="287" font-size="11.5" font-weight="700" fill="#115e59">重修：两条完成共存</text>
+<text x="402" y="302" font-size="9.8" fill="#334155">主键 enroll_id（不是 learner+course）</text>
+<text x="402" y="316" font-size="9.8" fill="#334155">E3 = 10-04、R1 = 11-03</text>
+<text x="402" y="330" font-size="9.8" fill="#334155">以人为键：3 条塌成 2 条</text>
+<text x="24" y="392" font-size="10.5" font-weight="700" fill="#881337">聚合器暴露的真缺陷：attempt 只有 learner_id → 重修的考试被算到第一次报名，历史月份人数莫名减少</text>
+<text x="24" y="412" font-size="9.8" fill="#475569">修法：ALTER TABLE attempt ADD COLUMN enroll_id，回填时用 enrolled_at &lt;= submitted_at 限定时间窗；7 个用例 7/7 PASS</text>
+</svg>

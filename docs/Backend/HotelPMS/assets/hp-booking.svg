@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="420" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">预订：五个状态、两把时钟</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">HOLD 必须占房量；占房量就必须有过期释放</text>
+<rect x="30" y="92" width="128" height="56" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="40" y="111" font-size="11.5" font-weight="700" fill="#78350f">HOLD</text>
+<text x="40" y="126" font-size="9.8" fill="#334155">占量，未付款</text>
+<rect x="196" y="92" width="128" height="56" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="206" y="111" font-size="11.5" font-weight="700" fill="#1e3a8a">CONFIRMED</text>
+<text x="206" y="126" font-size="9.8" fill="#334155">占量，担保</text>
+<rect x="362" y="92" width="128" height="56" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="372" y="111" font-size="11.5" font-weight="700" fill="#115e59">INHOUSE</text>
+<text x="372" y="126" font-size="9.8" fill="#334155">占量，已入账</text>
+<rect x="528" y="92" width="128" height="56" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="538" y="111" font-size="11.5" font-weight="700" fill="#0f172a">CHECKEDOUT</text>
+<text x="538" y="126" font-size="9.8" fill="#334155">不占量，已结清</text>
+<line x1="158" y1="120" x2="194" y2="120" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<line x1="324" y1="120" x2="360" y2="120" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<line x1="490" y1="120" x2="526" y2="120" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<rect x="196" y="176" width="128" height="56" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="206" y="195" font-size="11.5" font-weight="700" fill="#881337">CANCELLED</text>
+<text x="206" y="210" font-size="9.8" fill="#334155">不占量，按政策退</text>
+<rect x="362" y="176" width="128" height="56" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="372" y="195" font-size="11.5" font-weight="700" fill="#881337">NOSHOW</text>
+<text x="372" y="210" font-size="9.8" fill="#334155">不占量，收首晚</text>
+<line x1="260" y1="148" x2="260" y2="174" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<line x1="426" y1="148" x2="426" y2="174" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<rect x="24" y="252" width="348" height="78" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="271" font-size="11.5" font-weight="700" fill="#1e3a8a">时钟一：hold_until</text>
+<text x="34" y="286" font-size="9.8" fill="#334155">15~30 分钟未付款必须释放</text>
+<text x="34" y="300" font-size="9.8" fill="#334155">漏释放 = 永久吃掉一间房</text>
+<rect x="392" y="252" width="344" height="78" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="402" y="271" font-size="11.5" font-weight="700" fill="#881337">时钟二：no-show 窗口</text>
+<text x="402" y="286" font-size="9.8" fill="#334155">次日 06:00 判（不是 24:00）</text>
+<text x="402" y="300" font-size="9.8" fill="#334155">24:00 判会误杀 7.95% 的晚到客人</text>
+<text x="24" y="352" font-size="10.5" fill="#881337" font-weight="700" text-anchor="start">重复推送 3.4%：89 单被记两次 → 房夜虚增 89、佣金虚增 25,988.09 元</text>
+<text x="24" y="374" font-size="9.8" fill="#475569" text-anchor="start">唯一索引：UNIQUE(channel, channel_no) WHERE channel_no IS NOT NULL</text>
+</svg>

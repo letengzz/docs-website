@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="430" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">渠道对账：三个金额与四种差额</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">gross = net + commission 是第一条断言；差额必须归入四类之一</text>
+<rect x="40" y="80" width="200" height="78" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="50" y="99" font-size="11.5" font-weight="700" fill="#1e3a8a">卖价 gross</text>
+<text x="50" y="114" font-size="9.8" fill="#334155">客人付 4,246,420.00</text>
+<text x="50" y="128" font-size="9.8" fill="#334155">渠道代收</text>
+<rect x="280" y="80" width="200" height="78" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="290" y="99" font-size="11.5" font-weight="700" fill="#115e59">净价 net</text>
+<text x="290" y="114" font-size="9.8" fill="#334155">酒店收 3,482,064.40</text>
+<text x="290" y="128" font-size="9.8" fill="#334155">银行到账</text>
+<rect x="520" y="80" width="200" height="78" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="530" y="99" font-size="11.5" font-weight="700" fill="#78350f">佣金 commission</text>
+<text x="530" y="114" font-size="9.8" fill="#334155">764,355.60（隐含 18%）</text>
+<text x="530" y="128" font-size="9.8" fill="#334155">合同 15% = 636,963.00</text>
+<line x1="240" y1="119" x2="278" y2="119" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<text x="259" y="112" font-size="14" fill="#64748b" font-weight="700" text-anchor="middle">−</text>
+<line x1="480" y1="119" x2="518" y2="119" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<text x="499" y="112" font-size="14" fill="#64748b" font-weight="700" text-anchor="middle">=</text>
+<text x="24" y="190" font-size="10.5" fill="#881337" font-weight="700" text-anchor="start">差 +127,392.60（+20%）：实付佣金是应付的 1.2 倍，不是「多 20 个百分点」</text>
+<rect x="24" y="214" width="348" height="74" rx="8" fill="#f5f3ff" stroke="#9d8fd0" stroke-width="1.1"/>
+<text x="34" y="233" font-size="11.5" font-weight="700" fill="#4c1d95">漏单</text>
+<text x="34" y="248" font-size="9.8" fill="#334155">渠道有、PMS 无</text>
+<text x="34" y="262" font-size="9.8" fill="#334155">→ 补录订单</text>
+<rect x="388" y="214" width="348" height="74" rx="8" fill="#ecfeff" stroke="#6fb6c9" stroke-width="1.1"/>
+<text x="398" y="233" font-size="11.5" font-weight="700" fill="#164e63">重复</text>
+<text x="398" y="248" font-size="9.8" fill="#334155">PMS 两条、渠道一条</text>
+<text x="398" y="262" font-size="9.8" fill="#334155">→ 删 PMS 重复行</text>
+<rect x="24" y="300" width="348" height="74" rx="8" fill="#f5f3ff" stroke="#9d8fd0" stroke-width="1.1"/>
+<text x="34" y="319" font-size="11.5" font-weight="700" fill="#4c1d95">金额不符</text>
+<text x="34" y="334" font-size="9.8" fill="#334155">单号对得上、金额不对</text>
+<text x="34" y="348" font-size="9.8" fill="#334155">→ 按账单调净价</text>
+<rect x="388" y="300" width="348" height="74" rx="8" fill="#ecfeff" stroke="#6fb6c9" stroke-width="1.1"/>
+<text x="398" y="319" font-size="11.5" font-weight="700" fill="#164e63">佣金不符</text>
+<text x="398" y="334" font-size="9.8" fill="#334155">卖价净价都对、佣金错</text>
+<text x="398" y="348" font-size="9.8" fill="#334155">→ 按合同重算</text>
+<rect x="24" y="386" width="712" height="32" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="34" y="405" font-size="10.5" font-weight="700" fill="#881337">禁止用总额差额平账：那会把四类问题糊成一笔，下次还得重查</text>
+</svg>

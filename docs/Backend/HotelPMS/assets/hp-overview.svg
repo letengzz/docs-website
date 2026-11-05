@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="420" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">三个「还剩几间房」是三个分母</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">120 天 × 6 房型 × 100 间房；同一个 9,100 已售，两个都对的出租率</text>
+<rect x="40" y="76" width="200" height="86" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="50" y="95" font-size="11.5" font-weight="700" fill="#0f172a">物理房量 12,000</text>
+<text x="50" y="110" font-size="9.8" fill="#334155">100 间 × 120 天</text>
+<text x="50" y="124" font-size="9.8" fill="#334155">业主与财报用它</text>
+<rect x="280" y="76" width="200" height="86" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="290" y="95" font-size="11.5" font-weight="700" fill="#881337">维修房 120</text>
+<text x="290" y="110" font-size="9.8" fill="#334155">每天约 1 间 OOO</text>
+<text x="290" y="124" font-size="9.8" fill="#334155">不可售，但不等于关闭</text>
+<rect x="520" y="76" width="200" height="86" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="530" y="95" font-size="11.5" font-weight="700" fill="#1e3a8a">可售房量 11,880</text>
+<text x="530" y="110" font-size="9.8" fill="#334155">物理 − OOO</text>
+<text x="530" y="124" font-size="9.8" fill="#334155">收益经理用它</text>
+<line x1="240" y1="119" x2="278" y2="119" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<text x="259" y="112" font-size="14" fill="#64748b" font-weight="700" text-anchor="middle">−</text>
+<line x1="480" y1="119" x2="518" y2="119" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<text x="499" y="112" font-size="14" fill="#64748b" font-weight="700" text-anchor="middle">=</text>
+<rect x="40" y="196" width="320" height="96" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="50" y="215" font-size="11.5" font-weight="700" fill="#115e59">已售 9,100 房夜</text>
+<text x="50" y="230" font-size="9.8" fill="#334155">可售余量 = 11,880 − 9,100 = 2,780</text>
+<text x="50" y="244" font-size="9.8" fill="#334155">前台与渠道直连看这个数</text>
+<rect x="400" y="196" width="320" height="96" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="410" y="215" font-size="11.5" font-weight="700" fill="#78350f">两个出租率</text>
+<text x="410" y="230" font-size="9.8" fill="#334155">按物理 9,100/12,000 = 75.8333%</text>
+<text x="410" y="244" font-size="9.8" fill="#334155">按可售 9,100/11,880 = 76.5993%</text>
+<line x1="360" y1="244" x2="398" y2="244" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<text x="24" y="330" font-size="10.5" fill="#881337" font-weight="700" text-anchor="start">差 0.7660 个百分点：不是精度问题，是「报给谁看」的问题</text>
+<text x="24" y="352" font-size="9.8" fill="#475569" text-anchor="start">同一批数据里，低价房 82.43% 与高价房 50.35% 同时成立——只看全店会以为还有 24% 空间</text>
+</svg>

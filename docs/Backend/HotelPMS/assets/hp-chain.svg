@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="400" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">七段链：每一步都在改三个数字中的至少一个</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">改的数写在框内第二行——「改错不报错」的段用琥珀色标出</text>
+<rect x="24" y="84" width="92" height="66" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="103" font-size="11" font-weight="700" fill="#1e3a8a">排房</text>
+<text x="34" y="118" font-size="9.2" fill="#334155">可售房量</text>
+<line x1="116" y1="117" x2="126" y2="117" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<rect x="128" y="84" width="92" height="66" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="138" y="103" font-size="11" font-weight="700" fill="#1e3a8a">定价</text>
+<text x="138" y="118" font-size="9.2" fill="#334155">卖价</text>
+<line x1="220" y1="117" x2="230" y2="117" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<rect x="232" y="84" width="92" height="66" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="242" y="103" font-size="11" font-weight="700" fill="#78350f">预订</text>
+<text x="242" y="118" font-size="9.2" fill="#334155">可售余量</text>
+<line x1="324" y1="117" x2="334" y2="117" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<rect x="336" y="84" width="92" height="66" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="346" y="103" font-size="11" font-weight="700" fill="#1e3a8a">入住</text>
+<text x="346" y="118" font-size="9.2" fill="#334155">房态</text>
+<line x1="428" y1="117" x2="438" y2="117" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<rect x="440" y="84" width="92" height="66" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="450" y="103" font-size="11" font-weight="700" fill="#78350f">在住</text>
+<text x="450" y="118" font-size="9.2" fill="#334155">间夜 / 应收</text>
+<line x1="532" y1="117" x2="542" y2="117" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<rect x="544" y="84" width="92" height="66" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="554" y="103" font-size="11" font-weight="700" fill="#78350f">夜审</text>
+<text x="554" y="118" font-size="9.2" fill="#334155">已售 / 应收</text>
+<line x1="636" y1="117" x2="646" y2="117" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw)"/>
+<rect x="648" y="84" width="92" height="66" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="658" y="103" font-size="11" font-weight="700" fill="#78350f">离店</text>
+<text x="658" y="118" font-size="9.2" fill="#334155">余量 / 佣金</text>
+<text x="24" y="186" font-size="10" fill="#475569" text-anchor="start">静默失败集中在后五段：写入成功、页面正常，直到客人站在前台或月结签字</text>
+<rect x="24" y="212" width="120" height="32" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="34" y="231" font-size="10.5" font-weight="700" fill="#0f172a">预订</text>
+<text x="156" y="233" font-size="10" fill="#334155" text-anchor="start">渠道重推不报错</text>
+<text x="520" y="233" font-size="10" fill="#881337" font-weight="700" text-anchor="start">3.4% 单被记两次</text>
+<rect x="24" y="252" width="120" height="32" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="34" y="271" font-size="10.5" font-weight="700" fill="#0f172a">在住</text>
+<text x="156" y="273" font-size="10" fill="#334155" text-anchor="start">换房整段改不报错</text>
+<text x="520" y="273" font-size="10" fill="#881337" font-weight="700" text-anchor="start">300 单里 13 单重房</text>
+<rect x="24" y="292" width="120" height="32" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="34" y="311" font-size="10.5" font-weight="700" fill="#0f172a">夜审</text>
+<text x="156" y="313" font-size="10" fill="#334155" text-anchor="start">重跑不报错</text>
+<text x="520" y="313" font-size="10" fill="#881337" font-weight="700" text-anchor="start">金额 +100%</text>
+<rect x="24" y="332" width="120" height="32" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="34" y="351" font-size="10.5" font-weight="700" fill="#0f172a">离店</text>
+<text x="156" y="353" font-size="10" fill="#334155" text-anchor="start">佣金算错不报错</text>
+<text x="520" y="353" font-size="10" fill="#881337" font-weight="700" text-anchor="start">+20%（127,392.60 元）</text>
+</svg>
