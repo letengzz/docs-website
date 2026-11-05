@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" width="680" height="380" role="img" aria-label="九张表：三处「不许发生」写在数据库里">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect width="680" height="380" fill="#ffffff"/>
+<text x="24" y="30" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#0f172a" text-anchor="start" font-weight="700">九张表：三处「不许发生」写在数据库里</text>
+<text x="24" y="50" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">触发器只拦三类事，其余交给判据与日检</text>
+<rect x="24" y="72" width="180" height="54" rx="10" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="24" y="72" width="4" height="54" rx="2" fill="#2563eb"/>
+<text x="40" y="96" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">vehicle</text>
+<text x="40" y="114" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">PK + 约束</text>
+<rect x="24" y="150" width="180" height="54" rx="10" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="24" y="150" width="4" height="54" rx="2" fill="#2563eb"/>
+<text x="40" y="174" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">driver</text>
+<text x="40" y="192" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">PK + 约束</text>
+<rect x="240" y="72" width="180" height="54" rx="10" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="240" y="72" width="4" height="54" rx="2" fill="#0d9488"/>
+<text x="256" y="96" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">shipment</text>
+<text x="256" y="114" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">PK + 约束</text>
+<rect x="240" y="150" width="180" height="54" rx="10" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="240" y="150" width="4" height="54" rx="2" fill="#0d9488"/>
+<text x="256" y="174" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">trip</text>
+<text x="256" y="192" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">PK + 约束</text>
+<rect x="240" y="228" width="180" height="54" rx="10" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="240" y="228" width="4" height="54" rx="2" fill="#0d9488"/>
+<text x="256" y="252" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">trip_stop</text>
+<text x="256" y="270" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">PK + 约束</text>
+<rect x="456" y="72" width="180" height="54" rx="10" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="456" y="72" width="4" height="54" rx="2" fill="#7c3aed"/>
+<text x="472" y="96" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">mileage_log</text>
+<text x="472" y="114" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">PK + 约束</text>
+<rect x="456" y="150" width="180" height="54" rx="10" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="456" y="150" width="4" height="54" rx="2" fill="#d97706"/>
+<text x="472" y="174" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">pod</text>
+<text x="472" y="192" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">PK + 约束</text>
+<rect x="456" y="228" width="180" height="54" rx="10" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="456" y="228" width="4" height="54" rx="2" fill="#d97706"/>
+<text x="472" y="252" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">freight_line</text>
+<text x="472" y="270" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">PK + 约束</text>
+<rect x="456" y="306" width="180" height="54" rx="10" fill="#ffffff" stroke="#dbe3ef" stroke-width="1"/>
+<rect x="456" y="306" width="4" height="54" rx="2" fill="#e11d48"/>
+<text x="472" y="330" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="12" fill="#0f172a" text-anchor="start" font-weight="700">settlement</text>
+<text x="472" y="348" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">PK + 约束</text>
+<line x1="204" y1="99" x2="240" y2="99" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="204" y1="177" x2="240" y2="177" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="420" y1="99" x2="456" y2="99" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="420" y1="177" x2="456" y2="177" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="420" y1="255" x2="456" y2="255" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="330" y1="126" x2="330" y2="150" stroke="#0d9488" stroke-width="1.4" marker-end="url(#ah)" stroke-dasharray="4 3"/>
+<line x1="330" y1="204" x2="330" y2="228" stroke="#0d9488" stroke-width="1.4" marker-end="url(#ah)" stroke-dasharray="4 3"/>
+<text x="340" y="142" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">1:N</text>
+<text x="340" y="220" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">1:N</text>
+<rect x="24" y="288" width="200" height="68" rx="8" fill="#fff1f2" stroke="#fecdd3" stroke-width="1"/>
+<text x="36" y="310" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#9f1239" text-anchor="start" font-weight="700">三个触发器</text>
+<text x="36" y="328" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#be123c" text-anchor="start" font-weight="400">POD 唯一</text>
+<text x="36" y="344" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#be123c" text-anchor="start" font-weight="400">无回单不开运费</text>
+</svg>

@@ -1721,3 +1721,23 @@ export const Recruiting = [
     ],
   },
 ];
+
+// 车队运输与调度工程
+export const FleetTransport = [
+  {
+    text: "车队运输与调度工程",
+    link: "/docs/Backend/FleetTransport/index.md",
+    items: [
+      { text: "总览：三个「装了多少」与三个「跑了多少」", link: "/docs/Backend/FleetTransport/Overview/index.md" },
+      { text: "运输需求与计费重：抛比是合同里最贵的一行", link: "/docs/Backend/FleetTransport/Demand/index.md" },
+      { text: "配载与装载：三个口径取最小", link: "/docs/Backend/FleetTransport/Loading/index.md" },
+      { text: "派车与调度：五道闸门的顺序不能换", link: "/docs/Backend/FleetTransport/Dispatch/index.md" },
+      { text: "在途与轨迹：里程没有真值，只有三个口径", link: "/docs/Backend/FleetTransport/Tracking/index.md" },
+      { text: "签收与回单：结算的唯一钥匙", link: "/docs/Backend/FleetTransport/ProofOfDelivery/index.md" },
+      { text: "运费结算：四段构成与四类差异", link: "/docs/Backend/FleetTransport/Settlement/index.md" },
+      { text: "成本与时效：空驶是一段有单价的里程", link: "/docs/Backend/FleetTransport/Cost/index.md" },
+      { text: "实战：九张表、三个触发器、十三条断言", link: "/docs/Backend/FleetTransport/Practice/index.md" },
+      { text: "常见问题：先问哪一段的数不对", link: "/docs/Backend/FleetTransport/FAQ/index.md" },
+    ],
+  },
+];

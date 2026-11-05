@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 372" width="680" height="372" role="img" aria-label="索引与查询路径">
+<rect width="680" height="372" fill="#ffffff"/>
+<text x="24" y="30" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#0f172a" text-anchor="start" font-weight="700">索引：四条查询被加速，一条几乎没动</text>
+<text x="24" y="50" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">本机 120k 报名 / 400k 进度 / 200k 答卷 / 600k 答题；ms 为 20 次中位数</text>
+<text x="24" y="86" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">Q1 某人在某课的进度</text>
+<text x="24" y="103" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">无索引 373.220 ms → 有索引 0.011 ms</text>
+<rect x="300" y="74" width="300" height="13" rx="4" fill="#eef2f7" stroke="#eef2f7" stroke-width="1"/>
+<rect x="300" y="74" width="300" height="13" rx="4" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="612" y="85" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#2563eb" text-anchor="start" font-weight="700">33,929×</text>
+<text x="300" y="102" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">SEARCH</text>
+<text x="24" y="130" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">Q2 某次答卷的答题</text>
+<text x="24" y="147" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">无索引 31.600 ms → 有索引 0.006 ms</text>
+<rect x="300" y="118" width="300" height="13" rx="4" fill="#eef2f7" stroke="#eef2f7" stroke-width="1"/>
+<rect x="300" y="118" width="118.19997482051308" height="13" rx="4" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="612" y="129" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#2563eb" text-anchor="start" font-weight="700">5,267×</text>
+<text x="300" y="146" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">SEARCH</text>
+<text x="24" y="174" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">Q3 待判分答卷（近 7 天）</text>
+<text x="24" y="191" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">无索引 334.101 ms → 有索引 341.433 ms</text>
+<rect x="300" y="162" width="300" height="13" rx="4" fill="#eef2f7" stroke="#eef2f7" stroke-width="1"/>
+<rect x="300" y="162" width="4" height="13" rx="4" fill="#e11d48" stroke="#e11d48" stroke-width="1"/>
+<text x="612" y="173" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#e11d48" text-anchor="start" font-weight="700">1.0×</text>
+<text x="300" y="190" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">SEARCH 但无收益</text>
+<text x="24" y="218" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">Q4 某课有效报名数</text>
+<text x="24" y="235" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">无索引 5.986 ms → 有索引 4.513 ms</text>
+<rect x="300" y="206" width="300" height="13" rx="4" fill="#eef2f7" stroke="#eef2f7" stroke-width="1"/>
+<rect x="300" y="206" width="4" height="13" rx="4" fill="#d97706" stroke="#d97706" stroke-width="1"/>
+<text x="612" y="217" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#d97706" text-anchor="start" font-weight="700">1.3×</text>
+<text x="300" y="234" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">SCAN</text>
+<text x="24" y="262" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#475569" text-anchor="start" font-weight="400">Q5 证书按编号查</text>
+<text x="24" y="279" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">无索引 1.331 ms → 有索引 0.005 ms</text>
+<rect x="300" y="250" width="300" height="13" rx="4" fill="#eef2f7" stroke="#eef2f7" stroke-width="1"/>
+<rect x="300" y="250" width="26.562964579852085" height="13" rx="4" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="612" y="261" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#2563eb" text-anchor="start" font-weight="700">266×</text>
+<text x="300" y="278" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="9" fill="#94a3b8" text-anchor="start" font-weight="400">SEARCH</text>
+<rect x="24" y="296" width="632" height="60" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1"/>
+<text x="40" y="318" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" fill="#9a3412" text-anchor="start" font-weight="700">代价：建库 4,081→5,759 ms（+41.1%）、体积 83→119 MiB（+43.4%）、写入 114→230 ms（+102%）</text>
+<text x="40" y="338" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" fill="#b45309" text-anchor="start" font-weight="400">选择性低的索引（state 只有两种值、90% 是 SUBMITTED）几乎不加速，却照样付这三笔代价。</text>
+</svg>
