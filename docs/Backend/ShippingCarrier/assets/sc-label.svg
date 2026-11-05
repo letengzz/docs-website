@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="400" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">面单的区域划分、静区几何与缩放代价</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">标准定的是区域与尺寸上限，工程要守的是「机器读得到」</text>
+  <rect x="40" y="76" width="230" height="300" rx="4" fill="#FFFFFF" stroke="#475569" stroke-width="1.6"/>
+  <text x="40" y="70" text-anchor="start" font-size="8.5" fill="#334155">一联 ≤ 100 × 130 mm（±1.0）</text>
+  <rect x="52" y="88" width="206" height="46" rx="5" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="155" y="115" text-anchor="middle" font-size="8" fill="#1E3A8A">码号区：运单号条码 + 二维码</text>
+  <rect x="52" y="146" width="206" height="46" rx="5" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.2"/>
+  <text x="155" y="173" text-anchor="middle" font-size="8" fill="#115E59">目的地信息区：分拣码</text>
+  <rect x="52" y="204" width="206" height="46" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="155" y="231" text-anchor="middle" font-size="8" fill="#5B21B6">收件人信息区：脱敏电话</text>
+  <rect x="52" y="262" width="206" height="46" rx="5" fill="#FFFBEB" stroke="#D97706" stroke-width="1.2"/>
+  <text x="155" y="289" text-anchor="middle" font-size="8" fill="#92400E">内件信息区 / 业务处理区</text>
+  <rect x="52" y="320" width="206" height="46" rx="5" fill="#F8FAFC" stroke="#475569" stroke-width="1.2"/>
+  <text x="155" y="347" text-anchor="middle" font-size="8" fill="#1E293B">签收区 + 自定义区</text>
+  <rect x="66" y="98" width="5" height="26" fill="#0F172A"/>
+  <rect x="76" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="86" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="96" y="98" width="5" height="26" fill="#0F172A"/>
+  <rect x="106" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="116" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="126" y="98" width="5" height="26" fill="#0F172A"/>
+  <rect x="136" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="146" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="156" y="98" width="5" height="26" fill="#0F172A"/>
+  <rect x="166" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="176" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="186" y="98" width="5" height="26" fill="#0F172A"/>
+  <rect x="196" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="206" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="216" y="98" width="5" height="26" fill="#0F172A"/>
+  <rect x="226" y="98" width="3" height="26" fill="#0F172A"/>
+  <rect x="236" y="98" width="3" height="26" fill="#0F172A"/>
+  <text x="320" y="84" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">静区是几何量：每侧 ≥ 10 个 X</text>
+  <rect x="320" y="100" width="400" height="96" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.2"/>
+  <rect x="332" y="112" width="40" height="72" fill="#FEF2F2" stroke="#DC2626" stroke-dasharray="3 3"/>
+  <rect x="668" y="112" width="40" height="72" fill="#FEF2F2" stroke="#DC2626" stroke-dasharray="3 3"/>
+  <rect x="378" y="112" width="7" height="72" fill="#0F172A"/>
+  <rect x="388" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="398" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="408" y="112" width="7" height="72" fill="#0F172A"/>
+  <rect x="418" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="428" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="438" y="112" width="7" height="72" fill="#0F172A"/>
+  <rect x="448" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="458" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="468" y="112" width="7" height="72" fill="#0F172A"/>
+  <rect x="478" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="488" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="498" y="112" width="7" height="72" fill="#0F172A"/>
+  <rect x="508" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="518" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="528" y="112" width="7" height="72" fill="#0F172A"/>
+  <rect x="538" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="548" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="558" y="112" width="7" height="72" fill="#0F172A"/>
+  <rect x="568" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="578" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="588" y="112" width="7" height="72" fill="#0F172A"/>
+  <rect x="598" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="608" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="618" y="112" width="7" height="72" fill="#0F172A"/>
+  <rect x="628" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="638" y="112" width="4" height="72" fill="#0F172A"/>
+  <rect x="648" y="112" width="7" height="72" fill="#0F172A"/>
+  <rect x="658" y="112" width="4" height="72" fill="#0F172A"/>
+  <text x="352" y="196" text-anchor="middle" font-size="8" fill="#B91C1C">10X</text>
+  <text x="688" y="196" text-anchor="middle" font-size="8" fill="#B91C1C">10X</text>
+  <text x="510" y="214" text-anchor="middle" font-size="8.5" fill="#334155">X = 0.30mm 时每侧 3.00 mm，两侧合计 6.00 mm</text>
+  <text x="320" y="246" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">缩放面单 = 同时压窄模块与留白（203 dpi 换算）</text>
+  <rect x="320" y="258" width="400" height="22" rx="4" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="340" y="273" text-anchor="start" font-size="8" fill="#1E293B" font-weight="bold">100%</text>
+  <text x="400" y="273" text-anchor="start" font-size="8" fill="#334155">模块 0.300 mm</text>
+  <text x="530" y="273" text-anchor="start" font-size="8" fill="#334155">静区 3.00 / 侧</text>
+  <text x="660" y="273" text-anchor="start" font-size="8" fill="#1E293B">正常</text>
+  <rect x="320" y="284" width="400" height="22" rx="4" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="340" y="299" text-anchor="start" font-size="8" fill="#1E293B" font-weight="bold">90%</text>
+  <text x="400" y="299" text-anchor="start" font-size="8" fill="#334155">模块 0.270 mm</text>
+  <text x="530" y="299" text-anchor="start" font-size="8" fill="#334155">静区 2.70 / 侧</text>
+  <text x="660" y="299" text-anchor="start" font-size="8" fill="#1E293B">需实测</text>
+  <rect x="320" y="310" width="400" height="22" rx="4" fill="#F8FAFC" stroke="#475569" stroke-width="1"/>
+  <text x="340" y="325" text-anchor="start" font-size="8" fill="#1E293B" font-weight="bold">85%</text>
+  <text x="400" y="325" text-anchor="start" font-size="8" fill="#334155">模块 0.255 mm</text>
+  <text x="530" y="325" text-anchor="start" font-size="8" fill="#334155">静区 2.55 / 侧</text>
+  <text x="660" y="325" text-anchor="start" font-size="8" fill="#1E293B">贴近下限</text>
+  <rect x="320" y="336" width="400" height="22" rx="4" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <text x="340" y="351" text-anchor="start" font-size="8" fill="#991B1B" font-weight="bold">80%</text>
+  <text x="400" y="351" text-anchor="start" font-size="8" fill="#B91C1C">模块 0.240 mm</text>
+  <text x="530" y="351" text-anchor="start" font-size="8" fill="#B91C1C">静区 2.40 / 侧</text>
+  <text x="660" y="351" text-anchor="start" font-size="8" fill="#991B1B">低于 0.250 下限</text>
+  <text x="320" y="394" text-anchor="start" font-size="9" fill="#B91C1C">塞不下就换模板，不要缩放：留白不能靠缩获得</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

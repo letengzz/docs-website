@@ -1051,7 +1051,19 @@ export const ESignature = [
 
 export const ShippingCarrier = [
   {
-    text: "⚠️ 履约交付与承运商集成（页面待补）",
+    text: "履约交付与承运商集成工程",
+    link: "/docs/Backend/ShippingCarrier/index.md",
+    items: [
+      { text: "总览：七段链与三个「发出去了」", link: "/docs/Backend/ShippingCarrier/Overview/index.md" },
+      { text: "取号契约：幂等、号池与错误分类", link: "/docs/Backend/ShippingCarrier/LabelAPI/index.md" },
+      { text: "面单渲染：模板、静区与打印留痕", link: "/docs/Backend/ShippingCarrier/LabelRender/index.md" },
+      { text: "选渠道：地址、可达与运价", link: "/docs/Backend/ShippingCarrier/Sourcing/index.md" },
+      { text: "轨迹归一：状态机、乱序与去重", link: "/docs/Backend/ShippingCarrier/Tracking/index.md" },
+      { text: "异常件与承诺日：超时、丢失与赔付", link: "/docs/Backend/ShippingCarrier/ExceptionPromise/index.md" },
+      { text: "承运商账单核对：计费重与差异归因", link: "/docs/Backend/ShippingCarrier/BillRecon/index.md" },
+      { text: "实战：一单从取号到对账跑通七段", link: "/docs/Backend/ShippingCarrier/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ShippingCarrier/FAQ/index.md" },
+    ],
   },
 ];
 

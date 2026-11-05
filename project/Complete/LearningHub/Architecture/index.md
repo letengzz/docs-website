@@ -53,17 +53,28 @@
 | --- | --- |
 | 约定什么 | 同一学习者对同一课程只能有一条 `enrollment` |
 | 定错的后果 | 重复报名 → 两份进度 → 两次开考 → 两张证书 |
-| 怎么验证 | `UNIQUE(learner_id, course_id)`，重复插入被拒 |
+| 怎么验证 | 部分唯一索引 `uq_enroll_active`，重复插入被拒；取消后可重报 |
 
 ```sql
 CREATE TABLE enrollment (
   enroll_id  TEXT PRIMARY KEY,
   learner_id TEXT NOT NULL REFERENCES learner,
   course_id  TEXT NOT NULL REFERENCES course,
-  state      TEXT NOT NULL CHECK (state IN ('报名','在读','已完课','已结业')),
-  UNIQUE (learner_id, course_id)          -- 契约 C1
+  state      TEXT NOT NULL
+             CHECK (state IN ('ACTIVE','COMPLETED','CANCELLED','EXPIRED')),
+  enrolled_at TEXT NOT NULL
 );
+CREATE UNIQUE INDEX uq_enroll_active ON enrollment (learner_id, course_id)
+  WHERE state IN ('ACTIVE','COMPLETED');   -- 契约 C1
 ```
+
+::: warning 这段 DDL 在第 4 步被定稿过
+本页初稿把 `state` 写成了中文四态（`报名 / 在读 / 已完课 / 已结业`），并用全局 `UNIQUE(learner_id, course_id)` 表达 C1。
+
+第 4 步做库表设计时改了两处，理由都写在那一步：① **状态词统一用英文大写枚举**，与 `attempt.state`、`certificate.state` 一致，否则跨表联查要写两套字面量；② **唯一性改成部分索引**，因为「退回一次就永远不能再报名」——全局唯一会把历史记录也挡住。不改成部分索引，`CANCELLED` 这个状态就永远不可能出现第二次。
+
+这里保留结论、不留旧写法：读者照抄的 DDL 必须是他真正该建的那一份。
+:::
 
 ### C2 进度单调
 

@@ -75,7 +75,7 @@ CREATE TABLE enrollment(
   learner_id TEXT NOT NULL REFERENCES learner(learner_id),
   course_id TEXT NOT NULL REFERENCES course(course_id),
   course_version INTEGER NOT NULL,
-  state TEXT NOT NULL CHECK (state IN ('ACTIVE','COMPLETED','WITHDRAWN','EXPIRED')),
+  state TEXT NOT NULL CHECK (state IN ('ACTIVE','COMPLETED','CANCELLED','EXPIRED')),
   enrolled_at TEXT NOT NULL
 );
 CREATE UNIQUE INDEX uq_enroll_active ON enrollment(learner_id, course_id)
@@ -85,7 +85,7 @@ CREATE UNIQUE INDEX uq_enroll_active ON enrollment(learner_id, course_id)
 前六张表里有两处刻意的设计：
 
 - **`enrollment.course_version`**：报名时冻结课程版本。课程升版（加一节必修）后，老学员不该突然「不合格」——这与[产品模型版本](../../../../docs/Backend/CPQ/Configuration/index.md)是同一个道理。
-- **`uq_enroll_active` 是部分唯一索引**：只约束「有效」状态，撤销（`WITHDRAWN`）之后可以重新报名。写成 `UNIQUE(learner_id, course_id)` 的话，退课一次就永远不能再报。
+- **`uq_enroll_active` 是部分唯一索引**：只约束「有效」状态，撤销（`CANCELLED`）之后可以重新报名。写成 `UNIQUE(learner_id, course_id)` 的话，退课一次就永远不能再报。
 
 ```sql
 CREATE TABLE progress(

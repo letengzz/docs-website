@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">履约交付的七段链与三个「发出去了」</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">每一段都必须有一份「另一侧也能复核」的证据，否则失败不会自己喊出来</text>
+  <rect x="30" y="80" width="170" height="78" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="115" y="98.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">① 选渠道</text>
+  <text x="115" y="115" text-anchor="middle" font-size="7.5" fill="#047857">地址可达</text>
+  <text x="115" y="132.25" text-anchor="middle" font-size="7.5" fill="#047857">询价与兜底</text>
+  <rect x="212" y="80" width="170" height="78" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="297" y="98.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">② 取号</text>
+  <text x="297" y="115" text-anchor="middle" font-size="7.5" fill="#1D4ED8">client_ref</text>
+  <text x="297" y="132.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">运单号</text>
+  <rect x="394" y="80" width="170" height="78" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="479" y="98.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">③ 面单</text>
+  <text x="479" y="115" text-anchor="middle" font-size="7.5" fill="#6D28D9">模板+静区</text>
+  <text x="479" y="132.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">打印留痕</text>
+  <rect x="576" y="80" width="170" height="78" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="661" y="98.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">④ 交接</text>
+  <text x="661" y="115" text-anchor="middle" font-size="7.5" fill="#0F766E">揽收扫描</text>
+  <text x="661" y="132.25" text-anchor="middle" font-size="7.5" fill="#0F766E">collected_at</text>
+  <line x1="200" y1="119" x2="210" y2="119" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="382" y1="119" x2="392" y2="119" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="564" y1="119" x2="574" y2="119" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="30" y="190" width="220" height="78" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="140" y="208.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">⑤ 轨迹</text>
+  <text x="140" y="225" text-anchor="middle" font-size="7.5" fill="#B45309">九态归一</text>
+  <text x="140" y="242.25" text-anchor="middle" font-size="7.5" fill="#B45309">event_time 排序</text>
+  <rect x="270" y="190" width="220" height="78" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="208.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">⑥ 异常 / 签收</text>
+  <text x="380" y="225" text-anchor="middle" font-size="7.5" fill="#B91C1C">三段窗口</text>
+  <text x="380" y="242.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">案号与赔付</text>
+  <rect x="510" y="190" width="220" height="78" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.6"/>
+  <text x="620" y="208.2" text-anchor="middle" font-size="10" fill="#9D174D" font-weight="bold">⑦ 账单</text>
+  <text x="620" y="225" text-anchor="middle" font-size="7.5" fill="#BE185D">逐行重算</text>
+  <text x="620" y="242.25" text-anchor="middle" font-size="7.5" fill="#BE185D">六类归口</text>
+  <line x1="115" y1="158" x2="115" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="700" y1="158" x2="700" y2="186" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="115" y1="166" x2="700" y2="166" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="408" y="184" text-anchor="middle" font-size="8" fill="#64748B">同一 waybill_no，跨两个系统边界，没有共享事务</text>
+  <text x="30" y="300" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">三个「发出去了」：口径不同，字段必须分开</text>
+  <rect x="30" y="312" width="220" height="66" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="140" y="330.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">仓库出库</text>
+  <text x="140" y="347" text-anchor="middle" font-size="7.5" fill="#334155">dispatched_at</text>
+  <text x="140" y="364.25" text-anchor="middle" font-size="7.5" fill="#334155">我方 WMS 口径</text>
+  <rect x="270" y="312" width="220" height="66" rx="8" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.6"/>
+  <text x="380" y="330.2" text-anchor="middle" font-size="10" fill="#155E75" font-weight="bold">承运商揽收</text>
+  <text x="380" y="347" text-anchor="middle" font-size="7.5" fill="#0E7490">collected_at</text>
+  <text x="380" y="364.25" text-anchor="middle" font-size="7.5" fill="#0E7490">对方系统口径</text>
+  <rect x="510" y="312" width="220" height="66" rx="8" fill="#F7FEE7" stroke="#65A30D" stroke-width="1.6"/>
+  <text x="620" y="330.2" text-anchor="middle" font-size="10" fill="#3F6212" font-weight="bold">客户签收</text>
+  <text x="620" y="347" text-anchor="middle" font-size="7.5" fill="#4D7C0F">signed_at</text>
+  <text x="620" y="364.25" text-anchor="middle" font-size="7.5" fill="#4D7C0F">末端扫描口径</text>
+  <text x="380" y="402" text-anchor="middle" font-size="9.5" fill="#B91C1C">七段里五段的失败是安静的：取号 / 面单 / 交接 / 轨迹 / 账单</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

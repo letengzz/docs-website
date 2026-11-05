@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 452" width="760" height="452" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="452" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">报名接口：三层守卫与一次栅栏实测</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">预检是「来得及」的守卫，唯一索引是「拦得住」的守卫，幂等表是「重放不重复」的守卫</text>
+
+  <rect x="30" y="78" width="204" height="76" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="132" y="96.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">① 引用完整性</text>
+  <text x="132" y="113" text-anchor="middle" font-size="7.5" fill="#1D4ED8">learner / course 存在吗</text>
+  <text x="132" y="130.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">不存在 → 404，不写任何行</text>
+
+  <rect x="278" y="78" width="204" height="76" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="380" y="96.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">② 幂等表</text>
+  <text x="380" y="113" text-anchor="middle" font-size="7.5" fill="#6D28D9">同 key 同体 → 回放原响应</text>
+  <text x="380" y="130.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">同 key 异体 → 409</text>
+
+  <rect x="526" y="78" width="204" height="76" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="628" y="96.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">③ 部分唯一索引</text>
+  <text x="628" y="113" text-anchor="middle" font-size="7.5" fill="#047857">WHERE state IN (ACTIVE, COMPLETED)</text>
+  <text x="628" y="130.25" text-anchor="middle" font-size="7.5" fill="#047857">冲突 → 409，取消后可重报</text>
+
+  <line x1="234" y1="116" x2="274" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="482" y1="116" x2="522" y2="116" stroke="#7C3AED" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <text x="30" y="186" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">栅栏实测：20 个请求在预检之后同时写入，只差一个索引</text>
+
+  <rect x="30" y="200" width="350" height="90" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="205" y="220" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">只做预检（无唯一索引）</text>
+  <text x="205" y="246" text-anchor="middle" font-size="15" fill="#B91C1C" font-weight="bold">落 20 行</text>
+  <text x="205" y="266" text-anchor="middle" font-size="7.5" fill="#B91C1C">20 个请求全部通过 SELECT 判重</text>
+  <text x="205" y="281" text-anchor="middle" font-size="7.5" fill="#B91C1C">一个学员、一门课、二十条有效报名</text>
+
+  <rect x="400" y="200" width="330" height="90" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="565" y="220" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">预检 + 部分唯一索引</text>
+  <text x="565" y="246" text-anchor="middle" font-size="15" fill="#047857" font-weight="bold">落 1 行 / 19 被拒</text>
+  <text x="565" y="266" text-anchor="middle" font-size="7.5" fill="#047857">SELECT 挡不住的那 19 个</text>
+  <text x="565" y="281" text-anchor="middle" font-size="7.5" fill="#047857">由数据库在 COMMIT 前挡住</text>
+
+  <text x="30" y="316" text-anchor="start" font-size="10" fill="#0F172A" font-weight="bold">五类响应：状态码之外必须带一个可重试标记</text>
+
+  <rect x="30" y="330" width="136" height="42" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="98" y="347" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">201 CREATED</text>
+  <text x="98" y="362" text-anchor="middle" font-size="7.5" fill="#334155">首次报名成功</text>
+
+  <rect x="178" y="330" width="136" height="42" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="246" y="347" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">200 OK</text>
+  <text x="246" y="362" text-anchor="middle" font-size="7.5" fill="#334155">同 key 回放</text>
+
+  <rect x="326" y="330" width="136" height="42" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="394" y="347" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">400 BAD REQ</text>
+  <text x="394" y="362" text-anchor="middle" font-size="7.5" fill="#334155">缺幂等键</text>
+
+  <rect x="474" y="330" width="136" height="42" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="542" y="347" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">404 NOT FOUND</text>
+  <text x="542" y="362" text-anchor="middle" font-size="7.5" fill="#334155">学员或课程不存在</text>
+
+  <rect x="622" y="330" width="136" height="42" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.4"/>
+  <text x="690" y="347" text-anchor="middle" font-size="9" fill="#1E293B" font-weight="bold">409 CONFLICT</text>
+  <text x="690" y="362" text-anchor="middle" font-size="7.5" fill="#334155">重复报名 / 幂等冲突</text>
+
+  <text x="30" y="398" text-anchor="start" font-size="9.5" fill="#1E293B" font-weight="bold">判定点只有一个问题：这个「有没有报过名」的答案，是谁在什么时刻算出来的。</text>
+  <text x="30" y="418" text-anchor="start" font-size="9" fill="#334155">预检读到 0 行到 INSERT 之间，只要有任何一次等待（一次往返、一次对象构造、一次事件发布），答案就会过期。</text>
+  <text x="30" y="436" text-anchor="start" font-size="9" fill="#334155">所以幂等键解决「同一次请求被处理两遍」，唯一索引解决「两次不同请求都认为自己该成功」——两件事，两个守卫。</text>
+
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
