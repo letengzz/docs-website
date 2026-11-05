@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" role="img">
+<title>实战：11 张表的主干与四条硬约束</title>
+<rect x="0" y="0" width="860" height="400" fill="#ffffff"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker></defs>
+<text x="28" y="34" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#0f172a" font-weight="600" text-anchor="start">能被触发器拦住的才叫约束</text>
+<text x="28" y="54" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">其余的都只是「约定」——约定会在第三个前台身上失效</text>
+<rect x="40" y="90" width="160" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="120.0" y="118" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">room_type</text>
+<rect x="240" y="90" width="140" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="310.0" y="118" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">room</text>
+<rect x="420" y="90" width="170" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="505.0" y="118" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">room_state</text>
+<rect x="40" y="170" width="160" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="120.0" y="198" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">rate_cal</text>
+<rect x="240" y="170" width="140" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="310.0" y="198" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">booking</text>
+<rect x="420" y="170" width="190" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="515.0" y="198" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">booking_night</text>
+<rect x="650" y="170" width="160" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="730.0" y="198" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">folio</text>
+<rect x="650" y="90" width="170" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="735.0" y="118" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">channel_settle</text>
+<rect x="40" y="250" width="160" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="120.0" y="278" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">night_audit</text>
+<rect x="420" y="250" width="170" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="505.0" y="278" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="600" text-anchor="middle">oversell_log</text>
+<line x1="194" y1="113.0" x2="246" y2="113.0" stroke="#94a3b8" stroke-width="1.1" marker-end="url(#ah)"/>
+<line x1="374" y1="113.0" x2="426" y2="113.0" stroke="#94a3b8" stroke-width="1.1" marker-end="url(#ah)"/>
+<line x1="194" y1="113.0" x2="46" y2="193.0" stroke="#94a3b8" stroke-width="1.1" marker-end="url(#ah)"/>
+<line x1="374" y1="193.0" x2="426" y2="193.0" stroke="#94a3b8" stroke-width="1.1" marker-end="url(#ah)"/>
+<line x1="604" y1="193.0" x2="656" y2="193.0" stroke="#94a3b8" stroke-width="1.1" marker-end="url(#ah)"/>
+<line x1="374" y1="193.0" x2="656" y2="113.0" stroke="#94a3b8" stroke-width="1.1" marker-end="url(#ah)"/>
+<line x1="584" y1="113.0" x2="46" y2="273.0" stroke="#94a3b8" stroke-width="1.1" marker-end="url(#ah)"/>
+<rect x="28" y="318" width="804" height="68" rx="8" ry="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="44" y="342" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#b91c1c" font-weight="600" text-anchor="start">四条硬约束（触发器）：封账后不得记账 · 维修房不得标在住 · 佣金不得高于房费 · 封账后不得重开房价</text>
+<text x="44" y="366" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">断言 8/8 PASS、EXIT=0；其中「封账后重开房价」一开始 PASS 是假的——事务回滚把建表数据一起回滚了</text>
+</svg>

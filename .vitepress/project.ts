@@ -479,6 +479,8 @@ export const CompleteProject = [
           { text: "第 1 周第 3 步 · 技术选型与版本基线：五个维度、六个 PRAGMA、三个静默坑（LNT-A~LNT-H）", link: "/project/Complete/LearningHub/TechBaseline/index.md" },
           { text: "第 1 周第 4 步 · 数据库设计：五条查询、九个索引、一次迁移（LNS-A~LNS-H）", link: "/project/Complete/LearningHub/DatabaseDesign/index.md" },
           { text: "第 1 周第 5 步 · 第 1 周验收单：八项门禁（LNV-A~LNV-H）", link: "/project/Complete/LearningHub/Week1Acceptance/index.md" },
+          { text: "第 2 周第 1 步 · 报名接口：四步写入与三种写法的并发实测（LNE-A~LNE-H）", link: "/project/Complete/LearningHub/Enrollment/index.md" },
+          { text: "第 2 周第 2 步 · 进度上报：三张表、三种百分比、四步写入（LNU-A~LNU-H）", link: "/project/Complete/LearningHub/Progress/index.md" },
         ],
       },
     ],

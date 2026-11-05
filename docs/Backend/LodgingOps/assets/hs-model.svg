@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="380" viewBox="0 0 860 380" role="img">
+<title>一间房的四本账</title>
+<rect x="0" y="0" width="860" height="380" fill="#ffffff"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker></defs>
+<text x="28" y="34" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#0f172a" font-weight="600" text-anchor="start">同一间房、同一晚，被四个地方各记一次</text>
+<text x="28" y="54" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">改任何一本，另外三本不会跟着变——这就是酒店系统 80% 的口径 bug 的来源</text>
+<rect x="28" y="84" width="392" height="112" rx="8" ry="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="44" y="110" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start">房态 room_state</text>
+<text x="44" y="134" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">这间房今晚能不能住人</text>
+<text x="44" y="156" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="start">写入方：前台 / 客房</text>
+<text x="44" y="178" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">错法：把维修房卖出去（客人到店才发现）</text>
+<rect x="440" y="84" width="392" height="112" rx="8" ry="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="456" y="110" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start">可售库存 availability</text>
+<text x="456" y="134" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">这个房型今晚还能卖几间</text>
+<text x="456" y="156" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#b45309" font-weight="600" text-anchor="start">写入方：渠道 / 收益</text>
+<text x="456" y="178" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">错法：超卖：卖出去的比能住的多</text>
+<rect x="28" y="216" width="392" height="112" rx="8" ry="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.2"/>
+<text x="44" y="242" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start">日历价 rate_cal</text>
+<text x="44" y="266" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">这一晚卖多少钱</text>
+<text x="44" y="288" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#1d4ed8" font-weight="600" text-anchor="start">写入方：收益 / 渠道</text>
+<text x="44" y="310" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">错法：同一晚两个渠道两个价</text>
+<rect x="440" y="216" width="392" height="112" rx="8" ry="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="456" y="242" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start">结算 channel_settle</text>
+<text x="456" y="266" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">这一晚最后收到多少</text>
+<text x="456" y="288" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f766e" font-weight="600" text-anchor="start">写入方：财务</text>
+<text x="456" y="310" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">错法：佣金按错基数算，差 5.66%</text>
+<text x="28" y="368" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start">工程上唯一可靠的做法：四个数各自落库、各自有单一写入点，对不上的时候能指出「哪一本错了」</text>
+</svg>

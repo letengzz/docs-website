@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" role="img">
+<title>进度上报：四步写入与三种百分比</title>
+<rect x="0" y="0" width="860" height="340" fill="#ffffff"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker></defs>
+<text x="28" y="34" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#0f172a" font-weight="600" text-anchor="start">一次上报只写三张表，但每一步都有一个「以为写进去了」的版本</text>
+<text x="28" y="54" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#475569" font-weight="400" text-anchor="start">四步必须同事务：幂等占位 → 节进度 upsert → 派生计数 → 状态推进</text>
+<rect x="28" y="84" width="186" height="78" rx="8" ry="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="121" y="110" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">① 幂等占位</text>
+<text x="121" y="130" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="middle">progress_event</text>
+<text x="121" y="150" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#0f766e" font-weight="600" text-anchor="middle">同 key 重放返 200</text>
+<line x1="216" y1="123" x2="232" y2="123" stroke="#0f766e" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="234" y="84" width="186" height="78" rx="8" ry="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="327" y="110" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">② 节进度</text>
+<text x="327" y="130" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="middle">lesson_progress</text>
+<text x="327" y="150" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#0f766e" font-weight="600" text-anchor="middle">upsert，不新增行</text>
+<line x1="422" y1="123" x2="438" y2="123" stroke="#0f766e" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="440" y="84" width="186" height="78" rx="8" ry="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="533" y="110" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">③ 派生计数</text>
+<text x="533" y="130" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="middle">progress.lesson_done</text>
+<text x="533" y="150" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#0f766e" font-weight="600" text-anchor="middle">COUNT 现算，不回填</text>
+<line x1="628" y1="123" x2="644" y2="123" stroke="#0f766e" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="646" y="84" width="186" height="78" rx="8" ry="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+<text x="739" y="110" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle">④ 状态推进</text>
+<text x="739" y="130" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="middle">progress.state</text>
+<text x="739" y="150" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#0f766e" font-weight="600" text-anchor="middle">必修齐了才 COMPLETED</text>
+<text x="28" y="200" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start">同一个 4 节的进度，三种百分比</text>
+<text x="28" y="230" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">按节数 4/12</text>
+<rect x="200" y="214" width="420" height="20" rx="3" fill="#e2e8f0"/><rect x="200" y="214" width="140.0" height="20" rx="3" fill="#475569"/>
+<text x="636" y="230" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#475569" font-weight="600" text-anchor="start">33.33%</text>
+<text x="28" y="264" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">按必修 4/8</text>
+<rect x="200" y="248" width="420" height="20" rx="3" fill="#e2e8f0"/><rect x="200" y="248" width="210.0" height="20" rx="3" fill="#b45309"/>
+<text x="636" y="264" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#b45309" font-weight="600" text-anchor="start">50.00%</text>
+<text x="28" y="298" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start">按时长 67/224 分钟</text>
+<rect x="200" y="282" width="420" height="20" rx="3" fill="#e2e8f0"/><rect x="200" y="282" width="125.6" height="20" rx="3" fill="#0f766e"/>
+<text x="636" y="298" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="11" fill="#0f766e" font-weight="600" text-anchor="start">29.91%</text>
+<text x="28" y="330" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="10" fill="#475569" font-weight="400" text-anchor="start">三个数都对，但只能有一个出现在学习进度条上——课程表上写着「按必修算」，报表里写的是「按节数算」，学员看到的是第三个</text>
+</svg>

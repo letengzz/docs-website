@@ -1761,3 +1761,41 @@ export const ChargingNetwork = [
     ],
   },
 ];
+
+export const Recommerce = [
+  {
+    text: "二手回收与以旧换新工程",
+    link: "/docs/Backend/Recommerce/index.md",
+    items: [
+      { text: "总览：一台机器的四本账", link: "/docs/Backend/Recommerce/Overview/index.md" },
+      { text: "报价：基准价、档位与四项扣减", link: "/docs/Backend/Recommerce/Quote/index.md" },
+      { text: "质检：四项检测与争议处理", link: "/docs/Backend/Recommerce/Inspection/index.md" },
+      { text: "结算：三条通道与抵扣券负债", link: "/docs/Backend/Recommerce/Settlement/index.md" },
+      { text: "翻新：工单、良品率与成本归集", link: "/docs/Backend/Recommerce/Refurbishment/index.md" },
+      { text: "上架：一物一码与分级定价", link: "/docs/Backend/Recommerce/Listing/index.md" },
+      { text: "再售与保修：时钟从哪天开始", link: "/docs/Backend/Recommerce/Warranty/index.md" },
+      { text: "擦除与合规：四道闸门", link: "/docs/Backend/Recommerce/DataWipe/index.md" },
+      { text: "实战：十张表、四个触发器、十八条断言", link: "/docs/Backend/Recommerce/Practice/index.md" },
+      { text: "常见问题与最佳实践", link: "/docs/Backend/Recommerce/FAQ/index.md" },
+    ],
+  },
+];
+
+export const LodgingOps = [
+  {
+    text: "酒店与民宿的房态、房价与渠道对账工程",
+    link: "/docs/Backend/LodgingOps/index.md",
+    items: [
+      { text: "总览：一间房的四本账", link: "/docs/Backend/LodgingOps/Overview/index.md" },
+      { text: "房型、物理房与房态", link: "/docs/Backend/LodgingOps/RoomModel/index.md" },
+      { text: "可售库存与超售额度", link: "/docs/Backend/LodgingOps/Availability/index.md" },
+      { text: "日历价、限制与连住", link: "/docs/Backend/LodgingOps/RateCalendar/index.md" },
+      { text: "预订、担保与超售处置", link: "/docs/Backend/LodgingOps/Booking/index.md" },
+      { text: "入住、换房与在住账", link: "/docs/Backend/LodgingOps/Checkin/index.md" },
+      { text: "夜审与营业日切", link: "/docs/Backend/LodgingOps/NightAudit/index.md" },
+      { text: "取消、no-show 与罚金", link: "/docs/Backend/LodgingOps/Cancellation/index.md" },
+      { text: "渠道对账与佣金", link: "/docs/Backend/LodgingOps/ChannelRecon/index.md" },
+      { text: "实战：11 张表、4 个触发器、8 条断言", link: "/docs/Backend/LodgingOps/Practice/index.md" },
+    ],
+  },
+];
