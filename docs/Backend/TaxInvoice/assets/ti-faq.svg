@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw-fq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="430" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">分诊：症状 → 三类原因 → 页面</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">症状在期末，原因在平时</text>
+<rect x="24" y="70" width="180" height="110" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="34" y="90" font-size="10.5" font-weight="700" fill="#881337">症状</text>
+<text x="34" y="110" font-size="9.2" fill="#334155">凭证差 1~2 分</text>
+<text x="34" y="128" font-size="9.2" fill="#334155">销项比预期高 1%</text>
+<text x="34" y="146" font-size="9.2" fill="#334155">留抵突然变大</text>
+<text x="34" y="164" font-size="9.2" fill="#334155">月结每月差、金额相近</text>
+<line x1="206" y1="125" x2="240" y2="125" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-fq)"/>
+<rect x="244" y="66" width="228" height="118" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="254" y="86" font-size="10.5" font-weight="700" fill="#1e3a8a">第一类：切分点</text>
+<text x="254" y="106" font-size="9.2" fill="#334155">行级与整单混用</text>
+<text x="254" y="124" font-size="9.2" fill="#334155">折扣分摊不归集余数</text>
+<text x="254" y="142" font-size="9.2" fill="#334155">28.4% 单据差 1 分</text>
+<text x="254" y="160" font-size="9.2" fill="#334155">41.2% 单据合计 ≠ 折扣</text>
+<text x="254" y="176" font-size="9.2" fill="#881337">去：价税分离</text>
+<rect x="488" y="66" width="248" height="118" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="498" y="86" font-size="10.5" font-weight="700" fill="#78350f">第二类：符号与累计</text>
+<text x="498" y="106" font-size="9.2" fill="#334155">红票当正数 SUM</text>
+<text x="498" y="124" font-size="9.2" fill="#334155">红冲只校验单次</text>
+<text x="498" y="142" font-size="9.2" fill="#334155">销项虚增 1,810.46 元（+1.4%）</text>
+<text x="498" y="160" font-size="9.2" fill="#334155">三次 40% 可到 120.00%</text>
+<text x="498" y="176" font-size="9.2" fill="#881337">去：红冲与作废</text>
+<rect x="24" y="200" width="340" height="104" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="34" y="220" font-size="10.5" font-weight="700" fill="#115e59">第三类：时点</text>
+<text x="34" y="240" font-size="9.2" fill="#334155">用开票月代替义务月</text>
+<text x="34" y="258" font-size="9.2" fill="#334155">预收已开票、收入未确认</text>
+<text x="34" y="276" font-size="9.2" fill="#334155">12 个月全不同，单月最大 11,631.61 元</text>
+<text x="34" y="294" font-size="9.2" fill="#881337">去：申报 / 比对</text>
+<rect x="392" y="200" width="344" height="104" rx="8" fill="#f5f3ff" stroke="#9d8fd0" stroke-width="1.1"/>
+<text x="402" y="220" font-size="10.5" font-weight="700" fill="#4c1d95">止血五步（顺序不能反）</text>
+<text x="402" y="240" font-size="9.2" fill="#334155">① 冻数据　② 定形状　③ 查符号</text>
+<text x="402" y="258" font-size="9.2" fill="#334155">④ 查时点　⑤ 最后才改代码</text>
+<text x="402" y="276" font-size="9.2" fill="#881337">先改代码 = 把证据洗掉</text>
+<text x="402" y="294" font-size="9.2" fill="#334155">申报表只追加版本，不 UPDATE</text>
+<rect x="24" y="322" width="712" height="90" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="34" y="342" font-size="10.5" font-weight="700" fill="#0f172a">三个最容易记反的术语</text>
+<text x="34" y="362" font-size="9.4" fill="#334155">销项税额 ⇄ 应纳税额：后者还要减进项与留抵</text>
+<text x="34" y="380" font-size="9.4" fill="#334155">留抵税额 ⇄ 亏损：一个是税，一个是利润</text>
+<text x="34" y="398" font-size="9.4" fill="#334155">红冲 ⇄ 作废：数电票没有作废，只有红冲；作废不占额度，红冲占</text>
+</svg>

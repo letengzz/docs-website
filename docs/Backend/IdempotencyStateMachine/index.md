@@ -198,6 +198,20 @@ select count(*) from demo_key;
 
 酒店侧的完整口径见 [酒店房态与预订管理工程](../HotelPMS/index.md)。
 
+## 与税务与发票工程的分工
+
+幂等的粒度决定了它能不能挡住开票场景的两类重复：
+
+| 这件事 | 本页负责 | 税务专题负责 |
+| --- | --- | --- |
+| 键的生成 | 客户端 `Idempotency-Key` 或服务端业务键 | 开票必须用业务键 `(order_no, revision)` |
+| 重复语义 | 返回首次结果 | 同 revision 幂等，新 revision 走「红冲 + 重开」 |
+| 边界 | 请求级 | 票级（一张票只能被红冲一次全额） |
+
+::: danger 注意
+随机 `Idempotency-Key` 挡不住双击——两次点击生成两个 UUID，服务端看到的是两次不同请求。而「订单号唯一」又挡住了合法重开：订单改过金额后必须能重开，所以键里要带 `revision`。本机 20 线程压测里，无唯一键的取号产生 21 组重号、38 个空号，属于同一类失效。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——状态码语义的原始出处（已过期归档）

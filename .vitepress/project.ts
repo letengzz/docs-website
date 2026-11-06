@@ -482,6 +482,7 @@ export const CompleteProject = [
           { text: "第 2 周第 1 步 · 报名接口：三层守卫与十二个用例（LNE-A~LNE-H）", link: "/project/Complete/LearningHub/EnrollmentAPI/index.md" },
           { text: "第 2 周第 2 步 · 进度上报：pct 只增不减与五个用例（LNP-A~LNP-H）", link: "/project/Complete/LearningHub/ProgressReport/index.md" },
           { text: "第 2 周第 3 步 · 完成判定：三口径与七个用例（LNC-A~LNC-H）", link: "/project/Complete/LearningHub/CompletionAggregate/index.md" },
+          { text: "第 2 周第 4 步 · 组卷接口：可复现抽题与开考快照（LXP-A~LXP-H）", link: "/project/Complete/LearningHub/ExamAssembly/index.md" },
         ],
       },
     ],

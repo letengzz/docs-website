@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 450" width="760" height="450" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw-map" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="450" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">七段链：每一段都在改三个金额中的至少一个</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">价税合计 = 不含税 + 税额；申报与报表的时点不同</text>
+<rect x="24" y="70" width="96" height="56" rx="7" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="91" font-size="11" font-weight="700" fill="#1e3a8a">定率</text>
+<text x="34" y="107" font-size="9" fill="#334155">税目 × 计税方法</text>
+<rect x="132" y="70" width="96" height="56" rx="7" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="142" y="91" font-size="11" font-weight="700" fill="#115e59">分离</text>
+<text x="142" y="107" font-size="9" fill="#334155">取整切在哪一层</text>
+<rect x="240" y="70" width="96" height="56" rx="7" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="250" y="91" font-size="11" font-weight="700" fill="#78350f">开票</text>
+<text x="250" y="107" font-size="9" fill="#334155">号码 / 额度 / 要素</text>
+<rect x="348" y="70" width="96" height="56" rx="7" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="358" y="91" font-size="11" font-weight="700" fill="#881337">红冲</text>
+<text x="358" y="107" font-size="9" fill="#334155">累计上限与符号</text>
+<rect x="456" y="70" width="96" height="56" rx="7" fill="#f5f3ff" stroke="#9d8fd0" stroke-width="1.1"/>
+<text x="466" y="91" font-size="11" font-weight="700" fill="#4c1d95">抵扣</text>
+<text x="466" y="107" font-size="9" fill="#334155">勾选 / 转出 / 留抵</text>
+<rect x="564" y="70" width="96" height="56" rx="7" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="574" y="91" font-size="11" font-weight="700" fill="#1e3a8a">申报</text>
+<text x="574" y="107" font-size="9" fill="#334155">义务时点归属期</text>
+<rect x="660" y="70" width="76" height="56" rx="7" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="670" y="91" font-size="11" font-weight="700" fill="#0f172a">比对</text>
+<text x="670" y="107" font-size="9" fill="#334155">账 / 票 / 税</text>
+<line x1="120" y1="98" x2="128" y2="98" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-map)"/>
+<line x1="228" y1="98" x2="236" y2="98" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-map)"/>
+<line x1="336" y1="98" x2="344" y2="98" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-map)"/>
+<line x1="444" y1="98" x2="452" y2="98" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-map)"/>
+<line x1="552" y1="98" x2="560" y2="98" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-map)"/>
+<line x1="660" y1="98" x2="666" y2="98" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-map)"/>
+<rect x="24" y="152" width="228" height="86" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="172" font-size="11.5" font-weight="700" fill="#1e3a8a">价税合计</text>
+<text x="34" y="190" font-size="9.8" fill="#334155">客户实际支付</text>
+<text x="34" y="206" font-size="9.8" fill="#334155">蓝票 1,545,555.92 元</text>
+<text x="34" y="222" font-size="9.8" fill="#334155">红票 −11,315.78 元</text>
+<rect x="266" y="152" width="228" height="86" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="276" y="172" font-size="11.5" font-weight="700" fill="#115e59">不含税收入</text>
+<text x="276" y="190" font-size="9.8" fill="#334155">记进利润表</text>
+<text x="276" y="206" font-size="9.8" fill="#334155">本期 1,405,461.45 元</text>
+<text x="276" y="222" font-size="9.8" fill="#334155">= 蓝票净额 − 红票净额</text>
+<rect x="508" y="152" width="228" height="86" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="518" y="172" font-size="11.5" font-weight="700" fill="#78350f">税额</text>
+<text x="518" y="190" font-size="9.8" fill="#334155">进入申报表销项</text>
+<text x="518" y="206" font-size="9.8" fill="#334155">128,778.69 元</text>
+<text x="518" y="222" font-size="9.8" fill="#334155">= 129,683.92 − 905.23</text>
+<text x="24" y="266" font-size="10" fill="#475569">恒等式：1,545,555.92 − 11,315.78 = 1,405,461.45 + 128,778.69 = 1,534,240.14</text>
+<rect x="24" y="282" width="712" height="60" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="34" y="302" font-size="11" font-weight="700" fill="#881337">单张票恒等，汇总不一定恒等</text>
+<text x="34" y="319" font-size="9.6" fill="#334155">行级与整单切点不同：1,000 单里 284 单差 1 分；红票直加：销项虚增 1,810.46 元（+1.4%）</text>
+<rect x="24" y="356" width="712" height="72" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="34" y="376" font-size="11" font-weight="700" fill="#0f172a">四个日期，三套时点</text>
+<text x="34" y="393" font-size="9.6" fill="#334155">业务完成日（义务） / 开票日（发票所属期与额度） / 收款日（预收） / 收入确认日（报表）</text>
+<text x="34" y="410" font-size="9.6" fill="#334155">本册口径：申报跟义务时点，报表跟收入确认，发票只是凭证</text>
+</svg>

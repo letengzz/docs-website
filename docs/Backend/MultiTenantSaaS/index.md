@@ -106,6 +106,20 @@
 | 配额形同虚设 / 账单对不上 | [配额执行](QuotaEnforcement/index.md) → [计量与账单](MeteringBilling/index.md) |
 | 要做租户开通与退出的自动化 | [生命周期](Lifecycle/index.md) |
 
+## 与税务与发票工程的分工
+
+租户隔离与纳税主体隔离是两层不同的边界：
+
+| 这件事 | 本页负责 | 税务专题负责 |
+| --- | --- | --- |
+| 隔离维度 | `tenant_id` 行级安全 | 纳税人识别号（一个租户可能有多个纳税主体） |
+| 资源配额 | 连接、存储、QPS | 发票号段与月度开票额度（按纳税主体算） |
+| 越权后果 | 读到别人的数据 | 用别人的号段开票，申报口径串户 |
+
+::: danger 注意
+按 `tenant_id` 分配发票号码，是这类系统里最难查的撞号来源：同一纳税主体在两个租户下各有一套自增序列，开出来的号在税务侧是同一个池子。本机 20 线程无唯一键取号的实测是 21 组重号、38 个空号——跨租户时连唯一键都不在同一个库里，连报错都不会有。
+:::
+
 ## 参考资料
 
 - PostgreSQL 18 Documentation：*Row Security Policies*（`ENABLE` / `FORCE` / `USING`）、*SET*（`SET LOCAL` 的作用域）、*System Administration Functions*（`set_config` / `current_setting`）、*Monitoring Database Activity*（`pg_stat_activity`）

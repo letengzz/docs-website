@@ -1811,3 +1811,23 @@ export const HotelPMS = [
     ],
   },
 ];
+
+// 税务与发票工程
+export const TaxInvoice = [
+  {
+    text: "税务与发票工程",
+    link: "/docs/Backend/TaxInvoice/index.md",
+    items: [
+      { text: "总览：七段链、三个「多少钱」与五个安静的失败", link: "/docs/Backend/TaxInvoice/Overview/index.md" },
+      { text: "税目与税率：一张有生效期的台账", link: "/docs/Backend/TaxInvoice/TaxCatalog/index.md" },
+      { text: "价税分离：切分点比公式重要", link: "/docs/Backend/TaxInvoice/PriceTaxSplit/index.md" },
+      { text: "开具：号码、额度与要素", link: "/docs/Backend/TaxInvoice/InvoiceIssue/index.md" },
+      { text: "红冲与作废：钱已经出去了还能改", link: "/docs/Backend/TaxInvoice/RedFlush/index.md" },
+      { text: "进项抵扣：勾选、转出与留抵", link: "/docs/Backend/TaxInvoice/InputDeduction/index.md" },
+      { text: "申报：销项、进项与留抵的闭环", link: "/docs/Backend/TaxInvoice/TaxFiling/index.md" },
+      { text: "比对：账、票、税三套数", link: "/docs/Backend/TaxInvoice/Reconciliation/index.md" },
+      { text: "实战：十张表、十八条约束与十六项断言", link: "/docs/Backend/TaxInvoice/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/TaxInvoice/FAQ/index.md" },
+    ],
+  },
+];

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw-dd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="440" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">抵扣链：凭证 → 用途 → 抵或转出 → 留抵</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">进项是别人开的票，能不能为自己减税要过三道判定</text>
+<rect x="24" y="72" width="150" height="76" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="92" font-size="10.5" font-weight="700" fill="#1e3a8a">凭证</text>
+<text x="34" y="110" font-size="9.2" fill="#334155">专票 / 缴款书</text>
+<text x="34" y="126" font-size="9.2" fill="#334155">农产品 / 完税凭证</text>
+<text x="34" y="142" font-size="9.2" fill="#881337">普票不可抵</text>
+<line x1="176" y1="110" x2="196" y2="110" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-dd)"/>
+<rect x="200" y="72" width="170" height="76" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="210" y="92" font-size="10.5" font-weight="700" fill="#78350f">用途</text>
+<text x="210" y="110" font-size="9.2" fill="#334155">应税 / 简易 / 免税</text>
+<text x="210" y="126" font-size="9.2" fill="#334155">福利 / 个人消费 / 损失</text>
+<text x="210" y="142" font-size="9.2" fill="#334155">2026：餐饮看是否直接消费</text>
+<line x1="372" y1="110" x2="392" y2="110" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-dd)"/>
+<rect x="396" y="72" width="150" height="76" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="406" y="92" font-size="10.5" font-weight="700" fill="#115e59">抵</text>
+<text x="406" y="110" font-size="9.2" fill="#334155">进入本期进项</text>
+<text x="406" y="126" font-size="9.2" fill="#334155">参与应纳计算</text>
+<text x="406" y="142" font-size="9.2" fill="#334155">可留抵结转或退</text>
+<line x1="548" y1="110" x2="568" y2="110" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-dd)"/>
+<rect x="572" y="72" width="164" height="76" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="582" y="92" font-size="10.5" font-weight="700" fill="#881337">转出</text>
+<text x="582" y="110" font-size="9.2" fill="#334155">用途改变 / 非正常损失</text>
+<text x="582" y="126" font-size="9.2" fill="#334155">简易项目分摊</text>
+<text x="582" y="142" font-size="9.2" fill="#334155">红冲确认单税额</text>
+<text x="24" y="180" font-size="11" font-weight="700" fill="#0f172a">四种转出场景，每种都要原因码</text>
+<rect x="24" y="192" width="170" height="66" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="34" y="212" font-size="9.8" font-weight="700" fill="#0f172a">USE_CHANGE</text>
+<text x="34" y="230" font-size="9.2" fill="#334155">生产用 → 集体福利</text>
+<text x="34" y="246" font-size="9.2" fill="#334155">按净值或比例转</text>
+<rect x="206" y="192" width="170" height="66" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="216" y="212" font-size="9.8" font-weight="700" fill="#0f172a">ABNORMAL_LOSS</text>
+<text x="216" y="230" font-size="9.2" fill="#334155">被盗 / 霉烂变质</text>
+<text x="216" y="246" font-size="9.2" fill="#334155">对应进项全额</text>
+<rect x="388" y="192" width="170" height="66" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="398" y="212" font-size="9.8" font-weight="700" fill="#0f172a">SIMPLE_ALLOC</text>
+<text x="398" y="230" font-size="9.2" fill="#334155">与简易项目共用</text>
+<text x="398" y="246" font-size="9.2" fill="#334155">按销售额比例</text>
+<rect x="570" y="192" width="166" height="66" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="580" y="212" font-size="9.8" font-weight="700" fill="#0f172a">RED_CONFIRM</text>
+<text x="580" y="230" font-size="9.2" fill="#334155">红冲前先转出</text>
+<text x="580" y="246" font-size="9.2" fill="#334155">依确认单税额</text>
+<rect x="24" y="276" width="712" height="70" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="34" y="296" font-size="10.5" font-weight="700" fill="#881337">多抵的代价（本机 200 张采购票）</text>
+<text x="34" y="314" font-size="9.6" fill="#334155">全部勾选：可抵 123,640.59 元　　按用途筛后：可抵 65,285.60 元　　多抵 58,354.99 元（47.2%）</text>
+<text x="34" y="332" font-size="9.6" fill="#334155">表现是税负率「异常低且很稳定」——每一期都在多抵，直到留抵退税审核或稽查才暴露</text>
+<rect x="24" y="362" width="712" height="58" rx="8" fill="#f5f3ff" stroke="#9d8fd0" stroke-width="1.1"/>
+<text x="34" y="382" font-size="10.5" font-weight="700" fill="#4c1d95">留抵：一条守恒式，两种处置</text>
+<text x="34" y="400" font-size="9.6" fill="#334155">carry_next = max(0, carry_prev + input − output)；结转下期 or 申请退还，二者可选其一</text>
+<text x="34" y="416" font-size="9.6" fill="#881337">不要用「负数进项」表示退还：它会让下期进项合计凭空变小，且无法追溯</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw-ex" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="440" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">组卷：配额 → 分桶 → seed → 快照</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">「随机」不是问题，不可复现的随机才是</text>
+<rect x="24" y="70" width="160" height="96" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="90" font-size="10.5" font-weight="700" fill="#1e3a8a">① 配额</text>
+<text x="34" y="108" font-size="9.2" fill="#334155">4 章 × 5 题 = 20</text>
+<text x="34" y="126" font-size="9.2" fill="#334155">总分 10000 分</text>
+<text x="34" y="144" font-size="9.2" fill="#334155">先定结构，再定题</text>
+<text x="34" y="160" font-size="9.2" fill="#881337">朴素随机配比命中 1/1000</text>
+<line x1="186" y1="118" x2="204" y2="118" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-ex)"/>
+<rect x="208" y="70" width="160" height="96" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="218" y="90" font-size="10.5" font-weight="700" fill="#78350f">② 分桶</text>
+<text x="218" y="108" font-size="9.2" fill="#334155">每章 易2 / 中2 / 难1</text>
+<text x="218" y="126" font-size="9.2" fill="#334155">难度 8 / 8 / 4</text>
+<text x="218" y="144" font-size="9.2" fill="#334155">桶内抽样</text>
+<text x="218" y="160" font-size="9.2" fill="#115e59">约束抽题 1000/1000</text>
+<line x1="370" y1="118" x2="388" y2="118" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-ex)"/>
+<rect x="392" y="70" width="160" height="96" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="402" y="90" font-size="10.5" font-weight="700" fill="#115e59">③ seed</text>
+<text x="402" y="108" font-size="9.2" fill="#334155">Random(seed:章:难度)</text>
+<text x="402" y="126" font-size="9.2" fill="#334155">抽样前先 sorted()</text>
+<text x="402" y="144" font-size="9.2" fill="#334155">同 seed 200 次 = 1 张卷</text>
+<text x="402" y="160" font-size="9.2" fill="#881337">无 seed 500 次 = 500 张</text>
+<line x1="554" y1="118" x2="572" y2="118" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-ex)"/>
+<rect x="576" y="70" width="160" height="96" rx="8" fill="#f5f3ff" stroke="#9d8fd0" stroke-width="1.1"/>
+<text x="586" y="90" font-size="10.5" font-weight="700" fill="#4c1d95">④ 快照</text>
+<text x="586" y="108" font-size="9.2" fill="#334155">attempt_item</text>
+<text x="586" y="126" font-size="9.2" fill="#334155">q_no / score / opt_order</text>
+<text x="586" y="144" font-size="9.2" fill="#334155">attempt_seed 记来源</text>
+<text x="586" y="160" font-size="9.2" fill="#334155">交卷只读快照</text>
+<text x="24" y="196" font-size="11" font-weight="700" fill="#0f172a">开考后三样东西不能再变</text>
+<rect x="24" y="208" width="228" height="86" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="34" y="228" font-size="10.5" font-weight="700" fill="#881337">题序 q_no</text>
+<text x="34" y="246" font-size="9.2" fill="#334155">变了：按题号记的答案错位</text>
+<text x="34" y="264" font-size="9.2" fill="#334155">约束：主键的一部分</text>
+<text x="34" y="282" font-size="9.2" fill="#334155">题序连续 1..20</text>
+<rect x="266" y="208" width="228" height="86" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="276" y="228" font-size="10.5" font-weight="700" fill="#78350f">分值 score</text>
+<text x="276" y="246" font-size="9.2" fill="#334155">变了：已交卷分数无法复算</text>
+<text x="276" y="264" font-size="9.2" fill="#334155">约束：独立列，不 JOIN 题库</text>
+<text x="276" y="282" font-size="9.2" fill="#334155">整数分：33.33 × 3 ≠ 100</text>
+<rect x="508" y="208" width="228" height="86" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="518" y="228" font-size="10.5" font-weight="700" fill="#115e59">选项顺序 opt_order</text>
+<text x="518" y="246" font-size="9.2" fill="#334155">变了：「我选的 B」对不上</text>
+<text x="518" y="264" font-size="9.2" fill="#334155">约束：存 opt_key 序列</text>
+<text x="518" y="282" font-size="9.2" fill="#334155">按下标存：75.7% 错</text>
+<rect x="24" y="308" width="712" height="58" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="34" y="328" font-size="10.5" font-weight="700" fill="#0f172a">两个反向探针</text>
+<text x="34" y="346" font-size="9.4" fill="#334155">删掉 sorted() → T3 必须失败　　把 score 改成 JOIN 题库 → T7/T11 必须失败</text>
+<text x="34" y="362" font-size="9.4" fill="#881337">没有反向探针，正向通过可能只是「这次数据库刚好按顺序返回」</text>
+<rect x="24" y="378" width="712" height="46" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="398" font-size="9.6" fill="#1e3a8a">重考上限：20 线程并发、上限 3 条，实际写入 5 条——「先查再插」在并发下必然超发</text>
+<text x="34" y="416" font-size="9.6" fill="#334155">修法：约束落库（唯一索引/触发器）或把判定放进同一事务的写语句</text>
+</svg>

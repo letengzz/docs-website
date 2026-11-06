@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw-fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="440" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">申报：四个输入、一条闭环</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">应纳与留抵是同一个数的两种符号，不可能同时为正</text>
+<rect x="24" y="70" width="150" height="58" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="90" font-size="9.8" font-weight="700" fill="#1e3a8a">销项</text>
+<text x="34" y="106" font-size="9.2" fill="#334155">蓝票 − 红票</text>
+<text x="34" y="120" font-size="9.2" fill="#334155">按义务月归属</text>
+<rect x="24" y="138" width="150" height="58" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="34" y="158" font-size="9.8" font-weight="700" fill="#115e59">进项</text>
+<text x="34" y="174" font-size="9.2" fill="#334155">已确认用途 − 转出</text>
+<text x="34" y="188" font-size="9.2" fill="#334155">按勾选所属期</text>
+<rect x="24" y="206" width="150" height="58" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="34" y="226" font-size="9.8" font-weight="700" fill="#78350f">上期留抵</text>
+<text x="34" y="242" font-size="9.2" fill="#334155">carry_prev</text>
+<text x="34" y="256" font-size="9.2" fill="#334155">从上一期结转</text>
+<rect x="24" y="274" width="150" height="58" rx="8" fill="#f5f3ff" stroke="#9d8fd0" stroke-width="1.1"/>
+<text x="34" y="294" font-size="9.8" font-weight="700" fill="#4c1d95">预缴</text>
+<text x="34" y="310" font-size="9.2" fill="#334155">异地建筑 / 不动产</text>
+<text x="34" y="324" font-size="9.2" fill="#334155">单独成行，不直冲</text>
+<line x1="176" y1="98" x2="252" y2="170" stroke="#64748b" stroke-width="1.1" marker-end="url(#arw-fl)"/>
+<line x1="176" y1="166" x2="252" y2="186" stroke="#64748b" stroke-width="1.1" marker-end="url(#arw-fl)"/>
+<line x1="176" y1="234" x2="252" y2="202" stroke="#64748b" stroke-width="1.1" marker-end="url(#arw-fl)"/>
+<line x1="176" y1="302" x2="252" y2="222" stroke="#64748b" stroke-width="1.1" marker-end="url(#arw-fl)"/>
+<rect x="256" y="150" width="220" height="110" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="266" y="170" font-size="11" font-weight="700" fill="#0f172a">申报表（一期一行）</text>
+<text x="266" y="190" font-size="9.2" fill="#334155">应纳 = max(0, 销项 − 进项 − 留抵)</text>
+<text x="266" y="208" font-size="9.2" fill="#334155">留抵 = max(0, 留抵 + 进项 − 销项)</text>
+<text x="266" y="226" font-size="9.2" fill="#334155">两条 CHECK 写进表结构</text>
+<text x="266" y="246" font-size="9.2" fill="#881337">手工调整插不进去</text>
+<line x1="478" y1="186" x2="502" y2="186" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-fl)"/>
+<line x1="478" y1="222" x2="502" y2="222" stroke="#64748b" stroke-width="1.2" marker-end="url(#arw-fl)"/>
+<rect x="506" y="150" width="230" height="46" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="516" y="168" font-size="10.5" font-weight="700" fill="#881337">应纳</text>
+<text x="516" y="186" font-size="9.2" fill="#334155">本期实缴 + 附加税 12%</text>
+<rect x="506" y="204" width="230" height="46" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="516" y="222" font-size="10.5" font-weight="700" fill="#115e59">期末留抵</text>
+<text x="516" y="240" font-size="9.2" fill="#334155">结转到下一期的 carry_prev</text>
+<rect x="24" y="280" width="712" height="70" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="34" y="300" font-size="10.5" font-weight="700" fill="#881337">跨期：全年一分不差，逐月全错</text>
+<text x="34" y="318" font-size="9.6" fill="#334155">3,000 笔业务、508 笔跨月开票：按开票月与按义务月全年销项都是 582,799.53 元</text>
+<text x="34" y="336" font-size="9.6" fill="#334155">但 12 个月全部不同，单月最大差 11,631.61 元；迟 30 天缴纳的滞纳金 174.47 元（0.05%/日）</text>
+<rect x="24" y="362" width="712" height="58" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="34" y="382" font-size="10.5" font-weight="700" fill="#0f172a">三组自检，全部返回 0 才允许提交</text>
+<text x="34" y="400" font-size="9.4" fill="#334155">应纳 ⇄ 留抵　|　主表 ⇄ 附表一（销项）　|　主表 ⇄ 附表二（进项 − 转出）</text>
+<text x="34" y="416" font-size="9.4" fill="#881337">申报记录 append-only：更正走新 revision，不 UPDATE 历史</text>
+</svg>

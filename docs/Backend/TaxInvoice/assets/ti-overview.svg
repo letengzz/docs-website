@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="arw-ov" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="760" height="470" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="700" fill="#0f172a">三个接缝与三条恒等式</text>
+<text x="24" y="50" font-size="10.5" fill="#64748b">上游只保证自己那段自洽，不保证跨段守恒</text>
+<rect x="24" y="72" width="220" height="72" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="92" font-size="11" font-weight="700" fill="#1e3a8a">接缝一：定率 → 分离</text>
+<text x="34" y="110" font-size="9.4" fill="#334155">多税率订单按单一税率整单算</text>
+<text x="34" y="126" font-size="9.4" fill="#334155">税额差 264.15 元（+25.5%）</text>
+<rect x="270" y="72" width="220" height="72" rx="8" fill="#fffbeb" stroke="#d9b166" stroke-width="1.1"/>
+<text x="280" y="92" font-size="11" font-weight="700" fill="#78350f">接缝二：分离 → 开票</text>
+<text x="280" y="110" font-size="9.4" fill="#334155">行级取整后不归集余数</text>
+<text x="280" y="126" font-size="9.4" fill="#334155">41.2% 的单据合计 ≠ 折扣</text>
+<rect x="516" y="72" width="220" height="72" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="526" y="92" font-size="11" font-weight="700" fill="#881337">接缝三：开票 → 申报</text>
+<text x="526" y="110" font-size="9.4" fill="#334155">用开票日代替义务时点</text>
+<text x="526" y="126" font-size="9.4" fill="#334155">12 个月没有一个月相同</text>
+<text x="24" y="172" font-size="11" font-weight="700" fill="#0f172a">三条恒等式</text>
+<rect x="24" y="184" width="228" height="104" rx="8" fill="#ecfdf5" stroke="#6bbfa4" stroke-width="1.1"/>
+<text x="34" y="204" font-size="11" font-weight="700" fill="#115e59">E1 单票</text>
+<text x="34" y="222" font-size="9.4" fill="#334155">价税合计 = 不含税 + 税额</text>
+<text x="34" y="238" font-size="9.4" fill="#334155">破坏者：行级与整单切点混用</text>
+<text x="34" y="256" font-size="9.4" fill="#334155">1,000 单中 284 单差 1 分</text>
+<text x="34" y="274" font-size="9.4" fill="#334155">累计 3.07 元，单笔最大 0.02 元</text>
+<rect x="266" y="184" width="228" height="104" rx="8" fill="#fff1f2" stroke="#d99aa3" stroke-width="1.1"/>
+<text x="276" y="204" font-size="11" font-weight="700" fill="#881337">E2 一张蓝票</text>
+<text x="276" y="222" font-size="9.4" fill="#334155">红票累计 ≤ 原蓝票</text>
+<text x="276" y="238" font-size="9.4" fill="#334155">破坏者：只校验单次</text>
+<text x="276" y="256" font-size="9.4" fill="#334155">无守卫三次 40% = 120.00%</text>
+<text x="276" y="274" font-size="9.4" fill="#334155">有守卫停在 80.00%</text>
+<rect x="508" y="184" width="228" height="104" rx="8" fill="#f5f3ff" stroke="#9d8fd0" stroke-width="1.1"/>
+<text x="518" y="204" font-size="11" font-weight="700" fill="#4c1d95">E3 一个所属期</text>
+<text x="518" y="222" font-size="9.4" fill="#334155">应纳 = max(0, 销项 − 进项 − 留抵)</text>
+<text x="518" y="238" font-size="9.4" fill="#334155">破坏者：开票月代替义务月</text>
+<text x="518" y="256" font-size="9.4" fill="#334155">全年一分不差、逐月全不同</text>
+<text x="518" y="274" font-size="9.4" fill="#334155">单月最大差 11,631.61 元</text>
+<text x="24" y="316" font-size="11" font-weight="700" fill="#0f172a">四个日期，一条取值顺序</text>
+<rect x="24" y="328" width="712" height="52" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="34" y="348" font-size="9.6" fill="#334155">① 先开票的按开票日　② 预收未开票的按发货日　③ 赊销按合同收款日　④ 服务按完成日</text>
+<text x="34" y="366" font-size="9.6" fill="#334155">写进 obligation_date 并由触发器校验；写在应用层等于把申报期交给一个 if 分支</text>
+<rect x="24" y="392" width="712" height="58" rx="8" fill="#eef4ff" stroke="#7f9cd6" stroke-width="1.1"/>
+<text x="34" y="412" font-size="10.5" font-weight="700" fill="#1e3a8a">本册的写法：先把口径写死成能落进 WHERE 的判定，再谈实现</text>
+<text x="34" y="432" font-size="9.6" fill="#334155">口径不清时，「差 2 万」永远解释不成「由 343 笔时点差异 + 190 笔漏票构成」</text>
+</svg>
