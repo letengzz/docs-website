@@ -1517,18 +1517,9 @@ export const ExpenseReimbursement = [
 export const TimeAttendance = [
   {
     text: "考勤排班与工时核算工程",
-    link: "/docs/Backend/TimeAttendance/index.md",
+    link: "/docs/Backend/TimeAttendance/Overview/index.md",
     items: [
       { text: "总览：七段链与三个「出勤」", link: "/docs/Backend/TimeAttendance/Overview/index.md" },
-      { text: "班次模型：一天从几点开始", link: "/docs/Backend/TimeAttendance/ShiftModel/index.md" },
-      { text: "排班计划：三条合规线与一个空洞", link: "/docs/Backend/TimeAttendance/Scheduling/index.md" },
-      { text: "打卡采集：四个证据维度", link: "/docs/Backend/TimeAttendance/PunchCapture/index.md" },
-      { text: "请假与销班：两条时间线", link: "/docs/Backend/TimeAttendance/LeaveSync/index.md" },
-      { text: "加班与调休：三个数、五道闸", link: "/docs/Backend/TimeAttendance/Overtime/index.md" },
-      { text: "补卡与更正：能回溯的改写", link: "/docs/Backend/TimeAttendance/Correction/index.md" },
-      { text: "日结、汇总与出账", link: "/docs/Backend/TimeAttendance/WorkHourLedger/index.md" },
-      { text: "实战：七张表、三个触发器、九条断言", link: "/docs/Backend/TimeAttendance/Practice/index.md" },
-      { text: "常见问题与分诊", link: "/docs/Backend/TimeAttendance/FAQ/index.md" },
     ],
   },
 ];
@@ -1656,24 +1647,11 @@ export const QualityManagement = [
 // 反洗钱与可疑交易监测工程
 export const AMLCompliance = [
   {
-    text: "反洗钱与可疑交易监测工程",
-    link: "/docs/Backend/AMLCompliance/index.md",
-    items: [
-      { text: "总览：七段链与三个「可疑」", link: "/docs/Backend/AMLCompliance/Overview/index.md" },
-      { text: "客户尽职调查与受益所有人", link: "/docs/Backend/AMLCompliance/DueDiligence/index.md" },
-      { text: "名单与制裁筛查", link: "/docs/Backend/AMLCompliance/Screening/index.md" },
-      { text: "交易监测规则与窗口", link: "/docs/Backend/AMLCompliance/Monitoring/index.md" },
-      { text: "预警分诊与案件", link: "/docs/Backend/AMLCompliance/AlertTriage/index.md" },
-      { text: "调查取证与资金网络", link: "/docs/Backend/AMLCompliance/CaseInvestigation/index.md" },
-      { text: "大额与可疑报送", link: "/docs/Backend/AMLCompliance/Reporting/index.md" },
-      { text: "治理、指标与回溯", link: "/docs/Backend/AMLCompliance/Governance/index.md" },
-      { text: "实战：九张表、五个触发器、十八条断言", link: "/docs/Backend/AMLCompliance/Practice/index.md" },
-      { text: "常见问题与自查清单", link: "/docs/Backend/AMLCompliance/FAQ/index.md" },
-    ],
+    text: "反洗钱与可疑交易监测工程（页面待补）",
+    items: [],
   },
 ];
 
-// 学籍、选课与排课工程
 export const AcademicAffairs = [
   {
     text: "学籍、选课与排课工程",
@@ -1828,6 +1806,26 @@ export const TaxInvoice = [
       { text: "比对：账、票、税三套数", link: "/docs/Backend/TaxInvoice/Reconciliation/index.md" },
       { text: "实战：十张表、十八条约束与十六项断言", link: "/docs/Backend/TaxInvoice/Practice/index.md" },
       { text: "常见问题与分诊", link: "/docs/Backend/TaxInvoice/FAQ/index.md" },
+    ],
+  },
+];
+
+// 内容审核与安全策略工程
+export const ContentModeration = [
+  {
+    text: "内容审核与安全策略工程",
+    link: "/docs/Backend/ContentModeration/index.md",
+    items: [
+      { text: "总览：四条边界、五个安静的失败与最小起步", link: "/docs/Backend/ContentModeration/Overview/index.md" },
+      { text: "接入与提交契约：同一条内容只该被审一次", link: "/docs/Backend/ContentModeration/Intake/index.md" },
+      { text: "文本对抗与归一化：救回 5 类变体，漏掉 1 类", link: "/docs/Backend/ContentModeration/TextNormalization/index.md" },
+      { text: "媒体审核：抽帧密度就是漏放率", link: "/docs/Backend/ContentModeration/MediaModeration/index.md" },
+      { text: "策略判定与阈值：两条线，不是一个数", link: "/docs/Backend/ContentModeration/PolicyVerdict/index.md" },
+      { text: "人审队列：ρ 超过 0.85 之后，加人不线性", link: "/docs/Backend/ContentModeration/ReviewQueue/index.md" },
+      { text: "处置与撤销：删了之后怎么放回来", link: "/docs/Backend/ContentModeration/Enforcement/index.md" },
+      { text: "度量与成本：四个数，缺一个就会被单独解释", link: "/docs/Backend/ContentModeration/Metrics/index.md" },
+      { text: "实战：十三张表、四条触发器与十六项断言", link: "/docs/Backend/ContentModeration/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ContentModeration/FAQ/index.md" },
     ],
   },
 ];

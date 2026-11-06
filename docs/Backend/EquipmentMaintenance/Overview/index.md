@@ -170,6 +170,8 @@ sqlite3 /tmp/mnt.db "SELECT ROUND(100.0*sum(CASE WHEN substr(at,12,2) IN ('13','
 
 ## 与本专题的分工
 
+![边界表：你问的这个问题，该读哪一册](../assets/em-boundaries.svg)
+
 维护册判**可用性可算**（停机时长、MTBF、OEE），合并册判**这些停机成本在集团内部怎么流动**。
 
 | 你关心的问题 | 该读哪一册 | 为什么 |

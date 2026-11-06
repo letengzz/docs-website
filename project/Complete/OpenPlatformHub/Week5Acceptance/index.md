@@ -8,6 +8,8 @@
 验收不是把前四步的结论抄一遍，是**换一个粒度重新问一次**。前四步的粒度是组件与能力，验收的粒度是**场景**——因为线上不会只坏一个组件，而组件级的全绿在组合故障下可以瞬间变成全红。
 :::
 
+![26 项验收单：24 过 2 未过，两项都只在「同时坏两个」时出现](../assets/oph-week5acceptance.svg)
+
 ## 一、验收对象从「组件」换成「场景」
 
 前四步的判据都是「某个能力在某种故障下成立吗」。把它排成矩阵，5 个能力 × 4 种故障 = 20 格：
@@ -200,4 +202,4 @@ python3 -c "print(round(11/12*100,1))"
 - Google SRE Workbook《Postmortem Culture》与《Managing Incidents》：验收与复盘的边界——验收回答「能不能进下一步」，不回答「为什么当时那样决定」。
 - NIST SP 800-61 Rev.3：多故障并发（cascading failure）下的响应预案要求。
 - AWS Well-Architected《Reliability Pillar — Testing》：「game day」与组合故障注入的覆盖口径。
-- 与本步相邻：[第 5 周第 1 步 · 故障注入与熔断阈值校准](../Week5ChaosThreshold/index.md)、[第 5 周第 2 步 · 降级与兜底数据的口径](../Week5Fallback/index.md)、[第 5 周第 3 步 · 事故分级与升级链](../Week5Incident/index.md)、[第 5 周第 4 步 · 止损清单最小依赖化](../Week5Runbook/index.md)、[第 4 周第 4 步 · 上线验收单](../Week4Acceptance/index.md)。
+- 与本步相邻：第 5 周第 1 步 · 故障注入与熔断阈值校准（页面待补）、[第 5 周第 2 步 · 降级与兜底数据的口径](../Week5Fallback/index.md)、[第 5 周第 3 步 · 事故分级与升级链](../Week5Incident/index.md)、第 5 周第 4 步 · 止损清单最小依赖化（页面待补）、[第 4 周第 4 步 · 上线验收单](../Week4Acceptance/index.md)。

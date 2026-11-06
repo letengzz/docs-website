@@ -58,7 +58,7 @@
 | 周 | 目标 | 验收（必须能跑） |
 | --- | --- | --- |
 | 第 1 周（251-257） | 需求拆分、技术选型、架构边界、接口契约、库表设计 | 十二张表 DDL 可执行；六条不变量各有一次「被拦住」的实测；四条契约各有一次「被拒」的实测（第 251 天需求与领域边界 6/6 PASS；第 252 天架构边界与四条契约 4/4 PASS；第 253 天版本基线与三个静默坑可见证） |
-| 第 2 周（258-264） | 核心编码 | 报名、进度上报、完成判定、组卷四个接口可调通，能跑通一次「报名 → 学完必修 → 开考」（第 256 天报名接口 12/12 用例 PASS，含 200 次并发只落 1 行；第 257 天进度上报 5/5 用例 PASS，含「删掉触发器后回退必须成功」这一条反向探针；第 258 天完成判定 7/7 用例 PASS，含两条反向探针，并补上 `attempt.enroll_id`；第 259 天组卷接口 16/16 用例 PASS，同 seed 200 次得到 1 张卷） |
+| 第 2 周（258-264） | 核心编码 | 报名、进度上报、完成判定、组卷四个接口可调通，能跑通一次「报名 → 学完必修 → 开考」（第 256 天报名接口 12/12 用例 PASS，含 200 次并发只落 1 行；第 257 天进度上报 5/5 用例 PASS，含「删掉触发器后回退必须成功」这一条反向探针；第 258 天完成判定 7/7 用例 PASS，含两条反向探针，并补上 `attempt.enroll_id`；第 259 天组卷接口 16/16 用例 PASS，同 seed 200 次得到 1 张卷；第 260 天交卷评分 14/14 用例 PASS，三种给分策略的及格率 40.7% / 96.4% / 99.8%，并发交卷只落 1 行） |
 | 第 3 周（265-271） | 联调与测试 | 判分口径与并发交卷的用例矩阵全绿；重复交卷、成绩篡改两类攻击被拦住 |
 | 第 4 周（272-280） | 部署与验收 | 一键起（`make up`）；上线验收清单逐条实测；干净目录能从零复现 |
 
@@ -75,6 +75,7 @@
 | 257 | 第 2 周第 2 步 | [进度上报：pct 只增不减、三层守卫与五个用例](ProgressReport/index.md) | `LNP-A` ~ `LNP-H` | 8 |
 | 258 | 第 2 周第 3 步 | [完成判定：三口径、一次写入与七个用例](CompletionAggregate/index.md) | `LNC-A` ~ `LNC-H` | 8 |
 | 259 | 第 2 周第 4 步 | [组卷接口：可复现抽题、开考快照与十六个用例](ExamAssembly/index.md) | `LXP-A` ~ `LXP-H` | 8 |
+| 260 | 第 2 周第 5 步 | [交卷评分：三种给分策略、整数分与一次写入](ScoreAndGrade/index.md) | `LSG-A` ~ `LSG-H` | 8 |
 
 > **第 1 周进度 5/5（本周收口）**：第 1 步交付八条用户故事（每条带一条可判定验收）、十二张表 DDL（本机建库 1.27 ms）、六条不变量（4 个触发器 + 1 个部分唯一索引 + 1 个 `CHECK`，实测 6/6 全部拦住）、四条契约草案；第 2 步把四条契约写成可执行的约束（`UNIQUE` / 触发器），四个负向用例 4/4 被拒、`EXIT=0`，并定下四个模块的单向依赖与同步判分链；第 3 步定下五条版本基线（Python 3.13.12 / SQLite 3.50.4 / PG 18 / UTF-8 / UTC）、六个 PRAGMA 的取值、三个会让约束**静默失效**的坑（`foreign_keys` 在事务内设置无效、`UNIQUE` 大小写敏感、`julianday()` 无时区），以及换 PostgreSQL 必改的三处（实测 `wal/normal` 比 `delete/full` 快 **18.5×**）；第 4 步把五条高频查询的路径钉死——九个索引里 4 个带来 266×~33,929× 的加速，1 个（`(state, submitted_at)`）走了 `SEARCH` 却**一点没快**（选择性只有 10%，回表比全扫还贵），代价是建库 +41.1%、体积 +43.4%、写入 +102%。每章都包含「当日做了什么 / 如何验证 / 下一步是什么」。第 5 步把前四步的交付物压成**八项门禁**：12 张表 / 9 个索引 / 4 个触发器建库 **1.31 ms**、七条不变量（含一条要求「必须成功」的反向判据：取消后可重报）**7/7** 通过、`EXPLAIN QUERY PLAN` 实测命中 `uq_cert_no` 与 `uq_enroll_active`，并显式列出「本周不做」的四件事与第 2 周的三条入口条件。
 
@@ -95,8 +96,8 @@
 
 ```shell
 # 1. 目录与配图齐全
-ls project/Complete/LearningHub            # 期望：index.md Requirements Architecture TechBaseline DatabaseDesign Week1Acceptance EnrollmentAPI ProgressReport CompletionAggregate ExamAssembly assets
-ls project/Complete/LearningHub/assets     # 期望：lh-roadmap.svg lh-model.svg lh-domain.svg lh-arch.svg lh-tech.svg lh-db.svg lh-accept.svg lh-enroll.svg lh-progress.svg lh-completion.svg lh-exam.svg
+ls project/Complete/LearningHub            # 期望：index.md Requirements Architecture TechBaseline DatabaseDesign Week1Acceptance EnrollmentAPI ProgressReport CompletionAggregate ExamAssembly ScoreAndGrade assets
+ls project/Complete/LearningHub/assets     # 期望：lh-roadmap.svg lh-model.svg lh-domain.svg lh-arch.svg lh-tech.svg lh-db.svg lh-accept.svg lh-enroll.svg lh-progress.svg lh-completion.svg lh-exam.svg lh-score.svg
 
 # 2. 十二张表能建出来、六条不变量全部拦得住
 python3 lh_req.py; echo "EXIT=$?"
@@ -109,7 +110,15 @@ python3 lh_arch.py | grep -c "^PASS"; echo "EXIT=$?"
 python3 lh_enroll.py | grep -c "^PASS"
 # 期望：12
 
-# 5. project/ 下不允许出现代码文件
+# 5. 交卷评分的十四条用例（期望 14 个 PASS，含 T13/T14 反向探针）
+python3 lh_score.py | grep -c "^PASS"
+# 期望：14
+
+# 6. 评分复算：同一份答卷两次必须同分（期望 4000 4000）
+python3 lh_score.py --recompute
+# 期望：4000 4000
+
+# 7. project/ 下不允许出现代码文件
 find project -type f ! -name "*.md" ! -name "*.png" ! -name "*.svg" ! -name "*.jpg"
 # 期望：输出为空
 ```

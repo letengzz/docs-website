@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img">
+<title>三种提交时机，对应三种一致性代价</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+<rect x="0" y="0" width="800" height="420" fill="#FFFFFF"/>
+<text x="40" y="40" font-size="18" font-weight="700" fill="#1F2937">三种提交时机，对应三种一致性代价</text>
+<text x="40" y="64" font-size="13" fill="#6B7280">「什么时候审」比「用什么模型审」更影响体验</text>
+<line x1="80" y1="200" x2="740" y2="200" stroke="#94A3B8" stroke-width="2"/>
+<circle cx="120" cy="200" r="6" fill="#2563EB"/>
+<text x="120" y="228" text-anchor="middle" font-size="12" fill="#6B7280">创建</text>
+<circle cx="380" cy="200" r="6" fill="#2563EB"/>
+<text x="380" y="228" text-anchor="middle" font-size="12" fill="#6B7280">发布</text>
+<circle cx="660" cy="200" r="6" fill="#2563EB"/>
+<text x="660" y="228" text-anchor="middle" font-size="12" fill="#6B7280">传播</text>
+<rect x="60" y="90" width="180" height="64" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<text x="150.0" y="116.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">同步前置</text>
+<text x="150.0" y="136.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">发布前必须出结果</text>
+<rect x="300" y="90" width="180" height="64" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text x="390.0" y="116.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">异步后置</text>
+<text x="390.0" y="136.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">先可见，后处置</text>
+<rect x="540" y="90" width="200" height="64" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<text x="640.0" y="116.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">双写补偿</text>
+<text x="640.0" y="136.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">影子结果 + 对账</text>
+<line x1="150" y1="154" x2="150" y2="194" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="150.0" y="168.0" text-anchor="middle" font-size="12" fill="#6B7280">阻塞</text>
+<line x1="390" y1="154" x2="390" y2="194" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="390.0" y="168.0" text-anchor="middle" font-size="12" fill="#6B7280">不阻塞</text>
+<line x1="640" y1="154" x2="640" y2="194" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="640.0" y="168.0" text-anchor="middle" font-size="12" fill="#6B7280">事后</text>
+<rect x="60" y="290" width="680" height="86" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="400.0" y="328.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">同步：用户体验最差、风险最低，适合「不可挽回」的内容（支付、证件、公告）</text>
+<text x="400.0" y="347.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">异步：体验最好、风险最高，必须配「先隐藏后判定」与「已传播内容的下架能力」</text>
+</svg>

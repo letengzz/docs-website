@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430" width="800" height="430" role="img">
+<title>四个数决定审核系统是否在正常工作</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+<rect x="0" y="0" width="800" height="430" fill="#FFFFFF"/>
+<text x="40" y="40" font-size="18" font-weight="700" fill="#1F2937">四个数决定审核系统是否在正常工作</text>
+<text x="40" y="64" font-size="13" fill="#6B7280">缺一个，另一个就会被拿来单独解释</text>
+<rect x="40" y="100" width="340" height="96" rx="8" fill="#FFFFFF" stroke="#DC2626" stroke-width="1.5"/>
+<text x="60" y="132" font-size="15" font-weight="600" fill="#1F2937">漏放率</text>
+<text x="60" y="156" font-size="12" fill="#6B7280">违规内容被放过的比例</text>
+<text x="60" y="180" font-size="12" fill="#DC2626">按抽样复核估</text>
+<rect x="420" y="100" width="340" height="96" rx="8" fill="#FFFFFF" stroke="#D97706" stroke-width="1.5"/>
+<text x="440" y="132" font-size="15" font-weight="600" fill="#1F2937">误杀率</text>
+<text x="440" y="156" font-size="12" fill="#6B7280">合规内容被拦的比例</text>
+<text x="440" y="180" font-size="12" fill="#D97706">按申诉反推</text>
+<rect x="40" y="220" width="340" height="96" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5"/>
+<text x="60" y="252" font-size="15" font-weight="600" fill="#1F2937">人审时延</text>
+<text x="60" y="276" font-size="12" fill="#6B7280">灰区内容等待时长</text>
+<text x="60" y="300" font-size="12" fill="#2563EB">p95，不是均值</text>
+<rect x="420" y="220" width="340" height="96" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="1.5"/>
+<text x="440" y="252" font-size="15" font-weight="600" fill="#1F2937">单位成本</text>
+<text x="440" y="276" font-size="12" fill="#6B7280">每千条的全链路成本</text>
+<text x="440" y="300" font-size="12" fill="#059669">含人审工时</text>
+<text x="40" y="370" font-size="13" fill="#1F2937">本机读数：要证明「误杀率 0.3%」在 ±0.05% 内成立，需要抽检 45,961 条 = 383 人时。</text>
+<text x="40" y="394" font-size="12" fill="#6B7280">所以误杀率永远是一个区间，不是一个数；报单点的报表，通常也没说样本量。</text>
+</svg>

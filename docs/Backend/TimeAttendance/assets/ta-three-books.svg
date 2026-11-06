@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 430" width="820" height="430" role="img">
+<title>三个「出勤」与一条恒等式</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+<rect x="0" y="0" width="820" height="430" fill="#FFFFFF"/>
+<text x="40" y="40" font-size="18" font-weight="700" fill="#1F2937">三个「出勤」与一条恒等式</text>
+<text x="40" y="64" font-size="13" fill="#6B7280">三个口径的差额来自三处，每一处都可单独对账</text>
+<rect x="30" y="100" width="240" height="84" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<text x="150.0" y="137.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">应出勤 135,361 h</text>
+<text x="150.0" y="156.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">Σ 排班净工时 − 已销班请假</text>
+<rect x="290" y="100" width="240" height="84" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text x="410.0" y="137.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">班内实出 128,483 h</text>
+<text x="410.0" y="156.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">Σ clip(下班−上班, 班窗) − 休息</text>
+<rect x="550" y="100" width="240" height="84" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<text x="670.0" y="137.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">认账 132,937 h</text>
+<text x="670.0" y="156.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">班内实出 + 加班 − 扣减</text>
+<line x1="270" y1="142" x2="286" y2="142" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="530" y1="142" x2="546" y2="142" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="578" y="212" font-size="12" fill="#6B7280">+ 认定加班</text>
+<text x="578" y="232" font-size="12" fill="#6B7280">− 迟到早退扣减</text>
+<rect x="30" y="260" width="760" height="60" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="410.0" y="294.6" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">应出勤 − 班内实出 = 缺卡整天损失 + 迟到早退 + 未销班请假中未打卡的部分</text>
+<text x="30" y="356" font-size="13" fill="#1F2937">差额 6,878 h 不是「算错了」，是三类可解释的缺口之和；对不上时才说明有第四类。</text>
+<text x="30" y="380" font-size="12" fill="#6B7280">口径读法：排班看应出勤、员工看班内实出、薪酬看认账——三者永远不相等，相等才要查。</text>
+</svg>

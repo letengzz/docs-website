@@ -88,7 +88,7 @@ POS 不是「网页版的收银台」，它是**一个会断网、会找零、�
 | [账务与清结算](../Ledger/Reconciliation/index.md) | 分录横平与差异归因 | 小票 / 钱箱 / 渠道三口径的**门店侧**差异 |
 | [营销计价与优惠分摊](../PricingPromotion/Overview/index.md) | 规则引擎、最优券、优惠分摊 | 收银端的**固定顺序**与凑整（不让收银员选） |
 | [发票开具](../TaxInvoice/Overview/index.md) | 数电票开具与红冲 | 退货与红冲的**衔接点**，不展开票面 |
-| [考勤排班](../TimeAttendance/ShiftModel/index.md) | 班次、打卡、工时 | 班次与钱箱的**绑定关系**，不算工时 |
+| [考勤排班](../TimeAttendance/Overview/index.md) | 班次、打卡、工时 | 班次与钱箱的**绑定关系**，不算工时 |
 | [幂等状态机](../IdempotencyStateMachine/IdempotencyKey/index.md) | 请求级幂等的通用设计 | 补传队列的**表结构与去重键** |
 | [仓储作业](../WarehouseOps/Overview/index.md) | 库位、波次、拣选路径 | 门店后仓与补货 |
 | [多币种折算](../MultiCurrency/Overview/index.md) | 汇率快照与期末重估 | 仅境外门店涉及，本册只提一句 |

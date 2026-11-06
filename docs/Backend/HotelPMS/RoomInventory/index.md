@@ -32,7 +32,7 @@
 5,347 段两两比对 = 5,347 × 5,346 / 2 = 14,292,531 对
 ```
 
-一次前台查询要跑 1400 万次比较。而房-日格方案只需要 `WHERE room_id=? AND stay_date=?` 一次索引命中（实测 `SCAN rn USING COVERING INDEX ux_room_night`，见 [实战](Practice/index.md)）。
+一次前台查询要跑 1400 万次比较。而房-日格方案只需要 `WHERE room_id=? AND stay_date=?` 一次索引命中（实测 `SCAN rn USING COVERING INDEX ux_room_night`，见 [实战](../Practice/index.md)）。
 
 **结论：区间是「业务语义」，房-日格是「查询结构」，两者都要，但不能互相替代。** 区间写进 `reservation` 供人读，房-日格写进 `room_night` 供机器查。
 

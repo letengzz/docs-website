@@ -121,7 +121,7 @@ UPDATE reservation
 | 订单快照 | `reservation.policy_code` + 下单时的 `free_until` | 取消受理 |
 | 结算 | 罚金金额写进 `folio` 的一行 | 夜审、对账 |
 
-**必须快照 `free_until`**，理由与 [价格日历](RateCalendar/index.md) 的锁价相同：政策会改，改完之后历史订单的「免费取消截止时间」不能跟着变。
+**必须快照 `free_until`**，理由与 [价格日历](../RateCalendar/index.md) 的锁价相同：政策会改，改完之后历史订单的「免费取消截止时间」不能跟着变。
 
 渠道单的坑在于**渠道侧政策优先**：OTA 下单的订单，取消政策以渠道为准，酒店侧改政策不影响它；而渠道侧的罚金由渠道代收，酒店只能从净价里扣。这条差异必须在 `channel` 维度上分支，不能用一个统一政策覆盖所有订单。
 
@@ -143,7 +143,7 @@ SELECT :resv_id, d.value, :room_id, :rate
   FROM generate_series(date(:checkin), date(:checkout) - 1, '1 day') AS d(value);
 ```
 
-（SQLite 没有 `generate_series`，用递归 CTE 或应用层循环；本册 [实战](Practice/index.md) 用后者，因为行数只有个位数。）
+（SQLite 没有 `generate_series`，用递归 CTE 或应用层循环；本册 [实战](../Practice/index.md) 用后者，因为行数只有个位数。）
 
 ## 七、本页判据
 

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430" width="800" height="430" role="img">
+<title>抽帧密度决定漏放率</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+<rect x="0" y="0" width="800" height="430" fill="#FFFFFF"/>
+<text x="40" y="40" font-size="18" font-weight="700" fill="#1F2937">抽帧密度决定漏放率</text>
+<text x="40" y="64" font-size="13" fill="#6B7280">10 分钟 / 30 fps 视频里的 0.5 秒违规片段，4,000 次随机定位</text>
+<text x="170" y="125.4" text-anchor="end" font-size="12" fill="#6B7280">1 fps</text>
+<rect x="180" y="110" width="460" height="22" rx="4" fill="#F1F5F9"/>
+<rect x="180" y="110" width="234.1" height="22" rx="4" fill="#2563EB" opacity="0.85"/>
+<text x="422.1" y="125.4" font-size="12" fill="#1F2937">50.9%</text>
+<text x="170" y="171.4" text-anchor="end" font-size="12" fill="#6B7280">0.5 fps</text>
+<rect x="180" y="156" width="460" height="22" rx="4" fill="#F1F5F9"/>
+<rect x="180" y="156" width="115.5" height="22" rx="4" fill="#2563EB" opacity="0.85"/>
+<text x="303.5" y="171.4" font-size="12" fill="#1F2937">25.1%</text>
+<text x="170" y="217.4" text-anchor="end" font-size="12" fill="#6B7280">0.2 fps</text>
+<rect x="180" y="202" width="460" height="22" rx="4" fill="#F1F5F9"/>
+<rect x="180" y="202" width="44.6" height="22" rx="4" fill="#D97706" opacity="0.85"/>
+<text x="232.6" y="217.4" font-size="12" fill="#1F2937">9.7%</text>
+<text x="170" y="263.4" text-anchor="end" font-size="12" fill="#6B7280">0.1 fps</text>
+<rect x="180" y="248" width="460" height="22" rx="4" fill="#F1F5F9"/>
+<rect x="180" y="248" width="22.1" height="22" rx="4" fill="#D97706" opacity="0.85"/>
+<text x="210.1" y="263.4" font-size="12" fill="#1F2937">4.8%</text>
+<text x="170" y="309.4" text-anchor="end" font-size="12" fill="#6B7280">均匀 10 帧</text>
+<rect x="180" y="294" width="460" height="22" rx="4" fill="#F1F5F9"/>
+<rect x="180" y="294" width="4.1" height="22" rx="4" fill="#D97706" opacity="0.85"/>
+<text x="192.1" y="309.4" font-size="12" fill="#1F2937">0.9%</text>
+<text x="40" y="360" font-size="13" fill="#1F2937">命中率的近似式：p ≈ min(1, 片段时长 ÷ 抽帧间隔)。1 fps 下只要片段 ≥ 1 秒就必中，</text>
+<text x="40" y="384" font-size="13" fill="#1F2937">而 0.5 秒的片段有一半概率被整段跳过——这就是「视频审了但没看见」的算术来源。</text>
+</svg>

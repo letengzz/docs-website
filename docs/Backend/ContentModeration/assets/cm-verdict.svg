@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430" width="800" height="430" role="img">
+<title>三档判定：阈值不是一条线，是两条</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+<rect x="0" y="0" width="800" height="430" fill="#FFFFFF"/>
+<text x="40" y="40" font-size="18" font-weight="700" fill="#1F2937">三档判定：阈值不是一条线，是两条</text>
+<text x="40" y="64" font-size="13" fill="#6B7280">20,000 条样本、2% 违规；括号内为实测漏放 / 误杀</text>
+<rect x="60" y="120" width="220" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<text x="170" y="150" text-anchor="middle" font-size="15" font-weight="600" fill="#1F2937">自动通过</text>
+<text x="170" y="174" text-anchor="middle" font-size="12" fill="#6B7280">分数 &lt; 0.35</text>
+<rect x="290" y="120" width="220" height="70" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text x="400" y="150" text-anchor="middle" font-size="15" font-weight="600" fill="#1F2937">人工复核</text>
+<text x="400" y="174" text-anchor="middle" font-size="12" fill="#6B7280">0.35 ≤ 分数 &lt; 0.85</text>
+<rect x="520" y="120" width="220" height="70" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+<text x="630" y="150" text-anchor="middle" font-size="15" font-weight="600" fill="#1F2937">自动拦截</text>
+<text x="630" y="174" text-anchor="middle" font-size="12" fill="#6B7280">分数 ≥ 0.85</text>
+<line x1="280" y1="155" x2="288" y2="155" stroke="#D97706" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="510" y1="155" x2="518" y2="155" stroke="#DC2626" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="40" y="250" font-size="13" fill="#1F2937">只调上限（0.85）→ 改变「错放多少」；只调下限（0.35）→ 改变「人审多少」。</text>
+<text x="40" y="274" font-size="13" fill="#1F2937">两档一起动，才同时改变体验与成本；只动一档的人，通常在解决另一个问题。</text>
+<rect x="60" y="300" width="680" height="90" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="400.0" y="330.6" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">[0.35,0.85)：人审 5,092 条 / 42.4 人时 / 漏放 16 / 误杀 41</text>
+<text x="400.0" y="349.6" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">[0.40,0.80)：人审 3,292 条 / 27.4 人时 / 漏放 29 / 误杀 98</text>
+<text x="400.0" y="368.6" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">[0.45,0.75)：人审 2,040 条 / 17.0 人时 / 漏放 41 / 误杀 190</text>
+</svg>

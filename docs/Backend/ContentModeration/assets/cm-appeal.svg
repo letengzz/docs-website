@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430" width="800" height="430" role="img">
+<title>申诉闭环：误杀的唯一出口</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+<rect x="0" y="0" width="800" height="430" fill="#FFFFFF"/>
+<text x="40" y="40" font-size="18" font-weight="700" fill="#1F2937">申诉闭环：误杀的唯一出口</text>
+<text x="40" y="64" font-size="13" fill="#6B7280">申诉不是客服流程，它是审核系统的一部分</text>
+<rect x="40" y="110" width="136" height="70" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<text x="108.0" y="140.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">用户申诉</text>
+<text x="108.0" y="159.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">限时、限次</text>
+<line x1="176" y1="145" x2="190" y2="145" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="190" y="110" width="136" height="70" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text x="258.0" y="140.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">自动分诊</text>
+<text x="258.0" y="159.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">同类合并 / 优先</text>
+<line x1="326" y1="145" x2="340" y2="145" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="340" y="110" width="136" height="70" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text x="408.0" y="140.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">二次判定</text>
+<text x="408.0" y="159.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">换人、换策略</text>
+<line x1="476" y1="145" x2="490" y2="145" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="490" y="110" width="136" height="70" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+<text x="558.0" y="140.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">维持/撤销</text>
+<text x="558.0" y="159.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">写明理由</text>
+<line x1="626" y1="145" x2="640" y2="145" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="640" y="110" width="136" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<text x="708.0" y="140.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">回补与归因</text>
+<text x="708.0" y="159.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">进样本、改阈值</text>
+<text x="40" y="240" font-size="13" fill="#1F2937">三条硬规则：</text>
+<text x="40" y="266" font-size="13" fill="#1F2937">① 申诉期内内容不恢复原状，但也不追加处罚（否则申诉等于自证其罪）；</text>
+<text x="40" y="292" font-size="13" fill="#1F2937">② 撤销必须走「反向迁移 + 审计」，不能直接改状态字段；</text>
+<text x="40" y="318" font-size="13" fill="#1F2937">③ 每一条撤销都要回流成样本，否则同一个阈值会一直误杀同一批人。</text>
+<rect x="60" y="344" width="680" height="54" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="400.0" y="375.6" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">撤销率不是越低越好：撤销率 0 往往意味着「没人申诉」或「申诉不被受理」，两种都比误杀更贵。</text>
+</svg>

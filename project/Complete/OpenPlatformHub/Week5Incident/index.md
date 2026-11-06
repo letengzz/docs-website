@@ -173,4 +173,4 @@ python3 -c "print(round(86400/6000), round(86400/20,1))"
 - PagerDuty《Incident Response Documentation》：severity 定义与响应时限的通用模板。
 - ITIL 4 实践指南《Incident Management》：重大事件（Major Incident）的判定与升级。
 - GB/T 20984—2022《信息安全技术 信息安全风险评估方法》：影响面评估的量化思路（用于 `impact` 口径）。
-- 与本步相邻：[第 5 周第 1 步 · 故障注入与熔断阈值校准](../Week5ChaosThreshold/index.md)、[第 5 周第 2 步 · 降级与兜底数据的口径](../Week5Fallback/index.md)、[第 4 周第 2 步 · 监控与告警接线](../Week4Monitoring/index.md)。
+- 与本步相邻：第 5 周第 1 步 · 故障注入与熔断阈值校准（页面待补）、[第 5 周第 2 步 · 降级与兜底数据的口径](../Week5Fallback/index.md)、[第 4 周第 2 步 · 监控与告警接线](../Week4Monitoring/index.md)。

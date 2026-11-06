@@ -69,10 +69,10 @@
 - [指标平台与语义层工程](MetricPlatform/index.md)
 - [门店零售与 POS 收银工程](RetailPOS/index.md)
 - [临床试验数据管理与盲态工程](ClinicalTrial/index.md)
-- [考勤排班与工时核算工程](TimeAttendance/index.md)
+- [考勤排班与工时核算工程](TimeAttendance/Overview/index.md)
 - [承保与保单管理工程](UnderwritingPolicy/index.md)
 - [质量管理工程](QualityManagement/index.md)
-- [反洗钱与可疑交易监测工程](AMLCompliance/index.md)
+- 反洗钱与可疑交易监测工程（页面待补）
 - [学籍、选课与排课工程](AcademicAffairs/index.md)
 - [配置、定价与报价工程](CPQ/index.md)
 - [招投标与电子采购交易工程](BiddingTender/index.md)
@@ -82,3 +82,4 @@
 - [GraphQL 服务端工程](GraphQL/index.md)
 - [酒店房态与预订管理工程](HotelPMS/index.md)
 - [税务与发票工程](TaxInvoice/index.md)
+- [内容审核与安全策略工程](ContentModeration/index.md)

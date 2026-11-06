@@ -92,7 +92,7 @@
 | --- | --- | --- |
 | [电商库存](../Ecommerce/Inventory/index.md) | 可售、预占、超卖的中心库存模型 | 时段库存的**容量五减项**与档期切分 |
 | [分布式调度](../DistributedScheduling/Overview/index.md) | 定时任务、分片、漏跑补偿 | 超时释放只是一个**待清理队列**，不讲调度框架 |
-| [考勤排班](../TimeAttendance/ShiftModel/index.md) | 班次、打卡、工时核算 | 员工排班与「谁来服务」，不讲工时 |
+| [考勤排班](../TimeAttendance/Overview/index.md) | 班次、打卡、工时核算 | 员工排班与「谁来服务」，不讲工时 |
 | [幂等状态机](../IdempotencyStateMachine/IdempotencyKey/index.md) | 请求级幂等的通用设计 | 预约的**双幂等键**（点击 + 渠道回调） |
 | [订单状态机](../Ecommerce/OrderStateMachine/index.md) | 线上订单的通用生命周期 | 预约的六个状态与「占位到期」这条边 |
 | [消息通知](../NotificationDelivery/Delivery/index.md) | 触达通道、重试、送达回执 | 递补通知的**窗口与顺延策略** |

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460" role="img">
+<title>内容审核的四个工作面</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+<rect x="0" y="0" width="800" height="460" fill="#FFFFFF"/>
+<text x="40" y="40" font-size="18" font-weight="700" fill="#1F2937">内容审核的四个工作面</text>
+<text x="40" y="64" font-size="13" fill="#6B7280">一条内容从提交到结案，要同时被四套东西管住</text>
+<rect x="40" y="100" width="150" height="70" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<text x="115.0" y="129.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">接入</text>
+<text x="115.0" y="149.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">提交、幂等、留存</text>
+<rect x="240" y="100" width="150" height="70" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text x="315.0" y="129.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">机审</text>
+<text x="315.0" y="149.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">文本 / 图像 / 视频</text>
+<rect x="440" y="100" width="150" height="70" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text x="515.0" y="129.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">判定</text>
+<text x="515.0" y="149.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">分级与阈值</text>
+<rect x="640" y="100" width="120" height="70" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+<text x="700.0" y="129.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">处置</text>
+<text x="700.0" y="149.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">可见性状态机</text>
+<line x1="190" y1="135" x2="236" y2="135" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="390" y1="135" x2="436" y2="135" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="590" y1="135" x2="636" y2="135" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="240" y="220" width="150" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<text x="315.0" y="249.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">人审队列</text>
+<text x="315.0" y="269.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">路由、SLA、抽检</text>
+<rect x="440" y="220" width="150" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<text x="515.0" y="249.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">申诉复核</text>
+<text x="515.0" y="269.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">误杀恢复与归因</text>
+<rect x="40" y="220" width="150" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<text x="115.0" y="249.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">策略与标准</text>
+<text x="115.0" y="269.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">版本、灰度、回滚</text>
+<rect x="640" y="220" width="120" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<text x="700.0" y="249.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">度量</text>
+<text x="700.0" y="269.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">漏放 / 误杀</text>
+<line x1="315" y1="170" x2="315" y2="216" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="315.0" y="187.0" text-anchor="middle" font-size="12" fill="#6B7280">灰区</text>
+<line x1="515" y1="170" x2="515" y2="216" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="115" y1="170" x2="300" y2="60" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+<line x1="700" y1="170" x2="700" y2="216" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="700.0" y="187.0" text-anchor="middle" font-size="12" fill="#6B7280">样本</text>
+<rect x="150" y="340" width="500" height="74" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="400.0" y="372.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">一个判据贯穿全册：处置必须可撤销，</text>
+<text x="400.0" y="391.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">撤销必须有据可查（人、时间、原因、影响面）</text>
+<text x="40" y="424" font-size="12" fill="#6B7280">四个工作面各自的失败形态不同：判定的失败是数字，队列的失败是时间，处置的失败是不可逆。</text>
+</svg>

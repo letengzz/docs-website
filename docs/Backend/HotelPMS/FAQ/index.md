@@ -10,22 +10,22 @@
 
 | 现象 | 先查 | 最可能的原因 | 对应页 |
 | --- | --- | --- | --- |
-| 客人到店无房 | `avail_daily` 当日 `sold` vs `total` | 超售额度按整店设，小房型超不出去 | [房量与房态](RoomInventory/index.md) |
-| 同一间房分给两拨人 | `room_night` 按 `(room_id, stay_date)` 分组 | 缺 `ux_room_night`，或换房时整段改了 `room_id` | [入住与在住](CheckIn/index.md) |
-| 房价差几十块 | `room_night.rate` 与 `sell_total` | 派生顺序：先折扣后加餐包 | [价格日历](RateCalendar/index.md) |
-| 渠道订单重复 | `reservation` 按 `(channel, channel_no)` 分组 | 唯一索引漏了 `WHERE channel_no IS NOT NULL` | [预订](Booking/index.md) |
-| 出租率两个数 | 分子分母来源 | 一个用物理、一个用可售 | [总览](Overview/index.md) |
-| 月度间夜对不上 | `room_night.stay_date` 的月份分布 | 按退房月归属 | [夜审与间夜](NightAudit/index.md) |
-| 佣金多付 | `gross - net` 与合同率 | 取消单没剔、隐含率 ≠ 合同率 | [渠道与对账](ChannelRecon/index.md) |
-| 夜审后金额翻倍 | `folio` 按 `(stay_id, biz_date, item)` 分组 | 唯一键缺 `item` 或整个缺失 | [夜审与间夜](NightAudit/index.md) |
-| 客人账单少了杂费 | `folio` 该 `stay_id` 的行数 | 唯一键漏了 `item`，房费挤掉杂费 | [夜审与间夜](NightAudit/index.md) |
-| 延住报 409 且无建议 | 延住流程 | 直接改 `checkout`，没查库存 | [入住与在住](CheckIn/index.md) |
+| 客人到店无房 | `avail_daily` 当日 `sold` vs `total` | 超售额度按整店设，小房型超不出去 | [房量与房态](../RoomInventory/index.md) |
+| 同一间房分给两拨人 | `room_night` 按 `(room_id, stay_date)` 分组 | 缺 `ux_room_night`，或换房时整段改了 `room_id` | [入住与在住](../CheckIn/index.md) |
+| 房价差几十块 | `room_night.rate` 与 `sell_total` | 派生顺序：先折扣后加餐包 | [价格日历](../RateCalendar/index.md) |
+| 渠道订单重复 | `reservation` 按 `(channel, channel_no)` 分组 | 唯一索引漏了 `WHERE channel_no IS NOT NULL` | [预订](../Booking/index.md) |
+| 出租率两个数 | 分子分母来源 | 一个用物理、一个用可售 | [总览](../Overview/index.md) |
+| 月度间夜对不上 | `room_night.stay_date` 的月份分布 | 按退房月归属 | [夜审与间夜](../NightAudit/index.md) |
+| 佣金多付 | `gross - net` 与合同率 | 取消单没剔、隐含率 ≠ 合同率 | [渠道与对账](../ChannelRecon/index.md) |
+| 夜审后金额翻倍 | `folio` 按 `(stay_id, biz_date, item)` 分组 | 唯一键缺 `item` 或整个缺失 | [夜审与间夜](../NightAudit/index.md) |
+| 客人账单少了杂费 | `folio` 该 `stay_id` 的行数 | 唯一键漏了 `item`，房费挤掉杂费 | [夜审与间夜](../NightAudit/index.md) |
+| 延住报 409 且无建议 | 延住流程 | 直接改 `checkout`，没查库存 | [入住与在住](../CheckIn/index.md) |
 
 ## 二、十二问
 
 ### Q1：为什么不能用一个 `room.status` 字段表示房态？
 
-因为字段没有日期。`status='VC'` 在 23:59 正确，在 00:01 可能是错的（那间房明天已被订走）。可售性必须表达成「房 × 日」，见 [房量与房态](RoomInventory/index.md)。
+因为字段没有日期。`status='VC'` 在 23:59 正确，在 00:01 可能是错的（那间房明天已被订走）。可售性必须表达成「房 × 日」，见 [房量与房态](../RoomInventory/index.md)。
 
 ### Q2：超售额度为什么不能按整店设？
 
@@ -117,7 +117,7 @@ ADR 的分母是「已售间夜」，RevPAR 的分母是「可售房量」。写
 
 ## 六、验证方式
 
-分诊表与断言的映射可以机械核对——本页列出的每条 SQL 都能在 [实战](Practice/index.md) 的库里直接跑：
+分诊表与断言的映射可以机械核对——本页列出的每条 SQL 都能在 [实战](../Practice/index.md) 的库里直接跑：
 
 ```shell
 python3 hp_practice.py | grep -c PASS

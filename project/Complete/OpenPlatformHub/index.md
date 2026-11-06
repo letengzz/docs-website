@@ -86,7 +86,7 @@
 | 243 | 第 4 周第 6 步 | [备份与恢复演练：六项一致性与 RPO 换算](Week4Backup/index.md) | `EPJ-A` ~ `EPJ-H` | 8 |
 | 244 | 第 4 周第 7 步 | [灰度发布与版本回退闸门：四道判据与 schema 硬约束](Week4RolloutGate/index.md) | `EPK-A` ~ `EPK-H` | 8 |
 | 245 | 第 4 周第 8 步 | [密钥轮转与凭证吊销：四态两窗与可诊断的 401](Week4KeyRotation/index.md) | `EPZ-A` ~ `EPZ-H` | 8 |
-| 246 | 第 5 周第 1 步 | [故障注入与熔断阈值校准：三参数与误熔断](Week5ChaosThreshold/index.md) | `EPL-A` ~ `EPL-H` | 8 |
+| 246 | 第 5 周第 1 步 | 故障注入与熔断阈值校准（页面待补） | `EPL-A` ~ `EPL-H` | 8 |
 | 247 | 第 5 周第 2 步 | [降级与兜底数据的口径：能返回旧值、旧多久、怎么标注](Week5Fallback/index.md) | `EPF-A` ~ `EPF-H` | 8 |
 | 248 | 第 5 周第 3 步 | [事故分级与升级链：谁在多长时间内动手](Week5Incident/index.md) | `EPT-A` ~ `EPT-H` | 8 |
 | 250 | 第 5 周第 5 步 | [第 5 周验收：26 项、2 项未过与一笔还账](Week5Acceptance/index.md) | `EPS-A` ~ `EPS-H` | 8 |

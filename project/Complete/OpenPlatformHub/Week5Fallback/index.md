@@ -184,4 +184,4 @@ curl -s http://localhost:9090/api/v1/query?query='rate(origin_fetch_total[1m])' 
 - RFC 7234《HTTP/1.1 Caching》第 5.1 节：`Age` 头语义——`X-Data-Age` 的设计参照。
 - RFC 9110《HTTP Semantics》第 15.6 节：503 Service Unavailable 与 `Retry-After` 的语义。
 - AWS Well-Architected Framework《Reliability Pillar》：降级（graceful degradation）与静态稳定（static stability）的通用模式。
-- 与本步相邻：[第 5 周第 1 步 · 故障注入与熔断阈值校准](../Week5ChaosThreshold/index.md)、[第 4 周第 2 步 · 监控与告警接线](../Week4Monitoring/index.md)。
+- 与本步相邻：第 5 周第 1 步 · 故障注入与熔断阈值校准（页面待补）、[第 4 周第 2 步 · 监控与告警接线](../Week4Monitoring/index.md)。

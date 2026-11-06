@@ -46,6 +46,8 @@
 
 ## 本专题的章节
 
+![专题地图：四块——账户、进出、看得见的数、钱的价格](./assets/tre-map.svg)
+
 - [总览：七段资金链与三个「有多少钱」](Overview/index.md)
 - [账户、余额与价值日期](AccountModel/index.md)
 - [收款认领与未认领池](Inflow/index.md)

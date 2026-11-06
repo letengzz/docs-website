@@ -4,6 +4,8 @@
 
 本机环境：Python 3.13.12 + SQLite 3.50.4，内存库（`:memory:`），无需任何第三方包。
 
+![实战：九张表、三个触发器、十一条断言](../assets/clm-practice.svg)
+
 ## 一、目录结构
 
 ```text

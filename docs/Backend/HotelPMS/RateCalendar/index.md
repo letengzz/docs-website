@@ -88,7 +88,7 @@ B：先乘折扣，再加餐包      bar × member × longstay + bf
 - `reservation.sell_total`：整单金额，用于收款与开票；
 - `room_night.rate`：每夜单价，用于夜审逐夜入账与跨月拆分。
 
-两份必须一致，判据是「`SUM(room_night.rate) = sell_total`（同房型同房间数）」。实测这条不变量在数据里成立（见 [实战](Practice/index.md) 的 `C7`）。
+两份必须一致，判据是「`SUM(room_night.rate) = sell_total`（同房型同房间数）」。实测这条不变量在数据里成立（见 [实战](../Practice/index.md) 的 `C7`）。
 
 ::: danger 注意
 最常见的错法是「只存单价，金额实时算」。它的问题不是性能，是**调价之后历史订单的金额会变**——而月结、发票、渠道对账三个下游都按金额走。一处调价，三处对不上。

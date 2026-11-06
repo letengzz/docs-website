@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 420" width="820" height="420" role="img">
+<title>交卷到成绩：三次写入，三道闸</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/></marker></defs>
+<rect x="0" y="0" width="820" height="420" fill="#FFFFFF"/>
+<text x="40" y="40" font-size="18" font-weight="700" fill="#1F2937">交卷到成绩：三次写入，三道闸</text>
+<text x="40" y="64" font-size="13" fill="#6B7280">每一步都必须能独立复算，且第二次写入不能改变第一次的结果</text>
+<rect x="40" y="110" width="160" height="70" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<text x="120.0" y="139.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">交卷</text>
+<text x="120.0" y="159.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">冻结答卷</text>
+<rect x="240" y="110" width="170" height="70" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text x="325.0" y="139.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">评分</text>
+<text x="325.0" y="159.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">整数分、按快照</text>
+<rect x="450" y="110" width="160" height="70" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text x="530.0" y="139.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">落库</text>
+<text x="530.0" y="159.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">一次写入</text>
+<rect x="650" y="110" width="130" height="70" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<text x="715.0" y="139.9" text-anchor="middle" font-size="14" font-weight="600" fill="#1F2937">公布</text>
+<text x="715.0" y="159.9" text-anchor="middle" font-size="14" font-weight="400" fill="#1F2937">可查不可改</text>
+<line x1="200" y1="145" x2="236" y2="145" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="410" y1="145" x2="446" y2="145" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="610" y1="145" x2="646" y2="145" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="240" y="240" width="170" height="62" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="325.0" y="266.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">同分同卷</text>
+<text x="325.0" y="285.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">按快照分值</text>
+<rect x="450" y="240" width="160" height="62" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="530.0" y="266.1" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">重复提交</text>
+<text x="530.0" y="285.1" text-anchor="middle" font-size="13" font-weight="400" fill="#1F2937">唯一键挡住</text>
+<line x1="325" y1="180" x2="325" y2="236" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+<line x1="530" y1="180" x2="530" y2="236" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+<text x="40" y="348" font-size="13" fill="#1F2937">判分的三个「不可逆」：分值来自快照、答案交卷即冻结、成绩写一次就不再改。</text>
+<text x="40" y="372" font-size="12" fill="#6B7280">本机读数：同一批答卷在三种给分策略下的及格率是 40.7% / 96.4% / 99.8%。</text>
+</svg>

@@ -144,7 +144,7 @@ purchase_project（方式 / 限额 / 截止）
   └─ award（中标人 / 中标价 / 公示期）→ contract（合同价 / 签约日）
 ```
 
-再补三张从属表（`bidder`、`expert`、`audit_log`）与两张判定表（`objection`、`collusion_flag`），就是[实战](Practice/index.md)里的 11 张表。
+再补三张从属表（`bidder`、`expert`、`audit_log`）与两张判定表（`objection`、`collusion_flag`），就是[实战](../Practice/index.md)里的 11 张表。
 
 ## 八、读这一册的三种方式
 
