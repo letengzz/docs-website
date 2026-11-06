@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="400" viewBox="0 0 820 400" role="img">
+<rect width="820" height="400" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">图 8　阈值规则与 SLO 燃尽率：精度 34.9% 对 93.8%，代价是 9 分钟</text>
+<text x="60" y="76" font-size="11.5" fill="#475569" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">30 天 30 次真故障（9% 错误率 × 10 min）+ 60 次 5.6% 的短抖动</text>
+<text x="60" y="128" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">阈值 &gt;5%</text>
+<text x="60" y="146" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">for 5m</text>
+<rect x="240" y="110" width="146.5" height="26" fill="#b91c1c" opacity="0.85"/>
+<rect x="386.5" y="110" width="273.5" height="26" fill="#b91c1c" opacity="0.25"/>
+<text x="246" y="128" font-size="11" fill="#ffffff" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">真 30</text>
+<text x="392.51162790697674" y="128" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">假 56</text>
+<text x="668.0" y="128" font-size="11" fill="#475569" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">共 86 次</text>
+<text x="60" y="168" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">精度 34.9%　延迟 0 min</text>
+<text x="60" y="224" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">burn&gt;14.4</text>
+<text x="60" y="242" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">（1h + 5m）</text>
+<rect x="240" y="206" width="146.5" height="26" fill="#047857" opacity="0.85"/>
+<rect x="386.5" y="206" width="9.8" height="26" fill="#047857" opacity="0.25"/>
+<text x="246" y="224" font-size="11" fill="#ffffff" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">真 30</text>
+<text x="392.51162790697674" y="224" font-size="11" fill="#475569" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">假 2</text>
+<text x="404.27906976744185" y="224" font-size="11" fill="#475569" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">共 32 次</text>
+<text x="60" y="264" font-size="11.5" fill="#047857" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">精度 93.8%　延迟 p50 9 min</text>
+<rect x="240" y="318" width="12" height="12" fill="#b91c1c" opacity="0.85"/>
+<text x="258" y="328" font-size="11" fill="#475569" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">真故障触发</text>
+<rect x="350" y="318" width="12" height="12" fill="#b91c1c" opacity="0.25"/>
+<text x="368" y="328" font-size="11" fill="#475569" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抖动/误报</text>
+<rect x="60" y="344" width="700" height="44" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="410.0" y="366" font-size="11.5" fill="#2563eb" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">阈值判「此刻是否越线」，SLO 判「预算是否在烧」——分母不同，结论就不同</text>
+</svg>

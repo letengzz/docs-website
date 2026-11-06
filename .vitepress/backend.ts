@@ -221,6 +221,9 @@ export const Java = [
                 { text: "SpringBoot 整合框架", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Integration/index.md" },
                 { text: "SpringBoot 整合 screw", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Integration/screw/index.md" },
                 { text: "SpringBoot 远程调用", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Remote/index.md" },
+                { text: "SpringBoot 3 变化与新特性", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Diff/index.md" },
+                { text: "SpringBoot 邮件发送", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Email/index.md" },
+                { text: "SpringBoot 重试", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Retry/index.md" },
                 { text: "SpringBoot Web开发", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/index.md", collapsed: true, items: [
                   { text: "单体项目跨域问题", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/CORS/index.md" },
                   { text: "拦截器", link: "/docs/Backend/Java/Frame/SpringBoot/v3/Web/Interceptor/index.md" },
@@ -1826,6 +1829,27 @@ export const ContentModeration = [
       { text: "度量与成本：四个数，缺一个就会被单独解释", link: "/docs/Backend/ContentModeration/Metrics/index.md" },
       { text: "实战：十三张表、四条触发器与十六项断言", link: "/docs/Backend/ContentModeration/Practice/index.md" },
       { text: "常见问题与分诊", link: "/docs/Backend/ContentModeration/FAQ/index.md" },
+    ],
+  },
+];
+
+// 告警判定与响应工程
+export const AlertJudgment = [
+  {
+    text: "告警判定与响应工程",
+    link: "/docs/Backend/AlertJudgment/index.md",
+    items: [
+      { text: "总览：三个「这条告警」与五个安静的失败", link: "/docs/Backend/AlertJudgment/Overview/index.md" },
+      { text: "评估时刻与窗口：你读到的不是「现在」", link: "/docs/Backend/AlertJudgment/EvaluationWindow/index.md" },
+      { text: "规则状态机与 for：点数怎么变事件数", link: "/docs/Backend/AlertJudgment/RuleState/index.md" },
+      { text: "指纹与告警身份：一条，还是一串", link: "/docs/Backend/AlertJudgment/Fingerprint/index.md" },
+      { text: "分组与通知聚合：分组键才是主开关", link: "/docs/Backend/AlertJudgment/Grouping/index.md" },
+      { text: "抑制与静默：让一部分告警不说话", link: "/docs/Backend/AlertJudgment/Inhibition/index.md" },
+      { text: "路由、值班与升级：从发出去到有人负责", link: "/docs/Backend/AlertJudgment/Routing/index.md" },
+      { text: "噪声治理与告警预算：精度不是调出来的", link: "/docs/Backend/AlertJudgment/Noise/index.md" },
+      { text: "恢复判定与闭环：早关一次等于开两次单", link: "/docs/Backend/AlertJudgment/Recovery/index.md" },
+      { text: "实战：九张表、三条触发器与九条断言", link: "/docs/Backend/AlertJudgment/Practice/index.md" },
+      { text: "常见问题：八个判断题", link: "/docs/Backend/AlertJudgment/FAQ/index.md" },
     ],
   },
 ];

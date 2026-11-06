@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" viewBox="0 0 820 420" role="img">
+<rect width="820" height="420" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">图 6　抑制是「让一部分告警不说话」，写错 equal 就变成「让真故障不说话」</text>
+<rect x="60" y="56" width="300" height="130" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.2"/>
+<text x="210.0" y="78" font-size="13.5" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">集群 A</text>
+<text x="210.0" y="97.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">集群级 down（P0）</text>
+<text x="210.0" y="113.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">→ 抑制 A 的 8 条实例级</text>
+<text x="210.0" y="129.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">→ 跨集群 8 条不受影响</text>
+<rect x="60" y="200" width="300" height="130" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="210.0" y="222" font-size="13.5" fill="#b91c1c" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">集群 B</text>
+<text x="210.0" y="241.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">无集群级告警</text>
+<text x="210.0" y="257.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">8 条实例级是独立真故障</text>
+<text x="210.0" y="273.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">不该被任何人抑制</text>
+<text x="380" y="120" font-size="12.5" fill="#047857" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">equal: ["cluster"]</text>
+<text x="380" y="142" font-size="11.5" fill="#047857" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抑制 8 条 / 保留 8 条 ✓</text>
+<text x="380" y="240" font-size="12.5" fill="#b91c1c" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">equal: []（漏写）</text>
+<text x="380" y="262" font-size="11.5" fill="#b91c1c" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抑制 16 条 → B 的 8 条被吞</text>
+<text x="380" y="282" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">误抑制 50%</text>
+<text x="600" y="200" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抑制环</text>
+<line x1="640.0" y1="232.0" x2="705.5" y2="293.8" stroke="#6d28d9" stroke-width="1.8" stroke-linecap="round"/>
+<polygon points="712.0,300.0 705.5,293.8 712.5,291.0 703.1,301.1" fill="#6d28d9"/>
+<line x1="712.0" y1="300.0" x2="577.0" y2="300.0" stroke="#6d28d9" stroke-width="1.8" stroke-linecap="round"/>
+<polygon points="568.0,300.0 577.0,300.0 573.8,306.9 573.8,293.1" fill="#6d28d9"/>
+<line x1="568.0" y1="300.0" x2="633.5" y2="238.2" stroke="#6d28d9" stroke-width="1.8" stroke-linecap="round"/>
+<polygon points="640.0,232.0 633.5,238.2 631.1,230.9 640.5,241.0" fill="#6d28d9"/>
+<circle cx="640" cy="232" r="16" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="640" y="237" font-size="12" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">A</text>
+<circle cx="712" cy="300" r="16" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="712" y="305" font-size="12" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">B</text>
+<circle cx="568" cy="300" r="16" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="568" y="305" font-size="12" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">C</text>
+<text x="640" y="342" font-size="11" fill="#6d28d9" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">成环 → 三条全静音</text>
+<rect x="60" y="356" width="700" height="50" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="410.0" y="378" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">判据</text>
+<text x="410.0" y="397.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抑制图必须无环（每次变更前跑一次 DFS）；equal 必须显式列出所有区分维度</text>
+</svg>

@@ -325,6 +325,22 @@ curl -X POST http://localhost:9093/api/v2/silences -d '{
 
 一句话：**规则是工程问题（本页），阈值是业务与容量问题（那边）。** 阈值拿不稳时，先去 [SLO 与错误预算](../../PerformanceEngineering/SLO/index.md) 把口径定下来，再回到本页把它写成一条规则。
 
+
+## 与「告警判定与响应工程」专题的分工（第 261 天补充）
+
+本页讲**怎么把告警搭起来**：规则语法、常用模板、Alertmanager 的路由与接收器、分组抑制静默的配置写法。那一册讲**判定之后发生了什么**：指纹怎么定、一次故障算几条、恢复判据写几个数、谁来认领。分工判据是「这句话是在写配置，还是在定语义」——`for: 5m` 是配置，`for` 该取多大是语义。
+
+| 问题 | 本页 | [告警判定与响应工程](../../../Backend/AlertJudgment/index.md) |
+| --- | --- | --- |
+| 规则 YAML 怎么写 | ✅ | 只给判据 |
+| `group_by` 填哪几个标签 | 给示例 | 给选取原则与实测压缩比 |
+| 告警为什么被拆成 25 条 | 不回答 | [指纹](../../../Backend/AlertJudgment/Fingerprint/index.md) |
+| 恢复为什么关早了 | 不回答 | [恢复判定](../../../Backend/AlertJudgment/Recovery/index.md) |
+
+::: danger 把 `for` 当降噪旋钮，会静默掉一整类故障
+本册各页都把 `for` 当"抗抖动参数"，实践中常见的做法是"告警多就把 `for` 调到 15 分钟"。本机实测（24h 抖动序列，步长 15s）：`for=0` 时 6 段异常全部成立；`for=60s` 只剩 2 段（漏掉时长 22.7%）；`for=300s` **一段都不成立（漏掉 100%）**。而"告警条数"这一列在每个档位都变好看了。判据：调 `for` 必须同时报"漏掉时长占比"，只看条数等于把噪声换成静默。
+:::
+
 ## 参考资料
 
 - Alertmanager 文档：https://prometheus.io/docs/alerting/latest/alertmanager/

@@ -64,8 +64,8 @@
 
 **拓展**：
 
-- [SpringBoot3改变 & 新特性](Diff.md)
+- [SpringBoot3改变 & 新特性](Diff/index.md)
 - [Thymeleaf 视图模板](Integration/Thymeleaf/index.md)
-- [SpringBoot 邮件发送](Email.md)
+- [SpringBoot 邮件发送](Email/index.md)
 - [SpringBoot Docker编排支持](DockerComposeSupport.md)
-- [SpringBoot 重试](Retry.md)
+- [SpringBoot 重试](Retry/index.md)

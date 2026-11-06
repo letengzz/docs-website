@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="400" viewBox="0 0 820 400" role="img">
+<rect width="820" height="400" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">图 4　同一次故障，指纹口径决定它是一条还是一串</text>
+<rect x="50" y="70" width="150" height="70" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="125.0" y="92" font-size="13.5" fill="#b91c1c" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1 次故障</text>
+<text x="125.0" y="111.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">svc-api 全挂 12 min</text>
+<rect x="250" y="40" width="230" height="150" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="365.0" y="62" font-size="13.5" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">指纹 = 全部标签</text>
+<text x="365.0" y="81.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">8 实例 × 平均 3.1 次重启</text>
+<text x="365.0" y="97.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">= 25 条告警</text>
+<rect x="250" y="210" width="230" height="120" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.2"/>
+<text x="365.0" y="232" font-size="13.5" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">指纹 = service</text>
+<text x="365.0" y="251.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1 条告警</text>
+<text x="365.0" y="267.5" font-size="12" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">重启不改身份</text>
+<line x1="200.0" y1="100.0" x2="240.0" y2="104.2" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+<polygon points="248.0,105.0 240.0,104.2 243.5,98.4 242.3,110.6" fill="#b45309"/>
+<line x1="200.0" y1="112.0" x2="245.5" y2="247.4" stroke="#047857" stroke-width="2" stroke-linecap="round"/>
+<polygon points="248.0,255.0 245.5,247.4 252.2,248.2 240.5,252.1" fill="#047857"/>
+<text x="530" y="60" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">24h 内落到人头上的量</text>
+<text x="530" y="96" font-size="11.5" fill="#475569" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">含 pod hash</text>
+<rect x="670" y="84" width="150.0" height="16" rx="3" fill="#b91c1c" opacity="0.85"/>
+<text x="700" y="96" font-size="11" fill="#b91c1c" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">25.1×</text>
+<text x="530" y="130" font-size="11.5" fill="#475569" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">service + restart</text>
+<rect x="670" y="118" width="9.3" height="16" rx="3" fill="#b45309" opacity="0.85"/>
+<text x="700" y="130" font-size="11" fill="#b45309" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1.6×</text>
+<text x="530" y="164" font-size="11.5" fill="#475569" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">只 service</text>
+<rect x="670" y="152" width="6.0" height="16" rx="3" fill="#047857" opacity="0.85"/>
+<text x="700" y="164" font-size="11" fill="#047857" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1.0×</text>
+<text x="530" y="220" font-size="12" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1,006 条 vs 40 条：</text>
+<text x="530" y="242" font-size="11.5" fill="#475569" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">同一个故障，两种口径</text>
+<text x="530" y="262" font-size="11.5" fill="#b91c1c" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">差出 9.2 人·天 vs 1.6 人·天</text>
+<rect x="60" y="300" width="700" height="74" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="410.0" y="322" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">指纹只该包含「不会因为重启、扩缩容、时间而变」的标签</text>
+<text x="410.0" y="341.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">service / cluster / route / tenant 可以进；pod 名、容器 ID、request_id、时间戳不能进</text>
+<text x="410.0" y="357.0" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">判据：同一次故障、不重启服务，只重放标签，指纹必须不变</text>
+</svg>

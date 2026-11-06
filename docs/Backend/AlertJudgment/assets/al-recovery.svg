@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="400" viewBox="0 0 820 400" role="img">
+<rect width="820" height="400" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">图 9　恢复判定：早关一次，等于让同一次故障开两次单</text>
+<line x1="70" y1="150" x2="730" y2="150" stroke="#cbd5e1"/>
+<rect x="70.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="92.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="114.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="136.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="158.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="180.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="202.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="224.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="246.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="268.0" y="150" width="19.0" height="0" fill="#b45309" opacity="0.55"/>
+<rect x="290.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="312.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="334.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="356.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="378.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="400.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="422.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="444.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="466.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<rect x="488.0" y="104" width="19.0" height="46" fill="#b91c1c" opacity="0.55"/>
+<line x1="276.0" y1="90.0" x2="276.0" y2="94.0" stroke="#b45309" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="276.0,102.0 276.0,94.0 282.1,96.9 269.9,96.9" fill="#b45309"/>
+<text x="282.0" y="88" font-size="11" fill="#b45309" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">一拍回落（假恢复）</text>
+<text x="70" y="174" font-size="11.5" fill="#b91c1c" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">立即关闭：34.5% 的事件会被关早，随后必须重开</text>
+<text x="70" y="194" font-size="11.5" fill="#047857" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">连续 2 点确认：0% 关早，代价是平均晚关 45 s</text>
+<rect x="60" y="236" width="340" height="130" rx="8" fill="#f8fafc" stroke="#2563eb" stroke-width="1.2"/>
+<text x="230.0" y="258" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">恢复判据要写三个数</text>
+<text x="230.0" y="277.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">连续 N 点（45 s）</text>
+<text x="230.0" y="293.0" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">或 keep_firing_for</text>
+<text x="230.0" y="308.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">或「指标回到基线带内」</text>
+<rect x="430" y="236" width="330" height="130" rx="8" fill="#f8fafc" stroke="#047857" stroke-width="1.2"/>
+<text x="595.0" y="258" font-size="13.5" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">什么时候允许「人等一等」</text>
+<text x="595.0" y="277.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">P0：不等人，先关再重开</text>
+<text x="595.0" y="293.0" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">P2：等 5 分钟确认</text>
+<text x="595.0" y="308.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">别用同一个数覆盖所有级别</text>
+<text x="60" y="392" font-size="11.5" fill="#94a3b8" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">恢复不是「信号变好了」，是「你愿意为这个判断负责了」。</text>
+</svg>

@@ -240,6 +240,21 @@ UPDATE content SET visibility = 'removed'
 
 配套还有一条与六态绑定的约束：`removed → restored` 这条边必须记录**执行人**且执行人不能等于原下架人（第二人原则）。这条不能靠幂等实现，只能靠守卫里的 `actor_id <> original_actor`——**幂等管次数，状态机管方向，谁也不能替谁干活。**
 
+
+## 与「告警判定与响应工程」专题的分工（第 261 天补充）
+
+本页讲**请求级幂等**：幂等键怎么选、重复请求怎么判、状态机怎么防止回退。那册把同一套方法用在**告警实例**上：指纹就是幂等键，`(rule_id, fingerprint)` 的部分唯一索引就是"同一件事只有一条未结束记录"。
+
+| 概念 | 本页 | [告警判定与响应工程](../AlertJudgment/index.md) |
+| --- | --- | --- |
+| 幂等键 | 请求 ID / 业务键 | 指纹（一组标签） |
+| 键选错的后果 | 重复下单、重复扣款 | 一次故障拆成 25 条、开 5 张单 |
+| 落库方式 | 唯一索引 + 状态机 | 部分唯一索引（`WHERE state IN (...)`）+ 触发器 |
+
+::: danger 指纹带 `severity`，会让「升级」变成一条新告警
+告警从 P2 升到 P1 时，若 `severity` 参与指纹，系统认为这是一条新告警：旧的 `resolved`、新的 `firing`。于是同一次故障在报表里变成"一次恢复 + 一次新增"，SLA 被劈成两段。本机 12 线程并发写同一指纹：无唯一约束时落入 **2 条**，加部分唯一索引后 **1 条**（另一条被拒）。判据：易变字段（`severity`、`pod`、`container_id`、`request_id`）一律不进幂等键，只进展示。详见[指纹与告警身份](../AlertJudgment/Fingerprint/index.md)。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——状态码语义的原始出处（已过期归档）

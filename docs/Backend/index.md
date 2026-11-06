@@ -83,3 +83,4 @@
 - [酒店房态与预订管理工程](HotelPMS/index.md)
 - [税务与发票工程](TaxInvoice/index.md)
 - [内容审核与安全策略工程](ContentModeration/index.md)
+- [告警判定与响应工程](AlertJudgment/index.md)

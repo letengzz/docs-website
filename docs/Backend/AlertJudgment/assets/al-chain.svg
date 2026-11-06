@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="470" viewBox="0 0 820 470" role="img">
+<rect width="820" height="470" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">图 1　七段链：一条告警从采集到结案，每一段都有自己的失败方式</text>
+<circle cx="40" cy="84" r="15" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="40" y="89" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1</text>
+<rect x="66" y="54" width="300" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="216.0" y="76" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">采 Collect</text>
+<text x="216.0" y="95.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓取与上报：点缺失、迟到、重置</text>
+<line x1="216.0" y1="114.0" x2="216.0" y2="116.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216.0,124.0 216.0,116.0 222.1,118.9 209.9,118.9" fill="#94a3b8"/>
+<circle cx="40" cy="142" r="15" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="40" y="147" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">2</text>
+<rect x="66" y="112" width="300" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="216.0" y="134" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">评 Evaluate</text>
+<text x="216.0" y="153.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">窗口与步长：读的是哪个数</text>
+<line x1="216.0" y1="172.0" x2="216.0" y2="174.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216.0,182.0 216.0,174.0 222.1,176.9 209.9,176.9" fill="#94a3b8"/>
+<circle cx="40" cy="200" r="15" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="40" y="205" font-size="13" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">3</text>
+<rect x="66" y="170" width="300" height="60" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="216.0" y="192" font-size="13.5" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">判 Judge</text>
+<text x="216.0" y="211.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">for / 缺失数据：点数 → 事件数</text>
+<line x1="216.0" y1="230.0" x2="216.0" y2="232.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216.0,240.0 216.0,232.0 222.1,234.9 209.9,234.9" fill="#94a3b8"/>
+<circle cx="40" cy="258" r="15" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="40" y="263" font-size="13" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">4</text>
+<rect x="66" y="228" width="300" height="60" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="216.0" y="250" font-size="13.5" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">合 Group</text>
+<text x="216.0" y="269.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">指纹与分组：1 次故障 → N 条通知</text>
+<line x1="216.0" y1="288.0" x2="216.0" y2="290.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216.0,298.0 216.0,290.0 222.1,292.9 209.9,292.9" fill="#94a3b8"/>
+<circle cx="40" cy="316" r="15" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="40" y="321" font-size="13" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">5</text>
+<rect x="66" y="286" width="300" height="60" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="216.0" y="308" font-size="13.5" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">派 Route</text>
+<text x="216.0" y="327.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抑制、值班、升级：到人</text>
+<line x1="216.0" y1="346.0" x2="216.0" y2="348.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216.0,356.0 216.0,348.0 222.1,350.9 209.9,350.9" fill="#94a3b8"/>
+<circle cx="40" cy="374" r="15" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="40" y="379" font-size="13" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">6</text>
+<rect x="66" y="344" width="300" height="60" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.2"/>
+<text x="216.0" y="366" font-size="13.5" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">处 Handle</text>
+<text x="216.0" y="385.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">认领、止血、留痕：人做的那一段</text>
+<line x1="216.0" y1="404.0" x2="216.0" y2="406.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216.0,414.0 216.0,406.0 222.1,408.9 209.9,408.9" fill="#94a3b8"/>
+<circle cx="40" cy="432" r="15" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="40" y="437" font-size="13" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">7</text>
+<rect x="66" y="402" width="300" height="60" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.2"/>
+<text x="216.0" y="424" font-size="13.5" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">结 Close</text>
+<text x="216.0" y="443.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">恢复判定与留痕数据：谁来关</text>
+<rect x="396" y="54" width="400" height="60" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="596.0" y="76" font-size="13.5" fill="#b91c1c" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">安静的五段</text>
+<text x="596.0" y="95.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">采 / 评 / 判 / 合 / 结：错了也返回一个「结果」</text>
+<rect x="396" y="128" width="400" height="108" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="596.0" y="150" font-size="13.5" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">三个「这条告警」不是同一个东西</text>
+<text x="596.0" y="169.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">规则命中（rule 视角，可重复）</text>
+<text x="596.0" y="185.0" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">告警实例（fingerprint 视角，有身份）</text>
+<text x="596.0" y="200.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">工单 / 事故（人视角，有责任人）</text>
+<rect x="396" y="250" width="400" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="596.0" y="272" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">判据分族的依据</text>
+<text x="596.0" y="291.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">按「链上的一段」分族，不按工具分族</text>
+<text x="596.0" y="307.0" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">同一段判据在 Prometheus / 自研引擎上都成立</text>
+<rect x="396" y="352" width="400" height="84" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="596.0" y="374" font-size="13.5" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">本册读数（本机可复跑）</text>
+<text x="596.0" y="393.5" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">指纹含 pod hash：1 次故障 → 25.1 条告警</text>
+<text x="596.0" y="409.0" font-size="11.5" fill="#475569" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">for=5m：瞬时抖动 100% 被吞、长故障仍漏 26%</text>
+</svg>

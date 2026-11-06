@@ -3,7 +3,7 @@
 **Spring Boot 3 是一次「破坏性但也最有价值」的大版本：它把整个技术栈从 Java EE 的 `javax.*` 命名空间搬到了 Jakarta EE 的 `jakarta.*`，同时把最低 JDK 提高到 17。** 本页讲清 2.x → 3.x 到底变了什么、哪些是必须改的（不改编译不过）、哪些是改了更好，以及迁移的可执行步骤。
 
 ::: warning 版本状态（2026-10 核对）
-Spring Boot 3.0 于 2022-11-24 发布，基于 Spring Framework 6.0，**最低 Java 17**；底层基于 Jakarta EE 9 并尽可能兼容 Jakarta EE 10。当前稳定大版本是 **Spring Boot 4.x**（4.0 于 2025-11 发布、4.1 于 2026-06），基于 Spring Framework 7；**3.5.x 的 OSS 支持已于 2026-06-30 结束**。本页面向**存量 3.x 项目**（维护中 / 迁移中），新项目请走 [Spring Boot 4.x](../v4/index.md)。
+Spring Boot 3.0 于 2022-11-24 发布，基于 Spring Framework 6.0，**最低 Java 17**；底层基于 Jakarta EE 9 并尽可能兼容 Jakarta EE 10。当前稳定大版本是 **Spring Boot 4.x**（4.0 于 2025-11 发布、4.1 于 2026-06），基于 Spring Framework 7；**3.5.x 的 OSS 支持已于 2026-06-30 结束**。本页面向**存量 3.x 项目**（维护中 / 迁移中），新项目请走 [Spring Boot 4.x](../../v4/index.md)。
 :::
 
 ## 一、2.x → 3.x 的五个必改项
@@ -160,6 +160,6 @@ curl -s localhost:8080/api/health | sha256sum      # 与升级前的基线对比
 - [Spring Boot 3.0 迁移指南（官方 Wiki）](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Migration-Guide)
 - [Spring Boot 3.0 发布公告](https://spring.io/blog/2022/11/24/spring-boot-3-0-0-available-now)
 - [Jakarta EE 平台规范](https://jakarta.ee/specifications/)
-- [Spring Boot 4.x（当前稳定版）](../v4/index.md)：新一代版本与升级路径
-- [SpringBoot 3.x 目录](./index.md)：本版本其他章节入口
-- [Spring Boot 通用指南](../Common/index.md)：与版本无关的通用用法
+- [Spring Boot 4.x（当前稳定版）](../../v4/index.md)：新一代版本与升级路径
+- [SpringBoot 3.x 目录](../index.md)：本版本其他章节入口
+- [Spring Boot 通用指南](../../Common/index.md)：与版本无关的通用用法
