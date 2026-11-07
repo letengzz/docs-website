@@ -1853,3 +1853,23 @@ export const AlertJudgment = [
     ],
   },
 ];
+
+// 报表与自助分析工程
+export const ReportAnalytics = [
+  {
+    text: "报表与自助分析工程",
+    link: "/docs/Backend/ReportAnalytics/index.md",
+    items: [
+      { text: "总览：三个「这张报表」与五个安静的失败", link: "/docs/Backend/ReportAnalytics/Overview/index.md" },
+      { text: "报表定义与版本：发布即冻结", link: "/docs/Backend/ReportAnalytics/ReportDefinition/index.md" },
+      { text: "数据集、关联与粒度：一张报表的「分母」", link: "/docs/Backend/ReportAnalytics/DataSet/index.md" },
+      { text: "即席查询：预估、超时与分页", link: "/docs/Backend/ReportAnalytics/AdHocQuery/index.md" },
+      { text: "预聚合命中与缓存：只记命中率等于只记好消息", link: "/docs/Backend/ReportAnalytics/AggregateHit/index.md" },
+      { text: "下钻与行列级权限：过滤发生在哪一步", link: "/docs/Backend/ReportAnalytics/DrillPermission/index.md" },
+      { text: "导出、限额与脱敏：文件是最容易失控的副本", link: "/docs/Backend/ReportAnalytics/ExportQuota/index.md" },
+      { text: "订阅、快照与重发：发给谁、发哪一刻的数", link: "/docs/Backend/ReportAnalytics/ScheduleSnapshot/index.md" },
+      { text: "实战：六张表、两个触发器与八条断言", link: "/docs/Backend/ReportAnalytics/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/ReportAnalytics/FAQ/index.md" },
+    ],
+  },
+];

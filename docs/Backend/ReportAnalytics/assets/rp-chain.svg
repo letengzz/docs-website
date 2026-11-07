@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="470" viewBox="0 0 820 470" role="img">
+<title>图 1　七段链：一张报表从建模到订阅，每一段都有自己的失效方式</title>
+<rect width="820" height="470" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">图 1　七段链：一张报表从建模到订阅，每一段都有自己的失效方式</text>
+<rect x="66" y="54" width="300" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="216.0" y="80.0" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">建 Model</text>
+<text x="216.0" y="99.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">语义模型与粒度：先定「一行是什么」</text>
+<circle cx="48" cy="84.0" r="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="48" y="89.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1</text>
+<text x="392" y="80" font-size="11" fill="#94a3b8" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">失效形态</text>
+<text x="392" y="98" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">粒度错了，后面每一段都错</text>
+<line x1="216" y1="114" x2="216" y2="134" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216,142 216,134 222.1,136.9 209.9,136.9" fill="#94a3b8"/>
+<rect x="66" y="112" width="300" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="216.0" y="138.0" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">义 Define</text>
+<text x="216.0" y="157.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">报表模板 / 数据集 / 参数</text>
+<circle cx="48" cy="142.0" r="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="48" y="147.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">2</text>
+<text x="392" y="138" font-size="11" fill="#94a3b8" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">失效形态</text>
+<text x="392" y="156" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">参数没进快照，两次打开两套数</text>
+<line x1="216" y1="172" x2="216" y2="192" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216,200 216,192 222.1,194.9 209.9,194.9" fill="#94a3b8"/>
+<rect x="66" y="170" width="300" height="60" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="216.0" y="196.0" font-size="13.5" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">取 Query</text>
+<text x="216.0" y="215.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">下推过滤、关联、行数预估</text>
+<circle cx="48" cy="200.0" r="14" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="48" y="205.0" font-size="13" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">3</text>
+<text x="392" y="196" font-size="11" fill="#94a3b8" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">失效形态</text>
+<text x="392" y="214" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">关联膨胀，金额悄悄翻倍</text>
+<line x1="216" y1="230" x2="216" y2="250" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216,258 216,250 222.1,252.9 209.9,252.9" fill="#94a3b8"/>
+<rect x="66" y="228" width="300" height="60" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="216.0" y="254.0" font-size="13.5" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">算 Aggregate</text>
+<text x="216.0" y="273.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">预聚合命中与缓存三档</text>
+<circle cx="48" cy="258.0" r="14" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="48" y="263.0" font-size="13" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">4</text>
+<text x="392" y="254" font-size="11" fill="#94a3b8" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">失效形态</text>
+<text x="392" y="272" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">命中率是猜的，回退无人计数</text>
+<line x1="216" y1="288" x2="216" y2="308" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216,316 216,308 222.1,310.9 209.9,310.9" fill="#94a3b8"/>
+<rect x="66" y="286" width="300" height="60" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="216.0" y="312.0" font-size="13.5" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">钻 Drill</text>
+<text x="216.0" y="331.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">下钻、行列级权限</text>
+<circle cx="48" cy="316.0" r="14" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="48" y="321.0" font-size="13" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">5</text>
+<text x="392" y="312" font-size="11" fill="#94a3b8" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">失效形态</text>
+<text x="392" y="330" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">先聚合后裁剪，合计行漏过滤</text>
+<line x1="216" y1="346" x2="216" y2="366" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216,374 216,366 222.1,368.9 209.9,368.9" fill="#94a3b8"/>
+<rect x="66" y="344" width="300" height="60" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="216.0" y="370.0" font-size="13.5" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">出 Export</text>
+<text x="216.0" y="389.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">异步导出、限额、水印脱敏</text>
+<circle cx="48" cy="374.0" r="14" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="48" y="379.0" font-size="13" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">6</text>
+<text x="392" y="370" font-size="11" fill="#94a3b8" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">失效形态</text>
+<text x="392" y="388" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">导出文件成了没人管的副本</text>
+<line x1="216" y1="404" x2="216" y2="424" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="216,432 216,424 222.1,426.9 209.9,426.9" fill="#94a3b8"/>
+<rect x="66" y="402" width="300" height="60" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.2"/>
+<text x="216.0" y="428.0" font-size="13.5" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">送 Subscribe</text>
+<text x="216.0" y="447.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">订阅、快照、时点定格</text>
+<circle cx="48" cy="432.0" r="14" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="48" y="437.0" font-size="13" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">7</text>
+<text x="392" y="428" font-size="11" fill="#94a3b8" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">失效形态</text>
+<text x="392" y="446" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">订阅每次重跑，数字自己会变</text>
+</svg>

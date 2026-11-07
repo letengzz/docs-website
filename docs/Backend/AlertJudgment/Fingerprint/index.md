@@ -12,7 +12,7 @@
 
 指纹的实现通常是「把参与的标签按名字排序，拼成 `k1=v1;k2=v2`，再取哈希」。所以真正需要设计的是**参与的那组标签**，哈希只是压缩。
 
-```
+```text
 参与标签：service, cluster, severity, rule
 不参与：  pod, container_id, request_id, scrape_target, timestamp
 ```
@@ -56,7 +56,7 @@
 
 Kubernetes 环境里最常见的一类告警噪声，来自 pod 名字里的模板哈希：
 
-```
+```text
 api-7d9f8c5b6-x2k4p      # 发布前
 api-5f6b7d8c9-m8n2q      # 发布后（hash 变了）
 ```

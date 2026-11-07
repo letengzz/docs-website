@@ -163,6 +163,19 @@ HAVING ABS(SUM(line_discount) - MAX(order_discount)) > 0.01;
 -- 预期：0 行（允许 1 分以内的分位差，需有明确的余额行规则）
 ```
 
+## 与「报表与自助分析工程」专题的分工（第 262 天补充）
+
+本页回答「粒度怎么选、能不能下钻、上卷是否可加」；[报表与自助分析工程](../../../Backend/ReportAnalytics/index.md)回答「下钻之后这个人还能不能看、看到的合计对不对」。粒度决定了「问题能不能被回答」，权限决定了「回答能不能给这个人」。
+
+::: danger 一页一坑：用日粒度表回答「按小时」的问题
+下钻请求落到一张只有 `biz_date` 的表上时，SQL 不会报错——`GROUP BY hour` 在有些方言里直接报错，但在「按时间戳截断到小时」的写法里会返回**每行都落在 0 点**的结果，看起来像「这个业务只在凌晨发生」。
+
+比这更隐蔽的是**半可加指标的上卷**：把「库存件数」按日 `SUM` 到月，得到的是「30 天的库存之和」，而业务要的是「月末那一夜的库存」。两个数都能算出来，都不会报错，差一个数量级。
+
+判据：粒度表要标注「哪些指标可加、哪些只能取期末、哪些必须回明细重算」，并且在下钻请求超出粒度时**明确拒绝**（返回「该维度不可下钻」），而不是给一个看起来合理的错数。
+
+:::
+
 ## 参考资料
 
 - [Kimball：Declaring the Grain](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/)

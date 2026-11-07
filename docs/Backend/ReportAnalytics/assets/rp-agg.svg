@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="350" viewBox="0 0 820 350" role="img">
+<title>图 6　预聚合命中与回退：命中率不是唯一指标</title>
+<rect width="820" height="350" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">图 6　预聚合命中与回退：命中率不是唯一指标</text>
+<rect x="30" y="70" width="170" height="70" rx="8" fill="#f1f5f9" stroke="#475569" stroke-width="1.2"/>
+<text x="115.0" y="101.0" font-size="13.5" fill="#475569" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">请求</text>
+<text x="115.0" y="120.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">维度+过滤+时间</text>
+<circle cx="12" cy="105.0" r="14" fill="#f1f5f9" stroke="#475569" stroke-width="1.4"/>
+<text x="12" y="110.0" font-size="13" fill="#475569" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1</text>
+<rect x="230" y="70" width="200" height="70" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="330.0" y="101.0" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">选粒度格 cube</text>
+<text x="330.0" y="120.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">按维度组合选表</text>
+<circle cx="212" cy="105.0" r="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="212" y="110.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">2</text>
+<rect x="460" y="70" width="150" height="70" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="535.0" y="101.0" font-size="13.5" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">命中？</text>
+<text x="535.0" y="120.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">行数/跨度校验</text>
+<circle cx="442" cy="105.0" r="14" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="442" y="110.0" font-size="13" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">3</text>
+<rect x="640" y="70" width="150" height="70" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.2"/>
+<text x="715.0" y="101.0" font-size="13.5" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">输出</text>
+<text x="715.0" y="120.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">带口径标签</text>
+<circle cx="622" cy="105.0" r="14" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="622" y="110.0" font-size="13" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">4</text>
+<line x1="202" y1="105" x2="220" y2="105" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="228,105 220,105 222.9,111.1 222.9,98.9" fill="#94a3b8"/>
+<line x1="432" y1="105" x2="450" y2="105" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="458,105 450,105 452.9,111.1 452.9,98.9" fill="#94a3b8"/>
+<line x1="612" y1="105" x2="630" y2="105" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="638,105 630,105 632.9,111.1 632.9,98.9" fill="#94a3b8"/>
+<path d="M535 142 L535 176 L360 176 L360 200" fill="none" stroke="#b91c1c" stroke-width="1.4" stroke-dasharray="5 4"/>
+<polygon points="360,208 360,200 366.1,202.9 353.9,202.9" fill="#b91c1c"/>
+<text x="548" y="170" font-size="11" fill="#b91c1c" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">未命中：回退明细</text>
+<rect x="230" y="208" width="380" height="60" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="420.0" y="234.0" font-size="13.5" fill="#b91c1c" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">回退明细查询（必须计数）</text>
+<text x="420.0" y="253.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">回退率是一个可告警的数</text>
+<rect x="30" y="208" width="170" height="60" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="115.0" y="234.0" font-size="13.5" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">缓存三档</text>
+<text x="115.0" y="253.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">结果 / 片段 / 无</text>
+<text x="40" y="306" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">三个必须落库的数：命中率、回退率、单次回退耗时。只记命中率 = 只记好消息。</text>
+<text x="40" y="330" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">缓存键必须带「权限范围 + 口径版本」，否则 A 看到的数会被 B 复用。</text>
+</svg>

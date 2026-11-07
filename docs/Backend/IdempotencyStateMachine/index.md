@@ -255,6 +255,19 @@ UPDATE content SET visibility = 'removed'
 告警从 P2 升到 P1 时，若 `severity` 参与指纹，系统认为这是一条新告警：旧的 `resolved`、新的 `firing`。于是同一次故障在报表里变成"一次恢复 + 一次新增"，SLA 被劈成两段。本机 12 线程并发写同一指纹：无唯一约束时落入 **2 条**，加部分唯一索引后 **1 条**（另一条被拒）。判据：易变字段（`severity`、`pod`、`container_id`、`request_id`）一律不进幂等键，只进展示。详见[指纹与告警身份](../AlertJudgment/Fingerprint/index.md)。
 :::
 
+## 与「报表与自助分析工程」专题的分工（第 262 天补充）
+
+本页给的是「同一次操作被执行两次会怎样」的通用模型；[报表与自助分析工程](../ReportAnalytics/index.md)把它落到两个具体对象上：**导出任务**与**订阅投递**。两者的键不同，混用会同时坏掉两个。
+
+::: danger 一页一坑：拿「报表 + 周期」当导出任务的幂等键
+导出看起来很像「同一份东西导两次」，于是键写成 `(report_code, period)`。但导出还带参数：时间区间、机构范围、筛选条件、列集。用户第一次导出「10 月 · 华东」，第二次导出「10 月 · 华南」，键相同 → 系统返回第一次的文件，**用户拿到的是别人的范围**。
+
+正确的键是 `(report_code, version_id, period, canonical(params), permission_scope)` 的哈希：参数要归一（键序、时间统一 UTC），权限范围必须在内（否则 A 的文件会被 B 命中）。订阅投递的键则相反，只要 `(subscription_id, period)`——因为订阅的参数是版本里定死的，同一周期就该只有一封。
+
+**同一套幂等模型，两个对象两种键**：导出按「请求」去重，订阅按「周期」去重。写反了，前者会串数据，后者会发两封。
+
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——状态码语义的原始出处（已过期归档）

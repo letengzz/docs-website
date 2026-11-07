@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="352" viewBox="0 0 820 352" role="img">
+<title>图 11　第 3 周第 2 步：契约测试、200 并发压测与补偿用例</title>
+<rect width="820" height="352" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">图 11　第 3 周第 2 步：契约测试、200 并发压测与补偿用例</text>
+<rect x="30" y="66" width="180" height="70" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="120.0" y="97.0" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">契约文件 5 条</text>
+<text x="120.0" y="116.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">字段+类型+必填</text>
+<circle cx="12" cy="101.0" r="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="12" y="106.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1</text>
+<rect x="240" y="66" width="180" height="70" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+<text x="330.0" y="97.0" font-size="13.5" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">契约测试</text>
+<text x="330.0" y="116.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">2/6 首轮通过</text>
+<circle cx="222" cy="101.0" r="14" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="222" y="106.0" font-size="13" fill="#6d28d9" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">2</text>
+<rect x="450" y="66" width="180" height="70" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="540.0" y="97.0" font-size="13.5" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">400 并发交卷</text>
+<text x="540.0" y="116.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">p95 724.6 ms</text>
+<circle cx="432" cy="101.0" r="14" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+<text x="432" y="106.0" font-size="13" fill="#b45309" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">3</text>
+<rect x="660" y="66" width="130" height="70" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.2"/>
+<text x="725.0" y="97.0" font-size="13.5" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">补偿用例</text>
+<text x="725.0" y="116.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">报名→开考失败</text>
+<circle cx="642" cy="101.0" r="14" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="642" y="106.0" font-size="13" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">4</text>
+<line x1="212" y1="101" x2="230" y2="101" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="238,101 230,101 232.9,107.1 232.9,94.9" fill="#94a3b8"/>
+<line x1="422" y1="101" x2="440" y2="101" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="448,101 440,101 442.9,107.1 442.9,94.9" fill="#94a3b8"/>
+<line x1="632" y1="101" x2="650" y2="101" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="658,101 650,101 652.9,107.1 652.9,94.9" fill="#94a3b8"/>
+<text x="40" y="176" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">四类失败：类型漂移 2 条、必填缺失 1 条、混合 1 条、无（2 条通过）</text>
+<rect x="30" y="200" width="350" height="96" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="205.0" y="244.0" font-size="13.5" fill="#b91c1c" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">无唯一键：400 请求 → 400 行</text>
+<text x="205.0" y="263.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">p99 1,864.0 ms / 耗时 2,309 ms</text>
+<rect x="420" y="200" width="370" height="96" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.2"/>
+<text x="605.0" y="244.0" font-size="13.5" fill="#047857" font-weight="600" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">UNIQUE(attempt_id)：400 → 200 行</text>
+<text x="605.0" y="263.0" font-size="11.5" fill="#475569" font-weight="400" text-anchor="middle" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">200 次被拒 / p99 1,035.4 ms</text>
+<text x="40" y="330" font-size="12" fill="#475569" font-weight="400" text-anchor="start" opacity="1.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">重复回调不是「多写了一行」，是「同一份答卷出现了两个分数」。修法只有唯一键，不是先查再写。</text>
+</svg>
