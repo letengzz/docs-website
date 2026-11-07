@@ -486,6 +486,7 @@ export const CompleteProject = [
           { text: "第 2 周第 5 步 · 交卷评分：三种给分策略、整数分与一次写入（LSG-A~LSG-H）", link: "/project/Complete/LearningHub/ScoreAndGrade/index.md" },
           { text: "第 3 周第 1 步 · 联调：五条链路串成一条时间线（LLI-A~LLI-H）", link: "/project/Complete/LearningHub/E2EIntegration/index.md" },
           { text: "第 3 周第 2 步 · 契约测试与压测：五条链路写死、200 并发只落 200 行（LLC-A~LLC-H）", link: "/project/Complete/LearningHub/ContractAndLoad/index.md" },
+          { text: "第 3 周第 3 步 · 攻击用例矩阵：四类攻击与四道门（LLA-A~LLA-H）", link: "/project/Complete/LearningHub/AttackMatrix/index.md" },
         ],
       },
     ],

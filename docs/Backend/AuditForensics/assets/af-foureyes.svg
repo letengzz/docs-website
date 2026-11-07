@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="440" viewBox="0 0 820 440" role="img">
+<title>读审计的四道闸门与一条回路</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="820" height="440" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">读审计的四道闸门与一条回路</text>
+<rect x="24" y="80" width="188" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="118.0" y="116.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">案件 case_id</text>
+<text x="118.0" y="135.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">读哪个范围</text>
+<line x1="213" y1="124" x2="222" y2="124" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="224" y="80" width="188" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="318.0" y="116.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">角色 role</text>
+<text x="318.0" y="135.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">读哪些字段</text>
+<line x1="413" y1="124" x2="422" y2="124" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="424" y="80" width="188" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="518.0" y="116.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">目的 purpose</text>
+<text x="518.0" y="135.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">为什么读</text>
+<line x1="613" y1="124" x2="622" y2="124" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="624" y="80" width="188" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="718.0" y="116.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">留痕 access_log</text>
+<text x="718.0" y="135.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">读了什么</text>
+<rect x="24" y="200" width="372" height="100" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="210.0" y="242.0" font-size="13" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">回路：访问日志本身进链</text>
+<text x="210.0" y="261.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">改访问记录 → 链校验失败</text>
+<rect x="424" y="200" width="372" height="100" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="610.0" y="242.0" font-size="13" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">覆盖率实测</text>
+<text x="610.0" y="261.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1000 次读取，未留痕时仅 35.7% 可见</text>
+<text x="24" y="330" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">双人复核的残余风险（模型推算）：单人 p=0.02 → 双人独立 0.0004（1/50）</text>
+<text x="24" y="356" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">共谋率 12% → 0.0028（1/7）；共谋率 30% → 0.0064（1/3）——四眼不防合谋，要靠外部约束。</text>
+<text x="24" y="388" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">自查五问：有无直连账号 / purpose 是否 100% / 访问日志在不在链上 / 读改是否分离 / 最近抽检。</text>
+</svg>

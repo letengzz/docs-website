@@ -208,6 +208,19 @@ psql -c "UPDATE chg.approval SET decision='approve' WHERE seq=1;"
 | 冻结期与例外审批 | **时间维度的约束** | 例外审批的理由往往就是一条没被记录的决策 |
 
 本页特有的一个坑：**审批通过 ≠ 决策被记录。** 一次变更的审批链能证明「谁在什么时候同意了改」，但回答不了「为什么选这个方案而不是那个」。审计时最容易踩的坑是把「审批齐全」当成「决策充分」——两者是不同的证据链，缺任何一条都会在半年后失效。
+## 与「审计留痕与合规取证」专题的分工（第 265 天补充）
+
+| 问题的主语 | 由谁回答 |
+| --- | --- |
+| 变更的审批留痕怎么记、谁批的、变更窗口与回滚关联 | **本页** |
+| 留痕的不可篡改强度、锚定、证据包、法定保留 | [审计留痕与合规取证](../../../Backend/AuditForensics/index.md) |
+
+变更留痕是**最容易被要求举证**的一类记录（事故调查第一问就是「谁批的这次变更」）。本页给出「记什么」，审计专题给出「怎么让它改不了」：追加写 + 前驱哈希 + 每日锚定，三档能力边界见[不可篡改](../../../Backend/AuditForensics/Immutability/index.md)。
+
+### 本页特有的一个坑：紧急变更的「事后补审批」会破坏时间线
+
+补录的审批记录 `created_at` 晚于变更执行时间，若系统只按 `created_at` 排序，时间线上会出现「先执行、后审批」的合法外观。审计要求两个时间都记（`occurred_at` 与 `recorded_at`），并在报告里显式标注补录——见[事件模型](../../../Backend/AuditForensics/EventModel/index.md)的双时间字段。
+
 ## 参考资料
 
 - PostgreSQL 18 文档：[`pgcrypto`](https://www.postgresql.org/docs/current/pgcrypto.html)、[Window Functions](https://www.postgresql.org/docs/current/tutorial-window.html)（`lag()` 用于链校验）

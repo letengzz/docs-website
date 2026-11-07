@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="450" viewBox="0 0 820 450" role="img">
+<title>十张表与七道闸门</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="820" height="450" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">十张表与七道闸门</text>
+<rect x="24" y="76" width="188" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="118.0" y="99.0" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">audit_stream</text>
+<rect x="224" y="76" width="188" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="318.0" y="99.0" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">audit_event</text>
+<rect x="24" y="134" width="188" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="118.0" y="157.0" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">audit_anchor</text>
+<rect x="224" y="134" width="188" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="318.0" y="157.0" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">audit_access_log</text>
+<rect x="24" y="192" width="188" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="118.0" y="215.0" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">legal_hold</text>
+<rect x="224" y="192" width="188" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="318.0" y="215.0" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">deletion_request</text>
+<rect x="24" y="250" width="188" height="46" rx="6" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="118.0" y="273.0" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">retention_policy</text>
+<rect x="224" y="250" width="188" height="46" rx="6" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="318.0" y="273.0" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">evidence_case</text>
+<rect x="24" y="308" width="188" height="46" rx="6" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="118.0" y="331.0" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">evidence_package</text>
+<rect x="224" y="308" width="188" height="46" rx="6" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="318.0" y="331.0" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">evidence_custody</text>
+<rect x="424" y="76" width="372" height="268" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="442" y="106" font-size="14" fill="#64748b" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">七道闸门</text>
+<text x="444" y="122" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">① 改事件行 → AUDIT_APPEND_ONLY</text>
+<text x="444" y="154" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">② 删事件行 → AUDIT_APPEND_ONLY</text>
+<text x="444" y="186" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">③ 跳号 / 前驱错 → AUDIT_CHAIN_BREAK</text>
+<text x="444" y="218" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">④ 改锚点 → ANCHOR_APPEND_ONLY</text>
+<text x="444" y="250" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">⑤ 改包清单 → PACKAGE_FROZEN</text>
+<text x="444" y="282" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">⑥ 冻结期删除 → LEGAL_HOLD_ACTIVE</text>
+<text x="444" y="314" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">⑦ 保管链跳级 → CUSTODY_STEP_GAP</text>
+<rect x="24" y="376" width="772" height="52" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="410.0" y="394.0" font-size="12.5" fill="#b45309" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">十一条断言：8 条负向给出具体错误码，3 条正向给出数值</text>
+<text x="410.0" y="413.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">退出码恒为 1——RAISE(ABORT) 就是这个行为，不能当失败</text>
+</svg>

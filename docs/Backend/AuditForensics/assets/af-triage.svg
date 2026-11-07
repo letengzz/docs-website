@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="400" viewBox="0 0 820 400" role="img">
+<title>三步分诊：先问记录，再问链，最后问交接</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="820" height="400" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">三步分诊：先问记录，再问链，最后问交接</text>
+<rect x="24" y="76" width="320" height="84" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="184.0" y="110.0" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1 记录成立吗</text>
+<text x="184.0" y="129.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">五元组齐 / actor 三层</text>
+<line x1="184" y1="161" x2="184" y2="174" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="24" y="176" width="320" height="84" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="184.0" y="210.0" font-size="13.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">2 能证明没被改吗</text>
+<text x="184.0" y="229.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">链 + 锚 + 每日校验</text>
+<line x1="184" y1="261" x2="184" y2="274" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="24" y="276" width="320" height="84" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="184.0" y="310.0" font-size="13.5" fill="#b45309" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">3 交出去能被验证吗</text>
+<text x="184.0" y="329.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">包 + 清单 + 保管链</text>
+<rect x="376" y="76" width="420" height="284" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+<text x="394" y="106" font-size="13" fill="#64748b" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">答「否」时的处置顺序</text>
+<text x="396" y="132" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">① 先修事件模型：链和锚救不了记错的东西</text>
+<text x="396" y="176" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">② 再补链与锚：每日锚点成本最低、收益最大</text>
+<text x="396" y="220" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">③ 最后做导出与交接：不要手工打包</text>
+<text x="396" y="264" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">④ 三步都有结论，才谈「上系统」</text>
+<text x="24" y="380" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">五个反模式：把日志当审计 / 只记成功 / 采样 / 手工打包 / 审计管理员兼任。</text>
+</svg>

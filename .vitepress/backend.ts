@@ -1873,3 +1873,23 @@ export const ReportAnalytics = [
     ],
   },
 ];
+
+// 审计留痕与合规取证工程
+export const AuditForensics = [
+  {
+    text: "审计留痕与合规取证工程",
+    link: "/docs/Backend/AuditForensics/index.md",
+    items: [
+      { text: "总览：三个「这条记录」与五个安静的失败", link: "/docs/Backend/AuditForensics/Overview/index.md" },
+      { text: "事件模型：留什么、留多细、留多久", link: "/docs/Backend/AuditForensics/EventModel/index.md" },
+      { text: "不可篡改：三档强度与「能证伪什么」", link: "/docs/Backend/AuditForensics/Immutability/index.md" },
+      { text: "完整性校验：全链、分段与截断盲区", link: "/docs/Backend/AuditForensics/IntegrityCheck/index.md" },
+      { text: "取证导出：证据包、清单与可复现", link: "/docs/Backend/AuditForensics/ForensicExport/index.md" },
+      { text: "保管链与时间线重建", link: "/docs/Backend/AuditForensics/CustodyChain/index.md" },
+      { text: "留存与销毁：法定保留撞上删除权", link: "/docs/Backend/AuditForensics/RetentionDisposal/index.md" },
+      { text: "四眼原则与审计访问", link: "/docs/Backend/AuditForensics/FourEyes/index.md" },
+      { text: "实战：十张表、七个触发器与十一条断言", link: "/docs/Backend/AuditForensics/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/AuditForensics/FAQ/index.md" },
+    ],
+  },
+];

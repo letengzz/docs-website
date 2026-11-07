@@ -85,3 +85,4 @@
 - [内容审核与安全策略工程](ContentModeration/index.md)
 - [告警判定与响应工程](AlertJudgment/index.md)
 - [报表与自助分析工程](ReportAnalytics/index.md)
+- [审计留痕与合规取证工程](AuditForensics/index.md)

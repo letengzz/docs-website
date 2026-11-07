@@ -246,6 +246,19 @@ Q4：规模小（< 50GB/天），只想少运维？
 - [网络排查方法论](../../Network/Troubleshoot/index.md)：日志之外的链路层排障手段
 - [Elasticsearch 专题](../../../DB/NoRelational/Elasticsearch/index.md)：作为日志后端时的索引与查询基础
 
+## 与「审计留痕与合规取证」专题的分工（第 265 天补充）
+
+| 问题的主语 | 由谁回答 |
+| --- | --- |
+| 日志怎么采（Agent / 推拉 / OTel）、怎么存、怎么查、怎么降采样 | **本页所在专题** |
+| 一条记录能不能被第三方独立复核，事后有没有被改过 | [审计留痕与合规取证](../../../Backend/AuditForensics/index.md) |
+
+分界线：本专题服务**排障与观测**，允许采样、允许滚动删除、允许管理员重建索引；审计链要求**一条不能少、只能追加、截断必须能被发现**（[事件模型](../../../Backend/AuditForensics/EventModel/index.md)）。同一个 ES 集群可以承载两者，但**索引与删除权限必须分开**。
+
+### 本页特有的一个坑：把「日志保留 180 天」当成审计合规
+
+日志侧的 180 天是**成本与排障窗口的折中**；审计侧的期限来自法源（网络日志 ≥ 6 个月是下限，交易记录 ≥ 5 年、会计档案 10~30 年）。用日志的 TTL 去覆盖审计表，删掉的那一段在争议时无法补——见[留存与销毁](../../../Backend/AuditForensics/RetentionDisposal/index.md)。
+
 ## 参考资料
 
 - Elastic 官方文档（Elastic Stack 9.5）：https://www.elastic.co/guide/index.html

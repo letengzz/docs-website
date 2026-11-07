@@ -285,6 +285,19 @@ SELECT * FROM monthly_stats ORDER BY month DESC LIMIT 5;
 
 **一条本页特有的坑：`WITH` 里的两条 `UPDATE` 不是「两次操作」。** 它们共享同一个快照、同一个事务，所以「数据改了但游标没记」在语句内部不可能发生；反过来，**一旦把它们拆成两条语句**，中间任意一刻崩溃都会留下「改了没记」或「记了没改」，而这两种状态从事务日志里长得一模一样。这条差别没法靠 `EXPLAIN` 看出来，只能靠写法本身保证。
 
+## 与「审计留痕与合规取证」专题的分工（第 265 天补充）
+
+| 问题的主语 | 由谁回答 |
+| --- | --- |
+| PG 的高级特性：分区、并行、逻辑复制、扩展 | **本页** |
+| 用这些特性落地「只能追加、可校验、可导出」的审计表 | [审计留痕与合规取证](../../../../Backend/AuditForensics/index.md) |
+
+审计表在 PG 上的四个落点：① 应用角色只授 `INSERT`，用 `REVOKE UPDATE, DELETE`；② `BEFORE UPDATE/DELETE` 触发器 `RAISE EXCEPTION` 兜底；③ 按月分区 + 分区级 `REVOKE`，让「删一个月」变成 DDL 而不是 DML（更好审）；④ `(stream_id, object_type, object_id, occurred_at)` 复合索引支撑取证查询。
+
+### 本页特有的一个坑：分区表的 `DELETE` 权限撤不干净
+
+父表 `REVOKE DELETE` 之后，直接对**分区子表**执行 `DELETE` 仍然可以成功——分区是独立对象。判据是「对每个子表都撤」，或者用「只给 `INSERT` 的视图 + `security_barrier`」把写入路径收口。审计场景里这类漏撤的后果是静默的：删完链还在，只是少了一段。
+
 ## 参考资料
 
 - [PostgreSQL JSON 类型](https://www.postgresql.org/docs/current/datatype-json.html)

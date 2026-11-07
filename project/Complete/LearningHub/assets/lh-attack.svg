@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="430" viewBox="0 0 820 430" role="img">
+<title>四类攻击 × 四道门：拦住的位置与漏掉的位置</title>
+<rect width="820" height="430" fill="#ffffff"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">四类攻击 × 四道门：拦住的位置与漏掉的位置</text>
+<text x="40" y="86" font-size="11.5" fill="#64748b" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">攻击面</text>
+<text x="220" y="86" font-size="11.5" fill="#64748b" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">攻击</text>
+<text x="430" y="86" font-size="11.5" fill="#64748b" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">门在哪一层</text>
+<text x="650" y="86" font-size="11.5" fill="#64748b" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">结果</text>
+<rect x="24" y="104" width="156" height="52" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="102.0" y="130.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">提交入口</text>
+<text x="196" y="126" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">重复交卷（含换答案）</text>
+<text x="196" y="144" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">双击 / 超时重试 / 手工重放</text>
+<rect x="410" y="104" width="204" height="52" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="512.0" y="130.0" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">唯一键 (user_id, exam_id)</text>
+<line x1="380" y1="130" x2="406" y2="130" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="636" y="104" width="160" height="52" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="716.0" y="130.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">拦住</text>
+<line x1="616" y1="130" x2="632" y2="130" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="24" y="168" width="156" height="52" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="102.0" y="194.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">查询入口</text>
+<text x="196" y="190" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">越权查分 / ID 遍历</text>
+<text x="196" y="208" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">改 attempt_id 或遍历</text>
+<rect x="410" y="168" width="204" height="52" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="512.0" y="194.0" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">SQL 归属谓词（404）</text>
+<line x1="380" y1="194" x2="406" y2="194" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="636" y="168" width="160" height="52" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="716.0" y="194.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">拦住</text>
+<line x1="616" y1="194" x2="632" y2="194" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="24" y="232" width="156" height="52" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="102.0" y="258.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">数据层</text>
+<text x="196" y="254" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">直接 UPDATE 改分</text>
+<text x="196" y="272" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">库写权限 / 运维脚本</text>
+<rect x="410" y="232" width="204" height="52" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="512.0" y="258.0" font-size="11.5" fill="#b45309" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">触发器 + 审计链</text>
+<line x1="380" y1="258" x2="406" y2="258" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="636" y="232" width="160" height="52" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="716.0" y="258.0" font-size="12.5" fill="#b45309" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">部分拦住</text>
+<line x1="616" y1="258" x2="632" y2="258" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="24" y="296" width="156" height="52" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="102.0" y="322.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">流程层</text>
+<text x="196" y="318" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">超窗申诉 / 申诉期改分</text>
+<text x="196" y="336" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">超窗 / 重复 / 申诉期改分</text>
+<rect x="410" y="296" width="204" height="52" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="512.0" y="322.0" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">截止时间参与插入判断</text>
+<line x1="380" y1="322" x2="406" y2="322" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="636" y="296" width="160" height="52" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="716.0" y="322.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">拦住</text>
+<line x1="616" y1="322" x2="632" y2="322" stroke="#64748b" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="24" y="388" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">越权实测：不写归属谓词时 199/200 成功（99.5%）；自增 ID 随机猜 1,000 次命中 78.0%。</text>
+<text x="24" y="408" font-size="11.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">残留两条：库级改分（靠审计链发现）、证书重放（靠在线校验接口），均登记了补的时点。</text>
+</svg>

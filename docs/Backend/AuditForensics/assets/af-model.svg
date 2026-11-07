@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="460" viewBox="0 0 820 460" role="img">
+<title>事件模型：五元组 + 三个扩展 + 两个不要存</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="820" height="460" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">事件模型：五元组 + 三个扩展 + 两个不要存</text>
+<rect x="24" y="74" width="144" height="84" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="96.0" y="108.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">谁</text>
+<text x="96.0" y="127.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">actor_type · actor_id</text>
+<rect x="180" y="74" width="144" height="84" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="252.0" y="108.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">做了什么</text>
+<text x="252.0" y="127.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">action · result</text>
+<rect x="336" y="74" width="144" height="84" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="408.0" y="108.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">对什么</text>
+<text x="408.0" y="127.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">object_type · object_id</text>
+<rect x="492" y="74" width="144" height="84" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="564.0" y="108.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">何时</text>
+<text x="564.0" y="127.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">occurred_at · recorded_at</text>
+<rect x="648" y="74" width="144" height="84" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="720.0" y="108.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">结果</text>
+<text x="720.0" y="127.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">reason_code</text>
+<text x="24" y="190" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">三个必带扩展：把事件串起来</text>
+<rect x="24" y="204" width="248" height="72" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="148.0" y="232.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">request_id</text>
+<text x="148.0" y="251.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">同一次请求的多条事件归组</text>
+<rect x="284" y="204" width="248" height="72" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="408.0" y="232.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">payload_hash</text>
+<text x="408.0" y="251.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">正文可外置，哈希必须进链</text>
+<rect x="544" y="204" width="248" height="72" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="668.0" y="232.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">schema_version</text>
+<text x="668.0" y="251.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">字段语义变化时能分辨新旧</text>
+<text x="24" y="312" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">两个不要存：存了就成负担</text>
+<rect x="24" y="326" width="372" height="100" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="210.0" y="368.0" font-size="13" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">不要存整行快照</text>
+<text x="210.0" y="387.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">体积翻几倍，且把 PII 复制一份到审计库</text>
+<rect x="424" y="326" width="372" height="100" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="610.0" y="368.0" font-size="13" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">不要存明文高敏字段</text>
+<text x="610.0" y="387.0" font-size="11" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">证件号/卡号只存前后哈希，正文进对象存储</text>
+</svg>
