@@ -97,6 +97,21 @@ export default defineConfig({
     },
   },
   vite: {
+    build: {
+      // === 大仓构建的内存与 CPU 预算（2026-11-08 加） ===
+      // 真正吃内存的是 Rollup 的模块图（3,200+ 页 × 每页编译后的 render 函数），
+      // 所以堆上限才是主开关，见 package.json 的 docs:build。
+      // 另注：不要指望 buildConcurrency——VitePress 1.6.4 里它只作用于
+      // 「本地搜索索引」与「社交图标」两处 pMap，页面渲染与打包阶段并不读它。
+      // 本站 3,200+ 页会产出 3,000+ 个 chunk。默认会给每个 chunk 做一次 gzip，
+      // 只为在结尾打印体积报告——纯 CPU + 临时内存开销，CI 上不值得。
+      reportCompressedSize: false,
+      rollupOptions: {
+        // Rollup 默认并发读 20 个模块文件。大仓里同时驻留的 AST 更多，
+        // 降到 4 换更低的读入峰值（代价是构建时间略增）。
+        maxParallelFileOps: 4,
+      },
+    },
     plugins: [
       // 缺失配图兜底：把「文件不存在的图片 import」解析成内联占位图，
       // 避免历史欠账（E3 BROKEN_ASSET）阻断整站构建。详见该文件头部说明。
