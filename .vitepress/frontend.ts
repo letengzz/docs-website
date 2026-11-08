@@ -576,9 +576,15 @@ export const FrontFrame = [
             {
                 text: "Nuxt", link: "/docs/Frontend/Frame/Nuxt/index.md", collapsed: true, items: [
                     { text: "渲染模式与架构", link: "/docs/Frontend/Frame/Nuxt/Overview/index.md" },
+                    { text: "安装与环境配置", link: "/docs/Frontend/Frame/Nuxt/Environment/index.md" },
+                    { text: "目录结构解析", link: "/docs/Frontend/Frame/Nuxt/DirectoryStructure/index.md" },
+                    { text: "核心功能与使用", link: "/docs/Frontend/Frame/Nuxt/CoreConcepts/index.md" },
+                    { text: "路由与页面管理", link: "/docs/Frontend/Frame/Nuxt/Routing/index.md" },
                     { text: "数据获取与状态", link: "/docs/Frontend/Frame/Nuxt/DataFetching/index.md" },
                     { text: "服务端能力：Server Routes 与中间件", link: "/docs/Frontend/Frame/Nuxt/ServerRoute/index.md" },
+                    { text: "常用配置项", link: "/docs/Frontend/Frame/Nuxt/Configuration/index.md" },
                     { text: "部署与实战", link: "/docs/Frontend/Frame/Nuxt/Deployment/index.md" },
+                    { text: "常见问题与故障排查", link: "/docs/Frontend/Frame/Nuxt/FAQ/index.md" },
                 ]
             },
         ]

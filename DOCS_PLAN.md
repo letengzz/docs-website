@@ -1931,6 +1931,18 @@ TeamBoard 74 → **75 章**（`ls -d` 实测 76 = 75 章 + `assets/`）、27 →
 
 ## 存量整理任务清单
 
+- [x] 第 266 天专题完善（**Nuxt 全栈**，按用户指定范围补齐九段结构；**不动轮换表**，本日只做存量专题深化）：既有 4 页只覆盖「架构 → 取数 → 服务端 → 部署」，对照「项目简介与技术栈 / 安装与环境 / 目录结构 / 核心功能 / 配置项 / 路由与页面 / 状态与数据 / 部署 / FAQ」九段要求缺 6 段。补齐后专题 **10 页 / 2,506 行 / 79,301 字符**（新增 6 页 **1,279 行 / 38,424 字符**；逐页 221 / 191 / 230 / 206 / 218 / 213 行）。
+  - `Environment`（221 行）：Node ≥ 18.20.5 与 Vite 8 的耦合——版本不够时构建期报的是 `SyntaxError: Unexpected token` 而不是「Node 太旧」，故「装不上」与「跑不起来」两类症状要分开分诊；`corepack enable` 起 pnpm（免全局装）；两套创建命令的差别；四个核心命令（`dev` / `build` / `generate` / `preview`）的产物与用途；环境变量三层（`.env` 载入顺序、`runtimeConfig`、`NUXT_` 前缀覆盖）；Nuxt 3 → 4 升级清单。
+  - `DirectoryStructure`（191 行）：`app/` 九个位置与 `server/` 五个位置逐项判据；`shared/` 的 import 边界（两个方向都不许绕）；自动导入的扫描范围与「同名文件覆盖顺序」这个只在命名冲突时才现形的机制；`.nuxt` / `.output` 两个生成目录里什么该进 `.gitignore`。
+  - `CoreConcepts`（230 行）：自动导入的代价与边界、layouts 的嵌套与 `definePageMeta` 覆盖、路由中间件三种返回值的语义、`useHead` 与 `useSeoMeta` 的分工、plugins 的执行顺序与 `provide`、官方模块速查。
+  - `Routing`（206 行）：文件路由映射表（`index` / `[id]` / `[[id]]` / `[...slug]` / `(group)` 分组）、`useRoute` 与 `useRouter` 的分工、`NuxtLink` 预取与 `no-prefetch`、`definePageMeta` 的键、404 与 `createError` 的区别（前者是页面、后者是错误对象）。
+  - `Configuration`（218 行）：`nuxt.config.ts` 五个高频块、`app.config.ts` / `runtimeConfig` / `nuxt.config` 的三层分工（构建期内联 vs 运行期可覆盖 vs 客户端可见）、`routeRules` 混合渲染（同一站点不同路径不同渲染模式）、TypeScript 配置只继承 `.nuxt/` 不改写。
+  - `FAQ`（213 行）：五步排查表（dev 还是产物 → 服务端还是客户端 → payload 有没有数据 → 缓存头是哪个 → 产物里有没有密钥）+ 十六问 + 排查工具箱；三条「线上灵异」的映射写在页首，读者不必读完。
+  - 配 **6 张自绘 SVG**（`environment-setup` / `directory-map` / `core-concepts` / `routing-map` / `config-layers` / `faq-troubleshoot`，760 宽、浅色系与既有 `assets/` 一致，子页用 `../assets/` 引用）；XML 合法性全过 + 逐张无头渲染自检（产物落仓库外 `D:/Develop/_docs-wip-2026-11-08/`），两张肉眼复核无溢出、无裁切、无重叠。
+  - 接线四处：`docs/Frontend/Frame/Nuxt/index.md`（目录 3 组 10 项 + 各篇定位表 10 行）、`.vitepress/frontend.ts`（Nuxt 子项 4 → 10）、既有 4 页补交叉链接（`Overview` 补「目录结构解析」入口与两处相关页面，`DataFetching` / `ServerRoute` / `Deployment` 各补相关页面）。
+  - 过程中修掉的三处错：① `Environment` 页的模板链接少退一级（`../../../../project/` → `../../../../../project/`，`linkcheck` 抓出）；② `faq-troubleshoot.svg` 里写了裸 `&&`（XML 必须 `&amp;&amp;`，已改为「→」）；③ 一次渲染脚本参数误用把 `directory-map.svg` 覆写成 PNG 字节（文件头变成 `\x89PNG`，已按原设计重写还原并复检）。
+  - 巡检读数：`linkcheck E=0`、`mdrender_check` 本专题 11 页异常 0（`h1=1` / 容器 3/3 / 残留 `:::` 0 / 裸插值 0）、`barelinkcheck` / `bracecheck` / `anchorcheck` / `intraanchorcheck` / `sidebarlink` / `sidebarcover` / `headingcheck` / `tablecheck` / `fencecheck` / `svgcheck` / `assetdupcheck` / `selflinkcheck` / `assetweightcheck` / `h2dupcheck` / `flatpagecheck` / `stubcheck` / `depthcheck` / `imagecovercheck` / `projectcheck` / `interpcheck` / `langcheck` / `altqualitycheck` 全部 0 error；`pnpm lint` 通过。**两处非本次引入的既有红项**：`langcheck` 报 `promql` 围栏语言（`docs/Ops` 存量页）、`plancheck` 报 `DOCS_PLAN` 两条「已承诺未落地」路径——均未处置，只登记。
+  - **构建如实记录**：`pnpm docs:build` **本日未跑**。实测 `Committed Bytes 39.3 GB / Commit Limit 43.8 GB`，余量 **4.5 GB**，低于本仓记录过的失败阈值（约 6.8 GB 起必失败），D 盘 52.5 GB 不是瓶颈。按本仓纪律不标 ✅，改由 CI 复跑；内容侧替代证据链见上一条读数（渲染 0 异常 + 21 项巡检 0 error + `pnpm lint` 通过 + 11 处图片引用逐条 `os.path.exists` 命中）。
 - [x] 第 262 天当日存量更新（**8 篇**，全部为「追加式分工节 + 一页一坑」，插在 `## 参考资料` 之前；`SQLOptimization` 本无「参考资料」节，追加节接在文末）
   - `docs/Backend/MetricPlatform/Compile/index.md`：本页产物是「SQL + 参数槽」，那册产物是「可发布可导出的版本」；坑在**把报表参数拼进编译后的 SQL**——`org` 300 个取值就有 300 条字面量不同的 SQL，编译缓存与执行计划缓存同时归零。判据：`compile_metric()` 必须返回 `(sql, params)` 两值。
   - `docs/Backend/MetricPlatform/Aggregate/index.md`：设计（粒度格怎么建）与运行（选哪张表、选不中怎么退）分工；坑在**把命中率当报表性能验收指标**——同一套 12 组合覆盖，均匀流量 18.8%、齐夫流量 70.6%，系统没改、命中率差 3.8 倍。验收须三项同看：`fallback_rate` + 回退 p95 + 命中 p95。

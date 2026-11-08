@@ -81,6 +81,10 @@ Dockerfile + node
 
 ## 三、项目结构（Nuxt 4 的 `app/` 布局）
 
+::: tip 本节是速览，完整规则见[目录结构解析](../DirectoryStructure/index.md)
+这里只建立「顶层分区」的心智模型；每个目录的详细规则、自动导入的覆盖范围、别名对照与常见误用，都在[目录结构解析](../DirectoryStructure/index.md)展开。
+:::
+
 ```text [目录结构]
 my-nuxt/
 ├─ app/                        # 前端代码（Nuxt 4 起集中在 app/ 下）
@@ -240,6 +244,8 @@ npx nuxi build && node .output/server/index.mjs
 
 ## 相关页面
 
+- [安装与环境配置](../Environment/index.md) —— 从零到 `localhost:3000` 的完整步骤
+- [目录结构解析](../DirectoryStructure/index.md) —— 本页第三节的展开版
 - [数据获取与状态](../DataFetching/index.md) —— payload 与缓存键的机制展开
 - [服务端渲染深入 · 概述](../../../SSR/Overview/index.md) —— **分工是**：本页讲 Nuxt 四种渲染模式各自的机制与代价；那一页把渲染模式抽象成**框架无关的判据**（可缓存性 / 时效性 / 个性化）与决策树，并给出「什么时候不该上 SSR」的四类反例。
 - [服务端能力：Server Routes 与中间件](../ServerRoute/index.md) —— `server/` 目录怎么写

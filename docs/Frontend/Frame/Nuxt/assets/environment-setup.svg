@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="380" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">从安装到启动：三步流程与三个高频卡点</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">大多数「装不上」不是 Nuxt 的问题，而是 Node 版本、网络代理、包管理器的问题</text>
+  <defs>
+    <marker id="arw" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <!-- 步骤 1 -->
+  <rect x="40" y="86" width="200" height="96" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="140" y="108" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">① 环境自检</text>
+  <text x="140" y="128" text-anchor="middle" font-size="8.5" fill="#334155">node -v ≥ 18.20.5（推荐 20/22）</text>
+  <text x="140" y="144" text-anchor="middle" font-size="8.5" fill="#334155">corepack enable → pnpm -v</text>
+  <text x="140" y="160" text-anchor="middle" font-size="8.5" fill="#334155">npx nuxi --version</text>
+  <text x="140" y="176" text-anchor="middle" font-size="8" fill="#64748B">不达标先升 Node，别降级依赖</text>
+
+  <!-- 箭头 1 -->
+  <line x1="244" y1="134" x2="272" y2="134" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <!-- 步骤 2 -->
+  <rect x="276" y="86" width="200" height="96" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="376" y="108" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">② 创建项目</text>
+  <text x="376" y="128" text-anchor="middle" font-size="8.5" fill="#334155">pnpm create nuxt my-app</text>
+  <text x="376" y="144" text-anchor="middle" font-size="8.5" fill="#334155">或 nuxi init + pnpm install</text>
+  <text x="376" y="160" text-anchor="middle" font-size="8.5" fill="#334155">得到 Nuxt 4 的 app/ 布局</text>
+  <text x="376" y="176" text-anchor="middle" font-size="8" fill="#64748B">网络卡住换 registry / 配代理</text>
+
+  <!-- 箭头 2 -->
+  <line x1="480" y1="134" x2="508" y2="134" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <!-- 步骤 3 -->
+  <rect x="512" y="86" width="200" height="96" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="612" y="108" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">③ 启动验证</text>
+  <text x="612" y="128" text-anchor="middle" font-size="8.5" fill="#334155">pnpm dev → localhost:3000</text>
+  <text x="612" y="144" text-anchor="middle" font-size="8.5" fill="#334155">curl 页面应含 __NUXT__</text>
+  <text x="612" y="160" text-anchor="middle" font-size="8.5" fill="#334155">nuxi typecheck 无 error</text>
+  <text x="612" y="176" text-anchor="middle" font-size="8" fill="#64748B">改配置必须重启 dev</text>
+
+  <!-- 卡点个标题 -->
+  <text x="380" y="222" text-anchor="middle" font-size="11" fill="#0F172A" font-weight="bold">三个高频卡点与处置</text>
+
+  <!-- 卡点 1 -->
+  <rect x="40" y="240" width="210" height="104" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="145" y="262" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">Node 版本过低</text>
+  <text x="145" y="282" text-anchor="middle" font-size="8.5" fill="#334155">症状：install 报 engine 不兼容</text>
+  <text x="145" y="298" text-anchor="middle" font-size="8.5" fill="#334155">或 dev 启动即 SyntaxError</text>
+  <text x="145" y="318" text-anchor="middle" font-size="8.5" fill="#334155">处置：nvm / fnm 切到 20/22 LTS</text>
+  <text x="145" y="334" text-anchor="middle" font-size="8" fill="#64748B">不要在旧 Node 上降级依赖绕过</text>
+
+  <!-- 卡点 2 -->
+  <rect x="275" y="240" width="210" height="104" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="380" y="262" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">网络不通</text>
+  <text x="380" y="282" text-anchor="middle" font-size="8.5" fill="#334155">症状：create 卡在模板或依赖下载</text>
+  <text x="380" y="298" text-anchor="middle" font-size="8.5" fill="#334155">处置：registry 换 npmmirror</text>
+  <text x="380" y="318" text-anchor="middle" font-size="8.5" fill="#334155">公司内网配 HTTP(S)_PROXY 后重跑</text>
+  <text x="380" y="334" text-anchor="middle" font-size="8" fill="#64748B">修完重跑原命令，不用删目录重来</text>
+
+  <!-- 卡点 3 -->
+  <rect x="510" y="240" width="210" height="104" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="615" y="262" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">端口 / 类型未生成</text>
+  <text x="615" y="282" text-anchor="middle" font-size="8.5" fill="#334155">3000 被占：pnpm dev --port 3001</text>
+  <text x="615" y="298" text-anchor="middle" font-size="8.5" fill="#334155">类型全红：先跑一次 pnpm dev</text>
+  <text x="615" y="318" text-anchor="middle" font-size="8.5" fill="#334155">生成 .nuxt/ 后再跑 typecheck</text>
+  <text x="615" y="334" text-anchor="middle" font-size="8" fill="#64748B">.nuxt/ 是 dev 产物，不提交</text>
+</svg>

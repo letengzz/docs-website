@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" width="760" height="480" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="480" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">故障排查决策树：五步定位 80% 的「线上灵异事件」</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">按顺序问，每一步都排除一大类；别用「反复重启构建」当调试手段</text>
+  <defs>
+    <marker id="arw" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <!-- 起点 -->
+  <rect x="280" y="76" width="200" height="36" rx="18" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="380" y="98" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">出现症状</text>
+
+  <line x1="380" y1="112" x2="380" y2="128" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <!-- Q1 -->
+  <rect x="230" y="130" width="300" height="44" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="380" y="148" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">① dev 的问题还是产物的问题？</text>
+  <text x="380" y="164" text-anchor="middle" font-size="8" fill="#334155">pnpm build → pnpm preview 能否复现</text>
+  <rect x="560" y="130" width="170" height="44" rx="6" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="645" y="148" text-anchor="middle" font-size="8" fill="#334155">仅 dev：HMR / 缓存</text>
+  <text x="645" y="164" text-anchor="middle" font-size="8" fill="#334155">仅产物：环境变量内联</text>
+  <line x1="530" y1="152" x2="556" y2="152" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <line x1="380" y1="174" x2="380" y2="190" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <!-- Q2 -->
+  <rect x="230" y="192" width="300" height="44" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="380" y="210" text-anchor="middle" font-size="9" fill="#1E3A8A" font-weight="bold">② 服务端还是客户端的问题？</text>
+  <text x="380" y="226" text-anchor="middle" font-size="8" fill="#334155">curl -s URL 看 HTML 源码里有没有内容</text>
+  <rect x="560" y="192" width="170" height="44" rx="6" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="645" y="210" text-anchor="middle" font-size="8" fill="#334155">HTML 空壳：数据在客户端</text>
+  <text x="645" y="226" text-anchor="middle" font-size="8" fill="#334155">HTML 正常：hydration 类</text>
+  <line x1="530" y1="214" x2="556" y2="214" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <line x1="380" y1="236" x2="380" y2="252" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <!-- Q3 -->
+  <rect x="230" y="254" width="300" height="44" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="380" y="272" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">③ 数据进 payload 了吗？</text>
+  <text x="380" y="288" text-anchor="middle" font-size="8" fill="#334155">curl -s URL | grep -c '__NUXT__'</text>
+  <rect x="560" y="254" width="170" height="44" rx="6" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <text x="645" y="272" text-anchor="middle" font-size="8" fill="#334155">= 0：onMounted 取数</text>
+  <text x="645" y="288" text-anchor="middle" font-size="8" fill="#334155">请求 ×2：key 不稳定</text>
+  <line x1="530" y1="276" x2="556" y2="276" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <line x1="380" y1="298" x2="380" y2="314" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <!-- Q4 -->
+  <rect x="230" y="316" width="300" height="44" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="380" y="334" text-anchor="middle" font-size="9" fill="#065F46" font-weight="bold">④ 缓存头是哪个？</text>
+  <text x="380" y="350" text-anchor="middle" font-size="8" fill="#334155">curl -sI URL | grep -i cache</text>
+  <rect x="560" y="316" width="170" height="44" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <text x="645" y="334" text-anchor="middle" font-size="8" fill="#991B1B" font-weight="bold">串用户数据 = 缓存事故</text>
+  <text x="645" y="350" text-anchor="middle" font-size="8" fill="#334155">先清 CDN 再改 routeRules</text>
+  <line x1="530" y1="338" x2="556" y2="338" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <line x1="380" y1="360" x2="380" y2="376" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <!-- Q5 -->
+  <rect x="230" y="378" width="300" height="44" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="380" y="396" text-anchor="middle" font-size="9" fill="#9A3412" font-weight="bold">⑤ 产物里有没有不该出现的？</text>
+  <text x="380" y="412" text-anchor="middle" font-size="8" fill="#334155">grep -rl 'sk-' .output/public/（应为空）</text>
+  <rect x="560" y="378" width="170" height="44" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <text x="645" y="396" text-anchor="middle" font-size="8" fill="#991B1B" font-weight="bold">密钥进产物 = 泄漏</text>
+  <text x="645" y="412" text-anchor="middle" font-size="8" fill="#334155">移到 runtimeConfig 私有段</text>
+  <line x1="530" y1="400" x2="556" y2="400" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <line x1="380" y1="422" x2="380" y2="438" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <!-- 收尾 -->
+  <rect x="200" y="440" width="360" height="30" rx="15" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2"/>
+  <text x="380" y="459" text-anchor="middle" font-size="9" fill="#166534" font-weight="bold">五步之后仍未定位 → 按症状翻 FAQ 对应小节（Q1~Q16）</text>
+</svg>

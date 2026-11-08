@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="470" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">Nuxt 4 目录结构地图：三个代码区 + 两个生成区</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">app/ 与 server/ 之间禁止直接 import，共享代码一律走 shared/</text>
+  <defs>
+    <marker id="arw" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <!-- app/ -->
+  <rect x="30" y="80" width="290" height="240" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="175" y="102" text-anchor="middle" font-size="11" fill="#1E3A8A" font-weight="bold">app/（前端代码，进浏览器产物）</text>
+  <text x="48" y="126" font-size="8.5" fill="#334155">app.vue 根组件 · error.vue 全局错误页</text>
+  <text x="48" y="144" font-size="8.5" fill="#334155">pages/ 文件路由（存在才启用路由）</text>
+  <text x="48" y="162" font-size="8.5" fill="#334155">components/ 组件（子目录名变前缀）</text>
+  <text x="48" y="180" font-size="8.5" fill="#334155">composables/ 组合式函数（具名导出）</text>
+  <text x="48" y="198" font-size="8.5" fill="#334155">utils/ 工具函数（自动导入）</text>
+  <text x="48" y="216" font-size="8.5" fill="#334155">layouts/ 布局 · middleware/ 路由中间件</text>
+  <text x="48" y="234" font-size="8.5" fill="#334155">plugins/ 插件（.client/.server 后缀）</text>
+  <text x="48" y="252" font-size="8.5" fill="#334155">assets/ 构建处理的资源（~/assets 引用）</text>
+  <text x="48" y="274" font-size="8" fill="#64748B">自动导入事实表：.nuxt/imports.d.ts</text>
+  <text x="48" y="292" font-size="8" fill="#64748B">组件注册表：.nuxt/components.d.ts</text>
+
+  <!-- server/ -->
+  <rect x="440" y="80" width="290" height="240" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="585" y="102" text-anchor="middle" font-size="11" fill="#065F46" font-weight="bold">server/（服务端代码，仅 Nitro）</text>
+  <text x="458" y="126" font-size="8.5" fill="#334155">api/** 映射 /api/** 业务接口</text>
+  <text x="458" y="144" font-size="8.5" fill="#334155">routes/** 映射 /** 非 api 前缀端点</text>
+  <text x="458" y="162" font-size="8.5" fill="#334155">middleware/ 每个请求都执行</text>
+  <text x="458" y="180" font-size="8.5" fill="#334155">plugins/ Nitro 启动时执行</text>
+  <text x="458" y="198" font-size="8.5" fill="#334155">utils/ 服务端工具（自动导入）</text>
+  <text x="458" y="220" font-size="8" fill="#64748B">浏览器永远看不到这里的代码</text>
+  <text x="458" y="238" font-size="8" fill="#64748B">密钥、上游地址、连接池都在这层</text>
+
+  <!-- 禁止线 -->
+  <line x1="330" y1="200" x2="430" y2="200" stroke="#DC2626" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <line x1="366" y1="188" x2="382" y2="212" stroke="#DC2626" stroke-width="1.6"/>
+  <line x1="382" y1="188" x2="398" y2="212" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="186" text-anchor="middle" font-size="8" fill="#DC2626" font-weight="bold">禁止直接 import</text>
+
+  <!-- shared/ -->
+  <rect x="240" y="346" width="280" height="66" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="380" y="368" text-anchor="middle" font-size="10" fill="#9A3412" font-weight="bold">shared/（前后端共享：类型 · 常量 · 同构工具）</text>
+  <text x="380" y="388" text-anchor="middle" font-size="8.5" fill="#334155">用 #shared 别名引入；不得依赖 window 或 Node API</text>
+  <text x="380" y="404" text-anchor="middle" font-size="8.5" fill="#334155">也不能反向 import app/ 或 server/ 的内容</text>
+
+  <!-- shared 箭头 -->
+  <line x1="300" y1="322" x2="330" y2="344" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+  <line x1="460" y1="322" x2="430" y2="344" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+
+  <!-- 生成区 -->
+  <rect x="30" y="346" width="180" height="66" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5 3"/>
+  <text x="120" y="368" text-anchor="middle" font-size="10" fill="#475569" font-weight="bold">.nuxt/（dev 生成）</text>
+  <text x="120" y="388" text-anchor="middle" font-size="8.5" fill="#64748B">类型与模板 · 别提交别手改</text>
+
+  <rect x="550" y="346" width="180" height="66" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5 3"/>
+  <text x="640" y="368" text-anchor="middle" font-size="10" fill="#475569" font-weight="bold">.output/（build 产物）</text>
+  <text x="640" y="388" text-anchor="middle" font-size="8.5" fill="#64748B">public/ + server/index.mjs · 部署单元</text>
+
+  <!-- public/ -->
+  <rect x="30" y="424" width="700" height="34" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.2"/>
+  <text x="380" y="445" text-anchor="middle" font-size="9" fill="#5B21B6">public/（原样拷贝的静态资源：robots.txt、favicon、第三方回调验证文件；URL 即文件路径，不加 hash）</text>
+</svg>

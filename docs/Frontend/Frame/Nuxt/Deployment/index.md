@@ -324,6 +324,8 @@ SSR 让首屏「看起来快」，但如果 hydration 需要下载 1 MB JS，**�
 ## 相关页面
 
 - [渲染模式与架构](../Overview/index.md) —— 部署形态由渲染模式决定
+- [常用配置项](../Configuration/index.md) —— 构建期与运行时配置的分层
+- [常见问题与故障排查](../FAQ/index.md) —— 部署类事故的速查表（Q13~Q16）
 - [数据获取与状态](../DataFetching/index.md) —— payload 体积与首屏 JS 的关系
 - [服务端能力：Server Routes 与中间件](../ServerRoute/index.md) —— 服务端缓存与配置注入
 - [前端性能优化](../../../Others/PerformanceOptimization/index.md) —— 加载、构建、运行时优化的完整体系

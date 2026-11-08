@@ -11,15 +11,21 @@ Nuxt 是 Vue 生态的**全栈框架**：它把 Vue 从「浏览器里的视图�
 ### 入门与架构
 
 - [渲染模式与架构](Overview/index.md)
+- [安装与环境配置](Environment/index.md)
+- [目录结构解析](DirectoryStructure/index.md)
 
 ### 核心能力
 
+- [核心功能与使用](CoreConcepts/index.md)
+- [路由与页面管理](Routing/index.md)
 - [数据获取与状态](DataFetching/index.md)
 - [服务端能力：Server Routes 与中间件](ServerRoute/index.md)
 
 ### 落地
 
+- [常用配置项](Configuration/index.md)
 - [部署与实战](Deployment/index.md)
+- [常见问题与故障排查](FAQ/index.md)
 
 ::: info 版本约定
 本专题以 **Nuxt 4**（当前稳定主线）为主线。Nuxt 4 相对 Nuxt 3 的关键变化：
@@ -39,10 +45,16 @@ Vue 侧以 **Vue 3.5+** 为准。涉及 Nuxt 3 的差异会明确标注。
 
 | 页面 | 回答什么问题 |
 | --- | --- |
-| [渲染模式与架构](Overview/index.md) | SSR / SSG / ISR / SPA 怎么选，Nitro 是什么，与 Next.js 的对照，Nuxt 的项目结构 |
+| [渲染模式与架构](Overview/index.md) | SSR / SSG / ISR / SPA 怎么选，Nitro 是什么，与 Next.js 的对照 |
+| [安装与环境配置](Environment/index.md) | Node 版本、创建命令、IDE 插件、环境变量、升级路线 |
+| [目录结构解析](DirectoryStructure/index.md) | `app/`、`server/`、`shared/` 各目录的规则与 import 边界 |
+| [核心功能与使用](CoreConcepts/index.md) | 自动导入、布局、中间件、SEO、插件、模块的机制与边界 |
+| [路由与页面管理](Routing/index.md) | 文件路由映射、动态参数、导航、`definePageMeta`、404 |
 | [数据获取与状态](DataFetching/index.md) | `useFetch` / `useAsyncData` / `$fetch` 的分工、缓存键怎么定、怎么避免「一份数据请求两次」 |
 | [服务端能力：Server Routes 与中间件](ServerRoute/index.md) | 怎么在同一个项目里写 API、`runtimeConfig` 怎么管密钥、路由中间件与服务端中间件的区别 |
+| [常用配置项](Configuration/index.md) | `nuxt.config.ts` 各字段的语义与生效层、`app.config.ts` 的分工 |
 | [部署与实战](Deployment/index.md) | 部署形态矩阵、从零到可访问的完整步骤、缓存与错误处理、排错 |
+| [常见问题与故障排查](FAQ/index.md) | 五步排查决策树 + 十六个高频问题的定位与修法 |
 
 ## 与既有专题的分工
 

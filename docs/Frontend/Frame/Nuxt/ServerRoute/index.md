@@ -348,6 +348,8 @@ NUXT_API_BASE=https://changed.example.com nuxi dev
 ## 相关页面
 
 - [数据获取与状态](../DataFetching/index.md) —— 客户端怎么消费这些接口
+- [常用配置项](../Configuration/index.md) —— `runtimeConfig` 在配置体系中的位置
+- [目录结构解析](../DirectoryStructure/index.md) —— `server/` 与其他目录的 import 边界
 - [渲染模式与架构](../Overview/index.md) —— Nitro 在整体架构中的位置
 - [部署与实战](../Deployment/index.md) —— 服务端能力对部署形态的要求
 - [前端安全](../../../Others/Security/index.md) —— XSS、CSRF、Cookie 策略的完整讨论

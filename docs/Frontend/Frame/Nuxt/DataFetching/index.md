@@ -273,6 +273,8 @@ if (import.meta.dev) {
 ## 相关页面
 
 - [渲染模式与架构](../Overview/index.md) —— payload 与 SSR 的整体机制
+- [路由与页面管理](../Routing/index.md) —— 路由参数怎么进入数据请求的 key
+- [常见问题与故障排查](../FAQ/index.md) —— 请求重复、参数切换不更新等问题的速查
 - [服务端能力：Server Routes 与中间件](../ServerRoute/index.md) —— 数据从哪来（`server/api`）
 - [部署与实战](../Deployment/index.md) —— 缓存在部署层的配置
 - [Vue 框架](../../Vue/index.md) —— 组合式 API 与 `ref` / `computed` 的基础

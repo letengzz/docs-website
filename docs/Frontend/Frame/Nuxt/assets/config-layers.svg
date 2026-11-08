@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="420" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">配置的三个生效层：改不生效，先确认改在了哪一层</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">「改环境变量没用」= 值写在了构建期层；「重启 dev 没用」= 改的是构建期配置但期待 HMR</text>
+  <defs>
+    <marker id="arw" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <!-- 层 1 -->
+  <rect x="40" y="80" width="440" height="92" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+  <text x="60" y="102" font-size="10" fill="#1E3A8A" font-weight="bold">构建期层（nuxt.config.ts 的大部分字段）</text>
+  <text x="60" y="122" font-size="8.5" fill="#334155">modules · vite · css · app.head（静态部分）· routeRules · nitro</text>
+  <text x="60" y="140" font-size="8.5" fill="#334155">构建时固化进产物，产物行为不再变</text>
+  <text x="60" y="160" font-size="8" fill="#64748B">compatibilityDate 也在这一层：锁定框架行为，升级时别随手改</text>
+
+  <rect x="500" y="80" width="220" height="92" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="610" y="102" text-anchor="middle" font-size="9" fill="#475569" font-weight="bold">改动后的生效条件</text>
+  <text x="610" y="122" text-anchor="middle" font-size="8.5" fill="#334155">重启 dev + 重新构建</text>
+  <text x="610" y="140" text-anchor="middle" font-size="8.5" fill="#334155">环境变量无法覆盖</text>
+  <text x="610" y="160" text-anchor="middle" font-size="8" fill="#DC2626">高频坑：环境差异写死在这里</text>
+
+  <!-- 层 2 -->
+  <rect x="40" y="190" width="440" height="92" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.2"/>
+  <text x="60" y="212" font-size="10" fill="#065F46" font-weight="bold">运行时层（runtimeConfig）</text>
+  <text x="60" y="232" font-size="8.5" fill="#334155">私有段（仅服务端）+ public 段（进客户端产物）</text>
+  <text x="60" y="250" font-size="8.5" fill="#334155">启动时读 NUXT_* 环境变量覆盖，同一份产物可跑多环境</text>
+  <text x="60" y="270" font-size="8" fill="#64748B">密钥的唯一正确位置：私有段；public 段任何人可见</text>
+
+  <rect x="500" y="190" width="220" height="92" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="610" y="212" text-anchor="middle" font-size="9" fill="#475569" font-weight="bold">改动后的生效条件</text>
+  <text x="610" y="232" text-anchor="middle" font-size="8.5" fill="#334155">重启进程即可，无需重建</text>
+  <text x="610" y="250" text-anchor="middle" font-size="8.5" fill="#059669" font-weight="bold">环境变量可覆盖 ✓</text>
+  <text x="610" y="270" text-anchor="middle" font-size="8" fill="#64748B">NUXT_ + 大驼峰转下划线</text>
+
+  <!-- 层 3 -->
+  <rect x="40" y="300" width="440" height="92" rx="8" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="60" y="322" font-size="10" fill="#9A3412" font-weight="bold">应用级层（app.config.ts）</text>
+  <text x="60" y="342" font-size="8.5" fill="#334155">主题、文案、UI 默认值这类「应用级常量」</text>
+  <text x="60" y="360" font-size="8.5" fill="#334155">useAppConfig() 读取，支持 HMR</text>
+  <text x="60" y="380" font-size="8" fill="#64748B">别放 API 地址（那是 runtimeConfig 的事）</text>
+
+  <rect x="500" y="300" width="220" height="92" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="610" y="322" text-anchor="middle" font-size="9" fill="#475569" font-weight="bold">改动后的生效条件</text>
+  <text x="610" y="342" text-anchor="middle" font-size="8.5" fill="#334155">HMR 即时生效（dev）</text>
+  <text x="610" y="360" text-anchor="middle" font-size="8.5" fill="#334155">环境变量无法覆盖</text>
+  <text x="610" y="380" text-anchor="middle" font-size="8" fill="#64748B">可被模块 / 主题覆盖</text>
+
+  <!-- 箭头 -->
+  <line x1="260" y1="172" x2="260" y2="188" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+  <line x1="260" y1="282" x2="260" y2="298" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+</svg>

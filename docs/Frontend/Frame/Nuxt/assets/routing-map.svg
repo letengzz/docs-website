@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="440" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">文件路由映射规则：目录与文件名就是 URL</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">app/pages/ 存在才启用路由；文件名写错没有任何报错，只会 404</text>
+  <defs>
+    <marker id="arw" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <!-- 列标题 -->
+  <text x="210" y="84" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">文件（app/pages/ 下）</text>
+  <text x="560" y="84" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">映射到的 URL</text>
+
+  <!-- 行 1 -->
+  <rect x="60" y="98" width="300" height="34" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="210" y="119" text-anchor="middle" font-size="9" fill="#1E293B">index.vue</text>
+  <line x1="366" y1="115" x2="430" y2="115" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+  <rect x="436" y="98" width="250" height="34" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.1"/>
+  <text x="561" y="119" text-anchor="middle" font-size="9" fill="#1E293B">/</text>
+
+  <!-- 行 2 -->
+  <rect x="60" y="140" width="300" height="34" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="210" y="161" text-anchor="middle" font-size="9" fill="#1E293B">about.vue</text>
+  <line x1="366" y1="157" x2="430" y2="157" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+  <rect x="436" y="140" width="250" height="34" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.1"/>
+  <text x="561" y="161" text-anchor="middle" font-size="9" fill="#1E293B">/about</text>
+
+  <!-- 行 3 -->
+  <rect x="60" y="182" width="300" height="34" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.1"/>
+  <text x="210" y="203" text-anchor="middle" font-size="9" fill="#1E293B">products/index.vue</text>
+  <line x1="366" y1="199" x2="430" y2="199" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+  <rect x="436" y="182" width="250" height="34" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.1"/>
+  <text x="561" y="203" text-anchor="middle" font-size="9" fill="#1E293B">/products</text>
+
+  <!-- 行 4 -->
+  <rect x="60" y="224" width="300" height="34" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.1"/>
+  <text x="210" y="245" text-anchor="middle" font-size="9" fill="#1E293B">products/[id].vue　（动态段）</text>
+  <line x1="366" y1="241" x2="430" y2="241" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+  <rect x="436" y="224" width="250" height="34" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.1"/>
+  <text x="561" y="245" text-anchor="middle" font-size="9" fill="#1E293B">/products/42 → params.id = "42"</text>
+
+  <!-- 行 5 -->
+  <rect x="60" y="266" width="300" height="34" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.1"/>
+  <text x="210" y="287" text-anchor="middle" font-size="9" fill="#1E293B">[...slug].vue　（通配）</text>
+  <line x1="366" y1="283" x2="430" y2="283" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+  <rect x="436" y="266" width="250" height="34" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.1"/>
+  <text x="561" y="287" text-anchor="middle" font-size="9" fill="#1E293B">/a/b/c → params.slug 是数组</text>
+
+  <!-- 行 6 -->
+  <rect x="60" y="308" width="300" height="34" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.1"/>
+  <text x="210" y="329" text-anchor="middle" font-size="9" fill="#1E293B">[[page]].vue　（可选动态段）</text>
+  <line x1="366" y1="325" x2="430" y2="325" stroke="#64748B" stroke-width="1.2" marker-end="url(#arw)"/>
+  <rect x="436" y="308" width="250" height="34" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.1"/>
+  <text x="561" y="329" text-anchor="middle" font-size="9" fill="#1E293B">/list 与 /list/3 都匹配</text>
+
+  <!-- 404 三坑 -->
+  <rect x="60" y="362" width="626" height="58" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="373" y="384" text-anchor="middle" font-size="9.5" fill="#991B1B" font-weight="bold">「文件在但 404」的三个高频根因</text>
+  <text x="80" y="404" font-size="8.5" fill="#334155">① 动态段忘了方括号（id.vue 只匹配字面量 /id）</text>
+  <text x="380" y="404" font-size="8.5" fill="#334155">② 大小写不一致：Windows 能跑、Linux 404</text>
+  <text x="80" y="420" font-size="8.5" fill="#334155">③ 放错层级：要 /products 应写 products/index.vue，与 [id].vue 共存</text>
+  <text x="380" y="420" font-size="8.5" fill="#334155">确认手段：grep .nuxt/types/typed-router.d.ts</text>
+</svg>
