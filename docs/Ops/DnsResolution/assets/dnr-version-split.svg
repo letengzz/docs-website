@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 230" width="760" height="230" role="img">
+<rect x="0" y="0" width="760" height="230" fill="#ffffff"/>
+<text x="380.0" y="34" text-anchor="middle" font-size="19" font-family="sans-serif" font-weight="bold" fill="#0f172a">两代解析栈：旧内容保留，不覆盖</text>
+<rect x="30" y="62" width="330" height="112" rx="9" fill="#f1f5f9" stroke="#334155" stroke-width="1.6"/>
+<text x="195.0" y="95.9" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">ClassicResolver（仅存量项目使用）</text>
+<text x="195.0" y="113.4" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">UDP/53 明文 · 手工 zone 文件</text>
+<text x="195.0" y="130.9" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">无 EDNS0 / 无 DNSSEC</text>
+<text x="195.0" y="148.4" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">dig + nslookup 排障</text>
+<rect x="400" y="62" width="330" height="112" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="565.0" y="95.9" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">ModernResolver（当前基线）</text>
+<text x="565.0" y="113.4" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">DoT 853 / DoH 443 / DoQ 0-RTT</text>
+<text x="565.0" y="130.9" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">DNSSEC 全链 · EDNS 1232 · ECS</text>
+<text x="565.0" y="148.4" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">CAA (RFC 8659) · 自动签名</text>
+<text x="380.0" y="202" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">版本差异与升级路径写在目录页；旧版页顶标注维护状态，正文一字不改</text>
+</svg>

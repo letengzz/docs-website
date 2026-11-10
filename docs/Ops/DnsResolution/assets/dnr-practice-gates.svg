@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 358" width="760" height="358" role="img">
+<rect x="0" y="0" width="760" height="358" fill="#ffffff"/>
+<text x="380.0" y="34" text-anchor="middle" font-size="19" font-family="sans-serif" font-weight="bold" fill="#0f172a">实战：十条可判定门禁（含两条反向探针）</text>
+<rect x="30" y="58" width="335" height="42" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="197.5" y="83.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">G1 标签 63 / 全名 255</text>
+<rect x="395" y="58" width="335" height="42" rx="9" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/>
+<text x="562.5" y="83.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">G2 压缩指针省 66.18%</text>
+<rect x="30" y="110" width="335" height="42" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/>
+<text x="197.5" y="135.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">G3 缺胶水检出循环</text>
+<rect x="395" y="110" width="335" height="42" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="562.5" y="135.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">G4 缓存省 66.67% 查询</text>
+<rect x="30" y="162" width="335" height="42" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="197.5" y="187.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">G5 收敛上限 = TTL</text>
+<rect x="395" y="162" width="335" height="42" rx="9" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/>
+<text x="562.5" y="187.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">G6 负缓存取 min</text>
+<rect x="30" y="214" width="335" height="42" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/>
+<text x="197.5" y="239.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">G7 篡改必 SERVFAIL</text>
+<rect x="395" y="214" width="335" height="42" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="562.5" y="239.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">G8 serial 回退不更新</text>
+<rect x="30" y="266" width="335" height="42" rx="9" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.6"/>
+<text x="197.5" y="291.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">G9 探针：只验末级会误判</text>
+<rect x="395" y="266" width="335" height="42" rx="9" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.6"/>
+<text x="562.5" y="291.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">G10 探针：无 NSEC 全通过</text>
+<text x="380.0" y="330" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">本机复跑 10 / 10 PASS · EXIT=0；删掉任一机制，对应门禁立刻变红</text>
+</svg>

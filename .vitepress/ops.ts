@@ -514,3 +514,24 @@ export const DatabaseOps = [
     ],
   },
 ];
+
+export const DnsResolution = [
+  {
+    text: "DNS 解析工程与域名治理",
+    link: "/docs/Ops/DnsResolution/index.md",
+    items: [
+      { text: "总览：四个角色与三种答案（DNO-A~DNO-H）", link: "/docs/Ops/DnsResolution/Overview/index.md" },
+      { text: "解析链：referral、胶水与 CNAME 预算（DNR-A~DNR-H）", link: "/docs/Ops/DnsResolution/ResolutionPath/index.md" },
+      { text: "记录语义：类型、wire 格式与 CAA（DND-A~DND-H）", link: "/docs/Ops/DnsResolution/RecordSemantics/index.md" },
+      { text: "TTL 与缓存一致性（DNT-A~DNT-H）", link: "/docs/Ops/DnsResolution/TtlConsistency/index.md" },
+      { text: "DNSSEC 信任链（DNX-A~DNX-H）", link: "/docs/Ops/DnsResolution/DnssecChain/index.md" },
+      { text: "加密传输：DoT / DoH / DoQ（DNE-A~DNE-H）", link: "/docs/Ops/DnsResolution/EncryptedTransport/index.md" },
+      { text: "流量调度与 ECS（DNG-A~DNG-H）", link: "/docs/Ops/DnsResolution/TrafficSteering/index.md" },
+      { text: "变更治理与回滚（DNC-A~DNC-H）", link: "/docs/Ops/DnsResolution/ChangeGovernance/index.md" },
+      { text: "实战：十条可判定门禁（DNP-A~DNP-H）", link: "/docs/Ops/DnsResolution/Practice/index.md" },
+      { text: "常见问题与症状分诊（DNQ-A~DNQ-H）", link: "/docs/Ops/DnsResolution/FAQ/index.md" },
+      { text: "旧版解析栈（仅存量项目使用 · 已停止新增）（DNL-A~DNL-H）", link: "/docs/Ops/DnsResolution/ClassicResolver/index.md" },
+      { text: "当前主线解析栈（DNM-A~DNM-H）", link: "/docs/Ops/DnsResolution/ModernResolver/index.md" },
+    ],
+  },
+];

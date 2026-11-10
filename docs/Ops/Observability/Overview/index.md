@@ -160,6 +160,19 @@
 
 本页特有的一个坑：**三支柱都装齐了，不等于能回答业务问题**。自动采集拿到的永远只有框架层信号（HTTP 状态码、SQL 耗时），它不知道「拖动一张卡片」包含几次请求、哪一次在关键路径上——这层语义只能靠业务埋点补，而业务埋点归该专题的 [埋点规范](/docs/Tools/ObservabilityDriven/Instrumentation/index.md)。
 
+## 与「DNS 解析工程与域名治理」专题的分工（第 271 天补充）
+
+| 维度 | 本页 | [DNS 解析工程与域名治理](../../DnsResolution/index.md) |
+| --- | --- | --- |
+| 回答的问题 | 监控与可观测性的边界、指标/日志/追踪的采集与成本 | 一次解析的答案凭什么可信、变更凭什么可控 |
+| 不重复什么 | 不再讲采集体系；本专题讲哪些 DNS 指标会骗人 | 不重写既有组件文档 |
+
+**一页一坑**：**「解析成功率 100%」不等于「答案正确」**：serve-stale 会在权威不可达时返回过期数据，成功率仍是 100%；只看 ANSWER 段有没有 A 记录的判定规则，在本机 180 个 SERVFAIL 案例里 **100% 误读成「域名不存在」**。DNS 侧至少要三列指标：RCODE 分布、答案正确率、降级次数。
+
+::: tip 回归判据
+看板里能分别查到 `SERVFAIL`/`NXDOMAIN` 计数与「答案与目标 IP 一致率」两条曲线。
+:::
+
 ## 参考资料
 
 - [OpenTelemetry：Observability Primer](https://opentelemetry.io/docs/concepts/observability-primer/)：信号与关联的官方定义

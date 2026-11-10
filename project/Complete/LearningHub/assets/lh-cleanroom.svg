@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" role="img">
+<rect x="0" y="0" width="760" height="300" fill="#ffffff"/>
+<text x="380" y="34" text-anchor="middle" font-size="19" font-family="sans-serif" font-weight="bold" fill="#0f172a">干净目录从零复现：六步 → 六组门禁 → 交付包</text>
+<rect x="26" y="58" width="212" height="94" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="132" y="86" text-anchor="middle" font-size="14" font-family="sans-serif" font-weight="bold" fill="#0f172a">① 空目录</text>
+<text x="132" y="108" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">初始文件数 = 0</text>
+<text x="132" y="128" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">不复用任何旧产物</text>
+<line x1="240" y1="105" x2="270" y2="105" stroke="#94a3b8" stroke-width="1.8"/>
+<polygon points="270,105 262,101 262,109" fill="#94a3b8"/>
+<rect x="274" y="58" width="212" height="94" rx="9" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/>
+<text x="380" y="86" text-anchor="middle" font-size="14" font-family="sans-serif" font-weight="bold" fill="#0f172a">② 按文档重建</text>
+<text x="380" y="108" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">12 表 / 9 索引 / 4 触发器</text>
+<text x="380" y="128" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">迁移 7 版、0 跳号</text>
+<line x1="488" y1="105" x2="518" y2="105" stroke="#94a3b8" stroke-width="1.8"/>
+<polygon points="518,105 510,101 510,109" fill="#94a3b8"/>
+<rect x="522" y="58" width="212" height="94" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/>
+<text x="628" y="86" text-anchor="middle" font-size="14" font-family="sans-serif" font-weight="bold" fill="#0f172a">③ 逐条比对</text>
+<text x="628" y="108" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">六组门禁 A~H 全过</text>
+<text x="628" y="128" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">CLEANROOM 8 / 8 PASS</text>
+<rect x="26" y="174" width="342" height="76" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="197" y="200" text-anchor="middle" font-size="14" font-family="sans-serif" font-weight="bold" fill="#0f172a">交付包：清单 + 版本号 + 校验和</text>
+<text x="197" y="222" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">12 项交付物 / sha256 逐项可复算</text>
+<text x="197" y="240" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">删掉一条证据后 H 组必须变红</text>
+<rect x="392" y="174" width="342" height="76" rx="9" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.6"/>
+<text x="563" y="200" text-anchor="middle" font-size="14" font-family="sans-serif" font-weight="bold" fill="#0f172a">两条反向探针</text>
+<text x="563" y="222" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">去掉 UNIQUE：400 次交卷落 400 行</text>
+<text x="563" y="240" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">去掉证据项：清单校验 FAIL</text>
+<text x="380" y="280" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">脏机器上的成功不构成证据：入口条件是「空目录 + 不复用旧产物 + 逐条留痕」</text>
+</svg>

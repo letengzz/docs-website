@@ -87,6 +87,19 @@ spec:
 2. `kubectl run test --image=busybox -it --rm -- sh` 进入测试容器，`wget web-svc` 验证。
 3. `kubectl describe svc web-svc` 查看 Endpoints 与端口映射。
 
+## 与「DNS 解析工程与域名治理」专题的分工（第 271 天补充）
+
+| 维度 | 本页 | [DNS 解析工程与域名治理](../../DnsResolution/index.md) |
+| --- | --- | --- |
+| 回答的问题 | ClusterIP、CoreDNS、集群内服务发现与 Service 解析 | 一次解析的答案凭什么可信、变更凭什么可控 |
+| 不重复什么 | 不再讲集群内名字；本专题讲公网权威/递归/客户端三层答案 | 不重写既有组件文档 |
+
+**一页一坑**：**别拿公网 TTL 套集群内名字**：CoreDNS 的缓存、`ndots` 与 Pod 的 `resolv.conf` 决定集群内解析，和公网权威记录的 TTL 是两套机制。反过来，Pod 里跑 `dig @8.8.8.8` 拿到的答案只是某一家递归器的视图，不能用来断言「权威已改」或「全网已生效」。
+
+::: tip 回归判据
+分别用 `dig @<CoreDNS>` 与 `dig @<权威>` 各取一次值，明确写出两个答案分别属于哪一层。
+:::
+
 ## 参考资料
 
 - 网络基础：[网络分层与 TCP/IP 模型](../../Network/Layering/index.md)、[DNS 解析与配置](../../Network/Dns/index.md)

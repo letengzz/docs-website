@@ -151,6 +151,19 @@ curl -s https://origin.example.com/static/app.9f2c1a.js | shasum
 | 出现 `Age` 但内容哈希与源站不同 | 缓存里是旧版本：去查 [缓存策略](../CacheStrategy/index.md) 的失效流程 |
 | 解析结果与用户所在地明显不符 | 调度问题：检查线路策略 / ECS 支持 / 是否被本地 DNS 劫持 |
 
+## 与「DNS 解析工程与域名治理」专题的分工（第 271 天补充）
+
+| 维度 | 本页 | [DNS 解析工程与域名治理](../../DnsResolution/index.md) |
+| --- | --- | --- |
+| 回答的问题 | CDN 的调度与回源、缓存键、边缘节点与回源策略 | 一次解析的答案凭什么可信、变更凭什么可控 |
+| 不重复什么 | 不再展开 CDN 自身架构；本专题讲权威侧的解析链、ECS 与 CNAME 约束 | 不重写既有组件文档 |
+
+**一页一坑**：**CNAME 链叠层**：本页的接入域名往往已有 `www → 厂商域名 → 边缘节点` 两级，再加一层内部别名就到 3 级；本机仿真每多一级 CNAME 多一次查询，16 级链要 **17 次**查询、约 7.14 ms。更关键的是 zone apex 不能有 CNAME（apex 必有 SOA/NS），用服务商的 ALIAS/ANAME 才能绕开。
+
+::: tip 回归判据
+列出接入链路的每一级 CNAME 及其归属人，级数 ≤ 2；apex 用 A/AAAA 或 ALIAS。
+:::
+
 ## 十、参考资料
 
 - RFC 9111 · HTTP Caching（缓存与回源校验的权威定义）：https://www.rfc-editor.org/rfc/rfc9111

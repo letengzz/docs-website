@@ -7,6 +7,7 @@
 - [安全加固](SecurityHardening/index.md)
 - [Nginx](Nginx/index.md)
 - [网络基础](Network/index.md)
+- [DNS 解析工程与域名治理](DnsResolution/index.md)：七段链（问/递/权/答/缓/验/切）与三个「这个答案」、referral 与胶水记录、TTL 收敛与负缓存、DNSSEC 信任链、DoT/DoH/DoQ 的那一跳边界、ECS 精度与缓存代价、serial 与回滚残留，另按解析栈代际拆出旧版（仅存量项目使用）与当前主线两个版本目录
 - [Docker](Docker/index.md)
 - [Kubernetes](Kubernetes/index.md)
 - [容器编排进阶](ContainerOrchestration/index.md)

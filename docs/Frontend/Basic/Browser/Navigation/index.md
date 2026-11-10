@@ -83,6 +83,19 @@ curl -v https://example.com
 - [网络编程专题](../../../../Backend/NetworkProgramming/index.md)：TCP 握手、HTTP/HTTPS 与 Socket
 - [TCP 与 UDP 详解](../../../../Backend/NetworkProgramming/TCPUDP/index.md)：导航请求底层的可靠传输
 
+## 与「DNS 解析工程与域名治理」专题的分工（第 271 天补充）
+
+| 维度 | 本页 | [DNS 解析工程与域名治理](../../../../Ops/DnsResolution/index.md) |
+| --- | --- | --- |
+| 回答的问题 | URL 到页面渲染的导航流程、DNS 在其中的位置 | 一次解析的答案凭什么可信、变更凭什么可控 |
+| 不重复什么 | 不再讲渲染链路；本专题讲客户端 stub 缓存与加密传输策略 | 不重写既有组件文档 |
+
+**一页一坑**：**浏览器自择 DoH 会绕过企业递归器**：内网 split-horizon 名字（内外不同答案）可能突然解析到公网地址，基于 DNS 的审计与拦截同时失效。本专题把路径观察点从 4 处降到 2 处建模，但递归器仍看得到 **100%** 的查询——加密只覆盖 stub → 递归这一跳。
+
+::: tip 回归判据
+在企业策略开/关两种状态下各访问一次内网域名，确认两边答案一致或差异被显式登记。
+:::
+
 ## 参考资料
 
 - 关键路径（Web Fundamentals）：https://web.dev/articles/critical-rendering-path

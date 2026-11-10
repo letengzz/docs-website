@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="760" height="260" role="img">
+<rect x="0" y="0" width="760" height="260" fill="#ffffff"/>
+<text x="380.0" y="34" text-anchor="middle" font-size="19" font-family="sans-serif" font-weight="bold" fill="#0f172a">七类症状：先分层，再谈原因</text>
+<rect x="270" y="54" width="220" height="52" rx="9" fill="#f1f5f9" stroke="#334155" stroke-width="1.6"/>
+<text x="380.0" y="75.4" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">先看 RCODE</text>
+<text x="380.0" y="92.9" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">NXDOMAIN / SERVFAIL / NOERROR</text>
+<line x1="380" y1="108" x2="190" y2="140" stroke="#94a3b8" stroke-width="1.8"/><polygon points="190,140 182,136 182,144" fill="#94a3b8"/><line x1="380" y1="108" x2="570" y2="140" stroke="#94a3b8" stroke-width="1.8"/><polygon points="570,140 562,136 562,144" fill="#94a3b8"/>
+<rect x="40" y="142" width="300" height="64" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="190.0" y="160.7" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">无答案类</text>
+<text x="190.0" y="178.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">NXDOMAIN / SERVFAIL</text>
+<text x="190.0" y="195.7" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">查 +trace 与 @authority</text>
+<rect x="420" y="142" width="300" height="64" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="570.0" y="160.7" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">答案不对类</text>
+<text x="570.0" y="178.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">旧 IP / 部分区域错</text>
+<text x="570.0" y="195.7" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">查各级缓存与 ECS</text>
+<text x="380.0" y="232" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">只看 ANSWER 段有没有 A 记录：SERVFAIL 100% 被误读成「域名不存在」</text>
+</svg>

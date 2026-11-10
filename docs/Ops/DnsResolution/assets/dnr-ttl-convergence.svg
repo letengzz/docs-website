@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 222" width="760" height="222" role="img">
+<rect x="0" y="0" width="760" height="222" fill="#ffffff"/>
+<text x="380.0" y="34" text-anchor="middle" font-size="19" font-family="sans-serif" font-weight="bold" fill="#0f172a">不提前降 TTL：收敛上限等于旧 TTL</text>
+<rect x="30" y="60" width="210" height="76" rx="9" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.6"/>
+<text x="135.0" y="85.0" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#0f172a">不准备</text>
+<text x="135.0" y="102.0" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">TTL = 3600 s</text>
+<text x="135.0" y="119.0" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">p50 1782 / p99 3554 / max 3599</text>
+<rect x="275" y="60" width="210" height="76" rx="9" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/>
+<text x="380.0" y="85.0" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#0f172a">提前 2×TTL 降到 60</text>
+<text x="380.0" y="102.0" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">缓存全部换成短 TTL</text>
+<text x="380.0" y="119.0" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">max 收敛 60 s</text>
+<rect x="520" y="60" width="210" height="76" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/>
+<text x="625.0" y="85.0" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#0f172a">负缓存</text>
+<text x="625.0" y="102.0" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">min(SOA TTL, MINIMUM)</text>
+<text x="625.0" y="119.0" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#475569">先查后建不可见 900 s</text>
+<text x="380.0" y="168" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">10,000 个客户端仿真：49.46% 在变更后 1 小时内仍拿旧值</text><text x="380.0" y="192" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">TTL 是变更延迟预算，不是「生效时间」</text>
+</svg>

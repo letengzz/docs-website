@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 344" width="760" height="344" role="img">
+<rect x="0" y="0" width="760" height="344" fill="#ffffff"/>
+<text x="380.0" y="34" text-anchor="middle" font-size="19" font-family="sans-serif" font-weight="bold" fill="#0f172a">四种传输：加密只覆盖 stub → 递归这一跳</text>
+<rect x="30" y="58" width="200" height="46" rx="9" fill="#f1f5f9" stroke="#334155" stroke-width="1.6"/>
+<text x="130.0" y="85.3" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#0f172a">UDP/TCP 53</text>
+<rect x="244" y="58" width="230" height="46" rx="9" fill="#f1f5f9" stroke="#334155" stroke-width="1.6"/>
+<text x="359.0" y="85.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">明文 · 首查 20 ms</text>
+<rect x="488" y="58" width="242" height="46" rx="9" fill="#f1f5f9" stroke="#334155" stroke-width="1.6"/>
+<text x="609.0" y="85.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">路径可见 4 处</text>
+<rect x="30" y="114" width="200" height="46" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="130.0" y="141.3" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#0f172a">DoT 853</text>
+<rect x="244" y="114" width="230" height="46" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="359.0" y="141.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">TLS · 首查 60 ms</text>
+<rect x="488" y="114" width="242" height="46" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="609.0" y="141.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">易被端口识别</text>
+<rect x="30" y="170" width="200" height="46" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="130.0" y="197.3" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#0f172a">DoH 443</text>
+<rect x="244" y="170" width="230" height="46" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="359.0" y="197.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">HTTPS · 首查 60 ms</text>
+<rect x="488" y="170" width="242" height="46" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="609.0" y="197.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">混入 Web 流量</text>
+<rect x="30" y="226" width="200" height="46" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.6"/>
+<text x="130.0" y="253.3" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#0f172a">DoQ 0-RTT</text>
+<rect x="244" y="226" width="230" height="46" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.6"/>
+<text x="359.0" y="253.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">QUIC · 首查 20 ms</text>
+<rect x="488" y="226" width="242" height="46" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.6"/>
+<text x="609.0" y="253.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">独立流无队头阻塞</text>
+<text x="380.0" y="292" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">100 并发丢 1 包：TCP p50 120 ms / 影响 50 条；QUIC p50 20 ms / 影响 1 条</text><text x="380.0" y="316" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">递归器仍看得到全部查询；递归 → 权威一跳通常仍是明文</text>
+</svg>

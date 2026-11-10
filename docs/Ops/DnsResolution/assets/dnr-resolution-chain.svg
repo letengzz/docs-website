@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 286" width="760" height="286" role="img">
+<rect x="0" y="0" width="760" height="286" fill="#ffffff"/>
+<text x="380.0" y="34" text-anchor="middle" font-size="19" font-family="sans-serif" font-weight="bold" fill="#0f172a">递归解析：三段 referral 与胶水记录</text>
+<rect x="40.0" y="60" width="209.33333333333334" height="88" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="144.66666666666669" y="99.4" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">根服务器</text>
+<text x="144.66666666666669" y="116.9" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">返回 com 的 NS</text>
+<line x1="251.33333333333334" y1="104.0" x2="272.33333333333337" y2="104.0" stroke="#94a3b8" stroke-width="1.8"/><polygon points="272.33333333333337,104.0 264.33333333333337,100.0 264.33333333333337,108.0" fill="#94a3b8"/>
+<rect x="275.33333333333337" y="60" width="209.33333333333334" height="88" rx="9" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/>
+<text x="380.00000000000006" y="99.4" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">.com 服务器</text>
+<text x="380.00000000000006" y="116.9" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">返回 example.com 的 NS</text>
+<line x1="486.66666666666674" y1="104.0" x2="507.6666666666667" y2="104.0" stroke="#94a3b8" stroke-width="1.8"/><polygon points="507.6666666666667,104.0 499.6666666666667,100.0 499.6666666666667,108.0" fill="#94a3b8"/>
+<rect x="510.6666666666667" y="60" width="209.33333333333334" height="88" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/>
+<text x="615.3333333333334" y="99.4" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">权威服务器</text>
+<text x="615.3333333333334" y="116.9" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">返回 A / AAAA</text>
+<rect x="40" y="172" width="320" height="62" rx="9" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/>
+<text x="200.0" y="198.4" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">有 glue：父区附带 NS 的 IP</text>
+<text x="200.0" y="215.9" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">3 次查询直达答案</text>
+<rect x="400" y="172" width="320" height="62" rx="9" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.6"/>
+<text x="560.0" y="198.4" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">无 glue 且 NS 在子域内</text>
+<text x="560.0" y="215.9" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">解析 NS 要先访问 NS 自己 → SERVFAIL</text>
+<text x="380.0" y="258" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">本机仿真：正常链 3 次查询；缺胶水时第 2 步即检出循环依赖</text>
+</svg>

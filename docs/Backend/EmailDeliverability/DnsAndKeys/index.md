@@ -219,6 +219,19 @@ DKIM selector 轮换与 KEK 版本绑定是**同构**的：删掉旧 DNS 记录�
 落地成两条硬约束：删除前查「是否还有在途邮件引用旧 selector」，并给旧记录标注 DECRYPT_ONLY 式的「只验签不签发」状态。
 别把「轮换完成」当成「旧记录可以删」，这两个时刻之间隔着整段在途投递窗口。
 
+## 与「DNS 解析工程与域名治理」专题的分工（第 271 天补充）
+
+| 维度 | 本页 | [DNS 解析工程与域名治理](../../../Ops/DnsResolution/index.md) |
+| --- | --- | --- |
+| 回答的问题 | SPF / DKIM / DMARC / DANE 的记录形状、selector 轮换与发信认证 | 一次解析的答案凭什么可信、变更凭什么可控 |
+| 不重复什么 | 不再讲邮件认证记录的填法；本专题讲 CAA、DNSSEC 链与记录语义约束 | 不重写既有组件文档 |
+
+**一页一坑**：**CAA 的 tree climbing 已经换规则**：本页表格里提到 DANE 依赖 DNSSEC，但 CAA 判定已由 [RFC 8659](https://www.rfc-editor.org/info/rfc8659)（2019）废止 RFC 6844——旧规范要求沿 CNAME/DNAME 链再做一次爬升，新规范只沿 FQDN 爬升、CNAME 交给 CA 的递归器处理。托管平台若仍按旧算法给客户域设策略，会出现「策略没生效」或「误伤客户域」。
+
+::: tip 回归判据
+对本域与一个通配子域各跑一次 `dig +short CAA`，确认 `issue` 与 `issuewild` 的语义符合 RFC 8659。
+:::
+
 ## 九、参考资料
 
 - [RFC 7208：SPF（含 §4.6.4 查询上限）](https://www.rfc-editor.org/rfc/rfc7208)

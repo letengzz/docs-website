@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 334" width="760" height="334" role="img">
+<rect x="0" y="0" width="760" height="334" fill="#ffffff"/>
+<text x="380.0" y="34" text-anchor="middle" font-size="19" font-family="sans-serif" font-weight="bold" fill="#0f172a">记录语义：四类记录各管一件事</text>
+<rect x="30" y="60" width="130" height="48" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="95.0" y="88.3" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#0f172a">地址类</text>
+<rect x="174" y="60" width="300" height="48" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="324.0" y="88.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">A / AAAA / CNAME / ALIAS</text>
+<rect x="488" y="60" width="242" height="48" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+<text x="609.0" y="88.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">名字指向哪里</text>
+<rect x="30" y="118" width="130" height="48" rx="9" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/>
+<text x="95.0" y="146.3" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#0f172a">委派类</text>
+<rect x="174" y="118" width="300" height="48" rx="9" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/>
+<text x="324.0" y="146.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">NS / SOA / DS / 胶水</text>
+<rect x="488" y="118" width="242" height="48" rx="9" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/>
+<text x="609.0" y="146.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">谁有权回答这个区</text>
+<rect x="30" y="176" width="130" height="48" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.6"/>
+<text x="95.0" y="204.3" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#0f172a">服务类</text>
+<rect x="174" y="176" width="300" height="48" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.6"/>
+<text x="324.0" y="204.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">MX / SRV / TXT / SVCB</text>
+<rect x="488" y="176" width="242" height="48" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.6"/>
+<text x="609.0" y="204.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">服务怎么被找到</text>
+<rect x="30" y="234" width="130" height="48" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="95.0" y="262.3" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#0f172a">安全类</text>
+<rect x="174" y="234" width="300" height="48" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="324.0" y="262.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">CAA / DNSKEY / RRSIG / TLSA</text>
+<rect x="488" y="234" width="242" height="48" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="609.0" y="262.2" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#0f172a">谁被允许签发 / 签名</text>
+<text x="380.0" y="306" text-anchor="middle" font-size="12.5" font-family="sans-serif" fill="#475569">zone apex 不能有 CNAME；CNAME 不能与其他记录共存</text>
+</svg>
