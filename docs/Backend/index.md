@@ -91,3 +91,4 @@
 - [离线批次与补数工程](BatchPipeline/index.md)
 - [密钥与凭据管理工程](SecretRuntime/index.md)
 - [全球化与时区本地化工程](Globalization/index.md)
+- [事件驱动集成与 CDC 工程](EventIntegration/index.md)

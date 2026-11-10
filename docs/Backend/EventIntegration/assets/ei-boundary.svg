@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 304" width="860" height="304">
+  <rect width="860" height="304" fill="#F8FAFC"/>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker></defs>
+  <text x="24" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">事务边界：三条捕获路线与各自的失败方式</text>
+  <rect x="24" y="74" width="250" height="128" rx="9" fill="#FEE2E2" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">双写（两次提交）</text>
+  <text x="38" y="122" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">DB commit 后 MQ send 前崩溃</text>
+  <text x="38" y="142" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">100,000 次写注入 100 次崩溃</text>
+  <text x="38" y="162" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">→ 永久不一致 100 行</text>
+  <rect x="305" y="74" width="250" height="128" rx="9" fill="#DCFCE7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="319" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">发件箱（同事务）</text>
+  <text x="319" y="122" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">业务行 + outbox 行一起提交</text>
+  <text x="319" y="142" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">崩溃时整事务回滚</text>
+  <text x="319" y="162" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">→ 永久不一致 0 行</text>
+  <rect x="586" y="74" width="250" height="128" rx="9" fill="#FEF3C7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="600" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">CDC（读日志）</text>
+  <text x="600" y="122" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">不改业务代码，读已提交事务</text>
+  <text x="600" y="142" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">拿到的是「状态」不是「意图」</text>
+  <text x="600" y="162" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">→ 语义要另做翻译</text>
+  <rect x="24" y="226" width="812" height="58" rx="9" fill="#F3E8FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="252" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">代价转移，不是消失</text>
+  <text x="38" y="274" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">outbox 把「丢」变成「重」：relay 至少一次投递 1,200 条（1.20%），由 UNIQUE(event_id) 收口</text>
+</svg>

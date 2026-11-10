@@ -88,6 +88,18 @@ Debezium 把 DDL 写进 **schema history topic**，重启时回放以恢复表�
 
 **验证**：创建连接器后，先确认快照把存量行以 `op=r` 写进 `blog.blog.posts`，再对源库做一次 UPDATE，确认出现 `op=u` 事件——两步都在，链路才算通。
 
+## 与「事件驱动集成与 CDC 工程」专题的分工（第 270 天补充）
+
+| 本页回答 | 专题回答 | 边界 |
+| --- | --- | --- |
+| Debezium 的安装、最小可用配置与基础用法 | [事件驱动集成与 CDC 工程](../../../Backend/EventIntegration/index.md)：两代采集栈的配置契约差异与迁移映射 | 工具用法留在本页；版本代际差异留在专题的两个版本目录 |
+
+**一页一坑**：把旧配置原样贴到新版本：`schema_only` 在当前官方文档已标 Deprecated（→ `no_data`），`never` 不在取值表，`schema.history.internal.kafka.topic` 还要求分区数为 1。
+
+::: danger 配置值跨代不能照抄
+升级顺序是「先改配置、后升级连接器」；反序会让新版本按新校验规则读旧配置，直接起不来。历史 topic 被自动建成多分区，则只在某次重启时才暴露。
+:::
+
 ## 参考资料
 
 - Debezium · MySQL connector：https://debezium.io/documentation/reference/stable/connectors/mysql.html

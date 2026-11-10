@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="860" height="280">
+  <rect width="860" height="280" fill="#F8FAFC"/>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker></defs>
+  <text x="24" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">七段链：一条数据库变更到下游副本的七个判定点</text>
+  <text x="24" y="56" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">空白不在「怎么抓 binlog」，而在「抓出来之后、下游消费之前」这一段</text>
+  <rect x="20" y="74" width="108" height="66" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="34" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">捕</text>
+  <text x="34" y="122" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">事务边界</text>
+  <path d="M128,107 L138,107" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <rect x="140" y="74" width="108" height="66" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="154" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">封</text>
+  <text x="154" y="122" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">事件契约</text>
+  <path d="M248,107 L258,107" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <rect x="260" y="74" width="108" height="66" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="274" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">序</text>
+  <text x="274" y="122" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">分区顺序</text>
+  <path d="M368,107 L378,107" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <rect x="380" y="74" width="108" height="66" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="394" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">投</text>
+  <text x="394" y="122" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">投递去重</text>
+  <path d="M488,107 L498,107" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <rect x="500" y="74" width="108" height="66" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="514" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">重</text>
+  <text x="514" y="122" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">快照接缝</text>
+  <path d="M608,107 L618,107" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <rect x="620" y="74" width="108" height="66" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="634" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">放</text>
+  <text x="634" y="122" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">回放重建</text>
+  <path d="M728,107 L738,107" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <rect x="740" y="74" width="108" height="66" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="754" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">对</text>
+  <text x="754" y="122" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">一致对账</text>
+  <rect x="20" y="168" width="260" height="78" rx="9" fill="#DCFCE7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="34" y="194" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">能承诺的</text>
+  <text x="34" y="216" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">同一聚合内有序、至少一次投递</text>
+  <text x="34" y="236" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">下游幂等后才是「恰好一次效果」</text>
+  <rect x="300" y="168" width="260" height="78" rx="9" fill="#FEF3C7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="314" y="194" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">不能承诺的</text>
+  <text x="314" y="216" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">跨分区全局有序、零重复投递</text>
+  <text x="314" y="236" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">不丢不重同时成立（无幂等时）</text>
+  <rect x="580" y="168" width="260" height="78" rx="9" fill="#FEE2E2" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="594" y="194" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">最容易安静出错的</text>
+  <text x="594" y="216" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">快照窗口 60s × 2000/s</text>
+  <text x="594" y="236" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">= 120,000 条丢或重</text>
+</svg>

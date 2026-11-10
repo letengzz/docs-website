@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 312" width="860" height="312">
+  <rect width="860" height="312" fill="#F8FAFC"/>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker></defs>
+  <text x="24" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">事件契约：信封比载荷大，解释版本必须随行</text>
+  <rect x="24" y="74" width="390" height="158" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">信封 envelope（223 B / 73.8%）</text>
+  <text x="38" y="122" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">event_id：去重坐标</text>
+  <text x="38" y="142" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">op / ts_ms：动作与时刻</text>
+  <text x="38" y="162" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">source.lsn / snapshot：位点与来源</text>
+  <text x="38" y="182" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">schema_version：解释版本</text>
+  <rect x="434" y="74" width="402" height="158" rx="9" fill="#DCFCE7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="448" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">载荷 payload（79 B / 26.2%）</text>
+  <text x="448" y="122" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">before：变更前（DELETE 可能只有主键）</text>
+  <text x="448" y="142" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">after：变更后</text>
+  <text x="448" y="162" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">单条 JSON 共 302 B</text>
+  <text x="448" y="182" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">元数据比业务数据贵 2.8 倍</text>
+  <rect x="24" y="250" width="812" height="46" rx="9" fill="#FEF3C7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="276" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">DDL 联动</text>
+  <text x="38" y="298" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">删列 → 旧消费者 20/20 失败；INT 改 STRING → 强类型 20/20 失败；加可空列 → 0 失败</text>
+</svg>

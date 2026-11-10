@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 312" width="860" height="312">
+  <rect width="860" height="312" fill="#F8FAFC"/>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker></defs>
+  <text x="24" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">版本目录：采集栈的两代不兼容写法</text>
+  <rect x="24" y="74" width="390" height="158" rx="9" fill="#FEF3C7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">LegacyConnector（仅存量）</text>
+  <text x="38" y="122" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">Debezium 1.x / 2.7.4.Final</text>
+  <text x="38" y="142" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">snapshot.mode=never / schema_only</text>
+  <text x="38" y="162" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">初始快照全局读锁</text>
+  <text x="38" y="182" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">旧 schema.history 配置键</text>
+  <rect x="434" y="74" width="402" height="158" rx="9" fill="#DCFCE7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="448" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">ModernConnector（当前主线）</text>
+  <text x="448" y="122" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">Debezium 3.7.1.Final（2026-11-06）</text>
+  <text x="448" y="142" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">snapshot.mode=no_data（旧值已移除）</text>
+  <text x="448" y="162" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">增量快照需 signal.data.collection</text>
+  <text x="448" y="182" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">Java 21+ / Kafka 4.4.0</text>
+  <rect x="24" y="250" width="812" height="46" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="276" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">旧目录不改写、不删除、不合并</text>
+  <text x="38" y="298" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">同一份需求两套不兼容写法 → 按 AGENTS 第 3 节建版本目录，迁移映射只在旧页补</text>
+</svg>

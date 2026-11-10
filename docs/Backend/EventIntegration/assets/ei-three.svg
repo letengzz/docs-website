@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 290" width="860" height="290">
+  <rect width="860" height="290" fill="#F8FAFC"/>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker></defs>
+  <text x="24" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">三个「这条变更」：状态、事实、副本</text>
+  <rect x="24" y="74" width="250" height="118" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">① 源库里的一行</text>
+  <text x="38" y="122" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">状态（state），可覆盖</text>
+  <text x="38" y="142" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">只有当前值，没有历史</text>
+  <text x="38" y="162" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">事务提交后才可见</text>
+  <rect x="305" y="74" width="250" height="118" rx="9" fill="#FEF3C7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="319" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">② 事件流里的一条</text>
+  <text x="319" y="122" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">事实（fact），不可改</text>
+  <text x="319" y="142" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">带 op / lsn / schema_version</text>
+  <text x="319" y="162" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">至少一次，可能重复</text>
+  <rect x="586" y="74" width="250" height="118" rx="9" fill="#DCFCE7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="600" y="100" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">③ 下游里的一行</text>
+  <text x="600" y="122" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">副本（replica），可重建</text>
+  <text x="600" y="142" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">带 event_id 与 version</text>
+  <text x="600" y="162" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">必须能被校验和比对</text>
+  <path d="M274,133 L303,133" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <path d="M555,133 L584,133" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <rect x="24" y="216" width="812" height="54" rx="9" fill="#F3E8FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="242" font-family="sans-serif" font-size="14" font-weight="700" fill="#1E293B">三个主语不同 → 三种「一致」也不同</text>
+  <text x="38" y="264" font-family="sans-serif" font-size="13" font-weight="400" fill="#475569">源库与事件：事务边界；事件与下游：投递与幂等；源库与下游：对账与水位</text>
+</svg>

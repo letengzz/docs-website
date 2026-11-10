@@ -1983,3 +1983,23 @@ export const Globalization = [
     ],
   },
 ];
+
+// 事件驱动集成与 CDC 工程（集成契约层；含两个采集栈版本目录）
+export const EventIntegration = [
+  {
+    text: "事件驱动集成与 CDC 工程",
+    link: "/docs/Backend/EventIntegration/index.md",
+    items: [
+      { text: "事务边界：双写、发件箱与读日志", link: "/docs/Backend/EventIntegration/TransactionBoundary/index.md" },
+      { text: "事件契约：信封、解释版本与 DDL 联动", link: "/docs/Backend/EventIntegration/EventContract/index.md" },
+      { text: "顺序与分区键：有序的边界", link: "/docs/Backend/EventIntegration/OrderingPartition/index.md" },
+      { text: "投递语义与去重：至少一次之后", link: "/docs/Backend/EventIntegration/DeliveryDedup/index.md" },
+      { text: "全量与增量的接缝：丢、重、回退", link: "/docs/Backend/EventIntegration/SnapshotHandoff/index.md" },
+      { text: "回放、重建与跨系统对账", link: "/docs/Backend/EventIntegration/ReplayReconcile/index.md" },
+      { text: "旧版采集栈（仅存量项目使用）", link: "/docs/Backend/EventIntegration/LegacyConnector/index.md" },
+      { text: "当前主线采集栈", link: "/docs/Backend/EventIntegration/ModernConnector/index.md" },
+      { text: "实战：一张事件表、十条断言与一个反向探针", link: "/docs/Backend/EventIntegration/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/EventIntegration/FAQ/index.md" },
+    ],
+  },
+];

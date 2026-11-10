@@ -537,6 +537,18 @@ CREATE TABLE idem_record (
 
 → 教务侧的完整链路见[学籍、选课与排课工程](../../AcademicAffairs/index.md)。
 
+## 与「事件驱动集成与 CDC 工程」专题的分工（第 270 天补充）
+
+| 本页回答 | 专题回答 | 边界 |
+| --- | --- | --- |
+| 请求级幂等键的生成、作用域与失效 | [事件驱动集成与 CDC 工程](../../EventIntegration/index.md)：事件级去重合上版本条件后的下游写入 | 本页挡「同一请求点了两次」，专题挡「同一事件重放、不同事件乱序」 |
+
+**一页一坑**：只装去重键不装版本条件：快照接缝里 49.88% 的窗口更新落在已扫描区，去重完全生效，但 59,859 行的值被旧值覆盖——行数对、去重对，值错了。
+
+::: danger 两道门要同时装
+`UNIQUE(event_id)` 判断「同一条处理过没有」，`WHERE lsn < :incoming` 判断「这条是不是更晚」。前者管重复，后者管新旧，互相不能替代。
+:::
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

@@ -179,6 +179,18 @@ SELECT DISTINCT event_type FROM events
 WHERE event_type NOT IN ('OrderCreated','StockReserved','OrderPaid','OrderPaidInCents','OrderShipped','OrderRefunded');
 ```
 
+## 与「事件驱动集成与 CDC 工程」专题的分工（第 270 天补充）
+
+| 本页回答 | 专题回答 | 边界 |
+| --- | --- | --- |
+| 事件自身的版本演进、upcaster 与兼容矩阵 | [事件驱动集成与 CDC 工程](../../EventIntegration/index.md)：源库 DDL 变更如何传播到事件契约与下游消费者 | 本页管「事件类型变了怎么读旧事件」，专题管「表结构变了会发出什么」 |
+
+**一页一坑**：把「加列」当破坏性变更一刀切：20 个各自 pin 住旧 schema 的消费者实测，加可空列失败 0/20，删列 20/20，INT 改 STRING 强类型 20/20。弱类型消费者更危险——不报错，只是静默变形。
+
+::: danger 语义变更不能靠兼容性策略放行
+把 `amount` 单位从分改成元、枚举值重新编号，结构完全兼容但数值全错。这类变更必须新开事件类型并保留迁移期。
+:::
+
 ## 参考资料
 
 - Martin Fowler, *Event Sourcing*（版本与 upcasting 一节）
