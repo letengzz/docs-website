@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" role="img">
+<title>三段计算：在线、离线、批处理</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="880" height="380" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">三段计算：在线、离线、批处理</text>
+<rect x="24" y="66" width="256" height="78" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="152.0" y="98.0" font-size="13" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">在线 · 分层 BFS</text>
+<text x="152.0" y="117.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">8.96 ms/对</text>
+<text x="310" y="100" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">超时预算 200 ms 内最多 2~3 跳</text>
+<text x="310" y="124" font-size="11.5" fill="#94a3b8" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">不放进在线链路：跳数不确定</text>
+<rect x="24" y="162" width="256" height="78" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="152.0" y="194.0" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">离线 · PageRank</text>
+<text x="152.0" y="213.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">144.6 ms/轮</text>
+<text x="310" y="196" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">20 轮 ≈ 2.9 s，固定轮数 + L1</text>
+<text x="310" y="220" font-size="11.5" fill="#94a3b8" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">一轮 ≠ 收敛，中段排名无区分度</text>
+<rect x="24" y="258" width="256" height="78" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="152.0" y="290.0" font-size="13" fill="#b45309" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">批处理 · 社区发现</text>
+<text x="152.0" y="309.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">秒~十秒级</text>
+<text x="310" y="292" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">带版本 + 固定随机种子</text>
+<text x="310" y="316" font-size="11.5" fill="#94a3b8" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">同图两次跑必须同结果</text>
+<text x="24" y="356" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">成本口径：183,269 条边 / 50,000 节点；结果按 (score DESC, id ASC) 落库。</text>
+</svg>

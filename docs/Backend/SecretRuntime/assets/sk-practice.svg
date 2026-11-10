@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="320" viewBox="0 0 880 320" role="img">
+<title>实战：十张表、四个触发器、十条断言</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="880" height="320" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">实战：十张表、四个触发器、十条断言</text>
+<rect x="28" y="72" width="262" height="82" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="159" y="104" font-size="16" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">10 张表</text>
+<text x="159" y="130" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">六张是关系表</text>
+<line x1="290" y1="113" x2="310" y2="113" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="310" y="72" width="262" height="82" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="441" y="104" font-size="16" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">4 个触发器</text>
+<text x="441" y="130" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">把规则写死在库里</text>
+<line x1="572" y1="113" x2="592" y2="113" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="592" y="72" width="262" height="82" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="723" y="104" font-size="16" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">10 条断言</text>
+<text x="723" y="130" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">含 3 条反向探针</text>
+<rect x="28" y="174" width="824" height="30" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="42" y="194" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">A1 / A2 / A4</text>
+<text x="180" y="194" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">反向探针：无版本密文、删被引用版本、窗口内禁用旧版</text>
+<text x="836" y="194" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="end" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">必须被拒</text>
+<rect x="28" y="208" width="824" height="30" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="42" y="228" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">A5 / A6</text>
+<text x="180" y="228" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">旧版本保留 200,000 可读；删掉将丢 183,250 条</text>
+<text x="836" y="228" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="end" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">PASS</text>
+<rect x="28" y="242" width="824" height="30" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="42" y="262" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">A3 / A8</text>
+<text x="180" y="262" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">CAS 只生效一次；审计序号严格单调</text>
+<text x="836" y="262" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="end" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">PASS</text>
+<rect x="28" y="276" width="824" height="30" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="42" y="296" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">A10</text>
+<text x="180" y="296" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">索引 0.6156 ms vs 全扫 10.7546 ms（17.5×）</text>
+<text x="836" y="296" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="end" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">PASS</text>
+<text x="440" y="314" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">PRACTICE 10/10 PASS / EXIT=0（Python 3.13.12 + SQLite 3.50.4，种子 20261107）</text>
+</svg>

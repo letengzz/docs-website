@@ -268,6 +268,19 @@ UPDATE content SET visibility = 'removed'
 
 :::
 
+## 与「离线批次与补数工程」专题的分工（第 267 天补充）
+
+同一个「只生效一次」，在两个层面的键不一样。
+
+| 层面 | 本册的键 | 批次册的键 |
+| --- | --- | --- |
+| 一次请求 | 请求指纹（含参数 + 权限范围） | — |
+| 一次运行 | `attempt` 序号 + `is_current` | `UNIQUE(job_id, data_date, attempt)` |
+| 一个分区 | — | `(job_id, data_date)`，重跑覆盖 |
+| 一次补数 | — | `(req_id, job_id, data_date)`，状态只能向前 |
+
+**只在本册成立的坑**：拿「批次号」（`20260915_0210`）当幂等键。它看起来唯一，但每次重跑都会生成新批次号，于是「重跑」在库里表现为「又来了一批新数据」——实测同一分区跑 3 次变成 3.0 倍行数。幂等键必须是业务上同一件事的标识，见[分区写入](../BatchPipeline/PartitionWrite/index.md)。
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——状态码语义的原始出处（已过期归档）

@@ -10,9 +10,9 @@
 
 ```shell
 # 起一个带密钥的子进程
-DB_PASSWORD='S3cr3t-Token-9f2a' python3 -c 'import time; time.sleep(5)' &
+DB_PASSWORD='your-example-password' python3 -c 'import time; time.sleep(5)' &
 sleep 0.5
-ps eww -p $! | grep -c 'S3cr3t-Token-9f2a'     # 1
+ps eww -p $! | grep -c 'your-example-password'     # 1
 ```
 
 本机结果：`ps eww` 的输出共 **19,793 字节**，其中包含**完整环境变量块**，密钥明文可检索。
@@ -125,8 +125,8 @@ grep -rl --exclude-dir={node_modules,.git,dist} 'OLD_KEY_PREFIX' . ~ 2>/dev/null
 
 ```shell
 # 1) 进程可见性（应当搜不到）
-( DB_PASSWORD='probe-9f2a' sleep 3 & ); sleep 0.5
-ps eww -Ao pid,command | grep -c 'probe-9f2a'      # 期望 0（用命令级变量）
+( DB_PASSWORD='your-example-probe' sleep 3 & ); sleep 0.5
+ps eww -Ao pid,command | grep -c 'your-example-probe'      # 期望 0（用命令级变量）
 
 # 2) 启动文件扫描（应当无输出）
 grep -nE 'sk-[A-Za-z0-9]{16,}|AKIA[0-9A-Z]{16}|BEGIN [A-Z ]*PRIVATE' ~/.zshrc ~/.zprofile ~/.zshenv 2>/dev/null
@@ -139,6 +139,28 @@ git log --oneline -S 'sk-' --all | head
 ```
 
 预期：第 1 步为 `0`；第 2、3 步无输出；第 4 步为空。**第 4 步不为空时，唯一的正确处置是轮换密钥**——历史可以被重写，但已被读取的密钥不能被收回。
+
+## 与「密钥与凭据管理工程（运行时层）」专题的分工（第 268 天补充）
+
+| 维度 | 分工说明 |
+| --- | --- |
+| 本页回答什么 | 本机暴露面：四层注入方式、`ps eww` 可读的进程环境、`op run` 进程级注入、扫描与轮换四步 |
+| 新专题回答什么 | 凭据进到应用之后的事：进程内 DEK 缓存 TTL 是安全参数、吊销从「点了」到「真不能用」的传播延迟 |
+| 边界在哪 | 本页管「密钥进不进进程环境、磁盘上有没有明文」，新专题管「进进程之后缓存到几时、吊销后残留多久」 |
+
+`op run` 把值直接注入被启动的那一个进程，磁盘无明文、也不进 shell 环境，这一层本页已经解决。
+但注入做对不等于吊销生效：密钥进了应用，通常会被缓存成 DEK，缓存 TTL 才是吊销残留窗口的源头。
+第 268 天新建的 [密钥与凭据管理工程（运行时层）](../../../Backend/SecretRuntime/index.md) 专题把「TTL 是安全参数」单独成章，给出吊销残留的量化判据。
+本页的「泄漏后先吊销」仍是第一步；吊销之后还剩多少请求在用旧密钥，去新专题的「凭据分发与进程内缓存」一节查。
+
+**本页特有的一个坑**
+
+把 `op run` 当成「密钥问题的终点」是最容易漏的一层：它只保证「不落盘、不进环境变量」，不保证「吊销立刻生效」。
+本机 20 万请求/天的模拟压测：DEK 缓存 TTL 设 **3600s**，吊销后仍有 **8,333 次请求（4.1665%）** 拿着旧密钥继续跑；
+把 TTL 降到 **30s**，残留降到 **69 次（0.0345%）**，代价是 KMS 调用从 24 次/天涨到 2,880 次/天。
+所以「注入方式选对了」和「吊销真生效了」是两件事，中间隔着一个缓存 TTL。
+正确姿势：给缓存配主动失效（吊销事件广播到各实例清缓存），或用短 TTL 叠加抖动刷新，别把 3600s 当性能默认值。
+判定标准写成一条：吊销后旧密钥残留请求数占比必须可量化，而不是「感觉应该没了」。
 
 ## 参考资料
 

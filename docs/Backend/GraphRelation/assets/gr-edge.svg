@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" role="img">
+<title>边写入的四道闸门</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="880" height="360" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">边写入的四道闸门</text>
+<rect x="24" y="62" width="250" height="56" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="149.0" y="83.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">主键</text>
+<text x="149.0" y="102.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">ON CONFLICT DO NOTHING</text>
+<line x1="149" y1="119" x2="149" y2="130" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="24" y="132" width="250" height="56" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="149.0" y="153.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">事务</text>
+<text x="149.0" y="172.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">两行同生同死</text>
+<line x1="149" y1="189" x2="149" y2="200" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="24" y="202" width="250" height="56" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="149.0" y="223.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">排序</text>
+<text x="149.0" y="242.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">按主键排序防死锁</text>
+<line x1="149" y1="259" x2="149" y2="270" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="24" y="272" width="250" height="56" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="149.0" y="293.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">清理</text>
+<text x="149.0" y="312.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">先边 → 节点 → 缓存</text>
+<text x="310" y="90" font-size="13" fill="#0f172a" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">写入放大实测</text>
+<text x="310" y="122" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">1,000 对双向关系 = 2,000 行 / 29.1 ms</text>
+<text x="310" y="150" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">有触发器 1,988.6 ms vs 无触发器 347.5 ms</text>
+<text x="310" y="178" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">（5.72×，每条边多一次随机 UPDATE）</text>
+<rect x="310" y="206" width="520" height="96" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="570.0" y="247.0" font-size="13" fill="#b45309" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">删除顺序</text>
+<text x="570.0" y="266.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">先删边（无孤儿）→ 再删节点 → 最后清缓存</text>
+</svg>

@@ -301,6 +301,18 @@ WHERE o.status = 'PAID'
 
 延伸阅读：[筛选：敏感字段三层隔离](../../Recruiting/Screening/index.md)、[面试：六状态与是否占位](../../Recruiting/Interview/index.md)。
 
+## 与「图数据与关系计算工程」专题的分工
+
+| 问题 | 本页 | 专题 |
+| --- | --- | --- |
+| 权限模型（RBAC/ABAC）、判定点、最小权限 | 回答 | 不重复 |
+| 权限继承树的遍历实现与上限 | 给语义 | 给成本与终止性 |
+| 循环授权、深度爆炸、缓存失效 | 不回答 | 回答 |
+
+::: danger 本页特有的一个坑
+权限继承写成图之后，「A 继承 B、B 继承 A」这种循环配置在业务上并不罕见（两个部门互设管理员）。用 `WITH RECURSIVE` 且没有 `UNION` 与深度上限时，判定请求会一直转到连接超时——而它表现为「登录很慢」，不是「配置错误」。**权限判定必须有深度上限（建议 8~10）与环检测**，超限时按「拒绝」而不是「放行」处理。
+:::
+
 ## 参考资料
 
 - OWASP · Authorization Cheat Sheet：https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html

@@ -1655,6 +1655,14 @@ export const AMLCompliance = [
   },
 ];
 
+// 台账已登记欠账：目录与全部 git 历史中都不存在，保留占位而不造页
+export const LoanServicing = [
+  {
+    text: "信贷放款与还款服务工程（页面待补）",
+    items: [],
+  },
+];
+
 export const AcademicAffairs = [
   {
     text: "学籍、选课与排课工程",
@@ -1890,6 +1898,67 @@ export const AuditForensics = [
       { text: "四眼原则与审计访问", link: "/docs/Backend/AuditForensics/FourEyes/index.md" },
       { text: "实战：十张表、七个触发器与十一条断言", link: "/docs/Backend/AuditForensics/Practice/index.md" },
       { text: "常见问题与分诊", link: "/docs/Backend/AuditForensics/FAQ/index.md" },
+    ],
+  },
+];
+
+// 图数据与关系计算工程
+export const GraphRelation = [
+  {
+    text: "图数据与关系计算工程",
+    link: "/docs/Backend/GraphRelation/index.md",
+    items: [
+      { text: "总览：三个「这条关系」与五个安静的失败", link: "/docs/Backend/GraphRelation/Overview/index.md" },
+      { text: "关系建模：谁是节点、谁是边", link: "/docs/Backend/GraphRelation/RelationModel/index.md" },
+      { text: "边写入：双向、幂等与孤儿边", link: "/docs/Backend/GraphRelation/EdgeWrite/index.md" },
+      { text: "三种关系存储：邻接表、闭包表、物化路径", link: "/docs/Backend/GraphRelation/StorageForm/index.md" },
+      { text: "多跳遍历：终止性、放大与分层 BFS", link: "/docs/Backend/GraphRelation/Traversal/index.md" },
+      { text: "超点与切分：两万条出边的那一个节点", link: "/docs/Backend/GraphRelation/SuperNode/index.md" },
+      { text: "路径与中心性：最短路径、PageRank 与社区", link: "/docs/Backend/GraphRelation/PathAlgorithm/index.md" },
+      { text: "一致性与快照：读到的图是哪一刻的", link: "/docs/Backend/GraphRelation/Snapshot/index.md" },
+      { text: "服务化：在线多跳、预计算与超时预算", link: "/docs/Backend/GraphRelation/Serving/index.md" },
+      { text: "实战：七张表、两个触发器与十条断言", link: "/docs/Backend/GraphRelation/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/GraphRelation/FAQ/index.md" },
+    ],
+  },
+];
+
+// 离线批次与补数工程
+export const BatchPipeline = [
+  {
+    text: "离线批次与补数工程",
+    link: "/docs/Backend/BatchPipeline/index.md",
+    items: [
+      { text: "总览：三个日期、三种成功与五个安静的失败", link: "/docs/Backend/BatchPipeline/Overview/index.md" },
+      { text: "批次与实例：作业、运行、尝试与分区", link: "/docs/Backend/BatchPipeline/BatchInstance/index.md" },
+      { text: "分区写入：覆盖、空窗与原子提交", link: "/docs/Backend/BatchPipeline/PartitionWrite/index.md" },
+      { text: "依赖与就绪：任务级还是分区级", link: "/docs/Backend/BatchPipeline/Dependency/index.md" },
+      { text: "就绪与门禁：四条判据各自的盲区", link: "/docs/Backend/BatchPipeline/ReadinessGate/index.md" },
+      { text: "补数与回刷：级联、顺序与隔离", link: "/docs/Backend/BatchPipeline/Backfill/index.md" },
+      { text: "SLA 与就绪预算：07:00 之前的时间去哪了", link: "/docs/Backend/BatchPipeline/SlaBudget/index.md" },
+      { text: "重跑与对账：四个数怎么核平", link: "/docs/Backend/BatchPipeline/Reconcile/index.md" },
+      { text: "实战：十张表、五个触发器与十九条断言", link: "/docs/Backend/BatchPipeline/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/BatchPipeline/FAQ/index.md" },
+    ],
+  },
+];
+
+// 密钥与凭据管理工程（运行时层）
+export const SecretRuntime = [
+  {
+    text: "密钥与凭据管理工程",
+    link: "/docs/Backend/SecretRuntime/index.md",
+    items: [
+      { text: "总览：三个「这把密钥」与六个安静的失败", link: "/docs/Backend/SecretRuntime/Overview/index.md" },
+      { text: "密钥分层与信封加密：KEK、DEK 与密文格式", link: "/docs/Backend/SecretRuntime/Layering/index.md" },
+      { text: "版本绑定：密文必须自己说清用了哪把密钥", link: "/docs/Backend/SecretRuntime/VersionBinding/index.md" },
+      { text: "凭据分发与进程内缓存：TTL 是安全参数", link: "/docs/Backend/SecretRuntime/Distribution/index.md" },
+      { text: "轮换窗口：双版本并存期怎么定、怎么关", link: "/docs/Backend/SecretRuntime/RotationWindow/index.md" },
+      { text: "吊销传播：从「点了吊销」到「真的不能用」", link: "/docs/Backend/SecretRuntime/Revocation/index.md" },
+      { text: "重加密与旧版本保留：为什么密文比密钥活得久", link: "/docs/Backend/SecretRuntime/Rekey/index.md" },
+      { text: "泄露影响面：把「最小权限」算成一笔账", link: "/docs/Backend/SecretRuntime/BlastRadius/index.md" },
+      { text: "实战：十张表、四个触发器与十条断言", link: "/docs/Backend/SecretRuntime/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/SecretRuntime/FAQ/index.md" },
     ],
   },
 ];

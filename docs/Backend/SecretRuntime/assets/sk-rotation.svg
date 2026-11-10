@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" role="img">
+<title>双版本并存窗口：按 p99 定，不是按平均或凭感觉</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="880" height="330" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">双版本并存窗口：按 p99 定，不是按平均或凭感觉</text>
+<text x="28" y="62" font-size="12" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">4,000 个实例的切换耗时：p50 319.3s / p99 2164.3s（36.1min）/ max 3516.1s</text>
+<line x1="40" y1="112" x2="840" y2="112" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="40" y="130" width="146" height="94" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="113" y="154" font-size="13" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">0 min</text>
+<text x="113" y="178" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">未切 4000</text>
+<text x="113" y="200" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">100%</text>
+<line x1="113" y1="112" x2="113" y2="130" stroke="#b91c1c" stroke-width="1.4"/>
+<rect x="200" y="130" width="146" height="94" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="273" y="154" font-size="13" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">5 min</text>
+<text x="273" y="178" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">未切 2093</text>
+<text x="273" y="200" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">52.325%</text>
+<line x1="273" y1="112" x2="273" y2="130" stroke="#b91c1c" stroke-width="1.4"/>
+<rect x="360" y="130" width="146" height="94" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1"/>
+<text x="433" y="154" font-size="13" fill="#b45309" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">15 min</text>
+<text x="433" y="178" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">未切 609</text>
+<text x="433" y="200" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">15.225%</text>
+<line x1="433" y1="112" x2="433" y2="130" stroke="#b45309" stroke-width="1.4"/>
+<rect x="520" y="130" width="146" height="94" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1"/>
+<text x="593" y="154" font-size="13" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">30 min</text>
+<text x="593" y="178" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">未切 90</text>
+<text x="593" y="200" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">2.25%</text>
+<line x1="593" y1="112" x2="593" y2="130" stroke="#2563eb" stroke-width="1.4"/>
+<rect x="680" y="130" width="146" height="94" rx="6" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="753" y="154" font-size="13" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">60 min</text>
+<text x="753" y="178" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">未切 0</text>
+<text x="753" y="200" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">0%</text>
+<line x1="753" y1="112" x2="753" y2="130" stroke="#0d9488" stroke-width="1.4"/>
+<rect x="28" y="244" width="400" height="70" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1"/>
+<text x="44" y="266" font-size="12" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">关窗判据（查询，不是计时）</text>
+<text x="44" y="288" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">SELECT COUNT(*) FROM service_instance</text>
+<text x="44" y="306" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">WHERE active_version &lt; :new  → 必须为 0</text>
+<rect x="444" y="244" width="408" height="70" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="460" y="266" font-size="12" fill="#b91c1c" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">并发轮换必须 CAS</text>
+<text x="460" y="288" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">无条件下 10,000 次里 3,480 次（34.8%）</text>
+<text x="460" y="306" font-size="11" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">丢更新；WHERE version = :old 后为 0</text>
+</svg>

@@ -113,6 +113,19 @@
 3. **以为分区表能建全局唯一索引**：`CREATE UNIQUE INDEX ON ev (id)` 直接报错 `unique constraint on partitioned table must include all partitioning columns`。想在分区表上保住「业务主键唯一」，只能把分区键带进唯一键（`UNIQUE (id, ts)`），并接受「同一 `id` 在不同月份可以重复」这个事实——这一点必须在设计阶段就和业务对齐。
 :::
 
+## 与「离线批次与补数工程」专题的分工（第 267 天补充）
+
+本页讲「分区怎么建、怎么归档、怎么清」，批次册讲「分区什么时候算写完」。
+
+| 问题 | 本页 | 批次册 |
+| --- | --- | --- |
+| 分区键 | 按时间/范围/列表选键，控制单分区大小 | 分区键恒等于 `data_date`，且与数据日严格一致 |
+| 归档 | 冷数据下沉、分区 detach | 归档前必须确认该分区 `state='READY'` 且已对账 |
+| 清理 | 保留期与删除 | 清理会破坏「可重放」，必须留档（`checksum` 与行数） |
+| 空分区 | 一般建议不建空分区 | **必须登记空分区**（`EMPTY`），否则下游无法区分「空」与「没跑」 |
+
+**只在本页成立的坑**：按「建分区更省空间」的思路，把 0 行的日期直接跳过不建分区。批次侧看到的是「没有这一行」，与「上游还没跑」完全一样，下游只能干等或超时告警。正确做法是建一个 `EMPTY` 登记（可以不建物理分区），见[就绪与门禁](../../Backend/BatchPipeline/ReadinessGate/index.md)。
+
 ## 参考资料
 
 - [PostgreSQL 18 · Release Notes](https://www.postgresql.org/docs/18/release-18.html)——`VACUUM` 处理继承子表、禁止 `UNLOGGED` 分区表等不兼容项

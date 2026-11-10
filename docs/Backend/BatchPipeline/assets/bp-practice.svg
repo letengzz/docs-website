@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="350" viewBox="0 0 880 350" role="img">
+<title>实战：10 张表、5 个触发器、2 个视图</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="880" height="350" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">实战：10 张表、5 个触发器、2 个视图</text>
+<rect x="24" y="62" width="156" height="60" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="102.0" y="96.0" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">batch_job</text>
+<rect x="192" y="62" width="156" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="270.0" y="96.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">batch_run</text>
+<rect x="360" y="62" width="156" height="60" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="438.0" y="96.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">partition_registry</text>
+<rect x="528" y="62" width="156" height="60" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+<text x="606.0" y="96.0" font-size="12.5" fill="#b45309" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">readiness_check</text>
+<rect x="696" y="62" width="156" height="60" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="774.0" y="96.0" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">job_dependency</text>
+<rect x="24" y="134" width="156" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="102.0" y="168.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">backfill_request</text>
+<rect x="192" y="134" width="156" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="270.0" y="168.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">backfill_item</text>
+<rect x="360" y="134" width="156" height="60" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="438.0" y="168.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">recon_result</text>
+<rect x="528" y="134" width="156" height="60" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="606.0" y="168.0" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">batch_audit</text>
+<rect x="696" y="134" width="156" height="60" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="774.0" y="168.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">src_order</text>
+<text x="24" y="222" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">5 个触发器拦五件事：① 没有成功运行不许登记分区；② 同一天只允许一条「当前生效」；③ 已就绪分区不许原地改；</text>
+<text x="24" y="250" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">④ 补数明细状态只能向前（PENDING→RUNNING→DONE/FAILED）；⑤ 判据不足两条或有一条没过，不许标 READY。</text>
+<text x="24" y="278" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">2 个视图：v_partition_ready（行数 vs 前 7 日均值）、v_batch_lag（就绪时刻 vs SLA）。</text>
+<text x="24" y="306" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">19 条断言（C1~C10 / N1~N9）全 PASS、EXIT=0；每条 N 都是「拆掉守卫必须变成失败」的反向探针。</text>
+</svg>

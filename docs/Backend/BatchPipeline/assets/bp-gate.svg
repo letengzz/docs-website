@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="390" viewBox="0 0 880 390" role="img">
+<title>四条就绪判据各自的盲区（实测矩阵）</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="880" height="390" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">四条就绪判据各自的盲区（实测矩阵）</text>
+<text x="290.0" y="74" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">行数 ±30%</text>
+<text x="450.0" y="74" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">金额 ±30%</text>
+<text x="610.0" y="74" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">水位 ±5 min</text>
+<text x="770.0" y="74" font-size="12" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">校验和</text>
+<rect x="24" y="84" width="178" height="38" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="34" y="108" font-size="11.5" fill="#0f172a" font-weight="500" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">0 行</text>
+<rect x="216" y="84" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="290.0" y="108" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="376" y="84" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="450.0" y="108" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="536" y="84" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="610.0" y="108" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="696" y="84" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="770.0" y="108" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="24" y="128" width="178" height="38" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="34" y="152" font-size="11.5" fill="#0f172a" font-weight="500" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">少一半</text>
+<rect x="216" y="128" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="290.0" y="152" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="376" y="128" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="450.0" y="152" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="536" y="128" width="148" height="38" rx="5" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="610.0" y="152" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">漏</text>
+<rect x="696" y="128" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="770.0" y="152" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="24" y="172" width="178" height="38" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="34" y="196" font-size="11.5" fill="#0f172a" font-weight="500" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">重复一倍</text>
+<rect x="216" y="172" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="290.0" y="196" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="376" y="172" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="450.0" y="196" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="536" y="172" width="148" height="38" rx="5" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="610.0" y="196" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">漏</text>
+<rect x="696" y="172" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="770.0" y="196" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="24" y="216" width="178" height="38" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="34" y="240" font-size="11.5" fill="#0f172a" font-weight="500" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">整体错日 +1 天</text>
+<rect x="216" y="216" width="148" height="38" rx="5" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="290.0" y="240" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">漏</text>
+<rect x="376" y="216" width="148" height="38" rx="5" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="450.0" y="240" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">漏</text>
+<rect x="536" y="216" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="610.0" y="240" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<rect x="696" y="216" width="148" height="38" rx="5" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="770.0" y="240" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">漏</text>
+<rect x="24" y="260" width="178" height="38" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="34" y="284" font-size="11.5" fill="#0f172a" font-weight="500" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">缺尾部 10 分钟</text>
+<rect x="216" y="260" width="148" height="38" rx="5" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="290.0" y="284" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">漏</text>
+<rect x="376" y="260" width="148" height="38" rx="5" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="450.0" y="284" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">漏</text>
+<rect x="536" y="260" width="148" height="38" rx="5" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="610.0" y="284" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">漏</text>
+<rect x="696" y="260" width="148" height="38" rx="5" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="770.0" y="284" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">抓到</text>
+<text x="24" y="322" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">没有一条判据能单独守住：行数与金额同源，同一份数错时两个一起错；水位只看最后一条记录；校验和只管「集合变没变」。</text>
+<text x="24" y="348" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">「整体错日」是唯一只能用水位抓的一类：行数、金额、校验和全部不变，因为它们本来就是同一天的数据。</text>
+<text x="24" y="374" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">四条并列写进门禁，任何一条不过就停在 BLOCKED——门禁的价值在「不许过」，不在「尽量过」。</text>
+</svg>

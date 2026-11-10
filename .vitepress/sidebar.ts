@@ -1,5 +1,5 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
-import { ClinicalTrial, Auth, ContractEvolution, DDD, DesignPatterns, DistributedCache, DistributedLock, DistributedScheduling, DotNet, Ecommerce, EmailDeliverability, EventSourcing, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, MultiTenantSaaS, NetworkProgramming, ObjectStorage, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, ServiceMesh, SpringCloud, WorkflowEngine, RecommenderSystems, MediaDelivery, RiskDecision, PricingPromotion, NotificationDelivery, SubscriptionBilling, BulkDataExchange, SupportTicket, ESignature, ShippingCarrier, AdDelivery, GraphQL, LoyaltyProgram, OpenPlatform, IoTDevice, ProcureToPay, SupplierCollaboration, RevenueRecognition, MultiCurrency, WarehouseOps, FixedAsset, CostAccounting, Payroll, Treasury, Manufacturing, EquipmentMaintenance, Consolidation, CustomerIdentity, Budgeting, CarbonAccounting, OrgPeople, ClaimsProcessing, TrainingQualification, ExpenseReimbursement, MetricPlatform, RetailPOS, AppointmentBooking, TimeAttendance, UnderwritingPolicy, QualityManagement, AMLCompliance, AcademicAffairs, CPQ, BiddingTender, Recruiting, FleetTransport, ChargingNetwork, HotelPMS, TaxInvoice, ContentModeration, AlertJudgment, ReportAnalytics, AuditForensics } from "./backend";
+import { ClinicalTrial, Auth, ContractEvolution, DDD, DesignPatterns, DistributedCache, DistributedLock, DistributedScheduling, DotNet, Ecommerce, EmailDeliverability, EventSourcing, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, MultiTenantSaaS, NetworkProgramming, ObjectStorage, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, ServiceMesh, SpringCloud, WorkflowEngine, RecommenderSystems, MediaDelivery, RiskDecision, PricingPromotion, NotificationDelivery, SubscriptionBilling, BulkDataExchange, SupportTicket, ESignature, ShippingCarrier, AdDelivery, GraphQL, LoyaltyProgram, OpenPlatform, IoTDevice, ProcureToPay, SupplierCollaboration, RevenueRecognition, MultiCurrency, WarehouseOps, FixedAsset, CostAccounting, Payroll, Treasury, Manufacturing, EquipmentMaintenance, Consolidation, CustomerIdentity, Budgeting, CarbonAccounting, OrgPeople, ClaimsProcessing, TrainingQualification, ExpenseReimbursement, MetricPlatform, RetailPOS, AppointmentBooking, TimeAttendance, UnderwritingPolicy, QualityManagement, AMLCompliance, LoanServicing, AcademicAffairs, CPQ, BiddingTender, Recruiting, FleetTransport, ChargingNetwork, HotelPMS, TaxInvoice, ContentModeration, AlertJudgment, ReportAnalytics, AuditForensics, GraphRelation, BatchPipeline, SecretRuntime } from "./backend";
 
 import { AI_Java, AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_EdgeInference, AI_EvalEngineering, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI, AI_SyntheticData, AI_InferenceScheduling, AI_AgentToolProtocol } from "./AI";
 import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontErrorTelemetry, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLocalDataStore, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
@@ -286,6 +286,8 @@ export const sidebar = {
   "/docs/Backend/UnderwritingPolicy": UnderwritingPolicy,
   "/docs/Backend/QualityManagement": QualityManagement,
   "/docs/Backend/AMLCompliance": AMLCompliance,
+  // 待补占位（台账已登记，目录不存在，不产生链接）
+  "/docs/Backend/LoanServicing": LoanServicing,
   "/docs/Backend/TrainingQualification": TrainingQualification,
   "/docs/Backend/AcademicAffairs": AcademicAffairs,
   "/docs/Backend/CPQ": CPQ,
@@ -299,6 +301,9 @@ export const sidebar = {
   "/docs/Backend/AlertJudgment": AlertJudgment,
   "/docs/Backend/ReportAnalytics": ReportAnalytics,
   "/docs/Backend/AuditForensics": AuditForensics,
+  "/docs/Backend/GraphRelation": GraphRelation,
+  "/docs/Backend/BatchPipeline": BatchPipeline,
+  "/docs/Backend/SecretRuntime": SecretRuntime,
   "/docs/DB/Overview": DBOverview,
   "/docs/DB/ParameterTuning": ParameterTuning,
   "/docs/DB/SchemaEvolution": SchemaEvolution,

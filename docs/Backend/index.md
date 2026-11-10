@@ -73,6 +73,7 @@
 - [承保与保单管理工程](UnderwritingPolicy/index.md)
 - [质量管理工程](QualityManagement/index.md)
 - 反洗钱与可疑交易监测工程（页面待补）
+- 信贷放款与还款服务工程（页面待补）
 - [学籍、选课与排课工程](AcademicAffairs/index.md)
 - [配置、定价与报价工程](CPQ/index.md)
 - [招投标与电子采购交易工程](BiddingTender/index.md)
@@ -86,3 +87,6 @@
 - [告警判定与响应工程](AlertJudgment/index.md)
 - [报表与自助分析工程](ReportAnalytics/index.md)
 - [审计留痕与合规取证工程](AuditForensics/index.md)
+- [图数据与关系计算工程](GraphRelation/index.md)
+- [离线批次与补数工程](BatchPipeline/index.md)
+- [密钥与凭据管理工程](SecretRuntime/index.md)

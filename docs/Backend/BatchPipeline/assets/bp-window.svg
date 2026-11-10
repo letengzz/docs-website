@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" role="img">
+<title>覆盖写的空窗：删与插之间，读者读到什么</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="880" height="300" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">覆盖写的空窗：删与插之间，读者读到什么</text>
+<rect x="40" y="80" width="330" height="60" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<rect x="370" y="80" width="60" height="60" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<rect x="430" y="80" width="410" height="60" fill="#ecfdf5" stroke="#0d9488" stroke-width="1"/>
+<text x="60" y="116" font-size="12" fill="#0d9488" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">旧版本：1,916 行</text>
+<text x="400" y="116" font-size="12" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">空</text>
+<text x="450" y="116" font-size="12" fill="#0d9488" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">新版本：1,916 行</text>
+<line x1="40" y1="168" x2="370" y2="168" stroke="#2563eb" stroke-width="2"/>
+<line x1="370" y1="158" x2="370" y2="178" stroke="#2563eb" stroke-width="2"/>
+<line x1="370" y1="168" x2="430" y2="168" stroke="#b91c1c" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="430" y1="168" x2="840" y2="168" stroke="#2563eb" stroke-width="2"/>
+<text x="40" y="190" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">DELETE 提交</text>
+<text x="400" y="190" font-size="10.5" fill="#b91c1c" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">INSERT 提交</text>
+<rect x="40" y="210" width="380" height="64" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="230.0" y="239.0" font-size="12.5" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">自动提交：空窗对外可见</text>
+<text x="230.0" y="258.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">实测读者读到 0 行，下游把空分区当「当天没交易」</text>
+<rect x="444" y="210" width="396" height="64" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="642.0" y="239.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">显式事务：空窗不可见</text>
+<text x="642.0" y="258.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">实测读者仍读到 1,916 行（旧版本），提交后原子换新</text>
+</svg>

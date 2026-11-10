@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" role="img">
+<title>七段链：建 → 写 → 存 → 走 → 算 → 服 → 对</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="880" height="300" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">七段链：建 → 写 → 存 → 走 → 算 → 服 → 对</text>
+<rect x="24" y="86" width="106" height="92" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="77.0" y="125.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">建</text>
+<text x="77.0" y="144.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">谁是节点谁是边</text>
+<line x1="131" y1="132" x2="140" y2="132" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="142" y="86" width="106" height="92" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="195.0" y="125.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">写</text>
+<text x="195.0" y="144.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">重复执行不多行</text>
+<line x1="249" y1="132" x2="258" y2="132" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="260" y="86" width="106" height="92" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="313.0" y="125.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">存</text>
+<text x="313.0" y="144.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">结构与读写匹配</text>
+<line x1="367" y1="132" x2="376" y2="132" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="378" y="86" width="106" height="92" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="431.0" y="125.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">走</text>
+<text x="431.0" y="144.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">一定终止</text>
+<line x1="485" y1="132" x2="494" y2="132" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="496" y="86" width="106" height="92" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="549.0" y="125.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">算</text>
+<text x="549.0" y="144.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">结果可复现</text>
+<line x1="603" y1="132" x2="612" y2="132" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="614" y="86" width="106" height="92" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="667.0" y="125.0" font-size="12.5" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">服</text>
+<text x="667.0" y="144.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">超时有形态</text>
+<line x1="721" y1="132" x2="730" y2="132" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="732" y="86" width="106" height="92" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="785.0" y="125.0" font-size="12.5" fill="#2563eb" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">对</text>
+<text x="785.0" y="144.0" font-size="10.5" fill="#475569" font-weight="400" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">差异可解释</text>
+<text x="24" y="214" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">只有「建」与「对」必须一次做对；中间五段可以先粗糙、后优化。</text>
+<text x="24" y="242" font-size="12" fill="#475569" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">反过来做（先优化遍历、后补对账）几乎是所有图项目返工的起点。</text>
+</svg>

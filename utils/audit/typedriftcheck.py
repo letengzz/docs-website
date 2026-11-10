@@ -60,7 +60,7 @@
 ## 用法
 
   python typedriftcheck.py                  # 扫默认仓库根
-  python typedriftcheck.py D:/docs-website  # 指定扫描根
+  python typedriftcheck.py /path/to/docs-website  # 指定扫描根
   python typedriftcheck.py --selftest       # 夹具自测（12 条，断言「失败项集合恰好等于期望」）
 """
 import os
@@ -68,7 +68,7 @@ import re
 import sys
 import tempfile
 
-DEFAULT_ROOT = r"D:\docs-website"
+DEFAULT_ROOT = os.path.abspath(".")
 SKIP_DIRS = {"node_modules", ".git", ".vitepress", "dist", "assets", "public", "utils"}
 
 FENCE_RE = re.compile(r"^\s*(`{3,}|~{3,})\s*([^\s`]*)")

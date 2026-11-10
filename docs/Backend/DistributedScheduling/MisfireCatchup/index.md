@@ -154,6 +154,18 @@ for p, d in ((1, 60), (1, 360), (10/60, 1440)):
 
 读法：**同一份「补跑」逻辑，在 200 ms 的任务上是 18 秒，在 30 秒的任务上是 45 分钟，在 10 秒周期 + 一天停机时是 18 小时**。所以补跑上限不是「可选的优化」，而是必须有的断路器。
 
+## 八之补、与「离线批次与补数工程」专题的分工（第 267 天补充）
+
+本页讲「错过了触发时刻怎么补」，批次册讲「补出来的分区算不算数」。三个数字要分清：
+
+| 数字 | 本页口径 | 批次册口径 |
+| --- | --- | --- |
+| 补跑次数 | misfire 的 N 个触发 | 补数明细的 N 行（`backfill_item`） |
+| 实际执行 | N 次任务 | N × 下游闭包（实测 3）个分区 |
+| 完成判定 | 所有触发都执行过 | 明细全 `DONE` + 分区不 `BLOCKED` + 对账 `OK` |
+
+**只在本页成立的坑**：`misfire_threshold` 设得比任务最长耗时还小，会让「正在跑的那次」被判成 misfire 并再触发一次——两次运行写同一个分区，若写入是追加语义，行数直接翻倍。批次侧的对应防线是 `UNIQUE(job_id, data_date, attempt)` 与「覆盖写」语义，见[批次与实例](../../../Backend/BatchPipeline/BatchInstance/index.md)。
+
 ## 九、参考资料
 
 - [Quartz 文档：Trigger misfire 指令](https://www.quartz-scheduler.org/documentation/quartz-2.5.x/tutorials/trigger/)

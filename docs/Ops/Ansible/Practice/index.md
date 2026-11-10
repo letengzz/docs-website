@@ -316,7 +316,7 @@ ansible-vault create group_vars/all/vault.yml \
 
 ```yaml
 # group_vars/all/vault.yml（加密后整体不可读）
-vault_db_password: "S3cr3t!2026"
+vault_db_password: "<YOUR_DB_PASSWORD>"
 vault_tls_key_b64: "LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0t..."
 ```
 

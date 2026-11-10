@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" role="img">
+<title>部署四段：编排 → 注入 → 健康检查 → 回滚（本机模拟读数，非生产部署）</title>
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+  <marker id="rb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+</defs>
+<rect width="880" height="300" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">部署四段：编排 → 注入 → 健康检查 → 回滚</text>
+
+<rect x="40" y="60" width="186" height="108" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="133" y="86" font-size="14" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">① 编排</text>
+<text x="133" y="110" font-size="11" fill="#2563eb" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">4 services · tag 1.4.2 · latest 0</text>
+<text x="133" y="128" font-size="11" fill="#0d9488" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">ports 8080 / 8081 · 冲突 0</text>
+<text x="133" y="146" font-size="11" fill="#0d9488" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">具名卷 pgdata · 网络 lh_net</text>
+
+<rect x="244" y="60" width="186" height="108" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="337" y="86" font-size="14" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">② 注入</text>
+<text x="337" y="110" font-size="11" fill="#2563eb" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">sensitive_keys 2 / 明文口令 0</text>
+<text x="337" y="128" font-size="11" fill="#0d9488" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">*_FILE 文件挂载 1</text>
+<text x="337" y="146" font-size="11" fill="#0d9488" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">env 双向对账 0 / 0 差异</text>
+
+<rect x="448" y="60" width="186" height="108" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.4"/>
+<text x="541" y="86" font-size="14" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">③ 健康检查</text>
+<text x="541" y="110" font-size="11" fill="#2563eb" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">test=CMD · 探针 2/2 实现</text>
+<text x="541" y="128" font-size="11" fill="#0d9488" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">/healthz · /readyz</text>
+<text x="541" y="146" font-size="11" fill="#0d9488" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">probe 3s &lt; start 30s</text>
+
+<rect x="652" y="60" width="186" height="108" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="745" y="86" font-size="14" fill="#b91c1c" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">④ 回滚</text>
+<text x="745" y="110" font-size="11" fill="#b91c1c" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">rollback tag 1.4.1 &lt; 1.4.2</text>
+<text x="745" y="128" font-size="11" fill="#b91c1c" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">guards=2 / destructive=0</text>
+<text x="745" y="146" font-size="11" fill="#b91c1c" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">8/8 PASS / EXIT=0</text>
+
+<line x1="228" y1="114" x2="242" y2="114" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="432" y1="114" x2="446" y2="114" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="636" y1="114" x2="650" y2="114" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+
+<text x="440" y="180" font-size="10.5" fill="#b91c1c" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">部署异常 → 回滚到上一个 tag 1.4.1（pgdata 不重建）</text>
+<line x1="745" y1="186" x2="133" y2="186" stroke="#b91c1c" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#rb)"/>
+
+<rect x="40" y="198" width="800" height="64" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="440" y="226" font-size="13" fill="#0d9488" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">DEPLOY 8 / 8 PASS / EXIT=0</text>
+<text x="440" y="246" font-size="10.5" fill="#475569" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">本机模拟读数，非生产部署 · env 双向对账 0 / 0 差异 · probe 3s &lt; start 30s</text>
+</svg>

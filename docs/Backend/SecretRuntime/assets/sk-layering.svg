@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" role="img">
+<title>信封加密：KEK 只包 DEK，密文头把版本写死</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="880" height="340" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">信封加密：KEK 只包 DEK，密文头把版本写死</text>
+<rect x="28" y="70" width="210" height="84" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="44" y="96" font-size="14" fill="#0f172a" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">KEK（主密钥）</text>
+<text x="44" y="118" font-size="11" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">留在 KMS / HSM，永不落盘</text>
+<text x="44" y="138" font-size="11" fill="#2563eb" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">状态：ACTIVE / DECRYPT_ONLY</text>
+<rect x="288" y="70" width="230" height="84" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="304" y="96" font-size="14" fill="#0f172a" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">DEK（数据密钥）</text>
+<text x="304" y="118" font-size="11" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">每份数据一把，被 KEK 包装</text>
+<text x="304" y="138" font-size="11" fill="#0d9488" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">进程内缓存，TTL 决定吊销窗口</text>
+<rect x="568" y="70" width="284" height="84" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="584" y="96" font-size="14" fill="#0f172a" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">密文（自描述）</text>
+<text x="584" y="118" font-size="11" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">magic | format_version | key_id</text>
+<text x="584" y="138" font-size="11" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">kek_version | nonce | tag | data</text>
+<line x1="238" y1="112" x2="288" y2="112" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="518" y1="112" x2="568" y2="112" stroke="#0d9488" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="28" y="182" width="196" height="50" rx="6" fill="#f8fafc" stroke="#2563eb" stroke-width="1"/>
+<text x="40" y="203" font-size="12" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">magic</text>
+<text x="40" y="222" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">识别格式</text>
+<rect x="240" y="182" width="196" height="50" rx="6" fill="#f8fafc" stroke="#2563eb" stroke-width="1"/>
+<text x="252" y="203" font-size="12" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">format_version</text>
+<text x="252" y="222" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">格式代际</text>
+<rect x="452" y="182" width="196" height="50" rx="6" fill="#f8fafc" stroke="#2563eb" stroke-width="1"/>
+<text x="464" y="203" font-size="12" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">key_id</text>
+<text x="464" y="222" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">哪把密钥</text>
+<rect x="664" y="182" width="196" height="50" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1"/>
+<text x="676" y="203" font-size="12" fill="#b91c1c" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">kek_version</text>
+<text x="676" y="222" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">第几版（关键）</text>
+<rect x="28" y="244" width="196" height="50" rx="6" fill="#f8fafc" stroke="#2563eb" stroke-width="1"/>
+<text x="40" y="265" font-size="12" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">alg / nonce</text>
+<text x="40" y="284" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">算法与随机数</text>
+<rect x="240" y="244" width="196" height="50" rx="6" fill="#f8fafc" stroke="#2563eb" stroke-width="1"/>
+<text x="252" y="265" font-size="12" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">wrapped_dek</text>
+<text x="252" y="284" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">被包装的 DEK</text>
+<rect x="452" y="244" width="196" height="50" rx="6" fill="#f8fafc" stroke="#2563eb" stroke-width="1"/>
+<text x="464" y="265" font-size="12" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">ciphertext</text>
+<text x="464" y="284" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">业务密文</text>
+<rect x="664" y="244" width="196" height="50" rx="6" fill="#f8fafc" stroke="#2563eb" stroke-width="1"/>
+<text x="676" y="265" font-size="12" fill="#2563eb" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">tag</text>
+<text x="676" y="284" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">完整性校验</text>
+<rect x="28" y="306" width="824" height="28" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1"/>
+<text x="440" y="325" font-size="11.5" fill="#0f172a" font-weight="600" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">少了 kek_version：12 个版本下 20 万条密文只有 16,750 条可解（失败 91.625%）</text>
+</svg>

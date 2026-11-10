@@ -248,8 +248,8 @@ spring:
       client:
         registration:
           github:
-            client-id: 06146d02b8b57824a934
-            client-secret: 65069dcfd21288d79730613b6a93ebf4f84780ae
+            client-id: <YOUR_GITHUB_CLIENT_ID>
+            client-secret: <YOUR_GITHUB_CLIENT_SECRET>
 #            redirectUri: http://localhost:8200/login/oauth2/code/github
 ```
 

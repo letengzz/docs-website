@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="320" viewBox="0 0 880 320" role="img">
+<title>重加密与旧版本保留：密文比密钥活得久</title>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect width="880" height="320" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" fill="#0f172a" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">重加密与旧版本保留：密文比密钥活得久</text>
+<rect x="28" y="70" width="400" height="172" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+<text x="48" y="98" font-size="13" fill="#b91c1c" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">轮换完顺手删旧 KEK 版本</text>
+<text x="48" y="126" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">旧版本密文 183,250 条</text>
+<text x="48" y="150" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">删后 20 万条密文全部不可读</text>
+<rect x="48" y="168" width="360" height="32" rx="5" fill="#ffffff" stroke="#b91c1c" stroke-width="1"/>
+<text x="64" y="189" font-size="11.5" fill="#b91c1c" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">故障在「有人读老数据」时才暴露</text>
+<text x="48" y="222" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">那一刻线上全绿，备份可能已过保留期</text>
+<rect x="452" y="70" width="400" height="172" rx="8" fill="#ecfdf5" stroke="#0d9488" stroke-width="1.2"/>
+<text x="472" y="98" font-size="13" fill="#0d9488" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">旧版本置 DECRYPT_ONLY + 分批 rekey</text>
+<text x="472" y="126" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">20 万条循环 54.4 ms（0.272 µs/条）</text>
+<text x="472" y="150" font-size="12" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">外推 100 万条约 0.27 s（仅扫描成本）</text>
+<rect x="472" y="168" width="360" height="32" rx="5" fill="#ffffff" stroke="#0d9488" stroke-width="1"/>
+<text x="488" y="189" font-size="11.5" fill="#0d9488" font-weight="600" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">引用计数归零 → 才允许 DISABLED</text>
+<text x="472" y="222" font-size="10.5" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">tg_no_drop_used_kek 把规则写死在库里</text>
+<line x1="428" y1="156" x2="452" y2="156" stroke="#2563eb" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="28" y="262" width="824" height="46" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1"/>
+<text x="44" y="282" font-size="11.5" fill="#0f172a" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">KEK 轮换 = 只换包装；rekey = 重封全部 DEK。算法弃用或 KEK 疑似泄露才需要后者。</text>
+<text x="44" y="300" font-size="11" fill="#64748b" font-weight="400" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif">扫描期间新写入用新版本、按 ct_id 断点续跑，且不得丢 key_version 字段。</text>
+</svg>

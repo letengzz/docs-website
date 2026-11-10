@@ -75,6 +75,18 @@ CALL gds.graph.drop('social');
 2. 按上文三步（投影 → pageRank.stream → drop）跑通，`CALL gds.graph.list()` 确认投影已释放；
 3. 把 Install 页的小图扩到 10 个用户后对比：同一推荐问题，纯 Cypher 与 GDS 版各跑一次 `PROFILE`，观察各自代价——建立「什么时候才需要 GDS」的手感。
 
+## 与「图数据与关系计算工程」专题的分工
+
+| 问题 | 本页 | 专题 |
+| --- | --- | --- |
+| GDS 的图投影、算法名、内存估算 | 回答 | 不重复 |
+| PageRank / 社区发现的参数怎么调 | 回答 | 给「一轮的成本与收敛判据」 |
+| 算法结果怎么对账、怎么带版本复现 | 不回答 | 回答 |
+
+::: warning 本页特有的一个坑
+`gds.pageRank.stream` 返回的是**当前这一次投影图**上的分数，既不落库也不带版本。两次调用之间只要有边写入，两次结果就不可比；把它写进报表后，「上周 top10 与本周 top10 差异」永远解释不清。落库时必须自带 `graphVersion` 与随机种子，且与关系库侧的 `snapshot_id` 对齐。
+:::
+
 ## 参考资料
 
 - [Graph Data Science Library 文档](https://neo4j.com/docs/graph-data-science/current/)

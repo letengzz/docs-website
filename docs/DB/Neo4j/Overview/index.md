@@ -60,6 +60,20 @@ CREATE (a:Person {name: '张三', uid: 'u1'})-[:FOLLOWS {since: date('2026-01-15
 
 [数据建模 · 核心概念](../../DataModeling/CoreConcepts/index.md)里说过：「共同关注、二度人脉这类查询在关系型库里代价很高，不建议硬扛，必要时引入图数据库」——本专题就是那句「必要时」的落地手册。[Redis 的集合](../../NoRelational/Redis/ListSetZSet/index.md)用 `SINTER` 一跳也能算共同关注，但它**只擅长一跳**；一旦要「关注的人的关注」，Redis 与关系型一起出局。
 
+## 与「图数据与关系计算工程」专题的分工
+
+| 问题 | 本页 | 专题 |
+| --- | --- | --- |
+| Neo4j 是什么、适合什么场景 | 回答 | 不重复 |
+| Cypher 怎么写、GDS 怎么跑、集群怎么组 | 回答 | 只引用语法对照 |
+| 同一条关系在关系库里怎么存、走三跳多少钱、怎么对账 | 不回答 | 回答 |
+
+一句话边界：**本页讲「用 Neo4j 怎么做」，专题讲「这件事换成关系库要付多少成本」。**
+
+::: warning 本页特有的一个坑
+写变长路径时 `MATCH (a)-[:FOLLOW*1..]->(b)` 没有上限，优化器只能按全图展开——它不会因为你「心里想着三跳」就停下来。生产查询必须写 `*1..3`，并且用 `PROFILE` 确认 `VarLengthExpand` 的 `dbHits` 与预期同量级。
+:::
+
 ## 参考资料
 
 - [Neo4j 官方文档：Getting Started](https://neo4j.com/docs/get-started/)

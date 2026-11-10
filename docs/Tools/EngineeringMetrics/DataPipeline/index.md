@@ -284,6 +284,20 @@ FROM em.metric_def GROUP BY metric;
 grep -rn "timestamp without time zone\|  timestamp," sql/ 2>/dev/null
 ```
 
+## 与「离线批次与补数工程」专题的分工（第 267 天补充）
+
+本页讲「数据链路该量哪些指标」，批次册讲「这些指标异常时该改哪张表」。
+
+| 指标 | 本页口径 | 批次册的落点 |
+| --- | --- | --- |
+| 就绪延迟 | 从「应就绪时刻」到「实际就绪」 | `v_batch_lag.lag_min`（`committed_at` − `sla_minute`） |
+| 成功率 | 运行成功 / 总运行 | `batch_run.status`，且必须区分 `trigger_type` |
+| 数据量波动 | 行数相对基线的偏离 | `readiness_check.ROW_BAND` |
+| 补数规模 | 补数次数 / 影响行数 | `backfill_item` 行数 × 下游闭包 |
+| 人工干预 | 放行次数 | `batch_audit` 中 `action='OVERRIDE'` 的条数 |
+
+**只在本页成立的坑**：把「成功率 99%」当成健康。60 天实测里 60 次运行全部 `exit 0`，成功率 100%，其中 6 次真的读到 0 行——**成功率衡量的是「有没有报错」，不是「数据对不对」**。成功率必须与就绪率、对账通过率一起看，口径见[SLA 与就绪预算](../../../Backend/BatchPipeline/SlaBudget/index.md)。
+
 ## 参考资料
 
 - PostgreSQL 18 官方文档，日期/时间类型与 `AT TIME ZONE`：<https://www.postgresql.org/docs/18/datatype-datetime.html>
