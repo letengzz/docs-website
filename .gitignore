@@ -25,3 +25,8 @@ docs/.vitepress/cache/
 build.log
 .workbuddy/
 target/
+# Python 巡检脚本的字节码缓存。按上面的教训，忽略规则必须带路径作用域：
+# 裸写 `__pycache__/` 会匹配任意层级同名目录，这里限定在 utils/ 下。
+# 2026-11-10 一次 `git add -A` 曾把 typedriftcheck.cpython-313.pyc 提进提交，故补此规则。
+utils/**/__pycache__/
+utils/**/*.pyc
