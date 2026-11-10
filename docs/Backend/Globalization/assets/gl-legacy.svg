@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 286" width="760" height="286">
+  <rect width="760" height="286" fill="#F8FAFC"/>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker></defs>
+  <text x="24" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">旧日期时间 API（仅存量项目使用）：四件先天缺陷</text>
+  <rect x="24" y="62" width="344" height="82" rx="9" fill="#FEE2E2" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">java.util.Date / Calendar</text>
+  <text x="38" y="106" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">可变、月份从 0 起、无时区语义</text>
+  <rect x="392" y="62" width="344" height="82" rx="9" fill="#FEE2E2" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="406" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">SimpleDateFormat</text>
+  <text x="406" y="106" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">非线程安全、lenient 默认吞非法日期</text>
+  <rect x="24" y="158" width="344" height="82" rx="9" fill="#FEE2E2" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="182" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">JS Date + moment</text>
+  <text x="38" y="202" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">解析依赖实现、无 fold 概念</text>
+  <rect x="392" y="158" width="344" height="82" rx="9" fill="#FEE2E2" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="406" y="182" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">固定偏移字符串</text>
+  <text x="406" y="202" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">把 -05:00 当时区存进库</text>
+  <rect x="20" y="238" width="720" height="34" rx="7" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="34" y="260" font-family="sans-serif" font-size="13" fill="#1E293B">本目录保留旧写法与迁移对照，标注「仅存量项目使用 · 不再新增」，不覆盖、不删除</text>
+</svg>

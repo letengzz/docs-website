@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 268" width="760" height="268">
+  <rect width="760" height="268" fill="#F8FAFC"/>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker></defs>
+  <text x="24" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">三个「现在是几点」：混用是绝大多数跨区事故的根源</text>
+  <path d="M246,118 L269,118" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <path d="M491,118 L514,118" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <rect x="24" y="62" width="222" height="112" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">瞬时 Instant</text>
+  <text x="38" y="106" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">时间轴上的一个点</text>
+  <text x="38" y="126" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">存 UTC + 时区 ID</text>
+  <text x="38" y="146" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">可比较、可排序</text>
+  <rect x="269" y="62" width="222" height="112" rx="9" fill="#FEF3C7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="283" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">挂钟 Wall clock</text>
+  <text x="283" y="106" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">人看到的年月日时分</text>
+  <text x="283" y="126" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">依赖 ZoneId 与 tzdb</text>
+  <text x="283" y="146" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">折叠日会重复一次</text>
+  <rect x="514" y="62" width="222" height="112" rx="9" fill="#DCFCE7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="528" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">业务日 Business day</text>
+  <text x="528" y="106" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">报表与结算的归属日</text>
+  <text x="528" y="126" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">依赖日切点与日历</text>
+  <text x="528" y="146" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">不等于前两者的日期</text>
+  <text x="24" y="202" font-family="sans-serif" font-size="12.5" fill="#475569">同一个 UTC 时刻，在 UTC 日 / 本地日 / 营业日三种口径下可能落进三个不同的日期</text>
+  <rect x="20" y="220" width="720" height="34" rx="7" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="34" y="242" font-family="sans-serif" font-size="13" fill="#1E293B">实测：10 万笔均匀分布订单，UTC 日与本地日归属不同的占 22.60%</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 290" width="760" height="290">
+  <rect width="760" height="290" fill="#F8FAFC"/>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker></defs>
+  <text x="24" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">地区与语言协商：优先级链必须写死，且服务端说了算</text>
+  <path d="M192,94 L202,94" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <path d="M370,94 L380,94" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <path d="M548,94 L558,94" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <path d="M380,126 L380,158" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <rect x="24" y="62" width="168" height="64" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">1 用户显式设置</text>
+  <rect x="202" y="62" width="168" height="64" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="216" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">2 账号归属地</text>
+  <rect x="380" y="62" width="168" height="64" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="394" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">3 Accept-Language</text>
+  <rect x="558" y="62" width="168" height="64" rx="9" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="572" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">4 服务默认值</text>
+  <rect x="140" y="158" width="480" height="66" rx="9" fill="#DCFCE7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="154" y="182" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">解析结果：language / region / calendar / numbering</text>
+  <text x="154" y="202" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">落进请求上下文，随日志与审计一起留痕</text>
+  <rect x="20" y="242" width="720" height="34" rx="7" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="34" y="264" font-family="sans-serif" font-size="13" fill="#1E293B">不带 locale 的金额串：90.09% 含千分位，且 100% 能被另一种 locale 解析成别的值</text>
+</svg>

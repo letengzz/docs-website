@@ -186,6 +186,16 @@ PY
 
 第 2 段若不为空，说明「空分区」被当成了「就绪分区」，直接读[就绪与门禁](../ReadinessGate/index.md)的三态设计——**这是本专题里最便宜能修、后果最贵的一个 bug**。
 
+## 与「全球化与时区本地化工程」专题的分工（第 269 天补充）
+
+| 维度 | 本页回答 | 专题回答 |
+| --- | --- | --- |
+| 对象 | 调度日 / 数据日 / 分区日，任务成功 / 分区就绪 / 数据可用 | [业务归属日 `biz_date` 的日切与版本](../../Globalization/CalendarAndCutoff/index.md) |
+| 边界 | 批次、补数与分区就绪 | 时间字段契约、locale 与驻留区 |
+| 不重复 | 不再讲时区规则与格式化 | 不重复就绪判据与补数级联 |
+
+**本页特有的一处坑**：把「分区日」直接当「营业日」交给下游报表。两个日期名字像、定义不同：**整体错日只有水位抓得住**（本页已有判据），而「分区日 ≠ 营业日」这种错法连水位都看不出来，因为每个分区都准时就绪。正确写法：下游消费方必须显式声明读的是 `partition_date` 还是 `biz_date`，在接口契约里写死字段名；跨区场景下一律由 `calendar_day` 派生，不允许按名字猜。
+
 ## 参考资料
 
 - [Apache Airflow 3: DAGs and Task Instances](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html)

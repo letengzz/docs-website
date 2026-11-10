@@ -490,6 +490,7 @@ export const CompleteProject = [
           { text: "第 3 周第 4 步 · 性能与容量基线：200 请求 / 20 并发（LLP-A~LLP-H）", link: "/project/Complete/LearningHub/PerfBaseline/index.md" },
           { text: "第 3 周第 5 步 · 第 3 周验收：八项门禁与一个签字（LWA-A~LWA-H）", link: "/project/Complete/LearningHub/Week3Acceptance/index.md" },
           { text: "第 4 周第 1 步 · 部署基线：一键编排、密钥注入与可回滚（LLD-A~LLD-H）", link: "/project/Complete/LearningHub/DeployBaseline/index.md" },
+          { text: "第 4 周第 2 步 · 监控接入与告警规则落地：三条规则与两个反向探针（LLM-A~LLM-H）", link: "/project/Complete/LearningHub/MonitoringIntegration/index.md" },
         ],
       },
     ],

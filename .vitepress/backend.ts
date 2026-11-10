@@ -1962,3 +1962,24 @@ export const SecretRuntime = [
     ],
   },
 ];
+
+// 全球化与时区本地化工程（服务端时间/地区层；含两个日期时间 API 版本目录）
+export const Globalization = [
+  {
+    text: "全球化与时区本地化工程",
+    link: "/docs/Backend/Globalization/index.md",
+    items: [
+      { text: "总览：三个「现在是几点」与六个安静的失败", link: "/docs/Backend/Globalization/Overview/index.md" },
+      { text: "时间模型：一行记录要回答的四个问题", link: "/docs/Backend/Globalization/TimeModel/index.md" },
+      { text: "时区与夏令时：折叠、间隙和固定偏移的账", link: "/docs/Backend/Globalization/TimeZoneDST/index.md" },
+      { text: "地区与语言协商：优先级链必须写死", link: "/docs/Backend/Globalization/LocaleNegotiation/index.md" },
+      { text: "营业日与日切：同一天不是同一个日期", link: "/docs/Backend/Globalization/CalendarAndCutoff/index.md" },
+      { text: "地区合规与数据驻留：驻留键是写入约束", link: "/docs/Backend/Globalization/RegionalCompliance/index.md" },
+      { text: "按地区灰度开通：一个 UTC 时刻，不是一个本地零点", link: "/docs/Backend/Globalization/RolloutByRegion/index.md" },
+      { text: "旧版日期时间 API（仅存量项目使用）", link: "/docs/Backend/Globalization/LegacyDateTime/index.md" },
+      { text: "当前主线日期时间 API", link: "/docs/Backend/Globalization/ModernDateTime/index.md" },
+      { text: "实战：五张表、十条断言与一个反向探针", link: "/docs/Backend/Globalization/Practice/index.md" },
+      { text: "常见问题与分诊", link: "/docs/Backend/Globalization/FAQ/index.md" },
+    ],
+  },
+];

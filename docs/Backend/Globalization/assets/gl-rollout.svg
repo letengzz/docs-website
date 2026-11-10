@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 288" width="760" height="288">
+  <rect width="760" height="288" fill="#F8FAFC"/>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker></defs>
+  <text x="24" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">按地区灰度：本地 00:00 开通会拉出 26 小时的分裂窗口</text>
+  <path d="M354,114 L406,114" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+  <rect x="24" y="62" width="330" height="104" rx="9" fill="#FEE2E2" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="38" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">按各自本地 00:00 开</text>
+  <text x="38" y="106" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">UTC+14 最早：11-10 10:00Z</text>
+  <text x="38" y="126" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">UTC-12 最晚：11-11 12:00Z</text>
+  <text x="38" y="146" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">跨度 26 小时</text>
+  <rect x="406" y="62" width="330" height="104" rx="9" fill="#DCFCE7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="420" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">按统一 UTC 时刻开</text>
+  <text x="420" y="106" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">一个时刻、一个开关</text>
+  <text x="420" y="126" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">跨区用户只看到一版</text>
+  <text x="420" y="146" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">窗口可复现</text>
+  <rect x="140" y="184" width="480" height="52" rx="9" fill="#FEF3C7" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="154" y="208" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">分裂窗口内跨区用户：495 / 10,000 = 4.95% 会看到两个版本</text>
+  <rect x="20" y="240" width="720" height="34" rx="7" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="34" y="262" font-family="sans-serif" font-size="13" fill="#1E293B">灰度键用 region，开通时刻用 UTC；「本地零点」只用于展示，不用于开关判定</text>
+</svg>

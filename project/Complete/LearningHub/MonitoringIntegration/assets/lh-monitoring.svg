@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 306" width="760" height="306">
+<rect width="760" height="306" fill="#F8FAFC"/>
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker></defs>
+<text x="24" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">第 4 周第 2 步：监控接入与告警规则落地</text>
+<rect x="24" y="62" width="222" height="92" rx="9" fill="#DBEAFE" stroke="#94A3B8" stroke-width="1.4"/>
+<text x="38" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">采集面</text>
+<text x="38" y="106" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">4 个服务 / 5 类指标</text>
+<text x="38" y="126" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">15s 抓取 = 20 条序列</text>
+<text x="38" y="146" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">/metrics 不含身份标签</text>
+<rect x="269" y="62" width="222" height="92" rx="9" fill="#FEF3C7" stroke="#94A3B8" stroke-width="1.4"/>
+<text x="283" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">规则面</text>
+<text x="283" y="106" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">p99 超基线 2 倍</text>
+<text x="283" y="126" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">判分失败率非零</text>
+<text x="283" y="146" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">/readyz 变红</text>
+<rect x="514" y="62" width="222" height="92" rx="9" fill="#DCFCE7" stroke="#94A3B8" stroke-width="1.4"/>
+<text x="528" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">值班面</text>
+<text x="528" y="106" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">for / keep_firing_for</text>
+<text x="528" y="126" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">runbook 与升级链</text>
+<text x="528" y="146" font-family="sans-serif" font-size="13" font-weight="400" fill="#1E293B">一人可判、可关</text>
+<rect x="24" y="180" width="712" height="66" rx="9" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.4"/>
+<text x="38" y="204" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">本机读数：基线 p99 1035.4 ms → 阈值 2070.8 ms；6 分钟突发 for=5m 触发 / for=10m 漏；判分失败 4/2000（0.20%）</text>
+<path d="M246,108 L269,108" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+<path d="M491,108 L514,108" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+<path d="M625,154 L380,180" stroke="#94A3B8" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+<rect x="20" y="258" width="720" height="34" rx="7" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+<text x="34" y="280" font-family="sans-serif" font-size="13" fill="#1E293B">8 条判据 + 2 个反向探针：把倍数改成 1 / 混入 learner_id 标签，门禁必须仍成立</text>
+</svg>

@@ -162,6 +162,16 @@ create unique index uniq_bill_run_active
 「这个月 30 天，成本也按 30 天摊」在有在制品时不成立：在制的完工程度与日历天数无关。判据见[在制品与约当产量](../../CostAccounting/WipYield/index.md)——分母是约当产量，不是天数。
 :::
 
+## 与「全球化与时区本地化工程」专题的分工（第 269 天补充）
+
+| 维度 | 本页回答 | 专题回答 |
+| --- | --- | --- |
+| 对象 | 账期长度、续订日、周期边界与升降级 | [营业日怎么从瞬时派生并版本化](../../Globalization/CalendarAndCutoff/index.md) |
+| 边界 | 计费规则本身 | 日切点、`calendar_day` 维表与口径版本 |
+| 不重复 | 不再讲时区规则 | 不重复账期与摊销算法 |
+
+**本页特有的一处坑**：账期按 UTC 日切、发票按本地日切，两个口径各自自洽，月末对账却差一天。第 269 天实测逐日平均差额 **9.6 行（占日均 3.50%）**，单日最大 **41 行（14.97%）**——对账按单日做，撞上这天就会被当成漏单查一整天。正确写法：账期、发票、SLA 共用同一份 `calendar_day`，`biz_date` 写入时落库；改日切必须落 `cutoff_version` 并提供重算入口，不要改完就发版。
+
 ## 参考资料
 
 - PostgreSQL 18 文档《Date/Time Functions》（`interval` 运算、`date_trunc`、`generate_series`）：<https://www.postgresql.org/docs/18/functions-datetime.html>
