@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 434" width="760" height="434" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="434" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">两种修正方式：跳过去，还是磨过去</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">同一个 120 ms 偏差，两条曲线对「间隔」的影响完全不同</text>
+  <line x1="60" y1="300" x2="720" y2="300" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="60" y="316" text-anchor="middle" font-size="8" fill="#64748B">t0</text>
+  <text x="720" y="316" text-anchor="middle" font-size="8" fill="#64748B">t0 + 300 s</text>
+  <text x="60" y="290" text-anchor="start" font-size="8" fill="#64748B">+120 ms</text>
+  <path d="M120,300 L120,300 L200,180 L720,180" fill="none" stroke="#DC2626" stroke-width="2"/>
+  <text x="210" y="172" text-anchor="start" font-size="8.5" fill="#991B1B">step：一次跳到目标，间隔被凭空插入或删除</text>
+  <path d="M120,300 L200,300 L480,180 L720,180" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="490" y="172" text-anchor="start" font-size="8.5" fill="#065F46">slew：按固定速率追上，期间「秒」比标准秒长/短</text>
+  <rect x="20" y="336" width="230" height="88" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="135" y="354.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">step 的代价</text>
+  <text x="135" y="371" text-anchor="middle" font-size="7.5" fill="#B91C1C">跨过它测到的间隔多/少 1 s</text>
+  <text x="135" y="388.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">排序、去重、租约同时失真</text>
+  <rect x="265" y="336" width="230" height="88" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="354.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">slew 的代价</text>
+  <text x="380" y="371" text-anchor="middle" font-size="7.5" fill="#047857">期间每秒长度偏离标准</text>
+  <text x="380" y="388.25" text-anchor="middle" font-size="7.5" fill="#047857">偏差大时耗时 = 偏差 / 速率</text>
+  <rect x="510" y="336" width="230" height="88" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="625" y="354.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">速率决定分界</text>
+  <text x="625" y="371" text-anchor="middle" font-size="7.5" fill="#B45309">500 ppm：120 ms 要 240 s</text>
+  <text x="625" y="388.25" text-anchor="middle" font-size="7.5" fill="#B45309">83333 ppm：120 ms 只要 1.44 s</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

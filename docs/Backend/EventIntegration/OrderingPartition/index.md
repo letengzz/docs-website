@@ -168,6 +168,16 @@ SELECT status, version, lsn FROM order_projection WHERE order_id = 1042;
 
 反向探针：把 `WHERE order_projection.lsn < EXCLUDED.lsn` 去掉后重跑同一组事件，状态必须回退成 `PENDING`。**探针不变红，说明条件 upsert 根本没生效**，不要因为「构建能过、行还在」就认为顺序问题解决了。
 
+## 与「网络时间同步与时钟治理」专题的分工（第 272 天补充）
+
+本页管「分区内怎么保序、跨分区怎么合并」；[网络时间同步与时钟治理](../../../Ops/ClockSync/index.md) 管「事件上那个时间戳可信到什么程度」。分界：本页的合并策略默认「时间戳能当排序键」，专题页负责检验这个默认。
+
+**一页一坑**：拿生产者时间戳做跨分区合并键。两个生产者的时钟偏差 12 ms 时，落在同一 12 ms 窗口内的真实先后顺序**全部会被反转**，而且反转得很稳定——重放一遍还是错，所以看起来像「业务逻辑就是这样」。可判定的替代：合并在消费端用「生产者实例号 + 实例内单调序号」拼成全序键，时间戳退回展示用途；如果业务确实需要按事件时间开窗，那就要同时存事件时间与误差界，窗口边界按「误差界重叠则合并窗口」处理，而不是按单点比较。
+
+- 要判「跨机顺序到底能不能判」→ [三种时钟与可测间隔](../../../Ops/ClockSync/Monotonic/index.md)
+- 要判「排序键该存成什么」→ [应用侧四条纪律](../../../Ops/ClockSync/AppUsage/index.md)
+- 要判「偏差和误差界怎么量」→ [怎么证明准：测量与误差界](../../../Ops/ClockSync/Measurement/index.md)
+
 ## 参考资料
 
 - [Apache Kafka：分区与消息键语义](https://kafka.apache.org/documentation/#intro_topics)

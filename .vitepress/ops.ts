@@ -535,3 +535,31 @@ export const DnsResolution = [
     ],
   },
 ];
+
+export const ClockSync = [
+  {
+    text: "网络时间同步与时钟治理",
+    link: "/docs/Ops/ClockSync/index.md",
+    items: [
+      { text: "总览：三个「现在是几点」（CKO-A~CKO-H）", link: "/docs/Ops/ClockSync/Overview/index.md" },
+      { text: "时间源与层级：Marzullo 与真假源（CKS-A~CKS-H）", link: "/docs/Ops/ClockSync/TimeSource/index.md" },
+      { text: "偏差与频率：漂移账（CKD-A~CKD-H）", link: "/docs/Ops/ClockSync/OffsetDrift/index.md" },
+      { text: "修正方式：slew 与 step（CKW-A~CKW-H）", link: "/docs/Ops/ClockSync/SlewStep/index.md" },
+      { text: "闰秒与 smearing（CKL-A~CKL-H）", link: "/docs/Ops/ClockSync/LeapSecond/index.md" },
+      { text: "三种时钟与可测间隔（CKM-A~CKM-H）", link: "/docs/Ops/ClockSync/Monotonic/index.md" },
+      { text: "怎么证明准：测量与误差界（CKV-A~CKV-H）", link: "/docs/Ops/ClockSync/Measurement/index.md" },
+      { text: "来源可信与传输：NTS 与硬件戳（CKA-A~CKA-H）", link: "/docs/Ops/ClockSync/TrustBoundary/index.md" },
+      { text: "应用侧四条纪律（CKP-A~CKP-H）", link: "/docs/Ops/ClockSync/AppUsage/index.md" },
+      { text: "实战：一台漂移机的七步定位（CKX-A~CKX-H）", link: "/docs/Ops/ClockSync/Practice/index.md" },
+      { text: "常见问题与症状分诊（CKQ-A~CKQ-H）", link: "/docs/Ops/ClockSync/FAQ/index.md" },
+      {
+        text: "按实现代际（旧版保留 · 当前主线维护）",
+        collapsed: true,
+        items: [
+          { text: "旧版：经典 ntpd（仅存量项目使用 · 已停止新增）（CKN-A~CKN-H）", link: "/docs/Ops/ClockSync/ClassicNtpd/index.md" },
+          { text: "当前主线：chrony（CKG-A~CKG-H）", link: "/docs/Ops/ClockSync/ModernChrony/index.md" },
+        ],
+      },
+    ],
+  },
+];

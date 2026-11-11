@@ -549,6 +549,16 @@ CREATE TABLE idem_record (
 `UNIQUE(event_id)` 判断「同一条处理过没有」，`WHERE lsn < :incoming` 判断「这条是不是更晚」。前者管重复，后者管新旧，互相不能替代。
 :::
 
+## 与「网络时间同步与时钟治理」专题的分工（第 272 天补充）
+
+本页管「同一个请求怎么只生效一次、键怎么设计」；[网络时间同步与时钟治理](../../../Ops/ClockSync/index.md) 管「去重窗口按什么时长算、这个时长会不会变」。分界：本页给出窗口值，专题页负责说明这个值在时钟被回拨时不是常量。
+
+**一页一坑**：窗口用 `now - created_at < 300` 这种墙钟差值判断。时钟回拨 90 s 后，真实已经过去 300 s 的键仍然满足条件，可真实只过去 210 s 的键反而被判过期——**窗口实际缩短到 210 s（30%）**，重复请求漏判。反过来台钟被向前跳 5 s 时，窗口缩短到 295 s（1.7%），量级小但方向一致。可判定的写法：落库时直接存「过期时刻」并同时存单调时间，比较用单调时间；墙钟只用于展示「还剩多久」。这一条和本页另一条纪律（键里不要放时间戳文本）是同一个理由的两面。
+
+- 要判「去重窗口与回拨的完整对照」→ [应用侧四条纪律](../../../Ops/ClockSync/AppUsage/index.md)
+- 要判「回拨是跳过来还是磨过来」→ [修正方式：slew 与 step](../../../Ops/ClockSync/SlewStep/index.md)
+- 要判「怎么量出本机偏差有多大」→ [怎么证明准：测量与误差界](../../../Ops/ClockSync/Measurement/index.md)
+
 ## 参考资料
 
 - [The Idempotency-Key HTTP Header Field（draft-07）](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header)——键的语义、400/409/422 三个状态码

@@ -60,7 +60,7 @@
 | 第 1 周（251-257） | 需求拆分、技术选型、架构边界、接口契约、库表设计 | 十二张表 DDL 可执行；六条不变量各有一次「被拦住」的实测；四条契约各有一次「被拒」的实测（第 251 天需求与领域边界 6/6 PASS；第 252 天架构边界与四条契约 4/4 PASS；第 253 天版本基线与三个静默坑可见证） |
 | 第 2 周（258-264） | 核心编码 | 报名、进度上报、完成判定、组卷四个接口可调通，能跑通一次「报名 → 学完必修 → 开考」（第 256 天报名接口 12/12 用例 PASS，含 200 次并发只落 1 行；第 257 天进度上报 5/5 用例 PASS，含「删掉触发器后回退必须成功」这一条反向探针；第 258 天完成判定 7/7 用例 PASS，含两条反向探针，并补上 `attempt.enroll_id`；第 259 天组卷接口 16/16 用例 PASS，同 seed 200 次得到 1 张卷；第 260 天交卷评分 14/14 用例 PASS，三种给分策略的及格率 40.7% / 96.4% / 99.8%，并发交卷只落 1 行） |
 | 第 3 周（265-271） | 联调与测试 | 判分口径与并发交卷的用例矩阵全绿；重复交卷、成绩篡改、越权查分、申诉超时四类攻击各有用例；第 3 周以八项门禁收口（`LWA-A~LWA-H` 全绿、`EXIT=0`，单链路 T0→T4 中位 4,271 ms，两处缺口登记后交第 4 周）（第 263 天第 3 周第 3 步：11 个攻击用例，越权查分在不写归属谓词时 199/200 成功、加谓词后 0/200，自增 ID 随机猜 1,000 次命中 78.0%，超窗申诉在截止时间参与判断后插入 0 行；两条残留如实登记——库级改分靠审计链发现、证书重放靠在线校验接口。第 261 天联调第 1 步：200 个报名端到端成功 199（99.5%），三个数量守恒检查点写成 SQL，注入 503 / 重复回调 / 时钟回拨三类失败；第 262 天第 3 周第 2 步：五条链路固化成契约文件，6 个契约用例首轮 2/6 通过、4 条失败各归一类，200 并发 × 2 次交卷 400 请求在 `UNIQUE(attempt_id)` 下只落 200 行、p99 1,035.4 ms） |
-| 第 4 周（272-280） | 部署与验收 | 一键起（`make up`）；上线验收清单逐条实测；干净目录能从零复现 |
+| 第 4 周（272-280） | 部署与验收 | 一键起（`make up`）；上线验收清单逐条实测；干净目录能从零复现；四周 48 条判据压成 8 个签字组（第 266 天部署基线 8/8；第 269 天监控接入 8/8；第 270 天上线验收 8/8；第 271 天干净目录复现 8/8；第 272 天总验收单 8/8，16 条证据路径全部可打开） |
 
 ## 五、章节索引
 
@@ -85,12 +85,13 @@
 | 269 | 第 4 周第 2 步 | [监控接入与告警规则落地：三条规则、八条判据与两个反向探针](MonitoringIntegration/index.md) | `LLM-A` ~ `LLM-H` | 8 |
 | 270 | 第 4 周第 3 步 | [上线验收单与交接材料：六组门禁、回滚演练与值班交接](ReleaseAcceptance/index.md) | `LLR-A` ~ `LLR-H` | 8 |
 | 271 | 第 4 周第 4 步 | [干净目录从零复现与交付包：六组门禁逐条比对、12 项清单与校验和](CleanRoomRepro/index.md) | `LLF-A` ~ `LLF-H` | 8 |
+| 272 | 第 4 周第 5 步 | [第 4 周验收单与项目收口：48 条判据压成 8 个签字位](Week4Acceptance/index.md) | `LLW-A` ~ `LLW-H` | 8 |
 
 > **第 1 周进度 5/5（本周收口）**：第 1 步交付八条用户故事（每条带一条可判定验收）、十二张表 DDL（本机建库 1.27 ms）、六条不变量（4 个触发器 + 1 个部分唯一索引 + 1 个 `CHECK`，实测 6/6 全部拦住）、四条契约草案；第 2 步把四条契约写成可执行的约束（`UNIQUE` / 触发器），四个负向用例 4/4 被拒、`EXIT=0`，并定下四个模块的单向依赖与同步判分链；第 3 步定下五条版本基线（Python 3.13.12 / SQLite 3.50.4 / PG 18 / UTF-8 / UTC）、六个 PRAGMA 的取值、三个会让约束**静默失效**的坑（`foreign_keys` 在事务内设置无效、`UNIQUE` 大小写敏感、`julianday()` 无时区），以及换 PostgreSQL 必改的三处（实测 `wal/normal` 比 `delete/full` 快 **18.5×**）；第 4 步把五条高频查询的路径钉死——九个索引里 4 个带来 266×~33,929× 的加速，1 个（`(state, submitted_at)`）走了 `SEARCH` 却**一点没快**（选择性只有 10%，回表比全扫还贵），代价是建库 +41.1%、体积 +43.4%、写入 +102%。每章都包含「当日做了什么 / 如何验证 / 下一步是什么」。第 5 步把前四步的交付物压成**八项门禁**：12 张表 / 9 个索引 / 4 个触发器建库 **1.31 ms**、七条不变量（含一条要求「必须成功」的反向判据：取消后可重报）**7/7** 通过、`EXPLAIN QUERY PLAN` 实测命中 `uq_cert_no` 与 `uq_enroll_active`，并显式列出「本周不做」的四件事与第 2 周的三条入口条件。
 
 ## 六、判据纪律
 
-- 每个章节 8 条判据，编号 `LNH-A` ~ `LNH-H` 起，**逐章独立**（下一章换新前缀，不复用）。已用前缀：`LNH`（需求）/ `LNA`（架构）/ `LNT`（技术基线）/ `LNS`（数据库设计）/ `LNV`（第 1 周验收）/ `LNE`（报名接口）/ `LNP`（进度上报）/ `LNC`（完成判定）/ `LXP`（组卷接口）/ `LSG`（交卷评分）/ `LLI`（联调）/ `LLA`（攻击矩阵）/ `LLC`（契约与压测）/ `LLP`（性能基线）/ `LWA`（第 3 周验收）/ `LLD`（部署基线）/ `LLM`（监控接入）/ `LLR`（上线验收）/ `LLF`（干净目录复现）。
+- 每个章节 8 条判据，编号 `LNH-A` ~ `LNH-H` 起，**逐章独立**（下一章换新前缀，不复用）。已用前缀：`LNH`（需求）/ `LNA`（架构）/ `LNT`（技术基线）/ `LNS`（数据库设计）/ `LNV`（第 1 周验收）/ `LNE`（报名接口）/ `LNP`（进度上报）/ `LNC`（完成判定）/ `LXP`（组卷接口）/ `LSG`（交卷评分）/ `LLI`（联调）/ `LLA`（攻击矩阵）/ `LLC`（契约与压测）/ `LLP`（性能基线）/ `LWA`（第 3 周验收）/ `LLD`（部署基线）/ `LLM`（监控接入）/ `LLR`（上线验收）/ `LLF`（干净目录复现）/ `LLW`（第 4 周总验收与收口）。
 - 每条判据必须能被一条命令、一条 SQL 或一次人工核对判定，**不写「应当合理」这种话**。
 - 判据的「不满足时改哪里」必须指向**具体表或文件**，不能写「优化设计」。
 
@@ -107,7 +108,7 @@
 # 1. 目录与配图齐全
 ls project/Complete/LearningHub            # 期望：index.md Requirements Architecture TechBaseline DatabaseDesign Week1Acceptance EnrollmentAPI ProgressReport CompletionAggregate ExamAssembly ScoreAndGrade E2EIntegration assets DeployBaseline
 ls project/Complete/LearningHub            # 第 3 周起还应有：ContractAndLoad AttackMatrix PerfBaseline Week3Acceptance
-ls project/Complete/LearningHub/assets     # 期望：lh-roadmap.svg lh-model.svg lh-domain.svg lh-arch.svg lh-tech.svg lh-db.svg lh-accept.svg lh-enroll.svg lh-progress.svg lh-completion.svg lh-exam.svg lh-score.svg lh-e2e.svg lh-contract.svg lh-attack.svg lh-perf.svg lh-week3.svg lh-deploy.svg
+ls project/Complete/LearningHub/assets     # 期望：lh-roadmap.svg lh-model.svg lh-domain.svg lh-arch.svg lh-tech.svg lh-db.svg lh-accept.svg lh-enroll.svg lh-progress.svg lh-completion.svg lh-exam.svg lh-score.svg lh-e2e.svg lh-contract.svg lh-attack.svg lh-perf.svg lh-week3.svg lh-cleanroom.svg lh-week4.svg（另有三张随页存放：DeployBaseline/assets/lh-deploy.svg、MonitoringIntegration/assets/lh-monitoring.svg、ReleaseAcceptance/assets/lh-release.svg）
 
 # 2. 十二张表能建出来、六条不变量全部拦得住
 python3 lh_req.py; echo "EXIT=$?"
@@ -150,6 +151,10 @@ python3 /tmp/lh_release.py
 # 12. 第 4 周第 4 步：干净目录从零复现与交付包
 python3 /tmp/lh_cleanroom.py; echo "EXIT=$?"
 # 期望：CLEANROOM 8 / 8 PASS；两条反向探针 OK；EXIT=0
+
+# 13. 第 4 周第 5 步：总验收表（在仓库根目录执行，期望 WEEK4 8 / 8 PASS、EXIT=0）
+python3 /tmp/lh_week4.py; echo "EXIT=$?"
+# 期望：48 条判据 → 8 组、16 条证据路径全部可打开、160 条判据 ID 无重复
 ```
 
 ## 九、迭代记录
@@ -159,8 +164,9 @@ python3 /tmp/lh_cleanroom.py; echo "EXIT=$?"
 | 269 | 第 4 周第 2 步「监控接入与告警规则落地」 | LLM（8 条，见第五节进度表） | `MONITOR 8 / 8 PASS / EXIT=0` |
 | 270 | 第 4 周第 3 步「上线验收单与交接材料」：新增六组门禁表、回滚演练记录、三条 runbook 交接清单与八项证据路径 | LLR（8 条，见第五节进度表） | `RELEASE 8 / 8 PASS / EXIT=0`；删掉一条证据后 H 组变红 |
 | 271 | 第 4 周第 4 步「干净目录从零复现与交付包」：新增六组门禁逐条比对、12 项交付清单与 sha256 校验、两条反向探针 | LLF（8 条，见第五节进度表） | `CLEANROOM 8 / 8 PASS / EXIT=0`；去掉 UNIQUE 后 E 组变红、删掉证据后 H 组变红 |
+| 272 | 第 4 周第 5 步「第 4 周验收单与项目收口」：48 条判据按对象重组为 8 组、16 条证据路径、7 个签字角色，并量出合并前的证据形态 | LLW（8 条，见第五节进度表） | `WEEK4 8 / 8 PASS / EXIT=0`；合并前 45 条判据只有文字描述、0 条指向仓库文件 |
 
-本次在项目目录只新增 `CleanRoomRepro/index.md` 与 `assets/lh-cleanroom.svg`，没有新增任何非 Markdown、非配图文件；第 267 / 268 天的项目构建步骤仍按「登记不造页」口径列为欠账，本轮不代写、不预写。**下一步**：第 4 周第 5 步「第 4 周验收单与项目收口」——把四周门禁压成一张总验收表，逐条给出证据路径与签字人。
+本次在项目目录只新增 `Week4Acceptance/index.md` 与 `assets/lh-week4.svg`，没有新增任何非 Markdown、非配图文件；第 267 / 268 天的项目构建步骤仍按「登记不造页」口径列为欠账，本轮不代写、不预写。**四周里程碑到此收口**：第 4 周 5 步全部交付（部署基线 → 监控接入 → 上线验收 → 干净目录复现 → 总验收单），交付边界与接手入口写在[第 4 周验收单](Week4Acceptance/index.md)第十一节。
 
 ## 参考资料
 

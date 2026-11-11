@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 398" width="760" height="398" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="398" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">三种时钟与一次 step 的分叉</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">同一个内核，三个不同的「已经过了多久」</text>
+  <rect x="20" y="70" width="230" height="74" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="135" y="88.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">CLOCK_REALTIME</text>
+  <text x="135" y="105" text-anchor="middle" font-size="7.5" fill="#1D4ED8">跟随 NTP 被 step/slew</text>
+  <text x="135" y="122.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">可与外部时间对齐</text>
+  <rect x="265" y="70" width="230" height="74" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="88.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">CLOCK_MONOTONIC</text>
+  <text x="380" y="105" text-anchor="middle" font-size="7.5" fill="#047857">开机起算，不受 step</text>
+  <text x="380" y="122.25" text-anchor="middle" font-size="7.5" fill="#047857">只保证单调不减</text>
+  <rect x="510" y="70" width="230" height="74" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="625" y="88.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">CLOCK_BOOTTIME</text>
+  <text x="625" y="105" text-anchor="middle" font-size="7.5" fill="#0F766E">含休眠时间</text>
+  <text x="625" y="122.25" text-anchor="middle" font-size="7.5" fill="#0F766E">容器里更接近「经过」</text>
+  <text x="380" y="172" text-anchor="middle" font-size="9" fill="#475569">一次 -1.00 s 的 step 之后，同一段 10 s 间隔在两个时钟上读出的值</text>
+  <line x1="60" y1="200" x2="700" y2="200" stroke="#CBD5E1" stroke-width="1.4"/>
+  <rect x="60" y="214" width="180" height="64" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="150" y="232.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">realtime 读到的间隔</text>
+  <text x="150" y="249" text-anchor="middle" font-size="7.5" fill="#B91C1C">10 s 之后变成 11 s</text>
+  <text x="150" y="266.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">回拨则变成 9 s</text>
+  <rect x="290" y="214" width="180" height="64" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+  <text x="380" y="232.2" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">monotonic 读到的间隔</text>
+  <text x="380" y="249" text-anchor="middle" font-size="7.5" fill="#047857">恒为 10 s</text>
+  <text x="380" y="266.25" text-anchor="middle" font-size="7.5" fill="#047857">与 step 无关</text>
+  <rect x="520" y="214" width="180" height="64" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="610" y="232.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">两者的差</text>
+  <text x="610" y="249" text-anchor="middle" font-size="7.5" fill="#B45309">= 期间所有修正之和</text>
+  <text x="610" y="266.25" text-anchor="middle" font-size="7.5" fill="#B45309">可当「漂移会计」</text>
+  <rect x="60" y="300" width="300" height="82" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="210" y="318.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">哪些事必须用单调时钟</text>
+  <text x="210" y="335" text-anchor="middle" font-size="7.5" fill="#6D28D9">超时、重试退避、限流令牌桶</text>
+  <text x="210" y="352.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">耗时统计、租约剩余、缓存 TTL 内部计时</text>
+  <rect x="390" y="300" width="350" height="82" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+  <text x="565" y="318.2" text-anchor="middle" font-size="10" fill="#3730A3" font-weight="bold">哪些事必须用墙上时钟</text>
+  <text x="565" y="335" text-anchor="middle" font-size="7.5" fill="#4338CA">日志时间戳、账务记账时点、证书有效期</text>
+  <text x="565" y="352.25" text-anchor="middle" font-size="7.5" fill="#4338CA">跨系统对账（配合误差界与单调序号）</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

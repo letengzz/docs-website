@@ -142,6 +142,16 @@ cd /tmp && python3 dst_fold.py && python3 dst_gap.py
 
 预期：折叠脚本输出两个相差一小时的 UTC；间隙脚本两次都打印 `回转一致= False`。若本机 tzdb 较旧导致 `America/New_York` 规则不同，先执行 `python3 -c "from zoneinfo import ZoneInfo; from datetime import datetime; print(datetime(2026,11,1,1,30,tzinfo=ZoneInfo('America/New_York')).utcoffset())"` 记录本机版本，再对照本页读数。
 
+## 与「网络时间同步与时钟治理」专题的分工（第 272 天补充）
+
+本页管「同一个时刻在不同地方该显示成几点」；[网络时间同步与时钟治理](../../../Ops/ClockSync/index.md) 管「那个时刻本身准不准」。这两件事经常被混成一件，后果是**把时区偏移当成时钟偏差去校正**。
+
+**一页一坑**：DST 切换当天看到「所有时间戳差一小时」，于是去调 NTP。真实情况是 UTC 时刻没错、只是本地呈现换了偏移——此时 `date` 看起来对不上，`chronyc tracking` 的 `System time` 却是 0.000000。判定顺序必须是先看 UTC 与 `offset`，再看时区：`timedatectl` 里的 `RTC in local TZ: no` 与 `Time zone:` 两行能在一秒内把这两类问题分开。反过来，若 UTC 真的偏了，DST 页面上的所有边界计算都会跟着错，而且错得很整齐——这正是它难发现的原因。
+
+- 要判「三个『现在是几点』分别指什么」→ [总览：三个「现在是几点」](../../../Ops/ClockSync/Overview/index.md)
+- 要判「UTC 之外的第五种时间（TAI）差多少」→ [闰秒与 smearing](../../../Ops/ClockSync/LeapSecond/index.md)
+- 要判「容器里时区对、时钟不对」→ [当前主线：chrony](../../../Ops/ClockSync/ModernChrony/index.md)
+
 ## 参考资料
 
 - [IANA Time Zone Database Releases](https://recursive.iana.org/time-zones/releases)

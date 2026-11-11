@@ -8,6 +8,7 @@
 - [Nginx](Nginx/index.md)
 - [网络基础](Network/index.md)
 - [DNS 解析工程与域名治理](DnsResolution/index.md)：七段链（问/递/权/答/缓/验/切）与三个「这个答案」、referral 与胶水记录、TTL 收敛与负缓存、DNSSEC 信任链、DoT/DoH/DoQ 的那一跳边界、ECS 精度与缓存代价、serial 与回滚残留，另按解析栈代际拆出旧版（仅存量项目使用）与当前主线两个版本目录
+- [网络时间同步与时钟治理](ClockSync/index.md)：七段链（源/同/稳/验/用/跨/治）与三个「现在是几点」、Marzullo 选源与真假源、偏差与频率的漂移账、slew 与 step 的代价、闰秒与 smearing、单调时钟与跨机排序、四时间戳与误差预算、NTS 与硬件时间戳的边界、应用侧四条纪律、七步定位与八条门禁，另按守护进程代际拆出旧版（仅存量项目使用）与当前主线两个版本目录
 - [Docker](Docker/index.md)
 - [Kubernetes](Kubernetes/index.md)
 - [容器编排进阶](ContainerOrchestration/index.md)

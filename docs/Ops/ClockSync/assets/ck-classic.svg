@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 374" width="760" height="374" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="374" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">旧版：ntpd 与手工校时（仅存量项目使用）</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">配置、观测、行为特征与四处迁移改动</text>
+  <rect x="20" y="62" width="350" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="195" y="80.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">配置在 /etc/ntp.conf</text>
+  <text x="195" y="97" text-anchor="middle" font-size="7.5" fill="#334155">server / pool 指令</text>
+  <text x="195" y="114.25" text-anchor="middle" font-size="7.5" fill="#334155">driftfile 记频率</text>
+  <rect x="390" y="62" width="350" height="96" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.6"/>
+  <text x="565" y="80.2" text-anchor="middle" font-size="10" fill="#1E293B" font-weight="bold">观测用 ntpq / ntpstat</text>
+  <text x="565" y="97" text-anchor="middle" font-size="7.5" fill="#334155">ntpq -p 看 peers</text>
+  <text x="565" y="114.25" text-anchor="middle" font-size="7.5" fill="#334155">ntpstat 只答「已同步/未同步」</text>
+  <rect x="20" y="174" width="350" height="96" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="195" y="192.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">行为特征</text>
+  <text x="195" y="209" text-anchor="middle" font-size="7.5" fill="#B45309">默认最大 slew 500 ppm</text>
+  <text x="195" y="226.25" text-anchor="middle" font-size="7.5" fill="#B45309">makestep 需显式配置才跳</text>
+  <text x="195" y="243.5" text-anchor="middle" font-size="7.5" fill="#B45309">长期离线后收敛慢</text>
+  <rect x="390" y="174" width="350" height="96" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="565" y="192.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">迁移时要改的四处</text>
+  <text x="565" y="209" text-anchor="middle" font-size="7.5" fill="#6D28D9">配置项改名：server → server/pool 语义归一</text>
+  <text x="565" y="226.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">driftfile 路径与格式</text>
+  <text x="565" y="243.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">查询命令 ntpq → chronyc</text>
+  <text x="565" y="260.75" text-anchor="middle" font-size="7.5" fill="#6D28D9">闰秒处理策略要显式选</text>
+  <rect x="20" y="286" width="720" height="74" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="380" y="304.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">状态：仅存量项目使用</text>
+  <text x="380" y="321" text-anchor="middle" font-size="7.5" fill="#B91C1C">上游已不再新增特性；新项目请用 chrony</text>
+  <text x="380" y="338.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">本页保留原写法与迁移映射，不覆盖旧内容</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>

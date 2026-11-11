@@ -224,6 +224,16 @@ redis-cli -p 16379 --scan --pattern 'lock:*' | head -5 | while read k; do \
 第 1、2 节的公式与 Kubernetes 参数来自官方文档（`leaseDuration=15s` / `renewDeadline=10s` / `retryPeriod=2s`，2026-10 核对）；第 5 节时间线是本机 Redis 7.4.0 实测；第 6 节量级为公开经验的区间估计，**不是本机实测**，标注在此避免被当成读数引用。Redisson 的 `lockWatchdogTimeout=30000` 与 `checkLockSyncedSlaves` 默认值来自官方配置文档。
 :::
 
+## 与「网络时间同步与时钟治理」专题的分工（第 272 天补充）
+
+本页管「谁持有租约、怎么续、过期之后谁接手」；[网络时间同步与时钟治理](../../../Ops/ClockSync/index.md) 管「『过期』这个判断本身依赖谁的时钟」。分界：本页假设持有者与判断者看到的是同一个时刻，专题页负责量出这个假设破了多少。
+
+**一页一坑**：只做「租约 + 续期」而不做 fencing。租约 30 s、双方时钟偏差 5 s 时，两个持有者的**重叠窗口是 5.0 s（占租约的 16.7%）**；偏差 35 s 时重叠 30.0 s，即 **100%**——等于租约完全失效，而日志上一切正常。这个数可以直接算：`overlap = min(|skew|, lease)`。所以「租约时长」不是安全边界，「fencing token 单调递增且下游校验」才是；租约只能用来减少冲突，不能用来保证互斥。
+
+- 要判「重叠加 fencing 的完整写法」→ [应用侧四条纪律](../../../Ops/ClockSync/AppUsage/index.md)
+- 要判「偏差是慢慢磨过来还是被一步跳过来」→ [修正方式：slew 与 step](../../../Ops/ClockSync/SlewStep/index.md)
+- 要判「机器刚起来时钟还没同步时会发生什么」→ [当前主线：chrony](../../../Ops/ClockSync/ModernChrony/index.md)
+
 ## 参考资料
 
 - [Kubernetes · kube-controller-manager flags](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)——`--leader-elect-lease-duration` / `--renew-deadline` / `--retry-period` 三个默认值

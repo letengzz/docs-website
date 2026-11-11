@@ -493,6 +493,7 @@ export const CompleteProject = [
           { text: "第 4 周第 2 步 · 监控接入与告警规则落地：三条规则与两个反向探针（LLM-A~LLM-H）", link: "/project/Complete/LearningHub/MonitoringIntegration/index.md" },
           { text: "第 4 周第 3 步 · 上线验收单与交接材料：六组门禁、回滚演练与值班交接（LLR-A~LLR-H）", link: "/project/Complete/LearningHub/ReleaseAcceptance/index.md" },
           { text: "第 4 周第 4 步 · 干净目录从零复现与交付包：六组门禁、12 项清单与校验和（LLF-A~LLF-H）", link: "/project/Complete/LearningHub/CleanRoomRepro/index.md" },
+          { text: "第 4 周第 5 步 · 第 4 周验收单与项目收口：48 条判据压成 8 个签字位（LLW-A~LLW-H）", link: "/project/Complete/LearningHub/Week4Acceptance/index.md" },
         ],
       },
     ],

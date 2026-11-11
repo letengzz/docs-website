@@ -85,6 +85,16 @@ helm install kube-prometheus prometheus-community/kube-prometheus-stack
 - [容器编排进阶 · 弹性伸缩](../../ContainerOrchestration/Autoscaling/index.md)：HPA 扩缩指标与告警联动
 - [容器编排进阶 · GitOps 实战](../../ContainerOrchestration/Practice/index.md)：告警规则随应用清单一起交付
 
+## 与「网络时间同步与时钟治理」专题的分工（第 272 天补充）
+
+本页管「指标怎么采、探针怎么配、Pod 挂了怎么看出来」；[网络时间同步与时钟治理](../../ClockSync/index.md) 管「节点上的时钟谁在管、容器里的时钟跟谁走」。分界：本页的所有时间序列都默认节点时钟可信，专题页负责让这个默认成立。
+
+**一页一坑**：在容器里装一个 NTP 守护进程，以为这样就「同步了」。容器默认与宿主机共享内核时钟视图，但没有 `CAP_SYS_TIME` 就改不了系统时间——守护进程会正常启动、正常打印 `tracking`、正常显示 offset 在收敛，唯独那一次 `step` 会失败；同时它还会和宿主机上的 `chronyd` 抢同一个上游端口与 `drift` 文件。结果是**「看起来有两个同步器，其实一个都没生效」**。正确做法：只在节点上跑一个，容器里 `chronyc tracking` 指向节点的 socket 或直接读宿主机的 `/var/run/chrony/chronyd.sock`；要判这件事，就在 Pod 里跑一次 `chronyc tracking` 与节点上对比 `System time` 是否一致。
+
+- 要判「容器里该不该跑守护进程」→ [当前主线：chrony](../../ClockSync/ModernChrony/index.md)
+- 要判「`maxslewrate` 与 step 的边界」→ [修正方式：slew 与 step](../../ClockSync/SlewStep/index.md)
+- 要判「节点时间错了指标会怎么歪」→ [三种时钟与可测间隔](../../ClockSync/Monotonic/index.md)
+
 ## 参考资料
 
 - kubectl 速查表：https://kubernetes.io/zh-cn/docs/reference/kubectl/cheatsheet/

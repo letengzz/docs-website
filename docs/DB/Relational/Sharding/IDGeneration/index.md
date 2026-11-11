@@ -389,6 +389,16 @@ public static String orderNo(LocalDateTime time, int bizCode, long seq) {
 - **测试要包含时钟场景**。用可注入的 `Clock` 替代 `System.currentTimeMillis()`，才能写出「回拨 1ms 应正常、回拨 100ms 应抛异常」这类用例。
 :::
 
+## 与「网络时间同步与时钟治理」专题的分工（第 272 天补充）
+
+本页管「分片下怎么不撞号、时间戳怎么塞进 ID」；[网络时间同步与时钟治理](../../../../Ops/ClockSync/index.md) 管「时间戳那一段被回拨时怎么办」。分界：本页的雪花类方案都把「时间」当成单调递增的输入，专题页负责说明这个输入并不单调。
+
+**一页一坑**：只判 `now < last` 然后 `sleep(last - now + 1)`。这只覆盖 step 回拨，覆盖不了 slew——`maxslewrate 83333.333` 时，一段 120 ms 的偏差**用 1.44 s 磨完**，这一秒半里 `now` 一直在追而 `last` 不动，逐次生成的 ID 会在同一毫秒内反复撞上「回拨」分支；如果实现里给 `sleep` 设了上限并直接抛异常，表现就是「偶发一批写入失败」，而 NTP 那边一切正常。可判定的写法：等待与告警分开——等待设上限（如 5 ms，超过就不等），超出上限的记一条「时钟回拨事件」计数，ID 改从「上一毫秒 + 序列号进位」继续，绝不依赖外部时钟恢复。
+
+- 要判「slew 与 step 的代价差多少」→ [修正方式：slew 与 step](../../../../Ops/ClockSync/SlewStep/index.md)
+- 要判「闰秒那一秒 ID 会不会重号」→ [闰秒与 smearing](../../../../Ops/ClockSync/LeapSecond/index.md)
+- 要判「机器刚启动、时钟还没同步时」→ [当前主线：chrony](../../../../Ops/ClockSync/ModernChrony/index.md)
+
 ## 参考资料
 
 - [Twitter Snowflake 算法原始说明](https://github.com/twitter-archive/snowflake/tree/snowflake-2010)（位分配与设计动机）

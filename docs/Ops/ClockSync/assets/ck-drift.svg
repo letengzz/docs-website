@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 412" width="760" height="412" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="760" height="412" fill="#FFFFFF"/>
+  <text x="380" y="30" text-anchor="middle" font-size="16" fill="#0F172A" font-weight="bold">偏差与频率：两个必须分开记的数</text>
+  <text x="380" y="54" text-anchor="middle" font-size="10.5" fill="#64748B">offset 决定「现在差多少」，freq 决定「以后差多少」</text>
+  <text x="120" y="78" text-anchor="start" font-size="10" fill="#1E293B" font-weight="bold">偏差 offset</text>
+  <text x="400" y="78" text-anchor="start" font-size="10" fill="#1E293B" font-weight="bold">频率 freq</text>
+  <line x1="30" y1="96" x2="730" y2="96" stroke="#E2E8F0" stroke-width="1"/>
+  <rect x="30" y="108" width="320" height="84" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="190" y="126.2" text-anchor="middle" font-size="10" fill="#1E3A8A" font-weight="bold">偏多少（单位：秒）</text>
+  <text x="190" y="143" text-anchor="middle" font-size="7.5" fill="#1D4ED8">每次测量直接得到</text>
+  <text x="190" y="160.25" text-anchor="middle" font-size="7.5" fill="#1D4ED8">可以被 step 一次抹平</text>
+  <text x="190" y="177.5" text-anchor="middle" font-size="7.5" fill="#1D4ED8">10 ppm 晶振：每天 0.864 s</text>
+  <rect x="380" y="108" width="350" height="84" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+  <text x="555" y="126.2" text-anchor="middle" font-size="10" fill="#5B21B6" font-weight="bold">走多快（单位：ppm = 1e-6）</text>
+  <text x="555" y="143" text-anchor="middle" font-size="7.5" fill="#6D28D9">靠多次测量回归出来</text>
+  <text x="555" y="160.25" text-anchor="middle" font-size="7.5" fill="#6D28D9">只能靠调整频率慢慢磨掉</text>
+  <text x="555" y="177.5" text-anchor="middle" font-size="7.5" fill="#6D28D9">温度 20℃ 变化约 0.70 ppm</text>
+  <rect x="30" y="210" width="320" height="92" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+  <text x="190" y="228.2" text-anchor="middle" font-size="10" fill="#92400E" font-weight="bold">为什么必须分开记</text>
+  <text x="190" y="245" text-anchor="middle" font-size="7.5" fill="#B45309">offset 大但 freq 准：step 一次就完</text>
+  <text x="190" y="262.25" text-anchor="middle" font-size="7.5" fill="#B45309">offset 小但 freq 差：每天回来 0.86 s</text>
+  <text x="190" y="279.5" text-anchor="middle" font-size="7.5" fill="#B45309">只记 offset 的监控看不出后者</text>
+  <rect x="380" y="210" width="350" height="92" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.6"/>
+  <text x="555" y="228.2" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">漂移账（30 天）</text>
+  <text x="555" y="245" text-anchor="middle" font-size="7.5" fill="#B91C1C">1 ppm → 2.59 s；10 ppm → 25.92 s</text>
+  <text x="555" y="262.25" text-anchor="middle" font-size="7.5" fill="#B91C1C">50 ppm → 129.60 s；100 ppm → 259.20 s</text>
+  <text x="555" y="279.5" text-anchor="middle" font-size="7.5" fill="#B91C1C">「一年差 5 分钟」≈ 9.5 ppm</text>
+  <rect x="30" y="320" width="700" height="76" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+  <text x="380" y="338.2" text-anchor="middle" font-size="10" fill="#115E59" font-weight="bold">两句话把一条时间读数列清楚</text>
+  <text x="380" y="355" text-anchor="middle" font-size="7.5" fill="#0F766E">「这台机器此刻偏差 +12 ms，误差界 ±9 ms；频率估计 +3.4 ppm，即每天快 0.29 s」</text>
+  <text x="380" y="372.25" text-anchor="middle" font-size="7.5" fill="#0F766E">——缺任何一项，读者都无法判断「明天会不会更差」</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+</svg>
