@@ -321,6 +321,25 @@ npx webpack --config build/webpack.prod.js --stats errors-only
 写配置时最有效的习惯是**一次只改一个字段并立即构建验证**。Webpack 配置项之间会互相影响（例如 `splitChunks` 与 `output.filename` 的 chunk 命名联动），一次性大改很难定位问题。
 :::
 
+## 与「构建产物与运行时兼容基线」专题的分工
+
+本页讲 `webpack.config` 的写法与 loader 链。其中与「兼容」相邻的只有三个字段：`target`、`babel-loader` 的 `presets`、以及 `entry` 里的 polyfill 引入。这三个字段该怎么取值、取错了怎么发现，不在本页。
+
+| 问题 | 去哪看 |
+| --- | --- |
+| loader 顺序、resolve、alias、devServer | 本页 |
+| 目标浏览器列表怎么写成一条可打印的查询 | [目标浏览器清单](../../../../BuildBaseline/Targets/index.md) |
+| 语法降级到哪一档、降不下去怎么办 | [语法降级的硬边界](../../../../BuildBaseline/Transpile/index.md) |
+| polyfill 按需还是全量、怎么量体积 | [API 补齐与注入策略](../../../../BuildBaseline/Polyfill/index.md) |
+
+::: danger 一页一坑：`target: 'web'` 管的是运行环境，不是浏览器版本
+`webpack` 的 `target: 'web'` 只声明「产物跑在浏览器里」（影响是否打包 Node 内置模块、`global` 怎么填），它与「支持哪些浏览器版本」**没有关系**。真正的版本约束在 `babel-loader` 读的 `browserslist` 里。
+
+两处混用会出现一种很典型的错误：为了「兼容旧浏览器」把 `target` 改成 `'es5'`，结果运行时报「`regeneratorRuntime` is not defined」——因为这只改了 webpack 的运行时包装，没改语法降级，也没引 polyfill runtime。
+
+**正确做法**：`target` 保持 `'web'`（或 `'browserslist'`，让 webpack 读同一份基线），版本约束交给 `browserslist`；判据是产物里不再出现超档语法（用正则扫一遍）。
+:::
+
 ## 参考资料
 
 - [Webpack 官方配置文档](https://webpack.js.org/configuration/)

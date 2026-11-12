@@ -119,3 +119,23 @@ node -e "console.log(typeof Proxy)"     # 期望：function
 - [JavaScript 模块化](../../../JavaScript/Modularization/index.md)：CJS / AMD / UMD / ESM 四种方案的取舍
 - [前端工程化](../../../../Others/FrontendEngineering/index.md)：`target`、polyfill 与产物体积的权衡
 - ECMAScript 语言规范（官方）：[tc39.es/ecma262](https://tc39.es/ecma262/) ｜ TC39 提案列表：[github.com/tc39/proposals](https://github.com/tc39/proposals)
+
+
+## 与「构建产物与运行时兼容基线」专题的分工
+
+本页讲语法**怎么写、语义是什么**（`let`/`const` 的作用域、解构、类、模块）。写完之后它要经过一次降级才能变成产物，降级之后**语法还在，语义不一定全在**——这一层不在本页。
+
+| 问题 | 去哪看 |
+| --- | --- |
+| 某个语法的语义、什么时候用 | 本页 |
+| 降到目标档之后还剩什么语义 | [语法降级的硬边界](../../../../BuildBaseline/Transpile/index.md) |
+| 语法够了但 API 没有（如 `Array.prototype.at`） | [API 补齐与注入策略](../../../../BuildBaseline/Polyfill/index.md) |
+| 类字段在降级后的初始化语义 | [语法降级](../../../../BuildBaseline/Transpile/index.md) 第三节 |
+
+::: danger 一页一坑：私有字段降级后实例内存翻倍
+`#x` 在旧引擎里没有对应物，只能存在实例之外。本机实测 20 万个实例（Node v22.22.2，取 `heapUsed`）：原生 `#x` 用 15.11 MB，降到 `es2015` 后 **29.67 MB**（+96.3%），而手写 `WeakMap` 的等价实现只用 14.98 MB。
+
+这条在「长列表、长驻对象」的场景里是真实成本：它不是慢一点，是内存翻倍后被系统杀掉。
+
+**正确做法**：大批量对象（缓存、表格行、图节点）优先用普通属性加约定（`_x`）或 `WeakMap`，把 `#私有字段` 留给少量、生命周期短的对象；判据是压测时看 `heapUsed` 是否随实例数线性翻倍。
+:::

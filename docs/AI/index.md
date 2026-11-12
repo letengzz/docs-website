@@ -12,6 +12,7 @@
 - [端侧推理与模型量化](EdgeInference/index.md)
 - [OpenClaw](OpenClaw/index.md)
 - [提示词工程](PromptEngineering/index.md)
+- [上下文工程与长上下文治理](ContextEngineering/index.md)
 - [提示词安全与评估](PromptSecurity/index.md)
 - [AI 安全与合规](AISecurityCompliance/index.md)
 - [AI 应用观测与评估](LLMObservability/index.md)

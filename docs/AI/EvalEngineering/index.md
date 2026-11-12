@@ -115,6 +115,18 @@
 4. 然后读[统计](Statistics/index.md)与[门禁](RegressionGate/index.md)，这是「能不能卡发布」的分水岭。
 5. 最后读[归因](Attribution/index.md)与[实战](Practice/index.md)，把 `S1~S10` 抄成自己的验收序列；遇到现象查[常见问题](FAQ/index.md)的分诊表。
 
+## 与「上下文工程与长上下文治理」专题的分工（第 273 天补充）
+
+| 问题 | 去哪一页 |
+| --- | --- |
+| 评测集怎么建、判据怎么校准、指标怎么选（通用方法） | 本页 |
+| 上下文改动的四类指标（正确率 / 引用正确率 / 格式合规 / 拒答率） | [上下文工程 · 评测与退化门禁](../ContextEngineering/Evaluation/index.md) |
+| 「这次改动掉了 2 个点」到底需要多少样本 | [上下文工程 · 评测与退化门禁](../ContextEngineering/Evaluation/index.md) |
+
+::: danger 本页的一页一坑
+**样本量不够时，「没退化」这个结论本身不成立。** 单侧 α=0.05、power=0.8 的二项计算：基线 90% 时，检出 **5 个点**的退化需要 **253** 条，检出 **2 个点**需要 **1,471** 条，检出 **1 个点**需要 **5,728** 条。另一处常被忽略：同时看 10 个指标、各用 α=0.05 时，至少一个误报的概率是 **40.1%**——**门禁总是红但不代表真有问题**，要么收紧 α，要么只对主指标做门禁。
+:::
+
 ## 参考资料
 
 - Zheng et al., *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*, NeurIPS 2023 Datasets & Benchmarks（[arXiv:2306.05685](https://arxiv.org/abs/2306.05685)）：位置偏差、冗长偏差、自我增强偏差的原始量化

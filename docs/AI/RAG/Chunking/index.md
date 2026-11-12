@@ -116,6 +116,18 @@ for parent in split_by_headings(text, max_len=4000):
 3. 打印几个检索命中的 chunk，人工判断"如果我是模型，只看这段能不能答对"。
 4. 用父子块方案重跑一遍，对比引用正确率是否提升（通常在中长文档上提升明显）。
 
+## 与「上下文工程与长上下文治理」专题的分工（第 273 天补充）
+
+| 问题 | 去哪一页 |
+| --- | --- |
+| 块切多大、按什么边界切、重叠多少 | 本页 |
+| 块数 k 与预算怎么联动、边际收益在哪拐弯 | [上下文工程 · 检索与长上下文的分工](../../ContextEngineering/RetrievalSplit/index.md) |
+| 压不动的时候怎么压（抽取式与结构化） | [上下文工程 · 压缩与摘要](../../ContextEngineering/Compression/index.md) |
+
+::: danger 本页的一页一坑
+**切片大小与 k 是乘法关系，单独调一个等于只调成本。** 切片 1,500 token 时 k=5 就已经 7,500 token；切片 200 token 时 k=5 只有 1,000 token、往往不够覆盖同一片信息。本库实测的 top-k 曲线上，k=5 到 k=10 多花 **14,826 token** 只换来 **12.5 个百分点**命中——**先把切片调到 300~800 token 再谈 k**，顺序反了怎么调都贵。
+:::
+
 ## 参考资料
 
 - 文件检索与切分说明（官方文档）：https://developers.openai.com/api/docs/guides/tools-file-search

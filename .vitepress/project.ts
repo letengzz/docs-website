@@ -494,6 +494,8 @@ export const CompleteProject = [
           { text: "第 4 周第 3 步 · 上线验收单与交接材料：六组门禁、回滚演练与值班交接（LLR-A~LLR-H）", link: "/project/Complete/LearningHub/ReleaseAcceptance/index.md" },
           { text: "第 4 周第 4 步 · 干净目录从零复现与交付包：六组门禁、12 项清单与校验和（LLF-A~LLF-H）", link: "/project/Complete/LearningHub/CleanRoomRepro/index.md" },
           { text: "第 4 周第 5 步 · 第 4 周验收单与项目收口：48 条判据压成 8 个签字位（LLW-A~LLW-H）", link: "/project/Complete/LearningHub/Week4Acceptance/index.md" },
+          { text: "第 4 周第 6 步 · 题库曝光治理与泄题面收敛：上限就是产能（LLQ-A~LLQ-H）", link: "/project/Complete/LearningHub/QuestionExposure/index.md" },
+          { text: "第 4 周第 7 步 · 备份、恢复与误删演练：能回到任何一个五分钟前（LBK-A~LBK-H）", link: "/project/Complete/LearningHub/BackupRestore/index.md" },
         ],
       },
     ],

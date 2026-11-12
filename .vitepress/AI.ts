@@ -441,3 +441,21 @@ export const AI_AgentToolProtocol = [
     ],
   },
 ];
+
+export const AI_ContextEngineering = [
+  {
+    text: "上下文工程与长上下文治理",
+    link: "/docs/AI/ContextEngineering/index.md",
+    items: [
+      { text: "总览：一次推理看得见什么", link: "/docs/AI/ContextEngineering/Overview/index.md" },
+      { text: "预算与配额", link: "/docs/AI/ContextEngineering/Budget/index.md" },
+      { text: "长窗口的边界", link: "/docs/AI/ContextEngineering/WindowLimit/index.md" },
+      { text: "压缩与摘要", link: "/docs/AI/ContextEngineering/Compression/index.md" },
+      { text: "排布与注意力", link: "/docs/AI/ContextEngineering/Ordering/index.md" },
+      { text: "前缀与缓存复用", link: "/docs/AI/ContextEngineering/PrefixCache/index.md" },
+      { text: "检索与长上下文的分工", link: "/docs/AI/ContextEngineering/RetrievalSplit/index.md" },
+      { text: "评测与退化门禁", link: "/docs/AI/ContextEngineering/Evaluation/index.md" },
+      { text: "实战：一个可验证的上下文装配器", link: "/docs/AI/ContextEngineering/Practice/index.md" },
+    ],
+  },
+];

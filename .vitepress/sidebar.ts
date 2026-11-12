@@ -1,8 +1,8 @@
 // import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 import { ClinicalTrial, Auth, ContractEvolution, DDD, DesignPatterns, DistributedCache, DistributedLock, DistributedScheduling, DotNet, Ecommerce, EmailDeliverability, EventSourcing, GatewayDeep, Go, GoMicroservices, HighConcurrency, HighPerformanceJava, IdempotencyStateMachine, Java, Ledger, LegacyModernization, MessageQueue, Microservices, MultiTenantSaaS, NetworkProgramming, ObjectStorage, Python, PythonWeb, ReactiveProgramming, RealtimeCollaboration, ServiceMesh, SpringCloud, WorkflowEngine, RecommenderSystems, MediaDelivery, RiskDecision, PricingPromotion, NotificationDelivery, SubscriptionBilling, BulkDataExchange, SupportTicket, ESignature, ShippingCarrier, AdDelivery, GraphQL, LoyaltyProgram, OpenPlatform, IoTDevice, ProcureToPay, SupplierCollaboration, RevenueRecognition, MultiCurrency, WarehouseOps, FixedAsset, CostAccounting, Payroll, Treasury, Manufacturing, EquipmentMaintenance, Consolidation, CustomerIdentity, Budgeting, CarbonAccounting, OrgPeople, ClaimsProcessing, TrainingQualification, ExpenseReimbursement, MetricPlatform, RetailPOS, AppointmentBooking, TimeAttendance, UnderwritingPolicy, QualityManagement, AMLCompliance, LoanServicing, AcademicAffairs, CPQ, BiddingTender, Recruiting, FleetTransport, ChargingNetwork, HotelPMS, TaxInvoice, ContentModeration, AlertJudgment, ReportAnalytics, AuditForensics, GraphRelation, BatchPipeline, SecretRuntime, Globalization, EventIntegration } from "./backend";
 
-import { AI_Java, AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_EdgeInference, AI_EvalEngineering, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI, AI_SyntheticData, AI_InferenceScheduling, AI_AgentToolProtocol } from "./AI";
-import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontErrorTelemetry, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLocalDataStore, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting } from "./frontend";
+import { AI_Java, AI_Agent, AI_AgentFramework, AI_AICodingAssistant, AI_AISecurityCompliance, AI_EnterpriseKB, AI_EdgeInference, AI_EvalEngineering, AI_FineTuning, AI_LangChain, AI_LLMApp, AI_LLMObservability, AI_LocalModel, AI_ModelRouting, AI_Multimodal, AI_MultimodalRetrieval, AI_OpenClaw, AI_PromptEngineering, AI_PromptSecurity, AI_RAG, AI_SpeechAudioAI, AI_SyntheticData, AI_InferenceScheduling, AI_AgentToolProtocol, AI_ContextEngineering } from "./AI";
+import { FrontBasic, FrontDataVisualization, FrontDesignSystem, FrontErrorTelemetry, FrontFormValidation, FrontDesktopApp, FrontIntlA11y, FrontLocalDataStore, FrontLowCode, FrontMicroFrontend, FrontMobileH5, FrontMotion, FrontOthers, FrontStateDataFlow, FrontPWA, FrontRichTextEditor, FrontSSR, FrontWebAssembly, FrontWebGL, FrontendEngineering, FrontFrame, FrontTesting, FrontBuildBaseline } from "./frontend";
 import { Ansible, BackupDR, DatabaseOps, DatabaseUpgrade, CapacityCost, CertificateLifecycle, ChangeManagement, ConfigManagement, ChaosEngineering, MultiActive, CloudArchitecture, CloudNative, ContainerOrchestration, Docker, EdgeCDN, IncidentResponse, JumpServer, Kubernetes, Linux, LogSystem, Monitoring, Network, Nginx, Observability, OpsOthers, PerformanceEngineering, SecurityHardening, Terraform, VM, DnsResolution, ClockSync } from "./ops";
 import { AccessControl, BigData, CDC, ClickHouse, ConnectionPool, DBOverview, DataGovernance, DataModeling, DataWarehouse, DatabaseInternals, FullTextSearch, GeoMap, Lakehouse, Middleware, Neo4j, NoRelational, ParameterTuning, PartitionArchival, Relational, SQLOptimization, SchemaEvolution, Sharding, TimeSeries, VectorDatabase } from "./db";
 import { APIDesign, APITools, Build, CICD, CodeQuality, Collaboration, DatabaseClients, DependencyGovernance, DocsInfra, Efficiency, IDE, Others, PackageManager, TestingTools, Toolchain, VC, ObservabilityDriven, TestDataSimulation, EngineeringMetrics, BrowserExtension, CodeSearch, DevEnvironment, BuildCache } from "./tools";
@@ -123,7 +123,7 @@ export const sidebar = {
     {
       text: "前端",
       collapsed: true,
-      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontLowCode, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontSSR, ...FrontDesktopApp, ...FrontIntlA11y, ...FrontMobileH5, ...FrontMotion, ...FrontStateDataFlow, ...FrontFormValidation, ...FrontDesignSystem, ...FrontErrorTelemetry, ...FrontLocalDataStore, ...FrontTesting, ...FrontRichTextEditor, ...FrontOthers],
+      items: [...FrontBasic, ...FrontFrame, ...FrontMicroFrontend, ...FrontDataVisualization, ...FrontLowCode, ...FrontWebAssembly, ...FrontWebGL, ...FrontPWA, ...FrontSSR, ...FrontDesktopApp, ...FrontIntlA11y, ...FrontMobileH5, ...FrontMotion, ...FrontStateDataFlow, ...FrontFormValidation, ...FrontDesignSystem, ...FrontErrorTelemetry, ...FrontLocalDataStore, ...FrontTesting, ...FrontRichTextEditor, ...FrontOthers, ...FrontBuildBaseline],
     },
   ],
   "/docs/Backend": [
@@ -151,7 +151,7 @@ export const sidebar = {
     {
       text: "AI",
       collapsed: true,
-      items: [...AI_LLMApp, ...AI_AICodingAssistant, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_MultimodalRetrieval, ...AI_ModelRouting, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_PromptSecurity, ...AI_Agent, ...AI_LLMObservability, ...AI_Java, ...AI_EvalEngineering, ...AI_SpeechAudioAI, ...AI_EnterpriseKB, ...AI_AISecurityCompliance, ...AI_EdgeInference, ...AI_SyntheticData, ...AI_InferenceScheduling, ...AI_AgentToolProtocol],
+      items: [...AI_LLMApp, ...AI_AICodingAssistant, ...AI_LangChain, ...AI_AgentFramework, ...AI_RAG, ...AI_Multimodal, ...AI_MultimodalRetrieval, ...AI_ModelRouting, ...AI_FineTuning, ...AI_LocalModel, ...AI_OpenClaw, ...AI_PromptEngineering, ...AI_PromptSecurity, ...AI_Agent, ...AI_LLMObservability, ...AI_Java, ...AI_EvalEngineering, ...AI_SpeechAudioAI, ...AI_EnterpriseKB, ...AI_AISecurityCompliance, ...AI_EdgeInference, ...AI_SyntheticData, ...AI_InferenceScheduling, ...AI_AgentToolProtocol, ...AI_ContextEngineering],
     },
   ],
   "/docs/Tools": [
@@ -213,6 +213,7 @@ export const sidebar = {
   "/docs/Frontend/Others": FrontOthers,
   "/docs/Frontend/Others/FrontendEngineering": FrontendEngineering,
   "/docs/Frontend/Testing": FrontTesting,
+  "/docs/Frontend/BuildBaseline": FrontBuildBaseline,
   "/docs/Backend/DotNet": DotNet,
   "/docs/Backend/Go": Go,
   "/docs/Backend/GoMicroservices": GoMicroservices,
@@ -384,6 +385,7 @@ export const sidebar = {
   "/docs/AI/ModelRouting": AI_ModelRouting,
   "/docs/AI/FineTuning": AI_FineTuning,
   "/docs/AI/LocalModel": AI_LocalModel,
+  "/docs/AI/ContextEngineering": AI_ContextEngineering,
   "/docs/Tools/Build": Build,
   "/docs/Tools/DevEnvironment": DevEnvironment,
   "/docs/Tools/BuildCache": BuildCache,

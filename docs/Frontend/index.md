@@ -19,5 +19,6 @@
 - [设计系统与组件库工程](DesignSystem/index.md)
 - [前端异常监控与体验度量](ErrorTelemetry/index.md)
 - [本地数据存储与容量治理](LocalDataStore/index.md)
+- [构建产物与运行时兼容基线](BuildBaseline/index.md)
 - [测试](Testing/index.md)
 - [其他](Others/index.md)

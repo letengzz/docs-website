@@ -180,6 +180,23 @@ export function watchBlank(rootSelector: string, delay = 3000) {
 | `ETV-G` | 每个事件都带 `release` | `release` 为空的占比 < 1% | 构建时注入版本；缺失时采集端拒收 |
 | `ETV-H` | 发版前跑异常注入 | 五类注入事件全部落地且版本正确 | 把注入脚本纳入发布检查单 |
 
+## 与「构建产物与运行时兼容基线」专题的分工
+
+本页讲**发布之后**怎么采、怎么聚合、怎么告警。兼容性问题的特点是：等到本页的指标动了，已经有一批用户用不了——所以它需要一条「发布前」的通道配合。
+
+| 问题 | 去哪看 |
+| --- | --- |
+| 错误采集、指纹合并、符号化、告警 | 本页 |
+| 发布前怎么拦住「旧内核整包不执行」 | [构建产物与运行时兼容基线](../../BuildBaseline/index.md) |
+| 兼容回归覆盖多少引擎、多少样本 | [兼容回归矩阵](../../BuildBaseline/Regression/index.md) |
+| 灰度观察指标为什么要按内核分组 | [兼容回归矩阵](../../BuildBaseline/Regression/index.md) 第四节 |
+
+::: danger 一页一坑：总量错误率会稀释长尾内核的退化
+如果 95% 的用户是 Chromium，那么「总量错误率从 0.42% 涨到 0.45%」完全可能是「WebKit 用户从 0.5% 涨到 3%」被平均掉的结果。本页的告警规则如果只按总量设阈，这类退化要等到客服反馈才会被发现。
+
+**正确做法**：错误上报里带上内核与版本（只用于分组统计，不用于功能开关），告警规则至少多一条「按内核分组的错误率环比」；判据是把某个内核的错误率人为抬高 5 倍后，新的告警能在 N 分钟内触发。
+:::
+
 ## 参考资料
 
 - MDN：*Window: error event*（`ErrorEvent` 的 `message`/`filename`/`lineno`/`colno`/`error`）、*GlobalEventHandlers.onerror*（返回值语义）、*Window: unhandledrejection event*

@@ -968,3 +968,23 @@ export const FrontLocalDataStore = [
         ],
     },
 ];
+
+export const FrontBuildBaseline = [
+    {
+        text: "构建产物与运行时兼容基线",
+        link: "/docs/Frontend/BuildBaseline/index.md",
+        items: [
+            { text: "总览：三条基线与一句判词", link: "/docs/Frontend/BuildBaseline/Overview/index.md" },
+            { text: "目标浏览器清单：把支持写成一条查询", link: "/docs/Frontend/BuildBaseline/Targets/index.md" },
+            { text: "语法降级的硬边界", link: "/docs/Frontend/BuildBaseline/Transpile/index.md" },
+            { text: "API 补齐与注入策略", link: "/docs/Frontend/BuildBaseline/Polyfill/index.md" },
+            { text: "产物体积预算", link: "/docs/Frontend/BuildBaseline/Budget/index.md" },
+            { text: "特性检测与渐进增强", link: "/docs/Frontend/BuildBaseline/FeatureDetect/index.md" },
+            { text: "分发、缓存头与部署原子性", link: "/docs/Frontend/BuildBaseline/Delivery/index.md" },
+            { text: "兼容回归矩阵", link: "/docs/Frontend/BuildBaseline/Regression/index.md" },
+            { text: "实战：从双包迁到单包", link: "/docs/Frontend/BuildBaseline/Practice/index.md" },
+            { text: "ES5 兼容线（仅存量项目使用 · 已停止新增）", link: "/docs/Frontend/BuildBaseline/LegacyES5/index.md" },
+            { text: "现代基线（当前主线）", link: "/docs/Frontend/BuildBaseline/ModernES2020/index.md" },
+        ],
+    },
+];

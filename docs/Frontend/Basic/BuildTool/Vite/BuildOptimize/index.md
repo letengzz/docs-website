@@ -405,3 +405,22 @@ npm run preview
 - [rollup-plugin-visualizer](https://github.com/btd/rollup-plugin-visualizer)
 - [vite-plugin-compression](https://github.com/vbenjs/vite-plugin-compression)
 - [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)
+
+
+## 与「构建产物与运行时兼容基线」专题的分工
+
+本页讲的是**怎么让构建更快、chunk 更合理**（依赖预构建、分包策略、缓存目录、并行度）。这些优化改变的是「构建过程」与「产物形状」，但不回答「这份产物凭什么能在用户的浏览器上跑」。
+
+| 问题 | 去哪看 |
+| --- | --- |
+| 构建慢、HMR 慢、冷启动慢 | 本页 |
+| `build.target` 该定成哪一档、定错了怎么发现 | [构建产物与运行时兼容基线](../../../../BuildBaseline/Targets/index.md) |
+| 产物体积预算怎么定、按 raw 还是 gzip 卡 | [体积预算](../../../../BuildBaseline/Budget/index.md) |
+| 切分越细，缓存命中率会不会变差 | [体积预算](../../../../BuildBaseline/Budget/index.md) 第四节 |
+| 产物文件名与缓存头的配对 | [分发与缓存](../../../../BuildBaseline/Delivery/index.md) |
+
+::: danger 一页一坑：`build.target` 的默认值不是你的基线
+本页调分包与并行度时不会碰 `target`，于是它一直停在默认值上。本机对 Vite 5.4.21 的源码实读：默认目标是 `es2020` 加上 `edge88`、`firefox78`、`chrome87`、`safari14` 四个下限——而仓库里 `browserslist` 字段可能写着完全另一套。
+
+**正确做法**：显式写 `build.target`，或让它从 `browserslist` 派生；判据是「产物里出现的语法」与「基线声明的档位」能对上，而不是「构建没报错」。
+:::

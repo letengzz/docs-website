@@ -194,3 +194,21 @@ curl -s https://origin.example.com/static/app.9f2c1a.js | shasum
 
 :::
 
+
+
+## 与「构建产物与运行时兼容基线」专题的分工
+
+本页讲边缘节点、回源、缓存键与失效。它假设「文件内容变了，文件名也变了」——这个假设由构建侧提供，不在本页。
+
+| 问题 | 去哪看 |
+| --- | --- |
+| 边缘架构、回源策略、缓存键设计 | 本页 |
+| 产物文件名怎么带指纹、哈希输入是什么 | [分发与缓存](../../../Frontend/BuildBaseline/Delivery/index.md) |
+| `immutable` 该配在哪类资源上 | [分发与缓存](../../../Frontend/BuildBaseline/Delivery/index.md) 第二节 |
+| 发布顺序（先产物后 HTML）与旧版本保留 | [分发与缓存](../../../Frontend/BuildBaseline/Delivery/index.md) 第三节 |
+
+::: danger 一页一坑：`immutable` 配在没有指纹的 URL 上
+`Cache-Control: public, max-age=31536000, immutable` 的语义是「这个 URL 对应的内容永不改变」。如果它被配在 `/app.js` 这种不带哈希的路径上，等于把一年的发布能力交出去了：你改了文件、传了新版本，边缘与浏览器都不会来取。
+
+**正确做法**：`immutable` 只用于带内容指纹的路径；判据是一条命令——把某个资源的 URL 直接改掉一个字节再请求，若响应头仍是 `immutable` 而文件名没变，配置就是错的。
+:::

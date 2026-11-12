@@ -289,3 +289,21 @@ adb shell dumpsys webviewupdate | grep -i "Current WebView package"
 - [Chrome for Developers · 远程调试 Android 上的 WebView](https://developer.chrome.com/docs/devtools/remote-debugging/webviews)
 - [Android Developers · WebView 版本与更新机制](https://developer.android.com/about/versions)
 - [web.dev · 前端兼容与渐进增强](https://web.dev/learn/design/)
+
+
+## 与「构建产物与运行时兼容基线」专题的分工
+
+本页回答**设备面**：哪些机型、哪些内核、哪些系统版本会出问题，怎么用真机与云真机定位。它不回答「同一份产物为什么在这些设备上行为不同」。
+
+| 问题 | 去哪看 |
+| --- | --- |
+| 机型矩阵、真机排障、内核差异 | 本页 |
+| 产物该定到哪一档、怎么保证不超档 | [构建产物与运行时兼容基线](../../BuildBaseline/index.md) |
+| 用 UA 版本号判断能力的三种失效 | [特性检测与渐进增强](../../BuildBaseline/FeatureDetect/index.md) |
+| 兼容回归要覆盖多少引擎、每组多少样本 | [兼容回归矩阵](../../BuildBaseline/Regression/index.md) |
+
+::: danger 一页一坑：iOS 上「换个浏览器试试」没有意义
+iOS 上所有浏览器与 App 内嵌页都用系统 WebKit，「换浏览器」换的只是外壳。所以本页的机型矩阵在 iOS 这一列，真正的变量是**系统版本**而不是浏览器品牌；而回归里用的 Playwright WebKit 跑在桌面构建上，不做 iOS 的 JIT 限制——它通过不代表真机通过。
+
+**正确做法**：iOS 侧的兼容结论只认真机或云真机；判据是回归记录里能看到「设备 + 系统版本」，而不是「WebKit 通过」。
+:::
