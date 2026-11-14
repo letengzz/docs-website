@@ -167,6 +167,33 @@ cosign verify --certificate-identity-regexp '^https://github.com/acme/' \
 
 具体配方（`tar --mtime`、`gzip -n`、`SOURCE_DATE_EPOCH`、`jar` 的时间戳开关）见 [可复现构建](../../BuildCache/Reproducible/index.md)；缓存侧的信任模型（只有 CI 能写、内容哈希校验）见[远程缓存](../../BuildCache/RemoteCache/index.md)。
 
+## 制品晋级：同一 digest 从构建到生产的五道门
+
+依赖治理的终点不是「构建成功」，而是**一个被证明过身份的制品，原样到达生产**。这里的主线只有一条：**晋级只移动引用，不重新构建**。
+
+| 门 | 时机 | 校验什么 | 失败时 |
+| --- | --- | --- | --- |
+| ① 构建 | CI | 构建环境与源码提交可追溯（provenance） | 拒绝产出制品 |
+| ② 签名 | 构建后 | 制品 digest 的签名可验 | 制品不得入库 |
+| ③ SBOM 绑定 | 入库前 | SBOM 与**同一 digest** 关联 | 缺少绑定视为无 SBOM |
+| ④ 准入 | 晋级到预发/生产 | 策略：来源、漏洞、许可、签名 | 阻止晋级 |
+| ⑤ 部署 | 运行时 | 拉取后再次校验 digest 与签名 | 拒绝启动 |
+
+```shell [晋级必须是「换标签」而不是「重新构建」]
+# 正确：把已验证的 digest 打上生产标签（制品字节不变）
+docker buildx imagetools create -t registry.example.com/app:1.4.0 \
+  registry.example.com/app@sha256:<verified-digest>
+
+# 错误：在生产流水线里重新 build —— digest 变了，之前所有证明作废
+docker build -t registry.example.com/app:1.4.0 .
+```
+
+::: danger 一次「顺手重构建」会作废全部证据
+签名、SBOM、漏洞扫描报告都绑定在**具体 digest** 上。生产阶段只要重新构建一次，digest 就变了，
+而这些证据仍然指向旧 digest——**看起来一切齐全，实际证明的是另一个制品**。
+晋级的唯一正确动作是「引用转移」，任何阶段都不应再执行构建。
+:::
+
 ## 参考资料
 
 - SLSA 规范站点（Version 1.2，Build Track 与 Source Track 的等级定义与要求）

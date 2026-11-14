@@ -184,6 +184,31 @@ jq -r '.components[] | select(.purl != null) | .purl' sbom-image.cdx.json | grep
 # 期望：一个大于 0 的数字
 ```
 
+## SBOM 必须与制品 digest 绑定
+
+一份「没有绑定到具体制品」的 SBOM，在事故里几乎没有用：你知道项目里有 `log4j-core`，却无法回答**线上正在跑的那个镜像里到底有没有**。
+
+| 绑定方式 | 形态 | 优点 | 风险 |
+| --- | --- | --- | --- |
+| **Attestation**（推荐） | 作为 OCI artifact 与镜像同库同 digest 关联 | 随制品走、可签名、可校验 | 需要 registry 支持 |
+| Sidecar 文件 | `app.spdx.json` 与镜像一起存放 | 实现简单 | 易与制品版本错配 |
+| 仓库 API 记录 | 由制品库维护「digest → SBOM」映射 | 查询方便 | 跨库迁移时易丢失 |
+
+```shell [校验：SBOM 是否真的属于这个 digest]
+# 用 cosign 读取镜像关联的 attestation，并核对其中的 subject digest
+cosign verify-attestation --type spdxjson \
+  registry.example.com/app@sha256:<digest> \
+  --certificate-identity-regexp '.*' \
+  --certificate-oidc-issuer-regexp '.*' \
+| jq -r '.payload' | base64 -d | jq -r '.subject[0].digest.sha256'
+# 期望：输出的 sha256 与命令里使用的 <digest> 完全一致
+```
+
+::: warning 「有 SBOM 文件」不等于「有 SBOM」
+判据不是「仓库里存在一份 `sbom.json`」，而是**对任意一个正在运行的 digest，能立刻取回属于它的 SBOM 并验证签名**。
+做不到这一条，事故响应时仍然只能全量重扫。
+:::
+
 ## 参考资料
 
 - CycloneDX 官方规范仓库与 ECMA-424 标准页面
